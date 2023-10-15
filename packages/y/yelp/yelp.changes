@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 12 15:10:06 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
+
+- Add upstream bug fixes:
+  + dd69a1df8e660cf6cf27e44a6bba02934fc00b48.patch: Fix compile
+    error with ./autogen.sh --enable-debug=yes
+  + 855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch: Support search
+    box for man pages
+- Add gtk-doc, libtool and pkgconfig(appstream-glib) BuildRequires
+  and call NOCONFIGURE=1 ./autogen.sh, bootstrap the build, as the
+  above patches touches the buildsystem.
+
+-------------------------------------------------------------------
 Sun Sep 18 08:29:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.2:

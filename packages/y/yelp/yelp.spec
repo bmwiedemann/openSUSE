@@ -1,7 +1,7 @@
 #
 # spec file for package yelp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,18 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
 Source0:        https://download.gnome.org/sources/yelp/42/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM dd69a1df8e660cf6cf27e44a6bba02934fc00b48.patch -- Fix compile error with ./autogen.sh --enable-debug=yes
+Patch0:         https://gitlab.gnome.org/GNOME/yelp/-/commit/dd69a1df8e660cf6cf27e44a6bba02934fc00b48.patch
+# PATCH-FIX-UPSTREAM 855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch -- Support search box for man pages
+Patch1:         https://gitlab.gnome.org/GNOME/yelp/-/commit/855cae4a336f7676f093579c9a6b2d9fae7a1f80.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gtk-doc
 BuildRequires:  itstool >= 1.2.0
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.67.4
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.3
@@ -81,6 +89,7 @@ This package provides Yelp's development files.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-static \
 	%{nil}

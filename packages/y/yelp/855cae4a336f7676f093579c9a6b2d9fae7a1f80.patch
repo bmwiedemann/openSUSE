@@ -1,0 +1,257 @@
+From 855cae4a336f7676f093579c9a6b2d9fae7a1f80 Mon Sep 17 00:00:00 2001
+From: Paul Hebble <pjhebble@gmail.com>
+Date: Sun, 7 Feb 2021 21:15:18 -0600
+Subject: [PATCH] Support search box for man pages
+
+---
+ Makefile.am               |   2 +
+ libyelp/yelp-document.c   |  10 ++--
+ libyelp/yelp-man-search.c | 106 ++++++++++++++++++++++++++++++++++++++
+ libyelp/yelp-man-search.h |  32 ++++++++++++
+ libyelp/yelp-uri.c        |  16 ++++++
+ 5 files changed, 163 insertions(+), 3 deletions(-)
+ create mode 100644 libyelp/yelp-man-search.c
+ create mode 100644 libyelp/yelp-man-search.h
+
+diff --git a/Makefile.am b/Makefile.am
+index 1c6b37b7..7cfef934 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -20,6 +20,7 @@ libyelp_libyelp_la_SOURCES = \
+ 	libyelp/yelp-mallard-document.c \
+ 	libyelp/yelp-man-document.c \
+ 	libyelp/yelp-man-parser.c \
++	libyelp/yelp-man-search.c \
+ 	libyelp/yelp-search-entry.c \
+ 	libyelp/yelp-settings.c \
+ 	libyelp/yelp-simple-document.c \
+@@ -74,6 +75,7 @@ libyelp_libyelp_la_headers = \
+ 	$(top_srcdir)/libyelp/yelp-info-document.h \
+ 	$(top_srcdir)/libyelp/yelp-mallard-document.h \
+ 	$(top_srcdir)/libyelp/yelp-man-document.h \
++	$(top_srcdir)/libyelp/yelp-man-search.h \
+ 	$(top_srcdir)/libyelp/yelp-search-entry.h \
+ 	$(top_srcdir)/libyelp/yelp-settings.h \
+ 	$(top_srcdir)/libyelp/yelp-simple-document.h \
+diff --git a/libyelp/yelp-document.c b/libyelp/yelp-document.c
+index fb340ebd..60124304 100644
+--- a/libyelp/yelp-document.c
++++ b/libyelp/yelp-document.c
+@@ -35,6 +35,7 @@
+ #include "yelp-info-document.h"
+ #include "yelp-mallard-document.h"
+ #include "yelp-man-document.h"
++#include "yelp-man-search.h"
+ #include "yelp-settings.h"
+ #include "yelp-simple-document.h"
+ #include "yelp-storage.h"
+@@ -889,9 +890,12 @@ document_indexed (YelpDocument *document)
+         xmlNewTextChild (rootnode, NULL, BAD_CAST "title", BAD_CAST text);
+         g_free (text);
+ 
+-        value = yelp_storage_search (yelp_storage_get_default (),
+-                                     document->priv->doc_uri,
+-                                     term);
++        value = YELP_IS_MAN_DOCUMENT (document)
++                ? yelp_man_search (term)
++                : yelp_storage_search (yelp_storage_get_default (),
++                                       document->priv->doc_uri,
++                                       term);
++
+         iter = g_variant_iter_new (value);
+         if (g_variant_iter_n_children (iter) == 0) {
+             xmlNewTextChild (rootnode, NULL, BAD_CAST "p",
+diff --git a/libyelp/yelp-man-search.c b/libyelp/yelp-man-search.c
+new file mode 100644
+index 00000000..331d4031
+--- /dev/null
++++ b/libyelp/yelp-man-search.c
+@@ -0,0 +1,106 @@
++/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
++/*
++ * Copyright (C) 2021, Paul Hebble
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public
++ * License along with this program; if not, see <http://www.gnu.org/licenses/>.
++ *
++ * Author: Paul Hebble <pjhebble@gmail.com>
++ */
++
++#include <stdio.h>
++#include <gio/gio.h>
++#include <gio/gunixinputstream.h>
++
++#include "yelp-man-search.h"
++#include "yelp-error.h"
++
++static GInputStream*   yelp_man_search_get_apropos    (const gchar *text,
++                                                       GError **error);
++static void            yelp_man_search_add_to_builder (GVariantBuilder *builder,
++                                                       const gchar *text);
++
++static GInputStream*
++yelp_man_search_get_apropos (const gchar *text, GError **error)
++{
++    gint ystdout;
++    GError *err = NULL;
++    /* text can be a regex, so "." matches everything */
++    const gchar *argv[] = { "apropos", "-l", text == NULL ? "." : text, NULL };
++    gchar **my_argv;
++    my_argv = g_strdupv ((gchar **) argv);
++    if (!g_spawn_async_with_pipes (NULL, my_argv, NULL,
++                                   /* apropos can print "<term>: nothing appropriate."
++                                      to stderr, discard it */
++                                   G_SPAWN_SEARCH_PATH | G_SPAWN_STDERR_TO_DEV_NULL,
++                                   NULL, NULL, NULL, NULL, &ystdout, NULL, &err)) {
++        /* We failed to run the apropos program. Return a "Huh?" error. */
++        *error = g_error_new (YELP_ERROR, YELP_ERROR_UNKNOWN,
++                              "%s", err->message);
++        g_error_free (err);
++        g_strfreev (my_argv);
++        return NULL;
++    }
++    g_strfreev (my_argv);
++    return (GInputStream*) g_unix_input_stream_new (ystdout, TRUE);
++}
++
++static void
++yelp_man_search_add_to_builder (GVariantBuilder *builder, const gchar *text)
++{
++    GError *error = NULL;
++    GInputStream *apropos_stream = yelp_man_search_get_apropos (text, &error);
++    if (apropos_stream == NULL) {
++        g_critical ("Can't run apropos: %s", error->message);
++        g_error_free (error);
++    } else {
++        gchar *line;
++        gsize line_len;
++        GDataInputStream *stream = g_data_input_stream_new (apropos_stream);
++        while ((line = g_data_input_stream_read_line (stream,
++                                                      &line_len,
++                                                      NULL, NULL))) {
++            int section;
++            char *title, *description;
++            /* the 'm' modifier mallocs the strings for us */
++            switch (sscanf (line, "%ms (%d) - %m[^\n]",
++                            &title, &section, &description)) {
++                case 3: {
++                    g_variant_builder_add(builder, "(ssss)",
++                                          g_strconcat ("man:", title, NULL),
++                                          title,
++                                          description,
++                                          "");
++                } break;
++                case 2:
++                case 1:
++                    // Parse failed, don't leak
++                    g_free (title);
++                    break;
++                default:
++                    break;
++            }
++            g_free (line);
++        }
++        g_object_unref (stream);
++    }
++}
++
++GVariant *
++yelp_man_search (gchar *text)
++{
++    GVariantBuilder builder;
++    g_variant_builder_init (&builder, G_VARIANT_TYPE ("a(ssss)"));
++    yelp_man_search_add_to_builder (&builder, text);
++    return g_variant_new ("a(ssss)", &builder);
++}
+diff --git a/libyelp/yelp-man-search.h b/libyelp/yelp-man-search.h
+new file mode 100644
+index 00000000..af0cf7b2
+--- /dev/null
++++ b/libyelp/yelp-man-search.h
+@@ -0,0 +1,32 @@
++/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
++/*
++ * Copyright (C) 2021, Paul Hebble
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public
++ * License along with this program; if not, see <http://www.gnu.org/licenses/>.
++ *
++ * Author: Paul Hebble <pjhebble@gmail.com>
++ */
++
++#ifndef __YELP_MAN_SEARCH_H__
++#define __YELP_MAN_SEARCH_H__
++
++#include <glib-object.h>
++#include <gio/gio.h>
++
++#include "yelp-error.h"
++
++G_GNUC_INTERNAL
++GVariant *      yelp_man_search                (gchar *text);
++
++#endif /* __YELP_MAN_SEARCH_H__ */
+diff --git a/libyelp/yelp-uri.c b/libyelp/yelp-uri.c
+index ffc49cc9..1fe5cd1b 100644
+--- a/libyelp/yelp-uri.c
++++ b/libyelp/yelp-uri.c
+@@ -1010,6 +1010,15 @@ build_man_uris (YelpUri *uri, const char *name, const char *section)
+                                  NULL);
+ }
+ 
++static void
++resolve_man_search_uri (YelpUri *uri)
++{
++    YelpUriPrivate *priv = yelp_uri_get_instance_private (uri);
++    priv->docuri = g_strdup ("man");
++    priv->fulluri = g_strdup (priv->res_arg);
++    priv->page_id = g_strdup (priv->res_arg + 4);
++}
++
+ static void
+ resolve_man_uri (YelpUri *uri)
+ {
+@@ -1018,6 +1027,7 @@ resolve_man_uri (YelpUri *uri)
+      * man:name(section)
+      * man:name.section
+      * man:name
++     * man:search=terms
+      */
+ 
+     /* Search via regular expressions for name, name(section) and
+@@ -1033,6 +1043,12 @@ resolve_man_uri (YelpUri *uri)
+     gchar *name, *section, *hash;
+     gchar *path;
+ 
++    if (g_str_has_prefix (priv->res_arg, "man:search=")) {
++        priv->tmptype = YELP_URI_DOCUMENT_TYPE_MAN;
++        resolve_man_search_uri (uri);
++        return;
++    }
++
+     if (!man_not_path) {
+         /* Match group 1 should contain the name; then one of groups 3
+          * and 4 will contain the section if there was one. Group 6
+-- 
+GitLab
+

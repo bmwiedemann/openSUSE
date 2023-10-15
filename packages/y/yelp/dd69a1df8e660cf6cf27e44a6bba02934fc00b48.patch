@@ -1,0 +1,25 @@
+From dd69a1df8e660cf6cf27e44a6bba02934fc00b48 Mon Sep 17 00:00:00 2001
+From: Paul Hebble <pjhebble@gmail.com>
+Date: Sun, 7 Feb 2021 21:14:08 -0600
+Subject: [PATCH] Fix compile error with ./autogen.sh --enable-debug=yes
+
+---
+ libyelp/yelp-info-parser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libyelp/yelp-info-parser.c b/libyelp/yelp-info-parser.c
+index 7b718ea0..30208c39 100644
+--- a/libyelp/yelp-info-parser.c
++++ b/libyelp/yelp-info-parser.c
+@@ -495,7 +495,7 @@ static char
+ 			offset = (gsize) atoi (items[1]);
+ 			plength = strlen(pages[1]);
+ 			
+-			debug_print (DB_DEBUG, "Need to make string %s+%i bytes = %i\n",
++			debug_print (DB_DEBUG, "Need to make string %s+%li bytes = %li\n",
+ 				    items[1], plength,
+ 				    offset + plength);
+ 			
+-- 
+GitLab
+
