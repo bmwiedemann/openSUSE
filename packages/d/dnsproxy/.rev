@@ -113,4 +113,13 @@
   * Pull request 277: upd quic-go (forwarded request 1112876 from VaiTon)</comment>
     <requestid>1113766</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a698e3a617e8b1ef4e8dc09b755277a8</srcmd5>
+    <version>0.56.1</version>
+    <time>1697390874</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.1
+- Update to version 0.56.0 (forwarded request 1117814 from VaiTon)</comment>
+    <requestid>1117824</requestid>
+  </revision>
 </revisionlist>

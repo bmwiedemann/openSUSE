@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 14 16:41:58 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.56.1:
+  * Fixed:
+    Queries of DS type incorrectly routed to the exactly matched
+    domain-specific upstream as opposed to RFC 4035 Section 2.4 
+    recommendations.
+
+- Update to version 0.56.0:
+  * Updated quic-go@v0.37.4 dependency to quic-go@v0.38.1.
+
+-------------------------------------------------------------------
 Thu Sep 21 16:39:54 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.55.0:
