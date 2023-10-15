@@ -1,0 +1,16 @@
+diff -ur c-blosc2-2.10.5.orig/blosc/CMakeLists.txt c-blosc2-2.10.5/blosc/CMakeLists.txt
+--- c-blosc2-2.10.5.orig/blosc/CMakeLists.txt	2023-10-14 13:06:44.581157304 +0200
++++ c-blosc2-2.10.5/blosc/CMakeLists.txt	2023-10-14 13:19:19.589300306 +0200
+@@ -354,10 +354,10 @@
+         # Only armv7l needs special -mfpu=neon flag; aarch64 doesn't.
+       set_source_files_properties(
+             shuffle-neon.c bitshuffle-neon.c
+-            PROPERTIES COMPILE_OPTIONS "-mfpu=neon -flax-vector-conversions")
++            PROPERTIES COMPILE_OPTIONS "-mfpu=neon;-flax-vector-conversions")
+       set_property(
+             SOURCE shuffle.c
+-            APPEND PROPERTY COMPILE_OPTIONS "-mfpu=neon -flax-vector-conversions")
++            APPEND PROPERTY COMPILE_OPTIONS "-mfpu=neon;-flax-vector-conversions")
+     endif()
+     # Define a symbol for the shuffle-dispatch implementation
+     # so it knows NEON is supported even though that file is

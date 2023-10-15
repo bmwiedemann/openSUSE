@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 14 10:58:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.10.5
+  * Fix a variable name in a test that was causing a segfault in
+    some platforms.
+  * Change tuner's functions signature to return always an error
+    code. This allows for better error checking when using plugable
+    tuners in Blosc2.
+  * Do checks when creating contexts.
+- Release 2.10.4
+  * Remove duplicated tune initialization since it is already done
+    in blosc2_create_cctx. Thanks to Marta Iborra
+  * Typos fixed.  Thanks to Dimitri Papadopoulos.
+- Release 2.10.3
+  * Globally registered new codec openhtj2k. This will be loaded
+    dynamically. See PR #557.
+  * Added a BLOSC_INFO macro for details on compression params.
+  * Added get_blocksize.c example on automatic blocksizes.
+  * Warning fixes.
+- Add c-blosc2-pr563-armv7l-option.patch gh#Blosc/c-blosc2#563
+  (But there is sitll a "Bus error" in the CTests)
+
+-------------------------------------------------------------------
 Tue Aug 22 18:51:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.10.2
