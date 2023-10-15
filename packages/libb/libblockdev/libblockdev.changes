@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 13 08:09:53 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.4:
+  * plugins: use g_autofree for free'ing g_char's
+  * plugins: btrfs: use g_autofree where possible for g_free
+  * fs: correct btrfs set label description
+  * nvme: Rework memory allocation for device ioctls
+  * spec: Obsolete vdo plugin packages
+  * spec: Move obsoleted devel subpackages to libblockdev-devel
+  * ci: Bump actions/checkout from v3 to v4
+  * part: Do not open disk read-write for read only operations
+  * fs: Disable progress for ntfsresize
+  * packit: Add configuration for downstream builds
+  * logging: Default to DEBUG log level if compiled with --enable-debug
+  * Use log function when calling a plugin function that is not loaded
+  * lvm-dbus: Replace g_critical calls with bd_utils_log_format
+  * tests: Fail early when recompilation fails in library_test
+
+-------------------------------------------------------------------
 Fri Sep 29 07:48:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.3:
