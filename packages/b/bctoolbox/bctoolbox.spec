@@ -88,7 +88,7 @@ export CXXFLAGS=$(echo "$CXXFLAGS -Wno-error=maybe-uninitialized -Wno-error=unus
 
 %install
 %cmake_install
-chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}* %{buildroot}%{_libdir}/lib%{name}-tester.so.%{sover}*
+chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}* %{buildroot}%{_libdir}/lib%{name}-tester.so.%{sover}* %{buildroot}%{_bindir}/bctoolbox_tester
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig

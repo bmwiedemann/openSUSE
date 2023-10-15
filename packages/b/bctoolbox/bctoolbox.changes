@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct  8 10:54:35 UTC 2023 - i thod <thod_@gmx.de>
+
+- Remove RPATH to be able to build on Fedora
+
+-------------------------------------------------------------------
 Mon Aug 28 07:48:33 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.2.98 (no changelog)
