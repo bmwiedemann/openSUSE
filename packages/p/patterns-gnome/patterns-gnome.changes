@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 13 16:38:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop mousetweaks as a recommended package, it has not been needed
+  for assistive technologies in a long time.
+
+-------------------------------------------------------------------
 Fri Oct  6 19:06:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable (temp?) gnome-notes while we wait for upstream to fix the

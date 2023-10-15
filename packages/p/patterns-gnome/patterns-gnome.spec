@@ -140,8 +140,6 @@ Recommends:     gnome-desktop
 Recommends:     gnome-disk-utility
 Recommends:     gnome-remote-desktop
 Recommends:     gpgme
-# #399801
-Recommends:     mousetweaks
 Recommends:     nautilus-sendto
 Recommends:     noto-sans-cjk-fonts
 Recommends:     orca
