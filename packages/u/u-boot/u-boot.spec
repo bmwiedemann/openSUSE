@@ -239,7 +239,7 @@ Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
-Patch0017:      0017-rpi-fix-boot-on-RPi4-after-commit-c.patch
+Patch0017:      0017-bootstd-Scan-all-bootdevs-in-a-boot.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

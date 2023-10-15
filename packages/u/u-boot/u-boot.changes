@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 13 08:21:12 UTC 2023 - Guillaume Gardet <guillaume.gardet@arm.com>
+
+Use upstream patch instead downstream workaround to fix boo#1216036
+* Patches dropped:
+  0017-rpi-fix-boot-on-RPi4-after-commit-c.patch
+* Patches added:
+  0017-bootstd-Scan-all-bootdevs-in-a-boot.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 09:51:42 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix update_git.sh

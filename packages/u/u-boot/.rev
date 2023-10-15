@@ -1935,4 +1935,12 @@ Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.
     <comment></comment>
     <requestid>1116706</requestid>
   </revision>
+  <revision rev="176" vrev="3">
+    <srcmd5>0ff09de5389c54dd07b7e8700e8aa942</srcmd5>
+    <version>2023.10</version>
+    <time>1697390746</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117636</requestid>
+  </revision>
 </revisionlist>
