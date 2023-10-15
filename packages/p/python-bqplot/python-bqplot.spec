@@ -1,7 +1,7 @@
 #
 # spec file for package python-bqplot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
-%define         pyver 0.12.31
-%define         jupver 0.5.32
+%define         pyver 0.12.40
+%define         jupver 0.5.41
 Name:           python-bqplot
 Version:        %{pyver}
 Release:        0
@@ -32,26 +29,28 @@ Source0:        https://files.pythonhosted.org/packages/source/b/bqplot/bqplot-%
 # tests from GitHub source
 Source1:        https://github.com/bqplot/bqplot/archive/refs/tags/%{pyver}.tar.gz#/bqplot-%{pyver}-gh.tar.gz
 BuildRequires:  %{python_module jupyter-packaging}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module jupyterlab}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem >= 20211114
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-bqplot-notebook = %{jupver}
-Requires:       python-ipywidgets >= 7.5.0
 Requires:       python-numpy >= 1.10.4
-Requires:       python-pandas
 Requires:       python-traitlets >= 4.3.0
 Requires:       python-traittypes >= 0.0.6
+Requires:       (python-ipywidgets >= 7.5.0 with python-ipywidgets < 9)
+Requires:       (python-pandas >= 1 with python-pandas < 3)
 Provides:       python-jupyter_bqplot = %{pyver}
 Obsoletes:      python-jupyter_bqplot < %{pyver}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipywidgets >= 7.5.0}
+BuildRequires:  %{python_module ipywidgets >= 7.5.0 with %python-ipywidgets < 9}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module numpy >= 1.10.4}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pandas >= 1 with %python-pandas < 3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 4.3.0}
 BuildRequires:  %{python_module traittypes >= 0.0.6}
@@ -68,7 +67,7 @@ This package provides the python interface.
 Version:        %{jupver}
 Summary:        Interactive plotting package for Jupyter Notebooke
 Requires:       jupyter-notebook
-Requires:       python3-bqplot = %{pyver}
+Requires:       python3dist(bqplot) = %{pyver}
 Provides:       jupyter-bqplot =  %{pyver}-%{release}
 # the jupyter-bqplot rpm package had the python package version until 0.12.13
 Obsoletes:      jupyter-bqplot <  %{pyver}-%{release}
@@ -82,8 +81,8 @@ This package provides the jupyter notebook extension.
 %package     -n jupyter-bqplot-jupyterlab
 Version:        %{jupver}
 Summary:        Interactive plotting package for Jupyterlab
-Requires:       jupyter-bqplot-notebook
 Requires:       jupyter-jupyterlab
+Requires:       python3dist(bqplot) = %{pyver}
 
 %description -n jupyter-bqplot-jupyterlab
 Plotting system for the Jupyter notebook based on the
@@ -97,14 +96,10 @@ tar -x --strip-components=1 -f %{SOURCE1} bqplot-%{pyver}/{tests,ui-tests}
 rm bqplot/install.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-mkdir -p %{buildroot}%{_jupyter_confdir}
-cp -r etc/jupyter/* %{buildroot}%{_jupyter_confdir}/
-cp -r share/ %{buildroot}%{_datadir}
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
+%pyproject_install
 %fdupes %{buildroot}%{_jupyter_prefix}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -117,11 +112,11 @@ cp -r share/ %{buildroot}%{_datadir}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/bqplot/
-%{python_sitelib}/bqplot-%{pyver}*-info
+%{python_sitelib}/bqplot-%{pyver}.dist-info
 
 %files -n jupyter-bqplot-notebook
 %license LICENSE
-%{!?_jupyter_distconfig:%config} %{_jupyter_nb_notebook_confdir}/bqplot.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/bqplot.json
 %{_jupyter_nbextension_dir}/bqplot/
 
 %files -n jupyter-bqplot-jupyterlab

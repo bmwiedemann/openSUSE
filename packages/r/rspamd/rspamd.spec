@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.6
+Version:        3.7.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -409,6 +409,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/history_redis.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/hfilter.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/http_headers.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/known_senders.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/maillist.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/metadata_exporter.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/metric_exporter.conf
@@ -472,6 +473,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/hfilter.lua
 %{_datadir}/rspamd/history_redis.lua
 %{_datadir}/rspamd/ip_score.lua
+%{_datadir}/rspamd/known_senders.lua
 %{_datadir}/rspamd/maillist.lua
 %{_datadir}/rspamd/maps_stats.lua
 %{_datadir}/rspamd/metadata_exporter.lua
@@ -508,6 +510,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_aws.lua
 %{_datadir}/rspamd/lualib/lua_bayes_learn.lua
 %{_datadir}/rspamd/lualib/lua_cfg_transform.lua
+%{_datadir}/rspamd/lualib/lua_cfg_utils.lua
 %{_datadir}/rspamd/lualib/lua_clickhouse.lua
 %{_datadir}/rspamd/lualib/lua_dkim_tools.lua
 %{_datadir}/rspamd/lualib/lua_fuzzy.lua
@@ -527,7 +530,6 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_verdict.lua
 %{_datadir}/rspamd/lualib/lupa.lua
 %{_datadir}/rspamd/lualib/plugins_stats.lua
-%{_datadir}/rspamd/lualib/rescore_utility.lua
 %{_datadir}/rspamd/lualib/tableshape.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
@@ -592,7 +594,6 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/keypair.lua
 %{_datadir}/rspamd/lualib/rspamadm/mime.lua
 %{_datadir}/rspamd/lualib/rspamadm/publicsuffix.lua
-%{_datadir}/rspamd/lualib/rspamadm/rescore.lua
 %{_datadir}/rspamd/lualib/rspamadm/stat_convert.lua
 %{_datadir}/rspamd/lualib/rspamadm/statistics_dump.lua
 %{_datadir}/rspamd/lualib/rspamadm/template.lua

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 14 17:41:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix bzip2 support with shared-mime-info >= 2.3:
+  * 0001-Fix-support-for-bzip2-format-with-shared-mime-info-2.patch
+- Drop patch, not necessary since Leap 15.2:
+  * 0001-Support-building-against-libarchive-3.3.2-again.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 18:26:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2

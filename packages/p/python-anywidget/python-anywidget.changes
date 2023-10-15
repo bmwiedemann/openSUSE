@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 14 08:48:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.0
+  * feat(experimental)!: Require include in _get_anywidget_state
+    signature (#317)
+  * Allows implementors to avoid re-serializing fields which aren't
+    needed to send to the front end. This is a BREAKING change
+    because it requires implementors of _get_anywidget_state to
+    account for include in the function signature.
+
+-------------------------------------------------------------------
 Sat Sep 23 16:38:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.5

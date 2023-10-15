@@ -1,13 +1,96 @@
-Configuration files:
-  * /etc/coturn/turnserver.conf is the main configuration file
-  * /etc/sysconfig/coturn can be used to set additional command line parameters
+# SUSE coturn information
+
+## Configuration files:
+
+- /etc/coturn/turnserver.conf is the main configuration file
+- /etc/sysconfig/coturn can be used to set additional command line parameters
 
 Allow traffic through the firewall:
 ```
 firewall-cmd --zone=<zone> --add-service=coturn [--permanent]
 ```
 
-Notes:
-* /etc/syconfig/coturn has the option '--no-software-attribute' enabled to hide 
+## Notes:
+
+- /etc/syconfig/coturn has the option '--no-software-attribute' enabled to hide 
   the software version for production issue.
 
+## Coturn and Let's Encrypt Certificates (certbot)
+
+coturn needs ability to read certificate and key from /etc/letsencrypt/archive as 'coturn' user
+(same problem exists with mysql/mariadb)
+
+### Solution proposal (symlinks):
+
+- add system group: 'cert' (or whatever name you prefer)
+```
+groupadd -r cert
+or
+groupadd -g 110 -r cert
+```
+
+- add 'coturn' user to this 'cert' group
+```
+usermod -a -G cert coturn
+```
+
+- add ACLs to Let's Encrypt 'archive' folder
+
+  - add default ACL
+  ```
+  setfacl -m default:group:cert:r-x /etc/letsencrypt/archive
+  ```
+
+  - add recursive ACL to already existings files
+  ```
+  setfacl -R -m group:cert:r-x /etc/letsencrypt/archive
+  ```
+
+- now place symlinks to Let's Encrypt certificates in /etc/coturn/tls, e.g.:
+```
+ln -s /etc/letsencrypt/live/turn.example.com/fullchain.pem turn_server_cert.pem
+ln -s /etc/letsencrypt/live/turn.example.com/privkey.pem turn_server_pkey.pem
+```
+
+### Solution proposal (copy via certbot renewal-hooks)
+
+put the following code to a script in /etc/letsencrypt/renewal-hooks/deploy/coturn-deploy.sh
+```
+#!/bin/bash -e
+#
+##############################################################################
+#
+### VARs
+#
+scTurnCertDir='/etc/coturn/tls'
+
+##############################################################################
+#
+# MAIN code
+#
+
+if [[ ! -d "${scTurnCertDir}" ]]; then
+  install -D -m 0750 -o coturn -g root "${scTurnCertDir}"
+fi
+
+for scDomain in ${RENEWED_DOMAINS}; do
+  case ${scDomain} in
+    'coturn.example.com')
+      install -m 0400 -o coturn -g root "${RENEWED_LINEAGE}"/fullchain.pem "${scTurnCertDir}"/turn_server_cert.pem
+      install -m 0400 -o coturn -g root "${RENEWED_LINEAGE}"/privkey.pem "${scTurnCertDir}"/turn_server_pkey.pem
+      service coturn restart
+    ;;
+  esac
+done
+```
+
+Don't forget to replace `coturn.example.com` with your `coturn realm` !
+
+
+## Coturn and Certificates (not certbot)
+
+copy your cert/key and place them in /etc/coturn/tls, e.g.:
+```
+install -m 0400 -o coturn -g root /Path/To/Your/certificate.pem /etc/coturn/tls/turn_server_cert.pem
+install -m 0400 -o coturn -g root /Path/To/Your/privatekey.pem /etc/coturn/tls/turn_server_pkey.pem
+```

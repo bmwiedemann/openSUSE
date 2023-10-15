@@ -419,7 +419,7 @@ You can install them directly through `pip3 install --user`, if needed.
 %setup -q -n pandas-%{version}
 %if !%{with test}
 # any installed python3 will do (SLE15 python module pythons does note guarantee /usr/bin/python3)
-firstpython3=$(find %{_bindir} -name 'python3*' -print -quit)
+firstpython3=$(find %{_bindir} -regex '.*/python3[.0-9]*' -print -quit)
 ${firstpython3} generate_version.py -o _version_meson.py
 sed -i "s|'python', 'generate_version.py',|'${firstpython3}', 'generate_version.py',|" meson.build
 # don't require the PyPI data only tzdata package, we use the timezone RPM package

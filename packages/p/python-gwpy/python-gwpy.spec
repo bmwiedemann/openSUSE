@@ -17,7 +17,7 @@
 
 
 Name:           python-gwpy
-Version:        3.0.5
+Version:        3.0.7
 Release:        0
 Summary:        A python package for gravitational-wave astrophysics
 License:        GPL-3.0-only

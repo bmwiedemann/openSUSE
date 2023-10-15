@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct  8 00:02:37 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.10.0:
+  * A big rewrite to make the static analysis tools happy.
+  * Many stability improvements.
+  * Maxima's help commands work again out-of-the-box.
+  * Corrected the worksheet size calculation.
+  * Better support for loading .wxmx files from weird paths.
+  * Finally resolved the "Right-click resets zoom" problem
+    (gh#wxMaxima-developers/wxmaxima#1810).
+  * A speed up.
+  * Many right-click menu fixes
+    (gh#wxMaxima-developers/wxmaxima#1810).
+  * Display/Hide label fixes.
+  * Many help browser improvements
+    (gh#wxMaxima-developers/wxmaxima#1802).
+  * The worksheet size no more is underestimated
+    (gh#wxMaxima-developers/wxmaxima#1802).
+  * Cell creation fixes.
+  * Copy-and-paste improvements
+    (gh#wxMaxima-developers/wxmaxima#1809).
+  * Better error messages for bitmaps.
+  * Many additional bug fixes.
+
+-------------------------------------------------------------------
 Thu Sep  7 21:38:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.8.0:

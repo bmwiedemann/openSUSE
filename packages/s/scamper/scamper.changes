@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct  7 09:04:41 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230614c:
+ - scamper:
+  * fix compile-on-windows support; use icmp-echo probes instead of UDP
+    probes for traceroute on windows; provide "attach" support on
+    windows.
+  * fix compile-on-FreeBSD-15+ where pf firewall does not have
+    DIOCGETSTATUS ioctl
+  * in scamper's remote control (-R option), fix file descriptor leak
+    when unable to reconnect to the remote controller.
+  * add --disable-scamper-trace --disable-scamper-ping
+    --disable-scamper-tracelb --disable-scamper-dealias
+    --disable-scamper-tbit --disable-scamper-sting
+    --disable-scamper-sniff --disable-scamper-host configure options
+    to build scamper without specific measurement capabilities.
+ - sc_attach:
+  * add windows support
+
+-------------------------------------------------------------------
 Sun Aug 13 06:05:08 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20230614b:

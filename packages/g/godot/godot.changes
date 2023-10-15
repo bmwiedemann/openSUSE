@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Oct 5 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.1.2
+
+  Added:
+  * Check to ensure registered classes are declared
+  * Motion vector support for GPU 3D Particles
+  * More hint types for uniform arrays in shaders
+  * Autocomplete for filter/repeat hints on uniform arrays in shaders
+
+  Changed:
+  * Disable C++ exception handling
+  * 3D property hint range for camera attributes exposure multiplier
+  * Don't use splash minimum display time in editor
+  * Automatically add path to built-in scripts
+  * Uncollapse favorites by default in the editor FileSystem dock
+  * Use "ui_text_submit" instead of "ui_accept"
+    to confirm and close text prompts
+  * Make editor camera speed indicator use "m/s" and "m"
+  * Enable transparent background for GUI tooltips
+  * Ensure "joy_connection_changed" is emitted on the main thread
+  * Do not fail DisplayServer init if non-essential extensions are missing
+  * Enable depth writes during shadow pass and depth pass,
+    disable during color pass
+  * Clamp Volumetric Fog Length property to prevent rendering issues
+
+  Fixed:
+  * Camera2D crash when edited scene root is null
+  * "CanvasModulate" logic for modulating the canvas
+  * VoxelGI saving VoxelGIData as a built-in file,
+    despite being prompted to save it to an external file
+  * Curve3D baking up vectors for nontrivial curves
+  * Remove animation tracks with correct indices
+  * Audio stream generators getting freed accidentally
+  * Range error for "Array.slice"
+  * Recursion level check for array stringification
+  * Global transform validity for "Node2D" and "Control"
+  * String conversion for -0.0 float values
+  * "generate_random_bytes" for large chunks
+  * Improve resolution of script type icons
+  * Make the single window mode check more strict
+  * Crash when using "Close All Tabs"
+  * Version check for GDExtension
+  * Overriding "_export_begin", "_export_file" and
+    "_export_end" from GDExtension
+  * Conflict between property and group names
+  * RichTextLabel character line and paragraph index getters
+  * Delay on tab resizing when (un)hovering tabs
+  * Button clipping when internal margins exist
+  * "OptionButton" resize when disabling "Fit to Longest Item"
+  * "Button" text when the overrun behavior is other than "No Trimming"
+  * Crash when hiding subwindow during popup of new subwindow
+  * ItemList not updating when icon scale changes
+  * NavigationObstacle2D debug position
+  * Prevent crash when accessing "Node" Multiplayer from thread
+  * ENet: Better handle truncated socket messages
+  * ENet: Properly set transfer flags when using custom channels
+  * File permissions set to 0666
+  * Shader type detection
+  * Shader and ShaderInclude resource loading
+  * Empty shader resource loading
+
+  and more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.1.2
+
+- added improve_linker_detection.patch for pck embedding with runner
+
+-------------------------------------------------------------------
 Wed Jul 19 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 4.1.1

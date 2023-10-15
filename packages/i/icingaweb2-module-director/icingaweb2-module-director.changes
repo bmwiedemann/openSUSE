@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Oct 13 11:15:31 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update  to 1.11.0
+  * UI
+    - FEATURE: allow to clone commands with fields (#2264)
+    - FEATURE: Data Fields are now sorted in a case-insensitive way (#2358)
+    - FEATURE: Data Field search is now case-insensitive (#2359)
+    - FEATURE: Deployment Log now breaks lines (#2677)
+    - FEATURE: Sort Template trees by name (#2691)
+    - FEATURE: Branch and Sync diff/preview now shows related host for services (#2736)
+    - FEATURE: Show more details for assign filter parsing errors (#2667)
+    - FEATURE: Fields from set_if are now being proposed (#514)
+    - FEATURE: Template usage table now shows Set members (#2378)
+    - FIX: do not fail for (some) Service Dependencies (#2669, #1142)
+    - FIX: Service Sets can now be searched by Service name in branches too (#2738)
+    - FIX: Template usage table had no header (#2780)
+    - FIX: Strikethrough for deactivated services in applied Service Set (#2746, #2766)
+    - FIX: editing multi-selected services with the same name has been fixed (#2798, 2801, #2599)
+    - FIX: Service Sets table with PostgreSQL (#2799)
+    - FIX: Dark mode for some clone forms (#2670)
+  * Icinga Configuration
+    - FEATURE: render fallback template for IfW 1.11 for Icinga < 2.14 (#2776)
+    - FEATURE: render host templates to all non-global zones per default (#2410)
+    - FEATURE: notifications can pick user(groups) from host/service vars (#462)
+    - FIX: render Set Services to individual zones where required (#1589, #2356)
+    - FIX: special characters like & and | caused trouble in filters (#2667)
+  * Import and Sync
+    - FEATURE: regular expression based modifier allows explicit NULL on no match (#2705)
+    - FEATURE: property modifiers can now be applied based on filters (#2756)
+    - FEATURE: CIDR notation (network ranges) is supported in such filters (#2757)
+    - FEATURE: trigger group membership resolution on group sync conditionally (#2812)
+    - FIX: synchronizing Service (and -Set) Templates has been fixed (#2745, #2217)
+    - FIX: null properties with Sync policy "ignore" are now being ignored (#2657)
+    - FIX: Import Source shows available columns for Core API Import (#2763)
+    - FIX: JSON-decode now explicitly fails for non-string inputs (#2810)
+  * Integrations
+    - FIX: don't throw an error, when editing a Service via IcingaDB link (#2533, #2563)
+  * Configuration Baskets
+    - FEATURE: it's now possible to upload snapshots for existing baskets (#1952)
+    - FIX: basket now shows where to expect changes for lists from snapshots (#2791)
+    - FIX: Icinga DSL parts for Commands are now restored from Baskets (#2811)
+  * REST API
+    - FIX: Commands give 204 w/o ghost changes for same properties (#2660)
+  * Permissions and Restrictions
+    - FIX: monitoring-related permission checks have been refactored (#2712)
+    - FIX: Hostgroup-Filters have not been applied to Overview tables (#2775)
+    - FIX: error editing Hosts with hostgroup restriction in place (#2164, #2809)
+  * Configuration Branches
+    - FEATURE: with this release, directorbranches v1.3 supports a "default branch" (#2688)
+    - FEATURE: users with default branches get warnings in the main branch (#2689)
+    - FIX: create a branched set, add services, modify them (#2710)
+  * Health Check
+    - FIX: complaint about overdue jobs was not correct (#2680, #2681)
+  * Internals
+    - FEATURE: support PHP 8.2 (#2777, #2792)
+    - FEATURE: Unit Tests are now being triggered as GitHub workflows (no issue)
+    - FIX: group membership is no longer resolved when not needed (#2048)
+    - FIX: require Auth object for all object tables (#2808)
+    - FIX: group membership is no longer resolved when not needed (#2048)
+  * Fixed issues
+    - You can find issues and feature requests related to this release on our roadmap
+
+-------------------------------------------------------------------
 Thu Sep 21 12:36:31 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Tumbleweed which are not aarch64.

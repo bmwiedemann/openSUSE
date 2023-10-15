@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           icingaweb2-module-director
-Version:        1.10.2
+Version:        1.11.0
 Release:        0
 Summary:        Config module for Icinga Web 2
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  systemd-rpm-macros
 Requires(pre):  pwdutils
 Requires:       icinga2 >= 2.8.0
 Requires:       icingaweb2 >= 2.8.0
-Requires:       icingaweb2-module-incubator >= 0.18.0
+Requires:       icingaweb2-module-incubator >= 0.20.0
 Requires:       icingaweb2-module-ipl >= 0.5.0
 Requires:       icingaweb2-module-reactbundle >= 0.9.0
 Requires:       php >= 7.3

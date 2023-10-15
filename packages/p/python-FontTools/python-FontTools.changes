@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 14 00:19:08 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up space and remove unnecessary BR python-munkres and
+  python-zopfli.
+
+-------------------------------------------------------------------
 Sun Jun 11 20:32:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.39.4:

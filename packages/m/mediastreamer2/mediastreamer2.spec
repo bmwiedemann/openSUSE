@@ -47,7 +47,11 @@ BuildRequires:  libjpeg-turbo >= 2.0.0
 %if 0%{?fedora}
 BuildRequires:  turbojpeg-devel
 %endif
+%if 0%{?suse_version}
 BuildRequires:  Mesa-libGL-devel
+%else
+BuildRequires:  mesa-libGL-devel
+%endif
 BuildRequires:  libpcap-devel
 BuildRequires:  libsrtp2-linphone-devel
 BuildRequires:  libv4l-devel
@@ -60,7 +64,6 @@ BuildRequires:  sqlite3-devel
 %else
 BuildRequires:  libsqlite3x-devel
 %endif
-BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 BuildRequires:  pkgconfig(libbcg729)

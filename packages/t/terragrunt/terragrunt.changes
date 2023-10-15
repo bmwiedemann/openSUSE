@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 14 06:31:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.3:
+  * Bump golang.org/x/net from 0.15.0 to 0.17.0 (#2755)
+
+-------------------------------------------------------------------
 Fri Oct 13 05:01:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.52.2:

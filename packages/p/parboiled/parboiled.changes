@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Wed Oct 11 07:22:30 UTC 2023 - Fridrich Strba <fstrba@suse.com>
-
-- Do not build the scala subpackage, since it is not needed by any
-  package
-
--------------------------------------------------------------------
 Fri Oct  6 11:26:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.4.1

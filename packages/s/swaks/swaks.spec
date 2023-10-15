@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Email/Clients
 URL:            http://jetmore.org/john/code/swaks/
 Source:         http://jetmore.org/john/code/swaks/files/swaks-%{version}.tar.gz
 Requires:       perl-Net-SSLeay
+Requires:       perl-Net-DNS
 BuildArch:      noarch
 
 %description

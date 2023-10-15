@@ -82,7 +82,7 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version} %{buildroot}%{_docdir}/%{na
 # for some reason, pkgconfig file contains wrong libdir
 sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
 
-chrpath -d %{buildroot}%{_libdir}/%{soname}.so.%{sover}*
+chrpath -d %{buildroot}%{_libdir}/%{soname}.so.%{sover}* %{buildroot}%{_bindir}/ortp_tester
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig

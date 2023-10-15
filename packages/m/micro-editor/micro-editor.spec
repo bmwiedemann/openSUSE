@@ -20,7 +20,7 @@
 %global compiledate     Aug\ 01,\ 2022
 
 Name:           micro-editor
-Version:        2.0.11
+Version:        2.0.12
 Release:        0
 License:        MIT
 Summary:        Micro is a terminal-based text editor that aims to be easy to use and intuitive

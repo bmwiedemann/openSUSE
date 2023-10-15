@@ -89,4 +89,41 @@
     <comment></comment>
     <requestid>931633</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d01ae70bf044faa5b3394d609ad5538e</srcmd5>
+    <version>unknown</version>
+    <time>1697390846</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.40
+  * fix: remove numpy upper bound pin by @maartenbreddels in #1601
+  * fix: background color of figure was not computed properly by
+    @maartenbreddels in #1603
+  * fix: axis formatting depended on initial values or changes
+    #1541
+  * fix: resize not always working by @mariobuikhuizen in #1598
+  * Backport PR #1511 on branch 0.12.x (Fix missing interpolation
+    options) by @meeseeksmachine in #1525
+  * feature: custom axis labeling from kernel side (tick_labels).
+    by @maartenbreddels in #1526
+  * Backport PR #1506 on branch 0.12.x (Add +, x and . as markers)
+    by @meeseeksmachine in #1529
+  * Backport PR #1505 on branch 0.12.x (Plotting Widgets) by
+    @meeseeksmachine in #1530
+  * Backport PR #1539: fix: figure is not updating when margins
+    change by @mariobuikhuizen in #1581
+  * Backport resize observer PR #1531 by @martinRenou in #1593
+  * fix: panning in a by CSS rotated plot doesn't work correctly by
+    @mariobuikhuizen in #1585
+  * Fix luminowidget error for ipywidgets 7 by @martinRenou in
+    #1523
+  * Exclude tests top-level package, add some JupyterLab trove
+    classifiers by @meeseeksmachine in #1518
+  * Fix processPhosphorMessage for ipywidgets 7 by @meeseeksmachine
+    in #1522
+  * ipywidgets 8 support by @martinRenou in #1517
+  * fix: line label invisible in dark theme by @meeseeksmachine in
+    #1472
+  * Add default color CSS selectors to node text by</comment>
+    <requestid>1117779</requestid>
+  </revision>
 </revisionlist>

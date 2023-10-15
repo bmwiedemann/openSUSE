@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  8 12:18:34 UTC 2023 - thod_@gmx.de
+
+- Fix BuildRequires lime
+- Fix error linking on Fedora
+
+-------------------------------------------------------------------
 Tue Sep  5 12:21:31 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable SLP by default for Factory and ALP (bsc#1214884) 

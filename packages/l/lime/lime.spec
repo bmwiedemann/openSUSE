@@ -31,12 +31,10 @@ Patch1:         set_current_version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-%if 0%{?suse_version}
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
-%else
-BuildRequires:  soci-devel = 4.0.2
-BuildRequires:  soci-sqlite3-devel = 4.0.2
+%if 0%{?fedora}
+BuildRequires:  boost-devel
 %endif
 BuildRequires:  chrpath
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}

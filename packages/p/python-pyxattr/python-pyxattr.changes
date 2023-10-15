@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct  7 21:18:10 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.8.1:
+  - Fix the pypi declared python versions
+  - Add some more documentation - a security policy, and a
+    contributing guide.
+  - Minor bugfix release, but due to lack of CI environments
+    supporting old Python versions, only Python 3.7+ is
+    supported. Otherwise:
+    - @Snape3058 found some refcount issues (see issue #35),
+      these have been fixed.
+    - Tested and enabled Python 3.10 support, dropped < 3.7.
+    - Move fully to setuptools (where available), in preparation
+      for 3.12 dropping distutils support.
+
+-------------------------------------------------------------------
 Thu Jul 27 12:54:45 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

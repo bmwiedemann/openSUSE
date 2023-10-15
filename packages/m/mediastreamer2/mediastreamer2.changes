@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  8 11:02:40 UTC 2023 - thod_@gmx.de
+
+- Remove BuildRequires: vim, not needed
+- Fix BuildRequires for Fedora
+
+-------------------------------------------------------------------
 Mon Aug 28 07:49:04 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.2.98 (no changelog)

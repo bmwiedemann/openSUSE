@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 14 08:34:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.4.0
+  * Test on python 3.12 #978 (@blink1073)
+  * Update typing for traitlets 5.11 #977 (@blink1073)
+  * Do not use datetime.utcnow() that is deprecated in Python 3.12
+    #972 (@ellert)
+
+-------------------------------------------------------------------
 Sun Sep 24 17:51:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.3.1

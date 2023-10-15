@@ -29,7 +29,7 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -37,6 +37,8 @@ Group:          Development/Tools/Other
 URL:            https://godotengine.org/
 Source0:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz
 Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz.sha256
+# better linker version detection for pck embedding with runner
+Patch0:         improve_linker_detection.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -147,7 +149,7 @@ Provides:       bundled(etcpak) = 1.0
 Provides:       bundled(glad) = 2.0.4
 Provides:       bundled(google-droid-fonts)
 Provides:       bundled(hqx)
-Provides:       bundled(icu4c) = 73.1
+Provides:       bundled(icu4c) = 73.2
 Provides:       bundled(ifaddrs-android)
 Provides:       bundled(jpeg-compressor) = 2.00
 Provides:       bundled(meshoptimizer)
@@ -156,7 +158,7 @@ Provides:       bundled(msdfgen) = 1.10
 Provides:       bundled(noto-sans-fonts)
 Provides:       bundled(nvapi) = R525
 Provides:       bundled(oidn) = 1.9.2
-Provides:       bundled(openxr) = 1.0.26
+Provides:       bundled(openxr) = 1.0.28
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
@@ -165,7 +167,7 @@ Provides:       bundled(smaz)
 Provides:       bundled(spirv-reflect) = sdk-1.3.250.0
 Provides:       bundled(stb)
 Provides:       bundled(thorvg) = 0.9.0
-Provides:       bundled(tinyexr) = 1.0.5
+Provides:       bundled(tinyexr) = 1.0.7
 Provides:       bundled(vhacd)
 Provides:       bundled(volk) = sdk-1.3.250.0
 Provides:       bundled(vulkan) = sdk-1.3.250.0
@@ -188,20 +190,20 @@ Provides:       bundled(embree) = 3.13.5
 Provides:       bundled(brotli)
 Provides:       bundled(glslang) = 12.2.0
 # see comments for freetype2, libpng and zlib Factory BuildRequires
-Provides:       bundled(freetype2) = 2.13.0
+Provides:       bundled(freetype2) = 2.13.2
 Provides:       bundled(graphite) = 1.3.14
 Provides:       bundled(harfbuzz) = 7.3.0
 
-Provides:       bundled(libpng) = 1.6.38
+Provides:       bundled(libpng) = 1.6.40
 Provides:       bundled(libzstd) = 1.5.5
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.28.3
+Provides:       bundled(mbedtls) = 2.28.4
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
 Provides:       bundled(libwslay) = 1.1.1
-Provides:       bundled(miniupnpc) = 2.2.4
+Provides:       bundled(miniupnpc) = 2.2.5
 %endif
 %endif
 
@@ -240,6 +242,7 @@ Bash command line completion support for %{name} and %{name}-runner
 
 %prep
 %setup -q -n %{name}-%{version}-stable
+%patch0 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 

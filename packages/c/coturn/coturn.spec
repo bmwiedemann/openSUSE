@@ -40,6 +40,7 @@ Source6:        %{name}.firewalld
 Source7:        README.SUSE
 Source8:        %{name}-apparmor-usr.bin.turnserver
 Source9:        %{name}@.service
+Patch0:         %{name}-turnserver_conf.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  libevent-devel >= 2.0.0
@@ -55,7 +56,7 @@ BuildRequires:  pkgconfig(systemd)
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
 Recommends:     logrotate
-%sysusers_requires
+
 %if %{with apparmor}
 %if 0%{?suse_version} <= 1315
 BuildRequires:  apparmor-profiles
@@ -68,6 +69,9 @@ Recommends:     apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 %endif
 %endif
+
+%{?systemd_requires}
+%sysusers_requires
 
 %description
 STUN (Session Traversal Utilities for NAT) and TURN (Traversal Using Relays
@@ -94,7 +98,8 @@ Requires:       %{name} = %{version}
 This package contains the TURN development headers.
 
 %prep
-%autosetup -p1
+%setup -q -n %{name}-%{version}
+%patch0
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name}
@@ -114,7 +119,7 @@ This package contains the TURN development headers.
 
 %install
 %make_install
-mkdir -p %{buildroot}{%{_sysconfdir}/pki/coturn/{public,private},{%{_rundir},%{_localstatedir}/{lib,log}}/%{name},%{_unitdir},%{_sysusersdir},%{_sbindir},%{_sysconfdir}/apparmor.d/local}
+mkdir -p %{buildroot}{%{_sysconfdir}/%{name}/tls,{%{_rundir},%{_localstatedir}/{lib,log}}/%{name},%{_unitdir},%{_sysusersdir},%{_sbindir},%{_sysconfdir}/apparmor.d/local}
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_unitdir}/
 install -Dpm 0644 %{SOURCE9} %{buildroot}%{_unitdir}/
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
@@ -131,15 +136,30 @@ cat > %{buildroot}%{_sysconfdir}/apparmor.d/local/usr.bin.turnserver << EOF
 EOF
 %endif
 
+install examples%{_sysconfdir}/turnserver.conf %{buildroot}%{_sysconfdir}/%{name}/turnserver.conf.default
+install examples%{_sysconfdir}/turnserver.conf %{buildroot}%{_sysconfdir}/%{name}/turnserver.conf
+
 sed -i \
-    -e "s|^syslog$|#syslog|g" \
-    -e "s|^#*log-file=.*|log-file=%{_localstatedir}/log/coturn/turnserver.log|g" \
+    -e "s|^#*\(listening-port=.*\)|\1|" \
+    -e "s|^#*\(tls-listening-port=.*\)|\1|" \
+    -e "s|^#*\(listening-ip=\)$|\1|" \
+    -e "s|^#*verbose|verbose|" \
+    -e "s|^#*fingerprint|fingerprint|" \
+    -e "s|^#*use-auth-secret|use-auth-secret|" \
+    -e "s|^#\(static-auth-secret=.*\)|\1|" \
+    -e "s|^#\(realm=\).*|\1|" \
+    -e "s|^#\(total-quota=.*\)|\1|" \
+    -e "s|^#\(bps-capacity=.*\)|\1|" \
+    -e "s|^#\(stale-nonce=.*\)|\1|" \
+    -e "s|^#*\(cert=.*\)|\1|" \
+    -e "s|^#*\(pkey=.*\)|\1|" \
+    -e "s|^#\(log-file=.*\)|\1|" \
     -e "s|^#*simple-log|simple-log|g" \
-    -e "s|^#*cert=.*|#cert=%{_sysconfdir}/pki/coturn/public/turn_server_cert.pem|g" \
-    -e "s|^#*pkey=.*|#pkey=%{_sysconfdir}/pki/coturn/private/turn_server_pkey.pem|g" \
-    %{buildroot}%{_sysconfdir}/%{name}/turnserver.conf.default
-touch -c -r examples%{_sysconfdir}/turnserver.conf %{buildroot}%{_sysconfdir}/%{name}/turnserver.conf.default
-mv %{buildroot}%{_sysconfdir}/%{name}/turnserver.conf.default %{buildroot}%{_sysconfdir}/%{name}/turnserver.conf
+    -e "s|^#*no-multicast-peers|no-multicast-peers|g" \
+    -e "s|^#*no-tlsv1|no-tlsv1|g" \
+    -e "s|^#*no-tlsv1_1|no-tlsv1_1|g" \
+    -e "/^#/d" -e "/^$/d" \
+    %{buildroot}%{_sysconfdir}/%{name}/turnserver.conf
 
 # Remove certs and keys
 rm %{buildroot}%{_docdir}/%{name}%{_sysconfdir}/*.pem
@@ -165,6 +185,10 @@ done
 %service_add_pre %{name}@.service
 
 %post
+# generate static-auth-secret only on install, not on upgrade
+if [ $1 -eq 1 ]; then
+  sed -i -e "s|^\(static-auth-secret=\)north|\1$(openssl rand -hex 32)|" %{_sysconfdir}/%{name}/turnserver.conf
+fi
 %service_add_post %{name}.service
 %service_add_post %{name}@.service
 systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
@@ -220,9 +244,8 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 %dir %attr(0750,root,%{name}) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(0640,root,%{name}) %{_sysconfdir}/%{name}/turnserver.conf
-%dir %{_sysconfdir}/pki/%{name}
-%dir %{_sysconfdir}/pki/%{name}/public
-%dir %attr(0750,root,%{name}) %{_sysconfdir}/pki/%{name}/private
+%config %attr(0640,root,%{name}) %{_sysconfdir}/%{name}/turnserver.conf.default
+%dir %attr(0750,%{name},root) %{_sysconfdir}/%{name}/tls
 %{_unitdir}/coturn.service
 %{_unitdir}/coturn@.service
 %{_tmpfilesdir}/coturn.conf

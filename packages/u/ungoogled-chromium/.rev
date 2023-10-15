@@ -271,4 +271,13 @@
 </comment>
     <requestid>1115837</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0a1a1b91048ec30d889e715724efd9fe</srcmd5>
+    <version>118.0.5993.70</version>
+    <time>1697390772</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 118.0.5993.70 (boo#1216111)
+</comment>
+    <requestid>1117703</requestid>
+  </revision>
 </revisionlist>

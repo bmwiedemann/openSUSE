@@ -601,4 +601,12 @@ Depends on maxima (sr#121612)</comment>
     <comment></comment>
     <requestid>1110170</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>1cb17f4670963764f6e8bd6333d05f4d</srcmd5>
+    <version>23.10.0</version>
+    <time>1697390832</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117727</requestid>
+  </revision>
 </revisionlist>

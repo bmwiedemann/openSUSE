@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-jupyter-client%{psuffix}
-Version:        8.3.1
+Version:        8.4.0
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
@@ -81,7 +81,7 @@ for use with Jupyter frontends.
 
 %prep
 %autosetup -p1 -n jupyter_client-%{version}
-sed -i 's/--color=yes//' pyproject.toml
+sed -i 's/"--color=yes",//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -99,6 +99,8 @@ sed -i 's/--color=yes//' pyproject.toml
 %check
 # flaky timeout
 donttest="(TestAsyncKernelClient and test_input_request)"
+# timeout
+donttest+=" or (TestKernelManager and test_stream_on_recv)"
 %pytest --force-flaky --max-runs=3 --no-success-flaky-report -k "not ($donttest)"
 %endif
 

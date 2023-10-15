@@ -1,7 +1,7 @@
 #
 # spec file for package cutmp3
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cutmp3
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        Command line based lossless MP3 editor
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Url:            https://www.puchalla-online.de/cutmp3.html
-Source:         https://www.puchalla-online.de/cutmp3-%{version}.tar.bz2
+URL:            https://www.puchalla-online.de/cutmp3.html
+#Source:         https://www.puchalla-online.de/cutmp3-%%{version}.tar.bz2
+Source0:        https://github.com/tarjanm-movidius/cutmp3/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://www.puchalla-online.de/cutmp3-keys.pdf
 Source2:        https://www.puchalla-online.de/cutmp3-keys.jpg
 Source99:       %{name}-rpmlintrc
@@ -44,6 +45,7 @@ as precise as with CBR files, though.
 %package doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 
 %description doc
@@ -53,23 +55,23 @@ ncurses-based user interface.
 This package contains a user guide and a list of key bindings for %{name}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 install -m 0755 -D cutmp3 "%{buildroot}%{_bindir}/cutmp3"
 install -D -m 0644 cutmp3.1 "%{buildroot}%{_mandir}/man1/cutmp3.1"
-
 install -d "%{buildroot}%{_docdir}/%{name}"
 D="$PWD/main.doc.lst"
 echo -n >"$D"
-for f in BUGS COPYING USAGE README*; do
+for f in BUGS USAGE README*; do
     b="${f##*/}"
     install -m0644 "$f" "%{buildroot}%{_docdir}/%{name}/$b"
     echo "%doc %{_docdir}/%{name}/$b" >>"$D"
 done
+
 D="$PWD/doc.doc.lst"
 echo -n >"$D"
 for f in "%{SOURCE1}" "%{SOURCE2}" TODO Changelog; do
@@ -79,9 +81,10 @@ for f in "%{SOURCE1}" "%{SOURCE2}" TODO Changelog; do
 done
 
 %files -f main.doc.lst
+%license COPYING
 %dir %doc %{_docdir}/%{name}
-%{_bindir}/cutmp3
-%{_mandir}/man1/cutmp3.1%{ext_man}
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{ext_man}
 
 %files doc -f doc.doc.lst
 %dir %doc %{_docdir}/%{name}

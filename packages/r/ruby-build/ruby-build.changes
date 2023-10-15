@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 14 16:00:57 UTC 2023 - Lukas Müller <lukas@localhost>
+
+- Update to version 20231014.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20231014
+  * Add RUBY_BUILD_TARBALL_OVERRIDE to override the ruby tarball URL by @eregon in #2258
+
+-------------------------------------------------------------------
 Thu Oct 12 11:25:00 UTC 2023 - Lukas Müller <lukas@localhost>
 
 - Update to version 20231012.

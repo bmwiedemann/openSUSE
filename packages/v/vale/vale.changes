@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 13 19:35:07 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.29.4:
+  * fix: check bounds in `sentence`
+
+-------------------------------------------------------------------
+Fri Oct 13 19:18:11 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.29.3:
+  * test: add another capitalization case
+  * chore(deps): bump golang.org/x/net from 0.14.0 to 0.17.0 (#703)
+  * feat: add vocab support to `$title`
+  * refactor: add support for `indicators`
+  * refactor: use `jdkato/twine/strcase`
+  * refactor: drop `prose` dep
+  * fix: skip `metric` for empty files
+  * fix: don't crash on multi-line comments
+  * refactor: look for .adoc comments at line start
+
+-------------------------------------------------------------------
 Fri Oct 06 13:02:20 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.29.2:

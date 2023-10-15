@@ -282,4 +282,12 @@
     <comment>bsc#1210950 CVE-2022-45154 bsc#1213127 pr#153, pr#154, pr#155 (forwarded request 1108454 from jrecord)</comment>
     <requestid>1108455</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>319cec49eb638439e7b1530c7974b43b</srcmd5>
+    <version>3.2.0</version>
+    <time>1697390885</time>
+    <user>anag+factory</user>
+    <comment>Factory Ready (forwarded request 1117829 from jrecord)</comment>
+    <requestid>1117830</requestid>
+  </revision>
 </revisionlist>

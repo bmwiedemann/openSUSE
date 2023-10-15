@@ -372,4 +372,24 @@
   * fix: Remove additional `--update` for apk in Dockerfile (#675) (forwarded request 1116056 from jfkw)</comment>
     <requestid>1116058</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c9a70a5076dd11237f6da3d657684128</srcmd5>
+    <version>2.29.4</version>
+    <time>1697390830</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.29.4:
+  * fix: check bounds in `sentence`
+
+- Update to version 2.29.3:
+  * test: add another capitalization case
+  * chore(deps): bump golang.org/x/net from 0.14.0 to 0.17.0 (#703)
+  * feat: add vocab support to `$title`
+  * refactor: add support for `indicators`
+  * refactor: use `jdkato/twine/strcase`
+  * refactor: drop `prose` dep
+  * fix: skip `metric` for empty files
+  * fix: don't crash on multi-line comments
+  * refactor: look for .adoc comments at line start (forwarded request 1117720 from jfkw)</comment>
+    <requestid>1117723</requestid>
+  </revision>
 </revisionlist>

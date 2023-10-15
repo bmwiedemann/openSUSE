@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 13 18:49:29 UTC 2023 - chris@computersalat.de
+
+- Update coturn-turnserver_conf.patch
+  * Fix comment for listening-ip
+- enable 'verbose' log to see listening IPs and more, not just
+  server start/stop
+
+-------------------------------------------------------------------
+Mon Oct  9 07:19:06 UTC 2023 - chris@computersalat.de
+
+- add coturn-turnserver_conf.patch
+  * to have a meaningful turnserver.conf.default
+- create a ready-to-run turnserver.conf
+- fix logrotate script
+- Update README.SUSE for Let's Encrypt Certificates
+- move certs to /etc/coturn/tls
+- Update apparmor profile
+- rework sysusers.d config file
+
+-------------------------------------------------------------------
 Tue May  2 05:19:33 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.6.2

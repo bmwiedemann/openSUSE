@@ -542,4 +542,13 @@ this resolves build failure for python3-Sphinx (forwarded request 139388 from Hi
     <comment></comment>
     <requestid>1081943</requestid>
   </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>c619ef1686bcec7f190aed1a9a51fea5</srcmd5>
+    <version>0.19</version>
+    <time>1697390760</time>
+    <user>anag+factory</user>
+    <comment>- python-roman is not actually necessary for testing.
+</comment>
+    <requestid>1117736</requestid>
+  </revision>
 </revisionlist>

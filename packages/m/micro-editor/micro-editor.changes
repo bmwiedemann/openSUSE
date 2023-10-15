@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Oct 06 06:42:23 UTC 2023 - tuukka.pasanen@ilmi.fi
+
+- Update to version 2.0.12:
+  * Bump tcell for windows update
+  * Add onSetActive callback (#2885)
+  * Update micro.desktop (#2864)
+  * Fix for capturing internal terminal pty output
+  * actions: Fix the iteration over a slice under modification in QuitAll() (#2898)
+  * highlighter: Fix regions and patterns inside regions (#2840)
+  * add new types for zig (#2861)
+  * Add support for Jenkinsfile syntax (#2750)
+  * Update copypaste.md (#2826)
+  * plugins.md: Add (on|pre)Rune documentation (#2837)
+  * Treat Containerfiles as Dockerfiles (#2846)
+  * Fixed a typo in keybindings.md (#2852)
+  * Resolve merge conflict with scrollbarchar
+  * Add 'scrollbarchar' option (#2342)
+  * Add HistorySearchUp and HistorySearchDown actions (#1829)
+  * chore: os.SEEK_CUR os.SEEK_END os.SEEK_SET has been deprecated since Go 1.7 (#2856)
+  * Fix: Syntax highlighting for various issues (#2810)
+  * plugins: Add capability to dis-/enable them per buffer (#2836)
+  * save: fsync data safely to disk (#2681)
+  * Add config JSON schema (#2697)
+  * Filled µ with white for consistency (#2811)
+  * Goto next/previous diff commands + minor cleanups (#2759)
+  * fixed tex comment detection at start of line (#2764)
+  * Add type="desktop-application" into appdata component (#2803)
+  * Fix the appdata (#2796)
+  * Fix appdata file (#2793)
+  * Fix com.github.zyedidia.micro.metainfo.xml (#2792)
+  * Exit application if input terminal has closed
+  * Hare (harelang) syntax (#2776)
+  * Replace zyedidia/pty with upstream creack/pty
+  * Add statusline.inactive and statusline.suggestions color groups (#1832)
+  * refactor(runtime): simplify AssetDir() (#2761)
+  * Bump golang.org/x/text from 0.3.2 to 0.3.8 (#2757)
+  * Don't auto-detect commenttype if last_ft is empty
+  * Always return full RunBackgroundShell output
+  * Delete .gitmodules (#2743)
+  * Make the commenttype option useful (#2735)
+  * add `restrict` to C syntax (#2728)
+  * fix unsigned int not highlighted (#2725)
+  * Update readme build badge for github actions
+  * Convert ci to github actions
+  * util.HttpRequest helper to make requests with headers (#2678)
+  * Fix build
+  * Prompt on save/ existing file (#2714)
+  * Add -profile flag for CPU profiling (#2715)
+  * Reload settings when filetype is changed
+  * Add fakecursor option
+  * Rename multimode to multiopen
+  * Add -multimode to open multiple files into split. (#2689)
+  * Include mac arm binary in release scripts
+  * Add darwin arm64 prebuilt binary
+  * description different from JSON real default (#2680)
+  * fix: allow binding the minus key, fixes #2471 (#2617)
+  * Doc changes (#2646)
+  * Comment plugin: improve commenting multi-line selection (#2668)
+  * Fix perl syntax file
+  * Add CUDA syntax support (#2652)
+  * Improve buffer view relocation after jumping to a far-away location (#2628)
+  * Improve Julia syntax highlighting (#2643)
+  * Syntax: added support for Smalltalk (#2626)
+  * Fix incorrect LastVisualX after changing bufWidth w/o resize (#2629)
+  * Fix "no" when replacing with empty string (#2641)
+  * Update readme
+  * Bump clipper
+  * Fix save with sudo for large file sizes
+  * Added openSUSE installation command (#2587)
+  * Add better explanation about find
+  * Bump tcell
+  * Document FindLiteral default binding
+  * Fix relocate at the end of buffer when scrollmargin is 0 (#2578)
+  * Revert adding 'git-rebase-todo' to the main git syntax highlighting file (#2564)
+  * Add justfile syntax (#2523)
+  * Add template literal string highlighting to typescript (#2525)
+  * Restore installation instructions for Debian and Ubuntu. (#2530)
+  * Use shell job for terminal callback
+  * Ensure screen cannot draw during a term prompt
+
+-------------------------------------------------------------------
 Mon May  8 11:18:05 UTC 2023 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Make syntax higlightning work by running runtime YAML

@@ -47,4 +47,12 @@
     <comment>1.4.1 + remove *-scala subpackage not needed by anybody</comment>
     <requestid>1116885</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1d601b3e20b564a22db21868ffbc4d3d</srcmd5>
+    <version>1.4.1</version>
+    <time>1697390838</time>
+    <user>anag+factory</user>
+    <comment>Bring back the scala subpackage built against the new scala</comment>
+    <requestid>1117747</requestid>
+  </revision>
 </revisionlist>

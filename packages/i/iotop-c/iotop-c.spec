@@ -17,7 +17,7 @@
 
 
 Name:           iotop-c
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        Simple top-like I/O monitor (implemented in C)
 License:        GPL-2.0-or-later

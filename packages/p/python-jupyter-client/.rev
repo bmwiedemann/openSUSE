@@ -353,4 +353,17 @@ Update to 5.3.4</comment>
 </comment>
     <requestid>1113300</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5183e6fbbef39f7bc5d4d38ea04f3a1c</srcmd5>
+    <version>8.4.0</version>
+    <time>1697390847</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.4.0
+  * Test on python 3.12 #978 (@blink1073)
+  * Update typing for traitlets 5.11 #977 (@blink1073)
+  * Do not use datetime.utcnow() that is deprecated in Python 3.12
+    #972 (@ellert)
+</comment>
+    <requestid>1117786</requestid>
+  </revision>
 </revisionlist>

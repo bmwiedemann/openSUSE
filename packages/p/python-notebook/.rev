@@ -295,4 +295,15 @@
 </comment>
     <requestid>1113305</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d63045b0f09b8b827c36ee02247c8029</srcmd5>
+    <version>7.0.5</version>
+    <time>1697390844</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.0.5
+  * Update to JupyterLab 4.0.7 #7103 (@jtpio)
+  * Maintenance and upkeep improvements: Bump some JS stuff
+</comment>
+    <requestid>1117772</requestid>
+  </revision>
 </revisionlist>

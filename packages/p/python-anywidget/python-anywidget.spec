@@ -16,8 +16,9 @@
 #
 
 
+%define distver 0.7
 Name:           python-anywidget
-Version:        0.6.5
+Version:        0.7.0
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT
@@ -62,7 +63,7 @@ Custom jupyter widgets made easy
 Summary:        Custom jupyter widgets made easy
 Requires:       jupyter-ipywidgets >= 7.0.0
 Requires:       (jupyter-notebook < 7 or jupyter-nbclassic)
-Requires:       python3dist(anywidget) >= %{version}
+Requires:       python3dist(anywidget) >= %{distver}
 Suggests:       python3-anywidget
 
 %description -n jupyter-anywidget

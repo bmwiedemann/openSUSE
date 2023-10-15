@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 10 22:34:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.7:
+  * No code changes.
+- Changes from version 3.0.6:
+  * [gh#gwpy/gwpy#1636] Drop support for Python 3.7.
+  * [gh#gwpy/gwpy#1649] Don't round TimeSeries.dt when setting via
+    sample_rate.
+  * [gh#gwpy/gwpy#1654] Fix type comparison lint.
+  * [gh#gwpy/gwpy#1661] Fix compatibility with matplotlib 3.8.0.
+  * [gh#gwpy/gwpy#1676] Improve tests of TimeSeriesDict.find error
+    handling.
+  * [gh#gwpy/gwpy#1677] Fix all executable lint issues.
+
+-------------------------------------------------------------------
 Wed Jun 21 14:12:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.5

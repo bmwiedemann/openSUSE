@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Oct  7 21:56:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.1 
+  - [Fix] CMakeLists.txt remove whitespace added by linter as it
+    makes te… by @a16bitsysop in #4560
+  - fix: redis schema parsing by @Conni2461 in #4562
+  - [Minor] Update JS libraries by @moisseev in #4567
+  - [WebUI] Restore contrasting foreground color by @moisseev in
+    #4569
+  - Add new exporter to push JSON to a raw TCP socket by @lingfish
+    in #4572
+  - [WebUI] Tweak bootstrap colors for accessibility by @moisseev
+    in #4577
+  - Rewrite configuration utils in C++ by @vstakhov in #4573
+  - [Minor] Slightly adjust DNSBL scores by @twesterhever in #4557
+  - Added support for Redis 6 ACL (username/password) by @laodc in
+    #4578
+  - [Feature] Support feed exclusions in phishing module by
+    @dragoangel in #4575
+  - [Minor] Remove unwanted debug logging by @fatalbanana in #4585
+  - Fix regression in invokation of rspamd-test by @ln5 in #4588
+  - [Fix] Correct format pattern for RE tree tempfile name by @ln5
+    in #4590
+  - [Minor] Remove unused variables by @ln5 in #4591
+  - [Fix] Correct format string for unw_word_t by @ln5 in #4592
+  - [Fix] rbl: really fix dependency registration when
+    symbols_prefixes i… by @fatalbanana in #4594
+  - [Fix] rspamadm mime: arguments beginning with letter t by
+    @fatalbanana in #4597
+  - [Minor] API docs: lua_ip: fix function name by @fatalbanana in
+    #4598
+  - [Feature] rbl: support checking numeric URLs in isolation by
+    @fatalbanana in #4596
+  - [Feature] Add ICAP Content-Type and Filename from TODO List by
+    @lbahtarliev in #4595
+  - [Minor] Try fix CI by @fatalbanana in #4603
+  - [Fix] MISSING_MIMEOLE: avoid matching messages from Android
+    GMail app (#4561) by @fatalbanana in #4600
+  - [WebUI] Set locale on UI load by @moisseev in #4607
+  - Update configwizard.lua by @Dani778 in #4605
+  - [Minor] Revisit numeric_urls by @fatalbanana in #4602
+  - [Fix] Change Date: header location to conform with RFC by
+    @lbahtarliev in #4608
+  - Implement known senders plugin by @vstakhov in #4610
+  - [Test] Rudimentary tests for known_senders plugin by
+    @fatalbanana in #4612
+  - [Test] Ignore encoding errors by @fatalbanana in #4616
+  - Merge tests into master branch by @fatalbanana in #4615
+  - Run CI on ARM by @fatalbanana in #4617
+  - [Minor] Try fix test logs by @fatalbanana in #4620
+  - Minor improvements for CI by @fatalbanana in #4621
+  - Fix wrong copypasta & mis-named file by @fatalbanana in #4624
+  - [Test] Use Robot Framework native IF by @fatalbanana in #4625
+  - [Fix] Prevent DNSWL sabotage by @mdierksen in #4627
+
+-------------------------------------------------------------------
 Thu Aug  3 21:34:15 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.6

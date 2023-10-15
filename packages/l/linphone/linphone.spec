@@ -62,7 +62,7 @@ BuildRequires:  libgsm-devel
 %else
 BuildRequires:  gsm-devel
 %endif
-BuildRequires:  lime-devel >= 5.0.0
+BuildRequires:  lime-devel >= %{version}
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-pystache
@@ -223,6 +223,7 @@ with high speed connections as well as 28k modems.
 sed -i "s|mode='rU'|mode='r'|" wrappers/cpp/genwrapper.py
 # patch ssl sasl - extends linphone-build-jsoncpp.patch
 sed -i "s|jsoncpp)|jsoncpp ssl sasl2)|g" src/CMakeLists.txt
+sed -i "s|bctoolbox|bctoolbox ssl sasl2|g" src/CMakeLists.txt
 sed -i "s|jsoncpp)|jsoncpp ssl sasl2)|g" tester/CMakeLists.txt
 %endif
 

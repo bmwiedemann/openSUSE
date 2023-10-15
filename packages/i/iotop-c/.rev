@@ -51,4 +51,14 @@
   * Support ancient compilers #52</comment>
     <requestid>1114600</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4ef1335c1d46c36599ab32192281cace</srcmd5>
+    <version>1.25</version>
+    <time>1697390880</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.25:
+  * Fix bug when iotop busy loops after pressing ESC key
+  * Change the condition of displaying processes in only mode</comment>
+    <requestid>1117832</requestid>
+  </revision>
 </revisionlist>

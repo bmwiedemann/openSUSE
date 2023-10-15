@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 14 10:53:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.9
+  * Support for specifying (plugable) tuner parameters in cparams. Thanks to
+    Marta Iborra.
+  * Re-add support for Python 3.8. Although we don't provide wheels for it,
+    support is there (although it requires compilation time).
+  * Avoid duplicate iteration over the same dict. Thanks to Dimitri Papadopoulos.
+  * Fix different issues with f-strings. Thanks to Dimitri Papadopoulos.
+- Release 2.2.8
+  * Support for Python 3.12
+  * Different improvements suggested by refurb and pyupgrade.
+    Thanks to Dimitri Papadopoulos.
+  * Updated to latest C-Blosc2 2.10.4.
+
+-------------------------------------------------------------------
 Mon Sep 18 09:17:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.7:

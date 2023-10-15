@@ -25,4 +25,18 @@
     8.1.1.</comment>
     <requestid>1113219</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7717db271f805029bbdfcee9c630dc8c</srcmd5>
+    <version>0.7.0</version>
+    <time>1697390845</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0
+  * feat(experimental)!: Require include in _get_anywidget_state
+    signature (#317)
+  * Allows implementors to avoid re-serializing fields which aren't
+    needed to send to the front end. This is a BREAKING change
+    because it requires implementors of _get_anywidget_state to
+    account for include in the function signature.</comment>
+    <requestid>1117777</requestid>
+  </revision>
 </revisionlist>

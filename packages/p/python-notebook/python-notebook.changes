@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 14 08:31:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.5
+  * Update to JupyterLab 4.0.7 #7103 (@jtpio)
+  * Maintenance and upkeep improvements: Bump some JS stuff
+
+-------------------------------------------------------------------
 Sun Sep 24 18:10:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.0.4

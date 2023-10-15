@@ -1,0 +1,60 @@
+Index: examples/etc/turnserver.conf
+===================================================================
+--- examples/etc/turnserver.conf.orig
++++ examples/etc/turnserver.conf
+@@ -56,7 +56,11 @@
+ # Listener IP address of relay server. Multiple listeners can be specified.
+ # If no IP(s) specified in the config file or in the command line options,
+ # then all IPv4 and IPv6 system IPs will be used for listening.
+-#
++# listen on IPv4 only:
++#listening-ip=
++# listen on IPv4 and IPv6:
++#listening-ip=::
++# listen on specified IPs only
+ #listening-ip=172.17.19.101
+ #listening-ip=10.207.21.238
+ #listening-ip=2607:f0d0:1002:51::4
+@@ -240,6 +244,7 @@
+ # will try to use the 'dynamic' value in the turn_secret table
+ # in the user database (if present). The database-stored  value can be changed on-the-fly
+ # by a separate program, so this is why that mode is considered 'dynamic'.
++# create with: `openssl rand -hex 32`
+ #
+ #static-auth-secret=north
+ 
+@@ -374,7 +379,7 @@
+ # default value is 0 (no quota).
+ # This option can also be set through the database, for a particular realm.
+ #
+-#total-quota=0
++#total-quota=100
+ 
+ # Max bytes-per-second bandwidth a TURN session is allowed to handle
+ # (input and output network streams are treated separately). Anything above
+@@ -456,14 +461,14 @@
+ # configuration file.
+ # Use PEM file format.
+ #
+-#cert=/usr/local/etc/turn_server_cert.pem
++#cert=/etc/coturn/tls/turn_server_cert.pem
+ 
+ # Private key file.
+ # Use an absolute path or path relative to the
+ # configuration file.
+ # Use PEM file format.
+ #
+-#pkey=/usr/local/etc/turn_server_pkey.pem
++#pkey=/etc/coturn/tls/turn_server_pkey.pem
+ 
+ # Private key file password, if it is in encoded format.
+ # This option has no default value.
+@@ -522,7 +527,7 @@
+ # In the runtime, the logfile can be reset with the SIGHUP signal
+ # to the turnserver process.
+ #
+-#log-file=/var/tmp/turn.log
++#log-file=/var/log/coturn/turnserver.log
+ 
+ # Option to redirect all log output into system log (syslog).
+ #

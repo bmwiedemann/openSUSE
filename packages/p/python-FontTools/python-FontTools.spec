@@ -18,13 +18,12 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%bcond_without test
 %define psuffix -test
+%bcond_without test
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
@@ -37,34 +36,33 @@ URL:            https://github.com/fonttools/fonttools
 # The PyPI archive lacks some test files, but the source is identical to the github archive
 Source:         https://github.com/fonttools/fonttools/archive/refs/tags/%{version}.tar.gz#/fonttools-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Recommends:     python-Brotli >= 1.0.1
 # some packages should require fonttools[ufo] but expect fs to be pulled in by default.
 Requires:       python-fs >= 2.2.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Recommends:     python-Brotli >= 1.0.1
 Recommends:     python-lxml >= 4.0
 Recommends:     python-munkres >= 1.1.4
+Recommends:     python-reportlab
 Recommends:     python-sympy
 Recommends:     python-unicodedata2 >= 14.0.0
 Recommends:     python-zopfli >= 0.1.6
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Recommends:     python-reportlab
+Provides:       python-fonttools = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.0.1}
 BuildRequires:  %{python_module fs >= 2.2.0}
-BuildRequires:  %{python_module munkres >= 1.1.4}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module zopfli >= 0.1.6}
 %endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Obsoletes:      fonttools < %{version}-%{release}
 Provides:       fonttools = %{version}-%{release}
 %endif
-Provides:       python-fonttools = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -82,10 +80,10 @@ convert TrueType fonts to an XML based format (called TTX) and back.
 sed -i -e '/^#!\//, 1d' Lib/fontTools/mtiLib/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_mandir}/man1/ttx.1
 %python_clone -a %{buildroot}%{_bindir}/ttx
 %python_clone -a %{buildroot}%{_bindir}/pyftsubset

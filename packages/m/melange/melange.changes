@@ -1,4 +1,464 @@
 -------------------------------------------------------------------
+Sat Oct 14 06:40:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.5.0:
+  * Enable linters to warn (via callback) instead of just failing.
+  * build(deps): bump github.com/package-url/packageurl-go
+  * build(deps): bump go.opentelemetry.io/otel from 1.18.0 to
+    1.19.0
+  * Add a PR checklist to melange.
+  * Fix yaml typo in linter docs
+  * nit: fix mistake in function docs
+  * Apply suggestions from code review
+  * Document disabling lints and when to do so.
+  * Update linter docs
+  * strip linter: properly close file
+  * Make improvements/suggestions
+  * Add stripped file linter
+  * update alpine-go to latest git to fix indexing
+  * pipelines: strip: use -g by default when stripping
+  * build(deps): bump google.golang.org/api from 0.142.0 to 0.143.0
+  * do not delete extensions and plugins with ruby/clean
+  * build(deps): bump k8s.io/api from 0.28.1 to 0.28.2
+  * build(deps): bump google.golang.org/api from 0.138.0 to 0.142.0
+  * build(deps): bump k8s.io/client-go from 0.28.1 to 0.28.2
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump cloud.google.com/go/storage from 1.32.0 to
+    1.33.0
+  * build(deps): bump github.com/klauspost/compress from 1.16.7 to
+    1.17.0
+  * build(deps): bump actions/setup-go from 4.0.1 to 4.1.0
+  * build(deps): bump actions/checkout from 4.0.0 to 4.1.0
+  * add docs for -compat packages
+  * Disable empty check on git-checkout
+  * build: refactor package linter invocation
+  * Refactor the linter into a submodule.
+  * Remove no provides check per @kaniini
+  * Respect subpackage no-provides
+  * Add post-file walk linting and empty package linting
+  * exa is dead, use mdbook as a rust CI test instead.
+  * bump apko to e9722fc
+  * build: do not run linters on skipped subpackages
+  * linter: when subpackages are linted use the subpackage name as
+    the package config name
+  * Only run worldwrite linter on regular files
+  * Add worldwrite linter
+  * Add dev, opt, and srv linters
+  * fix the arch
+  * Use Warnf over WARNING
+  * log and continue when .pc file can't be loaded
+  * fix the dir name as we already expect dir to be set explicit
+  * Disable linters on -compat packages
+  * Update build.yaml
+  * add goreleaser pipeline
+  * Unexport linter struct and linterFunc
+  * Don't export the linter map
+  * Add tests
+  * build(deps): bump sigstore/cosign-installer from 3.1.1 to 3.1.2
+  * Bump goreleaser/goreleaser-action from 4.6.0 to 5.0.0
+  * Bump docker/login-action from 2.2.0 to 3.0.0
+  * chore: remove CODEOWNERS file
+  * Add more linters
+  * Appease golint
+  * Fix tests
+  * Remove debugging print statement
+  * Implement subpackage linting
+  * Add package (but not subpackage) linting
+  * build(deps): bump golangci/golangci-lint-action from 3.6.0 to
+    3.7.0
+  * Update golangci-lint to 1.54
+  * git-checkout: Allow tags to matched annotated tag SHAs, don't
+    allow fuzzy matching of refs.
+  * build(deps): bump actions/checkout from 3.5.3 to 4.0.0
+  * Bump k8s test workflows to Go 1.21
+  * Bump go to 1.21
+  * pipeline: fix downward propagation to referenced external
+    pipeline nodes
+  * config: tests: add workdir propagation test
+  * remove cmake. Signed-off-by: Ville Aikas
+    <vaikas@chainguard.dev>
+  * forgot to remove one -dev
+  * Remove specifying the php-dev version.
+  * Add pecl pipelines for phpize & install. Signed-off-by: Ville
+    Aikas <vaikas@chainguard.dev>
+  * package: only constrain library search paths for provides
+    entries
+  * Fix some python generation issues:
+  * Refactor application of pipeline variables to config and add
+    tests
+  * Pipeline: make env overrides work recursively
+  * Add environment var overriding to the pipeline.
+  * Bump goreleaser/goreleaser-action from 4.3.0 to 4.6.0
+  * Bump actions/upload-artifact from 3.1.2 to 3.1.3
+  * package: constrain library SCA to library search paths only
+  * Replace the elements of the subpackage
+  * construct the package.full-version in higher context than just
+    pipeline.
+  * docs: fix link in pkg/build/pipelines/README.md
+  * docs: add documentation for built-in pipelines
+  * document / examples for ${{package.full-version}}
+    Signed-off-by: Ville Aikas <vaikas@chainguard.dev>
+  * add ${{package.full-version}} =
+    ${{package.version}}-r${{package.epoch}} Signed-off-by: Ville
+    Aikas <vaikas@chainguard.dev>
+  * Changes from code review.
+  * config: copy all subpackage variables when doing a range
+    expansion
+  * feat: add output logs for the apkbuild converter
+  * Fix issue: #658 Signed-off-by: Ville Aikas
+    <vaikas@chainguard.dev>
+  * feat: add new Perl pipelines for install and clean
+  * package: just skip symlinks for now
+  * workflows: add ncurses to the presubmit test matrix
+  * package: dereference symlinks for aliased pkg-config modules
+  * Fix syntax in maven pipeline (and add test).
+  * more debug crap. Signed-off-by: Ville Aikas
+    <vaikas@chainguard.dev>
+  * remove debug crap. Signed-off-by: Ville Aikas
+    <vaikas@chainguard.dev>
+  * Environment is required, adjust the tests.
+  * Change GeneratedMelangeConfig to embed pkg/config/config
+    instead of redefining it.
+  * Change default python-version from 3.11 to 3.
+  * remove extra backtick.
+  * let's try again.
+  * update docs
+  * Bunch of lint fixes. No functional changes.
+  * Add a maven/configure-mirror pipeline to redirect to GCP.
+  * yikes, only 2 fatal lints... nice...
+  * update docs.
+  * Add flags for resolving git tags, release-monitoring
+  * Update pkg/build/pipelines/python/build-wheel.yaml
+  * Update pkg/build/pipelines/python/build-wheel.yaml
+  * add builtin pipelines for python
+  * update generated docs. Signed-off-by: Ville Aikas
+    <vaikas@chainguard.dev>
+  * remove unused vars. They do not have short form, so can use
+    this variant. Signed-off-by: Ville Aikas
+    <vaikas@chainguard.dev>
+  * Add --wolfi-defaults flag, clean up flag handling.
+  * readlinkfs: ignore some security-module specific xattrs
+  * feat: support --recurse-submodules in git clone
+  * Print the path to generated melange config.
+  * build(deps): bump go.opentelemetry.io/otel from 1.16.0 to
+    1.17.0
+  * build(deps): bump cloud.google.com/go/storage from 1.31.0 to
+    1.32.0
+  * build(deps): bump google.golang.org/api from 0.136.0 to 0.138.0
+  * build(deps): bump k8s.io/api from 0.28.0 to 0.28.1
+  * build(deps): bump github.com/lima-vm/lima from 0.17.0 to 0.17.2
+  * build(deps): bump k8s.io/client-go from 0.28.0 to 0.28.1
+  * Bump apko and fix everything I broke
+  * docs: typo in go-build example
+  * run make docs
+  * cli: index: add --signing-key, --source and --merge options
+  * default for github actions is bubblewwrap.
+  * update lint rule.
+  * Fix the links to commands, fix the URLs generated.
+  * sign: do not rename across device boundaries
+  * add --force option to recreate apk indexes with given
+    signatures
+  * pipelines: use ${{targets.contextdir}} where it makes sense
+  * pipeline: add ${{targets.package.foo}} expansions
+  * pipeline: add ${{targets.contextdir}}, representing the current
+    target dir
+  * Bump pkg-config again to actually pick up the openblas fix.
+  * Bump pkgconfig to pick up the openblas fix.
+  * feedback + verbiage from Erika.
+  * Set reasonable concurrency levels for pgzip
+  * appease linter
+  * support substitutions in provides lists
+  * Start of exhaustively documenting the build filele.
+  * plumb through SDE to EmitSignature
+  * add melange sign command, slightly refactor and make public the
+    signing methods
+  * add test for substituting needs.packages
+  * allow override go version for uses: go/build and go/install
+  * Support for setting context in .melange.k8s.yaml
+  * Add docs about custom pipelines, defining and using.
+  * build(deps): bump actions/setup-go from 4.0.1 to 4.1.0
+  * Teach melange about the forthcoming version-transform block
+  * doc and lint revisions (#598)
+  * build(deps): bump google.golang.org/api from 0.134.0 to 0.136.0
+  * container: bubblewrap: do not defer closing files
+  * build(deps): bump golang.org/x/sys from 0.10.0 to 0.11.0
+  * build(deps): bump github.com/lima-vm/lima from 0.16.0 to 0.17.0
+  * build(deps): bump github.com/google/go-containerregistry
+  * build: package: add pkgconf-based SCA to catalog SDKs which use
+    it
+  * Docstring typo fixes
+  * Docstring fixes
+  * Appease the go fmt Gods
+  * Test two var transforms at once
+  * Test var transforms on a basic level
+  * Add ${{build.arch}} as a possible variable in bump
+  * Make var transforms work in bump
+  * remove paralell test for TestKubernetesRunnerConfig
+  * add fail-fast to false
+  * update code running goimports
+  * add goimports
+  * publish brew formula during release
+  * update actions to use git hashes
+  * update golangci-lint to v1.53 series
+  * Adjust the var substitution stuff a bit
+  * Move var substitution stuff into config
+  * config: Change root to a pointer in the config struct, and add
+    an accessor
+  * renovate: update to use new config infrastructure
+  * build: Add root node to the config
+  * Appease the golangci-lint Gods
+  * build_test: fix tests in a better way
+  * Make all tests pass
+  * build: add parameter where one was missing
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.7.0 to
+    5.8.1
+  * pipelines: meson/configure: explicitly invoke meson setup
+    action
+  * build(deps): bump github.com/docker/docker
+  * Refactor the config/logging stuff out of build
+  * build(deps): bump google.golang.org/api from 0.133.0 to 0.134.0
+  * build(deps): bump github.com/docker/docker
+  * Several fixes to k8s runner.
+  * build(deps): bump github.com/klauspost/pgzip from 1.2.5 to
+    1.2.6
+  * build(deps): bump google.golang.org/api from 0.129.0 to 0.133.0
+  * Remove `wget -q` from `fetch`
+  * add k8s runner config loading from envvars
+  * Log errors bundling, enable GGCR Warn/Progress logs
+  * Tweak the strip pipeline so that it never fails for deleted
+    files
+  * convert/python: check if release is found
+  * Make sure we log errors.
+  * Fix subpackage SBOM generation
+  * define constants for runners destination mount paths
+  * skip the cache mount for kubernetes runner builds
+  * Add more otel spans to k8s runner
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.7.0 to
+    5.8.0
+  * build(deps): bump k8s.io/client-go from 0.27.3 to 0.27.4
+  * Avoid using pargzip for compression
+  * add a retryable (tgz) fetcher for the k8s runner
+  * Pod names must be RFC1123 compliant
+  * Correct the variable name in the patch pipeline
+  * pipelines: git-checkout: harden variable expansions
+  * pipelines: patch: refactor series/patches handling
+  * pipelines: fetch: harden variable expansions
+  * add retries to a subset of k8s runner exec failures
+  * delete builder pod post build by default
+  * properly pass workspace env/volumes to k8s builder pods
+  * use go-apk.FullFS for retrieving builder workspaces
+  * Finally fix python convert tests.
+  * Comment python test.
+  * add dir option to ruby pipelines as not all gemspecs live in
+    the root folder
+  * fix containerID for lima when tarring up
+  * lima startup issues fixed
+  * pull in apko with fix for blank SOURCE_DATE_EPOCH
+  * Change git-checkout depth default to 1
+  * workflows: wolfi-presubmit: use package/ instead of packages/
+    for package names
+  * build: package: forcibly treat libc as a shared library
+  * docs: explain how build cache works practically
+  * Bump apko dep to pick up otel spans
+  * Fix failing test for env var wipeout
+  * Add failing test for env var wipeout
+  * add otel spans
+  * build(deps): bump sigstore/cosign-installer from 3.1.0 to 3.1.1
+  * Remove use of deprecated WaitImmediate
+  * Add ! char to ignore.
+  * Add missing context propagation
+  * Rename index.Context to index.Index
+  * Rename Contexts to Builds
+
+-------------------------------------------------------------------
+Sat Oct 14 06:38:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.0:
+  * build(deps): bump github.com/opencontainers/image-spec
+  * add release notes for Melange 0.4.0
+  * build(deps): bump cloud.google.com/go/storage from 1.30.1 to
+    1.31.0
+  * build(deps): bump google.golang.org/api from 0.128.0 to 0.129.0
+  * appease linter for now
+  * update apko to 0.9.0
+  * build(deps): bump sigstore/cosign-installer from 3.0.5 to 3.1.0
+  * some small UX improvements for k8s runner
+  * build(deps): bump github.com/package-url/packageurl-go
+  * update apko and go-apk to use pinned deps correctly
+  * build: scan subpackage pipelines for dependencies
+  * add a split/debug pipeline
+  * ensure bundles are rooted correctly
+  * build(deps): bump google.golang.org/api from 0.125.0 to 0.127.0
+  * build(deps): bump actions/checkout from 3.5.2 to 3.5.3
+  * add a kubernetes pod runner
+  * build(deps): bump docker/login-action from 2.1.0 to 2.2.0
+  * build(deps): bump golangci/golangci-lint-action from 3.4.0 to
+    3.6.0
+  * build(deps): bump goreleaser/goreleaser-action from 4.2.0 to
+    4.3.0
+  * add strip prefix and suffix update config for release monitor
+  * import apko and go-apk with better debug logging
+  * Switch from calling Glob to two Stats
+  * workflows: add wolfi-presubmit
+  * cli: build: fix destination variable for --apk-cache-dir
+  * build: PopulateCache: do not populate the cache dir when it is
+    empty
+  * fix apk caching directory
+  * import apko and go-apk with package caching
+  * Change the default for delete to false.
+  * pipeline: fetch: optionally delete fetched artifacts after
+    unpacking
+  * cond: allow underscores and capitalization in variable
+    expressions
+  * run tests with race detector
+  * warn and fallback to SOURCE_DATE_EPOCH=0 when specified but
+    empty
+  * index: use deep copy when loading pre-existing index data
+  * build(deps): bump github.com/lima-vm/lima from 0.14.2 to 0.16.0
+  * build(deps): bump actions/setup-go from 4.0.0 to 4.0.1
+  * index: appease linter by moving the deferred close to after the
+    error check
+  * build(deps): bump github.com/containerd/containerd from 1.6.15
+    to 1.6.18
+  * build: generate APKINDEX.json when writing packages index
+  * index: add WriteJSONIndex function
+  * index: split out the indexing logic itself to UpdateIndex
+  * index: WriteArchiveIndex: use destination file path as primary
+    input
+  * index: use SourceIndexFile for loading index data rather than
+    IndexFile
+  * index: factor out loading of pre-existent indices and index
+    state management
+  * index: factor out index writing into WriteArchiveIndex
+  * Bump apko and fix what that breaks
+  * add wolfictl
+  * upgrade alpine-lima to 3.18
+  * Allow uppercase and plus, allow numbers as first char
+  * Validate configuration at the end of parsing
+  * Remove secfixes and advisories altogether
+  * include filename when parsing fails
+  * Require that build config YAML has only known fields
+  * Refactor tests for configuration load method
+  * build(deps): bump google.golang.org/api from 0.119.0 to 0.123.0
+  * readlinkfs: implement go-apk fs.XattrFS interfaces
+  * Pull in the latest go-apk for xattrs support
+  * build(deps): bump github.com/docker/docker
+  * Pull in index builddate support.
+  * Install should first build melange binary...
+  * Make makefile work on Mac and Linux.
+  * build(deps): bump sigstore/cosign-installer from 3.0.2 to 3.0.5
+  * add a boolean so built in melange pipelines can be used in
+    subpackages as they need to write to a different target folder
+  * ensure range data replaces `with` options during a pipeline
+  * Update README.md
+  * Update distroless references
+  * default for mac is docker, not bwrap
+  * add extra logging when runner fails to TestUsability
+  * Add go vendor support to the go build pipeline.
+  * add multiple runner options
+  * use latest version of melange in lima configuration file
+  * Set `builddate` in our `.PKGINFO` control data.
+  * add field docs
+  * build(deps): bump golang.org/x/sync from 0.1.0 to 0.2.0
+  * pipelines: patch: add support for quilt patch-series files
+  * Add an optional "deps" paramter to the go/build pipeline.
+  * chore: signing issues
+  * chore: corrections in mac instructions
+  * chore: corrections in mac instructions
+  * build: package: skip SONAME analysis when ELF interpreter
+    setting is present
+  * Add trimpath to the go pipeline.
+  * update docs
+  * build: add support for configurable logging policies
+  * Add name method to build config
+  * build(deps): bump gitlab.alpinelinux.org/alpine/go
+  * move signing funcs to rely on external go-apk library
+  * use go-apk library instead of apko
+  * update alpine-go to include replaces hotfix
+  * simplify DataItems to use the builtin marshallable map type
+  * add `ignore-regex-patterns` update config to indicate you want
+    to ignore string patterns that match an upstream version
+  * add a strip-suffix: key to melange update struct to indicate
+    stripping a suffix from an upstream GitHub version
+  * bump to latest apko which handles file overwrites
+  * cli: build: warn when no work to do instead of throwing an
+    error
+  * build(deps): bump github.com/docker/docker
+  * upgrade apko to 20230421 snapshot
+  * build(deps): bump google.golang.org/api from 0.116.0 to 0.119.0
+  * build: update tests to use apko log.Logger
+  * build: use apko_log.Logger everywhere
+  * build: logger: conform to apko_log.Logger shape
+  * adapt to new apko logging framework
+  * update apko dependency to 20230420 snapshot
+  * update apko dependency to 20230419 snapshot
+  * config parsing: fix handling of filesystems
+  * bump test: fix panic by requiring no error
+  * Stop repeating errors on build command
+  * build(deps): bump actions/checkout from 3.5.0 to 3.5.2
+  * fix 403 error when melange bumping some packages,
+    https://www.netfilter.org for example needs it
+  * update apko to 20230413 snapshot
+  * Print full uri to debug file download errors
+  * Do not depend on concrete logger
+  * pipelines: autoconf/make-install: delete all GNU libtool
+    metadata files
+  * remove flawed test
+  * build: package: append subpackages to build log
+  * Use formatted YAML encoder from yam
+  * build: readlinkfs: chase apko ReadlinkFS API break
+  * upgrade apko snapshot to 20230411
+  * build(deps): bump google.golang.org/api from 0.114.0 to 0.116.0
+  * build(deps): bump sigstore/cosign-installer from 3.0.1 to 3.0.2
+  * go mod tidy again
+  * index: convert to using logrus
+  * build: package: use logrus.Entry for logging
+  * update apko for formatting fixes
+  * build: remove actualArchs variable, no longer used
+  * fix tests
+  * container: use warning level for stderr output
+  * pipeline: downgrade dumpWith() to use debug level
+  * switch to using logrus
+  * update to apko git
+  * feat: send useragent in HTTP requests
+  * export mutate functions as these are very useful to be called
+    outside of the build package
+  * warn if target-architecture:['all'], remove from examples
+  * feat: respect target-architecture to filter archs
+  * index: rework architecture filtering
+  * update docs
+  * build(deps): bump actions/add-to-project from 0.4.1 to 0.5.0
+  * cli: index: add --arch flag
+  * index: print warning and skip packages which do not match the
+    expected architecture
+  * index: add ExpectedArch to index.Context
+  * add a `update.manual:` key to indicate a package should be
+    manually updated
+  * fix: log package new names+versions when regenerating index
+  * make original test commit sha different from the new expected
+    sha to ensure test works
+  * melange bump: optional flag to modify git-checkout pipeline
+    expected-commit value
+  * Bump apko to pick up busybox detection fix.
+  * Fix goreleaser cosign flags
+  * package: allow any library which has a SONAME to be a provider
+  * build: fix SBOM language gathering for subpackage pipelines
+  * package: ensure the package output directories always exist for
+    scanning
+  * build: introduce Context.IsBuildLess and skip a lot of
+    setup/teardown for buildless packages
+  * build: allow a package to be defined without a pipeline
+  * Add darwin goreleaser target (macOS)
+  * fix build
+  * release image after the binary
+  * update makefile
+  * cleanup goreleaser and ko config
+  * clean up, update version comments for ci jobs
+  * upgrade to use go1.20
+  * upgrade alpine pkgs lima
+
+-------------------------------------------------------------------
 Mon Apr 03 12:43:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.2:

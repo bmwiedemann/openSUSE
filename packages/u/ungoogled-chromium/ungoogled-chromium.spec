@@ -41,6 +41,7 @@
 %bcond_without system_icu
 %bcond_without ffmpeg_51
 %bcond_without qt6
+%bcond_without system_zstd
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
@@ -48,6 +49,7 @@
 %bcond_with system_icu
 %bcond_with ffmpeg_51
 %bcond_with qt6
+%bcond_with system_zstd
 %endif
 # LLVM version
 %define llvm_version 15
@@ -77,7 +79,7 @@
 %endif
 # Package names
 Name:           ungoogled-chromium
-Version:        117.0.5938.149
+Version:        118.0.5993.70
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -126,15 +128,17 @@ Patch215:       chromium-113-webauth-include-variant.patch
 Patch217:       chromium-117-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
 Patch221:       chromium-115-lp155-typename.patch
-Patch223:       chromium-117-emplace_back_on_vector-c++20.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
 Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
 Patch232:       chromium-116-lp155-typenames.patch
-Patch237:       chromium-117-lp155-constructors.patch
 Patch238:       chromium-117-blink-BUILD-mnemonic.patch
 Patch239:       chromium-117-includes.patch
 Patch240:       chromium-117-string-convert.patch
 Patch241:       chromium-117-lp155-typename.patch
+Patch242:       chromium-118-includes.patch
+Patch243:       chromium-118-system-freetype.patch
+Patch244:       chromium-117-system-zstd.patch
+Patch245:       chromium-118-no_matching_constructor.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -325,6 +329,9 @@ BuildRequires:  pkgconfig(re2) >= 11
 %endif
 %if %{with system_webp}
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
+%endif
+%if %{with system_zstd}
+BuildRequires:  pkgconfig(libzstd) = 1.5.5
 %endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
@@ -628,7 +635,6 @@ keeplibs=(
     third_party/xcbproto
     third_party/xnnpack
     third_party/zlib/google
-    third_party/zstd
     third_party/zxcvbn-cpp
     url/third_party/mozilla
     v8/src/third_party/siphash
@@ -678,6 +684,9 @@ keeplibs+=( third_party/re2 )
 %endif
 %if !%{with system_webp}
 keeplibs+=( third_party/libwebp )
+%endif
+%if !%{with system_zstd}
+keeplibs+=( third_party/zstd )
 %endif
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
@@ -795,6 +804,9 @@ gn_system_libraries+=( re2 )
 %endif
 %if %{with system_webp}
 gn_system_libraries+=( libwebp )
+%endif
+%if %{with system_zstd}
+gn_system_libraries+=( zstd )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 

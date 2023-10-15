@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           melange
-Version:        0.3.2
+Version:        0.5.0
 Release:        0
 Summary:        Build APKs from source code
 License:        Apache-2.0
 URL:            https://github.com/chainguard-dev/melange
 Source:         melange-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.20
 
 %description
 Build apk packages using declarative pipelines.
@@ -69,8 +69,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"

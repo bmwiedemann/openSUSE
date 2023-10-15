@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 13 22:59:14 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- python-roman is not actually necessary for testing.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

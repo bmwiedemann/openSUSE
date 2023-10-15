@@ -1,12 +1,16 @@
 /var/log/coturn/turnserver.log {
-	missingok
-	compress
-	delaycompress
-	notifempty
-	postrotate
-		/bin/systemctl --quiet is-active coturn.service && /bin/kill -HUP `cat /run/coturn/turnserver.pid` || true 
-	endscript
-	create 0660 coturn coturn
-	sharedscripts
-	su coturn coturn
+  compress
+  delaycompress
+  dateext
+  maxage 365
+  rotate 99
+  size=+4096k
+  notifempty
+  missingok
+  create 0640 coturn root
+  sharedscripts
+  postrotate
+    /bin/systemctl --quiet is-active coturn.service && /bin/systemctl kill --signal=SIGHUP coturn.service
+  endscript
+  su coturn root
 }

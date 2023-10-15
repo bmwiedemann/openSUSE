@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 14 22:54:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.25:
+  * Fix bug when iotop busy loops after pressing ESC key
+  * Change the condition of displaying processes in only mode
+
+-------------------------------------------------------------------
 Sun Oct  1 10:14:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.24:

@@ -316,4 +316,41 @@
     <comment>Switch to sysusers</comment>
     <requestid>1113040</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c8d2fff87f58b34d953dad262465a0f0</srcmd5>
+    <version>2.7.5</version>
+    <time>1697390833</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.7.5:
+  * admin: Respond with 4xx on non-existing config path (#5870)
+  * ci: Force the Go version for govulncheck (#5879)
+  * fileserver: Set canonical URL on browse template (#5867)
+  * tls: Add X25519Kyber768Draft00 PQ &quot;curve&quot; behind build tag (#5852)
+  * reverseproxy: Add more debug logs (#5793)
+  * reverseproxy: Fix `least_conn` policy regression (#5862)
+  * reverseproxy: Add logging for dynamic A upstreams (#5857)
+  * reverseproxy: Replace health header placeholders (#5861)
+  * httpcaddyfile: Sort TLS SNI matcher for deterministic JSON output (#5860)
+  * cmd: Fix exiting with custom status code, add `caddy -v` (#5874)
+  * reverseproxy: fix parsing Caddyfile fails for unlimited request/response buffers (#5828)
+  * reverseproxy: Fix retries on &quot;upstreams unavailable&quot; error (#5841)
+  * httpcaddyfile: Enable TLS for catch-all site if `tls` directive is specified (#5808)
+  * encode: Add `application/wasm*` to the default content types (#5869)
+  * fileserver: Add command shortcuts `-l` and `-a` (#5854)
+  * go.mod: Upgrade dependencies incl. x/net/http
+  * templates: Add dummy `RemoteAddr` to `httpInclude` request, proxy compatibility (#5845)
+  * reverseproxy: Allow fallthrough for response handlers without routes (#5780)
+  * fix: caddytest.AssertResponseCode error message (#5853)
+  * build(deps): bump goreleaser/goreleaser-action from 4 to 5 (#5847)
+  * build(deps): bump actions/checkout from 3 to 4 (#5846)
+  * caddyhttp: Use LimitedReader for HTTPRedirectListener
+  * fileserver: browse template SVG icons and UI tweaks (#5812)
+  * reverseproxy: fix nil pointer dereference in AUpstreams.GetUpstreams (#5811)
+  * httpcaddyfile: fix placeholder shorthands in named routes (#5791)
+  * cmd: Prevent overwriting existing env vars with `--envfile` (#5803)
+  * ci: Run govulncheck (#5790)
+  * logging: query filter for array of strings (#5779)
+  * logging: Clone array on log filters, prevent side-effects (#5786) (forwarded request 1117725 from jfkw)</comment>
+    <requestid>1117734</requestid>
+  </revision>
 </revisionlist>

@@ -46,7 +46,7 @@ Requires:       python3-neovim
 %bcond_with luajit
 %endif
 Name:           neovim
-Version:        0.9.2
+Version:        0.9.4
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim

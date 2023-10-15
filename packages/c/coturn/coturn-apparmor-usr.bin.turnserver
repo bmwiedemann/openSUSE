@@ -8,7 +8,9 @@ profile coturn /usr/{bin,sbin}/turnserver flags=(attach_disconnected) {
   #include <abstractions/user-tmp>
 
   /etc/coturn/*.conf r,
-  /etc/pki/coturn/** r,
+  /etc/coturn/tls/* r,
+  /etc/letsencrypt/archive/** r,
+
   /usr/bin/turnserver mr,
   owner /run/coturn/* w,
   owner /var/lib/coturn r,
