@@ -17734,6 +17734,8 @@ unsorted:
   - motoya-lmaru-fonts 
   - motv 
   - mousepad-devel 
+  - mousetweaks 
+  - mousetweaks-lang 
   - movit-devel 
   - mozaddon-devel 
   - mozilla-jss 
@@ -19453,10 +19455,6 @@ unsorted:
   - openjade-devel 
   - openjfx 
   - openjfx-devel 
-  - openjfx8 
-  - openjfx8-devel 
-  - openjfx8-javadoc 
-  - openjfx8-src 
   - openjpeg2 
   - openjpeg2-devel 
   - openjpeg2-devel-doc 
@@ -19945,6 +19943,8 @@ unsorted:
   - paraviewdata 
   - parboiled 
   - parboiled-javadoc 
+  - parboiled-scala 
+  - parboiled-scala-javadoc 
   - parcellite 
   - pari-devel 
   - pari-doc 
@@ -25993,6 +25993,7 @@ unsorted:
   - python310-ruamel.yaml 
   - python310-ruamel.yaml.clib 
   - python310-ruamel.yaml.convert 
+  - python310-ruff 
   - python310-ruffus 
   - python310-runthis-sphinxext 
   - python310-s3transfer 
@@ -29350,6 +29351,7 @@ unsorted:
   - python311-ruamel.yaml 
   - python311-ruamel.yaml.clib 
   - python311-ruamel.yaml.convert 
+  - python311-ruff 
   - python311-ruffus 
   - python311-runthis-sphinxext 
   - python311-s3transfer 
@@ -32854,6 +32856,7 @@ unsorted:
   - python39-ruamel.yaml 
   - python39-ruamel.yaml.clib 
   - python39-ruamel.yaml.convert 
+  - python39-ruff 
   - python39-ruffus 
   - python39-runthis-sphinxext 
   - python39-s3transfer 
