@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 15 09:30:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.18 release
+  - Bundled FluidSynth library for DirectMusic.
+  - More window management in the Wayland driver.
+  - More effect support in Direct3D 10.
+  - Various bug fixes.
+- update staging to 8.18 release
+
+-------------------------------------------------------------------
 Sat Sep 30 07:44:37 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.17 release

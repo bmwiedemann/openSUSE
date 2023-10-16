@@ -4938,4 +4938,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.17 release</comment>
     <requestid>1114527</requestid>
   </revision>
+  <revision rev="422" vrev="1">
+    <srcmd5>9a0b6a68bee8b7752631f353220bcf53</srcmd5>
+    <version>8.18</version>
+    <time>1697488400</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 8.18 release
+  - Bundled FluidSynth library for DirectMusic.
+  - More window management in the Wayland driver.
+  - More effect support in Direct3D 10.
+  - Various bug fixes.
+- update staging to 8.18 release</comment>
+    <requestid>1117941</requestid>
+  </revision>
 </revisionlist>
