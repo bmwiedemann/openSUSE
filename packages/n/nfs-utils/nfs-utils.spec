@@ -42,6 +42,7 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
+Patch1:         0001-export-fix-handling-of-error-from-match_fsid.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

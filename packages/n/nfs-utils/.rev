@@ -1726,4 +1726,14 @@
     <comment></comment>
     <requestid>1082338</requestid>
   </revision>
+  <revision rev="179" vrev="40">
+    <srcmd5>c4982539e79a44735dca34160060b318</srcmd5>
+    <version>unknown</version>
+    <time>1697488364</time>
+    <user>anag+factory</user>
+    <comment>- 0001-export-fix-handling-of-error-from-match_fsid.patch
+  Errors from match_fsid() shouldn't be fatal.
+  (bsc#1214540)</comment>
+    <requestid>1117914</requestid>
+  </revision>
 </revisionlist>
