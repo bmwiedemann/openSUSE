@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 13 18:41:54 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+23:
+  * photos-embed: Add mnemonics
+  * app:
+    - Set inactivity timeout for search provider
+    - Defer gegl initialization to window creation
+  * photos-utils: Ensure more types are registered
+  * Updated translations.
+- Switch to git checkout via source service, explicit commit.
+- Update URL.
+- Build sub-package gnome-shell-search-provider-gnome-photos as
+  noarch.
+
+-------------------------------------------------------------------
 Mon Mar  6 15:47:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

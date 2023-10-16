@@ -17,13 +17,13 @@
 
 
 Name:           gnome-photos
-Version:        44.0
+Version:        44.0+23
 Release:        0
 Summary:        Photo viewer for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            https://wiki.gnome.org/Design/Apps/Photos
-Source0:        https://download.gnome.org/sources/gnome-photos/44/%{name}-%{version}.tar.xz
+URL:            https://wiki.gnome.org/Apps/Photos
+Source0:        %{name}-%{version}.tar.zst
 # PATCH-NEEDS-REBASE gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up. WAS PATCH-FIX-UPSTREAM
 Patch0:         gnome-photos-on-demand-activate-dleyna.patch
 
@@ -79,6 +79,7 @@ Summary:        GNOME Photos -- Search Provider for GNOME Shell
 Group:          Productivity/Graphics/Viewers
 Requires:       %{name} = %{version}
 Supplements:    (gnome-shell and %{name})
+BuildArch:      noarch
 
 %description -n gnome-shell-search-provider-gnome-photos
 This package contains a search provider to enable GNOME Shell to get
