@@ -37,6 +37,7 @@ RUN zypper -n install \
               ncat \
               nftables \
               qemu-hw-usb-redirect \
+              qemu-img \
               socat \
               tar \
               timezone \
