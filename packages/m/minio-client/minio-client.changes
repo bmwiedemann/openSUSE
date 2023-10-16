@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 14 18:52:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231014T015703Z:
+  * prom: Allow insecure TLS connections if --insecure is provided
+    (#4716)
+  * Bump golang.org/x/net from 0.15.0 to 0.17.0 (#4713)
+  * Validation optimization - reduce HEAD calls during cp and mv
+    operations (#4710)
+  * Use the new golang version 1.21.3 (#4714)
+  * Add --stats to traces (#4669)
+
+-------------------------------------------------------------------
 Sun Oct 08 16:04:34 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20231004T065256Z:
