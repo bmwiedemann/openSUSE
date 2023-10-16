@@ -4,9 +4,7 @@ description_paragraphs: 2
 #sources:
 #  - source1
 #  - source2
-patches:
-  # PATCH-FIX-OPENSUSE -- Fix intepreter
-  IPC-Run-0.89-path.diff: -p0
+#patches:
 preamble: |-
  BuildRequires:  netcfg
 post_prep: |-

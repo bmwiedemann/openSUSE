@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:10:06 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove IPC-Run-0.89-path.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Oct  3 03:07:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20231003.0
+   see /usr/share/doc/packages/perl-IPC-Run/Changelog
+
+  20231003.0 Mon Oct 2 2023
+   Windows now matches other platforms in that a child calling exit(N) causes
+   result() to return N and full_result() to return N << 8.  On Windows, before
+   this change, result() was returning N >> 8, and full_result() was returning N.
+   Programs having workarounds for this may need to condition those workarounds on
+   $IPC::Run::VERSION.
+   - #157 - On Windows, avoid hang under IPCRUNDEBUG.
+   - Refresh "cpanfile" from Makefile.PL, to allow use on Windows.
+   - #163 - Normalize shebangs to /usr/bin/perl
+   - Fix or skip all tests recently seen to fail on Windows.
+   - Include t/result.t in releases.
+   - #168 - Make full_result() and result() Windows behavior match non-Windows.
+
+-------------------------------------------------------------------
 Tue Aug 23 13:31:42 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Fix patch IPC-Run-0.89-path.diff (add -p0)

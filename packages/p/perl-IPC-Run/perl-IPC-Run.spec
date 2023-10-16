@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IPC-Run
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,29 @@
 
 %define cpan_name IPC-Run
 Name:           perl-IPC-Run
-Version:        20220807.0
+Version:        20231003.0.0
 Release:        0
+%define cpan_version 20231003.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        System() and background procs w/ piping, redirs, ptys (Unix, Win32)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         IPC-Run-0.89-path.diff
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Pty) >= 1.08
 BuildRequires:  perl(Readonly::Array)
 Requires:       perl(IO::Pty) >= 1.08
+Provides:       perl(IPC::Run) = 20231003.0.0
+Provides:       perl(IPC::Run::Debug) = 20231003.0.0
+Provides:       perl(IPC::Run::IO) = 20231003.0.0
+Provides:       perl(IPC::Run::Timer) = 20231003.0.0
+Provides:       perl(IPC::Run::Win32Helper) = 20231003.0.0
+Provides:       perl(IPC::Run::Win32IO) = 20231003.0.0
+Provides:       perl(IPC::Run::Win32Process) = 20231003.0.0
+Provides:       perl(IPC::Run::Win32Pump) = 20231003.0.0
+%define         __perllib_provides /bin/true
 Recommends:     perl(IO::Pty) >= 1.08
 Recommends:     perl(Readonly)
 %{perl_requires}
@@ -49,8 +58,9 @@ Various redirection operators reminiscent of those seen on common Unix and
 DOS command lines are provided.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p0
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 # run.t sometimes fails with "Resource temporarily unavailable"
 mv t/run.t t/run.tt
