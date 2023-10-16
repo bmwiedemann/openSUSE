@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 14 17:27:26 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove-re-assert.patch, we really don’t need beautifuly
+  presented exceptions for our testing; remove re-assert BR.
+
+-------------------------------------------------------------------
 Mon Sep 11 20:43:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch from unmaintained brotlipy to Brotli

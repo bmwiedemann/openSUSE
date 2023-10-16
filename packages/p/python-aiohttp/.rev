@@ -375,4 +375,14 @@
   * Response headers are now prepared prior to running</comment>
     <requestid>1110373</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>325171cab1eadced182734f3a927b17a</srcmd5>
+    <version>3.8.5</version>
+    <time>1697488382</time>
+    <user>anag+factory</user>
+    <comment>- Add remove-re-assert.patch, we really don’t need beautifuly
+  presented exceptions for our testing; remove re-assert BR.
+</comment>
+    <requestid>1117831</requestid>
+  </revision>
 </revisionlist>

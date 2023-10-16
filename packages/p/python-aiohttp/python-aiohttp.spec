@@ -28,7 +28,10 @@ License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Update-update_query-calls-to-work-with-latest-yarl.patch gh#aio-libs/aiohttp#7260
-Patch1:         Update-update_query-calls-to-work-with-latest-yarl.patch
+Patch0:         Update-update_query-calls-to-work-with-latest-yarl.patch
+# PATCH-FIX-OPENSUSE remove-re-assert.patch mcepl@suse.com
+# We really don’t need beautifuly presented exceptions for our testing
+Patch1:         remove-re-assert.patch
 Requires:       python-aiosignal >= 1.1.2
 Requires:       python-attrs >= 17.3.0
 Requires:       python-frozenlist >= 1.1.1
@@ -75,7 +78,6 @@ BuildRequires:  %{python_module proxy.py}
 BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module trustme}
 # /SECTION
 # SECTION docs

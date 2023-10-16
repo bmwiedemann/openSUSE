@@ -1,0 +1,198 @@
+---
+ tests/test_client_session.py |    6 +++---
+ tests/test_streams.py        |    4 ++--
+ tests/test_urldispatch.py    |    7 +++----
+ tests/test_web_response.py   |   27 ++++++++++++---------------
+ 4 files changed, 20 insertions(+), 24 deletions(-)
+
+--- a/tests/test_client_session.py
++++ b/tests/test_client_session.py
+@@ -3,6 +3,7 @@ import contextlib
+ import gc
+ import io
+ import json
++import re
+ import sys
+ from http.cookies import SimpleCookie
+ from typing import Any, List
+@@ -10,7 +11,6 @@ from unittest import mock
+ 
+ import pytest
+ from multidict import CIMultiDict, MultiDict
+-from re_assert import Matches
+ from yarl import URL
+ 
+ import aiohttp
+@@ -322,8 +322,8 @@ def test_connector_loop(loop) -> None:
+ 
+             loop.run_until_complete(make_sess())
+         assert (
+-            Matches("Session and connector has to use same event loop")
+-            == str(ctx.value).strip()
++            re.match("Session and connector has to use same event loop",
++                     str(ctx.value).strip())
+         )
+         another_loop.run_until_complete(connector.close())
+ 
+--- a/tests/test_streams.py
++++ b/tests/test_streams.py
+@@ -3,13 +3,13 @@
+ import abc
+ import asyncio
+ import gc
++import re
+ import types
+ from collections import defaultdict
+ from itertools import groupby
+ from unittest import mock
+ 
+ import pytest
+-from re_assert import Matches
+ 
+ from aiohttp import streams
+ from aiohttp.helpers import PY_311
+@@ -1075,7 +1075,7 @@ class TestStreamReader:
+         loop = asyncio.get_event_loop()
+         stream = self._make_one()
+         stream._waiter = loop.create_future()
+-        assert Matches(r"<StreamReader w=<Future pending[\S ]*>>") == repr(stream)
++        assert re.match(r"<StreamReader w=<Future pending[\S ]*>>", repr(stream))
+         stream._waiter.set_result(None)
+         await stream._waiter
+         stream._waiter = None
+--- a/tests/test_urldispatch.py
++++ b/tests/test_urldispatch.py
+@@ -5,7 +5,6 @@ from collections.abc import Container, I
+ from urllib.parse import unquote
+ 
+ import pytest
+-from re_assert import Matches
+ from yarl import URL
+ 
+ import aiohttp
+@@ -313,7 +312,7 @@ def test_double_add_url_with_the_same_na
+     regexp = "Duplicate 'name', already handled by"
+     with pytest.raises(ValueError) as ctx:
+         router.add_route("GET", "/get_other", handler2, name="name")
+-    assert Matches(regexp) == str(ctx.value)
++    assert re.match(regexp, str(ctx.value))
+ 
+ 
+ def test_route_plain(router) -> None:
+@@ -504,7 +503,7 @@ def test_contains(router) -> None:
+ 
+ def test_static_repr(router) -> None:
+     router.add_static("/get", os.path.dirname(aiohttp.__file__), name="name")
+-    assert Matches(r"<StaticResource 'name' /get") == repr(router["name"])
++    assert re.match(r"<StaticResource 'name' /get", repr(router["name"]))
+ 
+ 
+ def test_static_adds_slash(router) -> None:
+@@ -626,7 +625,7 @@ async def test_regular_match_info(router
+     req = make_mocked_request("GET", "/get/john")
+     match_info = await router.resolve(req)
+     assert {"name": "john"} == match_info
+-    assert Matches("<MatchInfo {'name': 'john'}: .+<Dynamic.+>>") == repr(match_info)
++    assert re.match("<MatchInfo {'name': 'john'}: .+<Dynamic.+>>", repr(match_info))
+ 
+ 
+ async def test_match_info_with_plus(router) -> None:
+--- a/tests/test_web_response.py
++++ b/tests/test_web_response.py
+@@ -2,13 +2,13 @@ import collections.abc
+ import datetime
+ import gzip
+ import json
++import re
+ from concurrent.futures import ThreadPoolExecutor
+ from unittest import mock
+ 
+ import aiosignal
+ import pytest
+ from multidict import CIMultiDict, CIMultiDictProxy
+-from re_assert import Matches
+ 
+ from aiohttp import HttpVersion, HttpVersion10, HttpVersion11, hdrs
+ from aiohttp.helpers import ETag
+@@ -401,7 +401,9 @@ async def test_chunked_encoding_forbidde
+ 
+     with pytest.raises(RuntimeError) as ctx:
+         await resp.prepare(req)
+-    assert Matches("Using chunked encoding is forbidden for HTTP/1.0") == str(ctx.value)
++    assert re.match(
++        "Using chunked encoding is forbidden for HTTP/1.0", str(ctx.value)
++    )
+ 
+ 
+ async def test_compression_no_accept() -> None:
+@@ -776,7 +778,7 @@ def test_response_cookies() -> None:
+         'Set-Cookie: name=("")?; '
+         "expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/"
+     )
+-    assert Matches(expected) == str(resp.cookies)
++    assert re.match(expected, str(resp.cookies))
+ 
+     resp.set_cookie("name", "value", domain="local.host")
+     expected = "Set-Cookie: name=value; Domain=local.host; Path=/"
+@@ -828,7 +830,7 @@ def test_response_cookie__issue_del_cook
+         'Set-Cookie: name=("")?; '
+         "expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/"
+     )
+-    assert Matches(expected) == str(resp.cookies)
++    assert re.match(expected, str(resp.cookies))
+ 
+ 
+ def test_cookie_set_after_del() -> None:
+@@ -1069,14 +1071,13 @@ async def test_send_headers_for_empty_bo
+     await resp.write_eof()
+     txt = buf.decode("utf8")
+     assert (
+-        Matches(
++        re.match(
+             "HTTP/1.1 200 OK\r\n"
+             "Content-Length: 0\r\n"
+             "Content-Type: application/octet-stream\r\n"
+             "Date: .+\r\n"
+             "Server: .+\r\n\r\n"
+-        )
+-        == txt
++        , txt)
+     )
+ 
+ 
+@@ -1089,15 +1090,13 @@ async def test_render_with_body(buf, wri
+ 
+     txt = buf.decode("utf8")
+     assert (
+-        Matches(
++        re.match(
+             "HTTP/1.1 200 OK\r\n"
+             "Content-Length: 4\r\n"
+             "Content-Type: application/octet-stream\r\n"
+             "Date: .+\r\n"
+             "Server: .+\r\n\r\n"
+-            "data"
+-        )
+-        == txt
++            "data", txt)
+     )
+ 
+ 
+@@ -1111,15 +1110,13 @@ async def test_send_set_cookie_header(bu
+ 
+     txt = buf.decode("utf8")
+     assert (
+-        Matches(
++        re.match(
+             "HTTP/1.1 200 OK\r\n"
+             "Content-Length: 0\r\n"
+             "Set-Cookie: name=value\r\n"
+             "Content-Type: application/octet-stream\r\n"
+             "Date: .+\r\n"
+-            "Server: .+\r\n\r\n"
+-        )
+-        == txt
++            "Server: .+\r\n\r\n", txt)
+     )
+ 
+ 
