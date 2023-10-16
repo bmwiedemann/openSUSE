@@ -1120,4 +1120,28 @@
     <comment></comment>
     <requestid>1108900</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>61531e11aead1866438c5ac06eab5837</srcmd5>
+    <version>4.2.6</version>
+    <time>1697488369</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.6 (bsc#1215978, CVE-2023-43665)
+  * CVE-2023-43665: Denial-of-service possibility in
+    django.utils.text.Truncator
+    The input processed by Truncator, when operating in HTML mode, has
+    been limited to the first five million characters in order to
+    avoid potential performance and memory issues.
+  * Fixed a regression in Django 4.2.5 where overriding the deprecated
+    DEFAULT_FILE_STORAGE and STATICFILES_STORAGE settings in tests
+    caused the main STORAGES to mutate (#34821).
+  * Fixed a regression in Django 4.2 that caused unnecessary casting
+    of string based fields (CharField, EmailField, TextField,
+    CICharField, CIEmailField, and CITextField) used with the __isnull
+    lookup on PostgreSQL. As a consequence, indexes using an __isnull
+    expression or condition created before Django 4.2 wouldn’t be used
+    by the query planner, leading to a performance regression
+    (#34840).
+</comment>
+    <requestid>1117946</requestid>
+  </revision>
 </revisionlist>
