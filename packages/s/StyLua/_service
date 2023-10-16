@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">StyLua-0.18.1.tar.gz</param>
+     <param name="srctar">StyLua*.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

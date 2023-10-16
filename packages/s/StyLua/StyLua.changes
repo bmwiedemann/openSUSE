@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  9 13:14:58 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.18.2:
+  * Fixed LuaJIT suffixes LL/ULL causing a panic when running in --verify mode
+  * Fixed incorrect formatting of conditionals when collapse_simple_statement is enabled and the block begins with an empty line
+  * Fixed formatting of dot function call chains with comment between dot and names
+
+-------------------------------------------------------------------
 Sat Aug 26 13:42:49 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.18.1:
