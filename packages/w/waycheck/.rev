@@ -22,4 +22,20 @@
   + Fix icon not showing in window decorations on KDE Plasma</comment>
     <requestid>1114442</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9997a13376bfe0a6a026844e274274b9</srcmd5>
+    <version>1.0.0</version>
+    <time>1697488395</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.0.0
+  + Add a tab for ChromeOS protocols
+  + Add a tab for unknown protocol interfaces
+  + Add a search bar for quickly finding protocols
+  + Add a combo box to filter by implemented or unimplemented protocols
+  + Add explanatory tooltips to table headers
+  + Fix detection of the virtual pointer manager protocol
+  + Fix detection of the DRM lease protocol
+  + Fix warning on startup from the Qt desktop filename</comment>
+    <requestid>1117907</requestid>
+  </revision>
 </revisionlist>
