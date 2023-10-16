@@ -630,4 +630,23 @@
     <comment></comment>
     <requestid>1093151</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f54f54c9cb62f543bd341bd37df8d6bf</srcmd5>
+    <version>0.43.0</version>
+    <time>1697488393</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.43.0 (examples are in full release notes on
+  https://github.com/junegunn/fzf/releases/tag/0.43.0):
+  - (Experimental) Added support for Kitty image protocol in the
+    preview window
+  - (Experimental) --listen server can report program state in
+    JSON format (GET /)
+  - --listen server can be secured by setting $FZF_API_KEY
+varienvironment able.
+  - Added toggle-header action
+  - Added mouse events for --bind
+  - Added offset-up and offset-down actions
+  - Shell extensions</comment>
+    <requestid>1117899</requestid>
+  </revision>
 </revisionlist>
