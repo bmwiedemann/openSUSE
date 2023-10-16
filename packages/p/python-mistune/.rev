@@ -173,4 +173,13 @@
     <comment></comment>
     <requestid>1112031</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f3c3d0b1af9fe0e7c3957d45750f8f82</srcmd5>
+    <version>3.0.2</version>
+    <time>1697488380</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.2
+ * fix RecursionError for lists (forwarded request 1117987 from mimi_vx)</comment>
+    <requestid>1117996</requestid>
+  </revision>
 </revisionlist>

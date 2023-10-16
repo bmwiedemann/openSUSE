@@ -19,11 +19,10 @@
 %define modname mistune
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/lepture/mistune
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
