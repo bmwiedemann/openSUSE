@@ -81,4 +81,12 @@
   * Match python-sip6-devel 6.7.10+</comment>
     <requestid>1114146</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>098d85f879db8342df8f2a17cdb7f0ba</srcmd5>
+    <version>12.13.0</version>
+    <time>1697488389</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117889</requestid>
+  </revision>
 </revisionlist>
