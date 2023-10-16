@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Oct 13 18:14:13 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
+
+- Update to version 2.3:
+  * Add DOS/Windows batch file type
+  * Add Gerber and Excellon drill files
+  * Add JPEG XR mime type
+  * Add Modrinth modpack
+  * Add OpenVPN profile
+  * Add Portable Font Resource application/font-tdpfr.
+  * Add TAK audio mime type
+  * Add application/vnd.microsoft.windows.thumbnail-cache
+  * Add application/vnd.ms-officetheme
+  * Add application/x-bzip for bzip2's deprecated predecessor bzip
+  * Add application/x-bzip3
+  * Add application/x-fishscript and application/x-nuscript
+  * Add application/x-ms-pdb
+  * Add application/x-zpaq
+  * Add definition and test file for StuffIt X archives.
+  * Add image/apng
+  * Add mime type for Typst files
+  * Add mimetype application/x-lmdb
+  * Add mimetype for Blueprint source code
+  * Add mimetype for CBOR
+  * Add mimetype for Devicetree source code
+  * Add mimetype for ERIS link files
+  * Add mimetype for Flattened Devicetree (binary)
+  * Add mimetype for Quite OK Image Format (QOI)
+  * Add perf data file type
+  * Add subclass information for .ppt and .xls
+  * Add support for newer AAXC Audible Audiobook format
+  * Add text/julia for Julia source code
+  * Add text/x-nim and text/x-nimscript
+  * Add todo.txt mime type
+  * Add two new languages
+  * Avoid meson errors when 'build-tools' is set to false
+  * Bump magic priority for application/ovf
+  * CI: Use dnf5 instead of dnf
+  * Change descriptions to say LibreOffice rather than OpenOffice
+  * Don't install man page on Windows
+  * Fix description for audio/x-xi
+  * Give application/x-raw-floppy-disk-image the floppy media icon
+  * Give generic optical disk images the optical media icon
+  * Identify .pdb files without a signature match as
+    application/vnd.palm
+  * Improve matching for message/rfc822
+  * Lengthen image/png magic
+  * Make application/pgp-* not inherit from text/plain
+  * Make application/vnd.squashfs a subclass of
+    application/vnd.efi.img
+  * Make update-mime-database compatible with MSVC (by porting it
+    to C++)
+  * Prefer application/java-archive to application/x-java-archive
+  * Prefer application/vnd.efi.img over
+    application/x-raw-disk-image
+  * Prefer application/vnd.efi.iso over application/x-cd-image
+  * Prefer audio/vnd.wave over audio/x-wav
+  * Prefer video/vnd.avi over video/x-msvideo
+  * Remove "##" magic for matlab files
+  * Rename application/x-bzip to application/x-bzip2
+  * Revert "use Title Case for mime type description"
+  * Update application/sieve.
+  * Updated to latest xdgmime
+  * add tiled map editor map and tileset files
+  * application/javascript: Rename to text/javascript
+  * application/vnd.dart: use IANA registered type
+  * application/vnd.dbf: use IANA registered type
+  * application/yaml: use IANA registered type
+  * audio/x-wav: Add missing sub-class relationship with
+    application/x-riff
+  * buildsystem - add options for building tests and translations
+  * ci: Use ci-templates to build image
+  * ci: Use detached pipelines
+  * icons for 3d model formats
+  * spec: Clarify that namespaceURI can be empty
+  * text/markdown: add x-office-document generic-icon
+  * text/vnd.familysearch.gedcom: use IANA registered type
+  * use Sentence case for mime type descriptions
+  * use Title Case for mime type description
+  * video/vnd.youtube.yt: add magic
+  * video/vnd.youtube.yt: use IANA registered type
+- Add generic c++_compiler BuildRequires: shared-mime-info now
+  depends on a c++ compiler.
+
+-------------------------------------------------------------------
 Wed Mar 29 16:09:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Filter out dependency on /usr/bin/pkg-config: this package is

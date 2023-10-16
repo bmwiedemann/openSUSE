@@ -18,14 +18,16 @@
 
 %global __requires_exclude ^/usr/bin/pkg-config$
 Name:           shared-mime-info
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Shared MIME Database
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
-Source0:        https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.shared-mime-info
+
+BuildRequires:  c++_compiler
 BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
 # needed for xmllint
