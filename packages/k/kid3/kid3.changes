@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Oct 15 01:52:24 UTC 2023 - Wang Jun <badboywj@gmail.com>
+
+- Update to version 3.9.4
+  * New:
+    + All the official binaries are built with Qt 6. For macOS, the
+      Darwin-amd64.dmg file is now the Qt 6 version, whereas systems older
+      than Mojave need the package Darwin-Qt5.dmg. The string replacement
+      settings stored by Qt 6 are not compatible with Qt 5 because a
+      different encoding is used.
+    + Option "Select file on play" in "User Actions" settings tab.
+  * Improved:
+    + Click on play tool bar time toggles between elapsed and remaining
+      time.
+    + The visibility and docked area of the play tool bar are restored.
+    + ID3v1: When setting multiple genres, use first supported element.
+    + Qt6: Use SVG icons for better performance in file list and dialog.
+  * Fixed:
+    + Do not mark all non-unified frames as modified if any non-unified
+      frame is changed.
+    + Crash in Id3libMetadata when clicking Edit on unsupported frame.
+    + Setting text encoding on TXXX frames with TaglibMetadata.
+    + Skip non letter characters for first letter uppercase format.
+    + Discogs import: Fix values in Artist, Arranger and Performer frames,
+      use "genres" if "styles" is empty, fetch correct cover art,
+      support vinyl track numbers like A1.
+    + Qt6: Crash when adding item to config table.
+    + Qt6: Larger media player slider, do not repeat when last song has
+      been played.
+    + Windows, TaglibMetadata: Support files larger than 2 GB.
+    + Windows, OggFlacMetadata: Build without libssp-0.dll.
+    + Windows, Mp4v2Metadata: Fix saving with file names containing non
+      ASCII characters.
+
+-------------------------------------------------------------------
 Thu Jan 12 10:13:45 UTC 2023 - enzokiel@kabelmail.de
 
 - Update to version 3.9.3
