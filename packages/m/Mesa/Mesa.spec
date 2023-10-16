@@ -140,6 +140,7 @@ Source7:        Mesa.keyring
 Patch2:         n_add-Mesa-headers-again.patch
 # Patches for LLVM 17, should all be in 23.2.
 Patch4:         U_clover-llvm-move-to-modern-pass-manager.patch
+Patch10:        U_radeonsi-prefix-function-with-si_-to-prevent-name-co.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -162,7 +163,7 @@ BuildRequires:  glslang-devel
 BuildRequires:  imake
 BuildRequires:  libtool
 BuildRequires:  memory-constraints
-BuildRequires:  meson
+BuildRequires:  meson >= 0.60
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 # dataclasses is in standard library of python >= 3.7
@@ -773,6 +774,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 
 %patch2 -p1
 %patch4 -p1
+%patch10 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch54 -p1

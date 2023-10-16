@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 14 22:31:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add U_radeonsi-prefix-function-with-si_-to-prevent-name-co.patch
+  Fix https://gitlab.freedesktop.org/mesa/mesa/-/issues/9889
+
+-------------------------------------------------------------------
 Wed Oct  4 10:11:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to Mesa 23.2.1
