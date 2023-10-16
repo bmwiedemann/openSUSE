@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 12 07:34:02 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use proper libguestfs packages for appliance and winsupport
+
+-------------------------------------------------------------------
 Wed Jul 12 06:55:40 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Drop TARGETARCH argument (detect arch during build)

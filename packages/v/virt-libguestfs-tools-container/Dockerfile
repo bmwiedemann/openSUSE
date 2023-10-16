@@ -35,15 +35,15 @@ RUN zypper -n install \
               dosfstools \
               e2fsprogs \
               gptfdisk \
-              guestfs-data \
               guestfs-tools \
-              guestfs-winsupport \
               jfsutils \
               kernel-kvmsmall \
               kubevirt-manifests \
               ldmtool \
               libguestfs \
+              libguestfs-appliance \
               libguestfs-devel \
+              libguestfs-winsupport \
               mdadm \
               parted \
               qemu-tools \
