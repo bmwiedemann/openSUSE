@@ -1,7 +1,7 @@
 #
 # spec file for package m17n-lib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %define	appdefdir  %{_datadir}/X11
 Name:           m17n-lib
-Version:        1.8.0
+Version:        1.8.4
 Release:        0
 Summary:        Multilingual Text Processing Library for the C Language
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
-Group:          System/I18n/Japanese
-URL:            https://www.m17n.org/m17n-lib/
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+URL:            https://www.nongnu.org/m17n/
 Source0:        http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
 Source1:        m17n-lib-rpmlintrc
 Source2:        baselibs.conf
@@ -83,15 +82,15 @@ unset MALLOC_CHECK_
 %make_install INSTALL="install -p"
 # Japanese app-defaults:
 mkdir -p %{buildroot}%{appdefdir}/{ja,ja_JP,ja_JP.eucJP,ja_JP.SJIS,ja_JP.UTF-8}/app-defaults
-iconv -f EUC-JP -t EUC-JP < example/M17NEdit.ja \
+iconv -f UTF-8 -t EUC-JP < example/M17NEdit.ja \
       > %{buildroot}%{appdefdir}/ja/app-defaults/M17NEdit
-iconv -f EUC-JP -t EUC-JP < example/M17NEdit.ja \
+iconv -f UTF-8 -t EUC-JP < example/M17NEdit.ja \
       > %{buildroot}%{appdefdir}/ja_JP/app-defaults/M17NEdit
-iconv -f EUC-JP -t EUC-JP < example/M17NEdit.ja \
+iconv -f UTF-8 -t EUC-JP < example/M17NEdit.ja \
       > %{buildroot}%{appdefdir}/ja_JP.eucJP/app-defaults/M17NEdit
-iconv -f EUC-JP -t SJIS < example/M17NEdit.ja \
+iconv -f UTF-8 -t SJIS < example/M17NEdit.ja \
       > %{buildroot}%{appdefdir}/ja_JP.SJIS/app-defaults/M17NEdit
-iconv -f EUC-JP -t UTF-8 < example/M17NEdit.ja \
+iconv -f UTF-8 -t UTF-8 < example/M17NEdit.ja \
       > %{buildroot}%{appdefdir}/ja_JP.UTF-8/app-defaults/M17NEdit
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print

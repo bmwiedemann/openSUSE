@@ -215,4 +215,12 @@ Consolidate - the GPL-2.0+ is only included because of test scripts (e.g. src/li
     <comment></comment>
     <requestid>829565</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c7413125910e1313f2bcfc891c45a5e6</srcmd5>
+    <version>1.8.4</version>
+    <time>1697488385</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117861</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 14 20:24:19 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 1.8.4:
+  This release is just for bug fixing.
+  * Fix “typedef in m17n-core.h causing error when compiling with C++ code” 
+- Remove RPM groups
+- Change URL to new upstream site.
+- Examples are now in UTF-8 encoding so change iconv part accordingly
+
+-------------------------------------------------------------------
 Mon Aug 24 19:59:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.8.0:
