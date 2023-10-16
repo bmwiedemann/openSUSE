@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 14 10:19:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Handle overflow errors in malformed zchunk files
+
+-------------------------------------------------------------------
 Sun Jun 11 13:32:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.1:
@@ -11,7 +17,7 @@ Mon Mar 27 11:22:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:
   * Add ZCK_NO_WRITE option to disable writing to a file
-  * meson: Use global function in argp check 
+  * meson: Use global function in argp check
 
 -------------------------------------------------------------------
 Sun Feb 19 14:12:46 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
@@ -23,10 +29,10 @@ Sun Feb 19 14:12:46 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 Mon Oct 24 13:06:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.3:
-  * Remove meson deprecation warning 
-  * Add license scan report and status 
-  * test/zck_cmp_uncomp: fix printf format types 
-  * meson: add option to build without docs 
+  * Remove meson deprecation warning
+  * Add license scan report and status
+  * test/zck_cmp_uncomp: fix printf format types
+  * meson: add option to build without docs
   * zck: declare write_data as static
 
 -------------------------------------------------------------------
@@ -51,7 +57,7 @@ Thu Apr 14 13:49:30 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 -------------------------------------------------------------------
 Mon Jan  3 20:35:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add zstd-1.5.1.patch (gh#zchunk/zchunk/57) 
+- add zstd-1.5.1.patch (gh#zchunk/zchunk/57)
 
 -------------------------------------------------------------------
 Thu Jun 24 09:51:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
