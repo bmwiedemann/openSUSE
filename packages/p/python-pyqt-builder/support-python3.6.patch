@@ -1,7 +1,7 @@
-Index: PyQt-builder-1.14.0/PKG-INFO
+Index: PyQt-builder-1.15.3/PKG-INFO
 ===================================================================
---- PyQt-builder-1.14.0.orig/PKG-INFO
-+++ PyQt-builder-1.14.0/PKG-INFO
+--- PyQt-builder-1.15.3.orig/PKG-INFO
++++ PyQt-builder-1.15.3/PKG-INFO
 @@ -9,7 +9,7 @@ License: SIP
  Platform: X11
  Platform: macOS
@@ -9,12 +9,12 @@ Index: PyQt-builder-1.14.0/PKG-INFO
 -Requires-Python: >=3.7
 +Requires-Python: >=3.6
  License-File: LICENSE
- License-File: LICENSE-GPL3
  License-File: LICENSE-GPL2
-Index: PyQt-builder-1.14.0/PyQt_builder.egg-info/PKG-INFO
+ License-File: LICENSE-GPL3
+Index: PyQt-builder-1.15.3/PyQt_builder.egg-info/PKG-INFO
 ===================================================================
---- PyQt-builder-1.14.0.orig/PyQt_builder.egg-info/PKG-INFO
-+++ PyQt-builder-1.14.0/PyQt_builder.egg-info/PKG-INFO
+--- PyQt-builder-1.15.3.orig/PyQt_builder.egg-info/PKG-INFO
++++ PyQt-builder-1.15.3/PyQt_builder.egg-info/PKG-INFO
 @@ -9,7 +9,7 @@ License: SIP
  Platform: X11
  Platform: macOS
@@ -22,12 +22,12 @@ Index: PyQt-builder-1.14.0/PyQt_builder.egg-info/PKG-INFO
 -Requires-Python: >=3.7
 +Requires-Python: >=3.6
  License-File: LICENSE
- License-File: LICENSE-GPL3
  License-File: LICENSE-GPL2
-Index: PyQt-builder-1.14.0/setup.py
+ License-File: LICENSE-GPL3
+Index: PyQt-builder-1.15.3/setup.py
 ===================================================================
---- PyQt-builder-1.14.0.orig/setup.py
-+++ PyQt-builder-1.14.0/setup.py
+--- PyQt-builder-1.15.3.orig/setup.py
++++ PyQt-builder-1.15.3/setup.py
 @@ -48,7 +48,7 @@ setup(
          name='PyQt-builder',
          version=version,
