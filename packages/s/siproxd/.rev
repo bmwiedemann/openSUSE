@@ -368,4 +368,12 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
   and the build succeeds without it too. (forwarded request 967851 from dimstar)</comment>
     <requestid>970006</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>416cff01021dc3e916e2640f680b4e30</srcmd5>
+    <version>0.8.3</version>
+    <time>1697488415</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117961</requestid>
+  </revision>
 </revisionlist>

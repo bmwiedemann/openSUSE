@@ -47,6 +47,8 @@ Source6:        siproxd.service
 #After applying the patch, autogen.sh needs to be run (which, among other things, rebuilds "configure").
 Patch0:         siproxd-libs.patch
 Patch1:         siproxd.plugin_fix_bogus_via.c.patch
+# PATCH-FIX-UPSTREAM https://sourceforge.net/p/siproxd/bugs/65/
+Patch2:         reproducible.patch
 BuildRequires:  docbook-utils
 BuildRequires:  libosip2-devel
 BuildRequires:  libtool
@@ -87,6 +89,7 @@ HTML and PDF documentation for %{name}
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 cp %{S:5} .
 
