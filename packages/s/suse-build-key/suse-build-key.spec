@@ -50,6 +50,8 @@ Source2:        gpg-pubkey-307e3d54-5aaa90a5.asc
 #     Key fingerprint = 0EE9 CA43 0050 9E29 17A0  54ED 8EFE 1BC4 D4AD E9C3
 # container key used by Container TUF style signing.
 Source3:        build-container-d4ade9c3-5a2e9669.asc
+# same, in PEM format
+Source10:       build-container-d4ade9c3-5a2e9669.pem
 
 # New ALP Keys
 #pub   rsa4096/0xFEC28EAF09D9EA69 2023-05-10 [SC] [expires: 2027-05-09]
@@ -126,9 +128,10 @@ install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
 install -d -m 755 $RPM_BUILD_ROOT%{containerkeydir}/
 install -c -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key.asc
 install -c -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key-4096.asc
+
 install -d -m 755 $RPM_BUILD_ROOT%{pemcontainerkeydir}/
-install -c -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key.pem
-install -c -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key-4096.pem
+install -c -m 644 %{SOURCE10} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key.pem
+install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key-4096.pem
 
 %files
 %defattr(644,root,root)

@@ -340,4 +340,15 @@ changelog can't be avoided.
   needed by the package main functionality, but only by dumpsigs. (forwarded request 1110631 from msmeissn)</comment>
     <requestid>1110632</requestid>
   </revision>
+  <revision rev="42" vrev="13">
+    <srcmd5>e5b002486d333f5a041894c388d1eceb</srcmd5>
+    <version>12.0</version>
+    <time>1697488403</time>
+    <user>anag+factory</user>
+    <comment>- build-container-d4ade9c3-5a2e9669.pem: added missing current
+  PEM container key.
+- install the PEM files to the container dir, not the .asc files
+  (bsc#1216203)</comment>
+    <requestid>1117951</requestid>
+  </revision>
 </revisionlist>

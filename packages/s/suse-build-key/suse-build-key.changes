@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 16 08:55:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- build-container-d4ade9c3-5a2e9669.pem: added missing current
+  PEM container key.
+- install the PEM files to the container dir, not the .asc files
+  (bsc#1216203)
+
+-------------------------------------------------------------------
 Tue Sep 12 10:08:56 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - remove gpg, fileutils, mktemp, sh-utils requires as they are not
