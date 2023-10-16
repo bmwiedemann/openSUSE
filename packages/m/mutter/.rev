@@ -1869,4 +1869,26 @@ New stable rel</comment>
   via https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2609 (forwarded request 1116538 from iznogood)</comment>
     <requestid>1117447</requestid>
   </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>ec89d5b7782fa440f00f357fc45b80c4</srcmd5>
+    <version>45.0+45</version>
+    <time>1697488376</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.0+45:
+  + kms/impl-device/atomic:
+    - Fix blob size
+    - Fix stack overflow
+  + kms/impl-device: Inhibit real-time scheduling when mode setting
+  + monitor-manager/native: Update assignments on empty-config too
+  + renderer/native:
+    - Clear old pending mode sets when unsetting all modes
+    - Fold mode unsetting into renamed unset_modes()
+  + tests/dbusmock-templates/rtkit: Add MakeThreadHighPriority
+  + tests/kms/render: Add test for setting empty config
+  + thread:
+    - Allow turning off rt scheduling for running thread
+    - For consistency, s/real_time/realtime/
+  + Updated translations. (forwarded request 1117793 from iznogood)</comment>
+    <requestid>1117970</requestid>
+  </revision>
 </revisionlist>
