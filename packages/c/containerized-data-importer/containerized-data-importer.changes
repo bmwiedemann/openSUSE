@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 12:36:39 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Enable the build for ALP and remove no longer supported SLE versions
+  from the distro check
+
+-------------------------------------------------------------------
 Tue Aug 15 15:18:09 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.57.0
