@@ -183,4 +183,12 @@
     gtk-doc --&gt; python3-Pygments -/-&gt; python3-setuptools</comment>
     <requestid>993338</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>18e0d4a9df9b2255a439a8c4bc84c935</srcmd5>
+    <version>0.4.7</version>
+    <time>1697488379</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117985</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libgusb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,27 @@
 
 
 Name:           libgusb
-Version:        0.3.10
+Version:        0.4.7
 Release:        0
 Summary:        GObject-based library for libusb1
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://github.com/hughsie/libgusb
-Source0:        http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM no-pkg-resources.patch gh#hughsie/libgusb#61 mcepl@suse.com
 # Don't rely on the obsolete version of pkg_resources
 Patch0:         no-pkg-resources.patch
-BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-packaging
 BuildRequires:  vala
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.29
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.19
 
 %description
@@ -77,14 +78,15 @@ cancellation and integration into a mainloop.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	-D tests=false \
+	%{nil}
 %meson_build
 
 %install
 %meson_install
 
-%post -n libgusb2 -p /sbin/ldconfig
-%postun -n libgusb2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgusb2
 
 %files -n libgusb2
 %license COPYING
@@ -96,7 +98,7 @@ cancellation and integration into a mainloop.
 %{_libdir}/girepository-1.0/GUsb-1.0.typelib
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/gusb/
+%doc %{_datadir}/doc/libgusb
 %{_bindir}/gusbcmd
 %{_datadir}/gir-1.0/GUsb-1.0.gir
 %dir %{_datadir}/vala/vapi

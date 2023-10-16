@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Oct 15 08:16:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.7:
+  + Add new API to get the HID descriptor data
+  + Add calling convention to libusb callback functions
+- Changes from version 0.4.6:
+  + Add JSON compatibility helpers for old json-glib versions
+  + Fix emulation of devices using out-of-order BulkTransfer
+    replies
+  + Use project_source_root to fix building as a subproject
+- Changes from version 0.4.5:
+  + Add new API to better detect emulated replug
+  + Do not emit spurious ::device-removed events when emulating
+  + Record zero-sized device events
+  + Reset the in-order event index when clearing the event array
+  + Save the libusb error if libusb_submit_transfer() fails
+- Changes from version 0.4.4:
+  + Add new API to make emulation easier to use
+  + Emit remove devices with matching tags when loading contexts
+  + Fix a critical warning when finalizing devices without
+    endpoints
+  + Reduce the debugging level when emulating firmware
+- Changes from version 0.4.3:
+  + Export g_usb_device_has_tag()
+  + Work around a libusb issue which causes devices to appear twice
+- Add pkgconfig(gi-docgen) and pkgconfig(json-glib-1.0)
+  BuildRequires: New dependencies.
+- Drop gtk-doc BuildRequires: No longer needed, nor used after the
+  port upstream.
+- Pass tests=false to meson setup, do not build or install any
+  tests at this time.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri Aug  5 11:30:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add no-pkg-resources.patch:
