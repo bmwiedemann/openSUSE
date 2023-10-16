@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 12:32:00 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Enable the build for ALP and remove no longer supported SLE versions
+  from the distro check
+
+-------------------------------------------------------------------
 Mon Aug 28 11:23:30 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Delete VMI prior to NFS server pod in tests

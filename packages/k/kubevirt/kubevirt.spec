@@ -174,16 +174,6 @@ the Kubevirt container images.
 #
 distro='%{?sle_version}:%{?is_opensuse}%{!?is_opensuse:0}'
 case "${distro}" in
-150200:0)
-    tagprefix=suse/sles/15.2
-    labelprefix=com.suse.kubevirt
-    registry=registry.suse.com
-    ;;
-150300:0)
-    tagprefix=suse/sles/15.3
-    labelprefix=com.suse.kubevirt
-    registry=registry.suse.com
-    ;;
 150400:0)
     tagprefix=suse/sles/15.4
     labelprefix=com.suse.kubevirt
@@ -205,8 +195,14 @@ case "${distro}" in
     registry=registry.opensuse.org
     ;;
 *)
-    echo "Unsupported distro: ${distro}" >&2
-    exit 1
+    %if 0%{?suse_version} == 1600
+        tagprefix=alp/kubevirt
+        labelprefix=com.suse.kubevirt
+        registry=registry.suse.com
+    %else
+        echo "Unsupported distro: ${distro}" >&2
+        exit 1
+    %endif
     ;;
 esac
 
