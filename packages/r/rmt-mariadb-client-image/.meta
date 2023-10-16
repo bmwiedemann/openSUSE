@@ -1,5 +1,0 @@
-<package name="rmt-mariadb-client-image" project="openSUSE:Factory">
-  <title>openSUSE Tumbleweed MariaDB Client Container Image</title>
-  <description>MariaDB client for RMT, based on the SLE Base Container Image.</description>
-  <devel project="devel:BCI:Tumbleweed" package="rmt-mariadb-client-image"/>
-</package>
