@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.11.0
+Version:        0.2.11.1
 Release:        0
 Summary:        Run external processes, with strong typing of streams
 License:        MIT

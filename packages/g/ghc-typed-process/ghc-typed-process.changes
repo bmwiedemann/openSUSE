@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  8 09:01:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typed-process to version 0.2.11.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/typed-process-0.2.11.1/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:45 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
