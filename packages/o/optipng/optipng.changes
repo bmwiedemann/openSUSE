@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  9 10:14:29 UTC 2023 - pgajdos@suse.com
+
+- asan_build to disable or enable asan build
+
+-------------------------------------------------------------------
 Mon Feb 27 10:18:05 UTC 2023 - pgajdos@suse.com
 
 - remove unused %optipng macro

@@ -16,6 +16,8 @@
 #
 
 
+%define asan_build     0
+
 Name:           optipng
 Version:        0.7.7
 Release:        0
@@ -39,6 +41,9 @@ optimized PNG, and performs PNG integrity checks and corrections.
 %build
 # not autotools generated configure
 export CFLAGS="%{optflags}"
+%if %{asan_build}
+CFLAGS="$CFLAGS -fsanitize=address"
+%endif
 ./configure \
 	-with-system-zlib \
 	-with-system-libpng \
@@ -47,6 +52,9 @@ export CFLAGS="%{optflags}"
 
 #don't strip binaries
 sed -i "s:\(LDFLAGS = \)-s:\1:" src/optipng/Makefile
+%if %{asan_build}
+sed -i 's:\(ALL_LIBS = \)\(.*\):\1-lasan \2:' src/optipng/Makefile
+%endif
 %make_build
 
 %install
