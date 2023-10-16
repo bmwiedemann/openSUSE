@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 %define mname qt5
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        5.15.9
+Version:        5.15.10
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
@@ -76,9 +76,9 @@ BuildRequires:  pkgconfig(Qt5Quick3D)
 BuildRequires:  pkgconfig(Qt5RemoteObjects)
 %endif
 BuildRequires:  %{python_module pyqt-builder >= 1.14.1}
-BuildRequires:  %{python_module qt5-sip >= 12.11}
-BuildRequires:  %{python_module sip-devel >= 6.6.2}
-Requires:       python-qt5-sip >= 12.11
+BuildRequires:  %{python_module qt5-sip >= 12.13}
+BuildRequires:  %{python_module sip-devel >= 6.7.12}
+Requires:       python-qt5-sip >= 12.13
 %requires_ge    python-dbus-python
 Provides:       python-PyQt5 = %{version}-%{release}
 Suggests:       python-%{mname}-quick3d
