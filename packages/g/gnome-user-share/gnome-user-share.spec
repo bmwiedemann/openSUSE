@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-user-share
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           gnome-user-share
-Version:        43.0
+Version:        43.0+11
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-URL:            http://www.gnome.org/
-# Disable Source URL, use git checkout via service
-# Source0:        https://download.gnome.org/sources/gnome-user-share/3.34/%%{name}-%%{version}.tar.xz
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/gnome-user-share
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
