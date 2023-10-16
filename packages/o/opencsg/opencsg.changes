@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  9 05:42:04 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove glew-devel dep since the project is now using GLAD.
+
+-------------------------------------------------------------------
 Thu Oct  5 13:46:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.6.0:

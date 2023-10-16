@@ -26,7 +26,6 @@ URL:            https://www.opencsg.org/
 Source:         https://www.opencsg.org/OpenCSG-%{version}.tar.gz
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  libXmu-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtbase-devel
