@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Oct 13 14:10:56 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.82:
+  * Highlights
+    - Fix a regression in some devices when the Pro-Audio profile
+      was selected.
+      Only enable the IRQ based scheduling and device linking in
+      specific safe cases.
+    - Improve rate switching. In some cases the graph rate would
+      not switch correctly.
+    - Fix regression in alsa wakeups that would cause silence in
+      VMs.
+    - Fix a leak in the SBC codecs for SCO.
+    - More improvements to the RAOP module.
+    - Other small improvements and fixes.
+  * PipeWire
+    - Improve client property checks.
+    - Allow non-power-of-2 quantums when forced.
+    - Improve rate switching. In some cases the graph rate would
+      not switch correctly.
+    - The PIPEWIRE_QUANTUM env variable now forces the size and
+      rate in the graph for the duration of the application.
+      The softer PIPEWIRE_LATENCY and PIPEWIRE_RATE can still be
+      used to merely suggest a maximum latency and a rate.
+  * modules
+    - Remove the RTSP FLUSH request in RAOP because it does not
+      seem necessary.
+    - The RAOP module now uses the common RTP stream functions.
+    - Add sockets option to protocol-native to make pipewire listen
+      on multiple sockets.
+  *  SPA
+    - Clean up some of the log functions.
+    - Add an option in ALSA to disable linking devices together.
+    - Only link pcms together when 1 capture and 1 playback pcm.
+      For more complex devices we can't be sure which ones can be
+      linked.
+    - Disable tsched only when using linked devices.
+    - Add some extra checks in ALSA to avoid segfaults.
+    - Add Tag support to alsa-sink and alsa-source.
+    - Use dynamic pod builder when we can.
+    - Set priority.driver on midi-bridge to allow it as a fallback
+      driver.
+    - Fix regression in alsa wakeups.
+    - The PTP clock can now be found from the interface in
+      node-driver.
+  * pulse-server
+    - Some small cleanups and internal improvements.
+    - Add some memory debugging messages.
+    - Add Tag messages to streams.
+  * Bluetooth
+    - Fix a leak in the SBC codecs for SCO.
+  * JACK
+    - Patch up midi events in the destination buffer instead of
+      writing to the source buffer.
+    - Group all jack clients together to avoid transport issues.
+  * ALSA-plugins
+    - Add also.deny option to block alsa clients from opening the
+      PCM.
+- Drop patches already included upstream:
+  * 0001-alsa-add-api.alsa.auto-link-option.patch
+  * 0002-acp-fix-compilation.patch
+  * 0003-acp-only-join-and-link-when-1-capture-and-1-playback.patch
+  * 0004-acp-only-disable-tsched-when-linking.patch
+  * 0001-alsa-dont-check-early-wakeup-when-PCM-stopped.patch
+
+-------------------------------------------------------------------
 Fri Oct 13 08:33:28 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patches from upstream that fix pro-audio not producing any

@@ -880,4 +880,41 @@ Build tested.
     <comment></comment>
     <requestid>1117660</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>36af14f8bb67ce3bcadf702ab8f65b8e</srcmd5>
+    <version>0.3.82</version>
+    <time>1697488366</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.82:
+  * Highlights
+    - Fix a regression in some devices when the Pro-Audio profile
+      was selected.
+      Only enable the IRQ based scheduling and device linking in
+      specific safe cases.
+    - Improve rate switching. In some cases the graph rate would
+      not switch correctly.
+    - Fix regression in alsa wakeups that would cause silence in
+      VMs.
+    - Fix a leak in the SBC codecs for SCO.
+    - More improvements to the RAOP module.
+    - Other small improvements and fixes.
+  * PipeWire
+    - Improve client property checks.
+    - Allow non-power-of-2 quantums when forced.
+    - Improve rate switching. In some cases the graph rate would
+      not switch correctly.
+    - The PIPEWIRE_QUANTUM env variable now forces the size and
+      rate in the graph for the duration of the application.
+      The softer PIPEWIRE_LATENCY and PIPEWIRE_RATE can still be
+      used to merely suggest a maximum latency and a rate.
+  * modules
+    - Remove the RTSP FLUSH request in RAOP because it does not
+      seem necessary.
+    - The RAOP module now uses the common RTP stream functions.
+    - Add sockets option to protocol-native to make pipewire listen
+      on multiple sockets.
+  *  SPA
+    - Clean up some of the log functions.</comment>
+    <requestid>1117943</requestid>
+  </revision>
 </revisionlist>
