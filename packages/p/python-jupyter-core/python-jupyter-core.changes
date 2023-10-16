@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 15 15:28:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.0
+  * Add python 3.12 support #367 (@blink1073)
+  * Update typings for traitlets 5.11 #366 (@blink1073)
+
+-------------------------------------------------------------------
 Sat Oct  7 13:07:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.3.2

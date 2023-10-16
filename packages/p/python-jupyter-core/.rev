@@ -230,4 +230,15 @@ Update to 4.6.1</comment>
   * Fix event loop handling #362 (@blink1073)</comment>
     <requestid>1116211</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9d97c7244ae67711cfcb50037614a271</srcmd5>
+    <version>5.4.0</version>
+    <time>1697488392</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.4.0
+  * Add python 3.12 support #367 (@blink1073)
+  * Update typings for traitlets 5.11 #366 (@blink1073)
+</comment>
+    <requestid>1117894</requestid>
+  </revision>
 </revisionlist>
