@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 16 00:15:50 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.29.5:
+  * fix: ignore link refs when looking for matches
+  * chore: drop `jdkato/regexp`
+  * fix: bump twine to 0.6.1
+
+-------------------------------------------------------------------
+Mon Oct 16 00:10:13 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Use %%name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+
+-------------------------------------------------------------------
 Fri Oct 13 19:35:07 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.29.4:

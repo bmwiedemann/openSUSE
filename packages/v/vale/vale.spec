@@ -17,7 +17,7 @@
 
 
 Name:           vale
-Version:        2.29.4
+Version:        2.29.5
 Release:        0
 Summary:        CLI tool to lint text with extensible markup format support
 License:        MIT
@@ -46,11 +46,12 @@ https://vale.sh/
 
 %build
 # Build the binary.
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
 go build \
-   -mod=vendor \
    -tags extended \
-   -buildmode=pie \
-   ./cmd/vale
+   ./cmd/%{name}
 
 %check
 # execute the binary as a basic check

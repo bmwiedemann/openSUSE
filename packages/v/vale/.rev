@@ -392,4 +392,25 @@
   * refactor: look for .adoc comments at line start (forwarded request 1117720 from jfkw)</comment>
     <requestid>1117723</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6a666e1e761afadc547e13978e8c890a</srcmd5>
+    <version>2.29.5</version>
+    <time>1697490088</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.29.5:
+  * fix: ignore link refs when looking for matches
+  * chore: drop `jdkato/regexp`
+  * fix: bump twine to 0.6.1
+
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Use %%name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict. (forwarded request 1118031 from jfkw)</comment>
+    <requestid>1118032</requestid>
+  </revision>
 </revisionlist>
