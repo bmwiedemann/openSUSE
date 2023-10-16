@@ -853,4 +853,15 @@ argument by removing the curly brackets (shell syntax).</comment>
 </comment>
     <requestid>1114826</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>d2acd7b72b1b547957d238c407bb1694</srcmd5>
+    <version>4.96.2</version>
+    <time>1697488404</time>
+    <user>anag+factory</user>
+    <comment>- security update to exim 4.96.2
+  * fixes CVE-2023-42117 (bsc#1215787)
+  * fixes CVE-2023-42119 (bsc#1215789)
+</comment>
+    <requestid>1117952</requestid>
+  </revision>
 </revisionlist>

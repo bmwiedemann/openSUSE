@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 16 08:45:01 UTC 2023 - Peter Wullinger <wullinger@rz.uni-kiel.de>
+
+- security update to exim 4.96.2
+  * fixes CVE-2023-42117 (bsc#1215787)
+  * fixes CVE-2023-42119 (bsc#1215789)
+
+-------------------------------------------------------------------
 Mon Oct  2 05:53:32 UTC 2023 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - security update to exim 4.96.1
