@@ -1,0 +1,5 @@
+<package name="mariadb-client-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed MariaDB Client</title>
+  <description>MariaDB Client container based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="mariadb-client-image"/>
+</package>
