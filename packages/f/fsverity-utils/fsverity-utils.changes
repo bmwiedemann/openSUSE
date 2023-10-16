@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Mar 27 09:01:42 UTC 2023 - David Disseldorp <ddiss@suse.com>
 
-- Initial packaging, version 1.5
+- Initial packaging, version 1.5 (jsc#PED-7094)
 - Add pregenerated manpage to avoid pandoc build dependency
   * pandoc is large and unavailable on some architectures
 - Don't package static library

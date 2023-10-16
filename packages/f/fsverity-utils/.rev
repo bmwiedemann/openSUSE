@@ -20,4 +20,12 @@ https://git.kernel.org/pub/scm/fs/fsverity/fsverity-utils.git
 https://www.kernel.org/doc/html/latest/filesystems/fsverity.html </comment>
     <requestid>1107160</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fbe54f2062eebdcd09a355a08b0790b6</srcmd5>
+    <version>1.5</version>
+    <time>1697490095</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118055</requestid>
+  </revision>
 </revisionlist>

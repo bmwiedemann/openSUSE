@@ -11,9 +11,10 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           fsverity-utils
 Version:        1.5
@@ -21,14 +22,14 @@ Release:        0
 Summary:        Userspace utilities for fs-verity
 License:        MIT
 Group:          System/Filesystems
-Url:            https://www.kernel.org/doc/html/latest/filesystems/fsverity.html
+URL:            https://www.kernel.org/doc/html/latest/filesystems/fsverity.html
 Source0:        https://git.kernel.org/pub/scm/fs/fsverity/%{name}.git/snapshot/%{name}-%{version}.tar.gz
 # manpage pregenerated from "make install-man" to avoid pandoc build
 # dependency. pandoc is huge and unavailable on some architectures.
 Source1:        fsverity.1
-BuildRequires:	gcc
-BuildRequires:	kernel-headers
-BuildRequires:	libopenssl-devel
+BuildRequires:  gcc
+BuildRequires:  kernel-headers
+BuildRequires:  libopenssl-devel
 
 %description
 fsverity is a userspace utility for fs-verity. fs-verity is a Linux
@@ -40,14 +41,14 @@ fs-verity files, and sign files for use with fs-verity (among other
 things). fsverity's functionality is divided among various subcommands.
 
 %package -n libfsverity0
-Summary:	Library package for fsverity-utils
+Summary:        Library package for fsverity-utils
 
 %description -n libfsverity0
 Shared-object dependencies for fsverity-utils.
 
 %package devel
-Summary:	Development package for fsverity-utils
-Requires:	libfsverity0 = %{version}-%{release}
+Summary:        Development package for fsverity-utils
+Requires:       libfsverity0 = %{version}-%{release}
 
 %description devel
 Development package for fsverity-utils, including libfsverity header
