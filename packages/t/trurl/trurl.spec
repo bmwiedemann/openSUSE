@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Web/Utilities
 #Git-Clone:     https://github.com/curl/trurl.git
 URL:            https://curl.se/trurl
 Source:         https://github.com/curl/trurl/archive/refs/tags/%{name}-%{version}.tar.gz
+Patch0:         trurl-disable-broken-tests.patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
@@ -36,6 +37,7 @@ shell script authors everywhere.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch0 -p1
 
 %build
 %make_build PREFIX=%{_prefix}
