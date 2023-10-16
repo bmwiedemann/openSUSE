@@ -1,5 +1,0 @@
-<package name="rmt-mariadb-image" project="openSUSE:Factory">
-  <title>openSUSE Tumbleweed MariaDB Server Container Image</title>
-  <description>MariaDB server for RMT, based on the SLE Base Container Image.</description>
-  <devel project="devel:BCI:Tumbleweed" package="rmt-mariadb-image"/>
-</package>
