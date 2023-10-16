@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 31 17:56:11 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 3.14
+  * appdata ==> metainfo for desktop stuff.
+  * Non-deprecated replacements for icon names.
+  * fix Progress chart for basic module showing lesson 0 as lesson 1.
+  * fix Spell correction: editting ==> editing.
+  * fix Semicolon at end of keyword entries in klavaro.desktop.in.
+  * fix Memory leak on trans_lang_get_similar function.
+  * add Hindi support.
+  * add Indonesian translation.
+  * update Croatian,  Romenian translation
+
+-------------------------------------------------------------------
 Sat Mar 26 15:29:44 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 3.13

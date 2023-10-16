@@ -1,7 +1,7 @@
 #
 # spec file for package klavaro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define espeak    espeak
 %endif
 Name:           klavaro
-Version:        3.13
+Version:        3.14
 Release:        0
 Summary:        Typing tutor
 License:        GPL-3.0-or-later
@@ -81,16 +81,14 @@ layouts.
 %endif
 
 %files -f %{name}.lang
-%{_bindir}/klavaro
+%{_bindir}/%{name}
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README TODO
-%{_mandir}/man1/klavaro.1%{?ext_man}
-%{_datadir}/klavaro/
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/klavaro.appdata.xml
-%{_datadir}/applications/klavaro.desktop
-%{_datadir}/icons/hicolor/*/apps/klavaro.png
-# Remove static lib processing when libgtkdatabox gtk3 apppears
-%exclude %{_libdir}/libgtkdataboks.*
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/%{name}/
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %changelog
