@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 13 19:55:02 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
+
+- Add upstream patches:
+  + b33a6627f4fc96938b6015e05849867c472160a8.patch: Add more
+    missing generic type arguments.
+  + 2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch: Implementations
+    of "G List.get()" should use non-nullable return as defined.
+
+-------------------------------------------------------------------
 Sat Sep 17 15:32:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.20.6:

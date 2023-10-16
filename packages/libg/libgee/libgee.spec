@@ -1,7 +1,7 @@
 #
 # spec file for package libgee
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,11 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libgee
 Source0:        https://download.gnome.org/sources/libgee/0.20/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM b33a6627f4fc96938b6015e05849867c472160a8.patch -- Add more missing generic type arguments
+Patch0:         https://gitlab.gnome.org/GNOME/libgee/-/commit/b33a6627f4fc96938b6015e05849867c472160a8.patch
+# PATCH-FIX-UPSTREAM 2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch -- Implementations of "G List.get()" should use non-nullable return as defined
+Patch1:         https://gitlab.gnome.org/GNOME/libgee/-/commit/2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch
+
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.25.1
