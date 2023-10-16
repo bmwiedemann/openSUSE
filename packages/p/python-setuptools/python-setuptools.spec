@@ -93,6 +93,9 @@ especially ones that have dependencies on other packages.
 %prep
 %autosetup -p1 -n setuptools-%{version}
 
+# Remove bundled exes
+rm -f setuptools/*.exe
+
 %build
 %if ! %{with wheel}
 %python_build

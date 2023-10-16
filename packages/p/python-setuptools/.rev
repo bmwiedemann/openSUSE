@@ -1133,4 +1133,13 @@
     executables -- by :user:`eugene-sevostianov-sc`</comment>
     <requestid>1108946</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>2d116c98070d90755e0adb1f87eb3528</srcmd5>
+    <version>68.1.2</version>
+    <time>1697488381</time>
+    <user>anag+factory</user>
+    <comment>- Do not ship bundled exes
+</comment>
+    <requestid>1118008</requestid>
+  </revision>
 </revisionlist>
