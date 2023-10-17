@@ -2735,7 +2735,6 @@ BuildFlags: onlybuild:python-cmdln
 BuildFlags: onlybuild:python-constantly
 BuildFlags: onlybuild:python-construct
 BuildFlags: onlybuild:python-coverage
-BuildFlags: onlybuild:python-cppy
 BuildFlags: onlybuild:python-cryptography
 BuildFlags: onlybuild:python-cssselect
 BuildFlags: onlybuild:python-dbus-python
@@ -2824,7 +2823,6 @@ BuildFlags: onlybuild:python-pyjsparser
 BuildFlags: onlybuild:python-pyparsing
 BuildFlags: onlybuild:python-pyparsing:primary
 BuildFlags: onlybuild:python-pyproject-hooks
-BuildFlags: onlybuild:python-pyproject-metadata
 BuildFlags: onlybuild:python-pyqt-builder
 BuildFlags: onlybuild:python-pyqt-rpm-macros
 BuildFlags: onlybuild:python-pyserial
@@ -2861,7 +2859,6 @@ BuildFlags: onlybuild:python-sip6
 BuildFlags: onlybuild:python-six
 BuildFlags: onlybuild:python-slip
 BuildFlags: onlybuild:python-smartypants
-BuildFlags: onlybuild:python-smmap
 BuildFlags: onlybuild:python-sniffio
 BuildFlags: onlybuild:python-snowballstemmer
 BuildFlags: onlybuild:python-sortedcontainers
@@ -2875,7 +2872,6 @@ BuildFlags: onlybuild:python-sphinxcontrib-jsmath
 BuildFlags: onlybuild:python-sphinxcontrib-qthelp
 BuildFlags: onlybuild:python-sphinxcontrib-serializinghtml
 BuildFlags: onlybuild:python-sphinxcontrib-websupport
-BuildFlags: onlybuild:python-tabulate
 BuildFlags: onlybuild:python-testpath
 BuildFlags: onlybuild:python-toml
 BuildFlags: onlybuild:python-tomli
