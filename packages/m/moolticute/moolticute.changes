@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 28 09:43:03 UTC 2023 - Bob Haley <fawz@use.startmail.com>
+
+- Update to v1.02.0
+    [BLE] Fetch and send password for special no bundle upload
+    Remove duplicate service check during import, fix #1148
+    [BLE] Remove empty service during integrity check
+    Change Credential save error message to more specific, fix #1021
+    Prevent Linux Mint dark mode readability issues, fix #1158
+    Remove CTRL from shortcut displayed on Advanced tab
+    Fix Login and Password length limit for credentials edit
+    Fix Login and Password length limit on Credentials tab
+    [BLE] Decrease notes images, increase font size
+    [BLE] Protect note fetch from parallel fetches, fix #1151
+    [BLE] Remove Enabled/Disabled text for BT and Knock detection
+    build for ubuntu 23.04
+    [BLE] Handle email address during adding credential
+    [BLE] Add improve battery life text to disable BLE setting (bundle v13)
+    [BLE] Improve notes label name display
+    [BLE] Send wake up device when credential requested and device is locked
+    Add copy to clipboard for password generation
+    [BLE] Add new device settings (paranoid pin entry, battery charge disable - bundle v13)
+    [BLE] Fix fetch password for multiple domains
+    [BLE] Fix password change for multiple domains
+    Handle new tld for existing multiple domain service
+    Set password generator length based on device, fix #1174
+    [BLE] Add option to continue recondition
+
+-------------------------------------------------------------------
 Thu Jun 29 07:08:47 UTC 2023 - Stefan Weiberg <opensuse@hibiki.eu>
 
 - Update to v1.01.0

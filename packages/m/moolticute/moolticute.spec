@@ -19,7 +19,7 @@
 %global UDEVDIR %{_udevrulesdir}
 %global QMAKE_BIN qmake-qt5
 Name:           moolticute
-Version:        1.01.0.r0.g77100ea
+Version:        1.02.0.r0.gc4e4886
 Release:        0
 Summary:        Companion GUI application for Mooltipass password manager devices
 License:        GPL-3.0-only
