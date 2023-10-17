@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-onigurumacffi
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python cffi bindings for the oniguruma regex engine
 License:        MIT
 URL:            https://github.com/asottile/onigurumacffi
 Source:         https://github.com/asottile/onigurumacffi/archive/refs/tags/v%{version}.tar.gz#/onigurumacffi-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module cffi >= 1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module cffi >= 1}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
