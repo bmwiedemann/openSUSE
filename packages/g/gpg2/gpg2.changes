@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 16 19:54:40 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix Emacs EasyPG behavior when parsing output:
+  * gpg: Report BEGIN_* status before examining the input.
+  * Upstream task: https://dev.gnupg.org/T6481
+  * Add gnupg-Report-BEGIN_-status-before-examining-the-input.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 06:46:08 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Install the internal executables in the /usr/libexec dir instead

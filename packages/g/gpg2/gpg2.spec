@@ -44,6 +44,8 @@ Patch10:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.pa
 Patch11:        gnupg-allow-large-rsa.patch
 #PATCH-FIX-SUSE Revert the rfc4880bis features default of key generation
 Patch12:        gnupg-revert-rfc4880bis.patch
+#PATCH-FIX-UPSTREAM Fix emacs gpg2 output parsing
+Patch13:        gnupg-Report-BEGIN_-status-before-examining-the-input.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  ibmswtpm2
