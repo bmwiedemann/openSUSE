@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 16 18:42:03 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.30
+
+- Update to 2.3.30
+  - Fix intermittent "broken pipe" in tests by @native-api in #2817
+  - Add CPython 3.13.0a1 by @edgarrmondragon in #2818
+  - Add PyPy 7.3.13 by @dand-oss in #2807
+  - Fix linking against Homebrew's Tcl/Tk 8.6.13 in MacOS by @startergo in #2820
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.29...v2.3.30
+
+-------------------------------------------------------------------
 Fri Oct  6 07:42:24 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.29
 
 - Update to 2.3.29
