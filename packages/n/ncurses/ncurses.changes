@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Oct  9 07:54:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231007
+  + improve loop-limit for get_position().
+  + improve manual description of immedok (Debian #1053603).
+  + fix a few formatting issues with manpages (Debian #1053123).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+
+-------------------------------------------------------------------
+Wed Oct  4 11:04:50 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231001
+  + modify setupterm to provide for using ANSI cursor-position report (in
+    user6/user7 terminfo capabilities) to obtain screensize if neither
+    environment variables or ioctl is used.  The ncurses test-program
+    with options "-E -T" demonstrates this feature.
+  + improve error messages in tic (patch by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + modify test/clip_printw.c to optionally test non-wrapped updates.
+  + fix reallocation loop for vsnprintf() in _nc_sprintf_string() by
+    copying the va_list variable (patch by Ian Abbott).
+- Add ncurses patch 20230923
+  + improve formatting of manpages (patches by Branden Robinson).
+  + amend change to delscreen() to limit the windows which it creates to
+    just those associated with the screen (report by Frederic Boiteux,
+    cf: 20220813).
+
+-------------------------------------------------------------------
+Tue Sep 19 14:23:34 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230918
+  + new tarball/errata (report by Sven Joachim).
+- Add ncurses patch 20230917
+  + improve formatting of manpages (integrated patches by Branden
+    Robinson).
+  + correct limit for name-length in write_entry.c (report/testcase by
+    Luna Saphie Mittelbach).
+  + limit delays to 30 seconds, i.e., padding delays in terminfo, as well
+    as napms() and delay_output() functions.
+  + improve a few pointer-checks.
+  + improve parsing in _nc_msec_cost, allowing a single decimal point.
+
+-------------------------------------------------------------------
 Tue Sep 12 08:44:25 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230909
