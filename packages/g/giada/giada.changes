@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 16 20:46:54 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Drop the Commercial from license tag
+  * It is an licensing option suggested by author, however our legaldb
+    throws an error that it's not a valid SPDX license
+
+-------------------------------------------------------------------
 Tue Sep 19 20:28:07 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of license based on legaldb review 
