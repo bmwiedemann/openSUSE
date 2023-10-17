@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 16 14:40:42 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add patches (boo#1216269, QTBUG-117944):
+  * 0001-fix-nullptr-derefence-with-invalid-SVG.patch
+  * 0002-make-sure-we-do-not-load-invalid-SVGs-twice.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 09:40:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

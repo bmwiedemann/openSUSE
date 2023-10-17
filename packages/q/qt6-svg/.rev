@@ -208,4 +208,14 @@
     <comment>Qt 6.6.0. Not built yet (forwarded request 1116657 from krop)</comment>
     <requestid>1116957</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>3d4968ac64360b8fcf70f7baa086710b</srcmd5>
+    <version>6.6.0</version>
+    <time>1697567074</time>
+    <user>anag+factory</user>
+    <comment>- Add patches (boo#1216269, QTBUG-117944):
+  * 0001-fix-nullptr-derefence-with-invalid-SVG.patch
+  * 0002-make-sure-we-do-not-load-invalid-SVGs-twice.patch</comment>
+    <requestid>1118069</requestid>
+  </revision>
 </revisionlist>

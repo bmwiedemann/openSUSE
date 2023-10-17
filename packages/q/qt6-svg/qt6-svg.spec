@@ -33,6 +33,10 @@ Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-fix-nullptr-derefence-with-invalid-SVG.patch QTBUG-117944 boo#1216269
+Patch01:        0001-fix-nullptr-derefence-with-invalid-SVG.patch
+# PATCH-FIX-UPSTREAM 0002-make-sure-we-do-not-load-invalid-SVGs-twice.patch boo#1216269
+Patch02:        0002-make-sure-we-do-not-load-invalid-SVGs-twice.patch
 Source99:       qt6-svg-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel

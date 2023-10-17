@@ -1,0 +1,79 @@
+From a090bd1f9a7bfa14f06b14570c6a5a37843931c6 Mon Sep 17 00:00:00 2001
+From: Paul Olav Tvete <paul.tvete@qt.io>
+Date: Tue, 10 Oct 2023 11:41:41 +0200
+Subject: [PATCH] Make sure we don't load invalid SVGs twice
+
+Fixes a bug where loading an invalid SVG that happens
+to be valid XML could behave differently in QML and C++,
+because readimage() in qquickpixmapcache.cpp calls
+QImageReader::size() twice.
+
+Task-number: QTBUG-117944
+Pick-to: 6.6 6.5
+Change-Id: Ibef7f54627c76414c66f81804f5f46f2db3594ba
+Reviewed-by: Eirik Aavitsland <eirik.aavitsland@qt.io>
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+---
+ src/plugins/imageformats/svg/qsvgiohandler.cpp | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/src/plugins/imageformats/svg/qsvgiohandler.cpp b/src/plugins/imageformats/svg/qsvgiohandler.cpp
+index b04ee6b2..570c9829 100644
+--- a/src/plugins/imageformats/svg/qsvgiohandler.cpp
++++ b/src/plugins/imageformats/svg/qsvgiohandler.cpp
+@@ -19,7 +19,7 @@ class QSvgIOHandlerPrivate
+ {
+ public:
+     QSvgIOHandlerPrivate(QSvgIOHandler *qq)
+-        : q(qq), loaded(false), readDone(false), backColor(Qt::transparent)
++        : q(qq), loadAttempted(false), loadStatus(false), readDone(false), backColor(Qt::transparent)
+     {}
+ 
+     bool load(QIODevice *device);
+@@ -31,7 +31,8 @@ public:
+     QRect            clipRect;
+     QSize            scaledSize;
+     QRect            scaledClipRect;
+-    bool             loaded;
++    bool             loadAttempted;
++    bool             loadStatus;
+     bool             readDone;
+     QColor           backColor;
+ };
+@@ -39,8 +40,9 @@ public:
+ 
+ bool QSvgIOHandlerPrivate::load(QIODevice *device)
+ {
+-    if (loaded)
+-        return true;
++    if (loadAttempted)
++        return loadStatus;
++    loadAttempted = true;
+     if (q->format().isEmpty())
+         q->canRead();
+ 
+@@ -63,10 +65,10 @@ bool QSvgIOHandlerPrivate::load(QIODevice *device)
+ 
+     if (res) {
+         defaultSize = r.defaultSize();
+-        loaded = true;
++        loadStatus = true;
+     }
+ 
+-    return loaded;
++    return loadStatus;
+ }
+ 
+ 
+@@ -105,7 +107,7 @@ bool QSvgIOHandler::canRead() const
+ {
+     if (!device())
+         return false;
+-    if (d->loaded && !d->readDone)
++    if (d->loadStatus && !d->readDone)
+         return true;        // Will happen if we have been asked for the size
+ 
+     bool isCompressed = false;
+-- 
+2.16.3
+
