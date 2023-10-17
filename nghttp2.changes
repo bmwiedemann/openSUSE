@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 16 10:24:50 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.57.0 [bsc#1216174]
+  1.57.0
+  * Fixes CVE-2023-44487
+  * Bump ngtcp2 by @tatsuhiro-t in #1944
+  * Add dependabot to update actions by @tatsuhiro-t in #1946
+  * Bump golang.org/x/net to v0.15.0 by @tatsuhiro-t in #1950
+  * Bump actions/setup-go from 3 to 4 by @dependabot in #1948
+  * Bump actions/checkout from 3 to 4 by @dependabot in #1949
+  * Bump actions/upload-artifact from 1 to 3 by @dependabot in #1947
+  * docker: Bump base image to debian 12 by @tatsuhiro-t in #1951
+  * nghttpx: Header field name must be lowercase by @tatsuhiro-t in #1953
+  * Bump quictls by @tatsuhiro-t in #1945
+  * Apps fix by @tatsuhiro-t in #1957
+  * nghttpx: Fix bug that --single-process does not work by @tatsuhiro-t in #1958
+  * Fix clang-format by @tatsuhiro-t in #1959
+  * Rework session management by @tatsuhiro-t in #1961
+  1.56.0
+  * doc: Bump boringssl by @tatsuhiro-t in #1928
+  * Fix memory leak by @tatsuhiro-t in #1930
+  * Return void by @tatsuhiro-t in #1931
+  * nghttpx: Rework sending and receiving ECN bits by @tatsuhiro-t in #1934
+  * CMSG_DATA does not necessarily return an aligned pointer by @tatsuhiro-t in #1935
+  * Bump quictls by @tatsuhiro-t in #1937
+  * Bump ngtcp2 and its dependencies by @tatsuhiro-t in #1939
+  * nghttpx: Simplify std::unique_ptr get and release by @tatsuhiro-t in #1940
+  * Bump llhttp to 926c982942eb53a13f01c1e9e6b19bd3b196e7dd by @tatsuhiro-t in #1941
+  * Bump libbpf to v1.2.2 by @tatsuhiro-t in #1942
+  * Update Dockerfile by @tatsuhiro-t in #1943
+
+-------------------------------------------------------------------
 Sat Jul 15 15:11:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.55.1:

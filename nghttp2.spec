@@ -22,7 +22,7 @@
 %global sover_asio 1
 %global flavor @BUILD_FLAVOR@%{nil}
 Name:           nghttp2
-Version:        1.55.1
+Version:        1.57.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
