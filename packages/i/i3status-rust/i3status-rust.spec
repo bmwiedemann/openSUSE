@@ -23,7 +23,7 @@ Version:        0.32.1
 Release:        0%{?dist}
 Summary:        Feature-rich and resource-friendly replacement for i3status, written in Rust
 
-License:        GPL-3.0-or-later
+License:        APSL-2.0 AND GPL-3.0-or-later AND MPL-2.0 AND Apache-2.0 AND (Apache-2.0 OR MIT) AND CC-BY-3.0 AND CC-BY-SA-4.0 AND (Artistic-1.0-Perl OR GPL-1.0-or-later) AND BSL-1.0 AND (Apache-2.0 OR BSL-1.0) AND CC0-1.0 AND (GPL-2.0-or-later OR MIT) AND HPND AND ISC AND Zlib AND BSD-2-Clause AND BSD-3-Clause AND Unicode-DFS-2016
 URL:            https://github.com/greshake/i3status-rust
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
