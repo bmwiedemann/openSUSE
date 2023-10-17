@@ -378,4 +378,14 @@
     <comment>New stable release (forwarded request 1111544 from iznogood)</comment>
     <requestid>1111584</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e4e54fe064de01a22edaf74a44bf0826</srcmd5>
+    <version>45.1</version>
+    <time>1697567043</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.1:
+  + Fix right click not opening earmark popover.
+  + Updated translations. (forwarded request 1117808 from iznogood)</comment>
+    <requestid>1117971</requestid>
+  </revision>
 </revisionlist>
