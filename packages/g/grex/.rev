@@ -7,4 +7,12 @@
     <comment>I want to add grex to openSUSE:Factory</comment>
     <requestid>1105978</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3bcfae88aa409451795887c65f20d1ed</srcmd5>
+    <version>1.4.4</version>
+    <time>1697567144</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118302</requestid>
+  </revision>
 </revisionlist>

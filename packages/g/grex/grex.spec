@@ -20,7 +20,7 @@ Name:           grex
 Version:        1.4.4
 Release:        0
 Summary:        CLI regex generator
-License:        Apache-2.0
+License:        Apache-2.0 AND MPL-2.0 AND MIT AND (Apache-2.0 OR MIT) AND BSL-1.0 AND Apache-2.0 WITH LLVM-exception
 URL:            https://github.com/pemistahl/grex
 Source0:        https://github.com/pemistahl/grex/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
