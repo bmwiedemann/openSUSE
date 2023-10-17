@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 16 09:28:06 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.8.1
+
+- Security fixes relase 20.8.1
+  * (CVE-2023-44487, bsc#1216190): nghttp2 Security Release
+  * (CVE-2023-45143, bsc#1216205): undici Security Release
+  * (CVE-2023-39332, bsc#1216271): Path traversal through path stored in Uint8Array
+  * (CVE-2023-39331, bsc#1216270): Permission model improperly protects against path traversal
+  * (CVE-2023-38552, bsc#1216272): Integrity checks according to policies can be circumvented
+  * (CVE-2023-39333, bsc#1216273): Code injection via WebAssembly export names
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Oct  5 13:45:41 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.8.0
 
 - Update to 20.8.0:

@@ -192,4 +192,19 @@ versioned.patch: refreshed</comment>
 - fix_ci_tests.patch: refreshed</comment>
     <requestid>1116076</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f0c17859d5c55c8c454f46f4eb978984</srcmd5>
+    <version>20.8.1</version>
+    <time>1697566948</time>
+    <user>anag+factory</user>
+    <comment>- Security fixes relase 20.8.1
+  * (CVE-2023-44487, bsc#1216190): nghttp2 Security Release
+  * (CVE-2023-45143, bsc#1216205): undici Security Release
+  * (CVE-2023-39332, bsc#1216271): Path traversal through path stored in Uint8Array
+  * (CVE-2023-39331, bsc#1216270): Permission model improperly protects against path traversal
+  * (CVE-2023-38552, bsc#1216272): Integrity checks according to policies can be circumvented
+  * (CVE-2023-39333, bsc#1216273): Code injection via WebAssembly export names
+- fix_ci_tests.patch: refreshed</comment>
+    <requestid>1118025</requestid>
+  </revision>
 </revisionlist>

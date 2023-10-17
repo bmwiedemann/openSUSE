@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs20
-Version:        20.8.0
+Version:        20.8.1
 Release:        0
 
 # Double DWZ memory limits
@@ -315,7 +315,7 @@ Provides:       bundled(icu) = 73.2
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.56.0
+Provides:       bundled(nghttp2) = 1.57.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -390,7 +390,7 @@ Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 Provides:       bundled(node-corepack) = 0.20.0
 Provides:       bundled(node-minimatch) = 9.0.3
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.25.2
+Provides:       bundled(node-undici) = 5.26.3
 Provides:       bundled(node-undici-types) = 5.25.1
 
 %description
