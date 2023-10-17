@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 17 11:26:58 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Split the call to %python_install in different lines to do not feed
+  other commands as possible macro options.
+
+-------------------------------------------------------------------
 Mon Sep 26 03:06:49 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

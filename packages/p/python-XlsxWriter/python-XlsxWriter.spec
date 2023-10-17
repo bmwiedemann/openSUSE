@@ -1,7 +1,7 @@
 #
 # spec file for package python-XlsxWriter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,9 +55,11 @@ supports features such as formatting and many more.
 %python_build
 
 %install
-%{python_expand %$python_install && \
-  mv %{buildroot}%{_bindir}/vba_extract.py \
-   %{buildroot}%{_bindir}/vba_extract-%$python_bin_suffix}
+%{python_expand #
+%{$python_install}
+mv %{buildroot}%{_bindir}/vba_extract.py \
+   %{buildroot}%{_bindir}/vba_extract-%{$python_bin_suffix}
+}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %prepare_alternative vba_extract
