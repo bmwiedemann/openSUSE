@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>1085563</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>66fab082d14bf503d4940ac1fd073a8b</srcmd5>
+    <version>0.9.0</version>
+    <time>1697567108</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_python</comment>
+    <requestid>1118265</requestid>
+  </revision>
 </revisionlist>

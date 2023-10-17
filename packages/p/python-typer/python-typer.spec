@@ -17,7 +17,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-typer
 Version:        0.9.0
 Release:        0
@@ -42,6 +41,7 @@ Recommends:     python-colorama
 Recommends:     python-rich
 Recommends:     python-shellingham
 BuildArch:      noarch
+%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
