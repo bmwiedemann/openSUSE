@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 16 11:32:32 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Re-enable bcc-lua now that boo#1215592 is resolved
+
+-------------------------------------------------------------------
 Mon Sep 25 13:35:41 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Disable building of tests file

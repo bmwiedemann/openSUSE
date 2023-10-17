@@ -16,8 +16,15 @@
 #
 
 
-# Re-enable bcc-lua on supported architectures once boo#1215592 is resolved
+%if 0%{?suse_version} > 1500
+%ifarch %ix86 x86_64
+%{!?with_lua: %global with_lua 1}
+%else
 %{!?with_lua: %global with_lua 0}
+%endif
+%else
+%{!?with_lua: %global with_lua 0}
+%endif
 
 # Use the latest supported LLVM version, but Leap < 15.5 only has a slightly
 # older one so just use whatever version is available.
