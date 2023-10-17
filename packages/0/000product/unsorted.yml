@@ -1289,8 +1289,6 @@ unsorted:
   - bazel-skylib-source 
   - bazel-toolchains-source 
   - bazel-workspaces 
-  - bazel3.4 
-  - bazel3.7 
   - bazel6 
   - bb 
   - bbe 
@@ -1301,6 +1299,7 @@ unsorted:
   - bcc-devel 
   - bcc-docs 
   - bcc-examples 
+  - bcc-lua 
   - bcc-tools 
   - bcel 
   - bcel-javadoc 
@@ -1590,7 +1589,6 @@ unsorted:
   - bspwm-bash-completion 
   - bspwm-fish-completion 
   - bspwm-zsh-completion 
-  - bssl_wrapper-devel 
   - bstone 
   - btar 
   - btcflash 
@@ -2944,6 +2942,8 @@ unsorted:
   - debuginfod-dummy-client 
   - decentxml 
   - decentxml-javadoc 
+  - decibels 
+  - decibels-lang 
   - deco 
   - deepin-account-faces 
   - deepin-api 
@@ -4341,7 +4341,6 @@ unsorted:
   - garlic-doc 
   - gasket-driver 
   - gasket-driver-kmp-default 
-  - gasket-driver-ueficert 
   - gaupol 
   - gavl 
   - gbdfed 
@@ -4561,8 +4560,6 @@ unsorted:
   - german-pos-dict 
   - geronimo-annotation-1_0-api 
   - geronimo-commonj-1_1-apis 
-  - geronimo-corba-1_0-apis 
-  - geronimo-corba-2_3-apis 
   - geronimo-ejb-2_1-api 
   - geronimo-ejb-3_0-api 
   - geronimo-el-1_0-api 
@@ -6893,7 +6890,6 @@ unsorted:
   - gnumeric-lang 
   - gnuplot 
   - gnuplot-doc 
-  - gnuprumcu 
   - gnuradio 
   - gnuradio-devel 
   - gnuradio-doc 
@@ -8369,9 +8365,6 @@ unsorted:
   - jakarta-mail-javadoc 
   - jakarta-servlet 
   - jakarta-servlet-javadoc 
-  - jakarta-slide-webdavclient 
-  - jakarta-slide-webdavclient-javadoc 
-  - jakarta-slide-webdavclient-repolib 
   - jakarta-taglibs-standard 
   - jakarta-taglibs-standard-javadoc 
   - jameica 
@@ -11152,7 +11145,6 @@ unsorted:
   - libbs2b0-32bit 
   - libbsd-ctor-static 
   - libbsd-devel 
-  - libbssl_wrapper_lib0 
   - libbtf1 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
@@ -24809,7 +24801,6 @@ unsorted:
   - python310-lancet-ioam 
   - python310-langdetect 
   - python310-langtable 
-  - python310-language-check 
   - python310-lark 
   - python310-latexcodec 
   - python310-lazr.config 
@@ -25705,9 +25696,12 @@ unsorted:
   - python310-pytest-reorder 
   - python310-pytest-rerunfailures 
   - python310-pytest-responsemock 
+  - python310-pytest-salt-factories 
   - python310-pytest-server-fixtures 
   - python310-pytest-services 
+  - python310-pytest-shell-utilities 
   - python310-pytest-shutil 
+  - python310-pytest-skip-markers 
   - python310-pytest-socket 
   - python310-pytest-spec 
   - python310-pytest-sphinx 
@@ -25715,6 +25709,7 @@ unsorted:
   - python310-pytest-subtests 
   - python310-pytest-sugar 
   - python310-pytest-svn 
+  - python310-pytest-system-statistics 
   - python310-pytest-testconfig 
   - python310-pytest-testinfra 
   - python310-pytest-timeout 
@@ -28232,7 +28227,6 @@ unsorted:
   - python311-lancet-ioam 
   - python311-langdetect 
   - python311-langtable 
-  - python311-language-check 
   - python311-latexcodec 
   - python311-lazr.uri 
   - python311-lazy 
@@ -29078,9 +29072,12 @@ unsorted:
   - python311-pytest-reorder 
   - python311-pytest-rerunfailures 
   - python311-pytest-responsemock 
+  - python311-pytest-salt-factories 
   - python311-pytest-server-fixtures 
   - python311-pytest-services 
+  - python311-pytest-shell-utilities 
   - python311-pytest-shutil 
+  - python311-pytest-skip-markers 
   - python311-pytest-socket 
   - python311-pytest-spec 
   - python311-pytest-sphinx 
@@ -29088,6 +29085,7 @@ unsorted:
   - python311-pytest-subtests 
   - python311-pytest-sugar 
   - python311-pytest-svn 
+  - python311-pytest-system-statistics 
   - python311-pytest-testconfig 
   - python311-pytest-testinfra 
   - python311-pytest-timeout 
@@ -31674,7 +31672,6 @@ unsorted:
   - python39-lancet-ioam 
   - python39-langdetect 
   - python39-langtable 
-  - python39-language-check 
   - python39-lark 
   - python39-latexcodec 
   - python39-lazr.config 
@@ -32569,9 +32566,12 @@ unsorted:
   - python39-pytest-reorder 
   - python39-pytest-rerunfailures 
   - python39-pytest-responsemock 
+  - python39-pytest-salt-factories 
   - python39-pytest-server-fixtures 
   - python39-pytest-services 
+  - python39-pytest-shell-utilities 
   - python39-pytest-shutil 
+  - python39-pytest-skip-markers 
   - python39-pytest-socket 
   - python39-pytest-spec 
   - python39-pytest-sphinx 
@@ -32579,6 +32579,7 @@ unsorted:
   - python39-pytest-subtests 
   - python39-pytest-sugar 
   - python39-pytest-svn 
+  - python39-pytest-system-statistics 
   - python39-pytest-testconfig 
   - python39-pytest-testinfra 
   - python39-pytest-timeout 
@@ -44655,6 +44656,7 @@ unsorted:
   - timeshift-lang 
   - timewarrior 
   - timezonemap-devel 
+  - timg 
   - timidity 
   - timoni 
   - timoni-bash-completion 
