@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pydash
-Version:        5.1.0
+Version:        6.0.2
 Release:        0
 Summary:        The kitchen sink of Python functional utility libraries
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dgilland/pydash
 Source:         https://files.pythonhosted.org/packages/source/p/pydash/pydash-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +42,10 @@ Based on the Lo-Dash Javascript library.
 rm tox.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

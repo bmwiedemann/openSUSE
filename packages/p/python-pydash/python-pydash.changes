@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct 16 10:07:57 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 6.0.2
+  * Only prevent access to object paths containing ``__globals__`` or
+    ``__builtins__`` instead of all dunder-methods for non-dict/list
+    objects.
+- from version 6.0.1
+  * Fix exception raised due to mishandling of non-string keys in functions
+    like ``get()`` for non-dict/list objects that used integer index references
+    like ``"[0]"``.
+- from version 6.0.0
+  * Prevent access to object paths containing dunder-methods in functions like
+    ``get()`` for non-dict/list objects. Attempting to access dunder-methods
+    using get-path keys will raise a ``KeyError`` (e.g. ``get(SomeClass(),
+    '__init__'`` will raise). Access to dict keys are unaffected (e.g.
+    ``get({"__init__": True}, "__init__")`` will return ``True``).
+    (**breaking change**)
+  * Add support for Python 3.11.
+  * Drop support for Python 3.6 (**breaking change**)
+- from version 5.1.2
+  * Remove unnecessary type check and conversion for ``exceptions``
+    argument in ``pydash.retry``.
+- from version 5.1.1
+  * Add support for Python 3.10.
+  * Fix timing assertion issue in test for ``pydash.delay`` where it could
+    fail on certain environments.
+- Switch build system from setuptools to pyproject.toml
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Apr  7 10:59:23 UTC 2022 - pgajdos@suse.com
 
 - version update to 5.1.0
