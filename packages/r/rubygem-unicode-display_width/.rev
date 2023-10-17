@@ -96,4 +96,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1116490</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3b2aae428c832e915516933fdb131b4a</srcmd5>
+    <version>2.5.0</version>
+    <time>1697567086</time>
+    <user>anag+factory</user>
+    <comment>Updated to 2.5.0 — Unicode 15.1 support (forwarded request 1117724 from NickLion)</comment>
+    <requestid>1118192</requestid>
+  </revision>
 </revisionlist>
