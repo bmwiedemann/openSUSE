@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 16 17:38:38 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add backported security patches:
+  * CVE-2023-38552 bsc#1216272 CVE-2023-38552-node-integrity-checks-according-to-policies.patch
+  * CVE-2023-39333 bsc#1216273 CVE-2023-39333-node-create_dynamic_module-code-injection.patch
+  * CVE-2023-45143 bsc#1216205 CVE-2023-45143-undici-cookie-leakage.patch
+- Build against Wayland 21 also on Leap 15.4 now that it's available
+  * drop wayland-WL-SINCE-VERSION.patch
+  * drop wayland_data_drag_controller-WL_SURFACE_OFFSET_SINCE_VERSION.patch
+
+-------------------------------------------------------------------
+Mon Oct 16 08:55:17 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Use system simdutf on Fedora ≥38
+  * system-simdutf.patch
+- Use system vulkan-memory-allocator on Fedora 40/Rawhide
+  * vulkan_memory_allocator.gn
+  * vulkan_memory_allocator-upgrade.patch
+
+-------------------------------------------------------------------
 Thu Oct 12 17:04:40 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 25.9.1

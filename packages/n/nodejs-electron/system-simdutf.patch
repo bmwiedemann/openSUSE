@@ -1,0 +1,30 @@
+--- src/third_party/electron_node/BUILD.gn.old	2023-10-12 09:14:14.490589900 +0000
++++ src/third_party/electron_node/BUILD.gn	2023-10-15 07:18:47.581489100 +0000
+@@ -44,6 +44,7 @@ declare_args() {
+   # Allows downstream packagers (eg. Linux distributions) to build Electron against system shared libraries.
+   use_system_cares = false
+   use_system_nghttp2 = false
++  use_system_simdutf = false
+   use_system_llhttp = false
+   use_system_histogram = false
+ }
+@@ -211,7 +212,6 @@ component("node_lib") {
+     ":node_js2c",
+     "deps/googletest:gtest",
+     "deps/base64",
+-    "deps/simdutf",
+     "deps/uvwasi",
+     "//third_party/zlib",
+     "//third_party/brotli:dec",
+@@ -248,6 +248,11 @@ component("node_lib") {
+   } else {
+     deps += [ "deps/histogram" ]
+   }
++  if (use_system_simdutf) {
++    libs += [ "simdutf" ]
++  } else {
++    deps += [ "deps/simdutf" ]
++  }
+   frameworks = []
+   cflags_cc = [
+     "-Wno-deprecated-declarations",

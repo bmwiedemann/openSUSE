@@ -115,13 +115,11 @@ BuildArch:      i686
 %bcond_without system_dav1d
 %bcond_without system_highway
 %bcond_without system_nvctrl
-%bcond_without wayland_21
 %else
 %bcond_with system_crc32c
 %bcond_with system_dav1d
 %bcond_with system_highway
 %bcond_with system_nvctrl
-%bcond_with wayland_21
 %endif
 
 
@@ -164,6 +162,17 @@ BuildArch:      i686
 %bcond_with system_histogram
 %endif
 
+%if 0%{?fedora} >= 38
+%bcond_without system_simdutf
+%else
+%bcond_with system_simdutf
+%endif
+
+%if 0%{?fedora} >= 40
+%bcond_without system_vma
+%else
+%bcond_with system_vma
+%endif
 
 
 # Abseil is broken in Leap
@@ -211,6 +220,7 @@ Source11:       electron.desktop
 Source50:       flatbuffers.gn
 Source51:       libsecret.gn
 Source52:       highway.gn
+Source53:       vulkan_memory_allocator.gn
 
 
 # Reverse upstream changes to be able to build against ffmpeg-4
@@ -219,9 +229,6 @@ Source401:      audio_file_reader-ffmpeg-AVFrame-duration.patch
 # and against harfbuzz 4
 Source415:      harfbuzz-replace-chromium-scoped-type.patch
 Source416:      harfbuzz-replace-HbScopedPointer.patch
-# and against Wayland 1.19
-Source418:      wayland-WL-SINCE-VERSION.patch
-Source419:      wayland_data_drag_controller-WL_SURFACE_OFFSET_SINCE_VERSION.patch
 
 
 #Reverse upstream changes to build against system libavif.
@@ -285,6 +292,7 @@ Patch1073:      system-nasm.patch
 Patch1074:      no-zlib-headers.patch
 Patch1076:      crashpad-use-system-abseil.patch
 Patch1077:      system-wayland.patch
+Patch1078:      system-simdutf.patch
 
 # PATCHES to fix interaction with third-party software
 Patch2004:      chromium-gcc11.patch
@@ -320,6 +328,7 @@ Patch2035:      RenderFrameHostImpl-use-after-free.patch
 Patch2036:      avif_image_decoder-libavif-1-mode.patch
 Patch2037:      abseil-remove-unused-targets.patch
 Patch2038:      avif_image_decoder-repetitionCount-clli.patch
+Patch2039:      vulkan_memory_allocator-upgrade.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -349,6 +358,10 @@ Patch3210:      electron_api_app-GetPathConstant-non-constexpr.patch
 # https://github.com/electron/electron/pull/40032
 Patch3211:      build-without-extensions.patch
 Patch3212:      swiftshader-llvm17.patch
+Patch3213:      CVE-2023-38552-node-integrity-checks-according-to-policies.patch
+Patch3214:      CVE-2023-39333-node-create_dynamic_module-code-injection.patch
+Patch3215:      CVE-2023-45143-undici-cookie-leakage.patch
+
 
 
 %if %{with clang}
@@ -438,17 +451,19 @@ BuildRequires:  python3-mako
 BuildRequires:  python3-ply
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-six
+%if %{with system_simdutf}
+BuildRequires:  simdutf-devel >= 3
+%endif
 BuildRequires:  snappy-devel
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  util-linux
 BuildRequires:  vulkan-headers
-%if %{with wayland_21}
-BuildRequires:  wayland-devel >= 1.20
-%else
-BuildRequires:  wayland-devel
+%if %{with system_vma}
+BuildRequires:  VulkanMemoryAllocator-devel >= 3
 %endif
+BuildRequires:  wayland-devel >= 1.20
 BuildRequires:  zstd
 %if %{with system_abseil}
 BuildRequires:  pkgconfig(absl_algorithm_container)
@@ -685,16 +700,16 @@ patch -R -p1 < %SOURCE400
 patch -R -p1 < %PATCH2011
 %endif
 
+%if %{without system_vma}
+patch -R -p1 < %PATCH2039
+%endif
+
 %if %{without harfbuzz_5}
 patch -R -p1 < %SOURCE415
 patch -R -p1 < %SOURCE416
 %endif
 
 
-%if %{without wayland_21}
-patch -R -p1 < %SOURCE418
-patch -R -p1 < %SOURCE419
-%endif
 
 # This one depends on an ffmpeg nightly, reverting unconditionally.
 patch -R -p1 < %SOURCE401
@@ -984,6 +999,11 @@ gn_system_libraries+=(
 )
 %endif
 
+%if %{with system_vma}
+find third_party/vulkan_memory_allocator -type f ! -name "*.gn" -a ! -name "*.gni" -delete
+gn_system_libraries+=( vulkan_memory_allocator )
+%endif
+
 %if %{with system_vpx}
 find third_party/libvpx -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libvpx )
@@ -1013,6 +1033,9 @@ find third_party/electron_node/deps/llhttp -type f ! -name "*.gn" -a ! -name "*.
 find third_party/electron_node/deps/histogram -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 %endif
 
+%if %{with system_simdutf}
+find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+%endif
 
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/
@@ -1238,6 +1261,9 @@ myconf_gn+=" use_system_llhttp=true"
 %endif
 %if %{with system_histogram}
 myconf_gn+=" use_system_histogram=true"
+%endif
+%if %{with system_simdutf}
+myconf_gn+=' use_system_simdutf=true'
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"

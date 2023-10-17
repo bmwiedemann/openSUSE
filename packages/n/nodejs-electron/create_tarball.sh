@@ -168,7 +168,7 @@ keeplibs=(
     net/third_party/nss #Derived code, not vendored dependency.
     net/third_party/quiche #Not available as a shared library yet. An old version is in Factory (google-quiche-source)
     net/third_party/uri_template #Derived code, not vendored dependency.
-    third_party/abseil-cpp #15.4 and fc36 too old.
+    third_party/abseil-cpp #Leap and fc36 too old.
     third_party/angle  # ANGLE is an integral part of chrome and is not available as a shared library.
     third_party/angle/src/third_party/ceval #not in any distro
     third_party/angle/src/third_party/libXNVCtrl #Not in 15.4
@@ -286,15 +286,15 @@ keeplibs=(
     third_party/swiftshader/third_party/astc-encoder #not in rawhide or factory. Debian has it (astc-encoder)
     third_party/swiftshader/third_party/llvm-subzero #heavily forked version of libLLVM for use in subzero
     third_party/swiftshader/third_party/marl #not on any distro
-    third_party/swiftshader/third_party/SPIRV-Headers #FC36 too old
-    third_party/swiftshader/third_party/SPIRV-Tools #FC36 too old
+    third_party/swiftshader/third_party/SPIRV-Headers #Leap too old
+    third_party/swiftshader/third_party/SPIRV-Tools #Leap too old
     third_party/swiftshader/third_party/subzero #integral part of swiftshader
     #third_party/tflite #Not used by electron, but chrome needs it.
     #third_party/tflite/src/third_party/eigen3
     #third_party/tflite/src/third_party/fft2d
-    third_party/vulkan-deps/spirv-headers #FC36 too old
-    third_party/vulkan-deps/spirv-tools #FC36 too old
-    third_party/vulkan-deps/vulkan-headers #FC36 too old. CONSIDER UNBUNDLING when all distros have new enough vulkan sdk
+    third_party/vulkan-deps/spirv-headers #Leap too old
+    third_party/vulkan-deps/spirv-tools #Leap too old
+    third_party/vulkan-deps/vulkan-headers #Leap too old. CONSIDER UNBUNDLING when all distros have new enough vulkan sdk
     third_party/vulkan_memory_allocator #not in any distro
     third_party/webgpu-cts #Javascript code. Needed even if you're building chrome without webgpu
     third_party/webrtc #Integral part of chrome
