@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  5 01:54:58 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- minor update of sway-portals.conf.
+  * defaults to wlr -> falls back to gtk
+
+-------------------------------------------------------------------
 Mon Sep 28 09:11:05 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
 
 - fix portal config typo (see https://github.com/emersion/xdg-desktop-portal-wlr/pull/269)
