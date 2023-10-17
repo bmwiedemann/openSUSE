@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.gz
@@ -35,7 +35,6 @@ Source2:        influxdb.service
 Source3:        influxdb.tmpfiles
 Source4:        influxdb.init
 Source5:        Compability_note.txt
-Patch0:         harden_influxdb.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -71,7 +70,6 @@ Go sources and other development files for InfluxDB
 %prep
 %setup -q -n %{name}-%{version}
 %setup -q -T -D -a 1 -n %{name}-%{version}
-%patch0 -p1
 
 %build
 # Disable phone-home to usage.influxdata.com

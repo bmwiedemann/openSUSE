@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 16 14:58:05 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.11.2.
+  * Many bugfixes: https://dl.influxdata.com/platform/nightlies/master-1.x/CHANGELOG.md
+- Drop harden_influxdb.service.patch:
+  * ./scripts/influxdb.service has never been used and has been dropped in 1.11.2
+
+-------------------------------------------------------------------
 Fri Jul 28 15:41:34 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 1.11.1.
