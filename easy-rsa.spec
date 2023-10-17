@@ -19,7 +19,7 @@
 
 %define pname   EasyRSA
 Name:           easy-rsa
-Version:        3.1.5
+Version:        3.1.7
 Release:        0
 Summary:        CLI utility to build and manage a PKI CA
 License:        GPL-2.0-or-later
@@ -38,8 +38,7 @@ easy-rsa is a CLI utility to build and manage a Public Key Infrastructure
 certificates, including sub-CAs, and create Certificate Revokation Lists (CRL).
 
 %prep
-%setup -q -n %{pname}-%{version}
-%patch100
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
 
