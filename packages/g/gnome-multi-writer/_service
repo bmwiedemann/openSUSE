@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.gnome.org/GNOME/gnome-multi-writer.git</param>
+    <param name="revision">6a6d4d9677c3b30f4fd4fd4f4bb49592d608b2cf</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">GNOME_MULTI_WRITER_(\d+)_(\d+)_(\d+)</param>
+    <param name="versionrewrite-replacement">\1.\2.\3</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>
+

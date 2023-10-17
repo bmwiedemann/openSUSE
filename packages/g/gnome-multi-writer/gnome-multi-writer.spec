@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-multi-writer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-multi-writer
-Version:        3.35.90
+Version:        3.35.90+26
 Release:        0
 Summary:        Program for writing an ISO file to multiple USB devices at once
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/MultiWriter
-Source0:        https://download.gnome.org/sources/gnome-multi-writer/3.35/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  gobject-introspection-devel >= 0.9.8
 BuildRequires:  hicolor-icon-theme

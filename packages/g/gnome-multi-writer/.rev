@@ -154,4 +154,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795055 from iznogood)</comment>
     <requestid>795208</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a6907a11c8ed3c1a3a570fb5b726b0b</srcmd5>
+    <version>3.35.90+26</version>
+    <time>1697567042</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1117710 from iznogood)</comment>
+    <requestid>1117964</requestid>
+  </revision>
 </revisionlist>
