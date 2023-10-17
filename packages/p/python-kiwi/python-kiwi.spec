@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.25.12
+Version:        9.25.17
 Provides:       kiwi-schema = 7.5
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -102,7 +102,7 @@ Recommends:     dnf
 Provides:       kiwi-packagemanager:microdnf
 Requires:       microdnf
 %endif
-%if 0%{?fedora} >= 39
+%if 0%{?fedora} >= 41
 Requires:       dnf5
 Requires:       dnf5-plugins
 Provides:       kiwi-packagemanager:dnf5

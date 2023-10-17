@@ -2222,4 +2222,40 @@
   the x86_64 or ix86 architectures. This Fixes #2343</comment>
     <requestid>1103984</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>ae2d51170681e9d63b27b84eabac6d53</srcmd5>
+    <version>9.25.17</version>
+    <time>1697566956</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 9.25.16 → 9.25.17
+
+- Fixed argument processing of config.bootoptions
+  Instead of adding an extra space to make the subsequent reading
+  to work, use an awk script that does it without nasty workarounds
+
+- Allow test-image-disk-ramdisk to be build locally
+
+- Bump version: 9.25.15 → 9.25.16
+
+- Fixed doc search field
+  The search in the documentation is broken with the rtd
+  schema and latest sphinx. Stick with sphinx 5.0.0 for the
+  moment which fixes the issue
+
+- Bump version: 9.25.14 → 9.25.15
+
+- Make codacy happy
+
+- Support release version in signkey URLs
+  Using one of the $releasever/${releasever} variable placeholders
+  in an URL as part of a &lt;signing key=&quot;...&quot;/&gt; element did not replace
+  the placeholder with the value of the &lt;release-version&gt; element.
+  This commit fixes this and also makes sure that the result list
+  for downloading signing keys is unique. This Fixes #2381
+
+- Bump version: 9.25.13 → 9.25.14
+
+- Update pypi release to trusted workflow</comment>
+    <requestid>1118210</requestid>
+  </revision>
 </revisionlist>

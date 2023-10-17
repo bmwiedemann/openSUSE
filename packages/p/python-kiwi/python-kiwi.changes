@@ -1,4 +1,231 @@
 -------------------------------------------------------------------
+Tue Oct 17 09:30:49 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.16 → 9.25.17
+
+-------------------------------------------------------------------
+Mon Oct 16 20:55:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed argument processing of config.bootoptions
+
+  Instead of adding an extra space to make the subsequent reading
+  to work, use an awk script that does it without nasty workarounds
+
+-------------------------------------------------------------------
+Mon Oct 16 20:55:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow test-image-disk-ramdisk to be build locally
+
+-------------------------------------------------------------------
+Mon Oct 16 15:27:24 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.15 → 9.25.16
+
+-------------------------------------------------------------------
+Mon Oct 16 15:26:25 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed doc search field
+
+  The search in the documentation is broken with the rtd
+  schema and latest sphinx. Stick with sphinx 5.0.0 for the
+  moment which fixes the issue
+
+-------------------------------------------------------------------
+Mon Oct 16 14:16:45 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.14 → 9.25.15
+
+-------------------------------------------------------------------
+Mon Oct 16 10:44:05 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make codacy happy
+
+-------------------------------------------------------------------
+Mon Oct 16 09:23:42 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support release version in signkey URLs
+
+  Using one of the $releasever/${releasever} variable placeholders
+  in an URL as part of a <signing key="..."/> element did not replace
+  the placeholder with the value of the <release-version> element.
+  This commit fixes this and also makes sure that the result list
+  for downloading signing keys is unique. This Fixes #2381
+
+-------------------------------------------------------------------
+Sun Oct 08 18:20:13 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.13 → 9.25.14
+
+-------------------------------------------------------------------
+Sun Oct 08 18:19:47 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update pypi release to trusted workflow
+
+-------------------------------------------------------------------
+Fri Sep 22 10:39:44 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added unit test for testing grub prefix
+
+  Cover the condition if an extra boot partition is used
+
+-------------------------------------------------------------------
+Wed Sep 13 09:52:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix documentation for btrfs_set_default_volume
+
+  The behavior documentation regarding the fstab entry when
+  using the btrfs_set_default_volume attribute was wrong.
+  This commit fixes the docs to match the code. Related
+  to Issue #2366
+
+-------------------------------------------------------------------
+Wed Sep 13 08:30:06 CEST 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix typo in 'image results' doc section
+
+-------------------------------------------------------------------
+Wed Sep 13 02:03:30 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed root entry in fstab for btrfs layout
+
+  A root (/) entry in fstab for btrfs is only required if no
+  default volume is configured. This commit adapts the code
+  path which adds an fstab entry for (/) to be effective only
+  if btrfs_set_default_volume is set to false.
+
+  Additionally, the documentation around btrfs_set_default_volume
+  was clarified to describe the behavior the switch triggers.
+
+  This Fixes #2366
+
+-------------------------------------------------------------------
+Wed Sep 13 02:01:04 CEST 2023 - David Cassany Viladomat <dcassany@suse.com>
+
+- Remove community repository from Arch images
+
+  Community repository is no longer needed for the test image. OBS does
+  not pull any package from this repository and in Arch linux there is not
+  the concept of empty repositories, so the build fails in an OBS context
+  if this repository is included within the build stack.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Thu Sep 07 15:39:24 CEST 2023 - Leif Liddy <leif.liddy@gmail.com>
+
+- use / prefix when boot partition is used
+
+-------------------------------------------------------------------
+Fri Sep 01 03:17:08 CEST 2023 - Leif Liddy <leif.liddy@gmail.com>
+
+- use os.path.join to create path
+
+  os.path.join to create the path for the early_boot.write functions
+  this will prevent paths from containing double slashes //
+
+-------------------------------------------------------------------
+Thu Aug 31 16:11:23 CEST 2023 - Neal Gompa <neal@gompa.dev>
+
+- PKGBUILD: Drop unused Python dependencies
+
+  We haven't used some of these dependencies in years...
+
+-------------------------------------------------------------------
+Sat Aug 26 16:59:34 CEST 2023 - Leif Liddy <leifliddy@users.noreply.github.com>
+
+- add info on none console type
+
+-------------------------------------------------------------------
+Fri Aug 25 09:14:20 CEST 2023 - Leif Liddy <leifliddy@users.noreply.github.com>
+
+- allow value of GRUB_TERMINAL to be empty
+
+  allow value of GRUB_TERMINAL to be empty. When setting grub_console="none"
+  this now leads to an empty setting of GRUB_TERMINAL in the /etc/default/grub
+  system configuration file. This Fixes #2261
+
+-------------------------------------------------------------------
+Thu Aug 24 09:33:45 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.12 → 9.25.13
+
+-------------------------------------------------------------------
+Tue Aug 22 18:08:47 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed mounting of subvolumes for data sync
+
+  The subvolumes must be mounted below the root of the
+  filesystem tree such that the sync mechanism correctly
+  shuffles the data to the correct volumes.
+  This Fixes #2356
+
+-------------------------------------------------------------------
+Tue Aug 22 09:41:58 CEST 2023 - Joerg Vehlow <joerg.vehlow@aox.de>
+
+- Make verity metadata always readonly
+
+  If a partition is verity protected, it can never be writable,
+  since verity is by-definition read-only.
+
+-------------------------------------------------------------------
+Wed Aug 16 00:06:13 CEST 2023 - Evan Goode <mail@evangoo.de>
+
+- Require DNF 5 in Fedora >= 41, not Fedora > 38
+
+  The switch to DNF 5 has been postponed to (likely) Fedora 41.
+
+-------------------------------------------------------------------
+Tue Aug 15 22:23:49 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add kiwi_live_volid variable to profile
+
+  As part of the profile environment only the kiwi_install_volid
+  variable existed with the default value 'INSTALL'. This information
+  is correct when building an oem image with installiso set to
+  true. The resulting .install.iso image has the configured volid
+  or the mentioned default 'INSTALL'. However, when building a live
+  ISO image the default volid value is set to 'CDROM' but the profile
+  environment contains kiwi_install_volid which is misleading and
+  in case no volid is provided in the configuration file, the
+  default value would also be a wrong information. This commit cleans
+  up the mess and provides kiwi_install_volid for install ISO media
+  and kiwi_live_volid for Live ISO media with their respective
+  default values
+
+-------------------------------------------------------------------
+Tue Aug 15 12:33:19 CEST 2023 - Tom Schraitle <tomschr@users.noreply.github.com>
+
+- Add some hints about KIWI extensions and dependencies for SLE (#2348)
+
+  SUSE Linux Enterprise Server (SLES) has KIWI as a package.
+  However, some KIWI plugins and their dependencies can
+  be unavailable.
+
+  This commit introduces a new section which deals with this
+  aspect.
+
+  Fixes bsc#1209302
+
+-------------------------------------------------------------------
+Fri Aug 11 15:04:56 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Package lockdev no longer exists on TW
+
+  Update TW based integration tests and delete the install
+  of the lockdev package
+
+-------------------------------------------------------------------
+Thu Aug 10 14:34:16 CEST 2023 - Tom Schraitle <tom_schr@web.de>
+
+- Update GitHub Actions "actions/*" part
+
+  Update to the latest versions:
+
+  * actions/checkout@v3
+  * action/setup-python@v4
+  * action/cache@v3
+
+-------------------------------------------------------------------
 Wed Aug 09 22:39:20 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.25.11 → 9.25.12

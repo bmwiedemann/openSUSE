@@ -3,7 +3,7 @@
 
 pkgname=('python-kiwi' 'kiwi-man-pages' 'dracut-kiwi-lib' 'dracut-kiwi-oem-repart' 'dracut-kiwi-oem-dump' 'dracut-kiwi-live' 'dracut-kiwi-overlay')
 arch=(x86_64)
-pkgver=9.25.12
+pkgver=9.25.17
 pkgrel=0
 pkgdesc="KIWI - Appliance Builder Next Generation"
 url="https://github.com/SUSE/kiwi/tarball/master"
@@ -12,7 +12,7 @@ makedepends=(python-setuptools gcc shadow grep)
 provides=(kiwi-ng kiwi)
 source=("${pkgname}.tar.gz")
 changelog="${pkgname}.changes"
-md5sums=('6d2d1b9a5d67515fec29465d8f4365b3')
+md5sums=('89281997b74f517c6f39040fb421fab2')
 
 
 build() {
@@ -21,7 +21,7 @@ build() {
 }
 
 package_python-kiwi(){
-  depends=(python-docopt python-simplejson python-future python-lxml python-requests python-setuptools python-six python-pyxattr python-yaml grub qemu squashfs-tools gptfdisk pacman e2fsprogs xfsprogs btrfs-progs libisoburn lvm2 mtools parted multipath-tools rsync tar shadow screen kiwi-man-pages)
+  depends=(python-docopt python-simplejson python-lxml python-requests python-setuptools python-yaml grub qemu squashfs-tools gptfdisk pacman e2fsprogs xfsprogs btrfs-progs libisoburn lvm2 mtools parted multipath-tools rsync tar shadow screen kiwi-man-pages)
   optdepends=('gnupg: keyring creation for APT package manager')
   cd kiwi-${pkgver}
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
