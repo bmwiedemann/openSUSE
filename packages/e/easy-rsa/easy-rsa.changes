@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 17 06:35:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.7:
+  * Completely Remove Upgrade Functionality
+  * Expand help to include undocumented commands
+  * Forbid "default vars in the default PKI" for all commands
+  * show-expire: Calculate certificate expire seconds from Database date
+  * Expand help to include undocumented commands
+  * New command: make-vars - Print vars.example (here-doc) to stdout
+  * gen-crl: preserve existing crl.pem ownership+mode by @Tabiskabis in #1020
+  * Improve vars auto load
+  * Replace santize_path() and ignore Windows "security" warning
+  * Improve select_vars() and source_vars()
+  * sign-req: Allow the CSR DN-field order to be preserved
+  * vars-file: Warn about EASYRSA_NO_VARS disabling vars-file use
+  * Expand default status to include vars-file and CA status
+  * verify_ssl_lib(): Minor style improvements
+  * cleanup: Rename $easyrsa_error_exit to $easyrsa_exit_with_error
+
+-------------------------------------------------------------------
 Sun Aug  6 18:54:29 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 3.1.5:
