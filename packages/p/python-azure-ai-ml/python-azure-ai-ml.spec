@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-ml
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Microsoft Azure Machine Learning Client Library for Python
 License:        MIT
@@ -48,7 +48,7 @@ BuildRequires:  %{python_module marshmallow >= 3.5}
 BuildRequires:  %{python_module msrest >= 0.6.18}
 BuildRequires:  %{python_module opencensus-ext-azure < 2.0.0}
 BuildRequires:  %{python_module pathspec >= 0.9.0}
-BuildRequires:  %{python_module pydash}
+BuildRequires:  %{python_module pydash >= 6.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module strictyaml < 2.0.0}
 BuildRequires:  %{python_module tqdm < 5.0.0}

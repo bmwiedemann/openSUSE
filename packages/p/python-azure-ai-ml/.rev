@@ -170,4 +170,16 @@
 - Switch source archive format to TAR.GZ (forwarded request 1116077 from glaubitz)</comment>
     <requestid>1116675</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>abaa4a7f9bb7f2085fe36b714a35556d</srcmd5>
+    <version>1.11.1</version>
+    <time>1697567047</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.11.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1117990 from glaubitz)</comment>
+    <requestid>1118017</requestid>
+  </revision>
 </revisionlist>
