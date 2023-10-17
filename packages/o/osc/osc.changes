@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 16 11:55:51 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.4.2
+  - Command-line:
+    - Change NoPBTextMeter to display no output at all
+    - Fix retrieving the configured user in 'user' command
+  - Configuration:
+    - Restore 'passx' host option that contains an obfuscated password
+    - Fix retrieving a password in case a function returns another callable
+    - Fix retrieving config values in core.vc_export_env()
+
+-------------------------------------------------------------------
 Tue Oct 10 18:12:00 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.4.1
