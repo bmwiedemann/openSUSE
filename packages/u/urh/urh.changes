@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 14 16:03:41 UTC 2023 - munix9@googlemail.com
+
+- Fix build on Factory/TW: requires python3-Cython0
+
+-------------------------------------------------------------------
 Sat Jan 28 12:58:16 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.4

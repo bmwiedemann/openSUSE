@@ -31,7 +31,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  limesuite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython
+BuildRequires:  python3-PyAudio
 BuildRequires:  python3-devel >= 3.4
 BuildRequires:  python3-numpy
 BuildRequires:  python3-numpy-devel
@@ -43,18 +43,19 @@ BuildRequires:  pkgconfig(libbladeRF)
 BuildRequires:  pkgconfig(libhackrf)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(uhd)
-Requires:       python3-Cython
+Requires:       python3-PyAudio
 Requires:       python3-numpy
 Requires:       python3-psutil
 Requires:       python3-pyzmq
 Requires:       python3-qt5
 Recommends:     inspectrum
 Recommends:     rfcat
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python3-PyAudio
-%endif
-%if 0%{?suse_version} >= 1500
-Requires:       python3-PyAudio
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python3-Cython
+Requires:       python3-Cython
+%else
+BuildRequires:  python3-Cython0
+Requires:       python3-Cython0
 %endif
 
 %description
