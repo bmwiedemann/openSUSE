@@ -17,7 +17,7 @@
 
 
 Name:           python-ruff
-Version:        0.0.292
+Version:        0.1.0
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 ExclusiveArch:  %{rust_tier1_arches}
 %python_subpackages
 
@@ -52,10 +52,10 @@ cp %{SOURCE2} .cargo/config
 %python_clone -a %{buildroot}%{_bindir}/ruff
 
 %post
-%python_install_alternative ruff 
+%python_install_alternative ruff
 
 %postun
-%python_uninstall_alternative ruff 
+%python_uninstall_alternative ruff
 
 %files %{python_files}
 %python_alternative %{_bindir}/ruff

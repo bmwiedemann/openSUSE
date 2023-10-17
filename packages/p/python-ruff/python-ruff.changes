@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:38:21 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.0
+ * Breaking changes
+  + Unsafe fixes are no longer displayed or applied without opt-in
+  + Drop formatting specific rules from the default set
+  + The deprecated format setting has been removed
+  + The format setting cannot be used to configure the output format, use output-format instead
+  + The RUFF_FORMAT environment variable is ignored, use RUFF_OUTPUT_FORMAT instead
+  + The --format option has been removed from ruff check, use --output-format instead
+ * Rule changes
+  + Extend reimplemented-starmap (FURB140) to catch calls with a single and starred argument
+  + Improve cases covered by RUF015
+  + Update SIM15 to allow open followed by close
+  + Respect msgspec.Struct default-copy semantics in RUF012
+  + Add sqlalchemy methods to `flake8-boolean-trap`` exclusion list
+  + Add fix for PLR1714
+  + Add fix for PIE804
+  + Add fix for PLC0208
+  + Add fix for PYI055
+  + Update non-pep695-type-alias to require --unsafe-fixes outside of stub files
+  + Improve fix message for UP018
+  + Update PLW3201 to support Enum sunder names
+ * Preview features
+  + Only show warnings for empty preview selectors when enabling rules
+  + Add unnecessary-key-check to simplify key in dct and dct[key] to dct.get(key)
+  + Add assignment-in-assert to prevent walrus expressions in assert statements
+  + [refurb] Add single-item-membership-test (FURB171)
+  + [pylint] Add and-or-ternary (R1706)
+  + New rules are added in preview.
+ * Configuration
+  + Add unsafe-fixes setting
+  + Add extend-safe-fixes and extend-unsafe-fixes for promoting and demoting fixes
+ * CLI
+  + Added --unsafe-fixes option for opt-in to display and apply unsafe fixes
+  + Fix use of deprecated --format option in warning
+  + Show changed files when running under --check
+  + Write summary messages to stderr when fixing via stdin instead of omitting them
+  + Update fix summary message in check --diff to include unsafe fix hints
+  + Add notebook cell field to JSON output format
+  + Rename applicability levels to Safe, Unsafe, and Display
+ * Bug fixes
+  + Fix bug where f-strings were allowed in match pattern literal
+  + Fix SIM110 with a yield in the condition
+  + Preserve trailing comments in C414 fixes
+  + Check sequence type before triggering unnecessary-enumerate len suggestion
+  + Use correct start location for class/function clause header
+  + Fix incorrect fixes for SIM101
+  + Format comment before parameter default correctly
+  + Fix E251 false positive inside f-strings
+  + Allow bindings to be created and referenced within annotations
+  + Show per-cell diffs when analyzing notebooks over stdin
+  + Avoid curly brace escape in f-string format spec
+  + Fix lexing single-quoted f-string with multi-line format spec
+  + Consider nursery rules to be in-preview for ruff rule
+  + Report precise location for invalid conversion flag
+  + Visit pattern match guard as a boolean test
+  + Respect --unfixable in ISC rules
+  + Fix edge case with PIE804
+  + Show custom message in PTH118 for Path.joinpath with starred arguments
+  + Fix false negative in outdated-version-block when using greater than comparisons
+  + Avoid converting f-strings within Django gettext calls
+  + Fix false positive in PLR6301
+  + Treat type aliases as typing-only expressions e.g. resolves false positive in TCH004
+  + Resolve cache-dir relative to project root
+  + Respect subscripted base classes in type-checking rules e.g. resolves false positive in TCH003
+  + Fix JSON schema limit for line-length
+  + Fix commented-out coalesce keyword
+ * Documentation
+  + Document reimplemented-starmap performance effects
+  + Default to following the system dark/light mode
+  + Add documentation for fixes
+  + Fix typo in docs of PLR6301
+  + Update UP038 docs to note that it results in slower code
+  + crlf -> cr-lf
+  + Add an example of an unsafe fix
+  + Fix documented examples for unnecessary-subscript-reversal
+  + Correct error in tuple example in ruff formatter docs
+  + Add versioning policy to documentation
+  + Fix invalid code in FURB177 example
+ * Formatter
+  + Less scary ruff format message
+  + Remove spaces from import statements
+  + Formatter quoting for f-strings with triple quotes
+  + Update ruff_python_formatter generate.py comment
+  + Document one-call chaining deviation
+  + Allow f-string modifications in line-shrinking cases
+  + Add trailing comment deviation to README
+  + Add trailing zero between dot and exponential
+  + Force parentheses for power operations in unary expressions
+ * Playground
+  + Fix playground Quick Fix action
+
+-------------------------------------------------------------------
 Fri Oct 13 16:22:47 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - initial package 

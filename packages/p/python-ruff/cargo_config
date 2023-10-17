@@ -1,15 +1,5 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/Instagram/LibCST.git?rev=03179b55ebe7e916f1722e18e8f0b87c01616d1f"]
-git = "https://github.com/Instagram/LibCST.git"
-rev = "03179b55ebe7e916f1722e18e8f0b87c01616d1f"
-replace-with = "vendored-sources"
-
-[source."git+https://github.com/youknowone/unicode_names2.git?rev=4ce16aa85cbcdd9cc830410f1a72ef9a235f2fde"]
-git = "https://github.com/youknowone/unicode_names2.git"
-rev = "4ce16aa85cbcdd9cc830410f1a72ef9a235f2fde"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"

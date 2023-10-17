@@ -7,4 +7,41 @@
     <comment>ruff - fast python linter written in rust</comment>
     <requestid>1117694</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b9629aa038b926c895139313214c5b4</srcmd5>
+    <version>0.1.0</version>
+    <time>1697567134</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.0
+ * Breaking changes
+  + Unsafe fixes are no longer displayed or applied without opt-in
+  + Drop formatting specific rules from the default set
+  + The deprecated format setting has been removed
+  + The format setting cannot be used to configure the output format, use output-format instead
+  + The RUFF_FORMAT environment variable is ignored, use RUFF_OUTPUT_FORMAT instead
+  + The --format option has been removed from ruff check, use --output-format instead
+ * Rule changes
+  + Extend reimplemented-starmap (FURB140) to catch calls with a single and starred argument
+  + Improve cases covered by RUF015
+  + Update SIM15 to allow open followed by close
+  + Respect msgspec.Struct default-copy semantics in RUF012
+  + Add sqlalchemy methods to `flake8-boolean-trap`` exclusion list
+  + Add fix for PLR1714
+  + Add fix for PIE804
+  + Add fix for PLC0208
+  + Add fix for PYI055
+  + Update non-pep695-type-alias to require --unsafe-fixes outside of stub files
+  + Improve fix message for UP018
+  + Update PLW3201 to support Enum sunder names
+ * Preview features
+  + Only show warnings for empty preview selectors when enabling rules
+  + Add unnecessary-key-check to simplify key in dct and dct[key] to dct.get(key)
+  + Add assignment-in-assert to prevent walrus expressions in assert statements
+  + [refurb] Add single-item-membership-test (FURB171)
+  + [pylint] Add and-or-ternary (R1706)
+  + New rules are added in preview.
+ * Configuration
+  + Add unsafe-fixes setting</comment>
+    <requestid>1118297</requestid>
+  </revision>
 </revisionlist>
