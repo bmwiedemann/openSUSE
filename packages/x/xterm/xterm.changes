@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 16 21:07:38 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update 387:
+  * add DECRQUPSS and DECAUPSS
+  * add DECRQDE
+  * correct indexing expression in title-stack
+- includes changes from 386:
+  * improve references in ctlseqs.ms
+  * make the maximum amount of memory used for buffering DCS and
+    OSC strings configurable with maxStringParse resource
+  * improve performance of ReGIS when initializing the largest
+    fontsize
+  * fix regression in SIXEL colors
+  * fix typo in --with-wtmp
+
+-------------------------------------------------------------------
 Tue Oct  3 06:34:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 385:

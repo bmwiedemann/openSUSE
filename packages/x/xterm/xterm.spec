@@ -17,9 +17,8 @@
 
 
 %define splitbin 0%{?suse_version} >= 1300
-
 Name:           xterm
-Version:        385
+Version:        387
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT
@@ -45,11 +44,19 @@ Patch5:         xterm-forbid_window_and_font_ops.patch
 Patch7:         xterm-allow_iso-utf_fonts_in_menu.patch
 Patch8:         xterm-decomposed_bitmaps.patch
 Patch9:         xterm-desktop-item-in-gnome-utilities-appfolder.patch
+BuildRequires:  bdftopcf
 BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(x11-xcb)
+BuildRequires:  pkgconfig(xaw7)
+BuildRequires:  pkgconfig(xft)
+Requires:       luit
+Recommends:     xorg-x11-fonts-legacy
 Provides:       XFree86:%{_prefix}/X11R6/bin/xterm
 Provides:       xorg-x11:%{_prefix}/X11R6/bin/xterm
 %if %{splitbin}
@@ -58,14 +65,6 @@ Requires:       %{name}-bin
 %if 0%{?suse_version} > 1220
 BuildRequires:  fontpackages-devel
 %endif
-BuildRequires:  bdftopcf
-BuildRequires:  utempter-devel
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(x11-xcb)
-BuildRequires:  pkgconfig(xaw7)
-BuildRequires:  pkgconfig(xft)
-Requires:       luit
-Recommends:     xorg-x11-fonts-legacy
 %if 0%{?suse_version} > 1220
 %reconfigure_fonts_prereq
 %endif
@@ -99,7 +98,7 @@ bunzip2 %{basename:%{SOURCE8}} %{basename:%{SOURCE9}}
 %build
 %define xappdefs   %{_datadir}/X11/app-defaults
 %define xfontsd    %{_datadir}/fonts
-%define xterminfo  /usr/lib/X11%{_sysconfdir}
+%define xterminfo  %{_prefix}/lib/X11%{_sysconfdir}
 
 %configure \
     --enable-256-color \
@@ -182,6 +181,6 @@ install -m 644 *.pcf.gz %{buildroot}%{xfontsd}/misc/
 
 %files resize
 %{_bindir}/resize
-%{_mandir}/man1/resize.1*
+%{_mandir}/man1/resize.1%{?ext_man}
 
 %changelog
