@@ -1,0 +1,7 @@
+<package name="decibels" project="openSUSE:Factory">
+  <title>Play audio files with a waveform</title>
+  <description>App that lets you play audio files. It has a modern and adaptive interface, with a waveform, simple playback controls, and the ability to control the speed at which the audio is played.
+</description>
+  <devel project="multimedia:apps" package="decibels"/>
+  <url>https://github.com/vixalien/decibels</url>
+</package>
