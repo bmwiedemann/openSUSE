@@ -23,6 +23,7 @@ Summary:        Package for physical quantities with units
 License:        BSD-3-Clause
 URL:            https://github.com/python-quantities/python-quantities/
 Source:         https://files.pythonhosted.org/packages/source/q/quantities/quantities-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module pip}
