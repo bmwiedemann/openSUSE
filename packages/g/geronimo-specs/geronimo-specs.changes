@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 16 13:36:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with with java > 1.8
+  * remove corba modules that nobody requires and that need the
+    idlj compiler not present ni java >= 10
+- Added patch:
+  * sun-security-provider.patch
+    + remove bogus inclusion of sun.security.provider.Sun
+
+-------------------------------------------------------------------
 Thu Aug 31 07:44:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove bogus dependency on avalon-logkit that our spec is adding

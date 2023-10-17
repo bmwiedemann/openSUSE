@@ -247,4 +247,12 @@ Hope everyone find this sattisfactory now.</comment>
     <comment>Remove bogus dependency on avalon-logkit</comment>
     <requestid>1108211</requestid>
   </revision>
+  <revision rev="35" vrev="38">
+    <srcmd5>d5f4fd38aa8193becf3e90de42a4afc0</srcmd5>
+    <version>1.2</version>
+    <time>1697566953</time>
+    <user>anag+factory</user>
+    <comment>Add back the jaxrpc, since we can</comment>
+    <requestid>1118189</requestid>
+  </revision>
 </revisionlist>

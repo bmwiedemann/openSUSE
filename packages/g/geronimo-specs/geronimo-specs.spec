@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Java
 URL:            https://geronimo.apache.org
 Source0:        %{name}-%{version}-src.tar.bz2
+Patch0:         sun-security-provider.patch
 # STEPS TO CREATE THE SOURCE FILE
 # mkdir geronimo-specs-1.2
 # cd geronimo-specs-1.2
@@ -78,9 +79,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit >= 3.8.1
-BuildConflicts: java-devel >= 11
 BuildConflicts: java-devel-openj9
-BuildConflicts: java-headless >= 11
 BuildConflicts: java-headless-openj9
 BuildArch:      noarch
 
@@ -154,28 +153,6 @@ Geronimo is Apache's ASF-licenced J2EE server project. These are the
 J2EE-Specifications Note: You should use the subpackages for the
 Specifications that you actually need.	The ones installed by the main
 package are deprecated and will disapear in future releases.
-
-%package -n geronimo-corba-1_0-apis
-Summary:        Geronimo J2EE server J2EE specifications
-Group:          Development/Languages/Java
-Provides:       corba_1_0_apis = %{version}
-Provides:       corba_apis = 1.0
-Obsoletes:      %{name}-poms
-
-%description -n geronimo-corba-1_0-apis
-Geronimo is Apache's ASF-licenced J2EE server project. These are the
-J2EE-Specifications: CORBA 1.0 Spec
-
-%package -n geronimo-corba-2_3-apis
-Summary:        Geronimo J2EE server J2EE specifications
-Group:          Development/Languages/Java
-Provides:       corba_2_3_apis = %{version}
-Provides:       corba_apis = 2.3
-Obsoletes:      %{name}-poms
-
-%description -n geronimo-corba-2_3-apis
-Geronimo is Apache's ASF-licenced J2EE server project. These are the
-J2EE-Specifications: CORBA 2.3 Spec
 
 %package -n geronimo-ejb-2_1-api
 Summary:        Geronimo J2EE server J2EE specifications
@@ -253,8 +230,6 @@ Group:          Development/Languages/Java
 Requires(pre):  update-alternatives
 Provides:       commonj_1_1_apis = %{version}
 Provides:       commonj_apis = 1.1
-Provides:       corba_2_3_apis = %{version}
-Provides:       corba_apis = 2.3
 Provides:       ejb_2_1_api = %{version}
 Provides:       ejb_api = 2.1
 Provides:       j2ee_connector_1_5_api = %{version}
@@ -289,7 +264,6 @@ Provides:       servlet_api = 2.4
 #
 # Provides:  commonj = 1.1
 Provides:       ejb = 2.1
-# Provides:  corba = 2.3
 Provides:       j2ee-connector = 1.5
 Provides:       j2ee-deployment = 1.1
 Provides:       j2ee-management = 1.0
@@ -304,8 +278,6 @@ Provides:       jta = 1.0.1B
 # Provides:  qname = 1.1
 Provides:       saaj = 1.1
 Provides:       servlet = 2.4
-# added Epoch
-Provides:       geronimo-corba-2_3-apis = %{version}
 # added Epoch
 Provides:       geronimo-qname-1_1-api = %{version}
 Obsoletes:      %{name}-poms
@@ -676,6 +648,7 @@ package are deprecated and will disapear in future releases.
 
 %prep
 %setup -q
+%patch0 -p1
 chmod -R go=u-w *
 mkdir etc
 cp LICENSE.txt etc
@@ -683,14 +656,10 @@ mkdir external_repo
 ln -s %{_javadir} external_repo/JPP
 cp %{SOURCE1000} build.xml
 %pom_xpath_set pom:project/pom:version 1.0 geronimo-spec-commonj
-%pom_xpath_set pom:project/pom:version 1.0 geronimo-spec-corba
-%pom_xpath_set pom:project/pom:version 1.1 geronimo-spec-corba-2.3
-%pom_xpath_set pom:project/pom:version 1.1 geronimo-spec-corba-3.0
 %pom_xpath_set pom:project/pom:version 1.1.1 geronimo-spec-j2ee
 
 %build
-ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
-    -Didlj=%{java_home}/bin/idlj
+%ant -Dant.build.javac.source=8 -Dant.build.javac.target=8
 
 %install
 set +x
@@ -718,20 +687,6 @@ install -m 0644 \
 %{mvn_install_pom} geronimo-annotation_1.0_spec-1.1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-annotation-1.0-api.pom
 %add_maven_depmap JPP-geronimo-annotation-1.0-api.pom geronimo-annotation-1.0-api.jar -a "javax.annotation:jsr250-api,org.eclipse.jetty.orbit:javax.annotation" -f annotation-1.0-api
-
-install -m 0644 \
-  geronimo-spec-corba-2.3/target/geronimo-corba_2.3_spec-null.jar \
-  %{buildroot}%{_javadir}/geronimo-corba-2.3-apis.jar
-%{mvn_install_pom} geronimo-spec-corba-2.3/pom.xml \
-  %{buildroot}/%{_mavenpomdir}/JPP-geronimo-corba-2.3-apis.pom
-%add_maven_depmap JPP-geronimo-corba-2.3-apis.pom geronimo-corba-2.3-apis.jar -f corba-2.3-apis
-
-install -m 0644 \
-  geronimo-spec-corba/target/geronimo-spec-corba-null.jar \
-  %{buildroot}%{_javadir}/geronimo-corba-1.0-apis.jar
-%{mvn_install_pom} geronimo-spec-corba/pom.xml \
-  %{buildroot}/%{_mavenpomdir}/JPP-geronimo-corba-1.0-apis.pom
-%add_maven_depmap JPP-geronimo-corba-1.0-apis.pom geronimo-corba-1.0-apis.jar -f corba-1.0-apis
 
 install -m 0644 \
   geronimo-ejb_2.1_spec-1.1/target/geronimo-ejb_2.1_spec-1.1.jar \
@@ -954,14 +909,6 @@ update-alternatives --remove jaf_1_1_api %{_javadir}/geronimo-jaf-1.1-api.jar
 update-alternatives --remove annotation_api %{_javadir}/geronimo-annotation-1.0-api.jar
 update-alternatives --remove annotation_1_0_api %{_javadir}/geronimo-annotation-1.0-api.jar
 
-%pre -n geronimo-corba-1_0-apis
-update-alternatives --remove corba_apis %{_javadir}/geronimo-corba-1.0-apis.jar
-update-alternatives --remove corba_1_0_apis %{_javadir}/geronimo-corba-1.0-apis.jar
-
-%pre -n geronimo-corba-2_3-apis
-update-alternatives --remove corba_apis %{_javadir}/geronimo-corba-2.3-apis.jar
-update-alternatives --remove corba_2_3_apis %{_javadir}/geronimo-corba-2.3-apis.jar
-
 %pre -n geronimo-ejb-2_1-api
 update-alternatives --remove ejb %{_javadir}/geronimo-ejb-2.1-api.jar
 update-alternatives --remove ejb_api %{_javadir}/geronimo-ejb-2.1-api.jar
@@ -1092,8 +1039,6 @@ update-alternatives --remove jaf_api %{_javadir}/geronimo-j2ee-1.4-apis.jar
 update-alternatives --remove jaf_1_0_2_api %{_javadir}/geronimo-j2ee-1.4-apis.jar
 update-alternatives --remove commonj_apis %{_javadir}/geronimo-j2ee-1.4-apis.jar
 update-alternatives --remove commonj_1_1_apis %{_javadir}/geronimo-j2ee-1.4-apis.jar
-update-alternatives --remove corba_apis %{_javadir}/geronimo-j2ee-1.4-apis.jar
-update-alternatives --remove corba_2_3_apis %{_javadir}/geronimo-j2ee-1.4-apis.jar
 update-alternatives --remove ejb_api %{_javadir}/geronimo-j2ee-1.4-apis.jar
 update-alternatives --remove ejb_2_1_api %{_javadir}/geronimo-j2ee-1.4-apis.jar
 update-alternatives --remove j2ee-connector %{_javadir}/geronimo-j2ee-connector-1.5-api.jar
@@ -1135,11 +1080,6 @@ update-alternatives --remove servlet_2_4_api %{_javadir}/geronimo-j2ee-1.4-apis.
 
 %files -n geronimo-annotation-1_0-api -f .mfiles-annotation-1.0-api
 %license geronimo-annotation_1.0_spec-1.1.0/LICENSE.txt
-
-%files -n geronimo-corba-1_0-apis -f .mfiles-corba-1.0-apis
-
-%files -n geronimo-corba-2_3-apis -f .mfiles-corba-2.3-apis
-%license geronimo-spec-corba-2.3/LICENSE.txt
 
 %files -n geronimo-ejb-2_1-api -f .mfiles-ejb-2.1-api
 %license geronimo-ejb_2.1_spec-1.1/LICENSE.txt
