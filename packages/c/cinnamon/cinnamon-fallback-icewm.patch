@@ -1,9 +1,9 @@
 diff -ruN a/files/usr/bin/cinnamon-launcher b/files/usr/bin/cinnamon-launcher
 --- a/files/usr/bin/cinnamon-launcher	2021-07-02 22:19:14.000000000 +0700
 +++ b/files/usr/bin/cinnamon-launcher	2021-07-10 03:22:22.044467954 +0700
-@@ -14,22 +14,13 @@
+@@ -15,22 +15,13 @@
  gi.require_version('Gtk', '3.0')  # noqa
- from gi.repository import Gtk, GLib, Gio
+ from gi.repository import Gtk, GLib, Gio, GLib
  
 -FALLBACK_COMMAND = "metacity"
 +FALLBACK_COMMAND = "icewm"
@@ -13,13 +13,13 @@ diff -ruN a/files/usr/bin/cinnamon-launcher b/files/usr/bin/cinnamon-launcher
  
  panel_process_name = None
  panel_cmd = None
--if os.path.exists("/usr/bin/mate-panel"):
+-if shutil.which("mate-panel"):
 -    panel_process_name = "mate-panel"
 -    panel_cmd = "mate-panel --replace &"
--elif os.path.exists("/usr/bin/gnome-panel"):
+-elif shutil.which("gnome-panel"):
 -    panel_process_name = "gnome-panel"
 -    panel_cmd = "gnome-panel --replace &"
--elif os.path.exists("/usr/bin/tint2"):
+-elif shutil.which("tint2"):
 -    panel_process_name = "tint2"
 -    panel_cmd = "killall tint2; tint2 &"
  

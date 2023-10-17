@@ -18,7 +18,7 @@
 
 %define _version 5.0.0
 Name:           cinnamon
-Version:        5.2.7
+Version:        5.8.4
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -40,8 +40,7 @@ Patch7:         %{name}-fallback-icewm.patch
 # For gnome-background-properties.
 # PATCH-FIX-OPENSUSE support_yast_settings.patch shenlebantongying@gmail.com gh#linuxmint/cinnamon#9590 -- Fix cinnamon-settings cannot invoke YaST commands.
 Patch8:         support_yast_settings.patch
-# PATCH-FIX-UPSTREAM cinnamon-meson-0.61.patch -- Fix build using meson 0.61
-Patch9:         cinnamon-meson-0.61.patch
+
 BuildRequires:  cmake
 BuildRequires:  desktop-data-openSUSE-extra
 BuildRequires:  fdupes
@@ -62,10 +61,11 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
-BuildRequires:  pkgconfig(libmuffin) >= %{_version}
+BuildRequires:  pkgconfig(libmuffin-0) >= %{_version}
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
+BuildRequires:  pkgconfig(xapp)
 Requires:       %{name}-gschemas = %{version}
 Requires:       adwaita-icon-theme
 Requires:       cinnamon-control-center-common >= %{_version}
@@ -178,7 +178,6 @@ GSettings and applications used by the MIME system.
 %patch4 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 cp -a %{SOURCE1} .
 
 for file in files%{_datadir}/%{name}/%{name}-settings/bin/*.py files%{_datadir}/%{name}/%{name}-looking-glass/*.py \
@@ -218,6 +217,8 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop \
 
 find %{buildroot} -type f -name "*.a" -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print
+# Delete useless gir files
+%{__rm} -rf %{buildroot}%{_datadir}/gir-1.0/
 %fdupes %{buildroot}%{_datadir}/
 
 %suse_update_desktop_file %{name}-settings
@@ -275,17 +276,18 @@ fi
 %{_datadir}/desktop-directories/*
 %exclude %{_datadir}/%{name}/theme/menu*.svg
 %{_datadir}/icons/hicolor/*/*/*.svg
+%{_datadir}/icons/hicolor/*/*/*.png
 %{_datadir}/polkit-1/actions/org.%{name}.settings-users.policy
 %{_datadir}/xsessions/*
 %{_datadir}/%{name}/
 %{_datadir}/%{name}-background-properties
 %{_libdir}/%{name}/
 %{_mandir}/man1/cinnamon*%{?ext_man}
-%{_mandir}/man1/gnome-session-cinnamon*%{?ext_man}
 %{_prefix}/lib/python%{python_version}/site-packages/%{name}/
 
 %files gschemas
 %{_datadir}/glib-2.0/schemas/org.cinnamon.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.cinnamon.gestures.gschema.xml
 
 %files gschemas-branding-upstream
 %doc README.Gsettings-overrides

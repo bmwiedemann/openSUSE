@@ -1,7 +1,7 @@
 diff -ruN a/files/usr/share/cinnamon/cinnamon-settings/bin/SettingsWidgets.py b/files/usr/share/cinnamon/cinnamon-settings/bin/SettingsWidgets.py
 --- a/files/usr/share/cinnamon/cinnamon-settings/bin/SettingsWidgets.py	2021-06-01 20:12:27.000000000 +0700
 +++ b/files/usr/share/cinnamon/cinnamon-settings/bin/SettingsWidgets.py	2021-06-04 03:42:12.187577825 +0700
-@@ -212,7 +212,7 @@
+@@ -213,7 +213,7 @@
              self.module.loaded = True
  
          if self.is_standalone:

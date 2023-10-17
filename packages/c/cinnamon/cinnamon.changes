@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct  5 12:17:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop cinnamon-meson-0.61.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Sat Jul  15 12:00:38 UTC 2023 - sb56637 <mxoo28j7@duck.com>
+
+- Building on Dead Mozay's packaging work; update to version 5.8.4.
+  * theme: Don't force too large a minimum size of PopupSliderMenuItem.
+  * cs_gestures.py: Cleaning up Python
+  * gestures: Fix EXEC actions not completing.
+  * sound applet: Fix alignment of icons in 'Launch player' submenu when a player is active.
+  * To fix the error of referencing a non-existent variable.
+  * popupMenu: restore minimum slider width, override sound slider only
+  * grouped window list: fix drag and move app icon on the app list
+  * cinnamon-close-dialog: Fix dialog text
+  * Align labels in rows in the preffered applications to center
+  * cinnamon ui: improve overview animation
+  * color-scheme follow simplified themes
+  * l10n: Update POT
+
+-------------------------------------------------------------------
+Thu Jun  8 13:36:45 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 5.8.1.
+  * Revert "l10n: Generate module files"
+  * Update generate_cs_module_desktop_files.py script
+  * l10n: Generate module files
+  * l10n: Generate additional files
+
+-------------------------------------------------------------------
+Wed May  3 17:19:25 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 5.6.8.
+  * New upstream bugfix version 5.6.8 (Closes: deb#1032912)
+
+-------------------------------------------------------------------
 Wed Mar  2 16:10:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add cinnamon-meson-0.61.patch: Fix build using meson 0.61, which
