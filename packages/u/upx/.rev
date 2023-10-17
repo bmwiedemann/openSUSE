@@ -191,4 +191,12 @@
     <comment></comment>
     <requestid>1112801</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>1b316ca387042cdfd9cec7dc668586f7</srcmd5>
+    <version>4.1.0</version>
+    <time>1697567093</time>
+    <user>anag+factory</user>
+    <comment>- Fix typo in BSD-4-Clause (forwarded request 1118108 from lkocman)</comment>
+    <requestid>1118222</requestid>
+  </revision>
 </revisionlist>
