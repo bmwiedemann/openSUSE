@@ -30,6 +30,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  golang
 BuildRequires:  go-rpm-macros
 BuildRequires:  golang-ipath(golang.org/x/sys)
+BuildRequires:  golang(gopkg.in/alecthomas/kingpin.v2)
 BuildRequires:  golang(github.com/alecthomas/template)
 BuildRequires:  golang(github.com/alecthomas/units)
 BuildRequires:  golang(github.com/aws/aws-sdk-go)
@@ -38,7 +39,9 @@ BuildRequires:  golang(github.com/dustin/go-humanize)
 BuildRequires:  golang(github.com/json-iterator/go)
 BuildRequires:  golang(github.com/mattn/go-colorable)
 BuildRequires:  golang(github.com/mattn/go-isatty)
+%if 0%{fedora} < 39
 BuildRequires:  golang(github.com/minio/blake2b-simd)
+%endif
 BuildRequires:  golang(github.com/mitchellh/go-homedir)
 BuildRequires:  golang(github.com/oxtoacart/bpool)
 BuildRequires:  golang(github.com/phayes/permbits)
@@ -48,12 +51,13 @@ BuildRequires:  golang(github.com/segmentio/ksuid)
 BuildRequires:  golang(go.uber.org/zap)
 BuildRequires:  golang(go.uber.org/zap/buffer)
 BuildRequires:  golang(go.uber.org/zap/zapcore)
+BuildRequires:  golang(howett.net/plist)
 %else
 BuildRequires:  golang(API)
 BuildRequires:  golang-packaging
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
 # Go source packages are horribly broken on Leap (mismatching compiler versions between libraries and toolchain)
 BuildRequires:  golang-org-x-sys
 %endif
@@ -69,22 +73,31 @@ Used by electron-builder but applicable not only for building Electron applicati
 %prep
 %autosetup -n app-builder-%commit -a1
 # remove bundled dependencies 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
 rm -rf vendor/golang.org/x/sys
 %endif
 
 %if 0%{?fedora}
-rm -rf vendor/github.com/{alecthomas/{template,units},aws,disintegration,dustin,hpcloud,jmespath,json-iterator,mattn,minio,mitchellh,modern-go,onsi,oxtoacart,phayes,pkg,segmentio}
+rm -rf vendor/github.com/{alecthomas,aws,disintegration,dustin,hpcloud,jmespath,json-iterator,mattn,mitchellh,modern-go,onsi,oxtoacart,phayes,pkg,segmentio}
 rm -rf vendor/go.uber.org
 rm -rf vendor/golang.org
 rm -rf vendor/gopkg.in/{fsnotify.v1,tomb.v1,yaml.v2}
+rm -rf vendor/howett.net
+
+%if 0%{fedora} < 39
+rm -rf vendor/github.com/minio
+%endif
+
+grep -FrlZ 'github.com/alecthomas/kingpin' | xargs -tr0 -P$(nproc) -- sed -i 's|github.com/alecthomas/kingpin|gopkg.in/alecthomas/kingpin.v2|g'
 %endif
 
 %build
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
-
+export CGO_CFLAGS="$CFLAGS -fpie"
+export CGO_CXXFLAGS="$CXXFLAGS -fpie"
+export CGO_LDFLAGS="%{?build_ldflags}"
 %if 0%{?fedora}
 %goprep -k -e
 %else
@@ -93,7 +106,7 @@ export GO111MODULE=off
 %endif
 
 
-
+export GOFLAGS='-ldflags=-compressdwarf=false' #fix broken debuginfo
 %gobuild
 
 

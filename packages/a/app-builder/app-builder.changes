@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 16 17:53:11 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Use correct optflags for C code
+- Fix broken debuginfo (work around bsc#1215402)
+- Use system kingpin and plist on fedora
+- Use vendored blake2b-simd on Fedora 39+ as it is no longer available
+
+-------------------------------------------------------------------
 Wed Jul 20 18:48:51 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Use system golang libraries instead of vendored copies wherever possible
 
