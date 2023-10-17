@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 13 03:31:05 UTC 2023 - Martin Jungblut Schreiner <martinjungblut@gmail.com>
+
+- Remove tmpwatch.daily cron script, replace it with systemd timer.
+- Remove cron as a dependency.
+- Add tmpwatch.service, tmpwatch.timer, rename tmpwatch.daily as
+  /usr/sbin/tmpwatch-autoclean. The systemd timer/service triggers
+  this newly named script.
+- This change is related to bsc#1115430.
+
+-------------------------------------------------------------------
+Wed Aug 21 08:19:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- The cron software is not required for building the tmpwatch
+  proper; avoid pulling it in and ship cron file directories.
+- Enable parallel build. Upgrade old macros.
+
+-------------------------------------------------------------------
 Tue Aug 20 09:54:09 CEST 2019 - kukuk@suse.de
 
 - Add cron as BuildRequires for directory layout

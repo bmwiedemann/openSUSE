@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatic clean-up execution of tmpwatch
+
+[Timer]
+OnCalendar=Daily
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

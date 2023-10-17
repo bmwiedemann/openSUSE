@@ -1,7 +1,7 @@
 #
 # spec file for package tmpwatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ License:        GPL-2.0-only
 Group:          Productivity/Security
 Version:        2.11
 Release:        0
-Url:            https://pagure.io/tmpwatch
-#Source0:        https://pagure.io/tmpwatch/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
+URL:            https://pagure.io/tmpwatch
 Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}.daily
-BuildRequires:  cron
+Source1:        %{name}.service
+Source2:        %{name}.timer
+Source3:        %{name}-autoclean
 BuildRequires:  psmisc
-Requires:       cron
 Requires:       psmisc
 
 %description
@@ -47,17 +46,34 @@ https://pagure.io/tmpwatch
 
 %build
 %configure
-%{__make}
+make %{?_smp_mflags}
 
 %install
-%makeinstall
-%{__install} -D -m755 %{S:1} %{buildroot}%{_sysconfdir}/cron.daily/%{name}
+%make_install
+install -D -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/%{name}.service
+install -D -m 0644 %{SOURCE2} %{buildroot}/%{_unitdir}/%{name}.timer
+install -D -m 0755 %{SOURCE3} %{buildroot}/%{_sbindir}/%{name}-autoclean
+
+%pre
+%service_add_pre %{name}.service %{name}.timer
+
+%post
+%service_add_post tmpwatch.service tmpwatch.timer
+
+%preun
+%service_del_preun %{name}.service %{name}.timer
+
+%postun
+%service_del_postun %{name}.service %{name}.timer
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog NEWS README COPYING
-%config(noreplace) %{_sysconfdir}/cron.daily/%{name}
+%doc ChangeLog NEWS README
+%license COPYING
 %{_sbindir}/%{name}
+%{_sbindir}/%{name}-autoclean
+%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}.timer
 %{_mandir}/man8/%{name}.8*
 
 %changelog
