@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 13 03:07:35 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.71
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.71   2023-10-12
+
+      - Document and test different behaviour regarding Booleans in perl
+        5.38.0 compared to earlier versions.
+        See https://github.com/DrHyde/perl-modules-Test-Differences/issues/21
+
+-------------------------------------------------------------------
 Sat Jul  8 03:08:58 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.70

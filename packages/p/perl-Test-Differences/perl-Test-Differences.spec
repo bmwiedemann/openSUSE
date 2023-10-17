@@ -18,10 +18,9 @@
 
 %define cpan_name Test-Differences
 Name:           perl-Test-Differences
-Version:        0.700.0
+Version:        0.710.0
 Release:        0
-%define cpan_version 0.70
-Provides:       perl(Test::Differences) = 0.700.0
+%define cpan_version 0.71
 #Upstream:  All Rights Reserved. You may use, distribute and modify this software under the terms of the GNU public license, any version, or the Artistic license.
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Test strings and data structures and show differences if not ok
@@ -39,6 +38,7 @@ Requires:       perl(Capture::Tiny) >= 0.24
 Requires:       perl(Data::Dumper) >= 2.126
 Requires:       perl(Test::More) >= 0.88
 Requires:       perl(Text::Diff) >= 1.43
+Provides:       perl(Test::Differences) = 0.710.0
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
