@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 16 08:05:33 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1650+2
+  * libpsi relinked. Updated CMake files: fixed flags for X11
+  * Add optional "Manage Accounts" button on toolbars
+  * Update desktop file
+  * Updated stylized_classic webkit theme. Fixed last message date
+  * src: Fix Qt5 X11Extras usage in CMakeLists.txt (#700)
+  * Make the build reproducible (#699)
+  * Fixed USE_X11 flag behavior
+  * Add Nix-based CI testing using GitHub Actions (#696)
+  * Update emoji to unicode 15.0
+  * Allow proper runtime linking with `pkgin`-installed libraries on NetBSD (#695)
+  * Update Psi+ metainfo.
+  * Fix invalid ID which is violating DBus specifications
+  * Add releases from GitHub
+  * Add Open Age Rating
+  * SystemInfo: improve detection of macOS version
+  * Travis CI: build with system QCA library in Ubuntu Bionic
+  * Iris relinked.
+  * DOAP: Use correct namespace for xmlns:schema (#691)
+  * Updated rosteravatarframe. Fixed tune button
+  * Removed legacy certificates. (#689)
+  * Added Ubuntu CI action. (#687)
+  * Added Fedora CI action. (#686)
+  * Travis CI: update build scripts:
+  * Fixed EventNotifier visibility on psi launch with disabled tray
+  * Mention incompatibility with Qt6
+- switch to manual _service's
+- add 0001-fix-uint_32_t-build-error.patch to fix build
+
+-------------------------------------------------------------------
 Mon Apr 24 10:06:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

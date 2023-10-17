@@ -1,0 +1,32 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Mon, 16 Oct 2023 10:02:41 +0200
+Subject: fix uint_32_t build error
+Patch-mainline: yes
+Git-commit: 58efcf47ba43e80adb2f74fc7b561eb614e71405
+References: build-fix
+
+Fix this:
+src/widgets/emojiregistry.cpp:40:10: error: 'uint32_t' is not a member of 'std'
+by including proper header.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/widgets/emojiregistry.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/widgets/emojiregistry.cpp b/src/widgets/emojiregistry.cpp
+index cd050388..218f5ffb 100644
+--- a/src/widgets/emojiregistry.cpp
++++ b/src/widgets/emojiregistry.cpp
+@@ -17,6 +17,8 @@
+  *
+  */
+ 
++#include <cstdint>
++
+ #include "emojiregistry.h"
+ #include "emojidb.cpp"
+ 
+-- 
+2.42.0
+

@@ -1,21 +1,21 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/psi-plus/psi-plus-snapshots</param>
     <param name="scm">git</param>
     <param name="filename">psi+</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
   </service>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/psi-plus/psi-plus-l10n</param>
     <param name="scm">git</param>
     <param name="filename">psi-plus-l10n</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
   </service>
-  <service mode="disabled" name="set_version">
+  <service mode="manual" name="set_version">
     <param name="basename">psi+</param>
     <param name="file">psi+.spec</param>
   </service>
-  <service mode="disabled" name="set_version">
+  <service mode="manual" name="set_version">
     <param name="basename">psi-plus-l10n</param>
     <param name="file">psi+-lang.spec</param>
   </service>

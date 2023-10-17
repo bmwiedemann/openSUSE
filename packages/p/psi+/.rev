@@ -760,4 +760,41 @@
     <time>1683296373</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1ffa79cac34e17d00045c4207c95197f</srcmd5>
+    <version>1.5.1650+2</version>
+    <time>1697567053</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1627+0
+
+- update to 1.5.1650+2
+  * libpsi relinked. Updated CMake files: fixed flags for X11
+  * Add optional &quot;Manage Accounts&quot; button on toolbars
+  * Update desktop file
+  * Updated stylized_classic webkit theme. Fixed last message date
+  * src: Fix Qt5 X11Extras usage in CMakeLists.txt (#700)
+  * Make the build reproducible (#699)
+  * Fixed USE_X11 flag behavior
+  * Add Nix-based CI testing using GitHub Actions (#696)
+  * Update emoji to unicode 15.0
+  * Allow proper runtime linking with `pkgin`-installed libraries on NetBSD (#695)
+  * Update Psi+ metainfo.
+  * Fix invalid ID which is violating DBus specifications
+  * Add releases from GitHub
+  * Add Open Age Rating
+  * SystemInfo: improve detection of macOS version
+  * Travis CI: build with system QCA library in Ubuntu Bionic
+  * Iris relinked.
+  * DOAP: Use correct namespace for xmlns:schema (#691)
+  * Updated rosteravatarframe. Fixed tune button
+  * Removed legacy certificates. (#689)
+  * Added Ubuntu CI action. (#687)
+  * Added Fedora CI action. (#686)
+  * Travis CI: update build scripts:
+  * Fixed EventNotifier visibility on psi launch with disabled tray
+  * Mention incompatibility with Qt6
+- switch to manual _service's
+- add 0001-fix-uint_32_t-build-error.patch to fix build</comment>
+    <requestid>1118007</requestid>
+  </revision>
 </revisionlist>
