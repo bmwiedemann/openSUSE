@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 15 12:44:00 UTC 2023 - Nicolas Lorin <androw95220@gmail.com>
+
+- Update to version 1.2.2:
+  * Unbreak build on FreeBSD
+  * Fix build when using clang
+  * specify flag for manual installation
+  * fixes the picker starting at windows and not monitors
+  * performance improvements
+  * fix for high CPU usage after exit
+  * hotfix to 1.2.0 to fix crashes after a few seconds
+  * fix some issues with screensharing on non-linear dmabuf GPUs
+  * fix xdph not exiting on terminate 
+
+-------------------------------------------------------------------
 Mon Sep 25 21:46:16 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Remove 0000-sdbus-c++-cmake-lists.patch
