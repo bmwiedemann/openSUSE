@@ -26,7 +26,7 @@ URL:            https://github.com/amoffat/sh
 Source:         https://files.pythonhosted.org/packages/source/s/sh/sh-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +55,17 @@ sh is not a collection of system commands implemented in Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v test
+export SH_TESTS_RUNNING=1
+export SH_TESTS_USE_SELECT=0
+export LANG=C
+# disable broken tests in obs environment
+donttest="test_stringio_output"
+donttest+=" or test_environment"
+donttest+=" or test_no_interfere1"
+donttest+=" or test_set_in_parent_function"
+donttest+=" or test_basic"
+donttest+=" or test_multiline_defaults"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt

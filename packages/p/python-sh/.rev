@@ -169,4 +169,13 @@
     Python3.4+ issues #536</comment>
     <requestid>1109519</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>68957202fcd423da0833858f091f91b2</srcmd5>
+    <version>2.0.6</version>
+    <time>1697566955</time>
+    <user>anag+factory</user>
+    <comment>- Use pytest for running tests
+</comment>
+    <requestid>1118203</requestid>
+  </revision>
 </revisionlist>
