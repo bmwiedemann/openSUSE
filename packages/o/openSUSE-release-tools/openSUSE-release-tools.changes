@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 17 09:06:57 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231017.c439ad7:
+  * project-installcheck.py: Support arch-specific ignore-conflicts config
+
+-------------------------------------------------------------------
 Thu Sep 28 16:50:58 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230928.864b176:
