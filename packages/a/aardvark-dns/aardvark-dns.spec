@@ -17,7 +17,7 @@
 
 
 Name:           aardvark-dns
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Authoritative dns server for A/AAAA container records
 License:        Apache-2.0
@@ -39,9 +39,7 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-cargo build --release
-mkdir -p bin
-cp target/release/%{name} bin/
+%make_build
 
 %install
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}

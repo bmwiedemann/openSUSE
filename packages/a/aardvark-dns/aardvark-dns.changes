@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Sep 28 05:05:47 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.8.0:
+  * Release v1.8.0
+  * update release notes for v1.8.0
+  * run cargo update
+  * Packit: switch to @containers/packit-build team for copr failure notification comments
+  * [CI:BUILD] Packit: tag @lsm5 on copr build failures
+  * chore(deps): update rust crate chrono to 0.4.31
+  * cargo: bump chrono to 0.4.30
+  * test: IPv6 format is changed in v1.72.0
+  * bump nix to 0.27.1
+  * vendor: bump trust_dns_proto and trust_dns_client to 0.23.0
+  * fix(deps): update rust crate trust-dns-server to 0.23.0
+  * [CI:BUILD] rpm: spdx compatible license field
+  * fix(deps): update rust crate anyhow to 1.0.75
+  * fix(deps): update rust crate tokio to 1.32.0
+  * chore(deps): update dependency containers/automation_images to v20230816
+  * fix(deps): update rust crate tokio to 1.31.0
+  * fix(deps): update rust crate anyhow to 1.0.74
+  * fix(deps): update rust crate anyhow to 1.0.73
+  * fix(deps): update rust crate log to 0.4.20
+  * chore(deps): update dependency containers/automation_images to v20230809
+  * fix(deps): update rust crate tokio to 1.30.0
+  * fix(deps): update rust crate clap to 4.3.21
+  * packit: Build PRs into default packit COPRs
+  * chore(deps): update dependency containers/automation_images to v20230807
+  * fix(deps): update rust crate anyhow to 1.0.72
+  * fix(deps): update rust crate signal-hook to 0.3.17
+  * fix(deps): update rust crate clap to 4.3.19
+  * fix(deps): update rust crate clap to 4.3.15
+  * fix(deps): update rust crate signal-hook to 0.3.16
+  * [CI:BUILD] Packit: remove pre-sync action
+  * fix(deps): update rust crate clap to 4.3.11
+  * fix(deps): update rust crate tokio to 1.29.1
+  * fix(deps): update rust crate clap to 4.3.10
+  * [CI:BUILD] RPM: cleanup spec and fix eln builds
+  * bump to v1.8.0-devel
+
+-------------------------------------------------------------------
 Tue Jul 11 13:31:47 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Disable restricting builds only for tier1 platforms
