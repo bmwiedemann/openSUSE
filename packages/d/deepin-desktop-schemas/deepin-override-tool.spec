@@ -30,6 +30,8 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-desktop-schemas
 Source0:        https://github.com/linuxdeepin/deepin-desktop-schemas/archive/%{version}/%{repo}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/linuxdeepin/deepin-desktop-schemas/pull/98 https://github.com/linuxdeepin/deepin-desktop-schemas/pull/100
+Patch0:         reproducible.patch
 BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  golang-packaging
 Requires:       dconf
@@ -54,7 +56,7 @@ This package contains library source intended forbuilding other packages which
 use import path with github.com/linuxdeepin/deepin-desktop-schemas prefix.
 
 %prep
-%setup -q -n %{repo}-%{version}
+%autosetup -p1 -n %{repo}-%{version}
 
 %build
 export GO111MODULE=off
