@@ -2,7 +2,7 @@
 Fri Sep 29 16:49:41 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.36
-  * blacklist RNDIS modules (bsc#1205767, jsc#PED-5731)
+  * blacklist RNDIS modules (bsc#1205767, jsc#PED-5731, CVE-2023-23559)
   * modprobe.d: Blacklist cls_tcindex module (bsc#1210335, CVE-2023-1829)
 
 -------------------------------------------------------------------

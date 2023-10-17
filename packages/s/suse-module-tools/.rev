@@ -709,4 +709,14 @@ source service setup which messed up my spec file.
     <comment>* modprobe.d: Blacklist cls_tcindex module (bsc#1210335, CVE-2023-1829) (forwarded request 1114420 from mwilck)</comment>
     <requestid>1114421</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>ba54a667b606302b9db885202f471a79</srcmd5>
+    <version>16.0.36</version>
+    <time>1697567089</time>
+    <user>anag+factory</user>
+    <comment>Added a CVE ref to the changelog
+
+* blacklist RNDIS modules (bsc#1205767, jsc#PED-5731, CVE-2023-23559) (forwarded request 1118227 from mwilck)</comment>
+    <requestid>1118229</requestid>
+  </revision>
 </revisionlist>
