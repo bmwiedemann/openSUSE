@@ -1339,4 +1339,12 @@
     + `slurmctld` - Allow startup with zero partitions.</comment>
     <requestid>1117163</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>b46863a47250c59bb702fb74f353db15</srcmd5>
+    <version>23.02.6</version>
+    <time>1697567088</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.02.6 to fix (CVE-2023-41914, bsc#1216207)</comment>
+    <requestid>1118220</requestid>
+  </revision>
 </revisionlist>

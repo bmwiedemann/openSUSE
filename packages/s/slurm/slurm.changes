@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Oct 12 08:23:20 UTC 2023 - Christian Goll <cgoll@suse.com>
 
-- update to 23.02.6 to fix (CVE-2023-41914)
+- update to 23.02.6 to fix (CVE-2023-41914, bsc#1216207)
   * Removed Fix-test-32.8.patch as fixed upstream
   * Bug Fixes:
     + Fix `CpusPerTres=` not upgreadable with scontrol update
