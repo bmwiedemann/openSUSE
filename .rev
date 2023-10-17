@@ -86,4 +86,12 @@
   Eliminates the need for source package links in OBS. (forwarded request 1084618 from dimstar)</comment>
     <requestid>1084693</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>130f9c2adec1504caf3a9d29deb865ee</srcmd5>
+    <version>5.10.11</version>
+    <time>1697567063</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118027</requestid>
+  </revision>
 </revisionlist>
