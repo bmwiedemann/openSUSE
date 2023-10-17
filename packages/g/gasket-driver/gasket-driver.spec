@@ -33,8 +33,12 @@
 #
 # norootforbuild
 
+# Upstream doesn't really do proper releases, so track the main branch
+# HEAD's commit hash as well.
+%define git_version 09385d4
+
 Name:           gasket-driver
-Version:        1.0.18
+Version:        1.0.18_%{git_version}
 Release:        0
 Summary:        The Coral Gasket Driver allows usage of the Coral EdgeTPU on Linux systems
 License:        GPL-2.0-only
@@ -43,7 +47,7 @@ URL:            https://github.com/google/gasket-driver
 Source0:        %{name}-%{version}.tar.xz
 Source1:        group.conf
 Source2:        preamble
-Source3:        gasket-driver-rpmlintrc
+Source3:        %{name}-rpmlintrc
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  pesign-obs-integration
 BuildRequires:  sysuser-tools
@@ -51,24 +55,19 @@ Requires:       %{name}-kmp
 %sysusers_requires
 
 # The dma-buf symbols used by this driver were moved into their own `DMA_BUF`
-# module namespace in kernel 5.16. Consequently, the upstream source conditionally
-# imports the `DMA_BUF` module namespace if the kernel version is >= 5.16.
-# This patch removes that condition, allowing this module to be built for kernels
-# that have backported the `DMA_BUF` namespace changes.
+# module namespace in kernel 5.16. Upstream's current attempt at fixing this
+# doesn't work with GCC versions that don't support the `__has_include` directive.
+#
+# Affects:
+# - Leap 15.5
+#
 # See:
 # https://github.com/google/gasket-driver/pull/10
-# https://github.com/google/gasket-driver/commit/a87c105c14e826dafd4b25c36fa7c7c657a7ad03.patch
+# https://github.com/google/gasket-driver/pull/16
+# https://github.com/google/gasket-driver/issues/17
+#
 # PATCH-FIX-OPENSUSE fix-for-backported-dma-buf-ns.patch gh#google/gasket-driver!10
 Patch0:         fix-for-backported-dma-buf-ns.patch
-
-# The function signature for `class_create()` was changed in kernels >= 6.4.x to only accept a
-# single argument (see kernel commit #dcfbb67).
-# This patch conditionally modifies how `class_create()` is called depending on the kernel version.
-# See:
-# https://github.com/google/gasket-driver/pull/13
-# https://github.com/google/gasket-driver/commit/83cbe8264fc63511e4e6250f2426749951a340c8.patch
-# PATCH-FIX-OPENSUSE fix-kernel-gte-6.4.patch gh#google/gasket-driver!13
-Patch1:         fix-kernel-gte-6.4.patch
 
 # This directive instructs the build service to temporarily save the project's
 # certificate as %%_sourcedir/_projectcert.crt. See:
@@ -78,10 +77,9 @@ Patch1:         fix-kernel-gte-6.4.patch
 #
 # needssslcertforbuild
 #
-# Having included the above directive, using the `-c` flag below will cause
-# the "ueficert" package to get built. `%%_sourcedir` must be prefixed as the
-# working dir is changed before the build service attempts to source the certificate.
-%kernel_module_package -p preamble -c %_sourcedir/_projectcert.crt
+# Having included the above directive, the below line will
+# cause the "ueficert" package to get built.
+%kernel_module_package -p %_sourcedir/preamble
 
 %description
 The Coral Gasket Driver allows usage of the Coral EdgeTPU on Linux systems.
@@ -89,13 +87,6 @@ The driver contains two modules:
 - Gasket (Google ASIC Software, Kernel Extensions, and Tools) is a top level driver
   for lightweight communication with Google ASICs.
 - Apex refers to the EdgeTPU v1.
-
-
-
-
-
-# This magic "KMP" subpackage is documented in
-# https://en.opensuse.org/Kernel_Module_Packages#Specfile_mechanisms
 
 %package KMP
 Summary:        Gasket Driver kernel modules
@@ -113,9 +104,6 @@ mkdir -p obj
 %if 0%{?sle_version} == 150500
 %patch0 -p1
 %endif
-
-# Apply patches without conditions.
-%patch1 -p1
 
 %build
 # Build the kernel modules.

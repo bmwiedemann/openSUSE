@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 17 00:00:26 UTC 2023 - Chris Bradbury <chris@binaryspanner.com>
+
+- Remove `fix-kernel-gte-6.4.patch` as it has been merged upstream.
+- Fix ueficert package builds.
+
+-------------------------------------------------------------------
 Wed Jul 19 23:18:19 UTC 2023 - Chris Bradbury <opensuse@chrbrd.com>
 
 - Add `fix-kernel-gte-6.4.patch`. 

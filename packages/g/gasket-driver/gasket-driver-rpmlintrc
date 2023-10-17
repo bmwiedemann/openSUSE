@@ -13,5 +13,3 @@ addFilter("E: no-binary")
 
 # This error is introduced by the KMP sub-package build.
 addFilter("gasket-driver-kmp-.* E: suse-zypp-packageand")
-# This warning is introduced by the "pesign-repackage" Secure Boot cert package build.
-addFilter("gasket-driver-ueficert.* W: non-conffile-in-etc")

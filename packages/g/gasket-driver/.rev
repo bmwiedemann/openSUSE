@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1099604</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>639802a54a22d6806a6f108e379e7bb9</srcmd5>
+    <version>1.0.18_09385d4</version>
+    <time>1697567105</time>
+    <user>anag+factory</user>
+    <comment>- Remove `fix-kernel-gte-6.4.patch` as it has been merged upstream.
+- Fix ueficert package builds.</comment>
+    <requestid>1118252</requestid>
+  </revision>
 </revisionlist>
