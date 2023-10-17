@@ -1641,7 +1641,6 @@ Constraint: hardware:cpu:flag power8
 # manually added, not seen by cleanup-32bit: needed to have rpmlint in ring0
 BuildFlags: onlybuild:rpmlint-mini-AGGR
 
-BuildFlags: onlybuild:7zip
 BuildFlags: onlybuild:AppStream
 BuildFlags: onlybuild:Catch2
 BuildFlags: onlybuild:Catch2-2
@@ -1899,7 +1898,6 @@ BuildFlags: onlybuild:glusterfs
 BuildFlags: onlybuild:gmp
 BuildFlags: onlybuild:gnome-keyring
 BuildFlags: onlybuild:gnome-patch-translation
-BuildFlags: onlybuild:gnu-efi
 BuildFlags: onlybuild:gnu-unifont-legacy-bitmap-fonts
 BuildFlags: onlybuild:gnuplot
 BuildFlags: onlybuild:gnutls
@@ -1993,7 +1991,6 @@ BuildFlags: onlybuild:kconfigwidgets
 BuildFlags: onlybuild:kcoreaddons
 BuildFlags: onlybuild:kdbusaddons
 BuildFlags: onlybuild:kdoctools
-BuildFlags: onlybuild:kernel-source
 BuildFlags: onlybuild:keyutils
 BuildFlags: onlybuild:kf5-filesystem
 BuildFlags: onlybuild:kguiaddons
@@ -2371,7 +2368,6 @@ BuildFlags: onlybuild:openjpeg2
 BuildFlags: onlybuild:openldap2
 BuildFlags: onlybuild:openmpi4:standard
 BuildFlags: onlybuild:openpgm
-BuildFlags: onlybuild:openslp
 BuildFlags: onlybuild:opensp
 BuildFlags: onlybuild:openssh
 BuildFlags: onlybuild:openssl
@@ -2388,7 +2384,6 @@ BuildFlags: onlybuild:pam-config
 BuildFlags: onlybuild:pam_kwallet
 BuildFlags: onlybuild:pango
 BuildFlags: onlybuild:patch
-BuildFlags: onlybuild:patchelf
 BuildFlags: onlybuild:patchutils
 BuildFlags: onlybuild:pcaudiolib
 BuildFlags: onlybuild:pciutils
@@ -2507,7 +2502,6 @@ BuildFlags: onlybuild:perl-IO-stringy
 BuildFlags: onlybuild:perl-IPC-Run
 BuildFlags: onlybuild:perl-IPC-Run3
 BuildFlags: onlybuild:perl-IPC-System-Simple
-BuildFlags: onlybuild:perl-Importer
 BuildFlags: onlybuild:perl-JSON
 BuildFlags: onlybuild:perl-LWP-MediaTypes
 BuildFlags: onlybuild:perl-LWP-Protocol-https
@@ -2705,12 +2699,9 @@ BuildFlags: onlybuild:pulseaudio
 BuildFlags: onlybuild:python
 BuildFlags: onlybuild:python-Automat
 BuildFlags: onlybuild:python-Babel
-BuildFlags: onlybuild:python-Cycler
 BuildFlags: onlybuild:python-Cython
 BuildFlags: onlybuild:python-Cython0
-BuildFlags: onlybuild:python-FontTools
 BuildFlags: onlybuild:python-Genshi
-BuildFlags: onlybuild:python-GitPython
 BuildFlags: onlybuild:python-Jinja2
 BuildFlags: onlybuild:python-Js2Py
 BuildFlags: onlybuild:python-Mako
@@ -2729,12 +2720,10 @@ BuildFlags: onlybuild:python-apipkg
 BuildFlags: onlybuild:python-appdirs
 BuildFlags: onlybuild:python-arrow
 BuildFlags: onlybuild:python-astor
-BuildFlags: onlybuild:python-astunparse
 BuildFlags: onlybuild:python-async_generator
 BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-bcrypt
-BuildFlags: onlybuild:python-beniget
 BuildFlags: onlybuild:python-brotlipy
 BuildFlags: onlybuild:python-build
 BuildFlags: onlybuild:python-calver
@@ -2745,12 +2734,10 @@ BuildFlags: onlybuild:python-charset-normalizer
 BuildFlags: onlybuild:python-cmdln
 BuildFlags: onlybuild:python-constantly
 BuildFlags: onlybuild:python-construct
-BuildFlags: onlybuild:python-contourpy
 BuildFlags: onlybuild:python-coverage
 BuildFlags: onlybuild:python-cppy
 BuildFlags: onlybuild:python-cryptography
 BuildFlags: onlybuild:python-cssselect
-BuildFlags: onlybuild:python-curio
 BuildFlags: onlybuild:python-dbus-python
 BuildFlags: onlybuild:python-ddt
 BuildFlags: onlybuild:python-decorator
@@ -2769,10 +2756,7 @@ BuildFlags: onlybuild:python-flit-core
 BuildFlags: onlybuild:python-flit-core:primary
 BuildFlags: onlybuild:python-flit-scm
 BuildFlags: onlybuild:python-freezegun
-BuildFlags: onlybuild:python-fs
-BuildFlags: onlybuild:python-gast
 BuildFlags: onlybuild:python-gi-docgen
-BuildFlags: onlybuild:python-gitdb
 BuildFlags: onlybuild:python-glad2
 BuildFlags: onlybuild:python-gobject
 BuildFlags: onlybuild:python-gssapi
@@ -2797,16 +2781,12 @@ BuildFlags: onlybuild:python-iniconfig
 BuildFlags: onlybuild:python-isodate
 BuildFlags: onlybuild:python-jsonpointer
 BuildFlags: onlybuild:python-k5test
-BuildFlags: onlybuild:python-kiwisolver
 BuildFlags: onlybuild:python-lark
 BuildFlags: onlybuild:python-libcst
 BuildFlags: onlybuild:python-libevdev
 BuildFlags: onlybuild:python-lxml
-BuildFlags: onlybuild:python-matplotlib
 BuildFlags: onlybuild:python-mccabe
-BuildFlags: onlybuild:python-meson-python
 BuildFlags: onlybuild:python-mypy_extensions
-BuildFlags: onlybuild:python-networkx
 BuildFlags: onlybuild:python-nose2
 BuildFlags: onlybuild:python-notify2
 BuildFlags: onlybuild:python-numpy
@@ -2814,7 +2794,6 @@ BuildFlags: onlybuild:python-olefile
 BuildFlags: onlybuild:python-outcome
 BuildFlags: onlybuild:python-packaging
 BuildFlags: onlybuild:python-packaging:primary
-BuildFlags: onlybuild:python-pandas
 BuildFlags: onlybuild:python-parameterized
 BuildFlags: onlybuild:python-pathspec
 BuildFlags: onlybuild:python-pbr
@@ -2834,19 +2813,13 @@ BuildFlags: onlybuild:python-pyOpenSSL
 BuildFlags: onlybuild:python-pyasn1
 BuildFlags: onlybuild:python-pyasn1-modules
 BuildFlags: onlybuild:python-pybeam
-BuildFlags: onlybuild:python-pybind11
 BuildFlags: onlybuild:python-pycairo
-BuildFlags: onlybuild:python-pycares
 BuildFlags: onlybuild:python-pycodestyle
 BuildFlags: onlybuild:python-pycparser
 BuildFlags: onlybuild:python-pycups
-BuildFlags: onlybuild:python-pycurl
-BuildFlags: onlybuild:python-pydot
 BuildFlags: onlybuild:python-pyelftools
 BuildFlags: onlybuild:python-pyenchant
 BuildFlags: onlybuild:python-pyflakes
-BuildFlags: onlybuild:python-pyftpdlib
-BuildFlags: onlybuild:python-pygraphviz
 BuildFlags: onlybuild:python-pyjsparser
 BuildFlags: onlybuild:python-pyparsing
 BuildFlags: onlybuild:python-pyparsing:primary
@@ -2854,7 +2827,6 @@ BuildFlags: onlybuild:python-pyproject-hooks
 BuildFlags: onlybuild:python-pyproject-metadata
 BuildFlags: onlybuild:python-pyqt-builder
 BuildFlags: onlybuild:python-pyqt-rpm-macros
-BuildFlags: onlybuild:python-pysendfile
 BuildFlags: onlybuild:python-pyserial
 BuildFlags: onlybuild:python-pytest
 BuildFlags: onlybuild:python-pytest-asyncio
@@ -2866,7 +2838,6 @@ BuildFlags: onlybuild:python-python-dateutil
 BuildFlags: onlybuild:python-python-dbusmock
 BuildFlags: onlybuild:python-python-magic
 BuildFlags: onlybuild:python-python-xlib
-BuildFlags: onlybuild:python-pythran
 BuildFlags: onlybuild:python-pytz
 BuildFlags: onlybuild:python-pytz-deprecation-shim
 BuildFlags: onlybuild:python-pyudev
@@ -2880,12 +2851,9 @@ BuildFlags: onlybuild:python-requests-gssapi
 BuildFlags: onlybuild:python-rpm-macros
 BuildFlags: onlybuild:python-rpm-packaging
 BuildFlags: onlybuild:python-rtslib-fb
-BuildFlags: onlybuild:python-scandir
-BuildFlags: onlybuild:python-scipy
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
 BuildFlags: onlybuild:python-setuptools
-BuildFlags: onlybuild:python-setuptools:wheel
 BuildFlags: onlybuild:python-setuptools-rust
 BuildFlags: onlybuild:python-setuptools_scm
 BuildFlags: onlybuild:python-sip
@@ -2912,8 +2880,6 @@ BuildFlags: onlybuild:python-testpath
 BuildFlags: onlybuild:python-toml
 BuildFlags: onlybuild:python-tomli
 BuildFlags: onlybuild:python-tomli-w
-BuildFlags: onlybuild:python-tornado6
-BuildFlags: onlybuild:python-tornado:python3
 BuildFlags: onlybuild:python-trio
 BuildFlags: onlybuild:python-trove-classifiers
 BuildFlags: onlybuild:python-trustme
@@ -2927,12 +2893,9 @@ BuildFlags: onlybuild:python-urllib3_1
 BuildFlags: onlybuild:python-versioneer
 BuildFlags: onlybuild:python-virtualenv
 BuildFlags: onlybuild:python-wcag-contrast-ratio
-BuildFlags: onlybuild:python-wcwidth
 BuildFlags: onlybuild:python-webencodings
 BuildFlags: onlybuild:python-wheel
-BuildFlags: onlybuild:python-wxPython:python310
 BuildFlags: onlybuild:python-wxPython:python311
-BuildFlags: onlybuild:python-wxPython:python39
 BuildFlags: onlybuild:python-yapf
 BuildFlags: onlybuild:python-zipp
 BuildFlags: onlybuild:python-zope.interface
@@ -2946,7 +2909,6 @@ BuildFlags: onlybuild:python39:base
 BuildFlags: onlybuild:python:python-base
 BuildFlags: onlybuild:qca:qt5
 BuildFlags: onlybuild:qemu
-BuildFlags: onlybuild:qhull
 BuildFlags: onlybuild:qml-autoreqprov
 BuildFlags: onlybuild:qmlpluginexports:qt5
 BuildFlags: onlybuild:qrencode
@@ -2984,7 +2946,6 @@ BuildFlags: onlybuild:rubygem-rdiscount
 BuildFlags: onlybuild:rubygem-ronn
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
-BuildFlags: onlybuild:rust1.72
 BuildFlags: onlybuild:rust1.73
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
@@ -3117,7 +3078,6 @@ BuildFlags: onlybuild:translation-update-upstream
 BuildFlags: onlybuild:tslib
 BuildFlags: onlybuild:ttf-converter
 BuildFlags: onlybuild:twolame
-BuildFlags: onlybuild:uasm
 BuildFlags: onlybuild:uchardet
 BuildFlags: onlybuild:umockdev
 BuildFlags: onlybuild:unbound
