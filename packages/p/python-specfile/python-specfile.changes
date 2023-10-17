@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 17 07:30:54 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.22.1:
+  - Removed dependency on setuptools-scm-git-archive
+
+-------------------------------------------------------------------
 Mon Sep  4 10:43:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - reduce buildrequires to git-core 
