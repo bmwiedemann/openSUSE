@@ -30,8 +30,8 @@ BuildRequires:  gettext-devel
 BuildRequires:  libtool
 BuildRequires:  libtraceevent-devel
 BuildRequires:  sqlite3-devel
-Requires(pre):  %fillup_prereq
 Requires:       perl-DBD-SQLite
+Requires(pre):  %fillup_prereq
 %{?systemd_ordering}
 %ifnarch s390x
 Requires:       dmidecode
@@ -51,6 +51,10 @@ an utility for reporting current error counts from the EDAC sysfs files.
 %autosetup
 
 %build
+# Fixes:
+# Makefile.am: error: required file './README' not found
+# on old autoconf versions
+ln -s README.md README
 autoreconf -fvi
 %configure --enable-all --with-sysconfdefdir=%{_sysconfdir}/sysconfig
 CFLAGS="%{optflags}" make %{?_smp_mflags} V=1
@@ -62,7 +66,7 @@ install -D -p -m 0644 misc/rasdaemon.service %{buildroot}%{_unitdir}/rasdaemon.s
 install -D -p -m 0644 misc/ras-mc-ctl.service %{buildroot}%{_unitdir}/ras-mc-ctl.service
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcrasdaemon
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcras-mc-ctl
-rm INSTALL %{buildroot}/usr/include/*.h
+rm INSTALL %{buildroot}%{_includedir}/*.h
 mkdir -p %{buildroot}%{_localstatedir}/lib/rasdaemon
 mkdir -p %{buildroot}%{_fillupdir}
 mv %{buildroot}%{_sysconfdir}/sysconfig/rasdaemon %{buildroot}/%{_fillupdir}/sysconfig.rasdaemon

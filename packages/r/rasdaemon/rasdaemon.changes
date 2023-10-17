@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 16 18:50:53 UTC 2023 - Thomas Renninger <trenn@suse.de>
+
+- Fix build on old distros by linking new README.md to README
+- minor spec cleanups
+
+-------------------------------------------------------------------
 Mon Jul 10 21:10:45 UTC 2023 - malcolmlewis@opensuse.org
 
 - Update to version 0.8.0.10.git+a247baf:
