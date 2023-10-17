@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 14 18:59:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.6:
+  * Updated Danish and Norwegian (Nynorsk) translations
+  * Fixed #6169
+    <https://github.com/squidfunk/mkdocs-material/issues/6169>:
+    Blog post metadata layout overflows on small screens
+
+-------------------------------------------------------------------
 Tue Oct 10 13:58:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.5:
