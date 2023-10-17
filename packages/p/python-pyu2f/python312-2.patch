@@ -1,0 +1,25 @@
+From 793acd9ff6612bb035f0724b04e10a01cdb5bb8d Mon Sep 17 00:00:00 2001
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Fri, 15 Oct 2021 10:38:31 +0000
+Subject: [PATCH] Use assertRaisesRegex instead of assertRaisesRegexp for
+ Python 3.11 compatibility.
+
+---
+ pyu2f/tests/hidtransport_test.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: pyu2f-0.1.5a/pyu2f/tests/hidtransport_test.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/tests/hidtransport_test.py
++++ pyu2f-0.1.5a/pyu2f/tests/hidtransport_test.py
+@@ -128,8 +128,8 @@ class TransportTest(unittest.TestCase):
+     # the second will succeed on the second retry.
+     fake_hid_dev.SetChannelBusyCount(3)
+     with mock.patch.object(hidtransport, 'time') as _:
+-      self.assertRaisesRegexp(errors.HidError, '^Device Busy', t.SendMsgBytes,
+-                              [0x00, 0x01, 0x00, 0x00])
++      self.assertRaisesRegex(errors.HidError, '^Device Busy', t.SendMsgBytes,
++                             [0x00, 0x01, 0x00, 0x00])
+ 
+       reply = t.SendMsgBytes([0x00, 0x01, 0x00, 0x00])
+       self.assertEqual(reply, bytearray([0x01, 0x90, 0x00]))

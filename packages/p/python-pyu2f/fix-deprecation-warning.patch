@@ -8,11 +8,11 @@ Subject: [PATCH] fix DeprecationWarning for logging and fake_filesystem
  pyu2f/tests/hid/linux_test.py | 12 ++++++------
  2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/pyu2f/hid/macos.py b/pyu2f/hid/macos.py
-index 905bce2..919fd4d 100644
---- a/pyu2f/hid/macos.py
-+++ b/pyu2f/hid/macos.py
-@@ -174,7 +174,7 @@ class _CFAllocator(_CFType):
+Index: pyu2f-0.1.5a/pyu2f/hid/macos.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/hid/macos.py
++++ pyu2f-0.1.5a/pyu2f/hid/macos.py
+@@ -174,7 +174,7 @@ if sys.platform.startswith('darwin'):
                                           ctypes.POINTER(ctypes.c_uint8),
                                           CF_INDEX]
  else:
@@ -21,11 +21,11 @@ index 905bce2..919fd4d 100644
  
  
  def CFStr(s):
-diff --git a/pyu2f/tests/hid/linux_test.py b/pyu2f/tests/hid/linux_test.py
-index 1a299fa..610d200 100644
---- a/pyu2f/tests/hid/linux_test.py
-+++ b/pyu2f/tests/hid/linux_test.py
-@@ -49,14 +49,14 @@
+Index: pyu2f-0.1.5a/pyu2f/tests/hid/linux_test.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/tests/hid/linux_test.py
++++ pyu2f-0.1.5a/pyu2f/tests/hid/linux_test.py
+@@ -49,14 +49,14 @@ KEYBOARD_RD = (
  
  def AddDevice(fs, dev_name, product_name,
                vendor_id, product_id, report_descriptor_b64):
@@ -44,7 +44,7 @@ index 1a299fa..610d200 100644
  
  
  class FakeDeviceOsModule(object):
-@@ -79,10 +79,10 @@ def read(self, unused_dev, unused_length):  # pylint: disable=invalid-name
+@@ -79,10 +79,10 @@ class FakeDeviceOsModule(object):
  class LinuxTest(unittest.TestCase):
    def setUp(self):
      self.fs = fake_filesystem.FakeFilesystem()

@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1081578</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0c70e84185adef02533048ff5421310f</srcmd5>
+    <version>0.1.5a</version>
+    <time>1697566955</time>
+    <user>anag+factory</user>
+    <comment>- Use upstream patches instead of custom one for python312
+  compatibility.
+  - add python312-1.patch gh#google/pyu2f@793acd9ff661
+  - add python312-2.patch gh#google/pyu2f@dad654010a03
+</comment>
+    <requestid>1118207</requestid>
+  </revision>
 </revisionlist>

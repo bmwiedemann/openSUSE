@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 17 07:32:00 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Use upstream patches instead of custom one for python312
+  compatibility.
+  - drop python312.patch
+  - add python312-1.patch gh#google/pyu2f@793acd9ff661
+  - add python312-2.patch gh#google/pyu2f@dad654010a03
+
+-------------------------------------------------------------------
+Tue Oct 17 07:18:36 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Add python312.patch to fix tests in python3.12
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

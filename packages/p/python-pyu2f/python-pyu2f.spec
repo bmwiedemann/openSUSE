@@ -29,15 +29,17 @@ Source:         https://github.com/google/pyu2f/archive/refs/tags/%{version}.tar
 Patch:          fix-deprecation-warning.patch
 # https://github.com/google/pyu2f/issues/34
 Patch1:         python-pyu2f-no-six.patch
+# PATCH-FIX-UPSTREAM python312-1.patch gh#google/pyu2f@793acd9ff661
+Patch2:         python312-1.patch
+# PATCH-FIX-UPSTREAM python312-2.patch gh#google/pyu2f@dad654010a03
+Patch3:         python312-2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module pyfakefs >= 2.4}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
