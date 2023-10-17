@@ -1,7 +1,7 @@
 #
 # spec file for package arpwatch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           arpwatch
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Tool to keep track of Ethernet<->IP address pairings
 License:        BSD-3-Clause
@@ -41,6 +41,7 @@ Patch10:        0001-Ignore-802.1Q-frames.patch
 Patch11:        report-iface.patch
 Patch13:        arpwatch-exit.patch
 Patch14:        arp2ethers.patch
+Patch15:        arpwatch-3.4-include-time.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  postfix
 BuildRequires:  systemd-rpm-macros

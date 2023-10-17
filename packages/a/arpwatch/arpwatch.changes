@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 15 18:42:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4:
+  * build system maintenance (upgrade to autoconf 2.71)
+  * add arpwatch-3.4-include-time.patch to fix build broken by it
+
+-------------------------------------------------------------------
 Tue Dec  6 12:34:56 UTC 2022 - olaf@aepfle.de
 
 - Enable loading of ethercodes.dat with arpwatch.ETHERCODES.patch
