@@ -1,10 +1,5 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/danigm/gettext-rs?branch=no-gettext"]
-git = "https://github.com/danigm/gettext-rs"
-branch = "no-gettext"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"

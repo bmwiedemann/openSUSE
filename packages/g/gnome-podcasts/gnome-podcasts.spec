@@ -20,12 +20,12 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-podcasts
-Version:        0.5.1+99
+Version:        0.6.1
 Release:        0
 Summary:        Podcast app for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/podcasts
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source3:        cargo_config
 
@@ -36,8 +36,8 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.56
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56
+BuildRequires:  pkgconfig(gio-2.0) >= 2.76
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.16
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.16
 BuildRequires:  pkgconfig(gstreamer-bad-audio-1.0) >= 1.16
@@ -83,8 +83,6 @@ export RUSTFLAGS=%{rustflags}
 %{_datadir}/glib-2.0/schemas/org.gnome.Podcasts.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Podcasts*.svg
 %{_datadir}/metainfo/org.gnome.Podcasts.appdata.xml
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/resources.gresource
 
 %files lang -f %{name}.lang
 
