@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Oct 15 03:12:28 UTC 2023 - Garret Wassermann <gwasser@gmail.com>
+
+- Update to 2.31.0
+  * Correction: Cannot import more than one ISO 20022 XML
+    (kde#472392)
+  * Correction: Importing ISO 20022 XML creates bogus accounts
+    (kde#472390)
+  * Correction: In Merge imported operations, prefer fields with
+    values over blank fields (kde#474391)
+  * Correction: The tool to align the category of operations with
+    their payees' always fills in the category of the first payee it
+    found (kde#474759)
+  * Correction: AppData missing in 2.30.0 tarball (kde#472061)
+  * Correction: Dashboard: the font in "Income & Expenditure" is too
+    small and has a bad contrast (kde#475037)
+  * Correction: Failure in some cases in import qif
+
+-------------------------------------------------------------------
+Thu Aug 31 12:45:13 UTC 2023 - Garret Wassermann <gwasser@gmail.com>
+
+- Update to 2.30.0
+  * Correction: Income&Expenditure widget don't match with
+    Income&Expense report (kde#435762)
+  * Correction: Stats plugin should use XDG_STATE_HOME rather than
+    the hardcoded .skrooge path to store files (kde#454965)
+  * Correction: Skrooge crash opening dashboard, after QML dashboard
+    only introduced (kde#467153)
+  * Correction: Issue with reconciliation of portfolio accounts
+    (kde#467599)
+  * Correction: Import via woob 3.5 (kde#468329)
+  * Correction: Remove all dashboard to keep only the qml version
+- Fixes to spec file due to changes in qt plugin directories
+
+-------------------------------------------------------------------
+Thu Apr 13 21:29:43 UTC 2023 - Garret Wassermann <gwasser@gmail.com>
+
+- Update to 2.29.0
+  * Correction: User must be able to unlink the current account
+    connected with a credit card account (kde#459775)
+  * Correction: Merging imported operation with an existing one
+    fails when both have the same property (kde#459378)
+  * Correction: Skrooge seems to work better under Wayland, so
+    remove broken Wayland override (kde#456895)
+  * Correction: Allow to add operations to a scheduled
+    operation (kde#455427)
+  * Correction: Add category adds as subcategory of selected, which
+    doesn't match the Name line (kde#409705)
+  * Correction: Exchange rates converter no longer works (kde#463245)
+  * Correction: Skrooge v2.28.0 AppImage Icons Don't show
+    (kde#465335)
+  * Correction: When a document is open, settings stored in the
+    document (underligned) must be reload
+  * Correction: Remove deprecated api for loading plugins
+  * Feature: Change of XML export and addition of XML import (this
+    will facilitate some other XML import like ISO 20022)
+  * Feature: Import ISO 20022
+  * Feature: Align the category of all single operations with the
+    category of their payee (quality check + view + auto correction)
+
+-------------------------------------------------------------------
 Mon Aug  1 10:03:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.28.0

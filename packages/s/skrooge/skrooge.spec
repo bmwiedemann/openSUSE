@@ -1,7 +1,7 @@
 #
 # spec file for package skrooge
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2008 - 2012 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.28.0
+Version:        2.31.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -72,6 +72,7 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Concurrent)
+#BuildRequires:  cmake(Qt5Config)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Designer)
@@ -83,6 +84,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5XmlPatterns)
 Requires:       hicolor-icon-theme
 %if %{with qtwebengine}
 BuildRequires:  cmake(Qt5WebEngineWidgets)
@@ -158,11 +160,15 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
 %{_kf5_libdir}/libskgbasemodeler.so.2
 %{_kf5_notifydir}/%{name}.notifyrc
 %{_kf5_knsrcfilesdir}/skrooge_monthly.knsrc
-%{_kf5_plugindir}/%{name}_*.so
+%dir %{_kf5_plugindir}/%{name}
+%dir %{_kf5_plugindir}/%{name}/import
+%{_kf5_plugindir}/%{name}/import/%{name}_*.so
 %{_kf5_plugindir}/designer/libskgbankguidesigner.so
 %{_kf5_plugindir}/designer/libskgbaseguidesigner.so
 %{_kf5_plugindir}/grantlee
-%{_kf5_plugindir}/skg_*.so
+%dir %{_kf5_plugindir}/skg_gui
+%{_kf5_plugindir}/skg_gui/%{name}_*.so
+%{_kf5_plugindir}/skg_gui/skg_*.so
 %{_kf5_plugindir}/sqldrivers/libskgsqlcipher.so
 %{_kf5_servicesdir}/org.kde.*
 %{_kf5_servicesdir}/sources/

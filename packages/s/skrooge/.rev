@@ -133,4 +133,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment>Update to 2.28.0</comment>
     <requestid>991996</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1c92261a9ff45c4a8948e085bbf192f7</srcmd5>
+    <version>2.31.0</version>
+    <time>1697567082</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118123</requestid>
+  </revision>
 </revisionlist>
