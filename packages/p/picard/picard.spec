@@ -17,7 +17,7 @@
 
 
 Name:           picard
-Version:        2.9.2
+Version:        2.10
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
@@ -47,7 +47,6 @@ Requires:       python3-mutagen >= 1.37
 Requires:       python3-python-dateutil >= 2.7
 Recommends:     chromaprint-fpcalc
 # SECTION test
-BuildRequires:  python3-python-dateutil >= 2.7
 BuildRequires:  python3-Markdown >= 3.2
 BuildRequires:  python3-PyJWT >= 2.0
 BuildRequires:  python3-PyQt5 >= 5.11
@@ -57,6 +56,7 @@ BuildRequires:  python3-fasteners >= 0.14
 BuildRequires:  python3-mutagen >= 1.37
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-xvfb
+BuildRequires:  python3-python-dateutil >= 2.7
 # /SECTION
 
 %description
@@ -101,5 +101,6 @@ pytest -v
 %{_datadir}/metainfo/org.musicbrainz.Picard.appdata.xml
 
 %files lang -f %{name}.lang
+%{_datadir}/locale/*/LC_MESSAGES/picard-constants.mo
 
 %changelog
