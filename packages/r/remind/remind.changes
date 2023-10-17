@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct  9 18:39:05 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 7 - 2023-10-09
+
+- IMPROVEMENT: remind: On 32-bit systems, attempt to use a 64-bit time_t
+  if the C library supports that.  This lets Remind work properly with
+  dates after 2038 in the few cases it has to call mktime() internally.
+
+- MINOR NEW FEATURE: remind: Attempt to obtain the terminal background
+  color using an OSC sequence.  This normally only happens if standard
+  output is a terminal, but can be forced with the '-@..,t' option.
+
+- MINOR NEW FEATURE: remind: Add "--version" long option to print out
+  Remind's version and exit.
+
+- MINOR IMPROVEMENT: tkremind: Use a higher-resolution PNG image for
+  the icon.
+
+- MINOR IMPROVEMENT: remind-conf-mode.el: Update highlighting rules
+  courtesy of Bill Benedetto
+
+- MINOR CHANGE: Make AT optional.  If we encounter a TIME in a REM
+  command, implicitly begin an AT clause.
+
+- DOCUMENTATION: Many minor fixes and improvements courtesy of Dan Jacobson.
+
+- BUG FIX: Make "-w0" set the calendar width based on standard output
+  rather than setting it to zero and causing an infinite loop.
+
+-------------------------------------------------------------------
 Tue Sep 12 20:12:40 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.2 Patch 6 - 2023-09-12
