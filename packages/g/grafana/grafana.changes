@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Oct 16 13:04:16 UTC 2023 - daniel@molkentin.de
+
+- Update to version 10.1.5:
+  * Features and enhancements:
+    - Azure: Settings for Azure AD Workload Identity 
+    - Azure: Add support for Workload Identity authentication 
+  * Bugfixes:
+    - Alerting: Add support for `keep_firing_for` field from
+      external rulers 
+    - Cloudwatch: Prevent log group requests with ARNs if feature
+      flag is off 
+    - Cloudwatch: Backport 73524 Bring Back Legacy Log Group
+      Picker 
+
+- Update to version 10.1.3:
+  * Features and enhancements:
+    - Docs: add deep links info 
+    - Plugins: Angular: Removed getLegacyAngularInjector Angular
+      pattern 
+    - Update `make docs` procedure 
+    - Docs: Add multiple y-axes guidance 
+    - Docs/creates backup grafana topic 
+    - Docs: Fix nightly builds link 
+    - Auth: Optimize auth token operations 
+    - Docs: add dashboards folder naming guidance 
+    - Alerting docs: adds roll back warning to config grafana 
+    - Auth: Refactor for revoking user tokens within last hours 
+    - Docs: 404 fix - updated alerting link 
+    - Chore: Remove unused secret enterprise2-cdn-path -
+      Nightlies: Push windows artifacts to GCS on main builds 
+    - Chore: Update github.com/ProtonMail/go-crypto 
+    - Prometheus: Handle the response with different field key order 
+    - Share link: Use panel relative time for direct link rendered
+      image 
+    - AdHocVars: Allow selecting datasource variable from data
+      source picker 
+  * Bugfixes:
+    - Canvas: Avoid conflicting stylesheets when loading SVG icons 
+    - InfluxDB: Fix adhoc filter call 
+    - Fix Grafana Cloud data source alerting link 404 
+    - Docs: add missing shared files to upgrade guides 8-9.4 
+    - Docs: replace broken link with current docs location 
+    - Alerting: Prevent showing "Permissions denied" alert when not
+      accurate 
+    - RBAC: Fix search user permissions 
+    - BrowseDashboards: Only remember the most recent expanded folder 
+    - Fix contact points aliases and add additional for
+      `/docs/grafana/<GRAFANA_VERSION>/alerting/contact-points/` 
+    - Remove set-up-cloud page as it has been moved to the website
+      repository 
+    - Tempo Service Map: Fix context menu links in service map when
+      namespace is present 
+    - Logs Panel: Performance issue while scrolling within panel in
+      safari 
+    - Licensing: Pass func to update env variables when startingi
+      plugin 
+    - Bug: Allow to uninstall a deprecated plugin 
+    - Doc: Remove Cloud Pro and Advanced references 
+    - InfluxDB: Fix multiple tag selection 
+    - usePanelSave: Fix success/error notifications 
+    - Nested folders: Fix folder hierarchy in folder responses 
+    - Docs: Add basic query option descriptions
+    - Docs: Fix broken link 
+    - Docs: Correct broken link and update reference 
+    - Auth: Fix set basicrole to the previous role in UI on error
+      from backend 
+    - Alerting: Do not exit if Redis ping fails when using
+      redis-based Alertmanager clustering 
+    - Docs: Replace relref with docs/ref link  
+    - Refactor: Move LDAP auth config frontend registration to OSS
+    - PromLink: Fixes promlink test failing in CI and locally 
+    - Update `make docs` procedure 
+    - Alerting docs: link fixes and a note for expressions 
+    - Docs:  Update the Elasticsearch data source docs 
+    - Add version lookup to `docs/shared` usage in Tempo 
+    - docs: updates broken link 
+    - Docs: reorder visualizations pages 
+    - Docs: Fix 404s 
+    - Docs: Remove docs reference to removed feature 
+    - Alerting: Refactor AlertRuleForm and fix annotations step
+      description for cloud rules 
+    - Update `docs/shared` shortcode usage to use keyword argument
+      interface 
+    - Docs: Update docs on comparisions with $values 
+    - Update `make docs` procedure 
+
+- Update to version 10.1.2:
+  *  (upstream packaging dependency changes only, identical to
+      10.1.1 for our purposes)
+
+-------------------------------------------------------------------
 Fri Sep 01 07:24:44 UTC 2023 - marius.kittler@suse.com
 
 - Update to version 10.1.1:
