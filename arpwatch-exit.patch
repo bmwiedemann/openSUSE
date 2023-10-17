@@ -1,8 +1,8 @@
-Index: arpwatch-3.1/arpwatch.c
+Index: arpwatch-3.4/arpwatch.c
 ===================================================================
---- arpwatch-3.1.orig/arpwatch.c
-+++ arpwatch-3.1/arpwatch.c
-@@ -985,7 +985,7 @@ die(int signo)
+--- arpwatch-3.4.orig/arpwatch.c
++++ arpwatch-3.4/arpwatch.c
+@@ -989,7 +989,7 @@ die(int signo)
  
  	lg(LOG_DEBUG, "exiting");
  	checkpoint(0);
@@ -10,4 +10,4 @@ Index: arpwatch-3.1/arpwatch.c
 +	exit(0);
  }
  
- RETSIGTYPE
+ void
