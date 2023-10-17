@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 17 08:32:57 UTC 2023 - Ich <jengelh@inai.de>
+
+- Update to release 1.4.2
+  * Fixed potential crash while listing devices
+  * Fixed potential deadlock issue
+
+-------------------------------------------------------------------
 Tue Oct 10 15:14:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.1

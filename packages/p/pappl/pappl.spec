@@ -18,7 +18,7 @@
 
 Name:           pappl
 %define lname   libpappl1
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A printer application framework
 License:        Apache-2.0
