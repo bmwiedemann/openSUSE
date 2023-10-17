@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:24:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.31.2:
+  * docker-env Regression:
+  * Create `~/.ssh` directory if missing #16934
+  * Fix adding guest to `~/.ssh/known_hosts` when not needed
+    #17030
+  * Verify containerd storage separately from docker #16972
+  * cni: Fix regression in auto selection #16912
+
+-------------------------------------------------------------------
 Tue Jul 18 21:13:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.31.0:
@@ -30,7 +41,7 @@ Tue Apr  4 10:00:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.30.0:
   * Ensure only one minikube tunnel instance runs at a time
-  * Infer HyperKit HostIP as Gateway rather than hardcode to 192.168.64.1 
+  * Infer HyperKit HostIP as Gateway rather than hardcode to 192.168.64.1
   * multi-node: Add support for volumes using CSI addon
   * QEMU: Rename user network to builtin and update documentation
   * none driver: Look for cri-dockerd instead of hardcoding
@@ -46,7 +57,7 @@ Tue Apr  4 10:00:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Implement --docs for minikube addons list -o json
   * Implement --skip-audit flag and skip adding profile commands to audit log
   * Implement --last-start-only flag to minikube logs to only show last start log
-* see https://github.com/kubernetes/minikube/releases/tag/v1.30.0 
+* see https://github.com/kubernetes/minikube/releases/tag/v1.30.0
 
 -------------------------------------------------------------------
 Mon Jan 30 12:12:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -121,7 +132,7 @@ Sat Dec  3 21:45:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 02:27:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- BuildRequires python3 rather than python. 
+- BuildRequires python3 rather than python.
 
 -------------------------------------------------------------------
 Mon Oct 10 07:38:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -177,7 +188,7 @@ Tue Sep 13 09:44:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jul 11 13:04:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- build against go1.18 to fix arm64 build 
+- build against go1.18 to fix arm64 build
 
 -------------------------------------------------------------------
 Thu Jul  7 08:59:48 UTC 2022 - Matthew Wilks <water261@outlook.com.au>
@@ -235,7 +246,7 @@ Sat Mar 26 14:23:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Add exit message for too new Kubernetes version #13354
   * drivers/kvm: Use ARP for retrieving interface ip addresses #13482
   * kubeadm: allow skipping kube-proxy addon on restart #13538
-  * configure container runtimes for clusters without Kubernetes too #13442 
+  * configure container runtimes for clusters without Kubernetes too #13442
 
 -------------------------------------------------------------------
 Fri Jan 28 12:07:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -387,7 +398,7 @@ Tue Jul  6 13:38:14 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
   * Disable Non-Active Containers Runtimes #11516
   * Persist custom addon image/registry settings. #11432
   * Fix auto-pause on VMs (detect right control-plane IP) #11438
-            
+
   Version Upgrades:
   * bump default k8s version to v1.20.7 and newest to v1.22.0-alpha.2 #11525
   * containerd: upgrade io.containerd.runtime.v1.linux to io.containerd.runc.v2 (suppot cgroup v2) #11325
@@ -402,7 +413,7 @@ Fri May  7 11:25:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Batch logs output to speedup minikube logs command #11274
   * warn about performance for certain versions of kubernetes #11217
   * Update olm addon to v0.17.0 #10947
-  * Update newest supported Kubernetes version to v1.22.0-alpha.1 #11287 
+  * Update newest supported Kubernetes version to v1.22.0-alpha.1 #11287
 
 -------------------------------------------------------------------
 Sat Apr 10 18:46:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -426,9 +437,9 @@ Fri Mar  5 16:07:53 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
 
     Spanish translations #10687
     Change podman priority to default on Linux #10458
-        
+
   Bug Fixes:
-        
+
     Remove WSLENV empty check from IsMicrosoftWSL #10711
     Added WaitGroups to prevent stderr/stdout from being empty in error logs #10694
 
@@ -457,9 +468,9 @@ Tue Mar  2 13:53:54 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
     Introduce alias 'native' for 'none' driver #10540
     Add audit logs to 'minikube logs' output #10350
     Allow setting custom images for addons #10111
-                
+
   Minor Improvements:
-  
+
     Deb package: make sure to update the package metadata #10420
     Improve the error message of setting cgroup memory limit. #10575
     SSH driver: Don't select Discouraged or Obsolete by default #10554
@@ -480,9 +491,9 @@ Tue Mar  2 13:53:54 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
     Disallow running windows binary (.exe) inside WSL #10354
     adding insecure registry support to containerd runtime #10385
     Docker driver: support ancient versions of docker #10369
-    
+
   Bug Fixes:
-    
+
     cgroup v2: skip setting --memory limits when not configurable. #10512
     metallb addon: fix configuration empty load balancing IP range #10395
     Fixed bug where tmp dir incorrectly set for Snap package manager #10372
@@ -623,15 +634,15 @@ Tue Nov 17 00:46:29 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 Tue Nov 10 13:37:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.14.2:
-  * fix "profile list" timing out when cluster stopped. 
+  * fix "profile list" timing out when cluster stopped.
   * new --wait flag component "kubelet"
   * docker: When creating networks, use MTU of built-in bridge network
   * multinode: ensure worker node join control plane on restart
   * Fix "--native-ssh" flag for "minikube ssh"
-  * Fix parallels driver initialization 
+  * Fix parallels driver initialization
   * Delete context when stopped
   * New flag "--ports" to expose ports for docker & podman drivers
-  * Ingress addon: fix the controller name 
+  * Ingress addon: fix the controller name
 
 -------------------------------------------------------------------
 Fri Sep 25 10:27:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -647,7 +658,7 @@ Fri Sep 25 10:27:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Set preload=false if not using overlay2 as docker storage driver #8831
   * Upgrade crio to 1.17.3 #8922
   * Add Docker Desktop instructions if memory is greater than minimum but less than recommended #9181
-  * Update minimum memory constants to use MiB instead of MB #9180 
+  * Update minimum memory constants to use MiB instead of MB #9180
 
 -------------------------------------------------------------------
 Fri Sep  4 08:48:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -686,8 +697,8 @@ Wed Aug 19 12:17:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * GCP Auth Addon: Exit with better error messages #8932
   * Add warning for ingress addon enabled with driver of none #8870
   * Update Japanese translation #8967
-  * Fix for a few typos in polish translations #8950 
-   
+  * Fix for a few typos in polish translations #8950
+
 -------------------------------------------------------------------
 Wed Aug 12 20:59:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
@@ -723,7 +734,7 @@ Wed Jul 29 10:53:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * multinode: fix control plane not ready on restart #8698
   * none CNI: error if portmap plug-in is required but unavailable #8684
   * ingress addon: bump to latest version #8705
-  * Upgrade go version to 1.14.4 #8660 
+  * Upgrade go version to 1.14.4 #8660
 
 -------------------------------------------------------------------
 Wed Jun 24 09:40:23 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -899,7 +910,7 @@ Tue Apr  2 09:59:07 UTC 2019 - Martin Kravec <mkravec@suse.com>
   * Upgrade addon-manager to v9.0 for compatibility with Kubernetes v1.14
   * Add --image-repository flag so that users can select an alternative repository mirror
   * Rename MINIKUBE_IN_COLOR to MINIKUBE_IN_STYLE
-  * mount: Allow names to be passed in for gid/uid 
+  * mount: Allow names to be passed in for gid/uid
   * mount: unmount on sigint/sigterm, add --options and --mode, improve UI
   * --extra-config now work for kubeadm as well
   * start: Set the default value of --cache to true
@@ -950,7 +961,7 @@ Fri Mar  8 11:23:04 UTC 2019 - Markos Chandras <mchandras@suse.de>
 -------------------------------------------------------------------
 Wed Feb 27 20:17:14 UTC 2019 - Michal Vyskocil <mvyskocil@opensuse.org>
 
-- Update to 0.34.1 
+- Update to 0.34.1
     * Initial implementation of 'console' package for stylized &
       localized console output 😂
     * Podman 1.0.0
@@ -1010,7 +1021,7 @@ Sat Dec 22 22:33:41 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
   * Hide KVM signature when using GPU passthrough to support more GPU models
   * Allow ServiceCIDR to be configured via 'service-cluster-ip-range' flag.
   * Save old cluster config in memory before overwriting
-  * Change restart policy on gvisor pod 
+  * Change restart policy on gvisor pod
 
 -------------------------------------------------------------------
 Tue Dec 11 13:06:23 UTC 2018 - Panagiotis Georgiadis <pgeorgiadis@suse.com>

@@ -641,4 +641,34 @@
   * `minikube cp` supports providing directory as a target #15519</comment>
     <requestid>1099341</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9c2c6e8e1b43c173d44d1bac3db6a009</srcmd5>
+    <version>1.31.2</version>
+    <time>1697567119</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.31.2:
+  * docker-env Regression:
+  * Create `~/.ssh` directory if missing #16934
+  * Fix adding guest to `~/.ssh/known_hosts` when not needed
+    #17030
+  * Verify containerd storage separately from docker #16972
+  * cni: Fix regression in auto selection #16912
+
+  * Infer HyperKit HostIP as Gateway rather than hardcode to 192.168.64.1
+* see https://github.com/kubernetes/minikube/releases/tag/v1.30.0
+- BuildRequires python3 rather than python.
+- build against go1.18 to fix arm64 build
+  * configure container runtimes for clusters without Kubernetes too #13442
+  * Update newest supported Kubernetes version to v1.22.0-alpha.1 #11287
+  * fix &quot;profile list&quot; timing out when cluster stopped.
+  * Fix parallels driver initialization
+  * Ingress addon: fix the controller name
+  * Update minimum memory constants to use MiB instead of MB #9180
+  * Fix for a few typos in polish translations #8950
+  * Upgrade go version to 1.14.4 #8660
+  * mount: Allow names to be passed in for gid/uid
+- Update to 0.34.1
+  * Change restart policy on gvisor pod</comment>
+    <requestid>1118281</requestid>
+  </revision>
 </revisionlist>
