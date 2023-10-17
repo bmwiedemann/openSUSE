@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_jk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define connectors_root    tomcat-connectors-%{version}-src
 Name:           apache2-mod_jk
-Version:        1.2.48
+Version:        1.2.49
 Release:        0
 Summary:        Connectors between Apache and Tomcat Servlet Container
 License:        Apache-2.0

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Oct 17 07:41:10 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 1.2.49:
+  Apache
+    * Retrieve default request id from mod_unique_id. It can also be
+      taken from an arbitrary environment variable by configuring
+      "JkRequestIdIndicator".
+    * Don't delegate the generatation of the response body to httpd
+      when the status code represents an error if the request used
+      the HEAD method.
+    * Only export the main module symbol. Visibility of module 
+      internal symbols led to crashes when conflicting with library
+      symbols. Based on a patch provided by Josef Čejka.
+    * Remove support for implicit mapping of requests to workers. 
+      All mappings must now be explicit.
+  IIS
+    * Set default request id as a GUID. It can also be taken from an
+      arbitrary request header by configuring "request_id_header".
+    * Fix non-empty check for the Translate header.
+  Common
+    * Fix compiler warning when initializing and copying fixed 
+      length strings.
+    * Add a request id to mod_jk log lines.
+    * Enable configure to find the correct sizes for pid_t and 
+      pthread_t when building on MacOS.
+    * Fix Clang 15/16 compatability. Pull request #6 provided by 
+      Sam James.
+    * Improve XSS hardening in status worker.
+    * Add additional bounds and error checking when reading AJP 
+      messages.
+  Docs
+    * Remove support for the Netscape / Sun ONE / Oracle iPlanet Web
+      Server as the product has been retired.
+    * Remove links to the old JK2 documentation. The JK2 
+      documentation is still available, it is just no longer linked
+      from the current JK documentation.
+    * Restructure subsections in changelog starting with version 
+      1.2.45.
+
+-------------------------------------------------------------------
 Mon May 18 08:29:01 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update jk.conf: [bsc#1167896]

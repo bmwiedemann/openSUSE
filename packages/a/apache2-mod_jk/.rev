@@ -338,4 +338,12 @@
   * Update tomcat-webapps paths. (forwarded request 806860 from pmonrealgonzalez)</comment>
     <requestid>806981</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>bd43d0ea814d3084e8cb39aad7f643d7</srcmd5>
+    <version>1.2.49</version>
+    <time>1697567097</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118245</requestid>
+  </revision>
 </revisionlist>
