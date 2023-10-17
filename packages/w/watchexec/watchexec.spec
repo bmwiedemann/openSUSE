@@ -17,7 +17,7 @@
 
 
 Name:           watchexec
-Version:        1.22.3
+Version:        1.23.0
 Release:        0
 Summary:        Watches a path and runs a command whenever it detects modifications.
 License:        Apache-2.0

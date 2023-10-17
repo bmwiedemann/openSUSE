@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 17 08:13:56 UTC 2023 - david.anes@suse.com
+
+- Update to version 1.23.0:
+  * release: watchexec-cli v1.23.0 (#647)
+  * Add --no-discover-ignore (#645)
+  * Re-add `-d` short flag (#635)
+  * Skip search for ignores when not needed (#644)
+  * Clippy and update lockfile (#646)
+  * release: bosion v1.0.1 (#623)
+  * Update gix-config requirement from 0.24.0 to 0.25.1 in /crates/ignore-files (#622)
+  * Update gix requirement from 0.47 to 0.48 in /crates/bosion (#621)
+  * Fix some typos (#617)
+  * Update gix-config requirement from 0.22.0 to 0.24.0 in /crates/ignore-files (#614)
+
+-------------------------------------------------------------------
 Tue May 23 19:17:05 UTC 2023 - david.anes@suse.com
 
 - Security fix: CVE-2023-26964, bsc#1210368
