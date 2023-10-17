@@ -1,7 +1,7 @@
 #
-# spec file for package gnuprumcu-devel
+# spec file for package gnuprumcu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ BuildRequires:  cross-pru-gcc%{gcc_version}
 BuildRequires:  cross-pru-newlib-devel
 BuildRequires:  fdupes
 BuildArch:      noarch
+ExclusiveArch:  %arm
 
 %description
 This package contains the linker scripts, device specs and I/O headers for the

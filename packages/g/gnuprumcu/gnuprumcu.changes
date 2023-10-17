@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 17 07:46:46 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Restrict building to %arm which is how we restrict cross-pru-gcc
+  builds to.
+
+-------------------------------------------------------------------
 Mon Aug 22 09:08:23 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Rename the package to gnuprumcu.

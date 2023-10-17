@@ -7,4 +7,13 @@
     <comment>New package submission.</comment>
     <requestid>998591</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f264d60a68d81d8fb5b64e735425bb9a</srcmd5>
+    <version>0.8.0</version>
+    <time>1697567090</time>
+    <user>anag+factory</user>
+    <comment>- Restrict building to %arm which is how we restrict cross-pru-gcc
+  builds to.</comment>
+    <requestid>1118215</requestid>
+  </revision>
 </revisionlist>
