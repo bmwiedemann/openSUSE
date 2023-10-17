@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Sep 28 05:05:43 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.8.0:
+  * Release v1.8.0
+  * update release notes for v1.8.0
+  * run cargo update
+  * Add vrf support for bridges
+  * Packit: switch to @containers/packit-build team for copr failure notification comments
+  * fix(deps): update rust crate nispor to 1.2.14
+  * [CI:BUILD] Packit: tag @lsm5 on copr build failures
+  * chore(deps): update rust crate chrono to 0.4.31
+  * fix(deps): update rust crate serde_json to 1.0.107
+  * rust io safety: convert RawFd to BorrowedFd<>
+  * bump nix to 0.27.1
+  * chore(deps): update rust crate chrono to 0.4.30
+  * fix(deps): update rust crate serde_json to 1.0.106
+  * chore(deps): update rust crate chrono to 0.4.29
+  * fix(deps): update rust crate netlink-packet-route to 0.17.1
+  * Bump tonic and prost
+  * Update container image to F38
+  * Add ACCEPT rules in firewall for bridge network with internal dns.
+  * chore(deps): update rust crate tonic-build to 0.10
+  * fix(deps): update rust crate nispor to 1.2.13
+  * fix(deps): update rust crate serde to 1.0.188
+  * Fix clippy warnings about formatting
+  * update chrono crate
+  * fix(deps): update rust crate url to 2.4.1
+  * Add protoc dependency to README
+  * [CI:BUILD] rpm: spdx compatible license field
+  * fix(deps): update rust crate tokio to 1.32
+  * chore(deps): update dependency containers/automation_images to v20230816
+  * fix(deps): update rust crate serde_json to 1.0.105
+  * fix(deps): update rust crate tokio to 1.31
+  * fix(deps): update rust crate log to 0.4.20
+  * run cargo update
+  * update tonic-build to 0.9.2
+  * bump rust edition to 2021
+  * iptables: drop invalid packages
+  * fix(deps): update rust crate tokio to 1.30
+  * docs: Convert markdown with go-md2man instead of mandown
+  * fix(deps): update rust crate clap to 4.3.21
+  * packit: Build PRs into default packit COPRs
+  * chore(deps): update dependency containers/automation_images to v20230807
+  * fix(deps): update rust crate serde to 1.0.183
+  * fix(deps): update rust crate serde to 1.0.181
+  * fix(deps): update rust crate serde to 1.0.180
+  * fix(deps): update rust crate serde_json to 1.0.104
+  * fix(deps): update rust crate serde to 1.0.179
+  * fix(deps): update rust crate serde to 1.0.176
+  * fix(deps): update rust crate clap to 4.3.19
+  * fix(deps): update rust crate serde to 1.0.175
+  * fix(deps): update rust crate clap to 4.3.17
+  * fix(deps): update rust crate clap to 4.3.15
+  * fix(deps): update rust crate clap to 4.3.12
+  * fix(deps): update rust crate serde_json to 1.0.103
+  * [CI:BUILD] Packit: remove pre-sync action
+  * fix(deps): update rust crate serde_json to 1.0.102
+  * fix(deps): update rust crate nispor to 1.2.12
+  * macvlan: use netlink type for bclim
+  * bump netlink deps
+  * fix(deps): update rust crate serde to 1.0.171
+  * fix(deps): update rust crate serde to 1.0.167
+  * fix(deps): update rust crate clap to 4.3.11
+  * fix(deps): update rust crate serde to 1.0.166
+  * fix(deps): update rust crate serde_json to 1.0.100
+  * iptables: improve error when ip6?tables commands are missing
+  * fix(deps): update rust crate clap to 4.3.10
+  * fix(deps): update rust crate zbus to 3.14.1
+  * [CI:BUILD] RPM: Fix ELN build and cleanup spec
+  * bump to v1.8.0-dev
+
+-------------------------------------------------------------------
 Tue Jul 11 13:30:20 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Disable restricting builds only for tier1 platforms

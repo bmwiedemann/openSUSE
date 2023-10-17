@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1098216</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a4e24fdb01442af4afd7ef4207750a2</srcmd5>
+    <version>1.8.0</version>
+    <time>1697567116</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.8.0 (forwarded request 1115736 from danishprakash)</comment>
+    <requestid>1115972</requestid>
+  </revision>
 </revisionlist>
