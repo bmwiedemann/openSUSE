@@ -16,14 +16,12 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-jedi
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
@@ -72,21 +70,14 @@ skiptests+=" or test_sqlite3_conversion"
 skiptests+=" or test_speed"
 # fails on some architectures
 skiptests+=" or test_init_extension_module"
-# https://github.com/davidhalter/jedi/issues/1824
-skiptests+=" or (test_completion and lambdas and 112)"
-# https://github.com/davidhalter/jedi/issues/1846
-skiptests+=" or (test_completion and conftest and 27)"
-skiptests+=" or (test_completion and pytest and 142)"
 # This fails on 15.4_py39 server-side but not locally (!?)
 skiptests+=" or test_get_default_environment_when_embedded"
-# https://github.com/davidhalter/jedi/issues/1929
-skiptests+=" or test_attrs_signature"
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGELOG.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/jedi-%{version}*-info
 %{python_sitelib}/jedi
+%{python_sitelib}/jedi-%{version}.dist-info
 
 %changelog

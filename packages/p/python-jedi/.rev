@@ -386,4 +386,14 @@
 </comment>
     <requestid>1103417</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2ada2bd888f84bb9a10680b8a836bbcd</srcmd5>
+    <version>0.19.1</version>
+    <time>1697566953</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.1:
+  * Python 3.12 support
+- Stop skipping some tests.</comment>
+    <requestid>1118190</requestid>
+  </revision>
 </revisionlist>

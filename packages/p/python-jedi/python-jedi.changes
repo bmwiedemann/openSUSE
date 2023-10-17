@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 17 05:23:31 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.19.1:
+  * Python 3.12 support
+- Stop skipping some tests.
+
+-------------------------------------------------------------------
 Thu Aug 10 22:27:43 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
 
 - Update requirements
