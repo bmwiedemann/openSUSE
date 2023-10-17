@@ -1,0 +1,12 @@
+Index: pytest-salt-factories-1.0.0rc27/tests/functional/factories/cli/conftest.py
+===================================================================
+--- pytest-salt-factories-1.0.0rc27.orig/tests/functional/factories/cli/conftest.py
++++ pytest-salt-factories-1.0.0rc27/tests/functional/factories/cli/conftest.py
+@@ -43,6 +43,5 @@ def salt_proxy_minion(salt_master, proxy
+ @pytest.fixture(scope="session")
+ def cli_salt_version(salt_version, salt_version_info, salt_version_name):
+     _salt_version = f"{salt_version}"
+-    if salt_version_info >= (3006, 3):
+-        _salt_version += f" ({salt_version_name})"
++    _salt_version += f" ({salt_version_name})"
+     return _salt_version

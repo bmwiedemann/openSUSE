@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Oct 16 10:35:12 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Update to 1.0.0rc27:
+  * Remove "pytest-tempdir" dependecy as it is now integrated into
+    pytest-salt-factories.
+  * Several bug fixes and improvements
+
+- Enable testsuite during package building.
+- Fix unit test to work with SUSE/openSUSE Salt 3006.0 package.
+
+- Added:
+  * fix_unit_tests.patch
+
+-------------------------------------------------------------------
+Tue Oct 10 10:06:14 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Wed Apr 19 13:22:34 UTC 2023 - Alexander Graul <alexander.graul@suse.com>
+
+- Upgrade to 1.1.0~rc21, required by Salt 3006
+
+-------------------------------------------------------------------
+Thu Sep  8 11:24:18 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
+
+- Downgrade to 0.907.0
+
+-------------------------------------------------------------------
+Thu Sep  1 16:59:35 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
+
+- Initial Package
