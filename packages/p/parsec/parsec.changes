@@ -1,6 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 17 14:31:43 UTC 2023 - Guillaume <guillaume@arm.com>
+
+- Fix build on Leap 15.5
+- Update to 1.3.0-rc1
+
+-------------------------------------------------------------------
 Thu Apr 20 15:01:10 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
+- Fix build on Leap 15.5
 - Update to 1.2.0:
   * Closed issue since 1.2.0-rc1:
     - Parsec 1.1 fails to build with meta-security master branch

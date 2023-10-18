@@ -17,11 +17,11 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 1.2.0
+%define archive_version 1.3.0-rc1
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        1.2.0
+Version:        1.3.0~rc1
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  cmake
 BuildRequires:  llvm-devel
 %if 0%{?sle_version} >= 150400
 # Fix build with GCC11 on Backports SLE15-SP4/5 - Avoid to get -lstdc++ not found
-BuildRequires:  libstdc++6-devel-gcc11
+BuildRequires:  libstdc++6-devel-gcc12
 %endif
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
