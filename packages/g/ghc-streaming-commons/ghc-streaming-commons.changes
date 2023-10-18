@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 17:49:06 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update streaming-commons to version 0.2.2.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Apr  3 13:00:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update streaming-commons to version 0.2.2.6.
