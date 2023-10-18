@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.9
+Version:        0.1.0.10
 Release:        0
 Summary:        Isomorphism typeclass solving the conversion problem
 License:        MIT
@@ -53,8 +53,6 @@ BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-rebase-devel
 BuildRequires:  ghc-rebase-prof
 BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
