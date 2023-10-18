@@ -1,7 +1,7 @@
 #
 # spec file for package purple-carbons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name carbons
 %define _purple_plugindir %(pkg-config --variable plugindir purple)
 Name:           purple-carbons
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Experimental XEP-0280: Message Carbons plugin for libpurple
 License:        GPL-2.0-or-later

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 17 12:11:26 UTC 2023 - ming li <mli@suse.com>
+
+- Update to version 0.2.3:
+  * Added
+      LICENSE file to make GitHub happy.
+      The implemented XEP version to the README.
+      A carbons_internal.h file declaring internal functions.
+  * Fixed
+      AppVeyor will now only push tagged builds to GitHub releases.
+      Set rpath for regular build instead of just for tests.
+      Stop leaking the retrieved message body.
+      Preserve CPPFLAGS and LDFLAGS from env.
+
+-------------------------------------------------------------------
 Thu May  2 01:39:41 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
 
 - Update to version 0.2.2:
