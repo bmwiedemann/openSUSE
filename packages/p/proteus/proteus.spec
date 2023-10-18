@@ -30,14 +30,15 @@ Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 # List of additional build dependencies
 BuildRequires:  fdupes
-BuildRequires:  python3-devel
-BuildRequires:  python3-lxml
-BuildRequires:  python3-psycopg2
-BuildRequires:  python3-pydot
+BuildRequires:  python3-defusedxml
+BuildRequires:  python3-pip
+BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-setuptools
-Requires:       python3-dateutil
+BuildRequires:  python3-wheel
+BuildRequires:  trytond
+Requires:       python3-defusedxml
+Requires:       python3-python-dateutil
 Requires:       trytond
-
 BuildArch:      noarch
 
 %description
@@ -47,16 +48,22 @@ Proteus allows you to access Tryton's modules like a client. Useful for automati
 %setup -q
 
 %build
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot
-%fdupes -s %{buildroot}
+%python3_pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
+
+%check
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+python3 -m unittest -v
 
 %files
 %defattr(-,root,root)
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/*
+%{python3_sitelib}/proteus
+%{python3_sitelib}/proteus-%{version}.dist-info
 
 %changelog
