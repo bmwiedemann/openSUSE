@@ -135,7 +135,7 @@ done
 %install
 for i in h*; do
   pushd $i
-  %python3_install --prefix=%_prefix --root=%buildroot
+  %python3_install
   popd
 done
 
