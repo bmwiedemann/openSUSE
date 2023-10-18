@@ -1,6 +1,7 @@
+cabal-version:     >= 1.10
 name:              vector-algorithms
 version:           0.9.0.1
-x-revision: 2
+x-revision:        3
 license:           BSD3
 license-file:      LICENSE
 author:            Dan Doel
@@ -14,9 +15,22 @@ synopsis:          Efficient algorithms for vector arrays
 description:       Efficient algorithms for sorting vector arrays. At some stage
                    other vector algorithms may be added.
 build-type:        Simple
-cabal-version:     >= 1.10
+
 extra-source-files: CHANGELOG.md
 
+tested-with:
+  GHC == 9.8.1
+  GHC == 9.6.3
+  GHC == 9.4.7
+  GHC == 9.2.8
+  GHC == 9.0.2
+  GHC == 8.10.7
+  GHC == 8.8.4
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
+  GHC == 7.10.3
 
 flag BoundsChecks
   description: Enable bounds checking
@@ -57,11 +71,11 @@ library
   hs-source-dirs: src
   default-language: Haskell2010
 
-  build-depends: base >= 4.5 && < 5,
+  build-depends: base >= 4.8 && < 5,
                  bitvec >= 1.0 && < 1.2,
                  vector >= 0.6 && < 0.14,
-                 primitive >=0.6.2.0 && <0.9,
-                 bytestring >= 0.9 && < 1.0
+                 primitive >= 0.6.2.0 && < 0.10,
+                 bytestring >= 0.9 && < 1
 
   if ! impl (ghc >= 7.8)
     build-depends: tagged >= 0.4 && < 0.9
@@ -144,7 +158,7 @@ test-suite properties
     buildable: False
   else
     build-depends:
-      base,
+      base >= 4.9,
       bytestring,
       containers,
       QuickCheck > 2.9 && < 2.15,
@@ -153,4 +167,3 @@ test-suite properties
 
   if flag(llvm)
     ghc-options: -fllvm
-
