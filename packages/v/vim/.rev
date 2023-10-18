@@ -7200,4 +7200,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Unclear why syntax test fails on Mac.</comment>
     <requestid>1110341</requestid>
   </revision>
+  <revision rev="354" vrev="1">
+    <srcmd5>218cd085f3c2ea44ea3c009e0fbaebe3</srcmd5>
+    <version>9.0.2043</version>
+    <time>1697657115</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 9.0.2043 
+ * Vim9: issue with funcref assignmentand varargs
+ * Test_cq_zero_exmode fails without channel feature
+ * trim(): hard to use default mask
+ * include syntax script for json5 (#13356)
+ * trim(): hard to use default mask
+ * completion shows current word after completion restart
+ * Vim9: object method funcref not cleaned up after use
+ * A few remaining cmdline completion issues with C-E/Y
+ * if_python: rework python3.12 build dependency
+ * [security] use-after-free with wildmenu
+ * don't try to copy SMACK attribute, when none exist
+ * gcc overflow-warning for f_resolve
+ * Fix more typos (#13354)
+ * cannot get mouse click pos for tab or virt text
+ * correct &lt;PageUp&gt;/&lt;PageDown&gt; behavior in 'wildmenu' (#13336)
+ * TextChangedI may be triggered by non-insert mode change
+ * no max callback recursion limit
+ * Vim9: no support for partials using call()
+ * confusing build dependencies
+ * Vim9: no support for bitwise operators in lambda funcs
+ * win32: python3 dll loading can be improved
+ * no cmdline completion for ++opt args
+ * no filetype detection for Debian sources
+ * need more tests for :cq
+ * getmousepos() returns wrong index for TAB char
+ * Coverity complains about change in charset
+ * Update Serbian messages translation (#13324)
+ * Update ftplugin (#13327)
+ * Vim9: islocked() needs more work</comment>
+    <requestid>1118549</requestid>
+  </revision>
 </revisionlist>

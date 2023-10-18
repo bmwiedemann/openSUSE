@@ -1,4 +1,203 @@
 -------------------------------------------------------------------
+Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to version 9.0.2043 
+ * Vim9: issue with funcref assignmentand varargs
+ * Test_cq_zero_exmode fails without channel feature
+ * trim(): hard to use default mask
+ * include syntax script for json5 (#13356)
+ * trim(): hard to use default mask
+ * completion shows current word after completion restart
+ * Vim9: object method funcref not cleaned up after use
+ * A few remaining cmdline completion issues with C-E/Y
+ * if_python: rework python3.12 build dependency
+ * [security] use-after-free with wildmenu
+ * don't try to copy SMACK attribute, when none exist
+ * gcc overflow-warning for f_resolve
+ * Fix more typos (#13354)
+ * cannot get mouse click pos for tab or virt text
+ * correct <PageUp>/<PageDown> behavior in 'wildmenu' (#13336)
+ * TextChangedI may be triggered by non-insert mode change
+ * no max callback recursion limit
+ * Vim9: no support for partials using call()
+ * confusing build dependencies
+ * Vim9: no support for bitwise operators in lambda funcs
+ * win32: python3 dll loading can be improved
+ * no cmdline completion for ++opt args
+ * no filetype detection for Debian sources
+ * need more tests for :cq
+ * getmousepos() returns wrong index for TAB char
+ * Coverity complains about change in charset
+ * Update Serbian messages translation (#13324)
+ * Update ftplugin (#13327)
+ * Vim9: islocked() needs more work
+ * Improve command-line completion docs (#13331)
+ * Vim9: no support for funcrefs
+ * complete_info() returns wrong index
+ * linebreak applies for leading whitespace
+ * Vim9: assignment operators don't work for class vars
+ * Vim9: does not handle islocked() from a method correctly
+ * confusing ifdefs in if_<lang>.c
+ * Unicode tables outdated
+ * Vim9: error message can be more accurate
+ * INI files not detected
+ * [security] use-after-free from buf_contents_changed()
+ * cmdline-completion for comma-separated options wrong
+ * test: undofile left behind
+ * Vim9: covariant parameter types allowed
+ * Vim9: need more tests
+ * partially revert patch v9.0.1997
+ * Missing test file
+ * xxd: compilation warning
+ * make command name for &iskeywordprg more unique (#13297)
+ * Vim9: need cleanup of class related interface code
+ * updated translation of xxd manpage
+ * Vim9: segfault with islocked()
+ * Vim9: use-after-free in deep call stack
+ * Update ftplugin (#13213)
+ * Vim9: some error messages can be improved
+ * xxd: cannot reverse a bit dump
+ * Some unused code in move.c and string.c
+ * remove E1520 tag (#13289)
+ * Cannot build with python312
+ * Update vim9class help (#13292)
+ * Invalid memory access with empty 'foldexpr'
+ * inconsistent feature description
+ * warning about unused function definition
+ * [security] segfault in exmode
+ * no cmdline completion for setting the font
+ * strange error number
+ * diff (`df`) may open the wrong window (#13275)
+ * Update `.netrwbook` immediately on bookmark change (#13276)
+ * revert permission changes for xxd manpages again (#13277)
+ * Vim9: double error message given
+ * Vim9: potential use-after-free for class members
+ * win32: font-size calculation can be improved
+ * Update Serbian messages translation (#13282)
+ * Vim9: accepting type-annotations
+ * Correct filetype detection pattern and style (#13284)
+ * scrolling inactive window not possible with cursorbind
+ * error when trying to :bd unloaded buffer
+ * vim9: clean up from v9.0.1955
+ * not being able to scroll up in diff mode
+ * win32: issues with stable python ABI
+ * No filetype detection for just files
+ * Vim9: object members can change type
+ * update translation of xxd manpage
+ * update xxd manpage and mention $NO_COLOR env
+ * fix two typos in `vim9.txt` and `options.txt` (#13258)
+ * remove E1507 help tag, which is no longer used (#13254)
+ * style: space before tab in optionstr.c
+ * xattr: permission-denied errors on write
+ * Update Russian message translation to Vim 9.0.1968 (#13239)
+ * add missing error numbers in the help.  (#13241)
+ * mention how to disable folding in diff mode (#13242)
+ * vim9: using contra-variant type-checks
+ * Clean up cmdline option completion code
+ * win32: missing '**' expansion test
+ * macOS: FEAT_SOUND guard too restrictive
+ * win32: high-dpi support can be improved
+ * [security] buffer-overflow in trunc_string()
+ * cmdline completion should consider key option
+ * xattr errors not translated
+ * configure prints stray 6 when checking libruby
+ * wrong auto/configure script
+ * xattr support fails to build on MacOS X
+ * Configure script may not detect xattr
+ * No support for writing extended attributes
+ * 'listchars' completion misses "multispace" and "leadmultispace"
+ * Vim9: methods parameters and types are covariant
+ * cannot complete option values
+ * termcap options should change when setting keyprotocol
+ * Custom completion skips orig cmdline if it invokes glob()
+ * Vim9: lockvar issues with objects/classes
+ * CI: change netrw label in labeller bot
+ * Misplaced comment in errors.h
+ * Vim9: unused static field
+ * text-objects: document how escaped delimiters are handled
+ * Vim9: hard to debug vim9_class errors from CI
+ * Vim9: error codes spread out
+ * Vim9: allows reserved keywords as members
+ * Vim9: object variable "this." should only be used in constructor
+ * Bash Expansion test fails on Windows/MacOS
+ * regenerate xxd manpage
+ * filename expansion using ** in bash may fail
+ * Vim9: missing support for ro-vars in interface
+ * mention mouse scrolling in scrollbind-quickadj (#13190)
+ * Update syntax file (#13192)
+ * update i3config syntax (#13191)
+ * runtime(rmd) Update ftplugin and syntax files (#13193)
+ * Vim9: function instruction pointer invalidated
+ * Update Serbian messages translation
+ * Vim9: execution stack invalidated with null object
+ * only invoke bash help in ftplugin if it has been detected to be bash (#13171)
+ * Memory leak detected
+ * Update help tags (#13180)
+ * wrong upstream version in libvterm README
+ * still a problem when processing LSP RPC requests
+ * Update Vim9 class items (#13148)
+ * Vim9: Consistenly use class/object variable and class/object method in help (#13149)
+ * multispace wrong when scrolling horizontally
+ * missing test for mouse click + 'virtedit'
+ * test: using wrong expected message in test_crypt
+ * Vim9: not consistent error messages
+ * :bwipe fails after switching window from aucmd_win.
+ * Can change the type of a v: variable using if_lua
+ * Vim9: error when using null object constructor
+ * grammar fixes in doc (#13164)
+ * Update the version9.txt with a template for version 9.1 enhancements (#13165)
+ * Add a missing '<' to the help of strutf16len() (#13168)
+ * make test_compilers fails on ubuntu
+ * fix typo in tutor.nl (#13175)
+ * compiler warnings with clang-17
+ * runtime tests fail with tiny vim
+ * Vim9: constructor type checking bug
+ * patch 1916 (fixed terminal size) not optimal
+ * Vim9: not enough info in error message
+ * if_python: still undefined behaviour with function pointer
+ * LSP server message still wrongly handled (after 9.0.1922)
+ * curswant wrong on click with 've' and 'wrap' set
+ * format jumplist examples more consistently (#13137)
+ * LSP server request message is misinterpreted as a response message
+ * not possible to use the jumplist like a stack
+ * Vim9: cannot write public var in nested object
+ * Wrong curswant when clicking on empty line or with vsplits
+ * No filetype detection for Authzed filetypes
+ * undefined behaviour with python function pointer
+ * Crash when allocating large terminal screen
+ * r_CTRL-C works differently in visual mode
+ * Vim9: few issues when accessing object members
+ * if_python: undefined behaviour for function pointers
+ * Vim9: segfault with null object and instanceof()
+ * add help tag describing object-selection
+ * Vim9: problem calling class method from other class
+ * undefined behaviour upper/lower function ptrs
+ * fix filetype detection for remote editing files
+ * Add Kotlin runtime files (#13110)
+ * No support for liquidsoap filetypes
+ * Vim9: Interfaces should not support class methods and variables
+ * FEAT_FLOAT no longer defined
+ * mention additional packages for msys2
+ * Man plugin does not respect 'gdefault'
+ * Vim9: Coverity complains about dead code
+ * win32: not correctly freeing environment
+ * Configure script uses non-portable == comparison
+ * potential buffer overflow in PBYTE macro
+ * Vim9: restrict access to static vars
+ * Highlight all :loadkeymap abbreviations in vim syntax (#13092)
+ * Fix :unlet error in ftplugin (#13090)
+ * Updated documentation on editorconfig
+ * improve syntax highlighting (#13060)
+ * sync rust runtime files with upstream (#13075)
+ * syntax structure cleanup (#13080)
+ * documentation updates
+ * improved i3config highlighting (#13054)
+ * Vim9: confusing error with .= in compiled functions
+ * "below" virtual text doesn't work with 'rightleft'
+ * Vim9: finding object method/member is inefficient
+ * Add g:c_syntax_for_h to filetype-overrule docs
+ *
+-------------------------------------------------------------------
 Mon Sep 11 14:51:02 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1894, fixes the following problems
