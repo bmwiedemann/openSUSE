@@ -25,6 +25,7 @@ Summary:        Microlens support for Reader/Writer/State from mtl
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -44,8 +45,8 @@ This package contains functions (like 'view' or '+=') which work on
 'MonadReader', 'MonadWriter', and 'MonadState' from the mtl package.
 
 This package is a part of the <http://hackage.haskell.org/package/microlens
-microlens> family; see the readme <https://github.com/monadfix/microlens#readme
-on Github>.
+microlens> family; see the readme
+<https://github.com/stevenfontanella/microlens#readme on Github>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -75,6 +76,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
