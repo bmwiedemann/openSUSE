@@ -139,4 +139,12 @@ in order to avoid conflicts like boo#1192300</comment>
     LeaveEditFocus members of QEventType.</comment>
     <requestid>1114143</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>23f90c4421e3eafa4ce0bdc8ad0f4d62</srcmd5>
+    <version>6.5.3</version>
+    <time>1697657179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118548</requestid>
+  </revision>
 </revisionlist>

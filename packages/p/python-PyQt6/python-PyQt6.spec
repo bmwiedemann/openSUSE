@@ -21,7 +21,7 @@
 %define pyqt_build_for_qt6 1
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -32,11 +32,13 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{v
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
-BuildRequires:  %{python_module PyQt6-sip >= 13.4}
+# PATCH-FIX-OPENSUSE - fix build with Qt 6.6.0
+Patch2:         pyqt6-fix-build-with-qt-6.6.0.patch
+BuildRequires:  %{python_module PyQt6-sip >= 13.6}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.11}
-BuildRequires:  %{python_module sip-devel >= 6.5}
+BuildRequires:  %{python_module sip-devel >= 6.7.12}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -147,10 +149,13 @@ dos2unix examples/quick/models/*/view.qml
 dos2unix examples/multimedia*/*/*.ui
 
 %build
+
+# -DQT_NO_INT128 is required to build with Qt 6.6.0.
 %{pyqt_build -v \
     -s %{quote:--pep484-pyi \
                --confirm-license \
-               --qt-shared}}
+               --qt-shared \
+               --qmake-setting 'QMAKE_CXXFLAGS_RELEASE=%{optflags} -DQT_NO_INT128'}}
 
 %install
 %pyqt_install

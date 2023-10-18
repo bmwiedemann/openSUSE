@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 18 00:34:21 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to 6.5.3
+  * Added support for Python 3.12 and the missing
+    QAbstractItemModel.multiData() method, as well as the missing
+    QModelRoleDataSpan class.
+- Add patch pyqt6-fix-build-with-qt-6.6.0.patch to fix build with
+  Qt 6.6.0.
+- Set CXX flag "-DQT_NO_INT128" to fix buil with Qt 6.6.0.
+
+-------------------------------------------------------------------
 Wed Sep 27 09:15:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.5.2
