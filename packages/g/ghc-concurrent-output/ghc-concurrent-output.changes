@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 12 19:46:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.20.
+  concurrent-output (1.10.20) unstable; urgency=medium
+
+    * Allow text-2.1.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 12 Oct 2023 15:46:36 -0400
+
+-------------------------------------------------------------------
 Wed Aug 30 20:04:13 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update concurrent-output to version 1.10.19.
