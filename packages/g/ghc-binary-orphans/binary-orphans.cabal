@@ -1,7 +1,7 @@
 cabal-version:      1.12
 name:               binary-orphans
 version:            1.0.4.1
-x-revision:         2
+x-revision:         3
 synopsis:           Compatibility package for binary; provides instances
 category:           Data, Binary, Parsing, Compatibility
 description:
@@ -27,9 +27,10 @@ tested-with:
    || ==8.8.4
    || ==8.10.7
    || ==9.0.2
-   || ==9.2.7
-   || ==9.4.4
-   || ==9.6.1
+   || ==9.2.8
+   || ==9.4.7
+   || ==9.6.3
+   || ==9.8.1
 
 extra-source-files: CHANGELOG.md
 
@@ -44,7 +45,7 @@ library
   exposed-modules:  Data.Binary.Orphans
   other-extensions: CPP
   build-depends:
-      base          >=4.5     && <4.19
+      base          >=4.5     && <4.20
     , binary        >=0.5.1.0 && <0.6 || >=0.7.1.0 && <0.8 || >=0.8.3.0 && <0.8.10
     , transformers  >=0.3.0.0 && <0.7
 
@@ -76,7 +77,7 @@ test-suite binary-orphans-test
     , QuickCheck            >=2.13.1   && <2.15
     , quickcheck-instances  >=0.3.28   && <0.4
     , tagged                >=0.8.6    && <0.9
-    , tasty                 >=0.10.1.2 && <1.5
+    , tasty                 >=0.10.1.2 && <1.6
     , tasty-quickcheck      >=0.8.3.2  && <0.11
 
   if !impl(ghc >=8.0)
