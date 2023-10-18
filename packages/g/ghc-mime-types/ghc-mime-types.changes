@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 18 02:11:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update mime-types to version 0.1.2.0.
+  ## 0.1.2.0
+
+  * Added `defaultExtensionMap` to provide the inverse of `defaultMimeMap`.
+
+  See PR [#930](https://github.com/yesodweb/wai/pull/930) and [#948](https://github.com/yesodweb/wai/pull/948).
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:34 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

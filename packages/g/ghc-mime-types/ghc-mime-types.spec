@@ -19,7 +19,7 @@
 %global pkg_name mime-types
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.0
+Version:        0.1.2.0
 Release:        0
 Summary:        Basic mime-type handling types and functions
 License:        MIT
