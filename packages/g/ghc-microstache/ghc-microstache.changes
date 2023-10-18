@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 13 10:16:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microstache to version 1.0.2.3 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Jun 27 19:59:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update microstache to version 1.0.2.3 revision 2.
