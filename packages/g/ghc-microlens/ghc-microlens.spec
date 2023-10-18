@@ -25,6 +25,7 @@ Summary:        A tiny lens library with no dependencies
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -43,8 +44,8 @@ This library is an extract from <http://hackage.haskell.org/package/lens lens>
 world”, but merely a small one. It is compatible with lens, and should have
 same performance. It also has better documentation.
 
-There's a longer readme <https://github.com/monadfix/microlens#readme on
-Github>. It has a migration guide for lens users, a description of other
+There's a longer readme <https://github.com/stevenfontanella/microlens#readme
+on Github>. It has a migration guide for lens users, a description of other
 packages in the family, a discussion of other lens libraries you could use
 instead, and so on.
 
@@ -118,6 +119,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

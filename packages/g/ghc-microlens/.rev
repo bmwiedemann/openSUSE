@@ -199,4 +199,12 @@
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075954</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>0e7345182ac053019a78d8df29dcf169</srcmd5>
+    <version>0.4.13.1</version>
+    <time>1697657155</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118476</requestid>
+  </revision>
 </revisionlist>
