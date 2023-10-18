@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-text-builder-dev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.3.2
+Version:        0.3.4.1
 Release:        0
 Summary:        Edge of developments for "text-builder"
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
@@ -35,19 +37,23 @@ BuildRequires:  ghc-deferred-folds-devel
 BuildRequires:  ghc-deferred-folds-prof
 BuildRequires:  ghc-isomorphism-class-devel
 BuildRequires:  ghc-isomorphism-class-prof
+BuildRequires:  ghc-quickcheck-instances-devel
+BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-split-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-quickcheck-instances-devel
-BuildRequires:  ghc-quickcheck-instances-prof
+BuildRequires:  ghc-base-compat-devel
+BuildRequires:  ghc-base-compat-prof
+BuildRequires:  ghc-quickcheck-classes-devel
+BuildRequires:  ghc-quickcheck-classes-prof
 BuildRequires:  ghc-rerebase-devel
 BuildRequires:  ghc-rerebase-prof
 BuildRequires:  ghc-tasty-devel
