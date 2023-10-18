@@ -719,4 +719,15 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
   * Delete compat-module_directory-module_prefix.patch (forwarded request 1103710 from michals)</comment>
     <requestid>1103741</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>3e8d413d87417a97d40807dece9293f6</srcmd5>
+    <version>31</version>
+    <time>1697657112</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests
+  * refresh configure-Detect-openssl-sm3-support.patch
+  * refresh kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
+  * refresh usr-lib-modules.patch (forwarded request 1118343 from michals)</comment>
+    <requestid>1118391</requestid>
+  </revision>
 </revisionlist>

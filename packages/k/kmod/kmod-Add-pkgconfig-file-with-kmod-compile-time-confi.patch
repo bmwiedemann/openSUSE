@@ -1,7 +1,7 @@
-From 2e4eff4f252fe2a4c5bdb81e3ca2639b9b5f04c6 Mon Sep 17 00:00:00 2001
+From 6760cce5b59eeb2ba9b96f43626221df0128a285 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Fri, 30 Jun 2023 16:16:24 +0200
-Subject: [PATCH 3/7] kmod: Add pkgconfig file with kmod compile time
+Subject: [PATCH 4/6] kmod: Add pkgconfig file with kmod compile time
  configuration
 
 Show distconfdir (where system configuration files are searched/to be
@@ -14,31 +14,27 @@ v2: mention module signature in commit message
 v3: add sysconfdir
 v5: add distconfdir, switch to pkgconfig
 ---
- Makefile.am      |  6 +++---
+ Makefile.am      |  2 +-
  configure.ac     | 11 +++++++++++
  tools/kmod.pc.in |  9 +++++++++
- 3 files changed, 23 insertions(+), 3 deletions(-)
+ 3 files changed, 21 insertions(+), 1 deletion(-)
  create mode 100644 tools/kmod.pc.in
 
 diff --git a/Makefile.am b/Makefile.am
-index a03846d02b9c..18818c811634 100644
+index e6630a36e18c..2a54c25bd631 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -118,9 +118,9 @@ libkmod_libkmod_internal_la_DEPENDENCIES  = $(libkmod_libkmod_la_DEPENDENCIES)
+@@ -96,7 +96,7 @@ libkmod_libkmod_internal_la_DEPENDENCIES  = $(libkmod_libkmod_la_DEPENDENCIES)
  libkmod_libkmod_internal_la_LIBADD = $(libkmod_libkmod_la_LIBADD)
  
  pkgconfigdir = $(libdir)/pkgconfig
 -pkgconfig_DATA = libkmod/libkmod.pc
--EXTRA_DIST += libkmod/libkmod.pc.in
--CLEANFILES += libkmod/libkmod.pc
 +pkgconfig_DATA = libkmod/libkmod.pc tools/kmod.pc
-+EXTRA_DIST += libkmod/libkmod.pc.in tools/kmod.pc.in
-+CLEANFILES += libkmod/libkmod.pc tools/kmod.pc
  
  bashcompletiondir=@bashcompletiondir@
  dist_bashcompletion_DATA = \
 diff --git a/configure.ac b/configure.ac
-index 18206ccdb607..a6ed8a36ca70 100644
+index fd88d1fbdbf7..7bf8d78ca747 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -21,6 +21,9 @@ LT_INIT([disable-static pic-only])
@@ -51,39 +47,39 @@ index 18206ccdb607..a6ed8a36ca70 100644
  #####################################################################
  # Program checks and configurations
  #####################################################################
-@@ -93,6 +96,7 @@ AC_ARG_WITH([zstd],
+@@ -94,6 +97,7 @@ AC_ARG_WITH([zstd],
  AS_IF([test "x$with_zstd" != "xno"], [
- 	PKG_CHECK_MODULES([libzstd], [libzstd >= 1.4.4])
+ 	PKG_CHECK_MODULES([libzstd], [libzstd >= 1.4.4], [LIBS="$LIBS $libzstd_LIBS"])
  	AC_DEFINE([ENABLE_ZSTD], [1], [Enable Zstandard for modules.])
 +	module_compressions="zstd $module_compressions"
  ], [
  	AC_MSG_NOTICE([Zstandard support not requested])
  ])
-@@ -104,6 +108,7 @@ AC_ARG_WITH([xz],
+@@ -105,6 +109,7 @@ AC_ARG_WITH([xz],
  AS_IF([test "x$with_xz" != "xno"], [
- 	PKG_CHECK_MODULES([liblzma], [liblzma >= 4.99])
+ 	PKG_CHECK_MODULES([liblzma], [liblzma >= 4.99], [LIBS="$LIBS $liblzma_LIBS"])
  	AC_DEFINE([ENABLE_XZ], [1], [Enable Xz for modules.])
 +	module_compressions="xz $module_compressions"
  ], [
  	AC_MSG_NOTICE([Xz support not requested])
  ])
-@@ -115,6 +120,7 @@ AC_ARG_WITH([zlib],
+@@ -116,6 +121,7 @@ AC_ARG_WITH([zlib],
  AS_IF([test "x$with_zlib" != "xno"], [
- 	PKG_CHECK_MODULES([zlib], [zlib])
+ 	PKG_CHECK_MODULES([zlib], [zlib], [LIBS="$LIBS $zlib_LIBS"])
  	AC_DEFINE([ENABLE_ZLIB], [1], [Enable zlib for modules.])
 +	module_compressions="gzip $module_compressions"
  ], [
  	AC_MSG_NOTICE([zlib support not requested])
  ])
-@@ -126,6 +132,7 @@ AC_ARG_WITH([openssl],
- AS_IF([test "x$with_openssl" != "xno"], [
- 	PKG_CHECK_MODULES([libcrypto], [libcrypto >= 1.1.0])
- 	AC_DEFINE([ENABLE_OPENSSL], [1], [Enable openssl for modinfo.])
+@@ -134,6 +140,7 @@ AS_IF([test "x$with_openssl" != "xno"], [
+ 		AC_MSG_NOTICE([openssl sm3 support not detected])
+ 		CPPFLAGS="$CPPFLAGS -DOPENSSL_NO_SM3"
+ 	])
 +	module_signatures="PKCS7 $module_signatures"
  ], [
  	AC_MSG_NOTICE([openssl support not requested])
  ])
-@@ -290,11 +297,15 @@ AC_DEFINE_UNQUOTED(KMOD_FEATURES, ["$with_features"], [Features in this build])
+@@ -298,6 +305,9 @@ AC_DEFINE_UNQUOTED(KMOD_FEATURES, ["$with_features"], [Features in this build])
  # Generate files from *.in
  #####################################################################
  
@@ -93,8 +89,10 @@ index 18206ccdb607..a6ed8a36ca70 100644
  AC_CONFIG_FILES([
  	Makefile
  	man/Makefile
- 	libkmod/docs/Makefile
+@@ -305,6 +315,7 @@ AC_CONFIG_FILES([
  	libkmod/docs/version.xml
+ 	libkmod/libkmod.pc
+ 	libkmod/python/kmod/version.py
 +	tools/kmod.pc
  ])
  
@@ -115,5 +113,5 @@ index 000000000000..2595980a6b35
 +Description: Tools to deal with kernel modules
 +Version: @VERSION@
 -- 
-2.41.0
+2.42.0
 

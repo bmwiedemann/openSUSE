@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 17 15:34:57 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix tests
+  * refresh configure-Detect-openssl-sm3-support.patch
+  * refresh kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
+  * refresh usr-lib-modules.patch
+
+-------------------------------------------------------------------
+Fri Sep 29 16:38:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 31
+  * Allow passing a path to modprobe so the module is loaded from
+    anywhere from the filesystem.
+  * Use in-kernel decompression if available.
+  * depmod learned a `-o <dir>` option to allow using a separate
+    output directory.
+- Delete depmod-Introduce-outdir-option.patch,
+  testsuite-Handle-different-sysconfdir.patch,
+  testsuite-depmod-use-defines-for-the-rootfs-lib_modu.patch,
+  0001-testsuite-repair-read-of-uninitialized-memory.patch,
+  testsuite-Move-setup-rootfs-logic-from-Makefile-to-s.patch
+
+
+-------------------------------------------------------------------
 Mon Jul 24 12:50:23 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Remove compatibility patches, add README.usrmerge (boo#1212835).

@@ -1,11 +1,14 @@
-From d6ca73ea19ef26506686e7cc85044c40f3fb917c Mon Sep 17 00:00:00 2001
+From 4ad85461d27d240efcb4922eb5810a65356a8d6a Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Fri, 26 May 2023 10:38:05 +0200
-Subject: [PATCH 4/7] libkmod, depmod, modprobe: Make directory for kernel
+Subject: [PATCH 5/6] libkmod, depmod, modprobe: Make directory for kernel
  modules configurable
 
-modprobe.d is now searched under ${prefix}/lib, add ${module_directory} to
-specify the directory where to search for kernel modules.
+Now that modprobe.d is searched under ${prefix}/lib, allow a complete
+transition to files only under ${prefix} by adding a ${module_directory}
+configuration. This specifies the directory where to search for kernel
+modules and should match the location where the kernel/distro installs
+them.
 
 With this distributions that do not want to ship files in /lib can also
 move kernel modules to /usr while others can keep them in /lib.
@@ -13,6 +16,7 @@ move kernel modules to /usr while others can keep them in /lib.
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
 v4: Make the whole path configurable
+v5: More verbose commit message
 ---
  Makefile.am                          |   3 +-
  configure.ac                         |   7 ++
@@ -35,7 +39,7 @@ v4: Make the whole path configurable
  18 files changed, 107 insertions(+), 84 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index fd4c7a04ec51..1d51a43d68ba 100644
+index 2a54c25bd631..4062d81227df 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -20,6 +20,7 @@ AM_CPPFLAGS = \
@@ -46,7 +50,7 @@ index fd4c7a04ec51..1d51a43d68ba 100644
  	${zlib_CFLAGS}
  
  AM_CFLAGS = $(OUR_CFLAGS)
-@@ -247,7 +248,7 @@ EXTRA_DIST += testsuite/setup-rootfs.sh
+@@ -220,7 +221,7 @@ EXTRA_DIST += testsuite/setup-rootfs.sh
  MODULE_PLAYGROUND = testsuite/module-playground
  ROOTFS = testsuite/rootfs
  ROOTFS_PRISTINE = $(top_srcdir)/testsuite/rootfs-pristine
@@ -56,10 +60,10 @@ index fd4c7a04ec51..1d51a43d68ba 100644
  build-module-playground:
  	$(AM_V_GEN)if test "$(top_srcdir)" != "$(top_builddir)"; then \
 diff --git a/configure.ac b/configure.ac
-index a6ed8a36ca70..602d3d3dbdf1 100644
+index 7bf8d78ca747..d282fef9a08c 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -90,6 +90,12 @@ AC_ARG_WITH([rootlibdir],
+@@ -91,6 +91,12 @@ AC_ARG_WITH([rootlibdir],
          [], [with_rootlibdir=$libdir])
  AC_SUBST([rootlibdir], [$with_rootlibdir])
  
@@ -72,7 +76,7 @@ index a6ed8a36ca70..602d3d3dbdf1 100644
  AC_ARG_WITH([zstd],
  	AS_HELP_STRING([--with-zstd], [handle Zstandard-compressed modules @<:@default=disabled@:>@]),
  	[], [with_zstd=no])
-@@ -316,6 +322,7 @@ AC_MSG_RESULT([
+@@ -326,6 +332,7 @@ AC_MSG_RESULT([
  	$PACKAGE $VERSION
  	=======
  
@@ -81,10 +85,10 @@ index a6ed8a36ca70..602d3d3dbdf1 100644
  	sysconfdir:		${sysconfdir}
  	distconfdir:		${distconfdir}
 diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
-index bc05a1873edf..876458f7449a 100644
+index 57fac1cb9f7b..4489cbd04bf7 100644
 --- a/libkmod/libkmod.c
 +++ b/libkmod/libkmod.c
-@@ -209,7 +209,7 @@ static int log_priority(const char *priority)
+@@ -210,7 +210,7 @@ static int log_priority(const char *priority)
  	return 0;
  }
  
@@ -93,7 +97,7 @@ index bc05a1873edf..876458f7449a 100644
  
  static char *get_kernel_release(const char *dirname)
  {
-@@ -231,7 +231,7 @@ static char *get_kernel_release(const char *dirname)
+@@ -266,7 +266,7 @@ static enum kmod_file_compression_type get_kernel_compression(struct kmod_ctx *c
  /**
   * kmod_new:
   * @dirname: what to consider as linux module's directory, if NULL
@@ -181,7 +185,7 @@ index 9fe0324a2527..b6c4d6045829 100644
        <citerefentry><refentrytitle>modprobe</refentrytitle><manvolnum>8</manvolnum></citerefentry>
        when loading kernel modules.
 diff --git a/man/modprobe.xml b/man/modprobe.xml
-index db39c7a18bb7..7374f37a0f7b 100644
+index 91f9e27997cd..4d1fd59c000b 100644
 --- a/man/modprobe.xml
 +++ b/man/modprobe.xml
 @@ -78,7 +78,7 @@
@@ -231,7 +235,7 @@ index e6045b0dd932..a7ab09bea2bf 100644
  ifeq ($(FAKE_BUILD),)
      FAKE_BUILD=0
 diff --git a/testsuite/setup-rootfs.sh b/testsuite/setup-rootfs.sh
-index 8b13a40f2cae..2fc7e592d1b5 100755
+index 4440ddcd6b4d..a780f9381b3c 100755
 --- a/testsuite/setup-rootfs.sh
 +++ b/testsuite/setup-rootfs.sh
 @@ -16,6 +16,19 @@ create_rootfs() {
@@ -254,7 +258,7 @@ index 8b13a40f2cae..2fc7e592d1b5 100755
  
  	if [ "$SYSCONFDIR" != "/etc" ]; then
  		find "$ROOTFS" -type d -name etc -printf "%h\n" | while read -r e; do
-@@ -32,55 +45,55 @@ feature_enabled() {
+@@ -32,57 +45,57 @@ feature_enabled() {
  
  declare -A map
  map=(
@@ -338,6 +342,8 @@ index 8b13a40f2cae..2fc7e592d1b5 100755
 +    ["test-modprobe/alias-to-none$MODULE_DIRECTORY/4.4.4/kernel/"]="mod-simple.ko"
 +    ["test-modprobe/module-param-kcmdline$MODULE_DIRECTORY/4.4.4/kernel/"]="mod-simple.ko"
      ["test-modprobe/external/lib/modules/external/"]="mod-simple.ko"
+     ["test-modprobe/module-from-abspath/home/foo/"]="mod-simple.ko"
+     ["test-modprobe/module-from-relpath/home/foo/"]="mod-simple.ko"
 -    ["test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/block/cciss.ko"]="mod-fake-cciss.ko"
 -    ["test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/scsi/hpsa.ko"]="mod-fake-hpsa.ko"
 -    ["test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/scsi/scsi_mod.ko"]="mod-fake-scsi-mod.ko"
@@ -353,7 +359,7 @@ index 8b13a40f2cae..2fc7e592d1b5 100755
      ["test-modinfo/mod-simple-i386.ko"]="mod-simple-i386.ko"
      ["test-modinfo/mod-simple-x86_64.ko"]="mod-simple-x86_64.ko"
      ["test-modinfo/mod-simple-sparc64.ko"]="mod-simple-sparc64.ko"
-@@ -88,20 +101,20 @@ map=(
+@@ -90,20 +103,20 @@ map=(
      ["test-modinfo/mod-simple-sha256.ko"]="mod-simple.ko"
      ["test-modinfo/mod-simple-pkcs7.ko"]="mod-simple.ko"
      ["test-modinfo/external/lib/modules/external/mod-simple.ko"]="mod-simple.ko"
@@ -486,7 +492,7 @@ index 56e73609f204..c77c4bbc04eb 100644
  		return EXIT_FAILURE;
  	}
 diff --git a/tools/depmod.c b/tools/depmod.c
-index aada5ac57902..5ef490473186 100644
+index 630fef9c8fb0..7f7c4b74d216 100644
 --- a/tools/depmod.c
 +++ b/tools/depmod.c
 @@ -911,7 +911,7 @@ struct vertex;
@@ -547,10 +553,10 @@ index d0aab200af4e..cacc32dc4c40 100644
  		dirname = dirname_buf;
  	}
 diff --git a/tools/modprobe.c b/tools/modprobe.c
-index 322d5d199372..c7016a58e43f 100644
+index e891028349a8..5306bef250da 100644
 --- a/tools/modprobe.c
 +++ b/tools/modprobe.c
-@@ -146,7 +146,7 @@ static void help(void)
+@@ -142,7 +142,7 @@ static void help(void)
  		"\t-n, --show                  Same as --dry-run\n"
  
  		"\t-C, --config=FILE           Use FILE instead of default search paths\n"
@@ -559,7 +565,7 @@ index 322d5d199372..c7016a58e43f 100644
  		"\t-S, --set-version=VERSION   Use VERSION instead of `uname -r`\n"
  
  		"\t-s, --syslog                print to syslog, not stderr\n"
-@@ -983,7 +983,7 @@ static int do_modprobe(int argc, char **orig_argv)
+@@ -999,7 +999,7 @@ static int do_modprobe(int argc, char **orig_argv)
  			kversion = u.release;
  		}
  		snprintf(dirname_buf, sizeof(dirname_buf),
@@ -592,5 +598,5 @@ index 8d2356da73f3..5ef3743e967b 100644
  			ret = EXIT_FAILURE;
  		}
 -- 
-2.41.0
+2.42.0
 

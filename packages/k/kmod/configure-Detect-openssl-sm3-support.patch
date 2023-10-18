@@ -1,7 +1,7 @@
-From 90446ff0273775ee20762bb892fd3e901c8eb8ac Mon Sep 17 00:00:00 2001
+From 1bb5f3aafc9b4bff638ed3288308289fdec60270 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 17 Jul 2023 21:23:51 +0200
-Subject: [PATCH] configure: Detect openssl sm3 support
+Subject: [PATCH 1/6] configure: Detect openssl sm3 support
 
 Older openssl versions do not support sm3. The code has an option to
 disable the sm3 hash but the lack of openssl support is not detected
@@ -9,17 +9,17 @@ automatically.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
- configure.ac | 6 ++++++
- 1 file changed, 6 insertions(+)
+ configure.ac | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index a1e64e190d2f..5a582cb5a2af 100644
+index 82a853289a83..e5bceeaa1722 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -148,6 +148,13 @@ AS_IF([test "x$with_openssl" != "xno"], [
- 	PKG_CHECK_MODULES([libcrypto], [libcrypto >= 1.1.0])
+@@ -123,6 +123,13 @@ AC_ARG_WITH([openssl],
+ AS_IF([test "x$with_openssl" != "xno"], [
+ 	PKG_CHECK_MODULES([libcrypto], [libcrypto >= 1.1.0], [LIBS="$LIBS $libcrypto_LIBS"])
  	AC_DEFINE([ENABLE_OPENSSL], [1], [Enable openssl for modinfo.])
- 	module_signatures="PKCS7 $module_signatures"
 +	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <openssl/ssl.h>
 +		int nid = NID_sm3;]])], [
 +		AC_MSG_NOTICE([openssl supports sm3])
@@ -31,5 +31,5 @@ index a1e64e190d2f..5a582cb5a2af 100644
  	AC_MSG_NOTICE([openssl support not requested])
  ])
 -- 
-2.41.0
+2.42.0
 

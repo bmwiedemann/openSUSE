@@ -22,7 +22,7 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        30
+Version:        31
 Release:        0
 Summary:        Utilities to load modules into the kernel
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,17 +41,12 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
-Patch7:         0001-testsuite-repair-read-of-uninitialized-memory.patch
+Patch7:         configure-Detect-openssl-sm3-support.patch
 Patch8:         man-depmod.d-Fix-incorrect-usr-lib-search-path.patch
 Patch9:         usr-lib-modprobe.patch
-Patch10:        testsuite-Move-setup-rootfs-logic-from-Makefile-to-s.patch
-Patch11:        depmod-Introduce-outdir-option.patch
-Patch12:        testsuite-Handle-different-sysconfdir.patch
-Patch13:        testsuite-depmod-use-defines-for-the-rootfs-lib_modu.patch
 Patch14:        kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
 Patch15:        usr-lib-modules.patch
 Patch16:        no-stylesheet-download.patch
-Patch17:        configure-Detect-openssl-sm3-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets

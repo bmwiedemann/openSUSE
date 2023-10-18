@@ -7,16 +7,16 @@ Subject: [PATCH 3/6] libkmod: Implement filtering of unsupported modules (off
 References: fate#316971
 Patch-mainline: never
 ---
- libkmod/libkmod-config.c   | 12 ++++++++++--
- libkmod/libkmod-internal.h |  1 +
- libkmod/libkmod-module.c   | 31 +++++++++++++++++++++++++++++++
+ libkmod/libkmod-config.c   |   12 ++++++++++--
+ libkmod/libkmod-internal.h |    1 +
+ libkmod/libkmod-module.c   |   31 +++++++++++++++++++++++++++++++
  3 files changed, 42 insertions(+), 2 deletions(-)
 
-diff --git a/libkmod/libkmod-config.c b/libkmod/libkmod-config.c
-index 1b24536..07d6a9e 100644
---- a/libkmod/libkmod-config.c
-+++ b/libkmod/libkmod-config.c
-@@ -651,8 +651,16 @@ static int kmod_config_parse(struct kmod_config *config, int fd,
+Index: kmod-31/libkmod/libkmod-config.c
+===================================================================
+--- kmod-31.orig/libkmod/libkmod-config.c
++++ kmod-31/libkmod/libkmod-config.c
+@@ -708,8 +708,16 @@ static int kmod_config_parse(struct kmod
  			ERR(ctx, "%s: command %s is deprecated and not parsed anymore\n",
  								filename, cmd);
  		} else if (streq(cmd, "allow_unsupported_modules")) {
@@ -35,11 +35,11 @@ index 1b24536..07d6a9e 100644
  		} else {
  syntax_error:
  			ERR(ctx, "%s line %u: ignoring bad line starting with '%s'\n",
-diff --git a/libkmod/libkmod-internal.h b/libkmod/libkmod-internal.h
-index a65ddd1..2ad74c7 100644
---- a/libkmod/libkmod-internal.h
-+++ b/libkmod/libkmod-internal.h
-@@ -119,6 +119,7 @@ struct kmod_config {
+Index: kmod-31/libkmod/libkmod-internal.h
+===================================================================
+--- kmod-31.orig/libkmod/libkmod-internal.h
++++ kmod-31/libkmod/libkmod-internal.h
+@@ -130,6 +130,7 @@ struct kmod_config {
  	struct kmod_list *softdeps;
  
  	struct kmod_list *paths;
@@ -47,13 +47,13 @@ index a65ddd1..2ad74c7 100644
  };
  
  int kmod_config_new(struct kmod_ctx *ctx, struct kmod_config **config, const char * const *config_paths) __attribute__((nonnull(1, 2,3)));
-diff --git a/libkmod/libkmod-module.c b/libkmod/libkmod-module.c
-index bffe715..9a3a35a 100644
---- a/libkmod/libkmod-module.c
-+++ b/libkmod/libkmod-module.c
-@@ -798,6 +798,24 @@ KMOD_EXPORT int kmod_module_remove_module(struct kmod_module *mod,
- 
- extern long init_module(const void *mem, unsigned long len, const char *args);
+Index: kmod-31/libkmod/libkmod-module.c
+===================================================================
+--- kmod-31.orig/libkmod/libkmod-module.c
++++ kmod-31/libkmod/libkmod-module.c
+@@ -781,6 +781,24 @@ KMOD_EXPORT const char *kmod_module_get_
+ 	return mod->name;
+ }
  
 +static int check_module_supported(struct kmod_module *mod)
 +{
@@ -74,17 +74,17 @@ index bffe715..9a3a35a 100644
 +}
 +
  /**
-  * kmod_module_insert_module:
+  * kmod_module_get_path:
   * @mod: kmod module
-@@ -823,6 +841,7 @@ KMOD_EXPORT int kmod_module_insert_module(struct kmod_module *mod,
- 	struct kmod_elf *elf;
+@@ -959,6 +977,7 @@ KMOD_EXPORT int kmod_module_insert_modul
+ 	int err;
  	const char *path;
  	const char *args = options ? options : "";
 +	const struct kmod_config *config = kmod_get_config(mod->ctx);
  
  	if (mod == NULL)
  		return -ENOENT;
-@@ -841,6 +860,18 @@ KMOD_EXPORT int kmod_module_insert_module(struct kmod_module *mod,
+@@ -977,6 +996,18 @@ KMOD_EXPORT int kmod_module_insert_modul
  		}
  	}
  
@@ -100,9 +100,6 @@ index bffe715..9a3a35a 100644
 +		}
 +	}
 +
- 	if (kmod_file_get_direct(mod->file)) {
- 		unsigned int kernel_flags = 0;
- 
--- 
-2.20.1
-
+ 	err = do_finit_module(mod, flags, args);
+ 	if (err == -ENOSYS)
+ 		err = do_init_module(mod, flags, args);
