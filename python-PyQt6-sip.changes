@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 18 05:13:44 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to ABI version 13.6.0
+  * Properly fix the Python v3.12 support by deprecating
+    sipPyTypeDict() and adding sipPyTypeDictRef().
+
+-------------------------------------------------------------------
 Wed Sep 27 09:07:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to ABI version 13.5.2
