@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 10 16:46:17 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.12+git20231010.8f2cd87:
+  * Updated CHANGELOG.md.
+  * Added in an unstub and VIEW readme function.
+  * Added a close for write.
+  * Improve `mbedtls2` detection in meson
+
+-------------------------------------------------------------------
 Fri Sep 22 19:46:08 UTC 2023 - scott.bradnick@suse.com
 
 - Adding lpm.c.diff to set LPM_VERSION instead of "unknown"
