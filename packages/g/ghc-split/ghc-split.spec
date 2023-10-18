@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.3.5
+Version:        0.2.4
 Release:        0
 Summary:        Combinator library for splitting lists
 License:        BSD-3-Clause
@@ -102,7 +102,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGES README
+%doc CHANGES README.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE
