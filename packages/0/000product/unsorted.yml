@@ -4588,7 +4588,6 @@ unsorted:
   - geronimo-saaj-1_1-api 
   - geronimo-servlet-2_4-api 
   - geronimo-servlet-2_5-api 
-  - geronimo-specs-pom 
   - geronimo-stax-1_0-api 
   - geronimo-ws-metadata-2_0-api 
   - gettext-csharp 
@@ -5829,6 +5828,10 @@ unsorted:
   - ghc-psqueues-devel 
   - ghc-psqueues-doc 
   - ghc-psqueues-prof 
+  - ghc-quickcheck-instances 
+  - ghc-quickcheck-instances-devel 
+  - ghc-quickcheck-instances-doc 
+  - ghc-quickcheck-instances-prof 
   - ghc-quote-quot 
   - ghc-quote-quot-devel 
   - ghc-quote-quot-doc 
@@ -10333,6 +10336,7 @@ unsorted:
   - libQt6DeclarativeOpcua6 
   - libQt6Designer6 
   - libQt6DesignerComponents6 
+  - libQt6Graphs6 
   - libQt6Grpc6 
   - libQt6Help6 
   - libQt6HttpServer6 
@@ -33697,6 +33701,12 @@ unsorted:
   - qt6-designercomponents-private-devel 
   - qt6-docs-common 
   - qt6-exampleicons-devel-static 
+  - qt6-graphs-devel 
+  - qt6-graphs-docs-html 
+  - qt6-graphs-docs-qch 
+  - qt6-graphs-examples 
+  - qt6-graphs-imports 
+  - qt6-graphs-private-devel 
   - qt6-grpc-devel 
   - qt6-grpc-docs-html 
   - qt6-grpc-docs-qch 
@@ -46416,6 +46426,7 @@ unsorted:
   - xwallpaper 
   - xwallpaper-zsh-completion 
   - xwayland-devel 
+  - xwaylandvideobridge 
   - xwd 
   - xwininfo 
   - xwmfs 
