@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 13 04:20:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unordered-containers to version 0.2.19.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:50 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
