@@ -88,4 +88,13 @@
     <comment>- add sle15_python_module_python</comment>
     <requestid>1118265</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1b3c3362d9f4a9db5ec3008fa00469cd</srcmd5>
+    <version>0.9.0</version>
+    <time>1697657140</time>
+    <user>anag+factory</user>
+    <comment>- Fix sle15_python_module_pythons being on the wrong line post spec
+  auto-format.</comment>
+    <requestid>1118386</requestid>
+  </revision>
 </revisionlist>

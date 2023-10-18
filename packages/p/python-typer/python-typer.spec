@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?sle15_python_module_pythons}
 
 Name:           python-typer
 Version:        0.9.0
@@ -41,7 +42,6 @@ Recommends:     python-colorama
 Recommends:     python-rich
 Recommends:     python-shellingham
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
