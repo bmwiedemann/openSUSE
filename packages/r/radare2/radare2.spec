@@ -17,7 +17,7 @@
 
 
 Name:           radare2
-Version:        5.8.6
+Version:        5.8.8
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
