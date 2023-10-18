@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 17 01:20:40 UTC 2023 - Wang Jun <badboywj@gmail.com>
+
+- Update to 0.8.19
+  * Replaced GtkSourceIter by newer version
+    to fix Unicode character search behavior (Mi605)
+  * Fixed samba write bug (Nils Kvist)
+  * Added man page (LAMurakami)
+  * Added and updated some translations
+
+-------------------------------------------------------------------
 Fri May  4 17:03:06 UTC 2018 - bjorn.lie@gmail.com
 
 - Drop libgnomeprint-devel BuildRequires and no longer pass

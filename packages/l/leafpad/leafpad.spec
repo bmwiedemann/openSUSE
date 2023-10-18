@@ -1,7 +1,7 @@
 #
 # spec file for package leafpad
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           leafpad
-Version:        0.8.18.1
+Version:        0.8.19
 Release:        0
 Summary:        Graphical text editor and Notepad clone
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Editors/Other
-Url:            http://tarot.freeshell.org/leafpad/
+URL:            http://tarot.freeshell.org/leafpad/
 Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -66,11 +66,13 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 
 %files -f "%{name}.lang"
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%doc AUTHORS ChangeLog NEWS README
+%license COPYING
 %{_bindir}/leafpad
 %{_datadir}/applications/leafpad.desktop
 %{_datadir}/pixmaps/leafpad.png
 %{_datadir}/pixmaps/leafpad.xpm
 %{_datadir}/icons/*/*/apps/leafpad.*
+%{_mandir}/man1/leafpad.1.gz
 
 %changelog
