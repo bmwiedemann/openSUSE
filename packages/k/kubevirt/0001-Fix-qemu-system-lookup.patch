@@ -1,4 +1,4 @@
-From c4d429f3edffaaf8086f6cd22821b42ce2cf60c0 Mon Sep 17 00:00:00 2001
+From de15ee969681bbd95ed0e6a5a460c3b0cba2cf52 Mon Sep 17 00:00:00 2001
 From: Vasiliy Ulyanov <vulyanov@suse.de>
 Date: Tue, 4 Jul 2023 13:27:25 +0200
 Subject: [PATCH 1/2] Lookup qemu process by executable prefix
@@ -18,7 +18,7 @@ Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
  4 files changed, 26 insertions(+), 19 deletions(-)
 
 diff --git a/pkg/virt-handler/isolation/detector.go b/pkg/virt-handler/isolation/detector.go
-index 62f920025..a90281824 100644
+index 9c282e231..52a1de9ee 100644
 --- a/pkg/virt-handler/isolation/detector.go
 +++ b/pkg/virt-handler/isolation/detector.go
 @@ -185,13 +185,13 @@ func AdjustQemuProcessMemoryLimits(podIsoDetector PodIsolationDetector, vmi *v1.
@@ -136,10 +136,10 @@ index de7d1449d..1a882e129 100644
  			),
  		)
 -- 
-2.41.0
+2.42.0
 
 
-From 30a544b57182fff64646eede6eba360cd0ceb0c3 Mon Sep 17 00:00:00 2001
+From 0254d71c567fef3cd6ce8378eb0540fc93e5666f Mon Sep 17 00:00:00 2001
 From: Vasiliy Ulyanov <vulyanov@suse.de>
 Date: Tue, 4 Jul 2023 14:04:57 +0200
 Subject: [PATCH 2/2] tests: Detect the qemu emulator binary in runtime
@@ -152,9 +152,9 @@ Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
  tests/realtime/BUILD.bazel      |  1 +
  tests/realtime/realtime.go      | 28 +++++++++++++++++-----------
  tests/security_features_test.go | 14 +++++++-------
- tests/utils.go                  | 16 ++++++++++++----
- tests/vmi_configuration_test.go | 12 ++++++++----
- 5 files changed, 45 insertions(+), 26 deletions(-)
+ tests/utils.go                  | 12 ++++++++++--
+ tests/vmi_configuration_test.go |  8 ++++++--
+ 5 files changed, 41 insertions(+), 22 deletions(-)
 
 diff --git a/tests/realtime/BUILD.bazel b/tests/realtime/BUILD.bazel
 index 3718467e1..9d66eb7df 100644
@@ -265,7 +265,7 @@ index a9e93161c..0e1249f0d 100644
  			Expect(err).ToNot(HaveOccurred())
  			slice = strings.Split(strings.TrimSpace(psOutput), "\n")
 diff --git a/tests/security_features_test.go b/tests/security_features_test.go
-index cc49ba038..42adfe1d6 100644
+index e38291691..98230bbaf 100644
 --- a/tests/security_features_test.go
 +++ b/tests/security_features_test.go
 @@ -129,9 +129,9 @@ var _ = Describe("[Serial][sig-compute]SecurityFeatures", Serial, decorators.Sig
@@ -315,10 +315,10 @@ index cc49ba038..42adfe1d6 100644
  
  				By("Verifying SELinux context contains custom type in pod")
 diff --git a/tests/utils.go b/tests/utils.go
-index 6b5ab7de8..276046454 100644
+index c51656291..9984000c4 100644
 --- a/tests/utils.go
 +++ b/tests/utils.go
-@@ -363,10 +363,10 @@ func GetProcessName(pod *k8sv1.Pod, pid string) (output string, err error) {
+@@ -360,10 +360,10 @@ func GetProcessName(pod *k8sv1.Pod, pid string) (output string, err error) {
  	return
  }
  
@@ -326,29 +326,12 @@ index 6b5ab7de8..276046454 100644
 +func GetVcpuMask(pod *k8sv1.Pod, emulator, cpu string) (output string, err error) {
  	virtClient := kubevirt.Client()
  
--	pscmd := "ps -LC qemu-kvm -o lwp,comm| grep \"CPU " + cpu + "\"  | cut -f 1 -d \"C\""
-+	pscmd := "ps -LC " + emulator + " -o lwp,comm| grep \"CPU " + cpu + "\"  | cut -f 1 -d \"C\""
- 	output, err = exec.ExecuteCommandOnPod(
- 		virtClient,
- 		pod,
-@@ -383,14 +383,14 @@ func GetVcpuMask(pod *k8sv1.Pod, cpu string) (output string, err error) {
- 	return output, err
- }
- 
--func GetKvmPitMask(pod *k8sv1.Pod, nodeName string) (output string, err error) {
-+func GetKvmPitMask(pod *k8sv1.Pod, emulator, nodeName string) (output string, err error) {
- 	virtClient := kubevirt.Client()
- 
- 	output, err = exec.ExecuteCommandOnPod(
- 		virtClient,
- 		pod,
- 		"compute",
--		[]string{"ps", "-C", "qemu-kvm", "-o", "pid", "--noheader"},
-+		[]string{"ps", "-C", emulator, "-o", "pid", "--noheader"},
- 	)
- 	Expect(err).ToNot(HaveOccurred())
- 	qemupid := strings.TrimSpace(strings.Trim(output, "\n"))
-@@ -1748,6 +1748,14 @@ func GetRunningVMIDomainSpec(vmi *v1.VirtualMachineInstance) (*launcherApi.Domai
+-	pscmd := `ps -LC qemu-kvm -o lwp,comm | grep "CPU ` + cpu + `"  | cut -f1 -dC`
++	pscmd := `ps -LC ` + emulator + ` -o lwp,comm | grep "CPU ` + cpu + `"  | cut -f1 -dC`
+ 	args := []string{BinBash, "-c", pscmd}
+ 	Eventually(func() error {
+ 		output, err = exec.ExecuteCommandOnPod(virtClient, pod, "compute", args)
+@@ -1746,6 +1746,14 @@ func GetRunningVMIDomainSpec(vmi *v1.VirtualMachineInstance) (*launcherApi.Domai
  	return &runningVMISpec, err
  }
  
@@ -364,10 +347,10 @@ index 6b5ab7de8..276046454 100644
  	errChan := make(chan error, 1)
  	readyChan := make(chan struct{})
 diff --git a/tests/vmi_configuration_test.go b/tests/vmi_configuration_test.go
-index cfdd1afe1..a574a911d 100644
+index 4f120127c..44590fdaa 100644
 --- a/tests/vmi_configuration_test.go
 +++ b/tests/vmi_configuration_test.go
-@@ -2506,18 +2506,22 @@ var _ = Describe("[sig-compute]Configurations", decorators.SigCompute, func() {
+@@ -2639,8 +2639,12 @@ var _ = Describe("[sig-compute]Configurations", decorators.SigCompute, func() {
  					&expect.BExp{R: "2"},
  				}, 15)).To(Succeed())
  
@@ -376,17 +359,13 @@ index cfdd1afe1..a574a911d 100644
 +				emulator = filepath.Base(emulator)
 +
  				virtClient := kubevirt.Client()
--				pscmd := []string{"ps", "-C", "qemu-kvm", "-o", "pid", "--noheader"}
-+				pscmd := []string{"ps", "-C", emulator, "-o", "pid", "--noheader"}
- 				_, err = exec.ExecuteCommandOnPod(
- 					virtClient, readyPod, "compute", pscmd)
--				// do not check for kvm-pit thread if qemu-kvm is not in use
-+				// do not check for kvm-pit thread if qemu is not in use
+-				pidCmd := []string{"pidof", "qemu-kvm"}
++				pidCmd := []string{"pidof", emulator}
+ 				qemuPid, err := exec.ExecuteCommandOnPod(virtClient, readyPod, "compute", pidCmd)
+ 				// do not check for kvm-pit thread if qemu is not in use
  				if err != nil {
- 					return
- 				}
--				kvmpitmask, err := tests.GetKvmPitMask(readyPod, node)
-+				kvmpitmask, err := tests.GetKvmPitMask(readyPod, emulator, node)
+@@ -2649,7 +2653,7 @@ var _ = Describe("[sig-compute]Configurations", decorators.SigCompute, func() {
+ 				kvmpitmask, err := tests.GetKvmPitMask(strings.TrimSpace(qemuPid), node)
  				Expect(err).ToNot(HaveOccurred())
  
 -				vcpuzeromask, err := tests.GetVcpuMask(readyPod, "0")
@@ -395,5 +374,5 @@ index cfdd1afe1..a574a911d 100644
  
  				Expect(kvmpitmask).To(Equal(vcpuzeromask))
 -- 
-2.41.0
+2.42.0
 

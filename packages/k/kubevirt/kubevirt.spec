@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -29,20 +29,8 @@ Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 Patch1:         0001-Fix-qemu-system-lookup.patch
-Patch2:         0002-ksm-Access-sysfs-from-the-host-filesystem.patch
 Patch3:         0003-Virtiofs-Remove-duplicated-functional-tests.patch
-Patch4:         0004-tests-leave-some-space-for-metadata-on-the-backend-P.patch
 Patch5:         0005-Support-multiple-watchdogs-in-the-domain-schema.patch
-Patch6:         0006-isolation-close-file-when-exits.patch
-Patch7:         0007-Fix-volume-detach-on-hotplug-attachment-pod-delete.patch
-Patch8:         0008-fix-ticker-leak.patch
-Patch9:         0009-tests-Run-helper-pod-as-qemu-107-user.patch
-Patch10:        0010-Fix-PR-leftover-mount-and-perms.patch
-Patch11:        0011-Fix-Aggregated-Discovery.patch
-Patch12:        0012-Wait-for-new-hotplug-attachment-pod-to-be-ready.patch
-Patch13:        0013-Adapt-e2e-tests-to-CDI-1.57.0.patch
-Patch14:        0014-Export-create-populator-compatible-datavolumes-from-.patch
-Patch15:        0015-tests-Delete-VMI-prior-to-NFS-server-pod.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

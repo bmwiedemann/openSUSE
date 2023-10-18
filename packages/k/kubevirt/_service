@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">kubevirt</param>
-    <param name="revision">v1.0.0</param>
+    <param name="revision">v1.0.1</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/kubevirt/kubevirt</param>
@@ -9,10 +9,10 @@
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="download_files" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
+  <service name="download_files" mode="manual"/>
 </services>

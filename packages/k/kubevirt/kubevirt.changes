@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 18 07:41:49 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.0.1
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.0.1
+- Drop upstreamed patches
+  0002-ksm-Access-sysfs-from-the-host-filesystem.patch
+  0004-tests-leave-some-space-for-metadata-on-the-backend-P.patch
+  0006-isolation-close-file-when-exits.patch
+  0007-Fix-volume-detach-on-hotplug-attachment-pod-delete.patch
+  0008-fix-ticker-leak.patch
+  0009-tests-Run-helper-pod-as-qemu-107-user.patch
+  0010-Fix-PR-leftover-mount-and-perms.patch
+  0011-Fix-Aggregated-Discovery.patch
+  0012-Wait-for-new-hotplug-attachment-pod-to-be-ready.patch
+  0013-Adapt-e2e-tests-to-CDI-1.57.0.patch
+  0014-Export-create-populator-compatible-datavolumes-from-.patch
+  0015-tests-Delete-VMI-prior-to-NFS-server-pod.patch
+
+-------------------------------------------------------------------
 Mon Sep 18 12:32:00 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Enable the build for ALP and remove no longer supported SLE versions
