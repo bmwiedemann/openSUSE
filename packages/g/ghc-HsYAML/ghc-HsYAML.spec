@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1.2
+Version:        0.2.1.3
 Release:        0
 Summary:        Pure Haskell YAML 1.2 processor
 License:        GPL-2.0-or-later
