@@ -251,4 +251,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>version update</comment>
     <requestid>1098946</requestid>
   </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>e229f37c073a2009c6f0123b824cbf03</srcmd5>
+    <version>0.14.4</version>
+    <time>1697657136</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1118382</requestid>
+  </revision>
 </revisionlist>
