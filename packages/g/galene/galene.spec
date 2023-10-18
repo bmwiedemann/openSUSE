@@ -43,6 +43,7 @@ BuildRequires:  systemd-rpm-macros
 Requires:       fdupes
 Requires:       filesystem
 Requires(pre):  %fillup_prereq
+Requires(pre):  /usr/sbin/groupadd
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
