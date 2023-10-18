@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 18 06:14:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git9:
+  * Override subvol= with the new snapshot if necessary
+
+-------------------------------------------------------------------
 Thu Oct 12 09:35:57 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.2+git8:
