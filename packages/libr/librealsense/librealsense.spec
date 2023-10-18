@@ -19,7 +19,7 @@
 %define libver %(echo %version|sed 's@^\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1_\\2@')
 
 Name:           librealsense
-Version:        2.54.1
+Version:        2.54.2
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
