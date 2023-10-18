@@ -19,7 +19,7 @@
 %global pkg_name text-ansi
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.3.0
+Version:        0.3.0.1
 Release:        0
 Summary:        Text styling for ANSI terminals
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ ExcludeArch:    %{ix86}
 
 %description
 Text styling for ANSI terminals using SGR codes, as defined by the
-<https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-048.pdf
+<https://www.ecma-international.org/publications-and-standards/standards/ecma-48
 ECMA-48> standard.
 
 Supports foreground/background color, bold/faint intensity, italic,

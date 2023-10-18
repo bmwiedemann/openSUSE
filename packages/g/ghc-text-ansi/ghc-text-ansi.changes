@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 12 16:00:38 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update text-ansi to version 0.3.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/text-ansi-0.3.0.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Oct 11 01:14:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update text-ansi to version 0.3.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Sep 24 15:55:44 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update text-ansi to version 0.3.0.
