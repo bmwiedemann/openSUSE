@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 14 09:07:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update safe-exceptions to version 0.1.7.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jun 26 17:37:36 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update safe-exceptions to version 0.1.7.4.
