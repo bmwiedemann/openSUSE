@@ -18,7 +18,7 @@
 
 %define raft_sover 3
 Name:           raft
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
