@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 12 07:06:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.14.2.
+  # 0.4.14.2
+
+  * [#171](https://github.com/stevenfontanella/microlens/pull/171) Support bytestring 0.12
+
+  # 0.4.14.1
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+
+-------------------------------------------------------------------
+Wed Oct 11 19:28:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.14.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:31 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

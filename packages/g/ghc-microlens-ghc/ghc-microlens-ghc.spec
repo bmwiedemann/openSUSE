@@ -19,7 +19,7 @@
 %global pkg_name microlens-ghc
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.4.14.1
+Version:        0.4.14.2
 Release:        0
 Summary:        Microlens + array, bytestring, containers, transformers
 License:        BSD-3-Clause
@@ -57,8 +57,8 @@ exact version of microlens-ghc without specifying the version of microlens you
 need.
 
 This package is a part of the <http://hackage.haskell.org/package/microlens
-microlens> family; see the readme <https://github.com/monadfix/microlens#readme
-on Github>.
+microlens> family; see the readme
+<https://github.com/stevenfontanella/microlens#readme on Github>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
