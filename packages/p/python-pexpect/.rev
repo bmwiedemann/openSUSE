@@ -380,4 +380,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1105210</requestid>
   </revision>
+  <revision rev="45" vrev="14">
+    <srcmd5>3944b66012903e58e2fba5473ea17a88</srcmd5>
+    <version>4.8.0</version>
+    <time>1697657109</time>
+    <user>anag+factory</user>
+    <comment>- add 742.patch, gh#pexpect/pexpect#742 This makes it compatible with
+  python3.12 gh#pexpect/pexpect#736#issuecomment-1427273882
+</comment>
+    <requestid>1118223</requestid>
+  </revision>
 </revisionlist>

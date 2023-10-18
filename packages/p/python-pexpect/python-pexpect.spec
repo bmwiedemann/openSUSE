@@ -32,6 +32,8 @@ Patch3:         fix-fail-no-alias.patch
 # Python 3.12 tests
 Patch4:         https://github.com/pexpect/pexpect/commit/dae602d37493bae239e0e8db5b3dabafebfd59db.patch
 Patch5:         https://github.com/pexpect/pexpect/commit/31fab7b0edbe9b3401507b5dfa4db6aaf3fabca5.patch
+# PATCH-FIX-UPSTREAM 742.patch gh#pexpect/pexpect#742
+Patch6:         742.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 17 08:08:38 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- add 742.patch, gh#pexpect/pexpect#742 This makes it compatible with
+  python3.12 gh#pexpect/pexpect#736#issuecomment-1427273882
+
+-------------------------------------------------------------------
 Tue Aug 15 08:29:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 31fab7b0edbe9b3401507b5dfa4db6aaf3fabca5.patch
