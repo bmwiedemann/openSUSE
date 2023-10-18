@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 17 14:29:50 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 2.18.1:
+  * chore(deps): update all dependencies
+  * Update gosec to version 2.18.1 in the action
+  * Update cosign version to v2.2.0
+  * Refactor how ignored issues are tracked
+  * Restrict the maximum depth when tracking the slice bounds
+  * Handle empty ssa results
+  * Handle gracefully any panic that occurs when building the SSA representation of a package
+  * Fix typo
+  * Handle new function when getting the call info in case is overriden
+  * Bump golang.org/x/net from 0.16.0 to 0.17.0 (#1037)
+  * Update to Go 1.21.3 and 1.20.10 (#1035)
+  * Update the list of unsafe functions detected by the unsafe rule (#1033)
+
+-------------------------------------------------------------------
 Mon Oct  9 13:23:33 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

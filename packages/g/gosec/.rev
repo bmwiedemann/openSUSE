@@ -232,4 +232,24 @@
   * Remove %%{go_nostrip} macro which is no longer recommended (forwarded request 1116472 from jfkw)</comment>
     <requestid>1116475</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e450b55eb7abcd5afe8f825dcd7453c3</srcmd5>
+    <version>2.18.1</version>
+    <time>1697657130</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.18.1:
+  * chore(deps): update all dependencies
+  * Update gosec to version 2.18.1 in the action
+  * Update cosign version to v2.2.0
+  * Refactor how ignored issues are tracked
+  * Restrict the maximum depth when tracking the slice bounds
+  * Handle empty ssa results
+  * Handle gracefully any panic that occurs when building the SSA representation of a package
+  * Fix typo
+  * Handle new function when getting the call info in case is overriden
+  * Bump golang.org/x/net from 0.16.0 to 0.17.0 (#1037)
+  * Update to Go 1.21.3 and 1.20.10 (#1035)
+  * Update the list of unsafe functions detected by the unsafe rule (#1033) (forwarded request 1118368 from jfkw)</comment>
+    <requestid>1118372</requestid>
+  </revision>
 </revisionlist>
