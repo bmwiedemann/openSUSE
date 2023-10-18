@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Tue Oct 10 14:32:06 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.29~git20231010:
+  * macOS CI: force install Python 3.11
+  * Qt: Remember last game window position and visibility
+  * CMake: fix curl build
+  * Update Docker to 6.5.3
+  * GL: check QOpenGlContext::create result
+  * Qt 6.5.3
+  * Input: Fix "," key in keyboard pad handler
+  * CMAKE: try to fix curl
+  * IdManager.h: Savestate fix part 2
+  * Savestates: Fix rsxaudio
+  * Improve savestate version mismatch message
+  * sys_fs: Savestate fixup
+  * macOS CI: set build timeout to 180 minutes
+  * Improve vfs::host::rename
+  * VFS: Fix recursive locking
+  * sys_fs: Optimize concurrent file reads
+  * sceNp: Cut inactive time of DrmIsAvailable in half
+  * Improve lv2_file::file_view::read
+  * Savestates/sys_fs: Fix file saving
+  * Savestates: add sys_rsxaudio
+  * IdManager.h: Savestate fix
+  * cmake: fix libcurl compilation
+  * SPU LLVM: Optimize GB/GBH/GBB with a GFNI path - Abuses GFNI to extract bits from bytes, from 5->2 instructions in most cases
+  * Update curl to 8.3.0
+  * Add Savestate-Compatible mode
+  * SPU LLVM: Fix savestates
+  * Savestates: Optimize SPU pausing
+  * Add config to the UI
+  * Add the tiling toggle to core
+  * vk: Fix memory initialization order in RCB/RDB path
+  * rsx: Fix bpp when working with DMA-only (null) memory sections
+  * rsx: Skip CPU optimization if writing to tiled region
+  * msvc: Tabs to spaces
+  * rsx::io_buffer cleanup
+  * vk: Revert more debugging code
+  * vk: Remove debug visualization code
+  * vk: Restore CPU fallback on the upload path
+  * Fix msvc filters
+  * Fix linux build
+  * vk: Load DMA before decode operation
+  * rsx/vk: Support ingesting pre-processed GPU data as texture input
+  * rsx: Make the texture source an io-buffer
+  * rsx/vk: Support mismatched pitch (padded) and fix the overscan problem
+  * rsx/vk: Initial hw-accelerated tile decoder
+  * rsx: Refactor out more junk from rsx::thread
+  * rsx: Import, rebase and clean up the old detiling patches from 2021
+  * macOS CI: reinstall jpeg-xl and other dependencies from source (#14673)
+  * Debugger/PPU: Add Go-To from function pointer
+  * Debugger/Logs: Allow to display thread from thread ID on log
+  * Patches: Add savable breakpoints patch type
+  * Add restart option to home menu
+  * SPU LLVM: Optimize remaining rotate instructions which take a twos compliment value as input ROTQMBYBI looks for -7 for it's twos compliment construction
+  * Add Azure Build Status back to Readme.md
+  * Remove unused variable
+  * Avoid log spam of CPU usage when Emu is paused
+  * GUI: Add Patreon Link Button
+  * Welcome Dialog: Add ability to set Dark Theme
+  * PPU Analyzer: Fixup
+  * gitignore: Add sublime projects
+  * vk: Fix section merge calculations when using a temp resource
+  * Mac build on Azure
+  * cellMic: Improve cellMicGetDeviceAttr
+
+-------------------------------------------------------------------
+Wed Sep 13 13:50:40 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.29~git20230912:
+  * Microphone enumeration: warn user if ALC_ENUMERATION_EXT is missing.
+  * Update OpenAl from 1.20.1 to 1.23.1
+  * FFmpeg: rebase to improve artifact creation
+  * PPU: Limit concurrent OVL files processing to 2
+  * Rewrite Utilitis/sema.cpp
+  * PPU LLVM: Fixup pdone count
+  * Fix OVL file preview loading
+  * SPU LLVM: Avoid excess cache threads
+  * PPU: Try to reduce wait for other threads
+  * PPU LLVM: Re-add multi-threaded overlay module compilation
+  * PPU Analyzer: Another fixup
+  * vm_ptr.h: Fix warning
+  * USIO: Support up to 4 players for Tekken Tag Tournament 2 Pair Play mode
+  * PPU Analyzer: Fixup
+  * Update FAudio to 23.09
+  * Update SDL to 2.28.3
+  * macOS CI: build jpeg-xl from source
+  * progress dialog: Fix remaining time
+  * asm.hpp: Compilation fixup
+  * PPU/Progress Dialog: Improve remaining time approximation
+  * PPU/Progress Dialog: Improve remaining time calculation
+  * input: try to add tony hawk RIDE Skateboard
+  * Add approximation to remaining compilation time
+  * PPU LLVM: Patch unregistered BLRs
+  * SPU/DisAsm: Fix constant propagation with non-GPR-writing instructions
+  * PPU LLVM: Optimize branch list
+  * SPU LLVM: Improve space-filling for function discovery
+  * PPU LLVM: Optimize traps a bit
+  * PPU Analyzer: Fixup greedy instruction search
+  * Thread.cpp: Flush log and make thread context dump on exception
+  * fs::utime: fallback to 01/01/1980 00:00:00 if the date is too low
+  * Update build-mac.sh
+  * Progress dialog: show analysing... while no files or modules are known yet.
+  * SPU LLVM: Sad workaround for precompilation
+  * PPU Precompilation: Fixup file counter
+  * PPU: Precompile only encrypted executeables
+  * Progress Dialog: Force-update counter when complete
+  * Fixup spu_thread::discover_functions
+  * SPU LLVM: Fill space between functions using targets (Precompilation)
+  * sys_rsx: Fix local memory size reported in driver info
+  * SPU LLVM: Add CRC check for cache
+  * Win32/File.cpp: Avoid potential race in concurrent writes
+  * SPU LLVM: Fix crashes on corrupted cache file
+  * PPU Analyzer: Revert TRAP detection change
+  * SPU LLVM: Try to precompile filler-sapce between functions
+  * Improve spu_thread::is_exec_code
+  * SPU LLVM: Initial precompilation of tail-calls
+  * SPU LLVM: Another fix for Game Collection's precompilation
+  * debugger_list: Fix key up/down direction
+  * Debugger: Fix GOTO and intruction stepping
+  * SPU: Function discovery fix
+  * SPU: fix some wierd typos (may be wrong, no idea)
+  * Windows: update some comments and echos in git-version-gen.cmd
+  * VS: Add scripts to filters
+  * Actually fix build id issue
+
+-------------------------------------------------------------------
 Sat Sep 02 03:36:40 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.29~git20230902:
