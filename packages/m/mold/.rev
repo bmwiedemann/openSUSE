@@ -564,4 +564,41 @@
 - Remove openssl dependency.</comment>
     <requestid>1113750</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f79970109855bc087f5b2fdc460a71a6</srcmd5>
+    <version>2.3.0</version>
+    <time>1697657184</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3.0
+  * [x86-64] mold 2.3.0 has introduced an experimental flag, -z rewrite-endbr, which
+    rewrites superfluous endbr64 instructions as nop.
+  * endbr64 is a relatively recent x86 instruction used to mark locations where an
+    indirect jump instruction can transfer control. With control-flow integrity
+    enabled (meaning endbr64 is effective), an indirect jump can only target an
+    endbr64 or it will trigger a runtime exception. This mechanism significantly
+    hinders certain control hijacking attacks, such as ROP or JOP, since attackers
+    cannot jump to just any location.
+  * When given the -fcf-protection flag, GCC conservatively places an endbr64 at the
+    beginning of every global function. This is because the function's address might
+    be taken as a pointer by other translation units. However, in most cases,
+    function addresses are not actually taken. This conservative approach results in
+    an overabundance of unnecessary endbr64 instructions, leading to not only code
+    bloating but also a potential decrease in security as there are more locations
+    for an attacker to exploit.
+  * The new linker option, -z rewrite-endbr, aims to alleviate this issue. The
+    linker can carry out a whole-program analysis on the input files to identify
+    functions whose addresses are never taken. If -z rewrite-endbr is specified,
+    mold will conduct this analysis and replace the initial endbr64 with a nop for
+    functions whose addresses aren't taken. (17f0d85)
+  * mold now produces a more compact .gdb_index section when using the --gdb-index
+    flag. Additionally, mold now generates a correct .gdb_index section for object
+    files created by Clang. (a396fa4)
+  * mold is now capable of handling input sections larger than 4 GiB. (0ce32d3)
+  * [PPC] mold can now generate executables for POWER10 processors. Previously,
+    executables produced by mold would crash immediately on startup on POWER10.
+    (0f71471)
+  * [ARM64] When a function with a non-standard calling convention is exported, it's
+    mandatory for the linker to turn on the STO_AARCH64_VARIANT_PCS flag to notify</comment>
+    <requestid>1118582</requestid>
+  </revision>
 </revisionlist>
