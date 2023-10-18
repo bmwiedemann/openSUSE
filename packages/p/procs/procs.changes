@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 18 13:08:30 UTC 2023 - Michael Vetter <jubalh@iodoru.org>
+
+- Update to 0.14.2:
+  * [Added] BSD support #313
+  * [Fixed] wrong time handling on Windows
+  * [Added] User/group cache support
+  * [Added] Cgroup/Ccgroup column #529
+
+-------------------------------------------------------------------
 Fri Oct  6 11:06:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.1:

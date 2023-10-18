@@ -53,4 +53,16 @@
   * [Fixed] procs -i Pid displays Parent PID, not PID, sometimes #457</comment>
     <requestid>1116024</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5fc5f27462a4fde74c843704b8adeb9</srcmd5>
+    <version>0.14.2</version>
+    <time>1697657187</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.2:
+  * [Added] BSD support #313
+  * [Fixed] wrong time handling on Windows
+  * [Added] User/group cache support
+  * [Added] Cgroup/Ccgroup column #529</comment>
+    <requestid>1118591</requestid>
+  </revision>
 </revisionlist>
