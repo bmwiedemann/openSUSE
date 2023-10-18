@@ -18,18 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Faker
-Version:        18.11.1
+Version:        19.10.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
 URL:            https://github.com/joke2k/faker
 Source:         https://files.pythonhosted.org/packages/source/F/Faker/Faker-%{version}.tar.gz
-BuildRequires:  %{python_module UkPostcodeParser >= 1.1.1}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0.1}
 BuildRequires:  %{python_module python-dateutil >= 2.4}
-BuildRequires:  %{python_module random2}
 BuildRequires:  %{python_module text-unidecode >= 1.3}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Oct 17 15:45:31 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 19.10.0:
+  - Update names and phone numbers for cs_CZ. Thanks @george0st.
+  - Revert "fix type error in pyfloat when max_value is None"
+    from v19.6.2.
+  - Use DE base for de_CH AddressProvider. Thanks @nchiapol.
+  - Fix person Latvian provider.
+  - Add Gender support for Latvian (lv_LV) names. Thanks
+    @OskarsPakers.
+  - Add MAC Address Multicast. Thanks @d3vyce.
+  - fix type error in pyfloat when max_value is None. Thanks
+    @HugoJP1.
+  - Bump actions/checkout from 3 to 4 (#1909). Thanks
+    @dependabot[bot].
+  - Add addresses for en_BD. Thanks @aamibhoot.
+  - Add color_rgb, color_rgb_float, color_hsv and
+    color_hsl. Thanks @fdemmer.
+  - Add schemes and deep argument to uri method.
+  - Remove spurious space in uk_UA first_name. Thanks @Romissevd.
+  - Add weighting to dynamic providers. Thanks @pauldechorgnat.
+  - Add support for South African Zulu (zu_ZA) names and last
+    names. Thanks @iamkhaya.
+  - Add ja_JP locale for datetime. Thanks @cyanghsieh.
+  - Drop support for Python 3.7
+  - Drop support for 32 bit systems.
+  - Add elector_code for es_MX SSN provider. Thanks
+    @edgarrmondragon.
+  - Add .optional proxy that may or may not return a fake
+    value. Thanks @ligne.
+  - Add fake automotive vin number function. Thanks @cyanghsieh.
+  - Fix area codes for fr_FR mobile phone numbers. Thanks
+    @QuentinFchx.
+- Remove unnecessary dependence on random2, ukpostcodeparser.
+
+-------------------------------------------------------------------
 Sun Jun 25 18:47:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.11.1:
