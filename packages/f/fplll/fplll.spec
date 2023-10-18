@@ -18,7 +18,7 @@
 
 Name:           fplll
 %define lname   libfplll8
-Version:        5.4.4
+Version:        5.4.5
 Release:        0
 Summary:        Lenstra-Lovász Lattice Basis Reduction Algorithm Library
 License:        LGPL-2.1-or-later

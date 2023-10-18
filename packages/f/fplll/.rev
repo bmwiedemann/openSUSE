@@ -104,4 +104,12 @@
     <comment>- Update to release 5.4.4</comment>
     <requestid>1056249</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ed89ebd7f096e7869f44001ebe805dd8</srcmd5>
+    <version>5.4.5</version>
+    <time>1697657144</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 5.4.5</comment>
+    <requestid>1118394</requestid>
+  </revision>
 </revisionlist>

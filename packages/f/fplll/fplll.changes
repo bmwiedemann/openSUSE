@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 18 00:26:49 UTC 2023 - Ich <jengelh@inai.de>
+
+- Update to release 5.4.5
+  * Replace deprecated std::result_of by std::invoke_result
+
+-------------------------------------------------------------------
 Thu Jan  5 17:40:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.4.4
