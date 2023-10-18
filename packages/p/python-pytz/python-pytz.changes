@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 17 11:19:21 UTC 2023 - Markéta Calábková <meggy.calabkova@gmail.com>
+
+- Update to 2023.3.post1
+  * Replace deprecated datetime.utcfromtimestamp()
+  * Resurrect Python 2.7 tests
+  * Add support for Python 3.12
+- Drop pytz-%{version}.tar.gz.asc and python-pytz.keyring
+  * PyPI hides the .asc files and wants to drop the support
+  * related: https://github.com/certbot/certbot/issues/9707
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

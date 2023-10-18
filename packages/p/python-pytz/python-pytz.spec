@@ -30,15 +30,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytz
-Version:        2023.3
+Version:        2023.3.post1
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pythonhosted.org/pytz/
 Source:         https://files.pythonhosted.org/packages/source/p/pytz/pytz-%{version}.tar.gz
-Source2:        https://files.pythonhosted.org/packages/source/p/pytz/pytz-%{version}.tar.gz.asc
-Source90:       %{name}.keyring
 # PATCH-FIX-UPSTREAM fix-tests.patch -- Remote tests which are known to be broken
 Patch0:         fix-tests.patch
 # PATCH-FIX-UPSTREAM 0001-Fix-tests-for-older-timezone-versions.patch -- https://code.launchpad.net/~toabctl/pytz/+git/pytz/+merge/326419
