@@ -19,7 +19,7 @@
 %global pkg_name microlens-platform
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.4.3.3
+Version:        0.4.3.4
 Release:        0
 Summary:        Microlens + all batteries included (best for apps)
 License:        BSD-3-Clause
@@ -63,8 +63,8 @@ can depend on the exact version of microlens-platform without specifying the
 version of microlens (microlens-mtl, etc) you need.
 
 This package is a part of the <http://hackage.haskell.org/package/microlens
-microlens> family; see the readme <https://github.com/monadfix/microlens#readme
-on Github>.
+microlens> family; see the readme
+<https://github.com/stevenfontanella/microlens#readme on Github>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

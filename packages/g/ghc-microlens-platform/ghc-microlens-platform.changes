@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 12 07:06:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.3.4.
+  # 0.4.3.4
+
+  * [#171](https://github.com/stevenfontanella/microlens/pull/171) Support text 2.1
+
+  # 0.4.3.3
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+
+  # 0.4.3.2
+
+  * [#156](https://github.com/stevenfontanella/microlens/pull/156) Add a missing upper bound for text dependency
+
+-------------------------------------------------------------------
+Wed Oct 11 19:28:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.3.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
