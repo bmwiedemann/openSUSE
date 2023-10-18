@@ -1,0 +1,13 @@
+<package name="qt6-graphs" project="openSUSE:Factory">
+  <title>3D visualization module</title>
+  <description>The Qt Graphs module enables you to visualize data in 3D as bar, scatter, and
+surface graphs.
+It's especially useful for visualizing depth maps and large quantities of
+rapidly changing data, such as data received from multiple sensors.
+The look and feel of graphs can be customized by using themes or by adding
+custom items and labels
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-graphs"/>
+  <url>https://www.qt.io</url>
+</package>
