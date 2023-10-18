@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 14 10:29:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * New lnk module (#1732).
+  * Unreferenced strings are allowed if their identifier start
+    with _ (#1941)
+  * New command-line option --disable-console-logs for disabling
+    the output of the console module (#1915)
+  * New command-line option --strict-escape that raises warnings
+    on unknown escape sequences (#1880).
+  * Improve performance by avoiding the execution of rule
+    conditions that can't match (#1927)
+  * Add callback message CALLBACK_MSG_TOO_SLOW_SCANNING for
+    notifying about slow rules (#1921).
+  * Expose function RVA in pe.export_details(#1882).
+  * BUGFIX: Fix issues in the computation of imphash in pe module
+  * BUGFIX: Fix multiple out-of-bound memory reads in dex module
+  * BUGFIX: Fix memory alignment issues (#1930).
+  * BUGFIX: Some strings with the wide and ascii modifiers not
+    matching as they should (#1933).
+  * BUGFIX: Some rules not matching when --fast-scan is used
+
+-------------------------------------------------------------------
 Sun Jul 16 13:28:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.2:
@@ -49,11 +72,11 @@ Mon Feb  6 18:32:53 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 -------------------------------------------------------------------
 Tue Aug  9 20:24:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 4.2.3: 
-  * BUGFIX: Fix security issue that can lead to arbitrary code execution 
+- update to 4.2.3:
+  * BUGFIX: Fix security issue that can lead to arbitrary code execution
   (b77e4f4, b77e4f4). Thanks to ANSSI - CERT-FR for the report.
   * BUGFIX: Fix incorrect logic in expressions like <quantifier> of
-    <string_set> in (start..end (#1757). 
+    <string_set> in (start..end (#1757).
 
 -------------------------------------------------------------------
 Mon Jul 11 19:36:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -108,7 +131,7 @@ Sat Oct 16 12:18:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 4.1.2:
   * BUGFIX: TOO_MANY_MATCHES warning was causing strings to be globally disabled
   * BUGFIX: fullworld modifier not working as expected in Mac OS due to locale issue
-  * BUGFIX: Default value for pe.number_of_imported_function not set to 0 
+  * BUGFIX: Default value for pe.number_of_imported_function not set to 0
 
 -------------------------------------------------------------------
 Sat May 29 11:29:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -141,7 +164,7 @@ Thu May  6 12:30:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 Mon Feb  8 22:17:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.5:
-  * Fix bug in "macho" module introduced in v4.0.4. 
+  * Fix bug in "macho" module introduced in v4.0.4.
 
 -------------------------------------------------------------------
 Fri Jan 29 22:36:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -307,7 +330,7 @@ Tue Jun  6 10:15:25 UTC 2017 - Greg.Freemyer@gmail.com
   * MAX_THREADS limit can be arbitrarily increased (Emerson R. Wiley)
   * Added --fail-on-warnings command-line option
   * Multiple bug fixes:
-	CVE-2016-10210, CVE-2016-10211, CVE-2017-5923, CVE-2017-5924, 
+	CVE-2016-10210, CVE-2016-10211, CVE-2017-5923, CVE-2017-5924,
 	CVE-2017-8294, CVE-2017-8929, CVE-2017-9438
 
 -------------------------------------------------------------------
@@ -395,7 +418,7 @@ Wed Sep 24 17:21:31 UTC 2014 - Greg.Freemyer@gmail.com
   * add +%{_includedir}/yara to -devel since it is full of yara related header files
   * use default naming for devel sub-project
   * remove *.a and *.la files from the devel sub-project
-  * incorporate python-yara as a sub-project 
+  * incorporate python-yara as a sub-project
 
 -------------------------------------------------------------------
 Wed Feb 15 23:26:11 UTC 2012 - Greg.Freemyer@gmail.com
