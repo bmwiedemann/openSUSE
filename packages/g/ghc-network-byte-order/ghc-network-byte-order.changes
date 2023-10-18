@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 12 01:29:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update network-byte-order to version 0.1.7.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:41 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
