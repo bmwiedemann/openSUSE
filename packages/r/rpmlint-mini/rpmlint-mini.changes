@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 13 12:02:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Bump to python311
+- Clarify script interpreter line
+- update rpmlintrc
+- Don't install buildtime requirement mesonbuild into the custom
+  runtime environment
+
+-------------------------------------------------------------------
 Wed Oct 11 09:22:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make rpmlint shebang replacement independent on the shebang in the

@@ -17,8 +17,8 @@
 
 
 # This works regardless of the primary python3 flavor. The stdlib.txt and
-# install section depend on the python 3.10 layout.
-%define python_flavor python310
+# install section depend on the python 3.11 layout.
+%define python_flavor python311
 %define my_python %{expand:%{__%{python_flavor}}}
 
 Name:           rpmlint-mini
@@ -71,7 +71,6 @@ source packages can be checked.
 
 %prep
 %autosetup -p1 -n desktop-file-utils-0.26
-<COPYING
 
 %build
 %meson
@@ -123,13 +122,14 @@ cp -a %{_libdir}/libpython%{python_version}*.so.* %{buildroot}/opt/testing/lib
 cp -a %{_libdir}/libexpat*.so.* %{buildroot}/opt/testing/lib
 cp -a %{_libdir}/libmpdec*.so.* %{buildroot}/opt/testing/lib || echo "Skipping libmpdec.so"
 pushd %{buildroot}/opt/testing/lib/python%{python_version}/
+rm -r site-packages/meson*
 for f in $(find -name \*.py | sort) ; do
   PYTHONOPTIMIZE=1 %{my_python} -O -m compileall -b $f
   rm $f
 done
 popd
 find %{buildroot}/opt/testing/ -name __pycache__  -exec rm -rf {} +
-# We need to force the shebang to be under /opt/testing
+# Change the script-interpreter line to use our custom python venv in /opt/testing
 sed -e '1s,#!.*python.*,#!/opt/testing/bin/python3,' %{_bindir}/rpmlint > %{buildroot}/opt/testing/bin/rpmlint.real
 
 chmod a+x %{buildroot}/opt/testing/bin/rpmlint.real
