@@ -1,8 +1,8 @@
 Index: m4/netsnmp.m4
 ===================================================================
---- m4/netsnmp.m4.orig	2022-12-01 08:47:13.072351692 +0100
-+++ m4/netsnmp.m4	2023-01-20 20:29:15.268271638 +0100
-@@ -170,7 +170,22 @@ session.securityAuthProto = usmHMAC384SH
+--- m4/netsnmp.m4.orig	2023-09-25 12:26:59.951273749 +0200
++++ m4/netsnmp.m4	2023-10-17 22:18:29.154010921 +0200
+@@ -169,7 +169,22 @@ session.securityAuthProto = usmHMAC384SH
  		],[
  		AC_MSG_RESULT(no)
  		])
@@ -25,11 +25,11 @@ Index: m4/netsnmp.m4
 +################## end monkey patching....
  		dnl Check for AES192/256 protocol support for privacy
  		AC_MSG_CHECKING(for strong AES privacy protocol support)
- 		AC_TRY_LINK([
+ 		AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 Index: src/zabbix_server/poller/checks_snmp.c
 ===================================================================
---- src/zabbix_server/poller/checks_snmp.c.orig	2022-12-05 09:13:13.223215969 +0100
-+++ src/zabbix_server/poller/checks_snmp.c	2023-01-20 20:27:57.339847563 +0100
+--- src/zabbix_server/poller/checks_snmp.c.orig	2023-09-25 12:27:00.031274243 +0200
++++ src/zabbix_server/poller/checks_snmp.c	2023-10-17 22:18:29.154010921 +0200
 @@ -356,10 +356,12 @@ static int	zbx_snmpv3_set_auth_protocol(
  
  	switch (item->snmpv3_authprotocol)

@@ -23,7 +23,7 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        6.0.19
+Version:        6.0.22
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
@@ -45,10 +45,6 @@ Source12:       zabbix-agentd.service
 Source13:       zabbix-server.service
 Source14:       zabbix-java-gateway.service
 Source15:       README-SSL.SUSE
-# PATCH-FIX-UPSTREAM zabbix-6.0.12-new-m4-pgsql.patch fix for opensuse issue caused/solved by bnc#1120035
-Patch0:         zabbix-6.0.12-new-m4-pgsql.patch
-# PATCH-FIX-UPSTREAN  zabbix-6.0.12-curl-fixes.patch fix for curl specific issue https://git.zabbix.com/projects/ZBX/repos/zabbix/pull-requests/4946/commits/f462538f52a1fba52fdd4010e40fe7281044f6b1?since=52c6b9703eacf3252ec66117a8cff094624b9217#include/common/zbxsysinc.h
-Patch2:         zabbix-6.0.12-curl-fixes.patch
 # PATCH-FIX-OPENSUSE  zabbix-6.0.12-netsnmp-fixes.patch fix for removed md5 auth protocol
 Patch3:         zabbix-6.0.12-netsnmp-fixes.patch
 BuildRequires:  apache-rpm-macros
@@ -64,6 +60,9 @@ BuildRequires:  logrotate
 BuildRequires:  net-snmp-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} > 150100
+BuildRequires:  postgresql-server-devel
+%endif
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unixODBC-devel
 BuildRequires:  update-alternatives
@@ -246,9 +245,6 @@ remotely.
 
 %prep
 %setup -q -n zabbix-%{version}
-%patch0
-#%%patch1
-%patch2
 %patch3
 
 cp %{SOURCE6} .
