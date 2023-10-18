@@ -22,7 +22,7 @@
 
 %define sover 0
 Name:           libXISF
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        Library to read/write PixInsight XISF files
 License:        GPL-3.0-or-later

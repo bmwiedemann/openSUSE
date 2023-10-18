@@ -85,4 +85,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117493</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>16781f6ef47f79597eb3cf15f974248e</srcmd5>
+    <version>0.2.10</version>
+    <time>1697657186</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.10:
+  * Fix incorrect header size.
+</comment>
+    <requestid>1118598</requestid>
+  </revision>
 </revisionlist>
