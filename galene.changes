@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 13 22:48:49 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Require /usr/sbin/groupadd explicitly
+
+-------------------------------------------------------------------
 Thu Jun 15 13:15:54 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.7.1:

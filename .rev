@@ -211,4 +211,12 @@
     Galene behind a reverse proxy. (forwarded request 1093432 from amanzini)</comment>
     <requestid>1093470</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>776f94647a4a60f7943c1b86af32011b</srcmd5>
+    <version>0.7.1</version>
+    <time>1697657143</time>
+    <user>anag+factory</user>
+    <comment>- Require /usr/sbin/groupadd explicitly</comment>
+    <requestid>1118393</requestid>
+  </revision>
 </revisionlist>
