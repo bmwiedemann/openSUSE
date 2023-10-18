@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Oct 17 20:03:22 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.64.1:
+  * Version v1.64.1
+  * mount: fix automount not detecting drive is ready
+  * serve sftp: return not supported error for not supported commands
+  * b2: fix chunked streaming uploads
+  * build: upgrade golang.org/x/net to v0.17.0 to fix HTTP/2 rapid reset
+  * b2: fix server side copies greater than 4GB
+  * cmd: Make --progress output logs in the same format as without
+  * operations: fix error message on delete to have file name - fixes #7355
+  * operations: fix OpenOptions ignored in copy if operation was a multiThreadCopy
+  * build: fix docker beta build running out of space
+  * oracleobjectstorage: fix OpenOptions being ignored in uploadMultipart with chunkWriter
+  * s3: fix OpenOptions being ignored in uploadMultipart with chunkWriter
+  * vfs: [bugfix] Update dir modification time
+  * operations: close file in TestUploadFile test so it can be deleted on Windows
+  * b2: reduce default --b2-upload-concurrency to 4 to reduce memory usage
+  * b2: fix locking window when getting mutipart upload URL
+  * pacer: fix b2 deadlock by defaulting max connections to unlimited
+  * s3: fix slice bounds out of range error when listing
+  * docs: fix backend doc generator to not output duplicate config names
+  * docs: fix typos found by codespell in docs and code comments
+  * onedrive: fix the configurator to allow /teams/ID in the config
+  * lsjson: make sure we set the global metadata flag too
+  * b2: fix multipart upload: corrupted on transfer: sizes differ XXX vs 0
+  * azureblob: fix "fatal error: concurrent map writes"
+  * build(deps): bump docker/setup-qemu-action from 2 to 3
+  * build(deps): bump docker/setup-buildx-action from 2 to 3
+  * storj: update storj.io/uplink to v1.12.0
+  * docs: add notes on how to update the website between releases
+  * docs: remove minio sponsor box for the moment
+  * docs: update Storj partner link
+  * docs: add MacPorts install info
+  * build(deps): bump docker/metadata-action from 4 to 5
+  * build(deps): bump docker/login-action from 2 to 3
+  * build(deps): bump docker/build-push-action from 4 to 5
+  * fix overview of oracle object storage as it supports multithreaded
+  * operations: ensure concurrency is no greater than the number of chunks - fixes #7299
+  * Start v1.64.1-DEV development
+
+-------------------------------------------------------------------
 Tue Oct 03 07:11:07 UTC 2023 - info@paolostivanin.com
 
 - Update to version 1.64.0:
