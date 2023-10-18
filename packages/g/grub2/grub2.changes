@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 16 08:05:03 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix detection of encrypted disk's uuid in powerpc to cope with logical disks
+  when signed image installation is specified (bsc#1216075) 
+  * 0003-grub-install-support-prep-environment-block.patch
+- grub2.spec: Add support to unlocking multiple encrypted disks in signed
+  grub.elf image for logical disks
+
+-------------------------------------------------------------------
 Fri Oct  6 05:06:59 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix CVE-2023-4692 (bsc#1215935)
@@ -90,7 +99,7 @@ Thu Aug  3 03:24:41 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Thu Jul 27 06:16:36 UTC 2023 - Michael Chang <mchang@suse.com>
 
-- Version bump to 2.12~rc1
+- Version bump to 2.12~rc1 (PED-5589)
   * Added:
     - grub-2.12~rc1.tar.xz
   * Removed:

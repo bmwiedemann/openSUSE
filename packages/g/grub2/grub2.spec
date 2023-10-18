@@ -827,6 +827,7 @@ fi
 echo "ENV_HINT=$ENV_HINT"
 echo "ENV_GRUB_DIR=$ENV_GRUB_DIR"
 echo "ENV_FS_UUID=$ENV_FS_UUID"
+echo "ENV_CRYPTO_UUID=$ENV_CRYPTO_UUID"
 
 if [ "$btrfs_relative_path" = xy ]; then
   btrfs_relative_path=1
@@ -861,9 +862,9 @@ set prefix=""
 set root=""
 set cfg="grub.cfg"
 
-if [ "$ENV_CRYPTO_UUID" ]; then
-  cryptomount -u "$ENV_CRYPTO_UUID"
-fi
+for uuid in $ENV_CRYPTO_UUID; do
+  cryptomount -u $uuid
+done
 
 if [ "$ENV_FS_UUID" ]; then
   echo "searching for $ENV_FS_UUID with $hints"
