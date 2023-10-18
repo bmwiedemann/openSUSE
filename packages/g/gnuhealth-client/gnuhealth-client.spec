@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -91,7 +91,7 @@ rm -rf */__pycache__
 %python3_build
 
 %install
-%python3_install --prefix=%{_prefix} --root=%{buildroot}
+%python3_install
 
 # menu-entry
 desktop-file-install --dir %{buildroot}%{_datadir}/applications %{name}.desktop
