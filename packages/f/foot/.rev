@@ -499,4 +499,14 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.16.0 for more details.</comment>
     <requestid>1117490</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>402c6eca2dd55c6ba56f239b18c66906</srcmd5>
+    <version>1.16.2</version>
+    <time>1697657125</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.16.2:
+  * Fixed bug in rendering some sixels with edges of the wrong color.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.16.2 for more details.</comment>
+    <requestid>1118347</requestid>
+  </revision>
 </revisionlist>

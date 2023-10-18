@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT

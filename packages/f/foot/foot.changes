@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
-Thu Oct 12 15:37:45 UTC 2023 - Arnav Singh <me@arnavion.dev>
+Tue Oct 17 15:42:16 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.16.2:
+  * Fixed bug in rendering some sixels with edges of the wrong color.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.16.2 for more details.
+
+-------------------------------------------------------------------
+Thu Oct 12 15:37:45 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.16.1:
   * Fixed rendering cells underneath erased sixels.
