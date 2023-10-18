@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.18.3
+Version:        0.9.18.5
 Release:        0
 Summary:        Abstractions over deferred folds
 License:        MIT
@@ -50,15 +50,11 @@ BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-rerebase-devel
 BuildRequires:  ghc-rerebase-prof
 BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
