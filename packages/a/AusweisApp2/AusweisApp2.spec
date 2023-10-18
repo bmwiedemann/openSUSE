@@ -24,6 +24,8 @@ License:        EUPL-1.2
 Group:          Productivity/Security
 URL:            https://www.ausweisapp.bund.de
 Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar.gz
+Patch0:         0001-fix-ftbfs-with-qt6.6.patch
+Patch1:         0002-update-qml-for-qt6.6.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
@@ -38,9 +40,9 @@ BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-concurrent-devel
 BuildRequires:  qt6-core-devel
+BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-linguist-devel
 BuildRequires:  qt6-network-devel
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-qml-devel
 BuildRequires:  qt6-qmlworkerscript-devel
 BuildRequires:  qt6-quick-devel
@@ -61,6 +63,8 @@ reader or compatible NFC smart phone is required.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %if 0%{?suse_version} <= 1500

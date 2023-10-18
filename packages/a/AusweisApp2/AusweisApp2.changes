@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 17 08:55:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix FTBFS with Qt 6.6
+  + 0001-fix-ftbfs-with-qt6.6.patch
+- Add patch to update QML for Qt 6.6
+  + 0002-update-qml-for-qt6.6.patch
+
+-------------------------------------------------------------------
 Tue Aug  1 11:45:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
