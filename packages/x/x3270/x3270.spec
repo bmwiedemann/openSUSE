@@ -16,7 +16,7 @@
 #
 
 
-%define _suffix ga3
+%define _suffix ga4
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270

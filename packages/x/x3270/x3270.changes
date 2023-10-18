@@ -1,9 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct 18 11:00:58 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.3ga4 (jsc#PED-3355)
+  * Added support for minimum and maximum TLS protocol versions, via the tlsMinProtocol resource, 
+    tlsMaxProtocol resource, -tlsminprotocol command-line option and -tlsmaxprotocol command-line option.
+  * Added support for miscellaneous IND$FILE options via the otherOptions keyword of the Transfer() action, 
+    the ftOtherOptions resource, and extensions to the x3270 file transfer dialog and the c3270 interactive 
+    Transfer() action.
+  * Extended the cancel keyword of the Transfer() action so it will interrupt the initial wait for an 
+    acknowledgement from the host IND$FILE command.
+  * The Transfer() action now returns a summary on success or a meaningful error message on failure.
+  * Added the Echo() action.
+  * Added support for the NEW-ENVRONMENT variables needed by the IBM Express Logon Feature. (Feature request)
+- Bug fixes
+  * When a font is specified in the wc3270 Session Wizard, it is now actually updated in the desktop shortcut.
+  * Multiple invocations of the Script() or Prompt() actions no longer lead to environment corruption.
+  * When command-line options are given to the Transfer() action at the c3270> prompt, the host session is 
+    now resumed so the progress of the transfer can be monitored.
+  * Several missing actions were added to c3270 help.
+
+-------------------------------------------------------------------
 Wed Sep 13 06:14:39 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 4.3ga (jsc#PED-3355)
-* Improvements
-* 4.3beta2
+  * Improvements
+  * 4.3beta2
   - Builds now work on MSYS2 MinGW.
   - The ibm_hosts file is now case-insensitive. (Request from Drew Derbyshire)
   - The underscoreBlankFill resource can now be set to false to prevent trailing 
@@ -11,7 +32,7 @@ Wed Sep 13 06:14:39 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   in blank fill mode.
   - Changed the keymap for Alt-q in x3270, c3270 and wc3270 to exit the emulator 
   unconditionally, using Quit(-force).
-* 4.3alpha1
+  * 4.3alpha1
   - The x3270 Color scheme menu option has been renamed 3279 color scheme, since 
   it only applies to 3279 mode. The green-screen color scheme option has been removed, 
   though the resource behind it (x3270.colorScheme.GreenScreen) remains. 
@@ -45,11 +66,11 @@ Wed Sep 13 06:14:39 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   from the LC_CTYPE or LANG environment variable if present, or default to ASCII if 
   neither is present or the value is not defined as locale.encoding. 
   (Original suggested patch by Thorsten Otto.)
-* Bug fixes
-* 4.3ga3
+  * Bug fixes
+  * 4.3ga3
   - When there is an error making a connection in s3270, the error message is 
   no longer output on two lines. (Bug report)
-* 4.3beta2
+  * 4.3beta2
   - When using a printer session and TLS, the printer session no longer 
   fails with a host certificate validation error.
   - When inserting in blank fill mode, trailing underscores are no longer consumed, 
