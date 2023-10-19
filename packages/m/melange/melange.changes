@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 19 05:46:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.5.1:
+  * build(deps): bump github.com/klauspost/compress from 1.17.0 to
+    1.17.1
+  * build(deps): bump google.golang.org/api from 0.146.0 to 0.147.0
+  * build(deps): bump github.com/lima-vm/lima from 0.17.2 to 0.18.0
+  * build(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+  * Fix a bug where substitutions were not done for runtime.
+  * linter: fix a typo in package linting function
+  * build(deps): bump google.golang.org/api from 0.143.0 to 0.146.0
+  * go mod tidy to shut up linter
+  * Small cleanup
+  * Add function to lint APK files.
+  * build(deps): bump golang.org/x/sync from 0.3.0 to 0.4.0
+  * build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+  * Extricate config stuff from linter.
+  * build(deps): bump sigs.k8s.io/release-utils
+  * fix release url path
+  * update deprecated fields
+  * update with 0.5.0 changes
+  * Track vendored deps for .PKGINFO
+
+-------------------------------------------------------------------
 Sat Oct 14 06:40:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.5.0:
