@@ -117,6 +117,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       AppStream-compose = %{version}
+Requires:       libappstream-compose%{libappstream_compose_sover}
 
 %description compose-devel
 This package contains all necessary files, libraries,
@@ -224,6 +225,7 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 %files compose
 %{_datadir}/metainfo/org.freedesktop.appstream.compose.metainfo.xml
 %{_libexecdir}/appstreamcli-compose
+%{_mandir}/man1/appstreamcli-compose*.1.gz
 
 %files -n libappstream-compose%{libappstream_compose_sover}
 %{_libdir}/libappstream-compose.so.%{version}
@@ -247,8 +249,9 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 %{_datadir}/vala/vapi/appstream.deps
 %{_datadir}/vala/vapi/appstream.vapi
 %endif
+
+%files doc
 %{_datadir}/doc/appstream
-%{_mandir}/man1/appstreamcli-compose*.1.gz
 
 %files -n typelib-1_0-AppStream-1.0
 %{_libdir}/girepository-1.0/AppStream-1.0.typelib

@@ -415,4 +415,19 @@ Features:
     <comment></comment>
     <requestid>1114964</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>fc2523afa50ab0ec1daef918c7185970</srcmd5>
+    <version>0.16.3</version>
+    <time>1697748424</time>
+    <user>anag+factory</user>
+    <comment>- Fix the documentation being put in the devel subpackage while
+  the doc subpackage was empty. I think the doc %files section was
+  probably removed inadvertently since it wasn't mentioned in the
+  changelog and the doc subpackage declaration was left around.
+- Moved the appstreamcli-compose man page to the same package
+  as the binary.
+- Make AppStream-compose-devel explicitly require 
+  libappstream-compose0 to stop rpmlint from reporting an error. (forwarded request 1118338 from alarrosa)</comment>
+    <requestid>1118339</requestid>
+  </revision>
 </revisionlist>

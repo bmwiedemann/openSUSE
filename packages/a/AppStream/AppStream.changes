@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 16 15:08:27 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix the documentation being put in the devel subpackage while
+  the doc subpackage was empty. I think the doc %files section was
+  probably removed inadvertently since it wasn't mentioned in the
+  changelog and the doc subpackage declaration was left around.
+- Moved the appstreamcli-compose man page to the same package
+  as the binary.
+- Make AppStream-compose-devel explicitly require 
+  libappstream-compose0 to stop rpmlint from reporting an error.
+
+-------------------------------------------------------------------
 Tue Oct  3 05:30:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Enable vala support when building in SLE-15 SP6
