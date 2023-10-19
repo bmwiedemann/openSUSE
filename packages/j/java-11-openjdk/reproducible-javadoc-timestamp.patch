@@ -1,14 +1,3 @@
-From cf1f86d30b2e9d0b4ada535d16e6e9141dc6bb17 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
-Date: Fri, 4 Aug 2023 17:43:52 +0200
-Subject: [PATCH] Reproducible javadoc timestamp
-
----
- .../doclets/formats/html/markup/Head.java         | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/formats/html/markup/Head.java b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/formats/html/markup/Head.java
-index 85ee310f0b..3c5260b1a0 100644
 --- a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/formats/html/markup/Head.java
 +++ b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/formats/html/markup/Head.java
 @@ -256,6 +256,9 @@ public class Head {
@@ -47,6 +36,3 @@ index 85ee310f0b..3c5260b1a0 100644
          }
          return new Comment(text);
      }
--- 
-2.41.0
-

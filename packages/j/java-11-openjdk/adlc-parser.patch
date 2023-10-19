@@ -1,10 +1,22 @@
---- jdk10/src/hotspot/share/adlc/formsopt.cpp	2014-07-03 21:56:12.000000000 +0200
-+++ jdk10/src/hotspot/share/adlc/formsopt.cpp	2014-07-14 11:43:21.900408570 +0200
-@@ -347,6 +347,7 @@
+--- a/src/hotspot/share/adlc/formsopt.cpp
++++ b/src/hotspot/share/adlc/formsopt.cpp
+@@ -427,6 +427,11 @@ void AllocClass::output(FILE *fp) {       // Write info to output files
+ //==============================Frame Handling=================================
+ //------------------------------FrameForm--------------------------------------
+ FrameForm::FrameForm() {
++  _sync_stack_slots = NULL;
++  _inline_cache_reg = NULL;
++  _interpreter_method_oop_reg = NULL;
++  _interpreter_frame_pointer_reg = NULL;
++  _cisc_spilling_operand_name = NULL;
+   _frame_pointer = NULL;
+   _c_frame_pointer = NULL;
+   _alignment = NULL;
+@@ -438,7 +443,6 @@ FrameForm::FrameForm() {
+   _c_calling_convention = NULL;
    _return_value = NULL;
    _c_return_value = NULL;
-   _interpreter_frame_pointer_reg = NULL;
-+  _cisc_spilling_operand_name = NULL;
+-  _interpreter_frame_pointer_reg = NULL;
  }
  
  FrameForm::~FrameForm() {

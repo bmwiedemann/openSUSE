@@ -1,6 +1,6 @@
---- jdk11u/make/autoconf/libraries.m4	2023-05-10 19:43:58.534273705 +0200
-+++ jdk11u/make/autoconf/libraries.m4	2023-05-11 09:44:31.769353381 +0200
-@@ -101,6 +101,7 @@
+--- a/make/autoconf/libraries.m4
++++ b/make/autoconf/libraries.m4
+@@ -101,6 +101,7 @@ AC_DEFUN_ONCE([LIB_SETUP_LIBRARIES],
    LIB_SETUP_LIBFFI
    LIB_SETUP_BUNDLED_LIBS
    LIB_SETUP_MISC_LIBS
@@ -8,7 +8,7 @@
    LIB_SETUP_SOLARIS_STLPORT
    LIB_TESTS_SETUP_GRAALUNIT
  
-@@ -223,3 +224,62 @@
+@@ -223,3 +224,62 @@ AC_DEFUN_ONCE([LIB_SETUP_SOLARIS_STLPORT],
    fi
  ])
  
@@ -71,9 +71,9 @@
 +  fi
 +  AC_SUBST(USE_SYSCONF_NSS)
 +])
---- jdk11u/make/autoconf/spec.gmk.in	2023-05-10 19:43:58.534273705 +0200
-+++ jdk11u/make/autoconf/spec.gmk.in	2023-05-11 09:44:31.769353381 +0200
-@@ -848,6 +848,10 @@
+--- a/make/autoconf/spec.gmk.in
++++ b/make/autoconf/spec.gmk.in
+@@ -848,6 +848,10 @@ INSTALL_SYSCONFDIR=@sysconfdir@
  # Libraries
  #
  
@@ -84,12 +84,13 @@
  USE_EXTERNAL_LCMS:=@USE_EXTERNAL_LCMS@
  LCMS_CFLAGS:=@LCMS_CFLAGS@
  LCMS_LIBS:=@LCMS_LIBS@
---- jdk11u/make/lib/Lib-java.base.gmk	2023-05-10 19:43:58.586273741 +0200
-+++ jdk11u/make/lib/Lib-java.base.gmk	2023-05-11 09:44:31.769353381 +0200
-@@ -179,6 +179,31 @@
+--- a/make/lib/Lib-java.base.gmk
++++ b/make/lib/Lib-java.base.gmk
+@@ -178,6 +178,31 @@ ifeq ($(call isTargetOsType, unix), true)
+   endif
  endif
  
- ################################################################################
++################################################################################
 +# Create the systemconf library
 +
 +LIBSYSTEMCONF_CFLAGS :=
@@ -114,12 +115,11 @@
 +  TARGETS += $(BUILD_LIBSYSTEMCONF)
 +endif
 +
-+################################################################################
+ ################################################################################
  # Create the symbols file for static builds.
  
- ifeq ($(STATIC_BUILD), true)
---- jdk11u/make/nb_native/nbproject/configurations.xml	2023-05-10 19:43:58.590273744 +0200
-+++ jdk11u/make/nb_native/nbproject/configurations.xml	2023-05-11 09:44:31.781353376 +0200
+--- a/make/nb_native/nbproject/configurations.xml
++++ b/make/nb_native/nbproject/configurations.xml
 @@ -2950,6 +2950,9 @@
                    <in>LinuxWatchService.c</in>
                  </df>
@@ -130,21 +130,21 @@
              </df>
            </df>
            <df name="macosx">
-@@ -29300,6 +29303,11 @@
-             ex="false"
+@@ -29301,6 +29304,11 @@
              tool="0"
              flavor2="0">
-+      </item>
+       </item>
 +      <item path="../../src/java.base/linux/native/libsystemconf/systemconf.c"
 +            ex="false"
 +            tool="0"
 +            flavor2="0">
-       </item>
++      </item>
        <item path="../../src/java.base/macosx/native/include/jni_md.h"
              ex="false"
---- jdk11u/make/scripts/compare_exceptions.sh.incl	2023-05-10 19:43:58.590273744 +0200
-+++ jdk11u/make/scripts/compare_exceptions.sh.incl	2023-05-11 09:44:31.785353373 +0200
-@@ -179,6 +179,7 @@
+             tool="3"
+--- a/make/scripts/compare_exceptions.sh.incl
++++ b/make/scripts/compare_exceptions.sh.incl
+@@ -179,6 +179,7 @@ if [ "$OPENJDK_TARGET_OS" = "solaris" ] && [ "$OPENJDK_TARGET_CPU" = "x86_64" ];
        ./lib/libsplashscreen.so
        ./lib/libsunec.so
        ./lib/libsunwjdga.so
@@ -152,7 +152,7 @@
        ./lib/libunpack.so
        ./lib/libverify.so
        ./lib/libzip.so
-@@ -289,6 +290,7 @@
+@@ -289,6 +290,7 @@ if [ "$OPENJDK_TARGET_OS" = "solaris" ] && [ "$OPENJDK_TARGET_CPU" = "sparcv9" ]
        ./lib/libsplashscreen.so
        ./lib/libsunec.so
        ./lib/libsunwjdga.so
@@ -160,8 +160,8 @@
        ./lib/libunpack.so
        ./lib/libverify.so
        ./lib/libzip.so
---- jdk11u/src/java.base/linux/native/libsystemconf/systemconf.c	1970-01-01 01:00:00.000000000 +0100
-+++ jdk11u/src/java.base/linux/native/libsystemconf/systemconf.c	2023-05-11 09:44:31.785353373 +0200
+--- /dev/null
++++ b/src/java.base/linux/native/libsystemconf/systemconf.c
 @@ -0,0 +1,224 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -387,9 +387,9 @@
 +      return (fips_enabled == '1' ? JNI_TRUE : JNI_FALSE);
 +    }
 +}
---- jdk11u/src/java.base/share/classes/java/security/Security.java	2023-05-10 19:43:58.770273872 +0200
-+++ jdk11u/src/java.base/share/classes/java/security/Security.java	2023-05-11 09:44:31.785353373 +0200
-@@ -32,6 +32,7 @@
+--- a/src/java.base/share/classes/java/security/Security.java
++++ b/src/java.base/share/classes/java/security/Security.java
+@@ -32,6 +32,7 @@ import java.net.URL;
  
  import jdk.internal.event.EventHelper;
  import jdk.internal.event.SecurityPropertyModificationEvent;
@@ -397,9 +397,9 @@
  import jdk.internal.misc.SharedSecrets;
  import jdk.internal.util.StaticProperty;
  import sun.security.util.Debug;
-@@ -47,12 +48,20 @@
-  * implementation-specific location, which is typically the properties file
-  * {@code conf/security/java.security} in the Java installation directory.
+@@ -50,12 +51,20 @@ import sun.security.jca.*;
+  * @implNote If the properties file fails to load, the JDK implementation will
+  * throw an unspecified error when initializing the {@code Security} class.
   *
 + * <p>Additional default values of security properties are read from a
 + * system-specific location, if available.</p>
@@ -418,7 +418,7 @@
      /* Are we debugging? -- for developers */
      private static final Debug sdebug =
                          Debug.getInstance("properties");
-@@ -67,6 +76,19 @@
+@@ -70,6 +79,19 @@ public final class Security {
      }
  
      static {
@@ -438,26 +438,19 @@
          // doPrivileged here because there are multiple
          // things in initialize that might require privs.
          // (the FileInputStream call and the File.exists call,
-@@ -83,6 +105,7 @@
+@@ -85,6 +107,7 @@ public final class Security {
+     private static void initialize() {
          props = new Properties();
-         boolean loadedProps = false;
          boolean overrideAll = false;
 +        boolean systemSecPropsEnabled = false;
  
          // first load the system properties file
          // to determine the value of security.overridePropertiesFile
-@@ -98,6 +121,7 @@
-                 if (sdebug != null) {
-                     sdebug.println("reading security properties file: " +
-                                 propFile);
-+                    sdebug.println(props.toString());
-                 }
-             } catch (IOException e) {
-                 if (sdebug != null) {
-@@ -192,6 +216,61 @@
+@@ -105,9 +128,63 @@ public final class Security {
              }
+             loadProps(null, extraPropFile, overrideAll);
          }
- 
++
 +        boolean sysUseProps = Boolean.valueOf(System.getProperty(SYS_PROP_SWITCH, "false"));
 +        boolean secUseProps = Boolean.valueOf(props.getProperty(SEC_PROP_SWITCH));
 +        if (sdebug != null) {
@@ -477,9 +470,7 @@
 +            }
 +        }
 +
-+        // FIPS support depends on the contents of java.security so
-+        // ensure it has loaded first
-+        if (loadedProps && systemSecPropsEnabled) {
++        if (systemSecPropsEnabled) {
 +            boolean shouldEnable;
 +            String sysProp = System.getProperty("com.suse.fips");
 +            if (sysProp == null) {
@@ -515,9 +506,13 @@
 +        }
      }
  
-     /*
---- jdk11u/src/java.base/share/classes/java/security/SystemConfigurator.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk11u/src/java.base/share/classes/java/security/SystemConfigurator.java	2023-05-11 09:44:31.789353372 +0200
+-    private static boolean loadProps(File masterFile, String extraPropFile, boolean overrideAll) {
++    static boolean loadProps(File masterFile, String extraPropFile, boolean overrideAll) {
+         InputStream is = null;
+         try {
+             if (masterFile != null && masterFile.exists()) {
+--- /dev/null
++++ b/src/java.base/share/classes/java/security/SystemConfigurator.java
 @@ -0,0 +1,248 @@
 +/*
 + * Copyright (c) 2019, 2021, Red Hat, Inc.
@@ -767,8 +762,8 @@
 +        }
 +    }
 +}
---- jdk11u/src/java.base/share/classes/jdk/internal/misc/JavaSecuritySystemConfiguratorAccess.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk11u/src/java.base/share/classes/jdk/internal/misc/JavaSecuritySystemConfiguratorAccess.java	2023-05-11 09:44:31.789353372 +0200
+--- /dev/null
++++ b/src/java.base/share/classes/jdk/internal/misc/JavaSecuritySystemConfiguratorAccess.java
 @@ -0,0 +1,31 @@
 +/*
 + * Copyright (c) 2020, Red Hat, Inc.
@@ -801,9 +796,11 @@
 +    boolean isSystemFipsEnabled();
 +    boolean isPlainKeySupportEnabled();
 +}
---- jdk11u/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java	2023-05-10 19:43:58.802273893 +0200
-+++ jdk11u/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java	2023-05-11 09:44:31.789353372 +0200
-@@ -36,6 +36,7 @@
+diff --git a/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java b/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java
+index 688ec9f091..8489b940c4 100644
+--- a/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java
++++ b/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java
+@@ -36,6 +36,7 @@ import java.io.FilePermission;
  import java.io.ObjectInputStream;
  import java.io.RandomAccessFile;
  import java.security.ProtectionDomain;
@@ -811,7 +808,7 @@
  import java.security.Signature;
  
  /** A repository of "shared secrets", which are a mechanism for
-@@ -76,6 +77,7 @@
+@@ -76,6 +77,7 @@ public class SharedSecrets {
      private static JavaIORandomAccessFileAccess javaIORandomAccessFileAccess;
      private static JavaSecuritySignatureAccess javaSecuritySignatureAccess;
      private static JavaxCryptoSealedObjectAccess javaxCryptoSealedObjectAccess;
@@ -819,7 +816,7 @@
  
      public static JavaUtilJarAccess javaUtilJarAccess() {
          if (javaUtilJarAccess == null) {
-@@ -361,4 +363,15 @@
+@@ -361,4 +363,15 @@ public class SharedSecrets {
          }
          return javaxCryptoSealedObjectAccess;
      }
@@ -835,9 +832,9 @@
 +        return javaSecuritySystemConfiguratorAccess;
 +    }
  }
---- jdk11u/src/java.base/share/classes/module-info.java	2023-05-10 19:43:58.810273900 +0200
-+++ jdk11u/src/java.base/share/classes/module-info.java	2023-05-11 09:44:31.789353372 +0200
-@@ -182,6 +182,7 @@
+--- a/src/java.base/share/classes/module-info.java
++++ b/src/java.base/share/classes/module-info.java
+@@ -182,6 +182,7 @@ module java.base {
          java.security.jgss,
          java.sql,
          java.xml,
@@ -845,9 +842,9 @@
          jdk.jartool,
          jdk.attach,
          jdk.charsets,
---- jdk11u/src/java.base/share/classes/sun/security/ssl/KeyManagerFactoryImpl.java	2023-05-10 19:43:58.826273911 +0200
-+++ jdk11u/src/java.base/share/classes/sun/security/ssl/KeyManagerFactoryImpl.java	2023-05-11 09:44:31.789353372 +0200
-@@ -33,8 +33,13 @@
+--- a/src/java.base/share/classes/sun/security/ssl/KeyManagerFactoryImpl.java
++++ b/src/java.base/share/classes/sun/security/ssl/KeyManagerFactoryImpl.java
+@@ -33,8 +33,13 @@ import java.security.KeyStore.*;
  
  import javax.net.ssl.*;
  
@@ -861,7 +858,7 @@
      X509ExtendedKeyManager keyManager;
      boolean isInitialized;
  
-@@ -62,7 +67,8 @@
+@@ -62,7 +67,8 @@ abstract class KeyManagerFactoryImpl extends KeyManagerFactorySpi {
                  KeyStoreException, NoSuchAlgorithmException,
                  UnrecoverableKeyException {
              if ((ks != null) && SunJSSE.isFIPS()) {
@@ -871,7 +868,7 @@
                      throw new KeyStoreException("FIPS mode: KeyStore must be "
                          + "from provider " + SunJSSE.cryptoProvider.getName());
                  }
-@@ -91,8 +97,8 @@
+@@ -91,8 +97,8 @@ abstract class KeyManagerFactoryImpl extends KeyManagerFactorySpi {
                  keyManager = new X509KeyManagerImpl(
                          Collections.<Builder>emptyList());
              } else {
@@ -882,9 +879,9 @@
                      throw new KeyStoreException(
                          "FIPS mode: KeyStore must be " +
                          "from provider " + SunJSSE.cryptoProvider.getName());
---- jdk11u/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2023-05-10 19:43:58.830273913 +0200
-+++ jdk11u/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2023-05-11 09:44:31.793353369 +0200
-@@ -31,6 +31,7 @@
+--- a/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java
++++ b/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java
+@@ -31,6 +31,7 @@ import java.security.*;
  import java.security.cert.*;
  import java.util.*;
  import javax.net.ssl.*;
@@ -892,7 +889,7 @@
  import sun.security.action.GetPropertyAction;
  import sun.security.provider.certpath.AlgorithmChecker;
  import sun.security.validator.Validator;
-@@ -542,6 +543,23 @@
+@@ -542,6 +543,23 @@ public abstract class SSLContextImpl extends SSLContextSpi {
  
          static {
              if (SunJSSE.isFIPS()) {
@@ -916,7 +913,7 @@
                  supportedProtocols = Arrays.asList(
                      ProtocolVersion.TLS13,
                      ProtocolVersion.TLS12,
-@@ -556,6 +574,7 @@
+@@ -556,6 +574,7 @@ public abstract class SSLContextImpl extends SSLContextSpi {
                      ProtocolVersion.TLS11,
                      ProtocolVersion.TLS10
                  });
@@ -924,7 +921,7 @@
              } else {
                  supportedProtocols = Arrays.asList(
                      ProtocolVersion.TLS13,
-@@ -910,12 +929,23 @@
+@@ -910,12 +929,23 @@ public abstract class SSLContextImpl extends SSLContextSpi {
                  if (client) {
                      // default client protocols
                      if (SunJSSE.isFIPS()) {
@@ -948,7 +945,7 @@
                      } else {
                          candidates = new ProtocolVersion[] {
                              ProtocolVersion.TLS13,
-@@ -927,12 +957,23 @@
+@@ -927,12 +957,23 @@ public abstract class SSLContextImpl extends SSLContextSpi {
                  } else {
                      // default server protocols
                      if (SunJSSE.isFIPS()) {
@@ -972,9 +969,9 @@
                      } else {
                          candidates = new ProtocolVersion[] {
                              ProtocolVersion.TLS13,
---- jdk11u/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2023-05-10 19:43:58.830273913 +0200
-+++ jdk11u/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2023-05-11 09:44:31.793353369 +0200
-@@ -27,6 +27,8 @@
+--- a/src/java.base/share/classes/sun/security/ssl/SunJSSE.java
++++ b/src/java.base/share/classes/sun/security/ssl/SunJSSE.java
+@@ -27,6 +27,8 @@ package sun.security.ssl;
  
  import java.security.*;
  import java.util.*;
@@ -982,8 +979,8 @@
 +import jdk.internal.misc.SharedSecrets;
  import sun.security.rsa.SunRsaSignEntries;
  import static sun.security.util.SecurityConstants.PROVIDER_VER;
- import static sun.security.provider.SunEntries.createAliases;
-@@ -195,8 +197,13 @@
+ import static sun.security.util.SecurityProviderConstants.*;
+@@ -195,8 +197,13 @@ public abstract class SunJSSE extends java.security.Provider {
              "sun.security.ssl.SSLContextImpl$TLS11Context", null, null);
          ps("SSLContext", "TLSv1.2",
              "sun.security.ssl.SSLContextImpl$TLS12Context", null, null);
@@ -996,13 +993,14 @@
 +        }
          ps("SSLContext", "TLS",
              "sun.security.ssl.SSLContextImpl$TLSContext",
-             (isfips? null : createAliases("SSL")), null);
---- jdk11u/src/java.base/share/conf/security/java.security	2023-05-10 19:43:58.842273922 +0200
-+++ jdk11u/src/java.base/share/conf/security/java.security	2023-05-11 09:44:31.793353369 +0200
-@@ -86,6 +86,14 @@
+             (isfips? null : List.of("SSL")), null);
+--- a/src/java.base/share/conf/security/java.security
++++ b/src/java.base/share/conf/security/java.security
+@@ -89,6 +89,14 @@ security.provider.tbd=SunPKCS11
+ #endif
  #security.provider.tbd=SunPKCS11 ${java.home}/lib/security/nss.cfg
  
- #
++#
 +# Security providers used when FIPS mode support is active
 +#
 +fips.provider.1=SunPKCS11 ${java.home}/conf/security/nss.fips.cfg
@@ -1010,38 +1008,37 @@
 +fips.provider.3=SunEC
 +fips.provider.4=com.sun.net.ssl.internal.ssl.Provider SunPKCS11-NSS-FIPS
 +
-+#
+ #
  # A list of preferred providers for specific algorithms. These providers will
  # be searched for matching algorithms before the list of registered providers.
- # Entries containing errors (parsing, etc) will be ignored. Use the
-@@ -299,6 +307,11 @@
+@@ -302,6 +310,11 @@ policy.ignoreIdentityScope=false
+ #
  keystore.type=pkcs12
  
- #
++#
 +# Default keystore type used when global crypto-policies are set to FIPS.
 +#
 +fips.keystore.type=PKCS11
 +
-+#
+ #
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
- # When set to 'true', both JKS and PKCS12 keystore types support loading
-@@ -336,6 +349,13 @@
+@@ -339,6 +352,13 @@ package.definition=sun.misc.,\
+ #
  security.overridePropertiesFile=true
  
- #
++#
 +# Determines whether this properties file will be appended to
 +# using the system properties file stored at
 +# /etc/crypto-policies/back-ends/java.config
 +#
 +security.useSystemPropertiesFile=true
 +
-+#
+ #
  # Determines the default key and trust manager factory algorithms for
  # the javax.net.ssl package.
- #
---- jdk11u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk11u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	2023-05-11 09:44:31.793353369 +0200
+--- /dev/null
++++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java
 @@ -0,0 +1,290 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -1333,8 +1330,8 @@
 +        }
 +    }
 +}
---- jdk11u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-05-10 19:43:59.222274190 +0200
-+++ jdk11u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2023-05-11 09:44:31.793353369 +0200
+--- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
++++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 @@ -26,6 +26,9 @@
  package sun.security.pkcs11;
  
@@ -1345,7 +1342,7 @@
  import java.util.*;
  
  import java.security.*;
-@@ -43,6 +46,8 @@
+@@ -43,6 +46,8 @@ import javax.security.auth.callback.PasswordCallback;
  import com.sun.crypto.provider.ChaCha20Poly1305Parameters;
  
  import jdk.internal.misc.InnocuousThread;
@@ -1354,7 +1351,7 @@
  import sun.security.util.Debug;
  import sun.security.util.ResourcesMgr;
  import static sun.security.util.SecurityConstants.PROVIDER_VER;
-@@ -60,6 +65,29 @@
+@@ -61,6 +66,29 @@ import static sun.security.pkcs11.wrapper.PKCS11Constants.*;
   */
  public final class SunPKCS11 extends AuthProvider {
  
@@ -1384,7 +1381,7 @@
      private static final long serialVersionUID = -1354835039035306505L;
  
      static final Debug debug = Debug.getInstance("sunpkcs11");
-@@ -317,10 +345,15 @@
+@@ -318,10 +346,15 @@ public final class SunPKCS11 extends AuthProvider {
              // request multithreaded access first
              initArgs.flags = CKF_OS_LOCKING_OK;
              PKCS11 tmpPKCS11;
@@ -1401,7 +1398,7 @@
              } catch (PKCS11Exception e) {
                  if (debug != null) {
                      debug.println("Multi-threaded initialization failed: " + e);
-@@ -336,7 +369,7 @@
+@@ -337,7 +370,7 @@ public final class SunPKCS11 extends AuthProvider {
                      initArgs.flags = 0;
                  }
                  tmpPKCS11 = PKCS11.getInstance(library,
@@ -1410,7 +1407,7 @@
              }
              p11 = tmpPKCS11;
  
-@@ -376,6 +409,24 @@
+@@ -377,6 +410,24 @@ public final class SunPKCS11 extends AuthProvider {
              if (nssModule != null) {
                  nssModule.setProvider(this);
              }
@@ -1435,9 +1432,9 @@
          } catch (Exception e) {
              if (config.getHandleStartupErrors() == Config.ERR_IGNORE_ALL) {
                  throw new UnsupportedOperationException
---- jdk11u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-05-10 19:43:59.226274194 +0200
-+++ jdk11u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2023-05-11 09:44:31.797353367 +0200
-@@ -49,6 +49,7 @@
+--- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
++++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java
+@@ -49,6 +49,7 @@ package sun.security.pkcs11.wrapper;
  
  import java.io.File;
  import java.io.IOException;
@@ -1445,7 +1442,7 @@
  import java.util.*;
  
  import java.security.AccessController;
-@@ -148,19 +149,42 @@
+@@ -148,19 +149,42 @@ public class PKCS11 {
          this.pkcs11ModulePath = pkcs11ModulePath;
      }
  
@@ -1488,7 +1485,7 @@
              if (omitInitialize == false) {
                  try {
                      pkcs11.C_Initialize(pInitArgs);
-@@ -1909,4 +1933,69 @@
+@@ -1909,4 +1933,69 @@ static class SynchronizedPKCS11 extends PKCS11 {
          super.C_GenerateRandom(hSession, randomData);
      }
  }

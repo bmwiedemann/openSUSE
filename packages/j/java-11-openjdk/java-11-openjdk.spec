@@ -20,6 +20,7 @@
 %{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
 %global debug 0
+%global make make
 %if 0%{?suse_version} > 1500
 %global add_back_javaee_modules 0
 %else
@@ -37,9 +38,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       20
-%global patchver        1
-%global buildver        1
+%global updatever       21
+%global buildver        9
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -345,9 +345,9 @@ Requires:       jpackage-utils
 # java.io.FileNotFoundException: /usr/lib64/libnss3.so
 #was bnc#634793
 Requires:       mozilla-nss
-Requires(post): java-ca-certificates
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
+Requires(posttrans):java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
 Recommends:     tzdata-java8
@@ -579,12 +579,17 @@ EXTRA_CFLAGS="-Wno-error"
 EXTRA_CPP_FLAGS="-Wno-error"
 
 %ifarch ppc64 ppc64le ppc
-EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
+EXTRA_CFLAGS="${EXTRA_CFLAGS} -fno-strict-aliasing"
 %endif
 
 %if 0%{?suse_version} >= 1330
-EXTRA_CFLAGS="$EXTRA_CFLAGS -Wno-error -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive"
-EXTRA_CPP_FLAGS="$EXTRA_CPP_FLAGS -Wno-error -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
+EXTRA_CFLAGS="${EXTRA_CFLAGS} -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive"
+EXTRA_CPP_FLAGS="${EXTRA_CPP_FLAGS} -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
+%endif
+
+%ifarch %{ix86}
+EXTRA_CFLAGS="${EXTRA_CFLAGS} -mstackrealign -mincoming-stack-boundary=2 -mpreferred-stack-boundary=4"
+EXTRA_CPP_FLAGS="${EXTRA_CPP_FLAGS} -mstackrealign -mincoming-stack-boundary=2 -mpreferred-stack-boundary=4"
 %endif
 
 mkdir -p %{buildoutputdir}
@@ -611,6 +616,7 @@ bash ../configure \
 %endif
     --disable-keep-packaged-modules \
     --with-debug-level=%{debugbuild} \
+    --with-native-debug-symbols=internal \
     --enable-sysconf-nss \
     --with-zlib=system \
     --with-libjpeg=system \
@@ -630,8 +636,8 @@ bash ../configure \
 %ifarch x86_64
     --with-jvm-features=zgc,shenandoahgc \
 %endif
-    --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
-    --with-extra-cflags="$EXTRA_CFLAGS" \
+    --with-extra-cxxflags="${EXTRA_CPP_FLAGS}" \
+    --with-extra-cflags="${EXTRA_CFLAGS}" \
     --disable-javac-server
 
 # The combination of FULL_DEBUG_SYMBOLS=0 and ALT_OBJCOPY=/does_not_exist
@@ -639,7 +645,7 @@ bash ../configure \
 # STRIP_POLICY=none says don't do any stripping. DEBUG_BINARIES=true says
 # ignore all the other logic about which debug options and just do '-g'.
 
-make \
+%{make} \
     JAVAC_FLAGS=-g \
     LOG=trace \
     DEBUG_BINARIES=true \
@@ -1014,7 +1020,7 @@ if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
 fi
 
 # remove the default empty cacert file, if it's installed
-if [ 0`stat -c "%{s}" %{cacerts} 2>/dev/null` = "032" ] ; then
+if [ 0`stat -c "%%s" %{cacerts} 2>/dev/null` = "032" ] ; then
     rm -f %{cacerts}
 fi
 

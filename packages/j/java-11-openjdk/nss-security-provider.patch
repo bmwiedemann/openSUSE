@@ -1,6 +1,6 @@
---- openjdk/src/java.base/share/conf/security/java.security	2021-03-16 07:15:49.798093653 +0100
-+++ openjdk/src/java.base/share/conf/security/java.security	2021-03-16 11:38:01.416893125 +0100
-@@ -83,6 +83,7 @@
+--- a/src/java.base/share/conf/security/java.security
++++ b/src/java.base/share/conf/security/java.security
+@@ -87,6 +87,7 @@ security.provider.tbd=Apple
  #ifndef solaris
  security.provider.tbd=SunPKCS11
  #endif
