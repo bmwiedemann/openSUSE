@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           karchive
-Version:        5.110.0
+Version:        5.111.0
 Release:        0
 Summary:        Qt 5 addon providing access to numerous types of archives
 License:        LGPL-2.0-or-later
