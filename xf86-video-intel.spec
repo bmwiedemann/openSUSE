@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-intel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ URL:            http://x.org/wiki/IntelGraphicsDriver/
 #Git-Archive:   git archive --format=tar.gz --prefix %{name}-%{version}/ master
 Source0:        %{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
+Patch0:         n_Mesa-i965-crocus-iris.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -134,6 +135,7 @@ the 830M and later.
 
 %prep
 %setup -q -n %{name}-%{_version}
+%patch0 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

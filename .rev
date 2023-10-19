@@ -999,4 +999,19 @@ why not just update to this version instead? O.o (forwarded request 207632 from 
     <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
     <requestid>977262</requestid>
   </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>eda660f4a3ed4649452ff060242f306c</srcmd5>
+    <version>2.99.917.916_g31486f40</version>
+    <time>1697748442</time>
+    <user>anag+factory</user>
+    <comment>- renamed n_Mesa-i965-crocus.patch to n_Mesa-i965-crocus-iris.patch
+- n_Mesa-i965-crocus-iris.patch
+  * use &quot;iris&quot; instead of &quot;crocus&quot; for anything newer than Haswell 
+
+- n_Mesa-i965-crocus.patch
+  * Mesa's DRI driver is now called &quot;crocus&quot; (previously &quot;i965&quot;);
+    fixes hardware OpenGL support when still using &quot;intel&quot; X
+    driver instead of &quot;modesetting&quot; one ...</comment>
+    <requestid>1118589</requestid>
+  </revision>
 </revisionlist>

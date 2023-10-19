@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 18 13:07:14 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed n_Mesa-i965-crocus.patch to n_Mesa-i965-crocus-iris.patch
+- n_Mesa-i965-crocus-iris.patch
+  * use "iris" instead of "crocus" for anything newer than Haswell 
+
+-------------------------------------------------------------------
+Wed Oct 18 12:37:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_Mesa-i965-crocus.patch
+  * Mesa's DRI driver is now called "crocus" (previously "i965");
+    fixes hardware OpenGL support when still using "intel" X
+    driver instead of "modesetting" one ...
+
+-------------------------------------------------------------------
 Sat May 14 17:38:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - set SUSE_ZNOW to 0 (boo#1197994) 
