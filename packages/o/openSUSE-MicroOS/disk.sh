@@ -15,6 +15,8 @@ sdbootutil -v --arch "$arch" --esp-path /boot/efi --entry-token=auto --no-variab
 echo "add kernels"
 export hostonly_l=no # for dracut
 sdbootutil --arch "$arch" --esp-path /boot/efi --entry-token=auto add-all-kernels
+# Set a 5s timeout, the "hold a key down" method doesn't work effectively.
+echo "timeout 5" >> /boot/efi/loader/loader.conf
 echo "##### AFTER ####"
 rm -f /boot/mbrid
 find /boot
