@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  9 20:21:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- Changes since 5.110.0:
+  * Amend unit test to check propagation of options to date picker
+  * Remove "No date" option from date picker popup used by date combo box
+  * Set the modes on the date picker
+  * Fix file rating being unreadable in certain themes (kde#339863)
+
+-------------------------------------------------------------------
 Wed Sep  6 12:24:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.110.0
