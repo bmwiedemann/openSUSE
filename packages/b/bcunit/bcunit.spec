@@ -1,7 +1,7 @@
 #
 # spec file for package bcunit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define soname  libbcunit
 %define sover   1
 Name:           bcunit
-Version:        3.0.2+git.20191119
+Version:        5.2.62
 Release:        0
 Summary:        Provide C programmers basic testing functionality
 License:        LGPL-2.0-or-later
 URL:            https://linphone.org/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://gitlab.linphone.org/BC/public/bcunit/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE bcunit-link-ncurses.patch jengelh@medozas.de
 Patch0:         bcunit-link-ncurses.patch
@@ -32,6 +32,8 @@ Patch0:         bcunit-link-ncurses.patch
 Patch1:         bcunit-ncurses6.patch
 # PATCH-FIX-OPENSUSE bcunit-sover.patch sor.alexei@meowr.ru -- Correctly set the sover.
 Patch2:         bcunit-sover.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         set_current_version.patch
 BuildRequires:  cmake
 BuildRequires:  git-core >= 1.7.10
 BuildRequires:  ncurses-devel
@@ -74,7 +76,8 @@ This package installs the BCUnit shared library.
 
 %build
 %cmake \
-  -DENABLE_STATIC=OFF    \
+  -DENABLE_STATIC=OFF \
+  -DENABLE_CURSES=ON \
   -DENABLE_DOC=ON
 %cmake_build
 

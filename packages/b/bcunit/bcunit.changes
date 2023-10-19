@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  6 05:51:01 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.62 (no changelog).
+- Add set_current_version.patch.
+
+-------------------------------------------------------------------
 Thu Feb 27 08:23:15 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - use correct archive extensione (xz instead of gz) 
