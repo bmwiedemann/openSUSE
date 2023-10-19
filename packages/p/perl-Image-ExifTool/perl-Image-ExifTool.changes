@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:49:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.68:
+  * Added preliminary read support for XISF images
+  * Added the ability to delete JUMBF metadata from PNG images
+  * Added support for writing Canon burst-roll CR3 images
+  * Added a new Nikon Z9 SubjectDetection value, and improved Zf support (thanks Warren Hatch)
+  * Added a couple of new PentaxModelID values
+  * Added a few couple of new tag values for the Pentax K-3 Mark III Monochrome (github #226)
+  * Added a new XMP-photomech tag
+  * Added a new QuickTime ItemList tag
+  * Added a new Nikon LensID
+  * Added a new Canon LensType
+  * Added a new Pentax LensType (thanks dmont)
+  * Added a new FujiFilm FilmMode and FaceElementTypes values (thanks Greybeard)
+  * Added a few new Canon LensType values (thanks Norbert Wasser)
+  * Added conversions for a few Apple:ImageCaptureType values
+  * Added new XMP tag for PLUS version 2.0.1
+  * Added a new CanonModelID (thanks Laurent Clevy)
+  * Support decimal values for FujiFilm ShadowTone and HighlightTone tags
+  * Decode some new Sony tags (thanks Jos Roost)
+  * Decode ShutterCount for Canon EOS R6 (thanks gamin)
+  * Decode QuickTime VideoFullRangeFlag
+  * Decode JPGCompression for the Nikon D3S
+  * Enhanced -geotag feature to allow writing QuickTime:GPSCoordinates
+  * Renamed Panasonic HDRShot tag to MergedImages (forum 15298)
+  * Fixed problem where some NEF files were misidentified as NRW
+  * Fixed error writing new DataMining tag where URI prefix wasn't being properly added to the value
+  * Decode another tag from Canon 1DS raw images (Hubert Figuière, github #219)
+  * Decode JPGCompression for newer Nikon models (thanks Warren Hatch)
+  * Fixed bug introduced in 12.65 where duplicate tags were not returned even when the groups where specified explicitly
+
+-------------------------------------------------------------------
 Fri Aug 11 05:00:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.65:
