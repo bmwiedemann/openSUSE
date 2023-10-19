@@ -159,4 +159,14 @@
     <comment></comment>
     <requestid>1103632</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>846e4cf908adb0c92abf559f9fdb7178</srcmd5>
+    <version>6.9.2</version>
+    <time>1697748455</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Clean up skipping tests, packaging &gt;22 is now required</comment>
+    <requestid>1118748</requestid>
+  </revision>
 </revisionlist>

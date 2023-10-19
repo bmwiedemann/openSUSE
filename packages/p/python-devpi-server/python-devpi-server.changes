@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 19 01:15:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Clean up skipping tests, packaging >22 is now required
+
+-------------------------------------------------------------------
 Thu Aug 10 11:53:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 6.9.2:

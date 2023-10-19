@@ -24,14 +24,14 @@ Version:        6.9.2
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://doc.devpi.net
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp
-Requires:       python-appdirs
 Requires:       python-argon2-cffi >= 16.2
 Requires:       python-attrs
 Requires:       python-defusedxml
@@ -59,7 +59,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module argon2-cffi >= 16.2}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module beautifulsoup4}
@@ -91,10 +90,10 @@ sed -i "s/ruamel.yaml<=[^']*,/ruamel.yaml/g" setup.py
 sed -i "s/--flake8//" tox.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for c in %{commands}; do
   %python_clone -a %{buildroot}%{_bindir}/devpi-$c
 done
@@ -103,14 +102,7 @@ done
 %check
 export PYTHONDONTWRITEBYTECODE=1
 
-# Broken tests with latest version of packaging, gh#devpi/devpi#948
-donttest="test_dashes_to_undescores_when_imported_from_v1"
-donttest+=" or test_name_mangling_relates_to_issue132"
-donttest+=" or test_parse_index_with_valid_basenames[py.tar.gz]"
-donttest+=" or test_parse_index_with_valid_basenames[py-1.3.1-1.0rc4.tar.gz]"
-donttest+=" or test_simple_project_pypi_egg"
-donttest+=" or test_streaming"
-donttest+=" or test_streaming_replica"
+donttest="test_auth_mirror_url"
 
 %{python_expand \
 mkdir bin-%{$python_version}
@@ -143,6 +135,9 @@ done
 %python_alternative %{_bindir}/devpi-passwd
 %python_alternative %{_bindir}/devpi-server
 %python_alternative %{_bindir}/devpi-gen-secret
-%{python_sitelib}/*
+%{python_sitelib}/devpi_server
+%{python_sitelib}/test_devpi_server
+%{python_sitelib}/pytest_devpi_server
+%{python_sitelib}/devpi_server-%{version}.dist-info
 
 %changelog
