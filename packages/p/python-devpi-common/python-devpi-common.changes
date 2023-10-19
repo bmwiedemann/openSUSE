@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 18 08:31:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.2: 
+  * Bug Fixes
+    + Do not mark commands with returncode ``None`` from tox 4.x as failed.
+    + Restore flushing after each written line in new TerminalWriter.
+    + Fix #939: custom legacy version parsing (non PEP 440) after
+      packaging >= 22.0 removed support.
+  * Deprecations and Removals
+    + Removed ``HTMLPage`` class originally vendored from pip.
+    + Dropped support for Python <= 3.6.
+  * Features
+    + Add ``chdir`` context handler in devpi_common.contextlib.
+    + Hide username from URL representation.
+    + Added stripped down TerminalWriter from ``py`` library which only
+      supports coloring.
+- Switch to pyproject macros.
+- Drop patch unpin-versions.patch, no longer required.
+
+-------------------------------------------------------------------
 Fri Jun  9 07:36:13 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -56,4 +56,27 @@
     <comment></comment>
     <requestid>1092258</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68d35e3bae821c42ad34989c2b0d4beb</srcmd5>
+    <version>4.0.2</version>
+    <time>1697748454</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.2: 
+  * Bug Fixes
+    + Do not mark commands with returncode ``None`` from tox 4.x as failed.
+    + Restore flushing after each written line in new TerminalWriter.
+    + Fix #939: custom legacy version parsing (non PEP 440) after
+      packaging &gt;= 22.0 removed support.
+  * Deprecations and Removals
+    + Removed ``HTMLPage`` class originally vendored from pip.
+    + Dropped support for Python &lt;= 3.6.
+  * Features
+    + Add ``chdir`` context handler in devpi_common.contextlib.
+    + Hide username from URL representation.
+    + Added stripped down TerminalWriter from ``py`` library which only
+      supports coloring.
+- Switch to pyproject macros.
+- Drop patch unpin-versions.patch, no longer required.</comment>
+    <requestid>1118536</requestid>
+  </revision>
 </revisionlist>

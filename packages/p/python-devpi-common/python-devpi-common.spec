@@ -18,19 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-devpi-common
-Version:        3.7.2
+Version:        4.0.2
 Release:        0
 Summary:        Utilities jointly used by devpi-server and devpi-client
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/devpi/devpi
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-%{version}.tar.gz
-Patch1:         unpin-versions.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-lazy
 Requires:       python-packaging
-Requires:       python-py >= 1.4.20
 Requires:       python-requests >= 2.3.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -49,21 +49,19 @@ Utilities jointly used by devpi-server and devpi-client.
 rm tox.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Doesn't work with latest packaging module because invalid version
-donttest="test_noversion_sameproject or test_sort_sameproject_links"
-%pytest -k "not ($donttest)"
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
 %{python_sitelib}/devpi_common
-%{python_sitelib}/devpi_common-%{version}*-info
+%{python_sitelib}/devpi_common-%{version}.dist-info
 
 %changelog
