@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:31:54 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.5.0:
+  Ansible 8.5.0 includes ansible-core 2.15.5 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
 Wed Sep 13 04:56:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 8.4.0:

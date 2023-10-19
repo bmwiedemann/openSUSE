@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -54,11 +54,11 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.15.4
+BuildRequires:  ansible-core >= 2.15.5
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.9
-Requires:       ansible-core >= 2.15.4
+Requires:       ansible-core >= 2.15.5
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
