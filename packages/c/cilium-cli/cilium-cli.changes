@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 19 05:48:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.11:
+  * Prepare for v0.15.11 release
+  * fix(deps): update all go dependencies main
+  * vendor: Remove "replace github.com/docker/docker"
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    2ebcd9a
+  * chore(deps): update go to v1.21.3
+  * chore(deps): update module golang.org/x/net to v0.17.0
+    [security]
+  * chore(deps): update golang docker tag to v1.21.3
+  * check: Support SIGTERM with --pause-on-fail
+  * check: Fix pause on failure for test fail/fatal
+  * check: Refactor common failure paths
+  * sysdump feature detection: Don't depend on Cilium version
+  * sysdump: Detect if Gateway API support is enabled
+  * Update stable release to v0.15.10
+  * Check Auth Cert Provider status
+  * dep: Bump cilium/cilium to v1.15.0-pre.1+
+
+-------------------------------------------------------------------
 Sun Oct 08 16:00:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.10:
