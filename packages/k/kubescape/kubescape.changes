@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Oct 19 07:33:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.2:
+  * add more missing permissions for actions
+  * set log to error
+  * rm if statement
+  * replace driver name
+  * actions needs write on id-token in pr-scanner
+  * bump deps for vulnerabilities
+  * fixing GH actions permissions
+  * use distroless debug as entrypoint.sh requires a shell
+  * remove extra permissions on GH action
+  * add ArtifactHub to README
+  * add FOSSA badge to README
+  * build windows exec without libgit
+  * use go-gitlog as an alternative to git2go (#1393)
+  * use ControlConfigInputs, deprecate ConfigInputs (#1419)
+  * add top level permissions: read-all for openssf
+  * correct security-insights stage -> status
+  * Fix in the README for changelog name
+  * Adding project security and governance as per maintainer
+    decision
+  * Update README.md
+  * Create scorecard.yml
+  * Bump golang.org/x/net from 0.14.0 to 0.17.0 in /httphandler
+  * use correct variable for IMAGE_TAG
+  * drop build tags for tests (will soon deprecate them)
+  * add missing dependency on retag in binary-build
+  * Removed the Codesee workflow
+  * force docker-build in absence of release label
+  * Adding check-secret to build image wf
+  * Bump github.com/cyphar/filepath-securejoin from 0.2.3 to 0.2.4
+  * split failedPath to deletePaths and reviewPaths (#1402)
+  * add Openssf badge (#1400)
+  * Support control cluster from cli (#1391)
+  * disable rate limiting for storage client
+  * Separate docker builds for kubescape and kubescape-cli (#1390)
+  * Save scan results in storage and support scanning a deleted
+    resource (#1376)
+  * add new line (#1389)
+  * fix: format headers (#1383)
+  * remove ARMO server url
+  * feat: darken table borders
+  * fix setting context name in httphandler
+  * revert e2e test branch (#1373)
+  * print up until 4 imgs
+  * Update installation.md to add instructions to install a
+    previous version via SH
+
+-------------------------------------------------------------------
 Wed Sep 06 06:04:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.9.1:
