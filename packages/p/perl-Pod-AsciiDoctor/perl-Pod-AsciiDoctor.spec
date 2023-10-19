@@ -18,7 +18,7 @@
 
 %define cpan_name Pod-AsciiDoctor
 Name:           perl-Pod-AsciiDoctor
-Version:        0.101003
+Version:        0.102000
 Release:        0
 License:        Apache-2.0
 Summary:        Convert from POD to AsciiDoc
@@ -28,11 +28,15 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Module::Build) >= 0.28
+BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Pod::Parser) >= 1.65
 BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(autodie)
 BuildRequires:  perl(parent)
+Requires:       perl(Path::Tiny)
 Requires:       perl(Pod::Parser) >= 1.65
+Requires:       perl(autodie)
 Requires:       perl(parent)
 %{perl_requires}
 # MANUAL BEGIN

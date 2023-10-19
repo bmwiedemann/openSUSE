@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  7 03:07:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.102000
+   see /usr/share/doc/packages/perl-Pod-AsciiDoctor/Changes
+
+  0.102000    2023-10-06
+
+      - add bin/pod2asciidoctor
+
+-------------------------------------------------------------------
 Tue Jul  4 03:07:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.101003
