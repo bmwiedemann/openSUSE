@@ -31,6 +31,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 
 Requires:       trytond
@@ -49,7 +50,7 @@ The purchase_request module of the Tryton application platform allows you to cre
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot
+%python3_install
 %fdupes -s %{buildroot}
 
 %files
