@@ -5,6 +5,6 @@
      <param name="compression">xz</param>
   </service>
   <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">hexyl-0.13.0</param>
+     <param name="srcdir">hexyl-0.13.1</param>
   </service>
 </services>

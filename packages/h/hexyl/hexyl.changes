@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 09:06:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.13.1
+  * BugFix: Correctly handle discontinuous input (stdin), see #196 and #197
+
+-------------------------------------------------------------------
 Sun May 28 20:05:21 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.13.0
