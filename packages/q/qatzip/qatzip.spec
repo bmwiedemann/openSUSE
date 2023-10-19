@@ -17,7 +17,7 @@
 
 
 Name:           qatzip
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATzip Library
 License:        BSD-3-Clause
