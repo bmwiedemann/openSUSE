@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 18 07:30:35 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.8.3:
+  * Respect XDG_CONFIG_HOME at systems other than Windows
+  * Metainfo and desktop files have now reverse domain-name
+  * Other metainfo format updates
+  * Course files converted to UTF-8
+  *  Autotools build now have year 2038 support, if at least
+     version 2.73 of autoconf is used in bootstrapping.
+  * Updated French translation
+
+-------------------------------------------------------------------
 Sat Jul  9 18:50:18 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 0.8.2:

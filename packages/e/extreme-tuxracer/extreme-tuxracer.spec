@@ -1,7 +1,7 @@
 #
 # spec file for package extreme-tuxracer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname   etr
 Name:           extreme-tuxracer
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Racing game featuring Tux the Linux Penguin
 License:        GPL-2.0-or-later
@@ -71,8 +71,8 @@ rm -fr %{buildroot}%{_datadir}/doc
 %{_bindir}/%{oname}
 %{_datadir}/pixmaps/%{oname}.png
 %{_datadir}/pixmaps/%{oname}.svg
-%{_datadir}/applications/%{oname}.desktop
-%{_datadir}/metainfo/%{oname}.appdata.xml
+%{_datadir}/applications/*.desktop
+%{_datadir}/metainfo/*.metainfo.xml
 
 %files data
 %{_datadir}/%{oname}/
