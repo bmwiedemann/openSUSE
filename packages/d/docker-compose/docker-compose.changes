@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct 19 05:44:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.0:
+  * check that the pull policy provided is a valid one or is not
+    missing when --pull is used
+  * remove uncessary return value of pullComposeFiles function
+  * enable profile when down is ran with explicit service names
+  * add sync+restart action to watch attribute
+  * build(deps): bump github.com/containerd/containerd from 1.7.6
+    to 1.7.7
+  * build(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+  * build(deps): bump google.golang.org/grpc from 1.58.2 to 1.59.0
+  * build(deps): bump golang.org/x/sync from 0.3.0 to 0.4.0
+  * remove refrecence docs generation
+  * remove cucumber tests as we haven't added new ones for a while
+  * add support of COMPOSE_ENV_FILES env variable to pass a list of
+    env files
+  * add dry-run support for publish command
+  * extract method to reduce cyclomatic complexity
+  * warn user remote resource is disabled
+  * Don't delete dependent services
+  * Apply platform before hashing
+  * deps: remove deprecated github.com/pkg/errors
+  * Include image name in error message
+  * pkg/compose/publish: use empty config descriptor mediaType
+  * pkg/remote/oci: check artifactType instead of config.mediaType
+  * pkg/remote/oci: refer to the manifest as manifest
+  * update the watch warning message when no services with a
+    develop section
+  * ci: enable verbose output for e2e tests (#11045)
+  * truncate command by default, introduce --no-trunc flag to get
+    the full command
+  * build(deps): bump google.golang.org/grpc from 1.58.1 to 1.58.2
+
+-------------------------------------------------------------------
 Fri Sep 22 05:35:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.22.0:
