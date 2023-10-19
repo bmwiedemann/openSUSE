@@ -674,4 +674,12 @@
     <comment>KDE Frameworks 5.110.0 (forwarded request 1109602 from krop)</comment>
     <requestid>1110087</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>9d0e18aebb68177df9ca30c80c7f3162</srcmd5>
+    <version>5.111.0</version>
+    <time>1697748364</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
+    <requestid>1118704</requestid>
+  </revision>
 </revisionlist>
