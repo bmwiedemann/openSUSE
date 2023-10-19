@@ -56,4 +56,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1091771</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f4003d2318c5a7c26e0a6e9d10981447</srcmd5>
+    <version>0.4.2</version>
+    <time>1697748456</time>
+    <user>anag+factory</user>
+    <comment>- readd git-lfs dependency</comment>
+    <requestid>1118614</requestid>
+  </revision>
 </revisionlist>

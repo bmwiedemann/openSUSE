@@ -21,7 +21,6 @@
 %else
 %define build_pkg_name build
 %endif
-
 Name:           obs-scm-bridge
 Version:        0.4.2
 Release:        0
@@ -39,8 +38,14 @@ Requires:       perl(Time::Zone)
 Requires:       perl(URI)
 Requires:       perl(XML::Parser)
 Requires:       perl(YAML::LibYAML)
-BuildArch:      noarch
 Recommends:     python3-packaging
+BuildArch:      noarch
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       git
+%else
+Requires:       git-core
+Requires:       git-lfs
+%endif
 
 %description
 
@@ -50,7 +55,7 @@ Recommends:     python3-packaging
 %build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 %files
 %{_prefix}/lib/obs/service
