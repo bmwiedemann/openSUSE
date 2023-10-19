@@ -96,4 +96,12 @@
     <comment>version bump (forwarded request 959955 from DocB)</comment>
     <requestid>959974</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>faef0c49f031b0f5e352121998e6f0a9</srcmd5>
+    <version>6.0.6</version>
+    <time>1697748607</time>
+    <user>anag+factory</user>
+    <comment>Remove %python3_install prefix and root options, that's included in the macro by default. (forwarded request 1118923 from dgarcia)</comment>
+    <requestid>1118957</requestid>
+  </revision>
 </revisionlist>
