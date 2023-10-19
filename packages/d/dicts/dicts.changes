@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 12 12:33:35 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- New RPM API change ... now no %patch anymore only %patch0 
+
+-------------------------------------------------------------------
 Mon Sep 27 09:39:33 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - OK, it is a package rename and it is noarch 

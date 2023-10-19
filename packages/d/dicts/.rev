@@ -223,4 +223,12 @@ Use a license from the spreadsheet linked at http://license.opensuse.org (forwar
 - Smaller cleanups</comment>
     <requestid>921789</requestid>
   </revision>
+  <revision rev="31" vrev="423">
+    <srcmd5>91a965c672765861b90b419a297ccad8</srcmd5>
+    <version>1.5</version>
+    <time>1697748620</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1118983</requestid>
+  </revision>
 </revisionlist>
