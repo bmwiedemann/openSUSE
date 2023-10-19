@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %bcond_without python2
 Name:           antlr
 Version:        2.7.7
@@ -27,7 +28,7 @@ URL:            https://www.antlr.org/
 Source0:        antlr-%{version}.tar.bz2
 Source1:        %{name}-build.xml
 Source2:        %{name}-script
-Source3:        http://repo2.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+Source3:        https://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
 Source1000:     antlr-rpmlintrc
 Patch0:         %{name}-jedit.patch
 Patch1:         gcc45fix.diff
@@ -35,7 +36,7 @@ Patch2:         fix-docpath.diff
 BuildRequires:  ant
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  xml-commons-apis
 Requires:       %{name}-java
 Provides:       %{name}-bootstrap = %{version}
@@ -130,7 +131,7 @@ ant \
     -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
     jar
 %configure --without-examples
-make -j1
+%make_build -j1
 
 %if %{with python2}
 %py_compile lib/python/antlr
@@ -139,16 +140,14 @@ make -j1
 %install
 ### jars ###
 install -d -m 0755 %{buildroot}%{_javadir}
-cp -a work/lib/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -s -f ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
-# compat symlink
+install -pm 0644 work/lib/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}-%{version}/
-ln -s -f %{_javadir}/%{name}-%{version}.jar %{buildroot}%{_datadir}/%{name}-%{version}/%{name}.jar
+ln -s -f %{_javadir}/%{name}.jar %{buildroot}%{_datadir}/%{name}-%{version}/%{name}.jar
 
 ### pom ###
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a %{name}:%{name}all -f java
+%{mvn_install_pom} %{SOURCE3} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
+%add_maven_depmap %{name}-%{version}.pom %{name}.jar -a %{name}:%{name}all -f java
 
 ### scripts ###
 install -d -m 0755 %{buildroot}%{_bindir}/
@@ -178,16 +177,9 @@ find doc -type f | xargs chmod 0644
 %{_bindir}/antlr
 %{_bindir}/antlr-config
 
-%files java
+%files java -f .mfiles-java
 %dir %{_datadir}/%{name}-%{version}
 %{_datadir}/%{name}-%{version}/*jar
-%{_javadir}/%{name}*.jar
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%config(noreplace) %{_mavendepmapfragdir}/%{name}-java
-%else
-%{_datadir}/maven-metadata/%{name}-java.xml
-%endif
 
 %files manual
 %doc doc

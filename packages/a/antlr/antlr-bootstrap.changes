@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 17 11:07:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the spec file and use javapackages-local >= 6 features
+
+-------------------------------------------------------------------
 Thu May  4 12:54:42 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

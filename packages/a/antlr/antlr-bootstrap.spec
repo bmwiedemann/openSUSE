@@ -99,9 +99,8 @@ delBinaryFiles
 %install
 install -d -m 0755 %{buildroot}%{_javadir}
 install -m 0644 %{name}.jar %{buildroot}%{_javadir}/
-ln -s -f %{_javadir}/%{name}.jar %{buildroot}/%{_javadir}/%{name}-%{version}.jar
 
 %files
-%{_javadir}/%{name}*.jar
+%{_javadir}/%{name}.jar
 
 %changelog
