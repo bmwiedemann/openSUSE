@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-opencensus%{psuffix}
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        A stats collection and distributed tracing framework
 License:        Apache-2.0
@@ -40,6 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core < 3.0.0
 Requires:       python-google-api-core >= 1.0.0
 Requires:       python-opencensus-context >= 0.1.3
+Requires:       python-six >= 1.16
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= 1.0.0}
