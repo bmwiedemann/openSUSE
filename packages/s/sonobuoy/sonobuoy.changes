@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:42:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.57.0:
+  * use tar output for build func
+  * use tar output for build func
+  * Add docs for v0.57.0
+  * Bump golang.org/x/net from 0.8.0 to 0.17.0
+  * Upgrade Golang version to v1.20
+  * Remove [It] prefix for E2E_FOCUS
+  * fix: break the watch loop when the watch fails
+  * use correct file suffix in documentation
+  * cleanup: fix merge conflict errors
+  * fix integration tests
+  * Add docs for v0.56.17
+  * add support for --e2e-docker-config-file flag
+
+-------------------------------------------------------------------
 Fri Sep 15 05:45:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.56.17:
