@@ -119,4 +119,12 @@ Reworked as requested.</comment>
     <comment>Upgrade to version 2.4.0 (jsc#PED-3284, jsc#PED-3285)</comment>
     <requestid>1089695</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>472fcf1b891dfaad01171f93abed4bb3</srcmd5>
+    <version>2.4.0</version>
+    <time>1697748417</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118250</requestid>
+  </revision>
 </revisionlist>

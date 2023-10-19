@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 16 11:13:48 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Reverted back the if condition (bsc#1216212)
+  * %if 0%{?suse_version} from "1500" to "1300" to avoid build error on IBS
+
+-------------------------------------------------------------------
 Tue May 30 06:23:30 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 2.4.0 (jsc#PED-3284, jsc#PED-3285)

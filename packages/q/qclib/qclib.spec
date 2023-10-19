@@ -30,7 +30,7 @@ Source1:        %{name}-rpmlintrc
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1300
 BuildRequires:  glibc-devel-static
 %else
 BuildRequires:  glibc-devel
