@@ -69,4 +69,15 @@
 </comment>
     <requestid>1115047</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d51345f845bacfaf04dd74810a6c7376</srcmd5>
+    <version>0.16.6</version>
+    <time>1697748581</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.6:
+  * add missing include
+  * add support for python 3.12
+</comment>
+    <requestid>1118848</requestid>
+  </revision>
 </revisionlist>
