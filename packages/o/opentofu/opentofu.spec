@@ -17,7 +17,7 @@
 
 
 Name:           opentofu
-Version:        1.6.0~alpha2
+Version:        1.6.0~alpha3
 Release:        0
 Summary:        Declaratively manage your cloud infrastructure
 License:        MPL-2.0

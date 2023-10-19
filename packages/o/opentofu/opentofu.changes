@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:52:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~alpha3:
+  * Fix goreleaser version to one that actually exists. (#744)
+  * Fix typo in name of script. (#743)
+  * Update version for new release. (#742)
+  * Post weekly update for the 2023-10-17. (#740)
+  * Update to be more consistent across operating systems. (#731)
+  * Add installation instructions. (#730)
+  * Fix: Global provider schema cache is never used (#719)
+  * Build using golang 1.21 (#718)
+  * Add the license to compare-release-versions.sh (#727)
+  * (#721) remove reference to Hashicorp docker mirror in workflow
+    (#723)
+
+-------------------------------------------------------------------
 Fri Oct  6 13:23:54 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package opentofu: OpenSource fork of Terraform
