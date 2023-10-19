@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 11 07:18:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add Conflict between libArcus3 and libArcus1: (libArcus.so.1.1.0
+  symlinks to libArcus.so.3), which seems 'odd' but is not invalid
+  per se. libArcus-lulzbot is a fork of this library, which should
+  probably better have been renamed.
+
+-------------------------------------------------------------------
+Tue Sep 26 15:32:19 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reverting previous "fix", issues caused by improper named lulzbot
+  libArcus fork.
+  * Deleting set-soname.patch (which does not even set the soname,
+    but renames the version link.
+
+-------------------------------------------------------------------
 Wed Sep 13 10:53:44 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - fix wrong library versioning 3 -> 1.1.0. (bsc#1215305)

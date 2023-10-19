@@ -173,4 +173,12 @@
   Adding set-soname.patch</comment>
     <requestid>1110915</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>c861b88b6fac65f4a7c5f355cafa0097</srcmd5>
+    <version>4.13.1</version>
+    <time>1697748595</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118907</requestid>
+  </revision>
 </revisionlist>

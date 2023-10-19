@@ -30,8 +30,6 @@ Source:         https://github.com/Ultimaker/libArcus/archive/%{sversion}.tar.gz
 Patch0:         libArcus-3.5.1-PyQt5.sip.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
-# PATCH-FIX-OPENSUSE - set a soname
-Patch2:         set-soname.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
@@ -48,6 +46,9 @@ Summary:        3D printer control software
 # The forked libArcus-lulzbot uses the same SONAME ...
 Group:          System/Libraries
 Provides:       libArcus-Ultimaker
+# libArcus-lulzbot is a fork of libArcus that did not rename its libs and we happen
+# ro run into a file conflict. Explicitly mark this conflict, even though it sounds odd
+Conflicts:      libArcus1
 
 %description -n %name%{sover}
 Communication library between internal components for Ultimaker software
