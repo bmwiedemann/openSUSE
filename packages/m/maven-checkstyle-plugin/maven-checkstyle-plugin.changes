@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:38:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with javac release 8, since java.util.stream.Stream does
+  not exist in java 7
+
+-------------------------------------------------------------------
 Tue Mar 10 09:31:10 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of Apache maven-checkstyle-plugin 3.0.0
