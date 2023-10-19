@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 18 14:21:44 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- update to 2.0.7 (bsc#1216377, CVE-2023-45803):
+  * Made body stripped from HTTP requests changing the request method
+    to GET after HTTP 303 "See Other" redirect responses.
+
+-------------------------------------------------------------------
 Thu Oct 12 12:46:57 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update Buildrequires to upstream list.
