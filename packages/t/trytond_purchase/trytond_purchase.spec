@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_purchase
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,26 +13,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %define majorver 6.0
 Name:           trytond_purchase
 Version:        %{majorver}.12
 Release:        0
 Summary:        The "purchase" module for the Tryton ERP system
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Office/Management
-Url:            http://www.tryton.org/
+URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
 Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 BuildRequires:  fdupes
-BuildRequires:  python3-setuptools 
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
 Requires:       trytond
-Requires:       trytond_account 
+Requires:       trytond_account
 Requires:       trytond_account_invoice
 Requires:       trytond_account_product
-Requires:       trytond_company 
+Requires:       trytond_company
 Requires:       trytond_currency
 Requires:       trytond_party
 Requires:       trytond_product
@@ -47,16 +50,16 @@ which the products will be purchased and a list of purchase lines,
 each one containing a product and a quantity.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
-%python3_build   
+%python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot 
+%python3_install
 %fdupes -s %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 %{python3_sitelib}/*
 
