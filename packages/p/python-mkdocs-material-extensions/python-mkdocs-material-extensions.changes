@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:16:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.3:
+  NEW: The final release. mkdocs-material (version 9.4) now has
+  this library's logic built-in making this library obsolete. Users
+  should migrate to using mkdocs-material's
+  material.extensions.emoji.twemoji and
+  material.extensions.emoji.to_svg in place of the respective
+  materialx.emoji.twemoji and materialx.emoji.to_svg functions.
+
+-------------------------------------------------------------------
 Thu Sep 21 04:43:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.2:

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material-extensions%{psuffix}
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Extension pack for Python Markdown
 License:        MIT
