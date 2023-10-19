@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Mon Mar  6 14:43:16 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - Stop using File.exists? which no longer works in Ruby 3.2
