@@ -243,4 +243,15 @@
   * obsoletes 0001_Do_not_split_query_strings_on_semicolon_anymore.patch in older dists</comment>
     <requestid>1109338</requestid>
   </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>cdf0b642bf6efaa57013924239d083e6</srcmd5>
+    <version>0.12.25</version>
+    <time>1697748438</time>
+    <user>anag+factory</user>
+    <comment>- Add patch update-module-loader.patch:
+  * Add find_spec to the magic bottle.ext loader, Python 3.12 no longer
+    calls find_module.
+- Switch to pyproject and autosetup macros.</comment>
+    <requestid>1118452</requestid>
+  </revision>
 </revisionlist>

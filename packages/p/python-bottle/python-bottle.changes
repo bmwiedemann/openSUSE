@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 18 05:46:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch update-module-loader.patch:
+  * Add find_spec to the magic bottle.ext loader, Python 3.12 no longer
+    calls find_module.
+- Switch to pyproject and autosetup macros.
+
+-------------------------------------------------------------------
 Fri May 19 09:25:55 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - refresh bottle-docs.pdf from the upstream URL
