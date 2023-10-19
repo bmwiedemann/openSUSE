@@ -68,4 +68,12 @@ There should be a rpmlint which whitelists this PAM module.</comment>
   - Documentation fixes</comment>
     <requestid>1109699</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6002c7b808f9cd22c19bb64d50f01c0b</srcmd5>
+    <version>1.2.0</version>
+    <time>1697748443</time>
+    <user>anag+factory</user>
+    <comment>- Fix lastlog.8 .so reference</comment>
+    <requestid>1118595</requestid>
+  </revision>
 </revisionlist>

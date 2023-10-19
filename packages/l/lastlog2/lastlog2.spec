@@ -58,7 +58,7 @@ to develop applications that needs to read, write or modify the lastlog2 databas
 
 %install
 %meson_install
-echo ".so lastlog2" > %{buildroot}%{_mandir}/man8/lastlog.8
+echo ".so lastlog2.8" > %{buildroot}%{_mandir}/man8/lastlog.8
 
 %check
 %meson_test
