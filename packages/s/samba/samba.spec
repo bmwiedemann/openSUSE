@@ -158,7 +158,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.19.1+git.312.c912b3d2ef6
+Version:        4.19.2+git.322.7e9201cef5
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -721,7 +721,6 @@ install -d -m 0755 -p \
 	%{buildroot}/%{_sysconfdir}/{xinetd.d,logrotate.d} \
 	%{buildroot}/%{_sysconfdir}/openldap/schema \
 	%{buildroot}/%{_sysconfdir}/security \
-	%{buildroot}/%{_sysconfdir}/slp.reg.d \
 	%{buildroot}/%{CONFIGDIR} \
 	%{buildroot}/%{_unitdir} \
 	%{buildroot}/%{_lib}/security \
@@ -828,7 +827,6 @@ install -m 0755 tools/update-apparmor-samba-profile \
 	%{buildroot}/%{_datadir}/samba/
 # PDF generator
 install -p -m 0755 tools/smbprngenpdf %{buildroot}/%{_bindir}/smbprngenpdf
-install -m 0644 config/samba.reg %{buildroot}/%{_sysconfdir}/slp.reg.d/samba.reg
 install -m 0644 config/samba.pamd-common %{buildroot}/%samba_pamdir/samba
 install -m 0644 config/dhcp.conf %{buildroot}/%{_fillupdir}/samba-client-dhcp.conf
 install -m 0644 config/sysconfig.dhcp-samba-client %{buildroot}/%{_fillupdir}/sysconfig.dhcp-samba-client
@@ -1126,7 +1124,6 @@ exit 0
 %else
 %config %samba_pamdir/samba
 %endif
-%{_sysconfdir}/slp.reg.d
 %dir %{_libdir}/samba
 %dir %{_libdir}/samba/vfs
 %dir %{_libdir}/samba/ldb

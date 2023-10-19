@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 16 16:04:22 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to 4.19.2
+  * Use-after-free in aio_del_req_from_fsp during smbd shutdown
+    after failed IPC FSCTL_PIPE_TRANSCEIVE; (bso#15423).
+  * clidfs.c do_connect() missing a "return" after a
+    cli_shutdown() call; (bso#15426).
+  * macOS mdfind returns only 50 results; (bso#15463).
+  * GETREALFILENAME_CACHE can modify incoming new filename with
+    previous cache entry value; (bso#15481).
+  * libnss_winbind causes memory corruption since samba-4.18,
+    impacts sendmail, zabbix, potentially more; (bso#15464).
+  * ctdbd: setproctitle not initialized messages flooding logs;
+    (bso#15479).
+  * CVE-2023-5568 Heap buffer overflow with freshness tokens in
+    the Heimdal KDC in Samba 4.19; (bso#15491).
+  * The heimdal KDC doesn't detect s4u2self correctly when fast
+    is in use; (bso#15477).
+
+-------------------------------------------------------------------
+Thu Oct 12 11:33:44 UTC 2023 - Noel Power <nopower@suse.com>
+
+- packaging: Remove /etc/slp.reg.d from samba spec file;
+  (bsc#1216160)
+
+-------------------------------------------------------------------
+Thu Oct 12 11:04:26 UTC 2023 - Noel Power <nopower@suse.com>
+
+- use systemd-logind rather than utmp for y2038 safety;
+  (bsc#1216159).
+
+-------------------------------------------------------------------
 Tue Oct 10 15:12:38 UTC 2023 - Noel Power <nopower@suse.com>
 
 - CVE-2023-4091: samba: Client can truncate file with read-only
