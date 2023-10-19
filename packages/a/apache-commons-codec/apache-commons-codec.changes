@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct 18 11:30:31 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 1.16.0: 
+  * Minor improvements #67. Fixes CODEC-295. 	
+  * Remove duplicated words from Javadocs.
+  * Simplify assertion #84. Fixes CODEC-301.
+  * Simplify assertion #84. Fixes CODEC-300.
+  * Use Standard Charset object #82. Fixes CODEC-298.
+  * Use String.contains() functions #125.
+  * Avoid use toString() or substring() in favor of a simplified expression #126.
+  * Fix byte-skipping in Base16 decoding #135. Fixes CODEC-305.
+  * Fix several typos, improve writing in some javadocs #139.
+  * BaseNCodecOutputStream.eof() should not throw IOException.
+  * Javadoc improvements and cleanups.
+  * Deprecate BaseNCodec.isWhiteSpace(byte) and use Character.isWhitespace(int).
+  * Add support for Blake3 family of hashes. Fixes CODEC-296.
+  * Add github/codeql-action. 	
+  * Bump actions/cache from v2 to v3.0.10 #75, #99, #119, #138, #149, #152.
+  * Bump actions/setup-java from v1.4.1 to 3.5.1 #60, #62, #121.
+  * Bump actions/checkout from 2.3.2 to 3.1.0 #65, #98, #114, #153.
+  * Bump commons-parent from 52 to 58, #147, #165, #170.
+  * Bump junit from 4.13.1 to 5.9.1 #76, #39, #140, #148. Fixes CODEC-285.
+  * Bump Java 7 to 8.
+  * Bump japicmp-maven-plugin from 0.14.3 to 0.17.1.
+  * Bump jacoco-maven-plugin from 0.8.5 to 0.8.8 (Fixes Java 15 builds).
+  * Bump maven-surefire-plugin from 2.22.2 to 3.0.0-M7 #122, #134.
+  * Bump maven-javadoc-plugin from 3.2.0 to 3.4.1.
+  * Bump animal-sniffer-maven-plugin from 1.19 to 1.22.
+  * Bump maven-pmd-plugin from 3.13.0 to 3.19.0, #133, #142, #145.
+  * Bump pmd from 6.47.0 to 6.52.0.
+  * Bump maven-checkstyle-plugin from 2.17 to 3.2.0 #143.
+  * Bump checkstyle from 8.45.1 to 9.3 #97, #100, #101, #103.
+  * Bump taglist-maven-plugin from 2.4 to 3.0.0 #102.
+  * Bump jacoco-maven-plugin from 0.8.7 to 0.8.8. 
+
+-------------------------------------------------------------------
 Thu May  5 16:01:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not alias the artifact to itself

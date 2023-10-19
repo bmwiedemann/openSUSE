@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-codec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2010, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define short_name commons-%{base_name}
 %bcond_with tests
 Name:           apache-commons-codec
-Version:        1.15
+Version:        1.16.0
 Release:        0
 Summary:        Apache Commons Codec Package
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Requires:       java >= 1.8
 Provides:       jakarta-%{short_name} = %{version}
 Obsoletes:      jakarta-%{short_name} < %{version}
@@ -97,7 +97,7 @@ ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # poms
 # Install pom file
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
