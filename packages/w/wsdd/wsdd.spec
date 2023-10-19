@@ -56,7 +56,11 @@ for devices running Samba, like NAS or file sharing servers on your local networ
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}-user.conf
 %if 0%{suse_version} <= 1500
+%if 0%{?sle_version} < 150600
 sed -i '1s/python3/python3.10/' src/wsdd.py
+%else
+sed -i '1s/python3/python3.11/' src/wsdd.py
+%endif
 %endif
 
 %install

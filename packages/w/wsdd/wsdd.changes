@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 18 15:36:03 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Leap 15.6 has no python 3.10 anymore, use 3.11 instead
+
+-------------------------------------------------------------------
 Thu Apr  6 08:34:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix previous change: really limit the forced change to python
