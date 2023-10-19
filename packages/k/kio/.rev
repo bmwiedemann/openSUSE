@@ -1244,4 +1244,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
   * 0001-Don-t-crash-if-KMountPoint-gives-nothing-back-while-.patch</comment>
     <requestid>1112067</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>554797001d574cf5a3aef4076c3b5644</srcmd5>
+    <version>5.111.0</version>
+    <time>1697748363</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
+    <requestid>1118703</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  9 20:20:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- Changes since 5.110.0:
+  * dbusactivationrunner: only activate well-formed services (kde#475266)
+  * DBusActivationRunner: fix object path according to spec
+  * Undeprecate KCoreDirLister::setMimeExcludeFilter
+  * Fix incomplete error strings in MimeTypeFinderJob
+  * Don't crash if KMountPoint gives nothing back while checking for CIFS (kde#474451)
+  * trashimpl: optimize TrashSizeCache::calculateSize
+  * trash: Optimize trashimpl::adaptTrashSize
+  * [kfilewidget] Fixing saving to files with quotes (kde#426728)
+  * KPropertiesDialog: Force PlainText on size label
+- Drop patch, merged upstream:
+  * 0001-Don-t-crash-if-KMountPoint-gives-nothing-back-while-.patch
+
+-------------------------------------------------------------------
 Mon Sep 18 18:44:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream crash fix (kde#474451)
