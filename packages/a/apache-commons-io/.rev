@@ -143,4 +143,15 @@
     <comment>sync changes with sle</comment>
     <requestid>978714</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>896672c050102efc6ec39400dd965cc2</srcmd5>
+    <version>2.14.0</version>
+    <time>1697748447</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.14.0:
+  * Lots of new features, fixes and updates.
+  * https://commons.apache.org/proper/commons-io/changes-report.html#a2.14.0
+</comment>
+    <requestid>1118620</requestid>
+  </revision>
 </revisionlist>

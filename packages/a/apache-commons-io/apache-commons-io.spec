@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name  io
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        2.11.0
+Version:        2.14.0
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source2:        %{name}-build.xml
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Provides:       %{short_name} = %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
@@ -53,10 +53,6 @@ This package provides %{summary}.
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE2} build.xml
 
-%pom_remove_parent
-%pom_remove_dep :junit-bom
-%pom_change_dep -r -f ::::: :::::
-
 %build
 %{ant} \
 	-Dcompiler.source=1.8 \
@@ -70,7 +66,7 @@ install -p -m 0644 target/%{short_name}-%{version}.jar \
 ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 %add_maven_depmap %{short_name}.pom %{short_name}.jar -a "org.apache.commons:commons-io"
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
