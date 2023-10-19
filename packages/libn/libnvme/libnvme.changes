@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 17 14:38:25 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 1.6+5.g68c6ffb:
+  * avoid stack corruption by unaligned DMA to user space buffers
+    (bsc#1216344, gh#linux-nvme/libnvme#727)
+
+-------------------------------------------------------------------
 Thu Oct 12 16:50:55 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Add missing jsc# tracking references to changelog
