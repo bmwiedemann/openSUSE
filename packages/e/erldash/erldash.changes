@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 19 07:46:43 UTC 2023 - Michael Vetter <jubalh@iodoru.org>
+
+- Update to 0.1.5:
+  * Update dependencies and remove ordered-float crate #5
+  * Add --record and --replay options #6
+
+-------------------------------------------------------------------
 Tue Sep 19 12:07:31 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - License correction based on legaldb report 
