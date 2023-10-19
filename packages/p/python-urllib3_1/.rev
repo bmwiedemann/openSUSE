@@ -48,4 +48,15 @@
   * different headers can be set via Retry.remove_headers_on_redirect.</comment>
     <requestid>1115891</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fb6e3beea8f61e7f03024ce05593f5bc</srcmd5>
+    <version>1.26.18</version>
+    <time>1697748409</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.26.18 (bsc#1216377, CVE-2023-45803):
+  * Made body stripped from HTTP requests changing the request method
+    to GET after HTTP 303 &quot;See Other&quot; redirect responses.
+</comment>
+    <requestid>1118605</requestid>
+  </revision>
 </revisionlist>
