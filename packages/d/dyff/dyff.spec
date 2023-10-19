@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dyff
-Version:        1.5.8
+Version:        1.6.0
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT
@@ -42,8 +42,7 @@ Input files can be local files (filesystem path), remote files (URI), or the sta
 All orders of keys in hashes are preserved during processing and output to the terminal, most notably in the sub-commands to convert YAML to JSON and vice versa.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"

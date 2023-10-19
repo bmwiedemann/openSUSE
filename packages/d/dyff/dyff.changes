@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:04:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0:
+  * Add test case where from or to is null
+  * Add test case to check new if branch
+  * Introduce identifier interface
+  * Provide Kubernetes lists example
+  * Refactor core code by sorting functions
+  * Refactor core code
+  * Use `assets` function in test cases
+  * Add `apiVersion` to Kubernetes look-up
+  * Move Kubernetes assests into subdirectories
+  * Bump golang.org/x/net from 0.16.0 to 0.17.0
+  * Bump github.com/onsi/ginkgo/v2 from 2.12.1 to 2.13.0
+  * Tidy up test setup
+  * Bump github.com/onsi/gomega from 1.27.10 to 1.28.0
+  * Bump github.com/onsi/ginkgo/v2 from 2.12.0 to 2.12.1
+  * Update Go version in README
+  * Bump Go version to `1.20`
+  * Bump github.com/onsi/ginkgo/v2 from 2.11.0 to 2.12.0
+  * Bump github.com/onsi/gomega from 1.27.8 to 1.27.10
+
+-------------------------------------------------------------------
 Fri Jun 30 04:43:02 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.5.8:
