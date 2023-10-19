@@ -484,4 +484,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     would result in ``MemoryError``.</comment>
     <requestid>1098939</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b81b04d9e365fef20beefaf504b3153b</srcmd5>
+    <version>3.0.1</version>
+    <time>1697748437</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118346</requestid>
+  </revision>
 </revisionlist>

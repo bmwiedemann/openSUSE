@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 17 15:32:34 UTC 2023 - Markéta Calábková <meggy.calabkova@gmail.com>
+
+- Update to 3.0.1
+  * Add support for Python 3.12, including PEP 695 type parameter syntax.
+  * Remove support for Python 3.7.
+  * Use the global inference cache when inferring, even without an explicit
+    InferenceContext.
+  * Following a deprecation period starting in astroid 2.7.0, the astroid.node_classes
+    and astroid.scoped_nodes modules have been removed in favor of astroid.nodes.node_classes
+    and astroid.nodes.scoped_nodes.
+  * Following a deprecation period starting in astroid 2.12.0, the astroid.mixins module
+    has been removed in favor of astroid.nodes._base_nodes (private).
+  * Remove @cached and @cachedproperty decorator (just use @cached_property from the stdlib).
+  * Remove the inference module. Node inference methods are now in the module
+    defining the node, rather than being associated to the node afterward.
+  * Move LookupMixIn to astroid.nodes._base_nodes and make it private.
+  * Remove the shims for OperationError, BinaryOperationError, and UnaryOperationError
+    in exceptions. They were moved to util in astroid 1.5.0.
+  * Reduce file system access in ast_from_file().
+  * nodes.FunctionDef no longer inherits from nodes.Lambda.
+  * infer_call_result now shares the same interface across all implementations.
+  * Remove unused and / or deprecated constants.
+  * The future argument to each method is deprecated and will be removed in astroid 4.0.
+  * So many more changes, see https://github.com/pylint-dev/astroid/blob/main/ChangeLog
+    for a complete list.
+
+-------------------------------------------------------------------
 Sun Jul 16 11:40:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.6:

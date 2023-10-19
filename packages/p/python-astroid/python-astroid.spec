@@ -18,37 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astroid
-Version:        2.15.6
+Version:        3.0.1
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://github.com/PyCQA/astroid/archive/refs/tags/v%{version}.tar.gz#/astroid-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7.2}
-BuildRequires:  %{python_module lazy-object-proxy >= 1.4}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typed-ast >= 1.4 if %python-base < 3.8}
 # typing-extensions for python310 required for tests only: gh#PyCQA/astroid#1585
 BuildRequires:  %{python_module typing-extensions >= 3.10}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module wrapt >= 1.11 if %python-base < 3.11}
-BuildRequires:  %{python_module wrapt >= 1.14 if %python-base >= 3.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-lazy-object-proxy >= 1.4
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typed-ast >= 1.4
-%endif
 %if 0%{?python_version_nodots} < 311
 Requires:       python-typing-extensions >= 3.10
-%endif
-%if 0%{?python_version_nodots} < 311
-Requires:       python-wrapt >= 1.11
-%else
-Requires:       python-wrapt >= 1.14
 %endif
 %python_subpackages
 
