@@ -1,7 +1,7 @@
 #
 # spec file for package virglrenderer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,13 @@
 
 %define         libname lib%{name}1
 Name:           virglrenderer
-Version:        0.9.1
+Version:        1.0.0
 Release:        0
 Summary:        Virgl Rendering library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://virgil3d.github.io/
 Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
-# CVE-2022-0175 [bsc#1194601], VUL-0: CVE-2022-0175: virglrenderer: Missing initialization of res->ptr
-Patch0:         virglrenderer-CVE-2022-0175.patch
-# CVE-2022-0135 [bsc#1195389], VUL-0: CVE-2022-0135: virglrenderer: out-of-bounds write in read_transfer_data()
-Patch1:         virglrenderer-CVE-2022-0135.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig >= 0.9.0
@@ -73,9 +69,7 @@ This package contains a server to test virgl rendering
 without GL.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
 %meson

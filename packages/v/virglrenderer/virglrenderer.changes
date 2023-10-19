@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 18 09:30:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.0:
+  + Switch to Venus protocol version 1.0.0
+  + Drop experimental tag from Venus configuration flag and update
+    API.
+  + Support passing fences from guest to host for waiting
+    and inter-context fence sharing/syncing.
+- Drop virglrenderer-CVE-2022-0175.patch and
+  virglrenderer-CVE-2022-0135.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb  2 09:33:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - security update
