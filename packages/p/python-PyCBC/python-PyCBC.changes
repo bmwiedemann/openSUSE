@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 13 02:47:44 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.0:
+  * Various small improvements with respect to v2.2.2
+
+-------------------------------------------------------------------
+Tue Oct 10 22:56:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.2:
+  * Adds a variety of incremental improvements with respect to
+    v2.2.1, including the ability to use the SEOBNRv5 waveform.
+- Update to version 2.2.1:
+  * Adds a variety of incremental improvements with respect to
+    v2.2.0.
+- Disable test_waveform.py: requires pykerr which is not packaged
+  for openSUSE.
+
+-------------------------------------------------------------------
 Tue May 23 12:22:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.0:

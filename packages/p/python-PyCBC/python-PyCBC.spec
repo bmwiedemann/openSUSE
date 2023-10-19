@@ -1,5 +1,5 @@
 #
-# spec file for package python-PyCBC
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -30,7 +30,7 @@
 
 %define modname PyCBC
 Name:           python-PyCBC%{psuffix}
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
@@ -137,6 +137,7 @@ sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/
 %if %{with test}
 %check
 # Tests that either require network or require special setups
+# test_waveform.py requires pykerr, openSUSE don't have packages for it
 # can't use pytest --ignore because of a special arg parser in test/utils.py
 rm -r \
    test/test_chisq.py \
@@ -148,6 +149,7 @@ rm -r \
    test/test_infmodel.py \
    test/test_skymax.py \
    test/test_tmpltbank.py \
+   test/test_waveform.py \
    %{nil}
 
 pushd test
