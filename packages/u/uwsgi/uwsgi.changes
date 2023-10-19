@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 18 09:48:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.22:
+  + apache2/mod_proxy_uwsgi: stricter backend HTTP response
+    parsing/validation (CVE-2023-27522).
+  + plugins/rack: fix compilation with ruby 3.1.
+  + plugins/php: fix build with PHP >= 8.2.
+- Drop uwsgi-php82-php_module_startup-signature.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sat Jul  1 19:53:24 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

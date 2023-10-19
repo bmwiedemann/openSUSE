@@ -29,7 +29,7 @@
 %endif
 
 Name:           uwsgi
-Version:        2.0.21
+Version:        2.0.22
 Release:        0
 Summary:        Application Container Server for Networked/Clustered Web Applications
 License:        Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0
@@ -57,8 +57,6 @@ Patch3:         uwsgi-1.9.11-systemd_logger-old_systemd.patch
 Patch4:         uwsgi-2.0.18-postgresql-config.patch
 # PATCH-FIX-UPSTREAM uwsgi-ld-noexecstack.patch - Do not create executable stack
 Patch5:         uwsgi-ld-noexecstack.patch
-# https://github.com/unbit/uwsgi/commit/509a0fdd12870d0bf5b4c1ef7d1f7f
-Patch6:         uwsgi-php82-php_module_startup-signature.patch
 BuildRequires:  apache-rpm-macros
 %if 0%{suse_version} < 1500
 BuildRequires:  apache2-devel
@@ -449,7 +447,6 @@ This package contains support for PHP version 7.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 # Generate a config that builds all plugins except for examples and stuff we
 # can't satisfy the requirements for or are just broken
 excluded_plugins=""
