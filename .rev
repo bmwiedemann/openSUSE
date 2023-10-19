@@ -789,4 +789,15 @@
     <comment></comment>
     <requestid>1117485</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b4bde2daf70f7db50cec2517a214d291</srcmd5>
+    <version>2.0.7</version>
+    <time>1697748407</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.7 (bsc#1216377, CVE-2023-45803):
+  * Made body stripped from HTTP requests changing the request method
+    to GET after HTTP 303 &quot;See Other&quot; redirect responses.
+</comment>
+    <requestid>1118603</requestid>
+  </revision>
 </revisionlist>
