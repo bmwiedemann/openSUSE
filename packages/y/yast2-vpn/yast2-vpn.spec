@@ -17,7 +17,7 @@
 
 
 Name:           yast2-vpn
-Version:        4.6.1
+Version:        5.0.0
 Release:        0
 URL:            https://github.com/yast/yast-vpn
 Source0:        %{name}-%{version}.tar.bz2

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Wed Apr  5 15:50:35 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - Fixed an issue where yast2-vpn module breaks when strongswan is
