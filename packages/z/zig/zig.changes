@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 18 10:55:45 UTC 2023 - Soc Virnyl S. Estela <contact@uncomfyhalomacro.pl>
+
+- Change builder to ninja. change c and c++ compiler to clang
+
+-------------------------------------------------------------------
+Thu Sep  7 11:16:24 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove comment since it builds now on latest glibc.
+
+-------------------------------------------------------------------
+Fri Aug  4 06:18:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.11.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.11.0/release-notes.html
+- Update patchsets:
+  * remove 0000-invoke-lld-llvm15.patch
+  * add 0000-remove-lld-in-cmakelist.patch
+  * add 0001-invoke-lld.patch
+  * update 0002-no-lld-libs-and-includes.patch
+  * change to llvm16
+- Update specfile to use LLVM version 16.x. This will be removed in the future.
+
+-------------------------------------------------------------------
 Thu Feb  2 02:13:28 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Enable build with riscv64 and %{mips64} arches.

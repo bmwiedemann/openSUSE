@@ -15,4 +15,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1063928</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f0b3d3a0818a83955699c3679142b7f</srcmd5>
+    <version>0.11.0</version>
+    <time>1697748538</time>
+    <user>anag+factory</user>
+    <comment>- Change builder to ninja. change c and c++ compiler to clang
+- Remove comment since it builds now on latest glibc.
+- Update to version 0.11.0:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.11.0/release-notes.html
+- Update patchsets:
+  * remove 0000-invoke-lld-llvm15.patch
+  * add 0000-remove-lld-in-cmakelist.patch
+  * add 0001-invoke-lld.patch
+  * update 0002-no-lld-libs-and-includes.patch
+  * change to llvm16
+- Update specfile to use LLVM version 16.x. This will be removed in the future.
+</comment>
+    <requestid>1118745</requestid>
+  </revision>
 </revisionlist>

@@ -17,11 +17,12 @@
 
 
 %global _lto_cflags %{nil}
+%global __builder   ninja
 %bcond_without  macro
 %bcond_without  test
 
 Name:           zig
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Compiler for the Zig language
 License:        MIT
@@ -30,17 +31,22 @@ URL:            https://ziglang.org/
 Source0:        https://ziglang.org/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        macros.%{name}
 Source2:        zig-rpmlintrc
-Patch0:         0000-invoke-lld-llvm15.patch
+Patch0:         0000-remove-lld-in-cmakelist.patch
+Patch1:         0001-invoke-lld.patch
 Patch2:         0002-no-lld-libs-and-includes.patch
-BuildRequires:  clang15-devel
+BuildRequires:  clang16
+BuildRequires:  clang16-devel
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  glibc
+BuildRequires:  glibc-devel
 BuildRequires:  help2man
-BuildRequires:  lld15
-BuildRequires:  llvm15-devel
+BuildRequires:  lld16
+BuildRequires:  llvm16-devel
+BuildRequires:  ninja
 BuildRequires:  zlib-devel
-Requires:       lld15
+Requires:       lld16
 
 # llvm-config is missing targets for ppc and arm architectures.
 # ExcludeArch:    ppc64 ppc64le %%arm %%ix86
@@ -89,6 +95,8 @@ This package contains common RPM macros for %{name}.
   -DCMAKE_BUILD_TYPE=Release \
 %endif
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_C_COMPILER="clang-16" \
+  -DCMAKE_CXX_COMPILER="clang++-16" \
   -DZIG_SHARED_LLVM=On \
   -DZIG_TARGET_MCPU="baseline" \
   -DZIG_VERSION:STRING="%{version}"
