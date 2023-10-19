@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 19 11:48:57 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.64.2:
+  * Version v1.64.2
+  * selfupdate: fix "invalid hashsum signature" error
+  * build: fix docker build running out of space
+  * Start v1.64.2-DEV development
+
+-------------------------------------------------------------------
+Thu Oct 19 11:48:42 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch services to manual according to the new guidelines
+
+-------------------------------------------------------------------
 Tue Oct 17 20:03:22 UTC 2023 - mrueckert@suse.de
 
 - Update to version 1.64.1:
