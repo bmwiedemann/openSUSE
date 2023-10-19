@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kplotting
-Version:        5.110.0
+Version:        5.111.0
 Release:        0
 Summary:        KDE Data plotting library
 License:        LGPL-2.1-or-later
