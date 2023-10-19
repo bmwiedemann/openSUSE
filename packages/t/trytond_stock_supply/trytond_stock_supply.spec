@@ -30,6 +30,7 @@ Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 
 Requires:       trytond
@@ -53,7 +54,7 @@ Tryton application platform.
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot
+%python3_install
 %fdupes -s %{buildroot}
 
 %files
