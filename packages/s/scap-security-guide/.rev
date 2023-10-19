@@ -344,4 +344,12 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
 - 0001-Revert-fix-aide-remediations-add-crontabs.patch: removed, upstream</comment>
     <requestid>1102115</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>da4fadac157ea71a43f16e05f28ace69</srcmd5>
+    <version>0.1.70</version>
+    <time>1697748584</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118850</requestid>
+  </revision>
 </revisionlist>

@@ -42,13 +42,14 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.69
+Version:        0.1.70
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
+Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
 
@@ -211,6 +212,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_OL8=ON \
 	 -DSSG_PRODUCT_OL9=ON \
 	 -DSSG_PRODUCT_OPENSUSE=ON \
+	 -DSSG_PRODUCT_OPENEMBEDDED=OFF \
 	 -DSSG_PRODUCT_RHCOS4=ON \
 	 -DSSG_PRODUCT_RHEL7=ON \
 	 -DSSG_PRODUCT_RHEL8=ON \

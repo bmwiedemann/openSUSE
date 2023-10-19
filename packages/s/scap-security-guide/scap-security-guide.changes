@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 17 14:44:03 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.70 (jsc#ECO-3319)
+  - Add openembedded distro support (#10793)
+  - Remove DRAFT wording for OpenShift STIG (#11100)
+  - Remove test-function-check_playbook_file_removed_and_added test (#10982)
+  - scap-security-guide: Add Poky support (#11046)
+
+-------------------------------------------------------------------
 Wed Aug  2 13:49:20 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.69 (jsc#ECO-3319)
