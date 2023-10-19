@@ -122,4 +122,15 @@
 - Update to version 0.56.0 (forwarded request 1117814 from VaiTon)</comment>
     <requestid>1117824</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>da235d70fb43d0b8abe0fa345e9a66a0</srcmd5>
+    <version>0.56.2</version>
+    <time>1697748459</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.2:
+  * Fixed: quic-go has been updated to fix QUIC issues on FreeBSD. (Pull request 291)
+  * Pull request 289: updated dependencies
+  * Pull request 288: close bootstraps (forwarded request 1118628 from VaiTon)</comment>
+    <requestid>1118638</requestid>
+  </revision>
 </revisionlist>

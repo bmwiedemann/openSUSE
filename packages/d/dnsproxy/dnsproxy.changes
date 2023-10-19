@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 18 17:02:54 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.56.2:
+  * Fixed: quic-go has been updated to fix QUIC issues on FreeBSD. (Pull request 291)
+  * Pull request 289: updated dependencies
+  * Pull request 288: close bootstraps
+
+-------------------------------------------------------------------
 Sat Oct 14 16:41:58 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.56.1:
