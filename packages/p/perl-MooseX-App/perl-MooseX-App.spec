@@ -23,9 +23,10 @@ Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write user-friendly command line apps with even less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        MooseX-App-1.42.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAROS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         https://patch-diff.githubusercontent.com/raw/maros/MooseX-App/pull/70.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/maros/MooseX-App/pull/71.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

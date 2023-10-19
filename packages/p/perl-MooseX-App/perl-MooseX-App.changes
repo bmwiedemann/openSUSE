@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 19 19:50:05 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Add 71.patch: Allow to override build date with SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
 Wed Aug  9 12:24:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 70.patch: Remove given, when, and smartmatch operators; fix

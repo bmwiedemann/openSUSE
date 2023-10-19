@@ -9,6 +9,7 @@ description_paragraphs: 1
 #  - source2
 patches:
   https://patch-diff.githubusercontent.com/raw/maros/MooseX-App/pull/70.patch: -p1
+  https://patch-diff.githubusercontent.com/raw/maros/MooseX-App/pull/71.patch: -p1
 #  bar.patch:
 preamble: |-
   BuildRequires: perl(Config::Any)
