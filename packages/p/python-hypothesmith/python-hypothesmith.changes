@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 13:53:09 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.3.0
+ * Even more efficient generation of Python identifiers, using Hypothesis 6.84.1
+ * Dropped support for Python 3.7
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

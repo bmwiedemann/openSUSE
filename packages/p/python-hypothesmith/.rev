@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1081888</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e93232e7cf617cbe039e227dadfa2e17</srcmd5>
+    <version>0.3.0</version>
+    <time>1697748452</time>
+    <user>anag+factory</user>
+    <comment>fix (forwarded request 1117695 from mimi_vx)</comment>
+    <requestid>1117696</requestid>
+  </revision>
 </revisionlist>
