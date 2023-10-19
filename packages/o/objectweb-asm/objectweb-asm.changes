@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 17 05:26:11 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 9.6
+  * new Opcodes.V22 constant for Java 22
+  * bug fixes
+    + 317991: Analyzer produces frames that have different locals
+      than those detected by JRE bytecode verifier
+    + 317995: Invalid stackmap generated when the instruction
+      stream has new instruction after invokespecial to <init>
+    + 317998: Analyzer can fail to catch thrown exceptions
+    + 318002: asm-analysis Frame allocates an array unnecessarily
+      inside executeInvokeInsn
+    + bug in CheckFrameAnalyzer with static methods
+
+-------------------------------------------------------------------
 Sun Apr  2 18:13:50 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to version 9.5
