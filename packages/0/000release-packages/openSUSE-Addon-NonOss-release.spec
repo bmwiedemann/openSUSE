@@ -17,6 +17,7 @@ Name:           openSUSE-Addon-NonOss-release
 %define         product openSUSE-Addon-NonOss
 Summary:        openSUSE NonOSS Addon%{?betaversion: %{betaversion}}
 Version:        20231018
+#!BcntSyncTag: openSUSE-Addon-NonOss
 Release:        0
 License:        BSD-3-Clause
 Group:          System/Fhs
