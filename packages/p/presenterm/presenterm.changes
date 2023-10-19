@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Oct 19 07:49:54 UTC 2023 - Michael Vetter <jubalh@iodoru.org>
+
+- Update to 0.2.1:
+  * Binary artifacts are now automatically generated when a new
+    release is done #5
+
+-------------------------------------------------------------------
+Wed Oct 18 20:57:14 UTC 2023 - Michael Vetter <jubalh@iodoru.org>
+
+- Initial package of presenterm 0.2.0 for openSUSE
