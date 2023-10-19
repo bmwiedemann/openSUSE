@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  6 03:06:10 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.18  2023-10-05  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.17_02  2023-10-03  <schubiger@cpan.org>
+   - Validate 'daytime' parameter.
+  1.17_01  2023-10-01  <schubiger@cpan.org>
+   - Minor wording tweak.
+   - Minor indentation tweak.
+
+-------------------------------------------------------------------
 Wed Jun 21 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.17

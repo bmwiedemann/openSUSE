@@ -18,12 +18,13 @@
 
 %define cpan_name DateTime-Format-Natural
 Name:           perl-DateTime-Format-Natural
-Version:        1.17
+Version:        1.180.0
 Release:        0
+%define cpan_version 1.18
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse informal natural language date/time strings
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -33,7 +34,7 @@ BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::HiRes)
 BuildRequires:  perl(DateTime::TimeZone)
 BuildRequires:  perl(List::MoreUtils)
-BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Module::Build) >= 0.42
 BuildRequires:  perl(Module::Util)
 BuildRequires:  perl(Params::Validate) >= 1.15
 BuildRequires:  perl(Test::MockTime::HiRes)
@@ -45,6 +46,22 @@ Requires:       perl(DateTime::TimeZone)
 Requires:       perl(List::MoreUtils)
 Requires:       perl(Params::Validate) >= 1.15
 Requires:       perl(boolean)
+Provides:       perl(DateTime::Format::Natural) = 1.180.0
+Provides:       perl(DateTime::Format::Natural::Calc) = 1.46
+Provides:       perl(DateTime::Format::Natural::Compat) = 0.07
+Provides:       perl(DateTime::Format::Natural::Duration) = 0.07
+Provides:       perl(DateTime::Format::Natural::Duration::Checks) = 0.05
+Provides:       perl(DateTime::Format::Natural::Expand) = 0.04
+Provides:       perl(DateTime::Format::Natural::Extract) = 0.13
+Provides:       perl(DateTime::Format::Natural::Formatted) = 0.12
+Provides:       perl(DateTime::Format::Natural::Helpers) = 0.06
+Provides:       perl(DateTime::Format::Natural::Lang::Base) = 1.08
+Provides:       perl(DateTime::Format::Natural::Lang::EN) = 1.72
+Provides:       perl(DateTime::Format::Natural::Rewrite) = 0.08
+Provides:       perl(DateTime::Format::Natural::Test) = 0.130.0
+Provides:       perl(DateTime::Format::Natural::Utils) = 0.08
+Provides:       perl(DateTime::Format::Natural::Wrappers) = 0.03
+%define         __perllib_provides /bin/true
 Recommends:     perl(Date::Calc)
 %{perl_requires}
 
@@ -54,7 +71,7 @@ strings. In addition, parsable date/time substrings may be extracted from
 ordinary strings.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
