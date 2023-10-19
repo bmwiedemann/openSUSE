@@ -18,7 +18,7 @@
 
 Name:           yast2-support
 Summary:        YaST2 - Support Inquiries
-Version:        4.6.0
+Version:        5.0.0
 Release:        0
 URL:            https://github.com/yast/yast-support
 Group:          System/YaST
