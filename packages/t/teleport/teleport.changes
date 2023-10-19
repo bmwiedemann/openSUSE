@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Oct 19 05:46:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.4.4:
+  * Release 13.4.4 (#33622)
+  * Select examples `api` dependency update (#33595) (#33599)
+  * Expand access list review audit entry. (#33572)
+  * add security group picker to deployservice step (#33454)
+  * [v13] Add support for deploy service agent auto updates
+    (#31982) (#33311)
+  * Add Docker to Slack access request plugin (#33392)
+  * [v13] docs: Reorganize and revise moderated sessions  (#33546)
+  * Deflake TestChaosUpload (#33611)
+  * [v13] Update e (#33606)
+  * docs: update okta service setup (#33465)
+  * Add Docker to MSFT teams plugin (#33386)
+  * Add Docker to Mattermost plugin (#33389)
+  * docs: Fix a couple of typos and reword scenario descriptions
+    (#33398)
+  * docs: Add agent updates follow the cluster upgrade to the FAQ
+    (#33401)
+  * Remove sending tracingContext in NewClientConn (#33584)
+  * [v13] OpenTelemetry Update Backport (#33551)
+  * Gracefully handle web socket closure by clients (#33480)
+    (#33532)
+  * Allow Bots to submit access request reviews (#33375) (#33510)
+  * [v13] Prevent remote proxies from impersonating users from
+    different clusters (#33540)
+  * Notify CLI users when access lists need reviews. (#33469)
+  * [v13] Missed v13 golang backport updates (#33527)
+  * Update e (#33531)
+  * [v13] AWS OIDC: Only consider Linux/UNIX when listing EC2
+    instances (#33514)
+  * [v13] Update e (#33526)
+  * fix oidc test race (#33431)
+  * [v13] Fix user login state gRPC client upsert. (#33450)
+  * [v13] Bump `google.golang.org/grpc` to v1.57.1 (#33488)
+  * [v13] Update @babel/core to 7.23.2 and dedupe babel deps
+    (#33442)
+  * Update e (#33494)
+  * [v13] Add `pcscd` install instructions for hardware key support
+    (#33377)
+  * Web: Fix passing in color to wrong field name (#33489)
+  * [v13] Include 'nextAuditDate' in 'CreateAccessListReview'
+    method (#33484)
+  * [v13] Add a duration for starting notifications to access
+    lists. (#33473)
+  * [v13] docs: update macos app remove command to delete dir and
+    correct fips debug container address (#33368)
+  * [docs] clarify RDS/Aurora databases getting modified (#33411)
+  * [v13] Web: Add notification store (#33382)
+  * Add usage events for desktop access (#33456)
+  * Web: add identity management nav section (#33409) (#33425)
+  * [v13] Bump for word-wrap and semver (#33452)
+  * Allow for Windows PKI operations to target a different domain
+    (#33276)
+  * [v13] Bump golang.org/x/net Backport (#33447)
+  * Remove "aurora" engine from db fetcher (#30572) (#33236)
+  * Refactor desktop audit event emission (#33336)
+  * Fix an issue `tsh` fails to connect Proxy behind TLS-terminated
+    loadbalancer in separate port mode (#33407)
+  * [v13] Fix access list audit log formatting (#33384)
+  * Allow access requests to use user login state. (#33351)
+  * join_sessions overrides the deny rule for sessions a user is
+    allowed to join (#33160)
+  * [auto] docs: Update version to v13.4.3 (#33360)
+  * Remove access lists and members from the cache. (#33324)
+  * docs: include servicenow and opsgenie in plugin index (#33293)
+  * Add Docker to email plugin (#33320)
+
+-------------------------------------------------------------------
 Thu Oct 12 06:03:55 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.4.3:
