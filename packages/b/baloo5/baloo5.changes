@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  9 20:20:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- Changes since 5.110.0:
+  * Use the FSID as the device identifier where possible (kde#402154)
+
+-------------------------------------------------------------------
 Wed Sep  6 12:23:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.110.0
