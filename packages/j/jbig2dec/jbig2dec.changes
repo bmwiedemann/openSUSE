@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 14 13:08:10 UTC 2023 - Atri Bhattacharya <A.Bhattacharya@uliege.be>
+
+- Update to version 0.20:
+  * Move definition of inline macro so that it doesn't cause
+    linker errors during cross-compilation.
+  * Fix OSS-fuzz issue 10862, a memory leak, by freeing image
+    resources upon error.
+  * Fix a bug where a buffer was accessed without considering
+    alignment requirements on architectures such as SPARC.
+  * Fix compiler warnings.
+  * Improve custom memory allocator used in testing to restricting
+    memory usage.
+  * Use silent automake rules when compiling as a separate
+    project.
+- Some specfile cleanups:
+  * Drop additional CFLAGS/LDFLAGS passed for PIE; these are now
+    taken care of by default build flags.
+  * %make_build instead of make.
+- New Source URL.
+
+-------------------------------------------------------------------
 Sat Sep 12 16:24:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.19:

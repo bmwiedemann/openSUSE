@@ -1,7 +1,7 @@
 #
 # spec file for package jbig2dec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define _sover  0
 Name:           jbig2dec
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        JBIG2 Decoder Utility
 License:        AGPL-3.0-or-later
 URL:            https://jbig2dec.com
-Source:         https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9530/jbig2dec-%{version}.tar.gz
+Source:         https://github.com/ArtifexSoftware/jbig2dec/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM fix-for-restore-abi.patch deb#940605 -- Restores the ABI export of jbig2_ctx_new 
+# PATCH-FIX-UPSTREAM fix-for-restore-abi.patch deb#940605 -- Restores the ABI export of jbig2_ctx_new
 Patch1:         fix-for-restore-abi.patch
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -57,13 +57,11 @@ based on libjbig2dec.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fPIC"
-export LDFLAGS="-pie"
 autoreconf -fiv
 %configure \
   --disable-static \
   --with-libpng
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
