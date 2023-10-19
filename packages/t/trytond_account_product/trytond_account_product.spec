@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_account_product
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ Source2:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.g
 Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 # List of additional build dependencies
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 Requires:       trytond
 Requires:       trytond_account
@@ -49,7 +50,7 @@ The account_product module of the Tryton application platform.
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot
+%python3_install
 %fdupes -s %{buildroot}
 
 %files
