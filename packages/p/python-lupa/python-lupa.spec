@@ -18,13 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lupa
-Version:        1.14.1
+Version:        2.0
 Release:        0
 Summary:        Python wrapper around Lua and LuaJIT
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/scoder/lupa
 Source:         https://files.pythonhosted.org/packages/source/l/lupa/lupa-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM no-bundle.patch gh#scoder/lupa@19279acda1ad
+Patch1:         no-bundle.patch
+# PATCH-FIX-UPSTREAM noexcept.patch gh#scoder/lupa@fc0a1af99b74
+Patch2:         noexcept.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -61,11 +66,13 @@ export CFLAGS="-fno-strict-aliasing %{optflags}"
 %check
 mv lupa/tests .
 mv lupa lupa.hide
+sed -i 's/lupa.tests/tests/g' tests/test.py
 %pyunittest_arch discover -v
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitearch}/*
+%{python_sitearch}/lupa
+%{python_sitearch}/lupa-%{version}*-info
 
 %changelog
