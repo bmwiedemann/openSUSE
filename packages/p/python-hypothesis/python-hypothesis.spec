@@ -37,7 +37,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.82.7
+Version:        6.88.0
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -46,7 +46,7 @@ URL:            https://github.com/HypothesisWorks/hypothesis
 # Edit the `_service` file and run `osc service runall` for updates.
 # See also https://hypothesis.readthedocs.io/en/latest/packaging.html
 Source:         hypothesis-python-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
@@ -151,7 +151,6 @@ donttest+=" or test_can_learn_to_normalize_the_unnormalized"
 donttest+=" or test_ghostwriter_on_hypothesis"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 donttest+=" or test_gets_right_dtype_for_empty_indices"
-donttest+=" or test_has_string_of_max_length"
 fi
 # https://github.com/HypothesisWorks/hypothesis/issues/3704
 donttest+=" or (test_make_full_patch and covering)"
@@ -160,6 +159,8 @@ donttest+=" or test_overflowing_integers_are_deprecated"
 donttest+=" or fails_health_check or slow_tests or on_healthcheck or a_health_check"
 donttest+=" or test_statistics_with_events_and_target"
 donttest+=" or test_self_ref_regression"
+# flaky test
+donttest+=" or test_has_string_of_max_length"
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
 echo '[pytest]
 addopts=
@@ -171,6 +172,7 @@ addopts=
     --hypothesis-profile=obs
     -v
     -n auto
+    --durations-min=1.0
 xfail_strict = False
 filterwarnings =
     # error <-- disabled for obs packaging

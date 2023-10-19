@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Oct 16 14:10:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 6.88.0
+- disable flaky test
+ * This release allows strategy-generating functions registered
+     with register_type_strategy() to conditionally not return
+     a strategy, by returning NotImplemented
+ * When randoms( was called with use_true_randoms=False, 
+     calling sample on it with an empty sequence and 0 elements
+     would result in an error, when it should have returned
+     an empty sequence to agree with the normal behaviour of
+     random.Random. This fixes that discrepancy.)
+
+-------------------------------------------------------------------
+Wed Oct 11 09:18:10 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 6.87.3
+ * This patch ensures that the :ref:`hypothesis codemod <codemods>`
+ CLI will print a warning instead of stopping with an internal error
+ if one of your files contains invalid syntax (:issue:`3759`).
+ * This patch makes some small changes to our NumPy integration
+ to ensure forward compatibility.
+ * Fixes :issue:`3755`, where an internal condition turns out to be
+ reachable after all.
+ * This release deprecates use of :func:`~hypothesis.assume`
+ and reject() outside of property-based tests, because these functions
+ work by raising a special exception (:issue:`3743`).
+ It also fixes some type annotations (:issue:`3753`).
+ * Hotfix for :issue:`3747`, a bug in explain mode which is so rare
+ that we missed it in six months of dogfooding. Thanks to :pypi:`mygrad`
+ for discovering and promptly reporting this!
+ * This patch improves the documentation of 
+ :obj:`@example(...).xfail() <hypothesis.example.xfail>` by adding a note
+ about PEP 614, similar to :obj:`@example(...).via() <hypothesis.example.via>`,
+ and adds a warning when a strategy generates a test case which
+ seems identical to one provided by an xfailed example.
+ * This release enables the :obj:`~hypothesis.Phase.explain`
+ :ref:`phase <phases>` by default. We hope it helps you to understand
+ why your failing tests have failed!
+ * This patch switches some of our type annotations to use
+ :obj:`typing.Literal` when only a few specific values are allowed,
+ such as UUID or IP address versions.
+ * This release deprecates the old whitelist/blacklist arguments to
+ :func:`~hypothesis.strategies.characters`, in favor of include/exclude
+ arguments which more clearly describe their effects on the set
+ of characters which can be generated.
+ * You can :ref:`use Hypothesis' codemods <codemods>` to automatically
+ upgrade to the new argument names. In a future version, the old names
+ will start to raise a DeprecationWarning.
+ * This patch automatically disables the
+ :obj:`~hypothesis.HealthCheck.differing_executors` health check
+ for methods which are also pytest parametrized tests, because those
+   were mostly false alarms (:issue:`3733`).
+ * Building on recent releases, :func:`~hypothesis.strategies.characters`
+ now accepts _any_ codec=, not just "utf-8" and "ascii".
+ * This includes standard codecs from the :mod:`codecs` module and their aliases,
+ platform specific and user-registered codecs if they are available,
+ and python-specific text encodings (but not text transforms or binary transforms).
+ * This patch by Reagan Lee makes st.text(...).filter(str.isidentifier)
+ return an efficient custom strategy (:issue:`3480`).
+ * The :func:`~hypothesis.strategies.from_regex` strategy now takes an optional
+ alphabet=characters(codec="utf-8") argument for unicode strings,
+ like :func:`~hypothesis.strategies.text`.
+ * This offers more and more-consistent control over the generated strings,
+ removing previously-hard-coded limitations. With fullmatch=False and alphabet=characters(),
+ surrogate characters are now possible in leading and trailing text as well as the body
+ of the match. Negated character classes such as [^A-Z] or \S had a hard-coded
+ exclusion of control characters and surrogate characters; now they permit 
+ anything in alphabet= consistent with the class, and control characters
+ are permitted by default.
+ * Add a health check that detects if the same test is executed several times
+ by :ref:`different executors<custom-function-execution>`. This can lead
+ to difficult-to-debug problems such as :issue:`3446`.
+ * Pretty-printing of failing examples can now use functions registered with
+ :func:`IPython.lib.pretty.for_type` or :func:`~IPython.lib.pretty.for_type_by_name`,
+ as well as restoring compatibility with _repr_pretty_ callback methods which were
+ accidentally broken in :ref:`version 6.61.2 <v6.61.2>` (:issue:`3721`).
+ * Adds a new codec= option in :func:`~hypothesis.strategies.characters`,
+ making it convenient to produce only characters which can be encoded
+ as ascii or utf-8 bytestrings.
+
+-------------------------------------------------------------------
 Tue Aug 29 17:43:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.82.7
