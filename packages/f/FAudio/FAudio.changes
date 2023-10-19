@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 18 22:45:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.10:
+  * Minor static analysis fix for F3DAudio
+  * FACT now supports all publicly known WaveBank format versions
+
+-------------------------------------------------------------------
 Fri Jul 21 15:22:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.07:
@@ -47,14 +54,14 @@ Mon Oct 24 14:33:50 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 Mon Oct 24 14:31:41 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 22.09.01:
-  * Fix a regression where requesting a specific mastering voice format 
+  * Fix a regression where requesting a specific mastering voice format
     would return a format overwritten by device defaults
 
 -------------------------------------------------------------------
 Mon Oct 24 14:28:37 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 22.09:
-  * Update to SDL 2.24. This has been made a hard requirement, as it 
+  * Update to SDL 2.24. This has been made a hard requirement, as it
     fixes/adds way too much to ignore:
     2.1 and 4.1 audio is now supported
   * On Windows, we now prioritize DirectSound over WASAPI
@@ -67,9 +74,9 @@ Tue Aug  9 13:18:48 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 22.08:
   * FACT: Add support for WAVEBANKPREPARED notifications
-  * Included the matrix coefficient test program in matrix_defaults.inl, 
+  * Included the matrix coefficient test program in matrix_defaults.inl,
     for developers that need to replicate it
-  * FXReverb: Fix a spec violation in Process() that could corrupt reverb output 
+  * FXReverb: Fix a spec violation in Process() that could corrupt reverb output
     when enabled/disabled with precise timing
   * FACT: Fill all fields for WAVESTOP notifications, avoiding uninitialized memory issues
 
@@ -86,11 +93,11 @@ Tue Feb 15 17:08:34 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 - update to 22.02:
   * The Wine/Win32 backend is now considered stable.
     All Wine users should upgrade to 7.0 or newer
-    All non-Wine users will (and should) continue to use 
+    All non-Wine users will (and should) continue to use
     the SDL backend.
   * GStreamer support has been removed.
     Wine/Win32 will continue to use MediaFoundation.
-    All other users should already be on patent/royalty-free 
+    All other users should already be on patent/royalty-free
     codecs.
   * utils: Minor cleanup of uicommon.
   * csharp: Expose an IntPtr overload for
@@ -101,7 +108,7 @@ Mon Jan 10 19:50:02 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update 22.01:
   * Continued work on the experimental Wine/Win32 platform backend.
-  
+
 -------------------------------------------------------------------
 Thu Dec 30 22:57:10 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
@@ -113,7 +120,7 @@ Sun Nov 28 23:48:36 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 21.11:
   * GStreamer support is now deprecated.
-    Wine users should migrate to 6.20 and newer, and everyone else should move to 
+    Wine users should migrate to 6.20 and newer, and everyone else should move to
     codecs that are not patent-encumbered.
     GStreamer support will be fully removed in the first release after Wine 7.0.
   * Removed the C++ wrapper. Use the headers/PE binaries found in Wine 6.20 and newer.
@@ -133,9 +140,9 @@ Sun Oct 17 09:20:42 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 Thu Sep 16 17:48:28 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 21.09:
-  * FACT: Fix a crash from an uninitialized pointer when a WaveBank does not have a name 
+  * FACT: Fix a crash from an uninitialized pointer when a WaveBank does not have a name
     table.
-  * platform_sdl2: When querying the default device, ignore audio devices with way too many 
+  * platform_sdl2: When querying the default device, ignore audio devices with way too many
     channels.
   * platform_win32: Minor Win32 buildfixes
 
@@ -163,7 +170,7 @@ Mon Apr  5 15:25:24 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
   * FACT: Fix parsing/calculation of filter Q factors
   * FACT: Enforce STOPPING flag for fade-outs or RPC releases
   * FACT: Various fixes for parsing big-endian SoundBanks
-  
+
 -------------------------------------------------------------------
 Sat Mar 13 12:58:56 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
@@ -202,7 +209,7 @@ Mon Dec 28 00:32:02 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
   GStreamer builds now explicitly check for >=1.9.2
   Initialize the subformat for GetDeviceFormat, fixes a ton of Ubisoft games
   Don't assert when FAudio_Initialize Flags includes FAUDIO_DEBUG_ENGINE
-  
+
 -------------------------------------------------------------------
 Wed Oct  7 22:53:36 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
@@ -214,17 +221,17 @@ Wed Oct  7 22:53:36 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
   Fix a deadlock in Wolfenstein: The Old Blood related to callbacks
   Fix a crash for streaming WaveBanks when calling Destroy
   stb_vorbis: Handle malloc(0) calls
-  
+
 -------------------------------------------------------------------
 Fri Sep 11 14:45:42 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
-- The FFmpeg backend for WMA decoding has been replaced with GStreamer. 
-  Distributors are encouraged to configure their FAudio builds with 
-  -DGSTREAMER=ON even if a WMA plugin is not available by default; 
+- The FFmpeg backend for WMA decoding has been replaced with GStreamer.
+  Distributors are encouraged to configure their FAudio builds with
+  -DGSTREAMER=ON even if a WMA plugin is not available by default;
   end users can provide their own plugins if needed.
 
   added -DGSTREAMER=ON flag for gstreamer backend.
-  
+
 -------------------------------------------------------------------
 Fri Sep  4 20:17:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 

@@ -379,4 +379,27 @@
   * Added FilterWetDryMixEXT extension</comment>
     <requestid>1099949</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>267149bf6242c41fdd5df65fc48f60c5</srcmd5>
+    <version>23.10</version>
+    <time>1697748574</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.10:
+  * Minor static analysis fix for F3DAudio
+  * FACT now supports all publicly known WaveBank format versions
+
+  * Fix a regression where requesting a specific mastering voice format
+  * Update to SDL 2.24. This has been made a hard requirement, as it
+  * Included the matrix coefficient test program in matrix_defaults.inl,
+  * FXReverb: Fix a spec violation in Process() that could corrupt reverb output
+    All non-Wine users will (and should) continue to use
+    All other users should already be on patent/royalty-free
+    Wine users should migrate to 6.20 and newer, and everyone else should move to
+  * FACT: Fix a crash from an uninitialized pointer when a WaveBank does not have a name
+  * platform_sdl2: When querying the default device, ignore audio devices with way too many
+- The FFmpeg backend for WMA decoding has been replaced with GStreamer.
+  Distributors are encouraged to configure their FAudio builds with
+  -DGSTREAMER=ON even if a WMA plugin is not available by default; (forwarded request 1118661 from dirkmueller)</comment>
+    <requestid>1118830</requestid>
+  </revision>
 </revisionlist>
