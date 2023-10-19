@@ -60,6 +60,8 @@ BuildRequires:  selinux-policy-targeted
 BuildRequires:  socat
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
+# Required for certtool, which is used by swtpm-localca
+Requires:       gnutls
 Requires:       iproute2
 %if %{with use_selinux}
 Requires:       (%{name}-selinux if selinux-policy-base)

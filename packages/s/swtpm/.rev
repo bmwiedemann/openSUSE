@@ -230,4 +230,12 @@
     -   Add rules for sock_file on user_tmp_t (forwarded request 1111637 from msmeissn)</comment>
     <requestid>1111638</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8a103f54ccc264bf62e6bf3d60d515ec</srcmd5>
+    <version>0.8.1</version>
+    <time>1697748416</time>
+    <user>anag+factory</user>
+    <comment>- Add missing requires for certtool (forwarded request 1118747 from firstyear)</comment>
+    <requestid>1118837</requestid>
+  </revision>
 </revisionlist>
