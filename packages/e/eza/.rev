@@ -134,4 +134,22 @@
   * Adding the EZA_OVERRIDE_GIT env var</comment>
     <requestid>1117588</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d594e21e15c3a6f1b0c79cd03be9db59</srcmd5>
+    <version>0.15.0~0</version>
+    <time>1697748624</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.0:
+  * Reenable debug symbols in debug builds
+  * Clippy lint
+  * Merge conflict with main
+  * Correct color option spellings
+  * Add option --smart-group
+  * Add completions, man for --smart-group
+  * Add icons=always,auto,never. dont display icons in a tty|piped
+  * Fix auto value for colors and icons + documentation
+  * [breaking] Remove --no-icons in favor of --icons=always,auto,never
+    default is auto</comment>
+    <requestid>1118996</requestid>
+  </revision>
 </revisionlist>

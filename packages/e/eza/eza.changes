@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 19 14:48:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * Reenable debug symbols in debug builds
+  * Clippy lint
+  * Merge conflict with main
+  * Correct color option spellings
+  * Add option --smart-group
+  * Add completions, man for --smart-group
+  * Add icons=always,auto,never. dont display icons in a tty|piped
+  * Fix auto value for colors and icons + documentation
+  * [breaking] Remove --no-icons in favor of --icons=always,auto,never
+    default is auto
+
+-------------------------------------------------------------------
 Fri Oct 13 07:25:31 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.2:
