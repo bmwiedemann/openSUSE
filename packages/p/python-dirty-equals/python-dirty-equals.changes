@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 17 12:30:50 UTC 2023 - Markéta Calábková <meggy.calabkova@gmail.com>
+
+- Update to 0.7.0
+  * add some new functions
+  * move to Python 3.11 final
+  * numeric exact
+- add datetime.patch to fix compatibility with Python 3.12
+  * sent upstream: https://github.com/samuelcolvin/dirty-equals/pull/86
+
+-------------------------------------------------------------------
 Thu Nov 10 15:18:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 -Update to version 0.5.0
