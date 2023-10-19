@@ -23,7 +23,7 @@
 %endif
 
 Name:           iptables
-Version:        1.8.9
+Version:        1.8.10
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        Artistic-2.0 AND GPL-2.0-only
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
 BuildRequires:  pkgconfig(libnftnl) >= 1.1.6
 Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
+Requires:       (iptables-backend-nft if nftables)
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 10 11:43:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.10
+  * xtables-translate: support rule insert with index
+  * broute table support in ebtables-nft
+  * nft-variants' debug output (pass multiple ``-v`` flags) now
+    contains sets if present
+  * Add mld-listener type names to icmp6 match
+
+-------------------------------------------------------------------
+Mon Feb 13 14:29:48 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use nftables backend by default when nftables is installed, bsc#1206383
+
+-------------------------------------------------------------------
 Thu Jan 12 22:58:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.9
