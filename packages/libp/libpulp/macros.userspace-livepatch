@@ -1,0 +1,9 @@
+# Hook for %post used by livepatch packages to apply a livepatch (or multiple
+# livepatches) on the system.
+#
+# The parameters are <package_name> <livepatch_version> <target_library>
+%ulp_post_hook() \
+echo "Executing ulp_post_hook(). About to execute rpm-helper..." \
+/bin/bash /usr/lib/userspace-livepatch/rpm-helper install "%1" "%2" "%3" $1 \
+echo "Done executing rpm-helper." \
+%{nil}
