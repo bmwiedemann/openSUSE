@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 12 07:01:56 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Only recommend at-spi2-core 
+
+-------------------------------------------------------------------
+Wed Oct 11 13:16:41 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Don't install gsettings schemas twice
+
+-------------------------------------------------------------------
 Tue Oct 10 11:36:25 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - For the at-spi bus the package at-spi2-core is required 

@@ -1863,4 +1863,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
 - Add site-lisp directory for dynamic modules</comment>
     <requestid>1116811</requestid>
   </revision>
+  <revision rev="179" vrev="6">
+    <srcmd5>c48047629edbe18dd01c2a55ffce2e02</srcmd5>
+    <version>29.1</version>
+    <time>1697748414</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1118826</requestid>
+  </revision>
 </revisionlist>

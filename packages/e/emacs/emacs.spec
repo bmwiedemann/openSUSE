@@ -256,7 +256,7 @@ Requires:       emacs = %{version}-%{release}
 Requires:       emacs-eln = %{version}-%{release}
 %endif
 Provides:       emacs_program = %{version}-%{release}
-Requires:       at-spi2-core
+Recommends:     at-spi2-core
 Requires:       gnu-unifont-bitmap-fonts
 Requires:       ifnteuro
 Requires:       xorg-x11-fonts
@@ -767,6 +767,9 @@ ln -sf %{_sysconfdir}/alternatives/ctags.1%{ext_man}	%{buildroot}%{_mandir}/man1
 
 install -Dm644 %{SOURCE9} %{buildroot}%{_rpmmacrodir}/macros.emacs
 
+# Workaround for gschema schemas being installed twice
+rm %{buildroot}%{_datadir}/emacs/%{version}/etc/org.gnu.emacs.defaults.gschema.*
+
 %if %{with nativecomp}
 touch eln.list
 for eln in %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-*/*.eln
@@ -1032,7 +1035,6 @@ fi
 %{_datadir}/emacs/%{version}/etc/charsets/symbol.map
 %{_datadir}/emacs/%{version}/etc/compilation.txt
 %{_datadir}/emacs/%{version}/etc/emacs_lldb.py
-%{_datadir}/emacs/%{version}/etc/org.gnu.emacs.defaults.gschema.*
 %dir %{_datadir}/emacs/%{version}/etc/org/
 %dir %{_datadir}/emacs/%{version}/etc/org/csl/
 %{_datadir}/emacs/%{version}/etc/org/csl/README
