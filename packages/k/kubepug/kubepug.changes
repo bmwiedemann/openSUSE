@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Thu Oct 19 06:28:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.7.1:
+  * Fix ko (#465)
+
+-------------------------------------------------------------------
+Thu Oct 19 06:24:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.7.0:
+  * Fix go-releaser (#464)
+  * Move kubepug to new org (#462)
+  * Bump golang.org/x/net from 0.15.0 to 0.17.0
+  * Bump sigs.k8s.io/release-utils from 0.7.4 to 0.7.5
+  * Bump golang.org/x/mod from 0.12.0 to 0.13.0
+  * Bump actions/checkout from 4.0.0 to 4.1.0
+  * Bump k8s.io/cli-runtime from 0.28.1 to 0.28.2
+  * Bump k8s.io/client-go from 0.28.1 to 0.28.2
+  * Moved the new line character from line 14 to line 91 of
+    pkg/formatter/stdout.go as cpanato suggested.
+  * Bump goreleaser/goreleaser-action from 4.6.0 to 5.0.0
+  * #451 Added newline to the standard out footer message so that
+    the prompt shows up on a new line after the program runs.
+  * fix token (#450)
+  * Add code coverage (#449)
+  * Bump actions/checkout from 3.6.0 to 4.0.0 (#447)
+  * Bump goreleaser/goreleaser-action from 4.4.0 to 4.6.0 (#448)
+  * Bump sigstore/cosign-installer from 3.1.1 to 3.1.2
+  * fix lint
+  * upgrade to go1.21
+  * Bump k8s.io/cli-runtime from 0.27.4 to 0.28.1 (#442)
+  * Bump actions/checkout from 3.5.3 to 3.6.0
+  * Bump golangci/golangci-lint-action from 3.6.0 to 3.7.0
+  * Add blank line between code and title
+  * Add the option to install using - go install
+  * Bump goreleaser/goreleaser-action from 4.3.0 to 4.4.0
+  * Bump actions/setup-go from 4.0.1 to 4.1.0
+  * Bump actions/deploy-pages from 2.0.3 to 2.0.4
+- change upstream URL to
+  https://github.com/kubepug/kubepug/
+- BuildRequire go1.21
+
+-------------------------------------------------------------------
+Tue Sep 05 15:44:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.1:
+  * Add message on new db (#430)
+  * Fix docs CI (#429)
+  * Add API Status table page (#428)
+  * Add some more unit tests (#426)
+
+-------------------------------------------------------------------
+Tue Aug 08 14:10:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0:
+  * Re-enable krew publishing (#425)
+  * Add kubepug docs (#424)
+  * Fix snapcraft architectures (#423)
+  * Fix snapcraft build (#422)
+  * Remove swaggerstore and document data.json generation (#420)
+  * Enable snap builds
+  * Add coverage report
+  * Remove deprecated flags
+  * Implement the new generated based store
+  * Prepare for pages (#418)
+  * Bump k8s.io/cli-runtime from 0.27.3 to 0.27.4
+  * Bump k8s.io/client-go from 0.27.3 to 0.27.4
+  * Bump k8s.io/apimachinery from 0.27.3 to 0.27.4
+
+-------------------------------------------------------------------
+Mon Jul 17 05:00:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.5.1:
+  * Remove aggregated apis from parsing (#414)
+  * Bump k8s.io/klog/v2 from 2.90.1 to 2.100.1
+  * ci cleanup
+  * Fix lint errors
+  * Add apideprecation action and page
+
+-------------------------------------------------------------------
+Mon Jul 10 06:28:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.5.0:
+  This is Kubepug v1.5.0!! It was mostly rewritten for performance
+  and better results! Thanks for using the project!!  More great
+  things are coming for next version!
+  * Breaking changes
+    - The api-walk flag was removed! There is no need for the flag
+      anymore, and Kubepug will always validate against all
+      resources!
+  * Major changes
+    - The main logic of program was simplified and rewritten for
+      better performance. A lot of false positives have been
+      removed! A bunch of bugs squashed!
+    - This release was also a preparation for a bigger one, that
+      will allow better tuning of APIs to be validated, and a much
+      reliable API database. Also, it allows a better extension, so
+      someone willing to use Kubepug as a library, a webhook, or
+      even writing their own output plugin will be able to do it!
+  * What's changed
+    - Add tests (#409)
+    - Move api store to interface (#406)
+    - Bump github.com/stretchr/testify from 1.8.2 to 1.8.4
+    - Bump golang.org/x/mod from 0.11.0 to 0.12.0
+    - Skip apiservices that are unavailable (#403)
+    - Optimize functions, simplify code, squash bugs (#402)
+    - Update release.yaml
+    - Bump golang.org/x/mod from 0.8.0 to 0.11.0
+    - Bump sigstore/cosign-installer from 3.1.0 to 3.1.1
+    - Bump sigs.k8s.io/release-utils from 0.7.3 to 0.7.4 (#377)
+    - Fix panics, optimize code, bump libraries (#399)
+    - Bump golangci/golangci-lint-action from 3.4.0 to 3.6.0 (#391)
+    - Bump sigstore/cosign-installer (#397)
+    - Bump actions/checkout from 3.5.0 to 3.5.3 (#390)
+    - Bump actions/setup-go from 4.0.0 to 4.0.1 (#384)
+    - Bump github.com/sirupsen/logrus from 1.9.0 to 1.9.3 (#387)
+    - update golangci-lint (#398)
+    - Bump sigstore/cosign-installer (#392)
+    - Bump goreleaser/goreleaser-action from 4.2.0 to 4.3.0 (#396)
+    - Bump rajatjindal/krew-release-bot from 0.0.43 to 0.0.46
+      (#368)
+    - Updates on ci and sign binaries and images with cosign (#367)
+    - Fix annoying linter warnings (#365)
+    - Bump github.com/spf13/cobra from 1.6.0 to 1.7.0 (#364)
+    - Bump goreleaser/goreleaser-action from 3.0.0 to 4.2.0 (#347)
+    - Bump actions/checkout from 3.0.2 to 3.5.0 (#361)
+    - Bump imjasonh/setup-ko from 0.5 to 0.6 (#288)
+    - Bump docker/setup-buildx-action from 2.0.0 to 2.5.0 (#362)
+    - Bump docker/setup-qemu-action from 2.0.0 to 2.1.0 (#305)
+    - Bump github/codeql-action from 2.1.18 to 2.2.11 (#363)
+    - Update dependencies (#359)
+    - Bump golangci/golangci-lint-action from 3.2.0 to 3.4.0 (#345)
+    - Bump actions/setup-go from 3.2.1 to 4.0.0 (#360)
+
+-------------------------------------------------------------------
+Thu Apr  6 12:54:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubepug: Kubernetes PreUpGrade (Checker)
