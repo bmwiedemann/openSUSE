@@ -18,15 +18,13 @@
 
 %define skip_python2 1
 Name:           python-avro
-Version:        1.11.1
+Version:        1.11.3
 Release:        0
 Summary:        A serialization and RPC framework for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://avro.apache.org/
 Source:         https://files.pythonhosted.org/packages/source/a/avro/avro-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: py311.patch gh#apache/avro#1961
-Patch:          py311.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

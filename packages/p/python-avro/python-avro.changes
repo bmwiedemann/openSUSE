@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 18 12:14:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.11.3:
+  + See jira board for all the fixes addressed in this release:
+    https://issues.apache.org/jira/browse/AVRO-3855?jql=project%3DAVRO%20AND%20fixVersion%3D1.11.3
+- Drop py311.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Jan 25 12:58:14 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add py311.patch to make tests compatible with python 3.11 gh#apache/avro#1961
