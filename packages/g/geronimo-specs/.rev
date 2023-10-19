@@ -255,4 +255,12 @@ Hope everyone find this sattisfactory now.</comment>
     <comment>Add back the jaxrpc, since we can</comment>
     <requestid>1118189</requestid>
   </revision>
+  <revision rev="36" vrev="39">
+    <srcmd5>994c6bcd84e967c2f218be51128c0a68</srcmd5>
+    <version>1.2</version>
+    <time>1697748425</time>
+    <user>anag+factory</user>
+    <comment>Remove some more modules not used by anybody</comment>
+    <requestid>1118360</requestid>
+  </revision>
 </revisionlist>
