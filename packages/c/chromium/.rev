@@ -4780,4 +4780,13 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>Chromium 118.0.5993.70 (boo#1216111)</comment>
     <requestid>1116803</requestid>
   </revision>
+  <revision rev="404" vrev="1">
+    <srcmd5>5b54089f8d64305b2851b65830fa2af6</srcmd5>
+    <version>118.0.5993.88</version>
+    <time>1697748469</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 118.0.5993.88: 
+  * unspecified security fix (boo#1216392)</comment>
+    <requestid>1118650</requestid>
+  </revision>
 </revisionlist>

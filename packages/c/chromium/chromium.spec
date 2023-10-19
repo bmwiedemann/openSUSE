@@ -87,7 +87,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        118.0.5993.70
+Version:        118.0.5993.88
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -136,11 +136,9 @@ Patch215:       chromium-113-webauth-include-variant.patch
 Patch217:       chromium-117-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
 Patch221:       chromium-115-lp155-typename.patch
-Patch223:       chromium-117-emplace_back_on_vector-c++20.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
 Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
 Patch232:       chromium-116-lp155-typenames.patch
-Patch237:       chromium-117-lp155-constructors.patch
 Patch238:       chromium-117-blink-BUILD-mnemonic.patch
 Patch239:       chromium-117-includes.patch
 Patch240:       chromium-117-string-convert.patch
@@ -148,6 +146,7 @@ Patch241:       chromium-117-lp155-typename.patch
 Patch242:       chromium-118-includes.patch
 Patch243:       chromium-118-system-freetype.patch
 Patch244:       chromium-117-system-zstd.patch
+Patch245:       chromium-118-no_matching_constructor.patch
 BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
