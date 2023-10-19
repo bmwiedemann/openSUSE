@@ -377,4 +377,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.110.0 (forwarded request 1109602 from krop)</comment>
     <requestid>1110102</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>505409deca94187c43c0ef7e916e7f22</srcmd5>
+    <version>5.111.0</version>
+    <time>1697748376</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
+    <requestid>1118719</requestid>
+  </revision>
 </revisionlist>
