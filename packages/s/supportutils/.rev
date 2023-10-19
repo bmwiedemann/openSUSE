@@ -290,4 +290,12 @@
     <comment>Factory Ready (forwarded request 1117829 from jrecord)</comment>
     <requestid>1117830</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7a2554a208139c65abb1335245fb6d5e</srcmd5>
+    <version>3.2.2</version>
+    <time>1697748532</time>
+    <user>anag+factory</user>
+    <comment>PED-4456 PED-4524 bsc#1216388 bsc#1216150 bsc#1216147 bsc#1216146 bsc#1216229 bsc#1216233 bsc#1216151 bsc#1216228 bsc#1216230 bsc#1216232 bsc#1216231 bsc#1216241 (forwarded request 1118654 from jrecord)</comment>
+    <requestid>1118655</requestid>
+  </revision>
 </revisionlist>
