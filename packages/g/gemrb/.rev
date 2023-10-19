@@ -75,4 +75,15 @@
     <comment></comment>
     <requestid>1041760</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3ecc17be00b2b18aee50debb0553fdf8</srcmd5>
+    <version>0.9.2</version>
+    <time>1697748460</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.2
+  * optional CapFPS, GameLanguagePath and GameMoviesPath keys have
+    been added to the sample configs
+</comment>
+    <requestid>1118626</requestid>
+  </revision>
 </revisionlist>

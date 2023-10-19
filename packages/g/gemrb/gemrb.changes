@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 18 17:02:45 UTC 2023 - Dirk Stöcker <github@dstoecker.de>
+
+- update to 0.9.2
+  * optional CapFPS, GameLanguagePath and GameMoviesPath keys have
+    been added to the sample configs
+
+-------------------------------------------------------------------
 Fri Dec  9 05:38:07 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Change shebang of a shipped script to use Python 3. 
