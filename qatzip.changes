@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 19 07:58:04 UTC 2023 - ming li <mli@suse.com>
+
+- update to 1.1.2:
+  * Test: fix overflow on large files
+  * Test: fix crash when perf test with svm
+  * Fix Clang compile error
+  * Fix MiniMatch bug
+  * Fix compile error on QAT1.7
+  * Update QAT1.7 / QAT2.0 config files
+  * Update README
+  * Update year in copyright information to 2023
+  * Remove QAT device ID dependency
+  * Update version, spec file, API PDF
+  * Add missing QZ_PARAMS return code
+
+-------------------------------------------------------------------
 Mon Jan  2 08:11:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.1.1:
