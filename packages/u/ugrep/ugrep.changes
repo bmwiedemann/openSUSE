@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 19 15:14:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3.1:
+  * Unicode 15.1 support
+  * TUI features, including CTRL-Y improved viewer
+  * TUI regex syntax highlighting with user-definable colors
+
+-------------------------------------------------------------------
 Sun Oct  8 05:47:14 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.3.0:
