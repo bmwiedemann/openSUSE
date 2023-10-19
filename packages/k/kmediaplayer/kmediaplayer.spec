@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kmediaplayer
-Version:        5.110.0
+Version:        5.111.0
 Release:        0
 Summary:        Interface for media player KParts
 License:        LGPL-2.1-or-later
