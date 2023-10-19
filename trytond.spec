@@ -36,6 +36,7 @@ Source7:        openSUSE-trytond-setup
 Source20:       %{name}.service
 Patch0:         Update_changed_fields_6.0.diff
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Werkzeug
 BuildRequires:  python3-bcrypt
 BuildRequires:  python3-lxml >= 2.0
@@ -91,7 +92,7 @@ cp %{SOURCE1} .
 %python3_build
 
 %install
-%python3_install --prefix=%{_prefix} --root=%{buildroot}
+%python3_install
 
 # only for systemd
 mkdir -p %{buildroot}%{_sysconfdir}/%{base_name}

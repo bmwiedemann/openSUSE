@@ -711,4 +711,14 @@
     <comment>bugfix release</comment>
     <requestid>1116283</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>58e6e0c63b2b8210f437bd2559d52cbe</srcmd5>
+    <version>6.0.36</version>
+    <time>1697748616</time>
+    <user>anag+factory</user>
+    <comment>- Remove %python3_install prefix and root options, that's included in
+  the macro by default.
+</comment>
+    <requestid>1118968</requestid>
+  </revision>
 </revisionlist>
