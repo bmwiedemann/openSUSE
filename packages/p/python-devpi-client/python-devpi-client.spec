@@ -26,14 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-devpi-client%{psuffix}
-Version:        6.0.5
+Version:        7.0.1
 Release:        0
 Summary:        Client for devpi
 License:        MIT
 URL:            https://github.com/devpi/devpi
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#devpi/devpi#966
-Patch0:         switch-to-build-module.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,14 +39,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-build
 Requires:       python-check-manifest >= 0.28
-Requires:       python-devpi-common >= 3.6.0
+Requires:       python-devpi-common >= 4.0
 Requires:       python-iniconfig
 Requires:       python-pkginfo >= 1.4.2
 Requires:       python-platformdirs
 Requires:       python-pluggy >= 0.6.0
-Requires:       python-py >= 1.4.31
 Requires:       python-tox >= 3.1.0
-Requires:       python-wheel
+Requires:       python-virtualenv
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     git-core
@@ -57,18 +54,11 @@ BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module check-manifest >= 0.28}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module devpi-client = %{version}}
-BuildRequires:  %{python_module devpi-common >= 3.6.0}
+BuildRequires:  %{python_module devpi-common >= 4}
 BuildRequires:  %{python_module devpi-server}
-BuildRequires:  %{python_module pkginfo >= 1.4.2}
-BuildRequires:  %{python_module pluggy >= 0.6.0}
-BuildRequires:  %{python_module py >= 1.4.31}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tox >= 3.1.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  git-core
 %endif
 # /SECTION
@@ -80,9 +70,8 @@ indexes, uploading to and installing from indexes, as well as a "test" command
 for invoking tox.
 
 %prep
-%setup -q -n devpi-client-%{version}
+%autosetup -p1 -n devpi-client-%{version}
 rm tox.ini
-%autopatch -p1
 
 sed -i 's/"python \(setup.py[^"]*\)"/(sys.executable + " \1")/' testing/test_upload.py
 sed -i 's/"python", "setup.py"/sys.executable, "setup.py"/' testing/test_test.py

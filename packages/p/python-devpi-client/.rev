@@ -191,4 +191,25 @@
     <comment></comment>
     <requestid>1096804</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6f74c648323e30050c01f55e7a8882e0</srcmd5>
+    <version>7.0.1</version>
+    <time>1697748453</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.0.1:
+  * Bug Fixes
+    + Fix #1005: use ``shutil.move`` instead of ``Path.rename`` to move
+      distribution after building to prevent cross-device link errors.
+    + Fix #1008: pass ``--no-isolation`` option to ``build`` when determining
+      name/version for documentation.
+    + Fix #946: output ``name==version`` instead of ``name-version`` for
+      ``devpi list -v``.
+  * Deprecations and Removals
+    + Use ``build`` instead of deprecated ``pep517`` package.
+    + Removed dependency on py package.
+    + Dropped support for Python &lt;= 3.6.
+- Drop patch switch-to-build-module.patch, included upstream.
+- Switch to autosetup macro.</comment>
+    <requestid>1118184</requestid>
+  </revision>
 </revisionlist>

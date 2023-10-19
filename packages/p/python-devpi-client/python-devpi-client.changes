@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 17 03:16:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.0.1:
+  * Bug Fixes
+    + Fix #1005: use ``shutil.move`` instead of ``Path.rename`` to move
+      distribution after building to prevent cross-device link errors.
+    + Fix #1008: pass ``--no-isolation`` option to ``build`` when determining
+      name/version for documentation.
+    + Fix #946: output ``name==version`` instead of ``name-version`` for
+      ``devpi list -v``.
+  * Deprecations and Removals
+    + Use ``build`` instead of deprecated ``pep517`` package.
+    + Removed dependency on py package.
+    + Dropped support for Python <= 3.6.
+- Drop patch switch-to-build-module.patch, included upstream.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Tue Jul  4 10:32:15 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - update to 6.0.5
