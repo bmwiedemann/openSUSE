@@ -7,4 +7,12 @@
     <comment>pytest-examples , new dep of python-dirty-equals and other packages from pydantic project</comment>
     <requestid>1118062</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>984f6888c1aff01e538044cf4c9856bb</srcmd5>
+    <version>0.0.10</version>
+    <time>1697748659</time>
+    <user>anag+factory</user>
+    <comment>- add test-ruff-0.1.0.patch to fix tests with ruvv-0.1.0 (forwarded request 1119080 from mimi_vx)</comment>
+    <requestid>1119081</requestid>
+  </revision>
 </revisionlist>

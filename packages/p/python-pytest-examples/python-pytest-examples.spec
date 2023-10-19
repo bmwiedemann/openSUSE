@@ -21,19 +21,21 @@ Version:        0.0.10
 Release:        0
 Summary:        Pytest plugin for testing examples in docstrings and markdown files
 License:        MIT
-URL:            https://github.com/pydantic/pytest-examples 
+URL:            https://github.com/pydantic/pytest-examples
 # sdist without tests
 Source:         https://github.com/pydantic/pytest-examples/archive/refs/tags/v%{version}.tar.gz#/pytest-examples-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
+# PATCH-FIX-UPSTREAM test-ruff-0.1.0.patch - fix tests for ruff-0.1.0
+Patch0:         test-ruff-0.1.0.patch
+BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruff}
-BuildRequires:  %{python_module black}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-black
 Requires:       python-pytest
 Requires:       python-ruff
-Requires:       python-black
 BuildArch:      noarch
 %python_subpackages
 
