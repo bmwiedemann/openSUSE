@@ -19,7 +19,7 @@
 %bcond_without  test
 %define pyname  pywayland
 Name:           python-%{pyname}
-Version:        0.4.16
+Version:        0.4.17
 Release:        0
 Summary:        Python binding to the wayland library using cffi
 License:        NCSA
@@ -27,12 +27,12 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/flacjacket/pywayland
 Source0:        https://files.pythonhosted.org/packages/source/p/pywayland/pywayland-%{version}.tar.gz
 Patch0:         fix-wayland-paths.patch
-BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module cffi >= 1.12.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module distutils-extra}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 62.4.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkg-config

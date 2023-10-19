@@ -35,4 +35,15 @@
 </comment>
     <requestid>1115046</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>45dc12c0474eec85615c0a3fa5f6cf05</srcmd5>
+    <version>0.4.17</version>
+    <time>1697748580</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.17:
+  * require setuptools &gt;= 62.4.0
+  * fix typos
+</comment>
+    <requestid>1118841</requestid>
+  </revision>
 </revisionlist>
