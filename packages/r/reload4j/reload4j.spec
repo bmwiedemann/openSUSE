@@ -1,7 +1,7 @@
 #
 # spec file for package reload4j
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           reload4j
-Version:        1.2.20
+Version:        1.2.25
 Release:        0
 Summary:        Revival of EOLed log4j 1.x
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  geronimo-jms-1_1-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Obsoletes:      chainsaw < 2.1
 Obsoletes:      log4j < 1.3
 Obsoletes:      log4j-mini < 1.3
@@ -99,7 +99,7 @@ done
 
 #pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -a log4j:log4j
 
 # javadoc

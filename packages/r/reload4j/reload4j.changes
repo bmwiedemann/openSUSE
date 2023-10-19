@@ -1,10 +1,48 @@
 -------------------------------------------------------------------
+Tue Oct 17 20:44:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 1.2.25
+  * Given that some users encountered problems with the changes
+    made in version 1.2.24, the thread context class loader (TCCL)
+    is now tried first under all JDK versions unless the
+    "log4j.ignoreTCL" system property is set to true. This was
+    intended behavior all along except that is was disabled in
+    JDK 9 and later due to a coding error.
+- Update to upstream version 1.2.24
+  * The loadClass and getResource methods in the Loader class are
+    used to search for resources and to load classes, typically
+    appenders or layouts. In this release, only the class loader
+    that loaded the Loader class itself is used. The thread context
+    class loader (TCCL) is no longer used. In previous releases,
+    this was already the case when running under JDK 9 and later
+    but not under JDK 8 or earlier. The change provides both more
+    consistent and also simpler behavior. It should be be
+    transparent to users.
+- Update to upstream version 1.2.23
+  * Added Automatic-Module-Name entry set to ch.qos.reload4j in
+    the MANIFEST.MF file. This should help in including reload4j
+    as a named dependency in Jigsaw modular projects.
+- Update to upstream version 1.2.22
+  * Fixed a newly discovered XXE vector vulnerability reported
+    against Chainsaw.
+- Update to upstream version 1.2.21
+  * The binary compatibility issue between earlier versions of
+    reload4j and slf4j-log4j12 has been fixed. Although it is
+    recommended that you use slf4j-reload4j as the preferred adapter
+    for the slf4j/reload4j combination, with reload4j version 1.2.21
+    and later you can freely mix any version of slf4j-log4j12, if
+    you have to.
+- Modified patch:
+  * reload4j-java1.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Mon Apr 11 13:51:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 1.2.20
   * For enabled logging statements, the performance of iterating
     on appenders attached to a logger has been significantly
-    improved. 
+    improved.
 
 -------------------------------------------------------------------
 Sat Mar 19 10:36:59 UTC 2022 - Fridrich Strba <fstrba@suse.com>
@@ -20,7 +58,7 @@ Wed Feb 23 07:08:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
       class to have internal boolean variable java1. We add it
       there just to avoid runtime incompatibilities as a log4j12
       drop-in replacement.
-- Add Provides and Obsoletes to the javadoc package in order to 
+- Add Provides and Obsoletes to the javadoc package in order to
   transition smoothly out of log4j12-javadoc and log4j12-manual
 
 -------------------------------------------------------------------

@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/qos-ch/reload4j.git</param>
-		<param name="revision">v_1.2.20</param>
+		<param name="revision">v_1.2.25</param>
 		<param name="match-tag">v_*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v_(.*)</param>

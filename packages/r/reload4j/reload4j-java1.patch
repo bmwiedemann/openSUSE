@@ -1,11 +1,13 @@
---- reload4j-1.2.19/src/main/java/org/apache/log4j/MDC.java	2022-02-23 08:05:01.051452323 +0100
-+++ reload4j-1.2.19/src/main/java/org/apache/log4j/MDC.java	2022-02-23 08:05:39.546646231 +0100
-@@ -47,7 +47,7 @@
+diff --git a/src/main/java/org/apache/log4j/MDC.java b/src/main/java/org/apache/log4j/MDC.java
+index 5805772..fdcfeed 100755
+--- a/src/main/java/org/apache/log4j/MDC.java
++++ b/src/main/java/org/apache/log4j/MDC.java
+@@ -45,7 +45,7 @@ public class MDC {
  
      static final int HT_SIZE = 7;
  
 -    // boolean java1;
 +    boolean java1;
  
-     ThreadLocalMap tlm;
+     Object tlm;
  

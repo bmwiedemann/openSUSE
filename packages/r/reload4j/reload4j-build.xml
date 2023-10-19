@@ -10,9 +10,10 @@
 
   <property name="project.groupId" value="ch.qos.reload4j"/>
   <property name="project.artifactId" value="reload4j"/>
-  <property name="project.version" value="1.2.20"/>
+  <property name="project.version" value="1.2.25"/>
 
-  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -61,6 +62,7 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
+           release="${compiler.release}" 
            target="${compiler.target}" 
            verbose="false" 
            fork="false" 
@@ -90,6 +92,7 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
+           release="${compiler.release}" 
            target="${compiler.target}" 
            verbose="false" 
            fork="false" 
@@ -215,6 +218,7 @@
          basedir="${build.outputDir}" 
          excludes="**/package.html">
       <manifest>
+        <attribute name="Automatic-Module-Name" value="${project.groupId}"/>
         <attribute name="Bundle-Description" value="Reload4j revives EOLed log4j 1.x"/>
         <attribute name="Bundle-DocURL" value="https://reload4j.qos.ch/"/>
         <attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -227,8 +231,8 @@
         <attribute name="Implementation-Title" value="${project.artifactId}"/>
         <attribute name="Implementation-Vendor" value="QOS.CH Sarl (Switzerland)"/>
         <attribute name="Implementation-Version" value="${project.version}"/>
-        <attribute name="Import-Package" value="javax.jmdns;resolution:=optional,javax.jms;resolution:=optional,javax.mail.internet;version=&quot;[1.4,2)&quot;;resolution:=optional,javax.mail;version=&quot;[1.4,2)&quot;;resolution:=optional,javax.naming,javax.xml.parsers,org.w3c.dom,org.xml.sax,org.xml.sax.helpers"/>
-        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.6))&quot;"/>
+        <attribute name="Import-Package" value="javax.jmdns;resolution:=optional,javax.jms;resolution:=optional,javax.mail.internet;resolution:=optional,javax.mail;resolution:=optional,javax.naming,javax.xml.parsers,org.w3c.dom,org.xml.sax,org.xml.sax.helpers"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
         <attribute name="X-Compile-Source-JDK" value="${compiler.source}"/>
         <attribute name="X-Compile-Target-JDK" value="${compiler.target}"/>
       </manifest>
