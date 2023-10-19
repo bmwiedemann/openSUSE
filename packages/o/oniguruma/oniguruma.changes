@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 17 20:44:33 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.9.9
+  - Update Unicode version 15.1.0
+  - NEW API: ONIG_OPTION_MATCH_WHOLE_STRING
+  - Fixed: (?I) option was not enabled for character classes (Issue
+    #264).
+  - Changed specification to check for incorrect POSIX bracket
+    (Issue #253).
+  - Changed [[:punct:]] in Unicode encodings to be compatible with
+    POSIX definition. (Issue #268)
+  - Fixed: ONIG_OPTION_FIND_LONGEST behavior
+
+-------------------------------------------------------------------
 Thu May  5 18:46:10 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 6.9.8
