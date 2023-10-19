@@ -17,7 +17,7 @@
 
 
 %global ver_major 1
-%global ver_minor 74
+%global ver_minor 76
 %global gittag r%{ver_major}rv%{ver_minor}
 %global archivever jdk18on-%{ver_major}%{ver_minor}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
@@ -49,7 +49,7 @@ BuildRequires:  glassfish-activation-api
 BuildRequires:  jakarta-activation
 BuildRequires:  jakarta-mail
 BuildRequires:  javamail
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Requires(post): javapackages-tools
 Requires(postun):javapackages-tools
 Provides:       bcprov = %{version}-%{release}
@@ -64,8 +64,6 @@ Bouncy Castle Cryptography APIs for JDK 1.5 to JDK 1.8.
 Summary:        Bouncy Castle PKIX, CMS, EAC, TSP, PKCS, OCSP, CMP, and CRMF APIs
 License:        MIT
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}
-Requires:       %{name}-util = %{version}
 
 %description pkix
 The Bouncy Castle Java APIs for CMS, PKCS, EAC, TSP, CMP, CRMF, OCSP, and
@@ -77,7 +75,6 @@ provided with the Bouncy Castle Cryptography APIs.
 Summary:        Bouncy Castle OpenPGP API
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}
 
 %description pg
 The Bouncy Castle Java API for handling the OpenPGP protocol.The APIs can be
@@ -88,9 +85,6 @@ Bouncy Castle Cryptography APIs.
 Summary:        Bouncy Castle S/MIME API
 License:        MIT
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}
-Requires:       %{name}-pkix = %{version}
-Requires:       %{name}-util = %{version}
 
 %description mail
 The Bouncy Castle Java S/MIME APIs for handling S/MIME protocols. The APIs can
@@ -103,10 +97,6 @@ Summary:        Bouncy Castle Jakarta S/MIME API
 License:        MIT
 Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}
-Requires:       %{name}-pkix = %{version}
-Requires:       %{name}-util = %{version}
-Requires:       jakarta-activation
-Requires:       jakarta-mail
 
 %description jmail
 The Bouncy Castle Java S/MIME APIs for handling S/MIME protocols. This jar
@@ -119,8 +109,6 @@ will also be needed.
 Summary:        Bouncy Castle JSSE provider and TLS/DTLS API
 License:        MIT
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}
-Requires:       %{name}-util = %{version}
 
 %description tls
 The Bouncy Castle Java APIs for TLS and DTLS, including a provider for the
@@ -130,7 +118,6 @@ JSSE.
 Summary:        Bouncy Castle ASN.1 Extension and Utility APIs
 License:        MIT
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}
 
 %description util
 The Bouncy Castle Java APIs for ASN.1 extension and utility APIs used to
@@ -175,7 +162,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 for bc in bcprov bcpkix bcpg bcmail bctls bcutil bcjmail ; do
   install -pm 0644 build/artifacts/jdk1.8/jars/$bc-%{archivever}.jar %{buildroot}%{_javadir}/$bc.jar
-  install -pm 0644 %{_sourcedir}/$bc-jdk18on-%{version}.pom %{buildroot}%{_mavenpomdir}/$bc.pom
+  %{mvn_install_pom} %{_sourcedir}/$bc-jdk18on-%{version}.pom %{buildroot}%{_mavenpomdir}/$bc.pom
   %add_maven_depmap $bc.pom $bc.jar -a "org.bouncycastle:$bc-jdk18,org.bouncycastle:$bc-jdk16,org.bouncycastle:$bc-jdk15on,org.bouncycastle:$bc-jdk15,org.bouncycastle:$bc-jdk15to18" -f $bc
 done
 

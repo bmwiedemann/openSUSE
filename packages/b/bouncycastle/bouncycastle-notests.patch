@@ -1,5 +1,7 @@
---- bc-java-r1rv74/ant/bc+-build.xml	2023-06-20 19:05:22.282198904 +0200
-+++ bc-java-r1rv74/ant/bc+-build.xml	2023-06-20 19:18:57.087685033 +0200
+Index: bc-java-r1rv76/ant/bc+-build.xml
+===================================================================
+--- bc-java-r1rv76.orig/ant/bc+-build.xml
++++ bc-java-r1rv76/ant/bc+-build.xml
 @@ -280,7 +280,7 @@
  
      </target>
@@ -9,7 +11,7 @@
  
      <target name="build-lw" depends="initMacros">
          <!--
-@@ -900,144 +900,6 @@
+@@ -935,146 +935,6 @@
  
      </target>
  
@@ -120,6 +122,8 @@
 -            </fileset>
 -            <report format="frames" todir="${artifacts.reports.html.dir}" />
 -        </junitreport>
+-
+-        <fail if="test.failed"/>
 -    </target>
 -
 -    <target name="test-lw">

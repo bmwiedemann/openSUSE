@@ -5,7 +5,7 @@
   <artifactId>bctls-jdk18on</artifactId>
   <packaging>jar</packaging>
   <name>Bouncy Castle JSSE provider and TLS/DTLS API</name>
-  <version>1.74</version>
+  <version>1.76</version>
   <description>The Bouncy Castle Java APIs for TLS and DTLS, including a provider for the JSSE.</description>
   <url>https://www.bouncycastle.org/java.html</url>
   <licenses>
@@ -33,13 +33,13 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk18on</artifactId>
-      <version>1.74</version>
+      <version>1.76</version>
       <type>jar</type>
     </dependency>
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcutil-jdk18on</artifactId>
-      <version>1.74</version>
+      <version>1.76</version>
       <type>jar</type>
     </dependency>
   </dependencies>

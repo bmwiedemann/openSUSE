@@ -343,4 +343,55 @@ view</comment>
     <comment>bsc#1212508</comment>
     <requestid>1094295</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a86ea07ac97f7a116d68ee18f0455dbc</srcmd5>
+    <version>1.76</version>
+    <time>1697748445</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.76:
+  * Defects Fixed:
+    - Service allocation in the provider could fail due to the lack
+      of a permission block. This has been fixed.
+    - JceKeyFingerPrintCalculator has been generalised for different
+      providers by using &quot;SHA-256&quot; for the algorithm string.
+    - BCJSSE: Fixed a regression in 1.74 (NullPointerException) that
+      prevents a BCJSSE server from negotiating TLSv1.1 or earlier.
+    - DTLS: Fixed server support for client_certificate_type extension.
+    - Cipher.unwrap() for HQC could fail due to a miscalculation of
+      the length of the KEM packet. This has been fixed.
+    - There was exposure to a Java 7 method in the Java 5 to Java 8
+      BCTLS jar which could cause issues with some TLS 1.2 cipher
+      suites running on older JVMs. This is now fixed.
+  * Additional Features and Functionality:
+    - BCJSSE: Following OpenJDK, finalizers have been removed from
+      SSLSocket subclasses. Applications should close sockets and
+      not rely on garbage collection.
+    - BCJSSE: Added support for boolean system property
+      &quot;jdk.tls.client.useCompatibilityMode&quot; (default &quot;true&quot;).
+    - DTLS: Added server support for session resumption.
+    - JcaPKCS10CertificationRequest will now work with EC on the
+      OpenJDK provider.
+    - TimeStamp generation now supports the SHA3 algorithm set.
+    - The SPHINCS+ simple parameters are now fully supported in the
+      BCPQC provider.
+    - Kyber, Classic McEliece, HQC, and Bike now supported by the
+      CRMF/CMS/CMP APIs.
+    - Builder classes have been add for PGP ASCII Armored streams
+      allowing CRCs and versions to now be optional.
+    - An UnknownPacket type has been added to the PGP APIs to allow
+      for forwards compatibility with upcoming revisions to the standard.
+  * Rebase patch bouncycastle-notests.patch
+- Update to version 1.75:
+  * Defects Fixed:
+    - Several Java 8 method calls were accidentally introduced in
+      the Java 5 to Java 8 build. The affected classes have been
+      refactored to remove this.
+    - (D)TLS: renegotiation after resumption now fixed to avoid
+      breaking connection.
+  * Notes:
+    - The ASN.1 core package has had some dead and retired methods
+      cleaned up and removed.
+</comment>
+    <requestid>1118619</requestid>
+  </revision>
 </revisionlist>
