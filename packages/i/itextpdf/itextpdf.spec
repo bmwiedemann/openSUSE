@@ -24,6 +24,7 @@ License:        AGPL-3.0-only
 Group:          Development/Libraries/Java
 URL:            https://itextpdf.com
 Source0:        https://github.com/itext/%{name}/archive/%{version}.tar.gz
+Patch0:         itextpdf-bc175.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.itextpdf:itext-parent:pom:)
@@ -53,6 +54,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # Both need git access during the build
 %pom_remove_plugin -r :jgitflow-maven-plugin itext

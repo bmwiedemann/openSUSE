@@ -31,4 +31,12 @@
     <comment>reproducible</comment>
     <requestid>1110268</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c6054bf783bbe3c404c35f1bcb2cce86</srcmd5>
+    <version>5.5.13.3</version>
+    <time>1697748563</time>
+    <user>anag+factory</user>
+    <comment>Fix build with bouncycastle 1.75+</comment>
+    <requestid>1118821</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:47:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * itextpdf-bc175.patch
+    + port to bouncycastle 1.75+
+
+-------------------------------------------------------------------
 Mon Sep 11 10:18:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
