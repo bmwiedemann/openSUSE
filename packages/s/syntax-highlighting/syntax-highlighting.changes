@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct  9 20:21:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- Changes since 5.110.0:
+  * Set mode for more config file endings (kde#475078)
+  * Highlight MapCSS numeric and string condition values
+  * textproto syntax: Support multipart strings.
+  * textproto syntax: Add test case for octal escape sequences.
+  * textproto syntax: Support some types of comments.
+  * textproto syntax: Allow empty strings.
+  * textproto syntax: Allow commas between fields.
+  * Add TextProto syntax (protocol buffer Text Format Language).
+
+-------------------------------------------------------------------
 Wed Sep  6 12:24:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.110.0
