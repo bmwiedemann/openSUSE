@@ -30,6 +30,7 @@ Source3:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360
 URL:            http://www.tryton.org/
 # List of additional build dependencies
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 
 Requires:       trytond
@@ -52,7 +53,7 @@ A lot is by default just a number to tag moves. It is possible to define per pro
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot
+%python3_install
 %fdupes -s %{buildroot}
 
 %files
