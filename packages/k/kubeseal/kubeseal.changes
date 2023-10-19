@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 19 05:49:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.2:
+  * Prepare Release Notes for 0.24.2 (#1345)
+  * Fix issue where sealed secrets status is not updated if sealed
+    secret… (#1295)
+  * Bump golang.org/x/net from 0.14.0 to 0.17.0 (#1344)
+  * Bump golang.org/x/crypto from 0.13.0 to 0.14.0 (#1341)
+  * Bump github.com/onsi/ginkgo/v2 from 2.12.1 to 2.13.0 (#1342)
+  * Updated command for restoring from backups (#1334)
+
+-------------------------------------------------------------------
 Thu Oct 05 12:27:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.24.1:
