@@ -1,7 +1,7 @@
 #
 # spec file for package rk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define soname lib%{name}0
-
 Name:           rk
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        A C++ library for relativistic kinematics
 License:        X11
@@ -27,7 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://rk.hepforge.org/
 Source:         http://www.hepforge.org/archive/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 %{name} provides a C++ double precision implementation of several
@@ -76,13 +75,14 @@ with %{name}.
 
 %install
 %make_install
-rm %{buildroot}/%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig
 
 %files devel
-%doc AUTHORS LICENSE NEWS
+%license LICENSE
+%doc AUTHORS NEWS
 %{_includedir}/%{name}/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc

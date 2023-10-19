@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 03:09:12 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8:
+  * Added a constructor from two P4 objects to the rk::Boost
+    class.
+  * Added a few "const" qualifiers to various arguments as
+    appropriate.
+- Specfile cleanups with spec-cleaner.
+- Use %license for LICENSE file.
+
+-------------------------------------------------------------------
 Mon Jun  7 11:55:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static)
