@@ -43,7 +43,7 @@ Provides:       pattern() = rest_cd_core
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1941
 Requires:       kernel-default
-Requires:       kernel-firmware
+Requires:       kernel-firmware-all
 Requires:       pattern() = base
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts

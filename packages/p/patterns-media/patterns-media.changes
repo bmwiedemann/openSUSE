@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 12 09:18:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require kernel-firmware-all instead of kernel-firmware
+  (kernel-firmware-all provides/obsoletes kernel-firmware).
+
+-------------------------------------------------------------------
 Wed Mar 29 06:38:07 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - rest_dvd: Add breeze5-wallpapers (boo#1209838)
