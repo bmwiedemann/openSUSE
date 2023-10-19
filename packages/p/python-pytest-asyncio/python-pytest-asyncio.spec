@@ -32,6 +32,8 @@ Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-asyncio/commit/fd57e55db1170c029324a7a9c56f86f14468217e [test] Addresses a Hypothesis health check that leads to failing tests.
+Patch:          hypothesis-health-check.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -62,7 +64,7 @@ slightly more difficult to test using normal testing tools. pytest-asyncio
 provides useful fixtures and markers to make testing easier.
 
 %prep
-%setup -q -n pytest-asyncio-%{version}
+%autosetup -p1 -n pytest-asyncio-%{version}
 
 %build
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}

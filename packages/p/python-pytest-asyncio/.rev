@@ -173,4 +173,12 @@ required by mycroft-core</comment>
     result. Now all tests report a &quot;success&quot; result.</comment>
     <requestid>1100438</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7f7e2346e70643a9d9e3840baabd4ba9</srcmd5>
+    <version>0.21.1</version>
+    <time>1697748430</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118228</requestid>
+  </revision>
 </revisionlist>
