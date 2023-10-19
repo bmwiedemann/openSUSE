@@ -34,6 +34,8 @@ Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{v
 Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM - warzone2100_fix_build_with_newer_vulkan.patch - fix building with vulkan >= 1.3.260
 Patch0:         warzone2100_fix_build_with_newer_vulkan.patch
+# PATCH-FIX-UPSTREAM - warzone2100_fix_build_with_newer_curl.patch - fix building with cURL >= 8.3.0
+Patch1:         warzone2100_fix_build_with_newer_curl.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
@@ -115,6 +117,7 @@ This package provides the game data for Warzone 2100.
 %if %{with vulkan}
 %patch0 -p1
 %endif
+%patch1 -p1
 
 # constant timestamp for reproducible builds
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"

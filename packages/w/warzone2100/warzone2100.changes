@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 16 16:59:45 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add warzone2100_fix_build_with_newer_curl.patch, fix building
+  with cURL >= 8.3.0
+  https://github.com/Warzone2100/warzone2100/pull/3406
+  
+-------------------------------------------------------------------
 Sun Sep  3 17:46:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add warzone2100_fix_build_with_newer_vulkan.patch, fix building
