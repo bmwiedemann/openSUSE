@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 29 12:54:51 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.6.0
+- drop patches:
+  logbook-pr316-sqlalchemy-count.patch
+  deal-with-missing-socket.patch
+  * Supports SQLAlchemy 1.4 and 2.0.
+  * Fix various deprecation warnings.
+  * exc_info arg may be a BaseException instance
+  * FileHandler supports path-like objects.
+  * Fixed bug which prevented compilation on Cython 3
+  * Wheels are generated for more platforms and architectures
+
+-------------------------------------------------------------------
 Sun Aug 13 21:19:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - restrict to older Cython version 

@@ -89,4 +89,22 @@
     <comment>- restrict to older Cython version</comment>
     <requestid>1103736</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e65c967705d0b149faac0f0f33235edf</srcmd5>
+    <version>1.6.0</version>
+    <time>1697748623</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0
+- drop patches:
+  logbook-pr316-sqlalchemy-count.patch
+  deal-with-missing-socket.patch
+  * Supports SQLAlchemy 1.4 and 2.0.
+  * Fix various deprecation warnings.
+  * exc_info arg may be a BaseException instance
+  * FileHandler supports path-like objects.
+  * Fixed bug which prevented compilation on Cython 3
+  * Wheels are generated for more platforms and architectures
+</comment>
+    <requestid>1118992</requestid>
+  </revision>
 </revisionlist>
