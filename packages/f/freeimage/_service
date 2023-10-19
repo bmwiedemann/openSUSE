@@ -7,9 +7,6 @@
     <param name="versionprefix">3.18.0</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">*.sln</param>
-    <param name="exclude">*.vcxproj</param>
-    <param name="exclude">*.vcproj</param>
-    <param name="exclude">*.vcxproj.filters</param>
     <param name="exclude">*.cygwin</param>
     <param name="exclude">*.iphone</param>
     <param name="exclude">*.mingw</param>

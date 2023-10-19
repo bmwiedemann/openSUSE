@@ -83,12 +83,14 @@ by today's multimedia applications.
 %autosetup -p1
 
 %build
-
-# clear files which cannot be built due to dependencies on private headers
-# (see also unbundle patch)
-# It disables the G3 Fax Loader and the JPEG lossless transformations plugins
-> Source/FreeImage/PluginG3.cpp
-> Source/FreeImageToolkit/JPEGTransform.cpp
+# access to libtiff/libjpeg internals requires internal headers, requires
+# bundled copy of the libs, which is a no-no.
+# Disable the affected components without removing files (which may be
+# referenced in the build system).
+#
+: >Source/FreeImage/PluginG3.cpp >Source/Metadata/XTIFF.cpp \
+	>Source/FreeImageToolkit/JPEGTransform.cpp \
+	>Source/FreeImage/PluginTIFF.cpp
 
 # sanitize encodings / line endings
 for file in `find . -type f -name '*.c' -or -name '*.cpp' -or -name '*.h' -or -name '*.txt' -or -name Makefile`; do
@@ -99,6 +101,10 @@ done
 
 sh ./gensrclist.sh
 sh ./genfipsrclist.sh
+if grep -q 'SRCS = $' Makefile.srcs; then
+	echo "Empty source list generated. Broken OBS package."
+	exit 1
+fi
 
 export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
