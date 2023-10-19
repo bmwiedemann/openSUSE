@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  9 20:20:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- Changes since 5.110.0:
+  * ecm_add_tests/ecm_add_test: add argument WORKING_DIRECTORY
+
+-------------------------------------------------------------------
 Wed Sep  6 12:23:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.110.0
