@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 17 11:05:25 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Clean the spec file a bit
+- Removed patch:
+  * ant-contrib-pom.patch
+    + not needed any more with the javapackages-tools >= 6
+
+-------------------------------------------------------------------
 Tue Nov  8 08:48:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
