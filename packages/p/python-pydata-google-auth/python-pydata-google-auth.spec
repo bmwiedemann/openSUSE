@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydata-google-auth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-pydata-google-auth
-Version:        1.1.0
+Version:        1.8.2
 Release:        0
 Summary:        PyData helpers for authenticating to Google APIs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/pydata-google-auth
 Source:         https://github.com/pydata/pydata-google-auth/archive/%{version}.tar.gz#/pydata-google-auth-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pydata/pydata-google-auth/pull/73 Do not require six on Python 3
+Patch0:         no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-google-auth >= 1.25.1
+Requires:       python-google-auth-oauthlib >= 0.4.0
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module google-auth-oauthlib}
-BuildRequires:  %{python_module google-auth}
+BuildRequires:  %{python_module google-auth >= 1.25.0}
+BuildRequires:  %{python_module google-auth-oauthlib >= 0.4.0}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 # /SECTION
-Requires:       python-google-auth
-Requires:       python-google-auth-oauthlib
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -49,7 +45,7 @@ PyData-Google-Auth is a package providing helpers for authenticating
 to Google APIs.
 
 %prep
-%setup -q -n pydata-google-auth-%{version}
+%autosetup -p1 -n pydata-google-auth-%{version}
 
 %build
 %python_build
@@ -64,6 +60,7 @@ to Google APIs.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pydata_google_auth
+%{python_sitelib}/pydata_google_auth-%{version}*-info
 
 %changelog

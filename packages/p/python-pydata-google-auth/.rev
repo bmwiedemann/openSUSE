@@ -39,4 +39,24 @@
     <comment></comment>
     <requestid>820677</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7137d22dd17763fba5c510061330f7d8</srcmd5>
+    <version>1.8.2</version>
+    <time>1697748644</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- Update to 1.8.2
+  * Adds pydata_google_auth.load_service_account_credentials() function to get 
+    service account credentials from the specified JSON path.
+  * Adds support for Python 3.10.
+  * Default use_local_webserver to True.
+  * Adds ability to provide redirect uri.
+  * Adds decision logic to handle use cases where a user may not have the ability 
+    to log in via an Out of Band authentication flow.
+  * Add optional colab specific ADC
+- Add no-six.patch to get rid of six dependency
+  * with backwards compatibility for the upstream</comment>
+    <requestid>1119011</requestid>
+  </revision>
 </revisionlist>

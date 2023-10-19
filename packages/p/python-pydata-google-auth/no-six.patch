@@ -1,0 +1,25 @@
+Index: pydata-google-auth-1.8.2/tests/unit/test_cache.py
+===================================================================
+--- pydata-google-auth-1.8.2.orig/tests/unit/test_cache.py
++++ pydata-google-auth-1.8.2/tests/unit/test_cache.py
+@@ -7,7 +7,10 @@ import os.path
+ import pytest
+ 
+ import google.oauth2.credentials
+-from six.moves import reload_module
++try:
++    from importlib import reload
++except ImportError: # Py2 compat
++    from six.moves import reload_module as reload
+ 
+ 
+ @pytest.fixture
+@@ -29,7 +32,7 @@ def test_import_unwriteable_fs(module_un
+     monkeypatch.setattr(os.path, "exists", lambda _: False)
+     monkeypatch.setattr(os, "makedirs", raise_unwriteable)
+ 
+-    reload_module(module_under_test)
++    reload(module_under_test)
+ 
+     assert module_under_test.NOOP is not None
+ 
