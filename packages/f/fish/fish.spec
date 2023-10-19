@@ -35,6 +35,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+Requires:       awk
 Requires:       bc
 Requires:       man
 Recommends:     terminfo
