@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Oct 19 08:51:37 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 3.2.2
+- add fix-test-deps.patch to remove vendored dependencies
+ *[Bug]: fabric.runners.Remote failed to properly deregister its SIGWINCH signal
+    handler on shutdown; in rare situations this could cause tracebacks when
+    the Python process receives SIGWINCH while no remote session is active.
+    This has been fixed.
+ * [Bug] #2204: The signal handling functionality added in Fabric 2.6 caused
+    unrecoverable tracebacks when invoked from inside a thread (such as
+    the use of fabric.group.ThreadingGroup) under certain interpreter versions.
+    This has been fixed by simply refusing to register signal handlers when not
+    in the main thread. Thanks to Francesco Giordano and others for the reports.
+ * [Bug]: Neglected to actually add deprecated to our runtime dependency
+    specification (it was still in our development dependencies). This has been fixed.
+ * [Feature]: Enhanced fabric.testing in ways large and small:
+    Backwards-compatibly merged the functionality of MockSFTP into MockRemote (may be
+    opted-into by instantiating the latter with enable_sftp=True) so you can mock
+    out both SSH and SFTP functionality in the same test, which was previously impossible.
+    It also means you can use this in a Pytest autouse fixture to prevent any tests
+    from accidentally hitting the network!
+    A new pytest fixture, remote_with_sftp, has been added which leverages the previous
+    bullet point (an all-in-one fixture suitable for, eg, preventing any incidental
+    ssh/sftp attempts during test execution).
+    A pile of documentation and test enhancements (yes, testing our testing helpers is a thing).
+ * [Support]: Added a new runtime dependency on the Deprecated library.
+ * [Support]: Language update: applied s/sanity/safety/g to the codebase
+    (with the few actual API members using the term now marked deprecated & new ones added
+    in the meantime, mostly in fabric.testing).
+ * [Feature]: Add a new CLI flag to fab, fab --list-agent-keys, which will attempt
+    to connect to your local SSH agent and print a key list, similarly to ssh-add -l.
+    This is mostly useful for expectations-checking Fabric and Paramiko’s agent
+    functionality, or for situations where you might not have ssh-add handy.
+ * [Feature]: Implement opt-in support for Paramiko 3.2’s AuthStrategy machinery, as follows:
+    Added a new module and class, fabric.auth.OpenSSHAuthStrategy, which leverages
+    aforementioned new Paramiko functionality to marry loaded SSH config files with
+    Fabric-level and runtime-level parameters, arriving at what should
+    be OpenSSH-client-compatible authentication behavior. See its API docs for details.
+    Added new configuration settings:
+      authentication.strategy_class, which defaults to None,
+        but can be set to OpenSSHAuthStrategy to opt-in to the new behavior.
+      authentication.identities, which defaults to the empty list, and can
+        be a list of private key paths for use by the new strategy class.
+ * [Bug] #2263: Explicitly add our dependency on decorator to setup.py instead of using
+    Invoke’s old, now removed, vendored copy of same. This allows Fabric to happily use
+    Invoke 2.1 and above
+
+-------------------------------------------------------------------
 Sun Jul  2 08:57:33 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.0.1

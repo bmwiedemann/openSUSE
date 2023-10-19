@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Fabric
-Version:        3.0.1
+Version:        3.2.2
 Release:        0
 Summary:        A Pythonic tool for remote execution and deployment
 License:        BSD-2-Clause
@@ -26,16 +26,21 @@ URL:            https://fabfile.org
 Source:         https://files.pythonhosted.org/packages/source/f/fabric/fabric-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#fabric/fabric#2209
 Patch0:         fix-executable.patch
+# PATCH-FIX-OPENSUSE fix-test-deps.patch - remove usage of icecream and vendored libs
+Patch1:         fix-test-deps.patch
+BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module invoke >= 2.0}
-BuildRequires:  %{python_module paramiko >= 2.4}
+BuildRequires:  %{python_module lexicon}
+BuildRequires:  %{python_module paramiko >= 3.2}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Deprecated
 Requires:       python-decorator
 Requires:       python-invoke >= 2.0
-Requires:       python-paramiko >= 2.4
+Requires:       python-paramiko >= 3.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Conflicts:      python-Fabric3

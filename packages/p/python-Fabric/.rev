@@ -411,4 +411,12 @@
 - Drop remove-pathlib2.patch because now in upstream.</comment>
     <requestid>1096411</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b8d1386d34ed2c78ccaa1d248bbbe6d8</srcmd5>
+    <version>3.2.2</version>
+    <time>1697748622</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118991</requestid>
+  </revision>
 </revisionlist>
