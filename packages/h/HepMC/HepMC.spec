@@ -23,7 +23,7 @@
 %define so_search 5
 %define libsearch libHepMC3search%{so_search}
 Name:           HepMC
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 # PATCH-FEATURE-OPENSUSE HepMC-disable-doxygen-html-timestamp.patch badshah400@gmail.com -- Disable timestamps in doxygen generated HTML footers
