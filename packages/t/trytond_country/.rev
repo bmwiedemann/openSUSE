@@ -104,4 +104,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1031061</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>20b71fd44ad5698b74eced7f9fca65f5</srcmd5>
+    <version>6.0.3</version>
+    <time>1697748608</time>
+    <user>anag+factory</user>
+    <comment>Remove %python3_install prefix and root options, that's included in the macro by default. (forwarded request 1118924 from dgarcia)</comment>
+    <requestid>1118958</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_country
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -70,7 +70,7 @@ echo %{?suse_version}
 %python3_build
 
 %install
-%python3_install --prefix=%_prefix --root=%buildroot
+%python3_install
 %fdupes -s %{buildroot}
 
 %files

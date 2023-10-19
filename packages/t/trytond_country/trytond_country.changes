@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 11:38:46 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Remove %python3_install prefix and root options, that's included in
+  the macro by default.
+
+-------------------------------------------------------------------
 Tue Oct 18 06:49:47 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - Version 6.0.3 - Bugfix Release
