@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 19 08:46:32 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Do not use break lines in %python3_install macro to avoid problems
+  with possible macro expansion. The option "--root %{buildroot}" is
+  not needed because it's in the macro by default.
+  See gh#openSUSE/python-rpm-macros#164
+
+-------------------------------------------------------------------
 Thu Jun  8 11:32:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.1.9:

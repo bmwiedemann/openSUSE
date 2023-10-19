@@ -65,10 +65,7 @@ docbook2man %{name}.sgml
   SPHINXBUILD=sphinx-build-%{py3_ver}
 
 %install
-%python3_install \
-  --skip-build                  \
-  --root %{buildroot}           \
-  --install-scripts %{_sbindir}
+%python3_install --skip-build --install-scripts %{_sbindir}
 
 chmod a+x %{buildroot}%{python3_sitelib}/%{name}/%{name}.py
 install -Dpm 0644 %{name}.8 %{buildroot}%{_mandir}/man8/%{name}.8
