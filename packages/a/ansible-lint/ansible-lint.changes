@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 19 05:51:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.21.0:
+  * Minor Changes
+    - Allow linting plugin EXAMPLES as playbooks (#3309) @Qalthos
+  * Bugfixes
+    - Add support for Rocky (#3843) @facorazza
+    - Update supported Ubuntu versions in meta.json (#3845)
+      @mcdonnnj
+    - Avoid false positives for handler in roles handlers directory
+      (#3838) @ajinkyau
+    - Hide stacktrace when loading invalid yaml (#3844) @ajinkyau
+    - Add some platforms to meta.json (#3841) @mcdonnnj
+    - Temporary avoid auto-fixing YAML files not owned by ansible
+      (#3837) @ssbarnea
+    - Add environment variable for skipping schema update (#3835)
+      @ajinkyau
+    - Avoid creating temporary YAML files inside source tree
+      (#3819) @Qalthos
+    - Document environment variables (#3833) @ssbarnea
+    - Update schemas (#3832) @ssbarnea
+    - Support complex requirements in argument_specs.yml (#3823)
+      @tapetersen
+    - Fix SARIF-formatter severity levels (#3824) @4ch1m
+    - Add play level autofix for key-order rule (#3815) @ajinkyau
+    - Add support for python 3.12 (#3813) @ssbarnea
+    - Update SPDX license list (#3814) @ssbarnea
+    - Use checkout action in install docs (#3810) @gma
+    - Fix actions-tagger arguments (#3808) @ssbarnea
+
+-------------------------------------------------------------------
 Wed Oct  4 09:41:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.20.3:
