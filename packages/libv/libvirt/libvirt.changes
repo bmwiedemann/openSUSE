@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 18 22:30:10 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- supportconfig: Adapt plugin to modern supportconfig
+
+-------------------------------------------------------------------
+Tue Oct 17 22:54:48 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- spec: Disable use of libnbd/nbdkit
+  bsc#1216274
+
+-------------------------------------------------------------------
 Mon Oct  2 17:10:58 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 9.8.0 (jsc#PED-3279)

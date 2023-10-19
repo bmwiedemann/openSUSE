@@ -4462,4 +4462,15 @@ driver is disabled for ALP. Fix it.
     https://libvirt.org/news.html#v9-8-0-2023-10-02</comment>
     <requestid>1114875</requestid>
   </revision>
+  <revision rev="386" vrev="2">
+    <srcmd5>66a9633736815412f1a5fe68ec8f974e</srcmd5>
+    <version>9.8.0</version>
+    <time>1697748413</time>
+    <user>anag+factory</user>
+    <comment>- supportconfig: Adapt plugin to modern supportconfig
+
+- spec: Disable use of libnbd/nbdkit
+  bsc#1216274</comment>
+    <requestid>1118744</requestid>
+  </revision>
 </revisionlist>

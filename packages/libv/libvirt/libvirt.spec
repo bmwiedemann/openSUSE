@@ -52,6 +52,7 @@
 %define with_numad         0%{!?_without_numad:0}
 %define with_firewalld_zone 0%{!?_without_firewalld_zone:0}
 %define with_libssh        0%{!?_without_libssh:0}
+%define with_nbdkit        0%{!?_without_nbdkit:0}
 
 # Set the OS / architecture specific special cases
 
@@ -206,8 +207,10 @@ BuildRequires:  libapparmor-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  ebtables
 BuildRequires:  iptables
-BuildRequires:  libnbd-devel
 BuildRequires:  polkit >= 0.112
+%if %{with_nbdkit}
+BuildRequires:  libnbd-devel
+%endif
 # For mount/umount in FS driver
 BuildRequires:  util-linux
 # For LVM drivers
@@ -601,9 +604,11 @@ Requires:       qemu-uefi-aarch64
 %if %{with_numad}
 Suggests:       numad
 %endif
+%if %{with_nbdkit}
 Recommends:     nbdkit
 Recommends:     nbdkit-curl-plugin
 Recommends:     nbdkit-ssh-plugin
+%endif
 
 %description daemon-driver-qemu
 The qemu driver plugin for the libvirtd daemon, providing
@@ -816,10 +821,8 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %build
 %if %{with_qemu}
     %define arg_qemu -Ddriver_qemu=enabled
-    %define arg_libnbd -Dlibnbd=enabled
 %else
     %define arg_qemu -Ddriver_qemu=disabled
-    %define arg_libnbd -Dlibnbd=disabled
 %endif
 %if %{with_openvz}
     %define arg_openvz -Ddriver_openvz=enabled
@@ -902,6 +905,11 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_numad -Dnumad=enabled
 %else
     %define arg_numad -Dnumad=disabled
+%endif
+%if %{with_nbdkit}
+    %define arg_nbdkit -Dnbdkit=enabled
+%else
+    %define arg_nbdkit -Dnbdkit=disabled
 %endif
 %if %{with_apparmor}
     %define arg_apparmor -Dapparmor=enabled -Dsecdriver_apparmor=enabled
@@ -1013,6 +1021,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dstorage_vstorage=disabled \
            %{?arg_numactl} \
            %{?arg_numad} \
+           %{?arg_nbdkit} \
            -Dcapng=enabled \
            -Dfuse=enabled \
            -Dnetcf=disabled \
@@ -1025,7 +1034,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dyajl=enabled \
            %{?arg_sanlock} \
            -Dlibpcap=enabled \
-           %{?arg_libnbd} \
            -Dlibnl=enabled \
            -Daudit=enabled \
            -Ddtrace=enabled \

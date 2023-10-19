@@ -5,7 +5,8 @@
 #              about libvirt
 #############################################################
 
-RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
+RCFILE="/usr/lib/supportconfig/resources/supportconfig.rc"
+OF="output-libvirt.txt"
 
 # conf files for all daemons reside in /etc/libvirt/. VM conf files
 # and log files reside in hypervisor-specific locations.
@@ -16,7 +17,7 @@ DAEMON_LOG_FILES=""
 
 if [ -s $RCFILE ]; then
     if ! source $RCFILE; then
-        echo "ERROR: Initializing resource file: $RCFILE" >&2
+        log_write $OF "ERROR: Initializing resource file: $RCFILE"
         exit 1
     fi
 fi
@@ -25,31 +26,9 @@ rpm_installed() {
     thisrpm="$1"
 
     if rpm -q "$thisrpm" >/dev/null 2>&1; then
-	return 0
+        return 0
     fi
     return 1
-}
-
-rpm_verify() {
-    thisrpm="$1"
-    local ret=0
-
-    echo
-    echo "#==[ Validating RPM ]=================================#"
-    if rpm -q "$thisrpm" >/dev/null 2>&1; then
-        echo "# rpm -V $thisrpm"
-
-        if rpm -V "$thisrpm"; then
-            echo "Status: Passed"
-        else
-            echo "Status: WARNING"
-        fi
-    else
-        echo "package $thisrpm is not installed"
-	ret=1
-    fi
-    echo
-    return $ret
 }
 
 if rpm_installed libvirt-daemon-driver-libxl; then
@@ -70,52 +49,47 @@ fi
 
 if rpm_installed libvirt-client && virsh capabilities > /dev/null 2>&1; then
 
-    plugin_command "virsh version"
-    plugin_command "virsh capabilities"
-    plugin_command "virsh domcapabilities"
-    plugin_command "virsh nodeinfo"
-    plugin_command "virsh nodedev-list"
+    log_cmd $OF "virsh version"
+    log_cmd $OF "virsh capabilities"
+    log_cmd $OF "virsh domcapabilities"
+    log_cmd $OF "virsh nodeinfo"
+    log_cmd $OF "virsh nodedev-list"
     # print all known domains on default URI
-    plugin_command "virsh list --all"
-    echo
+    log_cmd $OF "virsh list --all"
     # dump configuration info of active domains on default URI
     for DOM in $(virsh list --name)
     do
-        plugin_command "virsh dumpxml $DOM"
-	plugin_command "virsh vcpuinfo $DOM"
-	plugin_command "virsh dominfo $DOM"
-	plugin_command "virsh domjobinfo $DOM"
-	plugin_command "virsh dommemstat $DOM"
-	plugin_command "virsh snapshot-list $DOM"
-	echo
+        log_cmd $OF "virsh dumpxml $DOM"
+        log_cmd $OF "virsh vcpuinfo $DOM"
+        log_cmd $OF "virsh dominfo $DOM"
+        log_cmd $OF "virsh domjobinfo $DOM"
+        log_cmd $OF "virsh dommemstat $DOM"
+        log_cmd $OF "virsh snapshot-list $DOM"
     done
     # dump configuration info of inactive domains on default URI
     for DOM in $(virsh list --name --inactive)
     do
-        plugin_command "virsh dumpxml $DOM"
-	plugin_command "virsh snapshot-list $DOM"
-	echo
+        log_cmd $OF "virsh dumpxml $DOM"
+        log_cmd $OF "virsh snapshot-list $DOM"
     done
     # dump active networks, interfaces and storage pools
-    plugin_command "virsh net-list"
-    plugin_command "virsh iface-list"
-    plugin_command "virsh pool-list"
+    log_cmd $OF "virsh net-list"
+    log_cmd $OF "virsh iface-list"
+    log_cmd $OF "virsh pool-list"
 fi
 
 # dump libvirtd-related conf files
-pconf_files "$DAEMON_CONF_FILES"
+conf_files $OF "$DAEMON_CONF_FILES"
 
 # dump persistent VM-related conf files
-pconf_files "$PERSISTENT_VM_CONF_FILES"
+conf_files $OF "$PERSISTENT_VM_CONF_FILES"
 
 # dump active VM-related conf files
-pconf_files "$ACTIVE_VM_CONF_FILES"
+conf_files $OF "$ACTIVE_VM_CONF_FILES"
 
 # dump hook conf files
 test -d /etc/libvirt/hooks && FILES="$(find -L /etc/libvirt/hooks/ -type f | sort)"
-pconf_files "$FILES"
+conf_files $OF "$FILES"
 
 # dump all log files
-plog_files 0 "$DAEMON_LOG_FILES"
-
-echo "Done"
+log_files $OF 0 "$DAEMON_LOG_FILES"
