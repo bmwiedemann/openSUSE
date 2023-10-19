@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Tue Jul  4 09:01:24 UTC 2023 - José Iván López González <jlopez@suse.com>
 
 - Fix detection of the zFCP controller running mode to check
