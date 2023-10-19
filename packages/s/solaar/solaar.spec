@@ -34,6 +34,7 @@ Source0:        Solaar-%{version}.tar.gz
 Patch0:         solaar-fix-desktop-categories.patch
 #
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module evdev}
 BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module gobject}
@@ -53,6 +54,7 @@ Requires:       python3-PyYAML
 %if 0%{?suse_version} <= 1500
 Requires:       python3-dataclasses
 %endif
+Requires:       python3-dbus-python
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk

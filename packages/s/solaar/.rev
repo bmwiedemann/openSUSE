@@ -655,4 +655,13 @@
 </comment>
     <requestid>1115878</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6701e745b6fcbb859ee413156a26aac3</srcmd5>
+    <version>1.1.10</version>
+    <time>1697748664</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Require for dbus
+</comment>
+    <requestid>1119092</requestid>
+  </revision>
 </revisionlist>
