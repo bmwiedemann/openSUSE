@@ -18,7 +18,7 @@
 
 %define cpan_name Dancer2
 Name:           perl-Dancer2
-Version:        0.400001
+Version:        1.0.0
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Lightweight yet powerful web application framework
@@ -144,7 +144,7 @@ creating a new Dancer2 application.
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -159,7 +159,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc AUTHORS Changes examples GitGuide.md
+%doc AUTHORS Changes Contributing.md examples Releasing-Dancer2.md
 %license LICENSE
 
 %changelog

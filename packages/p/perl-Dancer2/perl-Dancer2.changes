@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Oct 10 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0.0
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  1.0.0     2023-10-09 10:10:10-04:00 America/New_York
+      [ BUG FIXES ]
+      * GH #1663: Allow overriding of prefix in add_route (GeekRuthie)
+      * GH #1675: Stringify VERSION_FROM correctly in Makefile.PL (Jason
+        A. Crome)
+      * GH #1677: Don't deserialize multipart form data on post (Emil
+        Perhinschi)
+      * GH #1694: Update JS assets in Dancer2 app skel (Jason A. Crome)
+      [ ENHANCEMENTS ]
+      * PR #1682: Bump minimum version of Perl to 5.14 (Jason A. Crome)
+      [ DOCUMENTATION ]
+      * GH #1580: Document the purpose of the .dancer file (Jason A. Crome)
+      * GH #1669: Show correct usage of Dancer2::Core::Error (GeekRuthie)
+      * GH #1674: Fix POD for input_handle() (mauke)
+      * GH #1414: Add documentation resources to the doc map (Jason A.
+        Crome, Yanick Champoux)
+      * PR #1684: Remove shumphrey from core developers (Steven Humphrey)
+      * GH #1685: Document the versioning scheme and Dancer2 release
+        process (Jason A. Crome)
+      * PR #1688: Fixed various bugs/issues in Dancer2 Pod (Jason A. Crome)
+      * PR #1691: Update the contribution guidelines (Jason A. Crome)
+      * PR #1692: Change README extension .mkdn -> .md (Jason A. Crome)
+      [ DEPRECATED ]
+      * GH #1645: Deprecated Dancer2::Test (Jason A. Crome)
+      * GH #1646: Deprecated keyword: push_header (Jason A. Crome)
+      * GH #1647: Deprecated keyword: header (Jason A. Crome)
+      * GH #1648: Deprecated keyword: headers (Jason A. Crome)
+      * GH #1649: Deprecated keyword: context (Jason A. Crome)
+      * GH #1650: Deprecated: splat/capture named placeholders (Jason A.
+        Crome)
+      * GH #1651: Deprecated core Request instance method:
+        request->dispatch_path (Jason A. Crome)
+      * GH #1652: Deprecated keyword in plugins: plugin_setting (Jason A.
+        Crome)
+      * GH #1653: Deprecated keyword in plugins: dancer_app (Jason A. Crome)
+      * GH #1654: Deprecated keyword in plugins: request (Jason A. Crome)
+      * GH #1655: Deprecated keyword in plugins: var (Jason A. Crome)
+      * GH #1656: Deprecated keyword in plugins: hook (Jason A. Crome)
+      [ MISC ]
+      * GH #1659: Rename `master` branch to be `main` (Yanick Champoux)
+
+-------------------------------------------------------------------
 Mon Feb  6 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.400001
