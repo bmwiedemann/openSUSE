@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-Round
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Math-Round
-Version:        0.07
-Release:        0
-# MANUAL
 %define cpan_name Math-Round
+Name:           perl-Math-Round
+Version:        0.80.0
+Release:        0
+%define cpan_version 0.08
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for rounding numbers
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Math-Round/
-Source:         http://www.cpan.org/authors/id/G/GR/GROMMEL/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(AutoLoader)
-Requires:       perl(AutoLoader)
+BuildRequires:  perl(parent)
+Requires:       perl(parent)
+Provides:       perl(Math::Round) = 0.80.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -40,26 +40,22 @@ The functions *round* and *nearest* are exported by default; others are
 available as described below. "use ... qw(:all)" exports all functions.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
+%license LICENSE
 
 %changelog
