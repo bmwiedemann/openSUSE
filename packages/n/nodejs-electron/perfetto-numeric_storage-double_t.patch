@@ -1,0 +1,14 @@
+Fix inconsistent type alias use
+On linux ix86, `double_t` evaluates to `long double`. This contradicts the `double` expected below.
+
+--- src/third_party/perfetto/src/trace_processor/db/storage/numeric_storage.cc.old	2023-10-13 11:25:09.719946900 +0200
++++ src/third_party/perfetto/src/trace_processor/db/storage/numeric_storage.cc	2023-10-14 23:54:10.728423000 +0200
+@@ -29,7 +29,7 @@ namespace storage {
+ namespace {
+ 
+ // All viable numeric values for ColumnTypes.
+-using NumericValue = std::variant<uint32_t, int32_t, int64_t, double_t>;
++using NumericValue = std::variant<uint32_t, int32_t, int64_t, double>;
+ 
+ // Using the fact that binary operators in std are operators() of classes, we
+ // can wrap those classes in variants and use them for std::visit in

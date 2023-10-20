@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct 19 16:43:42 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.0.1
+  * Updated Chromium to 118.0.5993.89.
+  * Fixed an issue where calling loadURL during some webContents url loading events could crash.
+  * Fixed an issue where fully occluded windows would return an empty image from webContents.capturePage()
+  * Fixed some redundant permission dialogs while screen sharing on Wayland.
+- Fix typo installing icon file to wrong folder.
+
+-------------------------------------------------------------------
+Thu Oct 19 04:28:56 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 27.0.0:
+  * ABI break: NODE_MODULE_VERSION is now 118
+  * Chromium 118.0.5993.32
+  * Node 18.17.1
+  * V8 11.8
+  * The deprecated color scheme changed events in systemPreferences have been removed.
+  * The systemPreferences.getAppLevelAppearance, systemPreferences.setAppLevelAppearance and systemPreferences.appLevelAppearance APIs have been removed,
+    as well as the alternate-selected-control-text value for systemPreferences.getColor.
+  * see https://www.electronjs.org/blog/electron-27-0 and https://www.electronjs.org/blog/electron-26-0 for new features
+- Drop upstreamed patches
+  * absl-uint128-do-not-assume-abi.patch
+  * cpu-missing-uint8_t.patch
+  * electron-24-components-missing-headers.patch
+  * mojom-python3.12-imp.patch
+  * re2-11-StringPiece.patch
+  * swiftshader-llvm17.patch
+- (Fedora) switch to bundled avif as Chromium no longer builds with avif 0.x
+  * drop avif_image_decoder-AVIF_PIXEL_FORMAT_COUNT.patch
+  * drop avif_image_decoder-libavif-1-mode.patch
+  * drop avif_image_decoder-repetitionCount-clli.patch
+- Drop no longer relevant chromium-86-fix-vaapi-on-intel.patch
+- (Leap and Fedora) reverse upstream changes to build with re2 10
+  * replace-StringPiece-with-string_view.patch
+- (Fedora <39) reverse upstream changes to build with icu 71
+  * v8-icu73-alt_calendar.patch
+  * v8-icu73-simple-case-folding.patch
+- Reverse upstream changes to build against old brotli
+  * brotli-remove-shared-dictionary.patch
+- Add patches to fix build errors
+  * absl-make_unique-missing-include.patch
+  * autofill_i18n_parsing_expressions-constexpr.patch
+  * chromium-117-blink-BUILD-mnemonic.patch
+  * decoder_buffer_side_data-missing-uint8_t.patch
+  * disable-tests.patch
+  * keyboard_util-gcc12-invalid-constexpr.patch
+  * kwallet_dbus-missing-uint8_t.patch
+  * material_color_utilities-tones-missing-round.patch
+  * page_content_annotations_common-remove-tflite.patch
+  * partition_root-attribute.patch
+  * perfetto-numeric_storage-double_t.patch
+  * sensor_reading-missing-int64_t-size_t.patch
+  * simple_font_data-freetype-include.patch
+  * utf_string_conversion_utils-missing-numeric_limits.patch
+
+-------------------------------------------------------------------
 Mon Oct 16 17:38:38 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add backported security patches:

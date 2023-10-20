@@ -3,13 +3,13 @@ Index: electron-17.1.0/third_party/perfetto/src/trace_processor/db/column.cc
 --- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/db/column.cc	2022-03-07 17:28:24.814737660 +0100
 +++ electron-17.1.0/third_party/perfetto/src/trace_processor/db/column.cc	2022-03-09 08:25:10.346569313 +0100
 @@ -14,6 +14,7 @@
+  * See the License for the specific language governing permissions and
   * limitations under the License.
   */
- 
 +#include <limits>
  #include "src/trace_processor/db/column.h"
  
- #include "src/trace_processor/db/compare.h"
+ #include "perfetto/base/logging.h"
 Index: electron-17.1.0/ui/gtk/gtk_key_bindings_handler.cc
 ===================================================================
 --- electron-17.1.0.orig/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc	2022-03-07 17:20:31.788817015 +0100

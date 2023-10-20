@@ -39,8 +39,8 @@ index 19b45dc1268..67dcd7752d0 100644
      "speech/speech_synthesis_impl.h",
      "speech/tts_controller_impl.cc",
 @@ -2956,17 +2951,6 @@ source_set("browser") {
-       "serial/serial_service.cc",
-       "serial/serial_service.h",
+       "service_worker/service_worker_usb_delegate_observer.cc",
+       "service_worker/service_worker_usb_delegate_observer.h",
  
 -      # Most speech code is non-Android.
 -      "speech/endpointer/endpointer.cc",
@@ -62,8 +62,8 @@ index 19b45dc1268..67dcd7752d0 100644
      deps += [
 -      "//components/speech:speech",
        "//components/vector_icons",
+       "//components/webauthn/json",
      ]
-   }
 @@ -3108,6 +3083,37 @@ source_set("browser") {
      deps += [ "//ui/compositor" ]
    }

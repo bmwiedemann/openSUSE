@@ -1,0 +1,29 @@
+From f5a9fd5f3d237bad08f33b3744cd897956324fc6 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Wed, 4 Oct 2023 15:49:33 +0000
+Subject: [PATCH] IWYU: add stdint.h for uint8_t in KWalletDBus
+
+Bug: 957519
+Change-Id: I07319849f15c23d4a15cf7b8d4ebae5199a86894
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4909840
+Commit-Queue: Lei Zhang <thestig@chromium.org>
+Reviewed-by: Lei Zhang <thestig@chromium.org>
+Auto-Submit: Stephan Hartmann <stha09@googlemail.com>
+Cr-Commit-Position: refs/heads/main@{#1205285}
+---
+ components/os_crypt/sync/kwallet_dbus.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/components/os_crypt/sync/kwallet_dbus.h b/components/os_crypt/sync/kwallet_dbus.h
+index af2648394dd5e04..6e6cd4209c64fee 100644
+--- a/components/os_crypt/sync/kwallet_dbus.h
++++ b/components/os_crypt/sync/kwallet_dbus.h
+@@ -5,6 +5,8 @@
+ #ifndef COMPONENTS_OS_CRYPT_SYNC_KWALLET_DBUS_H_
+ #define COMPONENTS_OS_CRYPT_SYNC_KWALLET_DBUS_H_
+ 
++#include <stdint.h>
++
+ #include <string>
+ #include <vector>
+ 

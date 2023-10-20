@@ -3,7 +3,7 @@ Index: electron-17.1.0/chrome/browser/about_flags.cc
 --- electron-17.1.0.orig/chrome/browser/about_flags.cc	2022-03-07 17:20:30.424811477 +0100
 +++ electron-17.1.0/chrome/browser/about_flags.cc	2022-03-09 08:25:19.662417046 +0100
 @@ -3822,12 +3822,12 @@ const FeatureEntry kFeatureEntries[] = {
-      FEATURE_VALUE_TYPE(device::features::kWebXrSharedBuffers)},
+ #endif
  #endif  // BUILDFLAG(IS_ANDROID)
  #endif  // ENABLE_VR
 -#if BUILDFLAG(IS_CHROMEOS_ASH)

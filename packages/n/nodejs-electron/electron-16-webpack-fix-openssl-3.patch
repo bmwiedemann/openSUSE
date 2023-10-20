@@ -3,8 +3,8 @@ Index: electron-16.0.9/electron/build/webpack/webpack.config.base.js
 --- electron-16.0.9.orig/electron/build/webpack/webpack.config.base.js	2022-02-16 16:41:24.767092075 +0100
 +++ electron-16.0.9/electron/build/webpack/webpack.config.base.js	2022-02-17 11:10:51.379512377 +0100
 @@ -1,5 +1,12 @@
- const fs = require('fs');
- const path = require('path');
+ const fs = require('node:fs');
+ const path = require('node:path');
 +
 +// HACK: OpenSSL 3 does not support md4 any more, but webpack hardcodes it all
 +// over the place: https://github.com/webpack/webpack/issues/13572

@@ -10,6 +10,6 @@ Index: electron-17.1.0/third_party/electron_node/common.gypi
 +        'cflags': [ '-I/usr/include/electron' ],
 +        'libraries': [ '-lz' ],
 +      }],
-       [ 'OS in "linux freebsd openbsd solaris aix"', {
+       [ 'OS in "linux freebsd openbsd solaris aix os400"', {
          'cflags': [ '-pthread' ],
          'ldflags': [ '-pthread' ],

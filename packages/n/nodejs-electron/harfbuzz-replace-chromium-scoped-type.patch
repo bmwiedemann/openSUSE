@@ -16,18 +16,6 @@ Commit-Queue: Munira Tursunova <moonira@google.com>
 Cr-Commit-Position: refs/heads/main@{#1054692}
 ---
 
-diff --git a/components/paint_preview/DEPS b/components/paint_preview/DEPS
-index bcc6288..28f2c7a 100644
---- a/components/paint_preview/DEPS
-+++ b/components/paint_preview/DEPS
-@@ -3,7 +3,6 @@
-   "+components/memory_pressure",
-   "+mojo/public/cpp",
-   "+third_party/harfbuzz-ng/src/src",
--  "+third_party/harfbuzz-ng/utils/hb_scoped.h",
-   "+third_party/skia/include/core",
-   "+ui/gfx/geometry",
- ]
 diff --git a/components/paint_preview/common/BUILD.gn b/components/paint_preview/common/BUILD.gn
 index 377dc92..c39757d 100644
 --- a/components/paint_preview/common/BUILD.gn
@@ -212,6 +200,15 @@ index 86c289c..98cbd7a 100644
  
    if (!face || !hb_ot_color_has_palettes(face.get()))
      return absl::nullopt;
+@@ -49,7 +49,7 @@ absl::optional<uint16_t> OpenTypeCpalLoo
+ Vector<Color> OpenTypeCpalLookup::RetrieveColorRecords(
+     sk_sp<SkTypeface> typeface,
+     unsigned palette_index) {
+-  HbScoped<hb_face_t> face(HbFaceFromSkTypeface(typeface));
++  hb::unique_ptr<hb_face_t> face(HbFaceFromSkTypeface(typeface));
+
+   if (!face) {
+     return Vector<Color>();
 diff --git a/third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.cc b/third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.cc
 index ebab0fa8..4ecd886 100644
 --- a/third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.cc

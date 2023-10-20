@@ -1,0 +1,10 @@
+--- src/third_party/material_color_utilities/src/cpp/palettes/tones.cc.old	2023-10-11 11:30:46.080385500 +0200
++++ src/third_party/material_color_utilities/src/cpp/palettes/tones.cc	2023-10-11 21:04:10.234128500 +0200
+@@ -16,6 +16,7 @@
+ 
+ #include "cpp/palettes/tones.h"
+ 
++#include <cmath>
+ #include "cpp/cam/cam.h"
+ #include "cpp/cam/hct.h"
+ 

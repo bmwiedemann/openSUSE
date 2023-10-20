@@ -3,19 +3,22 @@ This reduces the size of the electron binary by 2MB.
 
 --- src/v8/src/base/macros.h.old	2023-09-29 08:54:55.701965801 +0200
 +++ src/v8/src/base/macros.h	2023-10-03 11:54:02.305086047 +0200
-@@ -399,11 +399,15 @@ bool is_inbounds(float_t v) {
+@@ -399,13 +399,18 @@ bool is_inbounds(float_t v) {
  
  // Setup for Linux shared library export.
  #if V8_HAS_ATTRIBUTE_VISIBILITY
 +#if defined(HIDE_PRIVATE_SYMBOLS)
 +#define V8_EXPORT_PRIVATE __attribute__((visibility("hidden")))
++#define V8_EXPORT_ENUM V8_EXPORT_PRIVATE
 +#else
  #ifdef BUILDING_V8_SHARED
  #define V8_EXPORT_PRIVATE __attribute__((visibility("default")))
+ #define V8_EXPORT_ENUM V8_EXPORT_PRIVATE
  #else
  #define V8_EXPORT_PRIVATE
+ #define V8_EXPORT_ENUM
  #endif
 +#endif  // HIDE_PRIVATE_SYMBOLS
  #else
  #define V8_EXPORT_PRIVATE
- #endif
+ #define V8_EXPORT_ENUM

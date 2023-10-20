@@ -172,7 +172,6 @@ keeplibs=(
     third_party/angle  # ANGLE is an integral part of chrome and is not available as a shared library.
     third_party/angle/src/third_party/ceval #not in any distro
     third_party/angle/src/third_party/libXNVCtrl #Not in 15.4
-    third_party/angle/src/third_party/systeminfo #Derived code, not vendored dep.
     third_party/angle/src/third_party/volk #replacement vulkan loader. Drop it when Leap has new enough libvulkan
     third_party/blink #Integral part of chrome
     third_party/boringssl #Factory has an ancient version, but upstream seems to have gave up on making it a shared library
@@ -201,12 +200,14 @@ keeplibs=(
     third_party/crashpad/crashpad/third_party/zlib #Derived code, not vendored dependency.
     third_party/crc32c #Not in Leap
     third_party/cros_system_api #Integral part of Chrome. Needed.
+    third_party/d3 #javascript
     third_party/dav1d #Leap and fc36 too old
     third_party/dawn #Integral part of chrome, Needed even if you're building chrome without webgpu
     third_party/dawn/third_party/gn/webgpu-cts #Integral part of chrome, Needed even if you're building chrome without webgpu
     third_party/devtools-frontend #Javascript code, integral part of chrome
     third_party/devtools-frontend/src/front_end/third_party #various javascript code compiled into chrome, see README.md
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
     third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n # javascript
     third_party/devtools-frontend/src/third_party/i18n #javascript
     third_party/devtools-frontend/src/third_party/typescript #Chromium added code
@@ -276,6 +277,7 @@ keeplibs=(
     third_party/private-join-and-compute #not in any distro, also heavily patched
     third_party/private_membership #derived code, not vendored dep
     third_party/protobuf #Heavily forked. Apparently was officially unbundlable back in the GYP days, and may be again in the future.
+    third_party/puffin #integral part of chrome
     third_party/rnnoise #use of private headers
     third_party/shell-encryption #not available on any distro, also heavily patched
     third_party/skia #integral part of chrome

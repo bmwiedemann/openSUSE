@@ -1,30 +1,35 @@
---- src/third_party/electron_node/BUILD.gn.old	2023-10-12 09:14:14.490589900 +0000
-+++ src/third_party/electron_node/BUILD.gn	2023-10-15 07:18:47.581489100 +0000
-@@ -44,6 +44,7 @@ declare_args() {
-   # Allows downstream packagers (eg. Linux distributions) to build Electron against system shared libraries.
-   use_system_cares = false
-   use_system_nghttp2 = false
-+  use_system_simdutf = false
-   use_system_llhttp = false
-   use_system_histogram = false
+--- src/third_party/electron_node/deps/simdutf/BUILD.gn.old	2023-10-13 11:35:11.896370000 +0200
++++ src/third_party/electron_node/deps/simdutf/BUILD.gn	2023-10-17 19:29:35.882793400 +0200
+@@ -1,15 +1,26 @@
++declare_args() {
++ use_system_simdutf = false
++}
++
+ config("simdutf_config") {
++ if(use_system_simdutf) {
++  libs = ["simdutf"]
++ } else {
+   include_dirs = [ "." ]
++ }
  }
-@@ -211,7 +212,6 @@ component("node_lib") {
-     ":node_js2c",
-     "deps/googletest:gtest",
-     "deps/base64",
--    "deps/simdutf",
-     "deps/uvwasi",
-     "//third_party/zlib",
-     "//third_party/brotli:dec",
-@@ -248,6 +248,11 @@ component("node_lib") {
-   } else {
-     deps += [ "deps/histogram" ]
-   }
-+  if (use_system_simdutf) {
-+    libs += [ "simdutf" ]
-+  } else {
-+    deps += [ "deps/simdutf" ]
-+  }
-   frameworks = []
+ 
+ static_library("simdutf") {
++ if(!use_system_simdutf) {
+   include_dirs = [ "." ]
+   sources = [
+     "simdutf.cpp",
+   ]
++ }
+ 
+   public_configs = [ ":simdutf_config" ]
+ 
++ if(!use_system_simdutf) {
    cflags_cc = [
-     "-Wno-deprecated-declarations",
+     "-Wno-ambiguous-reversed-operator",
+     "-Wno-c++98-compat-extra-semi",
+@@ -17,4 +28,5 @@ static_library("simdutf") {
+     "-Wno-unused-const-variable",
+     "-Wno-unused-function",
+   ]
++ }
+ }

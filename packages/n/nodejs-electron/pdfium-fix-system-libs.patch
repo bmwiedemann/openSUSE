@@ -11,8 +11,8 @@
 --- chromium-77.0.3865.10/third_party/pdfium/core/fpdfapi/page/BUILD.gn.system-openjpeg	2019-08-06 13:58:27.000000000 +0200
 +++ chromium-77.0.3865.10/third_party/pdfium/core/fpdfapi/page/BUILD.gn	2019-08-17 23:49:04.913234649 +0200
 @@ -105,6 +105,8 @@ jumbo_source_set("page") {
+     "../parser",
    ]
-   configs += [ "../../../:pdfium_strict_config" ]
    deps = [
 +    "../../../third_party:libopenjpeg2",
 +    "../../../third_party:lcms2",

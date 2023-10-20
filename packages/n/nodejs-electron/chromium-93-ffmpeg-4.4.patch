@@ -37,33 +37,13 @@ Index: electron-17.1.2/media/filters/audio_decoder_unittest.cc
    const uint32_t* skip_samples_ptr =
        reinterpret_cast<const uint32_t*>(av_packet_get_side_data(
            packet, AV_PKT_DATA_SKIP_SAMPLES, &skip_samples_size));
-Index: electron-17.1.2/media/filters/ffmpeg_demuxer.cc
+Index: chromium-118.0.5993.18/media/filters/ffmpeg_demuxer.cc
 ===================================================================
---- electron-17.1.2.orig/media/filters/ffmpeg_demuxer.cc	2022-03-11 08:49:30.744949436 +0100
-+++ electron-17.1.2/media/filters/ffmpeg_demuxer.cc	2022-03-11 09:17:36.916088893 +0100
-@@ -404,11 +404,19 @@ void FFmpegDemuxerStream::EnqueuePacket(
-   scoped_refptr<DecoderBuffer> buffer;
- 
-   if (type() == DemuxerStream::TEXT) {
-+#if LIBAVUTIL_VERSION_MAJOR < 57
-+    int id_size = 0;
-+#else
-     size_t id_size = 0;
-+#endif
-     uint8_t* id_data = av_packet_get_side_data(
-         packet.get(), AV_PKT_DATA_WEBVTT_IDENTIFIER, &id_size);
- 
-+#if LIBAVUTIL_VERSION_MAJOR < 57
-+    int settings_size = 0;
-+#else
-     size_t settings_size = 0;
-+#endif
-     uint8_t* settings_data = av_packet_get_side_data(
-         packet.get(), AV_PKT_DATA_WEBVTT_SETTINGS, &settings_size);
- 
-@@ -420,7 +428,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
-     buffer = DecoderBuffer::CopyFrom(packet->data, packet->size,
-                                      side_data.data(), side_data.size());
+--- chromium-118.0.5993.18.orig/media/filters/ffmpeg_demuxer.cc
++++ chromium-118.0.5993.18/media/filters/ffmpeg_demuxer.cc
+@@ -398,7 +398,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+     // TODO(crbug.com/1471504): This is now broken without side data; remove.
+     buffer = DecoderBuffer::CopyFrom(packet->data, packet->size);
    } else {
 +#if LIBAVUTIL_VERSION_MAJOR < 57
 +    int side_data_size = 0;
@@ -73,7 +53,7 @@ Index: electron-17.1.2/media/filters/ffmpeg_demuxer.cc
      uint8_t* side_data = av_packet_get_side_data(
          packet.get(), AV_PKT_DATA_MATROSKA_BLOCKADDITIONAL, &side_data_size);
  
-@@ -481,7 +493,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+@@ -461,7 +465,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
                                         packet->size - data_offset);
      }
  

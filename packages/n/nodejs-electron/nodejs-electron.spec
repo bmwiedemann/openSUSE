@@ -22,7 +22,7 @@
 
 %define mod_name electron
 # https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
-%define abi_version 116
+%define abi_version 118
 
 # Do not provide libEGL.so, etc…
 %define __provides_exclude ^lib.*\\.so.*$
@@ -108,6 +108,11 @@ BuildArch:      i686
 %bcond_without system_nghttp2
 
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
+%bcond_without system_avif
+%else
+%bcond_with system_avif
+%endif
 
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
@@ -126,13 +131,11 @@ BuildArch:      i686
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 %bcond_without harfbuzz_5
 %bcond_without link_vulkan
-%bcond_without system_avif
 %bcond_without ffmpeg_5
 %bcond_without system_spirv
 %else
 %bcond_with harfbuzz_5
 %bcond_with link_vulkan
-%bcond_with system_avif
 %bcond_with ffmpeg_5
 %bcond_with system_spirv
 %endif
@@ -143,6 +146,12 @@ BuildArch:      i686
 %else
 %bcond_with system_aom
 %bcond_with system_vpx
+%endif
+
+%if 0%{?suse_version} || 0%{?fedora} >= 39
+%bcond_without icu_73
+%else
+%bcond_with icu_73
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
@@ -186,6 +195,12 @@ BuildArch:      i686
 %bcond_with abseil_2023
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
+%bcond_without re2_11
+%else
+%bcond_with re2_11
+%endif
+
 %else
 %bcond_with system_abseil
 %endif
@@ -206,7 +221,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        25.9.1
+Version:        27.0.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -229,12 +244,11 @@ Source401:      audio_file_reader-ffmpeg-AVFrame-duration.patch
 # and against harfbuzz 4
 Source415:      harfbuzz-replace-chromium-scoped-type.patch
 Source416:      harfbuzz-replace-HbScopedPointer.patch
-
-
-#Reverse upstream changes to build against system libavif.
-#All of this patch is dead code, so it can be reversed unconditionally.
-Source420:      avif_image_decoder-AVIF_PIXEL_FORMAT_COUNT.patch
-
+# and icu 71
+Source417:      v8-icu73-alt_calendar.patch
+Source418:      v8-icu73-simple-case-folding.patch
+# and re2 10
+Source430:      replace-StringPiece-with-string_view.patch
 
 
 # PATCHES for openSUSE-specific things
@@ -243,7 +257,6 @@ Patch1:         fpic.patch
 Patch3:         gcc-enable-lto.patch
 Patch6:         chromium-vaapi.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
-Patch9:         chromium-86-fix-vaapi-on-intel.patch
 # Always disable use_thin_lto which is an lld feature
 Patch21:        electron-13-fix-use-thin-lto.patch
 # Fix common.gypi to include /usr/include/electron
@@ -265,6 +278,7 @@ Patch77:        angle_link_glx.patch
 Patch78:        rdynamic.patch
 Patch79:        v8-hide-private-symbols.patch
 Patch80:        icon.patch
+Patch81:        disable-tests.patch
 
 # PATCHES to use system libs
 Patch1000:      do-not-build-libvulkan.so.patch
@@ -293,6 +307,7 @@ Patch1074:      no-zlib-headers.patch
 Patch1076:      crashpad-use-system-abseil.patch
 Patch1077:      system-wayland.patch
 Patch1078:      system-simdutf.patch
+
 
 # PATCHES to fix interaction with third-party software
 Patch2004:      chromium-gcc11.patch
@@ -325,10 +340,13 @@ Source2033:      node-upgrade-llhttp-to-8.patch
 %endif
 Patch2034:      swiftshader-LLVMJIT-AddressSanitizerPass-dead-code-remove.patch
 Patch2035:      RenderFrameHostImpl-use-after-free.patch
-Patch2036:      avif_image_decoder-libavif-1-mode.patch
 Patch2037:      abseil-remove-unused-targets.patch
-Patch2038:      avif_image_decoder-repetitionCount-clli.patch
 Patch2039:      vulkan_memory_allocator-upgrade.patch
+# https://github.com/electron/electron/pull/40032
+Patch2040:      build-without-extensions.patch
+Patch2041:      chromium-117-blink-BUILD-mnemonic.patch
+Patch2042:      brotli-remove-shared-dictionary.patch
+Patch2043:      keyboard_util-gcc12-invalid-constexpr.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -345,23 +363,25 @@ Patch3080:      compact_enc_det_generated_tables-Wnarrowing.patch
 Patch3096:      remove-date-reproducible-builds.patch
 Patch3106:      vulkan_memory_allocator-vk_mem_alloc-missing-snprintf.patch
 Patch3121:      services-network-optional-explicit-constructor.patch
-Patch3202:      mojom-python3.12-imp.patch
 # https://src.fedoraproject.org/rpms/qt6-qtwebengine/blob/rawhide/f/Partial-migration-from-imp-to-importlib.patch
 Patch3203:      Partial-migration-from-imp-to-importlib.patch
-Patch3204:      re2-11-StringPiece.patch
-Patch3205:      electron-24-components-missing-headers.patch
-Patch3206:      cpu-missing-uint8_t.patch
-Patch3207:      absl-uint128-do-not-assume-abi.patch
 Patch3208:      mojo_ukm_recorder-missing-WrapUnique.patch
 Patch3209:      electron_browser_context-missing-variant.patch
 Patch3210:      electron_api_app-GetPathConstant-non-constexpr.patch
-# https://github.com/electron/electron/pull/40032
-Patch3211:      build-without-extensions.patch
-Patch3212:      swiftshader-llvm17.patch
 Patch3213:      CVE-2023-38552-node-integrity-checks-according-to-policies.patch
 Patch3214:      CVE-2023-39333-node-create_dynamic_module-code-injection.patch
 Patch3215:      CVE-2023-45143-undici-cookie-leakage.patch
-
+Patch3216:      partition_root-attribute.patch
+Patch3217:      sensor_reading-missing-int64_t-size_t.patch
+Patch3218:      material_color_utilities-tones-missing-round.patch
+Patch3219:      utf_string_conversion_utils-missing-numeric_limits.patch
+Patch3220:      kwallet_dbus-missing-uint8_t.patch
+Patch3221:      page_content_annotations_common-remove-tflite.patch
+Patch3222:      decoder_buffer_side_data-missing-uint8_t.patch
+Patch3223:      absl-make_unique-missing-include.patch
+Patch3224:      autofill_i18n_parsing_expressions-constexpr.patch
+Patch3225:      simple_font_data-freetype-include.patch
+Patch3226:      perfetto-numeric_storage-double_t.patch
 
 
 %if %{with clang}
@@ -527,6 +547,11 @@ BuildRequires:  pkgconfig(harfbuzz) >= 3
 BuildRequires:  pkgconfig(harfbuzz) >= 5
 %endif
 BuildRequires:  pkgconfig(icu-i18n) >= 71
+%if %{with icu_73}
+BuildRequires:  pkgconfig(icu-i18n) >= 73
+%else
+BuildRequires:  pkgconfig(icu-i18n) >= 71
+%endif
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(krb5)
 %if %{with ffmpeg_5}
@@ -539,7 +564,8 @@ BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil)
 %endif
 %if %{with system_avif}
-BuildRequires:  pkgconfig(libavif) >= 0.10
+# Needs avifRGBImage::maxThreads
+BuildRequires:  pkgconfig(libavif) >= 1
 %endif
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
@@ -590,6 +616,9 @@ BuildRequires:  pkgconfig(re2)
 %if %{without system_abseil}
 #re2-11 has abseil as a public dependency. The headers collide with the bundled ones, causing linker errors.
 BuildRequires:  cmake(re2) < 11
+%endif
+%if %{with system_abseil} && %{with re2_11}
+BuildRequires:  cmake(re2) >= 11
 %endif
 %if %{with system_spirv}
 %if 0%{?suse_version}
@@ -709,14 +738,18 @@ patch -R -p1 < %SOURCE415
 patch -R -p1 < %SOURCE416
 %endif
 
+%if %{without icu_73}
+patch -R -p1 < %SOURCE417
+patch -R -p1 < %SOURCE418
+%endif
 
 
 # This one depends on an ffmpeg nightly, reverting unconditionally.
 patch -R -p1 < %SOURCE401
 
-# This one is dead code, we cen revert it even when using bundled avif.
-patch -R -p1 < %SOURCE420
-
+%if %{without system_abseil} || (%{with system_abseil} || %{without re2_11})
+patch -R -p1 < %SOURCE430
+%endif
 
 # Link system wayland-protocols-devel into where chrome expects them
 mkdir -p third_party/wayland/src
@@ -1182,6 +1215,17 @@ myconf_gn+=" enable_paint_preview=false"
 myconf_gn+=" use_bundled_weston=false"
 myconf_gn+=" enable_component_updater=false"
 myconf_gn+=" enable_lens_desktop=false"
+myconf_gn+=' enable_bound_session_credentials=false'
+myconf_gn+=' enable_chrome_notifications=false'
+myconf_gn+=' enable_message_center=false'
+
+#FIXME: possibly enable this when skia gets built with rust code by default.
+#Need to patch in optflags and possibly FFI LTO hacks (see signal-desktop package for how it's done)
+myconf_gn+=' enable_rust=false'
+
+#See net/base/features.cc. It's not enabled yet.
+#FIXME: enable this and add shims to build with system zstd when it's enabled
+myconf_gn+=' disable_zstd_filter=true'
 
 myconf_gn+=' chrome_root_store_supported=false'
 myconf_gn+=' chrome_root_store_optional=false'
@@ -1220,7 +1264,6 @@ myconf_gn+=" use_partition_alloc=true"
 
 
 myconf_gn+=" disable_fieldtrial_testing_config=true"
-myconf_gn+=" use_gnome_keyring=false"
 myconf_gn+=" use_unofficial_version_number=false"
 myconf_gn+=" use_lld=false"
 
@@ -1346,7 +1389,7 @@ install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/
 
 install -pm 0755 %{SOURCE10} %{buildroot}%{_bindir}/%{mod_name}
 sed -i 's[XXXLIBDIRXXX[%{_libdir}[g' %{buildroot}%{_bindir}/%{mod_name}
-install -pvDm644 electron/default_app/icon.png %{buildroot}%{_datadir}/icons/hicolor/1024x1024/%{mod_name}.png
+install -pvDm644 electron/default_app/icon.png %{buildroot}%{_datadir}/icons/hicolor/1024x1024/apps/%{mod_name}.png
 
 install -pvDm644 electron/shell/browser/resources/win/extracted-0.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/%{mod_name}.png
 install -pvDm644 electron/shell/browser/resources/win/extracted-1.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{mod_name}.png

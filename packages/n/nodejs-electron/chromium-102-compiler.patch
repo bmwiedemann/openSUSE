@@ -46,15 +46,16 @@ index d40843b..b92f03b 100644
 +    # ANY BUGS DUE TO ALIASING SHOULD BE FIXED IN CODE, AND THE PATCHES SENT UPSTREAM!
 +    # cflags += [ "-fno-strict-aliasing" ]  # See http://crbug.com/32204
  
-     # Stack protection.
-     if (is_apple) {
-@@ -432,9 +435,6 @@
+     # Stack protection. ShadowCallStack and Stack protector address the same
+     # problems. Therefore, we only enable one or the other. Clang advertises SCS as
+@@ -432,10 +435,6 @@
    # Linux/Android/Fuchsia common flags setup.
    # ---------------------------------
    if (is_linux || is_chromeos || is_android || is_fuchsia) {
 -    asmflags += [ "-fPIC" ]
 -    cflags += [ "-fPIC" ]
 -    ldflags += [ "-fPIC" ]
+-    rustflags += [ "-Crelocation-model=pic" ]
  
      if (!is_clang) {
        # Use pipes for communicating between sub-processes. Faster.
@@ -183,7 +184,7 @@ index d40843b..b92f03b 100644
  
      if (treat_warnings_as_errors) {
        # Turn rustc warnings into the "deny" lint level, which produce compiler
-@@ -1618,16 +1552,6 @@
+@@ -1618,23 +1552,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -194,7 +195,14 @@ index d40843b..b92f03b 100644
 -      # Non-chromium code is not guaranteed to compile cleanly with
 -      # _FORTIFY_SOURCE. Also, fortified build may fail when optimizations are
 -      # disabled, so only do that for Release build.
--      defines += [ "_FORTIFY_SOURCE=2" ]
+-      fortify_level = "2"
+-
+-      # ChromeOS supports a high-quality _FORTIFY_SOURCE=3 implementation
+-      # with a few custom glibc patches. Use that if it's available.
+-      if (is_chromeos_ash) {
+-        fortify_level = "3"
+-      }
+-      defines += [ "_FORTIFY_SOURCE=" + fortify_level ]
 -    }
 -
      if (is_apple) {
@@ -295,9 +303,9 @@ index d40843b..b92f03b 100644
 -config("minimal_symbols") {
 +config("minimal_symbols") { cflags = ["-g1"] }
 +config("xminimal_symbols") {
+   rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-     cflags = []
 @@ -2470,7 +2403,8 @@
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function

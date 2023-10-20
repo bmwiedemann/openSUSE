@@ -18,7 +18,7 @@
  }
 --- src/services/network/first_party_sets/first_party_sets_access_delegate.cc.old	2023-03-24 11:21:23.454841767 +0100
 +++ src/services/network/first_party_sets/first_party_sets_access_delegate.cc	2023-03-24 14:41:19.809786588 +0100
-@@ -95,7 +95,7 @@
+@@ -95,11 +95,11 @@
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
  
    if (!enabled_)
@@ -26,4 +26,22 @@
 +    return {FirstPartySetsAccessDelegate::EntriesResult()};
  
    if (!ready_event_.has_value()) {
+     if (!wait_for_init_) {
+-      return {{}};
++      return {FirstPartySetsAccessDelegate::EntriesResult()};
+     }
      // base::Unretained() is safe because `this` owns `pending_queries_` and
+     // `pending_queries_` will not run the enqueued callbacks after `this` is
+diff --git a/services/network/first_party_sets/first_party_sets_manager.cc b/services/network/first_party_sets/first_party_sets_manager.cc
+index 68306f7e32db445..2ffd2a8be03efcf 100644
+--- a/services/network/first_party_sets/first_party_sets_manager.cc
++++ b/services/network/first_party_sets/first_party_sets_manager.cc
+@@ -117,7 +117,7 @@ FirstPartySetsManager::FindEntries(
+ 
+   if (!sets_.has_value()) {
+     if (!wait_for_init_) {
+-      return {{}};
++      return FirstPartySetsManager::EntriesResult();
+     }
+     EnqueuePendingQuery(base::BindOnce(
+         &FirstPartySetsManager::FindEntriesAndInvoke,

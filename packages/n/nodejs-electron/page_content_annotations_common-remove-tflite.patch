@@ -1,0 +1,43 @@
+From 26d375ba32c401f284385fbe6e2aa1faa8bdf47b Mon Sep 17 00:00:00 2001
+From: Sophie Chang <sophiechang@chromium.org>
+Date: Fri, 13 Oct 2023 19:44:18 +0000
+Subject: [PATCH] Clean up unused function that was including tflite support in a non-tflite gated header
+
+Bug: 1429503
+Change-Id: I6db6c2bf2818ce5d1f926c35343e58c4db7487d9
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4938857
+Commit-Queue: Sophie Chang <sophiechang@chromium.org>
+Reviewed-by: Robert Ogden <robertogden@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1209620}
+---
+
+diff --git a/components/optimization_guide/core/page_content_annotations_common.h b/components/optimization_guide/core/page_content_annotations_common.h
+index d2649b9..4447a83 100644
+--- a/components/optimization_guide/core/page_content_annotations_common.h
++++ b/components/optimization_guide/core/page_content_annotations_common.h
+@@ -14,7 +14,6 @@
+ #include "components/optimization_guide/core/page_content_annotation_type.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ #include "third_party/abseil-cpp/absl/types/variant.h"
+-#include "third_party/tflite_support/src/tensorflow_lite_support/cc/task/processor/proto/embedding.pb.h"
+ 
+ namespace optimization_guide {
+ 
+@@ -122,17 +121,12 @@
+ class PageContentAnnotationsResult {
+   // The various type of results.
+   typedef float ContentVisibilityScore;
+-  typedef tflite::task::processor::EmbeddingResult TextEmbeddingResult;
+ 
+  public:
+   // Creates a result for a content visibility annotation.
+   static PageContentAnnotationsResult CreateContentVisibilityScoreResult(
+       const ContentVisibilityScore& score);
+ 
+-  // Creates a result for a text embedding annotation.
+-  static PageContentAnnotationsResult CreateTextEmbeddingResult(
+-      const TextEmbeddingResult& embedding);
+-
+   PageContentAnnotationsResult(const PageContentAnnotationsResult&);
+   PageContentAnnotationsResult& operator=(const PageContentAnnotationsResult&);
+   ~PageContentAnnotationsResult();

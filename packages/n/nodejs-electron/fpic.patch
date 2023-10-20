@@ -95,16 +95,16 @@ Use -fpic for code which goes only in dlls (gives smaller code),
 +  asmflags = ["-fpic", "-fno-semantic-interposition"]
  }
  
- if (!use_sysroot) {
+ template("qt_shim") {
 @@ -76,6 +78,8 @@
-     sources += get_target_outputs(":generate_moc")
-     deps += [ ":generate_moc" ]
+       sources += get_target_outputs(":generate_moc" + invoker.qt_version)
+       deps += [ ":generate_moc" + invoker.qt_version ]
+     }
++    cflags = ["-fpic", "-fno-semantic-interposition"]
++    asmflags = ["-fpic", "-fno-semantic-interposition"]
    }
-+  cflags = ["-fpic", "-fno-semantic-interposition"]
-+  asmflags = ["-fpic", "-fno-semantic-interposition"]
  }
- 
- component("qt") {
+ qt_shim("qt5_shim") {
 --- src/third_party/abseil-cpp/BUILD.gn.old
 +++ src/third_party/abseil-cpp/BUILD.gn
 @@ -132,6 +132,8 @@ config("absl_define_config") {
