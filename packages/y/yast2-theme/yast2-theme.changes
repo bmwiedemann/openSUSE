@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 20 07:53:13 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Dropped unmaintained "gulp-stylelint" internal development dependency
+- Manually updated the internal development dependencies to the latest
+  NPM packages
+- The stylesheets have been rebuilt with the new dependencies
+- Updated README.md
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
