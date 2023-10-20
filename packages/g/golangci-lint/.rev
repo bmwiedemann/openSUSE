@@ -80,4 +80,24 @@
   * docs: Update documentation and assets (#4006) (forwarded request 1105141 from jfkw)</comment>
     <requestid>1105145</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7dfa4eb8406cae19416fe0952a252415</srcmd5>
+    <version>1.55.0</version>
+    <time>1697836735</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.55.0:
+  * Add perfsprint linter (#3714)
+  * feat: add `sloglint` linter (#4133)
+  * Add &quot;inamedparam&quot;: checks for interface method with unnamed params (#3793)
+  * govet: add `appends` analyzer (#4127)
+  * feat: add `gochecksumtype` linter (#3671)
+  * add protogetter linter (#4069)
+  * Add `testifylint` linter (#4103)
+  * docs: fix typos in testdata (#4116)
+  * dev: enable gocheckcompilerdirectives linter (#4114)
+  * dev: remove golangci-releaser from generated team (#4096)
+  * dev: refactor some test assertions (#4081)
+  * Add a pre-commit hook to check all files (#4046) (forwarded request 1119227 from jfkw)</comment>
+    <requestid>1119228</requestid>
+  </revision>
 </revisionlist>
