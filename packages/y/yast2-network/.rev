@@ -3805,4 +3805,12 @@ qeth attributes used to be lost once qeth device was configured)
     <comment>submit new version 4.6.5</comment>
     <requestid>1096794</requestid>
   </revision>
+  <revision rev="502" vrev="1">
+    <srcmd5>56dffee1d8852aa7f25603c03a2ad6f1</srcmd5>
+    <version>5.0.0</version>
+    <time>1697836604</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.0</comment>
+    <requestid>1119007</requestid>
+  </revision>
 </revisionlist>
