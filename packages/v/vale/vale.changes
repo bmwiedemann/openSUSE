@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 20 11:58:43 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.29.6:
+  * chore: bump twine to 0.7.0
+  * feat: support exception regex in `sentence`
+
+-------------------------------------------------------------------
 Mon Oct 16 00:15:50 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.29.5:

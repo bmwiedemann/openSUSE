@@ -413,4 +413,14 @@
     required to handle package name conflict. (forwarded request 1118031 from jfkw)</comment>
     <requestid>1118032</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>83d5d6ebd0dc61a851250b9ffa3382db</srcmd5>
+    <version>2.29.6</version>
+    <time>1697836733</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.29.6:
+  * chore: bump twine to 0.7.0
+  * feat: support exception regex in `sentence` (forwarded request 1119223 from jfkw)</comment>
+    <requestid>1119224</requestid>
+  </revision>
 </revisionlist>
