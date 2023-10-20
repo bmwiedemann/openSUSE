@@ -651,4 +651,16 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1115859</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>6dfb1ac9282a53137ccdd83f366dbc76</srcmd5>
+    <version>1.48+3.b642f6a</version>
+    <time>1697836558</time>
+    <user>anag+factory</user>
+    <comment>- rescan-scsi-bus.sh: remove /tmp/rescan-scsi-mpath-info.txt
+  (gh#doug-gilbert/sg3_utils#44)
+
+- rescan_scsi_bus.sh: fix multipath issue when called with -s and
+  without -u (bsc#1215720, bsc#1216355)</comment>
+    <requestid>1119163</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 20 07:17:13 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- rescan-scsi-bus.sh: remove /tmp/rescan-scsi-mpath-info.txt
+  (gh#doug-gilbert/sg3_utils#44)
+
+-------------------------------------------------------------------
+Mon Oct 16 09:52:23 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- rescan_scsi_bus.sh: fix multipath issue when called with -s and
+  without -u (bsc#1215720, bsc#1216355)
+
+-------------------------------------------------------------------
 Thu Sep 28 13:34:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - udev rules: allow kernel command line overrides with
