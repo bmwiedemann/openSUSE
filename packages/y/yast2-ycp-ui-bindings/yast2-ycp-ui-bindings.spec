@@ -20,7 +20,7 @@
 %define yui_so		16
 
 Name:           yast2-ycp-ui-bindings
-Version:        4.6.0
+Version:        5.0.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
