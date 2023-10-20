@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 20 12:27:50 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add coreutils-systemd to BuildRequires for the `uptime` command
+  needed for a test.
+
+-------------------------------------------------------------------
 Thu May  4 14:20:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2023-02-11:

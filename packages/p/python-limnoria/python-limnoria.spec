@@ -27,6 +27,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ProgVal/Limnoria
 Source:         https://github.com/ProgVal/Limnoria/archive/master-%{srcver}.tar.gz#/%{appname}-%{version}.tar.gz
+BuildRequires:  coreutils-systemd
 # full python for sqlite3 module
 BuildRequires:  %pythons
 BuildRequires:  %{python_module PySocks}

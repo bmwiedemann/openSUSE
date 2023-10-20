@@ -256,4 +256,14 @@
     <comment></comment>
     <requestid>1084766</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c1c1379f32b7d1bdf4eea11669ea4d88</srcmd5>
+    <version>2023.02.11</version>
+    <time>1697836739</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1119233 from badshah400
+
+Add coreutils-systemd to BuildRequires for the `uptime` command needed for a test.</comment>
+    <requestid>1119237</requestid>
+  </revision>
 </revisionlist>
