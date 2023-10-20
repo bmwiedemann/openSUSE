@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Wed Apr 19 19:12:38 UTC 2023 - David Mulder <dmulder@suse.com>
 
 - Install samba-gpupdate when enabling Group Policy; (bsc#1207604).
