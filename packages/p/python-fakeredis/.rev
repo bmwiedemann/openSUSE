@@ -281,4 +281,13 @@
   * Fix error on blocking XREADGROUP #237</comment>
     <requestid>1113668</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>80dc9764f1c41122743214cd3c83b369</srcmd5>
+    <version>2.19.0</version>
+    <time>1697836575</time>
+    <user>anag+factory</user>
+    <comment>- Remove unnecessary BR on python-lupa
+</comment>
+    <requestid>1118880</requestid>
+  </revision>
 </revisionlist>

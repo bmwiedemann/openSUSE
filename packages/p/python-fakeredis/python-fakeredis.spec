@@ -37,7 +37,6 @@ BuildArch:      noarch
 # SECTION test requirements
 # technically requires hypothesis >= 6.56, but we don't have it yet
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module lupa >= 1.14}
 BuildRequires:  %{python_module pytest >= 7.1.2}
 BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-mock >= 3.7.0}
