@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:27:15 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Do not pull revision info from GIT when autoconf is run. This
+  removes the -unknown suffix after the version number.
+  * Add libgcrypt-nobetasuffix.patch [bsc#1216334]
+
+-------------------------------------------------------------------
 Tue Oct  3 12:58:41 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - POWER: performance enhancements for cryptography [jsc#PED-5088]
