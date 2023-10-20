@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Wed May 31 15:33:15 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Require xdg-utils since it's no longer required by desktop-data-openSUSE
