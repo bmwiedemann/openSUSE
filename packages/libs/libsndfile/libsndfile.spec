@@ -18,7 +18,7 @@
 
 %define lname	%{name}1
 Name:           libsndfile
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
@@ -28,6 +28,7 @@ Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{ver
 Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.xz.asc
 Source2:        libsndfile.keyring
 Source3:        baselibs.conf
+Patch1:         libsndfile-CVE-2022-33065.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake

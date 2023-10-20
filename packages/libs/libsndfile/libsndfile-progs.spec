@@ -17,7 +17,7 @@
 
 
 Name:           libsndfile-progs
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Example Programs for libsndfile
 License:        LGPL-2.1-or-later
@@ -26,6 +26,7 @@ URL:            https://libsndfile.github.io/libsndfile/
 Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.xz
 Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.xz.asc
 Source2:        libsndfile.keyring
+Patch1:         libsndfile-CVE-2022-33065.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  alsa-devel
