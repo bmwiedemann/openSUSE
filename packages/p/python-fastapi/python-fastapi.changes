@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 19 11:21:33 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.104.0
+ * Add reference (code API) docs with PEP 727, add subclass
+    with custom docstrings for BackgroundTasks, refactor docs structure. 
+- disable test_dependency_gets_exception -> https://github.com/tiangolo/fastapi/discussions/9934
+
+-------------------------------------------------------------------
 Sun Oct  1 15:35:20 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.103.2

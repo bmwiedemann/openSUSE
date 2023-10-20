@@ -19,7 +19,7 @@
 # Keep extra test requirements out of Ring1
 %bcond_with ringdisabled
 Name:           python-fastapi
-Version:        0.103.2
+Version:        0.104.0
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -31,10 +31,12 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 1.8.2}
 BuildRequires:  %{python_module starlette >= 0.27.0}
+BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-starlette >= 0.27.0
+Requires:       python-typing_extensions >= 4.8.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -75,6 +77,8 @@ Python FastAPI framework.
 %check
 # more warnings as expected
 donttest="test_warn_duplicate_operation_id"
+# https://github.com/tiangolo/fastapi/discussions/9934
+donttest="$donttest or test_dependency_gets_exception"
 %if %{with ringdisabled}
 ignorefiles="$ignorefiles --ignore tests/test_default_response_class.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_async_sql_databases/test_tutorial001.py"

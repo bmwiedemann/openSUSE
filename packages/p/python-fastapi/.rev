@@ -259,4 +259,16 @@
  * support Pydantic2 2.4 (forwarded request 1114615 from mimi_vx)</comment>
     <requestid>1114616</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2403ff75b9a39a772a34b1cffec5f837</srcmd5>
+    <version>0.104.0</version>
+    <time>1697836586</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.104.0
+ * Add reference (code API) docs with PEP 727, add subclass
+    with custom docstrings for BackgroundTasks, refactor docs structure. 
+- disable test_dependency_gets_exception -&gt; https://github.com/tiangolo/fastapi/discussions/9934
+</comment>
+    <requestid>1119161</requestid>
+  </revision>
 </revisionlist>
