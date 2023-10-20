@@ -1,0 +1,23 @@
+From ad548b61d6b011a66bc2004448c00fca595390de Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 18 Oct 2023 23:10:57 +0200
+Subject: [PATCH] Fix QtAsyncio install dir
+
+(https://bugreports.qt.io/browse/PYSIDE-2494)
+---
+ sources/pyside6/PySide6/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sources/pyside6/PySide6/CMakeLists.txt b/sources/pyside6/PySide6/CMakeLists.txt
+index e24fdb682..37b7a6c9c 100644
+--- a/sources/pyside6/PySide6/CMakeLists.txt
++++ b/sources/pyside6/PySide6/CMakeLists.txt
+@@ -111,4 +111,4 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/pyside6_global.h
+         DESTINATION include/${BINDING_NAME}${pyside6_SUFFIX})
+ 
+ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/QtAsyncio"
+-        DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
++        DESTINATION "${PYTHON_SITE_PACKAGES}/${BINDING_NAME}${pyside6_SUFFIX}")
+-- 
+2.42.0
+

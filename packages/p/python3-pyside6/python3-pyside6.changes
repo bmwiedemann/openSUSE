@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:35:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0. Check the installed changes-6.6.0 file for the
+  full list of changes
+- Drop patches, merged upstream:
+  * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+  * 0001-adapt-qC_Debug_Info_Warning_Critical_-for-new-definition.patch
+- Add patch:
+  * 0001-Fix-QtAsyncio-install-dir.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 09:00:16 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix a build failure:

@@ -183,4 +183,12 @@
     <comment></comment>
     <requestid>1115844</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>58f8fb508303490f6f305337de91b450</srcmd5>
+    <version>6.6.0</version>
+    <time>1697836728</time>
+    <user>anag+factory</user>
+    <comment>Update to 6.6.0 (forwarded request 1118842 from krop)</comment>
+    <requestid>1119214</requestid>
+  </revision>
 </revisionlist>
