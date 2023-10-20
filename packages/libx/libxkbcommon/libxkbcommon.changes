@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  9 02:55:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Remove keysyms: XKB_KEY_dead_lowline,
+    XKB_KEY_dead_aboveverticalline, XKB_KEY_dead_belowverticalline,
+    XKB_KEY_dead_longsolidusoverlay
+  * Add Compose iterator API to iterate the entries in a compose
+    table.
+  * Structured log messages with a message registry. There is an
+    ongoing work to assign unique identifiers to log messages and
+    add a corresponding error index documentation page.
+  * Add a new warning for numeric keysyms references in XKB files:
+    the preferred keysym reference form is its name or its Unicode
+    value, if relevant.
+  * Add the upper bound `XKB_KEYSYM_MAX` to check valid keysyms.
+  * Add a warning when loading a keymap using RMLVO with no layout
+    but with the variant set.
+  * Add support for ``modifier_map None { … }``. This feature is
+    missing compared to the X11 implementation. It allows to reset
+    the modifier map of a key.
+
+-------------------------------------------------------------------
 Mon Jan  2 23:38:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.0

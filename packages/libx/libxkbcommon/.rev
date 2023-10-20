@@ -325,4 +325,12 @@
     <comment>- Update to release 1.5.0</comment>
     <requestid>1046396</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7543c565b8399d493fb59c92eead9c76</srcmd5>
+    <version>1.6.0</version>
+    <time>1697836544</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117923</requestid>
+  </revision>
 </revisionlist>

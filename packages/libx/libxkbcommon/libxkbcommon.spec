@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
@@ -152,6 +152,7 @@ ef=-Denable-x11=false
 
 %install
 %meson_install
+rm -rf %buildroot/%_datadir/bash-completion
 
 %post   -n libxkbcommon0 -p /sbin/ldconfig
 %postun -n libxkbcommon0 -p /sbin/ldconfig
