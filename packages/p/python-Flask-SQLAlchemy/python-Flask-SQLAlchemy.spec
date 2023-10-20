@@ -24,12 +24,12 @@ Summary:        SQLAlchemy support for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/mitsuhiko/flask-sqlalchemy
 Source:         https://files.pythonhosted.org/packages/source/f/flask_sqlalchemy/flask_sqlalchemy-%{version}.tar.gz
-# BR krb5 - the test suite fails with krb5-mini (and users in any case will only ever get krb5, never krb5-mini)
-BuildRequires:  krb5
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+# BR krb5 - the test suite fails with krb5-mini (and users in any case will only ever get krb5, never krb5-mini)
+BuildRequires:  krb5
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 2.2
 Requires:       python-SQLAlchemy >= 2.0.16
@@ -61,6 +61,6 @@ Adds SQLAlchemy support to your Flask application.
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
 %{python_sitelib}/flask_sqlalchemy
-%{python_sitelib}/flask_sqlalchemy-%{version}.dist-info
+%{python_sitelib}/flask_sqlalchemy-%{version}*-info
 
 %changelog
