@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/mgerstner/oscfs.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.8.1</param>
+    <param name="revision">0.9.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

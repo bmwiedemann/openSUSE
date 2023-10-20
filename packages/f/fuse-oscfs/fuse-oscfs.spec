@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-oscfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           fuse-oscfs
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        A FUSE file system for accessing Open Build Service instances
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/mgerstner/oscfs
-Source:         oscfs-v%{version}.tar.xz
+Source:         oscfs-%{version}.tar.xz
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 Requires:       osc
@@ -40,7 +40,7 @@ Python package for interfacing with OBS. At the moment, it provides read-only
 access for inspecting packages and their metadata.
 
 %prep
-%setup -q -n oscfs-v%{version}
+%setup -q -n oscfs-%{version}
 
 %build
 python3 setup.py build

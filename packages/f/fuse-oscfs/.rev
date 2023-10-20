@@ -57,4 +57,31 @@
     some Python versions.</comment>
     <requestid>957001</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba3b954a84892df3928adc0d1eba4f41</srcmd5>
+    <version>0.9.0</version>
+    <time>1697836726</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.0:
+  * NEWS: changes for next release
+  * regtest: compatibility with newer OSC module versions
+  * obs: implement transparent retry to prevent HTTP 503 woes
+  * obs: remove extraneous newlines from project and package meta output
+  * error handling: support full exception backtrace report
+  * debugging: support writing stdout and stderr to a logfile for analysis
+  * regtest: fix unmount in early auth error failure case
+  * regtest: make sure also to remove cookiejar for early auth error test
+  * Revert &quot;regtest: add some extra robustness against potential umount races&quot;
+  * regtest: add some extra robustness against potential umount races
+  * fix regressions introduced by commit cd692a1d2f9fabe4ac5451832c3b7df109302c07
+  * urlopenwrapper: fix sshkey check
+  * Package: fix symlink path to update package
+  * urlopen wrapper: support disabling the wrapper on the command line
+  * obs.getBinaries(): fix strange osc behaviour if zero length files appear
+  * add command line option to disable build artifacts caching
+  * module_helper: insert local modules directory at the front of the path
+  * oscfs wrapper script: use explicitly python3 by default
+  * bugfix: fix early auth check on non-OBS instance</comment>
+    <requestid>1119201</requestid>
+  </revision>
 </revisionlist>
