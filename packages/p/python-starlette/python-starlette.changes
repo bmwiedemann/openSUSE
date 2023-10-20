@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Oct 18 07:31:47 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.31.1:
+  * Fixes:
+    - Fix import error when exceptiongroup isn't available #2231.
+    - Set url_for global for custom Jinja environments #2230.
+
+- Update to 0.31.0:
+  * Added
+    - Officially support Python 3.12 #2214.
+    - Support AnyIO 4.0 #2211.
+    - Strictly type annotate Starlette (strict mode on mypy) #2180.
+  * Fixed
+    - Don't group duplicated headers on a single string when using the TestClient #2219.
+
+- Update to 0.30.0
+  * Removed
+    - Drop Python 3.7 support #2178.
+
+- Update to 0.29.0:
+  * Added
+    - Add follow_redirects parameter to TestClient #2207.
+    - Add __str__ to HTTPException and WebSocketException #2181.
+    - Warn users when using lifespan together with on_startup/on_shutdown #2193.
+    - Collect routes from Host to generate the OpenAPI schema #2183.
+    - Add request argument to TemplateResponse #2191.
+  * Fixed
+    - Stop body_stream in case more_body=False on BaseHTTPMiddleware #2194.
+
+- Update to 0.28.0:
+  * Changed
+     - Reuse Request's body buffer for call_next in BaseHTTPMiddleware #1692.
+     - Move exception handling logic to Route #2026.
+  * Added
+     . Add env parameter to Jinja2Templates, and deprecate **env_options #2159.
+     . Add clear error message when httpx is not installed #2177.
+  * Fixed
+     - Allow "name" argument on templates url_for() #2127.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:34:22 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

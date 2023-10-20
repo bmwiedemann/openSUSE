@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        0.27.0
+Version:        0.31.1
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -81,11 +81,6 @@ building high performance asyncio services.
 
 %check
 %if %{with test}
-# Remove unrecognized arguments: --strict-config --strict-markers
-sed -i "s|--strict-config||" setup.cfg
-sed -i "s|--strict-markers||" setup.cfg
-sed -i "s| error$||" setup.cfg
-
 # The following tests don't work in some archs because time_t cannot
 # hold the values the test expect, as they go beyond the maximum
 # value in i586 and armv7l. As we are using Buildarch: noarch, we
