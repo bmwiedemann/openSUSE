@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Fri Aug  4 13:03:33 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - enable_systemd_boot: systemd_boot can be selected if UEFI is

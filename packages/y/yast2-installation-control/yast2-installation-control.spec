@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation-control
-Version:        4.6.1
+Version:        5.0.0
 Release:        0
 Summary:        YaST2 - RNG schema for installation control files
 License:        GPL-2.0-only
