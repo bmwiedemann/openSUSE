@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:43:31 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.9.27~git0.54774e0:
+  * Complete the soversion granularity
+  * Bump cbindgen
+  * Make sure the version variables are consistent
+  * Fix sover detection for 0-based versioning
+  * Bump cargo version
+  * Bump cbindgen
+  * Do not pass the token to clippy-check
+- Switch _service to manual.
+
+-------------------------------------------------------------------
 Tue Mar 14 09:29:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add constraints to avoid out of disk space errors
