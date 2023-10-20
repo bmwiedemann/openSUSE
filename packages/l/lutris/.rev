@@ -436,4 +436,31 @@
     <comment>- boo#1213440: Add recommends for ca-certificates-steamtricks</comment>
     <requestid>1102015</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a5ee607734974aaa5c699e1fd55f0187</srcmd5>
+    <version>0.5.14</version>
+    <time>1697836714</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.14:
+  * Add Steam account switcher to handle multiple Steam accounts
+    on the same device.
+  * Add user defined tags / categories
+  * Group every API calls for runtime updates in a single one
+  * Download appropriate DXVK and VKD3D versions based on
+    the available GPU PCI IDs
+  * EA App integration. Your Origin games and saves can be manually imported
+    from your Origin prefix.
+  * Add integration with ScummVM local library
+  * Download Wine-GE updates when Lutris starts
+  * Group GOG and Amazon download in a single progress bar
+  * Fix blank login window on online services such as GOG or EGS
+  * Add a sort name field
+  * Yuzu and xemu now use an AppImage
+  * Experimental support for Flatpak provided runners
+  * Header-bar search for configuration options
+  * Support for Gamescope 3.12
+  * Missing games show an additional badge
+  * Add missing dependency on python3-gi-cairo for Debian packages</comment>
+    <requestid>1119150</requestid>
+  </revision>
 </revisionlist>
