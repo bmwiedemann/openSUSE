@@ -8,4 +8,17 @@
 - Rename version from 0.7.0.beta to 0.7.0~beta</comment>
     <requestid>1114611</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>71d3112235ca33740681bf1d980e78b9</srcmd5>
+    <version>1.0.0</version>
+    <time>1697836719</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0
+- add source blueprint-compiler-v0.8.1: minimal requirement for
+  version 1.0.0
+- add python3-gobject BuildRequires: fix build blueprint-compiler
+- add appstream-glib BuildRequires: for build metadata
+</comment>
+    <requestid>1119181</requestid>
+  </revision>
 </revisionlist>

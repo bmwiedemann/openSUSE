@@ -15,19 +15,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define lname com.github.finefindus.eyedropper
-%define _ver  v0.7.0-beta
-%define vbeta 0.7.0.beta
+
+%define lname   com.github.finefindus.eyedropper
+%define _ver    v1.0.0
+%bcond_with     warp
+%define sname   blueprint-compiler
+%define sver    0.8.1
 Name:           eyedropper
-Version:        0.7.0~beta
+Version:        1.0.0
 Release:        0
 Summary:        Pick and format colors
 License:        GPL-3.0-or-later
 URL:            https://github.com/FineFindus/eyedropper
-Source:         %{url}/releases/download/%{_ver}/%{name}-%{vbeta}.tar.xz
+Source0:        %{url}/releases/download/%{_ver}/%{name}-%{version}.tar.xz
+%if %{with warp}
+BuildRequires:  blueprint-compiler
+%else
+Source1:        https://gitlab.gnome.org/jwestman/%{sname}/-/archive/v%{sver}/%{sname}-v%{sver}.tar.bz2
+BuildRequires:  python3-gobject
+Provides:       bundled(blueprint-compiler)
+%endif
+BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  meson
-BuildRequires:  blueprint-compiler
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1) 
 BuildRequires:  desktop-file-utils
@@ -46,7 +56,13 @@ Features:
 %lang_package
 
 %prep
-%autosetup -n %{name}-%{vbeta}
+%if %{with warp}
+%autosetup
+%else
+%setup -q
+mkdir subprojects/%{sname}
+tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
+%endif
 
 %build
 %meson
