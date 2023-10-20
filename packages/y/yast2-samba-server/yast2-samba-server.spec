@@ -17,7 +17,7 @@
 
 
 Name:           yast2-samba-server
-Version:        4.6.0
+Version:        5.0.0
 Release:        0
 URL:            https://github.com/yast/yast-samba-server
 Summary:        YaST2 - Samba Server Configuration
