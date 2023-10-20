@@ -18,15 +18,126 @@
 
 %define cpan_name CryptX
 Name:           perl-CryptX
-Version:        0.078
+Version:        0.80.0
 Release:        0
+%define cpan_version 0.080
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Cryptographic toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Crypt::AuthEnc) = 0.80.0
+Provides:       perl(Crypt::AuthEnc::CCM) = 0.80.0
+Provides:       perl(Crypt::AuthEnc::ChaCha20Poly1305) = 0.80.0
+Provides:       perl(Crypt::AuthEnc::EAX) = 0.80.0
+Provides:       perl(Crypt::AuthEnc::GCM) = 0.80.0
+Provides:       perl(Crypt::AuthEnc::OCB) = 0.80.0
+Provides:       perl(Crypt::Checksum) = 0.80.0
+Provides:       perl(Crypt::Checksum::Adler32) = 0.80.0
+Provides:       perl(Crypt::Checksum::CRC32) = 0.80.0
+Provides:       perl(Crypt::Cipher) = 0.80.0
+Provides:       perl(Crypt::Cipher::AES) = 0.80.0
+Provides:       perl(Crypt::Cipher::Anubis) = 0.80.0
+Provides:       perl(Crypt::Cipher::Blowfish) = 0.80.0
+Provides:       perl(Crypt::Cipher::CAST5) = 0.80.0
+Provides:       perl(Crypt::Cipher::Camellia) = 0.80.0
+Provides:       perl(Crypt::Cipher::DES) = 0.80.0
+Provides:       perl(Crypt::Cipher::DES_EDE) = 0.80.0
+Provides:       perl(Crypt::Cipher::IDEA) = 0.80.0
+Provides:       perl(Crypt::Cipher::KASUMI) = 0.80.0
+Provides:       perl(Crypt::Cipher::Khazad) = 0.80.0
+Provides:       perl(Crypt::Cipher::MULTI2) = 0.80.0
+Provides:       perl(Crypt::Cipher::Noekeon) = 0.80.0
+Provides:       perl(Crypt::Cipher::RC2) = 0.80.0
+Provides:       perl(Crypt::Cipher::RC5) = 0.80.0
+Provides:       perl(Crypt::Cipher::RC6) = 0.80.0
+Provides:       perl(Crypt::Cipher::SAFERP) = 0.80.0
+Provides:       perl(Crypt::Cipher::SAFER_K128) = 0.80.0
+Provides:       perl(Crypt::Cipher::SAFER_K64) = 0.80.0
+Provides:       perl(Crypt::Cipher::SAFER_SK128) = 0.80.0
+Provides:       perl(Crypt::Cipher::SAFER_SK64) = 0.80.0
+Provides:       perl(Crypt::Cipher::SEED) = 0.80.0
+Provides:       perl(Crypt::Cipher::Serpent) = 0.80.0
+Provides:       perl(Crypt::Cipher::Skipjack) = 0.80.0
+Provides:       perl(Crypt::Cipher::Twofish) = 0.80.0
+Provides:       perl(Crypt::Cipher::XTEA) = 0.80.0
+Provides:       perl(Crypt::Digest) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2b_160) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2b_256) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2b_384) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2b_512) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2s_128) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2s_160) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2s_224) = 0.80.0
+Provides:       perl(Crypt::Digest::BLAKE2s_256) = 0.80.0
+Provides:       perl(Crypt::Digest::CHAES) = 0.80.0
+Provides:       perl(Crypt::Digest::Keccak224) = 0.80.0
+Provides:       perl(Crypt::Digest::Keccak256) = 0.80.0
+Provides:       perl(Crypt::Digest::Keccak384) = 0.80.0
+Provides:       perl(Crypt::Digest::Keccak512) = 0.80.0
+Provides:       perl(Crypt::Digest::MD2) = 0.80.0
+Provides:       perl(Crypt::Digest::MD4) = 0.80.0
+Provides:       perl(Crypt::Digest::MD5) = 0.80.0
+Provides:       perl(Crypt::Digest::RIPEMD128) = 0.80.0
+Provides:       perl(Crypt::Digest::RIPEMD160) = 0.80.0
+Provides:       perl(Crypt::Digest::RIPEMD256) = 0.80.0
+Provides:       perl(Crypt::Digest::RIPEMD320) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA1) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA224) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA256) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA384) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA3_224) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA3_256) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA3_384) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA3_512) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA512) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA512_224) = 0.80.0
+Provides:       perl(Crypt::Digest::SHA512_256) = 0.80.0
+Provides:       perl(Crypt::Digest::SHAKE) = 0.80.0
+Provides:       perl(Crypt::Digest::Tiger192) = 0.80.0
+Provides:       perl(Crypt::Digest::Whirlpool) = 0.80.0
+Provides:       perl(Crypt::KeyDerivation) = 0.80.0
+Provides:       perl(Crypt::Mac) = 0.80.0
+Provides:       perl(Crypt::Mac::BLAKE2b) = 0.80.0
+Provides:       perl(Crypt::Mac::BLAKE2s) = 0.80.0
+Provides:       perl(Crypt::Mac::F9) = 0.80.0
+Provides:       perl(Crypt::Mac::HMAC) = 0.80.0
+Provides:       perl(Crypt::Mac::OMAC) = 0.80.0
+Provides:       perl(Crypt::Mac::PMAC) = 0.80.0
+Provides:       perl(Crypt::Mac::Pelican) = 0.80.0
+Provides:       perl(Crypt::Mac::Poly1305) = 0.80.0
+Provides:       perl(Crypt::Mac::XCBC) = 0.80.0
+Provides:       perl(Crypt::Misc) = 0.80.0
+Provides:       perl(Crypt::Mode) = 0.80.0
+Provides:       perl(Crypt::Mode::CBC) = 0.80.0
+Provides:       perl(Crypt::Mode::CFB) = 0.80.0
+Provides:       perl(Crypt::Mode::CTR) = 0.80.0
+Provides:       perl(Crypt::Mode::ECB) = 0.80.0
+Provides:       perl(Crypt::Mode::OFB) = 0.80.0
+Provides:       perl(Crypt::PK) = 0.80.0
+Provides:       perl(Crypt::PK::DH) = 0.80.0
+Provides:       perl(Crypt::PK::DSA) = 0.80.0
+Provides:       perl(Crypt::PK::ECC) = 0.80.0
+Provides:       perl(Crypt::PK::Ed25519) = 0.80.0
+Provides:       perl(Crypt::PK::RSA) = 0.80.0
+Provides:       perl(Crypt::PK::X25519) = 0.80.0
+Provides:       perl(Crypt::PRNG) = 0.80.0
+Provides:       perl(Crypt::PRNG::ChaCha20) = 0.80.0
+Provides:       perl(Crypt::PRNG::Fortuna) = 0.80.0
+Provides:       perl(Crypt::PRNG::RC4) = 0.80.0
+Provides:       perl(Crypt::PRNG::Sober128) = 0.80.0
+Provides:       perl(Crypt::PRNG::Yarrow) = 0.80.0
+Provides:       perl(Crypt::Stream::ChaCha) = 0.80.0
+Provides:       perl(Crypt::Stream::RC4) = 0.80.0
+Provides:       perl(Crypt::Stream::Rabbit) = 0.80.0
+Provides:       perl(Crypt::Stream::Salsa20) = 0.80.0
+Provides:       perl(Crypt::Stream::Sober128) = 0.80.0
+Provides:       perl(Crypt::Stream::Sosemanuk) = 0.80.0
+Provides:       perl(CryptX) = 0.80.0
+Provides:       perl(Math::BigInt::LTM) = 0.80.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -107,7 +218,7 @@ Crypt::KeyDerivation
 Crypt::Misc
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

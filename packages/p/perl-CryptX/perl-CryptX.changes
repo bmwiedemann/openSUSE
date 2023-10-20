@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  5 03:07:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.080
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.080   2023-10-04
+          - fix #95 AES-NI troubles on MS Windows (gcc compiler)
+          - fix #96 Tests failure with Math::BigInt >= 1.999840
+          - Enabled AES-NI for platforms with gcc/clang/llvm
+
+  0.079   2023-10-01
+           - fix #92 update libtomcrypt
+           - bundled libtomcrypt update branch:develop (commit:1e629e6f 2023-06-22)
+
+-------------------------------------------------------------------
 Sat Apr 29 03:06:21 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.078
