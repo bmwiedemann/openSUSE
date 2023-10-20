@@ -1,0 +1,92 @@
+From e73b2e4863c589a8b152327ff7c45831d1d1b052 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Fri, 13 Oct 2023 17:50:08 +0200
+Subject: [PATCH] ICalFormat: don't shift all-day invite dates to UTC
+
+When generating scheduling message for an event, the ICalFormat
+checks whether the event is recurrent and if not it shifts the
+start and end datetimes to UTC timezone (since recurring events
+need TZ information for proper calculations across DSTs and TZs).
+
+However if the event is an all-day event with start and end datetimes
+in local time (e.g. Europe/Prague), this shift effectively moves
+the start and end datetimes from midnight to -2 hours previous day.
+Later on when writing the DTSTART and DTEND properties, the code
+omits the time (since it's an all-day event) and only writes out
+DATEs, but now the scheduling message is actually shifted one day
+back!
+
+This change extends the check in ICalFormat to also avoid shifting
+dates to UTC when the event is an all-day event, since in this case
+the timezone information is dropped anyway.
+
+BUG: 421400
+FIXED-IN: 5.112.0
+(cherry picked from commit 921e04f64921e86288e57144c82dab2a1a0679b5)
+---
+ autotests/testicalformat.cpp | 24 ++++++++++++++++++++++++
+ autotests/testicalformat.h   |  1 +
+ src/icalformat.cpp           |  2 +-
+ 3 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/autotests/testicalformat.cpp b/autotests/testicalformat.cpp
+index c8f3fddb3..54ba2c3cd 100644
+--- a/autotests/testicalformat.cpp
++++ b/autotests/testicalformat.cpp
+@@ -542,4 +542,28 @@ void ICalFormatTest::testNonTextCustomProperties()
+     QCOMPARE(event->nonKDECustomProperty("X-APPLE-STRUCTURED-LOCATION"), QLatin1String("geo:52.063921,5.128511"));
+ }
+ 
++void ICalFormatTest::testAllDaySchedulingMessage()
++{
++    auto event = KCalendarCore::Event::Ptr::create();
++    event->setSummary(QStringLiteral("All Day Event"));
++    event->setDtStart(QDateTime(QDate(2023, 10, 13), QTime(0, 0, 0), QTimeZone("Europe/Prague")));
++    event->setDtEnd(QDateTime(QDate(2023, 10, 15), QTime(0, 0, 0), QTimeZone("Europe/Prague")));
++    event->setOrganizer(Person(QStringLiteral("Dan"), QStringLiteral("dvratil@example.com")));
++    event->addAttendee(Attendee(QStringLiteral("Konqi"), QStringLiteral("konqi@example.com")));
++    event->setAllDay(true);
++
++    ICalFormat format;
++    auto calendar = MemoryCalendar::Ptr::create(QTimeZone::utc());
++    const auto itipString = format.createScheduleMessage(event, KCalendarCore::iTIPRequest);
++    QVERIFY(!itipString.isEmpty());
++
++    auto scheduleMsg = format.parseScheduleMessage(calendar, itipString);
++    QVERIFY(scheduleMsg->error().isEmpty());
++
++    auto parsedEvent = scheduleMsg->event().staticCast<KCalendarCore::Event>();
++    QVERIFY(parsedEvent);
++    QCOMPARE(parsedEvent->dtStart().date(), event->dtStart().date());
++    QCOMPARE(parsedEvent->dtEnd().date(), event->dtEnd().date());
++}
++
+ #include "moc_testicalformat.cpp"
+diff --git a/autotests/testicalformat.h b/autotests/testicalformat.h
+index 14d86a56c..7c0423459 100644
+--- a/autotests/testicalformat.h
++++ b/autotests/testicalformat.h
+@@ -32,6 +32,7 @@ private Q_SLOTS:
+     void testUidGenerationUniqueness();
+     void testIcalFormat();
+     void testNonTextCustomProperties();
++    void testAllDaySchedulingMessage();
+ };
+ 
+ #endif
+diff --git a/src/icalformat.cpp b/src/icalformat.cpp
+index 71fd91a19..72a35a0ad 100644
+--- a/src/icalformat.cpp
++++ b/src/icalformat.cpp
+@@ -436,7 +436,7 @@ QString ICalFormat::createScheduleMessage(const IncidenceBase::Ptr &incidence, i
+ 
+         // Recurring events need timezone information to allow proper calculations
+         // across timezones with different DST.
+-        const bool useUtcTimes = !i->recurs();
++        const bool useUtcTimes = !i->recurs() && !i->allDay();
+ 
+         const bool hasSchedulingId = (i->schedulingID() != i->uid());
+ 
+-- 
+2.42.0
+

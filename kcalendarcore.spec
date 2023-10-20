@@ -33,6 +33,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-ICalFormat-don-t-shift-all-day-invite-dates-to-UTC.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(LibIcal) >= 3.0

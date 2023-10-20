@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:19:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (kde#421400, boo#1171450):
+  * 0001-ICalFormat-don-t-shift-all-day-invite-dates-to-UTC.patch
+
+-------------------------------------------------------------------
 Mon Oct  9 20:20:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.111.0

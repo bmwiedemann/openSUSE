@@ -391,4 +391,13 @@
     <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
     <requestid>1118674</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>7437ffc852e7ca048b309280e3ec7cff</srcmd5>
+    <version>5.111.0</version>
+    <time>1697836569</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change (kde#421400, boo#1171450):
+  * 0001-ICalFormat-don-t-shift-all-day-invite-dates-to-UTC.patch</comment>
+    <requestid>1119242</requestid>
+  </revision>
 </revisionlist>
