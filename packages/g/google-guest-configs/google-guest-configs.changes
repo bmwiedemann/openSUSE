@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 12:33:34 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230929.00
+  * Update multinic filter to pick only pci devices (#59)
+
+-------------------------------------------------------------------
 Tue Aug 15 13:49:04 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230808.00 (bsc#1214546, bsc#1214572)
