@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Tue Mar  7 12:27:28 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed unit test to not read the values from the current system
