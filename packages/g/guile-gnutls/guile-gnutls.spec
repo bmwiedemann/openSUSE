@@ -17,7 +17,7 @@
 
 
 Name:           guile-gnutls
-Version:        3.7.12
+Version:        4.0.0
 Release:        0
 Summary:        Guile bindings to GnuTLS
 License:        LGPL-2.1-or-later

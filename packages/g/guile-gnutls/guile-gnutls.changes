@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 20 11:47:18 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 4.0.0:
+  * Fix automake warnings.
+  * Indent Guile code.
+  * Work around GnuTLS 3.8.1 bug wrt missing GNUTLS_NO_EXTENSIONS.
+  * Changed encoding of source files from ISO-8859-1 to UTF-8.
+
+- Update to 3.7.14:
+  * Fix AEAD self-test failure on macOS.
+  * Bind gnutls_record_get_direction.
+
+- Update to 3.7.13:
+  * Bind the AEAD authentication-encryption API and the low-level cipher API.
+  * Bind a substantial part of the (abstract) public key cryptography API.
+  * Bind the pseudo-random number generator.
+  * Bind a bunch of X.509 functions.
+  * Fix cross-building.
+  * Add guix.scm for Guix building.
+
+-------------------------------------------------------------------
 Sun Jun 18 20:48:28 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 3.7.12:
