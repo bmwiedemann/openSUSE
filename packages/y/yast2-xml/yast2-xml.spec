@@ -17,7 +17,7 @@
 
 
 Name:           yast2-xml
-Version:        4.6.0
+Version:        5.0.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
