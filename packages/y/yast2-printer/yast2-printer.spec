@@ -17,7 +17,7 @@
 
 
 Name:           yast2-printer
-Version:        4.6.0
+Version:        5.0.0
 Release:        0
 Summary:        YaST2 - Printer Configuration
 License:        GPL-2.0-only

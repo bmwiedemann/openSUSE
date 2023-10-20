@@ -1048,4 +1048,12 @@ SPDX format (forwarded request 135149 from &amp;lt;bound method Request.get_crea
     <comment>submit new version 4.6.0</comment>
     <requestid>1069249</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>7d2bffaa09aa9e2d1e16d77068fab7d4</srcmd5>
+    <version>5.0.0</version>
+    <time>1697836610</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.0</comment>
+    <requestid>1119022</requestid>
+  </revision>
 </revisionlist>
