@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Oct 19 12:12:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231016.00
+  * instance setup: trust/rely on metadata package's retry (#316)
+- from version 20231013.01
+  * Update known cert dirs for updaters (#314)
+- from version 20231011.00
+  * Verify cert refresher is enabled before running (#312)
+- from version 20231009.00
+  * Add support for the SSH key options (#296)
+- from version 20231006.01
+  * Events interface improvement (#290)
+- from version 20231006.00
+  * Refactor script runner to use common metadata package (#311)
+  * Schedule MTLS job before notifying systemd (#310)
+  * Refactor authorized keys to use metadata package (#300)
+- from version 20231005.00
+  * docs update: add configuration and event manager's docs. (#309)
+- from version 20231004.01
+  * Fix license header (#301)
+  * packaging(deb): add epoch to oslogin dep declaration (#308)
+- from version 20231004.00
+  * packaging(deb): ignore suffix of version (#306)
+  * packaging: force epoch and ignore suffix of version (#305)
+- from version 20231003.01
+  * oslogin: declare explicitly dependency (#304)
+  * oslogin: remove Unstable.pamless_auth_stack feature flag (#303)
+- from version 20231003.00
+  * oslogin: resort ssh configuration keys (#299)
+- from version 20230925.00
+  * oslogin: introduce a feature flag to cert auth (#298)
+- from version 20230923.00
+  * gitignore: unify ignore in the root dir (#297)
+- from version 20230921.01
+  * managers: we accidentally disabled addressMgr, bring it back (#295)
+  * cfg: fix typos (#294)
+  * cfg: config typos (#293)
+  * cfg: introduce a configuration management package (#288)
+- from version 20230921.00
+  * mtls: bring it back (#292)
+- from version 20230920.01
+  * Fix permissions on file created by SaferWriteFile() (#291)
+- from version 20230920.00
+  * sshca: re-enable the event watcher & handler (#289)
+- from version 20230919.01
+  * oslogin: add PAMless Authorization Stack configuration (#285)
+- from version 20230919.00
+  * Preparing it for review (#287)
+  * sshca: make sure to restore SELinux context of the pipe (#286)
+  * remove deprecated usage, fix warnings (#282)
+  * Update system store (#278)
+  * Update workload certificate endpoints, use metadata package (#275)
+  * metadata: use url package to form metadata URLs (#284)
+- from version 20230913.00
+  * release prep: disable ssh trusted ca module (#281)
+- from version 20230912.00
+  * New Guest Agent Release (#280)
+- from version 20230909.00
+  * Revert "service: remove the use of the service library (#273)" (#276)
+  * service: remove the use of the service library (#273)
+- from version 20230906.01
+  * Store keys to machine keyset (#272)
+- from version 20230905.00
+  * restorecon: first try to determine if it's installed (#271)
+  * run: change all commands to use CommandContext (#268)
+  * Notify systemd after scheduling required jobs (#270)
+  * Store certs in ProgramData instead of Program Files (#269)
+  * metadata watcher: remove local retry & implement unit tests (#267)
+  * run: split command running utilities into its own package (#265)
+
+-------------------------------------------------------------------
 Thu Aug 31 10:05:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230828.00
