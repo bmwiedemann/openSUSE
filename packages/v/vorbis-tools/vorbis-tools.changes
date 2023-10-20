@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 20 11:05:02 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Fix buffer overflow vulnerability during the conversion of wav
+  files to ogg files (bsc#1215942, CVE-2023-43361):
+  vorbis-tools-CVE-2023-43361.patch
+
+-------------------------------------------------------------------
 Sat Jan 23 00:40:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:

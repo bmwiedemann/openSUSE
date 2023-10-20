@@ -1,7 +1,7 @@
 #
 # spec file for package vorbis-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://www.xiph.org/
 Source0:        https://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE vorbis-tools-cflags.diff bnc#93888 -- Remove -fsigned-char option
 Patch1:         vorbis-tools-cflags.diff
+# PATCH-FIX-UPSTREAM bsc#1215942 CVE-2023-43361
+Patch2:         vorbis-tools-CVE-2023-43361.patch
 BuildRequires:  flac-devel
 BuildRequires:  gettext-tools
 BuildRequires:  libao-devel
@@ -49,6 +51,7 @@ vcut (which allows you to cut up Vorbis files).
 %prep
 %setup -q
 %patch1
+%patch2 -p1
 
 %build
 # Because of patch vorbis-tools-cflags.diff regenerate build system
