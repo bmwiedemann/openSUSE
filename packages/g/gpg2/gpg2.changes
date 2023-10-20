@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:27:15 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Do not pull revision info from GIT when autoconf is run. This
+  removes the -unknown suffix after the version number.	
+  * Add gnupg-nobetasuffix.patch [bsc#1216334]
+
+-------------------------------------------------------------------
 Mon Oct 16 19:54:40 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix Emacs EasyPG behavior when parsing output:

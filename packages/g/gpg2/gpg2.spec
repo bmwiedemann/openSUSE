@@ -46,6 +46,8 @@ Patch11:        gnupg-allow-large-rsa.patch
 Patch12:        gnupg-revert-rfc4880bis.patch
 #PATCH-FIX-UPSTREAM Fix emacs gpg2 output parsing
 Patch13:        gnupg-Report-BEGIN_-status-before-examining-the-input.patch
+#PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
+Patch14:        gnupg-nobetasuffix.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  ibmswtpm2
