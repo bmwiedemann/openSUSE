@@ -17,7 +17,7 @@
 
 
 Name:           yast2-multipath
-Version:        4.6.0
+Version:        5.0.0
 Release:        0
 Summary:        YaST2 - Multipath Configuration
 License:        GPL-2.0-or-later
