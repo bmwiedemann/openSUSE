@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 19 16:32:13 UTC 2023 - Marina Latini <marina.latini@suse.com>
+
+- Use %posttrans instead of %post while adding the wsgi keyword. 
+  (bsc#1216411)
+  * In systems where the former apache2-mod_wsgi-python3 is
+    installed, the removal of the obsoleted apache2-mod_wsgi-python3
+    and the installation of the new apache2-mod_wsgi did not 
+    preserve the keyword wsgi in the APACHE_MODULES variable.
+
+-------------------------------------------------------------------
 Wed Nov 23 13:12:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.9.4:

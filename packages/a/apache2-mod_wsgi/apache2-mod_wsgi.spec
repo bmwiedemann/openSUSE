@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_wsgi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,19 +81,19 @@ make install DESTDIR=%{buildroot} LIBEXECDIR=%{apache_libexecdir}
 %check
 %apache_rex_check -m ./src/server/.libs mod_wsgi-basic
 
-%post
-%if 0%{?suse_version}
-if ! %{_sbindir}/a2enmod -q wsgi; then
-  %{_sbindir}/a2enmod wsgi
-fi
-%endif
-
 %postun
 %if 0%{?suse_version}
 if [ "$1" = "0" ]; then
   if a2enmod -q wsgi; then
     %{_sbindir}/a2enmod -d wsgi
   fi
+fi
+%endif
+
+%posttrans
+%if 0%{?suse_version}
+if ! %{_sbindir}/a2enmod -q wsgi; then
+  %{_sbindir}/a2enmod wsgi
 fi
 %endif
 
