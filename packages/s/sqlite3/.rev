@@ -1560,4 +1560,41 @@ CVE-2020-13871 boo#1172646</comment>
     lowered from 2000 to 1000.</comment>
     <requestid>1087547</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>61c89564a42e2422fb36990b65f47413</srcmd5>
+    <version>3.43.2</version>
+    <time>1697836565</time>
+    <user>anag+factory</user>
+    <comment>- sqlite3-rtree-i686.patch: temporary build fix for 32-bit x86.
+
+- Update to: 3.43.2:
+  * Fix a couple of obscure UAF errors and an obscure memory leak.
+  * Omit the use of the sprintf() function from the standard
+    library in the CLI, as this now generates warnings on some
+    platforms.
+  * Avoid conversion of a double into unsigned long long integer,
+    as some platforms do not do such conversions correctly.
+
+- Update to: 3.43.1
+  * Fix a regression in the way that the sum(), avg(), and total()
+    aggregate functions handle infinities.
+  * Fix a bug in the json_array_length() function that occurs when
+    the argument comes directly from json_remove().
+  * Fix the omit-unused-subquery-columns optimization (introduced
+    in in version 3.42.0) so that it works correctly if the
+    subquery is a compound where one arm is DISTINCT and the other
+    is not.
+
+- Update to 3.43.0:
+  * Add support for Contentless-Delete FTS5 Indexes. This is a
+    variety of FTS5 full-text search index that omits storing the
+    content that is being indexed while also allowing records to
+    be deleted.
+  * Enhancements to the date and time functions:
+    + Added new time shift modifiers of the form
+      ±YYYY-MM-DD HH:MM:SS.SSS.
+    + Added the timediff() SQL function.
+  * Added the octet_length(X) SQL function.</comment>
+    <requestid>1119230</requestid>
+  </revision>
 </revisionlist>

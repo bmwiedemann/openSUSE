@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Oct 19 13:08:35 UTC 2023 - Reinhard Max <max@suse.com>
+
+- sqlite3-rtree-i686.patch: temporary build fix for 32-bit x86.
+
+-------------------------------------------------------------------
+Tue Oct 10 15:46:07 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to: 3.43.2:
+  * Fix a couple of obscure UAF errors and an obscure memory leak.
+  * Omit the use of the sprintf() function from the standard
+    library in the CLI, as this now generates warnings on some
+    platforms.
+  * Avoid conversion of a double into unsigned long long integer,
+    as some platforms do not do such conversions correctly.
+
+-------------------------------------------------------------------
+Mon Sep 11 14:36:02 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to: 3.43.1
+  * Fix a regression in the way that the sum(), avg(), and total()
+    aggregate functions handle infinities.
+  * Fix a bug in the json_array_length() function that occurs when
+    the argument comes directly from json_remove().
+  * Fix the omit-unused-subquery-columns optimization (introduced
+    in in version 3.42.0) so that it works correctly if the
+    subquery is a compound where one arm is DISTINCT and the other
+    is not.
+
+-------------------------------------------------------------------
+Sat Aug 26 14:38:21 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.43.0:
+  * Add support for Contentless-Delete FTS5 Indexes. This is a
+    variety of FTS5 full-text search index that omits storing the
+    content that is being indexed while also allowing records to
+    be deleted.
+  * Enhancements to the date and time functions:
+    + Added new time shift modifiers of the form
+      ±YYYY-MM-DD HH:MM:SS.SSS.
+    + Added the timediff() SQL function.
+  * Added the octet_length(X) SQL function.
+  * Added the sqlite3_stmt_explain() API.
+  * Query planner enhancements:
+    + Generalize the LEFT JOIN strength reduction optimization so
+      that it works for RIGHT and FULL JOINs as well. Rename it to
+      OUTER JOIN strength reduction.
+    + Enhance the theorem prover in the OUTER JOIN strength
+      reduction optimization so that it returns fewer
+      false-negatives.
+  * Enhancements to the decimal extension:
+    + New function decimal_pow2(N) returns the N-th power of 2 for
+      integer N between -20000 and +20000.
+    + New function decimal_exp(X) works like decimal(X) except that
+      it returns the result in exponential notation - with a "e+NN"
+      at the end.
+    + If X is a floating-point value, then the decimal(X) function
+      now does a full expansion of that value into its exact
+      decimal equivalent.
+  * Performance enhancements to JSON processing results in a 2x
+    performance improvement for some kinds of processing on large
+    JSON strings.
+  * The VFS for unix now assumes that the nanosleep() system call
+    is available unless compiled with -DHAVE_NANOSLEEP=0.
+
+-------------------------------------------------------------------
 Wed May 17 08:23:04 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 3.42.0:
