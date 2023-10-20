@@ -1064,4 +1064,12 @@
   to our complete.tcsh (boo#1215817)</comment>
     <requestid>1116393</requestid>
   </revision>
+  <revision rev="96" vrev="5">
+    <srcmd5>ed6c56bead2085e3be5da140f0d6761c</srcmd5>
+    <version>6.24.10</version>
+    <time>1697836584</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1118948</requestid>
+  </revision>
 </revisionlist>

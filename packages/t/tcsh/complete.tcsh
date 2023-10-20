@@ -10,9 +10,8 @@
 # 1999/06/28: <werner@suse.de> resort to the order to fit complete.tcsh
 #		found in tcsh-6.08.05, add the mh completes.
 #
-    set autolist=ambiguous
-    set noglob
 #
+    unset noglob
     set hosts
     foreach _f ("$HOME/.hosts" /etc/csh.hosts "$HOME/.rhosts" /etc/hosts.equiv)
 	if ( -r $_f ) then
@@ -33,8 +32,11 @@
     else
 	set _manpath="/usr{{/X11/man,/openwin/man,/share/man}/{man,cat},{/man/{man,cat}}}"
     endif
+    set _man_sections=(`\ls -1dfUA ${_manpath}*|sed s%/.\*/man%%|sort -u`)
+    set autolist=ambiguous
+    set noglob
 if ( -d /usr/lib/ispell/ ) then
-    set _hash=(`\ls -1fUA /usr/lib/ispell/|&\sed -rn \\%.\*\\.hash%{s%\.hash%%p}`)
+    set _hash=(`\ls -1fUA /usr/lib/ispell/|&sed -rn \\%.\*\\.hash%{s%\.hash%%p}`)
 else
     set _hash=(english deutsch)
 endif
@@ -703,11 +705,14 @@ skip_mh:
 			n@-u@T:$_maildir@ n/-f/f/ n/*/u/
     endif
 
-    complete man	'n@[0-9n]@`\ls -1fUA ${_manpath}$:-1/|&\sed \\%.\*:%d\;s%\\.$:-1.\*\$%%|\sort -u`@' \
+    alias _list_man_pages \
+	'find ${_manpath:h} \( -type f -o -type l \) -printf "%f\n"|&sed -r "\%find:.*:%d;s%([^.]+).([^ ]*?)%\1%g"|sort -u'
+    complete man	'n@[0-9n]{,p,mp}@`\ls -1fUA ${_manpath}$:-1/|&sed \\%.\*:%d\;s%\\.$:-1.\*\$%%|sort -u`@' \
 			c@-@"(- f k M P s S t)"@ n@-f@c@ n@-k@x:'<keyword>'@ n/-l/f/ C@./*@f@ n@-[MP]@d@    \
-			'N@-[MP]@`\ls -1 $:-1/man? |&\sed -n s%\\..\\+\$%%p`@' \
-			'n@-[sS]@`\ls -1 ${_manpath:h}|&\sed -n \\%/.\*:%d\;s%man%%p|\sort -u`@' \
-			'n@*@`\find ${_manpath:h} \( -type f -o -type l \) -printf "%f\n"|&\sed -r "\%find:.*:%d;s%([^.]+).([^ ]*?)%\1%g"|\sort -u`@'
+			'N@-[MP]@`\ls -1 $:-1/man? |&sed -n s%\\..\\+\$%%p`@' \
+			'n@-[sS]@`\ls -1 ${_manpath:h}|&sed -n \\%/.\*:%d\;s%man%%p|sort -u`@' \
+			'p@1@`echo ${_man_sections};eval _list_man_pages`@' \
+			'n@*@`eval _list_man_pages`@'
     complete ps		c/-t/x:'<tty>'/ c/-/"(a c C e g k l S t u v w x)"/ \
 			n/-k/x:'<kernel>'/ N/-k/x:'<core_file>'/ n/*/x:'<PID>'/
     complete compress	c/-/"(c f v b)"/ n/-b/x:'<max_bits>'/ n/*/f:^*.Z/
