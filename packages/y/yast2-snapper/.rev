@@ -557,4 +557,12 @@
     <comment>submit new version 4.6.1</comment>
     <requestid>1077190</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>95dc8ea691d5627b2b48a222221ccf15</srcmd5>
+    <version>5.0.0</version>
+    <time>1697836625</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.0</comment>
+    <requestid>1119054</requestid>
+  </revision>
 </revisionlist>

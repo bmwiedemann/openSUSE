@@ -17,7 +17,7 @@
 
 
 Name:           yast2-snapper
-Version:        4.6.1
+Version:        5.0.0
 Release:        0
 Summary:        YaST - file system snapshots review
 License:        GPL-2.0-only
