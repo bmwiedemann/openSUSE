@@ -18,12 +18,13 @@
 
 %define cpan_name Config-Tiny
 Name:           perl-Config-Tiny
-Version:        2.29
+Version:        2.300.0
 Release:        0
+%define cpan_version 2.30
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Read/Write .ini style files with as little code as possible
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/%{cpan_name}-%{version}.tgz
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -33,12 +34,9 @@ BuildRequires:  perl(File::Temp) >= 0.22
 BuildRequires:  perl(Test::More) >= 1.001002
 Requires:       perl(File::Spec) >= 3.30
 Requires:       perl(File::Temp) >= 0.22
+Provides:       perl(Config::Tiny) = 2.300.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
-
-# make_build doesn't exist on SLES 12
-%if %{undefined make_build}
-%define make_build %{__make} %{?_smp_mflags}
-%endif
 
 %description
 'Config::Tiny' is a Perl class to read and write .ini style configuration
@@ -63,7 +61,7 @@ See Config::Tiny::Ordered (and possibly others) for the preservation of the
 order of the entries in the file.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

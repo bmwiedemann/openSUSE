@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 13 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.30
+   see /usr/share/doc/packages/perl-Config-Tiny/Changelog.ini
+
+  [V 2.30]
+  Date=2023-10-12T17:17:08
+  Comments= <<EOT
+  - As of V 2.30, this module supports an array syntax for cases where you wish to
+  assign an array of values to a key.
+  - See the new POD section called ARRAY SYNTAX.
+  - See also the updated question in the FAQ: What happens if a key is repeated?
+  - See also the sample code in the Synopsis and in t/02.main.t and in t/test.conf.
+  - In each case, search for the word greetings to find the new code samples.
+  - This patch was kindly provided by Steven Schoch, with some additions by Ron Savage.
+  EOT
+
+-------------------------------------------------------------------
 Mon Apr 24 22:28:58 UTC 2023 - Andrew Daugherity <adaugherity@tamu.edu>
 
 - fix build on SLES 12 (no make_build macro) 
