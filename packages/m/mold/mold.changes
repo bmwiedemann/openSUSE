@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 20 08:21:20 UTC 2023 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.3.1
+  * [ARM32, ARM64, PowerPC, LoongArch] mold 2.3.0 would crash when handling large
+    output files. This was due to a bug in the code that creates range extension
+    thunks. This issue has now been resolved. (7be1b66)
+  * [LoongArch] mold is now capable of handling relocations generated for the
+    -mcmodel=extreme flag. (4bd80ec)
+
+-------------------------------------------------------------------
 Wed Oct 18 12:34:13 UTC 2023 - Martin Liska <martin.liska@melowntech.com>
 
 - Update to version 2.3.0

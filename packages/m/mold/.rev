@@ -601,4 +601,17 @@
     mandatory for the linker to turn on the STO_AARCH64_VARIANT_PCS flag to notify</comment>
     <requestid>1118582</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>56fd642f18371d901a4ed8886a9102b6</srcmd5>
+    <version>2.3.1</version>
+    <time>1697836717</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3.1
+  * [ARM32, ARM64, PowerPC, LoongArch] mold 2.3.0 would crash when handling large
+    output files. This was due to a bug in the code that creates range extension
+    thunks. This issue has now been resolved. (7be1b66)
+  * [LoongArch] mold is now capable of handling relocations generated for the
+    -mcmodel=extreme flag. (4bd80ec)</comment>
+    <requestid>1119175</requestid>
+  </revision>
 </revisionlist>
