@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Mon Mar 13 08:15:29 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Removed unnecessary executable flag from file add-on-workflow.rb
