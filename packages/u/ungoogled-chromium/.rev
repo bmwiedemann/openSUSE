@@ -280,4 +280,14 @@
 </comment>
     <requestid>1117703</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>802e6b4a1ce9e162a84de0e12e17c431</srcmd5>
+    <version>118.0.5993.88</version>
+    <time>1697836638</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 118.0.5993.88: 
+  * unspecified security fix (boo#1216392)
+</comment>
+    <requestid>1119072</requestid>
+  </revision>
 </revisionlist>
