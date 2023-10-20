@@ -83,4 +83,12 @@ or in the OSS repo, just having it in the OBS project it enough.</comment>
     <comment>submit new version 4.6.0</comment>
     <requestid>1069253</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f3738db7fabd707429228e0db0d481ac</srcmd5>
+    <version>5.0.0</version>
+    <time>1697836602</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.0</comment>
+    <requestid>1119004</requestid>
+  </revision>
 </revisionlist>
