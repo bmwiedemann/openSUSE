@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Oct 19 09:19:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.34.0
+  * Support for the new Redis service
+    * ``oci redis``
+  * Support for export Container and Kubernetes application listings in the Marketplace Service
+    * ``oci marketplace-publisher``
+  * Support for achieving higher limits in the Network Firewall Service
+    * ``oci network-firewall address-list``
+    * ``oci network-firewall application``
+    * ``oci network-firewall application-group``
+    * ``oci network-firewall decryption-profile``
+    * ``oci network-firewall decryption-rule``
+    * ``oci network-firewall mapped-secret``
+    * ``oci network-firewall network-firewall-policy``
+    * ``oci network-firewall security-rule``
+    * ``oci network-firewall service``
+    * ``oci network-firewall service-list``
+    * ``oci network-firewall url-list``
+  * Support for exporting access request reports in the Managed Access Service
+    * ``oci oma lockbox export-access-requests``
+  * Support for Mount File System in Data Science Jobs and Notebooks in the Data Science Service
+    * ``oci data-science job create --job-storage-mount-configuration-details-list``
+    * ``oci data-science job update --job-storage-mount-configuration-details-list``
+    * ``oci data-science notebook-session create --notebook-session-storage-mount-configuration-details-list``
+    * ``oci data-science notebook-session update --notebook-session-storage-mount-configuration-details-list``
+  * Logging Management
+    * Support for unified agent operational metrics for the service configuration option
+      * ``oci logging agent-configuration``
+    * Added new destination field in the option ``--service-configuration``
+  * [BREAKING] Optional parameter ``--auto-approval-state`` was removed in the Managed Access Service
+    * ``oci oma lockbox update``
+  * [BREAKING] Optional parameter ``--service-stage`` was removed in the Logging Management Service
+    * ``oci logging service list``
+  * [BREAKING] Optional parameters ``--application-lists, --decryption-profiles, --decryption-rules,
+    --ip-address-lists, --mapped-secrets, --security-rules, --url-lists`` were removed in the Network
+    Firewall Service
+    * ``oci network-firewall network-firewall-policy create``
+    * ``oci network-firewall network-firewall-policy update``
+- from version 3.33.4
+  * Database Service
+    * Support for new command
+      * ``oci db pluggable-database relocate-pdb``
+      * ``oci db pluggable-database create-local-clone``
+      * ``oci db pluggable-database create-remote-clone``
+      * ``oci db pluggable-database convert-to-regular``
+      * ``oci db pluggable-database refresh``
+    * Support for new optional parameter
+      * ``oci db database restore --pdb-name``
+      * ``oci db pluggable-database create --create-pdb-backup --cdb-admin-password``
+    * Support for displaying resource usage information on autonomous vm cluster
+      * ``oci db autonomous-vm-cluster get-autonomous-vm-cluster-resource-usage --autonomous-vm-cluster-id``
+      * ``oci db autonomous-vm-cluster list-autonomous-vm-cluster-acd-resource-usage --autonomous-vm-cluster-id``
+  * Marketplace Service
+    * Support for export Container and Kubernetes app listings
+      * ``oci marketplace listing export``
+    * Support for work request status for export Container and Kubernetes app listings
+      * ``oci marketplace work-request``
+  * Support for creating a Flow Log type Capture filter in Virtual Cloud Network service
+    * ``oci network capture-filter create --flow-log-capture-filter-rules``
+    * ``oci network capture-filter list --filter-type``
+    * ``oci network capture-filter update --flow-log-capture-filter-rules``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Oct  3 13:47:37 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.33.3
