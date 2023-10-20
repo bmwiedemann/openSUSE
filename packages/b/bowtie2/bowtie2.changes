@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 19 12:32:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.2:
+  * Fixed an issue preventing bowtie2 from utilizing the specified
+    number of CPU cores.
+  * Fixed an issue causing bowtie2 to segfault while parsing
+    interleaved reads.
+  * Overhauled the FASTQ parser with better tolerance for empty
+    lines.
+- Update simde to version 0.7.6.
+- Allow building with LTO, do not set _lto_cflags to %{nil}.
+
+-------------------------------------------------------------------
 Wed Jan 18 05:31:26 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.1:
