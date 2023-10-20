@@ -28,6 +28,8 @@ Source1:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar
 # http://www.gnupg.org/signature_key.en.html
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+#PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
+Patch0:         libgpg-error-nobetasuffix.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 

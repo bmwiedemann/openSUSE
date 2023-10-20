@@ -1,0 +1,24 @@
+Index: libgpg-error-1.47/autogen.sh
+===================================================================
+--- libgpg-error-1.47.orig/autogen.sh
++++ libgpg-error-1.47/autogen.sh
+@@ -243,7 +243,7 @@ if [ "$myhost" = "find-version" ]; then
+     fi
+ 
+     beta=no
+-    if [ -e .git ]; then
++    if false; then
+       ingit=yes
+       tmp=$(git describe --match "${matchstr1}" --long 2>/dev/null)
+       if [ -n "$tmp" ]; then
+@@ -268,8 +268,8 @@ if [ "$myhost" = "find-version" ]; then
+       rvd=$((0x$(echo ${rev} | dd bs=1 count=4 2>/dev/null)))
+     else
+       ingit=no
+-      beta=yes
+-      tmp="-unknown"
++      beta=no
++      tmp=""
+       rev="0000000"
+       rvd="0"
+     fi
