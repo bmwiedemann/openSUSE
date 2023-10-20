@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Oct 20 10:09:22 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.1
+ * Rule changes
+   * Add unsafe fix for escape-sequence-in-docstring (D301)
+ * Configuration
+   * Respect #(deprecated) attribute in configuration options
+   * Add [format|lint].exclude options
+   * Respect tab-size setting in formatter
+   * Add lint.preview
+ * Preview features
+   * [pylint] Implement literal-membership (PLR6201)
+   * [pylint] Implement too-many-boolean-expressions (PLR0916)
+   * [pylint] Implement misplaced-bare-raise (E0704)
+   * [pylint] Implement global-at-module-level (W0604)
+   * [pylint] Implement unspecified-encoding (PLW1514)
+   * Add fix for triple-single-quotes (D300)
+ * Formatter
+   * New code style badge for ruff format
+   * Fix comments outside expression parentheses
+   * Add --target-version to ruff format
+   * Skip over parentheses when detecting in keyword
+   * Add --diff option to ruff format
+   * Insert newline after nested function or class statements
+   * Use pass over ellipsis in non-function/class contexts
+ * Bug fixes
+   * Lazily evaluate all PEP 695 type alias values
+   * Avoid failed assertion when showing fixes from stdin
+   * Avoid flagging HTTP and HTTPS literals in urllib-open
+   * Avoid flagging bad-dunder-method-name for _
+   * Remove Python 2-only methods from URLOpen audit
+   * Use set bracket replacement for iteration-over-set to preserve whitespace and comments
+ * Documentation
+   * Update tutorial to match revised Ruff defaults
+   * Update rule B005 docs
+   * Update GitHub actions example in docs to use --output-format
+   * Document lint.preview and format.preview
+   * Clarify that new rules should be added to RuleGroup::Preview.
+
+-------------------------------------------------------------------
 Tue Oct 17 10:38:21 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.0
