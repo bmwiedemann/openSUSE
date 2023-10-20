@@ -779,4 +779,19 @@
   * GUI: Updated JP translation (gl#saalen/highlight!144).</comment>
     <requestid>1106089</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ac7101e36668e0b4f8e45f28ca92ce45</srcmd5>
+    <version>4.9</version>
+    <time>1697836581</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.9:
+  * Updated astyle lib to version 3.4.9.
+  * Added support for Elm (gl#saalen/highlight#237).
+  * Added support for Factor (gl#saalen/highlight#239).
+  * Added support for Cpp2.
+  * Updated c.lang to include module keywords.
+  * Fixed Lua nested string deprecation error
+    (gl#saalen/highlight#238).</comment>
+    <requestid>1118940</requestid>
+  </revision>
 </revisionlist>

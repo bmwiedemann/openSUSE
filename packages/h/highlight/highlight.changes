@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 19 09:20:46 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 4.9:
+  * Updated astyle lib to version 3.4.9.
+  * Added support for Elm (gl#saalen/highlight#237).
+  * Added support for Factor (gl#saalen/highlight#239).
+  * Added support for Cpp2.
+  * Updated c.lang to include module keywords.
+  * Fixed Lua nested string deprecation error
+    (gl#saalen/highlight#238).
+
+-------------------------------------------------------------------
 Sat Aug 26 21:43:31 UTC 2023 - antoine.belvire@opensuse.org
 
 - Update to version 4.8:
