@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:12:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.47.2:
+  * [BUGFIX] TSDB: Fix counter reset edgecases causing native
+    histogram panics. #12838
+
+-------------------------------------------------------------------
 Wed Oct  4 13:54:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.47.1:
