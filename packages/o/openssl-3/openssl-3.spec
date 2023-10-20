@@ -109,7 +109,8 @@ This subpackage contains header files for developing applications
 that want to make use of the OpenSSL C API.
 
 %package doc
-Summary:        Additional Package Documentation
+Summary:        Manpages and additional documentation for openssl
+Conflicts:      libopenssl-3-devel < %{version}-%{release}
 Conflicts:      openssl-doc
 Provides:       openssl-doc = %{version}
 Obsoletes:      openssl-doc < %{version}
@@ -259,12 +260,12 @@ fi
 %{_includedir}/ssl
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_mandir}/man3/*
 
 %files doc
 %doc README.md
 %doc doc/html/* doc/HOWTO/* demos
 %doc showciphers.c
+%{_mandir}/man3/*
 
 %files
 %license LICENSE.txt
