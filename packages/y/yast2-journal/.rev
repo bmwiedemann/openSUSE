@@ -185,4 +185,12 @@ https://fate.suse.com/318486</comment>
     <comment>submit new version 4.6.0</comment>
     <requestid>1069233</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d4fefecffbf29e9b9be73d5e7e371658</srcmd5>
+    <version>5.0.0</version>
+    <time>1697836615</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.0</comment>
+    <requestid>1119034</requestid>
+  </revision>
 </revisionlist>
