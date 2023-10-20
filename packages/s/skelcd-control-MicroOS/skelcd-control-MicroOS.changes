@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:04:40 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Set readonly_language to false for desktop roles (boo#1212560)
+- 20230912
+
+-------------------------------------------------------------------
 Wed May 24 15:55:44 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Removed bootloader from default patterns. (jsc#PED-1906)
