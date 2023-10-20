@@ -2895,4 +2895,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   reached (CVE-2023-4911, bsc#1215501) (forwarded request 1115606 from Andreas_Schwab)</comment>
     <requestid>1115607</requestid>
   </revision>
+  <revision rev="281" vrev="5">
+    <srcmd5>5d7a3c21020811520d6658f152b2f247</srcmd5>
+    <version>2.38</version>
+    <time>1697836522</time>
+    <user>anag+factory</user>
+    <comment>- dtors-reverse-ctor-order.patch: Remove, has been reverted (forwarded request 1118596 from Andreas_Schwab)</comment>
+    <requestid>1118597</requestid>
+  </revision>
 </revisionlist>

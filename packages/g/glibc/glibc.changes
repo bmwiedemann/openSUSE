@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 18 11:54:04 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- dtors-reverse-ctor-order.patch: Remove, has been reverted
+
+-------------------------------------------------------------------
+Tue Oct 17 12:00:11 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Avoid use of SSE in i586 build
+
+-------------------------------------------------------------------
+Mon Oct  9 08:50:18 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Add systemd also to gshadow lookups (jsc#PED-5188)
+- For SLE continue to use nsswitch.conf without systemd
+
+-------------------------------------------------------------------
 Wed Oct  4 09:31:09 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - setxid-propagate-glibc-tunables.patch: Propagate GLIBC_TUNABLES in

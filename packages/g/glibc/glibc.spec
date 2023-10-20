@@ -170,6 +170,7 @@ Source1:        https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz.sig
 Source2:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libc&download=1#/glibc.keyring
 Source4:        manpages.tar.bz2
 Source5:        nsswitch.conf
+Source6:        sle-nsswitch.conf
 Source7:        bindresvport.blacklist
 Source9:        glibc.rpmlintrc
 Source10:       baselibs.conf
@@ -316,20 +317,18 @@ Patch1005:      ppc64-flock-fob64.patch
 Patch1006:      libio-io-vtables.patch
 # PATCH-FIX-UPSTREAM elf: Do not run constructors for proxy objects
 Patch1007:      call-init-proxy-objects.patch
-# PATCH-FIX-UPSTREAM elf: Always call destructors in reverse constructor order (BZ #30785)
-Patch1008:      dtors-reverse-ctor-order.patch
 # PATCH-FIX-UPSTREAM Stack read overflow with large TCP responses in no-aaaa mode (CVE-2023-4527, BZ #30842)
-Patch1009:      no-aaaa-read-overflow.patch
+Patch1008:      no-aaaa-read-overflow.patch
 # PATCH-FIX-UPSTREAM getaddrinfo: Fix use after free in getcanonname (CVE-2023-4806, BZ #30843)
-Patch1010:      getcanonname-use-after-free.patch
+Patch1009:      getcanonname-use-after-free.patch
 # PATCH-FIX-UPSTREAM Fix leak in getaddrinfo introduced by the fix for CVE-2023-4806 (CVE-2023-5156, BZ #30884)
-Patch1011:      getaddrinfo-memory-leak.patch
+Patch1010:      getaddrinfo-memory-leak.patch
 # PATCH-FIX-UPSTREAM io: Do not implement fstat with fstatat
-Patch1012:      fstat-implementation.patch
+Patch1011:      fstat-implementation.patch
 # PATCH-FIX-UPSTREAM Propagate GLIBC_TUNABLES in setxid binaries
-Patch1013:      setxid-propagate-glibc-tunables.patch
+Patch1012:      setxid-propagate-glibc-tunables.patch
 # PATCH-FIX-UPSTREAM tunables: Terminate if end of input is reached (CVE-2023-4911)
-Patch1014:      tunables-string-parsing.patch
+Patch1013:      tunables-string-parsing.patch
 
 ###
 # Patches awaiting upstream approval
@@ -566,7 +565,6 @@ library in a cross compilation setting.
 %patch1011 -p1
 %patch1012 -p1
 %patch1013 -p1
-%patch1014 -p1
 %endif
 
 %patch2000 -p1
@@ -629,6 +627,14 @@ for opt in $tmp; do
 done
 %if "%flavor" == "i686"
 BuildFlags+=" -march=i686 -mtune=generic"
+%else
+%if !%{build_cross}
+%ifarch i586
+# workaround for unaligned stack in java-11-openjdk and mariadb
+# by avoiding use of SSE
+BuildFlags+=" -march=i586"
+%endif
+%endif
 %endif
 %if 0%{?with_gcc:1}
 BuildCC="gcc-%{with_gcc}"
@@ -957,7 +963,7 @@ install -m 644 %{SOURCE7} %{buildroot}/etc
 %if %suse_version > 1500
 install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/etc/nsswitch.conf
 %else
-install -m 644 %{SOURCE5} %{buildroot}/etc
+install -m 644 %{SOURCE6} %{buildroot}/etc/nsswitch.conf
 %endif
 
 %if %{build_html}
