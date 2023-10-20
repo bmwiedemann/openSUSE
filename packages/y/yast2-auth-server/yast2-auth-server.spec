@@ -19,7 +19,7 @@
 Name:           yast2-auth-server
 Group:          System/YaST
 Summary:        A tool for creating identity management server instances
-Version:        4.6.2
+Version:        5.0.0
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/yast/yast-auth-server
