@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 20 10:57:54 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove_genty.patch to remove dependency on the external
+  genty package (gh#box/flaky!197).
+
+-------------------------------------------------------------------
+Fri Oct 20 10:26:48 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

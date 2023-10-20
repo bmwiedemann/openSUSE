@@ -78,4 +78,15 @@
     <comment></comment>
     <requestid>1081925</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>7e8ae634e5ab1d71bd9fd02394a59692</srcmd5>
+    <version>3.7.0</version>
+    <time>1697836567</time>
+    <user>anag+factory</user>
+    <comment>- Add remove_genty.patch to remove dependency on the external
+  genty package (gh#box/flaky!197).
+- Clean up the SPEC file
+</comment>
+    <requestid>1119234</requestid>
+  </revision>
 </revisionlist>

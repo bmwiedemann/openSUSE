@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -24,7 +24,6 @@
 %else
 %bcond_with test
 %endif
-%{?sle15_python_module_pythons}
 Name:           python-flaky%{?psuffix}
 Version:        3.7.0
 Release:        0
@@ -35,16 +34,18 @@ Source:         https://files.pythonhosted.org/packages/source/f/flaky/flaky-%{v
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#box/flaky#171 mcepl@suse.com
 # remove dependency on nose
 Patch0:         remove_nose.patch
-# PATCH-FEATURE-UPSTREAM remove_mock.patch gh#box/flaky#171 mcepl@suse.com
-# this patch makes things totally awesome
+# PATCH-FEATURE-UPSTREAM remove_mock.patch gh#box/flaky!197 mcepl@suse.com
+# remove dependency on the external mock package
 Patch1:         remove_mock.patch
+# PATCH-FEATURE-UPSTREAM remove_genty.patch gh#box/flaky!197 mcepl@suse.com
+# remove dependency on the external genty package
+Patch2:         remove_genty.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module flaky >= %{version}}
-BuildRequires:  %{python_module genty}
 BuildRequires:  %{python_module pytest}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python-mock
@@ -88,7 +89,8 @@ export PYTEST_ADDOPTS="--force-flaky --max-runs 2"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flaky
+%{python_sitelib}/flaky-%{version}*-info
 %endif
 
 %changelog
