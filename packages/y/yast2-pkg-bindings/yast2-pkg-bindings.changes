@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 20 15:54:13 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Pkg.SourceEditSet() - Allow setting the repository service name
+  (related to bsc#1214135)
+- 5.0.2
+
+-------------------------------------------------------------------
+Wed Sep 13 16:36:53 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed crash in the Pkg.Commit() function when passing
+  "exclude_docs" or "no_signature" options (bsc#1215238)
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Mon May 15 11:54:53 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Dropped the *-devel-doc subpackage (related to bsc#1211319)
