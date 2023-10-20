@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Thu Apr 20 15:22:54 MDT 2023 - carnold@suse.com
 
 - The libvirtd daemon is deprecated and is going away.
