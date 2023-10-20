@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-njs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,39 @@
 
 
 Name:           nginx-module-njs
-Version:        0.7.12
+Version:        0.8.1
 Release:        0
 Summary:        NGINX module for NGINX Javascript
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://nginx.org/en/docs/njs/
-Source:         %name.tar.gz
+Source:         %{name}.tar.gz
 BuildRequires:  nginx-source
-%ngx_conditionals
-%ngx_requires
+%{ngx_conditionals}
+%{ngx_requires}
 
 %description
 njs is a subset of the JavaScript language that allows extending
 nginx functionality.
 
 %prep
-%autosetup -p1 -n %name
-cp -r %_prefix/src/nginx .
+%autosetup -p1 -n %{name}
+cp -r %{_prefix}/src/nginx .
 
 %build
 cd nginx
-%ngx_configure --add-dynamic-module=.
+%{ngx_configure} --add-dynamic-module=.
 %make_build modules
 
 %install
-mkdir -p %buildroot/%ngx_module_dir
-install -Dpm0755 nginx/objs/ngx_http_js_module.so %buildroot/%ngx_module_dir
-install -Dpm0755 nginx/objs/ngx_stream_js_module.so %buildroot/%ngx_module_dir
+mkdir -p %{buildroot}/%{ngx_module_dir}
+install -Dpm0755 nginx/objs/ngx_http_js_module.so %{buildroot}/%{ngx_module_dir}
+install -Dpm0755 nginx/objs/ngx_stream_js_module.so %{buildroot}/%{ngx_module_dir}
 
 %files
 %license LICENSE
 %doc README CHANGES
-%ngx_module_dir/ngx_http_js_module.so
-%ngx_module_dir/ngx_stream_js_module.so
+%{ngx_module_dir}/ngx_http_js_module.so
+%{ngx_module_dir}/ngx_stream_js_module.so
 
 %changelog

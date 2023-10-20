@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 19 20:52:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.8.1:
+  * Implement a number of useful language facilities around shared
+    dictionaries, add more global nginx properties, and
+    configuration directives (js_periodic, js_shared_dict_zone)
+  * Possibly incompatible change: native methods are provided with
+    retval argument. This change breaks compatibility with C
+    extension for njs requiring the modification of the code.
+  * A number of non-compliant deprecated String methods were
+    removed
+
+-------------------------------------------------------------------
 Tue May  2 13:06:42 UTC 2023 - Adam Majer <adam.majer@suse.de> 0.7.12
 
 - update to 0.7.12
