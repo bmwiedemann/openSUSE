@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        4.6.2
+Version:        5.0.1
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later
@@ -38,8 +38,8 @@ BuildRequires:  yast2-storage-ng >= 4.0.141
 #!BuildIgnore: yast2-packager
 # Replace PackageSystem with Package
 BuildRequires:  yast2 >= 4.4.38
-# raw_name
-BuildRequires:  yast2-pkg-bindings >= 4.2.8
+# "service" attribute in Pkg.SourceEditSet()
+BuildRequires:  yast2-pkg-bindings >= 5.0.2
 # yast/rspec/helpers.rb
 BuildRequires:  yast2-ruby-bindings >= 4.4.7
 # Augeas lenses
@@ -48,8 +48,8 @@ BuildRequires:  ruby-solv
 
 # Newly added RPM
 Requires:       yast2-country-data >= 2.16.3
-# raw_name
-Requires:       yast2-pkg-bindings >= 4.2.8
+# "service" attribute in Pkg.SourceEditSet()
+Requires:       yast2-pkg-bindings >= 5.0.2
 # Replace PackageSystem with Package
 Requires:       yast2 >= 4.4.38
 # unzipping license file

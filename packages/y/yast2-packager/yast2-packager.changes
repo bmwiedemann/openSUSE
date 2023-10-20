@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 20 15:58:33 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Properly save the repo file when changing URL of a repository
+  from a service (bsc#1214135)
+- Also display a warning when changing URL of a service repository,
+  the change might be lost after the service is refreshed
+- 5.0.1 
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Tue Aug  8 11:22:18 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Move loading the Pkg module to fix a failing unit test (bsc#1214069)
