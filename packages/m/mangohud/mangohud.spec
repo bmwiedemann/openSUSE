@@ -63,12 +63,23 @@ A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and m
 
 %package -n mangoapp
 Summary:        A transparent background application with a built-in MangoHud for gamescope
-License:        MIT
 Group:          Games
 Requires:       %{name}
 
 %description -n mangoapp
 A transparent background OpenGL application with a built-in MangoHud designed to be run inside a gamescope instance.
+
+%package -n mangoplot
+Summary:        Local visualization
+Group:          Games
+Requires:       %{name}
+BuildArch:      noarch
+
+%description -n mangoplot
+mangoplot is a plotting script that is shipped with MangoHud: on a given folder,
+it takes each log file, makes a 1D heatmap of its framerates,
+then stacks the heats maps vertically to form a 2D graph for
+easy visual comparison between benchmarks.
 
 %prep
 %autosetup -n MangoHud-%{internal_ver} -p1
@@ -78,6 +89,7 @@ A transparent background OpenGL application with a built-in MangoHud designed to
 %setup -n MangoHud-%{internal_ver} -DTa4
 sed -i -e '1d;2i#!%{_bindir}/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,%{_prefix}/\$LIB/mangohud/,' bin/mangohud.in
+sed -i 's|@ld_libdir_mangohud_abs@|%{_prefix}/\$LIB/mangohud|g' src/mangohud.json.in
 mv imgui-%{imgui_ver} subprojects/
 mv Vulkan-Headers-%{vulkan_ver} subprojects/
 sed -i 's/0.60.0/0.59/g' meson.build
@@ -95,23 +107,25 @@ export CC=gcc-12
 export CXX=g++-12
 %endif
 %meson \
- -Dwith_wayland=enabled \
- -Dwith_xnvctrl=disabled \
- -Duse_system_spdlog=enabled \
- -Dmangoapp=true \
- -Dmangohudctl=true \
- -Dmangoapp_layer=true
-
+    -Dinclude_doc=true \
+    -Duse_system_spdlog=enabled \
+    -Dwith_wayland=enabled \
+    -Dwith_xnvctrl=disabled \
+    -Dtests=enabled \
+    -Dmangoapp=true \
+    -Dmangohudctl=true \
+    -Dmangoapp_layer=true
+    %{nil}
 %meson_build
 
 %install
 %meson_install
+sed -i "s@#!/usr/bin/env python@#!/usr/bin/python3@" %{buildroot}%{_bindir}/mangoplot
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_bindir}/mangoplot
 %{_bindir}/%{name}ctl
 %{_libdir}/%{name}/
 %{_datadir}/doc/%{name}/
@@ -126,5 +140,8 @@ export CXX=g++-12
 %files -n mangoapp
 %{_bindir}/mangoapp
 %{_mandir}/man1/mangoapp.1%{?ext_man}
+
+%files -n mangoplot
+%{_bindir}/mangoplot
 
 %changelog

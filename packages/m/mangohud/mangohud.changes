@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 20 05:11:35 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Restored mangoapp package.
+- A separate mangoplot package has been created. 
+
+-------------------------------------------------------------------
+Thu Oct 19 06:26:40 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Fix E: env-script-interpreter for mangoplot. 
+
+-------------------------------------------------------------------
+Thu Oct 19 06:09:44 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Work restored for 32 bit applications (bsc#1215881)
+
+-------------------------------------------------------------------
 Fri Sep 29 04:11:09 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.0:
