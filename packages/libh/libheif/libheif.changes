@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 19 16:12:42 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.17.1:
+  * fix issue of loading images with premultiplied alpha channel
+  * correctly set compatible_version for macOS dylib builds
+  * fix loading HDR PNGs, but encoding them as 8-bit SDR
+  * fix saving AVIF with alpha using the SVT-AV1 encoder
+- cmake-presets version 3 requires cmake >= 3.21
+
+-------------------------------------------------------------------
+Tue Oct 17 21:09:55 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.17.0:
+  * Kvazaar encoder (HEIC) as alternative to x265
+  * ffmpeg decoder (HEIC) decoding with potential hardware decoder support
+  * jpegdec / jpegenc codecs for JPEG in HEIF
+  * j2kdec, j2kenc codecs for JPEG-2000 in HEIF (still experimental)
+  * added support for region masks
+  * added support for alpha channels in images decoded with JS/WASM
+  * heif-enc and heif-convert can be called with only input filenames,
+    input and output filename, or with -o option. This makes the use of the
+    two command more consistent.
+  * added 4:2:2 <-> 4:4:4 color conversion with bilinear upscaling / average
+    filtering
+  * heif_context_get_image_handle() can now also access non-top-level images
+  * add script to build Android libraries for all platforms
+  * known bugs have been fixed
+
+-------------------------------------------------------------------
 Mon May 22 19:32:26 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.16.2:
