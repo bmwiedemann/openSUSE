@@ -29,7 +29,7 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
