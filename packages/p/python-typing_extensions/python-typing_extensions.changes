@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 19 10:26:29 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.8.0:
+  - Add typing_extensions.Doc, as proposed by PEP 727
+  - Drop support for Python 3.7 (including PyPy-3.7)
+  - Fix bug where get_original_bases() would return incorrect
+    results when called on a concrete subclass of a generic class
+  - Fix bug where ParamSpec(default=...) would raise a TypeError
+    on Python versions <3.11
+
+-------------------------------------------------------------------
 Sun Aug 13 12:53:12 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 4.7.1:

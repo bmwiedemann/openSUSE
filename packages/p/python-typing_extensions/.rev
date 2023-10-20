@@ -198,4 +198,19 @@
     <comment></comment>
     <requestid>1103731</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8c024ccceecdfd7868f2f3596dc039c2</srcmd5>
+    <version>4.8.0</version>
+    <time>1697836582</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.8.0:
+  - Add typing_extensions.Doc, as proposed by PEP 727
+  - Drop support for Python 3.7 (including PyPy-3.7)
+  - Fix bug where get_original_bases() would return incorrect
+    results when called on a concrete subclass of a generic class
+  - Fix bug where ParamSpec(default=...) would raise a TypeError
+    on Python versions &lt;3.11
+</comment>
+    <requestid>1118944</requestid>
+  </revision>
 </revisionlist>

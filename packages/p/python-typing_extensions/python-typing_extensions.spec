@@ -27,13 +27,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typing_extensions%{psuffix}
-Version:        4.7.1
+Version:        4.8.0
 Release:        0
-Summary:        Backported and Experimental Type Hints for Python 3.7+
+Summary:        Backported and Experimental Type Hints for Python 3.8+
 License:        Python-2.0
-URL:            https://github.com/python/typing/
+URL:            https://github.com/python/typing_extensions
 Source0:        https://files.pythonhosted.org/packages/source/t/typing_extensions/typing_extensions-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core >= 3.4 with %python-flit-core < 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
