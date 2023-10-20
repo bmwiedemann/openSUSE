@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:15:45 UTC 2023 - Fabian Vogt <fvogt@suse.de>
+
+- Add changes from gh#openSUSE/sdbootutil#21:
+  * sdbootutil.spec: Add missing efibootmgr dependency
+  * sdbootutil.spec: Make sdbootutil-snapper a hard dependency
+
+-------------------------------------------------------------------
+Thu Oct 12 15:02:17 UTC 2023 - lnussel@suse.de
+
+- Update to version 1+git20231005.890f70c:
+  * Add --no-reuse-initrd option
+  * Refactor boot descriptive entries
+  * feat: more descriptive bootmenu entries
+  * Remove stray set -x
+  * speed up snapper list
+  * Fix misleading comment
+  * Fix helptext
+
+-------------------------------------------------------------------
 Thu Aug 17 12:02:02 UTC 2023 - lnussel@suse.de
 
 - Update to version 1+git20230817.2a3cd34:

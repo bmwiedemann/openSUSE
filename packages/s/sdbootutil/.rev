@@ -55,4 +55,12 @@
   * feat: create boot menu entries when installed (forwarded request 1112549 from lnussel)</comment>
     <requestid>1112550</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79b424d34ab29a9d8a770ed9fa14d137</srcmd5>
+    <version>1+git20231005.890f70c</version>
+    <time>1697836573</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118843</requestid>
+  </revision>
 </revisionlist>

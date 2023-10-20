@@ -5,7 +5,7 @@
     <param name="revision">main</param>
     <param name="versionformat">1+git%cd.%h</param>
     <param name="changesgenerate">enable</param>
-    <param name="extract">sdbootutil.spec</param>
+<!--    <param name="extract">sdbootutil.spec</param>-->
   </service>
   <service name="set_version" mode="manual" />
   <service name="tar" mode="buildtime"/>

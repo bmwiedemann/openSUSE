@@ -27,16 +27,18 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20230817.2a3cd34%{git_version}
+Version:        1+git20231005.890f70c%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT
 URL:            https://en.opensuse.org/openSUSE:Usr_merge
 Source:         %{name}-%{version}.tar
+Requires:       efibootmgr
 Requires:       jq
 Requires:       sed
 Requires:       systemd-boot
 Supplements:    (systemd-boot and shim)
+Requires:       (%{name}-snapper if (snapper and btrfsprogs))
 
 %description
 Hook scripts to install shim along with systemd-boot
@@ -47,7 +49,6 @@ Requires:       %{name} = %{version}
 Requires:       btrfsprogs
 Requires:       sdbootutil >= %{version}-%{release}
 Requires:       snapper
-Supplements:    (snapper and btrfsprogs and sdbootutil)
 
 %description snapper
 Plugin scripts for snapper to handle BLS config files
