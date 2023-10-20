@@ -65,4 +65,16 @@
   * [Added] Cgroup/Ccgroup column #529</comment>
     <requestid>1118591</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e3040e3b51b75e900e1e7f8219608221</srcmd5>
+    <version>0.14.3~0</version>
+    <time>1697836731</time>
+    <user>anag+factory</user>
+    <comment>- Generate and use zst tarball
+
+- Update to 0.14.3:
+  * [Changed] MSRV to Rust 1.67
+  * [Added] Some columns on FreeBSD</comment>
+    <requestid>1119218</requestid>
+  </revision>
 </revisionlist>

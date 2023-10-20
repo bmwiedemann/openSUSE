@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 20 11:02:04 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Generate and use zst tarball
+
+-------------------------------------------------------------------
+Fri Oct 20 06:17:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.3:
+  * [Changed] MSRV to Rust 1.67
+  * [Added] Some columns on FreeBSD
+
+-------------------------------------------------------------------
 Wed Oct 18 13:08:30 UTC 2023 - Michael Vetter <jubalh@iodoru.org>
 
 - Update to 0.14.2:

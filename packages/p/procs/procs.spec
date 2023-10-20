@@ -17,12 +17,12 @@
 
 
 Name:           procs
-Version:        0.14.2
+Version:        0.14.3~0
 Release:        0
 Summary:        A modern replacement for ps written in Rust
 License:        MIT
 URL:            https://github.com/dalance/procs
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
