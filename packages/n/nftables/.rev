@@ -261,4 +261,12 @@
 - Added 0001-Revert-py-replace-distutils-with-setuptools.patch</comment>
     <requestid>1100606</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5ec8b78909deed19733f5c901b8cb5e8</srcmd5>
+    <version>1.0.9</version>
+    <time>1697836555</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.0.9</comment>
+    <requestid>1119119</requestid>
+  </revision>
 </revisionlist>

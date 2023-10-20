@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -28,19 +28,22 @@ URL:            https://netfilter.org/projects/nftables/
 Source:         http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz
 Source2:        http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz.sig
 Source3:        %name.keyring
-Patch1:         0001-Revert-py-replace-distutils-with-setuptools.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  asciidoc
 BuildRequires:  bison
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config >= 0.21
-BuildRequires:  python3-base
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
 BuildRequires:  pkgconfig(libnftnl) >= 1.2.6
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
+%python_subpackages
 
 %description
 nf_tables is a firewalling mechanism in the Linux kernel, running
@@ -72,12 +75,15 @@ library.
 
 This package contains the header files for the library.
 
-%package -n python3-nftables
-Summary:        Python interface for nftables
+%package -n python-nftables
+Summary:        Python bindings for nftables
 Group:          Development/Languages/Python
+Conflicts:      python3-nftables
+# uses dlopen
+Requires:       libnftables1
 
-%description -n python3-nftables
-A Python module for nftables.
+%description -n python-nftables
+Python bindings for nftables
 
 %prep
 %autosetup -p1
@@ -95,10 +101,17 @@ pushd obj/
 	--enable-python --with-python-bin="$(which python3)"
 %make_build
 popd
+pushd py
+%pyproject_wheel
+popd
 
 %install
 b="%buildroot"
 %make_install -C obj
+pushd py
+%pyproject_install
+%python_expand %fdupes %buildroot/%{$python_sitelib}
+popd
 rm -f "%buildroot/%_libdir"/*.la
 mkdir -p "$b/%_docdir/%name/examples"
 mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
@@ -106,7 +119,7 @@ mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 %post   -n libnftables1 -p /sbin/ldconfig
 %postun -n libnftables1 -p /sbin/ldconfig
 
-%files
+%files -n nftables
 %license COPYING
 %_sysconfdir/nftables/
 %_sbindir/nft
@@ -117,13 +130,13 @@ mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 %files -n libnftables1
 %_libdir/libnftables.so.1*
 
-%files devel
+%files -n nftables-devel
 %_includedir/%name/
 %_libdir/libnftables.so
 %_libdir/pkgconfig/*.pc
 %_mandir/man3/*.3*
 
-%files -n python3-nftables
-%python3_sitelib/nftables*
+%files %{python_files}
+%{python_sitelib}/nftables*
 
 %changelog

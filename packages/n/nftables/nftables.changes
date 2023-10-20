@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 19 23:42:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.9
+  * Custom conntrack timeouts can use time specification with
+    units other than seconds.
+  * Allow combination of dnat with numgen.
+  * Allow for using constants as key in dynamic sets.
+  * Support for matching on the target address of a IPv6 neighbour                                                               
+    solicitation/advertisement.
+  * Restore bitwise operations in combination with maps, e.g. jump
+    to chain depending on bitwise operation on packet mark.
+  * Fix crash with log prefix longer that 127 bytes.
+- Drop merged 0001-Revert-py-replace-distutils-with-setuptools.patch
+
+-------------------------------------------------------------------
 Fri Jul 14 11:56:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.8
