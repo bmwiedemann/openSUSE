@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 18 13:01:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.15
+  * imap: do not emit continuation request on LITERAL+ (now also
+    for large literals >64K)
+  * exmdb: explicitly rollback SQLite transactions when the commit
+    operation failed
+  * delivery: support for plus-addresses/recipient delimiters,
+    e.g. <user+extension@example.com>
+  * mbop: new subcommand ``recalc-size`` to recalculate store size
+
+-------------------------------------------------------------------
 Wed Oct  4 10:37:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.14
