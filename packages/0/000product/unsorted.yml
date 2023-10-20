@@ -20,6 +20,7 @@ unsorted:
   - AppStream-compose 
   - AppStream-compose-devel 
   - AppStream-devel 
+  - AppStream-doc 
   - AusweisApp2 
   - Bear 
   - Botan 
@@ -4559,37 +4560,17 @@ unsorted:
   - gerbv-devel 
   - german-pos-dict 
   - geronimo-annotation-1_0-api 
-  - geronimo-commonj-1_1-apis 
-  - geronimo-ejb-2_1-api 
-  - geronimo-ejb-3_0-api 
-  - geronimo-el-1_0-api 
-  - geronimo-interceptor-3_0-api 
-  - geronimo-j2ee-1_4-apis 
-  - geronimo-j2ee-connector-1_5-api 
-  - geronimo-j2ee-deployment-1_1-api 
-  - geronimo-j2ee-management-1_0-api 
-  - geronimo-j2ee-management-1_1-api 
-  - geronimo-jacc-1_0-api 
-  - geronimo-jacc-1_1-api 
   - geronimo-jaf-1_0_2-api 
   - geronimo-jaf-1_1-api 
-  - geronimo-javaee-deployment-1_1-api 
-  - geronimo-javamail-1_3_1-api 
-  - geronimo-javamail-1_4-api 
-  - geronimo-jaxr-1_0-api 
   - geronimo-jaxrpc-1_1-api 
   - geronimo-jms-1_1-api 
   - geronimo-jpa-3_0-api 
-  - geronimo-jsp-2_0-api 
-  - geronimo-jsp-2_1-api 
   - geronimo-jta-1_0_1B-api 
   - geronimo-jta-1_1-api 
   - geronimo-qname-1_1-api 
   - geronimo-saaj-1_1-api 
   - geronimo-servlet-2_4-api 
   - geronimo-servlet-2_5-api 
-  - geronimo-stax-1_0-api 
-  - geronimo-ws-metadata-2_0-api 
   - gettext-csharp 
   - gettext-its-gtk3 
   - gettext-its-gtk4 
@@ -8216,7 +8197,6 @@ unsorted:
   - iproute2-arpd 
   - ipset 
   - ipset-devel 
-  - iptables-backend-nft 
   - iptraf-ng 
   - ipv6gen 
   - ipv6toolkit 
@@ -9440,6 +9420,7 @@ unsorted:
   - kubectx 
   - kubelogin 
   - kubens 
+  - kubepug 
   - kuberlr 
   - kubernetes-apiserver 
   - kubernetes-apiserver-minus1 
@@ -14256,6 +14237,8 @@ unsorted:
   - libptytty-devel 
   - libptytty0 
   - libpugixml1 
+  - libpulp-tools 
+  - libpulp0 
   - libpulse-devel 
   - libpulse-devel-32bit 
   - libpulse-mainloop-glib0-32bit 
@@ -22312,6 +22295,7 @@ unsorted:
   - preludedb-tools 
   - premake4 
   - presage 
+  - presenterm 
   - prewikka 
   - prewikka-lang 
   - primecount 
@@ -25655,6 +25639,7 @@ unsorted:
   - python310-pytest-echo 
   - python310-pytest-env 
   - python310-pytest-error-for-skips 
+  - python310-pytest-examples 
   - python310-pytest-expect 
   - python310-pytest-filter-subpackage 
   - python310-pytest-fixture-config 
@@ -29031,6 +29016,7 @@ unsorted:
   - python311-pytest-echo 
   - python311-pytest-env 
   - python311-pytest-error-for-skips 
+  - python311-pytest-examples 
   - python311-pytest-expect 
   - python311-pytest-filter-subpackage 
   - python311-pytest-fixture-config 
@@ -32525,6 +32511,7 @@ unsorted:
   - python39-pytest-echo 
   - python39-pytest-env 
   - python39-pytest-error-for-skips 
+  - python39-pytest-examples 
   - python39-pytest-expect 
   - python39-pytest-filter-subpackage 
   - python39-pytest-fixture-config 
