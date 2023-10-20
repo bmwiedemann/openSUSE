@@ -2577,4 +2577,16 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
     <requestid>1116104</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>245a86a28c85641da880546f000e8c45</srcmd5>
+    <version>5.15.11+kde138</version>
+    <time>1697836558</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.15.11+kde138:
+  * QLibraryPrivate: Actually merge load hints
+  * QPluginLoader: report the right load hints
+  * xkb: fix build with libxkbcommon 1.6.0 and later
+  * a11y atspi: Map ButtonMenu role to AT-SPI equivalent (forwarded request 1118852 from favogt)</comment>
+    <requestid>1119152</requestid>
+  </revision>
 </revisionlist>

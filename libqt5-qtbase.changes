@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 19 08:24:52 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde138:
+  * QLibraryPrivate: Actually merge load hints
+  * QPluginLoader: report the right load hints
+  * xkb: fix build with libxkbcommon 1.6.0 and later
+  * a11y atspi: Map ButtonMenu role to AT-SPI equivalent
+
+-------------------------------------------------------------------
 Fri Oct  6 21:59:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Enable the experimental native painting feature to improve
