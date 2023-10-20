@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  4 03:06:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.035
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.035   2023-10-03
+          - PR #37 Speed up decode_jwt
+
+-------------------------------------------------------------------
 Mon Nov 29 03:07:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.034
