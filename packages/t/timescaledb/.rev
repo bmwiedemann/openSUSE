@@ -202,4 +202,12 @@
 - clean up trailing whitespaces in the changes file</comment>
     <requestid>1117169</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4c520fc67566105d293f8246fdb18088</srcmd5>
+    <version>2.12.2</version>
+    <time>1697836727</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119206</requestid>
+  </revision>
 </revisionlist>
