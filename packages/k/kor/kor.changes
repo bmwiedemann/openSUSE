@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Oct 20 04:59:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.2.5:
+  * Fix: validate HTTP field (#110)
+  * merge functions for configmaps (#108)
+  * Add helm documentation (#104)
+  * Fix: Add helm condition to skip secret manifest creation when
+    slack secrets are not provided (#101)
+  * Bump github.com/prometheus/client_golang from 1.16.0 to 1.17.0
+    (#99)
+
+-------------------------------------------------------------------
+Fri Oct 13 06:47:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.2.4:
+  * Fix: add Logo (#98)
+  * Add Logo (#96)
+  * Update helm charts with deployment support (#90)
+  * Export Prometheus metrics (#87)
+  * Add feature request template
+  * add helm to the installation options (#93)
+  * feat: add send to slack support (#77)
+  * Update installation instructions to README.md (#88)
+  * feat: add helm charts with cronjob support (#78)
+  * style: consistent language (#85)
+
+-------------------------------------------------------------------
+Fri Oct 13 06:47:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kor: Tool to discover unused Kubernetes Resources
