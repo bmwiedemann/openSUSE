@@ -12,8 +12,10 @@
  src/ult_src.c       |    9 ++++-
  11 files changed, 235 insertions(+), 47 deletions(-)
 
+Index: b/configure.ac
+===================================================================
 --- a/configure.ac
-+++ b/configure.ac	2023-08-15 08:31:31.135097942 +0000
++++ b/configure.ac
 @@ -302,6 +302,14 @@ fi
  
  MAN_CHECK_PROGS([eqn], [EQN], [use EQN to preprocess equations], [eqn geqn])
@@ -47,8 +49,10 @@
  	if test -z "$gzip"
  	then
  		compressor="$compress -c"
+Index: b/lib/security.c
+===================================================================
 --- a/lib/security.c
-+++ b/lib/security.c	2023-08-15 08:31:31.135097942 +0000
++++ b/lib/security.c
 @@ -80,6 +80,11 @@ static void gripe_set_euid (void)
  	fatal (errno, _("can't set effective uid"));
  }
@@ -93,8 +97,10 @@
  #endif /* MAN_OWNER */
  }
  
---- a/mk_catdirs
-+++ b/mk_catdirs	2023-08-15 08:31:31.135097942 +0000
+Index: b/mk_catdirs
+===================================================================
+--- /dev/null
++++ b/mk_catdirs
 @@ -0,0 +1,30 @@
 +#!/bin/sh
 +
@@ -126,8 +132,10 @@
 +cd ${OLDPWD}
 +
 +test "$(id -u)" -ne 0 || chown man:man -R ${CACHE}
+Index: b/src/check_mandirs.c
+===================================================================
 --- a/src/check_mandirs.c
-+++ b/src/check_mandirs.c	2023-08-15 08:31:31.139097869 +0000
++++ b/src/check_mandirs.c
 @@ -381,7 +381,7 @@ void chown_if_possible (const char *path
  #endif /* MAN_OWNER */
  
@@ -213,8 +221,10 @@
  		content = MYDBM_FETCH (dbf, key);
  		if (!MYDBM_DPTR (content)) {
  			nextkey = MYDBM_NEXTKEY (dbf, key);
+Index: b/src/lexgrog.l
+===================================================================
 --- a/src/lexgrog.l
-+++ b/src/lexgrog.l	2023-08-15 08:33:23.053105426 +0000
++++ b/src/lexgrog.l
 @@ -70,7 +70,7 @@
  #include "manconv.h"
  #include "manconv_client.h"
@@ -350,8 +360,10 @@
  	{next}{blank_eol}+[-\\]-{blank}*		|
  	{next}{blank_eol}*[-\\]-{blank}+		|
  	{bol}\.Nd{blank}*			{
+Index: b/src/man.c
+===================================================================
 --- a/src/man.c
-+++ b/src/man.c	2023-08-15 08:45:27.956189368 +0000
++++ b/src/man.c
 @@ -56,6 +56,7 @@
  #include <time.h>
  #include <sys/types.h>
@@ -360,7 +372,7 @@
  
  #include "argp.h"
  #include "attribute.h"
-@@ -116,6 +117,8 @@
+@@ -118,6 +119,8 @@
  #ifdef MAN_OWNER
  extern uid_t ruid;
  extern uid_t euid;
@@ -369,7 +381,7 @@
  #endif /* MAN_OWNER */
  
  /* the default preprocessor sequence */
-@@ -239,10 +242,10 @@ static int first_arg;
+@@ -241,10 +244,10 @@ static int first_arg;
  #ifdef MAN_CATS
  static char *tmp_cat_file;	/* for open_cat_stream(), close_cat_stream() */
  static bool created_tmp_cat;	/* dto. */
@@ -381,7 +393,7 @@
  
  # ifdef TROFF_IS_GROFF
  static bool ditroff;
-@@ -1561,6 +1564,18 @@ static void setenv_less (pipecmd *cmd, c
+@@ -1576,6 +1579,18 @@ static void setenv_less (pipecmd *cmd, c
  	free (less_opts);
  }
  
@@ -400,7 +412,7 @@
  static void add_output_iconv (pipeline *p,
  			      const char *source, const char *target)
  {
-@@ -1691,6 +1706,8 @@ static pipeline *make_display_command (c
+@@ -1706,6 +1721,8 @@ static pipeline *make_display_command (c
  
  	if (pager_cmd) {
  		setenv_less (pager_cmd, title);
@@ -409,7 +421,7 @@
  		pipeline_command (p, pager_cmd);
  	}
  	pipeline_ignore_signals (p, 1);
-@@ -1701,7 +1718,7 @@ static pipeline *make_display_command (c
+@@ -1716,7 +1733,7 @@ static pipeline *make_display_command (c
  	return p;
  }
  
@@ -418,7 +430,7 @@
  /* return a (malloced) temporary name in cat_file's directory */
  static char *tmp_cat_filename (const char *cat_file)
  {
-@@ -1729,7 +1746,6 @@ static char *tmp_cat_filename (const cha
+@@ -1744,7 +1761,6 @@ static char *tmp_cat_filename (const cha
  		return name;
  }
  
@@ -426,7 +438,7 @@
  /* If delete unlink tmp_cat, else commit tmp_cat to cat_file.
     Return non-zero on error.
   */
-@@ -1802,6 +1818,7 @@ static int commit_tmp_cat (const char *c
+@@ -1817,6 +1833,7 @@ static int commit_tmp_cat (const char *c
  
  	return status;
  }
@@ -434,7 +446,7 @@
  
  /* TODO: This should all be refactored after work on the decompression
   * library is complete.
-@@ -1838,7 +1855,6 @@ static void cleanup_unlink (void *arg)
+@@ -1853,7 +1870,6 @@ static void cleanup_unlink (void *arg)
  }
  
  #ifdef MAN_CATS
@@ -442,7 +454,7 @@
  /* Return pipeline to write formatted manual page to for saving as cat file. */
  static pipeline *open_cat_stream (const char *cat_file, const char *encoding)
  {
-@@ -2070,6 +2086,7 @@ static void format_display (decompress *
+@@ -2085,6 +2101,7 @@ static void format_display (decompress *
  	regain_effective_privs ();
  }
  
@@ -450,15 +462,15 @@
  /* "Display" a page in catman mode, which amounts to saving it. */
  /* TODO: merge with format_display_and_save? */
  static void display_catman (const char *cat_file, decompress *d,
-@@ -2115,6 +2132,7 @@ static void display_catman (const char *
+@@ -2130,6 +2147,7 @@ static void display_catman (const char *
  	pop_cleanup (cleanup_unlink, tmpcat);
  	free (tmpcat);
  }
 +#endif /* MAN_CATS */
  
+ #ifndef TROFF_IS_GROFF
  static void disable_hyphenation (void *data MAYBE_UNUSED)
- {
-@@ -2317,7 +2335,7 @@ static int display (const char *dir, con
+@@ -2349,7 +2367,7 @@ static int display (const char *dir, con
  		format_cmd = NULL;
  		decomp_errno = errno;
  	}
@@ -467,7 +479,7 @@
  	/* Get modification time, for commit_tmp_cat(). */
  	if (man_file && *man_file) {
  		struct stat stb;
-@@ -2327,7 +2345,7 @@ static int display (const char *dir, con
+@@ -2359,7 +2377,7 @@ static int display (const char *dir, con
  		} else
  			man_modtime = get_stat_mtime (&stb);
  	}
@@ -476,7 +488,7 @@
  	display_to_stdout = troff;
  #ifdef TROFF_IS_GROFF
  	if (htmlout || gxditview)
-@@ -2468,6 +2486,7 @@ static int display (const char *dir, con
+@@ -2500,6 +2518,7 @@ static int display (const char *dir, con
  			}
  			if (printed)
  				putchar ('\n');
@@ -484,7 +496,7 @@
  		} else if (catman) {
  			if (format) {
  				if (!save_cat)
-@@ -2480,6 +2499,7 @@ static int display (const char *dir, con
+@@ -2512,6 +2531,7 @@ static int display (const char *dir, con
  							format_cmd,
  							formatted_encoding);
  			}
@@ -492,7 +504,7 @@
  		} else if (format) {
  			/* no cat or out of date */
  			pipeline *disp_cmd;
-@@ -4011,17 +4031,20 @@ static int local_man_loop (const char *a
+@@ -4050,17 +4070,20 @@ static int local_man_loop (const char *a
  		/* Check that the file exists and isn't e.g. a directory */
  		if (stat (argv, &st)) {
  			error (0, errno, "%s", argv);
@@ -513,7 +525,7 @@
  			return NOT_FOUND;
  		}
  
-@@ -4085,6 +4108,11 @@ executable_out:
+@@ -4124,6 +4147,11 @@ executable_out:
  					argv_abs = xstrdup (argv);
  			}
  			lang = lang_dir (argv_abs);
@@ -525,7 +537,7 @@
  			free (argv_abs);
  			if (!display (NULL, argv, NULL, argv_base, NULL)) {
  				if (local_mf)
-@@ -4340,7 +4368,16 @@ int main (int argc, char *argv[])
+@@ -4379,7 +4407,16 @@ int main (int argc, char *argv[])
  	umask (022);
  	init_locale ();
  
@@ -543,7 +555,7 @@
  	/* Use LANGUAGE only when LC_MESSAGES locale category is
  	 * neither "C" nor "POSIX". */
  	if (internal_locale && strcmp (internal_locale, "C") &&
-@@ -4385,7 +4422,16 @@ int main (int argc, char *argv[])
+@@ -4424,7 +4461,16 @@ int main (int argc, char *argv[])
  	if (external)
  		do_extern (argc, argv);
  
@@ -560,8 +572,10 @@
  
  	/* close this locale and reinitialise if a new locale was
  	   issued as an argument or in $MANOPT */
+Index: b/src/man_db.conf.in
+===================================================================
 --- a/src/man_db.conf.in
-+++ b/src/man_db.conf.in	2023-08-15 08:31:31.139097869 +0000
++++ b/src/man_db.conf.in
 @@ -20,6 +20,14 @@
  MANDATORY_MANPATH			/usr/man
  MANDATORY_MANPATH			/usr/share/man
@@ -600,8 +614,10 @@
  MANDB_MAP	@snapdir@/man		/var/cache/man/snap
  #
  #---------------------------------------------------------
+Index: b/src/mandb.c
+===================================================================
 --- a/src/mandb.c
-+++ b/src/mandb.c	2023-08-15 08:35:07.783240325 +0000
++++ b/src/mandb.c
 @@ -213,6 +213,8 @@ struct dbpaths {
  #ifdef MAN_OWNER
  extern uid_t ruid;
@@ -638,25 +654,39 @@
  				dbpaths_chown_if_possible (dbpaths);
  #endif /* MAN_OWNER */
  			reorganize (catpath, global_manpath);
-@@ -896,8 +902,14 @@ int main (int argc, char *argv[])
+@@ -896,14 +902,20 @@ int main (int argc, char *argv[])
  
  #ifdef MAN_OWNER
  	man_owner = get_man_owner ();
--	if (!user && euid != 0 && euid != man_owner->pw_uid)
+-	if (!user && euid != 0 && euid != man_owner->pw_uid) {
 -		user = true;
+-		if (!quiet)
+-			fprintf (stderr,
+-				 _("Only the '%s' user can create or update "
+-				   "system-wide databases; acting as if the "
+-				   "--user-db option was used.\n"),
+-				 man_owner->pw_name);
 +	if (!user) {
 +		if (!ruid && euid != man_owner->pw_uid) {
 +			seteuid(man_owner->pw_uid);
 +			euid = geteuid();
 +		}
-+		if (euid != man_owner->pw_uid)
++		if (euid != man_owner->pw_uid) {
 +			user = true;
-+	}
++			if (!quiet)
++				fprintf (stderr,
++					_("Only the '%s' user can create or update "
++					"system-wide databases; acting as if the "
++					"--user-db option was used.\n"),
++					man_owner->pw_name);
++		}
+ 	}
  #endif /* MAN_OWNER */
  
- 	read_config_file (user);
+Index: b/src/manp.c
+===================================================================
 --- a/src/manp.c
-+++ b/src/manp.c	2023-08-15 08:31:31.139097869 +0000
++++ b/src/manp.c
 @@ -907,7 +907,7 @@ static char *def_path (enum config_flag
  
  	/* If we have complete config file failure... */
@@ -666,8 +696,10 @@
  
  	return manpath;
  }
+Index: b/src/straycats.c
+===================================================================
 --- a/src/straycats.c
-+++ b/src/straycats.c	2023-08-15 08:31:31.139097869 +0000
++++ b/src/straycats.c
 @@ -38,6 +38,7 @@
  #include <sys/types.h>
  #include <sys/stat.h>
@@ -676,8 +708,10 @@
  #include <dirent.h>
  
  #include "canonicalize.h"
+Index: b/src/ult_src.c
+===================================================================
 --- a/src/ult_src.c
-+++ b/src/ult_src.c	2023-08-15 08:37:50.940333586 +0000
++++ b/src/ult_src.c
 @@ -160,10 +160,15 @@ static char *find_include_directive (cha
  	}
  	decompress_start (decomp);

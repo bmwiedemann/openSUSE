@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Oct  1 12:19:14 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 2.12.0:
+  * Fix some manual page portability issues with groff 1.23.0.
+  * Fix test failures when a working `iconv` is not available.
+  * Ensure that timestamps read from the database can go past the year 2038,
+    even on systems where this is not the default.
+  * Fix `manpath` not parsing `PATH` entries with trailing slash correctly
+    for guessing `MANPATH` entries.
+  * More accurately document the behaviour of passing file names as arguments
+    to `man` without the `-l`/`--local-file` option.
+  * Avoid duplicate cleanup of old cat pages by both `man-db.service` and
+    `systemd-tmpfiles-clean.service`.
+  Improvements:
+  * Update system call lists in `seccomp` sandbox from `systemd`.
+  * Upgrade to Gnulib `stable-202307`.
+  * Work around the Firebuild accelerator in `seccomp` sandbox: if this is in
+    use then we need to allow some socket-related system calls.
+  * `man -K` now deduplicates search results that point to the same page.
+  * Warn if `mandb` drops to `--user-db` mode due to running as the wrong
+    user.
+  * Change section title recommendations in `man(1)` to mention `STANDARDS`
+    rather than `CONFORMING TO`, in line with `man-pages(7)`.
+  * Add a `STANDARDS` section to `man(1)` itself.
+  * Document that `man -K` may suffer from false negatives as well as false
+    positives.
+  * Take advantage of newer `groff` facilities to implement `man
+    --no-hyphenation` and `man --no-justification`, if available.
+  * `man -f` and `man -k` now pass any `-r`/`--regex` or `-w`/`--wildcard`
+    options on to `whatis` and `apropos` respectively.
+  * Always pass a line length to `nroff`, even if we believe that it matches
+    the default.
+  * Allow disabling `groff` warnings via `man --warnings`, by prefixing a
+    warning name with `!`.
+- Drop man-db-groff-1.23.0-warnings.patch
+- Refresh man-db-2.9.4.patch
+
+-------------------------------------------------------------------
 Fri Sep  8 19:48:53 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add man-db-groff-1.23.0-warnings.patch

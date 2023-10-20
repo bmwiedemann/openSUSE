@@ -1005,4 +1005,12 @@
   * Fix build errors with groff 1.23.0</comment>
     <requestid>1110605</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>e4a2c8f00e1130382acf4e884d80fc9a</srcmd5>
+    <version>2.12.0</version>
+    <time>1697836585</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118949</requestid>
+  </revision>
 </revisionlist>
