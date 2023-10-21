@@ -9273,6 +9273,10 @@ unsorted:
   - kopete 
   - kopete-devel 
   - kopete-lang 
+  - kor 
+  - kor-bash-completion 
+  - kor-fish-completion 
+  - kor-zsh-completion 
   - kora-icon-theme 
   - kosmindoormap 
   - kosmindoormap-devel 
@@ -14524,7 +14528,7 @@ unsorted:
   - librasqal-devel-doc 
   - libratbag-devel 
   - libratbag-tools 
-  - librav1e0-32bit 
+  - librav1e0_6-32bit 
   - libraven0 
   - libraw-devel 
   - libraw-devel-static 
@@ -14739,6 +14743,8 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
+  - librseq-devel 
+  - librseq0 
   - librssguard-4_3_4 
   - librssguard-devel 
   - librsvg-2-2-32bit 
@@ -16862,6 +16868,7 @@ unsorted:
   - mangoapp 
   - mangohud 
   - mangohud-32bit 
+  - mangoplot 
   - manpageeditor 
   - mapi-header-php 
   - mapserver 
@@ -25079,6 +25086,7 @@ unsorted:
   - python310-netpbmfile 
   - python310-netutils 
   - python310-networkx 
+  - python310-nftables 
   - python310-nh3 
   - python310-nibabel 
   - python310-nilearn 
@@ -31950,6 +31958,7 @@ unsorted:
   - python39-netpbmfile 
   - python39-netutils 
   - python39-networkx 
+  - python39-nftables 
   - python39-nh3 
   - python39-nibabel 
   - python39-nilearn 
