@@ -97,4 +97,12 @@
     <comment>bsc#1173633 (CVE-2020-14940)</comment>
     <requestid>1117171</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>917afdac2beb9de34db7e32d67bc0614</srcmd5>
+    <version>1.6.0</version>
+    <time>1698001321</time>
+    <user>anag+factory</user>
+    <comment>add commons-compress to the classpath</comment>
+    <requestid>1119345</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 21 08:59:55 UTC 2023 - guiv42 <guiv42@tuta.io>
+
+- Added path to commons-compress in 0013-startscript.patch
+  to enable TuxGuitar to open .gp files 
+
+-------------------------------------------------------------------
 Thu Oct 12 06:49:30 UTC 2023 - Fridrich Štrba <fstrba@suse.com>
 
 - Added patch:

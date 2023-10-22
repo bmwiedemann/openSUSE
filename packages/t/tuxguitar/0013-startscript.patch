@@ -1,17 +1,6 @@
-From 4fb1777834e863a14cfb8ca1ab08c8d4a8a1651c Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
-Date: Tue, 10 Oct 2023 13:06:25 +0200
-Subject: [PATCH 13/14] startscript
-
----
- .../common-linux/tuxguitar.sh                 | 148 +++++++++++++++++-
- 1 file changed, 141 insertions(+), 7 deletions(-)
-
-diff --git a/build-scripts/common-resources/common-linux/tuxguitar.sh b/build-scripts/common-resources/common-linux/tuxguitar.sh
-index a213786a..62a895d1 100755
 --- a/build-scripts/common-resources/common-linux/tuxguitar.sh
 +++ b/build-scripts/common-resources/common-linux/tuxguitar.sh
-@@ -1,20 +1,154 @@
+@@ -1,20 +1,155 @@
  #!/bin/sh
 -##SCRIPT DIR
 -TG_DIR=`dirname $(realpath "$0")`
@@ -160,7 +149,8 @@ index a213786a..62a895d1 100755
 +[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
 +t=$(swt_guess_)
 +[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
-+
++t="/usr/share/java/commons-compress.jar"
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
  ##MAINCLASS
  MAINCLASS=org.herac.tuxguitar.app.TGMainSingleton
  ##JVM ARGUMENTS
@@ -173,6 +163,3 @@ index a213786a..62a895d1 100755
  ##LAUNCH
 -${JAVA} ${VM_ARGS} -cp :${CLASSPATH} -Dtuxguitar.home.path="${TG_DIR}" -Dtuxguitar.share.path="share/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
 +${JAVA} ${VM_ARGS} -cp :${CLASSPATH} -Dtuxguitar.share.path="${SHAREPATH}/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
--- 
-2.42.0
-
