@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 21 18:17:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.72.0:
+  * chore(deps): update Syft to v0.94.0 (#1566)
+  * Incorporate Syft java detection improvements (#1555)
+  * add exception for go stdlib search by CPE (#1565)
+  * chore(deps): bump actions/checkout from 4.1.0 to 4.1.1 (#1564)
+  * Add --ignore-states flag for ignoring findings with specific
+    fix states (#1473)
+  * feat: update go-sarif library to use latest release (#1563)
+  * bump clio to get stderr reporting fix (#1561)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.2
+    to 1.4.3 (#1558)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.9.0
+    to 0.9.1 (#1557)
+  * Add checksum signing (#1535)
+
+-------------------------------------------------------------------
 Fri Oct 13 05:01:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.71.0:
