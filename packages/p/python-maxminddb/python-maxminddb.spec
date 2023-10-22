@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-maxminddb
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
 Summary:        Reader for the MaxMind DB format
 License:        Apache-2.0

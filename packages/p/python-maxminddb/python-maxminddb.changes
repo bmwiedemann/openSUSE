@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:03:21 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.4.0
+  * IMPORTANT: Python 3.7 or greater is required.
+  * distutils is no longer used for building the C extension.
+  * Missing Py_INCREF was added for the C extension.
+  * The C extension now decrements the reference count on an object 
+    containing the database filename after its use in an error message 
+    rather than before.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
