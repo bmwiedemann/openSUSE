@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 20 12:30:10 UTC 2023 - Adriankhl <dlshcbmuipmam@hotmail.com>
+
+- Update to 2.11.2
+  * Backported #9356: Fix issues with order updates
+  * Backported #9378: backported wArrayList (optional) copy on insert
+  * Backported #9360: backported certificate algorithm detection
+
+-------------------------------------------------------------------
 Wed Aug 30 16:48:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.11.0
