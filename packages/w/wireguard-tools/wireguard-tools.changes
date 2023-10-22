@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:16:54 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update WireGuard.keyring with latest copy from upstream.
+
+-------------------------------------------------------------------
 Wed Aug 31 13:40:41 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Support multiple DNS search domains
