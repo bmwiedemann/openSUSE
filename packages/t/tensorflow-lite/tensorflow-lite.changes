@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 19 10:49:18 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Don't use `=` in %python3_install macro parameters to avoid parsing
+  problems with future changes of the macro expasion.
+  See gh#openSUSE/python-rpm-macros#164
+
+-------------------------------------------------------------------
 Mon Jun  5 14:52:25 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use gcc12 to build since build fails with default gcc (13)

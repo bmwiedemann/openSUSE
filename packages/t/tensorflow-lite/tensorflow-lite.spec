@@ -1,7 +1,7 @@
 #
 # spec file for package tensorflow-lite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -229,7 +229,7 @@ rm build/lib/pkgconfig/absl_absl_*
 rmdir build/lib/pkgconfig
 export PROJECT_NAME=tflite_runtime
 export PACKAGE_VERSION=%{version}
-%python3_install --install-lib=%{python3_sitearch}
+%python3_install --install-lib %{python3_sitearch}
 %fdupes %{buildroot}%{python3_sitearch}
 popd
 
