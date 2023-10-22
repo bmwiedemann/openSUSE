@@ -1,4 +1,53 @@
 --------------------------------------------------------------------
+Fri Oct 20 16:47:00 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#955
+- use _exit if exec fails
+- 4.5.149
+
+--------------------------------------------------------------------
+Mon Oct 16 14:53:58 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#954
+- allow to disallow remove actions on some devices
+- improved tests
+- removed unneeded include statements
+- make more use of new SystemCmd interface
+- increase minor library version
+- 4.5.148
+
+--------------------------------------------------------------------
+Wed Oct 11 13:28:02 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#953
+- support RAID level LINEAR (bsc#1215022)
+- 4.5.147
+
+--------------------------------------------------------------------
+Tue Oct 10 18:13:01 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#952
+- extended testsuite
+- 4.5.146
+
+--------------------------------------------------------------------
+Tue Oct 10 10:23:54 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#951
+- allow SystemCmd to take a vector with command arguments
+- fixed typo
+- added integration tests
+- 4.5.145
+
+--------------------------------------------------------------------
+Mon Oct 9 13:39:01 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#950
+- allow to disable use of key file in commit
+- added note
+- 4.5.144
+
+--------------------------------------------------------------------
 Wed Sep 27 08:22:26 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#949
