@@ -25,7 +25,7 @@
 %endif
 
 Name:           python-mautrix
-Version:        0.19.15
+Version:        0.20.2
 Release:        0
 Summary:        A Python 3 asyncio Matrix framework
 License:        MPL-2.0
@@ -34,7 +34,7 @@ URL:            https://github.com/mautrix/python
 Source:         https://github.com/mautrix/python/archive/refs/tags/v%{version}.tar.gz#/mautrix-python-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM no-immutable.patch gh#mautrix/python#147 mcepl@suse.com
 # SQLAlchemy 2.0 renamed sql.base.ImmutableColumnCollection to ReadOnlyColumnCollection
-Patch0:         no-immutable.patch
+# Patch0:         no-immutable.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

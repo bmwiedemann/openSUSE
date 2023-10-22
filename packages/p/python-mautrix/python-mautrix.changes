@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Oct 21 08:21:20 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.20.2:
+  - (crypto) Changed OlmMachine.share_keys to make the OTK count
+    parameter optional. When omitted, the count is fetched from
+    the server.
+  - (appservice) Added option to run appservice transaction event
+    handlers synchronously.
+  - (appservice) Added log and hs_token parameters to
+    AppServiceServerMixin to allow using it as a standalone class
+    without extending.
+  - (api) Added support for setting appservice user_id
+    and device_id query parameters manually without using
+    AppServiceAPI.
+- Update to 0.20.1:
+  - (util.program) Removed --base-config flag in bridges, as
+    there are no valid use cases (package data should always
+    work) and it's easy to cause issues by pointing the flag at
+    the wrong file.
+  - (bridge) Added support for the com.devture.shared_secret_auth
+    login type for automatic double puppeting.
+  - (bridge) Dropped support for syncing with double
+    puppets. MSC2409 is now the only way to receive ephemeral
+    events.
+  - (bridge) Added support for double puppeting with arbitrary
+    as_tokens.
+- Update to 0.20.0:
+  - Dropped Python 3.8 support.
+  - Breaking change (.state_store) Removed legacy SQLAlchemy
+    state store implementations.
+  - Mildly breaking change (util.async_db) Changed SQLiteDatabase
+    to not remove prefix slashes from database paths.
+    - Library users should use sqlite:path.db instead of
+      sqlite:///path.db for relative paths, and sqlite:/path.db
+      instead of sqlite:////path.db for absolute paths.
+    - Bridge configs do this migration automatically.
+  - (util.async_db) Added warning log if using SQLite database
+    path that isn't writable.
+  - (util.program) Fixed manual_stop not working if it's called
+    during startup.
+  - (client) Stabilized support for asynchronous uploads.
+    - unstable_create_msc was renamed to create_mxc, and the
+      max_stall_ms parameters for downloading were renamed to
+      timeout_ms.
+  - (crypto) Added option to not rotate keys when devices change.
+  - (crypto) Added option to remove all keys that were received
+    before the automatic ratcheting was implemented (in
+    v0.19.10).
+  - (types) Improved reply fallback removal to have a smaller
+    chance of false positives for messages that don't use reply
+    fallbacks.
+- Update to 0.19.16:
+  - (appservice) Fixed Python 3.8 compatibility.
+- Remove upstreamed no-immutable.patch.
+
+-------------------------------------------------------------------
 Wed May 24 16:17:20 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.19.15:
