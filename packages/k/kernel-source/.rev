@@ -6410,4 +6410,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.5.6 &amp; 6.5.5 &amp; CVE &amp; other fixes</comment>
     <requestid>1116033</requestid>
   </revision>
+  <revision rev="707" vrev="1">
+    <srcmd5>316ae4974923a2d70641d3579cc6b033</srcmd5>
+    <version>6.5.8</version>
+    <time>1698001269</time>
+    <user>anag+factory</user>
+    <comment>6.5.8 &amp; 6.5.7 &amp; other fixes</comment>
+    <requestid>1119149</requestid>
+  </revision>
 </revisionlist>

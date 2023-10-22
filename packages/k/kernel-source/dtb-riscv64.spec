@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.5
-%define patchversion 6.5.6
+%define patchversion 6.5.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.5.6
+Version:        6.5.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc97c2df
+Release:        <RELEASE>.g51baea8
 %else
 Release:        0
 %endif
@@ -273,12 +273,18 @@ for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts starfive/*
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
     install -m 644 $target.dtb %{buildroot}%{dtbdir}/$(dirname $target)
-%ifarch aarch64 riscv64
+%ifarch %arm aarch64 riscv64
     # HACK: work around U-Boot ignoring vendor dir
     baselink=%{dtbdir}/$(basename $target).dtb
-    vendordir=$(basename $(dirname $target))
     ln -s $target.dtb %{buildroot}$baselink
+%ifarch %arm
+    case $dts in
+    esac
+    echo $baselink >> ../$pkgname.list
+%else
+    vendordir=$(basename $(dirname $target))
     echo $baselink >> ../dtb-$vendordir.list
+%endif
 %endif
 done
 cd -
@@ -325,7 +331,7 @@ cd /boot
 # Unless /boot/dtb exists as real directory, create a symlink.
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
-%ifarch aarch64 riscv64
+%ifarch %arm aarch64 riscv64
 %files -n dtb-allwinner -f dtb-allwinner.list
 %else
 %files -n dtb-allwinner
@@ -336,7 +342,7 @@ cd /boot
 %dir %{dtbdir}/allwinner
 %{dtbdir}/allwinner/*.dtb
 
-%ifarch aarch64 riscv64
+%ifarch %arm aarch64 riscv64
 %files -n dtb-microchip -f dtb-microchip.list
 %else
 %files -n dtb-microchip
@@ -347,7 +353,7 @@ cd /boot
 %dir %{dtbdir}/microchip
 %{dtbdir}/microchip/*.dtb
 
-%ifarch aarch64 riscv64
+%ifarch %arm aarch64 riscv64
 %files -n dtb-renesas -f dtb-renesas.list
 %else
 %files -n dtb-renesas
@@ -358,7 +364,7 @@ cd /boot
 %dir %{dtbdir}/renesas
 %{dtbdir}/renesas/*.dtb
 
-%ifarch aarch64 riscv64
+%ifarch %arm aarch64 riscv64
 %files -n dtb-sifive -f dtb-sifive.list
 %else
 %files -n dtb-sifive
@@ -369,7 +375,7 @@ cd /boot
 %dir %{dtbdir}/sifive
 %{dtbdir}/sifive/*.dtb
 
-%ifarch aarch64 riscv64
+%ifarch %arm aarch64 riscv64
 %files -n dtb-starfive -f dtb-starfive.list
 %else
 %files -n dtb-starfive
@@ -380,7 +386,7 @@ cd /boot
 %dir %{dtbdir}/starfive
 %{dtbdir}/starfive/*.dtb
 
-%ifarch aarch64 riscv64
+%ifarch %arm aarch64 riscv64
 %files -n dtb-thead -f dtb-thead.list
 %else
 %files -n dtb-thead
