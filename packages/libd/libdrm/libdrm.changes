@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 20 11:48:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 2.4.117
+  * modetest: print modifiers in hex as well
+  * modetest: custom mode support
+  * meson: fix intel requirements
+  * meson: Use feature.require() and feature.allowed()
+  * meson: replace deprecated program.path -> program.full_path
+  * modetest: avoid erroring if there's no gamma legacy support
+  * amdgpu: Fix pointer/integer mismatch warning
+  * amdgpu: Use PRI?64 to format uint64_t
+  * util: add NV24 and NV42 frame buffer formats
+  * util: add pattern support for DRM_FORMAT_NV{24,42}
+  * modetest: add support for DRM_FORMAT_NV{24,42}
+  * util: fix grey in YUV SMPTE patterns
+  * modetest: fix mode_vrefresh() for interlace/dblscan/vscan
+  * util: remove unused definitions of RED, GREEN, and BLUE
+  * amdgpu: add marketing names from amd-5.4.6 (22.40.6)
+  * amdgpu: add marketing names from amd-5.5.1 (23.10.1)
+  * amdgpu: add marketing names from PRO Edition 23.Q3 W7000
+  * amdgpu: add marketing names from Adrenalin 23.7.2
+  * amdgpu: add marketing names from Adrenalin 23.9.1
+  * modetest: document why no blob is created for linear gamma LUT
+  * modetest: allocate and commit atomic request around set_property()
+  * modetest: permit -r and -s to work together
+  * modetest: allow using -r and -P
+  * modetest: add support for writeback connector
+  * amdgpu: amdgpu_drm.h for new GPUVM fault ioctl
+  * amdgpu: add support for querying VM faults information
+  * xf86drm: mark DRM_MAX_MINOR as deprecated
+  * ci: bump FreeBSD to 13.2
+
+-------------------------------------------------------------------
 Thu Sep 21 08:29:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - provide/obsolete dropped packages libkms1/libkms-devel (bsc#1215526) 
