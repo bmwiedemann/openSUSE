@@ -440,4 +440,12 @@
   dependencies of NetworkManager-applet. (forwarded request 1115690 from iznogood)</comment>
     <requestid>1116594</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>1c6270d0edde42732e68bbc129121c39</srcmd5>
+    <version>1.34.0</version>
+    <time>1698001304</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119284</requestid>
+  </revision>
 </revisionlist>

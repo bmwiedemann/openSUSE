@@ -89,7 +89,9 @@ connection settings.
 
 %build
 %meson \
+%if !0%{?sle_version}
 	--sysconfdir=%{_distconfdir} \
+%endif
 	-Db_lto=true \
 	-Dappindicator=yes \
 	-Dselinux=false \
@@ -114,7 +116,11 @@ connection settings.
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/*/apps/*.svg
 %{_mandir}/man1/nm-applet.1%{?ext_man}
+%if !0%{?sle_version}
 %{_distconfdir}/xdg/autostart/nm-applet.desktop
+%else
+%{_sysconfdir}/xdg/autostart/nm-applet.desktop
+%endif
 
 %files -n NetworkManager-connection-editor-lang -f nm-applet.lang
 
