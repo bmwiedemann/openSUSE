@@ -4560,6 +4560,7 @@ unsorted:
   - gerbv-devel 
   - german-pos-dict 
   - geronimo-annotation-1_0-api 
+  - geronimo-j2ee-connector-1_5-api 
   - geronimo-jaf-1_0_2-api 
   - geronimo-jaf-1_1-api 
   - geronimo-jaxrpc-1_1-api 
@@ -9122,8 +9123,6 @@ unsorted:
   - kimap-devel 
   - kinit-devel 
   - kio-devel 
-  - kio-gdrive 
-  - kio-gdrive-lang 
   - kio-stash 
   - kio-stash-lang 
   - kio_audiocd-devel 
@@ -10045,7 +10044,6 @@ unsorted:
   - libKOpeningHours1 
   - libKPim5AddressbookImportExport5-devel 
   - libKPim5GAPIBlogger5 
-  - libKPim5GAPIDrive5 
   - libKPim5GAPILatitude5 
   - libKPim5GAPIMaps5 
   - libKPropertyCore3-4 
@@ -12259,7 +12257,7 @@ unsorted:
   - libgnomesu-devel 
   - libgnt-devel 
   - libgnt0 
-  - libgnuastro18 
+  - libgnuastro19 
   - libgnuradio-3_10_7 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
@@ -15051,6 +15049,7 @@ unsorted:
   - libsqlite3-0-32bit 
   - libsqlite3-0-x86-64-v3 
   - libsqlparser1 
+  - libsquashfuse0 
   - libsquirrel1001 
   - libsratom-0-0-32bit 
   - libsrecord0 
@@ -35245,6 +35244,9 @@ unsorted:
   - sqlmap 
   - sqtop 
   - squashfs 
+  - squashfuse 
+  - squashfuse-devel 
+  - squashfuse-tools 
   - squid 
   - squidGuard 
   - squidGuard-doc 
