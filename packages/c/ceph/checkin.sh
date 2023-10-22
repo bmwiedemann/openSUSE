@@ -130,7 +130,7 @@ fi
 echo "Running \"osc add *bz2\" to register the new tarball"
 osc add *bz2
 
-echo "Running pre_checkin.sh (if you touch the ceph.changes file after running this script, re-run pre_checkin.sh manually)"
+echo "Running pre_checkin.sh"
 if [ -f "pre_checkin.sh" ] ; then
     bash pre_checkin.sh
 else

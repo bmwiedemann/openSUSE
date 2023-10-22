@@ -265,12 +265,6 @@ function insert_line_before {
   sed -i "/${match_regex}/i $line_to_insert" $FILE
 }
 
-function copy_changes_file {
-  local dest_pkg=$1
-
-  cp ceph.changes ${dest_pkg}.changes
-}
-
 function set_build_constraints {
   local FILE=$1
   shift
@@ -312,6 +306,5 @@ insert_line_before "$PACKAGE.spec" "Source95: pre_checkin.env" "^Source96:"
 insert_line_before "$PACKAGE.spec" "Source94: pre_checkin.sh" "^Source95:"
 insert_line_before "$PACKAGE.spec" "Source93: checkin.sh" "^Source94:"
 insert_line_before "$PACKAGE.spec" "Source92: ceph-rpmlintrc" "^Source93:"
-copy_changes_file $PACKAGE
 set_build_constraints $SPEC_FILE "hardware:disk:size unit=G ${CEPH_BUILD_DISK_SIZE_GB}" "hardware:memory:size unit=G ${CEPH_BUILD_MEMORY_SIZE_GB}"
 set_build_constraints "$PACKAGE.spec" "hardware:disk:size unit=G ${CEPH_TEST_BUILD_DISK_SIZE_GB}" "hardware:memory:size unit=G ${CEPH_TEST_BUILD_MEMORY_SIZE_GB}"

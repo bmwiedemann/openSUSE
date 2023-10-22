@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 11 09:06:12 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.14-66-g7aa6ce9419f:
+  + (bsc#1207765) rgw/rados: check_quota() uses real bucket owner
+  + (bsc#1212559) pacific: os/bluestore: cumulative bluefs backport
+    This notably includes:
+    * os/bluestore: BlueFS fine grain locking
+    * os/bluestore/bluefs: Fix improper vselector tracking in _flush_special()
+    * os/bluestore: enable 4K allocation unit for BlueFS
+    * os/bluestore/bluefs: Fix sync compactionA
+  + (bsc#1213217) ceph.spec.in: Require fmt-devel < 10
+  + ceph.spec.in: enable build on riscv64 for openSUSE Factory
+  + ceph.spec.in: Require Cython >= 0.29 but < 3
+  + cephadm: update to the latest container images:
+    * registry.suse.com/ses/7.1/ceph/prometheus-server:2.37.6
+    * registry.suse.com/ses/7.1/ceph/prometheus-node-exporter:1.5.0
+    * registry.suse.com/ses/7.1/ceph/grafana:8.5.22
+    * registry.suse.com/ses/7.1/ceph/haproxy:2.0.31
+- Drop ceph-test.changes (no longer necessary since using _multibuild)
+
+-------------------------------------------------------------------
 Wed Aug 16 15:25:39 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - restrict to older Cython

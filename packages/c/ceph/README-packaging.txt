@@ -10,11 +10,14 @@ Instructions for submitting
 
 The ceph.spec file is maintained upstream at https://github.com/ceph/ceph
 
-To patch it, use the following procedure:
+The Ceph package in OBS is built from SUSE's downstream fork at
+https://github.com/SUSE/ceph (specifically, the ses7p branch).
+
+To patch ceph.spec, ideally you should use the following procedure:
 
 1. find out the current Factory ceph maintainer(s) (e.g. by examining the
    most recent entries in the ceph.changes file)
-2. open PR targeting the master branch at https://github.com/ceph/ceph
+2. open PR targeting the main branch at https://github.com/ceph/ceph
    Make sure to sign your commit ("git commit --signoff") using your real name
    and real email address. If this is a problem, contact the current Factory
    maintainers: they can act as a proxy.
@@ -23,6 +26,11 @@ To patch it, use the following procedure:
 The Factory ceph maintainers will take care of getting your upstream PR
 reviewed, tested, merged and, if necessary, backported. They will also take care
 of submitting the patch to Factory.
+
+Alternately, for patches that make no sense to submit to upstream main,
+you can open a PR against the ses7p branch of https://github.com/SUSE/ceph
+then ping the Factory ceph maintainers to get that reviewed and submitted to
+Factory.
 
 Caveat for testing
 ------------------

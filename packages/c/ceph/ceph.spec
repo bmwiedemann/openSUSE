@@ -138,7 +138,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.13.66+g54799ee0666
+Version:	16.2.14.66+g7aa6ce9419f
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -154,10 +154,10 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.13-66-g54799ee0666.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.14-66-g7aa6ce9419f.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
-ExclusiveArch:  x86_64 aarch64 ppc64le s390x
+ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64
 %endif
 #################################################################################
 # dependencies that apply across all distro families
@@ -202,7 +202,7 @@ BuildRequires:	libblkid-devel >= 2.17
 BuildRequires:	cryptsetup-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	libcap-ng-devel
-BuildRequires:	fmt-devel >= 5.2.1
+BuildRequires:	((fmt-devel >= 5.2.1 with fmt-devel < 10) or fmt-9-devel)
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	libnl3-devel
 BuildRequires:	liboath-devel
@@ -309,7 +309,7 @@ BuildRequires:  openldap2-devel
 #BuildRequires:  krb5-devel
 BuildRequires:  cunit-devel
 BuildRequires:	python%{python3_pkgversion}-setuptools
-BuildRequires:	%{python_module Cython >= 0.29.24 with %python-Cython < 3}
+BuildRequires:	(python%{python3_pkgversion}-Cython >= 0.29 with python%{python3_pkgversion}-Cython < 3)
 BuildRequires:	python%{python3_pkgversion}-PrettyTable
 BuildRequires:	python%{python3_pkgversion}-Sphinx
 BuildRequires:  rdma-core-devel
@@ -331,7 +331,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  CUnit-devel
 BuildRequires:	python%{python3_pkgversion}-devel
 BuildRequires:	python%{python3_pkgversion}-setuptools
-BuildRequires:	%{python_module Cython >= 0.29.24 with %python-Cython < 3}
+BuildRequires:	python%{python3_pkgversion}-Cython
 BuildRequires:	python%{python3_pkgversion}-prettytable
 BuildRequires:	python%{python3_pkgversion}-sphinx
 BuildRequires:	lz4-devel >= 1.7
@@ -1212,7 +1212,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.13-66-g54799ee0666
+%autosetup -p1 -n ceph-16.2.14-66-g7aa6ce9419f
 
 %build
 # Disable lto on systems that do not support symver attribute

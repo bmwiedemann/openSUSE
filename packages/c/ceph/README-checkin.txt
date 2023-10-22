@@ -11,8 +11,7 @@ FAQ
 
 Q. What is the pre_checkin.sh script?
 
-A. The "pre_checkin.sh" script generates ceph-test.spec from ceph.spec, and
-ceph-test.changes from ceph.changes.
+A. The "pre_checkin.sh" script generates ceph-test.spec from ceph.spec.
 
 Q. Should I run it before running checkin.sh?
 
