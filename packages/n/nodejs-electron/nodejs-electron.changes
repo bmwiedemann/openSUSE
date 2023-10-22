@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 21 08:56:56 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.0.2
+  * Functions called over the contextBridge are now called with the expected receiver (this).
+- Do not build some Chromium features not used by Electron.
+
+-------------------------------------------------------------------
 Thu Oct 19 16:43:42 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.0.1

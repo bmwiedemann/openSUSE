@@ -221,7 +221,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.0.1
+Version:        27.0.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -553,7 +553,6 @@ BuildRequires:  pkgconfig(icu-i18n) >= 73
 BuildRequires:  pkgconfig(icu-i18n) >= 71
 %endif
 BuildRequires:  pkgconfig(jsoncpp)
-BuildRequires:  pkgconfig(krb5)
 %if %{with ffmpeg_5}
 BuildRequires:  pkgconfig(libavcodec) >= 59
 BuildRequires:  pkgconfig(libavformat) >= 59
@@ -1146,6 +1145,7 @@ myconf_gn+=" enable_pdf_viewer=false"
 myconf_gn+=" enable_print_preview=false"
 myconf_gn+=" enable_printing=false"
 myconf_gn+=" enable_basic_printing=false"
+myconf_gn+=' use_cups=false'
 #we don't build PDF support, so disabling the below:
 #myconf_gn+=" use_system_lcms2=true"
 #myconf_gn+=" use_system_libopenjpeg2=true"
@@ -1184,9 +1184,10 @@ myconf_gn+=" blink_symbol_level=1"
 myconf_gn+=" v8_symbol_level=1"
 %endif
 
-myconf_gn+=" use_kerberos=true"
+
 
 # do not build some chrome features not used by electron
+# (some of these only go to buildflag_headers and are dead code rn, but disabling them preemptively as long as they're visible)
 myconf_gn+=" enable_vr=false"
 myconf_gn+=" enable_reading_list=false"
 myconf_gn+=" enable_reporting=false"
@@ -1218,6 +1219,9 @@ myconf_gn+=" enable_lens_desktop=false"
 myconf_gn+=' enable_bound_session_credentials=false'
 myconf_gn+=' enable_chrome_notifications=false'
 myconf_gn+=' enable_message_center=false'
+myconf_gn+=' enable_system_notifications=false'
+myconf_gn+=' enable_supervised_users=false'
+
 
 #FIXME: possibly enable this when skia gets built with rust code by default.
 #Need to patch in optflags and possibly FFI LTO hacks (see signal-desktop package for how it's done)
@@ -1231,6 +1235,8 @@ myconf_gn+=' chrome_root_store_supported=false'
 myconf_gn+=' chrome_root_store_optional=false'
 myconf_gn+=' chrome_root_store_policy_supported=false'
 myconf_gn+=' trial_comparison_cert_verifier_supported=false'
+myconf_gn+=' use_kerberos=false'
+myconf_gt+=' is_ct_supported=false'
 
 myconf_gn+=' disable_histogram_support=true'
 
@@ -1420,9 +1426,6 @@ popd
 
 
 
-# Install folders required for webapps
-mkdir -p "%{buildroot}%{_sysconfdir}/webapps"
-mkdir -p "%{buildroot}%{_datadir}/webapps"
 
 cp -lrvT out/Release/gen/node_headers/include/node %{buildroot}%{_includedir}/electron
 
