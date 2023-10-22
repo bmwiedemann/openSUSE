@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 22 10:17:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * Display current time in the top-right corner of the dashboard #7
+  * Add node name column to the header #8
+  * Introduce run and replay subcommands (breaking change) #9
+
+-------------------------------------------------------------------
 Thu Oct 19 07:46:43 UTC 2023 - Michael Vetter <jubalh@iodoru.org>
 
 - Update to 0.1.5:

@@ -17,7 +17,7 @@
 
 
 Name:           erldash
-Version:        0.1.5~0
+Version:        0.2.0~0
 Release:        0
 Summary:        A simple, terminal-based Erlang dashboard
 License:        (Apache-2.0 OR MIT) AND MIT AND Apache-2.0 WITH LLVM-exception AND MPL-2.0

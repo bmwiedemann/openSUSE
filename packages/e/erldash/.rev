@@ -49,4 +49,15 @@
   * Add --record and --replay options #6</comment>
     <requestid>1118838</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a5f2659b2270b5d6579479cf3274fe78</srcmd5>
+    <version>0.2.0~0</version>
+    <time>1698001348</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.0:
+  * Display current time in the top-right corner of the dashboard #7
+  * Add node name column to the header #8
+  * Introduce run and replay subcommands (breaking change) #9</comment>
+    <requestid>1119420</requestid>
+  </revision>
 </revisionlist>
