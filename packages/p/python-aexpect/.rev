@@ -54,4 +54,29 @@
 </comment>
     <requestid>1030032</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1783165aaa229d14c0c6aeb4042e0de</srcmd5>
+    <version>1.7.0</version>
+    <time>1698001303</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.0
+ * rss_client: fix syntax error
+ * client: Make sure aexpect_helper file descriptors are closed
+ * astring: Add bracketed paste console codes
+ * Simpler ns daemon and current linter fixes
+ * Drop unexpected and unwanted re.sub string postprocessing
+ * Remove six dependency
+ * Fix remote_door set_subcontrol_* handling of no matches
+ * Add session ops utility with some facilitator functions (v2)
+ * Fill setup.py license and metadata
+ * Allow to calculate hashes on parts of files
+ * Provide the session prefix when logging sent commands
+ * Implement a reusable subcommand output and status processing routine
+ * Add a generic ops module for windows platforms
+ * Add remote linux glob behavior to expand paths from patterns
+ * Avoid printing line when output_func not set
+- drop helper-version-in-cmdline.patch
+- drop 0001-Remove-six-dependency.patch (forwarded request 1119278 from mimi_vx)</comment>
+    <requestid>1119279</requestid>
+  </revision>
 </revisionlist>

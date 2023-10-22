@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 %global         pkgname aexpect
 Name:           python-%{pkgname}
-Version:        1.6.4
+Version:        1.7.0
 Release:        0
 Summary:        Python library to control interactive applications
 License:        GPL-2.0-only
 URL:            http://avocado-framework.readthedocs.org/
 Source:         https://github.com/avocado-framework/aexpect/archive/%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
-Patch0:         helper-version-in-cmdline.patch
-# PATCH-FIX-UPSTREAM 0001-Remove-six-dependency.patch gh#avocado-framework/aexpect#102
-Patch1:         0001-Remove-six-dependency.patch
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

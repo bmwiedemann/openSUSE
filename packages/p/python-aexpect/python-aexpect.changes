@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 20 20:30:01 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 1.7.0
+ * rss_client: fix syntax error
+ * client: Make sure aexpect_helper file descriptors are closed
+ * astring: Add bracketed paste console codes
+ * Simpler ns daemon and current linter fixes
+ * Drop unexpected and unwanted re.sub string postprocessing
+ * Remove six dependency
+ * Fix remote_door set_subcontrol_* handling of no matches
+ * Add session ops utility with some facilitator functions (v2)
+ * Fill setup.py license and metadata
+ * Allow to calculate hashes on parts of files
+ * Provide the session prefix when logging sent commands
+ * Implement a reusable subcommand output and status processing routine
+ * Add a generic ops module for windows platforms
+ * Add remote linux glob behavior to expand paths from patterns
+ * Avoid printing line when output_func not set
+- drop helper-version-in-cmdline.patch
+- drop 0001-Remove-six-dependency.patch
+
+-------------------------------------------------------------------
 Wed Oct 19 16:18:45 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add 0001-Remove-six-dependency.patch upstream patch to remove python-six
