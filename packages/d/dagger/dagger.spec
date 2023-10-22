@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dagger
-Version:        0.8.8
+Version:        0.9.0
 Release:        0
 Summary:        A portable devkit for CI/CD pipelines
 License:        GPL-3.0-only
@@ -36,8 +36,7 @@ Using Dagger, software teams can develop powerful CICD pipelines with minimal ef
 * Reduce CI lock-in. No more re-writing everything from scratch every 6 months.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 GOWORK=off go build \

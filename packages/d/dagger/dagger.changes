@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Oct 21 18:17:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.0:
+  * ci: fix engine image publishing bugs (#5942)
+  * chore: release notes for v0.9.0 (#5939)
+  * ci: add --no-cache to alpine apk add (#5938)
+  * Switch all workflows to Dagger Runners (#5936)
+  * cli: handle optional arguments in module functions (#5934)
+  * chore: backfill changie logs (#5935)
+  * add `dagger up` command (#5931)
+  * docs: Adds service code samples, updates cookbook (#5933)
+  * Improve cli for calling module functions (#5882)
+  * fix services v2 python snippets (#5929)
+  * docs: Adds redirect URL for services guide (#5922)
+  * engine: reduce connection retry noise (#5918)
+  * core: support multiple cache configs for upstream remote cache
+    (#5730)
+  * hack/dev: add dagger to $PATH, add with-dev (#5925)
+  * fix: don't output dagger generated types (unless overriding
+    them) (#5926)
+  * engine: unhide mod subcommands (#5923)
+  * docs: explain how to configure the dagger engine (#5828)
+  * Services v2: new API, c2h and h2c networking, start/stop
+    support, run via gateway (#5557)
+  * ci: use per-version python caches (#5919)
+  * ci: pin buildctl source image to multiplatform index (#5916)
+  * docs: Makes minor change to inline code refs (#5899)
+  * Fix trivy scan failures w/ otel upgrades (#5906)
+  * feat: fail when connecting to vanilla buildkit (#5892)
+  * docs: Adds Argo Workflows to Cloud guide (#5884)
+  * chore(deps): bump sass from 1.66.1 to 1.69.3 in /website
+    (#5898)
+  * docs(feat): mark deprecated args in graphql reference (#5895)
+  * fix(docs): remove duplicated graphql api section (#5897)
+  * cli: reveal errored vertices by default (#5896)
+  * core: document docker-image:// in operator manual (#5890)
+  * chore(deps): bump golang.org/x/oauth2 from 0.11.0 to 0.13.0
+    (#5858)
+  * docs: Update curl commands (#5888)
+  * delete the daggerverse (#5889)
+  * chore(deps): bump golang.org/x/crypto from 0.13.0 to 0.14.0
+    (#5859)
+  * fix: fix Dagger.Container.with_env_variable/4 crash (#5837)
+  * docs: explain rootless limitation and constraint (#5809)
+  * docs(guides): updates examples of glob patterns supported in
+    dagger (#5719)
+  * engine: ensure blob source layers are unlazied. (#5885)
+  * implement new conventions for IDable objects (#5881)
+  * Change Daggerverse url (#5883)
+  * chore: update buildkit to master@86e25b3ad8c2 (#5876)
+
+-------------------------------------------------------------------
 Thu Oct 12 05:28:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.8.8:
