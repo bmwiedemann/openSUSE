@@ -593,6 +593,11 @@ Requires:       partitionmanager
 # Add ksshaskpass5 (boo#1215407)
 Requires:       ksshaskpass5
 
+#KAccounts to be installed by default (boo#1216397)
+Requires:   kaccounts-integration
+Requires:   kaccounts-providers
+Requires:   kio-gdrive
+
 # Recommended by kde_plasma
 Requires:       bluedevil5
 Requires:       breeze5-wallpapers

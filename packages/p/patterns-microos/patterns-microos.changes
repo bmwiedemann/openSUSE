@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 20 05:07:21 UTC 2023 - Natasha Ament <stacheldrahtje@gmail.com>
+
+KAccounts to be installed by default for KDE Plasma option (boo#1216397)
+- Requires:   kaccounts-integration
+- Requires:   kaccounts-providers
+- Requires:   kio-gdrive
+
+-------------------------------------------------------------------
 Thu Oct 12 13:28:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also only require sdboot* on architectures where systemd-boot
