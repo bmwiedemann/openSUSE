@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-astunparse
 Version:        1.6.3
@@ -30,6 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/a/astunparse/astu
 Patch0:         astunparse-pr57-py39.patch
 # https://github.com/simonpercivall/astunparse/pull/59
 Patch1:         fix-formatted-value.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  %{python_module wheel >= 0.23.0}
@@ -56,14 +56,14 @@ Added to this is a pretty-printing dump utility function.
 %autosetup -p1 -n astunparse-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # fails to parse the 32bit stdlib
-%if "%_lib" == "lib64"
+%if "%{_lib}" == "lib64"
 %check
 %pyunittest discover -v
 %endif
