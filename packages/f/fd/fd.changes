@@ -1,3 +1,17 @@
+
+-------------------------------------------------------------------
+Sat Oct 21 09:28:22 UTC 2023 - mvetter@suse.com
+
+- Update to version 8.7.1:
+  * -1 properly conflicts with the exec family of options.
+  * --max-results overrides -1
+  * --quiet properly conflicts with the exec family of options. This
+    used to be the case, but broke during the switch to clap-derive
+  * --changed-within now accepts a space as well as a "T" as the
+    separator between date and time (due to update of chrono dependency)
+  * Many dependencies were updated
+  * Some documentation was updated and fixed
+
 -------------------------------------------------------------------
 Mon Feb 27 09:28:13 UTC 2023 - andrea.manzini@suse.com
 
