@@ -24,6 +24,11 @@
   <property name="annotation.dir" value="${annotation.id}-${annotation}" />
   <property name="annotation.jar" value="${annotation.id}-${annotation.ver}.jar" />
   
+  <property name="connector"      value="1.1.1" />
+  <property name="connector.id"   value="geronimo-j2ee-connector_1.5_spec" />
+  <property name="connector.dir"  value="${connector.id}-${connector}" />
+  <property name="connector.jar"  value="${connector.dir}.jar" />
+  
   <property name="jaxrpc"         value="1.1" />
   <property name="jaxrpc.id"      value="geronimo-jaxrpc_1.1_spec" />
   <property name="jaxrpc.dir"     value="${jaxrpc.id}-${jaxrpc}" />
@@ -69,7 +74,7 @@
   <target name="dist" depends="build">
   </target>
   
-  <target name="build" depends="activation102, activation110, annotation, jaxrpc, jms, jpa, jta10, jta11, qname, saaj, servlet24, servlet25">
+  <target name="build" depends="activation102, activation110, annotation, connector, jaxrpc, jms, jpa, jta10, jta11, qname, saaj, servlet24, servlet25">
   </target>
 
   <!--
@@ -139,31 +144,12 @@ artifactId=${gbuild.id}
       </antcall>
   </target>
   
-  <target name="javamail13" depends="activation102">
+  <target name="connector">
       <antcall target="gbuild">
-          <param name="gbuild.dir" value="${javamail13.dir}" />
-          <param name="gbuild.jar" value="${javamail13.jar}" />
-          <param name="gbuild.id"  value="${javamail13.id}" />
-          <param name="gbuild.ver" value="${javamail13}" />
-          <param name="gbuild.classpath" value="${activation102.dir}/${dist}/${activation102.jar}"/>
-      </antcall>
-  </target>
-  
-  <target name="javamail14" depends="activation102">
-      <antcall target="gbuild">
-          <param name="gbuild.dir" value="${javamail14.dir}" />
-          <param name="gbuild.jar" value="${javamail14.jar}" />
-          <param name="gbuild.classpath" value="${activation102.dir}/${dist}/${activation102.jar}"/>
-      </antcall>
-  </target>
-
-  <target name="jaxr" depends="activation102">
-      <antcall target="gbuild">
-          <param name="gbuild.dir" value="${jaxr.dir}" />
-          <param name="gbuild.jar" value="${jaxr.jar}" />
-          <param name="gbuild.id"  value="${jaxr.id}" />
-          <param name="gbuild.ver" value="${jaxr}" />
-          <param name="gbuild.classpath" value="${activation102.dir}/${dist}/${activation102.jar}"/>
+          <param name="gbuild.dir" value="${connector.dir}" />
+          <param name="gbuild.jar" value="${connector.jar}" />
+          <param name="gbuild.id"  value="${connector.id}" />
+          <param name="gbuild.ver" value="${connector}" />
       </antcall>
   </target>
   

@@ -31,6 +31,7 @@ Source0:        %{name}-%{version}-src.tar.xz
 # svn export http://svn.apache.org/repos/asf/geronimo/specs/tags/geronimo-activation_1.0.2_spec-1.2/
 # svn export http://svn.apache.org/repos/asf/geronimo/specs/tags/geronimo-activation_1.1_spec-1.0/
 # svn export http://svn.apache.org/repos/asf/geronimo/specs/tags/geronimo-annotation_1.0_spec-1.1.0/
+# svn export http://svn.apache.org/repos/asf/geronimo/specs/tags/geronimo-j2ee-connector_1.5_spec-1.1.1/
 # svn export http://svn.apache.org/repos/asf/geronimo/specs/tags/geronimo-jaxrpc_1.1_spec-1.1/
 # svn export http://svn.apache.org/repos/asf/geronimo/specs/tags/geronimo-jms_1.1_spec-1.1/
 # svn export http://svn.apache.org/repos/asf/geronimo/specs/tags/geronimo-jpa_3.0_spec-1.1.0/
@@ -52,9 +53,6 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  junit >= 3.8.1
-BuildConflicts: java-devel-openj9
-BuildConflicts: java-headless-openj9
 BuildArch:      noarch
 
 %description
@@ -110,6 +108,22 @@ Geronimo is Apache's ASF-licenced J2EE server project. These are the
 J2EE-Specifications Note: You should use the subpackages for the
 Specifications that you actually need.	The ones installed by the main
 package are deprecated and will disapear in future releases.
+
+%package -n geronimo-j2ee-connector-1_5-api
+Summary:        Geronimo J2EE server J2EE specifications
+Group:          Development/Languages/Java
+Requires:       jta_1_0_1B_api
+Requires(pre):  update-alternatives
+Provides:       j2ee_connector_1_5_api = %{version}
+Provides:       j2ee_connector_api = 1.5
+# drop the following asap
+Provides:       j2ee-connector = 1.5
+Obsoletes:      %{name}-poms
+Obsoletes:      j2ee-connector
+
+%description -n geronimo-j2ee-connector-1_5-api
+Geronimo is Apache's ASF-licenced J2EE server project. These are the
+J2EE-Specifications: J2EE Connector Architecture Specification
 
 %package -n geronimo-jaxrpc-1_1-api
 Summary:        Geronimo JAXRPC 1.1 Specification
@@ -280,6 +294,13 @@ install -m 0644 \
 %add_maven_depmap JPP-geronimo-annotation-1.0-api.pom geronimo-annotation-1.0-api.jar -a "javax.annotation:jsr250-api,org.eclipse.jetty.orbit:javax.annotation" -f annotation-1.0-api
 
 install -m 0644 \
+  geronimo-j2ee-connector_1.5_spec-1.1.1/target/geronimo-j2ee-connector_1.5_spec-1.1.1.jar \
+  %{buildroot}%{_javadir}/geronimo-j2ee-connector-1.5-api.jar
+%{mvn_install_pom} geronimo-j2ee-connector_1.5_spec-1.1.1/pom.xml \
+  %{buildroot}/%{_mavenpomdir}/JPP-geronimo-j2ee-connector-1.5-api.pom
+%add_maven_depmap JPP-geronimo-j2ee-connector-1.5-api.pom geronimo-j2ee-connector-1.5-api.jar -f j2ee-connector-1.5-api
+
+install -m 0644 \
   geronimo-jaxrpc_1.1_spec-1.1/target/geronimo-jaxrpc_1.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jaxrpc-1.1-api.jar
 %{mvn_install_pom} geronimo-jaxrpc_1.1_spec-1.1/pom.xml \
@@ -356,6 +377,11 @@ update-alternatives --remove jaf_1_1_api %{_javadir}/geronimo-jaf-1.1-api.jar
 update-alternatives --remove annotation_api %{_javadir}/geronimo-annotation-1.0-api.jar
 update-alternatives --remove annotation_1_0_api %{_javadir}/geronimo-annotation-1.0-api.jar
 
+%pre -n geronimo-j2ee-connector-1_5-api
+update-alternatives --remove j2ee-connector %{_javadir}/geronimo-j2ee-connector-1.5-api.jar
+update-alternatives --remove j2ee_connector_api %{_javadir}/geronimo-j2ee-connector-1.5-api.jar
+update-alternatives --remove j2ee_connector_1_5_api %{_javadir}/geronimo-j2ee-connector-1.5-api.jar
+
 %pre -n geronimo-jaxrpc-1_1-api
 update-alternatives --remove jaxrpc %{_javadir}/geronimo-jaxrpc-1.1-api.jar
 update-alternatives --remove jaxrpc_api %{_javadir}/geronimo-jaxrpc-1.1-api.jar
@@ -407,6 +433,9 @@ update-alternatives --remove servlet_2_5_api %{_javadir}/geronimo-servlet-2.5-ap
 
 %files -n geronimo-annotation-1_0-api -f .mfiles-annotation-1.0-api
 %license geronimo-annotation_1.0_spec-1.1.0/LICENSE.txt
+
+%files -n geronimo-j2ee-connector-1_5-api -f .mfiles-j2ee-connector-1.5-api
+%license geronimo-j2ee-connector_1.5_spec-1.1.1/LICENSE.txt
 
 %files -n geronimo-jaxrpc-1_1-api -f .mfiles-jaxrpc-1.1-api
 %license geronimo-jaxrpc_1.1_spec-1.1/LICENSE.txt
