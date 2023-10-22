@@ -35,4 +35,13 @@
 </comment>
     <requestid>1118745</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0c1d3088591be47c475fc1ff5304f9a4</srcmd5>
+    <version>0.11.0</version>
+    <time>1698001312</time>
+    <user>anag+factory</user>
+    <comment>- Drelease-safe is now Doptimize
+</comment>
+    <requestid>1119327</requestid>
+  </revision>
 </revisionlist>

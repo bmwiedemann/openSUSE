@@ -22,7 +22,7 @@
 
 # seperated build options
 %_zig_general_options --verbose
-%_zig_project_options -Dtarget=%{_zig_target} -Dcpu=%{_zig_cpu} -Drelease-safe
+%_zig_project_options -Dtarget=%{_zig_target} -Dcpu=%{_zig_cpu} -Doptimize=ReleaseSafe
 %_zig_advanced_options --cache-dir zig-cache
 
 %_zig_build_options %{?_zig_general_options} %{?_zig_project_options} %{?_zig_advanced_options}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 21 06:20:47 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Drelease-safe is now Doptimize
+
+-------------------------------------------------------------------
 Wed Oct 18 10:55:45 UTC 2023 - Soc Virnyl S. Estela <contact@uncomfyhalomacro.pl>
 
 - Change builder to ninja. change c and c++ compiler to clang
