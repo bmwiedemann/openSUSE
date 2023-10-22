@@ -27,9 +27,8 @@ URL:            https://inai.de/projects/consoleet/
 Source:         https://inai.de/files/consoleet/%name-%version.tar.zst
 Source2:        https://inai.de/files/consoleet/%name-%version.tar.asc
 Source3:        %name.keyring
-BuildRequires:  automake
-BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig >= 0.21
+BuildRequires:  c++_compiler
+BuildRequires:  pkg-config >= 0.21
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libHX) >= 3.22
 Conflicts:      hxtools < 20200310
@@ -55,7 +54,6 @@ pushd .. && tar --use=zstd -xf %{S:0} && popd
 %endif
 
 %build
-autoreconf -fi
 %configure
 %make_build
 

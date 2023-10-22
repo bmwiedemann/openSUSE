@@ -31,4 +31,12 @@
     <comment>- Update to release 1.4</comment>
     <requestid>1113278</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>63482bd0f94ed33e65890044deebd0fe</srcmd5>
+    <version>1.4</version>
+    <time>1698001311</time>
+    <user>anag+factory</user>
+    <comment>- Unbreak Leap 15.x build</comment>
+    <requestid>1119301</requestid>
+  </revision>
 </revisionlist>
