@@ -26,8 +26,12 @@ URL:            https://github.com/power-ras/ppc64-diag
 Source0:        https://github.com/power-ras/ppc64-diag/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
 Patch1:         ppc64-diag.varunused.patch
-#PATCH-FIX-UPSTREAM - 0001-rtas_errd-Handle-multiple-platform-dumps.patch - store multiple dumps
+#PATCH-FIX-UPSTREAM - rtas_errd-Handle-multiple-platform-dumps.patch - store multiple dumps
 Patch2:         rtas_errd-Handle-multiple-platform-dumps.patch
+#PATCH-FIX-UPSTREAM - Enclosure fault LED support
+Patch3:         0001-ppc64-diag-Move-trim_trail_space-function-to-common-.patch
+Patch4:         0002-ppc64-diag-lp_diag-Utilize-trim_trail_space-function.patch
+Patch5:         0003-ppc64-diag-lp_diag-Enable-light-path-diagnostics-for.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

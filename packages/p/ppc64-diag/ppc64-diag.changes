@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 20 16:43:03 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Light path diagnostics: Support Enclosure Fault LEDs on new enclosures (bsc#1216074 ltc#201656)
+  + 0001-ppc64-diag-Move-trim_trail_space-function-to-common-.patch
+  + 0002-ppc64-diag-lp_diag-Utilize-trim_trail_space-function.patch
+  + 0003-ppc64-diag-lp_diag-Enable-light-path-diagnostics-for.patch
+
+-------------------------------------------------------------------
 Wed Jul 19 10:12:11 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Do not delete old system dumps offloaded from HMC (bsc#1209274 ltc#198526).
-  + 0001-rtas_errd-Handle-multiple-platform-dumps.patch
+  + rtas_errd-Handle-multiple-platform-dumps.patch
 
 -------------------------------------------------------------------
 Mon Oct 17 14:35:43 UTC 2022 - Michal Suchanek <msuchanek@suse.com>

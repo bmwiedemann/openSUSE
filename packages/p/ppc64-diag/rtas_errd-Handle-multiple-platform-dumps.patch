@@ -4,6 +4,7 @@ Date: Mon, 10 Jul 2023 13:43:21 +0530
 Subject: [PATCH] rtas_errd: Handle multiple platform dumps
 
 References: bsc#1209274 ltc#198526
+Upstream: merged, expected in 2.7.10
 Git-commit: d05654e5ec6f37cf6caa491fc7d95b336f9603e2
 
 Currently, whenever a new dump arrives, old dump file of that specific dump
