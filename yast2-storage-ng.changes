@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 19 14:46:45 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- GuidedProposal: new internal setting to control how existing
+  swap partitions are reused. Relevant for Agama and related to
+  bsc#1175535 and bsc#1215639.
+- 5.0.3
+
+-------------------------------------------------------------------
+Wed Oct 11 08:41:15 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- New MdLevel value for linear RAIDs (bsc#1215022)
+- 5.0.2
+
+-------------------------------------------------------------------
 Fri Sep 22 08:27:34 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - AutoYaST: official support for LUKS2 (jsc#PED-3878, jsc#PED-5518)
