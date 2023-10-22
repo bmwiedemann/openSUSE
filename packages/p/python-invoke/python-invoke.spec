@@ -27,11 +27,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-invoke%{psuffix}
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Pythonic Task Execution
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://www.pyinvoke.org
 Source:         https://files.pythonhosted.org/packages/source/i/invoke/invoke-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE remove-icecream.patch mcepl@suse.com
