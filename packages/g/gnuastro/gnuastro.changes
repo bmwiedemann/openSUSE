@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 21 15:09:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.21 (library 19.0.0): 
+  * New program 'astscript-pointing-simulate
+  * More flexibility in using configuration files
+  * can now write TIFF files
+  * Multiple new options and operators
+  * MakeNoise ('astmknoise'): feature removed, use mknoise-*
+    operatiors of Arithmetic
+  * Many bug fixes and improvements
+
+-------------------------------------------------------------------
 Sun Aug  6 14:49:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.20 (library 18.0.0)
