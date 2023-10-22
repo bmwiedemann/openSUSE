@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cairocffi
-Version:        1.5.1
+Version:        1.6.1
 Release:        0
 Summary:        Python cairo bindings based on cffi
 License:        BSD-3-Clause
@@ -29,9 +29,10 @@ Source:         https://files.pythonhosted.org/packages/source/c/cairocffi/cairo
 Patch1:         skip-pikepdf.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cffi >= 1.1.0}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module xcffib >= 0.3.2}
+BuildRequires:  %{python_module xcffib >= 0.4.0}
 BuildRequires:  cairo
 Requires:       cairo
 Requires:       python-cffi >= 1.1.0
@@ -80,7 +81,7 @@ This package provides the optional gdk-pixbuf image loader module.
 
 %check
 # Switch off test_xcb_window (gh#Kozea/cairocffi#203)
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -m pytest -k "not test_xcb_window"
+%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -m pytest
 
 %files %{python_files}
 %license LICENSE
