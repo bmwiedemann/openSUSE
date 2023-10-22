@@ -2774,4 +2774,80 @@ Think &quot;osc service runall download_files&quot; are buggy!
     <comment></comment>
     <requestid>1112950</requestid>
   </revision>
+  <revision rev="306" vrev="1">
+    <srcmd5>f859d0a741d5cfa3159d2bb642667812</srcmd5>
+    <version>6.29.0</version>
+    <time>1698001294</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.29.0
+  * New Features
+    - E-book viewer: Add a command line flag --new-instance to
+      force the viewer to open a new window even if the option to
+      always use a single viewer window is set
+    - E-book viewer: Image popup: Add a checkbox to remember the
+      last used zoom level
+  * Bug Fixes
+    - Annotations browser: Fix exporting highlights in markdown not
+      including all chapter titles for books with only a single
+      highlight per chapter or a multi level ToC
+    - E-book viewer: Fix a regression that could cause the viewer
+      to enter an infinite loop when displaying the result of a
+      search that has only one match that is not found
+    - E-book viewer: Fix the occasional search result being marked
+      as not found even though it is found
+    - TXTZ Output plugin: Only keep images if the text format is
+      one that can reference images
+    - TXTZ Output: Fix cover not being properly identified in the
+      generated TXTZ metadata
+    - FB2 Input: Fix the &quot;Annotations&quot; section not showing up in
+      the Table of Contents
+    - Linux: Content server: Do not call listen on pre-activated
+      sockets
+    - Fix sort order of similarly-named hierarchical categories
+    - Fix a regression that broke reading of covers from HTMLZ and
+      TXTZ files
+- Update to 6.28.1
+  - Fix a regression that cause errors when merging some book records.
+- Update to 6.28.0
+  * New Features
+    - Edit book: Show full path to book being edited in the status bar
+    - Edit book: When adding dictionaries allow directly a LibreOffice
+      adding the dictionary just by choosing the language
+    - Edit book: When saving a copy add some convenience actions to
+      edit the copy immediately either in the current editor window
+      or a new window
+    - E-book viewer: Highlights panel: Allow right clicking to
+      export only selected highlights
+  * Bug Fixes
+    - Edit book: Fix a regression in the previous release that
+      caused Text search to sometimes not select matches correctly
+    - Edit book: When copying files do it in order so that the
+      files are pasted in the same order when pasting into another
+      editor instance
+    - Edit book: Fix smart tag insert not working correctly if the
+      selected text starts with the closing angle bracket of a tag
+    - Save to disk: Do not limit the total path length to 240
+      characters on non-Windows platforms
+    - Fix incorrect cover for AZW3 version of calibre User Manual
+    - Content server: Change formatting of book details to match
+      new de-emphasized titles based formatting in the main calibre
+      program
+    - PDF metadata: Fix a regression that broke updating metadata
+      in PDF files without an /Info dictionary
+    - NOOK driver: For the Glowlight 2023 write the calibre metadata
+      files into the NOOK sub-folder as the firmware does not allow
+      writing files into the root folder
+    - NOOK driver: Fix Glowlight 2023 not being detected on Linux
+      and macOS
+    - E-book viewer: Make CFI calculation more robust especially on
+      pages with very little content
+    - E-book viewer: Workaround bug in Chromium where 
+      getBoundingClientRect() fails sometimes leading to incorrect 
+      calculation of anchor positions
+    - Fix errors caused by .DS_Store files inserted into the
+      .caltrash directory on macOS if the user happens to open
+      .caltrash in Finder
+</comment>
+    <requestid>1119208</requestid>
+  </revision>
 </revisionlist>

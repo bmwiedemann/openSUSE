@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        6.27.0
+Version:        6.29.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -43,6 +43,13 @@ Patch2:         %{name}-setup.install.py.diff
 # PATCH-FIX-OPENSUSE: disabling Autoupdate Searcher
 Patch3:         %{name}-no-update.diff
 ExclusiveArch:  aarch64 x86_64 riscv64
+%if 0%{?suse_version} <= 1550
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
@@ -127,7 +134,7 @@ BuildRequires:  python311-FontTools >= 4.39.3
 BuildRequires:  python311-Markdown >= 3.3.6
 BuildRequires:  python311-Pillow >= 8.4.0
 BuildRequires:  python311-Pygments >= 2.10.0
-BuildRequires:  python311-apsw >= 3.36.0-r1
+BuildRequires:  python311-apsw >= 3.43.0.0
 BuildRequires:  python311-beautifulsoup4 >= 4.10.0
 BuildRequires:  python311-cchardet >= 2.1.7
 BuildRequires:  python311-chardet >= 4.0.0
@@ -143,22 +150,26 @@ BuildRequires:  python311-html5lib >= 1.1
 BuildRequires:  python311-ifaddr >= 0.1.7
 BuildRequires:  python311-jeepney >= 0.7.1
 BuildRequires:  python311-lxml >= 4.9.1
-BuildRequires:  python311-mechanize >= 0.4.7
+BuildRequires:  python311-mechanize >= 0.4.8
 BuildRequires:  python311-msgpack >= 1.0.3
+BuildRequires:  python311-multivolumefile >= 0.2.3
 BuildRequires:  python311-netifaces >= 0.11.0
 BuildRequires:  python311-odfpy
-BuildRequires:  python311-packaging >= 20.4
+BuildRequires:  python311-packaging >= 21.3
+BuildRequires:  python311-ply >= 3.11
 BuildRequires:  python311-psutil >= 5.8.0
 BuildRequires:  python311-pychm >= 0.8.6
 BuildRequires:  python311-pycryptodome >= 3.11.0
 BuildRequires:  python311-pyparsing >= 3.0.6
+BuildRequires:  python311-pyppmd >= 0.17.3
 BuildRequires:  python311-pyqt-builder >= 1.14.0
 BuildRequires:  python311-pyzstd >= 0.15.6
 BuildRequires:  python311-qt6-devel >= 6.4.0
 BuildRequires:  python311-regex >= 2021.11.10
-BuildRequires:  python311-setuptools >= 57.4.0
+# Upstream use: BuildRequires:  python311-setuptools >= 68.2.2
+BuildRequires:  python311-setuptools >= 67.8.0
 BuildRequires:  python311-sgmllib3k >= 1.0.0
-BuildRequires:  python311-sip-devel >= 6.6.2
+BuildRequires:  python311-sip-devel >= 6.7.5
 BuildRequires:  python311-texttable >= 1.6.4
 BuildRequires:  python311-toml >= 0.10.2
 BuildRequires:  pkgconfig(libjpeg) >= 2.1.2
@@ -193,7 +204,7 @@ Requires:       python311-Brotli >= 1.0.9
 Requires:       python311-Markdown >= 3.3.6
 Requires:       python311-Pillow >= 8.4.0
 Requires:       python311-Pygments >= 2.10.0
-Requires:       python311-apsw >= 3.36.0-r1
+Requires:       python311-apsw >= 3.43.0.0
 Requires:       python311-beautifulsoup4 >= 4.10.0
 Requires:       python311-cchardet >= 2.1.7
 Requires:       python311-chardet >= 4.0.0
@@ -211,13 +222,17 @@ Requires:       python311-html5lib >= 1.1
 Requires:       python311-ifaddr >= 0.1.7
 Requires:       python311-jeepney >= 0.7.1
 Requires:       python311-lxml >= 4.9.1
-Requires:       python311-mechanize >= 0.4.7
+Requires:       python311-mechanize >= 0.4.8
 Requires:       python311-msgpack >= 1.0.3
+Requires:       python311-multivolumefile >= 0.2.3
 Requires:       python311-netifaces >= 0.11.0
 Requires:       python311-odfpy
+Requires:       python311-ply >= 3.11
 Requires:       python311-psutil >= 5.8.0
 Requires:       python311-pychm >= 0.8.6
 Requires:       python311-pycryptodome >= 3.11.0
+Requires:       python311-pyparsing >= 3.0.6
+Requires:       python311-pyppmd >= 0.17.3
 Requires:       python311-pyzstd >= 0.15.6
 Requires:       python311-qt6 >= 6.4.0
 Requires:       python311-qtwebengine-qt6 >= 6.4.0
@@ -227,7 +242,7 @@ Requires:       python311-six >= 1.16.0
 Requires:       python311-soupsieve >= 2.3.1
 Requires:       python311-texttable >= 1.6.4
 #Requires:       python311-unrardll >= 0.1.5
-Requires:       python311-py7zr >= 0.11.1
+Requires:       python311-py7zr >= 0.16.3
 %if 0%{?suse_version} > 1500
 Requires:       python3-speechd >= 0.11.1
 %else
@@ -287,6 +302,10 @@ rm -f src/calibre/utils/lzx/mspack.h
 sed -i 's| calibre/utils/lzx/mspack.h||' setup/extensions.json
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-12
+export CXX=g++-12
+%endif
 export \
 LANG="en_US.UTF8" \
 CFLAGS="%{optflags}" \
