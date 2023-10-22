@@ -18,8 +18,9 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
-%global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
+%global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x riscv64
 %global debug 0
+%global make make
 %global is_release 1
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -32,9 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       8
-%global patchver        1
-%global buildver        1
+%global updatever       9
+%global buildver        9
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -168,8 +168,8 @@ Patch13:        implicit-pointer-decl.patch
 # Use SOURCE_DATE_EPOCH in timestamp when writing properties
 Patch14:        reproducible-properties.patch
 Patch15:        system-pcsclite.patch
-Patch16:        fips.patch
-Patch17:        nss-security-provider.patch
+Patch16:        nss-security-provider.patch
+Patch17:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -287,9 +287,9 @@ Summary:        OpenJDK %{featurever} Runtime Environment
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
 Requires:       mozilla-nss
-Requires(post): java-ca-certificates
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
+Requires(posttrans):java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
 Recommends:     tzdata-java8
@@ -464,12 +464,17 @@ sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE12} > nss.cfg
 
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.fips.cfg
-sed -i -e "s:@NSS_SECMOD@:sql\:/etc/pki/nssdb:g" nss.fips.cfg
+sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
 
 %build
 
 %ifarch s390x sparc64 alpha ppc64 ppc64le %{aarch64}
 export ARCH_DATA_MODEL=64
+%endif
+
+%ifarch %{ix86}
+EXTRA_CFLAGS="${EXTRA_CFLAGS} -mstackrealign -mincoming-stack-boundary=2 -mpreferred-stack-boundary=4"
+EXTRA_CPP_FLAGS="${EXTRA_CPP_FLAGS} -mstackrealign -mincoming-stack-boundary=2 -mpreferred-stack-boundary=4"
 %endif
 
 mkdir -p %{buildoutputdir}
@@ -510,9 +515,13 @@ bash ../configure \
 %endif
     --with-stdc++lib=dynamic \
     --disable-javac-server \
+%ifarch %{ix86}
+    --with-extra-cxxflags="${EXTRA_CPP_FLAGS}" \
+    --with-extra-cflags="${EXTRA_CFLAGS}" \
+%endif
     --disable-warnings-as-errors
 
-make --no-print-directory \
+%{make} --no-print-directory \
     LOG=trace \
     %{imagestarget}
 
@@ -722,7 +731,7 @@ if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
 fi
 
 # remove the default empty cacert file, if it's installed
-if [ 0`stat -c "%{s}" %{cacerts} 2>/dev/null` = "032" ] ; then
+if [ 0`stat -c "%%s" %{cacerts} 2>/dev/null` = "032" ] ; then
     rm -f %{cacerts}
 fi
 
