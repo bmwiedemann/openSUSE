@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20231020" schemaversion="4.1">
+<image name="OBS__MicroOS___20231022" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231020</productvar>
+      <productvar name="VERSION">20231022</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231020,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231022,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231020/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231022/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -787,6 +787,8 @@
       <repopackage name="kio-extras5"/>
       <repopackage name="kio-extras5-lang"/>
       <repopackage name="kio-fuse"/>
+      <repopackage name="kio-gdrive"/>
+      <repopackage name="kio-gdrive-lang"/>
       <repopackage name="kio-lang"/>
       <repopackage name="kirigami2"/>
       <repopackage name="kirigami2-lang"/>
@@ -1386,8 +1388,12 @@
       <repopackage name="libKF5WindowSystem5-lang"/>
       <repopackage name="libKF5XmlGui5"/>
       <repopackage name="libKF5XmlGui5-lang"/>
+      <repopackage name="libkgapi"/>
+      <repopackage name="libkgapi-lang"/>
       <repopackage name="libkioarchive5"/>
       <repopackage name="libkmod2"/>
+      <repopackage name="libKPim5GAPICore5"/>
+      <repopackage name="libKPim5GAPIDrive5"/>
       <repopackage name="libKPipeWire5"/>
       <repopackage name="libKPipeWire5-lang"/>
       <repopackage name="libKPipeWireDmaBuf5"/>
@@ -2583,6 +2589,7 @@
       <repopackage name="samba-libs"/>
       <repopackage name="samba-libs-python3"/>
       <repopackage name="samba-python3"/>
+      <repopackage name="sasl2-kdexoauth2"/>
       <repopackage name="sazanami-fonts"/>
       <repopackage name="sbc"/>
       <repopackage name="scout"/>
