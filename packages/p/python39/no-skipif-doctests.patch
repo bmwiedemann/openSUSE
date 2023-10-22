@@ -1,5 +1,10 @@
 only in patch2:
 unchanged:
+---
+ Doc/conf.py            |    2 -
+ Doc/library/turtle.rst |   82 -------------------------------------------------
+ 2 files changed, 1 insertion(+), 83 deletions(-)
+
 --- a/Doc/conf.py
 +++ b/Doc/conf.py
 @@ -46,7 +46,7 @@ today_fmt = '%B %d, %Y'
@@ -314,7 +319,7 @@ unchanged:
  
        >>> turtle.color("black", "red")
        >>> turtle.begin_fill()
-@@ -1075,7 +1036,6 @@ More drawing control
+@@ -1074,7 +1035,6 @@ More drawing control
     variables to the default values.
  
     .. doctest::
@@ -322,7 +327,7 @@ unchanged:
  
        >>> turtle.goto(0,-22)
        >>> turtle.left(100)
-@@ -1127,7 +1087,6 @@ Visibility
+@@ -1125,7 +1085,6 @@ Visibility
     drawing observably.
  
     .. doctest::
@@ -330,7 +335,7 @@ unchanged:
  
        >>> turtle.hideturtle()
  
-@@ -1138,7 +1097,6 @@ Visibility
+@@ -1136,7 +1095,6 @@ Visibility
     Make the turtle visible.
  
     .. doctest::
@@ -338,7 +343,7 @@ unchanged:
  
        >>> turtle.showturtle()
  
-@@ -1169,7 +1127,6 @@ Appearance
+@@ -1167,7 +1125,6 @@ Appearance
     deal with shapes see Screen method :func:`register_shape`.
  
     .. doctest::
@@ -346,7 +351,7 @@ unchanged:
  
        >>> turtle.shape()
        'classic'
-@@ -1195,7 +1152,6 @@ Appearance
+@@ -1193,7 +1150,6 @@ Appearance
     ``resizemode("user")`` is called by :func:`shapesize` when used with arguments.
  
     .. doctest::
@@ -354,7 +359,7 @@ unchanged:
  
        >>> turtle.resizemode()
        'noresize'
-@@ -1219,7 +1175,6 @@ Appearance
+@@ -1217,7 +1173,6 @@ Appearance
     of the shapes's outline.
  
     .. doctest::
@@ -362,7 +367,7 @@ unchanged:
  
        >>> turtle.shapesize()
        (1.0, 1.0, 1)
-@@ -1244,7 +1199,6 @@ Appearance
+@@ -1242,7 +1197,6 @@ Appearance
     heading of the turtle are sheared.
  
     .. doctest::
@@ -370,7 +375,7 @@ unchanged:
  
         >>> turtle.shape("circle")
         >>> turtle.shapesize(5,2)
-@@ -1261,7 +1215,6 @@ Appearance
+@@ -1259,7 +1213,6 @@ Appearance
     change the turtle's heading (direction of movement).
  
     .. doctest::
@@ -378,7 +383,7 @@ unchanged:
  
        >>> turtle.reset()
        >>> turtle.shape("circle")
-@@ -1281,7 +1234,6 @@ Appearance
+@@ -1279,7 +1232,6 @@ Appearance
     (direction of movement).
  
     .. doctest::
@@ -386,7 +391,7 @@ unchanged:
  
        >>> turtle.reset()
        >>> turtle.shape("circle")
-@@ -1307,7 +1259,6 @@ Appearance
+@@ -1305,7 +1257,6 @@ Appearance
     turtle (its direction of movement).
  
     .. doctest::
@@ -394,7 +399,7 @@ unchanged:
  
        >>> turtle.reset()
        >>> turtle.shape("circle")
-@@ -1336,7 +1287,6 @@ Appearance
+@@ -1334,7 +1285,6 @@ Appearance
     given matrix.
  
     .. doctest::
@@ -402,7 +407,7 @@ unchanged:
  
        >>> turtle = Turtle()
        >>> turtle.shape("square")
-@@ -1352,7 +1302,6 @@ Appearance
+@@ -1350,7 +1300,6 @@ Appearance
     can be used to define a new shape or components of a compound shape.
  
     .. doctest::
@@ -410,7 +415,7 @@ unchanged:
  
        >>> turtle.shape("square")
        >>> turtle.shapetransform(4, -1, 0, 2)
-@@ -1377,7 +1326,6 @@ Using events
+@@ -1375,7 +1324,6 @@ Using events
     procedural way:
  
     .. doctest::
@@ -418,7 +423,7 @@ unchanged:
  
        >>> def turn(x, y):
        ...     left(180)
-@@ -1398,7 +1346,6 @@ Using events
+@@ -1396,7 +1344,6 @@ Using events
     ``None``, existing bindings are removed.
  
     .. doctest::
@@ -426,7 +431,7 @@ unchanged:
  
        >>> class MyTurtle(Turtle):
        ...     def glow(self,x,y):
-@@ -1426,7 +1373,6 @@ Using events
+@@ -1424,7 +1371,6 @@ Using events
     mouse-click event on that turtle.
  
     .. doctest::
@@ -434,7 +439,7 @@ unchanged:
  
        >>> turtle.ondrag(turtle.goto)
  
-@@ -1454,7 +1400,6 @@ Special Turtle methods
+@@ -1452,7 +1398,6 @@ Special Turtle methods
     Return the last recorded polygon.
  
     .. doctest::
@@ -442,7 +447,7 @@ unchanged:
  
        >>> turtle.home()
        >>> turtle.begin_poly()
-@@ -1474,7 +1419,6 @@ Special Turtle methods
+@@ -1472,7 +1417,6 @@ Special Turtle methods
     turtle properties.
  
     .. doctest::
@@ -450,7 +455,7 @@ unchanged:
  
        >>> mick = Turtle()
        >>> joe = mick.clone()
-@@ -1487,7 +1431,6 @@ Special Turtle methods
+@@ -1485,7 +1429,6 @@ Special Turtle methods
     return the "anonymous turtle":
  
     .. doctest::
@@ -458,7 +463,7 @@ unchanged:
  
        >>> pet = getturtle()
        >>> pet.fd(50)
-@@ -1501,7 +1444,6 @@ Special Turtle methods
+@@ -1499,7 +1442,6 @@ Special Turtle methods
     TurtleScreen methods can then be called for that object.
  
     .. doctest::
@@ -466,7 +471,7 @@ unchanged:
  
        >>> ts = turtle.getscreen()
        >>> ts
-@@ -1519,7 +1461,6 @@ Special Turtle methods
+@@ -1517,7 +1459,6 @@ Special Turtle methods
     ``None``, the undobuffer is disabled.
  
     .. doctest::
@@ -474,7 +479,7 @@ unchanged:
  
        >>> turtle.setundobuffer(42)
  
-@@ -1529,7 +1470,6 @@ Special Turtle methods
+@@ -1527,7 +1468,6 @@ Special Turtle methods
     Return number of entries in the undobuffer.
  
     .. doctest::
@@ -482,7 +487,7 @@ unchanged:
  
        >>> while undobufferentries():
        ...     undo()
-@@ -1552,7 +1492,6 @@ below:
+@@ -1550,7 +1490,6 @@ below:
     For example:
  
     .. doctest::
@@ -490,7 +495,7 @@ unchanged:
  
        >>> s = Shape("compound")
        >>> poly1 = ((0,0),(10,-5),(0,10),(-10,-5))
-@@ -1563,7 +1502,6 @@ below:
+@@ -1561,7 +1500,6 @@ below:
  3. Now add the Shape to the Screen's shapelist and use it:
  
     .. doctest::
@@ -498,7 +503,7 @@ unchanged:
  
        >>> register_shape("myshape", s)
        >>> shape("myshape")
-@@ -1583,7 +1521,6 @@ Most of the examples in this section ref
+@@ -1581,7 +1519,6 @@ Most of the examples in this section ref
  ``screen``.
  
  .. doctest::
@@ -506,7 +511,7 @@ unchanged:
     :hide:
  
     >>> screen = Screen()
-@@ -1600,7 +1537,6 @@ Window control
+@@ -1598,7 +1535,6 @@ Window control
     Set or return background color of the TurtleScreen.
  
     .. doctest::
@@ -514,7 +519,7 @@ unchanged:
  
        >>> screen.bgcolor("orange")
        >>> screen.bgcolor()
-@@ -1686,7 +1622,6 @@ Window control
+@@ -1690,7 +1626,6 @@ Window control
     distorted.
  
     .. doctest::
@@ -522,7 +527,7 @@ unchanged:
  
        >>> screen.reset()
        >>> screen.setworldcoordinates(-50,-7.5,50,7.5)
-@@ -1697,7 +1632,6 @@ Window control
+@@ -1701,7 +1636,6 @@ Window control
        ...     left(45); fd(2)   # a regular octagon
  
     .. doctest::
@@ -530,7 +535,7 @@ unchanged:
        :hide:
  
        >>> screen.reset()
-@@ -1719,7 +1653,6 @@ Animation control
+@@ -1723,7 +1657,6 @@ Animation control
     Optional argument:
  
     .. doctest::
@@ -538,7 +543,7 @@ unchanged:
  
        >>> screen.delay()
        10
-@@ -1741,7 +1674,6 @@ Animation control
+@@ -1745,7 +1678,6 @@ Animation control
     :func:`delay`).
  
     .. doctest::
@@ -546,7 +551,7 @@ unchanged:
  
        >>> screen.tracer(8, 25)
        >>> dist = 2
-@@ -1778,7 +1710,6 @@ Using screen events
+@@ -1782,7 +1714,6 @@ Using screen events
     must have the focus. (See method :func:`listen`.)
  
     .. doctest::
@@ -554,7 +559,7 @@ unchanged:
  
        >>> def f():
        ...     fd(50)
-@@ -1799,7 +1730,6 @@ Using screen events
+@@ -1803,7 +1734,6 @@ Using screen events
     must have focus. (See method :func:`listen`.)
  
     .. doctest::
@@ -562,7 +567,7 @@ unchanged:
  
        >>> def f():
        ...     fd(50)
-@@ -1824,7 +1754,6 @@ Using screen events
+@@ -1828,7 +1758,6 @@ Using screen events
     named ``turtle``:
  
     .. doctest::
@@ -570,7 +575,7 @@ unchanged:
  
        >>> screen.onclick(turtle.goto) # Subsequently clicking into the TurtleScreen will
        >>>                             # make the turtle move to the clicked point.
-@@ -1844,7 +1773,6 @@ Using screen events
+@@ -1848,7 +1777,6 @@ Using screen events
     Install a timer that calls *fun* after *t* milliseconds.
  
     .. doctest::
@@ -578,7 +583,7 @@ unchanged:
  
        >>> running = True
        >>> def f():
-@@ -1926,7 +1854,6 @@ Settings and special methods
+@@ -1930,7 +1858,6 @@ Settings and special methods
     ============ ========================= ===================
  
     .. doctest::
@@ -586,7 +591,7 @@ unchanged:
  
        >>> mode("logo")   # resets turtle heading to north
        >>> mode()
-@@ -1941,7 +1868,6 @@ Settings and special methods
+@@ -1945,7 +1872,6 @@ Settings and special methods
     values of color triples have to be in the range 0..\ *cmode*.
  
     .. doctest::
@@ -594,7 +599,7 @@ unchanged:
  
        >>> screen.colormode(1)
        >>> turtle.pencolor(240, 160, 80)
-@@ -1962,7 +1888,6 @@ Settings and special methods
+@@ -1966,7 +1892,6 @@ Settings and special methods
     do with a Tkinter Canvas.
  
     .. doctest::
@@ -602,7 +607,7 @@ unchanged:
  
        >>> cv = screen.getcanvas()
        >>> cv
-@@ -1974,7 +1899,6 @@ Settings and special methods
+@@ -1978,7 +1903,6 @@ Settings and special methods
     Return a list of names of all currently available turtle shapes.
  
     .. doctest::
@@ -610,7 +615,7 @@ unchanged:
  
        >>> screen.getshapes()
        ['arrow', 'blank', 'circle', ..., 'turtle']
-@@ -1998,7 +1922,6 @@ Settings and special methods
+@@ -2002,7 +1926,6 @@ Settings and special methods
         coordinates: Install the corresponding polygon shape.
  
         .. doctest::
@@ -618,7 +623,7 @@ unchanged:
  
            >>> screen.register_shape("triangle", ((5,-3), (0,5), (-5,-3)))
  
-@@ -2014,7 +1937,6 @@ Settings and special methods
+@@ -2018,7 +1941,6 @@ Settings and special methods
     Return the list of turtles on the screen.
  
     .. doctest::
@@ -626,7 +631,7 @@ unchanged:
  
        >>> for turtle in screen.turtles():
        ...     turtle.color("red")
-@@ -2076,7 +1998,6 @@ Methods specific to Screen, not inherite
+@@ -2080,7 +2002,6 @@ Methods specific to Screen, not inherite
                    center window vertically
  
     .. doctest::
@@ -634,7 +639,7 @@ unchanged:
  
        >>> screen.setup (width=200, height=200, startx=0, starty=0)
        >>>              # sets window to 200x200 pixels, in upper left of screen
-@@ -2092,7 +2013,6 @@ Methods specific to Screen, not inherite
+@@ -2096,7 +2017,6 @@ Methods specific to Screen, not inherite
     Set title of turtle window to *titlestring*.
  
     .. doctest::
@@ -642,7 +647,7 @@ unchanged:
  
        >>> screen.title("Welcome to the turtle zoo!")
  
-@@ -2163,7 +2083,6 @@ Public classes
+@@ -2167,7 +2087,6 @@ Public classes
        Example:
  
        .. doctest::
@@ -650,7 +655,7 @@ unchanged:
  
           >>> poly = ((0,0),(10,-5),(0,10),(-10,-5))
           >>> s = Shape("compound")
-@@ -2510,7 +2429,6 @@ Changes since Python 3.0
+@@ -2514,7 +2433,6 @@ Changes since Python 3.0
  
  
  .. doctest::

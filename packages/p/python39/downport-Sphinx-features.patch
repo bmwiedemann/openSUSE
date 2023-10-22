@@ -40,7 +40,7 @@
  
     Permission bits, as for :func:`os.chmod`.
  
-@@ -727,14 +722,12 @@ A ``TarInfo`` object has the following p
+@@ -727,7 +722,6 @@ A ``TarInfo`` object has the following p
  
  
  .. attribute:: TarInfo.linkname
@@ -48,6 +48,7 @@
  
     Name of the target file name, which is only present in :class:`TarInfo` objects
     of type :const:`LNKTYPE` and :const:`SYMTYPE`.
+@@ -739,7 +733,6 @@ A ``TarInfo`` object has the following p
  
  
  .. attribute:: TarInfo.uid
@@ -55,7 +56,7 @@
  
     User ID of the user who originally stored this member.
  
-@@ -745,7 +738,6 @@ A ``TarInfo`` object has the following p
+@@ -750,7 +743,6 @@ A ``TarInfo`` object has the following p
        attribute.
  
  .. attribute:: TarInfo.gid
@@ -63,7 +64,7 @@
  
     Group ID of the user who originally stored this member.
  
-@@ -756,7 +748,6 @@ A ``TarInfo`` object has the following p
+@@ -761,7 +753,6 @@ A ``TarInfo`` object has the following p
        attribute.
  
  .. attribute:: TarInfo.uname
@@ -71,7 +72,7 @@
  
     User name.
  
-@@ -767,7 +758,6 @@ A ``TarInfo`` object has the following p
+@@ -772,7 +763,6 @@ A ``TarInfo`` object has the following p
        attribute.
  
  .. attribute:: TarInfo.gname
@@ -79,7 +80,7 @@
  
     Group name.
  
-@@ -778,7 +768,6 @@ A ``TarInfo`` object has the following p
+@@ -783,7 +773,6 @@ A ``TarInfo`` object has the following p
        attribute.
  
  .. attribute:: TarInfo.pax_headers
