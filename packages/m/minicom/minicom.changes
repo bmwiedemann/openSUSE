@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 21 07:02:34 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Update to 2.9
+ * Change Hardware Flow Control Default to No.
+ * Timestamping mode is now saved and restored.
+ * Split "Screen and Keyboard" menu into two menus.
+ * Update to gettext-0.21.
+ * Change return values of --help and --version to success.
+ * Support higher baud rates on MacOS
+ * Save character send delay to config file
+ * Save newline send delay to config file
+ * Update translations: Romanian, German, French, Norwegian/Bookmal, Polish,
+                        Serbian, Swedish
+ * New translation: Georgian, Korean
+ * Remove minicom-2.5-serial_device_path_length.patch fixed upstream
+ * Rebased openSUSE-defaults.patch Flow Control Changed upstream
+ * Rebased minicom-2.8-replace-sigrelse.patch
+ * Rebased 03norzsz.diff
+-------------------------------------------------------------------
 Mon Jul 10 10:36:43 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - drop lockdev support (boo#1212801)

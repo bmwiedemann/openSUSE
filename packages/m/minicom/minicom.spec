@@ -17,7 +17,7 @@
 
 
 Name:           minicom
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        A Terminal Program
 License:        GPL-2.0-or-later
@@ -29,12 +29,10 @@ Patch0:         openSUSE-defaults.patch
 # PATCH-FIX-OPENSUSE openSUSE-no-root-setup.patch
 Patch1:         openSUSE-no-root-setup.patch
 Patch2:         03norzsz.diff
-# PATCH-FIX-UPSTREAM minicom-2.5-serial_device_path_length.patch -- increase permitted length of serial device (boo#707860)
-Patch3:         minicom-2.5-serial_device_path_length.patch
 # PATCH-FIX-UPSTREAM minicom-2.8-replace-sigrelse.patch -- Replace deprecated sigrelse https://salsa.debian.org/minicom-team/minicom/-/commit/c43a18c25b09f6968219f3ecbaec7215e804838d
-Patch4:         minicom-2.8-replace-sigrelse.patch
+Patch3:         minicom-2.8-replace-sigrelse.patch
 # PATCH-FIX-UPSTREAM fix-undefined-reference.patch -- Fix undefined reference to external COLS and LINES
-Patch5:         minicom-2.8-fix-undefined-reference.patch
+Patch4:         minicom-2.8-fix-undefined-reference.patch
 BuildRequires:  ckermit
 BuildRequires:  gettext-devel
 BuildRequires:  ncurses-devel
