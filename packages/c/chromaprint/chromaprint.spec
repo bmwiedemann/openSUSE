@@ -27,7 +27,6 @@ URL:            https://acoustid.org/chromaprint
 Source0:        https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
-BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtag-devel
 BuildRequires:  pkgconfig
@@ -54,7 +53,6 @@ audio source.
 %package -n libchromaprint-devel
 Summary:        Audio Fingerprinting Library
 License:        LGPL-2.1-or-later
-Requires:       fftw3-devel
 Requires:       libchromaprint%{soname} = %{version}
 Requires:       libtag-devel
 
@@ -83,7 +81,7 @@ fingerprinting.
 %cmake \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
-    -DUSE_AVFFT=ON \
+    -DUSE_AVFFT=ON -DFFT_LIB=avfft \
     -DBUILD_TESTS=OFF -DBUILD_TOOLS=ON
 
 %make_build
@@ -91,8 +89,7 @@ fingerprinting.
 %install
 %cmake_install
 
-%post   -n libchromaprint%{soname} -p /sbin/ldconfig
-%postun -n libchromaprint%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libchromaprint%{soname}
 
 %files -n libchromaprint%{soname}
 %license LICENSE.md

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 20 08:56:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop fftw3-devel BuildRequires and Requires, pass DFFT_LIB=avfft
+  to cmake, use the already present ffmpeg lib.
+- Use ldconfig_scriptlets for post(un) handling.
+
+-------------------------------------------------------------------
 Wed May  3 09:39:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop 8ccad69.patch and 82781d02.patch, and add back
