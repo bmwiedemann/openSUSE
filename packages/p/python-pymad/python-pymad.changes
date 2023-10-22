@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 22 07:45:17 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.11.3
+  * Bump standards-version to 4.6.2.
+  * Switch uscan to use the PyPI redirector.
+  * Acknowledged old bugs long since fixed.
+  * No longer needs a `PYBUILD_BEFORE_CLEAN` rule.
+  * Update extend-diff-ignore in source/options for git based
+    packaging.
+  * Add `python3-setuptools-scm` to the build dependencies.
+- Disable tests due to missing requirement (pyao)
+
+-------------------------------------------------------------------
 Tue Feb 20 12:31:24 UTC 2018 - aloisio@gmx.com
 
 - Update to version 0.10 (no changelog supplied)
