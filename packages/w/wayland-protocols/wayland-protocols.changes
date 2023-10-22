@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 19 13:58:01 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use gcc11 in SLE15 in order to fix a ppc64le test that was
+  failing when built with gcc7 (boo#1216320)
+- Remove patch that doesn't seem to be needed anymore:
+  * wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-on-ppc64.patch
+
+-------------------------------------------------------------------
 Mon Jul  3 10:17:43 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to version 1.32:

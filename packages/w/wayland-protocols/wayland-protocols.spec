@@ -27,10 +27,13 @@ URL:            https://wayland.freedesktop.org
 Source:         https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/%{version}/downloads/%{name}-%{version}.tar.xz
 Source2:        https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/%{version}/downloads/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
-# PATCH-FIX-OPENSUSE wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-on-ppc64.patch bsc#1192209 glfd#wayland/wayland-protocols#48 yfjiang@suse.com -- Temporarily disable the unstable xdg-decoration pedantic test on ppc64 until the upstream issue is more clearly diagnosed
-Patch0:         wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-on-ppc64.patch
+%if 0%{?suse_version} > 1500
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+%else
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
 BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -59,10 +62,18 @@ wayland-protocols.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-11
+export CXX=gcc-11
+%endif
 %meson
 %meson_build
 
 %install
+%if 0%{?suse_version} <= 1500
+export CC=gcc-11
+export CXX=gcc-11
+%endif
 %meson_install
 
 %check
