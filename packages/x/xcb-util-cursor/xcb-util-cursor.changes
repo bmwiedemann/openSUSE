@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 19 21:11:52 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.1.5
+  * This release sets the close-on-exec flag when opening files on
+    platforms that support O_CLOEXEC, and resyncs the
+    _XcursorThemeInherits code with libXcursor, including a fix for
+    an off-by-one error in memory allocation that triggered errors
+    from AddressSanitizer.
+
+-------------------------------------------------------------------
 Tue Oct 18 18:20:45 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.1.4

@@ -65,4 +65,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1031187</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>df59ea6c63067b0489d97df26afbe833</srcmd5>
+    <version>0.1.5</version>
+    <time>1698001284</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.5
+  * This release sets the close-on-exec flag when opening files on
+    platforms that support O_CLOEXEC, and resyncs the
+    _XcursorThemeInherits code with libXcursor, including a fix for
+    an off-by-one error in memory allocation that triggered errors
+    from AddressSanitizer.</comment>
+    <requestid>1119105</requestid>
+  </revision>
 </revisionlist>
