@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 22 02:22:01 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1697790639.4abe47f:
+  * Get the python code to snitch its version
+  * Fix table of svirt backend variables
+  * Make use of openQA worker cache within the svirt backend optional
+  * Mention undocumented behavior from RAIDLEVEL
+  * os-autoinst-setup-multi-machine: Ensure wicked network daemon
+  * Revert "os-autoinst-setup-multi-machine: Missing dir for gre-up-script"
+
+-------------------------------------------------------------------
 Thu Oct 19 18:32:43 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1697713961.41e50e4:
