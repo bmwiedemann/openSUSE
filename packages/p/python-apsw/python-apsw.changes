@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:51:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.43.1.0
+  - All C code calling into Python and all C code called by Python
+    uses vectorcall / fastcall (see PEP 590) which reduces the
+    overhead of passing and receiving positional and keyword
+    arguments. (APSW issue 477 APSW issue 446):
+    * Conversion of arguments from Python values to C values drops
+      generic PyArg_ParseTupleAndKeywords in favour of direct
+      processing which is more efficient and allows better
+      exception messages.
+    * Running speedtest with a VFS that inherits all methods went
+      from being 17% slower than pure SQLite to 2% slower.
+    * A virtual table benchmark takes 35% less time. (Remember that
+      benchmarks are best case!)
+  - The shell JSON output modes have been fixed. Mode 'json'
+    outputs a json array, while mode 'jsonl' does newline delimited
+    json objects, aka json lines. (APSW issue 483)
+- Changes from 3.43.1.0
+  - This is the last version that supports Python 3.6 and
+    Python 3.7 (both end of life). The policy as stated in the
+    about page is that there will be one more APSW release after
+    a Python version goes end of life supporting that Python
+    version. (APSW issue 471)
+  - Added best practice module (APSW issue 460)
+  - apsw.ext.log_sqlite() outputs SQLite warnings at warning level.
+    (APSW issue 472)
+  - sqlite3_stmt_explain is wrapped available as a explain keyword
+    parameter on execute/executemany methods. (APSW issue 474)
+  - Added documentation and helper class for implementing custom
+    pragmas in your own Virtual File System (VFS) (APSW issue 464)
+  - Reduced overhead of the Column method when using 
+    apsw.ext.make_virtual_module() (APSW issue 465)
+
+-------------------------------------------------------------------
 Wed Jul 26 14:57:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.42.0.1:
