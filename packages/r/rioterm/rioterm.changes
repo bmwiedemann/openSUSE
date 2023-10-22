@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri Oct 20 19:54:36 UTC 2023 - androw95220@gmail.com
+
+- Update to version v0.0.24:
+  * move self.state.set_selection back to start_selection
+  * correction for cursor
+  * prepare 0.0.24
+  * update CHANGELOG.md
+  * improve calculate_mouse_position and add tests
+  * implementation of copy mode (alacritty vi mode) close #186
+  * add documentation regarding alacritty vi mode
+  * implement cursor color for vi mode
+  * add Rio logo to README.md
+  * Update build-from-source.md (#298)
+  * redraw per key release
+  * stop inline render fn and render once key is released
+
+-------------------------------------------------------------------
+Wed Oct 18 20:44:26 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.23:
+  * disable toggle VI mode for now
+  * prepare release 0.0.23
+  * correct keybindings
+  * put kitty keyboard protocol back but being optional
+  * update docs
+  * use tempdir 0.3.7
+  * update regex to 1.10.2
+  * update information regarding use_kitty_keyboard_protocol
+  * docs: fix typo in tagline (#297)
+  * disable kitty keyboard protocol temporarily
+  * fix bold lookup
+  * long width bound for text builder
+  * text builder logic
+  * text builder sugarloaf
+  * update CHANGELOG.md
+  * logic for repeated background
+  * repeated bg rect
+  * docs: uniform style in configuration sample (#291)
+  * docs: add scroll-multiplier configuration parameter (#290)
+  * keep pattern for string creation for pre-str
+  * Delete old canary release
+  * keep pattern whenever creating strings in welcome.rs
+  * re-add delete tag-and-release to canary pipeline
+  * create a canary release
+  * use canary release naming/tag and delete previous canary release before submit a new one
+  * feat: added scroll_modifier to Config with default 2.0 (#288)
+  * requires_restart for new tabs using current path settings UI
+  * fix padding_x changes through settings UI
+  * update changelog
+  * Navigation: Remove magic strings (#285)
+  * write simple simple test for calculate_mouse_position #182
+  * newline at end of file
+  * floor() on cell_dimension for mouse_position
+  * move logic to mouse.rs and prepare to start writing tests (#182)
+  * remove unnecessary check after use scaled_margin_x (#182)
+  * improve mouse position calculation for scales >=2.0 (#182)
+  * improve mouse position calculation ref (#182)
+  * add a comment regarding backspace+control for windows and update CHANGELOG
+  * enable powershell shortcut for windows (close #220)
+  * add clearhistory support
+  * update CHANGELOG regarding reverse order of collapsedTabs
+  * fix CHANGELOG syntax
+  * fix order of tab moving and apply reverse on collapsed tabs
+  * correct tabs move shortcut
+  * vi mode wip
+  * clear_selection implementation as action
+  * docs escape sequence support
+  * new Scroll api with docs escape sequence support
+  * fix  Cursor shape isn't restored (close #279)
+  * Fix color automation for breadcrumb mode
+  * introduce scaled_sugarwidth and scaled_sugarheight
+  * sugarloaf: adding `repository` to `Cargo.toml` (#280)
+  * Fix link to build from source in Linux install (#277)
+  * updating rust-version to 1.73.0 (#275)
+  * remove multiplier
+  * remove round from spaces
+  * comment println
+  * update CHANGELOG.md
+  * fix OSC52 (closes #276)
+  * support 7.0 as minimum font-size with shortcut and fix change font size function
+  * fix in progress for tab overlaping text
+  * update CHANGELOG.md
+  * fmt fix lines calculation
+  * fix for calculate lines
+  * update changelog and add a comment
+  * fix bug whenever is not closing terminal for non native tabs (ref #255)
+  * use term UNRELEASED instead of In Progress
+  * support to new Run and Scroll API
+  * update docs to use ignore-selection-fg-color
+  * undo fixed scaledwidth/height
+  * exec and Act::Command(program) are unix exclusives
+  * sugarwidth now has fixed weight (as it should have been since beginning). The font bounds now needs to be scaled to match the fixed sugarwidth (ref #167 #264 #182)
+
+-------------------------------------------------------------------
 Wed Oct 11 12:24:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace freetype-devel BuildRequires with freetype2: this is
