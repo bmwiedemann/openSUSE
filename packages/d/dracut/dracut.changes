@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 13:09:15 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.503.g41e99e72:
+  * fix(dracut.spec): do not require libgcrypt20-hmac for dracut-fips (bsc#1216059)
+
+-------------------------------------------------------------------
 Mon Sep 11 09:01:18 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.501.gc44a365d:
