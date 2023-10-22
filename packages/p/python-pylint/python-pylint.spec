@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %bcond_without tests
 Name:           python-pylint
-Version:        2.17.4
+Version:        3.0.1
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.6
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 2.15.4 with python-astroid < 2.17.0~dev0)
+Requires:       (python-astroid >= 3.0.0 with python-astroid < 3.1.0~dev0)
 Requires:       (python-isort >= 4.2.5 with python-isort < 6)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
@@ -47,7 +47,7 @@ Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 2.15.4 with %python-astroid < 2.17.0~dev0}
+BuildRequires:  %{python_module astroid >= 3.0.0 with %python-astroid < 3.1.0~dev0}
 BuildRequires:  %{python_module dill >= 0.3.6}
 BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
@@ -98,7 +98,7 @@ export LC_ALL="en_US.UTF-8"
 %install
 export LC_ALL="en_US.UTF-8"
 %pyproject_install
-for p in pylint epylint pyreverse symilar pylint-config ; do
+for p in pylint pyreverse symilar pylint-config ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -111,7 +111,7 @@ export LC_ALL="en_US.UTF-8"
 %endif
 
 %post
-%python_install_alternative pylint epylint pyreverse symilar pylint-config
+%python_install_alternative pylint pyreverse symilar pylint-config
 
 %postun
 %python_uninstall_alternative pylint
@@ -122,7 +122,6 @@ export LC_ALL="en_US.UTF-8"
 %doc examples/
 %python_alternative %{_bindir}/pylint
 %python_alternative %{_bindir}/pylint-config
-%python_alternative %{_bindir}/epylint
 %python_alternative %{_bindir}/pyreverse
 %python_alternative %{_bindir}/symilar
 %{python_sitelib}/pylint/

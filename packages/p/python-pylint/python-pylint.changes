@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Oct 20 11:48:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.1:
+  * False Positives Fixed
+    - Fixed false positive for inherit-non-class for generic Protocols.
+      Closes #9106
+  * Other Changes
+    - Fix a crash when an enum class which is also decorated with a dataclasses.dataclass decorator is defined.
+      Closes #9100
+- Update to 3.0.0:
+  - Pylint now support python 3.12 officially.
+  - The required astroid version is now 3.0.0
+  For all chaanges see:
+  https://github.com/pylint-dev/pylint/releases/tag/v3.0.0
+- Changes from 2.17.7
+  2.17.7 is the last release before we only support pylint 3.0.0 or superior and python 3.8 or superior.
+  * False Positives Fixed
+    - Fix a regression in pylint 2.17.6 / astroid 2.15.7 causing various
+      messages for code involving TypeVar.
+      Closes #9069
+  * Other Bug Fixes
+    - Fix crash in refactoring checker when unary operand used with variable in for
+      loop.
+      Closes #9074
+- Changes from 2.17.6
+  * Other Bug Fixes
+    - When parsing comma-separated lists of regular expressions in the config,
+      ignore commas that are inside braces since those indicate quantifiers, not
+      delineation between expressions.
+      Closes #7229
+    - sys.argv is now always correctly considered as impossible to infer
+      (instead of using the actual values given to pylint).
+      Closes #9047
+    - Don't show class fields more than once in Pyreverse diagrams.
+      Closes #8189
+    - Don't show arrows more than once in Pyreverse diagrams.
+      Closes #8522
+    - Don't show duplicate type annotations in Pyreverse diagrams.
+      Closes #8888
+    - Don't add Optional to | annotations with None in Pyreverse diagrams.
+      Closes #9014
+- Changes from 2.17.5
+  * False Positives Fixed
+    - Fix a false positive for unused-variable when there is an import in a
+      if TYPE_CHECKING: block and allow-global-unused-variables is set to
+      no in the configuration.
+      Closes #8696
+    - Fix false positives generated when supplying arguments as **kwargs to IO
+      calls like open().
+      Closes #8719
+    - Fix a false positive where pylint was ignoring method calls annotated as
+      NoReturn during the inconsistent-return-statements check.
+      Closes #8747
+    - Exempt parents with only type annotations from the invalid-enum-extension
+      message.
+      Closes #8830
+  * Other Bug Fixes
+    - Fixed crash when a call to super() was placed after an operator (e.g.
+      not).
+      Closes #8554
+    - Fix crash for modified-while-iterating checker when deleting
+      members of a dict returned from a call.
+      Closes #8598
+    - Fix crash in invalid-metaclass check when a metaclass had duplicate
+      bases.
+      Closes #8698
+    - Avoid consider-using-f-string on modulos with brackets in template.
+      Closes #8720.
+    - Fix a crash when __all__ exists but cannot be inferred.
+      Closes #8740
+    - Fix crash when a variable is assigned to a class attribute of identical name.
+      Closes #8754
+    - Fixed a crash when calling copy.copy() without arguments.
+      Closes #8774
+  * Other Changes
+    - Fix a crash when a nonlocal is defined at module-level.
+      Closes #8735
+
+-------------------------------------------------------------------
 Thu Jun  1 07:23:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update test setup: rerun flaky pyreverse tests
