@@ -18,16 +18,15 @@
 
 %define skip_python2 1
 %define appname limnoria
-%define srcver 2022-09-27
+%define srcver 2023-09-24-2
 Name:           python-limnoria
-Version:        2023.02.11
+Version:        2023.09.24.2
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ProgVal/Limnoria
 Source:         https://github.com/ProgVal/Limnoria/archive/master-%{srcver}.tar.gz#/%{appname}-%{version}.tar.gz
-BuildRequires:  coreutils-systemd
 # full python for sqlite3 module
 BuildRequires:  %pythons
 BuildRequires:  %{python_module PySocks}
@@ -42,6 +41,7 @@ BuildRequires:  %{python_module pytzdata}
 # pyxmpp2-scram not available, the code actually covers the non-availability
 #BuildRequires:  %%{python_module pyxmpp2-scram}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  coreutils-systemd
 BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
@@ -77,28 +77,35 @@ sed -i "1,4{/\/usr\/bin\/python/d}" plugins/Debug/plugin.py
 sed -i "1,4{/\/usr\/bin\/env/d}" plugins/SedRegex/constants.py
 chmod -x supybot/plugins/*/locales/fi.po
 
+sed -Ei "1{\@^#!/usr/bin/env python3@d}" src/scripts/limnoria_*.py
+
 %build
 %python_build
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/supybot/
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot.1
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot-adduser.1
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot-botchk.1
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot-plugin-create.1
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot-plugin-doc.1
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot-test.1
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot-wizard.1
-%python_clone -a %{buildroot}%{_mandir}/man1/supybot-reset-password.1
-%python_clone -a %{buildroot}%{_bindir}/supybot
-%python_clone -a %{buildroot}%{_bindir}/supybot-adduser
-%python_clone -a %{buildroot}%{_bindir}/supybot-botchk
-%python_clone -a %{buildroot}%{_bindir}/supybot-plugin-create
-%python_clone -a %{buildroot}%{_bindir}/supybot-plugin-doc
-%python_clone -a %{buildroot}%{_bindir}/supybot-reset-password
-%python_clone -a %{buildroot}%{_bindir}/supybot-test
-%python_clone -a %{buildroot}%{_bindir}/supybot-wizard
+for ex in supybot limnoria
+do
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}.1
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}-adduser.1
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}-botchk.1
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}-plugin-create.1
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}-plugin-doc.1
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}-test.1
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}-wizard.1
+  %python_clone -a %{buildroot}%{_mandir}/man1/${ex}-reset-password.1
+  %python_clone -a %{buildroot}%{_bindir}/${ex}
+  %python_clone -a %{buildroot}%{_bindir}/${ex}-adduser
+  %python_clone -a %{buildroot}%{_bindir}/${ex}-botchk
+  %python_clone -a %{buildroot}%{_bindir}/${ex}-plugin-create
+  %python_clone -a %{buildroot}%{_bindir}/${ex}-plugin-doc
+  %python_clone -a %{buildroot}%{_bindir}/${ex}-reset-password
+  %python_clone -a %{buildroot}%{_bindir}/${ex}-test
+  %python_clone -a %{buildroot}%{_bindir}/${ex}-wizard
+done
+
+%fdupes %{buildroot}%{_mandir}/man1/
 
 %check
 %{python_expand export PYTHONDONTWRITEBYTECODE=1
@@ -112,14 +119,26 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
   supybot-plugin-create supybot-plugin-doc supybot-reset-password supybot-test supybot-wizard
   supybot.1 supybot-adduser.1 supybot-botchk.1 supybot-plugin-create.1
   supybot-plugin-doc.1 supybot-reset-password.1 supybot-test.1 supybot-wizard.1
+  limnoria limnoria-adduser limnoria-botchk
+  limnoria-plugin-create limnoria-plugin-doc limnoria-reset-password limnoria-test limnoria-wizard
+  limnoria.1 limnoria-adduser.1 limnoria-botchk.1 limnoria-plugin-create.1
+  limnoria-plugin-doc.1 limnoria-reset-password.1 limnoria-test.1 limnoria-wizard.1
 }
 
 %postun
-%{python_uninstall_alternative supybot}
+%{python_uninstall_alternative supybot limnoria}
 
 %files %{python_files}
 %doc README.md CONTRIBUTING.md
 %license LICENSE.md
+%python_alternative %{_bindir}/limnoria
+%python_alternative %{_bindir}/limnoria-adduser
+%python_alternative %{_bindir}/limnoria-botchk
+%python_alternative %{_bindir}/limnoria-plugin-create
+%python_alternative %{_bindir}/limnoria-plugin-doc
+%python_alternative %{_bindir}/limnoria-reset-password
+%python_alternative %{_bindir}/limnoria-test
+%python_alternative %{_bindir}/limnoria-wizard
 %python_alternative %{_bindir}/supybot
 %python_alternative %{_bindir}/supybot-adduser
 %python_alternative %{_bindir}/supybot-botchk
@@ -128,8 +147,14 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 %python_alternative %{_bindir}/supybot-reset-password
 %python_alternative %{_bindir}/supybot-test
 %python_alternative %{_bindir}/supybot-wizard
-%{python_sitelib}/supybot/
-%{python_sitelib}/limnoria-*.egg-info
+%python_alternative %{_mandir}/man1/limnoria.1
+%python_alternative %{_mandir}/man1/limnoria-adduser.1
+%python_alternative %{_mandir}/man1/limnoria-botchk.1
+%python_alternative %{_mandir}/man1/limnoria-plugin-create.1
+%python_alternative %{_mandir}/man1/limnoria-plugin-doc.1
+%python_alternative %{_mandir}/man1/limnoria-reset-password.1
+%python_alternative %{_mandir}/man1/limnoria-test.1
+%python_alternative %{_mandir}/man1/limnoria-wizard.1
 %python_alternative %{_mandir}/man1/supybot.1
 %python_alternative %{_mandir}/man1/supybot-adduser.1
 %python_alternative %{_mandir}/man1/supybot-botchk.1
@@ -138,5 +163,7 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 %python_alternative %{_mandir}/man1/supybot-reset-password.1
 %python_alternative %{_mandir}/man1/supybot-test.1
 %python_alternative %{_mandir}/man1/supybot-wizard.1
+%{python_sitelib}/supybot/
+%{python_sitelib}/limnoria-*.egg-info
 
 %changelog

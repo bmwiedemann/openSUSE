@@ -266,4 +266,12 @@
 Add coreutils-systemd to BuildRequires for the `uptime` command needed for a test.</comment>
     <requestid>1119237</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>25f47e452ea35384d3877a6e806c5fff</srcmd5>
+    <version>2023.09.24.2</version>
+    <time>1698001316</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119337</requestid>
+  </revision>
 </revisionlist>

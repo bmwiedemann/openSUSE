@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:53:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2023.09.24.2:
+  * PluginDownloader: Fix typo
+- List limnoria executables as part of file-list.
+- Drop unnecessary hashbangs from non-exec scripts.
+- Link duplicate files in man dir.
+
+-------------------------------------------------------------------
 Fri Oct 20 12:27:50 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add coreutils-systemd to BuildRequires for the `uptime` command
