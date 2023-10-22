@@ -19,7 +19,7 @@
 
 %bcond_with git
 Name:           xfce4-terminal
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later

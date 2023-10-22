@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 15 07:29:34 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.1
+  * build: Simplify and clarify X11/Wayland distinction
+  * Fix xfce_titled_dialog_create_action_area() deprecation
+  * build: Define our own windowing macro instead of extending GDK's
+  * wayland: Fix drop-down keep-above for non-prefs dialogs
+  * wayland: Fix drop-down terminal keep-above
+  * wayland: Fix window activation
+  * wayland: Fix drop-down terminal positioning (Fixes #141)
+  * wayland: Fix new window size
+  * Replace XDT_CHECK_LIBX11 and use HAVE_LIBX11 when appropriate
+  * Use the same windowing environment test everywhere
+  * Fix build when X11 is disabled
+  * drop-down: Make settings easier to understand
+  * drop-down: Fix allocation warnings
+  * Apply 7 suggestion(s) to 2 file(s)
+  * Save and restore terminal window workspace in X11 session
+  * doc: Remove reference to terminalrc
+  * app: Put GtkSettings:gtk-menu-bar-accel overwrite back in place
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Aug 22 11:35:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.0
