@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dateparser
@@ -29,13 +28,16 @@ Source:         https://files.pythonhosted.org/packages/source/d/dateparser/date
 # PATCH-FIX-UPSTREAM mark-network-tests.patch gh#scrapinghub/dateparser#1059 mcepl@suse.com
 # mark test requiring network access
 Patch1:         mark-network-tests.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-regex
 Requires:       python-tzlocal
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     convertdate
 Recommends:     python-fasttext
 Recommends:     python-langdetect
@@ -53,8 +55,6 @@ BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module tzlocal}
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -71,10 +71,10 @@ sed -i '1{/\/usr\/bin\/env python/d;}' \
     dateparser_scripts/update_supported_languages_and_locales.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dateparser-download
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

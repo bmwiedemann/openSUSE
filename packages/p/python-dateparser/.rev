@@ -228,4 +228,12 @@
     <comment>- remove unneeded GitPython dependency</comment>
     <requestid>1109435</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>ea084177d5e46760a2d667c7f495a0bf</srcmd5>
+    <version>1.1.8</version>
+    <time>1698097209</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1119297</requestid>
+  </revision>
 </revisionlist>
