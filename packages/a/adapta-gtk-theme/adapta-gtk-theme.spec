@@ -36,7 +36,6 @@ BuildRequires:  inkscape >= 0.91
 BuildRequires:  pkgconfig
 BuildRequires:  sassc >= 3.3
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.2
-BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0) >= 2.32.2
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48.0

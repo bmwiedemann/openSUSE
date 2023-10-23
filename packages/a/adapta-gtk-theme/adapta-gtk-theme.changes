@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 22 14:19:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: Seems to be
+  unused.
+
+-------------------------------------------------------------------
 Fri Apr  1 09:50:11 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop procps BuildRequires: nothing seems to make use of that.
