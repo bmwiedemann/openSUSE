@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 23 13:59:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Use en dash for various strings.
+  + Read the 12/24h time format setting from the portal.
+  + Show event popover above events.
+  + Fix a crash when loading some specific event in specific ranges
+    and timezones.
+  + Fix various warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 18 16:22:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
