@@ -27,7 +27,8 @@ URL:            https://www.multiprecision.org/cm/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 Source2:        http://www.multiprecision.org/downloads/%name-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRequires:  flint-devel
+Patch1:         flint3.diff
+BuildRequires:  flint-devel >= 3
 BuildRequires:  gmp-devel >= 4.3.2
 BuildRequires:  libtool
 BuildRequires:  makeinfo

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 22 04:06:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add flint3.diff to have the build succeed with flint-3.
+
+-------------------------------------------------------------------
 Sat Jun 24 14:42:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.2
