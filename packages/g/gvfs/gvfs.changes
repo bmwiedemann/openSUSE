@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:43:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.52.1:
+  + client: Prevent returning invalid mount cache entries.
+  + dav: Fix authentication issues when DNS-SD URIs are used.
+  + nfs: Fix IPv6 URI handling.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 15 13:23:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.52.0:
