@@ -236,4 +236,12 @@
     <comment>- Update to release 2023.10.13</comment>
     <requestid>1117737</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>77782e4efe405abc394559a844d1573b</srcmd5>
+    <version>2023.10.13</version>
+    <time>1698097229</time>
+    <user>anag+factory</user>
+    <comment>- Enable Python library [boo#1216467]</comment>
+    <requestid>1119460</requestid>
+  </revision>
 </revisionlist>

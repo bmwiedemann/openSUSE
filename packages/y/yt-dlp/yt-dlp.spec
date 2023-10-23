@@ -41,6 +41,7 @@ BuildRequires:  python39-devel
 BuildRequires:  zip
 BuildArch:      noarch
 Requires:       ffmpeg
+BuildRequires:  %{python_module setuptools}
 %if 0%{?suse_version} > 1500
 Requires:       python3 >= 3.8
 Suggests:       python3-Brotli
@@ -59,37 +60,45 @@ Requires:       python39
 %endif
 %endif
 %endif
+%python_subpackages
 
 %description
 yt-dlp is a command-line program to retrieve videos from
 YouTube.com and other video sites for later watching.
 
-%package bash-completion
+%package -n yt-dlp-bash-completion
 Summary:        Bash completion for yt-dlp
 Group:          System/Shells
 Requires:       bash-completion
 Supplements:    (yt-dlp and bash-completion)
 
-%description bash-completion
+%description -n yt-dlp-bash-completion
 Bash command line completion support for yt-dlp.
 
-%package fish-completion
+%package -n yt-dlp-fish-completion
 Summary:        Fish completion for yt-dlp
 Group:          System/Shells
 Requires:       fish
 Supplements:    (yt-dlp and fish)
 
-%description fish-completion
+%description -n yt-dlp-fish-completion
 Fish command line completion support for yt-dlp.
 
-%package zsh-completion
+%package -n yt-dlp-zsh-completion
 Summary:        Zsh Completion for yt-dlp
 Group:          System/Shells
 Requires:       zsh
 Supplements:    (yt-dlp and zsh)
 
-%description zsh-completion
+%description -n yt-dlp-zsh-completion
 ZSH command line completion support for yt-dlp.
+
+%package -n python-yt-dlp
+Summary:        yt-dlp Python library
+Group:          Development/Languages/Python
+
+%description -n python-yt-dlp
+The direct Python interface into yt-dlp.
 
 %prep
 %autosetup -p1 -n %name
@@ -118,8 +127,10 @@ install -Dvm0644 completions/bash/yt-dlp "$b/%_datadir/bash-completion/completio
 install -Dvm0644 completions/zsh/_yt-dlp "$b/%_datadir/zsh/site-functions/_yt-dlp"
 install -Dvm0644 completions/fish/yt-dlp.fish "$b/%_datadir/fish/completions/yt-dlp.fish"
 install -Dvm0644 yt-dlp.1 "$b/%_mandir/man1/yt-dlp.1"
+%python_install
+rm -Rf "$b/%_datadir/doc"
 
-%files
+%files -n yt-dlp
 %license LICENSE
 %doc README.md
 %_bindir/%name
@@ -133,5 +144,8 @@ install -Dvm0644 yt-dlp.1 "$b/%_mandir/man1/yt-dlp.1"
 
 %files -n yt-dlp-zsh-completion
 %_datadir/zsh/
+
+%files %python_files
+%python_sitelib/y*
 
 %changelog
