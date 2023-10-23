@@ -122,4 +122,17 @@
   improve cython 3.x interoperability</comment>
     <requestid>1103791</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e066c982696f2f5e860c5cc4c67c2dbf</srcmd5>
+    <version>1.8.3</version>
+    <time>1698097208</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.3:
+  - Added Python 3.12 wheel
+  - Fix Cython 3 compatibility
+- Remove upstreamed patch
+  d9200d1018ac916b30433da23898c8c5fbde0f28.patch
+</comment>
+    <requestid>1119291</requestid>
+  </revision>
 </revisionlist>

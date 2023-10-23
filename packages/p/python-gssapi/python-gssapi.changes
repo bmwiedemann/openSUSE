@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 20 21:30:09 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.8.3:
+  - Added Python 3.12 wheel
+  - Fix Cython 3 compatibility
+- Remove upstreamed patch
+  d9200d1018ac916b30433da23898c8c5fbde0f28.patch
+
+-------------------------------------------------------------------
 Mon Aug 14 06:41:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add d9200d1018ac916b30433da23898c8c5fbde0f28.patch to

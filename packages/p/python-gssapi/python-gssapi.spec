@@ -16,17 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-gssapi
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        A Python interface to RFC 2743/2744 (plus common extensions)
 License:        ISC
 URL:            https://github.com/pythongssapi/python-gssapi
 Source:         https://files.pythonhosted.org/packages/source/g/gssapi/gssapi-%{version}.tar.gz
-Patch1:         https://github.com/pythongssapi/python-gssapi/commit/d9200d1018ac916b30433da23898c8c5fbde0f28.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module devel}
@@ -67,7 +65,8 @@ mv gssapi gssapi_temp
 mv gssapi_temp gssapi
 
 %files %{python_files}
-%{python_sitearch}/gssapi*
+%{python_sitearch}/gssapi
+%{python_sitearch}/gssapi-%{version}*-info
 %doc README.rst
 %license LICENSE.txt
 
