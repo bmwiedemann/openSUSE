@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 20 18:32:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.2:
+  + Fix Ctrl+N not setting earmarks
+  + Fix warning about failure to solve puzzle when loading games
+    with an incorrect value
+
+-------------------------------------------------------------------
 Sat Oct 14 15:52:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:
