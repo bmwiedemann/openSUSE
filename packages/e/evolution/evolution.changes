@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:52:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.50.1:
+  + flatpak: Add missing comma in the manifests
+  + Bugs fixed:
+    - Mail: Correct conversion of UTF-16 encoded text files
+    - ConfigLookup: Default to STARTTLS for LDAP from SRV records
+    - EWebView: Enable spell checking for editable fields
+    - Make SRV config lookup records lower priority than the others
+    - Calendar: "Work Week" column separator light in dark theme
+    - OpenPGP: "Always sign/encrypt" doesn't always work
+    - Update default calendar colors
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 15 08:02:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.50.0:
