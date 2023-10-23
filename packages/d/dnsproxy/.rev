@@ -133,4 +133,13 @@
   * Pull request 288: close bootstraps (forwarded request 1118628 from VaiTon)</comment>
     <requestid>1118638</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a2f7a52353933ea495262b89996f57d0</srcmd5>
+    <version>0.56.3</version>
+    <time>1698097293</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.3:
+  * Pull request 287: 4977-proxy-multiple-reserved-upstreams (forwarded request 1119705 from VaiTon)</comment>
+    <requestid>1119708</requestid>
+  </revision>
 </revisionlist>
