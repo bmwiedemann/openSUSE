@@ -124,4 +124,15 @@ their configuration.
     gh#vit-project/vit#339</comment>
     <requestid>1098726</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>65f70baec61eeb8b77fb869da9d53eb1</srcmd5>
+    <version>2.3.2</version>
+    <time>1698097236</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.2
+  * fix(py3.12): SafeConfigParser -&gt; ConfigParser
+  * fix: Clarify how to interact inside 'Denotate' window
+    gh#vit-project/vit#340</comment>
+    <requestid>1119466</requestid>
+  </revision>
 </revisionlist>

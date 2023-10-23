@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 23 01:18:26 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.3.2
+  * fix(py3.12): SafeConfigParser -> ConfigParser
+  * fix: Clarify how to interact inside 'Denotate' window
+    gh#vit-project/vit#340
+
+-------------------------------------------------------------------
 Fri Jul 14 18:44:48 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.3.1
