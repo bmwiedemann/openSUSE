@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 21 19:12:26 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.4.10:
+  * Fixed missing indent in function parameter list (gl#saalen/astyle#16).
+- Changes of version 3.4.9:
+  * Applied one wording for Objective-C in the docs.
+  * Fixed more CS regressions (gl#saalen/astyle#16).
+  * Fixed inserting space with combined "--pad-oper" and "--align-pointer" options (#557).
+- Changes of version 3.4.8:
+  * Fixed lambda broken brace after auto keyword (#554).
+  * Fixed line break after comment in asm block (#226).
+  * Fixed padding of multiply operator (#126).
+  * Fixed indentation of method calls (#434).
+  * Fixed empty line after closing while block (gl#saalen/astyle#18).
+  * Added outer padding for emtpy parens pairs (gl#saalen/astyle#19).
+  * Fixed more CS regressions (gl#saalen/astyle#16).
+- Changes of version 3.4.6:
+  * Added VS2022 project files (gl#saalen/astyle!3).
+  * Fixed CS regressions (gl#saalen/astyle#16).
+  * Added CS coalesce assignment operator (gl#saalen/astyle#17).
+- Changes of version 3.4.1:
+  * Fixed padding of & following a comma (#552).
+  * Fixed indent of function declarations following access modifiers (#504).
+  * Fixed indent of C# allocation blocks (#464).
+  * Fixed indentation of comments after CS interpolation quotes (gl#saalen/astyle#16).
+
+-------------------------------------------------------------------
 Sat Jun 17 18:59:34 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.4:
