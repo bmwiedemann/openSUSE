@@ -1,7 +1,7 @@
 #
 # spec file for package libfplist
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 Name:           libfplist
 %define lname	libfplist1
-Version:        20220116
+Version:        20231022
 Release:        0
-Summary:        Library for plist formats
+Summary:        Library for Apple plist formats
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libfplist
@@ -29,17 +29,20 @@ Source2:        https://github.com/libyal/libfplist/releases/download/%version/l
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
+BuildRequires:  pkgconfig(libuna) >= 20230710
 # Various notes: https://en.opensuse.org/libyal
 
 %description
-libfplist is a library for plist formats.
+libfplist is a library for Apple plist formats. In the macOS, iOS,
+NeXTSTEP, and GNUstep programming frameworks, property list files are
+files that store serialized objects. Property lists are also used for
+localization strings for development.
 
 Part of the libyal family of libraries.
 
@@ -48,7 +51,10 @@ Summary:        Library for plist formats
 Group:          System/Libraries
 
 %description -n %lname
-libfplist is a library for plist formats.
+libfplist is a library for Apple plist formats. In the macOS, iOS,
+NeXTSTEP, and GNUstep programming frameworks, property list files are
+files that store serialized objects. Property lists are also used for
+localization strings for development.
 
 Part of the libyal family of libraries.
 
@@ -67,7 +73,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-libfplist is a library for plist formats.
+libfplist is a library for Apple plist formats.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfplist.

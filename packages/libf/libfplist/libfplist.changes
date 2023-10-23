@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 04:21:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231022
+  * Added library prefix to XML scanner and parser
+
+-------------------------------------------------------------------
 Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete system-libs.patch (not needed - system libs are
