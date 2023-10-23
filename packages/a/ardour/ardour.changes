@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 22 09:45:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.1.0. Hotfix release
+  * MIDI port names for the Novation Launchpad Pro fixed
+  * Varispeed dialog now allows control in percentage units in
+    addition to semitones & cents
+  * Fix an issue where multichannel tracks would play in mono
+  * Prevent time domain (music/audio) confusion when trimming
+    audio & MIDI regions
+  * When drawing freehand velocity curves, if any MIDI notes are
+    selected, only those notes will be modified
+  * Fix selection logic when middle-clicking on notes in a MIDI
+    track header keyboard
+  * Fix a missing label in the insert time dialog.
+  * Fix a deadlock ("program freeze") when adjusting a region fade.
+  * Allow for bounces with specific source (file) and region names.
+  * Include track name when consolidating ranges.
+  * Fix potential for duplicated MIDI events with certain signal
+    routing.
+  * Prevent crash with certain oddly-behaved VST3 plugins'
+    response to being asked "do you have an editor?"
+  * Add MIDNAM file for Moog Subsequent 37.
+  * Remove some cruft from build system scripts.
+  * Build system tweak to accomodate newer versions of kissfft
+
+-------------------------------------------------------------------
 Thu Oct 12 10:19:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.0.0. See https://ardour.org/whatsnew.html
