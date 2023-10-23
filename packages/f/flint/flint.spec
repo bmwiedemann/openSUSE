@@ -17,16 +17,16 @@
 
 
 Name:           flint
-%define lname	libflint17
-Version:        2.9.0
+%define lname	libflint18
+Version:        3.0.0
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://flintlib.org/
+URL:            https://flintlib.org/
 
-#Git-Clone:     https://github.com/flintlib/flint2
-Source:         https://github.com/flintlib/flint2/archive/v%version.tar.gz
+#Git-Clone:     https://github.com/flintlib/flint
+Source:         https://github.com/flintlib/flint/archive/v%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -60,6 +60,9 @@ Requires:       %lname = %version
 Requires:       gmp-devel
 Requires:       mpfr-devel
 Requires:       ntl-devel
+Conflicts:      antic-devel
+Conflicts:      arb-devel
+Conflicts:      calcium-devel
 
 %description devel
 FLINT (Fast Library for Number Theory) is a C library in support of
@@ -71,16 +74,36 @@ This subpackage contains the include files and library links for
 developing against the FLINT library.
 
 %prep
-%autosetup -p1 -n flint2-%version
+%autosetup -p1
 
 %build
-./configure --prefix="%_prefix" --disable-static --reentrant --with-ntl \
-	CFLAGS="%optflags" CXXFLAGS="%optflags"
+if test ! -e configure; then
+	./bootstrap.sh
+fi
+%configure \
+%if 0%{?suse_version} < 1590
+	--enable-gmp-internals=no \
+%endif
+	--disable-static --enable-reentrant --with-ntl
 %make_build
 
 %install
-%make_install LIBDIR="%_lib"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+b="%buildroot"
+rm -f "$b/%_libdir"/*.la
+ln -s libflint.so "$b/%_libdir/libarb.so"
+ln -s libflint.so "$b/%_libdir/libantic.so"
+ln -s libflint.so "$b/%_libdir/libcalcium.so"
+# a little bit of compat (hence Conflicts, not Obsoletes used in subpackage)
+mkdir -p "$b/%_includedir/antic" "$b/%_includedir/calcium"
+for i in nf.h nf_elem.h qfb.h; do
+	ln -s "../flint/$i" "$b/%_includedir/antic/"
+done
+for i in ca.h ca_ext.h ca_field.h ca_mat.h ca_poly.h ca_vec.h calcium.h \
+    fexpr.h fexpr_builtin.h fmpz_mpoly_q.h qqbar.h; do
+	ln -s "../flint/$i" "$b/%_includedir/calcium/"
+done
+ln -s ../flint/fmpz_mpoly.h "$b/%_includedir/calcium/utils_flint.h"
 %fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
@@ -91,8 +114,9 @@ rm -f "%buildroot/%_libdir"/*.la
 %license LICENSE
 
 %files devel
-%_includedir/flint/
-%_libdir/libflint.so
-%doc NEWS
+%_includedir/*
+%_libdir/*.so
+%_libdir/pkgconfig/*.pc
+%doc doc/source/history.rst
 
 %changelog

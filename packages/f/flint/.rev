@@ -120,4 +120,12 @@
     <comment>- Update homepage/source URLs.</comment>
     <requestid>1077924</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bda4e2f43c3caf7f41015cb503562594</srcmd5>
+    <version>3.0.0</version>
+    <time>1698097225</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.0.0</comment>
+    <requestid>1119391</requestid>
+  </revision>
 </revisionlist>

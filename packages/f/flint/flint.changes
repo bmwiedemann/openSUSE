@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 21 00:32:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.0
+  * The following libraries have been merged into FLINT and are no
+    longer maintianed as separate libs: arb-2.23, calcium-0.4,
+    antic-0.2.5. The API is largely backwards-compatible but there
+    are some changes to rarely-used and internal functions,
+    documented in history.rst.
+
+-------------------------------------------------------------------
 Fri Apr  7 20:54:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update homepage/source URLs.
