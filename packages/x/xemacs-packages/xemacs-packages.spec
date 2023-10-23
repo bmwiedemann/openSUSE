@@ -92,6 +92,7 @@ Patch28:        texi.patch
 Patch32:        bugzilla-183805-missing-autoload-cookies.patch
 Patch34:        mode-local.patch
 Patch35:        xemacs-packages-20130822-tramp.patch
+Patch36:        reproducible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Summary:        XEmacs Packages
@@ -173,6 +174,7 @@ chmod -R u+rw,g+r,o+r .
 %patch34  -p1 -b .mode-local
 # PATCH-FIX-SUSE boo#857207 -- xemacs tramp ssh completion returns "Wrong type argument: symbolp, ..."
 %patch35  -p1 -b .tramp
+%patch36 -p1
 rm -vf xemacs-packages/tramp/texi/tramp.texi.tramp
 chmod 755 %{S:3}
 %{S:3}
