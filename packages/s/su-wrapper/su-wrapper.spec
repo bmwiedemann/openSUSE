@@ -1,7 +1,7 @@
 #
 # spec file for package su-wrapper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,9 +23,9 @@ Summary:        The su-wrapper Runs Programs as Another User and Group
 License:        GPL-2.0-or-later
 Group:          System/Base
 PreReq:         permissions
-Url:            https://github.com/metux/su-wrapper/commits/master
+URL:            https://github.com/metux/su-wrapper/commits/master
 Source0:        su-wrapper-1.2.0.tar.bz2
-Patch:          su-wrapper-1.2.0.dif
+Patch0:         su-wrapper-1.2.0.dif
 # PATCH-FIX-OPENSUSE su-wrapper-1.2.0-term.dif -- bnc#795063 - su-wrapper segfault if TERM variabile is not in environment
 Patch1:         su-wrapper-1.2.0-term.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,7 +49,7 @@ Authors:
 
 %prep
 %setup
-%patch -p0
+%patch0 -p0
 %patch1 -p0
 
 %build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 16 07:09:08 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- New RPM API change ... now no %patch anymore only %patch0 
+
+-------------------------------------------------------------------
 Thu Jul  5 08:36:00 UTC 2018 - werner@suse.de
 
 - Modernize spec file 
