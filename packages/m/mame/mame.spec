@@ -16,7 +16,7 @@
 #
 
 
-%define ver     258
+%define ver     259
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -36,6 +36,7 @@ Patch1:         fix-922619.patch
 Patch2:         fix_lua_misspelling.patch
 Patch3:         %{name}-fortify.patch
 Patch4:         %{name}-bgfx.patch
+Patch5:         reproducible.patch
 BuildRequires:  asio-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

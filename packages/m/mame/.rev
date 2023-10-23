@@ -82,4 +82,14 @@
   * /usr/share/doc/packages/mame/whatsnew-0.258.txt</comment>
     <requestid>1108085</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e2f02c0efdb4bd42cde125c58da060b0</srcmd5>
+    <version>0.259</version>
+    <time>1698097276</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.259
+  * /usr/share/doc/packages/mame/whatsnew-0.259.txt
+- Added file reproducible.patch for deterministic output order.</comment>
+    <requestid>1119693</requestid>
+  </revision>
 </revisionlist>

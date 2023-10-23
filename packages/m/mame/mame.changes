@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 23 07:14:16 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Updated to 0.259
+  * /usr/share/doc/packages/mame/whatsnew-0.259.txt
+
+-------------------------------------------------------------------
+Sun Oct 22 15:25:45 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Added file reproducible.patch for deterministic output order.
+
+-------------------------------------------------------------------
 Wed Aug 30 09:19:13 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.258
