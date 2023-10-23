@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 20 10:25:56 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for openmpi[123] (jsc#PED-7111)
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Tue Oct 10 09:40:37 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop %vers macro so that the Version tag can be parsed more easily

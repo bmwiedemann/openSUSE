@@ -32,36 +32,20 @@
 ExclusiveArch:  do_not_build
 %endif
 
-%if "%{flavor}" == "gnu-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_family openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_family openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_family openmpi
-%define mpi_ver 3
-%endif
-
 %if "%{flavor}" == "gnu-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %undefine c_f_ver
 %define mpi_family openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%undefine c_f_ver
+%define mpi_family openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu-mvapich2-hpc"
@@ -76,36 +60,20 @@ ExclusiveArch:  do_not_build
 %define mpi_family mpich
 %endif
 
-%if "%{flavor}" == "gnu7-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_family openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi2-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_family openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_family openmpi
-%define mpi_ver 3
-%endif
-
 %if "%{flavor}" == "gnu7-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %define c_f_ver 7
 %define mpi_family openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%define c_f_ver 7
+%define mpi_family openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
@@ -120,36 +88,20 @@ ExclusiveArch:  do_not_build
 %define mpi_family mpich
 %endif
 
-%if "%{flavor}" == "gnu8-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_family openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_family openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_family openmpi
-%define mpi_ver 3
-%endif
-
 %if "%{flavor}" == "gnu8-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %define c_f_ver 8
 %define mpi_family openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_family openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu8-mvapich2-hpc"
@@ -164,36 +116,20 @@ ExclusiveArch:  do_not_build
 %define mpi_family mpich
 %endif
 
-%if "%{flavor}" == "gnu9-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_family openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_family openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_family openmpi
-%define mpi_ver 3
-%endif
-
 %if "%{flavor}" == "gnu9-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %define c_f_ver 9
 %define mpi_family openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_family openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
@@ -208,36 +144,20 @@ ExclusiveArch:  do_not_build
 %define mpi_family mpich
 %endif
 
-%if "%{flavor}" == "gnu10-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_family openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_family openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_family openmpi
-%define mpi_ver 3
-%endif
-
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %define c_f_ver 10
 %define mpi_family openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_family openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu10-mvapich2-hpc"
