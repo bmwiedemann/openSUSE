@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           syft
-Version:        0.93.0
+Version:        0.94.0
 Release:        0
 Summary:        CLI tool and library for generating a Software Bill of Materials
 License:        Apache-2.0
@@ -32,8 +32,7 @@ BuildRequires:  go >= 1.18
 A CLI tool and Go library for generating a Software Bill of Materials (SBOM) from container images and filesystems. Exceptional for vulnerability detection when used with a scanner like Grype.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"

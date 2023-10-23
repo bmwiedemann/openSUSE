@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Oct 21 18:16:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.94.0:
+  * Label PRs when the json schema changes (#2240)
+  * Add download location when cataloging directory npm package
+    lock (#2238)
+  * fix: allow packages to be captured from DIST/EGG case (#2239)
+  * Account for maven bundle plugin and fix filename matching
+    (#2220)
+  * chore(deps): bump actions/checkout from 4.1.0 to 4.1.1 (#2236)
+  * Remove internal string set (#2219)
+  * bump clio to get stderr reporting fix (#2232)
+  * Fix panic for empty input to Swift cataloger (#2226)
+  * Add additional license filenames (#2227)
+  * chore(deps): bump github/codeql-action from 2.22.2 to 2.22.3
+    (#2229)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.9.0
+    to 0.9.1 (#2222)
+  * chore(deps): bump github/codeql-action from 2.22.1 to 2.22.2
+    (#2224)
+  * Detect a license file in the root directory or META-INF of a
+    jar (#2213)
+  * Parse donet dependency trees (#2143)
+  * chore(deps): bump golang.org/x/net from 0.16.0 to 0.17.0
+    (#2214)
+  * chore(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+    (#2215)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.8.0
+    to 0.9.0 (#2216)
+  * chore: add automated homebrew action (#2164)
+  * Add relationships for dpkg packages (#2212)
+
+-------------------------------------------------------------------
 Wed Oct 11 04:22:21 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.93.0:
