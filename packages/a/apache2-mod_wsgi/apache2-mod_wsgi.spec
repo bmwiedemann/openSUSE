@@ -81,8 +81,8 @@ make install DESTDIR=%{buildroot} LIBEXECDIR=%{apache_libexecdir}
 %check
 %apache_rex_check -m ./src/server/.libs mod_wsgi-basic
 
-%postun
 %if 0%{?suse_version}
+%postun
 if [ "$1" = "0" ]; then
   if a2enmod -q wsgi; then
     %{_sbindir}/a2enmod -d wsgi
@@ -90,8 +90,8 @@ if [ "$1" = "0" ]; then
 fi
 %endif
 
-%posttrans
 %if 0%{?suse_version}
+%posttrans
 if ! %{_sbindir}/a2enmod -q wsgi; then
   %{_sbindir}/a2enmod wsgi
 fi

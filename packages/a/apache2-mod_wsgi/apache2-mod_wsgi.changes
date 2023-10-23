@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:14:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not generate empty postun/posttrans scriptlets in case of
+  non-openSUSE: guard the entire script by the condition, not only
+  the entire content of the script.
+
+-------------------------------------------------------------------
 Thu Oct 19 16:32:13 UTC 2023 - Marina Latini <marina.latini@suse.com>
 
 - Use %posttrans instead of %post while adding the wsgi keyword. 
