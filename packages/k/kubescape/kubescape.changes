@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 23 06:14:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.0.0:
+  * Bump v3 (#1449)
+  * Cloud provider detection (#1448)
+  * Preparing Kubescape for v3 (#1403)
+  * Support backend access key (#1404)
+  * Restructure img cmd (#1398)
+  * add env-dependencies-policy to security insights
+  * print result to stdout when format argument specified (#1438)
+
+-------------------------------------------------------------------
 Thu Oct 19 07:33:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.9.2:
