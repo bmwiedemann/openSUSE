@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Oct 23 04:18:28 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.0
+  New features:
+  * Add (experimental) I2P support
+  * Provide UI editor for the default theme
+  * Various UI theming improvements
+  * Implement torrent tags editing dialog
+  * Revamp "Watched folder options" and "Automated RSS
+    downloader" dialog
+  * Allow to use another icons in dark mode
+  * Allow to add new torrents to queue top
+  * Allow to filter torrent list by save path
+  * Expose 'socket send/receive buffer size' options
+  * Expose 'max torrent file size' setting
+  * Expose 'bdecode limits' settings
+  * Add options to adjust behavior of merging trackers to
+    existing torrent
+  * Add option to stop seeding when torrent has been inactive
+  * Allow to use proxy per subsystem
+  * Expand the scope of "Proxy hostname lookup" option
+  * Add shortcut for "Ban peer permanently" function
+  * Add option to auto hide zero status filters
+  * Allow to disable confirmation of Pause/Resume All
+  * Add alternative shortcut CTRL+E for CTRL+F
+  * Show filtered port numbers in logs
+  * Add button to copy library versions to clipboard
+  Bug fixes:
+  * Ensure ongoing storage moving job will be completed when
+    shutting down
+  * Refactored many areas to call non UI blocking code
+  * Various improvements to the SQLite backend
+  * Improve startup window state handling
+  * Use tray icon from system theme only if option is set
+  * Inhibit system sleep while torrents are moving
+  * Use hostname instead of domain name in tracker filter list
+  * Visually validate input path in torrent creator dialog
+  * Disable symlink resolving in Torrent creator
+  * Change default value for `file pool size` and `stop tracker
+    timeout` settings
+  * Log when duplicate torrents are being added
+  * Inhibit suspend instead of screen idle
+  * Ensure file name is valid when exporting torrents
+  * Open "Save path" if torrent has no metadata
+  * Prevent torrent starting unexpectedly edge case with magnet
+  * Better ergonomics of the "Add new torrent" dialog
+  WebUI:
+  * Add log viewer
+  * WebAPI: Allow to specify session cookie name
+  * Improve sync API performance
+  * Add filelog settings
+  * Add multi-file renaming
+  * Add "Add to top of queue" option
+  * Implement subcategories
+  * Set "SameSite=None" if CSRF Protection is disabled
+  * Show only hosts in tracker filter list
+  * Set Connection status and Speed limits tooltips
+  * set Cross Origin Opener Policy to `same-origin`
+  * Fix response for HTTP HEAD method
+  * Preserve the network interfaces when connection is down
+  * Add "Add Tags" field for RSS rules
+  * Fix missing error icon
+  RSS:
+  * Add "Rename rule" button to RSS Downloader
+  * Allow to edit RSS feed URL
+  * Allow to assign priority to RSS download rule
+  Search:
+  * Use python isolate mode
+  * Bump python version minimum requirement to 3.7.0
+  Other:
+  * Numerous code improvements and refactorings
+- Drop qbittorrent-fix_boost_1.66_build.patch (will require
+  major rework)
+
+-------------------------------------------------------------------
 Wed Aug 30 05:29:51 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.5.5

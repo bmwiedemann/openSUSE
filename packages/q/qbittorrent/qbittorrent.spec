@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.5.5
+Version:        4.6.0
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
 Patch0:         harden_qbittorrent-nox@.service.patch
-# PATCH-FIX-OPENSUSE qbittorrent-fix_boost_1.66_build.patch search for libboost_system.so and patch stacktrace function # aloisio@gmx.com
-Patch2:         qbittorrent-fix_boost_1.66_build.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -42,7 +40,7 @@ BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 2.0.7
+BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 2.0.9
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib) >= 1.2.11
