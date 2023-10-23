@@ -1,0 +1,6 @@
+<package name="doggo" project="openSUSE:Factory">
+  <title>doggo</title>
+  <description>Command-line DNS Client for humans implemented in Go</description>
+  <devel project="devel:languages:go" package="doggo"/>
+  <url>https://github.com/mr-karan/doggo</url>
+</package>

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Mon Oct 23 09:36:30 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Packaging improvements:
+  * Fix zsh-completion and fish-completion by not requiring
+    zsh-completion and fish-completion and by supplementing the 
+    right package.
+  * Fix fish-completion by using the .fish suffix when copying the
+    completion file.
+
+-------------------------------------------------------------------
+Wed Oct 18 19:10:28 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Use subpackages for fish-completion and zsh-completion.
+    Upstream currently has no bash completion scripts. Fish and zsh
+    subpackages are marked Suggests: and not installed by default.
+    If a bash-completion subpackage becomes available, we should
+    install that by default.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Remove ldflags -X entries for upstream import path and version.
+    This information is embedded in binaries with go1.18+ and
+    available via go version -m or runtime/debug.ReadBuildInfo().
+  * Remove ldflags -s (Omit symbol table and debug info) and -w
+    (Omit DWARF symbol table). This information is used to produce
+    separate debuginfo packages and binaries are stripped for
+    reduced size by GNU strip during RPM build.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Use %%name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+  * Remove bash loop for two paramaterized calls of go build.
+    The loop technique is nice for large lists, but making the two
+    go build calls explicit seems a better readability tradeoff.
+  * Add sample API config as doc
+
+-------------------------------------------------------------------
+Wed Oct 18 17:30:09 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use xz compression for vendor.tar
+- Use obscpio instead of tar for disk storage efficency
+
+-------------------------------------------------------------------
+Sun Oct  1 12:49:46 UTC 2023 - Alexandre Almeida <me@aoalmeida.com>
+
+- First release
