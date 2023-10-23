@@ -71,4 +71,13 @@
   * Support match statement from python 3.10</comment>
     <requestid>1116718</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2ee3f88cb60cb8d63e87a6a4371e3ae4</srcmd5>
+    <version>0.5.4</version>
+    <time>1698097199</time>
+    <user>anag+factory</user>
+    <comment>- Remove unnecessary BR on python-astunparse
+</comment>
+    <requestid>1119282</requestid>
+  </revision>
 </revisionlist>

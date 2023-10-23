@@ -16,8 +16,8 @@
 #
 
 
-%define srcname gast
 %{?sle15_python_module_pythons}
+%define srcname gast
 Name:           python-gast
 Version:        0.5.4
 Release:        0
@@ -29,7 +29,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module astunparse}
 BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
