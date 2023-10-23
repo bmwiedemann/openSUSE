@@ -1,7 +1,7 @@
 #
 # spec file for package dm-zoned-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dm-zoned-tools
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        "dm-zoned" device-mapper target manager
 License:        GPL-3.0-only
@@ -32,8 +32,6 @@ BuildRequires:  libblkid-devel
 BuildRequires:  libkmod-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
-# PATCH-FIX-OPENSUSE fix-build.patch
-Patch0:         build-fix.patch
 
 %description
 The dmzadm utility formats backend devices used with the dm-zoned device
@@ -43,7 +41,6 @@ according to the device capacity, zone size, etc.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 sh ./autogen.sh
