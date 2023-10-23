@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:48:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Various styling fixes
+  + Report PackageKit GPG-related errors in the GUI
+  + Flatpak permission checks improvements
+  + Optimize loading of the details page
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 15 07:58:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

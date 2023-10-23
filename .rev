@@ -1096,4 +1096,12 @@ New stable release</comment>
     <comment>Update to GNOME 45 release</comment>
     <requestid>1112406</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>4a633e07fd7cf55ffdea6479999273d3</srcmd5>
+    <version>45.1</version>
+    <time>1698097203</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119287</requestid>
+  </revision>
 </revisionlist>
