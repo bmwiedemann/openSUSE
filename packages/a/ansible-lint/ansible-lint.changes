@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 20 04:57:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.21.1:
+  * Bugfixes
+    - Avoid exception caused by accidental unloading of core rules
+      (#3857) @ssbarnea
+    - Document pre-commit access to ansible community bundle
+      (#3856) @ssbarnea
+    - Fix bug with auto-fix ending too soon (#3855) @ssbarnea
+
+-------------------------------------------------------------------
 Thu Oct 19 05:51:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.21.0:
