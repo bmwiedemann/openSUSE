@@ -1,8 +1,8 @@
-Index: VirtualBox-7.0.10/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+Index: VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
-+++ VirtualBox-7.0.10/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
-@@ -98,8 +98,6 @@ void UISettingsDialogGlobal::retranslate
+--- VirtualBox-7.0.12.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
++++ VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+@@ -99,8 +99,6 @@ void UISettingsDialogGlobal::retranslate
      m_pSelector->setItemText(GlobalSettingsPageType_Input, tr("Input"));
  
  #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
@@ -11,7 +11,7 @@ Index: VirtualBox-7.0.10/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDi
  #endif
  
      /* Language page: */
-@@ -224,17 +222,6 @@ void UISettingsDialogGlobal::prepare()
+@@ -225,17 +223,6 @@ void UISettingsDialogGlobal::prepare()
                      addPageHelpKeyword(iPageIndex, "preferences");
                      break;
                  }

@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.10/configure
+Index: VirtualBox-7.0.12/configure
 ===================================================================
---- VirtualBox-7.0.10.orig/configure
-+++ VirtualBox-7.0.10/configure
+--- VirtualBox-7.0.12.orig/configure
++++ VirtualBox-7.0.12/configure
 @@ -1191,21 +1191,19 @@ check_sdl()
        fail
      fi
@@ -50,10 +50,10 @@ Index: VirtualBox-7.0.10/configure
    [ $WITH_SDL_TTF -eq 1 -a $OSE -eq 0 ] && check_sdl_ttf
    [ $WITH_X11    -eq 1 ] && check_x
    # TODO check for xcomposite-dev (X11/extensions/Xcomposite.h, additions only)
-Index: VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/Makefile.kmk
+Index: VirtualBox-7.0.12/src/VBox/Frontends/VBoxSDL/Makefile.kmk
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Frontends/VBoxSDL/Makefile.kmk
-+++ VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/Makefile.kmk
+--- VirtualBox-7.0.12.orig/src/VBox/Frontends/VBoxSDL/Makefile.kmk
++++ VirtualBox-7.0.12/src/VBox/Frontends/VBoxSDL/Makefile.kmk
 @@ -51,7 +51,7 @@ if !defined(VBOX_WITH_HARDENING) || "$(K
    PROGRAMS += VBoxSDL
   endif

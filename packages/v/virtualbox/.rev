@@ -2509,4 +2509,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment>- Convert to systemd-sysusers (forwarded request 1112996 from gmbr3)</comment>
     <requestid>1113057</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>a4e7c69636e3c9193f435edb7893e848</srcmd5>
+    <version>7.0.12</version>
+    <time>1698097213</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119375</requestid>
+  </revision>
 </revisionlist>

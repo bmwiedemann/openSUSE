@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.10/Config.kmk
+Index: VirtualBox-7.0.12/Config.kmk
 ===================================================================
---- VirtualBox-7.0.10.orig/Config.kmk
-+++ VirtualBox-7.0.10/Config.kmk
+--- VirtualBox-7.0.12.orig/Config.kmk
++++ VirtualBox-7.0.12/Config.kmk
 @@ -6778,6 +6778,9 @@ TEMPLATE_VBoxR3HardenedExe_LDFLAGS.darwi
  ifeq ($(KBUILD_TARGET),linux)
   # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp

@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.10/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
+Index: VirtualBox-7.0.12/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
-+++ VirtualBox-7.0.10/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
+--- VirtualBox-7.0.12.orig/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
++++ VirtualBox-7.0.12/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
 @@ -4537,9 +4537,11 @@ static int supdrvTscDeltaThreadWait(PSUP
   */
  static void supdrvTscDeltaThreadStartMeasurement(PSUPDRVDEVEXT pDevExt, bool fForceAll)

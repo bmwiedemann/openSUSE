@@ -49,7 +49,7 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.0.10
+Version:        7.0.12
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -159,8 +159,6 @@ Patch38:        python311.patch
 Patch39:        fix_sdl_build.patch
 # Fixes for openSUSE Leap 15.X
 Patch40:        fixes_for_leap.patch
-# Fixes for kernel 6.5
-Patch41:        fixes_for_6.5.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -473,7 +471,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch38 -p1
 %patch39 -p1
 %patch40 -p1
-%patch41 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}

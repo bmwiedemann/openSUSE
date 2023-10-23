@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.10/src/VBox/Main/webservice/Makefile.kmk
+Index: VirtualBox-7.0.12/src/VBox/Main/webservice/Makefile.kmk
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Main/webservice/Makefile.kmk
-+++ VirtualBox-7.0.10/src/VBox/Main/webservice/Makefile.kmk
+--- VirtualBox-7.0.12.orig/src/VBox/Main/webservice/Makefile.kmk
++++ VirtualBox-7.0.12/src/VBox/Main/webservice/Makefile.kmk
 @@ -412,11 +412,12 @@ ifdef VBOX_GSOAP_INSTALLED
     endif
    endif

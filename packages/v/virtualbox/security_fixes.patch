@@ -5,10 +5,10 @@
 #
 # January 31, 2019 - Larry Finger
 #
-Index: VirtualBox-7.0.10/src/VBox/Additions/linux/installer/vboxadd.sh
+Index: VirtualBox-7.0.12/src/VBox/Additions/linux/installer/vboxadd.sh
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/installer/vboxadd.sh
-+++ VirtualBox-7.0.10/src/VBox/Additions/linux/installer/vboxadd.sh
+--- VirtualBox-7.0.12.orig/src/VBox/Additions/linux/installer/vboxadd.sh
++++ VirtualBox-7.0.12/src/VBox/Additions/linux/installer/vboxadd.sh
 @@ -1228,9 +1228,11 @@ dmnstatus()
      fi
  }
@@ -24,10 +24,10 @@ Index: VirtualBox-7.0.10/src/VBox/Additions/linux/installer/vboxadd.sh
  case "$1" in
  # Does setup without clean-up first and marks all kernels currently found on the
  # system so that we can see later if any were added.
-Index: VirtualBox-7.0.10/src/VBox/Installer/linux/vboxdrv.sh
+Index: VirtualBox-7.0.12/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Installer/linux/vboxdrv.sh
-+++ VirtualBox-7.0.10/src/VBox/Installer/linux/vboxdrv.sh
+--- VirtualBox-7.0.12.orig/src/VBox/Installer/linux/vboxdrv.sh
++++ VirtualBox-7.0.12/src/VBox/Installer/linux/vboxdrv.sh
 @@ -48,6 +48,9 @@ DEVICE=/dev/vboxdrv
  MODPROBE=/sbin/modprobe
  SCRIPTNAME=vboxdrv.sh

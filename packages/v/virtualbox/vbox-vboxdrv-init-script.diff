@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.10/src/VBox/Installer/linux/vboxdrv.sh
+Index: VirtualBox-7.0.12/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Installer/linux/vboxdrv.sh
-+++ VirtualBox-7.0.10/src/VBox/Installer/linux/vboxdrv.sh
+--- VirtualBox-7.0.12.orig/src/VBox/Installer/linux/vboxdrv.sh
++++ VirtualBox-7.0.12/src/VBox/Installer/linux/vboxdrv.sh
 @@ -29,11 +29,12 @@
  #
  ### BEGIN INIT INFO
@@ -66,10 +66,10 @@ Index: VirtualBox-7.0.10/src/VBox/Installer/linux/vboxdrv.sh
  
      # Sign kernel modules if kernel configuration requires it.
      if test "$(kernel_requires_module_signature)" = "1"; then
-Index: VirtualBox-7.0.10/Config.kmk
+Index: VirtualBox-7.0.12/Config.kmk
 ===================================================================
---- VirtualBox-7.0.10.orig/Config.kmk
-+++ VirtualBox-7.0.10/Config.kmk
+--- VirtualBox-7.0.12.orig/Config.kmk
++++ VirtualBox-7.0.12/Config.kmk
 @@ -3084,6 +3084,9 @@ else
   endif
   VBOX_MACOSX_ICON_FILE             ?= $(PATH_ROOT)/src/VBox/Artwork/darwin/NonOSE/VirtualBox.icns

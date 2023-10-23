@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.10/src/VBox/Additions/x11/Installer/98vboxadd-xclient
+Index: VirtualBox-7.0.12/src/VBox/Additions/x11/Installer/98vboxadd-xclient
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Additions/x11/Installer/98vboxadd-xclient
-+++ VirtualBox-7.0.10/src/VBox/Additions/x11/Installer/98vboxadd-xclient
+--- VirtualBox-7.0.12.orig/src/VBox/Additions/x11/Installer/98vboxadd-xclient
++++ VirtualBox-7.0.12/src/VBox/Additions/x11/Installer/98vboxadd-xclient
 @@ -31,15 +31,9 @@ for i in $HOME/.vboxclient-*.pid; do
      test -w $i || rm -f $i
  done

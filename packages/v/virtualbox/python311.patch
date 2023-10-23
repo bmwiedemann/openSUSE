@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.10/configure
+Index: VirtualBox-7.0.12/configure
 ===================================================================
---- VirtualBox-7.0.10.orig/configure
-+++ VirtualBox-7.0.10/configure
+--- VirtualBox-7.0.12.orig/configure
++++ VirtualBox-7.0.12/configure
 @@ -2178,7 +2178,7 @@ extern "C" int main(void)
  }
  EOF
@@ -11,10 +11,10 @@ Index: VirtualBox-7.0.10/configure
    for p in $PYTHONDIR; do
      for d in $SUPPYTHONLIBS; do
        for b in lib/x86_64-linux-gnu lib/i386-linux-gnu lib64 lib/64 lib; do
-Index: VirtualBox-7.0.10/src/VBox/Installer/linux/routines.sh
+Index: VirtualBox-7.0.12/src/VBox/Installer/linux/routines.sh
 ===================================================================
---- VirtualBox-7.0.10.orig/src/VBox/Installer/linux/routines.sh
-+++ VirtualBox-7.0.10/src/VBox/Installer/linux/routines.sh
+--- VirtualBox-7.0.12.orig/src/VBox/Installer/linux/routines.sh
++++ VirtualBox-7.0.12/src/VBox/Installer/linux/routines.sh
 @@ -444,7 +444,7 @@ maybe_run_python_bindings_installer() {
      # the VirtualBox API bindings. Needs to prevent double installs which waste
      # quite a bit of time.

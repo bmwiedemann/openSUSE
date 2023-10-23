@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Oct 21 19:27:40 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Restored changes entry accidentally deleted.
+
+-------------------------------------------------------------------
+Wed Oct 18 17:26:11 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to VirtualBox 7.0.12 (released October 17 2023 by Oracle)
+
+  Fixes the following:
+    CVE-2023-22098 (boo#1216363)
+    CVE-2023-22099 (boo#1216364)
+    CVE-2023-22100 (boo#1216365)
+
+  Patch file "fixes_for_6.5.patch" removed - fixed upstream.
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  VMM: Fixed using a debugger inside the guest under certain circumstances (bugs #21413 and #21546)
+  VMM: Fixed detection of VT-x being used by other hypervisors (bug #21867)
+  VMM: Introduced additional improvements in Split Lock Detection feature of recent Intel CPUs on Linux hosts (bug #20180)
+  GUI: Fixed issue when the nested hardware virtualization setting was not displayed in the VM details panel (bug #21707)
+  GUI: Introduced NLS update for Croatian, Indonesian, Italian, Japanese, Korean, Dutch and Turkish languages as well as added general look-and-feel improvements
+  Devices: Fixed black screen in Windows guests with multiple guest screens when 3D is disabled (7.0.10 regression)
+  Devices: Fixed PCI device identifiers for the VirtIO network interface (bug #21516)
+  Devices: Fixed VLAN support for the VirtIO network interface (bug #21778)
+  Devices: Fixed loading saved states when a TPM is configured (7.0.10 regression, bug #21773)
+  Networking: Fixed memory leaks in the VBoxIntNetSwitch process on macOS (bug #21752)
+  Networking: Fixed TCP connections with IP addresses ending on .2 when the NAT network attachment is used (bug #21513)
+  VRDP: Added general improvements
+  VBoxManage: Added improvements for "list usbfilters" command
+  Unattended: Added kick start file support for Oracle Linux 8 and Oracle Linux 9.
+  Main: Added more Linux OS subtypes
+  Host Services: Fixed Guest Properties service crash under rare circumstance
+  Linux Host and Guest: Fixed few "field-spanning write" kernel warnings (bugs #21410 and #21862)
+  Linux Guest Additions: Added more fixes for RHEL 8.9 and 9.3 kernel
+  Linux Guest Additions: Added more fixes for kernel 6.4
+  Linux Guest Additions: Added initial support for OpenSUSE 15.5 kernel
+  Linux Guest Additions: Added initial support for kernels 6.5 and 6.6
+  Linux Guest Additions: Added version reporting for "rcvboxadd status-kernel" and "rcvboxadd status-user" commands
+  BIOS: Restored support for ISA SCSI HBAs in the BIOS (bug #21736)
+
+-------------------------------------------------------------------
 Fri Sep 22 12:19:15 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Convert to systemd-sysusers
@@ -1426,6 +1469,7 @@ Tue Dec 24 21:59:07 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
   - EFI: Added support for booting from APFS
   - EFI: Added support for non-standard SATA and NVMe boot device paths created by OS X
 
+-------------------------------------------------------------------
 Tue Dec 24 01:49:21 UTC 2019 - Larry Finger <Larry.Finger@gmail.com>
 
   - Turn build of vboxvideo back on just in case VB is used with an older kernel,
@@ -6830,7 +6874,7 @@ Wed Feb 25 13:48:04 CET 2009 - suse-tux@gmx.de
 -------------------------------------------------------------------
 Tue Feb 24 16:46:46 CET 2009 - dmueller@suse.de
 
-- merge with factory
+ merge with factory
 
 -------------------------------------------------------------------
 Tue Feb 24 16:46:46 CET 2009 - suse-tux@gmx.de
@@ -7013,6 +7057,7 @@ Sat Oct 25 19:29:13 CEST 2008 - dmueller@suse.de
   * Web services: improved documentation and ﬁxed example (bug #1642)
 
  -------------------------------------------------------------------
+-------------------------------------------------------------------
 Sat Oct 25 14:25:40 CEST 2008 - suse-tux@gmx.de
 
 - new upstream version 2.0.4
