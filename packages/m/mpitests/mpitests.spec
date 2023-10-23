@@ -85,21 +85,6 @@ BuildRequires:  mpitests = %{version}
 Requires:       mpitests = %{version}
 %endif
 
-# openmpi was renamed to openmpi1 in Factory so only enable openmpi1 there
-# and openmpi everywhere else
-%if "%{flavor}" == "openmpi"
-%if 0%{?suse_version} > 1500
-# Disable for Factory
-ExclusiveArch:  do_not_build
-%endif
-%endif
-%if "%{flavor}" == "openmpi1"
-%if 0%{?suse_version} <= 1500
-# Disable for everything but Factory
-ExclusiveArch:  do_not_build
-%endif
-%endif
-
 %if "%{flavor}" == "mvapich2"
 ExcludeArch:    %{arm}
 %endif
@@ -130,29 +115,6 @@ ExclusiveArch:  x86_64
 # Disable hpc builds for SLE12
 ExclusiveArch:  do_not_build
 %endif
-%endif
-
-%if "%{flavor}" == "openmpi2" || "%{flavor}" == "openmpi2-gnu-hpc"
-%if %{sles_pre_15}
-# Disable openmpi2 builds for SLE12
-ExclusiveArch:  do_not_build
-%else
-ExcludeArch:    ppc64
-%endif
-%endif
-
-%if "%{flavor}" == "openmpi3" || "%{flavor}" == "openmpi3-gnu-hpc"
-%if 0%{!?is_opensuse} && 0%{?sle_version} < 150200
-#OpenMPI3 is not available in SLE < 15-SP2, so do not build these flavors unless
-#with openmpi3 is set
-%bcond_with mpitests_openmpi3
-%else
-%bcond_without mpitests_openmpi3
-%endif
-%if %{without mpitests_openmpi3}
-ExclusiveArch:  do_not_build
-%endif
-ExcludeArch:    ppc64
 %endif
 
 %if "%{flavor}" == "openmpi4" || "%{flavor}" == "openmpi4-gnu-hpc"
