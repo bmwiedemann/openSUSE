@@ -794,4 +794,12 @@
     (gl#saalen/highlight#238).</comment>
     <requestid>1118940</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1c69057608e9cf06d396446984e08bee</srcmd5>
+    <version>4.10</version>
+    <time>1698097212</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.10: Update astyle lib to version 3.4.10.</comment>
+    <requestid>1119368</requestid>
+  </revision>
 </revisionlist>
