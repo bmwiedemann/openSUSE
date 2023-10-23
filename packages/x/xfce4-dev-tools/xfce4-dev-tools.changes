@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Oct 18 10:08:54 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.1
+  * Remove -Wdeclaration-after-statement from list of enabled warnings
+  * Add check for xsltproc (#60)
+  * xdt-autogen: Fixed wrong make displayed on FreeBSD
+  * Add new macro XDT_CHECK_PACKAGE_BINARY
+  * Add new macro XDT_CHECK_OPTIONAL_FEATURE
+
+-------------------------------------------------------------------
+Thu Dec 22 13:52:07 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0
+  * Bump requirements for Xfce 4.18
+  * Remove _service file
+
+- Update to version 4.17.2
+  * Add new libsoup3 to the builder
+  * xfce-do-release: unification of update version 'sed' command
+  * xfce-do-release: match multiple spaces for git version replace
+  * bump copyright year to 2022
+
+- Update to version 4.17.1
+  * Warn about GLib functions newer than the checked GLib version
+  * Drop the test altogether
+  * xdt-autogen: Fix deprecation warning from grep 3.8
+  * Use GLib structured logging
+  * xdt-autogen: simplify do_version_check()
+  * Add new dependencies to the builder
+  * Do not run useless distcheck in CI
+  * Add favicon to Xfce API docs
+  * Bump our xfce builder to ubuntu 22.04
+  * Add autopoint to xfce-build
+  * Add a workaround for thunar documentation generation
+  * Update COPYING
+  * xfce-build: Fix build with SELinux (!58)
+  * xfce-update-news: Add release date and adjust separator
+  * xfce-do-release: Make warnings more visible
+  * xfce-do-release: Check the copyright year in `configure.ac*`
+  * xfce-do-release: Extend `configure.ac.in` update to `configure.ac`
+  * xdt-autogen: Fallback on `n` as IFS if `1` is not supported
+  * Fix exclusion of `xdt-autogen.in` in `.gitignore`
+  * Update developer.xfce.org home to add tumbler
+  * Add tumbler to xfce-build container
+  * Fix "image:" name in .gitlab-ci.yml
+  * Add libsensors4-dev to build-container
+  * Try to bump docker-dind image
+  * xfce-do-release: Update Appdata file
+  * gitlabci: Ensure distcheck still runs
+  * gitlabci: Add release stage that retains tarballs
+  * Add lm-sensors to dependencies, for xfce4-sensors-plugins CI
+  * Separate CFLAGS from CXXFLAGS
+
+- Update to version 4.17.0
+  * Try to build higher version available tag
+  * xfce-do-release: A review of confirmation prompts
+  * helpers: Improve script portability
+  * Improve Xfce Developer Center (developer.xfce.org)
+  * xdt-features.m4: Always enable compilation warnings
+  * g_locale_to_utf8 is misspelled as g_local_to_utf8
+  * xfce-build: Always pick the latest stable release
+  * Create the m4/ if it does not exists
+  * Use autoreconf to bootstrap xfce4-dev-tools itself
+  * Use autoreconf to bootstrap autotools
+  * xfce-do-release: Check for `docker` installed
+  * Add dependencies to build thunarx-python CI
+  * Fix location of apidocs
+  * xfce-build: Fix conditional in gitlabci
+  * Export apidocs as GitLab artifacts
+  * Get rid of glib-gettextize usage and XGETTEXT_ARGS custom args
+  * Remove obsolete AM_GLIB_GNU_GETTEXT
+  * helpers: Fix command-line if git-config core.editor is unset
+  * Update obsolete m4 macros
+  * helpers: Add 'xfce-build describe' command
+
+-------------------------------------------------------------------
 Wed Dec 23 02:10:37 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 4.16.0
