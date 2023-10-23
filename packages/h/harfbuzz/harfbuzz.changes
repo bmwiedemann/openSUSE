@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 18 09:05:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 8.2.2:
+  + Fix regression from 8.1.0 in shaping fonts with duplicate
+    feature tags.
+  + Fix regression from 8.2.0 in parsing CSS-style feature strings.
+  + Variable fonts instanciation now handles more tables.
+  + Various CMake build improvements.
+  + Various fixes to build without errors with gcc 4.9.2.
+
+-------------------------------------------------------------------
 Mon Sep 18 19:54:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 8.2.1:
