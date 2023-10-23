@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 20 12:10:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.7
+  * Adapt a test to different error message from SPIRV-Tools
+
+-------------------------------------------------------------------
 Wed Sep  6 22:58:36 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.6
