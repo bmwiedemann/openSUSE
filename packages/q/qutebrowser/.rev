@@ -1931,4 +1931,12 @@ Added:
   * New `qute://start` built-in start page (not set as the default</comment>
     <requestid>1104940</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ffc7cf26f2763d13115091f74b988c94</srcmd5>
+    <version>3.0.2</version>
+    <time>1698097231</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119463</requestid>
+  </revision>
 </revisionlist>
