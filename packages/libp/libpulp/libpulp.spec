@@ -17,7 +17,7 @@
 
 
 Name:           libpulp
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Userspace live patching library and tools
 License:        LGPL-2.1-only
