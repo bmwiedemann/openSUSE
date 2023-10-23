@@ -44,4 +44,30 @@
 - Use sle15_python_module_pythons</comment>
     <requestid>1093373</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>04fbb8095835428dd7cc0c70c7459f6b</srcmd5>
+    <version>0.12.0</version>
+    <time>1698097268</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.0 (bsc#1216480, CVE-2023-45805):
+  * Add callback to report download status
+  * Respect :all: in prefer_binary config
+  * security: Validate the package name extracted from the part
+    before the last hyphen
+  * Also fallback on &quot;token&quot; username for KeyringCliProvider
+  * Revert the handling of 403 and 404
+  * Handle 403 same as 401, and look for credentials on 404 error
+  * Close response files correctly
+  * Change FormatControl to respect the priority of only_binary
+    over no_binary
+  * Include useful message if VCS command not found
+  * Postpone the validation of hashes
+  * Migrate from deprecated pdm.pep517 to pdm.backend
+  * Tolerate invalid python requires
+  * Fix the dist info link evaluation
+  * PEP 714: rename the dist-info-metadata field to core-metadata
+
+- Update to version 0.6.2</comment>
+    <requestid>1119610</requestid>
+  </revision>
 </revisionlist>

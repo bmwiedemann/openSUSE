@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unearth
-Version:        0.9.1
+Version:        0.12.0
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/u/unearth/unearth
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cached-property >= 1.5.2 if %python-base < 3.8}
 BuildRequires:  %{python_module packaging >= 20}
-BuildRequires:  %{python_module pdm-pep517}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.25}
 BuildRequires:  fdupes
