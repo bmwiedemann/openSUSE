@@ -1,7 +1,7 @@
 #
 # spec file for package e-antic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,12 @@ Group:          Productivity/Scientific/Math
 URL:            https://github.com/flatsurf/e-antic
 
 Source:         https://github.com/flatsurf/e-antic/releases/download/%version/e-antic-%version.tar.gz
+Patch1:         flint3.diff
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  antic-devel
-BuildRequires:  arb-devel
 BuildRequires:  automake
 BuildRequires:  cereal-devel
 BuildRequires:  fdupes
-BuildRequires:  flint-devel >= 2.6
+BuildRequires:  flint-devel >= 3
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libboost_headers-devel
@@ -61,8 +60,7 @@ built on top of ANTIC.
 Summary:        Development files for e-antic
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
-Requires:       antic-devel
-Requires:       arb-devel
+Requires:       flint-devel
 Requires:       libboost_headers-devel
 
 %description devel
@@ -82,7 +80,8 @@ autoreconf -fi
 mkdir p%{$python_bin_suffix}/
 pushd p%{$python_bin_suffix}/
 %configure --disable-static --without-benchmark --without-byexample \
-	--without-pytest --without-doc PYTHON="python%{$python_bin_suffix}"
+	--without-pytest --without-doc PYTHON="python%{$python_bin_suffix}" \
+	CPPFLAGS="-I/usr/include/flint"
 %make_build
 popd
 }

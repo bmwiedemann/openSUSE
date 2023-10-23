@@ -71,4 +71,12 @@
     <comment>- Update to release 1.3.0</comment>
     <requestid>1040474</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1ff4ba190383d7e0bc09ba2921427d83</srcmd5>
+    <version>1.3.0</version>
+    <time>1698097226</time>
+    <user>anag+factory</user>
+    <comment>- Add flint3.diff to have the build succeed with flint-3.</comment>
+    <requestid>1119392</requestid>
+  </revision>
 </revisionlist>
