@@ -7,7 +7,7 @@ Fri Oct 20 11:45:14 UTC 2023 - Takashi Iwai <tiwai@suse.com>
   * Fixed invalid regex in src/create_symbols_file.py
   * Fixed passing null pointer to printf %s in tests
 - Fix signed integers overflows in au_read_header()
-  (bsc#121345, CVE-2022-33065):
+  (bsc#1213451, CVE-2022-33065):
   libsndfile-CVE-2022-33065.patch
 
 -------------------------------------------------------------------
