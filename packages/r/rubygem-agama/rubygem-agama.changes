@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct 23 11:33:26 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 5
+
+-------------------------------------------------------------------
+Fri Oct 20 08:37:22 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Do not reuse pre-existing swap partitions in the storage proposal
+  (gh#openSUSE/agama#806)
+
+-------------------------------------------------------------------
+Tue Oct 10 08:51:45 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Extended Software service to allow configuring selected patterns
+  (gh#openSUSE/agama#792)
+
+-------------------------------------------------------------------
+Wed Oct  4 19:51:32 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Add indication to btrfs volumes if it is transactional
+  (gh#openSUSE/agama#789)
+
+-------------------------------------------------------------------
+Fri Sep 29 14:37:25 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adapted storage settings for ALP Dolomite (gh#openSUSE/agama#782)
+
+-------------------------------------------------------------------
+Wed Sep 27 12:12:59 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Fix D-Bus type for SystemVGDevices and restore system VG devices
+  from previous settings (gh#openSUSE/agama#763).
+
+-------------------------------------------------------------------
 Tue Sep 26 15:57:08 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Version 4
