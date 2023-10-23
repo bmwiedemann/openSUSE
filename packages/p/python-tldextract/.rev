@@ -284,4 +284,38 @@ Bugfixes
     <comment></comment>
     <requestid>1096279</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>80a617fd31bcfe802a516ccbac4de223</srcmd5>
+    <version>5.0.1</version>
+    <time>1698097234</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.1:
+Bugfixes:
+  * Indicate MD5 not used in a security context (FIPS compliance)
+    #gh/john-kurkowski/tldextract#309
+Misc.:
+  * Increase typecheck aggression
+- Changes in 5.0.0:
+Breaking Changes:
+  * Migrate `ExtractResult` from `namedtuple` to `dataclass`
+    #gh/john-kurkowski/tldextract#306
+Bugfixes:
+  * Drop support for EOL Python 3.7
+- Changes in 4.0.0:
+Breaking Bugfixes:
+  * Always include suffix if private suffix enabled and private
+    suffix exists
+    #gh/john-kurkowski/tldextract#300
+- Changes in 3.5.0:
+Features:
+  * Support IPv6 addresses
+    #gh/john-kurkowski/tldextract#298
+Bugfixes:
+  * Accept only 4 decimal octet IPv4 addresses
+    #gh/john-kurkowski/tldextract#292
+  * Support IPv4 addresses with unicode dots
+  * Reject IPv4 addresses with trailing whitespaces + non-whitespaces
+    #gh/john-kurkowski/tldextract#293</comment>
+    <requestid>1119465</requestid>
+  </revision>
 </revisionlist>

@@ -17,9 +17,8 @@
 
 
 %define oldpython python
-%{?sle15_python_module_pythons}
 Name:           python-tldextract
-Version:        3.4.4
+Version:        5.0.1
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
@@ -29,17 +28,16 @@ Source:         https://files.pythonhosted.org/packages/source/t/tldextract/tlde
 Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module filelock >= 3.0.8}
 BuildRequires:  %{python_module idna >= 2.1.0}
-BuildRequires:  %{python_module requests >= 2.1.0}
-BuildRequires:  %{python_module requests-file >= 1.4}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-### SECTION test requirements
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.1.0}
+BuildRequires:  %{python_module requests-file >= 1.4}
 BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
-### /SECTION test requirements
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-filelock >= 3.0.8
@@ -50,6 +48,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Obsoletes:      %{oldpython}-tldextract <= 2.0.1
 BuildArch:      noarch
+%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
@@ -63,16 +62,14 @@ as well.
 %setup -q -n tldextract-%{version}
 
 %build
-sed -i 's:--pylint::' pytest.ini
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/tldextract
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py develop --user
 %pytest tests
 
 %post
