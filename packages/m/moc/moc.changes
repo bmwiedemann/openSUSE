@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 20 19:29:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop patches enabling/forward porting source to use of ffmpeg-5:
+  + 0005-avcodec-include.patch
+  + 0006-uncast-warnings.patch
+  + 0007-cur-dts.patch
+  + 0009-Add-https-to-is_url.patch
+- Following the above, explicitly limit libavcodec, libavformat and
+  libavutil to their ffmpeg-4 versions, as we are trying to remove
+  ffmpeg-5 from the distro, keeping just ffmpeg-4 as the
+  "fall-back version" for packages not ported to use ffmpeg-6 or
+  newer.
+
+-------------------------------------------------------------------
 Sat May 27 17:46:16 UTC 2023 - munix9@googlemail.com
 
 - Explicitly use ffmpeg-5 (fix build on Factory/Tumbleweed)
