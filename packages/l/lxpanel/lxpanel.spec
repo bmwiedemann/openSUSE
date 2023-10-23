@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wireless-tools
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(keybinder)
 BuildRequires:  pkgconfig(libcurl)
