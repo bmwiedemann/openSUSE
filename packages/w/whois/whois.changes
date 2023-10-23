@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 22 07:56:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.5.19:
+  * Fix english support for Japanese queries to not add again the
+    /e argument if it had already been provided by the user
+  * Add the .ye and .বাংলা (.xn--54b7fta0cc, Bangladesh) TLD
+    servers
+  * Update the .ba, .bb, .dk, .es, .gt, .jo, .ml, .mo, .pa, .pn,
+    .sv, .uy, .ﺍﻻﺭﺪﻧ (.xn--mgbayh7gpa, Jordan) and .澳門
+    (.xn--mix891f, Macao) TLD servers
+  * Upgrade the TLD URLs to HTTPS whenever possible
+  * Update the charset for whois.jprs.jp
+  * Remove 3 new gTLDs which are no longer active
+  * Remove support for the obsolete as32 dot notation
+
+-------------------------------------------------------------------
 Wed Jul 26 06:21:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.18:

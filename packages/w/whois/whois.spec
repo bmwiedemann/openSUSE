@@ -17,7 +17,7 @@
 
 
 Name:           whois
-Version:        5.5.18
+Version:        5.5.19
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later
@@ -61,7 +61,7 @@ echo "`grep -A1 "Files:" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  
 echo "`grep -A1 "Checksums-Sha1" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha1sum -c
 echo "`grep -A1 "Checksums-Sha256" %{SOURCE2} | grep %{name}_%{version}.tar.xz | cut -d\  -f2`  %{SOURCE0}" | sha256sum -c
 
-%autosetup -p1
+%autosetup -p1 -n %{name}
 
 %build
 %make_build all mkpasswd HAVE_LIBIDN2=1 HAVE_ICONV=1 \
