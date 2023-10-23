@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Sun Oct 22 22:21:49 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Added "fix_ia86_std_clamp.patch" that is required for Hyprland to
+  build on ia86.
+
+-------------------------------------------------------------------
+Thu Oct 19 14:12:29 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.31.0:
+  + A sizeable update for y'all, with quite a few breaking changes.
+  + Breaking changes:
+    - decoration:multisample_edges has been nuked. A better
+	  algorithm is used by default.
+	- misc:disable_hypr_chan has been removed. The new, more
+	  flexible option is misc:force_default_wallpaper with a default
+	  of -1. Setting to 0 will use the non-anime backgrounds
+	  exclusively and behave like the old disable_hypr_chan = true.
+	- All group-related options have been moved to group:, please
+	  see the docs here:
+	  https://wiki.hyprland.org/Configuring/Variables/#group
+	- Some makefile stuff has been changed/removed
+  + New features:    
+    - Plugin API: Add version query (#3545)
+    - dispatchers: Add option to center the cursor on the focused
+	  window when switching workspaces (#3528)
+    - includes: add missing log include to animatedvariable
+    - input: Add map to region options for tablets (#3425)
+    - internal: Add GTK portal as fallback (#3469)
+    - internal: add a watchdog
+    - layout: add new_window_takes_over_fullscreen mode 2
+    - makefile: fix using -d test for a binary file AND re-add
+	  missing portals conf (#3570)
+    - master: add option to drag and drop windows at cursor position
+	  (#3465)
+    - misc: add misc:new_window_takes_over_fullscreen
+    - renderer: add force_wallpaper instead of no_hypr_chan (#3459)
+    - renderer: add further conditions to solitary recheck
+    - renderer: Tearing implementation (#3441)
+    - workspacerules: Add a persistent workspace rule (#3530)
+  + Fixes:
+    - dispatchers: fix extra monitor offset when snapping floating
+	  (#3520)
+    - events: fixup empty events not being sent on unmap
+    - hyprctl: fix crash in unsafe state with activeworkspace
+    - input: fix unused variable warn
+    - input: fix warn
+    - input: fixup frame schedule conditions on mouse move
+    - input: fixup mouse down refocus conditions
+    - input: minor constraint fixes
+    - master: fix drop_at_cursor on workspace 2 (#3512)
+    - renderer: considerable fixes to repaint logic
+    - renderer: fix missing check for surfaceCount in rechecking
+	  solitary
+    - renderer: fixup solitary conditions
+  + Other:
+    - Debug: respect logging settings for wlr (#3584)
+    - animationmgr: damage floating windows on workspace anim
+    - build: Unbreak build without precompiled headers (#3400)
+    - build: guard execinfo.h via build systems (#3547)
+    - build: include version.h in PluginAPI.hpp (#3571)
+    - cleanup: Replace find() with C++20 starts_with(), ends_with()
+	  and contains() (#3572)
+    - config: mention force_default_wallpaper in default configs
+    - config: restore configCurrenPath after sourcing file (#3339)
+    - config: trim spaces in the rule field in windowrulev2
+    - crashreporter: avoid using empty CACHE_HOME
+    - dispatchers: support number as arg in changegroupactive
+	  (#3329)
+    - dwindle: Avoid rounding errors in window position (#3524)
+    - events: don't focus new window if spawned behind fullscreen
+    - events: set new window alpha to 0 if it's tiled behind
+	  fullscreen
+    - examples/readme: mention tearing
+    - groups: create group and groupbar config sections (#3522)
+    - groups: ensure consistency in dispatcher behavior with global
+	  group lock (#3531)
+    - hyprctl: avoid .pop_back() on empty string
+    - hyprctl: log activelyTearing for monitors
+    - input: avoid using the wrong surface in drag focus force
+    - input: properly track mouse focus on drag operations
+    - internal: Further unsafe state improvements (#3404)
+    - internal: better versioning (#3543)
+    - internal: include missing header (#3464)
+    - internal: removed Herobrine
+    - internal: use pragma once in version.h
+    - layershell: avoid configure on unchanged size
+    - layout: check for specialworkspace in floating toggle
+    - layout: don't discard fullscreen on new tiling
+    - log: log wlr errors regardless of env
+    - meson: Sort input file list (#3550)
+    - meson: use ln with force flag (#3568)
+    - monitor: ensure vrr on workspace change
+    - notifications: Schedule a frame on notification creation
+	  (#3556)
+    - pluginapi: remove starting newline in demangled func name
+	  (#3502)
+    - props: bump ver to v0.31.0
+    - render: stop locking SWC on tearing
+    - renderer: avoid spamming software cursor locks
+    - renderer: extract solitary check into frame handler
+    - renderer: lock software cursors while tearing
+    - renderer: nuke multisample_edges in favor of a faster
+	  algorithm
+    - renderer: optimize render pipeline when there is a solitary
+	  client
+    - renderer: remove old debug log
+    - screencopy: enhance error logging
+    - shaders: Remove redundant clamp of smoothsteps return value.
+	  (#3456)
+    - shaders: improve border rounding
+    - tearing: cleanup vars and avoid rendering before drm is ready
+    - watchdog: don't hang on exit
+    - watchdog: initialize after config
+    - watchdog: remove thread on destroy
+    - wsrules: check for workspace ID matches on numbered workspaces
+- Renamed 0002-fix-patched-wlroots-build.patch to
+  0001-fixed-patchd-wlroots-build.patch simply due to git doing this
+
+-------------------------------------------------------------------
 Sat Sep 23 08:11:28 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.30.0:

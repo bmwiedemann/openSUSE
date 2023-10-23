@@ -1,0 +1,31 @@
+From 913c8b81ad44e159e5f0b555a1254451065f317d Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Mon, 16 Oct 2023 21:26:45 +0200
+Subject: [PATCH] renderer: cast std::clamp args to be of the same type
+
+src/render/OpenGL.cpp:1769:41: error: no matching function for call to 'clamp'
+    const auto         FORCEWALLPAPER = std::clamp(*PFORCEWALLPAPER, -1L, 2L);
+                                        ^~~~~~~~~~
+/usr/include/c++/v1/__algorithm/clamp.h:38:1: note: candidate template ignored: deduced conflicting types for parameter '_Tp' ('int64_t' (aka 'long long') vs. 'long')
+clamp(const _Tp& __v, const _Tp& __lo, const _Tp& __hi)
+^
+/usr/include/c++/v1/__algorithm/clamp.h:27:1: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+clamp(const _Tp& __v, const _Tp& __lo, const _Tp& __hi, _Compare __comp)
+^
+---
+ src/render/OpenGL.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/render/OpenGL.cpp b/src/render/OpenGL.cpp
+index 8ad8e0c140..2d8ee92b2d 100644
+--- a/src/render/OpenGL.cpp
++++ b/src/render/OpenGL.cpp
+@@ -1766,7 +1766,7 @@ void CHyprOpenGLImpl::createBGTextureForMonitor(CMonitor* pMonitor) {
+     static auto* const PFORCEHYPRCHAN  = &g_pConfigManager->getConfigValuePtr("misc:force_hypr_chan")->intValue;
+     static auto* const PFORCEWALLPAPER = &g_pConfigManager->getConfigValuePtr("misc:force_default_wallpaper")->intValue;
+ 
+-    const auto         FORCEWALLPAPER = std::clamp(*PFORCEWALLPAPER, -1L, 2L);
++    const auto         FORCEWALLPAPER = std::clamp(*PFORCEWALLPAPER, static_cast<int64_t>(-1L), static_cast<int64_t>(2L));
+ 
+     // release the last tex if exists
+     const auto PTEX = &m_mMonitorBGTextures[pMonitor];
