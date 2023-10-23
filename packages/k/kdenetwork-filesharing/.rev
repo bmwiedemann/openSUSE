@@ -407,4 +407,14 @@
     <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
     <requestid>1117275</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>81c128f4b41c4adb06937207b8a7c9a4</srcmd5>
+    <version>23.08.2</version>
+    <time>1698097219</time>
+    <user>anag+factory</user>
+    <comment>- Fix non-working &quot;Share&quot; properties page in dolphin due to
+  incorrect group check (kde#475946, boo#1215374), add
+  0001-Remove-wrong-group-check-from-group-manager.patch</comment>
+    <requestid>1119414</requestid>
+  </revision>
 </revisionlist>

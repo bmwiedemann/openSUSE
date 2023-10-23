@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 21 23:42:57 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix non-working "Share" properties page in dolphin due to
+  incorrect group check (kde#475946, boo#1215374), add
+  0001-Remove-wrong-group-check-from-group-manager.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2

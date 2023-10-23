@@ -1,0 +1,66 @@
+From d1855c84ab5533fb2032dd830cbc7c9494398b19 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 22 Oct 2023 01:40:09 +0200
+Subject: [PATCH] Remove wrong group check from group manager
+
+Samba allows any group name for usershares. As long as the user is part
+of the group the group name does not affect the function of usershares
+at all.
+
+The "net" man page even spells out "serverops" as example, which is
+currently not accepted.
+
+The remaining checks when creating the group is still bogus, but is
+quite limited in scope, and has no effect when the group already exists.
+
+BUG: 475946
+---
+ samba/filepropertiesplugin/authhelper.cpp   |  4 ++--
+ samba/filepropertiesplugin/groupmanager.cpp | 13 -------------
+ 2 files changed, 2 insertions(+), 15 deletions(-)
+
+diff --git a/samba/filepropertiesplugin/authhelper.cpp b/samba/filepropertiesplugin/authhelper.cpp
+index d6c6873..bbd6533 100644
+--- a/samba/filepropertiesplugin/authhelper.cpp
++++ b/samba/filepropertiesplugin/authhelper.cpp
+@@ -112,11 +112,11 @@ ActionReply AuthHelper::addtogroup(const QVariantMap &args)
+     // TODO: add ability to resolve remote UID via KAuth and verify the request (or even reduce the arguments down to
+     //    only the group and resolve the UID)
+     // Keep this condition in sync with the one in groupmanager.cpp
+-    if (!group.contains(QLatin1String("samba")) || group.contains(QLatin1String("admin")) ||
++    if (group.contains(QLatin1String("admin")) ||
+         group.contains(QLatin1String("root"))) {
+         auto reply = ActionReply::HelperErrorReply();
+         reply.setErrorDescription(xi18nc("@info", "For security reasons, cannot make user <resource>%1</resource> a member of group <resource>%2</resource>. \
+-                                                   The group name is insecure; valid group names include the text <resource>samba</resource> and do not \
++                                                   The group name is insecure; valid group names do not \
+                                                    include the text <resource>admin</resource> or <resource>root</resource>."));
+         return reply;
+     }
+diff --git a/samba/filepropertiesplugin/groupmanager.cpp b/samba/filepropertiesplugin/groupmanager.cpp
+index 0659545..baab0bd 100644
+--- a/samba/filepropertiesplugin/groupmanager.cpp
++++ b/samba/filepropertiesplugin/groupmanager.cpp
+@@ -53,19 +53,6 @@ GroupManager::GroupManager(QObject *parent)
+                 // TODO: define a helpfulAction that creates the folder
+             }
+ 
+-            // Now see if the group is set to something valid
+-            // Keep this condition in sync with the one in authhelper.cpp
+-            else if (!m_targetGroup.contains(QLatin1String("samba"))
+-                     || m_targetGroup.contains(QLatin1String("admin"))
+-                     || m_targetGroup.contains(QLatin1String("root"))
+-                    ) {
+-                m_errorText = xi18nc("@info:status", "This folder can't be shared because <filename>%1</filename> has its group owner inappropriately set to <resource>%2</resource>, which is not allowed.", path, m_targetGroup);
+-                Q_EMIT errorTextChanged();
+-                m_errorExplanation = xi18nc("@info:status", "This error is caused by your distribution not setting up Samba sharing properly. You can fix it yourself by changing that folder's group owner to <resource>sambashares</resource> and making yourself a member of that group. Then restart the system.");
+-                Q_EMIT errorExplanationChanged();
+-                // TODO: define a helpfulAction that creates the group and applies it to the folder
+-            }
+-
+             // Now see if the user is a member of the group
+             else if (!groups.contains(m_targetGroup)) {
+                 m_errorText = xi18nc("@info:status", "This folder can't be shared because your user account isn't a member of the <resource>%1</resource> group.", m_targetGroup);
+-- 
+2.42.0
+

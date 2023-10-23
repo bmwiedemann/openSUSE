@@ -28,6 +28,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Patch0:         0001-Remove-wrong-group-check-from-group-manager.patch
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  extra-cmake-modules
 %if 0%{?suse_version} < 1550
