@@ -23,16 +23,17 @@
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <!--
       As of 20230831, this seems to be in sync
+      As of 20231016, this seem back out of sync
 
       This comes from setup.py which defines
       a 'VERSION = ' based off a tag; current
-      release is 'v8.0' (Tags) but master defines
-      it as 9.0 (per `grep -r 'VERSION =' xpra-html5`)
+      release is 'v9.0' (Tags) but master defines
+      it as 10.0 (per `grep -r 'VERSION =' xpra-html5`)
 
-    <param name="versionrewrite-pattern">v8.0</param>
-    <param name="versionrewrite-replacement">9.0</param>
-    -->
     <param name="versionrewrite-pattern">v(.*)</param>
+    -->
+    <param name="versionrewrite-pattern">v9.0</param>
+    <param name="versionrewrite-replacement">10.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>

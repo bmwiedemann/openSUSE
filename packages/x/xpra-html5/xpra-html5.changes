@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 16 14:38:37 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 10.0+git20231016.60cd4d0:
+  * update release notes
+  * jquery v3.7.1
+  * jquery ui v1.13.2
+  * update the release notes
+  * support more encoding options
+  * #266 move some encoding attributes to default settings
+  * simplify: getparam already uses default_settings
+  * add some debug logging
+  * tabs vs spaces
+  * use structured caps
+  * use more readable data structures
+  * bump version
+  * #263 v5 servers need this flag
+
+-------------------------------------------------------------------
 Thu Aug 31 12:38:39 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 9.0+git20230830.e5fb000:
