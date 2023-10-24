@@ -81,4 +81,14 @@
     <comment></comment>
     <requestid>1118309</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>79396306b9c73883f577c2b6707667c3</srcmd5>
+    <version>unknown</version>
+    <time>1698170884</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.3:
+  * Small update still fixing more edge cases causing a CPU core spike after exit.
+</comment>
+    <requestid>1119722</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 22 15:27:00 UTC 2023 - Nicolas Lorin <androw95220@gmail.com>
+
+- Update to version 1.2.3:
+  * Small update still fixing more edge cases causing a CPU core spike after exit.
+
+-------------------------------------------------------------------
 Sun Oct 15 12:44:00 UTC 2023 - Nicolas Lorin <androw95220@gmail.com>
 
 - Update to version 1.2.2:
