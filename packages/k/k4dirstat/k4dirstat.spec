@@ -17,15 +17,12 @@
 
 
 Name:           k4dirstat
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Graphical Disk Usage Utility
 License:        GPL-2.0-only AND LGPL-2.0-only
-Group:          Productivity/File utilities
 URL:            https://github.com/jeromerobert/k4dirstat
 Source0:        https://github.com/jeromerobert/k4dirstat/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-the-missing-cassert-include.patch
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
@@ -53,7 +50,8 @@ graphically.
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
