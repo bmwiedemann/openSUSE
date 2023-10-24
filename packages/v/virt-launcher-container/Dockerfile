@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+
 # Define the tags for OBS and build script builds:
 #!BuildTag: %%TAGPREFIX%%/virt-launcher:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/virt-launcher:%%PKG_VERSION%%.%RELEASE%
