@@ -43,7 +43,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(sm)

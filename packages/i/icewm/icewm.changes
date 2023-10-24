@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 22 14:23:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: No longer
+  needed nor used (in our case, we use the new default Imlib2).
+- Add explicit pkgconfig(gdk-pixbuf-2.0) BuildRequires: Needed to
+  build {_bindir}/icewm-menu-fdo.
+
+-------------------------------------------------------------------
 Tue Oct  3 09:26:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.4.3:
