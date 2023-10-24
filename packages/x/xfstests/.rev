@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1096181</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab6b9b350b2f4c2987d3928ce1bba3da</srcmd5>
+    <version>1.1.1+git.20230923</version>
+    <time>1698170971</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.1+git.20230923: (forwarded request 1119965 from dsterba)</comment>
+    <requestid>1119966</requestid>
+  </revision>
 </revisionlist>

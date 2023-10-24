@@ -25,9 +25,9 @@
 %define need_dmapi 1
 %endif
 
-%define version_unconverted 1.1.1+git.20230528
+%define version_unconverted 1.1.1+git.20230923
 Name:           xfstests
-Version:        1.1.1+git.20230528
+Version:        1.1.1+git.20230923
 Release:        0
 Summary:        Filesystem regression test suite
 License:        GPL-2.0-or-later
