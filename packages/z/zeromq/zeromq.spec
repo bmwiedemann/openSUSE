@@ -23,15 +23,14 @@
 %bcond_with pgm
 %endif
 Name:           zeromq
-Version:        4.3.4
+Version:        4.3.5
 Release:        0
 Summary:        Lightweight messaging kernel
-License:        LGPL-3.0-or-later
+License:        MPL-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            http://www.zeromq.org/
 Source:         https://github.com/zeromq/libzmq/releases/download/v%{version}/zeromq-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch1:         qemu-user.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -105,7 +104,6 @@ This package holds the development files for ZeroMQ.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 autoreconf -fi
@@ -137,19 +135,16 @@ make check %{?_smp_mflags} || make check || make check || make check || (cat ./t
 
 %files -n %{lib_name}
 %defattr(-,root,root,-)
-%license COPYING COPYING.LESSER
+%license LICENSE
 %{_libdir}/libzmq.so.*
 
 %files tools
 %defattr(-,root,root)
-%license COPYING COPYING.LESSER
-%defattr(-,root,root,-)
 %{_bindir}/curve_keygen
 
 %files devel
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog NEWS
-%license COPYING COPYING.LESSER
 %{_includedir}/zmq*
 %{_libdir}/libzmq.so
 %{_libdir}/pkgconfig/libzmq.pc
