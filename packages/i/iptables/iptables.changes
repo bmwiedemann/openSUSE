@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 21 06:03:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- The presence of nftables does not mandate that iptables use
+  backend-nft [bsc#1206383].
+
+-------------------------------------------------------------------
 Tue Oct 10 11:43:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.10

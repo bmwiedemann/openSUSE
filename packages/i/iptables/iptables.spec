@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
 BuildRequires:  pkgconfig(libnftnl) >= 1.1.6
 Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
-Requires:       (iptables-backend-nft if nftables)
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

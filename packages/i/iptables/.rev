@@ -673,4 +673,13 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1118312</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>15e9d65d1f8084a8980f3c589c837024</srcmd5>
+    <version>1.8.10</version>
+    <time>1698170857</time>
+    <user>anag+factory</user>
+    <comment>- The presence of nftables does not mandate that iptables use
+  backend-nft [bsc#1206383].</comment>
+    <requestid>1119324</requestid>
+  </revision>
 </revisionlist>
