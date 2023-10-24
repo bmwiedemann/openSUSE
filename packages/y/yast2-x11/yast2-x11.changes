@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 23 09:22:36 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Prevent testX from hanging in second stage if no supported WM
+  can be started (bsc#1216297)
+- 5.0.2
+
+-------------------------------------------------------------------
 Tue Oct 10 11:09:32 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - xkbctrl: use also kbd-model-map.xkb-generated (bsc#1211104)
