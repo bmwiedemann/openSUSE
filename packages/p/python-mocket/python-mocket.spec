@@ -57,6 +57,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  ca-certificates-mozilla
+BuildRequires:  redis
 %endif
 %python_subpackages
 
@@ -90,10 +91,15 @@ export SKIP_TRUE_HTTP=1
 # Ignore tests which are not supported on Python 3.6
 pytest_python3_ignore="--ignore tests/tests37 --ignore tests/tests38"
 %endif
-# Requires a running Redis server
-donttest="TrueRedisTestCase"
+
+%{_sbindir}/redis-server --version | grep ' v=7\.' && redis7args="--enable-debug-command yes --enable-module-command yes"
+%{_sbindir}/redis-server --port 6379 --save "" $redis7args &
+victims="$!"
+trap "kill $victims || true" EXIT
+sleep 2
+
 # Checks the ability to record a real request and response. Not available inside obs.
-donttest="$donttest or test_asyncio_record_replay"
+donttest="test_asyncio_record_replay"
 # The reference recording has different headers in this case
 %if %{pkg_vcmp python3-httpx < 0.23}
 donttest="$donttest or test_truesendall_with_dump_from_recording"

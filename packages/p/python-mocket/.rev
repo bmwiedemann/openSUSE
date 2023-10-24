@@ -234,4 +234,14 @@
     <comment></comment>
     <requestid>1086730</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>6c58582193dbbf44d24f5b79778420f0</srcmd5>
+    <version>3.11.1</version>
+    <time>1698170872</time>
+    <user>anag+factory</user>
+    <comment>- Run redis server on %check to fix redis tests that depends on a real
+  redis server running.
+</comment>
+    <requestid>1119947</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 10:15:32 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run redis server on %check to fix redis tests that depends on a real
+  redis server running.
+
+-------------------------------------------------------------------
 Fri May 12 10:42:12 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.11.1
