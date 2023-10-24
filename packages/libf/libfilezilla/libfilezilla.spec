@@ -16,11 +16,11 @@
 #
 
 
-%define major		40
+%define major		41
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.44.0
+Version:        0.45.0
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -78,16 +78,8 @@ Requires:       %{libname} = %{version}-%{release}
 %description -n	%{develname}
 Files needed for development with %{name}.
 
-
-
-
-
-
-
-
-
-
 # Need %%lang_package expanded for an extra conflict with an old library package
+
 %package lang
 # FIXME: consider using %%lang_package macro
 Summary:        Translations for package %{name}

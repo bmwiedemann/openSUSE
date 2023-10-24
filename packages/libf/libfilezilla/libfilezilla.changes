@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 10:54:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.45.0
+  * New features:
+    - fz::hash_accumulator now also works with hmac_sha256
+    - Added is_digest and digest_size to fz::hash_acumulator
+    - MSW: Added function to delete registry values
+  * Bugfixes and minor changes:
+    - Fixed a crash and a stall in the HTTP client
+
+-------------------------------------------------------------------
 Wed Jul 12 05:17:46 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.44.0
