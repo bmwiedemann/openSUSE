@@ -195,4 +195,5 @@ mtk-sof:	sound		snd-sof-mt8186 snd-sof-mt8195
 nxp-sr1xx:	platform
 btnxpuart:	platform
 qcom-sc8280xp:	sound		snd-soc-sc8280xp
+amlogic:	bluetooth
 ast:		platform

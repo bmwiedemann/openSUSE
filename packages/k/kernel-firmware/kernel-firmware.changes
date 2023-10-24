@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Oct 23 10:43:17 UTC 2023 - tiwai@suse.com
+
+- Update to version 20231019 (git commit d983107a2dfa):
+  * Fix the robot email script
+  * linux-firmware: Update AMD cpu microcode
+  * Add support for sending emails while processing a PR/patch
+  * amdgpu: update SMU 13.0.0 firmware
+  * linux-firmware: add Amlogic bluetooth firmware
+  * Add a script for a robot to open up pull requests
+  * i915: Add GuC v70.13.1 for DG2, TGL, ADL-P and MTL
+  * iwlwifi: add a missing FW from core80-39 release
+  * amdgpu: update raven firmware from 5.7 branch
+  * amdgpu: update SDMA 5.2.7 firmware from 5.7 branch
+  * amdgpu: update PSP 13.0.8 firmware from 5.7 branch
+  * amdgpu: update GC 10.3.7 firmware from 5.7 branch
+  * amdgpu: update DCN 3.1.6 firmware from 5.7 branch
+  * amdgpu: update SDMA 5.2.6 firmware from 5.7 branch
+  * amdgpu: update PSP 13.0.5 firmware from 5.7 branch
+  * amdgpu: update GC 10.3.6 firmware from 5.7 branch
+  * amdgpu: update VCN 4.0.0 firmware from 5.7 branch
+  * amdgpu: update SMU 13.0.0 firmware from 5.7 branch
+  * amdgpu: update SDMA 6.0.0 firmware from 5.7 branch
+  * amdgpu: update PSP 13.0.0 firmware from 5.7 branch
+  * amdgpu: update GC 11.0.0 firmware from 5.7 branch
+  * amdgpu: update vega20 firmware from 5.7 branch
+  * amdgpu: update beige goby firmware from 5.7 branch
+  * amdgpu: update vega12 firmware from 5.7 branch
+  * amdgpu: update vega10 firmware from 5.7 branch
+  * amdgpu: update dimgrey cavefish firmware from 5.7 branch
+  * amdgpu: update picasso firmware from 5.7 branch
+  * amdgpu: update navy flounder firmware from 5.7 branch
+  * amdgpu: update vangogh firmware from 5.7 branch
+  * amdgpu: update green sardine firmware from 5.7 branch
+  * amdgpu: update sienna cichlid firmware from 5.7 branch
+  * amdgpu: update PSP 13.0.11 firmware from 5.7 branch
+  * amdgpu: update GC 11.0.4 firmware from 5.7 branch
+  * amdgpu: update SDMA 6.0.1 firmware from 5.7 branch
+  * amdgpu: update PSP 13.0.4 firmware from 5.7 branch
+  * amdgpu: update GC 11.0.1 firmware from 5.7 branch
+  * amdgpu: update navi14 firmware from 5.7 branch
+  * amdgpu: update renoir firmware from 5.7 branch
+  * amdgpu: update navi12 firmware from 5.7 branch
+  * amdgpu: update VCN 4.0.4 firmware from 5.7 branch
+  * amdgpu: update SMU 13.0.7 firmware from 5.7 branch
+  * amdgpu: update SDMA 6.0.2 firmware from 5.7 branch
+  * amdgpu: update PSP 13.0.7 firmware from 5.7 branch
+  * amdgpu: update GC 11.0.2 firmware from 5.7 branch
+  * amdgpu: update yellow carp firmware from 5.7 branch
+  * amdgpu: update navi10 firmware from 5.7 branch
+  * amdgpu: update raven2 firmware from 5.7 branch
+  * amdgpu: update SMU 13.0.10 firmware from 5.7 branch
+  * amdgpu: update PSP 13.0.10 firmware from 5.7 branch
+  * amdgpu: update GC 11.0.3 firmware from 5.7 branch
+  * amdgpu: update aldebaran firmware from 5.7 branch
+
+-------------------------------------------------------------------
 Thu Oct 12 09:53:05 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Add Provides to sub-packages from kernel-firmware (bsc#1214789);
