@@ -12,7 +12,7 @@ After=network.target syslog.target
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
 ProtectHome=true
-PrivateDevices=true
+# PrivateDevices=true see boo#1216238
 ProtectHostname=true
 # ProtectClock=true see boo#1206835
 ProtectKernelTunables=true

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:43:37 UTC 2023 - malcolmlewis@opensuse.org
+
+- Comment out ProtectDevices in hardening, (boo#1216238). Modified:
+  * iodine.service.
+  * iodined.service.
+
+-------------------------------------------------------------------
 Sun Sep  3 14:31:36 UTC 2023 - malcolmlewis@opensuse.org
 
 - Comment out ProtectClock in hardening, (boo#1206835). Modified:
