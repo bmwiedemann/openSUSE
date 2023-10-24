@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 23 19:22:59 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Disable HPC flavors on i586
+
+-------------------------------------------------------------------
+Mon Oct 23 12:03:24 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Mon Jan  2 13:21:41 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.12.3:

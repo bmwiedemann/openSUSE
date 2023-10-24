@@ -60,4 +60,12 @@
     <comment></comment>
     <requestid>1049157</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>742ac278a2b794a89ae6a22a44212246</srcmd5>
+    <version>1.12.3</version>
+    <time>1698170930</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586 (forwarded request 1119883 from eeich)</comment>
+    <requestid>1119884</requestid>
+  </revision>
 </revisionlist>
