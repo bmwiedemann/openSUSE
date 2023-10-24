@@ -485,7 +485,6 @@ BuildRequires:  squashfs
 BuildRequires:  star
 BuildRequires:  strace
 BuildRequires:  tcpd-devel
-BuildRequires:  termcap
 BuildRequires:  terminfo
 BuildRequires:  udftools
 BuildRequires:  un-fonts
@@ -670,7 +669,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.97
+Version:        17.98
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

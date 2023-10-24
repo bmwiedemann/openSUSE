@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Oct 23 13:37:51 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#666
+- remove termcap dependency, it's not used (bsc#1216448)
+- 17.98
+
+--------------------------------------------------------------------
 Thu Oct 12 17:06:25 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#665
