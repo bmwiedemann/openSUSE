@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:43:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.25:
+  * All unit tests have been converted to Catch2 unit test
+    framework.
+  * TRNG can be consumed as a third-party component in CMake-based
+    projects supporting CMake’s find_package.
+  * Support building static or shared libraries depending on the
+    BUILD_SHARED_LIBS CMake variable.
+  * Cuda support has been revised to work with Cuda 12.2.
+  * Experimental support for AMD’s Heterogeneous-compute Interface
+    for Portabilit (HIP).
+  * Several minor fixes and improvements.
+- Add trng-external-catch.patch -- Allow using external Catch2 for
+  building and running tests (gh#rabauke/trng4#30).
+- Drop trng-drop-findtbb-cmake-module.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Jan 15 14:11:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add trng-drop-findtbb-cmake-module.patch: Drop outdated

@@ -1,7 +1,7 @@
 #
 # spec file for package trng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
-%global shlib libtrng4-24
+%global shlib libtrng4-25
 Name:           trng
-Version:        4.24
+Version:        4.25
 Release:        0
 Summary:        A Random Number Generator Library
 License:        BSD-3-Clause
 URL:            https://www.numbercrunch.de/trng/
 Source:         https://github.com/rabauke/trng4/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM trng-drop-findtbb-cmake-module.patch gh#rabauke/trng4#26 badshah400@gmail.com -- Drop outdated FindTBB.cmake module and depend on TBB's bundled cmake module
-Patch0:         trng-drop-findtbb-cmake-module.patch
+# PATCH-FIX-UPSTREAM trng-external-catch.patch gh#rabauke/trng4#30 badshah400@gmail.com -- Allow using external Catch2 for building and running tests
+Patch0:         trng-external-catch.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  tbb-devel
+BuildRequires:  cmake(Catch2) < 3.0
 
 %description
 TRNG is a pseudo random number generator C++ library.
@@ -69,11 +70,9 @@ applications against TRNG.
 
 %install
 %cmake_install
-find %{buildroot}%{_libdir} -name *.a -delete -print
 
 %check
-export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
-./%{__builddir}/tests/test_all --no_color_output -l test_suite -r short
+%ctest
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -86,6 +85,7 @@ export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
 %license COPYING
 %doc AUTHORS NEWS README.md doc/trng.pdf examples/
 %{_libdir}/libtrng4.so
+%{_libdir}/cmake/trng4/
 %{_includedir}/trng/
 
 %changelog
