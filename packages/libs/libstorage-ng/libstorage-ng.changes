@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Mon Oct 23 11:04:31 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#957
+- extended testsuite
+- 4.5.151
+
+--------------------------------------------------------------------
+Mon Oct 23 10:15:40 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#956
+- improved error handling in SystemCmd
+- 4.5.150
+
+--------------------------------------------------------------------
 Fri Oct 20 16:47:00 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#955
