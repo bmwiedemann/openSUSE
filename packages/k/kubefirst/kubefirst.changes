@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Oct 24 09:36:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.0:
+  * 2.3.0 adoption (#1866)
+  * 2.3.1 adoption in cli (#1865)
+  * feat: adopt rc56 (#1864)
+  * chore: remove prerun so we can support non-docker environments
+    (#1863)
+  * rc55 plus improved launch up env vars (#1862)
+  * fix: error handling (#1859)
+  * docs: fix Linux installation for other architecture than amd
+    (#1856)
+  * docs(README.md): fix asdf config (#1844)
+  * docs: add beta clouds (#1858)
+  * fix docs link in the readme (#1848)
+  * fix: debug validation (#1854)
+  * fixes bad error ref (#1855)
+  * fix refernced metrics (#1853)
+  * fix: adopt latest segment implementation in kubefirst (#1852)
+  * feat k3d (#1846)
+  * adopt rc42 in kubefirst launch (#1843)
+  * adjustments needed for launch up to install latest macro
+    (#1841)
+  * core: add DNS information to bugs issue template (#1834)
+  * feat: cli refactor (#1832)
+  * ci: upgrade the DavidAnson/markdownlint-cli2-action action
+    (#1828)
+  * ci: add a Markdown link checker action (#1818)
+  * ci: don't include PR number is commit linting lenght for titles
+    (#1822)
+  * ci: update config for markdown check for deprecated setting
+    (#1821)
+  * feat: civo create using launch up (#1820)
+  * docs: add info on running kubefirst CLI with the latest
+    gitops-template (#1819)
+  * ci: add a workflow to validate Markdown syntax (#1817)
+  * add a SECURITY.md file for security issues (close #883) (#1814)
+  * fix: runtime version fixes detokenization
+  * fix: aws containerRegistryURL metaphor duplication (#1797)
+  * ci: add a workflow to check if the commits are signed (#1803)
+  * chore: update launch version rc15 (#1800)
+  * chore: update launch version (#1799)
+  * runtime adjustment (#1798)
+  * fix: fix the type of v1alpha1ArgocdApplication (#1796)
+  * Api convention (#1795)
+  * fix: changing to API convention from runtime (#1794)
+  * cloudflare origin issuer adjustment (#1792)
+  * fix: restructure flag caps
+  * fix: enforce lowercase
+
+-------------------------------------------------------------------
+Tue Oct 10 05:51:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubefirst: CLI for the KubeFirst GitOps
+  Infrastructure & Application Delivery Platform

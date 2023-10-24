@@ -1,0 +1,5 @@
+<package name="kubefirst" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="kubefirst"/>
+</package>
