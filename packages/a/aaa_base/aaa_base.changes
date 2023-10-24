@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 23 07:15:15 UTC 2023 - lnussel@suse.de
+
+- Update to version 84.87+git20231023.f347d36:
+  * Remove %ghost lastlog entry, lastlog is long gone
+  * Remove shaky safe-rm and safe-rmdir helpers (bsc#1159103)
+
+-------------------------------------------------------------------
 Tue Aug 15 08:35:38 UTC 2023 - lnussel@suse.com
 
 - Update to version 84.87+git20230815.cab7b44:

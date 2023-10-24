@@ -4085,4 +4085,14 @@
   * files/u/b/old: make POSIX compliant</comment>
     <requestid>1104001</requestid>
   </revision>
+  <revision rev="494" vrev="1">
+    <srcmd5>27a7549b0474d1c29dca3e73a27f9a24</srcmd5>
+    <version>84.87+git20231023.f347d36</version>
+    <time>1698170797</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20231023.f347d36:
+  * Remove %ghost lastlog entry, lastlog is long gone
+  * Remove shaky safe-rm and safe-rmdir helpers (bsc#1159103)</comment>
+    <requestid>1119551</requestid>
+  </revision>
 </revisionlist>
