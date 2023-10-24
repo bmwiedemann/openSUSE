@@ -1,15 +1,13 @@
-Index: net-snmp-5.9/dist/snmptrapd.service
-===================================================================
---- net-snmp-5.9.orig/dist/snmptrapd.service
-+++ net-snmp-5.9/dist/snmptrapd.service
-@@ -7,6 +7,16 @@ Description=Simple Network Management Pr
+diff -Nurp net-snmp-5.9.3-orig/dist/snmptrapd.service net-snmp-5.9.3/dist/snmptrapd.service
+--- net-snmp-5.9.3-orig/dist/snmptrapd.service	2022-07-13 23:14:14.000000000 +0200
++++ net-snmp-5.9.3/dist/snmptrapd.service	2023-01-09 12:13:40.120216602 +0100
+@@ -7,6 +7,15 @@ Description=Simple Network Management Pr
  After=syslog.target network.target
  
  [Service]
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
-+ProtectHome=true
 +ProtectHostname=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true

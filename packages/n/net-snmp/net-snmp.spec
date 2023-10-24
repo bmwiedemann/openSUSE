@@ -30,7 +30,7 @@
 %define libname libsnmp40
 %bcond_without python2
 Name:           net-snmp
-Version:        5.9.3
+Version:        5.9.4
 Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
@@ -48,24 +48,22 @@ Source11:       snmptrapd.sysconfig
 Source20:       net-snmp-tmpfs.conf
 Source98:       net-snmp-rpmlintrc
 Source99:       baselibs.conf
-Patch1:         net-snmp-5.9.1-socket-path.patch
-Patch2:         net-snmp-5.9.1-testing-empty-arptable.patch
-Patch3:         net-snmp-5.9.2-pie.patch
-Patch4:         net-snmp-5.9.1-net-snmp-config-headercheck.patch
-Patch5:         net-snmp-5.9.1-perl-tk-warning.patch
-Patch6:         net-snmp-5.9.1-velocity-mib.patch
-Patch7:         net-snmp-5.9.1-snmpstatus-suppress-output.patch
-Patch8:         net-snmp-5.9.1-fix-Makefile.PL.patch
-Patch9:         net-snmp-5.9.1-modern-rpm-api.patch
-Patch10:        net-snmp-5.9.1-add-lustre-fs-support.patch
-Patch11:        net-snmp-5.9.1-harden_snmpd.service.patch
-Patch12:        net-snmp-5.9.1-harden_snmptrapd.service.patch
-Patch13:        net-snmp-5.9.1-suse-systemd-service-files.patch
-Patch14:        net-snmp-5.9.2-fix-create-v3-user-outfile.patch
-Patch15:        net-snmp-5.9.1-subagent-set-response.patch
-Patch16:        net-snmp-5.9.3-fixed-python2-bindings.patch
-Patch17:        net-snmp-5.9.3-grep.patch
-Patch18:        net-snmp-5.9.3-disallow_SET_requests_with_NULL_varbind.patch
+Patch1:         net-snmp-5.9.4-socket-path.patch
+Patch2:         net-snmp-5.9.4-testing-empty-arptable.patch
+Patch3:         net-snmp-5.9.4-pie.patch
+Patch4:         net-snmp-5.9.4-net-snmp-config-headercheck.patch
+Patch5:         net-snmp-5.9.4-perl-tk-warning.patch
+Patch6:         net-snmp-5.9.4-snmpstatus-suppress-output.patch
+Patch7:         net-snmp-5.9.4-fix-Makefile.PL.patch
+Patch8:         net-snmp-5.9.4-modern-rpm-api.patch
+Patch9:         net-snmp-5.9.4-add-lustre-fs-support.patch
+Patch10:        net-snmp-5.9.4-harden_snmpd.service.patch
+Patch11:        net-snmp-5.9.4-harden_snmptrapd.service.patch
+Patch12:        net-snmp-5.9.4-suse-systemd-service-files.patch
+Patch13:        net-snmp-5.9.4-fix-create-v3-user-outfile.patch
+Patch14:        net-snmp-5.9.4-subagent-set-response.patch
+Patch15:        net-snmp-5.9.4-fixed-python2-bindings.patch
+Patch16:        net-snmp-5.9.4-add-netgroups-functionality.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
@@ -241,7 +239,7 @@ Net-SNMP toolkit library.
 %autopatch -p1
 
 %build
-MIBS="misc/ipfwacc ucd-snmp/diskio etherlike-mib rmon-mib velocity smux \
+MIBS="misc/ipfwacc ucd-snmp/diskio etherlike-mib rmon-mib smux \
       ip-mib/ipv4InterfaceTable ip-mib/ipv6InterfaceTable \
       ip-mib/ipDefaultRouterTable ip-mib/ipAddressPrefixTable \
       ip-mib/ipv6ScopeZoneIndexTable ip-mib/ipIfStatsTable \
@@ -251,7 +249,6 @@ MIBS="misc/ipfwacc ucd-snmp/diskio etherlike-mib rmon-mib velocity smux \
 MIBS="$MIBS ucd-snmp/lmsensorsMib"
 %endif
 
-autoreconf -fvi
 %configure \
 	--with-sys-contact="root@localhost" \
 	--with-sys-location="unknown" \

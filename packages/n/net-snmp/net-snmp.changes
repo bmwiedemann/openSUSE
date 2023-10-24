@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Oct 17 13:56:01 UTC 2023 - Alexander Bergmann <abergmann@suse.com>
+
+- Update to net-snmp-5.9.4 (bsc#1214364).
+  add (rename):
+  * net-snmp-5.9.4-add-lustre-fs-support.patch
+  * net-snmp-5.9.4-fix-create-v3-user-outfile.patch
+  * net-snmp-5.9.4-fixed-python2-bindings.patch
+  * net-snmp-5.9.4-fix-Makefile.PL.patch
+  * net-snmp-5.9.4-modern-rpm-api.patch
+  * net-snmp-5.9.4-net-snmp-config-headercheck.patch
+  * net-snmp-5.9.4-perl-tk-warning.patch
+  * net-snmp-5.9.4-pie.patch
+  * net-snmp-5.9.4-snmpstatus-suppress-output.patch
+  * net-snmp-5.9.4-socket-path.patch
+  * net-snmp-5.9.4-subagent-set-response.patch
+  * net-snmp-5.9.4-suse-systemd-service-files.patch
+  * net-snmp-5.9.4-testing-empty-arptable.patch
+  delete (now part of v5.9.4):
+  * net-snmp-5.9.3-disallow_SET_requests_with_NULL_varbind.patch
+  * net-snmp-5.9.3-grep.patch
+  delete (rename):
+  * net-snmp-5.9.1-add-lustre-fs-support.patch
+  * net-snmp-5.9.2-fix-create-v3-user-outfile.patch
+  * net-snmp-5.9.3-fixed-python2-bindings.patch
+  * net-snmp-5.9.1-fix-Makefile.PL.patch
+  * net-snmp-5.9.1-modern-rpm-api.patch
+  * net-snmp-5.9.1-net-snmp-config-headercheck.patch
+  * net-snmp-5.9.1-perl-tk-warning.patch
+  * net-snmp-5.9.2-pie.patch
+  * net-snmp-5.9.1-snmpstatus-suppress-output.patch
+  * net-snmp-5.9.1-socket-path.patch
+  * net-snmp-5.9.1-subagent-set-response.patch
+  * net-snmp-5.9.1-suse-systemd-service-files.patch
+  * net-snmp-5.9.1-testing-empty-arptable.patch
+- Removing legacy MIBs used by Velocity Software (jira#PED-6416).
+  delete:
+  * net-snmp-5.9.1-velocity-mib.patch
+- Re-add support for hostname netgroups that was removed accidentally and
+  previously added with FATE#316305 (bsc#1207697).
+  '@hostgroup' can be specified for multiple hosts
+  add:
+  * net-snmp-5.9.4-add-netgroups-functionality.patch
+- Hardening systemd services setting "ProtectHome=true" caused home directory
+  size and allocation to be listed incorrectly (bsc#1206044).
+  add (rename):
+  * net-snmp-5.9.4-harden_snmpd.service.patch
+  * net-snmp-5.9.4-harden_snmptrapd.service.patch
+  delete (rename):
+  * net-snmp-5.9.1-harden_snmpd.service.patch
+  * net-snmp-5.9.1-harden_snmptrapd.service.patch
+
+-------------------------------------------------------------------
 Thu Jan  5 11:49:22 UTC 2023 - Alexander Bergmann <abergmann@suse.com>
 
 - Fixed NULL pointer exception issue when handling ipDefaultTTL or
