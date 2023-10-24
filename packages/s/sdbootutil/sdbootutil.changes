@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:36:16 UTC 2023 - lnussel@suse.de
+
+- Update to version 1+git20231023.873adb9:
+  * Use correct image name on aarch64
+
+-------------------------------------------------------------------
 Thu Oct 19 06:15:45 UTC 2023 - Fabian Vogt <fvogt@suse.de>
 
 - Add changes from gh#openSUSE/sdbootutil#21:
