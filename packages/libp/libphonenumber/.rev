@@ -40,4 +40,12 @@
     <comment>- absl is also needed for using the -devel package (forwarded request 1095367 from favogt)</comment>
     <requestid>1095368</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b24b540b0745c510c7a440235a6ebf69</srcmd5>
+    <version>8.13.23</version>
+    <time>1698170863</time>
+    <user>anag+factory</user>
+    <comment>libphonenumber 8.13.28 (forwarded request 1119441 from AndreasStieger)</comment>
+    <requestid>1119880</requestid>
+  </revision>
 </revisionlist>

@@ -16,25 +16,24 @@
 #
 
 
-Name:           libphonenumber
-Version:        8.13.15
-Release:        0
 %define lib_ver 8
 %define lib_ver2 8.13
+Name:           libphonenumber
+Version:        8.13.23
+Release:        0
 Summary:        Library for parsing, formatting, and validating international phone numbers
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/libphonenumber
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-DOWNSTREAM (for using system abseil)
-Patch1:         0001-Build-with-C-17.patch
 # PATCH-FIX-DOWNSTREAM (see https://github.com/google/libphonenumber/pull/2874)
 Patch2:         0001-Revert-Fix-typo-in-arguments-to-add_metadata_gen_tar.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_date_time-devel >= 1.40.0
+BuildRequires:  libboost_system-devel >= 1.40.0
+BuildRequires:  libboost_thread-devel >= 1.40.0
+BuildRequires:  pkgconfig
 # Actual version requirement unknown
 BuildRequires:  cmake(absl)
 BuildRequires:  pkgconfig(gtest)
@@ -68,7 +67,6 @@ Google's common Java, C++ and JavaScript library for parsing, formatting,
 and validating international phone numbers. The Java version is optimized
 for running on smartphones, and is used by the Android framework since 4.0
 (Ice Cream Sandwich).
-
 
 This package provides libraries and header files for developing applications
 that use libphonenumber.

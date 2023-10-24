@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 22 13:41:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.13.28:
+  * Updated phone metadata, carrier data, geocoding data, short
+    number metadata for a number of region and calling codes
+- drop 0001-Build-with-C-17.patch now upstream
+
+-------------------------------------------------------------------
 Mon Jun 26 09:00:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - absl is also needed for using the -devel package
