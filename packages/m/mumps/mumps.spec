@@ -1,7 +1,7 @@
 #
-# spec file for package mumps
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,35 +55,19 @@ ExclusiveArch:  do_not_build
 %bcond_without scotch
 %endif
 
-%if "%{flavor}" == "openmpi1"
-%{?DisOMPI1}
-%define mpi_family  openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 1
-%bcond_with hpc
-%endif
-
-%if "%{flavor}" == "openmpi2"
-%{?DisOMPI2}
-%define mpi_family  openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 2
-%bcond_with hpc
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%{?DisOMPI3}
-%define mpi_family  openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 3
-%bcond_with hpc
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %{?DisOMPI4}
 %define mpi_family  openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 4
+%bcond_with hpc
+%endif
+
+%if "%{flavor}" == "openmpi5"
+%{?DisOMPI5}
+%define mpi_family  openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 5
 %bcond_with hpc
 %endif
 
@@ -93,37 +77,19 @@ ExclusiveArch:  do_not_build
 %bcond_with hpc
 %endif
 
-%if "%{flavor}" == "scotch-openmpi1"
-%{?DisOMPI1}
-%define mpi_family  openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 1
-%bcond_with hpc
-%bcond_without scotch
-%endif
-
-%if "%{flavor}" == "scotch-openmpi2"
-%{?DisOMPI2}
-%define mpi_family  openmpi
-%define mpi_ver 2
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%bcond_with hpc
-%bcond_without scotch
-%endif
-
-%if "%{flavor}" == "scotch-openmpi3"
-%{?DisOMPI3}
-%define mpi_family  openmpi
-%define mpi_ver 3
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%bcond_with hpc
-%bcond_without scotch
-%endif
-
 %if "%{flavor}" == "scotch-openmpi4"
 %{?DisOMPI4}
 %define mpi_family  openmpi
 %define mpi_ver 4
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%bcond_with hpc
+%bcond_without scotch
+%endif
+
+%if "%{flavor}" == "scotch-openmpi5"
+%{?DisOMPI5}
+%define mpi_family  openmpi
+%define mpi_ver 5
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %bcond_with hpc
 %bcond_without scotch
@@ -136,36 +102,6 @@ ExclusiveArch:  do_not_build
 %bcond_without scotch
 %endif
 
-%if "%{flavor}" == "gnu-openmpi-hpc"
-%{?DisOMPI1}
-%undefine c_f_ver
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 1
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu-openmpi2-hpc"
-%{?DisOMPI2}
-%undefine c_f_ver
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 2
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%undefine c_f_ver
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 3
-%bcond_without hpc
-%endif
-
 %if "%{flavor}" == "gnu-openmpi4-hpc"
 %{?DisOMPI4}
 %undefine c_f_ver
@@ -173,6 +109,16 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu-openmpi5-hpc"
+%{?DisOMPI5}
+%undefine c_f_ver
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 5
 %bcond_without hpc
 %endif
 
@@ -191,36 +137,6 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
-%if "%{flavor}" == "gnu7-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 7
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 1
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 7
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 2
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 7
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 3
-%bcond_without hpc
-%endif
-
 %if "%{flavor}" == "gnu7-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 7
@@ -228,6 +144,16 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 7
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 5
 %bcond_without hpc
 %endif
 
@@ -246,36 +172,6 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
-%if "%{flavor}" == "gnu8-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 8
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 1
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 8
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 2
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 8
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 3
-%bcond_without hpc
-%endif
-
 %if "%{flavor}" == "gnu8-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 8
@@ -283,6 +179,16 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 8
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 5
 %bcond_without hpc
 %endif
 
@@ -301,36 +207,6 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
-%if "%{flavor}" == "gnu9-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 9
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 1
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 9
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 2
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 9
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 3
-%bcond_without hpc
-%endif
-
 %if "%{flavor}" == "gnu9-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 9
@@ -338,6 +214,16 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 9
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 5
 %bcond_without hpc
 %endif
 
@@ -356,36 +242,6 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
-%if "%{flavor}" == "gnu10-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 10
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 1
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 10
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 2
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 10
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 3
-%bcond_without hpc
-%endif
-
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 10
@@ -393,6 +249,16 @@ ExclusiveArch:  do_not_build
 %global mpi_family openmpi
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
 %define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 10
+# macro mpi is used by macros for master package
+%global mpi_family openmpi
+%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
+%define mpi_ver 5
 %bcond_without hpc
 %endif
 
@@ -447,6 +313,7 @@ ExclusiveArch:  do_not_build
 %define package_name %{pname}%{?scotch:-%{scotch}}%{?my_suffix}
 %define libname lib%{pname}%{?scotch:-%{scotch}}%{?so_ver}%{?my_suffix}
 %else
+ExcludeArch:    %ix86
 %{!?compiler_family:%global compiler_family gnu}
 %{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
 
@@ -508,7 +375,7 @@ Group:          System/Libraries
 Requires:       lua-lmod >= 7.6.1
  %endif
 %if %{without hpc}
-Conflicts:      lib%{pname}%{?scotch:-%{scotch}}5%{?my_suffix} >= 5.3.5 
+Conflicts:      lib%{pname}%{?scotch:-%{scotch}}5%{?my_suffix} >= 5.3.5
 %endif
 
 %description -n %{libname}
