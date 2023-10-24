@@ -250,4 +250,14 @@
     <comment></comment>
     <requestid>1084761</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>233ca8f58764284a82381782ddcfb660</srcmd5>
+    <version>0.5.20231024.0226cb7</version>
+    <time>1698170964</time>
+    <user>anag+factory</user>
+    <comment>- Handle %hpc_localstatedir and %hpc_sharedstatedir only when
+  changed from %_localstatedir and %_sharedstatedir to avoid
+  infinite recursion. (forwarded request 1119953 from eeich)</comment>
+    <requestid>1119954</requestid>
+  </revision>
 </revisionlist>

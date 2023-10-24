@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:09:47 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Handle %hpc_localstatedir and %hpc_sharedstatedir only when
+  changed from %_localstatedir and %_sharedstatedir to avoid
+  infinite recursion.
+
+-------------------------------------------------------------------
 Mon May  1 07:43:38 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Do not redefine _localstatedir and _sharedstatedir for cmake:
