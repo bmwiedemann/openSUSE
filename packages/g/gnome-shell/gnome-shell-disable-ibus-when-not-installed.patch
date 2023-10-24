@@ -7,14 +7,14 @@ Subject: [PATCH] Disable ibus when out of CJK
  js/misc/ibusManager.js | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-Index: gnome-shell-3.36.1/js/misc/ibusManager.js
+Index: gnome-shell-45.0/js/misc/ibusManager.js
 ===================================================================
---- gnome-shell-3.36.1.orig/js/misc/ibusManager.js
-+++ gnome-shell-3.36.1/js/misc/ibusManager.js
-@@ -31,6 +31,10 @@ function getIBusManager() {
- 
- var IBusManager = class {
+--- gnome-shell-45.0.orig/js/misc/ibusManager.js
++++ gnome-shell-45.0/js/misc/ibusManager.js
+@@ -59,6 +59,10 @@ class IBusManager extends Signals.EventE
      constructor() {
+         super();
+ 
 +        let daemon = Gio.File.new_for_path('/usr/bin/ibus-daemon');
 +        if (!daemon.query_exists(null))
 +            return;
@@ -22,7 +22,7 @@ Index: gnome-shell-3.36.1/js/misc/ibusManager.js
          IBus.init();
  
          // This is the longest we'll keep the keyboard frozen until an input
-@@ -59,6 +63,10 @@ var IBusManager = class {
+@@ -114,6 +118,10 @@ class IBusManager extends Signals.EventE
      }
  
      _spawn(extraArgs = []) {
@@ -31,5 +31,5 @@ Index: gnome-shell-3.36.1/js/misc/ibusManager.js
 +            return;
 +
          try {
-             let cmdLine = ['ibus-daemon', '--panel', 'disable', ...extraArgs];
-             let launcher = Gio.SubprocessLauncher.new(Gio.SubprocessFlags.NONE);
+             const cmdLine = ['ibus-daemon', '--panel', 'disable', ...extraArgs];
+             const launchContext = global.create_app_launch_context(0, -1);

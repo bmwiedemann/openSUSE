@@ -32,16 +32,14 @@ URL:            https://wiki.gnome.org/Projects/GnomeShell
 #Source0:        https://download.gnome.org/sources/gnome-shell/41/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.zst
 
-# SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
-Source1:        aboutMenu.js
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
-Source2:        noise-texture.png
+Source1:        noise-texture.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-private-connection.patch bnc#751211 bgo#646187 dimstar@opensuse.org -- create private connections if the user is not authorized
 Patch1:         gnome-shell-private-connection.patch
 # PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
 Patch7:         gnome-shell-executable-path-not-absolute.patch
-# PATCH-NEEDS-REBASE gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing WAS: PATCH-FIX-UPSTREAM
+# PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
 Patch8:         gnome-shell-exit-crash-workaround.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
@@ -186,7 +184,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %setup -q
 %patch1 -p1
 %patch7 -p1
-#patch8 -p1
+%patch8 -p1
 
 %if 0%{?sle_version}
 %patch1001 -p1
@@ -204,10 +202,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1013 -p1
 %endif
 
-cp %{SOURCE2} data/theme/
-%if 0%{?sle_version}
-cp %{SOURCE1} js/ui/
-%endif
+cp %{SOURCE1} data/theme/
 
 %build
 %meson \

@@ -1,8 +1,8 @@
-Index: gnome-shell-44.beta/src/main.c
+Index: gnome-shell-45.0/src/main.c
 ===================================================================
---- gnome-shell-44.beta.orig/src/main.c
-+++ gnome-shell-44.beta/src/main.c
-@@ -680,7 +680,7 @@ main (int argc, char **argv)
+--- gnome-shell-45.0.orig/src/main.c
++++ gnome-shell-45.0/src/main.c
+@@ -736,7 +736,7 @@ main (int argc, char **argv)
    g_object_unref (shell_global_get ());
  
    g_debug ("Tearing down the mutter context");

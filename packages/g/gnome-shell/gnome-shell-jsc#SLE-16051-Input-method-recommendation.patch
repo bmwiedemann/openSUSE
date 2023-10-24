@@ -1,10 +1,11 @@
-diff -Nura gnome-shell-40.0/js/ui/status/keyboard.js gnome-shell-40.0_new/js/ui/status/keyboard.js
---- gnome-shell-40.0/js/ui/status/keyboard.js	2021-03-20 20:17:01.436522500 +0800
-+++ gnome-shell-40.0_new/js/ui/status/keyboard.js	2021-03-30 20:02:18.835931202 +0800
-@@ -264,6 +264,39 @@
-         this._settings.connect('changed::%s'.format(this._KEY_INPUT_SOURCES), this._emitInputSourcesChanged.bind(this));
-         this._settings.connect('changed::%s'.format(this._KEY_KEYBOARD_OPTIONS), this._emitKeyboardOptionsChanged.bind(this));
-         this._settings.connect('changed::%s'.format(this._KEY_PER_WINDOW), this._emitPerWindowChanged.bind(this));
+Index: gnome-shell-45.0/js/ui/status/keyboard.js
+===================================================================
+--- gnome-shell-45.0.orig/js/ui/status/keyboard.js
++++ gnome-shell-45.0/js/ui/status/keyboard.js
+@@ -274,6 +274,39 @@ class InputSourceSessionSettings extends
+         this._settings.connect(`changed::${this._KEY_INPUT_SOURCES}`, this._emitInputSourcesChanged.bind(this));
+         this._settings.connect(`changed::${this._KEY_KEYBOARD_OPTIONS}`, this._emitKeyboardOptionsChanged.bind(this));
+         this._settings.connect(`changed::${this._KEY_PER_WINDOW}`, this._emitPerWindowChanged.bind(this));
 +
 +        let sources = this._settings.get_value(this._KEY_INPUT_SOURCES);
 +        let nSources = sources.n_children();

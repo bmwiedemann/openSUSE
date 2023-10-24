@@ -2169,4 +2169,23 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/65cde18786e2bea8ffe33317b86182207e419240 (forwarded request 1117090 from yfjiang)</comment>
     <requestid>1117448</requestid>
   </revision>
+  <revision rev="242" vrev="4">
+    <srcmd5>f92b06acfdd03f5023322c5866c8e650</srcmd5>
+    <version>45.0</version>
+    <time>1698170844</time>
+    <user>anag+factory</user>
+    <comment>- Rebase patches for SLE-15-SP6 (bsc#1216072):
+  + Rebase endSession-dialog-update-time-label-every-sec.patch
+  + Rebase gnome-shell-disable-ibus-when-not-installed.patch
+  + Rebase gnome-shell-domain.patch
+  + Rebase gnome-shell-exit-crash-workaround.patch
+  + Rebase gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+  + Rebase gnome-shell-gdm-login-applet.patch
+  + Rebase gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+  + Rebase gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+  + Rebase gnome-shell-screen-disappear.patch
+  + Remove aboutMenu.js
+</comment>
+    <requestid>1119676</requestid>
+  </revision>
 </revisionlist>

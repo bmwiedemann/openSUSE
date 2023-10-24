@@ -1,8 +1,8 @@
-Index: gnome-shell-44.beta/js/ui/endSessionDialog.js
+Index: gnome-shell-45.0/js/ui/endSessionDialog.js
 ===================================================================
---- gnome-shell-44.beta.orig/js/ui/endSessionDialog.js
-+++ gnome-shell-44.beta/js/ui/endSessionDialog.js
-@@ -296,7 +296,7 @@ class EndSessionDialog extends ModalDial
+--- gnome-shell-45.0.orig/js/ui/endSessionDialog.js
++++ gnome-shell-45.0/js/ui/endSessionDialog.js
+@@ -300,7 +300,7 @@ class EndSessionDialog extends ModalDial
          this.contentLayout.add_child(this._applicationSection);
  
          this._sessionSection = new Dialog.ListSection({
@@ -11,14 +11,14 @@ Index: gnome-shell-44.beta/js/ui/endSessionDialog.js
          });
          this.contentLayout.add_child(this._sessionSection);
  
-@@ -758,8 +758,8 @@ class EndSessionDialog extends ModalDial
+@@ -753,8 +753,8 @@ class EndSessionDialog extends ModalDial
              this._applications.push(inhibitor);
          }
  
 -        if (dialogContent.showOtherSessions)
--            this._loadSessions();
-+        // if (dialogContent.showOtherSessions) // Hide _sessionList for jsc#SLE-9267
-+        //    this._loadSessions();
+-            this._loadSessions().catch(logError);
++        //if (dialogContent.showOtherSessions)
++            //this._loadSessions().catch(logError);
  
          let updatesAllowed = this._updatesPermission && this._updatesPermission.allowed;
  

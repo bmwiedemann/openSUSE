@@ -1,12 +1,12 @@
-diff --git a/js/gdm/authPrompt.js b/js/gdm/authPrompt.js
-index d2c9a16..7a4a0d3 100644
---- a/js/gdm/authPrompt.js
-+++ b/js/gdm/authPrompt.js
-@@ -500,8 +500,10 @@ var AuthPrompt = GObject.registerClass({
+Index: gnome-shell-45.0/js/gdm/authPrompt.js
+===================================================================
+--- gnome-shell-45.0.orig/js/gdm/authPrompt.js
++++ gnome-shell-45.0/js/gdm/authPrompt.js
+@@ -627,8 +627,10 @@ export const AuthPrompt = GObject.regist
          this._updateEntry(true);
          this.stopSpinning();
  
--        if (oldStatus == AuthPromptStatus.VERIFICATION_FAILED)
+-        if (oldStatus === AuthPromptStatus.VERIFICATION_FAILED)
 +        if (oldStatus == AuthPromptStatus.VERIFICATION_FAILED) {
 +            this._userVerifier.cancel();
              this.emit('failed');

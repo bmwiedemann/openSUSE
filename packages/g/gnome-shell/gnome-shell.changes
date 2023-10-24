@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 20 00:40:13 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Rebase patches for SLE-15-SP6 (bsc#1216072):
+  + Rebase endSession-dialog-update-time-label-every-sec.patch
+  + Rebase gnome-shell-disable-ibus-when-not-installed.patch
+  + Rebase gnome-shell-domain.patch
+  + Rebase gnome-shell-exit-crash-workaround.patch
+  + Rebase gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+  + Rebase gnome-shell-gdm-login-applet.patch
+  + Rebase gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+  + Rebase gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+  + Rebase gnome-shell-screen-disappear.patch
+  + Remove aboutMenu.js
+
+-------------------------------------------------------------------
 Thu Oct 12 03:16:50 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Add gnome-shell-add-linkoption-dl.patch on SLE and Leap: the -ldl

@@ -1,9 +1,8 @@
-diff --git a/js/gdm/domain.js b/js/gdm/domain.js
-new file mode 100644
-index 0000000..2452696
+Index: gnome-shell-45.0/js/gdm/domain.js
+===================================================================
 --- /dev/null
-+++ b/js/gdm/domain.js
-@@ -0,0 +1,243 @@
++++ gnome-shell-45.0/js/gdm/domain.js
+@@ -0,0 +1,236 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +/*
 + * Copyright 2011 Red Hat, Inc
@@ -24,19 +23,14 @@ index 0000000..2452696
 + * 02111-1307, USA.
 + */
 +
-+const Atk = imports.gi.Atk;
-+const Clutter = imports.gi.Clutter;
-+const Gdm = imports.gi.Gdm;
-+const Gio = imports.gi.Gio;
-+const GLib = imports.gi.GLib;
-+const Gtk = imports.gi.Gtk;
-+const Lang = imports.lang;
-+const Mainloop = imports.mainloop;
-+const Signals = imports.signals;
-+const St = imports.gi.St;
++import Atk from 'gi://Atk';
++import Gio from 'gi://Gio';
++import GLib from 'gi://GLib';
++import St from 'gi://St';
 +
-+const Main = imports.ui.main;
-+const PopupMenu = imports.ui.popupMenu;
++import * as Main from '../ui/main.js';
++import * as PopupMenu from '../ui/popupMenu.js';
++import * as Signals from '../misc/signals.js';
 +
 +const DomainLoadStatus = {
 +    INIT : 0,
@@ -47,27 +41,26 @@ index 0000000..2452696
 +    ERR : 5
 +};
 +
-+var DomainMenuButton = new Lang.Class({
-+    Name: 'DomainMenuButton',
++export class DomainMenuButton extends Signals.EventEmitter {
++    constructor(scope, handler) {
++        super();
 +
-+    _init: function () {
 +        this._separator = null;
 +        this.domain_enabled = false;
 +        this._domains = new Array();
 +        this._load_config();
-+    },
++    }
 +
-+
-+    _domainsPush: function(domain) {
++    _domainsPush(domain) {
 +        let valid_content = domain.replace(/\s+/g, '');
 +
 +        if (valid_content.length > 0) {
 +            if (this._domains.indexOf(valid_content) == -1)
 +                this._domains.push (valid_content);
 +        }
-+    },
++    }
 +
-+    _generate: function() {
++    _generate() {
 +        let gearIcon = new St.Icon({ icon_name: 'samba-window',
 +                                  icon_size: 24
 +                                 });
@@ -87,24 +80,24 @@ index 0000000..2452696
 +        this._menu.actor.hide();
 +
 +        this._menu.connect('open-state-changed',
-+                           Lang.bind(this, function(menu, isOpen) {
++                           (menu, isOpen) => {
 +                                if (isOpen)
 +                                    this._button.add_style_pseudo_class('active');
 +                                else
 +                                    this._button.remove_style_pseudo_class('active');
-+                           }));
++                           });
 +
 +        this._manager = new PopupMenu.PopupMenuManager({ actor: this._button });
 +        this._manager.addMenu(this._menu);
 +
-+        this._button.connect('clicked', Lang.bind(this, function() {
++        this._button.connect('clicked', () => {
 +            this._menu.toggle();
-+        }));
++        });
 +
 +        this._populate();
-+    },
++    }
 +
-+    _load_config: function() {
++    _load_config() {
 +        let keyfile = new GLib.KeyFile();
 +        let path = "/etc/gdm/custom.conf";
 +        let domain_group = "domains";
@@ -128,10 +121,10 @@ index 0000000..2452696
 +        }
 +        this._generate();
 +    }
-+    },
++    }
 +
-+    _readStdout: function(data) {
-+        this._dataStdout.read_line_async(GLib.PRIORITY_DEFAULT, null, Lang.bind(this, function(stream, result) {
++    _readStdout(data) {
++        this._dataStdout.read_line_async(GLib.PRIORITY_DEFAULT, null, (this, function(stream, result) {
 +            let [line, len] = this._dataStdout.read_line_finish_utf8(result);
 +
 +            if (line == null) {
@@ -144,9 +137,9 @@ index 0000000..2452696
 +        data.push(line);
 +            this._readStdout(data);
 +        }));
-+    },
++    }
 +
-+    loadCommand: function(argv) {
++    loadCommand(argv) {
 +        try {
 +            let data = new Array();
 +            let [success, pid, stdin, stdout, stderr] = GLib.spawn_async_with_pipes(null,
@@ -162,9 +155,9 @@ index 0000000..2452696
 +        } catch (e) {
 +            this.loadDomains(null, e);
 +    }
-+    },
++    }
 +
-+    loadDomains: function(data, err) {
++    loadDomains(data, err) {
 +    /*FIXME: reload every 5 minutes? */
 +    /*TODO: load the setting file */
 +        switch (this._status) {
@@ -205,61 +198,60 @@ index 0000000..2452696
 +                for (let i = 0; i < this._domains.length; i++) {
 +                    item = new PopupMenu.PopupMenuItem(this._domains[i]);
 +                        this._menu.addMenuItem(item);
-+                        item.connect('activate', Lang.bind(this, function(item) {
++                        item.connect('activate', (item) => {
 +                        //?? Why it does not work
 +                        //this.setActiveDomain(this._domains[i]);
 +                        this.setActiveDomain(item.label.text);
-+                    }));
++                    });
 +                }
 +                break;
 +    }
-+    },
++    }
 +
-+    _populate: function() {
++    _populate() {
 +        //TODO Recent domains?
 +        item = new PopupMenu.PopupMenuItem(_("loading the wbinfos..."));
 +        item.setSensitive(false);
 +        this._menu.addMenuItem(item);
 +        this._status = DomainLoadStatus.INIT;
 +        this.loadDomains(null, null);
-+    },
++    }
 +
-+    setActiveDomain: function(domain) {
++    setActiveDomain(domain) {
 +        this._activeDomain = domain;
 +        //this.emit('domain-activated', this._activeDomain);
 +        this.emit('domain-activated');
-+    },
++    }
 +
-+    getActiveDomain: function(domain) {
++    getActiveDomain(domain) {
 +        return this._activeDomain;
-+    },
++    }
 +
-+    getQuestionMessage: function() {
++    getQuestionMessage() {
 +        return _("User for ") + this._activeDomain;
-+    },
++    }
 +
-+    getHintMessage: function() {
++    getHintMessage() {
 +        return _("Contact dliang to get help");
-+    },
++    }
 +
-+    getDomainUser: function(user) {
++    getDomainUser(user) {
 +        return this._activeDomain + this._separator + user;
 +    }
-+});
-+Signals.addSignalMethods(DomainMenuButton.prototype);
-diff --git a/js/gdm/loginDialog.js b/js/gdm/loginDialog.js
-index 6f66a27..3f01ca0 100644
---- a/js/gdm/loginDialog.js
-+++ b/js/gdm/loginDialog.js
-@@ -21,6 +21,7 @@ const { AccountsService, Atk, Clutter, Gdm, Gio,
-         GLib, GObject, Meta, Pango, Shell, St } = imports.gi;
++}
+Index: gnome-shell-45.0/js/gdm/loginDialog.js
+===================================================================
+--- gnome-shell-45.0.orig/js/gdm/loginDialog.js
++++ gnome-shell-45.0/js/gdm/loginDialog.js
+@@ -29,6 +29,7 @@ import Shell from 'gi://Shell';
+ import St from 'gi://St';
  
- const AuthPrompt = imports.gdm.authPrompt;
-+const Domain = imports.gdm.domain;
- const Batch = imports.gdm.batch;
- const BoxPointer = imports.ui.boxpointer;
- const CtrlAltTab = imports.ui.ctrlAltTab;
-@@ -449,6 +450,10 @@ var LoginDialog = GObject.registerClass({
+ import * as AuthPrompt from './authPrompt.js';
++import * as Domain from './domain.js';
+ import * as Batch from './batch.js';
+ import * as BoxPointer from '../ui/boxpointer.js';
+ import * as CtrlAltTab from '../ui/ctrlAltTab.js';
+@@ -464,6 +465,10 @@ export const LoginDialog = GObject.regis
          this._authPrompt.hide();
          this.add_child(this._authPrompt);
  
@@ -270,7 +262,7 @@ index 6f66a27..3f01ca0 100644
          // translators: this message is shown below the user list on the
          // login screen. It can be activated to reveal an entry for
          // manually entering the username.
-@@ -470,7 +475,18 @@ var LoginDialog = GObject.registerClass({
+@@ -485,7 +490,18 @@ export const LoginDialog = GObject.regis
  
          this._notListedButton.hide();
  
@@ -283,15 +275,15 @@ index 6f66a27..3f01ca0 100644
 +            this._domainMenuButton.actor.hide();
 +
 +            this._domainMenuButton.connect('domain-activated',
-+                                            Lang.bind(this, function(list) {
-+                                                      this._hideUserListAskForDomainUsernameAndBeginVerification(); }));
++                                            (list) => {
++                                                      this._hideUserListAskForDomainUsernameAndBeginVerification(); });
 +            this._userLayout.add_child(this._domainMenuButton.actor);
 +        } // domain end
  
-         this._bannerView = new St.ScrollView({ style_class: 'login-dialog-banner-view',
-                                                opacity: 0,
-@@ -979,6 +995,37 @@ var LoginDialog = GObject.registerClass({
-             });
+         this._bannerView = new St.ScrollView({
+             style_class: 'login-dialog-banner-view',
+@@ -1004,6 +1020,37 @@ export const LoginDialog = GObject.regis
+         }, this);
      }
  
 +    _askForDomainUsernameAndBeginVerification(domain) {
@@ -303,15 +295,15 @@ index 6f66a27..3f01ca0 100644
 +
 +        let realmManager = new Realmd.Manager();
 +        let realmSignalId = realmManager.connect('login-format-changed',
-+                                                 Lang.bind(this, this._showRealmLoginHint));
++                                                 this._showRealmLoginHint.bind(this), this);
 +        this._showRealmLoginHint(realmManager.loginFormat);
 +
 +        let nextSignalId = this._authPrompt.connect('next',
-+                                                    Lang.bind(this, function() {
++                                                    () => {
 +                                                        this._authPrompt.disconnect(nextSignalId);
 +                                                        this._authPrompt.updateSensitivity(false);
 +                                                        let answer = this._authPrompt.getAnswer();
-+                            let domain_answer = this._domainMenuButton.getDomainUser(answer);
++                                                        let domain_answer = this._domainMenuButton.getDomainUser(answer);
 +                                                        this._user = this._userManager.get_user(domain_answer);
 +                                                        this._authPrompt.clear();
 +                                                        this._authPrompt.startSpinning();
@@ -320,7 +312,7 @@ index 6f66a27..3f01ca0 100644
 +
 +                                                        realmManager.disconnect(realmSignalId)
 +                                                        realmManager.release();
-+                                                    }));
++                                                    });
 +        this._updateCancelButton();
 +        this._showPrompt();
 +    }
@@ -328,7 +320,7 @@ index 6f66a27..3f01ca0 100644
      _startSession(serviceName) {
          this._bindOpacity();
          this.ease({
-@@ -1134,6 +1181,11 @@ var LoginDialog = GObject.registerClass({
+@@ -1178,6 +1225,11 @@ export const LoginDialog = GObject.regis
          this._askForUsernameAndBeginVerification();
      }
  
@@ -340,7 +332,7 @@ index 6f66a27..3f01ca0 100644
      _hideUserListAndBeginVerification() {
          this._hideUserList();
          this._authPrompt.begin();
-@@ -1147,6 +1199,9 @@ var LoginDialog = GObject.registerClass({
+@@ -1191,6 +1243,9 @@ export const LoginDialog = GObject.regis
          this._sessionMenuButton.hide();
          this._setUserListExpanded(true);
          this._notListedButton.show();
@@ -350,25 +342,25 @@ index 6f66a27..3f01ca0 100644
          this._userList.grab_key_focus();
      }
  
-diff --git a/js/js-resources.gresource.xml b/js/js-resources.gresource.xml
-index eebbc36..5e5e7e2 100644
---- a/js/js-resources.gresource.xml
-+++ b/js/js-resources.gresource.xml
-@@ -2,6 +2,7 @@
- <gresources>
+Index: gnome-shell-45.0/js/js-resources.gresource.xml
+===================================================================
+--- gnome-shell-45.0.orig/js/js-resources.gresource.xml
++++ gnome-shell-45.0/js/js-resources.gresource.xml
+@@ -3,6 +3,7 @@
    <gresource prefix="/org/gnome/shell">
+     <file>gdm/authList.js</file>
      <file>gdm/authPrompt.js</file>
 +    <file>gdm/domain.js</file>
      <file>gdm/batch.js</file>
      <file>gdm/loginDialog.js</file>
      <file>gdm/oVirt.js</file>
-diff --git a/po/POTFILES.in b/po/POTFILES.in
-index cb279c1..7772367 100644
---- a/po/POTFILES.in
-+++ b/po/POTFILES.in
-@@ -6,6 +6,7 @@ data/org.gnome.shell.gschema.xml.in
+Index: gnome-shell-45.0/po/POTFILES.in
+===================================================================
+--- gnome-shell-45.0.orig/po/POTFILES.in
++++ gnome-shell-45.0/po/POTFILES.in
+@@ -9,6 +9,7 @@ data/org.gnome.Shell.Extensions.desktop.
  data/org.gnome.Shell.PortalHelper.desktop.in.in
- js/dbusServices/extensions/ui/extension-prefs-dialog.ui
+ js/dbusServices/extensions/ui/extension-error-page.ui
  js/gdm/authPrompt.js
 +js/gdm/domain.js
  js/gdm/loginDialog.js

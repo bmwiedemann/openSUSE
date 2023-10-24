@@ -1,47 +1,74 @@
-diff --git a/js/js-resources.gresource.xml b/js/js-resources.gresource.xml
-index e65e0e9..eebbc36 100644
---- a/js/js-resources.gresource.xml
-+++ b/js/js-resources.gresource.xml
-@@ -35,6 +35,7 @@
-     <file>perf/core.js</file>
-     <file>perf/hwtest.js</file>
+Index: gnome-shell-45.0/js/js-resources.gresource.xml
+===================================================================
+--- gnome-shell-45.0.orig/js/js-resources.gresource.xml
++++ gnome-shell-45.0/js/js-resources.gresource.xml
+@@ -41,6 +41,7 @@
+     <file>misc/util.js</file>
+     <file>misc/weather.js</file>
  
 +    <file>ui/aboutMenu.js</file>
      <file>ui/accessDialog.js</file>
      <file>ui/altTab.js</file>
      <file>ui/animation.js</file>
-diff --git a/js/ui/aboutMenu.js b/js/ui/aboutMenu.js
-new file mode 100644
-index 0000000..7add645
+Index: gnome-shell-45.0/js/ui/panel.js
+===================================================================
+--- gnome-shell-45.0.orig/js/ui/panel.js
++++ gnome-shell-45.0/js/ui/panel.js
+@@ -36,6 +36,7 @@ import * as ThunderboltStatus from './st
+ import * as AutoRotateStatus from './status/autoRotate.js';
+ import * as BackgroundAppsStatus from './status/backgroundApps.js';
+ 
++import {AboutMenuButton} from './aboutMenu.js';
+ import {DateMenuButton} from './dateMenu.js';
+ import {ATIndicator} from './status/accessibility.js';
+ import {InputSourceIndicator} from './status/keyboard.js';
+@@ -633,6 +634,7 @@ class QuickSettings extends PanelMenu.Bu
+ });
+ 
+ const PANEL_ITEM_IMPLEMENTATIONS = {
++    'aboutMenu': AboutMenuButton,
+     'activities': ActivitiesButton,
+     'appMenu': AppMenuButton,
+     'quickSettings': QuickSettings,
+Index: gnome-shell-45.0/js/ui/sessionMode.js
+===================================================================
+--- gnome-shell-45.0.orig/js/ui/sessionMode.js
++++ gnome-shell-45.0/js/ui/sessionMode.js
+@@ -60,7 +60,7 @@ const _modes = {
+             ? ['networkAgent', 'polkitAgent']
+             : ['polkitAgent'],
+         panel: {
+-            left: [],
++            left: ['aboutMenu'],
+             center: ['dateMenu'],
+             right: ['dwellClick', 'a11y', 'keyboard', 'quickSettings'],
+         },
+Index: gnome-shell-45.0/js/ui/aboutMenu.js
+===================================================================
 --- /dev/null
-+++ b/js/ui/aboutMenu.js
-@@ -0,0 +1,150 @@
++++ gnome-shell-45.0/js/ui/aboutMenu.js
+@@ -0,0 +1,145 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +
-+const GLib = imports.gi.GLib;
-+const Gio = imports.gi.Gio;
-+const Lang = imports.lang;
-+const Clutter = imports.gi.Clutter;
-+const St = imports.gi.St;
-+const DBus = imports.gi.DBus;
++import GLib from 'gi://GLib';
++import Gio from 'gi://Gio';
++import Clutter from 'gi://Clutter';
++import St from 'gi://St';
++import GObject from 'gi://GObject';
 +
-+const PanelMenu = imports.ui.panelMenu;
++import * as PanelMenu from './panelMenu.js';
 +
-+const AboutMenuButton = new Lang.Class({
-+    Name: 'AboutMenuButton',
-+    Extends: PanelMenu.Button,
++export const AboutMenuButton = GObject.registerClass(
++class AboutMenuButton extends PanelMenu.Button {
 +    _init() {
++        super._init(0.5);
++
 +        this._hostname = null;
 +        this._updateHostnameId = 0;
 +        this._ticket = 1;
 +
 +        let hbox;
 +        let vbox;
-+        let menuAlignment = 0.25;
-+
-+        if (Clutter.get_default_text_direction() == Clutter.TextDirection.RTL)
-+            menuAlignment = 1.0 - menuAlignment;
-+        this.parent(menuAlignment, 'About Me');
 +
 +        this.about_hbox = new St.BoxLayout({ style_class: 'panel-status-menu-box' });
 +        this.hostname_label = new St.Label({y_align: Clutter.ActorAlign.CENTER});
@@ -85,16 +112,16 @@ index 0000000..7add645
 +
 +        this._updateHostnameId = GLib.timeout_add(GLib.PRIORITY_DEFAULT,
 +                                                  this._ticket,
-+                                                  Lang.bind(this, function() {
++                                                  ()=> {
 +                                                      if (this._ticket < 60*60)
 +                                                          this._ticket *= 2;
 +                                                      this._updateHostnameId = 0;
 +                                                      this._updateHostname();
-+                                                      return false;
-+                                                  }));
++                                                      return GLib.SOURCE_REMOVE;
++                                                  });
 +
 +        return;
-+    },
++    }
 +
 +    _updateHostname(){
 +        let hostname_text = get_hostname();
@@ -107,14 +134,14 @@ index 0000000..7add645
 +        }
 +        this._updateHostnameId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT,
 +                                                  this._ticket,
-+                                                  Lang.bind(this, function() {
++                                                  ()=> {
 +                                                      if (this._ticket < 60*60)
 +                                                          this._ticket *= 2;
 +                                                      this._updateHostnameId = 0;
 +                                                      this._updateHostname();
-+                                                      return false;
-+                                                  }));
-+    },
++                                                      return GLib.SOURCE_REMOVE;
++                                                  });
++    }
 +
 +    _destroy() {
 +        this._ticket = 1;
@@ -122,7 +149,7 @@ index 0000000..7add645
 +            GLib.source_remove (this._updateHostnameId);
 +            this._updateHostnameId = 0;
 +        }
-+    },
++    }
 +
 +});
 +
@@ -136,7 +163,7 @@ index 0000000..7add645
 +        object_path: '/org/freedesktop/hostname1',
 +        interface_name: 'org.freedesktop.DBus.Properties',
 +        method_name: 'Get',
-+        parameters: GLib.Variant.new_tuple(interface_name, 2),
++        parameters: GLib.Variant.new_tuple(interface_name),
 +        reply_type: null,
 +        flags: Gio.DBusCallFlags.NONE,
 +        timeout_msec: -1,
@@ -144,7 +171,7 @@ index 0000000..7add645
 +    };
 +
 +    try {
-+        let dbusConnection = Gio.bus_get_sync(DBus.BusType.SYSTEM, null);
++        let dbusConnection = Gio.bus_get_sync(Gio.BusType.SYSTEM, null);
 +
 +        let message = dbusConnection.call_sync(
 +            call.bus_name,
@@ -166,28 +193,3 @@ index 0000000..7add645
 +
 +    return hostname;
 +}
-diff --git a/js/ui/panel.js b/js/ui/panel.js
-index cba3241..f5dfc2b 100644
---- a/js/ui/panel.js
-+++ b/js/ui/panel.js
-@@ -722,6 +722,7 @@ class AggregateMenu extends PanelMenu.Button {
- });
- 
- const PANEL_ITEM_IMPLEMENTATIONS = {
-+    'aboutMenu': imports.ui.aboutMenu.AboutMenuButton,
-     'activities': ActivitiesButton,
-     'aggregateMenu': AggregateMenu,
-     'appMenu': AppMenuButton,
-diff --git a/js/ui/sessionMode.js b/js/ui/sessionMode.js
-index 2136e94..6d5e7c8 100644
---- a/js/ui/sessionMode.js
-+++ b/js/ui/sessionMode.js
-@@ -34,7 +34,7 @@ const _modes = {
-         unlockDialog: null,
-         components: [],
-         panel: {
--            left: [],
-+            left: ['aboutMenu'],
-             center: [],
-             right: [],
-         },
