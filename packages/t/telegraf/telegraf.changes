@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Mon Oct 23 20:02:32 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.28.3:
+  * Telegraf v1.28.3
+  * Update changelog for v1.28.3
+  * Update build_version.txt for v1.28.3
+  * chore: Remove unnecessary license
+  * chore(tools): Bump golangci-lint from v1.54.2 to v1.55.0 (#14155)
+  * fix(inputs.vault): Use http client to handle redirects correctly (#14153)
+  * fix(outputs.kafka): Simplify send-error handling (#14154)
+  * fix(serializers.json): Append newline for batch-serialization (#14150)
+  * fix(outputs.nebius_cloud_monitoring): Use correct endpoint (#14135)
+  * chore(deps): Bump github.com/nats-io/nats-server/v2 from 2.9.9 to 2.9.23 (#14146)
+  * fix(inputs.jenkins): Filter after searching sub-folders (#14105)
+  * fix(inputs.jolokia2_agent): Trim quotes around tags (#14132)
+  * docs(processors.ifname): Document better agent tag name (#14117)
+  * fix(metricpass): Use correct logic expression in benchmark (#14131)
+  * chore(deps): Bump github.com/nats-io/nats.go from 1.28.0 to 1.31.0 (#14124)
+  * chore(deps): Bump github.com/google/go-cmp from 0.5.9 to 0.6.0 (#14127)
+  * chore(deps): Bump google.golang.org/api from 0.139.0 to 0.147.0 (#14126)
+  * chore(deps): Bump github.com/google/cel-go from 0.14.1-git to 0.18.1 (#14125)
+  * chore(packaging): Remove unnecessary service file removal (#14106)
+  * chore(deps): Remove replacement for gos7 (#14032)
+  * fix(inputs.postgresql_extensible): Restore default db name (#14010)
+  * fix(outputs.redistimeseries): Handle string fields correctly (#14060)
+  * chore(deps): Bump golang.org/x/mod from 0.12.0 to 0.13.0 (#14075)
+  * chore(deps): Bump gonum.org/v1/gonum from 0.13.0 to 0.14.0 (#14078)
+  * docs(outputs.influxdb): Add help message about multiple influxdb (#14053)
+  * docs(outputs.mqtt): Correct typo in protocol config parameter (#14071)
+  * docs(processors.split): Fix example (#14087)
+  * chore(deps): Bump golang.org/x/net from 0.15.0 to 0.17.0 (#14095)
+  * chore: Update go to 1.21.3 (#14093)
+  * docs(inputs.docker): Add help message about permissions for container (#14094)
+  * chore(deps): Bump github.com/jhump/protoreflect from 1.15.1 to 1.15.3 (#14085)
+  * chore(deps): Bump github.com/miekg/dns from 1.1.55 to 1.1.56 (#14077)
+  * chore(deps): Bump github.com/testcontainers/testcontainers-go from 0.22.0 to 0.25.0 (#14076)
+  * chore(deps): Bump golang.org/x/oauth2 from 0.11.0 to 0.13.0 (#14074)
+  * chore(CI): Add 'test' as bugfix label and remove 'dependencies' (#14061)
+  * test(inputs.redis_sentinel): Resolve timeout looking for port (#14051)
+  * chore: Add build tags to buildbin Makefile target (#14034)
+  * fix(inputs.mqtt): Reference correct password variable (#14041)
+  * chore(deps): Bump github.com/signalfx/golib/v3 from 3.3.50 to 3.3.53 (#14040)
+  * chore(deps): Bump github.com/klauspost/compress from 1.16.7 to 1.17.0 (#14039)
+  * chore(deps): Bump github.com/netsampler/goflow2 from 1.3.3 to 1.3.6 (#14037)
+  * chore(deps): Bump github.com/yuin/goldmark from 1.5.4 to 1.5.6 (#14038)
+  * chore(deps): Bump github.com/apache/arrow/go/v13 from 13.0.0-git to 13.0.0 (#14036)
+  * fix(inputs.s7comm): Allow PDU-size to be set as config option (#14045)
+  * fix(inputs.infiniband): Handle devices without counters (#14049)
+
+-------------------------------------------------------------------
+Wed Oct 04 20:55:21 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.28.2:
+  * Telegraf v1.28.2
+  * Update changelog for v1.28.2
+  * Update build_version.txt for v1.28.2
+  * chore: Restore log directory behavior (#14026)
+  * fix(inputs.openstack): Handle dependencies between enabled services and available endpoints (#14011)
+  * chore(deps): Bump github.com/vmware/govmomi from v0.28.0 to v0.32.0 (#14022)
+  * chore(inputs.modbus): Deprecate aggressive optimization (#14030)
+  * fix(parsers.json_v2): Properly handle optional fields (#14008)
+  * chore: Force previous version of mingw (#14035)
+  * docs(outputs.http): Document proxy settings (#14016)
+  * docs(apparmor): Add page explaining apparmor denials (#14014)
+  * chore: Update Windows zip archive creation (#14015)
+  * docs(outputs.prometheus_client): Fix metric-type parameter naming (#14013)
+  * fix(outputs.stackdriver): Do not shallow copy map (#14009)
+  * fix(inputs.postgresql_extensible): Restore outputaddress behavior (#13972)
+  * fix(inputs.mock): Plugin not aligned with documentation (#13997)
+  * fix(inputs.jti_openconfig_telemetry): Do not block GRPC dial (#13958)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/config from 1.18.27 to 1.18.42 (#13988)
+  * fix(input.intel_pmt): Handle telem devices without numa_node attribute (#13977)
+  * chore(deps): Bump github.com/google/uuid from 1.3.0 to 1.3.1 (#13989)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/feature/ec2/imds from 1.13.8 to 1.13.11 (#13987)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.80.1 to 1.120.0 (#13986)
+  * chore(deps): Bump github.com/eclipse/paho.mqtt.golang (#13985)
+  * chore(secrets): Abstract secret implementation (#13953)
+  * chore(processors.starlark): Add benchmark for field-value filter (#13983)
+  * fix(inputs.nfsclient): Avoid panics, better error messages (#13982)
+  * fix(outputs.stackdriver): Drop metrics on InvalidArgument gRPC error (#13931)
+  * fix(inputs.exec): Clean up grandchildren processes (#13937)
+  * docs(processors.lookup): Fix wrong word usage (#13970)
+  * fix(inputs.cisco_telemetry_mdt): Print string message on decode failure (#13963)
+  * fix(inputs.nvidia_smi): Add legacy power readings to v12 schema (#13962)
+  * chore(deps): Bump golang.org/x/net from 0.14.0 to 0.15.0 (#13940)
+  * chore: Update macOS CircleCI runner (#13932)
+  * fix(processors.template): Handle tracking metrics correctly (#13947)
+  * chore(deps): Bump github.com/aliyun/alibaba-cloud-sdk-go from 1.62.470 to 1.62.563 (#13941)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs from 1.20.9 to 1.23.5 (#13943)
+  * chore(deps): Bump github.com/shirou/gopsutil/v3 from 3.23.6 to 3.23.8 (#13942)
+  * chore(deps): Bump k8s.io/api from 0.28.1 to 0.28.2 (#13944)
+  * fix(outputs.cloudwatch): Increase number of metrics per write (#13930)
+  * fix(inputs.smart): Remove parsing error message (#13927)
+  * docs(inputs.procstat): Add docs on permissions and metric details (#13921)
+  * test(outputs.sql): Fix clean up of sql database file (#13918)
+  * chore: Clean up results from make check-deps (#13919)
+  * fix(inputs.systemd_units): Add missing upstream states (#13915)
+
+-------------------------------------------------------------------
 Tue Sep 12 20:11:54 UTC 2023 - mrueckert@suse.de
 
 - Update to version 1.28.1:
