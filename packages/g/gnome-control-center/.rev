@@ -1987,4 +1987,12 @@ New stable rel</comment>
   exits(bsc#1208193 glgo#GNOME/gnome-control-center!1956). (forwarded request 1117143 from JonathanKang)</comment>
     <requestid>1117449</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>d9f43f81d2378b5da02dc77b4b9cf19f</srcmd5>
+    <version>45.1</version>
+    <time>1698170850</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119719</requestid>
+  </revision>
 </revisionlist>

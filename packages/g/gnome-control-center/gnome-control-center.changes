@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 23 14:15:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + About: Add more types of processor support
+  + Accessibility: Make Cursor Size dialog close on Escape key
+  + Keyboard: Allow closing Shortcuts dialog with Escape key
+  + Mouse:
+    - Fix linked style of primary mouse button in RTL languages
+    - Avoid making videos blurry
+  + Network:
+    - Fix editing connections without a device
+    - Revert "Disable DNS entry if automatic DNS option is enabled"
+
+-------------------------------------------------------------------
 Thu Oct 12 08:16:55 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnome-control-center-network-fix-nmce-popup.patch:

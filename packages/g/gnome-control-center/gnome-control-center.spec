@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        45.0+34
+Version:        45.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
