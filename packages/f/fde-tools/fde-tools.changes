@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 23 05:57:33 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.1
+  + add-secondary-key: remove the generation of the secondary
+    password
+  + add-secondary-key: remove the inclusion of
+   'add-secondary-password'
+  + luks: list all underlying LUKS device
+  + Introduce FDE_DEVS to list all LUKS devices
+- Drop upstreamd patch
+  + fde-tools-remove-redundant-2nd-pw-creation.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 07:04:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-remove-redundant-2nd-pw-creation.patch to remove
