@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 21 19:25:53 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 3.50.1:
+  * util: check flatpak for alternate terminals
+  * prefs: Get the headerbar pref
+  * build: Bump vte req version
+
+-------------------------------------------------------------------
 Tue Sep 19 16:21:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Let the description point out details distinguishing this
