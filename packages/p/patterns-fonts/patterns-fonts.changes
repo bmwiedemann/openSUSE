@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 23 11:44:21 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- Require fonts so the pattern also works when Recommends are turned off
+- Don't pull in Type 1 ghostscript-fonts-* and texlive-lm-fonts by default
+  (boo#1216494)
+
+-------------------------------------------------------------------
 Mon Mar  6 09:38:06 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Revert back to efont-unicode-bitmap-fonts from babelstone-han-fonts.

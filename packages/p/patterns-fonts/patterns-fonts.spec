@@ -40,6 +40,7 @@ This particular package contains the Fonts patterns.
 
 
 
+
 ################################################################################
 %package fonts
 %pattern_graphicalenvironments
@@ -51,12 +52,11 @@ Provides:       pattern-order() = 1700
 Provides:       pattern-visible()
 Recommends:     pattern() = fonts_opt
 
-Recommends:     dejavu-fonts
-Recommends:     ghostscript-fonts-std
-Recommends:     google-roboto-fonts
-Recommends:     intlfonts-euro-bitmap-fonts
-Recommends:     liberation-fonts
-Recommends:     xorg-x11-fonts-core
+Requires:       dejavu-fonts
+Requires:       google-roboto-fonts
+Requires:       intlfonts-euro-bitmap-fonts
+Requires:       liberation-fonts
+Requires:       xorg-x11-fonts-core
 # needed for instsys
 Suggests:       ipa-gothic-fonts
 Suggests:       ipa-mincho-fonts
@@ -86,12 +86,10 @@ Provides:       pattern-order() = 1720
 Recommends:     adobe-sourcecodepro-fonts
 Recommends:     adobe-sourcesanspro-fonts
 Recommends:     adobe-sourceserifpro-fonts
-Recommends:     ghostscript-fonts-other
 # noto-sans and noto-sans-cjk pulls in too much (>500MiB!)
 Recommends:     efont-unicode-bitmap-fonts
 Recommends:     noto-sans-fonts
 Recommends:     stix-fonts
-Recommends:     texlive-lm-fonts
 Recommends:     xorg-x11-fonts
 
 %description fonts_opt
