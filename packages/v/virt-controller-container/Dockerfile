@@ -1,4 +1,6 @@
-# Defines the tags for OBS and build script builds:
+# SPDX-License-Identifier: Apache-2.0
+
+# Define the tags for OBS and build script builds:
 #!BuildTag: %%TAGPREFIX%%/virt-controller:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/virt-controller:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/virt-controller:%%PKG_VERSION%%-%%PKG_RELEASE%%
