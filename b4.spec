@@ -19,7 +19,7 @@
 %define pythons python3
 %{?sle15_python_module_pythons}
 Name:           b4
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later

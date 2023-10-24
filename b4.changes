@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 24 07:57:32 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.4:
+  * ez: ignore invalid unicode returned by get_maintainer
+  * Only pass -f to sendmail if envelopesender is set
+  * trailers: do not quote names when special chars are present
+
+-------------------------------------------------------------------
 Thu Oct  5 12:02:44 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove dependency on /usr/bin/python3 using %python3_fix_shebang
