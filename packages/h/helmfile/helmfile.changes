@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Tue Oct 24 12:05:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.158.0:
+  What's Changed
+  * feat: add an option to set a custom kustomize binary by
+    @alessiodionisi in #1012
+  * feat: bump helm to 3.13.0 by @yxxhero in #1044
+  * feat: skip deps when installed is false by @yxxhero in #1054
+  * feat: add duration to failed releases summary by @felipecrs
+    in #1066
+  * feat: bump helm version to 3.13.1 of tests by @yxxhero in #1068
+  * feat: support most remote urls by @xiaomudk in #1061
+  * Add diffArgs to helmDefaults by @yktakaha4 in #1019
+  * Fix symlink behaviour by @reegnz in #1020
+  * fix: security/dependabot/33 by @yxxhero in #1025
+  * by @lucasfcnunes in #1028
+  * optimize OCI chart version check by @yxxhero in #1052
+  * optimize flag logic about wait by @yxxhero in #1051
+  * doc: remote Environment values support more protocols by
+    @xiaomudk in #1089
+  * add more tests for Desired func by @yxxhero in #1082
+  * upgrade helm in dockerfile images by @jouve in #1067
+  * replace all mozilla/sops with getsops/sops
+  * test: fix running tests locally by @felipecrs in #1088
+  * build(deps): bump docker/login-action from 2 to 3 by
+    @dependabot in #1018
+  * build(deps): bump docker/metadata-action from 4 to 5 by
+    @dependabot in #1017
+  * build(deps): bump docker/build-push-action from 4 to 5 by
+    @dependabot in #1016
+  * build(deps): bump docker/setup-qemu-action from 2 to 3 by
+    @dependabot in #1015
+  * build(deps): bump goreleaser/goreleaser-action from 4 to 5 by
+    @dependabot in #1014
+  * build(deps): bump docker/setup-buildx-action from 2 to 3 by
+    @dependabot in #1022
+  * build(deps): bump go.uber.org/zap from 1.25.0 to 1.26.0 by
+    @dependabot in #1032
+  * build(deps): bump github.com/goccy/go-yaml from 1.11.0 to
+    1.11.2 by @dependabot in #1031
+  * build(deps): bump golang.org/x/term from 0.11.0 to 0.12.0
+    by @dependabot in #1033
+  * build(deps): bump helm.sh/helm/v3 from 3.12.3 to 3.13.0
+    by @dependabot in #1045
+  * build(deps): bump github.com/cyphar/filepath-securejoin from
+    0.2.3 to 0.2.4 by @dependabot in #1026
+  * build(deps): bump github.com/helmfile/vals from 0.27.1 to
+    0.28.0 by @dependabot in #1048
+  * build(deps): bump golang.org/x/term from 0.12.0 to 0.13.0
+    by @dependabot in #1055
+  * build(deps): bump golang.org/x/sync from 0.3.0 to 0.4.0
+    by @dependabot in #1056
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.2
+    to 1.7.3 by @dependabot in #1058
+  * build(deps): bump gitpython from 3.1.35 to 3.1.37 in /docs by
+    @dependabot in #1059
+  * build(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+    by @dependabot in #1060
+  * build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0 by
+    @dependabot in #1063
+  * build(deps): bump helm.sh/helm/v3 from 3.13.0 to 3.13.1 by
+    @dependabot in #1065
+  * build(deps): bump github.com/helmfile/vals from 0.28.0 to 0.28.1
+    by @dependabot in #1071
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.44.251 to
+    1.45.27 by @dependabot in #1076
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.45.27 to
+    1.45.28 by @dependabot in #1083
+  * build(deps): bump k8s.io/apimachinery from 0.28.2 to 0.28.3
+    by @dependabot in #1084
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.45.28 to
+    1.46.0 by @dependabot in #1085
+
+-------------------------------------------------------------------
+Thu Oct 12 12:56:43 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use go1.21 for building.
+- Bump helm to v3.13.1
+
+-------------------------------------------------------------------
 Fri Sep 15 11:13:10 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.157.0:
