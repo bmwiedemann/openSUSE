@@ -70,6 +70,7 @@ grep -h src/ po/*.po|\
  tr ' ' '\n'|\
  sort -t : -k1,1 -u|\
  sed -r 's/:[0-9]+$//' > po/POTFILES.in
+echo %version > .tarball-version
 autoreconf -fi
 CFLAGS="-D_GNU_SOURCE -D_DEFAULT_SOURCE ${RPM_OPT_FLAGS} -pipe -fPIE"
 CXXFLAGS="$CFLAGS"

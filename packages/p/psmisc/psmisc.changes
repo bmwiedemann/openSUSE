@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 23 13:36:04 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Fix version at configure time as there was no .tarball-version 
+
+-------------------------------------------------------------------
 Thu Feb 16 16:06:59 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
 
 - allow to switch off Apparmor support via bcond

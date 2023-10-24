@@ -856,4 +856,12 @@
     <comment>- allow to switch off Apparmor support via bcond (forwarded request 1066220 from lnussel)</comment>
     <requestid>1066338</requestid>
   </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>215c3d406f5c579ee00765ed31ff1c92</srcmd5>
+    <version>23.6</version>
+    <time>1698170824</time>
+    <user>anag+factory</user>
+    <comment>- Fix version at configure time as there was no .tarball-version</comment>
+    <requestid>1119659</requestid>
+  </revision>
 </revisionlist>
