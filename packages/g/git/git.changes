@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:42:40 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Add rule for /etc/gitconfig in gitweb.cgi apparmor profile (bsc#1216501).
+
+-------------------------------------------------------------------
+Mon Oct 23 12:34:06 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- gitweb.cgi AppArmor profile
+  - make the profile a named profile
+  - add local/ include to make custom additions easier
+
+-------------------------------------------------------------------
 Fri Sep 22 15:13:11 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Downgrade openssh dependency to recommends (bsc#1215533)

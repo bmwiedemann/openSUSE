@@ -1,13 +1,13 @@
-# Last Modified: Fri Apr 14 14:11:09 2019
 #include <tunables/global>
 
-/usr/share/gitweb/gitweb.cgi {
+profile gitweb.cgi /usr/share/gitweb/gitweb.cgi {
   #include <abstractions/base>
   #include <abstractions/bash>
   #include <abstractions/nameservice>
   #include <abstractions/perl>
   #include <abstractions/private-files-strict>
 
+  /etc/gitconfig r,
   /{usr/,}bin/bash rix,
   /{usr/,}bin/tar rix,
   /usr/bin/gzip rix,
@@ -29,4 +29,7 @@
   owner /**/ r,
   owner /**/.git/** r,
   owner @{HOME}/.gitconfig r,
+
+  # Site-specific additions and overrides. See local/README for details.
+  include if exists <local/usr.share.git-web.gitweb.cgi>
 }
