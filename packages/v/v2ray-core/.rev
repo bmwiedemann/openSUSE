@@ -339,4 +339,12 @@
     <comment>- Drop vendor in filelist (forwarded request 1095190 from hillwood)</comment>
     <requestid>1095191</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e3b35aade2ca1152e3b0c630d7a32eaf</srcmd5>
+    <version>5.8.0</version>
+    <time>1698170980</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1119975 from hillwood)</comment>
+    <requestid>1119977</requestid>
+  </revision>
 </revisionlist>

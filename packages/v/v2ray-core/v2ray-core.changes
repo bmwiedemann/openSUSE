@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  8 13:35:54 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.0
+  * DNS over QUIC should not have "http/1.1" and "h2" ALPNs
+  * Migrate to quic-go v0.36.0
+  * Fix: parse for the CipherType of Shadowsocks in simplified config
+  * Fix protocol matching in routing
+  * Fix CI breakage in 5.7.0
+- Build by golang 1.20, workaround build error on golang 1.21
+ 
+-------------------------------------------------------------------
 Sun Jun 25 03:13:08 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Drop vendor in filelist
