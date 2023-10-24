@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 12:29:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use setuptools_scm to get proper version in metadata
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4

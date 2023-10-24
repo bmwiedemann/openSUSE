@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>944613</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3b445916b4814146a3d0a24729341e16</srcmd5>
+    <version>5.1.0</version>
+    <time>1698170979</time>
+    <user>anag+factory</user>
+    <comment>- use setuptools_scm to get proper version in metadata</comment>
+    <requestid>1119980</requestid>
+  </revision>
 </revisionlist>

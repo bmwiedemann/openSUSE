@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-phonenumber-field
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/stefanfoulis/django-phonenumber-field
 Source:         https://files.pythonhosted.org/packages/source/d/django-phonenumber-field/django-phonenumber-field-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,6 +63,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/phonenumber_field
+%{python_sitelib}/django_phonenumber_field-%{version}*-info
 
 %changelog
