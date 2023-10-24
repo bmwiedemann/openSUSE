@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 21 12:54:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Add more validation of transit plugin parameters
+  + Fix showing missing nearby POIs when browsing in some cases
+  + Set lower timeout when downloading service file
+  + Fix searching for recent routes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 16 14:01:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
