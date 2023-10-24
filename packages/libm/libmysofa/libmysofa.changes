@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 23 01:22:04 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.3.2:
+  * allow slightly more dense HRTFs
+  * allow all kinds of room types
+  * target exporting
+  * bug fix in memory reader
+  * enable big endian support
+- Drop 0001-fix-big-endian-convertion-of-double-value.patch
+- Add Install-header-when-only-building-shared-lib.patch
+  See https://github.com/hoene/libmysofa/issues/210
+
+-------------------------------------------------------------------
 Mon Jun 12 08:41:16 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add 0001-fix-big-endian-convertion-of-double-value.patch:

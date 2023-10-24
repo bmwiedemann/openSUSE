@@ -19,7 +19,7 @@
 %define sover 1
 %define __builder ninja
 Name:           libmysofa
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Reader for AES SOFA HRTF files
 License:        BSD-3-Clause
@@ -27,7 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/hoene/libmysofa
 Source0:        https://github.com/hoene/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         0001-fix-big-endian-convertion-of-double-value.patch
+# https://github.com/hoene/libmysofa/issues/210
+Patch0:         Install-header-when-only-building-shared-lib.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  ninja
@@ -70,7 +71,6 @@ This package contains the development libraries and headers for libmysofa.
 %install
 %cmake_install
 
-# test suite is broken
 %check
 %cmake_build -C build test
 
@@ -89,5 +89,6 @@ This package contains the development libraries and headers for libmysofa.
 %{_includedir}/mysofa.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/mysofa
 
 %changelog

@@ -121,4 +121,20 @@
     <comment></comment>
     <requestid>1092685</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e2b7ec1a130e5bd8754be2490afacdb4</srcmd5>
+    <version>1.3.2</version>
+    <time>1698170800</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.2:
+  * allow slightly more dense HRTFs
+  * allow all kinds of room types
+  * target exporting
+  * bug fix in memory reader
+  * enable big endian support
+- Drop 0001-fix-big-endian-convertion-of-double-value.patch
+- Add Install-header-when-only-building-shared-lib.patch
+  See https://github.com/hoene/libmysofa/issues/210</comment>
+    <requestid>1119467</requestid>
+  </revision>
 </revisionlist>
