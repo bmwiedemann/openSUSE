@@ -294,4 +294,12 @@
 - Initial packaging</comment>
     <requestid>1115761</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a6f9dd03626531b16f6e0c941f240625</srcmd5>
+    <version>3.1.2</version>
+    <time>1698170875</time>
+    <user>anag+factory</user>
+    <comment>- add setuptools_scm for proper version detection</comment>
+    <requestid>1119967</requestid>
+  </revision>
 </revisionlist>

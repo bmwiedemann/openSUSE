@@ -33,7 +33,8 @@ Patch3:         bash-repl.patch
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 67.7.2}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
@@ -93,7 +94,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitelib}/argcomplete-*-info
+%{python_sitelib}/argcomplete-%{version}*-info
 %{python_sitelib}/argcomplete
 %python_alternative %{_bindir}/python-argcomplete-check-easy-install-script
 %python_alternative %{_bindir}/register-python-argcomplete

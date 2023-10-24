@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 12:01:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add setuptools_scm for proper version detection
+
+-------------------------------------------------------------------
 Thu Oct  5 08:46:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.2:
