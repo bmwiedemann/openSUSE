@@ -275,4 +275,17 @@
   + Use newer OpenSSL 3.0 API functions when available</comment>
     <requestid>1113218</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2210165800803a365f2c445f5a131f76</srcmd5>
+    <version>2.1.1</version>
+    <time>1698170887</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to release 2.1.1
+  + Fixed bug with bulk delete HTTP requests (issue #211)
+  + Fixed empty payload bug when retrying an upload (issue #212)
+  + Check for errors returned by curl_easy_setopt()
+  + Added --noCurlCache flag to facilitate debugging
+  + Bump wait time for nbdkit to start from 1s to 5s</comment>
+    <requestid>1119747</requestid>
+  </revision>
 </revisionlist>
