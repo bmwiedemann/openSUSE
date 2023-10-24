@@ -665,4 +665,18 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
   * fixed RELEASE_NOTES.md</comment>
     <requestid>1077507</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>4f2f1bb6e18d41c5750e6c1147343b62</srcmd5>
+    <version>4.9.2</version>
+    <time>1698170883</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+- Add a '\--whatprovides' to the '%%requires_eq libhdf5%{p_suffix}'
+  to catch the the library package even without an so-name.</comment>
+    <requestid>1119877</requestid>
+  </revision>
 </revisionlist>

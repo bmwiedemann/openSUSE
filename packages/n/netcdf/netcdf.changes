@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 23 19:16:02 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Disable HPC flavors on i586
+
+-------------------------------------------------------------------
+Mon Oct 23 11:58:23 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Wed Apr  5 08:16:52 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add build require pkgconfig(zstd) to fix build for Leap 15.4
@@ -173,6 +184,12 @@ Mon Dec 12 14:15:39 UTC 2022 - Egbert Eich <eich@suse.com>
 - Add BuildRequires for libhdf5[_hl]-<compiler_family>[-<mpi_flavor>-hpc
   explicitly so that %%{requires_eq ..} is able to find the package and
   obtain the version number (boo#1206334).
+
+-------------------------------------------------------------------
+Sat Apr  2 22:26:35 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add a '\--whatprovides' to the '%%requires_eq libhdf5%{p_suffix}'
+  to catch the the library package even without an so-name.
 
 -------------------------------------------------------------------
 Sat Feb 26 19:18:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
