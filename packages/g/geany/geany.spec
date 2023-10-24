@@ -1,7 +1,7 @@
 #
 # spec file for package geany
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           geany
-Version:        1.38
+Version:        2.0
 Release:        0
 Summary:        GTK-based integrated development environment
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ Source0:        https://download.geany.org/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM geany-appstream.patch gh#geany/geany#1142 badshah400@gmail.com -- Downstream created appstream file, submitted upstream
 Patch1:         geany-appstream.patch
-# PATCH-FIX-UPSTREAM geany-intool.patch -- basically https://patch-diff.githubusercontent.com/raw/geany/geany/pull/2938.patch
-Patch0:         geany-inttool.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docutils
@@ -39,7 +37,7 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 %lang_package
 
 %description
@@ -75,14 +73,11 @@ Requires:       %{name} >= %{version}
 Geany's developers documentation
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure \
-	--enable-gtk3 \
 	--docdir=%{_defaultdocdir}/%{name}
 make %{?_smp_mflags}
 
