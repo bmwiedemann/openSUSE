@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 22 00:42:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.1:
+  + Fix null reference map source, avoid critical log message when
+    setting a null map source with
+    shumate_viewport_set_reference_map_source().
+
+-------------------------------------------------------------------
 Sat Sep 16 13:59:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.0:

@@ -22,7 +22,7 @@
 %bcond_with profiling
 
 Name:           libshumate
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        C library providing a GtkWidget to display maps
 License:        LGPL-2.1-or-later
