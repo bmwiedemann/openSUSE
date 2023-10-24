@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 23 15:18:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- install base-minimal_base to pull in the branding
+
+-------------------------------------------------------------------
 Thu Sep 14 12:21:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Install shadow explicitly, no longer pulled in by
@@ -17,14 +22,14 @@ Wed Aug  9 15:57:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jul 12 12:36:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add openssl explicitly to restore compatibility with SLE BCI 
+- add openssl explicitly to restore compatibility with SLE BCI
 
 -------------------------------------------------------------------
 Thu Jul  6 09:01:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add lsb-release
 - hardlink the license files (saves 612352 bytes, which is enough
-  to fit in 12000 bytes of lsb-release) 
+  to fit in 12000 bytes of lsb-release)
 
 -------------------------------------------------------------------
 Mon Apr  3 07:38:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
