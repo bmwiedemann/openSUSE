@@ -200,4 +200,16 @@ gcc 2.6.4 Ã¼bersetzt (original Slackware).  Was fehlt, sind die Sourcen,
 zu finden ... nur eine wesentlich Ã¤ltere Version.</comment>
     <requestid>754065</requestid>
   </revision>
+  <revision rev="28" vrev="1048">
+    <srcmd5>9004e79d61e24b293d0b290b58df954b</srcmd5>
+    <version>unknown</version>
+    <time>1698170799</time>
+    <user>anag+factory</user>
+    <comment>- Create a devel-static sub packages for static libs as well 
+
+- Rework package to make it build again 
+
+- New RPM API change ... now no %patch anymore only %patch0</comment>
+    <requestid>1119231</requestid>
+  </revision>
 </revisionlist>
