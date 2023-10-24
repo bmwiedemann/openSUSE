@@ -322,7 +322,9 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %endif
 
 %ifarch %{ix86} x86_64
+%if !0%{?disable_32bit}
 %{_libexecdir}/valgrind/*-x86-linux
+%endif
 %endif
 
 %ifarch ppc ppc64
