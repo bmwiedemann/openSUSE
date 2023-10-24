@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 21 04:57:12 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g970:
+  * completions/zsh: Fix incomplete input names
+  * completions: Rewrite zsh
+  * Cursor: use total delta for resize calculation
+  * riverctl: rule-{add,del}: reorder parameters
+  * View: clean up after Zig update
+  * build: update to Zig 0.11.0
+  * Cursor: keep focus_follows_cursor_target updated
+  * Root: fix inflight_layout_demands counting
+  * Root: migrate {all,active}_outputs to wl.list
+  * Root: make 'fallback output empty' assertion stricter
+  * Root: rename field outputs to active_outputs
+  * river: update some comments
+  * river: fix spatial direction focusing / swapping
+  * river: focus-view and swap by spatial direction
+  * river: fix crash when trying to add tag rule without tag argument
+  * river: add tags rule
+  * river: change order of colums in list-rules command
+  * river: allow settings child type of RuleList
+  * river-layout: Remove incorrect assertion
+
+-------------------------------------------------------------------
 Thu Oct  5 08:45:27 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Remove dbus-run-session in the script. Portals can still work without it.

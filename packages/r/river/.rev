@@ -179,4 +179,32 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117144</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>52b86833b52b1e82cb022532af959c3e</srcmd5>
+    <version>0.2.4+g970</version>
+    <time>1698170896</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.4+g970:
+  * completions/zsh: Fix incomplete input names
+  * completions: Rewrite zsh
+  * Cursor: use total delta for resize calculation
+  * riverctl: rule-{add,del}: reorder parameters
+  * View: clean up after Zig update
+  * build: update to Zig 0.11.0
+  * Cursor: keep focus_follows_cursor_target updated
+  * Root: fix inflight_layout_demands counting
+  * Root: migrate {all,active}_outputs to wl.list
+  * Root: make 'fallback output empty' assertion stricter
+  * Root: rename field outputs to active_outputs
+  * river: update some comments
+  * river: fix spatial direction focusing / swapping
+  * river: focus-view and swap by spatial direction
+  * river: fix crash when trying to add tag rule without tag argument
+  * river: add tags rule
+  * river: change order of colums in list-rules command
+  * river: allow settings child type of RuleList
+  * river-layout: Remove incorrect assertion
+</comment>
+    <requestid>1119757</requestid>
+  </revision>
 </revisionlist>
