@@ -232,4 +232,15 @@
   proper ABI versioning. (forwarded request 868996 from eeich)</comment>
     <requestid>869000</requestid>
   </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>2440974ce9e423318dbc0e05aa286bfe</srcmd5>
+    <version>2.1.0</version>
+    <time>1698170891</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5</comment>
+    <requestid>1119879</requestid>
+  </revision>
 </revisionlist>

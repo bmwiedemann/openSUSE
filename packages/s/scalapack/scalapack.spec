@@ -1,7 +1,7 @@
 #
-# spec file for package scalapack
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,31 +41,17 @@ ExclusiveArch:  do_not_build
 %define package_name %pname
 %endif
 
-%if "%flavor" == "openmpi"
-%{?DisOMPI1}
-%define mpi_flavor openmpi
-%define mpi_vers 1
-%{bcond_with hpc}
-%endif
-
-%if "%flavor" == "openmpi2"
-%{?DisOMPI2}
-%define mpi_flavor openmpi
-%define mpi_vers 2
-%{bcond_with hpc}
-%endif
-
-%if "%flavor" == "openmpi3"
-%{?DisOMPI3}
-%define mpi_flavor openmpi
-%define mpi_vers 3
-%{bcond_with hpc}
-%endif
-
 %if "%flavor" == "openmpi4"
 %{?DisOMPI4}
 %define mpi_flavor openmpi
 %define mpi_vers 4
+%{bcond_with hpc}
+%endif
+
+%if "%flavor" == "openmpi5"
+%{?DisOMPI5}
+%define mpi_flavor openmpi
+%define mpi_vers 5
 %{bcond_with hpc}
 %endif
 
@@ -79,39 +65,21 @@ ExclusiveArch:  do_not_build
 %{bcond_with blacs_devel_headers}
 %endif
 
-%if "%flavor" == "gnu-openmpi-hpc"
-%{?DisOMPI1}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%undefine c_f_ver
-%define mpi_vers 1
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu-openmpi2-hpc"
-%{?DisOMPI2}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%undefine c_f_ver
-%define mpi_vers 2
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%undefine c_f_ver
-%define mpi_vers 3
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu-openmpi4-hpc"
 %{?DisOMPI4}
 %define mpi_flavor openmpi
 %define compiler_family gnu
 %undefine c_f_ver
 %define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu-openmpi5-hpc"
+%{?DisOMPI5}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%undefine c_f_ver
+%define mpi_vers 5
 %{bcond_without hpc}
 %endif
 
@@ -129,39 +97,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu7-openmpi-hpc"
-%{?DisOMPI1}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 7
-%define mpi_vers 1
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-openmpi2-hpc"
-%{?DisOMPI2}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 7
-%define mpi_vers 2
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-openmpi3-hpc"
-%{?DisOMPI3}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 7
-%define mpi_vers 3
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu7-openmpi4-hpc"
 %{?DisOMPI4}
 %define mpi_flavor openmpi
 %define compiler_family gnu
 %define c_f_ver 7
 %define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu7-openmpi5-hpc"
+%{?DisOMPI5}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 7
+%define mpi_vers 5
 %{bcond_without hpc}
 %endif
 
@@ -179,39 +129,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu8-openmpi-hpc"
-%{?DisOMPI1}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 8
-%define mpi_vers 1
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu8-openmpi2-hpc"
-%{?DisOMPI2}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 8
-%define mpi_vers 2
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu8-openmpi3-hpc"
-%{?DisOMPI3}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 8
-%define mpi_vers 3
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu8-openmpi4-hpc"
 %{?DisOMPI4}
 %define mpi_flavor openmpi
 %define compiler_family gnu
 %define c_f_ver 8
 %define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu8-openmpi5-hpc"
+%{?DisOMPI5}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 8
+%define mpi_vers 5
 %{bcond_without hpc}
 %endif
 
@@ -229,39 +161,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu9-openmpi-hpc"
-%{?DisOMPI1}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 9
-%define mpi_vers 1
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-openmpi2-hpc"
-%{?DisOMPI2}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 9
-%define mpi_vers 2
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-openmpi3-hpc"
-%{?DisOMPI3}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 9
-%define mpi_vers 3
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu9-openmpi4-hpc"
 %{?DisOMPI4}
 %define mpi_flavor openmpi
 %define compiler_family gnu
 %define c_f_ver 9
 %define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu9-openmpi5-hpc"
+%{?DisOMPI5}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 9
+%define mpi_vers 5
 %{bcond_without hpc}
 %endif
 
@@ -279,39 +193,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu10-openmpi-hpc"
-%{?DisOMPI1}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 10
-%define mpi_vers 1
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-openmpi2-hpc"
-%{?DisOMPI2}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 10
-%define mpi_vers 2
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-openmpi3-hpc"
-%{?DisOMPI3}
-%define mpi_flavor openmpi
-%define compiler_family gnu
-%define c_f_ver 10
-%define mpi_vers 3
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu10-openmpi4-hpc"
 %{?DisOMPI4}
 %define mpi_flavor openmpi
 %define compiler_family gnu
 %define c_f_ver 10
 %define mpi_vers 4
+%{bcond_without hpc}
+%endif
+
+%if "%flavor" == "gnu10-openmpi5-hpc"
+%{?DisOMPI5}
+%define mpi_flavor openmpi
+%define compiler_family gnu
+%define c_f_ver 10
+%define mpi_vers 5
 %{bcond_without hpc}
 %endif
 
@@ -333,10 +229,7 @@ ExclusiveArch:  do_not_build
 ExclusiveArch:  do_not_build
 %endif
 
-# openmpi 1 was called just "openmpi" in Leap 15.x/SLE15 
-%if 0%{?suse_version} >= 1550 || "%{mpi_flavor}" != "openmpi" || "%{mpi_vers}" != "1"
 %define mpi_ext %{?mpi_vers}
-%endif
 
 %if 0%{!?mpi_flavor:1}
  %define mpi_flavor mpich
@@ -351,6 +244,7 @@ ExclusiveArch:  do_not_build
 %define installdir %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
 %define p_includedir %{_includedir}
 %else
+ExcludeArch:    %ix86
 %{hpc_init -c %compiler_family -m %mpi_flavor %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
 
 %define package_name %{hpc_package_name %{?_vers}}
@@ -391,30 +285,30 @@ BuildRequires:  suse-hpc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-The ScaLAPACK (or Scalable LAPACK) library includes a subset 
-of LAPACK routines redesigned for distributed memory MIMD 
-parallel computers. It is currently written in a 
-Single-Program-Multiple-Data style using explicit message 
-passing for interprocessor communication. It assumes 
-matrices are laid out in a two-dimensional block cyclic 
+The ScaLAPACK (or Scalable LAPACK) library includes a subset
+of LAPACK routines redesigned for distributed memory MIMD
+parallel computers. It is currently written in a
+Single-Program-Multiple-Data style using explicit message
+passing for interprocessor communication. It assumes
+matrices are laid out in a two-dimensional block cyclic
 decomposition.
 
-ScaLAPACK is designed for heterogeneous computing and is 
+ScaLAPACK is designed for heterogeneous computing and is
 portable on any computer that supports MPI or PVM.
 
-Like LAPACK, the ScaLAPACK routines are based on 
-block-partitioned algorithms in order to minimize the frequency 
-of data movement between different levels of the memory hierarchy. 
-(For such machines, the memory hierarchy includes the off-processor 
-memory of other processors, in addition to the hierarchy of registers, 
-cache, and local memory on each processor.) The fundamental building 
-blocks of the ScaLAPACK library are distributed memory versions (PBLAS) 
-of the Level 1, 2 and 3 BLAS, and a set of Basic Linear Algebra 
-Communication Subprograms (BLACS) for communication tasks that arise 
-frequently in parallel linear algebra computations. In the ScaLAPACK 
-routines, all interprocessor communication occurs within the PBLAS and the 
-BLACS. One of the design goals of ScaLAPACK was to have the ScaLAPACK 
-routines resemble their LAPACK equivalents as much as possible. 
+Like LAPACK, the ScaLAPACK routines are based on
+block-partitioned algorithms in order to minimize the frequency
+of data movement between different levels of the memory hierarchy.
+(For such machines, the memory hierarchy includes the off-processor
+memory of other processors, in addition to the hierarchy of registers,
+cache, and local memory on each processor.) The fundamental building
+blocks of the ScaLAPACK library are distributed memory versions (PBLAS)
+of the Level 1, 2 and 3 BLAS, and a set of Basic Linear Algebra
+Communication Subprograms (BLACS) for communication tasks that arise
+frequently in parallel linear algebra computations. In the ScaLAPACK
+routines, all interprocessor communication occurs within the PBLAS and the
+BLACS. One of the design goals of ScaLAPACK was to have the ScaLAPACK
+routines resemble their LAPACK equivalents as much as possible.
 
 %package -n     blacs-devel-headers
 Summary:        Development headers for BLACS
@@ -471,7 +365,7 @@ Group:          Development/Libraries/Parallel
 Requires:       %{libname %_vers} = %{version}
 %if %{without hpc}
 Requires:       %{mpi_flavor}%{?mpi_ext}-devel
-%if "%{mpi_flavor}%{?mpi_ext}" == "openmpi1"
+%if "%{mpi_flavor}%{?mpi_ext}" == "openmpi4"
 Provides:       lib%{pname}%{so_ver}-openmpi-devel
 %endif
 %else
@@ -514,7 +408,7 @@ Requires:       %{name}-module
 %endif
 
 %description -n %{libblacsname %_vers}
-The BLACS (Basic Linear Algebra Communication Subprograms) project 
+The BLACS (Basic Linear Algebra Communication Subprograms) project
 provides a linear algebra oriented message passing interface for
 a large range of distributed memory platforms.
 
@@ -543,7 +437,7 @@ This package contains development libraries for BLACS, compiled against %{mpi_fl
 Summary:        Development libraries for BLACS (%{mpi_flavor}%{?mpi_vers})
 Group:          Development/Libraries/Parallel
 Requires:       %{libblacsname %_vers}-devel = %{version}
-%if "%{mpi_flavor}%{?mpi_ext}" == "openmpi1"
+%if "%{mpi_flavor}%{?mpi_ext}" == "openmpi4"
 Provides:       libblacs%{so_ver}-openmpi-devel
 %endif
 
@@ -730,6 +624,7 @@ cp -f README LICENSE ../
 %{installdir}/%_lib/libblacs.a
 
 %else # hpc
+
 %files module
 %hpc_modules_files
 %endif
