@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:24:27 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add license header
+
+-------------------------------------------------------------------
 Thu Jun 15 16:58:55 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install qemu-img explicitly instead of qemu-tools
