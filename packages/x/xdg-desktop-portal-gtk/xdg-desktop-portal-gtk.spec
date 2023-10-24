@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-gtk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-gtk
-Version:        1.14.1
+Version:        1.15.1
 Release:        0
 Summary:        Backend implementation for xdg-desktop-portal using GTK+
 License:        LGPL-2.1-or-later
@@ -25,6 +25,7 @@ Group:          System/Libraries
 URL:            https://github.com/flatpak/xdg-desktop-portal-gtk
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
@@ -59,20 +60,16 @@ or org.gnome.SessionManager D-Bus interfaces.
 %build
 # All backends that are disabled are instead provided by
 # xdg-desktop-portal-gnome, to keep this package free of GNOME dependencies.
-%configure \
-	--disable-silent-rules \
-	--enable-appchooser \
-	--disable-background \
-	--disable-screencast \
-	--disable-screenshot \
-	--enable-settings \
-	--disable-wallpaper \
-	--disable-lockdown \
+%meson \
+	-D appchooser=enabled \
+	-D settings=enabled \
+	-D wallpaper=disabled \
+	-D lockdown=disabled \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}
 
 %post
