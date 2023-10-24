@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 10:21:58 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1698096072.7fee4e3:
+  * Fix rsync command when asset name contains a colon
+  * Document important caveat of SVIRT_WORKER_CACHE setting
+  * Simplify log message when copying asset to svirt host
+  * Fixed python linter errors
+  * Stable Function signatures for Python Modules
+  * Enforce in tests that Python does not support `run_args`
+
+-------------------------------------------------------------------
 Sun Oct 22 02:22:01 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1697790639.4abe47f:
