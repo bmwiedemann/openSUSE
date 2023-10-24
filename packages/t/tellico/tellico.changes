@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 24 06:58:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.5.2.
+  https://tellico-project.org/tellico-3-5-2-released/
+  * Added support for importing Discogs collections (kde#446262).
+  * Added VGCollect data source.
+  * Added SAO/NASA Astrophysics Data System data source.
+  * Updated Numista data source to return additional results.
+  * Updated IMDb and FilmAffinity data sources.
+  * Fixed a bug with writing some relative links (kde#472778).
+  * Fixed title display for some custom collections (kde#231867).
+
+-------------------------------------------------------------------
 Tue Jul  4 07:50:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.5.1

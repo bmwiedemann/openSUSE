@@ -17,18 +17,16 @@
 
 
 Name:           tellico
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
-Group:          Productivity/Office/Other
 URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcsv-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Cddb)
 BuildRequires:  cmake(KF5Codecs)
@@ -51,7 +49,6 @@ BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Charts)
 BuildRequires:  cmake(Qt5Core)
@@ -72,7 +69,7 @@ BuildRequires:  pkgconfig(yaz)
 # Needed to install/uninstall knewstuff downloads
 Requires:       /usr/bin/dbus-send
 # QWebEngine is not available on ppc
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %else
 BuildRequires:  cmake(KF5KHtml)
@@ -90,14 +87,14 @@ stamps, trading cards, comic books, and wines.
 
 %build
 %cmake_kf5 "-DENABLE_WEBCAM=true" -d build
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
-%suse_update_desktop_file -r org.kde.%{name} Qt KDE Office Database
-
 %find_lang %{name}
+
 %{kf5_find_htmldocs}
 
 %{kf5_post_install}
