@@ -114,4 +114,15 @@
 - Fix hypre package conflicts for non HPC packages. (forwarded request 867882 from eeich)</comment>
     <requestid>867883</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>510f3375693e7ce4cc4437e7eeecf346</srcmd5>
+    <version>2.20.0</version>
+    <time>1698170894</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5</comment>
+    <requestid>1119955</requestid>
+  </revision>
 </revisionlist>
