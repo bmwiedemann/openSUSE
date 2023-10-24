@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 12:08:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use setuptools_scm to get the right packaged version
+
+-------------------------------------------------------------------
 Mon Oct  9 12:44:15 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required

@@ -93,4 +93,12 @@
     <comment></comment>
     <requestid>1116492</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>28a17321f77d84470d6aa5636278fdcb</srcmd5>
+    <version>0.6.1</version>
+    <time>1698170974</time>
+    <user>anag+factory</user>
+    <comment>- use setuptools_scm to get the right packaged version</comment>
+    <requestid>1119968</requestid>
+  </revision>
 </revisionlist>

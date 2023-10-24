@@ -26,6 +26,7 @@ URL:            https://github.com/airspeed-velocity/asv
 Source:         https://files.pythonhosted.org/packages/source/a/asv/asv-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -84,6 +85,6 @@ exit 0
 %license LICENSE.rst
 %python_alternative %{_bindir}/asv
 %{python_sitearch}/asv/
-%{python_sitearch}/asv-*info
+%{python_sitearch}/asv-%{version}*-info
 
 %changelog
