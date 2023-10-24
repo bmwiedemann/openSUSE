@@ -48,4 +48,15 @@
 - Fix mpi_ver -&amp;gt; mpi_vers. (forwarded request 870974 from eeich)</comment>
     <requestid>870975</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>807d5be79b5d8c2d4410ba557e57116d</srcmd5>
+    <version>1.0.1</version>
+    <time>1698170888</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5</comment>
+    <requestid>1119888</requestid>
+  </revision>
 </revisionlist>

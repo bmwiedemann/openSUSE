@@ -1,7 +1,7 @@
 #
-# spec file for package ocr
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+ExcludeArch:    %ix86
 # Base package name
 %define pname ocr
 %define PNAME %(echo %{pname} | tr [a-z] [A-Z])
@@ -62,33 +63,6 @@ ExclusiveArch:  do_not_build
 %bcond_without mpi
 %endif
 
-%if "%{flavor}" == "gnu-openmpi-hpc"
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_vers 1
-%bcond_without mpi
-%{?DisOMPI1}
-%endif
-
-%if "%{flavor}" == "gnu-openmpi2-hpc"
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_vers 2
-%bcond_without mpi
-%{?DisOMPI2}
-%endif
-
-%if "%{flavor}" == "gnu-openmpi3-hpc"
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_vers 3
-%bcond_without mpi
-%{?DisOMPI3}
-%endif
-
 %if "%{flavor}" == "gnu-openmpi4-hpc"
 %define compiler_family gnu
 %undefine c_f_ver
@@ -97,6 +71,16 @@ ExclusiveArch:  do_not_build
 %bcond_without mpi
 %{?DisOMPI4}
 %endif
+
+%if "%{flavor}" == "gnu-openmpi5-hpc"
+%define compiler_family gnu
+%undefine c_f_ver
+%global mpi_family openmpi
+%define mpi_vers 5
+%bcond_without mpi
+%{?DisOMPI5}
+%endif
+
 #
 %if "%{flavor}" == "gnu10-hpc"
 %define compiler_family gnu
@@ -118,33 +102,6 @@ ExclusiveArch:  do_not_build
 %bcond_without mpi
 %endif
 
-%if "%{flavor}" == "gnu10-openmpi-hpc"
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_family openmpi
-%define mpi_vers 1
-%bcond_without mpi
-%{?DisOMPI1}
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi2-hpc"
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_family openmpi
-%define mpi_vers 2
-%bcond_without mpi
-%{?DisOMPI2}
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi3-hpc"
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_family openmpi
-%define mpi_vers 3
-%bcond_without mpi
-%{?DisOMPI3}
-%endif
-
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
 %define compiler_family gnu
 %define c_f_ver 10
@@ -152,6 +109,15 @@ ExclusiveArch:  do_not_build
 %define mpi_vers 4
 %bcond_without mpi
 %{?DisOMPI4}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi5-hpc"
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_family openmpi
+%define mpi_vers 5
+%bcond_without mpi
+%{?DisOMPI5}
 %endif
 
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?with_mpi:-m {%mpi_family}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}

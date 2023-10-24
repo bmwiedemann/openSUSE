@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 23 19:19:42 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Disable HPC flavors on i586
+
+-------------------------------------------------------------------
+Mon Oct 23 11:59:56 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Wed Feb 10 18:10:34 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439).
