@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:23:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.163.0:
+  * Release notes for 0.163.0
+  * Update dependencies and permissions for stale workflow
+  * Update coredns (#7179)
+  * Automatically update coredns assets using Github workflows
+    (#7178)
+  * Add support for P5 instances
+  * Bump golang.org/x/net from 0.16.0 to 0.17.0
+  * Update build distros workflow to save disk space
+  * Update build image
+  * Bump dependencies
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Oct 13 08:30:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.162.0:

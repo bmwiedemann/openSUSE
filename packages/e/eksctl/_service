@@ -3,7 +3,7 @@
     <param name="url">https://github.com/weaveworks/eksctl</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.162.0</param>
+    <param name="revision">v0.163.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
