@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kgeotag
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        A photo geotagging utility
 License:        GPL-3.0-only
@@ -39,7 +39,7 @@ BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     marble
 
 %description
@@ -64,13 +64,14 @@ images' Exif header and/or in XMP sidecar files.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name}
-%endif
+
+%{kf5_find_htmldocs}
 
 %files
 %license LICENSES/*
-%doc ChangeLog.rst README.md
+%doc CHANGELOG.rst README.md
+%doc %lang(en) %{_kf5_htmldir}/en/kgeotag/
 %{_kf5_applicationsdir}/org.kde.kgeotag.desktop
 %{_kf5_appstreamdir}/org.kde.kgeotag.appdata.xml
 %{_kf5_bindir}/kgeotag
@@ -79,8 +80,6 @@ images' Exif header and/or in XMP sidecar files.
 %{_kf5_kxmlguidir}/kgeotag/
 %{_kf5_sharedir}/kgeotag/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

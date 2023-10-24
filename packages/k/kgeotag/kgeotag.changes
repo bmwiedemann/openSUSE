@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:34:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.4.0
+  * KGeoTag now supports handling of some TIFF-based RAW image
+    formats
+  * Dependencies update
+  * Updated the timezones data files to 2022g
+  * The compile_timezones_data.py script now derives timezone
+    colors from the timezone name rather than counting a color
+    up on a sorted list.
+
+-------------------------------------------------------------------
 Sun Nov 27 19:52:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the 'License' tag
