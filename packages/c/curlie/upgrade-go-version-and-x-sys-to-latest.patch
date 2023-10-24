@@ -8,10 +8,10 @@ Subject: [PATCH] upgrade go version and /x/sys to latest
  go.sum | 29 ++---------------------------
  2 files changed, 6 insertions(+), 29 deletions(-)
 
-diff --git a/go.mod b/go.mod
-index bebd23f..f08d1cc 100644
---- a/go.mod
-+++ b/go.mod
+Index: curlie-1.7.2/go.mod
+===================================================================
+--- curlie-1.7.2.orig/go.mod
++++ curlie-1.7.2/go.mod
 @@ -2,7 +2,9 @@ module github.com/rs/curlie
  
  require (
@@ -24,10 +24,10 @@ index bebd23f..f08d1cc 100644
 +require golang.org/x/term v0.1.0 // indirect
 +
 +go 1.20
-diff --git a/go.sum b/go.sum
-index 6b2e5c3..123a8c9 100644
---- a/go.sum
-+++ b/go.sum
+Index: curlie-1.7.2/go.sum
+===================================================================
+--- curlie-1.7.2.orig/go.sum
++++ curlie-1.7.2/go.sum
 @@ -1,31 +1,6 @@
 -github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 -golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=

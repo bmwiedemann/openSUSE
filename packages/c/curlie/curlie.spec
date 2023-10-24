@@ -18,7 +18,7 @@
 
 %define goipath github.com/rs/curlie
 Name:           curlie
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        a frontend to curl that adds the ease of use of httpie
 License:        MIT

@@ -16,4 +16,12 @@ This package could be a candidate to be included in https://build.opensuse.org/p
     <comment></comment>
     <requestid>1088065</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df58cccddde49df9a7fc0c9ed33bc1f5</srcmd5>
+    <version>1.7.2</version>
+    <time>1698170932</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119898</requestid>
+  </revision>
 </revisionlist>

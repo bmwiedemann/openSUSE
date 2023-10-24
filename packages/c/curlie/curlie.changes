@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 07:42:03 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 1.7.2:
+  * Revert "fix headers/body order (#55)" (#74)
+
+-------------------------------------------------------------------
 Sat May 20 15:04:02 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.7.1:
