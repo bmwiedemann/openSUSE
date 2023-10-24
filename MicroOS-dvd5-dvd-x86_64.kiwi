@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20231023" schemaversion="4.1">
+<image name="OBS__MicroOS___20231024" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231023</productvar>
+      <productvar name="VERSION">20231024</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231023,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231024,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231023/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231024/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -662,7 +662,6 @@
       <repopackage name="iproute2"/>
       <repopackage name="iproute2-bash-completion"/>
       <repopackage name="iptables"/>
-      <repopackage name="iptables-backend-nft"/>
       <repopackage name="iputils"/>
       <repopackage name="irqbalance"/>
       <repopackage name="irqbalance-ui"/>
@@ -2718,7 +2717,6 @@
       <repopackage name="terminfo-iterm"/>
       <repopackage name="terminfo-screen"/>
       <repopackage name="terminus-bitmap-fonts"/>
-      <repopackage name="texlive-lm-fonts"/>
       <repopackage name="tftpboot-installation-openSUSE-MicroOS-x86_64"/>
       <repopackage name="thessalonica-oldstandard-otf-fonts"/>
       <repopackage name="thessalonica-theano-otf-fonts"/>
