@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 22 15:27:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: No longer
+  needed, nor used (since 12.3.0 release).
+
+-------------------------------------------------------------------
 Thu Sep 28 17:47:50 UTC 2023 - Kirk Allan <kallan@suse.com>
 
 - 15 sp4 currently uses open-vm-tools rpms from 15 sp3.  As such, enable
