@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Oct 20 10:03:33 UTC 2023 - Danilo Spinella <oss@danyspin97.org>
+
+- redis 7.2.2:
+  * (CVE-2023-45145) The wrong order of listen(2) and chmod(2) calls creates a
+    race condition that can be used by another process to bypass desired Unix
+    socket permissions on startup, bsc#1216376
+  * WAITAOF could timeout in the absence of write traffic in case a new AOF is
+    created and an AOF rewrite can't immediately start
+  * Fix crash when running rebalance command in a mixed cluster of 7.0 and 7.2
+    nodes
+  * Fix the return type of the slot number in cluster shards to integer, which
+    makes it consistent with past behavior 
+  * Fix CLUSTER commands are called from modules or scripts to return TLS info
+    appropriately 
+    redis-cli, fix crash on reconnect when in SUBSCRIBE mode 
+  * Fix overflow calculation for next timer event 
+
+-------------------------------------------------------------------
+Thu Sep  7 14:31:26 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- redis 7.2.1:
+  * (CVE-2023-41053) Redis does not correctly identify keys accessed by SORT_RO and,
+    as a result, may grant users executing this command access to keys that are not
+    explicitly authorized by the ACL configuration. (bsc#1215094)
+  * Fix crashes when joining a node to an existing 7.0 Redis Cluster
+  * Correct request_policy and response_policy command tips on for some admin /
+    configuration commands
+- Refresh redis.hashes
+
+-------------------------------------------------------------------
+Tue Aug 15 11:28:07 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- redis 7.2.0
+  - Bug Fixes
+    - redis-cli in cluster mode handles unknown-endpoint (#12273)
+    - Update request / response policy hints for a few commands
+      (#12417)
+    - Ensure that the function load timeout is disabled during
+      loading from RDB/AOF and on replicas. (#12451)
+    - Fix false success and a memory leak for ACL selector with bad
+      parenthesis combination (#12452)
+    - Fix the assertion when script timeout occurs after it
+      signaled a blocked client (#12459)
+  - Fixes for issues in previous releases of Redis 7.2
+    - Update MONITOR client's memory correctly for INFO and
+      client-eviction (#12420)
+    - The response of cluster nodes was unnecessarily adding an
+      extra comma when no hostname was present. (#12411)
+- refreshed redis-conf.patch:
+- switch to autosetup now that we switched the last patch to patch
+  level 1
+
+-------------------------------------------------------------------
 Wed Jul 12 14:10:43 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - redis 7.0.12:

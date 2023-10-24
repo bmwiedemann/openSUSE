@@ -785,4 +785,14 @@ Thanks!
     <comment></comment>
     <requestid>1098399</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>fb78af68aaf6b362142c54a558418599</srcmd5>
+    <version>7.2.2</version>
+    <time>1698170858</time>
+    <user>anag+factory</user>
+    <comment>- redis 7.2.2:
+
+the python-redis for this is on the way as well 1119606</comment>
+    <requestid>1119656</requestid>
+  </revision>
 </revisionlist>

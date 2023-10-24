@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        7.0.12
+Version:        7.2.2
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -63,10 +63,7 @@ different kind of sorting abilities.
 
 %prep
 echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0}" | sha256sum -c
-%setup -q
-%patch0
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 export HOST=OBS # for reproducible builds

@@ -1,8 +1,8 @@
-Index: redis.conf
-===================================================================
---- redis.conf.orig
-+++ redis.conf
-@@ -244,7 +244,7 @@
+diff --git a/redis.conf b/redis.conf
+index 97f077b0d..6ba6b290e 100644
+--- a/redis.conf
++++ b/redis.conf
+@@ -306,7 +306,7 @@ tcp-keepalive 300
  # By default Redis does not run as a daemon. Use 'yes' if you need it.
  # Note that Redis will write a pid file in /var/run/redis.pid when daemonized.
  # When Redis is supervised by upstart or systemd, this parameter has no impact.
@@ -11,7 +11,7 @@ Index: redis.conf
  
  # If you run Redis from upstart or systemd, Redis can interact with your
  # supervision tree. Options:
-@@ -262,7 +262,7 @@
+@@ -324,7 +324,7 @@ daemonize no
  # The default is "no". To run under upstart/systemd, you can simply uncomment
  # the line below:
  #
@@ -20,7 +20,7 @@ Index: redis.conf
  
  # If a pid file is specified, Redis writes it where specified at startup
  # and removes it at exit.
-@@ -276,7 +276,7 @@
+@@ -338,7 +338,7 @@ daemonize no
  #
  # Note that on modern Linux systems "/run/redis.pid" is more conforming
  # and should be used instead.
@@ -29,7 +29,7 @@ Index: redis.conf
  
  # Specify the server verbosity level.
  # This can be one of:
-@@ -289,7 +289,8 @@
+@@ -352,7 +352,8 @@ loglevel notice
  # Specify the log file name. Also the empty string can be used to force
  # Redis to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
@@ -39,7 +39,7 @@ Index: redis.conf
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-@@ -441,7 +442,7 @@
+@@ -507,7 +508,7 @@ rdb-del-sync-files no
  # The Append Only File will also be created inside this directory.
  #
  # Note that you must specify a directory here, not a file name.
@@ -48,11 +48,11 @@ Index: redis.conf
  
  ################################# REPLICATION #################################
  
-Index: sentinel.conf
-===================================================================
---- sentinel.conf.orig
-+++ sentinel.conf
-@@ -24,16 +24,18 @@
+diff --git a/sentinel.conf b/sentinel.conf
+index b7b3604f0..8262608ad 100644
+--- a/sentinel.conf
++++ b/sentinel.conf
+@@ -13,11 +13,12 @@ port 26379
  # Note that Redis will write a pid file in /var/run/redis-sentinel.pid when
  # daemonized.
  daemonize no
@@ -64,12 +64,14 @@ Index: sentinel.conf
 -pidfile /var/run/redis-sentinel.pid
 +pidfile /run/redis/sentinel-default.pid
  
+ # Specify the server verbosity level.
+ # This can be one of:
+@@ -31,7 +32,7 @@ loglevel notice
  # Specify the log file name. Also the empty string can be used to force
  # Sentinel to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
 -logfile ""
-+loglevel notice
 +logfile /var/log/redis/sentinel-default.log
  
- # sentinel announce-ip <ip>
- # sentinel announce-port <port>
+ # To enable logging to the system logger, just set 'syslog-enabled' to yes,
+ # and optionally update the other syslog parameters to suit your needs.
