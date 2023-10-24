@@ -1848,7 +1848,6 @@ unsorted:
   - calamaris 
   - calc 
   - calc-devel 
-  - calcium-devel 
   - calcurse 
   - calcurse-lang 
   - calendarsupport-devel 
@@ -3204,6 +3203,9 @@ unsorted:
   - docserv-sitemap 
   - doctest-devel 
   - dog 
+  - doggo 
+  - doggo-fish-completion 
+  - doggo-zsh-completion 
   - dogtail 
   - doh 
   - dolly 
@@ -7903,6 +7905,7 @@ unsorted:
   - i3status-rust 
   - iasimage 
   - ibacm 
+  - ibdev2netdev 
   - ibm-data-db2 
   - ibmswtpm2 
   - ibmtss 
@@ -8032,21 +8035,12 @@ unsorted:
   - imapfilter 
   - imb-gnu-mpich-hpc 
   - imb-gnu-mvapich2-hpc 
-  - imb-gnu-openmpi1-hpc 
-  - imb-gnu-openmpi2-hpc 
-  - imb-gnu-openmpi3-hpc 
   - imb-gnu-openmpi4-hpc 
   - imb-mpich 
   - imb-mvapich2 
-  - imb-openmpi1 
-  - imb-openmpi2 
-  - imb-openmpi3 
   - imb-openmpi4 
   - imb_2021_3-gnu-mpich-hpc 
   - imb_2021_3-gnu-mvapich2-hpc 
-  - imb_2021_3-gnu-openmpi1-hpc 
-  - imb_2021_3-gnu-openmpi2-hpc 
-  - imb_2021_3-gnu-openmpi3-hpc 
   - imb_2021_3-gnu-openmpi4-hpc 
   - imgp 
   - imgp-bash-completion 
@@ -11171,7 +11165,6 @@ unsorted:
   - libcaja-extension1 
   - libcal3d12 
   - libcalc2_15_0_1 
-  - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
@@ -11909,7 +11902,7 @@ unsorted:
   - libflatbuffers23_3_3 
   - libflickcurl-devel 
   - libflickcurl0 
-  - libflint17 
+  - libflint18 
   - libflite1 
   - libflite_cmu_grapheme_lang1 
   - libflite_cmu_grapheme_lex1 
@@ -17779,15 +17772,6 @@ unsorted:
   - mpiP-gnu-mvapich2-hpc 
   - mpiP-gnu-mvapich2-hpc-devel 
   - mpiP-gnu-mvapich2-hpc-doc 
-  - mpiP-gnu-openmpi1-hpc 
-  - mpiP-gnu-openmpi1-hpc-devel 
-  - mpiP-gnu-openmpi1-hpc-doc 
-  - mpiP-gnu-openmpi2-hpc 
-  - mpiP-gnu-openmpi2-hpc-devel 
-  - mpiP-gnu-openmpi2-hpc-doc 
-  - mpiP-gnu-openmpi3-hpc 
-  - mpiP-gnu-openmpi3-hpc-devel 
-  - mpiP-gnu-openmpi3-hpc-doc 
   - mpiP-gnu-openmpi4-hpc 
   - mpiP-gnu-openmpi4-hpc-devel 
   - mpiP-gnu-openmpi4-hpc-doc 
@@ -17799,18 +17783,6 @@ unsorted:
   - mpiP_3_5-gnu-mvapich2-hpc-devel 
   - mpiP_3_5-gnu-mvapich2-hpc-devel-static 
   - mpiP_3_5-gnu-mvapich2-hpc-doc 
-  - mpiP_3_5-gnu-openmpi1-hpc 
-  - mpiP_3_5-gnu-openmpi1-hpc-devel 
-  - mpiP_3_5-gnu-openmpi1-hpc-devel-static 
-  - mpiP_3_5-gnu-openmpi1-hpc-doc 
-  - mpiP_3_5-gnu-openmpi2-hpc 
-  - mpiP_3_5-gnu-openmpi2-hpc-devel 
-  - mpiP_3_5-gnu-openmpi2-hpc-devel-static 
-  - mpiP_3_5-gnu-openmpi2-hpc-doc 
-  - mpiP_3_5-gnu-openmpi3-hpc 
-  - mpiP_3_5-gnu-openmpi3-hpc-devel 
-  - mpiP_3_5-gnu-openmpi3-hpc-devel-static 
-  - mpiP_3_5-gnu-openmpi3-hpc-doc 
   - mpiP_3_5-gnu-openmpi4-hpc 
   - mpiP_3_5-gnu-openmpi4-hpc-devel 
   - mpiP_3_5-gnu-openmpi4-hpc-devel-static 
@@ -17846,12 +17818,6 @@ unsorted:
   - mpitests-mvapich2-gnu-hpc 
   - mpitests-mvapich2-psm2 
   - mpitests-mvapich2-psm2-gnu-hpc 
-  - mpitests-openmpi1 
-  - mpitests-openmpi1-gnu-hpc 
-  - mpitests-openmpi2 
-  - mpitests-openmpi2-gnu-hpc 
-  - mpitests-openmpi3 
-  - mpitests-openmpi3-gnu-hpc 
   - mpitests-openmpi4 
   - mpitests-openmpi4-gnu-hpc 
   - mplus-code-latin-variable-fonts 
@@ -26527,6 +26493,7 @@ unsorted:
   - python310-ypy-websocket 
   - python310-yq 
   - python310-yt 
+  - python310-yt-dlp 
   - python310-zarr 
   - python310-zc.buildout 
   - python310-zc.customdoctests 
@@ -29870,6 +29837,7 @@ unsorted:
   - python311-ypy-websocket 
   - python311-yq 
   - python311-yt 
+  - python311-yt-dlp 
   - python311-zarr 
   - python311-zc.buildout 
   - python311-zc.customdoctests 
@@ -33398,6 +33366,7 @@ unsorted:
   - python39-ypy-websocket 
   - python39-yq 
   - python39-yt 
+  - python39-yt-dlp 
   - python39-zarr 
   - python39-zc.buildout 
   - python39-zc.customdoctests 
@@ -45859,6 +45828,7 @@ unsorted:
   - wgetpaste 
   - whatsapp-for-linux 
   - whatsapp-for-linux-lang 
+  - whatsie 
   - whipper 
   - whohas 
   - whois 
