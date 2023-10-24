@@ -1,7 +1,7 @@
 #
 # spec file for package libnet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define libname libnet9
 Name:           libnet
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        A C Library for Portable Packet Creation
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://codedocs.xyz/libnet/libnet/
 Source0:        https://github.com/libnet/libnet/releases/download/v%{version}/libnet-%{version}.tar.gz
-Patch0:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -79,7 +78,6 @@ cp -r sample sample_doc
 
 %build
 # no configure in a tarball
-autoreconf -fiv
 CFLAGS="%{optflags} -Wall -Wno-unused" \
 %configure \
     --disable-static \
@@ -110,6 +108,7 @@ rm -rf %{buildroot}/usr/share/doc/%{name}
 %{_bindir}/libnet-config
 %{_includedir}/libnet*
 %{_libdir}/libnet.so
+%{_mandir}/man1/*
 %{_mandir}/man3/*
 %{_libdir}/pkgconfig/libnet.pc
 
