@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:37:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.8.0:
+  * Update saml auth login endpoint to dashboard endpoint
+  * Create configuration with 0600 permissions by default
+  * Move config loading to config/config.go
+  * Add missing packages after moving Dapper image to BCI (#340)
+  * Bump Go and Dockerfile versions (#338)
+
+-------------------------------------------------------------------
 Tue Sep 19 04:51:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.7.7:
