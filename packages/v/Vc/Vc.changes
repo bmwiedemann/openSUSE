@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 23 20:12:57 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to version 1.4.4
+  * Add missing vectorcall to isImplementationSupported
+  * Adapt to cpp17: std::iterator is deprecated
+  * Rename None to NoTransformation in enum class Category to avoid
+    a clash with X11 library
+  * Fix horizontal min/max for uchar
+
+-------------------------------------------------------------------
 Tue Jul  5 22:20:40 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 1.4.3:
