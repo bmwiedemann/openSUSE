@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 22 11:41:06 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- update 0001-update-zig-version.patch
+  * update to support zig version 0.11.0
+- Add zig-wayland.tar.gz and zig-xkbcommon.tar.gz
+
+-------------------------------------------------------------------
+Sat Oct 21 06:57:58 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add 0001-update-zig-version.patch
+  * update to support zig version 0.11.0
+
+-------------------------------------------------------------------
 Tue Feb  7 04:16:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions. Trim boastful language

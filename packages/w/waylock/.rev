@@ -15,4 +15,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1065647</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e94d3a1e9511a9b6d252094f0a35cf5e</srcmd5>
+    <version>0.6.2</version>
+    <time>1698170896</time>
+    <user>anag+factory</user>
+    <comment>- update 0001-update-zig-version.patch
+  * update to support zig version 0.11.0
+- Add zig-wayland.tar.gz and zig-xkbcommon.tar.gz
+- Add 0001-update-zig-version.patch
+  * update to support zig version 0.11.0
+</comment>
+    <requestid>1119756</requestid>
+  </revision>
 </revisionlist>

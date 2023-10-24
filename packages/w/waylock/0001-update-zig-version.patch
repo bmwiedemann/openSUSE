@@ -1,0 +1,394 @@
+From c7a3f2678ed2a31932ee1aaea899f253c4800aba Mon Sep 17 00:00:00 2001
+From: Soc Virnyl Estela <uncomfy@uncomfyhalomacro.pl>
+Date: Sat, 21 Oct 2023 14:38:09 +0800
+Subject: [PATCH] update to zig 0.11.0
+
+Signed-off-by: Soc Virnyl Estela <uncomfy@uncomfyhalomacro.pl>
+---
+ build.zig      | 61 +++++++++++++++++++++++++++++---------------------
+ src/Lock.zig   | 22 +++++++++---------
+ src/Output.zig |  6 ++---
+ src/Seat.zig   |  6 ++---
+ src/auth.zig   | 10 ++++-----
+ src/flags.zig  | 12 +++++-----
+ src/main.zig   |  2 +-
+ 7 files changed, 65 insertions(+), 54 deletions(-)
+
+diff --git a/build.zig b/build.zig
+index baac039..ea534d9 100644
+--- a/build.zig
++++ b/build.zig
+@@ -1,10 +1,11 @@
+ const std = @import("std");
+ const assert = std.debug.assert;
+-const zbs = std.build;
++const Build = std.Build;
++const Step = std.Build.Step;
+ const fs = std.fs;
+ const mem = std.mem;
+ 
+-const ScanProtocolsStep = @import("deps/zig-wayland/build.zig").ScanProtocolsStep;
++const Scanner = @import("deps/zig-wayland/build.zig").Scanner;
+ 
+ /// While a waylock release is in development, this string should contain the version in
+ /// development with the "-dev" suffix.
+@@ -12,9 +13,9 @@ const ScanProtocolsStep = @import("deps/zig-wayland/build.zig").ScanProtocolsSte
+ /// Directly after the tagged commit, the version should be bumped and the "-dev" suffix added.
+ const version = "0.7.0-dev";
+ 
+-pub fn build(b: *zbs.Builder) !void {
++pub fn build(b: *Build) !void {
+     const target = b.standardTargetOptions(.{});
+-    const mode = b.standardReleaseOptions();
++    const optimize = b.standardOptimizeOption(.{});
+ 
+     const strip = b.option(bool, "strip", "Omit debug information") orelse false;
+     const pie = b.option(bool, "pie", "Build a Position Independent Executable") orelse false;
+@@ -24,7 +25,7 @@ pub fn build(b: *zbs.Builder) !void {
+         "man-pages",
+         "Set to true to build man pages. Requires scdoc. Defaults to true if scdoc is found.",
+     ) orelse scdoc_found: {
+-        _ = b.findProgram(&[_][]const u8{"scdoc"}, &[_][]const u8{}) catch |err| switch (err) {
++        _ = b.findProgram(&.{"scdoc"}, &.{}) catch |err| switch (err) {
+             error.FileNotFound => break :scdoc_found false,
+             else => return err,
+         };
+@@ -32,8 +33,17 @@ pub fn build(b: *zbs.Builder) !void {
+     };
+ 
+     if (man_pages) {
+-        const scdoc_step = try ScdocStep.create(b);
+-        try scdoc_step.install();
++        inline for (.{"waylock"}) |page| {
++            // Taken from river. The rationale is of the following:
++            // Workaround for https://github.com/ziglang/zig/issues/16369
++            // Even passing a buffer to std.Build.Step.Run appears to be racy and occasionally deadlocks.
++            const scdoc = b.addSystemCommand(&.{ "sh", "-c", "scdoc < doc/" ++ page ++ ".1.scd" });
++
++            scdoc.addFileArg(.{ .path = "doc/" ++ page ++ ".1.scd" });
++
++            const stdout = scdoc.captureStdOut();
++            b.getInstallStep().dependOn(&b.addInstallFile(stdout, "share/man/man1/" ++ page ++ ".1").step);
++        }
+     }
+ 
+     const install_prefix = try std.fs.path.resolve(b.allocator, &[_][]const u8{b.install_prefix});
+@@ -48,12 +58,12 @@ pub fn build(b: *zbs.Builder) !void {
+             var ret: u8 = undefined;
+ 
+             const git_describe_long = b.execAllowFail(
+-                &[_][]const u8{ "git", "-C", b.build_root, "describe", "--long" },
++                &.{ "git", "-C", b.build_root.path orelse ".", "describe", "--long" },
+                 &ret,
+                 .Inherit,
+             ) catch break :blk version;
+ 
+-            var it = mem.split(u8, mem.trim(u8, git_describe_long, &std.ascii.spaces), "-");
++            var it = mem.split(u8, mem.trim(u8, git_describe_long, &std.ascii.whitespace), "-");
+             _ = it.next().?; // previous tag
+             const commit_count = it.next().?;
+             const commit_hash = it.next().?;
+@@ -73,7 +83,7 @@ pub fn build(b: *zbs.Builder) !void {
+     const options = b.addOptions();
+     options.addOption([]const u8, "version", full_version);
+ 
+-    const scanner = ScanProtocolsStep.create(b);
++    const scanner = Scanner.create(b, .{});
+     scanner.addSystemProtocol("staging/ext-session-lock/ext-session-lock-v1.xml");
+     scanner.addSystemProtocol("staging/single-pixel-buffer/single-pixel-buffer-v1.xml");
+     scanner.addSystemProtocol("stable/viewporter/viewporter.xml");
+@@ -85,17 +95,18 @@ pub fn build(b: *zbs.Builder) !void {
+     scanner.generate("wp_viewporter", 1);
+     scanner.generate("wp_single_pixel_buffer_manager_v1", 1);
+ 
+-    const waylock = b.addExecutable("waylock", "src/main.zig");
+-    waylock.setTarget(target);
+-    waylock.setBuildMode(mode);
++    const waylock = b.addExecutable(.{
++        .name = "waylock",
++        .root_source_file = .{ .path = "src/main.zig" },
++        .target = target,
++        .optimize = optimize,
++    });
+     waylock.addOptions("build_options", options);
+ 
+-    waylock.addPackage(.{
+-        .name = "wayland",
+-        .source = .{ .generated = &scanner.result },
+-    });
+-    waylock.step.dependOn(&scanner.step);
+-    waylock.addPackagePath("xkbcommon", "deps/zig-xkbcommon/src/xkbcommon.zig");
++    const wayland = b.createModule(.{ .source_file = scanner.result });
++    waylock.addModule("wayland", wayland);
++    const xkbcommon = b.createModule(.{ .source_file = .{ .path = "deps/zig-xkbcommon/src/xkbcommon.zig" } });
++    waylock.addModule("xkbcommon", xkbcommon);
+     waylock.linkLibC();
+     waylock.linkSystemLibrary("wayland-client");
+     waylock.linkSystemLibrary("xkbcommon");
+@@ -105,23 +116,23 @@ pub fn build(b: *zbs.Builder) !void {
+ 
+     waylock.strip = strip;
+     waylock.pie = pie;
+-    waylock.install();
++    b.installArtifact(waylock);
+ }
+ 
+ const ScdocStep = struct {
+-    builder: *zbs.Builder,
+-    step: zbs.Step,
++    builder: *Build,
++    step: *Step,
+ 
+-    fn create(builder: *zbs.Builder) !*ScdocStep {
++    fn create(builder: *Build) !*ScdocStep {
+         const self = try builder.allocator.create(ScdocStep);
+         self.* = .{
+             .builder = builder,
+-            .step = zbs.Step.init(.custom, "Generate man pages", builder.allocator, make),
++            .step = Step.init(.custom, "Generate man pages", builder.allocator, make),
+         };
+         return self;
+     }
+ 
+-    fn make(step: *zbs.Step) !void {
++    fn make(step: *Step) !void {
+         const self = @fieldParentPtr(ScdocStep, "step", step);
+         _ = try self.builder.exec(
+             &[_][]const u8{ "sh", "-c", "scdoc < doc/waylock.1.scd > doc/waylock.1" },
+diff --git a/src/Lock.zig b/src/Lock.zig
+index a54d038..fa4bf9f 100644
+--- a/src/Lock.zig
++++ b/src/Lock.zig
+@@ -172,12 +172,12 @@ pub fn run(options: Options) void {
+                 fatal("failed to read response from child authentication process: {s}", .{@errorName(err)});
+             };
+             switch (byte) {
+-                @boolToInt(true) => {
++                @intFromBool(true) => {
+                     lock.session_lock.?.unlockAndDestroy();
+                     lock.session_lock = null;
+                     lock.state = .exiting;
+                 },
+-                @boolToInt(false) => {
++                @intFromBool(false) => {
+                     lock.set_color(.fail);
+                 },
+                 else => {
+@@ -278,15 +278,15 @@ fn registry_listener(registry: *wl.Registry, event: wl.Registry.Event, lock: *Lo
+ fn registry_event(lock: *Lock, registry: *wl.Registry, event: wl.Registry.Event) !void {
+     switch (event) {
+         .global => |ev| {
+-            if (std.cstr.cmp(ev.interface, wl.Compositor.getInterface().name) == 0) {
++            if (mem.orderZ(u8, ev.interface, wl.Compositor.getInterface().name) == .eq) {
+                 // Version 4 required for wl_surface.damage_buffer
+                 if (ev.version < 4) {
+                     fatal("advertised wl_compositor version too old, version 4 required", .{});
+                 }
+                 lock.compositor = try registry.bind(ev.name, wl.Compositor, 4);
+-            } else if (std.cstr.cmp(ev.interface, ext.SessionLockManagerV1.getInterface().name) == 0) {
++            } else if (mem.orderZ(u8, ev.interface, ext.SessionLockManagerV1.getInterface().name) == .eq) {
+                 lock.session_lock_manager = try registry.bind(ev.name, ext.SessionLockManagerV1, 1);
+-            } else if (std.cstr.cmp(ev.interface, wl.Output.getInterface().name) == 0) {
++            } else if (mem.orderZ(u8, ev.interface, wl.Output.getInterface().name) == .eq) {
+                 // Version 3 required for wl_output.release
+                 if (ev.version < 3) {
+                     fatal("advertised wl_output version too old, version 3 required", .{});
+@@ -308,7 +308,7 @@ fn registry_event(lock: *Lock, registry: *wl.Registry, event: wl.Registry.Event)
+                     .initializing, .exiting => {},
+                     .locking, .locked => try node.data.create_surface(),
+                 }
+-            } else if (std.cstr.cmp(ev.interface, wl.Seat.getInterface().name) == 0) {
++            } else if (mem.orderZ(u8, ev.interface, wl.Seat.getInterface().name) == .eq) {
+                 // Version 5 required for wl_seat.release
+                 if (ev.version < 5) {
+                     fatal("advertised wl_seat version too old, version 5 required.", .{});
+@@ -321,9 +321,9 @@ fn registry_event(lock: *Lock, registry: *wl.Registry, event: wl.Registry.Event)
+ 
+                 node.data.init(lock, ev.name, wl_seat);
+                 lock.seats.prepend(node);
+-            } else if (std.cstr.cmp(ev.interface, wp.Viewporter.getInterface().name) == 0) {
++            } else if (mem.orderZ(u8, ev.interface, wp.Viewporter.getInterface().name) == .eq) {
+                 lock.viewporter = try registry.bind(ev.name, wp.Viewporter, 1);
+-            } else if (std.cstr.cmp(ev.interface, wp.SinglePixelBufferManagerV1.getInterface().name) == 0) {
++            } else if (mem.orderZ(u8, ev.interface, wp.SinglePixelBufferManagerV1.getInterface().name) == .eq) {
+                 lock.buffer_manager = try registry.bind(ev.name, wp.SinglePixelBufferManagerV1, 1);
+             }
+         },
+@@ -389,7 +389,7 @@ pub fn submit_password(lock: *Lock) void {
+ fn send_password_to_auth(lock: *Lock) !void {
+     defer lock.password.clear();
+     const writer = lock.auth_connection.writer();
+-    try writer.writeIntNative(u32, @intCast(u32, lock.password.buffer.len));
++    try writer.writeIntNative(u32, @as(u32, @intCast(lock.password.buffer.len)));
+     try writer.writeAll(lock.password.buffer);
+ }
+ 
+@@ -400,7 +400,7 @@ pub fn set_color(lock: *Lock, color: Color) void {
+ 
+     var it = lock.outputs.first;
+     while (it) |node| : (it = node.next) {
+-        node.data.attach_buffer(lock.buffers[@enumToInt(lock.color)]);
++        node.data.attach_buffer(lock.buffers[@intFromEnum(lock.color)]);
+     }
+ }
+ 
+@@ -424,7 +424,7 @@ fn create_buffers(
+     var buffers: [3]*wl.Buffer = undefined;
+     for ([_]Color{ .init, .input, .fail }) |color| {
+         const rgb = options.rgb(color);
+-        buffers[@enumToInt(color)] = try buffer_manager.createU32RgbaBuffer(
++        buffers[@intFromEnum(color)] = try buffer_manager.createU32RgbaBuffer(
+             @as(u32, (rgb >> 16) & 0xff) * (0xffff_ffff / 0xff),
+             @as(u32, (rgb >> 8) & 0xff) * (0xffff_ffff / 0xff),
+             @as(u32, (rgb >> 0) & 0xff) * (0xffff_ffff / 0xff),
+diff --git a/src/Output.zig b/src/Output.zig
+index ae0b4b1..d3c5429 100644
+--- a/src/Output.zig
++++ b/src/Output.zig
+@@ -56,10 +56,10 @@ fn lock_surface_listener(
+     const lock = output.lock;
+     switch (event) {
+         .configure => |ev| {
+-            output.width = @truncate(u31, ev.width);
+-            output.height = @truncate(u31, ev.height);
++            output.width = @as(u31, @truncate(ev.width));
++            output.height = @as(u31, @truncate(ev.height));
+             output.lock_surface.?.ackConfigure(ev.serial);
+-            output.attach_buffer(lock.buffers[@enumToInt(lock.color)]);
++            output.attach_buffer(lock.buffers[@intFromEnum(lock.color)]);
+         },
+     }
+ }
+diff --git a/src/Seat.zig b/src/Seat.zig
+index e7bcc38..c7b1b44 100644
+--- a/src/Seat.zig
++++ b/src/Seat.zig
+@@ -95,7 +95,7 @@ fn keyboard_listener(_: *wl.Keyboard, event: wl.Keyboard.Event, seat: *Seat) voi
+             defer os.close(ev.fd);
+ 
+             if (ev.format != .xkb_v1) {
+-                log.err("unsupported keymap format {d}", .{@enumToInt(ev.format)});
++                log.err("unsupported keymap format {d}", .{@intFromEnum(ev.format)});
+                 return;
+             }
+ 
+@@ -155,7 +155,7 @@ fn keyboard_listener(_: *wl.Keyboard, event: wl.Keyboard.Event, seat: *Seat) voi
+             const keysym = xkb_state.keyGetOneSym(keycode);
+             if (keysym == .NoSymbol) return;
+ 
+-            switch (@enumToInt(keysym)) {
++            switch (@intFromEnum(keysym)) {
+                 xkb.Keysym.Return => {
+                     // Ignore the attempt to submit the password if the locked event has not yet
+                     // been received. This should be pretty much impossible to happen in practice
+@@ -176,7 +176,7 @@ fn keyboard_listener(_: *wl.Keyboard, event: wl.Keyboard.Event, seat: *Seat) voi
+                     const Component = xkb.State.Component;
+                     const ctrl_active = xkb_state.modNameIsActive(
+                         xkb.names.mod.ctrl,
+-                        @intToEnum(Component, Component.mods_depressed | Component.mods_latched),
++                        @as(Component, @enumFromInt(Component.mods_depressed | Component.mods_latched)),
+                     ) == 1;
+ 
+                     if (ctrl_active) {
+diff --git a/src/auth.zig b/src/auth.zig
+index b5643c0..299ce26 100644
+--- a/src/auth.zig
++++ b/src/auth.zig
+@@ -91,7 +91,7 @@ pub fn run(conn: Connection) noreturn {
+         if (auth_result == .success) {
+             log.debug("PAM authentication succeeded", .{});
+ 
+-            conn.writer().writeByte(@boolToInt(true)) catch |err| {
++            conn.writer().writeByte(@intFromBool(true)) catch |err| {
+                 log.err("failed to notify parent of success: {s}", .{@errorName(err)});
+                 os.exit(1);
+             };
+@@ -115,7 +115,7 @@ pub fn run(conn: Connection) noreturn {
+         } else {
+             log.err("PAM authentication failed: {s}", .{auth_result.description()});
+ 
+-            conn.writer().writeByte(@boolToInt(false)) catch |err| {
++            conn.writer().writeByte(@intFromBool(false)) catch |err| {
+                 log.err("failed to notify parent of failure: {s}", .{@errorName(err)});
+                 os.exit(1);
+             };
+@@ -148,15 +148,15 @@ fn converse(
+ ) callconv(.C) pam.Result {
+     const ally = std.heap.raw_c_allocator;
+ 
+-    const count = @intCast(usize, num_msg);
++    const count = @as(usize, @intCast(num_msg));
+     const responses = ally.alloc(pam.Response, count) catch {
+         return .buf_err;
+     };
+ 
+-    mem.set(pam.Response, responses, .{});
++    @memset(responses, .{});
+     resp.* = responses.ptr;
+ 
+-    for (msg[0..count]) |message, i| {
++    for (msg[0..count], 0..) |message, i| {
+         switch (message.msg_style) {
+             .prompt_echo_off => {
+                 responses[i] = .{
+diff --git a/src/flags.zig b/src/flags.zig
+index aa162aa..de3c600 100644
+--- a/src/flags.zig
++++ b/src/flags.zig
+@@ -1,5 +1,5 @@
+ const std = @import("std");
+-const cstr = std.cstr;
++const mem = std.mem;
+ 
+ pub const Flag = struct {
+     name: [*:0]const u8,
+@@ -24,7 +24,7 @@ pub fn ParseResult(comptime flags: []const Flag) type {
+         flag_data: [flags.len]FlagData = blk: {
+             // Init all flags to false/null
+             var flag_data: [flags.len]FlagData = undefined;
+-            inline for (flags) |flag, i| {
++            inline for (flags, 0..) |flag, i| {
+                 flag_data[i] = switch (flag.kind) {
+                     .boolean => .{
+                         .name = flag.name,
+@@ -41,14 +41,14 @@ pub fn ParseResult(comptime flags: []const Flag) type {
+ 
+         pub fn boolFlag(self: Self, flag_name: [*:0]const u8) bool {
+             for (self.flag_data) |flag_data| {
+-                if (cstr.cmp(flag_data.name, flag_name) == 0) return flag_data.value.boolean;
++                if (mem.orderZ(u8, flag_data.name, flag_name) == .eq) return flag_data.value.boolean;
+             }
+             unreachable; // Invalid flag_name
+         }
+ 
+         pub fn argFlag(self: Self, flag_name: [*:0]const u8) ?[:0]const u8 {
+             for (self.flag_data) |flag_data| {
+-                if (cstr.cmp(flag_data.name, flag_name) == 0) {
++                if (mem.orderZ(u8, flag_data.name, flag_name) == .eq) {
+                     return std.mem.span(flag_data.value.arg);
+                 }
+             }
+@@ -63,8 +63,8 @@ pub fn parse(args: [][*:0]const u8, comptime flags: []const Flag) !ParseResult(f
+     var arg_idx: usize = 0;
+     while (arg_idx < args.len) : (arg_idx += 1) {
+         var parsed_flag = false;
+-        inline for (flags) |flag, flag_idx| {
+-            if (cstr.cmp(flag.name, args[arg_idx]) == 0) {
++        inline for (flags, 0..) |flag, flag_idx| {
++            if (mem.orderZ(u8, flag.name, args[arg_idx]) == .eq) {
+                 switch (flag.kind) {
+                     .boolean => ret.flag_data[flag_idx].value.boolean = true,
+                     .arg => {
+diff --git a/src/main.zig b/src/main.zig
+index fde9c73..8fc163d 100644
+--- a/src/main.zig
++++ b/src/main.zig
+@@ -111,7 +111,7 @@ pub fn log(
+     // waylock is small enough that we don't need scopes
+     comptime assert(scope == .default);
+ 
+-    if (@enumToInt(level) > @enumToInt(runtime_log_level)) return;
++    if (@intFromEnum(level) > @intFromEnum(runtime_log_level)) return;
+ 
+     const stderr = io.getStdErr().writer();
+     stderr.print(level.asText() ++ ": " ++ format ++ "\n", args) catch {};

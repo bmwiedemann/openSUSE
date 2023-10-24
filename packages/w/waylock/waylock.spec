@@ -26,6 +26,9 @@ Source0:        https://github.com/ifreund/waylock/releases/download/v%{version}
 Source1:        waylock.pamd
 Source2:        https://isaacfreund.com/public_key.txt#/%{name}.keyring
 Source3:        https://github.com/ifreund/waylock/releases/download/v%{version}/waylock-%{version}.tar.gz.sig
+Source4:        https://github.com/ifreund/zig-wayland/archive/b9c6fcb8cab3a85c5583ef371055cb589b1e7b18.tar.gz#/zig-wayland.tar.gz
+Source5:        https://github.com/ifreund/zig-xkbcommon/archive/e93ceb0436c66a7e4c727fdb59020e889519e489.tar.gz#/zig-xkbcommon.tar.gz
+Patch1:         https://github.com/ifreund/waylock/pull/64/commits/c7a3f2678ed2a31932ee1aaea899f253c4800aba.patch#/0001-update-zig-version.patch
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  zig
@@ -43,7 +46,16 @@ Screenlocker for Wayland compositors implementing ext-session-lock-v1.
 cause the session to be unlocked.)
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%setup -n %{name}-%{version}
+sed -i 's/0.6.2/0.7.0-dev/g' build.zig
+%patch1 -p1
+
+# Update deps
+rm -rv ./deps/zig-wayland/*
+rm -rv ./deps/zig-xkbcommon/*
+tar -xvf %{SOURCE4} --strip-components=1 -C ./deps/zig-wayland/
+tar -xvf %{SOURCE5} --strip-components=1 -C ./deps/zig-xkbcommon/
+
 # Replace with configuration that works in openSUSE
 cp %{SOURCE1} ./pam.d/waylock
 
@@ -52,6 +64,7 @@ cp %{SOURCE1} ./pam.d/waylock
 
 %install
 %zig_install -Dpie
+
 # Removes rpmlint error: filelist-forbidden-move-to-usr error
 mkdir -p %{buildroot}%{_pam_vendordir}
 mv %{buildroot}%{_sysconfdir}/pam.d/%{name} %{buildroot}%{_pam_vendordir}/%{name}
