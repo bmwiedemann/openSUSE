@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 10:45:58 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-Js2Py BuildRequires
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

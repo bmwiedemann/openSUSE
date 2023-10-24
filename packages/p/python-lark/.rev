@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1081912</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2f77ee7dd9bbd6edecdb3d470a762a67</srcmd5>
+    <version>1.1.5</version>
+    <time>1698170873</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed python-Js2Py BuildRequires
+</comment>
+    <requestid>1119951</requestid>
+  </revision>
 </revisionlist>

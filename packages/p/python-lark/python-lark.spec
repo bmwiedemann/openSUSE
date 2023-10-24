@@ -35,7 +35,6 @@ Suggests:       python-Js2Py
 Suggests:       python-atomicwrites
 # SECTION TEST
 BuildRequires:  %{python_module regex}
-BuildRequires:  %{python_module Js2Py}
 BuildRequires:  %{python_module pytest >= 6}
 # /SECTION
 BuildArch:      noarch
