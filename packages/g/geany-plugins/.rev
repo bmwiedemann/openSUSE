@@ -376,4 +376,18 @@
 </comment>
     <requestid>1003699</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>43c3781e202aa86bd60c09f495655a03</srcmd5>
+    <version>2.0</version>
+    <time>1698170879</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0:
+  * Remove unusable and unmaintained plugins: DevHelp, GeanyPy,
+    Multiterm.
+  * Bookmarks: Prevent duplicating bookmarks when editing line.
+  * Delay updating of tasks list until document has been colorised.
+  * Various fixes.
+- Dropped 1178.patch since it has been upstreamed. (forwarded request 1119160 from polslinux)</comment>
+    <requestid>1119570</requestid>
+  </revision>
 </revisionlist>

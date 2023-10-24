@@ -1,7 +1,7 @@
 #
 # spec file for package geany-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # On next update, try enabling each of the disabled libs (in the %%else section) and check if they build with gtk3 or not. When all of them compile against gtk3, remove the macro and conditional.
 %define gtk3_ready 1
 Name:           geany-plugins
-Version:        1.38
+Version:        2.0
 Release:        0
 # FIXME: gendoc requires ctpl (http://ctpl.tuxfamily.org/)
 Summary:        A collection of different plugins for Geany
@@ -28,14 +28,12 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://plugins.geany.org/geany-plugins/
 Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM 1178.patch -- GitChangeBar: Support libgit2 1.4.x
-Patch:          https://patch-diff.githubusercontent.com/raw/geany/geany-plugins/pull/1178.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  intltool
-BuildRequires:  libgeany0 >= 1.29
+BuildRequires:  libgeany0 >= 2.0
 BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
 BuildRequires:  libwnck2-devel
@@ -50,7 +48,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(enchant) >= 1.3
 BuildRequires:  pkgconfig(geany) >= 1.26
 BuildRequires:  pkgconfig(glib-2.0) >= 2.16
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(libgit2) >= 0.21
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.4.0
@@ -60,7 +58,7 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0)
 # Leaving it in place to remind us to enable for newer versions if upstream ports it.
 # See https://github.com/geany/geany-plugins/issues/655
 #BuildRequires:  pkgconfig(webkit-1.0) >= 1.1.18
-Requires:       geany >= 1.26
+Requires:       geany >= 2.0
 Requires:       lua
 Enhances:       geany
 
@@ -142,37 +140,12 @@ find %{buildroot} -size 0 -delete
 %{_libdir}/geany/keyrecord.so
 %{_libdir}/geany/vimode.so
 %{_libdir}/geany/workbench.so
-
+%{_libdir}/geany/webhelper.so
 %else
 # These plugins are not compatible with gtk3
 %{_libdir}/geany/debugger.so
-%{_libdir}/geany/devhelp.so
 %{_libdir}/geany/markdown.so
-%{_libdir}/geany/multiterm.so
 %{_libdir}/geany/scope.so
-%{_libdir}/geany/webhelper.so
-
-%dir %{_libdir}/geany/geanypy
-%dir %{_libdir}/geany/geanypy/geany
-%dir %{_datadir}/geany/geanypy
-%dir %{_datadir}/geany/geanypy/plugins
-
-%{_libdir}/geany/geanypy.so
-%{_libdir}/geany/geanypy/geany/__init__.py
-%{_libdir}/geany/geanypy/geany/__init__.pyc
-%{_libdir}/geany/geanypy/geany/console.py
-%{_libdir}/geany/geanypy/geany/console.pyc
-%{_libdir}/geany/geanypy/geany/loader.py
-%{_libdir}/geany/geanypy/geany/loader.pyc
-%{_libdir}/geany/geanypy/geany/manager.py
-%{_libdir}/geany/geanypy/geany/manager.pyc
-%{_libdir}/geany/geanypy/geany/plugin.py
-%{_libdir}/geany/geanypy/geany/plugin.pyc
-%{_libdir}/geany/geanypy/geany/signalmanager.py
-%{_libdir}/geany/geanypy/geany/signalmanager.pyc
-%{_datadir}/geany/geanypy/plugins/console.py
-%{_datadir}/geany/geanypy/plugins/demo.py
-%{_datadir}/geany/geanypy/plugins/hello.py
 %endif
 
 %files lang -f %{name}.lang

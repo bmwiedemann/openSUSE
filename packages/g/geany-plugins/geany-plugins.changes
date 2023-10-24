@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 20 05:50:35 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0:
+  * Remove unusable and unmaintained plugins: DevHelp, GeanyPy,
+    Multiterm.
+  * Bookmarks: Prevent duplicating bookmarks when editing line.
+  * Delay updating of tasks list until document has been colorised.
+  * Various fixes.
+- Dropped 1178.patch since it has been upstreamed.
+
+-------------------------------------------------------------------
 Tue Sep 13 12:09:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace 1165.patch with 1178.patch: Solve the problem in a
