@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 23 07:36:34 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 5.4.10
+  * FIX   postscript: build failed in 5.4.9 if neither gd nor cairo libraries present
+  * FIX   data-dependent variable point properties in polar plots
+  * FIX   configure script modified to work with macOS+Homebrew
+  * CHANGE use 64-bit integers for iteration (allows iteration over dates)
+
+-------------------------------------------------------------------
 Tue Sep 12 10:39:22 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.4.9

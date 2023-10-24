@@ -1204,4 +1204,22 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1112274</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>e6f203e62603fb238f075f248ad75785</srcmd5>
+    <version>5.4.10</version>
+    <time>1698170807</time>
+    <user>anag+factory</user>
+    <comment>- Update to gnuplot 5.4.10
+  * FIX   postscript: build failed in 5.4.9 if neither gd nor cairo libraries present
+  * FIX   data-dependent variable point properties in polar plots
+  * FIX   configure script modified to work with macOS+Homebrew
+  * CHANGE use 64-bit integers for iteration (allows iteration over dates)
+
+- Update to gnuplot 5.4.10
+  * FIX   postscript: build failed in 5.4.9 if neither gd nor cairo libraries present
+  * FIX   data-dependent variable point properties in polar plots
+  * FIX   configure script modified to work with macOS+Homebrew
+  * CHANGE use 64-bit integers for iteration (allows iteration over dates)</comment>
+    <requestid>1119564</requestid>
+  </revision>
 </revisionlist>
