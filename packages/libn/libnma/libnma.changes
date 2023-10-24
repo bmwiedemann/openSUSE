@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 17 08:59:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gck-1) and pkgconfig(gcr-3) BuildRequires: No
+  longer needed, we build with gck-2 and gcr-4.
+
+-------------------------------------------------------------------
 Fri Sep 22 18:41:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libnma-glib-schema Requires to libnma-gtk4-0 sub-package,

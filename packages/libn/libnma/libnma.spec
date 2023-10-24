@@ -30,9 +30,7 @@ Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gck-1) >= 3.14
 BuildRequires:  pkgconfig(gck-2)
-BuildRequires:  pkgconfig(gcr-3) >= 3.14
 BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38
 BuildRequires:  pkgconfig(gmodule-export-2.0)
