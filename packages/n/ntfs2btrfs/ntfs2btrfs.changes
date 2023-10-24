@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Nov 29 04:04:50 UTC 2022 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Updated to version 20220812, changes from upstream are as follows:
+  * Added --no-datasum option, to skip calculating checksums
+  * LXSS / WSL metadata is now preserved
+  * Fixed lowercase drive letters not being recognized
+  * Fixed crash due to iterator invalidation (thanks to nyanpasu64)
+  * Fixed corruption when NTFS places file in last megabyte of disk
+
+-------------------------------------------------------------------
+Tue Nov 16 00:00:00 CET 2021 - dsterba@suse.cz
+
+- 20210923
+  * Added (Btrfs) compression support (zlib, lzo, and zstd)
+  * Added support for other hash algorithms: xxhash, sha256, and blake2
+  * Added support for rolling back to NTFS
+  * Added support for NT4-style security descriptors
+  * Increased conversion speed for volume with many inodes
+  * Fixed bug when fragmented file was in superblock location
+  * Fixed buffer overflow when reading security descriptors
+  * Fixed bug where filesystems would be corrupted in a way that btrfs check doesn't pick up
+- 20210523
+  * Improved handling of large compressed files
+- 20210402 (source code only release)
+  * Fixes for compilation on non-amd64 architectures
+- 20210105
+  * Added support for NTFS compression
+  * Added support for "WOF compressed data"
+  * Fixed problems caused by sparse files
+  * Miscellaneous bug fixes
+- 20201108
+  * Improved error handling
+  * Added better message if NTFS is corrupted or unclean
+  * Better handling of relocations
+- 20200330
+  * Initial release
