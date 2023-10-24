@@ -17,17 +17,18 @@
 
 
 %define sonum 8
-%bcond_without lang
+%bcond_without released
 Name:           alkimia
-Version:        8.1.1
+Version:        8.1.2
 Release:        0
 Summary:        Library with common classes and functionality used by finance applications
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://kmymoney.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+%if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        alkimia.keyring
+%endif
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel
@@ -40,11 +41,11 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(Qt5Core) >= 5.2.0
-BuildRequires:  cmake(Qt5DBus) >= 5.2.0
-BuildRequires:  cmake(Qt5Qml) >= 5.2.0
-BuildRequires:  cmake(Qt5Test) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 
 %description
 libalkimia is a library with common classes and functionality used by finance
@@ -52,7 +53,6 @@ applications.
 
 %package -n libalkimia5-%{sonum}
 Summary:        Library with common classes and functionality used by finance applications
-Group:          System/Libraries
 
 %description -n libalkimia5-%{sonum}
 libalkimia is a library for Qt5 with common classes and functionality used by finance
@@ -60,7 +60,6 @@ applications.
 
 %package -n libalkimia5-devel
 Summary:        Development Files for libalkimia
-Group:          Development/Languages/C and C++
 Requires:       libalkimia5-%{sonum} = %{version}
 
 %description -n libalkimia5-devel
@@ -80,15 +79,12 @@ The development files for libalkimia.
 mkdir -p %{buildroot}%{_datadir}/alkimia5/misc
 mv %{buildroot}/alkimia5/misc/financequote.pl %{buildroot}%{_datadir}/alkimia5/misc/financequote.pl
 
-%if %{with lang}
 %find_lang alkimia %{name}.lang
 %find_lang onlinequoteseditor %{name}.lang
 %find_lang plasma_applet_onlinequote %{name}.lang
 %find_lang plasma_applet_org.wincak.foreigncurrencies2 %{name}.lang
-%endif
 
-%post -n libalkimia5-%{sonum} -p /sbin/ldconfig
-%postun -n libalkimia5-%{sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libalkimia5-%{sonum}
 
 %files
 %license COPYING.LIB
@@ -119,8 +115,6 @@ mv %{buildroot}/alkimia5/misc/financequote.pl %{buildroot}%{_datadir}/alkimia5/m
 %doc README.md
 %{_kf5_libdir}/libalkimia5.so.%{sonum}*
 
-%if %{with lang}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

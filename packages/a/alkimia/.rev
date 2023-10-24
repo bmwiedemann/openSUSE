@@ -109,4 +109,12 @@
   * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch</comment>
     <requestid>986551</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9667a67c52a1772fd111809e2c8ed4f6</srcmd5>
+    <version>8.1.2</version>
+    <time>1698170959</time>
+    <user>anag+factory</user>
+    <comment>Update to 8.1.2</comment>
+    <requestid>1119945</requestid>
+  </revision>
 </revisionlist>
