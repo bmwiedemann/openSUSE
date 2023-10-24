@@ -19,25 +19,13 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %define pname python-h5py
 # SECTION MPI DEFINITIONS
-%if "%{flavor}" == "openmpi1"
-%global mpi_flavor openmpi
-%if 0%{?suse_version} <= 1500
-%define mpi_vers %{nil}
-%else
-%define mpi_vers 1
-%endif
-%endif
-%if "%{flavor}" == "openmpi2"
-%global mpi_flavor openmpi
-%define mpi_vers 2
-%endif
-%if "%{flavor}" == "openmpi3"
-%global mpi_flavor openmpi
-%define mpi_vers 3
-%endif
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
 %define mpi_vers 4
+%endif
+%if "%{flavor}" == "openmpi5"
+%global mpi_flavor openmpi
+%define mpi_vers 5
 %endif
 
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}

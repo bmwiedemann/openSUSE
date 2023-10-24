@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:04:17 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Tue Aug 22 18:22:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.9.0
