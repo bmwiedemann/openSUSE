@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 23 19:26:02 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Disable HPC flavors on i586
+
+-------------------------------------------------------------------
+Mon Oct 23 12:10:57 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Fri Jul  2 06:47:04 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix serial HPC build.
 - Fix: 'warning: File listed twice: /usr/lib64/libscotchmetis.so*'
-  
 
 -------------------------------------------------------------------
 Wed Jan 27 19:09:40 UTC 2021 - Egbert Eich <eich@suse.com>
@@ -13,7 +23,7 @@ Wed Jan 27 19:09:40 UTC 2021 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Thu Jan 21 10:53:11 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Update to version 6.1.0. The change in release number reflects a change  
+- Update to version 6.1.0. The change in release number reflects a change
   in behavior of the software, regarding two features:
   * Algorithms for sparse matrix reordering now fully take into account vertex
     weights. While the previous versions only accounted for them in the nested
