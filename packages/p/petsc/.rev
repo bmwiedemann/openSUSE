@@ -339,4 +339,15 @@
     <comment></comment>
     <requestid>1073972</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>41c05b3b7e24caaa3cba8d88e6b3afe8</srcmd5>
+    <version>3.18.5</version>
+    <time>1698170890</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5</comment>
+    <requestid>1119878</requestid>
+  </revision>
 </revisionlist>
