@@ -1,4 +1,6 @@
-# Defines the tag for OBS and build script builds:
+# SPDX-License-Identifier: Apache-2.0
+
+# Define the tags for OBS and build script builds:
 #!BuildTag: %%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/libguestfs-tools:%%PKG_VERSION%%-%%PKG_RELEASE%%
