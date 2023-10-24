@@ -1,7 +1,7 @@
 #
 # spec file for package python-pproxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        Proxy server that can tunnel among remote servers by regex rules
 License:        MIT
 URL:            https://github.com/qwj/python-proxy
 Source:         https://files.pythonhosted.org/packages/source/p/pproxy/pproxy-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -77,6 +78,7 @@ done
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pproxy
-%{python_sitelib}/*
+%{python_sitelib}/pproxy-%{version}*-info
+%{python_sitelib}/pproxy
 
 %changelog

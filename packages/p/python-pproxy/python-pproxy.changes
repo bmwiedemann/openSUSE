@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 12:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use the versioned metadata (requires setuptools_scm)
+
+-------------------------------------------------------------------
 Tue Jul  4 13:08:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

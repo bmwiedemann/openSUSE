@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1096918</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6397bdaf32b49dcf1d0ba4b7ef609626</srcmd5>
+    <version>2.7.8</version>
+    <time>1698170974</time>
+    <user>anag+factory</user>
+    <comment>- use the versioned metadata (requires setuptools_scm)</comment>
+    <requestid>1119969</requestid>
+  </revision>
 </revisionlist>
