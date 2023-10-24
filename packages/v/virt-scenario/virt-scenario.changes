@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:34:46 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.1.3:
+   * Fix FileNotFound error when calling 'virt-scenario-launch --list'
+     (bsc#1216383) (Caleb Crane)
+
+-------------------------------------------------------------------
 Mon Jul 31 11:01:29 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.1.2:
