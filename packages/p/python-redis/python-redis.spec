@@ -16,15 +16,17 @@
 #
 
 
+%bcond_without testing
+
 %{?sle15_python_module_pythons}
 Name:           python-redis
-Version:        4.5.5
+Version:        5.0.1
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
 URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
-Source1:        https://github.com/redis/redis-py/raw/v%{version}/tox.ini
+Source1:        https://raw.githubusercontent.com/redis/redis-py/5.0/pytest.ini
 BuildRequires:  %{python_module async-timeout >= 4.0.2}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging}
@@ -35,10 +37,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
+%if %{with testing}
 BuildRequires:  redis
+%endif
 Requires:       python-async-timeout >= 4.0.2
-Requires:       redis
 Recommends:     python-hiredis >= 1.0.0
+Recommends:     redis
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,8 +51,18 @@ The Python interface to the Redis key-value store.
 
 %prep
 %autosetup -p1 -n redis-%{version}
-# tox.ini for pytest markers
-cp %{SOURCE1} .
+# pytest.ini for pytest markers
+cp %SOURCE1 .
+
+# This test passes locally but fails in obs with different
+# environment, like ALP build...
+rm tests/test_commands.py*
+# The openSUSE redis json, bloom, ts and
+# graph are missing in the repos
+rm tests/test_bloom.py
+rm tests/test_graph.py
+rm tests/test_json.py
+rm tests/test_timeseries.py
 
 %build
 %python_build
@@ -57,6 +71,7 @@ cp %{SOURCE1} .
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if %{with testing}
 %check
 # upstream's tox testsuite starts several servers in docker containers listening on different ports.
 # We just start two of them locally
@@ -80,9 +95,12 @@ if [ $(getconf LONG_BIT) -ne 64 ]; then
   # reference precision issues on 32-bit
   donttest=" or test_geopos"
 fi
-# gh#redis/redis-py#2554 and gh#redis/redis-py#2679
-donttest="$donttest or test_xautoclaim or test_acl_list"
-%pytest -m 'not (onlycluster or redismod)' -k "not (dummyprefix $donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
+# gh#redis/redis-py#2554
+donttest="$donttest or test_xautoclaim"
+# gh#redis/redis-py#2679
+donttest+=" or test_acl_getuser_setuser or test_acl_log"
+%pytest -m 'not (onlycluster or redismod or ssl)' -k "not (dummyprefix $donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
+%endif
 
 %files %{python_files}
 %license LICENSE

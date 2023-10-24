@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Mon Oct 23 10:42:41 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pytest.ini source needed to run tests
+- Remove/disable broken tests because of suse environment
+
+-------------------------------------------------------------------
+Fri Oct 20 09:55:28 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop tox.ini. seems it does no longer exist in 5.0.1
+- add support to easily disable the testsuite at build time
+
+-------------------------------------------------------------------
+Fri Oct 20 09:38:34 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 5.0.1
+  - 🚀 New Features
+    - Provide aclose() / close() for classes requiring lifetime
+      management (#2898)
+    - Add support for ModuleCommands in cluster (#2951)
+    - Add support for multiple values in RPUSHX (#2949)
+    - Add Redis.from_pool() class method, for explicitly owning and
+      closing a ConnectionPool (#2913)
+  - 🐛 Bug Fixes
+    - Fixing monitor parsing for messages containing specific
+      substrings (#2950)
+    - Cluster determine slot command name need to be upper (#2919)
+    - Support timeout = 0 in search query (#2934)
+    - Fix async sentinel: add push_request keyword argument to
+      read_response (#2922)
+    - Fix protocol checking for search commands (#2923)
+    - Fix: SentinelManagedConnection.read_response() got an
+      unexpected keyword argument 'push_request' (#2894)
+    - Fix: automatically close connection pool for async Sentinel
+      (#2900)
+    - Save a reference to created async tasks, to avoid tasks
+      potentially disappearing (#2816)
+    - Avoid reference cycling by the garbage collector during
+      response reading (#2932)
+  - 🧰 Maintenance
+    - Type hint improvements (#2952)
+    - Replace clear_connect_callbacks with
+      _deregister_connect_callback (#2955)
+    - Async fixes, remove del and other things (#2870)
+    - Add pagination, sorting and grouping examples to search json
+      example (#2890)
+    - Remove process-id checks from asyncio. Asyncio and fork()
+      does not mix. (#2911)
+    - Fix resource usage and cleanup Mocks in the unit tests
+      (#2936)
+    - Remove mentions of tox (#2929)
+    - Add 7.2 to supported Redis versions (#2896)
+    - Fix resource warnings in unit tests (#2899)
+    - Fix typo in redis-stream-example.ipynb (#2918)
+    - Deprecate RedisGraph (#2927)
+    - Fix redis 7.2.0 tests (#2902)
+    - Fix test_scorer (search) (#2920)
+- changes from 5.0.0
+  - What's new?
+    - Triggers and Functions support Triggers and Functions allow
+      you to execute server-side functions triggered when key
+      values are modified or created in Redis, a stream entry
+      arrival, or explicitly calling them. Simply put, you can
+      replace Lua scripts with easy-to-develop JavaScript or
+      TypeScript code. Move your business logic closer to the data
+      to ensure a lower latency, and forget about updating
+      dependent key values manually in your code. Try it for
+      yourself with Quick start
+    - Full Redis 7.2 and RESP3 support
+    - Python 3.7 End-of-Life
+      - Python 3.7 has reached its end-of-life (EOL) as of June
+        2023. This means that starting from this date, Python 3.7
+        will no longer receive any updates, including security
+        patches, bug fixes, or improvements. If you continue to use
+        Python 3.7 post-EOL, you may expose your projects and
+        systems to potential security vulnerabilities. We ended its
+        support in this version and strongly recommend migrating to
+        Python 3.10.
+  - 🐛 Bug Fixes
+    - Fix timeout retrying on pipeline execution (#2812)
+    - Fix socket garbage collection (#2859)
+  - 🧰 Maintenance
+    - Updating client license to clear, MIT (#2884)
+    - Add py.typed in accordance with PEP-561 (#2738)
+    - Dependabot label change (#2880)
+    - Fix type hints in SearchCommands (#2817)
+    - Add sync modules (except search) tests to cluster CI (#2850)
+    - Fix a duplicate word in CONTRIBUTING.md (#2848)
+    - Fixing doc builds (#2869)
+    - Change cluster docker to edge and enable debug command
+      (#2853)
+- changes from 4.6.0
+  - 🧪 Experimental Features
+    - Support JSON.MERGE command (#2761)
+    - Support JSON.MSET command (#2766)
+  - 🚀 New Features
+    - Extract abstract async connection class (#2734)
+    - Add support for WAITAOF (#2760)
+    - Introduce OutOfMemoryError exception for Redis write command rejections due to OOM errors (#2778)
+    - Add WITHSCORE argument to ZRANK (#2758)
+  - 🐛 Bug Fixes
+    - Fix dead weakref in sentinel connection causing ReferenceError (#2767) (#2771)
+    - Fix Key Error in parse_xinfo_stream (#2788)
+    - Remove unnecessary __del__ handlers (#2755)
+    - Added support for missing argument to SentinelManagedConnection.read_response() (#2756)
+  - 🧰 Maintenance
+    - Fix type hint for retry_on_error in async cluster (#2804)
+    - Clean up documents and fix some redirects (#2801)
+    - Add unit tests for the connect method of all Redis connection classes (#2631)
+    - Docstring formatting fix (#2796)
+
+-------------------------------------------------------------------
 Sat May 20 12:11:45 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 4.5.5:
@@ -633,6 +744,11 @@ Tue Mar 26 09:36:48 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 - Update to v3.2.1
   * Fix SentinelConnectionPool to work in multiprocess/forked
     environments
+
+-------------------------------------------------------------------
+Tue Feb 19 17:50:40 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- downgrade requires for redis to recommends
 
 -------------------------------------------------------------------
 Mon Feb 18 08:54:01 UTC 2019 - sebix+novell.com@sebix.at
