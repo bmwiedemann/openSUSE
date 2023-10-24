@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:22:39 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add license header
+
+-------------------------------------------------------------------
 Wed Jul 12 10:38:39 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Drop TARGETARCH argument (detect arch during build)

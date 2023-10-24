@@ -1,4 +1,6 @@
-# Defines the tag for OBS and build script builds:
+# SPDX-License-Identifier: Apache-2.0
+
+# Define the tags for OBS and build script builds:
 #!BuildTag: %%TAGPREFIX%%/cdi-importer:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/cdi-importer:%%PKG_VERSION%%.%RELEASE%
 #!BuildTag: %%TAGPREFIX%%/cdi-importer:%%PKG_VERSION%%-%%PKG_RELEASE%%
