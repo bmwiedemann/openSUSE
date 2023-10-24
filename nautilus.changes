@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 22 22:49:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Don't crash when opening Properties from admin://*
+  + Don't crash on unmount
+  + Stop jumping to top when using the Menu key
+  + Properly reorder bookmarks by drag and drop
+  + Re-add search results when switching view mode
+  + Fix compilation on 32-bit musl
+  - Fix various leaks and warnings
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Oct 04 13:45:45 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.0+12:
+  + gtk/placessidebar: Use list box for coordinates translation.
+  + list-base: Stop jumping to top on Menu key.
+  + Updated translations.
+- Switch to source service, explicit commit from the stable branch.
+
+-------------------------------------------------------------------
 Sun Sep 17 01:18:39 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 45.0:
