@@ -17,13 +17,13 @@
 
 
 Name:           nautilus
-Version:        45.0
+Version:        45.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
-Source0:        https://download.gnome.org/sources/nautilus/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
 
