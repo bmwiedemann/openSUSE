@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Oct 21 23:05:48 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- update to 8.5.2:
+  * Fix incorrect usage of sys_platform
+  * Don't install psutil on Windows and update other test dependencies
+  * Move psutil-needing tests to their own script
+  * Raise hypothesis deadlines
+  * Fix a few type hints
+  * Fix return values of global set/get fns and add get_access_default_mmap to pyi
+  * Update binary wheel list
+  * Simplify atomic_overwrite exception handler
+  * Increase arm64 build coverage - add musl and cp312
+  * Stop building PyPy3.8 wheels due to lack of Pillow support
+  * Implementation AFRelationship for AttachedFileSpec
+  * docs: update info about creating PDFs
+  * Change to building against libqpdf v11.6.1
+  * Disable pp3.10 since numpy binary wheels aren't released yet
+  * Merge branch 'trusted-release'
+  * Try adding url to see if it suppresses legacy warning
+  * Merge branch 'm-holger-rect'
+  * rect: tidy and prepare for release
+  * Fixing use of typing | on Python 3.9
+  * Add Python 3.8 shim
+  * Improve CCITT tests
+  * Implement Decode array to better support weird CCITTs
+  * Fix another CCITT inversion issue
+  * Improve available version documentation
+  * Better documentation for atomic_overwrite
+  * Fix saving file opened from BytesIO on Windows
+  * Change atomic_overwite to use exclusive creation
+  * black doesn't support py312 yet
+  * Update documentation for 3.12 support
+  * Update note about needsappearances
+  * Allow Python 3.12 build to fail
+  * Test Python 3.12 pre-release
+  * Merge pull request #504 from m-holger/qm
+  * Fix link to QPDF manual
+  * Add docs back to sdist
+  * build: found a way to make RTD trigger again
+  * build: Replace deprecated "::set-output"
+  * Add Rectangle operators '<=' and '&'
+- Use pyproject
+
+-------------------------------------------------------------------
 Tue Jul 25 10:44:56 UTC 2023 - ecsos <ecsos@openssue.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pikepdf
-Version:        8.2.1
+Version:        8.5.2
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -46,8 +46,9 @@ BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
 BuildRequires:  %{python_module pytest-xdist >= 2.5.0}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
 #BuildRequires:  %%{python_module python-xmp-toolkit >= 2.0.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
-#BuildRequires:  %%{python_module wheel >= 0.35}
+BuildRequires:  %{python_module wheel >= 0.37}
 ## /SECTION
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -68,10 +69,10 @@ Read and write PDFs with Python, powered by qpdf.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -80,7 +81,6 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitearch}/pikepdf/
-%{python_sitearch}/pikepdf-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/pikepdf*
 
 %changelog
