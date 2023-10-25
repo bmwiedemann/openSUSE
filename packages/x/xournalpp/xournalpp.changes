@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 20 11:53:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.2:
+  * Fixed various memory leaks and segmentation faults.
+  * Fixed some issues with input sequences mixing up devices and
+    buttons.
+  * Fixed LaTeX tool failing to open some PDF files.
+  * Fixed audio output device selection.
+
+-------------------------------------------------------------------
 Fri Aug 25 23:42:54 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.1:
