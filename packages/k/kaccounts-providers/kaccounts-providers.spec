@@ -47,8 +47,8 @@ BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(Qt5Qml)
 %if %{with qtwebengine}
 BuildRequires:  cmake(Qt5WebEngineWidgets)
-%endif
 Requires:       signon-plugin-oauth2
+%endif
 
 %description
 KDE Accounts Providers.

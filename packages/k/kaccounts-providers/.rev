@@ -823,4 +823,14 @@
     <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
     <requestid>1117240</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>6bf92075d852b54eb3ac60c14f0c924a</srcmd5>
+    <version>23.08.2</version>
+    <time>1698249715</time>
+    <user>anag+factory</user>
+    <comment>- Only require signon-plugin-oauth2 when QtWebEngine is an option:
+  signon-plugin-oauth2 depoends on signon-ui, which in turn
+  dependson QtWebEngine. (forwarded request 1120202 from dimstar)</comment>
+    <requestid>1120212</requestid>
+  </revision>
 </revisionlist>
