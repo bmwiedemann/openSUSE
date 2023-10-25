@@ -253,4 +253,12 @@
     <comment>Version update: 44 -&gt; 45</comment>
     <requestid>1112396</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bfdaf7c6b3e53708de3c8c467255d5ec</srcmd5>
+    <version>45.1</version>
+    <time>1698249898</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1120119 from iznogood)</comment>
+    <requestid>1120256</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 24 18:16:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Be more defensive against oddly formed container JSON
+    definitions
+  + Limit maximum number of marks rendered in marks visualizer row
+  + Fallback to software perf counters which fixes Sysprof on Asahi
+  + Improve Rust demangler
+
+-------------------------------------------------------------------
 Sun Sep 17 00:57:11 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 45.0:
