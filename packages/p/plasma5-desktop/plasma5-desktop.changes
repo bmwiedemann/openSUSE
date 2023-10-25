@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:25:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Don't add recursively every file copied to desktop
+  * kcm/recentFiles: making it compatible with kconfigwidgets:v5.102.0
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:26 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8

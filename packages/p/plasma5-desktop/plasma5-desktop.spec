@@ -27,7 +27,7 @@
 
 %bcond_without released
 Name:           plasma5-desktop
-Version:        5.27.8
+Version:        5.27.9
 Release:        0
 %global _plasma5_bugfix 5.27.7
 # Full Plasma 5 version (e.g. 5.9.3)
