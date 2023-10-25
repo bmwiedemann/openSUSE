@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-addons
-Version:        5.27.8
+Version:        5.27.9
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
