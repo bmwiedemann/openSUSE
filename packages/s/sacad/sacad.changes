@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 25 05:04:37 UTC 2023 - ming li <mli@suse.com>
+
+- update to 2.7.5:
+  * fix workaround Amazon sources 503 error
+
+-------------------------------------------------------------------
 Mon Feb 27 21:50:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.4:
