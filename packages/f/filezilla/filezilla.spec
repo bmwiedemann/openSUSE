@@ -16,10 +16,11 @@
 #
 
 
-%define libversion 3.65.0
+%define libversion 3.66.0
+%define libfilezillaversion 0.45.0
 
 Name:           filezilla
-Version:        3.65.0
+Version:        3.66.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -48,7 +49,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.44.0
+BuildRequires:  pkgconfig(libfilezilla) >= %{libfilezillaversion}
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.0

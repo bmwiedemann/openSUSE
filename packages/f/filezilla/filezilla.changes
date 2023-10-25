@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 24 10:50:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.66.0
+  * Bugfixes and minor changes:
+    - Fixed a sorting issue in comparative search
+- Changes from 3.66.0-rc1
+  * Bugfixes and minor changes:
+    - Fixed crash removing items from the list of file extensions
+      treated as text files
+    - Fixed potental crash if shutting down HTTP client.
+    - Fixed HTTP timeouts
+
+-------------------------------------------------------------------
 Wed Jul 12 05:18:30 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.65.0
