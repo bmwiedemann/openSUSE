@@ -1126,4 +1126,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
     <requestid>1110699</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>ca3c29671e772dbc4a3170cd9a02f887</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249667</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120058</requestid>
+  </revision>
 </revisionlist>

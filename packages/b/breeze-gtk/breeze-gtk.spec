@@ -19,7 +19,7 @@
 
 %define _name   breeze
 Name:           breeze-gtk
-Version:        5.27.8
+Version:        5.27.9
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
