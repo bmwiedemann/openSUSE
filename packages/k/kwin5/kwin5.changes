@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:24:50 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * platformsupport/scenes/opengl: don't release egl resources from the thread (kde#466174)
+  * kcms/screenedges: Fix listing of effects
+  * Fix misgenerated QHoverEvent
+  * Add QKeySequence to VirtualDesktopManager::addAction overload (kde#475748)
+  * kcms/screenedges: Fix buttons overlap on a too narrow vertical screen (kde#475579)
+  * kcms/screenedges: Slightly refactor monitor size calculation
+  * kcms/screenedges: Remove commented out dead code
+  * Use itemChange instead of a connect to windowChanged
+  *  plugins/slide: add special case for instant animations (kde#472901)
+  * plugins/screencast: Remove "frame dropped" log messages
+  * fix segfault in  EglGbmBackend::textureForOutput
+  * Drop unused kitemviews dependency
+  * Add missing QtNetwork dependency
+  * plugins/qpa: implement platform accessibility (kde#472643)
+  * backends/drm: check activePending instead of active for when applying a new gamma ramp is allowed (kde#471562)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
