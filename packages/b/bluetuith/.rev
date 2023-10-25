@@ -42,4 +42,21 @@
   * Major bugfixes and improvements</comment>
     <requestid>1108474</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84c813842e9f15a4191c84be3f162717</srcmd5>
+    <version>0.1.8</version>
+    <time>1698249930</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.8:
+  * New command-line options:
+    + 'no-warning' to disable the warnings popup.
+    + 'confirm-on-quit' to show a confirmation message before quitting the application.
+    + 'adapter-states' to set the adapter states (powered, scan, discoverable, pairable).
+    + 'connect-bdaddr' to connect to a device with its address.
+  *  Modifiable navigation keys
+  * Display device's 'Bonded' property
+  * Allow blocking/unblocking devices
+  * Minor bugfixes</comment>
+    <requestid>1120321</requestid>
+  </revision>
 </revisionlist>

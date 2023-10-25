@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 25 14:26:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.8:
+  * New command-line options:
+    + 'no-warning' to disable the warnings popup.
+    + 'confirm-on-quit' to show a confirmation message before quitting the application.
+    + 'adapter-states' to set the adapter states (powered, scan, discoverable, pairable).
+    + 'connect-bdaddr' to connect to a device with its address.
+  *  Modifiable navigation keys
+  * Display device's 'Bonded' property
+  * Allow blocking/unblocking devices
+  * Minor bugfixes
+
+-------------------------------------------------------------------
 Fri Sep  1 13:59:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.1.7:
