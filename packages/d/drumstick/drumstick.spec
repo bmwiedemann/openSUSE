@@ -18,11 +18,10 @@
 
 
 Name:           drumstick
-Version:        2.7.2
+Version:        2.8.1
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://drumstick.sourceforge.io/
 Source:         https://sourceforge.net/projects/drumstick/files/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
@@ -33,7 +32,7 @@ BuildRequires:  graphviz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  shared-mime-info
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -56,7 +55,6 @@ This package includes test and example programs for drumstick libraries.
 %package mimetypes
 Summary:        MIDI Sequencer C++ Library MIME types
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Midi
 Conflicts:      libdrumstick-file1
 
 %description mimetypes
@@ -65,7 +63,6 @@ This package includes a mimetype for Cakewalk project files.
 %package -n libdrumstick-rt2
 Summary:        MIDI Sequencer C++ Library
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          System/Libraries
 Requires:       libdrumstick-rt2-plugins
 
 %description -n libdrumstick-rt2
@@ -75,7 +72,6 @@ This library includes a class for managing realtime MIDI input/output backends.
 %package -n libdrumstick-rt2-plugins
 Summary:        MIDI Sequencer C++ Library
 License:        Apache-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          System/Libraries
 
 %description -n libdrumstick-rt2-plugins
 MIDI Sequencer C++ Library Bindings for Qt5 and ALSA.
@@ -84,7 +80,6 @@ This package contains input/output plugins for libdrumstick-rt2.
 %package -n libdrumstick-file2
 Summary:        MIDI Sequencer C++ Library
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          System/Libraries
 Recommends:     %{name}-mimetypes
 
 %description -n libdrumstick-file2
@@ -97,7 +92,6 @@ depend on ALSA.
 %package -n libdrumstick-alsa2
 Summary:        MIDI Sequencer C++ Library
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          System/Libraries
 
 %description -n libdrumstick-alsa2
 MIDI Sequencer C++ Library Bindings for Qt5 and ALSA.
@@ -107,7 +101,6 @@ recording and playback functionality to C++/Qt5 programs.
 %package -n libdrumstick-widgets2
 Summary:        MIDI Sequencer C++ Library
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          System/Libraries
 # for the lang_package
 Provides:       libdrumstick-widgets = %{version}
 
@@ -121,7 +114,6 @@ GUI, MIDI related, components for C++/Qt5 programs.
 %package -n libdrumstick-devel
 Summary:        Development package for the libdrumstick library
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
 Requires:       alsa-devel
 Requires:       glibc-devel
 Requires:       libdrumstick-alsa2 = %{version}
@@ -138,7 +130,6 @@ libdrumstick libraries.
 %package -n libdrumstick-doc
 Summary:        Development documentation package for the drumstick libraries
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description -n libdrumstick-doc
@@ -162,21 +153,11 @@ sed -i 's#%{_includedir}/QtGui#%{_includedir}/qt5/QtGui#' Doxyfile.in
 %install
 %cmake_install
 
-%suse_update_desktop_file -n net.sourceforge.drumstick-drumgrid Midi
-%suse_update_desktop_file -n net.sourceforge.drumstick-guiplayer Midi
-%suse_update_desktop_file -n net.sourceforge.drumstick-vpiano Midi
-
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
-%post -n libdrumstick-alsa2 -p /sbin/ldconfig
-%post -n libdrumstick-file2 -p /sbin/ldconfig
-%post -n libdrumstick-rt2 -p /sbin/ldconfig
-%post -n libdrumstick-widgets2 -p /sbin/ldconfig
-%postun -n libdrumstick-alsa2 -p /sbin/ldconfig
-%postun -n libdrumstick-file2 -p /sbin/ldconfig
-%postun -n libdrumstick-rt2 -p /sbin/ldconfig
-%postun -n libdrumstick-widgets2 -p /sbin/ldconfig
+%ldconfig_scriptlets
+%ldconfig_scriptlets -n libdrumstick-alsa2
+%ldconfig_scriptlets -n libdrumstick-file2
+%ldconfig_scriptlets -n libdrumstick-rt2
+%ldconfig_scriptlets -n libdrumstick-widgets2
 
 %files
 %license COPYING

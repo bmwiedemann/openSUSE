@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:52:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.8.1
+  * CMake config check to avoid mixing Qt6 with Qt5
+  * File: Improved RMID file support
+      Extract DLS embedded data
+      Decode DLS instrument names
+      New mime type
+  * RT Sonivox backend: enabled DLS file loading
+  * Widgets: Sonivox configuration dialog updated
+  * Chinese translation updated. Thanks to Hycinth
+  * CMake config check to avoid mixing Qt6 with Qt5
+  * Widgets: fixed compiler definitions, removed object headers
+    duplicity
+  * dumprmi utility: fixed QScopedPointer template for arrays
+  * Updated doxygen settings for Doxygen 1.9.5
+  * Widgets: clip note children (labels)
+  * Unit tests: conditionally run the ALSA test and run the
+    Widgets test using the QPA platform "offscreen"
+  * ALSA: added assignment operators for sysex and text events
+  * Fix for ticket #48: SMF Parser does not report enough errors
+  * Implemented change soundfont function for the SonivoxEAS
+    backend.
+
+-------------------------------------------------------------------
 Mon Oct  3 14:09:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.7.2
