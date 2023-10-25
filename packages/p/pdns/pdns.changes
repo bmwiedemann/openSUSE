@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 18 10:59:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.8.3:
+  * New Feature: add default-catalog-zone setting.
+  + Improvements: smysql: stop explicitly setting
+    MYSQL_OPT_RECONNECT to .
+  + Bug Fix: ixfrdist: set AA=1 on SOA responses.
+For details, see
+https://doc.powerdns.com/authoritative/changelog/4.8.html#change-4.8.3
+
+-------------------------------------------------------------------
 Thu Jun  1 11:36:36 UTC 2023 - Adam Majer <adam.majer@suse.de> 1.8.0
 
 - Update to 4.8.0

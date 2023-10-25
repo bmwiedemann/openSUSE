@@ -878,4 +878,12 @@ If you are using LMDB backend, see
 https://doc.powerdns.com/authoritative/upgrading.html</comment>
     <requestid>1090278</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ff896441018b4e2f7f232f34e5b0ad7c</srcmd5>
+    <version>4.8.3</version>
+    <time>1698249863</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118580</requestid>
+  </revision>
 </revisionlist>
