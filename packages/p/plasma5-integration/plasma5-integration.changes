@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:25:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Force WindowCloseButtonHint for toplevel dialogs (kde#464193)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
