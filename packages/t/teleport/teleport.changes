@@ -1,4 +1,591 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:15:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 14.1.1:
+  * Release 14.1.1 (#33843)
+  * [v14] Align titles in the introduction to topic sections,
+    modify Desktop Access reference (#33826)
+  * fix order (#33775)
+  * [v14] Add headless mode to 'tsh proxy kube' (#33783)
+  * Fix the top bar going outside the window (#33821)
+  * docs: update local windows getting started to include all
+    scopes (#33818)
+  * Fix d3-color@3.1.0 breaking tests (#33813)
+  * [v14] docs: reword tctl instructions (#33812)
+  * Check if resource exists before making sort keys to delete
+    (#33766)
+  * [v14] [docs] Automatic user provisioning for MySQL (#33745)
+  * Manually fire OpInit in NodeJoinWait test (#33692)
+  * docs: fix YAML syntax for Grafana header rewrite (#33780)
+  * Machine ID Docs Refactor (#31259) (#33714)
+  * docs: Update service type for ACM deployments in Enterprise
+    (#33774)
+  * Update Jest to v29 and use custom env to expose TextEncoder &
+    TextDecoder (#33741)
+  * Always use lowercase when pinning resources (#33765)
+  * [v14] snowflake/http: Limit Decompressed Request to 10MB
+    (#33764)
+  * Add MySQL auto-user deletion (#33520) (#33710)
+  * remove preview from directory sharing button (#33757)
+  * [v14] Add an Access Request configuration guide (#33756)
+  * Pin d3-color version to ^3.1.0 (#33760)
+  * Remove "Preview" from Resource Access Request page (#33664)
+  * test(db): simplify active connections tests setup (#32923)
+    (#33686)
+  * Upgrade Vite + Vite dependencies (#33566)
+  * Minor docs typo fix (#33589)
+  * Bump rustix from 0.36.5 to 0.36.16 (#33707)
+  * Extend rsync command timeout in tests. (#33673)
+  * Clean up a few log entries (#33644)
+  * Update Node.js to 18.18.2 (#33521) (#33624)
+  * [v14] include url and saml connector name in entity descriptor
+    url errors (#33667)
+  * Extend test timeouts. (#33617)
+  * bump docs to 13.4.3 (#33700)
+  * [docs] add missing database matchers for discovery config
+    reference (#33694)
+  * docs: mention support for multiple AD domains (#33332)
+  * [auto] docs: Update version to v14.1.0 (#33680)
+  * [v14] DiscoveryConfig: WebAPI CRUD (#33380)
+  * [v14] Configure Connect to intercept deep link clicks (#33684)
+  * Update synchronization period in Okta docs. (#33638)
+  * [v14] Add the ability to run a specific tool to Assist.
+    (#33640)
+  * Remove access list from unified watcher (#33685)
+  * Add PostgreSQL auto-user deletion (#32792) (#33570)
+  * [v14] Add docs for Connect My Computer (#33149)
+
+-------------------------------------------------------------------
+Tue Oct 24 14:01:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 14.1.0:
+  Security fixes
+  * Updated golang.org/x/net dependency. #33420
+    - swift-nio-http2 vulnerable to HTTP/2 Stream Cancellation
+      Attack: CVE-2023-44487
+  * Updated google.golang.org/grpc to v1.57.1. #33487
+    - swift-nio-http2 vulnerable to HTTP/2 Stream Cancellation
+      Attack: CVE-2023-44487
+  * Updated OpenTelemetry dependency. #33523 #33550
+    - OpenTelemetry-Go Contrib vulnerable to denial of service in
+      otelhttp due to unbound cardinality metrics: CVE-2023-45142
+  * Updated babel/core to 7.3.2. #33441
+    - Arbitrary code execution when compiling specifically crafted
+      malicious code: CVE-2023-45133
+
+  Changelog:
+
+  * Release 14.1.0 (#33507)
+  * Add private key policy to user login and certificate posthog
+    events. (#33615)
+  * [v14] allow  https:// in proxy parameter in tsh (#33646)
+  * docs: include all db protocols in faq and config (#33641)
+  * [v14] docs: Reorganize and revise moderated sessions (#33545)
+  * Add Docker to Slack access request plugin (#33393)
+  * Select examples `api` dependency update (#33595) (#33601)
+  * [v14] Update hardware key support docs (#33650)
+  * Expand access list review audit entry. (#33573)
+  * add security group picker to deployservice step (#33453)
+  * Add Docker to MSFT teams plugin (#33387)
+  * Add Docker to Mattermost plugin (#33390)
+  * Deflake TestChaosUpload (#33610)
+  * [v14] Update e (#33605)
+  * docs: update okta service setup (#33464)
+  * Update e (#33602)
+  * Update generate-eventschema (#33598)
+  * Fix a couple of typos and reword scenario descriptions (#33397)
+  * [v14] Fix issue with ServiceNow incidents not including link to
+    access request (#33593)
+  * [v14] docs: Add timing for automatic agent updates to the cloud
+    FAQ (#33400)
+  * Fix hardware key support for sso web login (#33433) (#33548)
+  * Add Hardware Key login audit event fields (#33254) (#33549)
+  * [v14] Add Access Monitoring Ping Auth Response Feature flag
+    (#33585)
+  * Add nav title & packages for Access Monitoring (#33580)
+  * [v14] Update e (#33530)
+  * [v14] Fix assist audit query prompt (#33581)
+  * [v14] Security Reports (#33459)
+  * Propagate resource revision to/from the backend (#32040)
+    (#33214)
+  * [v14] Show Connect My Computer CTA only if versions are
+    compatible (#33563)
+  * Gracefully handle web socket closure by clients (#33480)
+    (#33529)
+  * [v14] Machine ID: Improve warning/error message when secure
+    symlinks are not available (#33562)
+  * [v14] Allow Bots to submit access request reviews (#33509)
+  * [v14] Fix flaky test `TestWithRsync/with_headless_tsh` (#33557)
+  * Add user certificates generated prometheus metric. (#33476)
+  * [v14] Missed OpenTelemetry Updates (#33550)
+  * docs: Add WinSCP to PuTTY client instructions (#32868) (#33092)
+  * [v14] Prevent remote proxies from impersonating users from
+    different clusters (#33539)
+  * Notify CLI users when access lists need reviews. (#33468)
+  * [v14] OpenTelemetry Updates (#33523)
+  * [v14] Configure custom PIV slot for hardware key support -
+    follow up (#33353)
+  * [v14] AWS OIDC: Only consider Linux/UNIX when listing EC2
+    instances (#33515)
+  * Update upcoming-releases.mdx (#33525)
+  * Revert private key policy error handling in WebUI (#33237)
+    (#33482)
+  * [v14] Database Automatic User Provisioning support for MySQL
+    (#33379)
+  * [v14] Fix user login state gRPC client upsert. (#33451)
+  * Make privateKeyPolicyEnabled an optional field. (#33481)
+  * Update remaining `google.golang.org/grpc` to v1.57.1 (#33487)
+  * Make initialization of Connect synchronous (#33508)
+  * [v14] Update @babel/core to 7.23.2 and dedupe babel deps
+    (#33441)
+  * [v14] update e (#33493)
+  * Configure custom PIV slot for hardware key support (#31732)
+    (#33352)
+  * [v14] Show resources in Slack notification for access requests
+    (#33264)
+  * Extend handshake read deadline to allow signature operations
+    that require user input to be completed (hardware key
+    touch/pin). (#32921) (#33348)
+  * [v14] Add `pcscd` install instructions for hardware key support
+    (#33376)
+  * Add support for deploy service agent auto updates (#31982)
+    (#33313)
+  * * Use lowercase for sort keys in unified cache (#33475)
+  * [v14] Include 'nextAuditDate' in 'CreateAccessListReview'
+    method (#33485)
+  * fix oidc test race (#33432)
+  * [v14] docs: update macos app remove command to delete dir and
+    correct fips debug container address (#33367)
+  * [v14] Add a duration for starting notifications to access
+    lists. (#33474)
+  * [docs] clarify RDS/Aurora databases getting modified (#33410)
+  * [v14] Prevent double registration of Kubernetes GVK for older
+    Kube clusters (#33402)
+  * [v14] Web: Add notification store (#33381)
+  * Web: add identity management nav section (#33423)
+  * Add usage events for desktop access (#33455)
+  * Wait for nodes to be availble in disconnection tests (#33446)
+  * Use searchAsRoles in unified requests (#33427)
+  * Show Connect My Computer button in empty state in Connect
+    (#33440)
+  * Remove Connect My Computer feature flag (#32850)
+  * Refactor desktop audit event emission (#33316)
+  * [v14] Bump golang.org/x/net Backport (#33420)
+  * Fix an issue `tsh` fails to connect Proxy behind TLS-terminated
+    loadbalancer in separate port mode (#33406)
+  * Add resource pinning to Unified Resource cards (#32980)
+    (#33404)
+  * [v14] PIV refactors (#33349)
+  * [v14] Fix access list audit log formatting (#33383)
+  * Allow access requests to use user login state. (#33350)
+  * join_sessions overrides the deny rule for sessions a user is
+    allowed to join (#33161)
+  * Allow for Windows PKI operations to target a different domain
+    (#33275)
+  * [auto] docs: Update version to v14.0.3 (#33361)
+  * Downgrade `@teleport-access-approver` to `v6` (#33354)
+  * [v14] Pinned Resources backend (#33277)
+  * Remove access lists and members from the cache. (#33322)
+  * Added 10/11 Upcoming Releases Update (#33309)
+  * Make system roles case-insensitive in provision tokens (#33260)
+  * docs: include servicenow and opsgenie in plugin index (#33292)
+  * [v14] docs: Reduce the use of capitalized trusted clusters and
+    a few other fixes (#33310)
+  * Add Docker to email plugin (#33321)
+  * [v14] Add param `extraContainers` to `teleport-cluster` and
+    `teleport-kube-agent` (#33299)
+
+-------------------------------------------------------------------
+Tue Oct 24 11:52:47 UTC 2023 - kastl@b1-systems.de
+
+- skipping non-existent release 14.0.2
+- Update to version 14.0.3:
+  * Release 14.0.3 (#33290)
+  * [v14] Remove check that enforces slack oauthProviders are set
+    (#33141)
+  * [v14] Report exit code of rsync processes if they fail in
+    TestWithRsync (#33262)
+  * DiscoveryConfig: init service and add resource to `tctl`
+    (#32399) (#33289)
+  * Update e (#33280)
+  * [v14] re-add agentless node manual installation docs (#32811)
+  * chore: Bump google.golang.org/grpc to v1.57.1 (#33265)
+  * [v14] [buddy] docs: minor typos and improvements in the
+    description of the Teleport Proxy Service (#33184)
+  * [v14] utils.RecursiveChown: Fix for Privilege Escalation due to
+    following symlinks (#33248)
+  * Reword Troubleshooting section in Connect docs (#33201)
+  * Add server troubleshooting to left nav (#33224)
+  * fix watcher setup in oidc test (#33258)
+  * [v14] docs: role definition update and update networking ports
+    info (#33223)
+  * [v14] docs: Caveat for token permissions not scoped to any
+    resource context (#33166)
+  * disable TestHSMDualAuthRotation (#33251)
+  * Backport changes to Restrict Access to Privileged Accounts
+    topic (#33238)
+  * [v14] Fix `tsh kube credentials` when root cluster roles don't
+    allow Kube access (#33210)
+  * [v14] chore: Bump Go to v1.21.3 (#33229)
+  * Yarn replacement version bumps (#33023)
+  * [v14] [docs] Attempt to clarify ElastiCache/MemoryDB auth
+    methods (#33215)
+  * [v14] docs: Add Docker to partials and update the discord
+    access request plugin (#33163)
+  * Fixes emitting wrong events for ec2 discover flow (#33185)
+  * Fix Kubernetes agent updater helm chart reference to bool
+    (#33212)
+  * [v14] Fix Proxy Kube listener behavior regarding PROXY protocol
+    usage (#33135)
+  * DiscoveryMatchers: move checkandset to types package (#32857)
+    (#32959)
+  * [v14] Split RDS Proxy guides per protocol (#33145)
+  * [v14] Header `Connection: close` causes `kubectl` to fail exec
+    (#33172)
+  * Web: Add EC2 name when listing instances in Discover flow
+    (#33179)
+  * [v14] Add support for gap prop to Button (#33196)
+  * Fix self-signed cert validity on macOS systems (#33156)
+  * fix leaf SSH sessions not getting recorded (#33102)
+  * [v14] OneOff Script: use ent build if cluster is Enterprise
+    (#33148)
+  * Add helper for generating request TTL options (#33041)
+  * Track connections to direct dial nodes across clusters (#33045)
+  * Add initial command to session trackers (#33112)
+  * [v14] docs: include info for accessing database audit activity
+    (#33093)
+  * [v14] docs: Draft of troubleshooting topics for Server Access
+    (#32876)
+  * [v14] docs: update fips docker address and internal address
+    listing (#33087)
+  * [v14] Fix --debug flag in Connect & enable devtools in debug
+    mode (#33137)
+  * [v14] Web: add link to CloudShell on EICE/EC2 Discover flow
+    (#33079)
+  * Fix some Rust lint warnings caught by Clippy 1.73.0 (#33098)
+  * [v14] Reliability improvements for HSM tests (#33091)
+  * docs: title zypper enterprise linux install tab (#33074)
+  * [v14] docs: Update HA Terraform reference and add starter
+    cluster reference (#33085)
+  * [v14] Update e ref. (#33066)
+  * [v14] Add cost optimized pagination search for athena (#33007)
+  * [v14] Add the Access List review backend. (#33070)
+  * Update cloud docs to 13.4.2 (#33071)
+  * [v14] AWS OIDC - EICE: improve error when EC2 does not accept
+    SSH connections (#33057)
+  * Update e ref (#32990)
+  * Downgrade Electron to 25.9.0 (#33058)
+  * Fix switch condition in Proxy listeners setup (#32966)
+  * Allow breaker tripped error to be configurable (#33036)
+  * Fix `kubectl log` commands when they refer to deployment
+    instead of pod (#32962)
+  * [v14] chore: Bump Go to v1.21.2 (#33046)
+  * Add in audit review recurrence presets. (#32960)
+  * [v14] chore: Pin golangci-lint and buf, bump buf to v1.27.0
+    (#33034)
+  * fix: improve reconnection reliability after process reloads
+    (#32807)
+  * Add sort index trees to unified resource cache (#33027)
+  * [v14] chore: Address crypto/elliptic package deprecations
+    (#32929)
+  * update --db-user and --db-name docs (#32888)
+  * Remove unused bloat bypass workflow (#32984)
+  * Track user connections across clusters (#32967)
+  * [v14] Web: Create (re-use) step navigator for general use
+    (#32979)
+  * Added 10/04 Upcoming Releases Update (#32981)
+  * Fix desktop listener PROXY mode setting (#32937)
+  * Web build: fix circular dep warnings (#32975)
+  * [v14] Yarn dependency upgrades (#32977)
+  * [v14] `removeSecure()` should close the file before removing it
+    on Windows (#32963)
+  * [v14] Special case TestOpenFileLinks on macOS (#32957)
+  * update cloud docs to 13.4.0 (#32951)
+  * Bump zod from 3.21.2 to 3.22.3 (#32954)
+  * Update error message on GitHub OSS (#32914)
+  * [v14] Connect My Computer: Improve copy and UI consistency
+    (#32890)
+  * MenuIcon: Support arbitrary icon through Icon prop (#32889)
+  * Update e (#32931)
+  * Add new methods to AccessResourcesGetter interface (#32862)
+  * [v14] docs: change open source/OSS references to community
+    edition (#32877)
+  * [v14] Replace Access Plane with Access Platform (#32878)
+  * Bump webpki from 0.22.1 to 0.22.2 (#32883) (#32907)
+  * [v14] docs: Add how to verify the binaries are FIPS-compliant
+    #32169 (#32882)
+  * [v14] Pin Teleport Terraform Provider to Teleport major version
+    (#32898)
+  * [v14] Fix max_duration when session TTL is short (#32817)
+  * [v14] puttyconfig: Switch to string-based Validity format and
+    deprecate MatchHosts (#32856)
+  * [v14] Add the internal access list review resource. (#32861)
+  * [v14] docs: update tctl tsh version location in prereqs
+    (#32858)
+  * [v14] docs: remove old versions ref (#32865)
+  * Convert `examples/teleport-usage` to use distroless image
+    (#32666)
+  * Sort cloud label names to the back (#32691)
+  * Use Proxy gRPC API when creating tracing client (#32663)
+  * Use Proxy gRPC API during log in (#32662)
+  * Prevent Kube proxy from set the default Kube impersonation
+    headers (#32848)
+  * Add support for Client ID to Azure VM auto-discovery (#32800)
+  * Use a context with a different scope for diagnostic trace
+    upload (#32838)
+  * Update e ref (#32812)
+  * Add connection information to multiplexer logs so it's easier
+    to investigate (#32738)
+  * [v14] DiscoveryConfig: add service with rbac support (#32719)
+  * add usage events for eice discover (#32815)
+  * [v14] Check to make sure defaultAllowRules matches preset
+    roles. (#32793)
+  * Added 09/27 Upcoming Releases Update (#32680)
+  * Improve RDS MySQL IAM auth error message (#32803)
+  * Add promoted access list title to teleterm access request
+    (#32717)
+  * [v14] Improve Connect My Computer UI & logout experience
+    (#32791)
+  * [v14] Fix remote pool of signed certs when exec into leaf
+    clusters (#32768)
+  * [v14] Improve explanation of `TBOT_GITLAB_JWT` config in GitLab
+    guide (#32797)
+  * [v14] Fix data race in Postgres engine on connection close
+    (#32783)
+  * [auto] docs: Update version to v14.0.1 (#32621)
+  * [v14] Properly apply `client_idle_timeout` to database access
+    sessions (#32720)
+  * [v14] Add access request promotion state and suggestion API
+    changes (#32710)
+  * allow teleport to start when some etcd nodes are unreachable
+    (#32779)
+  * Cut CI unit test runtime in half (#32774)
+  * conditionally show assist popover (#32267) (#32765)
+  * [v14] fix: Fix panic on `tsh device enroll --current-device`
+    (#32756)
+  * add eice discover flow (#32760)
+  * [v14] Web: Add disabled state to RadioGroup and add new icon
+    (#32758)
+  * [v14] Add Access Review gRPC service methods and messages.
+    (#32549)
+  * bump e (#32752)
+  * Fix the in-product link to trusted cluster docs (#32749)
+  * Remove reference to use a load balancer (#32695)
+  * Leverage marketing params on Discover (#31648) (#32515)
+  * [v14] Make spacing of Connect My Computer status more
+    consistent (#32736)
+  * docs: helm updates (#32705)
+  * [v14] docs: update Teleport Team prereqs (#32697)
+  * DiscoveryConfig: add service and client (#32562)
+  * [v14] Web: Extract re-usable parts and add new icons (#32713)
+  * Connect My Computer: Agent compatibility fixes (#32477)
+    (#32648)
+  * Update e (#32722)
+  * [v14] Update config reference for proxy_protocol field.
+    (#32667)
+  * Fix label name mismatch (#32569)
+  * [v14] Fixed issue where prerelease container image tags can
+    overwrite production container image tags (#32701)
+  * [v14] docs: remove multi level claim reference (#32673)
+  * Drain unused SSH channels (#32676)
+  * Fix usage of ClusterName from config when starting Auth server
+    (#32682)
+  * [v14] Connect: Add --debug flag, don't pass --insecure flag in
+    dev mode by default (#32657)
+  * remove docs for deprecated flags (#32670)
+  * Fix overflow in dropdown menu (#32647)
+  * Move `lib/utils/prompt` to `api/utils/prompt` (#32334) (#32576)
+  * [v14] [docs] DB access troubleshoot sts:AssumeRole not
+    authorized (#32661)
+  * Bump graphql from 16.6.0 to 16.8.1 (#32635)
+  * [v14] Fix Access List Members cache and eventing. (#32649)
+  * [v14] fix: Let users without a useable device issue register
+    challenges (#32430)
+  * Fix enterprise version check (#32554) (#32631)
+  * Update the supported versions table for v14 (#32585)
+  * Make UUIDs used in test helpers less random (#32564)
+  * [v14] Update copy of Connect My Computer setup & misc
+    improvements (#32565)
+  * Simplify LockTarget.IsEmpty implementation (#32607)
+  * Added 09/26 Upcoming Releases Update (#32599)
+
+-------------------------------------------------------------------
+Tue Oct 24 11:44:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 14.0.1:
+  * Release 14.0.1 (#32611)
+  * Fix issue Teleport Connect Kube terminal throws internal server
+    error (#32612)
+  * Fix install-linux.mdx (#32586)
+  * docs: oracle guide steps (#32582)
+  * Remove mention of reversetunnel_connected_proxies (#32572)
+  * [v14] docs: add faq answer for using oss or ent release for
+    agents (#32520)
+  * [v14] Remove non-file path links from partials (#32234)
+  * ExtendWebSession: Update roles on req.ReloadUser (#32541)
+  * Correct grammar error in PagerDuty integration notification
+    (#32537)
+  * Use cluster name from ServerIdentity for Auth multiplexer
+    (#32352)
+  * athena: configure limits in examples (#32543)
+  * [v14] Add support for Protobuf Enums into Operator CRDs
+    (#32557)
+  * Add alignSelf to Button (#32561)
+  * Remove Preview from Connect title bar (#32560)
+  * [v14] Bump UI Role version to `v7` (#32341)
+  * fix(regular): combine static and dynamic labels for session
+    metadata (#32382)
+  * [v14] Connect My Computer: Add progress bar to the setup screen
+    (#32475)
+  * [v14] DiscoveryConfig: add proto and gRPC methods (#32313)
+  * `compareSemVers` should return 0 if values are equal (#32459)
+  * [v14] Updated packer version to fix tag builds (#32526)
+  * Update getting started (#32517)
+  * docs: Flip Github connector examples for OSS vs Commercial
+    (#32507)
+  * Add posthog events for discovered Kubernetes Apps (#32379)
+  * [v14] Update reduce-blast-radius.mdx (#32397)
+  * Dynamically generate unifiedId (#32263)
+  * Fill in missing CHANGELOG info (#32416)
+  * [v14] docs: remove v10 references (#32491)
+  * [v14] docs: helm install agent updates (#32503)
+  * [v14] docs: Root access is insecure: draft for expanded
+    security admin topics (#32423)
+  * [v14] Update e ref. (#32496)
+  * [v14] Allow sudoer files to be created separately from host
+    user creation (#32400)
+  * Remove gravitational/configure dependency (#32487)
+  * Fix incorrect CA in Machine ID database access guide (#32465)
+  * Add small delay to display shimmer boxes (#32482)
+  * [v14] Refresh resources after Connect My Computer setup
+    (#32484)
+  * [v14] docs: remove duplicate warning (#32478)
+  * [v14] Secure File Removal Improvements (#32435)
+  * [v14] Prevent duplicate Access List owners. (#32481)
+  * Connect My Computer: Store agent logs (#32044) (#32458)
+  * pgbk: remove CREATE PUBLICATION (#32474)
+  * Enforce use of IMDSv2 for AMI builds (#32418)
+  * Fix bugs with GCP project ID + default installer (#32316)
+  * docs: remove guidance on version warning older then v11
+    (#32408)
+  * Move Discovery Matchers to their own files (#32368)
+  * Connect My Computer: Keeping compatibility promise (#31951)
+    (#32394)
+  * [v14] docs: Oracle Audit Logs (#32282)
+  * [v14] ci: clarify failure on `go mod tidy` (#32389)
+  * [v14] Provide error message if process file is unavailable due
+    to permissions for teleport start (#32348)
+  * Upgrade TypeScript to 5.2.2 (#32375)
+  * [v14] Connect My Computer: Remove the agent (#32369)
+  * [v14] Add initial ServiceNow plugin docs (#32268)
+  * Application access header rewrites should be a list (#32340)
+  * [v14] Remove unused servicenow rotation code and rotas from
+    recipient (#32363)
+  * Add interactive tonal primary colors (#32007) (#32319)
+  * [v14] Fix repeated ServiceAccount in `teleport-kube-agent`
+    chart (#32338)
+  * [v14] Update e (#32366)
+  * Add Access List usage events, emit event for userloginstate
+    Generator. (#32297)
+  * post-release: update the docs version (#32308)
+  * [v14] Define and add `IneligibleStatus` fields for access list
+    members and owners (#32278)
+  * Update token parameter description to be consistent (#32330)
+  * [v14] pgbk: docs for change_feed_conn_string and warning
+    against OLAP workloads (#32283)
+  * Fix issues in Azure VM auto-discovery docs (#32317)
+  * Implement waiting for Connect My Computer node to join cluster
+    (#32295)
+  * Allow including only traits when doing a JWT rewrite (#32291)
+  * Move Upcoming Releases to v14 (#32300)
+  * docs: include SLES install with zypper repo in ent install
+    (#32305)
+  * docs: update version (#32292)
+  * [docs] fix Postgres auto-user provisioning role group (#31967)
+  * [v14] Add initial servicenow plugin (#32131)
+  * [v14] Execute time-bound graceful shutdowns on
+    `SIGINT`/`SIGTERM`. (#32189)
+  * Fix double counting of auth server (#32270)
+
+-------------------------------------------------------------------
+Tue Oct 24 09:46:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 14.0.0:
+  very large changelog, please check it here:
+  https://github.com/gravitational/teleport/releases/tag/v14.0.0
+
+  Breaking changes and deprecations
+  * SSH node open dial no longer supported
+    Teleport 14 no longer allows connecting to OpenSSH servers not
+    registered with the cluster. Follow the updated agentless
+    OpenSSH integration guide to register your OpenSSH nodes in the
+    cluster’s inventory.
+    You can set TELEPORT_UNSTABLE_UNLISTED_AGENT_DIALING=yes
+    environment variable on Teleport proxy to temporarily re-enable
+    the open dial functionality. The environment variable will be
+    removed in Teleport 15.
+  * Proxy protocol default change
+    Starting from version 14, Teleport will require users to
+    explicitly enable or disable PROXY protocol in their
+    proxy_service/auth_service configuration using proxy_protocol:
+    on|off option.
+    Users who run their proxies behind L4 load balancers with PROXY
+    protocol enabled, should set proxy_protocol: on. Users who
+    don’t run Teleport behind PROXY protocol enabled load
+    balancers, should disable proxy_protocol: off explicitly for
+    security reasons.
+    By default, Teleport will accept the PROXY line but will
+    prevent connections with IP pinning enabled. IP pinning users
+    will need to explicitly enable/disable proxy protocol like
+    explained above.
+    See more details in our documentation.
+  * Legacy deb/rpm package repositories are deprecated
+    Teleport 14 will be the last release published to the legacy
+    package repositories at deb.releases.teleport.dev and
+    rpm.releases.teleport.dev. Starting with Teleport 15, packages
+    will only be published to the new repositories at
+    apt.releases.teleport.dev and yum.releases.teleport.dev.
+    All users are recommended to switch to
+    apt.releases.teleport.dev and yum.releases.teleport.dev
+    repositories as described in installation instructions.
+  * Cf-Access-Token header no longer included with app access requests
+    Starting from Teleport 14, the Cf-Access-Token header
+    containing the signed JWT token will no longer be included by
+    default with all app access requests. All requests will still
+    include Teleport-JWT-Assertion containing the JWT token.
+    See documentation for details on how to inject the JWT token
+    into any header using header rewriting.
+  * tsh db CLI commands changes
+    In Teleport 14 tsh db sub-commands will attempt to select a
+    default value for --db-user or --db-name flags if they are not
+    provided by the user by examining their allowed db_users and
+    db_names.
+    The flags --cert-file and --key-file for tsh proxy db command
+    were also removed, in favor of the --tunnel flag that opens an
+    authenticated local database proxy.
+  * MongoDB versions prior to 3.6 are no longer supported
+    Teleport 14 includes an update to the MongoDB driver.
+    Due to the MongoDB team dropping support for servers prior to
+    version 3.6 (which reached EOL on April 30, 2021), Teleport
+    also will no longer be able to support these old server
+    versions.
+  * Symlinks for ~/.tsh/environment no longer supported
+    In order to strengthen the security in Teleport 14, file
+    loading from home directories where the path includes a symlink
+    is no longer allowed. The most common use case for this is
+    loading environment variables from the ~/.tsh/environment file.
+    This will still work normally as long as the path includes no
+    symlinks.
+  * Deprecated audit event
+    Teleport 14 deprecates the trusted_cluster_token.create audit
+    event, replacing it with a new join_token.create event. The new
+    event is emitted when any join token is created, whether it be
+    for trusted clusters or other Teleport services.
+    Teleport 14 will emit both events when a trusted cluster join
+    token is created. Starting in Teleport 15, the
+    trusted_cluster_token.create event will no longer be emitted.
+
+-------------------------------------------------------------------
 Thu Oct 19 05:46:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.4.4:
