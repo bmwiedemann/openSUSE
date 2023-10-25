@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Oct 25 12:38:40 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Oct 25 11:04:42 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 0.1.2
+ * This release includes the Beta version of the Ruff formatter — an extremely
+     fast, Black-compatible Python formatter
+ * Preview features
+   * [pylint] Implement non-ascii-module-import (C2403)
+   * [pylint] implement non-ascii-name (C2401)
+   * [pylint] Implement unnecessary-lambda (W0108)
+   * [refurb] Implement read-whole-file (FURB101)
+   * Add fix for E223, E224, and E242
+   * Add fix for E225, E226, E227, and E228
+   * Add fix for E252
+   * Add fix for E261
+   * Add fix for E273 and E274
+   * Add fix for E275
+   * Update SIM401 to catch ternary operations
+   * Update E721 to allow is and is not for direct type comparisons
+ * Rule changes
+   * Add backports.strenum to deprecated-imports
+   * Update SIM112 to ignore https_proxy, http_proxy, and no_proxy
+   * Update fix for literal-membership (PLR6201) to be unsafe
+   * Update fix for  mutable-argument-defaults (B006) to be unsafe
+ * Formatter
+   * Change line-ending default to auto
+   * Respect parenthesized generators in has_own_parentheses
+   * Add caching to formatter
+   * Remove --line-length option from format command
+   * Add formatter to line-length documentation
+   * Warn about incompatible formatter options
+   * Fix range of unparenthesized tuple subject in match statement
+   * Remove experimental formatter warning
+   * Don't move type param opening parenthesis comment
+   * Update versions in format benchmark script
+   * Avoid loading files for cached format results
+ * CLI
+   * Show the ruff format command in help menus
+   * Add ruff version command with long version display
+   * Configuration
+   * New pycodestyle.max-line-length option
+ * Bug fixes
+   * Detect sys.version_info slices in outdated-version-block
+   * Avoid if-else simplification for TYPE_CHECKING blocks
+   * Avoid false-positive print separator diagnostic with starred argument
+ * Documentation
+   * Fix message for too-many-arguments lint
+   * Fix extend-unsafe-fixes and extend-safe-fixes example
+   * Add links to flake8-import-conventions options
+   * Rework the documentation to incorporate the Ruff formatter
+   * Fix Options JSON schema description
+   * Fix typo (pytext -> pytest)
+   * Improve magic-value-comparison example in docs 
+
+-------------------------------------------------------------------
 Fri Oct 20 10:09:22 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.1
