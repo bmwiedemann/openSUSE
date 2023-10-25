@@ -732,4 +732,17 @@
     <comment></comment>
     <requestid>900714</requestid>
   </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>b9e5cb3f0557c6cb85ffdcbc2b5040f0</srcmd5>
+    <version>1.2.1</version>
+    <time>1698249744</time>
+    <user>anag+factory</user>
+    <comment>- add spec-cleaner-psp-macros.patch to avoid spec-cleaner
+  rewriting the location of the psp macro
+
+- Fix: Use Mageia specific macro for Mageia builds in spec file
+  * Various small fixes
+- Version update to 1.1.2 bsc#1099674:</comment>
+    <requestid>1120004</requestid>
+  </revision>
 </revisionlist>

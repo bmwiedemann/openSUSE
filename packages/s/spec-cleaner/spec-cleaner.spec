@@ -1,7 +1,7 @@
 #
 # spec file for package spec-cleaner
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Vincent Untz <vuntz@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,6 +24,8 @@ Summary:        .spec file cleaner
 License:        BSD-3-Clause
 URL:            https://github.com/rpm-software-management/spec-cleaner
 Source0:        https://github.com/rpm-software-management/spec-cleaner/archive/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/rpm-software-management/spec-cleaner/commit/914c432eb26bae6af766f2da6e81587251ebf1c0
+Patch1:         spec-cleaner-psp-macros.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
@@ -46,7 +48,7 @@ Alternative provider of format_spec_file functionality in order to allow
 user to use spec-cleaner rather than to stick to perl based format_spec_file.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{name}-%{version}
 rm pytest.ini
 
 %build

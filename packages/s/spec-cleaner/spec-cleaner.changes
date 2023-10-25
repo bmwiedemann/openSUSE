@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 24 13:45:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add spec-cleaner-psp-macros.patch to avoid spec-cleaner
+  rewriting the location of the psp macro
+
+-------------------------------------------------------------------
 Thu Jun 17 09:43:14 UTC 2021 - Atilla ÖNTAŞ <tarakbumba@gmail.com>
 
-- Fix: Use Mageia specific macro for Mageia builds in spec file 
+- Fix: Use Mageia specific macro for Mageia builds in spec file
 
 -------------------------------------------------------------------
 Tue Nov 17 06:02:08 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
@@ -108,7 +114,7 @@ Wed Jul 17 08:17:52 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
   * Add docstrings to the functions and classes.
   * Use type hints for the most important functions
   * Update README and licences
-  * Various small fixes 
+  * Various small fixes
 - add a temporary patch spec-cleaner-1.1.4_test_https.patch
   that fixes a test that fails if there is no internet connection
 
@@ -125,7 +131,7 @@ Thu Mar  7 12:36:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Dec 13 11:34:07 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Version update to 1.1.2 bsc#1099674: 
+- Version update to 1.1.2 bsc#1099674:
   * Fixed qmake macro recommendation
   * More licenses recognised
   * Do not curlify sysuser_create

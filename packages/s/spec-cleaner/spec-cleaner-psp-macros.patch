@@ -1,0 +1,226 @@
+From 914c432eb26bae6af766f2da6e81587251ebf1c0 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Tue, 19 Sep 2023 08:03:51 +0200
+Subject: [PATCH] Add new head category for PSP macros
+
+This patch adds a new category "head", similar to the "tail" category,
+to match the modern python macros for SUSE SLE
+(sle15_python_module_pythons and sle15allpythons), these macros changed
+the "pythons" definition, so they should go before any usage of the
+python-rpm-macros.
+
+Fix https://github.com/rpm-software-management/spec-cleaner/issues/308
+---
+ spec_cleaner/rpmpreamble.py         |  4 ++++
+ spec_cleaner/rpmpreambleelements.py |  3 +++
+ spec_cleaner/rpmregexp.py           |  1 +
+ tests/in/psp-macro-all.spec         | 31 +++++++++++++++++++++++++++++
+ tests/in/psp-macro.spec             | 30 ++++++++++++++++++++++++++++
+ tests/out/psp-macro-all.spec        | 30 ++++++++++++++++++++++++++++
+ tests/out/psp-macro.spec            | 30 ++++++++++++++++++++++++++++
+ 7 files changed, 129 insertions(+)
+ create mode 100644 tests/in/psp-macro-all.spec
+ create mode 100644 tests/in/psp-macro.spec
+ create mode 100644 tests/out/psp-macro-all.spec
+ create mode 100644 tests/out/psp-macro.spec
+
+diff --git a/spec_cleaner/rpmpreamble.py b/spec_cleaner/rpmpreamble.py
+index 0273b0c..363a9e8 100644
+--- a/spec_cleaner/rpmpreamble.py
++++ b/spec_cleaner/rpmpreamble.py
+@@ -115,6 +115,7 @@ def __init__(self, options):
+             'excludearch': self.reg.re_excludearch,
+             'exclusivearch': self.reg.re_exclusivearch,
+             'tail': self.reg.re_tail_macros,
++            'head': self.reg.re_head_macros,
+         }
+ 
+         # deprecated definitions that we no longer want to see
+@@ -693,6 +694,9 @@ def add(self, line):
+             else:
+                 self._add_line_value_to('exclusivearch', value)
+ 
++        elif self.reg.re_head_macros.match(line):
++            self._add_line_value_to('head', line)
++
+         # loop for all other matching categories which
+         # do not require special attention
+         else:
+diff --git a/spec_cleaner/rpmpreambleelements.py b/spec_cleaner/rpmpreambleelements.py
+index 8270ec8..9024264 100644
+--- a/spec_cleaner/rpmpreambleelements.py
++++ b/spec_cleaner/rpmpreambleelements.py
+@@ -54,6 +54,7 @@ class RpmPreambleElements(object):
+         'define',
+         'bconds',
+         'bcond_conditions',
++        'head',
+         'name',
+         'version',
+         'release',
+@@ -308,6 +309,8 @@ def compile_category_prefix(self, category, key=None):
+ 
+         if category == 'tail':
+             return ''
++        if category == 'head':
++            return ''
+         elif key:
+             pass
+         elif category in self.category_to_key:
+diff --git a/spec_cleaner/rpmregexp.py b/spec_cleaner/rpmregexp.py
+index 832ac2a..5649651 100644
+--- a/spec_cleaner/rpmregexp.py
++++ b/spec_cleaner/rpmregexp.py
+@@ -90,6 +90,7 @@ class Regexp(object):
+     re_patternmacro = re.compile(r'pattern(-\S+)?\(\)', re.IGNORECASE)
+     re_patternobsolete = re.compile(r'patterns-openSUSE-\S+', re.IGNORECASE)
+     re_tail_macros = re.compile(r'^%{?python_subpackages}?')
++    re_head_macros = re.compile(r'^%{?\??(sle15_python_module_pythons|sle15allpythons)}?')
+     re_preamble_prefix = re.compile(r'^Prefix:\s*(.*)', re.IGNORECASE)
+     # grab all macros with rpm call that query for version, this still might
+     # be bit too greedy but it is good enough now
+diff --git a/tests/in/psp-macro-all.spec b/tests/in/psp-macro-all.spec
+new file mode 100644
+index 0000000..4f03c68
+--- /dev/null
++++ b/tests/in/psp-macro-all.spec
+@@ -0,0 +1,31 @@
++#
++# spec file
++#
++# Copyright (c) 2023 SUSE LLC
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
++%{?sle15allpythons}
++Name:           python-munch
++Version:        3.0.0
++Release:        0
++BuildRequires:  python-rpm-macros
++Requires:       python-six
++BuildArch:      noarch
++# SECTION test requirements
++BuildRequires:  %{python_module pytest}
++BuildRequires:  %{python_module six}
++
++%changelog
++
+diff --git a/tests/in/psp-macro.spec b/tests/in/psp-macro.spec
+new file mode 100644
+index 0000000..7056059
+--- /dev/null
++++ b/tests/in/psp-macro.spec
+@@ -0,0 +1,30 @@
++#
++# spec file
++#
++# Copyright (c) 2023 SUSE LLC
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
++%{?sle15_python_module_pythons}
++Name:           python-munch
++Version:        3.0.0
++Release:        0
++BuildRequires:  python-rpm-macros
++Requires:       python-six
++BuildArch:      noarch
++# SECTION test requirements
++BuildRequires:  %{python_module pytest}
++BuildRequires:  %{python_module six}
++
++%changelog
+diff --git a/tests/out/psp-macro-all.spec b/tests/out/psp-macro-all.spec
+new file mode 100644
+index 0000000..97dd863
+--- /dev/null
++++ b/tests/out/psp-macro-all.spec
+@@ -0,0 +1,30 @@
++#
++# spec file
++#
++# Copyright (c) 2023 SUSE LLC
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
++%{?sle15allpythons}
++Name:           python-munch
++Version:        3.0.0
++Release:        0
++BuildRequires:  python-rpm-macros
++Requires:       python-six
++BuildArch:      noarch
++# SECTION test requirements
++BuildRequires:  %{python_module pytest}
++BuildRequires:  %{python_module six}
++
++%changelog
+diff --git a/tests/out/psp-macro.spec b/tests/out/psp-macro.spec
+new file mode 100644
+index 0000000..7056059
+--- /dev/null
++++ b/tests/out/psp-macro.spec
+@@ -0,0 +1,30 @@
++#
++# spec file
++#
++# Copyright (c) 2023 SUSE LLC
++#
++# All modifications and additions to the file contributed by third parties
++# remain the property of their copyright owners, unless otherwise agreed
++# upon. The license for this file, and modifications and additions to the
++# file, is the same license as for the pristine package itself (unless the
++# license for the pristine package is not an Open Source License, in which
++# case the license is the MIT License). An "Open Source License" is a
++# license that conforms to the Open Source Definition (Version 1.9)
++# published by the Open Source Initiative.
++
++# Please submit bugfixes or comments via https://bugs.opensuse.org/
++#
++
++
++%{?sle15_python_module_pythons}
++Name:           python-munch
++Version:        3.0.0
++Release:        0
++BuildRequires:  python-rpm-macros
++Requires:       python-six
++BuildArch:      noarch
++# SECTION test requirements
++BuildRequires:  %{python_module pytest}
++BuildRequires:  %{python_module six}
++
++%changelog
