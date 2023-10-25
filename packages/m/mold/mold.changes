@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 13:02:13 UTC 2023 - Martin Liška <martin.liska@hey.com>
+
+- Add fix-arm.patch in order to fix failing arm-arm_range-extension-thunk2 test.
+
+-------------------------------------------------------------------
 Fri Oct 20 08:21:20 UTC 2023 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.3.1

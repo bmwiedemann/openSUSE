@@ -614,4 +614,12 @@
     -mcmodel=extreme flag. (4bd80ec)</comment>
     <requestid>1119175</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>65372ab56df393c7d23a139cd0c988e1</srcmd5>
+    <version>2.3.1</version>
+    <time>1698249894</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-arm.patch in order to fix failing arm-arm_range-extension-thunk2 test.</comment>
+    <requestid>1120275</requestid>
+  </revision>
 </revisionlist>

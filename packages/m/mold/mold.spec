@@ -25,6 +25,7 @@ Group:          Development/Tools/Building
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
 Patch0:         build-blake-3-as-static.patch
+Patch1:         fix-arm.patch
 BuildRequires:  cmake
 %if %{suse_version} < 1550
 BuildRequires:  gcc11-c++
