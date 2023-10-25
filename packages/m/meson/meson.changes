@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 23 09:17:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.3:
+  + Allow share/cmake/ as cmake_prefix_path.
+  + find_tool: don't assume the pkgconfig variable is a valid
+    command.
+  + python dependency: ensure that setuptools doesn't inject
+    itself into distutils.
+  + Allow c++23 in gcc-11.
+  + Revert "rust: apply global, project, and environment C args to
+    bindgen".
+- Drop
+  0007-Revert-rust-apply-global-project-and-environment-C-a.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
 Wed Oct  4 07:30:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add

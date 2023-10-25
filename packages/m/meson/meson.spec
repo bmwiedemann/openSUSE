@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 %global pythons python311
 %else
@@ -35,7 +34,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -50,8 +49,6 @@ Patch0:         meson-test-installed-bin.patch
 Patch1:         extend-test-timeout-on-qemu-builds.patch
 # PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
 Patch2:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM 0007-Revert-rust-apply-global-project-and-environment-C-a.patch gh#mesonbuild/meson#12326 -- Fix Mesa build
-Patch3:         0007-Revert-rust-apply-global-project-and-environment-C-a.patch
 
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
@@ -175,7 +172,6 @@ Vim/NeoVim.
 %if !%{with setuptools}
 %patch2 -p1
 %endif
-%patch3 -p1
 
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 # AddressSanitizer fails here because of ulimit.

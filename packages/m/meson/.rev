@@ -854,4 +854,23 @@
   Revert upstream commit (gh#mesonbuild/meson#12326). (forwarded request 1115538 from dimstar)</comment>
     <requestid>1115539</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>0d51f5af40d556b3fabc5db700d3a62f</srcmd5>
+    <version>1.2.3</version>
+    <time>1698249731</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.3:
+  + Allow share/cmake/ as cmake_prefix_path.
+  + find_tool: don't assume the pkgconfig variable is a valid
+    command.
+  + python dependency: ensure that setuptools doesn't inject
+    itself into distutils.
+  + Allow c++23 in gcc-11.
+  + Revert &quot;rust: apply global, project, and environment C args to
+    bindgen&quot;.
+- Drop
+  0007-Revert-rust-apply-global-project-and-environment-C-a.patch:
+  fixed upstream.</comment>
+    <requestid>1120001</requestid>
+  </revision>
 </revisionlist>
