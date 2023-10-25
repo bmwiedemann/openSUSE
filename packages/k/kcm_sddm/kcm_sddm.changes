@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:23:56 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Add missing KService dependency
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
