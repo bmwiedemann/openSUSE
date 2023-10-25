@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Oct 10 12:49:02 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+-------------------------------------------------------------------
+Mon Sep 18 15:24:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.
+
+-------------------------------------------------------------------
+Wed Aug  9 09:42:33 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 14.9:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * https://www.postgresql.org/docs/14/release-14-9.html
+
+-------------------------------------------------------------------
+Fri May 26 11:48:38 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+-------------------------------------------------------------------
+Mon May 15 14:21:03 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.
+
+-------------------------------------------------------------------
 Wed May 10 12:58:22 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 14.8:

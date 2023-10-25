@@ -152,4 +152,34 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/docs/14/release-14-8.html</comment>
     <requestid>1086555</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>368a9786a6df029661bf1a35eaca1aa3</srcmd5>
+    <version>14.9</version>
+    <time>1698249885</time>
+    <user>anag+factory</user>
+    <comment>- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.
+
+- Update to 14.9:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * https://www.postgresql.org/docs/14/release-14-9.html
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.</comment>
+    <requestid>1120251</requestid>
+  </revision>
 </revisionlist>

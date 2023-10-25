@@ -1,4 +1,4 @@
-Change the built-in default socket directory to be /var/run/postgresql.
+Change the built-in default socket directory to be /run/postgresql.
 For backwards compatibility with (probably non-libpq-based) clients that
 might still expect to find the socket in /tmp, also create a socket in
 /tmp.  This is to resolve communication problems with clients operating
@@ -48,7 +48,7 @@ Index: src/include/pg_config_manual.h
   */
  #ifndef WIN32
 -#define DEFAULT_PGSOCKET_DIR  "/tmp"
-+#define DEFAULT_PGSOCKET_DIR  "/var/run/postgresql"
++#define DEFAULT_PGSOCKET_DIR  "/run/postgresql"
  #else
  #define DEFAULT_PGSOCKET_DIR ""
  #endif

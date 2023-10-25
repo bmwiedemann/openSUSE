@@ -4,11 +4,9 @@ Date:   Mon Mar 11 18:42:39 2013 +0100
 
     don't unlink the result file
 
-Index: postgresql-14rc1/src/test/regress/pg_regress.c
-===================================================================
---- postgresql-14rc1.orig/src/test/regress/pg_regress.c
-+++ postgresql-14rc1/src/test/regress/pg_regress.c
-@@ -2681,7 +2681,6 @@ regression_main(int argc, char *argv[],
+--- src/test/regress/pg_regress.c.orig
++++ src/test/regress/pg_regress.c
+@@ -2702,7 +2702,6 @@ regression_main(int argc, char *argv[],
  	else
  	{
  		unlink(difffilename);
