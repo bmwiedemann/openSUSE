@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:23:35 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Fix network cache size for first run
+  * packagekit: attach timer to stream rather than backend
+  * packagekit: hold stream in a qpointer (kde#467888,kde#465711,kde#473921)
+  * Only preload a couple of screens worth of comments (kde#474944)
+  * flatpak: make FlatpakTransactionThread a qrunnable instead (kde#474231)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
