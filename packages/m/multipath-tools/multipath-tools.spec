@@ -21,8 +21,8 @@
 
 # multipath-tools auto-detects support for -D_FORTFY_SOURCE.
 # This will lead to a compilation error if the distro overrides
-# -D_FORTIFY_SOURCE in optflags, unless we precede it with -U
-%global mp_optflags %(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=[0-9]/-U_FORTIFY_SOURCE &/')
+# -D_FORTIFY_SOURCE in optflags, unless it's preceded with -U_FORTIFY_SOURCE
+%global mp_optflags %(echo %{optflags} | sed '/-U_FORTIFY_SOURCE/!s/-D_FORTIFY_SOURCE=[0-9]/-U_FORTIFY_SOURCE &/')
 
 # Whether to build libdmmp - default YES
 %bcond_without libdmmp
@@ -35,7 +35,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.6+71+suse.f07325e
+Version:        0.9.6+115+suse.07776fb
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
@@ -86,9 +86,6 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
-
-
-
 
 # Currently, it makes no sense to split out libmpathpersist and libmpathcmd
 # separately. libmultipath has no stable API at all, and it depends
@@ -149,16 +146,18 @@ Requires:       libdmmp%{libdmmp_version} = %{version}
 %description -n libdmmp-devel
 This package provides development files and documentation for libdmmp.
 
-%define makeflags %{!?with_libdmmp:ENABLE_LIBDMMP=0}
+%global extraversion %(echo %{version} | sed 's/^[^+]*//')
+%define makeflags EXTRAVERSION="%{extraversion}" %{!?with_libdmmp:ENABLE_LIBDMMP=0}
 %if 0%{?suse_version} < 1550
-%define dirflags LIB=%{_lib} usr_prefix=%{_prefix} systemd_prefix=%{_prefix}
+%define dirflags LIB=%{_lib} usr_prefix=%{_prefix}
 %define sbindir /sbin
 %define libdir  /%{_lib}
 %else
-%define dirflags LIB=%{_lib} prefix=%{_prefix} configdir=%{_sysconfdir}/multipath/conf.d
+%define dirflags LIB=%{_lib} prefix=%{_prefix} etc_prefix=
 %define sbindir %{_sbindir}
 %define libdir  %{_libdir}
 %endif
+
 
 %prep
 %setup -q -n multipath-tools-%{version}
@@ -172,7 +171,7 @@ cp %{SOURCE5} .
 
 %if 0%{?with_check} == 1
 %check
-%{make_build} OPTFLAGS="%{mp_optflags}" V=1 test
+%{make_build} OPTFLAGS="%{mp_optflags}" %{dirflags} %{makeflags} V=1 test
 %endif
 
 %install

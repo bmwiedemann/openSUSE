@@ -1826,4 +1826,29 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   (broken since 0.9.4+68+suse.98559ea) (forwarded request 1110447 from mwilck)</comment>
     <requestid>1110448</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>a000def588d6a4c09d2441e04e70ccf5</srcmd5>
+    <version>0.9.6+115+suse.07776fb</version>
+    <time>1698249726</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.6+115+suse.07776fb
+  * multipathd: Added support to handle FPIN-Li events for FC-NVMe
+
+- Update to version 0.9.6+110+suse.5dfdf35:
+  * The options &quot;bindings_file&quot;, &quot;prkeys_file&quot;, and &quot;wwids_file&quot;,
+    which have been deprecated since multipath-tools 0.8.8,
+    aren't supported any more. The paths to these files are now
+    hard-coded to &quot;bindings&quot;, &quot;prkeys&quot; and &quot;wwids&quot; under
+    /etc/multipath.
+  * Strictly avoid assigning map aliases that are already taken
+    (bsc#1213265)
+  * Improve handling of user-friendly names
+  * avoid &quot;multipath -d&quot; (dry-run) changing SCSI timeouts in sysfs
+    (bsc#1213809)
+- spec file:
+  * adapt prefix values to upstream changes
+  * fix compilation flags for &quot;make check&quot;
+  * pass EXTRAVERSION to build (forwarded request 1120227 from mwilck)</comment>
+    <requestid>1120229</requestid>
+  </revision>
 </revisionlist>

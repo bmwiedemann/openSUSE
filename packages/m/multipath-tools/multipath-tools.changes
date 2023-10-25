@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 25 10:46:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.6+115+suse.07776fb
+  * multipathd: Added support to handle FPIN-Li events for FC-NVMe
+
+-------------------------------------------------------------------
+Fri Sep 15 12:36:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.6+110+suse.5dfdf35:
+  * The options "bindings_file", "prkeys_file", and "wwids_file",
+    which have been deprecated since multipath-tools 0.8.8,
+    aren't supported any more. The paths to these files are now
+    hard-coded to "bindings", "prkeys" and "wwids" under
+    /etc/multipath.
+  * Strictly avoid assigning map aliases that are already taken
+    (bsc#1213265)
+  * Improve handling of user-friendly names
+  * avoid "multipath -d" (dry-run) changing SCSI timeouts in sysfs
+    (bsc#1213809)
+- spec file:
+  * adapt prefix values to upstream changes
+  * fix compilation flags for "make check"
+  * pass EXTRAVERSION to build
+
+-------------------------------------------------------------------
 Tue Sep 12 06:48:40 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Configuration directory should be /etc/multipath/conf.d
