@@ -1028,4 +1028,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
     <requestid>1110727</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>6fb2c4c705ab094d380697ae47a375ce</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249700</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120086</requestid>
+  </revision>
 </revisionlist>
