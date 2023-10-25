@@ -338,4 +338,30 @@
 ------------------------------------------------------------------</comment>
     <requestid>1112502</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2b77fbd09d7cdd9af8ff66764ce4586e</srcmd5>
+    <version>23.2.2</version>
+    <time>1698249730</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 23.2.2
+  * This release contains the fix for CVE-2023-5367 and CVE-2023-5574
+    in today's security advisory: 
+      https://lists.x.org/archives/xorg-announce/2023-October/003430.html
+    Xwayland does not support multiple protocol screens (Zaphod) and is thus
+    not affected by CVE-2023-5380.
+  * Additionally, there is a change in the default behaviour of Xwayland:
+    Since version 23.2.0 Xwayland (via liboeffis) automatically tries to
+    connect to the XDG Desktop Portal's RemoteDesktop interface to obtain
+    the EI socket. That socket is used to send XTest events to the
+    compositor.
+  * However, the connection to the session-wide Portal is unsuitable when
+    Xwayland is running in a nested compositor. Xwayland cannot tell whether
+    it's running on a nested compositor and to keep backwards compatibility
+    with Xwayland prior to 23.2.0, Xwayland must now be started with
+    &quot;-enable-ei-portal&quot; to connect to the portal.
+  * Compositors (who typically spawn Xwayland rootless) must now pass this
+    option to get the same behaviour as 23.2.x.
+  * Finally, Xwayland now uses libbsd-overlay instead of libbsd.</comment>
+    <requestid>1120261</requestid>
+  </revision>
 </revisionlist>
