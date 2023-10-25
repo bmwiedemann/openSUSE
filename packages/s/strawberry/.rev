@@ -1324,4 +1324,12 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1119300</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>a07af80f5d4301eb1f2a9ea2b8a4a751</srcmd5>
+    <version>1.0.21</version>
+    <time>1698249919</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120309</requestid>
+  </revision>
 </revisionlist>

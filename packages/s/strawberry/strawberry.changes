@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 25 13:34:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit pkgconfig(fftw3) BuildRequires: This optional
+  dependency was previously pulled in by chromaprint. Build moodbar
+  support.
+
+-------------------------------------------------------------------
 Sat Oct 21 01:59:43 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.21
