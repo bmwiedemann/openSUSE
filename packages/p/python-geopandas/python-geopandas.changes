@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 25 13:41:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip a test still failing with pandas 2.1.1
+  * See gh#geopandas/geopandas#2948, gh#geopandas/geopandas#2994,
+    gh#geopandas/geopandas#3038
+
+-------------------------------------------------------------------
 Sat Sep 23 08:43:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.0

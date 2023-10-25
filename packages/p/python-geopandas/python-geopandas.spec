@@ -95,6 +95,8 @@ donttest="$donttest or (test_arrow and (test_read_versioned_file or test_read_gd
 # wrong shapely type
 donttest="$donttest or (test_geom_methods and test_sample_points_array)"
 donttest="$donttest or (test_random and test_uniform and geom)"
+# https://github.com/geopandas/geopandas/issues/2948, https://github.com/geopandas/geopandas/pull/2994
+donttest="$donttest or (test_pandas_method and test_astype)"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest="$donttest or test_explode or test_get_coordinates_parts"
 fi
