@@ -7,9 +7,7 @@ After=syslog.target network.target firewall.target
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
 ProtectHome=true
-PrivateDevices=true
 ProtectHostname=true
-ProtectClock=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true
@@ -19,6 +17,7 @@ RestrictRealtime=true
 Type=forking
 ExecStartPre=/usr/sbin/tayga_setup_tun
 ExecStart=/usr/sbin/tayga
+ExecStopPost=/usr/sbin/tayga_destroy_tun
 
 [Install]
 WantedBy=multi-user.target

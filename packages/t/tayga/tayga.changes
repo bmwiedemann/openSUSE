@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 23 06:54:19 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Add tayga_destroy_tun to delete the tunnel interface when the
+  service is stopped
+
+-------------------------------------------------------------------
+Mon Oct 23 06:25:09 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Drop PrivateDevices and ProtectClock hardening options to repair
+  startup failure while accessing /dev/net/tun
+- Add conditional to tayga_setup_tun to facilitate operation on
+  systems without iptables
+
+-------------------------------------------------------------------
 Wed Nov 24 14:02:56 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

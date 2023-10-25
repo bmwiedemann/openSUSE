@@ -1,7 +1,7 @@
 #
 # spec file for package tayga
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,8 @@ Group:          Productivity/Networking/Other
 URL:            http://www.litech.org/tayga/
 Source0:        http://www.litech.org/tayga/%{name}-%{version}.tar.bz2
 Source1:        tayga_setup_tun
-Source2:        tayga.service
+Source2:        tayga_destroy_tun
+Source3:        tayga.service
 Patch0:         tayga-obey-cflags.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -44,14 +45,14 @@ sed -i 's|%{_localstatedir}/db/tayga|%{_localstatedir}/lib/tayga|g' tayga.conf.e
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 mv %{buildroot}%{_sysconfdir}/tayga.conf{.example,}
 install -d %{buildroot}%{_var}/lib/tayga
-install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/tayga.service
+install -m 0755 %{SOURCE1} %{SOURCE2} %{buildroot}%{_sbindir}
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/tayga.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctayga
 
 %pre
@@ -74,6 +75,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctayga
 %{_sbindir}/tayga
 %{_sbindir}/rctayga
 %{_sbindir}/tayga_setup_tun
+%{_sbindir}/tayga_destroy_tun
 %{_mandir}/man5/tayga.conf.5%{?ext_man}
 %{_mandir}/man8/tayga.8%{?ext_man}
 %{_unitdir}/tayga.service

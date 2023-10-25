@@ -1,0 +1,5 @@
+#!/bin/bash
+CFG="/etc/tayga.conf"
+IF="$(sed -n 's|[[:blank:]]*tun-device[[:blank:]]\+\([0-9a-zA-Z/]\+\)[[:blank:]]*|\1|p' ${CFG} | sed 's|#.*||')"
+
+ip link del ${IF}
