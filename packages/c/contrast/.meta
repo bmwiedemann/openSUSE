@@ -1,0 +1,6 @@
+<package name="contrast" project="openSUSE:Factory">
+  <title>Check contrast between two colors</title>
+  <description>Checks whether the contrast between two colors meet the WCAG requirements.</description>
+  <devel project="graphics" package="contrast"/>
+  <url>https://gitlab.gnome.org/World/design/contrast</url>
+</package>
