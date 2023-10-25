@@ -48,4 +48,24 @@
     <comment></comment>
     <requestid>1009881</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>909cd125eedebe2e5fe0c9bd6bc2c95e</srcmd5>
+    <version>2.4.1</version>
+    <time>1698249749</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.1:
+  * Fix invalid escape sequence warning
+
+- add setuptools_scm to get proper versions in the metadata
+
+- Update to version 2.4
+  * cmd: fix check for no additional parameters
+  * Fix APOS_SECOND possessive noun
+  * Defer lowering all caps until recursion is done
+  * More restrictive regex for 'Mc'
+  * Handle `/`'s with recursion so all logic applies
+  * Handle single letter + apostrophe better
+  * Fix MAC/emcee/MacHine casing; add test cases</comment>
+    <requestid>1120008</requestid>
+  </revision>
 </revisionlist>

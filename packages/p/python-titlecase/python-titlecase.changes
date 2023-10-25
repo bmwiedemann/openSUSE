@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:01:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Fix invalid escape sequence warning
+
+-------------------------------------------------------------------
+Tue Oct 24 14:00:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add setuptools_scm to get proper versions in the metadata
+
+-------------------------------------------------------------------
 Tue Oct 11 16:00:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.4 
+- Update to version 2.4
   * Add `preserve_blank_lines` option (#88)
   * Add Py3.10, Drop Py3.6
   * Update unit testing framework
@@ -46,20 +57,20 @@ Tue May 15 19:57:54 UTC 2018 - toddrme2178@gmail.com
   * More robust against unicode chars
   * Mark strings written by callbacks as immutable
   * Add various dash types
-  * cmd: fix check for no additional parameters 
+  * cmd: fix check for no additional parameters
   * add small_first_last option
   * allow titlecase to be a command line utility
   * tests for hyphenated McName-Names
   * improve MAC_MC match handling
   * Support for hyphen and em dash delimited sub-phrases.
-  * Fix APOS_SECOND possessive noun 
+  * Fix APOS_SECOND possessive noun
   * Add function for customizing small-word list
-  * Defer lowering all caps until recursion is done 
-  * More restrictive regex for 'Mc' 
-  * Handle `/`'s with recursion so all logic applies 
-  * Handle single letter + apostrophe better 
+  * Defer lowering all caps until recursion is done
+  * More restrictive regex for 'Mc'
+  * Handle `/`'s with recursion so all logic applies
+  * Handle single letter + apostrophe better
   * Allow numbers in 'ALL_CAPS' strings
-  * Fix MAC/emcee/MacHine casing; add test cases 
+  * Fix MAC/emcee/MacHine casing; add test cases
 - Complete rewrite of spec file
 - Implement single-spec version
 
