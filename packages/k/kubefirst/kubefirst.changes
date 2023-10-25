@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 25 04:50:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.2:
+  * fix: styles json (#1868)
+
+-------------------------------------------------------------------
+Wed Oct 25 04:38:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.1:
+  * pin cli to 2.3.1 (#1867)
+  * chore: remove previous E2E tests (#1860)
+
+-------------------------------------------------------------------
 Tue Oct 24 09:36:30 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.0:
