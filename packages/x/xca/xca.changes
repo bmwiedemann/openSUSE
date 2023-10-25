@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 20 13:38:18 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 2.5.0:
+  * Multiple bug fixes
+  * Add Bulgarian, Indonesian and Persian translation
+  * Switch from autotools/qmake to cmake
+  * Add support for Qt6 and OpenSSL 3.x
+  * Drop support for Qt4
+  * Drop support for old XCA < 2.0.0 databases
+  * Drop support for OpenSSL < 1.1.0
+- Switch to cmake build system
+- Update URL
+- VERSION file got renamed to VERSION.txt
+- Improve Supplements syntax to conform with linter
+- Set buildrequires again to openssl as openSSL 3 is now supported
+
+-------------------------------------------------------------------
 Mon Feb 20 11:07:45 CET 2023 - ro@suse.de
 
 - change buildrequires for openssl on factory to use openssl-1.1

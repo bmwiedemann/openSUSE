@@ -48,4 +48,12 @@
   openSSL 3 is not supported in xca-2.4.0 yet (forwarded request 1066756 from oertel)</comment>
     <requestid>1066758</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f466a8a0270e0cc8a8319df0b5d94726</srcmd5>
+    <version>2.5.0</version>
+    <time>1698249861</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120197</requestid>
+  </revision>
 </revisionlist>

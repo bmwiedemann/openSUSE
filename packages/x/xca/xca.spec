@@ -2,6 +2,7 @@
 # spec file for package xca
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Jonathan Brielmaier <jbrielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +18,13 @@
 
 
 Name:           xca
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Security
 Summary(de):    Ein RSA-Schlüssel- und -Zertifikat-Managementprogramm
-URL:            https://sourceforge.net/projects/xca/
+URL:            https://www.hohnstaedt.de/xca/
 Source:         https://github.com/chris2511/xca/releases/download/RELEASE.%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-desktop.patch
 BuildRequires:  gcc-c++
@@ -36,11 +37,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
-%if 0%{suse_version} < 1550
 BuildRequires:  pkgconfig(openssl)
-%else
-BuildRequires:  libopenssl-1_1-devel
-%endif
 #Requires:       libQt5Sql5-sqlite
 
 %description
@@ -67,7 +64,7 @@ Summary:        Bash Completion for %{name}
 Group:          Productivity/Networking/Security
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -78,17 +75,15 @@ Bash completion script for %{name}.
 %autopatch -p1
 
 %build
-%configure --with-qt-version=5 \
-           --docdir=%{_datadir}/%{name}
-
-%make_build destdir=%{buildroot} prefix=%{_prefix}
+%cmake xca
+%cmake_build
 
 %install
-%make_install destdir=%{buildroot} prefix=%{_prefix}
+%cmake_install
 %suse_update_desktop_file -i %{name} DesktopUtility
 
 %files
-%doc AUTHORS changelog VERSION
+%doc AUTHORS changelog VERSION.txt
 %license COPYRIGHT
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
