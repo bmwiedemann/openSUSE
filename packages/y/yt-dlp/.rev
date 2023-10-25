@@ -244,4 +244,12 @@
     <comment>- Enable Python library [boo#1216467]</comment>
     <requestid>1119460</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>345489eba1f0b6c0b76f381219da8dff</srcmd5>
+    <version>2023.10.13</version>
+    <time>1698249810</time>
+    <user>anag+factory</user>
+    <comment>- Rework Python build procedure [boo#1216467]</comment>
+    <requestid>1120155</requestid>
+  </revision>
 </revisionlist>

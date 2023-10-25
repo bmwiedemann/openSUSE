@@ -16,6 +16,10 @@
 #
 
 
+%define skip_python2 1
+%define skip_python36 1
+%define skip_python37 1
+%{?sle15_python_module_pythons}
 Name:           yt-dlp
 Version:        2023.10.13
 Release:        0
@@ -24,42 +28,19 @@ License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/yt-dlp/yt-dlp
 Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  make >= 4
-%if 0%{?suse_version} > 1500
-BuildRequires:  python3-devel >= 3.8
-%else
-%if 0%{?sle_version} > 150400
-BuildRequires:  python311-devel
-%else
-%if 0%{?sle_version} > 150300
-BuildRequires:  python310-devel
-%else
-BuildRequires:  python39-devel
-%endif
-%endif
-%endif
+BuildRequires:  python-rpm-macros
 BuildRequires:  zip
 BuildArch:      noarch
 Requires:       ffmpeg
-BuildRequires:  %{python_module setuptools}
-%if 0%{?suse_version} > 1500
-Requires:       python3 >= 3.8
-Suggests:       python3-Brotli
-Suggests:       python3-certifi
-Suggests:       python3-mutagen
-Suggests:       python3-pycryptodomex
-Suggests:       python3-websockets
-%else
-%if 0%{?sle_version} > 150400
-Requires:       python311
-%else
-%if 0%{?sle_version} > 150300
-Requires:       python310
-%else
-Requires:       python39
-%endif
-%endif
-%endif
+Requires:       python3-yt-dlp
+Suggests:       python-Brotli
+Suggests:       python-certifi
+Suggests:       python-mutagen
+Suggests:       python-pycryptodomex
+Suggests:       python-websockets
 %python_subpackages
 
 %description
@@ -105,29 +86,17 @@ The direct Python interface into yt-dlp.
 
 %build
 rm -f youtube-dl yt-dlp
-%if 0%{?suse_version} > 1500
-PYTHON="%_bindir/python3" \
-%else
-%if 0%{?sle_version} > 150400
-PYTHON="%_bindir/python3.11" \
-%else
-%if 0%{?sle_version} > 150300
-PYTHON="%_bindir/python3.10" \
-%else
-PYTHON="%_bindir/python3.9" \
-%endif
-%endif
-%endif
- %make_build yt-dlp
+#
+# A self-decompressing yt-dlp is built only when python_build is not
+# exercised; else yt-dlp is a loader.
+#
+%python_build
+%make_build yt-dlp
 
 %install
 b="%buildroot"
-install -Dvm0755 yt-dlp "$b/%_bindir/yt-dlp"
-install -Dvm0644 completions/bash/yt-dlp "$b/%_datadir/bash-completion/completions/yt-dlp"
-install -Dvm0644 completions/zsh/_yt-dlp "$b/%_datadir/zsh/site-functions/_yt-dlp"
-install -Dvm0644 completions/fish/yt-dlp.fish "$b/%_datadir/fish/completions/yt-dlp.fish"
-install -Dvm0644 yt-dlp.1 "$b/%_mandir/man1/yt-dlp.1"
 %python_install
+%fdupes %buildroot/usr
 rm -Rf "$b/%_datadir/doc"
 
 %files -n yt-dlp
