@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 25 07:00:36 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 45.3:
+  + Fix search infinite loop
+  + header-dialog: Merge comment into Project tab
+  + header-dialog: Shorten page titles
+  + message-table: Fix critical on close
+  + Update some translations
+  + Fix segfault when parsing PO files for TM
+
+-------------------------------------------------------------------
 Mon Oct  2 17:52:47 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 45.2:
