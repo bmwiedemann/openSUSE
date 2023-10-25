@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 24 16:05:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.10.1:
+  * Maintanence release to get a fix out for GitHub Action edge
+    case (#3957)
+  * Fix merging implicit multiline strings that have inline
+    comments (#3956)
+  * Allow empty first line after block open before a comment or
+    compound statement (#3967)
+  * Fix comments getting removed from inside parenthesized
+    strings (#3909)
+  * Fix long lines with power operators getting split before the
+    line length (#3942)
+  * Long type hints are now wrapped in parentheses and properly
+    indented when split across multiple lines (#3899)
+  * Magic trailing commas are now respected in return types.
+  * Require one empty line after module-level docstrings. (#3932)
+  * Treat raw triple-quoted strings as docstrings (#3947)
+  * Fix bug where attributes named `type` were not accepted
+    inside `match` statements
+  * Add support for PEP 695 type aliases containing lambdas and
+    other unusual expressions
+  * Black no longer attempts to provide special errors for
+    attempting to format Python 2 code (#3933)
+  * Black will more consistently print stacktraces on internal
+    errors in verbose mode
+
+-------------------------------------------------------------------
 Tue Sep 19 14:51:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove buildrequires that are not used on sle15
