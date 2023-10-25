@@ -1,9 +1,0 @@
-Subject: Add a fallback to the GTK portal for Settings.
-From: Shawn Dunn (sfalken@opensuse.org)
-References: kde#474746
---- a/data/kde-portals.conf
-+++ b/data/kde-portals.conf
-@@ -1,2 +1,3 @@
- [preferred]
- default=kde
-+org.freedesktop.impl.portal.Settings=kde;gtk;

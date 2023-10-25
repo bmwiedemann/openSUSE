@@ -982,4 +982,12 @@
     that GTK apps always get valid fonts and related settings. (forwarded request 1114443 from sfalken)</comment>
     <requestid>1114447</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>335793f0519005246ce833ce3d8a8c66</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249712</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120111</requestid>
+  </revision>
 </revisionlist>
