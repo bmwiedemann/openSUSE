@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:27:09 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Provide a default action in Suspend session config (kde#475866)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
