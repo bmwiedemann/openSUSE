@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 10:56:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add cb4ed12f.patch: Fix build using zlib 1.3. The check expected
+  a version in the form a.b.c[.d], which no longer matches 1.3.
+
+-------------------------------------------------------------------
 Fri Jul 21 02:48:58 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Update to openssh 9.3p2 (bsc#1213504, CVE-2023-38408):

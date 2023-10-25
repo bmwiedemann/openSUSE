@@ -116,6 +116,8 @@ Patch49:        openssh-do-not-send-empty-message.patch
 Patch50:        openssh-openssl-3.patch
 Patch51:        wtmpdb.patch
 Patch52:        logind_set_tty.patch
+# PATCH-FIx-UPSTREAM cb4ed12f.patch -- Fix build with zlib 1.3
+Patch53:        https://github.com/openssh/openssh-portable/commit/cb4ed12f.patch
 Patch100:       fix-missing-lz.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
