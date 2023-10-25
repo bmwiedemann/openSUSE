@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1111895</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03d16728fe65dd6d962ba46e42dd66b7</srcmd5>
+    <version>0.4.1</version>
+    <time>1698249882</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.1:
+  + This release includes an important fix for how io_uring CQE are
+    handled. (forwarded request 1119717 from iznogood)</comment>
+    <requestid>1120254</requestid>
+  </revision>
 </revisionlist>

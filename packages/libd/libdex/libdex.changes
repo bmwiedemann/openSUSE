@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 23 17:54:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.1:
+  + This release includes an important fix for how io_uring CQE are
+    handled.
+
+-------------------------------------------------------------------
 Sun Sep 17 01:09:23 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 0.4.0:
