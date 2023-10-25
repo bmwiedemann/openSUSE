@@ -207,4 +207,15 @@ versioned.patch: refreshed</comment>
 - fix_ci_tests.patch: refreshed</comment>
     <requestid>1118025</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8192a0ef39028e2539b95bf0e1e9113a</srcmd5>
+    <version>20.8.1</version>
+    <time>1698249721</time>
+    <user>anag+factory</user>
+    <comment>--------------------------------------------------------------------
+- Add nodejs20-zlib-1.3.patch: Support zlib version with only
+  major.minor versions, like zlib 1.3.
+------------------------------------------------------------------</comment>
+    <requestid>1120018</requestid>
+  </revision>
 </revisionlist>

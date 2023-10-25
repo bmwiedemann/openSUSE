@@ -172,6 +172,7 @@ Patch200:       versioned.patch
 Patch305:       qemu_timeouts_arches.patch
 Patch308:       node-gyp-config.patch
 Patch309:       gcc13.patch
+Patch311:       nodejs20-zlib-1.3.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -677,6 +678,10 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %setup -q -n node-%{version}
 %endif
 
+%if %{node_version_number} <= 16
+tar zxf %{S:12}
+%endif
+
 %if %{node_version_number} <= 10
 rm -r deps/npm/*
 pushd deps/npm
@@ -728,6 +733,7 @@ popd
 
 %patch305 -p1
 %patch309 -p1
+%patch311 -p1
 
 %if %{node_version_number} == 12
 # minimist security update - patch50
