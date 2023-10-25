@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  3 06:42:21 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.0.1:
+  * fix(cli): all --list-all-zones output identical (d30bc61)
+  * fix(cli): properly show default zone attribute (ea8d9a8)
+  * fix(cli): properly show active attribute for zones and policies (b202403)
+  * fix(cli): --get-active-zones should include the default zone (dae9112)
+  * fix(nftables): always flush main table on start (cd20981)
+  * fix(runtimeToPermanent): deepcopy settings before mangling (9c53639)
+  * docs: fix reference to lockdown-whitelist.xml in SYNOPSIS section (1c77205)
+  * fix(firewall-config): escape markup stored in bindings store (c876fd0)
+  * fix(tests): avoid deprecated assertRaisesRegexp for assertRaisesRegex (2935119)
+  * fix(icmp): fix check_icmpv6_name() to use correct IPv6 names (af3c35b)
+  * fix(ipset): fix configuring IP range for ipsets with nftables (6a050ec)
+  * fix(ipset): fix configuring "timeout","maxelem" values for ipsets with nftables (7d3340c)
+  * fix(core): fix exception while parsing invalid "tcp-mss-clamp" in policy (ff61209)
+  * docs(policy): fix wrong documentation of in man firewalld.policy (21026d9)
+
+- removed following patch:
+  [- fix_list_all_zones_output.patch]
+-------------------------------------------------------------------
 Mon Sep 25 01:29:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - python3-dbus isn't correct either, it's python3-dbus-python. 

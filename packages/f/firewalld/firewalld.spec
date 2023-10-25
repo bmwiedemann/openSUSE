@@ -27,7 +27,7 @@
 %global modprobe_d_files firewalld-sysctls.conf
 
 Name:           firewalld
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -37,7 +37,6 @@ Source0:        https://github.com/firewalld/firewalld/releases/download/v%{vers
 Source1:        docker-zone.xml
 Patch0:         0002-Disable-FlushAllOnReload-option.patch
 Patch1:         firewalld-runstatedir.patch
-Patch2:         fix_list_all_zones_output.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
