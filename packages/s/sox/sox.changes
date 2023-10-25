@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 25 11:26:52 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Apply various fix patches taken from Debian package;
+  it fixes also other entries (CVE-2022-31650 bsc#1212060
+  CVE-2023-34318 bsc#1212062 CVE-2023-34432 bsc#1212063):
+  CVE-2019-13590.patch
+  CVE-2021-3643.patch
+  CVE-2021-23159.patch
+  CVE-2021-33844.patch
+  CVE-2021-40426.patch
+  CVE-2022-31650.patch
+  CVE-2022-31651.patch
+- Fix floating point exception in src/voc.c (CVE-2023-32627 bsc#1212061):
+  CVE-2023-32627.patch
+
+-------------------------------------------------------------------
 Fri Sep  1 12:34:56 UTC 2023 - olaf@aepfle.de
 
 - Use file-devel instead of libmagic to fix build in Leap

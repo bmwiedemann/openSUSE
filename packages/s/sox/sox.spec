@@ -21,7 +21,7 @@ Name:           sox
 Version:        14.4.2
 Release:        0
 Summary:        Sound Conversion Tools
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://sox.sourceforge.net
 Source0:        http://downloads.sourceforge.net/project/sox/sox/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         CVE-2017-11332.patch
@@ -32,6 +32,14 @@ Patch4:         CVE-2017-11358.patch
 Patch5:         CVE-2017-15370.patch
 Patch6:         CVE-2017-15372.patch
 Patch7:         CVE-2017-18189.patch
+Patch8:         CVE-2019-13590.patch
+Patch9:         CVE-2021-3643.patch
+Patch10:        CVE-2021-23159.patch
+Patch11:        CVE-2021-33844.patch
+Patch12:        CVE-2021-40426.patch
+Patch13:        CVE-2022-31650.patch
+Patch14:        CVE-2022-31651.patch
+Patch15:        CVE-2023-32627.patch
 BuildRequires:  file-devel
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
