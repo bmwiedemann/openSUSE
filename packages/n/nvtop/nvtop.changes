@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 25 02:13:50 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 3.0.2+31:
+  * Fix cache_entry for Intel and AMD GPU.
+  * Fix compilation warnings.
+  * Disable fdinfo callbacks for hidden gpus.
+  * Split off linux-specific files from build.
+  * cmake: use check_linker_flag for checking linker flags.
+  * Clarify warning messages for Intel and MSM GPUs.
+  * Added Apple support.
+
+-------------------------------------------------------------------
 Thu Jun 22 13:00:22 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 3.0.2+2:
