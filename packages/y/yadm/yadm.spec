@@ -28,7 +28,7 @@ Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-fix-makefile.patch
 Patch1:         %{name}-fix-shebangs.patch
 Requires:       bash
-Requires:       git
+Requires:       git-core
 BuildArch:      noarch
 
 %description
