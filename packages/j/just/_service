@@ -6,7 +6,7 @@
 	<param name="exclude">.git</param>
 	<param name="exclude">.github</param>
 	<param name="exclude">www</param>
-    <param name="revision">8e3a2a0</param>
+    <param name="revision">b31be27f2da63684c75e7dad7e89461ebba78944</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
@@ -18,9 +18,7 @@
   </service>
   <service mode="manual" name="set_version"/>
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">just-1.14.0.tar.zst</param>
-     <param name="compression">zst</param>
-     <param name="update">false</param>
+     <param name="srctar">just-*.tar.zst</param>
   </service>
   <service name="cargo_audit" mode="manual" />
 </services>

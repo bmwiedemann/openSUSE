@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 25 03:03:03 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+
+- Update to version 1.15.0:
+  * Add Nushell completion script
+  * Update Indentation Documentation
+  * Allow unstable features to be enabled with environment variable
+  * Fix triple-quoted string example in readme
+  * README fix: the -d in `mktemp -d` is required to created folders.
+  * Placate clippy
+  * Add num_cpus() function
+  * Document Windows Package Manager install instructions
+  * Test unpaired escaped carriage return error
+  * Allow escaping newlines
+  * Stabilize JSON dump format
+  * Avoid grep aliases in bash completions
+  * Clarify [unix] attribute in readme
+  * Add env() function
+  * Add descriptions to fish recipe completions
+  * Allow selecting multiple recipes with default chooser
+  * Add better documentation for --dump and --fmt
+
+-------------------------------------------------------------------
 Sat Sep  2 11:26:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Revert update of vendored dependencies.

@@ -38,4 +38,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1109932</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9acef9e46fddcde13f88d4f10067eb43</srcmd5>
+    <version>1.15.0</version>
+    <time>1698249787</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.15.0:
+  * Add Nushell completion script
+  * Update Indentation Documentation
+  * Allow unstable features to be enabled with environment variable
+  * Fix triple-quoted string example in readme
+  * README fix: the -d in `mktemp -d` is required to created folders.
+  * Placate clippy
+  * Add num_cpus() function
+  * Document Windows Package Manager install instructions
+  * Test unpaired escaped carriage return error
+  * Allow escaping newlines
+  * Stabilize JSON dump format
+  * Avoid grep aliases in bash completions
+  * Clarify [unix] attribute in readme
+  * Add env() function
+  * Add descriptions to fish recipe completions
+  * Allow selecting multiple recipes with default chooser
+  * Add better documentation for --dump and --fmt
+</comment>
+    <requestid>1120143</requestid>
+  </revision>
 </revisionlist>
