@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 25 04:37:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.5:
+  * feat: add read_tfvars_file function (#2757)
+
+-------------------------------------------------------------------
 Sat Oct 21 18:16:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.52.4:
