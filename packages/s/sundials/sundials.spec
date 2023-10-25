@@ -1,7 +1,7 @@
 #
-# spec file for package sundials
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,32 +42,16 @@ ExclusiveArch:  do_not_build
 %global mpi_version >= 2.3.7
 %endif
 
-%if "%{flavor}" == "openmpi1"
-%global mpi_flavor openmpi
- %if 0%{?suse_version} >= 1550
- %define mpi_vers 1
- %else
- %define mpi_vers %{nil}
- %endif
-%{?DisOMPI1}
-%endif
-
-%if "%{flavor}" == "openmpi2"
-%global mpi_flavor openmpi
-%define mpi_vers 2
-%{?DisOMPI2}
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%global mpi_flavor openmpi
-%define mpi_vers 3
-%{?DisOMPI3}
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
 %define mpi_vers 4
 %{?DisOMPI4}
+%endif
+
+%if "%{flavor}" == "openmpi5"
+%global mpi_flavor openmpi
+%define mpi_vers 5
+%{?DisOMPI5}
 %endif
 
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
