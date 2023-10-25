@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:26:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Revert "Don't force active dialogs right after showing"
+  * [libreswan] should save even when group name is empty.
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:31 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
