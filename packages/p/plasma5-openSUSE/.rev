@@ -1392,4 +1392,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
     <requestid>1110739</requestid>
   </revision>
+  <revision rev="168" vrev="11">
+    <srcmd5>0bffc5180b8ef815f29ac4d7f3a6b1e5</srcmd5>
+    <version>84.87~git20230131T131056~433af24</version>
+    <time>1698249705</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120098</requestid>
+  </revision>
 </revisionlist>
