@@ -819,4 +819,12 @@ mostly-working synapse than nothing at all) and the package has been update to
   not need to use server ACLs) are not affected.</comment>
     <requestid>1116889</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>9bc43e76a5b1318068c6b5e2e51262e3</srcmd5>
+    <version>1.95.0</version>
+    <time>1698249781</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.95.0</comment>
+    <requestid>1120125</requestid>
+  </revision>
 </revisionlist>

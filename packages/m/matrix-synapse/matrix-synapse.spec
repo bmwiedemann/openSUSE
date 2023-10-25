@@ -21,6 +21,7 @@
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
 %global Jinja2_version                3.1.2
+# TODO: 10.1.0
 %global Pillow_version                10.0.1
 %global PyYAML_version                6.0.1
 %global Twisted_version               22.10.0
@@ -28,18 +29,16 @@
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
 %global canonicaljson_version         2.0.0
-# TODO: 41.0.4
-%global cryptography_version          41.0.3
+%global cryptography_version          41.0.4
 %global immutabledict_version         3.0.0
 %global idna_version                  3.4
 %global ijson_version                 3.2.3
-# TODO: 4.19.0
-%global jsonschema_version            4.18.6
+%global jsonschema_version            4.19.1
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 # TODO: 1.0.7
 %global msgpack_version               1.0.5
-%global netaddr_version               0.8.0
+%global netaddr_version               0.9.0
 # TODO: 8.13.22
 %global phonenumbers_version          8.13.18
 # TODO: 0.17.1
@@ -58,8 +57,9 @@
 %global treq_version                  22.2.0
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.2
+# TODO: 23.2
 %global packaging_version             23.1
-# TODO: 2.9.8
+# TODO: 2.9.9
 %global psycopg2_version              2.9.7
 # TODO             7.3.1
 %global pysaml2_version               7.2.1
@@ -157,7 +157,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.94.0
+Version:        1.95.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0

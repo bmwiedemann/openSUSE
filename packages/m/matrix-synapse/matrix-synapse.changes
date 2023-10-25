@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Oct 24 19:56:22 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.95.0
+  - Bugfixes
+    - Remove legacy unspecced knock_state_events field returned in
+      some responses. (#16403)
+    - Fix a bug introduced in Synapse 1.81.0 where an
+      AttributeError would be raised when
+      _matrix/client/v3/account/whoami is called over a unix
+      socket. Contributed by @Sir-Photch. (#16404)
+    - Properly return inline media when content types have
+      parameters. (#16440)
+    - Prevent the purging of large rooms from timing out when
+      Postgres is in use. The timeout which causes this issue was
+      introduced in Synapse 1.88.0. (#16455)
+    - Improve the performance of purging rooms, particularly
+      encrypted rooms. (#16457)
+    - Fix a bug introduced in Synapse 1.59.0 where servers could be
+      incorrectly marked as available after an error response was
+      received. (#16506)
+  - Improved Documentation
+    - Document internal background update mechanism. (#16420)
+    - Fix a typo in the sql for useful SQL for admins document.
+      (#16477)
+  - Internal Changes
+    - Bump pyo3 from 0.17.1 to 0.19.2. (#16162)
+    - Update registration of media repository URLs. (#16419)
+    - Improve type hints. (#16421, #16468, #16469, #16507)
+    - Refactor some code to simplify and better type receipts
+      stream adjacent code. (#16426)
+    - Factor out MultiWriter token from RoomStreamToken. (#16427)
+    - Improve code comments. (#16428)
+    - Reduce memory allocations. (#16429, #16431, #16433, #16434,
+      #16438, #16444)
+    - Remove unused method. (#16435)
+    - Improve rate limiting logic. (#16441)
+    - Do not block running of CI behind the check for sign-off on
+      PRs. (#16454)
+    - Update the release script to remind releaser to check for
+      special release notes. (#16461)
+    - Update complement.sh to match new public API shape. (#16466)
+    - Clean up logging on event persister endpoints. (#16488)
+    - Remove useless async job to delete device messages on sync,
+      since we only deliver (and hence delete) up to 100 device
+      messages at a time. (#16491)
+
+-------------------------------------------------------------------
 Tue Oct 10 13:20:04 UTC 2023 - Marcus 'darix' Rückert <mrueckert@suse.de>
 
 - Update to 1.94.0 (boo#1216126 CVE-2023-45129)
