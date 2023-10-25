@@ -2,16 +2,12 @@ Index: deflate.c
 ===================================================================
 --- deflate.c.orig
 +++ deflate.c
-@@ -1233,15 +1233,16 @@ local void lm_init (s)
+@@ -1233,12 +1233,13 @@ local void lm_init (s)
   *   string (strstart) and its distance is <= MAX_DIST, and prev_length >= 1
   * OUT assertion: the match length is not greater than s->lookahead.
   */
--local uInt longest_match(s, cur_match)
-+local uInt longest_match(s, pcur_match)
-     deflate_state *s;
--    IPos cur_match;                             /* current match */
-+    IPos pcur_match;                             /* current match */
- {
+-local uInt longest_match(deflate_state *s, IPos cur_match) {
++local uInt longest_match(deflate_state *s, IPos pcur_match) {
 +    ptrdiff_t cur_match = pcur_match; /* extend to pointer width */
      unsigned chain_length = s->max_chain_length;/* max hash chain length */
      register Bytef *scan = s->window + s->strstart; /* current string */

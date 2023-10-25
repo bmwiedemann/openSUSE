@@ -9,8 +9,8 @@ Index: zlib.h
     is returned, and the error state is set to Z_STREAM_ERROR.
  */
  
--ZEXTERN int ZEXPORTVA gzprintf Z_ARG((gzFile file, const char *format, ...));
-+ZEXTERN int ZEXPORTVA gzprintf Z_ARG((gzFile file, const char *format, ...))
+-ZEXTERN int ZEXPORTVA gzprintf(gzFile file, const char *format, ...);
++ZEXTERN int ZEXPORTVA gzprintf(gzFile file, const char *format, ...)
 +#ifdef __GNUC__
 +	__attribute__((__format__(__printf__,2,3)))
 +#endif

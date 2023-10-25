@@ -17,7 +17,7 @@
 
 
 Name:           zlib
-Version:        1.2.13
+Version:        1.3
 Release:        0
 Summary:        Library implementing the DEFLATE compression algorithm
 License:        Zlib
@@ -37,25 +37,17 @@ Patch2:         0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
 Patch3:         zlib-no-version-check.patch
 #PATCH-FIX-SUSE https://github.com/madler/zlib/pull/229
 Patch4:         minizip-dont-install-crypt-header.patch
-# PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/e554695638228b846d49657f31eeff0ca4680e8a
-Patch5:         zlib-1.2.13-fix-bug-deflateBound.patch
 #PATCH-FIX-SUSE https://github.com/madler/zlib/pull/410
-Patch6:         zlib-1.2.13-IBM-Z-hw-accelerated-deflate-s390x.patch
+Patch6:         zlib-1.3-IBM-Z-hw-accelerated-deflate-s390x.patch
 # Patches taken from https://github.com/iii-i/zlib/releases/tag/crc32vx-v3
 Patch7:         zlib-1.2.5-minizip-fixuncrypt.patch
 Patch8:         zlib-1.2.13-optimized-s390.patch
 # https://github.com/iii-i/zlib/commit/171d0ff3c9ed40da0ac14085ab16b766b1162069
 Patch10:        zlib-1.2.11-covscan-issues.patch
 Patch11:        zlib-1.2.11-covscan-issues-rhel9.patch
-Patch14:        zlib-1.2.12-s390-vectorize-crc32.patch
-# The following patches are taken from https://github.com/mscastanho/zlib/commits/power-optimizations-1.2.12
-Patch15:        zlib-1.2.12-adler32-vector-optimizations-for-power.patch
-Patch16:        zlib-1.2.12-fix-invalid-memory-access-on-ppc-and-ppc64.patch
-Patch17:        zlib-1.2.12-add-optimized-slide_hash-for-power.patch
-Patch18:        zlib-1.2.12-add-vectorized-longest_match-for-power.patch
-# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1210593 bsc#1211005
-# Fix deflateBound() before deflateInit()
-Patch19:        bsc1210593.patch
+# PATCh-FIX-SECURITY CVE-2023-45853.patch bsc#1216378 CVE-2023-45853 danilo.spinella@suse.com
+# integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_6
+Patch12:        CVE-2023-45853.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -147,18 +139,12 @@ It should exit 0
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8
 %patch10 -p1
 %patch11 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
+%patch12 -p1
 cp %{SOURCE4} .
 
 %build
@@ -221,7 +207,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libz1
 %license LICENSE
-%{_libdir}/libz.so.1.2.*
+%{_libdir}/libz.so.1.3
 %{_libdir}/libz.so.1
 
 %files devel

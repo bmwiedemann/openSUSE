@@ -1,9 +1,9 @@
-Index: zlib-1.2.12/infback.c
+Index: zlib-1.3/infback.c
 ===================================================================
---- zlib-1.2.12.orig/infback.c
-+++ zlib-1.2.12/infback.c
-@@ -34,9 +34,6 @@ int stream_size;
- {
+--- zlib-1.3.orig/infback.c
++++ zlib-1.3/infback.c
+@@ -27,9 +27,6 @@ int ZEXPORT inflateBackInit_(z_streamp s
+                              int stream_size) {
      struct inflate_state FAR *state;
  
 -    if (version == Z_NULL || version[0] != ZLIB_VERSION[0] ||
@@ -12,11 +12,11 @@ Index: zlib-1.2.12/infback.c
      if (strm == Z_NULL || window == Z_NULL ||
          windowBits < 8 || windowBits > 15)
          return Z_STREAM_ERROR;
-Index: zlib-1.2.12/inflate.c
+Index: zlib-1.3/inflate.c
 ===================================================================
---- zlib-1.2.12.orig/inflate.c
-+++ zlib-1.2.12/inflate.c
-@@ -202,9 +202,6 @@ int stream_size;
+--- zlib-1.3.orig/inflate.c
++++ zlib-1.3/inflate.c
+@@ -180,9 +180,6 @@ int ZEXPORT inflateInit2_(z_streamp strm
      int ret;
      struct inflate_state FAR *state;
  
@@ -26,12 +26,12 @@ Index: zlib-1.2.12/inflate.c
      if (strm == Z_NULL) return Z_STREAM_ERROR;
      strm->msg = Z_NULL;                 /* in case we return an error */
      if (strm->zalloc == (alloc_func)0) {
-Index: zlib-1.2.12/deflate.c
+Index: zlib-1.3/deflate.c
 ===================================================================
---- zlib-1.2.12.orig/deflate.c
-+++ zlib-1.2.12/deflate.c
-@@ -253,12 +253,7 @@ int ZEXPORT deflateInit2_(strm, level, m
- {
+--- zlib-1.3.orig/deflate.c
++++ zlib-1.3/deflate.c
+@@ -384,12 +384,7 @@ int ZEXPORT deflateInit2_(z_streamp strm
+                           const char *version, int stream_size) {
      deflate_state *s;
      int wrap = 1;
 -    static const char my_version[] = ZLIB_VERSION;
