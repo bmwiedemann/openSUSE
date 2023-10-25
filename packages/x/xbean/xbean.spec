@@ -1,7 +1,7 @@
 #
 # spec file for package xbean
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,11 @@ Patch2:         0002-Unbundle-ASM.patch
 Patch3:         0003-Remove-dependency-on-log4j-and-commons-logging.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.7
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  objectweb-asm >= 9
 BuildRequires:  slf4j
 BuildRequires:  unzip
-Requires:       objectweb-asm >= 9
-Requires:       slf4j
 BuildArch:      noarch
 
 %description
@@ -59,14 +57,6 @@ This package provides API documentation for xbean.
 %patch3 -p1
 
 cp xbean-asm-util/src/main/java/org/apache/xbean/asm9/original/commons/AsmConstants.java xbean-reflect/src/main/java/org/apache/xbean/recipe/
-
-# Parent POM is not packaged
-%pom_remove_parent
-
-for i in xbean-asm-util xbean-finder xbean-reflect; do
-  %pom_remove_parent ${i}
-  %pom_xpath_inject pom:project "<groupId>org.apache.xbean</groupId><version>%{version}</version>" ${i}
-done
 
 %pom_disable_module xbean-classloader
 %pom_disable_module xbean-classpath
@@ -93,8 +83,6 @@ find -name Log4jConverter.java -delete
 %pom_remove_dep org.osgi:org.osgi.core xbean-finder
 rm -r xbean-finder/src/main/java/org/apache/xbean/finder{,/archive}/Bundle*
 
-%pom_change_dep -r -f ::::: :::::
-
 %build
 mkdir -p lib
 build-jar-repository -s lib objectweb-asm slf4j
@@ -110,7 +98,7 @@ done
 # poms
 install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
 for i in xbean-asm-util xbean-finder xbean-reflect; do
-  install -m 0644 ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
 

@@ -55,4 +55,12 @@
     <comment>4.20</comment>
     <requestid>959849</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ed86c87faa860fc7190b0321e5469178</srcmd5>
+    <version>4.20</version>
+    <time>1698249928</time>
+    <user>anag+factory</user>
+    <comment>fix build with java 21</comment>
+    <requestid>1120324</requestid>
+  </revision>
 </revisionlist>
