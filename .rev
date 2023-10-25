@@ -49,4 +49,14 @@
   * Plugin is now fully typed.</comment>
     <requestid>1084900</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5eb04812e502db86a49b37e91bf18b28</srcmd5>
+    <version>2021.12.29</version>
+    <time>1698249742</time>
+    <user>anag+factory</user>
+    <comment>- use setuptools_scm to get proper version in metadata
+
+- unrestric pytest4, use pytest-forked to separate tests</comment>
+    <requestid>1120003</requestid>
+  </revision>
 </revisionlist>
