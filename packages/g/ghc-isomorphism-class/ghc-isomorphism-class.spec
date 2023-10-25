@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.10
+Version:        0.1.0.11
 Release:        0
 Summary:        Isomorphism typeclass solving the conversion problem
 License:        MIT
@@ -59,7 +59,7 @@ BuildRequires:  ghc-tasty-quickcheck-prof
 %endif
 
 %description
-Isomorphism typeclass solving the conversion problem.
+Lawful typeclass for lossless conversion between types.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
