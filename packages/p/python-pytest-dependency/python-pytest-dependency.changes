@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 12:45:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Feb 21 13:36:41 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pytest6.2.patch to update tests to fix Tumbleweed builds
