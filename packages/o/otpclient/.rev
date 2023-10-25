@@ -322,4 +322,18 @@
 </comment>
     <requestid>1096606</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b71ea1a5e1f649c9b08700854372739a</srcmd5>
+    <version>3.2.0</version>
+    <time>1698249831</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.0:
+  * NEW: add file chooser dialog on export (#305).
+  * FIX: overwrite exported file instead of appending it (#305).
+  * FIX: exported file will be accessible only by the current user (#305).
+  * FIX: multiple issues related to failed first launch (#303).
+  * FIX: couple of issues with secret-service.
+</comment>
+    <requestid>1120185</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 25 07:32:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0:
+  * NEW: add file chooser dialog on export (#305).
+  * FIX: overwrite exported file instead of appending it (#305).
+  * FIX: exported file will be accessible only by the current user (#305).
+  * FIX: multiple issues related to failed first launch (#303).
+  * FIX: couple of issues with secret-service.
+
+-------------------------------------------------------------------
 Mon Jul  3 14:28:57 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.9:
