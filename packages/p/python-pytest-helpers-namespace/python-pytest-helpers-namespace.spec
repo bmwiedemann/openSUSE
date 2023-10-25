@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/saltstack/pytest-helpers-namespace
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-helpers-namespace/pytest-helpers-namespace-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools-declarative-requirements}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,6 +59,7 @@ sed -i '/setuptools/d' setup.cfg
 %files %{python_files}
 %doc README.rst docs/*.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_helpers_namespace
+%{python_sitelib}/pytest_helpers_namespace-%{version}*-info
 
 %changelog
