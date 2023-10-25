@@ -1,6 +1,6 @@
-diff -Nur dde-api-5.5.5/Makefile dde-api-5.5.5-new/Makefile
---- dde-api-5.5.5/Makefile	2021-11-16 15:43:41.000000000 +0800
-+++ dde-api-5.5.5-new/Makefile	2022-02-18 21:37:38.361644793 +0800
+diff -Nur dde-api-5.5.25/Makefile dde-api-5.5.25-new/Makefile
+--- dde-api-5.5.25/Makefile	2023-08-08 22:48:25.006086179 +0800
++++ dde-api-5.5.25-new/Makefile	2023-08-08 22:57:32.160273406 +0800
 @@ -5,7 +5,7 @@
  libdir = /lib
  SYSTEMD_LIB_DIR = ${libdir}

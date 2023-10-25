@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 16 13:39:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure group 'audio' exist prior to package installation:
+  deepin-sound-player user is supposed to be added to the group.
+
+-------------------------------------------------------------------
 Sat Aug 13 08:33:23 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.25
