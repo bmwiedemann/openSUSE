@@ -359,4 +359,21 @@ Upgrade to version 12.6:
 - Change the unix domain socket location from /var/run to /run.</comment>
     <requestid>1103350</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>5dcb3877eb697cab9ae474b190f1f62f</srcmd5>
+    <version>12.16</version>
+    <time>1698249889</time>
+    <user>anag+factory</user>
+    <comment>
+- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.</comment>
+    <requestid>1120253</requestid>
+  </revision>
 </revisionlist>
