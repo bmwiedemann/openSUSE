@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 25 08:44:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231024T214222Z:
+  * fix: print updates/merge multiple policy for a user (#4691)
+  * revamp spinner in `mc support diag` (#4727)
+  * use Dockerfile ADD feature deprecate curl (#4728)
+
+-------------------------------------------------------------------
 Tue Oct 24 09:24:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20231024T051828Z:
