@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 25 08:10:06 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the logout applet:
+  * 0001-applets-lock_logout-use-PlasmaCore.IconItem.patch
+
+-------------------------------------------------------------------
+Tue Oct 24 14:26:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Do not consider icon changes excess notification creation
+  * lockscreen: handle user switching also on nopassword page (kde#458951)
+  * applets/lock_logout: add a11y properties and restore tooltip
+  * runners/recentdocuments: Fix results being discarded when casing is different (kde#474782)
+  * [plasmacalendarintegration] Fix selected regions are randomly reset to default (kde#472483)
+  * libtaskmanager: test waylandtasksmodel
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8

@@ -1,0 +1,25 @@
+From 5bbaeed848a572b31da99c6ca0abfe396e610841 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Wed, 25 Oct 2023 15:25:01 +0800
+Subject: [PATCH] applets/lock_logout: use PlasmaCore.IconItem
+
+---
+ applets/lock_logout/contents/ui/lockout.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/applets/lock_logout/contents/ui/lockout.qml b/applets/lock_logout/contents/ui/lockout.qml
+index 4b4645108b..1673bd4027 100644
+--- a/applets/lock_logout/contents/ui/lockout.qml
++++ b/applets/lock_logout/contents/ui/lockout.qml
+@@ -101,7 +101,7 @@ Flow {
+                 onTapped: performOperation(modelData.operation)
+             }
+ 
+-            Kirigami.Icon {
++            PlasmaCore.IconItem {
+                 id: iconButton
+                 width: items.iconSize
+                 height: items.iconSize
+-- 
+2.42.0
+

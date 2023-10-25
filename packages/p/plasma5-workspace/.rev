@@ -2147,4 +2147,13 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
     <requestid>1110745</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>74e7f757ce926db7347b83c0e99e6eb6</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249714</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix the logout applet:
+  * 0001-applets-lock_logout-use-PlasmaCore.IconItem.patch (forwarded request 1120201 from Vogtinator)</comment>
+    <requestid>1120203</requestid>
+  </revision>
 </revisionlist>
