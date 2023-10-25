@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct 25 04:43:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.4.2:
+  * Prepare for 1.4.2 release (#609)
+  * chore: don't trim trailing whitespace on fixture snapshots
+    (#608)
+  * Update release pipeline (#602)
+  * fix: trim leading and trailing newlines off SARIF output (#606)
+  * Add name field to sarif rule output (#600)
+  * chore(deps): update dependency jekyll-feed to v0.17.0 (#579)
+  * chore(deps): update golang:alpine docker digest to 926f7f7
+    (#591)
+  * chore(deps): update workflows (#592)
+  * Make scheduled and PR scanning only scan the relevant files and
+    ignore fixtures (#594)
+  * Update docs to add in saving to file option (#593)
+  * Clarify in the docs actions will fail when vulns are found
+    (#587)
+  * chore(deps): Bump golang.org/x/net from 0.16.0 to 0.17.0 (#585)
+  * Change branch back in github action (#586)
+  * Fix permissions and attempt "Download Artifact" option to allow
+    custom lockfiles (#584)
+  * Small doc adjustments for GitHub Actions (#582)
+  * fix(deps): update osv-scanner minor (#578)
+  * Update deps and fix tests (#583)
+  * Improve documentation for github actions (#575)
+  * chore(deps): update golang:alpine docker digest to a76f153
+    (#577)
+  * chore(deps): update workflows (#580)
+  * fix: support versions with build metadata in `yarn.lock` files
+    (#576)
+  * Add additional tests for git scanning, and markdown format
+    (#569)
+
+-------------------------------------------------------------------
 Fri Oct 06 13:11:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.4.1:
