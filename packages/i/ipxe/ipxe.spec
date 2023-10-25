@@ -19,17 +19,19 @@
 %ifnarch %{ix86} x86_64
 %define buildtargets dsk,usb,lkrn
 %else
-%define buildtargets dsk,iso,usb,lkrn
+%define buildtargets sdsk,dsk,iso,usb,lkrn
+%define do_floppy 1
 %endif
 
 Name:           ipxe
-Version:        1.21.1+git20230120.a99e435c
+Version:        1.21.1+git20231006.ff0f8604
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
+Patch:          syslinux-mtools.patch
 BuildRequires:  binutils-devel
 # Do not build i586 for Leap/SLE: no such port available
 %ifarch i586
@@ -55,6 +57,7 @@ BuildRequires:  cross-aarch64-gcc%{gcc_version}
 %endif
 BuildRequires:  perl
 %ifarch %{ix86} x86_64
+BuildRequires:  mtools
 BuildRequires:  syslinux
 BuildRequires:  xorriso
 %endif
@@ -83,9 +86,7 @@ This package contains the iPXE boot images in USB, CD, floppy, and PXE
 UNDI formats. EFI is supported, too.
 
 %prep
-%setup -q
-
-%build
+%autosetup -p1
 cd src
 
 # enable compressed images
@@ -99,6 +100,8 @@ sed -i.bak \
     -e 's,#undef\(.*DOWNLOAD_PROTO_HTTPS.*\),#define\1,' \
     config/general.h
 
+%build
+cd src
 
 make_ipxe() {
     # https://github.com/ipxe/ipxe/issues/620
@@ -151,11 +154,17 @@ install -D -m0644 src/bin-x86_64-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/i
 install -D -m0644 src/bin-x86_64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-x86_64.efi
 %endif
 %{!?no_aarch64_cc:install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi}
+%if 0%{?do_floppy}
+ln -s ipxe.sdsk %{buildroot}/%{_datadir}/%{name}/floppy.img
+%endif
 
 %files bootimgs
 %defattr(-,root,root)
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/ipxe.{%{buildtargets}}
+%if 0%{?do_floppy}
+%{_datadir}/%{name}/floppy.img
+%endif
 %{_datadir}/%{name}/ipxe-i386.efi
 %{_datadir}/%{name}/snp-i386.efi
 %ifnarch %{ix86}

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct 18 16:08:11 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Add floppy disk image.
+  * use syslinux-mtools for building the image syslinux-mtools.patch
+
+-------------------------------------------------------------------
+Wed Oct 18 06:21:54 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.21.1+git20231006.ff0f8604:
+  * [libc] Use wall clock time as seed for the (non-cryptographic) RNG
+  * [eapol] Send EAPoL-Start packets to trigger EAP authentication
+  * [eap] Define a supplicant model for EAP and EAPoL
+  * [dhcp] Request NTP server option
+  * [ntp] Define NTP server setting
+  * [efi] Provide read-only access to EFI variables via settings mechanism
+  * [crypto] Add support for PKCS#8 private key format
+  * [efi] Add support for executing images via a shim
+  * [image] Generalise concept of selected image
+  * [tls] Handle fragmented handshake records (jsc#PED-5536)
+  * [params] Allow for arbitrary HTTP request headers to be specified
+  * [rng] Allow entropy source to be selected at runtime
+  * [efi] Support the initrd autodetection mechanism in newer Linux kernels
+  * [loong64] Add initial support for LoongArch64
+  * [efi] Enable NET_PROTO_LLDP by default
+  * [dhcp] Ignore DHCPNAK unless originating from the selected DHCP server
+  * [xen] Update to current Xen headers
+  * [efi] Allow autoexec script to be located alongside iPXE binary
+  * [efi] Accept a command line passed to an iPXE image via LoadOptions
+  * [efi] Update to current EDK2 headers
+  * [golan] Add new PCI ID for NVIDIA BlueField-3 network device
+  * [arm] Support building as a Linux userspace binary for AArch64
+
+-------------------------------------------------------------------
 Wed Aug 23 21:47:48 UTC 2023 - Héctor Orón Martínez <hector.oron@gmail.com>
 
 - enable HTTPS downloads (jsc#PED-5536)
