@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 08:34:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add xfce4-notifyd-relax-x11-version.patch, see boo#1216516
+- Add minimum version expected for package xdg-dev-tools.
+
+-------------------------------------------------------------------
+Mon Oct 23 20:54:39 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix all packaging warnings
+
+-------------------------------------------------------------------
 Mon Sep 25 06:14:08 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.9.2:

@@ -26,10 +26,13 @@ URL:            https://docs.xfce.org/apps/notifyd/start
 Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.9/%{name}-%{version}.tar.bz2
 Source1:        %{name}.xml
 Source100:      %{name}-rpmlintrc
+# PATCH-FIX-OPENSUSE xfce4-notifyd-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
+Patch0:         xfce4-notifyd-relax-x11-version.patch
 BuildRequires:  gettext
+BuildRequires:  pkgconfig
 BuildRequires:  systemd >= 245
 BuildRequires:  update-desktop-files
-BuildRequires:  xfce4-dev-tools
+BuildRequires:  xfce4-dev-tools >= 4.18.1
 BuildRequires:  pkgconfig(dbus-1) >= 1.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
@@ -42,7 +45,7 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.34
-BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(x11) >= 1.6.5
 Requires:       libnotify-tools
 Requires:       xfce4-notifyd-branding = %{version}-%{release}
 Recommends:     %{name}-lang = %{version}-%{release}
@@ -57,9 +60,9 @@ implements the Freedesktop.org Desktop Notifications Specification.
 Summary:        Upstream Branding of xfce4-notifyd
 # BRAND: xfce4-notifyd.xml: Controls the appearance of notifications.
 Group:          System/GUI/XFCE
-Conflicts:      otherproviders(xfce4-notifyd-branding)
+Supplements:    (xfce4-notifyd and branding-upstream)
+Conflicts:      xfce4-notifyd-branding = %{version}
 Provides:       xfce4-notifyd-branding = %{version}-%{release}
-Supplements:    packageand(xfce4-notifyd:branding-upstream)
 BuildArch:      noarch
 
 %description branding-upstream
@@ -68,10 +71,10 @@ This package provides the upstream look and feel for the Xfce Notification Daemo
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-# xdt-autogen
+xdt-autogen
 %configure \
     --with-helper-path-prefix=%{_libexecdir} \
     --enable-systemd \
@@ -84,12 +87,9 @@ This package provides the upstream look and feel for the Xfce Notification Daemo
 install -D -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml
 
 %suse_update_desktop_file -i xfce4-notifyd-config
-rm %{buildroot}%{_libdir}/xfce4/panel/plugins/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name} %{?no_lang_C}
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %doc AUTHORS NEWS README.md TODO
@@ -108,13 +108,15 @@ rm -rf %{buildroot}
 %{_libdir}/xfce4/panel/plugins/libnotification-plugin.so
 %{_datadir}/dbus-1/services/org.xfce.xfce4-notifyd.N*.service
 %{_datadir}/xfce4/panel/plugins/notification-plugin.desktop
-%{_sysconfdir}/xdg/autostart/xfce4-notifyd.desktop
+%config %{_sysconfdir}/xdg/autostart/xfce4-notifyd.desktop
 %{_prefix}/lib/systemd/user/xfce4-notifyd.service
-%doc %{_mandir}/man1/xfce4-notifyd-config.1*
+%{_mandir}/man1/xfce4-notifyd-config.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %files branding-upstream
+%license COPYING
 %dir %{_sysconfdir}/xdg/xfce4
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
