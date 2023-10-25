@@ -58,4 +58,12 @@
     <comment></comment>
     <requestid>1102867</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>29f15f155032838c2378e9b4429ab354</srcmd5>
+    <version>11.1.0</version>
+    <time>1698249785</time>
+    <user>anag+factory</user>
+    <comment>Update to version 11.1.0 (forwarded request 1120131 from develop7)</comment>
+    <requestid>1120132</requestid>
+  </revision>
 </revisionlist>
