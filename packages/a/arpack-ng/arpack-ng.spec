@@ -37,30 +37,15 @@ ExclusiveArch:  do_not_build
 %{bcond_with hpc}
 %endif
 
-%if "%flavor" == "openmpi1"
-%{?DisOMPI1}
-%define mpi_family openmpi
-%define mpi_ver 1
-%{bcond_with hpc}
-%endif
-
-%if "%flavor" == "openmpi2"
-%{?DisOMPI2}
-%define mpi_family openmpi
-%define mpi_ver 2
-%{bcond_with hpc}
-%endif
-
-%if "%flavor" == "openmpi3"
-%{?DisOMPI3}
-%define mpi_family openmpi
-%define mpi_ver 3
-%{bcond_with hpc}
-%endif
-
 %if "%flavor" == "openmpi4"
 %define mpi_family openmpi
 %define mpi_ver 4
+%{bcond_with hpc}
+%endif
+
+%if "%flavor" == "openmpi5"
+%define mpi_family openmpi
+%define mpi_ver 5
 %{bcond_with hpc}
 %endif
 
