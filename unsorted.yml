@@ -2443,6 +2443,8 @@ unsorted:
   - containerized-data-importer-uploadserver 
   - containment-rpm 
   - contractor 
+  - contrast 
+  - contrast-lang 
   - converseen 
   - converseen-lang 
   - convmv 
@@ -3473,9 +3475,6 @@ unsorted:
   - elixir-hex 
   - elk 
   - elk-data 
-  - elk-openmpi1 
-  - elk-openmpi2 
-  - elk-openmpi3 
   - elk-openmpi4 
   - elk-openmpi5 
   - elk-utils 
@@ -8977,6 +8976,8 @@ unsorted:
   - kdnssd-framework-devel 
   - kdnssd-lang 
   - kdoctools-devel 
+  - kdsingleapplication-devel 
+  - kdsingleapplication-qt6-devel 
   - kdsoap-devel 
   - kdsoap-qt6-devel 
   - kdstatemachineeditor-devel 
@@ -12851,6 +12852,8 @@ unsorted:
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdevplatform512 
+  - libkdsingleapplication 
+  - libkdsingleapplication-qt6 
   - libkdsoap-qt6-2 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
@@ -13895,9 +13898,6 @@ unsorted:
   - libpari-gmp-tls8 
   - libparlatype-devel 
   - libparlatype5 
-  - libparpack2-openmpi1 
-  - libparpack2-openmpi2 
-  - libparpack2-openmpi3 
   - libparpack2-openmpi4 
   - libparquet1300 
   - libparserutils-devel 
@@ -14933,8 +14933,7 @@ unsorted:
   - libspnav-devel 
   - libspnav0 
   - libspooles2_2 
-  - libspooles2_2-openmpi1 
-  - libspooles2_2-openmpi2 
+  - libspooles2_2-openmpi 
   - libspqr2 
   - libspread-sheet-widget0 
   - libsqlcipher-3_41_2-0 
@@ -15020,69 +15019,36 @@ unsorted:
   - libsuil-0-0 
   - libsundials_arkode5 
   - libsundials_arkode5-mvapich2 
-  - libsundials_arkode5-openmpi1 
-  - libsundials_arkode5-openmpi2 
-  - libsundials_arkode5-openmpi3 
   - libsundials_arkode5-openmpi4 
   - libsundials_cvode6 
   - libsundials_cvode6-mvapich2 
-  - libsundials_cvode6-openmpi1 
-  - libsundials_cvode6-openmpi2 
-  - libsundials_cvode6-openmpi3 
   - libsundials_cvode6-openmpi4 
   - libsundials_cvodes6 
   - libsundials_cvodes6-mvapich2 
-  - libsundials_cvodes6-openmpi1 
-  - libsundials_cvodes6-openmpi2 
-  - libsundials_cvodes6-openmpi3 
   - libsundials_cvodes6-openmpi4 
   - libsundials_generic6 
   - libsundials_generic6-mvapich2 
-  - libsundials_generic6-openmpi1 
-  - libsundials_generic6-openmpi2 
-  - libsundials_generic6-openmpi3 
   - libsundials_generic6-openmpi4 
   - libsundials_ida6 
   - libsundials_ida6-mvapich2 
-  - libsundials_ida6-openmpi1 
-  - libsundials_ida6-openmpi2 
-  - libsundials_ida6-openmpi3 
   - libsundials_ida6-openmpi4 
   - libsundials_idas5 
   - libsundials_idas5-mvapich2 
-  - libsundials_idas5-openmpi1 
-  - libsundials_idas5-openmpi2 
-  - libsundials_idas5-openmpi3 
   - libsundials_idas5-openmpi4 
   - libsundials_kinsol6 
   - libsundials_kinsol6-mvapich2 
-  - libsundials_kinsol6-openmpi1 
-  - libsundials_kinsol6-openmpi2 
-  - libsundials_kinsol6-openmpi3 
   - libsundials_kinsol6-openmpi4 
   - libsundials_nvec6 
   - libsundials_nvec6-mvapich2 
-  - libsundials_nvec6-openmpi1 
-  - libsundials_nvec6-openmpi2 
-  - libsundials_nvec6-openmpi3 
   - libsundials_nvec6-openmpi4 
   - libsundials_sunlinsol4_3_0 
   - libsundials_sunlinsol4_3_0-mvapich2 
-  - libsundials_sunlinsol4_3_0-openmpi1 
-  - libsundials_sunlinsol4_3_0-openmpi2 
-  - libsundials_sunlinsol4_3_0-openmpi3 
   - libsundials_sunlinsol4_3_0-openmpi4 
   - libsundials_sunmatrix4 
   - libsundials_sunmatrix4-mvapich2 
-  - libsundials_sunmatrix4-openmpi1 
-  - libsundials_sunmatrix4-openmpi2 
-  - libsundials_sunmatrix4-openmpi3 
   - libsundials_sunmatrix4-openmpi4 
   - libsundials_sunnonlin3_3_0 
   - libsundials_sunnonlin3_3_0-mvapich2 
-  - libsundials_sunnonlin3_3_0-openmpi1 
-  - libsundials_sunnonlin3_3_0-openmpi2 
-  - libsundials_sunnonlin3_3_0-openmpi3 
   - libsundials_sunnonlin3_3_0-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu6 
@@ -19716,9 +19682,6 @@ unsorted:
   - parlatype 
   - parlatype-lang 
   - parole-devel 
-  - parpack-openmpi1-devel 
-  - parpack-openmpi2-devel 
-  - parpack-openmpi3-devel 
   - parpack-openmpi4-devel 
   - parsec 
   - parsec-tool 
@@ -34735,6 +34698,7 @@ unsorted:
   - slurm-openlava 
   - slurm-pam_slurm 
   - slurm-plugin-ext-sensors-rrd 
+  - slurm-plugin-oom-score-adj 
   - slurm-plugins 
   - slurm-rest 
   - slurm-seff 
@@ -34921,8 +34885,7 @@ unsorted:
   - splint 
   - splinter-devel 
   - spooles-devel 
-  - spooles-openmpi1-devel 
-  - spooles-openmpi2-devel 
+  - spooles-openmpi-devel 
   - spotify-easyrpm 
   - spotify-qt 
   - spotifyd 
@@ -35105,9 +35068,6 @@ unsorted:
   - sundials-devel 
   - sundials-doc 
   - sundials-mvapich2-devel 
-  - sundials-openmpi1-devel 
-  - sundials-openmpi2-devel 
-  - sundials-openmpi3-devel 
   - sundials-openmpi4-devel 
   - sunpinyin-devel 
   - sunpinyin-tools 
@@ -45450,6 +45410,8 @@ unsorted:
   - wannier90-openmpi4-devel 
   - wannier90-openmpi5 
   - wannier90-openmpi5-devel 
+  - wardstone 
+  - wardstone-devel 
   - warewulf-cluster 
   - warewulf-common 
   - warewulf-doc 
