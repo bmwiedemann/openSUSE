@@ -961,4 +961,13 @@ Marcus
   * Light shell cleanups (fixes #57)</comment>
     <requestid>1075291</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>5cc4a9802deb01ce7e2325c32b4a6144</srcmd5>
+    <version>84.87+git20231024.7161a8a</version>
+    <time>1698249657</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20231024.7161a8a:
+  * Set SOURCE_DATE_EPOCH</comment>
+    <requestid>1119913</requestid>
+  </revision>
 </revisionlist>
