@@ -18,7 +18,7 @@
 
 Name:           libfplist
 %define lname	libfplist1
-Version:        20231022
+Version:        20231023
 Release:        0
 Summary:        Library for Apple plist formats
 License:        LGPL-3.0-or-later
