@@ -183,6 +183,11 @@ Thu Apr 29 19:50:49 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - https://docs.python.org/3/library/unittest.html#deprecated-aliases
 
 -------------------------------------------------------------------
+Mon Dec 14 17:47:38 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)
+
+-------------------------------------------------------------------
 Thu Mar 12 07:49:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

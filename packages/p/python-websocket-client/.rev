@@ -229,4 +229,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117672</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>93764e1aaeb3cbf4e6fd79d73e178037</srcmd5>
+    <version>1.5.1</version>
+    <time>1698249740</time>
+    <user>anag+factory</user>
+    <comment>- Update in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)</comment>
+    <requestid>1120126</requestid>
+  </revision>
 </revisionlist>
