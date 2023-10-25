@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 25 11:05:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.9
+  * This release contains fixes for CVE-2023-5367, CVE-2023-5380
+    and CVE-2023-5574 as reported in today's security advisory:
+    https://lists.x.org/archives/xorg-announce/2023-October/003430.html
+- adjusted u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch
+
+-------------------------------------------------------------------
 Sat Apr  1 13:42:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 21.1.8 (CVE-2023-1393):

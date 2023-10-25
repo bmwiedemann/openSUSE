@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.8
+Version:        21.1.9
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X

@@ -3939,4 +3939,16 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>1076666</requestid>
   </revision>
+  <revision rev="420" vrev="1">
+    <srcmd5>67a5af1a33c28aeff55fdeeb51191fae</srcmd5>
+    <version>21.1.9</version>
+    <time>1698249728</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 21.1.9
+  * This release contains fixes for CVE-2023-5367, CVE-2023-5380
+    and CVE-2023-5574 as reported in today's security advisory:
+    https://lists.x.org/archives/xorg-announce/2023-October/003430.html
+- adjusted u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch</comment>
+    <requestid>1120244</requestid>
+  </revision>
 </revisionlist>
