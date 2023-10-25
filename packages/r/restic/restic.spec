@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause

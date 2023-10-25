@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 24 18:58:58 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.16.1
+  A very long list of improvements for all the details see
+  https://github.com/restic/restic/releases/tag/v0.16.1
+
+  It contains an important bug fix which prevents data corruption
+  when compression is set to max.
+
+-------------------------------------------------------------------
 Fri Aug 11 21:03:16 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Add missing vendor.tar.gz
