@@ -1,5 +1,5 @@
 #
-# spec file for package elk
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -21,26 +21,6 @@
 %define pname elk
 
 # SECTION multibuild definitions
-
-%if "%{flavor}" == "openmpi1"
-%global mpi_flavor openmpi
- %if 0%{?suse_version} >= 1550
- %define mpi_vers 1
- %else
- %define mpi_vers %{nil}
- %endif
-%endif
-
-%if "%{flavor}" == "openmpi2"
-%global mpi_flavor openmpi
-%define mpi_vers 2
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%global mpi_flavor openmpi
-%define mpi_vers 3
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
 %define mpi_vers 4
