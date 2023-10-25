@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          115
-%define mainver        %major.3.2
-%define orig_version   115.3.2
+%define mainver        %major.4.1
+%define orig_version   115.4.1
 %define orig_suffix    %nil
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -203,7 +203,6 @@ Patch19:        svg-rendering.patch
 Patch20:        mozilla-partial-revert-1768632.patch
 Patch21:        mozilla-bmo1775202.patch
 Patch22:        mozilla-rust-disable-future-incompat.patch
-Patch23:        mozilla-bmo1846703.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 24 20:52:32 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.4.1
+  https://www.thunderbird.net/en-US/thunderbird/115.4.1/releasenotes
+  https://www.thunderbird.net/en-US/thunderbird/115.4.0/releasenotes
+  MFSA 2023-47 (bsc#1216338)
+  * CVE-2023-5721 (bmo#1830820)
+    Queued up rendering could have allowed websites to clickjack
+  * CVE-2023-5732 (bmo#1690979, bmo#1836962)
+    Address bar spoofing via bidirectional characters
+  * CVE-2023-5724 (bmo#1836705)
+    Large WebGL draw could have led to a crash
+  * CVE-2023-5725 (bmo#1845739)
+    WebExtensions could open arbitrary URLs
+  * CVE-2023-5726 (bmo#1846205)
+    Full screen notification obscured by file open dialog on macOS
+  * CVE-2023-5727 (bmo#1847180)
+    Download Protections were bypassed by .msix, .msixbundle,
+    .appx, and .appxbundle files on Windows
+  * CVE-2023-5728 (bmo#1852729)
+    Improper object tracking during GC in the JavaScript engine
+    could have led to a crash.
+  * CVE-2023-5730 (bmo#1836607, bmo#1840918, bmo#1848694, bmo#1848833,
+    bmo#1850191, bmo#1850259, bmo#1852596, bmo#1853201, bmo#1854002,
+    bmo#1855306, bmo#1855640, bmo#1856695)
+    Memory safety bugs fixed in Firefox 119, Firefox ESR 115.4,
+    and Thunderbird 115.4.1
+- removed obsolete mozilla-bmo1846703.patch
+
+-------------------------------------------------------------------
+Tue Oct 24 16:58:42 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 115.3.3
+  * fixed: "Folder Location" toolbar button did not work for
+    local folders (bmo#1843979)
+  * fixed: "Copy to <folder name> again" option disappeared from
+    context menu after copying to Gmail folder with non-ASCII
+    name (bmo#1856712)
+  * fixed: Default reply identity did not use "Delivered-To"
+    address when catch-all was active (bmo#1815559)
+  * fixed: "View Headers All" did not work when selected in
+    standalone message window (bmo#1855316)
+  * fixed: Viewing the mail filter log displayed an error if no
+    log file was present (bmo#1789244)
+
+-------------------------------------------------------------------
 Tue Oct 10 07:23:52 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.3.2
