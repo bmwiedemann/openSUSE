@@ -159,6 +159,10 @@ BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  %pgname-pltcl
 #!BuildIgnore:  %pgname-plperl
 #!BuildIgnore:  %pgname-plpython
+#!BuildIgnore:  postgresql-implementation
+#!BuildIgnore:  postgresql-server-implementation
+#!BuildIgnore:  postgresql-server-devel-implementation
+#!BuildIgnore:  postgresql-llvmjit-devel-implementation
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
@@ -505,7 +509,7 @@ included in the postgresql-server package.
 touch -r configure tmp
 %patch1
 %patch4
-%patch8 -p1
+%patch8
 %patch9
 %if %{with llvm}
 %patch10
@@ -791,17 +795,19 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %post -n %pgname-%devel
 /sbin/ldconfig
-%if %{with server_devel}
-%post server-devel
-%endif
 /usr/share/postgresql/install-alternatives %pgmajor
 
 %postun -n %pgname-%devel
 /sbin/ldconfig
-%if %{with server_devel}
-%postun server-devel
-%endif
 /usr/share/postgresql/install-alternatives %pgmajor
+
+%if %{with server_devel}
+%post server-devel
+/usr/share/postgresql/install-alternatives %pgmajor
+
+%postun server-devel
+/usr/share/postgresql/install-alternatives %pgmajor
+%endif
 
 %if !%mini
 
