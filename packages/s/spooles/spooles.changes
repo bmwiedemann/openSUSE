@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 08:19:51 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Tune build to only build against the default openmpi version,
+  not against multiple flavors.
+
+-------------------------------------------------------------------
 Wed Jun 15 15:11:52 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Renamed source package from libspooles2_2 to spooles.
