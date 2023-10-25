@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 19 12:37:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.12.1:
+  * updated TRUE/FALSE enum fields to YES/NO to deconflict with
+    other library's terrible macro practice of #defining
+    TRUE/FALSE
+
+-------------------------------------------------------------------
 Sun Oct  8 17:26:41 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
