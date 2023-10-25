@@ -149,6 +149,9 @@ Requires:       glibc-devel
 Requires:       pkgconfig
 # Required by gdbus-codegen
 Requires:       python3-xml
+# GDbusTest launches dbus-daemon with a special env to not interfere with
+# the real session bus.
+Requires:       %{_bindir}/dbus-daemon
 #
 
 %description devel
@@ -202,7 +205,7 @@ Group:          System/Libraries
 #!BuildIgnore:  shared-mime-info
 Requires:       %{name}-tools
 # bnc#678518: libgio interacts with others by means of dbus-launch
-Requires:       dbus-launch
+Requires:       %{_bindir}/dbus-launch
 Requires:       gio-branding = %{version}
 Requires:       shared-mime-info
 # Needed for branding packages
@@ -315,6 +318,7 @@ ln -s %{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list %{buildroot}%{_datadir
 # gio-querymodules magic
 %if "%{_lib}" == "lib64"
 mv -T %{buildroot}%{_bindir}/gio-querymodules %{buildroot}%{_bindir}/gio-querymodules-64
+sed -i -e "/^gio_querymodules=/s/gio-querymodules/gio-querymodules-64/" %{buildroot}%{_libdir}/pkgconfig/gio-2.0.pc
 %endif
 mkdir -p %{buildroot}%{_libdir}/gio/modules
 >> %{buildroot}%{_libdir}/gio/modules/giomodule.cache
