@@ -1304,4 +1304,12 @@
     <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
     <requestid>1110751</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>d3919d7badbd4ea93f7f87d7f2b15ccc</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249711</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120110</requestid>
+  </revision>
 </revisionlist>
