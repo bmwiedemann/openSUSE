@@ -1219,4 +1219,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
     <requestid>1110713</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>3cfee9b27908215444cf3f6096a29b33</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249685</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120072</requestid>
+  </revision>
 </revisionlist>

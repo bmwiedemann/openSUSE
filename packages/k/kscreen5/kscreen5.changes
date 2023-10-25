@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:24:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * Only modify `Coordinate Transformation Matrix` (kde#474110)
+  * Drop unused KIconThemes dependency
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
