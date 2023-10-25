@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 17 13:43:54 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- cleanup: get rid of possibiliy to hardcode pci list; it's no
+  longer required anyway; secureboot signing has been fixed ...
+- removed pci-table.patch
+
+-------------------------------------------------------------------
 Wed Oct 11 12:48:01 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Add a devel package so other modules can be built against this

@@ -180,4 +180,14 @@
   and never worked anyway (it was only a stub) [boo#1211892]</comment>
     <requestid>1116994</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>2e6e6330538d75b7acd60921c685dddb</srcmd5>
+    <version>535.113.01</version>
+    <time>1698249750</time>
+    <user>anag+factory</user>
+    <comment>- cleanup: get rid of possibiliy to hardcode pci list; it's no
+  longer required anyway; secureboot signing has been fixed ...
+- removed pci-table.patch</comment>
+    <requestid>1120029</requestid>
+  </revision>
 </revisionlist>
