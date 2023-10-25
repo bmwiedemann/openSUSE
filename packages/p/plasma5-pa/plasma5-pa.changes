@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:26:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * applet: refresh slider value when `to` changes on startup (kde#472245)
+  * Use context object with KConfigWatcher signal
+
+-------------------------------------------------------------------
 Tue Sep 12 11:22:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.8
