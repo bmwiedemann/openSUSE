@@ -1,0 +1,5 @@
+<package name="wardstone" project="openSUSE:Factory">
+  <title>wardstone</title>
+  <description>The wardstone project aims to create a library that can be used across different programming languages via a foreign function interface and a command line utility that users can run against their existing keys to detect conformance to varying cryptographic key standards and research publications.</description>
+  <devel project="security" package="wardstone"/>
+</package>

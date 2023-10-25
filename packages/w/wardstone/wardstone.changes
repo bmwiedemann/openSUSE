@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Tue Oct 24 11:45:50 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.2.0 
+  * feat: enable user set context
+     The caller can now set the context year that they want
+     to assess a cryptographic primitive to be assessed against.
+     This allows them to override the default option which is
+     current based on the year 2023 with an average horizon of
+     about 4 to 8 years.
+  * refactor: update elliptic curve display strings
+     Some primitives do not have a unique name which may
+     make it difficult to someone unfamiliar with the
+     distinctions to interpret the results of an audit. The
+     output for these primitives now mentions all known names
+     so that the user does not have to access a secondary
+     source for this information.
+  * refactor: update the name of the library
+     Object libraries generated no longer have a _ffi prefix.
+
+-------------------------------------------------------------------
+Sun Aug 20 12:20:56 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Initial commit of wardstone 
+    * use an older C compiler standard 
+    * add cbindgen 
+    * create basic CI workflow 
+    * fix syntax errors and avoid running on push 
+    * remove nightly rustfmt config options 
+    * update cbindgen configuration 
+    * create issue templates 
+    * update build script 
+    * recommend alternatives for invalid primitives 
+    * add check for documentation 
+    * add FFI-compiling to CI 
+    * minor cosmetic changes to CI 
+    * add finite field cryptography primitives 
+    * add integer factorisation primitives 
+    * add elliptic-curve cryptography primitives 
+    * add the SHAKE extendable-output functions 
+    * update build script 
+    * add more crate types 
+    * complete NIST Special Publication 800-57 Part 1 Revision 5 module 
+    * factor in context security and update ranges in NIST module 
+    * add SHAKE XOFs 
+    * create BSI TR-02102-1 Cryptographic Mechanisms: Recommendations and Key Lengths module 
+    * create CNSA module 
+    * create ECRYPT module 
+    * complete Lenstra module 
+    * split the crate into two 
+    * implement interfaces custom standards 
+    * update example in wardstone_core README 
+    * create mock standards 
+    * allow use of NIST curves in the BSI guide 
+    * create wardstone command line program 
+    * add some polish around validating elliptic curve signed certificates in the command-line application 
+    * remove references 
+    * update documentation 
+    * decode primitives using their ASN1 encoding 
+    * add more OID to primitive mappings in the table 
+    * update OIDs 
+    * support RSA PSS keys 
+    * update documentation 
+    * commit Cargo lock file for OBS builds 
+    * note openssl-dev requirement 
+    * support auditing SSH keys 
+    * handle multiple files as input, and support optional JSON-format when reporting 
+    * update handling multiple files 
