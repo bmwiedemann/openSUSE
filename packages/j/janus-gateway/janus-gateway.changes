@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 10 13:21:45 UTC 2023 - chris@computersalat.de
+
+- Update to [v1.1.4] - 2023-05-19
+  * Moved discussions from Google Group to Discourse
+  * Fixed typo in command line argument validation
+  * Refactored RTP forwarder internals as a core feature [PR-3155]
+  * Refactored SVC processing as a core feature, and removed deprecated VP9/SVC demo [PR-3174]
+  * Don't create IPv6 sockets if IPv6 is completely disabled [PR-3179]
+  * Fixed some VideoRoom race conditions [PR-3167]
+  * Added simulcast/SVC params to switch in VideoRoom (thanks @brave44!) [PR-3197]
+  * Add support for receiving offers in Streaming plugin (for WHEP) [PR-3199]
+  * Add newline for SIP headers that are overflown in length (thanks @zayim!) [PR-3184]
+  * Save SIP reason state on multiple callbacks (thanks @kenangenjac!) [PR-3210]
+  * Avoid parsing whitespace as invalid JSON when receiving WebSocket messages (thanks @htrendev!) [PR-3208]
+  * Remove old tracks before adding/replacing new ones in janus.js [PR-3203]
+  * Tweaks to some janus.js internals (thanks @i8-pi!) [PR-3211]
+  * Fixed some typos and added some tweaks to Admin API demo
+  * Refactored npm version of janus.js
+  * Other smaller fixes and improvements (thanks to all who contributed pull requests and reported issues!)
+- update _service, _servicedata file
+- fix License to GPL-3.0-or-later
+- add janus-gateway.sysusers for group/user creation
+- Update dependencies
+  * build with libpcap
+  * --enable-plugin-lua
+  * --enable-librtp2 (swith to libsrtp2)
+
+-------------------------------------------------------------------
 Wed Dec 07 17:24:59 UTC 2022 - michael@stroeder.com
 
 - Update to version 1.1.1:

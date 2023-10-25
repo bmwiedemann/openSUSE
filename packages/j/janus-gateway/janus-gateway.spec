@@ -1,7 +1,7 @@
 #
 # spec file for package janus-gateway
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,15 @@
 %endif
 
 Name:           janus-gateway
-Version:        1.1.1
+Version:        1.1.4
 Release:        0
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Summary:        Janus WebRTC Gateway
 URL:            https://github.com/meetecho/janus-gateway
 Group:          Productivity/Networking/Other
 Source:         %{name}-%{version}.tar.xz
 Source1:        janus.service
+Source2:        %{name}.sysusers
 Source100:      %{name}-rpmlintrc
 # for run autogen.sh
 BuildRequires:  autoconf
@@ -40,12 +41,15 @@ BuildRequires:  curl-devel
 BuildRequires:  gengetopt
 BuildRequires:  libconfig-devel
 BuildRequires:  sofia-sip-devel
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(ini_config)
-BuildRequires:  pkgconfig(jansson)
-BuildRequires:  pkgconfig(libmicrohttpd)
-BuildRequires:  pkgconfig(libsrtp) >= 1.4.5
+BuildRequires:  pkgconfig(jansson) >= 2.5
+BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.59
+BuildRequires:  pkgconfig(libpcap)
+BuildRequires:  pkgconfig(libsrtp2)
 BuildRequires:  pkgconfig(lua)
-BuildRequires:  pkgconfig(nice)
+BuildRequires:  pkgconfig(nice) >= 0.1.18
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl) >= 1.0.1e
 BuildRequires:  pkgconfig(opus)
@@ -62,10 +66,9 @@ BuildRequires:  libwebsockets-devel >= 4.0.0
 BuildRequires:  libpaho-mqtt-devel
 Requires(pre):  shadow
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_ordering}
 
-%define user_name janus
-%define home      %{_sharedstatedir}/janus/
+%{?systemd_ordering}
+%{sysusers_requires}
 
 %description
 Janus is a general-purpose WebRTC gateway designed and developed
@@ -86,9 +89,12 @@ This package holds the file needed to compile plugins for Janus Gateway.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE2} %{name}
 ./autogen.sh
 %configure \
   --disable-static \
+  --enable-libsrtp2 \
+  --enable-plugin-lua \
   %if %{with janus_postprocessing}
   --enable-post-processing \
   %endif
@@ -112,14 +118,9 @@ popd
 rm -rv %{buildroot}%{_datadir}/doc/%{name}
 rm -rv %{buildroot}%{_datadir}/janus/streams/test_gstreamer*.sh
 #
-install -D -d -m 0750 %{buildroot}%{home}
+install -D -d -m 0750 %{buildroot}%{_sharedstatedir}/janus/
 
-%pre
-%{_bindir}/getent group %{user_name} >/dev/null || %{_sbindir}/groupadd -r %{user_name}
-%{_bindir}/getent passwd %{user_name} >/dev/null || \
-  %{_sbindir}/useradd -r -g %{user_name} -d / -s /sbin/nologin \
-  -c "Janus Gateway" %{user_name}
-
+%pre -f %{name}.pre
 %service_add_pre janus.service
 
 %post
@@ -134,7 +135,7 @@ install -D -d -m 0750 %{buildroot}%{home}
 %files
 %doc README.md
 %license COPYING
-%config(noreplace) %attr(-,root,%{user_name}) %{_sysconfdir}/janus/
+%config(noreplace) %attr(-,root,janus) %{_sysconfdir}/janus/
 %{_sbindir}/rcjanus
 %{_bindir}/janus
 %{_bindir}/janus-cfgconv
@@ -143,13 +144,15 @@ install -D -d -m 0750 %{buildroot}%{home}
 %if %{with janus_postprocessing}
 %{_bindir}/janus-pp-rec
 %{_bindir}/mjr2pcap
+%{_bindir}/pcap2mjr
 %{_mandir}/man1/janus-pp-rec.1*
 %{_mandir}/man1/mjr2pcap.1*
+%{_mandir}/man1/pcap2mjr.1.gz
 %endif
 %{_libdir}/janus/
 %{_datadir}/janus/
 %{_unitdir}/janus.service
-%dir %attr(750,%{user_name},%{user_name}) %{home}
+%dir %attr(750,janus,janus) %{_sharedstatedir}/janus/
 
 %files devel
 %{_includedir}/janus/
