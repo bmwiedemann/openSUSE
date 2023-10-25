@@ -15,4 +15,12 @@
     <comment>reproducible timestamp in properties</comment>
     <requestid>1112807</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9055b8e686c7f737b35b18403747c473</srcmd5>
+    <version>21.0.1.0</version>
+    <time>1698249870</time>
+    <user>anag+factory</user>
+    <comment>October 2023 CPU</comment>
+    <requestid>1120223</requestid>
+  </revision>
 </revisionlist>

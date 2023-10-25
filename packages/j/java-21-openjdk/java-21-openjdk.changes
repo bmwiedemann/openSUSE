@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Wed Oct 25 09:26:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-21.0.1+12 (October 2023 CPU)
+  * Security fixes:
+    + JDK-8286503: Enhance security classes
+    + JDK-8308204: Enhanced certificate processing
+    + JDK-8309966, CVE-2023-22081, bsc#1216374: Enhanced TLS
+      connections
+    + JDK-8312248: Enhanced archival support redux
+    + JDK-8314649: Enhanced archival support redux
+    + JDK-8317121, CVE-2023-22025, bsc#1216339: vector_masked_load
+      instruction is moved too early after JDK-8286941
+  * Other changes:
+    + JDK-8240567: MethodTooLargeException thrown while creating a
+      jlink image
+    + JDK-8284772: GHA: Use GCC Major Version Dependencies Only
+    + JDK-8293114: JVM should trim the native heap
+    + JDK-8296581: Better system proxy support
+    + JDK-8297856: Improve handling of Bidi characters
+    + JDK-8299658: C1 compilation crashes in
+      LinearScan::resolve_exception_edge
+    + JDK-8302017: Allocate BadPaddingException only if it will be
+      thrown
+    + JDK-8303815: Improve Metaspace test speed
+    + JDK-8304954: SegmentedCodeCache fails when using large pages
+    + JDK-8307766: Linux: Provide the option to override the timer
+      slack
+    + JDK-8308042: [macos] Developer ID Application Certificate not
+      picked up by jpackage if it contains UNICODE characters
+    + JDK-8308047: java/util/concurrent/ScheduledThreadPoolExecutor/
+      /BasicCancelTest.java timed out and also had jcmd pipe errors
+    + JDK-8308184: Launching java with large number of jars in
+      classpath with java.protocol.handler.pkgs system property set
+      can lead to StackOverflowError
+    + JDK-8308474: DSA does not reset SecureRandom when initSign is
+      called again
+    + JDK-8308609: java/lang/ScopedValue/StressStackOverflow.java
+      fails with "-XX:-VMContinuations"
+    + JDK-8309032: jpackage does not work for module projects
+      unless --module-path is specified
+    + JDK-8309088: security/infra/java/security/cert/
+      /CertPathValidator/certification/AmazonCA.java fails
+    + JDK-8309214: sun/security/pkcs11/KeyStore/
+      /CertChainRemoval.java fails after 8301154
+    + JDK-8309475: Test java/foreign/TestByteBuffer.java fails: a
+      problem with msync (aix)
+    + JDK-8309502: RISC-V: String.indexOf intrinsic may produce
+      misaligned memory loads
+    + JDK-8309591: Socket.setOption(TCP_QUICKACK) uses wrong level
+    + JDK-8309746: Reconfigure check should include
+      make/conf/version-numbers.conf
+    + JDK-8309889: [s390] Missing return statement after calling
+      jump_to_native_invoker method in
+      generate_method_handle_dispatch.
+    + JDK-8310106: sun.security.ssl.SSLHandshake
+      .getHandshakeProducer() incorrectly checks handshakeConsumers
+    + JDK-8310171: Bump version numbers for 21.0.1
+    + JDK-8310211: serviceability/jvmti/thread/GetStackTrace/
+      /getstacktr03/getstacktr03.java failing
+    + JDK-8310233: Fix THP detection on Linux
+    + JDK-8310268: RISC-V: misaligned memory access in
+      String.Compare intrinsic
+    + JDK-8310321: make JDKOPT_CHECK_CODESIGN_PARAMS more verbose
+    + JDK-8310586: ProblemList java/lang/ScopedValue/
+      /StressStackOverflow.java#default with virtual threads on
+      linux-all
+    + JDK-8310687: JDK-8303215 is incomplete
+    + JDK-8310873: Re-enable locked_create_entry symbol check in
+      runtime/NMT/CheckForProperDetailStackTrace.java for RISC-V
+    + JDK-8311026: Some G1 specific tests do not set -XX:+UseG1GC
+    + JDK-8311033: [macos] PrinterJob does not take into account
+      Sides attribute
+    + JDK-8311160: [macOS, Accessibility] VoiceOver: No
+      announcements on JRadioButtonMenuItem and JCheckBoxMenuItem
+    + JDK-8311249: Remove unused MemAllocator::obj_memory_range
+    + JDK-8311285: report some fontconfig related environment
+      variables in hs_err file
+    + JDK-8311511: Improve description of NativeLibrary JFR event
+    + JDK-8311592: ECKeySizeParameterSpec causes too many
+      exceptions on third party providers
+    + JDK-8311682: Change milestone to fcs for all releases
+    + JDK-8311862: RISC-V: small improvements to shift immediate
+      instructions
+    + JDK-8311917: MAP_FAILED definition seems to be obsolete in
+      src/java.desktop/unix/native/common/awt/fontpath.c
+    + JDK-8311921: Inform about MaxExpectedDataSegmentSize in case
+      of pthread_create failures on AIX
+    + JDK-8311923: TestIRMatching.java fails on RISC-V
+    + JDK-8311926: java/lang/ScopedValue/StressStackOverflow.java
+      takes 9mins in tier1
+    + JDK-8311955: c++filt is now ibm-llvm-cxxfilt when using xlc17
+      / clang on AIX
+    + JDK-8311981: Test gc/stringdedup/
+      /TestStringDeduplicationAgeThreshold.java#ZGenerational timed
+      out
+    + JDK-8312127: FileDescriptor.sync should temporarily increase
+      parallelism
+    + JDK-8312180: (bf) MappedMemoryUtils passes incorrect
+      arguments to msync (aix)
+    + JDK-8312182: THPs cause huge RSS due to thread start timing
+      issue
+    + JDK-8312394: [linux] SIGSEGV if kernel was built without
+      hugepage support
+    + JDK-8312395: Improve assertions in growableArray
+    + JDK-8312401: SymbolTable::do_add_if_needed hangs when called
+      in InstanceKlass::add_initialization_error path with
+      requesting length exceeds max_symbol_length
+    + JDK-8312489: Increase jdk.jar.maxSignatureFileSize default
+      which is too low for JARs such as WhiteSource/Mend unified
+      agent jar
+    + JDK-8312525: New test runtime/os/
+      /TestTrimNative.java#trimNative is failing: did not see the
+      expected RSS reduction
+    + JDK-8312535: MidiSystem.getSoundbank() throws unexpected
+      SecurityException
+    + JDK-8312555: Ideographic characters aren't stretched by
+      AffineTransform.scale(2, 1)
+    + JDK-8312573: Failure during CompileOnly parsing leads to
+      ShouldNotReachHere
+    + JDK-8312585: Rename DisableTHPStackMitigation flag to
+      THPStackMitigation
+    + JDK-8312591: GCC 6 build failure after JDK-8280982
+    + JDK-8312619: Strange error message when switching over long
+    + JDK-8312620: WSL Linux build crashes after JDK-8310233
+    + JDK-8312625: Test serviceability/dcmd/vm/TrimLibcHeapTest.java
+      failed: RSS use increased
+    + JDK-8312909: C1 should not inline through interface calls
+      with non-subtype receiver
+    + JDK-8312976: MatchResult produces
+      StringIndexOutOfBoundsException for groups outside match
+    + JDK-8312984: javac may crash on a record pattern with too few
+      components
+    + JDK-8313081: MonitoringSupport_lock should be unconditionally
+      initialized after 8304074
+    + JDK-8313248: C2: setScopedValueCache intrinsic exposes
+      nullptr pre-values to store barriers
+    + JDK-8313262: C2:  Sinking node may cause required cast to be
+      dropped
+    + JDK-8313307: java/util/Formatter/Padding.java fails on some
+      Locales
+    + JDK-8313312: Add missing classpath exception copyright header
+    + JDK-8313323: javac -g on a java file which uses unnamed
+      variable leads to ClassFormatError when launching that class
+    + JDK-8313402: C1: Incorrect LoadIndexed value numbering
+    + JDK-8313428: GHA: Bump GCC versions for July 2023 updates
+    + JDK-8313576: GCC 7 reports compiler warning in bundled
+      freetype 2.13.0
+    + JDK-8313602: increase timeout for
+      jdk/classfile/CorpusTest.java
+    + JDK-8313626: C2 crash due to unexpected exception control flow
+    + JDK-8313657: com.sun.jndi.ldap.Connection.cleanup does not
+      close connections on SocketTimeoutErrors
+    + JDK-8313676: Amend TestLoadIndexedMismatch test to target
+      intrinsic directly
+    + JDK-8313678: SymbolTable can leak Symbols during cleanup
+    + JDK-8313691: use close after failing os::fdopen in vmError
+      and ciEnv
+    + JDK-8313701: GHA: RISC-V should use the official repository
+      for bootstrap
+    + JDK-8313707: GHA: Bootstrap sysroots with --variant=minbase
+    + JDK-8313752: InstanceKlassFlags::print_on doesn't print the
+      flag names
+    + JDK-8313765: Invalid CEN header (invalid zip64 extra data
+      field size)
+    + JDK-8313796: AsyncGetCallTrace crash on unreadable
+      interpreter method pointer
+    + JDK-8313874: JNI NewWeakGlobalRef throws exception for null
+      arg
+    + JDK-8313901: [TESTBUG] test/hotspot/jtreg/compiler/codecache/
+      /CodeCacheFullCountTest.java fails with
+      java.lang.VirtualMachineError
+    + JDK-8313904: [macos] All signing tests which verifies
+    unsigned app images are failing
+    + JDK-8314020: Print instruction blocks in byte units
+    + JDK-8314024: SIGSEGV in
+      PhaseIdealLoop::build_loop_late_post_work due to bad immediate
+      dominator info
+    + JDK-8314063: The socket is not closed in
+      Connection::createSocket when the handshake failed for LDAP
+      connection
+    + JDK-8314117: RISC-V: Incorrect VMReg encoding in
+      RISCV64Frame.java
+    + JDK-8314118: Update JMH devkit to 1.37
+    + JDK-8314139: TEST_BUG: runtime/os/
+      /THPsInThreadStackPreventionTest.java could fail on machine
+      with large number of cores
+    + JDK-8314144: gc/g1/ihop/TestIHOPStatic.java fails due to
+      extra concurrent mark with -Xcomp
+    + JDK-8314216: Case enumConstant, pattern compilation fails
+    + JDK-8314262: GHA: Cut down cross-compilation sysroots deeper
+    + JDK-8314423: Multiple patterns without unnamed variables
+    + JDK-8314426: runtime/os/TestTrimNative.java is failing on
+      slow machines
+    + JDK-8314501: Shenandoah: sun/tools/jhsdb/heapconfig/
+      /JMapHeapConfigTest.java fails
+    + JDK-8314517: some tests fail in case ipv6 is disabled on the
+      machine
+    + JDK-8314618: RISC-V: -XX:MaxVectorSize does not work as
+      expected
+    + JDK-8314656: GHA: No need for Debian ports keyring
+      installation after JDK-8313701
+    + JDK-8314679: SA fails to properly attach to JVM after having
+      just detached from a different JVM
+    + JDK-8314730: GHA: Drop libfreetype6-dev transitional package
+      in favor of libfreetype-dev
+    + JDK-8314850: SharedRuntime::handle_wrong_method() gets called
+      too often when resolving Continuation.enter
+    + JDK-8314960: Add Certigna Root CA - 2
+    + JDK-8315020: The macro definition for LoongArch64 zero build
+      is not accurate.
+    + JDK-8315051: jdk/jfr/jvm/TestGetEventWriter.java fails with
+      non-JVMCI GCs
+    + JDK-8315534: Incorrect warnings about implicit annotation
+      processing
+
+-------------------------------------------------------------------
+Wed Oct 18 05:05:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Compiler flags to realign stack on ix86 (bsc#1214790)
+
+-------------------------------------------------------------------
 Thu Sep 21 11:14:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
