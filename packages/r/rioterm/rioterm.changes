@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 25 19:29:48 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.25:
+  * prepare 0.0.25
+  * use wgpu 0.18.0
+  * use += for vi_cursor pos control
+  * update changelog regarding #311
+  * fix vi cursor disappear when scroll
+  * Add program (shell) name to the window_title (#312)
+  * fix flagged dimmed named colors (cases where it does not comes from rgb index). closes #308
+  * add Jai mention
+  * fix MacOS fullscreen empty space on margin top (fmt)
+  * fix MacOS fullscreen empty space on margin top
+  * update to Named keys for windows/linux
+  * upgrade winit 0.29.2 (take 4 - last)
+  * upgrade winit 0.29.2 (take 3)
+  * upgrade winit 0.29.2 (take 2)
+  * upgrade winit 0.29.2 (take 1)
+  * update image vi mode
+  * update index.md link
+  * rename docs
+
+-------------------------------------------------------------------
 Fri Oct 20 19:54:36 UTC 2023 - androw95220@gmail.com
 
 - Update to version v0.0.24:
