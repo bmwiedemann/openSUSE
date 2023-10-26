@@ -135,6 +135,13 @@ pushd %{name}
 
 %pom_add_dep javax.activation:javax.activation-api runtime
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:source" "1.8" runtime tools
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:target" "1.8" runtime tools
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:jdkToolchain/pom:version" "1.8" runtime tools
+
 # backward compatibility symlinks
 %{mvn_file} com.sun.istack:%{name}-buildtools %{name}-buildtools %{name}/%{name}-buildtools
 %{mvn_file} com.sun.istack:%{name}-runtime %{name}-runtime %{name}/%{name}-runtime
