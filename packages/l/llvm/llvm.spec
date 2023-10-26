@@ -19,10 +19,7 @@
 %define _sonum 17
 %ifarch aarch64 x86_64
 %define has_lldb 1
-# python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
-%if 0%{?suse_version} > 1320
 %define has_lldb_python 1
-%endif
 %endif
 
 # obsolete_llvm_versioned() prefix postfix
@@ -40,7 +37,7 @@ Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
 
 Name:           llvm
-Version:        17.0.2
+Version:        %{_sonum}
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -48,7 +45,7 @@ Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # This file documents the process for updating llvm
 Source0:        README.packaging
-Requires:       llvm%{_sonum} = %{version}
+Requires:       llvm%{_sonum}
 Suggests:       %{name}-doc
 
 %description
@@ -66,7 +63,7 @@ don't require a specific LLVM version should depend on this.
 %package devel
 Summary:        Header Files for LLVM
 Group:          Development/Libraries/C and C++
-Requires:       llvm%{_sonum}-devel = %{version}
+Requires:       llvm%{_sonum}-devel
 Provides:       llvm-LTO-devel = %{version}
 Obsoletes:      llvm-LTO-devel < %{version}
 Requires:       llvm-gold
@@ -85,7 +82,7 @@ don't require a specific LLVM version should depend on this.
 Summary:        Documentation for LLVM
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
-Requires:       llvm%{_sonum}-doc = %{version}
+Requires:       llvm%{_sonum}-doc
 %obsolete_llvm_versioned llvm doc
 
 %description doc
@@ -99,7 +96,7 @@ don't require a specific LLVM version should depend on this.
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
-Requires:       clang%{_sonum} = %{version}
+Requires:       clang%{_sonum}
 Provides:       llvm-clang = %{version}
 Obsoletes:      llvm-clang < %{version}
 Provides:       llvm-emacs-plugins
@@ -115,7 +112,7 @@ don't require a specific Clang version should depend on this.
 %package -n clang-devel
 Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
-Requires:       clang%{_sonum}-devel = %{version}
+Requires:       clang%{_sonum}-devel
 Provides:       llvm-clang-devel = %{version}
 Obsoletes:      llvm-clang-devel < %{version}
 Provides:       clang-devel-static = %{version}
@@ -134,7 +131,7 @@ don't require a specific Clang version should depend on this.
 Summary:        Documentation for Clang
 Group:          Documentation/HTML
 Requires:       clang = %{version}
-Requires:       clang%{_sonum}-doc = %{version}
+Requires:       clang%{_sonum}-doc
 %obsolete_llvm_versioned clang doc
 
 %description -n clang-doc
@@ -147,7 +144,7 @@ don't require a specific Clang version should depend on this.
 %package gold
 Summary:        Gold linker plugin for LLVM
 Group:          Development/Tools/Building
-Requires:       llvm%{_sonum}-gold = %{version}
+Requires:       llvm%{_sonum}-gold
 %obsolete_llvm_versioned llvm gold
 
 %description gold
@@ -160,7 +157,7 @@ don't require a specific LLVM version should depend on this.
 %package        vim-plugins
 Summary:        Vim plugins for LLVM
 Group:          Productivity/Text/Editors
-Requires:       llvm%{_sonum}-vim-plugins = %{version}
+Requires:       llvm%{_sonum}-vim-plugins
 Supplements:    packageand(llvm:vim)
 %obsolete_llvm_versioned llvm vim-plugins
 BuildArch:      noarch
@@ -175,7 +172,7 @@ don't require a specific LLVM version should depend on this.
 %package opt-viewer
 Summary:        Tools for visualising the LLVM optimization records
 Group:          Development/Languages/Other
-Requires:       llvm%{_sonum}-opt-viewer = %{version}
+Requires:       llvm%{_sonum}-opt-viewer
 %obsolete_llvm_versioned llvm opt-viewer
 BuildArch:      noarch
 
@@ -192,7 +189,7 @@ don't require a specific LLVM version should depend on this.
 Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
 URL:            https://lldb.llvm.org/
-Requires:       lldb%{_sonum} = %{version}
+Requires:       lldb%{_sonum}
 Recommends:     python3-lldb
 
 %description -n lldb
@@ -208,7 +205,7 @@ don't require a specific LLDB version should depend on this.
 %package -n lldb-devel
 Summary:        Development files for LLDB
 Group:          Development/Libraries/C and C++
-Requires:       lldb%{_sonum}-devel = %{version}
+Requires:       lldb%{_sonum}-devel
 %obsolete_llvm_versioned lldb devel
 
 %description -n lldb-devel
@@ -232,7 +229,7 @@ frontend for LLVM.
 %package -n python3-lldb
 Summary:        Python bindings for liblldb
 Group:          Development/Libraries/Python
-Requires:       python3-lldb%{_sonum} = %{version}
+Requires:       python3-lldb%{_sonum}
 %obsolete_llvm_versioned python3-lldb
 
 %description -n python3-lldb
@@ -246,7 +243,7 @@ don't require a specific LLDB version should depend on this.
 Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
-Requires:       lld%{_sonum} = %{version}
+Requires:       lld%{_sonum}
 
 %description -n lld
 LLD is a linker from the LLVM project. That is a drop-in replacement for
@@ -257,7 +254,7 @@ are useful for toolchain developers.
 Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
 Group:          Development/Languages/Other
 URL:            https://polly.llvm.org/
-Requires:       llvm%{_sonum}-polly = %{version}
+Requires:       llvm%{_sonum}-polly
 %obsolete_llvm_versioned llvm polly
 
 %description polly
@@ -275,7 +272,7 @@ don't require a specific LLVM version should depend on this.
 %package polly-devel
 Summary:        Development files for Polly
 Group:          Development/Libraries/C and C++
-Requires:       llvm%{_sonum}-polly-devel = %{version}
+Requires:       llvm%{_sonum}-polly-devel
 Requires:       llvm-polly = %{version}
 %obsolete_llvm_versioned llvm polly-devel
 

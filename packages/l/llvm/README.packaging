@@ -32,11 +32,11 @@ tag as the currently-supported version of the llvmX package.
 [1] http://blog.llvm.org/2016/12/llvms-new-versioning-scheme.html
 
 
-===========================================
-PATCH-LEVEL UPDATES TO CURRENT LLVM VERSION
+===================
+PATCH-LEVEL UPDATES
 
-For patch level updates, this package (llvm) and the current
-llvmX package need to be updated.
+For patch level updates, the corresponding llvmX package needs
+to be updated.
 
 1. llvmX package:
    1. Add the new sources to the package and delete the old
@@ -56,47 +56,14 @@ llvmX package need to be updated.
    6. Confirm everything builds successfully and there are
       no new rpmlint issues.
    7. Update the llvmX.changes file.
-2. llvm package:
-   1. Update the "Version" tag to match the new llvmX
-      version.
-   2. Update the llvm.changes file.
-
-
-========================================
-PATCH-LEVEL UPDATES TO OLD LLVM VERSIONS
-
-For patch-level updates to versions of LLVM before the
-current version, only the corresponding llvmX package
-needs to be updated.
-
-1. llvmX package:
-   1. Add the new sources to the package and delete the old
-      ones.  This will not include clang-docs-X.0.Z.src.tar.xz
-      or llvm-docs-X.0.Z.src.tar.xz (see next item).
-   2. Build clang-docs-X.0.Z.src.tar.xz and
-      llvm-docs-X.0.Z.src.tar.xz.  The instructions are in
-      the %install section of llvmX.spec.  The instructions
-      need RPM substitutions, for example via rpmspec -P.
-      Add those sources as well and delete the old ones.
-   3. Update the "_relver" tag in llvmX.spec to match the
-      new sources.
-   4. Update the version number in the patches to match the
-      new sources.
-   5. Update the "_uaver" tag in llvmX.spec to match
-      the "Version" tag.
-   6. Confirm everything builds successfully and there are
-      no new rpmlint issues.  Some patches may need to be 
-      removed or rebased.
-   7. Update the llvmX.changes file.
 
 
 =====================
 MAJOR VERSION UPDATES
 
-For updates that change the major or minor version number,
-this package (llvm) needs to be updated, a new llvmX
-package needs to be created, and the old llvmX package
-needs to be modified.
+For updates that change the major version number, this
+package (llvm) needs to be updated and a new llvmX package
+needs to be created.
 
 1. New llvmX package:
    1. Copy (do not link) the old llvmX to the new
@@ -136,11 +103,9 @@ needs to be modified.
       removed or rebased.
   13. Update the llvmX.changes file.
 2. llvm package:
-   1. Update the "Version" tag to match the new llvmX
-      version.
-   2. Change the "_sonum" tag to match the one in the
+   1. Change the "_sonum" tag to match the one in the
       new "llvmX.spec" file.
-   3. Update the llvm.changes file.
+   2. Update the llvm.changes file.
 3. Project config:
    1. Change %product_libs_llvm_ver to X.
    2. If one of the .so version numbers for libclang, libc++

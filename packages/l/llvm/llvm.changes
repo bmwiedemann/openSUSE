@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 21 21:44:49 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Strip minor version and patch-level, so that we don't need to
+  update this package for every patch-level update.
+- Remove support for openSUSE 13.
+
+-------------------------------------------------------------------
 Sat Oct  7 14:19:01 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 17.0.2.

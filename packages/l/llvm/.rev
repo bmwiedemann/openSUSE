@@ -2302,4 +2302,15 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1116229</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>e54bd2094269396d946b9ffd3b67403f</srcmd5>
+    <version>17</version>
+    <time>1698333116</time>
+    <user>anag+factory</user>
+    <comment>- Strip minor version and patch-level, so that we don't need to
+  update this package for every patch-level update.
+- Remove support for openSUSE 13.
+</comment>
+    <requestid>1119379</requestid>
+  </revision>
 </revisionlist>
