@@ -38,6 +38,7 @@ Patch5:         javacc-7.patch
 Patch6:         no-doctype.patch
 Patch7:         reproducible-javadoc.patch
 Patch8:         bootclasspath.patch
+Patch9:         sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-parent
@@ -48,6 +49,7 @@ BuildRequires:  glassfish-jsp-api
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  hamcrest
 BuildRequires:  ivy-local
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc >= 7.0
 BuildRequires:  jaxen >= 1.1
 BuildRequires:  jcl-over-slf4j
@@ -92,6 +94,7 @@ find -type f -name "*.class" -delete
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 echo "-reproducible: true" >> osgi.bnd
 echo "-noextraheaders: true" >> osgi.bnd

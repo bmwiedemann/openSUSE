@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 26 03:55:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * sourcetarget.patch
+    + build with java source and target levels 8
+
+-------------------------------------------------------------------
 Wed Sep 27 08:42:55 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
