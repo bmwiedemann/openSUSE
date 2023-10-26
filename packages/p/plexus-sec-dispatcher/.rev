@@ -39,4 +39,12 @@
     <comment>Sync changes with sle</comment>
     <requestid>979215</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>e28400027f2d8d72e018bb22919c062f</srcmd5>
+    <version>2.0</version>
+    <time>1698333212</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120341</requestid>
+  </revision>
 </revisionlist>

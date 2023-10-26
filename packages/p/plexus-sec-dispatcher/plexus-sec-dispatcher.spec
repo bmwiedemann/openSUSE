@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-sec-dispatcher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,16 +30,13 @@ Source100:      %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.7
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-cipher
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
-Requires:       mvn(javax.inject:javax.inject)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
-Requires:       mvn(org.sonatype.plexus:plexus-cipher)
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -61,10 +58,6 @@ API documentation for %{name}.
 cp %{SOURCE1} .
 cp %{SOURCE100} build.xml
 
-%pom_remove_parent
-%pom_xpath_inject pom:project "<groupId>org.codehaus.plexus</groupId>"
-%pom_change_dep -r -f ::::: :::::
-
 %build
 mkdir -p lib
 build-jar-repository -s lib plexus/utils plexus/plexus-cipher plexus-containers/plexus-container-default javax.inject
@@ -80,7 +73,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/%{name}.pom
 %add_maven_depmap plexus/%{name}.pom plexus/%{name}.jar -a org.sonatype.plexus:%{name}
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
