@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:03:56 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- fix bash completion suffix (.bash instead of .sh)
+
+-------------------------------------------------------------------
 Thu Oct 19 13:04:55 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.4.3
