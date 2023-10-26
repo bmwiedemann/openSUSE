@@ -39,6 +39,7 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
+Patch0:         0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder

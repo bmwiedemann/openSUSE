@@ -332,4 +332,13 @@
     <comment>Qt 6.6.0. Not built yet (forwarded request 1116657 from krop)</comment>
     <requestid>1116927</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>b8f3796e1c3a412f7b8091ffe61763ac</srcmd5>
+    <version>6.6.0</version>
+    <time>1698333208</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change:
+  * 0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch</comment>
+    <requestid>1120319</requestid>
+  </revision>
 </revisionlist>

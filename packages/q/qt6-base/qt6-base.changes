@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 25 14:16:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 09:39:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0
