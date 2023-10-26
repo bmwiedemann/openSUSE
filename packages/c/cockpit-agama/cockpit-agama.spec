@@ -1,7 +1,7 @@
 #
-# spec file for package cockpit-agama
+# spec file for package cockpit-machines
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,10 +31,10 @@ Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
 BuildArch:      noarch
 Requires:       cockpit
-BuildRequires:  appstream-glib
 BuildRequires:  cockpit
 BuildRequires:  cockpit-devel >= 243
 BuildRequires:  local-npm-registry
+BuildRequires:  appstream-glib
 
 %description
 Cockpit module for the experimental Agama installer.

@@ -1,10 +1,10 @@
 <services>
-  <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/openSUSE/agama.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+  <service name="obs_scm" mode="manual">
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="url">http://github.com/openSUSE/agama.git</param>
     <param name="scm">git</param>
-    <param name="revision">v5</param>
+    <param name="revision">master</param>
     <param name="subdir">web</param>
     <param name="without-version">enable</param>
     <param name="extract">package-lock.json</param>
