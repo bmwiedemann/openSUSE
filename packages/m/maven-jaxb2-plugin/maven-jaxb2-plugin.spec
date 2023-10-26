@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jaxb2-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           maven-jaxb2-plugin
 Version:        0.14.0
 Release:        0
 Summary:        Provides the capability to generate java sources from schemas
-License:        BSD-2-Clause AND Apache-2.0
+License:        Apache-2.0 AND BSD-2-Clause
 Group:          Development/Libraries/Java
 URL:            https://java.net/projects/maven-jaxb2-plugin/pages/Home
 Source0:        https://github.com/highsource/maven-jaxb2-plugin/archive/%{version}.tar.gz
@@ -29,6 +29,7 @@ Patch0:         %{name}-0.14.0-dont-use-internal-resolver.patch
 # Adapt for Maven 3:
 Patch1:         %{name}-0.13.0-adapt-for-maven-3.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.sun.activation:javax.activation)
 BuildRequires:  mvn(com.sun.codemodel:codemodel)
@@ -87,6 +88,9 @@ The API documentation of %{name}.
 
 %pom_remove_dep -r :jaxb-core
 %pom_remove_plugin -r :maven-dependency-plugin
+
+%pom_xpath_set -r "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set -r "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
 
 %build
 
