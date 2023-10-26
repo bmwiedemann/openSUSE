@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 20 07:03:56 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- The usage of drop-ins is now the official way for configuring systemd and its
+  various daemons on Factory/ALP. Hence the early drop-ins SUSE specific
+  "feature" has been abandoned.
+
+-------------------------------------------------------------------
+Thu Oct 19 16:03:07 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import 0.8
+
+  f34372f User priority '26' for SLE-Micro
+  c8b6f0a Revert "Convert more drop-ins into early ones"
+
+-------------------------------------------------------------------
 Tue Sep 21 08:20:59 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit 6b8dde1d4f867aff713af6d6830510a84fad58d2

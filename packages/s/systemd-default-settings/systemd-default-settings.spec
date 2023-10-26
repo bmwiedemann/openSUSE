@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-default-settings
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define extra_version -1-g6b8dde1
+%define extra_version %{nil}
 
 Name:           systemd-default-settings
 URL:            https://github.com/openSUSE/systemd-default-settings
-Version:        0.7
+Version:        0.8
 Release:        0
-Summary:        Customization of systemd default settings for SUSE distributions
+Summary:        Generic SUSE Customization of systemd defaults
 License:        GPL-2.0-or-later
 Group:          System/Base
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
@@ -38,7 +38,7 @@ This package should not be installed alone but is supposed to be
 pulled in by the branding package instead.
 
 %package branding-SLE
-Summary:        Specific customization of systemd defaults settings for SLE
+Summary:        SLE Specific Customization of systemd defaults
 Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 Supplements:    packageand(%{name}:branding-SLE)
@@ -50,7 +50,7 @@ This package overrides some of the upstream default settings to make
 them better suited for SLE distributions.
 
 %package branding-openSUSE
-Summary:        Specific customization of systemd defaults settings for openSUSE
+Summary:        openSUSE Specific Customization of systemd defaults
 Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 Supplements:    packageand(%{name}:branding-openSUSE)
@@ -62,7 +62,7 @@ This package overrides some of the upstream default settings to make
 them better suited for openSUSE distributions.
 
 %package branding-upstream
-Summary:        Restore upstream systemd defaults settings
+Summary:        Restore upstream systemd defaults
 Group:          System/Base
 Provides:       %{name}-branding = %{version}-%{release}
 Conflicts:      %{name}
@@ -74,7 +74,7 @@ by uninstalling all drop-ins shipped by %{name} and its branding sub
 package.
 
 %package branding-SLE-Micro
-Summary:        Specific customization of systemd defaults settings for SLE-Micro
+Summary:        SLE-Micro Specific Customization of systemd defaults
 Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
 Supplements:    packageand(%{name}:branding-SLE-Micro)
@@ -92,6 +92,13 @@ them better suited for SLE-Micro distributions.
 
 %install
 %make_install
+
+# Convert early drop-ins into regular ones on Factory (1699) and ALP (1600). The
+# removal of early drop-ins happens on these 2 distros only. SLE15/Leap15 (1500)
+# still relies one them.
+%if %{suse_version} >= 1600
+find %{buildroot} -name __\*.conf -exec rename '.conf.d/__' '.conf.d/' {} \;
+%endif
 
 find %{buildroot} -name \*.d -type d -printf "%%%%dir /%%P\n" >SUSE.list
 find %{buildroot} -name \*-defaults-SUSE.conf -printf "/%%P\n" >>SUSE.list

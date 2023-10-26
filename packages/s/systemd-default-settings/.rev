@@ -71,4 +71,18 @@
   6b8dde1 Convert more drop-ins into early ones</comment>
     <requestid>920608</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ecefa8a9b7561a1bf022174ba1e3be1</srcmd5>
+    <version>0.8</version>
+    <time>1698333135</time>
+    <user>anag+factory</user>
+    <comment>- The usage of drop-ins is now the official way for configuring systemd and its
+  various daemons on Factory/ALP. Hence the early drop-ins SUSE specific
+  &quot;feature&quot; has been abandoned.
+
+- Import 0.8
+  f34372f User priority '26' for SLE-Micro
+  c8b6f0a Revert &quot;Convert more drop-ins into early ones&quot;</comment>
+    <requestid>1120045</requestid>
+  </revision>
 </revisionlist>
