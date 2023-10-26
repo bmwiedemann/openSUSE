@@ -1,7 +1,7 @@
 #
 # spec file for package felix-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,8 @@ Source1:        %{name}-build.xml
 Patch0:         0000-Port-to-osgi-cmpn.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  osgi-compendium
 BuildRequires:  osgi-core
 BuildArch:      noarch
@@ -60,11 +61,6 @@ build-jar-repository -s lib osgi-core osgi-compendium
 build-jar-repository -s lib junit hamcrest/core mockito
 %endif
 
-%pom_remove_plugin :apache-rat-plugin
-
-%pom_remove_parent .
-%pom_xpath_inject "pom:project" "<groupId>org.apache.felix</groupId>" .
-
 %build
 %{ant} \
 %if %{without tests}
@@ -78,7 +74,7 @@ install -dm 0755 %{buildroot}%{_javadir}/felix
 install -pm 0644 target/%{bundle}-%{version}.jar %{buildroot}%{_javadir}/felix/%{bundle}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/felix
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/felix/%{bundle}.pom
 %add_maven_depmap felix/%{bundle}.pom felix/%{bundle}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

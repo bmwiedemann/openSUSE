@@ -25,7 +25,8 @@
   <property name="test.reports" value="${build.dir}/test-reports"/>
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
   
-  <property name="compiler.source" value="1.7"/>
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <!-- ====================================================================== -->
@@ -65,6 +66,7 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
+           release="${compiler.release}" 
            target="${compiler.target}" 
            verbose="false" 
            fork="false" 
