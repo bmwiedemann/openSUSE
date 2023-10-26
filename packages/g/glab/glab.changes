@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:39:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.34.0:
+  * fix(ci variable list): print entity type
+  * docs: Adding precedence order to docs
+  * fix: upgrade x/net
+  * chore: Fixing lint job for CI
+  * feat(sshkey): add ssh-key delete command
+  * feat(cluster): implement cluster agent `get-token` command
+  * Revert "Merge branch 'nh/pin-gitlab-dangerfiles-version' into
+    'main'"
+  * chore: Pin gitlab-dangerfiles version
+  * chore(dependency): remove alecthomas/assert module
+  * chore(dependency): remove jarcoal/httpmock
+  * fix: Parse string arrays passed to glab api --field command
+  * feat(cluster): add cluster agent list command
+  * feat: Add note about homebrew zsh for completions
+  * fix: only show web login for GitLab SaaS
+  * test(repo clone): seperate integration tests
+
+-------------------------------------------------------------------
 Thu Sep 21 04:41:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.33.0:

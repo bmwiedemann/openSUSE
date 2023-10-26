@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           glab
-Version:        1.33.0
+Version:        1.34.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -74,8 +74,7 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
-%setup -a1 %{SOURCE1}
+%autosetup -p 1 -a 1 -n %{name}-%{version}
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
