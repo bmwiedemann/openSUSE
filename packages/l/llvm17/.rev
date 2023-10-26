@@ -38,4 +38,20 @@
 </comment>
     <requestid>1116228</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>475f54126c7803b1e758b7b19886eb47</srcmd5>
+    <version>17.0.3</version>
+    <time>1698333112</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 17.0.3.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Disable zstd support for now regardless of whether libzstd-devel
+  is installed. (boo#1216121)
+- Limit number of LTO threads on 32-bit architectures to prevent
+  out-of-memory during linking.
+</comment>
+    <requestid>1119122</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,7 @@
 #
 
 
-%global _relver 17.0.2
+%global _relver 17.0.3
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
 %global _sonum  17
@@ -24,7 +24,7 @@
 %global _soname %{_sonum}%{?_sosuffix}
 %global _itsme17 1
 # Integer version used by update-alternatives
-%global _uaver  1702
+%global _uaver  1703
 %global _soclang 13
 %global _socxx  1
 
@@ -976,6 +976,7 @@ avail_mem=$(awk '/MemAvailable/ { print $2 }' /proc/meminfo)
     -DLLVM_BUILD_UTILS:BOOL=OFF \
     -DLLVM_BUILD_EXAMPLES:BOOL=OFF \
     -DLLVM_BUILD_RUNTIME:BOOL=OFF \
+    -DLLVM_ENABLE_ZSTD:BOOL=OFF \
     -DLLVM_TOOL_CLANG_TOOLS_EXTRA_BUILD:BOOL=OFF \
     -DLLVM_INCLUDE_BENCHMARKS:BOOL=OFF \
     -DLLVM_INCLUDE_TESTS:BOOL=OFF \
@@ -1019,7 +1020,7 @@ CXXFLAGS=$flags
 
 # Clang uses a bit less memory.
 mem_per_compile_job=700000
-%ifarch i586 ppc armv6hl armv7hl
+%ifarch %{arm} i586 ppc
 # 32-bit arches need less memory than 64-bit arches.
 mem_per_compile_job=500000
 %endif
@@ -1033,8 +1034,13 @@ max_link_jobs=1
 %define __builddir build
 %if %{with thin_lto} && %{with use_lld}
 %global lld_ldflag --ld-path=%{sourcedir}/stage1/bin/ld.lld
+%ifarch %{arm} i586 ppc
+%if %{jobs} > 8
+%global lto_limit_threads -Wl,--thinlto-jobs=8
 %endif
-%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag}
+%endif
+%endif
+%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag} %{?lto_limit_threads}
 # The build occasionally uses tools linking against previously built
 # libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
 export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
@@ -1063,6 +1069,7 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
     -DLLVM_ENABLE_RTTI:BOOL=ON \
     -DLLVM_ENABLE_PIC=ON \
     -DLLVM_BINUTILS_INCDIR=%{_includedir} \
+    -DLLVM_ENABLE_ZSTD:BOOL=OFF \
     -DLLVM_TARGETS_TO_BUILD=%{llvm_targets} \
     -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=%{llvm_experimental_targets} \
     -DLLVM_TOOL_LLVM_EXEGESIS_BUILD:BOOL=OFF \

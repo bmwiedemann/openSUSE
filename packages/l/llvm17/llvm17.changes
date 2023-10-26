@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 19 21:04:06 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 17.0.3.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Disable zstd support for now regardless of whether libzstd-devel
+  is installed. (boo#1216121)
+- Limit number of LTO threads on 32-bit architectures to prevent
+  out-of-memory during linking.
+
+-------------------------------------------------------------------
 Sat Oct  7 14:19:01 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 17.0.2.
