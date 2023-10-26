@@ -40,8 +40,8 @@ Patch4:         mem-used-bsc1181475.patch
 Patch5:         logind_y2038.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       procps

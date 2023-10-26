@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:59:47 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Rebase logind_y2038.patch based on the reviewed code
+
+-------------------------------------------------------------------
 Sat Sep 30 19:15:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Require /usr/bin/who only for suse_version > 1500: 15.X does not

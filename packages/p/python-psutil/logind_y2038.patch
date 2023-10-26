@@ -12,222 +12,291 @@ This patch uses logind from systemd instead of utmp on Linux systems, if
 the systemd version is support the new API (>= 254).
 
 Signed-off-by: Alberto Planas <aplanas@suse.com>
----
- INSTALL.rst            |  4 +--
- psutil/_psutil_linux.c | 81 ++++++++++++++++++++++++++++++++++++++++--
- setup.py               | 22 ++++++++++++
- 3 files changed, 102 insertions(+), 5 deletions(-)
 
-Index: psutil-5.9.5/INSTALL.rst
-===================================================================
---- psutil-5.9.5.orig/INSTALL.rst
-+++ psutil-5.9.5/INSTALL.rst
-@@ -17,12 +17,12 @@ Linux (build)
- 
- Ubuntu / Debian::
- 
--    sudo apt-get install gcc python3-dev
-+    sudo apt-get install gcc python3-dev libsystemd-dev
-     pip install --no-binary :all: psutil
- 
- RedHat / CentOS::
- 
--    sudo yum install gcc python3-devel
-+    sudo yum install gcc python3-devel systemd-devel
-     pip install --no-binary :all: psutil
- 
- Alpine::
 Index: psutil-5.9.5/psutil/_psutil_linux.c
 ===================================================================
 --- psutil-5.9.5.orig/psutil/_psutil_linux.c
 +++ psutil-5.9.5/psutil/_psutil_linux.c
-@@ -14,7 +14,11 @@
+@@ -14,6 +14,7 @@
  #include <stdlib.h>
  #include <mntent.h>
  #include <features.h>
--#include <utmp.h>
-+#ifdef SYSTEMD_LINUX
-+    #include <systemd/sd-login.h>
-+#else
-+    #include <utmp.h>
-+#endif
++#include <dlfcn.h>
+ #include <utmp.h>
  #include <sched.h>
  #include <linux/version.h>
- #include <sys/syscall.h>
-@@ -363,42 +367,102 @@ psutil_proc_cpu_affinity_set(PyObject *s
+@@ -358,11 +359,180 @@ psutil_proc_cpu_affinity_set(PyObject *s
+ #endif  /* PSUTIL_HAVE_CPU_AFFINITY */
+ 
+ 
++// Systemd function signatures that will be loaded dynamically.
++int (*sd_booted)(void);
++int (*sd_get_sessions)(char ***);
++int (*sd_session_get_leader)(const char *, pid_t *);
++int (*sd_session_get_remote_host)(const char *,char **);
++int (*sd_session_get_start_time)(const char *, uint64_t *);
++int (*sd_session_get_tty)(const char *, char **);
++int (*sd_session_get_username)(const char *, char **);
++
++// Handle for the libsystemd library
++void *HANDLE = NULL;
++
++
++#define dlsym_check(__h, __fn, __name) do {        \
++    __fn = dlsym(__h, #__fn);                      \
++    if (dlerror() != NULL || __fn == NULL) {       \
++        psutil_debug("missing '%s' fun", __name);  \
++        dlclose(__h);                              \
++        return NULL;                               \
++    }                                              \
++} while (0)
++
++
++static void *
++load_systemd() {
++    void *handle = NULL;
++
++    if (HANDLE != NULL)
++        return HANDLE;
++
++    handle = dlopen("libsystemd.so.0", RTLD_LAZY);
++    if (dlerror() != NULL || handle == NULL) {
++        psutil_debug("can't open libsystemd.so.0");
++        return NULL;
++    }
++
++    dlsym_check(handle, sd_booted, "sd_booted");
++    dlsym_check(handle, sd_get_sessions, "sd_get_sessions");
++    dlsym_check(handle, sd_session_get_leader, "sd_session_get_leader");
++    dlsym_check(handle, sd_session_get_remote_host, "sd_session_get_remote_host");
++    dlsym_check(handle, sd_session_get_start_time, "sd_session_get_start_time");
++    dlsym_check(handle, sd_session_get_tty, "sd_session_get_tty");
++    dlsym_check(handle, sd_session_get_username, "sd_session_get_username");
++
++    if (! sd_booted()) {
++        psutil_debug("systemd not booted");
++        dlclose(handle);
++        return NULL;
++    }
++
++    HANDLE = handle;
++    return HANDLE;
++}
++
++static void
++set_systemd_errno(const char *syscall, int neg_errno) {
++    PyObject *exc;
++    int pos_errno;
++    char fullmsg[1024];
++
++    pos_errno = abs(neg_errno);
++    snprintf(fullmsg, 1024, "%s (originated from %s)", strerror(pos_errno), syscall);
++    exc = PyObject_CallFunction(PyExc_OSError, "(is)", pos_errno, fullmsg);
++    PyErr_SetObject(PyExc_OSError, exc);
++    Py_XDECREF(exc);
++}
++
++
+ /*
+  * Return currently connected users as a list of tuples.
   */
  static PyObject *
- psutil_users(PyObject *self, PyObject *args) {
-+#ifdef SYSTEMD_LINUX
+-psutil_users(PyObject *self, PyObject *args) {
++psutil_users_systemd(PyObject *self, PyObject *args) {
++    int ret;
 +    char **sessions_list = NULL;
-+#else
-     struct utmp *ut;
-+#endif
-     PyObject *py_retlist = PyList_New(0);
-     PyObject *py_tuple = NULL;
-     PyObject *py_username = NULL;
-     PyObject *py_tty = NULL;
-     PyObject *py_hostname = NULL;
-     PyObject *py_user_proc = NULL;
++    PyObject *py_retlist = PyList_New(0);
++    PyObject *py_tuple = NULL;
++    PyObject *py_username = NULL;
++    PyObject *py_tty = NULL;
++    PyObject *py_hostname = NULL;
++    PyObject *py_user_proc = NULL;
 +    double tstamp = 0.0;
 +    pid_t pid = 0;
- 
-     if (py_retlist == NULL)
-         return NULL;
-+#ifdef SYSTEMD_LINUX
++    void *handle = load_systemd();
++
++    if (! handle)
++        Py_RETURN_NONE;
++
++    if (py_retlist == NULL)
++        goto error;
 +    int sessions = sd_get_sessions(&sessions_list);
 +    for (int i = 0; i < sessions; i++) {
 +        const char *session_id = sessions_list[i];
-+#else
-     setutent();
-     while (NULL != (ut = getutent())) {
-+#endif
-         py_tuple = NULL;
-         py_user_proc = NULL;
-+    #ifdef SYSTEMD_LINUX
++        py_tuple = NULL;
++        py_user_proc = NULL;
 +        py_user_proc = Py_True;
-+    #else
-         if (ut->ut_type == USER_PROCESS)
-             py_user_proc = Py_True;
-         else
-             py_user_proc = Py_False;
-+    #endif
 +
-+    #ifdef SYSTEMD_LINUX
 +        char *username = NULL;
-+        if (sd_session_get_username(session_id, &username) < 0)
++        if ((ret = sd_session_get_username(session_id, &username)) < 0) {
++            set_systemd_errno("sd_session_get_username", ret);
 +            goto error;
++        }
 +        py_username = PyUnicode_DecodeFSDefault(username);
 +        free(username);
-+    #else
-         py_username = PyUnicode_DecodeFSDefault(ut->ut_user);
-+    #endif
-         if (! py_username)
-             goto error;
++        if (! py_username)
++            goto error;
 +
-+    #ifdef SYSTEMD_LINUX
 +        char *tty = NULL;
 +        if (sd_session_get_tty(session_id, &tty) < 0) {
-+            py_tty = PyUnicode_DecodeFSDefault("n/a");
++            py_tty = PyUnicode_DecodeFSDefault("");
 +        } else {
 +            py_tty = PyUnicode_DecodeFSDefault(tty);
 +            free(tty);
 +        }
-+    #else
-         py_tty = PyUnicode_DecodeFSDefault(ut->ut_line);
-+    #endif
-         if (! py_tty)
-             goto error;
-+    #ifdef SYSTEMD_LINUX
-+        char *hostname = NULL;
-+        if (sd_session_get_remote_host(session_id, &hostname) < 0)
++        if (! py_tty)
 +            goto error;
-+        py_hostname = PyUnicode_DecodeFSDefault(hostname);
-+        free(hostname);
-+    #else
-         py_hostname = PyUnicode_DecodeFSDefault(ut->ut_host);
-+    #endif
-         if (! py_hostname)
-             goto error;
- 
-+    #ifdef SYSTEMD_LINUX
++        char *hostname = NULL;
++	if (sd_session_get_remote_host(session_id, &hostname) < 0) {
++            py_hostname =  PyUnicode_DecodeFSDefault("");
++        }
++        else {
++            py_hostname = PyUnicode_DecodeFSDefault(hostname);
++            free(hostname);
++        }
++        if (! py_hostname)
++            goto error;
++
 +        uint64_t usec = 0;
-+        if (sd_session_get_start_time(session_id, &usec) < 0)
-+           goto error;
++        if ((ret = sd_session_get_start_time(session_id, &usec)) < 0) {
++            set_systemd_errno("sd_session_get_start_time", ret);
++            goto error;
++        }
 +        tstamp = (double)usec / 1000000.0;
-+    #else
-+        tstamp = (double)ut->ut_tv.tv_sec;
-+    #endif
 +
-+    #ifdef SYSTEMD_LINUX
-+        if (sd_session_get_leader(session_id, &pid) < 0)
-+           goto error;
-+    #else
-+        pid = ut->ut_pid;
-+    #endif
++        if ((ret = sd_session_get_leader(session_id, &pid)) < 0) {
++            set_systemd_errno("sd_session_get_leader", ret);
++            goto error;
++        }
 +
-         py_tuple = Py_BuildValue(
-             "OOOdO" _Py_PARSE_PID,
-             py_username,              // username
-             py_tty,                   // tty
-             py_hostname,              // hostname
--            (double)ut->ut_tv.tv_sec,  // tstamp
++        py_tuple = Py_BuildValue(
++            "OOOdO" _Py_PARSE_PID,
++            py_username,              // username
++            py_tty,                   // tty
++            py_hostname,              // hostname
 +            tstamp,                   // tstamp
-             py_user_proc,             // (bool) user process
--            ut->ut_pid                // process id
++            py_user_proc,             // (bool) user process
 +            pid                       // process id
-         );
-         if (! py_tuple)
-             goto error;
-@@ -408,8 +472,15 @@ psutil_users(PyObject *self, PyObject *a
-         Py_CLEAR(py_tty);
-         Py_CLEAR(py_hostname);
-         Py_CLEAR(py_tuple);
-+    #ifdef SYSTEMD_LINUX
-+        free (sessions_list[i]);
-+    #endif
-     }
-+#ifdef SYSTEMD_LINUX
++        );
++        if (! py_tuple)
++            goto error;
++        if (PyList_Append(py_retlist, py_tuple))
++            goto error;
++        Py_CLEAR(py_username);
++        Py_CLEAR(py_tty);
++        Py_CLEAR(py_hostname);
++        Py_CLEAR(py_tuple);
++        free(sessions_list[i]);
++    }
 +    free(sessions_list);
-+#else
-     endutent();
-+#endif
-     return py_retlist;
++    return py_retlist;
++
++error:
++    Py_XDECREF(py_username);
++    Py_XDECREF(py_tty);
++    Py_XDECREF(py_hostname);
++    Py_XDECREF(py_tuple);
++    Py_DECREF(py_retlist);
++    if (sessions_list)
++        free(sessions_list);
++    return NULL;
++}
++
++static PyObject *
++psutil_users_utmp(PyObject *self, PyObject *args) {
+     struct utmp *ut;
+     PyObject *py_retlist = PyList_New(0);
+     PyObject *py_tuple = NULL;
+@@ -512,7 +682,8 @@ static PyMethodDef mod_methods[] = {
+ #endif
+     // --- system related functions
+     {"disk_partitions", psutil_disk_partitions, METH_VARARGS},
+-    {"users", psutil_users, METH_VARARGS},
++    {"users_systemd", psutil_users_systemd, METH_VARARGS},
++    {"users_utmp", psutil_users_utmp, METH_VARARGS},
+     {"net_if_duplex_speed", psutil_net_if_duplex_speed, METH_VARARGS},
  
- error:
-@@ -418,7 +489,11 @@ error:
-     Py_XDECREF(py_hostname);
-     Py_XDECREF(py_tuple);
-     Py_DECREF(py_retlist);
-+#ifdef SYSTEMD_LINUX
-+    free(sessions_list);
-+#else
-     endutent();
-+#endif
-     return NULL;
- }
- 
-Index: psutil-5.9.5/setup.py
+     // --- linux specific
+Index: psutil-5.9.5/psutil/_pslinux.py
 ===================================================================
---- psutil-5.9.5.orig/setup.py
-+++ psutil-5.9.5/setup.py
-@@ -184,6 +184,20 @@ def unix_can_compile(c_code):
-         shutil.rmtree(tempdir)
+--- psutil-5.9.5.orig/psutil/_pslinux.py
++++ psutil-5.9.5/psutil/_pslinux.py
+@@ -1550,7 +1550,9 @@ def sensors_battery():
+ def users():
+     """Return currently connected users as a list of namedtuples."""
+     retlist = []
+-    rawlist = cext.users()
++    rawlist = cext.users_systemd()
++    if rawlist is None:
++        rawlist = cext.users_utmp()
+     for item in rawlist:
+         user, tty, hostname, tstamp, user_process, pid = item
+         # note: the underlying C function includes entries about
+Index: psutil-5.9.5/psutil/tests/test_linux.py
+===================================================================
+--- psutil-5.9.5.orig/psutil/tests/test_linux.py
++++ psutil-5.9.5/psutil/tests/test_linux.py
+@@ -1519,25 +1519,27 @@ class TestMisc(PsutilTestCase):
+                 psutil._pslinux.boot_time)
+             assert m.called
  
+-    def test_users_mocked(self):
++    def test_users_utmp_mocked(self):
+         # Make sure ':0' and ':0.0' (returned by C ext) are converted
+         # to 'localhost'.
+-        with mock.patch('psutil._pslinux.cext.users',
+-                        return_value=[('giampaolo', 'pts/2', ':0',
+-                                       1436573184.0, True, 2)]) as m:
+-            self.assertEqual(psutil.users()[0].host, 'localhost')
+-            assert m.called
+-        with mock.patch('psutil._pslinux.cext.users',
+-                        return_value=[('giampaolo', 'pts/2', ':0.0',
+-                                       1436573184.0, True, 2)]) as m:
+-            self.assertEqual(psutil.users()[0].host, 'localhost')
+-            assert m.called
+-        # ...otherwise it should be returned as-is
+-        with mock.patch('psutil._pslinux.cext.users',
+-                        return_value=[('giampaolo', 'pts/2', 'foo',
+-                                       1436573184.0, True, 2)]) as m:
+-            self.assertEqual(psutil.users()[0].host, 'foo')
+-            assert m.called
++        with mock.patch('psutil._pslinux.cext.users_systemd',
++                        return_value=None):
++            with mock.patch('psutil._pslinux.cext.users_utmp',
++                            return_value=[('giampaolo', 'pts/2', ':0',
++                                           1436573184.0, True, 2)]) as m:
++                self.assertEqual(psutil.users()[0].host, 'localhost')
++                assert m.called
++            with mock.patch('psutil._pslinux.cext.users_utmp',
++                            return_value=[('giampaolo', 'pts/2', ':0.0',
++                                           1436573184.0, True, 2)]) as m:
++                self.assertEqual(psutil.users()[0].host, 'localhost')
++                assert m.called
++            # ...otherwise it should be returned as-is
++            with mock.patch('psutil._pslinux.cext.users_utmp',
++                            return_value=[('giampaolo', 'pts/2', 'foo',
++                                           1436573184.0, True, 2)]) as m:
++                self.assertEqual(psutil.users()[0].host, 'foo')
++                assert m.called
  
-+def get_systemd_version():
-+    r = subprocess.run(["systemctl", "--version"], capture_output=True)
-+    if r.returncode != 0:
-+        return 0
-+    out = r.stdout.split()
-+    if len(out) < 2:
-+        return 0
-+    version = out[1]
-+    try:
-+        return int(version)
-+    except ValueError:
-+        return 0
+     def test_procfs_path(self):
+         tdir = self.get_testfn()
+Index: psutil-5.9.5/psutil/tests/test_memleaks.py
+===================================================================
+--- psutil-5.9.5.orig/psutil/tests/test_memleaks.py
++++ psutil-5.9.5/psutil/tests/test_memleaks.py
+@@ -486,6 +486,14 @@ class TestModuleFunctionsLeaks(TestMemor
+             name = next(psutil.win_service_iter()).name()
+             self.execute(lambda: cext.winservice_query_descr(name))
+ 
++    if LINUX:
 +
++        def test_users_systemd(self):
++            self.execute(cext.users_systemd)
 +
- if WINDOWS:
-     def get_winver():
-         maj, min = sys.getwindowsversion()[0:2]
-@@ -302,10 +316,18 @@ elif LINUX:
-     if not unix_can_compile("#include <linux/ethtool.h>"):
-         macros.append(("PSUTIL_ETHTOOL_MISSING_TYPES", 1))
- 
-+    libraries = []
-+    # Systemd >= 254 can replace utmp. See:
-+    # https://github.com/thkukuk/utmpx/blob/main/utmp-to-logind.md
-+    if get_systemd_version() >= 254:
-+        macros.append(("SYSTEMD_LINUX", 1))
-+        libraries.append("systemd")
++        def test_users_utmp(self):
++            self.execute(cext.users_utmp)
 +
-     macros.append(("PSUTIL_LINUX", 1))
-     ext = Extension(
-         'psutil._psutil_linux',
-         sources=sources + ['psutil/_psutil_linux.c'],
-+        libraries=libraries,
-         define_macros=macros,
-         **py_limited_api)
  
+ if __name__ == '__main__':
+     from psutil.tests.runner import run_from_name
