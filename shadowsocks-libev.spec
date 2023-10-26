@@ -57,6 +57,7 @@ BuildRequires:  asciidoc
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(systemd)
+Requires(pre):  shadow
 Recommends:     shadowsocks-v2ray-plugin
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
@@ -153,6 +154,10 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel@
 %service_add_pre %{name}-nat@.service
 %service_add_pre %{name}-redir@.service
 %service_add_pre %{name}-tunnel@.service
+getent group shadowsocks >/dev/null || %{_sbindir}/groupadd --system shadowsocks
+getent passwd shadowsocks >/dev/null || %{_sbindir}/useradd --system -c "shadowsocks User" \
+         -d %{_localstatedir}/shadowsocks -m -g shadowsocks -s %{_sbindir}/nologin \
+         shadowsocks
 
 %post
 %service_add_post %{name}-server.service
@@ -166,6 +171,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel@
 %service_add_post %{name}-nat@.service
 %service_add_post %{name}-redir@.service
 %service_add_post %{name}-tunnel@.service
+chown root:shadowsocks %{_sysconfdir}/shadowsocks -R
 
 %preun
 %service_del_preun %{name}-server.service

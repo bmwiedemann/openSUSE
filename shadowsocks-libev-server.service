@@ -21,6 +21,8 @@ Type=forking
 PIDFile=/var/run/shadowsocks-libev-server.pid
 ExecStart=/usr/bin/ss-server -c /etc/shadowsocks/shadowsocks-libev-config.json -f /var/run/shadowsocks-libev-server.pid -u --fast-open
 Restart=on-failure
+User=shadowsocks
+Group=shadowsocks
 
 [Install]
 WantedBy=multi-user.target

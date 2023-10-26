@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 06:50:28 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix boo#1216372 and boo#1216373, run systemd service as a dedicated user and group
+
+-------------------------------------------------------------------
 Mon May  8 11:30:20 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Require the mbedtls-devel version to be lower than 3.0.0
