@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 25 06:16:21 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch(bsc#1216212,bsc#1214466)
+  * qclib-sys-kernel-security-lockdown-enabled.patch
+
+-------------------------------------------------------------------
 Mon Oct 16 11:13:48 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Reverted back the if condition (bsc#1216212)

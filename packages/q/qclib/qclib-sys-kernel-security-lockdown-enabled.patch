@@ -1,0 +1,51 @@
+commit 73f9792009be42fe652ae897d390852f18bf445a
+Author: Stefan Raspl <raspl@linux.ibm.com>
+Date:   Thu Sep 7 22:47:16 2023 +0200
+
+    Handle systems with /sys/kernel/security/lockdown enabled
+    
+    Hypfs becomes inaccessible when /sys/kernel/security/lockdown is enabled, as
+    is the case with e.g. secure booted systems.
+    To reproduce, run
+    
+      echo integrity > /sys/kernel/security/lockdown
+    
+    Since qclib conceptually only requires access to /proc/sysinfo at a minimum,
+    we simply skip hypfs in this case.
+    
+    Signed-off-by: Stefan Raspl <raspl@linux.ibm.com>
+
+diff --git a/query_capacity_hypfs.c b/query_capacity_hypfs.c
+index 9845e88b..3907c269 100644
+--- a/query_capacity_hypfs.c
++++ b/query_capacity_hypfs.c
+@@ -617,7 +617,7 @@ static int qc_read_diag_file(struct qc_handle *hdl, const char *dbgfs, struct hy
+ out_fail:
+ 	free(priv->data);
+ 	priv->data = NULL;
+-	rc = -1;
++	rc = 1;
+ out:
+ 	free(fpath);
+ 
+@@ -942,14 +942,18 @@ static int qc_hypfs_open(struct qc_handle *hdl, char **buf) {
+ 				/* if z/VM diag file exists, the LPAR diag file's content
+ 				   isn't valid, so we're done after handling the z/VM file */
+ 				priv->diag = QC_HYPFS_ZVM;
+-				if ((rc = qc_read_diag_file(hdl, dbgfs, priv)) != 0)
++				if ((rc = qc_read_diag_file(hdl, dbgfs, priv)) != 0) {
++					rc = 0; // not a fatal error - we just skip this source
+ 					goto out;
++				}
+ 				priv->avail = HYPFS_AVAIL_BIN_ZVM;
+ 			} else {
+ 				qc_debug(hdl, "No z/VM diag file found, must be an LPAR\n");
+ 				priv->diag = QC_HYPFS_LPAR;
+-				if ((rc = qc_read_diag_file(hdl, dbgfs, priv)) != 0)
++				if ((rc = qc_read_diag_file(hdl, dbgfs, priv)) != 0) {
++					rc = 0; // not a fatal error - we just skip this source
+ 					goto out;
++				}
+ 				priv->avail = HYPFS_AVAIL_BIN_LPAR;
+ 			}
+ 		} else {

@@ -36,6 +36,9 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  glibc-devel
 %endif
 
+#
+Patch001:       qclib-sys-kernel-security-lockdown-enabled.patch
+
 %description
 qclib provides a C API for extraction of system information for Linux on z
 Systems.
