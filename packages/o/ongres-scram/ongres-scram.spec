@@ -26,6 +26,7 @@ License:        BSD-2-Clause
 URL:            https://github.com/ongres/%{upstream_name}
 Source0:        https://github.com/ongres/%{upstream_name}/archive/%{upstream_version}/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.ongres.stringprep:saslprep)
@@ -65,6 +66,8 @@ find \( -name '*.jar' -o -name '*.class' \) -delete
 
 %pom_remove_dep com.google.code.findbugs:annotations
 sed -i 's/.*SuppressFBWarnings.*//' common/src/main/java/com/ongres/scram/common/message/ServerFinalMessage.java
+
+%pom_xpath_set "pom:project/pom:properties/pom:java.version" "1.8"
 
 %build
 %{mvn_build} -s -f -- -Dsource=8

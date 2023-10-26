@@ -23,4 +23,12 @@
     <comment>Remove dependency of findbugs</comment>
     <requestid>1113803</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ea72d692227b8946bbb81c76c230af2f</srcmd5>
+    <version>MACRO</version>
+    <time>1698333301</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120529</requestid>
+  </revision>
 </revisionlist>
