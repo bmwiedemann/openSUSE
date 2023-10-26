@@ -146,6 +146,34 @@ find . -name "*.jar" -print -delete
 
 %pom_xpath_inject "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'junit' ]" "<scope>test</scope>" xstream-benchmark
 
+%pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'jdk12-ge' ]"
+
+%pom_xpath_inject "pom:project/pom:profiles" "
+    <profile>
+      <id>jdk18-ge</id>
+      <activation>
+        <jdk>[18,)</jdk>
+      </activation>
+      <properties>
+        <version.java.5>1.8</version.java.5>
+        <version.java.6>1.8</version.java.6>
+        <version.java.source>1.8</version.java.source>
+        <version.java.target>1.8</version.java.target>
+      </properties>
+    </profile>
+    <profile>
+      <id>jdk12-ge-18</id>
+      <activation>
+        <jdk>[12,18)</jdk>
+      </activation>
+      <properties>
+        <version.java.5>1.7</version.java.5>
+        <version.java.6>1.7</version.java.6>
+        <version.java.source>1.7</version.java.source>
+        <version.java.target>1.7</version.java.target>
+      </properties>
+    </profile>"
+
 %if %{without hibernate}
 %pom_disable_module xstream-hibernate
 %endif
