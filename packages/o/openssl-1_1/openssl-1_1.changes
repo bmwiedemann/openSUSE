@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 19 15:03:14 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Performance enhancements for cryptography from OpenSSL 3.x
+  [jsc#PED-5086, jsc#PED-3514]
+  * Add patches:
+    - openssl-ec-Use-static-linkage-on-nistp521-felem_-square-mul-.patch
+    - openssl-ec-56-bit-Limb-Solinas-Strategy-for-secp384r1.patch
+    - openssl-ec-powerpc64le-Add-asm-implementation-of-felem_-squa.patch
+    - openssl-ecc-Remove-extraneous-parentheses-in-secp384r1.patch
+    - openssl-powerpc-ecc-Fix-stack-allocation-secp384r1-asm.patch
+    - openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 07:15:29 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Displays "fips" in the version string (bsc#1215215)

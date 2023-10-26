@@ -177,6 +177,14 @@ Patch106:       openssl-s_client-check-ocsp-status.patch
 Patch107:       openssl-dont-pass-zero-length-input-to-EVP_Cipher.patch
 #PATCH-FIX-SUSE bsc#1215215 FIPS: Add "fips" to version string
 Patch108:       openssl-1_1-fips-bsc1215215_fips_in_version_string.patch
+# PATCH-FIX-UPSTREAM jsc#PED-5086, jsc#PED-3514
+# POWER10 performance enhancements for cryptography
+Patch109:       openssl-ec-Use-static-linkage-on-nistp521-felem_-square-mul-.patch
+Patch110:       openssl-ec-56-bit-Limb-Solinas-Strategy-for-secp384r1.patch
+Patch111:       openssl-ec-powerpc64le-Add-asm-implementation-of-felem_-squa.patch
+Patch112:       openssl-ecc-Remove-extraneous-parentheses-in-secp384r1.patch
+Patch113:       openssl-powerpc-ecc-Fix-stack-allocation-secp384r1-asm.patch
+Patch114:       openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
