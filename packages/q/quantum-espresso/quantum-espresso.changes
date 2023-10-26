@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:06:05 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Thu Sep  1 10:03:54 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add quantum-espresso-rpmlintrc file to disable false positives

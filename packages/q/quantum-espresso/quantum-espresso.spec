@@ -1,7 +1,7 @@
 #
-# spec file for package quantum-espresso
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,39 +40,22 @@ ExclusiveArch:  x86_64
 %global mpi_flavor mvapich2
 %endif
 
-%if "%{flavor}" == "openmpi1"
-%global mpi_flavor openmpi
-%define mpi_vers 1
-%{?DisOMPI1}
-%endif
-
-%if "%{flavor}" == "openmpi2"
-%global mpi_flavor openmpi
-%define mpi_vers 2
-%{?DisOMPI2}
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%global mpi_flavor openmpi
-%define mpi_vers 3
-%{?DisOMPI3}
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
 %define mpi_vers 4
 %{?DisOMPI4}
 %endif
 
+%if "%{flavor}" == "openmpi5"
+%global mpi_flavor openmpi
+%define mpi_vers 5
+%{?DisOMPI5}
+%endif
+
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
-# For compatibility package names
-%if "%{flavor}" == "openmpi1" && 0%{?suse_version} <= 1500
-%define mpi_ext %{nil}
-%else
 %define mpi_ext %{?mpi_vers}
-%endif
 
 %if %{without mpi}
  %define my_prefix %_prefix
@@ -119,14 +102,6 @@ BuildRequires:  lapack-devel
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
 BuildRequires:  fftw3-mpi-devel
 BuildRequires:  libscalapack2-%{mpi_flavor}%{?mpi_ext}-devel
-%if 0%{?suse_version} >= 1550 && "%{mpi_flavor}" == "openmpi"
-# hackish workaround for multiple openmpiX-config all providing openmpi-runtime-config
-BuildRequires:  %{mpi_flavor}%{?mpi_ext}-config
-%endif
-%if "%{flavor}" == "openmpi1" && 0%{?suse_version} <= 1550
-Provides:       %{pname}-openmpi = %{version}-%{release}
-Obsoletes:      %{pname}-openmpi < %{version}-%{release}
-%endif
 %else
 BuildRequires:  fftw3-devel
 %endif
