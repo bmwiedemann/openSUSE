@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Source1:        %{name}.png
 Source2:        %{name}.desktop
 Patch0:         %{name}-xstream.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-tools
 BuildRequires:  maven-local
 BuildRequires:  update-desktop-files
@@ -100,7 +100,7 @@ sed -i -e 's#tasks\>#target\>#g' pom.xml
 %endif
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -f -- -Dmaven.compiler.release=9 -Dsource=9
 
 %install
 %mvn_install

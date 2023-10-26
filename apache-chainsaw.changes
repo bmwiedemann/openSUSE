@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 11:25:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 9
+
+-------------------------------------------------------------------
 Mon Mar 21 05:41:30 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-antrun-plugin >= 3.0.0
