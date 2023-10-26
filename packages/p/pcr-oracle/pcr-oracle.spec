@@ -25,6 +25,8 @@ License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://github.com/okirch/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FEATURE-UPSTREAM systemd-boot.patch gh#okirch/pcr-oracle#31
+Patch01:        systemd-boot.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel
 Requires:       libtss2-tcti-device0
@@ -36,7 +38,7 @@ Configuration Registers following an update of system components
 like shim, grub, etc.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # beware, this is not autoconf

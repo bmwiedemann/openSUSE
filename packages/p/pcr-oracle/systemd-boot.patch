@@ -1,0 +1,1091 @@
+From 0baab1fc20a34e298466e4f87ad23701b46e6096 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 20 Sep 2023 10:12:21 +0200
+Subject: [PATCH 01/10] testcase: iterate over s instead
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/testcase.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/testcase.c b/src/testcase.c
+index bae3a69..f74238b 100644
+--- a/src/testcase.c
++++ b/src/testcase.c
+@@ -453,7 +453,7 @@ canon_path(const char *path)
+ 		++path;
+ 
+ 	save_path = strdup(path);
+-	for (s = save_path; *comp; ) {
++	for (s = save_path; *s; ) {
+ 		comp = s;
+ 		while (*s) {
+ 			if (*s == '/') {
+
+From 2aec1cc9b0fb095f4be28f0895fb3fc2f73935d4 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 21 Sep 2023 18:38:12 +0200
+Subject: [PATCH 02/10] util: add print_base64_value function
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/util.c | 37 +++++++++++++++++++++++++++++++++++++
+ src/util.h |  2 ++
+ 2 files changed, 39 insertions(+)
+
+diff --git a/src/util.c b/src/util.c
+index 04d53f4..2c90315 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -22,6 +22,7 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <iconv.h>
++#include <assert.h>
+ 
+ #include "util.h"
+ #include "digest.h"
+@@ -188,6 +189,42 @@ print_octet_string(const unsigned char *data, unsigned int len)
+ 
+ }
+ 
++const char *
++print_base64_value(const unsigned char *data, unsigned int len)
++{
++	static char buffer[2048];
++	static const char table[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
++	unsigned int b64_len, i;
++	char *b;
++
++	b64_len = 4 * ((len + 2) / 3) + 1;
++	assert(b64_len < 2048);
++
++	b = buffer;
++	for (i = 0; (i + 2) < len; i += 3) {
++		*b++ = table[(data[i] >> 2) & 63];
++		*b++ = table[((data[i] & 3) << 4 | data[i + 1] >> 4) & 63];
++		*b++ = table[((data[i + 1] & 15) << 2 | data[i + 2] >> 6) & 63];
++		*b++ = table[data[i + 2] & 63];
++	}
++
++	if ((i + 2) == len) {
++		*b++ = table[(data[i] >> 2) & 63];
++		*b++ = table[((data[i] & 3) << 4 | data[i + 1] >> 4) & 63];
++		*b++ = table[((data[i + 1] & 15) << 2) & 63];
++		*b++ = '=';
++	} else if ((i + 1) == len) {
++		*b++ = table[(data[i] >> 2) & 63];
++		*b++ = table[((data[i] & 3) << 4) & 63];
++		*b++ = '=';
++		*b++ = '=';
++	}
++
++	*b = 0;
++
++	return buffer;
++}
++
+ const tpm_evdigest_t *
+ parse_digest(const char *string, const char *algo)
+ {
+diff --git a/src/util.h b/src/util.h
+index 6f89f4b..79f54cb 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -129,6 +129,8 @@ extern const tpm_evdigest_t *parse_digest(const char *string, const char *algo);
+ extern void		hexdump(const void *data, size_t size, void (*)(const char *, ...), unsigned int indent);
+ extern const char *	print_octet_string(const unsigned char *data, unsigned int len);
+ 
++extern const char *     print_base64_value(const unsigned char *data, unsigned int len);
++
+ extern bool		__convert_from_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes);
+ extern bool		__convert_to_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes);
+ 
+
+From 5841fd76d1483af24a71ce022495f6961947eec8 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Mon, 25 Sep 2023 12:52:44 +0200
+Subject: [PATCH 03/10] util: add print_hex_string function
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/util.c | 22 ++++++++++++++++++++++
+ src/util.h |  4 +++-
+ 2 files changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/src/util.c b/src/util.c
+index 2c90315..4d95b30 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -189,6 +189,28 @@ print_octet_string(const unsigned char *data, unsigned int len)
+ 
+ }
+ 
++const char *
++print_hex_string(const unsigned char *data, unsigned int len)
++{
++	static char buffer[2 * 64 + 1];
++
++	if (len <= 64) {
++		unsigned int i;
++		char *s;
++
++		s = buffer;
++		for (i = 0; i < len; ++i) {
++			sprintf(s, "%02x", data[i]);
++			s += 2;
++		}
++		*s = '\0';
++	} else {
++		snprintf(buffer, sizeof(buffer), "<%u bytes of data>", len);
++	}
++
++	return buffer;
++}
++
+ const char *
+ print_base64_value(const unsigned char *data, unsigned int len)
+ {
+diff --git a/src/util.h b/src/util.h
+index 79f54cb..5168f19 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -129,7 +129,9 @@ extern const tpm_evdigest_t *parse_digest(const char *string, const char *algo);
+ extern void		hexdump(const void *data, size_t size, void (*)(const char *, ...), unsigned int indent);
+ extern const char *	print_octet_string(const unsigned char *data, unsigned int len);
+ 
+-extern const char *     print_base64_value(const unsigned char *data, unsigned int len);
++extern const char *	print_hex_string(const unsigned char *data, unsigned int len);
++
++extern const char *	print_base64_value(const unsigned char *data, unsigned int len);
+ 
+ extern bool		__convert_from_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes);
+ extern bool		__convert_to_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes);
+
+From 683473448c70ce8fcc87caff5d13647ab264ecbe Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Mon, 25 Sep 2023 13:06:04 +0200
+Subject: [PATCH 04/10] rsa: add tpm_rsa_key_public_digest function
+
+This function convert the public key into DER format and calculate the
+SHA256 hash of it.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/rsa.c | 32 ++++++++++++++++++++++++++++++++
+ src/rsa.h |  1 +
+ 2 files changed, 33 insertions(+)
+
+diff --git a/src/rsa.c b/src/rsa.c
+index 4d3883e..f3f694f 100644
+--- a/src/rsa.c
++++ b/src/rsa.c
+@@ -32,6 +32,7 @@
+ 
+ #include "util.h"
+ #include "rsa.h"
++#include "digest.h"
+ 
+ struct tpm_rsa_key {
+ 	bool		is_private;
+@@ -324,3 +325,34 @@ tpm_rsa_key_to_tss2(const tpm_rsa_key_t *key)
+ 	return rsa_pubkey_alloc(n, e, key->path);
+ }
+ 
++const tpm_evdigest_t *
++tpm_rsa_key_public_digest(tpm_rsa_key_t *pubkey) {
++	unsigned int der_size;
++	unsigned char *der, *bder = NULL;
++	const tpm_algo_info_t *algo;
++	const tpm_evdigest_t *digest = NULL;
++
++	/* Convert the public key into DER format */
++	der_size = i2d_PublicKey(pubkey->pkey, NULL);
++	if (der_size < 0) {
++		error("%s: cannot convert public key into DER format", pubkey->path);
++		return NULL;
++	}
++
++	der = bder = malloc(der_size);
++	der_size = i2d_PublicKey(pubkey->pkey, &der);
++	if (der_size < 0) {
++		error("%s: cannot convert public key into DER format", pubkey->path);
++		goto out;
++	}
++
++	/* Hash the public key */
++	algo = digest_by_name("sha256");
++	digest = digest_compute(algo, bder, der_size);
++
++ out:
++	if (bder)
++		free(bder);
++
++	return digest;
++}
+diff --git a/src/rsa.h b/src/rsa.h
+index 0d73ee8..49c0bb4 100644
+--- a/src/rsa.h
++++ b/src/rsa.h
+@@ -37,4 +37,5 @@ extern int		tpm_rsa_sign(const tpm_rsa_key_t *,
+ 
+ extern TPM2B_PUBLIC *	tpm_rsa_key_to_tss2(const tpm_rsa_key_t *key);
+ 
++extern const tpm_evdigest_t * tpm_rsa_key_public_digest(tpm_rsa_key_t *pubkey);
+ #endif /* RSA_H */
+
+From 0b0c0d310cdbf779bbfae72329fe0ffbc9c5b2b7 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 27 Sep 2023 15:09:31 +0200
+Subject: [PATCH 05/10] util: remove duplicate code
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/util.c | 35 +++++++++++++----------------------
+ 1 file changed, 13 insertions(+), 22 deletions(-)
+
+diff --git a/src/util.c b/src/util.c
+index 4d95b30..aab9f9d 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -310,15 +310,13 @@ hexdump(const void *data, size_t size, void (*print_fn)(const char *, ...), unsi
+ 	}
+ }
+ 
+-/*
+- * Conversion between UTF-8 and UTF-16LE for EFI event log
+- */
++
+ bool
+-__convert_from_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes)
++__convert(const char *tocode, const char *fromcode, char *in_string, size_t in_bytes, char *out_string, size_t out_bytes)
+ {
+ 	iconv_t *ctx;
+ 
+-	ctx = iconv_open("utf8", "utf16le");
++	ctx = iconv_open(tocode, fromcode);
+ 
+ 	while (in_bytes) {
+ 		size_t converted;
+@@ -336,26 +334,19 @@ __convert_from_utf16le(char *in_string, size_t in_bytes, char *out_string, size_
+ 	return true;
+ }
+ 
++/*
++ * Conversion between UTF-8 and UTF-16LE for EFI event log
++ */
+ bool
+-__convert_to_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes)
++__convert_from_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes)
+ {
+-	iconv_t *ctx;
+-
+-	ctx = iconv_open("utf16le", "utf8");
+-
+-	while (in_bytes) {
+-		size_t converted;
+-
+-		converted = iconv(ctx,
+-				&in_string, &in_bytes,
+-				&out_string, &out_bytes);
+-		if (converted == (size_t) -1) {
+-			perror("iconv");
+-			return false;
+-		}
+-	}
++	return __convert("utf8", "utf16le", in_string, in_bytes, out_string, out_bytes);
++}
+ 
+-	return true;
++bool
++__convert_to_utf16le(char *in_string, size_t in_bytes, char *out_string, size_t out_bytes)
++{
++	return __convert("utf16le", "utf8", in_string, in_bytes, out_string, out_bytes);
+ }
+ 
+ /*
+
+From 37edd2b4fdac5b037b68215dfd1546478c359cd5 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 28 Sep 2023 16:19:51 +0200
+Subject: [PATCH 06/10] eventlog: parse sd-boot events for PCR12
+
+Systemd boot can extend PCR12 with the initrd line.  This is stored in
+UTF16, that also includes a double 0x00 at the end.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/eventlog.c | 59 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ src/eventlog.h |  6 +++++
+ 2 files changed, 64 insertions(+), 1 deletion(-)
+
+diff --git a/src/eventlog.c b/src/eventlog.c
+index 4f4ed44..4f2d3f4 100644
+--- a/src/eventlog.c
++++ b/src/eventlog.c
+@@ -551,7 +551,7 @@ tpm_event_decode_uuid(const unsigned char *data)
+ }
+ 
+ /*
+- * Handle IPL events, which grub2 uses to hide its stuff in
++ * Handle IPL events, which grub2 and sd-boot uses to hide its stuff in
+  */
+ static void
+ __tpm_event_grub_file_destroy(tpm_parsed_event_t *parsed)
+@@ -764,6 +764,60 @@ __tpm_event_shim_event_parse(tpm_event_t *ev, tpm_parsed_event_t *parsed, const
+ 	return true;
+ }
+ 
++static void
++__tpm_event_systemd_destroy(tpm_parsed_event_t *parsed)
++{
++	drop_string(&parsed->systemd_event.string);
++}
++
++static const char *
++__tpm_event_systemd_describe(const tpm_parsed_event_t *parsed)
++{
++	static char buffer[1024];
++	char data[768];
++	unsigned int len;
++
++	/* It is in UTF16, and also include two '\0' at the end */
++	len = parsed->systemd_event.len >> 1;
++	if (len > sizeof(data))
++		len = sizeof(data);
++	__convert_from_utf16le(parsed->systemd_event.string, parsed->systemd_event.len, data, len);
++	data[len] = '\0';
++
++	snprintf(buffer, sizeof(buffer), "systemd boot event %s", data);
++	return buffer;
++}
++
++static const tpm_evdigest_t *
++__tpm_event_systemd_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *parsed, tpm_event_log_rehash_ctx_t *ctx)
++{
++	if (parsed->systemd_event.string == NULL)
++		return NULL;
++
++	/* TODO: The hashed string (UTF16) should be the new initrd command */
++	return digest_compute(ctx->algo, parsed->systemd_event.string, parsed->systemd_event.len);
++}
++
++/*
++ * This event holds stuff like
++ *  initrd = ....
++ */
++static bool
++__tpm_event_systemd_event_parse(tpm_event_t *ev, tpm_parsed_event_t *parsed, const char *value, unsigned int len)
++{
++	struct systemd_event *evspec = &parsed->systemd_event;
++
++	evspec->len = len;
++	evspec->string = malloc(len);
++	memcpy(evspec->string, value, len);
++
++	parsed->event_subtype = SYSTEMD_EVENT_VARIABLE;
++	parsed->destroy = __tpm_event_systemd_destroy;
++	parsed->rehash = __tpm_event_systemd_rehash;
++	parsed->describe = __tpm_event_systemd_describe;
++
++	return true;
++}
+ 
+ static bool
+ __tpm_event_parse_ipl(tpm_event_t *ev, tpm_parsed_event_t *parsed, buffer_t *bp)
+@@ -788,6 +842,9 @@ __tpm_event_parse_ipl(tpm_event_t *ev, tpm_parsed_event_t *parsed, buffer_t *bp)
+ 	if (ev->pcr_index == 9)
+ 		return __tpm_event_grub_file_event_parse(ev, parsed, value);
+ 
++	if (ev->pcr_index == 12)
++		return __tpm_event_systemd_event_parse(ev, parsed, value, len);
++
+ 	if (ev->pcr_index == 14)
+ 		return __tpm_event_shim_event_parse(ev, parsed, value);
+ 
+diff --git a/src/eventlog.h b/src/eventlog.h
+index 9acbac4..514fee2 100644
+--- a/src/eventlog.h
++++ b/src/eventlog.h
+@@ -92,6 +92,7 @@ enum {
+ 	GRUB_EVENT_FILE			     = 0x0002,
+ 	GRUB_EVENT_KERNEL_CMDLINE	     = 0x0003,
+ 	SHIM_EVENT_VARIABLE		     = 0x0004,
++	SYSTEMD_EVENT_VARIABLE		     = 0x0005,
+ };
+ 
+ #define EFI_DEVICE_PATH_MAX		16
+@@ -254,6 +255,11 @@ typedef struct tpm_parsed_event {
+ 			char *		efi_partition;
+ 			char *		disk_device;
+ 		} efi_gpt_event;
++
++		struct systemd_event {
++			unsigned int	len;
++			char *		string;
++		} systemd_event;
+ 	};
+ } tpm_parsed_event_t;
+ 
+
+From c032131e7d7e45f31aef85ce1fee76c336963101 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 28 Sep 2023 16:21:47 +0200
+Subject: [PATCH 07/10] Support measurement of empty EFI vars
+
+If secure boot is disabled, the PCR7 is still extended with serialized
+event structs, but without associated data.
+
+This patch support the rehash of emtpy EFI vars if they are associated
+with PCR7.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/bufparser.h    | 19 ++++++++++++++-----
+ src/efi-variable.c |  5 ++++-
+ src/runtime.c      |  2 +-
+ 3 files changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/src/bufparser.h b/src/bufparser.h
+index 0eba6da..3f7c5a6 100644
+--- a/src/bufparser.h
++++ b/src/bufparser.h
+@@ -55,13 +55,19 @@ buffer_skip(buffer_t *bp, unsigned int count)
+ static inline const void *
+ buffer_read_pointer(const buffer_t *bp)
+ {
+-	return bp->data + bp->rpos;
++	if (bp)
++		return bp->data + bp->rpos;
++	else
++		return NULL;
+ }
+ 
+ static inline unsigned int
+ buffer_available(const buffer_t *bp)
+ {
+-	return bp->wpos - bp->rpos;
++	if (bp)
++		return bp->wpos - bp->rpos;
++	else
++		return 0;
+ }
+ 
+ static inline bool
+@@ -206,14 +212,17 @@ buffer_alloc_write(unsigned long size)
+ static inline void
+ buffer_free(buffer_t *bp)
+ {
+-	free(bp);
++	if (bp)
++		free(bp);
+ }
+ 
+ static inline void
+ buffer_free_secret(buffer_t *bp)
+ {
+-	memset(bp->data, 0, bp->size);
+-	free(bp);
++	if (bp) {
++		memset(bp->data, 0, bp->size);
++		free(bp);
++	}
+ }
+ 
+ static inline void *
+diff --git a/src/efi-variable.c b/src/efi-variable.c
+index 0188273..7e9e38b 100644
+--- a/src/efi-variable.c
++++ b/src/efi-variable.c
+@@ -206,7 +206,10 @@ __tpm_event_efi_variable_rehash(const tpm_event_t *ev, const tpm_parsed_event_t
+ 		file_data = runtime_read_efi_variable(var_name);
+ 	}
+ 
+-	if (file_data == NULL) {
++	/* The PCR 7 is always expanded, even if the data is empty */
++	if (file_data == NULL
++	    && ev->event_type != TPM2_EFI_VARIABLE_DRIVER_CONFIG
++	    && ev->pcr_index != 7) {
+ 		if (parsed->efi_variable_event.len == 0) {
+ 			/* The content of the variable doesn't exist during the measurement
+ 			 * and is also not available at runtime. Let's skip this event.
+diff --git a/src/runtime.c b/src/runtime.c
+index f2ae90f..39acb25 100644
+--- a/src/runtime.c
++++ b/src/runtime.c
+@@ -157,7 +157,7 @@ __system_read_efi_variable(const char *var_name)
+ 	}
+ 
+ 	if (result == NULL)
+-		error("Unable to read EFI variable \"%s\"\n", var_name);
++		debug("Unable to read EFI variable \"%s\"\n", var_name);
+ 	else if (testcase_recording)
+ 		testcase_record_efi_variable(testcase_recording, var_name, result);
+ 
+
+From 45a8f1f8becabfe8aa24d933ad71a6e8e4f481ed Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Fri, 6 Oct 2023 09:53:56 +0200
+Subject: [PATCH 08/10] Add pcr_policy_sign_systemd
+
+Similar to pcr_policy_sign, the new function will create a pcr policy
+and sign it, but the output will be a JSON file expected by
+systemd-cryptenroll.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/pcr-policy.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++
+ src/pcr.h        |  2 ++
+ 2 files changed, 52 insertions(+)
+
+diff --git a/src/pcr-policy.c b/src/pcr-policy.c
+index bc882da..dd54ad0 100644
+--- a/src/pcr-policy.c
++++ b/src/pcr-policy.c
+@@ -1538,3 +1538,53 @@ pcr_policy_unseal_tpm2key(const char *input_path, const char *output_path)
+ 
+ 	return okay;
+ }
++
++bool
++pcr_policy_sign_systemd(const tpm_pcr_bank_t *bank, const char *rsakey_path,
++			const char *output_path)
++{
++	bool ok = false;
++	FILE *fp = NULL;
++	tpm_rsa_key_t *rsa_key = NULL;
++        const tpm_evdigest_t *digest;
++	ESYS_CONTEXT *esys_context = tss_esys_context();
++	TPM2B_DIGEST *pcr_policy = NULL;
++	TPMT_SIGNATURE *signed_policy = NULL;
++
++	if (!(fp = fopen(output_path, "w"))) {
++		error("Cannot open systemd JSON file %s: %m\n", output_path);
++		goto out;
++	}
++
++	if (!(rsa_key = tpm_rsa_key_read_private(rsakey_path)))
++		goto out;
++	digest = tpm_rsa_key_public_digest(rsa_key);
++
++	if (!(pcr_policy = __pcr_policy_make(esys_context, bank)))
++		goto out;
++
++	if (!__pcr_policy_sign(rsa_key, pcr_policy, &signed_policy))
++		goto out;
++
++	fprintf(fp, "{\n");
++	fprintf(fp, "\t\"%s\": [\n", bank->algo_name);
++	fprintf(fp, "\t\t\{\n");
++	fprintf(fp, "\t\t\t\"pcrs\": [\n");
++	fprintf(fp, "\t\t\t\t%s\n", print_pcr_mask(bank->pcr_mask));
++	fprintf(fp, "\t\t\t],\n");
++	fprintf(fp, "\t\t\t\"pkfp\": \"%s\",\n", print_hex_string(digest->data, digest->size));
++	fprintf(fp, "\t\t\t\"pol\": \"%s\",\n", print_hex_string(pcr_policy->buffer, pcr_policy->size));
++	fprintf(fp, "\t\t\t\"sig\": \"%s\"\n", print_base64_value(signed_policy->signature.rsassa.sig.buffer, signed_policy->signature.rsassa.sig.size));
++	fprintf(fp, "\t\t\}\n");
++	fprintf(fp, "\t]\n");
++	fprintf(fp, "}\n");
++
++	ok = true;
++
++out:
++	if (rsa_key)
++		tpm_rsa_key_free(rsa_key);
++
++	fclose(fp);
++	return ok;
++}
+diff --git a/src/pcr.h b/src/pcr.h
+index 5138e54..cc0fb0f 100644
+--- a/src/pcr.h
++++ b/src/pcr.h
+@@ -61,6 +61,8 @@ extern bool		pcr_store_public_key(const char *rsakey_path, const char *output_pa
+ extern bool		pcr_policy_sign(const bool tpm2key_fmt, const tpm_pcr_bank_t *bank,
+ 				const char *rsakey_path, const char *input_path,
+ 				const char *output_path, const char *policy_name);
++extern bool		pcr_policy_sign_systemd(const tpm_pcr_bank_t *bank, const char *rsakey_path,
++				const char *output_path);
+ extern bool		pcr_authorized_policy_seal_secret(const bool tpm2key_fmt,
+ 				const char *authorized_policy, const char *input_path,
+ 				const char *output_path);
+
+From 2d135060fee1eff8da74e756ac19dc128691a1f2 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Fri, 6 Oct 2023 10:01:08 +0200
+Subject: [PATCH 09/10] Add --policy-format parameter
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ src/oracle.c | 33 +++++++++++++++++++++++++++------
+ 1 file changed, 27 insertions(+), 6 deletions(-)
+
+diff --git a/src/oracle.c b/src/oracle.c
+index 0a7668e..1db8285 100644
+--- a/src/oracle.c
++++ b/src/oracle.c
+@@ -93,6 +93,7 @@ enum {
+ 	OPT_PCR_POLICY,
+ 	OPT_KEY_FORMAT,
+ 	OPT_POLICY_NAME,
++	OPT_POLICY_FORMAT,
+ };
+ 
+ static struct option options[] = {
+@@ -121,6 +122,7 @@ static struct option options[] = {
+ 	{ "pcr-policy",		required_argument,	0,	OPT_PCR_POLICY },
+ 	{ "key-format",		required_argument,	0,	OPT_KEY_FORMAT },
+ 	{ "policy-name",	required_argument,	0,	OPT_POLICY_NAME },
++	{ "policy-format",	required_argument,	0,	OPT_POLICY_FORMAT },
+ 
+ 	{ NULL }
+ };
+@@ -1008,7 +1010,9 @@ main(int argc, char **argv)
+ 	bool opt_rsa_generate = false;
+ 	char *opt_key_format = NULL;
+ 	char *opt_policy_name = NULL;
++	char *opt_policy_format = NULL;
+ 	bool tpm2key_fmt = false;
++	int systemd_json = false;
+ 	int c, exit_code = 0;
+ 
+ 	while ((c = getopt_long(argc, argv, "dhA:CF:LSZ", options, NULL)) != EOF) {
+@@ -1088,6 +1092,9 @@ main(int argc, char **argv)
+ 		case OPT_POLICY_NAME:
+ 			opt_policy_name = optarg;
+ 			break;
++		case OPT_POLICY_FORMAT:
++			opt_policy_format = optarg;
++			break;
+ 		case 'h':
+ 			usage(0, NULL);
+ 		default:
+@@ -1114,6 +1121,14 @@ main(int argc, char **argv)
+ 	else
+ 		fatal("Unsupported key format \"%s\"\n", opt_key_format);
+ 
++	if (!opt_policy_format || !strcasecmp(opt_policy_format, "grub2"))
++		systemd_json = false;
++	else
++	if (!strcasecmp(opt_policy_format, "systemd"))
++		systemd_json = true;
++	else
++		fatal("Unsupported policy format \"%s\"\n", opt_policy_format);
++
+ 	/* Validate options */
+ 	switch (action) {
+ 	case ACTION_PREDICT:
+@@ -1163,10 +1178,11 @@ main(int argc, char **argv)
+ 	case ACTION_SIGN:
+ 		if (opt_rsa_private_key == NULL)
+ 			usage(1, "You need to specify the --private-key option when signing a policy\n");
+-		if (tpm2key_fmt) {
+-			if (opt_input == NULL)
+-				usage(1, "You need to specify the --input option when signing a policy into a TPM 2.0 Key file\n");
+-		}
++		if (systemd_json && opt_output == NULL)
++			usage(1, "You need to specify the --output option when signing a systemd policy\n");
++		if (tpm2key_fmt && opt_input == NULL)
++			usage(1, "You need to specify the --input option when signing a policy into a TPM 2.0 Key file\n");
++
+ 		pcr_selection = get_pcr_selection_argument(argc, argv, opt_algo);
+ 		end_arguments(argc, argv);
+ 		break;
+@@ -1268,8 +1284,13 @@ main(int argc, char **argv)
+ 			return 1;
+ 	} else
+ 	if (action == ACTION_SIGN) {
+-		if (!pcr_policy_sign(tpm2key_fmt, &pred->prediction, opt_rsa_private_key, opt_input, opt_output, opt_policy_name))
+-			return 1;
++		if (systemd_json) {
++			if (!pcr_policy_sign_systemd(&pred->prediction, opt_rsa_private_key, opt_output))
++				return 1;
++		} else {
++			if (!pcr_policy_sign(tpm2key_fmt, &pred->prediction, opt_rsa_private_key, opt_input, opt_output, opt_policy_name))
++				return 1;
++		}
+ 	}
+ 
+ 	return exit_code;
+
+From 822ae935ada56b11a8e0b6a44d393f24311c91af Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 18 Oct 2023 15:45:47 +0200
+Subject: [PATCH 10/10] Predict PCR12 for systemd-boot
+
+Generate the list of boot entries, sorted using the BLS algorithm (that
+will select the latest kernel).  From this, compose the initrd entry
+that will be used to exted the PCR12 register.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ Makefile.in    |   3 +-
+ src/eventlog.c |  21 ++++-
+ src/sd-boot.c  | 250 +++++++++++++++++++++++++++++++++++++++++++++++++
+ src/sd-boot.h  |  44 +++++++++
+ 4 files changed, 315 insertions(+), 3 deletions(-)
+ create mode 100644 src/sd-boot.c
+ create mode 100644 src/sd-boot.h
+
+diff --git a/Makefile.in b/Makefile.in
+index bfcb3f3..cf7b141 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -30,7 +30,8 @@ ORACLE_SRCS	= oracle.c \
+ 		  platform.c \
+ 		  testcase.c \
+ 		  bufparser.c \
+-		  util.c
++		  util.c \
++		  sd-boot.c
+ ORACLE_OBJS	= $(addprefix build/,$(patsubst %.c,%.o,$(ORACLE_SRCS)))
+ 
+ all: $(TOOLS) $(MANPAGES)
+diff --git a/src/eventlog.c b/src/eventlog.c
+index 4f2d3f4..7de9cd6 100644
+--- a/src/eventlog.c
++++ b/src/eventlog.c
+@@ -31,6 +31,7 @@
+ #include "runtime.h"
+ #include "digest.h"
+ #include "util.h"
++#include "sd-boot.h"
+ 
+ #define TPM_EVENT_LOG_MAX_ALGOS		64
+ 
+@@ -791,11 +792,27 @@ __tpm_event_systemd_describe(const tpm_parsed_event_t *parsed)
+ static const tpm_evdigest_t *
+ __tpm_event_systemd_rehash(const tpm_event_t *ev, const tpm_parsed_event_t *parsed, tpm_event_log_rehash_ctx_t *ctx)
+ {
++	sdb_entry_list_t entry_list;
++	char initrd[1024];
++	char initrd_utf16[2048];
++	unsigned int len;
++
+ 	if (parsed->systemd_event.string == NULL)
+ 		return NULL;
+ 
+-	/* TODO: The hashed string (UTF16) should be the new initrd command */
+-	return digest_compute(ctx->algo, parsed->systemd_event.string, parsed->systemd_event.len);
++	if (!sdb_get_entry_list(&entry_list)) {
++		error("Error generating the list of boot entries\n");
++		return NULL;
++	}
++
++	debug("Next boot entry expected from: %s\n", entry_list.entries[0].path);
++	snprintf(initrd, sizeof(initrd), "initrd=%s %s",
++		 entry_list.entries[0].initrd, entry_list.entries[0].options);
++
++	len = (strlen(initrd) + 1) << 2;
++	__convert_to_utf16le(initrd, strlen(initrd) + 1, initrd_utf16, len);
++
++	return digest_compute(ctx->algo, initrd_utf16, len);
+ }
+ 
+ /*
+diff --git a/src/sd-boot.c b/src/sd-boot.c
+new file mode 100644
+index 0000000..56a4257
+--- /dev/null
++++ b/src/sd-boot.c
+@@ -0,0 +1,250 @@
++/*
++ *   Copyright (C) 2023 SUSE LLC
++ *
++ *   This program is free software; you can redistribute it and/or modify
++ *   it under the terms of the GNU General Public License as published by
++ *   the Free Software Foundation; either version 2 of the License, or
++ *   (at your option) any later version.
++ *
++ *   This program is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *   GNU General Public License for more details.
++ *
++ *   You should have received a copy of the GNU General Public License
++ *   along with this program; if not, write to the Free Software
++ *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ *
++ */
++
++#include <assert.h>
++#include <dirent.h>
++#include <ctype.h>
++#include <errno.h>
++#include <stdbool.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <sys/param.h>
++
++#include "sd-boot.h"
++#include "util.h"
++
++static char *
++machine_id()
++{
++	static char id[33];
++	FILE *fp;
++
++	if (!(fp = fopen("/etc/machine-id", "r"))) {
++		error("Cannot read /etc/machine_id: %m\n");
++		goto fail;
++	}
++	if (fread(id, 32, 1, fp) != 1) {
++		error("Cannot read /etc/machine_id: %m\n");
++		goto fail;
++	}
++
++	id[32] = '\0';
++	return id;
++
++fail:
++	fclose(fp);
++	return NULL;
++}
++
++static bool
++read_entry(sdb_entry_data_t *result)
++{
++	FILE *fp;
++	char line[SDB_LINE_MAX];
++
++	if (!(fp = fopen(result->path, "r"))) {
++		error("Cannot read %s: %m\n", result->path);
++		goto fail;
++	}
++
++	while (fgets(line, SDB_LINE_MAX, fp)) {
++		char *dest = NULL;
++
++		if (!strncmp("sort-key", line, strlen("sort-key")))
++			dest = result->sort_key;
++		else
++		if (!strncmp("machine-id", line, strlen("machine-id")))
++			dest = result->machine_id;
++		else
++		if (!strncmp("version", line, strlen("version")))
++			dest = result->version;
++		else
++		if (!strncmp("options", line, strlen("options")))
++			dest = result->options;
++		else
++		if (!strncmp("initrd", line, strlen("initrd")))
++			dest = result->initrd;
++		else
++			continue;
++
++		/* Position the index on the value section of the line */
++		unsigned int index = 0;
++		while (line[++index] != ' ');
++		while (line[++index] == ' ');
++		strncpy(dest, &line[index], strlen(&line[index]) - 1);
++	}
++
++	return true;
++
++fail:
++	fclose(fp);
++	return false;
++}
++
++static int
++cmp(int a, int b)
++{
++	return a - b;
++}
++
++static bool
++isvalid(char a)
++{
++	return isalnum(a) || a == '~' || a == '-' || a == '^' || a == '.';
++}
++
++static int
++natoi(const char *a, unsigned int n)
++{
++	char line[SDB_LINE_MAX];
++
++	strncpy(line, a, MIN(SDB_LINE_MAX, n));
++	return atoi(line);
++}
++
++static int
++vercmp(const void *va, const void *vb)
++{
++	/* https://uapi-group.org/specifications/specs/version_format_specification/ */
++	/* This code is based on strverscmp_improved from systemd */
++
++	const char *a = va;
++	const char *b = vb;
++	const char *sep = "~-^.";
++
++	assert(a != NULL);
++	assert(b != NULL);
++
++	for(;;) {
++		const char *aa, *bb;
++		int r;
++
++		while (*a != '\0' && !isvalid(*a))
++			a++;
++		while (*b != '\0' && !isvalid(*b))
++			b++;
++
++		/* The longer string is considered new */
++		if (*a == '\0' || *b == '\0')
++			return cmp(*a, *b);
++
++		for (int i = 0; i < strlen(sep); i++) {
++			char s = sep[i];
++
++			if (*a == s || *b == s) {
++				r = cmp(*a != s, *b != s);
++				if (r != 0)
++					return r;
++
++				a++;
++				b++;
++			}
++		}
++
++		if (isdigit(*a) || isdigit(*b)) {
++			for (aa = a; isdigit(*aa); aa++);
++			for (bb = b; isdigit(*bb); bb++);
++
++			r = cmp(a != aa, b != bb);
++			if (r != 0)
++				return r;
++
++			r = cmp(natoi(a, aa - a), natoi(b, bb - b));
++			if (r != 0)
++				return r;
++		} else {
++			for (aa = a; isalpha(*aa); aa++);
++			for (bb = b; isalpha(*bb); bb++);
++
++			r = cmp(strncmp(a, b, MIN(aa - a, bb - b)), 0);
++			if (r != 0)
++				return r;
++
++			r = cmp(aa - a, bb - b);
++			if (r != 0)
++				return r;
++		}
++
++		a = aa;
++		b = bb;
++	}
++}
++
++static int
++entrycmp(const void *va, const void *vb)
++{
++	/* https://uapi-group.org/specifications/specs/boot_loader_specification/#sorting */
++	int result;
++	const sdb_entry_data_t *a = va;
++	const sdb_entry_data_t *b = vb;
++
++	result = strcmp(a->sort_key, b->sort_key);
++
++	if (result == 0)
++	  result = strcmp(a->machine_id, b->machine_id);
++
++	if (result == 0)
++	  result = vercmp(a->version, b->version);
++
++	/* Reverse the order, so new kernels appears first */
++	return -result;
++}
++
++bool
++sdb_get_entry_list(sdb_entry_list_t *result)
++{
++	char *id = NULL;
++	DIR *d = NULL;
++	struct dirent *dir;
++	char *path = "/boot/efi/loader/entries";
++
++	memset(result, 0, sizeof(*result));
++
++	if (!(id = machine_id()))
++		goto fail;
++
++	if (!(d = opendir(path))) {
++		error("Cannot read directory contents from /boot/efi/loader/entries: %m\n");
++		goto fail;
++	}
++
++	while ((dir = readdir(d)) != NULL) {
++		if (strncmp(id, dir->d_name, strlen(id)))
++			continue;
++
++		debug("Bootloader entry %s\n", dir->d_name);
++
++		snprintf(result->entries[result->num_entries].path, PATH_MAX, "%s/%s", path, dir->d_name);
++		if (!read_entry(&result->entries[result->num_entries])) {
++			error("Cannot read bootloader entry %s\n", dir->d_name);
++			continue;
++		}
++
++		result->num_entries++;
++	}
++
++	qsort(result->entries, result->num_entries, sizeof(result->entries[0]), entrycmp);
++
++	return true;
++
++fail:
++	closedir(d);
++	return false;
++}
++
+diff --git a/src/sd-boot.h b/src/sd-boot.h
+new file mode 100644
+index 0000000..80f21d6
+--- /dev/null
++++ b/src/sd-boot.h
+@@ -0,0 +1,44 @@
++/*
++ *   Copyright (C) 2023 SUSE LLC
++ *
++ *   This program is free software; you can redistribute it and/or modify
++ *   it under the terms of the GNU General Public License as published by
++ *   the Free Software Foundation; either version 2 of the License, or
++ *   (at your option) any later version.
++ *
++ *   This program is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *   GNU General Public License for more details.
++ *
++ *   You should have received a copy of the GNU General Public License
++ *   along with this program; if not, write to the Free Software
++ *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ *
++ */
++
++#ifndef SD_BOOT_H
++#define SD_BOOT_H
++
++#include <limits.h>
++
++#define SDB_MAX_ENTRIES 16
++#define SDB_LINE_MAX 512
++
++typedef struct sdb_entry_data {
++	char	path[PATH_MAX];
++	char	sort_key[SDB_LINE_MAX];
++	char	machine_id[SDB_LINE_MAX];
++	char	version[SDB_LINE_MAX];
++	char	options[SDB_LINE_MAX];
++	char	initrd[SDB_LINE_MAX];
++} sdb_entry_data_t;
++
++typedef struct sdb_entry_list {
++	unsigned int		num_entries;
++	sdb_entry_data_t	entries[SDB_MAX_ENTRIES];
++} sdb_entry_list_t;
++
++extern bool			sdb_get_entry_list(sdb_entry_list_t *result);
++
++#endif /* SD_BOOT_H */

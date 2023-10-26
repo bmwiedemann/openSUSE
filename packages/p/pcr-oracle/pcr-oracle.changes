@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 19 11:01:10 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add systemd-boot.patch to support systemd-cryptenroll JSON files
+
+-------------------------------------------------------------------
 Wed Jul 26 14:06:43 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add libtss2-tcti-device0 as the default TCTI interface to avoid
