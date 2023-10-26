@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 27 09:58:37 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Replace openssl-ibmpkcs11 with openssl-engine-libp11 (jsc#PED-3327)
+  Add Obsoletes: openssl-ibmpkcs11 <= 1.0.1
+  and Provides: openssl-ibmpkcs11 = 1.0.1
+
+-------------------------------------------------------------------
 Tue Jun  6 12:24:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add support for openSSL 3.1:

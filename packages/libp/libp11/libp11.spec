@@ -76,6 +76,10 @@ Token Interface (Cryptoki)".
 %package -n openssl-engine-%{name}
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 Group:          Productivity/Security
+# IBM dropped support for the openssl-ibmpkcs11 and will contribute to
+# libp11 project instead. (jsc#PED-3327)
+Provides:       openssl-ibmpkcs11 = 1.0.1
+Obsoletes:      openssl-ibmpkcs11 <= 1.0.1
 
 %description -n openssl-engine-%{name}
 Libp11 is a library implementing a small layer on top of PKCS#11 API to

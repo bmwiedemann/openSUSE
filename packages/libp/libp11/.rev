@@ -258,4 +258,14 @@
   + Add baselibs.conf</comment>
     <requestid>1091704</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>1130295c15c4759dcac8480816e309f3</srcmd5>
+    <version>0.4.12</version>
+    <time>1698333217</time>
+    <user>anag+factory</user>
+    <comment>- Replace openssl-ibmpkcs11 with openssl-engine-libp11 (jsc#PED-3327)
+  Add Obsoletes: openssl-ibmpkcs11 &lt;= 1.0.1
+  and Provides: openssl-ibmpkcs11 = 1.0.1</comment>
+    <requestid>1120337</requestid>
+  </revision>
 </revisionlist>
