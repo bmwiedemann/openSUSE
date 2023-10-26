@@ -199,4 +199,12 @@
     <comment>- Fix typo in BSD-4-Clause (forwarded request 1118108 from lkocman)</comment>
     <requestid>1118222</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>489f3d1ccfbce0ad6c2f2df6de753c6b</srcmd5>
+    <version>4.2.0</version>
+    <time>1698333294</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.2.0</comment>
+    <requestid>1120515</requestid>
+  </revision>
 </revisionlist>

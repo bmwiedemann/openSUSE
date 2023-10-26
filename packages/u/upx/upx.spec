@@ -17,7 +17,7 @@
 
 
 Name:           upx
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        The Ultimate Packer for eXecutables
 License:        Apache-2.0 WITH LLVM-exception AND GPL-2.0-or-later AND BSD-4-Clause AND BSD-3-Clause AND MIT AND Zlib AND (CPL-1.0 OR LGPL-2.1-only)

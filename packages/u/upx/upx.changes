@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 26 09:53:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.0
+  * win32/pe and win64/pe: stricter relocation checks
+  * new option ``--link`` to preserve hard-links
+    (Unix only; use with care)
+  * add support for NO_COLOR env var
+
+-------------------------------------------------------------------
 Mon Oct 16 20:59:07 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Fix typo in BSD-4-Clause 
