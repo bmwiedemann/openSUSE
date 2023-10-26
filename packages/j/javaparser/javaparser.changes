@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 04:44:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid incompatibilities in jdk 21 by building with release 8
+
+-------------------------------------------------------------------
 Mon Sep 11 09:25:47 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible: don't emit timestamp by bnd-maven-plugin

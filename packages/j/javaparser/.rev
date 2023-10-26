@@ -79,4 +79,12 @@
     <comment>reproducible</comment>
     <requestid>1110253</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>1bfe68c19925d6bbcc93e844caa1bd87</srcmd5>
+    <version>3.25.5</version>
+    <time>1698333260</time>
+    <user>anag+factory</user>
+    <comment>Fix build with jdk 21</comment>
+    <requestid>1120418</requestid>
+  </revision>
 </revisionlist>
