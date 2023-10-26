@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 03:40:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build javadoc with source level 8
+
+-------------------------------------------------------------------
 Sat Sep  9 13:23:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
