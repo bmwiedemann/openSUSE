@@ -126,4 +126,12 @@
     <comment>Cleanup</comment>
     <requestid>975242</requestid>
   </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>d266086f4f82cb1f1959f04e0e8516df</srcmd5>
+    <version>3.2.2</version>
+    <time>1698333221</time>
+    <user>anag+factory</user>
+    <comment>fix build with jdk 21</comment>
+    <requestid>1120349</requestid>
+  </revision>
 </revisionlist>
