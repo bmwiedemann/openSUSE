@@ -64,6 +64,7 @@ Patch13:        net-snmp-5.9.4-fix-create-v3-user-outfile.patch
 Patch14:        net-snmp-5.9.4-subagent-set-response.patch
 Patch15:        net-snmp-5.9.4-fixed-python2-bindings.patch
 Patch16:        net-snmp-5.9.4-add-netgroups-functionality.patch
+Patch17:        net-snmp-5.9.4-systemd-no-utmp.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
@@ -74,13 +75,13 @@ BuildRequires:  openssl-devel
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 BuildRequires:  rpm-devel
+BuildRequires:  systemd-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcpd-devel
 Requires:       logrotate
 Requires:       perl-SNMP = %{version}
 Requires:       perl-TermReadKey
 Requires(post): %fillup_prereq
-%{?systemd_requires}
 %if 0%{?netsnmp_with_sensors}
 BuildRequires:  libsensors4-devel
 %endif

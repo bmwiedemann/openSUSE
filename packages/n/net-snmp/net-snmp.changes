@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 20 09:01:42 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- net-snmp-5.9.4-systemd-no-utmp.patch: prefer systemd-logind over
+  utmp to count number of logged in users, utmp is not reliable for
+  this and has a Y2038 problem (jsc#PED-3144) 
+
+-------------------------------------------------------------------
 Tue Oct 17 13:56:01 UTC 2023 - Alexander Bergmann <abergmann@suse.com>
 
 - Update to net-snmp-5.9.4 (bsc#1214364).

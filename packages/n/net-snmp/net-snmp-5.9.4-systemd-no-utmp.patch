@@ -1,0 +1,49 @@
+diff -uwr net-snmp-5.9.3.old/agent/Makefile.in net-snmp-5.9.3/agent/Makefile.in
+--- net-snmp-5.9.3.old/agent/Makefile.in	2022-07-13 23:14:14.000000000 +0200
++++ net-snmp-5.9.3/agent/Makefile.in	2023-06-16 11:31:16.049538400 +0200
+@@ -116,7 +116,7 @@
+ MIBLIB		= libnetsnmpmibs.$(LIB_EXTENSION)$(LIB_VERSION)
+ 
+ LAGENTLIBS	= @LAGENTLIBS@
+-LMIBLIBS	= @LMIBLIBS@
++LMIBLIBS	= @LMIBLIBS@ -lsystemd
+ VAL_LIBS	= @VAL_LIBS@
+ PERLLDOPTS_FOR_APPS = @PERLLDOPTS_FOR_APPS@
+ PERLLDOPTS_FOR_LIBS = @PERLLDOPTS_FOR_LIBS@
+diff -uwr net-snmp-5.9.3.old/agent/mibgroup/host/hr_system.c net-snmp-5.9.3/agent/mibgroup/host/hr_system.c
+--- net-snmp-5.9.3.old/agent/mibgroup/host/hr_system.c	2022-07-13 23:14:14.000000000 +0200
++++ net-snmp-5.9.3/agent/mibgroup/host/hr_system.c	2023-06-16 10:38:58.916026706 +0200
+@@ -79,6 +79,11 @@
+ #include <sys/sysctl.h>
+ #endif
+ 
++#ifndef NETSNMP_NO_SYSTEMD
++#include <systemd/sd-daemon.h>
++#include <systemd/sd-login.h>
++#endif
++
+ netsnmp_feature_require(date_n_time);
+ 
+ #if !defined(UTMP_FILE) && defined(_PATH_UTMP)
+@@ -686,6 +691,11 @@
+     struct utmp    *utmp_p;
+ #endif
+ 
++#ifndef NETSNMP_NO_SYSTEMD
++    if (sd_booted () > 0)
++        total = sd_get_sessions (NULL);
++    else {
++#endif
+     setutent();
+     while ((utmp_p = getutent()) != NULL) {
+ #ifndef UTMP_HAS_NO_TYPE
+@@ -704,6 +714,9 @@
+             ++total;
+     }
+     endutent();
++#ifndef NETSNMP_NO_SYSTEMD
++    }
++#endif
+ #else /* WIN32 */
+    /* 
+     * TODO - Error checking.
