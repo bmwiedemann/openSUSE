@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 08:03:03 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[23]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Sat Jul 22 03:33:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.5.1:

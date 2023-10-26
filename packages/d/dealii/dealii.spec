@@ -33,19 +33,14 @@
 %endif
 
 # SECTION MPI DEFINITIONS
-%if "%{flavor}" == "openmpi2"
-%global mpi_flavor openmpi
-%define mpi_vers 2
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%global mpi_flavor openmpi
-%define mpi_vers 3
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
 %define mpi_vers 4
+%endif
+
+%if "%{flavor}" == "openmpi5"
+%global mpi_flavor openmpi
+%define mpi_vers 5
 %endif
 
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
