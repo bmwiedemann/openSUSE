@@ -704,4 +704,18 @@
     <comment>Security update to 1.6.3</comment>
     <requestid>1112797</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>cc709b51861ebbf237a26a4e5d2d8c24</srcmd5>
+    <version>1.6.4</version>
+    <time>1698333218</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.4 (bsc#1216429)
+  * Fix cross-site scripting (XSS) vulnerability in handling of SVG 
+    in HTML messages (#9168) CVE-2023-5631
+  * Fix PHP8 warnings (#9142, #9160)
+  * Fix default 'mime.types' path on Windows (#9113)
+  * Managesieve: Fix javascript error when relational or spamtest 
+    extension is not enabled (#9139)</comment>
+    <requestid>1120505</requestid>
+  </revision>
 </revisionlist>

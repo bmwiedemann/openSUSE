@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:36:52 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.6.4 (bsc#1216429)
+  * Fix cross-site scripting (XSS) vulnerability in handling of SVG 
+    in HTML messages (#9168) CVE-2023-5631
+  * Fix PHP8 warnings (#9142, #9160)
+  * Fix default 'mime.types' path on Windows (#9113)
+  * Managesieve: Fix javascript error when relational or spamtest 
+    extension is not enabled (#9139)
+
+-------------------------------------------------------------------
 Wed Sep 20 15:57:21 UTC 2023 - Alexander Bergmann <abergmann@suse.com>
 
 - update to 1.6.3 (bsc#1215433)
