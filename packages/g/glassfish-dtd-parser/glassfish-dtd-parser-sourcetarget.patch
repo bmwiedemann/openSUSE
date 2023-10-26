@@ -1,0 +1,27 @@
+--- jaxb-dtd-parser-1.4/dtd-parser/pom.xml	2023-10-25 20:09:49.310788719 +0200
++++ jaxb-dtd-parser-1.4/dtd-parser/pom.xml	2023-10-25 20:10:09.560924997 +0200
+@@ -143,8 +143,8 @@
+             <plugin>
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <configuration>
+-                    <source>1.7</source>
+-                    <target>1.7</target>
++                    <source>1.8</source>
++                    <target>1.8</target>
+                 </configuration>
+             </plugin>
+             <plugin>
+@@ -222,10 +222,10 @@
+                                     <goal>compile</goal>
+                                 </goals>
+                                 <configuration>
+-                                    <source>1.7</source>
+-                                    <target>1.7</target>
++                                    <source>1.8</source>
++                                    <target>1.8</target>
+                                     <jdkToolchain>
+-                                        <version>1.7</version>
++                                        <version>1.8</version>
+                                     </jdkToolchain>
+                                     <excludes>
+                                         <exclude>module-info.java</exclude>

@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-dtd-parser
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        CDDL-1.1 AND GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Libraries/Java
 URL:            http://java.net/projects/dtd-parser
 Source0:        https://github.com/javaee/jaxb-dtd-parser/archive/%{version}.tar.gz
+Patch0:         %{name}-sourcetarget.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
@@ -42,12 +43,13 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n jaxb-dtd-parser-%{version}
+%patch0 -p1
 
 %build
 pushd dtd-parser
 
 %{mvn_file} :dtd-parser %{name}
-%{mvn_build} -f -- -Dsource=7
+%{mvn_build} -f -- -Dsource=8
 
 popd
 
