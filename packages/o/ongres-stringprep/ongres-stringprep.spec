@@ -1,7 +1,7 @@
 #
-# spec file for package ongres-stringprep
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/ongres/%{upstream_name}
 Source0:        https://github.com/ongres/%{upstream_name}/archive/%{upstream_version}/%{upstream_name}-%{upstream_version}.tar.gz
 Patch0:         fix-dir-create.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.velocity:velocity)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
@@ -71,13 +72,14 @@ find \( -name '*.jar' -o -name '*.class' \) -delete
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin -r :maven-javadoc-plugin
 
+%pom_xpath_set -r "pom:project/pom:properties/pom:java.version" "1.8"
+
 %build
 %{mvn_build} -s -f -- -Dsource=8
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
-
 
 %files -f .mfiles-stringprep
 %license LICENSE

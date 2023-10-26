@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 10:47:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Thu Mar  3 15:53:57 UTC 2022 - Michael Calmer <mc@suse.com>
 
 - ongres-stringprep 1.1 - initial package (bsc#1196693)
