@@ -26,6 +26,7 @@ License:        Apache-2.0 AND LGPL-2.1-or-later
 URL:            https://jbossmarshalling.jboss.org/
 Source0:        https://github.com/jboss-remoting/jboss-marshalling/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.jboss.modules:jboss-modules)
@@ -62,12 +63,15 @@ JBoss Marshalling OSGi Bundle.
 # Remove dependency on apiviz
 %pom_remove_plugin :maven-javadoc-plugin
 
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.8"
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.8"
+
 %{mvn_package} :jboss-marshalling-osgi osgi
 
 %build
 %{mvn_build} -f -- \
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=7
+    -Dsource=8
 
 %install
 %mvn_install

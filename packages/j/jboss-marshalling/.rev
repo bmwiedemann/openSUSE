@@ -15,4 +15,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109967</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9bee30f5c21143f1e8559c215679a656</srcmd5>
+    <version>1.4.11</version>
+    <time>1698333264</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120422</requestid>
+  </revision>
 </revisionlist>
