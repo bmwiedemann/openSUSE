@@ -26,6 +26,7 @@ URL:            https://labs.carrotsearch.com/hppc.html
 Source0:        https://github.com/carrotsearch/hppc/archive/%{version}.tar.gz
 Patch0:         hppc-timestamp.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(commons-io:commons-io)
@@ -78,6 +79,9 @@ find . -name "*.jar" -print -delete
 %pom_remove_plugin -r :maven-assembly-plugin
 
 %pom_add_dep javax.annotation:javax.annotation-api hppc
+
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.8"
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.8"
 
 # Convert from dos to unix line ending
 for file in CHANGES.txt; do
