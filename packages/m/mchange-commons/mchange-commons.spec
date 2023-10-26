@@ -1,7 +1,7 @@
 #
 # spec file for package mchange-commons
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,15 @@ URL:            https://github.com/swaldman/mchange-commons-java
 Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{git_tag}.tar.gz
 Patch0:         fix-javadoc-lint-errors.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  log4j >= 2.0
 BuildRequires:  slf4j
 BuildRequires:  typesafe-config >= 1.3.0
+BuildArch:      noarch
 %if 0%{?rhel} >= 9
 BuildRequires:  xmvn-tools
 %endif
-BuildArch:      noarch
 
 %description
 Originally part of c3p0, mchange-commons is a set of general purpose
@@ -59,7 +59,7 @@ find -name '*.jar' -delete
 export CLASS_PATH=$(build-classpath log4j log4j/log4j-{api,core} slf4j/slf4j-api typesafe-config)
 mkdir -p target/classes
 javac -d target/classes \
-  -source 7 -target 7 \
+  -source 8 -target 8 \
   -cp  "$CLASS_PATH" \
   $(find src/main/java -name \*.java | xargs)
 
@@ -67,7 +67,7 @@ jar cf target/%{git_tag}.jar -C target/classes .
 jar uf target/%{git_tag}.jar -C src/main/resources .
 %if ! 0%{?rhel} >= 9
 mkdir -p target/api
-javadoc -d target/api -source 7 \
+javadoc -d target/api -source 8 \
   -classpath "$CLASS_PATH" \
   -notimestamp \
   $(find src/main/java -name \*.java | xargs)

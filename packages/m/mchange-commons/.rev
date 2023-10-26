@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>970689</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>b1fcbc30e4f1c584a95f48ca1e41b338</srcmd5>
+    <version>0.2.20</version>
+    <time>1698333275</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120449</requestid>
+  </revision>
 </revisionlist>
