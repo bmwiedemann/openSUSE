@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.1.0
+Version:        8.1.2
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -170,6 +170,7 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libiscsi) >= 1.9.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libnfs) >= 1.9.3
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsasl2)
@@ -352,7 +353,7 @@ Conflicts:      qemu-tools < %{version}-%{release} \
 Conflicts:      qemu-tools > %{version}-%{release}
 
 %prep
-%autosetup -n qemu-%{version}
+%autosetup -n qemu-%{version} -p1
 
 # We have the meson subprojects there, but as submodules (because OBS
 # SCM bridge can handle the latter, but not the former) so we need to
@@ -567,6 +568,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-pa \
 	--disable-parallels \
 	--disable-pie \
+	--disable-pipewire \
 	--disable-plugins \
 	--disable-png \
 	--disable-pvrdma \
@@ -630,7 +632,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %if "%{_lto_cflags}" != "%{nil}"
 	--enable-lto \
 %endif
-	--audio-drv-list=pa,alsa,jack,oss \
+	--audio-drv-list=pipewire,pa,alsa,jack,oss \
 	--enable-auth-pam \
 %ifarch x86_64
 	--enable-avx2 \
@@ -695,6 +697,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-pa \
 	--enable-parallels \
 	--enable-pie \
+	--enable-pipewire \
 	--enable-png \
 	--enable-pvrdma \
 	--enable-qcow1 \
@@ -1238,6 +1241,18 @@ This package contains a module for OSS based audio support for QEMU.
 %files audio-oss
 %dir %_libdir/%name
 %_libdir/%name/audio-oss.so
+
+%package audio-pipewire
+Summary:        Pipewire based audio support for QEMU
+Group:          System/Emulators/PC
+%{qemu_module_conflicts}
+
+%description audio-pipewire
+This package contains a module for Pipewire based audio support for QEMU.
+
+%files audio-pipewire
+%dir %_libdir/%name
+%_libdir/%name/audio-pipewire.so
 
 %package block-curl
 Summary:        cURL block support for QEMU

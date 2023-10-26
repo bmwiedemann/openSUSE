@@ -3512,4 +3512,54 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1111408</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>5c1f6d7644d926966099577dfbd496a6</srcmd5>
+    <version>8.1.2</version>
+    <time>1698333131</time>
+    <user>anag+factory</user>
+    <comment>- [openSUSE] supportconfig: Adapt plugin to modern supportconfig
+- [openSUSE] Add -p1 to autosetup in spec files
+  * So patches can be applied easily (might be useful for development)
+- Update to version 8.1.2:
+  This fixes the following upstream issues:
+   * https://gitlab.com/qemu-project/qemu/-/issues/1826
+   * https://gitlab.com/qemu-project/qemu/-/issues/1834
+   * https://gitlab.com/qemu-project/qemu/-/issues/1846
+  It also contains a fix for:
+   * CVE-2023-42467
+  As well as several upstream backports (list available at:
+  https://lore.kernel.org/qemu-devel/24dfb1c2-dc40-4841-893d-5d530638b684@tls.msk.ru/)
+- Update to version 8.1.1:
+  Upstream backports and bugfixes, among which:
+   * tpm: fix crash when FD &gt;= 1024 and unnecessary errors due to EINTR (Marc-Andr303251 Lureau)
+   * meson: Fix targetos match for illumos and Solaris. (Jonathan Perkin)
+   * s390x/ap: fix missing subsystem reset registration (Janosch Frank)
+   * ui: fix crash when there are no active_console (Marc-Andr303251 Lureau)
+   * virtio-gpu/win32: set the destroy function on load (Marc-Andr303251 Lureau)
+   * target/riscv: Allocate itrigger timers only once (Akihiko Odaki)
+   * target/riscv/pmp.c: respect mseccfg.RLB for pmpaddrX changes (Leon Schuermann)
+   * target/riscv: fix satp_mode_finalize() when satp_mode.supported = 0 (Daniel Henrique Barboza)
+   * hw/riscv: virt: Fix riscv,pmu DT node path (Conor Dooley)
+   * [...]
+   * target/arm: Fix 64-bit SSRA (Richard Henderson)
+   * target/arm: Fix SME ST1Q (Richard Henderson)
+   * accel/kvm: Specify default IPA size for arm64 (Akihiko Odaki)
+   * kvm: Introduce kvm_arch_get_default_type hook (Akihiko Odaki)
+   * include/hw/virtio/virtio-gpu: Fix virtio-gpu with blob on big endian hosts (Thomas Huth)
+   * target/s390x: Check reserved bits of VFMIN/VFMAX's M5 (Ilya Leoshkevich)
+   * target/s390x: Fix VSTL with a large length (Ilya Leoshkevich)
+   * target/s390x: Use a 16-bit immediate in VREP (Ilya Leoshkevich)
+   * target/s390x: Fix the &quot;ignored match&quot; case in VSTRS (Ilya Leoshkevich)
+  Full list available at:
+   * https://lore.kernel.org/qemu-devel/d0d2ac8f-313a-c937-dc3a-88e45fce933c@tls.msk.ru/
+- Fix (bsc#1215486):
+  * [openSUSE][RPM] spec: enable the Pipewire audio backend (bsc#1215486)
+- (Properly) fix: bsc#1213210
+  * linux-user/elfload: Enable vxe2 on s390x
+- Fix: bsc#1215677
+  * optionrom: Remove build-id section
+- Fix bsc#1215311:
+  * roms/ipxe: Backport 0aa2e4ec9635, in preparation of binutils 2.41 (bsc#1215311)</comment>
+    <requestid>1120310</requestid>
+  </revision>
 </revisionlist>

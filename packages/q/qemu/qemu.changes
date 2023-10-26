@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Oct 24 11:05:13 UTC 2023 - dfaggioli@suse.com
+
+- [openSUSE] supportconfig: Adapt plugin to modern supportconfig
+
+-------------------------------------------------------------------
+Wed Oct 18 16:28:01 UTC 2023 - dfaggioli@suse.com
+
+- [openSUSE] Add -p1 to autosetup in spec files
+  * So patches can be applied easily (might be useful for development)
+
+-------------------------------------------------------------------
+Wed Oct 18 13:34:20 UTC 2023 - dfaggioli@suse.com
+
+- Update to version 8.1.2:
+
+  This fixes the following upstream issues:
+   * https://gitlab.com/qemu-project/qemu/-/issues/1826
+   * https://gitlab.com/qemu-project/qemu/-/issues/1834
+   * https://gitlab.com/qemu-project/qemu/-/issues/1846
+
+  It also contains a fix for:
+   * CVE-2023-42467
+
+  As well as several upstream backports (list available at:
+  https://lore.kernel.org/qemu-devel/24dfb1c2-dc40-4841-893d-5d530638b684@tls.msk.ru/)
+
+-------------------------------------------------------------------
+Wed Oct 11 11:57:28 UTC 2023 - dfaggioli@suse.com
+
+- Update to version 8.1.1:
+
+  Upstream backports and bugfixes, among which:
+   * tpm: fix crash when FD >= 1024 and unnecessary errors due to EINTR (Marc-Andr303251 Lureau)
+   * meson: Fix targetos match for illumos and Solaris. (Jonathan Perkin)
+   * s390x/ap: fix missing subsystem reset registration (Janosch Frank)
+   * ui: fix crash when there are no active_console (Marc-Andr303251 Lureau)
+   * virtio-gpu/win32: set the destroy function on load (Marc-Andr303251 Lureau)
+   * target/riscv: Allocate itrigger timers only once (Akihiko Odaki)
+   * target/riscv/pmp.c: respect mseccfg.RLB for pmpaddrX changes (Leon Schuermann)
+   * target/riscv: fix satp_mode_finalize() when satp_mode.supported = 0 (Daniel Henrique Barboza)
+   * hw/riscv: virt: Fix riscv,pmu DT node path (Conor Dooley)
+   * [...]
+   * target/arm: Fix 64-bit SSRA (Richard Henderson)
+   * target/arm: Fix SME ST1Q (Richard Henderson)
+   * accel/kvm: Specify default IPA size for arm64 (Akihiko Odaki)
+   * kvm: Introduce kvm_arch_get_default_type hook (Akihiko Odaki)
+   * include/hw/virtio/virtio-gpu: Fix virtio-gpu with blob on big endian hosts (Thomas Huth)
+   * target/s390x: Check reserved bits of VFMIN/VFMAX's M5 (Ilya Leoshkevich)
+   * target/s390x: Fix VSTL with a large length (Ilya Leoshkevich)
+   * target/s390x: Use a 16-bit immediate in VREP (Ilya Leoshkevich)
+   * target/s390x: Fix the "ignored match" case in VSTRS (Ilya Leoshkevich)
+
+  Full list available at:
+   * https://lore.kernel.org/qemu-devel/d0d2ac8f-313a-c937-dc3a-88e45fce933c@tls.msk.ru/
+
+-------------------------------------------------------------------
+Fri Oct 06 11:14:31 UTC 2023 - dfaggioli@suse.com
+
+- Fix (bsc#1215486):
+  * [openSUSE][RPM] spec: enable the Pipewire audio backend (bsc#1215486)
+
+-------------------------------------------------------------------
+Thu Oct 05 15:27:03 UTC 2023 - dfaggioli@suse.com
+
+- (Properly) fix: bsc#1213210
+  * linux-user/elfload: Enable vxe2 on s390x
+- Fix: bsc#1215677
+  * optionrom: Remove build-id section
+
+-------------------------------------------------------------------
+Thu Sep 14 15:58:54 UTC 2023 - dfaggioli@suse.com
+
+- Fix bsc#1215311:
+  * roms/ipxe: Backport 0aa2e4ec9635, in preparation of binutils 2.41 (bsc#1215311)
+
+-------------------------------------------------------------------
 Thu Sep 14 13:21:22 UTC 2023 - dfaggioli@suse.com
 
 - Fix the build for SLE/Leap:
@@ -72,7 +148,7 @@ Tue Sep 12 11:41:07 UTC 2023 - dfaggioli@suse.com
   * bsc#1213414 (CVE-2023-3301)
   * bsc#1207205 (CVE-2023-0330)
   * bsc#1212968 (CVE-2023-2861)
-  * bsc#1179993, bsc#1181740  
+  * bsc#1179993, bsc#1181740, bsc#1211697
 
 -------------------------------------------------------------------
 Mon Aug 07 23:01:35 UTC 2023 - dfaggioli@suse.com

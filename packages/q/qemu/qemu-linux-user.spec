@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.1.0
+Version:        8.1.2
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -102,7 +102,7 @@ syscall layer occurs on the native hardware and operating system.
 %_prefix/lib/binfmt.d/qemu-*.conf
 
 %prep
-%autosetup -n qemu-%{version}
+%autosetup -n qemu-%{version} -p1
 
 # We have the meson subprojects there, but as submodules (because OBS
 # SCM bridge can handle the latter, but not the former) so we need to
@@ -233,6 +233,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-pa \
 	--disable-parallels \
 	--disable-pie \
+	--disable-pipewire \
 	--disable-plugins \
 	--disable-png \
 	--disable-pvrdma \
