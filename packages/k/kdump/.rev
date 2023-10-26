@@ -1261,4 +1261,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>- update calibrate values, newly added SLE15-SP6 values</comment>
     <requestid>1109265</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>fea392acb566357ac14f162d0ed1cd4f</srcmd5>
+    <version>1.9.7</version>
+    <time>1698333122</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1120116</requestid>
+  </revision>
 </revisionlist>

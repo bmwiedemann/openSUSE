@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 17 16:22:16 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 1.9.7
+  * prevent dracut emergency shell
+  * s390: consolidate low-level network configuration with zdev
+  * s390: Explicitly request zFCP devices
+ 
+
+-------------------------------------------------------------------
 Wed Sep  6 12:20:14 UTC 2023 - Jiri Bohac <jbohac@suse.com>
 
 - update calibrate values, newly added SLE15-SP6 values
