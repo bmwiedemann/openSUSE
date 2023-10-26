@@ -13,27 +13,29 @@
        <property name="src.java.dir" value="${src.dir}/java"/>
        <property name="src.test.dir" value="${src.dir}/test"/>
 -      <property name="javac.source" value="1.5" />
-+      <property name="javac.source" value="1.7" />
-+      <property name="javac.target" value="1.7" />
++      <property name="javac.source" value="8" />
++      <property name="javac.target" value="8" />
     </target>
  
     <target name="prepare" depends="init,prepare-nojdbc4,prepare-jdbc4"/>
-@@ -194,7 +196,8 @@
+@@ -194,7 +196,9 @@
               debug="${javac.debug}"
               deprecation="${javac.deprecation}"
               optimize="${javac.optimize}"
 -             source="${javac.source}">
 +             source="${javac.source}"
++             release="${javac.target}"
 +             target="${javac.target}">
           <exclude name="org/apache/commons/dbcp/BasicDataSourceFactory.java"
               unless="jndi.present"/>
           <exclude name="org/apache/commons/dbcp/datasources/**"
-@@ -211,7 +214,8 @@
+@@ -211,7 +214,9 @@
               debug="${javac.debug}"
               deprecation="${javac.deprecation}"
               optimize="${javac.optimize}"
 -             source="${javac.source}">
 +             source="${javac.source}"
++             release="${javac.target}"
 +             target="${javac.target}">
          <classpath>
            <pathelement location="${build.classes.dir}" /> 

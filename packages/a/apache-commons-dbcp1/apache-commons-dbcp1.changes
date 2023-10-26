@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 25 16:39:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * apache-commons-dbcp-sourcetarget.patch
+    + build with source target levels 8
+    + use "release" with compilers that support it
+
+-------------------------------------------------------------------
 Mon Apr 15 13:38:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build classpath using directly geronimo-jta-1.1-api instead of

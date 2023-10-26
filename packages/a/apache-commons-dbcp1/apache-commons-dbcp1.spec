@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-dbcp1
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ Summary:        Jakarta Commons DataBase Pooling Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-dbcp/
-Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source100:      http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source100:      https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 Source101:      commons.keyring
 Patch0:         apache-commons-dbcp-sourcetarget.patch
 Patch1:         apache-commons-dbcp-javadoc.patch
@@ -36,16 +36,13 @@ BuildRequires:  apache-commons-logging
 BuildRequires:  apache-commons-pool
 BuildRequires:  fdupes
 BuildRequires:  geronimo-jta-1_1-api
-BuildRequires:  java-devel >= 1.7
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdbc-stdext >= 2.0
 BuildRequires:  junit >= 3.8.1
 BuildRequires:  xerces-j2
-Requires:       commons-collections >= 3.2
-Requires:       commons-pool
-Requires:       jta_api >= 1.1
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -84,8 +81,6 @@ features.
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
 
-%pom_remove_parent .
-
 %build
 ant \
         -Dcommons-pool.jar=$(build-classpath commons-pool) \
@@ -101,30 +96,20 @@ ant \
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{short_name}.jar %{buildroot}%{_javadir}/apache-%{short_name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|apache-||g"`; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+install -m 644 dist/%{short_name}.jar %{buildroot}%{_javadir}/apache-%{short_name}.jar
+ln -sf %{_javadir}/apache-%{short_name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 pom.xml %{buildroot}%{_mavenpomdir}/apache-%{short_name}-%{version}.pom
-%add_maven_depmap apache-%{short_name}-%{version}.pom apache-%{short_name}-%{version}.jar
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/apache-%{short_name}.pom
+%add_maven_depmap apache-%{short_name}.pom apache-%{short_name}.jar
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
+%files -f .mfiles
 %license LICENSE.txt
-%{_javadir}/apache-%{short_name}.jar
-%{_javadir}/apache-%{short_name}-%{version}.jar
 %{_javadir}/%{short_name}.jar
-%{_javadir}/%{short_name}-%{version}.jar
-%{_mavenpomdir}/apache-%{short_name}-%{version}.pom
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %files javadoc
 %{_javadocdir}/%{name}
