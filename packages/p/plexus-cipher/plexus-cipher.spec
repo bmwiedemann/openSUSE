@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-cipher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,11 +28,9 @@ Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.7
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  sisu-inject
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
 BuildArch:      noarch
 
 %description
@@ -52,30 +50,31 @@ cp %{SOURCE1} build.xml
 # replace %{version}-SNAPSHOT with %{version}
 %pom_xpath_set pom:project/pom:version %{version}
 
-%pom_remove_parent .
-%pom_xpath_inject pom:project "<groupId>org.codehaus.plexus</groupId>"
-%pom_change_dep -r -f ::::: :::::
-
-%mvn_file : plexus/%{name}
-
 %build
 mkdir -p lib
 build-jar-repository -s lib atinject org.eclipse.sisu.inject
 
-%ant compile
-%ant jar javadoc
-
-%mvn_artifact pom.xml target/%{name}-%{version}.jar
-%mvn_alias :{*} org.sonatype.plexus:@1
+%{ant} compile
+%{ant} jar javadoc
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/plexus
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/%{name}.pom
+%add_maven_depmap plexus/%{name}.pom plexus/%{name}.jar -a org.sonatype.plexus:%{name}
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE.txt NOTICE.txt
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt NOTICE.txt
 
 %changelog
