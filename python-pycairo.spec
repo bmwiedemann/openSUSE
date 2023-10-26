@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         oldpython python
 Name:           python-pycairo
-Version:        1.24.0
+Version:        1.25.1
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1

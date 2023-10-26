@@ -120,4 +120,23 @@
   * Added Python 3.12 Windows wheels</comment>
     <requestid>1100692</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8fd82cdc88a3566da9bd599504f9e942</srcmd5>
+    <version>1.25.1</version>
+    <time>1698333109</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.25.1:
+  * fix a crash in pypy3.10
+  * Fix the build with CPython 3.13.0a1
+- introduced from 1.25.0:
+  * update to cairo 1.18.0 (for windows only)
+  * new apis:
+    - Status.SVG_FONT_ERROR
+    - FontOptions.get_color_mode(), FontOptions.set_color_mode(), ColorMode
+    - FontOptions.set_color_palette(), FontOptions.get_color_palette(), COLOR_PALETTE_DEFAULT
+    - FontOptions.set_custom_palette_color(), FontOptions.get_custom_palette_color()
+    - TAG_CONTENT, TAG_CONTENT_REF
+    - Pattern.get_dither(), Pattern.set_dither(), Dither</comment>
+    <requestid>1120301</requestid>
+  </revision>
 </revisionlist>
