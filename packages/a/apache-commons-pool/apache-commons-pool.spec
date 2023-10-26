@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-pool
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,6 @@ find . -name "*.jar" -exec rm -f {} \;
 
 dos2unix README.txt
 
-%pom_remove_parent .
-
 %build
 ant -Djava.io.tmpdir=. clean dist
 
@@ -83,7 +81,7 @@ install -m 644 dist/%{short_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
 %add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
 
 # javadoc

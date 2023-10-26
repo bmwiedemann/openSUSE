@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:57:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * commons-pool-1.6-sourcetarget.patch
+    + In ant Javac task, use "release" with compilers that support
+      it. Fixes some return value incompatibilities with jdk 21
+
+-------------------------------------------------------------------
 Mon Mar 25 17:51:29 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove pom parent, since we don't use it when not building with

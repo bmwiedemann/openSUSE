@@ -1,5 +1,5 @@
---- commons-pool-1.6-src/build.xml	2012-01-04 16:30:59.000000000 +0100
-+++ commons-pool-1.6-src/build.xml	2017-09-14 16:06:25.115950300 +0200
+--- commons-pool-1.6-src/build.xml	2023-10-25 17:55:14.362760902 +0200
++++ commons-pool-1.6-src/build.xml	2023-10-25 17:56:28.323265075 +0200
 @@ -61,8 +61,8 @@
        <property name="javac.optimize" value="false"/>
        <property name="javac.debug" value="true"/>
@@ -11,3 +11,19 @@
     </target>
  
     <!-- ######################################################### -->
+@@ -108,6 +108,7 @@
+              debug="${javac.debug}"
+              deprecation="${javac.deprecation}"
+              optimize="${javac.optimize}"
++             release="${javac.target.version}"
+              target="${javac.target.version}"
+              source="${javac.src.version}"/>
+    </target>
+@@ -119,6 +120,7 @@
+              debug="${javac.debug}"
+              deprecation="${javac.deprecation}"
+              optimize="${javac.optimize}"
++             release="${javac.target.version}"
+              target="${javac.target.version}"
+              source="${javac.src.version}">
+         <classpath>
