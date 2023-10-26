@@ -1,7 +1,7 @@
 #
 # spec file for package felix-parent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ Parent POM file for Apache Felix Specs.
 # wagon ssh dependency unneeded
 %pom_xpath_remove pom:extensions
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
+
+%pom_xpath_set "pom:project/pom:properties/pom:felix.java.version" "8"
 
 %build
 
