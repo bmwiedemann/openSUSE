@@ -51,6 +51,9 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-remote-resources-plugin
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+
 %{mvn_file} : %{name}
 
 %build

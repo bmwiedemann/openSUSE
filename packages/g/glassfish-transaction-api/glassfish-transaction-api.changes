@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 04:25:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Sat Sep  9 13:36:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
