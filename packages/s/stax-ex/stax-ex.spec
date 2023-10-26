@@ -68,6 +68,8 @@ pushd %{name}
 
 %pom_add_dep javax.xml.bind:jaxb-api::provided
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:release" "8"
+
 # Convert the license to UTF-8:
 mv LICENSE.txt LICENSE.txt.tmp
 iconv -f ISO-8859-1 -t UTF-8 LICENSE.txt.tmp > LICENSE.txt
