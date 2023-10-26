@@ -21,7 +21,7 @@
 # timemstap can be obtained by doing an rpm query
 
 Name:           golangci-lint
-Version:        1.55.0
+Version:        1.55.1
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only

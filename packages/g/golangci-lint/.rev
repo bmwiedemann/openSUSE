@@ -100,4 +100,18 @@
   * Add a pre-commit hook to check all files (#4046) (forwarded request 1119227 from jfkw)</comment>
     <requestid>1119228</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>86f8177e37f4e0acd598e8a2686a0499</srcmd5>
+    <version>1.55.1</version>
+    <time>1698333214</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.55.1:
+  * output: convert backslashes to forward slashes for GitHub Action annotations printer (#4149)
+  * build(deps): bump actions/setup-node from 3 to 4 (#4155)
+  * build(deps): bump github.com/golangci/revgrep from v0.5.0 to v0.5.2 (#4154)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.18.1 to 2.18.2 (#4153)
+  * docs: Update documentation and assets
+  * docs: Update documentation and assets (forwarded request 1120330 from jfkw)</comment>
+    <requestid>1120331</requestid>
+  </revision>
 </revisionlist>

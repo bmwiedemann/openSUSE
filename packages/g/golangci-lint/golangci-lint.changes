@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 25 14:19:00 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.55.1:
+  * output: convert backslashes to forward slashes for GitHub Action annotations printer (#4149)
+  * build(deps): bump actions/setup-node from 3 to 4 (#4155)
+  * build(deps): bump github.com/golangci/revgrep from v0.5.0 to v0.5.2 (#4154)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.18.1 to 2.18.2 (#4153)
+  * docs: Update documentation and assets
+  * docs: Update documentation and assets
+
+-------------------------------------------------------------------
 Fri Oct 20 12:02:29 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.55.0:
