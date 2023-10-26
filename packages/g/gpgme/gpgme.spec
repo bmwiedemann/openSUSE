@@ -33,7 +33,7 @@
 %bcond_without qt6
 %endif
 Name:           gpgme%{psuffix}
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -50,9 +50,6 @@ Source99:       gpgme.changes
 Patch1:         gpgme-D545-python310.patch
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
 Patch2:         gpgme-suse-nobetasuffix.patch
-# PATCH-FIX-UPSTREAM Fix building with qt
-Patch3:         gpgme-qt-tests-Fix-build-in-source-directory.patch
-Patch4:         gpgme-build-Suggest-out-of-source-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

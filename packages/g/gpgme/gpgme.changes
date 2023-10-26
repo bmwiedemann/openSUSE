@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 25 10:56:48 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.23.0:
+  * Support GPGME_ENCRYPT_ALWAYS_TRUST also for S/MIME. [T6559]
+  * New keylist mode GPGME_KEYLIST_MODE_WITH_V5FPR. [T6705]
+  * New key capability flags has_*. [T6748]
+  * gpgme-tool: Support use of Windows HANDLE. [T6634]
+  * qt: Support refreshing keys via WKD. [T6672]
+  * qt: Handle cancel in changeexpiryjob. [T6754]
+  * Remove patches fixed upstream:
+    - gpgme-qt-tests-Fix-build-in-source-directory.patch
+    - gpgme-build-Suggest-out-of-source-build.patch
+
+-------------------------------------------------------------------
 Sat Sep 23 23:26:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Use GCC 12 for building the Qt6 library on Leap 15. The
