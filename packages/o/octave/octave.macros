@@ -27,6 +27,7 @@
 
 # Octave package installation
 %octave_pkg_install \
+    HOME=${PWD} \
     mkdir -p %{buildroot}%{octpackages_dir} \
     mkdir -p %{buildroot}%{octlib_dir} \
     %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; pkg install -nodeps %{octpkg}-%{version}.tar.gz" \

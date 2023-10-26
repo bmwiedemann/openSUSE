@@ -103,7 +103,6 @@ BuildRequires:  qrupdate-devel
 BuildRequires:  readline-devel
 BuildRequires:  suitesparse-devel
 BuildRequires:  sundials-devel
-BuildRequires:  termcap
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(zlib)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 25 10:30:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop termap BuildRequireS: no longer needed.
+
+-------------------------------------------------------------------
+Thu Oct 19 07:45:03 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- octave.macros: For %octave_pkg_install, set HOME to current
+  working dir to avoid permission issues when octave tries to
+  update list of installed packages in its config file.
+
+-------------------------------------------------------------------
 Tue Aug 29 16:09:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.3.0:

@@ -721,4 +721,16 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
     <comment></comment>
     <requestid>1109107</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>b78ab52039078844d1e01d414e9cbb0c</srcmd5>
+    <version>8.3.0</version>
+    <time>1698333248</time>
+    <user>anag+factory</user>
+    <comment>- Drop termap BuildRequireS: no longer needed.
+- octave.macros: For %octave_pkg_install, set HOME to current
+  working dir to avoid permission issues when octave tries to
+  update list of installed packages in its config file.
+</comment>
+    <requestid>1120403</requestid>
+  </revision>
 </revisionlist>
