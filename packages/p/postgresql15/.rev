@@ -114,4 +114,20 @@
     <comment>- The libs and mini package are now provided by postgresql16.</comment>
     <requestid>1111592</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>06176c5440881921df640be2291b8ee9</srcmd5>
+    <version>15.4</version>
+    <time>1698333100</time>
+    <user>anag+factory</user>
+    <comment>- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.</comment>
+    <requestid>1120249</requestid>
+  </revision>
 </revisionlist>
