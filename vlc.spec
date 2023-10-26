@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.18
+Version:        3.0.19
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -57,7 +57,6 @@ Patch5:         vlc-libplacebo-5.patch
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
-Patch104:       104-playback-bar.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -407,7 +406,6 @@ OpenCV based video filters and a face detection example.
 %patch100 -p1
 %endif
 %patch103 -p1
-%patch104 -p1
 
 # a52_init() < 0.8.0 doesn't take any arguments
 if pkg-config --max-version 0.8 liba52; then
