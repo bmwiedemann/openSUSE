@@ -23,4 +23,12 @@
     <comment>Fix source and target levels</comment>
     <requestid>963763</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e051b8d268ab92d8a1ada96336b2e08b</srcmd5>
+    <version>1.2.17.1</version>
+    <time>1698333228</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120365</requestid>
+  </revision>
 </revisionlist>

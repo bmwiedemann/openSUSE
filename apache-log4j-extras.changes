@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 18:49:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Mon Mar 21 18:26:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Let maven-compiler-plugin decide the appropriate java source
