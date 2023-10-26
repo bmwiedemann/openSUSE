@@ -27,6 +27,7 @@ License:        Apache-2.0 AND (CDDL-1.0 OR GPL-2.0-only)
 URL:            https://github.com/jboss/jboss-jaxrs-api_spec
 Source0:        https://github.com/jboss/jboss-jaxrs-api_spec/archive/%{oname}-%{namedversion}/jboss-jaxrs-api_spec-%{oname}-%{namedversion}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -48,6 +49,9 @@ This package contains the API documentation for %{name}.
 %pom_remove_plugin :maven-source-plugin
 
 %pom_add_dep javax.xml.bind:jaxb-api::provided
+
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.8"
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.8"
 
 %{mvn_file} :%{oname} %{name}
 
