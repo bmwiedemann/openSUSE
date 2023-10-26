@@ -26,9 +26,9 @@ License:        LGPL-2.1-only AND MIT
 URL:            https://acoustid.org/chromaprint
 Source0:        https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libtag-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libavcodec) < 59
 BuildRequires:  pkgconfig(libavformat) < 59
@@ -84,7 +84,7 @@ fingerprinting.
     -DUSE_AVFFT=ON -DFFT_LIB=avfft \
     -DBUILD_TESTS=OFF -DBUILD_TOOLS=ON
 
-%make_build
+%cmake_build
 
 %install
 %cmake_install
