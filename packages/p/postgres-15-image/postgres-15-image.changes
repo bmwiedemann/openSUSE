@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:40:55 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- ensure rundir for postgres is created with the proper permissions
+
+-------------------------------------------------------------------
 Thu Sep 28 14:29:10 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - add copyright and description header
