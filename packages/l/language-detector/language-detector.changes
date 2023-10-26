@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 18:16:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Tue May 11 17:54:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the legacy version of guava

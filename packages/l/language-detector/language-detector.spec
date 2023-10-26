@@ -1,7 +1,7 @@
 #
 # spec file for package language-detector
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,9 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-source-plugin
+
+%pom_xpath_set pom:project/pom:properties/pom:compiler.source 1.8
+%pom_xpath_set pom:project/pom:properties/pom:compiler.target 1.8
 
 %pom_remove_dep :jsonic
 
