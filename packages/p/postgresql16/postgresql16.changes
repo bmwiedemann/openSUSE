@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 10 12:49:02 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+-------------------------------------------------------------------
 Mon Sep 18 15:24:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also buildignore the postgresql*-implementation symbols: this is

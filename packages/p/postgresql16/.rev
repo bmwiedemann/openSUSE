@@ -7,4 +7,13 @@
     <comment>Initial build of PostgreSQL 16</comment>
     <requestid>1112307</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7325b5577faf2b885223e8c4cb140769</srcmd5>
+    <version>16.0</version>
+    <time>1698333098</time>
+    <user>anag+factory</user>
+    <comment>- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.</comment>
+    <requestid>1120248</requestid>
+  </revision>
 </revisionlist>

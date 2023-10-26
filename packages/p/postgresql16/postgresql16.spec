@@ -795,17 +795,19 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %post -n %pgname-%devel
 /sbin/ldconfig
-%if %{with server_devel}
-%post server-devel
-%endif
 /usr/share/postgresql/install-alternatives %pgmajor
 
 %postun -n %pgname-%devel
 /sbin/ldconfig
-%if %{with server_devel}
-%postun server-devel
-%endif
 /usr/share/postgresql/install-alternatives %pgmajor
+
+%if %{with server_devel}
+%post server-devel
+/usr/share/postgresql/install-alternatives %pgmajor
+
+%postun server-devel
+/usr/share/postgresql/install-alternatives %pgmajor
+%endif
 
 %if !%mini
 
