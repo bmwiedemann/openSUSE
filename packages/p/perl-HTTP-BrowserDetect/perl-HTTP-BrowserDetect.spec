@@ -18,9 +18,9 @@
 
 %define cpan_name HTTP-BrowserDetect
 Name:           perl-HTTP-BrowserDetect
-Version:        3.390.0
+Version:        3.400.0
 Release:        0
-%define cpan_version 3.39
+%define cpan_version 3.40
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Determine Web browser, version, and platform from an HTTP user agent string
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,7 +29,6 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Hash::Merge)
 BuildRequires:  perl(JSON::PP) >= 4.04
 BuildRequires:  perl(List::Util) >= 1.49
 BuildRequires:  perl(Path::Tiny)
@@ -37,7 +36,7 @@ BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Warnings)
-Provides:       perl(HTTP::BrowserDetect) = 3.390.0
+Provides:       perl(HTTP::BrowserDetect) = 3.400.0
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
@@ -46,7 +45,7 @@ The HTTP::BrowserDetect object does a number of tests on an HTTP user agent
 string. The results of these tests are available via methods of the object.
 
 For an online demonstration of this module's parsing, you can check out
-http://www.browserdetect.org/
+https://www.browserdetect.org/
 
 This module was originally based upon the JavaScript browser detection code
 available at
