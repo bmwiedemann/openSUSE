@@ -27,6 +27,7 @@ URL:            http://github.com/%{cluster}/%{name}/
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  make
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -74,6 +75,9 @@ This package contains the API documentation for %{name}.
             </manifestEntries>
           </archive>
         </configuration>"
+
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.8"
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.8"
 
 %{mvn_file} : %{cluster}/%{name}
 
