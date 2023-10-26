@@ -1851,4 +1851,12 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * pass EXTRAVERSION to build (forwarded request 1120227 from mwilck)</comment>
     <requestid>1120229</requestid>
   </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>4297945c7812e6181bdd35f0335fd9bc</srcmd5>
+    <version>0.9.6+115+suse.07776fb</version>
+    <time>1698333146</time>
+    <user>anag+factory</user>
+    <comment>Added missing bug ref for previous version: bsc#1212854 (forwarded request 1120350 from mwilck)</comment>
+    <requestid>1120351</requestid>
+  </revision>
 </revisionlist>

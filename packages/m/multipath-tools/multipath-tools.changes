@@ -41,6 +41,7 @@ Wed Sep  6 13:51:42 UTC 2023 - Martin Wilck <mwilck@suse.com>
 - Update to version 0.9.6+70+suse.63925e8:
   Upstream feature additions and bug fixes:
   * ignore nvme devices by default if nvme native multipath is enabled
+    (bsc#1212854)
   * add "group_by_tpg" path_grouping_policy
   * add config options "detect_pgpolicy" and "detect_pgpolicy_use_tpg"
   * libmultipath: add ALUA tpg path wildcard "%A"
