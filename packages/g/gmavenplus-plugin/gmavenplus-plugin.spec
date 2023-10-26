@@ -1,7 +1,7 @@
 #
 # spec file for package gmavenplus-plugin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://groovy.github.io/GMavenPlus/
 Source0:        https://github.com/groovy/GMavenPlus/archive/%{version}.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(jline:jline)
 BuildRequires:  mvn(org.apache.ant:ant)
@@ -69,6 +70,8 @@ This package contains javadoc for %{name}.
 %pom_xpath_remove "pom:build/pom:extensions"
 %pom_xpath_remove "pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:executions"
 
+%pom_xpath_set "pom:project/pom:properties/pom:shortJavaVersion" "8"
+
 # Mockito cannot mock this class: class org.codehaus.gmavenplus.mojo.AbstractGroovyMojoTest$TestGroovyMojo
 rm -r src/test/java/org/codehaus/gmavenplus/mojo/AbstractGroovyMojoTest.java
 
@@ -78,7 +81,7 @@ dos2unix README.markdown
 %{mvn_file} : %{name}
 
 %build
-%{mvn_build} -f -- -Pnonindy -Dsource=7
+%{mvn_build} -f -- -Pnonindy -Dsource=8
 
 %install
 %mvn_install
