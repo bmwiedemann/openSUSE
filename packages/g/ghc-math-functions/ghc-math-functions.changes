@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 18 12:11:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update math-functions to version 0.3.4.3.
+  ## Changes in 0.3.4.3
+
+    * Support for `QuickCheck >= 2.14`. Test no longer fail
+
+    * Support for GHC<8.0 dropped
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:28 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

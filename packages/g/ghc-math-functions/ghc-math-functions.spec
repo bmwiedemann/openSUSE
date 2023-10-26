@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.4.2
+Version:        0.3.4.3
 Release:        0
 Summary:        Collection of tools for numeric computations
 License:        BSD-2-Clause
