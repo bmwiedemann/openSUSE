@@ -1,0 +1,11 @@
+--- junit5-r5.8.2/junit-platform-launcher/src/main/java/org/junit/platform/launcher/TestIdentifier.java	2023-10-26 14:17:20.653152124 +0200
++++ junit5-r5.8.2/junit-platform-launcher/src/main/java/org/junit/platform/launcher/TestIdentifier.java	2023-10-26 14:18:08.740160341 +0200
+@@ -316,7 +316,7 @@
+ 		}
+ 
+ 		@SuppressWarnings("unchecked")
+-		private SerializedForm(ObjectInputStream.GetField fields) throws IOException {
++		private SerializedForm(ObjectInputStream.GetField fields) throws ClassNotFoundException, IOException {
+ 			this.uniqueId = (String) fields.get("uniqueId", null);
+ 			this.parentId = (String) fields.get("parentId", null);
+ 			this.displayName = (String) fields.get("displayName", null);
