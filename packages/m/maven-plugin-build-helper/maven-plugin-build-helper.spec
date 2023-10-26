@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-build-helper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 URL:            https://www.mojohaus.org/build-helper-maven-plugin/
 Source0:        https://github.com/mojohaus/%{srcname}/archive/%{srcname}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache-extras.beanshell:bsh)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -51,7 +52,7 @@ This package provides %{summary}.
 %setup -q -n %{srcname}-%{srcname}-%{version}
 
 %build
-%{mvn_build} -f -- -Dsource=7
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
