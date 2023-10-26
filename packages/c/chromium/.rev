@@ -4789,4 +4789,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * unspecified security fix (boo#1216392)</comment>
     <requestid>1118650</requestid>
   </revision>
+  <revision rev="405" vrev="1">
+    <srcmd5>819e75c8206b05397edb85b102b084f7</srcmd5>
+    <version>118.0.5993.117</version>
+    <time>1698333136</time>
+    <user>anag+factory</user>
+    <comment>Chromium 118.0.5993.117 (boo#1216549)</comment>
+    <requestid>1120156</requestid>
+  </revision>
 </revisionlist>

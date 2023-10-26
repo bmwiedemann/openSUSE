@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 24 21:20:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 118.0.5993.117 (boo#1216549)
+  * CVE-2023-5472: Use after free in Profiles
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Wed Oct 18 20:39:57 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 118.0.5993.88: 
