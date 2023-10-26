@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 25 13:41:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.2:
+  * fix(deps): update github.com/kubearmor/kubearmor/deployments
+    digest to 15ad34e
+  * feat: allow karmor probe to show policies applied in systemd
+    mode
+  * remove summary, discover as they depend on an external tool
+  * add govulncheck install check
+  * add govulncheck scan to Makefile
+
+-------------------------------------------------------------------
 Wed Oct 11 12:27:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - upstream fixed the missing third digit in the version, code stays

@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubearmor-client
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        KubeArmor cli tool aka kArmor
 License:        Apache-2.0
