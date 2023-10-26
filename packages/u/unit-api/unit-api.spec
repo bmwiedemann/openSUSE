@@ -104,6 +104,8 @@ find . -name "*.jar" -print -delete
   </execution>
 </executions>"
 
+%pom_xpath_set "pom:project/pom:properties/pom:jdkVersion" "1.8"
+
 %{mvn_file}  : %{name}
 %{mvn_file} :%{name}:tests: %{name}-tests
 %{mvn_package} :%{name}:tests: %{name}
