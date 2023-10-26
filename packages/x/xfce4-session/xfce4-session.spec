@@ -25,6 +25,8 @@ License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-session/start
 Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.18/%{name}-%{version}.tar.bz2
+Source1:        xfce-portals.conf
+Source2:        xdg-current-desktop-xfce.desktop
 %if %{with git}
 # PATCH-FIX-OPENSUSE xfce4-session-adapt-session-scripts-git.patch bnc#789057 maurizio.galli@gmail.com-- Adapt upstream sessions script to openSUSE.
 Patch0:         xfce4-session-adapt-session-scripts-git.patch
@@ -54,7 +56,7 @@ BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
-Requires:       %{name}-branding = %{version}
+Requires:       %{name}-branding
 Requires:       systemd
 Requires:       xfce4-settings
 Requires:       xfconf
@@ -73,6 +75,8 @@ Recommends:     xfdesktop
 Recommends:     libxfce4ui-tools
 Obsoletes:      libxfsm-4_6-0 < %{version}
 Obsoletes:      xfce4-session-devel < %{version}
+# For flatpaks to work properly (boo#1215641)
+Recommends:     xdg-desktop-portal-gtk
 
 %description
 xfce4-session is the session manager for the Xfce desktop environment.
@@ -108,6 +112,13 @@ NOCONFIGURE=1 ./autogen.sh
 %make_build
 
 %install
+
+# Install xfce-portals.conf (boo#1215641)
+install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE1}
+
+# Ensure XDG_CURRENT_DESKTOP environment variable is exposed when Xfce starts (boo#1215641)
+install -Dpm 0644 -t %{buildroot}%{_sysconfdir}/xdg/autostart %{SOURCE2}
+
 %make_install
 
 %fdupes -s %{buildroot}%{_datadir}/icons/hicolor/*
@@ -147,6 +158,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 %doc AUTHORS BUGS NEWS README.md TODO
 %config %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
+%config %{_sysconfdir}/xdg/autostart/xdg-current-desktop-xfce.desktop
 %{_bindir}/xfce4-session
 %{_bindir}/xfce4-session-logout
 %{_bindir}/xfce4-session-settings
@@ -159,6 +171,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/*/*/*
 %doc %{_mandir}/man1/xfce4-session*.1*
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/xfce-portals.conf
 
 %files lang -f %{name}.lang
 

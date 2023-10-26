@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 26 07:11:11 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Added xfce-portals.conf file. XDP 0.18.0 requires desktop and other 
+  environments to have their own portals.conf drop in file and this
+  is a workaround until a better fix lands (boo#1215641)
+  
+- Added xdg-current-desktop-xfce.desktop to autostart to ensure variable
+  XDG_CURRENT_DESKTOP variable is properly exposed to systemd (boo#1215641)
+  
+- Relax requirement of branding package version to prevent
+  xfce4-branding-openSUSE breaking on Leap due to repos being out of sync 
+  (boo#1216470)
+
+-------------------------------------------------------------------
 Mon May 29 17:28:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.3
