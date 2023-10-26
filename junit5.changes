@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 26 12:21:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * unreported-exception.patch fix unreported exception error that
+    is fatal with JDK 21
+
+-------------------------------------------------------------------
 Mon Sep 11 10:40:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

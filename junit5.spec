@@ -50,6 +50,7 @@ Source304:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-p
 Source400:      https://repo1.maven.org/maven2/org/junit/vintage/junit-vintage-engine/%{vintage_version}/junit-vintage-engine-%{vintage_version}.pom
 # BOM POM
 Source500:      https://repo1.maven.org/maven2/org/junit/junit-bom/%{version}/junit-bom-%{version}.pom
+Patch0:         unreported-exception.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -92,6 +93,7 @@ JUnit 5 User Guide.
 
 %prep
 %setup -q -n %{name}-r%{version}
+%patch0 -p1
 find -name \*.jar -delete
 
 cp -p %{SOURCE100} pom.xml
