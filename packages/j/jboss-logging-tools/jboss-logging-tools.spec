@@ -1,7 +1,7 @@
 #
 # spec file for package jboss-logging-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ URL:            https://github.com/jboss-logging/jboss-logging-tools
 Source0:        %{url}/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
 Patch0:         reproducible.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.jboss.jdeparser:jdeparser)
 BuildRequires:  mvn(org.jboss.logging:jboss-logging)
@@ -54,7 +55,11 @@ rm processor/src/test/java/org/jboss/logging/processor/generated/GeneratedSource
 %pom_disable_module docs
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %fdupes -s %{buildroot}/%{_javadocdir}
 

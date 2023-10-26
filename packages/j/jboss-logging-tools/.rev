@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>819319</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>72a22510eb9395497e858b022f00aed4</srcmd5>
+    <version>2.2.1</version>
+    <time>1698333262</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120420</requestid>
+  </revision>
 </revisionlist>

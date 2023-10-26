@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 04:57:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid incompatibilities in jdk 21 by building with release 8
+
+-------------------------------------------------------------------
 Wed Jul  8 04:00:43 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)
