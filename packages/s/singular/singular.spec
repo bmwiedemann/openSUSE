@@ -16,9 +16,9 @@
 #
 
 
-%define verud	4_3_1
-%define mainversion 4.3.1
-%define patchlevel p3
+%define verud 4_3_2
+%define mainversion 4.3.2
+%define patchlevel p9
 
 Name:           singular
 Version:        %{mainversion}%{?patchlevel:.%{patchlevel}}
@@ -27,8 +27,7 @@ Summary:        Singular CAS
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only
 Group:          Productivity/Scientific/Math
 URL:            https://www.singular.uni-kl.de/
-# Upstream does not tag or publish patch releases on Github
-Source0:        https://www.singular.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-3-1/singular-%{mainversion}%{patchlevel}.tar.gz
+Source:         https://www.singular.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-3-2/singular-4.3.2p9.tar.gz
 Source9:        %name-rpmlintrc
 BuildRequires:  autoconf >= 2.62
 BuildRequires:  automake
@@ -48,6 +47,7 @@ BuildRequires:  readline-devel
 BuildRequires:  sharutils
 BuildRequires:  xz
 Recommends:     gfan
+# see doc/NEWS.texi for changelog
 
 %description
 Singular is a computer algebra system for polynomial computations,
@@ -67,7 +67,7 @@ a large number of baserings. These include
 
 Singular's core algorithms handle
 
-* Gröbner resp. standard bases and free resolutions,
+* Gröbner and standard bases and free resolutions,
 * polynomial factorization,
 * resultants, characteristic sets, and numerical root finding.
 
