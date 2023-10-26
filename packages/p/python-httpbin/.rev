@@ -80,4 +80,12 @@
 - Remove now unneeded blinker from {Build,}Requires.</comment>
     <requestid>1094317</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dfcb0978467612f29b3b0f3b6afc3ada</srcmd5>
+    <version>0.10.1</version>
+    <time>1698333119</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119999</requestid>
+  </revision>
 </revisionlist>

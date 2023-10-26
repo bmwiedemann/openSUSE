@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 24 13:30:26 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Use Brotli instead of dropped brotlicffi
+
+-------------------------------------------------------------------
+Thu Oct 19 08:11:44 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Repackage, new active upstream
+  * In their words: We were unable to get ahold of the folks at postmanlabs to
+    maintain the original project, and httpbin is used for other packages
+    within the python ecosystem, such as pytest-httpbin which is in turn used
+    by packages such as requests so we have forked this package. That means
+    that httpbin.org is not actually backed by this repo, but the httpbin
+    package is. Confusing right?
+  * Drop now unneeded _service, changes in the *spec
+- Update to 0.10.1
+  * Override docker image port with HTTPBIN_PORT
+  * A number of fixes for code rot, thanks @mgorny and @tjni
+- Drop upstreamed/no-longer-needed patches:
+  * fix-setup-py.patch
+  * httpbin-pr674-wekzeug2.1.patch
+  * werkzeug.patch
+  * support-werkzeug-2.3.patch
+- Add flask3.patch to support Flask 3.0
+
+-------------------------------------------------------------------
 Wed Jun 21 08:35:31 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-werkzeug-2.3.patch, support Werkzeug 2.3.
