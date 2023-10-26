@@ -47,4 +47,12 @@
     <comment>reproducible</comment>
     <requestid>1111418</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>470ab69c3cdbe6b632f437d43f1dba41</srcmd5>
+    <version>2.3.1</version>
+    <time>1698333255</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120411</requestid>
+  </revision>
 </revisionlist>

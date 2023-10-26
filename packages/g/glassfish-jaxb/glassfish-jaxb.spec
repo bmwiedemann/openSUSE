@@ -237,6 +237,12 @@ perl -pi -e 's#com\.sun\.org\.apache\.xml\.internal\.resolver#org\.apache\.xml\.
 sed -i -e 's#tasks\>#target\>#g' xjc/pom.xml jxc/pom.xml
 %endif
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:source" "1.8" . jxc
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:executions/pom:execution[pom:id[text()='base-compile']]/pom:configuration/pom:target" "1.8" . jxc
+%pom_xpath_set "pom:project/pom:properties/pom:base.java.level" "8"
+
 %{mvn_alias} org.glassfish.jaxb:jaxb-xjc "com.sun.xml.bind:jaxb-xjc"
 %{mvn_alias} :jaxb-jxc :jaxb-jxc-jdk9
 %{mvn_alias} :jaxb-xjc :jaxb-xjc-jdk9
