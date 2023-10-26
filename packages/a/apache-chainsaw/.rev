@@ -23,4 +23,12 @@
     <comment>Fix build with maven-antrun-plugin &gt;= 3.0.0</comment>
     <requestid>963736</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e424b26f7c5ac56e0311e77c39e94995</srcmd5>
+    <version>2.1.0</version>
+    <time>1698333312</time>
+    <user>anag+factory</user>
+    <comment>Fix build with jdk 21</comment>
+    <requestid>1120543</requestid>
+  </revision>
 </revisionlist>
