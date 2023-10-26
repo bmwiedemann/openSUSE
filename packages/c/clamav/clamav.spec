@@ -19,7 +19,7 @@
 %bcond_with	clammspack
 %bcond_with	valgrind
 Name:           clamav
-Version:        0.103.9
+Version:        0.103.11
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -168,7 +168,7 @@ chmod -x docs/html/images/flamegraph.svg
 CFLAGS="-fstack-protector"
 CXXFLAGS="-fstack-protector"
 export CFLAGS="%optflags $CFLAGS -fPIE -fno-strict-aliasing"
-export CXXFLAGS="%optflags $CXXFLAGS -fPIE -fno-strict-aliasing -std=gnu++98"
+export CXXFLAGS="%optflags $CXXFLAGS -fPIE -fno-strict-aliasing"
 export LDFLAGS="-pie"
 %if "%{_lib}" == "lib64"
 # tomsfastmath needs this for correct operation on 64-bit platforms

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 25 18:38:13 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.103.11
+  * Upgrade the bundled UnRAR library (libclamunrar) to version 6.2.12.
+  * Windows: libjson-c 0.17 compatibility fix. with ssize_t type definition.
+  * Windows: Update build system to use OpenSSL 3 and PThreads-Win32 v3.
+
+- Update to 0.103.10
+  * Upgrade the bundled UnRAR library (libclamunrar) to version 6.2.10.
+
+-------------------------------------------------------------------
 Fri Aug 18 14:03:06 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Renew clamav.keyring .
