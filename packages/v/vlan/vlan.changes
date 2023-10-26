@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 19 13:21:08 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop url for sources, they are no longer valid.
+
+-------------------------------------------------------------------
 Tue Dec 27 13:25:27 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

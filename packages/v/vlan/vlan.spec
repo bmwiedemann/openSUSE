@@ -1,7 +1,7 @@
 #
 # spec file for package vlan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,11 @@ Release:        0
 Summary:        802.1q VLAN Implementation for Linux
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Source:         http://www.candelatech.com/~greear/vlan/vlan.%{version}.tar.bz2
-Source1:        http://scry.wanfear.com/~greear/vlan/cisco_howto.html.bz2
+# online url http://www.candelatech.com/~greear/vlan/vlan.1.9.tar.gz but tarball is broken there
+# this is a bz2 version of it
+Source:         vlan.%{version}.tar.bz2
+# from now offline       http://scry.wanfear.com/~greear/vlan/cisco_howto.html, accessible through https://web.archive.org/web/20070429115150/http://scry.wanfear.com/~greear/vlan/cisco_howto.html
+Source1:        cisco_howto.html.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
