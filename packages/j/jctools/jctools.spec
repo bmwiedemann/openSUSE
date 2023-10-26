@@ -25,6 +25,7 @@ License:        Apache-2.0
 URL:            https://github.com/JCTools/JCTools
 Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 Patch0:         imports.patch
+Patch1:         jctools-javadoc.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -69,6 +70,7 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n %{srcname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 # set correct version in all pom.xml files
 %pom_xpath_set pom:project/pom:version %{version}

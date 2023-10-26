@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 26 05:21:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jctools-javadoc.patch
+    + work around javadoc breakages with jdk 21
+
+-------------------------------------------------------------------
 Sat Sep  9 14:21:06 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
