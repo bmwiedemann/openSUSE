@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:03:53 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.14.0:
+  * gopls: update go.mod for v0.14.0-pre.5
+  * gopls/internal/lsp/source: find linkname directives without parsing
+  * gopls/internal/lsp: fix signature crash on error.Error
+  * gopls: update go.mod for v0.14.0-pre.4
+  * gopls/internal/lsp/source: abort change signature on overlapping calls
+  * gopls/internal/lsp: add code actions to remove unused parameters
+  * gopls: deprecate "tempModfile" and "expandWorkspaceToModule" settings
+  * gopls: update go.mod for v0.14.0-pre.3
+  * gopls: upgrade x/telemetry dependency
+  * gopls: allow all drive letters in cache/filemap_test.go
+  * gopls/internal/lsp: use the correct options for semantic tokens legend
+  * gopls: update go.mod for v0.14.0-pre.2
+  * gopls/internal/lsp: go to definition from embed directive
+  * gopls: update x/telemetry dependency
+  * gopls/internal/lsp: simplify the telemetry prompt
+  * gopls/internal/lsp/fake: don't set a completion budget for tests
+  * gopls/internal/lsp: hover over embed directives
+  * gopls/internal/lsp/cache: remove snapshot.typeCheckMu
+  * gopls/internal/regtest/source/completion: reuse functionCallSnippet in unimported completion
+  * gopls/internal/lsp: use matcher score in ranking unimported candidates
+  * gopls/internal/lsp/source: don't complete to golang.org/toolchain
+  * gopls/internal/lsp/source: Add ui.complete.completeFunctionCalls toggle
+  * gopls: set a context deadline after minimal completion results
+  * gopls: update go.mod for v0.14.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.14
+  * gopls: upgrade x/telemetry to latest
+  * gopls/internal/lsp/source/completion: fixes for completion budget
+  * gopls/internal/lsp/source/completion: start timing before type checking
+  * gopls/internal/lsp: use linkifyShowMessage in telemetryOnMessage
+  * gopls/internal/regtest/bench: add additional completion benchmarks
+  * gopls/internal/lsp: update telemetry prompt and add a follow-up message
+  * gopls/internal/lsp/command: add maybePromptForTelemetry
+  * gopls/internal/lsp/source: add linkifyShowMessage (internal option)
+  * gopls/internal/lsp/cmd: undocument gopls vulncheck
+  * gopls/internal/lsp: update prompting logic for local/off mode
+  * gopls: instrument telemetry for latency of important operations
+  * all: register the appends analyzer in a few places and update gopls/go.mod
+  * gopls: update golang.org/x/telemetry dependency
+  * gopls/internal/lsp: minor cleanup to prompt logic
+  * gopls/internal/lsp: add an idle prompt asking users to enable telemetry
+  * gopls/internal/vulncheck/scan: buffer govulncheck STDERR output
+  * gopls/internal/regtest/marker: rename to clarify marker types
+  * gopls/internal/lsp/tests: eliminate several old marker types
+  * gopls: update x/telemetry to the latest
+  * gopls/internal: move builtin completion test to a regtest
+  * gopls/internal/regtest: support full features of old completion markers
+  * gopls/internal/lsp/source: inliner: don't spam log
+  * gopls/lsp/command: add gopls.add_telemetry_counters
+  * gopls: improve usage instructions for neovim
+  * gopls/internal/regtest: port the codelens marker tests
+  * gopls/internal/lsp/source: recover from inliner panics
+  * gopls: update to use the new golang.org/x/vuln API
+  * gopls/internal/lsp/regtest: parallelize marker tests
+  * gopls/internal/lsp/regtest: port the highlight marker
+  * gopls/internal/lsp: track didChangeConfiguration diagnostics for tests
+  * gopls/internal/lsp: move options into the snapshot
+  * gopls/internal/lsp/cache: move Option management to the Server
+  * gopls/internal/regtest/marker: support folding ranges
+  * gopls/internal/lsp/tests: eliminate the go1.18 summary file
+  * gopls/internal/lsp/tests: simplify options
+  * gopls/internal/lsp/cache: move working dir to workspaceInformation
+  * gopls/internal/lsp/cache: simplify file change propagation
+  * gopls/internal/lsp/cache: only evaluate fileMap.dirs when necessary
+  * gopls/internal/lsp/cache: consolidate logic for updating maps in clone
+  * gopls: update staticcheck (v0.4.5)
+  * gopls/internal/lsp/cache: simplify tracking of snapshot directories
+  * gopls/internal/lsp/cache: use persistent.Set in a couple places
+  * gopls: add and enable the slog analyzer
+  * gopls: tidy for 1.17+
+  * gopls/internal/lsp/cmd: don't use x/exp/slices
+  * gopls/internal/telemetry: don't schedule the next upload
+  * gopls: remove dead code
+  * gopls/internal/lsp/cache: delete unused mustEncode
+  * gopls/internal/lsp/cmd: consolidate editing flags
+  * gopls: more 1.18 cleanup; use strings.Cut and os functions
+  * gopls/internal: move Options and FileKind from View to Snapshot
+  * gopls: update uses of deprecated ioutil APIs
+  * gopls/internal/lsp/analysis/unusedparams: document the blank identifier
+  * gopls/internal/lsp/frob: add defensive header
+  * gopls/internal/lsp/source: implement refactor.inline code action
+  * gopls/internal/telemetry: log timestamp when test fails
+  * gopls/internal/lsp/frob: fix build breakage
+  * gopls/internal/lsp/frob: make API generic
+  * gopls: update x/telemetry dependency
+  * gopls/internal/lsp/debug: remove hard-coded version
+  * gopls/doc: update tests that fail on Kokoro to run at Go 1.21+
+  * gopls/internal/telemetry: write counter unconditionally and run upload
+  * gopls/internal/lsp/mod: remove TestModfileRemainsUnchanged
+  * gopls/internal/regtest/codelens: avoid a race in TestUpgradeCodelens
+  * gopls/doc: include stderr output from 'go list' in pkgDir errors
+  * gopls/internal/lsp: add testing support for the new zero builtin
+  * gopls/internal/lsp/source completion: don't suggest untyped conversions
+  * gopls/internal/lsp/source: fix implementations query on error type
+  * gopls/internal/lsp/source: add a test for local types stubbing
+  * gopls: stubbed methods shouldn't qualify the current package
+  * gopls/internal/lsp/source: fix renaming instantiated fields
+  * gopls/internal/lsp: switch default diff to "new"
+  * gopls/telemetry: accept vscode-insiders as a known editor
+  * gopls/internal/lsp/source/completion: add ifnotnil postfix snippet
+  * gopls/internal/lsp/cache: avoid dependency on StdSizes
+  * gopls: fix raciness related to TestOrphanedFiles
+  * gopls/internal/lsp: avoid duplicate type checking following invalidation
+  * gopls/internal/regtest/bench: skip oracle didSave test
+  * gopls/telemetry: test that telemetry counters are written
+  * gopls/internal/regtest/bench: enable oracle benchmarks with -short
+  * go/types/objectpath: remove use of linkname for gopls back doors
+  * gopls/internal/protocol: remove // line comments from tsprotocol.go
+  * gopls/internal/regtest/bench: add an oracle completion benchmark
+  * gopls/internal/telemetry: record Go version used in each view
+  * gopls/internal/lsp/source: enable new defers analyzer
+  * gopls/internal/bug: add gopls/bug telemetry counter
+  * gopls: add gopls/client telemetry counters
+
+-------------------------------------------------------------------
 Tue Sep 12 13:55:41 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - License correction based on legaldb review

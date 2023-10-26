@@ -50,4 +50,12 @@
   Add Apache-2.0 and MIT for vendor/gopkg.in/yaml.v3 (forwarded request 1110633 from lkocman)</comment>
     <requestid>1110780</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>680103319b8433e89509d10315a2a9d5</srcmd5>
+    <version>0.14.0</version>
+    <time>1698333216</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.0: (forwarded request 1120334 from jfkw)</comment>
+    <requestid>1120335</requestid>
+  </revision>
 </revisionlist>
