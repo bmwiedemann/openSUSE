@@ -1582,4 +1582,12 @@ Last accepted SR#253447 from opensuse132-syncer to rsyslog 8.4.1 contained an in
     <comment></comment>
     <requestid>1098796</requestid>
   </revision>
+  <revision rev="174" vrev="2">
+    <srcmd5>19aa8515e9d3ed0a0feead70d1ba3249</srcmd5>
+    <version>8.2306.0</version>
+    <time>1698333126</time>
+    <user>anag+factory</user>
+    <comment>restart daemon after modules packages have been updated (bsc#1214996) (forwarded request 1119625 from tsaupe)</comment>
+    <requestid>1120194</requestid>
+  </revision>
 </revisionlist>

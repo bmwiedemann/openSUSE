@@ -21,6 +21,12 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%define mark_daemon_restart %if 0%{?suse_version} > 1550 \
+				/usr/lib/systemd/systemd-update-helper mark-restart-system-units rsyslog.service \
+			     %else \
+				/usr/bin/systemctl set-property "rsyslog.service" Markers=+needs-restart \
+			     %endif
+
 # drop this with next release when doc tarball version lines up
 %define rsyslog_major 8.2306
 %define rsyslog_patch 0
@@ -895,6 +901,131 @@ fi # first install
 # We do not check the obsolete SYSLOG_DAEMON variable as we want
 # to switch when installing it and there is a provider conflict.
 /usr/bin/systemctl -f enable rsyslog.service >/dev/null 2>&1 || :
+
+%if %{with gssapi}
+
+%post module-gssapi
+%mark_daemon_restart
+%endif
+
+%if %{with mysql}
+
+%post module-mysql
+%mark_daemon_restart
+%endif
+
+%if %{with pgsql}
+
+%post module-pgsql
+%mark_daemon_restart
+%endif
+
+%if %{with dbi}
+
+%post module-dbi
+%mark_daemon_restart
+%endif
+
+%if %{with snmp}
+
+%post module-snmp
+%mark_daemon_restart
+%endif
+
+%if %{with gnutls}
+
+%post module-gtls
+%mark_daemon_restart
+%endif
+
+%if %{with openssl}
+
+%post module-ossl
+%mark_daemon_restart
+%endif
+
+%if %{with relp}
+
+%post module-relp
+%mark_daemon_restart
+%endif
+
+%if %{with mmnormalize}
+
+%post module-mmnormalize
+%mark_daemon_restart
+%endif
+
+%if %{with udpspoof}
+
+%post module-udpspoof
+%mark_daemon_restart
+%endif
+
+%if %{with elasticsearch}
+
+%post module-elasticsearch
+%mark_daemon_restart
+%endif
+
+%if %{with omhttpfs}
+
+%post module-omhttpfs
+%mark_daemon_restart
+%endif
+
+%if %{with hdfs}
+
+%post module-hdfs
+%mark_daemon_restart
+%endif
+
+%if %{with mongodb}
+
+%post module-mongodb
+%mark_daemon_restart
+%endif
+
+%if %{with hiredis}
+
+%post module-hiredis
+%mark_daemon_restart
+%endif
+
+%if %{with zeromq}
+
+%post module-zeromq
+%mark_daemon_restart
+%endif
+
+%if %{with kafka}
+
+%post module-kafka
+%mark_daemon_restart
+%endif
+
+%if %{with omamqp1}
+
+%post module-omamqp1
+%mark_daemon_restart
+%endif
+
+%if %{with gcrypt}
+
+%post module-gcrypt
+%mark_daemon_restart
+%endif
+
+%if %{with tcl}
+
+%post module-omtcl
+%mark_daemon_restart
+%endif
+
+%posttrans
+if [ -x /usr/bin/systemctl ] && /usr/bin/systemctl is-active rsyslog.service; then
+      /usr/bin/systemctl --marked reload-or-restart
+fi
 
 %preun
 #
