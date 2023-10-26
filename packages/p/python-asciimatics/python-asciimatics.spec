@@ -17,14 +17,13 @@
 
 
 Name:           python-asciimatics
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Package to replace curses and create ASCII animations
 License:        Apache-2.0
 URL:            https://github.com/peterbrittain/asciimatics
 Source:         https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#peterbrittain/asciimatics#376
-Patch0:         move-to-python3.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
