@@ -1,7 +1,7 @@
 #
 # spec file for package java-jwt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/auth0/%{name}
 Source0:        https://github.com/auth0/%{name}/archive/%{version}.tar.gz
 Source1:        https://repo1.maven.org/maven2/com/auth0/%{name}/%{version}/%{name}-%{version}.pom
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(commons-codec:commons-codec)
@@ -51,9 +52,9 @@ cp %{SOURCE1} lib/pom.xml
 pushd lib
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+	-Dmaven.compiler.release=8 \
 %endif
-	-Dmaven.compiler.source=7 -Dmaven.compiler.target=7 -Dsource=7
+	-Dmaven.compiler.source=8 -Dmaven.compiler.target=8 -Dsource=8
 popd
 
 %install

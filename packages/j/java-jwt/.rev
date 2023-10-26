@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>779844</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb93c88d59c8a6ca960c98c2c14e91a9</srcmd5>
+    <version>3.8.3</version>
+    <time>1698333259</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120416</requestid>
+  </revision>
 </revisionlist>
