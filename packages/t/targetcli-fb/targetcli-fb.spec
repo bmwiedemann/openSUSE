@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           targetcli-fb
-Version:        2.1.56
+Version:        2.1.57
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
