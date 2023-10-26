@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 13 16:58:03 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Interlock version and release of all noarch packages except for
+  the postgresql-docs.
+
+-------------------------------------------------------------------
 Thu Sep 14 13:03:29 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Bump default to 16 on Factory.

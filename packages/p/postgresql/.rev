@@ -574,4 +574,13 @@
 - bsc#1209208: Drop hard dependency on systemd</comment>
     <requestid>1111591</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>a76a1be59a52fa6d509918d0330822c3</srcmd5>
+    <version>16</version>
+    <time>1698333104</time>
+    <user>anag+factory</user>
+    <comment>- Interlock version and release of all noarch packages except for
+  the postgresql-docs.</comment>
+    <requestid>1120258</requestid>
+  </revision>
 </revisionlist>

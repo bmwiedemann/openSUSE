@@ -111,8 +111,8 @@ package.
 Summary:        The Programs Needed to Create and Run a PostgreSQL Server
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-server-noarch = %version-%release
-Requires:       postgresql-server-implementation
 Requires:       postgresql = %version-%release
+Requires:       postgresql-server-implementation
 Recommends:     %defaultpackage-server
 %if 0%{?suse_version} >= 1315
 %if %{with sysusers}
@@ -148,6 +148,7 @@ PostgreSQL databases.
 Summary:        PostgreSQL server development header files and utilities
 Group:          Development/Libraries/C and C++
 Provides:       postgresql-server-devel-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-server-devel-implementation
 Recommends:     %defaultpackage-server-devel
 
@@ -165,6 +166,7 @@ applications, see the %defaultpackage-devel package.
 Summary:        Just-in-time compilation support for PostgreSQL
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-llvmjit-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-llvmjit-implementation
 Recommends:     %defaultpackage-llvmjit
 
@@ -183,6 +185,7 @@ queries.
 Summary:        Helper package to pull all dependencies to build with llvm support
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-llvmjit-devel-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-server-devel-noarch
 Requires:       postgresql-llvmjit-devel-implementation
 
@@ -201,6 +204,7 @@ Otherwise it will just pull the postgresqlXY-server-devel package
 Summary:        The test suite for PostgreSQL
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-test-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-test-implementation
 Recommends:     %defaultpackage-implementation
 
@@ -231,6 +235,7 @@ postgresql package.
 Summary:        Contributed Extensions and Additions to PostgreSQL
 Group:          Productivity/Databases/Tools
 Provides:       postgresql-contrib-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-contrib-implementation
 Recommends:     %defaultpackage-contrib
 
@@ -255,6 +260,7 @@ Provides:       pkgconfig(libecpg) = %{version}-%{release}
 Provides:       pkgconfig(libecpg_compat) = %{version}-%{release}
 Provides:       pkgconfig(libpgtypes) = %{version}-%{release}
 Provides:       pkgconfig(libpq) = %{version}-%{release}
+Requires:       postgresql = %version-%release
 Requires:       postgresql-devel-implementation
 Recommends:     %defaultpackage-devel
 
@@ -274,6 +280,7 @@ which will interact with a PostgreSQL server.
 Summary:        The PL/Tcl, PL/Perl, and  PL/Python procedural languages for PostgreSQL
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-plperl-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-plperl-implementation
 Recommends:     %defaultpackage-plperl
 
@@ -291,6 +298,7 @@ functions, and triggers.
 Summary:        The PL/Python Procedural Languages for PostgreSQL
 Group:          Productivity/Databases/Servers
 Provides:       postgresql-plpython-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-plpython-implementation
 Recommends:     %defaultpackage-plpython
 
@@ -308,6 +316,7 @@ functions, and triggers.
 Summary:        PL/Tcl Procedural Language for PostgreSQL
 Group:          Productivity/Databases/Tools
 Provides:       postgresql-pltcl-noarch = %version-%release
+Requires:       postgresql = %version-%release
 Requires:       postgresql-pltcl-implementation
 Recommends:     %defaultpackage-pltcl
 
