@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 26 05:05:35 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.4:
+  * go_modules: allow globbing in the "archive" name field
+  * Reformat with black 23.x
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+
+-------------------------------------------------------------------
 Mon Oct  9 04:19:30 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Use BuildRequires: golang(API) >= 1.21 instead of go >= 1.21

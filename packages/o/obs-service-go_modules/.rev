@@ -120,4 +120,18 @@
   * Refs https://github.com/openSUSE/obs-service-go_modules/issues/33 (forwarded request 1116356 from jfkw) (forwarded request 1116358 from jfkw)</comment>
     <requestid>1116359</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0c2f27b41cc346b7fb6afe6385c2bcf1</srcmd5>
+    <version>0.6.4</version>
+    <time>1698333270</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.4:
+  * go_modules: allow globbing in the &quot;archive&quot; name field
+  * Reformat with black 23.x
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead. (forwarded request 1120423 from jfkw)</comment>
+    <requestid>1120424</requestid>
+  </revision>
 </revisionlist>
