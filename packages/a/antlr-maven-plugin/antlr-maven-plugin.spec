@@ -31,6 +31,7 @@ Patch2:         maven-antlr-plugin-2.1-sinkfix.patch
 # Fix grammar processing bug (bz 1020312)
 Patch3:         0001-MANTLR-34-Fix-NPE-when-building-Jenkins.patch
 Patch4:         new-reporting-api.patch
+Patch5:         jdk18plus.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -66,6 +67,7 @@ This package contains the API documentation for %{name}.
 %patch2 -b .sink
 %patch3 -p1 -b .fixnpe
 %patch4 -p1
+%patch5 -p1
 
 %pom_change_dep :maven-project :maven-core:3.9.3
 

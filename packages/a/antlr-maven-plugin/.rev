@@ -31,4 +31,12 @@
     <comment>Remove dependency on maven2</comment>
     <requestid>1113401</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>47989fafbd47df7debd442ee87cb6101</srcmd5>
+    <version>2.2</version>
+    <time>1698333310</time>
+    <user>anag+factory</user>
+    <comment>make work with jdk 21 and deprecated SecurityManager</comment>
+    <requestid>1120551</requestid>
+  </revision>
 </revisionlist>
