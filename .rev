@@ -138,4 +138,16 @@
 - Skip a recalcitrant test.</comment>
     <requestid>1097852</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7b8d73f455d7e9f7bdb0b9bd50aa315c</srcmd5>
+    <version>1.6.1</version>
+    <time>1698333289</time>
+    <user>anag+factory</user>
+    <comment>- Add few patches to fix tests (from gh#flask-admin/flask-admin#2328):
+  * model-from-model.patch
+  * reverse-relation-for-model.patch
+  * bytes-not-str.patch
+</comment>
+    <requestid>1120478</requestid>
+  </revision>
 </revisionlist>

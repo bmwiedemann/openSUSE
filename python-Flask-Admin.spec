@@ -26,13 +26,17 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Fla
 # PATCH-FIX-OPENSUSE Flask-BabelEx has been firmly deprecated, switch to Babel
 # directly.
 Patch0:         switch-to-babel.patch
+# cherry-picks from https://github.com/flask-admin/flask-admin/pull/2328 Support latest flask, sqlalchemy, flask-sqlalchemy and wtforms
+Patch1:         model-from-model.patch
+Patch2:         reverse-relation-for-model.patch
+Patch3:         bytes-not-str.patch
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-Babel}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Pillow >= 3.3.2}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module SQLAlchemy < 2.0}
 BuildRequires:  %{python_module SQLAlchemy-Utils}
+BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module colour}
@@ -45,7 +49,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.7
-Requires:       python-SQLAlchemy < 2.0
+Requires:       python-SQLAlchemy
 Requires:       python-WTForms
 BuildArch:      noarch
 %python_subpackages
