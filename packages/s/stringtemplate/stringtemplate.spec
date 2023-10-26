@@ -1,7 +1,7 @@
 #
 # spec file for package stringtemplate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,18 @@ Summary:        A Java template engine
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://www.stringtemplate.org/
-Source0:        http://www.stringtemplate.org/download/stringtemplate-%{version}.tar.gz
+Source0:        http3://www.stringtemplate.org/download/stringtemplate-%{version}.tar.gz
 # Build jUnit tests + make the antlr2 generated code before preparing sources
 Patch0:         stringtemplate-3.1-build-junit.patch
 Patch1:         stringtemplate-3.2.1-sourcetarget.patch
+Patch2:         stringtemplate-ambiguous.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  ant-junit
 BuildRequires:  antlr
 BuildRequires:  fdupes
-BuildRequires:  java-devel
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 Requires:       mvn(antlr:antlr)
 BuildArch:      noarch
 
@@ -56,6 +57,7 @@ API documentation for package %{name}.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -rf lib target
@@ -68,13 +70,17 @@ ant \
 	javadocs
 
 %install
-install -D build/stringtemplate.jar %{buildroot}%{_datadir}/java/stringtemplate.jar
-install -dm 755 %{buildroot}%{_javadocdir}/%{name}
+#jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 build/stringtemplate.jar %{buildroot}%{_javadir}/%{name}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap JPP-%{name}.pom %{name}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pR docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
-
-install -Dpm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap JPP-%{name}.pom stringtemplate.jar
 
 %files -f .mfiles
 %license LICENSE.txt

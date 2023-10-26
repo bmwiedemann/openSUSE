@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:39:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * stringtemplate-ambiguous.patch
+    + disambiguate between org.antlr.stringtemplate.StringTemplate
+      and the new java.lang.StringTemplate from jdk 21
+
+-------------------------------------------------------------------
 Sun Mar 20 17:34:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

@@ -15,4 +15,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963305</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7712aad98162b3f3cd3cbb0267d8dc67</srcmd5>
+    <version>3.2.1</version>
+    <time>1698333211</time>
+    <user>anag+factory</user>
+    <comment>fix build jdk 21</comment>
+    <requestid>1120340</requestid>
+  </revision>
 </revisionlist>
