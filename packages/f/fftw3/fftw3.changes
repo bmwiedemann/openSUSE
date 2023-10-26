@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 25 11:53:29 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Disable HPC flavors on %ix86
+
+-------------------------------------------------------------------
+Mon Oct 23 11:43:32 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Wed Apr 27 08:41:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update rpmlintrc for shlib-policy-name-error
