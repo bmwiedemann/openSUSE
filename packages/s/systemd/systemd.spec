@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.5.g9674bb2562
+%define archive_version +suse.10.gb53f364c26
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -65,6 +65,20 @@
 %bcond_without  filetriggers
 %bcond_with     split_usr
 
+# We stopped shipping main config files in /etc but we have to restore any
+# config files that might have been backed up by rpm during the migration of the
+# main config files from /etc to /usr. This needs to be done in %%posttrans
+# because the .rpmsave files are created when the *old* package version is
+# removed. This is not needed by ALP and will be dropped from Factory near the
+# end of 2024.
+%define restore_rpmsave() \
+if [ -e %{_sysconfdir}/%{1}.rpmsave ] && [ ! -e %{_sysconfdir}/%{1} ]; then \
+        echo >&2 "Restoring %{_sysconfdir}/%1. Please consider moving your customizations in a drop-in instead." \
+        echo >&2 "For more details, visit https://en.opensuse.org/Systemd#Configuration." \
+        mv -v %{_sysconfdir}/%{1}.rpmsave %{_sysconfdir}/%{1} || : \
+fi \
+%{nil}
+
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
 Version:        254.5
@@ -76,7 +90,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bpftool
 BuildRequires:  clang
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  kbd
 %if %{with apparmor}
 BuildRequires:  libapparmor-devel
 %endif
@@ -184,6 +197,8 @@ Source207:      files.experimental
 Source208:      files.coredump
 Source209:      files.homed
 Source210:      files.lang
+Source211:      files.journal-remote
+Source212:      files.portable
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -194,7 +209,6 @@ Source210:      files.lang
 # only relevant for SUSE distros. Special rewards for those who will manage to
 # get rid of one of them !
 #
-Patch2:         0001-conf-parser-introduce-early-drop-ins.patch
 Patch3:         0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 %if %{with sysvcompat}
 Patch4:         0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
@@ -813,8 +827,18 @@ install -m0755 -D %{SOURCE3} %{buildroot}/%{_systemd_util_dir}/systemd-update-he
 install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
 %endif
 
-mkdir -p % %{buildroot}%{_sysconfdir}/systemd/network
-mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
+# For some reasons, upstream refuses to add a new build option (see pr#29244)
+# for customizing the installation path of main config files. However we want to
+# store them in /usr/lib so we don't encourage users to modify them while they
+# still can serve as templates.
+for f in %{buildroot}%{_sysconfdir}/systemd/*.conf; do
+	mv $f %{buildroot}%{_systemd_util_dir}/
+done
+for f in %{buildroot}%{_sysconfdir}/udev/*.conf; do
+	# Drop-ins are currently not supported by udevd.
+	[ $(basename $f) = "udev.conf" ] && continue
+	mv $f %{buildroot}%{_prefix}/lib/udev/
+done
 
 # Install the fixlets
 mkdir -p %{buildroot}%{_systemd_util_dir}/rpm
@@ -885,6 +909,26 @@ rm -f %{buildroot}%{_environmentdir}/99-environment.conf
 # directory... oh well.
 rm -f %{buildroot}%{_sysconfdir}/init.d/README
 
+# Create *.conf.d/ directories to encourage users to create drop-ins when they
+# need to customize some setting defaults.
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/coredump.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/journald.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/journal-remote.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/journal-upload.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/logind.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/networkd.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/oomd.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/pstore.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/resolved.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/sleep.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/system.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/timesyncd.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/user.confd.d
+mkdir -p %{buildroot}%{_sysconfdir}/udev/iocost.conf.d
+
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/network
+mkdir -p %{buildroot}%{_sysconfdir}/systemd/nspawn
+
 # This dir must be owned (and thus created) by systemd otherwise the build
 # system will complain. This is odd since we simply own a ghost file in it...
 mkdir -p %{buildroot}%{_sysconfdir}/X11/xorg.conf.d
@@ -942,44 +986,18 @@ rm -f %{buildroot}%{_presetdir}/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset
 echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
 
-# The current situation with tmpfiles snippets dealing with the generic paths is
-# pretty messy currently because:
-#
-#  1. filesystem package wants to define the generic paths and some of them
-#     conflict with the definition given by systemd in var.conf, see
-#     bsc#1078466.
-#
-#  2. /tmp and /var/tmp are not cleaned by default on SUSE distros (fate#314974)
-#     which conflict with tmp.conf.
-#
-#  3. There're also legacy.conf which defines various legacy paths which either
-#     don't match the SUSE defaults or don't look needed at all.
-#
-#  4. We don't want the part in etc.conf which imports default upstream files in
-#     empty /etc, see below.
-#
-# To keep things simple, we remove all these tmpfiles config files but still
-# keep the remaining paths that still don't have a better home in suse.conf.
+# Most of the entries for the generic paths are defined by filesystem package as
+# the definitions used by SUSE distros diverged from the ones defined by
+# systemd. For lack of a better place some (deprecated) paths are still shipped
+# along with the systemd package.
 rm -f %{buildroot}%{_tmpfilesdir}/{etc,home,legacy,tmp,var}.conf
-install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/suse.conf
+install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/systemd-suse.conf
 
 # The content of the files shipped by systemd doesn't match the
 # defaults used by SUSE. Don't ship those files but leave the decision
 # to use the mechanism to the individual packages that actually
 # consume those configs (like glibc or pam), see bsc#1170146.
 rm -fr %{buildroot}%{_datadir}/factory/*
-
-# Add entries for xkeyboard-config converted keymaps; mappings, which already
-# exist in original systemd mapping table are being ignored though, i.e. not
-# overwritten; needed as long as YaST uses console keymaps internally and calls
-# localectl to convert from vconsole to X11 keymaps. Ideally YaST should switch
-# to X11 layout names (the mapping table wouldn't be needed since each X11
-# keymap has a generated xkbd keymap) and let localectl initialize
-# /etc/vconsole.conf and /etc/X11/xorg.conf.d/00-keyboard.conf (FATE#319454).
-if [ -f /usr/share/systemd/kbd-model-map.xkb-generated ]; then
-        cat /usr/share/systemd/kbd-model-map.xkb-generated \
-                >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
-fi
 
 # kbd-model-map.legacy is used to provide mapping for legacy keymaps, which may
 # still be used by yast.
@@ -1074,6 +1092,12 @@ journalctl --update-catalog || :
 %systemd_postun_with_restart systemd-timedated.service
 %systemd_postun_with_restart systemd-userdbd.service
 
+%posttrans
+%restore_rpmsave systemd/journald.conf
+%restore_rpmsave systemd/logind.conf
+%restore_rpmsave systemd/system.conf
+%restore_rpmsave systemd/user.conf
+
 %pre -n udev%{?mini}
 # Units listed below can be enabled at installation accoding to their preset
 # setting.
@@ -1128,6 +1152,10 @@ fi
 
 %posttrans -n udev%{?mini}
 %regenerate_initrd_posttrans
+%restore_rpmsave systemd/pstore.conf
+%restore_rpmsave systemd/sleep.conf
+%restore_rpmsave systemd/timesyncd.conf
+%restore_rpmsave udev/iocost.conf
 
 %ldconfig_scriptlets -n libsystemd0%{?mini}
 %ldconfig_scriptlets -n libudev%{?mini}1
@@ -1158,6 +1186,9 @@ fi
 %post coredump
 %if %{without filetriggers}
 %sysusers_create systemd-coredump.conf
+
+%posttrans coredump
+%restore_rpmsave systemd/coredump.conf
 %endif
 %endif
 
@@ -1185,6 +1216,10 @@ fi
 %systemd_postun_with_restart systemd-journal-gatewayd.service
 %systemd_postun_with_restart systemd-journal-remote.service
 %systemd_postun_with_restart systemd-journal-upload.service
+
+%posttrans journal-remote
+%restore_rpmsave systemd/journal-remote.conf
+%restore_rpmsave systemd/journal-upload.conf
 %endif
 
 %if %{with networkd} || %{with resolved}
@@ -1233,6 +1268,10 @@ fi
 %ldconfig
 %systemd_postun systemd-resolved.service
 %endif
+
+%posttrans network
+%restore_rpmsave systemd/networkd.conf
+%restore_rpmsave systemd/resolved.conf
 %endif
 
 %if %{with homed}
@@ -1291,6 +1330,9 @@ fi
 %postun experimental
 %systemd_postun systemd-homed.service
 %systemd_postun systemd-oomd.service systemd-oomd.socket
+
+%posttrans experimental
+%restore_rpmsave systemd/oomd.conf
 %endif
 
 # File trigger definitions
@@ -1363,22 +1405,7 @@ fi
 %if %{with journal_remote}
 %files journal-remote
 %defattr(-, root, root)
-%config(noreplace) %{_sysconfdir}/systemd/journal-remote.conf
-%config(noreplace) %{_sysconfdir}/systemd/journal-upload.conf
-%{_unitdir}/systemd-journal-gatewayd.*
-%{_unitdir}/systemd-journal-remote.*
-%{_unitdir}/systemd-journal-upload.*
-%{_systemd_util_dir}/systemd-journal-gatewayd
-%{_systemd_util_dir}/systemd-journal-remote
-%{_systemd_util_dir}/systemd-journal-upload
-%{_sysusersdir}/systemd-remote.conf
-%{_mandir}/man5/journal-remote.conf*
-%{_mandir}/man5/journal-upload.conf*
-%{_mandir}/man8/systemd-journal-gatewayd.*
-%{_mandir}/man8/systemd-journal-remote.*
-%{_mandir}/man8/systemd-journal-upload.*
-%{_datadir}/systemd/gatewayd
-%ghost %dir %{_localstatedir}/log/journal/remote
+%include %{SOURCE211}
 %endif
 
 %if %{with homed}
@@ -1390,17 +1417,7 @@ fi
 %if %{with portabled}
 %files portable
 %defattr(-,root,root)
-%{_bindir}/portablectl
-%{_systemd_util_dir}/systemd-portabled
-%{_systemd_util_dir}/portable
-%{_unitdir}/systemd-portabled.service
-%{_unitdir}/dbus-org.freedesktop.portable1.service
-%{_datadir}/dbus-1/system.d/org.freedesktop.portable1.conf
-%{_datadir}/dbus-1/system-services/org.freedesktop.portable1.service
-%{_datadir}/polkit-1/actions/org.freedesktop.portable1.policy
-%{_tmpfilesdir}/portables.conf
-%{_mandir}/man*/portablectl*
-%{_mandir}/man*/systemd-portabled*
+%include %{SOURCE212}
 %endif
 
 %if %{with testsuite}

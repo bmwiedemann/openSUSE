@@ -2,8 +2,8 @@
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
 %if %{with networkd}
-%config(noreplace) %{_sysconfdir}/systemd/networkd.conf
 %dir %{_sysconfdir}/systemd/network
+%dir %{_sysconfdir}/systemd/networkd.conf.d
 %dir %{_systemd_util_dir}/network
 %{_bindir}/networkctl
 %{_datadir}/bash-completion/completions/networkctl
@@ -36,6 +36,7 @@
 %{_systemd_util_dir}/network/80-wifi-adhoc.network
 %{_systemd_util_dir}/network/80-wifi-ap.network.example
 %{_systemd_util_dir}/network/80-wifi-station.network.example
+%{_systemd_util_dir}/networkd.conf
 %{_systemd_util_dir}/systemd-networkd
 %{_systemd_util_dir}/systemd-networkd-wait-online
 %{_sysusersdir}/systemd-network.conf
@@ -47,7 +48,7 @@
 %endif
 
 %if %{with resolved}
-%config(noreplace) %{_sysconfdir}/systemd/resolved.conf
+%dir %{_sysconfdir}/systemd/resolved.conf.d
 %{_bindir}/resolvectl
 %{_bindir}/systemd-resolve
 %{_datadir}/bash-completion/completions/resolvectl
@@ -69,6 +70,7 @@
 %{_mandir}/man8/systemd-resolved.8.gz
 %{_mandir}/man8/systemd-resolved.service.8.gz
 %{_systemd_util_dir}/resolv.conf
+%{_systemd_util_dir}/resolved.conf
 %{_systemd_util_dir}/systemd-resolved
 %{_sysusersdir}/systemd-resolve.conf
 %{_tmpfilesdir}/systemd-resolve.conf

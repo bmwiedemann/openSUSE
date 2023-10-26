@@ -1,10 +1,6 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
-%config(noreplace) %{_sysconfdir}/systemd/pstore.conf
-%config(noreplace) %{_sysconfdir}/systemd/sleep.conf
-%config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
-%config(noreplace) %{_sysconfdir}/udev/iocost.conf
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
 %if %{without bootstrap}
 %dir %{_libdir}/cryptsetup
@@ -17,7 +13,11 @@
 %dir %{_sysconfdir}/modules-load.d
 %endif
 %dir %{_sysconfdir}/systemd/network
+%dir %{_sysconfdir}/systemd/pstore.conf.d
+%dir %{_sysconfdir}/systemd/sleep.conf.d
+%dir %{_sysconfdir}/systemd/timesyncd.conf.d
 %dir %{_sysconfdir}/udev
+%dir %{_sysconfdir}/udev/iocost.conf.d
 %dir %{_sysconfdir}/udev/rules.d
 %dir %{_systemd_util_dir}/network
 %dir %{_systemd_util_dir}/system-sleep
@@ -146,11 +146,14 @@
 %endif
 %{_prefix}/lib/udev/fido_id
 %{_prefix}/lib/udev/iocost
+%{_prefix}/lib/udev/iocost.conf
 %{_prefix}/lib/udev/mtd_probe
 %{_prefix}/lib/udev/scsi_id
 %{_prefix}/lib/udev/v4l_id
 %{_systemd_util_dir}/network/99-default.link
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
+%{_systemd_util_dir}/pstore.conf
+%{_systemd_util_dir}/sleep.conf
 %{_systemd_util_dir}/systemd-backlight
 %{_systemd_util_dir}/systemd-battery-check
 %if %{without bootstrap}
@@ -180,6 +183,7 @@
 %{_systemd_util_dir}/systemd-veritysetup
 %endif
 %{_systemd_util_dir}/systemd-volatile-root
+%{_systemd_util_dir}/timesyncd.conf
 %if %{without bootstrap}
 %{_systemdgeneratordir}/systemd-cryptsetup-generator
 %endif

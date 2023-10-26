@@ -1,8 +1,8 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
-%config(noreplace) %{_sysconfdir}/systemd/coredump.conf
 %dir %{_localstatedir}/lib/systemd/coredump
+%dir %{_sysconfdir}/systemd/coredump.conf.d
 %{_bindir}/coredumpctl
 %if %{without bootstrap}
 %{_datadir}/bash-completion/completions/coredumpctl
@@ -15,6 +15,7 @@
 %{_mandir}/man8/systemd-coredump@.service.8.gz
 %endif
 %{_sysctldir}/50-coredump.conf
+%{_systemd_util_dir}/coredump.conf
 %{_systemd_util_dir}/systemd-coredump
 %{_sysusersdir}/systemd-coredump.conf
 %{_unitdir}/sockets.target.wants/systemd-coredump.socket

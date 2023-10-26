@@ -1,0 +1,15 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%{_bindir}/portablectl
+%{_datadir}/dbus-1/system-services/org.freedesktop.portable1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.portable1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.portable1.policy
+%{_mandir}/man1/portablectl.1.gz
+%{_mandir}/man8/systemd-portabled.8.gz
+%{_mandir}/man8/systemd-portabled.service.8.gz
+%{_systemd_util_dir}/portable
+%{_systemd_util_dir}/systemd-portabled
+%{_tmpfilesdir}/portables.conf
+%{_unitdir}/dbus-org.freedesktop.portable1.service
+%{_unitdir}/systemd-portabled.service

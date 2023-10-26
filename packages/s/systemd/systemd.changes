@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:15:25 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit b53f364c264cd598d4210b64285a55d362b47b89
+
+  b53f364c26 test: install af_packet kernel module on openSUSE
+  86b7521a3c shared/wall: use logind if build without utmp support
+  65aac5858f errno-util: allow ERRNO_IS_* to accept types wider than int
+  8f93b89db4 basic/errno-util: add wrappers which only accept negative errno
+  1b815b3e76 Introduce RET_GATHER and use it in src/shared/
+
+-------------------------------------------------------------------
+Fri Oct 20 08:09:19 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop 0001-conf-parser-introduce-early-drop-ins.patch
+
+  The usage of drop-ins is now the official way for configuring systemd and its
+  various daemons on Factory/ALP.
+
+  See: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/KWRBTAVQ6MGHVAHKDZZ6GIRX4RMHKHQ6/
+
+-------------------------------------------------------------------
+Thu Oct 19 13:25:01 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Ship the main configuration files in /usr/lib/
+
+  Besides the fact that shipping files in /etc is not recommended anymore, this
+  change will hopefully encourage users to customize the defaults via the mean
+  of drop-ins hence removing the risk of conflicts with downstream
+  customization.
+
+  In contrary, shipping empty directories *.conf.d/ in /etc is not a concern and
+  should suggest users to create drop-ins (bsc#1207056).
+
+-------------------------------------------------------------------
+Thu Oct 19 12:13:51 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: add files.portable and files.journal-remote
+
+-------------------------------------------------------------------
+Fri Oct 13 09:38:37 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Don't include entries listed in kbd-model-map.xkb-generated (provided by kbd
+  package) in kbd-model-map anymore. Yast, the only user of these entries,
+  directly parses kbd-model-map.xkb-generated now (bsc#1211104).
+
+-------------------------------------------------------------------
+Fri Oct 13 09:28:23 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- tmpfiles-suse.conf: drop entries for /run/lock and /var/log/wtmp
+
+  /run/lock is now defined by filesystem package and wtmp has been replaced by
+  wtmpdb on TW.
+
+-------------------------------------------------------------------
 Thu Oct  5 15:04:50 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - rpmlintrc: allow systemd-network and systemd-container sub-packages to ship
@@ -152,11 +206,12 @@ Wed Aug 16 08:48:58 UTC 2023 - Franck Bui <fbui@suse.com>
 
   This includes the following bug fixes:
 
-   - upstream commit 331aa7aa15ee5dd12b369b276f575d521435eb52 (bsc#1203141)
+   - upstream commit 331aa7aa15ee5dd12b369b276f575d521435eb52 (bsc#1181192 bsc#1184238 bsc#1184254 bsc#1184859 bsc#1185828 bsc#1203141)
    - upstream commit 529ba8a1a3968564b67049a077f213e3a0d53070 (bsc#1209340)
    - upstream commit f1f331a252d22c15f37d03524cce967664358c5c (bsc#1186606)
    - upstream commit df1dccd25547b430258bd42ec60428fc9aff1370 (bsc#1213185)
    - upstream commit 000680a68dbdb07d77807868df0b4f978180e4cd (bsc#1211725)
+   - upstream commit 2067a7ec7f4c8a353b8e2ece15a6a997e50808b0 (bsc#1211576)
 
   * Drop 5001-Revert-core-propagate-stop-too-if-restart-is-issued.patch. A fix
     for https://github.com/systemd/systemd/issues/26839 has been integrated in
@@ -816,6 +871,8 @@ Mon Nov 14 11:15:06 UTC 2022 - Franck Bui <fbui@suse.com>
   This includes the following bug fixes:
 
    - upstream commit 67c3e1f63a5221b47a8fea85ae421671f29f3b7e (bsc#1200723)
+   - upstream commit 9102c625a673a3246d7e73d8737f3494446bad4e (bsc#1204968 CVE-2022-3821)
+   - upstream commit efbd4b3ca84c0426b6ff98d6352f82f3b7c090b2 (bsc#1213873)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
             1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
@@ -1019,7 +1076,7 @@ Tue Jun 21 14:24:43 UTC 2022 - Franck Bui <fbui@suse.com>
 Tue Jun 21 14:09:51 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - pstore is no more considered as an experimental feature: move it to udev
-  package (bsc#1197802)
+  package (bsc#1197802 jsc#PED-2663)
 
 -------------------------------------------------------------------
 Tue Jun 21 13:20:39 UTC 2022 - Franck Bui <fbui@suse.com>
@@ -1053,6 +1110,9 @@ Wed Jun  1 07:20:05 UTC 2022 - Franck Bui <fbui@suse.com>
 
     - upstream commit e6b169418369abbc88c8f622e02e1d704a23d4ef (bsc#1137373 bsc#1181658 bsc#1194708 bsc#1195157 bsc#1197570)
     - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434 bsc#1213575)
+    - upstream commit e92a3d8fa3c554f807ddbcd7fc00821868fd8a62 (bsc#1195529)
+    - upstream commit 1d0727e76fd5e9a07cc9991ec9a10ea1d78a99c7 (bsc#1208194)
+    - upstream commit 55fabe92e2efb1a907d4c3c93dc63b96ff5b6860 (bsc#1191502)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
 
@@ -1331,6 +1391,11 @@ Thu Feb 17 18:30:12 UTC 2022 - Franck Bui <fbui@suse.com>
 - Drop enablement symlink migration support of SysV init scripts
 
   And let's finish reducing the support of SysV init scripts to its minimum.
+
+-------------------------------------------------------------------
+Thu Feb 17 11:14:10 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Don't rely on %{_distconfdir}, it's broken on SLE (bsc#1195998)
 
 -------------------------------------------------------------------
 Mon Feb 14 15:11:04 UTC 2022 - Franck Bui <fbui@suse.com>
@@ -3287,7 +3352,7 @@ Tue Sep  3 15:10:10 UTC 2019 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Wed Aug 14 14:25:43 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
-- enable systemd-portabled
+- Enable systemd-portabled (jsc#SLE-21695)
 
 -------------------------------------------------------------------
 Wed Jul 31 14:38:13 UTC 2019 - Franck Bui <fbui@suse.com>

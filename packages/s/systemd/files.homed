@@ -1,7 +1,6 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
-%config(noreplace) %{_sysconfdir}/systemd/homed.conf
 %{_bindir}/homectl
 %{_datadir}/bash-completion/completions/homectl
 %{_datadir}/dbus-1/interfaces/org.freedesktop.home1.Home.xml
@@ -17,6 +16,7 @@
 %{_mandir}/man8/systemd-homed.8.gz
 %{_mandir}/man8/systemd-homed.service.8.gz
 %{_pam_moduledir}/pam_systemd_home.so
+%{_systemd_util_dir}/homed.conf
 %{_systemd_util_dir}/systemd-homed
 %{_systemd_util_dir}/systemd-homework
 %{_unitdir}/systemd-homed-activate.service

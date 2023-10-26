@@ -6856,4 +6856,40 @@ handle manual pages that consist only of a .so directive such as
     - upstream commit 3022916b4d2483452c3ddbbac9ee7c4372b1cb46 (bsc#1215241)</comment>
     <requestid>1115877</requestid>
   </revision>
+  <revision rev="405" vrev="3">
+    <srcmd5>08396999735306d1102ad199eb77973b</srcmd5>
+    <version>254.5</version>
+    <time>1698333134</time>
+    <user>anag+factory</user>
+    <comment>- Import commit b53f364c264cd598d4210b64285a55d362b47b89
+  b53f364c26 test: install af_packet kernel module on openSUSE
+  86b7521a3c shared/wall: use logind if build without utmp support
+  65aac5858f errno-util: allow ERRNO_IS_* to accept types wider than int
+  8f93b89db4 basic/errno-util: add wrappers which only accept negative errno
+  1b815b3e76 Introduce RET_GATHER and use it in src/shared/
+
+- Drop 0001-conf-parser-introduce-early-drop-ins.patch
+  The usage of drop-ins is now the official way for configuring systemd and its
+  various daemons on Factory/ALP.
+  See: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/KWRBTAVQ6MGHVAHKDZZ6GIRX4RMHKHQ6/
+
+- Ship the main configuration files in /usr/lib/
+  Besides the fact that shipping files in /etc is not recommended anymore, this
+  change will hopefully encourage users to customize the defaults via the mean
+  of drop-ins hence removing the risk of conflicts with downstream
+  customization.
+  In contrary, shipping empty directories *.conf.d/ in /etc is not a concern and
+  should suggest users to create drop-ins (bsc#1207056).
+
+- systemd.spec: add files.portable and files.journal-remote
+
+- Don't include entries listed in kbd-model-map.xkb-generated (provided by kbd
+  package) in kbd-model-map anymore. Yast, the only user of these entries,
+  directly parses kbd-model-map.xkb-generated now (bsc#1211104).
+
+- tmpfiles-suse.conf: drop entries for /run/lock and /var/log/wtmp
+  /run/lock is now defined by filesystem package and wtmp has been replaced by
+  wtmpdb on TW.</comment>
+    <requestid>1120043</requestid>
+  </revision>
 </revisionlist>

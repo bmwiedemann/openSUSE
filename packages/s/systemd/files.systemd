@@ -1,10 +1,6 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
-%config(noreplace) %{_sysconfdir}/systemd/journald.conf
-%config(noreplace) %{_sysconfdir}/systemd/logind.conf
-%config(noreplace) %{_sysconfdir}/systemd/system.conf
-%config(noreplace) %{_sysconfdir}/systemd/user.conf
 %dir %{_binfmtdir}
 %if %{without bootstrap}
 %dir %{_datadir}/bash-completion
@@ -34,8 +30,12 @@
 %dir %{_sysconfdir}/binfmt.d
 %dir %{_sysconfdir}/sysctl.d
 %dir %{_sysconfdir}/systemd
+%dir %{_sysconfdir}/systemd/journald.conf.d
+%dir %{_sysconfdir}/systemd/logind.conf.d
 %dir %{_sysconfdir}/systemd/system
+%dir %{_sysconfdir}/systemd/system.conf.d
 %dir %{_sysconfdir}/systemd/user
+%dir %{_sysconfdir}/systemd/user.confd.d
 %dir %{_sysconfdir}/tmpfiles.d
 %dir %{_sysconfdir}/xdg/systemd
 %dir %{_sysctldir}
@@ -402,8 +402,11 @@
 %{_sysconfdir}/xdg/systemd/user
 %{_sysctldir}/99-sysctl.conf
 %{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
+%{_systemd_util_dir}/journald.conf
+%{_systemd_util_dir}/logind.conf
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh
 %{_systemd_util_dir}/system-preset/99-default.preset
+%{_systemd_util_dir}/system.conf
 %{_systemd_util_dir}/systemd
 %{_systemd_util_dir}/systemd-binfmt
 %{_systemd_util_dir}/systemd-boot-check-no-failures
@@ -433,6 +436,7 @@
 %{_systemd_util_dir}/systemd-xdg-autostart-condition
 %{_systemd_util_dir}/user-preset/90-systemd.preset
 %{_systemd_util_dir}/user-preset/99-default.preset
+%{_systemd_util_dir}/user.conf
 %{_systemd_util_dir}/user/app.slice
 %{_systemd_util_dir}/user/background.slice
 %{_systemd_util_dir}/user/basic.target
@@ -463,8 +467,8 @@
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
 %{_tmpfilesdir}/provision.conf
-%{_tmpfilesdir}/suse.conf
 %{_tmpfilesdir}/systemd-nologin.conf
+%{_tmpfilesdir}/systemd-suse.conf
 %{_tmpfilesdir}/systemd-tmp.conf
 %{_tmpfilesdir}/systemd.conf
 %{_tmpfilesdir}/x11.conf
