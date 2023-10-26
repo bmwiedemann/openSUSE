@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:19:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20231025.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20231025
+  * Cleanup in truffleruby+graalvm installation by @mislav in #2272
+  * Avoid compiling OpenSSL if the user supplied `--with-openssl-dir` on the command line by @mislav in #2274
+  * Cleanup in OpenSSL compilation step by @mislav in #2270
+  * Avoiding excessive cd when fetching git repos by @mislav in #2273
+  * Remove implicit LDFLAGS, CPPFLAGS, and "ldflags_dirs" build step by @mislav in #2271
+  * Add tests for functionality related to linking to OpenSSL by @mislav in #2276
+  * Add JRuby 9.4.4.0 by @headius in #2277
+  * Remove strict `openssl@1.1` requirement from TruffleRuby, jruby-dev definitions by @mislav in #2278
+  * Fix fixing JRuby shebangs on macOS by @mislav in #2280
+  * Skip ri/rdoc when installing jruby-launcher by @eregon in #2281
+  * Bump up OpenSSL 3.1.4 by @hsbt in #2283
+  * Add TruffleRuby and TruffleRuby GraalVM 23.1.1 by @eregon in #2284
+
+-------------------------------------------------------------------
 Sat Oct 14 16:00:57 UTC 2023 - Lukas Müller <lukas@localhost>
 
 - Update to version 20231014.
