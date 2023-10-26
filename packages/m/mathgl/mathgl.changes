@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 12:32:36 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update spec file to use openmpi-macros-devel and always use the
+  default OpenMPI implementation.
+
+-------------------------------------------------------------------
 Tue May  9 13:31:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Also disable octave bindings for openSUSE >= 1699 (TW), as

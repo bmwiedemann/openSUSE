@@ -19,11 +19,6 @@
 %bcond_with zypper_posttrans
 %define octave_args --no-window-system --norc
 %define libname libmgl
-%if 0%{?suse_version} >= 1550
-%define omp_ver 1
-%else
-%define omp_ver %{nil}
-%endif
 
 # At least python 3.8 is required; Leap <= 15.3 only has python 3.6
 %if 0%{?suse_version} >= 1550
@@ -79,7 +74,7 @@ BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  lua51-devel
-BuildRequires:  openmpi%{omp_ver}-devel
+BuildRequires:  openmpi-macros-devel
 BuildRequires:  swig
 BuildRequires:  sz2-devel
 BuildRequires:  texinfo
@@ -123,6 +118,7 @@ console modes and for embedding into other programs.
 
 %package -n     %{libname}-mpi%{libversion}
 Summary:        MathGL library with MPI support
+%openmpi_requires
 
 %description -n %{libname}-mpi%{libversion}
 MathGL is a library for making scientific graphics. It provides data
@@ -346,9 +342,7 @@ sed -i 's/\r$//' AUTHORS README
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-if [ -f %{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/mpivars.sh ]; then
-  source %{_libdir}/mpi/gcc/openmpi%{omp_ver}/bin/mpivars.sh
-fi
+%setup_openmpi
 
 %{python_expand # For all supported python flavors
 export PYTHON=$python
