@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 20 21:52:56 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.25.0:
+  - Drop support for Python 3.7.
+  - Support HTTPS proxies.
+  - Change the type of Extensions from Mapping[Str, Any] to
+    MutableMapping[Str, Any].
+  - Add socket_options argument to httpx.HTTPTransport and
+    httpx.AsyncHTTPTransport classes.
+  - The Response.raise_for_status() method now returns
+    the response instance. For example: data =
+    httpx.get('...').raise_for_status().json().
+  - Return 500 error response instead of exceptions when
+    raise_app_exceptions=False is set on ASGITransport.
+  - Ensure all WSGITransport environs have a SERVER_PROTOCOL.
+  - Always encode forward slashes as %2F in query parameters
+  - Use Mozilla documentation instead of httpstatuses.com for
+    HTTP error reference
+- Requires higher version of httpcore.
+
+-------------------------------------------------------------------
 Sat Sep  9 23:10:43 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - update to 0.24.1
