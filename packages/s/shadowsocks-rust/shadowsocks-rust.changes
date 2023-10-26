@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:38:46 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix boo#1216372 and boo#1216373, run systemd service as a dedicated user and group
+
+-------------------------------------------------------------------
 Mon Sep 25 14:02:49 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.16.2

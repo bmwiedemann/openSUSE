@@ -23,4 +23,12 @@
     <comment> (forwarded request 1116315 from hillwood)</comment>
     <requestid>1116316</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dcaad9120760987b0564fcc985bb33b9</srcmd5>
+    <version>1.16.2</version>
+    <time>1698333291</time>
+    <user>anag+factory</user>
+    <comment>- Fix boo#1216372 and boo#1216373, run systemd service as a dedicated user and group</comment>
+    <requestid>1120484</requestid>
+  </revision>
 </revisionlist>

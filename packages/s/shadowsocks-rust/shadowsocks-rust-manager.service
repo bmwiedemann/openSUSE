@@ -21,6 +21,8 @@ Type=forking
 PIDFile=/var/run/shadowsocks-rust-manager.pid
 ExecStart=/usr/bin/ssmanager --log-without-time -c /etc/shadowsocks/shadowsocks-rust.json --tcp-fast-open
 Restart=on-failure
+User=shadowsocks
+Group=shadowsocks
 
 [Install]
 WantedBy=multi-user.target

@@ -33,6 +33,7 @@ BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(openssl)
+Requires(pre):  shadow
 Recommends:     shadowsocks-v2ray-plugin
 # ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 %{?systemd_ordering}
@@ -76,11 +77,16 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-manager
 %service_add_pre %{name}-client.service
 %service_add_pre %{name}-server.service
 %service_add_pre %{name}-manager.service
+getent group shadowsocks >/dev/null || %{_sbindir}/groupadd --system shadowsocks
+getent passwd shadowsocks >/dev/null || %{_sbindir}/useradd --system -c "shadowsocks User" \
+         -d %{_localstatedir}/shadowsocks -m -g shadowsocks -s %{_sbindir}/nologin \
+         shadowsocks
 
 %post
 %service_add_post %{name}-client.service
 %service_add_post %{name}-server.service
 %service_add_post %{name}-manager.service
+chown root:shadowsocks %{_sysconfdir}/shadowsocks -R
 
 %preun
 %service_del_preun %{name}-client.service
@@ -99,6 +105,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-manager
 %{_sbindir}/rc%{name}-*
 %{_unitdir}/%{name}-*.service
 %dir %{_sysconfdir}/shadowsocks
+# %config(noreplace) %attr(660,%{name},root) %{_sysconfdir}/shadowsocks
 %config %{_sysconfdir}/shadowsocks/%{name}.json
 
 %changelog
