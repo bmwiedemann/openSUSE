@@ -1,7 +1,7 @@
 #
 # spec file for package mojo-executor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ Source0:        https://github.com/mojo-executor/mojo-executor/archive/refs/tags
 Source1:        http://www.apache.org/licenses/LICENSE-2.0
 Patch0:         mojo-executor-dependency.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
@@ -55,15 +55,17 @@ API documentation for %{name}.
 cp %{SOURCE1} .
 %pom_disable_module %{name}-maven-plugin
 %pom_remove_plugin :jacoco-maven-plugin
+%pom_remove_plugin :maven-enforcer-plugin
 
 perl -pi -e 's#org\.sonatype\.aether\.repository#org.eclipse.aether.repository#g' \
 	mojo-executor/src/main/java/org/twdata/maven/mojoexecutor/MavenCompatibilityHelper.java
 
 %build
-%mvn_build -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=7
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8
 
 %install
 %mvn_install
