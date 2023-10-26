@@ -44,6 +44,7 @@ Source18:       policycoreutils-rpmlintrc
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
+Patch4:         reproducible-build.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -178,6 +179,7 @@ semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 

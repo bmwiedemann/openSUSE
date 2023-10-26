@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 25 08:02:37 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Add reproducible-build.patch to make the output of "sepolicy manpage"
+  deterministic (bsc#1216452)
+
+-------------------------------------------------------------------
 Fri Oct  6 08:59:35 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Move dbus configuration file to /usr/share instead of /etc
