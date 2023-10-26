@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of postgres-16-image</comment>
     <requestid>1114198</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3dcb38246d0a8ded8b3199ae2dc1a8bf</srcmd5>
+    <version>unknown</version>
+    <time>1698333243</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1120399</requestid>
+  </revision>
 </revisionlist>
