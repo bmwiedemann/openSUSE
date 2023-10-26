@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 26 12:08:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jdk18plus.patch
+    + catch UnsupportedOperationException that SecurityManager in
+      JDK 21 throws instead of warning about deprecation
+
+-------------------------------------------------------------------
 Mon Sep 25 09:21:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2
