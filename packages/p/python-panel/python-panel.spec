@@ -1,5 +1,5 @@
 #
-# spec file for package python-panel
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-panel%{psuffix}
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -36,9 +36,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{v
 Source99:       python-panel-rpmlintrc
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 3.1.1 with %python-bokeh < 3.3}
+BuildRequires:  %{python_module bokeh >= 3.3.0}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module param >= 1.9.2}
+BuildRequires:  %{python_module param >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
@@ -72,17 +72,17 @@ BuildRequires:  %{python_module streamz}
 Requires:       jupyter-panel
 Requires:       python-Markdown
 Requires:       python-bleach
+Requires:       python-bokeh >= 3.3.0
 Requires:       python-linkify-it-py
 Requires:       python-markdown-it-py < 3
 Requires:       python-mdit-py-plugins
 Requires:       python-pandas >= 1.2
-Requires:       python-param >= 1.12.0
+Requires:       python-param >= 2.0.0
 Requires:       python-pyviz_comms >= 0.7.4
 Requires:       python-requests
 Requires:       python-tqdm >= 4.48.0
 Requires:       python-typing_extensions
 Requires:       python-xyzservices >= 2021.09.1
-Requires:       (python-bokeh >= 3.1.1 with python-bokeh  < 3.3.0)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow

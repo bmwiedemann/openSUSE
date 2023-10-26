@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:42:36 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.3.0
+  * Integrate support for param reactive expressions and expose pn.rx
+  * Implement ChatMessage, ChatFeed and ChatInterface components
+  * Unify OAuth implementations and refresh access_token
+  * Add ColorMap widget
+  * Add unit to widget in HoloViews pane if provided
+  * Allow registering global on_session_destroyed callback
+  * Implement auto_grow on TextAreaInput
+  * Add ability to redirect users from authorization callback
+  * Add support for Path object in FileDownload
+  * Add authorization_code and password based OAuth login handlers
+  * Add format to EditableFloatSlider and EditableIntSlider
+  * Add support for decorating async functions with pn.io.cache
+  * Map param.Bytes to FileInput widget
+  * Add support for Python 3.12 and drop Python 3.8 support
+  * Upgrade to Param 2.0 as minimum required version
+  * Compatibility with Bokeh 3.3.0
+  * more bugfixes, see upstream CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Sep 17 00:11:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to vesion 1.2.2:
