@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:58:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0.0
+  * Parameter slot values are now all inherited correctly across 
+    a hierarchy of Parameterized classes.
+  * There is now a ListProxy wrapper around Selector.objects (with 
+    forward and backward compatibility) to easily update objects 
+    and watch objects updates.
+  * Parameterized classes and instances now have a rich HTML 
+    representation that is displayed automatically in 
+    a Jupyter/IPython notebook.
+  * Parameters have all gained the allow_refs and nested_refs 
+    attributes, bringing an exceptionally useful feature that was 
+    available in Panel since version 1.2 to Param.
+  * Experimental new rx reactive expressions.
+  * You can now use .param.update as a context manager for applying 
+    temporary updates.
+  * For speed, only generate the Parameter docstring in an IPython context.
+  * Support for deserialization of file types into Array and DataFrame.
+  * Integer now accepts numpy.integer values.
+  * Range now does stricter validation of the slot values.
+  * Path now has check_exists attribute, leading it to raise an error 
+    if path is not found on parameter instantiation.
+  * Add top-level __all__ and move Parameter classes to parameters.py.
+  * Now compatible with Python 3.8+
+  * Other changes, take a look at the upstream changelog.
+
+-------------------------------------------------------------------
 Sun Mar 26 20:01:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.0:

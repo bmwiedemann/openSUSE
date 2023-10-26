@@ -19,21 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname param
 Name:           python-param
-Version:        1.13.0
+Version:        2.0.0
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://param.pyviz.org/
-Source0:        https://github.com/holoviz/param/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/param/param-%{version}.tar.gz
 Source100:      python-param-rpmlintrc
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 Recommends:     python-jsonschema
 Recommends:     python-numpy
 Recommends:     python-pandas
@@ -54,20 +59,19 @@ as part of other projects.
 %prep
 %autosetup -p1 -n param-%{version}
 
-sed -i -e 's:version=get_setup_version("param"):version="%{version}":g' setup.py
-sed -i -e 's:__version__ = "0.0.0+unknown":__version__ = "%{version}":' param/__init__.py
 echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.version
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+# move docs to the param folder
+%python_expand mv %{buildroot}%{$python_sitelib}/doc %{buildroot}%{$python_sitelib}/param/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Exclusion documented in gh#holoviz/param#423
-%pytest -k 'not test_abstract_class' tests/*/*.py -ra
+%pytest
 %{python_expand # make sure the correct version is reported. Other packages depend on it.
 PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -c '
@@ -82,6 +86,6 @@ assert v == "%{version}", "wrong version reported: {}".format(v)
 %doc README.md
 %{python_sitelib}/param/
 %{python_sitelib}/numbergen/
-%{python_sitelib}/param-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/param-%{version}.dist-info/
 
 %changelog
