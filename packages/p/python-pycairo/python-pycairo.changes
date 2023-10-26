@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 24 00:45:54 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- update to 1.25.1:
+  * fix a crash in pypy3.10
+  * Fix the build with CPython 3.13.0a1
+
+- introduced from 1.25.0:
+  * update to cairo 1.18.0 (for windows only)
+  * new apis:
+    - Status.SVG_FONT_ERROR
+    - FontOptions.get_color_mode(), FontOptions.set_color_mode(), ColorMode
+    - FontOptions.set_color_palette(), FontOptions.get_color_palette(), COLOR_PALETTE_DEFAULT
+    - FontOptions.set_custom_palette_color(), FontOptions.get_custom_palette_color()
+    - TAG_CONTENT, TAG_CONTENT_REF
+    - Pattern.get_dither(), Pattern.set_dither(), Dither
+
+-------------------------------------------------------------------
 Tue Jul 25 18:29:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.24.0:
