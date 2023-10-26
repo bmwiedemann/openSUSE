@@ -1,0 +1,24 @@
+<services>
+    <service name="obs_scm" mode="manual">
+        <param name="url">https://gitlab.torproject.org/tpo/core/arti.git</param>
+        <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+        <param name="scm">git</param>
+        <param name="revision">arti-v1.1.9</param>
+        <param name="match-tag">*</param>
+        <param name="versionrewrite-pattern">arti-v(\d+\.\d+\.\d+)</param>
+        <param name="versionrewrite-replacement">\1</param>
+        <param name="changesgenerate">enable</param>
+    </service>
+
+    <service name="set_version" mode="manual" />
+    <service name="cargo_vendor" mode="manual">
+        <param name="srcdir">arti</param>
+        <param name="compression">zstd</param>
+        <param name="update">true</param>
+    </service>
+    <service name="cargo_audit" mode="manual">
+        <param name="srcdir">arti</param>
+    </service>
+
+    <service name="tar" mode="buildtime" />
+</services>
