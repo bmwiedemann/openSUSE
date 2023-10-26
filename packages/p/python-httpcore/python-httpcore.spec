@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpcore%{psuffix}
-Version:        0.17.3
+Version:        0.18.0
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause
@@ -36,7 +36,10 @@ Source:         https://github.com/encode/httpcore/archive/%{version}.tar.gz#/ht
 # PATCH-FIX-UPSTREAM httpcore-allow-deprecationwarnings-test.patch gh#encode/httpcore#511, gh#agronholm/anyio#470
 Patch1:         httpcore-allow-deprecationwarnings-test.patch
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
@@ -68,10 +71,10 @@ Python minimal low-level HTTP client.
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -81,6 +84,8 @@ Python minimal low-level HTTP client.
 donttest="socks5"
 # gh#encode/httpcore#622
 donttest+=" or test_request_with_content"
+# gh#encode/httpcore!832
+donttest+=" or test_ssl_request or test_extra_info"
 %pytest -rsfE --asyncio-mode=strict -p no:unraisableexception -k "not ($donttest)"
 %endif
 

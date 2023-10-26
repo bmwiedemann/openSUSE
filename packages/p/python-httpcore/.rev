@@ -128,4 +128,21 @@
     <comment></comment>
     <requestid>1110216</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>db94d007f871ef797f0b1be16d3fa940</srcmd5>
+    <version>0.18.0</version>
+    <time>1698333107</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.0:
+  - Add support for HTTPS proxies.
+  - Handle sni_hostname extension with SOCKS proxy.
+  - Change the type of Extensions from Mapping[Str, Any] to
+    MutableMapping[Str, Any].
+  - Handle HTTP/1.1 half-closed connections gracefully.
+  - Drop Python 3.7 support.
+- Update httpcore-allow-deprecationwarnings-test.patch
+- Skip failing tests test_ssl_request and test_extra_info
+  (gh#encode/httpcore!832)</comment>
+    <requestid>1120297</requestid>
+  </revision>
 </revisionlist>

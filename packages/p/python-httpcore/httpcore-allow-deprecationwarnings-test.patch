@@ -1,17 +1,21 @@
-Index: httpcore-0.16.3/setup.cfg
-===================================================================
---- httpcore-0.16.3.orig/setup.cfg
-+++ httpcore-0.16.3/setup.cfg
-@@ -30,6 +30,12 @@ markers =
-   copied_from(source, changes=None): mark test as copied from somewhere else, along with a description of changes made to accodomate e.g. our test setup
- filterwarnings =
-     error
-+    # requires anyio 4 with trio 0.22: https://github.com/agronholm/anyio/issues/470
-+    ignore:trio.MultiError is deprecated
-+    # fixed by pytest-httpbin (2.0 not released yet): https://github.com/encode/httpcore/pull/511
-+    ignore:unclosed <(socket\.socket|ssl\.SSLSocket) .*:ResourceWarning
-+    ignore:ssl\.wrap_socket\(\) is deprecated, use SSLContext\.wrap_socket\(\):DeprecationWarning
-+    ignore:ssl\.PROTOCOL_TLS is deprecated:DeprecationWarning
+---
+ pyproject.toml |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -86,7 +86,13 @@ ignore_missing_imports = true
+ [tool.pytest.ini_options]
+ addopts = ["-rxXs", "--strict-config", "--strict-markers"]
+ markers = ["copied_from(source, changes=None): mark test as copied from somewhere else, along with a description of changes made to accodomate e.g. our test setup"]
+-filterwarnings = ["error"]
++filterwarnings = [
++    "error",
++    "ignore:trio.MultiError is deprecated",
++    "ignore:unclosed <(socket.socket|ssl.SSLSocket) .*:ResourceWarning",
++    "ignore:ssl.wrap_socket() is deprecated, use SSLContext.wrap_socket():DeprecationWarning",
++    "ignore:ssl.PROTOCOL_TLS is deprecated:DeprecationWarning"
++]
  
- [coverage:run]
- omit = venv/*, httpcore/_sync/*
+ [tool.coverage.run]
+ omit = [
