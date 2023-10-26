@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 11:54:32 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- BuildRequire kbd to fix the build (bsc#1211104)
+- 5.0.2
+
+-------------------------------------------------------------------
 Tue Oct 10 09:38:22 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - use also kbd-model-map.xkb-generated (bsc#1211104)
