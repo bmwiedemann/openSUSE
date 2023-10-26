@@ -156,6 +156,8 @@ API documentation for %{name}.
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
+%pom_xpath_remove -r "pom:arg[text()='-Werror']" . jline
+
 %pom_xpath_remove -r 'pom:profile[pom:id="javadoc"]'
 
 %{mvn_package} ":jline-{*}" @1

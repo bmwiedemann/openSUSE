@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 05:36:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not break build on compiler warnings
+
+-------------------------------------------------------------------
 Thu Jun  8 10:52:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build also the org.jline:jline artifact

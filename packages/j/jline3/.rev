@@ -7,4 +7,12 @@
     <comment>New package needed to upgrade scala stack</comment>
     <requestid>1117481</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>edd0e0ccde79a7df47a858f695523f87</srcmd5>
+    <version>3.22.0</version>
+    <time>1698333267</time>
+    <user>anag+factory</user>
+    <comment>Fix build with jdk 21</comment>
+    <requestid>1120428</requestid>
+  </revision>
 </revisionlist>
