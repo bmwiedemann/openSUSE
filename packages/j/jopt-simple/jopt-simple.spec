@@ -24,6 +24,7 @@ License:        MIT
 URL:            https://jopt-simple.github.io/jopt-simple
 Source0:        https://github.com/jopt-simple/jopt-simple/archive/jopt-simple-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
@@ -50,11 +51,14 @@ This package contains the API documentation for %{name}.
 %pom_remove_plugin :animal-sniffer-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+
 %build
 # Unit testing is disabled due to a missing dependency of continuous-testing-toolkit
 %{mvn_build} -f -- \
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=7
+    -Dsource=8
 
 %install
 %mvn_install
