@@ -1,7 +1,7 @@
 #
 # spec file for package python-xxhash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-2-Clause
 URL:            https://github.com/ifduyue/python-xxhash
 Source:         https://files.pythonhosted.org/packages/source/x/xxhash/xxhash-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,6 +60,7 @@ mv xxhash{.hide,}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/xxhash
+%{python_sitearch}/xxhash-%{version}*-info
 
 %changelog

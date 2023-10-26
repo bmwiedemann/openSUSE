@@ -104,4 +104,17 @@
     <comment></comment>
     <requestid>1092199</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c8b672dc15c60fd7a2739a7409a7c8a0</srcmd5>
+    <version>3.1.0</version>
+    <time>1698333119</time>
+    <user>anag+factory</user>
+    <comment>- use setuptools_scm to handle version in metadata properly
+
+- Update to 3.1.0
+- update to 3.0.0
+  * Stop using PEP393 deprecated APIs
+- Initial release of xxhash 1.0.1</comment>
+    <requestid>1120006</requestid>
+  </revision>
 </revisionlist>

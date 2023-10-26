@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 13:48:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use setuptools_scm to handle version in metadata properly
+
+-------------------------------------------------------------------
 Sat Jun 10 17:44:26 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -6,14 +11,14 @@ Sat Jun 10 17:44:26 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Sat Oct 29 18:00:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.1.0 
+- Update to 3.1.0
   * Type annotations.
   * Enabled muslinux wheels building.
 
 -------------------------------------------------------------------
 Fri Sep 16 23:39:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 3.0.0 
+- update to 3.0.0
   * New set algorithms_available lists all implemented algorithms in xxhash package.
   * Upgrade xxHash to v0.8.1.
   * Drop support for EOL Python versions, require python >= 3.6 from now on.
@@ -46,9 +51,9 @@ Tue Jul 21 11:23:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.4
   * Upgrade xxHash to v0.7.3
-  * Stop using PEP393 deprecated APIs 
+  * Stop using PEP393 deprecated APIs
   * Use XXH(32|64)_canonicalFromHash to replace u2bytes and ull2bytes
-  
+
 -------------------------------------------------------------------
 Tue Feb  4 16:26:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
@@ -89,4 +94,4 @@ Tue Mar 26 09:21:38 UTC 2019 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Nov 10 15:01:06 UTC 2017 - alarrosa@suse.com
 
-- Initial release of xxhash 1.0.1 
+- Initial release of xxhash 1.0.1
