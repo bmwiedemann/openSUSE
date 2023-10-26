@@ -1532,4 +1532,15 @@
     <comment></comment>
     <requestid>1116551</requestid>
   </revision>
+  <revision rev="178" vrev="3">
+    <srcmd5>29ae284fab797b51fd6b3be827bd176e</srcmd5>
+    <version>2.42.1</version>
+    <time>1698333102</time>
+    <user>anag+factory</user>
+    <comment>Resub with less whitespace
+
+- Add webkit2gtk3-create-destroy-egl-image.patch: fix &quot;No provider
+  of EglDestroyImage Found&quot; (boo#1216483). (forwarded request 1119870 from iznogood)</comment>
+    <requestid>1120255</requestid>
+  </revision>
 </revisionlist>

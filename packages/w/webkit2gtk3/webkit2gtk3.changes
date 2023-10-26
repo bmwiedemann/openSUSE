@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 18:48:15 UTC 2023 - Mike Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-create-destroy-egl-image.patch: fix "No provider
+  of EglDestroyImage Found" (boo#1216483).
+
+-------------------------------------------------------------------
 Fri Sep 29 18:10:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.42.1:
