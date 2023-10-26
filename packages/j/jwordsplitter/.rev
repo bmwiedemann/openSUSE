@@ -15,4 +15,12 @@
     <comment>Do not require maven-javadoc-plugin that we don't use</comment>
     <requestid>1112249</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>58dacaf11f58af04f35a19dc990f5047</srcmd5>
+    <version>4.4</version>
+    <time>1698333273</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120448</requestid>
+  </revision>
 </revisionlist>

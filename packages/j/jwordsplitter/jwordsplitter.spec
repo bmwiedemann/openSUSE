@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://github.com/danielnaber/%{name}
 Source0:        https://github.com/danielnaber/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
@@ -47,12 +48,15 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-source-plugin
 
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+
 rm -f \
 	src/main/resources/de/danielnaber/jwordsplitter/wordsGerman.ser \
 	src/main/resources/de/danielnaber/jwordsplitter/all-words.txt
 
 %build
-%{mvn_build} -f -- -Dsource=7
+%{mvn_build} -f -- -Dsource=8
 # Generate the wordsGerman.ser file
 grep -v -f src/main/resources/de/danielnaber/jwordsplitter/removals.txt \
 	src/main/resources/de/danielnaber/jwordsplitter/languagetool-dict.txt | cat - \
