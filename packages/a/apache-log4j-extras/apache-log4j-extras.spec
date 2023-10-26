@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        Apache-2.0
 URL:            https://logging.apache.org/log4j/extras
 Source0:        https://github.com/apache/%{short_name}/archive/refs/tags/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -56,11 +57,11 @@ rm -f src/main/java/org/apache/log4j/DBAppender.java
 %pom_remove_plugin :maven-pmd-plugin
 %pom_remove_plugin :maven-site-plugin
 
-# remove maven-compiler-plugin configuration that is broken with Java 11
-%pom_xpath_remove 'pom:plugin[pom:artifactId="maven-compiler-plugin"]/pom:configuration'
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
+%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
