@@ -1,7 +1,7 @@
 #
 # spec file for package resteasy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ Summary:        Framework for RESTful Web services and Java applications
 License:        Apache-2.0 AND CDDL-1.0
 URL:            https://resteasy.jboss.org/
 Source0:        https://github.com/resteasy/resteasy/archive/%{namedversion}/%{name}-%{namedversion}.tar.gz
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
@@ -177,6 +178,9 @@ find -name '*.jar' -print -delete
 <configuration>
  <skipSource>true</skipSource>
 </configuration>'
+
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.8"
+%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.8"
 
 %build
 %{mvn_build} -f -- -Dsource=8

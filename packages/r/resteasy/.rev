@@ -23,4 +23,12 @@
     <comment>Standalone JavaEE inconditionally</comment>
     <requestid>965954</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>33109abcaf79ea1bc536605c6e5b4531</srcmd5>
+    <version>3.0.26</version>
+    <time>1698333296</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120523</requestid>
+  </revision>
 </revisionlist>
