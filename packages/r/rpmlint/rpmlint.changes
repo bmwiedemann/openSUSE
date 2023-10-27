@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 25 14:56:05 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20231025.2713543:
+  * zypper-plugins: whitelist zypp-boot-plugin (bsc#1215988)
+  * Release 2.5.0
+  * Add new check to detect links to scripts
+  * SpecCheck: Support "%patch n" to detect applied patches
+  * lint: Show dynamic description for WarnOnFunction config
+  * description: Add files-duplicate description
+  * descriptions: Add invalid-lc-messages-dir
+  * test: Add some tests for I18NCheck
+  * Add iso_15924 to LANGUAGES
+  * pkg: Set default user/group as root for FakePkg files
+  * pkg: Add linkto parameter to FakePkg files
+  * pkg: Add filenames to FakePkg headers
+  * pkg: Move scriptprog to AbstractPkg
+
+-------------------------------------------------------------------
 Wed Oct 11 08:57:44 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use %pyproject_wheel to build the package
