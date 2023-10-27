@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 23 03:06:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.63   2023-10-22
+  - This release is the same as 1.62. This releases fixes quadmath builds on
+    Windows. Reported by @sisyphus. GH #139.
+  1.62   2023-09-04 (TRIAL RELEASE)
+  - This is take 3 of trying to use `Perl_isfinite` where it's available. Now we
+    simply don't use it on Windows unless the Perl version is 5.22.0 or later.
+  1.61   2023-09-02 (TRIAL RELEASE)
+  - Fix use of the `Perl_isfinite` function on platforms where this is
+    broken. On Windows with Perl <= 5.20, it seems like `Perl_isfinite` exists
+    but it calls `Perl_isinf` and `Perl_isnan`, which don't exist.
+  1.60   2023-08-19 (TRIAL RELEASE)
+  - Switched to using the `Perl_isfinite` function instead of trying to
+    implement this ourselves in XS code. This should fix quadmath builds on
+    Windows. Reported by @sisyphus. GH #139.
+
+-------------------------------------------------------------------
 Tue Oct 25 03:06:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.59
