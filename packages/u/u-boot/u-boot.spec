@@ -240,6 +240,10 @@ Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0017:      0017-bootstd-Scan-all-bootdevs-in-a-boot.patch
+Patch0018:      0018-Revert-bootstd-Scan-all-bootdevs-in.patch
+Patch0019:      0019-bootstd-Expand-boot-ordering-test-t.patch
+Patch0020:      0020-bootstd-Correct-logic-for-single-uc.patch
+Patch0021:      0021-bootstd-Scan-all-bootdevs-in-a-boot.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

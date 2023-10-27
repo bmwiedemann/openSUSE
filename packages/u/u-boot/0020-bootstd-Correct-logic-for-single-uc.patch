@@ -1,0 +1,81 @@
+From c46f69b087a37ac68e43042ff84e8962eaeba19d Mon Sep 17 00:00:00 2001
+From: Simon Glass <sjg@chromium.org>
+Date: Mon, 23 Oct 2023 00:02:12 -0700
+Subject: [PATCH] bootstd: Correct logic for single uclass
+
+The current logic for "bootflow mmc" is flawed since it checks the
+uclass of the bootdev instead of its parent, the media device. Correct
+this and add a test that covers this scenario.
+
+Signed-off-by: Simon Glass <sjg@chromium.org>
+---
+ boot/bootflow.c     | 24 ++++++++++++++++++++++--
+ test/boot/bootdev.c | 13 +++++++++++++
+ 2 files changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/boot/bootflow.c b/boot/bootflow.c
+index 81b5829d5b3..7a9033b3b39 100644
+--- a/boot/bootflow.c
++++ b/boot/bootflow.c
+@@ -155,6 +155,27 @@ static void bootflow_iter_set_dev(struct bootflow_iter *iter,
+ 	}
+ }
+ 
++/**
++ * scan_next_in_uclass() - Scan for the next bootdev in the same media uclass
++ *
++ * Move through the following bootdevs until we find another in this media
++ * uclass, or run out
++ *
++ * @devp: On entry, the device to check, on exit the new device, or NULL if
++ * there is none
++ */
++static void scan_next_in_uclass(struct udevice **devp)
++{
++	struct udevice *dev = *devp;
++	enum uclass_id cur_id = device_get_uclass_id(dev->parent);
++
++	do {
++		uclass_find_next_device(&dev);
++	} while (dev && cur_id != device_get_uclass_id(dev->parent));
++
++	*devp = dev;
++}
++
+ /**
+  * iter_incr() - Move to the next item (method, part, bootdev)
+  *
+@@ -230,8 +251,7 @@ static int iter_incr(struct bootflow_iter *iter)
+ 						 &method_flags);
+ 		} else if (IS_ENABLED(CONFIG_BOOTSTD_FULL) &&
+ 			   (iter->flags & BOOTFLOWIF_SINGLE_UCLASS)) {
+-			/* Move to the next bootdev in this uclass */
+-			uclass_find_next_device(&dev);
++			scan_next_in_uclass(&dev);
+ 			if (!dev) {
+ 				log_debug("finished uclass %s\n",
+ 					  dev_get_uclass_name(dev));
+diff --git a/test/boot/bootdev.c b/test/boot/bootdev.c
+index 7228f545e9e..63786174805 100644
+--- a/test/boot/bootdev.c
++++ b/test/boot/bootdev.c
+@@ -232,6 +232,19 @@ static int bootdev_test_order(struct unit_test_state *uts)
+ 			iter.dev_used[2]->name);
+ 	bootflow_iter_uninit(&iter);
+ 
++	/* Try a single uclass */
++	ut_assertok(env_set("boot_targets", NULL));
++	ut_assertok(bootflow_scan_first(NULL, "mmc", &iter, 0, &bflow));
++	ut_asserteq(2, iter.num_devs);
++
++	/* Now scan pass mmc1 and make sure that only mmc0 shows up */
++	ut_asserteq(-ENODEV, bootflow_scan_next(&iter, &bflow));
++	ut_asserteq(3, iter.num_devs);
++	ut_asserteq_str("mmc2.bootdev", iter.dev_used[0]->name);
++	ut_asserteq_str("mmc1.bootdev", iter.dev_used[1]->name);
++	ut_asserteq_str("mmc0.bootdev", iter.dev_used[2]->name);
++	bootflow_iter_uninit(&iter);
++
+ 	return 0;
+ }
+ BOOTSTD_TEST(bootdev_test_order, UT_TESTF_DM | UT_TESTF_SCAN_FDT);

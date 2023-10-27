@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 24 13:41:26 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+Fix boo#1216036. Tested on RPi4. Boot from USB and uSD fine.
+For details see: https://lore.kernel.org/u-boot/20231023070216.394709-1-sjg@chromium.org/#t
+* Patches added:
+  0018-Revert-bootstd-Scan-all-bootdevs-in.patch
+  0019-bootstd-Expand-boot-ordering-test-t.patch
+  0020-bootstd-Correct-logic-for-single-uc.patch
+  0021-bootstd-Scan-all-bootdevs-in-a-boot.patch
+
+-------------------------------------------------------------------
 Fri Oct 13 08:21:12 UTC 2023 - Guillaume Gardet <guillaume.gardet@arm.com>
 
 Use upstream patch instead downstream workaround to fix boo#1216036

@@ -16,7 +16,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  4 files changed, 67 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/include/asm/arch-sunxi/cpu.h b/arch/arm/include/asm/arch-sunxi/cpu.h
-index b08f202374..36e7697b1c 100644
+index b08f2023748..36e7697b1c4 100644
 --- a/arch/arm/include/asm/arch-sunxi/cpu.h
 +++ b/arch/arm/include/asm/arch-sunxi/cpu.h
 @@ -20,4 +20,15 @@
@@ -36,7 +36,7 @@ index b08f202374..36e7697b1c 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index e20c3a3ee9..43a4575049 100644
+index e20c3a3ee92..43a4575049a 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
 @@ -1073,6 +1073,22 @@ source "board/sunxi/Kconfig"
@@ -63,7 +63,7 @@ index e20c3a3ee9..43a4575049 100644
  	bool "Enable DIPs detection for CHIP board"
  	select SUPPORT_EXTENSION_SCAN
 diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
-index 78597ad932..71844952d8 100644
+index 78597ad932c..71844952d87 100644
 --- a/arch/arm/mach-sunxi/board.c
 +++ b/arch/arm/mach-sunxi/board.c
 @@ -300,7 +300,30 @@ uint32_t sunxi_get_boot_device(void)
@@ -106,7 +106,7 @@ index 78597ad932..71844952d8 100644
  
  #if defined CONFIG_MACH_SUN6I || defined CONFIG_MACH_SUN8I_H3
 diff --git a/cmd/boot.c b/cmd/boot.c
-index d7c7db449c..111c9d9409 100644
+index d7c7db449c5..111c9d94090 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
 @@ -47,6 +47,7 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])

@@ -9,7 +9,7 @@ This reverts commit 7fa75d0ac5502db813d109c1df7bd0da34688685.
  1 file changed, 2 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/boot-common.c b/arch/arm/mach-omap2/boot-common.c
-index a2dd5f6df0..d2c8e7f5ef 100644
+index a2dd5f6df01..d2c8e7f5ef3 100644
 --- a/arch/arm/mach-omap2/boot-common.c
 +++ b/arch/arm/mach-omap2/boot-common.c
 @@ -126,8 +126,6 @@ void save_omap_boot_params(void)

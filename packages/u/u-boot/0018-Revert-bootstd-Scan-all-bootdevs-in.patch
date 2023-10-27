@@ -1,0 +1,90 @@
+From 922a2954f8bd2f980bf5e6f2be8c334129f27f85 Mon Sep 17 00:00:00 2001
+From: Simon Glass <sjg@chromium.org>
+Date: Mon, 23 Oct 2023 00:02:10 -0700
+Subject: [PATCH] Revert "bootstd: Scan all bootdevs in a boot_targets entry"
+
+This commit was intended to allow all bootdevs in each boot_targets
+entry to be scanned. However it causes bad ordering with bootdevs, e.g.
+scanning Ethernet bootdevs when it should be keeping to mmc.
+
+Revert it so we can try another approach.
+
+This reverts commit e824d0d0c219bc6da767f13f90c5b00eefe929f0.
+
+Signed-off-by: Simon Glass <sjg@chromium.org>
+---
+ boot/bootdev-uclass.c |  3 +--
+ boot/bootflow.c       | 21 ++-------------------
+ test/boot/bootdev.c   | 10 ----------
+ 3 files changed, 3 insertions(+), 31 deletions(-)
+
+diff --git a/boot/bootdev-uclass.c b/boot/bootdev-uclass.c
+index 5a60cf223c7..fa52bc3a9c4 100644
+--- a/boot/bootdev-uclass.c
++++ b/boot/bootdev-uclass.c
+@@ -460,11 +460,10 @@ int bootdev_find_by_label(const char *label, struct udevice **devp,
+ 			 * if no sequence number was provided, we must scan all
+ 			 * bootdevs for this media uclass
+ 			 */
+-			if (seq == -1)
++			if (IS_ENABLED(CONFIG_BOOTSTD_FULL) && seq == -1)
+ 				method_flags |= BOOTFLOW_METHF_SINGLE_UCLASS;
+ 			if (method_flagsp)
+ 				*method_flagsp = method_flags;
+-			log_debug("method flags %x\n", method_flags);
+ 			return 0;
+ 		}
+ 		log_debug("- no device in %s\n", media->name);
+diff --git a/boot/bootflow.c b/boot/bootflow.c
+index 74abf3e17d7..81b5829d5b3 100644
+--- a/boot/bootflow.c
++++ b/boot/bootflow.c
+@@ -260,25 +260,8 @@ static int iter_incr(struct bootflow_iter *iter)
+ 		} else {
+ 			log_debug("labels %p\n", iter->labels);
+ 			if (iter->labels) {
+-				/*
+-				 * when the label is "mmc" we want to scan all
+-				 * mmc bootdevs, not just the first. See
+-				 * bootdev_find_by_label() where this flag is
+-				 * set up
+-				 */
+-				if (iter->method_flags & BOOTFLOW_METHF_SINGLE_UCLASS) {
+-					uclass_next_device(&dev);
+-					log_debug("looking for next device %s: %s\n",
+-						  iter->dev->name,
+-						  dev ? dev->name : "<none>");
+-				} else {
+-					dev = NULL;
+-				}
+-				if (!dev) {
+-					log_debug("looking at next label\n");
+-					ret = bootdev_next_label(iter, &dev,
+-								 &method_flags);
+-				}
++				ret = bootdev_next_label(iter, &dev,
++							 &method_flags);
+ 			} else {
+ 				ret = bootdev_next_prio(iter, &dev);
+ 				method_flags = 0;
+diff --git a/test/boot/bootdev.c b/test/boot/bootdev.c
+index c5f14a7a132..6b29213416d 100644
+--- a/test/boot/bootdev.c
++++ b/test/boot/bootdev.c
+@@ -221,16 +221,6 @@ static int bootdev_test_order(struct unit_test_state *uts)
+ 	ut_asserteq_str("mmc2.bootdev", iter.dev_used[1]->name);
+ 	bootflow_iter_uninit(&iter);
+ 
+-	/* Make sure it scans a bootdevs in each target */
+-	ut_assertok(env_set("boot_targets", "mmc spi"));
+-	ut_asserteq(0, bootflow_scan_first(NULL, NULL, &iter, 0, &bflow));
+-	ut_asserteq(-ENODEV, bootflow_scan_next(&iter, &bflow));
+-	ut_asserteq(3, iter.num_devs);
+-	ut_asserteq_str("mmc2.bootdev", iter.dev_used[0]->name);
+-	ut_asserteq_str("mmc1.bootdev", iter.dev_used[1]->name);
+-	ut_asserteq_str("mmc0.bootdev", iter.dev_used[2]->name);
+-	bootflow_iter_uninit(&iter);
+-
+ 	return 0;
+ }
+ BOOTSTD_TEST(bootdev_test_order, UT_TESTF_DM | UT_TESTF_SCAN_FDT);

@@ -1,7 +1,7 @@
-From ab50ce2798c3a39dd186a72c3862ef923d4d713a Mon Sep 17 00:00:00 2001
+From e2de6a2b955ea225631bfd84a3401386a02585c1 Mon Sep 17 00:00:00 2001
 From: Simon Glass <sjg@chromium.org>
-Date: Sat, 23 Sep 2023 14:50:15 -0600
-Subject: [PATCH] bootstd: Scan all bootdevs in a boot_targets entry
+Date: Mon, 23 Oct 2023 00:02:13 -0700
+Subject: [PATCH] bootstd: Scan all bootdevs in a boot_targets entry (take 2)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -22,16 +22,15 @@ currently only scans the first.
 Update the logic to handle this case, without required BOOTSTD_FULL to
 be enabled.
 
-I believe at least three people reported this, but I found two.
-
 Signed-off-by: Simon Glass <sjg@chromium.org>
 Reported-by: Date Huang <tjjh89017@hotmail.com>
 Reported-by: Vincent Stehlé <vincent.stehle@arm.com>
+Reported-by: Ivan Ivanov <ivan.ivanov@suse.com>
 ---
  boot/bootdev-uclass.c |  3 ++-
- boot/bootflow.c       | 21 +++++++++++++++++++--
- test/boot/bootdev.c   | 10 ++++++++++
- 3 files changed, 31 insertions(+), 3 deletions(-)
+ boot/bootflow.c       | 22 ++++++++++++++++++++--
+ test/boot/bootdev.c   | 32 ++++++++++++++++++++++++++++++--
+ 3 files changed, 52 insertions(+), 5 deletions(-)
 
 diff --git a/boot/bootdev-uclass.c b/boot/bootdev-uclass.c
 index fa52bc3a9c4..5a60cf223c7 100644
@@ -51,10 +50,10 @@ index fa52bc3a9c4..5a60cf223c7 100644
  		}
  		log_debug("- no device in %s\n", media->name);
 diff --git a/boot/bootflow.c b/boot/bootflow.c
-index 81b5829d5b3..74abf3e17d7 100644
+index 7a9033b3b39..0f09e638f28 100644
 --- a/boot/bootflow.c
 +++ b/boot/bootflow.c
-@@ -260,8 +260,25 @@ static int iter_incr(struct bootflow_iter *iter)
+@@ -280,8 +280,26 @@ static int iter_incr(struct bootflow_iter *iter)
  		} else {
  			log_debug("labels %p\n", iter->labels);
  			if (iter->labels) {
@@ -66,8 +65,9 @@ index 81b5829d5b3..74abf3e17d7 100644
 +				 * bootdev_find_by_label() where this flag is
 +				 * set up
 +				 */
-+				if (iter->method_flags & BOOTFLOW_METHF_SINGLE_UCLASS) {
-+					uclass_next_device(&dev);
++				if (iter->method_flags &
++				    BOOTFLOW_METHF_SINGLE_UCLASS) {
++					scan_next_in_uclass(&dev);
 +					log_debug("looking for next device %s: %s\n",
 +						  iter->dev->name,
 +						  dev ? dev->name : "<none>");
@@ -83,21 +83,57 @@ index 81b5829d5b3..74abf3e17d7 100644
  				ret = bootdev_next_prio(iter, &dev);
  				method_flags = 0;
 diff --git a/test/boot/bootdev.c b/test/boot/bootdev.c
-index 6b29213416d..c5f14a7a132 100644
+index 63786174805..0702fccdae6 100644
 --- a/test/boot/bootdev.c
 +++ b/test/boot/bootdev.c
-@@ -221,6 +221,16 @@ static int bootdev_test_order(struct unit_test_state *uts)
+@@ -225,7 +225,7 @@ static int bootdev_test_order(struct unit_test_state *uts)
+ 	ut_assertok(env_set("boot_targets", "mmc1 mmc2 usb"));
+ 	ut_assertok(bootflow_scan_first(NULL, NULL, &iter, 0, &bflow));
+ 	ut_asserteq(-ENODEV, bootflow_scan_next(&iter, &bflow));
+-	ut_asserteq(3, iter.num_devs);
++	ut_asserteq(5, iter.num_devs);
+ 	ut_asserteq_str("mmc1.bootdev", iter.dev_used[0]->name);
  	ut_asserteq_str("mmc2.bootdev", iter.dev_used[1]->name);
- 	bootflow_iter_uninit(&iter);
+ 	ut_asserteq_str("usb_mass_storage.lun0.bootdev",
+@@ -237,7 +237,20 @@ static int bootdev_test_order(struct unit_test_state *uts)
+ 	ut_assertok(bootflow_scan_first(NULL, "mmc", &iter, 0, &bflow));
+ 	ut_asserteq(2, iter.num_devs);
  
-+	/* Make sure it scans a bootdevs in each target */
-+	ut_assertok(env_set("boot_targets", "mmc spi"));
-+	ut_asserteq(0, bootflow_scan_first(NULL, NULL, &iter, 0, &bflow));
+-	/* Now scan pass mmc1 and make sure that only mmc0 shows up */
++	/* Now scan past mmc1 and make sure that only mmc0 shows up */
 +	ut_asserteq(-ENODEV, bootflow_scan_next(&iter, &bflow));
 +	ut_asserteq(3, iter.num_devs);
 +	ut_asserteq_str("mmc2.bootdev", iter.dev_used[0]->name);
 +	ut_asserteq_str("mmc1.bootdev", iter.dev_used[1]->name);
 +	ut_asserteq_str("mmc0.bootdev", iter.dev_used[2]->name);
++	bootflow_iter_uninit(&iter);
++
++	/* Try a single uclass with boot_targets */
++	ut_assertok(env_set("boot_targets", "mmc"));
++	ut_assertok(bootflow_scan_first(NULL, NULL, &iter, 0, &bflow));
++	ut_asserteq(2, iter.num_devs);
++
++	/* Now scan past mmc1 and make sure that only mmc0 shows up */
+ 	ut_asserteq(-ENODEV, bootflow_scan_next(&iter, &bflow));
+ 	ut_asserteq(3, iter.num_devs);
+ 	ut_asserteq_str("mmc2.bootdev", iter.dev_used[0]->name);
+@@ -245,6 +258,21 @@ static int bootdev_test_order(struct unit_test_state *uts)
+ 	ut_asserteq_str("mmc0.bootdev", iter.dev_used[2]->name);
+ 	bootflow_iter_uninit(&iter);
+ 
++	/* Try a single uclass with boot_targets */
++	ut_assertok(env_set("boot_targets", "mmc usb"));
++	ut_assertok(bootflow_scan_first(NULL, NULL, &iter, 0, &bflow));
++	ut_asserteq(2, iter.num_devs);
++
++	/* Now scan past mmc1 and make sure that the 3 USB devices show up */
++	ut_asserteq(-ENODEV, bootflow_scan_next(&iter, &bflow));
++	ut_asserteq(6, iter.num_devs);
++	ut_asserteq_str("mmc2.bootdev", iter.dev_used[0]->name);
++	ut_asserteq_str("mmc1.bootdev", iter.dev_used[1]->name);
++	ut_asserteq_str("mmc0.bootdev", iter.dev_used[2]->name);
++	ut_asserteq_str("usb_mass_storage.lun0.bootdev",
++			iter.dev_used[3]->name);
 +	bootflow_iter_uninit(&iter);
 +
  	return 0;
