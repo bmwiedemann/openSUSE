@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3f6f6a97b9f9a45eb4cc48fe8a5dbe2</srcmd5>
+    <version>0.11.1</version>
+    <time>1698438515</time>
+    <user>anag+factory</user>
+    <comment>new package apko: Build OCI images from APK packages directly without Dockerfile</comment>
+    <requestid>1120669</requestid>
+  </revision>
+</revisionlist>

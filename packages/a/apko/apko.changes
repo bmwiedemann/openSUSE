@@ -1,0 +1,304 @@
+-------------------------------------------------------------------
+Fri Oct 27 04:54:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.1:
+  * Update NEWS.md for 0.11.1
+  * Pass UID and GID mapping to the tarball writer
+  * Add json tags to ImageConfiguration types.
+  * build(deps): bump github/codeql-action from 2.22.1 to 2.22.4
+  * build(deps): bump actions/checkout from 4.1.0 to 4.1.1
+  * drop sync-issues-to-project-board.yaml not used anymore
+  * streamline release workflow
+  * call ImageConfiguration()
+  * Remove Trailing / if there any
+  * Fixed the make-devenv script
+
+-------------------------------------------------------------------
+Thu Oct 19 06:24:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.0:
+  * Update NEWS.md
+  * Clone image config's env to avoid race
+  * feat: implement resolve command
+  * build(deps): bump golang.org/x/sync from 0.3.0 to 0.4.0
+  * build(deps): bump sigs.k8s.io/release-utils
+  * build(deps): bump go.opentelemetry.io/otel from 1.18.0 to
+    1.19.0
+  * build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+  * Add additional error info when trying to run as a root user.
+  * build(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+  * build(deps): bump github/codeql-action from 2.21.7 to 2.22.1
+  * change Use and error msg
+  * build(deps): bump actions/checkout from 4.0.0 to 4.1.0
+  * dot: show version in node label
+  * ensure propagated logger is used
+  * Add apko dot command
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.6.1 to
+    5.9.0
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.1.1 to
+    2.2.0
+  * build(deps): bump gitlab.alpinelinux.org/alpine/go
+  * chore: remove CODEOWNERS file
+  * build(deps): bump goreleaser/goreleaser-action from 4.4.0 to
+    5.0.0
+  * build(deps): bump github/codeql-action from 2.21.5 to 2.21.7
+  * fix: Development typo
+  * build(deps): bump k8s.io/apimachinery from 0.28.1 to 0.28.2
+  * upgrade Go to 1.21 and several ci updates
+  * update version comments
+  * update version comments
+  * build(deps): bump go.opentelemetry.io/otel from 1.17.0 to
+    1.18.0
+  * Write index as layout if target is a directory
+  * Close tarfs files
+  * Bump go-apk
+  * Bump go-apk
+  * Drop dependency on deleted packages
+  * Allow replacement by different origin
+  * build(deps): bump actions/checkout from 3.6.0 to 4.0.0
+  * build(deps): bump golang.org/x/term from 0.11.0 to 0.12.0
+  * Don't buffer everything
+  * Expose tarfs
+  * Use tarfs implementation for publish/build
+  * Add an internal tarfs implementation
+  * Don't require testify
+  * Bump go-apk
+  * build(deps): bump github/codeql-action from 2.21.4 to 2.21.5
+  * Plumb --offline flag
+  * add tests to publishCmd for --sbom-path
+  * fix: publish cmd --sbom-path not writing files
+  * build(deps): bump github.com/jinzhu/copier from 0.3.5 to 0.4.0
+  * Pass a whole fs instead of a workdir to build
+  * upgrade go-apk to 20230827 snapshot
+  * build(deps): bump k8s.io/apimachinery from 0.27.3 to 0.28.1
+  * build(deps): bump github.com/package-url/packageurl-go
+  * build(deps): bump actions/checkout from 3.5.3 to 3.6.0
+  * build(deps): bump golang.org/x/term from 0.9.0 to 0.11.0
+  * fix: publish --stage-tags missing generated tags
+  * Don't call build.New for index SBOM
+  * Set reasonable concurrency levels for pgzip
+  * remove build options
+  * build(deps): bump golangci/golangci-lint-action from 3.6.0 to
+    3.7.0
+  * build(deps): bump github/codeql-action from 2.20.0 to 2.21.4
+  * build(deps): bump goreleaser/goreleaser-action from 4.3.0 to
+    4.4.0
+  * fix: incorrect arch tag equality detection
+  * build(deps): bump actions/setup-go from 4.0.1 to 4.1.0
+  * build(deps): bump golang.org/x/sys from 0.9.0 to 0.11.0
+  * Remove ldconfig step from build
+  * build(deps): bump github.com/google/go-containerregistry
+  * fix: assignment to nil map when using annotations via CLI flag
+  * update NEWS.md for 0.10.1
+  * Improve path mutation errors
+  * improve error messages when mutating paths
+  * Update NEWS.md
+  * Optimize SBOM generation
+  * build(deps): bump github.com/klauspost/pgzip from 1.2.5 to
+    1.2.6
+  * build(deps): bump github.com/cloudflare/circl from 1.2.0 to
+    1.3.3
+  * Update README.md
+
+-------------------------------------------------------------------
+Tue Aug 01 13:05:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.0:
+  * fix --workdir
+  * restore handling of packageTag CLI flags for publish
+  * Remove sbom generator indirection
+  * Split publishing and loading
+  * Inline apk package (mostly) to use go-apk directly
+  * Stop exposing build.Context fields
+  * Add a test to catch SBOM changes
+  * Remove WantSBOM and GenerateSBOM
+  * Remove buildImplementation
+  * Add a test to verify no output changes
+  * Remove unused executor package
+  * when setting SOURCE_DATE_EPOCH, ensure string is not blank
+  * Pull in the latest changes to go-apk (#802)
+  * Don't compute layer hash twice
+  * bump go-apk
+  * work with no cache when cache-dir is not set and HOME is not
+    set
+  * report error when cannot create apkimpl object
+  * Bump lint
+  * Fix race
+  * Bump go to 1.20
+  * Bump go-apk
+  * Add 4MiB bufio for pgzip
+  * Bump go-apk to pick up faster installs
+  * Switch from pargzip to pgzip
+  * Bump go-apk dep to pick up otel spans
+  * Add otel spans
+- BuildRequire go1.20
+
+-------------------------------------------------------------------
+Mon Jul 03 06:12:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.0:
+  * add release notes for 0.9.0
+  * update go-apk component to 20230630 snapshot
+  * go mod tidy
+  * bump go-apk dep to stop fetching alpine keys all the time
+  * base ci tests on examples
+  * build(deps): bump github.com/sigstore/cosign/v2
+  * Always pass WithLogger first
+  * Always UTC time.Unix (#758)
+  * Pull in go-apk timestamp change (#757)
+  * Bump go-apk, deduplicate extras
+  * add annotations to index manifest
+  * add optional oci volumes field to resulting image config
+  * go-apk with support for pinned pre-existing as deps
+  * improved show-packages output
+  * build(deps): bump actions/setup-go from 4.0.0 to 4.0.1 (#679)
+  * Address go vulnerabilities
+  * Pull in
+    https://gitlab.alpinelinux.org/alpine/go/-/merge_requests/25
+    (#742)
+  * Update go-apk to pull in Jon/Avi's changes (#746)
+  * build(deps): bump golangci/golangci-lint-action from 3.4.0 to
+    3.6.0 (#739)
+  * build(deps): bump actions/checkout from 3.5.2 to 3.5.3 (#740)
+  * build(deps): bump goreleaser/goreleaser-action from 4.2.0 to
+    4.3.0 (#741)
+  * build(deps): bump docker/setup-qemu-action from 2.1.0 to 2.2.0
+    (#734)
+  * build(deps): bump github/codeql-action from 2.3.2 to 2.20.0
+    (#745)
+  * bump go-apk to inherit increased debug logging
+  * Remove build implementation interface
+  * safe rename
+  * fix apk caching
+  * support for apk package caching
+  * restructure oci package
+  * unify publish and build commands
+  * avoid nil panic
+  * lint
+  * change how default envs are set
+  * Test PublishCmd
+  * Add a no-op test for PublishCmd
+  * Check that images have the correct layers
+  * Pass remoteOpts to publishIndex
+  * run tests with race detector
+  * Revert "Remove some more indirection"
+  * Revert "Finish the argument movement"
+  * fix: pass --extra-packages correctly
+  * extend summarize to provide the rest of the options
+  * Move default remote options out of library
+  * adds warning when etc/os-release is actually generated
+  * Finish the argument movement
+  * Remove some more indirection
+  * appease linter
+  * add --extra-packages, deprecate build options
+  * bump go-apk to fix infinite symlinks
+  * Stop using tarball.LayerFromFile
+  * Fix CI (#701)
+  * Remove indirection for apk implementation
+  * add option to change directory before executing
+  * use upstream go-apk tarball functionality
+  * Fix annotations.
+  * build(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.3
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.2
+  * go-apk with proper error messages for arch with missing
+    APKINDEX
+  * Fix the error wrapper (#677)
+  * Fix stupid boolean logic bug (#678)
+  * Feature: Compute the default timestamp from installed APKs
+    (#675)
+  * Add test of determinism (#668)
+  * latest go-apk with consistent file ordering
+  * Fix: add timeouts to several actions legs. (#672)
+  * Fix: Explicitly default the `SourceDateEpoch` (#671)
+  * Cleanup: Make the Services type more concrete. (#664)
+  * Cleanup: Use a string alias instead of struct. (#663)
+  * bump go-apk to include world newline fix
+  * Update pkg/build/types/types.go
+  * document the fields in types/
+  * update go-apk to include race prevention
+  * build(deps): bump gitlab.alpinelinux.org/alpine/go
+  * use external apk-go library
+  * add hotfix for alpine-go
+  * apk: install: add support for replaces
+  * build(deps): bump github/codeql-action from 2.2.12 to 2.3.2
+
+-------------------------------------------------------------------
+Mon May 01 06:16:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.0:
+  * update NEWS for apko 0.8.0.
+  * allow overwrite of existing file if origin matches
+  * better sort order for packages when writing to apk/db/installed
+  * Plumb context
+  * Optimize ggcr interactions
+  * add ability to read busybox links from package manifest
+  * report complete yaml when fail to build, if debug is enabled
+  * handle versioning in provides
+  * add testcase for alpine python3~3.11 change
+  * version: fix tilde matching in packageNameRegex
+  * add optional support for self-package resolution
+  * Update pkg/apk/impl/version.go
+  * add support for tilde matcher
+  * iocomb: try to make log target parent directory if necessary
+  * cli: use iocomb.Combine to combine multiple log outputs into a
+    log policy
+  * add iocomb package
+  * internal: cli: use NewLogger as needed to instantiate the
+    logger
+  * log: adapter: default log level to InfoLevel
+  * build: add WithLogger option to set a context logger
+  * log: add output to NewLogger and add DefaultLogger for stderr
+    logging
+  * options: default to using io.Discard for logging
+  * return all matches for PkgResolver.ResolvePackage
+  * exec: update tests to use log.Logger instead of logrus
+  * apk: update tests to use log.Logger instead of logrus
+  * log: introduce Adapter type
+  * everywhere: use abstract logger type, remove logrus from
+    internals
+  * expose GetRepositoryIndexes
+  * expose GetPackage to resolve a single package with constraints
+  * use interface to pass to NewPkgResolver
+  * build(deps): bump actions/checkout from 3.5.0 to 3.5.2
+  * build(deps): bump github/codeql-action from 2.2.11 to 2.2.12
+  * fix mid-level symlinks for native-memfs
+  * native in-memory filesystem
+  * busybox install ignore existing link or file
+  * Remove duplication, add make target
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.0.0 to
+    2.0.1
+  * build(deps): bump github/codeql-action from 2.2.10 to 2.2.11
+  * log: formatting enhancements
+  * build(deps): bump golang.org/x/term from 0.6.0 to 0.7.0
+  * build(deps): bump github/codeql-action from 2.2.9 to 2.2.10
+  * feat: send useragent in HTTP requests
+  * appease linter
+  * apk: downgrade package-level install notices to debug
+  * add internal logging package
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump golang.org/x/sys from 0.6.0 to 0.7.0
+  * build(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * ensure truncate when creating new file in case one already was
+    there
+  * Change the busybox detection logic to support "provides".
+  * Add docs on stop-signal.
+  * Add StopSignal support.
+  * update NEWS for apko 0.7.3.
+  * build(deps): bump github/codeql-action from 2.2.7 to 2.2.9
+  * Add codeowners
+  * build(deps): bump actions/checkout from 3.4.0 to 3.5.0
+  * Add CI test harness
+  * Add SBOM quality CI test
+  * When build and publish, carry buildcontext to sbom generation
+  * create homedir 0700, but parents 0755
+  * record when writing symlinks to case-sensitive
+  * generate list of links for busybox
+  * build: accounts: go back to using 0o755 permissions for the
+    homedir
+
+-------------------------------------------------------------------
+Sun Mar 19 14:00:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package apko
