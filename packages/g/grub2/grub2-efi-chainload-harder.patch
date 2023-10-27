@@ -2,6 +2,10 @@
 v2:
 Use grub_efi_get_secureboot to get secure boot status
 
+v3:
+Fix null sb_context->file_path due to missing assignment of chainloaded image's
+file_path  (bsc#1216081) 
+
 ---
  grub-core/loader/efi/chainloader.c |   62 +++++++++++++++++++++----------------
  1 file changed, 36 insertions(+), 26 deletions(-)
@@ -73,7 +77,7 @@ Use grub_efi_get_secureboot to get secure boot status
  }
  
  static void*
-@@ -604,6 +605,9 @@
+@@ -607,6 +608,9 @@
    if (buffer)
      b->free_pool (buffer);
  
@@ -83,7 +87,7 @@ Use grub_efi_get_secureboot to get secure boot status
    return 0;
  
  }
-@@ -821,6 +825,30 @@
+@@ -825,6 +829,31 @@
    status = b->load_image (0, grub_efi_image_handle, file_path,
  			  boot_image, size,
  			  &image_handle);
@@ -105,6 +109,7 @@ Use grub_efi_get_secureboot to get secure boot status
 +      sb_context->dev_handle = dev_handle;
 +      sb_context->address = address;
 +      sb_context->pages = pages;
++      sb_context->file_path = file_path;
 +      grub_file_close (file);
 +      grub_loader_set_ex (grub_secureboot_chainloader_boot,
 +	      grub_secureboot_chainloader_unload, sb_context, 0);

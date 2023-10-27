@@ -387,6 +387,8 @@ Patch194:       0003-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
 Patch195:       0004-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
 Patch196:       0005-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
 Patch197:       0006-fs-ntfs-Make-code-more-readable.patch
+Patch198:       0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
+Patch199:       Fix-the-size-calculation-for-the-synthesized-initrd.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

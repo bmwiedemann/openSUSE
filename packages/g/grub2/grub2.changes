@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 26 06:04:54 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix a potential error when appending multiple keys into the
+  synthesized initrd
+  * Fix-the-size-calculation-for-the-synthesized-initrd.patch
+
+-------------------------------------------------------------------
+Wed Oct 25 01:56:09 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix Xen chainloding error of no matching file path found (bsc#1216081) 
+  * grub2-efi-chainload-harder.patch
+
+-------------------------------------------------------------------
+Mon Oct 23 13:11:45 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Use grub-tpm2 token to unlock keyslots to make the unsealing process more
+  efficient and secure.
+  * 0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
+
+-------------------------------------------------------------------
 Mon Oct 16 08:05:03 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix detection of encrypted disk's uuid in powerpc to cope with logical disks
@@ -785,7 +805,7 @@ Wed Jun  8 03:25:26 UTC 2022 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Wed Jun  8 03:17:29 UTC 2022 - Michael Chang <mchang@suse.com>
 
-- Add patches for automatic TPM disk unlock (jsc#SLE-24018) (bsc#1196668)
+- Add patches for automatic TPM disk unlock (jsc#SLE-24018) (bsc#1196668) (jsc#PED-1276)
   * 0001-luks2-Add-debug-message-to-align-with-luks-and-geli-.patch
   * 0002-cryptodisk-Refactor-to-discard-have_it-global.patch
   * 0003-cryptodisk-Return-failure-in-cryptomount-when-no-cry.patch
@@ -868,7 +888,7 @@ Thu May 26 10:10:56 UTC 2022 - Michael Chang <mchang@suse.com>
 Tue May 17 10:46:38 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix installation over serial console ends up in infinite boot loop
-  (bsc#1187810)
+  (bsc#1187810) (bsc#1209667) (bsc#1209372)
   * 0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
 - Fix ppc64le build error for new IEEE long double ABI
   * 0001-libc-config-merge-from-glibc.patch
