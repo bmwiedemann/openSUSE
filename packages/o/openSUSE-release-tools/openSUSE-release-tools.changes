@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 26 15:05:00 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231026.fcdc535:
+  * Remove QR and some SLE-Micro pipelines
+
+-------------------------------------------------------------------
+Thu Oct 26 14:22:58 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231026.2891f13:
+  * Only check for products to be built successfully
+
+-------------------------------------------------------------------
 Wed Oct 25 20:23:28 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20231025.4331902:
