@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 08:07:33 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi3
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Mon Aug 04 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
 
 - Added ADIOS2 v2.9.1.

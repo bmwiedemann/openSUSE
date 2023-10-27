@@ -32,15 +32,15 @@
 %global mpi_flavor mvapich2
 %global mpi_family mvapich2
 %endif
-%if "%{flavor}" == "openmpi3"
-%global mpi_flavor openmpi3
-%global mpi_family openmpi
-%global mpi_ver 3
-%endif
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi4
 %global mpi_family openmpi
 %global mpi_ver 4
+%endif
+%if "%{flavor}" == "openmpi5"
+%global mpi_flavor openmpi5
+%global mpi_family openmpi
+%global mpi_ver 5
 %endif
 %if 0%{?suse_version} <= 1500
 %define is_leap 1
