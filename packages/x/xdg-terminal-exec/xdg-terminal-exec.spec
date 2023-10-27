@@ -17,7 +17,7 @@
 
 
 Name:           xdg-terminal-exec
-Version:        20231003+git.e5c20d0
+Version:        20231014+git.b6d2874
 Release:        0
 Summary:        XDG terminal execution utility and default terminal specification
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses

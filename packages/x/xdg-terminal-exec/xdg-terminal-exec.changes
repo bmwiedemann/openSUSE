@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 26 14:51:17 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231014+git.b6d2874:
+  * update readme
+  * WIP #28 internal list deduplicator, formatting
+  * WIP #28 add stock applications controls to configs
+  * check_bool function
+  * WIP #28 filter terminals from applications
+  * tr is faster than xargs -n1 on lots of lines
+- Store only *.obscpio, the tarball is generated in buildtime.
+
+-------------------------------------------------------------------
 Sat Oct 07 12:58:52 UTC 2023 - mcepl@cepl.eu
 
 - Update to version 20231003+git.e5c20d0:

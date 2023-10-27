@@ -34,4 +34,20 @@
 </comment>
     <requestid>1116205</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>10b724c5eb1a54a51902f1e94bc951ac</srcmd5>
+    <version>20231014+git.b6d2874</version>
+    <time>1698438489</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231014+git.b6d2874:
+  * update readme
+  * WIP #28 internal list deduplicator, formatting
+  * WIP #28 add stock applications controls to configs
+  * check_bool function
+  * WIP #28 filter terminals from applications
+  * tr is faster than xargs -n1 on lots of lines
+- Store only *.obscpio, the tarball is generated in buildtime.
+</comment>
+    <requestid>1120603</requestid>
+  </revision>
 </revisionlist>
