@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct 26 04:55:27 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.10`
+- Update to version 1.28.3:
+  * Register UnauthenticatedHTTP2DOSMitigation into kube components
+  * Skip TestUnauthenticatedHTTP2ClientConnectionClose http1 tests
+  * Disable UnauthenticatedHTTP2DOSMitigation by default
+  * Prevent rapid reset http2 DOS on API server
+  * Fix concurrent write when filling PVC labels
+  * Modify test PVC to detect concurrent map write bug
+  * [go] Bump images, dependencies and versions to go 1.20.10
+  * Fix to honor PDB with an empty selector `{}`
+  * .: bump golang.org/x/net to v0.17.0
+  * Mark a volume as uncertain-attached after detach error
+  * Unit & integration tests for OpenAPIV2 AddUpdateAPIService
+  * Fix 120878 - Refactor cacheabledownloader so handler can be updated and fix AddUpdateAPIService to update handler
+  * Fix 120739 - Prevent AddUpdateAPIService from blocking on updating spec
+  * Fix 120758 - prevent cache Load on uninitialized spec
+  * Add nil checks for hpa object target type values
+  * Make a certain ipv4-vs-ipv6 config error non-fatal, for backward compat
+  * [go] Bump images, versions and deps to use Go 1.20.9
+  * Only configure swap if available on node
+  * Use local isCgroup2UnifiedMode consistently
+  * cronjob controller: ensure already existing jobs are added to Active list of cronjobs
+  * reintroduce resourcequota.NewMonitor
+  * change rolling update logic to exclude sunsetting nodes
+  * vsphere: adapt to govmomi bump
+  * .: bump govmomi to v0.30.6
+  * Increase range of job_sync_duration_seconds
+  * sync Service API status rest storage
+  * kubeadm: remove reference of k8s.io/kubernetes/pkg/apis/core/v1
+  * fix race on etcd client constructor for healthchecks
+  * e2e pods: fix WaitForPodsResponding retry
+  * kmsv2: reload metrics bug fix backport
+  * scheduler: start scheduling attempt with clean UnschedulablePlugins
+
+-------------------------------------------------------------------
 Wed Sep 20 18:53:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.28.2:
