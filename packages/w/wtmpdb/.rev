@@ -87,4 +87,14 @@
     <comment></comment>
     <requestid>1112164</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>03bc060712512d7d5b4200f979746b9d</srcmd5>
+    <version>0.9.3</version>
+    <time>1698438452</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.3
+  - wtmpdb last: don't print date in the future if there is no
+    db entry</comment>
+    <requestid>1120586</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 26 13:07:54 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.3
+  - wtmpdb last: don't print date in the future if there is no
+    db entry
+
+-------------------------------------------------------------------
 Tue Sep 19 07:53:57 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Update to version 0.9.2
