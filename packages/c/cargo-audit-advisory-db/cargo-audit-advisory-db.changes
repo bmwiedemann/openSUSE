@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 27 03:02:30 UTC 2023 - william.brown@suse.com
+
+- Update to version 20231027:
+  * Assigned RUSTSEC-2023-0068 to cocoon (#1810)
+  * cocoon: sequential calls of encryption API result in nonce reuse (<=0.3.3) (#1805)
+  * Updating information about replacements (#1803)
+  * Assigned RUSTSEC-2023-0067 to fehler (#1801)
+  * fehler is unmaintained (#1800)
+  * Assigned RUSTSEC-2023-0066 to pleaser (#1799)
+  * Document the privilege-escalation vulnerability in pleaser. (#1798)
+  * Update webpki RUSTSEC-2023-0052 advisory. (#1797)
+  * Assigned RUSTSEC-2023-0065 to tungstenite (#1796)
+  * Create advisory for tungstenite DoS (#1795)
+
+-------------------------------------------------------------------
 Sat Oct 07 01:19:51 UTC 2023 - william.brown@suse.com
 
 - Update to version 20231007:
