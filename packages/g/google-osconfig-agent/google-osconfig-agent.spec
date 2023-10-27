@@ -33,7 +33,7 @@ URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.21
 BuildRequires:  golang-packaging
 Requires:       google-guest-configs
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
