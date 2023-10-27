@@ -359,4 +359,15 @@
     <comment></comment>
     <requestid>1119976</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>eabc4079205bcb0e915d587ce581b512</srcmd5>
+    <version>0.158.0</version>
+    <time>1698438550</time>
+    <user>anag+factory</user>
+    <comment>- autocomplete files can be generated using &quot;helmfile complete&quot; for
+  the shells &quot;bash&quot;, &quot;zsh&quot; and &quot;fish&quot;. Use this feature to provide
+  additional helmfile-&lt;shell&gt;-completion packages again.
+</comment>
+    <requestid>1120795</requestid>
+  </revision>
 </revisionlist>

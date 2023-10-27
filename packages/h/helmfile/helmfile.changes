@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 27 11:44:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- autocomplete files can be generated using "helmfile complete" for
+  the shells "bash", "zsh" and "fish". Use this feature to provide
+  additional helmfile-<shell>-completion packages again.
+
+-------------------------------------------------------------------
 Tue Oct 24 12:05:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.158.0:
