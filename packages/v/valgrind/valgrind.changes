@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 19:02:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove buildrequires on 32bit packages
+
+-------------------------------------------------------------------
 Mon Oct 23 13:47:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update filelist for 32bit disabled projects

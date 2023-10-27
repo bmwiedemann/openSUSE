@@ -59,6 +59,7 @@ BuildRequires:  gcc8-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+%if !0%{?disable_32bit}
 %ifarch x86_64 ppc64
 BuildRequires:  glibc-devel-32bit
 %if 0%{?suse_version} < 1500
@@ -67,7 +68,7 @@ BuildRequires:  gcc8-c++-32bit
 BuildRequires:  gcc-c++-32bit
 %endif
 %endif
-%else
+%endif
 %endif
 
 %description

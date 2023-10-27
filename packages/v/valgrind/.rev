@@ -1439,4 +1439,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
 - fix strict-aliasing issue</comment>
     <requestid>1119663</requestid>
   </revision>
+  <revision rev="146" vrev="4">
+    <srcmd5>098c989a6ea0286a474ea0947153895b</srcmd5>
+    <version>3.21.0</version>
+    <time>1698438429</time>
+    <user>anag+factory</user>
+    <comment>- remove buildrequires on 32bit packages</comment>
+    <requestid>1120367</requestid>
+  </revision>
 </revisionlist>
