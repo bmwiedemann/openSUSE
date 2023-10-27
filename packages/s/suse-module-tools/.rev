@@ -719,4 +719,13 @@ source service setup which messed up my spec file.
 * blacklist RNDIS modules (bsc#1205767, jsc#PED-5731, CVE-2023-23559) (forwarded request 1118227 from mwilck)</comment>
     <requestid>1118229</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>45e47c0c0105ea30959187d279eb26f4</srcmd5>
+    <version>16.0.37</version>
+    <time>1698438431</time>
+    <user>anag+factory</user>
+    <comment>* weak-modules2: ignore INITRD_MODULES (jsc#PED-1915), obtain
+    list of modules from dracut.conf.d instead (forwarded request 1120369 from mwilck)</comment>
+    <requestid>1120370</requestid>
+  </revision>
 </revisionlist>

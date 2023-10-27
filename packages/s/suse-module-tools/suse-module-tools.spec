@@ -36,7 +36,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.36
+Version:        16.0.37
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -112,7 +112,7 @@ install -pm 644 "depmod-00-system.conf" "%{buildroot}%{depmod_dir}/00-system.con
 # "/usr/lib/module-init-tools" name hardcoded in other packages
 install -d -m 755 "%{buildroot}/usr/lib/module-init-tools"
 install -pm 755 -t "%{buildroot}/usr/lib/module-init-tools/" \
-	weak-modules2 driver-check.sh unblacklist lsinitrd-quick
+	weak-modules2 driver-check.sh unblacklist lsinitrd-quick get_dracut_drivers
 install -pm 755 "regenerate-initrd-posttrans" "%{buildroot}/usr/lib/module-init-tools/"
 install -d -m 755 "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
 install -pm 755 "kernel-scriptlets/cert-script" "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
@@ -226,6 +226,7 @@ exit 0
 /usr/lib/module-init-tools/lsinitrd-quick
 /usr/lib/module-init-tools/unblacklist
 /usr/lib/module-init-tools/weak-modules2
+/usr/lib/module-init-tools/get_dracut_drivers
 %{_unitdir}/*.service
 %{_unitdir}/systemd-sysctl.service.d
 %{_modulesloaddir}

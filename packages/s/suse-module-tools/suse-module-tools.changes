@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 25 19:48:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+  * weak-modules2: ignore INITRD_MODULES (jsc#PED-1915), obtain
+    list of modules from dracut.conf.d instead
+
+-------------------------------------------------------------------
 Fri Sep 29 16:49:41 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.36
