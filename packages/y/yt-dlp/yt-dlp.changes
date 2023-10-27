@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 27 07:27:07 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use python_subpackage_only to build the pythonXXX-yt-dlp
+  subpackages.
+
+-------------------------------------------------------------------
 Wed Oct 25 03:06:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Rework Python build procedure [boo#1216467]

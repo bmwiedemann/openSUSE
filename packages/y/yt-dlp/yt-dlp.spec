@@ -34,13 +34,8 @@ BuildRequires:  make >= 4
 BuildRequires:  python-rpm-macros
 BuildRequires:  zip
 BuildArch:      noarch
-Requires:       ffmpeg
 Requires:       python3-yt-dlp
-Suggests:       python-Brotli
-Suggests:       python-certifi
-Suggests:       python-mutagen
-Suggests:       python-pycryptodomex
-Suggests:       python-websockets
+%define python_subpackage_only 1
 %python_subpackages
 
 %description
@@ -77,6 +72,12 @@ ZSH command line completion support for yt-dlp.
 %package -n python-yt-dlp
 Summary:        yt-dlp Python library
 Group:          Development/Languages/Python
+Requires:       ffmpeg
+Suggests:       python-Brotli
+Suggests:       python-certifi
+Suggests:       python-mutagen
+Suggests:       python-pycryptodomex
+Suggests:       python-websockets
 
 %description -n python-yt-dlp
 The direct Python interface into yt-dlp.
@@ -114,7 +115,7 @@ rm -Rf "$b/%_datadir/doc"
 %files -n yt-dlp-zsh-completion
 %_datadir/zsh/
 
-%files %python_files
+%files %{python_files yt-dlp}
 %python_sitelib/y*
 
 %changelog

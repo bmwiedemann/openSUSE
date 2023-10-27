@@ -252,4 +252,13 @@
     <comment>- Rework Python build procedure [boo#1216467]</comment>
     <requestid>1120155</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>254a94c7017e8cb4f0e73b3fc732b96e</srcmd5>
+    <version>2023.10.13</version>
+    <time>1698438532</time>
+    <user>anag+factory</user>
+    <comment>- Use python_subpackage_only to build the pythonXXX-yt-dlp
+  subpackages.</comment>
+    <requestid>1120746</requestid>
+  </revision>
 </revisionlist>
