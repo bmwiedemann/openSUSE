@@ -17,7 +17,7 @@
 
 
 Name:           containment-rpm
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Wraps OBS docker/kiwi-built images in rpms
 License:        MIT

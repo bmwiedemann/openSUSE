@@ -19,4 +19,13 @@
 - require rubygem-changelog_generator</comment>
     <requestid>1112561</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72f0fa9dbc520845e796657ba780bdee</srcmd5>
+    <version>2.0.2</version>
+    <time>1698438549</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * Handle better container name from kiwi</comment>
+    <requestid>1120789</requestid>
+  </revision>
 </revisionlist>
