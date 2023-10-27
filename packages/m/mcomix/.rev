@@ -25,4 +25,43 @@
     <comment></comment>
     <requestid>1045421</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bab5d2d29d91329528cde1c87d42b50b</srcmd5>
+    <version>2.3.0</version>
+    <time>1698438507</time>
+    <user>anag+factory</user>
+    <comment>- replace Requires: PyGObject with Requires: python3-gobject-Gdk
+- replace Requires: chardet with Requires: python3-chardet
+- since version 2.2.0 mcomix needs puthon 3.7, use the macro 
+  sle15_python_module_pythons to build mcomix on Leap using
+  a modern version of python
+- update to 2.3.0:
+  * MComix now offers a high-resolution application icon.
+  * Restored Python 3.7 compatibility in native PDF extractor.
+- changes introduced in 2.2.1:
+  * Added missing vendor package to source distribution.
+- changes introduced in 2.2.0:
+  * Fixed incorrect PDF transformations on systems using a recent
+  version of MuPDF.
+  * Fixed incompatibility with Pillow 10.0.0 due to bug in version check.
+  * MComix can now use the PyMuPDF Python package to provide PDF reading
+  capabilities, with improved extraction/decoding speed.
+  * Added support for MobiPocket (AZW3) format books. Archives with DRM
+  are not supported.
+  * The OSD now shows the current page and the total number of pages.
+  * The tabs of the Preferences dialog are scrollable so all dialog tabs
+  can be properly used on smaller screens.
+  * Updated the simplified Chinese translation.
+- update to 2.1.1:
+  * Improved quality and speed of the magnifying lens.
+  * Added new de facto IEC prefixes.
+  * Window size should be remembered correctly again when
+    restarting the application.
+  * Replaced usage of deprecated GTK threading/timer
+    functionality.
+  * Fixed GLib application name. This improves integration
+    with Gnome.
+</comment>
+    <requestid>1120658</requestid>
+  </revision>
 </revisionlist>

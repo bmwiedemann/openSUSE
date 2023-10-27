@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Oct 11 18:56:48 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- replace Requires: PyGObject with Requires: python3-gobject-Gdk
+- replace Requires: chardet with Requires: python3-chardet
+- since version 2.2.0 mcomix needs puthon 3.7, use the macro 
+  sle15_python_module_pythons to build mcomix on Leap using
+  a modern version of python
+
+-------------------------------------------------------------------
+Wed Oct  4 18:59:18 UTC 2023 - Sergio Laverde <sergiolaverde0@gmail.com>
+
+- update to 2.3.0:
+  * MComix now offers a high-resolution application icon.
+  * Restored Python 3.7 compatibility in native PDF extractor.
+- changes introduced in 2.2.1:
+  * Added missing vendor package to source distribution.
+- changes introduced in 2.2.0:
+  * Fixed incorrect PDF transformations on systems using a recent
+  version of MuPDF.
+  * Fixed incompatibility with Pillow 10.0.0 due to bug in version check.
+  * MComix can now use the PyMuPDF Python package to provide PDF reading
+  capabilities, with improved extraction/decoding speed.
+  * Added support for MobiPocket (AZW3) format books. Archives with DRM
+  are not supported.
+  * The OSD now shows the current page and the total number of pages.
+  * The tabs of the Preferences dialog are scrollable so all dialog tabs
+  can be properly used on smaller screens.
+  * Updated the simplified Chinese translation.
+
+-------------------------------------------------------------------
+Mon May 29 20:05:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Improved quality and speed of the magnifying lens.
+  * Added new de facto IEC prefixes.
+  * Window size should be remembered correctly again when
+    restarting the application.
+  * Replaced usage of deprecated GTK threading/timer
+    functionality.
+  * Fixed GLib application name. This improves integration
+    with Gnome.
+
+-------------------------------------------------------------------
 Mon Dec 26 14:31:45 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - fix wrong attributes in original archived source
