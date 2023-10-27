@@ -29,6 +29,11 @@ Source2:        https://gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2.
 # https://www.gnupg.org/signature_key.html
 Source3:        %{name}.keyring
 Source4:        libksba.changes
+#PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
+Patch0:         libksba-nobetasuffix.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gpg-error) >= 1.8
 
@@ -63,6 +68,7 @@ libksba.
 %autosetup -p1
 
 %build
+autoreconf -vfi
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE4})
 %configure \
 	--disable-static \
