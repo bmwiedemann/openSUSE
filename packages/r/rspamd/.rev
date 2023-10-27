@@ -146,4 +146,35 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117826</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4835106d8197f79e26662c63b2b30a15</srcmd5>
+    <version>3.7.3</version>
+    <time>1698438499</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.7.3
+  - [Fix] Emergency fix for the hyperscan path error
+
+- Update to 3.7.2
+  - [Minor] Make compiling with backward-cpp optional by
+    @a16bitsysop in #4639
+  - [Rules] Blank spam detection by @fatalbanana in #4644
+  - [Minor] Treat *.cue attachments as harmful by @twesterhever in
+    #4642
+  - Dzjaivnt patch 1 by @dzjaivnt in #4640
+  - [WebUI] Add control to invert action filter by @moisseev in
+    #4645
+  - [Fix] DMARC reporting: fix reporting for subdomains by
+    @fatalbanana in #4587
+  - [Test] Banish luacheck from functional tests by @fatalbanana in
+    #4648
+  - [Minor] RSPAMD_SHAREDIR is called SHAREDIR in configuration by
+    @fatalbanana in #4649
+  - [WebUI] Fix history table vanishing by @moisseev in #4661
+  - Tighten rspamd's attachment policy by @twesterhever in #4656
+  - [Minor] rbl: support use of different matchers for return codes
+    by @fatalbanana in #4657
+
+- Update to 3.7.1</comment>
+    <requestid>1120748</requestid>
+  </revision>
 </revisionlist>

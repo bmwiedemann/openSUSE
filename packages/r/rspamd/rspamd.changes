@@ -1,7 +1,36 @@
 -------------------------------------------------------------------
+Fri Oct 27 08:03:52 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.3
+  - [Fix] Emergency fix for the hyperscan path error
+
+-------------------------------------------------------------------
+Thu Oct 26 18:25:54 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.2
+  - [Minor] Make compiling with backward-cpp optional by
+    @a16bitsysop in #4639
+  - [Rules] Blank spam detection by @fatalbanana in #4644
+  - [Minor] Treat *.cue attachments as harmful by @twesterhever in
+    #4642
+  - Dzjaivnt patch 1 by @dzjaivnt in #4640
+  - [WebUI] Add control to invert action filter by @moisseev in
+    #4645
+  - [Fix] DMARC reporting: fix reporting for subdomains by
+    @fatalbanana in #4587
+  - [Test] Banish luacheck from functional tests by @fatalbanana in
+    #4648
+  - [Minor] RSPAMD_SHAREDIR is called SHAREDIR in configuration by
+    @fatalbanana in #4649
+  - [WebUI] Fix history table vanishing by @moisseev in #4661
+  - Tighten rspamd's attachment policy by @twesterhever in #4656
+  - [Minor] rbl: support use of different matchers for return codes
+    by @fatalbanana in #4657
+
+-------------------------------------------------------------------
 Sat Oct  7 21:56:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 3.7.1 
+- Update to 3.7.1
   - [Fix] CMakeLists.txt remove whitespace added by linter as it
     makes te… by @a16bitsysop in #4560
   - fix: redis schema parsing by @Conni2461 in #4562

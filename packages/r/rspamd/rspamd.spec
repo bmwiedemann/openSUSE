@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.7.1
+Version:        3.7.3
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -624,6 +624,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/rules/html.lua
 %{_datadir}/rspamd/rules/mid.lua
 %{_datadir}/rspamd/rules/misc.lua
+%{_datadir}/rspamd/rules/parts.lua
 %{_datadir}/rspamd/rules/rspamd.lua
 %{_datadir}/rspamd/rules/subject_checks.lua
 
