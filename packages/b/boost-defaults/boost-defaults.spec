@@ -16,9 +16,9 @@
 #
 
 
-%define boost_version 1_82_0
+%define boost_version 1_83_0
 Name:           boost-defaults
-Version:        1.82.0
+Version:        1.83.0
 Release:        0
 Summary:        Default Boost C++ Libraries
 License:        MIT
