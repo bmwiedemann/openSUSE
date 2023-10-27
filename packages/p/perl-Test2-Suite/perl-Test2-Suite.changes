@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 26 03:08:32 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000159
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000159  2023-10-25 14:09:23-07:00 America/Los_Angeles
+      - Document that diag() intentionally returns false, and add a `return 0`
+  0.000158  2023-10-22 22:05:42-07:00 America/Los_Angeles
+      - Mark Workflow-Acceptance.t as AUTHOR_TESTING
+  0.000157  2023-10-22 21:26:49-07:00 America/Los_Angeles
+      - Fix #280: Document --no_srand option in Test2::V0
+      - Fix #276: Document bool() import in Test2::V0
+      - Fix #279: Merged fix for VMS test issues
+      - Fix #277: Merged POD tweaks
+
+-------------------------------------------------------------------
 Thu Sep 14 03:10:33 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000156
