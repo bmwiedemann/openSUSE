@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 25 03:07:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302196
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302196  2023-10-24 10:27:33-07:00 America/Los_Angeles
+
+      - Fix #882
+      - Fix handling of VSTRING and LVALUE refs in is_deeply() #918
+      - Merge several doc fixes from mauke
+
+-------------------------------------------------------------------
 Sat Apr 29 03:13:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302195
