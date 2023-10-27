@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 16:37:24 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- We don’t mandoc at all after all (gh#rhboot/efivar#229 and
+  gh#rhboot/efivar#253).
+
+-------------------------------------------------------------------
 Fri Feb 10 07:21:31 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 38

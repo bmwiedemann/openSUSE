@@ -31,7 +31,6 @@ Patch2:         efivar-adjust-dependency.patch
 Patch3:         efivar-filter-gcc-march.patch
 Patch4:         efivar-bsc1206388-revamp-efi_well_known-variable-handling.patch
 BuildRequires:  fdupes
-BuildRequires:  mandoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(popt)
 Requires:       libefivar%{major} = %{version}-%{release}
@@ -56,6 +55,9 @@ Development headers required to use libefivar.
 
 %prep
 %autosetup -p1
+
+# Avoid rebuilding gh#rhboot/efivar#229 and gh#rhboot/efivar#253
+mv -v docs/efisecdb.1{.mdoc,}
 
 %build
 CFLAGS="%{optflags} -Wno-nonnull -flto"

@@ -211,4 +211,13 @@
 - Add efivar-adjust-dependency.patch to avoid 'make install' from</comment>
     <requestid>1072154</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d97c2992c3683b804aada99efe8bafd1</srcmd5>
+    <version>38</version>
+    <time>1698438435</time>
+    <user>anag+factory</user>
+    <comment>- We don’t mandoc at all after all (gh#rhboot/efivar#229 and
+  gh#rhboot/efivar#253).</comment>
+    <requestid>1120479</requestid>
+  </revision>
 </revisionlist>
