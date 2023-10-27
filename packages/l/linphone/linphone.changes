@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 22 10:04:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Obsoletes/Provides to establish an upgrade path for zypper.
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/DNQSYPMB66XPGRKG6LPXCIH6VPSISG25/
+
+-------------------------------------------------------------------
 Sun Oct  8 12:18:34 UTC 2023 - thod_@gmx.de
 
 - Fix BuildRequires lime
