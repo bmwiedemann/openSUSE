@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 19 12:24:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update monoid-subclasses to version 1.2.4.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/monoid-subclasses-1.2.4.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Sep  1 02:48:20 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update monoid-subclasses to version 1.2.4.
