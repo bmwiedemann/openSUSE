@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-vfs2
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://commons.apache.org/vfs/
 Source0:        http://www.apache.org/dist/commons/vfs/source/%{short_name}-distribution-%{version}-src.tar.gz
-Source1:        %{short_name}-%{version}-build.tar.xz
+Source1:        %{short_name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-collections4
 BuildRequires:  apache-commons-compress
