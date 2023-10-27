@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 27 04:54:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.3:
+  * feat: 2.3.3 adopt latest gitops-template (#1871)
+  * fix: cloudflare token, error handling for cluster creation
+    (#1870)
+
+-------------------------------------------------------------------
 Wed Oct 25 04:50:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.2:
