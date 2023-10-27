@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 27 09:19:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.7:
+  * Bump google.golang.org/grpc from 1.55.0 to 1.56.3 (#2767)
+
+-------------------------------------------------------------------
+Fri Oct 27 09:16:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.52.6:
+  * fix!: output-module-groups to work like run-all (#2769)
+  * Update tofu version to 1.6.0-alpha3 (#2766)
+
+-------------------------------------------------------------------
 Wed Oct 25 04:37:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.52.5:
