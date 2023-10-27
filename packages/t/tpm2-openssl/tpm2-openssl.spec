@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _MODULES_DIR %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           tpm2-openssl
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        OpenSSL 3 Engine for TPM2 devices
 License:        BSD-3-Clause
