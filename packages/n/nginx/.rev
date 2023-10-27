@@ -1020,4 +1020,20 @@
     environment variable is not set.</comment>
     <requestid>1104919</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>c750ccfca972d476686070060d6f76aa</srcmd5>
+    <version>1.25.3</version>
+    <time>1698438453</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.25.3
+  * https://nginx.org/en/CHANGES
+  * Changed: improved detection of misbehaving clients when using HTTP/2.
+  * Added: startup speedup when using a large number of locations.
+  * Fixed: a segmentation fault might occur in a worker process when
+    using HTTP/2 without SSL; the bug had appeared in 1.25.1.
+  * Fixed: the &quot;Status&quot; backend response header line with an empty
+    reason phrase was handled incorrectly.
+  * Fixed: memory leak during reconfiguration when using the PCRE2 library.</comment>
+    <requestid>1120596</requestid>
+  </revision>
 </revisionlist>
