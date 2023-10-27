@@ -17,7 +17,7 @@
 
 
 Name:           eza
-Version:        0.15.0~0
+Version:        0.15.1~0
 Release:        0
 Summary:        Replacement for ls written in Rust
 License:        MIT
@@ -70,7 +70,7 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 install -D -m 644 %{SOURCE2} .cargo/config
 
 %build

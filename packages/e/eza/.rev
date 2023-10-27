@@ -152,4 +152,36 @@
     default is auto</comment>
     <requestid>1118996</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a81999d1d97d1c1f7a462f0d2d04bc5</srcmd5>
+    <version>0.15.1~0</version>
+    <time>1698438487</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.1:
+  * Fmt, windows, and nix fixes
+  * Reverted autofmt changes
+  * Don’t display target’s size if we’re not dereferencing
+  * Updated match indents
+  * Changed flag name
+  * Only store top-level recursive dir size
+  * Changed windows methods
+  * Underscored unused windows variables
+  * Added device for filesystem to hashmap
+  * Display offset for filenames with spaces
+  * Fix clippy warnings
+  * Fix doc-tests on RecursiveSize
+  * Fix dead_code warnings on Windows
+  * Added flag to readme
+  * Added flag to man
+  * Fix doc-tests formatting and address other documentation review requests
+  * Added recursive directory parser
+  * Added flag to completions
+  * Add a new filetype for source code files
+  * Add a new icons for source code files and other files
+  * Support for displaying blocksize on directories
+- Drop fix-offset-for-filenames-with-spaces.patch
+
+- Add fix-offset-for-filenames-with-spaces.patch. Fixes ugly offset</comment>
+    <requestid>1120605</requestid>
+  </revision>
 </revisionlist>

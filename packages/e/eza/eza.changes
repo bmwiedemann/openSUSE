@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct 26 14:47:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Fmt, windows, and nix fixes
+  * Reverted autofmt changes
+  * Don’t display target’s size if we’re not dereferencing
+  * Updated match indents
+  * Changed flag name
+  * Only store top-level recursive dir size
+  * Changed windows methods
+  * Underscored unused windows variables
+  * Added device for filesystem to hashmap
+  * Display offset for filenames with spaces
+  * Fix clippy warnings
+  * Fix doc-tests on RecursiveSize
+  * Fix dead_code warnings on Windows
+  * Added flag to readme
+  * Added flag to man
+  * Fix doc-tests formatting and address other documentation review requests
+  * Added recursive directory parser
+  * Added flag to completions
+  * Add a new filetype for source code files
+  * Add a new icons for source code files and other files
+  * Support for displaying blocksize on directories
+- Drop fix-offset-for-filenames-with-spaces.patch
+
+-------------------------------------------------------------------
+Wed Oct 25 22:46:05 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add fix-offset-for-filenames-with-spaces.patch. Fixes ugly offset
+
+-------------------------------------------------------------------
 Thu Oct 19 14:48:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.0:
