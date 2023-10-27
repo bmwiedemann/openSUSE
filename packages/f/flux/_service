@@ -1,20 +1,21 @@
 <services>
-	<service name="tar_scm" mode="disabled">
-		<param name="url">https://github.com/influxdata/flux.git</param>
+	<service name="tar_scm" mode="manual">
+		<param name="url">https://github.com/influxcommunity/flux.git</param>
 		<param name="scm">git</param>
-		<param name="revision">v0.193.0</param>
+		<param name="revision">v0.195.1</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="changesgenerate">disable</param>
 		<param name="versionrewrite-pattern">v(.*)</param>
 	</service>
-	<service name="set_version" mode="disabled">
+	<service name="set_version" mode="manual">
 		<param name="basename">flux</param>
 	</service>
-	<service name="cargo_vendor" mode="disabled">
+	<service name="cargo_vendor" mode="manual">
 		<param name="srcdir">flux/libflux</param>
 		<param name="update">false</param>
+		<param name="compression">xz</param>
 	</service>
-	<service name="recompress" mode="disabled">
+	<service name="recompress" mode="manual">
 		<param name="file">*.tar</param>
 		<param name="compression">xz</param>
 	</service>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 19 17:04:50 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Use Rust 1.71 for build since build is known to be broken on 1.72+
+
+-------------------------------------------------------------------
+Fri Oct  6 18:28:30 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.195.1:
+  flux has been deprecated by InflxuData,
+  switch the package to the Community fork
+
+-------------------------------------------------------------------
 Wed Mar 29 18:16:21 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 0.193.0, see:

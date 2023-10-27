@@ -21,17 +21,17 @@
 %define libflux_suffix %(echo %{version} | tr . _)
 
 Name:           flux
-Version:        0.193.0
+Version:        0.195.1
 Release:        0
 Summary:        Influx data language
 License:        MIT
-URL:            https://github.com/influxdata/flux
+URL:            https://github.com/influxcommunity/flux
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Patch1:         disable-static-library.patch
-BuildRequires:  cargo
-BuildRequires:  rust >= 1.45
+BuildRequires:  cargo1.71
+BuildRequires:  rust1.71 >= 1.45
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
