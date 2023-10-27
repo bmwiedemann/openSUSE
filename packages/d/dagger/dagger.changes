@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 26 14:57:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.1:
+  * Add v0.9.1 release notes (#5967)
+  * chore: update grpc to v1.58.3 (#5965)
+  * feat: allow querying gitref resolved commit (#5910)
+  * feat: improve entries with include and recursive (#5824)
+  * python: rename modules package (#5962)
+  * Fix python module codegen (#5959)
+  * Fix several validation and presentation issues in function
+    commands (#5952)
+  * core: use context.Context instead of core.Context (#5961)
+  * cli: set source subpath when loading git modules (#5955)
+  * chore: remove unneccessary secret store method (#5958)
+  * fix: return upstream ErrNotFound from secret store (#5951)
+  * docs: Fixes, dagger call additions, remove ext core types
+    (#5956)
+  * core: disable support for modules extending core types (#5954)
+  * core: namespace module objects and function extensions (#5932)
+  * core: fix huge module/func IDs by removing Function.call
+    (#5947)
+  * fix: do not fail when value set to file flag (#5948)
+  * docs: Fix typo in cli install instructions. (#5946)
+  * bump internal ci tooling to v0.9.0 (#5941)
+
+-------------------------------------------------------------------
 Sat Oct 21 18:17:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.0:
