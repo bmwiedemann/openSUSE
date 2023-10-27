@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 26 20:45:43 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1698238759.64b339c:
+  * Use commit message checks from os-autoinst-common
+  * backend::baseclass: Fix wording of informative message
+  * Slightly simplify backend::baseclass
+  * Fix character encoding of JSON result file
+  * Remove unused tools/absolutize
+
+-------------------------------------------------------------------
 Tue Oct 24 10:21:58 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1698096072.7fee4e3:
