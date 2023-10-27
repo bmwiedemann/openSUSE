@@ -85,12 +85,14 @@ Index: node-v20.8.1/test/parallel/test-crypto-dh.js
 ===================================================================
 --- node-v20.8.1.orig/test/parallel/test-crypto-dh.js
 +++ node-v20.8.1/test/parallel/test-crypto-dh.js
-@@ -89,7 +89,7 @@ const crypto = require('crypto');
+@@ -87,9 +87,7 @@ const crypto = require('crypto');
+ 
+   assert.throws(() => {
      dh3.computeSecret('');
-   }, { message: common.hasOpenSSL3 ?
-     'error:02800080:Diffie-Hellman routines::invalid secret' :
+-  }, { message: common.hasOpenSSL3 ?
+-    'error:02800080:Diffie-Hellman routines::invalid secret' :
 -    'Supplied key is too small' });
-+    /(error:05066066:Diffie-Hellman routines:compute_key:invalid public key|Supplied key is too small)/ });
++  }, /(error:02800080:Diffie-Hellman routines::invalid secret|error:05066066:Diffie-Hellman routines:compute_key:invalid public key|Supplied key is too small)/);
  }
  
  // Through a fluke of history, g=0 defaults to DH_GENERATOR (2).

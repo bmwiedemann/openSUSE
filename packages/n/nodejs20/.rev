@@ -218,4 +218,13 @@ versioned.patch: refreshed</comment>
 ------------------------------------------------------------------</comment>
     <requestid>1120018</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>6ec43a7e681b6260efb64d1a8ccc7474</srcmd5>
+    <version>20.8.1</version>
+    <time>1698438421</time>
+    <user>anag+factory</user>
+    <comment>
+- fix_ci_tests.patch: adapt for openssl 3.1.4</comment>
+    <requestid>1120765</requestid>
+  </revision>
 </revisionlist>

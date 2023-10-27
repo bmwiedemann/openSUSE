@@ -678,7 +678,7 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %setup -q -n node-%{version}
 %endif
 
-%if %{node_version_number} <= 16
+%if %{node_version_number} == 16
 tar zxf %{S:12}
 %endif
 
