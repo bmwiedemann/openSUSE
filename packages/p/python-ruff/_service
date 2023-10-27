@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">ruff-0.1.2.tar.gz</param>
+     <param name="srctar">ruff-0.1.3.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

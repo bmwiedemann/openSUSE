@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
