@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.82.0
-%define _ver 1_82_0
-%define package_version 1_82_0
+%define ver 1.83.0
+%define _ver 1_83_0
+%define package_version 1_83_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -75,33 +75,22 @@ ExclusiveArch:  do_not_build
 %bcond_without hpc
 %endif
 
-%if "%{flavor}" == "gnu-openmpi2-hpc"
-%define build_base 0
-%define mpi_vers 2
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%undefine c_f_ver
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%define build_base 0
-%define mpi_vers 3
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%undefine c_f_ver
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
 %if "%{flavor}" == "gnu-openmpi4-hpc"
 %{?DisOMPI4}
 %define build_base 0
 %define mpi_vers 4
+%define compiler_family gnu
+%define mpi_flavor openmpi
+%undefine c_f_ver
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if "%{flavor}" == "gnu-openmpi5-hpc"
+%{?DisOMPI5}
+%define build_base 0
+%define mpi_vers 5
 %define compiler_family gnu
 %define mpi_flavor openmpi
 %undefine c_f_ver
@@ -129,34 +118,23 @@ ExclusiveArch:  do_not_build
 %bcond_without mpi
 %bcond_without python3
 %endif
-#
-%if "%{flavor}" == "gnu10-openmpi2-hpc"
-%define build_base 0
-%define mpi_vers 2
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%define c_f_ver 10
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi3-hpc"
-%{?DisOMPI3}
-%define build_base 0
-%define mpi_vers 3
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%define c_f_ver 10
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
 
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
 %{?DisOMPI4}
 %define build_base 0
 %define mpi_vers 4
+%define compiler_family gnu
+%define mpi_flavor openmpi
+%define c_f_ver 10
+%bcond_without hpc
+%bcond_without mpi
+%bcond_without python3
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi5-hpc"
+%{?DisOMPI5}
+%define build_base 0
+%define mpi_vers 5
 %define compiler_family gnu
 %define mpi_flavor openmpi
 %define c_f_ver 10
@@ -235,9 +213,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.82.0
+Version:        1.83.0
 Release:        0
-%define library_version 1_82_0
+%define library_version 1_83_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -267,6 +245,8 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-process.patch
+# https://github.com/boostorg/mpi/issues/149
+Patch50:        boost-mpi-noreturn.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -1279,6 +1259,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p2
+%patch50 -p1
 
 %build
 find . -type f -exec chmod u+w {} +

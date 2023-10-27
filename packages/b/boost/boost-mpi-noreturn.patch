@@ -1,0 +1,12 @@
+diff -r -u boost_1_83_0-orig/boost/mpi/environment.hpp boost_1_83_0/boost/mpi/environment.hpp
+--- boost_1_83_0-orig/boost/mpi/environment.hpp	2023-08-08 23:02:53.000000000 +0200
++++ boost_1_83_0/boost/mpi/environment.hpp	2023-09-12 08:36:01.310536799 +0200
+@@ -176,7 +176,7 @@
+    *  @param errcode The error code to return to the environment.
+    *  @returns Will not return.
+    */
+-  static void abort(int errcode);
++  [[noreturn]] static void abort(int errcode);
+ 
+   /** Determine if the MPI environment has already been initialized.
+    *

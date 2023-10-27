@@ -70,21 +70,17 @@ Index: boost_1_80_0/libs/system/build/Jamfile.v2
  boost-install boost_system ;
 Index: boost_1_80_0/libs/timer/build/Jamfile.v2
 ===================================================================
---- boost_1_80_0.orig/libs/timer/build/Jamfile.v2
-+++ boost_1_80_0/libs/timer/build/Jamfile.v2
-@@ -13,7 +13,7 @@ project boost/timer
-       <library>/boost/chrono//boost_chrono
-     : usage-requirements  # pass these requirement to dependants (i.e. users)
-       <link>shared:<define>BOOST_TIMER_DYN_LINK=1
--      <link>static:<define>BOOST_TIMER_STATIC_LINK=1
-+#      <link>static:<define>BOOST_TIMER_STATIC_LINK=1
-     ;
- 
- SOURCES = auto_timers_construction cpu_timer ;
-@@ -21,7 +21,7 @@ SOURCES = auto_timers_construction cpu_t
- lib boost_timer
-    : $(SOURCES).cpp
-    : <link>shared:<define>BOOST_TIMER_DYN_LINK=1
+--- boost_1_83_0.orig/libs/timer/build/Jamfile.v2
++++ boost_1_83_0/libs/timer/build/Jamfile.v2
+@@ -15,11 +15,11 @@
+    : ../src/$(SOURCES).cpp
+    : # requirements
+      <link>shared:<define>BOOST_TIMER_DYN_LINK=1
+-     <link>static:<define>BOOST_TIMER_STATIC_LINK=1
++#     <link>static:<define>BOOST_TIMER_STATIC_LINK=1
+    : # default-build
+    : # usage-requirements
+      <link>shared:<define>BOOST_TIMER_DYN_LINK=1
 -     <link>static:<define>BOOST_TIMER_STATIC_LINK=1
 +#     <link>static:<define>BOOST_TIMER_STATIC_LINK=1
     ;
