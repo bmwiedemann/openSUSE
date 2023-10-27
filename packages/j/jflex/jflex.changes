@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 18:27:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
 Thu May  4 13:37:10 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

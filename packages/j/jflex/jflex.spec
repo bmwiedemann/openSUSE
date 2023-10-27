@@ -91,6 +91,8 @@ rm -rf src/generated
 %pom_xpath_remove "pom:plugin[pom:artifactId='maven-shade-plugin']" parent.xml
 %pom_xpath_remove "pom:plugin[pom:artifactId='jacoco-maven-plugin']" parent.xml
 
+%pom_xpath_set pom:project/pom:properties/pom:jflex.jdk.version 1.8 parent.xml
+
 %if %{with bootstrap}
 %setup -q -T -D -a 1 -n jflex-%{version}
 cp %{SOURCE2} build.xml
