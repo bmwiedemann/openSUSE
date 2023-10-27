@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.5
-%define patchversion 6.5.8
+%define patchversion 6.5.9
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.5.8
+Version:        6.5.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g51baea8
+Release:        <RELEASE>.g29edc7c
 %else
 Release:        0
 %endif
@@ -385,10 +385,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-51baea80c5fb8bb0ffe0c6720c7feb08d669042f
-Provides:       kernel-srchash-51baea80c5fb8bb0ffe0c6720c7feb08d669042f
+Provides:       kernel-%build_flavor-base-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
+Provides:       kernel-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
 # END COMMON DEPS
-Provides:       %name-srchash-51baea80c5fb8bb0ffe0c6720c7feb08d669042f
+Provides:       %name-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
 %obsolete_rebuilds %name
 
 %define kmp_target_cpu %_target_cpu
@@ -1302,8 +1302,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-51baea80c5fb8bb0ffe0c6720c7feb08d669042f
-Provides:       kernel-srchash-51baea80c5fb8bb0ffe0c6720c7feb08d669042f
+Provides:       kernel-%build_flavor-base-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
+Provides:       kernel-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86

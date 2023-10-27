@@ -6418,4 +6418,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.5.8 &amp; 6.5.7 &amp; other fixes</comment>
     <requestid>1119149</requestid>
   </revision>
+  <revision rev="708" vrev="1">
+    <srcmd5>63f25bb23a5acec4adb9b0075ce3a4af</srcmd5>
+    <version>6.5.9</version>
+    <time>1698438467</time>
+    <user>anag+factory</user>
+    <comment>6.5.9 &amp; cleanups</comment>
+    <requestid>1120517</requestid>
+  </revision>
 </revisionlist>
