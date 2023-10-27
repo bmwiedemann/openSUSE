@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 26 05:44:41 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.10`
+- Update to version 1.26.10:
+  * Release commit for Kubernetes v1.26.10
+  * Register UnauthenticatedHTTP2DOSMitigation into kube components
+  * Skip TestUnauthenticatedHTTP2ClientConnectionClose http1 tests
+  * Disable UnauthenticatedHTTP2DOSMitigation by default
+  * Prevent rapid reset http2 DOS on API server
+  * Fix concurrent write when filling PVC labels
+  * Modify test PVC to detect concurrent map write bug
+  * [go] Bump images, dependencies and versions to go 1.20.10
+  * .: bump golang.org/x/net to v0.17.0
+  * Add nil checks for hpa object target type values
+  * Mark a volume as uncertain-attached after detach error
+  * [go] Bump images, versions and deps to use Go 1.20.9
+  * bump etcd cluster image to 3.5.9
+  * cronjob controller: ensure already existing jobs are added to Active list of cronjobs
+  * change rolling update logic to exclude sunsetting nodes
+  * vsphere: adapt to govmomi bump
+  * .: bump govmomi to v0.30.6
+  * Increase range of job_sync_duration_seconds
+  * sync Service API status rest storage
+  * scheduler: start scheduling attempt with clean UnschedulablePlugins
+  * updating dependencies.yaml for etcd v3.5.9 version
+  * use upstream etcd github path instead of redirecting one
+  * update etcd version in install.sh to 3.5.9
+  * move check for noop managed field timestamp updates
+
+-------------------------------------------------------------------
 Wed Sep 20 18:00:04 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - fixes for bsc#1214406
