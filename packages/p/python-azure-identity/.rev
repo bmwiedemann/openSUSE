@@ -225,4 +225,18 @@
     <comment></comment>
     <requestid>1116973</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>01f87cd955f727278300aef8cc4c5edf</srcmd5>
+    <version>1.15.0</version>
+    <time>1698438547</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.15.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1120782 from glaubitz)</comment>
+    <requestid>1120783</requestid>
+  </revision>
 </revisionlist>
