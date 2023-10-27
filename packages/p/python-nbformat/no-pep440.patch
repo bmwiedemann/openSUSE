@@ -1,0 +1,40 @@
+---
+ pyproject.toml    |    3 +--
+ tests/test_api.py |    5 -----
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+
+Index: nbformat-5.9.2/pyproject.toml
+===================================================================
+--- nbformat-5.9.2.orig/pyproject.toml
++++ nbformat-5.9.2/pyproject.toml
+@@ -52,7 +52,6 @@ test = [
+     "testpath",
+     "pytest",
+     "pre-commit",
+-    "pep440"
+ ]
+ 
+ [project.scripts]
+Index: nbformat-5.9.2/tests/test_api.py
+===================================================================
+--- nbformat-5.9.2.orig/tests/test_api.py
++++ nbformat-5.9.2/tests/test_api.py
+@@ -10,7 +10,6 @@ from tempfile import TemporaryDirectory
+ from typing import Any, Dict
+ 
+ from jsonschema import ValidationError
+-from pep440 import is_canonical
+ 
+ from nbformat import __version__ as nbf_version
+ from nbformat import current_nbformat, read, write, writes
+@@ -20,10 +19,6 @@ from nbformat.validator import isvalid
+ from .base import TestsBase
+ 
+ 
+-def test_canonical_version():
+-    assert is_canonical(nbf_version)
+-
+-
+ class TestAPI(TestsBase):
+     def test_read(self):
+         """Can older notebooks be opened and automatically converted to the current

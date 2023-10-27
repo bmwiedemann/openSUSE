@@ -244,4 +244,17 @@
     <comment></comment>
     <requestid>1102509</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>da9d73ae2528a0bbb4338e115e5b77f7</srcmd5>
+    <version>5.9.2</version>
+    <time>1698438497</time>
+    <user>anag+factory</user>
+    <comment>- Actually remove pep440 from test requirements
+
+- Add no-hatch-nodejs-version.patch to remove dependency on
+  hatch-nodejs-version
+- Add no-pep440.patch to remove unnecessary checking for the
+  validity of the package version number.</comment>
+    <requestid>1120632</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 26 18:38:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Actually remove pep440 from test requirements
+
+-------------------------------------------------------------------
+Thu Oct 26 18:09:45 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add no-hatch-nodejs-version.patch to remove dependency on
+  hatch-nodejs-version
+- Add no-pep440.patch to remove unnecessary checking for the
+  validity of the package version number.
+
+-------------------------------------------------------------------
 Sat Aug  5 16:29:03 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.9.2:

@@ -25,8 +25,13 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/nbformat
 Source:         https://github.com/jupyter/nbformat/releases/download/v%{version}/nbformat-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE no-hatch-nodejs-version.patch mcepl@suse.com
+# We don’t need hatch-nodejs-version dependency
+Patch0:         no-hatch-nodejs-version.patch
+# PATCH-FEATURE-OPENSUSE no-pep440.patch mcepl@suse.com
+# We don’t need pep440 check either
+Patch1:         no-pep440.patch
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -50,7 +55,6 @@ Requires(postun):update-alternatives
 BuildRequires:  %{python_module fastjsonschema}
 BuildRequires:  %{python_module jsonschema > 2.6}
 BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module pep440}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module traitlets >= 5.1}
@@ -65,8 +69,8 @@ and Python APIs for working with notebooks.
 This package provides the python interface.
 
 %prep
-%setup -q -n nbformat-%{version}
-sed -i 's/--color=yes//' pyproject.toml
+%autosetup -p1 -n nbformat-%{version}
+sed -i -e 's/--color=yes//' -e 's/\@\@\@/%{version}/' pyproject.toml
 
 %build
 %pyproject_wheel
