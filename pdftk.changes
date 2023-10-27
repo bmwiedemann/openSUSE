@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 27 13:30:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible timestamps
+
+-------------------------------------------------------------------
+Fri Oct 27 11:36:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build using maven and install as maven artifact
+- Generate the javadoc and package it in a separate sub-package
+- Craft the script using the %%jpackage_script macro
+- Added patch:
+  * pdftk-bc175.patch
+    + fix build with bouncycastle 1.75+ with some deprecated methods
+      now removed
+    + fixes build in Factory after bouncycastle upgrade
+
+-------------------------------------------------------------------
 Fri Sep 23 06:23:29 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to version 3.3.3:

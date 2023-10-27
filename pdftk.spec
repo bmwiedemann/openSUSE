@@ -1,7 +1,7 @@
 #
 # spec file for package pdftk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Franz Sirl (fsirl)
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,12 +25,17 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PDF
 URL:            https://www.pdflabs.com/
 Source0:        https://gitlab.com/pdftk-java/pdftk/-/archive/v%{version}/pdftk-v%{version}.tar.bz2
-BuildRequires:  ant
-BuildRequires:  apache-commons-lang3
-BuildRequires:  bouncycastle
+Patch0:         %{name}-bc175.patch
+BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  maven-local
+BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
+BuildRequires:  mvn(org.apache.commons:commons-lang3)
+BuildRequires:  mvn(org.bouncycastle:bcprov-jdk18on)
 Requires:       apache-commons-lang3
 Requires:       bouncycastle
-Requires:       jre >= 11
+# needed for the startscript
+Requires:       javapackages-tools
 BuildArch:      noarch
 
 %description
@@ -55,30 +60,43 @@ Use it to:
   * Uncompress and Re-Compress Page Streams
   * Repair Corrupted PDF (Where Possible)
 
+%package javadoc
+Summary:        API documentation for %{name}
+Group:          Documentation/HTML
+
+%description javadoc
+API documentation for %{name}.
+
 %prep
 %setup -q -n %{name}-v%{version}
-mkdir lib
-ln -s %{_javadir}/bcprov.jar %{_javadir}/commons-lang3.jar -t lib
+%patch0 -p1
+
+%pom_remove_plugin :jacoco-maven-plugin
+
+%{mvn_file} : %{name}
 
 %build
-%{ant} jar
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 
 %install
-install -dm0755 %{buildroot}%{_bindir} %{buildroot}%{_javadir} %{buildroot}%{_mandir}/man1
-install -m0644 build/jar/pdftk.jar %{buildroot}%{_javadir}
-install -m0644 pdftk.1 -t %{buildroot}%{_mandir}/man1
-# startscript
-cat >%{buildroot}%{_bindir}/%{name} << EOF
-#!/bin/sh
-exec %{_bindir}/java -cp %{_javadir}/%{name}.jar:%{_javadir}/bcprov.jar:%{_javadir}/commons-lang3.jar com.gitlab.pdftk_java.pdftk "\$@"
-EOF
-chmod 0755 %{buildroot}%{_bindir}/%{name}
+%mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%license license_gpl_pdftk/*.txt license_gpl_pdftk/*/*.txt
+# startscript
+%jpackage_script com.gitlab.pdftk_java.pdftk "" "" %{name}:bcprov:commons-lang3 %{name} true
+# manpage
+install -dm 0755 %{buildroot}%{_mandir}/man1
+install -pm 0644 pdftk.1 -t %{buildroot}%{_mandir}/man1
+
+%files -f .mfiles
+%license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_javadir}/%{name}.jar
+
+%files javadoc -f .mfiles-javadoc
+%license LICENSE
 
 %changelog
