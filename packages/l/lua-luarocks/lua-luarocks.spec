@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luarocks
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,7 +39,7 @@ Requires:       openssl
 Requires:       unzip
 Requires:       zip
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
@@ -85,7 +85,7 @@ mkdir -p %{buildroot}%{luarocks_treedir}
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/luarocks luarocks %{_bindir}/luarocks-%{lua_version} %{lua_value} \
-  --slave %{_bindir}/luarocks-admin luarocks-admin %{_bindir}/luarocks-%{lua_version}
+  --slave %{_bindir}/luarocks-admin luarocks-admin %{_bindir}/luarocks-admin-%{lua_version}
 
 %postun
 if [ "$1" = 0 ] ; then

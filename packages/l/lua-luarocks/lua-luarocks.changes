@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 12:56:30 UTC 2023 - Marcos Bjoerkelund <marcos.bjoerkelund@suse.com>
+
+- Fix luarocks-admin link, previously pointing to luarocks
+
+-------------------------------------------------------------------
 Wed Nov 23 10:33:53 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix missing dependency on lua-macros (boo#1205612)

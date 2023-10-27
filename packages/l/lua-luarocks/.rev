@@ -116,4 +116,12 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1037592</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f80aa857e143bbb83d4a43084d066a20</srcmd5>
+    <version>3.9.1</version>
+    <time>1698438457</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120604</requestid>
+  </revision>
 </revisionlist>
