@@ -307,6 +307,7 @@ Patch1074:      no-zlib-headers.patch
 Patch1076:      crashpad-use-system-abseil.patch
 Patch1077:      system-wayland.patch
 Patch1078:      system-simdutf.patch
+Patch1079:      system-libm.patch
 
 
 # PATCHES to fix interaction with third-party software
@@ -1123,8 +1124,7 @@ myconf_gn+=" use_swiftshader_with_subzero=false"
 myconf_gn+=" enable_swiftshader=false"
 %endif
 myconf_gn+=" is_component_ffmpeg=true"
-myconf_gn+=" use_cups=true"
-myconf_gn+=" use_aura=true"
+myconf_gn+=" use_cups=false"
 
 # link libvulkan.so and libGLX.so instead of dlopening
 myconf_gn+=" angle_use_custom_libvulkan=false"
@@ -1137,6 +1137,10 @@ myconf_gn+=" angle_link_glx=true"
 #Upstream sets it by default to the value of is_clang with the comment “has trouble supporting MSVC”.
 #This is supposed to be enabled in chromium and compiles fine with GCC.
 myconf_gn+=' angle_enable_abseil=true'
+#this is also mistakenly set to is_clang with the (untrue) comment “macros for determining endian type are currently clang specific”
+#in fact, 1° clang copied those macros from gcc and 2° this should be unbundled.
+myconf_gn+=' v8_use_libm_trig_functions=true'
+
 
 
 # do not build PDF support
@@ -1240,9 +1244,6 @@ myconf_gt+=' is_ct_supported=false'
 
 myconf_gn+=' disable_histogram_support=true'
 
-#disable some tracing hooks, they increase size and we do not build chrome://tracing anyway (see disable-catapult.patch)
-myconf_gn+=" enable_trace_logging=false"
-myconf_gn+=" optional_trace_events_enabled=false"
 
 
 #Do not build Chromecast

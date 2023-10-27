@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 26 17:25:56 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- v8: Re-enable glibc (as opposed to fdlibm) trigonometry
+  which was mistakenly disabled (v8_use_libm_trig_functions)
+  and unbundle it (system-libm.patch).
+
+-------------------------------------------------------------------
 Sat Oct 21 08:56:56 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 27.0.2
