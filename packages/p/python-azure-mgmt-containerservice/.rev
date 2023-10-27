@@ -437,4 +437,12 @@
 - Switch source archive format to TAR.GZ (forwarded request 1105203 from glaubitz)</comment>
     <requestid>1105206</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>caeb3eec9361cb462030a3ceb5d9cabc</srcmd5>
+    <version>27.0.0</version>
+    <time>1698438555</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120821</requestid>
+  </revision>
 </revisionlist>
