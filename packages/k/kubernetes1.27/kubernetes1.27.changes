@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct 26 05:39:37 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.10`
+- Update to version 1.27.7:
+  * Release commit for Kubernetes v1.27.7
+  * Register UnauthenticatedHTTP2DOSMitigation into kube components
+  * Skip TestUnauthenticatedHTTP2ClientConnectionClose http1 tests
+  * Disable UnauthenticatedHTTP2DOSMitigation by default
+  * Prevent rapid reset http2 DOS on API server
+  * Fix concurrent write when filling PVC labels
+  * Modify test PVC to detect concurrent map write bug
+  * [go] Bump images, dependencies and versions to go 1.20.10
+  * Fix to honor PDB with an empty selector `{}`
+  * .: bump golang.org/x/net to v0.17.0
+  * Mark a volume as uncertain-attached after detach error
+  * Add nil checks for hpa object target type values
+  * [go] Bump images, versions and deps to use Go 1.20.9
+  * bump etcd cluster image to 3.5.9
+  * cronjob controller: ensure already existing jobs are added to Active list of cronjobs
+  * change rolling update logic to exclude sunsetting nodes
+  * vsphere: adapt to govmomi bump
+  * .: bump govmomi to v0.30.6
+  * move check for noop managed field timestamp updates
+  * mount-utils: fix flaky test 'TestFormat'
+  * Increase range of job_sync_duration_seconds
+  * sync Service API status rest storage
+  * updating dependencies.yaml for etcd v3.5.9 version
+  * use upstream etcd github path instead of redirecting one
+  * update etcd version in install.sh to 3.5.9
+  * Update CHANGELOG/CHANGELOG-1.27.md for v1.27.6
+  * fixup patcher test to include field manager
+  * remove checks for fieldmanager from handlers
+  * include apiextensions types in apiextensions generated openapi
+  * fix scale not being given gvk in CRD openapi schemas
+  * add OpenAPIV3 config to tests and server options
+  * add error for attempting to initialize field manager with nil typeconverter
+  * supply deduced typeconverter to apiserver tests
+  * Throw error if OpenAPIV3 config is not provided
+  * e2e pods: fix WaitForPodsResponding retry
+  * scheduler: start scheduling attempt with clean UnschedulablePlugins
+
+-------------------------------------------------------------------
 Wed Sep 20 17:49:17 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - fixes for bsc#1214406
