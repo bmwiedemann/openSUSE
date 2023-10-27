@@ -741,15 +741,11 @@ sys.exit(0)" %{1}
     %define _infodir %{hpc_infodir} \
     %define _libdir %{hpc_libdir} \
     %define _libexecdir %{hpc_libexecdir} \
-    %if x%{?hpc_localstatedir} != x%{_localstatedir} \
-    %define _localstatedir %{hpc_localstatedir} \
-    %endif \
+    %global _localstatedir %{hpc_localstatedir} \
     %define _mandir %{hpc_mandir} \
     %define _prefix %{hpc_prefix} \
     %define _sbindir %{hpc_sbindir} \
-    %if x%{?hpc_sharedstatedir} != x%{_sharedstatedir} \
-    %define _sharedstatedir %{hpc_sharedstatedir} \
-    %endif \
+    %global _sharedstatedir %{hpc_sharedstatedir} \
 #Do NOT define _sysconfig to %%hpc_sysconfig here!
     %cmake \\\
     %undefine __cmake \\\
@@ -759,15 +755,11 @@ sys.exit(0)" %{1}
     %undefine _infodir \\\
     %undefine _libdir \\\
     %undefine _libexecdir \\\
-    %if x%{?hpc_localstatedir} != x%{_localstatedir} \\\
     %undefine _localstatedir \\\
-    %endif \\\
     %undefine _mandir \\\
     %undefine _prefix \\\
     %undefine _sbindir \\\
-    %if x%{?hpc_sharedstatedir} != x%{_sharedstatedir} \\\
     %undefine _sharedstatedir \\\
-    %endif \\\
  }
 
 # wraps macro from macros.meson - paths replaced by HPC paths.
@@ -781,15 +773,11 @@ sys.exit(0)" %{1}
     %define _infodir %{hpc_infodir} \
     %define _libdir %{hpc_libdir} \
     %define _libexecdir %{hpc_libexecdir} \
-    %if x%{?hpc_localstatedir} != x%{_localstatedir} \
-    %define _localstatedir %{hpc_localstatedir} \
-    %endif \
+    %global _localstatedir %{hpc_localstatedir} \
     %define _mandir %{hpc_mandir} \
     %define _prefix %{hpc_prefix} \
     %define _sbindir %{hpc_sbindir} \
-    %if x%{?hpc_sharedstatedir} != x%{_sharedstatedir} \
-    %define _sharedstatedir %{hpc_sharedstatedir} \
-    %endif \
+    %global _sharedstatedir %{hpc_sharedstatedir} \
     %define _sysconfdir %{hpc_sysconfdir} \
     %meson \\\
     %undefine __meson \\\
@@ -799,14 +787,10 @@ sys.exit(0)" %{1}
     %undefine _infodir \\\
     %undefine _libdir \\\
     %undefine _libexecdir \\\
-    %if x%{?hpc_localstatedir} != x%{_localstatedir} \\\
     %undefine _localstatedir \\\
-    %endif \\\
     %undefine _mandir \\\
     %undefine _prefix \\\
     %undefine _sbindir \\\
-    %if x%{?hpc_sharedstatedir} != x%{_sharedstatedir} \\\
     %undefine _sharedstatedir \\\
-    %endif \\\
     %undefine _sysconfdir \\\
  }

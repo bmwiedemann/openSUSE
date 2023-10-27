@@ -260,4 +260,18 @@
   infinite recursion. (forwarded request 1119953 from eeich)</comment>
     <requestid>1119954</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>639df5d9b045b2d64b53f3f1e4e2950d</srcmd5>
+    <version>0.5.20231026.36e049d</version>
+    <time>1698438540</time>
+    <user>anag+factory</user>
+    <comment>- Previous fix did not work, revert and use %global instead of
+  %define.
+  The %hpc_cmake and %hpc_ninja macros wrap the %cmake and %ninja macros.
+  The wrapper needs to set all standard variables passed to cmake in these
+  macros to the hpc values.
+  With the mentioned macros this leads to an infinite recursion if using
+  %define. So we use %global instead. (forwarded request 1120761 from eeich)</comment>
+    <requestid>1120762</requestid>
+  </revision>
 </revisionlist>

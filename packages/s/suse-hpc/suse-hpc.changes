@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 26 21:07:33 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Previous fix did not work, revert and use %global instead of
+  %define.
+  The %hpc_cmake and %hpc_ninja macros wrap the %cmake and %ninja macros.
+  The wrapper needs to set all standard variables passed to cmake in these
+  macros to the hpc values.
+  With the mentioned macros this leads to an infinite recursion if using
+  %define. So we use %global instead.
+
+-------------------------------------------------------------------
 Tue Oct 24 09:09:47 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Handle %hpc_localstatedir and %hpc_sharedstatedir only when
