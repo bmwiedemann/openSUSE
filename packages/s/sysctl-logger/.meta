@@ -1,0 +1,6 @@
+<package name="sysctl-logger" project="openSUSE:Factory">
+  <title>sysctl-logger</title>
+  <description>A sysctl monitoring tool based on BPF</description>
+  <devel project="server:monitoring" package="sysctl-logger"/>
+  <url>https://github.com/shunghsiyu/sysctl-logger</url>
+</package>
