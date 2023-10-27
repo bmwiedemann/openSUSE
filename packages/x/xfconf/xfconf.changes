@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 17 09:30:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * Cache property-not-found responses in XfconfCache
+  * Don't reset scheduled save timer on every write
+  * xfconf-query: Sort channel list (-l or -m alone)
+  * docs: Fix transfer type of xfconf_list_channels()
+  * docs: Add clarification about bindings
+- Use lang_package as bnc#513786 has been closed as fixed almost
+  8 years ago.
+
+-------------------------------------------------------------------
 Mon Apr 17 10:42:39 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.1

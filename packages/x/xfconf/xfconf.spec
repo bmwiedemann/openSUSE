@@ -24,7 +24,7 @@
 %define libname libxfconf-0-3
 
 Name:           xfconf
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Simple Configuration Storage for Xfce
 License:        GPL-2.0-or-later
@@ -88,9 +88,7 @@ Group:          System/Libraries
 %description -n typelib-1_0-Xfconf-0
 GObject introspection bindings for Xfconf
 
-# this should be replaced by %%lang_package once bnc#513786 is resolved
-
-%package lang
+%lang_package
 Summary:        Languages for package %{name}
 Group:          System/Localization
 Requires:       %{libname} = %{version}
