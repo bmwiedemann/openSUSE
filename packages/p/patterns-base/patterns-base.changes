@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 25 12:30:29 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- Do not recommend yast stuff in x11 pattern. That's what the yast
+  patterns are for
+
+-------------------------------------------------------------------
 Sun Sep 10 19:04:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add coreutils-systemd, coreutils got split in two RPMs

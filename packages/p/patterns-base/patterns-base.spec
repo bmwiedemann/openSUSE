@@ -795,8 +795,6 @@ Requires:       xorg-x11-server
 # Recommend something other than xdm, default to lightdm
 Recommends:     (gdm or lightdm or sddm)
 Recommends:     dejavu-fonts
-Recommends:     libyui-qt
-Recommends:     libyui-qt-pkg
 Recommends:     noto-sans-fonts
 Recommends:     tigervnc
 Recommends:     x11-tools
@@ -808,7 +806,6 @@ Recommends:     xorg-x11-fonts
 Recommends:     xorg-x11-server-extra
 Recommends:     xterm
 Recommends:     xtermset
-Recommends:     yast2-control-center
 Suggests:       lightdm
 %{obsolete_legacy_pattern x11}
 # bsc#1071953
