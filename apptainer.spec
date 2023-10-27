@@ -19,9 +19,6 @@
 %define apptainerpath src/github.com/apptainer/
 %define _buildshell /bin/bash
 
-%global squashfuse_version 0.1.105
-#%%define vers_suffix -rc.1
-
 Summary:        Application and environment virtualization
 # CRYPTOGAMS isn't known in OBS
 #License:        BSD-3-Clause-LBNL and (OpenSSL or CRYPTOGAMS)
@@ -32,8 +29,10 @@ Version:        1.2.3
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
-Provides:       singularity
 Obsoletes:      singularity <= 3.8.5
+Conflicts:      singularity
+Conflicts:      singularity-ce
+Conflicts:      singularity-runtime
 Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
 Source2:        SLE-12SP5.def
@@ -42,10 +41,6 @@ Source4:        SLE.def
 Source5:        leap.def
 Source8:        %{name}-rpmlintrc
 Source9:        vendor.tar.gz
-%if "%{?squashfuse_version}" != ""
-Source10:       https://github.com/vasi/squashfuse/archive/%{squashfuse_version}/squashfuse-%{squashfuse_version}.tar.gz
-Patch10:        https://github.com/vasi/squashfuse/pull/70.patch
-%endif
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -59,51 +54,26 @@ BuildRequires:  sysuser-tools
 BuildRequires:  binutils-gold
 %endif
 BuildRequires:  libseccomp-devel
-%if "%{?squashfuse_version}" != ""
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  fuse3-devel
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(liblz4)
-BuildRequires:  pkgconfig(liblzma)
-%endif
 Requires:       squashfs
+Requires:       squashfuse
 Recommends:     fuse2fs
 # Needed for container decryption in userspace, upstream rpms include this
 # but factory should have this seperately
 Recommends:     gocryptfs
 PreReq:         permissions
 
-# there's no golang for ppc64, ppc64le does not have non pie builds
-ExcludeArch:    ppc64 ppc64le
-
-Obsoletes:      singularity
-Obsoletes:      singularity-ce
-Obsoletes:      singularity-runtime
+# there's no golang for ppc64 & %ix86, ppc64le does not have non pie builds
+ExcludeArch:    ppc64 ppc64le %ix86 s390 s390x
 
 %description
-Singularity provides functionality to make portable
+Apptainer provides functionality to make portable
 containers that can be used across host environments.
 
 %prep
-%if "%{?squashfuse_version}" != ""
-# the default directory for other steps is where the %prep section ends
-# so do main package last
-%setup -b 10 -n squashfuse-%{squashfuse_version}
-%patch -P 10 -p1
-%endif
 %setup -q -n %{name}-%{version}%{?vers_suffix}
 cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
 
 %build
-%if "%{?squashfuse_version}" != ""
-pushd ../squashfuse-%{squashfuse_version}
-./autogen.sh
-FLAGS=-std=c99 ./configure --enable-multithreading
-%make_build squashfuse_ll
-popd
-%endif
 
 # create VERSION file
 echo %version > VERSION
@@ -121,7 +91,7 @@ tar xzf %{S:9}
         --includedir=%{_includedir} \
         --libdir=%{_libdir} \
         --libexecdir=%{_libexecdir} \
-        --localstatedir=%{_localstatedir} \
+        --localstatedir=%{_localstatedir}/lib \
         --sharedstatedir=%{_sharedstatedir} \
         --mandir=%{_mandir} \
         --infodir=%{_infodir} \
@@ -136,10 +106,6 @@ export GOFLAGS=-mod=vendor
 export PATH=$GOPATH/bin:$PATH
 
 %make_install -C builddir V=
-
-%if "%{?squashfuse_version}" != ""
-install -m 755 ../squashfuse-%{squashfuse_version}/squashfuse_ll %{buildroot}%{_libexecdir}/%{name}/bin/squashfuse_ll
-%endif
 
 %fdupes apptainer/examples
 %fdupes -s %buildroot
@@ -162,7 +128,6 @@ install -m 755 ../squashfuse-%{squashfuse_version}/squashfuse_ll %{buildroot}%{_
 %dir %{_libexecdir}/apptainer/cni
 %dir %{_libexecdir}/apptainer/lib
 %{_libexecdir}/apptainer/bin/starter
-%{_libexecdir}/apptainer/bin/squashfuse_ll
 %{_libexecdir}/apptainer/lib/offsetpreload.so
 %{_libexecdir}/apptainer/cni/*
 %dir %{_sysconfdir}/apptainer
@@ -178,9 +143,9 @@ install -m 755 ../squashfuse-%{squashfuse_version}/squashfuse_ll %{buildroot}%{_
 %config(noreplace) %{_sysconfdir}/apptainer/rocmliblist.conf
 %config(noreplace) %{_sysconfdir}/apptainer/dmtcp-conf.yaml
 %{_datadir}/bash-completion/completions/*
-%dir %{_localstatedir}/apptainer
-%dir %{_localstatedir}/apptainer/mnt
-%dir %{_localstatedir}/apptainer/mnt/session
+%dir %{_localstatedir}/lib/apptainer
+%dir %{_localstatedir}/lib/apptainer/mnt
+%dir %{_localstatedir}/lib/apptainer/mnt/session
 %{_mandir}/man1/*
 
 %changelog
