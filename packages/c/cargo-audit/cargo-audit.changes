@@ -1,4 +1,278 @@
 -------------------------------------------------------------------
+Fri Oct 27 03:17:26 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.18.3~git0.3544515:
+  * Bump version
+  * Populate changelog
+  * Update the `fix` subcommand to the new API
+  * Fix deadlock on missing lockfile
+  * build(deps): bump regex from 1.9.5 to 1.10.2
+  * Update rustsec changelog
+  * Configure `gix` with `max-performance-safe` feature
+  * feat: let `Severity` implement `Hash`
+  * Bump rustsec version to 0.28.3
+  * Bump date
+  * Changelog for 0.28.3
+  * fix typo
+  * fix typo
+  * Update rustsec/src/repository/git/repository.rs
+  * Expand documentation on locking
+  * build(deps): bump webpki from 0.22.1 to 0.22.2
+  * Correctly classify only lock timeout errors as LockTimeout, not all lock-related errors
+  * cargo fmt
+  * Use Result instead of an unwrap()
+  * Fix DB directory locking
+  * Regenerate Cargo.lock
+  * Add comment
+  * Migrade rustsec-admin to tame-index 0.7
+  * bump gix version in admin too
+  * cargo fmt
+  * Switch from Git-compatible locks to OS locks in database checkout
+  * Purge gix lock to rustsec error conversion; I am removing gix locks
+  * Only create LockTimeout error variant from tame-index locks
+  * cargo fmt
+  * Update docs
+  * regenerate Cargo.lock
+  * Initial conversion to tame-index 0.7.1. Compiles but untested.
+  * Bump admin version
+  * Populate changelog for admin
+  * Update Clippy to fix useless warnings
+  * admin: use `gix` max-performance-safe instead of max-performance
+  * configure `gix` for best performance
+  * Bump version to 0.18.2
+  * thanks clippy
+  * Populate changelog for cargo-audit
+  * Require rustsec 0.28.2 in cargo-audit to fix RUSTSEC-2023-0064
+  * change edition to 2021
+  * Use tame-index which switches `rustsec-admin` to `gix`.
+  * Bump version to 0.28.2
+  * Populate changelog
+  * Drop hyperlinks to gix in documentation because we don't have the necessary features enabled. Temporary hack to unblock a release with a security fix
+  * Fix up code to deal with API changes
+  * Bump tame-index, explicitly depend on `gix` to enable the necessary features
+  * Fix error reporting on stale lockfile
+  * build(deps): bump termcolor from 1.2.0 to 1.3.0 (#1009)
+  * build(deps): bump chrono from 0.4.30 to 0.4.31
+  * build(deps): bump xml-rs from 0.8.17 to 0.8.18
+  * Fix `deny = ["warnings"]` being ignored (#995)
+  * rustsec-admin 0.8.7 (#998)
+  * Additional information in advisory content (#997)
+  * build(deps): bump chrono from 0.4.29 to 0.4.30
+  * commit Cargo.lock
+  * bump rustsec crate to 0.28.1
+  * bump tame-index version requirement to 0.5.5, it contains the HTTP/2 change
+  * Populate changelog
+  * cargo fmt
+  * Do not require http2 when establishing the connection
+  * build(deps): bump chrono from 0.4.27 to 0.4.29
+  * Appease clippy
+  * Do not re-lookup packages that are already cached
+  * build(deps): bump regex from 1.9.4 to 1.9.5
+  * build(deps): bump xml-rs from 0.8.16 to 0.8.17
+  * build(deps): bump actions/checkout from 3 to 4
+  * review feedback: reduce boilerplate
+  * replace feature default, with v3 and std
+  * make 'cargo test --no-default-features' run without errors
+  * Add manual trigger mechanism to release workflow
+  * Drop remaining 'fix' features
+  * cargo-audit v0.18.1 (#981)
+  * Release workflow: don't enable `fix` and `vendored-openssl` features
+  * Bump versions
+  * Fill in release date in changelogs
+  * commit Cargo.lock
+  * bump rustsec requirement in admin
+  * Commit Cargo.lock
+  * bump cargo-audit version to 0.18.0-rc.1
+  * Bump rustsec to 0.28.0-rc.1
+  * Mention `fix` feature not being converted in changelog
+  * Fill in cargo-audit changelog
+  * build(deps): bump time from 0.3.27 to 0.3.28
+  * build(deps): bump chrono from 0.4.26 to 0.4.27
+  * build(deps): bump url from 2.4.0 to 2.4.1
+  * build(deps): bump regex from 1.9.3 to 1.9.4
+  * Exclude auto-generation scripts from the published package
+  * Ignore the file downloaded by the regeneration script
+  * Bump `platforms` version
+  * Add myself to authors, I've built out the whole autogeneration infrastructure
+  * Re-run the generation script
+  * Bring back the hyperlinks in README.md
+  * Automatically regenerate the table of known platforms in README
+  * Turn links into hyperlinks to stop recent rustdoc from complaining (#965)
+  * Bump version
+  * Regenerate platforms crate
+  * Bump MSRV in README.md
+  * Add another PR
+  * Also filter warnings by binary type in `cargo audit bin`
+  * fix build
+  * Add `affected` field to warnings in `rustsec` so that we could enable platform filtering in `cargo audit bin`
+  * Correctly state MSRV in changelog
+  * Populate changelog for the rustsec crate
+  * remove redundant clone as advised by clippy
+  * placate clippy
+  * placate clippy
+  * Cargo fmt
+  * Add more methods to CommitHash
+  * Add forgotten file
+  * WIP wrapper for gix::ObjectId
+  * cargo fmt
+  * Do not expose `toml` types through the public API
+  * Drop `toml` crate from the public API as well
+  * Drop unused Error conversion impl
+  * Add a TODO
+  * Slightly better doc comments
+  * Do not expose gix types in the Error public API
+  * Use a private function for converting from tame_index::Error to rustsec::Error
+  * don't pub use gix, we do not want it to leak into the public API
+  * cargo fmt
+  * Put import at the top to fix doc links
+  * Feature-gate tame_inxed import
+  * cargo fmt
+  * Fix build
+  * build(deps): bump time from 0.3.26 to 0.3.27
+  * build(deps): bump tame-index from 0.5.3 to 0.5.4
+  * cargo fmt
+  * Handle #[non_exhaustive] enum from tame-index
+  * Fix remaining discrepancies
+  * WIP conversion to tame-index 0.5.x and gix 0.52.x
+  * Fix unknown license handling (#956)
+  * Print the GHSA URL for GHSA advisories, take 2
+  * Revert "Print the GHSA URL for GHSA advisories"
+  * Print the GHSA URL for GHSA advisories
+  * Expose License type
+  * Rename license variants
+  * Implement license + url
+  * Bump hermit-abi to move away from a yanked version
+  * Bump rustls-webpki to resolve RUSTSEC-2023-0053
+  * build(deps): bump regex from 1.9.1 to 1.9.3
+  * build(deps): bump toml from 0.7.5 to 0.7.6
+  * build(deps): bump regex from 1.8.4 to 1.9.1
+  * build(deps): bump time from 0.3.25 to 0.3.26
+  * Regenerate Cargo.lock
+  * Use native certificates for TLS
+  * build(deps): bump petgraph from 0.6.3 to 0.6.4
+  * build(deps): bump tame-index from 0.4.0 to 0.4.1
+  * Document locking considerations
+  * More consistent status printing
+  * cargo fmt
+  * Warn before waiting on crates.io cache locks. Verbose but cannot be expressed via a higher-order function, and macros would make it much worse.
+  * Add lock timeout parameter to open() and fetch()
+  * Split creating a new remote index into a separate function in preparation for more complex logic around it
+  * Add a comment
+  * Drop manual map_err now that the conversion is implemented on rustsec::Error
+  * cargo fmt made the code more succinct for once, drop my comment complaining about verbosity
+  * cargo fmt
+  * Convert from lock error rather than from its immutable borrow
+  * Implement From conversions for LockTimeout error variant, since we will need to reuse it
+  * build(deps): bump tame-index from 0.3.1 to 0.4.0
+  * Fix doc links
+  * More clear documentation
+  * Less esoteric pattern matching
+  * silence unused variable warnings
+  * Convert cargo-audit to use explicit locking
+  * Update docs to match code
+  * Drop unused import
+  * Create a separate error kind for lock timeouts, and expose configurable lock timeouts from the advanced fetching function only
+  * Fix docs
+  * cargo fmt
+  * Provide a rationale for the bulk API
+  * Hide index implementation details and remove the performance pitfall of calling is_yanked on individual packages
+  * Migrate check_for_yanked_crates() to the bulk API
+  * cargo fmt
+  * Do not short-cirquit on index update failure
+  * Rework bulk yank-checking code to report errors granularly instead of short-cirquiting on first error it encounters
+  * Transparently populate cache from `find_yanked`
+  * Documentation tweaks
+  * Even more caching for even faster CI
+  * Fix intra-doc links
+  * Explicitly document locking considerations
+  * Revert "Re-enable self-audit"
+  * Re-unify CI matrix, fulfilling a TODO
+  * Attempt to fix CI by explicitly generating the lockfile
+  * Re-enable self-audit
+  * Dummy commit to trigger a CI re-run
+  * Add rust-cache job properly now
+  * Revert "Add Rust-specific caching job to see if that speeds up CI"
+  * Dummy commit to trigger a CI re-run
+  * Add Rust-specific caching job to see if that speeds up CI
+  * Switch rustsec crate CI back to MSRV to see what happens
+  * Drop --release from rustsec CI, the tests execute really quickly in debug mode
+  * No need to reimplement CmdRunner::default() now that binary scanning is a default feature
+  * Drop the --release flag so that the compilation artifacts could be reused - Abscissa doesn't seem to have an option to run acceptance tests with `cargo run --release`
+  * Switch to Rust 1.71.0 for select jobs
+  * Placate both versions of rustfmt
+  * cargo fmt
+  * build(deps): bump semver from 1.0.17 to 1.0.18
+  * Add a TODO
+  * Re-add some of the comments
+  * Normalize time offsets to UTC
+  * Justify clippy opt-out
+  * Undo autoformat
+  * Finish up transition to gix
+  * WIP
+  * build(deps): bump xml-rs from 0.8.14 to 0.8.16
+  * Ignore clippy lint
+  * Checkpoint
+  * Update error message
+  * Use `AsyncRemoteSparseIndex::krates_blocking`
+  * Oops
+  * Make sparse index cache population parallel
+  * Fix remaining lints
+  * Make public
+  * Fix lint
+  * Allow clippy lint
+  * Bump CI
+  * Bump MSRV to 1.67.0
+  * Transition from `crates-index` -> `tame-index`
+  * build(deps): bump atom_syndication from 0.12.1 to 0.12.2 (#921)
+  * Add license and attribution fields to advisories
+  * rustsec-admin 0.8.6 (#915)
+  * Case-insensitive search on website
+  * build(deps): bump rust-embed from 6.7.0 to 6.8.1 (#909)
+  * Cargo.lock: bump dependencies (#908)
+  * build(deps): bump toml from 0.7.3 to 0.7.5 (#904)
+  * build(deps): bump crates-index from 0.19.8 to 0.19.13 (#903)
+  * cargo-lock: MSRV 1.65 (#907)
+  * build(deps): bump openssl from 0.10.52 to 0.10.55 (#906)
+  * cargo-audit+rustsec: MSRV 1.65 (#905)
+  * build(deps): bump chrono from 0.4.24 to 0.4.25 (#894)
+  * Fix edge case in git source dependency resolution
+  * Update cargo-audit changelog
+  * Update rustsec crate changelog
+  * commit Cargo.lock version bump
+  * Bump rustsec version following the cargo-lock bump
+  * 🔥 Remove $ from install snippet on README (#879)
+  * Cargo.lock: update dependencies (#876)
+  * Bump `cargo-lock` to v0.9 + auditable deps (#875)
+  * build(deps): bump home from 0.5.4 to 0.5.5 (#874)
+  * build(deps): bump atom_syndication from 0.12.0 to 0.12.1 (#851)
+  * build(deps): bump softprops/action-gh-release (#852)
+  * build(deps): bump rust-embed from 6.6.0 to 6.6.1 (#849)
+  * build(deps): bump crates-index from 0.19.7 to 0.19.8 (#864)
+  * cargo-lock v9.0.0 (#870)
+  * Fix docs build (#871)
+  * Fix review comments
+  * Various improvements to the "cargo-lock tree" subcommand
+  * Fix is_default_registry for sparse index (#859)
+  * Remove build script for platforms, it's now unused (#856)
+  * build(deps): bump comrak from 0.16.0 to 0.18.0
+  * Link to rustsec/audit-check (#854)
+  * Fix formatting to `cargo fmt` spec.
+  * Fix #736 - Cargo audit self advisories repeated
+  * build(deps): bump openssl from 0.10.47 to 0.10.48
+  * build(deps): bump semver from 1.0.16 to 1.0.17
+  * cargo fmt
+  * Wrap binfarce::Format in our own struct to make `binfarce` an optional dependency
+  * placate clippy
+  * cargo fmt
+  * Fix no-default-features compilation by making binfarce an unconditional dependency
+  * Start fixing up compilation with no default features
+  * Expand TODO
+  * Fix filtering by binary type but this makes the dependency on binfarce unconditional (for now)
+  * Add a FIXME explaining why it's not working
+  * wire up filtering by binary type
+  * Initial code for binary-type-based filtering; not wired up yet
+
+-------------------------------------------------------------------
 Mon Mar 27 02:52:07 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.17.5~git0.dc8ec71:
