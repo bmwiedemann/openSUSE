@@ -1,0 +1,47 @@
+--- batik-1.15/build.xml	2023-10-25 17:01:52.414466777 +0200
++++ batik-1.15/build.xml	2023-10-25 17:03:22.921750305 +0200
+@@ -94,8 +94,6 @@
+     <property name="debug"              value="on"/>
+     <property name="optimize"           value="on"/>
+     <property name="deprecation"        value="on"/>
+-    <property name="javac.source" value="1.7"/>
+-    <property name="javac.target" value="1.7"/>
+     <property name="src"                value="sources"/>
+     <property name="src-internal-codec" value="sources-internal-codec"/>
+     <property name="resources"          value="resources"/>
+@@ -712,7 +710,7 @@
+ 
+     <echo message="debug ${debug}, optimize ${optimize}, deprecation ${deprecation}"/>
+ 
+-    <javac source="${javac.source}" target="${javac.target}" destdir="${dest}"  deprecation="${deprecation}" 
++    <javac destdir="${dest}"  deprecation="${deprecation}" 
+            debug="${debug}" optimize="${optimize}" encoding="UTF-8">
+       <src path="${testsrc}"/>
+       <src path="batik-test/src/main/java"/>
+@@ -743,7 +741,7 @@
+ 
+     <echo message="debug ${debug}, optimize ${optimize}, deprecation ${deprecation}"/>
+ 
+-    <javac source="${javac.source}" target="${javac.target}" srcdir="${samples}/tests/resources/java/sources" destdir="${samples}/tests/resources/java/classes"  deprecation="${deprecation}" 
++    <javac srcdir="${samples}/tests/resources/java/sources" destdir="${samples}/tests/resources/java/classes"  deprecation="${deprecation}" 
+            debug="${debug}" optimize="${optimize}" encoding="UTF-8">
+       <classpath>
+         <pathelement location="${dest}"/>
+@@ -753,7 +751,7 @@
+       </classpath>
+     </javac>
+ 
+-    <javac source="${javac.source}" target="${javac.target}" srcdir="${testresources}" destdir="${testresources}/classes"  deprecation="${deprecation}" 
++    <javac srcdir="${testresources}" destdir="${testresources}/classes"  deprecation="${deprecation}" 
+            debug="${debug}" optimize="${optimize}" encoding="UTF-8">
+       <classpath>
+         <pathelement location="${dest}"/>
+@@ -999,7 +997,7 @@
+   </target>
+ 
+   <target name="compile" depends="init, compile-prepare, compile-copy-resources" unless="compile.done">
+-    <javac source="${javac.source}" target="${javac.target}" destdir="${dest}" deprecation="${deprecation}" 
++    <javac destdir="${dest}" deprecation="${deprecation}" 
+            debug="${debug}" optimize="${optimize}" encoding="UTF-8"
+            includeAntRuntime="true">
+       <src path="batik-anim/src/main/java"/>

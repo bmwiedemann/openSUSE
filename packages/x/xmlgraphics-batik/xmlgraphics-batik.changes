@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:07:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+- Added patch:
+  * xmlgraphics-batik-nosourcetarget.patch
+    + do not hardcode source/target 1.7
+
+-------------------------------------------------------------------
 Wed Jun 28 14:27:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove the optional dependency on jython

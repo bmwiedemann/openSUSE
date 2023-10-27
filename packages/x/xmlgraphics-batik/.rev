@@ -337,4 +337,12 @@
     <comment>remove dependency on jython</comment>
     <requestid>1095829</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>57ecdd28cdd58b5b6b2b1a01838afd23</srcmd5>
+    <version>1.15</version>
+    <time>1698438425</time>
+    <user>anag+factory</user>
+    <comment>Fix build with java 21</comment>
+    <requestid>1120326</requestid>
+  </revision>
 </revisionlist>

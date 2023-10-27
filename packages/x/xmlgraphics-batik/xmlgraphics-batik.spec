@@ -31,9 +31,11 @@ Source1:        batik-build.tar.xz
 Source7:        %{name}.security.policy
 Patch0:         %{name}-nolinksinjavadoc.patch
 Patch1:         0001-Fix-imageio-codec-lookup.patch
+Patch2:         %{name}-nosourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  rhino >= 1.6
 BuildRequires:  xml-commons-apis >= 1.3.03
 BuildRequires:  xmlgraphics-commons
@@ -54,7 +56,6 @@ purposes, such as viewing, generation or manipulation.
 Summary:        Batik CSS engine
 Group:          Productivity/Graphics/Vector Editors
 Requires:       %{name} = %{version}-%{release}
-Requires:       mvn(xml-apis:xml-apis-ext)
 Obsoletes:      batik-css < %{version}-%{release}
 Provides:       batik-css = %{version}-%{release}
 
@@ -148,6 +149,7 @@ find -name '*.jar' -delete
 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 cp -p %{SOURCE7} batik-svgrasterizer/src/main/resources/org/apache/batik/apps/rasterizer/resources/rasterizer.policy
 cp -p %{SOURCE7} batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/svgbrowser.policy
@@ -189,7 +191,7 @@ export OPT_JAR_LIST=:
     -f build-batik.xml -Dtest.skip=true \
 	package
 %{ant} \
-    -Dant.build.javac.source=7 -Dant.build.javac.target=7 \
+    -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
     all-jar jars javadoc
 
 %install
@@ -217,15 +219,15 @@ ln -s %{name}-all.jar %{buildroot}%{_javadir}/batik-all.jar
 #pom
 mkdir -p %{buildroot}%{_mavenpomdir}/%{name}
 
-cp -p pom.xml %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
 %add_maven_depmap %{name}/parent.pom
 
-cp -p batik-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-all.pom
+%{mvn_install_pom} batik-all/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-all.pom
 %add_maven_depmap %{name}-all.pom %{name}-all.jar
 
 for i in anim awt-util bridge codec constants dom ext extension gvt i18n parser script shared-resources svg-dom svgbrowser svggen svgrasterizer swing transcoder util gui-util xml;
 do
-  cp -p batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %{mvn_install_pom} batik-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
 
