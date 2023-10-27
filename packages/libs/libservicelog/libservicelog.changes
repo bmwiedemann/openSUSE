@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 15:11:01 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Use sysuser-tools package instead of creating the group (bsc#1216613)
+
+-------------------------------------------------------------------
 Thu Jul 15 18:57:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic, has no effect with --disable-static.
@@ -9,7 +14,7 @@ Thu Jul 15 18:57:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 Thu Jul 15 15:54:56 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 1.1.19 (jsc#SLE-18189)
-  - Fix segfault on servicelog_open() failure 
+  - Fix segfault on servicelog_open() failure
   - New project location
 
 -------------------------------------------------------------------
