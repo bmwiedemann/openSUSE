@@ -159,4 +159,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1118892</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a391bd1b8c9d7afe7ecf70bc20de5527</srcmd5>
+    <version>3.1.4</version>
+    <time>1698438420</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.4:
+  * Fix incorrect key and IV resizing issues when calling
+    EVP_EncryptInit_ex2(), EVP_DecryptInit_ex2() or EVP_CipherInit_ex2()
+    with OSSL_PARAM parameters that alter the key or IV length
+    [bsc#1216163, CVE-2023-5363].
+
+- Performance enhancements for cryptography from OpenSSL 3.2
+  [jsc#PED-5086, jsc#PED-3514]
+  * Add patches:
+    - openssl-ec-Use-static-linkage-on-nistp521-felem_-square-mul-.patch
+    - openssl-ec-56-bit-Limb-Solinas-Strategy-for-secp384r1.patch
+    - openssl-ec-powerpc64le-Add-asm-implementation-of-felem_-squa.patch
+    - openssl-ecc-Remove-extraneous-parentheses-in-secp384r1.patch
+    - openssl-powerpc-ecc-Fix-stack-allocation-secp384r1-asm.patch
+    - openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.patch
+
+- FIPS: Add the FIPS_mode() compatibility macro and flag support.
+  * Add patches:
+    - openssl-Add-FIPS_mode-compatibility-macro.patch
+    - openssl-Add-Kernel-FIPS-mode-flag-support.patch</comment>
+    <requestid>1120189</requestid>
+  </revision>
 </revisionlist>

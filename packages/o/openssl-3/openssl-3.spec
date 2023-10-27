@@ -22,7 +22,7 @@
 %define man_suffix 3ssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -48,6 +48,17 @@ Patch7:         openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.pat
 Patch8:         openssl-Override-default-paths-for-the-CA-directory-tree.patch
 # PATCH-FIX-UPSTREAM: bsc#1209430 Upgrade OpenSSL from 3.0.8 to 3.1.0 in TW
 Patch9:         openssl-Add_support_for_Windows_CA_certificate_store.patch
+# PATCH-FIX-FEDORA Add FIPS_mode compatibility macro and flag support
+Patch10:        openssl-Add-FIPS_mode-compatibility-macro.patch
+Patch11:        openssl-Add-Kernel-FIPS-mode-flag-support.patch
+# PATCH-FIX-UPSTREAM jsc#PED-5086, jsc#PED-3514
+# POWER10 performance enhancements for cryptography
+Patch12:        openssl-ec-Use-static-linkage-on-nistp521-felem_-square-mul-.patch
+Patch13:        openssl-ec-56-bit-Limb-Solinas-Strategy-for-secp384r1.patch
+Patch14:        openssl-ec-powerpc64le-Add-asm-implementation-of-felem_-squa.patch
+Patch15:        openssl-ecc-Remove-extraneous-parentheses-in-secp384r1.patch
+Patch16:        openssl-powerpc-ecc-Fix-stack-allocation-secp384r1-asm.patch
+Patch17:        openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
