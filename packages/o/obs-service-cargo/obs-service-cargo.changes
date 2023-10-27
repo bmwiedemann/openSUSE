@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Oct 12 02:56:04 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to release 0.8.0:
+  * audit is no-op and it is now part of vendor process.
+  * cargo_audit binary will execute nothing now.
+
+-------------------------------------------------------------------
+Wed Oct 11 13:02:13 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to release 0.7.5:
+  * globbed tar now supports lexicographical order
+  * improved rustsec output
+
+-------------------------------------------------------------------
+Mon Oct  9 13:29:38 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to release 0.7.4:
+  * fix: decompressed tarball may or may not have a top-level folder
+
+-------------------------------------------------------------------
+Sat Oct  7 22:56:52 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Change obsoletes to not list a version as we obsolete all versions.
+
+-------------------------------------------------------------------
+Sat Oct  7 05:34:52 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to release 0.7.3.
+  * small fixes and changes
+
+-------------------------------------------------------------------
+Sat Oct  7 03:33:49 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.7.1. No changes.
+
+-------------------------------------------------------------------
+Sat Oct  7 03:16:52 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to 0.7.0:
+  * refactor cargo vendor
+  * feature audit
+
+-------------------------------------------------------------------
+Sun Sep 10 13:16:40 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Change to 0.6.0 release
+
+-------------------------------------------------------------------
+Sun Sep 10 12:04:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for obs-service-cargo. 0.6.0-alpha

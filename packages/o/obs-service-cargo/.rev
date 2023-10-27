@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ddbeda887de664c3b91407b994ac1ef8</srcmd5>
+    <version>0.8.0</version>
+    <time>1698438511</time>
+    <user>anag+factory</user>
+    <comment>Submit new package obs-service-cargo.
+
+This will replace the previous python versions of the obs service cargo audit and vendor
+packages. This library is fasted, easier to maintain and easier for a user to configure.</comment>
+    <requestid>1120662</requestid>
+  </revision>
+</revisionlist>

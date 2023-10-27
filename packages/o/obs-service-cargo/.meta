@@ -1,0 +1,5 @@
+<package name="obs-service-cargo" project="openSUSE:Factory">
+  <title>OBS Service Cargo</title>
+  <description>OBS Source Service and utilities for Rust software packaging.</description>
+  <devel project="devel:languages:rust" package="obs-service-cargo"/>
+</package>
