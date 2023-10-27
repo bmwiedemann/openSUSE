@@ -261,4 +261,20 @@
   part of chacha_ppc64le.s</comment>
     <requestid>1113853</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d88118e152b70ab1c251a662dc0926e3</srcmd5>
+    <version>1.2.3</version>
+    <time>1698438472</time>
+    <user>anag+factory</user>
+    <comment>- Do not build squashfuse, require it as a dependency.
+  Removed: squashfuse-0.1.105.tar.gz, 70.patch
+- Replace awkward 'Obsoletes: singularity-*' as well as the
+  'Provides: Singularity' by 'Conflicts:' and drop the provides -
+  the versioning scheme does not match and we do not automatically
+  migrate from one to the other.
+- Exclude platforms which do not provide all build dependencies.
+
+- removed CRYPTOGAMS license as not known in OBS and OpenSSL is</comment>
+    <requestid>1120777</requestid>
+  </revision>
 </revisionlist>
