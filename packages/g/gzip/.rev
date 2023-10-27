@@ -528,4 +528,12 @@ though it did make builds reproducible, it would lose some optimizations (forwar
     <comment></comment>
     <requestid>1108153</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>82edc35118ceca417c7e0d895fbc9bb8</srcmd5>
+    <version>1.13</version>
+    <time>1698438470</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120193</requestid>
+  </revision>
 </revisionlist>

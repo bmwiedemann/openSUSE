@@ -59,6 +59,9 @@ times.
 
 %build
 export CFLAGS="%{optflags} -fomit-frame-pointer \
+%ifarch s390x
+-Dalignas=_Alignas \
+%endif
 -W -Wall -Wno-unused-parameter -Wstrict-prototypes -Wpointer-arith -fPIE"
 export LDFLAGS="-pie"
 # added because of gzip-1.10-ibm_dfltcc_support.patch [jsc#SLE-5818]

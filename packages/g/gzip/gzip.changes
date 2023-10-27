@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 08:56:10 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Fix s390x build with 'gcc -Dalignas=_Alignas' bug#66709
+
+-------------------------------------------------------------------
 Wed Aug 30 15:24:55 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 1.13:
