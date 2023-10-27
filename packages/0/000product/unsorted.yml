@@ -872,6 +872,7 @@ unsorted:
   - arpwatch-ethercodes 
   - arpwatch-ethercodes-build 
   - artha 
+  - arti 
   - artifacts 
   - artifacts-validator 
   - artikulate 
@@ -2931,8 +2932,6 @@ unsorted:
   - deadbeef-lang 
   - deadbeef-plugin-mpris2 
   - deal_II-devel 
-  - deal_II-openmpi2-devel 
-  - deal_II-openmpi3-devel 
   - deal_II-openmpi4-devel 
   - debhelper 
   - debootstrap 
@@ -3939,9 +3938,6 @@ unsorted:
   - fftw3-gnu-hpc-devel 
   - fftw3-gnu-mpich-hpc-devel 
   - fftw3-gnu-mvapich2-hpc-devel 
-  - fftw3-gnu-openmpi1-hpc-devel 
-  - fftw3-gnu-openmpi2-hpc-devel 
-  - fftw3-gnu-openmpi3-hpc-devel 
   - fftw3-gnu-openmpi4-hpc-devel 
   - fftw3-mpi-devel 
   - fftw3-openmp-devel 
@@ -3952,12 +3948,6 @@ unsorted:
   - fftw3_3_3_10-gnu-mpich-hpc-devel-static 
   - fftw3_3_3_10-gnu-mvapich2-hpc-devel 
   - fftw3_3_3_10-gnu-mvapich2-hpc-devel-static 
-  - fftw3_3_3_10-gnu-openmpi1-hpc-devel 
-  - fftw3_3_3_10-gnu-openmpi1-hpc-devel-static 
-  - fftw3_3_3_10-gnu-openmpi2-hpc-devel 
-  - fftw3_3_3_10-gnu-openmpi2-hpc-devel-static 
-  - fftw3_3_3_10-gnu-openmpi3-hpc-devel 
-  - fftw3_3_3_10-gnu-openmpi3-hpc-devel-static 
   - fftw3_3_3_10-gnu-openmpi4-hpc-devel 
   - fftw3_3_3_10-gnu-openmpi4-hpc-devel-static 
   - fhourstones 
@@ -10419,7 +10409,7 @@ unsorted:
   - libShowMySky-Qt6-15 
   - libShowMySky-Qt6-devel 
   - libSimGearCore-2020_3_18 
-  - libSingular-4_3_1 
+  - libSingular-4_3_2 
   - libSingular-devel 
   - libSoQt20 
   - libSoapyOsmoSDR0 
@@ -11527,8 +11517,6 @@ unsorted:
   - libdde-wayland-client0 
   - libdde-wayland-server0 
   - libdeal_II9_5_1 
-  - libdeal_II9_5_1-openmpi2 
-  - libdeal_II9_5_1-openmpi3 
   - libdeal_II9_5_1-openmpi4 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
@@ -11769,7 +11757,7 @@ unsorted:
   - libfabric-devel-32bit 
   - libfabric1 
   - libfabric1-32bit 
-  - libfactory-4_3_1 
+  - libfactory-4_3_2 
   - libfactory-devel 
   - libfactory-gftables 
   - libfakekey-devel 
@@ -11825,16 +11813,10 @@ unsorted:
   - libfftw3-gnu-hpc 
   - libfftw3-gnu-mpich-hpc 
   - libfftw3-gnu-mvapich2-hpc 
-  - libfftw3-gnu-openmpi1-hpc 
-  - libfftw3-gnu-openmpi2-hpc 
-  - libfftw3-gnu-openmpi3-hpc 
   - libfftw3-gnu-openmpi4-hpc 
   - libfftw3_3_3_10-gnu-hpc 
   - libfftw3_3_3_10-gnu-mpich-hpc 
   - libfftw3_3_3_10-gnu-mvapich2-hpc 
-  - libfftw3_3_3_10-gnu-openmpi1-hpc 
-  - libfftw3_3_3_10-gnu-openmpi2-hpc 
-  - libfftw3_3_3_10-gnu-openmpi3-hpc 
   - libfftw3_3_3_10-gnu-openmpi4-hpc 
   - libfftw3_mpi3 
   - libfftw3_mpi3-32bit 
@@ -13626,7 +13608,7 @@ unsorted:
   - libolecf-tools 
   - libolecf1 
   - libolm3 
-  - libomalloc-4_3_1 
+  - libomalloc-4_3_2 
   - libomalloc-devel 
   - libomemo-c-devel 
   - libomemo-c0 
@@ -14056,7 +14038,7 @@ unsorted:
   - libpolyclipping-devel 
   - libpolyclipping22 
   - libpolylibgmp8 
-  - libpolys-4_3_1 
+  - libpolys-4_3_2 
   - libpolys-devel 
   - libpoppler-cpp0-32bit 
   - libpoppler-devel 
@@ -14819,7 +14801,7 @@ unsorted:
   - libsigsegv-devel 
   - libsigsegv-doc 
   - libsigsegv2 
-  - libsingular_resources-4_3_1 
+  - libsingular_resources-4_3_2 
   - libsingular_resources-devel 
   - libsirocco0 
   - libsispmctl0 
@@ -33159,6 +33141,7 @@ unsorted:
   - qemu-audio-jack 
   - qemu-audio-oss 
   - qemu-audio-pa 
+  - qemu-audio-pipewire 
   - qemu-block-dmg 
   - qemu-block-gluster 
   - qemu-block-iscsi 
@@ -33738,9 +33721,6 @@ unsorted:
   - quakespasm 
   - quantum-espresso 
   - quantum-espresso-doc 
-  - quantum-espresso-openmpi1 
-  - quantum-espresso-openmpi2 
-  - quantum-espresso-openmpi3 
   - quantum-espresso-openmpi4 
   - quassel-base 
   - quassel-client 
