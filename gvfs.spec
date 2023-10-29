@@ -172,9 +172,11 @@ gvfs plugins.
 
 %prep
 %autosetup -N
+%if !0%{?sle_version}
 %autopatch -p1 -M 999
-%if 0%{?sle_version}
-%autopatch -p1 -m 1000
+%else
+%patch1000 -p1
+%patch1001 -p1
 %endif
 
 %build
