@@ -1343,4 +1343,20 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>1116896</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>81c504eceb336aaf5e52ef695367bc08</srcmd5>
+    <version>24.0.7_ce</version>
+    <time>1698604784</time>
+    <user>anag+factory</user>
+    <comment>- Update to Docker 24.0.7-ce. See upstream changelong online at
+  &lt;https://docs.docker.com/engine/release-notes/24.0/#2407&gt;.
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-docs-include-required-tools-in-source-tree.patch</comment>
+    <requestid>1120880</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 27 21:14:37 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 24.0.7-ce. See upstream changelong online at
+  <https://docs.docker.com/engine/release-notes/24.0/#2407>.
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
 Wed Oct 11 10:32:43 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Add a patch to fix apparmor on SLE-12, reverting the upstream removal of

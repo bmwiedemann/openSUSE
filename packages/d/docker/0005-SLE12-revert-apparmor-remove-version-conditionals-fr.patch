@@ -1,4 +1,4 @@
-From 69790a375a38aca33a81c9b88aece9a0efd79726 Mon Sep 17 00:00:00 2001
+From eef724b45a4047b6d3cefb214e330a4b24ccdf2e Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
 Subject: [PATCH 5/5] SLE12: revert "apparmor: remove version-conditionals from
@@ -208,7 +208,7 @@ index d0f236160506..b3566b2f7354 100644
  }
  
 diff --git a/profiles/apparmor/template.go b/profiles/apparmor/template.go
-index 5dcf35bf45c7..ed5892a7f6bd 100644
+index 9f207e2014a8..626e5f6789a3 100644
 --- a/profiles/apparmor/template.go
 +++ b/profiles/apparmor/template.go
 @@ -24,12 +24,14 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
@@ -226,8 +226,8 @@ index 5dcf35bf45c7..ed5892a7f6bd 100644
  
    deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
    # deny write to files not in /proc/<number>/** or /proc/sys/**
-@@ -49,7 +51,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
-   deny /sys/firmware/** rwklx,
+@@ -50,7 +52,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+   deny /sys/devices/virtual/powercap/** rwklx,
    deny /sys/kernel/security/** rwklx,
  
 +{{if ge .Version 208095}}
