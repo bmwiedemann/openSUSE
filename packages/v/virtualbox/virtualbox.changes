@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 26 18:10:45 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update file "fixes_for_leap.patch" to cover API change in Leap 15.6 kernel.
+
+-------------------------------------------------------------------
 Sat Oct 21 19:27:40 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Restored changes entry accidentally deleted.

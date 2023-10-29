@@ -2,7 +2,7 @@ Index: VirtualBox-7.0.12/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
 ===================================================================
 --- VirtualBox-7.0.12.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
 +++ VirtualBox-7.0.12/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
-@@ -89,6 +89,21 @@
+@@ -89,6 +89,17 @@
  #define VBOXNETFLT_OS_SPECFIC 1
  #include "../VBoxNetFltInternal.h"
  
@@ -13,12 +13,8 @@ Index: VirtualBox-7.0.12/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
 +#  define OPENSUSE_155
 +# endif
 +
-+#if !defined(skb_gso_segment)
-+#if defined(CONFIG_SUSE_VERSION) && (CONFIG_SUSE_VERSION == 15)
-+//#include <config/net/mpls/gso.h>
-+#else
++#if RTLNX_SUSE_MAJ_PREREQ(15, 6)
 +#include <net/gso.h>
-+#endif
 +#endif
 +
  typedef struct VBOXNETFLTNOTIFIER {
@@ -55,6 +51,22 @@ Index: VirtualBox-7.0.12/src/VBox/Additions/linux/drm/vbox_drv.c
  #else  /* >= 5.4.0 && RHEL >= 8.3 && SLES >= 15-SP3 */
  		.driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
  #endif /* <  5.4.0 */
+@@ -389,13 +393,13 @@ static struct drm_driver driver = {
+ #elif RTLNX_VER_MAX(5,12,0) && !RTLNX_RHEL_MAJ_PREREQ(8,5)
+ 	.dumb_destroy = drm_gem_dumb_destroy,
+ #endif
+-#if RTLNX_VER_MAX(6,6,0)
++#if RTLNX_VER_MAX(6,6,0) && !RTLNX_SUSE_MAJ_PREREQ(15, 5)
+ 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+ #endif
+ 	.gem_prime_import = drm_gem_prime_import,
+ 	.gem_prime_import_sg_table = vbox_gem_prime_import_sg_table,
+-#if RTLNX_VER_MAX(6,6,0)
++#if RTLNX_VER_MAX(6,6,0) && !RTLNX_SUSE_MAJ_PREREQ(15, 5)
+ 	.gem_prime_mmap = vbox_gem_prime_mmap,
+ #endif
+ 
 Index: VirtualBox-7.0.12/src/VBox/Additions/linux/drm/vbox_main.c
 ===================================================================
 --- VirtualBox-7.0.12.orig/src/VBox/Additions/linux/drm/vbox_main.c
@@ -425,6 +437,15 @@ Index: VirtualBox-7.0.12/src/VBox/Additions/linux/drm/vbox_fb.c
  
  #include <VBoxVideo.h>
  
+@@ -196,7 +197,7 @@ static struct fb_ops vboxfb_ops = {
+ 	.owner = THIS_MODULE,
+ 	.fb_check_var = drm_fb_helper_check_var,
+ 	.fb_set_par = drm_fb_helper_set_par,
+-#if RTLNX_VER_MIN(6,5,0)
++#if RTLNX_VER_MIN(6,5,0) || RTLNX_SUSE_MAJ_PREREQ(15, 6)
+ 	.fb_read    = fb_sys_read,
+ 	.fb_write   = fb_sys_write,
+ 	.fb_fillrect = sys_fillrect,
 Index: VirtualBox-7.0.12/src/VBox/Additions/linux/drm/vbox_mode.c
 ===================================================================
 --- VirtualBox-7.0.12.orig/src/VBox/Additions/linux/drm/vbox_mode.c
@@ -450,3 +471,25 @@ Index: VirtualBox-7.0.12/src/VBox/HostDrivers/VBoxNetAdp/linux/VBoxNetAdp-linux.
  # define VBOX_DEV_ADDR_SET(dev, addr, len) dev_addr_mod(dev, 0, addr, len)
  #else /* < 5.17.0 */
  # define VBOX_DEV_ADDR_SET(dev, addr, len) memcpy(dev->dev_addr, addr, len)
+Index: VirtualBox-7.0.12/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
++++ VirtualBox-7.0.12/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+@@ -1342,7 +1342,7 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+                                 fWrite,                 /* force write access. */
+ # endif
+                                 &pMemLnx->apPages[0]    /* Page array. */
+-# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0)
++# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0) && !RTLNX_SUSE_MAJ_PREREQ(15, 6)
+                                 , papVMAs               /* vmas */
+ # endif
+                                 );
+@@ -1389,7 +1389,7 @@ DECLHIDDEN(int) rtR0MemObjNativeLockUser
+                                 fWrite,                 /* force write access. */
+ # endif
+                                 &pMemLnx->apPages[0]    /* Page array. */
+-# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0)
++# if GET_USER_PAGES_API < KERNEL_VERSION(6, 5, 0) && !RTLNX_SUSE_MAJ_PREREQ(15, 6)
+                                 , papVMAs               /* vmas */
+ # endif
+                                 );
