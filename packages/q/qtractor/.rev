@@ -489,4 +489,41 @@ Fixes build against latest qt5 with qtractor-QAction.patch.</comment>
     <comment></comment>
     <requestid>1078011</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>bcd1a41034b7d4b5e90aeae07eee63af</srcmd5>
+    <version>0.9.35</version>
+    <time>1698604910</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.35:
+  * MIDI Step-input is now finally featured on the MIDI clip
+    editor (aka. piano-roll), provided Clip/Record is on and playback
+    is not rolling; current snap-to-beat applies; starts/resets to
+    play-head;
+  * Edit/Insert/Step to advance a single step/rest.
+  * Notes keyed in the MIDI clip editor's virtual piano keyboard
+    may now be recorded, especially while &quot;overdubbing&quot;.
+  * The official VST3 plug-in SDK is now included in the source
+    tree as Git submodules.
+  * Fixed a rounding error on current BBT information passed to
+    plugins and to JACK transport/timebase.
+  * When on Track/Auto Deactivate mode, plugins now show a dull,
+    dimmed lit, green (fake-)LED when in auto-deactivated state.
+  * Attempt to actually (de)activate plugins once on
+    (de)instantiation.
+  * Fixed the snap-to-beat of new notes entry on the MIDI clip
+    editor (aka. piano-roll) due on time signature changes.
+  * Start JACK transport rolling only when metronome Count-in
+    ends.
+  * Fixed an allegedly old and incorrect 0dBfs notch position on
+    MIDI track/buses audio meter sidekicks.
+  * Send/return and Aux-send inserts now show the proper name and
+    the target output bus name on the properties editor title
+    respectively.
+  * Fixed a zero-day blunder that was keeping the real-time
+    process cycle from having the uniform block-size of 64 frames per
+    period;
+  * Multiple MIDI clip tools may now be applied simultaneously,
+    in a single shot, in the following priority order: quantize,</comment>
+    <requestid>1120972</requestid>
+  </revision>
 </revisionlist>

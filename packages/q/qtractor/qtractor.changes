@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Oct 29 09:17:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.35:
+  * MIDI Step-input is now finally featured on the MIDI clip
+    editor (aka. piano-roll), provided Clip/Record is on and playback
+    is not rolling; current snap-to-beat applies; starts/resets to
+    play-head;
+  * Edit/Insert/Step to advance a single step/rest.
+  * Notes keyed in the MIDI clip editor's virtual piano keyboard
+    may now be recorded, especially while "overdubbing".
+  * The official VST3 plug-in SDK is now included in the source
+    tree as Git submodules.
+  * Fixed a rounding error on current BBT information passed to
+    plugins and to JACK transport/timebase.
+  * When on Track/Auto Deactivate mode, plugins now show a dull,
+    dimmed lit, green (fake-)LED when in auto-deactivated state.
+  * Attempt to actually (de)activate plugins once on
+    (de)instantiation.
+  * Fixed the snap-to-beat of new notes entry on the MIDI clip
+    editor (aka. piano-roll) due on time signature changes.
+  * Start JACK transport rolling only when metronome Count-in
+    ends.
+  * Fixed an allegedly old and incorrect 0dBfs notch position on
+    MIDI track/buses audio meter sidekicks.
+  * Send/return and Aux-send inserts now show the proper name and
+    the target output bus name on the properties editor title
+    respectively.
+  * Fixed a zero-day blunder that was keeping the real-time
+    process cycle from having the uniform block-size of 64 frames per
+    period;
+  * Multiple MIDI clip tools may now be applied simultaneously,
+    in a single shot, in the following priority order: quantize,
+    transpose, normalize, resize, rescale and timeshift.
+  * Plugin inventory scan now slightly optimized to an allegedly
+    lesser aggressive cache-invalidation algorithm.
+  * Do not send/Preview notes on the MIDI clip editor (aka.
+    piano-roll) when playback is currently rolling.
+  * Send all pending MIDI Note-Off events when playback
+    stops/shuts-off
+  * Fixed the internal MIDI file player queue to the highest
+    resolution possible (PPQN aka ticks-per-beat).
+  * Fixed MIDI recording delay and recorded clip lengths when
+    metronome Count-in is in effect for recording.
+
+-------------------------------------------------------------------
 Thu Apr  6 09:26:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Spec cleanup: remove obsolete conditions
@@ -115,7 +160,7 @@ Sat Jun 18 13:55:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
     recording takes switch or navigation.
   * Number of takes is now shown on clip titles and tooltips.
   * Fixed in-flight transport mode changes.
-  * Fixed translations path to be relative to application runtime. 
+  * Fixed translations path to be relative to application runtime.
   * Hopefully fixed an old MIDI off-timing bug noticeable only when exporting
     (Track/Export Tracks/Audio...) on large buffer-sizes (>= 2K frames/period).
   * Clip/File Loop Set menu command is now a toggle.
@@ -416,8 +461,8 @@ Tue Dec  5 04:22:56 UTC 2017 - aavindraa@gmail.com
   * A brand new View/Options.../Display/Meters/Show meters on
     track list/left pane option has been added.
 - use new official url
-- binary removed: qtractor_vst_scan 
-- binary added:   qtractor_plugin_scan 
+- binary removed: qtractor_vst_scan
+- binary added:   qtractor_plugin_scan
 
 -------------------------------------------------------------------
 Fri Nov  3 17:24:50 UTC 2017 - aavindraa@gmail.com
@@ -473,19 +518,19 @@ Sun Jul  2 04:47:59 UTC 2017 - davejplater@gmail.com
 Thu May 11 10:45:42 UTC 2017 - ecsos@opensuse.org
 
 - Update to 0.8.2
-  - Track-name uniqueness is now being enforced, by adding an 
+  - Track-name uniqueness is now being enforced, by adding an
     auto-incremental number suffix whenever necessary.
-  - Attempt to raise an internal transient file-name registry to 
-    prevent automation/curve files to proliferate across several 
+  - Attempt to raise an internal transient file-name registry to
+    prevent automation/curve files to proliferate across several
     session load/save (re)cycles.
   - Track-height resizing now meets immediate visual feedback.
-  - A brand new user preference global option is now available: 
-    View/Options.../Plugins/Editor/Select plug-in's editor (GUI) 
+  - A brand new user preference global option is now available:
+    View/Options.../Plugins/Editor/Select plug-in's editor (GUI)
     if more than one is available.
-  - More gradient eye-candy on main track-view and piano-roll 
+  - More gradient eye-candy on main track-view and piano-roll
     canvases, now showing left and right edge fake-shadows.
-  - Fixed the time entry spin-boxes when changing time offset or 
-    length fields in BBT time format that goes across any 
+  - Fixed the time entry spin-boxes when changing time offset or
+    length fields in BBT time format that goes across any
     tempo/time-signature change nodes.
   - French (fr) translation update (by Olivier Humbert, thanks).
 
@@ -544,31 +589,31 @@ Fri Jun 24 06:51:44 UTC 2016 - davejplater@gmail.com
 - Update to release 0.7.8 and fix gcc6 build see boo#985243
 - refresh qtractor-nodatetime.patch
 - Upstream changes:
-  *MIDI file track names (and any other SMF META events) are now 
-  converted to and from the base ASCII/Latin-1 encoding, as much to 
+  *MIDI file track names (and any other SMF META events) are now
+  converted to and from the base ASCII/Latin-1 encoding, as much to
   prevent invalid SMF whenever non-Latin-1 UTF-8 encoded MIDI track
   names are given.
-  *MIDI file tempo-map and location markers import/export is now 
-  hopefully corrected, after almost a decade in mistake, regarding 
-  MIDI resolution conversion, when different than current 
-  session's setting (TPQN, ticks-per-quarter-note aka. 
+  *MIDI file tempo-map and location markers import/export is now
+  hopefully corrected, after almost a decade in mistake, regarding
+  MIDI resolution conversion, when different than current
+  session's setting (TPQN, ticks-per-quarter-note aka.
   ticks-per-beat, etc.)
-  *Introducing LV2 UI Show interface support for other types than 
+  *Introducing LV2 UI Show interface support for other types than
   Qt, Gtk, X11 and lv2_external_ui.
-  *Prevent any visual updates while exporting (freewheeling) audio 
-  tracks that have at least one plugin activate state automation 
-  enabled for playback (as much for not showing messages like 
+  *Prevent any visual updates while exporting (freewheeling) audio
+  tracks that have at least one plugin activate state automation
+  enabled for playback (as much for not showing messages like
   "QObject::connect: Cannot queue arguments of type 'QVector'"
   ... anymore).
-  *The common buses management dialog (View/Buses...) sees the 
-  superfluous Refresh button finally removed, while two new button 
+  *The common buses management dialog (View/Buses...) sees the
+  superfluous Refresh button finally removed, while two new button
   commands take its place: (move) Up and Down.
-  *LV2 plug-in Patch support has been added and LV2 plug-ins 
-  parameter properties manipulation is now accessible on the 
+  *LV2 plug-in Patch support has been added and LV2 plug-ins
+  parameter properties manipulation is now accessible on the
   generic plug-in properties dialog.
-  *Fixed a recently introduced bug, that rendered all but one 
-  plug-in instance to silence, affecting only DSSI plug-ins which 
-  implement DSSI_Descriptor::run_multiple_synths() eg. 
+  *Fixed a recently introduced bug, that rendered all but one
+  plug-in instance to silence, affecting only DSSI plug-ins which
+  implement DSSI_Descriptor::run_multiple_synths() eg.
   fluidsynth-dssi, hexter, etc.
 
 -------------------------------------------------------------------
@@ -576,97 +621,97 @@ Thu Apr 28 10:23:46 UTC 2016 - ecsos@opensuse.org
 
 - update to 0.7.7
   - LV2 UI Touch feature/interface support added.
-  - MIDI aware plug-ins are now void from multiple or parallel 
+  - MIDI aware plug-ins are now void from multiple or parallel
     instantiation.
-  - MIDI tracks and buses plug-in chains now honor the number of 
-    effective audio channels from the assigned audio output bus; 
-    dedicated audio output ports will keep default to the stereo 
+  - MIDI tracks and buses plug-in chains now honor the number of
+    effective audio channels from the assigned audio output bus;
+    dedicated audio output ports will keep default to the stereo
     two channels.
-  - Plug-in rescan option has been added to plug-ins selection 
+  - Plug-in rescan option has been added to plug-ins selection
     dialog (yet another suggestion by Frank Neumann, thanks).
-  - Dropped the --enable-qt5 from configure as found redundant 
+  - Dropped the --enable-qt5 from configure as found redundant
     given that's the build default anyway
-  - Immediate visual sync has been added to main and MIDI clip 
+  - Immediate visual sync has been added to main and MIDI clip
     editor thumb-views
   - Fixed an old MIDI clip editor contents disappearing bug,
-    which manifested when drawing free-hand 
-    (ie. Edit/Select Mode/Edit Draw is on) over and behind its 
+    which manifested when drawing free-hand
+    (ie. Edit/Select Mode/Edit Draw is on) over and behind its
     start/beginning position (while in the lower view pane).
 
 -------------------------------------------------------------------
 Wed Apr  6 15:10:28 UTC 2016 - ecsos@opensuse.org
 
 - update to 0.7.6
-  - Plug-ins search path and out-of-process (aka. dummy) VST 
+  - Plug-ins search path and out-of-process (aka. dummy) VST
     plug-in inventory scanning has been heavily refactored.
   - Fixed and optimized all dummy processing for plugins with more
-    audio inputs and/or outputs than channels on a track or bus 
+    audio inputs and/or outputs than channels on a track or bus
     where it's inserted.
-  - Fixed relative/absolute path mapping when saving/loading 
+  - Fixed relative/absolute path mapping when saving/loading
     custom LV2 Plug-in State Presets.
 
 -------------------------------------------------------------------
 Tue Mar 22 11:01:56 UTC 2016 - ecsos@opensuse.org
 
 - update to 0.7.5
-  - Beat unit divisor, aka. the denominator or lower numeral in the 
-    time-signature, have now a visible and practical effect over 
-    the time-line, even though the standard MIDI tempo(BPM) is 
-    always denoted in beats as quarter-notes (1/4, crotchet, 
+  - Beat unit divisor, aka. the denominator or lower numeral in the
+    time-signature, have now a visible and practical effect over
+    the time-line, even though the standard MIDI tempo(BPM) is
+    always denoted in beats as quarter-notes (1/4, crotchet,
     seminima) per minute.
-  - Fixed an old hack on LV2 State Files abstract/relative 
-    file-path mapping when saving custom LV2 Presets (after a 
+  - Fixed an old hack on LV2 State Files abstract/relative
+    file-path mapping when saving custom LV2 Presets (after a
     related issue on Fabla2, by Harry Van Haaren, thanks).
-  - Default PC-Keyboard shortcuts may now be erasable and re- 
+  - Default PC-Keyboard shortcuts may now be erasable and re-
     assigned (cf. Help/Shortcuts...).
   - New option on the audio/MIDI export dialog, on whether to
     add/import the exported result as brand new track(s).
   - Introducing brand new track icons property.
-  - Old Dry/Wet Insert and Aux-send pseudo-plugin parameters are 
-    now split into separate Dry and Wet controls, what else could 
+  - Old Dry/Wet Insert and Aux-send pseudo-plugin parameters are
+    now split into separate Dry and Wet controls, what else could
     it possibly be? :)
-  - Brand new MIDI Insert and Aux-Send pseudo-plugins are now 
-    implemented with very similar semantics as the respective and 
+  - Brand new MIDI Insert and Aux-Send pseudo-plugins are now
+    implemented with very similar semantics as the respective and
     existing audio counterparts.
-  - Implement LV2_STATE__loadDefaultState feature (after pull 
+  - Implement LV2_STATE__loadDefaultState feature (after pull
     request by Hanspeter Portner aka. ventosus, thanks).
-  - Plug-ins search paths internal logic has been refactored; an 
+  - Plug-ins search paths internal logic has been refactored; an
     alternative file-name based search is now in effect for LADSPA,
-    DSSI and VST plug-ins, whenever not found on their original 
+    DSSI and VST plug-ins, whenever not found on their original
     file-path locations saved in a previous session.
-  - Finally added this brand new menu Clip/Cross Fade command, 
-    aimed on setting fade-in/out ranges properly, just as far to 
+  - Finally added this brand new menu Clip/Cross Fade command,
+    aimed on setting fade-in/out ranges properly, just as far to
     (auto)cross-fade consecutive overlapping clips.
 
 -------------------------------------------------------------------
 Sat Jan 30 07:58:18 UTC 2016 - ecsos@opensuse.org
 
 - update to 0.7.4
-  - Eye-candy warning: muted/non-soloed tracks are now shaded over 
+  - Eye-candy warning: muted/non-soloed tracks are now shaded over
     the main thumb-view.
   - Faster and crispier VST plugin editor (GUI) idle cycles.
-  - Fixed all core processing when any plugin has more audio 
+  - Fixed all core processing when any plugin has more audio
     outputs than channels on a track/bus where it's inserted.
-  - Added one decimal digit to all percentage input spin-boxes on 
+  - Added one decimal digit to all percentage input spin-boxes on
     the MIDI Tools dialog.
-  - Added brand new and global option to disable the so called 
+  - Added brand new and global option to disable the so called
     "catch-up" default behavior (cf. View/Controllers.../Sync).
-  - Fixed some track control issues related to MIDI Controllers 
+  - Fixed some track control issues related to MIDI Controllers
     generic mapping (cf. View/Controllers...).
   - Try making Help/Shortcuts... dialog window modeless, as far as
-    under MIDI Controller, Inputs/Outputs Connections window also 
+    under MIDI Controller, Inputs/Outputs Connections window also
     gets accessible enough.
-  - Fixed some vertical scrolling and play-head line re-drawing 
-    glitches introduced by the recent unlimited slack to editing 
+  - Fixed some vertical scrolling and play-head line re-drawing
+    glitches introduced by the recent unlimited slack to editing
     beyond current contents length on main tracks view.
-  - Added one decimal digit to the Pitch-shift spin-box on audio 
+  - Added one decimal digit to the Pitch-shift spin-box on audio
     Clip/Edit... properties dialog window.
   - Added application keywords to freedesktop.org's AppData.
-  - Fixed local keyboard shortcuts on the Files organizer widget 
+  - Fixed local keyboard shortcuts on the Files organizer widget
     actions and context-menu.
-  - Improved Mixer multi-row layout (patch by Holger Marzen aka. 
+  - Improved Mixer multi-row layout (patch by Holger Marzen aka.
     bluebell, thanks).
-  - Fixed the Ctrl+drag/cloning left of a clip when towards near 
+  - Fixed the Ctrl+drag/cloning left of a clip when towards near
     the beginning of session.
 
 -------------------------------------------------------------------
@@ -690,10 +735,10 @@ Wed Dec 30 10:56:18 UTC 2015 - ecsos@opensuse.org
     moving and copy/pasting across tempo/time-signature changes.
   - Fixed MIDI file track/channel duration estimator, which was
     giving quite wrong and way too short reads.
-  - Fixed a drag-and-drop bug over the main tracks view, when new 
+  - Fixed a drag-and-drop bug over the main tracks view, when new
     tracks were being inserted at the top and not to the bottom as
    is normally indicated by the floating visual placeholder.
-  - Fixed LV2UI_Resize handle from extension_data(LV2_UI__resize), 
+  - Fixed LV2UI_Resize handle from extension_data(LV2_UI__resize),
     now passing LV2UI_Handle in first argument to ui_resize(), as
     found correct and needed for resizable/scaleable LV2 UI's, most
     specially to ssj71's so called Infamous Plugins, thanks.
@@ -707,19 +752,19 @@ Sun Dec 13 06:22:43 UTC 2015 - davejplater@gmail.com
 Fri Dec 11 10:11:15 UTC 2015 - ecsos@opensuse.org
 
 - update to 0.7.2
-  - Yet another audio/MIDI time drift correction fix, now giving it 
+  - Yet another audio/MIDI time drift correction fix, now giving it
     some slack while turnaround looping on tempo changes.
   - Prevent x11extras module from use on non-X11/Unix platforms.
-  - MIDI Track/Instrument cascading pop-up menus have been added, 
+  - MIDI Track/Instrument cascading pop-up menus have been added,
     to main and MIDI clip editor windows.
-  - VST Plugin preset/bank files support (FXB/FXP) is now being 
+  - VST Plugin preset/bank files support (FXB/FXP) is now being
     integrated to the generic Plugin/Properties widget dialog.
   - Added new Track/Duplicate menu command.
   - Added simple XRUN red indicator to status bar.
-  - Make sure program change/presets are not selected on possibly 
+  - Make sure program change/presets are not selected on possibly
     multi-timbral instrument plugins when inserted on a MIDI bus.
   - Prefer Qt5 over Qt4 by default with configure script.
-  - Fixed a potential crash-bug on first enabling either once the 
+  - Fixed a potential crash-bug on first enabling either once the
     audio or MIDI metronomes.
 - remove non-atomic-arches.patch because changes now in source
 
@@ -785,24 +830,24 @@ Sun Oct 11 17:15:08 UTC 2015 - ecsos@opensuse.org
 Thu May 28 16:28:45 UTC 2015 - ecsos@opensuse.org
 
 - update to 0.6.7
-  * MIDI clip editor (aka. piano-roll) position, size, and view 
-    /event type criteria are now persistent, across session and 
+  * MIDI clip editor (aka. piano-roll) position, size, and view
+    /event type criteria are now persistent, across session and
     user preferences application state.
-  * Generic plugin form widget position is now also preserved 
+  * Generic plugin form widget position is now also preserved
     across open/save session cycles.
-  * MIDI clip editor resilience is about to get an improvement, 
+  * MIDI clip editor resilience is about to get an improvement,
     fe. it doesn't close on stopping record/overdub anymore.
-  * Introducing (JACK) Timebase master setting as an option to 
-    Transport mode (cf. View/Options.../General/Transport 
+  * Introducing (JACK) Timebase master setting as an option to
+    Transport mode (cf. View/Options.../General/Transport
     /Timebase).
   * LV2 plug-in MIDI/Event support now slanted for deprecation.
   * Spanish (es) translation added, by avid Reyes Pucheta.
-  * It's live: audio track export (cf. Track/Export Tracks/ Audio.) 
+  * It's live: audio track export (cf. Track/Export Tracks/ Audio.)
     has been deeply refactored to finally include MIDI t
-    rack/instrument plugins rendering (aka. freeze) on selected 
+    rack/instrument plugins rendering (aka. freeze) on selected
     audio output buses on mix-down. (EXPERIMENTAL)
   * MIDI file player now does (N)RPN 14-bit controller events.
-  * Track properties dialog output bus switch fix/optimization; 
+  * Track properties dialog output bus switch fix/optimization;
     also fixed multiple DSSI instance reference count on close.
   * Fixed for some strict tests for Qt4 vs. Qt5 configure builds.
   * German (de) translation update (by Guido Scholz, thanks).
@@ -1041,7 +1086,7 @@ Fri Sep 26 10:54:44 UTC 2014 - ecsos@schirra.net
     snap-to-beat selection items get a new icon :).
   * Corrected some audio buffering boundary conditions that were
     causing dead-loops/freezes while merging some audio clips.
-  * Session auto-save period was chronically reduced to one third 
+  * Session auto-save period was chronically reduced to one third
     of its user setting; non critical but fixed now.
 
 -------------------------------------------------------------------
@@ -1121,7 +1166,7 @@ Fri Jan 03 10:24:52 UTC 2014 - pascal.bleser@opensuse.org
 -------------------------------------------------------------------
 Fri Sep 13 11:45:39 UTC 2013 - dvaleev@suse.com
 
-- Fix build on powerpc (qtractor-powerpc.patch) 
+- Fix build on powerpc (qtractor-powerpc.patch)
 
 -------------------------------------------------------------------
 Sat Sep  7 09:30:28 UTC 2013 - reddwarf@opensuse.org
