@@ -24,6 +24,8 @@ License:        MIT
 Group:          System/X11/Utilities
 URL:            https://codeberg.org/dnkl/fuzzel
 Source:         https://codeberg.org/dnkl/fuzzel/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         https://codeberg.org/dnkl/fuzzel/commit/31bef7d63aa71df8bbb49c82eebeeed5fe615939.patch#/0001-shm-create-mfd-noexec-seal.patch
+Patch2:         https://codeberg.org/dnkl/fuzzel/commit/6e1afa2ec8b9c760e83c30c959b3ee78cd7c6776.patch#/0002-fix-breakage-mfd-noexec-seal.patch
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3

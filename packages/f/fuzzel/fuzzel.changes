@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 22 10:57:04 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Rename 0001-mfd-noexec-seal.patch to 0002-fix-breakage-mfd-noexec-seal.patch
+- Add 0001-shm-create-mfd-noexec-seal.patch
+
+-------------------------------------------------------------------
+Sun Oct 22 10:50:41 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add 0001-mfd-noexec-seal.patch
+
+-------------------------------------------------------------------
 Fri Jul 14 09:35:34 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to 1.9.2:
