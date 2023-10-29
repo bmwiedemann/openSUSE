@@ -33,6 +33,8 @@ Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 # PATCH-FIX-OPENSUSE gnome-software-disable-offline-update.patch bsc#944832 sckang@suse.com -- Disable offline update in SLE and openSUSE Leap
 Patch1:         gnome-software-disable-offline-update.patch
 %endif
+# PATCH-FIX-UPSTREAM gnome-software-plugin-opensuse-distro-upgrade.patch glgo#GNOME/gnome-software!1557 sckang@suse.com -- plugins: add opensuse-distro-upgrade plugin
+Patch2:         gnome-software-plugin-opensuse-distro-upgrade.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.58.0
@@ -165,6 +167,7 @@ FOE
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_malcontent.so
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_modalias.so
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_os-release.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_opensuse-distro-upgrade.so
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_provenance-license.so
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_provenance.so
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_repos.so
