@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
@@ -26,7 +26,7 @@ URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  docutils
-BuildRequires:  meson
+BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
