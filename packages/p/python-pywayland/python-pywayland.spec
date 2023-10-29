@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %bcond_without  test
 %define pyname  pywayland
 Name:           python-%{pyname}
