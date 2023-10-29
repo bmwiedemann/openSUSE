@@ -1,7 +1,7 @@
 #
 # spec file for package erfa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define lname	liberfa1
 Name:           erfa
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Essential Routines for Fundamental Astronomy
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/liberfa/erfa
-Source:         https://github.com/liberfa/erfa/releases/download/v%{version}/erfa-%{version}.tar.gz
+Source:         https://github.com/liberfa/erfa/releases/download/v%{version}/erfa-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 
 %description
@@ -55,27 +56,15 @@ Requires:       %{lname} = %{version}
 This package contains libraries and header files for developing
 applications that use %{name}.
 
-%package        devel-static
-Summary:        Static development files for %{name}
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-devel = %{version}
-
-%description    devel-static
-This package contains libraries and header files for developing
-applications that link statically to %{name}.
-
 %prep
 %setup -q
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
-# *.la should not be packaged (see packaging guidelines: static Libraries)
-rm %{buildroot}%{_libdir}/liberfa.la
+%meson_install
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -90,8 +79,5 @@ rm %{buildroot}%{_libdir}/liberfa.la
 %{_includedir}/*.h
 %{_libdir}/liberfa.so
 %{_libdir}/pkgconfig/erfa.pc
-
-%files devel-static
-%{_libdir}/liberfa.a
 
 %changelog

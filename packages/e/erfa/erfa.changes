@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 18 13:54:30 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.1:
+  * Based on SOFA "20231011".
+  * Added capability to modify at runtime the leap seconds assumed
+    for various calculations, accessed via the eraGetLeapSeconds
+    and eraSetLeapSeconds functions
+- Switch to meson for builds as recommended by upstream; add
+  BuildRequires: meson.
+- Drop erfa-devel-static package: no longer built by default.
+- No longer pass -ffat-lto-objects as static lib is not built.
+
+-------------------------------------------------------------------
 Tue May 18 03:34:55 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.0:
