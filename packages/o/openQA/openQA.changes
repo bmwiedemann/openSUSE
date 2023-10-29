@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 27 11:10:32 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1698405013.f1d481a:
+  * Dependency cron 2023-10-27
+  * Use commit message checks from os-autoinst-common
+  * Warn when modifying files under external directly
+  * CI: Use consistent casing in commit message check
+  * CI: Fix typo in github action name
+  * Update .github/workflows/commit_message_checker.yml
+  * Update commit-message-checker & add extra rule for subject lines
+
+-------------------------------------------------------------------
 Tue Oct 24 10:11:31 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1698089463.d08787a:
