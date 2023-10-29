@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>822eb8f7cd2fdb94f9ccf6e34ed30417</srcmd5>
+    <version>1.17.4</version>
+    <time>1698604875</time>
+    <user>anag+factory</user>
+    <comment>This is patch-ng — a Python module for parsing and applying unified diffs. It is needed by Conan, a C/C++ package manager, that I have packaged and will submit to Factory once patch-ng has made its way there.</comment>
+    <requestid>1120856</requestid>
+  </revision>
+</revisionlist>
