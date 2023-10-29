@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct 12 05:34:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.8.1:
+  * Release v3.8.1
+  * Update dependencies
+  * Add section in CONTRIBUTING.md on docs changes.
+  * Add checkdocs, checkrst, and checkmd make targets.
+  * Add workflow for rstcheck and mdl.
+  * Change some SOPSs back to sops.
+  * Normalize SOPS usages.
+  * Normalize indentation for code blocks and YAML files.
+  * Improve MD files (with mdl feedback).
+  * Improve RST files (with rstcheck feedback).
+  * pgp: further improve import error format
+  * pgp: better error reporting for missing GPG binary
+  * docs: document AWS environment variables
+  * build(deps): Bump the go group with 7 updates
+  * Make sure to wrap raw errors with toExitError().
+  * Report key rotation errors.
+  * Check err for nil in tests.
+  * Defer only after checking err.
+  * Handle unhandled errors.
+  * Ignore irrelevant return value (it is always nil).
+  * decrypt: fix dropped error
+  * pgp: do not require abs path for SopsGpgExecEnv
+  * Make error the last return value
+  * Handle return values of dec.Token() to improve error messages.
+  * Fix versions in comments
+  * build(deps): Bump the ci group with 1 update
+  * build(deps): Bump the go group with 4 updates
+  * Fix descriptions of unencrypted-regex and encrypted-regex
+    flags.
+  * Reject completely empty documents.
+  * On macOS, prefer XDG_CONFIG_HOME over os.UserConfigDir()
+  * Improve handling of errors when binary store handles bad data
+  * Delete sops encrypted file we don't have keys for.
+  * pgp: remove `--no-default-keyring` argument
+  * pgp: improve handling of GnuPG home dir
+  * build(deps): Bump the ci group with 3 updates
+
+-------------------------------------------------------------------
 Wed Oct  4 19:47:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix broken sops executable (sorry...)

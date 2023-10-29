@@ -39,4 +39,12 @@
     <comment>fix broken sops executable (sorry...) (forwarded request 1115684 from ojkastl_buildservice)</comment>
     <requestid>1115745</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>89ea103fe80a6068ce573057eaf07a6e</srcmd5>
+    <version>3.8.1</version>
+    <time>1698604920</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121000</requestid>
+  </revision>
 </revisionlist>
