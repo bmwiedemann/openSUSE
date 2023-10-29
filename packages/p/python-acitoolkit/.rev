@@ -54,4 +54,13 @@
 - Drop unneeded six dependency</comment>
     <requestid>1094466</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f7d3e3487b75a0177fb093455f3ff171</srcmd5>
+    <version>0.4</version>
+    <time>1698604796</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+</comment>
+    <requestid>1117697</requestid>
+  </revision>
 </revisionlist>

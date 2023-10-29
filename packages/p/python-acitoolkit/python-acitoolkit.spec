@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-acitoolkit
 Version:        0.4
 Release:        0
@@ -31,10 +30,11 @@ Patch1:         python-acitoolkit-python-310.patch
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module websocket-client > 0.33.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -86,8 +86,7 @@ Python samples for using acitoolkit for programming ACI.
 %prep
 %setup -q -n acitoolkit-%{version}
 # Remove dependencies of applications/ and samples/ from the library
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 
 chmod -x LICENSE NOTICE
 
@@ -105,10 +104,10 @@ dos2unix \
   applications/reports/static/*.css applications/reports/static/*.js
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Install docs, samples and applications into a common doc area
@@ -119,7 +118,7 @@ find %{buildroot}%{_defaultdocdir}/%{name}/ -type f -exec chmod a-x \{\} \;
 %fdupes %{buildroot}%{_defaultdocdir}/%{name}/
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/acitoolkit_test.py offline
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/acitoolkit_test.py -v offline
 
 %files -n %{name}-doc
 %license LICENSE NOTICE
@@ -138,6 +137,6 @@ find %{buildroot}%{_defaultdocdir}/%{name}/ -type f -exec chmod a-x \{\} \;
 %doc README.md
 %license LICENSE NOTICE
 %{python_sitelib}/acitoolkit
-%{python_sitelib}/acitoolkit-*.egg-info
+%{python_sitelib}/acitoolkit-%{version}*-info
 
 %changelog
