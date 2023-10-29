@@ -816,4 +816,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment>- Remove timestamp/buildhost/kernel version from libhdf5.settings (boo#1209548).</comment>
     <requestid>1073525</requestid>
   </revision>
+  <revision rev="83" vrev="6">
+    <srcmd5>2b2c4d975fc4e3ab2e2093b936dc59fd</srcmd5>
+    <version>1.12.2</version>
+    <time>1698604885</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120888</requestid>
+  </revision>
 </revisionlist>
