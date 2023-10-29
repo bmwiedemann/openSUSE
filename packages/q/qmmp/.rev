@@ -914,4 +914,21 @@
     <comment>- Update to version 2.1.4.</comment>
     <requestid>1089258</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>d255372960f2addf37691716b52ca180</srcmd5>
+    <version>2.1.5</version>
+    <time>1698604911</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.5:
+  * added waveform seekbar optimization (Linearithmik)
+  * fixed visualization initialization in the simple user
+    interface
+  * fixed playlist geometry issues in the simple user interface
+  * fixed playlist settings in the skinned user interface
+  * fixed possible crash
+  * fixed http version
+  * fixed file type determination by content in the waveform
+    seekbar</comment>
+    <requestid>1120973</requestid>
+  </revision>
 </revisionlist>
