@@ -84,4 +84,18 @@
 - Update Requires from setup.py (forwarded request 1066150 from glaubitz)</comment>
     <requestid>1066162</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>75640eb190b2c5cfd91b50705de7602a</srcmd5>
+    <version>9.1.0</version>
+    <time>1698604916</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 9.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1120498 from glaubitz)</comment>
+    <requestid>1120981</requestid>
+  </revision>
 </revisionlist>
