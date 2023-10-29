@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 27 21:13:23 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.7.8. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.7.8>
+
+-------------------------------------------------------------------
 Fri Oct 13 05:33:18 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.7.7. Upstream release notes:

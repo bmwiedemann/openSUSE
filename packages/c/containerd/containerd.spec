@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 8c087663b0233f6e6e2f4515cee61d49f14746a8
-%define git_short   8c087663b023
+%define git_version 8e4b0bde866788eec76735cc77c4720144248fb7
+%define git_short   8e4b0bde8667
 
 %global provider_prefix github.com/containerd/containerd
 %global import_path %{provider_prefix}
 
 Name:           containerd
-Version:        1.7.7
+Version:        1.7.8
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
