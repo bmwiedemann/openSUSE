@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 27 05:40:09 UTC 2023 - Jonathan Kang <jonathankang@gnome.org>
+
+- Rebase gnome-software-disable-offline-update.patch(bsc#1216603).
+
+-------------------------------------------------------------------
+Fri Oct 27 01:25:16 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-software-plugin-opensuse-distro-upgrade.patch: plugins:
+  add opensuse-distro-upgrade plugin(glgo#GNOME/gnome-software!1557).
+
+-------------------------------------------------------------------
 Fri Oct 20 13:48:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:

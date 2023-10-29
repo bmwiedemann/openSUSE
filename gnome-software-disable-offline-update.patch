@@ -1,42 +1,46 @@
-Index: gnome-software-41.5/src/gs-updates-section.c
+Index: gnome-software-45.1/src/gs-updates-section.c
 ===================================================================
---- gnome-software-41.5.orig/src/gs-updates-section.c
-+++ gnome-software-41.5/src/gs-updates-section.c
-@@ -739,7 +739,7 @@ gs_updates_section_app_state_changed_cb
- 		}
- 	}
+--- gnome-software-45.1.orig/src/gs-updates-section.c
++++ gnome-software-45.1/src/gs-updates-section.c
+@@ -323,12 +323,18 @@ static void
+ _set_button_stack_visible_child (GsUpdatesSection *self,
+ 				 const gchar *child_name)
+ {
+-	if (self->button_cancel != NULL)
++	if (self->button_cancel != NULL) {
+ 		gtk_widget_set_visible (self->button_cancel, g_strcmp0 (child_name, "cancel") == 0);
+-	if (self->button_download != NULL)
++		gtk_widget_set_sensitive (self->button_cancel, FALSE);
++	}
++	if (self->button_download != NULL) {
+ 		gtk_widget_set_visible (self->button_download, g_strcmp0 (child_name, "download") == 0);
+-	if (self->button_update != NULL)
++		gtk_widget_set_sensitive (self->button_download, FALSE);
++	}
++	if (self->button_update != NULL) {
+ 		gtk_widget_set_visible (self->button_update, g_strcmp0 (child_name, "update") == 0);
++		gtk_widget_set_sensitive (self->button_download, FALSE);
++	}
  
--	gtk_widget_set_sensitive (self->button_update, busy < len);
-+	gtk_widget_set_sensitive (self->button_update, FALSE);
+ 	gtk_stack_set_visible_child_name (GTK_STACK (self->button_stack), child_name);
  }
- 
- static void
-@@ -760,6 +760,8 @@ gs_updates_section_init (GsUpdatesSectio
- 	gtk_list_box_set_sort_func (GTK_LIST_BOX (self->listbox),
- 				    _list_sort_func,
- 				    self, NULL);
-+
-+	gtk_widget_set_sensitive (self->button_update, FALSE);
- }
- 
- /**
-Index: gnome-software-41.5/src/gs-updates-section.ui
+Index: gnome-software-45.1/src/gs-updates-section.ui
 ===================================================================
---- gnome-software-41.5.orig/src/gs-updates-section.ui
-+++ gnome-software-41.5/src/gs-updates-section.ui
-@@ -34,6 +34,7 @@
-                 <property name="visible">True</property>
-                 <property name="use_underline">True</property>
-                 <property name="label" translatable="yes">_Download</property>
-+                <property name="tooltip-text" translatable="yes">Please use gpk-update-viewer to update the system</property>
-                 <signal name="clicked" handler="_button_download_clicked_cb" swapped="yes"/>
-                 <style>
-                   <class name="suggested-action"/>
+--- gnome-software-45.1.orig/src/gs-updates-section.ui
++++ gnome-software-45.1/src/gs-updates-section.ui
+@@ -31,6 +31,7 @@
+                   <object class="GsProgressButton" id="button_download">
+                     <property name="use_underline">True</property>
+                     <property name="label" translatable="yes">_Download</property>
++		    <property name="tooltip-text" translatable="yes">Please use gpk-update-viewer to update the system</property>
+                     <signal name="clicked" handler="_button_download_clicked_cb" swapped="yes"/>
+                     <style>
+                       <class name="suggested-action"/>
 @@ -46,6 +47,7 @@
-             <child>
-               <object class="GsProgressButton" id="button_update">
-                 <property name="visible">True</property>
-+                <property name="tooltip-text" translatable="yes">Please use gpk-update-viewer to update the system</property>
-                 <signal name="clicked" handler="_button_update_all_clicked_cb" swapped="yes"/>
-                 <style>
-                   <class name="suggested-action"/>
+                 <property name="child">
+                   <object class="GsProgressButton" id="button_update">
+                     <property name="use-underline">True</property>
++		    <property name="tooltip-text" translatable="yes">Please use gpk-update-viewer to update the system</property>
+                     <signal name="clicked" handler="_button_update_all_clicked_cb" swapped="yes"/>
+                     <style>
+                       <class name="suggested-action"/>
