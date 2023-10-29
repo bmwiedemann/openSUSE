@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-PyCBC
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -30,7 +30,7 @@
 
 %define modname PyCBC
 Name:           python-PyCBC%{psuffix}
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
