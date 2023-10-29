@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 26 08:33:36 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add avahi-CVE-2023-38473.patch: derive alternative host name from
+  its unescaped version (bsc#1216419 CVE-2023-38473).
+
+-------------------------------------------------------------------
 Wed Sep 20 08:51:09 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Don't require sudo. There is no indication it's actually used for

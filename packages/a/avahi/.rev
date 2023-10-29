@@ -1242,4 +1242,12 @@ Pushing GNOME 45.rc packages</comment>
 </comment>
     <requestid>1113079</requestid>
   </revision>
+  <revision rev="160" vrev="26">
+    <srcmd5>99516ab5ee6167790dd9908b9ef5ad2f</srcmd5>
+    <version>0.8</version>
+    <time>1698604756</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120633</requestid>
+  </revision>
 </revisionlist>

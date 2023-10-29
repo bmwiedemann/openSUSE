@@ -101,6 +101,8 @@ Patch28:        harden_avahi-daemon.service.patch
 Patch29:        harden_avahi-dnsconfd.service.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2023-1981.patch boo#1210328 mgorse@suse.com -- emit error if requested service is not found.
 Patch30:        avahi-CVE-2023-1981.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2023-38473.patch bsc#1216419 xwang@suse.com -- derive alternative host name from its unescaped version
+Patch31:        avahi-CVE-2023-38473.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -410,6 +412,7 @@ Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -503,6 +506,7 @@ cp -a %{SOURCE12} service-type-database/build-db
 %patch28 -p1
 %patch29 -p1
 %patch30 -p1
+%patch31 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions
