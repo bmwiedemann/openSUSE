@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.93
+%global nss_softokn_fips_version 3.94
 %define NSPR_min_version 4.35
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.93
+Version:        3.94
 Release:        0
-%define underscore_version 3_93
+%define underscore_version 3_94
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -77,6 +77,7 @@ Patch44:        nss-fips-tests-enable-fips.patch
 Patch45:        nss-fips-drbg-libjitter.patch
 Patch46:        nss-allow-slow-tests.patch
 Patch47:        nss-fips-pct-pubkeys.patch
+Patch48:        nss-fips-test.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -231,6 +232,7 @@ cd nss
 %endif
 %patch46 -p1
 %patch47 -p1
+%patch48 -p1
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins

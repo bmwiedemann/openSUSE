@@ -1,0 +1,15 @@
+Index: nss/tests/cert/cert.sh
+===================================================================
+--- nss.orig/tests/cert/cert.sh
++++ nss/tests/cert/cert.sh
+@@ -1367,8 +1367,8 @@ cert_fips()
+ 
+   echo "$SCRIPTNAME: Enable FIPS mode on database -----------------------"
+   CU_ACTION="Enable FIPS mode on database for ${CERTNAME}"
+-  echo "modutil -dbdir ${PROFILEDIR} -fips true "
+-  ${BINDIR}/modutil -dbdir ${PROFILEDIR} -fips true 2>&1 <<MODSCRIPT
++  echo "modutil -dbdir ${PROFILEDIR} -chkfips true "
++  ${BINDIR}/modutil -dbdir ${PROFILEDIR} -chkfips true 2>&1 <<MODSCRIPT
+ y
+ MODSCRIPT
+   RET=$?
