@@ -81,4 +81,13 @@
   * Update documentation</comment>
     <requestid>1114294</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0dc37d966586586ad9acd37d95a54201</srcmd5>
+    <version>6.0.2</version>
+    <time>1698604895</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.2
+  * fixes for OBJECT, PSUBSCRIBE and SCAN commands</comment>
+    <requestid>1120918</requestid>
+  </revision>
 </revisionlist>
