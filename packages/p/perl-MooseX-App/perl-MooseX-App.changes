@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 26 12:43:58 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove 70.patch and 71.patch: fixed upstream
+
+-------------------------------------------------------------------
+Sun Oct 22 03:06:29 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+  1.43 2023-10-21
+      - Remove duplicate license
+      - Require Config::Any
+      - Fix cmd_aliases for flags (fixed by William Barker)
+      - Remove smartmatch (implemented by Petr Pisar)
+      - Allow to override build date with SOURCE_DATE_EPOCH (implemented by Bernhard M. Wiedemann)
+
+-------------------------------------------------------------------
 Thu Oct 19 19:50:05 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Add 71.patch: Allow to override build date with SOURCE_DATE_EPOCH
