@@ -93,6 +93,9 @@ performance on %{quant} and less bit images.
 %package     -n libGraphicsMagick%{so_ver}-config
 Summary:        Configuration for the GraphicsMagick image conversion library
 Group:          System/Libraries
+# %{_libdir}/GraphicsMagick-*/config/type-ghostscript.mgk references fonts
+# shipped as part of ghostscript-fonts-std (boo#1216604)
+Requires:       ghostscript-fonts-std
 
 %description -n libGraphicsMagick%{so_ver}-config
 GraphicsMagick provides an image manipulation and translation utility

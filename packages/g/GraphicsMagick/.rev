@@ -1218,4 +1218,13 @@ New Features:
   - strlcpy-wrong-sizing.patch (upstreamed)</comment>
     <requestid>1114691</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>50be359aa495f74ab7c30f7fa5cd30b6</srcmd5>
+    <version>1.3.42</version>
+    <time>1698604753</time>
+    <user>anag+factory</user>
+    <comment>- Have libGraphicsMagick3-config require ghostscript-fonts-std
+  (boo#1216604). (forwarded request 1120507 from dimstar)</comment>
+    <requestid>1120618</requestid>
+  </revision>
 </revisionlist>
