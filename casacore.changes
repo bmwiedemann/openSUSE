@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 11:40:11 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Tue Jul 19 07:51:15 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid compile-time CPU-detection (boo#1100677)
