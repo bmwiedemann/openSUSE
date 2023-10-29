@@ -207,4 +207,14 @@ This will increase possible helix users.</comment>
 - Remove explicit dependency declaration of cargo1.66 to use latest Rust.</comment>
     <requestid>1108347</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>39bfb14426e248f19a74336d6dd7893f</srcmd5>
+    <version>23.10</version>
+    <time>1698604890</time>
+    <user>anag+factory</user>
+    <comment>- Remove patch 0001-fix-ub-in-diff-gutter.patch
+- Update to version 23.10
+- Build requires git</comment>
+    <requestid>1120897</requestid>
+  </revision>
 </revisionlist>

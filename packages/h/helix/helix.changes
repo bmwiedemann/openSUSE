@@ -1,4 +1,253 @@
 -------------------------------------------------------------------
+Sat Oct 28 10:22:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Build requires git. It won't be used but it will fail if git binary is not detected.
+
+-------------------------------------------------------------------
+Sat Oct 28 09:44:51 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove patch 0001-fix-ub-in-diff-gutter.patch
+- Update to version 23.10:
+  Breaking changes:
+    - Support multiple language servers per language
+    - This is a breaking change to language configuration
+  
+  Features:
+    - Support multiple language servers per language
+    - Add a statusline element for the selected register
+    - Add `%`, `#`, `.`, `*` and `+` special registers
+    - Add initial support for LSP DidChangeWatchedFiles notifications
+    - Search buffer contents in `global_search`
+    - Add a "smart tab" command that intelligently jumps the cursor on tab
+    - Add a statusline element for whether a file is read-only
+    - Syntax highlight regex prompts
+    - Allow defining alignment in indent queries
+    - Show visual feedback in `surround_replace`
+    - Switch to Nucleo for fuzzy matching
+    - Insert a trailing newline on write
+    - Add a `-w`/`--working-dir` CLI flag for specifying a working directory on startup
+    - Accept a `+N` CLI argument to set the first file's line number
+    - Accept Helix-specific ignore files in `.helix/ignore` and `~/.config/helix/ignore`
+  
+  Commands:
+    - `merge_selections` (`A-minus`) - merge all selections into one selection that covers all ranges
+    - `move_prev_long_word_end` and `extend_prev_long_word_end` - move/extend to the end of the previous WORD
+    - `reverse_selection_contents` - swaps the values of each selection so they are reversed
+    - Add `:rl` and `:rla` aliases for `:reload` and `:reload-all`
+    - `yank_joined` - join the selections and yank to the selected register
+    - `:write-all!` (`:wa!`) - forcibly write all buffers to disk and create any necessary subdirectories
+    - `:redraw` - clear re-render the UI
+    - `:tree-sitter-highlight-name` - show the theme scope name of the highlight under the cursor
+
+  Usability improvements:
+    - Allow cycling option values at runtime
+    - Exit gracefully on termination signals
+    - Add plaintext matching fallback to tree-sitter pair matching
+    - Persist register selection in pending keymaps
+    - Propagate the count and register to command palette commands
+    - Auto indent on `insert_at_line_start`
+    - Add a config option to control whether LSP completions are automatically inserted on preview
+    - Add a config option for default line endings
+    - Allow ANSI colors in themes
+    - Match pairs that don't form a standalone tree-sitter node
+    - Allow indent sizes of up to 16 columns
+    - Improve performance of mapping positions through changes
+    - Mark buffers created from stdin as modified
+    - Forcibly shut down uninitialized language servers
+    - Add filename completer for shell prompts
+    - Allow binding F13-F24
+    - Resolve LSP code actions
+    - Save an undo checkpoint before accepting completions
+    - Include gitignored files in debugger completions
+    - Make editor remember the last search register
+    - Open directories with `goto_file`
+    - Use relative path to open buffer in `goto_file` (`gf`)
+    - Support `default` color in themes
+    - Toggle between relative and absolute line numbers when the terminal loses focus
+    - Lower default idle-timeout to 250ms
+    - Allow theming diff gutters separately from other diff colors
+    - Style bold/italic/strikethrough in markdown doc popups
+    - Maintain the cursor position and view when splitting with `:hsplit`/`:vsplit`
+    - Accept `-` in macros outside of `<`/`>`
+    - Show all language servers for each language in `--health`
+    - Don't break on hyphens in `:reflow`
+
+  Fixes:
+    - Update diagnostics correctly on language server exit
+    - Fix off-by-one in `select_references_to_symbol_under_cursor`
+    - Extend selection with repeat-last-motion only if the original motion extended the selection
+    - Fix undefined behavior in the diff gutter
+    - Check that tab width is non-zero
+    - Fix styles being overwritten in table rows with multiple cells
+    - Add file for `--log` CLI arg in help text
+    - Fix underflow when repeating a completion that has a negative shift position
+    - Prefer longer matches in `select_next_sibling` and `select_prev_sibling`
+    - Preview scratch buffers in the jumplist picker
+    - Fix chunking by bytes in tree-sitter parsing
+    - Discard LSP publishDiagnostic from uninitialized servers
+    - Use negotiated position encoding for LSP workspace edits
+    - Fix error message for unknown gutter types in config
+    - Fix `:log-open` when `--log` CLI arg is specified
+    - Fix debouncing of LSP messages to fix the last message sticking around
+    - Fix crash when the current working directory is deleted
+    - Fix piping to Helix on macOS
+    - Fix crash when parsing overlapping injections
+    - Clear the statusline when the prompt is visible
+    - Fix range formatting error message typo
+    - Skip rendering gutters when gutter width exceeds view width
+    - Center the picker preview using visual lines
+    - Align view correctly for background buffers opened with `A-ret`
+    - Fix cursor resetting to block when quitting via a keybind
+    - Remove path completions for the `:new` command
+    - Use binary path resolved by `which` for formatter commands
+    - Handle crossterm's `hidden` modifier
+    - Clear completion when switching between windows with the mouse
+    - Eagerly remove the last picker (`<space>'`) when the picker has many items
+    - Fix find commands for buffers with non-LF line-endings
+    - Detect the tmux clipboard provider on macOS
+    - Fix syntax highlighting in dynamic picker preview pane
+    - Recognize HTML code tags with attributes as code in markdown previews
+    - Fix multicursor snippet placeholder directions
+    - Only show diagnostic highlights when diagnostics are enabled for a language server
+    
+  Themes:
+    - Improve the selection color in `ferra`
+    - Add `variable.other.member` theming to `spacebones_light`
+    - Update `autumn` and theme the soft-wrap indicator
+    - Add `gruvbox_dark_soft`
+    - Add `merionette`
+    - Add `zed_onedark` and `zed_onelight`
+    - Use light-gray for `onedarker` inlay hint theming
+    - Update the Nord theme to follow the style guidelines
+    - Tune `dark_plus` inlay hint colors
+    - Add `naysayer`
+    - Add `kaolin-dark`, `kaolin-light` and `kaolin-valley-dark`
+    - Fix selection highlighting in gruvbox variants
+    - Add soft-wrap indicator to `gruvbox`
+    - Add missing palette definitions in `everforest_dark`
+    - Increase diagnostics clarity in `pop-dark`
+    - Add `vim_dark_high_contrast`
+    - Add `new_moon`
+    - Add `yellowed`
+    - Improve comment readability for `autumn`
+    - Distinguish active bufferline buffer in `monokai`
+    - Update ruler colors in `nord`
+    - Update Catppuccin themes
+    - Add text focus scope and diagnostics undercurls for `nord`
+    - Add material theme collection
+    - Improve indent line color in `dracula`
+    - Clean up and refactor `papercolor` to use inheritance
+    - Fix `zenburn` inlay hint color ([#8278](https://github.com/helix-editor/helix/pull/8278)a)
+    - Fix picker crash when previewing an invalid range
+    - Correctly center items in the picker preview
+    - Add `cyan_light`
+    - Theme HTML tags in `onedark`
+    - Refine `darcula` and `darcula-solid` themes
+    - Improve `nord` highlights
+    - Add `nord-night`
+
+  New languages:
+    - Blueprint
+    - Forth
+    - t32
+    - WebC
+    - Persistent DSL for Haskell
+    - F#
+    - Wren
+    - Unison
+    - Todo.txt
+    - Jinja and Handlebars
+    - Pod
+    - Strace
+    - Gemini
+    - GNU Assembler (GAS)
+    - JSON5
+    - TEMPL
+
+  Updated languages and queries:
+    - Add one to the ruler numbers for git-commit
+    - Recognize XAML files as XML
+    - Recognize `Cargo.lock` as TOML
+    - Use Rust grammar for Cairo
+    - Update tree-sitter-nickel
+    - Tune auto-pair characters for Nickel
+    - Recognize `Vagrantfile` as Ruby
+    - Recognize hidden justfiles as Just
+    - Update Java and TypeScript highlight queries
+    - Recognize `.zimrc` as Bash
+    - Recognize `.gir` as XML
+    - Update tree-sitter-scala
+    - Recognize make file-type as Makefile
+    - Update tree-sitter-verilog
+    - Update tree-sitter-cpp
+    - Support core mode for delve debugger
+    - Add Fortran comment injections
+    - Switch Vue language server to `vue-language-server`
+    - Update tree-sitter-sql
+    - Replace the MATLAB tre-sitter grammar
+    - Highlight TOML table headers
+    - Recognize `cppm` file-type as C++
+    - Refactor ecma language queries into private and public queries
+    - Update tree-sitter-dart
+    - Add shebang for nushell files
+    - Recognize systemd files as INI
+    - Update TypeScript, TSX and Svelte grammars
+    - Enable inlay hints in the Svelte language server
+    - Recognize `Brewfile`s as Ruby
+    - Add more file-types for R
+    - Switch tree-sitter-perl to official upstream parser
+    - Fix predicate typo in comment highlights
+    - Update tree-sitter-prql
+    - Recognize `.gitf` as JSON
+    - Switch V language server to `v-analyzer`
+    - Add protobuf language servers
+    - Update tree-sitter-zig
+    - Update tree-sitter-hare
+    - Add Java indent queries
+    - Update tree-sitter-scheme
+    - Recognize `scm` as Scheme instead of TSQ
+    - Update tree-sitter-git-commit
+    - Update JavaScript, TypeScript and TSX grammars
+    - Update tree-sitter-nu
+    - Fix YAML indentation
+    - Add `csharp-ls`, Pyright, Pylyzer and add roots for Python
+    - Update tree-sitter-slint
+    - Recognize more ZSH file-types as Bash
+    - Recognize `star` extension as Starlark
+    - Fix inline HTML tag highlighting in markdown
+    - Update tree-sitter-robot
+    - Highlight Dart 3 `sealed` and `base` keywords
+    - Add configuration for `ltex-ls` to the default `languages.toml`
+    - Update tree-sitter-strace
+    - Update tree-sitter-gleam, enable auto-format
+    - Update tree-sitter-esdl
+    - Expand ignore file-types
+    - Recognize feed related formats as XML
+    - Improve YAML injections
+    - Add shebangs for TypeScript, Julia, Java and OCaml
+    - Highlight abbreviations in Scheme
+    - Remove backtic auto-pair in OCaml
+    - Recognize `flake.lock` as JSON
+    - Add Python test script injection for Nix
+    - Fix Nix comment injection precedence
+    - Recognize editorconfig files as INI
+    - Recognize `.babelrc` as JSON
+    - Switch Purescript to its own tree-sitter parser
+    - Update Unison highlights
+    - Recognize `.webmanifest` as JSON
+    - Recognize polkit policy files as XML
+    - Recognize polkit rules files as JavaScript
+    - Update Go highlight queries
+    - Add shebangs for Makefiles
+    - Add file-type associations from VSCode
+    - Add validation to JSON/CSS language server configs
+    - Add a configuration for the tailwind language server
+    - Add a configuration for the ansible language server
+    - Add a configuration for the GraphQL language server
+    - Indent while statements in Bash
+    - Update tree-sitter-haskell and queries
+
+-------------------------------------------------------------------
 Thu Aug 31 23:40:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add 0001-fix-ub-in-diff-gutter.patch.

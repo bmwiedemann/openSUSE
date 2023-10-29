@@ -23,23 +23,23 @@
 %global _helix_runtimedir %{_libdir}/%{name}/runtime
 
 Name:           helix
-Version:        23.05
+Version:        23.10
 Release:        0
 Summary:        A post-modern modal text editor written in Rust
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0 AND Zlib AND MPL-2.0
 URL:            https://github.com/helix-editor/helix
 # This tarball includes fetched grammars
 Source0:        https://github.com/helix-editor/helix/releases/download/%{version}/%{name}-%{version}-source.tar.xz#/%{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        README-suse-maint.md
 Source4:        helix-rpmlintrc
-Patch1:         https://github.com/helix-editor/helix/pull/7227.patch#/0001-fix-ub-in-diff-gutter.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
+BuildRequires:  git
 Recommends:     %{name}-runtime = %{version}
 ExclusiveArch:  %{rust_arches}
 
