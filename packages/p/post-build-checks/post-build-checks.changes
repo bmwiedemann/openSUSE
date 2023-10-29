@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 27 08:31:23 UTC 2023 - dmueller@suse.com
+
+- Update to version 84.87+git20231027.ea7097f:
+  * Avoid test on unset variables
+
+-------------------------------------------------------------------
 Tue Oct 24 08:56:03 UTC 2023 - dmueller@suse.com
 
 - Update to version 84.87+git20231024.7161a8a:

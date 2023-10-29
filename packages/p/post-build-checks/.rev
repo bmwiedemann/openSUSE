@@ -970,4 +970,13 @@ Marcus
   * Set SOURCE_DATE_EPOCH</comment>
     <requestid>1119913</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>db1c070061ae7ef6d99667775bf98777</srcmd5>
+    <version>84.87+git20231027.ea7097f</version>
+    <time>1698604791</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20231027.ea7097f:
+  * Avoid test on unset variables</comment>
+    <requestid>1120752</requestid>
+  </revision>
 </revisionlist>
