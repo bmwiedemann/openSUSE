@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 27 03:06:50 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.1:
+  * Fix slow multipart parsing for large parts potentially enabling DoS
+    attacks. (CVE-2023-46136, bsc#1216581)
+  * Remove previously deprecated code.
+  * Deprecate the ``__version__`` attribute. Use feature detection, or
+    ``importlib.metadata.version("werkzeug")``, instead.
+  * ``generate_password_hash`` uses scrypt by default.
+  * Add the ``"werkzeug.profiler"`` item to the  WSGI ``environ`` dictionary
+    passed to `ProfilerMiddleware`'s `filename_format` function. It contains
+    the ``elapsed`` and ``time`` values for the profiled request.
+  * Explicitly marked the PathConverter as non path isolating.
+
+-------------------------------------------------------------------
 Mon Sep 25 02:04:19 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.7:

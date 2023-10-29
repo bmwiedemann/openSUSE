@@ -794,4 +794,22 @@
 - Drop captialisation again.</comment>
     <requestid>1113325</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e33dc5937ed4a7454322af118ae4bc10</srcmd5>
+    <version>3.0.1</version>
+    <time>1698604766</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.1:
+  * Fix slow multipart parsing for large parts potentially enabling DoS
+    attacks. (CVE-2023-46136, bsc#1216581)
+  * Remove previously deprecated code.
+  * Deprecate the ``__version__`` attribute. Use feature detection, or
+    ``importlib.metadata.version(&quot;werkzeug&quot;)``, instead.
+  * ``generate_password_hash`` uses scrypt by default.
+  * Add the ``&quot;werkzeug.profiler&quot;`` item to the  WSGI ``environ`` dictionary
+    passed to `ProfilerMiddleware`'s `filename_format` function. It contains
+    the ``elapsed`` and ``time`` values for the profiled request.
+  * Explicitly marked the PathConverter as non path isolating.</comment>
+    <requestid>1120656</requestid>
+  </revision>
 </revisionlist>
