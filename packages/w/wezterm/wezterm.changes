@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 29 06:30:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Set wezterm-terminfo as noarch
+
+-------------------------------------------------------------------
+Sun Oct 29 06:11:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Create subpackage wezterm-terminfo 
+
+-------------------------------------------------------------------
 Mon Oct  9 14:14:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Use unupdated vendored crates for now.

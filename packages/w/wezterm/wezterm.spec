@@ -61,6 +61,7 @@ BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(xcb)
+Recommends:     %{name}-terminfo
 
 %description
 Wezterm is a GPU-accelerated terminal emulator written in Rust. It supports
@@ -73,6 +74,14 @@ Recommends:     %{name} = %{version}
 
 %description mux-server
 Multiplexer server for wezterm for running on a headless system.
+
+%package terminfo
+Summary:        Terminfo for %{name}
+Supplements:    (%{name}-terminfo and terminfo)
+BuildArch:      noarch
+
+%description terminfo
+Terminfo file for wezterm.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -148,7 +157,6 @@ install -D -m 0644 assets/shell-completion/fish %{buildroot}%{_datadir}/fish/ven
 %{_bindir}/wezterm
 %{_bindir}/wezterm-gui
 %{_bindir}/strip-ansi-escapes
-%{_datadir}/terminfo/w/wezterm
 %{_datadir}/applications/org.wezfurlong.wezterm.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.wezfurlong.wezterm.svg
 %{_datadir}/metainfo/org.wezfurlong.wezterm.appdata.xml
@@ -159,6 +167,10 @@ install -D -m 0644 assets/shell-completion/fish %{buildroot}%{_datadir}/fish/ven
 %license LICENSE.md
 %doc README.md CONTRIBUTING.md
 %{_bindir}/wezterm-mux-server
+
+%files terminfo
+%license LICENSE.md
+%{_datadir}/terminfo/w/wezterm
 
 %files bash-completion
 %dir %{_datadir}/bash-completion

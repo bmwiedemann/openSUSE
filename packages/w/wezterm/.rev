@@ -658,4 +658,14 @@
 </comment>
     <requestid>1116499</requestid>
   </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>e52ea56c17ba6de95c47e22f9a57eaab</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1698604903</time>
+    <user>anag+factory</user>
+    <comment>- Set wezterm-terminfo as noarch
+- Create subpackage wezterm-terminfo 
+</comment>
+    <requestid>1120963</requestid>
+  </revision>
 </revisionlist>
