@@ -7237,4 +7237,41 @@ always built-in because vim has direct perl dependencies anyway.
  * Vim9: islocked() needs more work</comment>
     <requestid>1118549</requestid>
   </revision>
+  <revision rev="355" vrev="1">
+    <srcmd5>d479739ee19417e83d586d3dcd6c6c13</srcmd5>
+    <version>9.0.2078</version>
+    <time>1698604789</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 9.0.2078
+ * several problems with type aliases
+ * Vim9: No support for type aliases
+ * TextChangedI may not always trigger
+ * Completion menu may be wrong
+ * don't echo empty lines (#13431)
+ * typo in quickfix.c comments
+ * update debian related runtime files (#13423)
+ * Vim9: no nr2str conversion in list-unpack
+ * objdump files not recognized
+ * [security] disallow setting env in restricted mode
+ * possible to escape bracketed paste mode with Ctrl-C
+ * [security] overflow in :history
+ * clarify bracketed paste mode
+ * missing code formatting in if_pyth.txt
+ * xxd: coloring was disabled on Cygwin
+ * xxd: corrupting files when reversing bit dumps
+ * EXPAND flag set for filetype option
+ * cannot use buffer-number for errorformat
+ * Fix typos in several documents (#13420)
+ * pacman hooks are detected as conf filetype
+ * Janet files are not recognised
+ * not able to detect xkb filetypes
+ * *.{gn,gni} files are not recognized
+ * small updates to the documentation for varargs
+ * Update ftplugin - comment motions (#13412)
+ * outstanding exceptions may be skipped
+ * tests: avoid error when no swap files exist
+ * Vim9: no strict type checks for funcrefs varargs
+ * do not use hard-coded match id (#13393)</comment>
+    <requestid>1120907</requestid>
+  </revision>
 </revisionlist>
