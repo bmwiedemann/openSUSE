@@ -16,10 +16,10 @@
 #
 
 
-%bcond_with test
+%bcond_with     test
 %define pythons python3
 Name:           qtile
-Version:        0.22.1
+Version:        0.23.0
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
@@ -29,21 +29,23 @@ URL:            http://qtile.org
 Source0:        https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 # Patch0:         https://github.com/qtile/qtile/pull/3985.patch#/0000-fix-and-new-features-on-latest-wlroots.patch
+BuildRequires:  gcc
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  librsvg
 BuildRequires:  pango-devel
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-cairocffi >= 0.9.0
+BuildRequires:  python3-cairocffi >= 1.6.0
 BuildRequires:  python3-cffi >= 1.1.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-pip
+BuildRequires:  python3-pycairo >= 1.25.1
 BuildRequires:  python3-pywlroots
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
-BuildRequires:  python3-xcffib >= 0.10.1
+BuildRequires:  python3-xcffib >= 1.4.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libpulse)
@@ -54,11 +56,15 @@ BuildRequires:  pkgconfig(xwayland)
 Requires:       python3-cairocffi >= 0.9.0
 Requires:       python3-cairocffi-pixbuf >= 0.9.0
 Requires:       python3-cffi >= 1.1.0
+Requires:       python3-pycairo >= 1.25.1
+Requires:       python3-pywayland
+Requires:       python3-pywlroots
 Requires:       python3-xcffib >= 0.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     libxcb-cursor0
-Recommends:     pulseaudio
+Recommends:     pipewire
+Recommends:     pipewire-pulseaudio
 Recommends:     python3-iwlib
 Recommends:     python3-keyring
 Recommends:     python3-psutil
@@ -100,7 +106,6 @@ BuildRequires:  xrandr
 BuildRequires:  xterm
 BuildRequires:  xvfb-run
 BuildRequires:  xwayland
-
 %endif
 
 %description
@@ -122,15 +127,18 @@ sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/cmd_obj.py
 sed -i '104s/True/False/' setup.py
 
 %build
-# wlr headers try to import wayland-server-core.h , which is in wayland/wayland-server-core.h
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
-%python_build
+# Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
+export PYTHONPATH="$PWD:$PYTHONPATH"
+./scripts/ffibuild -v
+%pyproject_wheel
 
 %install
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
-./scripts/ffibuild
-%python_install
+export PYTHONPATH="$PWD:$PYTHONPATH"
+./scripts/ffibuild -v
+%pyproject_install
 mkdir -p %{buildroot}%{_datadir}/xsessions/
 install -m 644 %{_builddir}/qtile-%{version}/resources/qtile.desktop %{buildroot}%{_datadir}/xsessions/
 
@@ -141,20 +149,14 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-%fdupes %{buildroot}%{python3_sitearch}
+%python_expand %fdupes %{buildroot}%{python3_sitearch}
 
 %if %{with test}
 %check
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
-mkdir -vp ${PWD}/bin
-ln -svf %{buildroot}%{_bindir}/qtile ${PWD}/bin/qtile
-export LC_TYPE=en_US.UTF-8
-export PYTHONPATH=%{buildroot}%{python3_sitearch}:${PYTHONPATH}
-export PATH="${PWD}/bin:${PATH}"
-export PYTHONDONTWRITEBYTECODE=1
-
-# See https://github.com/qtile/qtile/issues/3682 for details of test failures
-xvfb-run python3 -m pytest -vv -rs --backend x11 -k 'not (TreeTab or fakescreen or manager or test_window or test_prompt or test_cycle_layouts or test_multiple_borders or (notify and test_parse_text))'
+export PYTHONPATH=%{buildroot}%{python3_sitearch}:%{python3_sitearch}
+%pytest -vv -rs --backend x11
+%pytest -vv -rs --backend wayland
 %endif
 
 %post

@@ -1,7 +1,7 @@
 <constraints>
   <hardware>
-    <memory>
-      <size unit="G">8</size>
-    </memory>
+    <physicalmemory>
+      <size unit="G">24</size>
+    </physicalmemory>
   </hardware>
 </constraints>

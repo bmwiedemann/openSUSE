@@ -258,4 +258,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1095707</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2d15d67594f6be9df35f81037ee0d47f</srcmd5>
+    <version>0.23.0</version>
+    <time>1698604886</time>
+    <user>anag+factory</user>
+    <comment>- Cleanup specfile
+- Fix wayland backend build
+- Disabled tests for now. Undeterministic and random fails. Might be VM related.
+- Requires pycairo &gt;= 1.25.1 to prevent crashes
+- update _constraints to avoid oom:
+  * physical memory to 24G
+- Requires python xcffib &gt;= 1.4.0
+- Requires now python-cairocffi &gt;=1.6.0
+- Change recommends from pulseaudio to pipewire and pipewire-pulseaudio
+- Qtile requires python-pywayland and python-pywlroots for it to run on wayland backend
+- Disabled tests again since it requires https://github.com/leifgehrmann/pangocffi which
+  openSUSE does not have yet.
+- Update to version 0.23.0
+    !!! Dependency Changes !!!
+      - xcffib must be upgraded to &gt;= 1.4.0
+      - cairocffi must be upgraded to &gt;= 1.6.0
+      - New optional dependency `pulsectl-asyncio` required for `PulseVolume` widget
+    !!! Notice for packagers - wlroots (optional dependency) bump !!!</comment>
+    <requestid>1120985</requestid>
+  </revision>
 </revisionlist>
