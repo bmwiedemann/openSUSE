@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-NYTProf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Devel-NYTProf
 Name:           perl-Devel-NYTProf
-Version:        6.12
+Version:        6.140.0
 Release:        0
+%define cpan_version 6.14
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Powerful fast feature-rich Perl source code profiler
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -35,6 +36,20 @@ BuildRequires:  perl(Test::Differences) >= 0.60
 BuildRequires:  perl(Test::More) >= 0.84
 Requires:       perl(File::Which) >= 1.09
 Requires:       perl(JSON::MaybeXS)
+Provides:       perl(Devel::NYTProf) = 6.140.0
+Provides:       perl(Devel::NYTProf::Apache) = 6.140.0
+Provides:       perl(Devel::NYTProf::Constants)
+Provides:       perl(Devel::NYTProf::Core) = 6.140.0
+Provides:       perl(Devel::NYTProf::Data) = 6.140.0
+Provides:       perl(Devel::NYTProf::FileHandle)
+Provides:       perl(Devel::NYTProf::FileInfo)
+Provides:       perl(Devel::NYTProf::ReadStream) = 6.140.0
+Provides:       perl(Devel::NYTProf::Reader) = 6.140.0
+Provides:       perl(Devel::NYTProf::Run)
+Provides:       perl(Devel::NYTProf::SubCallInfo)
+Provides:       perl(Devel::NYTProf::SubInfo)
+Provides:       perl(Devel::NYTProf::Util) = 6.140.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -82,7 +97,7 @@ NYTProf is effectively two profilers in one: a statement profiler, and a
 subroutine profiler.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

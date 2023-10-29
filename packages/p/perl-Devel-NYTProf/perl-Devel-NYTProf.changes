@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Oct 19 03:06:24 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.14
+   see /usr/share/doc/packages/perl-Devel-NYTProf/Changes
+
+  =head2 Changes in Devel::NYTProf 6.14 - 18th Oct 2023
+  B<There should be no significant differences in the performance of Devel-NYTProf
+  from that of the previous release.>  This release is primarily maintenance-
+  focused.
+  More build-time warnings using recent versions of C compilers have been
+  eliminated, particularly with recent production releases of Perl.  Thanks to
+  Karl Williamson for guidance on updating F<ppport.h> and using it to update
+  F<NYTProf.xs>.
+  =head2 Changes in Devel::NYTProf 6.13 - 10th Oct 2023
+  B<There should be no significant differences in the performance of Devel-NYTProf
+  from that of the previous release.>  This release is primarily maintenance-
+  focused.
+  The largest difference in the distribution
+  is the removal of the F<nytprofpf> program (L<GH
+  206|https://github.com/timbunce/devel-nytprof/pull/206>).  This program was
+  written for an open-source software competition which is no longer being held.
+  Other changes include:
+  Removal of remaining reference to Travis CI
+  (L<GH 202|https://github.com/timbunce/devel-nytprof/pull/202>).
+  Elimination of 'bad-function-cast' warnings during 'make'
+  (L<GH 205|https://github.com/timbunce/devel-nytprof/pull/205>).
+  Correction of typographic error in F<nytprofhtml> thanks to Amory Meltzer
+  (L<GH 210|https://github.com/timbunce/devel-nytprof/pull/210>).
+  Depending on Per version, skip one test file that was exercising 'given' and
+  'when' keywords (now deprecated)
+  (L<GH 211|https://github.com/timbunce/devel-nytprof/pull/211>).
+  Elimination of the 'register' keyword from NYTProf.xs (partial resolution of
+  L<GH 191|https://github.com/timbunce/devel-nytprof/issues/191>) which is
+  forbidden as of ISO C++17.
+
+-------------------------------------------------------------------
 Thu Nov 17 03:06:21 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.12
