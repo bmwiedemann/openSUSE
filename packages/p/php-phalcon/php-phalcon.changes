@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 28 21:03:05 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.4.0
+  * Changed `Phalcon\Mvc\Model::getMessages()` to also filter with an
+    array of fields [#16265]
+  * Changed `Phalcon\DataMapper\Query\Select::columns()` to accept an
+    array of columns (keys as aliases) instead of `func_get_args` [#16451]
+  * Changed `Phalcon\Html\Helper\AbstractSeries::__invoke()` to no longer
+    clear the internal store when called [#16441]
+  * Added the ability to define interpolator characters for the
+    `Phalcon\Logger\Formatter\Line` [#16430]
+  * Added `Phalcon\Html\Helper\AbstractSeries::reset()` to clear the
+    internal store when needed [#16441]
+  * Model Annotation strategy did not work with empty_string [#16426]
+  * View::reset() sets content to null instead of default empty string
+    [#16437]
+  * Fixed `Phalcon\Filter\Validation\Validator\Size\*` validators to
+    correctly detect the size of uploaded files [#16390]
+
+-------------------------------------------------------------------
 Thu Sep 28 18:55:55 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.3.1
