@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 19 03:08:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.014
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.014: Wed 18 Oct 12:16:55 CEST 2023
+
+  	Changes:
+  	- handle utf8 in address phrases, according to RFC5335 (since
+  	  2008 experimental)  May show some changes in your regression
+  	  tests.  [Andy Beverley]
+
+  	Fixes:
+  	- epilogue starter test needs ^ anchor
+  	  github issue #16 [Jacob Balazer]
+  	- existing preamble should keep at least one empty string to
+  	  indicate its existence.
+  	  github issue #18 [Jacob Balazer]
+  	- clean error when field names are too long w.r.t. the fold
+  	  wrap.  Found by [Raphaël Gertz]
+
+-------------------------------------------------------------------
 Sun Jun 25 03:06:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.013
