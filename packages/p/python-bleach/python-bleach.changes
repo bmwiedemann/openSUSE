@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 28 09:50:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Dropped support for Python 3.7.
+  * Add support for Python 3.12.
+  * Fix linkify with arrays in querystring
+  * Handle more cases with < followed by character data
+  * Fix entities inside a tags in linkification
+  * Update cap for tinycss2 to <1.3
+  * Updated Sphinx requirement
+  * Add dependabot for github actions and update github actions
+
+-------------------------------------------------------------------
 Thu Jun 29 11:31:20 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add patch strip-spaces.patch (bsc#1212852)
@@ -134,9 +147,9 @@ Mon Mar 23 10:09:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Feb 28 16:13:43 UTC 2020 - Alexandros Toptsoglou <atoptsoglou@suse.com>
 
-- Update to V3.1.1: Security update for CVE-2020-6802  
+- Update to V3.1.1: Security update for CVE-2020-6802
 
-  * CVE-2020-6802: Fixed mutation XSS vulnerabilities (bsc#1165303). 
+  * CVE-2020-6802: Fixed mutation XSS vulnerabilities (bsc#1165303).
 
 -------------------------------------------------------------------
 Wed Jan  8 10:35:41 CET 2020 - Matej Cepl <mcepl@suse.com>

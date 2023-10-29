@@ -219,4 +219,23 @@
     <comment></comment>
     <requestid>1096012</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e4972bbd7401b13257d31cf08b5b0738</srcmd5>
+    <version>6.1.0</version>
+    <time>1698604788</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.0:
+  * Dropped support for Python 3.7.
+  * Add support for Python 3.12.
+  * Fix linkify with arrays in querystring
+  * Handle more cases with &lt; followed by character data
+  * Fix entities inside a tags in linkification
+  * Update cap for tinycss2 to &lt;1.3
+  * Updated Sphinx requirement
+  * Add dependabot for github actions and update github actions
+
+- Update to V3.1.1: Security update for CVE-2020-6802
+  * CVE-2020-6802: Fixed mutation XSS vulnerabilities (bsc#1165303).</comment>
+    <requestid>1120892</requestid>
+  </revision>
 </revisionlist>
