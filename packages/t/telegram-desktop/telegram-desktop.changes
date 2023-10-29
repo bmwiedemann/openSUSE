@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 29 09:29:50 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.1
+  * Fix crash in emoji status select.
+  * Fix crash in language change.
+  * Suggest shrinking only photos in webpage previews.
+  * Fix opening video files in webpage previews in-app.
+  * Fix sending links and markup with customized webpage previews.
+  * Show "Saved Messages" as a first row when replying in another chat.
+  * Fix selecting words by double-click with webpage previews.
+  * Fix delayed webpage preview generation in preview options.
+  * Add "show-peer-id-below-about" experimental option.
+
+- Updated to version 4.11.0
+  * View full statistics in your channels and group chats.
+  * Choose which link preview in added to the message.
+  * Choose if link preview is above or below the text.
+  * Choose if link preview has large or small image.
+  * Quote parts of text in replies.
+  * Add quote formatting.
+  * Reply in another chat.
+  * Add nice looking code blocks with syntax highlighting.
+  * Copy full code block by click on its header.
+  * Send a highlighted code block using ```language syntax.
+  * Change your name color in Chat Settings.
+  * Customize quotes, link previews and replies to your messages.
+- Update tg_owt-master.zip to commit be153adaa363b2b13242466ad5b7b87f61301639
+- Build requires libboost_regex-devel
+
+-------------------------------------------------------------------
 Wed Oct 11 13:11:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop freetype-devel BuildRequires: there is already
