@@ -771,4 +771,41 @@ The new default is much safer and will reduce the effect application channel lea
     <comment></comment>
     <requestid>1099488</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>da17b84178cc1880a2253ee6603e486a</srcmd5>
+    <version>3.12.7</version>
+    <time>1698604926</time>
+    <user>anag+factory</user>
+    <comment>-  update to 3.12.7:
+  * Stream replication connections configured to use exclusively
+    TLSv1.3 failed.
+  * On startup, stream replicas will handle one more potential
+    case of segment file corruption after an unclean shutdown.
+  * `default_policies.*.queue_pattern` definition in
+    `rabbitmq.conf` was incorrectly parsed.
+  * Avoid log noise when inter-node connections frequently fail
+    and recover.
+  * Optimized stream index scans. Longer scans could result in
+    some replicas stopping with a timeout.
+  * Classic queue storage version is now a supported key for
+    operator policies.
+  * Queue length limit overflow behavior now can be configured
+    via operator policies.
+  * Several `list_stream_*` commands (available via both
+    `rabbitmq-diagnostics` and `rabbitmq-streams`) commands now
+    can display replica node in addition to other fields.
+  * `rabbitmqctl add_user` now can accept a pre-generated salted
+    password instead of a plain text password, both as a
+    positional argument and via standard input:
+  * Message consumption with the &quot;Nack message, requeue: true&quot;
+    option did not actually requeue deliveries.
+  * HTTP API request body size is now limited to 10 MiB by
+    default.
+  * Two endpoints, one that accepts messages for publishing
+    (note: publishing over the HTTP API is greatly discouraged)
+  * and another for definition import,
+  * will now reject larger transfers with a `400 Bad Request`
+    response.</comment>
+    <requestid>1121010</requestid>
+  </revision>
 </revisionlist>

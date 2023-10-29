@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Sun Oct 29 15:35:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+-  update to 3.12.7:
+  * Stream replication connections configured to use exclusively
+    TLSv1.3 failed.
+  * On startup, stream replicas will handle one more potential
+    case of segment file corruption after an unclean shutdown.
+  * `default_policies.*.queue_pattern` definition in
+    `rabbitmq.conf` was incorrectly parsed.
+  * Avoid log noise when inter-node connections frequently fail
+    and recover.
+  * Optimized stream index scans. Longer scans could result in
+    some replicas stopping with a timeout.
+  * Classic queue storage version is now a supported key for
+    operator policies.
+  * Queue length limit overflow behavior now can be configured
+    via operator policies.
+  * Several `list_stream_*` commands (available via both
+    `rabbitmq-diagnostics` and `rabbitmq-streams`) commands now
+    can display replica node in addition to other fields.
+  * `rabbitmqctl add_user` now can accept a pre-generated salted
+    password instead of a plain text password, both as a
+    positional argument and via standard input:
+  * Message consumption with the "Nack message, requeue: true"
+    option did not actually requeue deliveries.
+  * HTTP API request body size is now limited to 10 MiB by
+    default.
+  * Two endpoints, one that accepts messages for publishing
+    (note: publishing over the HTTP API is greatly discouraged)
+  * and another for definition import,
+  * will now reject larger transfers with a `400 Bad Request`
+    response.
+  * `DELETE /api/queues/{vhost}/{name}` now can delete exclusive
+    queues.
+  * Key supported by operator policies are now grouped by queue
+    type in the UI.
+  * Improved data safety for confirms in environments where the
+    plugin uses classic queues.
+  * Avoid an exception when a not fully established MQTT-over-
+    WebSockets connection terminated.
+  * Recovery of bindings of durable queues bound to a transient
+    JMS topic exchange failed.
+  * Recovery of bindings of durable queues bound to a transient
+    `x-modulo-hash` exchange failed.
+  * Recovery of bindings of durable queues bound to a transient
+    recent history exchange failed.
+  * `osiris` has been upgraded to `1.6.9`
+  * Queue recovery on node restart in certain conditions could
+    run into an exception
+  * `file_handle_cache` operations are now safer when handling
+    non-existent keys.
+  * Fixed a potential resource leak in at-least-once dead
+    lettering from quorum queues.
+  * AMQP 1.0 clients that try to publish in a way that results in
+    the message not being routed anywhere are now notified with
+    a more sensible settlement status.
+  * Prometheus scraping API endpoints now support optional
+    authentication.
+  * The plugin now filters out values that are `undefined` or
+    `NaN`, simply excluding them from the API endpoint response.
+    Previously, if a metric was not computed for any reason (e.g.
+    free disk space monitor was disabled on the node),
+    its value could end up being rendered as `undefined` or `NaN`,
+    two values that Prometheus scrapers cannot handle (for
+  * The plugin will now enforce maximum STOMP frame size. Frames
+    larger than that size will be rejected. The default maximum
+    size is 4 MiB. It can be increased or decreased:
+  * ``` ini
+  * # increase maximum supported STOMP frame size to 10 MiB
+  * stomp.max_frame_size = 10485760
+  * ```
+  * To reduce it from the default 4 MiB to 2 MiB:
+  * ``` ini
+  * # 2 MiB
+  * stomp.max_frame_size = 2097152
+  * ```
+  * Shovel will gracefully stop when its destination (target)
+    does not exist.
+  * Such shovels will then be periodically restarted to retry.
+  * It is now possible to opt in to deactivate file handle cache
+    use in the plugin:
+
+  * ``` ini
+  * web_mqtt.use_file_handle_cache = false
+  * ```
+  * It is now possible to opt in to deactivate file handle cache
+    use in the plugin:
+
+  * ``` ini
+  * web_stomp.use_file_handle_cache = false
+  * ```
+  * `ra` was upgraded to `2.6.3`
+  * Declaration of a classic queue could run into an exception.
+  * Classic queues v1 (CQv1) that had a backlog of messages
+    stored by 3.9 and earlier versions could run into an exception
+    during queue index recovery after an upgrade to 3.10.x or any
+    later series.
+  * Nodes that had a large number of quorum queues could observe
+    accumulation of Erlang processes under significant load.
+  * Feature flag discovery on a newly added node could discover
+    an incomplete inventory of feature flags.
+  * Feature flag discovery operations will now be retried
+    multiple times in case of network failures.
+  * Nodes in clusters that had quorum queues and non-mirrored
+    classic queues on stopped (or failed) nodes could run into an
+    exception.
+  * The same exception could affect `rabbitmqctl list_queues`.
+  * Proxy Protocol v2 LOCAL packets were not supported.
+  * When a quorum queue does not find its local replica data
+    files on boot, it will now log a warning.
+  * An attempt to clear limits of a non-existent virtual host
+    failed with a 500 status code.
+  * The "Queues" tab in the UI was renamed to "Queue and Streams"
+    to better reflect its contents.
+  * New HTTP API endpoints for quorum queue replica management,
+    equivalent to the `rabbitmq-queues` commands that manage replicas.
+
+  * ```
+  * POST /api/queues/quorum/{vhost}/{name}/replicas/add
+  * DELETE /api/queues/quorum/{vhost}/{name}/replicas/remove
+  * POST /api/queues/quorum/replicas/on/{node}/grow
+  * DELETE /api/queues/quorum/replicas/on/{node}/shrink
+  * ```
+  * Stream client connections that authenticated using x.509
+    certificates failed.
+  * Only set OAuth 2 client's CA certificate file setting when it
+    is defined.
+  * The plugin will now accept JWT tokens without a `scope`. Such
+    tokens would only be useful when the plugin is used exclusively
+    for authentication and not authorization.
+  * `oauth2` is now an accepted alias for the OAuth 2
+    authentication and authorization backend:
+
+  * ```
+  * auth_backends.1 = oauth2
+  * ```
+
+  * Previously the only option for OAuth 2 was using a full
+    module name, `rabbit_auth_backend_oauth2`.
+  * STOMP plugin log entries had an extra line feed character.
+  * `ra` was upgraded to `2.6.2`
+
+-------------------------------------------------------------------
 Tue Jul 18 16:51:49 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Improve erlang-rabbitmq-client Provides:
@@ -538,7 +681,7 @@ Tue Oct  6 11:31:49 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 Wed Aug 19 08:58:05 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Update to 3.8.7
-- RabbitMQ 3.8.7 is a maintenance release that patches a **security** vulnerability. 
+- RabbitMQ 3.8.7 is a maintenance release that patches a **security** vulnerability.
 - Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.7
 - This release requires Erlang/OTP 21.3 or later.
   22.3 or 23.0 releases are recommended.
@@ -609,7 +752,7 @@ Thu Mar 12 08:35:53 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
 -------------------------------------------------------------------
 Mon Feb 24 09:47:08 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
-- jsc#SLE-10913 
+- jsc#SLE-10913
 
 -------------------------------------------------------------------
 Mon Feb  3 16:07:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -620,24 +763,24 @@ Mon Feb  3 16:07:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Mon Jan 13 11:57:17 UTC 2020 - Gabriele Santomaggio <g.santomaggio@suse.com>
 
-- Update to 3.8.2 
+- Update to 3.8.2
 - RabbitMQ 3.8.2 is a maintenance release.
 - Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.2
 - RabbitMQ 3.8.2 is a maintenance release.
 - This release requires Erlang/OTP 21.3 or later.
   22.x series is recommended.
 - RabbitMQ 3.8.2 is an RabbitMQ 3.8.0 update
-- RabbitMQ 3.8.0 is a feature release. It contains several major improvements 
-  in areas of data safety, replication, observability, and ease of upgrades. 
+- RabbitMQ 3.8.0 is a feature release. It contains several major improvements
+  in areas of data safety, replication, observability, and ease of upgrades.
   Some highlight features are:
     * Quorum Queues
     * Built-in Prometheus support with a set of Grafana dashboards to complement it
     * Feature Flags
     * Single Active Consumer
-    * New authentication and authorisation backend that uses OAuth 2.0 (JWT) 
+    * New authentication and authorisation backend that uses OAuth 2.0 (JWT)
       tokens and scopes
 - Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.0
-- Read the upgrading guide before update: https://www.rabbitmq.com/upgrade.html 
+- Read the upgrading guide before update: https://www.rabbitmq.com/upgrade.html
 
 -------------------------------------------------------------------
 Fri Dec  6 13:14:21 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
@@ -704,7 +847,7 @@ Mon Jul 15 09:38:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
 
 - Update to RabbitMQ version 3.7.16
 - Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.16
-- RabbitMQ 3.7.16 is a maintenance release. 
+- RabbitMQ 3.7.16 is a maintenance release.
   It focuses on bug fixes and minor usability improvements. Erlang/OTP Compatibility Notes
   Per the new Erlang version support policy in effect starting with January 2019,
   this release no longer supports Erlang/OTP 19.3.
@@ -763,7 +906,7 @@ Fri Feb 01 16:12:22 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.com>
 Mon Jan 21 03:01:22 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.com>
 
 - Update to RabbitMQ version 3.7.10
-- Requires erlang to 20.3, mandatory for RabbitMQ 3.7.10 
+- Requires erlang to 20.3, mandatory for RabbitMQ 3.7.10
   see: https://www.rabbitmq.com/which-erlang.html
 
 -------------------------------------------------------------------
@@ -914,7 +1057,7 @@ Wed Dec 13 12:13:03 UTC 2017 - vuntz@suse.com
 -------------------------------------------------------------------
 Tue Dec 12 12:26:10 UTC 2017 - ilausuch@suse.com
 
-- modified logrotate to use rabbitmqctl to force the creation of the 
+- modified logrotate to use rabbitmqctl to force the creation of the
   log file after logrotation
 
 -------------------------------------------------------------------
