@@ -1,3 +1,11 @@
+gpxsee (13.10) stable; urgency=low
+
+  * New GUI icons that fit the current platform styles.
+  * Added "Open directory" action for desktop systems.
+  * Fixed/improved vector maps path label layout algorithm.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 28 Oct 2023 14:03:12 +0200
+
 gpxsee (13.9) stable; urgency=low
 
   * Fixed storing of WMTS tiles with file system incompatible tile

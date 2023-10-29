@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 28 13:52:06 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.10
+  * New GUI icons that fit the current platform styles.
+  * Added "Open directory" action for desktop systems.
+  * Fixed/improved vector maps path label layout algorithm.
+
+-------------------------------------------------------------------
 Sun Sep 24 23:36:15 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.9
