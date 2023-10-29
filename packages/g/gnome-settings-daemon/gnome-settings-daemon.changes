@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 26 08:40:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 538816ff42f682fc4b541810ca107486abab9976.patch: smartcard:
+  Steal error when propagating through GTask.
+
+-------------------------------------------------------------------
 Sat Sep 16 15:31:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

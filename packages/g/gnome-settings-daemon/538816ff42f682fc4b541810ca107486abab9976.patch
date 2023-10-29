@@ -1,0 +1,28 @@
+From 538816ff42f682fc4b541810ca107486abab9976 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Tue, 26 Sep 2023 19:16:17 +0200
+Subject: [PATCH] smartcard: Steal error when propagating through GTask
+
+The g_task_return_error() function wants ownership of the error,
+which here is also held by the g_autoptr(). Steal the error when
+propagating, so the ownership is transferred.
+---
+ plugins/smartcard/gsd-smartcard-manager.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/smartcard/gsd-smartcard-manager.c b/plugins/smartcard/gsd-smartcard-manager.c
+index abce6ef3e..c049f4922 100644
+--- a/plugins/smartcard/gsd-smartcard-manager.c
++++ b/plugins/smartcard/gsd-smartcard-manager.c
+@@ -554,7 +554,7 @@ on_modules_initialized (GObject      *source_object,
+         modules = gck_modules_initialize_registered_finish (result, &error);
+ 
+         if (error) {
+-                g_task_return_error (task, error);
++                g_task_return_error (task, g_steal_pointer (&error));
+                 return;
+         }
+ 
+-- 
+GitLab
+
