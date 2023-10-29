@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 27 07:45:47 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Use older way than autopatch on SLE/Leap, which is not ready for
+  the macro.
+- Rebase gvfs-nvvfs.patch.
+
+-------------------------------------------------------------------
 Fri Oct 20 13:43:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.52.1:

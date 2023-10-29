@@ -830,7 +830,7 @@ index dffeef3..dabdcb2 100644
 +      '-DMAX_JOB_THREADS=1',
 +  ]
 +
-+  programs += [['gvfsd-nds', {'sources': sources, 'dependencies': deps, 'c_args': cflags}]]
++  programs += {'gvfsd-nds': {'sources': sources, 'dependencies': deps, 'c_args': cflags}}
 +  mounts += ['nds']
 +endif
 +
