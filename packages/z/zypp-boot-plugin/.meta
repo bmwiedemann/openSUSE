@@ -1,0 +1,9 @@
+<package name="zypp-boot-plugin" project="openSUSE:Factory">
+  <title>Zypp Plugin for updating reboot level.</title>
+  <description>This Zypp plugin will be called after each package installation/update with will be done
+by applications which uses libzypp.
+If needed the plugin creates the file */run/reboot-needed* which indicates
+for other applications, that a reboot is needed.
+</description>
+  <devel project="devel:microos" package="zypp-boot-plugin"/>
+</package>
