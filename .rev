@@ -19,4 +19,12 @@
 - Remove temporary version override (forwarded request 1069868 from glaubitz)</comment>
     <requestid>1069887</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dca42fb70e25f6e80a80b7e37fe5c126</srcmd5>
+    <version>2.0.0</version>
+    <time>1698604915</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120980</requestid>
+  </revision>
 </revisionlist>
