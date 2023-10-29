@@ -17,14 +17,12 @@
 
 
 Name:           python-python-lsp-server
-Version:        1.7.4
+Version:        1.8.2
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-Patch0:         python-lsp-server-pr415-flake8deps.patch
-Patch1:         python-lsp-server-pr416-jedi-0.19.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -34,7 +32,7 @@ BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module PyQt5}
-BuildRequires:  %{python_module autopep8 >= 1.6.0 with %python-autopep8 < 2.1.0}
+BuildRequires:  %{python_module autopep8 >= 2.0.4 with %python-autopep8 < 2.1.0}
 BuildRequires:  %{python_module flake8 >= 6.1.0 with %python-flake8 < 7}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.20}
@@ -43,7 +41,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pydocstyle >= 6.3.0 with %python-pydocstyle < 6.4.0}
-BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 3}
+BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 1.2.0}
@@ -55,15 +53,14 @@ BuildRequires:  fdupes
 Requires:       python-docstring-to-markdown
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-python-lsp-jsonrpc >= 1.0.0
-Requires:       python-setuptools >= 39.0.0
 Requires:       python-ujson >= 3.0.0
 Requires:       (python-jedi >= 0.17.2 with python-jedi < 0.20)
-Suggests:       python-autopep8 >= 1.6.0
+Suggests:       python-autopep8 >= 2.0.4
 Conflicts:      python-autopep8 >= 2.1.0
 Suggests:       python-pydocstyle >= 6.3.0
 Conflicts:      python-pydocstyle >= 6.4.0
 Suggests:       python-pylint >= 2.5.0
-Conflicts:      python-pylint >= 3
+Conflicts:      python-pylint >= 3.1
 Suggests:       python-rope >= 1.2.0
 Suggests:       python-yapf >= 0.33
 Suggests:       python-whatthepatch >= 1.0.2
@@ -104,6 +101,8 @@ will be enabled:
 %autosetup -p1 -n python-lsp-server-%{version}
 # Remove pytest addopts
 sed -i '/addopts/d' pyproject.toml
+# increase pylint upper pin
+sed -i '/pylint/ s/<3"/<3.1"/' pyproject.toml
 
 %build
 %pyproject_wheel
