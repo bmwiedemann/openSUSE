@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 29 04:31:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2013102
+  * Fixed many OpenMPT test cases, which can (and will) break some
+    older modules.
+  * Remove many old flags that were not considered very useful.
+
+-------------------------------------------------------------------
 Thu Sep  7 06:29:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20230906
