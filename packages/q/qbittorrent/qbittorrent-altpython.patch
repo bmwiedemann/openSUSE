@@ -1,0 +1,13 @@
+Index: qbittorrent-4.6.0/src/base/utils/foreignapps.cpp
+===================================================================
+--- qbittorrent-4.6.0.orig/src/base/utils/foreignapps.cpp
++++ qbittorrent-4.6.0/src/base/utils/foreignapps.cpp
+@@ -256,7 +256,7 @@ PythonInfo Utils::ForeignApps::pythonInf
+     static PythonInfo pyInfo;
+     if (!pyInfo.isValid())
+     {
+-        if (testPythonInstallation(u"python3"_s, pyInfo))
++        if (testPythonInstallation(u"__PYTHON_ALT__"_s, pyInfo))
+             return pyInfo;
+ 
+         if (testPythonInstallation(u"python"_s, pyInfo))

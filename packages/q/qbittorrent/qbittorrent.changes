@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 27 20:02:13 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Reintroduce qbittorrent-fix_boost_1.66_build.patch that had
+  been hastily removed and add qbittorrent-altpython.patch
+  to use a newer python for plugins on Leap.
+
+-------------------------------------------------------------------
 Mon Oct 23 04:18:28 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.6.0

@@ -17,6 +17,13 @@
 #
 
 
+%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
+%define _pyalt  11
+%endif
+%if 0%{?sle_version} == 150400
+%define _pyalt  10
+%endif
+
 Name:           qbittorrent
 Version:        4.6.0
 Release:        0
@@ -27,6 +34,10 @@ Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
 Patch0:         harden_qbittorrent-nox@.service.patch
+# PATCH-FIX-OPENSUSE qbittorrent-fix_boost_1.66_build.patch search for libboost_system.so and patch stacktrace function # aloisio@gmx.com
+Patch2:         qbittorrent-fix_boost_1.66_build.patch
+# PATCH-FIX-OPENSUSE qbittorrent-altpython.patch force newer python for the plugins -- aloisio@gmx.com
+Patch3:         qbittorrent-altpython.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -47,7 +58,7 @@ BuildRequires:  pkgconfig(zlib) >= 1.2.11
 # contains the qt6 plugins to read SVG icons
 %requires_ge    libQt6Svg6
 # For search engines.
-Recommends:     python3
+Recommends:     python3%{_pyalt}
 
 %description
 qBittorrent is a bittorrent client programmed in C++ and Qt that
@@ -67,6 +78,7 @@ version.
 
 %prep
 %autosetup -p1
+sed -e 's/__PYTHON_ALT__/python3%{?_pyalt:.%{_pyalt}}/' -i src/base/utils/foreignapps.cpp
 
 %build
 for ui in nox gui; do
