@@ -1,0 +1,6 @@
+<package name="perl-Test-ExpectAndCheck" project="openSUSE:Factory">
+  <title>Expect/check-style unit testing with object methods</title>
+  <description>This package creates objects that assist in writing unit tests with mocked object instances. Each mock instance will expect to receive a given list of method calls. Each method call is checked that it received the right arguments, and will return a prescribed result. At the end of each test, each object is checked to ensure all the expected methods were called.</description>
+  <devel project="devel:languages:perl" package="perl-Test-ExpectAndCheck"/>
+  <url>https://metacpan.org/pod/Test::ExpectAndCheck</url>
+</package>
