@@ -149,4 +149,13 @@
   - define make_build macro</comment>
     <requestid>1085461</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>89bf09818bf00558e7da8fb8f5d83396</srcmd5>
+    <version>1.12</version>
+    <time>1698604793</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.12
+  - Add support for systemd soft-reboot</comment>
+    <requestid>1115961</requestid>
+  </revision>
 </revisionlist>

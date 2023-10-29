@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  5 13:28:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.12
+  - Add support for systemd soft-reboot
+
+-------------------------------------------------------------------
 Mon May  8 08:49:37 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use suse_version instead of sle_version

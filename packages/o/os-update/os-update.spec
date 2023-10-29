@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
@@ -33,6 +33,9 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       lsof
 %if 0%{?suse_version} >= 1500
 Requires:       zypper-needs-restarting
+%endif
+%if 0%{?suse_version} >= 1600
+Requires:       zypp-boot-plugin >= 0.0.4
 %endif
 Recommends:     rebootmgr
 Recommends:     systemd-status-mail
