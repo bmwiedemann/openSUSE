@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 19 03:07:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+
+  0.15    2023-10-18
+          [BUGFIXES]
+           * Avoid creating a long `->then` chain of Futures when handling
+             EAGAIN (RT150117)
+           * Temporarily enable blocking mode on filehandles when the default
+             event loop is not using `select()`, to avoid a CPU spin (RT150117)
+
+-------------------------------------------------------------------
 Wed Apr 26 03:06:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.14

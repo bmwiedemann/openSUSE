@@ -18,23 +18,29 @@
 
 %define cpan_name Future-IO
 Name:           perl-Future-IO
-Version:        0.14
+Version:        0.150.0
 Release:        0
+%define cpan_version 0.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Future-returning IO methods
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Future)
-BuildRequires:  perl(Module::Build) >= 0.400400
+BuildRequires:  perl(Module::Build) >= 0.4004
 BuildRequires:  perl(Struct::Dumb)
 BuildRequires:  perl(Test2::V0)
+BuildRequires:  perl(Test::ExpectAndCheck) >= 0.60.0
 BuildRequires:  perl(Test::Future::IO::Impl)
 Requires:       perl(Future)
 Requires:       perl(Struct::Dumb)
+Provides:       perl(Future::IO) = 0.150.0
+Provides:       perl(Future::IO::ImplBase) = 0.150.0
+Provides:       perl(Future::IO::System) = 0.150.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -48,17 +54,17 @@ this, while allowing asynchronous event systems to provide an
 implementation of these operations.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
