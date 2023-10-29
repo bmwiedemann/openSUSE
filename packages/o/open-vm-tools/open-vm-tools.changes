@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 27 14:42:23 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- Fix (bsc#1216432) - VUL-0: CVE-2023-34058: open-vm-tools: SAML token
+  signature bypass vulnerability.
+- Fix (bsc#1216433) - VUL-0: : CVE-2023-34059: open-vm-tools: file
+  descriptor hijack vulnerability
++ Add patch:
+  - CVE-2023-34058.patch
+  - CVE-2023-34059.patch
+
+-------------------------------------------------------------------
 Sun Oct 22 15:27:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: No longer
