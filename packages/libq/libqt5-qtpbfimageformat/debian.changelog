@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (2.6) stable; urgency=low
+
+  * Fixed/improved path label layout algorithm.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 29 Oct 2023 00:15:51 +0200
+
 qt5-pbf-image-plugin (2.5) stable; urgency=low
 
   * Fixed/improved path label layout algorithm.

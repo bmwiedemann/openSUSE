@@ -23,7 +23,7 @@ Name:           qt5-qtpbfimageformat
 %else
 Name:           libqt5-qtpbfimageformat
 %endif
-Version:        2.5
+Version:        2.6
 Release:        1
 Summary:        Qt 5 PBF Image Format Plugin
 License:        LGPL-3.0-only
