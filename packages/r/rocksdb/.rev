@@ -57,4 +57,13 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1116498</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>69285de9fec5e5196c946532e36f039b</srcmd5>
+    <version>8.6.7</version>
+    <time>1698604896</time>
+    <user>anag+factory</user>
+    <comment>- update constraints for reliable building
+</comment>
+    <requestid>1120922</requestid>
+  </revision>
 </revisionlist>
