@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 27 19:35:43 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.4.1:
+  * Improved QA checks for Chinese and Japanese.
+  * Improved handling of multiple 100% matches from the TM as well
+    as search accuracy.
+  * Recognize all ISO 639 languages in the language-setting
+    controls.
+  * Fixed bug in selection handling introduced in 3.4.
+
+-------------------------------------------------------------------
 Mon Oct  2 09:27:17 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.4:

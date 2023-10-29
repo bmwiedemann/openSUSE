@@ -655,4 +655,18 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 </comment>
     <requestid>1114812</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>375a76ce4704ddc7eeb359abed7214cf</srcmd5>
+    <version>3.4.1</version>
+    <time>1698604876</time>
+    <user>anag+factory</user>
+    <comment>- Poedit 3.4.1:
+  * Improved QA checks for Chinese and Japanese.
+  * Improved handling of multiple 100% matches from the TM as well
+    as search accuracy.
+  * Recognize all ISO 639 languages in the language-setting
+    controls.
+  * Fixed bug in selection handling introduced in 3.4.</comment>
+    <requestid>1120845</requestid>
+  </revision>
 </revisionlist>
