@@ -621,4 +621,14 @@
   * https://www.php.net/ChangeLog-8.php#8.2.11</comment>
     <requestid>1114306</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b11f1a511d097c3116fb520b9d1d57ee</srcmd5>
+    <version>8.2.12</version>
+    <time>1698604754</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.2.12
+  * This is a bug fix release.
+    https://www.php.net/ChangeLog-8.php#8.2.12</comment>
+    <requestid>1120625</requestid>
+  </revision>
 </revisionlist>
