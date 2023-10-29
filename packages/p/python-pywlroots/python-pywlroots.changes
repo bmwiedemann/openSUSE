@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 21 23:17:45 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Use %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Oct 19 06:51:19 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
 
 - Update to version 0.16.6:

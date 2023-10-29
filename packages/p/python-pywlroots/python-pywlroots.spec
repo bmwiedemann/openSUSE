@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %bcond_without test
 Name:           python-pywlroots
 Version:        0.16.6
