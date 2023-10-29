@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 27 12:32:12 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231027.c46db9b:
+  * Only treat aarch64 and x86_64 as mandatory
+  * Docstring improvements
+  * Wait a randomized interval
+  * Release bci repositories per architecture independently
+
+-------------------------------------------------------------------
+Fri Oct 27 08:49:18 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231027.3a138b5:
+  * gocd/rabbit-openqa.py: Ignore jobs without group
+
+-------------------------------------------------------------------
 Thu Oct 26 15:05:00 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20231026.fcdc535:
