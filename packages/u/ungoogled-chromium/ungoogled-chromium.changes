@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 27 07:52:50 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 118.0.5993.117 (boo#1216549)
+  * CVE-2023-5472: Use after free in Profiles
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Thu Oct 19 12:52:08 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 118.0.5993.88: 

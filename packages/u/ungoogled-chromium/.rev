@@ -290,4 +290,15 @@
 </comment>
     <requestid>1119072</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>780e075f33b50d9fdd571e4ac81b9ca7</srcmd5>
+    <version>118.0.5993.117</version>
+    <time>1698604800</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 118.0.5993.117 (boo#1216549)
+  * CVE-2023-5472: Use after free in Profiles
+  * Various fixes from internal audits, fuzzing and other initiatives
+</comment>
+    <requestid>1120801</requestid>
+  </revision>
 </revisionlist>
