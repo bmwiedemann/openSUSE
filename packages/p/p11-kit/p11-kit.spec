@@ -21,7 +21,7 @@
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
 Name:           p11-kit
-Version:        0.25.0
+Version:        0.25.1
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause
@@ -31,8 +31,6 @@ Source0:        https://github.com/p11-glue/%{name}/releases/download/%{version}
 Source1:        https://github.com/p11-glue/%{name}/releases/download/%{version}/p11-kit-%{version}.tar.xz.sig
 Source98:       https://p11-glue.github.io/p11-glue/%{name}/%{name}-release-keyring.gpg#/%{name}.keyring
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM d1d4b0ac316a27c739ff91e6c4153f1154e96e5a.patch -- Fix probing of C_GetInterface
-Patch0:         https://github.com/p11-glue/p11-kit/commit/d1d4b0ac316a27c739ff91e6c4153f1154e96e5a.patch
 BuildRequires:  gtk-doc
 %if 0%{?suse_version} >= 1600
 BuildRequires:  libtasn1-tools

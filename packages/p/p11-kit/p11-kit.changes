@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 27 12:05:22 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.25.1:
+  * fix probing of C_GetInterface [#535]
+  * p11-kit: add command to list tokens [#581]
+  * p11-kit: add command to list mechanisms supported by a token [#576]
+  * p11-kit: add command to generate private-public keypair on a token
+    [#551, #582]
+  * p11-kit: add commands to import/export certificates and public
+    keys into/from a token [#543, #549, #568, #588]
+  * p11-kit: add commands to list and delete objects of a token
+    [#533, #544, #571]
+  * p11-kit: add --login option to login into a token with object
+    and profile management commands [#587]
+  * p11-kit: adjust behavior of PKCS#11 profile management commands
+    [#558, #560, #583, #591]
+  * p11-kit: print PKCS#11 URIs in list-modules [#532]
+  * bug and build fixes [#528 #529, #534, #537, #540, #541, #545,
+    #547, #550, #557, #572, #575, #579, #585, #586, #590]
+  * test fixes [#553, #580]
+  * Remove patch fixed upstream:
+    - d1d4b0ac316a27c739ff91e6c4153f1154e96e5a.patch
+
+-------------------------------------------------------------------
 Wed Sep 20 21:26:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add d1d4b0ac316a27c739ff91e6c4153f1154e96e5a.patch: Fix probing
