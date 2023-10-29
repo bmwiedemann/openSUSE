@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 27 14:50:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.3:
+  * Add --server-k3s-extra-args for disabling traefik etc
+
+-------------------------------------------------------------------
+Fri Oct 27 14:49:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.2:
+  * Add notes to README for k3sup plan
+  * Use node-token from an env-var instead of a file
+  * Use an env-var for the node-token instead of a file
+  * Update examples for k3sup plan
+  * Move temporary file deletion into a defer
+  * Add plan and node-token commands
+  * Fix typo
+  * Alteration to support message
+
+-------------------------------------------------------------------
 Fri Sep 15 09:20:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.13.1:
