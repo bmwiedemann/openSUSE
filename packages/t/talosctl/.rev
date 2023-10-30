@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>955575b57d7107fb1b4d2e18ae0e3142</srcmd5>
+    <version>1.5.4</version>
+    <time>1698700276</time>
+    <user>anag+factory</user>
+    <comment>new package talosctl: CLI to interact with the Talos Linux immutable Kubernetes distribution</comment>
+    <requestid>1121170</requestid>
+  </revision>
+</revisionlist>

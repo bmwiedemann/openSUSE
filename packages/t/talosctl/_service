@@ -1,0 +1,24 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/siderolabs/talos</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">go.work</param>
+    <param name="revision">v1.5.4</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="tar" mode="buildtime">
+    <param name="obsinfo">talos.obsinfo</param>
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="archive">talos-1.5.4.obscpio</param>
+  </service>
+</services>
