@@ -17,17 +17,17 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2023_4_rc2
+%define lname libSPIRV-Tools-2023_5_rc1
 
 Name:           spirv-tools
-Version:        2023.4~rc2
+Version:        2023.5~rc1
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2023.4.rc2.tar.gz
-#Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-1.3.261.0.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2023.5.rc1.tar.gz
+#Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-1.3.268.0.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 BuildRequires:  bison
@@ -40,7 +40,7 @@ BuildRequires:  gcc11-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.1+sdk261
+BuildRequires:  spirv-headers >= 1.6.1+sdk268
 
 %description
 The package includes an assembler, binary module parser,
@@ -68,7 +68,7 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%autosetup -p1 -n SPIRV-Tools-2023.4.rc2
+%autosetup -p1 -n SPIRV-Tools-2023.5.rc1
 find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 

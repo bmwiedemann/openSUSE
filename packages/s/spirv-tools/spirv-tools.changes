@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 27 04:03:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.5~rc1
+  * opt: add new trim passes
+  * SPV_QCOM_image_processing support
+  * Add SPV_EXT_fragment_shader_interlock and
+    SPV_KHR_physical_storage_buffer to allow lists
+  * Add a new legalization pass to dedupe invocation interlock
+    instructions
+
+-------------------------------------------------------------------
 Tue Aug 22 10:04:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.4~rc2
