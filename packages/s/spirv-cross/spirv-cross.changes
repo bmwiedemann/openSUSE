@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 27 04:14:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.268.0
+  * GLSL: Implement 64-bit image support.
+  * GLSL: Handle empty block declarations.
+
+-------------------------------------------------------------------
 Fri Aug 25 08:56:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.261.0
