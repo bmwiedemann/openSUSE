@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 30 15:45:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force Java 11 to build on i586
+
+-------------------------------------------------------------------
 Mon Sep 25 09:35:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2
