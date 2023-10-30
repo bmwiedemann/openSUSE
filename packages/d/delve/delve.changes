@@ -1,7 +1,103 @@
 -------------------------------------------------------------------
+Mon Oct 30 18:33:29 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) >= 1.17 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Drop go build -o arg, default binary name is pkg of main()
+  * Drop comment about upstream Makefile static build options fail
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
+Mon Oct 30 18:22:27 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.21.2:
+  * *: release 1.21.2 (#3543)
+  * proc: use DW_AT_trampoline to detect auto-generated code (#3528)
+  * proc/native: use cgo instead of C for freebsd (#3529)
+  * service/test: disable TestClientServer_chanGoroutines with rr backend (#3492)
+  * proc: implement follow exec mode on Windows (#3507)
+  * Use a valid timezone in tested binary (#3527)
+  * pkg/terminal: support vscode in edit command (#3524)
+  * service/dap: fix bugs in stdout/stderr handling (#3522)
+  * service/dap: add the concrete type to interface type (#3510)
+  * all: remove obsolete build tags "// +build" (#3513)
+
+-------------------------------------------------------------------
+Mon Oct 30 18:22:11 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.21.1:
+  * V1.21.1 (#3518)
+  * all: replace deprecated io/ioutil with io and os (#3509)
+  * pkg/proc: macho: Enable debugging stripped binaries (#3511)
+  * fix memory leak (#3512)
+  * pky/proc: enable function call injection in Delve for linux/ppc64le (#3449)
+  * pkg/terminal: support more editors with edit command (#3506)
+  * proc: move StepInstruction method to TargetGroup (#3488)
+  * Various fixes for go 1.22 (#3455)
+  * service/dap: accept a string list as launch request's buildFlags (#3496)
+  * _scripts: remove unnecessary os.ExpandEnv (#3504)
+  * proc,service: simplify tests with T.Setenv (#3503)
+  * pkg/terminal: add 'packages' command (#3499)
+  * pkg/proc/internal/ebpf: remove redundant nil check (#3502)
+  * service/dap: strip package paths from symbols in callstack (#3500)
+  * pkg/proc: Fix PIE tests on ppc64le port (#3498)
+  * go.mod: update version of github.com/cilium/ebpf (#3491)
+  * api,dap: fix hexadecimal printing of vars with symbolic const values (#3487)
+  * pkg,service: fix typos in comments, exceptions, tests (#3486)
+  * proc: refactorings to implement follow-exec mode on Windows (#3441)
+  * proc,service,terminal: add ways to list goroutines waiting on a channel (#3481)
+  * proc: disable "wait-for" tests on freebsd (#3482)
+  * DWARF CFI: use a stack for restore/remember opcodes (#3480)
+  * proc: remove unused functions (#3479)
+  * cmd/dlv: handle ctrl-c during tracing (#3477)
+  * teamcity: misc changes to CI (#3476)
+  * proc: when stepping set condition on thread ID if there is no curg (#3475)
+  * pkg/proc: add support for more types in ebpf tracing backend (#3474)
+  * pkg,service: make receiver names consistent (#3473)
+  * goversion: parse new version format and simplify version representation (#3470)
+  * Update target.go (#3471)
+  * *: remove deepsource.toml (#3468)
+  * gobuild: pass user specified -C argument first (#3456)
+  * locspec: fix SubstitutePath when converting a Windows path to Linux (#3453)
+  * proc: fix stacktraces on freebsd/amd64/go1.20 (#3458)
+  * proc: fix PIE support on macOS (#3467)
+  * teamcity: hold back linux/386 builds to 1.20 (#3465)
+  * service/dap: use == to test io.EOF (#3464)
+  * goversion,teamcity: update test matrix and fix build scripts (#3463)
+  * *: Fix ppc64le test runs (#3460)
+  * Documentation,cmd/dlv: clean up command line usage help (#3395)
+  * proc: add waitfor option to attach (#3445)
+  * logflags: simplify Logger interface (#3274)
+  * starbind: fix Starlark slice unmarshaling (#3454)
+  * pkg/terminal: use reflect.Value.IsValid to check a zero Value (#3450)
+  * proc: replace use of runtime.GOARCH with Arch.Name (#3442)
+  * proc,ebpf: mark as unreadable args with unsupported types with ebpf (#3444)
+  * service/api: in multiline mode print address of pointers (#3448)
+  * terminal: restore breakpoints set with line offset on restart (#3425)
+  * all: use "len == 0" rather than "len <= 0" when checking empty slice/string (#3439)
+  * service/dap: fix typos in comments (#3438)
+  * pkg/proc: simplify code with trivial changes (#3436)
+  * *: add linux/ppc64le targets (#3435)
+  * terminal,service: better printing of suspended breakpoints (#3415)
+  * proc: check recursion level when loading pointers (#3431)
+  * *: add ppc64le support (#2963)
+  * service/dap: fix test for debug in progress (#3407)
+  * all: fix typos (#3434)
+  * pkg,service: refactor to use %q instead of "%s" (#3430)
+  * pkg/dwarf/frame: fix FrameDescriptionEntries's Append (#3433)
+  * pkg/proc,service/*: Supports sending output to clients when running programs remotely (#3253)
+  * proc: read context from sigtrampgo, fixes TestCgoStacktrace2 on 1.21 (#3401)
+
+-------------------------------------------------------------------
 Tue Aug 29 08:05:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update summary and architecture excludes 
+- update summary and architecture excludes
 
 -------------------------------------------------------------------
 Wed Jun 28 15:33:04 UTC 2023 - jkowalczyk@suse.com

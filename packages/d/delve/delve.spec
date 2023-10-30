@@ -14,15 +14,12 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
-
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 %define shortname dlv
 
 Name:           delve
-Version:        1.21.0
+Version:        1.21.2
 Release:        0
 Summary:        Debugger for the Go Programming Language
 License:        MIT
@@ -30,7 +27,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/go-delve/delve
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.17
 # your_linux_architecture_is_not_supported_by_delve (support_sentinel_linux.go)
 ExcludeArch:    s390x ppc64 ppc64le %arm riscv64
 
@@ -45,21 +42,17 @@ in mind, Delve should stay out of your way as much as possible.
 %autosetup -a 1
 
 %build
-# Build the binary, use PIE unless on ppc64le or s390x
-# Upstream reports these as unsupported platforms so meta pkg disable
-go build \
-   -mod=vendor \
-%ifnarch ppc64 s390x
-   -buildmode=pie \
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
 %endif
-   -o %{shortname} \
+go build \
    ./cmd/%{shortname}
-# Upstream Makefile uses these options to build static
-# fails with /usr/bin/ld: cannot find -lc
-# -ldflags "-extldflags -static" \
+
+%check
+# execute the binary as a basic check
+./%{shortname} --help
 
 %install
-# Install the binary.
 install -D -m 0755 %{shortname} "%{buildroot}/%{_bindir}/%{shortname}"
 
 %files

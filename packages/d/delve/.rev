@@ -102,4 +102,23 @@
     <comment>- update summary and architecture excludes</comment>
     <requestid>1107865</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cacf52d04c9ed5f28eac87e6bbf203f7</srcmd5>
+    <version>1.21.2</version>
+    <time>1698700303</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.21.2:
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) &gt;= 1.17 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Drop go build -o arg, default binary name is pkg of main()
+  * Drop comment about upstream Makefile static build options fail
+  * Add basic %check to execute binary --help (forwarded request 1121297 from jfkw)</comment>
+    <requestid>1121298</requestid>
+  </revision>
 </revisionlist>
