@@ -1971,6 +1971,8 @@ BuildFlags: onlybuild:itstool
 BuildFlags: onlybuild:jack
 BuildFlags: onlybuild:jasper
 BuildFlags: onlybuild:java-17-openjdk
+BuildFlags: onlybuild:java-21-openjdk
+BuildFlags: onlybuild:j21-AGGR
 BuildFlags: onlybuild:java-cup:java-cup-bootstrap
 BuildFlags: onlybuild:javapackages-tools
 BuildFlags: onlybuild:javapackages-tools:extras
