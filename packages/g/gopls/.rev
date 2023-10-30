@@ -58,4 +58,15 @@
     <comment>- Update to version 0.14.0: (forwarded request 1120334 from jfkw)</comment>
     <requestid>1120335</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20ab5be8b78f548282de008bbdd262a4</srcmd5>
+    <version>0.14.1</version>
+    <time>1698700302</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.1:
+  * gopls: update go.mod for v0.14.1-pre.1
+  * gopls/internal/lsp: fix code action panic on params of external funcs
+  * go/packages: don't fail if GOPACKAGESDRIVER leaves Compiler/GOARCH=&quot;&quot; (forwarded request 1121254 from jfkw)</comment>
+    <requestid>1121256</requestid>
+  </revision>
 </revisionlist>
