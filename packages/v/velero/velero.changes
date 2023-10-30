@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct 25 04:38:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.1:
+  * Change v1.12.1 changelog
+  * udmrepo use region specified in BSL when s3URL is empty
+  * Make Windows build skip BlockMode code.
+  * Add v1.12.1 changelog
+  * Import auth provider plugins
+  * issue #6807: Retry failed create when using generateName
+  * Fix CVE-2023-39325.
+  * Perf improvements for existing resource restore
+  * fix issue 6647
+  * Add doc links for new features to release note
+  * issue 6734: spread backup pod evenly
+  * Replace the base image with paketobuildpacks image
+  * [Cherry-pick v1.12]Keep the logs info ns/name is the same with
+    other modules.
+  * Code clean for backup cmd client. (#6750)
+  * Add support for block volumes (#6680) (#6897)
+  * Remove legacy label version check, to be added back when
+    version is known
+  * changelog
+  * Handle 1.27 k8s job label changes
+  * Fix some wrong logs and code clean.
+  * Add go clean in Dockerfile and action. (#6896)
+  * code clean for repository (#6768)
+  * issue 6880: set ParallelUploadAboveSize as MaxInt64
+  * Rename the changelog
+  * Add 'orLabelSelector' for backup, restore command
+  * issue: move plugin depdending podvolume functions to util pkg
+  * issue 6786:always delete VSC regardless of the deletion policy
+
+-------------------------------------------------------------------
 Fri Sep 22 08:29:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.12.0:
