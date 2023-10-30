@@ -2589,4 +2589,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * a11y atspi: Map ButtonMenu role to AT-SPI equivalent (forwarded request 1118852 from favogt)</comment>
     <requestid>1119152</requestid>
   </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>d8b49b8f2a285de81ead54367e8a560b</srcmd5>
+    <version>5.15.11+kde138</version>
+    <time>1698700246</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121284</requestid>
+  </revision>
 </revisionlist>
