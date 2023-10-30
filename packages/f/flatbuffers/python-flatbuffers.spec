@@ -17,7 +17,7 @@
 
 
 Name:           python-flatbuffers
-Version:        23.3.3
+Version:        23.5.26
 Release:        0
 Summary:        The FlatBuffers serialization format for Python
 License:        Apache-2.0

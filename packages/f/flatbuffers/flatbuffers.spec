@@ -16,9 +16,9 @@
 #
 
 
-%define   sonum 23_3_3
+%define   sonum 23_5_26
 Name:           flatbuffers
-Version:        23.3.3
+Version:        23.5.26
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
@@ -64,7 +64,7 @@ and tools.
 %autosetup -p1
 
 %build
-chmod -x readme.md docs/source/*.md docs/footer.html docs/source/doxyfile
+chmod -x docs/source/*.md docs/footer.html docs/source/doxyfile
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DFLATBUFFERS_BUILD_SHAREDLIB=ON \
        -DFLATBUFFERS_BUILD_FLATLIB=OFF \
@@ -89,7 +89,7 @@ install -Dm0644 CMake/*FlatBuffers.cmake %{buildroot}%{_datadir}/cmake/Modules/
 %{_libdir}/libflatbuffers.so.*
 
 %files devel
-%doc readme.md docs/
+%doc README.md docs/
 %{_bindir}/flatc
 %{_libdir}/libflatbuffers.so
 %{_includedir}/flatbuffers/

@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Oct 11 10:30:43 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 23.5.26
+  - TS/JS: Upgrade package.json dependencies by @bjornharrtell in #7933
+  - fix out-of-source builds with cmake by @dbaileychess in #7946
+  - removed extern code generation declarations preferring direct includes by @dbaileychess in #7948
+  - fixed bfbs gen to pass extra options by @dbaileychess in #7949
+  - Fix //tests/ts:bazel_repository_test by @philsc in #7952
+  - Change SizedPrefixed verifier to be <= provided size by @dbaileychess in #7957
+  - fix(TS): fixed incorrect function name when importing unionTo functions by @sssooonnnggg in #7958
+  - remove flatbuffers tests from android by @dbaileychess in #7959
+  - feat(C++): Support underlying_type for union by @sssooonnnggg in #7954
+  - feat: Support union underlying type for TS/JS by @sssooonnnggg in #7961
+  - README.md: SemVer case typo by @crisman in #7962
+  - chore: fixed broken script: RustTest.bat by @sssooonnnggg in #7963
+  - Switch to using alias instead of a typedef for FlatBufferBuilder by @dbaileychess in #7966
+  - fix(rust): fixed rust namer isses, resolve #7865 and ##7782 by @sssooonnnggg in #7964
+  - Fix python tests by @yan12125 in #7960
+  - switch back to having T explicitly defined in CreateVector by @dbaileychess in #7967
+  - don't emit flatbuffers include in bfbs generated output by @dbaileychess in #7968
+  - Update java pom.xml file to allow java 8 compatibility by @swimar in #7894
+  - FlatBuffers Version 23.5.26 by @dbaileychess in #7976
+- Changes from 23.5.9
+  - FlatBuffers 64 for C++ by @dbaileychess in #7935
+  - FlatBuffers Version 23.5.9 by @dbaileychess in #7945
+- Changes from 23.5.8
+  - Update filename to README.md and improve formatting by @SmashedFrenzy16 in #7855
+  - Fix help output for --java-checkerframework by @musicinmybrain in #7854
+  - ToCamelCase() when kLowerCamel now converts first char to lower. by @paulovap in #7838
+  - Adding comment for code clarification by @SmashedFrenzy16 in #7856
+  - made changes to the rust docs so they would compile. by @jeffsmith82 in #7871
+  - fix using null string in vector by @phenixxy in #7872
+  - Use Bool for flatbuffers 'bool' instead of Byte in swift by @blindspotbounty in #7876
+  - Update go documentation link to point to root module by @le-michael in #7879
+  - README.md: PyPI case typo by @crisman in #7880
+  - [CS] Verifier by @tira-misu in #7850
+  - [TS/JS] Use minvalue from enum if not found by @bjornharrtell in #7888
+  - Add a FileWriter interface by @Kn99HN in #7821
+  - [TS/JS] Upgrade dependencies by @bjornharrtell in #7889
+  - Fix go_sample.sh by @jdemeyer in #7903
+  - Go: add test for FinishWithFileIdentifier by @jdemeyer in #7905
+  - Optionally generate type prefixes and suffixes for python code by @maxburke in #7857
+  - Support file_identifier in Go by @jdemeyer in #7904
+  - Go: make generated code more compliant to "go fmt" by @jdemeyer in #7907
+  - TS/JS: Use TypeError instead of Error when appropriate by @jmillan in #7910
+  - Allow to use functions from BuildFlatBuffers.cmake from a flatbuffe… by @KerstinKeller in #7912
+  - Make JSON supporting advanced union features by @admo in #7869
+  - drop glibc from runtime dependencies by @faucct in #7906
+  - Replace deprecated command with environment file by @jongwooo in #7921
+  - Optionally generate Python type annotations by @maxburke in #7858
+  - additional check for absl::string_view availability by @ocpalo in #7897
+  - Only generate @kotlin.ExperimentalUnsigned annotation on create*Vector methods having an unsigned array type parameter. by @aaronriekenberg in #7881
+  - Migrate from rules_nodejs to rules_js/rules_ts by @philsc in #7923
+  - Revert "Migrate from rules_nodejs to rules_js/rules_ts" by @dbaileychess in #7927
+  - inject no long for FBS generation to remove logs in flattests by @dbaileychess in #7926
+  - fixed some windows warnings by @dbaileychess in #7929
+  - Migrate from rules_nodejs to rules_js/rules_ts (take 2) by @philsc in #7928
+  - Add binary schema reflection by @dbaileychess in #7932
+  - Rework cmake flatc codegeneration by @dbaileychess in #7938
+  - Add #!/usr/bin/bash to release.sh by @rishabhdeepsingh in #7942
+  - FlatBuffers Version 23.5.8 by @rishabhdeepsingh in #7943
+
+-------------------------------------------------------------------
 Thu May  4 14:26:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
