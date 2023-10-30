@@ -1,0 +1,139 @@
+#!/usr/bin/python3
+#
+# This is a small script that tries to replace pgadmin4-runtime as
+# a desktop version of pgadmin4.
+
+# pgadmin4-runtime uses NW.js (which is based on Chromium and Node.js) which
+# makes it hard to package in a standard way.
+# pgadmin4-desktop tries to be a simple replacement which just runs pgadmin4
+# in runtime mode but uses Qt6 for the GUI in order to show an icon in the
+# system tray and provide two options: open a new browser window with pgAdmin
+# and quit the application.
+#
+# This script is released under the PostgreSQL License.
+# (C) 2023 Antonio Larrosa <alarrosa@suse.com>
+
+import subprocess
+import os
+import os.path
+import uuid
+import socket
+import time
+import sys
+import fcntl
+from threading import Thread, Timer
+from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QSplashScreen
+from PyQt6.QtGui import QIcon, QAction, QPixmap, QImage, QPalette, QPainter
+from PyQt6.QtCore import QTimer, Qt
+
+
+class PGAdminDesktop(QApplication):
+    def __init__(self):
+        super().__init__(sys.argv)
+        self.environ = os.environ
+        self.pgadmin_process = None
+        self.url = None
+
+        self.setQuitOnLastWindowClosed(False)
+        self.aboutToQuit.connect(self.cleanup)
+        self.create_ui()
+
+        pixmap = self.load_splash_pixmap()
+        if pixmap:
+            self.splash = QSplashScreen(pixmap)
+            self.splash.showMessage("Starting pgAdmin.", Qt.AlignmentFlag.AlignBottom)
+            self.splash.show()
+        else:
+            self.splash = None
+
+        self.run_pgadmin_server()
+        QTimer.singleShot(500, self.open_pgadmin)
+
+    def load_splash_pixmap(self):
+        paths = [path + '/pgadmin4/assets/welcome_logo.svg' for path in sys.path]
+        paths = [path for path in paths if os.path.exists(path)]
+        if not paths:
+            return None
+        return QPixmap(paths[0])
+
+    def run_pgadmin_server(self):
+        if 'PGADMIN_INT_KEY' not in self.environ:
+            self.environ['PGADMIN_INT_KEY'] = str(uuid.uuid4())
+
+        if 'PGADMIN_INT_PORT' not in self.environ:
+            self.environ['PGADMIN_INT_PORT'] = '5051'
+ 
+        self.environ['PGADMIN_SERVER_MODE'] = 'OFF'
+        self.pgadmin_process = subprocess.Popen(['pgadmin4'],
+                                                env=self.environ, shell=True)
+
+    def create_ui(self):
+        icon = QIcon.fromTheme("pgadmin4")
+        self.tray = QSystemTrayIcon()
+        self.tray.setIcon(icon)
+        self.tray.setVisible(True)
+
+        menu = QMenu()
+
+        self.title = QAction("pgAdmin")
+        self.title.setEnabled(False)
+        menu.addAction(self.title)
+        menu.addSeparator()
+
+        self.openPGAdminAction = QAction("New Window")
+        menu.addAction(self.openPGAdminAction)
+        self.openPGAdminAction.triggered.connect(self.open_pgadmin)
+
+        self.quitAction = QAction("Quit")
+        menu.addAction(self.quitAction)
+        self.quitAction.triggered.connect(self.quit)
+
+        self.tray.setContextMenu(menu)
+
+    def open_pgadmin_task(self):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)
+        result = sock.connect_ex(('127.0.0.1',
+                                  int(self.environ['PGADMIN_INT_PORT'])))
+
+        c = 0
+        while result != 0 and c < 15:
+            time.sleep(1)
+            result = sock.connect_ex(('127.0.0.1',
+                                      int(self.environ['PGADMIN_INT_PORT'])))
+            c += 1
+            dots = "." * (c % 3 + 1)
+            self.openPGAdminAction.setText("Opening pgAdmin" + dots)
+            if self.splash and not self.splash.isHidden():
+                self.splash.showMessage("Starting pgAdmin" + dots, Qt.AlignmentFlag.AlignBottom)
+
+
+        if result == 0:
+            if self.splash:
+                self.splash.hide()
+            port = self.environ['PGADMIN_INT_PORT']
+            key = self.environ['PGADMIN_INT_KEY']
+            subprocess.run(["xdg-open", f"http://127.0.0.1:{port}/?key={key}"])
+        else:
+            error_msg = 'Timeout waiting for pgAdmin to start. Exiting...' 
+            print(error_msg)
+            self.splash.showMessage(error_msg, Qt.AlignmentFlag.AlignBottom)
+            QTimer.singleShot(10000, self.quit)
+
+
+        self.openPGAdminAction.setText("New Window")
+        self.openPGAdminAction.setEnabled(True)
+
+    def open_pgadmin(self):
+        self.open_pgadmin_thread = Thread(target=self.open_pgadmin_task)
+        self.openPGAdminAction.setText("Opening pgAdmin...")
+        self.openPGAdminAction.setEnabled(False)
+        self.open_pgadmin_thread.start()
+
+    def cleanup(self):
+        self.pgadmin_process.kill()
+
+
+if __name__ == '__main__':
+    app = PGAdminDesktop()
+    sys.exit(app.exec())

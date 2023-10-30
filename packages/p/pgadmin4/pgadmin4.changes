@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Mon Oct 30 11:23:57 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add obsoletes: pgadmin4-web
+
+-------------------------------------------------------------------
+Wed Oct 25 06:26:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a vendor.tar.xz source package with node modules that have to
+  be downloaded in the developer workstation since otherwise they
+  won't be able to get downloaded in the build service. 
+- Add an update-vendor.sh script that updates (actually, recreates)
+  the vendor.tar.xz package. This should be run manually with each
+  package update.
+- Remove obsoleted file pgadmin4.qt.conf.in which hasn't been used
+  at all for some time.
+- Add patch to set the environment variable EVENTLET_NO_GREENDNS
+  which fixes pgadmin4 to build successfully with eventlet 0.33.3,
+  httpcore 0.17.1 and httpx 0.24.0:
+  * fix-eventlet-select_epoll.patch
+- Merged pgadmin4-web subpackage into the main pgadmin4 package
+  which now installs the pgAdmin4 server.
+- Create new pgadmin4-desktop subpackage that includes a very small
+  python script I wrote that starts the pgadmin4 server in runtime
+  mode (as a regular user) and provides a system tray icon so users
+  can open new windows and quit the server with a UI since the
+  alternative (using the official pgAdmin4 runtime application
+  would require providing a full node.js modules tree and using
+  NW.js for the ui).
+- Fix .desktop file which was now moved to the pgadmin4-desktop
+  subpackage. The "Encoding" key is deprecated so it has been
+  removed, only one main category is now used in the Categories
+  key and the path to the icon was fixed.
+- Remove pgadmin4.qt.conf.in which is not used anymore
+
+-------------------------------------------------------------------
+Wed Oct 25 06:24:15 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 7.8
+  * Supported Database Servers
+    - PostgreSQL: 12, 13, 14, 15, and 16
+    - EDB Advanced Server: 12, 13, 14 and 15
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 16.0
+  * New features
+    - Add support for foreign table's new functionality for PG 11
+      and above.
+    - Allow setting custom username for shared servers, with
+      default as username of server being shared.
+    - Add 'GENERATED ALWAYS AS..' option while creating column
+      constraints for Foreign Table.
+    - GUI representation of the system's activity using the
+      'system_stats' extension.
+    - Added 'load_balance_hosts' connection string parameter
+      for PG 16 and above.
+  * Housekeeping
+    - Use PG16 as the default PostgreSQL version.
+  * Bug fixes
+    - Fixed an issue in ERD tool where the downloaded images
+      have a few links cut.
+    - Fixed an issue where user was not able to assign new/old
+      columns as primary key once column with primary key is
+      deleted.
+    - Add support for setting prepare threshold in server
+      connection.
+    - Fixed an issue where the wrong message "Current database
+      has been moved or renamed" is displayed when debugging any
+      function.
+    - Fixed an issue where Processes tab displays wrong server
+      name in some scenario.
+    - Fix an issue where global/native keyboard shortcuts are
+      not working when any cell of data output grid has focus.
+    - Fixed query history slowness issue by storing query only for
+      those having certain threshold max length.
+    - Fix an issue where foreign table column name becomes "none"
+      if the user changes any column data type.
+    - Pin the cryptography version to fix PyO3 modules
+      initialisation error.
+    - Ensure that the backup works properly for PG 16 on the latest
+      docker image.
+    - Fixed an issue where the user is unable to select objects on
+      the backup dialog due to tree flickering.
+    - Fixed an issue where non-super PostgreSQL users are not able
+      to terminate their own connections from dashboard.
+    - Fix an issue where scale in columns is not allowed to have
+      value as 0 or below.
+    - Fix an issue in graphical explain plan where query tool
+      crashes when the plan has parallel workers details and sort
+      node is clicked for details.
+    - Fix an issue where user login is not working if
+      username/email contains single quote in server mode.
+
+- Update to 7.7 
+  * Supported Database Servers
+    - PostgreSQL: 11, 12, 13, 14 and 15
+    - EDB Advanced Server: 11, 12, 13, 14 and 15
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 15.4
+  * New features
+    - Added support to select/deselect objects in the Backup
+      dialog.
+    - Added all the new options of the 'WITH' clause in the
+      subscription dialog.
+    - Added USING method while creating the table.
+    - Added compression method option while creating a column.
+    - Added Strategy, Locale Provider, ICU Locale, ICU Rules,
+      and OID options while creating a database.
+    - Added USING method while creating the materialized view.
+    - Add support for additional ID token claim checks for
+      OAuth 2 authentication.
+  * Housekeeping
+    - Added the ‘data type’ column in the properties tab of
+      the Columns collection node.
+  * Bug fixes
+    - Fix an issue where user is not able to change the
+      password when SMTP is not configured.
+    - Ensure user is redirected to login page after failed login.
+    - Ensure that Materialized view size fields in "Statistics"
+      should be human-readable.
+    - Fix an issue where changing the password shows success but
+      the new password is not working.
+    - Fix an issue where login form doesn't appear if internal
+      auth source is removed.
+    - Fix a security related issue where an authenticated user can
+      run remote command using validate binary path API
+      (CVE-2023-5002, boo#1215603).
+
+-------------------------------------------------------------------
 Fri Aug 25 11:52:39 UTC 2023 - Simon Lees <simonf.lees@suse.com>
 
 - Update to 7.6 

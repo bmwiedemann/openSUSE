@@ -13,5 +13,5 @@ chmod-socket = 660
 chown-socket = wwwrun:www
 
 plugin = python3
-chdir = PYTHONSITELIB/pgadmin4-web/
+chdir = PYTHONSITELIB/pgadmin4/
 mount = /=pgAdmin4:app

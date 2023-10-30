@@ -18,7 +18,7 @@ Type=simple
 
 User=pgadmin
 Group=pgadmin
-ExecStart=PYTHONDIR PYTHONSITELIB/pgadmin4-web/pgAdmin4.py
+ExecStart=PYTHONDIR PYTHONSITELIB/pgadmin4/pgAdmin4.py
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=mixed
 KillSignal=SIGINT

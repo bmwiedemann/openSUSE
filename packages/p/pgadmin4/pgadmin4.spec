@@ -22,7 +22,9 @@
 %global python3_azure_mgmt_rdbms_min_version 10.1
 %global python3_azure_mgmt_resource_min_version 23.0
 %global python3_azure_mgmt_subscription_min_version 3.1
+%global python3_bcrypt_min_version 4.0
 %global python3_boto3_min_version 1.26
+%global python3_botocore_min_version 1.31
 %global python3_flask_babel_min_version 3.1.0
 %global python3_flask_compress_min_version 1.4.0
 %global python3_flask_gravatar_min_version 0.5.0
@@ -48,7 +50,6 @@
 %global python3_python_dateutil_min_version 2.8.0
 %global python3_pytz_min_version 2023.0
 %global python3_qrcode_min_version 7.0
-%global python3_speaklater_min_version 1.3
 %global python3_sqlalchemy_min_version 2.0
 %global python3_sqlparse_min_version 0.3.0
 %global python3_sshtunnel_min_version 0.1.5
@@ -57,34 +58,39 @@
 %global python3_wtforms_min_version 3.0
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
-%global	pgadmin4homedir /var/lib/pgadmin
+%global	pgadmin4homedir %{_localstatedir}/lib/pgadmin
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        7.6
+Version:        7.8
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            http://www.pgadmin.org
 Source0:        https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/source/%{name}-%{version}.tar.gz
-Source10:       https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/source/%{name}-%{version}.tar.gz.asc
-# https://www.pgadmin.org/download/pgadmin-4-source-code/
-Source11:       %{name}.keyring
 Source1:        %{name}.conf.in
 Source2:        %{name}.service.in
 Source3:        %{name}.tmpfiles.d
-Source4:        %{name}.desktop.in
-Source6:        %{name}.qt.conf.in
+Source4:        %{name}.desktop
 Source7:        %{name}.uwsgi.in
 Source8:        README.SUSE
 Source9:        README.SUSE.uwsgi.in
+Source10:       https://download.postgresql.org/pub/pgadmin/%{name}/v%{version}/source/%{name}-%{version}.tar.gz.asc
+# https://www.pgadmin.org/download/pgadmin-4-source-code/
+Source11:       %{name}.keyring
+Source12:       vendor.tar.xz
+Source13:       %{name}-desktop
+Source99:       update-vendor.sh
 Patch0:         use-os-makedirs.patch
 Patch1:         fix-python3-crypto-call.patch
 Patch2:         support-new-azure-mgmt-rdbms.patch
 Patch3:         support-new-werkzeug.patch
 Patch4:         support-new-flask.patch
+Patch5:         fix-eventlet-select_epoll.patch
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  optipng
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Authlib >= %{python3_authlib_min_version}
 BuildRequires:  python3-Flask >= %{python3_flask_min_version}
@@ -99,7 +105,6 @@ BuildRequires:  python3-Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_versi
 BuildRequires:  python3-Flask-Security-Too >= %{python3_flask_security_too_min_version}
 BuildRequires:  python3-Flask-SocketIO >= %{python3_flask_socketio_min_version}
 BuildRequires:  python3-Flask-WTF >= %{python3_flask_wtf_min_version}
-BuildRequires:  python3-Pillow >= %{python3_pillow_min_version}
 BuildRequires:  python3-SQLAlchemy >= %{python3_sqlalchemy_min_version}
 BuildRequires:  python3-WTForms >= %{python3_wtforms_min_version}
 BuildRequires:  python3-Werkzeug >= %{python3_werkzeug_min_version}
@@ -107,7 +112,9 @@ BuildRequires:  python3-azure-identity >= %{python3_azure_identity_min_version}
 BuildRequires:  python3-azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_min_version}
 BuildRequires:  python3-azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}
 BuildRequires:  python3-azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}
+BuildRequires:  python3-bcrypt >= %{python3_bcrypt_min_version}
 BuildRequires:  python3-boto3 >= %{python3_boto3_min_version}
+BuildRequires:  python3-botocore >= %{python3_botocore_min_version}
 BuildRequires:  python3-cryptography
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-google-api-python-client >= %{python3_google_api_python_client_min_version}
@@ -123,8 +130,6 @@ BuildRequires:  python3-pyotp >= %{python3_pyotp_min_version}
 BuildRequires:  python3-python-dateutil >= %{python3_python_dateutil_min_version}
 BuildRequires:  python3-pytz >= %{python3_pytz_min_version}
 BuildRequires:  python3-qrcode >= %{python3_qrcode_min_version}
-BuildRequires:  python3-selenium
-BuildRequires:  python3-speaklater >= %{python3_speaklater_min_version}
 BuildRequires:  python3-sqlparse >= %{python3_sqlparse_min_version}
 BuildRequires:  python3-sshtunnel >= %{python3_sshtunnel_min_version}
 BuildRequires:  python3-testscenarios
@@ -132,26 +137,8 @@ BuildRequires:  python3-urllib3 < 2
 BuildRequires:  python3-user-agents >= %{python3_user_agents_min_version}
 BuildRequires:  python3-wheel
 BuildRequires:  systemd-rpm-macros
-Requires:       %{name}-web = %{version}
+BuildRequires:  yarn
 Requires:       python3 >= 3.7
-BuildArch:      noarch
-%{?systemd_requires}
-
-%description
-pgAdmin 4 is a rewrite of the pgAdmin3 management tool for the
-PostgreSQL database. It is written as a web application in Python,
-using jQuery and Bootstrap for the client side processing and UI. On
-the server side, Flask is being utilised.
-
-This variant is a Qt-based runtime application intended to allow the
-standalone use on a workstation - it is essentially a browser and
-Python interpretor in one package which will be capable of hosting
-the Python application and presenting it to the user as a desktop
-application.
-
-%package web
-Summary:        Web package for pgAdmin4
-Group:          Productivity/Databases/Tools
 Requires:       python3-Authlib >= %{python3_authlib_min_version}
 Requires:       python3-Flask >= %{python3_flask_min_version}
 Requires:       python3-Flask-Babel >= %{python3_flask_babel_min_version}
@@ -165,7 +152,6 @@ Requires:       python3-Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_versi
 Requires:       python3-Flask-Security-Too >= %{python3_flask_security_too_min_version}
 Requires:       python3-Flask-SocketIO >= %{python3_flask_socketio_min_version}
 Requires:       python3-Flask-WTF >= %{python3_flask_wtf_min_version}
-Requires:       python3-Pillow >= %{python3_pillow_min_version}
 Requires:       python3-SQLAlchemy >= %{python3_sqlalchemy_min_version}
 Requires:       python3-WTForms >= %{python3_wtforms_min_version}
 Requires:       python3-Werkzeug >= %{python3_werkzeug_min_version}
@@ -173,7 +159,9 @@ Requires:       python3-azure-identity >= %{python3_azure_identity_min_version}
 Requires:       python3-azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_min_version}
 Requires:       python3-azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}
 Requires:       python3-azure-mgmt-subscription >= %{python3_azure_mgmt_subscription_min_version}
+Requires:       python3-bcrypt >= %{python3_bcrypt_min_version}
 Requires:       python3-boto3 >= %{python3_boto3_min_version}
+Requires:       python3-botocore >= %{python3_botocore_min_version}
 Requires:       python3-cryptography
 Requires:       python3-eventlet
 Requires:       python3-google-api-python-client >= %{python3_google_api_python_client_min_version}
@@ -188,17 +176,22 @@ Requires:       python3-pyotp >= %{python3_pyotp_min_version}
 Requires:       python3-python-dateutil >= %{python3_python_dateutil_min_version}
 Requires:       python3-pytz >= %{python3_pytz_min_version}
 Requires:       python3-qrcode >= %{python3_qrcode_min_version}
-Requires:       python3-speaklater >= %{python3_speaklater_min_version}
 Requires:       python3-sqlparse >= %{python3_sqlparse_min_version}
 Requires:       python3-sshtunnel >= %{python3_sshtunnel_min_version}
 Requires:       python3-urllib3 < 2
 Requires:       python3-user-agents >= %{python3_user_agents_min_version}
-Recommends:     python3-mod_wsgi
+Suggests:       python3-mod_wsgi
 Suggests:       %{name}-doc
+Recommends:     %{name}-desktop
+Obsoletes:      %{name}-web < %{version}
+%{?systemd_requires}
+BuildArch:      noarch
 
-%description web
+%description
 pgAdmin 4 is a rewrite of the pgAdmin3 management tool for the
-PostgreSQL database.
+PostgreSQL database. It is written as a web application in Python,
+using jQuery and Bootstrap for the client side processing and UI. On
+the server side, Flask is being utilised.
 
 This package contains the required files to run pgAdmin4 as a web application
 
@@ -215,7 +208,7 @@ This package contains the documentation for pgadmin4.
 %package web-uwsgi
 Summary:        Pgamdin4 - uwsgi configuration
 Group:          Productivity/Networking/Web/Utilities
-Requires:       pgadmin4-web
+Requires:       pgadmin4
 Requires:       uwsgi
 
 %description web-uwsgi
@@ -223,23 +216,62 @@ pgadmin4 is a management tool for PostgreSQL.
 
 This package holds the uwsgi configuration.
 
+%package desktop
+Summary:        Desktop application for pgAdmin4
+Group:          Documentation/HTML
+Requires:       %{name}
+Requires:       python3-PyQt6
+
+%description desktop
+pgAdmin 4 is a rewrite of the pgAdmin3 management tool for the
+PostgreSQL database.
+
+This package provides a small python script that can be used
+to start pgAdmin4 as a regular user and provides a simple ui
+as a system tray icon to open more windows or quit.
+
+Note that his script is not related to the official pgAdmin4
+runtime application and is NOT supported by the pgAdmin project
+but only provided for convenience.
+
 %prep
 %autosetup -p1
 
 sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE1} > %{name}.conf
 sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE2} > %{name}.service
 sed -e 's@PYTHONDIR@%{_bindir}/python3@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' < %{SOURCE4} > %{name}.desktop
-sed -e 's@PYTHONSITELIB64@%{python3_sitearch}@g' -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE6} > %{name}.qt.conf
 sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE7} > %{name}.uwsgi
 sed -e 's@PYTHONSITELIB@%{python3_sitelib}@g' <%{SOURCE9} > README.SUSE.uwsgi
 
+# speaklater isn't really used
+sed -i -e 's/^speaklater.*//' requirements.txt
+
 cp %{SOURCE8} .
 cp %{SOURCE9} .
+
 # rpmlint
 chmod -x docs/en_US/theme/pgadmin4/static/style.css
 chmod -x docs/en_US/theme/pgadmin4/theme.conf
+# This package is run using the interpreter so it doesn't need the executable bit set
+chmod -x web/pgadmin/misc/bgprocess/process_executor.py
+chmod -x web/pgadmin/static/fonts/*.ttf
+
+# Uncompress the vendor sources
+tar xvfJ %{SOURCE12}
+# Use the system optipng, not the one built when creating the vendor package in the developer workstation
+ln -s %{_bindir}/optipng web/node_modules/optipng-bin/vendor/optipng
+
+# Do not use env as script interpreter
+find web/node_modules -type f -executable -exec sed -i -e '1{s,^#! */usr/bin/env \(node\|python3|bash\),#!%{_bindir}/\1,}' "{}" \;
+find web/pgacloud -type f -executable -exec sed -i -e '1{s,^#! */usr/bin/env \(node\|python3\),#!%{_bindir}/\1,}' "{}" \;
+
+rm web/regression/.gitignore
 
 %build
+make bundle
+rm -Rf web/node_modules web/yarn.lock
+
+export EVENTLET_NO_GREENDNS='yes'
 mkdir -p pip-build/pgadmin4
 cp -a web/* pip-build/pgadmin4
 echo recursive-include pgadmin4 \* > pip-build/MANIFEST.in
@@ -278,11 +310,6 @@ install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.
 install -d -m 0755 %{buildroot}%{_sysconfdir}/pgadmin/
 echo "# SERVER_MODE = True" > %{buildroot}%{_sysconfdir}/pgadmin/config_system.py
 
-# Install QT conf file
-# This directory will/may change in future releases.
-install -d "%{buildroot}%{_sysconfdir}/xdg/pgadmin/"
-install -m 0644 -p %{name}.qt.conf %{buildroot}%{_sysconfdir}/xdg/pgadmin/pgadmin4.conf
-
 # Install unit file/init script
 # This is only for systemd supported distros:
 install -d %{buildroot}%{_unitdir}
@@ -295,32 +322,42 @@ install -m 0644 %{SOURCE3} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 chmod -x %{buildroot}%{_docdir}/%{name}-docs/en_US/images/*
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpgadmin4
-%fdupes %{buildroot}%{_prefix}
 
 install -d -m 0755 %{buildroot}%{pgadmin4homedir}
 install -d -m 0755 %{buildroot}%{pgadmin4homedir}/storage
 install -d -m 0700 %{buildroot}%{pgadmin4homedir}/sessions
+install -d -m 0755 %{buildroot}%{_localstatedir}/log/pgadmin
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
 install -m 0644 %{name}.uwsgi %{buildroot}%{_sysconfdir}/uwsgi/vassals/pgadmin4.ini
 
-##%check
-## Requires Postgres running
-##PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -B web/regression/runtests.py --exclude feature_tests
+install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
+install -m 0644 web/pgadmin/static/img/logo-256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/pgadmin4.png
 
-%pre web
+install -d -m 0755 %{buildroot}%{python3_sitelib}/%{name}/assets
+install -m 0644 ./runtime/assets/welcome_logo.svg %{buildroot}%{python3_sitelib}/%{name}/assets/welcome_logo.svg
+
+install -m 0755 %{SOURCE13} %{buildroot}%{_bindir}
+
+%fdupes %{buildroot}%{python3_sitelib}
+
+##%% check
+## Requires Postgres running
+##PYTHONPATH=%%{buildroot}%%{python3_sitelib} python3 -B web/regression/runtests.py --exclude feature_tests
+
+%pre
 /usr/sbin/groupadd -r %{user_group_name} &>/dev/null || :
 /usr/sbin/useradd  -g %{user_group_name} -s /bin/false -r -c "%{name}" -d %{pgadmin4homedir} %{user_group_name} &>/dev/null || :
 %service_add_pre %{name}.service
 
-%post web
+%post
 %service_add_post %{name}.service
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
-%preun web
+%preun
 %service_del_preun %{name}.service
 
-%postun web
+%postun
 chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 %service_del_postun %{name}.service
 
@@ -329,12 +366,7 @@ chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 %doc README.md README.SUSE
 %license LICENSE
 %{_bindir}/pgadmin4
-%{_datadir}/applications/%{name}.desktop
-%dir %{_sysconfdir}/xdg/pgadmin
-%config %{_sysconfdir}/xdg/pgadmin/pgadmin4.conf
 
-%files web
-%defattr(-,root,root,-)
 %dir %{_sysconfdir}/apache2
 %dir %{_sysconfdir}/apache2/conf.d
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/%{name}.conf
@@ -355,6 +387,7 @@ chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 %dir %{pgadmin4homedir}
 %dir %{pgadmin4homedir}/storage
 %attr(700,%{user_group_name},%{user_group_name}) %dir %{pgadmin4homedir}/sessions
+%dir %{_localstatedir}/log/pgadmin
 
 %files doc
 %defattr(-,root,root,-)
@@ -367,5 +400,11 @@ chown -R %{user_group_name}:%{user_group_name} %{pgadmin4homedir}
 %dir %{_sysconfdir}/uwsgi
 %dir %{_sysconfdir}/uwsgi/vassals
 %config (noreplace) %{_sysconfdir}/uwsgi/vassals/pgadmin4.ini
+
+%files desktop
+%defattr(-,root,root,-)
+%{_bindir}/pgadmin4-desktop
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/256x256/apps/pgadmin4.png
 
 %changelog

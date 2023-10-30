@@ -7,9 +7,9 @@
 
 <IfDefine PGADMIN>
 WSGIDaemonProcess pgadmin processes=1 threads=25
-WSGIScriptAlias /pgadmin4 PYTHONSITELIB/pgadmin4-web/pgAdmin4.wsgi
+WSGIScriptAlias /pgadmin4 PYTHONSITELIB/pgadmin4/pgAdmin4.wsgi
 
-<Directory PYTHONSITELIB/pgadmin4-web/>
+<Directory PYTHONSITELIB/pgadmin4/>
 	WSGIProcessGroup pgadmin
 	WSGIApplicationGroup %{GLOBAL}
 	<IfModule mod_authz_core.c>
