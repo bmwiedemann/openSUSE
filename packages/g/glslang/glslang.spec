@@ -18,7 +18,7 @@
 
 %define lname libglslang13
 Name:           glslang
-Version:        13.0.0
+Version:        13.1.1
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -27,12 +27,16 @@ URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
 Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Source3:        baselibs.conf
-Patch1:         0001-Revert-CMake-Make-glslang-default-resource-limits-ST.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  python3-base
+BuildRequires:  spirv-tools-devel
+%if 0%{?suse_version} && 0%{?suse_version} < 1599
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  c++_compiler
+%endif
 
 %description
 glslang is a compiler front end for the OpenGL ES and OpenGL shading
@@ -87,8 +91,12 @@ but which some downstream packages rely on.
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 # ABI keeps on breaking (gh#3052 #3311 #3312)
 echo "V_%version { global: *; };" >/tmp/z.sym
+%if 0%{?suse_version} && 0%{?suse_version} < 1599
+export CC=gcc-11 CXX=g++-11
+%endif
 # Trim -Wl,--no-undefined for now (https://github.com/KhronosGroup/glslang/issues/1484)
-%cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
+%cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
+	-DALLOW_EXTERNAL_SPIRV_TOOLS:BOOL=ON -DENABLE_OPT:BOOL=ON
 %make_build
 
 %install

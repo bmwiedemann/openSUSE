@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 22 02:09:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13.1.1
+  * Support GL_EXT_texture_shadow_lod, GL_NV_displacement_micromap
+  * Add --no-link option
+- Drop merged
+  0001-Revert-CMake-Make-glslang-default-resource-limits-ST.patch
+
+-------------------------------------------------------------------
 Wed Sep  6 22:49:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 13
