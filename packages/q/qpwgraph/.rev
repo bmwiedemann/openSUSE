@@ -146,4 +146,20 @@
     <comment>- Update to version 0.5.1.</comment>
     <requestid>1100590</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>183b0bb3b873ab54ca6cb321b3e0d069</srcmd5>
+    <version>0.5.3</version>
+    <time>1698700219</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.3:
+  * Added user contributed documentation: How To Use The
+    Patchbay.
+  * Fix condition for saving node name aliases.
+  * Ctrl+left or middle-button click-dragging for panning, is now
+    a lot smoother, hopefully.
+  * Click-dragging with the mouse middle-button is for panning
+    only, not to start a selection anymore.
+  * Add Ctrl+Q to Quit action</comment>
+    <requestid>1121013</requestid>
+  </revision>
 </revisionlist>
