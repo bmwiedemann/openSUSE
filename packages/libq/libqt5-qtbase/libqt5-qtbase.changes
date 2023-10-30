@@ -161,7 +161,8 @@ Thu Sep 28 11:49:39 UTC 2023 - Fabian Vogt <fvogt@suse.com>
   * Fix capitalization error in auto-generated qdbusmacros.h include
   * QColorDialog: Ignore mouse move events when no mouse button is pressed
   * QHostInfo: fix remaining slotObj leaks
-  * QXmlStreamReader: Raise error on unexpected tokens
+  * QXmlStreamReader: Raise error on unexpected tokens (CVE-2023-38197,
+    QTBUG-92113, QTBUG-95188, bsc#1213326)
   * QTextLayout: Reconsider cursor drawing on TextObject
   * Ensure consistent cursor width under fractional scaling
   * Fix QTextEdit cursor rectangle vertical positioning
@@ -320,9 +321,12 @@ Tue Jun 13 12:58:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 Wed May 24 07:59:20 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.9+kde154:
-  * Hsts: match header names case insensitively (CVE-2023-32762)
-  * Fix specific overflow in qtextlayout (CVE-2023-32763)
-  * QDnsLookup/Unix: make sure we don't overflow the buffer (CVE-2023-33285, boo#1211642)
+  * Hsts: match header names case insensitively (CVE-2023-32762,
+    QTBUG-113392, bsc#1211797)
+  * Fix specific overflow in qtextlayout (CVE-2023-32763,
+    QTBUG-113337, bsc#1211798)
+  * QDnsLookup/Unix: make sure we don't overflow the buffer
+    (CVE-2023-33285, boo#1211642)
 
 -------------------------------------------------------------------
 Tue May  9 12:08:17 UTC 2023 - Fabian Vogt <fvogt@suse.com>
@@ -497,7 +501,8 @@ Thu Mar 16 08:04:12 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 - Update to version 5.15.8+kde183:
   * Add nullptr guard in QStyleSheetStyle::drawPrimitive(PE_PanelLineEdit)
   * QAbstractItemView: don't access invalid indexes on copy-key
-  * Apply CVE-2023-24607-qtbase-5.15.diff
+  * Apply CVE-2023-24607-qtbase-5.15.diff (CVE-2023-24607,
+    bsc#1209616)
   * QXcbConnection::getTimestamp: do not return stale timestamp
   * QToolButton: Elide text when constraints prevent from showing whole text
   * correctly set up ref counting in QThreadPool::tryStart(std::function)
