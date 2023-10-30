@@ -17,7 +17,7 @@
 
 
 Name:           i3
-Version:        4.22
+Version:        4.23
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
@@ -76,6 +76,7 @@ Unix domain socket and JSON based IPC interface.
 Summary:        Development headers for i3
 Group:          Development/Libraries/C and C++
 Requires:       %{name}
+BuildArch:      noarch
 
 %description devel
 Development headers for the i3 window manager.
