@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 15:32:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.2:
+  * update ctl's cert-manager dependency to latest 1.13 commit
+  * bump go dependencies to fix remaining HTTP2 CVE alerts
+  * bump otel version and related dependencies
+  * [release-1.13] Bump /x/net to address CVE-2023-44487 /
+    CVE-2023-39325
+  * [release-1.13] update go-licenses to incorporate Tim's changes
+
+-------------------------------------------------------------------
 Wed Sep 27 11:22:14 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.13.1:
