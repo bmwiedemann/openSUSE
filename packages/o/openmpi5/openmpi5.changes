@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Oct 27 07:16:37 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v5.0.0
+  - No change since v5.0.0rc16
+
+-------------------------------------------------------------------
+Thu Oct 26 08:43:17 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v5.0.0rc16
+  - Includes a fix to correctly forward stdin to remote processes.
+  - Documentation updates
+  - Fix build case with --disable-prrte
+  - Update PRRTe and PMIx to pull in fixes
+  - pcomm: fix fortran interface for precv/psend.
+  - Fix UCX support level check.
+  - Add support for MPI_ERR_VALUE_TOO_LARGE
+  - ofi - add MCA parameters to not use FI_HMEM
+  - oshmem: Add symmetric remote key handling
+  - oshmem: Fixed DEVICE_NIC_MEM support to use RDMA memory type.
+  - Fix a small issue in properly setting filename when building the empty schizo rst file.
+  - Update PRRTE to release tag v3.0.2
+
+-------------------------------------------------------------------
+Tue Oct 10 09:45:03 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop %vers macro so that the Version tag can be parsed more easily
+- Update to v5.0.0rc13
+  - Update PMIx to v4.2.6
+  - Update PRRTE to v3.0.1
+  - Lots of documentation updates.
+  - Fixed parameter name in MPI_Intercomm_merge.
+  - OFI: Update NIC selection to determine optimal interfaces from the current process.
+  - Fix reordering of received data in MPI_Gather.
+  - Disable builds with HWLOC versions >= 3.0.0.
+  - Fix re-ordering of ranks in MPI_Dist_graph_create.
+  - coll/HAN: Fix bug when using MPI_IN_PLACE with MPI_Reduce.
+  - Fix MPI_Type_Dup to propagate errors from inner calls.
+  - Fix the compilation of the monitoring infrastructure.
+  - Various other bug fixes.
+
+-------------------------------------------------------------------
 Mon Aug  7 17:02:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for TrueScale (bsc#1212146)
