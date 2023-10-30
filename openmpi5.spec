@@ -42,7 +42,6 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define vers 5.0.0
 %define _vers 5_0_0
 %define m_f_ver 5
 %bcond_with ringdisabled
@@ -114,7 +113,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver rc12.0.5f7566c4b9af
+%define git_ver .0.d0fe8ef81139
 
 #############################################################################
 #
@@ -123,7 +122,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        %{vers}
+Version:        5.0.0
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
@@ -386,6 +385,10 @@ This RPM contains the configuration files for OpenMPI runtime (Version 3).
 %global __provides_exclude_from %{mpi_libdir}/libpmix.*.so
 %global __requires_exclude libpmix*
 
+%if "%(echo %version | tr '.' '_')" != "%_vers"
+%{error: Fix _vers variable to match package version!}
+%endif
+
 #############################################################################
 #
 # Prepatory Section
@@ -597,6 +600,7 @@ rm -f %{buildroot}%{_sysconfdir}/prte-mca-params.conf
 rm -f %{buildroot}%{_sysconfdir}/openmpi-totalview.tcl
 rm -f %{buildroot}%{_sysconfdir}/pmix-mca-params.conf
 rm -f %{buildroot}%{_sysconfdir}/openmpi-mca-params.conf
+rm -f %{buildroot}%{_sysconfdir}/prte.conf
 %endif
 
 %if %{without hpc}
@@ -655,6 +659,7 @@ fi
 %{mpi_bindir}/mpirun
 %{mpi_bindir}/ompi_info
 %{mpi_bindir}/pattrs
+%{mpi_bindir}/pctrl
 %{mpi_bindir}/pevent
 %{mpi_bindir}/plookup
 %{mpi_bindir}/pmix*
@@ -734,7 +739,8 @@ fi
 %files docs
 %defattr(-, root, root, -)
 %{mpi_mandir}
-%{mpi_prefix}/share/doc/
+%{mpi_datadir}/doc/
+%{mpi_datadir}/prte/rst/
 
 %files macros-devel
 %defattr(-,root,root,-)
@@ -760,6 +766,7 @@ fi
 %config %{_sysconfdir}/pmix-mca-params.conf
 %config %{_sysconfdir}/openmpi-mca-params.conf
 %{_sysconfdir}/openmpi-totalview.tcl
+%config %{_sysconfdir}/prte.conf
 %endif
 
 %endif # !?testsuite
