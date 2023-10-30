@@ -1397,8 +1397,6 @@
       <repopackage name="libdlm3"/>
       <repopackage name="libdmapsharing-4_0-3"/>
       <repopackage name="libdmtx0"/>
-      <repopackage name="libdnf-repo-config-zypp"/>
-      <repopackage name="libdnf2"/>
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
@@ -2447,7 +2445,6 @@
       <repopackage name="libreoffice-share-linker"/>
       <repopackage name="libreoffice-writer"/>
       <repopackage name="libreofficekit"/>
-      <repopackage name="librepo0"/>
       <repopackage name="librepository"/>
       <repopackage name="librest-1_0-0"/>
       <repopackage name="librevenge-0_0-0"/>
@@ -3099,7 +3096,6 @@
       <repopackage name="p11-kit"/>
       <repopackage name="p11-kit-tools"/>
       <repopackage name="PackageKit"/>
-      <repopackage name="PackageKit-backend-dnf"/>
       <repopackage name="PackageKit-backend-zypp"/>
       <repopackage name="PackageKit-branding-openSUSE"/>
       <repopackage name="PackageKit-gstreamer-plugin"/>
