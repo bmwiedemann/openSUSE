@@ -4951,4 +4951,16 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.18 release</comment>
     <requestid>1117941</requestid>
   </revision>
+  <revision rev="423" vrev="1">
+    <srcmd5>2f8d68073d249bb9b7972146b357ac18</srcmd5>
+    <version>8.19</version>
+    <time>1698700252</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 8.19 release
+  - Mono engine updated to version 8.1.0.
+  - More DirectMusic implementation.
+  - Various bug fixes.
+- update staging to 8.19 release</comment>
+    <requestid>1121111</requestid>
+  </revision>
 </revisionlist>
