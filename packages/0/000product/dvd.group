@@ -538,8 +538,8 @@
     <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="ghostscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ghostscript-fonts-grops" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="ghostscript-fonts-std" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ghostscript-fonts-std-converted" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ghostscript-fonts-std" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
+    <package name="ghostscript-fonts-std-converted" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="ghostscript-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gigolo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gigolo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
