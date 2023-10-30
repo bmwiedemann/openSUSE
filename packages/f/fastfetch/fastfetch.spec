@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.0.5
+Version:        2.1.2
 Release:        0
 Summary:        Neofetch-like tool written in C
 License:        MIT
@@ -26,6 +26,8 @@ URL:            https://github.com/LinusDierheimer/fastfetch
 Source:         https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  opencl-headers
 BuildRequires:  vulkan-headers
 BuildRequires:  pkgconfig(ImageMagick)
@@ -79,6 +81,5 @@ sed -i "s|\#\!\/usr\/bin\/env bash||g" completions/bash
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/bash-completion/
-
 
 %changelog
