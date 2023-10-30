@@ -562,4 +562,14 @@
     <comment>- Add 0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch</comment>
     <requestid>1095543</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>0a0e75cc46f2c56e31ad633c7a42365e</srcmd5>
+    <version>4.4.4</version>
+    <time>1698700202</time>
+    <user>anag+factory</user>
+    <comment>- Add ffmpeg-glslang-cxx17.patch
+- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve build failure with binutils &gt;= 2.41. [boo#1215945]</comment>
+    <requestid>1121164</requestid>
+  </revision>
 </revisionlist>

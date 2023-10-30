@@ -121,6 +121,8 @@ Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
 Patch12:        0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
+Patch13:        0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+Patch14:        ffmpeg-glslang-cxx17.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -602,7 +604,7 @@ break compatibility without any notice.
 %if "%_lto_cflags" != ""
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 %endif
-CFLAGS="%optflags" \
+CFLAGS="%optflags" CXXFLAGS="%optflags" \
 %if %suse_version > 1500
 %ifarch %ix86
 %else

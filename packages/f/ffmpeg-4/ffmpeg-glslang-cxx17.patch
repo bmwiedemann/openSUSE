@@ -1,0 +1,22 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-10-30 12:10:03.273303565 +0100
+
+glslang 13 needs C++17.
+
+---
+ configure |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ffmpeg-4.4.4/configure
+===================================================================
+--- ffmpeg-4.4.4.orig/configure
++++ ffmpeg-4.4.4/configure
+@@ -5267,7 +5267,7 @@ fi
+ 
+ add_cppflags -D_ISOC99_SOURCE
+ add_cxxflags -D__STDC_CONSTANT_MACROS
+-check_cxxflags -std=c++11 || check_cxxflags -std=c++0x
++check_cxxflags -std=c++17
+ 
+ # some compilers silently accept -std=c11, so we also need to check that the
+ # version macro is defined properly

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 11:16:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add ffmpeg-glslang-cxx17.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 15:15:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve build failure with binutils >= 2.41. [boo#1215945]
+
+-------------------------------------------------------------------
 Tue Jun 27 07:42:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
