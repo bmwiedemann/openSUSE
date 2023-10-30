@@ -1,0 +1,10 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/Wilfred/tree_magic?branch=fix-panic-for-empty-strings"]
+git = "https://github.com/Wilfred/tree_magic"
+branch = "fix-panic-for-empty-strings"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
