@@ -29,6 +29,7 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
+Patch0:         spyder-pr21470-pylint3.diff
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -81,9 +82,9 @@ Requires:       python3-watchdog
 Requires:       python3-whatthepatch
 Requires:       python3-yapf
 Requires:       (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.2.0)
-Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3)
+Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3.1)
 Requires:       (python3-python-lsp-black >= 1.2.0 with python3-python-lsp-black < 3)
-Requires:       (python3-python-lsp-server >= 1.7.4 with python3-python-lsp-server < 1.8)
+Requires:       (python3-python-lsp-server >= 1.7.4 with python3-python-lsp-server < 1.9)
 Requires:       (python3-qtconsole >= 5.4.2 with python3-qtconsole < 5.5.0)
 Requires:       (python3-spyder-kernels >= 2.4.4 with python3-spyder-kernels < 2.5)
 Recommends:     %{name}-dicom
@@ -178,8 +179,8 @@ BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.2.0)
 BuildRequires:  (python3-ipython >= 7.31.1 with python3-ipython < 9)
 BuildRequires:  (python3-python-lsp-black >= 1.2.0 with python3-python-lsp-black < 3)
 BuildConflicts: (python3-ipython >= 8.8 with python3-ipython < 8.10.1)
-BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3)
-BuildRequires:  (python3-python-lsp-server >= 1.7.4 with python3-python-lsp-server < 1.8)
+BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3.1)
+BuildRequires:  (python3-python-lsp-server >= 1.7.4 with python3-python-lsp-server < 1.9)
 BuildRequires:  (python3-qtconsole >= 5.4.2 with python3-qtconsole < 5.5)
 BuildRequires:  (python3-spyder-kernels >= 2.4.4 with python3-spyder-kernels < 2.5)
 # /SECTION
@@ -264,7 +265,9 @@ sed -r \
     -e 's/(pyqt.*)<5.16/\1/' \
     -e 's/(jedi.*)<0.19/\1<0.20/' \
     -i setup.py requirements/main.yml binder/environment.yml
-sed -i '/JEDI/ s/0.19/0.20/' spyder/dependencies.py
+sed \
+    -e '/JEDI_REQVER/ s/<0.19/<0.20/' \
+    -i spyder/dependencies.py
 
 # Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.

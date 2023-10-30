@@ -659,4 +659,13 @@ rename the package from spyder3 to spyder.
   * Fix Editor scrollflags error on Python 3.7</comment>
     <requestid>1113196</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>a39daf7b9c6040e3a40449508112886b</srcmd5>
+    <version>5.4.5</version>
+    <time>1698700217</time>
+    <user>anag+factory</user>
+    <comment>- Raise pylint upper pin (requires update to python-lsp-server)
+  * Add spyder-pr21470-pylint3.diff (forwarded request 1121002 from bnavigator)</comment>
+    <requestid>1121004</requestid>
+  </revision>
 </revisionlist>

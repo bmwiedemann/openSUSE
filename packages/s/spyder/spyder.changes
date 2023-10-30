@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 29 13:26:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Raise pylint upper pin (requires update to python-lsp-server)
+  * Add spyder-pr21470-pylint3.diff
+
+-------------------------------------------------------------------
 Sat Sep 23 10:56:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.4.5
