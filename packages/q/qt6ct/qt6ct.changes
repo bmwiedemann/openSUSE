@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 29 16:10:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9:
+  * added Qt 6.6 compatibility
+  * added compatibility with QT_STYLE_OVERRIDE=qt5ct-style
+  * improved cmake build:
+  *   - make translations optional (Jonas Kvinge)
+  *   - enabled reproducible build by default
+  *   - other fixes and improvements (Jonas Kvinge)
+  * fixed crash on QML applications
+  * fixed parallel build using qmake
+  * fixed localization support
+  * updated Dutch translation (Heimen Stoffels)
+  * updated Polish translation (Marek Adamski)
+  * updated Russian translation
+  * updated French translation (Wallon)
+
+-------------------------------------------------------------------
 Tue Apr  4 14:58:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.8:
