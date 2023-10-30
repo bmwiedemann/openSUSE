@@ -16,10 +16,10 @@
 #
 
 
-%define sover  3_10_7
+%define sover  3_10_8
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.7.0
+Version:        3.10.8.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -231,6 +231,7 @@ rm -rf %{buildroot}%{_datadir}/icons/gnome
 %{_datadir}/gnuradio/themes/
 %{_datadir}/gnuradio/fec/
 %{_datadir}/gnuradio/clang-format.conf
+%{_datadir}/gnuradio/.cmake-format.py
 %{_datadir}/icons/hicolor/*/apps/gnuradio-grc.png
 %{_datadir}/applications/gnuradio-grc.desktop
 %{_datadir}/mime/packages/gnuradio-grc.xml
