@@ -250,4 +250,16 @@
     <comment></comment>
     <requestid>1085507</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d27519ae9cb1070e78242b77063b9f6</srcmd5>
+    <version>2.3+git20231030.3a6ef35</version>
+    <time>1698700194</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3+git20231030.3a6ef35:
+  * Mount /dev/pts as mount type=devpts instead of --volume
+  * fix typo creat -&gt; create
+  * Remove trailing whitespace
+  * Fix bash error when container cannot be pulled</comment>
+    <requestid>1121193</requestid>
+  </revision>
 </revisionlist>

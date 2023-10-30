@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 30 13:38:45 UTC 2023 - kukuk@suse.com
+
+- Update to version 2.3+git20231030.3a6ef35:
+  * Mount /dev/pts as mount type=devpts instead of --volume
+  * fix typo creat -> create
+  * Remove trailing whitespace
+  * Fix bash error when container cannot be pulled
+
+-------------------------------------------------------------------
 Mon May  8 11:01:45 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Update EOL *-micro images to supported versions. (bsc#1211018)
