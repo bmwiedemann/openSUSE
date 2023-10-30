@@ -1,10 +1,10 @@
 <services>
   <service name="cargo_vendor" mode="manual">
     <param name="compression">xz</param>
-    <param name="srcdir">parsec-1.3.0-rc1</param>
+    <param name="srcdir">parsec-1.3.0</param>
     <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="manual">
-     <param name="srcdir">parsec-1.3.0-rc1</param>
+     <param name="srcdir">parsec-1.3.0</param>
   </service>
 </services>

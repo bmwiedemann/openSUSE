@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 08:40:35 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.3.0:
+  * Full changelog:  https://github.com/parallaxsecond/parsec/compare/1.3.0-rc1...1.3.0
+
+-------------------------------------------------------------------
 Tue Oct 17 14:31:43 UTC 2023 - Guillaume <guillaume@arm.com>
 
 - Fix build on Leap 15.5
-- Update to 1.3.0-rc1
+- Update to 1.3.0-rc1:
+  * Changelog: https://github.com/parallaxsecond/parsec/compare/1.2.0...1.3.0-rc1
 
 -------------------------------------------------------------------
 Thu Apr 20 15:01:10 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
