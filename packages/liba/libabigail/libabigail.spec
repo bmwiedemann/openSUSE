@@ -17,8 +17,8 @@
 
 
 Name:           libabigail
-%define lname   libabigail2
-Version:        2.3
+%define lname   libabigail3
+Version:        2.4
 Release:        0
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-3.0-or-later
@@ -113,7 +113,7 @@ popd
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libabigail.so.2*
+%_libdir/libabigail.so.3*
 
 %files devel
 %_includedir/%name/

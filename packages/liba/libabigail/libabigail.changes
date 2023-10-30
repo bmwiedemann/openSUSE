@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 30 04:38:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4
+  * abidw: Add --{follow,list}-dependencies & --add-binaries support
+  * abidiff: Add --{follow,list}-dependencies &
+    add-binaries{1,2} support
+
+-------------------------------------------------------------------
 Fri Jun 23 02:59:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3
