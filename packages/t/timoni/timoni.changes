@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Oct 30 07:25:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.0:
+  * Document how to inject secrets at apply-time
+  * Add social card to website
+  * Add feature list to readme
+  * Design the homepage of Timoni's website
+  * Link to concepts page
+  * Hide toc on CLI docs
+  * Add concepts page to docs
+  * test: add metadata name and namespace test
+  * fix(importer): fix nil pointer on crd with no spec
+  * test(importer): add empty spec test
+  * Bump the ci group with 1 update
+  * Add Timoni logo
+  * Push clean schemas to GHCR
+  * Refactor action schema
+  * Bump Redis to 7.2.2
+  * ci: Fix schemas push
+  * Document how to update the CUE schemas
+  * Publish Timoni's CUE schemas to GHCR
+  * Report images without digests
+  * Add tests for container image listing
+  * List container images referenced by an instance
+  * Add container image refs to instance storage
+  * Extract container image refs at build-time
+  * Add container image refs to instance metadata
+  * Add vet command to docs
+  * Add vet command for modules and debug values
+  * engine: Vet module instance at build-time
+  * engine: Verify required module files
+  * docs: Running tests with Kubernetes Jobs
+  * Run connectivity test in CI
+  * Add connectivity test example
+  * Add connectivity test to Redis module
+  * Add actions to Timoni's core schemas
+  * runtime: Wait for Kubernetes Jobs completion
+  * Migrate the instance storage from the Opaque type
+  * Add `timoni bundle status` to docs
+  * Add tests for bundle status
+  * Add `timoni bundle status` command List the current status of
+    the managed resources for each instance including the last
+    applied date, the module url and digest.
+  * Add tests for instance status
+  * Bump podinfo to 6.5.2
+  * Refactor Redis module
+  * Bump golang.org/x/net from 0.14.0 to 0.17.0
+  * Use tabular view for `timoni inspect resources` Print resources
+    managed by an instance in a tabular view with name, namespace
+    and API version columns.
+  * Set storage secret type to `timoni.sh/instance`
+  * Persist values for reproducible instances
+  * Refactor bundle delete command Simplify the delete command to
+    `timoni bundle delete <name>` and deprecate `--name`. When
+    deleting a bundle by referring to a file with `timoni bundle
+    delete -f bundle.cue`, the name is extracted from the file
+    without parsing the instances or any other fields.
+
+-------------------------------------------------------------------
 Sun Oct 08 15:56:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.2:
