@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pymediainfo
-Version:        6.0.1
+Version:        6.1.0
 Release:        0
 Summary:        Python wrapper for the mediainfo library
 License:        MIT

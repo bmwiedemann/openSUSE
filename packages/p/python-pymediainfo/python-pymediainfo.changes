@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 29 18:22:02 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.0
+  * Add a buffer_size argument to parse()
+  * Add Python 3.12 support
+
+-------------------------------------------------------------------
 Fri Aug 25 10:52:11 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - (Build)Require python-importlib-metadata on Leap (boo#1214468)
