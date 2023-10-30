@@ -18,7 +18,7 @@
 
 %global libname lib%{name}1_1_0
 Name:           hiredis
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Minimalistic C client for Redis
 License:        BSD-3-Clause
