@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-spsdk
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Unified, reliable and easy to use SW library working across NXP MCU portfolio
 License:        BSD-3-Clause
@@ -100,6 +100,7 @@ find . -type f -name README.md -exec dos2unix {} +
 %python_clone -a %{buildroot}%{_bindir}/spsdk
 %python_clone -a %{buildroot}%{_bindir}/tpconfig
 %python_clone -a %{buildroot}%{_bindir}/tphost
+%python_clone -a %{buildroot}%{_bindir}/dk6prog
 # fix line endings
 %python_expand find %{buildroot}%{$python_sitelib} -type f -exec dos2unix {} +
 # remove shebangs
@@ -109,10 +110,10 @@ find . -type f -name README.md -exec dos2unix {} +
 %python_expand rm -vf %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.c %{buildroot}%{$python_sitelib}/spsdk/data/cpu_data/*.bin
 
 %post
-%python_install_alternative blhost elftosb ifr nxpcertgen nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpimage nxpkeygen pfr sdphost sdpshost shadowregs spsdk tpconfig tphost
+%python_install_alternative blhost elftosb ifr nxpcertgen nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpimage nxpkeygen pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
 
 %postun
-%python_uninstall_alternative blhost elftosb ifr nxpcertgen nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpimage nxpkeygen pfr sdphost sdpshost shadowregs spsdk tpconfig tphost
+%python_uninstall_alternative blhost elftosb ifr nxpcertgen nxpcrypto nxpdebugmbox nxpdevhsm nxpdevscan nxpimage nxpkeygen pfr sdphost sdpshost shadowregs spsdk tpconfig tphost dk6prog
 
 %files %{python_files}
 %doc README.md
@@ -136,5 +137,6 @@ find . -type f -name README.md -exec dos2unix {} +
 %python_alternative %{_bindir}/spsdk
 %python_alternative %{_bindir}/tpconfig
 %python_alternative %{_bindir}/tphost
+%python_alternative %{_bindir}/dk6prog
 
 %changelog

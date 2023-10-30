@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 30 07:42:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.11.0:
+  * New features
+    - nxpimage:
+      - enable signature providers for AHAB image and signed
+        messages
+      - add support for rt104x in bootable-image
+    - tphost/tpconfig:
+      - add possibility to check TP_RESPONSE only with NXP_PROD raw
+        binary key
+    - add support for mcxn9xx
+    - add API for FuseLockedStatus
+    - possibility to declare private keys with passphrase in
+      signature provider config
+    - add checking of written data length in usb interface
+    - add support for dk6 tools
+  * Bugfixes
+    - nxpimage: fix offset on NAND memory in AHAB image
+    - fix plugin error for signature Provider for sb21
+
+-------------------------------------------------------------------
+Mon Oct 30 07:36:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.10.1:
+  * New features
+    - nxpimage:
+      - support encrypted image hab
+      - support for RT11xx and RT10xx
+      - improve OTFAD/IEE names generation
+    - add API to retrieve info about fuses
+  * Bugfixes
+    - nxpimage:
+      - fix XMCD load_from_config
+      - fix IEE template
+    - fix circular dependency in signature provider import
+    - fix issue with loading keys as INT
+    - not enable logging when spsdk is used as a library
+
+-------------------------------------------------------------------
 Wed May 31 05:46:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - do no longer package the *.c and *.bin files in
