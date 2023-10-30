@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 30 07:12:18 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 80.0
+  New features and enhancements:
+  * MKVToolNix GUI: if the system's locale uses one of the Han
+    scripts, the GUI will force Arabic numerals to be used in
+    spin boxes. This prevents Suzhou numerals from being used.
+  Bug fixes:
+  * build system: fixed detection of Qt6 if `clang` is used for
+    compilation on Linux. In that case Qt's `qmake` added a
+    `gcc`-specific option that `clang` doesn't understand,
+    `-mno-direct-extern-access`. `configure` will now pass the
+    parameter `-spec linux-clang` to `qmake` so that it uses the
+    correct compiler flags.
+  * build system: fixed the use of `mktemp` to be more portable.
+  * mkvmerge: if a video aspect ratio was given with
+    `--aspect-ratio-factor`, the code would apply a second
+    factor based on the pixel resolution, resulting in much too
+    large values for the `DisplayWidth` element. For example,
+    with a pixel resolution of 720x520 & an aspect ratio factor
+    of 1/1 the result should be 720x520, but instead it was
+    900x520. Up until release 76.0 this has only happened when a
+    track order was given (which unfortunately includes all
+    invocations with MKVToolNix GUI as it always includes the
+    track order). Starting with release 77.0 this has always
+    happened due to the automatic sorting of tracks implicitly
+    creating a track order, even if none was given.
+
+-------------------------------------------------------------------
 Tue Aug 22 11:08:22 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 79.0

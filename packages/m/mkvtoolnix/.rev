@@ -1397,4 +1397,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1105238</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>c67a8c2988ce00909d2c18e3a208fab6</srcmd5>
+    <version>80.0</version>
+    <time>1698700246</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121086</requestid>
+  </revision>
 </revisionlist>
