@@ -24,14 +24,14 @@
 # and the independently increasing toolchain release number (239).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk261
-%define innerver 1.3.261
+Version:        1.6.1+sdk268
+%define innerver 1.3.268
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
-Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-%innerver.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/vulkan-sdk-%innerver.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -48,7 +48,7 @@ registry. This includes:
 * The XML registry file.
 
 %prep
-%autosetup -n SPIRV-Headers-sdk-%innerver
+%autosetup -n SPIRV-Headers-vulkan-sdk-%innerver
 
 %build
 %cmake
