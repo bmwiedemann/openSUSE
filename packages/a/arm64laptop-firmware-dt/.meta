@@ -1,0 +1,5 @@
+<package name="arm64laptop-firmware-dt" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware:boot" package="arm64laptop-firmware-dt"/>
+</package>

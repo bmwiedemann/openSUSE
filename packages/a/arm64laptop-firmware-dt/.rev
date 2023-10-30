@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce71532c1d9a443416c59d69a86540ab</srcmd5>
+    <version>2023.10.16</version>
+    <time>1698700205</time>
+    <user>anag+factory</user>
+    <comment>arm64laptop-firmware-dt installs kernel device-tree blobs on ESP in order to fulfill boot requirements on some arm64 laptops which does not have Linux ACPI support and embedded/default DTBs inside the UEFI FW. For example, the lenovo-firmware-dt subpackage installs sc8280xp-lenovo-thinkpad-x13s.dtb on ESP since the Lenovo X13s doesn't have ACPI support for Linux and its UEFI FW has to load the DTB file from ESP first and then apply runtime DT overlays before booting to grub2 and then Linux. Without preloading the DTB, the system wouldn't boot since the UEFI FW does not contain a default DTB (bsc#1215647). All other similar requests from different machine models in the future should also be managed as sub-packages in this arm64laptop-firmware-dt.</comment>
+    <requestid>1120666</requestid>
+  </revision>
+</revisionlist>

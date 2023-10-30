@@ -1,0 +1,21 @@
+--------------------------------------------------------------------
+Fri Oct 20 08:24:00 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Correct script alignments
+
+--------------------------------------------------------------------
+Mon Oct 16 14:40:00 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Declare subpackages for different machine models
+- Add a Supplements tag to bind the firmware modalias on Lenovo X13s
+
+--------------------------------------------------------------------
+Wed Sep 27 15:05:00 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Change the save folder from /boot/aa64dtb to /usr/share/arm64laptop-firmware-dt
+- Remove unnecessary cp option "-r"
+
+--------------------------------------------------------------------
+Thu Sep 14 11:40:00 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Initial commit
