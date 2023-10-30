@@ -992,4 +992,12 @@ Bugfixes
 Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <requestid>1115970</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>b2d7b1e8e31ae1928bf58483e2a4fcd5</srcmd5>
+    <version>4.7.1</version>
+    <time>1698700193</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119372</requestid>
+  </revision>
 </revisionlist>

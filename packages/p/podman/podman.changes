@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 12 09:47:46 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Use crun on Tumbleweed & ALP for WASM support
+
+-------------------------------------------------------------------
 Fri Oct 06 05:50:25 UTC 2023 - danish.prakash@suse.com
 
 - podman-docker: Provides docker to avoid conflicts

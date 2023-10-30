@@ -62,7 +62,12 @@ Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
 Requires:       libcontainers-common >= 20230214
+# use crun on Tumbleweed & ALP for WASM support
+%if 0%{suse_version} >= 1600
+Requires:       crun
+%else
 Requires:       runc >= 1.0.1
+%endif
 Requires:       slirp4netns >= 0.4.0
 Requires:       timezone
 Suggests:       katacontainers
