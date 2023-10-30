@@ -128,6 +128,7 @@ Wed Jan  4 08:48:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
   * Fix build in tif_lzw.c
   * CMake: Add options for disabling tools, tests, contrib and docs.
   * tiffcrop: Fix memory allocation to require a larger buffer (CVE-2022-3570, CVE-2022-3598)
+    [bsc#1205422]
   * tiffcrop: disable incompatibility of -Z, -X, -Y, -z options with any PAGE_MODE_x option
     (CVE-2022-3627, CVE-2022-3597, CVE-2022-3626)
   * tiffcrop: fix floating-point exception (CVE-2022-2056, CVE-2022-2057, CVE-2022-2058)
@@ -224,6 +225,10 @@ Sun May 29 20:32:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * _TIFFRewriteField(): fix when writing a IFD with a single tile that is a
     sparse one, on big endian hosts
   * Fix all remaining uses of legacy Deflate compression id and warn on use.
+  * CVE-2022-22844 bsc#1194539
+  * CVE-2022-2867 bsc#1202466
+  * CVE-2022-2868 bsc#1202467
+  * CVE-2022-2869 bsc#1202468
 - drop tiff-CVE-2022-0907.patch, tiff-CVE-2022-0561.patch, tiff-CVE-2022-0562.patch,
   tiff-CVE-2022-0865.patch, tiff-CVE-2022-0909.patch, tiff-CVE-2022-0924.patch,
   tiff-CVE-2022-0908.patch, tiff-CVE-2022-1056,CVE-2022-0891.patch: all upstream
@@ -241,6 +246,7 @@ Mon May  9 10:42:53 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - security update
   * CVE-2022-0561 [bsc#1195964]
+  * CVE-2022-34266 [bsc#1201723] [bsc#1201971]
     + tiff-CVE-2022-0561.patch
   * CVE-2022-0562 [bsc#1195965]
     + tiff-CVE-2022-0562.patch
@@ -290,6 +296,10 @@ Mon Dec 28 16:02:16 UTC 2020 - pgajdos@suse.com
   * Optional support for using libdeflate is added.
   * Many of the tools now support a memory usage limit.
   See http://www.simplesystems.org/libtiff/v4.2.0.html for more.
+  * CVE-2020-35521 bsc#1182808
+  * CVE-2020-35522 bsc#1182809
+  * CVE-2020-35523 bsc#1182811
+  * CVE-2020-35524 bsc#1182812
 
 -------------------------------------------------------------------
 Wed Apr  1 06:48:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
@@ -307,6 +317,10 @@ Wed Nov  6 12:00:35 UTC 2019 - pgajdos@suse.com
 - version update to 4.1.0
   * fixes several CVEs mentioned below and more,
     see ChangeLog
+  * CVE-2019-17546 bsc#1154365
+  * CVE-2017-17095 bsc#1071031
+  * CVE-2019-14973 bsc#1146608
+  * CVE-2020-19131 bsc#1190312
 - deleted patches
   - tiff-CVE-2018-12900.patch (upstreamed)
   - tiff-CVE-2018-17000,19210.patch (upstreamed)
@@ -363,8 +377,8 @@ Tue Nov 13 08:18:54 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
 Mon Nov 12 11:37:11 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
 
 - upddated to 4.0.10:
-  * fixes several CVEs mentioned below plus CVE-2018-18557 and
-    CVE-2018-18661 and more
+  * fixes several CVEs mentioned below plus CVE-2018-18557 [bsc#1113094]
+  and CVE-2018-18661 [bsc#1113672] and more
 - removed patches
   * tiff-CVE-2017-11613,CVE-2018-16335,15209.patch
   * tiff-CVE-2017-18013.patch
@@ -666,6 +680,7 @@ Wed Nov 29 09:08:42 UTC 2017 - fstrba@suse.com
       Effective for mmap'ed case. And non-mmap'ed case, but
       restricted to 64bit builds. Fixes
       http://bugzilla.maptools.org/show_bug.cgi?id=2675
+      (CVE-2017-12944, bsc#1054594)
     + libtiff/tif_luv.c: LogLuvInitState(): avoid excessive memory
       allocation when RowsPerStrip tag is missing. Fixes
       https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=2683
@@ -1064,6 +1079,7 @@ Tue Jun 20 08:15:57 UTC 2017 - fstrba@suse.com
       Fixes http://bugzilla.maptools.org/show_bug.cgi?id=2677
   * Other issues fixed:
     + bsc#1042804, CVE-2017-9404
+  * CVE-2016-10092, CVE-2016-10093, CVE-2016-10094 [bsc#1017693]
 - Removed patches:
   * tiff-4.0.7-CVE-2015-7554.patch
   * tiff-4.0.7-CVE-2017-5225.patch
@@ -1258,6 +1274,7 @@ Tue Nov 29 08:45:11 UTC 2016 - fstrba@suse.com
     + Fix out-of-bounds read on memory-mapped files in
       TIFFReadRawStrip1() and TIFFReadRawTile1() when stripoffset
       is beyond tmsize_t max value
+      (bsc#990460, CVE-2016-6223)
     + Make TIFFReadEncodedStrip() and TIFFReadEncodedTile() directly
       use user provided buffer when no compression (and other
       conditions) to save a memcpy().

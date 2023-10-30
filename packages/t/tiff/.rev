@@ -902,4 +902,30 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment></comment>
     <requestid>1111461</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>5b2eb664c7cde381638e4b0f89579d36</srcmd5>
+    <version>4.6.0</version>
+    <time>1698700247</time>
+    <user>anag+factory</user>
+    <comment>    [bsc#1205422]
+  * CVE-2022-22844 bsc#1194539
+  * CVE-2022-2867 bsc#1202466
+  * CVE-2022-2868 bsc#1202467
+  * CVE-2022-2869 bsc#1202468
+  * CVE-2022-34266 [bsc#1201723] [bsc#1201971]
+  * CVE-2020-35521 bsc#1182808
+  * CVE-2020-35522 bsc#1182809
+  * CVE-2020-35523 bsc#1182811
+  * CVE-2020-35524 bsc#1182812
+  * CVE-2019-17546 bsc#1154365
+  * CVE-2017-17095 bsc#1071031
+  * CVE-2019-14973 bsc#1146608
+  * CVE-2020-19131 bsc#1190312
+  * fixes several CVEs mentioned below plus CVE-2018-18557 [bsc#1113094]
+  and CVE-2018-18661 [bsc#1113672] and more
+      (CVE-2017-12944, bsc#1054594)
+  * CVE-2016-10092, CVE-2016-10093, CVE-2016-10094 [bsc#1017693]
+      (bsc#990460, CVE-2016-6223)</comment>
+    <requestid>1121286</requestid>
+  </revision>
 </revisionlist>
