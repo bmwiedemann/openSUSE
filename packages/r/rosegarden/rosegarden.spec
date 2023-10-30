@@ -19,7 +19,7 @@
 %define vers    22.12
 
 Name:           rosegarden
-Version:        22.12.1
+Version:        23.06
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
