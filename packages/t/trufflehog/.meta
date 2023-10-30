@@ -1,0 +1,6 @@
+<package name="trufflehog" project="openSUSE:Factory">
+  <title>Trufflehog</title>
+  <description>CLI tool to find exposed secrets in source repositories, container images, files and cloud resources</description>
+  <devel project="devel:languages:go" package="trufflehog"/>
+  <url>https://github.com/trufflesecurity/trufflehog</url>
+</package>

@@ -1,0 +1,1107 @@
+-------------------------------------------------------------------
+Mon Oct 30 16:57:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Clarify description's "entire tech stack".
+
+-------------------------------------------------------------------
+Mon Oct 30 14:52:09 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.62.0:
+  * Add TravisCI source (#1877)
+  * Remove verify flag from Aho-Corasick core (#2010)
+
+-------------------------------------------------------------------
+Mon Oct 30 13:46:56 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * _service reorder move set_version earlier so go_modules sees
+    updated version
+  * Summary and Description clarify the purpose of this CLI tool
+  * Use %%name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+  * Drop BuildRequires: libpcre1. libpcre2 is already included
+    during build, and there is no mention in upstream source or
+    docs that only libpcre1 is supported. Since upstream uses
+    CGO_ENABLED=0 in their Makefile, it is not clear if or how
+    libpcre would be a required dependency.
+  * Drop BuildRequires: golang-packaging. The original macros for
+    file movements into GOPATH are obsolete with Go modules. Macro
+    go_nostrip is no longer needed with current binutils and Go.
+  * Remove %%{go_nostrip} macro which is no longer recommended
+  * Extract go build command from upstream Makefile. The go build
+    command straightforward in this package. Calling go build
+    directly from packaging where possible helps package
+    maintainers review usage and normalize packaging standards.
+    Makefiles often have targets for building container images,
+    running tests, etc. Makefiles can include assumptions of online
+    access that do not hold for the OBS build environment.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Drop export CGO_ENABLED="0" used by Makefile. Use the default
+    unless there is a defined requirement or benefit.
+
+-------------------------------------------------------------------
+Mon Oct 30 10:34:22 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.61.0:
+  * adding 'token' keyword to regex for github_old (#2037)
+  * Update module github.com/go-git/go-git/v5 to v5.10.0 (#2023)
+  * Detector-Competition-Feat: Added Reply.io API token detector (#2019)
+  * fix(deps): update module sigs.k8s.io/yaml to v1.4.0 (#2047)
+  * Detector-Competition-Feat: Added Stripo API token detector (#2018)
+  * feat: deno deploy detector (#2040)
+  * Update module google.golang.org/api to v0.148.0 (#2045)
+  * Update module go.uber.org/zap to v1.26.0 (#2044)
+  * Update module github.com/launchdarkly/go-server-sdk/v6 to v6.1.1 (#2043)
+  * Update module github.com/snowflakedb/gosnowflake to v1.6.25 (#2042)
+  * Update module github.com/xanzy/go-gitlab to v0.93.2 (#2031)
+  * Update module go.uber.org/mock to v0.3.0 (#2038)
+  * Update github.com/bodgit/sevenzip to v1.4.3 (#2039)
+  * Detector-Competition-Feat: Added Budibase API token detector (#2016)
+  * Update module github.com/prometheus/client_golang to v1.17.0 (#2029)
+  * Detector-Competition-Feat: Added LemonSqueezy API token detector (#2017)
+  * Update module github.com/rabbitmq/amqp091-go to v1.9.0 (#2030)
+  * Update module github.com/hashicorp/golang-lru to v0.6.0 (#2028)
+  * Update module github.com/google/uuid to v1.4.0 (#2027)
+  * Update module github.com/google/go-containerregistry to v0.16.1 (#2026)
+  * Update module github.com/getsentry/sentry-go to v0.25.0 (#2022)
+  * Update module github.com/go-logr/logr to v1.3.0 (#2025)
+  * Update module github.com/charmbracelet/lipgloss to v0.9.1 (#2015)
+  * Update module github.com/bradleyfalzon/ghinstallation/v2 to v2.8.0 (#2014)
+  * Update module github.com/aws/aws-sdk-go to v1.46.6 (#2013)
+  * Update module cloud.google.com/go/secretmanager to v1.11.3 (#2011)
+  * Update module github.com/TheZeroSlave/zapsentry to v1.19.0 (#2012)
+  * Chore(deps): Bump google.golang.org/grpc from 1.56.2 to 1.56.3 (#2009)
+  * Add Coinbase Wallet-as-a-Service detector (#1895)
+  * Detector-Competition-Feat: Add Metabase Session Secret Detector (#1902)
+  * Detector-Competition-Feat: Added AppOptics API token detector (#1989)
+  * Detector-Competition-Feat: Added ZeroTier API token detector (#1988)
+  * Detector-Competition-Feat: Added BetterStack API token detector (#1987)
+  * Detector-Competition-Fix: Fix SurveyBot Verification (#1948)
+  * Fix binary handling (#1999)
+  * Add temp directory management (#1878)
+
+-------------------------------------------------------------------
+Thu Oct 26 14:49:43 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.60.4:
+
+  * loggly detector by @ankushgoel27 in #1782
+  * Detector-Competition-Feat: Added OpenVPN API Detector by @fumblehool in #1940
+  * deprecate scan_interval field by @ahrav in #1984
+  * Detector-Competition-Feat: Added Portainer Detector by @fumblehool in #1936
+  * Detector-Competition-Fix: Fix/Remove baseapi detector (no longer exists) by @lc in #1992
+  * remove detector by @ahrav in #1993
+  * Detector-Competition-Feat: Added Vagrant Cloud Access Token Detector by @fumblehool in #1941
+  * Detector-Competition-Fix : fixed monday.com regex by @ankushgoel27 in #1961
+  * Detector-Competition-Fix: Fix ScreenshotAPI Verification by @lc in #1949
+  * Detector-Competition-Fix: Fix MeaningCloud Verification by @lc in #1946
+  * Detector-Competition-Fix: Deprecate Glitterly by @lc in #2000
+  * Detector-Competition-Fix: Fix/Remove BlaBlaBus, API retired by @lc in #1996
+  * make protos for deprecating Blablabus by @0x1 in #2002
+  * Detector-Competition-Fix: Fix/Remove QuickMetrics (shutdown) by @lc in #1997
+  * update renovate config and remove dependabot by @dustin-decker in #1994
+  * Detector-Competition-Fix: Fix/Remove DataFire, API retired by @lc in #1995
+
+- Update to version 3.60.3:
+
+  * Use latest dbr by @bill-rich in #1955
+  * Revert "Fix wrong line number" by @rosecodym in #1963
+  * Upgrade gocb and gocbcore by @nyanshak in #1952
+  * Detector-Competition-Fix: Fix CloudSmith verification by @lc in #1944
+  * Detector-Competition-fix: NewRelic Detector -fallback to EU Api for verification by @fumblehool in #1932
+  * fix #1751: update facebookOauth Detector by @fumblehool in #1921
+  * Dockerfiles - Alpine Linux 3.15 EoL by @nfsec in #1914
+  * Remove docker container after make protos finishes by @fumblehool in #1964
+  * Configure Renovate by @renovate in #1966
+  * fix(deps): update golang.org/x/exp digest to 7918f67 by @renovate in #1968
+  * fix(deps): update github.com/lrstanley/bubblezone digest to e3824f1 by @renovate in #1967
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.11.2 by @renovate in #1970
+  * fix(deps): update module github.com/aymanbagabas/go-osc52 to v1.2.2 by @renovate in #1971
+  * fix(deps): update module github.com/go-errors/errors to v1.5.1 by @renovate in #1972
+  * fix(deps): update module golang.org/x/oauth2 to v0.13.0 by @renovate in #1974
+  * Detector-Competition-Feat: Added PortainerToken Detector by @fumblehool in #1938
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.6.25 by @renovate in #1981
+  * fix(deps): update module github.com/google/go-github/v42 to v56 by @renovate in #1975
+  * chore(deps): update alpine docker tag to v3.18 by @renovate in #1982
+  * fix(deps): update module github.com/mattn/go-isatty to v0.0.20 by @renovate in #1980
+  * chore(deps): update module github.com/trufflesecurity/overseer to v1.2.7 by @renovate in #1983
+  * fix(deps): update module github.com/google/go-cmp to v0.6.0 by @renovate in #1973
+  * fix(deps): update module github.com/azure/go-autorest/autorest/azure/auth to v0.5.12 by @renovate in #1977
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v6.1.1 by @renovate in #1978
+  * add rpm2cpio as dependency to dockerfile by @ahrav in #1985
+
+- Update to version 3.60.2:
+  * Detector-Competition-Fix: Fix/Remove Flowdock detector (#2004)
+  * Detector-Competition-Fix: Fix/Remove Happi Detection & Verification (#2003)
+  * Detector-Competition-Fix: Fix/Remove DataFire, API retired (#1995)
+  * update renovate config and remove dependabot (#1994)
+  * Detector-Competition-Fix: Fix/Remove QuickMetrics (shutdown) (#1997)
+  * make protos for deprecating Blablabus (#2002)
+  * Detector-Competition-Fix: Fix/Remove BlaBlaBus, API retired (#1996)
+  * Detector-Competition-Fix: Depreciate Glitterly (#2000)
+  * Detector-Competition-Fix: Fix MeaningCloud Verification (#1946)
+  * Detector-Competition-Fix: Fix ScreenshotAPI Verification (#1949)
+  * Detector-Competition-Fix : fixed monday.com regex (#1961)
+  * Detector-Competition-Feat: Added Vagrant Cloud Access Token Detector (#1941)
+  * remove detector (#1993)
+  * Detector-Competition-Fix: Fix/Remove baseapi detector (no longer exists) (#1992)
+  * Detector-Competition-Feat: Added Portainer Detector (#1936)
+  * deprecate scan_interval field (#1984)
+  * Detector-Competition-Feat: Added OpenVPN API Detector (#1940)
+  *  loggly detector (#1782)
+  * add rpm2cpio as dependency to dockerfile (#1985)
+  * fix(deps): update module github.com/launchdarkly/go-server-sdk/v6 to v6.1.1 (#1978)
+  * fix(deps): update module github.com/azure/go-autorest/autorest/azure/auth to v0.5.12 (#1977)
+  * fix(deps): update module github.com/google/go-cmp to v0.6.0 (#1973)
+  * chore(deps): update module github.com/trufflesecurity/overseer to v1.2.7 (#1983)
+  * fix(deps): update module github.com/mattn/go-isatty to v0.0.20 (#1980)
+  * chore(deps): update alpine docker tag to v3.18 (#1982)
+  * fix(deps): update module github.com/google/go-github/v42 to v56 (#1975)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.6.25 (#1981)
+  * Detector-Competition-Feat: Added PortainerToken Detector (#1938)
+  * fix(deps): update module golang.org/x/oauth2 to v0.13.0 (#1974)
+  * fix(deps): update module github.com/go-errors/errors to v1.5.1 (#1972)
+  * fix(deps): update module github.com/aymanbagabas/go-osc52 to v1.2.2 (#1971)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.11.2 (#1970)
+  * fix(deps): update github.com/lrstanley/bubblezone digest to e3824f1 (#1967)
+  * fix(deps): update golang.org/x/exp digest to 7918f67 (#1968)
+  * Add renovate.json (#1966)
+  * Remove docker container after make protos finishes (#1964)
+  * Dockerfiles - Alpine Linux 3.15 EoL (#1914)
+  * fix #1751: update facebookOauth Detector (#1921)
+  * fix: NewRelic Detector: fallback to EU Api for verification (#1932)
+  * Detector-Competition-Fix: Fix CloudSmith detection (#1944)
+  * Upgrade gocb and gocbcore (#1952)
+  * Revert "Fix off by one (#1891)" (#1963)
+  * Use latest dbr (#1955)
+  * export ShouldVerify (#1962)
+  * export struct (#1954)
+  * Detector-Competition-Fix: Fix CodeClimate verification (#1945)
+  * Detector-Competition-Feat: Add InstaMojo Payment Detector (#1905)
+  * Detector-Competition-Fix: Fix SuperNotes API verification (#1947)
+  * Add UnitHook and NoopHook implementations (#1930)
+  * Detector-Competition-New: add IP2Location api key detector (#1915)
+  * [chore] Fix glob package name (#1931)
+  * Filter unique detectors by keywords in chunk (#1711)
+  * Detector-Competition-Feat: Add ipinfo.io API key detector (#1889)
+  * Fix README.md typo (#1942)
+  * Use the configured include repositories in the GitHub filter (#1926)
+  * chore(github): reduce comment log verbosity (#1922)
+  * Detector-Competition-Feat: Add Privacy.com API key detector (#1888)
+  * Move Github comments check to fix a test #1927
+  * Handle secondary GitHub ratelimits (#1912)
+  * Export ChunkError fields and add ErrorsFor convenience method (#1920)
+  * Detector-Competition-Fix: Fix plaid.com API key detection (#1916)
+  * update regex (#1919)
+
+-------------------------------------------------------------------
+Thu Oct 19 11:59:15 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.60.1:
+  * feat(voiceflow): basic detector (#1900)
+  * Fix for #1526: Update Posthog detector (#1910)
+  * Add generic glob filter (#1858)
+  * Tighten up regex for twist detector (#1908)
+  * Added Support for '-h' Option for Help Documentation (#1901)
+  * feat(git): only generate line numbers > 0 (#1898)
+  * fix(github): normalize repo cache (#1897)
+  * Fix off by one (#1891)
+
+-------------------------------------------------------------------
+Tue Oct 17 12:16:21 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.60.0:
+  * Add ShannonEntropy test for an empty string (#1893)
+  * [chore] Add SourceUnitEnumChunker filesystem tests (#1873)
+  * Detector-Competition-Fix: Add Personal Access Tokens (API Tokens Depr… (#1871)
+  * [bug] - Don't modify global client var (#1890)
+  * added cody gateway token detection code (#1883)
+  * Bump golang.org/x/net from 0.15.0 to 0.17.0 (#1886)
+  * Detector-Competition-Feat: Add Klaviyo API Secret Detector (#1870)
+
+-------------------------------------------------------------------
+Mon Oct 09 09:08:20 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.59.0:
+  * Add an option to filter unverified results using shannon entropy (#1875)
+  * [chore] Fix flaky TestJobProgressElapsedTime (#1872)
+  * Tighten up keywords (#1874)
+  * Detector-Competition-Fix: fix notion.so false negative verification (#1866)
+  * Detector-Competition-New: add anthropic api key detector (#1861)
+  * Detector-Competition-New: add ramp.com client id & secret detector (#1862)
+  * use Repositories field from conn. (#1860)
+  * Add include and ignore list to Artifactory (#1857)
+  * support insecure TLS for Jira and Jenkins (#1856)
+  * add tristate verification to postman (#1837)
+  * Use placeholder as default if field left empty and is required (#1642)
+  * implemented planet scale creds (passwords and API keys) (#1841)
+  * adding azure storage detector (#1840)
+  * Adding Howtorotate Guides to TruffleHog (#1839)
+  * update pagerdutyapikey detector to tri-state verification (#1836)
+  * Fix bug in chunker that surfaces with a flaky passed in io.Reader (#1838)
+  * Bump github.com/AzureAD/microsoft-authentication-library-for-go (#1850)
+  * Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.6.0 to 2.7.0 (#1851)
+  * Bump go.mongodb.org/mongo-driver from 1.12.0 to 1.12.1 (#1848)
+  * Bump github.com/aws/aws-sdk-go from 1.44.83 to 1.45.19 (#1847)
+  * Bump docker/setup-qemu-action from 2 to 3 (#1845)
+  * Bump goreleaser/goreleaser-action from 4 to 5 (#1844)
+  * Bump mikepenz/action-junit-report from 3 to 4 (#1843)
+  * Bump docker/login-action from 2 to 3 (#1846)
+  * Bump github.com/xanzy/go-gitlab from 0.88.0 to 0.92.3 (#1849)
+  * Bump actions/checkout from 3 to 4 (#1842)
+  * fixing razorpay (#1852)
+  * add tristate verification to twitch (#1830)
+  * chore(ReadMe): Update installation Doc (#1818)
+  * Separate gitlab detectors (#1819)
+  * [chore] add figmav2 to defaults (#1820)
+  * Cleanup jiratoken detector (#1832)
+  * cleanup nesting (#1831)
+  * Cleanup pubnub detector (#1826)
+  * Update alchemy_test.go to use detectors5 (#1829)
+  * Update web3storage_test.go (#1828)
+- Update to version 3.58.0:
+  * update figma to use tri-state verification by @0x1 in (#1814)
+  * updating myfreshworks detector to use tri-state verification by @0x1 in (#1779)
+  * updating microsoft teams webhook detector to use tri-state verification by @0x1 in (#1792)
+  * updating browserstack detector to use tri-state verification by @0x1 in (#1785)
+  * Implement an installation script with CheckSum Validation by @hibare in (#1808)
+  * Update Adding_Detectors_external.md by @zricethezav in (#1817)
+  * added PR and Issue body scanning by @joeleonjr in (#1816)
+  * Github partial scan by @ahrav in (#1804)
+  * Update Adding_Detectors_external.md by @zricethezav in (#1822)
+  * added Web3 Storage detector by @ankushgoel27 in (#1789)
+  * consolidated pr and issue descr/comment flags by @joeleonjr in (#1827)
+  * Use S3 credentials waterfall by @rosecodym in (#1823)
+  * [bug] - correctly check err by @ahrav in (#1824)
+  * Update web3storage_test.go with detectors5 by @zricethezav in (#1828)
+  * Update alchemy_test.go to use detectors5 by @zricethezav in (#1829)
+  * Cleanup pubnub detector by @0x1 in (#1826)
+  * cleanup myfreshworks detector by @0x1 in (#1831)
+  * Cleanup jiratoken detector by @0x1 in (#1832)
+  * [chore] add figmav2 to defaults by @0x1 in (#1820)
+  * Separate gitlab detectors by @0x1 in (#1819)
+  * chore(ReadMe): Update installation Doc by @varmakarthik12 in (#1818)
+  * add tristate verification to twitch by @0x1 in (#1830)
+  * fixing razorpay by @dxa4481 in (#1852)
+  * Bump actions/checkout from 3 to 4 by @dependabot in (#1842)
+  * Bump github.com/xanzy/go-gitlab from 0.88.0 to 0.92.3 by @dependabot in (#1849)
+  * Bump docker/login-action from 2 to 3 by @dependabot in (#1846)
+  * Bump mikepenz/action-junit-report from 3 to 4 by @dependabot in (#1843)
+  * Bump goreleaser/goreleaser-action from 4 to 5 by @dependabot in (#1844)
+  * Bump docker/setup-qemu-action from 2 to 3 by @dependabot in (#1845)
+  * Bump github.com/aws/aws-sdk-go from 1.44.83 to 1.45.19 by @dependabot in (#1847)
+  * Bump go.mongodb.org/mongo-driver from 1.12.0 to 1.12.1 by @dependabot in (#1848)
+
+-------------------------------------------------------------------
+Thu Sep 28 12:53:35 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.57.0:
+  * [bug] - correctly check err (#1824)
+  * Use S3 credentials waterfall (#1823)
+  * consolidated pr and issue descr/comment flags (#1827)
+  * added Web3 Storage detector (#1789)
+  * Update Adding_Detectors_external.md (#1822)
+  * Github partial scan (#1804)
+  * added PR and Issue body scanning (#1816)
+  * Update Adding_Detectors_external.md (#1817)
+  * Implement an installation script with CheckSum Validation (#1808)
+  * updating browserstack detector to use tri-state verification (#1785)
+  * updating microsoft teams webhook detector to use tri-state verification (#1792)
+  * updating myfreshworks detector to use tri-state verification (#1779)
+  * update figma to use tri-state verification (#1814)
+  * adding support for new version of figma token (#1813)
+  * Update README.md (#1811)
+  * examples folder (#1734)
+  * Update protos image to use correct go version (#1810)
+  * add line to link for azure repos. (#1801)
+  * fix detector test action (#1805)
+  * aggregate detector tests daily (#1800)
+  * Adding new function SetProgressOngoing to be used when the source does not yet know how many items it is scanning and does not want to display a percentage complete. (#1802)
+  * updating uri detector to use tri-state verification (#1791)
+  * Bump golang.org/x/oauth2 from 0.10.0 to 0.12.0 (#1799)
+  * Bump github.com/go-ldap/ldap/v3 from 3.4.5 to 3.4.6 (#1796)
+  * Bump github.com/charmbracelet/bubbletea from 0.24.1 to 0.24.2 (#1798)
+  * Bump github.com/getsentry/sentry-go from 0.22.0 to 0.24.1 (#1797)
+  * Bump cloud.google.com/go/storage from 1.31.0 to 1.33.0 (#1795)
+  * Bump github.com/mattn/go-isatty from 0.0.18 to 0.0.19 (#1794)
+  * Add ability to dynamically scale concurrently running sources (#1790)
+  * [bug] - fix link line (#1793)
+  * Ability to update line number in link (#1788)
+  * fixed rubygems detector (#1781)
+  * Update sonarcloud.go (#1784)
+  * [bug] - correclty handle nested archived directories (#1778)
+  * replace interface{} with any. (#1771)
+
+-------------------------------------------------------------------
+Fri Sep 15 07:13:56 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.56.0:
+  * Update Source interface to use SourceID and JobID types (#1774)
+  * migrate buildpulse to integration test suite (#1775)
+  * add buildpulse config to sources (#1764)
+  * Implement Gitlab source validation (#1765)
+  * fix: add missing error check in archive handler (#1770)
+  * Add a SourceType constant to all source packages (#1768)
+  * Refactor SourceManager to remove Enrollment (#1740)
+  * updating sendbirdorganizationapi detector to use tri-state verification (#1763)
+
+-------------------------------------------------------------------
+Tue Sep 12 07:24:02 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.55.1
+  * [chore] - fix slackwebhook detector by @ahrav in #1761
+  * Add log verbosity by @codevbus in #1750
+
+- Update to version 3.55.0
+  * [chore] - Sentry detector update by @ahrav in #1746
+  * Always close AWS response body by @rosecodym in #1758
+  * [chore] - add test for custom providers by @ahrav in #1759
+  * cache dupes w/ different decoders by @ahrav in #1754
+  * add tri state verification to slack (not slack webhook) by @zubairk14 in #1731
+  * Improve private key detector by @dustin-decker in #1760
+
+- Update to version 3.54.4:
+  * verbosity updates to s3 source (#1750)
+  * [chore] - fix slackwebhook detector (#1761)
+  * Improve private key detector (#1760)
+  * add tri state verification to slack (not slack webhook) (#1731)
+  * cache dupes w/ different decoders (#1754)
+  * add test for custom providers. (#1759)
+  * always close aws response body (#1758)
+  * [chore] - Sentry detector update (#1746)
+  * Retry AWS verification 403s (#1757)
+  * Always attempt to return a git link (#1756)
+  * Add Tailscale detector (#1719)
+  * updating sendgrid detector to use tri-state verification (#1735)
+  * Add optional param to Chunks (#1747)
+  * Use common chunker for archive handler (#1717)
+  * Fix pagerdutyapikey Detector (#1749)
+  * updating jiratoken and jiratokenV2 to use tri-state verification + updating tests (#1744)
+  * [chore] - update Docker source (#1708)
+  * updating sendbird detector to use tri-state verification (#1737)
+  * Validate S3 source (#1715)
+
+-------------------------------------------------------------------
+Mon Sep  4 07:12:28 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 3.54.3
+  * Sourcegraph Detectors Iterations by @shivasurya in #1742
+  * [chore] - fix sentry detector by @ahrav in #1738
+  * [bug] - Correctly create azure git links by @ahrav in #1743
+
+-------------------------------------------------------------------
+Mon Sep 04 06:42:13 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.54.2:
+  * Correctly create azure git links. (#1743)
+  * [chore] - fix sentry detector (#1738)
+  * iterating on suggestions (#1742)
+  * update jira detector to match new variable tokens (#1720)
+
+-------------------------------------------------------------------
+Fri Sep 01 08:04:07 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.54.1:
+  * add tri-state verification for twilio detector (#1729)
+  * added sourcegraph token verification detection (#1730)
+  * Update to Go 1.21 (#1733)
+  * update slack webhook with tri-state verification (#1724)
+  * Unify S3 client creation logic (#1657)
+  * Add a cancel cause to job cancellation (#1728)
+  * Add the 'Cause' family of functions to the context wrapper library (#1725)
+  * remove fmt.Print (#1727)
+  * Optimize read to max (#1714)
+  * Add AvailableCapacity method to SourceManager (#1665)
+  * Add jobID to chunk. (#1721)
+
+-------------------------------------------------------------------
+Tue Aug 29 07:17:15 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.54.0:
+  * buffer channel. (#1718)
+  * add detectors that were missed (#1716)
+  * Expired invite link fix (#1713)
+
+-------------------------------------------------------------------
+Mon Aug 28 15:05:32 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.53.0:
+  * [chore] - Prevent nil deref panic (#1709)
+  * Support cancelling a run from a JobProgressRef (#1663)
+  * Test S3 role assumption (#1655)
+  * Add SourceName to JobProgressRef (#1664)
+  * Support azure git links (#1662)
+  * Capture source-reported progress in JobProgress snapshot (#1661)
+  * Add ElapsedTime method to JobProgressMetrics (#1660)
+  * add snowflake detector (#1653)
+  * Update launchdarkly regex, support sdk keys, add tri-state verification (#1645)
+  * [chore] - update benchmarks. (#1641)
+  * [chore] - update comments and logs. (#1654)
+  * Include the job ID in a chunk (#1652)
+  * add rate limit and consumption metrics for GitHub (#1651)
+  * update s3 test bucket (#1649)
+  * Fix reversed ordering of arguments (#1648)
+  * add thog CLI support for GitHub config validate (#1626)
+  * wait before finishing s3 test (#1647)
+  * Add tri-state verification to sqlserver detector (#1624)
+  * Only scan gist comments or repo comments. (#1646)
+
+-------------------------------------------------------------------
+Fri Aug 18 08:06:27 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.52.0:
+  * add role assumption for s3 source (#1477)
+  * [bug] - handle IOOR panic (#1639)
+  * updat test file. (#1637)
+  * [bug] - Correctly reset reader before handling archive chunk data (#1636)
+
+-------------------------------------------------------------------
+Thu Aug 17 13:04:29 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.47:
+  * [bug] - copy chunk before sending on chunksChan (#1633)
+  * Add ScanChunk to allow injecting Chunks into the SourceManager's channel (#1634)
+  * correct logging output for github comments and add oss flags (#1632)
+  * [chore] - Use custom context for archive handler of specialized archives (#1629)
+  * add salesforce detector (#1608)
+  *  Integration of SpecializedHandler for Enhanced Archive Processing (#1625)
+  * fix github org placeholder (#1627)
+  * bump go to 1.21 (#1623)
+  * change verification endpoint (#1611)
+  * add huggingface detector (#1621)
+  * Refactor FragmentLineOffset to match multiline secrets (#1612)
+  * fix alchemy test error message (#1622)
+  * Docker scanning by digest (#1615)
+  * Use the common chunker for scanning the filesystem source (#1619)
+  * Support indeterminate verification in Gitlab detector (#1613)
+  * stop saving alchemy url (#1614)
+  * Add tri-state verification to pubnub publish key detector (#1616)
+  * fix error msg in alchemy test (#1617)
+  * Add terminal UI (#1593)
+  * implement tri-state verification in FTP detector (#1604)
+  * Move commits_scanned to ScanRepo (#1610)
+  * Use common chunk reader (#1596)
+  * Tweak template detector test code (#1609)
+
+-------------------------------------------------------------------
+Fri Aug 04 08:05:50 UTC 2023 - felix.niederwanger@suse.com
+
+- Update to version 3.46.3:
+  * Detect API keys without app keys (#1605)
+  * Adjust regex and add tests (#1602)
+  * Use SourceManager in engine (#1586)
+  * implement indeterminate LDAP verification (#1574)
+  * Fix nil pointer dereference to git ScanOptions (#1603)
+  * initial support for bare repositories (#1499)
+  * Common chunk reader (#1594)
+  * Add commits scanned to log (#1600)
+  * include scan duration in output log (#1598)
+  * Make prints to stdout serial. (#1597)
+- Update to version 3.46.2:
+  * add tri-state verification to mongodb detector by @rosecodym in #1575
+  * create hidden debug flag to disable overseer by @zubairk14 in #1582
+  * Fix VirusTotal deetector by @ahrav in #1585
+  * Refactor git source to allow ScanOptions and use source in engine by @mcastorina in #1518
+  * S3 panic send on closed channel by @ahrav in #1589
+- Update to version 3.46.1:
+  * [bug] - Fix unlocking an unlocked mutex by @ahrav in #1583
+- Update to version 3.46.0:
+  * Increase log level of engine messages by @dustin-decker in #1576
+  * Initialize the default logger to output to stderr by @mcastorina in #1569
+  * Fix runtime error when scanning Gist comments by @rgmz in #1552
+  * Do not nest transports for Github installation client by @rosecodym in #1564
+  * Identify transient AWS verification failures by @rosecodym in #1563
+  * Support fatal errors in job reports by @mcastorina in #1562
+  * Fix pubnub regular expression by @mcastorina in #1565
+  * gitparse: Use an object for currentDiff by @mcastorina in #1573
+  * Concurrent detection by @ahrav in #1580
+  * Replace magic strings with const by @ahrav in #1568
+  * [bug] - fix data races by @ahrav in #1577
+  * [bug] - fix shodan detector by @ahrav in #1579
+
+-------------------------------------------------------------------
+Fri Jul 28 09:49:25 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.35.2
+* Pass GitHub apiEndpoint for basic or no auth by @rgmz in #1454
+* Bump github.com/xanzy/go-gitlab from 0.86.0 to 0.88.0 by @dependabot in #1522
+* Bump github.com/google/go-containerregistry from 0.14.0 to 0.15.2 by @dependabot in #1504
+* Add SourceManager tests for Run and Wait methods by @mcastorina in #1530
+* Improve log message when scanning GitHub comments by @rgmz in #1553
+* Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.4.0 to 2.6.0 by @dependabot in #1503
+* Bump github.com/go-git/go-git/v5 from 5.8.0 to 5.8.1 by @dependabot in #1554
+* [MongoDB] Detect CosmoDB access keys by @rgmz in #1511
+* Override broken dependency version by @dustin-decker in #1558
+* Add azure repos protos by @ahrav in #1559
+* add merge support by @zricethezav in #1561
+
+-------------------------------------------------------------------
+Fri Jul 28 09:45:30 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.35.1
+* [chore] - optimize chunker by @ahrav in #1535
+* Add commitsScanned metrics by @bill-rich in #1533
+* Make Ahocorasick matching case insensitive by @zricethezav in #1547
+* Fix data race in context wrapper library by @mcastorina in #1546
+* Update gitparse logic by @rgmz in #1486
+
+-------------------------------------------------------------------
+Tue Jul 25 07:00:24 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.35.0
+* [chore] - Update loop to switch. by @ahrav in #1487
+* Rewrite SourceUnitEnumerator to use UnitReporter instead of a channel by @mcastorina in #1485
+* Define SourceUnit chunking interface by @mcastorina in #1484
+* fix twilio verification side effect by @brandonjyan in #1494
+* Fix URI detector false positives when the redacted password has been URL encoded by @trufflesteeeve in #1489
+* add envoy api key scanner by @brandonjyan in #1482
+* add couchbase scanner to defaults by @brandonjyan in #1497
+* tweak jdbc redaction by @rosecodym in #1490
+* add launch_darkly keyword to launchdarkly scanner by @brandonjyan in #1495
+* [chore] - update detector template file by @ahrav in #1500
+* add thog enterprise detector for web keys by @zubairk14 in #1448
+* use Go 1.20 for all github workflows by @rosecodym in #1508
+* unify JDBC detector ping logic by @rosecodym in #1506
+* add dockerhub scanner by @brandonjyan in #1496
+* JDBC indeterminacy by @rosecodym in #1507
+* [chore] Remove parent setting / getting in Context wrapper by @mcastorina in #1516
+* Revert "[chore] Remove parent setting / getting in Context wrapper (#… by @mcastorina in #1519
+* Bump github.com/googleapis/gax-go/v2 from 2.11.0 to 2.12.0 by @dependabot in #1501
+* Bump google.golang.org/api from 0.130.0 to 0.131.0 by @dependabot in #1502
+* Bump github.com/go-git/go-git/v5 from 5.7.0 to 5.8.0 by @dependabot in #1523
+* capture JSON error in AWS detector by @rosecodym in #1509
+* Decrease frequency of dependabot alerts to monthly by @zricethezav in #1524
+* Support indeterminacy in alchemy and update detector docs by @rosecodym in #1510
+* [chore] Remove parent manipulation in context package by @mcastorina in #1525
+* Implement SourceManager basics by @mcastorina in #1515
+* Correctly route pprof endpoint by @mcastorina in #1527
+* [chore] - Remove password info from log by @ahrav in #1528
+* continue scanning on detector / decoder panic by @dustin-decker in #863
+* Add match boundary to okta regular expressions by @mcastorina in #1531
+* Replace aho-corasick library by @zricethezav in #1538
+
+
+-------------------------------------------------------------------
+Tue Jul 18 11:37:25 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.44.0
+* fix typo
+* Remove additional apk clean up in Dockerfile
+* Remove the Image4 detector
+* tighten up Shortcut API detector
+* additional similarity check for base64 and plain
+* Add new verification error message field
+* Bump golang.org/x/crypto from 0.10.0 to 0.11.0
+* Bump github.com/jlaffaye/ftp from 0.1.0 to 0.2.0
+* Bump github.com/TheZeroSlave/zapsentry from 1.15.0 to 1.17.0
+* remove old detector
+* Bump google.golang.org/api from 0.129.0 to 0.130.0
+* Define SourceUnit enumeration interface
+* Update tests for forks so we don't fail on everything
+* scan GitHub PR and issue comments
+* Report indeterminacy in AWS verifier
+* do not report AWS 403s as indeterminate
+* Dedupe results
+* Include the line number GitHub & Gitlab links
+
+-------------------------------------------------------------------
+Thu Jul  6 07:57:21 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.43.0
+* Introduce trufflehog:ignore tag feature
+* remove HEAD from git diff command, rename unstaged to staged
+* Bump github.com/envoyproxy/protoc-gen-validate from 1.0.1 to 1.0.2
+* Bump cloud.google.com/go/secretmanager from 1.11.0 to 1.11.1
+* Bump google.golang.org/protobuf from 1.30.0 to 1.31.0
+* Add missing keywords for sqlserver
+* Bump google.golang.org/api from 0.128.0 to 0.129.0
+* Bump cloud.google.com/go/storage from 1.30.1 to 1.31.0
+
+-------------------------------------------------------------------
+Thu Jul  6 07:56:15 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.42.0
+* Exit with non-zero exit code on chunk source error
+* Fix docker source to return any chunk errors
+* Add Couchbase Detector
+* Bump github.com/xanzy/go-gitlab from 0.85.0 to 0.86.0
+* Use url redaction in git
+* Fix stripPassword
+* Don't return on okta credential failed verification
+* verify response body with expected keywords
+* added opsgenie detector
+
+-------------------------------------------------------------------
+Tue Jun 27 07:15:30 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.41.1
+* Bump github.com/docker/distribution from 2.8.1+incompatible to 2.8.2+incompatible
+* Implement SourceUnitUnmarshaller for all sources
+* Ensure results are collected correctly when verification is off, and ...
+* prevent www from being a key to prevent fp
+* Bump github.com/go-ldap/ldap/v3 from 3.4.4 to 3.4.5
+* Bump go.mongodb.org/mongo-driver from 1.11.6 to 1.12.0
+* Bump golang.org/x/sync from 0.2.0 to 0.3.0
+* Update Slack webhook error text for verification
+* Bump cloud.google.com/go/storage from 1.29.0 to 1.30.1
+
+
+-------------------------------------------------------------------
+Mon Jun 26 09:43:12 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.41.0
+
+* Make trace error message so newlines aren't escaped
+* Add Validator interface and example
+* Setup SourceUnit interface
+* Bump github.com/getsentry/sentry-go from 0.21.0 to 0.22.0
+* Bump golang.org/x/oauth2 from 0.8.0 to 0.9.0
+* update discord invite link to one that doesn't expire
+* Custom detector name
+* Bump github.com/googleapis/gax-go/v2 from 2.10.0 to 2.11.0
+* Bump google.golang.org/api from 0.125.0 to 0.128.0
+* add new key pat for mailgun detector
+* remove gorilla mux
+* fix spelling errors
+* tada Add Docker image scanning tada
+
+-------------------------------------------------------------------
+Fri Jun 16 06:34:37 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.40.0
+
+* Bump github.com/mattn/go-sqlite3 from 1.14.16 to 1.14.17
+* Bump github.com/stretchr/testify from 1.8.3 to 1.8.4
+* [chore] - fix test
+* Add DocuSign detector
+* fix plusfile git bug
+* Update sqlserver redaction, deduplication, and URI redaction
+* Split files instead of using ReadAll
+* add a custom detector check for logging duplicate detector
+* Bump github.com/go-git/go-git/v5 from 5.6.1 to 5.7.0
+* Bump github.com/hashicorp/go-retryablehttp from 0.7.2 to 0.7.4
+* Bump github.com/xanzy/go-gitlab from 0.83.0 to 0.85.0
+* Bump cloud.google.com/go/secretmanager from 1.10.1 to 1.11.0
+* Use heuristic to choose the most likely UTF-16 decoded string
+
+-------------------------------------------------------------------
+Mon Jun  5 09:33:58 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.38.0
+* [chore] - update Float detector regex by @ahrav in #1368
+* Check that git meets version requirements by @dustin-decker in #1373
+
+- trufflehog-v3.39.0
+* Loosen up version check for git
+
+-------------------------------------------------------------------
+Thu Jun  1 07:25:59 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.37.0
+
+* [chore] - Use correct detector proto by @ahrav in #1347
+* Add message for discord server in readme by @zricethezav in #1344
+* [chore] - Replace context.TODO by @ahrav in #1349
+* needed perms for running workflows against forks by @codevbus in #1348
+* Bump github.com/go-logr/zapr from 1.2.3 to 1.2.4 by @dependabot in #1355
+* Bump github.com/stretchr/testify from 1.8.2 to 1.8.3 by @dependabot in #1353
+* Bump golang.org/x/oauth2 from 0.7.0 to 0.8.0 by @dependabot in #1352
+* Make OpenAI regex more specific by @nyanshak in #1345
+* Bump github.com/getsentry/sentry-go from 0.20.0 to 0.21.0 by @dependabot in #1351
+* Bump golang.org/x/crypto from 0.8.0 to 0.9.0 by @dependabot in #1354
+* adds linting for workflow and actions by @codevbus in #1356
+* Add Data member to ResultsMetadata struct. by @strazzere in #1358
+* Surface missing git as an error during source initialization by @dustin-decker in #1362
+* Bump go.mongodb.org/mongo-driver from 1.11.4 to 1.11.6 by @dependabot in #1367
+* Bump github.com/envoyproxy/protoc-gen-validate from 1.0.0 to 1.0.1 by @dependabot in #1366
+* Bump cloud.google.com/go/secretmanager from 1.10.0 to 1.10.1 by @dependabot in #1365
+* fix mockaroo fps by @dustin-decker in #1370
+* Bump github.com/googleapis/gax-go/v2 from 2.8.0 to 2.9.1 by @dependabot in #1363-
+
+-------------------------------------------------------------------
+Wed May 24 08:24:26 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- trufflehog-v3.36.0
+
+  * Check to see if StructuredData exists before attempting to print it by @trufflesteeeve in #1346
+
+- trufflehog-v3.35.0
+
+  * added pulumi cloud Access token detector by @vickygoel in #1295
+  * Bump github.com/cloudflare/circl from 1.1.0 to 1.3.3 by @dependabot in #1339
+  * Bump google.golang.org/api from 0.114.0 to 0.122.0 by @dependabot in #1342
+  * Bump github.com/go-sql-driver/mysql from 1.7.0 to 1.7.1 by @dependabot in #1336
+  * Bump github.com/rabbitmq/amqp091-go from 1.8.0 to 1.8.1 by @dependabot in #1335
+  * Bump golang.org/x/sync from 0.1.0 to 0.2.0 by @dependabot in #1334
+  * [chore] - move objectManager interface by @ahrav in #1332
+  * use md5 hash for checking if key exists by @ahrav in #1257
+  * Add buildkitev2 detector for newer tokens by @ahrav in #1341
+  * GitHub basic auth by @dustin-decker in #1337
+  * Add extra data and structured data to plain output by @nyanshak in #1316
+  * [oc-313] - Add GitHub metrics by @ahrav in #1324
+  * Updating generic.go by @RuchitaKshirsagarTR in #1343
+  * Add Base64URLSafe decoder by @nyanshak in #1292
+
+- trufflehog-v3.34.0
+
+  * Fixed contentfulpersonalaccesstoken regex by @amansakhuja in #1199
+  * Add max object size flag for s3 bucket scanning by @nyanshak in #1294
+  * add scripts to benchmark and plot performance across tags by @dustin-decker in #1293
+  * Implement EndpointCustomizer by @mcastorina in #1291
+  * add additional logging by @ahrav in #1298
+  * [chore] - format log msg by @ahrav in #1299
+  * Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.3.0 to 2.4.0 by @dependabot in #1306
+  * add tineswebhook detector by @jsolis in #1304
+  * Bump github.com/mholt/archiver/v4 from 4.0.0-alpha.7 to 4.0.0-alpha.8 by @dependabot in #1305
+  * Bump github.com/lib/pq from 1.10.8 to 1.10.9 by @dependabot in #1307
+  * Scan only for verified secrets in our CI by @dustin-decker in #1310
+  * add performance test by @zricethezav in #1301
+  * Add log to track git log size by @ahrav in #1325
+  * Extend cache interface by @ahrav in #1318
+  * Normalize GitHub repos during enumeration by @ahrav in #1269
+  * Output git timestamps as UTC times by @nyanshak in #1323
+  * Fix how we scan orgs by @ahrav in #1327
+  * [bug] - Update regex for ipstack by @ahrav in #1328
+  * Fix SquareApp detector type return value by @nyanshak in #1322
+  * Generate protos by @mcastorina in #1329
+  * Make sure context lines are properly handled by @bill-rich in #1331
+  * Do extraction after decompression by @nyanshak in #1320
+  * git worktree scanning fix for #827 by @nyanshak in #1315
+  * Support line numbers in filesystem source by @nyanshak in #1297
+
+- trufflehog-v3.33.0
+
+  * improve sqlserver detection and testing by @dustin-decker in #1285
+  * Added a new detector for percy.io by @shabbirbs in #1284
+  * update jira detector by @ahrav in #1288
+  * update proto to allow for ignoring projects by @ahrav in #1289
+  * Fix include and exclude detector logic by @mcastorina in #1267
+  * Updated BrowserStack verified detector endpoint by @shabbirbs in #1290
+
+- trufflehog-v3.32.2
+
+  * Bump google.golang.org/api from 0.118.0 to 0.119.0 by @dependabot in #1279
+  * Bump github.com/envoyproxy/protoc-gen-validate from 0.10.1 to 1.0.0 by @dependabot in #1280
+  * Bump cloud.google.com/go/storage from 1.29.0 to 1.30.1 by @dependabot in #1282
+  * Small optimizations for the base64 decoder by @ahrav in #1278
+
+
+- trufflehog-v3.32.1
+
+  * Add RawV2 Results to the JSON Output by @yilmi in #1273
+  * optimize utf-8 decoder by @ahrav in #1275
+  * optimize base64 decoder by @ahrav in #1277
+
+
+- trufflehog-v3.32.0
+
+  * Use md5 hash for resuming key by @ahrav in #1203
+  * [chore] - use hex encode vs base64 by @ahrav in #1256
+  * Remove toLower call on decoded chunk by @zricethezav in #1254
+  * git output []bytes were being logged as b64ed string by @dustin-decker in #1255
+  * Add team name to proto by @ahrav in #1258
+  * Only add detectors once by @bill-rich in #1265
+  * Bump google.golang.org/api from 0.114.0 to 0.118.0 by @dependabot in #1261
+  * Bump github.com/xanzy/go-gitlab from 0.81.0 to 0.82.0 by @dependabot in #1262
+  * [chore] Log possible duplicate detectors by @mcastorina in #1266
+  * Bump github.com/lib/pq from 1.10.7 to 1.10.8 by @dependabot in #1260
+  * Bump github.com/xanzy/go-gitlab from 0.81.0 to 0.83.0 by @dependabot in #1268
+  * Adding Google drive to MetaData proto by @0x1 in #1264
+  * Allow multiple team IDs for MS Teams by @ahrav in #1259
+  * Switch Endpoint Field to Client ID by @zubairk14 in #1270
+  * Add configurable detectors by @bill-rich in #1139
+  * Add utf16 decoder by @ahrav in #1274
+  * Ensure multipart credentials are deduplicated correctly by @dustin-decker in #1271
+  * Add utf16 decoder proto by @ahrav in #1276
+
+
+- trufflehog-v3.31.6
+
+  * optimize gitparse handling of diffs by @zricethezav in #1253
+
+- trufflehog-v3.31.5
+
+  * Use persistable cache for GCS progress tracking by @ahrav in #1204
+  * Bump golang.org/x/text from 0.8.0 to 0.9.0 by @dependabot in #1246
+  * Bump golang.org/x/oauth2 from 0.6.0 to 0.7.0 by @dependabot in #1243
+  * Bump golang.org/x/crypto from 0.7.0 to 0.8.0 by @dependabot in #1244
+  * Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.2.0 to 2.3.0 by @dependabot in #1245
+  * Bump go.mongodb.org/mongo-driver from 1.11.3 to 1.11.4 by @dependabot in #1247
+  * THOG-920/add oss proto by @zubairk14 in #1240
+  * Generate protos by @mcastorina in #1250
+  * update circle test because workflows expire and need re-running by @dustin-decker in #1251
+
+
+- trufflehog-v3.31.4
+
+  * fix linting step by @dustin-decker in #1235
+  * Resolve #1167 by adding support for the AWS_SESSION_TOKEN by @iamjpotts in #1170
+  * Use default endpoints when no custom verifier provided by @ahrav in #1242
+
+
+- trufflehog-v3.31.3
+
+  * Run golang lint on entire repo instead of patches by @zricethezav in #1214
+  * add CLI switch to actions config by @codevbus in #1215
+  * Update verification endpoint - BrowserStack Detector by @gobind-singh in #1179
+  * Allow for custom verifier by @ahrav in #1070
+  * Add oauth2 cred as auth type for Teams. by @ahrav in #1221
+  * Use OAuth2 http client with GCS by @ahrav in #1220
+  * Add DetectorName to Result by @bill-rich in #1223
+  * Bump github.com/envoyproxy/protoc-gen-validate from 0.9.1 to 0.10.1 by @dependabot in #1207
+  * Bump github.com/TheZeroSlave/zapsentry from 1.14.0 to 1.15.0 by @dependabot in #1229
+  * Bump github.com/go-logr/logr from 1.2.3 to 1.2.4 by @dependabot in #1226
+  * Bump google.golang.org/api from 0.109.0 to 0.114.0 by @dependabot in #1228
+  * Bump go from 1.18 to 1.20 by @bceylan in #1230
+  * Bump github.com/googleapis/gax-go/v2 from 2.7.0 to 2.8.0 by @dependabot in #1227
+  * Bump cloud.google.com/go/storage from 1.29.0 to 1.30.1 by @dependabot in #1225
+  * Bump github.com/getsentry/sentry-go from 0.19.0 to 0.20.0 by @dependabot in #1231
+  * forager requires direct access to gitparse.FromReader by @dustin-decker in #1233
+  * Add lint for exporting loop references by @mcastorina in #1232
+  * readme improvements by @dustin-decker in #1234
+
+
+- trufflehog-v3.31.2
+
+  * revert to original entrypoint config by @codevbus in #1219
+
+
+- trufflehog-v3.31.1
+
+  * ensure stdout is still provided by @codevbus in #1217
+
+- trufflehog-v3.31.0
+
+  * Bump cloud.google.com/go/storage from 1.30.0 to 1.30.1 by @dependabot in #1209
+  * Support for exclude globs at the git log level by @zricethezav in #1202
+  * Add GitHub Actions output by @dustin-decker in #1201
+
+
+- trufflehog-v3.30.0
+
+  * update integration test excludes by @dustin-decker in #1169
+  * Bump github.com/googleapis/gax-go/v2 from 2.7.0 to 2.7.1 by @dependabot in #1171
+  * Bump github.com/fatih/color from 1.13.0 to 1.15.0 by @dependabot in #1174
+  * Bump github.com/xanzy/go-gitlab from 0.80.2 to 0.81.0 by @dependabot in #1172
+  * [chore] - Add unauth GCS source type by @ahrav in #1178
+  * Fix git commit date string formatting by @fearnoeval in #1181
+  * Bump google.golang.org/protobuf from 1.29.0 to 1.29.1 by @dependabot in #1182
+  * [chore] Log git output on error by @mcastorina in #1180
+  * [chore] Add a break statement when iterating through keywords by @zricethezav in #1184
+  * [chore] Ignore errors from CustomRegex so the channel doesn't leak by @mcastorina in #1149
+  * updating browserstack detector user and key PrefixRegex strings by @raju-kamble in #1176
+  * [chore] - add support for json service account and service account file by @ahrav in #1185
+  * Add resuming capability to GCS source by @ahrav in #1161
+  * Add OpenAI API Tokens detector by @yilmi in #1142
+  * added new detectors and fixed mesibo detector by @garg472 in #1166
+  * Bump go.mongodb.org/mongo-driver from 1.11.2 to 1.11.3 by @dependabot in #1196
+  * Bump cloud.google.com/go/storage from 1.29.0 to 1.30.0 by @dependabot in #1195
+  * Bump github.com/go-git/go-git/v5 from 5.6.0 to 5.6.1 by @dependabot in #1194
+  * Bump google.golang.org/protobuf from 1.29.1 to 1.30.0 by @dependabot in #1193
+  * Bump github.com/googleapis/gax-go/v2 from 2.7.1 to 2.8.0 by @dependabot in #1192
+  * Add in-memory caching pkg by @ahrav in #1189
+  * [chore] - log enumeration duration by @ahrav in #1187
+  * Bump actions/setup-go from 3 to 4 by @dependabot in #1191
+  * Fix OpenAI test by @dustin-decker in #1186
+  * Bump google.golang.org/api from 0.111.0 to 0.114.0 by @dependabot in #1210
+  * Bump github.com/rabbitmq/amqp091-go from 1.7.0 to 1.8.0 by @dependabot in #1208
+  * [bug] - Use correct date format for Date posted by @ahrav in #1211
+  * Add Oauth creds to GCS by @ahrav in #1212
+  * Delete progress tracking from GCS source by @ahrav in #1190
+
+
+- trufflehog-v3.29.1
+
+  * Make slack webhook detector regex more specific by @trufflesteeeve in #1168
+
+- trufflehog-v3.29.0
+
+  * Remove period from file extension by @ahrav in #1154
+  * Bump golang.org/x/crypto from 0.6.0 to 0.7.0 by @dependabot in #1158
+  * Bump github.com/go-git/go-git/v5 from 5.5.2 to 5.6.0 by @dependabot in #1147
+  * Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.1.0 to 2.2.0 by @dependabot in #1148
+  * Bump github.com/getsentry/sentry-go from 0.18.0 to 0.19.0 by @dependabot in #1157
+  * Add gcs scanning integration by @ahrav in #1153
+
+
+- trufflehog-v3.28.7
+
+Support filtering detectors by version by @mcastorina in #1150
+
+- trufflehog-v3.28.6
+
+  * Rename .pre-commit-hooks.yml to .pre-commit-hooks.yaml by @zhuwenxing in #1141
+  * Keyword optimization by @zricethezav in #1144
+  * Release should only run on tags by @dustin-decker in #1146
+
+
+- trufflehog-v3.28.5
+
+[chore] - Only scanned staged git changes by @ahrav in #1143
+
+- trufflehog-v3.28.4
+
+  * [chore] Address more linter errors by @mcastorina in #1134
+  * Custom regex parallel verify by @0x1 in #1127
+  * [chore] Close response bodies by @mcastorina in #1137
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2 by @dependabot in #1130
+  * Add pre-commit yml config by @ahrav in #1138
+  * Disable profiler in debug mode and add profile switch by @yilmi in #1136
+
+
+- trufflehog-v3.28.3
+
+  * Support file scanning in filesystem source by @mcastorina in #1030
+  * Add ability to include and exclude detectors by @mcastorina in #1106
+  * [chore] Implement String for ScanErrors by @mcastorina in #1131
+  * [chore] Update docs for individual file scanning by @mcastorina in #1132
+  * [chore] Address lint errors by @mcastorina in #1133
+
+
+- trufflehog-v3.28.2
+
+  * Bump github.com/xanzy/go-gitlab from 0.78.0 to 0.80.2 by @dependabot in #1117
+  * Gitparse message fix by @bill-rich in #1125
+
+- trufflehog-v3.28.1
+
+  * Bump github.com/xanzy/go-gitlab from 0.78.0 to 0.80.2 by @dependabot in #1117
+  * Gitparse message fix by @bill-rich in #1125
+
+-------------------------------------------------------------------
+Thu Feb 23 11:56:28 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- trufflehog-v3.28.0
+  * add smoke test by @dustin-decker in #1099
+  * Remove duplicated detectors by @trufflesteeeve in #1092
+  * adds TESTING doc w. steps for local GHA tests by @codevbus in #1093
+  * add more confluence options by @dustin-decker in #1105
+  * Github filter support for exclude and include by @MetinSAYGIN in #1087
+  * Fix nil scan options by @mcastorina in #1107
+  * [chore] Remove logrus from trufflehog by @mcastorina in #1095
+  * Bump golang.org/x/text from 0.6.0 to 0.7.0 by @dependabot in #1100
+  * Bump golang.org/x/crypto from 0.5.0 to 0.6.0 by @dependabot in #1101
+  * Bump github.com/getsentry/sentry-go from 0.17.0 to 0.18.0 by @dependabot in #1102
+  * [chore] - Add the unit for max archive size by @ahrav in #1108
+  * [chore] - archive size helper text by @ahrav in #1110
+  * [chore] - Update helper text for max-archive-size. by @ahrav in #1114
+  * Correctly parse most filenames with ' and ' by @bill-rich in #1113
+  * Drop tabs for filenames with spaces by @bill-rich in #1115
+  * Bump golang.org/x/oauth2 from 0.4.0 to 0.5.0 by @dependabot in #1116
+  * fix browserstack detector by @raju-kamble in #1120
+  * Bump golang.org/x/net from 0.6.0 to 0.7.0 by @dependabot in #1122
+  * Bump go.mongodb.org/mongo-driver from 1.11.1 to 1.11.2 by @dependabot in #1119
+  * Bump github.com/TheZeroSlave/zapsentry from 1.12.0 to 1.14.0 by @dependabot in #1118
+  * Bump github.com/rabbitmq/amqp091-go from 1.6.0 to 1.7.0 by @dependabot in #1103
+  * Adding initial protos for Google Drive scanner by @0x1 in #1121
+  * fixing browserstack regex username detection by @raju-kamble in #1123
+
+- trufflehog-v3.27.1
+  * Revert "Make detectors configurable" by @dustin-decker in #1097
+
+- trufflehog-v3.27.0
+  * Bump golang.org/x/oauth2 from 0.3.0 to 0.4.0 by @dependabot in #1039
+  * add bodyclose linter to help prevent file handle leaks by @dustin-decker in #1048
+  * braintree detector: use production API URL instead of the test sandbo… by @swdbo in #1054
+  * Update float detector with correct User-Agent and regex by @ahrav in #1061
+  * update webex detector regex by @ahrav in #1062
+  * Handle errors in a thread safe manner by @ahrav in #1052
+  * Add TruffleHog version input for GitHub action by @mcastorina in #1064
+  * Revert "Add TruffleHog version input for GitHub action (#1064)" by @mcastorina in #1068
+  * Pull gitparse config options out of pkg consts by @bill-rich in #1072
+  * Add include exclude spaces for confluence source. by @ahrav in #1073
+  * Add max commit size by @bill-rich in #1079
+  * Make archive handler configurable by @bill-rich in #1077
+  * [chore] - Add tests for errors by @ahrav in #1071
+  * Skip repo and continue scanning when encountering an error by @mcastorina in #1080
+  * [chore] - Dont pre-allocate errors slice by @ahrav in #1083
+  * Add Type() to detector interface by @trufflesteeeve in #1088
+  * [chore] Remove logrus from engine package by @mcastorina in #1085
+  * [chore] Remove logrus from github source by @mcastorina in #1086
+  * Bump github.com/joho/godotenv from 1.4.0 to 1.5.1 by @dependabot in #1075
+  * [chore] Remove logrus from circleci, filesystem, gitlab, and s3 sources by @mcastorina in #1089
+  * [chore] - Remove monolithic config struct by @ahrav in #1091
+  * Make detectors configurable by @ahrav in #1084
+
+- trufflehog-v3.26.0
+  * Add openssh-client to trufflehog container by @mcastorina in #1045
+  * Bump github.com/rabbitmq/amqp091-go from 1.5.0 to 1.6.0 by @dependabot in #1036
+  * filesystem support for exclude and include filters (2nd attemp) by @mac2000 in #1033
+  * Fix the typo "programatic" by @nezakoo in #1046
+  * Add file to confluence proto. by @ahrav in #1049
+  * Remove false positive detection for CustomRegex by @mcastorina in #1050
+
+- trufflehog-v3.25.4
+  * fix github integration tests by @dustin-decker in #1042
+  * Full git log when targeting base merge commit by @bill-rich in #1044
+
+- trufflehog-v3.25.3
+  * [chore] - Small cleanup of CircleCi source by @ahrav in #1028
+  * Add concurrency to CircleCi source by @ahrav in #1029
+  * Bump github.com/getsentry/sentry-go from 0.16.0 to 0.17.0 by @dependabot in #1022
+  * Bump github.com/xanzy/go-gitlab from 0.77.0 to 0.78.0 by @dependabot in #1024
+  * Bump github.com/sergi/go-diff from 1.2.0 to 1.3.1 by @dependabot in #1023
+  * Updated stdout to print results in alphabetical order for consistent output by @0x1 in #1032
+  * Add location to Teams source metadata by @ahrav in #1034
+  * Limit diff size to prevent out of control memory use. by @bill-rich in #1035
+
+- trufflehog-v3.25.2
+  * Use access-token endpoint for validity check by @clonsdale-canva in #991
+  * Record timestamp when a context was cancelled by @mcastorina in #1018
+  * remove logger from retryable client, it is not respecting loglevels by @dustin-decker in #1020
+
+-------------------------------------------------------------------
+Thu Jan 12 13:41:09 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- trufflehog-v3.25.1
+  * Update entrypoint by @ahrav in #1013
+  * Copy metadata for line number aware sources by @bill-rich in #1011
+  * Rename and export isGitSource by @bill-rich in #1016
+  * Fix GitUrl Return by @pulkitanz in #987
+  * Bump goreleaser/goreleaser-action from 3 to 4 by @dependabot in #980
+  * Switch to retryableHttpClient for GitHub AuthN API Client + More Logs by @yilmi in #995
+  * Bump cloud.google.com/go/secretmanager from 1.9.0 to 1.10.0 by @dependabot in #1006
+  * Bump github.com/go-git/go-git/v5 from 5.5.1 to 5.5.2 by @dependabot in #1007
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.1 to 0.7.2 by @dependabot in #1008
+  * Bump golang.org/x/crypto from 0.4.0 to 0.5.0 by @dependabot in #1009
+  * Handle invalid regex for custom detector. by @ahrav in #1005
+  * Capture callstack of canceled contexts by @mcastorina in #979
+  * Validate custom regular expressions on detector initialization by @mcastorina in #1010
+  * fix: do not override base parameter with default in GitHub Action by @clarkedb in #1004
+  * Fix GitUrl Return by @pulkitanz in #987
+  * Bump goreleaser/goreleaser-action from 3 to 4 by @dependabot in #980
+  * Switch to retryableHttpClient for GitHub AuthN API Client + More Logs by @yilmi in #995
+  * Bump cloud.google.com/go/secretmanager from 1.9.0 to 1.10.0 by @dependabot in #1006
+  * Bump github.com/go-git/go-git/v5 from 5.5.1 to 5.5.2 by @dependabot in #1007
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.1 to 0.7.2 by @dependabot in #1008
+  * Bump golang.org/x/crypto from 0.4.0 to 0.5.0 by @dependabot in #1009
+  * Handle invalid regex for custom detector. by @ahrav in #1005
+  * Capture callstack of canceled contexts by @mcastorina in #979
+  * Validate custom regular expressions on detector initialization by @mcastorina in #1010
+  * Allow for default value to be used in GHA Workflow by @ahrav in #999
+  * Add Circle CI source by @dustin-decker in #997
+  * Remove ctx from source structs by @ahrav in #986
+  * Removing Debug version Println to logrus debug - Issue #992 by @yilmi in #993
+  * Make GA action default base an empty string. by @ahrav in #996
+
+-------------------------------------------------------------------
+Thu Dec 22 16:46:59 UTC 2022 - Pavel Dostál <pdostal@suse.com>
+
+- Change the minimal version of Go from 1.14 to 1.18
+
+-------------------------------------------------------------------
+Thu Dec 22 15:51:49 UTC 2022 - Pavel Dostál <pdostal@suse.com>
+
+- Bump github.com/xanzy/go-gitlab from 0.76.0 to 0.77.0 by @dependabot in #981
+- Bump golang.org/x/crypto from 0.3.0 to 0.4.0 by @dependabot in #982
+- Add configuration parsing and custom detectors to engine by @mcastorina in #968
+- Add custom regex detector docs by @mcastorina in #983
+- Remove custom log leveler by @mcastorina in #985
