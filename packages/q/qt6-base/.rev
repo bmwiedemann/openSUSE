@@ -341,4 +341,12 @@
   * 0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch</comment>
     <requestid>1120319</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>ff421d5d8c4e74d4214b6b798506ccfb</srcmd5>
+    <version>6.6.0</version>
+    <time>1698700244</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121279</requestid>
+  </revision>
 </revisionlist>

@@ -75,6 +75,8 @@ Wed May 24 07:45:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
     CVE-2023-32763).
   * Includes fix for incorrect parsing of strict-transport-security
     (HSTS) header (boo#1211797, CVE-2023-32762)
+  * Includes fix for a buffer overflow in QDnsLookup
+    (CVE-2023-33285, bsc#1211642)
 - Drop patches, merged upstream:
   * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
   * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
@@ -114,7 +116,8 @@ Thu Mar 16 09:59:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 -------------------------------------------------------------------
 Wed Feb  8 17:48:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
-- Fix a possible DOS in the Qt ODBC driver plugin (CVE-2023-24607):
+- Fix a possible DOS in the Qt ODBC driver plugin (CVE-2023-24607, 
+  bsc#1209616):
   * CVE-2023-24607-qtbase-6.4.diff
 
 -------------------------------------------------------------------
