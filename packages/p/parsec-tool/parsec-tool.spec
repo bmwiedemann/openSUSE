@@ -17,11 +17,11 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 0.6.0
+%define archive_version 0.7.0
 
 %{?systemd_ordering}
 Name:           parsec-tool
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
