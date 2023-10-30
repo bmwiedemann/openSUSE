@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 30 10:14:03 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.23.0:
+  - Sources now have a valid property that indicates whether a 
+    source is valid in the current context, meaning it is not 
+    present in a false branch of any condition.
+
+-------------------------------------------------------------------
 Tue Oct 17 07:30:54 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.22.1:
