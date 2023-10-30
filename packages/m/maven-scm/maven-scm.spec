@@ -54,11 +54,6 @@ BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.ssh.jsch)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
 #!BuildRequires: jgit
 BuildArch:      noarch
-%ifarch %{ix86}
-BuildConflicts: java >= 12
-BuildConflicts: java-devel >= 12
-BuildConflicts: java-headless >= 12
-%endif
 
 %description
 Maven SCM supports Maven plugins (e.g. maven-release-plugin) and other

@@ -55,4 +55,12 @@
     <comment>Remove dependency on maven2</comment>
     <requestid>1113423</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>2d83bd6492d4db4ef9ae83da5845cb81</srcmd5>
+    <version>1.12.0</version>
+    <time>1698700289</time>
+    <user>anag+factory</user>
+    <comment>Do not force java 11 on i586</comment>
+    <requestid>1121228</requestid>
+  </revision>
 </revisionlist>
