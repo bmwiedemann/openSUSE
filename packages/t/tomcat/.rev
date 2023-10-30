@@ -909,4 +909,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>bsc#1216182, CVE-2023-44487</comment>
     <requestid>1117656</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>b35080b72d9dc7e1522536fe30f51845</srcmd5>
+    <version>9.0.82</version>
+    <time>1698700240</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121149</requestid>
+  </revision>
 </revisionlist>

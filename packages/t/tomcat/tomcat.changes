@@ -2,6 +2,12 @@
 Fri Oct 13 11:12:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to Tomcat 9.0.82
+  * Fixed CVEs:
+    + CVE-2023-45648: Improve trailer header parsing (bsc#1216118)
+    + CVE-2023-42794: FileUpload: remove tmp files to avoid DoS 
+      on Windows (bsc#1216120)
+    + CVE-2023-42795: Improve handling of failures during recycle()
+      methods (bsc#1216119)
   * Catalina
     + Add: 65770: Provide a lifecycle listener that will
       automatically reload TLS configurations a set time before the
