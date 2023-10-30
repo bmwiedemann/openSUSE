@@ -1,7 +1,7 @@
 #
-# spec file for package wannier90
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,21 +23,6 @@
 # SECTION MPI DEFINITIONS
 %if "%{flavor}" == ""
 %define package_name %{pname}
-%endif
-
-%if "%{flavor}" == "openmpi1"
-%global mpi_flavor openmpi
-%define mpi_vers 1
-%endif
-
-%if "%{flavor}" == "openmpi2"
-%global mpi_flavor openmpi
-%define mpi_vers 2
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%global mpi_flavor openmpi
-%define mpi_vers 3
 %endif
 
 %if "%{flavor}" == "openmpi4"

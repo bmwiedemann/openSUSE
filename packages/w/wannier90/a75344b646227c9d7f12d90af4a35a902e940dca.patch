@@ -12,7 +12,7 @@ MPI_scatterv. Allocating 0-sized arrays could bypass the issue.
  2 files changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/src/disentangle.F90 b/src/disentangle.F90
-index d2fbd3e2..ff3b9516 100644
+index d2fbd3e25..ff3b95165 100644
 --- a/src/disentangle.F90
 +++ b/src/disentangle.F90
 @@ -204,6 +204,8 @@ subroutine dis_main()
@@ -25,7 +25,7 @@ index d2fbd3e2..ff3b9516 100644
        allocate (m_matrix_local(num_wann, num_wann, nntot, counts(my_node_id)), stat=ierr)
        if (ierr /= 0) call io_error('Error in allocating m_matrix_local in dis_main')
 diff --git a/src/overlap.F90 b/src/overlap.F90
-index 457405c7..c3fd6dae 100644
+index 457405c70..c3fd6dae8 100644
 --- a/src/overlap.F90
 +++ b/src/overlap.F90
 @@ -64,6 +64,8 @@ subroutine overlap_allocate()
@@ -87,7 +87,7 @@ Subject: [PATCH 2/2] Format code to pass pre-commit
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/src/overlap.F90 b/src/overlap.F90
-index c3fd6dae..0b0f84cf 100644
+index c3fd6dae8..0b0f84cf6 100644
 --- a/src/overlap.F90
 +++ b/src/overlap.F90
 @@ -593,10 +593,10 @@ subroutine overlap_dealloc()

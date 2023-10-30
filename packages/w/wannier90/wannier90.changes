@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 17:51:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Refresh a75344b646227c9d7f12d90af4a35a902e940dca.patch from
+  upstream (only hash changes).
+
+-------------------------------------------------------------------
+Mon Oct 23 12:33:42 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+
+-------------------------------------------------------------------
 Tue Dec 20 06:21:15 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Enable openmpi5 flavour for openSUSE >= 1550.
