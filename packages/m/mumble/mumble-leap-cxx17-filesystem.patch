@@ -1,0 +1,40 @@
+Index: mumble-1.5.517/3rdparty/nlohmann_json/include/nlohmann/json.hpp
+===================================================================
+--- mumble-1.5.517.orig/3rdparty/nlohmann_json/include/nlohmann/json.hpp
++++ mumble-1.5.517/3rdparty/nlohmann_json/include/nlohmann/json.hpp
+@@ -3951,7 +3951,7 @@ T conditional_static_cast(U value)
+ 
+ 
+ #ifdef JSON_HAS_CPP_17
+-    #include <filesystem>
++    #include <experimental/filesystem>
+ #endif
+ 
+ namespace nlohmann
+@@ -4381,7 +4381,7 @@ void from_json(const BasicJsonType& j, s
+ 
+ #ifdef JSON_HAS_CPP_17
+ template<typename BasicJsonType>
+-void from_json(const BasicJsonType& j, std::filesystem::path& p)
++void from_json(const BasicJsonType& j, std::experimental::filesystem::path& p)
+ {
+     if (JSON_HEDLEY_UNLIKELY(!j.is_string()))
+     {
+@@ -4627,7 +4627,7 @@ class tuple_element<N, ::nlohmann::detai
+ 
+ 
+ #ifdef JSON_HAS_CPP_17
+-    #include <filesystem>
++    #include <experimental/filesystem>
+ #endif
+ 
+ namespace nlohmann
+@@ -5004,7 +5004,7 @@ void to_json(BasicJsonType& j, const T&
+ 
+ #ifdef JSON_HAS_CPP_17
+ template<typename BasicJsonType>
+-void to_json(BasicJsonType& j, const std::filesystem::path& p)
++void to_json(BasicJsonType& j, const std::experimental::filesystem::path& p)
+ {
+     j = p.string();
+ }

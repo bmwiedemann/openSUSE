@@ -1,0 +1,12 @@
+--- mumble-1.5.517/plugins/CMakeLists.txt.orig	2023-03-06 10:12:15.561392259 +0000
++++ mumble-1.5.517/plugins/CMakeLists.txt	2023-03-06 10:13:47.946025289 +0000
+@@ -91,6 +91,9 @@ list(REMOVE_DUPLICATES AVAILABLE_PLUGINS
+ # target.
+ foreach(CURRENT_PLUGIN IN LISTS AVAILABLE_PLUGINS)
+ 	set(PLUGIN_RETRACTED OFF)
++		if (ITEM STREQUAL "gtav" AND CMAKE_SIZEOF_VOID_P LESS 8)
++			continue()
++		endif() 
+ 
+ 	# If the plugin is retracted the corresponding CMakeLists.txt is supposed to set the
+ 	# PLUGIN_RETRACTED variable in the parent scope so that we can access it here
