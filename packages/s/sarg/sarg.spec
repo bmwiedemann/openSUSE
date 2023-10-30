@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,12 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        sarg.conf
 Source2:        http://www.initzero.it/products/opensource/sarg-reports/download/sarg-reports
 Source3:        sarg.hosts
-Source4:        sysconfig.sarg
-Source5:        cron.sarg
+Source4:        %{name}-reports-daily.service
+Source5:        %{name}-reports-daily.timer
+Source6:        %{name}-reports-weekly.service
+Source7:        %{name}-reports-weekly.timer
+Source11:       %{name}-reports-monthly.service
+Source12:       %{name}-reports-monthly.timer
 Source8:        sarg-reports.1.gz
 Source9:        sarg-apache.conf
 Source10:       platform_suse.gif
@@ -44,8 +48,6 @@ BuildRequires:  openldap2-devel
 BuildRequires:  pcre-devel
 # required for the squid user/group
 BuildRequires:  squid
-Requires(post): %fillup_prereq
-Recommends:     cron
 Recommends:     http_proxy
 
 %description
@@ -82,32 +84,39 @@ ln -s -f ../../..%{_sysconfdir}/sarg.conf %{buildroot}%{_datadir}/%{name}/sarg.c
 install -d %{buildroot}%{_sbindir}
 install -m 755 %{SOURCE2} %{buildroot}%{_sbindir}
 install -m 644 %{SOURCE3} %{buildroot}%{_datadir}/%{name}/sarg.hosts
-install -d %{buildroot}%{_fillupdir}
-install -m 644 %{SOURCE4} %{buildroot}%{_fillupdir}
+install -D -m 0644 %{SOURCE4} %{buildroot}/%{_unitdir}/%{name}-reports-daily.service
+install -D -m 0644 %{SOURCE5} %{buildroot}/%{_unitdir}/%{name}-reports-daily.timer
+install -D -m 0644 %{SOURCE6} %{buildroot}/%{_unitdir}/%{name}-reports-weekly.service
+install -D -m 0644 %{SOURCE7} %{buildroot}/%{_unitdir}/%{name}-reports-weekly.timer
+install -D -m 0644 %{SOURCE11} %{buildroot}/%{_unitdir}/%{name}-reports-monthly.service
+install -D -m 0644 %{SOURCE12} %{buildroot}/%{_unitdir}/%{name}-reports-monthly.timer
 install -d %{buildroot}%{_libexecdir}/%{name}
-install -m 755 %{SOURCE5} %{buildroot}/%{_libexecdir}/%{name}/suse.de-sarg
-install -d %{buildroot}%{_sysconfdir}/cron.daily
-install -d %{buildroot}%{_sysconfdir}/cron.weekly
-install -d %{buildroot}%{_sysconfdir}/cron.monthly
-ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.daily/
-ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.weekly/
-ln -s %{_libexecdir}/%{name}/suse.de-sarg %{buildroot}%{_sysconfdir}/cron.monthly/
 install -d -m 755 %{buildroot}%{_mandir}/man1
 install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man1
 
+%pre
+%service_add_pre %{name}-reports-daily.service %{name}-reports-daily.timer
+%service_add_pre %{name}-reports-weekly.service %{name}-reports-weekly.timer
+%service_add_pre %{name}-reports-monthly.service %{name}-reports-monthly.timer
+
 %post
-%{fillup_only -n sarg}
+%service_add_post %{name}-reports-daily.service %{name}-reports-daily.timer
+%service_add_post %{name}-reports-weekly.service %{name}-reports-weekly.timer
+%service_add_post %{name}-reports-monthly.service %{name}-reports-monthly.timer
+
+%preun
+%service_del_preun %{name}-reports-daily.service %{name}-reports-daily.timer
+%service_del_preun %{name}-reports-weekly.service %{name}-reports-weekly.timer
+%service_del_preun %{name}-reports-monthly.service %{name}-reports-monthly.timer
+
+%postun
+%service_del_postun %{name}-reports-daily.service %{name}-reports-daily.timer
+%service_del_postun %{name}-reports-weekly.service %{name}-reports-weekly.timer
+%service_del_postun %{name}-reports-monthly.service %{name}-reports-monthly.timer
 
 %files
 %config(noreplace) %{_sysconfdir}/sarg.conf
-%dir %{_sysconfdir}/cron.daily
-%dir %{_sysconfdir}/cron.weekly
-%dir %{_sysconfdir}/cron.monthly
 %dir %{_libexecdir}/%{name}
-%{_libexecdir}/%{name}/suse.de-sarg
-%{_sysconfdir}/cron.weekly/suse.de-sarg
-%{_sysconfdir}/cron.daily/suse.de-sarg
-%{_sysconfdir}/cron.monthly/suse.de-sarg
 %dir %{_sysconfdir}/apache2
 %dir %{_sysconfdir}/apache2/conf.d
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/sarg-apache.conf
@@ -124,7 +133,12 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{_datadir}/%{name}/languages
 %{_datadir}/%{name}/fonts
 %{_datadir}/%{name}/images
-%{_fillupdir}/sysconfig.sarg
+%{_unitdir}/%{name}-reports-daily.service
+%{_unitdir}/%{name}-reports-daily.timer
+%{_unitdir}/%{name}-reports-weekly.service
+%{_unitdir}/%{name}-reports-weekly.timer
+%{_unitdir}/%{name}-reports-monthly.service
+%{_unitdir}/%{name}-reports-monthly.timer
 
 %defattr(0644,root,root,0755)
 /srv/www/htdocs/sarg-php

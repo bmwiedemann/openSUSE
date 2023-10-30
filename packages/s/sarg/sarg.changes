@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 24 21:29:41 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- bsc#1115456: Migrate from cron to systemd timers.
+- There are three systemd timers available: daily, weekly and monthly.
+- The sysconfig.sarg file has been removed, as we can now control how
+  the timers operate directly through systemctl.
+
+-------------------------------------------------------------------
+Fri Oct  6 14:07:20 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix case statement in cron job, bsc#1213775
+  * cron.sarg
+
+-------------------------------------------------------------------
 Fri Aug 26 06:33:56 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install sarg-reports.1 in the correct man section
