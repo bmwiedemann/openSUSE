@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 30 08:22:57 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix compatibility with Werkzeug 3.0.x
+  where werkzeug.urls removed url_decode/url_encode:
+  * 0001-fix-avoid-Deprecated-werkzeug.urls.url_decode.patch
+
+-------------------------------------------------------------------
 Fri Sep 30 04:41:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.2:

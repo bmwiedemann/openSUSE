@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Login
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        User session management for Flask
 License:        MIT
 URL:            https://github.com/maxcountryman/flask-login
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Login/Flask-Login-%{version}.tar.gz
+# FIX-UPSTREAM-PATCH
+Patch0:         0001-fix-avoid-Deprecated-werkzeug.urls.url_decode.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +49,7 @@ methods, and that you provide a callback to the extension capable of
 loading users from their ID.
 
 %prep
-%setup -q -n Flask-Login-%{version}
+%autosetup -p1 -n Flask-Login-%{version}
 
 %build
 %python_build
