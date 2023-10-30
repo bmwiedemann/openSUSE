@@ -1,7 +1,7 @@
-Index: variety-0.8.10/variety_lib/varietyconfig.py
+Index: variety-0.8.11/variety_lib/varietyconfig.py
 ===================================================================
---- variety-0.8.10.orig/variety_lib/varietyconfig.py
-+++ variety-0.8.10/variety_lib/varietyconfig.py
+--- variety-0.8.11.orig/variety_lib/varietyconfig.py
++++ variety-0.8.11/variety_lib/varietyconfig.py
 @@ -21,7 +21,7 @@ try:
  except ImportError:
      # Variety's data directory. This is set by setup.py for permanent installations, but defaults to ../data
@@ -9,5 +9,5 @@ Index: variety-0.8.10/variety_lib/varietyconfig.py
 -    __variety_data_directory__ = "../data"
 +    __variety_data_directory__ = "/usr/share/variety"
  __license__ = "GPL-3"
- __version__ = "0.8.10"
+ __version__ = "0.8.11"
  
