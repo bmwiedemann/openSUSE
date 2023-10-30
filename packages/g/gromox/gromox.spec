@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -51,9 +51,11 @@ BuildRequires:  zstd
 BuildRequires:  group(gromox)
 BuildRequires:  pkgconfig(fmt) >= 8
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4.0
+BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(libHX) >= 4.12
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libesedb)
 BuildRequires:  pkgconfig(libolecf)
 BuildRequires:  pkgconfig(libpff)
 BuildRequires:  pkgconfig(libssl)
@@ -120,7 +122,7 @@ grommunio-web. The grommunio appliance ships these essentials and has a
 ready-to-run installation of Gromox.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 autoreconf -fi
