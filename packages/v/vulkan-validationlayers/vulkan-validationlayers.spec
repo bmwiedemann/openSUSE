@@ -17,31 +17,30 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.3.261.0
+Version:        1.3.268.0
 Release:        0
-%define lname libVkLayer_utils-1_3_261_0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
-Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/sdk-%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/vulkan-sdk-%version.tar.gz
 Patch2:         xxhash.diff
-Patch3:         gcc13.diff
 BuildRequires:  cmake >= 3.7.12
 %if 0%{?suse_version} >= 1599
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc11-c++
 %endif
-BuildRequires:  glslang-devel >= 12.3.1+sdk261
+BuildRequires:  glslang-devel >= 13.1.0
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.1+sdk250
-BuildRequires:  spirv-tools-devel >= 2023.4~rc2
+BuildRequires:  spirv-headers >= 1.6.1+sdk268
+BuildRequires:  spirv-tools-devel >= 2023.5~rc1
 BuildRequires:  vulkan-headers
+BuildRequires:  vulkan-utility-libraries-devel >= 1.3.268
 BuildRequires:  xxhash-devel
-BuildRequires:  pkgconfig(vulkan) >= 1.3.261
+BuildRequires:  pkgconfig(vulkan) >= 1.3.268
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Conflicts:      vulkan < 1.1
@@ -53,7 +52,7 @@ Vulkan is a 3D graphics and compute API.
 This package contains the Khronos official Vulkan validation layers.
 
 %prep
-%autosetup -n Vulkan-ValidationLayers-sdk-%version -p1
+%autosetup -n Vulkan-ValidationLayers-vulkan-sdk-%version -p1
 perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt */CMakeLists.txt
 
 %build

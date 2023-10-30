@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 27 04:13:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.268.0
+  * layers: Add support for Image Layout check for CopyImage
+  * layers: Add support for TransitionImageLayoutEXT record
+  * layers: Add layout checks to MemoryToImage & ImageToMemory
+  * layers: Add validation for VK_EXT_shader_object,
+    VkHostImageLayoutTransitionInfoEXT, VkCopyImageToImageEXT
+  * layers: Add vkGetImageSubresourceLayout2KHR,
+    ValidateHostCopyImageCreateInfos
+  * layers: Support per-present-mode surface capabilities
+  * layers: Introduce barrier structures
+  * layers: Add thread safety checks for vkQueuePresentKHR
+  * gpu: Remove SPIR-V disassembly from generated headers
+  * layers: Add VK_EXT_calibrated_timestamps
+  * More validations passes: invalid compute pipeline flags, linked
+    tessellation shaders, mesh work groups, MRTSS rasterization
+    samples, geometry shader input topology, pipeline formats in
+    secondary cmd buffers, mesh shader queries, pipeline library
+    flags, texel block extent in image copy, color attachments with
+    advanced blend.
+  * gpu: Add ability to select which shaders get instrumented
+  * gpu: Use vku utilities for GPU-AV settings
+- Delete gcc13.diff, seems obsolete
+
+-------------------------------------------------------------------
 Wed Aug 23 19:30:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.261.0
