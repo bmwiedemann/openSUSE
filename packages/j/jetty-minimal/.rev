@@ -159,4 +159,12 @@
     <comment>Misc. security fixes</comment>
     <requestid>1117494</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a9b7c934cc6ad0aadbafab07980f1386</srcmd5>
+    <version>9.4.53</version>
+    <time>1698700294</time>
+    <user>anag+factory</user>
+    <comment>Do not force java 11 on i586</comment>
+    <requestid>1121238</requestid>
+  </revision>
 </revisionlist>

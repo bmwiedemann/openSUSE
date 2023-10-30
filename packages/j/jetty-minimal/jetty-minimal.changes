@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 30 16:17:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force Java 11 to build on i586
+
+-------------------------------------------------------------------
 Thu Oct 12 15:51:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.4.53.v20231009

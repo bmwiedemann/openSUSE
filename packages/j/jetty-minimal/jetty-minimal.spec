@@ -48,11 +48,6 @@ BuildRequires:  mvn(org.ow2.asm:asm)
 BuildRequires:  mvn(org.ow2.asm:asm-commons)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
-%ifarch %{ix86}
-BuildConflicts: java >= 12
-BuildConflicts: java-devel >= 12
-BuildConflicts: java-headless >= 12
-%endif
 
 %description
 
