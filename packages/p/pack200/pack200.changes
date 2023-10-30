@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Oct 30 14:50:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of standalone Pack200/Unpack200 code forked from
+  OpenJDK 14 before its removal.
