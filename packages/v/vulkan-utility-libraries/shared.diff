@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-10-27 07:34:46.251955161 +0200
+
+Static libraries are a no-go in our distro.
+---
+ src/layer/CMakeLists.txt |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: Vulkan-Utility-Libraries/src/layer/CMakeLists.txt
+===================================================================
+--- Vulkan-Utility-Libraries.orig/src/layer/CMakeLists.txt
++++ Vulkan-Utility-Libraries/src/layer/CMakeLists.txt
+@@ -5,8 +5,9 @@
+ # SPDX-License-Identifier: Apache-2.0
+ set(CMAKE_FOLDER "${CMAKE_FOLDER}/VulkanLayerSettings")
+ 
+-add_library(VulkanLayerSettings STATIC)
++add_library(VulkanLayerSettings SHARED)
+ add_library(Vulkan::LayerSettings ALIAS VulkanLayerSettings)
++set_target_properties(VulkanLayerSettings PROPERTIES LIBRARY_OUTPUT_NAME VulkanLayerSettings-1.3.268.0)
+ 
+ target_sources(VulkanLayerSettings PRIVATE
+    vk_layer_settings.cpp

@@ -1,0 +1,5 @@
+<package name="vulkan-utility-libraries" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Wayland" package="vulkan-utility-libraries"/>
+</package>
