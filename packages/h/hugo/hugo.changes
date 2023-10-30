@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Oct 30 17:53:30 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.120.1:
+  * deps: Update github.com/tdewolff/minify/v2 v2.20.0 => v2.20.1
+
+-------------------------------------------------------------------
+Mon Oct 30 15:28:21 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.120.0:
+  * Add Solaris build
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.6.0 to 1.7.0
+  * build(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.9.1 to 2.10.0
+  * Make site.BaseURL and $pager.URL a string
+  * create/skeletons: Fix menu template
+  * commands/new: Remove format flag from new content cmd
+  * hugolib: Display correct markup identifier in error message
+  * livereloadinject: Save some allocations
+  * livereloadinject: Use more robust injection method
+  * tpl/urls: Return strings from URL functions
+  * transform/livereloadinject: Add benchmark
+  * build(deps): bump golang.org/x/tools from 0.13.0 to 0.14.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.12.9 to 2.20.0
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.19 to 0.0.20
+  * build(deps): bump golang.org/x/image from 0.12.0 to 0.13.0
+  * Revert "modules: Throttle the "downloading modules …" log entries"
+  * Revert "modules: Adjust the log throttle logic a little"
+  * resources/images: Create padding image filter
+  * markup/goldmark: Update the CJK extension to allow specifying line break styles
+  * modules: Adjust the log throttle logic a little
+  * modules: Throttle the "downloading modules …" log entries
+  * tpl/collections: Make delimit return a string
+  * build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+  * build(deps): bump github.com/evanw/esbuild from 0.19.3 to 0.19.5
+  * build(deps): bump github.com/spf13/afero from 1.9.5 to 1.10.0
+  * build(deps): bump github.com/bep/logg from 0.2.0 to 0.3.0
+  * Revise the deprecation logging
+  * Remove rest of the now unused emoji code
+  * markdown: Pass emoji codes to yuin/goldmark-emoji
+  * Fix so hugo get -u updates transitively
+  * watcher/filenotify: Remove redundant duplicated comments
+  * docs: Remove outdated note from CONTRIBUTING.md
+  * tpl/debug: Add average and median to timer output
+  * tpl/debug: Add debug.Timer
+  * Add some convenient integration test helpers
+  * hugolib: Deprecate .Site.DisqusShortname
+  * tpl/tplimpl: Fix dropped error
+  * hugolib: Deprecate .Site.GoogleAnalytics
+  * tpl/tplimpl: Deprecate .Site.Author usage in RSS template
+  * tpl/tplimpl: Deprecate .Site.Social usage with internal templates
+  * markup/tableofcontents: Return template.HTML from .Fragments.ToHTML
+  * deps: Update github.com/tdewolff/minify/v2 v2.12.7 => v2.12.9
+  * commands: Update message displayed when running CLI from GUI
+  * common/hugo: Add hugo.IsServer and hugo.IsDevelopment
+  * all: Format files with gofmt
+  * magefile: Update isGoLatest to check for Go 1.21
+  * resources/integrity: Return string instead of template.HTMLAttr
+  * Update README.md
+  * tpl/lang: Formally deprecate lang.NumFmt
+  * tpl/collections: Fix and deprecate echoParams
+
+-------------------------------------------------------------------
 Thu Sep 28 04:43:41 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

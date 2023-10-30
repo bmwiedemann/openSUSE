@@ -827,4 +827,13 @@
   * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable (forwarded request 1113964 from jfkw)</comment>
     <requestid>1113965</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a1ba7929e8b71af0738f793ccae7fde3</srcmd5>
+    <version>0.120.1</version>
+    <time>1698700296</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.120.1:
+  * deps: Update github.com/tdewolff/minify/v2 v2.20.0 =&gt; v2.20.1 (forwarded request 1121282 from jfkw)</comment>
+    <requestid>1121283</requestid>
+  </revision>
 </revisionlist>
