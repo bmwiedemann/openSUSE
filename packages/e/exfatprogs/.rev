@@ -145,4 +145,12 @@
   * fsck.exfat: Four small clean-ups.</comment>
     <requestid>1087932</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7a1b5bc76c19bf6adf2ce74870d85075</srcmd5>
+    <version>1.2.2</version>
+    <time>1698780311</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.2.2</comment>
+    <requestid>1121304</requestid>
+  </revision>
 </revisionlist>

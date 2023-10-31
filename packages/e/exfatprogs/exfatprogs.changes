@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 30 20:18:33 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Update to 1.2.2
+ * exfat2img: Allow dumps for read-only devices.
+ * fsck.exfat: Revert Repairing zero size directory.
+ * fsck.exfat: Repair duplicated filename.
+ * mkfs.exfat: Add the option "q" to print only error messages.
+ * mkfs.exfat: Add the option "U" to set volume GUID.
+ * tune.exfat: Add the option "U" / "-u" to set or print volume GUID.
+ * fsck.exfat: Fix some out-of-bounds memory accesses.
+ * fsck.exfat: Change not to delete volume GUID directory entry.
+
+-------------------------------------------------------------------
 Fri May 19 09:21:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.1:
