@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct 30 15:43:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2023.10.18:
+  * Add Framework :: Mkdocs classifier (#154)
+- update to 2023.10.17:
+  * Add the `NVIDIA CUDA :: 12 :: 12.2` classifier. (#155)
+  * Remove the accidental dangling whitespace from CUDA 12.
+- update to 2023.9.19:
+  * Add Trove classifier for Django 5.0 (#153)
+- update to 2023.8.7:
+  * Add Trove classifier for Python 3.13 (#150)
+- update to 2023.7.6:
+  * add Oceanography to Scientific/Engineering (#149)
+    This seemed to be the place to add a new one -- please let me
+    know if there's another way to propose a new classifier.
+      - Note: we could do something like:
+        Met/Ocean Science, but there is already Atmospheric
+        Science, I figured Oceanography made sense.
+- update to 2023.5.24:
+  * Add identifier "Programming Language :: Lua" (#145)
+- update to 2023.5.22:
+  * Add Plone 6.1 classifier (#147)
+
+-------------------------------------------------------------------
 Thu May  4 20:22:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.5.2:
