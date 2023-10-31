@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Oct 31 03:15:03 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ltfat-fix-jar-bin-path.patch: Fix path pointing to jar
+  binary.
+- Drop an unnecessary hashbang.
+
+-------------------------------------------------------------------
+Mon Oct 30 16:00:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update URL to point to 'https://gnu-octave.github.io/packages/'
+
+-------------------------------------------------------------------
+Thu Oct 19 09:39:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.0:
+  * NEW: gabreassignreal, comp_gabreassignreal, gabphasederivreal,
+    demo_waveletfilters, lowdiscrepancy, thirdparty/im2double
+    (Octave function), ltfatruntests (continuous integration and
+    deployment functionality via github actions), fusionframe,
+    arg_fusionframe
+  * BUGFIX: comp_fblowpassfilters, audfilters, gabphasederiv,
+    freqwavelet, ltfat_mex_template_helper, -ct/comp_filterbank
+    (getting rid of octave buffer to reduce the number of
+    warnings), test_all_ltfat, test_dft, test_dgt_alg,
+    test_gabphasederiv, test_gabphasederivinterface,
+    test_gabphasederivreal, test_idft, test_ptpfun
+  * EXTENSIONS: filterbanktight and filterbankrealtight (force
+    painless option), frame (wavelet, auditory, warped, and gabor
+    filter bank), waveletfilters (help example)
+  * ADJUSTMENTS: gabfilters and waveletfilters output format (to
+    match that of the other filterbank generators)
+  * DOCUMENTATION: comp_dgt_real, comp_sepdgtreal,
+    comp_gabreassign, comp_transferfunction,
+    demo_auditoryfilterbank, demo_filterbanks,
+    filterbankconstphase, filterbankwin, framebounds
+  * DEPRECATED: comp_gdgt, test_dgt_fac, test_dgts, test_dwilts,
+    test_framemulappr, test_gabmul, test_gdgt, test_hermbasis,
+    test_ola, test_pherm, test_wfac
+- Drop upstreamed ltfat-sourcetarget.patch.
+
+-------------------------------------------------------------------
 Tue Nov  8 16:20:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.5.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ltfat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define octpkg  ltfat
 Name:           octave-forge-%{octpkg}
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        The Large Time-Frequency Analysis Toolbox for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://ltfat.org/
+URL:            https://gnu-octave.github.io/packages/ltfat/
 Source0:        https://github.com/ltfat/ltfat/releases/download/v%{version}/ltfat-%{version}-of.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         ltfat-sourcetarget.patch
+# PATCH-FIX-UPSTREAM ltfat-fix-jar-bin-path.patch badshah400@gmail.com --  Remove extraneous Windows path for jar, upstream commit 8bf70b2
+Patch0:         ltfat-fix-jar-bin-path.patch
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-threads-devel
@@ -57,7 +57,7 @@ find ./ -name "*.jar" -delete -print
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 pushd ./ltfat/inst/blockproc/java/
-make %{?_smp_mflags}
+%make_build
 popd
 %octave_pkg_src
 
@@ -66,6 +66,8 @@ popd
 %install
 %octave_pkg_install
 %fdupes %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}
+
+sed -Ei '1{\@#!/usr/bin/env python@d}' %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}/private/test_ltfatarghelper.py
 
 %check
 %octave_pkg_test
@@ -77,7 +79,6 @@ popd
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 

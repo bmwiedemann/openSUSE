@@ -80,4 +80,17 @@
     <comment></comment>
     <requestid>1034674</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fc5359b805fc83b814e42ee05da4707a</srcmd5>
+    <version>2.6.0</version>
+    <time>1698780347</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1121355 from badshah400
+
+* Update to version 2.6.0.
+* Add ltfat-fix-jar-bin-path.patch: Fix path pointing to jar binary.
+* Drop an unnecessary hashbang.
+* Drop upstreamed ltfat-sourcetarget.patch.</comment>
+    <requestid>1121356</requestid>
+  </revision>
 </revisionlist>
