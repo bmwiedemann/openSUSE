@@ -1,7 +1,7 @@
 #
 # spec file for package libbluray
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,10 @@ URL:            https://www.videolan.org/developers/libbluray.html
 Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 Patch0:         libbluray-pkgconfig.patch
+Patch1:         libbluray-java18plus.patch
 BuildRequires:  ant
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -91,6 +94,7 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 %autosetup -p1
 
 %build
+autoreconf -fi
 %configure \
     --disable-static \
     --enable-bdjava \
