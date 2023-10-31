@@ -17,7 +17,7 @@
 
 
 Name:           vapoursynth
-Version:        64
+Version:        65
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only

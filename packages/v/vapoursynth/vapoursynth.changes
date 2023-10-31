@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 30 21:31:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 65:
+  * fixed inspection api sometimes causing memory corruption when
+    used from python
+  * frame properties in python are now return as str type instead
+    of bytes when hinted as utf8 printable
+  * fixed how unprintable data is returned from plugin functions
+    in python, previously it would leak a ctypes pointer
+  * with no length instead of returning a bytes object
+  * fixed a bug in the avx2 maskedmerge float premultiplied code
+    path that would switch the two input clips
+  * reverted the from_chars code a bit more to make no locale affect
+    float parsing
+  * fixed the sar adjustment for real this time
+
+-------------------------------------------------------------------
 Thu Oct 12 07:48:58 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on Leap 15.x
