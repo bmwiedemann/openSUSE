@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.43.0.0
-%global amalgamation_version 3430000
+%global version 3.43.2.1
+%global amalgamation_version 3430200
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -27,7 +27,7 @@ Summary:        SQLite JDBC Driver
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/xerial/%{name}
-Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://www.sqlite.org/2023/sqlite-amalgamation-%{amalgamation_version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -62,16 +62,22 @@ API documentation for %{name}.
 %prep
 %setup -q
 
+find src/main/resources \
+	\( -name \*.so -or -name \*.dylib -or -name \*.dll \) \
+	-delete
+
 %pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
 %pom_remove_plugin com.diffplug.spotless:spotless-maven-plugin
-%pom_remove_dep org.graalvm.sdk:graal-sdk
+%pom_remove_dep org.graalvm.sdk:nativeimage
 
-sed -i -e '/org\.graalvm\.sdk/ d' src/main/java9/module-info.java
+sed -i -e '/org\.graalvm\.nativeimage/ d' src/main/java9/module-info.java
 rm src/main/java9/org/sqlite/nativeimage/SqliteJdbcFeature.java
 
 dos2unix SQLiteJDBC.wiki
-mkdir target
+mkdir -p target/classpath
 cp %{SOURCE1} target/sqlite-$(sed -e 's/^version=//' VERSION)-amal.zip
+
+ln -s %{_javadir}/slf4j/slf4j-api.jar target/classpath/
 
 %{mvn_file} : %{name}
 

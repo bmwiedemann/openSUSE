@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Oct 19 09:37:32 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.43.2.1
+  * Fixes
+    ~ downgrade SLF4J to 1.7 (874a926), closes #990
+  * Documentation
+    ~ update Sample in README (459fb04), closes #991
+- Update to v3.43.2.0
+  * Features
+    ~ upgrade to sqlite 3.43.2 (a434c78)
+    ~ add slf44-api to replace use of standard streams (21c77a4),
+      closes #802
+    ~ upgrade to sqlite 3.43.1 (7b40a6a)
+  * Fixes
+    ~ native-image
+      + do not initialize logging framework at build-time (d8f762c)
+    ~ unscoped
+      + add missing module requirement for slf4j (32082c0)
+      + add SONAME to Android binaries (f6a3aef), closes #960
+  * Perf
+    ~ remove use of DriverManager.println (75ce563), closes #984
+  * Changes
+    ~ spotless apply (77339ed)
+    ~ replace generic exceptions (6d563d4)
+  * Build
+    ~ deps
+      + bump org.codehaus.mojo:versions-maven-plugin (ebdda17)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (5e37532)
+      + bump org.apache.maven.plugins:maven-enforcer-plugin
+        (b3188dc)
+      + bump actions/checkout from 3 to 4 (3eaabec)
+      + bump org.jreleaser:jreleaser-maven-plugin (07d420d)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.5.0 to 5.6.0 (54aa6ab)
+      + bump org.junit-pioneer:junit-pioneer (b363636)
+    ~ makefile
+      + add slf4j dependency (1663cfe)
+    ~ unscoped
+      + update native-image testing to GraalVM 21 (1229f00)
+      + fix native configuration for slf4j (89dbda1)
+      + MultipleClassLoaderTest fails on Windows (d4f4dc2)
+- Do not package native libraries for Windows and Android into jar
+
+-------------------------------------------------------------------
 Sat Sep  9 14:50:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
