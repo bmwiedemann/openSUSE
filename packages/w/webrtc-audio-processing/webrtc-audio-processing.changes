@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 30 16:42:04 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- ExcludeArch s390, s390x and ppc64 since big endian support is
+  not implemented. 
+
+-------------------------------------------------------------------
 Wed Sep 20 09:49:19 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove the tar.xz file. Having the obscpio file is enough

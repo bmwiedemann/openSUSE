@@ -51,6 +51,7 @@ BuildRequires:  meson >= 0.59.4
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  cmake(absl)
+ExcludeArch:    s390 s390x ppc64
 
 %description
 WebRTC is an open source project that enables web browsers with Real-Time
