@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Aug 31 13:09:06 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
-- update to version 3.2.3:
+- update to version 3.2.3 (jsc#PED-6567)
   Feature Improvements
   * Add "max_retries" for connection pools. Fixes #4908.
   * Update dictionary.ciena, dictionary.huawei, dictionary.wifialliance and
@@ -150,7 +150,10 @@ Mon Feb  6 16:57:33 UTC 2023 - Adam Majer <adam.majer@suse.de>
   *  3.2.0 requires OpenSSL 1.0.2 or greater.
 
 Bug Fixes
-    All bug fixes from 3.0.x are included in the 3.2.x releases. 
+  *  All bug fixes from 3.0.x are included in the 3.2.x releases, including
+  *  fixes information leakage in EAP-PWD (bsc#1206204, CVE-2022-41859)
+  *  fixes crash on unknown option in EAP-SIM (bsc#1206205, CVE-2022-41860)
+  *  fixes crash on invalid abinary data (bsc#1206206, CVE-2022-41861)
 
 - freeradius-server-enable-python3.patch: refreshed
 

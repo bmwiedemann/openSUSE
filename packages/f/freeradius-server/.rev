@@ -995,4 +995,12 @@ Bug Fixes
     (but dead) TLS connection.</comment>
     <requestid>1108446</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>b3641ec7b7961c887d43a8c804d71025</srcmd5>
+    <version>3.2.3</version>
+    <time>1698780387</time>
+    <user>anag+factory</user>
+    <comment>changes only changes, added CVE references</comment>
+    <requestid>1121419</requestid>
+  </revision>
 </revisionlist>
