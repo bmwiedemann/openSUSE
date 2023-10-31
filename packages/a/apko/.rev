@@ -7,4 +7,12 @@
     <comment>new package apko: Build OCI images from APK packages directly without Dockerfile</comment>
     <requestid>1120669</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af2c77d400f683aaccaabf05b25c732a</srcmd5>
+    <version>0.11.2</version>
+    <time>1698780318</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121302</requestid>
+  </revision>
 </revisionlist>
