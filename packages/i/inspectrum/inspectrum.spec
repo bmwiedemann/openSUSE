@@ -1,8 +1,8 @@
 #
 # spec file for package inspectrum
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2015-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2015-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           inspectrum
-Version:        0.2.3
+Version:        0.3.1
 Release:        0
 Summary:        A tool for analysing captured signals from SDRs
 License:        GPL-3.0-or-later
@@ -37,8 +37,8 @@ BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2
 BuildRequires:  pkgconfig(fftw3f)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 
 %description
 A tool for analysing captured signals, primarily from software-defined radio receivers

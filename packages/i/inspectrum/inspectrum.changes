@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Oct 30 22:03:17 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.1
+  * Merge pull request #221 from kwesthaus/file-format-documentation
+  * Merge pull request #184 from jacobagilbert/sigmf_partial_ext
+  * Include format specifiers in help text
+  * Include all format specifiers in README
+  * Allow specifying cs32 file format in command line
+  * Fix README typo in cs32 file format description
+  * add support to read files that end in '.sigmf-'
+- Update to version 0.3.0
+  * PlotView: use QWheelEvent::position when available
+  * Merge pull request #216 from schneider42/schneier/description-fallback
+  * Merge pull request #218 from otanim/main
+  * Merge branch 'overlapping-annotations'
+  * Merge branch 'spectrogram-timing'
+  * Handle tooltip comments of overlapping annotations
+  * Improve spectrogram time alignment
+  * Merge pull request #215 from daniestevez/annotation-comments
+  * Display annotation comments as tooltips
+  * fallback to core:description for anno label
+  * Merge pull request #214 from catkira/add_ci32
+  * add support for sigmf ci32 files this is needed to import
+    sigmf files written by SDRangel
+  * Merge pull request #212 from miek/miek-patch-1
+  * actions: add Ubuntu 22.04 & remove Ubuntu 18.04
+  * Merge pull request #211 from argilo/more-cursor-symbols
+  * Merge pull request #210 from argilo/fix-cursor-overflow
+  * Allow up to 99,999 symbols
+  * Fix integer overflow in cursor segment drawing
+  * Add note about 64-bit sample truncation
+  * Add support for complex double (cf64)
+  * Added support for float64 files.
+  * sigmf: use core:label for annotations
+  * sigmf: construct Annotations in-place
+  * Adding checkbox to show / hide SigMF annotations
+  * actions: run apt update
+  * sigmf: Use QT to parse the json
+  * Run actions workflow on PR & schedule
+  * Handle global offset in SigMF annotation indices
+  * Add a progress bar for sample export
+  * IRC channel moved to libera.chat
+  * actions: update homebrew qt package name
+  * Clear SigMF annotations on new file load
+  * Add libsigmf dep
+  * Update README with SigMF support & cmake version
+  * Test build on more Ubuntu releases
+  * Update minimum CMake version
+  * make a `src` directory
+  * use make_unique instead of new
+  * inputsource: add missing virtual destructor for SampleAdapter
+  * spectrogramplot: use bind as bind1st is deprecated
+  * spectrogramplot: match types for std::max to fix mac build
+  * feat(sigmf): Only compile support if libsigmf is found
+  * fix(mainwindow): Only update the sample rate text box if needed
+  * feat(sigmf): Add support for SigMF recordings
+  * fix(spectrogramplot): Avoid infinite loop at extremely high
+    sample rates
+
+-------------------------------------------------------------------
 Sun Jun  6 12:10:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use upstream version 0.2.3
