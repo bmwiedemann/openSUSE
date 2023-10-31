@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 31 02:05:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.4.0:
+  * Connection factory goes to cache options
+  * Added note in docs for correctly configuring hiredis parser when
+    using redis-py version 5.
+- Add missing BuildRequires on redis
+- Stop using globs in %files
+- Switch to pyproject macros
+
+-------------------------------------------------------------------
 Sat Jul  1 20:30:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.0:

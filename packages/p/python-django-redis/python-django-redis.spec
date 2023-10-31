@@ -18,27 +18,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-redis
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        A redis cache backend for Django
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-redis
 Source:         https://files.pythonhosted.org/packages/source/d/django-redis/django-redis-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
 BuildRequires:  %{python_module msgpack >= 0.4.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-mock >= 3.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis >= 2.10.0}
+BuildRequires:  %{python_module redis >= 3}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+BuildRequires:  redis
+Requires:       python-Django >= 3.2
 Requires:       python-lz4 >= 0.15
 Requires:       python-msgpack >= 0.4.6
-Requires:       python-redis >= 2.10.0
+Requires:       python-redis >= 3
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,10 +53,10 @@ A redis cache backend for Django.
 sed -i '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,6 +75,7 @@ killall redis-server
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/django[-_]redis*/
+%{python_sitelib}/django_redis
+%{python_sitelib}/django_redis-%{version}.dist-info
 
 %changelog

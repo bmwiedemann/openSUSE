@@ -129,4 +129,18 @@
   * Run actions &amp; tox against Django 4..2</comment>
     <requestid>1096317</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d1b4eacfac72a06143e27459f32c544b</srcmd5>
+    <version>5.4.0</version>
+    <time>1698780333</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.4.0:
+  * Connection factory goes to cache options
+  * Added note in docs for correctly configuring hiredis parser when
+    using redis-py version 5.
+- Add missing BuildRequires on redis
+- Stop using globs in %files
+- Switch to pyproject macros</comment>
+    <requestid>1121341</requestid>
+  </revision>
 </revisionlist>
