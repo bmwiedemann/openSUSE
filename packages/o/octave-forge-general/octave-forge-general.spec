@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-general
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  general
 Name:           octave-forge-%{octpkg}
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        General tools for Octave
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
