@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct 26 10:31:03 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 119.0
+  https://www.mozilla.org/en-US/firefox/119.0/releasenotes
+  MFSA 2023-45 (bsc#1216338)
+  * CVE-2023-5721 (bmo#1830820)
+    Queued up rendering could have allowed websites to clickjack
+  * CVE-2023-5722 (bmo#1738426)
+    Cross-Origin size and header leakage
+  * CVE-2023-5723 (bmo#1802057)
+    Invalid cookie characters could have led to unexpected errors
+  * CVE-2023-5724 (bmo#1836705)
+    Large WebGL draw could have led to a crash
+  * CVE-2023-5725 (bmo#1845739)
+    WebExtensions could open arbitrary URLs
+  * CVE-2023-5726 (bmo#1846205)
+    Full screen notification obscured by file open dialog on macOS
+  * CVE-2023-5727 (bmo#1847180)
+    Download Protections were bypassed by .msix, .msixbundle,
+    .appx, and .appxbundle files on Windows
+  * CVE-2023-5728 (bmo#1852729)
+    Improper object tracking during GC in the JavaScript engine
+    could have led to a crash.
+  * CVE-2023-5729 (bmo#1823720)
+    Fullscreen notification dialog could have been obscured by
+    WebAuthn prompts
+  * CVE-2023-5730 (bmo#1836607, bmo#1840918, bmo#1848694, bmo#1848833,
+    bmo#1850191, bmo#1850259, bmo#1852596, bmo#1853201, bmo#1854002,
+    bmo#1855306, bmo#1855640, bmo#1856695)
+    Memory safety bugs fixed in Firefox 119, Firefox ESR 115.4,
+    and Thunderbird 115.4.1
+  * CVE-2023-5731 (bmo#1690111, bmo#1721904, bmo#1851803, bmo#1854068)
+    Memory safety bugs fixed in Firefox 119
+- requires NSS 3.94
+
+-------------------------------------------------------------------
+Wed Oct 11 18:28:09 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 118.0.2
+  * Fix games not loading on betsoft.com (bmo#1856145)
+  * Fix printing issues for some SVG images (bmo#1853727)
+  * Fix CORS XHR with authentication no longer working (bmo#1855650)
+  * Fix h264 WebRTC video not working in some contexts (bmo#1855636)
+  * Fix Firefox Translations not working on some pages
+    (bmo#1841656, bmo#1855307)
+  * Stability fixes (bmo#1851991, bmo#1799326, bmo#1856637)
+
+-------------------------------------------------------------------
+Sat Sep 30 19:51:56 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Activate KDE integration again, included rebased and updated
+  patches, firefox-kde.patch and mozilla-kde.patch, (upstream
+  removed special files handling for preferences but that has no
+  effect since we haven't shipped obsolete kde.js for a while)
+  (boo#1216027)
+
+-------------------------------------------------------------------
 Fri Sep 29 06:50:26 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 118.0.1

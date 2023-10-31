@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          118
-%define mainver        %major.0.1
-%define orig_version   118.0.1
+%define major          119
+%define mainver        %major.0
+%define orig_version   119.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.93
+BuildRequires:  mozilla-nss-devel >= 3.94
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -209,7 +209,7 @@ Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
-#Patch2:         mozilla-kde.patch
+Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch5:         mozilla-fix-aarch64-libopus.patch
@@ -230,7 +230,7 @@ Patch22:        mozilla-partial-revert-1768632.patch
 Patch23:        mozilla-rust-disable-future-incompat.patch
 Patch24:        mozilla-bmo1822730.patch
 # Firefox/browser
-#Patch101:       firefox-kde.patch
+Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -349,11 +349,11 @@ sed -i "s|potential_python_binary = f\"python3.{i}\"|potential_python_binary = f
 export PYTHON3=/usr/bin/python3.9
 %endif
 
-#kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
-#if test "$kdehelperversion" != %{kde_helper_version}; then
-#  echo fix kde helper version in the .spec file
-#  exit 1
-#fi
+kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
+if test "$kdehelperversion" != %{kde_helper_version}; then
+  echo fix kde helper version in the .spec file
+  exit 1
+fi
 
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
 cp %{SOURCE4} .obsenv.sh
@@ -728,7 +728,6 @@ exit 0
 %{progdir}/fonts/
 %{progdir}/pingsender
 %{progdir}/platform.ini
-%{progdir}/plugin-container
 %if %crashreporter
 %{progdir}/crashreporter
 %{progdir}/crashreporter.ini
