@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        6.5
+Version:        6.6
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ Source:         https://github.com/strace/strace/releases/download/v%{version}/%
 Source2:        https://github.com/strace/strace/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
-BuildRequires:  haveged
 BuildRequires:  libacl-devel
 BuildRequires:  libaio-devel
 %if 0%{?suse_version} >= 1500
@@ -70,14 +69,7 @@ make %{?_smp_mflags}
 # Exclude testsuite for qemu builds, qemu-linux-user doesn't support ptrace.
 %if !0%{?qemu_user_space_build}
 %check
-haveged=$(PATH=$PATH:/sbin:%{_sbindir} type -p haveged)
-if test -n "$haveged" && ! /sbin/checkproc $haveged ; then
-    $haveged --pidfile=$PWD/haveged.pid < /dev/null 1>&0 2>&0 || true
-fi
 make %{?_smp_mflags} check || cat tests/test-suite.log
-if test -s $PWD/haveged.pid ; then
-    /sbin/killproc -p $PWD/haveged.pid $haveged
-fi
 %endif
 
 %install
