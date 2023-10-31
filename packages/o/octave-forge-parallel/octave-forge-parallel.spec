@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package octave-forge-parallel
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -18,16 +18,13 @@
 
 %define octpkg  parallel
 Name:           octave-forge-%{octpkg}
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Parallel Computing for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io/%{octpkg}/index.html
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-Patch0:         0001-Bug62349-fix-missing-num_processors.patch
-# PATCH-FIX-UPSTREAM parallel-missing-header-cdef_object.patch https://savannah.gnu.org/bugs/?63922 badshah400@gmail.com -- Fix no member named 'cdef_object' in namespace 'octave'
-Patch1:         parallel-missing-header-cdef_object.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-devel >= 3.4.0
 BuildRequires:  hdf5-devel
@@ -43,8 +40,6 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-%patch0
-%patch1 -p1
 %octave_pkg_src
 
 %build

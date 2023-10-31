@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 30 16:00:43 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update URL to point to 'https://gnu-octave.github.io/packages/'
+
+-------------------------------------------------------------------
+Thu Oct 19 05:04:14 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.2:
+  * Octave commandline options --no-init-file and --no-site-file,
+    if given, are now passed on to the Octave sessions used by
+    parcellfun and pararrayfun.
+  * Build fixes for Octave-8.3.
+  * Some clarification of parcellfun/pararrayfun limitations in
+    the package documentation accessed by octave_doc.
+- Drop patches:
+  * 0001-Bug62349-fix-missing-num_processors.patch: Fixed, see
+    https://savannah.gnu.org/bugs/?62349
+  * parallel-missing-header-cdef_object.patch: Fixed, see
+    https://savannah.gnu.org/bugs/?63922
+
+-------------------------------------------------------------------
 Tue Apr 18 06:41:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add parallel-missing-header-cdef_object.patch Fix no member
