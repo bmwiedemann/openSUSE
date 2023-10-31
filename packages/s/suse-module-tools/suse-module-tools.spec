@@ -36,7 +36,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.37
+Version:        16.0.38
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -142,7 +142,10 @@ echo 'Wants=boot-sysctl.service' >>"%{buildroot}%{sysctl_dropin}"
 %endif
 
 install -d -m 755 "%{buildroot}%{_modulesloaddir}"
-install -pm 644 -t "%{buildroot}%{_modulesloaddir}" modules-load.d/*.conf
+for _x in modules-load.d/*.conf; do
+    [ -e "$_x" ] || continue
+    install -pm 644 -t "%{buildroot}%{_modulesloaddir}" "$_x"
+done
 
 %ifarch ppc64 ppc64le
 install -d -m 755 %{buildroot}/usr/lib/systemd/system-generators

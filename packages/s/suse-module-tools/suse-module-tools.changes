@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 27 15:48:07 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.38:
+  * modprobe.d: use softdep to load sd_mod and sg (boo#1216070)
+
+-------------------------------------------------------------------
 Wed Oct 25 19:48:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
   * weak-modules2: ignore INITRD_MODULES (jsc#PED-1915), obtain

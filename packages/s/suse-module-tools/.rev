@@ -728,4 +728,13 @@ source service setup which messed up my spec file.
     list of modules from dracut.conf.d instead (forwarded request 1120369 from mwilck)</comment>
     <requestid>1120370</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>a7626679984c268ec447d9049a63f37a</srcmd5>
+    <version>16.0.38</version>
+    <time>1698780310</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.38:
+  * modprobe.d: use softdep to load sd_mod and sg (boo#1216070)</comment>
+    <requestid>1121300</requestid>
+  </revision>
 </revisionlist>
