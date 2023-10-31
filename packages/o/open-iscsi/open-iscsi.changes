@@ -2,12 +2,12 @@
 Wed Oct 25 18:48:01 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream, which includes (bsc#1210514):
-  * several fixes to harden iscsiuio, which updates its version
-    number to 0.7.8.8, including:
+  * several fixes to harden iscsiuio, including:
     - logging now uses syslog
     - shutdown now waits for helper threads to complete
     - netlink socket cleanup
   * some minor bug fixes, some helping builds on musl
+  This updates iscsiuio version to 0.7.8.8.
   This updates open-iscsi-SUSE-latest.diff.bz2
 
 -------------------------------------------------------------------
