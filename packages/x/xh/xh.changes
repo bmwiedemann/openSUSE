@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Oct 30 21:40:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.4:
+  * Explicitly enable serde's derive feature, see #334
+- Disable tests since they need an internet connection
+
+-------------------------------------------------------------------
+Mon Oct 30 21:39:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.3:
+  * Make network-interface an optional dependency, see #332
+
+-------------------------------------------------------------------
+Mon Oct 30 21:38:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.2:
+  * Add --interface for binding to a local IP address or interface, see #307
+  * Translate --raw flag when using --curl, see #308
+  * Support duplicate header keys in session files, see #313
+  * Support persisting cookies from multiple domains, see #314
+  * Control output formatting (JSON indent-level, header sorting, etc)
+    via --format-options, see #318 and #319
+  * Disable cURL's URL globbing, see #325
+  * Improve PATH handling in install.ps1, see #264
+  * Update Rustls to v0.21.0, see #311
+
+-------------------------------------------------------------------
+Tue Oct 10 07:24:25 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.1:
+  * Add --interface for binding to a local IP address or interface #307
+  * Translate --raw flag when using --curl #308
+  * Support duplicate header keys in session files #313
+  * Support persisting cookies from multiple domains #314
+  * Control output formatting (JSON indent-level, header sorting, etc)
+    via --format-options #318 #319)
+  * Disable cURL's URL globbing #325
+  * Improve PATH handling in install.ps1 #264
+  * Update Rustls to v0.21.0 #311
+
+-------------------------------------------------------------------
+Tue Feb 21 08:41:19 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  Features:
+  * Support reading query param and header values from a file, see #288[1]
+  * Highlight Syntax errors found while tokenizing a JSON path, see #260[3]
+  * Support outputting the metadata of a response via --meta, --print=m or -vv, see #240[4]
+  Bug fixes:
+  * Fix panic when when parsing connection timeout, see #295[5]
+  Breaking changes:
+  * Remove -m as a short flag for --multipart, see #299[7]
+
+-------------------------------------------------------------------
+Wed Jan 11 11:27:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of xh 0.17.0 for openSUSE

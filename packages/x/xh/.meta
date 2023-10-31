@@ -1,0 +1,6 @@
+<package name="xh" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="xh"/>
+  <url>https://github.com/ducaale/xh</url>
+</package>
