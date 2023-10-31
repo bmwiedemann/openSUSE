@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 30 18:53:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.73
+  * Sample editor: Shift + mouse-wheel = scroll sample data view
+- Update to version 1.72
+  * Block Cut (ALT+F3) and Block Copy (ALT+F4) was broken in v1.70
+
+-------------------------------------------------------------------
 Wed Oct  4 15:36:01 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.71
