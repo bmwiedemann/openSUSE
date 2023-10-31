@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 23 09:52:12 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- gb18030-2022.patch: add GB18030-2022 charmap (jsc#PED-4908, BZ #30243)
+
+-------------------------------------------------------------------
 Wed Oct 18 11:54:04 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - dtors-reverse-ctor-order.patch: Remove, has been reverted
@@ -129,6 +134,8 @@ Wed Aug  2 10:50:32 UTC 2023 - Andreas Schwab <schwab@suse.de>
   gmon-buffer-alloc.patch, check-pf-cancel-handler.patch,
   powerpc64-fcntl-lock.patch, realloc-limit-chunk-reuse.patch,
   dl-find-object-return.patch; Removed
+- bsc#1211828
+- bsc#1212819
 
 -------------------------------------------------------------------
 Mon Jul 10 08:46:18 UTC 2023 - Andreas Schwab <schwab@suse.de>
@@ -137,7 +144,8 @@ Mon Jul 10 08:46:18 UTC 2023 - Andreas Schwab <schwab@suse.de>
   ERANGE handling (BZ #30151)
 - system-sigchld-block.patch: posix: Fix system blocks SIGCHLD erroneously
   (BZ #30163)
-- gmon-buffer-alloc.patch: gmon: Fix allocated buffer overflow (BZ #29444)
+- gmon-buffer-alloc.patch: gmon: Fix allocated buffer overflow
+  (bsc#1207975, BZ #29444)
 - check-pf-cancel-handler.patch: __check_pf: Add a cancellation cleanup
   handler (BZ #20975)
 - powerpc64-fcntl-lock.patch: io: Fix F_GETLK, F_SETLK, and F_SETLKW for
@@ -161,7 +169,7 @@ Thu Jun 29 13:05:55 UTC 2023 - Andreas Schwab <schwab@suse.de>
 Fri Apr 28 23:42:47 UTC 2023 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - ulp-prologue-into-asm-functions.patch: Add support for livepatches in
-  ASM written functions (bsc#1210777)
+  ASM written functions (bsc#1210777, bsc#1211726)
 
 -------------------------------------------------------------------
 Thu Mar 30 12:03:36 UTC 2023 - Andreas Schwab <schwab@suse.de>
@@ -193,6 +201,9 @@ Wed Feb  1 16:06:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
   errlist-edeadlock.patch, makeflags.patch, get-nscd-addresses.patch,
   x86-64-avx2-string-functions.patch, nscd-aicache.patch,
   dl-debug-bindings.patch, floatn.patch: Removed
+- bsc#1207957
+- bsc#1208358
+- bsc#1212910
 
 -------------------------------------------------------------------
 Tue Dec 27 12:24:54 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
@@ -293,6 +304,9 @@ Tue Aug  2 07:41:38 UTC 2022 - Andreas Schwab <schwab@suse.de>
   strncpy-power9-vsx.patch, nptl-cleanup-async-restore.patch,
   read-chk-cancel.patch, wcrtomb-fortify.patch,
   nptl-cleanup-async-restore-2.patch: Removed
+- CVE-2023-4813, bsc#1215286
+- bsc#1198751
+- bsc#1200334
 
 -------------------------------------------------------------------
 Thu Jul 14 11:21:34 UTC 2022 - Andreas Schwab <schwab@suse.de>
@@ -448,6 +462,12 @@ Thu Feb  3 11:52:01 UTC 2022 - Andreas Schwab <schwab@suse.de>
   setxid-deadlock-blocked-signals.patch,
   sysconf-nprocessors-affinity.patch, x86-string-control-test.patch:
   Removed.
+- bsc#1194640
+- bsc#1194768
+- bsc#1194770
+- bsc#1197718
+- bsc#1211829
+- bsc#1215891
 
 -------------------------------------------------------------------
 Fri Nov 26 13:38:02 UTC 2021 - Michael Matz <matz@suse.com>
@@ -458,7 +478,7 @@ Fri Nov 26 13:38:02 UTC 2021 - Michael Matz <matz@suse.com>
 Wed Nov 16 17:22:28 UTC 2021 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Add ExtraBuildFlags for build flags that cannot be passed to configure.
-- Add support for livepatches (JSC #SLE-20049).
+- Add support for livepatches (jsc#SLE-20049).
 - Generate ipa-clones tarball artifact when livepatching is enabled.
 
 -------------------------------------------------------------------
@@ -586,11 +606,17 @@ Mon Aug  2 09:38:46 UTC 2021 - Andreas Schwab <schwab@suse.de>
     CVE-2021-33574: The mq_notify function has a potential use-after-free
     issue when using a notification type of SIGEV_THREAD and a thread
     attribute with a non-default affinity mask
+    CVE-2021-35942: The wordexp function may overflow the positional
+    parameter number when processing the expansion resulting in a crash
 - nss-database-check-reload.patch, nss-load-chroot.patch,
   x86-isa-level.patch, nscd-netgroupcache.patch,
   nss-database-lookup.patch, select-modify-timeout.patch,
   nptl-db-libpthread-load-order.patch, rawmemchr-warning.patch,
   tst-cpu-features-amx.patch, mq-notify-use-after-free.patch: Removed
+- bsc#1181403
+- bsc#1184035
+- bsc#1187911
+- jsc#PED-987
 
 -------------------------------------------------------------------
 Fri Jun 11 11:42:10 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
@@ -712,6 +738,10 @@ Tue Feb  2 09:33:28 UTC 2021 - Andreas Schwab <schwab@suse.de>
   intl-codeset-suffixes.patch, nscd-gc-cycle.patch,
   printf-long-double-non-normal.patch, strerrorname-np.patch,
   syslog-locking.patch, sysvipc.patch: Removed
+- bsc#1180557
+- bsc#1181505
+- bsc#1191592
+- bsc#1201942
 
 -------------------------------------------------------------------
 Tue Jan 19 13:52:09 UTC 2021 - Andreas Schwab <schwab@suse.de>
@@ -819,6 +849,17 @@ Thu Aug  6 08:08:04 UTC 2020 - Andreas Schwab <schwab@suse.de>
     memmove functions has been fixed
 - riscv-syscall-clobber.patch, ldbl-96-rem-pio2l.patch,
   long-double-alias.patch: Removed
+- bsc#1027496
+- bsc#1162930
+- bsc#1166106
+- bsc#1167631
+- bsc#1167939
+- bsc#1194785, jsc#SLE-18195
+- bsc#1200855
+- bsc#1201560
+- bsc#1201640
+- bsc#1207571
+- jsc#SLE-13520
 
 -------------------------------------------------------------------
 Tue Jun 23 08:32:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
@@ -886,12 +927,16 @@ Mon Feb  3 08:13:02 UTC 2020 - Andreas Schwab <schwab@suse.de>
 - malloc-info-whitespace.patch, riscv-vfork.patch,
   prefer-map-32bit-exec.patch, backtrace-powerpc.patch,
   ldconfig-dynstr.patch: Removed.
+- bsc#1157893
+- bsc#1163184
+- fate#325815, fate#325879, fate#325880, fate#325881, fate#325882
+- fate#325962
 
 -------------------------------------------------------------------
 Tue Jan 21 15:08:13 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - backtrace-powerpc.patch: Fix array overflow in backtrace on PowerPC
-  (bsc#1158996, BZ #25423)
+  (CVE-2020-1751, bsc#1158996, BZ #25423)
 - Drop support for pluggable gconv modules (bsc#1159851)
 
 -------------------------------------------------------------------
@@ -1002,6 +1047,8 @@ Fri Aug  2 08:59:46 UTC 2019 - Andreas Schwab <schwab@suse.de>
   iconv-reset-input-buffer.patch: Removed
 - malloc-info-whitespace.patch: Remove unwanted leading whitespace in
   malloc_info (BZ #24867)
+- bsc#1100396
+- bsc#1130045
 
 -------------------------------------------------------------------
 Wed Jul 17 09:47:02 UTC 2019 - Andreas Schwab <schwab@suse.de>
@@ -1123,6 +1170,13 @@ Fri Feb  1 10:34:39 UTC 2019 - schwab@suse.de
   pthread-mutex-lock-elision-race.patch, x86-haswell-string-flags.patch,
   if-nametoindex-descr-leak.patch, riscv-flush-icache.patch: Removed
 - CVE-2016-10739
+- bsc#1114984
+- bsc#1114993
+- bsc#1122729
+- bsc#1131330
+- bsc#1149332
+- bsc#1151582
+- bsc#1164505
 
 -------------------------------------------------------------------
 Wed Jan  9 14:21:04 UTC 2019 - schwab@suse.de
@@ -1237,6 +1291,11 @@ Thu Aug  2 07:48:07 UTC 2018 - schwab@suse.de
   riscv-tls-init.patch: Removed
 - glibc_post_upgrade.c: Don't reload init (bsc#1103124)
 - CVE-2009-5155, CVE-2015-8985
+- bsc#1092877
+- bsc#1102526
+- bsc#1112570
+- bsc#1126590
+- bsc#1127223
 
 -------------------------------------------------------------------
 Tue Jun 19 08:37:43 UTC 2018 - schwab@suse.de
@@ -1399,6 +1458,7 @@ Mon Feb  5 08:49:13 UTC 2018 - schwab@suse.de
   fillin-rpath-empty-tokens.patch, getcwd-absolute.patch,
   ldd-system-interp.patchabort-no-flush.patch: Removed
 - All patches refreshed
+- bsc#1063675
 
 -------------------------------------------------------------------
 Tue Jan 30 16:42:14 UTC 2018 - schwab@suse.de
@@ -1603,6 +1663,7 @@ Wed Aug  2 14:32:58 UTC 2017 - schwab@suse.de
   i686-memchr-sse.patch, ld-hwcap-mask-suid.patch, ld-library-path-suid.patch,
   sunrpc-use-after-free.patch, test-math-vector-sincos-aliasing.patch,
   tunables-bigendian.patch: Removed
+- bsc#1074208
 
 -------------------------------------------------------------------
 Tue Jul 25 07:32:25 UTC 2017 - schwab@suse.de

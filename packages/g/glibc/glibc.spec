@@ -329,6 +329,8 @@ Patch1011:      fstat-implementation.patch
 Patch1012:      setxid-propagate-glibc-tunables.patch
 # PATCH-FIX-UPSTREAM tunables: Terminate if end of input is reached (CVE-2023-4911)
 Patch1013:      tunables-string-parsing.patch
+# PATCH-FIX-UPSTREAM add GB18030-2022 charmap and test the entire GB18030 charmap (BZ #30243)
+Patch1014:      gb18030-2022.patch
 
 ###
 # Patches awaiting upstream approval
@@ -565,6 +567,7 @@ library in a cross compilation setting.
 %patch1011 -p1
 %patch1012 -p1
 %patch1013 -p1
+%patch1014 -p1
 %endif
 
 %patch2000 -p1

@@ -2903,4 +2903,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- dtors-reverse-ctor-order.patch: Remove, has been reverted (forwarded request 1118596 from Andreas_Schwab)</comment>
     <requestid>1118597</requestid>
   </revision>
+  <revision rev="282" vrev="6">
+    <srcmd5>4bfc4da1b46e8a78892a06605a93727a</srcmd5>
+    <version>2.38</version>
+    <time>1698780269</time>
+    <user>anag+factory</user>
+    <comment>- gb18030-2022.patch: add GB18030-2022 charmap (jsc#PED-4908, BZ #30243)</comment>
+    <requestid>1121134</requestid>
+  </revision>
 </revisionlist>
