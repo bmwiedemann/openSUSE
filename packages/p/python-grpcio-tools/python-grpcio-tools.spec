@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-tools
-Version:        1.59.0
+Version:        1.59.2
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
