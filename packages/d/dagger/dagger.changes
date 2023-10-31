@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct 31 06:09:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.2:
+  * Add v0.9.2 release notes (#6023)
+  * Add support for custom objects in Python modules (#6016)
+  * ci: improve test workflow runtimes (#6018)
+  * cli: rename `use` command to `install`. (#6021)
+  * Add DAGGER_CLOUD_TOKEN client-side so that we get telemetry in
+    Cloud (#6020)
+  * Fix for mod deps blowing up ID size (#6014)
+  * add dagger mod publish (#5980)
+  * codegen: close progrock writer (#6011)
+  * core: disallow reserved ID field in user modules (#5995)
+  * Add a backfill test for various styles of passing builtin
+    IDable types (#5992)
+  * chore(deps): bump github.com/google/uuid from 1.3.0 to 1.4.0
+    (#6010)
+  * Add nix package publishing to goreleaser config (#5996)
+  * Add experimental GPU support (#5605)
+  * Move python module codegen introspection to cli (#5997)
+  * docs: Adds Tekton guide (#5970)
+  * cli: fix handling of list input in dagger call (#5982)
+  * chore: remove buildctl grpc build hack (#5985)
+  * zenith: always run git exec ops when resolving refs (#5987)
+  * zenith: use main as default go module name (#5983)
+  * ci: update go from 1.21.2->1.21.3 (#5977)
+  * dagger mod init creates LICENSE if none found (#5978)
+
+-------------------------------------------------------------------
 Thu Oct 26 14:57:39 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.1:
