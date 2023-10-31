@@ -64,4 +64,20 @@
     <comment></comment>
     <requestid>1112394</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>650bea001110d3fa75a1655b9d7cbb79</srcmd5>
+    <version>1.4.0</version>
+    <time>1698780379</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.0:
+  * Support bumping the semantic version via `--bump`
+  * Add 'typos' check
+  * Log the output of failed external commands -
+  * breaking change: Support regex in 'tag_pattern' configuration
+  * Add field and value matchers to the commit parser
+- Update service file to new obs service cargo requirements
+- Add zstd in build requirements for tar scm
+</comment>
+    <requestid>1121406</requestid>
+  </revision>
 </revisionlist>

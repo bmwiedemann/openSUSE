@@ -1,8 +1,7 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">git-cliff-1.2.0.tar.gz</param>
-     <param name="compression">xz</param>
+     <param name="src">git-cliff-*.tar.gz</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="manual" />

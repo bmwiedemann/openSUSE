@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 31 09:28:06 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.4.0:
+  * Support bumping the semantic version via `--bump`
+  * Add 'typos' check
+  * Log the output of failed external commands -
+  * breaking change: Support regex in 'tag_pattern' configuration
+  * Add field and value matchers to the commit parser
+- Update service file to new obs service cargo requirements
+- Add zstd in build requirements for tar scm
+
+-------------------------------------------------------------------
 Tue Sep 19 20:31:37 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license field based on legaldb review
