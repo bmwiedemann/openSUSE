@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 31 06:53:05 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.73:
+  * CVE-2023-44487: HTTP/2 detect and log rapid reset attack
+    (boo#1216123)
+
+-------------------------------------------------------------------
 Sat Oct  7 15:20:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.72:
