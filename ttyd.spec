@@ -18,7 +18,7 @@
 
 
 Name:           ttyd
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Share your terminal over the web
 License:        MIT
@@ -60,7 +60,8 @@ make VERBOSE=1 %{?_smp_mflags}
 %cmake_install
 
 %files
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/ttyd
 %{_mandir}/man1/ttyd.1%{ext_man}
 

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct 31 09:33:48 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- libwebsockets19 should not be required in specfile
+
+-------------------------------------------------------------------
+Mon Oct 30 21:56:44 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.4:
+  Breaking Changes
+  * The default listen interface/ip is changed to 127.0.0.1 now.
+  * The web terminal is readonly by default now, to make it
+    writable, use -W option.
+  Other Changes
+  * server: print working directory on start.
+  * server: replace --readonly with --writable.
+  * server: fix -U option not work.
+  * server: do not expose port to public by default.
+  * Add -y flag for easier installation.
+  * improve support for trzsz.
+  * info.max_http_header_data = 65535;
+  * fix flow control.
+  * Fix typo, OPTOINS -> OPTIONS.
+
+-------------------------------------------------------------------
+Sat Sep  9 23:15:33 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Redeclare requires without using pkgconfig
+
+-------------------------------------------------------------------
+Sat Sep  2 14:12:42 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Ttyd also requires these packages.
+
+-------------------------------------------------------------------
 Fri Feb 17 08:27:53 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.7.3:
