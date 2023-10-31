@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Oct 30 22:11:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.5
+  * Make POSIX event thread safe
+  * Remove SocketReactor dependency on Poco::Thread for sleeping
+  * ODBC::Binder UUID new/free mismatch
+  * PollSet filters out some events
+  * Use after free warnings
+  * receiveResponse() may not return response body stream
+  * Upgrade bundled pcre2 to 10.42
+  * missing \r\n when setting trailer header in chunked response
+  * Initialisation of _socketIndex in SSLManager (OpenSSL)
+  * Add options to disable STDIO in child process
+  * pthread_getname_np' was not declared in this scope
+  * FileChannel::setRotation overflow
+  * Shutdown TLS1.3 connection
+  * Use Poco format instead of sprintf in Util
+  * Logging should evaluate only if the logging level is active
+  * PageCompiler: add referrerPolicy to page directive feature
+  * ODBC: SQL Anywhere Support
+  * Classes with virtual functions missing virtual destructors
+    (compilation issues)
+  * CPPParser: Losing data if parameter std::function<void(bool)>
+    is used
+  * wrong string offset in HTTPCredentials::isNTLMCredentials
+  * On UNIX platform, Poco::Path::getExtension() returns name of
+    the hidden file if no extension is present
+  * Fix dead lock on Timer destructor
+  * Poco::Net::SocketConnector constructor should take SocketAddress
+    by const reference
+  * The extractor in postgresql drops milliseconds
+  * CppParser throws exception when return value is specified to be
+    in global namespace
+  * Deadlock in Timer when one sync and one async cancel requests
+    are issued
+  * Static FastMutex fails to lock when issued from another thread
+    on linux
+  * NetSSL_OpenSSL: Support session resumption with TLSv1.3
+  * Replace sprintf with snprintf in Environment and NumberFormatter
+    to avoid deprecation warnings
+  * zlib headers not updated
+  * HTTPClientSession::receiveResponse() gives NoMessage instead of
+    Timeout exception for SSL connection on Windows when using
+    OpenSSL 3.0.x
+  * DateTimeFormatter creates invalid ISO8601 string
+  * Reading from request stream hangs when "Transfer-Encoding:
+    chunked" is used
+  * Upgrade double-conversion to 3.3.0
+  * Fix pthread_setname not declared
+  * optimize checkUpperLimit and checkLowerLimit in VarHolder.h
+    enhancement
+  * rename arc -> poco_arc
+  * Fixed Poco::format specifier for error code  bug platform_specific
+  * fix #4005 Poco::Path::getExtension()
+  * Fix hang in destructor
+  * Fix thread counter leak
+  * Fix dead lock on Timer destructor
+  * Fix error handling with OpenSSL 3.0 in SecureSocketImpl.cpp
+  * Fix build for QNX  platform_specific
+  * Fix data race when create POSIX thread
+  * Fixed compile error for OpenSSL 1.0 systems (#3739)
+  * Added system_error header to SockerProactor for std::error_code
+  * Fix epollfd validity checks when compiling with wepoll
+  * Fixed converting/correcting pre-gregorian dates (#3723)
+
+-------------------------------------------------------------------
 Tue Jul 18 18:56:03 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12.4
