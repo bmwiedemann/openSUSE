@@ -576,6 +576,7 @@ export CFLAGS_SHARED
 	--disable-wgetch-events	\
 	--enable-pthreads-eintr	\
 	--enable-string-hacks	\
+	--enable-check-size	\
 	--prefix=%{_prefix}	\
 	--exec-prefix=%{_prefix}\
 	--libdir=%{_libdir}	\

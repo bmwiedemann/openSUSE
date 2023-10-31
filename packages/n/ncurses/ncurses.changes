@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 23 07:49:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231021
+  + use oldxterm+sm+1006 in vte-2014 (report by Benno Schulenberg) -TD
+  + add ansi+apparrows -TD
+  + change defaults for configure opaque and widec options (prompted by
+    discussion with Branden Robinson).
+  + minor cleanup of compiler- and manpage-warnings.
+- Correct offsets off some hunks in patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
+Tue Oct 17 06:04:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231016
+  + make the recent change to setupterm optional "--enable-check-size"
+    (Debian #1054022).
+
+-------------------------------------------------------------------
+Mon Oct 16 07:20:05 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231014
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + updated configure script macro CF_XOPEN_SOURCE, for uClibc-ng
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
 Mon Oct  9 07:54:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20231007
