@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-beanutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,11 +32,8 @@ BuildRequires:  ant
 BuildRequires:  commons-collections
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  xml-commons-apis
-Requires:       commons-collections >= 2.0
-Requires:       commons-logging >= 1.0
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -69,48 +66,32 @@ sed -i 's/\r//' *.txt
 # bug in ant build
 touch README.txt
 
-%{pom_remove_parent}
-
 %build
 export CLASSPATH=%(build-classpath commons-collections commons-logging)
-%ant -Dbuild.sysclasspath=first dist
+%{ant} -Dbuild.sysclasspath=first dist
 
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-
-pushd %{buildroot}%{_javadir}
-ln -s %{name}-%{version}.jar %{name}.jar
-for jar in *.jar; do
-    ln -sf ${jar} `echo $jar| sed "s|apache-||g"`
-done
-popd # come back from javadir
+install -m 644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{short_name}.jar
+ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a "%{short_name}:%{short_name}-core,%{short_name}:%{short_name}-bean-collections"
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%add_maven_depmap %{short_name}.pom %{short_name}.jar -a "%{short_name}:%{short_name}-core,%{short_name}:%{short_name}-bean-collections"
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%defattr(0644,root,root,0755)
-%license LICENSE.txt
-%doc NOTICE.txt RELEASE-NOTES.txt
-%{_javadir}/*
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
+%files -f .mfiles
+%{_javadir}/%{name}.jar
+%license LICENSE.txt NOTICE.txt
+%doc RELEASE-NOTES.txt
 
 %files javadoc
-%defattr(0644,root,root,0755)
 %{_javadocdir}/%{name}
 
 %changelog
