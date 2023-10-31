@@ -6892,4 +6892,12 @@ handle manual pages that consist only of a .so directive such as
   wtmpdb on TW.</comment>
     <requestid>1120043</requestid>
   </revision>
+  <revision rev="406" vrev="4">
+    <srcmd5>5dfbdf94db5761564d7b5e189c122bba</srcmd5>
+    <version>254.5</version>
+    <time>1698780316</time>
+    <user>anag+factory</user>
+    <comment>- Fix typo in /etc/systemd/user.confd.d (bsc#1216676)</comment>
+    <requestid>1121115</requestid>
+  </revision>
 </revisionlist>

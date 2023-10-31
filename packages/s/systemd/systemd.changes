@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 30 09:11:16 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Fix typo in /etc/systemd/user.confd.d (bsc#1216676)
+
+-------------------------------------------------------------------
 Tue Oct 24 14:15:25 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit b53f364c264cd598d4210b64285a55d362b47b89

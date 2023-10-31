@@ -35,7 +35,7 @@
 %dir %{_sysconfdir}/systemd/system
 %dir %{_sysconfdir}/systemd/system.conf.d
 %dir %{_sysconfdir}/systemd/user
-%dir %{_sysconfdir}/systemd/user.confd.d
+%dir %{_sysconfdir}/systemd/user.conf.d
 %dir %{_sysconfdir}/tmpfiles.d
 %dir %{_sysconfdir}/xdg/systemd
 %dir %{_sysctldir}
