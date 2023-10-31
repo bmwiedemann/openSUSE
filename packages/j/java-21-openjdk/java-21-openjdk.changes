@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 27 05:18:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Set priority and make it the preferred JDK
+
+-------------------------------------------------------------------
 Wed Oct 25 09:26:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-21.0.1+12 (October 2023 CPU)

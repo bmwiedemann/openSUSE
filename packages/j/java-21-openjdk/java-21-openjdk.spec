@@ -39,8 +39,7 @@
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
 # priority must be 6 digits in total
-#global priority        3105
-%global priority        0
+%global priority        3105
 %global javaver         %{featurever}
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
