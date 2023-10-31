@@ -17,12 +17,13 @@
 
 
 Name:           apache-sshd
-Version:        2.9.2
+Version:        2.10.0
 Release:        0
 Summary:        Apache SSHD
 # One file has ISC licensing:
 #   sshd-common/src/main/java/org/apache/sshd/common/config/keys/loader/openssh/kdf/BCrypt.java
 License:        Apache-2.0 AND ISC
+Group:          Development/Libraries/Java
 URL:            https://mina.apache.org/sshd-project
 Source0:        https://archive.apache.org/dist/mina/sshd/%{version}/apache-sshd-%{version}-src.tar.gz
 # Avoid optional dep on tomcat native APR library
@@ -40,8 +41,8 @@ BuildRequires:  mvn(org.apache.maven.surefire:surefire-junit47)
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
 BuildRequires:  mvn(org.apache:apache-jar-resource-bundle)
 BuildRequires:  mvn(org.apache:apache:pom:)
-BuildRequires:  mvn(org.bouncycastle:bcpg-jdk15on)
-BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk15on)
+BuildRequires:  mvn(org.bouncycastle:bcpg-jdk18on)
+BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk18on)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.slf4j:jcl-over-slf4j)

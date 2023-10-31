@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 11 09:03:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstrem version 2.10.0
+  * Bug
+    + SSHD-1295: Connection attempt not canceled when a connection
+      timeout occurs
+    + SSHD-1316: Possible OOM in ChannelPipedInputStream
+    + SSHD-1319: SftpRemotePathChannel.transferFrom(...) ignores
+      position argument
+    + SSHD-1324: Rooted file system can leak informations
+    + SSHD-1326: Failed to establish an SSH connection because the
+      server identifier exceeds the int range
+  * Improvement
+    + SSHD-1315: Password in clear in SSHD server's logs
+- Modified patch:
+  * 0001-Avoid-optional-dependency-on-native-tomcat-APR-libra.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Fri Feb 10 07:26:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Clean-up the spec a bit
