@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 30 07:20:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.14.2:
+  * libshadow:
+    + Fix build with musl libc.
+    + Avoid NULL dereference.
+    + Update utmp at an initial login
+  * useradd(8):
+    + Set proper SELinux labels for def_usrtemplate
+  * Manual:
+    + Document --prefix in chage(1), chpasswd(8), and passwd(1)
+- Drop upstreamed shadow-4.14.0-selinux-labels.patch
+
+-------------------------------------------------------------------
 Fri Oct  6 08:32:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.14.1:
