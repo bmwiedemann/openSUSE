@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 30 15:32:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update tp 4.19.2:
+  * Fix the error message for additional items when used with
+    heterogeneous arrays.
+  * Don't leak the additionalItems keyword into JSON Schema draft
+    2020-12, where it was replaced by items.
+
+-------------------------------------------------------------------
 Thu Sep 21 13:30:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.19.1:
