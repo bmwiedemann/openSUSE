@@ -275,4 +275,12 @@
   * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch</comment>
     <requestid>1111993</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5c82c3df27d0ca6ed55527d66d0e06e3</srcmd5>
+    <version>5.15.11</version>
+    <time>1698780378</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121405</requestid>
+  </revision>
 </revisionlist>

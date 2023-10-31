@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 30 14:19:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.15.11
+  * Documentation regarding the clang environment variables has been fixed.
+  * Support for Python 3.11 has been added.
+  * The GLES build has been fixed.
+  * Crashes when using QtDataVisualization's QValue3DAxisFormatter have been fixed.
+- Drop patches, merged upstream:
+  * 0001-Backport-Fix-GLES-builds.patch
+  * python-3.11-compatibility.patch
+
+-------------------------------------------------------------------
 Mon Sep 18 12:56:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix failure with Python 3.11.5:

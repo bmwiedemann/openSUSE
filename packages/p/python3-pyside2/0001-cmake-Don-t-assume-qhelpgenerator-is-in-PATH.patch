@@ -1,7 +1,7 @@
-From cb7de1027430cdf0ecbe4e75134239a8987199a2 Mon Sep 17 00:00:00 2001
+From 4d1ad8ef85e746dcb22fb87e23a8b0fdb7a7ccf2 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Tue, 15 Sep 2020 08:44:52 +0200
-Subject: [PATCH] [cmake] Don't assume qhelpgenerator is in PATH
+Subject: [PATCH] Don't assume qhelpgenerator is in PATH
 
 There is no guarantee the qhelpgenerator executable is in PATH.
 The build system will use the the Qt5::qhelpgenerator target
@@ -12,10 +12,10 @@ to get the exact location.
  2 files changed, 11 insertions(+), 3 deletions(-)
 
 diff --git a/sources/pyside2/doc/CMakeLists.txt b/sources/pyside2/doc/CMakeLists.txt
-index ffbb3c1..e578aad 100644
+index 950e486..4b0c7dc 100644
 --- a/sources/pyside2/doc/CMakeLists.txt
 +++ b/sources/pyside2/doc/CMakeLists.txt
-@@ -132,10 +132,14 @@ if(DOC_OUTPUT_FORMAT STREQUAL "html")
+@@ -138,10 +138,14 @@ if(DOC_OUTPUT_FORMAT STREQUAL "html")
              COMMENT "Copying Shiboken docs..."
              VERBATIM)
  else()
@@ -32,10 +32,10 @@ index ffbb3c1..e578aad 100644
              VERBATIM)
  endif()
 diff --git a/sources/shiboken2/doc/CMakeLists.txt b/sources/shiboken2/doc/CMakeLists.txt
-index 9fee962..dee13f3 100644
+index ae4858f..fb2a62d 100644
 --- a/sources/shiboken2/doc/CMakeLists.txt
 +++ b/sources/shiboken2/doc/CMakeLists.txt
-@@ -33,11 +33,15 @@ except:
+@@ -36,11 +36,15 @@ except:
  
      # create a custom command to generate QCH
      if(DOC_OUTPUT_FORMAT STREQUAL "qthelp")
@@ -54,5 +54,5 @@ index 9fee962..dee13f3 100644
      endif()
  else()
 -- 
-2.28.0
+2.42.0
 

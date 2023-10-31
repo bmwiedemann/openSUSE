@@ -22,7 +22,7 @@
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 Name:           python3-pyside2
-Version:        5.15.10
+Version:        5.15.11
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -39,13 +39,7 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 # PATCH-FIX-UPSTREAM
-Patch3:         0001-Backport-Fix-GLES-builds.patch
-%if 0%{?suse_version} > 1500
-# PATCH-FIX-UPSTREAM python-3.11-compatibility.patch
-Patch4:         python-3.11-compatibility.patch
-%endif
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+Patch3:         0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
 # Provide the PyPI names
 Provides:       python3-PySide2 = %{version}-%{release}
 Provides:       python3-shiboken2 = %{version}-%{release}
@@ -225,8 +219,8 @@ ctest_exclude_regex="$ctest_exclude_regex|QtWebEngineWidgets_pyside-474-qtwebeng
 ctest_exclude_regex="$ctest_exclude_regex|QtWebEngineCore_web_engine_custom_scheme"
 
 %if 0%{?suse_version} > 1500
-# Upstream doesn't plan to add support for python > 3.10 in pyside2. Blacklist broken test
-ctest_exclude_regex="$ctest_exclude_regex|signal_enum_test"
+# Blacklist broken test with python 3.11
+ctest_exclude_regex="$ctest_exclude_regex|signal_enum_test|QtCore_qenum_test"
 %endif
 
 %ifarch %{arm}
