@@ -813,4 +813,41 @@
     <comment></comment>
     <requestid>1116662</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>6617ae28ffd1dc36b85e2df9e0dece23</srcmd5>
+    <version>11.6.3</version>
+    <time>1698780313</time>
+    <user>anag+factory</user>
+    <comment>- update to 11.6.3:
+  * Tweak linearization code to better handle files between 2 GB
+    and 4 GB in size. Fixes #1023.
+  * Fix data loss bug: qpdf could discard a the character after
+    an escaped octal string consisting of less than three
+    digits. For content, this would only happen with QDF or when
+    normalizing content. Outside of content, it could have happened
+    in any binary string, such as /ID, if the encoding software used
+    octal escape strings with less than three digits. This bug was
+    introduced between 10.6.3 and 11.0.0.
+
+    used as a cross reference stream in an earlier stage of the file.
+  * CLI: breaking changes:
+- add fix-signedness-warning.patch (build for aarch64)
+  * Improve diagnostics around parsing --pages command-line options
+- Update to version 10.0.0
+    than the object level. New methods include QPDF::getXRefTable(),
+    QPDFObjectHandle::getParsedOffset(),
+    QPDFWriter::getRenumberedObjGen(QPDFObjGen),
+    writing process it is.
+    security handler but use 40 bit keys
+    with --show-encryption-key option. See
+- pass --enable-show-failed-test-output to configure, to see
+  *  qpdf may falsely report premature EOF when reading files that
+     have object streams that end with scalars not followed by
+    them from another file.
+- fix build with pcre 8.30
+  confirms it works and saves a few dozens of entries in the
+- Remove unicode data to make sure its not redistributed
+- Add qpdf-nostrip.patch: don't strip libraries</comment>
+    <requestid>1121012</requestid>
+  </revision>
 </revisionlist>

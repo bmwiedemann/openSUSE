@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 29 15:45:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.6.3:
+  * Tweak linearization code to better handle files between 2 GB
+    and 4 GB in size. Fixes #1023.
+  * Fix data loss bug: qpdf could discard a the character after
+    an escaped octal string consisting of less than three
+    digits. For content, this would only happen with QDF or when
+    normalizing content. Outside of content, it could have happened
+    in any binary string, such as /ID, if the encoding software used
+    octal escape strings with less than three digits. This bug was
+    introduced between 10.6.3 and 11.0.0.
+
+-------------------------------------------------------------------
 Tue Oct 10 08:49:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - version update to 11.6.2:
@@ -96,7 +110,7 @@ Sat Dec  3 22:47:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
     causing a 6x to 12x slowdown for encrypted files when OpenSSL 3 was in use.
     This includes the default Windows builds distributed with the qpdf release.
   * Fix obscure bug involving appended files that reuse an object number that was
-    used as a cross reference stream in an earlier stage of the file. 
+    used as a cross reference stream in an earlier stage of the file.
 
 -------------------------------------------------------------------
 Wed Oct 12 00:12:47 UTC 2022 - C J <c.j@tuta.io>
@@ -111,7 +125,7 @@ Wed Oct 12 00:12:47 UTC 2022 - C J <c.j@tuta.io>
   * Replacement of PointerHolder with std::shared_ptr
   * JSON output mode is now at version 2
   * Performance improvements, cleanup and refactoring.
-  * CLI: breaking changes: 
+  * CLI: breaking changes:
     The --show-encryption flag now provides encryption information
     even if a correct password is not supplied.
     Default json output version with --json has changed from 1 to 2.
@@ -233,11 +247,11 @@ Mon Feb 14 22:17:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Feb 14 22:12:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop build-without-pdf.patch, fix-signedness-warning.patch (upstream)
- 
+
 -------------------------------------------------------------------
 Mon Jan 10 21:58:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add fix-signedness-warning.patch (build for aarch64) 
+- add fix-signedness-warning.patch (build for aarch64)
 
 -------------------------------------------------------------------
 Tue Jan  4 16:24:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -301,7 +315,7 @@ Fri Nov 26 21:59:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
     directly (instead of using QPDF::copyForeignObject) at the time of insertion
     rather than when the file is written. Catching the error sooner makes it much
     easier to locate the incorrect code.
-  * Improve diagnostics around parsing --pages command-line options 
+  * Improve diagnostics around parsing --pages command-line options
 
 -------------------------------------------------------------------
 Mon May 10 19:11:53 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
@@ -367,7 +381,7 @@ Fri Apr 10 04:32:15 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 -------------------------------------------------------------------
 Mon Apr  6 18:18:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
-- Update to version 10.0.0 
+- Update to version 10.0.0
   * Several internal optimizations
   * OpenSSL support as alternative crypto provider
   * Bug fixes
@@ -411,9 +425,9 @@ Sun Nov 17 13:48:46 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
   * Incorporate contribution from Masamichi Hosoda to provide new API
     calls for getting file-level information about input and output files,
     enabling certain operations on the files at the file level rather
-    than the object level. New methods include QPDF::getXRefTable(), 
-    QPDFObjectHandle::getParsedOffset(), 
-    QPDFWriter::getRenumberedObjGen(QPDFObjGen), 
+    than the object level. New methods include QPDF::getXRefTable(),
+    QPDFObjectHandle::getParsedOffset(),
+    QPDFWriter::getRenumberedObjGen(QPDFObjGen),
     and QPDFWriter::getWrittenXRefTable().
   * Support build-time and runtime selectable crypto providers.
     This includes the addition of new classes QPDFCryptoProvider
@@ -536,12 +550,12 @@ Tue Jun 26 10:21:32 UTC 2018 - idonmez@suse.com
     information about each file as it operates on that file.
   * When the --progress option is specified, qpdf will print a
     running indicator of its best guess at how far through the
-    writing process it is. 
+    writing process it is.
 
   Bug fixes:
-  
+
   * Properly decrypt files that use revision 3 of the standard
-    security handler but use 40 bit keys 
+    security handler but use 40 bit keys
     (even though revision 3 supports 128-bit keys).
   * Limit depth of nested data structures to prevent crashes
     from certain types of malformed (malicious) PDFs.
@@ -600,7 +614,7 @@ Wed Jan 24 03:47:54 UTC 2018 - avindra@opensuse.org
   * Allow raw encryption key to be specified in libary and command
     line with the QPDF::setPasswordIsHexKey method and
     --password-is-hex-key option. Allow encryption key to be displayed
-    with --show-encryption-key option. See 
+    with --show-encryption-key option. See
     https://blog.didierstevens.com/2017/12/28/cracking-encrypted-pdfs-part-3/
     for a discussion of using this for cracking encrypted PDFs. I hope
     that a future release of qpdf will include some additional
@@ -692,7 +706,7 @@ Wed Jan 29 11:04:21 CET 2014 - jsmeix@suse.de
 
 - Provide the license source file Artistic-2.0 in the binary RPM
   (fix declined IBS submitrequest 30947).
-  
+
 -------------------------------------------------------------------
 Fri Jan 17 12:17:53 UTC 2014 - idonmez@suse.com
 
@@ -750,7 +764,7 @@ Thu Jan  3 21:47:29 UTC 2013 - dvaleev@suse.com
   This fix eliminates a false test failure on some platforms and makes
   the binary test work properly whether characters with the high bit
   set, when treated as integers, are negative or not.
-- pass --enable-show-failed-test-output to configure, to see 
+- pass --enable-show-failed-test-output to configure, to see
   detailed failure reason in build log.
 
 -------------------------------------------------------------------
@@ -777,8 +791,8 @@ Fri Sep  7 12:00:40 UTC 2012 - idonmez@suse.com
 Sat Aug 11 19:25:13 UTC 2012 - idonmez@suse.com
 
 - Update to version 3.0.1
-  *  qpdf may falsely report premature EOF when reading files that 
-     have object streams that end with scalars not followed by 
+  *  qpdf may falsely report premature EOF when reading files that
+     have object streams that end with scalars not followed by
      whitespace.
 
 -------------------------------------------------------------------
@@ -788,7 +802,7 @@ Thu Aug  2 11:48:15 UTC 2012 - idonmez@suse.com
   * Page-based splitting and merging
   * Support for large files
   * The ability to set the encryption parameters of one file by copying
-    them from another file. 
+    them from another file.
   * Support for creating PDF files from scratch
 - Drop applied patches
 
@@ -800,7 +814,7 @@ Sun Apr 22 10:32:13 UTC 2012 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Mon Feb 27 09:50:59 CET 2012 - dmueller@suse.de
 
-- fix build with pcre 8.30 
+- fix build with pcre 8.30
 
 -------------------------------------------------------------------
 Tue Jan 24 12:07:27 UTC 2012 - jengelh@medozas.de
@@ -812,7 +826,7 @@ Mon Jan 23 19:33:01 UTC 2012 - crrodriguez@opensuse.org
 
 - Fix devel package requires
 - Build with -fvisibility-inlines-hidden, test suite
-  confirms it works and saves a few dozens of entries in the 
+  confirms it works and saves a few dozens of entries in the
   exported symbol table.
 
 -------------------------------------------------------------------
@@ -831,19 +845,19 @@ Thu Aug  4 11:34:36 UTC 2011 - idonmez@novell.com
 -------------------------------------------------------------------
 Wed Aug  3 07:09:06 UTC 2011 - idonmez@novell.com
 
-- Remove unicode data to make sure its not redistributed 
+- Remove unicode data to make sure its not redistributed
 
 -------------------------------------------------------------------
 Thu Jun 23 13:02:39 UTC 2011 - idonmez@novell.com
 
-- Add qpdf-nostrip.patch: don't strip libraries 
+- Add qpdf-nostrip.patch: don't strip libraries
 
 -------------------------------------------------------------------
 Wed Jun 22 21:04:11 UTC 2011 - idonmez@novell.com
 
 - Update to v2.3.3
     * API improvements
-    * Compatibility fixes with some PDF files 
+    * Compatibility fixes with some PDF files
 
 -------------------------------------------------------------------
 * Mon Apr 28 2008 Jay Berkenbilt <ejb@ql.org> - 2.0-1
