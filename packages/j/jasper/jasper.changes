@@ -126,7 +126,7 @@ Mon Mar 29 17:09:03 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.28:
   * Fix potential null pointer dereference in the JP2/JPC decoder.
-    (#269)
+    (#269) (CVE-2021-3443) bsc#1184798
   * Fix ignoring of JAS_STREAM_FILEOBJ_NOCLOSE at stream close time.
     (#286)
   * Fix integral type sizing problem in JP2 codec. (#284)
@@ -150,7 +150,7 @@ Fri Mar  5 15:42:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.26:
   * Fix JP2 decoder bug that can cause a null pointer dereference
-    for some invalid CDEF boxes. (#268)
+    for some invalid CDEF boxes. (#268) (CVE-2021-3467) bsc#1184757
 
 -------------------------------------------------------------------
 Mon Feb  8 09:02:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
@@ -158,6 +158,8 @@ Mon Feb  8 09:02:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
 - Update to 2.0.25:
   * Fix memory-related bugs in the JPEG-2000 codec resulting from
     attempting to decode invalid code streams. (#264, #265)
+    This fix is associated with CVE-2021-26926 bsc#1182105 and
+    bsc#1182104 CVE-2021-26927.
   * Fix wrong return value under some compilers (#260)
   * Fix bsc#1181483 CVE-2021-3272 heap buffer overflow
     in jp2_decode (#259)
@@ -176,6 +178,7 @@ Tue Dec  8 07:45:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.23:
   * Fix CVE-2020-27828, heap-overflow in cp_create() in jpc_enc.c (#252)
+    bsc#1179748
 
 -------------------------------------------------------------------
 Tue Oct  6 07:16:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
@@ -221,6 +224,8 @@ Mon Sep  7 08:15:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
 Tue Jul 28 09:39:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.19:
+  * CVE-2021-27845 bsc#1188437
+    https://github.com/mdadams/jasper/issues/194 (part 1)
   * Fix CVE-2018-9154
     https://github.com/jasper-software/jasper/issues/215
     https://github.com/jasper-software/jasper/issues/166
@@ -229,7 +234,7 @@ Tue Jul 28 09:39:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
   * Fix CVE-2018-19541
     https://github.com/jasper-software/jasper/pull/199
     https://github.com/jasper-maint/jasper/issues/6
-  * Fix CVE-2016-9399, CVE-2017-13751
+  * Fix CVE-2016-9399 bsc#1010980, CVE-2017-13751
     https://github.com/jasper-maint/jasper/issues/1
   * Fix CVE-2018-19540
     https://github.com/jasper-software/jasper/issues/182
@@ -238,36 +243,36 @@ Tue Jul 28 09:39:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
     https://github.com/jasper-maint/jasper/issues/9
   * Fix CVE-2017-13748
     https://github.com/jasper-software/jasper/issues/168
-  * Fix CVE-2017-5503, CVE-2017-5504, CVE-2017-5505
+  * Fix CVE-2017-5503 bsc#1020456, CVE-2017-5504 bsc#1020458, CVE-2017-5505 bsc#1020460
     https://github.com/jasper-maint/jasper/issues/3
     https://github.com/jasper-maint/jasper/issues/4
     https://github.com/jasper-maint/jasper/issues/5
     https://github.com/jasper-software/jasper/issues/88
     https://github.com/jasper-software/jasper/issues/89
     https://github.com/jasper-software/jasper/issues/90
-  * Fix CVE-2018-9252
+  * Fix CVE-2018-9252 bsc#1088278
     https://github.com/jasper-maint/jasper/issues/16
-  * Fix CVE-2018-19139
+  * Fix CVE-2018-19139 bsc#1115637
     https://github.com/jasper-maint/jasper/issues/14
-  * Fix CVE-2018-19543, CVE-2017-9782
+  * Fix CVE-2018-19543 bsc#1117328, CVE-2017-9782 bsc#1045450
     https://github.com/jasper-maint/jasper/issues/13
     https://github.com/jasper-maint/jasper/issues/18
     https://github.com/jasper-software/jasper/issues/140
     https://github.com/jasper-software/jasper/issues/182
-  * Fix CVE-2018-20570
+  * Fix CVE-2018-20570 bsc#1120807
     https://github.com/jasper-maint/jasper/issues/11
     https://github.com/jasper-software/jasper/issues/191
-  * Fix CVE-2018-20622
+  * Fix CVE-2018-20622 bsc#1120805
     https://github.com/jasper-maint/jasper/issues/12
     https://github.com/jasper-software/jasper/issues/193
-  * Fix CVE-2016-9398
+  * Fix CVE-2016-9398 bsc#1010979
     https://github.com/jasper-maint/jasper/issues/10
-  * Fix CVE-2017-14132
+  * Fix CVE-2017-14132 bsc#1057152
     https://github.com/jasper-maint/jasper/issues/17
-  * Fix CVE-2017-5499
+  * Fix CVE-2017-5499 bsc#1020451
     https://github.com/jasper-maint/jasper/issues/2
     https://github.com/jasper-software/jasper/issues/63
-  * Fix CVE-2018-18873
+  * Fix CVE-2018-18873 bsc#1114498
     https://github.com/jasper-maint/jasper/issues/15
     https://github.com/jasper-software/jasper/issues/184
   * Fix https://github.com/jasper-software/jasper/issues/207
@@ -311,7 +316,7 @@ Thu Jun  6 07:43:02 UTC 2019 - mvetter@suse.com
 Mon Mar 25 10:23:40 UTC 2019 - mvetter@suse.com
 
 - Update to 2.0.16:
-  * Fix assertion failure JPC_NOMINALGAIN (CVE-2016-9396) (#50)
+  * Fix assertion failure JPC_NOMINALGAIN (CVE-2016-9396) (#50) bsc#1010783
   * Fix build on Windows 10 (#162)
   * Improve README
   * Fix build with CMake 2.x
