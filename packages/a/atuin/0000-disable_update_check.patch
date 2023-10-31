@@ -1,13 +1,14 @@
-Index: atuin-13.0.0/atuin-client/src/settings.rs
-===================================================================
---- atuin-13.0.0.orig/atuin-client/src/settings.rs
-+++ atuin-13.0.0/atuin-client/src/settings.rs
-@@ -289,7 +289,7 @@ impl Settings {
+diff --git a/atuin-client/src/settings.rs b/atuin-client/src/settings.rs
+index fca7600..6d3b950 100644
+--- a/atuin-client/src/settings.rs
++++ b/atuin-client/src/settings.rs
+@@ -354,7 +354,7 @@ impl Settings {
              .set_default("session_path", session_path.to_str())?
              .set_default("dialect", "us")?
              .set_default("auto_sync", true)?
 -            .set_default("update_check", true)?
 +            .set_default("update_check", false)?
-             .set_default("sync_frequency", "1h")?
              .set_default("sync_address", "https://api.atuin.sh")?
+             .set_default("sync_frequency", "10m")?
              .set_default("search_mode", "fuzzy")?
+

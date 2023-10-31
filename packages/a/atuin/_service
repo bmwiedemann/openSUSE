@@ -1,9 +1,9 @@
 <services>
   <service mode="manual" name="download_files" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">atuin-16.0.0.tar.gz</param>
-     <param name="compression">zst</param>
-     <param name="update">true</param>
+     <param name="srctar">atuin-*.tar.gz</param>
+	 <param name="i-accept-the-risk">RUSTSEC-2022-0093</param>
+	 <param name="i-accept-the-risk">RUSTSEC-2021-0041</param>
   </service>
   <service name="cargo_audit" mode="manual" />
 </services>

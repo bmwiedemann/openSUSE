@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Oct 31 00:27:34 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update patch 0000-disable_update_check.patch
+
+-------------------------------------------------------------------
+Mon Oct 30 03:00:58 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Apply patch properly. It got overlooked.
+- Update to version 17.0.1:
+  * fix(enter_accept): clear old cmd snippet
+  * Fix for breaking change in ratatui 0.24.0
+  * fix(bash): improve output of `enter_accept`
+  * fix(fish): improve output for `enter_accept`
+  * update support template
+  * Remove duplicate "invert" in default config
+  * Silence fish string match
+  * Fix cargo deb usage
+  * Add release blog post and update docs
+  * Correct some secrets filter regex
+  * Revert "Revert "Revert "Use github runners for unit tests (for now)"""
+  * fix(nushell): Ignore stderr messages
+  * Document that the self-hosted port is TCP
+  * Add bash support to `enter_accept`
+  * allow binding server to hostname
+  * Add fish support for `enter_accept`
+  * Add enter_accept to immediately execute an accepted command
+  * Checkout repo so the manifest publish step can read git
+  * use the short sha to tag images
+  * Use ubuntu for x86, oops
+  * Update key binding docs
+  * Add commands to print the default configuration
+  * Update key-binding.md
+  * Revert "Revert "Use github runners for unit tests (for now)""
+  * Revert "Use github runners for unit tests (for now)"
+  * clear history id
+  * fix(1220): Workspace Filtermode not handled in skim engine
+  * Fix/1207 deleted entries shown in interactive search
+  * A man is not dead while his name is still spoken
+  * Add --print0 to `history list`
+  * Use github runners for unit tests (for now)
+  * Revert "Re-enable `linux/arm64` platform in CI docker build"
+  * Re-enable `linux/arm64` platform in CI docker build
+  * feat: copy to clipboard
+  * support timezones in calendar
+  * handle empty keybindings list for nushell
+  * add --reverse to history list
+  * Fix support template
+  * fix sync timestamps
+  * better sync error messages
+  * refactor: Duplications reduced in order to align implementations of reading history files
+  * Add connect timeout and overall timeout
+  * feat(keyup): Configure SearchMode for KeyUp invocation #1216
+  * Fix selecting complex fish commands
+  * docs: document the available format options of History list command
+  * config.md: invert mode detailed options
+  * Update config.toml: List inverted mode
+  * Move contributors to be a top-level file
+  * replace chrono with time
+  * Use `case` for Linux distro choice in `install.sh`
+  * Update issue templates
+  * feat: mouse selection support
+  * Update docker.md
+  * Explicitly use buster image for cargo-chef, mitigates #1204
+  * Update shell-completions.md
+  * Update config.md
+  * Remove fig from README
+  * Automatically filter out secrets
+  * Update dependencies
+  * Add kv map builder and list function
+  * fix(ubuntu/arm*): detect non amd64 ubuntu and handle
+  * Fix keybinding link in README
+  * docs: update `workspace` config key to `workspaces`
+  * Only setup shell plugin if it's not already there
+  * Remove terminal mode switching
+  * Update to ratatui 0.22
+  * Include revision in status
+  * Fix index tail leak
+  * Update(docs) Add `workspace` to config.toml and config.md
+  * Fix client-only builds
+
+
+-------------------------------------------------------------------
 Wed Sep 13 12:09:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix and update generated vendored tarball.
