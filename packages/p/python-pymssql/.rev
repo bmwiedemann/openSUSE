@@ -30,4 +30,12 @@
   * Fix check for TDS version (#652 and #669).</comment>
     <requestid>1103724</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9bc18a8f5460613848060500a50d98b8</srcmd5>
+    <version>2.2.10</version>
+    <time>1698780357</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121378</requestid>
+  </revision>
 </revisionlist>

@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymssql
-Version:        2.2.8
+Version:        2.2.10
 Release:        0
 Summary:        A simple database interface to MS-SQL for Python
 License:        LGPL-2.1-only
@@ -58,6 +57,6 @@ DB-API 2.0 Specification and works on most popular operating systems.
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/pymssql*
 
 %changelog

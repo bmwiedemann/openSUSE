@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 30 20:52:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.10
+  * Add python 3.12 support.
+  * Do not try to drop temporary tables in clear_db().
+  * test_sqlalchemy: update for compatibility with SQLAlchemy >2.0.
+- Update to version 2.2.9
+  * Update changelog.
+
+-------------------------------------------------------------------
 Sun Aug 13 19:43:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.8:
