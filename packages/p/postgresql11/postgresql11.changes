@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 31 10:57:13 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1216734: Revert the last change and make the devel package
+  independend of all other subpackages except for the libs.
+
+-------------------------------------------------------------------
+Tue Oct 10 12:49:02 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+-------------------------------------------------------------------
+Mon Sep 18 15:24:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.
+
+-------------------------------------------------------------------
 Thu Aug 10 14:16:25 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 11.21:
