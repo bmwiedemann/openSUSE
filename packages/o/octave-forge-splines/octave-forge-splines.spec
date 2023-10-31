@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-splines
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  splines
 Name:           octave-forge-%{octpkg}
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Additional spline functions for Octave
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
