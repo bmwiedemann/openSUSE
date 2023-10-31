@@ -1,7 +1,7 @@
-Index: pyudev-0.24.0/tests/test_enumerate.py
+Index: pyudev-0.24.1/tests/test_enumerate.py
 ===================================================================
---- pyudev-0.24.0.orig/tests/test_enumerate.py
-+++ pyudev-0.24.0/tests/test_enumerate.py
+--- pyudev-0.24.1.orig/tests/test_enumerate.py
++++ pyudev-0.24.1/tests/test_enumerate.py
 @@ -88,7 +88,7 @@ class TestEnumerator(object):
  
      @failed_health_check_wrapper
@@ -74,3 +74,16 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
      def test_match_passthrough_property(self, enumerator):
          """
          Test that non-special keyword args are treated as properties.
+Index: pyudev-0.24.1/tests/_device_tests/_device_tests.py
+===================================================================
+--- pyudev-0.24.1.orig/tests/_device_tests/_device_tests.py
++++ pyudev-0.24.1/tests/_device_tests/_device_tests.py
+@@ -61,7 +61,7 @@ class TestDevice(object):
+     @pytest.mark.skipif(len(_devices) == 0, reason="no device with a parent")
+     @_UDEV_TEST(172, "test_child_of_parents")
+     @given(strategies.sampled_from(_devices))
+-    @settings(max_examples=5)
++    @settings(max_examples=5, deadline=2000)
+     def test_child_of_parent(self, a_device):
+         assert a_device in a_device.parent.children
+ 

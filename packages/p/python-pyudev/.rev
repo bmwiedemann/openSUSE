@@ -279,4 +279,14 @@
   * Tidies and Maintenance fixes</comment>
     <requestid>1084226</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b8ebcb0ccf854195e0c0ce2ad83fbcd0</srcmd5>
+    <version>0.24.1</version>
+    <time>1698780288</time>
+    <user>anag+factory</user>
+    <comment>- update hypothesis_settings.patch:
+  * Extend deadline for test_child_of_parents that fails on ppc64le (bsc#1216607)
+</comment>
+    <requestid>1121253</requestid>
+  </revision>
 </revisionlist>

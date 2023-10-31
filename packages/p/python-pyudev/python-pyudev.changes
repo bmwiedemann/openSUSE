@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 30 16:58:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update hypothesis_settings.patch:
+  * Extend deadline for test_child_of_parents that fails on ppc64le (bsc#1216607)
+
+-------------------------------------------------------------------
 Wed May  3 09:11:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.24.1:
