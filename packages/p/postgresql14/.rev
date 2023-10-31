@@ -182,4 +182,12 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
 - Change the unix domain socket location from /var/run to /run.</comment>
     <requestid>1120251</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>89f1f87908cd132afc4ff5f27792aaf6</srcmd5>
+    <version>14.9</version>
+    <time>1698780393</time>
+    <user>anag+factory</user>
+    <comment>Revert last change and make the devel package independend</comment>
+    <requestid>1121434</requestid>
+  </revision>
 </revisionlist>
