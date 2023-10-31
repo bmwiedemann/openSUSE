@@ -7,4 +7,14 @@
     <comment>I want to add bonk to openSUSE:Factory</comment>
     <requestid>1061076</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5125efa6ff0dd0b730327ae2dd173ce8</srcmd5>
+    <version>0.3.2+g4</version>
+    <time>1698780397</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.2+g4:
+  * Update main.rs. fixes issues when parameters creates files
+</comment>
+    <requestid>1121459</requestid>
+  </revision>
 </revisionlist>
