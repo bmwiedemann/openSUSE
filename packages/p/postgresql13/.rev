@@ -320,4 +320,12 @@
   symbol and the existing buildignores do not suffice.</comment>
     <requestid>1120252</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>6f8507f746ba985fbfaef86991083104</srcmd5>
+    <version>13.12</version>
+    <time>1698780392</time>
+    <user>anag+factory</user>
+    <comment>Revert last change and make the devel package independend</comment>
+    <requestid>1121433</requestid>
+  </revision>
 </revisionlist>
