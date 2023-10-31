@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 30 16:00:26 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update URL to point to 'https://gnu-octave.github.io/packages/'
+
+-------------------------------------------------------------------
+Mon Oct 16 00:50:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to verion 0.9.1:
+  * bugfix modbus portnumber input.
+- Changes from version 0.9.0:
+  * General updates to support Octave 8+
+  * readline: updated docs, minor bug fixes
+  * VXI11: add instrument name support
+  * UDPPORT: add new writeline function, buffer reading
+  * UDP: buffer reading
+
+-------------------------------------------------------------------
 Thu Sep 15 00:38:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.8.0:
