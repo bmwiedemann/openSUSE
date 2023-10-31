@@ -7,4 +7,12 @@
     <comment>Conversion utility, supplemental package for btrfsprogs.</comment>
     <requestid>1119959</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba8bd8fef6a1395ab8e702ca437cadd7</srcmd5>
+    <version>20230501</version>
+    <time>1698780388</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1121427</requestid>
+  </revision>
 </revisionlist>

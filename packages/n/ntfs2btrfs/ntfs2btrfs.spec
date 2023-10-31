@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs2btrfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define		tag 	20220812
+%define		tag 	20230501
 Name:           ntfs2btrfs
 Version:        %{tag}
 Release:        0
