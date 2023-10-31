@@ -91,6 +91,9 @@ HTML reference manual for Coq and full documentation of the standard library.
 %setup -q -a 50 -a 51
 
 %build
+# The default stack size limit is insufficient on riscv64, so we double it.
+ulimit -s 16384
+
 export CFLAGS='%{optflags}'
 ./configure                \
    -prefix %{_prefix}      \

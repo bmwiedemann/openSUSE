@@ -434,4 +434,13 @@
 </comment>
     <requestid>1111685</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>faf44ad9a97711297329236d0fa389dd</srcmd5>
+    <version>8.18.0</version>
+    <time>1698780329</time>
+    <user>anag+factory</user>
+    <comment>- Increase stack size limit to fix build on riscv64.
+</comment>
+    <requestid>1121332</requestid>
+  </revision>
 </revisionlist>
