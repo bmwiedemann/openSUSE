@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 25 07:17:28 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.18.8:
+  * thunar-settings: Let Thunar guess the right display to use
+  * Fix criticals about unset GIO attributes (#1063)
+  * Support ipv6 remote URLs (#864)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Sep  2 08:11:28 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.18.7:

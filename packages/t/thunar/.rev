@@ -1771,4 +1771,16 @@
     <comment></comment>
     <requestid>1111357</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>5c81050fc93c3f20574803f0e475a087</srcmd5>
+    <version>4.18.8</version>
+    <time>1698780322</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.18.8:
+  * thunar-settings: Let Thunar guess the right display to use
+  * Fix criticals about unset GIO attributes (#1063)
+  * Support ipv6 remote URLs (#864)
+  * Translation Updates (forwarded request 1120508 from manfred-h)</comment>
+    <requestid>1121312</requestid>
+  </revision>
 </revisionlist>
