@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 19 06:19:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.5:
+  - Added qt documentation
+  - Minor bug fixes and documentation improvements have been made
+    to the following functions: db2pow, findpeaks, filtfilt,
+    firmpm, sos2zp, vco.
+  - The following new functions have been added to the signal
+    package: filtord, filternorm, isallpass, ismaxphase,
+    isminphase, phasez, statelevels.
+
+-------------------------------------------------------------------
 Tue Nov  8 17:08:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.4.3:
