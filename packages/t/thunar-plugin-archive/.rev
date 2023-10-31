@@ -148,4 +148,14 @@
   * Translation Updates (forwarded request 1076598 from manfred-h)</comment>
     <requestid>1076640</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ecac2fdccf4a0c3096d618c71a6dd8db</srcmd5>
+    <version>0.5.2</version>
+    <time>1698780320</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.2
+  * Add/fix support for bz2 and bz3 files (#20)
+  * Add a few more compression mimetypes, sort the list. (forwarded request 1121114 from manfred-h)</comment>
+    <requestid>1121308</requestid>
+  </revision>
 </revisionlist>

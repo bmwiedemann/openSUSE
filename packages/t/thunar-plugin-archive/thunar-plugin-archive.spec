@@ -19,7 +19,7 @@
 %define plugin_name thunar-archive-plugin
 
 Name:           thunar-plugin-archive
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 URL:            https://docs.xfce.org/xfce/thunar/archive
 Source0:        https://archive.xfce.org/src/thunar-plugins/%{plugin_name}/0.5/%{plugin_name}-%{version}.tar.bz2

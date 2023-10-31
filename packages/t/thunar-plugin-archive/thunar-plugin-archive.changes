@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 30 09:02:17 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.5.2
+  * Add/fix support for bz2 and bz3 files (#20)
+  * Add a few more compression mimetypes, sort the list.
+
+-------------------------------------------------------------------
 Sat Apr  1 08:38:56 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.5.1
