@@ -2039,8 +2039,6 @@ unsorted:
   - checker-qual 
   - checker-qual-javadoc 
   - checksec 
-  - checkstyle 
-  - checkstyle-javadoc 
   - cheese-devel 
   - chemical-mime-data 
   - cherrytree 
@@ -2373,6 +2371,7 @@ unsorted:
   - compton 
   - compton-conf 
   - compton-conf-lang 
+  - conan 
   - conauto 
   - conftest 
   - conftest-bash-completion 
@@ -2718,7 +2717,6 @@ unsorted:
   - crow-translate 
   - crow-translate-lang 
   - crudini 
-  - crun 
   - cryfs 
   - cryptctl 
   - cryptsetup-ssh 
@@ -3084,6 +3082,8 @@ unsorted:
   - diffmk 
   - diffoscope 
   - diffstat 
+  - difftastic 
+  - difftastic-doc 
   - digikam 
   - digikam-devel 
   - digikam-lang 
@@ -4244,6 +4244,7 @@ unsorted:
   - ftview 
   - ftwnn 
   - ftxui-devel 
+  - fubectl 
   - fuc 
   - funcube-udev 
   - fuse-devel 
@@ -9354,6 +9355,7 @@ unsorted:
   - kubectl-neat 
   - kubectl-node-shell 
   - kubectl-oomd 
+  - kubectl-tree 
   - kubectl-who-can 
   - kubectx 
   - kubefirst 
@@ -10360,7 +10362,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2023_4_rc2-32bit 
+  - libSPIRV-Tools-2023_5_rc1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -10386,6 +10388,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
+  - libVulkanLayerSettings-1_3_268_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit 
   - libWPEWebInspectorResources 
@@ -10521,7 +10524,7 @@ unsorted:
   - libaal-minimal0 
   - libabigail-devel 
   - libabigail-tools 
-  - libabigail2 
+  - libabigail3 
   - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabsl2308_0_0-32bit 
@@ -11813,7 +11816,7 @@ unsorted:
   - libfl2 
   - libfl2-32bit 
   - libflann1_9 
-  - libflatbuffers23_3_3 
+  - libflatbuffers23_5_26 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflint18 
@@ -12165,7 +12168,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnuastro19 
-  - libgnuradio-3_10_7 
+  - libgnuradio-3_10_8 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
@@ -12815,11 +12818,9 @@ unsorted:
   - libkrun-devel 
   - libkrun-sev-devel 
   - libkrun-sev1 
-  - libkrun1 
   - libkrunfw-devel 
   - libkrunfw-sev-devel 
   - libkrunfw-sev3 
-  - libkrunfw3 
   - libksane-devel 
   - libksba-devel 
   - libkscreen2-devel 
@@ -16791,8 +16792,6 @@ unsorted:
   - maven-assembly-plugin-javadoc 
   - maven-bundle-plugin 
   - maven-bundle-plugin-javadoc 
-  - maven-checkstyle-plugin 
-  - maven-checkstyle-plugin-javadoc 
   - maven-clean-plugin 
   - maven-clean-plugin-javadoc 
   - maven-common-artifact-filters 
@@ -17656,6 +17655,8 @@ unsorted:
   - multiverse-javadoc 
   - multus 
   - multus-k8s-yaml 
+  - mumble 
+  - mumble-server 
   - mumps-devel 
   - mumps-devel-static 
   - mumps-doc 
@@ -19429,6 +19430,8 @@ unsorted:
   - pacemaker-libs 
   - pacemaker-remote 
   - pacemaker-schemas 
+  - pack200 
+  - pack200-javadoc 
   - packETH 
   - packETH-cli 
   - package-translations 
@@ -21249,8 +21252,8 @@ unsorted:
   - pg_comparator 
   - pgaccess 
   - pgadmin4 
+  - pgadmin4-desktop 
   - pgadmin4-doc 
-  - pgadmin4-web 
   - pgadmin4-web-uwsgi 
   - pgbackrest 
   - pgloader 
@@ -34663,6 +34666,7 @@ unsorted:
   - socket_wrapper 
   - sofia-sip 
   - sofia-sip-devel 
+  - software-o-o-launcher 
   - solaar 
   - solaar-doc 
   - solaar-udev 
@@ -35151,6 +35155,10 @@ unsorted:
   - talk 
   - talk-server 
   - talloc-man 
+  - talosctl 
+  - talosctl-bash-completion 
+  - talosctl-fish-completion 
+  - talosctl-zsh-completion 
   - tamago 
   - tamil-gtk2im 
   - tanukiwrapper 
@@ -44424,6 +44432,7 @@ unsorted:
   - trojan 
   - trousers 
   - trousers-devel 
+  - trufflehog 
   - trurl 
   - trustedgrub2 
   - trustedgrub2-i386-pc 
@@ -45270,6 +45279,7 @@ unsorted:
   - vulkan-devel-32bit 
   - vulkan-headers 
   - vulkan-tools-32bit 
+  - vulkan-utility-libraries-devel 
   - vulkan-validationlayers 
   - vym 
   - w3c-markup-validator 
@@ -45286,12 +45296,6 @@ unsorted:
   - wang-fonts 
   - wannier90 
   - wannier90-devel 
-  - wannier90-openmpi1 
-  - wannier90-openmpi1-devel 
-  - wannier90-openmpi2 
-  - wannier90-openmpi2-devel 
-  - wannier90-openmpi3 
-  - wannier90-openmpi3-devel 
   - wannier90-openmpi4 
   - wannier90-openmpi4-devel 
   - wannier90-openmpi5 
