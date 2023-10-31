@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 18:51:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.65
+  * Removed audio output dithering. It seemed to be wrongly
+    implemented anyway.
+  * Removed CTRL+G and CTRL+V keybinding (boost/filter all
+    samples)
+  * The BOOST (Edit Op. #3) function was not 100% accurate to
+    Amiga ProTracker.
+
+-------------------------------------------------------------------
 Thu Sep  7 15:46:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.64
