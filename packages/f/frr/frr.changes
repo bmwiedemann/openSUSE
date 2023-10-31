@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 30 12:38:21 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for a crash due to a crafted BGP UPDATE message
+  (CVE-2023-46753,bsc#1216626,https://github.com/FRRouting/frr/pull/14655/commits/21418d64af11553c402f932b0311c812d98ac3e4).
+  [+ 0013-bgpd-Check-mandatory-attributes-more-carefully-for-U.patch]
+- Apply upstream fix for a crash due to mishandled malformed
+  MP_REACH_NLRI data (CVE-2023-46752,bsc#1216627,https://github.com/FRRouting/frr/pull/14645/commits/b08afc81c60607a4f736f418f2e3eb06087f1a35).
+  [+ 0014-bgpd-Handle-MP_REACH_NLRI-malformed-packets-with-ses.patch]
+
+-------------------------------------------------------------------
 Tue Sep 12 13:40:19 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 
 - Apply upstream fix for NULL pointer dereference due to processing
