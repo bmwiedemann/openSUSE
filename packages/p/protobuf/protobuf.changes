@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 30 10:47:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+  * fixes build with JDK21
+- Install the pom file with the new %%mvn_install_pom macro
+- Do not install the pom-only artifacts, since the %%mvn_install_pom
+  macro resolves the variables at the install time
+
+-------------------------------------------------------------------
 Fri Jul  7 12:04:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.4:

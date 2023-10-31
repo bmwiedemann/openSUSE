@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define tarname protobuf
-%define extra_java_flags -source 7 -target 7
+%define extra_java_flags -source 8 -target 8
 # requires gmock, which is not yet in the distribution
 %bcond_with    check
 %bcond_without java
@@ -52,8 +52,8 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libgmock-devel >= 1.7.0
 %endif
 %if %{with java}
-BuildRequires:  java-devel >= 1.6.0
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 %endif
 
 %if 0%{?suse_version} >= 1550
@@ -197,13 +197,11 @@ install -Dm 0644 editors/proto.vim %{buildroot}%{_datadir}/vim/site/syntax/proto
 
 %if %{with java}
 pushd java
-install -D -m 0644 %{name}-java-%{version}.jar %{buildroot}%{_javadir}/%{name}-java.jar
+install -d -m 0755 %{buildroot}%{_javadir}
+install -p -m 0644 %{name}-java-%{version}.jar %{buildroot}%{_javadir}/%{name}-java.jar
 ln -s %{name}-java.jar %{buildroot}%{_javadir}/%{name}.jar
-install -D -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}-parent.pom
-%add_maven_depmap %{name}-parent.pom
-install -D -m 0644 bom/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-bom.pom
-%add_maven_depmap %{name}-bom.pom
-install -D -m 0644 core/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-java.pom
+install -d -m 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} core/pom.xml %{buildroot}%{_mavenpomdir}/%{name}-java.pom
 %add_maven_depmap %{name}-java.pom %{name}-java.jar
 popd
 %endif
