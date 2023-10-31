@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 31 10:14:01 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1698662280.91607f3:
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Fri Oct 27 11:10:32 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1698405013.f1d481a:
