@@ -760,7 +760,9 @@ popd
 mkdir -p %buildroot%pgmandir/man1
 cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgmajor
 %find_lang ecpg-$VLANG devel.files
-ln -s %pgbindir/ecpg %buildroot%_bindir/ecpg
+# The devel subpackage is exclusive across versions
+# and not handled by update-alternatives.
+mv %buildroot%pgbindir/ecpg %buildroot%_bindir/ecpg
 
 %if !%mini
 %find_lang pg_config-$VLANG server-devel.files
@@ -960,10 +962,9 @@ fi
 
 %dir %pgbasedir
 %dir %pgbindir
-%ghost %_bindir/ecpg
+%_bindir/ecpg
 %_libdir/pkgconfig/*
 %_libdir/lib*.so
-%pgbindir/ecpg
 %pgincludedir
 %if %{with server_devel}
 %exclude %pgincludedir/server

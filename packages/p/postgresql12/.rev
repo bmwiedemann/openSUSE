@@ -376,4 +376,12 @@ Upgrade to version 12.6:
   symbol and the existing buildignores do not suffice.</comment>
     <requestid>1120253</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>500001224997d70eafab46e9c93a14de</srcmd5>
+    <version>12.16</version>
+    <time>1698780390</time>
+    <user>anag+factory</user>
+    <comment>Revert last change and make the devel package independend</comment>
+    <requestid>1121432</requestid>
+  </revision>
 </revisionlist>
