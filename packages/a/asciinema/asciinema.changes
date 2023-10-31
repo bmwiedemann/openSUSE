@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 24 19:16:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.4.0:
+  * When recording without file arg we now ask whether to save,
+    upload or discard the recording
+  * Added capture of terminal resize events
+  * Fixed blocking write error when PTY master is not ready
+  * Fixed "broken pipe" errors when piping certain commands during
+    recording
+  * Fixed crash during playback of cast files with trailing blank
+    line
+- Requires Python >= 3.7
+
+-------------------------------------------------------------------
 Mon Aug 28 08:11:38 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.3.0:

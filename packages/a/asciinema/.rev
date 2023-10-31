@@ -96,4 +96,12 @@
   * Ignored OSC responses in recorded stdin stream</comment>
     <requestid>1107861</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c039427cb237dac735c789325034ced6</srcmd5>
+    <version>2.4.0</version>
+    <time>1698780383</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121415</requestid>
+  </revision>
 </revisionlist>

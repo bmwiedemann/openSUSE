@@ -18,25 +18,27 @@
 
 %global pythons python3
 Name:           asciinema
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Terminal session recorder
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://asciinema.org
 Source:         https://github.com/asciinema/asciinema/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
+BuildRequires:  python3-base >= 3.7
 BuildArch:      noarch
 
 %description
 Record of terminal sessions and sharing them on the web.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %pyproject_wheel
@@ -48,6 +50,9 @@ Record of terminal sessions and sharing them on the web.
 install -Dpm644 {man/,%{buildroot}%{_mandir}/man1/}%{name}.1
 
 rm -R %{buildroot}%{_datadir}/doc/%{name}
+
+%check
+%pytest -v
 
 %files
 %license LICENSE
