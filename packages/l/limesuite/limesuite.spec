@@ -17,11 +17,11 @@
 #
 
 
-%define sover 22_09-1
+%define sover 23_10-0
 %define libname libLimeSuite%{sover}
 %define soapy_modver 0.8
 Name:           limesuite
-Version:        22.09.1
+Version:        23.10.0
 Release:        0
 Summary:        Collection of software supporting LMS7-based hardware
 License:        Apache-2.0
@@ -30,7 +30,6 @@ URL:            https://myriadrf.org/projects/lime-suite/
 #Git-Clone:     https://github.com/myriadrf/LimeSuite.git
 Source:         https://github.com/myriadrf/LimeSuite/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM limesuite-add-missing-includes.patch -- Add missing include
-Patch:          limesuite-add-missing-includes.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gnuplot
@@ -84,7 +83,6 @@ A Soapy module that supports LimeSDR devices within the Soapy API.
 
 %prep
 %setup -q -n LimeSuite-%{version}
-%autopatch -p1
 
 # HACK: set udev permissions to 666
 sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules

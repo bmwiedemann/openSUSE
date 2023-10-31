@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 29 00:18:39 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 23.10.0
+  * API version info in src/VersionInfo.h
+  * SoapyLMS7: added reference clock and clock source functions
+  * Fix usage of -march=native compile flag
+  * Fix hard-to-read log text on dark mode themes
+  * Fix OpenGL graph on Retina displays
+  * GCC and MSVC warning fixes
+  * Fix CMAKE_AUTOSET_INSTALL_RPATH option
+- Patch limesuite-add-missing-includes.patch removed (applied
+  upstream)
+
+-------------------------------------------------------------------
 Tue Apr 25 08:05:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add limesuite-add-missing-includes.patch: Add missing include,
