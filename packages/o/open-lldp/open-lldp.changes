@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 27 19:15:39 UTC 2023 - lduncan@suse.com
+
+- Update to version latest Intel upstream (v1.1+77.75e83b6fb98e, jsc#PED-6852):
+  * lldpad: dcbx: prevent null dereference in dcbx_free_data
+  * dcbx: Fix use-after-free
+  * dcbx: Fix NULL pointer dereference
+  * dcbx: Fix leak when receiving legacy TLVs with mismatched mode
+  * lldp: Reject frames with duplicate TLVs
+  * dcbx: Free manifest in rchange callback
+  * dcbx: Avoid memory leak if ifup is called twice
+  * ctrl_iface: Fix a memory leak in ctrl_iface_deinit
+  * lldp: Avoid sending uninitialized data
+  * lldptool: fix null pointer deference
+  * Revert "Use interface index instead of name in libconfig"
+  * Avoiding null pointer dereference
+  * agent: reset frame status on message delete
+  * basman: use return address when pulling address
+  * 8021Qaz: check for rx block validity
+  * 8021qaz: squelch initialization errors
+  * macvtap: fix error condition
+  * vdp22: convert command parsing to null term
+
+-------------------------------------------------------------------
 Wed Oct 26 18:58:43 UTC 2022 - lduncan@suse.com
 
 - Update to version v1.1+58.8ca361bab766:
