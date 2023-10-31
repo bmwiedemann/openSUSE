@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 11 08:47:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jgit-apache-sshd-2.7.0.patch
+    + extend even more apache-sshd version span
+
+-------------------------------------------------------------------
 Tue Oct 10 15:09:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

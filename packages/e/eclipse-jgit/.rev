@@ -111,4 +111,12 @@
     <comment>bsc#1215298</comment>
     <requestid>1116733</requestid>
   </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>aa58449d1aec261e78a3de3d0fb379c2</srcmd5>
+    <version>5.11.0</version>
+    <time>1698780363</time>
+    <user>anag+factory</user>
+    <comment>fix build with newer apache-sshd</comment>
+    <requestid>1121387</requestid>
+  </revision>
 </revisionlist>
