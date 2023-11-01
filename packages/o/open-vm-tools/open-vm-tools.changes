@@ -1,11 +1,32 @@
 -------------------------------------------------------------------
-Fri Oct 27 14:42:23 UTC 2023 - Kirk Allan <kallan@suse.com>
+Mon Oct 30 17:16:18 UTC 2023 - Kirk Allan <kallan@suse.com>
 
-- Fix (bsc#1216432) - VUL-0: CVE-2023-34058: open-vm-tools: SAML token
-  signature bypass vulnerability.
-- Fix (bsc#1216433) - VUL-0: : CVE-2023-34059: open-vm-tools: file
-  descriptor hijack vulnerability
-+ Add patch:
+- Update to 12.3.5 (build 22544099) (boo#1216670)
+  - There are no new features in the open-vm-tools 12.3.5 release. This is
+    primarily a maintenance release that addresses a few critical problems,
+    including:
+    - This release resolves CVE-2023-34058. For more information on this
+      vulnerability and its impact on VMware products, see
+      https://www.vmware.com/security/advisories/VMSA-2023-0024.html.
+    - This release resolves CVE-2023-34059 which only affects open-vm-tools.
+      For more information on this vulnerability, please see the Resolved
+      Issues section of the Release Notes.
+    - A GitHub issue has been handled. Please see the Resolved Issues section
+      of the Release Notes.
+    - An update to the deployPkg plugin to coordinate with recent releases
+      of cloud-init for improvement for guest VM customization.
+  - For issues resolved in this release, see the Resolved Issues
+    <https://github.com/vmware/open-vm-tools/blob/stable-12.3.5/ReleaseNotes.md#resolved-issues>
+    section of the Release Notes.
+  - For complete details, see:
+    https://github.com/vmware/open-vm-tools/releases/tag/stable-12.3.5
+  - Release Notes are available at
+    https://github.com/vmware/open-vm-tools/blob/stable-12.3.5/ReleaseNotes.md
+  - The granular changes that have gone into the 12.3.5 release are in the
+    ChangeLog at
+    https://github.com/vmware/open-vm-tools/blob/stable-12.3.5/open-vm-tools/ChangeLog
+
+- Drop patch now contained in 12.3.5:
   - CVE-2023-34058.patch
   - CVE-2023-34059.patch
 
@@ -14,6 +35,17 @@ Sun Oct 22 15:27:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: No longer
   needed, nor used (since 12.3.0 release).
+
+-------------------------------------------------------------------
+Fri Oct 20 17:16:21 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- Fix (bsc#1216432) - VUL-0: CVE-2023-34058: open-vm-tools: SAML token
+  signature bypass vulnerability.
+- Fix (bsc#1216433) - VUL-0: : CVE-2023-34059: open-vm-tools: file
+  descriptor hijack vulnerability
++ Add patch:
+  - CVE-2023-34058.patch
+  - CVE-2023-34059.patch
 
 -------------------------------------------------------------------
 Thu Sep 28 17:47:50 UTC 2023 - Kirk Allan <kallan@suse.com>

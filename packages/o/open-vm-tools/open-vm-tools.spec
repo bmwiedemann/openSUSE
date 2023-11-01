@@ -38,7 +38,7 @@
 %define with_X 1
 
 Name:           open-vm-tools
-Version:        12.3.0
+Version:        12.3.5
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -156,8 +156,6 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
-Patch2:         CVE-2023-34058.patch
-Patch3:         CVE-2023-34059.patch
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
@@ -260,8 +258,6 @@ This package interfaces with the container runtime to retrieve a list of contain
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
-%patch2 -p2
-%patch3 -p2
 
 #SUSE specific patches
 %patch0 -p2
