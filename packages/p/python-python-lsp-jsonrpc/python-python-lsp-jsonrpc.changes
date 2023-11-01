@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov  1 16:48:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements
+- Don't check coverage
+
+-------------------------------------------------------------------
+Wed Nov  1 06:10:09 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.2:
+  * Fix tests so they're compatible with both ujson and pure json library
+  * Remove redundant wheel dep from pyproject.toml
+  * Add license trove classifier
+  * Drop support for Python 3.7 and 3.6
+  * Allow method handlers to return json rpc errors
+  * Migrate metadata from `setup.cfg` to PEP 621-compliant `pyproject.toml`
+  * Use f-strings wherever possible
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jul 13 12:44:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 1.0.0
