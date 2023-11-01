@@ -1,7 +1,7 @@
 #
 # spec file for package javazic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,13 @@ derived from openjdk6 source code.
 %setup -q -c %{name}-%{version}
 
 %build
-javac -source 7 -target 7 $(find build/ -iname '*.java')
+javac \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 18}%{!?pkg_vcmp:0}
+    -source 8 -target 8 \
+%else
+    -source 7 -target 7 \
+%endif
+    $(find build/ -iname '*.java')
 echo "Main-Class: build.tools.javazic.Main" > manifest.txt
 jar -cfm %{name}-%{version}.jar manifest.txt $(find . -iname '*.class')
 

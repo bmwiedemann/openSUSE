@@ -97,4 +97,12 @@ SPDX syntax (forwarded request 116692 from babelworx)</comment>
     <comment>fix build in factory</comment>
     <requestid>967836</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a18b93b8bae6edc910711312b71f2fef</srcmd5>
+    <version>1.7.0</version>
+    <time>1698872997</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with JDK21</comment>
+    <requestid>1121515</requestid>
+  </revision>
 </revisionlist>
