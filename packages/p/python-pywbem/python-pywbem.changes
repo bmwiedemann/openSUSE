@@ -1,4 +1,194 @@
 -------------------------------------------------------------------
+Wed Oct 25 09:55:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.2
+  ## Incompatible changes:
+  * The 'pywbem.ValueMapping' class will now raise a
+    'pywbem.ModelError' for any missing or extra items in the
+    'Values' qualifier, compared to the 'ValueMap' qualifier.
+    Previously, 'IndexError' was raised. (issue #2991)
+  ## Bug fixes:
+  * Fixed coveralls issues with KeyError and HTTP 422 Unprocessable
+    Entity.
+  * Circumvented the removal of Python 2.7 from the Github Actions
+    plugin setup-python, by using the Docker container
+    python:2.7.18-buster instead.
+  * Fixed missing dependencies in minimum-constraints.txt.
+  * Fixed safety issues as of 8/21.
+  ## Enhancements:
+  * The 'pywbem.ValueMapping' class now allows controlling what
+    should happen when the 'Values' qualifier has missing or extra
+    items compared to the 'ValueMap' qualifier, by means of a new
+    'values_default' parameter of the respective factory methods.
+    If 'values_default' is None (default), a 'pywbem.ModelError' is
+    raised for missing or extra 'Values' items. If it specifies a
+    string value, missing items in the 'Values' qualifier are
+    filled up with that value, and extra items in the 'Values'
+    qualifier are truncated. (issue #2991)
+  ## Cleanup:
+  * Replaced the safety_ignore_opts in Makefile that is used as the
+    basis for ignoring safety issues with the use of a
+    .safety_policy_file defined by the safety utility.
+  * Add a number of new ignores for additions to the safety issues
+    lise May 2003
+-  pywbem 1.6.1
+  ## Bug fixes:
+  * Fixed a doc build issue with Sphinx 6.x (issue #2983) and
+    addressed some of the Sphinx warnings during doc build.
+- pywbem 1.6.0
+  ## Bug fixes:
+  * Fix issue where we could get HTTP retries upon HTTP read
+    timeouts from the server. Changed to not allow urllib3 to do
+    retries on post operations (the CIM/XML operations all use post
+    and duplicates of some operations (invoke, update) could cause
+    data integrity issues). (see issue #2951)
+  ## Enhancements:
+  * Support for Python 3.11. (issue #2904)
+  ## Cleanup:
+  * Ignore new safety issues for wheel, safety, and py packages and
+    update values in minimum-requirements.txt.
+  * Modify Makefile so safety check does not cause fatal github
+    test failure. (see issue #2970)
+  * Update the version of the OpenPegasus server Docker image used
+    in tests to the docker image
+    kschopmeyer/openpegasus-server:0.1.2 which used OpenPegasus
+    2.14.3 located in the github OpenPegasus repository. This image
+    is much smaller (110 mb) but the same set of models and
+    providers as the previous image.
+  * Modifications and pylint ignore statements for new pylint test
+    for dict form dict(a=1) which is slower than {'a':1} and other
+    new tests in pylint 2.16.0
+- pywbem 1.5.0
+  ## Incompatible changes:
+  * Exceeding the 'WBEMConnection' timeout now results in raising
+    'pywbem.TimeoutError' in some cases where previously
+    'pywbem.ConnectionError' was raised. (issue #2853)
+  * Changed the file permissions of setup.py to no longer be
+    executable, in order to encourage transition to use pip install
+    instead of executing setup.py install, which was deprecated by
+    setuptools.
+  * The removal of internal symbols from the 'pywbem_mock' Python
+    namespace may cause name errors in your code, if you were using
+    them. (related to issue #2888)
+  * The pywbem_mock default instance writer
+    (pywbem_mock/_instancewriteprovider.py) added checks for
+    creation/modification of instances to validate that the
+    reference properties of associations define existing instances
+    if the property values exist. Previously they validated only
+    the correct value type. (see issue #2908, extension to
+    bidirectional inter-namespace associations)
+  ## Bug fixes:
+  * Fix issue where the DeepInheritance parameter not passed to the
+    mocker OpenEnumerateInstances method so the result is that the
+    mocker always uses the default (DeepInheritance=True). (see
+    issue #2839)
+  * Test: Mitigated incorrect version of testfixtures package on
+    Python 3.5 by pinning it to <6.4.0 on Python 3.5. (issue #2855)
+  * Documented that the pywbem MOF compiler does not support the
+    "EmbeddedObject" qualifier with a class definition. (issue
+    #2340)
+  * Docs: Changes in autodocsumm and Sphinx versions to pick up
+    final fix for issue #2697.
+  * Re-enabled pylint on Python 3.5 (issue #2674)
+  * Increased pylint to >=2.10 on Python >=3.6 to pick up fixes in
+    similarity checker and enabled similarity checker again on
+    pylint >=2.10 (issues #2672, #2673)
+  * Excluded setuptools 61.0.0 because it breaks installation via
+    "setup.py install" (issue #2871)
+  * Resolved new issues reported by Pylint 2.13 (issue #2870)
+  * Fixed that the added setup.py commands (test, leaktest,
+    installtest) were not displayed. They are now displayed at
+    verbosity level 1 (using '-v').
+  * Previously, the sending of CIM request messages was retried in
+    case no response was received within the timeout. This could
+    potentially have resulted in executing operations multipe
+    times. That is an issue for non-idempotent operations such as
+    instance creation/deletion or method invocation. Fixed that by
+    retrying now only during connection setup, but not for the
+    sending of CIM request messages. (issue #2853)
+  * Changed the default timeout of 'WBEMConnection' from 'None' to
+    30 seconds. This prevents waiting for operation completion
+    forever, by default. (issue #2853)
+  * Pinned "certifi" to <2020.6.20 on Python 2.7 because the
+    install test using "setup.py install" started failing because
+    it installed a version of certifi on Python 2.7 that properly
+    declares that it requires Python >=3.6.
+  * Added a note to the install section of the documentation that
+    installation via setup.py install has been deprecated by
+    setuptools.
+  * Removed internal symbols from 'pywbem_mock' Python namespace,
+    and added the 'config' submodule to the 'pywbem_mock' Python
+    namespace. (related to issue #2888)
+  * Fixed invalid references in the documentation. As part of that,
+    added class 'MOFWBEMConnection' to the 'pywbem' namespace,
+    moved class 'IterQueryInstancesReturn' from the scope of method
+    'pywbem.IterQueryInstances' to the 'pywbem' namespace. (issue
+    #2888).
+  * Fixed the name of the cythonized distribution archive.
+  * Fixed new formatting issues raised by flake8 5.0.
+  * Fixed issue in pywbem_mock/_wbemconnection_mock.py
+    add_namespaces where namespaces that are added with
+    add_namespace() after an interop provider is defined do not
+    show up in the list of namespaces. It now uses
+    server.create_namespace() if the interop namespace and
+    namespace provider exist. (see issue #2865)
+  * Fixed a RecursionError exception raised by flake8 on Python 3.6
+    and 3.7. (issue #2922)
+  * Fixed issue in pywbem_mock instancewrite providers where
+    Create/Modify of an instance with reference properties fails if
+    host set in reference property (i.e. CIMInstanceName). Now
+    issues a warning and ignores the host value since pywbem_mock
+    does not handle cross-host associations. (see issue #2920)
+  ## Enhancements:
+  * Added support for the new 'CIM_WBEMServerNamespace' class used
+    in the DMTF WBEM Server Profile. In addition, the
+    WBEMServer.create_namespace() method now uses the same class
+    name for the new namespace that is already used for existing
+    namespaces. (issue #2845)
+  * Docs: Clarified that the timeout parameter in 'WBEMConnection'
+    is for completing a CIM operation to a server or a CIM
+    indication delivery to a listener. (issue #2853)
+  * Improved the handling of exceptions raised by the "requests"
+    and "urllib3" packages in pywbem, so that more meaningful
+    messages are used. Exceeding the 'WBEMConnection' timeout now
+    results in raising 'pywbem.TimeoutError' in some cases where
+    previously 'pywbem.ConnectionError' was raised. (issue #2853)
+  * Extend pywbem_mock creation of instances of associations to
+    provide for bidirectional inter-namespace associations.
+    Previously cross-namespace associations created in pywbem_mock
+    were only visible in the namespace in which they were created.
+    (see issue #2908)
+  ## Cleanup:
+  * Removed support for Python 3.4. It had been deprecated since
+    pywbem 1.0.0. (issue #2829)
+  * Modified compiler and pywbem_mock to allow creating instances
+    from abstract classes because SNIA ignored DMTF rule making
+    this illegal and many MOF compilers also ignored it. Pywbem now
+    issue a warning from the MOF compiler if an instance of an
+    abstract class is compiled but complete the compile and another
+    warning from pywbem_mock.CreateInstance if the instance is for
+    an abstract class. (see issue #2825)
+  * Fix issues in manual test run_cimoperations.py that resulted
+    from changes in the pywbem APIs. Since this was manual test it
+    was not regularly used. Changes included removing tests for
+    extra parameters which now cause failure of api.
+  * Clarify why the iterEnumerateInstances and
+    IterEnumerateInstancePaths always return the host name in the
+    response. (see issue #2841)
+  * Changed build process for distribution archives to use the
+    build package.
+  * Document a limitation in the IterQueryInstances request method
+    (it delivers instances for Open/Pull after the request to the
+    server is complete). (see issue #1801)
+  * Added security issues 50748, 50571, 50664, 50663, 50892, 50885,
+    50886 to Makefile ignore list of new security issue August and
+    September 2022.
+  * Fixed issue with mock namespace provider that would acreate the
+    same namespace twice under some conditions (i.e. same name
+    property but different path on CreateInstance. (see issue
+    #2918)
+
+-------------------------------------------------------------------
 Thu Jun 23 10:37:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.4.1
