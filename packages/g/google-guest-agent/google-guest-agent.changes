@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov  1 14:05:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231031.01 (bsc#1216547, bsc#1216751)
+  * Add prefix to scheduler logs (#325)
+- from version 20231030.00
+  * Test configuration files are loaded in the documented
+    order. Fix initial integration test. (#324)
+  * Enable mTLS by default (#323)
+- from version 20231026.00
+  * Rotate MDS root certificate (#322)
+- from version 20231020.00
+  * Update response struct, add tests (#315)
+  * Don't try to schedule mTLS job twice (#317)
+- from version 20231019.00
+  * snapshot: Add context cancellation handling (#318)
+
+-------------------------------------------------------------------
 Fri Oct 20 06:49:31 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
-- Bump the golang compiler version to 1.21
+- Bump the golang compiler version to 1.21 (bsc#1216546)
 
 -------------------------------------------------------------------
 Thu Oct 19 12:12:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
