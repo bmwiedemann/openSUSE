@@ -30,22 +30,20 @@ Closes: https://github.com/monitoring-plugins/monitoring-plugins/issues/1508
  plugins/check_mysql_query.c | 8 ++++++--
  2 files changed, 12 insertions(+), 4 deletions(-)
 
-Index: monitoring-plugins-2.3.1/plugins/check_mysql.c
+Index: monitoring-plugins-2.3.3/plugins/check_mysql.c
 ===================================================================
---- monitoring-plugins-2.3.1.orig/plugins/check_mysql.c
-+++ monitoring-plugins-2.3.1/plugins/check_mysql.c
-@@ -36,6 +36,10 @@ const char *email = "devel@monitoring-pl
+--- monitoring-plugins-2.3.3.orig/plugins/check_mysql.c
++++ monitoring-plugins-2.3.3/plugins/check_mysql.c
+@@ -35,6 +35,8 @@ const char *copyright = "1999-2011";
+ const char *email = "devel@monitoring-plugins.org";
  
  #define SLAVERESULTSIZE 70
- 
 +/* The default port that MySQL servers listen on. */
 +#define CHECK_PORT_DEFAULT 3306
-+
-+
+ 
  #include "common.h"
  #include "utils.h"
- #include "utils_base.h"
-@@ -58,7 +62,7 @@ char *ciphers = NULL;
+@@ -58,7 +60,7 @@ char *ciphers = NULL;
  bool ssl = false;
  char *opt_file = NULL;
  char *opt_group = NULL;
@@ -54,7 +52,7 @@ Index: monitoring-plugins-2.3.1/plugins/check_mysql.c
  int check_slave = 0, warn_sec = 0, crit_sec = 0;
  int ignore_auth = 0;
  int verbose = 0;
-@@ -508,7 +512,7 @@ void
+@@ -508,7 +510,7 @@ void
  print_help (void)
  {
  	char *myport;
@@ -63,22 +61,21 @@ Index: monitoring-plugins-2.3.1/plugins/check_mysql.c
  
  	print_revision (progname, NP_VERSION);
  
-Index: monitoring-plugins-2.3.1/plugins/check_mysql_query.c
+Index: monitoring-plugins-2.3.3/plugins/check_mysql_query.c
 ===================================================================
---- monitoring-plugins-2.3.1.orig/plugins/check_mysql_query.c
-+++ monitoring-plugins-2.3.1/plugins/check_mysql_query.c
-@@ -33,6 +33,10 @@ const char *progname = "check_mysql_quer
+--- monitoring-plugins-2.3.3.orig/plugins/check_mysql_query.c
++++ monitoring-plugins-2.3.3/plugins/check_mysql_query.c
+@@ -33,6 +33,9 @@ const char *progname = "check_mysql_quer
  const char *copyright = "1999-2007";
  const char *email = "devel@monitoring-plugins.org";
  
 +/* The default port that MySQL servers listen on. */
 +#define CHECK_PORT_DEFAULT 3306
 +
-+
  #include "common.h"
  #include "utils.h"
  #include "utils_base.h"
-@@ -48,7 +52,7 @@ char *db_pass = NULL;
+@@ -48,7 +51,7 @@ char *db_pass = NULL;
  char *db = NULL;
  char *opt_file = NULL;
  char *opt_group = NULL;
@@ -87,7 +84,7 @@ Index: monitoring-plugins-2.3.1/plugins/check_mysql_query.c
  
  int process_arguments (int, char **);
  int validate_arguments (void);
-@@ -299,7 +303,7 @@ void
+@@ -299,7 +302,7 @@ void
  print_help (void)
  {
  	char *myport;

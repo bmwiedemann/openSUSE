@@ -285,4 +285,41 @@ New patches:
     <comment></comment>
     <requestid>1011118</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d0139651fb593b5b519df5011aedbea1</srcmd5>
+    <version>2.3.3</version>
+    <time>1698872985</time>
+    <user>dimstar_suse</user>
+    <comment>- renamed patches
+  monitoring-plugins-wrong_return_in_check_swap.patch
+  to monitoring-plugins-2.3.3-wrong_percent_in_check_swap.patch
+  monitoring-plugins.check_snmp.arrayaddress.patch
+  to monitoring-plugins-2.3.3-check_snmp.arrayaddress.patch
+  monitoring-plugins-2.3-check_ntp_perf_absolute.patch
+  to monitoring-plugins-2.3.3-check_ntp_perf_absolute.patch
+
+- Add buildrequires for coreutils-systemd, as the configure script
+  checks for uptime [bsc#1216148]
+
+- systemd-not-utmp.patch: let check_users prefer systemd-logind
+  over utmp (jsc#PED-3144)
+
+- Add attach_disconnected flag for usr.lib.nagios.plugins.check_procs
+  and usr.lib.nagios.plugins.check_procs.sle15 apparmor profiles to
+  permit /proc/PID/exe access; (bsc#1209194)
+
+- added monitoring-plugins-2.3.3-check_icmp.patch
+  Simple patch to avoid compiler errors with latest gcc
+- removed monitoring-plugins-2.3.1-fixing-shellcheck.patch - upstream
+- renamed monitoring-plugins-2.2-mariadb_102_build_fix.patch
+  to monitoring-plugins-2.3.3-mariadb_102_build_fix.patch
+
+- added monitoring-plugins-2.3.3-check_http-proxy.patch
+  Fixes a check_http bug when trying to follow a redirect
+  returned from a URL retrieved via SSL proxy (issue #1764)
+
+- finally remove monitoring-plugins-1.4.6-Makefile_-_no_chown.patch: 
+  obsoleted by monitoring-plugins-2.3.3-root-plugins-Makefile_-_no_chown.patch</comment>
+    <requestid>1121479</requestid>
+  </revision>
 </revisionlist>

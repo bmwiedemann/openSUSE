@@ -17,7 +17,7 @@
 
 
 Name:           monitoring-plugins
-Version:        2.3.1
+Version:        2.3.3
 Release:        0
 Summary:        The Monitoring Plug-Ins
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -62,33 +62,32 @@ Source58:       nrpe-check_zombie_procs
 Source59:       nrpe-check_mysql
 Source60:       nrpe-check_ups
 # PATCH-FIX-UPSTREAM Quote the options comming in from users (path names might contain whitespaces)
-Patch1:         %{name}-2.1.1-check_log_-_quoting.patch
+Patch1:         %{name}-2.3.3-check_log_-_quoting.patch
 # PATH-FIX-openSUSE - do not use/run chown in Makefile: we use RPM for this
-Patch6:         %{name}-1.4.6-Makefile_-_no_chown.patch
+Patch6:         %{name}-2.3.3-root-plugins-Makefile_-_no_chown.patch
 # PATCH-FIX-UPSTREAM Use correct pointer
-Patch11:        %{name}.check_snmp.arrayaddress.patch
-# PATCH-FIX-UPSTREAM print out all arguments out a Group if in verbose mode
-Patch15:        %{name}-too_few_arguments_for_check_disk.patch
-# PATCH-FIX-UPSTREAM port should be integer, not character
-Patch118:       %{name}.check_hpjd.c-64bit-portability-issue.patch
+Patch11:        %{name}-2.3.3-check_snmp.arrayaddress.patch
 # PATCH-FIX-UPSTREAM kstreitova@suse.com -- fix build with MariaDB 10.2
-Patch119:       monitoring-plugins-2.2-mariadb_102_build_fix.patch
+Patch119:       %{name}-2.3.3-mariadb_102_build_fix.patch
 # PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
-Patch121:       %{name}-wrong_return_in_check_swap.patch
+Patch121:       %{name}-2.3.3-wrong_percent_in_check_swap.patch
 # PATCH-FIX-UPSTREAM - return ntp offset absolute (as positive value) in performance data since warn and crit are also positive values 
-Patch122:       monitoring-plugins-2.3-check_ntp_perf_absolute.patch
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1589
-Patch123:       monitoring-plugins-2.3.1-check_snmp_segfaults.patch
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1459
-Patch124:       monitoring-plugins-2.3.1-fixing-shellcheck.patch
+Patch122:       %{name}-2.3.3-check_ntp_perf_absolute.patch
 # PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1322
-Patch125:       monitoring-plugins-2.3.1-check_ssh.patch
-Patch126:       monitoring-plugins-2.3.1-check_ssh.t_-_improve_testing.patch
+Patch125:       monitoring-plugins-2.3.3-check_ssh.patch
+Patch126:       monitoring-plugins-2.3.3-check_ssh.t_-_improve_testing.patch
 # PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/issues/1375
-Patch127:       monitoring-plugins-2.3.1-check_dhcp_-_detect_rogue_dhcp_servers.patch
-Patch128:       monitoring-plugins-2.3.1-check_disk_on_btrfs.patch
+Patch127:       monitoring-plugins-2.3.3-check_dhcp_-_detect_rogue_dhcp_servers.patch
+Patch128:       monitoring-plugins-2.3.3-check_disk_on_btrfs.patch
 # PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1774
-Patch129:       monitoring-plugins-2.3.1-check_by_ssh.patch
+Patch129:       monitoring-plugins-2.3.3-check_by_ssh.patch
+#
+# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1862
+Patch130:       monitoring-plugins-2.3.3-check_http-proxy.patch
+# PATCH-FIX-UPSTREAM - simple fix for compiler error regarding no return value in function get_ip_address
+Patch131:       monitoring-plugins-2.3.3-check_icmp.patch
+# PATCH-FEATURE-SLE - Use systemd-logind instead of utmp (jsc#PED-3144)
+Patch132:       systemd-not-utmp.patch
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -98,6 +97,9 @@ PreReq:         permissions
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
+%if 0%{?suse_version} > 1599
+BuildRequires:  coreutils-systemd
+%endif
 BuildRequires:  iputils
 BuildRequires:  libdbi-devel
 BuildRequires:  pkgconfig(smbclient)
@@ -112,11 +114,14 @@ BuildRequires:  openssl-devel
 BuildRequires:  net-snmp-perl
 BuildRequires:  net-snmp-utils
 %else
-BuildRequires:  perl-Net-SNMP
+BuildRequires:  perl(Net::SNMP)
 %endif
 BuildRequires:  postfix
 BuildRequires:  postgresql-devel
 BuildRequires:  procps
+%if 0%{?suse_version} > 1599
+BuildRequires:  systemd-devel
+%endif
 BuildRequires:  samba-client
 %if 0%{?suse_version}
 %if 0%{?suse_version} > 1020
@@ -631,7 +636,7 @@ Requires:       %{name}-common = %{version}
 Requires:       net-snmp-perl
 Requires:       net-snmp-utils
 %else
-Requires:       perl-Net-SNMP
+Requires:       perl(Net::SNMP)
 %endif
 Provides:       nagios-plugins-ifoperstatus = %{version}
 Obsoletes:      nagios-plugins-ifoperstatus <= 1.5
@@ -648,7 +653,7 @@ Requires:       %{name}-common = %{version}
 Requires:       net-snmp-perl
 Requires:       net-snmp-utils
 %else
-Requires:       perl-Net-SNMP
+Requires:       perl(Net::SNMP)
 %endif
 Provides:       nagios-plugins-ifstatus = %{version}
 Obsoletes:      nagios-plugins-ifstatus <= 1.5
@@ -1130,20 +1135,19 @@ done
 %patch1 -p1
 %patch6 -p1
 %patch11 -p1
-%patch15 -p1
 # Debian patches
-%patch118 -p1
 %patch119 -p1
 %patch121 -p1
 %patch122 -p1
 # Github patches
-%patch123 -p1
-%patch124 -p1
 %patch125 -p1
 %patch126 -p1
 %patch127 -p1
 %patch128 -p1
 %patch129 -p1
+%patch130 -p1
+%patch131 -p1
+%patch132 -p1
 find -type f -exec chmod 644 {} +
 
 %build

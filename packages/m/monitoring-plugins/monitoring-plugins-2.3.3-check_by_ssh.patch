@@ -1,0 +1,46 @@
+Index: monitoring-plugins-2.3.3/plugins/check_by_ssh.c
+===================================================================
+--- monitoring-plugins-2.3.3.orig/plugins/check_by_ssh.c
++++ monitoring-plugins-2.3.3/plugins/check_by_ssh.c
+@@ -109,6 +109,13 @@ main (int argc, char **argv)
+ 		return STATE_UNKNOWN;
+ 	}
+ 
++	/* SSH returns 255 if connection attempt fails; include the first line of error output */
++	if (result == 255 && unknown_timeout) {
++		printf (_("SSH connection failed: %s\n"),
++		        chld_err.lines > 0 ? chld_err.line[0] : "(no error output)");
++		return STATE_UNKNOWN;
++	}
++
+ 	if (verbose) {
+ 		for(i = 0; i < chld_out.lines; i++)
+ 			printf("stdout: %s\n", chld_out.line[i]);
+@@ -455,12 +462,12 @@ print_help (void)
+   printf ("    %s\n", _("Tell ssh to use this configfile [optional]"));
+   printf (" %s\n","-q, --quiet");
+   printf ("    %s\n", _("Tell ssh to suppress warning and diagnostic messages [optional]"));
+-	printf (UT_WARN_CRIT);
+-	printf (UT_CONN_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
+-	printf (" %s\n","-U, --unknown-timeout");
+-	printf ("    %s\n", _("Make connection problems return UNKNOWN instead of CRITICAL"));
+-	printf (UT_VERBOSE);
+-	printf("\n");
++  printf (UT_WARN_CRIT);
++  printf (UT_CONN_TIMEOUT, DEFAULT_SOCKET_TIMEOUT);
++  printf (" %s\n","-U, --unknown-timeout");
++  printf ("    %s\n", _("Make connection problems return UNKNOWN instead of CRITICAL"));
++  printf (UT_VERBOSE);
++  printf("\n");
+   printf (" %s\n", _("The most common mode of use is to refer to a local identity file with"));
+   printf (" %s\n", _("the '-i' option. In this mode, the identity pair should have a null"));
+   printf (" %s\n", _("passphrase and the public key should be listed in the authorized_keys"));
+@@ -479,7 +486,7 @@ print_help (void)
+   printf (" %s\n", "[1080933700] PROCESS_SERVICE_CHECK_RESULT;flint;c2;0; up 2 days");
+   printf (" %s\n", "[1080933700] PROCESS_SERVICE_CHECK_RESULT;flint;c3;0; up 2 days");
+ 
+-	printf(UT_SUPPORT);
++  printf(UT_SUPPORT);
+ }
+ 
+ 

@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Mon Oct 30 18:19:23 CET 2023 - ro@suse.de
+
+- renamed patches
+  monitoring-plugins-wrong_return_in_check_swap.patch
+  to monitoring-plugins-2.3.3-wrong_percent_in_check_swap.patch
+  monitoring-plugins.check_snmp.arrayaddress.patch
+  to monitoring-plugins-2.3.3-check_snmp.arrayaddress.patch
+  monitoring-plugins-2.3-check_ntp_perf_absolute.patch
+  to monitoring-plugins-2.3.3-check_ntp_perf_absolute.patch
+
+-------------------------------------------------------------------
+Mon Oct 16 13:23:42 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add buildrequires for coreutils-systemd, as the configure script
+  checks for uptime [bsc#1216148]
+
+-------------------------------------------------------------------
+Thu Jun 15 14:44:14 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- systemd-not-utmp.patch: let check_users prefer systemd-logind
+  over utmp (jsc#PED-3144)
+
+-------------------------------------------------------------------
+Wed May 31 21:57:07 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Add attach_disconnected flag for usr.lib.nagios.plugins.check_procs
+  and usr.lib.nagios.plugins.check_procs.sle15 apparmor profiles to
+  permit /proc/PID/exe access; (bsc#1209194)
+
+-------------------------------------------------------------------
+Thu Apr 13 15:27:12 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de> - 2.3.3
+
+- added monitoring-plugins-2.3.3-check_icmp.patch
+  Simple patch to avoid compiler errors with latest gcc
+- removed monitoring-plugins-2.3.1-fixing-shellcheck.patch - upstream
+- renamed monitoring-plugins-2.2-mariadb_102_build_fix.patch
+  to monitoring-plugins-2.3.3-mariadb_102_build_fix.patch
+
+-------------------------------------------------------------------
+Wed Apr 12 20:54:19 UTC 2023 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- added monitoring-plugins-2.3.3-check_http-proxy.patch
+  Fixes a check_http bug when trying to follow a redirect
+  returned from a URL retrieved via SSL proxy (issue #1764)
+
+-------------------------------------------------------------------
+Wed Apr 12 17:35:53 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de> - 2.3.3
+
+- finally remove monitoring-plugins-1.4.6-Makefile_-_no_chown.patch: 
+  obsoleted by monitoring-plugins-2.3.3-root-plugins-Makefile_-_no_chown.patch
+- monitoring-plugins-2.1.1-check_log_-_quoting.patch renamed to 
+  monitoring-plugins-2.3.3-check_log_-_quoting.patch
+
+-------------------------------------------------------------------
+Thu Feb  2 17:11:00 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de> - 2.3.3
+
+- Update to 2.3.3
+  Enhancements
+  General
+  + using PRId64 and PRIu64 instead of %ld directly
+  Single Plugins
+  + check_http: Make faster with larger files
+  + check_snmp: add 'multiplier' to modify current value
+  + check_http: Implement chunked encoding decoding
+  + check_http/check_curl: add chunked encoding test
+  + check_log: Added --exclude to exclude patterns
+  + check_log: Add tests
+  + check_disk: Clarify usage possibilites
+
+  Fixes
+  General
+  + fixed two PRId64 to PRIu64 in perfdata_uint64
+  Single Plugins
+  + check_pgsql: Removing is_pg_dbname alltogether,using postgres API.
+  + check_http: Remove superflous CRLF in HTTP-Requests
+  + check_curl: detect ipv6
+  + check_icmp: fix parsing help/version long options
+  + check_http: fix test plan
+  + check_disk: Find accessible mount path if multiple are available
+  + check_apt: Fix unknown escape sequence error output
+  + check_curl: fix checking large bodys
+  + check_snmp: Improve tests for check_snmp & multiply option
+  + check_snmp: always apply format when applying multiplier
+  + check_http: Use real booleans instead of ints
+  + check_http: Document process_arguments a little bit better
+  + check_http: Remove dead code
+  + check_http: Fix several bug in the implementation of unchunking
+  + check_http: Reformat a part to increase readability
+  + check_apt: Put upgrade options in the root sections
+  + check_apt: Fix comment
+  + check_apt: Use real booleans
+  + check_mailq: Fixing nullmailer regex
+  + check_snmp: Fix regex matches
+  + check_log: Fixed a bug when using --all
+  + check_log: Cleaned up duplicated code in the args
+  + check_http: Fix memory reallocation error in chunk decoding logic
+  + check_http: Add space for ending NULL byte in array for chunked encoding
+
+- included changes in 2.3.2
+  General
+  + Use silent automake by default
+
+  Fixes
+  Single Plugins
+  + check_by_ssh: added option to exit with an warning, if there is output on STDERR
+  + check_by_ssh: Add "-U" flag (#1123).
+  + check_by_ssh: Let ssh decide if a host is valid, enables usage of ssh .config file
+  + check_curl: Add an option to check_curl to verify the peer certificate & host using the system CA's
+  + check_curl: fixed -ffollow for HTTP/2.0 (Fixes #1685): added major_version parsing to PicoHTTPParser
+  + check_curl: fixes check_curl: "CRITICAL - Cannot retrieve certificate subject."
+  + check_curl: fix if http header contains leading spaces
+  + check_curl: Update check_curl.c to display a specific human-readable error message where possible
+  + check_curl: verify certificates option should not force SSL to be used
+  + check_disk: Description for -M was the wrong way around
+  + check_disk: Fixing the stuff that is broken on btrfs
+  + check_disk: Fix perfdata for big values for check disk
+  + check_disk_smb: Add configfile feature
+  + check_disk_smb: Add timeout
+  + check_dns: Add --expect-nxdomain
+  + check_dns: split multiple IP addresses passed in one -a argument
+  + check_file_age: Make size parameter a little bit more intelligible
+  + check_fping: Implements 'host-alive' mode (Closes. #1027) 
+  + check_game: Update Url to qstat
+  + check_http: changed 'STATE_CRITICAL' to 'STATE_WARNING' for infinite loop
+  + check_http: Increase regexp limit by @hydrapolic
+  + check_http: Support http redirect by @waja
+  + check_icmp: buffer offerflow
+  + check_icmp: delay set_source_ip() until address_family is detected
+  + check_icmp: Fix "Invalid Argument" from sendmsg() under FreeBSD 13.1 and "setsockopt failed" for TTL setting
+  + check_icmp: Fix pkt perfdata in check_host mode
+  + check_ldap: Allows check_ldap to read password from environment variable
+  + check_load: add LOAD prefix to load plugin
+  + check_load: Display total and scaled load values if check_load scales the values by number of CPUs
+  + check_log: Missing oldlog now aborts check_log 
+  + check_mailq: Add mailq -C option for config dir or config file 
+  + check_mailq: Check mailq domain specific warnings
+  + check_mailq: Fix regexp for nullmailer "mailq" output 
+  + check_mysql: fix segfaults with mysql-connector-c #1562
+  + check_pgsql: add --queryname parameter to check_pgsql 
+  + check_ping: Do not show RTA if no connection was possible 
+  + check_ping: understang ping6 output from iputils package 
+  + check_proc: Fix check proc ps detection 
+  + check_procs: exchange needle and haystack in strstr() for proper state match
+  + check_smtp: add -L flag to support LMTP (LHLO instead of HELO/EHLO).
+  + check_snmp: Added option for null zero length string exit codes
+  + check_snmp: fix performance thresholds when using multiple oids
+  + check_snmp fix segfaults 
+  + check_snmp: put the "c" (to mark a counter) after the perfdata value
+  + check_swap: fix parsing swap values
+  + check_swap: Fix perfdata for check swap 
+  + check_swap: Fix unit for total in perfdata
+  + check_swap: Handle cached swap 
+  + check_swap: Small fix to threshold validation and style (indentation) fixes
+  + check_ups: Fix possible overflow in check_ups
+  + check_uptime: Add option to report uptime in days instead of seconds
+  + check_uptime: Fix/improve output message "Uptime is ..."
+
+  Multiple Plugins
+  + check_http, check_curl: added --max-redirs=N option (feature #1684)
+  + check_http, check_curl: Enhancement --continue-after-certificate (backport from nagios-plugins)
+  + check_http, check_curl: Remove check_http and check_curl test which are somehow always failing
+  + check_log, check_oracle, check_sensors: Several fixes shellcheck complaining about
+  + sslutils: use chain from client certificates
+
+  Non functional changes
+  + Trivial source code whitespace formatting fixes to standard.
+  + docs: fix simple typo, conspicuosly -> conspicuously 
+  + Migrate to GitHub actions 
+  + Point to Icinga Exchange instead of dead Monitoring Exchange 
+  + github actions: fix check_users test case 
+  + Add CodeQL checks 
+  + Fix some QL problems
+  + Update CodeQL and update runner before installing 
+  + check_disk: Check disk compiler warnings
+  + check_disk: Trivial printf fix and a little bit of code style
+  + check_http: Docs: make -C obvious
+  + check_ifoperstatus: Re-attach a comment to where it actually belongs
+  + check_ircd: Restrict the nickname length of the test user for check_ircd
+  + check_load: Check load compiler warnings
+  + check_log Modernize check log
+  + check_mailq: remove duplicate W=i/C=i args in check_mailq.pl
+  + check_ntp: Check ntp remove unused variables
+  + check_pgsql: Using snprintf which honors the buffers size and guarantees null temination. (Closes: #1601)
+  + check_procs: Fix double percentage sign in usage
+  + check_sensors.sh: Make shellcheck happier
+  + check_snmp: Fixed option description authpassword -> authpasswd + whitespaces
+  + check_swap: Check swap compiler warnings
+
+- refreshed monitoring-plugins-1.4.6-Makefile_-_no_chown.patch
+  -> monitoring-plugins-2.3.3-root-plugins-Makefile_-_no_chown.patch
+- refreshed monitoring-plugins-2.3.1-check_ssh.patch
+  -> monitoring-plugins-2.3.3-check_ssh.patch
+- refreshed monitoring-plugins-2.3.1-check_dhcp_-_detect_rogue_dhcp_servers.patch 
+  -> monitoring-plugins-2.3.3-check_dhcp_-_detect_rogue_dhcp_servers.patch
+- refreshed monitoring-plugins-2.3.1-check_ssh.t_-_improve_testing.patch
+  -> monitoring-plugins-2.3.3-check_ssh.t_-_improve_testing.patch
+- refreshed monitoring-plugins-2.3.1-check_disk_on_btrfs.patch
+  -> monitoring-plugins-2.3.3-check_disk_on_btrfs.patch
+- refreshed monitoring-plugins-2.3.1-check_by_ssh.patch
+  -> monitoring-plugins-2.3.3-check_by_ssh.patch
+- removed monitoring-plugins-too_few_arguments_for_check_disk.patch
+  -> fixed upstream
+- removed monitoring-plugins.check_hpjd.c-64bit-portability-issue.patch
+  -> fixed upstream
+- removed monitoring-plugins-2.3.1-check_snmp_segfaults.patch
+  -> fixed upstream
+
+-------------------------------------------------------------------
 Thu Oct  6 12:28:59 CEST 2022 - ro@suse.de
 
 - changed buildrequires libsmbclient-devel to pkgconfig(smbclient)

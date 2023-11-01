@@ -1,11 +1,11 @@
-Index: monitoring-plugins-2.3.1/plugins/t/check_ssh.t
+Index: monitoring-plugins-2.3.3/plugins/t/check_ssh.t
 ===================================================================
---- monitoring-plugins-2.3.1.orig/plugins/t/check_ssh.t
-+++ monitoring-plugins-2.3.1/plugins/t/check_ssh.t
+--- monitoring-plugins-2.3.3.orig/plugins/t/check_ssh.t
++++ monitoring-plugins-2.3.3/plugins/t/check_ssh.t
 @@ -8,34 +8,105 @@ use strict;
  use Test::More;
  use NPTest;
-
+ 
 -# Required parameters
 -my $ssh_host           = getTestParameter("NP_SSH_HOST", "A host providing SSH service", "localhost");
 -my $host_nonresponsive = getTestParameter("NP_HOST_NONRESPONSIVE", "The hostname of system not responsive to network requests", "10.0.0.1" );
@@ -21,7 +21,8 @@ Index: monitoring-plugins-2.3.1/plugins/t/check_ssh.t
 -    );
 -cmp_ok($result->return_code, '==', 0, "Exit with return code 0 (OK)");
 -like($result->output, '/^SSH OK - /', "Status text if command returned none (OK)");
--
++my $res;
+ 
 -
 -$result = NPTest->testCmd(
 -    "./check_ssh -H $host_nonresponsive -t 2"
@@ -36,8 +37,6 @@ Index: monitoring-plugins-2.3.1/plugins/t/check_ssh.t
 -    );
 -cmp_ok($result->return_code, '==', 3, "Exit with return code 0 (OK)");
 -like($result->output, '/^check_ssh: Invalid hostname/', "Status text if command returned none (OK)");
-+my $res;
-
 +# Required parameters
 +my $ssh_host           = getTestParameter("NP_SSH_HOST",
 +                                          "A host providing SSH service",
@@ -137,4 +136,4 @@ Index: monitoring-plugins-2.3.1/plugins/t/check_ssh.t
 +   cmp_ok( $res->return_code, '==', 0, "Got delayed SSH protocol version control string");
 +   like( $res->output, '/^SSH OK - nagiosplug.ssh.0.2 \(protocol 2.0\)/', "Output OK");
 +   close NC;
-+
+ 
