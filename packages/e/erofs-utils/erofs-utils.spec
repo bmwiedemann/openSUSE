@@ -17,13 +17,14 @@
 
 
 Name:           erofs-utils
-Version:        1.7
+Version:        1.7.1
 Release:        0
 Summary:        Utilities for the Extendable Read-Only Filesystem (EROFS)
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/
-Source:         %name-%version.tar.xz
+URL:            https://github.com/erofs/erofs-utils
+#Git-Clone:	https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/
+Source:         https://github.com/erofs/erofs-utils/archive/refs/tags/v%version.tar.gz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  liblz4-devel >= 1.9

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 13:22:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.1
+  * erofs-utils: fix reference leak in function
+    ``erofs_mkfs_build_tree_from_path``
+
+-------------------------------------------------------------------
 Wed Oct 11 12:00:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.7:

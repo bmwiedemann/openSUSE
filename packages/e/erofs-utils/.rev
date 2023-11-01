@@ -79,4 +79,12 @@
     <comment>- Update to version 1.7:</comment>
     <requestid>1116996</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>af7ece06d24f8aa591770d2151bc3c8e</srcmd5>
+    <version>1.7.1</version>
+    <time>1698873047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.1</comment>
+    <requestid>1121616</requestid>
+  </revision>
 </revisionlist>
