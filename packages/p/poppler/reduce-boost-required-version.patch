@@ -1,8 +1,8 @@
-Index: poppler-23.01.0/CMakeLists.txt
+Index: poppler-23.10.0/CMakeLists.txt
 ===================================================================
---- poppler-23.01.0.orig/CMakeLists.txt
-+++ poppler-23.01.0/CMakeLists.txt
-@@ -214,7 +214,7 @@ endif()
+--- poppler-23.10.0.orig/CMakeLists.txt
++++ poppler-23.10.0/CMakeLists.txt
+@@ -225,7 +225,7 @@ find_soft_mandatory_package(ENABLE_QT6 Q
  # Check for Cairo rendering backend
  macro_optional_find_package(Cairo ${CAIRO_VERSION})
  

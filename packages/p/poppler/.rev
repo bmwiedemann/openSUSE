@@ -2090,4 +2090,12 @@ New upstream release</comment>
 - Update to version 0.3.3</comment>
     <requestid>1114272</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>393846bbdc072b2d41f255dda69419c8</srcmd5>
+    <version>23.10.0</version>
+    <time>1698872964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121165</requestid>
+  </revision>
 </revisionlist>

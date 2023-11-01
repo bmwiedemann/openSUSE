@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 30 08:50:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to let it build with the heavily patched tiff 4.0.9
+  we have in SLE 15:
+  * reduce-libtiff-required-version.patch
+
+-------------------------------------------------------------------
+Fri Oct 27 16:38:54 UTC 2023 - pgajdos@suse.com
+
+- version update to 23.10.0
+    core:
+     * cairo: update type 3 fonts for cairo 1.18 api
+     * Fix crash on malformed files
+    build system:
+     * Make a few more dependencies soft-mandatory
+     * Add more supported gnupg releases
+     * Check if linker supports version scripts
+- modified patches
+  % reduce-boost-required-version.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Sep 29 07:54:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build with gpgmepp for signing documents (bsc#1215632)

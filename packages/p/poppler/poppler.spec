@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 131
+%define poppler_sover 132
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        23.09.0
+Version:        23.10.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -43,6 +43,7 @@ Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
 Source90:       poppler.keyring
 Source99:       baselibs.conf
 Patch0:         reduce-boost-required-version.patch
+Patch1:         reduce-libtiff-required-version.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gtk-doc
 BuildRequires:  libboost_headers-devel >= 1.66
@@ -215,6 +216,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 %prep
 %setup -q -n poppler-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if "%{flavor}" == "qt5"
@@ -234,6 +236,10 @@ export LD_LIBRARY_PATH=$(pwd)/build
 	-DENABLE_ZLIB=ON \
 	-DENABLE_LIBCURL=ON \
 	-DBUILD_GTK_TESTS=OFF \
+%if "%{flavor}" == ""
+        -DENABLE_QT5=OFF \
+        -DENABLE_QT6=OFF \
+%endif
 %if "%{flavor}" == "qt5"
 	-DENABLE_QT5=ON \
 	-DENABLE_QT6=OFF \
