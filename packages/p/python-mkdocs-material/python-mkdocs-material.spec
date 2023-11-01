@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.4.6
+Version:        9.4.7
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -38,12 +38,13 @@ BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module trove-classifiers >= 2023.10.18}
 # Requirements for core
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
 BuildRequires:  %{python_module Jinja2 >= 3.1}
 BuildRequires:  %{python_module Markdown >= 3.4}
 BuildRequires:  %{python_module mkdocs >= 1.5.3}
-BuildRequires:  %{python_module mkdocs-material-extensions >= 1.2}
+BuildRequires:  %{python_module mkdocs-material-extensions >= 1.3}
 BuildRequires:  %{python_module pygments >= 2.16}
 BuildRequires:  %{python_module pymdown-extensions >= 10.3}
 # Requirements for plugins
