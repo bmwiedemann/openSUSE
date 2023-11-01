@@ -827,4 +827,17 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.95.0</comment>
     <requestid>1120125</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>915f050151cff6187a242dbf227eb679</srcmd5>
+    <version>1.95.1</version>
+    <time>1698872987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.95.1
+  - Security:
+    - GHSA-mp92-3jfm-3575 / CVE-2023-43796 — Moderate Severity
+      Cached device information of remote users can be queried from
+      Synapse. This can be used to enumerate the remote users known
+      to a homeserver.</comment>
+    <requestid>1121497</requestid>
+  </revision>
 </revisionlist>
