@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 31 15:20:37 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update dependencies to require the same subpackages version and
+  release
+- Fix /usr/etc migration fragment in wrong "%pre kcm" instead of
+  "%pre"
+- Move sss_analyze to sssd-tools package
+
+-------------------------------------------------------------------
+Tue Oct 31 11:04:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Default config is unworkable, just stop installing it altogether
+  [boo#1216739]
+
+-------------------------------------------------------------------
 Thu Sep  7 12:07:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9.2
@@ -43,7 +58,7 @@ Thu Jan 26 15:23:54 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 -------------------------------------------------------------------
 Tue Jan  3 12:01:41 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
-- Migration of PAM settings to /usr/lib/pam.d. 
+- Migration of PAM settings to /usr/lib/pam.d.
 
 -------------------------------------------------------------------
 Wed Dec 21 19:29:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
@@ -87,7 +102,7 @@ Fri Oct  7 12:05:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 Thu Sep  1 13:45:36 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
-  in /etc and restoring them while an RPM update. 
+  in /etc and restoring them while an RPM update.
 
 -------------------------------------------------------------------
 Fri Aug 26 20:54:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
@@ -1949,3 +1964,4 @@ Fri Sep  4 08:59:21 UTC 2009 - rhafer@novell.com
 Tue Sep  1 08:58:37 UTC 2009 - rhafer@novell.com
 
 - initial package submission
+

@@ -96,7 +96,7 @@ Obsoletes:      libsss_sudo < %version-%release
 %define ldbdir %(pkg-config ldb --variable=modulesdir)
 
 # Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
-# /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
+# %_sysconfdir/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
 # * cifs-utils one is the default (priority 20)
 # * installing SSSD should NOT switch to SSSD plugin (priority 10)
 %define cifs_idmap_plugin       %_sysconfdir/cifs-utils/idmap-plugin
@@ -117,7 +117,7 @@ services for projects like FreeIPA.
 Summary:        The ActiveDirectory backend plugin for sssd
 License:        GPL-3.0-or-later
 Group:          System/Daemons
-Requires:       %name-krb5-common = %version
+Requires:       %name-krb5-common = %version-%release
 Requires:       adcli
 
 %description ad
@@ -202,7 +202,7 @@ and/or PAM modules to leverage SSSD caching.
 Summary:        Commandline tools for sssd
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/Management
-Requires:       python3-sssd-config = %version
+Requires:       python3-sssd-config = %version-%release
 Requires:       sssd = %version
 
 %description tools
@@ -358,7 +358,6 @@ autoreconf -fiv
 	--with-pipe-path="%pipepath" \
 	--with-pubconf-path="%pubconfpath" \
 	--with-gpo-cache-path="%gpocachepath" \
-	--with-init-dir="%_initrddir" \
 	--with-environment-file="%_sysconfdir/sysconfig/sssd" \
 	--with-initscript=systemd \
 	--with-syslog=journald \
@@ -378,12 +377,10 @@ autoreconf -fiv
 %install
 # sss_obfuscate is compatible with both python 2 and 3
 perl -i -lpe 's{%_bindir/python\b}{%_bindir/python3}' src/tools/sss_obfuscate
-%make_install dbuspolicydir=%{_datadir}/dbus-1/system.d
+%make_install dbuspolicydir=%_datadir/dbus-1/system.d
 b="%buildroot"
 
 # Copy some defaults
-mkdir -pv "$b/%_sysconfdir/sssd" "$b/%_sysconfdir/sssd/conf.d"
-install -m600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
 install -d "$b/%_unitdir"
 %if 0%{?suse_version} > 1500
 install -d "$b/%_distconfdir/logrotate.d"
@@ -412,15 +409,19 @@ ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 %service_add_pre sssd.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in pam.d/sssd-shadowutils ; do
-     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+for i in pam.d/sssd-shadowutils logrotate.d/sssd ; do
+	if [ -f "%_sysconfdir/$i.rpmsave" ]; then
+		mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i.rpmsave.old" || :
+	fi
 done
 %endif
 
 %post
 /sbin/ldconfig
 # migrate config variable krb5_kdcip to krb5_server (bnc#851048)
-/bin/sed -i -e 's,^krb5_kdcip =,krb5_server =,g' %_sysconfdir/sssd/sssd.conf
+if [ -f "%_sysconfdir/sssd/sssd.conf" ]; then
+	/bin/sed -i -e 's,^krb5_kdcip =,krb5_server =,g' "%_sysconfdir/sssd/sssd.conf"
+fi
 %service_add_post sssd.service
 
 # install SSSD cifs-idmap plugin as an alternative
@@ -450,7 +451,7 @@ fi
 %post   -n libsss_nss_idmap0 -p /sbin/ldconfig
 %postun -n libsss_nss_idmap0 -p /sbin/ldconfig
 
-%triggerun -- %{name} < %{version}-%{release}
+%triggerun -- %name < %version-%release
 # sssd takes care of upgrading the database but it doesn't handle downgrades.
 # Clear caches when downgrading the package, which may have an
 # incompatible format afterwards preventing the daemon from startup.
@@ -473,20 +474,6 @@ fi
 
 %pre kcm
 %service_add_pre sssd-kcm.service sssd-kcm.socket
-%if 0%{?suse_version} > 1500
-# Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/sssd ; do
-   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
-done
-%endif
-
-%if 0%{?suse_version} > 1500
-%posttrans
-# Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/sssd pam.d/sssd-shadowutils ; do
-   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
-done
-%endif
 
 %post kcm
 %service_add_post sssd-kcm.service sssd-kcm.socket
@@ -496,6 +483,16 @@ done
 
 %postun kcm
 %service_del_postun sssd-kcm.service sssd-kcm.socket
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/sssd pam.d/sssd-shadowutils ; do
+	if [ -f "%_sysconfdir/$i.rpmsave" ]; then
+		mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i.rpmsave.old" || :
+	fi
+done
+%endif
 
 %files -f sssd.lang
 %license COPYING
@@ -560,7 +557,6 @@ done
 %_libexecdir/%name/sssd_pam
 %_libexecdir/%name/sssd_ssh
 %_libexecdir/%name/sssd_sudo
-%_libexecdir/%name/sss_analyze
 %_libexecdir/%name/sss_signal
 %_libexecdir/%name/sssd_check_socket_activated_responders
 %_libexecdir/%name/selinux_child
@@ -574,8 +570,6 @@ done
 %attr(755,root,root) %dir %sssdstatedir/mc/
 %attr(700,root,root) %dir %sssdstatedir/keytabs/
 %attr(750,root,root) %dir %_localstatedir/log/%name/
-%dir %_sysconfdir/sssd/
-%config(noreplace) %_sysconfdir/sssd/sssd.conf
 %if 0%{?suse_version} > 1500
 %_distconfdir/logrotate.d/sssd
 %_pam_vendordir/sssd-shadowutils
@@ -583,13 +577,12 @@ done
 %config(noreplace) %_sysconfdir/logrotate.d/sssd
 %config(noreplace) %_pam_confdir/sssd-shadowutils
 %endif
-%dir %_sysconfdir/sssd/conf.d
 %dir %_datadir/%name/
 %_datadir/%name/cfg_rules.ini
 %_datadir/%name/sssd.api.conf
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-simple.conf
-%exclude /usr/share/man/*/*/sssd-files.5.gz
+%exclude %_mandir/*/*/sssd-files.5.gz
 #
 # sssd-client
 #
@@ -706,6 +699,7 @@ done
 %_sbindir/sss_seed
 %_sbindir/sss_obfuscate
 %_sbindir/sss_override
+%_libexecdir/%name/sss_analyze
 %dir %_mandir/??/man8/
 %_mandir/??/man8/sssctl.8*
 %_mandir/??/man8/sss_*.8*
