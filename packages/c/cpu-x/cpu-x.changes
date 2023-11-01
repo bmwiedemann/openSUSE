@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  1 11:09:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.1
+  * Add more debug data, including a debug mode for the daemon
+  * Add an option to choose temperature unit among Celsius,
+    Fahrenheit, Kelvin and Rankine
+  * Update databases (AMD Genoa, Intel Sapphire Rapids-WS, AMD
+    Phoenix, Intel Alder Lake-U, Intel Apollo Lake)
+
+-------------------------------------------------------------------
 Fri May  5 07:24:21 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.3:

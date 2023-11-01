@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        4.5.3
+Version:        5.0.1
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
@@ -26,7 +26,8 @@ Group:          System/X11/Utilities
 URL:            https://github.com/TheTumultuousUnicornOfDarkness/CPU-X
 Source:         https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v%version.tar.gz
 Patch1:         no-no-pie.patch
-BuildRequires:  cmake
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.12
 BuildRequires:  gettext-tools
 %ifarch %ix86 x86_64
 BuildRequires:  nasm
@@ -42,7 +43,7 @@ BuildRequires:  pkgconfig(ncursesw)
 BuildRequires:  pkgconfig(vulkan)
 # https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/issues/105
 Provides:       bundled(bandwidth) = 1.5.1
-Provides:       bundled(dmidecode) = 3.5.484f893
+Provides:       bundled(dmidecode) = 3.5.20230314
 
 %description
 CPU-X is a software that gathers information about CPU, motherboard
