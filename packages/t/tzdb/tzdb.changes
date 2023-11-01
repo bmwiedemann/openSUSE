@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 31 22:29:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target 8 when using JDK that does not support
+  level 7
+
+-------------------------------------------------------------------
 Sat Sep 16 07:16:33 UTC 2017 - fstrba@suse.com
 
 - Don't require java-bootstrap-devel any more; require instead
