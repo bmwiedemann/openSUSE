@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20230411
+Version:        20231101
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0-or-later AND WTFPL
@@ -204,7 +204,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %hldir/peicon
 %hldir/psthreads
 %hldir/rot13
-%hldir/utmp_register
 
 %files scripts
 %_bindir/aumeta

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  1 10:24:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231101
+  * qtar: add .zst suffix support
+  * sadmin: delete utmp_register
+  * dircolors: reinstate upstream color for BLK/CHR
+  * spec-beautifier: apply transformation logic to preamble as well
+  * spec-beautifier: eliminate BuildRoot/Package/Distribution/Vendor lines
+  * spec-beautifier: delete massaging of BuildRequire lists
+
+-------------------------------------------------------------------
 Tue Apr 11 10:48:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20230411
