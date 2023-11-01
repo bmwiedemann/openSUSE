@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 09:45:46 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update vault to version 0.3.1.5 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Oct  7 10:43:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update vault to version 0.3.1.5 revision 4.
