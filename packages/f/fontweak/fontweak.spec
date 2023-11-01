@@ -1,7 +1,7 @@
 #
 # spec file for package fontweak
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@ Name:           fontweak
 Version:        1.3.1
 Release:        0
 Summary:        GUI front-end of fontconfig
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
-Url:            https://github.com/guoyunhe/fontweak
+URL:            https://github.com/guoyunhe/fontweak
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  ant
-BuildRequires:  java-devel >= 1.7.0
-Requires:       java >= 1.7.0
+BuildRequires:  java-devel >= 1.8
+Requires:       java >= 1.8
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -43,7 +43,7 @@ A front-end for fontconfig. Setup perfect font effects, fast and easily.
 %setup -q
 
 %build
-%{ant} jar
+%{ant} -Djavac.source=1.8 -Djavac.target=1.8 jar
 
 %install
 # jars

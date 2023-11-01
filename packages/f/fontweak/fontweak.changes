@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 31 23:11:27 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with JDK21: use source/target levels 8
+
+-------------------------------------------------------------------
 Sat Oct 22 17:12:32 UTC 2016 - jengelh@inai.de
 
 - Remove redundant mention of homepage
