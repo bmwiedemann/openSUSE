@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20231030" schemaversion="4.1">
+<image name="OBS__openSUSE___20231031" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231030</productvar>
+      <productvar name="VERSION">20231031</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231030,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231031,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231030/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231031/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1397,6 +1397,8 @@
       <repopackage name="libdlm3"/>
       <repopackage name="libdmapsharing-4_0-3"/>
       <repopackage name="libdmtx0"/>
+      <repopackage name="libdnf-repo-config-zypp"/>
+      <repopackage name="libdnf2"/>
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
@@ -2445,6 +2447,7 @@
       <repopackage name="libreoffice-share-linker"/>
       <repopackage name="libreoffice-writer"/>
       <repopackage name="libreofficekit"/>
+      <repopackage name="librepo0"/>
       <repopackage name="librepository"/>
       <repopackage name="librest-1_0-0"/>
       <repopackage name="librevenge-0_0-0"/>
@@ -3096,6 +3099,7 @@
       <repopackage name="p11-kit"/>
       <repopackage name="p11-kit-tools"/>
       <repopackage name="PackageKit"/>
+      <repopackage name="PackageKit-backend-dnf"/>
       <repopackage name="PackageKit-backend-zypp"/>
       <repopackage name="PackageKit-branding-openSUSE"/>
       <repopackage name="PackageKit-gstreamer-plugin"/>
