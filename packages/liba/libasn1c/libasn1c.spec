@@ -17,7 +17,7 @@
 
 
 Name:           libasn1c
-Version:        0.9.35
+Version:        0.9.36
 Release:        0
 Summary:        Osmocon ASN.1 decoder and encoder library
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ URL:            https://git.osmocom.org/libasn1c
 Source:         https://github.com/osmocom/libasn1c/archive/%version.tar.gz
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libosmocore) >= 0.1.13
+BuildRequires:  pkgconfig(talloc)
 
 %description
 Lev Walkins's asn1c runtime, as a shared library and with
