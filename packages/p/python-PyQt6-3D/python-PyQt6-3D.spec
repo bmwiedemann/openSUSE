@@ -19,7 +19,7 @@
 %define mname PyQt6-3D
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.5.0
+Version:        6.6.0
 Release:        0
 Summary:        Python bindings for the Qt 3D framework
 License:        GPL-3.0-only
