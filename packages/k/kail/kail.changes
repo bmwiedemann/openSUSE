@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 01 08:06:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.17.0:
+  * Update ci.yml
+  * Bump github.com/rs/zerolog from 1.30.0 to 1.31.0
+  * chore: use bytes.Equal(canaryLog, log) instead
+  * add windows support, compile successful, make test also passed,
+    replace travis-badge to GitHub actions badge
+  * Fix duration in README.md tabe
+  * Bump k8s.io/client-go from 0.28.1 to 0.28.3
+  * Bump k8s.io/client-go from 0.27.4 to 0.28.1
+  * Bump k8s.io/client-go from 0.27.3 to 0.27.4
+  * Bump github.com/rs/zerolog from 1.29.1 to 1.30.0
+  * Bump github.com/boz/go-lifecycle from 0.1.0 to 0.1.1
+  * Bump github.com/sirupsen/logrus from 1.9.0 to 1.9.3
+  * drop "with:" for removed instructions
+  * Bump k8s.io/client-go from 0.27.1 to 0.27.3
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.4
+  * Fix for Dockerfile smell DL3007
+  * bump dependencies and golang version
+  * doc: fix minikube url
+  * Bump k8s.io/client-go from 0.26.2 to 0.26.3
+  * Bump github.com/fatih/color from 1.14.1 to 1.15.0
+  * Bump k8s.io/client-go from 0.26.1 to 0.26.2
+  * Bump k8s.io/api from 0.26.1 to 0.26.2
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2
+  * Bump github.com/fatih/color from 1.14.0 to 1.14.1
+  * Bump github.com/rs/zerolog from 1.28.0 to 1.29.0
+  * Bump k8s.io/client-go from 0.26.0 to 0.26.1
+  * Bump github.com/fatih/color from 1.13.0 to 1.14.0
+  * Bump k8s.io/apimachinery from 0.26.0 to 0.26.1
+  * docker build added to goreleaser
+  * Bump github.com/rs/zerolog from 1.15.0 to 1.28.0
+  * reverted gorelease snapshot build in test as build is taking
+    longer
+
+-------------------------------------------------------------------
 Fri Jan 06 18:56:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.16.1:

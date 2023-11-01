@@ -17,7 +17,7 @@
 
 
 Name:           kail
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        Kubernetes log viewer
 License:        MIT
@@ -25,7 +25,7 @@ Group:          System/Management
 URL:            https://github.com/boz/kail
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.20
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
@@ -36,21 +36,22 @@ changing cluster - pods are added and removed from logging as they fall
 in or out of the selection.
 
 %prep
-%setup -qa1
+%autosetup -p 1 -a 1
 
 %build
-# use vendor directory and build as position independent executeable
-sed -i -e 's|$(GO) build|go build -mod vendor -buildmode=pie|g' Makefile
-make build
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags="-X main.version=%{version} -X main.commit=v%{version}" \
+   -o bin/%{name} ./cmd/%{name}
 
 %install
 # Install the binary.
-mkdir -p %{buildroot}%{_bindir}/
-install -m 0755 kail %{buildroot}%{_bindir}/kail
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %license LICENSE.txt
 %doc README.md
-%{_bindir}/kail
+%{_bindir}/%{name}
 
 %changelog
