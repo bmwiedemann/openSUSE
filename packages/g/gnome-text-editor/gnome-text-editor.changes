@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 30 20:35:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Use proper etag when comparing document for changes after a
+    Save As operation occurs.
+  + Fix row styling in preferences.
+  + Fix memory leak of GtkNativeDialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 17 01:12:31 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 45.0:
