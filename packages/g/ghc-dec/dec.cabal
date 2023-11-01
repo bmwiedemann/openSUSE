@@ -1,7 +1,7 @@
 cabal-version:      >=1.10
 name:               dec
 version:            0.0.5
-x-revision:         1
+x-revision:         2
 synopsis:           Decidable propositions.
 category:           Data, Dependent Types
 description:
@@ -34,9 +34,10 @@ tested-with:
    || ==8.8.4
    || ==8.10.7
    || ==9.0.2
-   || ==9.2.6
-   || ==9.4.4
-   || ==9.6.1
+   || ==9.2.8
+   || ==9.4.7
+   || ==9.6.3
+   || ==9.8.1
 
 source-repository head
   type:     git
@@ -48,7 +49,7 @@ library
   ghc-options:      -Wall -fprint-explicit-kinds
   exposed-modules:  Data.Type.Dec
   build-depends:
-      base    >=4.7 && <4.19
+      base    >=4.7 && <4.20
     , boring  >=0.2 && <0.3
 
   if !impl(ghc >=7.10)
