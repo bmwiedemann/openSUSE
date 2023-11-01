@@ -1,0 +1,1022 @@
+# HG changeset patch
+# User Mike Hommey <mh+mozilla@glandium.org>
+# Date 1677114768 0
+#      Thu Feb 23 01:12:48 2023 +0000
+# Node ID a9dbdd8183fe6ee0c9439feb8af9164fe2580024
+# Parent  b834f206aede6bd2190e0e80e3ab517665d74ae8
+Bug 1817900 - Update encoding_rs to 0.8.32. r=emilio,supply-chain-reviewers
+
+Differential Revision: https://phabricator.services.mozilla.com/D170433
+
+diff --git a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -527,19 +527,19 @@ version = "0.1.0"
+ dependencies = [
+  "encoding_rs",
+  "nserror",
+  "nsstring",
+ ]
+ 
+ [[package]]
+ name = "encoding_rs"
+-version = "0.8.31"
++version = "0.8.32"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "9852635589dc9f9ea1b6fe9f05b50ef208c85c834a562f0c6abb1c475736ec2b"
++checksum = "071a31f4ee85403370b58aca746f01041ede6f0da2730960ad001edc2b71b394"
+ dependencies = [
+  "cfg-if 1.0.0",
+  "packed_simd_2",
+ ]
+ 
+ [[package]]
+ name = "env_logger"
+ version = "0.4.3"
+diff --git a/third_party/rust/encoding_rs/.cargo-checksum.json b/third_party/rust/encoding_rs/.cargo-checksum.json
+--- a/third_party/rust/encoding_rs/.cargo-checksum.json
++++ b/third_party/rust/encoding_rs/.cargo-checksum.json
+@@ -1,1 +1,1 @@
+-{"files":{"CONTRIBUTING.md":"ca1901f3e8532fb4cec894fd3664f0eaa898c0c4b961d1b992d1ed54eacf362a","COPYRIGHT":"11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190","Cargo.toml":"abf2c7d17500cfa1148b76b9a8a8574873a6f6de90d6110d0d8f6b519c8c99f6","Ideas.md":"b7452893f500163868d8de52c09addaf91e1632454ed02e892c467ed7ec39dbd","LICENSE-APACHE":"cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30","LICENSE-MIT":"3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c","LICENSE-WHATWG":"838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50","README.md":"bcb4b59cfc5f48fbaba954b8ae4daa9eaecf9044afc89208a78a7e995c321b81","build.rs":"9276ee24ef71433d46323c15296b3fbbb29c0b37c4b1ca45416587f14ba8e777","ci/miri.sh":"43cb8d82f49e3bfe2d2274b6ccd6f0714a4188ccef0cecc040829883cfdbee25","doc/Big5.txt":"f73a2edc5cb6c2d140ba6e07f4542e1c4a234950378acde1df93480f0ca0be0b","doc/EUC-JP.txt":"ee2818b907d0137f40a9ab9fd525fc700a44dbdddb6cf0c157a656566bae4bf1","doc/EUC-KR.txt":"71d9e2ccf3b124e8bdfb433c8cf2773fd878077038d0cec3c7237a50f4a78a30","doc/GBK.txt":"c1b522b5a799884e5001da661f42c5a8f4d0acb9ef1d74b206f22b5f65365606","doc/IBM866.txt":"a5a433e804d0f83af785015179fbc1d9b0eaf1f7960efcd04093e136b51fbd0e","doc/ISO-2022-JP.txt":"af86684f5a8f0e2868d7b2c292860140c3d2e5527530ca091f1b28198e8e2fe6","doc/ISO-8859-10.txt":"6d3949ad7c81ca176895101ed81a1db7df1060d64e262880b94bd31bb344ab4d","doc/ISO-8859-13.txt":"3951dd89cf93f7729148091683cf8511f4529388b7dc8dcd0d62eaed55be93fa","doc/ISO-8859-14.txt":"3d330784a0374fd255a38b47949675cc7168c800530534b0a01cac6edc623adc","doc/ISO-8859-15.txt":"24b1084aab5127a85aab99153f86e24694d0a3615f53b5ce23683f97cf66c47a","doc/ISO-8859-16.txt":"ce0272559b92ba76d7a7e476f6424ae4a5cc72e75b183611b08392e44add4d25","doc/ISO-8859-2.txt":"18ceff88c13d1b5ba455a3919b1e3de489045c4c3d2dd7e8527c125c75d54aad","doc/ISO-8859-3.txt":"21798404c68f4f5db59223362f24999da96968c0628427321fccce7d2849a130","doc/ISO-8859-4.txt":"d27f6520c6c5bfbcc19176b71d081cdb3bccde1622bb3e420d5680e812632d53","doc/ISO-8859-5.txt":"a10ec8d6ea7a78ad15da7275f6cb1a3365118527e28f9af6d0d5830501303f3a","doc/ISO-8859-6.txt":"ccda8a2efc96115336bdd77776637b9712425e44fbcf745353b9057fbef144e7","doc/ISO-8859-7.txt":"17900fa1f27a445958f0a77d7d9056be375a6bd7ee4492aa680c7c1500bab85e","doc/ISO-8859-8-I.txt":"8357555646d54265a9b9ffa3e68b08d132312f1561c60108ff9b8b1167b6ecf2","doc/ISO-8859-8.txt":"72cd6f3afb7b4a9c16a66a362473315770b7755d72c86c870e52fc3eba86c8af","doc/KOI8-R.txt":"839cf19a38da994488004ed7814b1f6151640156a9a2af02bf2efca745fb5966","doc/KOI8-U.txt":"0cc76624ed1f024183e2298b7e019957da2c70c8ca06e0fc4e6f353f50a5054f","doc/Shift_JIS.txt":"34c49141818cb9ddbcf59cc858f78a79be8ad148d563f26415108ae1f148443f","doc/UTF-16BE.txt":"e2e280d8acbaa6d2a6b3569d60e17500a285f2baa0df3363dd85537cd5a1ef8f","doc/UTF-16LE.txt":"70bdc170e3fc5298ba68f10125fb5eeb8b077036cc96bb4416c4de396f6d76c1","doc/UTF-8.txt":"ea7bae742e613010ced002cf4b601a737d2203fad65e115611451bc4428f548a","doc/gb18030.txt":"dc71378a8f07a2d8659f69ee81fb8791fef56ba86f124b429978285237bb4a7b","doc/macintosh.txt":"57491e53866711b4672d9b9ff35380b9dac9e0d8e3d6c20bdd6140603687c023","doc/replacement.txt":"4b6c3bbd7999d9d4108a281594bd02d13607e334a95465afff8c2c08d395f0e4","doc/windows-1250.txt":"61296bb6a21cdab602300d32ecfba434cb82de5ac3bc88d58710d2f125e28d39","doc/windows-1251.txt":"7deea1c61dea1485c8ff02db2c7d578db7a9aab63ab1cfd02ec04b515864689e","doc/windows-1252.txt":"933ef3bdddfce5ee132b9f1a1aa8b47423d2587bbe475b19028d0a6d38e180b6","doc/windows-1253.txt":"1a38748b88e99071a5c7b3d5456ead4caedeabab50d50d658be105bc113714de","doc/windows-1254.txt":"f8372f86c6f8d642563cd6ddc025260553292a39423df1683a98670bd7bf2b47","doc/windows-1255.txt":"4e5852494730054e2da258a74e1b9d780abbcdd8ce22ebc218ca2efe9e90493d","doc/windows-1256.txt":"c0879c5172abedead302a406e8f60d9cd9598694a0ffa4fd288ffe4fef7b8ea1","doc/windows-1257.txt":"c28a0c9f964fcb2b46d21f537c402446501a2800670481d6abf9fd9e9018d523","doc/windows-1258.txt":"5019ae4d61805c79aacbf17c93793342dbb098d65a1837783bc3e2c6d6a23602","doc/windows-874.txt":"4ef0e4501c5feba8b17aee1818602ed44b36ca8475db771ce2fc16d392cabecc","doc/x-mac-cyrillic.txt":"58be154d8a888ca3d484b83b44f749823ef339ab27f14d90ca9a856f5050a8bd","doc/x-user-defined.txt":"f9cd07c4321bf5cfb0be4bdddd251072999b04a6cf7a6f5bc63709a84e2c1ffc","generate-encoding-data.py":"be989dd25c6b946e3e8745fdc8e8a80fcf24b3be99ad0b4b78153ba3f6ab6310","rustfmt.toml":"85c1a3b4382fd89e991cbb81b70fb52780472edc064c963943cdaaa56e0a2030","src/ascii.rs":"5c94c74e9b3f48706a4a6dc2d860702a991687a2ac314319cf38cb6d8fb1eabe","src/big5.rs":"ec6e2913011a38e9a3e825a1731f139a7ca1d5b264fefae51a3cc1a68a57cef9","src/data.rs":"8a617cc57032092d65850eb27e00de687c80aea3299e839a1f58b42d0b35abf3","src/euc_jp.rs":"32047f5b540188c4cb19c07165f846b9786a09f18e315ed3e9bda1293dae52aa","src/euc_kr.rs":"9b25afc72d9378700eecfac58d55ad1c5946d6cd0ccde2c29c08200ef2de6bb9","src/gb18030.rs":"808587168d73f0c80f8520f0ca9b161866ed2efeb17a05e85fdf3b8efe7ba28a","src/handles.rs":"cc83dc0754751d67f5688a65c5e0191cba02f6bacce81a0813a243cba55eef7a","src/iso_2022_jp.rs":"9bb485e82574f4b7d4b2364f0ff276acb6a0bc111758420a3b0ec5e04c196652","src/lib.rs":"a64116a6d46ab30ce91deabdb4c5388f03be632326e8a00110bfb0c598474a0a","src/macros.rs":"200997f8870de8bfd8cdc475e92115df42108c0df661e49d3d1cbc32056e1d99","src/mem.rs":"e33f94f18a9dc53f0425c14de238dca22ff028baff4e9bca89d780ac6d581d71","src/replacement.rs":"7660b34a53f8c1ca2bdfa0e51e843ec28326950952ad8bc96569feb93ac62308","src/shift_jis.rs":"6951ae67e36b1a12fa3a30734957f444d8b1b4ae0e2bde52060b29bd0f16d9d9","src/simd_funcs.rs":"103ab4f21229270f97f5ca639ad4f8d82e0d5099974b63db4b3faa486012064b","src/single_byte.rs":"3c9e9c1f946ae622c725ba9421240c1faa9a05e95fa10dd4642a25cb276a1edc","src/test_data/big5_in.txt":"4c5a8691f8dc717311889c63894026d2fb62725a86c4208ca274a9cc8d42a503","src/test_data/big5_in_ref.txt":"99d399e17750cf9c7cf30bb253dbfe35b81c4fcbdead93cfa48b1429213473c7","src/test_data/big5_out.txt":"6193ca97c297aa20e09396038d18e938bb7ea331c26f0f2454097296723a0b13","src/test_data/big5_out_ref.txt":"36567691f557df144f6cc520015a87038dfa156f296fcf103b56ae9a718be1fc","src/test_data/euc_kr_in.txt":"c86a7224f3215fa0d04e685622a752fdc72763e8ae076230c7fd62de57ec4074","src/test_data/euc_kr_in_ref.txt":"1f419f4ca47d708b54c73c461545a022ae2e20498fdbf8005a483d752a204883","src/test_data/euc_kr_out.txt":"e7f32e026f70be1e1b58e0047baf7d3d2c520269c4f9b9992e158b4decb0a1a3","src/test_data/euc_kr_out_ref.txt":"c9907857980b20b8e9e3b584482ed6567a2be6185d72237b6322f0404944924e","src/test_data/gb18030_in.txt":"ab7231b2d3e9afacdbd7d7f3b9e5361a7ff9f7e1cfdb4f3bd905b9362b309e53","src/test_data/gb18030_in_ref.txt":"dc5069421adca2043c55f5012b55a76fdff651d22e6e699fd0978f8d5706815c","src/test_data/gb18030_out.txt":"f0208d527f5ca63de7d9a0323be8d5cf12d8a104b2943d92c2701f0c3364dac1","src/test_data/gb18030_out_ref.txt":"6819fe47627e4ea01027003fc514b9f21a1322e732d7f1fb92cc6c5455bc6c07","src/test_data/iso_2022_jp_in.txt":"cd24bbdcb1834e25db54646fbf4c41560a13dc7540f6be3dba4f5d97d44513af","src/test_data/iso_2022_jp_in_ref.txt":"3dc4e6a5e06471942d086b16c9440945e78415f6f3f47e43717e4bc2eac2cdf5","src/test_data/iso_2022_jp_out.txt":"9b6f015329dda6c3f9ee5ce6dbd6fa9c89acc21283e886836c78b8d833480c21","src/test_data/iso_2022_jp_out_ref.txt":"78cb260093a20116ad9a42f43b05d1848c5ab100b6b9a850749809e943884b35","src/test_data/jis0208_in.txt":"6df3030553ffb0a6615bb33dc8ea9dca6d9623a9028e2ffec754ce3c3da824cc","src/test_data/jis0208_in_ref.txt":"3dc4e6a5e06471942d086b16c9440945e78415f6f3f47e43717e4bc2eac2cdf5","src/test_data/jis0208_out.txt":"4ec24477e1675ce750733bdc3c5add1cd27b6bd4ce1f09289564646e9654e857","src/test_data/jis0208_out_ref.txt":"c3e1cef5032b2b1d93a406f31ff940c4e2dfe8859b8b17ca2761fee7a75a0e48","src/test_data/jis0212_in.txt":"c011f0dd72bd7c8cd922df9374ef8d2769a77190514c77f6c62b415852eeb9fe","src/test_data/jis0212_in_ref.txt":"7d9458b3d2f73e7092a7f505c08ce1d233dde18aa679fbcf9889256239cc9e06","src/test_data/shift_jis_in.txt":"02e389ccef0dd2122e63f503899402cb7f797912c2444cc80ab93131116c5524","src/test_data/shift_jis_in_ref.txt":"512f985950ca902e643c88682dba9708b7c38d3c5ec2925168ab00ac94ab19f9","src/test_data/shift_jis_out.txt":"5fbc44da7bf639bf6cfe0fa1fd3eba7102b88f81919c9ea991302712f69426fb","src/test_data/shift_jis_out_ref.txt":"466322c6fed8286c64582731755290c2296508efdd258826e6279686649b481f","src/test_labels_names.rs":"23a2e11b02b3b8d15fb5613a625e3edb2c61e70e3c581abfd638719a4088200d","src/testing.rs":"f59e671e95a98a56f6b573e8c6be4d71e670bf52f7e20eb1605d990aafa1894e","src/utf_16.rs":"c071a147fad38d750c2c247e141b76b929a48007b99f26b2922b9caecdaf2f25","src/utf_8.rs":"4bbda750d4cfcc1031d42b358955a5ef94381dbaf9c8820cfa7354fad2ede4a7","src/variant.rs":"1fab5363588a1554a7169de8731ea9cded7ac63ea35caabdd1c27a8dde68c27b","src/x_user_defined.rs":"c9c010730dfb9f141d4fed19350c08a21af240913a54bb64f5ca89ff93b6b7d1"},"package":"9852635589dc9f9ea1b6fe9f05b50ef208c85c834a562f0c6abb1c475736ec2b"}
+\ No newline at end of file
++{"files":{"CONTRIBUTING.md":"ca1901f3e8532fb4cec894fd3664f0eaa898c0c4b961d1b992d1ed54eacf362a","COPYRIGHT":"11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190","Cargo.toml":"ea1bdb0b73a66e4a6b25d8fdda6b64cadea8e99ac89f9739eeada6801d5e9010","Ideas.md":"b7452893f500163868d8de52c09addaf91e1632454ed02e892c467ed7ec39dbd","LICENSE-APACHE":"cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30","LICENSE-MIT":"3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c","LICENSE-WHATWG":"838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50","README.md":"8781ee38bba8ab4e752b2d63d7674d8ce4a557af896221434dd057a1198a9ed4","ci/miri.sh":"43cb8d82f49e3bfe2d2274b6ccd6f0714a4188ccef0cecc040829883cfdbee25","doc/Big5.txt":"f73a2edc5cb6c2d140ba6e07f4542e1c4a234950378acde1df93480f0ca0be0b","doc/EUC-JP.txt":"ee2818b907d0137f40a9ab9fd525fc700a44dbdddb6cf0c157a656566bae4bf1","doc/EUC-KR.txt":"71d9e2ccf3b124e8bdfb433c8cf2773fd878077038d0cec3c7237a50f4a78a30","doc/GBK.txt":"c1b522b5a799884e5001da661f42c5a8f4d0acb9ef1d74b206f22b5f65365606","doc/IBM866.txt":"a5a433e804d0f83af785015179fbc1d9b0eaf1f7960efcd04093e136b51fbd0e","doc/ISO-2022-JP.txt":"af86684f5a8f0e2868d7b2c292860140c3d2e5527530ca091f1b28198e8e2fe6","doc/ISO-8859-10.txt":"6d3949ad7c81ca176895101ed81a1db7df1060d64e262880b94bd31bb344ab4d","doc/ISO-8859-13.txt":"3951dd89cf93f7729148091683cf8511f4529388b7dc8dcd0d62eaed55be93fa","doc/ISO-8859-14.txt":"3d330784a0374fd255a38b47949675cc7168c800530534b0a01cac6edc623adc","doc/ISO-8859-15.txt":"24b1084aab5127a85aab99153f86e24694d0a3615f53b5ce23683f97cf66c47a","doc/ISO-8859-16.txt":"ce0272559b92ba76d7a7e476f6424ae4a5cc72e75b183611b08392e44add4d25","doc/ISO-8859-2.txt":"18ceff88c13d1b5ba455a3919b1e3de489045c4c3d2dd7e8527c125c75d54aad","doc/ISO-8859-3.txt":"21798404c68f4f5db59223362f24999da96968c0628427321fccce7d2849a130","doc/ISO-8859-4.txt":"d27f6520c6c5bfbcc19176b71d081cdb3bccde1622bb3e420d5680e812632d53","doc/ISO-8859-5.txt":"a10ec8d6ea7a78ad15da7275f6cb1a3365118527e28f9af6d0d5830501303f3a","doc/ISO-8859-6.txt":"ccda8a2efc96115336bdd77776637b9712425e44fbcf745353b9057fbef144e7","doc/ISO-8859-7.txt":"17900fa1f27a445958f0a77d7d9056be375a6bd7ee4492aa680c7c1500bab85e","doc/ISO-8859-8-I.txt":"8357555646d54265a9b9ffa3e68b08d132312f1561c60108ff9b8b1167b6ecf2","doc/ISO-8859-8.txt":"72cd6f3afb7b4a9c16a66a362473315770b7755d72c86c870e52fc3eba86c8af","doc/KOI8-R.txt":"839cf19a38da994488004ed7814b1f6151640156a9a2af02bf2efca745fb5966","doc/KOI8-U.txt":"0cc76624ed1f024183e2298b7e019957da2c70c8ca06e0fc4e6f353f50a5054f","doc/Shift_JIS.txt":"34c49141818cb9ddbcf59cc858f78a79be8ad148d563f26415108ae1f148443f","doc/UTF-16BE.txt":"e2e280d8acbaa6d2a6b3569d60e17500a285f2baa0df3363dd85537cd5a1ef8f","doc/UTF-16LE.txt":"70bdc170e3fc5298ba68f10125fb5eeb8b077036cc96bb4416c4de396f6d76c1","doc/UTF-8.txt":"ea7bae742e613010ced002cf4b601a737d2203fad65e115611451bc4428f548a","doc/gb18030.txt":"dc71378a8f07a2d8659f69ee81fb8791fef56ba86f124b429978285237bb4a7b","doc/macintosh.txt":"57491e53866711b4672d9b9ff35380b9dac9e0d8e3d6c20bdd6140603687c023","doc/replacement.txt":"4b6c3bbd7999d9d4108a281594bd02d13607e334a95465afff8c2c08d395f0e4","doc/windows-1250.txt":"61296bb6a21cdab602300d32ecfba434cb82de5ac3bc88d58710d2f125e28d39","doc/windows-1251.txt":"7deea1c61dea1485c8ff02db2c7d578db7a9aab63ab1cfd02ec04b515864689e","doc/windows-1252.txt":"933ef3bdddfce5ee132b9f1a1aa8b47423d2587bbe475b19028d0a6d38e180b6","doc/windows-1253.txt":"1a38748b88e99071a5c7b3d5456ead4caedeabab50d50d658be105bc113714de","doc/windows-1254.txt":"f8372f86c6f8d642563cd6ddc025260553292a39423df1683a98670bd7bf2b47","doc/windows-1255.txt":"4e5852494730054e2da258a74e1b9d780abbcdd8ce22ebc218ca2efe9e90493d","doc/windows-1256.txt":"c0879c5172abedead302a406e8f60d9cd9598694a0ffa4fd288ffe4fef7b8ea1","doc/windows-1257.txt":"c28a0c9f964fcb2b46d21f537c402446501a2800670481d6abf9fd9e9018d523","doc/windows-1258.txt":"5019ae4d61805c79aacbf17c93793342dbb098d65a1837783bc3e2c6d6a23602","doc/windows-874.txt":"4ef0e4501c5feba8b17aee1818602ed44b36ca8475db771ce2fc16d392cabecc","doc/x-mac-cyrillic.txt":"58be154d8a888ca3d484b83b44f749823ef339ab27f14d90ca9a856f5050a8bd","doc/x-user-defined.txt":"f9cd07c4321bf5cfb0be4bdddd251072999b04a6cf7a6f5bc63709a84e2c1ffc","generate-encoding-data.py":"be989dd25c6b946e3e8745fdc8e8a80fcf24b3be99ad0b4b78153ba3f6ab6310","rustfmt.toml":"85c1a3b4382fd89e991cbb81b70fb52780472edc064c963943cdaaa56e0a2030","src/ascii.rs":"c44c002641adb5ebc4368707a8cc0a076d2f33e6a5c27b1b69988eb515f5653d","src/big5.rs":"ec6e2913011a38e9a3e825a1731f139a7ca1d5b264fefae51a3cc1a68a57cef9","src/data.rs":"8a617cc57032092d65850eb27e00de687c80aea3299e839a1f58b42d0b35abf3","src/euc_jp.rs":"32047f5b540188c4cb19c07165f846b9786a09f18e315ed3e9bda1293dae52aa","src/euc_kr.rs":"9b25afc72d9378700eecfac58d55ad1c5946d6cd0ccde2c29c08200ef2de6bb9","src/gb18030.rs":"808587168d73f0c80f8520f0ca9b161866ed2efeb17a05e85fdf3b8efe7ba28a","src/handles.rs":"cc83dc0754751d67f5688a65c5e0191cba02f6bacce81a0813a243cba55eef7a","src/iso_2022_jp.rs":"9bb485e82574f4b7d4b2364f0ff276acb6a0bc111758420a3b0ec5e04c196652","src/lib.rs":"1dc07b818e45846b16ddcaf0de46c8862dd7df8099123ec38b95c3f8ad9c91ec","src/macros.rs":"200997f8870de8bfd8cdc475e92115df42108c0df661e49d3d1cbc32056e1d99","src/mem.rs":"0bf34103e0ad1b842a13a082dee2b920b05cf4fb0f145c9ee7f608f4cb4a544f","src/replacement.rs":"7660b34a53f8c1ca2bdfa0e51e843ec28326950952ad8bc96569feb93ac62308","src/shift_jis.rs":"6951ae67e36b1a12fa3a30734957f444d8b1b4ae0e2bde52060b29bd0f16d9d9","src/simd_funcs.rs":"2612aba86e1d201096d7e47a859bc3444f85934cc82d8adc6d39a4304d9eecfc","src/single_byte.rs":"3c9e9c1f946ae622c725ba9421240c1faa9a05e95fa10dd4642a25cb276a1edc","src/test_data/big5_in.txt":"4c5a8691f8dc717311889c63894026d2fb62725a86c4208ca274a9cc8d42a503","src/test_data/big5_in_ref.txt":"99d399e17750cf9c7cf30bb253dbfe35b81c4fcbdead93cfa48b1429213473c7","src/test_data/big5_out.txt":"6193ca97c297aa20e09396038d18e938bb7ea331c26f0f2454097296723a0b13","src/test_data/big5_out_ref.txt":"36567691f557df144f6cc520015a87038dfa156f296fcf103b56ae9a718be1fc","src/test_data/euc_kr_in.txt":"c86a7224f3215fa0d04e685622a752fdc72763e8ae076230c7fd62de57ec4074","src/test_data/euc_kr_in_ref.txt":"1f419f4ca47d708b54c73c461545a022ae2e20498fdbf8005a483d752a204883","src/test_data/euc_kr_out.txt":"e7f32e026f70be1e1b58e0047baf7d3d2c520269c4f9b9992e158b4decb0a1a3","src/test_data/euc_kr_out_ref.txt":"c9907857980b20b8e9e3b584482ed6567a2be6185d72237b6322f0404944924e","src/test_data/gb18030_in.txt":"ab7231b2d3e9afacdbd7d7f3b9e5361a7ff9f7e1cfdb4f3bd905b9362b309e53","src/test_data/gb18030_in_ref.txt":"dc5069421adca2043c55f5012b55a76fdff651d22e6e699fd0978f8d5706815c","src/test_data/gb18030_out.txt":"f0208d527f5ca63de7d9a0323be8d5cf12d8a104b2943d92c2701f0c3364dac1","src/test_data/gb18030_out_ref.txt":"6819fe47627e4ea01027003fc514b9f21a1322e732d7f1fb92cc6c5455bc6c07","src/test_data/iso_2022_jp_in.txt":"cd24bbdcb1834e25db54646fbf4c41560a13dc7540f6be3dba4f5d97d44513af","src/test_data/iso_2022_jp_in_ref.txt":"3dc4e6a5e06471942d086b16c9440945e78415f6f3f47e43717e4bc2eac2cdf5","src/test_data/iso_2022_jp_out.txt":"9b6f015329dda6c3f9ee5ce6dbd6fa9c89acc21283e886836c78b8d833480c21","src/test_data/iso_2022_jp_out_ref.txt":"78cb260093a20116ad9a42f43b05d1848c5ab100b6b9a850749809e943884b35","src/test_data/jis0208_in.txt":"6df3030553ffb0a6615bb33dc8ea9dca6d9623a9028e2ffec754ce3c3da824cc","src/test_data/jis0208_in_ref.txt":"3dc4e6a5e06471942d086b16c9440945e78415f6f3f47e43717e4bc2eac2cdf5","src/test_data/jis0208_out.txt":"4ec24477e1675ce750733bdc3c5add1cd27b6bd4ce1f09289564646e9654e857","src/test_data/jis0208_out_ref.txt":"c3e1cef5032b2b1d93a406f31ff940c4e2dfe8859b8b17ca2761fee7a75a0e48","src/test_data/jis0212_in.txt":"c011f0dd72bd7c8cd922df9374ef8d2769a77190514c77f6c62b415852eeb9fe","src/test_data/jis0212_in_ref.txt":"7d9458b3d2f73e7092a7f505c08ce1d233dde18aa679fbcf9889256239cc9e06","src/test_data/shift_jis_in.txt":"02e389ccef0dd2122e63f503899402cb7f797912c2444cc80ab93131116c5524","src/test_data/shift_jis_in_ref.txt":"512f985950ca902e643c88682dba9708b7c38d3c5ec2925168ab00ac94ab19f9","src/test_data/shift_jis_out.txt":"5fbc44da7bf639bf6cfe0fa1fd3eba7102b88f81919c9ea991302712f69426fb","src/test_data/shift_jis_out_ref.txt":"466322c6fed8286c64582731755290c2296508efdd258826e6279686649b481f","src/test_labels_names.rs":"23a2e11b02b3b8d15fb5613a625e3edb2c61e70e3c581abfd638719a4088200d","src/testing.rs":"f59e671e95a98a56f6b573e8c6be4d71e670bf52f7e20eb1605d990aafa1894e","src/utf_16.rs":"c071a147fad38d750c2c247e141b76b929a48007b99f26b2922b9caecdaf2f25","src/utf_8.rs":"7b7d887b347f1aefa03246b028a36a72758a4ce76c28f3b45c19467851aa7839","src/variant.rs":"1fab5363588a1554a7169de8731ea9cded7ac63ea35caabdd1c27a8dde68c27b","src/x_user_defined.rs":"c9c010730dfb9f141d4fed19350c08a21af240913a54bb64f5ca89ff93b6b7d1"},"package":"071a31f4ee85403370b58aca746f01041ede6f0da2730960ad001edc2b71b394"}
+\ No newline at end of file
+diff --git a/third_party/rust/encoding_rs/Cargo.toml b/third_party/rust/encoding_rs/Cargo.toml
+--- a/third_party/rust/encoding_rs/Cargo.toml
++++ b/third_party/rust/encoding_rs/Cargo.toml
+@@ -7,17 +7,17 @@
+ #
+ # If you are reading this file be aware that the original Cargo.toml
+ # will likely look very different (and much more reasonable).
+ # See Cargo.toml.orig for the original contents.
+ 
+ [package]
+ edition = "2018"
+ name = "encoding_rs"
+-version = "0.8.31"
++version = "0.8.32"
+ authors = ["Henri Sivonen <hsivonen@hsivonen.fi>"]
+ description = "A Gecko-oriented implementation of the Encoding Standard"
+ homepage = "https://docs.rs/encoding_rs/"
+ documentation = "https://docs.rs/encoding_rs/"
+ readme = "README.md"
+ keywords = [
+     "encoding",
+     "web",
+diff --git a/third_party/rust/encoding_rs/README.md b/third_party/rust/encoding_rs/README.md
+--- a/third_party/rust/encoding_rs/README.md
++++ b/third_party/rust/encoding_rs/README.md
+@@ -440,21 +440,27 @@ To regenerate the generated code:
+ - [x] Replace uconv with encoding_rs in Gecko.
+ - [x] Implement the rust-encoding API in terms of encoding_rs.
+ - [x] Add SIMD acceleration for Aarch64.
+ - [x] Investigate the use of NEON on 32-bit ARM.
+ - [ ] ~Investigate Björn Höhrmann's lookup table acceleration for UTF-8 as
+       adapted to Rust in rust-encoding.~
+ - [x] Add actually fast CJK encode options.
+ - [ ] ~Investigate [Bob Steagall's lookup table acceleration for UTF-8](https://github.com/BobSteagall/CppNow2018/blob/master/FastConversionFromUTF-8/Fast%20Conversion%20From%20UTF-8%20with%20C%2B%2B%2C%20DFAs%2C%20and%20SSE%20Intrinsics%20-%20Bob%20Steagall%20-%20C%2B%2BNow%202018.pdf).~
+-- [ ] Provide a build mode that works without `alloc` (with lesser API surface).
++- [x] Provide a build mode that works without `alloc` (with lesser API surface).
+ - [ ] Migrate to `std::simd` once it is stable and declare 1.0.
+ 
+ ## Release Notes
+ 
++### 0.8.32
++
++* Removed `build.rs`. (This removal should resolve false positives reported by some antivirus products. This may break some build configurations that have opted out of Rust's guarantees against future build breakage.)
++* Internal change to what API is used for reinterpreting the lane configuration of SIMD vectors.
++* Documentation improvements.
++
+ ### 0.8.31
+ 
+ * Use SPDX with parentheses now that crates.io supports parentheses.
+ 
+ ### 0.8.30
+ 
+ * Update the licensing information to take into account the WHATWG data license change.
+ 
+diff --git a/third_party/rust/encoding_rs/build.rs b/third_party/rust/encoding_rs/build.rs
+deleted file mode 100644
+--- a/third_party/rust/encoding_rs/build.rs
++++ /dev/null
+@@ -1,12 +0,0 @@
+-fn main() {
+-    // This does not enable `RUSTC_BOOTSTRAP=1` for `packed_simd`.
+-    // You still need to knowingly have a setup that makes
+-    // `packed_simd` compile. Therefore, having this file on
+-    // crates.io is harmless in terms of users of `encoding_rs`
+-    // accidentally depending on nightly features. Having this
+-    // here means that if you knowingly want this, you only
+-    // need to maintain a fork of `packed_simd` without _also_
+-    // having to maintain a fork of `encoding_rs`.
+-    #[cfg(feature = "simd-accel")]
+-    println!("cargo:rustc-env=RUSTC_BOOTSTRAP=1");
+-}
+diff --git a/third_party/rust/encoding_rs/src/ascii.rs b/third_party/rust/encoding_rs/src/ascii.rs
+--- a/third_party/rust/encoding_rs/src/ascii.rs
++++ b/third_party/rust/encoding_rs/src/ascii.rs
+@@ -35,24 +35,22 @@ cfg_if! {
+     if #[cfg(feature = "simd-accel")] {
+         #[allow(unused_imports)]
+         use ::core::intrinsics::unlikely;
+         #[allow(unused_imports)]
+         use ::core::intrinsics::likely;
+     } else {
+         #[allow(dead_code)]
+         #[inline(always)]
+-        // Unsafe to match the intrinsic, which is needlessly unsafe.
+-        unsafe fn unlikely(b: bool) -> bool {
++        fn unlikely(b: bool) -> bool {
+             b
+         }
+         #[allow(dead_code)]
+         #[inline(always)]
+-        // Unsafe to match the intrinsic, which is needlessly unsafe.
+-        unsafe fn likely(b: bool) -> bool {
++        fn likely(b: bool) -> bool {
+             b
+         }
+     }
+ }
+ 
+ // `as` truncates, so works on 32-bit, too.
+ #[allow(dead_code)]
+ pub const ASCII_MASK: usize = 0x8080_8080_8080_8080u64 as usize;
+diff --git a/third_party/rust/encoding_rs/src/lib.rs b/third_party/rust/encoding_rs/src/lib.rs
+--- a/third_party/rust/encoding_rs/src/lib.rs
++++ b/third_party/rust/encoding_rs/src/lib.rs
+@@ -164,18 +164,20 @@
+ //! assert_eq!(&output[..], expectation);
+ //! assert!(!total_had_errors);
+ //! ```
+ //!
+ //! ## UTF-16LE, UTF-16BE and Unicode Encoding Schemes
+ //!
+ //! The Encoding Standard doesn't specify encoders for UTF-16LE and UTF-16BE,
+ //! __so this crate does not provide encoders for those encodings__!
+-//! Along with the replacement encoding, their _output encoding_ is UTF-8,
+-//! so you get an UTF-8 encoder if you request an encoder for them.
++//! Along with the replacement encoding, their _output encoding_ (i.e. the
++//! encoding used for form submission and error handling in the query string
++//! of URLs) is UTF-8, so you get an UTF-8 encoder if you request an encoder
++//! for them.
+ //!
+ //! Additionally, the Encoding Standard factors BOM handling into wrapper
+ //! algorithms so that BOM handling isn't part of the definition of the
+ //! encodings themselves. The Unicode _encoding schemes_ in the Unicode
+ //! Standard define BOM handling or lack thereof as part of the encoding
+ //! scheme.
+ //!
+ //! When used with the `_without_bom_handling` entry points, the UTF-16LE
+@@ -193,16 +195,20 @@
+ //! not part of the behavior of the UTF-16 _encoding scheme_ per the
+ //! Unicode Standard.
+ //!
+ //! The UTF-32 family of Unicode encoding schemes is not supported
+ //! by this crate. The Encoding Standard doesn't define any UTF-32
+ //! family encodings, since they aren't necessary for consuming Web
+ //! content.
+ //!
++//! While gb18030 is capable of representing U+FEFF, the Encoding
++//! Standard does not treat the gb18030 byte representation of U+FEFF
++//! as a BOM, so neither does this crate.
++//!
+ //! ## ISO-8859-1
+ //!
+ //! ISO-8859-1 does not exist as a distinct encoding from windows-1252 in
+ //! the Encoding Standard. Therefore, an encoding that maps the unsigned
+ //! byte value to the same Unicode scalar value is not available via
+ //! `Encoding` in this crate.
+ //!
+ //! However, the functions whose name starts with `convert` and contains
+@@ -252,17 +258,18 @@
+ //! For single-byte DOS encodings beyond the ones supported by the Encoding
+ //! Standard, there is the [`oem_cp`](https://crates.io/crates/oem_cp) crate.
+ //!
+ //! # Preparing Text for the Encoders
+ //!
+ //! Normalizing text into Unicode Normalization Form C prior to encoding text
+ //! into a legacy encoding minimizes unmappable characters. Text can be
+ //! normalized to Unicode Normalization Form C using the
+-//! [`unic-normal`](https://crates.io/crates/unic-normal) crate.
++//! [`icu_normalizer`](https://crates.io/crates/icu_normalizer) crate, which
++//! is part of [ICU4X](https://icu4x.unicode.org/).
+ //!
+ //! The exception is windows-1258, which after normalizing to Unicode
+ //! Normalization Form C requires tone marks to be decomposed in order to
+ //! minimize unmappable characters. Vietnamese tone marks can be decomposed
+ //! using the [`detone`](https://crates.io/crates/detone) crate.
+ //!
+ //! # Streaming & Non-Streaming; Rust & C/C++
+ //!
+@@ -277,32 +284,32 @@
+ //!
+ //! There is no analogous C API exposed via FFI, mainly because C doesn't have
+ //! standard types for growable byte buffers and Unicode strings that know
+ //! their length.
+ //!
+ //! The C API (header file generated at `target/include/encoding_rs.h` when
+ //! building encoding_rs) can, in turn, be wrapped for use from C++. Such a
+ //! C++ wrapper can re-create the non-streaming API in C++ for C++ callers.
+-//! The C binding comes with a [C++14 wrapper][2] that uses standard library +
++//! The C binding comes with a [C++17 wrapper][2] that uses standard library +
+ //! [GSL][3] types and that recreates the non-streaming API in C++ on top of
+-//! the streaming API. A C++ wrapper with XPCOM/MFBT types is being developed
+-//! as part of Mozilla [bug 1261841][4].
++//! the streaming API. A C++ wrapper with XPCOM/MFBT types is available as
++//! [`mozilla::Encoding`][4].
+ //!
+ //! The `Encoding` type is common to both the streaming and non-streaming
+ //! modes. In the streaming mode, decoding operations are performed with a
+ //! `Decoder` and encoding operations with an `Encoder` object obtained via
+ //! `Encoding`. In the non-streaming mode, decoding and encoding operations are
+ //! performed using methods on `Encoding` objects themselves, so the `Decoder`
+ //! and `Encoder` objects are not used at all.
+ //!
+ //! [1]: https://github.com/hsivonen/encoding_c
+ //! [2]: https://github.com/hsivonen/encoding_c/blob/master/include/encoding_rs_cpp.h
+ //! [3]: https://github.com/Microsoft/GSL/
+-//! [4]: https://bugzilla.mozilla.org/show_bug.cgi?id=encoding_rs
++//! [4]: https://searchfox.org/mozilla-central/source/intl/Encoding.h
+ //!
+ //! # Memory management
+ //!
+ //! The non-streaming mode never performs heap allocations (even the methods
+ //! that write into a `Vec<u8>` or a `String` by taking them as arguments do
+ //! not reallocate the backing buffer of the `Vec<u8>` or the `String`). That
+ //! is, the non-streaming mode uses caller-allocated buffers exclusively.
+ //!
+@@ -677,17 +684,17 @@
+ //! <tr><td>TIS-620</td><td>windows-874</td></tr>
+ //! </tbody>
+ //! </table>
+ //!
+ //! See the section [_UTF-16LE, UTF-16BE and Unicode Encoding Schemes_](#utf-16le-utf-16be-and-unicode-encoding-schemes)
+ //! for discussion about the UTF-16 family.
+ 
+ #![no_std]
+-#![cfg_attr(feature = "simd-accel", feature(stdsimd, core_intrinsics))]
++#![cfg_attr(feature = "simd-accel", feature(core_intrinsics))]
+ 
+ #[cfg(feature = "alloc")]
+ #[cfg_attr(test, macro_use)]
+ extern crate alloc;
+ 
+ extern crate core;
+ #[macro_use]
+ extern crate cfg_if;
+@@ -2917,33 +2924,38 @@ impl Encoding {
+     /// U+0000...U+007F and vice versa.
+     #[cfg(feature = "alloc")]
+     #[inline]
+     fn is_potentially_borrowable(&'static self) -> bool {
+         !(self == REPLACEMENT || self == UTF_16BE || self == UTF_16LE)
+     }
+ 
+     /// Returns the _output encoding_ of this encoding. This is UTF-8 for
+-    /// UTF-16BE, UTF-16LE and replacement and the encoding itself otherwise.
++    /// UTF-16BE, UTF-16LE, and replacement and the encoding itself otherwise.
++    ///
++    /// _Note:_ The _output encoding_ concept is needed for form submission and
++    /// error handling in the query strings of URLs in the Web Platform.
+     ///
+     /// Available via the C wrapper.
+     #[inline]
+     pub fn output_encoding(&'static self) -> &'static Encoding {
+         if self == REPLACEMENT || self == UTF_16BE || self == UTF_16LE {
+             UTF_8
+         } else {
+             self
+         }
+     }
+ 
+     /// Decode complete input to `Cow<'a, str>` _with BOM sniffing_ and with
+     /// malformed sequences replaced with the REPLACEMENT CHARACTER when the
+     /// entire input is available as a single buffer (i.e. the end of the
+     /// buffer marks the end of the stream).
+     ///
++    /// The BOM, if any, does not appear in the output.
++    ///
+     /// This method implements the (non-streaming version of) the
+     /// [_decode_](https://encoding.spec.whatwg.org/#decode) spec concept.
+     ///
+     /// The second item in the returned tuple is the encoding that was actually
+     /// used (which may differ from this encoding thanks to BOM sniffing).
+     ///
+     /// The third item in the returned tuple indicates whether there were
+     /// malformed sequences (that were replaced with the REPLACEMENT CHARACTER).
+@@ -2980,16 +2992,18 @@ impl Encoding {
+         (cow, encoding, had_errors)
+     }
+ 
+     /// Decode complete input to `Cow<'a, str>` _with BOM removal_ and with
+     /// malformed sequences replaced with the REPLACEMENT CHARACTER when the
+     /// entire input is available as a single buffer (i.e. the end of the
+     /// buffer marks the end of the stream).
+     ///
++    /// Only an initial byte sequence that is a BOM for this encoding is removed.
++    ///
+     /// When invoked on `UTF_8`, this method implements the (non-streaming
+     /// version of) the
+     /// [_UTF-8 decode_](https://encoding.spec.whatwg.org/#utf-8-decode) spec
+     /// concept.
+     ///
+     /// The second item in the returned pair indicates whether there were
+     /// malformed sequences (that were replaced with the REPLACEMENT CHARACTER).
+     ///
+@@ -3212,31 +3226,32 @@ impl Encoding {
+                 debug_assert_eq!(read, input.len());
+                 Some(Cow::Owned(string))
+             }
+             DecoderResult::Malformed(_, _) => None,
+             DecoderResult::OutputFull => unreachable!(),
+         }
+     }
+ 
+-    /// Encode complete input to `Cow<'a, [u8]>` with unmappable characters
+-    /// replaced with decimal numeric character references when the entire input
+-    /// is available as a single buffer (i.e. the end of the buffer marks the
+-    /// end of the stream).
++    /// Encode complete input to `Cow<'a, [u8]>` using the
++    /// [_output encoding_](Encoding::output_encoding) of this encoding with
++    /// unmappable characters replaced with decimal numeric character references
++    /// when the entire input is available as a single buffer (i.e. the end of
++    /// the buffer marks the end of the stream).
+     ///
+     /// This method implements the (non-streaming version of) the
+     /// [_encode_](https://encoding.spec.whatwg.org/#encode) spec concept. For
+     /// the [_UTF-8 encode_](https://encoding.spec.whatwg.org/#utf-8-encode)
+     /// spec concept, it is slightly more efficient to use
+     /// <code><var>string</var>.as_bytes()</code> instead of invoking this
+     /// method on `UTF_8`.
+     ///
+     /// The second item in the returned tuple is the encoding that was actually
+-    /// used (which may differ from this encoding thanks to some encodings
+-    /// having UTF-8 as their output encoding).
++    /// used (*which may differ from this encoding thanks to some encodings
++    /// having UTF-8 as their output encoding*).
+     ///
+     /// The third item in the returned tuple indicates whether there were
+     /// unmappable characters (that were replaced with HTML numeric character
+     /// references).
+     ///
+     /// _Note:_ It is wrong to use this when the input buffer represents only
+     /// a segment of the input instead of the whole input. Use `new_encoder()`
+     /// when encoding segmented output.
+@@ -3315,17 +3330,18 @@ impl Encoding {
+ 
+     fn new_variant_decoder(&'static self) -> VariantDecoder {
+         self.variant.new_variant_decoder()
+     }
+ 
+     /// Instantiates a new decoder for this encoding with BOM sniffing enabled.
+     ///
+     /// BOM sniffing may cause the returned decoder to morph into a decoder
+-    /// for UTF-8, UTF-16LE or UTF-16BE instead of this encoding.
++    /// for UTF-8, UTF-16LE or UTF-16BE instead of this encoding. The BOM
++    /// does not appear in the output.
+     ///
+     /// Available via the C wrapper.
+     #[inline]
+     pub fn new_decoder(&'static self) -> Decoder {
+         Decoder::new(self, self.new_variant_decoder(), BomHandling::Sniff)
+     }
+ 
+     /// Instantiates a new decoder for this encoding with BOM removal.
+@@ -3353,17 +3369,21 @@ impl Encoding {
+     /// instead of this method to cause the BOM to be removed.
+     ///
+     /// Available via the C wrapper.
+     #[inline]
+     pub fn new_decoder_without_bom_handling(&'static self) -> Decoder {
+         Decoder::new(self, self.new_variant_decoder(), BomHandling::Off)
+     }
+ 
+-    /// Instantiates a new encoder for the output encoding of this encoding.
++    /// Instantiates a new encoder for the [_output encoding_](Encoding::output_encoding)
++    /// of this encoding.
++    ///
++    /// _Note:_ The output encoding of UTF-16BE, UTF-16LE, and replacement is UTF-8. There
++    /// is no encoder for UTF-16BE, UTF-16LE, and replacement themselves.
+     ///
+     /// Available via the C wrapper.
+     #[inline]
+     pub fn new_encoder(&'static self) -> Encoder {
+         let enc = self.output_encoding();
+         enc.variant.new_encoder(enc)
+     }
+ 
+diff --git a/third_party/rust/encoding_rs/src/mem.rs b/third_party/rust/encoding_rs/src/mem.rs
+--- a/third_party/rust/encoding_rs/src/mem.rs
++++ b/third_party/rust/encoding_rs/src/mem.rs
+@@ -45,23 +45,21 @@ macro_rules! non_fuzz_debug_assert {
+ }
+ 
+ cfg_if! {
+     if #[cfg(feature = "simd-accel")] {
+         use ::core::intrinsics::likely;
+         use ::core::intrinsics::unlikely;
+     } else {
+         #[inline(always)]
+-        // Unsafe to match the intrinsic, which is needlessly unsafe.
+-        unsafe fn likely(b: bool) -> bool {
++        fn likely(b: bool) -> bool {
+             b
+         }
+         #[inline(always)]
+-        // Unsafe to match the intrinsic, which is needlessly unsafe.
+-        unsafe fn unlikely(b: bool) -> bool {
++        fn unlikely(b: bool) -> bool {
+             b
+         }
+     }
+ }
+ 
+ /// Classification of text as Latin1 (all code points are below U+0100),
+ /// left-to-right with some non-Latin1 characters or as containing at least
+ /// some right-to-left characters.
+@@ -910,17 +908,17 @@ pub fn is_utf8_bidi(buffer: &[u8]) -> bo
+                                         *(UTF8_DATA.table.get_unchecked(byte as usize + 0x80))
+                                     },
+                             ) | u16::from(third >> 6)
+                                 | (u16::from(fourth & 0xC0) << 2))
+                                 != 0x202
+                             {
+                                 return true;
+                             }
+-                            if unsafe { unlikely(second == 0x90 || second == 0x9E) } {
++                            if unlikely(second == 0x90 || second == 0x9E) {
+                                 let third = src[read + 2];
+                                 if third >= 0xA0 {
+                                     return true;
+                                 }
+                             }
+                             read += 4;
+                         }
+                         _ => {
+@@ -1168,17 +1166,17 @@ pub fn is_str_bidi(buffer: &str) -> bool
+         if let Some((mut byte, mut read)) = validate_ascii(bytes) {
+             'inner: loop {
+                 // At this point, `byte` is not included in `read`.
+                 if byte < 0xE0 {
+                     if byte >= 0x80 {
+                         // Two-byte
+                         // Adding `unlikely` here improved throughput on
+                         // Russian plain text by 33%!
+-                        if unsafe { unlikely(byte >= 0xD6) } {
++                        if unlikely(byte >= 0xD6) {
+                             if byte == 0xD6 {
+                                 let second = bytes[read + 1];
+                                 if second > 0x8F {
+                                     return true;
+                                 }
+                             } else {
+                                 return true;
+                             }
+@@ -1192,17 +1190,17 @@ pub fn is_str_bidi(buffer: &str) -> bool
+                         // ASCII space, comma and period in non-Latin context.
+                         // However, the extra branch seems to cost more than it's
+                         // worth.
+                         bytes = &bytes[read..];
+                         continue 'outer;
+                     }
+                 } else if byte < 0xF0 {
+                     // Three-byte
+-                    if unsafe { unlikely(!in_inclusive_range8(byte, 0xE3, 0xEE) && byte != 0xE1) } {
++                    if unlikely(!in_inclusive_range8(byte, 0xE3, 0xEE) && byte != 0xE1) {
+                         let second = bytes[read + 1];
+                         if byte == 0xE0 {
+                             if second < 0xA4 {
+                                 return true;
+                             }
+                         } else if byte == 0xE2 {
+                             let third = bytes[read + 2];
+                             if second == 0x80 {
+@@ -1241,17 +1239,17 @@ pub fn is_str_bidi(buffer: &str) -> bool
+                                 }
+                             }
+                         }
+                     }
+                     read += 3;
+                 } else {
+                     // Four-byte
+                     let second = bytes[read + 1];
+-                    if unsafe { unlikely(byte == 0xF0 && (second == 0x90 || second == 0x9E)) } {
++                    if unlikely(byte == 0xF0 && (second == 0x90 || second == 0x9E)) {
+                         let third = bytes[read + 2];
+                         if third >= 0xA0 {
+                             return true;
+                         }
+                     }
+                     read += 4;
+                 }
+                 // The comparison is always < or == and never >, but including
+@@ -1655,17 +1653,17 @@ pub fn convert_utf16_to_utf8_partial(src
+     // The two functions called below are marked `inline(never)` to make
+     // transitions from the hot part (first function) into the cold part
+     // (second function) go through a return and another call to discouge
+     // the CPU from speculating from the hot code into the cold code.
+     // Letting the transitions be mere intra-function jumps, even to
+     // basic blocks out-of-lined to the end of the function would wipe
+     // away a quarter of Arabic encode performance on Haswell!
+     let (read, written) = convert_utf16_to_utf8_partial_inner(src, dst);
+-    if unsafe { likely(read == src.len()) } {
++    if likely(read == src.len()) {
+         return (read, written);
+     }
+     let (tail_read, tail_written) =
+         convert_utf16_to_utf8_partial_tail(&src[read..], &mut dst[written..]);
+     (read + tail_read, written + tail_written)
+ }
+ 
+ /// Converts potentially-invalid UTF-16 to valid UTF-8 with errors replaced
+diff --git a/third_party/rust/encoding_rs/src/simd_funcs.rs b/third_party/rust/encoding_rs/src/simd_funcs.rs
+--- a/third_party/rust/encoding_rs/src/simd_funcs.rs
++++ b/third_party/rust/encoding_rs/src/simd_funcs.rs
+@@ -4,17 +4,17 @@
+ // Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
+ // https://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+ // <LICENSE-MIT or https://opensource.org/licenses/MIT>, at your
+ // option. This file may not be copied, modified, or distributed
+ // except according to those terms.
+ 
+ use packed_simd::u16x8;
+ use packed_simd::u8x16;
+-use packed_simd::FromBits;
++use packed_simd::IntoBits;
+ 
+ // TODO: Migrate unaligned access to stdlib code if/when the RFC
+ // https://github.com/rust-lang/rfcs/pull/1725 is implemented.
+ 
+ #[inline(always)]
+ pub unsafe fn load16_unaligned(ptr: *const u8) -> u8x16 {
+     let mut simd = ::core::mem::uninitialized();
+     ::core::ptr::copy_nonoverlapping(ptr, &mut simd as *mut u8x16 as *mut u8, 16);
+@@ -67,18 +67,16 @@ cfg_if! {
+         use core::arch::x86_64::__m128i;
+         use core::arch::x86_64::_mm_movemask_epi8;
+         use core::arch::x86_64::_mm_packus_epi16;
+     } else if #[cfg(all(target_feature = "sse2", target_arch = "x86"))] {
+         use core::arch::x86::__m128i;
+         use core::arch::x86::_mm_movemask_epi8;
+         use core::arch::x86::_mm_packus_epi16;
+     } else if #[cfg(target_arch = "aarch64")]{
+-        use core::arch::aarch64::uint8x16_t;
+-        use core::arch::aarch64::uint16x8_t;
+         use core::arch::aarch64::vmaxvq_u8;
+         use core::arch::aarch64::vmaxvq_u16;
+     } else {
+ 
+     }
+ }
+ 
+ // #[inline(always)]
+@@ -97,49 +95,49 @@ cfg_if! {
+ pub fn simd_byte_swap(s: u16x8) -> u16x8 {
+     let left = s << 8;
+     let right = s >> 8;
+     left | right
+ }
+ 
+ #[inline(always)]
+ pub fn to_u16_lanes(s: u8x16) -> u16x8 {
+-    u16x8::from_bits(s)
++    s.into_bits()
+ }
+ 
+ cfg_if! {
+     if #[cfg(target_feature = "sse2")] {
+ 
+         // Expose low-level mask instead of higher-level conclusion,
+         // because the non-ASCII case would perform less well otherwise.
+         #[inline(always)]
+         pub fn mask_ascii(s: u8x16) -> i32 {
+             unsafe {
+-                _mm_movemask_epi8(__m128i::from_bits(s))
++                _mm_movemask_epi8(s.into_bits())
+             }
+         }
+ 
+     } else {
+ 
+     }
+ }
+ 
+ cfg_if! {
+     if #[cfg(target_feature = "sse2")] {
+         #[inline(always)]
+         pub fn simd_is_ascii(s: u8x16) -> bool {
+             unsafe {
+-                _mm_movemask_epi8(__m128i::from_bits(s)) == 0
++                _mm_movemask_epi8(s.into_bits()) == 0
+             }
+         }
+     } else if #[cfg(target_arch = "aarch64")]{
+         #[inline(always)]
+         pub fn simd_is_ascii(s: u8x16) -> bool {
+             unsafe {
+-                vmaxvq_u8(uint8x16_t::from_bits(s)) < 0x80
++                vmaxvq_u8(s.into_bits()) < 0x80
+             }
+         }
+     } else {
+         #[inline(always)]
+         pub fn simd_is_ascii(s: u8x16) -> bool {
+             // This optimizes better on ARM than
+             // the lt formulation.
+             let highest_ascii = u8x16::splat(0x7F);
+@@ -157,41 +155,41 @@ cfg_if! {
+             }
+             let above_str_latin1 = u8x16::splat(0xC4);
+             s.lt(above_str_latin1).all()
+         }
+     } else if #[cfg(target_arch = "aarch64")]{
+         #[inline(always)]
+         pub fn simd_is_str_latin1(s: u8x16) -> bool {
+             unsafe {
+-                vmaxvq_u8(uint8x16_t::from_bits(s)) < 0xC4
++                vmaxvq_u8(s.into_bits()) < 0xC4
+             }
+         }
+     } else {
+         #[inline(always)]
+         pub fn simd_is_str_latin1(s: u8x16) -> bool {
+             let above_str_latin1 = u8x16::splat(0xC4);
+             s.lt(above_str_latin1).all()
+         }
+     }
+ }
+ 
+ cfg_if! {
+     if #[cfg(target_arch = "aarch64")]{
+         #[inline(always)]
+         pub fn simd_is_basic_latin(s: u16x8) -> bool {
+             unsafe {
+-                vmaxvq_u16(uint16x8_t::from_bits(s)) < 0x80
++                vmaxvq_u16(s.into_bits()) < 0x80
+             }
+         }
+ 
+         #[inline(always)]
+         pub fn simd_is_latin1(s: u16x8) -> bool {
+             unsafe {
+-                vmaxvq_u16(uint16x8_t::from_bits(s)) < 0x100
++                vmaxvq_u16(s.into_bits()) < 0x100
+             }
+         }
+     } else {
+         #[inline(always)]
+         pub fn simd_is_basic_latin(s: u16x8) -> bool {
+             let above_ascii = u16x8::splat(0x80);
+             s.lt(above_ascii).all()
+         }
+@@ -214,17 +212,17 @@ pub fn contains_surrogates(s: u16x8) -> 
+     (s & mask).eq(surrogate_bits).any()
+ }
+ 
+ cfg_if! {
+     if #[cfg(target_arch = "aarch64")]{
+         macro_rules! aarch64_return_false_if_below_hebrew {
+             ($s:ident) => ({
+                 unsafe {
+-                    if vmaxvq_u16(uint16x8_t::from_bits($s)) < 0x0590 {
++                    if vmaxvq_u16($s.into_bits()) < 0x0590 {
+                         return false;
+                     }
+                 }
+             })
+         }
+ 
+         macro_rules! non_aarch64_return_false_if_all {
+             ($s:ident) => ()
+@@ -291,34 +289,34 @@ pub fn simd_unpack(s: u8x16) -> (u16x8, 
+             u8x16::splat(0),
+             [0, 16, 1, 17, 2, 18, 3, 19, 4, 20, 5, 21, 6, 22, 7, 23]
+         );
+         let second: u8x16 = shuffle!(
+             s,
+             u8x16::splat(0),
+             [8, 24, 9, 25, 10, 26, 11, 27, 12, 28, 13, 29, 14, 30, 15, 31]
+         );
+-        (u16x8::from_bits(first), u16x8::from_bits(second))
++        (first.into_bits(), second.into_bits())
+     }
+ }
+ 
+ cfg_if! {
+     if #[cfg(target_feature = "sse2")] {
+         #[inline(always)]
+         pub fn simd_pack(a: u16x8, b: u16x8) -> u8x16 {
+             unsafe {
+-                u8x16::from_bits(_mm_packus_epi16(__m128i::from_bits(a), __m128i::from_bits(b)))
++                _mm_packus_epi16(a.into_bits(), b.into_bits()).into_bits()
+             }
+         }
+     } else {
+         #[inline(always)]
+         pub fn simd_pack(a: u16x8, b: u16x8) -> u8x16 {
+             unsafe {
+-                let first = u8x16::from_bits(a);
+-                let second = u8x16::from_bits(b);
++                let first: u8x16 = a.into_bits();
++                let second: u8x16 = b.into_bits();
+                 shuffle!(
+                     first,
+                     second,
+                     [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+                 )
+             }
+         }
+     }
+diff --git a/third_party/rust/encoding_rs/src/utf_8.rs b/third_party/rust/encoding_rs/src/utf_8.rs
+--- a/third_party/rust/encoding_rs/src/utf_8.rs
++++ b/third_party/rust/encoding_rs/src/utf_8.rs
+@@ -16,23 +16,21 @@ use crate::mem::convert_utf16_to_utf8_pa
+ use crate::variant::*;
+ 
+ cfg_if! {
+     if #[cfg(feature = "simd-accel")] {
+         use ::core::intrinsics::unlikely;
+         use ::core::intrinsics::likely;
+     } else {
+         #[inline(always)]
+-        // Unsafe to match the intrinsic, which is needlessly unsafe.
+-        unsafe fn unlikely(b: bool) -> bool {
++        fn unlikely(b: bool) -> bool {
+             b
+         }
+         #[inline(always)]
+-        // Unsafe to match the intrinsic, which is needlessly unsafe.
+-        unsafe fn likely(b: bool) -> bool {
++        fn likely(b: bool) -> bool {
+             b
+         }
+     }
+ }
+ 
+ #[repr(align(64))] // Align to cache lines
+ pub struct Utf8Data {
+     pub table: [u8; 384],
+@@ -83,63 +81,63 @@ pub fn utf8_valid_up_to(src: &[u8]) -> u
+             }
+         };
+         // Check for the longest sequence to avoid checking twice for the
+         // multi-byte sequences. This can't overflow with 64-bit address space,
+         // because full 64 bits aren't in use. In the 32-bit PAE case, for this
+         // to overflow would mean that the source slice would be so large that
+         // the address space of the process would not have space for any code.
+         // Therefore, the slice cannot be so long that this would overflow.
+-        if unsafe { likely(read + 4 <= src.len()) } {
++        if likely(read + 4 <= src.len()) {
+             'inner: loop {
+                 // At this point, `byte` is not included in `read`, because we
+                 // don't yet know that a) the UTF-8 sequence is valid and b) that there
+                 // is output space if it is an astral sequence.
+                 // Inspecting the lead byte directly is faster than what the
+                 // std lib does!
+-                if unsafe { likely(in_inclusive_range8(byte, 0xC2, 0xDF)) } {
++                if likely(in_inclusive_range8(byte, 0xC2, 0xDF)) {
+                     // Two-byte
+                     let second = unsafe { *(src.get_unchecked(read + 1)) };
+                     if !in_inclusive_range8(second, 0x80, 0xBF) {
+                         break 'outer;
+                     }
+                     read += 2;
+ 
+                     // Next lead (manually inlined)
+-                    if unsafe { likely(read + 4 <= src.len()) } {
++                    if likely(read + 4 <= src.len()) {
+                         byte = unsafe { *(src.get_unchecked(read)) };
+                         if byte < 0x80 {
+                             read += 1;
+                             continue 'outer;
+                         }
+                         continue 'inner;
+                     }
+                     break 'inner;
+                 }
+-                if unsafe { likely(byte < 0xF0) } {
++                if likely(byte < 0xF0) {
+                     'three: loop {
+                         // Three-byte
+                         let second = unsafe { *(src.get_unchecked(read + 1)) };
+                         let third = unsafe { *(src.get_unchecked(read + 2)) };
+                         if ((UTF8_DATA.table[usize::from(second)]
+                             & unsafe { *(UTF8_DATA.table.get_unchecked(byte as usize + 0x80)) })
+                             | (third >> 6))
+                             != 2
+                         {
+                             break 'outer;
+                         }
+                         read += 3;
+ 
+                         // Next lead (manually inlined)
+-                        if unsafe { likely(read + 4 <= src.len()) } {
++                        if likely(read + 4 <= src.len()) {
+                             byte = unsafe { *(src.get_unchecked(read)) };
+                             if in_inclusive_range8(byte, 0xE0, 0xEF) {
+                                 continue 'three;
+                             }
+-                            if unsafe { likely(byte < 0x80) } {
++                            if likely(byte < 0x80) {
+                                 read += 1;
+                                 continue 'outer;
+                             }
+                             continue 'inner;
+                         }
+                         break 'inner;
+                     }
+                 }
+@@ -154,17 +152,17 @@ pub fn utf8_valid_up_to(src: &[u8]) -> u
+                     | (u16::from(fourth & 0xC0) << 2))
+                     != 0x202
+                 {
+                     break 'outer;
+                 }
+                 read += 4;
+ 
+                 // Next lead
+-                if unsafe { likely(read + 4 <= src.len()) } {
++                if likely(read + 4 <= src.len()) {
+                     byte = unsafe { *(src.get_unchecked(read)) };
+                     if byte < 0x80 {
+                         read += 1;
+                         continue 'outer;
+                     }
+                     continue 'inner;
+                 }
+                 break 'inner;
+@@ -253,56 +251,56 @@ pub fn convert_utf8_to_utf16_up_to_inval
+             }
+         };
+         // Check for the longest sequence to avoid checking twice for the
+         // multi-byte sequences. This can't overflow with 64-bit address space,
+         // because full 64 bits aren't in use. In the 32-bit PAE case, for this
+         // to overflow would mean that the source slice would be so large that
+         // the address space of the process would not have space for any code.
+         // Therefore, the slice cannot be so long that this would overflow.
+-        if unsafe { likely(read + 4 <= src.len()) } {
++        if likely(read + 4 <= src.len()) {
+             'inner: loop {
+                 // At this point, `byte` is not included in `read`, because we
+                 // don't yet know that a) the UTF-8 sequence is valid and b) that there
+                 // is output space if it is an astral sequence.
+                 // We know, thanks to `ascii_to_basic_latin` that there is output
+                 // space for at least one UTF-16 code unit, so no need to check
+                 // for output space in the BMP cases.
+                 // Inspecting the lead byte directly is faster than what the
+                 // std lib does!
+-                if unsafe { likely(in_inclusive_range8(byte, 0xC2, 0xDF)) } {
++                if likely(in_inclusive_range8(byte, 0xC2, 0xDF)) {
+                     // Two-byte
+                     let second = unsafe { *(src.get_unchecked(read + 1)) };
+                     if !in_inclusive_range8(second, 0x80, 0xBF) {
+                         break 'outer;
+                     }
+                     unsafe {
+                         *(dst.get_unchecked_mut(written)) =
+                             ((u16::from(byte) & 0x1F) << 6) | (u16::from(second) & 0x3F)
+                     };
+                     read += 2;
+                     written += 1;
+ 
+                     // Next lead (manually inlined)
+                     if written == dst.len() {
+                         break 'outer;
+                     }
+-                    if unsafe { likely(read + 4 <= src.len()) } {
++                    if likely(read + 4 <= src.len()) {
+                         byte = unsafe { *(src.get_unchecked(read)) };
+                         if byte < 0x80 {
+                             unsafe { *(dst.get_unchecked_mut(written)) = u16::from(byte) };
+                             read += 1;
+                             written += 1;
+                             continue 'outer;
+                         }
+                         continue 'inner;
+                     }
+                     break 'inner;
+                 }
+-                if unsafe { likely(byte < 0xF0) } {
++                if likely(byte < 0xF0) {
+                     'three: loop {
+                         // Three-byte
+                         let second = unsafe { *(src.get_unchecked(read + 1)) };
+                         let third = unsafe { *(src.get_unchecked(read + 2)) };
+                         if ((UTF8_DATA.table[usize::from(second)]
+                             & unsafe { *(UTF8_DATA.table.get_unchecked(byte as usize + 0x80)) })
+                             | (third >> 6))
+                             != 2
+@@ -315,22 +313,22 @@ pub fn convert_utf8_to_utf16_up_to_inval
+                         unsafe { *(dst.get_unchecked_mut(written)) = point };
+                         read += 3;
+                         written += 1;
+ 
+                         // Next lead (manually inlined)
+                         if written == dst.len() {
+                             break 'outer;
+                         }
+-                        if unsafe { likely(read + 4 <= src.len()) } {
++                        if likely(read + 4 <= src.len()) {
+                             byte = unsafe { *(src.get_unchecked(read)) };
+                             if in_inclusive_range8(byte, 0xE0, 0xEF) {
+                                 continue 'three;
+                             }
+-                            if unsafe { likely(byte < 0x80) } {
++                            if likely(byte < 0x80) {
+                                 unsafe { *(dst.get_unchecked_mut(written)) = u16::from(byte) };
+                                 read += 1;
+                                 written += 1;
+                                 continue 'outer;
+                             }
+                             continue 'inner;
+                         }
+                         break 'inner;
+@@ -362,17 +360,17 @@ pub fn convert_utf8_to_utf16_up_to_inval
+                 };
+                 read += 4;
+                 written += 2;
+ 
+                 // Next lead
+                 if written == dst.len() {
+                     break 'outer;
+                 }
+-                if unsafe { likely(read + 4 <= src.len()) } {
++                if likely(read + 4 <= src.len()) {
+                     byte = unsafe { *(src.get_unchecked(read)) };
+                     if byte < 0x80 {
+                         unsafe { *(dst.get_unchecked_mut(written)) = u16::from(byte) };
+                         read += 1;
+                         written += 1;
+                         continue 'outer;
+                     }
+                     continue 'inner;
+@@ -649,28 +647,28 @@ pub fn convert_utf16_to_utf8_partial_inn
+                         *(dst.get_unchecked_mut(written)) = (unit >> 6) as u8 | 0xC0u8;
+                         written += 1;
+                         *(dst.get_unchecked_mut(written)) = (unit & 0x3F) as u8 | 0x80u8;
+                         written += 1;
+                     }
+                     break;
+                 }
+                 let unit_minus_surrogate_start = unit.wrapping_sub(0xD800);
+-                if unsafe { likely(unit_minus_surrogate_start > (0xDFFF - 0xD800)) } {
++                if likely(unit_minus_surrogate_start > (0xDFFF - 0xD800)) {
+                     unsafe {
+                         *(dst.get_unchecked_mut(written)) = (unit >> 12) as u8 | 0xE0u8;
+                         written += 1;
+                         *(dst.get_unchecked_mut(written)) = ((unit & 0xFC0) >> 6) as u8 | 0x80u8;
+                         written += 1;
+                         *(dst.get_unchecked_mut(written)) = (unit & 0x3F) as u8 | 0x80u8;
+                         written += 1;
+                     }
+                     break;
+                 }
+-                if unsafe { likely(unit_minus_surrogate_start <= (0xDBFF - 0xD800)) } {
++                if likely(unit_minus_surrogate_start <= (0xDBFF - 0xD800)) {
+                     // high surrogate
+                     // read > src.len() is impossible, but using
+                     // >= instead of == allows the compiler to elide a bound check.
+                     if read >= src.len() {
+                         debug_assert_eq!(read, src.len());
+                         // Unpaired surrogate at the end of the buffer.
+                         unsafe {
+                             *(dst.get_unchecked_mut(written)) = 0xEFu8;
+@@ -679,17 +677,17 @@ pub fn convert_utf16_to_utf8_partial_inn
+                             written += 1;
+                             *(dst.get_unchecked_mut(written)) = 0xBDu8;
+                             written += 1;
+                         }
+                         return (read, written);
+                     }
+                     let second = src[read];
+                     let second_minus_low_surrogate_start = second.wrapping_sub(0xDC00);
+-                    if unsafe { likely(second_minus_low_surrogate_start <= (0xDFFF - 0xDC00)) } {
++                    if likely(second_minus_low_surrogate_start <= (0xDFFF - 0xDC00)) {
+                         // The next code unit is a low surrogate. Advance position.
+                         read += 1;
+                         let astral = (u32::from(unit) << 10) + u32::from(second)
+                             - (((0xD800u32 << 10) - 0x10000u32) + 0xDC00u32);
+                         unsafe {
+                             *(dst.get_unchecked_mut(written)) = (astral >> 18) as u8 | 0xF0u8;
+                             written += 1;
+                             *(dst.get_unchecked_mut(written)) =
+@@ -721,17 +719,17 @@ pub fn convert_utf16_to_utf8_partial_inn
+             // Now see if the next unit is Basic Latin
+             // read > src.len() is impossible, but using
+             // >= instead of == allows the compiler to elide a bound check.
+             if read >= src.len() {
+                 debug_assert_eq!(read, src.len());
+                 return (read, written);
+             }
+             unit = src[read];
+-            if unsafe { unlikely(unit < 0x80) } {
++            if unlikely(unit < 0x80) {
+                 // written > dst.len() is impossible, but using
+                 // >= instead of == allows the compiler to elide a bound check.
+                 if written >= dst.len() {
+                     debug_assert_eq!(written, dst.len());
+                     return (read, written);
+                 }
+                 dst[written] = unit as u8;
+                 read += 1;

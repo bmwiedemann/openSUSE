@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 01 17:37:55 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- add 1817900-13-112a1.patch, 1849874-11503.patch, and
+  TOP-NOBUG-revendor-253172.patch to allow building with rust >= 1.48
+- request inclusion in Leap 15.4 and 15.5:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1216797
+
+-------------------------------------------------------------------
 Wed Oct 04 08:21:55 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - add seamonkey-binutils.patch to allow building with binutils >= 2.41:
