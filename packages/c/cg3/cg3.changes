@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  4 12:05:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.6
+  * Use FindPython instead of FindPythonInterp for CMake >= 3.12.0
+
+-------------------------------------------------------------------
 Thu Jun  1 13:15:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.5
