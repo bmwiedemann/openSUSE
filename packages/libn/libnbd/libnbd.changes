@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 25 19:29:55 UTC 2023 - jfehlig@suse.com
+
+- Update to version 1.18.1:
+  * Version 1.18.1.
+  * rust: Use string_starts_with instead of String.starts_with
+  * rust: Build the examples
+  * rust: Write a custom translator from POD to rustdoc
+  * rust: Add overview documentation
+  * rust: Annotate 'endif' with corresponding label
+  * utils: Slightly simplify human_size()
+  * docs: Assign CVE-2023-5215 to nbd_get_size negative result issue
+
+-------------------------------------------------------------------
 Fri Sep 29 17:22:47 UTC 2023 - jfehlig@suse.com
 
 - Update to version 1.18.0:

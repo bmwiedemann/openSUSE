@@ -107,4 +107,12 @@ near future.</comment>
   * api: Sanitize sizes larger than INT64_MAX</comment>
     <requestid>1114449</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d5320f07f8f5e1dad9127c30b8bd9c72</srcmd5>
+    <version>1.18.1</version>
+    <time>1698873063</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1121701</requestid>
+  </revision>
 </revisionlist>
