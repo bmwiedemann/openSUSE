@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Oct 20 15:18:26 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Initial packaging for openSUSE
+- Add patch for loading libegit2 dynamic module from load-path
+- Add patch to add an install target for upstream makefile
+- Add fix upstream makefile to not build libegit2 each time make is ran
+

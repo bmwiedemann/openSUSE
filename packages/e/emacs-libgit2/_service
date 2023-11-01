@@ -1,0 +1,16 @@
+<!-- -*- xml -*- -->
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="parent-tag">718a29419591906c9098ce9b02766f1994dc8886</param>
+	<param name="versionformat">@TAG_OFFSET@.%h</param>
+	<param name="url">https://github.com/magit/libegit2.git</param>
+	<param name="scm">git</param>
+    <param name="revision">main</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

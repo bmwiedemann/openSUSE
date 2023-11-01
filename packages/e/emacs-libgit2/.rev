@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e3cab36ec1342fa3b91aadba88f4a7a</srcmd5>
+    <version>467.ab1a53a</version>
+    <time>1698873045</time>
+    <user>dimstar_suse</user>
+    <comment>
+
+- Add libgit2 bindings for Emacs, can be used for example with Magit
+- Fixed typos in changes file
+</comment>
+    <requestid>1121617</requestid>
+  </revision>
+</revisionlist>
