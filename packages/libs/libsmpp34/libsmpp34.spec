@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           libsmpp34
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        PDU SMPP packaging and unpackaging tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
