@@ -16,44 +16,47 @@
 #
 
 
+%define pythons python3
 Name:           iredis
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Terminal client for Redis with auto-completion and syntax highlighting
 License:        BSD-3-Clause
 URL:            https://iredis.io/
-Source:         https://files.pythonhosted.org/packages/source/i/iredis/iredis-%{version}.tar.gz
+Source:         https://github.com/laixintao/iredis/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
+BuildRequires:  python3-poetry
 BuildRequires:  python3-setuptools
 # SECTION tests
 # for killall
 BuildRequires:  psmisc
 BuildRequires:  python3-Pygments >= 2
-BuildRequires:  python3-click >= 7.0
+BuildRequires:  python3-click >= 8.0
 BuildRequires:  python3-configobj >= 5.0
-BuildRequires:  python3-importlib-resources >= 5.1.0
-BuildRequires:  python3-mistune >= 2.0
-BuildRequires:  python3-pendulum >= 2.0
+BuildRequires:  python3-mistune >= 3.0
+BuildRequires:  python3-packaging >= 23.0
+BuildRequires:  python3-pendulum >= 2.1.0
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-pip
 BuildRequires:  python3-prompt_toolkit >= 3
 BuildRequires:  python3-pytest
-BuildRequires:  python3-redis >= 3
+BuildRequires:  python3-redis >= 4.5.3
 BuildRequires:  python3-wcwidth >= 0.1.9
 BuildRequires:  python3-wheel
-BuildRequires:  redis
+BuildRequires:  redis >= 5.0.0
 # /SECTION
 Requires:       python3-Pygments >= 2
-Requires:       python3-click >= 7.0
+Requires:       python3-click >= 8.0
 Requires:       python3-configobj >= 5.0
-Requires:       python3-importlib-resources >= 5.1.0
 Requires:       python3-mistune >= 2.0
-Requires:       python3-pendulum >= 2.0
+Requires:       python3-packaging >= 23.0
+Requires:       python3-pendulum >= 2.1.0
 Requires:       python3-prompt_toolkit >= 3
 Requires:       python3-redis >= 3
 Requires:       python3-wcwidth >= 0.1.9
-Recommends:     redis
+Recommends:     redis >= 5.0.0
 BuildArch:      noarch
 
 %description
@@ -66,27 +69,26 @@ running dangerous commands.
 
 %prep
 %setup -q -n iredis-%{version}
-# remove the <= version limitations
-sed -E -i 's/,<[0-9.]+//' setup.py
-# replace == version limitations with >=
-sed -E -i 's/==/>=/' setup.py
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
-rm -r %{buildroot}%{python3_sitelib}/tests/
-%python_expand %fdupes %{buildroot}%{python3_sitelib}
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
 # increase the timeouts
 sed -i 's/timeout=1/timeout=5/' tests/cli_tests/test_*.py
 sed -i 's/timeout=2/timeout=5/' tests/cli_tests/test_*.py
 sed -i 's/timeout=10/timeout=20/' tests/cli_tests/test_*.py
-# the tests are extremely flaky on i586 (hitting timeouts)long as x86_64 succeeds, we don't care as this is noarch
+# the tests are extremely flaky on i586 (hitting timeouts), as long as x86_64 succeeds, we don't care as this is noarch
 %ifnarch %ix86
 %{_sbindir}/redis-server --port 6379 &
+# wait for redis startup
+sleep 2
+# disable snapshots
+redis-cli CONFIG SET save ""
 # skip test_abort_reading_connection as it fails frequently (timeout) on OBS for no apparent reason, others are bugs upstream: https://github.com/laixintao/iredis/issues/417
 # skip test_peek_zset_fetch_all, test_peek_zset_fetch_part, reported upstream: https://github.com/laixintao/iredis/issues/432
 # skip test_auto_select_db_and_auth_for_reconnect_only_6 needs further inspection
@@ -95,7 +97,8 @@ killall redis-server
 %endif
 
 %files
-%{python3_sitelib}/iredis*
+%{python3_sitelib}/iredis/
+%{python3_sitelib}/iredis-%{version}*-info
 %{_bindir}/iredis
 %license LICENSE
 
