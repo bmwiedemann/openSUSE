@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 12:53:53 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.511.g0bdb16ac:
+  * fix(pkcs11): delete trailing dot on libcryptsetup-token-systemd-pkcs11.so
+  * fix(systemd-repart): correct undefined $libdir
+  * fix(dracut-systemd): use `DRACUT_VERSION` instead of `VERSION`
+  * fix(dracut.sh): abort if Bash is in POSIX mode
+  * fix(dracut-initramfs-restore.sh): do not set selinux labels if disabled
+  * fix(network): correct network device naming (bsc#1192986)
+
+-------------------------------------------------------------------
 Thu Oct 19 13:09:15 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.503.g41e99e72:
