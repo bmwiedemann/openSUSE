@@ -1,7 +1,7 @@
 cabal-version:   >= 1.10
 name:            zlib
 version:         0.6.3.0
-x-revision: 3
+x-revision:      4
 
 copyright:       (c) 2006-2016 Duncan Coutts
 license:         BSD3
@@ -36,7 +36,10 @@ tested-with:     GHC == 7.0.4
                , GHC == 8.8.4
                , GHC == 8.10.7
                , GHC == 9.0.2
-               , GHC == 9.2.2
+               , GHC == 9.2.8
+               , GHC == 9.4.7
+               , GHC == 9.6.3
+               , GHC == 9.8.1
 
 extra-source-files: changelog
                     README.md
@@ -132,6 +135,6 @@ test-suite tests
   default-language: Haskell2010
   build-depends:   base, bytestring, zlib,
                    QuickCheck       == 2.*,
-                   tasty            >= 0.8 && < 1.5,
+                   tasty            >= 0.8 && < 1.6,
                    tasty-quickcheck >= 0.8 && < 0.11
   ghc-options:     -Wall
