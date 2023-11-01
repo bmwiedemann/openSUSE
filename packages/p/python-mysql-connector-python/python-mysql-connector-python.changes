@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 12:01:18 UTC 2023 - Enno Gotthold <egotthold@suse.com>
+
+- Update to version 8.2.0
+- Remove:
+  * remove-require-version-constraint.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 09:01:23 UTC 2020 - Rolf Krahl <rolf@rotkraut.de>
 
 - Add requirement on python-dnspython and python-protobuf (bsc#1172784)

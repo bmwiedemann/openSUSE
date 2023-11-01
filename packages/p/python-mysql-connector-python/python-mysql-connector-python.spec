@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysql-connector-python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,31 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mysql-connector-python
-Version:        8.0.19
+Version:        8.2.0
 Release:        0
 Summary:        MySQL driver written in Python
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Development/Languages/Python
 URL:            http://dev.mysql.com/doc/connector-python/en/index.html
-Source:         https://cdn.mysql.com//Downloads/Connector-Python/mysql-connector-python-%{version}.tar.gz
-Patch0:         remove-require-version-constraint.patch
+# GitHub: https://github.com/mysql/mysql-connector-python
+Source:         https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-%{version}-src.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-dnspython
 Requires:       python-protobuf
-BuildArch:      noarch
 %python_subpackages
 
 %description
 MySQL driver written in Python which does not depend on MySQL C client libraries and implements the DB API v2.0 specification (PEP-249).
 
 %prep
-%setup -q -n mysql-connector-python-%{version}
-%patch0 -p1
+%setup -q -n mysql-connector-python-%{version}-src
 
 %build
 %python_build
@@ -47,8 +48,8 @@ MySQL driver written in Python which does not depend on MySQL C client libraries
 %install
 # bug in setuptools prevents proper c lib installation
 # when using python_install so use custom python_exec instead
-%python_exec setup.py install --prefix=%{_prefix} --root=%{buildroot}
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 #FIXME(toabctl): Reenable testuite
 # probably won't work against mariadb 10
@@ -61,6 +62,8 @@ MySQL driver written in Python which does not depend on MySQL C client libraries
 %files %{python_files}
 %license LICENSE.txt
 %doc README.txt CHANGES.txt
-%{python_sitelib}/*
+%{python_sitearch}/mysql
+%{python_sitearch}/mysql*.egg-info
+%{python_sitearch}/mysqlx
 
 %changelog
