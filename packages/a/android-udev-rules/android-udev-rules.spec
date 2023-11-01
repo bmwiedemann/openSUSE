@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20230614
+Version:        20231030
 Release:        0
 Summary:        Android udev rules list aimed to be the most comprehensive on the net
 License:        GPL-3.0-or-later

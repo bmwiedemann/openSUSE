@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Oct 31 07:25:51 UTC 2023 - munix9@googlemail.com
+
+- Update to version 20231030
+  Bug Fixes
+  * Use up-to-date SPDX identifiers where applicable
+  * Use correct Debian Archive section name
+  * Don't set value while exiting script. (#267)
+  * Revert an accidental early exit
+
+  Documentation
+  * Mention wiki in README.md
+
+  Features
+  * Add Meizu M6T (#262)
+  * Add ASUS MeMO Pad 7 ME176C/ME176CX in DNX/Rescue mode
+  * Add support for fastboot without adb
+  * Add Motorola Moto Z3 Play
+  * Add MediaTek Moto E22i, MT65xx/67xx (#271)
+  * Add Samsung Core and general cleanup (#276)
+  * Add Motorola G3, edit some other Motorola values (#277) (#277)
+  * Add Samsung Galaxy A5 (#286)
+  * Add 04e8:685d ODIN link used instead of fastboot by Samsung (#284)
+
+  Miscellaneous Tasks
+  * Bump copyright to 2023 and include all years with contributions
+  * Use more specific adb GOTOs for Oppo and OnePlus (#272)
+  * Use more specific adb GOTOs for Asus (#273)
+  * Use more specific adb GOTOs for Fairphone (#274)
+  * Use more specific adb GOTOs for Xiaomi (#275)
+  * Use more specific adb GOTOs for ZTE (#278) (#278)
+  * Use more specific adb GOTOs for Qualcom & nVidia (#279) (#279)
+  * Use more specific adb GOTOs for Google (#282)
+  * Use more specific adb GOTOs for HTC (#280)
+  * Use more specific adb GOTOs for LG (#281)
+  * Use more specific adb GOTOs for misc (#283)
+  * Modify BQ device as adb+mtp, or mtp (#285)
+
+  Refactor
+  * Use GOTO next LABEL after device found (for a faster rules script). (#266)
+
+  Styling
+  * Strip trailing spaces and make comments more readable
+
+-------------------------------------------------------------------
 Thu Jun 15 08:14:53 UTC 2023 - munix9@googlemail.com
 
 - Update to version 20230614
