@@ -60,4 +60,14 @@
 </comment>
     <requestid>1083087</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a072f2e4b94449eddd0302742a9f4cc</srcmd5>
+    <version>6.6.0</version>
+    <time>1698872993</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.6.0
+  * This adds support for Qt v6.6.
+</comment>
+    <requestid>1121502</requestid>
+  </revision>
 </revisionlist>
