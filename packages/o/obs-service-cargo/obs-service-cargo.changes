@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 31 16:03:21 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.8.4:
+  * fix: also check attempt to vendor if it is also a workspace
+
+-------------------------------------------------------------------
+Tue Oct 31 15:43:58 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.8.3:
+  * misc: add stop sign in error message
+  * improve error handling impl
+  * fix: also make sure it really has no deps
+  * utils: exit vendor step if no dependencies found
+  * update README again
+  * update README
+  * docs: update README regarding the new flag
+  * all: apply clippy lint suggestions
+  * fix: also copy top-level folder if src is a directory
+  * Rework of compression and vendoring to be clearer
+  * Minor output improvements
+  * fix: also copy top-level folder if src is a directory
+  * update email address in manifest file
+  * remove unused dead code
+  * clippy: apply clippy suggestions
+
+-------------------------------------------------------------------
 Thu Oct 12 02:56:04 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to release 0.8.0:

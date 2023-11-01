@@ -22,7 +22,7 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE/obs-service-cargo_vendor
-Version:        0.8.0
+Version:        0.8.4
 Release:        0
 Source0:        https://github.com/openSUSE/obs-service-cargo_vendor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst

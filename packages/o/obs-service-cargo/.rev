@@ -10,4 +10,29 @@ This will replace the previous python versions of the obs service cargo audit an
 packages. This library is fasted, easier to maintain and easier for a user to configure.</comment>
     <requestid>1120662</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>20e4abf0e8acdb78063c4092a420093f</srcmd5>
+    <version>0.8.4</version>
+    <time>1698873010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.4:
+  * fix: also check attempt to vendor if it is also a workspace
+  * misc: add stop sign in error message
+  * improve error handling impl
+  * fix: also make sure it really has no deps
+  * utils: exit vendor step if no dependencies found
+  * update README again
+  * update README
+  * docs: update README regarding the new flag
+  * all: apply clippy lint suggestions
+  * fix: also copy top-level folder if src is a directory
+  * Rework of compression and vendoring to be clearer
+  * Minor output improvements
+  * fix: also copy top-level folder if src is a directory
+  * update email address in manifest file
+  * remove unused dead code
+  * clippy: apply clippy suggestions
+</comment>
+    <requestid>1121524</requestid>
+  </revision>
 </revisionlist>
