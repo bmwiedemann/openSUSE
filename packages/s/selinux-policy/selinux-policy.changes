@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Mon Oct 30 10:28:10 UTC 2023 - cathy.hu@suse.com
+
+- Update to version 20231030:
+  * Allow system_mail_t manage exim spool files and dirs
+  * Dontaudit keepalived setattr on keepalived_unconfined_script_exec_t
+  * Label /run/pcsd.socket with cluster_var_run_t
+  * ci: Run cockpit tests in PRs
+  * Add map_read map_write to kernel_prog_run_bpf
+  * Allow systemd-fstab-generator read all symlinks
+  * Allow systemd-fstab-generator the dac_override capability
+  * Allow rpcbind read network sysctls
+  * Support using systemd containers
+  * Allow sysadm_t to connect to iscsid using a unix domain stream socket
+  * Add policy for coreos installer
+  * Add policy for nvme-stas
+  * Confine systemd fstab,sysv,rc-local
+  * Label /etc/aliases.lmdb with etc_aliases_t
+  * Create policy for afterburn
+  * Make new virt drivers permissive
+  * Split virt policy, introduce virt_supplementary module
+  * Allow apcupsd cgi scripts read /sys
+  * Allow kernel_t to manage and relabel all files
+  * Add missing optional_policy() to files_relabel_all_files()
+  * Allow named and ndc use the io_uring api
+  * Deprecate common_anon_inode_perms usage
+  * Improve default file context(None) of /var/lib/authselect/backups
+  * Allow udev_t to search all directories with a filesystem type
+  * Implement proper anon_inode support
+  * Allow targetd write to the syslog pid sock_file
+  * Add ipa_pki_retrieve_key_exec() interface
+  * Allow kdumpctl_t to list all directories with a filesystem type
+  * Allow udev additional permissions
+  * Allow udev load kernel module
+  * Allow sysadm_t to mmap modules_object_t files
+  * Add the unconfined_read_files() and unconfined_list_dirs() interfaces
+  * Set default file context of HOME_DIR/tmp/.* to <<none>>
+  * Allow kernel_generic_helper_t to execute mount(1)
+  * Allow sssd send SIGKILL to passkey_child running in ipa_otpd_t
+  * Allow systemd-localed create Xserver config dirs
+  * Allow sssd read symlinks in /etc/sssd
+  * Label /dev/gnss[0-9] with gnss_device_t
+  * Allow systemd-sleep read/write efivarfs variables
+  * ci: Fix version number of packit generated srpms
+  * Dontaudit rhsmcertd write memory device
+  * Allow ssh_agent_type create a sockfile in /run/user/USERID
+  * Set default file context of /var/lib/authselect/backups to <<none>>
+  * Allow prosody read network sysctls
+  * Allow cupsd_t to use bpf capability
+  * Allow sssd domain transition on passkey_child execution conditionally
+  * Allow login_userdomain watch lnk_files in /usr
+  * Allow login_userdomain watch video4linux devices
+  * Change systemd-network-generator transition to include class file
+  * Revert "Change file transition for systemd-network-generator"
+  * Allow nm-dispatcher winbind plugin read/write samba var files
+  * Allow systemd-networkd write to cgroup files
+  * Allow kdump create and use its memfd: objects
+  * Allow fedora-third-party get generic filesystem attributes
+  * Allow sssd use usb devices conditionally
+  * Update policy for qatlib
+  * Allow ssh_agent_type manage generic cache home files
+  * Change file transition for systemd-network-generator
+  * Additional support for gnome-initial-setup
+  * Update gnome-initial-setup policy for geoclue
+  * Allow openconnect vpn open vhost net device
+  * Allow cifs.upcall to connect to SSSD also through the /var/run socket
+  * Grant cifs.upcall more required capabilities
+  * Allow xenstored map xenfs files
+  * Update policy for fdo
+  * Allow keepalived watch var_run dirs
+  * Allow svirt to rw /dev/udmabuf
+  * Allow qatlib  to modify hardware state information.
+  * Allow key.dns_resolve connect to avahi over a unix stream socket
+  * Allow key.dns_resolve create and use unix datagram socket
+  * Use quay.io as the container image source for CI
+  * ci: Move srpm/rpm build to packit
+  * .copr: Avoid subshell and changing directory
+  * Allow gpsd, oddjob and oddjob_mkhomedir_t write user_tty_device_t chr_file
+  * Label /usr/libexec/openssh/ssh-pkcs11-helper with ssh_agent_exec_t
+  * Make insights_client_t an unconfined domain
+  * Allow insights-client manage user temporary files
+  * Allow insights-client create all rpm logs with a correct label
+  * Allow insights-client manage generic logs
+  * Allow cloud_init create dhclient var files and init_t manage net_conf_t
+  * Allow insights-client read and write cluster tmpfs files
+  * Allow ipsec read nsfs files
+  * Make tuned work with mls policy
+  * Remove nsplugin_role from mozilla.if
+  * allow mon_procd_t self:cap_userns sys_ptrace
+  * Allow pdns name_bind and name_connect all ports
+  * Set the MLS range of fsdaemon_t to s0 - mls_systemhigh
+  * ci: Move to actions/checkout@v3 version
+  * .copr: Replace chown call with standard workflow safe.directory setting
+  * .copr: Enable `set -u` for robustness
+  * .copr: Simplify root directory variable
+  * Allow rhsmcertd dbus chat with policykit
+  * Allow polkitd execute pkla-check-authorization with nnp transition
+  * Allow user_u and staff_u get attributes of non-security dirs
+  * Allow unconfined user filetrans chrome_sandbox_home_t
+  * Allow svnserve execute postdrop with a transition
+  * Do not make postfix_postdrop_t type an MTA executable file
+  * Allow samba-dcerpc service manage samba tmp files
+  * Add use_nfs_home_dirs boolean for mozilla_plugin
+  * Fix labeling for no-stub-resolv.conf
+  * Revert "Allow winbind-rpcd use its private tmp files"
+  * Allow upsmon execute upsmon via a helper script
+  * Allow openconnect vpn read/write inherited vhost net device
+  * Allow winbind-rpcd use its private tmp files
+  * Update samba-dcerpc policy for printing
+  * Allow gpsd,oddjob,oddjob_mkhomedir rw user domain pty
+  * Allow nscd watch system db dirs
+  * Allow qatlib to read sssd public files
+  * Allow fedora-third-party read /sys and proc
+  * Allow systemd-gpt-generator mount a tmpfs filesystem
+  * Allow journald write to cgroup files
+  * Allow rpc.mountd read network sysctls
+  * Allow blueman read the contents of the sysfs filesystem
+  * Allow logrotate_t to map generic files in /etc
+  * Boolean: Allow virt_qemu_ga create ssh directory
+  * Allow systemd-network-generator send system log messages
+  * Dontaudit the execute permission on sock_file globally
+  * Allow fsadm_t the file mounton permission
+  * Allow named and ndc the io_uring sqpoll permission
+  * Allow sssd io_uring sqpoll permission
+  * Fix location for /run/nsd
+  * Allow qemu-ga get fixed disk devices attributes
+  * Update bitlbee policy
+  * Label /usr/sbin/sos with sosreport_exec_t
+  * Update policy for the sblim-sfcb service
+  * Add the files_getattr_non_auth_dirs() interface
+  * Fix the CI to work with DNF5
+  * Make systemd_tmpfiles_t MLS trusted for lowering the level of files
+  * Revert "Allow insights client map cache_home_t"
+  * Allow nfsidmapd connect to systemd-machined over a unix socket
+  * Allow snapperd connect to kernel over a unix domain stream socket
+  * Allow virt_qemu_ga_t create .ssh dir with correct label
+  * Allow targetd read network sysctls
+  * Set the abrt_handle_event boolean to on
+  * Permit kernel_t to change the user identity in object contexts
+  * Allow insights client map cache_home_t
+  * Label /usr/sbin/mariadbd with mysqld_exec_t
+  * Allow httpd tcp connect to redis port conditionally
+  * Label only /usr/sbin/ripd and ripngd with zebra_exec_t
+  * Dontaudit aide the execmem permission
+  * Remove permissive from fdo
+  * Allow sa-update manage spamc home files
+  * Allow sa-update connect to systemlog services
+  * Label /usr/lib/systemd/system/mimedefang.service with antivirus_unit_file_t
+  * Allow nsd_crond_t write nsd_var_run_t & connectto nsd_t
+  * Allow bootupd search EFI directory
+  * Change init_audit_control default value to true
+  * Allow nfsidmapd connect to systemd-userdbd with a unix socket
+  * Add the qatlib  module
+  * Add the fdo module
+  * Add the bootupd module
+  * Set default ports for keylime policy
+  * Create policy for qatlib
+  * Add policy for FIDO Device Onboard
+  * Add policy for bootupd
+  * Add support for kafs-dns requested by keyutils
+  * Allow insights-client execmem
+  * Add support for chronyd-restricted
+  * Add init_explicit_domain() interface
+  * Allow fsadm_t to get attributes of cgroup filesystems
+  * Add list_dir_perms to kerberos_read_keytab
+  * Label /var/run/tmpfiles.d/static-nodes.conf with kmod_var_run_t
+  * Allow sendmail manage its runtime files
+
+-------------------------------------------------------------------
 Thu Oct 12 07:59:22 UTC 2023 - cathy.hu@suse.com
 
 - Update to version 20231012:
