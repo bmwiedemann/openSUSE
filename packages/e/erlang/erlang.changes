@@ -1,4 +1,559 @@
 -------------------------------------------------------------------
+Wed Oct 25 15:15:02 UTC 2023 - matwey.kornilov@gmail.com
+
+- Changes for 26.1.2:
+  * erts: If the external term format encoding of an argument list
+    part of a distributed spawn operation was faulty, the newly
+    spawned remote process could misbehave. The misbehavior
+    included hanging or interpret an incoming message as an
+    argument list to use. This was very unlikely to happen unless
+    using an alternate implementation of the distribution protocol
+    which made a faulty encoding of the argument list. The child
+    process will now detect this error and terminate before
+    executing the user specified code.
+  * erts: Fix bugs where if the body of a matchspec would return a
+    map with a variable ('$1', '$_' etc) as one of the keys or
+    values and the variable was not an immidiate, the term would
+    not be copied to the receiving processes heap. This would later
+    corrupt the term in the table as the GC could place move
+    markers in it, which in turn would cause the VM to crash. Bug
+    has been present for since OTP 17.0.
+  * xmerl: The xmerl version 1.3.32 was released in OTP 26.0.1, but
+    the incorrect version number of 1.3.31.1 was used for it. This
+    incorrect version number continued to appear in OTP 26.0.2, OTP
+    26.1, and OTP 26.1.1. The actual xmerl code in these OTP
+    versions however corresponds to xmerl version 1.3.32.
+- Changes for 26.1.1:
+  * wx: The wx application would fail to build on macOS with Xcode
+    15.
+  * compiler: The compiler could become extremely slow for modules
+    containing huge functions.
+  * stdlib: Garbage collect the shell process when reducing the
+    amount of saved history and results.
+- Changes for 26.1:
+  * crypto: Fix VM crash caused by crypto being purged and reloaded
+    (by init:restart for example) on OS with musl libc (such as
+    Alpine linux).
+  * crypto: Improved understanding of LibreSSL versions. Support
+    chacha20 and chacha20_poly1305 for LibreSSL 3.7. Reflect
+    removal of support for the DSS/DSA algorithm which was done in
+    LibreSSL 2.6.1.
+  * crypto: FIPS supported by crypto for OpenSSL 3.0.* and 3.1.*.
+  * asn1: The ASN.1 compiler would ignore a constraint such as
+    (SIZE (1..4), ...), causing incorrect behavior of the encoding
+    and decoding function for the PER and UPER backends. Corrected
+    to handle the constraint in the same way as (SIZE (1..4, ...)).
+  * asn1: The JER backend has been internally refactored in a way
+    that is compatible for applications that use the documented
+    API. However, for a group of ASN.1 modules that depend on each
+    other (for example, S1AP-PDU-Descriptions, S1AP-Contents, and
+    so on), all modules in the group must be recompiled if on of
+    the group members is recompiled.
+  * observer: Closing the trace log window via the menu did not
+    work.
+  * erts: maps:put with existing key and identical value was not
+    optimized as a no-op correctly if having the same 32-bit hash
+    as another key in the map. In practice very rare and harmless.
+  * erts: Fixed an issue with truncated crash slogans on failed
+    emulator start.
+  * erts: Fixed a bug where the emulator was unable to determine
+    the current cgroup CPU quota.
+  * erts: A process optimized for parallel signal delivery could
+    under some circumstances lose wakeup information. That is, the
+    processes was not woken up to take care of the signal, so the
+    signal would not be taken care of until the process was woken
+    by another signal. Only processes configured with
+    message_queue_data set to off_heap utilize this optimization.
+  * erts: Function socket:close/1 could cause a VM crash on
+    Windows.
+  * erts: Fixed a bug in the ARM JIT where it could accidentally
+    add garbage trailing bits when creating bitstrings whose size
+    wasn't an even multiple of 8 bits.
+  * erts: Fix erlang:system_info/1 documentation to show correct
+    types.
+  * erts: Expanded the documentation about how to use the
+    standard_io, standard_error and user I/O devices. Added the
+    types io:standard_io/0, io:standard:error/0 and io:user/0.
+  * erts: Fix compilation with GNU termcap.
+  * erts: Delivery time of message signals to a process not
+    executing any receive expressions could become very long,
+    potentially infinite. For example, a process checking for
+    messages using process_info(self(), message_queue_len) or
+    process_info(self(), messages) and avoiding to execute a
+    receive expression matching on messages could be very slow in
+    detecting new messages. Note that you are still discouraged
+    from using process_info() this way. A process that wants to
+    check if there are messages available to handle should execute
+    a receive expression matching on messages.
+  * erts: On AArch64 (ARM64), when calculating both the quotient
+    and remainder with a divisor begin a power two, the remainder
+    could be incorrectly calculated.
+  * erts: Fix bug causing "magic" references in a compressed ETS
+    table to not keep the referred object alive. The symptom would
+    be the referred object being garbage collected prematurely and
+    the reference appearing stale, not referring to anything.
+    Examples of such magically referred objects are atomics and NIF
+    resources.
+  * erts: Matching out short bitstrings with a fixed size not
+    divisible by 8 could could lead to the runtime system
+    terminating with an "Overrun heap and stack" error.
+  * erts: A constant flow of incoming non-message signals could
+    prevent a process needing to execute dirty from doing so.
+  * erts: A BEAM file usually contains a chunk with the tag "Type"
+    containing type information that can be used by the JIT. The
+    beam_lib:strip/1 takes care to preserve that chunk, but a
+    build/release tool that does customized stripping could
+    accidentally remove the chunk. Loading a BEAM file without the
+    "Type" chunk could cause incorrect behavior of the loaded code.
+  * erts: gen_udp:recv/* for Unix Domain Socket in binary mode and
+    passive mode has been fixed to not crash.
+  * erts: The cleanup operation of not yet delivered signals to a
+    terminated process yielded excessively.
+  * erts: Fixed minor hashing issue with the local option of
+    term_to_binary()/term_to_iovec().
+  * erts: Update gen_tcp_socket and gen_udp_socket to handle
+    'completion' (socket on Windows).
+  * erts: Add support for Unix Domain Sockets (only for STREAM
+    sockets) on Windows for 'socket'.
+  * erts: In Erlang/OTP 27, by default escripts will be compiled
+    before being executed. That means that the compiler application
+    must be installed. It is possible to force the escript to be
+    interpreted by adding the directive -mode(interpret). to the
+    escript file. In Erlang/OTP 28, support for interpreting an
+    escript will be removed.
+  * erts: Add basic support for socket ioctl on Windows.
+  * erts: Removed erts/etc/darwin/Info.plist, as it is no longer
+    necessary after macos 10.12
+  * erts: Add support for (Windows) socket option exclusiveaddruse.
+  * erts: [socket] Add support for the 'nopush' option.
+  * erts: Add support for socket option 'BSP STATE'.
+  * erts: Add tcp socket options 'keepcnt', 'keepidle' and
+    'keepintvl'.
+  * erts: Add support for misc (Windows) socket options
+    ('max_msg_size' and 'maxdg').
+  * compiler: The compiler could run forever when compiling a call
+    to is_record/3 with a huge positive tuple size. The call
+    is_record(A, a, 0) would crash the compiler when used in a
+    function body. When used in a guard the compiler would emit
+    incorrect code that would accept {a> as a record.
+  * compiler: Fixed a bug that caused dialyzer to crash when
+    analyzing bogus code that contained the literal atom undefined
+    in segment sizes.
+  * compiler: The compiler would crash when compiling some modules
+    that contained a call to erlang:load_nif/2.
+  * compiler: Fixed a bug that caused the compiler to crash on
+    legal code.
+  * compiler: The compiler could crash when attempting to compile a
+    call to is_list/1 in a complex expression.
+  * compiler: A complex guard expression using the or operator
+    could succeed when it was supposed to fail.
+  * compiler: Compiling nested try/catch and catch expression could
+    result in an internal compiler error.
+  * compiler: Using the bnot operator in a complex expression could
+    cause the compiler to terminate with an internal consistency
+    failure diagnostic.
+  * compiler: Fixed a bug that caused the compiler to crash in a
+    binary optimization pass.
+  * compiler: The compiler could terminate with an internal error
+    when attempting to compile a binary pattern that could not
+    possibly match.
+  * compiler: Fixed various performance issues related to the alias
+    optimization pass.
+  * erl_docgen: Expanded the documentation about how to use the
+    standard_io, standard_error and user I/O devices. Added the
+    types io:standard_io/0, io:standard:error/0 and io:user/0.
+  * mnesia: Do not delete old backup file if the new backup fails.
+  * megaco: Make megaco transports handle gen_tcp | gen_udp with
+    socket backend on Windows (completion).
+  * common_test: With this change, ct_hooks manual refers to CTH
+    execution order section in user guide.
+  * common_test: With this change, Config data from
+    pre_end_per_testcase hook is delivered to post_end_per_testcase
+    callback in case of testcase timetrap or linked process crash.
+  * common_test: With this change, remaining references to not
+    supported vts tool in ct_run are removed (mainly relates to
+    docs and ct_run help message).
+  * common_test: With this change, prompt search functionality in
+    ct_telnet handles unicode input.
+  * common_test: Expanded the documentation about how to use the
+    standard_io, standard_error and user I/O devices. Added the
+    types io:standard_io/0, io:standard:error/0 and io:user/0.
+  * stdlib: The compiler could run forever when compiling a call to
+    is_record/3 with a huge positive tuple size. The call
+    is_record(A, a, 0) would crash the compiler when used in a
+    function body. When used in a guard the compiler would emit
+    incorrect code that would accept {a> as a record.
+  * stdlib: Fix bug in ets:tab2file that could make it fail if
+    another Erlang process created the same file at the same time.
+  * stdlib: An {else_clause,Value} exception will now be reported
+    nicely in the shell.
+  * stdlib: Correct return value for error case, so that it matches
+    the documented and intended return value {error,
+    {already_started, pid()} when local registered names are used.
+  * stdlib: sys:get_state/1,2 and sys:replace_state/2,3 has been
+    corrected to handle a state named error as a state name, not as
+    a failed system callback. For the standard server behaviours
+    this was an issue only for gen_statem (and gen_fsm) when the
+    state name was error, and for gen_server if the complete state
+    was {error,_}.
+  * stdlib: Multiple problems were fixed in
+    filelib:safe_relative_path/2. If its second argument was a path
+    that contained symbolic links, an incorrect result patch could
+    be returned. Also, paths were sometimes falsely considered
+    unsafe.
+  * stdlib: Fix deadlock when erl.exe is used as part of a pipe on
+    Windows and trying to set the encoding of the standard_io
+    device.
+  * stdlib: Expanded the documentation about how to use the
+    standard_io, standard_error and user I/O devices. Added the
+    types io:standard_io/0, io:standard:error/0 and io:user/0.
+  * stdlib: Fix h/2,3 to properly render multi-clause
+    documentation.
+  * stdlib: Timers created by timer:apply_after/4,
+    apply_interval/4, and apply_repeatedly/4 would silently fail to
+    do the apply if it was not possible to spawn a process when the
+    timer expired. This has now been corrected, and if the spawn
+    fails, the system will be taken down producing a crash dump.
+  * stdlib: When an Erlang source file lacked a module definition,
+    there would be a spurious "module name must not be empty"
+    diagnostic for each spec in the file.
+  * stdlib: The argument descriptions for option types in argparse
+    have been made less ambiguous.
+  * stdlib: Clarified the documentation of normal shutdown reason
+    on gen_server:call/2,3
+  * stdlib: Pattern matching and equivalence (=:=, =/=) comparisons
+    on 0.0 will now raise a warning, as it will no longer be
+    considered equivalent to -0.0 in OTP 27. If a match on 0.0
+    specifically is desired (distinct from -0.0), the warning can
+    be suppressed by writing +0.0 instead. The arithmetic
+    comparison operators are unaffected, including arithmetic
+    equality (==). *** POTENTIAL INCOMPATIBILITY ***
+  * stdlib: The semantics of the gen_{server,statem,event}
+    behaviour's synchronous start behaviour introduced in OTP-26.0
+    with OTP-18471, has been clarified in the documentation.
+  * stdlib: Added functionality to set a custom multiline prompt.
+  * stdlib: A warning for (accidental use of) Triple-Quoted Strings
+    has been implemented as per EEP 64. *** POTENTIAL
+    INCOMPATIBILITY ***
+  * stdlib: The keyboard shortcuts for the shell are now
+    configurable.
+  * kernel: Fixed an issue with truncated crash slogans on failed
+    emulator start.
+  * kernel: Fix shell:start_interactive function specification.
+  * kernel: Fix code:get_doc/1 to return missing, when it can't
+    find erts instead of crashing.
+  * kernel: Function socket:close/1 could cause a VM crash on
+    Windows.
+  * kernel: Fix deadlock when erl.exe is used as part of a pipe on
+    Windows and trying to set the encoding of the standard_io
+    device.
+  * kernel: Expanded the documentation about how to use the
+    standard_io, standard_error and user I/O devices. Added the
+    types io:standard_io/0, io:standard:error/0 and io:user/0.
+  * kernel: Fix logger's overload protection mechanism to only
+    fetch memory used by messages when needed.
+  * kernel: Fixed a number of socket-related issues causing
+    incompatibilities with gen_tcp and gen_udp respectively.
+  * kernel: gen_tcp:connect with socket address and socket (inet-)
+    backend fails because of missing callback function.
+  * kernel: The DNS RR cache used by `inet_res` has been fixed to
+    preserve insert order, which is beneficial when the DNS server
+    returns RRs in some specific order for e.g load balancing
+    purposes.
+  * kernel: The options `reuseport`, `reuseport_lb` and
+    `exclusiveaddruse` were accidentally not allowed for e.g
+    `gen_udp:open/1,2`, which has now been corrected.
+  * kernel: gen_udp:recv/* for Unix Domain Socket in binary mode
+    and passive mode has been fixed to not crash.
+  * kernel: Fixed issue where cursor would not be placed at the end
+    of the expression when navigating shell history.
+  * kernel: Update gen_tcp_socket and gen_udp_socket to handle
+    'completion' (socket on Windows).
+  * kernel: Add support for Unix Domain Sockets (only for STREAM
+    sockets) on Windows for 'socket'.
+  * kernel: Add basic support for socket ioctl on Windows.
+  * kernel: The file:location/0 type is now exported.
+  * kernel: Add support for (Windows) socket option
+    exclusiveaddruse.
+  * kernel: [socket] Add support for the 'nopush' option.
+  * kernel: Add support for socket option 'BSP STATE'.
+  * kernel: Add tcp socket options 'keepcnt', 'keepidle' and
+    'keepintvl'.
+  * kernel: Add support for misc (Windows) socket options
+    ('max_msg_size' and 'maxdg').
+  * kernel: The keyboard shortcuts for the shell are now
+    configurable.
+  * kernel: Optimized code_server to reduce repeated work when
+    loading the same module concurrently.
+  * debugger: The call int:no_break(Module) did not remove any
+    breakpoints.
+  * debugger: The maybe expression is now supported in the
+    Debugger.
+  * debugger: The maybe expression is now supported in the
+    Debugger.
+  * debugger: The call int:no_break(Module) did not remove any
+    breakpoints.
+  * ssl: Avoid function clause error in ssl:getopts/2 by handling
+    that inet:getopts may return an empty list during some
+    circumstances, such as the socket being in a closing state.
+  * ssl: The API function `ssl:recv/3` has been tightened to
+    disallow negative length, which has never been documented to
+    work, but was passed through and caused strange errors.
+  * ssl: When a client initiated renegotiation was rejected and the
+    client socket was in active mode the expected error message to
+    the controlling process was not sent.
+  * ssl: Add some guidance for signature algorithms configuration
+    in ssl applications users guide.
+  * snmp: Make snmp handle gen_udp with socket backend on Windows
+    (completion).
+  * public_key: Country name comparison shall be case insensitive
+  * public_key: Add check to disallow duplicate certs in a path
+  * inets: With this change, re_write httpd works as expected and
+    does not return error.
+  * inets: Fixed a bug so httpd does not crash when stopped at the
+    wrong time during TLS connection negotiation, or any other
+    theoretically as slow connection setup.
+  * inets: Enhance error handling and avoid that the HTTP client
+    hangs on headers provided on the wrong format.
+  * inets: With this change, error report generated by httpd during
+    connection setup contains socket type information.
+  * inets: Stop and restart of the httpd server in the Inets
+    application has been refactored to a more synchronous and OTP
+    supervisor friendly approach. This should increase stability
+    and for example avoid a supervisor report from
+    httpd_connection_sup about killed child process(es) in some
+    cases when stopping or restarting httpd.
+  * dialyzer: Fixed a bug that caused dialyzer to crash when
+    analyzing bogus code that contained the literal atom undefined
+    in segment sizes.
+  * dialyzer: Dialyzer could crash when attempting to analyze a
+    module that defined a type called product/.
+- Changes for 26.0.2:
+  * erts: Fix using the IME (Input Method Editor) to enter text in
+    cmd.exe and powershell.exe on Windows.
+  * erts: Multiple socket:accept calls issue. When making multiple
+    accept calls, only the last call is active.
+  * erts: Fix the shell to ignore terminal delay when the terminal
+    capabilities report that they should be used.
+  * erts: Fix "oldshell" to echo characters while typing on
+    Windows.
+  * erts: On Windows, a call to the function socket:close, when
+    there are waiting active calls to read, write or accept
+    functions, could hang.
+  * erts: Fix issues when reading or configuring standard_io on
+    Windows when erl.exe is started using -noshell flag.
+  * erts: The following functions are now much faster when given a
+    long list or binary:
+  * erts: On AArch64 (ARM64), equality and non-equality tests with
+    literal bitstrings could succeed when they should fail and vice
+    versa.
+  * compiler: Fixed a type handling bug that would cause an
+    internal consistence failure for correct code.
+  * compiler: Fixed a bug that could cause the stack trace of throw
+    exceptions to be erroneously optimized out.
+  * compiler: Complex guard expression using 'or' were not always
+    fully evaluated, making guards that were supposed to fail
+    succeed.
+  * stdlib: Fix bug where when you entered Alt+Enter in the
+    terminal, the cursor would move to the last line, instead of
+    moving to the next line.
+  * stdlib: Fix eof handling when reading from stdin when erlang is
+    started using -noshell.
+  * stdlib: Fixed problem where output would disappear if it was
+    received after a prompt was written in the shell.
+  * stdlib: The following functions are now much faster when given
+    a long list or binary:
+  * kernel: Fix bug where when you entered Alt+Enter in the
+    terminal, the cursor would move to the last line, instead of
+    moving to the next line.
+  * kernel: Fix so that the shell does not crash on startup when
+    termcap is not available.
+  * kernel: Multiple socket:accept calls issue. When making
+    multiple accept calls, only the last call is active.
+  * kernel: Fix the shell to ignore terminal delay when the
+    terminal capabilities report that they should be used.
+  * kernel: Fix "oldshell" to echo characters while typing on
+    Windows.
+  * kernel: Fix eof handling when reading from stdin when erlang is
+    started using -noshell.
+  * kernel: On Windows, a call to the function socket:close, when
+    there are waiting active calls to read, write or accept
+    functions, could hang.
+  * kernel: Fix issues when reading or configuring standard_io on
+    Windows when erl.exe is started using -noshell flag.
+  * kernel: gen_udp:connect with inet_backend = socket fails when
+    the Address is a hostname (string or atom).
+  * kernel: Fixed problem which would cause shell to crash if
+    particular escape sequence was written to stdout.
+  * kernel: Fixed problem where output would disappear if it was
+    received after a prompt was written in the shell.
+  * kernel: Fix a crash where the location of erts could not be
+    found in rebar3 dev builds.
+  * kernel: Introduce the KERNEL application parameter
+    standard_io_encoding that can be used to set the default
+    encoding for standard_io. This option needs to be set to latin1
+    if the application wants to treat all input data as bytes
+    rather than utf-8 encoded characters.
+  * ssl: Added keylog information to all protocol versions in
+    ssl:connection_information/2.
+  * ssl: Add RFC-6083 considerations for DTLS to enable gen_sctp
+    based callback for the transport.
+  * ssh: Added multiline editing support to ssh clients connected
+    through OTP ssh daemon.
+
+-------------------------------------------------------------------
+Sat Jun 24 11:03:03 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Changes for 26.0.1:
+  * erts: Build of the socket nif failed on Solaris 11.
+  * erts: Fixed two reduction-counting bugs relating to binaries.
+  * erts: Constructing a binary segment not aligned with a byte
+    boundary, with a size not fitting in 31 bits, and with a value
+    not fitting in a 64-bit word could crash the runtime system.
+  * erts: When a binary construction failed because of bad size for
+    a segment, the error information was not always correct.
+  * erts: Fixed a crash when calling a fun that was defined in a
+    module that had been upgraded.
+  * kernel: The POSIX error exdev was sometimes incorrectly
+    described as "cross domain link" in some error messages.
+  * kernel: Corrected the socket send function description (send
+    with Timeout = nowait). The send function(s) could not return
+    {ok, {RestData, SelectInfo}}
+  * stdlib: The POSIX error exdev was sometimes incorrectly
+    described as "cross domain link" in some error messages.
+  * ssl: Make sure that selection of client certificates handle
+    both TLS-1.3 and TLS-1.2 names correctly. Could cause valid
+    client certificate to not be selected, and an empty client
+    certificate message to be sent to server.
+  * ssl: Improved ssl:format_error/1 to handle more error tuples.
+  * ssl: Fixed hanging ssl:connect when ssl application is not
+    started.
+  * ssl: Correct handling of retransmission timers, current
+    behavior could cause unwanted delays.
+  * inets: Do not make the default ssl options by calling
+    httpc:ssl_verify_host_options(true) if ssl options are supplied
+    by the user.
+  * xmerl: New options to xmerl_scan and xmerl_sax_parser so one
+    can limit the behaviour of the parsers to avoid some XML
+    security issues. xmerl_scan gets one new option:
+    xmerl_sax_parser gets the following options: The old option
+    skip_external_dtd is still valid and the same as
+    {external_entities, none} and {fail_undeclared_ref, false} but
+    just affects DTD's and not other external references.
+  * compiler: Fixed a bug where a failing bsl expression in a guard
+    threw an exception instead of causing the guard to fail.
+  * compiler: Fixed a bug that would case the validator to reject
+    legal code.
+  * compiler: The compiler could re-order clauses matching binaries
+    so that the incorrect clause would match. That could only
+    happen for code that used the option {error_location,line} or
+    for code without line or column number information (e.g.
+    generated by a parse transform).
+  * compiler: Complex guard expression using the or operator and
+    guard BIFs that can fail could sometimes be miscompiled so that
+    the guard would succeed even if a call to a guard BIF failed.
+  * compiler: With optimizations disabled, a try/catch construct
+    could return an incorrect value.
+  * compiler: In rare circumstance, a combination of binary
+    construction and binary_part/3 would cause the compiler to
+    generate unsafe code that would crash the runtime system.
+  * compiler: The compiler could be very slow when compiling guards
+    with multiple guard tests separated with 'or' or ';'.
+  * compiler: Complex guard expressions using 'or' and map updates
+    could succeed even if the map update failed.
+
+-------------------------------------------------------------------
+Sat Jun 24 10:18:24 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 26.0:
+  * Leex has been extended with optional column number support.
+  * The family of enumeration functions in module lists has been
+    extended with enumerate/3 that allows a step value to be
+    supplied.
+  * Update Unicode to version 15.0.0.
+  * proc_lib:start*/* has become synchronous when the started
+    process fails. This requires that a failing process use a new
+    function proc_lib:init_fail/2,3, or exits, to indicate failure. All
+    OTP behaviours have been fixed to do this.
+  * auto-complete of variables, record names, record fields names,
+    map keys, function parameter types and filenames.
+  * Open external editor in the shell to edit the current
+    expression.
+  * defining records (with types), functions, specs and types in
+    the shell.
+  * Creation and matching of binaries with segments of fixed sizes
+    have been optimized.
+  * Creation and matching of UTF-8 segments have been optimized.
+  * Appending to binaries has been optimized.
+  * The compiler and JIT now generate better code for creation of
+    small maps where all keys are literals known at compile time.
+  * Thanks to the optimizations above the performance of the base64
+    module has been significantly improved. For example, on an
+    x86_64 system with the JIT both encode and decode are almost
+    three times faster than in Erlang/OTP 25.
+  * Map comprehensions as suggested in EEP 58 has now been
+    implemented.
+  * Some map operations have been optimized by changing the
+    internal sort order of atom keys. This changes the
+    (undocumented) order of how atom keys in small maps are printed
+    and returned by maps:to_list/1 and maps:next/1. The new order
+    is unpredictable and may change between different invocations
+    of the Erlang VM.
+  * Introducing the new function maps:iterator/2 for creating an
+    interator that return the map elements in a deterministic
+    order. There are also new modifiers k and K for the format
+    string in io:format() to support printing map elements ordered.
+  * Added the new built-in type dynamic() introduced in EEP 61, PR
+    introducing EEP 61 improving support for gradual type checkers.
+  * Dialyzer has a new incremental mode that be invoked by giving
+    the --incremental option when running Dialyzer. This new
+    incremental mode is likely to become the default in a future
+    release.
+  * Multi time warp mode is now enabled by default. This assumes
+    that all code executing on the system is time warp safe.
+  * Support for UTF-8 atoms and strings in the NIF interface
+    including new functions enif_make_new_atom,
+    enif_make_new_atom_len and enif_get_string_length.
+  * The BIFs min/2 and max/2 are now allowed to be used in guards
+    and match specs.
+  * Improved the selective receive optimization, which can now be
+    enabled for references returned from other functions. This
+    greatly improves the performance of gen_server:send_request/3,
+    gen_server:wait_response/2, and similar functions.
+  * It is no longer necessary to enable a feature in the runtime
+    system in order to load modules that are using it. It is
+    sufficient to enable the feature in the compiler when compiling
+    it.
+  * inet:setopts/2 has got 3 new options: reuseport, reuseport_lb
+    and exclusiveaddruse.
+  * Fix so that -fno-omit-frame-pointer is applied to all of the
+    Erlang VM when using the JIT so that tools, such as perf, can
+    crawl the process stacks.
+  * In the lists module, the zip family of functions now takes
+    options to allow handling lists of different lengths.
+  * Added the zip:zip_get_crc32/2 function to retrieve the CRC32
+    checksum from an opened ZIP archive. gen_server optimized by
+    caching callback functions
+  * The modules Erlang DNS resolver inet_res and helper modules
+    have been updated for RFC6891; to handle OPT RR with DNSSEC OK
+    (DO) bit.
+  * Introduced application:get_supervisor/1.
+  * Cache OTP boot code paths, to limit how many folders that are
+    being accessed during a module lookup. Can be disabled with
+    -cache_boot_path false.
+  * Support for Kernel TLS (kTLS), has been added to the SSL
+    application, for TLS distribution (-proto_dist inet_tls), the
+    SSL option {ktls, true}.
+  * Improved error checking and handling of ssl options.
+  * Mitigate memory usage from large certificate chains by lowering
+    the maximum handshake size. This should not effect the common
+    cases, if needed it can be configured to a higher value.
+  * For security reasons the SHA1 and DSA algorithms are no longer
+    among the default values.
+  * Add encoding and decoding of use_srtp hello extension to
+    facilitate for DTLS users to implement SRTP functionality.
+
+-------------------------------------------------------------------
 Fri Jun 23 19:39:26 UTC 2023 - matwey.kornilov@gmail.com
 
 - Changes for 25.3.2.2:
