@@ -17,7 +17,7 @@
 
 
 Name:           diffoscope
-Version:        242
+Version:        251
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
@@ -26,8 +26,6 @@ URL:            https://diffoscope.org/
 Source0:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2
 Source1:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2.asc
 Source2:        diffoscope.keyring
-# PATCH-FIX-UPSTREAM	fix-file-5.45.patch -- fix compatibility with file version 5.45, see https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/346
-Patch0:         https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/435a8fe9a201a7e74e705e06cc56b66fa6cb4af9.patch#/fix-file-5.45.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -112,8 +110,7 @@ package produce different outputs. diffoscope was previously named
 debbindiff.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 sed -i '0,/#!\/usr\/bin\/env/ d' diffoscope/main.py
 
 %build

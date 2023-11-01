@@ -583,4 +583,12 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
 </comment>
     <requestid>1102459</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4f41742bf62e0fbb933aed0a66010291</srcmd5>
+    <version>251</version>
+    <time>1698873059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121673</requestid>
+  </revision>
 </revisionlist>

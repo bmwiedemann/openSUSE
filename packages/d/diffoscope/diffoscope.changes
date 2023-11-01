@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov  1 17:44:17 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- removed patch fix-file-5.45.patch as included in upstream
+
+- Update to version 251:
+  * If the equivalent of `file -i` returns text/plain, fallback to comparing
+    this file as a text file. This especially helps when file(1) miscategorises
+    text files as some esoteric type. 
+
+- Update to version 250:
+  * Fix compatibility with file 5.45. 
+  * Add external tool references for GNU Guix (for html2text and ttx).
+
+- Update to version 249:
+  * Add specialize_as() method, and use it to speed up .smali comparison in APKs.
+  * Add documentation for the new specialize_as, and expand the documentation
+    of `specialize` too. 
+  * Correct typos in diffoscope/presenters/utils.py.
+
+- Update to version 246:
+  * Add support for LLVM 16.
+
+- Update to version 244:
+  * Address compatibility with python-libarchive-c version 5.
+  * Testsuite changes
+
+- Update to version 243:
+  * Improve the documentation on to produce that binary blob that in the arsc comparator.
+
+-------------------------------------------------------------------
 Sat Aug  5 07:58:48 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Add fix-file-5.45.patch to fix compatibility with file version 5.45
