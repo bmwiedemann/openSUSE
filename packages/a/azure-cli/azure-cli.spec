@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.53.0
+Version:        2.53.1
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
