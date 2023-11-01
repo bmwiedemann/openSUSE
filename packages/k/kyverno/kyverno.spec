@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kyverno
-Version:        1.10.3
+Version:        1.10.4
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
@@ -63,8 +63,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
