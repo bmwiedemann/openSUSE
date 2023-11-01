@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 01 07:26:09 UTC 2023 - dcermak@suse.com
+
+- Update to version 1.32.2:
+  * Mask /sys/devices/virtual/powercap by default
+  * tag v1.32.2
+
+-------------------------------------------------------------------
 Tue Oct 24 15:18:09 UTC 2023 - dcermak@suse.com
 
 - Update to version 1.32.1:
