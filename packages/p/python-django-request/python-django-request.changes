@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  1 04:30:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch do-not-fail-on-day-one-of-month.patch:
+  * Do not fail due to edge cases on the 1st or last of a month.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Jul 11 14:19:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.3:

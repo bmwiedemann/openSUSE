@@ -26,7 +26,10 @@ URL:            https://github.com/django-request/django-request
 Source:         https://github.com/django-request/django-request/archive/%{version}.tar.gz#/django-request-%{version}.tar.gz
 # gh#django-request/django-request#241
 Patch0:         set-timezone-for-day-tests.patch
+Patch1:         do-not-fail-on-day-one-of-month.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -47,10 +50,10 @@ it can also be used to get statistics on who is online etc.
 %autosetup -p1 -n django-request-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +64,7 @@ export DJANGO_SETTINGS_MODULE=tests.test_settings
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/request
+%{python_sitelib}/django_request-%{version}.dist-info
 
 %changelog

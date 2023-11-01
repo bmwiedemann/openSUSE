@@ -57,4 +57,15 @@
   * Adds a missing migration with HTTP status codes.</comment>
     <requestid>1098212</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>519ce67289f660150227a03fb8423891</srcmd5>
+    <version>1.6.3</version>
+    <time>1698873016</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch do-not-fail-on-day-one-of-month.patch:
+  * Do not fail due to edge cases on the 1st or last of a month.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1121529</requestid>
+  </revision>
 </revisionlist>
