@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 31 17:51:46 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9
+  Changes:
+  * add --as-idn and punycode to IDN conversion
+  * add --curl to only count as valid URLs supported by libcurl
+  Bugfixes:
+  * accept * as a trim name to trim a literal asterisk name
+  * format null as \u0000 for --json
+  * run --trim query before --append query
+- Drop patch
+  * trurl-disable-broken-tests.patch (fixed by upstream)
+
+-------------------------------------------------------------------
 Fri Sep 22 06:43:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
