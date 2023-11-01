@@ -17,7 +17,7 @@
 
 
 Name:           libgtpnl
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        GPRS tunnel configuration library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
