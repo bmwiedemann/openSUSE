@@ -124,4 +124,12 @@ See also https://build.opensuse.org/request/show/841582</comment>
 </comment>
     <requestid>1074213</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>366210fafbe5f474e78b3b12f7d8ce93</srcmd5>
+    <version>1.2.0</version>
+    <time>1698872979</time>
+    <user>dimstar_suse</user>
+    <comment>go (forwarded request 1120286 from bnavigator)</comment>
+    <requestid>1120287</requestid>
+  </revision>
 </revisionlist>

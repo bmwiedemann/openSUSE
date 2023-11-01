@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed Oct 25 09:45:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0
+  ## Bug fixes:
+  * Fix issue where "instance get" was not properly ordering the
+    columns of the table output for commands like "-o table
+    instance get ... --pl p1,p2,p3". The table was not being output
+    in the same order as the list of properties in the property
+    list option. (see issue #1259)
+  * Changed the development status of the Python package from "4 -
+    Beta" to "5 - Production/Stable". This actually applies since
+    version 1.1.0. (issue #1237)
+  * Fix minor issue where if user input --pl "a, b, c" they would
+    get strange error. Now fails with error stating that space not
+    allowed in property list.
+  * Fix issue in instance count where error reports CIMError code
+    and not the code string. (see #1242)
+  * Fix issue with invalid --connections-file general option and
+    interactive mode. Will abort entering interactive mode if the
+    file does not exist. (See issue #1275)
+  ## Enhancements:
+  * Added a new make target 'check_reqs' that runs pip-missing-reqs
+    on the pywbemtools package itself and on some development
+    commands, and added that to the GitHub Actions test workflow.
+    (issue #1255)
+  * Added displaying of the package dependency tree via pipdeptree
+    to the GitHub Actions test workflow. (issue #1256)
+  * Test: Added new make target 'check_reqs' that uses
+    pip-missing-reqs to check for missing dependencies in
+    minimum-constraints.txt.
+  * Added support for Python 3.11. (issue #1243)
+  * Increased the minimum version of pywbem to 1.6.0. (issue #1244)
+  * Add a new command that will display help on subjects that have
+    been defined for the command. This allows defining help for
+    subjects that are not specific to a particular command. This is
+    created specifically to provide help for the setup to activate
+    shell tab completion. The initial subjects are repl and
+    instancename.
+  * Add a new command to pywbemcli (docs) that calls the current
+    system default web browser to view the pywbemtools public
+    documentation that is in ReadTheDocs.
+  * Added documentation defining activation of tab-complation in
+    shells. Tab-completion must be activated by the user before the
+    <TAB> can be used in cmd mode to complete the terminal input of
+    command and option names. (see issue #1158)
+  * Add specific tab-completion for the values of the general
+    option --name and command arguments/names values that look up
+    connection name to enable tab_completion for Click 8 and ignore
+    it for Click 7. Modify general options --mock-server,
+    --connection-file, --keyfile, --certfile that are for files to
+    use the click.Path type which enables tab-completion. Modify
+    --use-pull choice general option to allow the "" choice. so
+    that tab-completion is automatically enabled. (See issue #487)
+  * Modify several pywbemlistener args and options to make enable
+    tab-completion. This includes output-format, keyfile, certfile,
+    keyfile, scheme, output_format, logdir. (see issue # 1278)
+  * Add docs command to pywbemlistener. This is the same as the
+    docs command in pywbemcli and calls the system default browser
+    to load the pywbemtools documentation in ReadTheDocs.
+  * Add help command to pywbemlistener. This is the same as the
+    help command in which defines a set of general subjects for
+    pywbemlistener about which help can be requested. The subjects
+    are generally about tab-completion and tab-completion
+    activation.
+  ## Cleanup:
+  * Update to reflect new security issues that were added in Jan
+    2023. This involved GitPython, safety, setuptools certifi, and
+    future.
+  * Update for new tests in pylint including 1) use-dict-literal
+    which warns about call to dict() when passing keyword arguments
+    vs. using literal (This is a speed issue) 2) overlybroad
+    exceptions. Modified definition of overlybroadexceptions to
+    prefix names with builtins. 3. Fixed issue found by new
+    usless-exception warning. (raise not part of statement)
+  * Improve the help description for repl. It was not complete.
+  * Update Pegasus docker image version to 0.1.2
+- Drop pywbemtools-pr1251-py311.patch
+
+-------------------------------------------------------------------
 Wed Mar 22 09:31:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.1

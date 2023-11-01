@@ -24,10 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+
 Name:           python-pywbemtools
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Python client tools to work with WBEM Servers using the PyWBEM API
 License:        Apache-2.0
@@ -35,8 +34,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pywbem/pywbemtools
 # The PyPI archive does not contain the tests
 Source:         https://github.com/pywbem/pywbemtools/archive/%{version}.tar.gz#/pywbemtools-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM pywembtools-pr1251-py311.patch gh#pywbem/pywbemtools#1251
-Patch0:         pywbemtools-pr1251-py311.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asciitree >= 0.3.3
@@ -56,7 +53,7 @@ Requires:       python-nocasedict >= 1.0.1
 Requires:       python-nocaselist >= 1.0.3
 Requires:       python-prompt_toolkit
 Requires:       python-pyparsing >= 2.3.1
-Requires:       python-pywbem >= 1.4.0
+Requires:       python-pywbem >= 1.6.0
 %if 0%{?python_version_nodots} <= 39
 Requires:       python-psutil >= 5.5.0
 Requires:       python-six >= 1.14.0
@@ -66,13 +63,19 @@ Requires:       python-psutil >= 5.8.0
 Requires:       python-six >= 1.16.0
 Requires:       python-tabulate >= 0.8.8
 %endif
-Requires:       python-toposort
+%if 0%{?python_version_nodots} <= 37
+Requires:       (python-toposort >= 1.6 with python-toposort < 1.8)
+%else
+Requires:       python-toposort >= 1.6
+%endif
 Requires:       python-yamlloader >= 0.5.5
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if !%{with test}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %else
 BuildRequires:  %{python_module pytest}
 # tests require entrypoint in standard path
@@ -99,10 +102,10 @@ sed -i 's/^import mock/from unittest import mock/' tests/unit/test_utils.py pywb
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pywbemcli
 %python_clone -a %{buildroot}%{_bindir}/pywbemlistener
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -112,7 +115,9 @@ sed -i 's/^import mock/from unittest import mock/' tests/unit/test_utils.py pywb
 %check
 # increase virtual terminal size to avoid unexpected line breaks
 export PYWBEMTOOLS_TERMWIDTH=120
-%pytest tests/unit
+# too many cli tests not compatible with click-repl 0.3: https://github.com/pywbem/pywbemtools/issues/1312
+donttest="pywbemcli"
+%pytest tests/unit -s -k "not ($donttest)"
 %endif
 
 %if !%{with test}
@@ -126,7 +131,7 @@ export PYWBEMTOOLS_TERMWIDTH=120
 %python_alternative %{_bindir}/pywbemcli
 %python_alternative %{_bindir}/pywbemlistener
 %{python_sitelib}/pywbemtools
-%{python_sitelib}/pywbemtools-%{version}*info
+%{python_sitelib}/pywbemtools-%{version}.dist-info
 %endif
 
 %changelog
