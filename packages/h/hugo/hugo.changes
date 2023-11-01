@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 31 19:11:11 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.120.2:
+  * Fix deprecation printing on info level
+  * tpl/tplimpl: Fix deprecation logic in RSS template
+
+-------------------------------------------------------------------
 Mon Oct 30 17:53:30 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.120.1:

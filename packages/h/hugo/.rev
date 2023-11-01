@@ -836,4 +836,14 @@
   * deps: Update github.com/tdewolff/minify/v2 v2.20.0 =&gt; v2.20.1 (forwarded request 1121282 from jfkw)</comment>
     <requestid>1121283</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b7b5265c185f6bdce786b9785357b2bd</srcmd5>
+    <version>0.120.2</version>
+    <time>1698873014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.120.2:
+  * Fix deprecation printing on info level
+  * tpl/tplimpl: Fix deprecation logic in RSS template (forwarded request 1121493 from jfkw)</comment>
+    <requestid>1121528</requestid>
+  </revision>
 </revisionlist>
