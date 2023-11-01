@@ -166,4 +166,12 @@
 - Enable wayland (forwarded request 1096136 from hillwood)</comment>
     <requestid>1096137</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>603e9553d7fffa669198886857dac1b6</srcmd5>
+    <version>5.6.12</version>
+    <time>1698873012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121527</requestid>
+  </revision>
 </revisionlist>
