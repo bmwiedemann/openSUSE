@@ -1,7 +1,7 @@
 #
 # spec file for package progress
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           progress
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        Coreutils Viewer
 License:        GPL-3.0-or-later
 Group:          System/Console
 URL:            https://github.com/Xfennec/progress
 Source0:        https://github.com/Xfennec/progress/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         progress-fix_ncurses_without_pkgconfig.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(form)
 BuildRequires:  pkgconfig(formw)
@@ -48,9 +47,22 @@ the percentage of copied data.
 
 It can now also display an estimated throughput (using -w flag).
 
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          Development/Tools/Other
+Requires:       %{name} = %{version}
+%if 0%{?suse_version} == 1315
+Supplements:    packageand(progress:zsh)
+%else
+Supplements:    (progress and zsh)
+%endif
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH command line completion support for %{name}.
+
 %prep
-%setup -q
-%patch1
+%autosetup
 
 %build
 %make_build CFLAGS="-g -Wall -D_FILE_OFFSET_BITS=64 %{optflags}"
@@ -63,5 +75,10 @@ It can now also display an estimated throughput (using -w flag).
 %doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files zsh-completion
+%{_datadir}/zsh/
+%{_datadir}/zsh/site-functions/
+%{_datadir}/zsh/site-functions/_progress
 
 %changelog

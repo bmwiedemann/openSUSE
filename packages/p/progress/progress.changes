@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 30 16:21:15 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.17:
+  * bump MAX_PIDS and MAX_RESULTS to 128
+  * support for zsh completion
+
+- dropped no more needed patch progress-fix_ncurses_without_pkgconfig.patch 
+- provide separate subpackage for zsh completion
+
+-------------------------------------------------------------------
 Mon Apr 26 11:33:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.16:
