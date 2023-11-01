@@ -1,0 +1,69 @@
+From 7a65d76a57a5a656a5d9385b0144d15b376ddc7d Mon Sep 17 00:00:00 2001
+From: James Calligeros <jcalligeros99@gmail.com>
+Date: Sun, 29 Oct 2023 11:03:36 +1000
+Subject: [PATCH] policy-dsp: add ability to hide parent nodes
+
+some hardware devices are never supposed to be accessed directly by
+clients, and are designed under the assumption that they will be
+front-loaded by some sort of DSP. add a hide_parent property
+to policy-dsp and revoke all permissions to the bound node of a DSP
+graph where this is set to prevent hardware misuse or damage by poorly
+behaved/configured clients.
+
+Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
+---
+ src/scripts/policy-dsp.lua | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/src/scripts/policy-dsp.lua b/src/scripts/policy-dsp.lua
+index 55f86c68..ce23a67a 100644
+--- a/src/scripts/policy-dsp.lua
++++ b/src/scripts/policy-dsp.lua
+@@ -28,7 +28,12 @@ nodes_om = ObjectManager {
+   Interest { type = "node" },
+ }
+ 
++clients_om = ObjectManager {
++  Interest { type = "client" }
++}
++
+ filter_chains = {}
++hidden_nodes = {}
+ 
+ nodes_om:connect("object-added", function (om, node)
+   for _, r in ipairs(config.rules or {}) do
+@@ -43,6 +48,17 @@ nodes_om:connect("object-added", function (om, node)
+             filter_chains[id] = LocalModule("libpipewire-module-filter-chain", r.filter_chain, {}, true)
+           end
+         end
++
++        if r.hide_parent then
++          Log.debug("Hiding node " .. node["bound-id"] .. " from clients")
++          for client in clients_om:iterate { type = "client" } do
++            if not client["properties"]["wireplumber.daemon"] then
++              client:update_permissions { [node["bound-id"]] = "-" }
++            end
++          end
++          hidden_nodes[node["bound-id"]] = id
++        end
++
+       end
+     end
+   end
+@@ -58,4 +74,13 @@ nodes_om:connect("object-removed", function (om, node)
+   end
+ end)
+ 
++clients_om:connect("object-added", function (om, client)
++  for id, _ in pairs(hidden_nodes) do
++    if not client["properties"]["wireplumber.daemon"] then
++      client:update_permissions { [id] = "-" }
++    end
++  end
++end)
++
+ nodes_om:activate()
++clients_om:activate()
+-- 
+GitLab
+

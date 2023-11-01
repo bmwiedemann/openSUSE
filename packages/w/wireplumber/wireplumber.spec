@@ -30,6 +30,12 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-object-manager-reduce-the-amount-of-globals-that-initially.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0002-object-manager-use-an-idle-callback-to-expose-tmp-globals.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-policy-dsp-add-ability-to-hide-parent-nodes.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz

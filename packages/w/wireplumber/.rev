@@ -244,4 +244,21 @@
     <comment></comment>
     <requestid>1117593</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>2798dc6ab83cbd407b356aba10837fc0</srcmd5>
+    <version>0.4.15</version>
+    <time>1698872975</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from upstream that fixes too many matches for property
+  interest:
+  * 0001-object-manager-reduce-the-amount-of-globals-that-initially.patch
+- Add patch from upstream that fixes an odd failure of a test after
+  applying the previous patch:
+  * 0002-object-manager-use-an-idle-callback-to-expose-tmp-globals.patch
+- Add patch from upstream that adds ability to hide parent nodes,
+  which is useful to prevent hardware misuse or damage by poorly
+  behaved/configured clients:
+  * 0001-policy-dsp-add-ability-to-hide-parent-nodes.patch</comment>
+    <requestid>1121413</requestid>
+  </revision>
 </revisionlist>

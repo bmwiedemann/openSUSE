@@ -1,0 +1,36 @@
+From 5fc7e68d109b646c550e3fdeddebadc5047137a2 Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Mon, 23 Oct 2023 23:04:02 +0300
+Subject: [PATCH] object-manager: reduce the amount of globals that initially
+ match the interest
+
+With the previous check, any global matching either the type or the global
+properties of the interest would be considered for inclusion in the object
+manager and would be prepared only to fail the same check later.
+
+The correct way to check is (variable & (X|Y) == (X|Y)), which is what
+SPA_FLAG_IS_SET() expands to.
+
+Fixes #517
+---
+ lib/wp/object-manager.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/wp/object-manager.c b/lib/wp/object-manager.c
+index 6f58653ba..dea7857e1 100644
+--- a/lib/wp/object-manager.c
++++ b/lib/wp/object-manager.c
+@@ -638,8 +638,8 @@ wp_object_manager_is_interested_in_global (WpObjectManager * self,
+     /* and consider the manager interested if the type and the globals match...
+        if pw_properties / g_properties fail, that's ok because they are not
+        known yet (the proxy is likely NULL and properties not yet retrieved) */
+-    if (match & (WP_INTEREST_MATCH_GTYPE |
+-                 WP_INTEREST_MATCH_PW_GLOBAL_PROPERTIES)) {
++    if (SPA_FLAG_IS_SET (match, (WP_INTEREST_MATCH_GTYPE |
++                                 WP_INTEREST_MATCH_PW_GLOBAL_PROPERTIES))) {
+       gpointer ft = g_hash_table_lookup (self->features,
+           GSIZE_TO_POINTER (global->type));
+       *wanted_features = (WpObjectFeatures) GPOINTER_TO_UINT (ft);
+-- 
+GitLab
+

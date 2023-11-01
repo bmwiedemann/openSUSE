@@ -1,0 +1,88 @@
+From 23ba01970f2520fb30fddc4ee911d77cdda9ac22 Mon Sep 17 00:00:00 2001
+From: George Kiagiadakis <george.kiagiadakis@collabora.com>
+Date: Mon, 23 Oct 2023 23:08:45 +0300
+Subject: [PATCH] object-manager: use an idle callback to expose tmp globals
+ instead of pw_core_sync
+
+A core sync is not really necessary here because whatever objects the remote
+pipewire daemon has to announce have already been sent to us on a message
+and this message is already being processed at this point. This means, we are
+not going to be returning to the main loop until all the new objects have been
+announced and therefore placed into the tmp globals array. So, we can also use
+an idle callback and achieve the same effect of slightly delaying until all
+new globals have been announced.
+
+With an idle callback, we can be more agile and add those new objects immediately
+after the message has been processed instead of waiting for a pw_core_sync()
+reply, which will come in the next message.
+
+This fixes an odd failure of the si-standard-link test after applying the fix
+for #517, which was caused by the fact that the test was previously relying on
+a delay caused by some unrelated globals being prepared in the object manager
+that tries to verify the graph state. After those globals were removed from the
+internal preparation queue, the test would fail to detect the link objects
+because they were stuck in the tmp_globals array for too long.
+---
+ lib/wp/object-manager.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/lib/wp/object-manager.c b/lib/wp/object-manager.c
+index dea7857e..816db6dc 100644
+--- a/lib/wp/object-manager.c
++++ b/lib/wp/object-manager.c
+@@ -1047,18 +1047,15 @@ wp_registry_detach (WpRegistry *self)
+   }
+ }
+ 
+-static void
+-expose_tmp_globals (WpCore *core, GAsyncResult *res, WpRegistry *self)
++static gboolean
++expose_tmp_globals (WpCore *core)
+ {
+-  g_autoptr (GError) error = NULL;
++  WpRegistry *self = wp_core_get_registry (core);
+   g_autoptr (GPtrArray) tmp_globals = NULL;
+ 
+-  if (!wp_core_sync_finish (core, res, &error))
+-    wp_warning_object (core, "core sync error: %s", error->message);
+-
+   /* in case the registry was cleared in the meantime... */
+   if (G_UNLIKELY (!self->tmp_globals))
+-    return;
++    return G_SOURCE_REMOVE;
+ 
+   /* steal the tmp_globals list and replace it with an empty one */
+   tmp_globals = self->tmp_globals;
+@@ -1082,8 +1079,8 @@ expose_tmp_globals (WpCore *core, GAsyncResult *res, WpRegistry *self)
+         wp_global_rm_flag (old_g, WP_GLOBAL_FLAG_OWNED_BY_PROXY);
+     }
+ 
+-    g_return_if_fail (self->globals->len <= g->id ||
+-        g_ptr_array_index (self->globals, g->id) == NULL);
++    g_return_val_if_fail (self->globals->len <= g->id ||
++        g_ptr_array_index (self->globals, g->id) == NULL, G_SOURCE_REMOVE);
+ 
+     /* set the registry, so that wp_global_rm_flag() can work full-scale */
+     g->registry = self;
+@@ -1109,6 +1106,8 @@ expose_tmp_globals (WpCore *core, GAsyncResult *res, WpRegistry *self)
+     }
+     wp_object_manager_maybe_objects_changed (om);
+   }
++
++  return G_SOURCE_REMOVE;
+ }
+ 
+ /*
+@@ -1159,7 +1158,8 @@ wp_registry_prepare_new_global (WpRegistry * self, guint32 id,
+ 
+     /* schedule exposing when adding the first global */
+     if (self->tmp_globals->len == 1) {
+-      wp_core_sync (core, NULL, (GAsyncReadyCallback) expose_tmp_globals, self);
++      wp_core_idle_add_closure (core, NULL,
++          g_cclosure_new_object (G_CALLBACK (expose_tmp_globals), G_OBJECT (core)));
+     }
+   } else {
+     /* store the most permissive permissions */
+-- 
+GitLab
+
