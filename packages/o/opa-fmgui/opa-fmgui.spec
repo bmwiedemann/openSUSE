@@ -1,7 +1,7 @@
 #
 # spec file for package opa-fmgui
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -75,12 +75,12 @@ Patch2:         manifest-version.patch
 Patch3:         opa-fmgui-fix-build-for-JDK9-Gradle-3.2.patch
 BuildRequires:  ant
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  openssl
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wget
-Requires:       jre >= 1.7
+Requires:       jre >= 1.8
 Requires:       mlocate
 # BuildRequires:  gradle
 BuildArch:      noarch

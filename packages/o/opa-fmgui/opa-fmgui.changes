@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 31 22:45:47 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * opa-fmgui-fix-build-for-JDK9-Gradle-3.2.patch
+    + Build with java source/target levels 8
+    + Fixes building with JDK21
+
+-------------------------------------------------------------------
 Mon Apr 11 13:00:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not use the vulnerable log4j-1.2.14, but use the maintained

@@ -13,7 +13,7 @@ index a7f6209..84f4c59 100644
  	</target>
  	<target name="compile" description="Compiles the Fabric Manager GUI application">
 -	    <javac  srcdir="${src}" destdir="${target}/classes"
-+	    <javac target="1.7" srcdir="${src}" destdir="${target}/classes"
++	    <javac target="1.8" srcdir="${src}" destdir="${target}/classes"
  			        encoding="windows-1252"
  				    debug="true"
  		    		fork="yes"
