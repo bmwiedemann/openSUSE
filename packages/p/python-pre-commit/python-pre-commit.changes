@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov  1 10:32:51 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org> - 3.5.0
+
+- update to version 3.5.0
+  * Features
+    + Improve performance of check-hooks-apply and check-useless-excludes.
+  * Fixes
+    + Use time.monotonic() for more accurate hook timing.
+  * Migrating
+    + Require npm 6.x+ for language: node hooks.
+- notable changes since 2.21.0
+  * Remove pre-commit-validate-config and pre-commit-validate-manifest,
+    use pre-commit validate-config and pre-commit validate-manifest
+    instead.
+  * See CHANGELOG.md
+- spec file changes
+  * Remove python-re-assert and python-toml from the runtime requirements
+  * Remove python-toml from the build requirements
+  * Update required python-virtualenv version to 20.10.0
+  * Rename excluded test est_local_golang_additional_dependencies to
+    test_local_golang_additional_deps
+  * Exclude new tests that require internet access
+    + test_run_example_executable
+    + test_run_dep
+    + test_perl_additional_dependencies
+    + test_lua_additional_dependencies
+  * Exclude new tests that have unfulfillable dependencies
+    + test_swift_language
+  * Add LICENSE and CHANGELOG.md to the files list
+
+-------------------------------------------------------------------
 Mon Jan  2 20:10:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.21.0:

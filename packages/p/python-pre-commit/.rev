@@ -161,4 +161,12 @@
   * Skip default `nuget` source when installing `dotnet` packages.</comment>
     <requestid>1046303</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cb380f5d68bf61cff4dbeae62a42ad98</srcmd5>
+    <version>3.5.0</version>
+    <time>1698873053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121650</requestid>
+  </revision>
 </revisionlist>
