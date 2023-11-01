@@ -21,7 +21,7 @@
 %define name_of_binary ct
 
 Name:           chart-testing
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        CLI tool for linting and testing Helm charts
 Group:          Development/Languages/Other
@@ -39,8 +39,7 @@ Requires:       python3-yamllint
 ct is the the tool for testing Helm charts. It is meant to be used for linting and testing pull requests. It automatically detects charts changed against the target branch.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
