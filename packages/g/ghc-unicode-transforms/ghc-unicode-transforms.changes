@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 17:10:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unicode-transforms to version 0.4.0.1 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
