@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 30 11:14:53 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.6.0
+  * This adds support for Qt v6.6.
+- Drop no longer needed pyqt6-fix-build-with-qt-6.6.0.patch
+
+-------------------------------------------------------------------
 Wed Oct 18 00:34:21 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to 6.5.3
