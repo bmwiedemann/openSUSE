@@ -263,4 +263,13 @@
     <comment></comment>
     <requestid>1121006</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>14ff96a3cb72bed13aeb7d03de1bdce3</srcmd5>
+    <version>1.8.2</version>
+    <time>1698873018</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix runtime requirements
+</comment>
+    <requestid>1121662</requestid>
+  </revision>
 </revisionlist>

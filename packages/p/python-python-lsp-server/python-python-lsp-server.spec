@@ -35,6 +35,7 @@ BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 2.0.4 with %python-autopep8 < 2.1.0}
 BuildRequires:  %{python_module flake8 >= 6.1.0 with %python-flake8 < 7}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module importlib_metadata > 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.20}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
@@ -43,7 +44,7 @@ BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pydocstyle >= 6.3.0 with %python-pydocstyle < 6.4.0}
 BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 3.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
+BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.1.0 with %python-python-lsp-jsonrpc < 2}
 BuildRequires:  %{python_module rope >= 1.2.0}
 BuildRequires:  %{python_module ujson >= 3.0.0}
 BuildRequires:  %{python_module whatthepatch >= 1.0.2 with %python-whatthepatch < 2}
@@ -52,9 +53,12 @@ BuildRequires:  %{python_module yapf >= 0.33}
 BuildRequires:  fdupes
 Requires:       python-docstring-to-markdown
 Requires:       python-pluggy >= 1.0.0
-Requires:       python-python-lsp-jsonrpc >= 1.0.0
 Requires:       python-ujson >= 3.0.0
 Requires:       (python-jedi >= 0.17.2 with python-jedi < 0.20)
+Requires:       (python-python-lsp-jsonrpc >= 1.1.0 with python-python-lsp-jsonrpc < 2)
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib_metadata >= 4.8.3
+%endif
 Suggests:       python-autopep8 >= 2.0.4
 Conflicts:      python-autopep8 >= 2.1.0
 Suggests:       python-pydocstyle >= 6.3.0
