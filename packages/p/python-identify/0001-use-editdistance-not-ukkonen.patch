@@ -1,0 +1,61 @@
+From: Matthias Fehring <buschmann23@opensuse.org>
+Date: 2023-11-01 09:44:00 +0100
+Subject: Use editdistance instead of ukkonen
+Upstream: never
+
+Upstream switched from editdistance_s to ukkonen that is currently
+not packaged for openSUSE.
+
+---
+ identify/identify.py |   10 ++++------
+ setup.cfg            |    2 +-
+ 2 files changed, 5 insertions(+), 7 deletions(-)
+
+--- a/identify/identify.py	2023-10-28 19:19:41.000000000 +0200
++++ b/identify/identify.py	2023-11-01 09:39:16.942021416 +0100
+@@ -243,7 +243,7 @@
+     3. check exact text match with existing licenses
+     4. failing that use edit distance
+     """
+-    import ukkonen  # `pip install identify[license]`
++    import editdistance  # `pip install identify[license]`
+ 
+     with open(filename, encoding='UTF-8') as f:
+         contents = f.read()
+@@ -253,8 +253,6 @@
+     min_edit_dist = sys.maxsize
+     min_edit_dist_spdx = ''
+ 
+-    cutoff = math.ceil(.05 * len(norm))
+-
+     # try exact matches
+     for spdx, text in licenses.LICENSES:
+         norm_license = _norm_license(text)
+@@ -265,13 +263,13 @@
+         if norm and abs(len(norm) - len(norm_license)) / len(norm) > .05:
+             continue
+ 
+-        edit_dist = ukkonen.distance(norm, norm_license, cutoff)
+-        if edit_dist < cutoff and edit_dist < min_edit_dist:
++        edit_dist = editdistance.distance(norm, norm_license)
++        if edit_dist < min_edit_dist:
+             min_edit_dist = edit_dist
+             min_edit_dist_spdx = spdx
+ 
+     # if there's less than 5% edited from the license, we found our match
+-    if norm and min_edit_dist < cutoff:
++    if norm and min_edit_dist / len(norm) < .05:
+         return min_edit_dist_spdx
+     else:
+         # no matches :'(
+--- a/setup.cfg	2023-10-28 19:19:41.000000000 +0200
++++ b/setup.cfg	2023-11-01 10:13:07.904157653 +0100
+@@ -31,7 +31,7 @@
+ 
+ [options.extras_require]
+ license =
+-    ukkonen
++    editdistance
+ 
+ [options.package_data]
+ identify =

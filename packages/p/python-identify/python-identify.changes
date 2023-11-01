@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov  1 09:17:44 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to version 2.5.31
+  * no changelog available, alternatively have a look at
+    https://github.com/pre-commit/identify/compare/v2.2.13...v2.5.31
+- use editdistance instead of ukkonen
+  * Upstream changed from editdistance_s to ukkonen for performance
+    reasons. Ukkonen is not now available for openSUSE. So switch
+    back to editdistance for now.
+  * Add 0001-use-editdistance-not-ukkonen.patch
+- spec file changes
+  * remove not required python-setuptools from Requires
+  * upstream URL has changed to https://github.com/pre-commit/identify
+  * change requirement for python-editdistance from Suggests to
+    Recommends
+
+-------------------------------------------------------------------
 Wed Aug 18 12:47:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.2.13
