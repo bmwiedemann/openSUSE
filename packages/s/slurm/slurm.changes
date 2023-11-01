@@ -18,7 +18,7 @@ Thu Oct 12 08:23:20 UTC 2023 - Christian Goll <cgoll@suse.com>
     + `slurmrestd` - Correct OpenAPI format for
       `GET /slurm/v0.0.39/job/{job_id}`.
     + `slurmrestd` - Change format to multiple fields in
-     'GET /slurmdb/v0.0.39/assocations` and `GET /slurmdb/v0.0.39/qos` to
+      `GET /slurmdb/v0.0.39/assocations` and `GET /slurmdb/v0.0.39/qos` to
       handle infinite and unset states.
     + When a node fails in a job with `--no-kill`, preserve the extern step on the
       remaining nodes to avoid breaking features that rely on the extern step
