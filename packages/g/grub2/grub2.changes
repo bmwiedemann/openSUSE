@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 30 07:15:17 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix fadump not working with 1GB/2GB/4GB LMB[P10] (bsc#1216253) 
+  * 0001-kern-ieee1275-init-Restrict-high-memory-in-presence-.patch
+
+-------------------------------------------------------------------
 Thu Oct 26 06:04:54 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Fix a potential error when appending multiple keys into the
