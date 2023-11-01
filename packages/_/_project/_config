@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20230708
+ExpandFlags: macroserial:20231031
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -3328,15 +3328,16 @@ Macros:
 
 # END RUST STUFF
 
-# Default to Java 17
+# Default to Java 21
+Prefer: java-21-openjdk-devel java-21-openjdk java-21-openjdk-headless java-21-openjdk-javadoc
 Prefer: java-17-openjdk-devel java-17-openjdk java-17-openjdk-headless java-17-openjdk-javadoc
 Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-openjdk-javadoc
 %ifarch s390x
 Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
-Prefer: java-21-openjdk-devel java-21-openjdk java-21-openjdk-headless java-21-openjdk-javadoc
 Prefer: java-20-openjdk-devel java-20-openjdk java-20-openjdk-headless java-20-openjdk-javadoc
+
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit
