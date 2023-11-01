@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 31 17:28:13 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.14.13
+ * Features
+  - classes: Add landscape option to base class
+  - cli: Allow multiple runtime SILE_PATH segments
+ * Bug Fixes
+  - frames: Update frame constraints with new frame IDs after \makecolumns
+-------------------------------------------------------------------
 Wed Oct 11 18:00:46 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.14.12
