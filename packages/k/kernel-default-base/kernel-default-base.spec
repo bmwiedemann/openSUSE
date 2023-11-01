@@ -36,7 +36,7 @@
 %define hyperv_modules hid-hyperv hv_balloon hv_utils \
 hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 
-%define net_drivers 8390 ne2k-pci tulip e100 e1000 e1000e 8139cp 8139too
+%define net_drivers 8390 ne2k-pci tulip e100 e1000 e1000e 8139cp 8139too dummy
 
 %define scsi_modules scsi_transport_iscsi sd_mod sg sr_mod st scsi_mod
 
