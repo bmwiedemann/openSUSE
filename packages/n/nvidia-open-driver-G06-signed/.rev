@@ -190,4 +190,12 @@
 - removed pci-table.patch</comment>
     <requestid>1120029</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>92cf3c23aedab0eb68e4829f7a6421f4</srcmd5>
+    <version>535.129.03</version>
+    <time>1698952890</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 535.129.03</comment>
+    <requestid>1121705</requestid>
+  </revision>
 </revisionlist>
