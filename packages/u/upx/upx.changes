@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  1 19:30:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.1
+  * linux: /proc/self/exe now is optional
+
+-------------------------------------------------------------------
 Thu Oct 26 09:53:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.0
