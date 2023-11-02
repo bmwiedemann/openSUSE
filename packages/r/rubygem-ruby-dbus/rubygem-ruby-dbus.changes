@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 02:26:54 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Testsuite requires dbus-daemon and dbus-send which are now 
+  separate packages
+
+-------------------------------------------------------------------
 Tue Oct  3 07:29:07 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - 0.23.1

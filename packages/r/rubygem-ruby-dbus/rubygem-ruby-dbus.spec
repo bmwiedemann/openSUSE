@@ -33,7 +33,8 @@ BuildRequires:  %{rubygem nokogiri >= 1.12}
 BuildRequires:  %{rubygem packaging_rake_tasks}
 BuildRequires:  %{rubygem rake}
 BuildRequires:  %{rubygem rspec >= 3.9}
-BuildRequires:  dbus-1
+BuildRequires:  dbus-1-daemon
+BuildRequires:  dbus-1-tools
 BuildRequires:  netcfg
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
