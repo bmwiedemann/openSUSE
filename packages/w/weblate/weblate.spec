@@ -41,6 +41,8 @@ Patch:          skip-test_ocr.patch
 Patch:          use-old-html-theme.patch
 # PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/commit/fedbd8e6e50cf982295567f833b3348609c10fa6 chore(deps): update dependency pyparsing to >=3.0.7,<3.2
 Patch:          pyparsing.patch
+# PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/commit/f990e0a5e0087b905b4d96e6bd926cff2a3c8de8 settings: remove explicit PARSER_CLASS from redis configuration
+Patch:          redis_config_remove_parser_class.patch
 BuildRequires:  bitstream-vera
 BuildRequires:  borgbackup >= 1.2.1
 BuildRequires:  fdupes
@@ -51,6 +53,7 @@ BuildRequires:  gpg2
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  mercurial >= 6.2
+BuildRequires:  openssh
 BuildRequires:  postgresql
 BuildRequires:  postgresql-contrib
 BuildRequires:  postgresql-server
@@ -129,6 +132,7 @@ BuildRequires:  python3-user-agents >= 2.0
 BuildRequires:  python3-weblate-language-data >= 2022.7
 BuildRequires:  python3-weblate-schemas = 2023.3
 BuildRequires:  python3-zeep >= 4.1.0
+BuildRequires:  redis
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
 BuildRequires:  translate-toolkit >= 3.9.2

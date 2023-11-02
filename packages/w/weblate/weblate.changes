@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 31 13:04:53 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add build dependency on redis and openssh
+- Add upstream patch redis_config_remove_parser_class.patch
+
+-------------------------------------------------------------------
 Thu Jul 20 10:11:02 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.18.2

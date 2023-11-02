@@ -200,4 +200,12 @@
 - Add one more hunk to skip-test_ocr.patch</comment>
     <requestid>1099725</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>15d33995c6c607b68502894e555a01ba</srcmd5>
+    <version>4.18.2</version>
+    <time>1698952875</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121682</requestid>
+  </revision>
 </revisionlist>
