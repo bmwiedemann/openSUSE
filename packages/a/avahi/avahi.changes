@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  1 06:19:44 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add avahi-CVE-2023-38470.patch: Ensure each label is at least one
+  byte long (bsc#1215947, CVE-2023-38470).
+
+-------------------------------------------------------------------
 Thu Oct 26 08:33:36 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add avahi-CVE-2023-38473.patch: derive alternative host name from

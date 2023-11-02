@@ -1250,4 +1250,13 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1120633</requestid>
   </revision>
+  <revision rev="161" vrev="27">
+    <srcmd5>8ec18ee506ce8f89c7ae2c767f24a51a</srcmd5>
+    <version>0.8</version>
+    <time>1698952820</time>
+    <user>anag+factory</user>
+    <comment>- Add avahi-CVE-2023-38470.patch: Ensure each label is at least one
+  byte long (bsc#1215947, CVE-2023-38470). (forwarded request 1121540 from AZhou)</comment>
+    <requestid>1121609</requestid>
+  </revision>
 </revisionlist>

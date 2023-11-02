@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package avahi
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -103,6 +103,8 @@ Patch29:        harden_avahi-dnsconfd.service.patch
 Patch30:        avahi-CVE-2023-1981.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2023-38473.patch bsc#1216419 xwang@suse.com -- derive alternative host name from its unescaped version
 Patch31:        avahi-CVE-2023-38473.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2023-38470.patch bsc#1215947 alynx.zhou@suse.com -- Ensure each label is at least one byte long
+Patch32:        avahi-CVE-2023-38470.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -507,6 +509,7 @@ cp -a %{SOURCE12} service-type-database/build-db
 %patch29 -p1
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions
