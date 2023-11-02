@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 26 07:56:51 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.067:
+  * fix handling combinations of metalink / zsync / mirrorlist / symlinks (#421)
+
+-------------------------------------------------------------------
+Thu Oct 19 11:37:00 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.066:
+  * Centalized mirror management (#417)
+  * Fix surepfluous .zsync in symlink redirect (#419)
+  * t: Move container tests to from leap 15.4 to 15.5
+
+-------------------------------------------------------------------
 Thu Sep 28 10:12:08 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.065:
