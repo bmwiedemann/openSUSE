@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-activesupport-7.0
-Version:        7.0.5.1
+Version:        7.0.8
 Release:        0
 %define mod_name activesupport
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -7.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -39,7 +38,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A toolkit of support libraries and Ruby core extensions extracted
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A toolkit of support libraries and Ruby core extensions extracted from the
