@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 22 14:13:29 UTC 2023 - Enno Gotthold <egotthold@suse.com>
+
+- Update to 2.1.0
+  * 2.0.3: prevent AUTO_INCREMENT-ing fields from having a DEFAULT value
+  * 2.0.2: properly import CMySQLConnection
+
+-------------------------------------------------------------------
 Sat Dec  3 01:01:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.4.16
