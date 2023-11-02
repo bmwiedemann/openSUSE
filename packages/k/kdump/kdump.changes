@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 31 14:30:30 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 1.9.8
+  * drop obsolete dependency on systemd-sysvinit (bsc#1216745)
+
+-------------------------------------------------------------------
 Tue Oct 17 16:22:16 UTC 2023 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 1.9.7

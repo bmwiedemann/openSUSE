@@ -1269,4 +1269,13 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1120116</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>bab6bb499976b99bc97e5cfddf596e3c</srcmd5>
+    <version>1.9.8</version>
+    <time>1698952842</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 1.9.8
+  * drop obsolete dependency on systemd-sysvinit (bsc#1216745)</comment>
+    <requestid>1121458</requestid>
+  </revision>
 </revisionlist>
