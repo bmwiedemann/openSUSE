@@ -125,4 +125,12 @@ near future.</comment>
   * docs: Expand Network Block Device (for NBD) in title</comment>
     <requestid>1114450</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>528efa2a84f3d79008f5b410a4a56ce3</srcmd5>
+    <version>1.36.1</version>
+    <time>1698952906</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1121716</requestid>
+  </revision>
 </revisionlist>

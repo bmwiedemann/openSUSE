@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 25 19:34:49 UTC 2023 - jfehlig@suse.com
+
+- Update to version 1.36.1:
+  * Version 1.36.1.
+  * python: Document nbdkit.disconnect(force) helper function
+  * python: List helper functions in alphabetical order
+  * python: Clarify possible handle values returned by open() method
+  * tests: Fix incorrect comment in tests
+  * docs: Remove references to -U - when it is implicit
+
+-------------------------------------------------------------------
 Fri Sep 29 17:40:05 UTC 2023 - jfehlig@suse.com
 
 - Update to version 1.36.0:
