@@ -212,4 +212,12 @@
   * Support for Intel Rocket Lake-E</comment>
     <requestid>1082737</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2899414f7d6a9e80b25cc0ad30fcb5ed</srcmd5>
+    <version>0.6.4</version>
+    <time>1698952931</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121950</requestid>
+  </revision>
 </revisionlist>

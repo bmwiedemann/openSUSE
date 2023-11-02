@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  1 20:53:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.6.4
+  * Support for AMD Genoa, Phoenix, Dragon Range, Ryzen Z1
+  * Support for Intel Sapphire Rapids-WS, Skylake (server),
+    Cascade Lake, Ice-Lake (server), Sapphire Rapids-SP,
+    Raptor Lake-H/HX, Apollo lake
+  * Improve support for Arrandale, Alder-Lake and Raptor-Lake P/U
+  * Initial support for Centaur CPUs (VIA and Zhaoxin)
+
+-------------------------------------------------------------------
 Tue Apr 25 11:29:39 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.6.3:

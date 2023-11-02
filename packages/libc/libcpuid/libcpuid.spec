@@ -18,7 +18,7 @@
 
 %define so_ver  16
 Name:           libcpuid
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause
