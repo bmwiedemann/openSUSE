@@ -19,7 +19,7 @@
 
 %bcond_without released
 Name:           ksystemstats5
-Version:        5.27.8
+Version:        5.27.9
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -57,7 +57,11 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libudev)
 # For %%check
+%if 0%{?suse_version} > 1599
+BuildRequires:  /usr/bin/dbus-run-session
+%else
 BuildRequires:  dbus-1
+%endif
 Conflicts:      ksysguard5 < 5.21.80
 %{systemd_ordering}
 
