@@ -2528,4 +2528,13 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Upgrade to version 2.39.2:</comment>
     <requestid>1109874</requestid>
   </revision>
+  <revision rev="278" vrev="2">
+    <srcmd5>42f2e00e2aec85f45dead2f06601df71</srcmd5>
+    <version>2.39.2</version>
+    <time>1698952795</time>
+    <user>anag+factory</user>
+    <comment>- Add patch setterm-resize-uninit-flags.patch
+- move metadata into patches</comment>
+    <requestid>1121506</requestid>
+  </revision>
 </revisionlist>

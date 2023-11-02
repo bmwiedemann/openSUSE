@@ -1,3 +1,7 @@
+From: Werner Fink <werner@suse.de>
+Date: 2013-06-06 08:27:43+0000
+Subject: let `su' handle /sbin and /usr/sbin in path
+
 Index: util-linux-2.31/login-utils/su-common.c
 ===================================================================
 --- util-linux-2.31.orig/login-utils/su-common.c

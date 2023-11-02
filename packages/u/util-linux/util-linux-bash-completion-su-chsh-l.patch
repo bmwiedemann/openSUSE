@@ -1,3 +1,8 @@
+From: Stanislav Brabec <sbrabec@suse.com>
+Date: 2022-03-03 03:22:45+0000
+References: bugzilla.suse.com/1172427
+Subject: Fix "su -s" bash completion.
+
 su -s <TAB> completion depends on "chsh -l" present in the
 util-linux implementation of chsh. But SUSE uses chsh from shadow
 package that does not include this feature. Use /etc/shells

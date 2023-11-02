@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 31 13:20:38 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch:
+  * setterm-resize-uninit-flags.patch
+
+-------------------------------------------------------------------
 Fri Sep  8 20:13:24 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Upgrade to version 2.39.2:

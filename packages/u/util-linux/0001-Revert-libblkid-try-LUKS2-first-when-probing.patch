@@ -2,6 +2,7 @@ From 93ba7961779789217a1f814ce3110ff8c040c8c3 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fvogt@suse.de>
 Date: Wed, 12 Jul 2023 15:48:27 +0200
 Subject: [PATCH] Revert "libblkid: try LUKS2 first when probing"
+References: https://github.com/util-linux/util-linux/pull/2373
 
 mdadm superblocks before 1.1 are placed at the end of the device, which
 means that the data contained inside the array starts at offset 0. For

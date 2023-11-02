@@ -104,18 +104,14 @@ Source14:       runuser.pamd
 Source15:       runuser-l.pamd
 Source16:       su-l.pamd
 Source51:       blkid.conf
-# PATCH-EXTEND-UPSTREAM: Let `su' handle /sbin and /usr/sbin in path
 Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
-# PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
-# https://github.com/util-linux/util-linux/pull/2373
 Patch4:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
-# PATCH-FIX-UPSTREAM util-linux-fix-tests-with-64k-pagesize.patch -- fadvise: fix tests with 64k pagesize
 Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
-# https://github.com/util-linux/util-linux/pull/2100
 Patch6:         use-logind-not-utmp.patch
+Patch7:         setterm-resize-uninit-flags.patch
 
 BuildRequires:  audit-devel
 BuildRequires:  bc
