@@ -17,9 +17,9 @@
    mode: NODE_ENV,
 -  devtool: "source-map",
 +  devtool: false,
+   // TODO: Replace this with web.
+   // target: "web",
    target: "electron-renderer",
-   node: {
-     __dirname: false,
 @@ -138,7 +138,7 @@
      new AngularWebpackPlugin({
        tsConfigPath: "tsconfig.renderer.json",

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  1 18:14:44 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2023.10.0
+  * View and edit login items with passkeys saved to them
+  * Add import functionality
+  * Add direct import for LastPass
+  * Add support for self-hosting email alias generators
+  * Bug fix for Duo hardware keys
+
+-------------------------------------------------------------------
 Thu Oct 12 17:14:30 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2023.9.2
