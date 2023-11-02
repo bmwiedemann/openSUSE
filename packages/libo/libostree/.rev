@@ -371,4 +371,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment>Pushing GNOME 45.rc packages (forwarded request 1109845 from iznogood)</comment>
     <requestid>1110511</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d2e6880278ce17c6fd9fb2eff8f49805</srcmd5>
+    <version>2023.7</version>
+    <time>1698952819</time>
+    <user>anag+factory</user>
+    <comment>libostree 2023.7 (forwarded request 1120843 from AndreasStieger)</comment>
+    <requestid>1121469</requestid>
+  </revision>
 </revisionlist>

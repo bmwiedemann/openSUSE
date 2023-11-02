@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 27 19:02:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2023.7:
+  + support for a "transient etc"
+  + HTTP layer now retries requests by default
+  + a longstanding bug was fixed where ostree would still try to
+    fetch "loose" objects even when we were doing a delta pull
+  + Fix variety of clang-analyzer fixes (some false positives, some
+    real memory leaks, etc)
+
+-------------------------------------------------------------------
 Tue Aug 29 09:53:25 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use OpenSSL for ed25519 signatures which automatically uses

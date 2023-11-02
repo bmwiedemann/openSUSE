@@ -22,9 +22,8 @@
 %bcond_with        composefs
 %bcond_without     ed25519
 %bcond_with        tests
-
 Name:           libostree
-Version:        2023.6
+Version:        2023.7
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
@@ -33,7 +32,6 @@ URL:            https://github.com/ostreedev/ostree
 Source:         https://github.com/ostreedev/ostree/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE ostree-grub2-location.patch boo#974714 dimstar@opensuse.org -- Fix path to grub-mkconfig_lib
 Patch0:         ostree-grub2-location.patch
-
 BuildRequires:  bison
 BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel >= 1.34.0
@@ -54,16 +52,15 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(mount) >= 2.23.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
+# Package was renamed from ostree to libostree with version 2017.2
+Provides:       ostree = %{version}
+Obsoletes:      ostree < %{version}
 %if %{with tests}
 BuildRequires:  gjs
 %endif
 %if %{with ed25519}
 BuildRequires:  pkgconfig(openssl)
 %endif
-
-# Package was renamed from ostree to libostree with version 2017.2
-Provides:       ostree = %{version}
-Obsoletes:      ostree < %{version}
 
 %description
 OSTree is a tool for managing bootable, immutable, versioned
@@ -104,12 +101,12 @@ Summary:        GRUB2 integration for OSTree
 Group:          System/Boot
 Provides:       ostree-grub2 = %{version}
 Obsoletes:      ostree-grub2 < %{version}
+BuildArch:      noarch
 %ifnarch aarch64
 Requires:       grub2
 %else
 Requires:       grub2-efi
 %endif
-BuildArch:      noarch
 
 %description grub2
 GRUB2 integration for OSTree
