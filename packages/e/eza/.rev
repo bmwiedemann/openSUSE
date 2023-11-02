@@ -184,4 +184,16 @@
 - Add fix-offset-for-filenames-with-spaces.patch. Fixes ugly offset</comment>
     <requestid>1120605</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>db844921f3db4885b8eb1de0ba38cb86</srcmd5>
+    <version>0.15.2~0</version>
+    <time>1698952945</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.2:
+  * Correct width when --no-quotes is used
+  * Clippy lint and add option to grid-details
+  * --smart-group only worked for current user
+  * Add Typst to the recognized files</comment>
+    <requestid>1122243</requestid>
+  </revision>
 </revisionlist>
