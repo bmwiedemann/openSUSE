@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  1 23:33:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2023-11-01:
+  * Update Unicode date to 15.1.0
+  * Use Abseil's character class functions that are locale-agnostic
+  * Set SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
 Fri Sep  1 12:53:42 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2023-09-01:
