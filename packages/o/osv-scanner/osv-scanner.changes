@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 02 05:58:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.4.3:
+  * Prepare for v1.4.3 release (#629)
+  * Add support for determineversions API (#612). (#621)
+  * Refactor package scanning to produce packages instead of
+    queries (#614)
+  * Fix permissions in PR osv-scanner (#625)
+  * Fix gitignore matching for root directory (#626)
+  * Go binary not found should not be an error (#622)
+  * Scan submodules too. (#581)
+  * fix: handle yarn aliased packages (#615)
+  * fix(deps): update osv-scanner minor (#618)
+  * chore(deps): update github/codeql-action action to v2.22.5
+    (#616)
+  * chore(deps): update dependency jekyll-feed to v0.17.0 (#597)
+  * chore(deps): update workflows (#596)
+  * handle npm aliased packages (#610)
+  * Some minor post release fixes (#613)
+  * Gate extended tests (#598)
+  * test: use `cmp.Diff` for diffing (#605)
+  * fix: remove some extra newlines in sarif report (#607)
+
+-------------------------------------------------------------------
 Wed Oct 25 04:43:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.4.2:
