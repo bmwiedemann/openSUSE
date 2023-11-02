@@ -400,7 +400,6 @@ Recommends:     netcat-openbsd
 Recommends:     netcfg
 Recommends:     nfs-client
 Recommends:     nfsidmap
-Recommends:     nscd
 # Kernel 5.15+ has an improved R/W ntfs module.
 # Use ntfs-3g anyway because udisks has issues with mount option handling:
 # https://github.com/storaged-project/udisks/issues/932
