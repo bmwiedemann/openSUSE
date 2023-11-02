@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  2 08:52:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.16
+  * Add HX_strtoull_nsec to parse time period and emit nanoseconds
+  * doc: specify return value and semantics for HXio_fullread,
+    HXio_fullwrite, HX_sendfile
+
+-------------------------------------------------------------------
 Sun Sep 24 05:13:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.15
