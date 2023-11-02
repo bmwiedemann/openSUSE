@@ -17,7 +17,7 @@
 
 
 Name:           osmo-smlc
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Osmocom Serving Mobile Location Centre
 License:        AGPL-3.0-or-later
@@ -30,12 +30,12 @@ BuildRequires:  automake
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
-BuildRequires:  pkgconfig(libosmo-sccp) >= 1.7.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.7.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.8.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.8.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.8.0
+BuildRequires:  pkgconfig(libosmo-sccp) >= 1.8.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.8.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.9.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.9.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
 
 %description
 OsmoSMLC is the Osmocom Serving Mobile Location Centre. It implements
