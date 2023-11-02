@@ -1163,4 +1163,24 @@ and CVE references,
   - ESI: Fix build [-Wsingle-bit-bitfield-constant-conversion]</comment>
     <requestid>1112346</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>57a462524edd713d0d4cb9f50606ecac</srcmd5>
+    <version>6.4</version>
+    <time>1698952942</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.4:
+  * security fixes:
+    + Request/Response smuggling in HTTP/1.1 and ICAP (bsc#1216500, CVE-2023-46846)
+    + Multiple issues in HTTP response caching (bsc#1216496, CVE-2023-5824)
+    + Denial of Service in HTTP Digest Authentication (bsc#1216495, CVE-2023-46847)
+    + Denial of Service in FTP (bsc#1216498, CVE-2023-46848)
+    + Fix validation of certificates (bsc#1216803, CVE-2023-46724)
+  * Bug 5294: ERR_CANNOT_FORWARD returned instead of ERR_DNS_FAIL
+  * Bug 4981: Work around in-call job invalidation bugs
+  * basic_smb_lm_auth: fix 'no previous declaration' warnings
+  * CacheManager: require /squid-internal-mgr/ URL path prefix
+  * ESI: Fix build [-Wsingle-bit-bitfield-constant-conversion]
+  * documentation changes</comment>
+    <requestid>1122203</requestid>
+  </revision>
 </revisionlist>

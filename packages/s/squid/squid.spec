@@ -24,14 +24,17 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        6.3
+Version:        6.4
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            http://www.squid-cache.org
-Source0:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz
-Source1:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz.asc
+### commented because of mirror issues...
+#Source0:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz
+#Source1:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz.asc
+Source0:        squid-%{version}.tar.xz
+Source1:        squid-%{version}.tar.xz.asc
 Source5:        pam.squid
 Source6:        unsquid.pl
 Source7:        %{name}.logrotate
@@ -40,7 +43,8 @@ Source10:       README.kerberos
 Source11:       %{name}.service
 Source12:       %{name}-user.conf
 # http://lists.squid-cache.org/pipermail/squid-announce/2016-October/000064.html
-Source13:       http://www.squid-cache.org/pgp.asc#/squid.keyring
+#Source13:       http://www.squid-cache.org/pgp.asc#/squid.keyring
+Source13:       squid.keyring
 Source15:       cache_dir.sed
 Source16:       initialize_cache_if_needed.sh
 Source17:       tmpfilesdir.squid.conf
