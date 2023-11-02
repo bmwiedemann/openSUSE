@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 01:31:56 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- dbusmock explicitly needs dbus-1-daemon to function (rather then
+  dbus-broker)
+
+-------------------------------------------------------------------
 Tue Apr 25 07:55:14 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Removed not needed sle15modernpython macro

@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  dbus-1-daemon
 Requires:       dbus-1-x11
 Requires:       python-dbus-python
 Requires:       python-gobject
