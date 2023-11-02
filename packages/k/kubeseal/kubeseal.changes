@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 02 09:30:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.3:
+  * Release Notes v0.24.3 (#1361)
+  * Check ObservedGeneration and generation before to check (#1360)
+  * Bump k8s.io/code-generator from 0.28.2 to 0.28.3 (#1358)
+  * Bump github.com/onsi/gomega from 1.28.1 to 1.29.0 (#1357)
+  * fix: add pdb (#1340)
+  * Bump github.com/mattn/go-isatty from 0.0.19 to 0.0.20 (#1353)
+  * Bump github.com/onsi/gomega from 1.28.0 to 1.28.1 (#1351)
+  * Bump k8s.io/client-go from 0.28.2 to 0.28.3 (#1350)
+  * Bump k8s.io/api from 0.28.2 to 0.28.3 (#1349)
+  * Bump github.com/google/go-cmp from 0.5.9 to 0.6.0 (#1348)
+  * Release Carvel for 0.24.2 version (#1347)
+  * Release Chart for 0.24.2 version (#1346)
+
+-------------------------------------------------------------------
 Thu Oct 19 05:49:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.24.2:
