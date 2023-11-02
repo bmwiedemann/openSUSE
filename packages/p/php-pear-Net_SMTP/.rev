@@ -42,4 +42,25 @@
     <comment></comment>
     <requestid>1009674</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>57608b57c373ed963ae4bf3b9ce2b444</srcmd5>
+    <version>1.11.1</version>
+    <time>1698952905</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 1.11.1
+  * BugFix: Triggering deprecation warnings in error-log causes system
+    failures because of changing the behavior in error reporting (#76)
+- New upstream release 1.11.0
+  * Feature: Add SCRAM-SHA-1, SCRAM-SHA-224, SCRAM-SHA-256, SCRAM-SHA-384
+    and SCRAM-SHA-512 support (#76)
+  * Task: Mark authentication methods CRAM-MD5, DIGEST-MD5 and LOGIN as
+    DEPRECATED with deprecation warnings in the error-log (#76)
+  * BugFix: SMTP: STARTTLS failed (code: 220, response: 2.0.0 Ready to
+    start TLS) (#74)
+  * BugFix: Issue with non-blocking streams on establishing STARTTLS
+    encryption (#74)
+  * BugFix: Implement TLS1.3 on STARTTLS encryption (#74)
+  * BugFix: using implode() instead of join() (#74)</comment>
+    <requestid>1121709</requestid>
+  </revision>
 </revisionlist>

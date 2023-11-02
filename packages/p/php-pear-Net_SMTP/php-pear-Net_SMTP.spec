@@ -19,7 +19,7 @@
 %define pear_name  Net_SMTP
 
 Name:           php-pear-Net_SMTP
-Version:        1.10.1
+Version:        1.11.1
 Release:        0
 Summary:        An implementation of the SMTP protocol
 License:        BSD-2-Clause
