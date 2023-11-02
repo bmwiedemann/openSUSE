@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-activejob-7.0
-Version:        7.0.5.1
+Version:        7.0.8
 Release:        0
 %define mod_name activejob
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -7.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Job framework with pluggable queues
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Declare job classes that can be run by a variety of queuing backends.

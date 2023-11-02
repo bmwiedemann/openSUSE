@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:33:09 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   Fix Active Job log message to correctly report a job failed to enqueue
+    when the adapter raises an `ActiveJob::EnqueueError`.
+
+    *Ben Sheldon*
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   Fix error Active Job passed class with `permitted?`.
+
+    *Alex Baldwin*
+
+
+-------------------------------------------------------------------
 Tue Jun 27 19:31:08 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - updated to version 7.0.5.1
