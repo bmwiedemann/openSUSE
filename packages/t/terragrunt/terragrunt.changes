@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 02 05:59:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.1:
+  * Update aws-sdk to support SSO (#2774)
+  * Add Default Retryable Error List to Docs (#2771)
+  * test: use `T.Setenv` to set env vars in tests (#2205)
+
+-------------------------------------------------------------------
 Mon Oct 30 07:28:28 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.53.0:
