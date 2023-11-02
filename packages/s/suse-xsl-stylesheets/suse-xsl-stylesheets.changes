@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 14:34:33 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.9
+
+- Update 2.92.9
+  - Set glossary.sort=1 to sort glossaries by @tomschr in #582
+  - Swap Twitter icon for X. Partly fixes DOCTEAM-1134. by @janajaeger in #583
+
+-------------------------------------------------------------------
 Thu Oct 19 05:28:46 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.8
 
 - Update 2.92.8
