@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-zstd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           nginx-module-zstd
-Version:        0~g23
+Version:        0.1.1
 Release:        0
 Summary:        NGINX module for Zstandard compression
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/tokers/zstd-nginx-module
-Source:         %name-%version.tar.xz
+Source:         https://github.com/tokers/zstd-nginx-module/archive/refs/tags/%version.tar.gz
 BuildRequires:  nginx-source
 BuildRequires:  pkgconfig(libzstd)
 %ngx_conditionals
@@ -36,7 +36,7 @@ Zstd, short for Zstandard, is a lossless compression algorithm. Speed
 vs. compression trade-off is configurable in small increments.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n zstd-nginx-module-%version
 cp -r %_prefix/src/nginx .
 
 %build
