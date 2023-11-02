@@ -16,8 +16,9 @@
 #
 
 
+%bcond_without hiredis
 Name:           ccache
-Version:        4.8.2
+Version:        4.8.3
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -25,14 +26,18 @@ URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-%ifnarch %ix86 %arm
-Patch0:         fix2038.patch
-%endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libzstd-devel >= 1.1.2
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libzstd) >= 1.1.2
 BuildRequires:  rubygem(asciidoctor)
 Provides:       distcc:%{_bindir}/ccache
+%ifnarch %{ix86} %{arm}
+Patch0:         fix2038.patch
+%endif
+%if %{with hiredis}
+BuildRequires:  pkgconfig(hiredis) >= 0.13.3
+%endif
 
 %description
 ccache is a compiler cache. It speeds up recompilation by caching the
@@ -45,7 +50,10 @@ Objective-C++.
 
 %build
 %cmake \
-  -DREDIS_STORAGE_BACKEND=OFF
+%if !%{with hiredis}
+  -DREDIS_STORAGE_BACKEND=OFF \
+%endif
+%{nil}
 %cmake_build
 %make_build doc
 
@@ -70,7 +78,7 @@ ln -sf ../../bin/%{name} nvcc
 
 %check
 # running the test with multiple threads will make tests fail
-%__ctest --output-on-failure --force-new-ctest-process -j1
+%{__ctest} --output-on-failure --force-new-ctest-process -j1
 
 %files
 %license LICENSE.* GPL-3.0.txt
