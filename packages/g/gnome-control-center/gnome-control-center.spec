@@ -35,7 +35,7 @@ URL:            https://apps.gnome.org/app/org.gnome.Settings
 Source0:        %{name}-%{version}.tar.zst
 Source99:       %{name}-rpmlintrc
 
-# PATCH-NEEDS-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running WAS:PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-add-user-button.patch bsc#1215556 glgo#GNOME/Settings!1927 xwang@suse.com -- Show add user button
 Patch2:         gnome-control-center-add-user-button.patch
@@ -185,7 +185,7 @@ GNOME control center.
 
 %prep
 %setup -q
-#patch1 -p1
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 

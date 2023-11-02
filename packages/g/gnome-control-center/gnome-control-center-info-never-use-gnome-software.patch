@@ -1,8 +1,8 @@
-Index: gnome-control-center-41.0/panels/info-overview/cc-info-overview-panel.c
-===================================================================
---- gnome-control-center-41.0.orig/panels/info-overview/cc-info-overview-panel.c
-+++ gnome-control-center-41.0/panels/info-overview/cc-info-overview-panel.c
-@@ -791,8 +791,8 @@ does_gnome_software_allow_updates (void)
+diff --git a/panels/info-overview/cc-info-overview-panel.c b/panels/info-overview/cc-info-overview-panel.c
+index 700df61..846ac80 100644
+--- a/panels/info-overview/cc-info-overview-panel.c
++++ b/panels/info-overview/cc-info-overview-panel.c
+@@ -111,8 +111,8 @@ does_gnome_software_allow_updates (void)
  static gboolean
  does_gnome_software_exist (void)
  {

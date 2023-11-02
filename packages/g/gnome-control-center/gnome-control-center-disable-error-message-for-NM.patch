@@ -1,8 +1,7 @@
-Index: gnome-control-center-45.alpha/panels/network/cc-network-panel.c
-===================================================================
---- gnome-control-center-45.alpha.orig/panels/network/cc-network-panel.c
-+++ gnome-control-center-45.alpha/panels/network/cc-network-panel.c
-@@ -659,10 +659,24 @@ static void
+diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-network-panel.c gnome-control-center-45.1/panels/network/cc-network-panel.c
+--- temp/gnome-control-center-45.1/panels/network/cc-network-panel.c	2023-10-27 14:56:16.289319792 +0800
++++ gnome-control-center-45.1/panels/network/cc-network-panel.c	2023-10-27 15:42:47.030395835 +0800
+@@ -653,10 +653,24 @@
  panel_check_network_manager_version (CcNetworkPanel *self)
  {
          const gchar *version;
@@ -28,16 +27,16 @@ Index: gnome-control-center-45.alpha/panels/network/cc-network-panel.c
                  GtkWidget *status_page;
  
                  status_page = adw_status_page_new ();
-@@ -674,9 +688,23 @@ panel_check_network_manager_version (CcN
+@@ -667,10 +681,23 @@
+                 adw_status_page_set_description (ADW_STATUS_PAGE (status_page),
                                                   _("An error has occurred and network cannot be used."
                                                     "\n Error details: NetworkManager not running."));
- 
 +        } else if (version == NULL && g_strcmp0 (state, "active") == 0) {
 +                GtkWidget *status_page;
 +
 +                status_page = adw_status_page_new ();
-+                cc_panel_set_content (CC_PANEL (self), status_page);
-+
++                adw_navigation_page_set_child (ADW_NAVIGATION_PAGE (self), status_page);
+ 
 +                adw_status_page_set_icon_name (ADW_STATUS_PAGE (status_page), "network-error-symbolic");
 +                adw_status_page_set_title (ADW_STATUS_PAGE (status_page), _("Wicked is running"));
 +                adw_status_page_set_description (ADW_STATUS_PAGE (status_page),
@@ -52,11 +51,10 @@ Index: gnome-control-center-45.alpha/panels/network/cc-network-panel.c
  }
  
  static void
-Index: gnome-control-center-45.alpha/panels/network/cc-wifi-panel.c
-===================================================================
---- gnome-control-center-45.alpha.orig/panels/network/cc-wifi-panel.c
-+++ gnome-control-center-45.alpha/panels/network/cc-wifi-panel.c
-@@ -299,21 +299,41 @@ static void
+diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.c gnome-control-center-45.1/panels/network/cc-wifi-panel.c
+--- temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.c	2023-10-27 14:56:16.292653165 +0800
++++ gnome-control-center-45.1/panels/network/cc-wifi-panel.c	2023-10-27 15:05:30.805703042 +0800
+@@ -298,21 +298,41 @@
  check_main_stack_page (CcWifiPanel *self)
  {
    const gchar *nm_version;
@@ -79,7 +77,7 @@ Index: gnome-control-center-45.alpha/panels/network/cc-wifi-panel.c
  
    nm_version = nm_client_get_version (self->client);
    wireless_enabled = nm_client_wireless_get_enabled (self->client);
-   airplane_mode_active = cc_list_row_get_active (self->rfkill_row);
+   airplane_mode_active = adw_switch_row_get_active (self->rfkill_row);
  
 -  if (!nm_version)
 +  if (!nm_version && g_strcmp0 (state, "inactive") == 0)
@@ -99,14 +97,14 @@ Index: gnome-control-center-45.alpha/panels/network/cc-wifi-panel.c
  }
  
  static void
-Index: gnome-control-center-45.alpha/panels/network/cc-wifi-panel.ui
-===================================================================
---- gnome-control-center-45.alpha.orig/panels/network/cc-wifi-panel.ui
-+++ gnome-control-center-45.alpha/panels/network/cc-wifi-panel.ui
-@@ -220,3 +220,47 @@ Error details: NetworkManager not runnin
-     </child>
-   </template>
- </interface>
+diff -uraBN temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.ui gnome-control-center-45.1/panels/network/cc-wifi-panel.ui
+--- temp/gnome-control-center-45.1/panels/network/cc-wifi-panel.ui	2023-10-27 14:56:16.292653165 +0800
++++ gnome-control-center-45.1/panels/network/cc-wifi-panel.ui	2023-10-27 14:49:00.914031545 +0800
+@@ -197,6 +197,51 @@
+                         </property>
+                       </object>
+                     </child>
++
 +                    <!-- "Wicked Running" page -->
 +                    <child>
 +                      <object class="GtkStackPage">
@@ -151,10 +149,12 @@ Index: gnome-control-center-45.alpha/panels/network/cc-wifi-panel.ui
 +                      </object>
 +                    </child>
 +
-Index: gnome-control-center-45.alpha/tests/meson.build
-===================================================================
---- gnome-control-center-45.alpha.orig/tests/meson.build
-+++ gnome-control-center-45.alpha/tests/meson.build
+                   </object>
+                 </child>
+               </object>
+diff -uraBN temp/gnome-control-center-45.1/tests/meson.build gnome-control-center-45.1/tests/meson.build
+--- temp/gnome-control-center-45.1/tests/meson.build	2023-10-27 14:56:16.545989479 +0800
++++ gnome-control-center-45.1/tests/meson.build	2023-10-27 14:49:56.034724339 +0800
 @@ -1,8 +1,11 @@
  subdir('common')
  #subdir('datetime')

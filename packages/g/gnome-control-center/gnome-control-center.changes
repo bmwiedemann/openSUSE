@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 27 07:40:55 UTC 2023 - Jonathan Kang <sckang@suse.com>
+
+- Rebase gnome-control-center-disable-error-message-for-NM.patch,
+  gnome-control-center-info-never-use-gnome-software.patch,
+  gnome-control-center-more-power-button-actions.patch and
+  gnome-control-center-bring-back-firewall-zone.patch(bsc#1216601).
+
+-------------------------------------------------------------------
 Mon Oct 23 14:15:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:

@@ -1995,4 +1995,15 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1119719</requestid>
   </revision>
+  <revision rev="235" vrev="2">
+    <srcmd5>80379eb20e4ff40ad38b7de7db5245ce</srcmd5>
+    <version>45.1</version>
+    <time>1698952830</time>
+    <user>anag+factory</user>
+    <comment>- Rebase gnome-control-center-disable-error-message-for-NM.patch,
+  gnome-control-center-info-never-use-gnome-software.patch,
+  gnome-control-center-more-power-button-actions.patch and
+  gnome-control-center-bring-back-firewall-zone.patch(bsc#1216601). (forwarded request 1121525 from JonathanKang)</comment>
+    <requestid>1121624</requestid>
+  </revision>
 </revisionlist>
