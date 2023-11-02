@@ -1891,4 +1891,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1117793 from iznogood)</comment>
     <requestid>1117970</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>b60770494971af75d448f4bf3b265b10</srcmd5>
+    <version>45.1</version>
+    <time>1698952823</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1121579 from iznogood)</comment>
+    <requestid>1121611</requestid>
+  </revision>
 </revisionlist>

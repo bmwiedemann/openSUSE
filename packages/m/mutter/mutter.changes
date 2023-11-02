@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Nov  1 09:38:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Fix filtering keybinding events in presence of grabs
+  + Fix direct scanout support when using integer scaling
+  + Fix capitalization of some keys when caps lock is on
+  + Fix vsync regression
+  + Fix visibility of software cursors when using direct scanout
+  + Fix artifacts at the bottom of some surfaces
+  + Discard monitor configs with fractional scale when unusable
+  + Apply track point settings
+  + xwayland: Enable XDG portal only when not nested
+  + Inhibit real-time scheduling when mode setting
+  + Don't delay frame updates after idle period
+  + Fix running Xwayland in headless setup with nvidia driver
+  + wayland: Send keyboard modifiers after the enter event
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 26 18:23:21 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.0+61:
+  + backend:
+    - Introduce helpers for turning from/to clutter/evdev buttons
+    - Use helper to translate from/to clutter/evdev button codes
+  + clutter/frame-clock:
+    - Simplify next_presentation_time_us calculation
+    - Start next update ASAP after idle period
+  + cogl/onscreen: Add missing error untrap calls
+  + input-capture:
+    - Check barriers don't extend into nonexisting monitors
+    - Fix off-by-one for barrier validation
+  + renderer/native:
+    - Add a new has_addfb2 property
+    - Send modifiers even without AddFb2
+  + screen-cast/stream-src:
+    - Assert that dmabuf handle lookup succeeds
+    - Calculate stride after adding handle to hash table
+  + tests/clutter/event-delivery: Avoid race with stage update
+  + tests/clutter/frame-clock*: Use
+    clutter_frame_get_target_presentation_time
+  + wayland/dma-buf: Advertise INVALID modifier without AddFb2
+  + wayland: Send keyboard modifiers after the enter event
+  + input-capture: Add more barrier tests, mostly for invalid
+    barriers
+
+-------------------------------------------------------------------
 Fri Oct 13 09:27:31 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 45.0+45:
