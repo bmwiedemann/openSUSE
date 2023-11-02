@@ -19,7 +19,7 @@
 %define tracker_basever 3.6
 
 Name:           tracker-miners
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later

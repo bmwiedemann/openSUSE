@@ -441,4 +441,12 @@
     <comment></comment>
     <requestid>1114705</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>df1ebc18f8b8c44732bb377deb457332</srcmd5>
+    <version>3.6.2</version>
+    <time>1698952822</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1121578 from iznogood)</comment>
+    <requestid>1121610</requestid>
+  </revision>
 </revisionlist>
