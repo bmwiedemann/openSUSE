@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 26 07:55:11 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231026.f43c33c:
+  * Fix generating initrd for random snapshots
+
+-------------------------------------------------------------------
 Mon Oct 23 12:36:16 UTC 2023 - lnussel@suse.de
 
 - Update to version 1+git20231023.873adb9:
