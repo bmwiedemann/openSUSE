@@ -17,14 +17,15 @@
 
 
 %define _lto_cflags %nil
-%define lname libfolly-v2023_05_01_00
+%define lname libfolly-v2023_10_30_00
 Name:           folly
-Version:        2023.05.01.00
+Version:        2023.10.30.00
 Release:        0
 Summary:        A C++ utility library
 License:        MIT
 URL:            https://github.com/facebook/folly
 Source:         https://github.com/facebook/folly/releases/download/v%version/folly-v%version.tar.gz
+Patch1:         arm.diff
 BuildRequires:  binutils-devel
 BuildRequires:  boost-devel
 BuildRequires:  cmake

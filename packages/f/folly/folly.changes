@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 13:28:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.10.30
+  * No changelog was provided
+- Add arm.diff to unbreak ARMv7 build
+
+-------------------------------------------------------------------
 Fri May  5 08:10:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.05.01

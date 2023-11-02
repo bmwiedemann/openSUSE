@@ -1,0 +1,22 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-11-01 16:15:17.230309534 +0100
+References: https://sourceware.org/bugzilla/show_bug.cgi?id=31021
+
+---
+ folly/memcpy.S |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: folly-2023.10.30.00/folly/memcpy.S
+===================================================================
+--- folly-2023.10.30.00.orig/folly/memcpy.S
++++ folly-2023.10.30.00/folly/memcpy.S
+@@ -288,5 +288,9 @@ __folly_memcpy:
+ 
+ #endif
+ #ifdef __linux__
++#ifdef __arm__
++        .section .note.GNU-stack,"",%progbits
++#else
+         .section .note.GNU-stack,"",@progbits
+ #endif
++#endif
