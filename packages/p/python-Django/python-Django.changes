@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  1 08:12:59 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.7
+  * Fixed a regression in Django 4.2 that caused a crash of
+    QuerySet.aggregate() with aggregates referencing expressions
+    containing subqueries
+  * Restored, following a regression in Django 4.2, creating
+    varchar/text_pattern_ops indexes on CharField and TextField with
+    deterministic collations on PostgreSQL
+
+-------------------------------------------------------------------
 Mon Oct 16 08:33:05 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - Update to 4.2.6 (bsc#1215978, CVE-2023-43665)
