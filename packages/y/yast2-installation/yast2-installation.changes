@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 31 12:40:00 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Refresh repositories with changed URL and reload them again
+  to activate the changes (related to bsc#1215884)
+- 5.0.2
+
+-------------------------------------------------------------------
 Tue Sep  5 09:41:29 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt code for changes in yast2-bootloader done for systemd-boot

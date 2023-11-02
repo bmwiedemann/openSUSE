@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -28,8 +28,8 @@ Source1:        YaST2-Second-Stage.service
 Source2:        YaST2-Firstboot.service
 
 BuildRequires:  update-desktop-files
-# Y2Packager::NewRepositorySetup
-BuildRequires:  yast2 >= 4.4.42
+# Y2Packager::Repository.refresh
+BuildRequires:  yast2 >= 5.0.3
 # new name for CPUMitigation widget
 BuildRequires:  yast2-bootloader >= 5.0.1
 # storage-ng based version
@@ -74,8 +74,8 @@ Requires:       pciutils
 Requires:       tar
 # /usr/lib/YaST2/bin/xftdpi, install only when the GUI is installed
 Requires:       (yast2-x11 >= 4.5.1 if libyui-qt)
-# Y2Packager::NewRepositorySetup
-Requires:       yast2 >= 4.4.42
+# Y2Packager::Repository.refresh
+Requires:       yast2 >= 5.0.3
 Requires:       yast2-bootloader >= 5.0.1
 Requires:       yast2-country >= 3.3.1
 # Language::GetLanguageItems and other API
