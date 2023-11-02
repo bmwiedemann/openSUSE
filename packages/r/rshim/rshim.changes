@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:58:07 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.0.12.1
+  * Display uptime in seconds for BF3
+  * Add fuse3 support 
+
+-------------------------------------------------------------------
 Wed Aug 30 15:00:03 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 2.0.9
