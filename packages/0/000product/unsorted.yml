@@ -390,27 +390,9 @@ unsorted:
   - adios-gnu-mvapich2-hpc 
   - adios-gnu-mvapich2-hpc-devel 
   - adios-gnu-mvapich2-hpc-devel-static 
-  - adios-gnu-openmpi1-hpc 
-  - adios-gnu-openmpi1-hpc-devel 
-  - adios-gnu-openmpi1-hpc-devel-static 
-  - adios-gnu-openmpi2-hpc 
-  - adios-gnu-openmpi2-hpc-devel 
-  - adios-gnu-openmpi2-hpc-devel-static 
-  - adios-gnu-openmpi3-hpc 
-  - adios-gnu-openmpi3-hpc-devel 
-  - adios-gnu-openmpi3-hpc-devel-static 
   - adios-gnu-openmpi4-hpc 
   - adios-gnu-openmpi4-hpc-devel 
   - adios-gnu-openmpi4-hpc-devel-static 
-  - adios-openmpi1 
-  - adios-openmpi1-devel 
-  - adios-openmpi1-devel-static 
-  - adios-openmpi2 
-  - adios-openmpi2-devel 
-  - adios-openmpi2-devel-static 
-  - adios-openmpi3 
-  - adios-openmpi3-devel 
-  - adios-openmpi3-devel-static 
   - adios-openmpi4 
   - adios-openmpi4-devel 
   - adios-openmpi4-devel-static 
@@ -424,15 +406,6 @@ unsorted:
   - adios_1_13_1-gnu-mvapich2-hpc 
   - adios_1_13_1-gnu-mvapich2-hpc-devel 
   - adios_1_13_1-gnu-mvapich2-hpc-devel-static 
-  - adios_1_13_1-gnu-openmpi1-hpc 
-  - adios_1_13_1-gnu-openmpi1-hpc-devel 
-  - adios_1_13_1-gnu-openmpi1-hpc-devel-static 
-  - adios_1_13_1-gnu-openmpi2-hpc 
-  - adios_1_13_1-gnu-openmpi2-hpc-devel 
-  - adios_1_13_1-gnu-openmpi2-hpc-devel-static 
-  - adios_1_13_1-gnu-openmpi3-hpc 
-  - adios_1_13_1-gnu-openmpi3-hpc-devel 
-  - adios_1_13_1-gnu-openmpi3-hpc-devel-static 
   - adios_1_13_1-gnu-openmpi4-hpc 
   - adios_1_13_1-gnu-openmpi4-hpc-devel 
   - adios_1_13_1-gnu-openmpi4-hpc-devel-static 
@@ -3509,7 +3482,6 @@ unsorted:
   - engrampa 
   - engrampa-lang 
   - enigma 
-  - enigmail 
   - enlightenment 
   - enlightenment-branding-openSUSE 
   - enlightenment-branding-upstream 
@@ -4247,6 +4219,9 @@ unsorted:
   - ftxui-devel 
   - fubectl 
   - fuc 
+  - fudo 
+  - fudo-policy-noauth-wheel 
+  - fudo-policy-selfauth-wheel 
   - funcube-udev 
   - fuse-devel 
   - fuse-devel-static 
@@ -8667,6 +8642,7 @@ unsorted:
   - jtidy-scripts 
   - judy-devel 
   - judy-doc 
+  - jujutsu 
   - juk 
   - juk-lang 
   - jul-to-slf4j 
@@ -11863,7 +11839,7 @@ unsorted:
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
-  - libfolly-v2023_05_01_00 
+  - libfolly-v2023_10_30_00 
   - libfoma0 
   - libfont-specimen0 
   - libfontconfig1-32bit 
@@ -13685,9 +13661,9 @@ unsorted:
   - libosmo-mgcp-devel 
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
-  - libosmo-mtp-1_7_0 
+  - libosmo-mtp-1_8_1 
   - libosmo-mtp-devel 
-  - libosmo-octoi1 
+  - libosmo-octoi2 
   - libosmo-ranap-devel 
   - libosmo-ranap7 
   - libosmo-rspro-devel 
@@ -13696,30 +13672,30 @@ unsorted:
   - libosmo-rua0 
   - libosmo-sabp-devel 
   - libosmo-sabp1 
-  - libosmo-sccp-1_7_0 
+  - libosmo-sccp-1_8_1 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
-  - libosmo-sigtran7 
+  - libosmo-sigtran9 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_7_0 
+  - libosmo-xua-1_8_1 
   - libosmo-xua-devel 
   - libosmoabis-devel 
-  - libosmoabis10 
+  - libosmoabis13 
   - libosmocodec-devel 
-  - libosmocodec0 
+  - libosmocodec4 
   - libosmocoding-devel 
   - libosmocoding0 
   - libosmocore-devel 
   - libosmocore-tools 
-  - libosmocore20 
+  - libosmocore21 
   - libosmoctrl-devel 
   - libosmoctrl0 
   - libosmodsp0 
   - libosmogb-devel 
   - libosmogb14 
   - libosmogsm-devel 
-  - libosmogsm18 
+  - libosmogsm20 
   - libosmoisdn-devel 
   - libosmoisdn0 
   - libosmonetif-devel 
@@ -13732,7 +13708,7 @@ unsorted:
   - libosmousb-devel 
   - libosmousb0 
   - libosmovty-devel 
-  - libosmovty9 
+  - libosmovty13 
   - libosmvendor5 
   - libossim1 
   - libossp-uuid++16 
@@ -15048,6 +15024,8 @@ unsorted:
   - libtheora0-32bit 
   - libtheoradec1-32bit 
   - libtheoraenc1-32bit 
+  - libthreadar-devel 
+  - libthreadar1000 
   - libthrift-0_17_0 
   - libthrift-devel 
   - libthrift_c_glib0 
@@ -15120,16 +15098,11 @@ unsorted:
   - libtree-sitter0-x86-64-v3 
   - libtrilinos-gnu-mpich-hpc 
   - libtrilinos-gnu-mvapich2-hpc 
-  - libtrilinos-gnu-openmpi2-hpc 
-  - libtrilinos-gnu-openmpi3-hpc 
   - libtrilinos-gnu-openmpi4-hpc 
   - libtrilinos14 
-  - libtrilinos14-openmpi2 
   - libtrilinos14-openmpi4 
   - libtrilinos_14_0_0-gnu-mpich-hpc 
   - libtrilinos_14_0_0-gnu-mvapich2-hpc 
-  - libtrilinos_14_0_0-gnu-openmpi2-hpc 
-  - libtrilinos_14_0_0-gnu-openmpi3-hpc 
   - libtrilinos_14_0_0-gnu-openmpi4-hpc 
   - libtrng4-25 
   - libts0-32bit 
@@ -15459,11 +15432,8 @@ unsorted:
   - libvterm0 
   - libvtk-m-2_0 
   - libvtk-m-mpich-2_0 
-  - libvtk-m-openmpi3-2_0 
   - libvtk-m-openmpi4-2_0 
   - libvtk1 
-  - libvtk1-openmpi2 
-  - libvtk1-openmpi3 
   - libvtk1-openmpi4 
   - libvulkan1-32bit 
   - libvulkan_intel 
@@ -21229,6 +21199,7 @@ unsorted:
   - perseus-sdr-tools 
   - pesign 
   - pesign-obs-integration 
+  - pesign-systemd 
   - petsc-devel 
   - petsc-gnu-mpich-hpc-devel 
   - petsc-gnu-mvapich2-hpc-devel 
@@ -21940,6 +21911,7 @@ unsorted:
   - proguard 
   - proguard-gui 
   - proj 
+  - proj-data-ar 
   - proj-data-at 
   - proj-data-au 
   - proj-data-be 
@@ -22613,8 +22585,6 @@ unsorted:
   - python3-virtualbox 
   - python3-virtualenvwrapper 
   - python3-vtk 
-  - python3-vtk-openmpi2 
-  - python3-vtk-openmpi3 
   - python3-vtk-openmpi4 
   - python3-xcb-proto-devel 
   - python3-yaql 
@@ -34098,6 +34068,35 @@ unsorted:
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
+  - ruby3.2-rubygem-actionmailbox-7.0 
+  - ruby3.2-rubygem-actiontext-7.0 
+  - ruby3.2-rubygem-activerecord-7.0 
+  - ruby3.2-rubygem-activestorage-7.0 
+  - ruby3.2-rubygem-coffee-rails 
+  - ruby3.2-rubygem-delayed_job_active_record 
+  - ruby3.2-rubygem-devise 
+  - ruby3.2-rubygem-devise-i18n 
+  - ruby3.2-rubygem-devise_ldap_authenticatable 
+  - ruby3.2-rubygem-font-awesome-rails 
+  - ruby3.2-rubygem-gettext_i18n_rails_js 
+  - ruby3.2-rubygem-haml-rails 
+  - ruby3.2-rubygem-importmap-rails 
+  - ruby3.2-rubygem-jquery-rails 
+  - ruby3.2-rubygem-js-routes 
+  - ruby3.2-rubygem-lightbox2 
+  - ruby3.2-rubygem-rails-7.0 
+  - ruby3.2-rubygem-rails-i18n 
+  - ruby3.2-rubygem-railties-7.0 
+  - ruby3.2-rubygem-responders 
+  - ruby3.2-rubygem-rspec-rails 
+  - ruby3.2-rubygem-rspec-rails-4.0 
+  - ruby3.2-rubygem-sass-rails 
+  - ruby3.2-rubygem-sass-rails-5.1 
+  - ruby3.2-rubygem-sassc-rails 
+  - ruby3.2-rubygem-stimulus-rails 
+  - ruby3.2-rubygem-turbo-rails 
+  - ruby3.2-rubygem-web-console 
+  - ruby3.2-rubygem-webpacker 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
   - runawk 
@@ -44415,16 +44414,11 @@ unsorted:
   - trilinos-doc 
   - trilinos-gnu-mpich-hpc-devel 
   - trilinos-gnu-mvapich2-hpc-devel 
-  - trilinos-gnu-openmpi2-hpc-devel 
-  - trilinos-gnu-openmpi3-hpc-devel 
   - trilinos-gnu-openmpi4-hpc-devel 
   - trilinos-hpc-doc 
-  - trilinos-openmpi2-devel 
   - trilinos-openmpi4-devel 
   - trilinos_14_0_0-gnu-mpich-hpc-devel 
   - trilinos_14_0_0-gnu-mvapich2-hpc-devel 
-  - trilinos_14_0_0-gnu-openmpi2-hpc-devel 
-  - trilinos_14_0_0-gnu-openmpi3-hpc-devel 
   - trilinos_14_0_0-gnu-openmpi4-hpc-devel 
   - trilinos_14_0_0-hpc-doc 
   - trinity 
@@ -45261,16 +45255,7 @@ unsorted:
   - vtk-java-devel 
   - vtk-m-devel 
   - vtk-m-mpich-devel 
-  - vtk-m-openmpi3-devel 
   - vtk-m-openmpi4-devel 
-  - vtk-openmpi2-devel 
-  - vtk-openmpi2-java 
-  - vtk-openmpi2-java-devel 
-  - vtk-openmpi2-qt 
-  - vtk-openmpi3-devel 
-  - vtk-openmpi3-java 
-  - vtk-openmpi3-java-devel 
-  - vtk-openmpi3-qt 
   - vtk-openmpi4-devel 
   - vtk-openmpi4-java 
   - vtk-openmpi4-java-devel 
@@ -46022,6 +46007,7 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
+  - yarn 
   - yaru-icon-theme 
   - yascreen-devel 
   - yasm 
