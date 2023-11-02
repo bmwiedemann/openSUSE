@@ -429,4 +429,12 @@ Fix macros to generate file permissions</comment>
  don't use filetriggers for ldconfig (forwarded request 1102610 from mimi_vx)</comment>
     <requestid>1102612</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>2ee187ef3549e5ffdffaf374468f1a43</srcmd5>
+    <version>2.5.3</version>
+    <time>1698952869</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1121668</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 24 14:39:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "reproducible-builds.patch", which makes GHC output
+  deterministic by disabling multi-threaded compilation. Adding
+
+    Macros:
+      # Enable multi-threaded builds in this project. This makes our
+      # build products non-deterministic, e.g. not reproducible, but
+      # we don't need them to be and would rather have fast results.
+      %ghc_smp_mflags %{?_smp_mflags}
+    :Macros
+
+  to an OBS project configuration re-enables multi-threaded builds,
+  which might be useful for development projects that don't deliver
+  binaries.
+
+-------------------------------------------------------------------
 Sun Aug  6 14:34:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.5.3
@@ -24,7 +41,7 @@ Thu Mar 16 18:26:11 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Mon Nov  1 05:59:41 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- fix build, remove white space 
+- fix build, remove white space
 
 -------------------------------------------------------------------
 Mon May 10 10:37:06 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
