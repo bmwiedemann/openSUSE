@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20231022.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAmU29N0ACgkQ0atFFoiI
+iIg28SagnF4xQ54dNI3JklBm0937x55VFv1K3I+cFfGpQjhPwhuAQmUDY9SPO/bj
+m1ieB+YUs4MBhhe1mlfqIdJzT23gFUjPDswws3KqpE5VcwkrN2zky0O7vHNE6FLa
+QlATYaQ32HKeekzXt9x/5HeHsU0DONqnrT6bcnnXBmY4r6cRGw00LSPPbNHQqE0N
+11foPQ7y7SCV08K7ksSRcz0Hhu7HmDHBlaQytC40SNyZtOumYeJ+z5ytehyF5UZq
+dVX8o6UhKxyMf+CE2rEbQXVNzDnZh6ayK2Dc/nsknvSW6fLLAY4fVd1RWAMdkGne
+MHatYr5t4k6Ch/R/uLqtNozE++h0fgxilYIYy3pDkY0EORAvxTADlFonbNOG5T3D
+RukV/lYf9lRsiN1wGuVvwZxq2NVyGLYs8j1FWyV8ayTiCM2BzJE5L/AVAsJRo2ud
+gUxi+1SoHImiNCy3R/jFji/Wbxz3NusTEbje2LDL4iltBp2x5HHQqmt7pOFlo1zC
+YwjECGkwM8zlVg/zU91dMIl3InyxL6ai1oWzuT0FUIbwbIh9sFZ7XvOVm1HfNmme
+g2aDasjmTMhLGc4xELheBtjrvKB2weKURKXhHml+Ki4+ly28/wu3TEg1O69nmLKw
+nLOqdMdAUzHqcbemKncL2erEUv74f0ce9+oeXJ/nJkPv0qtyiJ50xO0osQsslJci
+EhkMUnMIlwrUdxrXp7j8kimCz93ipaTz0PpQsmwJz9m2vk8yq3/jF/66aAHAVdzQ
+xX2gy7Z44x7x8MPGqp5XrJeopUo5RxR4G5ck5jqhrgCzaxFl6qsEPN7OcO/CTbnp
+qadHFKcRt3XV+8jvG4h5HFM1k8vafLILnt0jvun3+/AxQrgipFlyU+ULCCjzsvwe
+FE3ViD4GtJi5BIaXeSm+F2Bju0LqDjh2RTO+eLRmzIRuOwxA99Jton/JBg9b74fQ
+0imte+1NRVvbBC3LOIdLXgPQghZlugKNye3VseAnV1/QiMO24bH90JcIGY+yRTHg
+jhk846s4s5krY5SLMMaxNvgSnXPpZgy2Cfo6UZB9koLvvj+ayErSrwD0eRPy8aRS
++RbegDBfaKeMZQ14B0SU2C9TTm1+/aIkHzTj/8XDZmEC57UsoX+dzLiCT8RQrvCq
+ExDT6sZ0bkS7dWhNYs6vYazzimvQNtESoFFy9UU38Pa409J3um1jpkjfsHU3gKKz
+kE6fsX0+XUd/KQXT1H4kB9UHvywRjAlf0AzdrLdQplFePSAUbmtXYjvMBeTYY3WE
+6QAi/l6G/m75m6KqH319r/+q/uJM4y5UbyUXuraXMgqP/GhvS35mWuSzxBT3bLCK
+jeKPFQb0UULQJfGH1vL9nqsolXJfJviNNSFWM7i9iLoNd4GzzltVs+4aRyB5H1xY
+07ECxGkfc6LDNV1vYIgcI07jccoXnZ8yH+Ew4g1LjkX9JMSP5qBs/7PmCCxkF5CO
+UQhL8UvJSYx5N4KAcokWEVLfNF/Q8cRFTC9iz+AXvXpCIvnmyILU4sAGhclgFBLM
+aXBkxfTuSm8N6RcUg4v1SV5ELSTx6eMtV35IF5pOQHHg8tfNuVyBC7ZyzQg6WmSy
+H2FTdx9AaGTmG8GtSi3WbnksvcTLuLQmxwCHrcnHvZOxNQO09U3B4t4a
+=iGY/
+-----END PGP SIGNATURE-----
