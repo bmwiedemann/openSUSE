@@ -1,5 +1,4 @@
 <multibuild>
   <package>mpich</package>
-  <package>openmpi3</package>
   <package>openmpi4</package>
 </multibuild>

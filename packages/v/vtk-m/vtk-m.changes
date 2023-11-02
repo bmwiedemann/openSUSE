@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  2 09:13:47 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Drop support for obsolete openmpi3
+
+-------------------------------------------------------------------
 Fri Apr 10 18:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.0.0-0
 
 - Updated spec to vtk-m 2.0.0.
