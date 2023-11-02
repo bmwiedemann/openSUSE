@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  1 15:02:50 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 6.88.1
+ * improves :func:`~hypothesis.strategies.register_type_strategy` when
+     used with tuple subclasses, by preventing them from being interpreted
+     as generic and provided to strategies like st.from_type(Sequence[int])
+
+-------------------------------------------------------------------
 Mon Oct 16 14:10:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 6.88.0

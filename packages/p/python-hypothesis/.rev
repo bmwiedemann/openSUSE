@@ -728,4 +728,15 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>1118121</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>3b0d34c54f9f37626313c0fdb384ae1f</srcmd5>
+    <version>6.88.1</version>
+    <time>1698952847</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.88.1
+ * improves :func:`~hypothesis.strategies.register_type_strategy` when
+     used with tuple subclasses, by preventing them from being interpreted
+     as generic and provided to strategies like st.from_type(Sequence[int])</comment>
+    <requestid>1121637</requestid>
+  </revision>
 </revisionlist>
