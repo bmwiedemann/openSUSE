@@ -1039,4 +1039,17 @@
   * Added file libxml2-CVE-2023-39615.patch</comment>
     <requestid>1108847</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>8ba6cc34d909e9c3b1ab8531218fa821</srcmd5>
+    <version>2.11.5</version>
+    <time>1698952844</time>
+    <user>anag+factory</user>
+    <comment>- Add python312.patch to make it compatible with python 3.12
+  https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/226
+- Security fix: CVE-2023-39615 (bsc#1214768)
+  * crafted xml can cause global buffer overflow
+  * Added file libxml2-CVE-2023-39615.patch   
+- Update to version 2.11.5:</comment>
+    <requestid>1121463</requestid>
+  </revision>
 </revisionlist>

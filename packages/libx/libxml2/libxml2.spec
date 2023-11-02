@@ -25,12 +25,12 @@
 %endif
 
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.10.4
+Version:        2.11.5
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
 URL:            https://gitlab.gnome.org/GNOME/libxml2
-Source0:        https://download.gnome.org/sources/%{name}/2.10/libxml2-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/2.11/libxml2-%{version}.tar.xz
 Source1:        baselibs.conf
 # W3C Conformance tests
 Source2:        https://www.w3.org/XML/Test/xmlts20080827.tar.gz
@@ -45,6 +45,9 @@ Patch1:         libxml2-python3-string-null-check.patch
 # PATCH-FIX-UPSTREAM CVE-2023-39615 bsc#1214768
 # https://gitlab.gnome.org/GNOME/libxml2/-/commit/d0c3f01e110d54415611c5fa0040cdf4a56053f9
 Patch2:         libxml2-CVE-2023-39615.patch
+# PATCH-FIX-UPSTREAM python312.patch
+# https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/226
+Patch3:         python312.patch
 #
 ### -- openSUSE patches range from 1000 to 1999 -- ###
 # PATCH-FIX-OPENSUSE
@@ -63,6 +66,9 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?buildpython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -182,7 +188,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %else
 %configure --with-python=%{__python3}
 pushd python
-%python_build
+export PYTHONPATH="."
+%pyproject_wheel
 popd
 %endif
 
@@ -191,14 +198,14 @@ popd
 %make_install BASE_DIR="%{_docdir}" DOC_MODULE="%{base_name}"
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p "%{buildroot}/%{_docdir}/%{base_name}"
-cp -a NEWS README.md TODO* %{buildroot}%{_docdir}/%{base_name}/
+cp -a NEWS README.md %{buildroot}%{_docdir}/%{base_name}/
 ln -s libxml2/libxml %{buildroot}%{_includedir}/libxml
 # Remove duplicated file Copyright as not found by fdupes
 rm -fr %{buildroot}%{_docdir}/%{base_name}/Copyright
 %fdupes %{buildroot}%{_datadir}
 %else
 pushd python
-%python_install
+%pyproject_install
 popd
 chmod a-x python/tests/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -251,7 +258,6 @@ rm -rf xmlconf/ # remove the conformance tests afterwards
 %else
 
 %files %{python_files libxml2}
-%doc python/TODO
 %doc python/libxml2class.txt
 %doc doc/*.py
 %doc python/README

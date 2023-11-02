@@ -1,9 +1,108 @@
 -------------------------------------------------------------------
+Mon Oct 23 08:26:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python312.patch to make it compatible with python 3.12
+  https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/226
+- Use pyproject_wheel and pyproject_install macros instead of
+  python_build, python_install
+
+-------------------------------------------------------------------
 Mon Sep  4 10:36:54 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Security fix: CVE-2023-39615 (bsc#1214768)
   * crafted xml can cause global buffer overflow
   * Added file libxml2-CVE-2023-39615.patch   
+
+-------------------------------------------------------------------
+Wed Aug  9 15:34:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.11.5:
+  + Regressions:
+    - parser: Make xmlSwitchEncoding always skip the BOM
+    - autotools: Improve iconv check
+  + Bug fixes:
+    - valid: Fix c1->parent pointer in xmlCopyDocElementContent
+    - encoding: Always call ucnv_convertEx with flush set to false
+  + Portability: autotools: fix Python module file ext for
+    cygwin/msys2
+  + Tests: runtest: Fix compilation without LIBXML_HTML_ENABLED
+
+-------------------------------------------------------------------
+Fri May 19 11:51:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.11.4:
+  + Fixes a serious regression: parser: Fix regression when push
+    parsing UTF-8 sequences.
+
+-------------------------------------------------------------------
+Thu May 11 13:42:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.11.3:
+  + xinclude: Fix false positives in inclusion loop detection.
+  + autotools: Fix ICU detection.
+  + parser: Fix "huge input lookup" error with push parser.
+  + xpath: Fix build without LIBXML_XPATH_ENABLED.
+  + hash: Fix possible startup crash with old libxslt versions.
+  + autoconf: fix iconv library paths.
+
+-------------------------------------------------------------------
+Fri May  5 13:55:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.11.2:
+  + Fix regressions:
+    - threads: Fix startup crash with weak symbol hack
+    - win32: Don’t depend on removed .def file
+    - schemas: Fix memory leak in xmlSchemaValidateStream
+
+-------------------------------------------------------------------
+Wed May  3 13:17:35 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Rebased patches:
+  * libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+  * libxml2-python3-unicode-errors.patch
+
+- Update to 2.11.1:
+  * Fixes build and ABI issues.
+    - cmake: Fix va_copy detection (Luca Niccoli)
+    - libxml.m4: Fix quoting
+    - Link with --undefined-version
+    - libxml2.syms: Revert removal of version information
+
+- Update to 2.11.0: 
+  * Major changes
+    - Protection against entity expansion attacks, also known as 
+      "billion laughs" has been greatly improved. Malicious files 
+      should be detected reliably now and false positives should be
+      reduced. It is possible though that large documents which make
+      heavy use of entities are rejected now.
+    - This release finally fixes symbol visibility on UNIX systems. 
+      Internal symbols will now be hidden. While these symbols were
+      never declared in public headers, it was still possible to
+      declare them manually. Now this won't work.
+    - All symbol information has been removed from the ELF version
+      script to fix link errors with --no-undefined-version. The
+      version nodes are kept so it should still be possible to run
+      binaries linked against older versions.
+    - About 90 memory errors in code paths handling malloc failures
+      have been fixed. While these issues shouldn't impact security,
+      this improves robustness under memory pressure.
+    - The XInclude engine has been reworked to properly support 
+      nested includes.
+    - Several cases of quadratic behavior in the XML push parser
+      have been fixed.
+    - Refactoring has begun on some buffering and encoding code with
+      the goal of simplifying this part of the code base and 
+      improving error reporting.
+  * Other highlights:
+    - Consolidated private header files.
+    - Major rework of the autoconf build.
+    - Deprecated several outdated and internal functions.
+  * Security
+    - Fix use-after-free in xmlParseContentInternal() (David Kilzer)
+    - xmllint: Fix use-after-free with --maxmem
+    - parser: Fix OOB read when formatting error message
+    - entities: Rework entity amplification checks
+  * See the full changelog at https://discourse.gnome.org/t/libxml2-2-11-0-released/15123
 
 -------------------------------------------------------------------
 Fri Apr 21 14:50:09 UTC 2023 - David Anes <david.anes@suse.com>
