@@ -10,11 +10,12 @@ Fri Sep 22 11:44:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + h265parser:
     - Allow partially broken hvcC data
     - Fix possible overflow using max_sub_layers_minus1
+      (bsc#1215793, CVE-2023-40476)
   + hlssink2: Always use forward slash separator
   + mdns: Fix a crash on context error
   + mxfdemux: Fix integer overflow causing out of bounds writes
     when handling invalid uncompressed video and check channels for
-    AES3
+    AES3 (bsc#1215796, CVE-2023-40474, bsc#1215792, CVE-2023-40475)
   + nvencoder: Fix negotiation error when interlace-mode is
     unspecified
   + rtmp2: Allow NULL flash version, omitting the field
