@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 31 22:56:50 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Tue Oct 24 08:06:01 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Tue Apr  4 08:52:20 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with GCC 13, add add_missing_cstdint.patch

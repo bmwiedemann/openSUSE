@@ -58,23 +58,17 @@
 %define my_datadir %_datadir
 %endif
 
-%if "%{flavor}" == "openmpi2"
-%define my_suffix  -openmpi2
-%define mpi_flavor  openmpi2
-%define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%{?DisOMPI3}
-%define my_suffix  -openmpi3
-%define mpi_flavor  openmpi3
-%define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %{?DisOMPI4}
 %define my_suffix  -openmpi4
 %define mpi_flavor  openmpi4
+%define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
+%endif
+
+%if "%{flavor}" == "openmpi5"
+%{?DisOMPI5}
+%define my_suffix  -openmpi5
+%define mpi_flavor  openmpi5
 %define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
 %endif
 
@@ -183,7 +177,7 @@ BuildRequires:  gl2ps-devel > 1.4.0
 BuildRequires:  libharu-devel >= 2.4.0
 %endif
 %if %{with java}
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 %endif
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}-devel
@@ -292,7 +286,7 @@ Summary:        Develoment files for VTK Java bindings
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       %{name}-java = %{version}
-Requires:       java-devel
+Requires:       java-devel >= 1.8
 Provides:       %{name}-devel:%{my_libdir}/libvtkJava.so
 
 %description    java-devel
@@ -465,6 +459,8 @@ export CXXFLAGS="%{optflags}"
     -DVTK_GROUP_ENABLE_Views=WANT \
     -DVTK_PYTHON_VERSION=3 \
     -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
+    -DVTK_JAVA_SOURCE_VERSION:STRING='1.8' \
+    -DVTK_JAVA_TARGET_VERSION:STRING='1.8' \
     -DVTK_WRAP_PYTHON:BOOL=ON \
     -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
     -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
