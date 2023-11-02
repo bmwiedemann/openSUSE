@@ -1,0 +1,12 @@
+<package name="fudo" project="openSUSE:Factory">
+  <title>Fake sudo</title>
+  <description>Fake sudo leveraging machinctl shell and polkit to be able to
+execute commands as root
+
+- just a few lines of shell and js
+- no setuid program
+- no hard to understand config file
+
+</description>
+  <devel project="security" package="fudo"/>
+</package>
