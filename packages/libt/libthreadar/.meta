@@ -1,0 +1,10 @@
+<package name="libthreadar" project="openSUSE:Factory">
+  <title>C++ library proposing a set of high level classes for threads management</title>
+  <description>libthreadar provides C++ classes for manipulating threads and
+propagating back exception from thread to parent thread when the
+parent calls the join() method
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libthreadar"/>
+  <url>https://github.com/Edrusb/libthreadar</url>
+</package>
