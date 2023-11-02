@@ -48,25 +48,27 @@ BuildRequires:  popt-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
 %sysusers_requires
-%{?systemd_requires}
 ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm riscv64
+Recommends:     %{name}-systemd
 
 %description
 Signing tool for PE-COFF binaries. It is vaguely compliant
 with the PE and Authenticode specifications.
 
+%package systemd
+Summary:        Systemd units for pesign
+Requires:       %{name} = %{version}
+%{?systemd_requires}
+BuildArch:      noarch
+Provides:       pesign:%{_sbindir}/rcpesign
+Provides:       pesign:%{_tmpfilesdir}/pesign.conf
+Provides:       pesign:%{_unitdir}/pesign.service
+
+%description systemd
+Systemd units for the pesign package.
+
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%autosetup -p1
 
 %build
 %sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
@@ -92,16 +94,18 @@ rm -rf %{buildroot}%{_libdir}/libdpe*
 install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %pre -f %{name}.pre
+
+%pre systemd
 %service_add_pre pesign.service
 
-%preun
+%preun systemd
 %service_del_preun pesign.service
 
-%post
+%post systemd
 %service_add_post pesign.service
 systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 
-%postun
+%postun systemd
 %service_del_postun pesign.service
 
 %files
@@ -113,21 +117,23 @@ systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 %{_bindir}/pesigcheck
 %{_bindir}/authvar
 %{_bindir}/pesum
-%{_sbindir}/rcpesign
 %dir %{_sysconfdir}/pesign
 %{_sysconfdir}/pesign/*
 %dir %{_sysconfdir}/popt.d
 %config %{_sysconfdir}/popt.d/pesign.popt
 %{_rpmmacrodir}/macros.pesign
 %{_mandir}/man?/*
-%{_unitdir}/pesign.service
 %{_sysusersdir}/pesign.conf
-%{_tmpfilesdir}/pesign.conf
 %dir %{_libexecdir}/pesign
 %{_libexecdir}/pesign/pesign-rpmbuild-helper
 %dir %{_sysconfdir}/pki/
 %dir %attr(0775,pesign,pesign) %{_sysconfdir}/pki/pesign
 %ghost %dir %attr(0770,pesign,pesign) /run/%{name}
 %dir %attr(0770,pesign,pesign) %{_localstatedir}/lib/%{name}
+
+%files systemd
+%{_sbindir}/rcpesign
+%{_unitdir}/pesign.service
+%{_tmpfilesdir}/pesign.conf
 
 %changelog

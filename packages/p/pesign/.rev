@@ -355,4 +355,12 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1070580</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>0c7d592d7be86b107dab488795d54f41</srcmd5>
+    <version>116</version>
+    <time>1698952810</time>
+    <user>anag+factory</user>
+    <comment>Create pesign-systemd subpackage to remove systemd dependency</comment>
+    <requestid>1121773</requestid>
+  </revision>
 </revisionlist>
