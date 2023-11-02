@@ -183,6 +183,9 @@ cp systemd-user/README.systemd %{buildroot}%{_docdir}/gpg2/
 %dir %{_sysconfdir}/gnupg
 %config(noreplace) %{_sysconfdir}/gnupg/gpgconf.conf
 %{_userunitdir}/gpg-agent*
+%if 0%{?sle_version} >= 150500
+%exclude %{_userunitdir}/dirmngr.*
+%endif
 
 %files -n dirmngr
 %license COPYING*

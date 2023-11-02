@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 30 15:01:05 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the build in SLE and Leap by adding an exclude in the files
+  section for the dirmngr's systemd user units. [jsc#PED-7093]
+
+-------------------------------------------------------------------
 Tue Oct 17 10:27:15 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Do not pull revision info from GIT when autoconf is run. This
