@@ -636,6 +636,7 @@ BuildRequires:  raspberrypi-firmware-config
 BuildRequires:  raspberrypi-firmware-dt
 BuildRequires:  arm-trusted-firmware-rpi4
 BuildRequires:  u-boot-rpiarm64
+BuildRequires:  lenovo-x13s-firmware-dt
 %if %with_shim
 BuildRequires:  shim
 %endif
@@ -669,7 +670,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.98
+Version:        17.100
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
