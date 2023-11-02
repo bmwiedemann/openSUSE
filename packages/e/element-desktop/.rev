@@ -540,4 +540,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
     <comment>1.11.43</comment>
     <requestid>1113496</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>523f5ebc946a8804b29001a6490fd863</srcmd5>
+    <version>1.11.47</version>
+    <time>1698952951</time>
+    <user>anag+factory</user>
+    <comment>1.11.47</comment>
+    <requestid>1122577</requestid>
+  </revision>
 </revisionlist>

@@ -71,4 +71,4 @@ echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offli
 
 
 read -p "Write changes?"
-osc vc -m "Version ${version}\n${changes}" element-desktop.changes
+osc vc -m "${changes}" element-desktop.changes
