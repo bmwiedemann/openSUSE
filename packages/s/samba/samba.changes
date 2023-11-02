@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 18:59:15 UTC 2023 - David Mulder <dmulder@suse.com>
+
+- packaging: samba-tool domain provision requires python3-Markdown;
+  (bsc#1216519).
+
+-------------------------------------------------------------------
 Mon Oct 16 16:04:22 UTC 2023 - Noel Power <nopower@suse.com>
 
 - Update to 4.19.2

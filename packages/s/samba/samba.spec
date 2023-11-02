@@ -158,7 +158,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.19.2+git.322.7e9201cef5
+Version:        4.19.2+git.324.fa0b54b91b
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -546,6 +546,9 @@ Group:          Productivity/Networking/Samba
 Requires:       samba = %{version}
 Requires:       samba-ldb-ldap = %{version}
 Requires:       samba-python3 = %{version}
+%if %{with_mit_dc}
+Requires:       python3-Markdown
+%endif
 
 %description -n samba-tool
 The package contains samba-tool, the main tool for Samba Administration.
