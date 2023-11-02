@@ -29,11 +29,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-%if 0
 # PATCH-FEATURE-OPENSUSE
-# PATCH-NEEDS-REBASE DISABLED as of 2021-04-10: needs rework (underlying code changed)
-Patch1000:      0001-Inform-users-about-the-okular-spectre-package-in-the.patch
-%endif
+Patch1000:      0001-Inform-users-about-the-okular-spectre-package.patch
 BuildRequires:  chmlib-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel

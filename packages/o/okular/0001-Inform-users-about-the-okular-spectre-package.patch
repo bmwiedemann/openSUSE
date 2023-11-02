@@ -1,0 +1,30 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Date: Mon, 30 Oct 2023 11:29:53 +0100
+Subject: [PATCH] Inform users about the okular-spectre package
+
+Show a message box informing the user that postscript support isn't
+installed by default because of security reasons and what package
+should be installed in order to let print preview and postscript
+support work correctly.
+
+Index: okular-23.08.2/part/part.cpp
+===================================================================
+--- okular-23.08.2.orig/part/part.cpp
++++ okular-23.08.2/part/part.cpp
+@@ -1594,6 +1594,16 @@ bool Part::openFile()
+     QMimeType mime;
+     Document::OpenResult openResult = Document::OpenError;
+     bool isCompressedFile = false;
++
++    if (!mimes.isEmpty() && mimes[0].inherits(QStringLiteral("application/postscript"))
++	&& !m_document->supportedMimeTypes().contains(QStringLiteral("application/postscript"))) {
++        KMessageBox::information(widget(),
++                                 i18n("Ghostscript is needed for the print preview and postscript support but it has security issues and is not installed by default.\n"
++                                      "If you only open trusted documents, you can install the 'okular-spectre' package."),
++                                 i18n("Postscript support package isn't installed"));
++	return false;
++    }
++
+     while (!mimes.isEmpty() && openResult == Document::OpenError) {
+         mime = mimes.takeFirst();
+         openResult = doOpenFile(mime, fileNameToOpen, &isCompressedFile);

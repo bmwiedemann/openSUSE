@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 30 13:27:08 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rework patch that informs the user about missing postscript
+  support and how to install it. Replace patch:
+  * 0001-Inform-users-about-the-okular-spectre-package-in-the.patch
+  with
+  * 0001-Inform-users-about-the-okular-spectre-package.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 18:28:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
