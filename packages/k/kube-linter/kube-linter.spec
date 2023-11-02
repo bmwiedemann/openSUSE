@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kube-linter
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Static analysis tool that checks Kubernetes YAML files and Helm charts
 License:        Apache-2.0
