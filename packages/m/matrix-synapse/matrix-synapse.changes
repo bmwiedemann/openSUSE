@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Oct 31 20:03:55 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.95.1
+- Update to 1.95.1 (boo#1216770)
   - Security:
     - GHSA-mp92-3jfm-3575 / CVE-2023-43796 — Moderate Severity
       Cached device information of remote users can be queried from

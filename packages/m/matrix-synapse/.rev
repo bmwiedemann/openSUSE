@@ -840,4 +840,12 @@ mostly-working synapse than nothing at all) and the package has been update to
       to a homeserver.</comment>
     <requestid>1121497</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>8e1bc6180f3f7abf7a563c40ee5d6193</srcmd5>
+    <version>1.95.1</version>
+    <time>1698952858</time>
+    <user>anag+factory</user>
+    <comment>add missing bugnumber</comment>
+    <requestid>1122657</requestid>
+  </revision>
 </revisionlist>
