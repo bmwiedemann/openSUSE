@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:33:37 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   Error.full_message now strips ":base" from the message.
+
+    *zzak*
+
+*   Add a load hook for `ActiveModel::Model` (named `active_model`) to match the load hook for
+    `ActiveRecord::Base` and allow for overriding aspects of the `ActiveModel::Model` class.
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   No changes.
+
+
+-------------------------------------------------------------------
 Tue Jun 27 19:31:09 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - updated to version 7.0.5.1
