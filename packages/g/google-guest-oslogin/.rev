@@ -234,4 +234,13 @@
     <comment></comment>
     <requestid>1119155</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c9bc9453ad55ef8d0d1d1b1495c9945d</srcmd5>
+    <version>20231101.00</version>
+    <time>1698952964</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231101.00 (bsc#1216548, bsc#1216750)
+  * Fix HTTP calls retry logic (#117) (forwarded request 1122228 from glaubitz)</comment>
+    <requestid>1122665</requestid>
+  </revision>
 </revisionlist>
