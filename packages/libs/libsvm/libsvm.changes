@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 31 22:39:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libsvm-java8.patch
+    + Build with source and target levels 8
+    + Fixes build with JDK 21
+
+-------------------------------------------------------------------
 Tue Nov  8 23:02:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 3.30

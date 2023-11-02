@@ -1,7 +1,7 @@
 #
 # spec file for package libsvm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,10 @@ Version:        3.30
 Release:        0
 URL:            https://www.csie.ntu.edu.tw/~cjlin/libsvm/
 Source0:        https://www.csie.ntu.edu.tw/~cjlin/libsvm/%{name}-%{fileversion}.tar.gz
+Patch0:         libsvm-java8.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  gcc-c++
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  ncurses-devel
 BuildRequires:  python-rpm-macros
@@ -95,6 +96,7 @@ This package contains the Java bindings for libsvm.
 
 %prep
 %setup -q -n %{name}-%{fileversion}
+%patch0 -p1
 
 %build
 # We can't override CFLAGS, we have to patch the Makefile.
