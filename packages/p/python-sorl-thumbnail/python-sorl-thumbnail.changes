@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov  2 03:28:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 12.10.0: 
+  * Fixed safe_filter application on various thumbnail template tags.
+  * Fixed slow performance with external storages like S3.
+  * Added support for Django 4.2.
+  * Drop support for Python 3.7.
+  * Confirmed Python 3.11 support.
+  * Drop support for Django 2.2 and 3.1.
+  * Added support for Django 4.1.
+  * Drop support for Python 3.6.
+  * Fixed various Pillow deprecation warnings.
+  * Drop support for Django 3.0.
+  * Added support for Django 3.2 and 4.0.
+  * Confirmed Python 3.9 and 3.10 support.
+  * Adapted size regex getting size from the identify output.
+  * Display possible ``thumbnail`` command labels in command help.
+  * Added Jazzband code of conduct.
+- Switch to pyproject macros.
+- Kill redis-server when we're finished with it.
+- Skip a truculent test.
+
+-------------------------------------------------------------------
 Wed Dec 21 17:00:45 UTC 2022 - pgajdos@suse.com
 
 - ImageMagick instead of GraphicsMagick

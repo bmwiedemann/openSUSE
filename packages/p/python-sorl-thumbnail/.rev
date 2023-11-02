@@ -66,4 +66,30 @@
     <comment></comment>
     <requestid>1044208</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6f802a50367c5b84e3812ab3d6c2405f</srcmd5>
+    <version>12.10.0</version>
+    <time>1698952921</time>
+    <user>anag+factory</user>
+    <comment>- Update to 12.10.0: 
+  * Fixed safe_filter application on various thumbnail template tags.
+  * Fixed slow performance with external storages like S3.
+  * Added support for Django 4.2.
+  * Drop support for Python 3.7.
+  * Confirmed Python 3.11 support.
+  * Drop support for Django 2.2 and 3.1.
+  * Added support for Django 4.1.
+  * Drop support for Python 3.6.
+  * Fixed various Pillow deprecation warnings.
+  * Drop support for Django 3.0.
+  * Added support for Django 3.2 and 4.0.
+  * Confirmed Python 3.9 and 3.10 support.
+  * Adapted size regex getting size from the identify output.
+  * Display possible ``thumbnail`` command labels in command help.
+  * Added Jazzband code of conduct.
+- Switch to pyproject macros.
+- Kill redis-server when we're finished with it.
+- Skip a truculent test.</comment>
+    <requestid>1121741</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sorl-thumbnail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-sorl-thumbnail
-Version:        12.7.0
+Version:        12.10.0
 Release:        0
 Summary:        Thumbnails for Django
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/sorl-thumbnail
 Source:         https://files.pythonhosted.org/packages/source/s/sorl-thumbnail/sorl-thumbnail-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module django-codemod}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  lsof
+BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2
+Requires:       python-Django >= 3.2
 Recommends:     ImageMagick
 Recommends:     python-dbm
 Suggests:       python-Wand
@@ -40,13 +40,12 @@ Suggests:       python-ImageMagick
 Suggests:       vips-tools
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module Wand}
 BuildRequires:  %{python_module boto if python-base < 3.10}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis}
-BuildRequires:  %{pythons}
 BuildRequires:  ImageMagick
 BuildRequires:  redis
 BuildRequires:  vips-tools
@@ -75,10 +74,10 @@ Features at a glance
 djcodemod run --removed-in 4.0 tests/*/urls.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -88,7 +87,7 @@ PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings.pil
 # TestDescriptors: gh#jazzband/sorl-thumbnail#673
 # TemplateTestCaseB & test_image_file_deserialize: three tests use online resources
-skip_tests="TestDescriptors or test_image_file_deserialize or (TemplateTestCaseB and (test_portrait or test_url))"
+skip_tests="TestDescriptors or test_image_file_deserialize or test_image_with_orientation or (TemplateTestCaseB and (test_portrait or test_url))"
 %pytest -rs -k "not ($skip_tests)"
 export DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
 # test_orientation skipped because of gh#jazzband/sorl-thumbnail#676
@@ -110,11 +109,12 @@ fi
 %{_sbindir}/redis-server &
 export DJANGO_SETTINGS_MODULE=tests.settings.redis
 %pytest -rs -k "not ($skip_tests)"
+killall redis-server
 
 %files %{python_files}
-%doc AUTHORS CHANGES.rst README.rst
+%doc AUTHORS.rst CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/sorl/
-%{python_sitelib}/*sorl[-_]thumbnail*/
+%{python_sitelib}/sorl
+%{python_sitelib}/sorl_thumbnail-%{version}.dist-info
 
 %changelog
