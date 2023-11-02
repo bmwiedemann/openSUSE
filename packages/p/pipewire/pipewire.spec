@@ -31,8 +31,10 @@
 
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
+%define with_webrtc_audio_processing 1
 %else
 %define with_ldacBT 0
+%define with_webrtc_audio_processing 0
 %endif
 
 %if 0%{?suse_version} > 1500
@@ -60,7 +62,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.83
+Version:        0.3.84
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -135,7 +137,9 @@ BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
+%if %{with_webrtc_audio_processing}
 BuildRequires:  pkgconfig(webrtc-audio-processing-1)
+%endif
 BuildRequires:  pkgconfig(x11)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(xfixes)
@@ -442,6 +446,11 @@ export CXX=g++-11
 %endif
     -Dsession-managers="[]" \
     -Dsdl2=disabled \
+%if %{with_webrtc_audio_processing}
+    -Decho-cancel-webrtc=enabled \
+%else
+    -Decho-cancel-webrtc=disabled \
+%endif
     %{nil}
 %meson_build
 
