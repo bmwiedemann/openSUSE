@@ -23,12 +23,14 @@
 %endif
 
 Name:           python-pynitrokey
-Version:        0.4.40
+Version:        0.4.41
 Release:        0
 Summary:        Python Library for Nitrokey devices
-License:        MIT
+License:        Apache-2.0 OR MIT
 URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
+Source1:        LICENSE-MIT
+Source2:        LICENSE-APACHE
 BuildRequires:  %{python_module click-aliases}
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
@@ -50,7 +52,7 @@ BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module requests}
 # "spsdk >=1.7.0,<1.8.0"
-BuildRequires:  %{python_module spsdk >= 1.7.0}
+BuildRequires:  %{python_module spsdk >= 1.11.0 with %python-spsdk < 1.12.0}
 BuildRequires:  %{python_module tqdm}
 # "urllib3 ~= 1.26.7"
 BuildRequires:  %{python_module urllib3 >= 1.26.7}
@@ -118,6 +120,9 @@ The user documentation for the `nitropy` CLI is available on [docs.nitrokey.com]
 %prep
 %setup -q -n pynitrokey-%{version}
 
+cp %SOURCE1 .
+cp %SOURCE2 .
+
 %build
 %pyproject_wheel
 
@@ -142,7 +147,7 @@ echo "Disabled pytest"
 
 %files %{python_files}
 %doc README.md
-%license LICENSE-MIT
+%license LICENSE-MIT LICENSE-APACHE
 %{python_sitelib}/pynitrokey/
 %{python_sitelib}/pynitrokey-%{version}*-info
 %python_alternative %{_bindir}/nitropy

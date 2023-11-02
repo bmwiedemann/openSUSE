@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov  2 13:53:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- clarify licensing, as this is dual-licensed with MIT and
+  Apache-2.0
+- Marcus added both licenses
+
+-------------------------------------------------------------------
+Mon Oct 30 07:28:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.41:
+  * nk3
+    - Add the `SE50_ERROR` flag to the init status
+      (https://github.com/Nitrokey/pynitrokey/pull/436)
+    - Add the SE050 tests to `nk3 test` if supported
+      (https://github.com/Nitrokey/pynitrokey/pull/423)
+    - Add `get-config` and `set-config` commands
+      (https://github.com/Nitrokey/pynitrokey/pull/448)
+  * nethsm
+    - Move the NetHSM API into a separate `nethsm` package, see
+      https://github.com/Nitrokey/nethsm-sdk-py
+      (https://github.com/Nitrokey/pynitrokey/pull/450)
+    - Validate the backup file in `backup` and `restore` and add
+      the `validate-backup` and `restore-backup` commands
+      (https://github.com/Nitrokey/pynitrokey/pull/457)
+  * maintenance
+    - Update fido2, cryptography, spsdk dependencies
+      (https://github.com/Nitrokey/pynitrokey/pull/449)
+- include LICENSE-MIT and LICENSE-APACHE files from older release,
+  as these were removed.
+
+-------------------------------------------------------------------
 Wed Sep 27 10:16:45 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 0.4.40:
