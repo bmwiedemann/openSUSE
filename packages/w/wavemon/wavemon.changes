@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov  1 19:54:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.5
+  Enhancements and Fixes:
+  * Info Screen:
+    + improve format of percentages (use fixed format rather than
+      auto-format).
+  Configuration:
+    + fix ncurses support for white backgrounds.
+    + configuration file now either in
+      $XDG_CONFIG_HOME/wavemon/wavemonrc or in
+      $HOME/.config/wavemon/wavemonrc
+  Miscellaneous
+  * avoid including include linux/if.h
+  * check and set support for C99 standard
+  * configuration file can now be located in XDG_CONFIG_HOME
+  * added portable implementation of asprintf(3),
+  * updated copied nl80211 header file,
+  * make -Wpedantic the default when building.
+
+-------------------------------------------------------------------
 Sun Dec 25 07:29:37 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.4
