@@ -31,6 +31,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dbus-1
 BuildRequires:  dbus-1-devel
+BuildRequires:  dbus-1-daemon
 BuildRequires:  diffutils
 BuildRequires:  dos2unix
 BuildRequires:  expect

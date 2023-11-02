@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 11 07:03:37 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- dbus-daemon is now split out into a separate package.
+
+-------------------------------------------------------------------
 Fri Jun 17 19:47:46 UTC 2022 - Matthew Davis <novell@virtual.drop.net>
 
 - Added 0001-Disable-DSA-in-the-RPM-spec.patch
