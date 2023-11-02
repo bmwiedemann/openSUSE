@@ -19,7 +19,6 @@
 # WebExtension support is not included by default because it's unfinished
 # and possibly prone to security issues.
 %bcond_with webextensions
-
 Name:           nyxt
 Version:        3.9.1
 Release:        0
@@ -29,18 +28,20 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            https://nyxt.atlas.engineer
 Source:         nyxt-%{version}-source-with-submodules.tar.xz
 Patch0:         so_ver_fix.patch
+BuildRequires:  gcc-c++
+BuildRequires:  git
+BuildRequires:  pkgconfig
+BuildRequires:  sbcl
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libfixposix)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Requires:       enchant-tools
 Requires:       glib-networking
 Requires:       gsettings-desktop-schemas
 Requires:       libfixposix4
 Requires:       libwebkit2gtk-4_1-0
 Requires:       xclip
-BuildRequires:  gcc-c++
-BuildRequires:  git
-BuildRequires:  sbcl
-BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libfixposix)
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Conflicts:      nyxt-git
 
 %description
@@ -53,7 +54,6 @@ extensible in Lisp, and has powerful features for productive professionals.
 %patch0 -p1
 
 %build
-
 %if %{with webextensions}
 make all web-extensions PREFIX=/usr LIBDIR=%{_libdir} NASDF_COMPRESS=T
 %else
@@ -61,12 +61,11 @@ make all PREFIX=/usr LIBDIR=%{_libdir} NASDF_COMPRESS=T
 %endif
 
 %install
-
 %make_install PREFIX=/usr LIBDIR=%{buildroot}/%{_libdir}
-
 %if %{with webextensions}
 strip -s %{buildroot}/%{_libdir}/nyxt/libnyxt.so
 %endif
+%suse_update_desktop_file %{name}
 
 %files
 %{_bindir}/nyxt

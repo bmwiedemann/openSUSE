@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  2 14:35:25 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed .desktop file not added with %suse_update_desktop_file 
+
+-------------------------------------------------------------------
 Tue Oct 24 12:00:06 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.9.1:

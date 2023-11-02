@@ -86,4 +86,13 @@ These issues are now fixed with a patch, hence this new submission.</comment>
     <comment>Update to version 3.9.1</comment>
     <requestid>1120222</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>466b774a28a3ea96d15388713b2e057d</srcmd5>
+    <version>3.9.1</version>
+    <time>1698952988</time>
+    <user>anag+factory</user>
+    <comment>fixed .desktop file not added with %suse_update_desktop_file 
+</comment>
+    <requestid>1122810</requestid>
+  </revision>
 </revisionlist>
