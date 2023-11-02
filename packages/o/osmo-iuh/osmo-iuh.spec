@@ -17,7 +17,7 @@
 
 
 Name:           osmo-iuh
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -32,13 +32,13 @@ BuildRequires:  pkg-config >= 0.20
 # python3 for asn1tostruct.py
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.3.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.7.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.8.0
-BuildRequires:  pkgconfig(libosmogb) >= 1.8.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.8.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.8.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.4.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.8.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.9.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.9.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.9.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
 
 %description
 Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
