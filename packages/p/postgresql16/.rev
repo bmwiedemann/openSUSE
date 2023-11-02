@@ -16,4 +16,12 @@
   as well, otherwise the symlink for ecpg might be missing.</comment>
     <requestid>1120248</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f55bae3295e0322c3e124de86990a567</srcmd5>
+    <version>16.0</version>
+    <time>1698952838</time>
+    <user>anag+factory</user>
+    <comment>Revert last change and make the devel package independend</comment>
+    <requestid>1121436</requestid>
+  </revision>
 </revisionlist>
