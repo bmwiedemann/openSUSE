@@ -19,7 +19,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 2
 %define minor_ver 9
-%define patch_ver 1
+%define patch_ver 2
 # Name the suffix of the pkg
 %if "%{flavor}" != "%{nil}"
   %define pkg_suffix -%{flavor}
@@ -72,7 +72,6 @@ Source1:        adios2-rpmlintrc
 Patch0:         0001-cmake-set-correct-soname.patch
 # https://github.com/ornladios/ADIOS2/pull/3586
 Patch1:         0002-fix-test-post-install.patch
-Patch2:         0003-fix-adios2_evpath_modules.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -135,7 +134,6 @@ This package contains all files needed to create projects that use the
 %setup -q -n ADIOS2-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 bindir=%{_bindir} sed -i "1c #!${bindir}/python3" \
       source/utils/bp4dbg/bp4dbg.py \
       source/utils/bp5dbg/bp5dbg.py \

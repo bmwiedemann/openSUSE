@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 02 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.2
+
+- Added ADIOS2 v2.9.2:
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.9.2
+  * Many bugfixes are included in this patch release.
+- Dropped patch 0003-fix-adios2_evpath_modules.patch
+
+-------------------------------------------------------------------
 Tue Oct 24 08:07:33 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete openmpi3
