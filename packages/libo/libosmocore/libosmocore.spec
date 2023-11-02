@@ -17,7 +17,7 @@
 
 
 Name:           libosmocore
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,6 +33,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(gnutls) >= 2.12.0
 BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(libpcsclite)
+BuildRequires:  pkgconfig(liburing)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(talloc) >= 2.1.0
 
@@ -59,12 +60,12 @@ This package contains a program for frequency calculation for GSM
 called "osmo-arfcn", and a program called "osmo-auc-gen" that is used
 for testing GSM authentication.
 
-%package -n libosmocodec0
+%package -n libosmocodec4
 Summary:        GSM 06.10, 06.20, 06.60, 06.90 codec library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmocodec0
+%description -n libosmocodec4
 The libosmocodec library contains an implementation of multiple
 GSM codecs:
 
@@ -77,7 +78,7 @@ GSM codecs:
 Summary:        Development files for the Osmocom GSM codec library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmocodec0 = %version
+Requires:       libosmocodec4 = %version
 
 %description -n libosmocodec-devel
 The libosmocodec library contains an implementation of multiple
@@ -112,13 +113,13 @@ transcoding routines.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmocoding.
 
-%package -n libosmocore20
+%package -n libosmocore21
 Summary:        Osmocom core library
 # crc16.c has GPL2-only clauses, the rest (*.c) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmocore20
+%description -n libosmocore21
 libosmocore is a library with various utility functions shared
 between OpenBSC and OsmocomBB.
 
@@ -127,7 +128,7 @@ Summary:        Development files for the Osmocom core library
 # crc16.h has GPL2-only clauses, the rest (*.h) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmocore20 = %version
+Requires:       libosmocore21 = %version
 Requires:       libtalloc-devel
 
 %description -n libosmocore-devel
@@ -189,12 +190,12 @@ The libosmogb library contains a GPRS BSSGP protocol implementation.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmogb.
 
-%package -n libosmogsm18
+%package -n libosmogsm20
 Summary:        Osmocom GSM utility library
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmogsm18
+%description -n libosmogsm20
 libosmocore is a package with various utility functions that were
 originally developed as part of the OpenBSC project.
 
@@ -209,7 +210,7 @@ Summary:        Development files for the Osmocom GSM utility library
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libosmocore-devel = %version
-Requires:       libosmogsm18 = %version
+Requires:       libosmogsm20 = %version
 
 %description -n libosmogsm-devel
 The libosmogsm library in particular is a collection of common code
@@ -296,12 +297,12 @@ access via libusb-1.0, integrated into the libosmocore select event loop.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmousb.
 
-%package -n libosmovty9
+%package -n libosmovty13
 Summary:        Osmocom VTY interface library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmovty9
+%description -n libosmovty13
 libosmocore is a package with various utility functions that were
 originally developed as part of the OpenBSC project.
 
@@ -313,7 +314,7 @@ Summary:        Development files for the Osmocom VTY interface library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libosmocore-devel = %version
-Requires:       libosmovty9 = %version
+Requires:       libosmovty13 = %version
 
 %description -n libosmovty-devel
 The libosmovty library implements the interactive command-line on the
@@ -341,29 +342,29 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %check
 %make_build check || (find . -name testsuite.log -exec cat {} +)
 
-%post   -n libosmocodec0 -p /sbin/ldconfig
-%postun -n libosmocodec0 -p /sbin/ldconfig
+%post   -n libosmocodec4 -p /sbin/ldconfig
+%postun -n libosmocodec4 -p /sbin/ldconfig
 %post   -n libosmocoding0 -p /sbin/ldconfig
 %postun -n libosmocoding0 -p /sbin/ldconfig
-%post   -n libosmocore20 -p /sbin/ldconfig
-%postun -n libosmocore20 -p /sbin/ldconfig
+%post   -n libosmocore21 -p /sbin/ldconfig
+%postun -n libosmocore21 -p /sbin/ldconfig
 %post   -n libosmoctrl0 -p /sbin/ldconfig
 %postun -n libosmoctrl0 -p /sbin/ldconfig
 %post   -n libosmogb14 -p /sbin/ldconfig
 %postun -n libosmogb14 -p /sbin/ldconfig
-%post   -n libosmogsm18 -p /sbin/ldconfig
-%postun -n libosmogsm18 -p /sbin/ldconfig
+%post   -n libosmogsm20 -p /sbin/ldconfig
+%postun -n libosmogsm20 -p /sbin/ldconfig
 %post   -n libosmosim2 -p /sbin/ldconfig
 %postun -n libosmosim2 -p /sbin/ldconfig
 %post   -n libosmousb0 -p /sbin/ldconfig
 %postun -n libosmousb0 -p /sbin/ldconfig
-%post   -n libosmovty9 -p /sbin/ldconfig
-%postun -n libosmovty9 -p /sbin/ldconfig
+%post   -n libosmovty13 -p /sbin/ldconfig
+%postun -n libosmovty13 -p /sbin/ldconfig
 
 %files tools
 %_bindir/osmo-*
 
-%files -n libosmocodec0
+%files -n libosmocodec4
 %_libdir/libosmocodec.so.*
 
 %files -n libosmocodec-devel
@@ -383,7 +384,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_libdir/libosmocoding.so
 %_libdir/pkgconfig/libosmocoding.pc
 
-%files -n libosmocore20
+%files -n libosmocore21
 %_libdir/libosmocore.so.*
 
 %files -n libosmocore-devel
@@ -415,7 +416,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_libdir/libosmogb.so
 %_libdir/pkgconfig/libosmogb.pc
 
-%files -n libosmogsm18
+%files -n libosmogsm20
 %_libdir/libosmogsm.so.*
 
 %files -n libosmogsm-devel
@@ -456,7 +457,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_libdir/libosmousb.so
 %_libdir/pkgconfig/libosmousb.pc
 
-%files -n libosmovty9
+%files -n libosmovty13
 %_libdir/libosmovty.so.*
 
 %files -n libosmovty-devel

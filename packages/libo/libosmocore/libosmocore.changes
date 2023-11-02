@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov  1 17:52:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.0
+  * Implement the XOR-2G authentication algorithm and rename
+    ``OSMO_AUTH_ALG_XOR`` to ``OSMO_AUTH_ALG_XOR_3G``
+  * Convolutional Coding and Interleaving for CSD
+  * isdn: Add V.110 encoder/decoder
+  * gsm: TS 44.021 modified V.110 frame encoding/decoding support
+  * New osmo-gsmtap-logsend utility
+  * gsm: Add missing TS 24.008 SM layer IEs
+  * codec: add SID classification functions per GSM 06.31 & 06.81
+  * codec: add SID preening functions for FR & EFR
+  * codec: replace GSM-FR ECU with new implementation
+  * ASCI: Add 3GPP TS 44.068 and 44.069 protocol definitions
+  * ASCI: Add IE transcoding according to 3GPP TS 48.008
+  * libosmogsm: Support authentication with 256-bit K and/or OP/OPc
+  * ASCI: Add message definition and encoding according to 3GPP TS
+    48.008
+  * ASCI: Add BCC call state definitions
+
+-------------------------------------------------------------------
 Thu May 18 10:05:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.0
