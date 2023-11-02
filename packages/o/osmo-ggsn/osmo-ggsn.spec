@@ -16,9 +16,10 @@
 #
 
 
+%define _lto_cflags %nil
 Name:           osmo-ggsn
 %define lname   libgtp6
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        GPRS Support Node
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -32,11 +33,9 @@ BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libgtpnl) >= 1.2.0
-BuildRequires:  pkgconfig(libmnl) >= 1.0.3
-BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.8.0
-BuildRequires:  pkgconfig(libosmogsm)
-BuildRequires:  pkgconfig(libosmovty) >= 1.8.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.9.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
 Obsoletes:      openggsn
 
 %description
