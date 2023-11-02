@@ -295,4 +295,12 @@ Updating to those licenses stated in the LICENSE.txt file (even though the LGPL-
  ubsan.patch (bsc#1178593, CVE-2017-18926)</comment>
     <requestid>848405</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ca52284ac0fc9f0fd9419ef76e0be65f</srcmd5>
+    <version>2.0.16</version>
+    <time>1698952835</time>
+    <user>anag+factory</user>
+    <comment>Should work after fix in #1121383 and sending that updated package to Factory.</comment>
+    <requestid>1121386</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  4 09:59:20 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Add support for libxml 2.11.0+
+  * Added patch raptor-libxml2-2.11-support.patch 
+
+-------------------------------------------------------------------
+Tue Mar  7 12:23:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.16:
+  * long list of accumulated bug, security and portability fixes
+  * see https://librdf.org/raptor/RELEASE.html#rel2_0_16
+- drop
+  0001-Calcualte-max-nspace-declarations-correctly-for-XML-.patch.1:
+  obsolete/upstream
+- ubsan.patch: refresh
+
+-------------------------------------------------------------------
 Tue Nov 10 08:59:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add 0001-Calcualte-max-nspace-declarations-correctly-for-XML-.patch.1,

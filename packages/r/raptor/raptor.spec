@@ -1,7 +1,7 @@
 #
 # spec file for package raptor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           raptor
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 Summary:        RDF Parser Toolkit
-License:        LGPL-2.1-or-later OR GPL-2.0-or-later OR Apache-2.0
+License:        Apache-2.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://librdf.org/raptor/
-Source0:        http://download.librdf.org/source/%{name}2-%{version}.tar.gz
-Source1:        http://download.librdf.org/source/raptor2-%{version}.tar.gz.asc
+URL:            https://librdf.org/raptor/
+Source0:        https://download.librdf.org/source/%{name}2-%{version}.tar.gz
+Source1:        https://download.librdf.org/source/raptor2-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch1:         https://raw.githubusercontent.com/LibreOffice/core/master/external/redland/raptor/0001-Calcualte-max-nspace-declarations-correctly-for-XML-.patch.1
-Patch2:         https://raw.githubusercontent.com/LibreOffice/core/master/external/redland/raptor/ubsan.patch
+Patch2:         ubsan.patch
+# Patch sent upstream: https://github.com/dajobe/raptor/pull/58
+Patch3:         raptor-libxml2-2.11-support.patch
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  libicu-devel
@@ -67,8 +68,8 @@ raptor library.
 
 %prep
 %setup -q -n %{name}2-%{version}
-%patch1 -p1
 %patch2
+%patch3 -p1
 
 %build
 %configure \
