@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 29 23:09:45 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.16.2
+  - Fix #4540: Restore ARMv5 support for ARM binaries
+  - Fix #4545: Repair documentation build on Read the Docs
+
+-------------------------------------------------------------------
 Tue Oct 24 18:58:58 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.16.1
