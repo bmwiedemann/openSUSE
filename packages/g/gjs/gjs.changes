@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 26 08:12:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 3cae384aaf15dec6653b1a5400032c2c2e5dc34c.patch: module:
+  Canonicalize import specifier before inserting it in registry.
+
+-------------------------------------------------------------------
+Wed Oct 11 09:35:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire /usr/bin/dbus-run-session: needed by the
+  test suite.
+
+-------------------------------------------------------------------
 Sun Sep 17 07:02:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.78.0:

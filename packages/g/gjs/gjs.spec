@@ -26,7 +26,10 @@ License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
 Source0:        https://download.gnome.org/sources/gjs/1.78/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 3cae384aaf15dec6653b1a5400032c2c2e5dc34c.patch -- module: Canonicalize import specifier before inserting it in registry
+Patch0:         https://gitlab.gnome.org/GNOME/gjs/-/commit/3cae384aaf15dec6653b1a5400032c2c2e5dc34c.patch
 
+BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  c++_compiler
 BuildRequires:  git
 BuildRequires:  meson >= 0.54.0

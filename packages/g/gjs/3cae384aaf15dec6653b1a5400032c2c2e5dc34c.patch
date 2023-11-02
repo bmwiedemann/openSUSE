@@ -1,0 +1,157 @@
+From 3cae384aaf15dec6653b1a5400032c2c2e5dc34c Mon Sep 17 00:00:00 2001
+From: Philip Chimento <philip.chimento@gmail.com>
+Date: Sun, 17 Sep 2023 09:27:59 -0700
+Subject: [PATCH] module: Canonicalize import specifier before inserting it in
+ registry
+
+Use GFile to canonicalize import specifier so that when we import two
+different URIs or relative paths that refer to the same location, we don't
+get two copies of the same module.
+
+Closes: #577
+---
+ gjs/module.cpp                            | 26 +++++++++++++++++++++++
+ installed-tests/js/jsunit.gresources.xml  |  2 ++
+ installed-tests/js/modules/sideEffect.js  |  5 +++++
+ installed-tests/js/modules/sideEffect2.js |  5 +++++
+ installed-tests/js/testESModules.js       | 17 +++++++++++++++
+ 5 files changed, 55 insertions(+)
+ create mode 100644 installed-tests/js/modules/sideEffect.js
+ create mode 100644 installed-tests/js/modules/sideEffect2.js
+
+diff --git a/gjs/module.cpp b/gjs/module.cpp
+index ccaad9c3a..7d147ff2e 100644
+--- a/gjs/module.cpp
++++ b/gjs/module.cpp
+@@ -8,6 +8,7 @@
+ #include <string.h>
+ 
+ #include <gio/gio.h>
++#include <glib-object.h>
+ #include <glib.h>
+ 
+ #include <js/CallAndConstruct.h>
+@@ -493,6 +494,25 @@ bool gjs_populate_module_meta(JSContext* cx, JS::HandleValue private_ref,
+     return true;
+ }
+ 
++// Canonicalize specifier so that differently-spelled specifiers referring to
++// the same module don't result in duplicate entries in the registry
++static bool canonicalize_specifier(JSContext* cx,
++                                   JS::MutableHandleString specifier) {
++    JS::UniqueChars specifier_utf8 = JS_EncodeStringToUTF8(cx, specifier);
++    if (!specifier_utf8)
++        return false;
++
++    GjsAutoUnref<GFile> file = g_file_new_for_uri(specifier_utf8.get());
++    GjsAutoChar canonical_specifier = g_file_get_uri(file);
++    JS::ConstUTF8CharsZ chars{canonical_specifier, strlen(canonical_specifier)};
++    JS::RootedString new_specifier{cx, JS_NewStringCopyUTF8Z(cx, chars)};
++    if (!new_specifier)
++        return false;
++
++    specifier.set(new_specifier);
++    return true;
++}
++
+ /**
+  * gjs_module_resolve:
+  *
+@@ -519,6 +539,9 @@ JSObject* gjs_module_resolve(JSContext* cx, JS::HandleValue importingModulePriv,
+     g_assert(v_loader.isObject());
+     JS::RootedObject loader(cx, &v_loader.toObject());
+ 
++    if (!canonicalize_specifier(cx, &specifier))
++        return nullptr;
++
+     JS::RootedValueArray<2> args(cx);
+     args[0].set(importingModulePriv);
+     args[1].setString(specifier);
+@@ -637,6 +660,9 @@ bool gjs_dynamic_module_resolve(JSContext* cx,
+     JS::RootedString specifier(
+         cx, JS::GetModuleRequestSpecifier(cx, module_request));
+ 
++    if (!canonicalize_specifier(cx, &specifier))
++        return false;
++
+     JS::RootedObject callback_data(cx, JS_NewPlainObject(cx));
+     if (!callback_data ||
+         !JS_DefineProperty(cx, callback_data, "module_request", module_request,
+diff --git a/installed-tests/js/jsunit.gresources.xml b/installed-tests/js/jsunit.gresources.xml
+index 75c54c901..7c017e34e 100644
+--- a/installed-tests/js/jsunit.gresources.xml
++++ b/installed-tests/js/jsunit.gresources.xml
+@@ -31,6 +31,8 @@
+     <file>modules/mutualImport/b.js</file>
+     <file>modules/overrides/GIMarshallingTests.js</file>
+     <file>modules/say.js</file>
++    <file>modules/sideEffect.js</file>
++    <file>modules/sideEffect2.js</file>
+     <file>modules/subA/subB/__init__.js</file>
+     <file>modules/subA/subB/baz.js</file>
+     <file>modules/subA/subB/foobar.js</file>
+diff --git a/installed-tests/js/modules/sideEffect.js b/installed-tests/js/modules/sideEffect.js
+new file mode 100644
+index 000000000..5bfcfb258
+--- /dev/null
++++ b/installed-tests/js/modules/sideEffect.js
+@@ -0,0 +1,5 @@
++// SPDX-License-Identifier: MIT OR LGPL-2.0-or-later
++// SPDX-FileCopyrightText: 2023 Philip Chimento <philip.chimento@gmail.com>
++
++globalThis.leakyState ??= 0;
++globalThis.leakyState++;
+diff --git a/installed-tests/js/modules/sideEffect2.js b/installed-tests/js/modules/sideEffect2.js
+new file mode 100644
+index 000000000..5bfcfb258
+--- /dev/null
++++ b/installed-tests/js/modules/sideEffect2.js
+@@ -0,0 +1,5 @@
++// SPDX-License-Identifier: MIT OR LGPL-2.0-or-later
++// SPDX-FileCopyrightText: 2023 Philip Chimento <philip.chimento@gmail.com>
++
++globalThis.leakyState ??= 0;
++globalThis.leakyState++;
+diff --git a/installed-tests/js/testESModules.js b/installed-tests/js/testESModules.js
+index e727c7907..b165521d6 100644
+--- a/installed-tests/js/testESModules.js
++++ b/installed-tests/js/testESModules.js
+@@ -12,6 +12,11 @@ import $ from 'resource:///org/gjs/jsunit/modules/exports.js';
+ import {NamedExport, data} from 'resource:///org/gjs/jsunit/modules/exports.js';
+ import metaProperties from 'resource:///org/gjs/jsunit/modules/importmeta.js';
+ 
++// These imports should all refer to the same module and import it only once
++import 'resource:///org/gjs/jsunit/modules/sideEffect.js';
++import 'resource://org/gjs/jsunit/modules/sideEffect.js';
++import 'resource:///org/gjs/jsunit/modules/../modules/sideEffect.js';
++
+ describe('ES module imports', function () {
+     it('default import', function () {
+         expect($).toEqual(5);
+@@ -67,6 +72,10 @@ describe('ES module imports', function () {
+     it('does not expose internal import.meta properties to userland modules', function () {
+         expect(metaProperties).toEqual(['url']);
+     });
++
++    it('treats equivalent URIs as equal and does not load the module again', function () {
++        expect(globalThis.leakyState).toEqual(1);
++    });
+ });
+ 
+ describe('Builtin ES modules', function () {
+@@ -130,4 +139,12 @@ describe('Dynamic imports', function () {
+     it('dynamic gi import matches static', async function () {
+         expect((await import('gi://Gio')).default).toEqual(Gio);
+     });
++
++    it('treats equivalent URIs as equal and does not load the module again', async function () {
++        delete globalThis.leakyState;
++        await import('resource:///org/gjs/jsunit/modules/sideEffect2.js');
++        await import('resource://org/gjs/jsunit/modules/sideEffect2.js');
++        await import('resource:///org/gjs/jsunit/modules/../modules/sideEffect2.js');
++        expect(globalThis.leakyState).toEqual(1);
++    });
+ });
+-- 
+GitLab
+
