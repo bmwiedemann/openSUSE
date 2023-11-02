@@ -3468,6 +3468,7 @@ unsorted:
   - emacs-color-theme 
   - emacs-gnuplot-mode 
   - emacs-gnuplot-mode-doc 
+  - emacs-libgit2 
   - emacs-plugin-devhelp 
   - emacs-poke 
   - emacs-scheme48 
@@ -13950,7 +13951,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler131-32bit 
+  - libpoppler132-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -21935,6 +21936,7 @@ unsorted:
   - proftpd-radius 
   - proftpd-sqlite 
   - progress 
+  - progress-zsh-completion 
   - proguard 
   - proguard-gui 
   - proj 

@@ -352,6 +352,7 @@
     <package name="discover-backend-fwupd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="discover-backend-packagekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_basis -->
     <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dmidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2382,7 +2383,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler131" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpoppler132" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libportal-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
