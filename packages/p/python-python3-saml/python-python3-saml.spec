@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python3-saml
 Version:        1.15.0
 Release:        0
