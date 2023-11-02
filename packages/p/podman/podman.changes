@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 01 07:15:17 UTC 2023 - dcermak@suse.com
+
+- Update to version 4.7.2:
+  * v4.7.2
+  * Update RELEASE_NOTES.md for v4.7.2
+  * compose: try all possible providers before throwing an error
+  * Mask /sys/devices/virtual/powercap
+  * fix: check wsl npipe when executing podman compose
+  * rtd: implement v2 build file
+  * Adjust to path name change for resolved unit
+  * Switch version to 4.7.2-dev
+
+-------------------------------------------------------------------
+Tue Oct 31 14:35:31 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- crun is not available for armv6 (because of criu), so use runc
+  on armv6
+
+-------------------------------------------------------------------
 Thu Oct 12 09:47:46 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Use crun on Tumbleweed & ALP for WASM support

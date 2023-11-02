@@ -18,7 +18,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -64,7 +64,12 @@ Requires:       iptables
 Requires:       libcontainers-common >= 20230214
 # use crun on Tumbleweed & ALP for WASM support
 %if 0%{suse_version} >= 1600
+%ifarch armv6l armv6hl
+# crun not available for armv6 (because of criu)
+Requires:       runc >= 1.0.1
+%else
 Requires:       crun
+%endif
 %else
 Requires:       runc >= 1.0.1
 %endif
