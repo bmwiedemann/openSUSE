@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:49:52 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.34.0
+  - Added Python 3.12 support (#2471, #2483)
+  - Handle missing connection_kwargs in patch_redis_client (#2482)
+  - Run common test suite on Python 3.12 (#2479)
+- Update to 1.33.1
+  - Make parse_version work in utils.py itself. (#2474)
+- Update to 1.33.0
+  - New: Added error_sampler option (#2456)
+  - Python 3.12: Detect interpreter in shutdown state on thread spawn (#2468)
+  - Patch eventlet under Sentry SDK (#2464)
+  - Mitigate CPU spikes when sending lots of events with lots of data (#2449)
+  - Make debug option also configurable via environment (#2450)
+  - Make sure get_dsn_parameters is an actual function (#2441)
+  - Bump pytest-localserver, add compat comment (#2448)
+  - AWS Lambda: Update compatible runtimes for AWS Lambda layer (#2453)
+  - AWS Lambda: Load AWS Lambda secrets in Github CI (#2153)
+  - Redis: Connection attributes in redis database spans (#2398)
+  - Falcon: Falcon integration checks response status before reporting error (#2465)
+  - Quart: Support Quart 0.19 onwards (#2403)
+  - Sanic: Sanic integration initial version (#2419)
+  - Django: Fix parsing of Django path patterns (#2452)
+  - Django: Add Django 4.2 to test suite (#2462)
+  - Polish changelog (#2434)
+  - Update CONTRIBUTING.md (#2443)
+  - Update README.md (#2435)
+- Update to 1.32.0
+  https://github.com/getsentry/sentry-python/blob/master/CHANGELOG.md#1320
+- Update to 1.31.0
+  https://github.com/getsentry/sentry-python/blob/master/CHANGELOG.md#1310
+- Update to 1.30.0
+  https://github.com/getsentry/sentry-python/blob/master/CHANGELOG.md#1300
+- Update to 1.29.2
+  https://github.com/getsentry/sentry-python/blob/master/CHANGELOG.md#1292
+- Update to 1.29.1
+  https://github.com/getsentry/sentry-python/blob/master/CHANGELOG.md#1291
+- Update to 1.29.0
+  https://github.com/getsentry/sentry-python/blob/master/CHANGELOG.md#1290
+
+-------------------------------------------------------------------
 Wed Jul 19 05:44:19 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.28.1

@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        1.28.1
+Version:        1.34.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
