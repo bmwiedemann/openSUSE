@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov  2 14:43:59 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.158.1:
+  What's Changed
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.0 to 1.46.1
+    by @dependabot in #1090
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.1 to 1.46.2
+    by @dependabot in #1091
+  * fix issue 1093 by @yxxhero in #1094
+  * build(deps): bump google.golang.org/grpc from 1.58.1 to 1.58.3 by
+    @dependabot in #1099
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.2 to 1.46.3
+    by @dependabot in #1097
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.3 to 1.46.4
+    by @dependabot in #1101
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.4 to 1.46.5
+    by @dependabot in #1102
+  * enable run skip-diff-output tests by @yxxhero in #1104
+  * fix golang lint error by @yxxhero in #1106
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.5 to 1.46.6
+    by @dependabot in #1107
+  * build(deps): bump github.com/docker/docker from 24.0.6+incompatible
+    to 24.0.7+incompatible by @dependabot in #1108
+  * fix chartify with non-chart dir by @yxxhero in #1105
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.6 to 1.46.7
+    by @dependabot in #1109
+  * fix #1095 by @yxxhero in #1100
+
+-------------------------------------------------------------------
 Fri Oct 27 11:44:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - autocomplete files can be generated using "helmfile complete" for
