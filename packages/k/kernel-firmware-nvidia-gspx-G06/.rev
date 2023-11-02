@@ -23,4 +23,15 @@
     <comment>update firmware to version 535.113.01</comment>
     <requestid>1112978</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>88215838342b96ed44033d09a4f0bb2e</srcmd5>
+    <version>535.129.03</version>
+    <time>1698952892</time>
+    <user>anag+factory</user>
+    <comment>This is a security update, which shoud be checked in and released soon.
+https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-nvidia-gpu-display-driver---october-2023
+
+- update firmware to version 535.129.03</comment>
+    <requestid>1122673</requestid>
+  </revision>
 </revisionlist>
