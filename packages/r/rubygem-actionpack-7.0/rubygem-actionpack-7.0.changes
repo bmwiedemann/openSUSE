@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:31:52 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   Fix `HostAuthorization` potentially displaying the value of the
+    X_FORWARDED_HOST header when the HTTP_HOST header is being blocked.
+
+    *Hartley McGuire*, *Daniel Schlosser*
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   No changes.
+
+
+-------------------------------------------------------------------
 Tue Jun 27 19:31:02 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - updated to version 7.0.5.1
