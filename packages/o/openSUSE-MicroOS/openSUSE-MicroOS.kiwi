@@ -12,7 +12,7 @@
         <profile name="ContainerHost" description="MicroOS with container runtime (podman)"/>
         <!-- Platforms -->
         <profile name="kvm-and-xen-sdboot" description="kvm-and-xen with systemd-boot" arch="x86_64,aarch64"/>
-        <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64"/>
+        <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64,armv7l"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V" arch="x86_64,aarch64"/>
         <profile name="OpenStack-Cloud" description="OpenStack Cloud" arch="x86_64,aarch64"/>
@@ -152,6 +152,38 @@
                 <volume name="opt"/>
                 <volume name="srv"/>
                 <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">20</size>
+        </type>
+    </preferences>
+    <preferences profiles="kvm-and-xen" arch="armv7l">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="qcow2"
+            firmware="uefi"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="grub2" console="gfxterm" />
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm-efi" mountpoint="boot/grub2/arm-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
                 <volume name="var" copy_on_write="false"/>
@@ -659,7 +691,7 @@
         <package name="patterns-base-bootloader"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen-sdboot">
-        <package name="combustion"/>
+        <package name="combustion &gt;= 1.2"/> <!-- New firstboot mechanism -->
         <package name="jeos-firstboot"/>
         <package name="growpart-generator"/>
         <package name="sdbootutil-snapper"/>

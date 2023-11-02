@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov  2 12:53:34 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop 'cputype-armv7' requirement for armv7
+
+-------------------------------------------------------------------
+Tue Oct 24 13:16:46 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- ... and remove it again. Confirmed to work, but (for now) we want
+  to avoid it.
+
+-------------------------------------------------------------------
+Mon Oct 23 10:29:58 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Install ignition on the sdboot image as well
+
+-------------------------------------------------------------------
 Tue Oct 17 14:39:09 UTC 2023 - Fabian Vogt <fvogt@suse.de>
 
 - Set systemd-boot's default timeout to 5s
@@ -40,6 +56,11 @@ Wed Aug  9 08:43:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - The SelfInstall flavor is targeted at physical hardware, so add
   patterns-microos-hardware
+
+-------------------------------------------------------------------
+Sun Jul 16 07:30:27 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable kvm-and-xen for armv7l
 
 -------------------------------------------------------------------
 Thu Jun 15 08:23:12 UTC 2023 - Fabian Vogt <fvogt@suse.com>
