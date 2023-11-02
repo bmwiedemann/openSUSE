@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 23 11:36:32 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5 
+
+-------------------------------------------------------------------
 Fri Feb  5 20:38:28 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439).

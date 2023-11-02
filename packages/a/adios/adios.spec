@@ -1,7 +1,7 @@
 #
-# spec file for package adios
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,27 +41,6 @@ ExcludeArch:    s390 s390x
 %define DisOMPI4 ExclusiveArch:  do_not_build
 %endif
 
-# this is a non-HPC build
-%if "%{flavor}" == "openmpi"
-%{?DisOMPI1}
-%global mpi_flavor openmpi
-%define mpi_ver 1
-%bcond_with hpc
-%endif
-
-%if "%{flavor}" == "openmpi2"
-%global mpi_flavor openmpi
-%define mpi_ver 2
-%bcond_with hpc
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%{?DisOMPI3}
-%global mpi_flavor openmpi
-%define mpi_ver 3
-%bcond_with hpc
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %{?DisOMPI4}
 %global mpi_flavor openmpi
@@ -69,31 +48,11 @@ ExcludeArch:    s390 s390x
 %bcond_with hpc
 %endif
 
-# All the HPC builds are below
-%if "%{flavor}" == "gnu-openmpi-hpc"
-%{?DisOMPI1}
-%bcond_without hpc
-%define compiler_family gnu
-%undefine c_f_ver
+%if "%{flavor}" == "openmpi5"
+%{?DisOMPI5}
 %global mpi_flavor openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu-openmpi2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_flavor openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%bcond_without hpc
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_flavor openmpi
-%define mpi_ver 3
+%define mpi_ver 5
+%bcond_with hpc
 %endif
 
 %if "%{flavor}" == "gnu-openmpi4-hpc"
@@ -103,6 +62,15 @@ ExcludeArch:    s390 s390x
 %undefine c_f_ver
 %global mpi_flavor openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu-openmpi5-hpc"
+%{?DisOMPI5}
+%bcond_without hpc
+%define compiler_family gnu
+%undefine c_f_ver
+%global mpi_flavor openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu-mvapich2-hpc"
@@ -120,31 +88,6 @@ ExcludeArch:    s390 s390x
 %endif
 
 # All the HPC builds are below
-%if "%{flavor}" == "gnu7-openmpi-hpc"
-%{?DisOMPI1}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 7
-%global mpi_flavor openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 7
-%global mpi_flavor openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi3-hpc"
-%{?DisOMPI3}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 7
-%global mpi_flavor openmpi
-%define mpi_ver 3
-%endif
 
 %if "%{flavor}" == "gnu7-openmpi4-hpc"
 %{?DisOMPI4}
@@ -153,6 +96,15 @@ ExcludeArch:    s390 s390x
 %define c_f_ver 7
 %global mpi_flavor openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi5-hpc"
+%{?DisOMPI5}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 7
+%global mpi_flavor openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
@@ -169,32 +121,6 @@ ExcludeArch:    s390 s390x
 %global mpi_flavor mpich
 %endif
 
-%if "%{flavor}" == "gnu8-openmpi-hpc"
-%{?DisOMPI1}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 8
-%global mpi_flavor openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 8
-%global mpi_flavor openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi3-hpc"
-%{?DisOMPI3}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 8
-%global mpi_flavor openmpi
-%define mpi_ver 3
-%endif
-
 %if "%{flavor}" == "gnu8-openmpi4-hpc"
 %{?DisOMPI4}
 %bcond_without hpc
@@ -202,6 +128,15 @@ ExcludeArch:    s390 s390x
 %define c_f_ver 8
 %global mpi_flavor openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi5-hpc"
+%{?DisOMPI5}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 8
+%global mpi_flavor openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu8-mvapich2-hpc"
@@ -218,32 +153,6 @@ ExcludeArch:    s390 s390x
 %global mpi_flavor mpich
 %endif
 
-%if "%{flavor}" == "gnu9-openmpi-hpc"
-%{?DisOMPI1}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 9
-%global mpi_flavor openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 9
-%global mpi_flavor openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi3-hpc"
-%{?DisOMPI3}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 9
-%global mpi_flavor openmpi
-%define mpi_ver 3
-%endif
-
 %if "%{flavor}" == "gnu9-openmpi4-hpc"
 %{?DisOMPI4}
 %bcond_without hpc
@@ -251,6 +160,15 @@ ExcludeArch:    s390 s390x
 %define c_f_ver 9
 %global mpi_flavor openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi5-hpc"
+%{?DisOMPI5}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 9
+%global mpi_flavor openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
@@ -267,31 +185,6 @@ ExcludeArch:    s390 s390x
 %global mpi_flavor mpich
 %endif
 #
-%if "%{flavor}" == "gnu10-openmpi-hpc"
-%{?DisOMPI1}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_flavor openmpi
-%define mpi_ver 1
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_flavor openmpi
-%define mpi_ver 2
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi3-hpc"
-%{?DisOMPI3}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_flavor openmpi
-%define mpi_ver 3
-%endif
 
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
 %{?DisOMPI4}
@@ -300,6 +193,15 @@ ExcludeArch:    s390 s390x
 %define c_f_ver 10
 %global mpi_flavor openmpi
 %define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi5-hpc"
+%{?DisOMPI5}
+%bcond_without hpc
+%define compiler_family gnu
+%define c_f_ver 10
+%global mpi_flavor openmpi
+%define mpi_ver 5
 %endif
 
 %if "%{flavor}" == "gnu10-mvapich2-hpc"
@@ -362,7 +264,7 @@ Name:           %{package_name}
 Version:        %{vers}
 Release:        0
 Summary:        The Adaptable IO System (ADIOS)
-License:        BSD-3-Clause AND LGPL-2.1-or-later AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://www.olcf.ornl.gov/center-projects/adios/
 Source0:        https://users.nccs.gov/~pnorbert/adios-%{version}.tar.gz
@@ -580,7 +482,7 @@ EOF
 %{pkg_libdir}/*.a
 
 %if %{with hpc}
-%postun 
+%postun
 %hpc_module_delete_if_default
 %endif
 
