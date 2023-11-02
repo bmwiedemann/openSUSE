@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  2 08:29:30 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.1:
+  * Added latest Android and macOS versions to the list of OSs.
+  * Fixed issue when trying to apply a regex on an invalid value
+    (HTML report).
+  * Fixed issue with D3.js xScale.domain() going out of boundaries
+    in certain cases.
+  * Prevent setting default static files when no static-file
+    options are defined in config file.
+
+-------------------------------------------------------------------
 Sun Oct  1 10:12:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8:

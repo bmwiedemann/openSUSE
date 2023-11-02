@@ -774,4 +774,19 @@
   * Updated to D3.js v7 (latest) including charts.js code.</comment>
     <requestid>1114599</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4bcc29753dd8f29ddfd3bb6dc1a04d9b</srcmd5>
+    <version>1.8.1</version>
+    <time>1698952938</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Added latest Android and macOS versions to the list of OSs.
+  * Fixed issue when trying to apply a regex on an invalid value
+    (HTML report).
+  * Fixed issue with D3.js xScale.domain() going out of boundaries
+    in certain cases.
+  * Prevent setting default static files when no static-file
+    options are defined in config file.</comment>
+    <requestid>1122197</requestid>
+  </revision>
 </revisionlist>
