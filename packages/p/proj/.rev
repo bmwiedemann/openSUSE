@@ -365,4 +365,12 @@ This package is included in Debian.
   * for detailed list of changes see provided NEWS file</comment>
     <requestid>1091421</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>21b9ab75a0e4b5d286ec2fabc9cba7d0</srcmd5>
+    <version>9.3.0</version>
+    <time>1698952967</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1122681</requestid>
+  </revision>
 </revisionlist>

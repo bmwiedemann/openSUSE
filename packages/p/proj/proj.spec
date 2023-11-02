@@ -16,11 +16,11 @@
 #
 
 
-%define data_version 1.14
+%define data_version 1.15
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.2.1
+Version:        9.3.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -82,6 +82,7 @@ Supplements:  proj\
 %{wildcard}\
 %{extrafile}
 License:        MIT
+%data_subpkg -c ar -n Argentina
 %data_subpkg -c at -n Austria
 %data_subpkg -c au -n Australia
 %data_subpkg -c be -n Belgium
