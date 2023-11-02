@@ -8,6 +8,7 @@ Wed Oct 25 18:38:13 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 0.103.10
   * Upgrade the bundled UnRAR library (libclamunrar) to version 6.2.10.
+    (bsc#1216625, CVE-2023-40477)
 
 -------------------------------------------------------------------
 Fri Aug 18 14:03:06 UTC 2023 - Reinhard Max <max@suse.com>
