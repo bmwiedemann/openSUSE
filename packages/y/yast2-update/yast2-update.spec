@@ -17,7 +17,7 @@
 
 
 Name:           yast2-update
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        YaST2 - Update
 Group:          System/YaST

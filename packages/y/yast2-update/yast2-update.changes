@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 31 12:29:07 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Drop the previously used repositories when going back to the
+  partition selection at upgrade, this ensures the repositories
+  are correctly reinitialized later (bsc#1215884)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
