@@ -14,6 +14,17 @@
   </hardware>
   <overwrite>
     <conditions>
+      <package>trilinos:gnu-mpich-hpc</package>
+      <package>trilinos:gnu-mvapich2-hpc</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">10</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
       <arch>riscv64</arch>
       <package>trilinos:gnu-mpich-hpc</package>
       <package>trilinos:gnu-mvapich2-hpc</package>

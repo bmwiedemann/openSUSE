@@ -295,4 +295,12 @@
   to errors. (forwarded request 1075212 from eeich)</comment>
     <requestid>1075325</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a1d68de2661127ba24f76415540d40ee</srcmd5>
+    <version>14.0.0</version>
+    <time>1698952954</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on %ix86 (forwarded request 1120041 from eeich)</comment>
+    <requestid>1120042</requestid>
+  </revision>
 </revisionlist>

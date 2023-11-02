@@ -62,35 +62,19 @@ ExclusiveArch:  do_not_build
 %{bcond_with hpc}
 %endif
 
-%if "%{flavor}" == "openmpi"
-%{?DisOMPI1}
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_ver 1
-%{bcond_with hpc}
-%endif
-
-%if "%{flavor}" == "openmpi2"
-%{?DisOMPI2}
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_ver 2
-%{bcond_with hpc}
-%endif
-
-%if "%{flavor}" == "openmpi3"
-%{?DisOMPI3}
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_ver 3
-%{bcond_with hpc}
-%endif
-
 %if "%{flavor}" == "openmpi4"
 %{?DisOMPI4}
 %undefine c_f_ver
 %global mpi_family openmpi
 %define mpi_ver 4
+%{bcond_with hpc}
+%endif
+
+%if "%{flavor}" == "openmpi5"
+%{?DisOMPI5}
+%undefine c_f_ver
+%global mpi_family openmpi
+%define mpi_ver 5
 %{bcond_with hpc}
 %endif
 
@@ -108,39 +92,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%{flavor}" == "gnu-openmpi-hpc"
-%{?DisOMPI1}
-%undefine c_f_ver
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 1
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu-openmpi2-hpc"
-%{?DisOMPI2}
-%undefine c_f_ver
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 2
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%undefine c_f_ver
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 3
-%{bcond_without hpc}
-%endif
-
 %if "%{flavor}" == "gnu-openmpi4-hpc"
 %{?DisOMPI4}
 %undefine c_f_ver
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu-openmpi5-hpc"
+%{?DisOMPI5}
+%undefine c_f_ver
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 5
 %{bcond_without hpc}
 %endif
 
@@ -158,39 +124,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%{flavor}" == "gnu7-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 7
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 1
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 7
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 2
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 7
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 3
-%{bcond_without hpc}
-%endif
-
 %if "%{flavor}" == "gnu7-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 7
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu7-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 7
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 5
 %{bcond_without hpc}
 %endif
 
@@ -208,39 +156,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%{flavor}" == "gnu8-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 8
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 1
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 8
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 2
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 8
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 3
-%{bcond_without hpc}
-%endif
-
 %if "%{flavor}" == "gnu8-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 8
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu8-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 8
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 5
 %{bcond_without hpc}
 %endif
 
@@ -258,39 +188,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%{flavor}" == "gnu9-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 9
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 1
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 9
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 2
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 9
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 3
-%{bcond_without hpc}
-%endif
-
 %if "%{flavor}" == "gnu9-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 9
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu9-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 9
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 5
 %{bcond_without hpc}
 %endif
 
@@ -308,39 +220,21 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%{flavor}" == "gnu10-openmpi-hpc"
-%{?DisOMPI1}
-%define c_f_ver 10
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 1
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi2-hpc"
-%{?DisOMPI2}
-%define c_f_ver 10
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 2
-%{bcond_without hpc}
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi3-hpc"
-%{?DisOMPI3}
-%define c_f_ver 10
-%global mpi_family openmpi
-%global compiler_family gnu
-%define mpi_ver 3
-%{bcond_without hpc}
-%endif
-
 %if "%{flavor}" == "gnu10-openmpi4-hpc"
 %{?DisOMPI4}
 %define c_f_ver 10
 %global mpi_family openmpi
 %global compiler_family gnu
 %define mpi_ver 4
+%{bcond_without hpc}
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi5-hpc"
+%{?DisOMPI5}
+%define c_f_ver 10
+%global mpi_family openmpi
+%global compiler_family gnu
+%define mpi_ver 5
 %{bcond_without hpc}
 %endif
 
@@ -364,9 +258,7 @@ ExclusiveArch:  do_not_build
 %{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
 
 # For compatibility package names
-%if "%{mpi_family}" != "openmpi" || "%{mpi_ver}" != "1" || 0%{?suse_version} >= 1550
 %define mpi_ext %{?mpi_ver}
-%endif
 
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
 %define python_flavor python%{use_python_version}
@@ -393,6 +285,7 @@ ExclusiveArch:  do_not_build
   print(s.get_paths(vars={'base': \\"$var\\"}).get('purelib'));")}
  %endif
 %else
+ExcludeArch:    %ix86
 %{hpc_init %{?compiler_family:-c %compiler_family %{?c_f_ver:-v %{c_f_ver}}} %{?with_mpi:-m {%mpi_family}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
 %define package_name %{hpc_package_name %_ver}
 %define p_prefix %{hpc_prefix}
