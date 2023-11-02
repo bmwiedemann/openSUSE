@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  1 12:45:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.59
+  * Add l_safe_ato* functions to the exported symbol list.
+
+-------------------------------------------------------------------
 Tue Aug 29 12:31:50 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.58
