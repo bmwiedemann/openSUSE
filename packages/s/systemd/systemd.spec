@@ -56,7 +56,6 @@
 %bcond_without  sysvcompat
 %bcond_without  experimental
 %bcond_without  testsuite
-%bcond_without  utmp
 %endif
 
 # The following features are kept to ease migrations toward SLE. Their default
@@ -722,7 +721,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dclock-valid-range-usec-max=946728000000000 \
         -Dadm-group=false \
         -Dwheel-group=false \
-        -Dutmp=%{when utmp} \
+        -Dutmp=false \
         -Ddefault-hierarchy=unified \
         -Ddefault-kill-user-processes=false \
         -Dpamconfdir=no \

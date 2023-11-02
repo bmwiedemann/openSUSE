@@ -6900,4 +6900,17 @@ handle manual pages that consist only of a .so directive such as
     <comment>- Fix typo in /etc/systemd/user.confd.d (bsc#1216676)</comment>
     <requestid>1121115</requestid>
   </revision>
+  <revision rev="407" vrev="5">
+    <srcmd5>ac4dcc8a145cf5a403edbd622b087898</srcmd5>
+    <version>254.5</version>
+    <time>1698952813</time>
+    <user>anag+factory</user>
+    <comment>- Disable utmp support
+  The announcement can be found at:
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/MYIWGQEE54VJDBYXMQCEY7XKEAIUFLAU/
+  The user visible consequence of it is that /run/utmp file is no more created.
+  systemd itself doesn't depend on utmp anymore since &quot;shared/wall: use logind
+  if build without utmp support&quot; has been backported.</comment>
+    <requestid>1122219</requestid>
+  </revision>
 </revisionlist>

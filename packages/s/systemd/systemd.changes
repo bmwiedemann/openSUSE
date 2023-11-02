@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  2 08:56:57 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Disable utmp support
+
+  The announcement can be found at:
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/MYIWGQEE54VJDBYXMQCEY7XKEAIUFLAU/
+
+  The user visible consequence of it is that /run/utmp file is no more created.
+
+  systemd itself doesn't depend on utmp anymore since "shared/wall: use logind
+  if build without utmp support" has been backported.
+
+-------------------------------------------------------------------
 Mon Oct 30 09:11:16 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Fix typo in /etc/systemd/user.confd.d (bsc#1216676)
