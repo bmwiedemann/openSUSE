@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 20:21:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.6.0
+  * proto_clnt: close osmo-e1d control socket on connection loss
+  * octoi: Add force-send-all-ts mode
+
+-------------------------------------------------------------------
 Thu May 18 10:24:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.5.0
