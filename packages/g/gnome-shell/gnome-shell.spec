@@ -21,7 +21,7 @@
 %define mutter_req 45.beta
 
 Name:           gnome-shell
-Version:        45.0
+Version:        45.1
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -41,6 +41,8 @@ Patch1:         gnome-shell-private-connection.patch
 Patch7:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
 Patch8:         gnome-shell-exit-crash-workaround.patch
+# PATCH-FIX-UPSTREAM gnome-shell_nb_fix_trans.patch -- Fix typo in translation breaking gnome-shell calendar overview
+Patch9:         gnome-shell_nb_fix_trans.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -185,6 +187,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %if 0%{?sle_version}
 %patch1001 -p1

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov  1 09:44:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Fix scroll handling on sliders
+  + overview: Handle unredirection as part of the state transition
+  + Handle DESKTOP windows during workspace animations
+  + Fix unexpected focus changes with multi-window apps
+  + Improve recording indicator in light style
+  + Fix calendar popup shrinking on date changes
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 26 18:30:06 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.0+20:
+  + workspaceAnimation: Handle DESKTOP windows
+  + st/scroll-view: Use clutter_actor_get_effect() to get fade effect
+  + overview: Handle unredirection in OverviewShown state machine
+  + status/system: Use Intl to format battery percentage
+  + slider:
+    - Ignore left/right scroll directions
+    - Fix check for emulated scroll events 
+  + Updated translations.
+- Add gnome-shell_nb_fix_trans.patch: Fix typo in translation
+  breaking gnome-shell calendar overview.
+
+-------------------------------------------------------------------
 Fri Oct 20 00:40:13 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Rebase patches for SLE-15-SP6 (bsc#1216072):

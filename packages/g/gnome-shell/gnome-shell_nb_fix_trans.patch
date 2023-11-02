@@ -1,0 +1,11 @@
+--- gnome-shell/po/nb.po	2023-10-18 13:10:49.960117352 +0200
++++ gnome-shell-45.0+19/po/nb.po	2023-10-18 13:12:11.924393749 +0200
+@@ -951,7 +951,7 @@
+ #, no-javascript-format
+ msgctxt "date day number format"
+ msgid "%d"
+-msgstr "&d"
++msgstr "%d"
+ 
+ #: js/ui/calendar.js:728
+ msgid "Week %V"
