@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-abis
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -27,13 +27,13 @@ Source:         https://github.com/osmocom/libosmo-abis/archive/%version.tar.gz
 Patch1:         osmo-talloc.diff
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
-BuildRequires:  pkgconfig >= 0.20
+BuildRequires:  pkg-config >= 0.20
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libosmo-e1d) >= 0.5.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.8.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.8.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.8.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.9.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.9.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
 BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 
@@ -42,12 +42,12 @@ In GSM, A-bis is a BSS-internal interface link between the BTS and
 BSC. This interface allows control of the radio equipment and radio
 frequency allocation in the BTS.
 
-%package -n libosmoabis10
+%package -n libosmoabis13
 Summary:        Osmocom GSM A-bis interface library
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmoabis10
+%description -n libosmoabis13
 In the GSM system architecture, A-bis is a Base Station
 System-internal interface linking the Base Transceiver Stations (BTS)
 and Base Station Controller (BSC). This interface allows control of
@@ -61,7 +61,7 @@ cards, as well as some A-bis/IP dialects.
 Summary:        Development files for the Osmocom GSM A-bis library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmoabis10 = %version
+Requires:       libosmoabis13 = %version
 Requires:       libosmocore-devel >= 1.4.0
 Requires:       libosmogsm-devel >= 1.4.0
 
@@ -121,12 +121,12 @@ if ! %make_build check; then
 %endif
 fi
 
-%post   -n libosmoabis10 -p /sbin/ldconfig
-%postun -n libosmoabis10 -p /sbin/ldconfig
+%post   -n libosmoabis13 -p /sbin/ldconfig
+%postun -n libosmoabis13 -p /sbin/ldconfig
 %post   -n libosmotrau2 -p /sbin/ldconfig
 %postun -n libosmotrau2 -p /sbin/ldconfig
 
-%files -n libosmoabis10
+%files -n libosmoabis13
 %_libdir/libosmoabis.so.*
 
 %files -n libosmoabis-devel

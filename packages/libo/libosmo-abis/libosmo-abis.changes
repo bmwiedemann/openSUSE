@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  1 18:24:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * Add more L1 signals to common part
+  * Add function to set Sa bits to common part
+  * Add L1 signals to misdn driver
+  * Add setting of Sa bits to misdn driver
+
+-------------------------------------------------------------------
 Thu May 18 10:15:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.1
