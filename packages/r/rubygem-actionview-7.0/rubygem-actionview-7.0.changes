@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:32:36 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   Fix `form_for` missing the hidden `_method` input for models with a
+    namespaced route.
+
+    *Hartley McGuire*
+
+*   Fix `render collection: @records, cache: true` inside `jbuilder` templates
+
+    The previous fix that shipped in `7.0.7` assumed template fragments are always strings,
+    this isn't true with `jbuilder`.
+
+    *Jean Boussier*
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   Fix `render collection: @records, cache: true` to cache fragments as bare strings
+
+    Previously it would incorrectly cache them as Action View buffers.
+
+    *Jean Boussier*
+
+*   Don't double-encode nested `field_id` and `field_name` index values
+
+    Pass `index: @options` as a default keyword argument to `field_id` and
+    `field_name` view helper methods.
+
+    *Sean Doyle*
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   No changes.
+
+
+-------------------------------------------------------------------
 Tue Jun 27 19:31:06 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - updated to version 7.0.5.1

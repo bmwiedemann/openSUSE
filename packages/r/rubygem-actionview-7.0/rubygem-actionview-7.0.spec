@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-actionview-7.0
-Version:        7.0.5.1
+Version:        7.0.8
 Release:        0
 %define mod_name actionview
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -7.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Rendering framework putting the V in MVC (part of Rails)
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Simple, battle-tested conventions and helpers for building web pages.
