@@ -2,6 +2,7 @@
 # spec file for package dar
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,31 +19,33 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.7.12
+Version:        2.7.13
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
 URL:            https://dar.sourceforge.io/
 Source0:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz
 Source1:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz.sig
+# http://dar.linux.free.fr/doc/authentification.html
 Source2:        %{name}.keyring
-BuildRequires:  argon2-devel
-BuildRequires:  automake
-BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  groff
-BuildRequires:  libattr-devel
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libgpg-error-devel
 BuildRequires:  librsync-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(ext2fs)
-BuildRequires:  pkgconfig(gpgme)
+BuildRequires:  pkgconfig(gpg-error)
+BuildRequires:  pkgconfig(gpgme) >= 1.2.0
+BuildRequires:  pkgconfig(libargon2)
+BuildRequires:  pkgconfig(libattr)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libgcrypt)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libthreadar)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
@@ -81,11 +84,7 @@ This package contains the library used by Dar and KDar.
 
 %package -n libdar-devel
 Summary:        Backup and Restore Application
-Requires:       glibc-devel
 Requires:       libdar64-%{sover} = %{version}
-Requires:       openssl-devel
-Requires:       pkgconfig(bzip2)
-Requires:       pkgconfig(zlib)
 
 %description -n libdar-devel
 Dar stands for Disk ARchive and is a hardware independent backup
@@ -100,6 +99,7 @@ This package contains the library used by Dar and KDar.
 
 %package doc
 Summary:        Documentation for %{name}
+BuildArch:      noarch
 
 %description doc
 Documentation package for %{name}
@@ -107,11 +107,9 @@ Documentation package for %{name}
 %lang_package
 
 %prep
-%autosetup
-sed -i -e 's,^AM_GNU_GETTEXT_VERSION.*,-AM_GNU_GETTEXT_VERSION(0.18),' configure.ac
+%autosetup -p1
 
 %build
-autoreconf -fiv
 %configure \
   --with-pic \
   --datadir=%{_defaultdocdir} \
@@ -119,12 +117,6 @@ autoreconf -fiv
   --enable-largefile \
   --disable-dar-static
 %make_build
-
-%check
-# ensure that dynamic linked binaries get installed
-file %{buildroot}%{_bindir}/* | grep -q dynamic || exit 1
-file %{buildroot}%{_bindir}/* | grep static && exit 1
-exit 0
 
 %install
 %make_install
@@ -139,8 +131,13 @@ mv %{buildroot}/%{_defaultdocdir}/%{name}/samples/* %{buildroot}/%{_defaultdocdi
 %fdupes %{buildroot}%{_defaultdocdir}/%{name}
 %find_lang %{name}
 
-%post -n libdar64-%{sover} -p /sbin/ldconfig
-%postun -n libdar64-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libdar64-%{sover}
+
+%check
+# ensure that dynamic linked binaries get installed
+file %{buildroot}%{_bindir}/* | grep -q dynamic || exit 1
+file %{buildroot}%{_bindir}/* | grep static && exit 1
+exit 0
 
 %files
 %license COPYING
@@ -149,17 +146,21 @@ mv %{buildroot}/%{_defaultdocdir}/%{name}/samples/* %{buildroot}/%{_defaultdocdi
 %{_mandir}/man1/dar*.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %files -n libdar64-%{sover}
+%license COPYING
 %{_libdir}/libdar64.so.%{sover}*
 %config(noreplace) %{_sysconfdir}/darrc
 
 %files -n libdar-devel
+%license COPYING
 %{_includedir}/%{name}/
 %{_libdir}/libdar64.so
 %{_libdir}/pkgconfig/libdar64.pc
 
 %files doc
+%license COPYING
 %exclude %{_docdir}/%{name}/{AUTHORS,NEWS,TODO,ChangeLog}
 %doc %{_docdir}/%{name}
 

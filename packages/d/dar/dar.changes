@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  1 20:18:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.7.13:
+  * fix bug auto-reported in "slice_layout.cpp line 48" concerning
+    isolated catalogs triggered when dar/libdar has been compiled
+    with some version gcc (gcc >= 11) with optimizations set.
+  * documentation and build system updates
+- enable lz4, zstd compression support (boo#1216790)
+- enable multi-threading support with libthreadar (boo#1216790)
+- package license files
+- reduce -devel dependencies
+- make -doc noarch 
+
+-------------------------------------------------------------------
 Sun Sep 17 19:04:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.12:
