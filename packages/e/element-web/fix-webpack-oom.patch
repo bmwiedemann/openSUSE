@@ -2,8 +2,8 @@ Index: element-web-1.11.20/package.json
 ===================================================================
 --- element-web-1.11.20.orig/package.json	2023-01-20 13:52:01.000000000 +0100
 +++ element-web-1.11.20/package.json	2023-01-27 13:02:23.452017454 +0100
-@@ -37,7 +37,7 @@
-         "build:res": "node scripts/copy-res.js",
+@@ -41,7 +41,7 @@
+         "build:res": "ts-node scripts/copy-res.ts",
          "build:genfiles": "yarn build:res && yarn build:jitsi && yarn build:module_system",
          "build:modernizr": "modernizr -c .modernizr.json -d src/vector/modernizr.js",
 -        "build:bundle": "webpack --progress --bail --mode production",

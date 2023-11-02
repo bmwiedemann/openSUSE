@@ -9,7 +9,6 @@ find -maxdepth 1 -type d -name 'element-web-*' | xargs rm -r
 
 version=$(grep "Version:" element-web.spec | awk '{print $2}')
 last_packaged_version=$(osc cat devel:languages:nodejs/element-web/element-web.spec | grep "^Version:" | awk '{print $NF}')
-changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/')
 
 osc rm --force element-web-*.tar.gz || :
 wget -c https://github.com/vector-im/element-web/archive/v${version}.tar.gz -O element-web-${version}.tar.gz
@@ -21,6 +20,7 @@ osc add element-web-*.tar.gz
 rm -rf "element-web-${version}"
 tar xzvf element-web-${version}.tar.gz
 cd element-web-${version}
+changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/')
 
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 yarn cache clean
@@ -53,4 +53,4 @@ cd "$oldwd"
 echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offline-cache.tar.gz'"
 
 read -p "Write changes?"
-osc vc -m "Version ${version}\n${changes}" element-web.changes
+osc vc -m "${changes}" element-web.changes
