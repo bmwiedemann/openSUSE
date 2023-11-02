@@ -1,7 +1,7 @@
 #
 # spec file for package choqok
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        1.7.0
 Release:        0
 Summary:        Micro-Blogging Client for KDE
 License:        GPL-3.0-only
-Group:          Productivity/Networking/Other
 URL:            https://choqok.kde.org
 Source:         https://download.kde.org/stable/%{name}/1.7/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
@@ -55,7 +54,6 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5NetworkAuth)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(TelepathyQt5)
 
 %description
 A micro-blogging client for the K Desktop Environment.
@@ -64,8 +62,7 @@ It currently supports twitter.com and identi.ca services.
 
 %package devel
 Summary:        Micro-Blogging Client for KDE
-Group:          Development/Libraries/KDE
-Requires:       %{name} = %{version}
+Requires:       choqok = %{version}
 
 %description devel
 A micro-blogging client for the K Desktop Environment.
@@ -76,17 +73,16 @@ It currently supports twitter.com and identi.ca services.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %fdupes %{buildroot}
-  %suse_update_desktop_file -C "KDE Micro-blogging Client" org.kde.choqok InstantMessaging
-  %find_lang choqok
+%kf5_makeinstall -C build
+%fdupes %{buildroot}
+%suse_update_desktop_file -C "KDE Micro-blogging Client" org.kde.choqok InstantMessaging
+%find_lang choqok
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files -f %{name}.lang
 %license COPYING

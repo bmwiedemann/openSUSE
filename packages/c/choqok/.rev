@@ -304,4 +304,13 @@
 -  %cmake_build is now the recommended way to build cmake projects</comment>
     <requestid>902596</requestid>
   </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>3607275a89e282107355a2071a613d64</srcmd5>
+    <version>1.7.0</version>
+    <time>1698952947</time>
+    <user>anag+factory</user>
+    <comment>- Remove the telepathyQt5 dependency
+- Spec cleanup</comment>
+    <requestid>1122216</requestid>
+  </revision>
 </revisionlist>
