@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  1 09:47:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + workspace-indicator: Fix initial preview visibility
+  + screenshot-window-sizer: Fix cycling between sizes backwards
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 16 22:20:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
