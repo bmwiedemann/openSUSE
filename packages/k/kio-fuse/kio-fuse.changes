@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 00:56:22 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- dbus-run-session now needs to be explicitly required for the
+  test suite.
+
+-------------------------------------------------------------------
 Mon Mar  7 11:15:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Replace %_libdir/libexec with %_libexecdir (boo#1174075)

@@ -37,6 +37,9 @@ BuildRequires:  cmake(KF5KIO) >= 5.66.0
 BuildRequires:  cmake(Qt5DBus) >= 5.12.0
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(fuse3)
+%if 0%{?suse_version} > 1599
+BuildRequires:  /usr/bin/dbus-run-session
+%endif
 Requires:       fuse3
 # For %%check
 BuildRequires:  kio-extras5
