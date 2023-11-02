@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           polaris
-Version:        8.5.1
+Version:        8.5.2
 Release:        0
 Summary:        Validation of best practices in your Kubernetes clusters
 License:        Apache-2.0
@@ -39,8 +39,7 @@ Polaris can be run in three different modes:
 * As a command-line tool, so you can test local YAML files, e.g. as part of a CI/CD process.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
