@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  2 10:11:44 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 3.1.19 June 22 2023
+  - Deprecate passing the third argument to `BCrypt::Engine.hash_secret` [GH #207 by @sergey-alekseev]
+  - Add GC guards so the C compiler won't optimize out references [GH #270]
+
+
+-------------------------------------------------------------------
 Mon Jun 13 16:50:26 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.1.18

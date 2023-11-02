@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bcrypt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bcrypt
-Version:        3.1.18
+Version:        3.1.19
 Release:        0
 %define mod_name bcrypt
 %define mod_full_name %{mod_name}-%{version}
