@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 07:19:45 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.2
+  + Add help output for the command tpm-authorize
+  + Improve the multi-devices support
+
+-------------------------------------------------------------------
 Mon Oct 23 05:57:33 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.7.1
