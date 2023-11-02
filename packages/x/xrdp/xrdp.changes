@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 18 09:23:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.9.23.1:
+  + Security fix: Unchecked access to font glyph info
+    (CVE-2023-42822).
+- Changes from version 0.9.23:
+  + General announcement: Running xrdp and xrdp-sesman on separate
+    hosts is still supported by this release, but is now
+    deprecated. This is not secure. A future v1.0 release will
+    replace the TCP socket used between these processes with a Unix
+    Domain Socket, and then cross-host running will not be
+    possible.
+  + Security fix: Improper handling of session establishment errors
+    allows bypassing OS-level session restrictions
+    (CVE-2023-40184).
+  + Bug fixes:
+    - Environment variables set by PAM modules are no longer
+      restricted to around 250 characters.
+    - X11 clipboard clients now no longer hang when requesting a
+      clipboard format which isn't available.
+
+-------------------------------------------------------------------
 Thu Aug  3 04:01:39 UTC 2023 - Linnaea Lavia <linnaea@lavia.moe>
 
 - Update to version 0.9.22
