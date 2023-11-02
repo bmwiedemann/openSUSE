@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  1 18:54:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.1
+  * SCCP: implement variable limit on Optional Data
+    (CR,CC,CREF,RLSD)
+  * Allow configuring per-ASP SCTP INIT parameters
+
+-------------------------------------------------------------------
 Thu May 18 11:31:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.0

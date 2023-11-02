@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-sccp
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 %define libversion %(echo "%version" | sed 's/\\./_/g')
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
@@ -33,10 +33,10 @@ BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.3.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.8.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.8.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.4.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.9.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.9.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.9.0
 
 %description
 SCCP is a network layer protocol that provides extended routing, flow
@@ -96,19 +96,19 @@ in SS7 telecommunications networks.
 This subpackage contains the development files for the Osmocom SCCP
 library.
 
-%package -n libosmo-sigtran7
+%package -n libosmo-sigtran9
 Summary:        Osmocom SIGTRAN library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmo-sigtran7
+%description -n libosmo-sigtran9
 Osmocom implementation of (parts of) SIGTRAN.
 
 %package -n libosmo-sigtran-devel
 Summary:        Development files for the Osmocom sigtran library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-sigtran7 = %version
+Requires:       libosmo-sigtran9 = %version
 
 %description -n libosmo-sigtran-devel
 Osmocom implementation of (parts of) SIGTRAN.
@@ -184,8 +184,8 @@ fi
 %postun -n libosmo-mtp-%libversion -p /sbin/ldconfig
 %post   -n libosmo-sccp-%libversion -p /sbin/ldconfig
 %postun -n libosmo-sccp-%libversion -p /sbin/ldconfig
-%post   -n libosmo-sigtran7 -p /sbin/ldconfig
-%postun -n libosmo-sigtran7 -p /sbin/ldconfig
+%post   -n libosmo-sigtran9 -p /sbin/ldconfig
+%postun -n libosmo-sigtran9 -p /sbin/ldconfig
 %post   -n libosmo-xua-%libversion -p /sbin/ldconfig
 %postun -n libosmo-xua-%libversion -p /sbin/ldconfig
 
@@ -221,8 +221,8 @@ fi
 %_libdir/libosmo-sccp.so
 %_libdir/pkgconfig/libosmo-sccp.pc
 
-%files -n libosmo-sigtran7
-%_libdir/libosmo-sigtran.so.7*
+%files -n libosmo-sigtran9
+%_libdir/libosmo-sigtran.so.*
 
 %files -n libosmo-sigtran-devel
 %dir %_includedir/%name/
