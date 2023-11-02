@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  2 09:03:06 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.15.3
+  * https://github.com/ValiMail/authentication-headers/blob/0.15.3/CHANGES
+    or the CHANGES file included in this package
+
+-------------------------------------------------------------------
 Tue Jun 13 11:35:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - tag sle15 build for new python

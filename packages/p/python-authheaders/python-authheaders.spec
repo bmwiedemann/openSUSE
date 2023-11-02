@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-authheaders
-Version:        0.14.1
+Version:        0.15.3
 Release:        0
 Summary:        A library wrapping email authentication header verification and generation
 License:        MIT
@@ -55,6 +55,10 @@ export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+# Remove binaries
+rm %{buildroot}%{_bindir}/dmarc-policy-find
+%python_expand rm %{buildroot}%{$python_sitelib}/authheaders/dmarcpolicyfind*.py*
+
 %check
 export LANG=en_US.UTF-8
 %pytest
@@ -62,6 +66,6 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc CHANGES README.md
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/authheaders*
 
 %changelog
