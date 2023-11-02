@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 31 12:57:16 UTC 2023 - dmueller@suse.com
+
+- Update to version 84.87+git20231031.bfa988b:
+  * Revert "Set SOURCE_DATE_EPOCH"
+
+-------------------------------------------------------------------
 Fri Oct 27 08:31:23 UTC 2023 - dmueller@suse.com
 
 - Update to version 84.87+git20231027.ea7097f:

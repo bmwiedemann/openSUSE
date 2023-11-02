@@ -979,4 +979,13 @@ Marcus
   * Avoid test on unset variables</comment>
     <requestid>1120752</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>a365cce180ee8323385e8d682df503f3</srcmd5>
+    <version>84.87+git20231031.bfa988b</version>
+    <time>1698952859</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20231031.bfa988b:
+  * Revert &quot;Set SOURCE_DATE_EPOCH&quot;</comment>
+    <requestid>1121441</requestid>
+  </revision>
 </revisionlist>
