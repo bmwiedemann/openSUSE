@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Markdown
-Version:        3.5
+Version:        3.5.1
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause

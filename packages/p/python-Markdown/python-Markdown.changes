@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  1 20:56:04 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.5.1:
+  * Fix a performance problem with HTML extraction where large HTML
+    input could trigger quadratic line counting behavior (#1392).
+  * Improve and expand type annotations in the code base (#1394).
+
+-------------------------------------------------------------------
 Sun Oct  8 13:54:25 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.5:
