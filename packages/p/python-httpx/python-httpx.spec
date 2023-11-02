@@ -33,6 +33,8 @@ Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
 URL:            https://github.com/encode/httpx
 Source:         https://github.com/encode/httpx/archive/%{version}.tar.gz#/httpx-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/encode/httpx/pull/2885 Support newer versions of httpcore
+Patch:          newer-httpcore.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
@@ -40,10 +42,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-anyio
 Requires:       python-certifi
+Requires:       python-httpcore >= 0.18.0
 Requires:       python-idna >= 2.0
 Requires:       python-sniffio
-Requires:       (python-httpcore >= 0.18.0 with python-httpcore < 0.19.0)
 Recommends:     python-Brotli
 Recommends:     python-Pygments >= 2
 Recommends:     python-click >= 8

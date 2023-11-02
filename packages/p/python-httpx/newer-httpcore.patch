@@ -1,0 +1,91 @@
+From aff5a9327f393379f2ef87acad0b0fc6ddee608f Mon Sep 17 00:00:00 2001
+From: Paul Schreiber <paulschreiber@gmail.com>
+Date: Mon, 9 Oct 2023 16:04:17 -0400
+Subject: [PATCH 1/4] Support newer versions of httpcore
+
+httpcore 1.0.0 was release October 6, 2023.
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index baa92e9a43..ef4d02b12d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -29,7 +29,7 @@ classifiers = [
+ ]
+ dependencies = [
+     "certifi",
+-    "httpcore>=0.18.0,<0.19.0",
++    "httpcore",
+     "idna",
+     "sniffio",
+ ]
+
+From 4b0f70d2d56075b84b7abdf3111f0bb11064b9fc Mon Sep 17 00:00:00 2001
+From: Tom Christie <tom@tomchristie.com>
+Date: Wed, 11 Oct 2023 12:18:52 +0100
+Subject: [PATCH 2/4] Update pyproject.toml
+
+---
+ pyproject.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index ef4d02b12d..f1e2d78f94 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -30,6 +30,7 @@ classifiers = [
+ dependencies = [
+     "certifi",
+     "httpcore",
++    "anyio",
+     "idna",
+     "sniffio",
+ ]
+
+From aa7a02ab0cdf22489b3fe5b48e4253c5533b9dfd Mon Sep 17 00:00:00 2001
+From: Paul Schreiber <paulschreiber@gmail.com>
+Date: Wed, 11 Oct 2023 09:59:45 -0400
+Subject: [PATCH 3/4] Update pyproject.toml
+
+Co-authored-by: Kar Petrosyan <92274156+karpetrosyan@users.noreply.github.com>
+---
+ pyproject.toml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index f1e2d78f94..ef4d02b12d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -30,7 +30,6 @@ classifiers = [
+ dependencies = [
+     "certifi",
+     "httpcore",
+-    "anyio",
+     "idna",
+     "sniffio",
+ ]
+
+From 4215d27bcdf934e64ad223b7945806f6104edc90 Mon Sep 17 00:00:00 2001
+From: Paul Schreiber <paulschreiber@gmail.com>
+Date: Thu, 19 Oct 2023 10:40:57 -0400
+Subject: [PATCH 4/4] Update pyproject.toml
+
+Co-authored-by: Tom Christie <tom@tomchristie.com>
+---
+ pyproject.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index ef4d02b12d..f1e2d78f94 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -30,6 +30,7 @@ classifiers = [
+ dependencies = [
+     "certifi",
+     "httpcore",
++    "anyio",
+     "idna",
+     "sniffio",
+ ]

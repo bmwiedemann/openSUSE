@@ -190,4 +190,12 @@
 - Requires higher version of httpcore.</comment>
     <requestid>1120298</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>20f2d4c134b816ab16999f7312b52d46</srcmd5>
+    <version>0.25.0</version>
+    <time>1698952851</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121509</requestid>
+  </revision>
 </revisionlist>

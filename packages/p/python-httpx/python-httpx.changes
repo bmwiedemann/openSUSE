@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 31 10:55:34 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream newer-httpcore.patch
+  * it only allows httpcore 1.0.0 in the pyproject.toml, no code changes
+
+-------------------------------------------------------------------
 Fri Oct 20 21:52:56 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.25.0:
