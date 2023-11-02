@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 18 11:54:56 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Fix tests against latest raptor by cleaning up parser in each iteration.
+  * Added patch redland-fix-tests.patch  
+
+-------------------------------------------------------------------
 Fri Mar  1 14:56:41 UTC 2019 - Reinhard Max <max@suse.com>
 
 - PostrgeSQL's pg_config is meant for linking server extensions,

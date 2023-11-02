@@ -1,7 +1,7 @@
 #
 # spec file for package redland
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Name:           redland
 Version:        1.0.17
 Release:        0
 Summary:        Libraries that provide support for the Resource Description Framework (RDF)
-License:        LGPL-2.1-or-later AND Apache-2.0
+License:        Apache-2.0 AND LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://www.librdf.org
+URL:            http://www.librdf.org
 
 Source0:        http://download.librdf.org/source/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -35,13 +35,13 @@ Patch1:         redland-ocloexec.patch
 %endif
 Patch2:         redland-db6.diff
 Patch3:         redland-postgresql.patch
+Patch4:         redland-fix-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  librasqal-devel
 BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Redland is a library that provides a high-level interface for RDF
@@ -96,8 +96,9 @@ including contexts.
 # the library by the numbers it knows (and it may not know future versions!),
 # but will use any available headers. This can lead to it choosing some random
 # libdb-X.Y.so that does not match up with the headers, for linking.
-# 
+#
 %patch -P 2 -p1
+%patch4 -p1
 
 %build
 autoconf
@@ -157,7 +158,7 @@ unset MALLOC_CHECK_
 %{_libdir}/redland/librdf_storage_sqlite.so
 %{_mandir}/man1/redland-db-upgrade.1*
 %{_mandir}/man1/rdfproc.1*
-%doc AUTHORS COPYING COPYING.LIB ChangeLog LICENSE.txt NEWS README
-%doc LICENSE-2.0.txt NOTICE
+%license COPYING COPYING.LIB LICENSE.txt LICENSE-2.0.txt
+%doc AUTHORS ChangeLog NEWS README NOTICE
 
 %changelog
