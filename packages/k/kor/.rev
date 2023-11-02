@@ -7,4 +7,12 @@
     <comment>new package kor: Tool to discover unused Kubernetes Resources</comment>
     <requestid>1119128</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfdf3b2cb9254d77613f9cbae48200fb</srcmd5>
+    <version>0.2.6</version>
+    <time>1698952877</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121678</requestid>
+  </revision>
 </revisionlist>
