@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Nov 03 05:21:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.12:
+  * Prepare for v0.15.12 release
+  * connectivity: Add feature detection for WG encapsulation
+  * connectivity: Add special case to test WG w/ tunneling
+  * connectivity: Change iface derivation for WG w/ tunnel
+  * connectivity: Move dstFilter derivation to getFilter
+  * connecitivity: Set proto filter in getFilter
+  * connectivity: Derive dstFilter by calling getFilter
+  * connectivity: Rename getSourceAddressFilter to getFilter
+  * chore(deps): update golang:1.21.3-alpine3.18 docker digest to
+    99bec74
+  * chore(deps): update module github.com/docker/docker to
+    v24.0.7+incompatible [security]
+  * Revert "chore(deps): update dependency cilium/cilium to
+    v1.14.3"
+  * connectivity: don't use an ephemeral port for the echo server
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    0fd246f
+  * README.md: remove v0.10.x from release table
+  * fix(deps): update all go dependencies main
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.55.1
+  * k8s: outdent else block to please golangci-lint
+  * go.mod, vendor: update cilium/cilium to latest
+  * fix(deps): update all go dependencies main
+  * action: Allow users to skip building CLI
+  * chore(deps): update dependency cilium/cilium to v1.14.3
+  * sysdump: Check if enable-envoy-config is set
+  * connectivity: don't run encryption tests on single node
+  * connectivity: extend encryption tests to validate both
+    directions
+  * connectivity: add sanity checks for encryption tests
+  * connectivity: fix encryption validation when host firewall is
+    enabled
+  * connectivity: fix encryption validation when running in ENI
+    mode
+  * connectivity: fix pod-to-pod encryption validation
+  * connectivity: fix host-netns daemonset creation with
+    clustermesh
+  * gha: cleanup stale AWS-CNI iptables rules in EKS tunnel
+    workflow
+  * check: turn CurlClientIPCommand into more generic
+    CurlCommandWithOutput
+  * check: add CurlCommandParallelWithOutput helper
+  * check: simplify NodeportService peer implementation
+  * check: add PodEchoIP peer implementation
+  * action: Do not install released vsn if CI vsn is specified
+  * Replace --helm-set with --set
+  * echo-external-node: Check if NodeWithoutCilium is enabled
+  * Update stable release to v0.15.11
+
+-------------------------------------------------------------------
 Thu Oct 19 05:48:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.11:
