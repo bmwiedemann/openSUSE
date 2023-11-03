@@ -1,4 +1,4 @@
-#
+ #
 # spec file for package nodejs-electron
 #
 # Copyright (c) 2022 SUSE LLC
@@ -214,14 +214,14 @@ BuildArch:      i686
 # protobuf     | third_party/protobuf              | Fork.
 # rnnoise      | third_party/rnnoise               | Internal api use.
 # sqlite       | third_party/sqlite                | Fork.
-# srtp / srtp2 | third_party/libsrtp               | Api matches neither version 1 nor 2 of this library.
+# srtp / srtp2 | third_party/libsrtp               | Needs to be built against boringssl, not openssl
 # uv           | third_party/electron_node/deps/uv | Heavily modified version which is exposed as part of Electron's public ABI.
 
 
 
 
 Name:           nodejs-electron
-Version:        27.0.2
+Version:        27.0.3
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11

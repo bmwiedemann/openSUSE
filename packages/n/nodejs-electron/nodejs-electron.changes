@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 20:28:50 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.0.3
+  * Updated Chromium to 118.0.5993.120
+  * Fixed an issue where navigator.keyboard.lock() did not work per latest expected behavior
+
+-------------------------------------------------------------------
 Thu Oct 26 17:25:56 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - v8: Re-enable glibc (as opposed to fdlibm) trigonometry

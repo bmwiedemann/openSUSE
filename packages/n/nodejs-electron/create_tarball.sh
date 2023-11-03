@@ -235,7 +235,7 @@ keeplibs=(
     third_party/libavif #leap too old
     #third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h) in VAAPI code only
     third_party/libphonenumber #Depends on protobuf which cannot be unbundled
-    third_party/libsrtp #Use of private headers. they were public in libsrtp1
+    third_party/libsrtp #Needs to be built against boringssl, not openssl
     third_party/libsync #not yet in any distro
     third_party/libudev #Headers for a optional delay-loaded dependency
     third_party/liburlpattern #Derived code, not vendored dep.
