@@ -336,4 +336,16 @@
 </comment>
     <requestid>1120185</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>139321444fca7c3c5b9932033a165638</srcmd5>
+    <version>3.2.1</version>
+    <time>1699046443</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.1:
+  * FIX: increase secure memory pool to 64 MB, if possible
+  * FIX: parsing of big aegis encrypted json (#309)
+  * FIX: better memory management 
+</comment>
+    <requestid>1123143</requestid>
+  </revision>
 </revisionlist>
