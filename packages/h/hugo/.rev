@@ -846,4 +846,18 @@
   * tpl/tplimpl: Fix deprecation logic in RSS template (forwarded request 1121493 from jfkw)</comment>
     <requestid>1121528</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9c0373f0f98e0d7c5ff3e6074f2302bd</srcmd5>
+    <version>0.120.3</version>
+    <time>1699046394</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.120.3:
+  * tpl/tplimpl: Fix deprecation logic in embedded templates
+  * Remove some old and unused deprecation code
+  * Add a field prefix to the deprecated log statements
+  * Avoid double printing INFO deprecation messages
+  * build(deps): bump github.com/tdewolff/parse/v2 from 2.7.1 to 2.7.3
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.1 to 2.20.5 (forwarded request 1122931 from jfkw)</comment>
+    <requestid>1122963</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 02 16:51:45 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.120.3:
+  * tpl/tplimpl: Fix deprecation logic in embedded templates
+  * Remove some old and unused deprecation code
+  * Add a field prefix to the deprecated log statements
+  * Avoid double printing INFO deprecation messages
+  * build(deps): bump github.com/tdewolff/parse/v2 from 2.7.1 to 2.7.3
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.1 to 2.20.5
+
+-------------------------------------------------------------------
 Tue Oct 31 19:11:11 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.120.2:
