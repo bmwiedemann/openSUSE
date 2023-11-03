@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Nov  3 09:55:52 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.1
+  * Fixup release that contains an updated debian/changelog
+
+-------------------------------------------------------------------
+Thu Nov  2 19:09:15 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  * add direct sampling to rtl_sdr
+  * add -D direct sampling flag to rtl_tcp
+  * add blog v4 upconverter gpio switch
+  * fix rtl_tcp error on windows when hints not initialized to 0
+  * add rtl-sdr blog v4 support
+  * Fix signal handler from getting stuck in an endless loop
+  * lib: Stop applying workaround for libusb < 1.0.9
+  * lib: force wait state after cancel of usb transfer
+  * rtl_fm: add a new option to select 2nd direct sampling mode
+  * rtl_tcp: put new DEFAULT_* constants in defines
+  * rtl_tcp: Extracted some constants out of printf strings
+  * cmake: populate pkgconfig file with prefix
+  * Add rtl_biast as install target
+  * tuner_r82xx: fix short-write in r82xx_read
+  * Fix for CMake < 3.12.0
+  * Add missing rtlsdrConfig.cmake
+  * rtl_tcp: Initialize listensocket
+  * rtl_tcp: Add IPv6 support
+  * Use udev uaccess rules
+  * rtl_fm/rtl_power: Improve scanning range parsing
+  * Improve librtlsdr.pc file
+  * lib: enable better UHF reception (>862MHz) for FC0013
+  * set CMake policy CMP0075 if it exists
+  * rtl_biast: Add rtl_biast
+  * lib: Add GPIO version of the bias tee configuration API
+  * rtl_eeprom: fix warnings
+  * lib: disable usbfs zero-copy support by default
+  * lib: fix memory leak in rtlsdr_open()
+  * lib: Add workaround for Linux usbfs mmap() bug
+- Drop not longer needed patches
+  * rtl-sdr-0001-mmap-bug-arm.patch
+  * rtl-sdr-0002-fix-rtlsdr_open-memory-leak.patch
+  * rtl-sdr-0004-fix-rtl_eeprom-warnings.patch
+  * rtl-sdr-0006-add-rtl_biast.patch
+  * rtl-sdr-0009-fix-FC0013-UHF-reception.patch
+  * rtl-sdr-0010-improve-librtlsdr_pc.patch
+  * rtl-sdr-0011-improve-rtl_power--scanning-range-parsing.patch
+  * rtl-sdr-0013-add-IPV6-for-rtl_tcp.patch
+  * rtl-sdr-0014-initialize-listensocket_in-rtl_tcp.patch
+  * rtl-sdr-0015-modernize-cmake-usage.patch
+  * rtl-sdr-0019-fix-short-write-in-r82xx_read.patch
+  * rtl-sdr-0021-rtl_fm-add-option-for-2nd-direct-sampling-mode.patch
+  * rtl-sdr-0022-add-rtl-sdr-blog-v4-support.patch
+- Update patch:
+  * 0001-Better-udev-handling.patch
+
+-------------------------------------------------------------------
+Sat Sep  9 18:44:47 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- new patch rtl-sdr-0022-add-rtl-sdr-blog-v4-support.patch adding
+  support for new funcionality in RTL-SDR v4 dongle (taken from git
+  tree)
+- fix for one minor rpmlint error
+
+-------------------------------------------------------------------
+Mon Jan 31 19:06:03 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- new patch rtl-sdr-0021-add-option-for-2nd-direct-sampling-mode.patch
+  adding extra option to rtl_fm (borrowed from git tree)
+
+-------------------------------------------------------------------
 Thu Jul 22 09:07:26 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - patches:
@@ -8,6 +78,7 @@ Thu Jul 22 09:07:26 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
     rtl-sdr-0016-add-missing-rtlsdrConfig.patch
     rtl-sdr-0017-add-rtl_biast-as-install-target.patch
     rtl-sdr-0018-fix-for-older-cmake.patch
+    rtl-sdr-0020-populate-pkgconfig-with-prefix.patch
   merged into rtl-sdr-0015-modernize-cmake-usage.patch
 - patch rtl-sdr-0005-add-rtlsdr_set_bias_tee_gpio.patch
   merged into rtl-sdr-0006-add-rtl_biast.patch
