@@ -1,7 +1,7 @@
 #
 # spec file for package normaliz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           normaliz
 %define lname	libnormaliz3
-Version:        3.9.4
+Version:        3.10.1
 Release:        0
 Summary:        Tools for computations in affine monoids and rational cones
 License:        GPL-3.0-or-later
@@ -63,6 +63,7 @@ the Normaliz computations from C++ programs.
 Summary:        Development files for Normaliz, a tool for computation of rotational cones
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       e-antic-devel
 Requires:       gmp-devel
 
 %description devel

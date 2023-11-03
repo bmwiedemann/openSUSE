@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 28 11:59:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.10.1
+  * Improved the patching variant of the project-and-lift
+    algorithm for lattice points in polytopes.
+
+-------------------------------------------------------------------
+Tue Jan 31 11:03:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.10.0
+  * This release adds general affine monoids and binomial ideals
+    to Normaliz. In particular, it computes:
+  * minimal systems of generators (Hilbert bases) of affine monoids
+  * Hilbert series of affine monoids
+  * singular loci of affine monoid algebras
+  * Markov and Gröbner bases of lattice ideals
+  * affine monoids from binomial ideals
+
+-------------------------------------------------------------------
+Wed Dec 21 00:20:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- normaliz-devel needs e-antic-devel for headers.
+
+-------------------------------------------------------------------
 Thu Aug 25 15:09:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.9.4
