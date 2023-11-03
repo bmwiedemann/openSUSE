@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Nov  3 13:38:09 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.9.24:
+  * Hotfix for #2631 due to #2629 causing high CPU load
+
+-------------------------------------------------------------------
+Fri Nov  3 09:49:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.23:
+  * Fix simpleclock module compilation with recent fmt #2412
+  * Add format-no-controller to bluetooth module and fix it still
+    being visible if the format string is empty #2413
+  * chore: update subprojects #2420
+  * feat(keyboard-state): add binding-keys options #2424
+  * Hyprland urgent class support #2429
+  * Show workspaces on all outputs if persistent_workspaces value is empty #2442
+  * Release button event second attempt #2414
+  * hyprland/workspaces: Add "empty" icon and class #2431
+  * hyprland persistent workspace support new config declaration #2438
+  * Hyprland linting cleanup #2457
+  * sni: fix passing relative coordinates to dbus methods #2417
+  * Display battery percentage as weighted average of battery levels #2134
+  * modules/hyprland: Fix segfault when attempting to set_urgent on a missing
+    workspace by @xercesblue #2460
+  * hyprland/workspaces: react on renameworkspace event #2466
+  * Implement 'active_only' option and 'visible' class in hyprland/workspaces #2408
+  * Hyprland/workspaces: add urgent icon #2477
+  * fix: rename workspace active fix #2485
+  * feat: hyprland workspaces add sort-#2486
+  * deprecate persistent_workspaces in favor of persistent-workspaces #2468
+  * search for dark or light mode stylesheet #2470
+  * Update workspaces.cpp #2507
+  * Fix battery not showing for some devices #2494
+  * fix(backlight): wrong percentage numbers for device apple-panel-bl #2518
+  * Lighter Weight Signal-Based Custom Modules #2517
+  * hyprland/workspaces: use name as fallback icon #2534
+  * Fix: Hyprland's special workspaces aren't cleared #2540
+  * Feature: Hyprland dynamic window names on workspaces #2529
+  * Adding options to allow disk outputs to always be in a specific unit. #2558
+  * Feat/Hyprland/Workspaces: Ignore workspaces #2568
+  * Revise cava module to hide on silence #2554
+  * Feat/Hyprland: Allow matching against Window Titles for Rewrite #2563
+  * Feature: Group Drawers #257
+  * fix(modules/mpris): fix on-*-click typos #2560
+  * Feature: Fantastic Sliders and Where to Find Them (Audio, Backlight
+    and Abstract Sliders) #2575
+  * Split cpu module #2114
+  * fix clock to work with fmt 10.x #2515
+  * Fix: Hyprland/Workspaces' windows disappearing when moving around #2578
+  * Lint header files with hpp file ending #2589
+  * Fix potential memory leaks #2586
+  * Custom module: Allow signal without interrupt #2588
+  * Show the network interface with highest priority (aka lower metric) #2585
+  * Revert "Fix potential memory leaks" #2599
+  * modules/mpris: change default interval value to 0 #2596
+  * docs: fix typos and improve language coherence #2593
+  * General cleanup in hyprland/workspaces #2592
+  * Fix: Hyprland/Workspaces workspaces not being created as persistent
+    when they already exist at startup in #2605
+  * Reduce freebsd ci timeout #2609
+  * Fix sleep_for for max duration #2601
+  * Fix FreeBSD build error and increase freebsd ci timeout #2611
+  * Fixed variable synchronization exception caused by the
+    "hyprland/workspace" module #2613
+  * Skips logging NoActivePlayer error msgs #2622
+  * fix: custom: do not crash if input text is not valid utf-8 #2624
+  * Cava bump #2623
+  * Happy Linter #2625
+  * tray: load_icon use request_size directly #2626
+  * hyprland/workspaces: fix crash on monitor off/on #2628
+  * custom: reap zombie processes on termination #2629
+
+-------------------------------------------------------------------
 Thu Aug 17 07:14:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.22:
