@@ -12,6 +12,7 @@ Wed Nov  1 08:27:33 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 Fri Oct  6 13:13:09 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Create pesign-systemd subpackage to remove systemd dependency
+  (PED-7256)
 
 -------------------------------------------------------------------
 Wed Feb 22 08:05:20 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>

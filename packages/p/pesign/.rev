@@ -363,4 +363,12 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
     <comment>Create pesign-systemd subpackage to remove systemd dependency</comment>
     <requestid>1121773</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>878d67cd495fa7976608c3813554ba9f</srcmd5>
+    <version>116</version>
+    <time>1699046404</time>
+    <user>anag+factory</user>
+    <comment>Update to add the JIRA tag</comment>
+    <requestid>1123031</requestid>
+  </revision>
 </revisionlist>
