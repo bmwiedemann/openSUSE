@@ -1944,6 +1944,7 @@ BuildFlags: onlybuild:hfst-ospell
 BuildFlags: onlybuild:hicolor-icon-theme
 BuildFlags: onlybuild:hidapi
 BuildFlags: onlybuild:highway
+BuildFlags: onlybuild:hiredis
 BuildFlags: onlybuild:hostname
 BuildFlags: onlybuild:html2text
 BuildFlags: onlybuild:htmldoc
