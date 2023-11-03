@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:20:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to versione 2.105.3
+  * DMD Compiler regression fixes:
+    - Bugzilla 24171: [REG 2.100] Segfault compiling an empty ddoc file
+    - Bugzilla 24188: ICE (Illegal instruction) with missing imported symbol
+  * DMD Compiler bug fixes:
+    - Bugzilla 23686: template instance reused with default alias arg
+    - Bugzilla 23865: duplicate alias not detected
+
+- Changes from version 2.105.2:
+  * DMD Compiler regression fixes
+    - Bugzilla 24109: [REG2.103] 'need this' when invoking outer method from inner method
+    - Bugzilla 24110: [REG2.104] Array comparison lowering apparently not handled properly in __traits(compiles)
+    - Bugzilla 24118: ICE / regression from 2.103.1 - segfault on CTFE only code in 2.104.2 and 2.105.0
+    - Bugzilla 24144: [REG2.105] Silent file name index overflow
+  * DMD Compiler bug fixes
+    - Bugzilla 24139: 'this' corruption in extern(C++) dtor when destructing via TypeInfo_Struct
+  * Phobos bug fixes
+    - Bugzilla 24140: Int128.opBinary [+-*/%&|^] with negative long arguments gives wrong answers
+
+- Changes from version 2.105.1:
+  * A function with enum storage class is now deprecated, not an error
+  * for detail and bugfixes see https://dlang.org/changelog/2.105.1.html#bugfix-list
+
+- Changes from version 2.105.0:
+  * Compiler changes
+    - Assignment-style syntax is now allowed for alias this
+    - Catch clause must take only const or mutable exceptions
+    - Functions can no longer have enum storage class
+    - Overloading extern(C) functions is now an error
+    - Deprecation phase ended for access to private method when overloaded with public method.
+    - Added predefined version identifier VisionOS
+  * Runtime changes
+    - Linux input header translations were added to druntime
+    - Integration with the Valgrind memcheck tool has been added to the garbage collector
+  * Library changes
+    - Better static assert messages for std.algorithm.iteration.permutations
+    - Added std.system.instructionSetArchitecture and std.system.ISA
+  * Dub changes
+    - Exposed --d-versions CLI flag
+  * for details see https://dlang.org/changelog/2.105.0.html#bugfix-list
+
+-------------------------------------------------------------------
 Thu Jul 20 20:05:43 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.104.2

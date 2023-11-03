@@ -16,10 +16,20 @@
 #
 
 
-%define sover	0_104
+%define sover	0_105
 %define bootstrap_with_gdmd 1
+%if %{bootstrap_with_gdmd}
+%if 0%{?suse_version} < 1550
+%global gdc_version 10
+%global gdc_suffix -%{gdc_version}
+%endif
+BuildRequires:  gdmd%{?gdc_suffix}
+%else
+BuildRequires:  dmd
+BuildRequires:  phobos-devel-static
+%endif
 Name:           dmd
-Version:        2.104.2
+Version:        2.105.3
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
@@ -37,16 +47,6 @@ Recommends:     phobos-devel
 ExclusiveArch:  %{ix86} x86_64
 %ifarch i586
 #!BuildIgnore:  gcc-PIE
-%endif
-%if %{bootstrap_with_gdmd}
-%if 0%{?suse_version} < 1550
-%global gdc_version 10
-%global gdc_suffix -%{gdc_version}
-%endif
-BuildRequires:  gdmd%{?gdc_suffix}
-%else
-BuildRequires:  dmd
-BuildRequires:  phobos-devel-static
 %endif
 
 %description
@@ -119,7 +119,7 @@ popd
 
 # druntime
 pushd dmd/druntime
-	make %{?_smp_mflags} -f posix.mak \
+	%make_build -f posix.mak \
 		BUILD=release \
 		DMD="../generated/linux/release/*/dmd" \
 		PIC=1 \
@@ -128,7 +128,7 @@ popd
 
 # phobos
 pushd phobos
-	make %{?_smp_mflags} -f posix.mak \
+	%make_build -f posix.mak \
 		BUILD=release \
 		DMD="../dmd/generated/linux/release/*/dmd" \
 		PIC=1 \
