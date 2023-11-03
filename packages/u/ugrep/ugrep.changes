@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  3 16:02:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3.2:
+  * double short option -%% enables both --files --bool (a single
+    -% still enables only --bool) for convenience
+  * updated thread pool scheduling and execution with thread
+    affinity and priority settings
+  * improvements and fixes for minor (mostly cosmetic) issues
+
+-------------------------------------------------------------------
 Thu Oct 19 15:14:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.3.1:
