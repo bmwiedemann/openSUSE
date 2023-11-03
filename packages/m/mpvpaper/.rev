@@ -87,4 +87,17 @@
   * Some code cleanup and various fixes</comment>
     <requestid>1006020</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b6319eb31409258d49350ed2c3cfd81</srcmd5>
+    <version>1.4</version>
+    <time>1699046456</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4:
+  * New &quot;--help-output/-d&quot; option to show outputs without &quot;mpvpaper -v a a&quot;
+  * Improve verbose and error messages
+  * Move and fix up EGL and mpv inits
+  * Small cleanups for &quot;pausing&quot; and &quot;stopping&quot; behavior
+  * Fix int overflow for getopt_long() on ARM</comment>
+    <requestid>1123176</requestid>
+  </revision>
 </revisionlist>
