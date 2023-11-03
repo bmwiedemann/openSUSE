@@ -22,44 +22,39 @@ Index: src/main.c
 ===================================================================
 --- src/main.c.orig
 +++ src/main.c
-@@ -1928,8 +1928,8 @@ static void standalone_main(void) {
- 
-   init_bindings();
+@@ -1989,8 +1989,8 @@ static void standalone_main(void) {
+     exit(1);
+   }
  
 -  pr_log_pri(PR_LOG_NOTICE, "ProFTPD %s (built %s) standalone mode STARTUP",
 -    PROFTPD_VERSION_TEXT " " PR_STATUS, BUILD_STAMP);
 +  pr_log_pri(PR_LOG_NOTICE, "ProFTPD %s standalone mode STARTUP",
 +    PROFTPD_VERSION_TEXT " " PR_STATUS);
  
-   if (pr_pidfile_write() < 0) {
-     fprintf(stderr, "error opening PidFile '%s': %s\n", pr_pidfile_get(),
-@@ -1989,7 +1989,6 @@ static void show_settings(void) {
-   printf("%s", "  Platform: " PR_PLATFORM " [unknown]\n");
- #endif /* !HAVE_UNAME */
+   daemon_loop();
+ }
+@@ -2145,7 +2145,6 @@ static void show_settings(void) {
+ 
+   show_os_release();
  
 -  printf("%s", "  Built: " BUILD_STAMP "\n");
    printf("%s", "  Built With:\n    configure " PR_BUILD_OPTS "\n\n");
  
    printf("%s", "  CFLAGS: " PR_BUILD_CFLAGS "\n");
-@@ -2571,7 +2570,6 @@ int main(int argc, char *argv[], char **
-   if (show_version == 2) {
+@@ -2742,7 +2741,6 @@ int main(int argc, char *argv[], char **
+   if (show_version >= 2) {
      printf("ProFTPD Version: %s", PROFTPD_VERSION_TEXT " " PR_STATUS "\n");
      printf("  Scoreboard Version: %08x\n", PR_SCOREBOARD_VERSION); 
 -    printf("  Built: %s\n\n", BUILD_STAMP);
  
      modules_list2(NULL, PR_MODULES_LIST_FL_SHOW_VERSION);
-     exit(0);
+ 
 Index: Makefile.in
 ===================================================================
 --- Makefile.in.orig
 +++ Makefile.in
-@@ -42,28 +42,25 @@ endif
+@@ -47,17 +47,17 @@ include/buildstamp.h:
  
- all: $(BUILD_BIN)
- 
--include/buildstamp.h:
--	echo \#define BUILD_STAMP \"$(BUILD_STAMP)\" > include/buildstamp.h
--
  dummy:
  
 -lib: include/buildstamp.h dummy
@@ -78,6 +73,11 @@ Index: Makefile.in
 -utils: include/buildstamp.h dummy
 +utils: dummy
  	cd utils/ && $(MAKE) utils
+ 
+ clang-tidy:
+@@ -66,10 +66,10 @@ clang-tidy:
+ 	-cd modules/ && $(MAKE) clang-tidy
+ 	# cd utils/ && $(MAKE) clang-tidy
  
 -locale: include/buildstamp.h dummy
 +locale: dummy
@@ -99,5 +99,5 @@ Index: include/version.h
 -#include "buildstamp.h"
 -
  /* Application version (in various forms) */
- #define PROFTPD_VERSION_NUMBER		0x0001030711
- #define PROFTPD_VERSION_TEXT		"1.3.7f"
+ #define PROFTPD_VERSION_NUMBER		0x0001030806
+ #define PROFTPD_VERSION_TEXT		"1.3.8a"

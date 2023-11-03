@@ -405,4 +405,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     not match publickey algorithm 'ssh-rsa'.</comment>
     <requestid>1067417</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5d697f59ad8b2fd3fc0f53118ea3de8b</srcmd5>
+    <version>1.3.8a</version>
+    <time>1699046470</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.3.8a (forwarded request 1123242 from computersalat)</comment>
+    <requestid>1123243</requestid>
+  </revision>
 </revisionlist>
