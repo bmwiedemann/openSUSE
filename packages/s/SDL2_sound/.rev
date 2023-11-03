@@ -15,4 +15,12 @@
     <comment>- Update to snapshot 2.0.1+g60 (53f66a30)</comment>
     <requestid>1095165</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4fc5f0c10a8c77e9bd91b3596b6c3bc8</srcmd5>
+    <version>2.0.2</version>
+    <time>1699046440</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.0.2</comment>
+    <requestid>1123133</requestid>
+  </revision>
 </revisionlist>

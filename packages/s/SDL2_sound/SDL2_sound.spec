@@ -18,15 +18,14 @@
 
 Name:           SDL2_sound
 %define lname	libSDL2_sound2
-Version:        2.0.1+g60
+Version:        2.0.2
 Release:        0
 Summary:        Sound Sample Library for SDL (Simple DirectMedia Layer)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://icculus.org/SDL_sound/
 
-#Source:         https://github.com/icculus/SDL_sound/archive/refs/tags/v%version.tar.gz
-Source:         SDL_sound-%version.tar.xz
+Source:         https://github.com/icculus/SDL_sound/archive/refs/tags/v%version.tar.gz
 BuildRequires:  c_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig(sdl2)
