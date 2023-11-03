@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  3 04:59:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.2
+  Bugfixes:
+  * Don't show preview popup when no filee is loaded or when
+    playing an online video
+  * Fixed thumbnails not working in the playlist
+
+-------------------------------------------------------------------
 Thu Aug 31 10:46:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.12.1
