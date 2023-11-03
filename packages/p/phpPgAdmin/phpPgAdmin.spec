@@ -18,6 +18,7 @@
 
 Name:           phpPgAdmin
 
+%define lc_prj  ReimuHakurei
 %define lc_name phppgadmin
 %define ap_docroot_old %{apache_serverroot}/htdocs
 %define ap_docroot %{_datadir}
@@ -26,14 +27,17 @@ Name:           phpPgAdmin
 Summary:        Administration of PostgreSQL over the web
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        7.13.0
+Version:        7.14.6
 Release:        0
-%define rel_version REL_7-13-0
-URL:            http://phppgadmin.sourceforge.net
-Source0:        https://github.com/%{lc_name}/%{lc_name}/releases/download/%{rel_version}/%{name}-%{version}.tar.bz2
+%define rel_version REL_7-14-6
+#URL:            https://github.com/phppgadmin/phppgadmin
+#Source0:        https://github.com/%{lc_name}/%{lc_name}/releases/download/%{rel_version}/%{name}-%{version}.tar.bz2
+URL:            https://github.com/ReimuHakurei/phpPgAdmin
+Source0:        %{name}-%{version}-mod.tar.gz
 Source1:        %{name}.http
 Source2:        %{name}.http.inc
-Patch0:         %{name}-config.inc.patch
+Patch0:         %{name}_config.inc.patch
+Patch10:        %{name}_appVersion.patch
 Patch100:       csrf-samesite-fix.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,7 +53,7 @@ perfect for PostgreSQL DBAs, newbies and hosting services.
 Features
 
 * Administer multiple servers
-* Support for PostgreSQL 9.x.x, 10.x, 11.x, 12.x
+* Support for PostgreSQL 9.x.x, 10.x, 11.x, 12.x, 14.x
 * Manage all aspects of:
 	o Users & groups
 	o Databases
@@ -83,8 +87,9 @@ Supplements:    packageand(apache2:%name)
 This subpackage contains the Apache configuration files
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-mod
 %patch0
+%patch10
 %patch100
 
 ### remove not needed files

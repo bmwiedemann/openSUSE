@@ -2,7 +2,7 @@ Index: libraries/lib.inc.php
 ===================================================================
 --- libraries/lib.inc.php.orig
 +++ libraries/lib.inc.php
-@@ -27,12 +27,12 @@
+@@ -28,12 +28,12 @@
  		exit(sprintf('Version of PHP not supported. Please upgrade to version %s or later.', $phpMinVer));
  
  	// Check to see if the configuration file exists, if not, explain

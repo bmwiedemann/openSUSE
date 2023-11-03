@@ -215,4 +215,12 @@
     <comment></comment>
     <requestid>1078841</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>50941ec7d975c12184a243619ebd8c8c</srcmd5>
+    <version>7.14.6</version>
+    <time>1699046460</time>
+    <user>anag+factory</user>
+    <comment>Update to 7.14.6, Fix for CVE-2023-40619, boo#1215551 (forwarded request 1123213 from computersalat)</comment>
+    <requestid>1123214</requestid>
+  </revision>
 </revisionlist>

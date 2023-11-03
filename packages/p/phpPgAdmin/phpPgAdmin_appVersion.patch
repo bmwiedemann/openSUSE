@@ -1,0 +1,13 @@
+Index: libraries/lib.inc.php
+===================================================================
+--- libraries/lib.inc.php.orig
++++ libraries/lib.inc.php
+@@ -16,7 +16,7 @@
+ 	$appName = 'phpPgAdmin';
+ 
+ 	// Application version
+-	$appVersion = '7.14.6-mod';
++	$appVersion = '7.14.6';
+ 
+ 	// PostgreSQL and PHP minimum version
+ 	global $postgresqlMinVer;
