@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov  3 13:51:00 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.32.1:
+  * Report line and column when using janet_dobytes
+  * Add :unless loop modifier
+  * Allow calling reverse on generators.
+  * Improve performance of a number of core functions including partition, mean, keys, values, pairs, interleave.
+  * Add lengthable?
+  * Add os/sigaction
+  * Change every? and any? to behave like the functional versions of the and and or macros.
+  * Fix bug with garbage collecting threaded abstract types.
+  * Add :signal to the sandbox function to allow intercepting signals.
+  * Fix return value from C function janet_dobytes when called on Janet functions that yield to event loop.
+  * Change C API for event loop interaction - get rid of JanetListener and instead use janet_async_start and janet_async_end.
+  * Rework event loop to make fewer system calls on kqueue and epoll.
+  * Expose atomic refcount abstraction in janet.h
+  * Add array/weak for weak references in arrays
+  * Add support for weak tables via table/weak, table/weak-keys, and table/weak-values.
+  * Fix compiler bug with using the result of (break x) expression in some contexts.
+  * Rework internal event loop code to be better behaved on Windows
+
+-------------------------------------------------------------------
+Fri Nov  3 13:43:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Properly create subpackage for janet-devel-static
+
+-------------------------------------------------------------------
+Fri Nov  3 09:08:03 UTC 2023 - Jochen Breuer <brejoc@gmail.com>
+
+- Building static libjanet in addition to dynamic libjanet
+  * This change enables building static binaries with jpm
+
+-------------------------------------------------------------------
 Sat Sep 30 13:48:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 1.31.0:

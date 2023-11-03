@@ -17,8 +17,8 @@
 
 
 %global somajor 1
-%global sominor 31
-%global revision 0
+%global sominor 32
+%global revision 1
 %global libname libjanet%{somajor}_%{sominor}
 
 Name:           janet
@@ -56,12 +56,26 @@ single header.
 
 This package contains the development files for the Janet programming language.
 
+%package devel-static
+Summary:        Headers for embedding Janet scripting
+Group:          Development/Languages/C and C++
+Requires:       %{libname} = %{version}
+Requires:       %{name}-devel = %{version}
+
+%description devel-static
+Janet is a functional and imperative programming language.  Janet scripting
+can be added to an application by embedding a single C source file and a
+single header.
+
+This package contains the development files for the Janet programming language.
+It contains static libraries for -static linking which is highly discouraged.
+
 %prep
 %autosetup
 
 %build
 export CFLAGS="%optflags -ffat-lto-objects"
-%meson -Ddefault_library=shared
+%meson -Ddefault_library=both
 %meson_build
 
 %install
@@ -89,9 +103,12 @@ rm %{buildroot}%{_libdir}/janet/.keep
 %{_includedir}/janet.h
 %endif
 
-%{_includedir}/janet/janet.h
+%{_includedir}/janet/*
 %{_libdir}/pkgconfig/janet.pc
 %{_libdir}/libjanet.so
+
+%files devel-static
+%{_libdir}/libjanet.a
 
 %files -n %{libname}
 %{_libdir}/lib%{name}.so.%{somajor}*
