@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Nov  3 09:32:56 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 0.24.0:
+  Features:
+  * Add environment variable BAT_PAGING, see #2629
+  * Add opt-in (--features lessopen) support for LESSOPEN and
+    LESSCLOSE. See #1597, #1739, #2444, #2602, and #2662
+  Bugfixes:
+  * Fix more not being found on Windows when provided via
+    BAT_PAGER, see #2570, #2580, and #2651
+  * Switched default behavior of --map-syntax to be case
+    insensitive #2520
+  * Updated version of serde_yaml to 0.9. See #2627
+  * Fix arithmetic overflow in LineRange::from and
+    LineRange::parse_range, see #2674, #2698
+  * Fix paging not happening when stdout is interactive but stdin
+    is not, see #2574
+  * Make -pp override --paging and vice versa when passed as a
+    later argument, see #2660
+  Other:
+  * Output directory for generated assets (completion, manual) can
+    be customized, see #2515
+  * Use the is-terminal crate instead of atty, see #2530
+  * Add Winget Releaser workflow, see #2519
+  * Bump MSRV to 1.70, see #2651
+  Syntaxes:
+  * Associate os-release with bash syntax, see #2587
+  * Associate Containerfile with Dockerfile syntax, see #2606
+  * Replaced quotes with double quotes so fzf integration example
+    script works on windows and linux. see #2095
+  * Associate ksh files with bash syntax, see #2633
+  * Associate sarif files with JSON syntax, see #2695
+  * Associate ron files with rust syntax, see #2427
+  * Add support for WebGPU Shader Language, see #2692
+  * Add .dpkg-new and .dpkg-tmp to ignored suffixe, see #2595
+  * fix: Add syntax mapping *.jsonl => json, see #2539
+  * Update Julia syntax, see #2553
+  * add NSIS support, see #2577
+  * Update ssh-config, see #2697
+
+-------------------------------------------------------------------
 Sat Mar 25 22:44:24 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.0:

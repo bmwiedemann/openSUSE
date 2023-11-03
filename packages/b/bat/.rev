@@ -181,4 +181,12 @@
   * Added support for Crontab, see #2509</comment>
     <requestid>1074361</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>17b9501bea25599d5f11f6949494c1ef</srcmd5>
+    <version>0.24.0</version>
+    <time>1699046461</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123215</requestid>
+  </revision>
 </revisionlist>
