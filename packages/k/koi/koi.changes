@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Oct 27 19:10:22 UTC 2023 - Martin Stibor <martin.von.reichenberg@proton.me>
+
+- Update to new upstream release version 0.2.3
+  * Fixed the use of the new tray icon.
+  * Updated new tray icons -> LIGHT/DARK 
+  (Tray icon changes after hoovering with mouse cursor over the tray icon.)
+  * Added feature to autostart Koi as hidden and switch themes, 
+  even after system startup.
+  * Updated `wm_class`
+  * Fixed build failure
+  * Reference to AppImage
+  * Binary executable file renamed from `Koi` to `koi`
+  * Fixed indentation
+  * Updated README
+  * Added function restart `krunner` to refresh theming after switching themes.
+  * Modified the way to change `plasma-style` using `plasma-apply-desktoptheme`.
+  It should now be more consistent (especially with KDE Plasma 5.26 
+  and later versions), the modification reduces the complexity of the code.
+  * Improved the plasma restart code for `kvantum`.
+  It replaces the usage of kill with `kquitapp5` command
+  to be able to wait before starting plasmashell.
+  It may improve stability of `plasma-shell restart` by avoiding
+  some failures due to starting `plasmashell` session
+  while the previous process did not finish.
