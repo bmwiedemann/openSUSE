@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 03 16:54:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.10.1:
+  * add stale action (#606)
+  * add helm lint extra args (#605)
+
+-------------------------------------------------------------------
 Wed Nov 01 08:08:21 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.10.0:

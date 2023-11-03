@@ -21,7 +21,7 @@
 %define name_of_binary ct
 
 Name:           chart-testing
-Version:        3.10.0
+Version:        3.10.1
 Release:        0
 Summary:        CLI tool for linting and testing Helm charts
 Group:          Development/Languages/Other
