@@ -1,7 +1,7 @@
 #
 # spec file for package azove
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,8 @@ Release:        0
 Summary:        Another Zero One Vertex Enumeration tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://www.mpi-inf.mpg.de/~behle/azove.html
-
-# without a cookie, mpi-inf.mpg.de presents a landing page, failing the download check :(
-#Source:         https://www.mpi-inf.mpg.de/~behle/%name-%version.tar.gz
-Source:         %name-%version.tar.gz
+URL:            https://people.mpi-inf.mpg.de/alumni/d1/2019/behle/azove.html
+Source:         https://people.mpi-inf.mpg.de/alumni/d1/2019/behle/%name-%version.tar.gz
 Patch1:         azove-cpp.diff
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
@@ -47,7 +44,7 @@ knapsack problem and the 0/1 subset sum problem.
 %autosetup -p1
 
 %build
-make %{?_smp_mflags} COMPILER_FLAGS="%optflags"
+%make_build COMPILER_FLAGS="%optflags"
 
 %install
 c="%buildroot/%_bindir"
