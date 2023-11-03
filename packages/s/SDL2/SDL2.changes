@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  2 19:09:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.28.5
+  * Added support for the HP HyperX Clutch Gladiate controller
+  * Fixed a crash if a controller is disconnected while SDL is
+    opening it
+  * Fixed a crash on Linux if XInput2 isn't available at runtime
+
+-------------------------------------------------------------------
 Sat Oct  7 00:23:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable direct PipeWire support
