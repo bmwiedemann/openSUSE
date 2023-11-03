@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  2 11:15:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.2
+  * Fixed Probe lookup in multiplexed products.
+  * Fixed excessively slow module merging in some circumstances.
+  * Fixed building QuickJS on x86 systems.
+  * Fixed handling JS floating-point values for x86.
+  * Fixed scope pollution and potential crash when assigning to
+    provider properties.
+  * Fixed potential access to freed JSValues.
+
+-------------------------------------------------------------------
 Fri Jul 28 07:31:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.1.0
