@@ -1,7 +1,155 @@
 -------------------------------------------------------------------
+Fri Nov  3 06:22:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- skip non-existent release 0.6.170
+- update to 0.6.171:
+  No nicely formatted changelog available
+
+  Changes:
+  * Bump @babel/eslint-parser from 7.22.11 to 7.22.15 in
+    /provider-ui
+  * Bump @cypress/code-coverage from 3.12.5 to 3.12.7 in
+    /provider-ui
+  * Bump @mui/material from 5.14.7 to 5.14.16 in /provider-ui
+  * Merge pull request #9276 from
+    meshery/dependabot/npm_and_yarn/provider-ui/mui/material-5.14.16
+  * Merge pull request #9278 from
+    meshery/dependabot/npm_and_yarn/provider-ui/babel/eslint-parser-7.22.15
+  * Merge pull request #9280 from
+    meshery/dependabot/npm_and_yarn/provider-ui/cypress/code-coverage-3.12.7
+  * Merge pull request #9281 from
+    theBeginner86/theBeginner86/chore/53
+  * Merge pull request #9296 from
+    meshery/leecalcote/docs/integration-formatting
+  * Merge pull request #9297 from
+    ritiksaxena124/ritiksaxena124/docs-logo
+  * Merge pull request #9298 from meshery/chore
+  * Merge pull request #9302 from meshery/revert-9243-resources
+  * Merge remote-tracking branch 'upstream/master' into
+    theBeginner86/chore/53
+  * Meshmodel components updated
+  * Revert "fix: Dashboard card missing title and background"
+  * Update error-codes-updater.yaml
+  * [Docs] Integrations page formatting
+  * [Docs] Release Notes for Meshery
+  * add events for publishing
+  * add new catalog request construct
+  * fix filters publish/unpublish
+  * fix unpublish
+  * update action
+  * update go-testing-ci workflow
+  * update message for patterns
+  * updated meshery docs logo
+
+-------------------------------------------------------------------
+Fri Nov  3 06:10:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.169:
+  * General
+    - [Server] Pattern API response @MUzairS15 (#9292)
+  * Meshery UI
+    - [UI] Fixed styling of Unauthenticated Modal @captain-Akshay
+      (#9290)
+    - Fixes in Connections/MeshSync tables @sudhanshutech (#9265)
+    - [UI] Make the eventActors avatar overlapping stack
+      @aabidsofi19 (#9264)
+    - fix: Dashboard card missing title and background @MeenuyD
+      (#9243)
+
+-------------------------------------------------------------------
+Fri Nov  3 05:57:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.168:
+  * no changelog for this release
+
+-------------------------------------------------------------------
+Fri Nov  3 05:46:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.166:
+  * no changes in this release
+- update to 0.6.167:
+  * General
+    - Update go base image version in Dockerfile @MUzairS15 (#9239)
+
+-------------------------------------------------------------------
+Fri Nov  3 05:37:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.165:
+  * General
+    - Bump google.golang.org/grpc from 1.54.0 to 1.56.3 in
+      /scripts/component_updater @dependabot (#9207)
+    - Fix links (kubernetes) in README.md @adityadeshpande09
+      (#9229)
+    - Add Section Component and Relationships @aabidsofi19 (#9231)
+    - [bug] update github.com/hashicorp/golang-lru/v2
+      @theBeginner86 (#9232)
+    - feat: Update several packages in Meshery @nebula-aac (#9137)
+  * Meshery CLI
+    - [FIXED] mesheryctl app source type comparison bug is fixed
+      @zakisk (#9230)
+  * Meshery UI
+    - [bug/CI] fix provider-lint @theBeginner86 (#9233)
+  * Bug Fixes
+    - [bug/CI] fix provider-lint @theBeginner86 (#9233)
+  * Maintenance
+    - Bump google.golang.org/grpc from 1.57.0 to 1.57.1 in
+      /scripts/component_generation @dependabot (#9205)
+    - Bump sigs.k8s.io/controller-runtime from 0.15.1 to 0.16.3
+      @dependabot (#9223)
+  * Documentation
+    - Added New Script for Generating integration docs
+      @aboobakersiddiqr63 (#9219)
+
+-------------------------------------------------------------------
+Fri Nov  3 05:27:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.164:
+  * General
+    - [Server] Fix MeshMap snapshot service @MUzairS15 (#9222)
+    - [server] update styleoverrides to include default data and
+      polygon-points @aabidsofi19 (#9217)
+    - Broken link of kubernetes-minikube fixed in README
+      @Kaushik080 (#9211)
+    - add new relationship from pod to pod via networkpolicy
+      @MUzairS15 (#9209)
+    - [CI] fixed meshkit error util failure @zakisk (#9194)
+    - Docker broken link fixed in README @Atharv0003 (#9202)
+    - [Relationships] Update mount relationship. @MUzairS15 (#9197)
+    - Broken link of SMP fixed in README @niranjan-kurhade (#9193)
+    - Updated codespaces.md @aboobakersiddiqr63 (#9180)
+    - [bug] Fix env component @theBeginner86 (#9186)
+  * Meshery CLI
+    - [mesheryctl] system start command bug of deployment of config
+      components adapters @zakisk (#9188)
+    - [CI] fixed golangci lint failure @zakisk (#9208)
+  * Meshery UI
+    - Bump browserify-sign from 4.2.1 to 4.2.2 in /ui @dependabot
+      (#9218)
+    - Sort data in connections @senali-d (#8902)
+    - [CI] update dockerfile and set code-coverage cy plugin to
+      devDep @MarioArriaga92 (#9191)
+    - Fix Console error in Meshery cloud @coder12git (#9154)
+  * Maintenance
+    - Bump google.golang.org/grpc from 1.58.2 to 1.58.3 @dependabot
+      (#9206)
+    - Bump browserify-sign from 4.2.1 to 4.2.2 in /ui @dependabot
+      (#9218)
+  * Documentation
+    - [Docs] v0.6 snapshot @leecalcote (#9215)
+    - [docs] Update Workspaces/Environment @theBeginner86 (#9216)
+    - [Docs] Final FAQ uplift @leecalcote (#9213)
+    - [Docs]- Fix Flickering in Links @coder12git (#9198)
+    - [Docs] Init Integrations Collection @leecalcote (#9212)
+    - Standardization of kubernetes.md @aboobakersiddiqr63 (#9201)
+    - fix: updtate twitter logo to x @akagami-harsh (#9155)
+    - [Docs] Site index update; Projects section update @leecalcote
+      (#9178)
+    - Standardization of minikube.md @aboobakersiddiqr63 (#9187)
+
+-------------------------------------------------------------------
 Wed Oct 25 07:39:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
-- update to 0.6.162:
+- update to 0.6.163:
   * General
     - Add new component text-box @aabidsofi19 (#9167)
     - [bug] fetch namespace GraphQL Query @theBeginner86 (#9144)
