@@ -47,7 +47,7 @@
 %define mypython_sitelib %{python3_sitelib}
 %endif
 Name:           python-mailman%{psuffix}
-Version:        3.3.8
+Version:        3.3.9
 Release:        0
 Summary:        A Mailing List Manager
 Group:          Productivity/Networking/Email/Mailinglists
@@ -70,9 +70,6 @@ Source31:       python-mailman.rpmlintrc
 #
 Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
-#
-# Backport of https://gitlab.com/mailman/mailman/-/merge_requests/1130.patch
-Patch0:         mailman-fix-importlib-resources.patch
 #
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -98,7 +95,7 @@ Requires:       %{mypython}-SQLAlchemy >= 1.2.3
 Requires:       %{mypython}-aiosmtpd >= 1.4.3
 Requires:       %{mypython}-alembic
 Requires:       %{mypython}-atpublic
-Requires:       %{mypython}-authheaders >= 0.14.0
+Requires:       %{mypython}-authheaders >= 0.15.2
 Requires:       %{mypython}-authres >= 1.0.1
 Requires:       %{mypython}-click >= 8.0
 Requires:       %{mypython}-dnspython >= 1.14.0
@@ -261,7 +258,7 @@ done
 %service_del_postun %{mailman_services}
 
 %files -n mailman3
-%doc README.rst README.SUSE.md
+%doc README.rst README.SUSE.md src/mailman/docs/NEWS.rst
 %license COPYING
 %{_sbindir}/rc%{mailman_name}*
 %{_bindir}/runner

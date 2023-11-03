@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  2 16:02:35 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Require authheaders >= 0.15.2
+
+-------------------------------------------------------------------
+Thu Nov  2 08:52:18 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.3.9
+  * See https://gitlab.com/mailman/mailman/-/blob/v3.3.9/src/mailman/docs/NEWS.rst
+    or the file NEWS.rst in this package
+- Removed mailman-fix-importlib-resources.patch
+
+-------------------------------------------------------------------
 Thu Sep 21 08:01:21 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing Pre-require for groupadd

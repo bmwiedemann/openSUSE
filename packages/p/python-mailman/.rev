@@ -321,4 +321,17 @@
     <comment></comment>
     <requestid>1112756</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d474090d8efef82efc5999e501d463bd</srcmd5>
+    <version>3.3.9</version>
+    <time>1699046457</time>
+    <user>anag+factory</user>
+    <comment>- Require authheaders &gt;= 0.15.2
+
+- Update to version 3.3.9
+  * See https://gitlab.com/mailman/mailman/-/blob/v3.3.9/src/mailman/docs/NEWS.rst
+    or the file NEWS.rst in this package
+- Removed mailman-fix-importlib-resources.patch</comment>
+    <requestid>1123211</requestid>
+  </revision>
 </revisionlist>
