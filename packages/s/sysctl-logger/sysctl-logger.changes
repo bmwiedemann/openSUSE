@@ -2,21 +2,21 @@
 Fri Oct 20 08:31:44 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v0.0.4
-  + Detect whether CGROUP_CURRENT_FUNC_PROTO is set
-  + Fix compilation error due to use of host headers (bsc#1215933)
+  * Detect whether CGROUP_CURRENT_FUNC_PROTO is set
+  * Fix compilation error due to use of host headers (bsc#1215933)
 - Remove dependency on glibc-devel-32bit (bsc#1215933)
 
 -------------------------------------------------------------------
 Mon Sep 25 15:43:14 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v0.0.3
-  + Implement ring buffer event passing
-  + Capture PID and process name
-  + Add workaround for reading PID and program name on pre v6.1 kernel
-  + Handle failures in sysctl BPF helpers
-  + Increase size of value buffer
-  + Suppress logging of unchanged paramter values
-  + Fix "Failed to parse resource value" error in service file
+  * Implement ring buffer event passing
+  * Capture PID and process name
+  * Add workaround for reading PID and program name on pre v6.1 kernel
+  * Handle failures in sysctl BPF helpers
+  * Increase size of value buffer
+  * Suppress logging of unchanged paramter values
+  * Fix "Failed to parse resource value" error in service file
 - Enforce specific Clang version (since SLES defaults to older version of
   Clang)
 
