@@ -9,11 +9,11 @@ rsb_test_accuracy.c:117:2: warning: dereferencing type-punned pointer will break
  rsb_types.h |    8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-Index: librsb-1.2.0-rc6/rsb_types.h
+Index: librsb-1.3.0.2/rsb_types.h
 ===================================================================
---- librsb-1.2.0-rc6.orig/rsb_types.h
-+++ librsb-1.2.0-rc6/rsb_types.h
-@@ -375,10 +375,10 @@ extern "C" {
+--- librsb-1.3.0.2.orig/rsb_types.h
++++ librsb-1.3.0.2/rsb_types.h
+@@ -379,10 +379,10 @@ extern "C" {
  		switch(TYPE) \
  		{ \
  			/* supported (double,float,float complex,double complex) */ \
