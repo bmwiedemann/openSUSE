@@ -40,6 +40,8 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch
+Patch1:         0001-xcb-replace-a-warning-with-debug-info-in-qxcbconnect.patch
+Patch2:         0001-a11y-fix-race-condition-on-atspi-startup-on-Wayland.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
@@ -782,6 +784,7 @@ sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
     -DFEATURE_system_xcb_xinput:BOOL=ON \
     -DFEATURE_xcb_native_painting:BOOL=ON \
     -DINPUT_openssl:STRING=linked \
+    -DFEATURE_forkfd_pidfd:BOOL=OFF \
 %if 0%{?with_gles}
     -DINPUT_opengl:STRING=es2 \
     -DFEATURE_opengles3:BOOL=ON

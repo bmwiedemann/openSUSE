@@ -1,0 +1,32 @@
+From c9cb83d2127485be6a9ae62b9daf934eb5306928 Mon Sep 17 00:00:00 2001
+From: Liang Qi <liang.qi@qt.io>
+Date: Fri, 6 Oct 2023 09:48:33 +0200
+Subject: [PATCH] xcb: replace a warning with debug info in
+ qxcbconnection_xi2.cpp
+
+Fixes: QTBUG-117820
+Pick-to: 6.5
+Change-Id: I3b89305e1a8d92a02166efee7067108572f7a97a
+Reviewed-by: Shawn Rutledge <shawn.rutledge@qt.io>
+(cherry picked from commit 42d9c1913a504423783397adf6e6a77545f857ac)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/plugins/platforms/xcb/qxcbconnection_xi2.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
+index 897a429970..c94b3edb69 100644
+--- a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
++++ b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
+@@ -766,7 +766,7 @@ void QXcbConnection::xi2HandleEvent(xcb_ge_event_t *event)
+     if (auto device = QPointingDevicePrivate::pointingDeviceById(sourceDeviceId))
+         xi2HandleScrollEvent(event, device);
+     else
+-        qCWarning(lcQpaXInputEvents) << "scroll event from unregistered device" << sourceDeviceId;
++        qCDebug(lcQpaXInputEvents) << "scroll event from unregistered device" << sourceDeviceId;
+ 
+     if (xiDeviceEvent) {
+         switch (xiDeviceEvent->event_type) {
+-- 
+2.42.0
+

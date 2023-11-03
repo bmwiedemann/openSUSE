@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  3 11:34:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-xcb-replace-a-warning-with-debug-info-in-qxcbconnect.patch (QTBUG-117820)
+  * 0001-a11y-fix-race-condition-on-atspi-startup-on-Wayland.patch
+- Turn FEATURE_forkfd_pidfd off until QTBUG-117954 gets fixed
+
+-------------------------------------------------------------------
 Wed Oct 25 14:16:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

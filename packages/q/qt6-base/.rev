@@ -349,4 +349,15 @@
     <comment></comment>
     <requestid>1121279</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>1e5b1487715724dd1a9a795a45511368</srcmd5>
+    <version>6.6.0</version>
+    <time>1699046466</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream changes:
+  * 0001-xcb-replace-a-warning-with-debug-info-in-qxcbconnect.patch (QTBUG-117820)
+  * 0001-a11y-fix-race-condition-on-atspi-startup-on-Wayland.patch
+- Turn FEATURE_forkfd_pidfd off until QTBUG-117954 gets fixed (forwarded request 1123223 from krop)</comment>
+    <requestid>1123234</requestid>
+  </revision>
 </revisionlist>
