@@ -20,7 +20,7 @@
 %define binary_name rke2
 
 Name:           rke2-1.25
-Version:        1.25.14+rke2r1
+Version:        1.25.15+rke2r1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
@@ -29,8 +29,8 @@ Source:         rke2-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.19
 Provides:       rke2 = %{version}-%{release}
-Conflicts:      rke2 >= 1.26
 Conflicts:      rke2 < 1.25
+Conflicts:      rke2 >= 1.26
 
 %description
 RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution.
