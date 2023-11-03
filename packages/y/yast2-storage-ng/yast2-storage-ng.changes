@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  2 13:52:11 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Encryption method TpmFde to be used by Agama (and later by YaST)
+  for setting up LUKS2 devices that are unlocked during boot using
+  a TPM chip (gh#yast/yast-storage-ng#1088, related to bsc#1210512)
+- 5.0.4
+
+-------------------------------------------------------------------
 Thu Oct 19 14:46:45 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - GuidedProposal: new internal setting to control how existing
