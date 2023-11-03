@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-addressable
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 %define mod_name addressable
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        URI Implementation
 License:        Apache-2.0
-Group:          Development/Languages/Ruby
 
 %description
 Addressable is an alternative implementation to the URI implementation that is
