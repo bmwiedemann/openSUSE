@@ -146,4 +146,12 @@ Can't really provide infinitely many versions!</comment>
   program has run for 25+ minutes.</comment>
     <requestid>958516</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ca53ed13747e5d8f6b0c949541ecfa0e</srcmd5>
+    <version>2.6.66</version>
+    <time>1699046410</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.6.66</comment>
+    <requestid>1123074</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:38:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.66
+  * Move default data directory to XDG_DATA_HOME on Linux
+  * Fix integer overflow during multiplication with
+    realtic_clock_rate
+  * Fix mid-texture vibrations when upper and middle textures
+    overlap
+  * Fixing wall texture bleed when a sector is inside the sky
+  * Adjust music volume slider to match vanilla Doom
+  * Use non-linear scaling for high volume levels
+- Delete 0001-Fix-integer-overflow-during-multiplication-with-real.patch
+  (merged)
+
+-------------------------------------------------------------------
 Wed Mar  2 12:24:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Fix-integer-overflow-during-multiplication-with-real.patch

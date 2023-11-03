@@ -1,7 +1,7 @@
 #
 # spec file for package prboom-plus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           prboom-plus
-Version:        2.6.2
+Version:        2.6.66
 Release:        0
 Summary:        DOOM source port with demo compatibility
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ URL:            http://prboom-plus.sf.net/
 #Git-Clone:	https://github.com/coelckers/prboom-plus
 Source:         https://github.com/coelckers/prboom-plus/archive/refs/tags/v%version.tar.gz
 Patch1:         prboom-nodatetime.diff
-Patch2:         0001-Fix-integer-overflow-during-multiplication-with-real.patch
 Patch3:         prboom-hbar-all.diff
 Patch4:         prboom-hbar-gradient.diff
 BuildRequires:  Mesa-devel
