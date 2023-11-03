@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  1 16:55:02 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to 9.9.0
+  - Add all new APIs and constants in libvirt 9.9.0
+  - jsc#PED-3279, jsc#PED-4931, jsc#PED-5432
+
+-------------------------------------------------------------------
 Mon Oct  2 17:44:28 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Update to 9.8.0
