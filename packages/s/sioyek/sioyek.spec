@@ -27,6 +27,7 @@ Source0:        https://github.com/ahrm/sioyek/archive/refs/tags/v%{version}.tar
 Patch1:         no-link-gumbo.patch
 Patch2:         https://github.com/ahrm/sioyek/pull/694.patch#/fix-sqlite-memory-leak.patch
 Patch3:         https://git.alpinelinux.org/aports/plain/community/sioyek/mupdf-0.23.0.patch?id=86e913eccf19b97a16f25d9b6cdf0f50232f1226#/mupdf-0.23.0.patch
+Patch4:         define-linux-standard-paths.patch
 BuildRequires:  binutils
 BuildRequires:  c++_compiler
 BuildRequires:  libQt5Gui-devel
@@ -34,6 +35,7 @@ BuildRequires:  libQt5OpenGL-devel
 BuildRequires:  libQt5OpenGLExtensions-devel-static
 BuildRequires:  libqt5-qt3d-devel
 BuildRequires:  libqt5-qt3d-tools
+BuildRequires:  libqt5-qtbase
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  mupdf-devel-static
 BuildRequires:  openjpeg2-devel
@@ -49,13 +51,11 @@ Sioyek is a PDF viewer designed for reading research papers and technical books.
 
 %prep
 %autosetup -p1
-sed -i '/#define LINUX_STANDARD_PATHS/s/\/\///' pdf_viewer/main.cpp
 
 %build
 # We really cannot use the qt5 macros here because the builds fail
 # RPM build flags cannot really be used here also since they make the builds fail
-export QMAKE=/usr/bin/qmake-qt5
-$QMAKE  pdf_viewer_build_config.pro
+%_libqt5_qmake "CONFIG+=non_portable" pdf_viewer_build_config.pro
 %make_build
 
 %install
@@ -71,7 +71,6 @@ install -Dm644 pdf_viewer/keys.config -t "%{buildroot}%{_sysconfdir}/%{name}/"
 install -Dm644 resources/%{name}-icon-linux.png -t "%{buildroot}%{_datadir}/pixmaps/"
 install -Dm644 resources/%{name}.desktop -t "%{buildroot}%{_datadir}/applications/"
 install -Dm644 resources/%{name}.1 -t "%{buildroot}%{_mandir}/man1/"
-
 install -Dm644 tutorial.pdf -t "%{buildroot}%{_datadir}/%{name}/"
 
 %files

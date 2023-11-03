@@ -91,4 +91,17 @@
 </comment>
     <requestid>1115029</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>57d79f388b2b7c333e6861e2b66da523</srcmd5>
+    <version>2.0.0</version>
+    <time>1699046446</time>
+    <user>anag+factory</user>
+    <comment>- Remove move of config files to /usr/etc. Sioyek never has code to
+  read configs in that directory.
+- add config as well to /etc. seems to break things if not
+- add patch define-linux-standard-paths.patch. using `sed` is very brittle to use
+- add env var CONFIG+=non_portable
+</comment>
+    <requestid>1123261</requestid>
+  </revision>
 </revisionlist>

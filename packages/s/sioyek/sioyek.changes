@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  3 15:36:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove move of config files to /usr/etc. Sioyek never has code to
+  read configs in that directory.
+
+-------------------------------------------------------------------
+Fri Nov  3 09:25:48 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- add config as well to /etc. seems to break things if not
+
+-------------------------------------------------------------------
+Fri Nov  3 08:31:34 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- add patch define-linux-standard-paths.patch. using `sed` is very brittle to use
+- add env var CONFIG+=non_portable
+- move config files from /etc to /usr/etc
+
+-------------------------------------------------------------------
 Tue Oct  3 13:02:55 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Fix mupdf incompatibility errors by adding mupdf-0.23.0.patch
