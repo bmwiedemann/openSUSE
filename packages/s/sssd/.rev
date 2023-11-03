@@ -1148,4 +1148,13 @@ goes in line with 946250</comment>
     <comment></comment>
     <requestid>1121472</requestid>
   </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>f3ce01d03922ce1f41548d76033719a2</srcmd5>
+    <version>2.9.2</version>
+    <time>1699046363</time>
+    <user>anag+factory</user>
+    <comment>- Offer the sssd.conf template as %doc (for examples, do actually
+  see the &quot;Examples&quot; section of the sssd.conf(5) manpage)</comment>
+    <requestid>1122924</requestid>
+  </revision>
 </revisionlist>

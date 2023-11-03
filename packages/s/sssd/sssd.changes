@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  2 16:09:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Offer the sssd.conf template as %doc (for examples, do actually
+  see the "Examples" section of the sssd.conf(5) manpage)
+
+-------------------------------------------------------------------
 Tue Oct 31 15:20:37 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Update dependencies to require the same subpackages version and

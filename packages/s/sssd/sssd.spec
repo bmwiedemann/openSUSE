@@ -583,6 +583,7 @@ done
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-simple.conf
 %exclude %_mandir/*/*/sssd-files.5.gz
+%doc src/examples/sssd.conf
 #
 # sssd-client
 #
