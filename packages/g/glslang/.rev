@@ -374,4 +374,14 @@
     <comment>- Update to release 13.1.1</comment>
     <requestid>1120774</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>46123138f8abf67c9e0d6b7c03aaee84</srcmd5>
+    <version>13.1.1</version>
+    <time>1699046364</time>
+    <user>anag+factory</user>
+    <comment>- Fix include dirs for headers of SPIRV and StandAlone. According to the setting
+  in %{_libdir}/cmake/glslang/glslang-targets.cmake, headers of SPIRV and 
+  StandAlone should be installed in %{_includedir}/External</comment>
+    <requestid>1122948</requestid>
+  </revision>
 </revisionlist>

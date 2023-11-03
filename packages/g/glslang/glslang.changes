@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  2 13:44:22 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix include dirs for headers of SPIRV and StandAlone. According to the setting
+  in %{_libdir}/cmake/glslang/glslang-targets.cmake, headers of SPIRV and 
+  StandAlone should be installed in %{_includedir}/External
+
+-------------------------------------------------------------------
 Sun Oct 22 02:09:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 13.1.1

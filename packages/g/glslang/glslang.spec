@@ -25,7 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
-Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
+Source:         https://github.com/KhronosGroup/glslang/archive/refs/tags/%version.tar.gz
 Source3:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
@@ -112,8 +112,10 @@ pushd "$b"
 ) | sort >"$od/devel.files"
 popd
 
-mkdir -p "$b/%_includedir"
-cp -a SPIRV StandAlone glslang "$b/%_includedir/"
+mkdir -p "$b/%_includedir/External/"
+cp -a glslang "$b/%_includedir/"
+cp -a SPIRV StandAlone "$b/%_includedir/External/"
+ln -sf "%_includedir/External/SPIRV" "$b/%_includedir/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
 ln -s SPIRV/spirv.hpp "$b/%_includedir/"
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"
