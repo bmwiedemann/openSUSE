@@ -7,4 +7,12 @@
     <comment>new package rke2-1.27: rke2 package that stays on Kubernetes version 1.27.x</comment>
     <requestid>1112321</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c0369e63dbe8c671b873f4c0f52017f</srcmd5>
+    <version>1.27.7+rke2r1</version>
+    <time>1699046434</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123127</requestid>
+  </revision>
 </revisionlist>
