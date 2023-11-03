@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.10.0
+Version:        4.11.3
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -28,11 +28,11 @@ URL:            https://zdoom.org/
 Source:         https://github.com/zdoom/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
-Patch5:         gzdoom-vulkan.patch
 Patch6:         gzdoom-discord.patch
 Patch8:         0001-removed-some-32bit-only-CMake-code.patch
 Patch9:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
-Patch10:        gcc13.diff
+Patch10:        0001-Revert-Switch-to-miniz-from-zlib.patch
+Patch11:        more-32bit.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
@@ -45,17 +45,13 @@ BuildRequires:  pkgconfig(clzma) >= 17.01
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.6
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1550
-BuildRequires:  glslang-devel >= 11.10
-BuildRequires:  pkgconfig(vulkan) >= 1.2.189
-%else
 Provides:       bundled(glslang) = 11.10.0
 Provides:       bundled(vulkan) = 1.2.189.1
-%endif
 Suggests:       freedoom
 Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
@@ -79,12 +75,6 @@ The executables hard-require SSE2 on i686 currently.
 %autosetup -n %name-g%version -p1
 perl -i -pe 's{__DATE__}{"does not matter when"}g' src/common/platform/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' tools/updaterevision/UpdateRevision.cmake
-mkdir -p extra_include/glslang
-%if 0%{?suse_version} >= 1550
-rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan
-%else
-%patch -P 5 -R -p1
-%endif
 
 %build
 # There is handcrafted assembler, which LTO does not play nice with.

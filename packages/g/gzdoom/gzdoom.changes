@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 27 04:20:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.11.3
+  * Several new languages: Danish, Norwegian, Swedish and Turkish.
+  * Cleanup of Doom's and Chex Quest's small font to use proper
+    character heights for international support.
+  * Extended all fonts to be capable of handling all European
+    languages which are in common use.
+  * DSDHacked support.
+  * WebP and QOI support for textures.
+  * Sanitized the light mode selection to make it a first class
+    mapping feature by separating map dependent light mode setup
+    from performance related user preferences for the default
+    setting.
+  * Lots of new ZScript features.
+- Delete gzdoom-vulkan.patch, gcc13.diff
+- Add more-32bit.patch, 0001-Revert-Switch-to-miniz-from-zlib.patch
+
+-------------------------------------------------------------------
 Thu Mar 30 22:02:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc13.diff

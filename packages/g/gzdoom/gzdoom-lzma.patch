@@ -9,11 +9,11 @@ Use LZMA system libraries instead of bundled code.
  tools/zipdir/CMakeLists.txt |    4 ++--
  3 files changed, 6 insertions(+), 6 deletions(-)
 
-Index: gzdoom-g4.8.0/CMakeLists.txt
+Index: gzdoom-g4.11.0/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.0.orig/CMakeLists.txt
-+++ gzdoom-g4.8.0/CMakeLists.txt
-@@ -17,6 +17,7 @@ endif()
+--- gzdoom-g4.11.0.orig/CMakeLists.txt
++++ gzdoom-g4.11.0/CMakeLists.txt
+@@ -50,6 +50,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
  
  list( APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
  include( FindPackageHandleStandardArgs )
@@ -21,7 +21,7 @@ Index: gzdoom-g4.8.0/CMakeLists.txt
  
  # Support cross compiling
  option( FORCE_CROSSCOMPILE "Turn on cross compiling." NO )
-@@ -392,7 +393,7 @@ else()
+@@ -396,7 +397,7 @@ else()
  	set( BZIP2_LIBRARY bz2 )
  endif()
  
@@ -30,49 +30,49 @@ Index: gzdoom-g4.8.0/CMakeLists.txt
  
  if( NOT CMAKE_CROSSCOMPILING )
  	if( NOT CROSS_EXPORTS )
-@@ -412,7 +413,6 @@ install(DIRECTORY docs/
+@@ -416,7 +417,6 @@ install(DIRECTORY docs/
  
  option( DYN_OPENAL "Dynamically load OpenAL" ON )
  
 -add_subdirectory( libraries/lzma )
+ add_subdirectory( libraries/miniz )
  add_subdirectory( tools )
- add_subdirectory( libraries/gdtoa )
  add_subdirectory( wadsrc )
-Index: gzdoom-g4.8.0/src/CMakeLists.txt
+Index: gzdoom-g4.11.0/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.0.orig/src/CMakeLists.txt
-+++ gzdoom-g4.8.0/src/CMakeLists.txt
-@@ -427,7 +427,7 @@ else()
- 	message( SEND_ERROR "Could not find libvpx" )
- endif()
- 
--include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
-+include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${JPEG_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
- 
- if( ${HAVE_VM_JIT} )
- 	add_definitions( -DHAVE_VM_JIT )
-@@ -1297,7 +1297,7 @@ if( UNIX )
+--- gzdoom-g4.11.0.orig/src/CMakeLists.txt
++++ gzdoom-g4.11.0/src/CMakeLists.txt
+@@ -387,7 +387,7 @@ if (TARGET WebP::webp)
  	endif()
  endif()
  
--target_link_libraries( zdoom ${PROJECT_LIBRARIES} gdtoa lzma ${ZMUSIC_LIBRARIES} )
-+target_link_libraries( zdoom ${PROJECT_LIBRARIES} gdtoa ${LZMA_LIBRARIES} ${ZMUSIC_LIBRARIES} )
+-include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
++include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" "${ZMUSIC_INCLUDE_DIR}" "${DRPC_INCLUDE_DIR}")
  
- include_directories( .
- 	common/audio/sound
-Index: gzdoom-g4.8.0/tools/zipdir/CMakeLists.txt
+ if( ${HAVE_VM_JIT} )
+ 	add_definitions( -DHAVE_VM_JIT )
+@@ -1252,7 +1252,7 @@ if( UNIX )
+ 	endif()
+ endif()
+ 
+-target_link_libraries( zdoom ${PROJECT_LIBRARIES} lzma ${ZMUSIC_LIBRARIES} )
++target_link_libraries( zdoom ${PROJECT_LIBRARIES} ${LZMA_LIBRARIES} ${ZMUSIC_LIBRARIES} )
+ 
+ include_directories(
+ 	BEFORE
+Index: gzdoom-g4.11.0/tools/zipdir/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.0.orig/tools/zipdir/CMakeLists.txt
-+++ gzdoom-g4.8.0/tools/zipdir/CMakeLists.txt
+--- gzdoom-g4.11.0.orig/tools/zipdir/CMakeLists.txt
++++ gzdoom-g4.11.0/tools/zipdir/CMakeLists.txt
 @@ -1,9 +1,9 @@
- cmake_minimum_required( VERSION 3.1.0 )
+ cmake_minimum_required( VERSION 3.16 )
  
  if( NOT CMAKE_CROSSCOMPILING )
--	include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" )
-+	include_directories( "${ZLIB_INCLUDE_DIR}" "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" )
+-	include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIR}" )
++	include_directories( SYSTEM "${BZIP2_INCLUDE_DIR}" "${LZMA_INCLUDE_DIRS}" )
  	add_executable( zipdir
  		zipdir.c )
--	target_link_libraries( zipdir ${ZLIB_LIBRARIES} ${BZIP2_LIBRARIES} lzma )
-+	target_link_libraries( zipdir ${ZLIB_LIBRARIES} ${BZIP2_LIBRARIES} ${LZMA_LDFLAGS})
+-	target_link_libraries( zipdir miniz ${BZIP2_LIBRARIES} lzma )
++	target_link_libraries( zipdir miniz ${BZIP2_LIBRARIES} ${LZMA_LDFLAGS} )
  	set( CROSS_EXPORTS ${CROSS_EXPORTS} zipdir PARENT_SCOPE )
  endif()

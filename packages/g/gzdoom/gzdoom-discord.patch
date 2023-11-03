@@ -7,11 +7,11 @@ Unbundle discord-rpc.
  libraries/discordrpc/src/CMakeLists.txt |    2 +-
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: gzdoom-g4.8.1/CMakeLists.txt
+Index: gzdoom-g4.11.3/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.1.orig/CMakeLists.txt
-+++ gzdoom-g4.8.1/CMakeLists.txt
-@@ -329,9 +329,9 @@ if (HAVE_VULKAN)
+--- gzdoom-g4.11.3.orig/CMakeLists.txt
++++ gzdoom-g4.11.3/CMakeLists.txt
+@@ -356,9 +356,9 @@ if (HAVE_VULKAN)
  endif()
  
  add_subdirectory( libraries/discordrpc EXCLUDE_FROM_ALL )
@@ -22,12 +22,12 @@ Index: gzdoom-g4.8.1/CMakeLists.txt
 +set( DRPC_LIBRARIES -ldiscord-rpc )
 +set( DRPC_LIBRARY -ldiscord-rpc )
  
- if( ZLIB_FOUND AND NOT FORCE_INTERNAL_ZLIB )
- 	message( STATUS "Using system zlib, includes found at ${ZLIB_INCLUDE_DIR}" )
-Index: gzdoom-g4.8.1/libraries/discordrpc/src/CMakeLists.txt
+ if( HAVE_VM_JIT AND UNIX )
+ 	check_symbol_exists( "backtrace" "execinfo.h" HAVE_BACKTRACE )
+Index: gzdoom-g4.11.3/libraries/discordrpc/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.8.1.orig/libraries/discordrpc/src/CMakeLists.txt
-+++ gzdoom-g4.8.1/libraries/discordrpc/src/CMakeLists.txt
+--- gzdoom-g4.11.3.orig/libraries/discordrpc/src/CMakeLists.txt
++++ gzdoom-g4.11.3/libraries/discordrpc/src/CMakeLists.txt
 @@ -28,7 +28,7 @@ endif(${BUILD_SHARED_LIBS})
  if(WIN32)
      add_definitions(-DDISCORD_WINDOWS)
