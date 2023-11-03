@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 02 18:13:58 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1698924934.1bd59f9:
+  * Dependency cron 2023-11-01
+  * Fix skipping Selenium tests
+  * munin: Include context in minion plugin title
+
+-------------------------------------------------------------------
 Tue Oct 31 10:14:01 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1698662280.91607f3:
