@@ -26,7 +26,7 @@ License:        Apache-2.0
 URL:            https://github.com/anchore/grype
 Source:         grype-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.21
 
 %description
 A vulnerability scanner for container images and filesystems. Easily install the binary to try it out. Works with Syft, the powerful SBOM (software bill of materials) tool for container images and filesystems.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  3 09:14:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.21
+
+-------------------------------------------------------------------
 Sat Oct 21 18:17:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.72.0:
