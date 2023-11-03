@@ -203,4 +203,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1103847 from glaubitz)</comment>
     <requestid>1103879</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f8ca051a94fe4f8a1bcf8b5d7ad19d51</srcmd5>
+    <version>10.3.0</version>
+    <time>1699046465</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 10.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1123229 from glaubitz)</comment>
+    <requestid>1123230</requestid>
+  </revision>
 </revisionlist>

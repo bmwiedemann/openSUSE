@@ -21,20 +21,19 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-keyvault
-Version:        10.2.3
+Version:        10.3.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Management Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-keyvault/azure-mgmt-keyvault-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-keyvault/azure-mgmt-keyvault-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
