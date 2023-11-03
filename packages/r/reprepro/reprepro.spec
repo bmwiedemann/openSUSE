@@ -1,7 +1,7 @@
 #
 # spec file for package reprepro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           reprepro
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 Summary:        Debian repository metadata generator
 License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 24 03:56:31 UTC 2023 - ming li <mli@suse.com>
+
+- Update to version 5.4.2
+  * Add SHA512 support (http://bugs.debian.org/855975)
+  * uncompress: close the pipe after the child exits
+    (https://bugs.launchpad.net/ubuntu/+bug/2008508)
+
+-------------------------------------------------------------------
 Thu Nov 17 17:30:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.4.1
