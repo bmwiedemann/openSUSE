@@ -1,7 +1,7 @@
-diff --git a/cli/tools/run.rs.1 b/cli/tools/run.rs
+diff --git a/cli/tools/run/mod.rs.1 b/cli/tools/run/mod.rs
 index 4805ea7..57bb752 100644
---- a/cli/tools/run.rs.1
-+++ b/cli/tools/run.rs
+--- a/cli/tools/run/mod.rs.1
++++ b/cli/tools/run/mod.rs
 @@ -38,13 +38,6 @@ To grant permissions, set them before the script argument. For example:
    let http_client = factory.http_client();
    let cli_options = factory.cli_options();
