@@ -191,4 +191,12 @@
     <comment>- Update to release 2023.7</comment>
     <requestid>1119385</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>9885c46ddf19e53189e2e0a84466688d</srcmd5>
+    <version>2023.7</version>
+    <time>1699046365</time>
+    <user>anag+factory</user>
+    <comment>- Adjust for glslang-nonstd-devel switching paths</comment>
+    <requestid>1122949</requestid>
+  </revision>
 </revisionlist>
