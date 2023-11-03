@@ -18,16 +18,17 @@
 
 %define verud 4_3_2
 %define mainversion 4.3.2
-%define patchlevel p9
+%define patchlevel p10
 
 Name:           singular
-Version:        %{mainversion}%{?patchlevel:.%{patchlevel}}
+Version:        %mainversion%{?patchlevel:.%patchlevel}
 Release:        0
 Summary:        Singular CAS
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only
 Group:          Productivity/Scientific/Math
 URL:            https://www.singular.uni-kl.de/
-Source:         https://www.singular.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-3-2/singular-4.3.2p9.tar.gz
+#Git-Clone:     https://github.com/Singular/Singular
+Source:         https://www.singular.uni-kl.de/ftp/pub/Math/Singular/SOURCES/4-3-2/%name-%mainversion%patchlevel.tar.gz
 Source9:        %name-rpmlintrc
 BuildRequires:  autoconf >= 2.62
 BuildRequires:  automake
