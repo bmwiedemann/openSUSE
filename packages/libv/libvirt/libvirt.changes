@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  1 17:01:45 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 9.9.0
+  - jsc#PED-3279, jsc#PED-4931, jsc#PED-5432
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-9-0-2023-11-01
+
+-------------------------------------------------------------------
 Wed Oct 18 22:30:10 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - supportconfig: Adapt plugin to modern supportconfig

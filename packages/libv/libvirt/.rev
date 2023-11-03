@@ -4473,4 +4473,15 @@ driver is disabled for ALP. Fix it.
   bsc#1216274</comment>
     <requestid>1118744</requestid>
   </revision>
+  <revision rev="387" vrev="1">
+    <srcmd5>64c508f7ab091688a3fad9005bb96cb3</srcmd5>
+    <version>9.9.0</version>
+    <time>1699046368</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 9.9.0
+  - jsc#PED-3279, jsc#PED-4931, jsc#PED-5432
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-9-0-2023-11-01</comment>
+    <requestid>1122958</requestid>
+  </revision>
 </revisionlist>
