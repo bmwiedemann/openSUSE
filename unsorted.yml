@@ -8266,6 +8266,7 @@ unsorted:
   - jameica-javadoc 
   - janet 
   - janet-devel 
+  - janet-devel-static 
   - janino 
   - janino-javadoc 
   - jansi 
@@ -9152,6 +9153,7 @@ unsorted:
   - koan 
   - kochmorse 
   - kohsuke-pom 
+  - koi 
   - kokkos-devel 
   - koko 
   - koko-lang 
@@ -12650,7 +12652,7 @@ unsorted:
   - libjack0-32bit 
   - libjacknet0-32bit 
   - libjackserver0-32bit 
-  - libjanet1_31 
+  - libjanet1_32 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -13831,7 +13833,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_104 
+  - libphobos2-0_105 
   - libphobos2-ldc102 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -14529,7 +14531,7 @@ unsorted:
   - librsync-devel 
   - librsync2 
   - librtaudio6 
-  - librtlsdr0 
+  - librtlsdr2 
   - librtmidi6 
   - librtprocess-devel 
   - librtprocess0 
@@ -14998,9 +15000,6 @@ unsorted:
   - libtecla_r1 
   - libteec1 
   - libtelepathy-farstream3 
-  - libtelepathy-qt5-0 
-  - libtelepathy-qt5-farstream0 
-  - libtelepathy-qt5-service1 
   - libtemplate_glib-1_0-0 
   - libteredo5 
   - libtermcap2 
@@ -22094,7 +22093,6 @@ unsorted:
   - pyenv-bash-completion 
   - pyenv-fish-completion 
   - pyenv-zsh-completion 
-  - pyliblo-tools 
   - pymilter-common 
   - pympress 
   - pyradio 
@@ -23792,6 +23790,7 @@ unsorted:
   - python310-drgn 
   - python310-drms 
   - python310-dropbox 
+  - python310-dsinternals 
   - python310-dtaidistance 
   - python310-dtfabric 
   - python310-duckduckgo2 
@@ -25060,8 +25059,6 @@ unsorted:
   - python310-pylev 
   - python310-pylibacl 
   - python310-pylibfdt 
-  - python310-pyliblo 
-  - python310-pyliblo-doc 
   - python310-pylibmc 
   - python310-pylineclip 
   - python310-pylink-square 
@@ -27251,6 +27248,7 @@ unsorted:
   - python311-drgn 
   - python311-drms 
   - python311-dropbox 
+  - python311-dsinternals 
   - python311-dtaidistance 
   - python311-dtfabric 
   - python311-duckduckgo2 
@@ -28442,8 +28440,6 @@ unsorted:
   - python311-pylev 
   - python311-pylibacl 
   - python311-pylibfdt 
-  - python311-pyliblo 
-  - python311-pyliblo-doc 
   - python311-pylineclip 
   - python311-pylink-square 
   - python311-pylint 
@@ -30663,6 +30659,7 @@ unsorted:
   - python39-drgn 
   - python39-drms 
   - python39-dropbox 
+  - python39-dsinternals 
   - python39-dtaidistance 
   - python39-dtfabric 
   - python39-duckduckgo2 
@@ -31929,8 +31926,6 @@ unsorted:
   - python39-pylev 
   - python39-pylibacl 
   - python39-pylibfdt 
-  - python39-pyliblo 
-  - python39-pyliblo-doc 
   - python39-pylibmc 
   - python39-pylineclip 
   - python39-pylink-square 
@@ -35231,7 +35226,6 @@ unsorted:
   - telepathy-glib-doc 
   - telepathy-logger-devel 
   - telepathy-mission-control-devel 
-  - telepathy-qt5-devel 
   - telepathy-rakia 
   - telepathy-rakia-devel 
   - telepathy-sipe 
