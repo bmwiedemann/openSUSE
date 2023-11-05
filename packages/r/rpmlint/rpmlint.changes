@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 03 14:39:04 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20231103.c416f34:
+  * pam-modules: remove no longer packaged pam_oslogin_admin.so
+  * cron-whitelist: remove tmpwatch which migrated to systemd timers (bsc#1115458)
+  * cron-whitelist: drop sarg which as been replaced by systemd timers
+  * pam-modules: whitelist pam-himmelblau (bsc#1215355)
+
+-------------------------------------------------------------------
+Thu Nov 02 12:42:08 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20231102.2aee727:
+  * dbus-services: whitelist passim service (bsc#1216434)
+  * CI: Add systemd-rpm-macros package
+  * Add pgadmin user/group
+  * Add missing dependency to rpmlint spec
+  * Update search regexes for %service_* macros
+  * Don't skip systemd scriptlet test on Fedora
+  * Improve systemd scriptlet test name
+
+-------------------------------------------------------------------
 Wed Oct 25 14:56:05 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20231025.2713543:
