@@ -2,7 +2,7 @@
 # spec file for package dnf
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2021-2023 Neal Gompa <ngompa@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 
-%global hawkey_version 0.66.0
+%global hawkey_version 0.71.1
 %global libcomps_version 0.1.8
 %global libmodulemd_version 2.9.3
 %global rpm_version 4.14.0
@@ -50,7 +50,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.14.0
+Version:        4.18.0
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -79,6 +79,7 @@ Recommends:     %{name}-lang >= %{version}
 Recommends:     %{yum_subpackage_name}
 Recommends:     dnf-plugins-core
 Conflicts:      dnf-plugins-core < %{min_plugins_core}
+Provides:       dnf4 = %{version}-%{release}
 Provides:       dnf-command(autoremove)
 Provides:       dnf-command(check-update)
 Provides:       dnf-command(clean)
@@ -232,8 +233,12 @@ mkdir -p %{buildroot}%{_var}/cache/dnf
 touch %{buildroot}%{_localstatedir}/log/%{name}.log
 
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/dnf
+ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/dnf4
 mv %{buildroot}%{_bindir}/dnf-automatic-3 %{buildroot}%{_bindir}/dnf-automatic
 ln -sr %{buildroot}%{_bindir}/dnf-3 %{buildroot}%{_bindir}/yum
+
+# Create protected.d file for dnf
+echo "dnf" > %{buildroot}%{confdir}/protected.d/dnf.conf
 
 %if %{with as_yum}
 mkdir -p %{buildroot}%{_sysconfdir}/yum
@@ -263,6 +268,7 @@ popd
 %files
 %license COPYING PACKAGE-LICENSING
 %doc AUTHORS README.rst
+%{_bindir}/dnf4
 %{_bindir}/dnf
 %{_mandir}/man8/dnf.8*
 %{_mandir}/man8/yum2dnf.8*
@@ -327,6 +333,7 @@ popd
 %{_bindir}/dnf-3
 %exclude %{python3_sitelib}/dnf/automatic
 %{python3_sitelib}/dnf/
+%{python3_sitelib}/dnf-*.dist-info/
 %dir %{py3pluginpath}
 
 %files automatic
