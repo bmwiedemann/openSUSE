@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 03 14:29:31 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20231103.3b4a82f:
+  * profiles: fwupd: add host-security-attr actions (bsc#1216832)
+  * profiles: remove outdates sysprof2 actions
+  * profiles: drop obsolete udisks2 bcache and zram actions
+
+-------------------------------------------------------------------
 Fri Oct 06 09:48:30 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 1550+20231006.28f05f1:
