@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-zstandard
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        Zstandard bindings for Python
 License:        BSD-3-Clause

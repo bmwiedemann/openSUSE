@@ -93,4 +93,17 @@
   * Support zstd 1.5.5</comment>
     <requestid>1080378</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>203c35463deff567723bb166308444c4</srcmd5>
+    <version>0.22.0</version>
+    <time>1699183152</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.22.0
+  * Official support for CPython 3.12
+  * ZstdDecompressor.decompressobj() now accepts a read_across_frames
+    boolean named argument to control whether to transparently read across
+    multiple zstd frames. It still defaults to False to preserve existing
+    behavior</comment>
+    <requestid>1123361</requestid>
+  </revision>
 </revisionlist>

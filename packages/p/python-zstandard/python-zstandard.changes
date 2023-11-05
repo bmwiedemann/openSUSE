@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  4 07:46:54 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Update to version 0.22.0
+  * Official support for CPython 3.12
+  * ZstdDecompressor.decompressobj() now accepts a read_across_frames
+    boolean named argument to control whether to transparently read across
+    multiple zstd frames. It still defaults to False to preserve existing
+    behavior
+
+-------------------------------------------------------------------
 Wed Apr 19 15:19:47 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 0.21.0
