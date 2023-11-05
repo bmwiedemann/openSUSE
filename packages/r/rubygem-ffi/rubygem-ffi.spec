@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ffi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,25 +24,23 @@
 #
 
 Name:           rubygem-ffi
-Version:        1.15.5
+Version:        1.16.3
 Release:        0
 %define mod_name ffi
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  libffi-devel
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.3}
+BuildRequires:  ruby-macros >= 5
+BuildRequires:  %{rubydevel >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ffi/ffi/wiki
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-ffi-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Ruby FFI
 License:        BSD-3-Clause
-Group:          Development/Languages/Ruby
 
 %description
 Ruby FFI library.
