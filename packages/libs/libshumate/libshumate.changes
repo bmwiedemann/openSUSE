@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  2 09:03:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.2:
+  + Fix using overlay map layers with different tile sizes than the
+    reference source.
+
+-------------------------------------------------------------------
 Sun Oct 22 00:42:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.1:
