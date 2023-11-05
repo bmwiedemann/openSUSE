@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:41:11 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 3.8.0:
+
+- Use the defined type to the default value of `directory` (#566) @y-yagi
+- update ruby version matrix to drop 2.4, 2.5 and add 3.2 (#567) @ColinDKelley
+- Update ruby version 3.0.4 (#562) @vickyprahastra
+- Raise argument error when passing a file path (#563) @janko
+- Fix kwargs matching with rspec-mock 3.12 and Ruby 3+ (#564) @voxik
+- Disable fail-fast for CI matrix (#555) @ybiquitous
+- Add Ruby 3.0/3.1 to CI (#554) @ybiquitous
+
+
+
+
+-------------------------------------------------------------------
 Tue Jan 25 07:09:39 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.7.1
