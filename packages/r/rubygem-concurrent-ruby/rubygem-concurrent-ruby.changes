@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:42:32 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.2.2:
+
+concurrent-ruby 1.2.2:
+
+* (#993) Fix arguments passed to `Concurrent::Map`'s `default_proc`.
+
+1.2.1:
+
+concurrent-ruby 1.2.1:
+
+* (#990) Add missing `require 'fiber'` for `FiberLocalVar`.
+* (#989) Optimize `Concurrent::Map#[]` on CRuby by letting the backing Hash handle the `default_proc`.
+
+
+
+-------------------------------------------------------------------
 Sun May 15 15:28:32 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.1.10
