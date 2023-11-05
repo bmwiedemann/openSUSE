@@ -1,7 +1,7 @@
 #
 # spec file for package json-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define libname libjson-c
 %define libsoname %{libname}5
 %define oldlibname libjson
-%define version_date 20220414
+%define version_date 20230812
 Name:           json-c
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        JSON implementation in C
 License:        MIT
@@ -73,9 +73,7 @@ Summary:        Documentation files
 Group:          Documentation/Other
 Provides:       %{oldlibname}-doc = %{version}
 Obsoletes:      %{oldlibname}-doc < %{version}
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description -n %{libname}-doc
 JSON-C implements a reference counting object model that allows you to
@@ -89,10 +87,6 @@ This package includes the json-c documentation.
 %autosetup -p1 -n %{name}-json-c-%{version}-%{version_date}
 
 %build
-%if 0%{?suse_version} <= 1110
-sed -i 's/-Werror //g' Makefile.am.inc
-autoreconf -fiv
-%endif
 %cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
