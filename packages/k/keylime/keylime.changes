@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 03 15:27:58 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.7.0:
+  * Monthly release (7.7.0)
+  * tpm_cert_store: add the Nationz TPM EK x509 cert
+  * codestyle: Have mypy ignore import of PoolManager
+  * codestyle: Suppress pyright errors on methods that do exist
+  * codestyle: Annotate some string constances (pyright)
+  * types: Fix a deprecation warning from recent cryptography
+  * create_policy: Set the generator value to LegacyAllowList
+  * verifier: Compare generator against enum rather than magic '1'
+  * Fix pylint C0103 (naming) errors in some files
+  * crypto: Fix a pyright issue
+  * test: Fix a pyright issue
+
+-------------------------------------------------------------------
 Mon Oct 02 07:46:01 UTC 2023 - aplanas@suse.com
 
 - Update to version v7.6.0:
