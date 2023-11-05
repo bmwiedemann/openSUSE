@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-googleapis-common-protos-types
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,26 @@
 #
 
 
-%define mod_name googleapis-common-protos-types
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-googleapis-common-protos-types
-Version:        1.4.0
+Version:        1.9.0
 Release:        0
-Summary:        Common protocol buffer types used in Google APIs
-License:        Apache-2.0
-Group:          Development/Languages/Ruby
-URL:            https://github.com/googleapis/common-protos-ruby
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name googleapis-common-protos-types
+%define mod_full_name %{mod_name}-%{version}
 BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/googleapis/common-protos-ruby
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        Common protocol buffer types used in Google APIs
+License:        Apache-2.0
 
 %description
 Common protocol buffer types used by Google APIs.

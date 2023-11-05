@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:37:39 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ### 1.9.0 (2023-09-19)
+
+#### Features
+
+* Added the "IDENTIFIER" field behavior ([#181](https://github.com/googleapis/common-protos-ruby/issues/181))
+
+### 1.8.0 (2023-08-07)
+
+#### Features
+
+* Support for API method policies ([#175](https://github.com/googleapis/common-protos-ruby/issues/175))
+* Updated generated protobuf output to use binary descriptors for better future compatibility ([#165](https://github.com/googleapis/common-protos-ruby/issues/165))
+
+### 1.7.0 (2023-07-16)
+
+#### Features
+
+* Support for a few additional client library organizations ([#141](https://github.com/googleapis/common-protos-ruby/issues/141))
+
+### 1.6.0 (2023-04-24)
+
+#### Features
+
+* Added Google::Rpc::Context::AttributeContext
+* Added Google::Rpc::Context::AuditContext
+* Added dotnet-specific fields to API language settings
+* Added overrides_by_request_protocol to api.BackendRule
+* Added proto_reference_documentation_uri to api.Publishing
+* Added SERVICE_NOT_VISIBLE and GCP_SUSPENDED error reason values
+
+### 1.5.0 (2023-01-04)
+
+#### Features
+
+* Added "cookie" JwtLocation
+* Added protos related to client library publishing
+* Added several new error reasons
+* Added protos describing HTTP requests and responses
+
+
+-------------------------------------------------------------------
 Tue Aug 23 09:53:54 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - First version of the googleapis-common-protos-types gem
