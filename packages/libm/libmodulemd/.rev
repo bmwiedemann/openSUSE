@@ -226,4 +226,24 @@
     <comment></comment>
     <requestid>1011173</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>74e3e372df9942a5a96dd16b2ee6a80e</srcmd5>
+    <version>2.15.0</version>
+    <time>1699183147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.15.0
+  + Add support for decompressing Zstandard-compressed YAML files
+  + Remove a dependency on &quot;file&quot; library (libmagic)
+  + Add a XML specification for in-YUM-repository metadata
+  + Deprecate intents in modulemd-defaults specification
+  + Fix a crash when converting a modulemd-packager object with a default
+profile and without a module name or stream to a module index
+  + Fix parsing empty profiles
+  + A specification for modulemd-v2 format was corrected to require a &quot;content&quot;
+license subtree only if the module build contains artifacts.
+  + Double-quote strings in scalar YAML values when they look like a number
+  + Warnings from g_str_equal() macro of glib2 about passing an unsigned
+char * to strcmp() were fixed</comment>
+    <requestid>1123352</requestid>
+  </revision>
 </revisionlist>

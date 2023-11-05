@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  4 18:23:32 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 2.15.0
+  + Add support for decompressing Zstandard-compressed YAML files
+  + Remove a dependency on "file" library (libmagic)
+  + Add a XML specification for in-YUM-repository metadata
+  + Deprecate intents in modulemd-defaults specification
+  + Fix a crash when converting a modulemd-packager object with a default
+profile and without a module name or stream to a module index
+  + Fix parsing empty profiles
+  + A specification for modulemd-v2 format was corrected to require a "content"
+license subtree only if the module build contains artifacts.
+  + Double-quote strings in scalar YAML values when they look like a number
+  + Warnings from g_str_equal() macro of glib2 about passing an unsigned
+char * to strcmp() were fixed
+
+-------------------------------------------------------------------
 Sat Oct 15 19:41:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.14.0:

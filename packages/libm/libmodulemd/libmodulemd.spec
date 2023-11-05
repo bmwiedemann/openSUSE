@@ -2,7 +2,7 @@
 # spec file for package libmodulemd
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2020-2023 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 %global majorversion 2
-%global minorversion 14
+%global minorversion 15
 %global patchversion 0
 %global majorminorversion %{majorversion}.%{minorversion}
 %global nsversion %{majorversion}.0
@@ -38,7 +38,6 @@ Group:          System/Packages
 URL:            https://github.com/fedora-modularity/libmodulemd
 Source0:        %{url}/releases/download/%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
 
-BuildRequires:  file-devel
 BuildRequires:  gcc
 BuildRequires:  glib2-doc
 BuildRequires:  help2man
