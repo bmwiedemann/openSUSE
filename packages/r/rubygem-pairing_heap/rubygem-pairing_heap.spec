@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pairing_heap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-pairing_heap
-Version:        1.0.0
+Version:        3.0.1
 Release:        0
 %define mod_name pairing_heap
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Performant priority queue in pure ruby with support for changing
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Performant priority queue in pure ruby with support for changing priority
