@@ -17,13 +17,13 @@
 
 
 Name:           SVT-AV1
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.com/AOMediaCodec/SVT-AV1
-Source:         %url/-/archive/v%version/SVT-AV1-v%version.tar.gz
+Source:         https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v%version/SVT-AV1-v%version.tar.gz
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.4.0

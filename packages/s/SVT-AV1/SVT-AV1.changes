@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  3 09:31:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * Encoder:
+  * Improve the tradeoffs for the random access mode across
+    presets MR-M13
+  * Quality improvements across all presets and metrics ranging
+    from 0.3% to 4.5% in BD-rate
+  * Added an experimental tune SSIM mode yielding ~3-4%
+    additional SSIM BD-rate gains
+
+-------------------------------------------------------------------
 Mon Jun 26 08:53:46 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64
