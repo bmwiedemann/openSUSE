@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 30 11:56:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure the src.rpms have unique names between the multibuild
+  flavors.
+- Disable mono bindings also when building gtk2 flavor: there seems
+  to be no consumer left for this.
+
+-------------------------------------------------------------------
 Sat Nov 12 07:07:18 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Let the rpm provide libappindicator-gtk3 for EL8 compat

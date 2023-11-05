@@ -1,7 +1,7 @@
 #
-# spec file for package libappindicator
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,25 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "gtk2"
 %global gtkver 2
-%bcond_without mono
+%bcond_with mono
+%define nsuffix -%{flavor}
 %endif
 %if "%{flavor}" == "gtk3"
 %global psuffix 3
 %global gtkver 3
+%define nsuffix -%{flavor}
 %bcond_with mono
 %endif
 %define sover 1
 %define _version 12.10.1+20.10.20200706.1
-Name:           libappindicator
+Name:           libappindicator%{?nsuffix}
 Version:        12.10.1~bzr20200706.298
 Release:        0
 Summary:        Application indicators library
 License:        GPL-3.0-only AND LGPL-2.0-only AND LGPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://launchpad.net/libappindicator
-Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_version}.orig.tar.gz
+Source:         https://launchpad.net/ubuntu/+archive/primary/+files/libappindicator_%{_version}.orig.tar.gz
 # PATCH-FIX-UPSTREAM 0001_Fix_mono_dir.patch hrvoje.senjan@gmail.com -- Fix location of .pc files.
 Patch0:         0001_Fix_mono_dir.patch
 # PATCH-FIX-OPENSUSE make_gtk_doc_optional.patch -- Do not require macros from gtk-doc
@@ -127,7 +129,7 @@ Requires:       libappindicator%{?psuffix:%{psuffix}-}%{sover} = %{version}
 This package contains the development files for the appindicator%{?psuffix} library.
 
 %prep
-%setup -q -c
+%setup -q -c -n libappindicator-%{version}
 %patch0 -p1
 %patch1 -p1
 #%%patch2 -p1
