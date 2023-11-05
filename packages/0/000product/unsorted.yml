@@ -778,8 +778,6 @@ unsorted:
   - appframework 
   - appframework-javadoc 
   - appimaged 
-  - appindicator-sharp 
-  - appindicator-sharp-devel 
   - applet-window-appmenu 
   - applet-window-buttons 
   - appmenu-registrar 
@@ -15951,8 +15949,8 @@ unsorted:
   - linkloop 
   - links 
   - linode-cli-bash-completion 
-  - linphone 
   - linphone-cli 
+  - linphone-desktop 
   - linphone-devel 
   - linssid 
   - linstor 

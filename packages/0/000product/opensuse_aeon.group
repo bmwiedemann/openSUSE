@@ -1237,8 +1237,6 @@
     <package name="libsharpyuv0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsigc-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libsmbios-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="libsmbios_c2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsnapper7" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsndfile1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
