@@ -795,4 +795,15 @@ Thanks!
 the python-redis for this is on the way as well 1119606</comment>
     <requestid>1119656</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>64289ec435035f8dfb83a1e0988ee253</srcmd5>
+    <version>7.2.3</version>
+    <time>1699183142</time>
+    <user>anag+factory</user>
+    <comment>- redis 7.2.3:
+  - Fix file descriptor leak preventing deleted files from freeing
+    disk space on replicas (#12693)
+  - Fix a possible crash after cluster node removal (#12702)</comment>
+    <requestid>1123282</requestid>
+  </revision>
 </revisionlist>

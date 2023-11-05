@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  3 23:44:05 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- redis 7.2.3:
+  - Fix file descriptor leak preventing deleted files from freeing
+    disk space on replicas (#12693)
+  - Fix a possible crash after cluster node removal (#12702)
+
+-------------------------------------------------------------------
 Fri Oct 20 10:03:33 UTC 2023 - Danilo Spinella <oss@danyspin97.org>
 
 - redis 7.2.2:
