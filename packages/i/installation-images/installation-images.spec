@@ -445,6 +445,8 @@ BuildRequires:  systemd-presets-branding
 BuildRequires:  sysvinit-tools
 BuildRequires:  tftpboot-installation-common
 BuildRequires:  thai-fonts
+BuildRequires:  tpm2.0-abrmd
+BuildRequires:  tpm2.0-tools
 BuildRequires:  tunctl
 BuildRequires:  udev
 BuildRequires:  vlan
@@ -670,7 +672,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.100
+Version:        17.103
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
