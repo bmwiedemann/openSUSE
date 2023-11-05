@@ -75,14 +75,16 @@ Protocol) to make calls, so it should be able to communicate with other
 SIP-based Web phones. With several codecs available, it can be used
 with high speed connections as well as 28k modems.
 
-%package -n %{_name}
+%package -n %{_name}-desktop
 Summary:        Web Phone
 Group:          Productivity/Telephony/SIP/Clients
 Requires:       liblinphone-data
 Recommends:     %{_name}-cli
 Obsoletes:      %{_name}-lang < %{version}
+Provides:       %{_name} = %{version}-%{release}
+Obsoletes:      %{_name} < %{version}-%{release}
 
-%description -n %{_name}
+%description -n %{_name}-desktop
 Linphone is a Web phone with a Qt interface. It lets you make
 two-party calls over IP networks such as the Internet. It uses the IETF
 protocols SIP (Session Initiation Protocol) and RTP (Realtime TransporT
@@ -141,7 +143,7 @@ chmod a-x %{buildroot}%{_datadir}/applications/linphone.desktop
 
 chrpath -d %{buildroot}%{_bindir}/linphone %{buildroot}%{_libdir}/libapp-plugin.so
 
-%files -n %{_name}
+%files -n %{_name}-desktop
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %{_bindir}/linphone
