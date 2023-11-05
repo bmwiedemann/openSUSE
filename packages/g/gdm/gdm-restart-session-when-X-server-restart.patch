@@ -1,20 +1,25 @@
---- a/daemon/gdm-local-display-factory.c
-+++ b/daemon/gdm-local-display-factory.c
-@@ -552,8 +552,10 @@ on_display_status_changed (GdmDisplay
-                  * ensures we get a new login screen when the user logs out,
-                  * if there isn't one.
+Index: gdm-45.0.1/daemon/gdm-local-display-factory.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-local-display-factory.c
++++ gdm-45.0.1/daemon/gdm-local-display-factory.c
+@@ -555,10 +555,12 @@ on_display_status_changed (GdmDisplay
+                 /* if this is a local display, ensure that we get a login
+                  * screen when the user logs out.
                   */
 +                g_debug ("GdmLocalDisplayFactory: session_class = %s active_vt = %u", session_class, factory->active_vt);
                  if (is_local &&
--                    (g_strcmp0 (session_class, "greeter") != 0 || factory->active_vt == GDM_INITIAL_VT)) {
-+                    (g_strcmp0 (session_class, "greeter") != 0 || factory->active_vt == GDM_INITIAL_VT
-+                      || factory->active_vt == 0)) {
+                     ((g_strcmp0 (session_class, "greeter") != 0 &&
+                       (!seat_active_session || g_strcmp0(session_id, seat_active_session) == 0)) ||
+                      (g_strcmp0 (seat_id, "seat0") == 0 && factory->active_vt == GDM_INITIAL_VT) ||
++                     (g_strcmp0 (seat_id, "seat0") == 0 && factory->active_vt == 0) ||
+                      g_strcmp0 (seat_id, "seat0") != 0)) {
                          /* reset num failures */
                          factory->num_failures = 0;
- 
---- a/daemon/gdm-manager.c
-+++ b/daemon/gdm-manager.c
-@@ -1553,7 +1553,8 @@ on_display_status_changed (GdmDisplay *d
+Index: gdm-45.0.1/daemon/gdm-manager.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-manager.c
++++ gdm-45.0.1/daemon/gdm-manager.c
+@@ -1552,7 +1552,8 @@ on_display_status_changed (GdmDisplay *d
                          }
  #endif
  

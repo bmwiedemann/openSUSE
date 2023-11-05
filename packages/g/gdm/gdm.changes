@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  2 06:45:59 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Rebase patches for SLE-15-SP6 (bsc#216595):
+  + Rebase gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
+  + Rebase gdm-disable-gnome-initial-setup.patch
+  + Rebase gdm-restart-session-when-X-server-restart.patch
+
+-------------------------------------------------------------------
 Mon Oct  2 08:36:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly buildrequire /usr/bin/dbus-run-session: the

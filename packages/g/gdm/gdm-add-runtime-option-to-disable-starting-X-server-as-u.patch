@@ -8,8 +8,10 @@ X server will be started under root. The same way as if gdm was built with
 --disable-user-display-server option.
 
 This allows system to run X server under root if and only-if necessary.
---- a/daemon/gdm-local-display-factory.c
-+++ b/daemon/gdm-local-display-factory.c
+Index: gdm-45.0.1/daemon/gdm-local-display-factory.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-local-display-factory.c
++++ gdm-45.0.1/daemon/gdm-local-display-factory.c
 @@ -384,6 +384,7 @@ gdm_local_display_factory_create_transie
          preferred_display_server = get_preferred_display_server (factory);
  
@@ -38,23 +40,23 @@ This allows system to run X server under root if and only-if necessary.
  
          if (display == NULL) {
                  g_set_error_literal (error,
-@@ -905,6 +907,7 @@ ensure_display_for_seat (GdmLocalDisplay
+@@ -928,6 +930,7 @@ ensure_display_for_seat (GdmLocalDisplay
          g_debug ("GdmLocalDisplayFactory: Adding display on seat %s", seat_id);
  
  #ifdef ENABLE_USER_DISPLAY_SERVER
 +        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL ) {
          if (g_strcmp0 (preferred_display_server, "wayland") == 0 ||
              g_strcmp0 (preferred_display_server, "xorg") == 0) {
-                 if (is_seat0) {
-@@ -915,6 +918,7 @@ ensure_display_for_seat (GdmLocalDisplay
-                                       NULL);
-                 }
+                 display = gdm_local_display_new ();
+@@ -936,6 +939,7 @@ ensure_display_for_seat (GdmLocalDisplay
+                               "supported-session-types", session_types,
+                               NULL);
          }
 +        }
  #endif
  
          if (display == NULL) {
-@@ -1211,6 +1215,10 @@ on_vt_changed (GIOChannel    *source,
+@@ -1252,6 +1256,10 @@ on_vt_changed (GIOChannel    *source,
          g_debug ("GdmLocalDisplayFactory: VT changed from %u to %u",
                   previous_vt, factory->active_vt);
  
@@ -65,7 +67,7 @@ This allows system to run X server under root if and only-if necessary.
          store = gdm_display_factory_get_display_store (GDM_DISPLAY_FACTORY (factory));
  
          /* if the old VT was running a wayland login screen kill it
-@@ -1352,6 +1360,7 @@ gdm_local_display_factory_start_monitor
+@@ -1393,6 +1401,7 @@ gdm_local_display_factory_start_monitor
  #endif
  
  #if defined(ENABLE_USER_DISPLAY_SERVER)
@@ -73,7 +75,7 @@ This allows system to run X server under root if and only-if necessary.
          io_channel = g_io_channel_new_file ("/sys/class/tty/tty0/active", "r", NULL);
  
          if (io_channel != NULL) {
-@@ -1362,6 +1371,7 @@ gdm_local_display_factory_start_monitor
+@@ -1403,6 +1412,7 @@ gdm_local_display_factory_start_monitor
                                          on_vt_changed,
                                          factory);
          }
@@ -81,19 +83,23 @@ This allows system to run X server under root if and only-if necessary.
  #endif
  }
  
---- a/daemon/gdm-manager.c
-+++ b/daemon/gdm-manager.c
+Index: gdm-45.0.1/daemon/gdm-manager.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-manager.c
++++ gdm-45.0.1/daemon/gdm-manager.c
 @@ -1355,6 +1355,8 @@ set_up_automatic_login_session (GdmManag
                        "supported-session-types", supported_session_types,
                        NULL);
  
 +        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") != NULL)
-+                manager->priv->did_automatic_login = TRUE;
++                manager->did_automatic_login = TRUE;
          g_debug ("GdmManager: Starting automatic login conversation");
          gdm_session_start_conversation (session, "gdm-autologin");
  }
---- a/daemon/gdm-server.c
-+++ b/daemon/gdm-server.c
+Index: gdm-45.0.1/daemon/gdm-server.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-server.c
++++ gdm-45.0.1/daemon/gdm-server.c
 @@ -238,9 +238,9 @@ gdm_server_init_command (GdmServer *serv
          /* For systemd, we don't have a log file but instead log to stdout,
             so set it to the xserver's built-in default verbosity */
@@ -106,7 +112,7 @@ This allows system to run X server under root if and only-if necessary.
  #endif
  
          if (g_access (SYSTEMD_X_SERVER, X_OK) < 0) {
-@@ -755,7 +755,7 @@ gdm_server_start (GdmServer *server)
+@@ -749,7 +749,7 @@ gdm_server_start (GdmServer *server)
          g_return_val_if_fail (GDM_IS_SERVER (server), FALSE);
  
          /* Hardcode the VT for the initial X server, but nothing else */
@@ -115,9 +121,11 @@ This allows system to run X server under root if and only-if necessary.
                  vtarg = "vt" G_STRINGIFY (GDM_INITIAL_VT);
          }
  
---- a/daemon/gdm-session.c
-+++ b/daemon/gdm-session.c
-@@ -3371,6 +3371,7 @@ gdm_session_get_display_mode (GdmSession
+Index: gdm-45.0.1/daemon/gdm-session.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-session.c
++++ gdm-45.0.1/daemon/gdm-session.c
+@@ -3436,6 +3436,7 @@ gdm_session_get_display_mode (GdmSession
          }
  
  #ifdef ENABLE_USER_DISPLAY_SERVER
@@ -125,7 +133,7 @@ This allows system to run X server under root if and only-if necessary.
          /* All other cases (wayland login screen, X login screen,
           * wayland user session, X user session) use the NEW_VT
           * display mode.  That display mode means that GDM allocates
-@@ -3393,7 +3394,8 @@ gdm_session_get_display_mode (GdmSession
+@@ -3458,7 +3459,8 @@ gdm_session_get_display_mode (GdmSession
           *   are paused when handed out.
           */
          return GDM_SESSION_DISPLAY_MODE_NEW_VT;
@@ -135,7 +143,7 @@ This allows system to run X server under root if and only-if necessary.
  
  #ifdef ENABLE_WAYLAND_SUPPORT
          /* Wayland sessions are for now assumed to run in a
-@@ -3404,6 +3406,7 @@ gdm_session_get_display_mode (GdmSession
+@@ -3469,6 +3471,7 @@ gdm_session_get_display_mode (GdmSession
          }
  #endif
          return GDM_SESSION_DISPLAY_MODE_REUSE_VT;

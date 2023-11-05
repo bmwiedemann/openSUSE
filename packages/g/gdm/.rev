@@ -1995,4 +1995,15 @@
     <comment></comment>
     <requestid>1114862</requestid>
   </revision>
+  <revision rev="259" vrev="3">
+    <srcmd5>2cb0bc3dae510023223b34da0d1bf212</srcmd5>
+    <version>45.0.1</version>
+    <time>1699183113</time>
+    <user>anag+factory</user>
+    <comment>- Rebase patches for SLE-15-SP6 (bsc#216595):
+  + Rebase gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
+  + Rebase gdm-disable-gnome-initial-setup.patch
+  + Rebase gdm-restart-session-when-X-server-restart.patch (forwarded request 1121774 from xiaoguang_wang)</comment>
+    <requestid>1123046</requestid>
+  </revision>
 </revisionlist>
