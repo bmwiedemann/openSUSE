@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 27 07:57:28 UTC 2023 - Wang Jun <badboywj@gmail.com>
+
+- Update to 1.17.0
+  * lr_gpg_check_signature: Forward PGP error messages from RPM
+  * PGP: fix: Support importing binary public keys in librpm backend
+  * PGP: Enable creating a UID directory for GnuGP agent socket
+    in /run/gnupg/user
+  * PGP: Set a default creation SELinux labels on GnuPG directories
+  * Update PGP test vectors
+  * Implement OpenPGP using librpm API
+  * Fixes and optimizations in header files
+  * Fix lr_gpg_list_keys function when keys are empty
+  * Fix CMake warnings
+  * Bump glib version
+
+-------------------------------------------------------------------
 Wed Dec 28 16:50:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.15.1:
