@@ -24,25 +24,25 @@
 #
 
 Name:           rubygem-mini_portile2
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 %define mod_name mini_portile2
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/flavorjones/mini_portile
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        Simplistic port-like solution for developers
+Summary:        Simple autoconf and cmake builder for developers
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
-Simplistic port-like solution for developers. It provides a standard and
-simplified way to compile against dependency libraries without messing up your
-system.
+Simple autoconf and cmake builder for developers. It provides a standard way
+to compile against
+dependency libraries without requiring system-wide installation. It also
+simplifies
+vendoring and cross-compilation by providing a consistent build interface.
 
 %prep
 
