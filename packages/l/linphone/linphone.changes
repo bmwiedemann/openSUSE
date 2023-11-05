@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  4 06:52:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Move Obsoletes/Provides to srpm:linphoneqt
+  (brpm:linphone-desktop) which is what it should have been.
+  https://forums.opensuse.org/t/tumbleweed-zypper-dup-wants-to-replace-linphone-with-linphone-cli/170249
+
+-------------------------------------------------------------------
 Sun Oct 22 10:04:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add Obsoletes/Provides to establish an upgrade path for zypper.

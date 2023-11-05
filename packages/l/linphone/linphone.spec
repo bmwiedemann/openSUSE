@@ -133,8 +133,6 @@ with high speed connections as well as 28k modems.
 Summary:        Web Phone Command Line Interface
 Group:          Productivity/Telephony/SIP/Clients
 Requires:       lib%{name}-data = %{version}
-Obsoletes:      linphone < %{version}-%{release}
-Provides:       linphone = %{version}-%{release}
 
 %description cli
 Linphone is a Web phone with a Qt interface. It lets you make
