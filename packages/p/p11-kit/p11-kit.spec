@@ -21,7 +21,7 @@
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
 Name:           p11-kit
-Version:        0.25.1
+Version:        0.25.2
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause

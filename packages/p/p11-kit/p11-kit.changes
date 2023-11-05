@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  2 08:58:08 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.25.2:
+  * fix error code checking of readpassphrase for --login option [#595]
+  * build fixes [#594]
+  * test fixes [#596]
+
+-------------------------------------------------------------------
 Fri Oct 27 12:05:22 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.25.1:
