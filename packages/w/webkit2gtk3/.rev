@@ -1543,4 +1543,13 @@
   of EglDestroyImage Found&quot; (boo#1216483). (forwarded request 1119870 from iznogood)</comment>
     <requestid>1120255</requestid>
   </revision>
+  <revision rev="179" vrev="4">
+    <srcmd5>fcef74526e32ddaefe448dd41732bdd5</srcmd5>
+    <version>2.42.1</version>
+    <time>1699183111</time>
+    <user>anag+factory</user>
+    <comment>- Add webkit2gtk3-disable-dmabuf-nvidia.patch: disable DMABuf
+  renderer for NVIDIA proprietary drivers (boo#1216778). (forwarded request 1121694 from mgorse)</comment>
+    <requestid>1123045</requestid>
+  </revision>
 </revisionlist>

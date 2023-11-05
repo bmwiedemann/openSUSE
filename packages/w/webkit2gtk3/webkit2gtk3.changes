@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  1 19:52:33 UTC 2023 - Mike Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-disable-dmabuf-nvidia.patch: disable DMABuf
+  renderer for NVIDIA proprietary drivers (boo#1216778).
+
+-------------------------------------------------------------------
 Mon Oct 23 18:48:15 UTC 2023 - Mike Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-create-destroy-egl-image.patch: fix "No provider

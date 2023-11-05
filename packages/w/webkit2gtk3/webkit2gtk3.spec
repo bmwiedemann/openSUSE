@@ -89,6 +89,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-create-destroy-egl-image.patch boo#1216483 mgorse@suse.com -- fix "No provider of EglDestroyImage found".
 Patch1:         webkit2gtk3-create-destroy-egl-image.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
+Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -426,6 +428,7 @@ Group:          Development/Tools/Other
 A small test browswer from webkit, useful for testing features.
 
 # Expand %%lang_package to Obsoletes its older-name counterpart
+
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
