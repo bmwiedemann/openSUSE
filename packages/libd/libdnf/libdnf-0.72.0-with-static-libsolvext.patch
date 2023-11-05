@@ -1,6 +1,6 @@
-From bc5655f45288817fbab97fb60d4f6bc01a716ba5 Mon Sep 17 00:00:00 2001
-From: Neal Gompa <ngompa13@gmail.com>
-Date: Sun, 1 Dec 2019 11:15:07 -0500
+From 96c3426bdfb9bb197d55829fa5dc608b21f5f373 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Sat, 4 Nov 2023 14:42:27 -0400
 Subject: [PATCH] Ensure libsolvext dynamic library dependencies are linked
 
 libsolv, when built only build with static link libraries, does not
@@ -19,10 +19,10 @@ in libsolv, since it's not easy to fix there, given upstream constraints.
  create mode 100644 cmake/modules/FindLZMA.cmake
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 40d64fc4..a6bff0b9 100644
+index 6444c374..15c86b40 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -68,6 +68,19 @@ pkg_check_modules(RPM REQUIRED rpm>=4.11.0)
+@@ -68,6 +68,19 @@ pkg_check_modules(RPM REQUIRED rpm>=4.15.0)
  pkg_check_modules(SMARTCOLS REQUIRED smartcols)
  pkg_check_modules(SQLite3 REQUIRED sqlite3)
  
@@ -74,13 +74,13 @@ index 00000000..eb112dff
 +  SET( LZMA_LIBRARIES )
 +ENDIF(LZMA_FOUND)
 diff --git a/libdnf/CMakeLists.txt b/libdnf/CMakeLists.txt
-index dcee38b1..62beb2b0 100644
+index f37d236a..854a50e9 100644
 --- a/libdnf/CMakeLists.txt
 +++ b/libdnf/CMakeLists.txt
-@@ -72,6 +72,11 @@ target_link_libraries(libdnf
+@@ -81,6 +81,11 @@ target_link_libraries(libdnf
+     ${JSONC_LIBRARIES}
      ${LIBMODULEMD_LIBRARIES}
      ${SMARTCOLS_LIBRARIES}
-     ${GPGME_VANILLA_LIBRARIES}
 +    ${LIBXML2_LIBRARIES}
 +    ${ZLIB_LIBRARY}
 +    ${LZMA_LIBRARY}
@@ -90,5 +90,5 @@ index dcee38b1..62beb2b0 100644
  
  if(ENABLE_RHSM_SUPPORT)
 -- 
-2.26.2
+2.41.0
 

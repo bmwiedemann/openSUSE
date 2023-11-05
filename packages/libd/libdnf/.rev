@@ -631,4 +631,31 @@
     <comment></comment>
     <requestid>1101758</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7a556265acc4d7ca6699bca1a85c6047</srcmd5>
+    <version>0.72.0</version>
+    <time>1699183148</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.72.0
+  + PGP: Use new librepo PGP API, remove gpgme dependency
+  + API: Basic support for OpenPGP public keys
+  + Avoid using GNU extensions in the dependency splitter regex
+  + filterAdvisory: match installed_solvables sort with lower_bound (rh#2212838)
+  + Make code C++20 compatible
+  + Avoid reinstalling installonly packages marked for ERASE (rh#2163474)
+  + transaction: Save the reason for installing (rh#1733274)
+  + hawkey.subject: get_best_selectors only obsoleters of latest (rh#2183279, rh#2176263)
+  + conf: Add limited shell-style variable expansion (rh#1789346)
+  + conf: Add support for $releasever_major, $releasever_minor (rh#1789346)
+  + repo: Don't download the repository if the local cache is up to date
+  + Allow DNF to be removed by DNF 5 (rh#2221907)
+  + Include dist-info for python3-libdnf
+  + bindings: Load all modules with RTLD_GLOBAL
+  + Update translations
+- Fix RHBZ references
+- Refresh patch to link with static libsolvext
+  + Remove patch: libdnf-0.48.0-with-static-libsolvext.patch
+  + Add patch: libdnf-0.72.0-with-static-libsolvext.patch</comment>
+    <requestid>1123354</requestid>
+  </revision>
 </revisionlist>

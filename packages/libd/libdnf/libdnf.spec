@@ -2,7 +2,7 @@
 # spec file for package libdnf
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2023 Neal Gompa <ngompa@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%global libsolv_version 0.7.20
+%global libsolv_version 0.7.21
 %global libmodulemd_version 2.13.0
-%global librepo_version 1.13.1
+%global librepo_version 1.15.0
 %global dnf_conflict 4.11.0
 %global swig_version 3.0.12
 
@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.70.2
+Version:        0.72.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -48,7 +48,7 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # openSUSE specific fixes
 ## Fix libdnf build with static libsolvext
-Patch1000:      libdnf-0.48.0-with-static-libsolvext.patch
+Patch1000:      libdnf-0.72.0-with-static-libsolvext.patch
 ## Switch default reposdir to /etc/dnf/repos.d
 Patch1001:      libdnf-0.54.2-Switch-default-reposdir-to-etc-dnf-repos.d.patch
 ## Switch allow_vendor_change off by default
@@ -218,6 +218,7 @@ ln -sr %{buildroot}%{_sysconfdir}/zypp/repos.d %{buildroot}%{_sysconfdir}/distro
 
 %files -n python3-%{name}
 %{python3_sitearch}/%{name}/
+%{python3_sitearch}/%{name}-%{version}.dist-info/
 
 %files -n %{devname}
 %{_libdir}/%{name}.so

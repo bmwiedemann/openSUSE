@@ -1,16 +1,40 @@
 -------------------------------------------------------------------
+Sat Nov  4 18:35:26 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 0.72.0
+  + PGP: Use new librepo PGP API, remove gpgme dependency
+  + API: Basic support for OpenPGP public keys
+  + Avoid using GNU extensions in the dependency splitter regex
+  + filterAdvisory: match installed_solvables sort with lower_bound (rh#2212838)
+  + Make code C++20 compatible
+  + Avoid reinstalling installonly packages marked for ERASE (rh#2163474)
+  + transaction: Save the reason for installing (rh#1733274)
+  + hawkey.subject: get_best_selectors only obsoleters of latest (rh#2183279, rh#2176263)
+  + conf: Add limited shell-style variable expansion (rh#1789346)
+  + conf: Add support for $releasever_major, $releasever_minor (rh#1789346)
+  + repo: Don't download the repository if the local cache is up to date
+  + Allow DNF to be removed by DNF 5 (rh#2221907)
+  + Include dist-info for python3-libdnf
+  + bindings: Load all modules with RTLD_GLOBAL
+  + Update translations
+- Fix RHBZ references
+- Refresh patch to link with static libsolvext
+  + Remove patch: libdnf-0.48.0-with-static-libsolvext.patch
+  + Add patch: libdnf-0.72.0-with-static-libsolvext.patch 
+
+-------------------------------------------------------------------
 Tue Aug  1 07:48:04 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 0.70.2:
-  * Support "proxy=none" in main config (RhBug:2155713)
+  * Support "proxy=none" in main config (rh#2155713)
   * Fix #1558: Don't assume inclusion of cstdint
-  * Disconnect monitors in dnf_repo_loader_finalize() (RhBug:2070153) 
+  * Disconnect monitors in dnf_repo_loader_finalize() (rh#2070153) 
 
 -------------------------------------------------------------------
 Tue May 30 07:51:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.70.1:
-  * Add repoid to solver errors for RPMs (RhBug:2179413)
+  * Add repoid to solver errors for RPMs (rh#2179413)
   * Avoid using obsolete RPM API and drop redundant calls
   * Remove DNF from list of protected packages
 - avoid bashism
