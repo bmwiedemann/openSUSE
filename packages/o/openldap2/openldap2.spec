@@ -26,11 +26,11 @@
 %endif
 
 Name:           openldap2%{name_suffix}
+Version:        2.6.6
+Release:        0
 Summary:        An open source implementation of the Lightweight Directory Access Protocol
 License:        OLDAP-2.8
 Group:          Productivity/Networking/LDAP/Servers
-Version:        2.6.4
-Release:        0
 URL:            https://www.openldap.org
 Source0:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version}.tgz
 Source1:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version}.tgz.asc
@@ -56,8 +56,6 @@ Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  argon2-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
@@ -240,12 +238,7 @@ This package provides a C++ library for accessing LDAP (Version 3)
 Servers
 
 %prep
-%setup -q -a 9 -n openldap-%{version}
-%patch1 -p1
-%patch3 -p1
-%patch5 -p1
-%patch8 -p1
-%patch16 -p1
+%autosetup -a9 -p1 -n openldap-%{version}
 cp %{SOURCE5} .
 
 %build
@@ -258,7 +251,7 @@ cd contrib/ldapc++
 export CFLAGS="%{optflags} -Wno-format-extra-args -fno-strict-aliasing -DNDEBUG -DSLAP_CONFIG_DELETE -DSLAP_SCHEMA_EXPOSE -DLDAP_COLLECTIVE_ATTRIBUTES -DLDAP_USE_NON_BLOCKING_TLS"
 export STRIP=""
 ./configure \
-        --prefix=/usr \
+        --prefix="%_prefix" \
         --sysconfdir=%{_sysconfdir} \
         --libdir=%{_libdir} \
         --libexecdir=%{_libdir} \

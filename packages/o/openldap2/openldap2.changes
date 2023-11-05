@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  3 06:33:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.6
+  * Fixed libldap handling of TCP KEEPALIVE options
+  * Fixed slapd callback handling with overlays that do extended
+    operations
+
+-------------------------------------------------------------------
 Tue Sep  5 11:52:49 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable SLP by default for Factory and ALP (bsc#1214884)
