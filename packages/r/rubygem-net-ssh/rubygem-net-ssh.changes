@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:47:49 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- === 7.2.0
+
+  * Add debugging information for algorithm of pubkey in use [#918]
+
+=== 7.2.0 rc1
+
+  * Allow IdentityAgent as option to Net::SSH.start [#912]
+
+=== 7.2.0 beta1
+
+  * Support `chacha20-poly1305@opnessh.com` cypher if `RbNaCl` gem is installed [#908]
+
+=== 7.1.0
+
+  * Accept pubkey_algorithms option when starting a new connection [#891]
+
+=== 7.1.0 beta1
+
+  * Don't use the deprecated set_XXX methods on RSA keys. [#875]
+  * Raise error when BCryptPbkdf fails [#876]
+
+=== 7.0.1
+
+  * Drop leftover debug statement [#866]
+
+=== 7.0.0
+
+  * BREAKING: Drop support for Ruby 2.5
+  * Fix decoding of ecdsa-sha2-nistp256 private keys [#657, #854]
+  * Fix missing require [#855]
+  * Support `~` in the path to the SSH agent's unix socket [#850]
+  * Add support for RSA client authentication with SHA-2 [a45f54]
+  * openssl: DSA: don't hardcode expected signature size, see ruby/openssl#483 [23a15c]
+  * Internal housekeeping (rubocop, codecov, remove travis, adding/improving tests)
+
+
+-------------------------------------------------------------------
 Sat Sep 24 22:30:41 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - limit to ruby 2.7 and 3.1 on leap
