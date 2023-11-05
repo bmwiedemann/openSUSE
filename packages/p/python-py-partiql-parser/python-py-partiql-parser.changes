@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  5 02:19:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.2
+  * Support for Python 3.12
+- Release 0.4.1
+  * Increased support for WHERE-clauses:
+    - Nested clauses
+    - OR-clauses
+    - Functions: attribute_type, IF (NOT) MISSING, comparison
+      operators (<, >)
+- Release 0.4.0
+  * The DynamoDBStatementParser now expects a document in the
+    DynamoDB format: {"a1": {"S": "b1"}, "a2": {"S": "b2"}}
+  * Adds validation for tables that start with a number
+  * Adds support for queries that have a table name surrounded by
+    quotes
+- Release 0.3.8
+  * Support JSON documents containing (lists of) BOOLeans
+- Release 0.3.6
+  * Allow where-clauses for lists, such as where a[1] = '..'
+- The `test` top-level install has been fixed. Remove rm command.
+
+-------------------------------------------------------------------
 Thu Jul 20 02:17:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.3.5:

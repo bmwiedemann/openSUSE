@@ -17,7 +17,7 @@
 
 
 Name:           python-py-partiql-parser
-Version:        0.3.5
+Version:        0.4.2
 Release:        0
 Summary:        Pure Python PartiQL Parser
 License:        MIT
@@ -26,7 +26,6 @@ Source:         https://github.com/getmoto/py-partiql-parser/archive/refs/tags/%
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 59.0.0}
-BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,8 +43,6 @@ Pure Python PartiQL Parser
 
 %install
 %pyproject_install
-# tests are also installed, and we do not want that
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
