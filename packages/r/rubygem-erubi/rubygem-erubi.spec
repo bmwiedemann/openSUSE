@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-erubi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-erubi
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 %define mod_name erubi
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Small ERB Implementation
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Erubi is a ERB template engine for ruby. It is a simplified fork of Erubis.
