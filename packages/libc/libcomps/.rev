@@ -143,4 +143,15 @@
     <comment></comment>
     <requestid>1067648</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ff9d2b6c2e7ca95dc7a6106f9100d3f</srcmd5>
+    <version>0.1.20</version>
+    <time>1699183145</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.20
+  + Fixes of xml parsing
+  + Fix non-optimized builds by removing inline keyword
+  + Use Py_hash_t instead of long</comment>
+    <requestid>1123350</requestid>
+  </revision>
 </revisionlist>

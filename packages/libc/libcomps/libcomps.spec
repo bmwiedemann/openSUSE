@@ -19,7 +19,7 @@
 
 %define major 0
 %define minor 1
-%define patch 19
+%define patch 20
 %define libname %{name}%{major}
 %define devname %{name}-devel
 
