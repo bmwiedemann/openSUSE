@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-i18n
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-i18n
-Version:        1.12.0
+Version:        1.14.1
 Release:        0
 %define mod_name i18n
 %define mod_full_name %{mod_name}-%{version}
@@ -34,16 +34,14 @@ Release:        0
 %define rb_build_ruby_abis ruby:2.5.0 ruby:2.6.0
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby-i18n/i18n
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        New wave Internationalization support for Ruby
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 New wave Internationalization support for Ruby.

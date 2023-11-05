@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:39:05 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.14.1:
+
+## Included in this release
+
+* Simplify the "Translation missing" message when default is an empty Array by @amatsuda in https://github.com/ruby-i18n/i18n/pull/662
+
+## Maintenance stuff
+* Skip CIing on jruby against Rails 5.2 by @amatsuda in https://github.com/ruby-i18n/i18n/pull/664
+* A fix for failing CI against edge Rails by @amatsuda in https://github.com/ruby-i18n/i18n/pull/663
+* Add documentation hint for fallback values by @mark-a in https://github.com/ruby-i18n/i18n/pull/659
+* CI against Ruby 3.2 by @amatsuda in https://github.com/ruby-i18n/i18n/pull/665
+* Fix build warnings in the CI by using actions/checkout@v3 by @amatsuda in https://github.com/ruby-i18n/i18n/pull/666
+
+Thanks to @amatsuda for these PRs!
+
+## New Contributors
+* @mark-a made their first contribution in https://github.com/ruby-i18n/i18n/pull/659
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.14.0...v1.14.1
+
+1.14.0:
+
+## What's Changed
+* fix LazyLoadable#available_locales duplicating locales by @ccutrer in https://github.com/ruby-i18n/i18n/pull/655
+* Add more helpful translation error when :default option is provided. by @Nerian in https://github.com/ruby-i18n/i18n/pull/654
+* Fix I18n::Locale::Fallbacks not initializing itself on Ruby 3 by @yheuhtozr in https://github.com/ruby-i18n/i18n/pull/653
+* Fix I18n.t when locale contains separator by @tubaxenor in https://github.com/ruby-i18n/i18n/pull/656
+  *  **This reverts a change from #651, that was released in v1.13.0**
+
+## New Contributors
+* @ccutrer made their first contribution in https://github.com/ruby-i18n/i18n/pull/655
+* @Nerian made their first contribution in https://github.com/ruby-i18n/i18n/pull/654
+* @yheuhtozr made their first contribution in https://github.com/ruby-i18n/i18n/pull/653
+* @tubaxenor made their first contribution in https://github.com/ruby-i18n/i18n/pull/656
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.13.0...v1.14.0
+
+1.13.0:
+
+## What's Changed
+* Fix symbol resolving with pluralization by @movermeyer in https://github.com/ruby-i18n/i18n/pull/636
+* Updating DEFAULT_APPROXIMATIONS with capitalised German Eszett character for consistency by @lucapericlp in https://github.com/ruby-i18n/i18n/pull/627
+* Fix load_path example in README.md by @nickcampbell18 in https://github.com/ruby-i18n/i18n/pull/642
+* Add support for meridian indicators on `Date` objects by @movermeyer in https://github.com/ruby-i18n/i18n/pull/640
+* Make translations loading thread-safe by @mensfeld in https://github.com/ruby-i18n/i18n/pull/644
+* Get closer to full CLDR pluralization support by @movermeyer in https://github.com/ruby-i18n/i18n/pull/634
+* Allow passing scope argument to exists? by @misdoro in https://github.com/ruby-i18n/i18n/pull/647
+* Revert #503 changes for `Backend::Base` by @movermeyer in https://github.com/ruby-i18n/i18n/pull/637
+* Properly stub constants by @fatkodima in https://github.com/ruby-i18n/i18n/pull/650
+* Optimize `I18n.t` by @fatkodima in https://github.com/ruby-i18n/i18n/pull/651
+* Return same string object when no interpolations were made by @fatkodima in https://github.com/ruby-i18n/i18n/pull/649
+
+## New Contributors
+* @lucapericlp made their first contribution in https://github.com/ruby-i18n/i18n/pull/627
+* @nickcampbell18 made their first contribution in https://github.com/ruby-i18n/i18n/pull/642
+* @mensfeld made their first contribution in https://github.com/ruby-i18n/i18n/pull/644
+* @misdoro made their first contribution in https://github.com/ruby-i18n/i18n/pull/647
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.12.0...v1.13.0
+
+
+
+-------------------------------------------------------------------
 Thu Aug  4 13:15:01 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.12.0
