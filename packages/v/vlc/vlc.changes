@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  4 20:49:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.20:
+  + Video Output:
+    - Fix green line in fullscreen in D3D11 video output
+    - Fix crash with some AMD drivers old versions
+    - Fix events propagation issue when double-clicking with mouse wheel
+  + Decoders:
+    - Fix crash when AV1 hardware decoder fails
+  + Interface:
+    - Fix annoying disappearance of the Windows fullscreen controller
+  + Demuxers:
+    - Fix potential security issue (OOB Write) on MMS:// by checking user size bounds
+
+-------------------------------------------------------------------
 Mon Oct 23 16:09:40 UTC 2023 - Aaron Stern <ukbeast89@protonmail.com>
 
 -  Update to version 3.0.19
