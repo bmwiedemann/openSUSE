@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 03 15:23:05 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.2+git.1697658634.9c7c6fa:
+  * build(deps): bump rustix from 0.37.11 to 0.37.25
+  * build(deps): bump tempfile from 3.6.0 to 3.8.0
+  * build(deps): bump base64 from 0.21.0 to 0.21.4
+  * build(deps): bump serde_json from 1.0.96 to 1.0.107
+  * build(deps): bump openssl from 0.10.55 to 0.10.57
+  * cargo: Bump serde to version 1.0.188
+  * tests: Fix tarpaulin issues with dropped -v option
+  * build(deps): bump signal-hook from 0.3.15 to 0.3.17
+  * build(deps): bump actix-web from 4.3.1 to 4.4.0
+  * build(deps): bump thiserror from 1.0.40 to 1.0.48
+  * Remove private_in_public
+  * Initial PR to add support for IDevID and IAK
+  * build(deps): bump uuid from 1.3.1 to 1.4.1
+  * build(deps): bump log from 0.4.17 to 0.4.20
+  * build(deps): bump reqwest from 0.11.16 to 0.11.20
+  * Do not use too specific version on cargo audit workflow
+  * Add workflow to run cargo-audit security audit
+  * README: update dependencies for Debian and Ubuntu
+  * Use latest versions of checkout/upload-artifacts
+  * docker: Add 'keylime' system user
+  * Use "currently" for swtpm emulator warning (#632)
+  * Update container workflow actions versions
+  * Build container image and push to quay.io
+  * README: update requirements
+
+-------------------------------------------------------------------
 Fri Jul 14 07:31:23 UTC 2023 - aplanas@suse.com
 
 - Update to version 0.2.2+git.1689256829.3d2b627:
