@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 03 18:14:52 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.55.2:
+  * build(deps): bump github.com/shirou/gopsutil/v3 from 3.23.9 to 3.23.10 (#4177)
+  * build(deps): bump github.com/butuzov/ireturn from 0.2.1 to 0.2.2 (#4178)
+  * build(deps): bump github.com/docker/docker from 23.0.3+incompatible to 24.0.7+incompatible in /tools (#4174)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.14.0 to 0.14.1 (#4171)
+  * build(deps): bump google.golang.org/grpc from 1.55.0 to 1.56.3 in /tools (#4164)
+  * docs: Update documentation and assets (#4163)
+
+-------------------------------------------------------------------
 Wed Oct 25 14:19:00 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.55.1:
