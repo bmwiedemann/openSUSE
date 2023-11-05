@@ -622,4 +622,31 @@
     <comment>- Add fix-arm.patch in order to fix failing arm-arm_range-extension-thunk2 test.</comment>
     <requestid>1120275</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aad31fe7504184f260f24a80506d59ff</srcmd5>
+    <version>2.3.2</version>
+    <time>1699183167</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3.2
+  * Remove upstream patch fix-arm.patch.
+  * mold no longer emits dynamic relocations against the text segment for GNU ifunc
+    symbols. Previously, mold emitted such relocations for position-dependent
+    executables. (4cdfc7e)
+  * mold no longer reports the &quot;REL-type relocation table is not supported for this
+    target&quot; error and instead ignore incompatible relocation tables. LLVM generates
+    such non-conforming relocation tables for the .llvm.call-graph-profile section.
+    This change was made for compatibility. (3791900)
+  * mold now pads unused gaps in the text segment with interrupt or NOP
+    instructions, instead of leaving them filled with zeros. This alteration does
+    not change the program's semantics but prevents disassemblers from interpreting
+    the spaces between functions as valid instructions. (c86a59a)
+  * mold now creates the .mold-lock file for MOLD_JOBS not in the home directory but
+    in $XDG_RUNTIME_DIR, which is usually /var/user/&lt;uid&gt;. (39cdf61)
+  * [ARM32] There was an issue preventing mold from being built on an ARMv8 64-bit
+    ARM processor with an ARM32 userland, such as the 32-bit Raspberry Pi OS running
+    on a Raspberry Pi 4. This build issue has been resolved. (02ead29)
+  * [LoongArch] mold can now handle R_LARCH_PCALA_LO12 relocation for the jirl
+    instruction. (d3188e3)</comment>
+    <requestid>1123388</requestid>
+  </revision>
 </revisionlist>

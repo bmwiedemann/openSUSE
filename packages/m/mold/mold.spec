@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        MIT
@@ -25,7 +25,6 @@ Group:          Development/Tools/Building
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
 Patch0:         build-blake-3-as-static.patch
-Patch1:         fix-arm.patch
 BuildRequires:  cmake
 %if %{suse_version} < 1550
 BuildRequires:  gcc11-c++
