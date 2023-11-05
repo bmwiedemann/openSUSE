@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Nov  2 08:15:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable passim support for now. For openSUSE users this is likely
+  less intereting that it would be for enterprise customers.
+
+-------------------------------------------------------------------
+Wed Nov  1 13:06:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to versrion 1.9.7:
+  + This release adds the following features:
+    - Add support for child device requirements in metadata.
+    - Allow to have more than one host BKC.
+    - Delete BootNext as a post-reboot action to work around broken
+      firmware.
+    - Parse cabinet archives internally without libgcab.
+    - Use close-ended mode for eMMC FFU to speed up firmware
+      updates.
+  + This release adds support for the following hardware:
+    - Logitech Rally System devices.
+    - More PixartRF HPAC devices.
+    - More Synaptics Prometheus fingerprint readers.
+    - Some Western Digital eMMC devices.
+    - VIA VL830 and VL832.
+
+-------------------------------------------------------------------
+Fri Oct 20 07:49:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.6:
+  + This release adds the following features:
+    - Add a launchd agent for macOS.
+    - Add a new security attribute for BIOS capsule updates to be
+      enabled.
+    - Add functionality to fix specific host security attributes.
+    - Add global information from the context into the report data.
+    - Add support for coSWID payload sections.
+    - Add support for parsing the EDID.
+    - Allow adding only-quirk instance IDs from quirk files.
+    - Install a sysusers.d systemd file when using
+      -Dsystemd_unit_user.
+  + For The changes of 1.9.0…1.9.5, please consult
+    https://github.com/fwupd/fwupd/releases
+- Add pkgconfig(passim) BuildRequires: new dependency.
+- Pass -Dplugin_amdgpu=disabled to meson: not buildable just yet.
+- Pass -Dlaunchd=disabled to meson: launched is MacOS only.
+- Drop -Dplugin_dell=enabled meson parameter: no longer supported.
+- Drop fwupd-bsc1130056-change-shim-path.patch: no longer
+  applicable.
+
+-------------------------------------------------------------------
 Fri Sep 15 07:32:14 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove protobuf-c BR: SLE now matches TW package layout

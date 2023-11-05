@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        1.8.17
+Version:        1.9.7
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -48,8 +48,6 @@ Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
 
-# PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
-Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
 # PATCH-FEATURE-OPENSUSE harden_fwupd-offline-update.service.patch -- Harden services
@@ -226,6 +224,9 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
 # Dell support requires direct SMBIOS access,
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
+  -Dlaunchd=disabled \
+  -Dplugin_amdgpu=disabled \
+  -Dpassim=disabled \
 %if %{with efi_fw_update}
   -Dplugin_uefi_capsule=enabled \
   -Dplugin_uefi_pk=enabled \
@@ -242,10 +243,8 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_msr=disabled \
 %endif
 %if %{with dell_support}
-  -Dplugin_dell=enabled \
   -Dplugin_synaptics_mst=enabled \
 %else
-  -Dplugin_dell=disabled \
   -Dplugin_synaptics_mst=disabled \
 %endif
 %ifnarch %{ix86} x86_64
@@ -331,10 +330,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %dir %{_datadir}/%{name}/remotes.d
 %dir %{_datadir}/%{name}/remotes.d/vendor
 %dir %{_datadir}/%{name}/remotes.d/vendor/firmware
-%if %{with dell_support}
-%dir %{_datadir}/%{name}/remotes.d/dell-esrt
-%{_datadir}/%{name}/remotes.d/dell-esrt/metadata.xml
-%endif
 %{_datadir}/%{name}/add_capsule_header.py
 %{_datadir}/%{name}/firmware_packager.py
 %{_datadir}/%{name}/install_dell_bios_exe.py
@@ -377,16 +372,16 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
-%{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
-%dir %{_libdir}/fwupd-%{version}
+%dir %{_libdir}/fwupd-*
 %ifnarch s390x ppc64le
-%{_libdir}/fwupd-%{version}/libfu_plugin_flashrom.so
+%{_libdir}/fwupd-*/libfu_plugin_flashrom.so
 %endif
-%{_libdir}/fwupd-%{version}/libfu_plugin_modem_manager.so
-%{_libdir}/fwupd-%{version}/libfwupdengine.so
-%{_libdir}/fwupd-%{version}/libfwupdplugin.so
-%{_libdir}/fwupd-%{version}/libfwupdutil.so
+%{_libdir}/fwupd-*/libfu_plugin_modem_manager.so
+%{_libdir}/fwupd-*/libfwupdengine.so
+%{_libdir}/fwupd-*/libfwupdplugin.so
+%{_libdir}/fwupd-*/libfwupdutil.so
 %{_datadir}/%{name}/quirks.d/builtin.quirk.gz
+%_sysusersdir/fwupd.conf
 
 %if %{with efi_fw_update}
 %files -n dfu-tool
