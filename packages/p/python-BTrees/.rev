@@ -157,4 +157,15 @@
     <comment></comment>
     <requestid>1092070</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>62f3f1053b24a423e3d72ec77d77729b</srcmd5>
+    <version>5.1</version>
+    <time>1699183108</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.1:
+  * Drop using setup_requires due to constant problems on GHA.
+  * Add support for Python 3.12.
+</comment>
+    <requestid>1122970</requestid>
+  </revision>
 </revisionlist>

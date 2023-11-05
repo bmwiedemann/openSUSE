@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  2 23:38:51 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 5.1:
+  * Drop using setup_requires due to constant problems on GHA.
+  * Add support for Python 3.12.
+
+-------------------------------------------------------------------
 Fri Jun  9 13:17:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
