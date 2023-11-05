@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  4 19:22:03 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.3
+  - Fixed activating a pinned identity when opening a bookmark via the Bookmarks
+    menu.
+  - Fixed initial scope of a created identity when using the default selection.
+  - Fixed issues with dropdown menus when the menu appears as a popup window.
+  - Fixed clearing the pinned identity of a bookmark.
+
+-------------------------------------------------------------------
 Wed Oct 25 17:02:44 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.17.2
