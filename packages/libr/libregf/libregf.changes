@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 29 10:01:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231029
+  * Rename function ``libregf_hive_bins_list_read`` to
+    ``libregf_hive_bins_list_read_file_io_handle``
+
+-------------------------------------------------------------------
 Tue Aug  1 16:03:21 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
