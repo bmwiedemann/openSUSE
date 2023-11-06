@@ -64,4 +64,12 @@
     <comment>- add setuptools7x-tests.patch to fix tests with newer setuptools</comment>
     <requestid>1087535</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67e321fd43861cb556af2848029aec94</srcmd5>
+    <version>0.4.0</version>
+    <time>1699301618</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123601</requestid>
+  </revision>
 </revisionlist>

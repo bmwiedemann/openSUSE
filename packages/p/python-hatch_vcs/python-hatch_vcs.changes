@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  6 06:33:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.0:
+  * Changed:
+    - Drop support for Python 3.7
+  * Added:
+    - Officially support Python 3.12
+  * Fixed:
+    - Prevent UserWarning when a template is not defined explicitly
+- drop patch setuptools7x-tests.patch that is included upstream
+
+-------------------------------------------------------------------
 Wed May 17 09:12:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add setuptools7x-tests.patch to fix tests with newer setuptools 

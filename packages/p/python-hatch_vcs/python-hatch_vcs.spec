@@ -26,13 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch_vcs%{psuffix}
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Hatch plugin for versioning with your preferred VCS
 License:        MIT
 URL:            https://github.com/ofek/hatch-vcs
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_vcs/hatch_vcs-%{version}.tar.gz
-Patch1:         https://github.com/ofek/hatch-vcs/commit/47364faf5563df0eaa631ed10383817762c6b547.patch#/setuptools7x-tests.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 # https://github.com/ofek/hatch-vcs/issues/8
