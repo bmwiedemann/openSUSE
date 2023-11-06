@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 16:17:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Fri Mar 24 10:08:22 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add ispc-add-cstdint-include.patch to fix compilation with GCC 13.

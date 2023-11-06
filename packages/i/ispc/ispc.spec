@@ -35,7 +35,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch:          ispc-add-cstdint-include.patch
+Patch0:         ispc-add-cstdint-include.patch
 #!BuildIgnore:  clang15
 BuildRequires:  bison
 BuildRequires:  clang%llvm_ver-devel
