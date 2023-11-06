@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 06 05:45:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.2.7:
+  * Document: add delete flag in Readme (#127)
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#126)
+  * fix: Resolve panic error due to redefined flag in kor (#125)
+  * feat: add delete flag (#120)
+
+-------------------------------------------------------------------
 Wed Nov 01 19:07:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.2.6:
