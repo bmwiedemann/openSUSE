@@ -173,4 +173,13 @@ Sourcing /etc/os-release instead of parsing /etc/SuSE-release and extracting the
   bashisms</comment>
     <requestid>1109021</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0d1d49346da2507ae189b9210310fe87</srcmd5>
+    <version>3.3</version>
+    <time>1699301615</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3, includes 
+  797e459ecaa482bf8e7bfe02cf5f1cea367ba9e9.patch</comment>
+    <requestid>1123540</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 10:37:11 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.3, includes 
+  797e459ecaa482bf8e7bfe02cf5f1cea367ba9e9.patch
+
+-------------------------------------------------------------------
 Tue Sep  5 11:07:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 797e459ecaa482bf8e7bfe02cf5f1cea367ba9e9.patch to fix
