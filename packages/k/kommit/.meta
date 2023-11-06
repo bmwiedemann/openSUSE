@@ -1,0 +1,8 @@
+<package name="kommit" project="openSUSE:Factory">
+  <title>Graphical Git Client</title>
+  <description>Graphical Git Client
+
+</description>
+  <devel project="KDE:Extra" package="kommit"/>
+  <url>https://apps.kde.org/kommit</url>
+</package>
