@@ -286,4 +286,18 @@
   * Fix assertion failure JPC_NOMINALGAIN (CVE-2016-9396) (#50) bsc#1010783</comment>
     <requestid>1121278</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>690e020e7208e7843635431450b90280</srcmd5>
+    <version>4.1.0</version>
+    <time>1699301622</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.0:
+  * Add support for building several JasPer application programs for
+    WebAssembly target with WASI support.
+
+- Update to 4.0.1:
+  * Fix integer overflow bug in PNM decoder (#353).
+  * Fix a few minor build issues.</comment>
+    <requestid>1123411</requestid>
+  </revision>
 </revisionlist>

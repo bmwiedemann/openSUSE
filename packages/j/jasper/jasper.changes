@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  5 13:14:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  * Add support for building several JasPer application programs for
+    WebAssembly target with WASI support.
+
+-------------------------------------------------------------------
+Sun Nov  5 13:14:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.1:
+  * Fix integer overflow bug in PNM decoder (#353).
+  * Fix a few minor build issues.
+
+-------------------------------------------------------------------
 Sun Nov  6 09:19:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.0:

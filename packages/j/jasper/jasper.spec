@@ -20,7 +20,7 @@
 %global __builddir obs_build
 
 Name:           jasper
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        JasPer-2.0
