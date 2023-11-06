@@ -19,7 +19,7 @@
 %define libsoname libneatvnc0
 
 Name:           neatvnc
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A VNC server library
 License:        ISC

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  6 07:58:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Apple's Diffie-Hellman authentication (security type 30) has been fixed.
+  * A new client connection no longer causes a DNS lookup.
+
+-------------------------------------------------------------------
 Thu Oct  5 07:44:56 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.0:

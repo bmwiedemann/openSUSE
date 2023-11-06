@@ -123,4 +123,14 @@
   * Users should now get proper feedback when authentication fails</comment>
     <requestid>1115753</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec482fed82c326d5eb27352bb6ea1b47</srcmd5>
+    <version>0.7.1</version>
+    <time>1699301650</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.1:
+  * Apple's Diffie-Hellman authentication (security type 30) has been fixed.
+  * A new client connection no longer causes a DNS lookup.</comment>
+    <requestid>1123502</requestid>
+  </revision>
 </revisionlist>
