@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:33:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231106
+  * Updates to the Python bindings
+
+-------------------------------------------------------------------
 Mon Jul 31 10:59:22 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
