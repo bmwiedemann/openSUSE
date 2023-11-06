@@ -45,6 +45,8 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
 Requires:       kirigami2
+# keysmith's build system doesn't look for it, but it's required at runtime
+Requires:       kirigami-addons
 
 %description
 OTP client for Plasma Mobile and Desktop

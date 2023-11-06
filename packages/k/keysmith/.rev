@@ -47,4 +47,12 @@
     <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
     <requestid>1117290</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>350aed86812cbb4e2c9fb02161c3101f</srcmd5>
+    <version>23.08.2</version>
+    <time>1699301662</time>
+    <user>anag+factory</user>
+    <comment>- Add the missing kirigami-addons runtime dependency</comment>
+    <requestid>1123537</requestid>
+  </revision>
 </revisionlist>
