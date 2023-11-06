@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 02 14:57:57 UTC 2023 - lnussel@suse.de
+
+- Update to version 1+git20231102.beb4c19:
+  * Update sdboot in snapper hook
+  * Install command with specific snapshot
+  * Install sdbootutil marker next to loader
+  * In t-u mode, don't call sdbootutil in rpm scriptlets
+
+-------------------------------------------------------------------
 Thu Oct 26 07:55:11 UTC 2023 - lnussel@suse.com
 
 - Update to version 1+git20231026.f43c33c:
