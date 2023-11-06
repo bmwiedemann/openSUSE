@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  6 00:27:43 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easier to notice to keep buildrequires and runtime
+  requires version limits in sync. This will also help us to notice
+  early when the version of other libraries do not match the
+  requires encoded in the source code.
+
+-------------------------------------------------------------------
 Thu Nov  2 16:02:35 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Require authheaders >= 0.15.2

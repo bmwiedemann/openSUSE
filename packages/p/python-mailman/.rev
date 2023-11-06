@@ -334,4 +334,12 @@
 - Removed mailman-fix-importlib-resources.patch</comment>
     <requestid>1123211</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3900acdf792ac2271a77027f516695f2</srcmd5>
+    <version>3.3.9</version>
+    <time>1699301655</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123514</requestid>
+  </revision>
 </revisionlist>

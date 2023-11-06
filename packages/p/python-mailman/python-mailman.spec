@@ -15,6 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# keep in sync with setup.py
+%global aiosmtpd_min_version 1.4.3
+# normally it would be 1.6.2,!=1.7.0 but to avoid super comlex constructs in the spec file ... lets go with the version that we have in TW
+%global alembic_min_version 1.12
+%global authheaders_min_version 0.15.2
+%global authres_min_version 1.0.1
+%global click_min_version 8.0.0
+%global dnspython_min_version 1.14.0
+%global falcon_min_version 3.0.0
+%global flufl_bounce_min_version 4.0
+%global flufl_i18n_min_version 3.2
+%global flufl_lock_min_version 5.1
+%global python_dateutil_min_version 2.0
+%global sqlalchemy_min_version 1.4.0
+%global zope_interface_min_version 5.0
 
 %define mailman_user     mailman
 %define mailman_group    mailman
@@ -91,30 +106,30 @@ Mailman is a mailing list manager from the GNU project.
 
 %package -n mailman3
 Summary:        A mailing list manager
-Requires:       %{mypython}-SQLAlchemy >= 1.2.3
-Requires:       %{mypython}-aiosmtpd >= 1.4.3
-Requires:       %{mypython}-alembic
+Requires:       %{mypython}-SQLAlchemy >= %{sqlalchemy_min_version}
+Requires:       %{mypython}-aiosmtpd >= %{aiosmtpd_min_version}
+Requires:       %{mypython}-alembic >= %{alembic_min_version}
 Requires:       %{mypython}-atpublic
-Requires:       %{mypython}-authheaders >= 0.15.2
-Requires:       %{mypython}-authres >= 1.0.1
-Requires:       %{mypython}-click >= 8.0
-Requires:       %{mypython}-dnspython >= 1.14.0
-Requires:       %{mypython}-falcon > 3.0.0
-Requires:       %{mypython}-flufl.bounce >= 4.0
-Requires:       %{mypython}-flufl.i18n >= 3.2
-Requires:       %{mypython}-flufl.lock >= 5.1
+Requires:       %{mypython}-authheaders >= %{authheaders_min_version}
+Requires:       %{mypython}-authres >= %{authres_min_version}
+Requires:       %{mypython}-click >= %{click_min_version}
+Requires:       %{mypython}-dnspython >= %{dnspython_min_version}
+Requires:       %{mypython}-falcon > %{falcon_min_version}
+Requires:       %{mypython}-flufl.bounce >= %{flufl_bounce_min_version}
+Requires:       %{mypython}-flufl.i18n >= %{flufl_i18n_min_version}
+Requires:       %{mypython}-flufl.lock >= %{flufl_lock_min_version}
 Requires:       %{mypython}-gunicorn
 Requires:       %{mypython}-importlib-resources >= 1.1.0
 Requires:       %{mypython}-lazr.config
 Requires:       %{mypython}-passlib
 Requires:       %{mypython}-psycopg2
-Requires:       %{mypython}-python-dateutil >= 2.0
+Requires:       %{mypython}-python-dateutil >= %{python_dateutil_min_version}
 Requires:       %{mypython}-requests
 Requires:       %{mypython}-setuptools
 Requires:       %{mypython}-zope.component
 Requires:       %{mypython}-zope.configuration
 Requires:       %{mypython}-zope.event
-Requires:       %{mypython}-zope.interface >= 5.0
+Requires:       %{mypython}-zope.interface >= %{zope_interface_min_version}
 Requires:       logrotate
 Requires(pre):  /usr/sbin/groupadd
 Requires(post): update-alternatives
