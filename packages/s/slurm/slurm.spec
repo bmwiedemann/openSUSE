@@ -60,6 +60,14 @@ ExclusiveArch:  do_not_build
 %define base_ver 2302
 %endif
 
+%define ver_m %{lua:x=string.gsub(rpm.expand("%ver"),"%.[^%.]*$","");print(x)}
+# Keep format_spec_file from botching the define below:
+%if  1 == 1
+%define base_conflicts() %{?nil: #
+Conflicts:      %{*} < %{ver_m}.0
+Conflicts:      %{*} >= %{ver_m}.99 }
+%endif
+
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %{lua:x=string.gsub(rpm.expand("%_ver"),"_","");print(x)}
 %define upgrade 1
 %endif
@@ -224,6 +232,7 @@ Summary:        Documentation for SLURM
 Group:          Documentation/HTML
 BuildArch:      noarch
 %{upgrade_dep %{pname}-doc}
+%{base_conflicts %{pname}-config}
 
 %package webdoc
 Summary:        Set up SLURM Documentation Server
@@ -330,6 +339,7 @@ This package contains the SLURM authentication module for Chris Dunlap's Munge.
 %package sview
 Summary:        SLURM graphical interface
 Group:          Productivity/Clustering/Computing
+Requires:       %{name}-plugins = %version
 %{upgrade_dep %{pname}-sview}
 
 %description sview
@@ -374,6 +384,9 @@ Group:          Productivity/Clustering/Computing
 Requires:       libpmix%{pmix_so}
 Requires:       pmix
 %endif
+Requires:       %{name}-config = %{version}
+# This may be removed once older versions have all been fixed.
+%{base_conflicts %{pname}-sview}
 
 %description plugins
 This package contains the SLURM plugins (loadable shared objects)
@@ -397,6 +410,7 @@ Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
 Requires:       perl-Switch
 Provides:       torque-client
+Requires:       %{name}-plugins = %{version}
 %{upgrade_dep %{pname}-torque}
 
 %description torque
@@ -519,6 +533,7 @@ Summary:        Config files and directories for slurm services
 Group:          Documentation/Man
 BuildArch:      noarch
 %{upgrade_dep %{pname}-config-man}
+%{base_conflicts %{pname}-config}
 
 %description config-man
 Man pages for the SLURM cluster managment software config files.

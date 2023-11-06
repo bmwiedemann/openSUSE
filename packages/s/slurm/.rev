@@ -1355,4 +1355,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1121548</requestid>
   </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>67815d17f5d44b157fb896a9dd5ce66c</srcmd5>
+    <version>23.02.6</version>
+    <time>1699301678</time>
+    <user>anag+factory</user>
+    <comment>- Add missing dependencies to slurm-config to plugins package.
+  These should help to tie down the slurm version and help to avoid
+  a package mix (bsc#1216869). (forwarded request 1123595 from eeich)</comment>
+    <requestid>1123596</requestid>
+  </revision>
 </revisionlist>

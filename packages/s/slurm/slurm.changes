@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  6 07:38:00 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add missing dependencies to slurm-config to plugins package.
+  These should help to tie down the slurm version and help to avoid
+  a package mix (bsc#1216869).
+
+-------------------------------------------------------------------
 Thu Oct 12 08:23:20 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - update to 23.02.6 to fix (CVE-2023-41914, bsc#1216207)
