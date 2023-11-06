@@ -295,4 +295,12 @@ FATE#315790: Update SBLIM JSR48 CIM Client to latest version (sblim-cim-client2)
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>990871</requestid>
   </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>f58acf4816b73f29b39070efe759e8ee</srcmd5>
+    <version>2.2.5</version>
+    <time>1699301654</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123500</requestid>
+  </revision>
 </revisionlist>

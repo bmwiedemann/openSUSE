@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-cim-client2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,35 +24,22 @@ Release:        0
 Summary:        Java CIM Client library
 License:        EPL-1.0
 Group:          Development/Libraries/Java
-URL:            http://sourceforge.net/projects/sblim/
-Source:         http://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-src.zip
-Source1:        http://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-doc.zip
+URL:            https://sourceforge.net/projects/sblim/
+Source:         https://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-src.zip
+Source1:        https://downloads.sourceforge.net/project/sblim/%{name}/%{version}/%{name}-%{version}-doc.zip
 Patch1:         sblim-cim-client2-2.2.5-src.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  dos2unix
-%if %{?suse_version} >= 1500
-BuildRequires:  java-devel = 11
-%else
 BuildRequires:  java-devel
-%endif
 BuildRequires:  jpackage-utils >= 1.5.32
 BuildRequires:  unzip
 Requires:       jpackage-utils >= 1.5.32
-Obsoletes:      sblim-cim-client <= 1.3.5
-Provides:       sblim-cim-client
+Obsoletes:      sblim-cim-client < %{version}
+Provides:       sblim-cim-client = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version} > 1010
 BuildRequires:  fdupes
-%endif
-%if 0%{?suse_version}
-BuildRequires:  jaxp_parser_impl
-BuildRequires:  update-alternatives
-BuildRequires:  xml-commons-apis
-%if 0%{?suse_version} < 1100
-BuildRequires:  java-1_5_0-ibm-devel
-BuildRequires:  java-1_5_0-ibm-fonts
-%endif
 %endif
 
 %description
@@ -81,40 +68,40 @@ Manual and sample code for sblim-cim-client2.
 %setup -q -n %{project_folder}
 dos2unix COPYING NEWS README ChangeLog sblim-cim-client2.properties sblim-slp-client2.properties
 find -type f \( -name "*.java" \) -exec dos2unix {} +
-%if 0%{?suse_version} > 1200
-# openjdk9 needs source and target 1.6 or larger
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 1.8}%{!?pkg_vcmp:0}
 %patch1 -p1
 %endif
-# -----------------------------------------------------------------------------
 
 %build
-# export CLASSPATH=$(build-classpath)
 export ANT_OPTS="-Xmx256m"
-ant \
+%{ant} \
         -Dbuild.compiler=modern \
         -DManifest.version=%{version}\
         package java-doc
-# -----------------------------------------------------------------------------
 
 %install
-# --- documentation ---
+
+# documentation
 dstDocDir=%{buildroot}%{_docdir}/%{name}-%{version}
 install -d $dstDocDir
 install --mode=644 ChangeLog COPYING README NEWS $dstDocDir
-# --- samples (also into _docdir) ---
+# samples (also into _docdir)
 cp -pr  smpl/org $dstDocDir
-# --- config files ---
+
+# config files
 confDir=%{buildroot}%{_sysconfdir}/java
 install -d $confDir
 install --mode=664 sblim-cim-client2.properties sblim-slp-client2.properties $confDir
-# --- jar ---
+
+# jar
 install -d %{buildroot}%{_javadir}
 install %{archive_folder}/lib/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
 (
   cd %{buildroot}%{_javadir} &&
     ln -sf %{name}-%{version}.jar %{name}.jar;
 )
-# --- javadoc ---
+
+# javadoc
 mkdir -p %{buildroot}%{_javadocdir}
 (cd %{buildroot}%{_javadocdir}; unzip %{SOURCE1})
 #fix EOL encoding
@@ -122,10 +109,9 @@ find %{buildroot}%{_javadocdir}/%{name}-%{version}-doc -type f -exec sed -i 's/\
 
 install -d %{buildroot}%{_javadocdir}/%{name}-%{version}
 cp -pr %{archive_folder}/doc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
-%if 0%{?suse_version} > 1010
+%if 0%{?suse_version}
 %fdupes %{buildroot}
 %endif
-# -----------------------------------------------------------------------------
 
 %files
 %defattr(0644,root,root,0755)
@@ -146,6 +132,5 @@ cp -pr %{archive_folder}/doc/* %{buildroot}%{_javadocdir}/%{name}-%{version}
 %defattr(0644,root,root,0755)
 %docdir %{_docdir}/%{name}-%{version}
 %doc %{_docdir}/%{name}-%{version}
-# -----------------------------------------------------------------------------
 
 %changelog

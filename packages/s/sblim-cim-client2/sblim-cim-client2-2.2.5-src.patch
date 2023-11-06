@@ -6,7 +6,7 @@ diff -ruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache 
          <mkdir dir="${Directory.build.base}"/>
          <mkdir dir="${Directory.build.core}"/>
 -        <javac srcdir="${Directory.source.core}" destdir="${Directory.build.core}" debug="on" encoding="utf-8" source="1.5" target="1.5" includeantruntime="false">
-+        <javac srcdir="${Directory.source.core}" destdir="${Directory.build.core}" debug="on" encoding="utf-8" source="1.6" target="1.6" includeantruntime="false">
++        <javac srcdir="${Directory.source.core}" destdir="${Directory.build.core}" debug="on" encoding="utf-8" source="1.8" target="1.8" includeantruntime="false">
              <classpath>
              	<pathelement path="${java.class.path}/"/>
              </classpath>
@@ -15,7 +15,7 @@ diff -ruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache 
          <mkdir dir="${Directory.build.base}"/>
  	    <mkdir dir="${Directory.build.unittest}"/>
 -	    <javac srcdir="${Directory.source.unittest}" destdir="${Directory.build.unittest}" debug="on" encoding="utf-8" source="1.5" target="1.5" includeantruntime="false">
-+	    <javac srcdir="${Directory.source.unittest}" destdir="${Directory.build.unittest}" debug="on" encoding="utf-8" source="1.6" target="1.6" includeantruntime="false">
++	    <javac srcdir="${Directory.source.unittest}" destdir="${Directory.build.unittest}" debug="on" encoding="utf-8" source="1.8" target="1.8" includeantruntime="false">
  			<classpath>
  		    	<pathelement path="${Directory.build.unittest}/"/>
  		    	<pathelement path="${Directory.build.core}/"/>
@@ -24,7 +24,7 @@ diff -ruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache 
          <mkdir dir="${Directory.build.base}"/>
  	    <mkdir dir="${Directory.build.samples}"/>
 -	    <javac srcdir="${Directory.source.samples}" destdir="${Directory.build.samples}" debug="on" encoding="utf-8" source="1.5" target="1.5" includeantruntime="false">
-+	    <javac srcdir="${Directory.source.samples}" destdir="${Directory.build.samples}" debug="on" encoding="utf-8" source="1.6" target="1.6" includeantruntime="false">
++	    <javac srcdir="${Directory.source.samples}" destdir="${Directory.build.samples}" debug="on" encoding="utf-8" source="1.8" target="1.8" includeantruntime="false">
  			<classpath>
  		    	<pathelement path="${Directory.build.samples}/"/>
  		    	<pathelement path="${Directory.build.core}/"/>
@@ -33,7 +33,7 @@ diff -ruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache 
          	     encoding="utf-8"
                   docencoding="utf-8"
 -                 source ="1.5"
-+                 source ="1.6"
++                 source ="1.8"
                   additionalparam="-quiet"
                   overview="${Directory.source.core}/overview.html"
                   windowtitle="SBLIM CIM Client for Java - ${Manifest.version} - Public API Specification"
