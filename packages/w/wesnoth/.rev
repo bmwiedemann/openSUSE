@@ -370,4 +370,16 @@ A model Open Source game.</comment>
     <comment></comment>
     <requestid>1098851</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f75e188efc9941507c0afec5e3b93c0b</srcmd5>
+    <version>1.17.22</version>
+    <time>1699301669</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.17.22
+  See
+  https://github.com/wesnoth/wesnoth/blob/master/changelog.md#version-11722
+  for changes since 1.17.17
+</comment>
+    <requestid>1123594</requestid>
+  </revision>
 </revisionlist>
