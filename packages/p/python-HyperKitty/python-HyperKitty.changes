@@ -1,7 +1,60 @@
 -------------------------------------------------------------------
+Mon Nov  6 12:05:07 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- forgot to use 2 defined variables:
+  %{django_haystack_min_version} 
+  %{django_extensions_min_version}
+
+-------------------------------------------------------------------
+Mon Nov  6 11:47:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easy to run a build without testsuite
+  osc build --without=testsuite
+
+-------------------------------------------------------------------
+Mon Nov  6 01:20:05 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure that we can create the user and group
+
+-------------------------------------------------------------------
+Mon Nov  6 01:10:25 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make user and group creation verbose so we actually see errors
+
+-------------------------------------------------------------------
+Mon Nov  6 00:05:35 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easier to notice to keep buildrequires and runtime
+  requires version limits in sync. This will also help us to notice
+  early when the version of other libraries do not match the
+  requires encoded in the source code.
+
+-------------------------------------------------------------------
+Sun Nov  5 23:32:56 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh gl-mr300-add-opengraph-metadata.patch for version update
+
+-------------------------------------------------------------------
+Thu Nov  2 09:27:37 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.8
+  * See https://gitlab.com/mailman/hyperkitty/-/blob/v1.3.8/doc/news.rst
+    or the file news.ret included in this package
+- Removed fix-elasticsearch8.patch
+- Updated mistune3.patch
+
+-------------------------------------------------------------------
 Thu Oct  5 08:21:08 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add mistune3.patch to fix compatibility with mistune 3.0
+
+-------------------------------------------------------------------
+Sun Jul 30 03:50:42 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Add upstream patch gl-mr300-add-opengraph-metadata.patch:
+  * Add OpenGraph Metadata (https://gitlab.com/mailman/hyperkitty/-/merge_requests/300)
+- Add upstream patch gl-mr470-introduce-feed-filtering.patch:
+  * Introduce feed filtering (https://gitlab.com/mailman/hyperkitty/-/merge_requests/470)
 
 -------------------------------------------------------------------
 Thu Jul  6 09:33:42 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>

@@ -15,6 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_without testsuite
+
+# keep in sync with setup.py
+%global django_min_version 3.2
+%global django_max_version 4.3
+%global django_mailman3_min_version 1.3.10
+%global django_gravatar2_min_version 1.0.6
+%global djangorestframework_min_version 3.0.0
+%global robot_detection_min_version 0.3
+%global pytz_min_version 2012
+%global django_compressor_min_version 1.3
+%global mailmanclient_min_version 3.3.3
+# original this was >= 2.0.0, < 3.0 but overwritten by mistune3.patch
+%global mistune_min_version 3.0
+%global python_dateutil_min_version  2.0
+%global networkx_min_version 2.0
+%global django_haystack_min_version 2.8.0
+%global django_extensions_min_version 1.3.7
+%global flufl_lock_min_version 4.0
+%global django_q_min_version 1.0.0
 
 %{?sle15_python_module_pythons}
 %global webapps_dir /srv/www/webapps
@@ -32,6 +52,7 @@
 
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
+# keep in sync with python-mailman-web/python-postorious
 %if 0%{?suse_version} >= 1550
 # Newest python supported by mailman is Python 3.11
 %define pythons python311
@@ -47,7 +68,7 @@
 %endif
 
 Name:           python-HyperKitty
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
@@ -68,20 +89,23 @@ Source30:       README.SUSE.md
 # PATCH-FIX-OPENSUSE hyperkitty-settings.patch mcepl@suse.com
 # hard-code locations of configuration files
 Patch0:         hyperkitty-settings.patch
-# PATCH-FIX-UPSTREAM fix-elasticsearch8.patch gl#mailman/hyperkitty#468
-Patch1:         fix-elasticsearch8.patch
 # PATCH-FIX-UPSTREAM mistune3.patch gl#mailman/hyperkitty#541
 Patch2:         mistune3.patch
 #
-BuildRequires:  %{python_module django-compressor >= 1.3}
+# PATCH-FIX-UPSTREAM gl-mr300-add-opengraph-metadata.patch gl#mailman/hyperkitty#300
+Patch98:         gl-mr300-add-opengraph-metadata.patch
+# PATCH-FIX-UPSTREAM gl-mr470-introduce-feed-filtering.patch gl#mailman/hyperkitty#470
+Patch99:         gl-mr470-introduce-feed-filtering.patch
+#
+BuildRequires:  %{python_module Django >= %{django_min_version} with %python-Django < %{django_max_version}}
+BuildRequires:  %{python_module django-compressor >= %{django_compressor_min_version}}
 BuildRequires:  %{python_module Whoosh}
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
-BuildRequires:  %{python_module django-extensions >= 1.3.7}
-BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
+BuildRequires:  %{python_module django-extensions >= %{django_extensions_min_version}}
+BuildRequires:  %{python_module django-gravatar2 >= %{django_gravatar2_min_version}}
 BuildRequires:  %{python_module isort}
-BuildRequires:  %{python_module libsass}
-BuildRequires:  %{python_module mailmanclient >= 3.3.2}
-BuildRequires:  %{python_module mistune >= 2.0}
+BuildRequires:  %{python_module mailmanclient >= %{mailmanclient_min_version}}
+BuildRequires:  %{python_module mistune >= %{mistune_min_version}}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xapian-haystack >= 2.1.0}
 BuildRequires:  acl
@@ -97,23 +121,22 @@ BuildArch:      noarch
 BuildRequires:  python3-packaging
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Whoosh >= 2.5.7}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.3.2}
-BuildRequires:  %{python_module django-haystack >= 2.8.0}
-BuildRequires:  %{python_module django-mailman3 >= 1.3.8}
-BuildRequires:  %{python_module django-q >= 1.3.9}
-BuildRequires:  %{python_module djangorestframework >= 3.0.0}
+BuildRequires:  %{python_module django-haystack >= %{django_haystack_min_version}}
+BuildRequires:  %{python_module django-mailman3 >= %{django_mailman3_min_version}}
+BuildRequires:  %{python_module django-q >= %{django_q_min_version}}
+BuildRequires:  %{python_module djangorestframework >= %{djangorestframework_min_version}}
 BuildRequires:  %{python_module elasticsearch}
-BuildRequires:  %{python_module flufl.lock}
+BuildRequires:  %{python_module flufl.lock >= %{flufl_lock_min_version}}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module mistune}
-BuildRequires:  %{python_module networkx >= 1.9.1}
+BuildRequires:  %{python_module mistune >= %{mistune_min_version}}
+BuildRequires:  %{python_module networkx >= %{networkx_min_version}}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.0}
-BuildRequires:  %{python_module pytz >= 2012}
-BuildRequires:  %{python_module robot-detection >= 0.3}
+BuildRequires:  %{python_module python-dateutil >= %{python_dateutil_min_version}}
+BuildRequires:  %{python_module pytz >= %{pytz_min_version}}
+BuildRequires:  %{python_module robot-detection >= %{robot_detection_min_version}}
 # /SECTION
 
 %description
@@ -121,25 +144,24 @@ A web interface to access GNU Mailman v3 archives.
 
 %package -n %{hyperkitty_pkgname}
 Summary:        A web interface to access GNU Mailman v3 archives
-Requires:       %{mypython}-Django >= 1.11
-Requires:       %{mypython}-Whoosh
-Requires:       %{mypython}-django-compressor >= 1.3
+# important sync with
+Requires:       (%{mypython}-Django >= %{django_min_version} with %{mypython}-Django < %{django_max_version})
+Requires:       %{mypython}-django-compressor >= %{django_compressor_min_version}
 Requires:       %{mypython}-django-debug-toolbar >= 2.2
-Requires:       %{mypython}-django-extensions >= 1.3.7
-Requires:       %{mypython}-django-gravatar2 >= 1.0.6
+Requires:       %{mypython}-django-extensions >= %{django_extensions_min_version}
+Requires:       %{mypython}-django-gravatar2 >= %{django_gravatar2_min_version}
 Requires:       %{mypython}-django-haystack >= 2.8.0
-Requires:       %{mypython}-django-mailman3 >= 1.3.7
-Requires:       %{mypython}-django-q >= 1.3.9
-Requires:       %{mypython}-djangorestframework >= 3.0.0
-Requires:       %{mypython}-flufl.lock
-Requires:       %{mypython}-libsass
-Requires:       %{mypython}-mailmanclient >= 3.3.2
-Requires:       %{mypython}-mistune
-Requires:       %{mypython}-networkx >= 1.9.1
-Requires:       %{mypython}-python-dateutil >= 2.0
-Requires:       %{mypython}-pytz >= 2012
-Requires:       %{mypython}-robot-detection >= 0.3
-Requires:       %{mypython}-xapian-haystack >= 2.1.0
+Requires:       %{mypython}-django-mailman3 >= %{django_mailman3_min_version}
+Requires:       %{mypython}-django-q >= %{django_q_min_version}
+Requires:       %{mypython}-djangorestframework >= %{djangorestframework_min_version}
+Requires:       %{mypython}-flufl.lock >= %{flufl_lock_min_version} 
+Requires:       %{mypython}-mailmanclient >= %{mailmanclient_min_version}
+Requires:       %{mypython}-mistune >= %{mistune_min_version}
+Requires:       %{mypython}-networkx >= %{networkx_min_version}
+Requires:       %{mypython}-python-dateutil >= %{python_dateutil_min_version}
+Requires:       %{mypython}-pytz >= %{pytz_min_version}
+Requires:       %{mypython}-robot-detection >= %{robot_detection_min_version}
+Requires:       %{mypython}-xapian-haystack >= %{django_haystack_min_version}
 %if "%{expand:%%%{mypython}_provides}" == "python3"
 Provides:       python3-%{hyperkitty_pkgname} = %{version}-%{release}
 %endif
@@ -159,6 +181,8 @@ Requires:       %{hyperkitty_pkgname}
 Requires:       acl
 Requires:       openssl
 Requires:       sudo
+Requires(pre):  /usr/sbin/groupadd
+Requires(pre):  /usr/sbin/useradd
 
 %description -n %{hyperkitty_pkgname}-web
 A web user interface for GNU Mailman.
@@ -291,14 +315,16 @@ for job in \
     sed -i "s#@HYPERKITTY_RUNJOB@#${hyperkitty_runjob_name}#g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
 done
 
+%if %{with testuite}
 %check
 export PYTHONPATH="$(pwd)"
 export LANG=C.UTF-8
 %pytest
+%endif
 
 %pre -n %{hyperkitty_pkgname}-web
-/usr/sbin/groupadd -r hyperkitty &>/dev/null || :
-/usr/sbin/useradd  -g hyperkitty -s /bin/false -r -c "HyperKitty" -d %{hyperkitty_basedir} hyperkitty &>/dev/null || :
+/usr/sbin/groupadd -r hyperkitty  || :
+/usr/sbin/useradd  -g hyperkitty -s /bin/false -r -c "HyperKitty" -d %{hyperkitty_basedir} hyperkitty  || :
 
 %service_add_pre %{hyperkitty_services}
 
