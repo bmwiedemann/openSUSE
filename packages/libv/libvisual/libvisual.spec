@@ -1,7 +1,7 @@
 #
 # spec file for package libvisual
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Group:          Productivity/Multimedia/Sound/Visualization
 URL:            http://localhost.nl/~synap/libvisual-wiki/index.php/Main_Page
 Source:         %name-%{version}.tar.bz2
 Source2:        baselibs.conf
-Patch:          %name-%{version}.diff
+Patch0:         %name-%{version}.diff
 Patch1:         %name-%{version}-compiler_warnings.diff
 Patch2:         libvisual.visual_cpu_get_altivec.patch
 Patch3:         %name-%{version}-unref-static.diff
@@ -71,7 +71,7 @@ This library is used by amaroK for example.
 
 %prep
 %setup -q
-%patch
+%patch0
 %patch1
 %patch2 -p1
 %patch3
