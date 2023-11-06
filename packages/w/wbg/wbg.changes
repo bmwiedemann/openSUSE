@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 24 06:38:56 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add patchsets
+  * 0001-fix-mfd-noexec-seal.patch
+  * 0004-impl-layer-surface-closed-event.patch
+  * 0005-mark-surface-as-opaque.patch
+
+-------------------------------------------------------------------
 Wed Oct 26 12:37:03 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.1.0:
