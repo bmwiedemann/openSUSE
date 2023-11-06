@@ -32,6 +32,7 @@ Summary:        Extension pack for Python Markdown
 License:        MIT
 URL:            https://github.com/facelessuser/mkdocs-material-extensions
 Source:         https://files.pythonhosted.org/packages/source/m/mkdocs_material_extensions/mkdocs_material_extensions-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hatch}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
