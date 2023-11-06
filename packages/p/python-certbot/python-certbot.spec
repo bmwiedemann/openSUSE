@@ -19,17 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot
-Version:        2.6.0
+Version:        2.7.3
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/c/certbot/certbot-%{version}.tar.gz
 BuildRequires:  %{python_module acme >= %{version}}
-BuildRequires:  %{python_module configargparse >= 0.9.3}
+BuildRequires:  %{python_module configargparse >= 1.5.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 3.2.1}
 BuildRequires:  %{python_module distro >= 1.0.1}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
+BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module josepy >= 1.13.0}
 BuildRequires:  %{python_module parsedatetime >= 2.4}
 BuildRequires:  %{python_module pyRFC3339}
@@ -39,7 +41,7 @@ BuildRequires:  %{python_module setuptools >= 41.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-acme >= %{version}
-Requires:       python-configargparse >= 0.9.3
+Requires:       python-configargparse >= 1.5.3
 Requires:       python-configobj >= 5.0.6
 Requires:       python-cryptography >= 3.2.1
 Requires:       python-distro >= 1.0.1
@@ -50,6 +52,12 @@ Requires:       python-pytz >= 2019.3
 Requires:       python-setuptools >= 41.6.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%if %{python_version_nodots} < 310
+Requires:       python-importlib-metadata
+%endif
+%if %{python_version_nodots} < 39
+Requires:       python-importlib-resources
+%endif
 Provides:       certbot = %{version}
 Obsoletes:      certbot < %{version}
 BuildArch:      noarch
