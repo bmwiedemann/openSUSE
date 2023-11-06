@@ -191,4 +191,15 @@
     <comment>- Replace by ExcludeArch (forwarded request 1006417 from eeich)</comment>
     <requestid>1006418</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>cab648cf162191dd4e2f249219374eea</srcmd5>
+    <version>4.5.3</version>
+    <time>1699301697</time>
+    <user>anag+factory</user>
+    <comment>- Disable builds on i586.
+
+- Drop support for openmpi[123]
+- Prepare support for openmpi5</comment>
+    <requestid>1123657</requestid>
+  </revision>
 </revisionlist>

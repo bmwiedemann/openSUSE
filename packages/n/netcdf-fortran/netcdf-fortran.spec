@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %endif
 
-ExcludeArch:    s390 s390x
+ExcludeArch:    s390 s390x %ix86
 
 %{bcond_with staticlibs}
 
@@ -53,35 +53,19 @@ ExcludeArch:    s390 s390x
 %{bcond_with mpi}
 %endif
 
-%if "%flavor" == "gnu-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 1
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 2
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 3
-%{bcond_without mpi}
-%endif
-
 %if "%flavor" == "gnu-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %global mpi_flavor openmpi
 %global mpi_ver 4
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 5
 %{bcond_without mpi}
 %endif
 
@@ -103,38 +87,20 @@ ExcludeArch:    s390 s390x
 %global c_f_ver 7
 %endif
 
-%if "%flavor" == "gnu7-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 1
-%global c_f_ver 7
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu7-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 2
-%global c_f_ver 7
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu7-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 3
-%global c_f_ver 7
-%{bcond_without mpi}
-%endif
-
 %if "%flavor" == "gnu7-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %global mpi_flavor openmpi
 %global mpi_ver 4
+%global c_f_ver 7
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu7-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 5
 %global c_f_ver 7
 %{bcond_without mpi}
 %endif
@@ -159,38 +125,20 @@ ExcludeArch:    s390 s390x
 %global c_f_ver 8
 %endif
 
-%if "%flavor" == "gnu8-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 1
-%global c_f_ver 8
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu8-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 2
-%global c_f_ver 8
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu8-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 3
-%global c_f_ver 8
-%{bcond_without mpi}
-%endif
-
 %if "%flavor" == "gnu8-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %global mpi_flavor openmpi
 %global mpi_ver 4
+%global c_f_ver 8
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu8-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 5
 %global c_f_ver 8
 %{bcond_without mpi}
 %endif
@@ -215,38 +163,20 @@ ExcludeArch:    s390 s390x
 %global c_f_ver 9
 %endif
 
-%if "%flavor" == "gnu9-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 1
-%global c_f_ver 9
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu9-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 2
-%global c_f_ver 9
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu9-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 3
-%global c_f_ver 9
-%{bcond_without mpi}
-%endif
-
 %if "%flavor" == "gnu9-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %global mpi_flavor openmpi
 %global mpi_ver 4
+%global c_f_ver 9
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu9-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 5
 %global c_f_ver 9
 %{bcond_without mpi}
 %endif
@@ -271,38 +201,20 @@ ExcludeArch:    s390 s390x
 %global c_f_ver 10
 %endif
 
-%if "%flavor" == "gnu10-openmpi-hpc"
-%{?DisOMPI1}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 1
-%global c_f_ver 10
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu10-openmpi2-hpc"
-%{?DisOMPI2}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 2
-%global c_f_ver 10
-%{bcond_without mpi}
-%endif
-
-%if "%flavor" == "gnu10-openmpi3-hpc"
-%{?DisOMPI3}
-%global compiler_family gnu
-%global mpi_flavor openmpi
-%global mpi_ver 3
-%global c_f_ver 10
-%{bcond_without mpi}
-%endif
-
 %if "%flavor" == "gnu10-openmpi4-hpc"
 %{?DisOMPI4}
 %global compiler_family gnu
 %global mpi_flavor openmpi
 %global mpi_ver 4
+%global c_f_ver 10
+%{bcond_without mpi}
+%endif
+
+%if "%flavor" == "gnu10-openmpi5-hpc"
+%{?DisOMPI5}
+%global compiler_family gnu
+%global mpi_flavor openmpi
+%global mpi_ver 5
 %global c_f_ver 10
 %{bcond_without mpi}
 %endif

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  6 16:38:43 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Disable builds on i586.
+
+-------------------------------------------------------------------
+Mon Nov  6 10:15:30 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
 Tue Sep 27 06:45:48 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - RIP 32bit.
