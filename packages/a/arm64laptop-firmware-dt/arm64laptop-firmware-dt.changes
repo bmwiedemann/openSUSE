@@ -1,4 +1,10 @@
 --------------------------------------------------------------------
+Mon Nov 06 08:01:20 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Fix the modalias string in Supplements
+- Fix the package name described in comments
+
+--------------------------------------------------------------------
 Fri Oct 20 08:24:00 UTC 2023 - Chester Lin <clin@suse.com>
 
 - Correct script alignments

@@ -1,5 +1,5 @@
 #
-# spec file for package raspberrypi-firmware-dt
+# spec file for package arm64laptop-firmware-dt
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -14,6 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 Name:           arm64laptop-firmware-dt
 Version:        2023.10.16
 Release:        0
@@ -37,11 +39,10 @@ Summary:        Lenovo X13s DTB installation
 Group:          System/Boot
 BuildRequires:  dtb-qcom
 ExclusiveArch:  aarch64
-Supplements:    modalias(NscmT*Cqcom,scm-sc8280xpCqcom,scm)
+Supplements:    modalias(of:NscmT*Cqcom,scm-sc8280xpCqcom,scm)
 
 %description -n lenovo-x13s-firmware-dt
 Install DTB on ESP for Lenovo X13s.
-
 
 %install -n lenovo-x13s-firmware-dt
 install -m 755 -d %{buildroot}%{instdir}/lenovo-x13s
@@ -56,7 +57,6 @@ fi
 if mountpoint -q /boot/efi && [ ! -L /boot/efi ]; then
     rm /boot/efi/sc8280xp-lenovo-thinkpad-x13s.dtb
 fi
-
 
 %files -n lenovo-x13s-firmware-dt
 %defattr(-,root,root)
