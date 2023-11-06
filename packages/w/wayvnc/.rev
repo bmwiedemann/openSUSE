@@ -107,4 +107,16 @@
   * Various kinks in wayvncctl have been ironed out</comment>
     <requestid>1115754</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>432fb9d8f6b055f36cfd04bcab8842c4</srcmd5>
+    <version>0.7.2</version>
+    <time>1699301651</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.2:
+  * Missing documentation for the websocket flag
+  * Null-dereferencing when input is disabled
+  * Out-of-bounds memory access when compositors submit out-of-bounds damage
+  * Too strict authentication related config parameter sanitation</comment>
+    <requestid>1123504</requestid>
+  </revision>
 </revisionlist>

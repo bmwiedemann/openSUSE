@@ -17,7 +17,7 @@
 
 
 Name:           wayvnc
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A VNC server for wlroots based Wayland compositors
 License:        ISC
@@ -25,7 +25,7 @@ Group:          System/GUI/Other
 URL:            https://github.com/any1/wayvnc
 Source0:        https://github.com/any1/wayvnc/archive/v%{version}.tar.gz
 BuildRequires:  meson
-BuildRequires:  neatvnc-devel >= 0.7.0
+BuildRequires:  neatvnc-devel >= 0.7.1
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc

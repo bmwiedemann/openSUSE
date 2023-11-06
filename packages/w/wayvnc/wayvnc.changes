@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:01:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.2:
+  * Missing documentation for the websocket flag
+  * Null-dereferencing when input is disabled
+  * Out-of-bounds memory access when compositors submit out-of-bounds damage
+  * Too strict authentication related config parameter sanitation
+
+-------------------------------------------------------------------
 Thu Oct  5 07:48:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.1:
