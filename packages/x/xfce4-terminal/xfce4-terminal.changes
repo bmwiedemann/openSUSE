@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  5 18:12:55 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add gxo-282.patch
+  * backport fix for crash on window close
+    (gxo#apps/xfce4-terminal#282)
+
+-------------------------------------------------------------------
 Sun Oct 15 07:29:34 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.1

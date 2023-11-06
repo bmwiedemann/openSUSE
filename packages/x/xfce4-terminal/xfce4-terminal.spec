@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://docs.xfce.org/apps/terminal/start
 Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM: backport fix for crash on window close
+Patch0:         gxo-282.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -52,7 +54,7 @@ helps to save space on the desktop.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if %{with git}
