@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  5 14:16:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ppsspp 1.16.6:
+  * New JIT compilers and vrnd instruction support
+  * Support for RetroAchievements
+  * Fixes for bugs, crashes, performance issues and UI issues
+  * Compatibility fixes for a number of games
+
+-------------------------------------------------------------------
 Wed Jul  5 19:50:58 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - ppsspp 1.15.4
