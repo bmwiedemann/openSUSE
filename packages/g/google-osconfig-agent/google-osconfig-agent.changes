@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Oct 20 06:50:11 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
-- Bump the golang compiler version to 1.21
+- Bump the golang compiler version to 1.21 (bsc#1216546)
 
 -------------------------------------------------------------------
 Thu Aug 31 12:31:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -10,6 +10,7 @@ Thu Aug 31 12:31:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Added burov, dowgird, paulinakania and Gulio to OWNERS (#482)
 
 -------------------------------------------------------------------
+>>>>>>> ./google-osconfig-agent.changes.new
 Fri Jul  7 09:33:36 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230706.02 (bsc#1212418, bsc#1212759)
