@@ -183,4 +183,12 @@ SR for python stack proposal</comment>
     <comment>- Add patch support-trio-0.22.patch:</comment>
     <requestid>1109337</requestid>
   </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>53c675e4994bb339a45050dfe9a73788</srcmd5>
+    <version>3.6.2</version>
+    <time>1699301620</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1122669</requestid>
+  </revision>
 </revisionlist>

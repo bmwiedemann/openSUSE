@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{v
 Patch0:         support-trio-0.22.patch
 # PATCH-FIX-UPSTREAM Based on gh#agronholm/anyio#553
 Patch1:         fix-failing-tls-tests.patch
+# PATCH-FIX-UPSTREAM see gh#agronholm/anyio#626
+Patch2:         tests-test_fileio.py-don-t-follow-symlinks-in-dev.patch
 BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module idna >= 2.8}

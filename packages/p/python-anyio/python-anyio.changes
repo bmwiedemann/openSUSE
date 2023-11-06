@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  2 10:42:51 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add tests-test_fileio.py-don-t-follow-symlinks-in-dev.patch (kernel
+  6.6 fix)
+
+-------------------------------------------------------------------
 Thu May  4 07:29:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-failing-tls-tests.patch:
