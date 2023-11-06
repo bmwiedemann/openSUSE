@@ -1,0 +1,10 @@
+<constraints>
+  <hardware>
+    <memoryperjob>
+     <size unit="G">4</size>
+    </memoryperjob>
+    <disk>
+      <size unit="G">30</size>
+    </disk>
+  </hardware>
+</constraints>

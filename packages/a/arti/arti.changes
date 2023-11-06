@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 30 12:37:00 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints file to avoid build failures
+
+-------------------------------------------------------------------
 Wed Oct 25 21:58:30 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Run format_spec_file service 
