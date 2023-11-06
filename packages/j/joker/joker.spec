@@ -17,7 +17,7 @@
 
 
 Name:           joker
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Small Clojure interpreter, linter and formatter written in Go
 License:        EPL-1.0
@@ -27,8 +27,8 @@ Source1:        vendor.tar.gz
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?mageia}
 BuildRequires:  go-rpm-macros
 %else
-BuildRequires:  golang(API) >= 1.18
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.18
 %endif
 
 %description
