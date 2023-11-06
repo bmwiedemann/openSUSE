@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 17:34:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.16.0:
+  * expose one new API, dqlite_node_set_auto_recovery
+
+-------------------------------------------------------------------
 Tue Jun 27 08:09:19 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.15.1:
