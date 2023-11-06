@@ -1088,4 +1088,19 @@
   * Revert a leftover hunk.</comment>
     <requestid>1111380</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8d20cee32e48f9ad30c4f6b08d33f390</srcmd5>
+    <version>2.9.0+git.20231106.cc76e98</version>
+    <time>1699301706</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.9.0+git.20231106.cc76e98:
+  * Bump to 2.9.0.
+  * Support LLVM 18: changes in ElaboratedTypeKeyword
+  * add .vscode to .gitignore
+  * add --shell argument
+  * LLVM 18: port to latest master
+  * add LLVM 17 CI target
+  * disable -Werror=non-template-friend in llvm/ADT/PagedVector.h:215:59</comment>
+    <requestid>1123668</requestid>
+  </revision>
 </revisionlist>

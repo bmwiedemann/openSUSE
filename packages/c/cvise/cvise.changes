@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 06 18:36:00 UTC 2023 - martin.liska@hey.com
+
+- Update to version 2.9.0+git.20231106.cc76e98:
+  * Bump to 2.9.0.
+  * Support LLVM 18: changes in ElaboratedTypeKeyword
+  * add .vscode to .gitignore
+  * add --shell argument
+  * LLVM 18: port to latest master
+  * add LLVM 17 CI target
+  * disable -Werror=non-template-friend in llvm/ADT/PagedVector.h:215:59
+
+-------------------------------------------------------------------
 Thu Sep 14 15:00:47 UTC 2023 - martin.liska@hey.com
 
 - Update to version 2.8.0+git.20230914.9f237d6:
