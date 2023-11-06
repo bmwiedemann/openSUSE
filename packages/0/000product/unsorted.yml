@@ -9161,6 +9161,8 @@ unsorted:
   - kollision-lang 
   - kolourpaint 
   - kolourpaint-lang 
+  - kommit 
+  - kommit-lang 
   - kompare-devel 
   - kompose 
   - kompose-bash-completion 
@@ -13311,16 +13313,10 @@ unsorted:
   - libnetcdf-fortran-gnu-hpc 
   - libnetcdf-fortran-gnu-mpich-hpc 
   - libnetcdf-fortran-gnu-mvapich2-hpc 
-  - libnetcdf-fortran-gnu-openmpi1-hpc 
-  - libnetcdf-fortran-gnu-openmpi2-hpc 
-  - libnetcdf-fortran-gnu-openmpi3-hpc 
   - libnetcdf-fortran-gnu-openmpi4-hpc 
   - libnetcdf-fortran_4_5_3-gnu-hpc 
   - libnetcdf-fortran_4_5_3-gnu-mpich-hpc 
   - libnetcdf-fortran_4_5_3-gnu-mvapich2-hpc 
-  - libnetcdf-fortran_4_5_3-gnu-openmpi1-hpc 
-  - libnetcdf-fortran_4_5_3-gnu-openmpi2-hpc 
-  - libnetcdf-fortran_4_5_3-gnu-openmpi3-hpc 
   - libnetcdf-fortran_4_5_3-gnu-openmpi4-hpc 
   - libnetcdf-gnu-hpc 
   - libnetcdf-gnu-mpich-hpc 
@@ -18028,16 +18024,10 @@ unsorted:
   - netcdf-fortran-gnu-hpc-devel 
   - netcdf-fortran-gnu-mpich-hpc-devel 
   - netcdf-fortran-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran-gnu-openmpi3-hpc-devel 
   - netcdf-fortran-gnu-openmpi4-hpc-devel 
   - netcdf-fortran_4_5_3-gnu-hpc-devel 
   - netcdf-fortran_4_5_3-gnu-mpich-hpc-devel 
   - netcdf-fortran_4_5_3-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran_4_5_3-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran_4_5_3-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran_4_5_3-gnu-openmpi3-hpc-devel 
   - netcdf-fortran_4_5_3-gnu-openmpi4-hpc-devel 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
@@ -24446,6 +24436,7 @@ unsorted:
   - python310-logzero 
   - python310-looseversion 
   - python310-lscsoft-glue 
+  - python310-lsprotocol 
   - python310-lupa 
   - python310-lxml 
   - python310-lxml-devel 
@@ -25028,6 +25019,7 @@ unsorted:
   - python310-pygerrit2 
   - python310-pygit2 
   - python310-pyglet 
+  - python310-pygls 
   - python310-pygments-ansi-color 
   - python310-pygments-pytest 
   - python310-pygments-style-railscasts 
@@ -27863,6 +27855,7 @@ unsorted:
   - python311-logutils 
   - python311-logzero 
   - python311-lscsoft-glue 
+  - python311-lsprotocol 
   - python311-lupa 
   - python311-lxml-devel 
   - python311-ly 
@@ -28410,6 +28403,7 @@ unsorted:
   - python311-pygeos 
   - python311-pygerrit2 
   - python311-pyglet 
+  - python311-pygls 
   - python311-pygments-ansi-color 
   - python311-pygments-pytest 
   - python311-pygments-style-railscasts 
@@ -31314,6 +31308,7 @@ unsorted:
   - python39-logzero 
   - python39-looseversion 
   - python39-lscsoft-glue 
+  - python39-lsprotocol 
   - python39-lupa 
   - python39-lxml 
   - python39-lxml-devel 
@@ -31895,6 +31890,7 @@ unsorted:
   - python39-pygerrit2 
   - python39-pygit2 
   - python39-pyglet 
+  - python39-pygls 
   - python39-pygments-ansi-color 
   - python39-pygments-pytest 
   - python39-pygments-style-railscasts 
