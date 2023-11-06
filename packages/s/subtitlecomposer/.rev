@@ -119,4 +119,12 @@
   0001-VideoPlayer-Fix-usage-of-deprecated-removed-AVCodec-.patch</comment>
     <requestid>1085657</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5f617456604b791055e2ec616f8adf07</srcmd5>
+    <version>0.8.0</version>
+    <time>1699301705</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123671</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           subtitlecomposer
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        A text-based subtitle editor
 License:        GPL-2.0-or-later
@@ -26,16 +26,6 @@ URL:            https://invent.kde.org/multimedia/subtitlecomposer
 Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
 Source2:        subtitlecomposer.keyring
-# PATCH-FIX-UPSTREAM subtitlecomposer-ARM_GLES.patch
-Patch0:         subtitlecomposer-ARM_GLES.patch
-# PATCH-FIX-UPSTREAM subtitlecomposer-fix_empty_lines_crash.patch
-Patch1:         subtitlecomposer-fix_empty_lines_crash.patch
-# PATCH-FIX-UPSTREAM Fix build with ffmpeg 5
-Patch2:         0001-Fix-compilation-with-ffmpeg5-63.patch
-# PATCH-FIX-UPSTREAM Fix video player
-Patch3:         0001-VideoPlayer-Fix-usage-of-deprecated-removed-AVCodec-.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Use-non-deprecated-ffmpeg-api.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel
@@ -55,6 +45,7 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(icu-i18n)
@@ -64,6 +55,7 @@ BuildRequires:  pkgconfig(libavformat) >= 57.83.100
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(openssl)
 %if 0%{?suse_version} > 1500
 %ifnarch ppc64 s390x
 BuildRequires:  pkgconfig(pocketsphinx) >= 5
@@ -80,18 +72,6 @@ has speech Recognition using PocketSphinx.
 %prep
 %autosetup -p1
 
-# We build kross-interpreters without python support anyway, so we can
-# remove the python examples to remove an useless dependency on python2
-rm src/scripting/examples/*.py
-
-# Fix shebang
-sed -i '1s|%{_bindir}/env ruby|%{_bindir}/ruby|' \
-       src/scripting/examples/*.rb
-
-# Fix shebang in newly created files
-sed -i 's,#!/usr/bin/env ruby,#!%{_bindir}/ruby,' \
-       src/scripting/scriptsmanager.cpp
-
 %build
 %cmake_kf5 -d build
 %cmake_build
@@ -99,8 +79,6 @@ sed -i 's,#!/usr/bin/env ruby,#!%{_bindir}/ruby,' \
 %install
 %kf5_makeinstall -C build
 
-# Fix permissions
-chmod 755 %{buildroot}%{_kf5_appsdir}/%{name}/scripts/*.rb
 # Fix rpmlint error (devel-file-in-non-devel-package) and install header files as doc (since they are installed just for help)
 mkdir files_for_doc
 cp -a %{buildroot}%{_kf5_appsdir}/%{name}/scripts/api/ files_for_doc/
@@ -123,7 +101,6 @@ perl -pi -e "s|'api'|'%{_docdir}/subtitlecomposer/api'|" %{buildroot}%{_kf5_apps
 %{_kf5_appstreamdir}/org.kde.%{name}.appdata.xml
 %{_kf5_bindir}/%{name}
 %{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/%{name}/
 %{_kf5_sharedir}/mime/packages/%{name}.xml
 %if 0%{?suse_version} > 1500
 %ifnarch ppc64 s390x
