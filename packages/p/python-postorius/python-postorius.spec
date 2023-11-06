@@ -15,6 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_without testsuite
+
+# keep in sync with setup.py
+%global django_mailman3_min_version 1.3.10
+%global django_min_version 3.2
+%global django_max_version 4.3
+%global mailmanclient_min_version 3.3.3
 
 %{?sle15_python_module_pythons}
 
@@ -31,6 +38,7 @@
 %global postorius_logdir    %{_localstatedir}/log/postorius
 %global postorius_datadir   %{postorius_libdir}/data
 
+# keep in sync with python-HyperKitty/python-mailman-web
 %if 0%{?suse_version} >= 1550
 # Newest python supported by mailman is Python 3.11
 %define pythons python311
@@ -46,13 +54,13 @@
 %endif
 
 Name:           python-postorius
-Version:        1.3.8
+Version:        1.3.10
 Release:        0
 Summary:        A web user interface for GNU Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/postorius
 #
-Source0:        https://files.pythonhosted.org/packages/5b/47/0546fb950c3db35401c02ee77c66da7f78e2e276ee86198d1aa6929f9818/postorius-1.3.8.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/postorius/postorius-%{version}.tar.gz
 Source1:        python-postorius-rpmlintrc
 #
 Source10:       postorius-manage.sh
@@ -77,14 +85,14 @@ BuildRequires:  python3-packaging
 %endif
 # SECTION test requirements
 BuildRequires:  mailman3 >= 3.3.5
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= %{django_min_version}}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module cmarkgfm}
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
-BuildRequires:  %{python_module django-mailman3 >= 1.3.7}
+BuildRequires:  %{python_module django-mailman3 >= %{django_mailman3_min_version}}
 BuildRequires:  %{python_module django-requests-debug-toolbar >= 0.0.3}
 BuildRequires:  %{python_module isort}
-BuildRequires:  %{python_module mailmanclient >= 3.3.3}
+BuildRequires:  %{python_module mailmanclient >= %{mailmanclient_min_version}}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readme_renderer}
@@ -97,11 +105,11 @@ A web user interface for GNU Mailman
 
 %package -n %{postorius_pkgname}
 Summary:        A web user interface for GNU Mailman
-Requires:       %{mypython}-Django >= 1.11
+Requires:       (%{mypython}-Django >= %{django_min_version} with %{mypython}-Django < %{django_max_version})
 Requires:       %{mypython}-django-debug-toolbar >= 2.2.0
-Requires:       %{mypython}-django-mailman3 >= 1.3.7
+Requires:       %{mypython}-django-mailman3 >= %{django_mailman3_min_version}
 Requires:       %{mypython}-django-requests-debug-toolbar >= 0.0.3
-Requires:       %{mypython}-mailmanclient >= 3.3.2
+Requires:       %{mypython}-mailmanclient >= %{mailmanclient_min_version}
 Requires:       %{mypython}-readme_renderer
 %if "%{expand:%%%{mypython}_provides}" == "python3"
 Provides:       python3-%{postorius_pkgname} = %{version}-%{release}
@@ -201,6 +209,7 @@ install -m 0750 %{SOURCE10} %{buildroot}%{_sbindir}/postorius-manage
 install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
 install -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/uwsgi/vassals/postorius.ini
 
+%if %{with testsuite}
 %check
 export PYTHONPATH="$(pwd):$(pwd)/src"
 export LANG=C.UTF-8
@@ -208,6 +217,7 @@ export LANG=C.UTF-8
 # clean flavored alternatives created by test setup, because we are going to install the example_project as docs
 rm -rf build/flavorbin
 rm -rf build/xdgflavorconfig
+%endif
 
 %pre -n %{postorius_pkgname}-web
 /usr/sbin/groupadd -r postorius &>/dev/null || :
@@ -222,7 +232,7 @@ fi
 %{_sbindir}/postorius-manage migrate --pythonpath /srv/www/webapps/mailman/postorius/ --settings settings
 
 %files -n %{postorius_pkgname}
-%doc README.rst example_project
+%doc README.rst example_project src/postorius/doc/*.rst
 %license COPYING
 %{mypython_sitelib}/postorius
 %{mypython_sitelib}/postorius-%{version}*-info

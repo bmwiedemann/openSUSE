@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  6 11:47:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easy to run a build without testsuite
+  osc build --without=testsuite
+
+-------------------------------------------------------------------
+Mon Nov  6 00:11:33 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easier to notice to keep buildrequires and runtime
+  requires version limits in sync. This will also help us to notice
+  early when the version of other libraries do not match the
+  requires encoded in the source code.
+
+-------------------------------------------------------------------
+Thu Nov  2 10:42:19 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.10
+  * See https://gitlab.com/mailman/postorius/-/blob/v1.3.10/src/postorius/doc/news.rst
+    or the file news.rst in the postorius package
+
+-------------------------------------------------------------------
 Sun Jul  2 06:30:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix uwsgi requirement
