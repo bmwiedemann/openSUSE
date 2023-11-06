@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Nov  5 07:21:01 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+-  update to 4.2.03:
+  * Maintenance release
+  * FSQ sounding CR/LF
+    + add newline character at end of Sounding report
+    + correct thread loop counter test
+-  update to 4.2.02:
+  * fsq coding error: correct coding error reported by Ken, AD5XJ
+-  update to 4.2.01:
+  * fsq sounder
+    + change sounder squelch to only ch_sqlch_open state
+    + recode sounder as a separate thread
+  * FSK port: missing port assignment when NOT using shared port
+  * Cloud log update: add color indicators to validate cloud log
+    connection
+  * frequencies2 list
+    + add Save/Load to specific file
+    + "Clear" button changed to three state function
+       click - clear list with confirmation
+       SHIFT-click - load from file
+       CONTROL-click - save to file
+    + last load/save filename saved between executions
+  * fix gnu++ 11.17.xx warnings
+  * flrig auto shutdown: move closure point to just before
+    destroying the xmlrpc instance
+  * Light Buttons: add missing buttons to configuration color
+    control
+  * OFDM_2000 OFDM_2000F:  stub out all references to these two
+    modes
+  * New XMLRPC Command: Add "modem.get_io_names" Transfers 8 bit
+    safe modem list
+  * Serial i/o: port serial i/o changes from flrig
+  * Icons: set_msg_icon segmentation fault when parent widget is
+    NULL
+
+-------------------------------------------------------------------
 Sun Sep  3 08:58:12 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - update to 4.2.00:
