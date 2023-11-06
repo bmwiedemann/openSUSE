@@ -444,8 +444,11 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
 %hpc_setup_compiler
 %endif
 
-# Install serial library and headers
+# Install library and headers
+# Pass NUM_THREADS again, as it is not propagated from the build step
+# https://github.com/OpenMathLib/OpenBLAS/issues/4275
 %make_install  %{?build_flags} \
+    NUM_THREADS=%{num_threads} \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \

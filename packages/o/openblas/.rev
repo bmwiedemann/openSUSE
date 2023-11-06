@@ -670,4 +670,12 @@
 - Require at least 7G of disk space for building. (forwarded request 1068121 from eeich)</comment>
     <requestid>1068124</requestid>
   </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>7fd9db88fc628c2fafaf5b6fe870e387</srcmd5>
+    <version>0.3.21</version>
+    <time>1699301624</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123416</requestid>
+  </revision>
 </revisionlist>
