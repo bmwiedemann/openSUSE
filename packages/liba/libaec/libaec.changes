@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov  6 10:22:53 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove optional binary installation to please Factory 
+
+-------------------------------------------------------------------
+Mon Oct 30 14:14:23 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- make deploying aec executable conditional and default off, can
+    be added back later if needed 
+
+-------------------------------------------------------------------
+Mon Oct 16 09:48:52 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.1.2:
+  * Compile issue with MSVC 
+
+-------------------------------------------------------------------
+Fri Sep 29 13:00:31 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- put back aec executable
+- Update to version 1.1.1:
+  * Grab correct offsets when encoding
+  * Rename aec executable to graec, will not be installed any more
+  * The include file libaec.h now contains version information
+  * Support for decoding data ranges by Eugen Betke
+
+-------------------------------------------------------------------
 Mon Sep 27 08:29:34 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 1.0.6:

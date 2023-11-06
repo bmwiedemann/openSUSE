@@ -1,7 +1,7 @@
 #
 # spec file for package libaec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libaec
-Version:        1.0.6
+Version:        1.1.2
 Release:        0
 Summary:        Adaptive Entropy Coding library
 License:        BSD-2-Clause
@@ -54,7 +54,7 @@ System Standard documents 121.0-B-3 and 120.0-G-2.
 %package devel
 Summary:        Development files for libaec (Adaptive Entropy Coding library)
 Group:          Development/Libraries/C and C++
-Requires:       libaec0 = %{version}
+Requires:       libaec0 = %{version}-%{release}
 
 %description devel
 Development files for libaec (Adaptive Entropy Coding library), a lossless
@@ -71,17 +71,17 @@ replacement for the SZIP library (http://www.hdfgroup.org/doc_resource/SZIP).
 %package -n sz2-devel
 Summary:        Development files for libsz2
 Group:          Development/Libraries/C and C++
-Requires:       libaec-devel = %{version}
-Requires:       libsz2 = %{version}
-Provides:       libsz2-devel = %{version}
-Obsoletes:      libsz2-devel < %{version}
+Requires:       libaec-devel = %{version}-%{release}
+Requires:       libsz2 = %{version}-%{release}
+Provides:       libsz2-devel = %{version}-%{release}
+Obsoletes:      libsz2-devel < %{version}-%{release}
 
 %description -n sz2-devel
 Header files for libsz2, a drop-in replacement for the
 SZIP library (http://www.hdfgroup.org/doc_resource/SZIP).
 
 %prep
-%setup -q -n "%{name}-v%{version}"
+%autosetup -n "%{name}-v%{version}"
 
 %build
 %cmake
@@ -106,9 +106,7 @@ rmdir %{buildroot}/usr/cmake
 %files -n libaec0
 %license LICENSE.txt
 %doc README.md CHANGELOG.md
-%{_bindir}/aec
 %{_libdir}/libaec.so.0*
-%{_mandir}/man1/aec.*
 
 %files devel
 %{_libdir}/cmake/%{name}
