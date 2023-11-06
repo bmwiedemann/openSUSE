@@ -34,7 +34,8 @@ BuildRequires:  make >= 4
 BuildRequires:  python-rpm-macros
 BuildRequires:  zip
 BuildArch:      noarch
-Requires:       python3-yt-dlp
+# %%primary_python not available in Leap yet
+Requires:       %(echo %{python_module yt-dlp} | perl -pe 's{.* }{}g')
 %define python_subpackage_only 1
 %python_subpackages
 

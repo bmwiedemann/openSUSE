@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  5 10:22:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Make yt-dlp require the one pythonXX-yt-dlp that /usr/bin/yt-dlp
+  was built with.
+
+-------------------------------------------------------------------
 Fri Oct 27 07:27:07 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use python_subpackage_only to build the pythonXXX-yt-dlp

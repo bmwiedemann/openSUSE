@@ -261,4 +261,13 @@
   subpackages.</comment>
     <requestid>1120746</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>819e2d9f40951c14ad27f36264e4dc4e</srcmd5>
+    <version>2023.10.13</version>
+    <time>1699301630</time>
+    <user>anag+factory</user>
+    <comment>- Make yt-dlp require the one pythonXX-yt-dlp that /usr/bin/yt-dlp
+  was built with.</comment>
+    <requestid>1123401</requestid>
+  </revision>
 </revisionlist>
