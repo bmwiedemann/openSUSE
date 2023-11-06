@@ -7,4 +7,16 @@
     <comment>lux</comment>
     <requestid>1116480</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c3dc027910d88e642a49ba18ff0d166d</srcmd5>
+    <version>0.22.0</version>
+    <time>1699301659</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.22.0:
+  * build(deps): bump golang.org/x/net from 0.7.0 to 0.17.0 #1283
+  * Updated API for requesting subtitles from bilibili #1285
+  * feat: support bilibili b23.tv domain #1287
+  * Updated Bilibili bangumi extractor due to an API change #1291</comment>
+    <requestid>1123508</requestid>
+  </revision>
 </revisionlist>

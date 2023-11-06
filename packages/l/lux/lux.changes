@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:09:25 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.0:
+  * build(deps): bump golang.org/x/net from 0.7.0 to 0.17.0 #1283
+  * Updated API for requesting subtitles from bilibili #1285
+  * feat: support bilibili b23.tv domain #1287
+  * Updated Bilibili bangumi extractor due to an API change #1291
+
+-------------------------------------------------------------------
 Mon Oct  9 13:34:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.0:

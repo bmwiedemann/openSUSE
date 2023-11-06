@@ -1,5 +1,5 @@
 #
-# spec file for lux 
+# spec file for package lux
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -17,7 +17,7 @@
 
 
 Name:           lux
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        A video downloader built with Go
 License:        MIT
