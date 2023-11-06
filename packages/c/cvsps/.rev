@@ -181,4 +181,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="23" vrev="183">
+    <srcmd5>a3dad9951000487b0d10080816a9f760</srcmd5>
+    <version>2.1</version>
+    <time>1699301613</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported. (forwarded request 1123523 from dimstar)</comment>
+    <requestid>1123535</requestid>
+  </revision>
 </revisionlist>

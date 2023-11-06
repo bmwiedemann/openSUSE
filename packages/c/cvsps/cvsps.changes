@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:55:34 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue May  7 08:32:52 UTC 2013 - pgajdos@suse.com
 
 - downgrade to 2.1 [bnc#809800]

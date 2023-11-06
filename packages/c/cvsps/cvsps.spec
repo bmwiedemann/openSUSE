@@ -1,7 +1,7 @@
 #
 # spec file for package cvsps
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           cvsps
 BuildRequires:  cmake
 BuildRequires:  zlib-devel
 Summary:        A Program for Generating Patch Set Information from a CVS Repository
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 # DO NOT UPGRADE to 3.x before you make sure it works with git-cvsps [bnc#809800]
 Version:        2.1
@@ -33,8 +33,8 @@ Source3:        fixes.tar.bz2
 Source4:        CMakeLists.txt
 Obsoletes:      cvsps2 <= %{version}
 Provides:       cvsps2 = %{version}
-Patch:          commitid.diff
-Url:            http://www.cobite.com/cvsps/
+Patch0:         commitid.diff
+URL:            http://www.cobite.com/cvsps/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -46,8 +46,6 @@ the big picture of the evolution of a CVS project. While CVS tracks
 revision information, it is often difficult to see what changes were
 'atomically' committed to the repository.
 
-
-
 %prep
 %setup -q -n cvsps-%{real_version}
 tar xvfj %{SOURCE3}
@@ -55,7 +53,7 @@ for patch in $(cat fixes/series); do
     patch -p1 < fixes/$patch
 done
 cp %{SOURCE1} %{SOURCE2} %{SOURCE4} .
-%patch -p1
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -63,7 +61,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_VERBOSE_MAKEFILE=TRUE .
 %{__make} %{?jobs:-j%jobs}
 
 %install
-%makeinstall 
+%makeinstall
 
 %clean
 rm -rf $RPM_BUILD_ROOT
