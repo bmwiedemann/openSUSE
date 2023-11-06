@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:04:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.9:
+  * bluez: Assert single/multiple property types safely
+  * ui: progress: Do not close page when no transfers are in progress
+  * ui: modal: Set width and height appropriately with the provided message
+  * ui: modal: Set width and height appropriately with the provided message
+
+-------------------------------------------------------------------
 Wed Oct 25 14:26:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.1.8:

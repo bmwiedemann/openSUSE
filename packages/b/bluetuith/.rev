@@ -59,4 +59,16 @@
   * Minor bugfixes</comment>
     <requestid>1120321</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>22f4e5ce085bf6e7b6574f5cd4791c03</srcmd5>
+    <version>0.1.9</version>
+    <time>1699301656</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.9:
+  * bluez: Assert single/multiple property types safely
+  * ui: progress: Do not close page when no transfers are in progress
+  * ui: modal: Set width and height appropriately with the provided message
+  * ui: modal: Set width and height appropriately with the provided message</comment>
+    <requestid>1123506</requestid>
+  </revision>
 </revisionlist>
