@@ -96,6 +96,7 @@ Requires:       coreutils
 Requires:       glibc
 Suggests:       busybox-hostname
 Requires:       NetworkManager
+Requires:       NetworkManager-bluetooth
 Requires:       NetworkManager-wifi
 Requires:       iproute2
 Requires:       lastlog2
@@ -297,6 +298,8 @@ Requires:       gnome-user-docs
 Requires:       gpgme
 # for online accounts and calendar integration
 Requires:       gnome-bluetooth
+# for display color profile support
+Requires:       gnome-control-center-color
 # needed to ensure bluetooth is enabled at startup (glgo#GNOME/gnome-bluetooth#110)
 Requires:       bluez-auto-enable-devices
 Requires:       gnome-control-center-goa
