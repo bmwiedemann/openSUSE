@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 30 15:33:46 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.3
+  * Do not call deprecated datetime.utcnow() and datetime.utcfromtimestamp()
+  * Support for Python 3.7 was deprecated and will be removed in our next planned release.
+  * Fixed a bug that caused the ACME account to not be properly restored on
+    renewal causing problems in setups where the user had multiple accounts with
+    the same ACME server.
+
+-------------------------------------------------------------------
 Wed Jun  7 15:12:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.6.0
