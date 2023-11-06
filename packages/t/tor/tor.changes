@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  3 20:51:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.8.8:
+  * Mitigate an issue when Tor compiled with OpenSSL can crash during
+    handshake with a remote relay. (TROVE-2023-004, boo#1216873)
+  * Regenerate fallback directories generated on November 03, 2023.
+  * Update the geoip files to match the IPFire Location Database, as
+    retrieved on 2023/11/03
+  * directory authority: Look at the network parameter
+    "maxunmeasuredbw" with the correct spelling
+  * vanguards addon support: Count the conflux linked cell as
+    valid when it is successfully processed. This will quiet a 
+    spurious warn in the vanguards addon
+
+-------------------------------------------------------------------
 Mon Sep 25 20:15:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.8.7:
