@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  6 05:46:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.8:
+  * Fixed invalid local address replacement when using instant
+    loading
+  * Fixed #6275: Crash after navigation caused 404 when using
+    instant loading
+
+-------------------------------------------------------------------
 Mon Oct 30 07:26:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.7:
