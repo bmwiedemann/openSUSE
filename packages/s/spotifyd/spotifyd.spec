@@ -18,12 +18,12 @@
 
 %define spotifyd_features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend
 Name:           spotifyd
-Version:        0.3.3
+Version:        0.3.5
 Release:        0
 Summary:        Spotify client running as a UNIX daemon
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            https://github.com/Spotifyd/spotifyd
+URL:            https://spotifyd.rs/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config

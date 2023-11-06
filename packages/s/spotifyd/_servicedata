@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/Spotifyd/spotifyd.git</param>
+              <param name="changesrevision">d2387ed4b8dc13f0cbe17c0c9c076e2271f4472e</param></service></servicedata>

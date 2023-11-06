@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 06 07:34:00 UTC 2023 - mailaender@opensuse.org
+
+- Update to version 0.3.5:
+  * new project website
+  * Credential caching has been re-enabled
+  * A audio_format option was added to circumvent certain errors 
+  * Improved backend selection logic
+  * Documentation improvements
+  * Minimum supported rust version (MSRV) has been bumped to 1.64
+  * Dependency updated
+  * Shuffle setter.
+
+- Update to version 0.3.4:
+  * Add cache_size configuration option
+  * Add dbus_type configuration option
+  * Improve error reporting
+  * Fix wrong handling of credential cache
+
+-------------------------------------------------------------------
 Tue Feb 14 01:45:15 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
