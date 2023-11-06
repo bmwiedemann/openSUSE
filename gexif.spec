@@ -1,7 +1,7 @@
 #
 # spec file for package gexif
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,15 +24,15 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
 Summary:        GTK Tool for Viewing EXIF Information
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 Version:        0.5
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        gexif.png
-Patch:          gexif-0.5-xx.patch
+Patch0:         gexif-0.5-xx.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://libexif.sourceforge.net/
+URL:            http://libexif.sourceforge.net/
 Requires:       %{name}-lang = %{version}
 
 %description
@@ -40,9 +40,10 @@ This tool contains simple GTK interface for viewing EXIF information
 within JPEG images created by some digital cameras.
 
 %lang_package
+
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 autoreconf -f -i
