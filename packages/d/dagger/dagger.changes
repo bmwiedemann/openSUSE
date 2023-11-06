@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 06 05:38:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.3:
+  * release notes for v0.9.3 (#6060)
+  * ci: update all github workflows to go 1.21 (#6059)
+  * dagger call: add support for service arguments (#6028)
+  * CLI: support git URLs as directory arguments (#6058)
+  * engine: update to latest graphql-go version (#6056)
+  * dagger call: fix returning a list of objects with functions
+    (#6025)
+  * fix: reduce verbosity of codegen errors (#6042)
+  * dagger download: rename flag --export-path to --output (#6026)
+  * Fix for annotated dagger types (#6037)
+  * cli: handle more git remote cases in mod publish (#6053)
+  * chore(deps-dev): bump uk.org.webcompere:system-stubs-jupiter
+    (#6045)
+  * zenith: set subpath and path when parent module is git (#6052)
+  * chore: update x/net to v0.17.0 (#6040)
+  * fix: remove comparable constraint from Optional (#6041)
+  * docs: fix typo in method name (#6038)
+  * cli: call asService if container provided to dagger up (#6039)
+  * fix zenith call -m docs (#6036)
+  * feat: support passing core type arrays to dagger call (#6030)
+  * Improve releasing during v0.9.2 (#6027)
+  * chore(deps): bump google.golang.org/grpc from 1.58.3 to 1.59.0
+    (#6008)
+
+-------------------------------------------------------------------
 Tue Oct 31 06:09:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.2:
