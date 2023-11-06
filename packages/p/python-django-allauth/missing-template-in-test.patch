@@ -1,6 +1,8 @@
---- a/allauth/account/tests.py	2023-07-29 03:13:58.816192704 +0200
-+++ b/allauth/account/tests.py	2023-07-29 03:14:17.592388201 +0200
-@@ -1740,7 +1740,7 @@
+Index: django-allauth-0.58.1/allauth/account/tests/test_ratelimit.py
+===================================================================
+--- django-allauth-0.58.1.orig/allauth/account/tests/test_ratelimit.py	2023-11-02 09:22:23.776697894 +0100
++++ django-allauth-0.58.1/allauth/account/tests/test_ratelimit.py	2023-11-02 09:22:34.456792940 +0100
+@@ -22,7 +22,7 @@ class RateLimitTests(TestCase):
              reverse("account_reset_password"), data={"email": "a@b.com"}
          )
          assert resp.status_code == 302
@@ -8,7 +10,7 @@
 -            reverse("account_reset_password"), data={"email": "A@B.COM"}
 -        )
 -        assert resp.status_code == 429
-+        #resp = self.client.post(
-+        #    reverse("account_reset_password"), data={"email": "A@B.COM"}
-+        #)
-+        #assert resp.status_code == 429
++        # resp = self.client.post(
++        #     reverse("account_reset_password"), data={"email": "A@B.COM"}
++        # )
++        # assert resp.status_code == 429

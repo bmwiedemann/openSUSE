@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  6 00:48:51 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easier to notice to keep buildrequires and runtime
+  requires version limits in sync. This will also help us to notice
+  early when the version of other libraries do not match the
+  requires encoded in the source code.
+
+-------------------------------------------------------------------
+Thu Nov  2 07:54:22 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to v0.58.1
+  * See https://github.com/pennersr/django-allauth/blob/0.58.1/ChangeLog.rst
+    or the ChangeLog.rst included in this package
+
+-------------------------------------------------------------------
 Sat Jul 29 00:48:53 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to v0.54.0

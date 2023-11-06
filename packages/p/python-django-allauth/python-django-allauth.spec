@@ -15,10 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# keep in sync in setup.cfg
+%global django_min_version 3.2
+%global python3_openid_min_version 3.0.8
+%global requests_oauthlib_min_version 0.3.0
+%global requests_min_version 2.0.0
+%global pyjwt_min_version 1.7
+# optional extra requires
+%global python3_saml_min_version 1.15.0
+%global python3_saml_max_version 2.0.0
+%global qrcode_min_version 7.0.0
+# testing
+%global pillow_min_version 9.0
+%global pytest_min_version 7.4
+%global pytest_django_min_version 4.5.2
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        0.54.0
+Version:        0.58.1
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
@@ -26,19 +40,28 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pennersr/django-allauth
 Source:         https://files.pythonhosted.org/packages/source/d/django-allauth/django-allauth-%{version}.tar.gz
 Patch:          missing-template-in-test.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module Django >= %{django_min_version}}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python3-openid >= %{python3_openid_min_version}}
+BuildRequires:  %{python_module requests-oauthlib >= %{requests_oauthlib_min_version}}
+BuildRequires:  %{python_module requests >= %{requests_min_version}}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.0
-Requires:       python-python3-openid >= 3.0.8
-Requires:       python-requests
-Requires:       python-requests-oauthlib >= 0.3.0
+Requires:       python-Django >= %{django_min_version}
+Requires:       python-python3-openid >= %{python3_openid_min_version}
+Requires:       python-requests >= %{requests_min_version}
+Requires:       python-requests-oauthlib >= %{requests_oauthlib_min_version}
+Requires:       python-PyJWT >= %{pyjwt_min_version}
+Recommends:     (python-python3-saml >= %{python3_saml_min_version} with python-python3-saml < %{python3_saml_max_version})
+Recommends:     python-qrcode >= %{qrcode_min_version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.0}
-BuildRequires:  %{python_module python3-openid >= 3.0.8}
-BuildRequires:  %{python_module requests-oauthlib >= 0.3.0}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module Pillow >= %{pillow_min_version}}
+BuildRequires:  %{python_module pytest-django >= %{pytest_django_min_version}}
+BuildRequires:  %{python_module pytest >= %{pytest_min_version}}
+BuildRequires:  %{python_module python3-saml >= %{python3_saml_min_version}}
+BuildRequires:  %{python_module qrcode >= %{qrcode_min_version}}
 # /SECTION
 %python_subpackages
 
@@ -48,22 +71,19 @@ account management as well as 3rd party (social) account authentication.
 
 %prep
 %autosetup -p1 -n django-allauth-%{version}
-# Five errors reported at https://github.com/pennersr/django-allauth/issues/2210
-# Cern provider test module fails
-rm allauth/socialaccount/providers/cern/tests.py
 
 # 2 tests failing with KeyError: 'location' (not in response headers)
 sed -i 's/test_login/_test_login/' allauth/socialaccount/providers/openid/tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONPATH=.
+export PYTHONPATH="$(pwd)"
 %python_expand django-admin-%{$python_bin_suffix} test --settings=test_settings
 
 %files %{python_files}
