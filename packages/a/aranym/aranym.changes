@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:51:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
 Mon Jun 13 22:03:35 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Add missing build requires

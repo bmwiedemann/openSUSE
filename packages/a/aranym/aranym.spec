@@ -1,7 +1,7 @@
 #
 # spec file for package aranym
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          System/Emulators/Other
 URL:            http://aranym.github.io/
 Source:         %{name}-%{version}.tar.gz
 Source1:        afros812.zip
-Patch:          pow10.patch
+Patch0:         pow10.patch
 Patch1:         lto.patch
 Patch2:         includes.patch
 BuildRequires:  automake
