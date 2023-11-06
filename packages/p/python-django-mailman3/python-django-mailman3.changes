@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  6 00:11:01 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easier to notice to keep buildrequires and runtime
+  requires version limits in sync. This will also help us to notice
+  early when the version of other libraries do not match the
+  requires encoded in the source code.
+
+-------------------------------------------------------------------
+Thu Nov  2 07:18:55 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.11
+  * See https://gitlab.com/mailman/django-mailman3/-/blob/master/README.rst
+    or README.rst packaged in this file.
+  * BREAKING CHANGE: django_mailman3 now requires django_allauth>=0.56. This
+    requires the addition of allauth.account.middleware.AccountMiddleware to
+    MIDDLEWARE in your Django settings. If your installation uses settings from
+    mailman-web as here, upgrading mailman-web to 0.0.7 will do this.
+
+-------------------------------------------------------------------
 Sun Jun 25 08:23:00 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.3.9
