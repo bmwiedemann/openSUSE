@@ -13,6 +13,7 @@ Sun Oct 29 18:44:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
   * oxvcard: export to .vcf now positions the VERSION property in
     accordance with the vCard 4.0 specification.
   * oxcmail: cease gratuitous RTF conversion of calendar items.
+- Add 0001-build-resolve-i586-compile-error.patch
 
 -------------------------------------------------------------------
 Wed Oct 18 13:01:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>

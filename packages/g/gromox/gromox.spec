@@ -28,6 +28,7 @@ URL:            https://grommunio.com/
 Source:         https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.zst
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
+Patch1:         0001-build-resolve-i586-compile-error.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

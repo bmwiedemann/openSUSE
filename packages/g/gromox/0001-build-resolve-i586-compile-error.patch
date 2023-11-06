@@ -1,0 +1,36 @@
+From b13e1bf5522baa86021a6ff40e1e29e84e84538a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 30 Oct 2023 08:01:14 +0100
+Subject: [PATCH] build: resolve i586 compile error
+
+edb2mt.cpp: In function 'read_col':
+edb2mt.cpp:211:65: error: cannot convert 'size_t*' {aka 'unsigned
+int*'} to 'size64_t*' {aka 'long long unsigned int*'}
+---
+ tools/edb2mt.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tools/edb2mt.cpp b/tools/edb2mt.cpp
+index 159b2c4fc..8ed992b95 100644
+--- a/tools/edb2mt.cpp
++++ b/tools/edb2mt.cpp
+@@ -206,12 +206,14 @@ static void read_col(libesedb_record_t *row, unsigned int x,
+ 			throw az_error("EE-1014", err);
+ 	} else if (is_lval) {
+ 		ese_lval_ptr lv;
++		uint64_t dsize64 = 0;
+ 		if (libesedb_record_get_long_value(row, x, &unique_tie(lv), &~unique_tie(err)) < 1)
+ 			throw az_error("EE-1018", err);
+-		if (libesedb_long_value_get_data_size(lv.get(), &dsize, &~unique_tie(err)) < 1)
++		if (libesedb_long_value_get_data_size(lv.get(), &dsize64, &~unique_tie(err)) < 1)
+ 			throw az_error("EE-1019", err);
+-		if (dsize == 0)
++		if (dsize64 == 0)
+ 			return;
++		dsize = std::max(dsize64, static_cast<uint64_t>(UINT32_MAX));
+ 		udata.resize(dsize);
+ 		if (libesedb_long_value_get_data(lv.get(),
+ 		    TOU8(udata.data()), dsize, &~unique_tie(err)) < 1)
+-- 
+2.42.0
+
