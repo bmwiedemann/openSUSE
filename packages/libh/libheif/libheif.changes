@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  3 14:49:07 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.17.3
+  * Bug fix #1026: corrected transform box generation for
+    heif_orientation_flip_vertically and
+    heif_orientation_rotate_90_cw_then_flip_vertically
+
+- update to 1.17.2:
+  * #1010 loading of HEIF files with extra zero bytes at the end
+  * #1015 / #1017 default nclx values now match sRGB
+  * support JPEG2000 images with alpha channel
+  * various smaller fixes
+
+-------------------------------------------------------------------
 Thu Oct 19 16:12:42 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.17.1:
