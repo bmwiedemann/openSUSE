@@ -480,4 +480,14 @@
   * drops cve_2021_20270.patch, cve_2021_27291.patch in older dists</comment>
     <requestid>1109328</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>0d760c6d1ccba37d39200a3273d0aa4d</srcmd5>
+    <version>2.16.1</version>
+    <time>1699301622</time>
+    <user>anag+factory</user>
+    <comment>- Add skip-wcag-contrast-ratio.patch to make
+  python-wcag-contrast-ratio just optional dependency
+  (gh#pygments/pygments!2564).</comment>
+    <requestid>1123390</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  5 07:15:50 UTC 2023 - Matěj Cepl <mcepl@cepl.eu>
+
+- Add skip-wcag-contrast-ratio.patch to make
+  python-wcag-contrast-ratio just optional dependency
+  (gh#pygments/pygments!2564).
+
+-------------------------------------------------------------------
 Mon Aug  7 13:10:31 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 2.16.1:

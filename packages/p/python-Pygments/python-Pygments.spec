@@ -32,18 +32,18 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://pygments.org
 Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip-wcag-contrast-ratio.patch gh#pygments/pygments!2564 mcepl@suse.com
+# Don't make wcag-contrast-ratio mandatory for testing
+Patch0:         skip-wcag-contrast-ratio.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module setuptools >= 61}
-BuildRequires:  %{python_module wcag-contrast-ratio}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 # Preferred for plugin loading, see https://pygments.org/docs/plugins/
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
+Requires:       (python-importlib-metadata if python-base < 3.8)
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -84,7 +84,6 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 }
 
 %check
-# skip test that requires wcag-contrast-ratio Python package
 %pytest
 
 %pre
