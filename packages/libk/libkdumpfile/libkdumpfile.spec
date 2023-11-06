@@ -48,7 +48,7 @@
 %define oldpython python
 
 Name:           libkdumpfile
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 %if "%name" == "libkdumpfile"
 Summary:        Kernel dump file access library

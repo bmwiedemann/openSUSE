@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 14:27:10 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Upgrade to libkdumpfile version 0.5.3
+  * Support flattened KDUMP format.
+
+-------------------------------------------------------------------
 Mon Jul 17 10:04:11 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Upgrade to libkdumpfile version 0.5.2
