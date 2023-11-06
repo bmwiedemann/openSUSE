@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libxml-perl
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,12 +22,12 @@ BuildRequires:  perl-macros
 Version:        0.08
 Release:        0
 Requires:       perl-XML-Parser
-Url:            http://cpan.org/modules/by-module/XML/
+URL:            http://cpan.org/modules/by-module/XML/
 Summary:        Collection of Perl modules for working with XML
-License:        Artistic-1.0 or GPL-2.0+
+License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Development/Libraries/Perl
 Source:         libxml-perl-%{version}.tar.bz2
-Patch:          libxml-perl-%{version}-test.diff
+Patch0:         libxml-perl-%{version}-test.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 
@@ -42,7 +42,7 @@ Authors:
 
 %prep
 %setup -n libxml-perl-%{version}
-%patch
+%patch0
 
 %build
 perl Makefile.PL
