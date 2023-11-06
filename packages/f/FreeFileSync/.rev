@@ -212,4 +212,19 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1112735</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>73289524b51b87f8af94ca48f2bd4ad3</srcmd5>
+    <version>13.1</version>
+    <time>1699301661</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.1:
+  * Keep comparison results when only changing cloud connection settings
+  * Sync button: indicate if database will be used
+  * Remove leading/trailing space during manual file rename
+  * Set environment variable &quot;DISPLAY=:0&quot; if missing (Linux)
+  * Support dropping ffs_gui/ffs_real config on RealTimeSync directory input field
+- Add FreeFileSync-remove_ifdef_exceptions.patch
+</comment>
+    <requestid>1123534</requestid>
+  </revision>
 </revisionlist>

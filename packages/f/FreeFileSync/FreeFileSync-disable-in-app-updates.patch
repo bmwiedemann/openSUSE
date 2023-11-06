@@ -1,23 +1,23 @@
-diff -ru a/FreeFileSync/Source/ui/gui_generated.cpp b/FreeFileSync/Source/ui/gui_generated.cpp
---- a/FreeFileSync/Source/ui/gui_generated.cpp	2023-09-13 12:16:12.000000000 +0200
-+++ b/FreeFileSync/Source/ui/gui_generated.cpp	2023-09-21 10:05:00.360102541 +0200
+diff -ru orig/FreeFileSync/Source/ui/gui_generated.cpp mod/FreeFileSync/Source/ui/gui_generated.cpp
+--- orig/FreeFileSync/Source/ui/gui_generated.cpp	2023-10-23 19:11:01.000000000 +0200
++++ mod/FreeFileSync/Source/ui/gui_generated.cpp	2023-11-06 08:14:50.253320546 +0100
 @@ -108,10 +108,10 @@
- 	m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
- 	m_menuHelp->Append( m_menuItemHelp );
+     m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
+     m_menuHelp->Append( m_menuItemHelp );
  
--	m_menuHelp->AppendSeparator();
-+	//m_menuHelp->AppendSeparator();
+-    m_menuHelp->AppendSeparator();
++    //m_menuHelp->AppendSeparator();
  
- 	m_menuItemCheckVersionNow = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("&Check for updates now") ) , wxEmptyString, wxITEM_NORMAL );
--	m_menuHelp->Append( m_menuItemCheckVersionNow );
-+	//m_menuHelp->Append( m_menuItemCheckVersionNow );
+     m_menuItemCheckVersionNow = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("&Check for updates now") ), wxEmptyString, wxITEM_NORMAL );
+-    m_menuHelp->Append( m_menuItemCheckVersionNow );
++    //m_menuHelp->Append( m_menuItemCheckVersionNow );
  
- 	m_menuHelp->AppendSeparator();
+     m_menuHelp->AppendSeparator();
  
-diff -ru a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg.cpp
---- a/FreeFileSync/Source/ui/main_dlg.cpp	2023-09-13 12:16:12.000000000 +0200
-+++ b/FreeFileSync/Source/ui/main_dlg.cpp	2023-09-21 10:05:32.806975589 +0200
-@@ -962,7 +962,7 @@
+diff -ru orig/FreeFileSync/Source/ui/main_dlg.cpp mod/FreeFileSync/Source/ui/main_dlg.cpp
+--- orig/FreeFileSync/Source/ui/main_dlg.cpp	2023-10-23 19:11:01.000000000 +0200
++++ mod/FreeFileSync/Source/ui/main_dlg.cpp	2023-11-06 08:15:07.343421717 +0100
+@@ -972,7 +972,7 @@
      updateGui();
  
      //register regular check for update on next idle event
@@ -26,15 +26,15 @@ diff -ru a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg
  
      //asynchronous call to wxWindow::Dimensions(): fix superfluous frame on right and bottom when FFS is started in fullscreen mode
      Bind(wxEVT_IDLE, &MainDialog::onLayoutWindowAsync, this);
-diff -ru a/FreeFileSync/Source/ui/version_check.cpp b/FreeFileSync/Source/ui/version_check.cpp
---- a/FreeFileSync/Source/ui/version_check.cpp	2023-09-13 12:16:13.000000000 +0200
-+++ b/FreeFileSync/Source/ui/version_check.cpp	2023-09-21 10:06:09.283874265 +0200
-@@ -58,7 +58,8 @@
+diff -ru orig/FreeFileSync/Source/ui/version_check.cpp mod/FreeFileSync/Source/ui/version_check.cpp
+--- orig/FreeFileSync/Source/ui/version_check.cpp	2023-10-23 19:11:01.000000000 +0200
++++ mod/FreeFileSync/Source/ui/version_check.cpp	2023-11-06 08:15:30.556892464 +0100
+@@ -47,7 +47,8 @@
  bool fff::automaticUpdateCheckDue(time_t lastUpdateCheck)
  {
      const time_t now = std::time(nullptr);
--    return std::abs(now - lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
-+    //return std::abs(now - lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
+-    return numeric::dist(now, lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
++    //return numeric::dist(now, lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
 +    return false;
  }
  

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  6 07:08:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.1:
+  * Keep comparison results when only changing cloud connection settings
+  * Sync button: indicate if database will be used
+  * Remove leading/trailing space during manual file rename
+  * Set environment variable "DISPLAY=:0" if missing (Linux)
+  * Support dropping ffs_gui/ffs_real config on RealTimeSync directory input field
+- Add FreeFileSync-remove_ifdef_exceptions.patch
+
+-------------------------------------------------------------------
 Thu Sep 21 08:01:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.0:

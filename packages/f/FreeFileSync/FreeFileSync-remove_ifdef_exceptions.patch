@@ -1,0 +1,26 @@
+diff -ru orig/FreeFileSync/Source/application.cpp mod/FreeFileSync/Source/application.cpp
+--- orig/FreeFileSync/Source/application.cpp	2023-10-23 19:11:01.000000000 +0200
++++ mod/FreeFileSync/Source/application.cpp	2023-11-06 08:28:37.761541047 +0100
+@@ -245,9 +245,6 @@
+ {
+     try
+     {
+-#if wxUSE_EXCEPTIONS
+-#error why is wxWidgets uncaught exception handling enabled!?
+-#endif
+         [[maybe_unused]] const int rc = wxApp::OnRun();
+     }
+     catch (const std::bad_alloc& e) //the only kind of exception we don't want crash dumps for
+diff -ru orig/FreeFileSync/Source/RealTimeSync/application.cpp mod/FreeFileSync/Source/RealTimeSync/application.cpp
+--- orig/FreeFileSync/Source/RealTimeSync/application.cpp	2023-10-23 19:11:01.000000000 +0200
++++ mod/FreeFileSync/Source/RealTimeSync/application.cpp	2023-11-06 10:00:53.809721258 +0100
+@@ -211,9 +211,6 @@
+ {
+     try
+     {
+-#if wxUSE_EXCEPTIONS
+-#error why is wxWidgets uncaught exception handling enabled!?
+-#endif
+         [[maybe_unused]] const int rc = wxApp::OnRun();
+     }
+     catch (const std::bad_alloc& e) //the only kind of exception we don't want crash dumps for

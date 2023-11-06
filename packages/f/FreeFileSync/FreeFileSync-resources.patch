@@ -1,8 +1,8 @@
-Index: FreeFileSync-12.4/FreeFileSync/Source/ffs_paths.cpp
+Index: FreeFileSync-13.1/FreeFileSync/Source/ffs_paths.cpp
 ===================================================================
---- FreeFileSync-12.4.orig/FreeFileSync/Source/ffs_paths.cpp
-+++ FreeFileSync-12.4/FreeFileSync/Source/ffs_paths.cpp
-@@ -55,7 +55,8 @@ Zstring fff::getInstallDirPath()
+--- FreeFileSync-13.1.orig/FreeFileSync/Source/ffs_paths.cpp
++++ FreeFileSync-13.1/FreeFileSync/Source/ffs_paths.cpp
+@@ -54,7 +54,8 @@ Zstring fff::getInstallDirPath()
  
  Zstring fff::getResourceDirPath()
  {
