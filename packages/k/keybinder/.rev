@@ -23,4 +23,12 @@
     <comment>- Disable python2 bindings on 15.4 - they fail to build.</comment>
     <requestid>966875</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d0320231ce14441b111b558d9fd2b4eb</srcmd5>
+    <version>0.3.1</version>
+    <time>1699301700</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123664</requestid>
+  </revision>
 </revisionlist>

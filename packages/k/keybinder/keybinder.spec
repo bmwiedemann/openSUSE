@@ -1,7 +1,7 @@
 #
 # spec file for package keybinder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/kupferlauncher
 Source:         https://github.com/kupferlauncher/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        example_gi.py
-Patch:          keybinder-doc-xml-fallback.patch
+Patch0:         keybinder-doc-xml-fallback.patch
 BuildRequires:  ed
 BuildRequires:  fdupes
 # For Documentation Directory Ownership
@@ -131,7 +131,7 @@ This package provides the GObject Introspection bindings for libkeybinder0.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 cp -a %{SOURCE1} examples
 find examples/ \( -name '*.py' -o -name '*.lua' \) -print -exec sh -c '
 ed -s "$1" 2>/dev/null <<\EOF

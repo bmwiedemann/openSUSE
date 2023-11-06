@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 16:19:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Mon Apr  4 18:53:53 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Disable python2 bindings on 15.4 - they fail to build.
