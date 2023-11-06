@@ -32,6 +32,8 @@ Group:          Productivity/Networking/System
 URL:            https://github.com/cornelisnetworks/opa-ff
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        opa-ff.rpmlintrc
+Source2:        opa-cablehealth.service
+Source3:        opa-cablehealth.timer
 Patch1:         opa-ff-add-shebang-for-exp-files.patch
 Patch2:         opa-ff-suse-build-fixes.patch
 Patch3:         workaround-bsc-1172755.patch
@@ -64,7 +66,6 @@ Contains basic tools for fabric managment necessary on all compute nodes.
 %package -n opa-fastfabric
 Summary:        OmniPath management level tools and scripts
 Group:          Productivity/Networking/System
-Requires:       cron
 Requires:       opa-basic-tools
 %if 0%{?rhel}
 Requires:       atlas
@@ -156,7 +157,6 @@ mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/opa
-mkdir -p  %{buildroot}%{_sysconfdir}/cron.daily/
 #Binaries and scripts installing (basic tools)
 #cd builtbin.OPENIB_FF.release
 cd $(cat %{_builddir}/RELEASE_PATH)
@@ -191,10 +191,10 @@ cd ../etc
 cp -t %{buildroot}/%{pseudo_opt}fm_tools/ ${ff_tools_fm}
 ln -s %{pseudo_opt}/fm_tools/config_check %{buildroot}%{_sbindir}/opafmconfigcheck
 ln -s %{pseudo_opt}/fm_tools/config_diff %{buildroot}%{_sbindir}/opafmconfigdiff
-cd cron.d
-# We do not want there cron.d stuff. Directly link the proper bin in cron.daily
-ln -s /%{pseudo_opt}tools/opacablehealthcron %{buildroot}%{_sysconfdir}/cron.daily/opa-cablehealth
-cd ..
+# We do not want their cron.d stuff.
+# We enable the appropriate systemd service/timer that uses the correct binary.
+install -D -m 0644 %{SOURCE2} %{buildroot}/%{_unitdir}/opa-cablehealth.service
+install -D -m 0644 %{SOURCE3} %{buildroot}/%{_unitdir}/opa-cablehealth.timer
 cd ../fastfabric/samples
 cp -t %{buildroot}%{pseudo_opt}samples ${ff_iba_samples} ${basic_samples}
 cd ..
@@ -332,6 +332,18 @@ done
 %doc README
 %license LICENSE
 
+%pre -n opa-fastfabric
+%service_add_pre opa-cablehealth.service opa-cablehealth.timer
+
+%preun -n opa-fastfabric
+%service_del_preun opa-cablehealth.service opa-cablehealth.timer
+
+%post -n opa-fastfabric
+%service_add_post opa-cablehealth.service opa-cablehealth.timer
+
+%postun -n opa-fastfabric
+%service_del_postun opa-cablehealth.service opa-cablehealth.timer
+
 %files -n opa-fastfabric -f %{_builddir}/ff_file.list
 %defattr(-,root,root,0755)
 %dir %{pseudo_opt}
@@ -352,8 +364,8 @@ done
 %config(noreplace) %{opasysconfdir}/hosts
 %config(noreplace) %{opasysconfdir}/ports
 %config(noreplace) %{opasysconfdir}/switches
-%dir %{_sysconfdir}/cron.daily
-%config(noreplace) %{_sysconfdir}/cron.daily/opa-cablehealth
+%{_unitdir}/opa-cablehealth.service
+%{_unitdir}/opa-cablehealth.timer
 %{opasysconfdir}/opamon.si.conf
 # Replace opamon.si.conf, as it's a template config file.
 %{pseudo_opt}tools/osid_wrapper

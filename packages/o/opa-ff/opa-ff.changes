@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  3 21:50:15 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- opa-fastfabric: migrate from cron to systemd timers.
+
+-------------------------------------------------------------------
 Thu Sep 28 13:55:20 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v10.12.1.0.6
