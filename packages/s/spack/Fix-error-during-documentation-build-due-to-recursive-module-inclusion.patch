@@ -10,13 +10,13 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  lib/spack/spack/environment/environment.py | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/lib/spack/spack/environment/environment.py b/lib/spack/spack/environment/environment.py
-index a4312df6dc..10bfbd2a4d 100644
---- a/lib/spack/spack/environment/environment.py
-+++ b/lib/spack/spack/environment/environment.py
-@@ -41,6 +41,10 @@
+Index: spack-0.20.3/lib/spack/spack/environment/environment.py
+===================================================================
+--- spack-0.20.3.orig/lib/spack/spack/environment/environment.py
++++ spack-0.20.3/lib/spack/spack/environment/environment.py
+@@ -40,6 +40,10 @@ import spack.stage
+ import spack.store
  import spack.subprocess_context
- import spack.traverse
  import spack.user_environment as uenv
 +try:
 +    import spack.user_environment as uenv
@@ -25,6 +25,3 @@ index a4312df6dc..10bfbd2a4d 100644
  import spack.util.cpus
  import spack.util.environment
  import spack.util.hash
--- 
-2.40.1
-

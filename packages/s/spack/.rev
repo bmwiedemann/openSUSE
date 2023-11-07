@@ -391,4 +391,35 @@
     + Improve a few error messages. (forwarded request 1110679 from eeich)</comment>
     <requestid>1110682</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cc38fc0163dd6e24d324caabdd9adf90</srcmd5>
+    <version>0.20.3</version>
+    <time>1699388948</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.20.3 with the following changes:
+  * Bug fixes:
+    + Fix a bug where `spack mirror set-url` would drop configured
+	  connection info.
+    + Fix a minor issue with package hash computation for Python 3.12.
+    + Improve escaping in Tcl module files.
+    + Make repo cache work on repositories with zero mtime.
+    + Ignore errors for newer, incompatible buildcache version.
+    + Print an error when git is required, but missing.
+    + Ensure missing build dependencies get installed when using
+	  `spack install --overwrite`.
+    + Fix an issue where Spack freezes when the build process
+	  unexpectedly exits.
+    + Fix a bug where installation failures cause an unrelated
+	  `NameError` to be thrown.
+    + Fix an issue where Spack package versions would be incorrectly
+	  derived from git tags.
+    + Fix a bug triggered when file locking fails internally.
+    + Prevent `spack external find` to error out when a directory
+	  cannot be accessed.
+    + Fix multiple performance regressions in environments.
+    + Add more ignored modules to `pyproject.toml` for `mypy`.
+  * Features:
+    + Spack now supports Python 3.12.</comment>
+    <requestid>1124071</requestid>
+  </revision>
 </revisionlist>

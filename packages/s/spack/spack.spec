@@ -46,7 +46,7 @@ ExclusiveArch:  do_not_build
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.20.1
+Version:        0.20.3
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
