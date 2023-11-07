@@ -17,7 +17,7 @@
 
 
 Name:           river
-Version:        0.2.4+g970
+Version:        0.2.4+g976
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only

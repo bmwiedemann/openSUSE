@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  7 02:16:42 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.4+g976:
+  * pointer-constraints: fix assertion failure
+  * XdgToplevel: tweak fullscreen state policy
+  * Cursor: use inflight_mode as needed in updateState()
+  * riverctl(1): add a section on terminology
+  * rivertile: eliminate an @intCast()
+  * DragIcon: set position on creation
+
+-------------------------------------------------------------------
 Sat Oct 21 04:57:12 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 0.2.4+g970:
