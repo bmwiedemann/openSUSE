@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-globalkeys
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15.0
 BuildRequires:  pkgconfig(Qt5Widgets)
