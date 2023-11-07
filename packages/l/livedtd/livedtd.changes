@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:07:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
 
 - make patch0 usage consistent

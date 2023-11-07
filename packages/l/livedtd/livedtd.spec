@@ -1,7 +1,7 @@
 #
-# spec file for package livedtd (Version 2007.1.15)
+# spec file for package livedtd
 #
-# Copyright (c) 2009 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           livedtd
-Url:            http://www.sagehill.net/livedtd/
+URL:            http://www.sagehill.net/livedtd/
 Group:          Productivity/Publishing/XML
 License:        BSD-3-Clause
 Summary:        DTD Visualizing Tool
 Version:        2007.1.15
-Release:        1
+Release:        0
 Source0:        http://www.sagehill.net/livedtd/downloads/%{name}.tar.gz
-Patch:          livedtd-catalog.patch
+Patch0:         livedtd-catalog.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -44,7 +42,7 @@ Authors:
 
 %prep
 %setup0 -q -c -n %{name}
-%patch -p 1 -b .catalog
+%patch0 -p 1 -b .catalog
 
 %install
 if [ -n $RPM_BUILD_ROOT ]; then
