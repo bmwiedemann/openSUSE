@@ -371,4 +371,12 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
     <comment>Update to add the JIRA tag</comment>
     <requestid>1123031</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>33527d41b8e722b645cb3052083a6f82</srcmd5>
+    <version>116</version>
+    <time>1699388783</time>
+    <user>anag+factory</user>
+    <comment>Add the jira prefix to PED-7256</comment>
+    <requestid>1123463</requestid>
+  </revision>
 </revisionlist>
