@@ -1,7 +1,7 @@
 #
 # spec file for package ipxrip
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ipxrip
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
-Provides:       ipxripd 
+Provides:       ipxripd
 Version:        0.7
 Release:        0
 Summary:        IPX Routing Daemon
 Source:         ipxripd-%{version}.tar.bz2
 Source1:        ipxd.service
-Patch:          ipxripd-%{version}.dif
+Patch0:         ipxripd-%{version}.dif
 Patch1:         ipxripd-%{version}-axp.dif
 Patch2:         ipxripd-%{version}-secfix.dif
 Patch3:         ipxripd-%{version}-2.6kernel-fix.diff
@@ -39,7 +39,7 @@ your Linux machine into an IPX router.
 
 %prep
 %setup -n ipxripd
-%patch
+%patch0
 %patch1
 %patch2
 %patch3
@@ -55,7 +55,7 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 install -d %{buildroot}%{_sysconfdir}
 install -m 644 ipx_ticks %{buildroot}/%{_sysconfdir}
 
-%pre 
+%pre
 %service_add_pre ipxrip.service
 
 %post
@@ -76,4 +76,3 @@ install -m 644 ipx_ticks %{buildroot}/%{_sysconfdir}
 %config(noreplace) %{_sysconfdir}/ipx_ticks
 
 %changelog
-
