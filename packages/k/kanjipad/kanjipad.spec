@@ -1,7 +1,7 @@
 #
 # spec file for package kanjipad
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,13 +21,13 @@ BuildRequires:  gtk2-devel
 BuildRequires:  update-desktop-files
 Version:        2.0.0
 Release:        0
-Url:            http://fishsoup.net/software/kanjipad/
+URL:            http://fishsoup.net/software/kanjipad/
 Source0:        http://fishsoup.net/software/kanjipad/kanjipad-2.0.0.tar.bz2
 Source1:        %name.desktop
-Patch:          kanjipad.patch
+Patch0:         kanjipad.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Japanese Handwriting Recognition
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Japanese
 
 %description
@@ -49,7 +49,7 @@ characters.
 
 %prep
 %setup -q
-%patch
+%patch0
 
 %build
 make PREFIX=/usr OPTIMIZE="$RPM_OPT_FLAGS"
