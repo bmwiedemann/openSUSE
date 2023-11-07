@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  6 02:52:03 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.4.0:
+  * TERM env variable is set to xterm-256color when not set with
+    QTermWidget::setEnvironment().
+  * getForegroundProcessId() is added to QTermWidget class to allow
+    terminal apps to check if the user has started a process in the
+    shell and alert them.
+  * A great amount of code cleanup.
+  * Falcon color scheme is added. 
+
+-------------------------------------------------------------------
 Sat Apr 15 18:18:02 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.3.0:
