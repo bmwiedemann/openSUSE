@@ -25,7 +25,7 @@ Group:          Productivity/Graphics/3D Editors
 URL:            https://goxel.xyz/
 Source:         https://github.com/guillaumechereau/goxel/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix_security_issue_in_quickjs.patch -- based on commit f3faec9
-Patch:          fix_security_issue_in_quickjs.patch
+Patch0:         fix_security_issue_in_quickjs.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
