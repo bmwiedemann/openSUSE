@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:57:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Aug 18 11:19:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bugzilla-1175274-emacs-27.1.patch

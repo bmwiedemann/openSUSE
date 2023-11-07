@@ -1,7 +1,7 @@
 #
 # spec file for package psgml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Source6:        %{name}-README.openSUSE
 Source7:        ke-docbook.el
 Source8:        suse-start-psgml.el
 Source9:        psgml-html.el
-Patch:          psgml-compile-addons.diff
+Patch0:         psgml-compile-addons.diff
 Patch2:         psgml-1.2.5-key.diff
 Patch3:         psgml-xpointer.el.diff
 Patch4:         psgml-1.3.1-texi-category.diff
@@ -78,7 +78,7 @@ Authors:
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch9 -p1
 cp -p %{SOURCE1} .
 # xxml

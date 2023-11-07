@@ -183,4 +183,12 @@ You can see the build failure in openSUSE:Factory project. (forwarded request 13
     <comment></comment>
     <requestid>827586</requestid>
   </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>c6e37388e9f0983b4deb2d52c512f831</srcmd5>
+    <version>1.4.1</version>
+    <time>1699388928</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124049</requestid>
+  </revision>
 </revisionlist>
