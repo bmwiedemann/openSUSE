@@ -17,7 +17,7 @@
 
 
 Name:           ssldump
-Version:        1.6
+Version:        1.8
 Release:        0
 Summary:        SSLv3/TLS Network Protocol Analyzer
 License:        BSD-3-Clause
@@ -25,10 +25,10 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://adulau.github.io/ssldump/
 #Git-Clone:     https://github.com/adulau/ssldump.git
 Source:         https://github.com/adulau/ssldump/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  libnet-devel
 BuildRequires:  libtool
+BuildRequires:  ninja
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-c)
@@ -47,15 +47,18 @@ provided with the appropriate keying material, it also decrypts the
 connections and displays the application data traffic.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-autoreconf -fiv
-%configure
-%make_build
+cmake -G Ninja -B build
+ninja -C build
 
 %install
-%make_install
+# Binaries
+install -D -m 0755 build/%{name} %{buildroot}%{_sbindir}/%{name}
+# Manpages
+install -d %{buildroot}/%{_mandir}/man1
+install -m 0644 ssldump.1* %{buildroot}/%{_mandir}/man1
 
 %files
 %license COPYRIGHT

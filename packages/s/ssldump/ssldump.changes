@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 13 15:11:26 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8:
+  * Add date to version output
+  * Print meaningful error messages
+  * use cmake as build tool
+  * Add -z option for printing timestamps in front of TCP headers
+
+- Update to version 1.7:
+  * For Y2K38 on 32 bit systems time_t tv_sec can be long long 
+  * Adding tls1.3 decryption support 
+
+-------------------------------------------------------------------
 Sun Feb  5 18:20:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.6
