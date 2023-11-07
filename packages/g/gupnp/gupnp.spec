@@ -21,7 +21,7 @@
 %define sover 1.6
 
 Name:           gupnp
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.1-or-later
