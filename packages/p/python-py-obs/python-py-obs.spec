@@ -18,6 +18,7 @@
 
 %global skip_python39 1
 %global skip_python310 1
+%{?sle15_python_module_pythons}
 Name:           python-py-obs
 Version:        0.0.1
 Release:        0
