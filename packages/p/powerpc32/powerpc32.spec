@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc32
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           powerpc32
 Version:        1.2
 Release:        0
 Summary:        PowerPC32 compilation environment for PowerPC64
-License:        GPL-2.0+ and LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 Source:         powerpc32-%{version}.tar.bz2
-Patch:          powerpc32-1.2.dif
+Patch0:         powerpc32-1.2.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ppc ppc64
 
@@ -41,7 +41,7 @@ Authors:
 
 %prep
 %setup -q
-%patch
+%patch0
 
 %build
 make CFLAGS="$RPM_OPT_FLAGS"
