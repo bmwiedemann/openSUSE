@@ -1,7 +1,7 @@
 #
 # spec file for package libgsf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           libgsf
-Version:        1.14.50
+Version:        1.14.51
 Release:        0
 Summary:        I/O library for dealing with structured file formats
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gnome.org
 Source:         https://download.gnome.org/sources/libgsf/1.14/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
 BuildRequires:  intltool
 BuildRequires:  libbz2-devel
 BuildRequires:  pkgconfig
