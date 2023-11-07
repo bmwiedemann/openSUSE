@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:08:27 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Fri Sep 29 20:50:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add loupe_glycin-loaders_sandbox.patch: Enable the glycin-loaders

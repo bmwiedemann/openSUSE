@@ -27,7 +27,7 @@ Source2:        vendor.tar.zst
 Source3:        cargo_config
 
 # PATCH-FIX-UPSTREAM loupe_glycin-loaders_sandbox.patch -- Enable the glycin-loaders sandbox
-Patch:          loupe_glycin-loaders_sandbox.patch
+Patch0:         loupe_glycin-loaders_sandbox.patch
 # PATCH-FIX-UPSTREAM loupe_print_fix.patch -- print: Use same print operation throughout
 Patch2:         loupe_print_fix.patch
 
