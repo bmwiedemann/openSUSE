@@ -24,19 +24,19 @@ License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/chergert/libspelling
 Source:         https://download.gnome.org/sources/libspelling/0.2/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 6d26ffd30c78b7f255b1665fac3fb88960ea01ba.patch -- egg: fix license to be LGPLv2.1+
-Patch:          %{url}/-/commit/6d26ffd30c78b7f255b1665fac3fb88960ea01ba.patch
+Patch0:         %{url}/-/commit/6d26ffd30c78b7f255b1665fac3fb88960ea01ba.patch
 
-BuildRequires:  pkgconfig
 BuildRequires:  c_compiler
 BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(enchant-2)
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gtksourceview-5)
-BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
-BuildRequires:  pkgconfig(gi-docgen)
 
 %description
 A spellcheck library for GTK 4.
@@ -100,4 +100,3 @@ developing applications that use %{name}.
 %{_datadir}/vala/vapi/libspelling-1.vapi
 
 %changelog
-
