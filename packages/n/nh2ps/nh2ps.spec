@@ -1,7 +1,7 @@
 #
 # spec file for package nh2ps
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Group:          Productivity/Publishing/PS
 Version:        2.3.1
 Release:        0
 Source:         ftp://jazz.snu.ac.kr/pub/unix/util/nh2ps/nh2ps-2.3.1.tar.gz
-Patch:          nh2ps-2.3.1-cflags.patch
+Patch0:         nh2ps-2.3.1-cflags.patch
 Patch1:         nh2ps-2.3.1-perlpath.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -39,7 +39,7 @@ Authors:
 
 %prep
 %setup -q
-%patch
+%patch0
 %patch1 -p1
 
 %build
