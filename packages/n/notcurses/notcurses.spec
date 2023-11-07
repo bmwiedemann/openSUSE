@@ -1,7 +1,7 @@
 #
 # spec file for package notcurses
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +33,7 @@ URL:            https://nick-black.com/dankwiki/index.php/Notcurses
 #Git-Clone:     https://github.com/dankamongmen/notcurses.git
 Source:         https://github.com/dankamongmen/notcurses/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # default openSUSE ffmpeg can't play the codec used in the xray demo
-Patch:          notcurses-3.0.8-skip-xray.diff
+Patch0:         notcurses-3.0.8-skip-xray.diff
 BuildRequires:  QR-Code-generator-devel
 BuildRequires:  cmake
 BuildRequires:  doctest-devel >= 2.3.5
