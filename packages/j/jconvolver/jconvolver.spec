@@ -1,7 +1,7 @@
 #
 # spec file for package jconvolver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://kokkinizita.linuxaudio.org/linuxaudio/
 Source:         https://kokkinizita.linuxaudio.org/linuxaudio/downloads/%{name}-%{version}.tar.bz2
-Patch:          jconvolver-build-fixes.diff
+Patch0:         jconvolver-build-fixes.diff
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  zita-convolver-devel >= 4.0.0
@@ -58,7 +58,7 @@ engine for JACK.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 CXXFLAGS="%{optflags}" make -C source %{?_smp_mflags}
