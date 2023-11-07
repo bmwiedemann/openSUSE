@@ -1,7 +1,7 @@
 #
 # spec file for package csindex
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,8 +24,8 @@ Version:        19980713
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        COPYING
-Url:            ftp://ftp.fi.muni.cz/pub/localization/csindex/
-Patch:          %{name}-%{version}.dif
+URL:            ftp://ftp.fi.muni.cz/pub/localization/csindex/
+Patch0:         %{name}-%{version}.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -36,7 +36,7 @@ Uses the ISO 8859-2 encoding.
 %prep
 %setup
 install -m 644 %{SOURCE1} .
-%patch
+%patch0
 
 %build
 make CC="gcc $RPM_OPT_FLAGS" %{?_smp_mflags}
