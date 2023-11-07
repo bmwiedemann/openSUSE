@@ -316,4 +316,21 @@
     <comment></comment>
     <requestid>1079664</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>505a69a31592be120bf78b56e71f752b</srcmd5>
+    <version>1.4.0</version>
+    <time>1699388764</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0:
+  * Use lxqt-menu-data instead of lxmenu-data.
+  * Get terminals list also from data directories.
+  * Remember password and anonymity settings of mount dialog.
+  * Also add suffixes containing dot on saving with LXQt file dialog.
+  * Don't select extensions on creating new template files.
+  * Fixed a crash on deleting path-bar.
+  * Prevent invisible &quot;Create New&quot; dialog under Wayland.
+  * Added foot to terminals.list.
+</comment>
+    <requestid>1123566</requestid>
+  </revision>
 </revisionlist>
