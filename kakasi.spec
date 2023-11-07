@@ -1,7 +1,7 @@
 #
 # spec file for package kakasi
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@ Name:           kakasi
 Version:        2.3.6
 Release:        0
 Summary:        Filter to Convert Kanji Characters to Hiragana, Katakana, or Romaji
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Convertors
-Url:            http://kakasi.namazu.org/
+URL:            http://kakasi.namazu.org/
 Source:         http://kakasi.namazu.org/stable/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org
-Patch:          kakasi-2.3.6-no-return-in-nonvoid-function.patch
+Patch0:         kakasi-2.3.6-no-return-in-nonvoid-function.patch
 BuildRequires:  automake
 Requires:       kakasi-dict = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -65,7 +65,7 @@ The base dictionary of KAKASI
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 # w: version-control-internal-file
 rm -rf doc/CVS
 # non-linux-readme
