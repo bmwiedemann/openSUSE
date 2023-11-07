@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct  2 07:24:19 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.4.3:
+  * Add signature for BIND
+  * Add signature for Gitea
+  * Add signature for Microsoft SQL Server for Linux
+  * Add signature for OpenVPN Portshare
+  * Add signature for user-defined HTTP attacks
+  * Update signatures for Dovecot
+  * Update signatures for Postfix
+  * Fixed Fix memset off-by-one
+  * Fixed Resolve DNS names in capability mode using casper
+
+- removed patch sshguard-overflow.patch as fixed in upstream
+- clean up .spec file
+
+-------------------------------------------------------------------
 Tue Aug 30 15:19:17 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - sshguard-overflow.patch: fixed 1 byte 0x00 overwrite in a memset
