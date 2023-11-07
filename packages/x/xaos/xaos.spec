@@ -46,7 +46,7 @@ displaying planes is provided.
 
 %build
 %qmake6 PREFIX=%{_prefix}
-%qmake6_build
+%qmake6_build STRIP=%{_bindir}/strip
 
 %install
 # Binary

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  1 06:53:01 UTC 2023 - munix9@googlemail.com
+
+- Fix build on Factory/TW: Add STRIP=%{_bindir}/strip to %qmake6_build
+
+-------------------------------------------------------------------
 Sun Oct  8 00:01:21 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.3.1:
