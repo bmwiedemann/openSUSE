@@ -1,7 +1,7 @@
 #
 # spec file for package glabels
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          Productivity/Office/Other
 URL:            http://glabels.sourceforge.net/
 Source:         http://download.gnome.org/sources/glabels/3.4/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM glabels-externs.patch -- define shared variables as extern
-Patch:          glabels-externs.patch
+Patch0:         glabels-externs.patch
 
 BuildRequires:  barcode-devel
 BuildRequires:  fdupes
