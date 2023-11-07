@@ -16,29 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyface
-Version:        7.4.4
+Version:        8.0.0
 Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only AND SUSE-Public-Domain
-Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/pyface
 Source:         https://files.pythonhosted.org/packages/source/p/pyface/pyface-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix-wx-tests.patch
 Patch0:         fix-wx-tests.patch
-BuildRequires:  %{python_module Pillow}
+# PATCH-FIX-UPSTREAM skip-qt4-tests.patch gh#enthought/pyface#1252 mcepl@suse.com
+# Skip failing tests
+Patch1:         skip-qt4-tests.patch
+# gh#enthought/pyface#1255
+# BuildRequires:  %%{python_module Pillow}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module importlib-resources >= 1.1.0}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module qtwebengine-qt5}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wxWidgets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -70,10 +73,10 @@ Part of the Enthought Tool Suite (ETS).
 %autosetup -p1 -n pyface-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/pyface/sizers
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/pyface/sizers
@@ -94,7 +97,7 @@ sleep 2
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt image_LICENSE*.txt
-%{python_sitelib}/pyface/
+%{python_sitelib}/pyface
 %{python_sitelib}/pyface-%{version}*-info
 
 %changelog

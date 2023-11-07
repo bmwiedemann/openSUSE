@@ -123,4 +123,37 @@
   * fix some Python 2 style print statements in documentation (#1157)</comment>
     <requestid>1056089</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc0b0b3633f8590e5ebb0c16d23a484d</srcmd5>
+    <version>8.0.0</version>
+    <time>1699388876</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.0.0:
+  - This is a major release which removes a number of things
+    which have been deprecated for a number of years. The most
+    significant change in this release is that the Qt toolkit
+    backend has been moved from the pyface.ui.qt4 package to the
+  - Additionally this release uses the module-level __getattr__
+    system introduced in Python 3.7 to delay imports from
+    the api modules which have side-effects, particularly
+    toolkit selection. This means that you can, for example,
+    import pyface.api and toolkit selection will be deferred
+    until you actually request a class or object which is
+    toolkit-dependent. Part of this included adding formal
+    interfaces for ActionManager and its subclasses
+  - adds support for Python 3.11 and drops support for Python 3.6
+  - adds support for PySide 6.4+ and the new enum system
+  - removes code supporting PyQt4, and supports more modern
+    imports from pyface.qt, such as pyface.qt.QtWidgets.
+  - removes many things flagged as deprecated in Pyface 7
+  - consistently add interface classes to api modules.
+  - adds new Field subclasses, including an ImageField and
+    LabelField
+  - moves to a pyproject.toml-based packaging solution, removing
+    setup.py
+- Add skip-qt4-tests.patch to overcome gh#enthought/pyface#1252
+- Comment out dependency on Pillow to overcome gh#enthought/pyface#1255
+</comment>
+    <requestid>1123936</requestid>
+  </revision>
 </revisionlist>
