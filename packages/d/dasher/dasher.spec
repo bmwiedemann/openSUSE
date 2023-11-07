@@ -1,7 +1,7 @@
 #
 # spec file for package dasher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://dasher.acecentre.net/
 Source:         %{name}-%{version}.tar.xz
 
 # PATCH-FIX-UPSTREAM dasher-5.0.0-sys-stat.patch
-Patch:          dasher-5.0.0-sys-stat.patch
+Patch0:         dasher-5.0.0-sys-stat.patch
 # PATCH-FIX-UPSTREAM gnome-doc-utils-depr.patch
 Patch2:         gnome-doc-utils-depr.patch
 # PATCH-FIX-UPSTREAM 0001-Remove-extern-C-warpper-around-atspi-glib-headers-in.patch
