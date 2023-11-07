@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:59:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Fri Jul  1 17:26:47 UTC 2016 - toddrme2178@gmail.com
 
 - Fix Group tag.

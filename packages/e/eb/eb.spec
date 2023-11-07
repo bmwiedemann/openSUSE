@@ -1,7 +1,7 @@
 #
 # spec file for package eb
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,11 +21,11 @@ Name:           eb
 Version:        4.4.3
 Release:        0
 Summary:        C Library for Accessing CD-ROM Books
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            https://github.com/aehlke/eb
+URL:            https://github.com/aehlke/eb
 Source:         ftp://ftp.sra.co.jp/pub/misc/eb/%{name}-%{version}.tar.bz2
-Patch:          gettext.patch
+Patch0:         gettext.patch
 BuildRequires:  libtool
 BuildRequires:  zlib-devel
 Recommends:     %{name}-lang
@@ -79,7 +79,7 @@ EB header files and libraries.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 autoreconf -fi
