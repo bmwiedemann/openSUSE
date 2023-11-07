@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Nov 07 08:03:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.6:
+  * ci: refresh dev dependencies (#770)
+  * Fixed equalto test filter (#758) (#759)
+  * ci: refresh dev dependencies (#741)
+  * nox and README: log PIP_CONSTRAINT value and add Dependency file docs (#730) (#737)
+  * [stable-2.15] installation_guide/intro_configuration.rst: improve readability
+  * Proof reading (#616) (#729)
+  * [PR #668/8d847046 backport] Integrate docs checkers into the noxfile (#727)
+  * ci: refresh dev dependencies (#721) (#722)
+  * Update JSON queries examples (#690) (#704)
+  * communication.rst: other forum-related tweaks (#669) (#698)
+  * documentation_contributions: use tests/checkers.py (#706) (#712)
+  * Update slicing in inventory pattern (#541) (#693)
+  * [stable-2.15] Unify the Sphinx's `conf.py` files (#431) (#627)
+  * Update shebang sanity test docs to match test (#677) (#687)
+  * Update example using special variables in resuce section of blocks (#671) (#680)
+  * ci: refresh dev dependencies (#682)
+  * ci: refresh dev dependencies (#672)
+  * Use a working exponential backoff example (#607) (#660)
+  * Rename tests/sanity.py to tests/checkers.py (#563) (#663)
+  * Added delegation info to special vars (#629) (#659)
+  * Add forum info to collection maintainer guidelines (#549) (#655)
+  * Fix#129 (#201) (#613)
+  * Update PowerShell Codeblock (#489) (#603)
+  * Changed it's to it is in all .rst files (#491)
+  * Clarify that two releases will happen on two separate days, and clarify which one will happen first (#39)
+  * pr_labeler: stop adding needs_triage labels to new PRs (#643) (#645)
+  * ci: refresh dev dependencies (#638) (#641)
+  * [stable-2.15] Add RST spellcheck (#524) (#623)
+  * corrected cli for help (#599) (#600)
+  * communication.rst: Add a link to the forum group list (#571) (#594)
+  * developing_collections_structure.rs: Fix link formatting (#570) (#591)
+  * Testing collections guide: add GHA info and link to sample matrix (#569) (#588)
+  * issue #560 fix broken url in script (#568) (#585)
+  * Document how to bump dependencies (#446) (#614)
+  * ci: refresh dev dependencies (#608) (#609)
+  * Merge pull request #27 from oraNod/issue-26/add-intro-getting-started (#526)
+  * Spellingfix (#494) (#583)
+  * communication.rst: fix link (#495) (#580)
+  * More info on delegation behaviours (#527) (#582)
+  * Replace i.e with that is  (#490) (#565)
+  * Fix for : Replace all occurrences of via to with #459 (#479) (#578)
+  * issue-457: Update all occurrences of Ansible core to Ansible Core (#471) (#575)
+  * communication.rst: Add Release Management WG info (#438) (#574)
+  * Update collections_installing.rst (#412) (#573)
+  * communication.rst: add forum info (#392) (#572)
+  * Integrate `docs/bin/*.py` files into the nox config (#529) (#562)
+  * Add Ansible community 8.5.0 porting guide (#556) (#557)
+  * fix molecule link in contributor path page (#538) (#551)
+  * Add Arch installation instructions in the installation_distros documentation (#522) (#545)
+  * ci: refresh dev dependencies (#548)
+
+-------------------------------------------------------------------
+Tue Nov  7 07:47:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.6:
+  This tag contains a snapshot of the ansible-documentation
+  stable-2.15 branch at the time of the ansible-core 2.15.6
+  release.
+
+-------------------------------------------------------------------
 Tue Oct 10 05:24:16 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.5:
