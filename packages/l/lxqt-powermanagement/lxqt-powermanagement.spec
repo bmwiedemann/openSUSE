@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
