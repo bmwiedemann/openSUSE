@@ -52,4 +52,12 @@
   * Added -j option to use systemd journald</comment>
     <requestid>1070029</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0efab499fe10ae4c3bb91480edc093eb</srcmd5>
+    <version>0.9.1</version>
+    <time>1699388832</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123891</requestid>
+  </revision>
 </revisionlist>

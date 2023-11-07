@@ -24,7 +24,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/eonpatapon/mpDris2
 Source:         https://github.com/eonpatapon/mpDris2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch:          interpreter.patch
+Patch0:         interpreter.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 # g-i-devel: This is for automatic GObject Introspection bindings dependency generation:
@@ -44,7 +44,7 @@ run in the user session and monitors a local or distant mpd server.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
