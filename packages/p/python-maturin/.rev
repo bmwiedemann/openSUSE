@@ -905,4 +905,30 @@
     <comment></comment>
     <requestid>1116536</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>990de21a3809be62657da2ae338fdf4d</srcmd5>
+    <version>1.3.1</version>
+    <time>1699388709</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.1
+  * Use external uniffi-bindgen if no root package is configured
+    gh#PyO3/maturin#1797
+  * Add trusted publishing section to the user guide
+    gh#PyO3/maturin#1800
+  * Fix wheel filename for GraalPy
+    gh#PyO3/maturin#1802
+  * Pytest skeleton in mixed template
+    gh#PyO3/maturin#1807
+  * Keep trailing newlines from templates
+    gh#PyO3/maturin#1808
+  * Bump rustix from 0.37.23 to 0.37.25
+    gh#PyO3/maturin#1809
+  * Auto detect Python 3.13
+    gh#PyO3/maturin#1810
+  * Fix missing workspace.members in sdist
+    gh#PyO3/maturin#1811
+  * Don't set MACOSX_DEPLOYMENT_TARGET for editable builds
+    gh#PyO3/maturin#1815</comment>
+    <requestid>1123696</requestid>
+  </revision>
 </revisionlist>
