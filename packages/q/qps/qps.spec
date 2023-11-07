@@ -17,7 +17,7 @@
 
 
 Name:           qps
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -69,6 +69,7 @@ processes.
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%{_datadir}/metainfo/*.xml
 %{_mandir}/man?/%{name}.?%{ext_man}
 
 %files lang -f %{name}.lang

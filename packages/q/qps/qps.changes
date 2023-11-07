@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  5 20:41:16 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.8.0
+  * Fixed all instances of non-closed file descriptors (to fix an 
+    issue that caused a blank list for some users).
+  * Added metadata file 
+
+-------------------------------------------------------------------
 Sat Apr 15 17:56:00 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.7.0:
