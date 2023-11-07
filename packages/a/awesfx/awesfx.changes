@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
-Thu Oct 17 14:01:08 UTC 2019 - Richard Brown <rbrown@suse.com>
+Mon Nov  6 15:52:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Remove obsolete Groups tag (fate#326485)
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
 
 -------------------------------------------------------------------
 Thu Sep  5 14:10:09 CEST 2019 - tiwai@suse.de
