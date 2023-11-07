@@ -19,7 +19,7 @@
 %define sover 3
 
 Name:           libdovi
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        Library to read & write Dolby Vision metadata
 Group:          Development/Libraries/Rust

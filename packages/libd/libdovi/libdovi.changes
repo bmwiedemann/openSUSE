@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 25 17:30:31 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to 3.2.0
+  * Added write_av1_rpu_metadata_obu_t35_complete function to encode
+    RPUs in complete metadata OBU payloads.
+  * Added dovi_write_av1_rpu_metadata_obu_t35_{payload,complete}
+    functions.
+
+-------------------------------------------------------------------
 Tue Mar 21 08:14:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add baselibs.conf for libplacebo/ffmpeg-6
