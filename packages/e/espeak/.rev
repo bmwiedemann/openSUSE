@@ -291,4 +291,12 @@
     <comment>- gcc6-char-cast.patch: Fix GCC6 errors.</comment>
     <requestid>397670</requestid>
   </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>594cb307c7ef8a57cd5b57fd5ee0652d</srcmd5>
+    <version>1.48.04</version>
+    <time>1699388861</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123916</requestid>
+  </revision>
 </revisionlist>

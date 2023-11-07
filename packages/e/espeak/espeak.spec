@@ -1,7 +1,7 @@
 #
 # spec file for package espeak
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,14 +22,14 @@ Version:        %{_major_version}.04
 Release:        0
 %define _version %{version}-source
 Summary:        Software speech synthesizer (text-to-speech)
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Other
-Url:            http://espeak.sourceforge.net
+URL:            http://espeak.sourceforge.net
 Source:         http://sourceforge.net/projects/espeak/files/espeak/espeak-%{_major_version}/espeak-%{_version}.zip
 Source1:        espeak.1
 Source2:        mb-lt1
 Source3:        mb-lt2
-Patch:          easpeak-fix-bufferoverflow-strncpy.patch
+Patch0:         easpeak-fix-bufferoverflow-strncpy.patch
 Patch1:         gcc6-char-cast.patch
 BuildRequires:  gcc-c++
 BuildRequires:  portaudio-devel
@@ -48,7 +48,7 @@ which are based on human speech recordings.
 
 %package devel
 Summary:        Software speech synthesizer (text-to-speech) -- Development Files
-Group:          Development/Languages/C and C++ 
+Group:          Development/Languages/C and C++
 Requires:       espeak = %{version}
 
 %description devel
@@ -63,7 +63,7 @@ which are based on human speech recordings.
 %prep
 # Probably a mistake from upstream
 %setup -q -n %{name}-%{version}-source
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 # Don't use the included binary voice dictionaries; we compile these from
 # source
