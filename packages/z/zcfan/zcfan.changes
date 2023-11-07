@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:18:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Mon Sep  4 08:27:35 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Add move_executable_to_sbin.patch 

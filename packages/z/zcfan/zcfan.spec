@@ -23,7 +23,7 @@ Summary:        Zero-configuration fan control daemon for ThinkPads
 License:        MIT
 URL:            https://github.com/cdown/zcfan
 Source:         https://github.com/cdown/zcfan/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch:          move_executable_to_sbin.patch
+Patch0:         move_executable_to_sbin.patch
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11
 %else
@@ -43,7 +43,7 @@ bouncing between fan levels).
 %if 0%{?suse_version} < 1550
 export CC=gcc-11
 %endif
-%make_build CFLAGS="%{optflags} -fPIE" LDFLAGS="%{optflags} -pie" 
+%make_build CFLAGS="%{optflags} -fPIE" LDFLAGS="%{optflags} -pie"
 
 %install
 %make_install prefix=%{_prefix}
