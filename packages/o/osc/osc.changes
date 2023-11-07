@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  2 14:51:36 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.4.4
+  - Command-line:
+    - Fix autocompletion for new locations
+  - Configuration:
+    - Fix apiurl_aliases handling in OscOptions.__getitem__
+    - Fix crash when there's no [general]/apiurl option in the config file
+
+-------------------------------------------------------------------
 Tue Oct 24 09:03:56 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - fix bash completion suffix (.bash instead of .sh) (bsc#1216531)
