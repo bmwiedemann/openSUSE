@@ -1,7 +1,7 @@
 #
 # spec file for package tmate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libssh) >= 0.6.1
-BuildRequires:  pkgconfig(msgpack) >= 3.0.0
+BuildRequires:  (pkgconfig(msgpack-c) >= 3.0.0 or pkgconfig(msgpack) >= 3.0.0)
 BuildRequires:  pkgconfig(tinfo)
 
 %description
@@ -41,7 +41,12 @@ Tmate is a fork of tmux providing an instant pairing solution.
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 ./autogen.sh
-%configure
+# msgpack has changed name but tmate is not yet updated.
+# Overrides like MSGPACK_CFLAGS need to be non-empty for configure.ac to
+# recognize it as an override, therefore there is an extra space in case
+# pkgconfig returns that no extra are cflags needed.
+%configure MSGPACK_CFLAGS=" $(pkg-config msgpack-c --cflags)" \
+	MSGPACK_LIBS="$(pkg-config msgpack-c --libs)"
 %make_build
 
 %install

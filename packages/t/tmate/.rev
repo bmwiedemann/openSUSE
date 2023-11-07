@@ -69,4 +69,15 @@ sharing capabilities.</comment>
 </comment>
     <requestid>1001687</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>a059b3eb16b6dfce54f8c5647a23319f</srcmd5>
+    <version>2.4.0</version>
+    <time>1699388934</time>
+    <user>anag+factory</user>
+    <comment>- Build with more modern version of msgpack (which was renamed
+  to msgpack-c in 5.0.0)
+
++but still allow building for Leap/SLE</comment>
+    <requestid>1123498</requestid>
+  </revision>
 </revisionlist>

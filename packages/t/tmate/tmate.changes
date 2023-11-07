@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:06:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Build with more modern version of msgpack (which was renamed
+  to msgpack-c in 5.0.0)
+
+-------------------------------------------------------------------
 Wed Sep  7 09:10:27 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Change msgpack BuildRequires to use pkgconfig
