@@ -1,7 +1,7 @@
 #
 # spec file for package fuseiso
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,13 @@ BuildRequires:  libtool
 BuildRequires:  zlib-devel
 Requires:       fuse
 Summary:        FUSE module to mount CD-ROM images with ISO9660 filesystems in them
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
 Version:        20070708
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
-Patch:          fuseiso-20061017.patch
-Url:            http://apps.sourceforge.net/mediawiki/fuse/index.php?title=FuseIso
+Patch0:         fuseiso-20061017.patch
+URL:            http://apps.sourceforge.net/mediawiki/fuse/index.php?title=FuseIso
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -42,7 +42,7 @@ mdf and nrg.
 
 %prep
 %setup -q
-%patch
+%patch0
 
 %build
 autoreconf -fi
