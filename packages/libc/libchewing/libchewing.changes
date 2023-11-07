@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 08:51:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Sep 29 21:35:52 UTC 2021 - mcepl@suse.com
 
 - Update to version 0.5.1+git20200627.452f622:

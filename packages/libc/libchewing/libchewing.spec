@@ -1,7 +1,7 @@
 #
 # spec file for package libchewing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Source1:        chewing-utils-%{utilver}.tar.gz
 #PATCH-FIX-UPSTREAM yuyichao@gmail.com fix a lot of errors in the code
 Source2:        chewing-utils-abuild.patch
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org remove rpath from simple-select
-Patch:          libchewing-0.4.0-simple-select-rpath.patch
+Patch0:         libchewing-0.4.0-simple-select-rpath.patch
 Source99:       baselibs.conf
 BuildRequires:  autoconf >= 2.67
 %if %{with_utils}
