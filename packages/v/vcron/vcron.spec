@@ -1,7 +1,7 @@
 #
 # spec file for package vcron
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           vcron
 Version:        2.3
 Release:        0
 Summary:        TK-Interface for cron and at
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://www.Linux-kheops.com/pub/vcron/
+URL:            http://www.Linux-kheops.com/pub/vcron/
 Source:         vcron-%{version}.tar.bz2
-Patch:          vcron-%{version}-path.patch
+Patch0:         vcron-%{version}-path.patch
 Patch1:         vcron-%{version}-tempfiles.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -45,7 +45,7 @@ Authors:
 
 %prep
 %setup -n usr
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 
 %build
@@ -53,9 +53,9 @@ Authors:
 %install
 install -D -m 755 local/bin/vcron $RPM_BUILD_ROOT/usr/bin/vcron
 mkdir -p  $RPM_BUILD_ROOT/usr/lib
-cp -R local/lib/vcron  $RPM_BUILD_ROOT/usr/lib/ 
+cp -R local/lib/vcron  $RPM_BUILD_ROOT/usr/lib/
 install -m 755 -d $RPM_BUILD_ROOT/usr/share/doc/packages/%{name}/
-( 
+(
   cd $RPM_BUILD_ROOT/usr/share/doc/packages/%{name}/
   ln -sf ../../../../lib/vcron/doc/* ./
 )

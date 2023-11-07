@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:11:48 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Oct 15 05:59:36 UTC 2014 - jengelh@inai.de
 
 - Remove ancient specfile tags and sections
