@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:09:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Jan 25 12:38:43 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Blank line required after %%autosetup on SLE12

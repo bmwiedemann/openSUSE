@@ -26,7 +26,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/mascarenhas/cosmo
 Source:         cosmo-%{version}.tar.xz
-Patch:          fix_test.patch
+Patch0:         fix_test.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-lpeg
 BuildRequires:  %{flavor}-luarocks
