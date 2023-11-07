@@ -164,4 +164,12 @@
     <comment>- Fix build: Add libcurl dependency</comment>
     <requestid>1092080</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>961b9adb48475544b0f4cb86b2aa70c3</srcmd5>
+    <version>2.6.2</version>
+    <time>1699388778</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.6.2 (no user-facing changes)</comment>
+    <requestid>1123701</requestid>
+  </revision>
 </revisionlist>
