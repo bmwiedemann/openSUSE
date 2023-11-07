@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:43:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add fips.patch, resolve build failure with openssl3
+
+-------------------------------------------------------------------
 Wed Oct  6 17:41:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.0.1

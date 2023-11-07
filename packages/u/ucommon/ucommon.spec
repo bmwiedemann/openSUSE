@@ -1,7 +1,7 @@
 #
 # spec file for package ucommon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2008, 2009 David Sugar, Tycho Softworks.
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -29,9 +29,11 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gnu.org/software/commoncpp
 
-#Git-Clone:	https://git.savannah.gnu.org/cgit/commoncpp.git
+#Git-Clone:	https://git.savannah.gnu.org/git/commoncpp.git
+#Git-Web:	https://git.savannah.gnu.org/cgit/commoncpp.git
 Source:         https://git.savannah.gnu.org/cgit/commoncpp.git/snapshot/commoncpp-%version.tar.gz
 Source3:        %name.keyring
+Patch1:         fips.patch
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -45,6 +47,9 @@ Obsoletes:      %name-bin < %version-%release
 Provides:       %name-bin = %version-%release
 
 %description
+#
+# """All development of Common C++ now [2017] happens as part of uCommon"""
+#
 GNU uCommon C++ is a lightweight library to facilitate using C++
 design patterns even for very deeply embedded applications, such as
 for systems using uClibc along with POSIX threading support.
@@ -77,15 +82,6 @@ Requires:       pkgconfig(libssl)
 %description devel
 This package provides header and support files needed for building
 applications that use the uCommon library and frameworks.
-
-%package doc
-Summary:        Generated class documentation for ucommon
-Group:          Documentation
-BuildArch:      noarch
-
-%description doc
-Generated class documentation for GNU uCommon library from header files,
-html browsable.
 
 %prep
 %autosetup -p1 -n commoncpp-%version

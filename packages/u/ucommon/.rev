@@ -204,4 +204,12 @@
     <comment>- Update to release 7.0.1</comment>
     <requestid>923566</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>25864bceda379f0d17952cd58fece1c9</srcmd5>
+    <version>7.0.1</version>
+    <time>1699388888</time>
+    <user>anag+factory</user>
+    <comment>- Add fips.patch, resolve build failure with openssl3</comment>
+    <requestid>1123955</requestid>
+  </revision>
 </revisionlist>
