@@ -318,4 +318,17 @@ Bugfixes:
     #gh/john-kurkowski/tldextract#293</comment>
     <requestid>1119465</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6c498c6cd78091ed8d506b3ec00c94a4</srcmd5>
+    <version>5.1.0</version>
+    <time>1699388776</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.1.0:
+Features:
+  * Allow passing in `requests.Session`
+    #gh/john-kurkowski/tldextract#311
+  * Add &quot;-j, --json&quot; option to support output in json format
+    #gh/john-kurkowski/tldextract#313</comment>
+    <requestid>1123695</requestid>
+  </revision>
 </revisionlist>

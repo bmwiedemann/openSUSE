@@ -18,7 +18,7 @@
 
 %define oldpython python
 Name:           python-tldextract
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause

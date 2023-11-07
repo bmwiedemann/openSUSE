@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  6 23:25:32 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.1.0:
+Features:
+  * Allow passing in `requests.Session`
+    #gh/john-kurkowski/tldextract#311
+  * Add "-j, --json" option to support output in json format
+    #gh/john-kurkowski/tldextract#313
+
+-------------------------------------------------------------------
 Mon Oct 23 00:56:58 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 5.0.1:
