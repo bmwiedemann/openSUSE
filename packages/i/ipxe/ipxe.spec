@@ -31,7 +31,7 @@ License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
-Patch:          syslinux-mtools.patch
+Patch0:         syslinux-mtools.patch
 BuildRequires:  binutils-devel
 # Do not build i586 for Leap/SLE: no such port available
 %ifarch i586
