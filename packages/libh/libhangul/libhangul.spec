@@ -1,7 +1,7 @@
 #
 # spec file for package libhangul
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://github.com/libhangul/libhangul
 Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # FIX-FOR-SLES downgrade gettext requirement to 0.14 from 0.18
-Patch:          fix-for-sles-gettext-version.patch
+Patch0:         fix-for-sles-gettext-version.patch
 BuildRequires:  intltool
 BuildRequires:  libexpat-devel
 BuildRequires:  libtool
@@ -55,7 +55,7 @@ to develop applications that require libhangul.
 %prep
 %setup -q
 %if 0%{?sles_version}
-%patch -p1
+%patch0 -p1
 %endif
 # Fix for factory gettext version
 %if 0%{?suse_version} > 1310
