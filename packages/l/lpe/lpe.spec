@@ -1,7 +1,7 @@
 #
 # spec file for package lpe
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-2.0-only
 Group:          Productivity/Editors/Other
 URL:            https://github.com/AdamMajer/lpe
 Source:         https://github.com/AdamMajer/lpe/archive/v%version.tar.gz
-Patch:          drop_gettext_version.patch
+Patch0:         drop_gettext_version.patch
 Patch2:         multiple_definitions.patch
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -38,7 +38,7 @@ The function keys are reminiscient of pico's choices.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch2 -p1
 
 %build
