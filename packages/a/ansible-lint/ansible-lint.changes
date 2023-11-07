@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  7 11:31:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+-update to 6.22.0:
+  * Minor Changes
+    - Enable YAML 1.2 support for non-ansible files (#3809)
+      @ssbarnea
+  * Bugfixes
+    - Require ruamel.yaml >= 0.18.5 (#3880) @ssbarnea
+    - Improve logging regarding to yaml loading and dumping (#3875)
+      @ssbarnea
+    - Avoid creating new load method in our custom formatter
+      (#3874) @ssbarnea
+    - Support `ruamel-yaml >= 0.18.2` (#3869) @hswong3i
+
+-------------------------------------------------------------------
 Fri Oct 20 04:57:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.21.1:

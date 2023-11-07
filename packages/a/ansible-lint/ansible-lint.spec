@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        6.21.1
+Version:        6.22.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -68,9 +68,9 @@ BuildRequires:  %{ansible_python}-flake8
 # Add runtime requirements (unless required for tests)
 # to make sure this only builds if they are present
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
-BuildRequires:  ansible-core >= 2.15.0
+BuildRequires:  ansible-core >= 2.15.5
 BuildRequires:  %{ansible_python}-ansible-compat >= 4.1.10
-BuildRequires:  %{ansible_python}-black >= 22.8.0
+BuildRequires:  %{ansible_python}-black >= 23.10.1
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
 BuildRequires:  %{ansible_python}-filelock >= 3.3.0
 BuildRequires:  %{ansible_python}-jsonschema >= 4.17.3
@@ -78,7 +78,7 @@ BuildRequires:  %{ansible_python}-packaging >= 23.1
 BuildRequires:  %{ansible_python}-PyYAML >= 6.0.1
 BuildRequires:  %{ansible_python}-requests >= 2.31.0
 BuildRequires:  %{ansible_python}-rich >= 13.5.2
-BuildRequires:  (%{ansible_python}-ruamel.yaml >= 0.17.31 and %{ansible_python}-ruamel.yaml < 0.18)
+BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.17.31
 BuildRequires:  %{ansible_python}-subprocess-tee >= 0.4.1
 BuildRequires:  %{ansible_python}-tenacity
 BuildRequires:  %{ansible_python}-wcmatch >= 8.4.1
@@ -86,9 +86,9 @@ BuildRequires:  %{ansible_python}-yamllint >= 1.32.0
 
 #
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
-Requires:       ansible-core >= 2.15.0
+Requires:       ansible-core >= 2.15.5
 Requires:       %{ansible_python}-ansible-compat >= 4.1.10
-Requires:       %{ansible_python}-black >= 22.8.0
+Requires:       %{ansible_python}-black >= 23.10.1
 Requires:       %{ansible_python}-bracex >= 2.2.1
 Requires:       %{ansible_python}-enrich >= 1.2.7
 Requires:       %{ansible_python}-filelock  >= 3.3.0
@@ -97,7 +97,7 @@ Requires:       %{ansible_python}-packaging >= 23.1
 Requires:       %{ansible_python}-PyYAML  >= 6.0.1
 Requires:       %{ansible_python}-requests >= 2.31.0
 Requires:       %{ansible_python}-rich >= 13.5.2
-Requires:       (%{ansible_python}-ruamel.yaml >= 0.17.31 and %{ansible_python}-ruamel.yaml < 0.18)
+Requires:       %{ansible_python}-ruamel.yaml >= 0.17.31
 Requires:       %{ansible_python}-subprocess-tee >= 0.4.1
 Requires:       %{ansible_python}-tenacity
 Requires:       %{ansible_python}-wcmatch >= 8.4.1
