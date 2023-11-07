@@ -173,4 +173,13 @@ Changes in 0.19.0:
     <comment></comment>
     <requestid>1081731</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>372595a79a308d3d728059fc9bba870c</srcmd5>
+    <version>0.22.0</version>
+    <time>1699388711</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.22.0
+  See https://github.com/python-validators/validators/compare/0.20.0...0.22.0</comment>
+    <requestid>1123700</requestid>
+  </revision>
 </revisionlist>

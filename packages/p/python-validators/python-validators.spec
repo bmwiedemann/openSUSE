@@ -16,23 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-validators
-Version:        0.20.0
+Version:        0.22.0
 Release:        0
 Summary:        Python Data Validation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kvesteri/validators
 Source:         https://files.pythonhosted.org/packages/source/v/validators/validators-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-decorator >= 3.4.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -42,20 +42,21 @@ Python Data Validation for Humans.
 
 %prep
 %setup -q -n validators-%{version}
+dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/validators*
 
 %changelog
