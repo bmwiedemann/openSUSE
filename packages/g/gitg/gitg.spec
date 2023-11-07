@@ -1,7 +1,7 @@
 #
 # spec file for package gitg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gitg
-Version:        41
+Version:        44
 Release:        0
 Summary:        Git repository viewer
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gitg-typelib-dependencies.patch dimstar@opensuse.org -- Change the way we add library dependencies to .typelibs. openSUSE requires a full library name, incl. version
 Patch0:         gitg-typelib-dependencies.patch
-# PATCH-FIX-UPSTREAM 1978973b12848741b08695ec2020bac98584d636.patch -- Fix build with meson 0.61.0 and newer
-Patch1:         https://gitlab.gnome.org/GNOME/gitg/-/commit/1978973b12848741b08695ec2020bac98584d636.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -38,6 +36,7 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gspell-1) >= 1.8.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
@@ -45,6 +44,7 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libdazzle-1.0)
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.27.7
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(libsecret-1)

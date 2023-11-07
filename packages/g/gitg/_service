@@ -1,8 +1,8 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gitg.git</param>
-    <param name="revision">refs/tags/v41</param>
+    <param name="revision">refs/tags/v44</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -11,5 +11,5 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled" />
+  <service name="set_version" mode="manual" />
 </services>

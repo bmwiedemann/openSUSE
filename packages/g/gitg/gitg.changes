@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  6 10:51:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44:
+  + control available lanes to paint.
+  + avoid load history twice.
+  + Show commit details for submodule history view.
+  + Honor core.hooksPath property.
+  + Add file filter by name for stage view.
+  + Calculate selected ref on history view.
+  + Show info on errors in command line about init option.
+  + Open files in external editor.
+  + Allow to sign commits.
+  + Correct behaviour of --standalone option.
+  + Option to delete sources from disk.
+  + Deal correctly with stage/unstage of selection on new files.
+  + Honor system preferences about using dark theme.
+  + highlight characters outside margins.
+  + Allow to edit remotes.
+- Drop 1978973b12848741b08695ec2020bac98584d636.patch: fixed
+  upstream.
+- Add pkgconfig(libhandy-1) and pkgconfig(gpgme) BuildRequires: new
+  dependencies.
+
+-------------------------------------------------------------------
 Wed Feb  2 09:53:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 1978973b12848741b08695ec2020bac98584d636.patch: Fix build
