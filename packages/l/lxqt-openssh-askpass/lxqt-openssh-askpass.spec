@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-openssh-askpass
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        OpenSSH password tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
