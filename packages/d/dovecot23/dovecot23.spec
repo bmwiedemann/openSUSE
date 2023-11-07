@@ -157,7 +157,7 @@ Source10:       https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%
 Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz.sig
 Source12:       dovecot23.keyring
 # PATCH-FIX-OPENSUSE - boo#932386
-Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
+Patch0:         dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 # PATCH-FIX-SLE - boo#854512
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
 # PATCH-FIX-OPENSUSE - boo#1207958

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:58:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
 Fri Sep 15 12:12:44 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.21 and pigeonhole 0.5.21
