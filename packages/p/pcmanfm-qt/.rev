@@ -577,4 +577,19 @@
     <comment></comment>
     <requestid>1080368</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d58eb1baf97cff1f32690cb01561de06</srcmd5>
+    <version>1.4.0</version>
+    <time>1699388766</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0:
+  * Include the state of split view on restoring tabs of the last window.
+  * Allow users to add terminal commands.
+  * Fixed the tab order in dialogs.
+  * Fixed --wallpaper-mode command-line option.
+  * Check if wallpaper cache is up-to-date on reading Desktop settings
+    (needed when the wallpaper is changed but its path and name are not).
+  * Added an SVG app icon.</comment>
+    <requestid>1123582</requestid>
+  </revision>
 </revisionlist>

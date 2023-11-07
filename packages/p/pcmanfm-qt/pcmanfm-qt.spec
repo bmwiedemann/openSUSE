@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -40,11 +40,11 @@ BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libfm-qt) >= 1.3.0
-#bsc#1100208 - mvetter@suse.de
-Requires:       wallpaper-branding-openSUSE
+BuildRequires:  pkgconfig(libfm-qt) >= 1.4.0
 #bsc#1128570 - mvetter@suse.de
 Requires:       menu-cache
+#bsc#1100208 - mvetter@suse.de
+Requires:       wallpaper-branding-openSUSE
 Recommends:     %{name}-lang
 Recommends:     gnome-keyring-pam
 
@@ -75,6 +75,7 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %{_mandir}/man?/%{name}.?%{ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-desktop.desktop
 %{_datadir}/pcmanfm-qt/lxqt/settings.conf
+%{_datadir}/icons/hicolor/scalable/apps/pcmanfm-qt.svg
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/pcmanfm-qt
