@@ -538,4 +538,16 @@
   * trailers: do not quote names when special chars are present</comment>
     <requestid>1119892</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>b1a551fc54e9e898ceb954e543baa947</srcmd5>
+    <version>0.12.4</version>
+    <time>1699388791</time>
+    <user>anag+factory</user>
+    <comment>- remove python_module from requires, this might lead to unwanted
+  side effects. use pprefix macro instead to manage sle15
+
+- add %{python_module ...} also to requires, otherwise bad
+  requires are generated</comment>
+    <requestid>1124048</requestid>
+  </revision>
 </revisionlist>
