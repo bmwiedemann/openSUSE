@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Nov  6 13:17:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.0:
+  Breaking:
+  * custom/script: No longer hides the module if the exec command
+    failed and did not change the output from the previous run (#2636).
+    Somewhat similar original behaviour can be imitated with format-fail,
+    if necessary.  If the exec command produced no output and exited with
+    a non-zero exit code the module is no longer completely empty, but
+    just has an empty %output% token. If you relied on this behavior
+    to hide the module under certain circumstances, make sure the script
+    exits with an exit code of zero. (#2857, #2861)
+  Build:
+  * Respect CMAKE_INSTALL_PREFIX when installing default config (#2770, #2917)
+  * Change default CMAKE_INSTALL_PREFIX to /usr. Installations with default
+    flags will now go into /usr instead of /usr/local (#2917)
+  * Bump C++ version to C++17 (#2847)
+  Deprecated:
+  * custom/text: The content setting and all its properties are deprecated in
+    favor of format with the same functionality. (#2676)
+  * tray: All tray-related settings in the bar section are deprecated. They
+    are replaced by the new tray module (#3002)
+  Added:
+  * A tray module with type internal/tray for positioning the tray like a module (#2689)
+  * internal/temperature: %temperature-k% token displays the temperature in
+    degrees Kelvin (#2774, #2784)
+  * internal/pulseaudio: reverse-scroll option (#2664)
+  * custom/script: Repeat interval for script failure (interval-fail) and
+    exec-if (interval-if) (#943, #2606, #2630)
+  * custom/ipc:
+    + Added support for <label> in format (#2841)
+    + Added support for format-i for each defined hook-i (#2775, #2810)
+  * custom/text: Loads the format setting, which supports the <label> tag,
+    if the deprecated content is not defined (#1331, #2673, #2676)
+  * internal/backlight:
+    + scroll-interval option (#2696, #2700)
+    + poll-interval setting controls how often the module is updated (in case
+      it does not happen when the brightness changes) (#2835, #3028)
+  * internal/temperature: Added zone-type setting (#2572, #2752)
+  * internal/xwindow: %class% and %instance% tokens, which show the contents
+    of the WM_CLASS property of the active window (#2830)
+  * Added enable-struts option in bar section to enable/disable struts (#2769, #2844)
+  * wm-restack:
+    + bottom: lowers polybar to the bottom of the window stack (same as the previous
+      behavior of generic) (#2961)
+    + ewmh: Tries to use the _NET_SUPPORTING_WM_CHECK hint to position the bar (#2961)
+  * internal/xworkspaces: group-by-monitor setting to decide whether _NET_DESKTOP_VIEWPORT
+    should be used to group workspaces by monitor; (#2603, #2926)
+  Changed:
+  * custom/script:
+    + No longer produces a completely empty module if the exec command failed. It only
+      produces an empty module if the script had a zero exit code. (#2857, #2861)
+    + Bumped the script polling interval (not related to the interval setting) to
+      decrease wakeups. Polybar may take slightly longer to shut down. #2879
+  * internal/fs: Use / as a fallback if no mountpoints are specified (#2572, #2705)
+  * internal/backlight:
+    + Detect backlight if none specified (#2572, #2728)
+    + use-actual-brightness now always defaults to true (even for amdgpu backlights) (#2835, 2839)
+  * Providing a negative min-width to a token adds right-padding (#2789, #2801)
+  * Changed fuzzy match option on i3 and bspwm modules to find longest match instead
+    of the first match (#2831, #2829)
+  * wm-restack
+    + generic: Is now a best effort combination of other restacking strategies. First
+      tries ewmh and then the bottom strategy (#2961)
+    + bspwm: Will restack above the topmost bspwm root window instead of the root window
+      associated with the monitor polybar is on (#3019)
+  Fixed:
+  * Waiting for double click interval on modules that don't have a double click action (#2663, #2695)
+  * renderer:
+    + Small gaps when rendering emojis (#2785, #2802)
+    + Crash when using pseudo-transparency with certain wallpapers (#2798, #2813)
+    + Crash when invalid UTF-8 text is encountered (#2091, #2958)
+  * config:
+    + Error reporting for deprecated config values (#2724)
+    + Also monitor include-files for changes when --reload is set (#675, #2759)
+  * internal/xwindow: module does not crash when a tag is not provided in format (#2826, #2833)
+  * internal/i3: module errors when i3 has negative gaps (#2888, #2889)
+  * internal/backlight: Fix module being one step behind every update (#2835, #3028)
+  * wm-restack = bspwm: bar may become unclickable if there are overlapping monitors (#2873, #2961)
+
+-------------------------------------------------------------------
 Wed Apr  5 07:50:56 UTC 2023 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Added support for XCursor
