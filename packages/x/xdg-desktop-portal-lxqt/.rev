@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1079665</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c1891afbe97eb7ca25e7a6cae3466b07</srcmd5>
+    <version>0.5.0</version>
+    <time>1699388763</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.0:
+  * Made it depending on libfm-qt-1.4.0 and bumped the version.
+</comment>
+    <requestid>1123565</requestid>
+  </revision>
 </revisionlist>

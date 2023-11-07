@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  5 14:28:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Made it depending on libfm-qt-1.4.0 and bumped the version.
+
+-------------------------------------------------------------------
 Sat Apr 15 17:42:35 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 0.4.0:
