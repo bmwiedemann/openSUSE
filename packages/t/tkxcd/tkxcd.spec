@@ -1,7 +1,7 @@
 #
 # spec file for package tkxcd
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           tkxcd
 Version:        1.1.0
 Release:        0
 Summary:        Graphical frontend for diff
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Utilities
 Source:         tkxcd_1.1.0.tar.gz
-Patch:          tkxcd-wish.patch
+Patch0:         tkxcd-wish.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Provides:       tkxcd_1.1.0
@@ -42,7 +42,7 @@ Authors:
 
 %prep
 %setup -q -n tkxcd_1.1.0
-%patch
+%patch0
 
 %build
 
@@ -53,7 +53,7 @@ install -m 644 tkxcd.man %buildroot%_mandir/man1/tkxcd.1
 
 %files
 %defattr(-,root,root)
-%doc HISTORY README sample.tkxcdrc LICENSE TODO 
+%doc HISTORY README sample.tkxcdrc LICENSE TODO
 %doc %_mandir/*/*
 %_bindir/*
 
