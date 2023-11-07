@@ -1,7 +1,7 @@
 #
 # spec file for package scim-input-pad
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           scim-input-pad
 Version:        0.1.3.20130804
 Release:        0
 Summary:        An onscreen input pad to easily input symbols
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/scim-im/scim-input-pad
+URL:            https://github.com/scim-im/scim-input-pad
 Source:         %{name}-%{version}.tar.gz
-Patch:          scim-input-pad-missing-fclose.diff
+Patch0:         scim-input-pad-missing-fclose.diff
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libtool
@@ -41,7 +41,7 @@ An onscreen input pad to easily input symbols
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 ./bootstrap
 
 %build
