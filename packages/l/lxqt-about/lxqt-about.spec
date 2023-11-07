@@ -17,12 +17,10 @@
 
 
 Name:           lxqt-about
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        LXQt About Dialog
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/LXQt
 URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
