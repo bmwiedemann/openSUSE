@@ -26,7 +26,7 @@ License:        GPL-2.0-or-later
 URL:            https://wiki.gnome.org/msitools
 Source:         https://download.gnome.org/sources/msitools/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE msitools-set-explicit-bash.patch -- Set bash to be the explicit interpreter
-Patch:          msitools-set-explicit-bash.patch
+Patch0:         msitools-set-explicit-bash.patch
 
 BuildRequires:  bison
 BuildRequires:  intltool
