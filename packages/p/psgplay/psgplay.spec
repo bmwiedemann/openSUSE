@@ -1,7 +1,7 @@
 #
 # spec file for package psgplay
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           psgplay
 BuildRequires:  automake
 BuildRequires:  zlib-devel
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 Version:        0.6
 Release:        0
 Summary:        Player for Atari ST Music Files
 Source:         psgplay-0.6.tar.gz
-Patch:          psgplay-codecleanup.diff
+Patch0:         psgplay-codecleanup.diff
 Patch1:         psgplay-autotools.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -37,7 +38,7 @@ http://www.nocrew.org/software/psgplay/tunes/
 
 %prep
 %setup -q -n psgplay-0.6
-%patch
+%patch0
 %patch1
 rm -f acconfig.h
 
