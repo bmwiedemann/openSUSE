@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 08:55:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed May 25 11:21:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Implement Shared Library Packaging Policy and resolve rpmlint

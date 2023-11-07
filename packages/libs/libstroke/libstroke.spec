@@ -1,7 +1,7 @@
 #
 # spec file for package libstroke
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.etla.net/libstroke/
 Source0:        http://www.etla.net/libstroke/libstroke-%{version}.tar.bz2
-Patch:          libstroke-0.4.dif
+Patch0:         libstroke-0.4.dif
 Patch1:         no-gtk1.patch
 Patch2:         fix-implicit-declarations.patch
 # PATCH-FIX-UPSTREAM Fix quoting of AC_DEFUN args (bnc#794807) (2013-01-07)
@@ -61,7 +61,7 @@ that use libstroke.
 
 %prep
 %setup -q
-%patch
+%patch0
 %patch1 -p1
 %patch2 -p1
 %patch3
