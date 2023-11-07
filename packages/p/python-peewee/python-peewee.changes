@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov  7 14:21:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.0:
+  * Only roll-back in the outermost `@db.transaction`
+    decorator/ctx manager if an unhandled exception occurs.
+  * Cover transaction `BEGIN` in the reconnect-mixin. Given that
+    no transaction has been started, reconnecting when beginning
+    a new transaction ensures that a reconnect will occur if it
+    is safe to do so.
+  * Add support for setting `isolation_level` in `db.atomic()`
+    and `db.transaction()` when using Postgres and MySQL/MariaDB,
+    which will apply to the wrapped transaction.
+  * Add support for the Sqlite `SQLITE_DETERMINISTIC` function
+    flag. This allows user-defined Sqlite functions to be used
+    in indexes and may be used by the query planner.
+  * Fix unreported bug in dataset import when inferred field name
+    differs from column name.
+- disable apsw from tests for sle15 - can't be build anymore
+
+-------------------------------------------------------------------
 Wed Aug 16 14:40:36 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.16.3
@@ -10,12 +30,12 @@ Wed Aug 16 14:40:36 UTC 2023 - ecsos <ecsos@opensuse.org>
   - Fix missing binary types for mysql-connector and mariadb-connector.
   - Add extract() method to MySQL JSONField for extracting a jsonpath.
 - Add %{?sle15_python_module_pythons}
-- unbind to cython < 3 
+- unbind to cython < 3
 
 -------------------------------------------------------------------
 Sun Aug 13 19:59:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- bind to cython < 3 
+- bind to cython < 3
 
 -------------------------------------------------------------------
 Thu Jun  1 20:04:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -43,7 +63,7 @@ Thu Jun  1 20:04:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Dec  2 21:43:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.15.4 
+- Update to 3.15.4
   Raise an exception in ReconnectMixin if connection is lost while inside a transaction (if the transaction was interrupted presumably some changes were lost and explicit intervention is needed).
   Add db.Model property to reduce boilerplate.
   Add support for running prefetch() queries with joins instead of subqueries (this helps overcome a MySQL limitation about applying LIMITs to a subquery).
@@ -111,7 +131,7 @@ Tue Oct  4 22:59:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   This functionality requires Sqlite 3.35 or newer.
   Smaller changes:
   Add shortcuts.insert_where() helper for generating conditional INSERT with a bit less boilerplate.
-  Fix bug in test_utils.count_queres() which could erroneously include pool events such as connect/disconnect, etc. 
+  Fix bug in test_utils.count_queres() which could erroneously include pool events such as connect/disconnect, etc.
 
 -------------------------------------------------------------------
 Sat Apr 16 15:24:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -158,7 +178,7 @@ Sat Nov 13 20:29:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Fix bug which prevented `DeferredForeignKey` from being used as a model's
     primary key
   * Ensure foreign key's related object cache is cleared when the foreign-key is
-    set to `None`. 
+    set to `None`.
   * Allow specification of `(schema, table)` to be used with CREATE TABLE AS...
   * Allow reusing open connections with DataSet
   * Add `highlight()` and `snippet()` helpers to Sqlite `SearchField`, for use
@@ -241,24 +261,24 @@ Wed May 20 07:26:11 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 -------------------------------------------------------------------
 Wed Mar 18 16:01:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- switch to PyMSQL instead of mysql-connector-python, which is the 
+- switch to PyMSQL instead of mysql-connector-python, which is the
   default since 3.12.x and doesn't have vulnerabilities (bsc#1122204)
 
 -------------------------------------------------------------------
 Wed Mar 11 15:56:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.13.1
-  * This will be a notable release as it adds support for CockroachDB, 
+  * This will be a notable release as it adds support for CockroachDB,
     a distributed, horizontally-scalable SQL database.
   * Allow FOR UPDATE clause to specify one or more tables (FOR UPDATE OF...).
   * Support for Postgres LATERAL join.
-  * Fix non-deterministic join ordering issue when using the filter() 
+  * Fix non-deterministic join ordering issue when using the filter()
     API across several tables
-  * Bulk insert (insert_many() and insert_from()) will now return 
+  * Bulk insert (insert_many() and insert_from()) will now return
     the row count instead of the last insert ID.
-  * Migration extension now supports altering a column's data-type, 
+  * Migration extension now supports altering a column's data-type,
     via the new alter_column_type() method.
-  * Added BloomFilter.from_buffer() method for populating a bloom-filter 
+  * Added BloomFilter.from_buffer() method for populating a bloom-filter
     from the output of a previous call to the to_buffer() method.
 
 -------------------------------------------------------------------
@@ -273,7 +293,7 @@ Fri Oct 18 10:19:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * Implement hash interface for Alias instances, allowing them to be used in multi-source queries.
   * Workaround for MySQL prior to 8 and MariaDB handling of union queries inside of parenthesized expressions (like IN).
   * Be more permissive in letting invalid values be stored in a field whose type is INTEGER or REAL, since Sqlite allows this.
-  * Fix for issue #1991 regarding setting intervening models to None. 
+  * Fix for issue #1991 regarding setting intervening models to None.
   * Fixes the Model._pk and get_id() interfaces so they no longer introduce the possibility of accidentally resolving the FK.
 
 -------------------------------------------------------------------

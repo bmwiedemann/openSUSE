@@ -261,4 +261,40 @@
     <comment></comment>
     <requestid>1105035</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9d6b1be0fde64ad4902d0e4ead334966</srcmd5>
+    <version>3.17.0</version>
+    <time>1699388917</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.17.0:
+  * Only roll-back in the outermost `@db.transaction`
+    decorator/ctx manager if an unhandled exception occurs.
+  * Cover transaction `BEGIN` in the reconnect-mixin. Given that
+    no transaction has been started, reconnecting when beginning
+    a new transaction ensures that a reconnect will occur if it
+    is safe to do so.
+  * Add support for setting `isolation_level` in `db.atomic()`
+    and `db.transaction()` when using Postgres and MySQL/MariaDB,
+    which will apply to the wrapped transaction.
+  * Add support for the Sqlite `SQLITE_DETERMINISTIC` function
+    flag. This allows user-defined Sqlite functions to be used
+    in indexes and may be used by the query planner.
+  * Fix unreported bug in dataset import when inferred field name
+    differs from column name.
+- disable apsw from tests for sle15 - can't be build anymore
+
+- unbind to cython &lt; 3
+- bind to cython &lt; 3
+- Update to 3.15.4
+  Fix bug in test_utils.count_queres() which could erroneously include pool events such as connect/disconnect, etc.
+    set to `None`.
+- switch to PyMSQL instead of mysql-connector-python, which is the
+  * This will be a notable release as it adds support for CockroachDB,
+  * Fix non-deterministic join ordering issue when using the filter()
+  * Bulk insert (insert_many() and insert_from()) will now return
+  * Migration extension now supports altering a column's data-type,
+  * Added BloomFilter.from_buffer() method for populating a bloom-filter
+  * Fix for issue #1991 regarding setting intervening models to None.</comment>
+    <requestid>1124001</requestid>
+  </revision>
 </revisionlist>

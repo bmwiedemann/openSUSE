@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-peewee
-Version:        3.16.3
+Version:        3.17.0
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause
@@ -27,7 +27,9 @@ Source:         https://github.com/coleifer/peewee/archive/refs/tags/%{version}.
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyMySQL}
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module apsw}
+%endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psycopg2}
