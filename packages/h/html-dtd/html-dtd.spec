@@ -1,7 +1,7 @@
 #
 # spec file for package html-dtd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           html-dtd
 BuildRequires:  sgml-skel
-Url:            http://www.w3.org/MarkUp/
+URL:            http://www.w3.org/MarkUp/
 Provides:       html_dtd
 Obsoletes:      html_dtd
 %define regcat /usr/bin/sgml-register-catalog
@@ -44,7 +44,7 @@ Source8:        %{name}-README.SUSE
 Source9:        CATALOG.html
 Source10:       CATALOG.html-3.2
 Source11:       CATALOG.html-4.0
-Patch:          html_dtd.dif
+Patch0:         html_dtd.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -77,8 +77,8 @@ mkdir html-4.01
 (cd html-4.01 && tar zxf $RPM_SOURCE_DIR/html401.tgz)
 cp -p %{SOURCE7} .
 %{INSTALL_DATA} %{SOURCE8} README.SUSE
-%patch -p1
-find . -type f | xargs chmod 644 
+%patch0 -p1
+find . -type f | xargs chmod 644
 find . -type d | xargs chmod 755
 
 %build
