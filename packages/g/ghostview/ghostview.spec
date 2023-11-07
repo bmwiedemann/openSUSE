@@ -1,7 +1,7 @@
 #
 # spec file for package ghostview
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,11 @@ Release:        0
 Summary:        Ghostview
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PS
-Url:            http://pages.cs.wisc.edu/~ghost/gv/index.htm
+URL:            http://pages.cs.wisc.edu/~ghost/gv/index.htm
 Source:         ghostview-1.5.tar.bz2
 Source1:        ghostview.desktop
 Source2:        ghostview.png
-Patch:          ghostview-1.5.dif
+Patch0:         ghostview-1.5.dif
 Patch1:         ghostview-1.5-ad.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  imake
@@ -39,7 +39,8 @@ Provides:       ghstview
 Provides:       gsview
 Obsoletes:      gsview
 Requires:       ghostscript_x11
-Conflicts:      gs_serv gs_vga
+Conflicts:      gs_serv
+Conflicts:      gs_vga
 %define _x11data    %{_datadir}/X11
 %define _appdefdir  %{_x11data}/app-defaults
 
@@ -49,7 +50,7 @@ X11 interface to ghostscript.
 
 %prep
 %setup -q
-%patch
+%patch0
 %patch1
 
 %build
