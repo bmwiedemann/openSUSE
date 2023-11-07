@@ -1,7 +1,7 @@
 #
 # spec file for package freeradius-client
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,11 @@ Release:        0
 Summary:        FreeRADIUS Client Software
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Radius/Clients
-Url:            http://www.freeradius.org/freeradius-client/
+URL:            http://www.freeradius.org/freeradius-client/
 Source:         ftp://ftp.freeradius.org/pub/freeradius/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        login.example
-Patch:          freeradius-client-missing_size_t_definition.patch
+Patch0:         freeradius-client-missing_size_t_definition.patch
 BuildRequires:  libnettle-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -49,7 +49,8 @@ The package contains the shared library of FreeRADIUS Client
 %package devel
 Summary:        Header files, libraries and development documentation for freeradius-client
 Group:          Productivity/Networking/Radius/Clients
-Requires:       %{name}-libs = %{version} glibc-devel
+Requires:       %{name}-libs = %{version}
+Requires:       glibc-devel
 
 %description devel
 This package contains the header files, static libraries and
@@ -59,7 +60,7 @@ freeradius-client.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 find -type d -name CVS -print | xargs rm -rf
 cp %{SOURCE1} .
 cp %{SOURCE2} login.radius
