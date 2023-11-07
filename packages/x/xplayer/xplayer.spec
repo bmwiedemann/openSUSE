@@ -1,7 +1,7 @@
 #
 # spec file for package xplayer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/linuxmint/xplayer
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM return no value in void function
-Patch:          xplayer-2.2.1-return-no-value-in-void-function.patch
+Patch0:         xplayer-2.2.1-return-no-value-in-void-function.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
