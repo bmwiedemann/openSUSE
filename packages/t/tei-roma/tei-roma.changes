@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:08:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Sun Jun 25 01:56:09 UTC 2017 - bwiedemann@suse.com
 
 - Add tei-roma-2.11-fix-race.patch to fix race condition during build

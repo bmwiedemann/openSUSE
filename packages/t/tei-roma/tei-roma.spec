@@ -1,7 +1,7 @@
 #
-# spec file for package tei-roma (Version 2.11)
+# spec file for package tei-roma
 #
-# Copyright (c) 2009 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           tei-roma
 Summary:        TEI Schema or DTD Generator
 Version:        2.11
-Release:        57
-License:        GPL-2.0+
+Release:        0
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/XML
 Source0:        http://ftp1.sourceforge.net/sourceforge/tei/tei-roma-%{version}.zip
-Patch:          roma-dir.diff
+Patch0:         roma-dir.diff
 # PATCH-FIX-OPENSUSE tei-roma-2.11-fix-race.patch bmwiedemann@opensuse
 Patch1:         tei-roma-2.11-fix-race.patch
-Url:            http://www.tei-c.org/
+URL:            http://www.tei-c.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Requires:       /usr/bin/xsltproc trang perl
+Requires:       /usr/bin/xsltproc
+Requires:       perl
+Requires:       trang
 BuildRequires:  unzip
 
 %description
@@ -53,7 +53,7 @@ TEI schema or DTD.  It uses xsltproc, trang, and Perl.
 %prep
 %setup -q
 # unzip -q -a %{SOURCE0}
-%patch -p 1
+%patch0 -p 1
 %patch1 -p1
 /bin/chmod -Rf a+rX,g-w,o-w .
 
@@ -82,16 +82,3 @@ rm -fr $RPM_BUILD_ROOT
 %{_mandir}/man1/roma*
 
 %changelog
-* Thu Nov 29 2007 ke@suse.de
-- Update to version 2.11.
-* Mon Apr 02 2007 ke@suse.de
-- Update to version 2.8.
-- Install the roma man page.
-* Thu Mar 29 2007 coolo@suse.de
-- Fix BuildRequires
-* Fri Jan 12 2007 ke@suse.de
-- Remove /usr/share/xml from the files list.
-* Wed Jan 25 2006 mls@suse.de
-- converted neededforbuild to BuildRequires
-* Wed Nov 16 2005 ke@suse.de
-- New package: Version 1.7.10.
