@@ -102,6 +102,8 @@ buildignore intlfonts-chinese-big-bitmap-fonts
 # Needed by GDM on Leap 15.5 for some weird reason (bsc#1203966)
 # buildignore xorg-x11-fonts
 buildignore xorg-x11-fonts-legacy
+# Only needed if something explicitly uses the ancient fonts
+buildignore xorg-x11-fonts-converted
 
 buildignore strace
 buildignore tcsh

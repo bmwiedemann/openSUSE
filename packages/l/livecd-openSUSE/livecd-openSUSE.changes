@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:36:40 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore xorg-x11-fonts-converted
+
+-------------------------------------------------------------------
 Thu Sep 14 20:09:45 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-x11: no longer block accountsservice: it is now a dependency

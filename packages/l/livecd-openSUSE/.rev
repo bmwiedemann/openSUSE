@@ -1669,4 +1669,12 @@
     <comment>- list-x11: no longer block accountsservice: it is now a dependency
   of xfce4-panel.</comment>
   </revision>
+  <revision rev="209" vrev="209">
+    <srcmd5>5559ecdc909f6b8d1c2bafc9892ef8d4</srcmd5>
+    <version>unknown</version>
+    <time>1699388818</time>
+    <user>anag+factory</user>
+    <comment>- list-common: Ignore xorg-x11-fonts-converted (forwarded request 1123857 from favogt)</comment>
+    <requestid>1123860</requestid>
+  </revision>
 </revisionlist>
