@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:02:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Sat Jul  2 08:49:17 UTC 2016 - i@marguerite.su
 
 - add patch sax3-gcc6.patch which fixes boo#985161

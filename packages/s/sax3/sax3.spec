@@ -1,7 +1,7 @@
 #
 # spec file for package sax3
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@ Name:           sax3
 Version:        0.1.2
 Release:        0
 Summary:        A Graphical Configuration Tool for X
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/X11/Utilities
-Url:            https://www.ohloh.net/p/sax3
+URL:            https://www.ohloh.net/p/sax3
 Source:         %{name}-%{version}.tar.gz
 #               https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM sax3-gcc6.patch
-Patch:          sax3-gcc6.patch
+Patch0:         sax3-gcc6.patch
 BuildRequires:  augeas-devel
 BuildRequires:  augeas-lenses
 BuildRequires:  cmake
@@ -51,7 +51,7 @@ Michal Hrusecky
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %if 0%{?suse_version} < 1230
 # No libyui pkg-config before 12.3
 sed -i 's|${LIBYUI_INCLUDE_DIR}|/usr/include/YaST2\ /usr/include/YaST2/yui|' src/CMakeLists.txt
