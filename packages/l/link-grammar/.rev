@@ -460,4 +460,12 @@
     <comment>Update to 5.10.5 (forwarded request 984887 from dimstar)</comment>
     <requestid>985232</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>24978f669f1b85d2166add9d36c9b30d</srcmd5>
+    <version>5.10.5</version>
+    <time>1699388808</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123786</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package link-grammar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Productivity/Text/Spell
 URL:            https://www.abisource.com/projects/link-grammar/
 Source:         http://www.abisource.com/downloads/link-grammar/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
-Patch:          py310.patch
+Patch0:         py310.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
