@@ -1605,4 +1605,27 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment></comment>
     <requestid>1115664</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>3521e5c4f30afecaa07905fe0121fd7a</srcmd5>
+    <version>5.70</version>
+    <time>1699388706</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.70:
+  * Fix issue with not sending GATT confirmations.
+  * Fix issue with not handling initiator properly.
+  * Fix issue with not checking PBAP counter length.
+  * Add support for MICP profile and MICS service.
+- add Fix-.device_probe-failing-if-SDP-record-is-not.patch to fix
+  regression when pairing game controllers
+
+      Sync the change log here. (bsc#1196275, jsc#SLE-20639)
+		Requires:       %{name}
+	    - Removed
+	        --with-dbusconfdir=%{_datadir}  \
+              https://www.spinics.net/lists/linux-bluetooth/msg79852.html
+            - Move 43xx firmware path for RPi3 bluetooth support bsc#1140688 bsc#995059 bsc#1094902
+- Fix path to systemctl in %post script
+  (bsc#1013877)(CVE-2016-9804)</comment>
+    <requestid>1123685</requestid>
+  </revision>
 </revisionlist>
