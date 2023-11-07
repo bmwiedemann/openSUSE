@@ -1,7 +1,7 @@
 #
 # spec file for package linkloop
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           linkloop
 Summary:        Test network connectivity at link layer (layer-2)
 Version:        1.0.0
 Release:        0
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 BuildRequires:  automake
 Group:          Productivity/Networking/Other
 Source:         linkloop-%{version}-hp.tar.bz2
-Patch:          linkloop-clear-size-fix.diff
-Url:            http://freshmeat.net/projects/linkloop/
+Patch0:         linkloop-clear-size-fix.diff
+URL:            http://freshmeat.net/projects/linkloop/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -40,7 +41,7 @@ Authors:
 
 %prep
 %setup -q -n %{name}-%{version}-hp
-%patch
+%patch0
 
 %build
 autoreconf -fi
