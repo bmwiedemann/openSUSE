@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-xdg-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/flatpak-xdg-utils
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 264052bbf52899410421454150c493264bd1a696.patch -- flatpak-spawn: Fix memory leak when receiving NameOwnerChanged
-Patch:          %{url}/commit/264052bbf52899410421454150c493264bd1a696.patch
+Patch0:         %{url}/commit/264052bbf52899410421454150c493264bd1a696.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  meson
