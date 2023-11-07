@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:10:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Dec 27 13:09:42 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

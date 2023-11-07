@@ -1,7 +1,7 @@
 #
 # spec file for package mailx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ Summary:        A MIME-Capable Implementation of the mailx Command
 License:        BSD-4-Clause AND MPL-1.1
 Group:          Productivity/Networking/Email/Utilities
 Source:         mailx-%{version}.tar.bz2
-Patch:          mailx-%{version}.dif
+Patch0:         mailx-%{version}.dif
 Patch1:         nail-11.25-path.dif
 Patch2:         mailx-%{version}-replyto.patch
 Patch3:         nail-11.25-ttychar.dif
@@ -98,7 +98,7 @@ minor enhancements like the ability to set a "From:" address.
 %patch13 -p0 -b .ssl11f
 %patch14 -p1 -b .sendmail
 %patch15 -p0 -b .systemd
-%patch -p1 -b .0
+%patch0 -p1 -b .0
 
 %build
     CC=gcc

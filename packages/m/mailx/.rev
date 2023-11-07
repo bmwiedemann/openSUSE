@@ -407,4 +407,12 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055711 from lnussel)</comment>
     <requestid>1057030</requestid>
   </revision>
+  <revision rev="48" vrev="36">
+    <srcmd5>f6764b20beaf747e0c1f4ebc6d2085ae</srcmd5>
+    <version>12.5</version>
+    <time>1699388727</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123882</requestid>
+  </revision>
 </revisionlist>
