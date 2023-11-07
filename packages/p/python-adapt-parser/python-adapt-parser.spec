@@ -1,7 +1,7 @@
 #
 # spec file for package python-adapt-parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/MycroftAI/adapt
 Source:         https://github.com/MycroftAI/adapt/archive/refs/tags/release/v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE remove-python-six.patch
-Patch:          remove-python-six.patch
+Patch0:         remove-python-six.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

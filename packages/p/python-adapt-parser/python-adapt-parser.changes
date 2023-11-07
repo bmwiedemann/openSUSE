@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:58:56 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Oct 19 11:27:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix sitelib in files section
