@@ -1,7 +1,7 @@
 #
 # spec file for package lswt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           lswt
 Version:        1.0.4
 Release:        0
@@ -23,7 +24,7 @@ License:        GPL-3.0-only
 Group:          System/X11/Utilities
 URL:            https://git.sr.ht/~leon_plickat/lswt
 Source:         https://git.sr.ht/~leon_plickat/lswt/archive/v%{version}.tar.gz
-Patch:          Makefile.patch
+Patch0:         Makefile.patch
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  pkgconfig(wayland-client)
