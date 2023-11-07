@@ -864,4 +864,14 @@ argument by removing the curly brackets (shell syntax).</comment>
 </comment>
     <requestid>1117952</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>cfdf774695c4042236f17afc016d995d</srcmd5>
+    <version>4.97</version>
+    <time>1699388816</time>
+    <user>anag+factory</user>
+    <comment>- update to exim 4.97
+  * remove patch-no-exit-on-rewrite-malformed-address.patch (upstreamed)
+</comment>
+    <requestid>1123800</requestid>
+  </revision>
 </revisionlist>
