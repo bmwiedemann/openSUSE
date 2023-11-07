@@ -1,7 +1,7 @@
 #
 # spec file for package xplayer-plparser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ URL:            https://github.com/linuxmint/xplayer-plparser
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 #PATCH-FIX-UPSTREAM port to gmime-3.0
-Patch:          %{name}-gmime-3.0.patch
+Patch0:         %{name}-gmime-3.0.patch
 BuildRequires:  gnome-common
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkg-config
@@ -94,7 +94,7 @@ of playlist formats, to save them too.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 NOCONFIGURE=1 gnome-autogen.sh

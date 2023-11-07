@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:16:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Oct  1 03:50:57 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - add xplayer-plparser-gmime-3.0.patch (boo#1171808)
