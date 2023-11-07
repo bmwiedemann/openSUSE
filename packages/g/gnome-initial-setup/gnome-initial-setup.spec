@@ -85,10 +85,12 @@ Initial assistant, helping you to get the system up and running.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
+%if !0%{?sle_version}
 # Move autostart file to /usr/etc
  mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
  mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
  mv %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop %{buildroot}%{_distconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
+%endif
 
 %pre -f %{name}.pre
 
@@ -111,10 +113,13 @@ Initial assistant, helping you to get the system up and running.
 %{_datadir}/dconf/profile/gnome-initial-setup
 %dir %{_datadir}/gnome-initial-setup
 %{_datadir}/gnome-initial-setup/initial-setup-dconf-defaults
-#%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
+%if !0%{?sle_version}
 %{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
-#%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
 %{_distconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
+%else
+%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
+%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
+%endif
 %if !0%{?sle_version} || 0%{?sle_version} >= 160000
 %{_userunitdir}/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-initial-setup-first-login.service
