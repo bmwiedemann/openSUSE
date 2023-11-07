@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 20 13:17:27 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com>
+
+- Fix bsc#1203741: Add _constraint file to make it build (taken from Factory)
+- Use %license to store OFL license text
+
+-------------------------------------------------------------------
 Fri Jul 29 07:55:45 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 feat!: rename noto-*-cjk-fonts -> google-noto-*-cjk-fonts
