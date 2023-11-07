@@ -1,7 +1,7 @@
 #
 # spec file for package picom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,13 @@ License:        MIT AND MPL-2.0
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
 Source0:        https://github.com/yshui/picom/archive/v%{version}.tar.gz
+# Patch-FIX-UPSTREAM core: expand X error handling based on
+# aca3fdcef7bfcb1c3ce65cf87413fa6ab280d183
+# Required for the fix further below
+Patch1:         0001-core-expand-X-error-handling.patch
+# PATCH-FIX-UPSTREAM added proper event handling for XESetWireToEvent -- based on PR 123
+Patch2:         0002-core-added-proper-event-handling-for-XESetWireToEven.patch
+Patch3:         0003-core-event-code-refactoring.patch
 BuildRequires:  asciidoc
 BuildRequires:  c_compiler
 BuildRequires:  hicolor-icon-theme
@@ -50,6 +57,7 @@ BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-sync)
+BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xinerama)
 BuildRequires:  pkgconfig(xext)
@@ -62,7 +70,7 @@ XRender backends and has various options to control shadows, blur
 and fade animations.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson -Dwith_docs=true -Dcompton=false -Dvsync_drm=true

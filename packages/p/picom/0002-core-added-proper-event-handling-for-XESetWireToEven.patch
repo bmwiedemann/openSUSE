@@ -1,0 +1,47 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Nikolay Borodin <monsterovich@gmail.com>
+Date: Fri, 16 Jun 2023 23:50:20 +0200
+Subject: [PATCH] core: added proper event handling for XESetWireToEvent
+
+---
+ src/event.c     | 5 +++--
+ src/meson.build | 2 ++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/event.c b/src/event.c
+index 53da76a9e5ae5bc4361157c2ee15732511aa9c38..c4f3cefe4aac9a7a42ade0e5949160efa36adf59 100644
+--- a/src/event.c
++++ b/src/event.c
+@@ -7,6 +7,7 @@
+ #include <X11/extensions/sync.h>
+ #include <xcb/damage.h>
+ #include <xcb/randr.h>
++#include <xcb/xcb_event.h>
+ 
+ #include "atom.h"
+ #include "common.h"
+@@ -684,9 +685,9 @@ void ev_handle(session_t *ps, xcb_generic_event_t *ev) {
+ 	// For even more details, see:
+ 	// https://bugs.freedesktop.org/show_bug.cgi?id=35945
+ 	// https://lists.freedesktop.org/archives/xcb/2011-November/007337.html
+-	auto proc = XESetWireToEvent(ps->dpy, ev->response_type, 0);
++	auto proc = XESetWireToEvent(ps->dpy, XCB_EVENT_RESPONSE_TYPE(ev), 0);
+ 	if (proc) {
+-		XESetWireToEvent(ps->dpy, ev->response_type, proc);
++		XESetWireToEvent(ps->dpy, XCB_EVENT_RESPONSE_TYPE(ev), proc);
+ 		XEvent dummy;
+ 
+ 		// Stop Xlib from complaining about lost sequence numbers.
+diff --git a/src/meson.build b/src/meson.build
+index 60d83a891f03a3850df1f23d53a195936f1f56ea..1d4c3072ee96948ef11c30b84055a758319a55e8 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -31,6 +31,8 @@ foreach i : required_xcb_packages
+ 	base_deps += [dependency(i, version: '>=1.12.0', required: true)]
+ endforeach
+ 
++base_deps += [dependency('xcb-util', version: '>=0.4.0', required: true)]
++
+ if not cc.has_header('uthash.h')
+   error('Dependency uthash not found')
+ endif

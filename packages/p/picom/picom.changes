@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 17 16:40:34 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add patch to Picom spamming Xlib: ignoring invalid extension event 161 errors.
+  gh#yshui/picom#1096
+  Backport patch from next branch
+  0001-core-expand-X-error-handling.patch
+  0002-core-added-proper-event-handling-for-XESetWireToEven.patch
+  0003-core-event-code-refactoring.patch
+
+-------------------------------------------------------------------
 Wed Dec 21 14:31:20 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to version 10.2

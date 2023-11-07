@@ -137,4 +137,17 @@ Fixes:
     gh#yshui/picom#950</comment>
     <requestid>1044090</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b04a1487e26f1d8d4d2d0be7796cb936</srcmd5>
+    <version>10.2</version>
+    <time>1699388771</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to Picom spamming Xlib: ignoring invalid extension event 161 errors.
+  gh#yshui/picom#1096
+  Backport patch from next branch
+  0001-core-expand-X-error-handling.patch
+  0002-core-added-proper-event-handling-for-XESetWireToEven.patch
+  0003-core-event-code-refactoring.patch</comment>
+    <requestid>1123689</requestid>
+  </revision>
 </revisionlist>
