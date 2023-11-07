@@ -1,7 +1,7 @@
 #
 # spec file for package fusesmb
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,14 +24,14 @@ BuildRequires:  libsmbclient-devel
 BuildRequires:  samba-client
 Requires:       fuse
 Summary:        SMB for FUSE
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
 Version:        0.8.7
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
-Patch:          search_path_fix.patch
+Patch0:         search_path_fix.patch
 Patch1:         single_thread.patch
-Url:            http://www.ricardis.tudelft.nl/~vincent/fusesmb/
+URL:            http://www.ricardis.tudelft.nl/~vincent/fusesmb/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -43,7 +43,7 @@ making network browsing just as easy as it is on Windows.
 
 %prep
 %setup
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 
 %build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 16:06:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Sep 11 11:30:49 UTC 2013 - pgajdos@suse.com
 
 - detect libsmbclient
