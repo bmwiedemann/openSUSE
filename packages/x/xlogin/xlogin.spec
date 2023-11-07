@@ -1,7 +1,7 @@
 #
 # spec file for package xlogin
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,10 @@ BuildRequires:  imake
 Version:        0.2
 Release:        0
 Summary:        xlogin, xtelnet
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Source:         xlogin-0.2.tar.gz
-Patch:          xlogin-0.2.dif
+Patch0:         xlogin-0.2.dif
 Patch1:         xlogin-0.2-fix-bashisms.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -50,7 +50,7 @@ Authors:
 
 %prep
 %setup
-%patch
+%patch0
 %patch1 -p1
   xmkmf
 

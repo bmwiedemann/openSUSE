@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:15:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Nov 18 23:05:00 UTC 2014 - Led <ledest@gmail.com>
 
 - fix bashisms in xtelnet script:
