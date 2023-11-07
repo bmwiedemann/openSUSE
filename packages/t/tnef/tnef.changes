@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:10:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Apr 25 06:19:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream patchfix: ca0d1a1.patch: Handle missing index/rindex

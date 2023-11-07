@@ -25,7 +25,7 @@ Group:          Productivity/Archiving/Compression
 URL:            https://github.com/verdammelt/tnef
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ca0d1a1.patch -- Handle missing index/rindex functions in path.c
-Patch:          %{url}/commit/ca0d1a1.patch
+Patch0:         %{url}/commit/ca0d1a1.patch
 BuildRequires:  libtool
 
 %description
