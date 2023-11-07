@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-dictionary
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Dictionary
 Source:         https://download.gnome.org/sources/gnome-dictionary/40/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-dictionary-fix-meson-061.patch -- Fix build with meson 0.61 and newer
-Patch:          gnome-dictionary-fix-meson-061.patch
+Patch0:         gnome-dictionary-fix-meson-061.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
