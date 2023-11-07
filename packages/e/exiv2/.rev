@@ -844,4 +844,15 @@
   * Fix &quot;Since v0.14 the version check macro doesn't work in a precompiler</comment>
     <requestid>1115919</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>c85881dd144ac4ec45bb07cc33873cb3</srcmd5>
+    <version>0.28.1</version>
+    <time>1699388715</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.28.1 (bsc#1216923, CVE-2023-44398):
+  * Release Notes:
+    https://github.com/Exiv2/exiv2/issues/2813
+- drop exiv2-metadata-null-checks.patch (upstream)</comment>
+    <requestid>1123751</requestid>
+  </revision>
 </revisionlist>

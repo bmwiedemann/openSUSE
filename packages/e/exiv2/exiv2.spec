@@ -18,7 +18,7 @@
 
 %bcond_with docs
 Name:           exiv2
-Version:        0.28.0
+Version:        0.28.1
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -27,8 +27,6 @@ URL:            https://exiv2.org/
 Source0:        https://github.com/Exiv2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         exiv2-build-date.patch
-# PATCH-FIX-UPSTREAM exiv2-metadata-null-checks.patch - Check if the metadata is NULL
-Patch1:         exiv2-metadata-null-checks.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600
@@ -197,11 +195,7 @@ done
 %{_includedir}/exiv2
 %{_libdir}/libexiv2.so
 %{_libdir}/pkgconfig/exiv2.pc
-%dir %{_libdir}/cmake
-%dir %{_libdir}/cmake/exiv2
-%{_libdir}/cmake/exiv2/exiv2Config-relwithdebinfo.cmake
-%{_libdir}/cmake/exiv2/exiv2Config.cmake
-%{_libdir}/cmake/exiv2/exiv2ConfigVersion.cmake
+%{_datadir}/cmake/exiv2
 
 %if %{with docs}
 %files -n libexiv2-doc
