@@ -15,28 +15,30 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python-python-rtmidi
-Version:        1.4.9
+Version:        1.5.7
 Release:        0
 Summary:        Python binding for the RtMidi C++ library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://spotlightkid.github.io/python-rtmidi/
-Source:        https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-rtmidi/python_rtmidi-%{version}.tar.gz
+BuildRequires:  %{python_module Cython <= 1.0.0}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module meson-python}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module Cython <= 1.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
-BuildRequires:  python(abi) > 3.5
+BuildRequires:  python(abi) > 3.8
 %python_subpackages
 
 %description
@@ -51,30 +53,13 @@ scheme of classes, methods and parameters adapted to the Python
 PEP-8 conventions and requirements of the Python package naming
 structure.
 
-%package doc
-Summary:        HTML documentation and examples for python-rtmidi
-Group:          Documentation/Other
-BuildArch:      noarch
-
-%description doc
-Contains HTML documentation and examples for python-rtmidi.
-
 %prep
-%setup -q -n python-rtmidi-%{version}
+%setup -q -n python_rtmidi-%{version}
 sed -i 's,/usr/bin/env python,%{_bindir}/%{python_for_executables},' examples/*.py examples/*/*.py
 rm src/_rtmidi.cpp
 
 %build
 %pyproject_wheel
-
-# docs
-rm docs/rtmidi.rst
-rm docs/modules.rst
-%{python_for_executables} ./setup.py build_ext --inplace
-sphinx-apidoc -o docs/ rtmidi rtmidi/release.py
-cat docs/api.rst.inc >> docs/rtmidi.rst
-%make_build -C docs html
-rm docs/_build/html/.buildinfo docs/_build/html/objects.inv
 
 %install
 %pyproject_install
@@ -84,12 +69,10 @@ rm docs/_build/html/.buildinfo docs/_build/html/objects.inv
 # which cannot be provided on OBS workers
 
 %files %{python_files}
-%license LICENSE.txt
-%doc AUTHORS.rst CHANGELOG.rst README.rst
+%license LICENSE.md
+%doc AUTHORS.md CHANGELOG.md README.md
+%doc examples
 %{python_sitearch}/rtmidi
 %{python_sitearch}/python_rtmidi-%{version}*-info
-
-%files %{python_files doc}
-%doc docs/_build/html examples
 
 %changelog
