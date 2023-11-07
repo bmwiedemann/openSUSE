@@ -1,7 +1,7 @@
 #
 # spec file for package tn5250
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          Productivity/Networking/Other
 URL:            http://tn5250.sourceforge.net/
 Source:         https://sourceforge.net/projects/tn5250/files/tn5250/0.16.5/tn5250-0.16.5.tar.gz
 Source1:        README.SUSE
-Patch:          tn5250-0.16.2-terminfo.dif
+Patch0:         tn5250-0.16.2-terminfo.dif
 Patch1:         tn5250-0.16.5-strings.patch
 Patch2:         tn5250-0.16.5-no-build-date.patch
 BuildRequires:  gcc-c++
@@ -57,7 +57,7 @@ Header files for use with the tn5250 library.
 
 %prep
 %setup
-%patch -p1
+%patch0 -p1
 %patch1
 %patch2
 cp -p %{SOURCE1} .

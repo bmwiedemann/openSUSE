@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:09:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Fri Apr 29 10:22:05 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switched source url to https
