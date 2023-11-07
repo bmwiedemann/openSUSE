@@ -356,4 +356,15 @@
     <comment></comment>
     <requestid>1080369</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e43d658624067686f327ac74f0a9b91c</srcmd5>
+    <version>1.4.0</version>
+    <time>1699388760</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0:
+  * Deprecated KWindowSystem methods are ported.
+  * Show error on trying to lock screen under Wayland.
+</comment>
+    <requestid>1123562</requestid>
+  </revision>
 </revisionlist>
