@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 07 11:30:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.0:
+  * fix: panic on interrupt of deploy --remote (#4030) (#4032)
+  * Fix panic when interrupt deploy (#4027)
+  * chore: rename "cluster" to "context" in logs (#4011)
+  * User Friendly Errors (#4009)
+  * initial work (#4007)
+  * add build service context generation to image build event
+    (#4023)
+  * Update analytics data (#4024)
+  * feat: add `--include-token` flag to `okteto ctx show` command
+    (#4010)
+  * Display a friendly error when the local proxy cannot start
+    (#4019)
+  * Implement new event ImageBuild (#4001)
+  * fix: e2e tests (#4021)
+  * [CLI Quality][Lint] add tparallel lint and fix errors (#4020)
+  * chore: fix an error message on deploying ingress with same name
+    (fix #3827) (#4012)
+  * ci: add tenv linter (#4018)
+  * build(deps): Bump golang.org/x/net from 0.7.0 to 0.17.0 (#4015)
+  * Deploy remote extra hosts (#4003)
+  * test: remove file after test (#4008)
+  * Jlopezbarb/kubetoken update (#3998)
+  * fix: show error when manifest not found using -f flag
+  * Add support for deleting multiple context (#3886)
+
+-------------------------------------------------------------------
 Tue Oct 10 13:55:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.21.0:
