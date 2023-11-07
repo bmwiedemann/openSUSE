@@ -1,7 +1,7 @@
 #
 # spec file for package bb
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,14 +21,14 @@ BuildRequires:  aalib-devel
 BuildRequires:  automake
 BuildRequires:  libmikmod-devel
 BuildRequires:  lzo-devel
-Url:            http://aa-project.sourceforge.net/bb/
+URL:            http://aa-project.sourceforge.net/bb/
 Summary:        Audio-Visual Demonstration for Text Terminal
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Graphics
 Version:        1.3
 Release:        0
 Source:         bb-1.3rc1.tar.bz2
-Patch:          bb-1.3.0.diff
+Patch0:         bb-1.3.0.diff
 Patch1:         bb-1.3.0-timer.diff
 Patch2:         warn.patch
 Patch3:         undefined-operation.diff
@@ -43,7 +43,7 @@ systems and DOS.
 
 %prep
 %setup -q -n %{name}-1.3.0
-%patch
+%patch0
 %patch1
 %patch2
 %patch3
