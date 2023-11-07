@@ -1,6 +1,7 @@
 #
 # spec file for package p0f
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +21,11 @@ Name:           p0f
 Version:        3.09b
 Release:        0
 Summary:        A versatile passive OS fingerprinting tool
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Productivity/Networking/Diagnostic
-Url:            http://lcamtuf.coredump.cx/p0f3/
+URL:            http://lcamtuf.coredump.cx/p0f3/
 Source:         http://lcamtuf.coredump.cx/p0f3/releases/%{name}-%{version}.tgz
-Patch:		p0f-set-fingerprint-file.diff
+Patch0:         p0f-set-fingerprint-file.diff
 BuildRequires:  libpcap-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -36,7 +37,7 @@ any way.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 make # %{?_smp_mflags}
@@ -60,4 +61,3 @@ install -Dpm 0644 p0f.fp %{buildroot}/%{_sysconfdir}/p0f3/p0f.fp
 %config %{_sysconfdir}/p0f3/p0f.fp
 
 %changelog
-
