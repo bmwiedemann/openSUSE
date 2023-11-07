@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  7 06:07:34 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- disable test_full_duplex (bsc#1216858)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

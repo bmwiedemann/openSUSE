@@ -95,6 +95,8 @@ skiptests+=" or test_017_ssl_zeroreturnerror"
 skiptests+=" or test_018b_http_10_keepalive_framing"
 # gh#eventlet/eventlet#803
 skiptests+=" or test_raise_dns_tcp"
+# gh#eventlet/eventlet#821 bsc#1216858
+skiptests+=" or test_full_duplex"
 
 # Unknown Python 3.6 specific errors
 # TypeError: _wrap_socket() argument 1 must be _socket.socket, not SSLSocket
