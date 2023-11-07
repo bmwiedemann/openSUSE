@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:05:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Nov 23 13:41:59 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 

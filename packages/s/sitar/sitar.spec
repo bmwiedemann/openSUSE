@@ -1,7 +1,7 @@
 #
 # spec file for package sitar
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,22 +22,22 @@
 %endif
 
 Name:           sitar
-Url:            http://sitar.berlios.de/
+URL:            http://sitar.berlios.de/
 Version:        1.0.6
 Release:        0
 Summary:        System InformaTion at Runtime
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
 Source0:        sitar-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE fix-syntax-errors-with-newer-perl.patch boo#899992 wbauer@tmo.at -- fix syntax errors when run with the perl in openSUSE 13.1 and higher
-Patch:          fix-syntax-errors-with-newer-perl.patch
+Patch0:         fix-syntax-errors-with-newer-perl.patch
 Patch1:         reproducible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  groff
 BuildArch:      noarch
 PreReq:         %fillup_prereq
 
-%description 
+%description
 Sitar prepares system information using perl and binary tools, and by
 reading the /proc file system. Output is in HTML, LaTeX and (docbook)
 XML, and can be converted to PS and PDF.
@@ -58,12 +58,12 @@ Comment: Sitar is an ancient Indian instrument as well.
 
 Authors:
 --------
-    Matthias Eckermann  <mge@suse.de> 
+    Matthias Eckermann  <mge@suse.de>
     and contributors
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 
 %build
