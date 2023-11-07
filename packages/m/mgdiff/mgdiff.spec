@@ -1,7 +1,7 @@
 #
 # spec file for package mgdiff
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -38,7 +38,7 @@ Group:          Productivity/Text/Utilities
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         mgdiff-1.0.tar.bz2
 Source1:        mgdiff.desktop
-Patch:          mgdiff-1.0.dif
+Patch0:         mgdiff-1.0.dif
 Patch1:         mgdiff-1.0.1.diff
 Patch2:         mgdiff-1.0-locale.diff
 # PATCH-FIX-SUSE Avoid getline in local name space
@@ -70,7 +70,7 @@ Authors:
 %prep
 %setup -n mgdiff-1.0 -q
 %patch1
-%patch
+%patch0
 %patch2 -p1
 %patch3
 xmkmf -a

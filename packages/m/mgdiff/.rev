@@ -40,4 +40,12 @@
   with getline(3) from stdio.h</comment>
     <requestid>257735</requestid>
   </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>c2a542c02da648f839f401034c1da1c6</srcmd5>
+    <version>1.0.1</version>
+    <time>1699388830</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123892</requestid>
+  </revision>
 </revisionlist>
