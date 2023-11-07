@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 08:56:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Nov 25 20:07:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream patch, fixes: CVE-2021-39360 (boo#1189844):

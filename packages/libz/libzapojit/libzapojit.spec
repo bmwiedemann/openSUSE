@@ -1,7 +1,7 @@
 #
 # spec file for package libzapojit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          Development/Libraries/GNOME
 URL:            http://download.gnome.org/sources/libzapojit
 Source:         http://download.gnome.org/sources/libzapojit/0.0/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM libzapojit-skydrive-Guard-against-invalid-SSL-certificates.patch -- skydrive: Guard against invalid SSL certificates Fixes: CVE-2021-39360
-Patch:          libzapojit-skydrive-Guard-against-invalid-SSL-certificates.patch
+Patch0:         libzapojit-skydrive-Guard-against-invalid-SSL-certificates.patch
 
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
