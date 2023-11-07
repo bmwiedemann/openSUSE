@@ -19,7 +19,7 @@
 %define nameupper Pixelorama
 
 Name:           pixelorama
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        2D sprite editor
 License:        MIT
