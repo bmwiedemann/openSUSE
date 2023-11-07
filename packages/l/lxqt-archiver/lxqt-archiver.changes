@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  5 21:52:44 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.9.0:
+  * Ported away from deprecated time format.
+  * Added appropriate fallback icons to toolbar and menu 
+
+-------------------------------------------------------------------
 Sat Apr 15 19:34:14 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.3.0:
