@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 Name:           python-autopep8
 Version:        2.0.4
 Release:        0
