@@ -18,7 +18,7 @@
 
 %define _name libqtxdg
 Name:           libqt5xdg
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Summary:        Qt implementation of xdg specs for lxqt
 License:        GPL-3.0-only

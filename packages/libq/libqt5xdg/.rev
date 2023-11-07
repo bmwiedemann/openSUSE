@@ -449,4 +449,14 @@
     <comment></comment>
     <requestid>1080370</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>735c1a7c2b6a58dd8105152436ae3e75</srcmd5>
+    <version>3.12.0</version>
+    <time>1699388762</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.12.0:
+  * Just corrected a typo and bumped the version.
+</comment>
+    <requestid>1123564</requestid>
+  </revision>
 </revisionlist>
