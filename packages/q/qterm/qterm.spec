@@ -1,7 +1,7 @@
 #
 # spec file for package qterm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@ Release:        0
 Summary:        QTerm is BBS client
 License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
-Url:            https://github.com/qterm/qterm
+URL:            https://github.com/qterm/qterm
 Source0:        https://github.com/qterm/%{name}/archive/%{version}.tar.gz#./%{name}-%{version}.tar.gz
 Source1:        qterm.desktop
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org - qcollectiongenerator has been merged into qhelpgenerator in Qt 5.12.0
-Patch:          qterm-qt5qcollectiongenerator.patch
+Patch0:         qterm-qt5qcollectiongenerator.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -47,7 +47,7 @@ QTerm is a full featured BBS client written in Qt.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 %cmake -DQT5=YES
