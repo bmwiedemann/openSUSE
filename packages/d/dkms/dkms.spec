@@ -17,19 +17,16 @@
 
 
 Name:           dkms
-Version:        3.0.11
+Version:        3.0.12
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/dell/dkms
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source3:        dkms.default
 Source100:      %{name}.rpmlintrc
-# PATCH-FIX-OPENSUSE fix-kernel-postinst_d.patch boo#1194723
-Patch1:         fix-kernel-postinst_d.patch
 # PATCH-FIX-OPENSUSE fix-weak-modules_dkms_in.patch boo#1194723
-Patch2:         fix-weak-modules_dkms_in.patch
+Patch1:         fix-weak-modules_dkms_in.patch
 BuildRequires:  make
 BuildRequires:  pkgconfig(systemd)
 Requires:       bash > 1.99
@@ -57,30 +54,28 @@ module RPMS as originally developed by Dell.
 
 %prep
 %setup -q
-%autopatch -p1 1 2
+%autopatch -p1 1
 
 %build
 
 %install
+# Note: the makefile changed and has the following gotchas:
+# 1. Defined variables should not contain buildroot, the given
+#    paths are concatenated with DESTDIR (which has buildroot) by
+#    the makefile
+# 2. BASHDIR, ETC and VAR are not settable
 %make_install \
-  SBIN=%{buildroot}%{_sbindir} \
-  VAR=%{buildroot}%{_localstatedir}/lib/%{name} \
-  MAN=%{buildroot}%{_mandir}/man8 \
-  ETC=%{buildroot}%{_sysconfdir}/%{name} \
-  BASHDIR=%{buildroot}%{_datadir}/bash-completion/completions \
-  LIBDIR=%{buildroot}%{_libexecdir}/%{name}
+  SBIN=%{_sbindir} \
+  MAN=%{_mandir}/man8 \
+  LIBDIR=%{_libexecdir}/%{name} \
+  KCONF=%{_sysconfdir}/kernel
 
 install -p -m 755 -D kernel_install.d_dkms \
-    %{buildroot}%{_prefix}/lib/kernel/install.d/40-%{name}.install
-
-# Required due to changes in kernel-install
-mv %{buildroot}%{_sysconfdir}/kernel/install.d/%{name} \
-   %{buildroot}%{_sysconfdir}/kernel/install.d/40-%{name}.install
+	%{buildroot}%{_prefix}/lib/kernel/install.d/40-%{name}.install
 
 # systemd
 install -p -m 644 -D dkms.service %{buildroot}%{_unitdir}/dkms.service
 
-install -m 644 -D %{SOURCE3} %{buildroot}%{_sysconfdir}/default/dkms
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdkms
 
 sed -i \
@@ -132,7 +127,6 @@ exit 0
 %{_sysconfdir}/kernel/install.d/40-%{name}.install
 %{_datadir}/bash-completion/completions/%{name}
 %{_unitdir}/dkms.service
-%config %{_sysconfdir}/default/dkms
 # these dirs are for plugins - owned by other packages
 %dir %{_sysconfdir}/kernel
 %dir %{_sysconfdir}/kernel/postinst.d

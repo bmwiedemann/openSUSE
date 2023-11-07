@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 27 07:43:34 UTC 2023 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
+
+- Update to 3.0.12
+  * Fix CC detection
+  * Makefile: fix extension of kernel-install plugin
+  * Fix grammatical error
+  * Remove embedded DESTDIR in make variables, honour them
+- Drop patch `fix-kernel-postinst_d.patch` (fixed by upstream)
+- Remove leftover dkms.default
+
+-------------------------------------------------------------------
 Sun Sep 17 20:45:05 UTC 2023 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Drop custom dkms.service in favour of the one provided by 
