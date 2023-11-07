@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  7 11:24:43 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.260
+  * /usr/share/doc/packages/mame/whatsnew-0.260.txt
+  * Updated file mame-bgfx.patch.
+  * Excluded 32-bit architectures: i586 armv6hl armv7hl ppc.
+
+-------------------------------------------------------------------
 Mon Oct 23 07:14:16 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Updated to 0.259

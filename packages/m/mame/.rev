@@ -92,4 +92,15 @@
 - Added file reproducible.patch for deterministic output order.</comment>
     <requestid>1119693</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f81e78f72be9ee0664341d20087cb796</srcmd5>
+    <version>0.260</version>
+    <time>1699388878</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.260
+  * /usr/share/doc/packages/mame/whatsnew-0.260.txt
+  * Updated file mame-bgfx.patch.
+  * Excluded 32-bit architectures: i586 armv6hl armv7hl ppc.</comment>
+    <requestid>1123949</requestid>
+  </revision>
 </revisionlist>
