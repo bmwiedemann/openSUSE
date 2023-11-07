@@ -25,7 +25,7 @@ License:        MIT
 Group:          Hardware/Other
 URL:            https://github.com/eclipse/upm
 Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch:          %{url}/pull/704.patch
+Patch0:         %{url}/pull/704.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
