@@ -26,7 +26,7 @@ Group:          Productivity/Networking/Samba
 URL:            https://git.gnome.org/nautilus-share
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM nautilus-share-lang-fix.patch -- Add LINGUAS file to po dir
-Patch:          nautilus-share-lang-fix.patch
+Patch0:         nautilus-share-lang-fix.patch
 # PATCH-FIX-UPSTREAM 5.patch dmulder@suse.com bsc#1208375 -- 'Everyone' represented by WKS 'World' S-1-1-0
 Patch2:         https://gitlab.gnome.org/coreyberla/nautilus-share/-/merge_requests/5.patch
 
