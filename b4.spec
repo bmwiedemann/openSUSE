@@ -16,8 +16,13 @@
 #
 
 
-%define pythons python3
+%if 0%{suse_version} >= 1600
+%global pythons python3
+%global pprefix python3
+%else
 %{?sle15_python_module_pythons}
+%global pprefix python311
+%endif
 Name:           b4
 Version:        0.12.4
 Release:        0
@@ -36,12 +41,12 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  git-filter-repo >= 2.30
 BuildRequires:  python-rpm-macros
+Requires:       %{pprefix}-dkimpy
+Requires:       %{pprefix}-dnspython
+Requires:       %{pprefix}-patatt
+Requires:       %{pprefix}-requests
 Requires:       git-core
 Requires:       git-filter-repo >= 2.30
-Requires:       python3-dkimpy
-Requires:       python3-dnspython
-Requires:       python3-patatt
-Requires:       python3-requests
 BuildArch:      noarch
 
 %description

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  7 11:05:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove python_module from requires, this might lead to unwanted
+  side effects. use pprefix macro instead to manage sle15
+
+-------------------------------------------------------------------
+Tue Oct 31 08:14:02 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add %{python_module ...} also to requires, otherwise bad
+  requires are generated
+
+-------------------------------------------------------------------
 Tue Oct 24 07:57:32 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.12.4:
