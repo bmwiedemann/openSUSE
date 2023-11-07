@@ -16,19 +16,18 @@
 #
 
 
-%define libver  4_3_4
+%define libver  4_5_3
 Name:           rssguard
-Version:        4.3.4
+Version:        4.5.3
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
+Group:          Productivity/Networking/News/Clients
 License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 # PATCH-FIX-OPENSUSE rssguard-4.2.2-add_library_version.patch aloisio@gmx.com -- add version to shared library
 Patch0:         rssguard-4.2.2-add_library_version.patch
-# PATCH-FIX-UPSTREAM rssguard-4.3.4-fix-build.patch jaime.marquinez.ferrandiz@fastmail.net -- https://github.com/martinrotter/rssguard/pull/928
-Patch1:         rssguard-4.3.4-fix-build.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -45,6 +44,8 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
 Recommends:     nodejs
 Recommends:     npm
 Obsoletes:      %{name}-lang < %{version}
@@ -56,6 +57,7 @@ It supports online feed synchronization.
 
 %package -n lib%{name}-devel
 Summary:        Development headers for lib%{name}-%{libver}
+Group:          Development/Libraries/C and C++
 Requires:       lib%{name}-%{libver}
 
 %description -n lib%{name}-devel

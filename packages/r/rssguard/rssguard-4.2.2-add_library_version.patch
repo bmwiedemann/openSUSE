@@ -1,8 +1,8 @@
-Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
+Index: rssguard-4.5.2/src/librssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.3.3.orig/src/librssguard/CMakeLists.txt
-+++ rssguard-4.3.3/src/librssguard/CMakeLists.txt
-@@ -534,11 +534,11 @@ if(WIN32)
+--- rssguard-4.5.2.orig/src/librssguard/CMakeLists.txt
++++ rssguard-4.5.2/src/librssguard/CMakeLists.txt
+@@ -595,11 +595,11 @@ if(WIN32)
    list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
  endif()
  
@@ -16,7 +16,7 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
      PRIVATE
  
      FORCE_BUNDLE_ICONS
-@@ -549,7 +549,7 @@ endif()
+@@ -610,7 +610,7 @@ endif()
  
  # Add OAuth services definitions.
  if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
@@ -25,7 +25,7 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
      PRIVATE
  
      FEEDLY_OFFICIAL_SUPPORT
-@@ -563,7 +563,7 @@ else()
+@@ -624,7 +624,7 @@ else()
  endif()
  
  if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
@@ -34,7 +34,7 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
      PRIVATE
  
      GMAIL_OFFICIAL_SUPPORT
-@@ -577,7 +577,7 @@ else()
+@@ -638,7 +638,7 @@ else()
  endif()
  
  if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
@@ -43,7 +43,7 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
      PRIVATE
  
      INOREADER_OFFICIAL_SUPPORT
-@@ -591,7 +591,7 @@ else()
+@@ -652,7 +652,7 @@ else()
  endif()
  
  # Add specific definitions.
@@ -52,7 +52,7 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
    PRIVATE
    RSSGUARD_DLLSPEC=Q_DECL_EXPORT
  
-@@ -607,7 +607,7 @@ target_compile_definitions(rssguard
+@@ -668,7 +668,7 @@ target_compile_definitions(rssguard
    APP_URL_ISSUES_NEW="${APP_URL_ISSUES_NEW}"
    APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}")
  
@@ -61,22 +61,69 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}/gui
-@@ -621,7 +621,7 @@ target_include_directories(rssguard
+@@ -684,41 +684,41 @@ target_include_directories(rssguard
  )
+ 
+ if(SQLite3_FOUND)
+-  target_include_directories(rssguard AFTER
++  target_include_directories(rssguard-${APP_VERSION} AFTER
+     PRIVATE
+     ${SQLite3_INCLUDE_DIRS}
+   )
+ 
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     SYSTEM_SQLITE3
+   )
+ 
+-  target_link_libraries(rssguard PRIVATE
++  target_link_libraries(rssguard-${APP_VERSION} PRIVATE
+     ${SQLite3_LIBRARIES}
+   )
+ endif()
+ 
+ if(ZLIB_FOUND)
+-  target_include_directories(rssguard AFTER
++  target_include_directories(rssguard-${APP_VERSION} AFTER
+     PRIVATE
+     ${ZLIB_INCLUDE_DIRS}
+   )
+ 
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     ENABLE_COMPRESSED_SITEMAP
+   )
+ 
+-  target_link_libraries(rssguard PRIVATE
++  target_link_libraries(rssguard-${APP_VERSION} PRIVATE
+     ${ZLIB_LIBRARIES}
+   )
+ endif(ZLIB_FOUND)
  
  # Qt.
 -target_link_libraries(rssguard PUBLIC
-+target_link_libraries(rssguard-${APP_VERSION} PUBLIC
++target_link_libraries(rssguard-${APP_VERSION}  PUBLIC
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Network
-@@ -633,31 +633,31 @@ target_link_libraries(rssguard PUBLIC
+@@ -730,54 +730,54 @@ target_link_libraries(rssguard PUBLIC
  )
  
  if(QT_VERSION_MAJOR EQUAL 6)
 -  target_link_libraries(rssguard PUBLIC
 +  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
      Qt${QT_VERSION_MAJOR}::Core5Compat
+   )
+ endif()
+ 
+ if(WIN32)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::GuiPrivate
    )
  endif()
  
@@ -107,7 +154,27 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
      Qt${QT_VERSION_MAJOR}::DBus
    )
  endif()
-@@ -687,7 +687,7 @@ if(WIN32 OR OS2)
+ 
+ if(APPLE)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION}  PUBLIC
+     "-framework AppKit"
+   )
+ elseif(WIN32)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION}  PUBLIC
+     Shell32.lib
+     odbc32
+   )
+ endif()
+ 
+ if(WIN32 OR OS2)
+-  install(TARGETS rssguard DESTINATION .)
++  install(TARGETS rssguard-${APP_VERSION}  DESTINATION .)
+   install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+     DESTINATION include
+     FILES_MATCHING PATTERN "services/abstract/*.h"
+@@ -788,7 +788,7 @@ if(WIN32 OR OS2)
    )
  elseif(UNIX AND NOT APPLE AND NOT ANDROID)
    include (GNUInstallDirs)
@@ -116,10 +183,37 @@ Index: rssguard-4.3.3/src/librssguard/CMakeLists.txt
      DESTINATION ${CMAKE_INSTALL_LIBDIR}
    )
    install(DIRECTORY services/abstract
-Index: rssguard-4.3.3/localization/CMakeLists.txt
+@@ -796,7 +796,7 @@ elseif(UNIX AND NOT APPLE AND NOT ANDROI
+     FILES_MATCHING PATTERN "*.h"
+   )
+ elseif(APPLE)
+-  install(TARGETS rssguard
++  install(TARGETS rssguard-${APP_VERSION}
+     DESTINATION Contents/MacOS
+   )
+   install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+Index: rssguard-4.5.2/localization/CMakeLists.txt
 ===================================================================
---- rssguard-4.3.3.orig/localization/CMakeLists.txt
-+++ rssguard-4.3.3/localization/CMakeLists.txt
+--- rssguard-4.5.2.orig/localization/CMakeLists.txt
++++ rssguard-4.5.2/localization/CMakeLists.txt
+@@ -8,7 +8,7 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT
+     "${CMAKE_SOURCE_DIR}/src/librssguard/*.h"
+     "${CMAKE_SOURCE_DIR}/src/librssguard/*.ui")
+ 
+-  qt_add_lupdate(rssguard
++  qt_add_lupdate(rssguard-${APP_VERSION}
+     TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/rssguard_en.ts"
+     SOURCES ${ALL_SOURCES}
+     INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/src/librssguard"
+@@ -21,7 +21,7 @@ FILE(GLOB TS_FILES  ${CMAKE_CURRENT_SOUR
+ set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
+ 
+ if(BUILD_WITH_QT6)
+-  qt_add_lrelease(rssguard
++  qt_add_lrelease(rssguard-${APP_VERSION}
+     TS_FILES ${TS_FILES}
+     QM_FILES_OUTPUT_VARIABLE QM_FILES
+     OPTIONS "-compress"
 @@ -33,5 +33,5 @@ else()
    )
  
@@ -127,10 +221,10 @@ Index: rssguard-4.3.3/localization/CMakeLists.txt
 -  add_dependencies(rssguard rssguard_lrelease)
 +  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
  endif()
-Index: rssguard-4.3.3/src/rssguard/CMakeLists.txt
+Index: rssguard-4.5.2/src/rssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.3.3.orig/src/rssguard/CMakeLists.txt
-+++ rssguard-4.3.3/src/rssguard/CMakeLists.txt
+--- rssguard-4.5.2.orig/src/rssguard/CMakeLists.txt
++++ rssguard-4.5.2/src/rssguard/CMakeLists.txt
 @@ -21,7 +21,7 @@ target_link_libraries(app PUBLIC
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui

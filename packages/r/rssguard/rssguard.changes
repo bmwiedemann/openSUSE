@@ -1,4 +1,169 @@
 -------------------------------------------------------------------
+Thu Nov  2 17:54:57 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+- Update to version 4.5.3
+  + Added:
+    - Article and feed toolbar heights are now normalized to same values.
+  + Fixed:
+    - Fixed couple of cases where feed multi-selection and/or batch operations
+      were not taking multi-selection properly into account.
+    - Fixed some unnecessary prompts to restart app in settings dialog.
+    - Updated translations and readme.
+- Update to version 4.5.2
+  + Added:
+    - Added new "Discover feeds" dialog which is automatically opened when user
+      hits "Add new feed" button. In this dialog, use does not have to input
+      exact feed address but can enter just regular website address and RSS
+      Guard will try to discover all available feeds possible.
+      (gh#martinrotter/rssguard#1134)
+    - ATOM/RSS/JSON/Sitemap feeds now automatically use "ETag" HTTP headers
+      which has potential speedup when fetching feeds with no new messages.
+      This can bring 10-80 % speedup if user uses more feeds which do support
+      "ETag". (gh#martinrotter/rssguard#1136)
+    - Support for Sitemap "sitemap.xml" files is added! Vast majority of
+      websites have sitemaps and RSS Guard now can read them in the same way it
+      does with RSS/ATOM formats. "Discover feeds" dialog has Sitemaps support
+      integrated and it even is able to traverse sitemap indexes. GZipped
+      sitemaps are supported too. (gh#martinrotter/rssguard#1129)
+    - Added multiple/extended selection to feeds list! Now it is possible to
+      select multiple items at once (feeds, categories, etc.) and perform batch
+      actions on them - batch editing, deleting, marking read/unread,
+      re-sorting - when some feeds are selected it is now in "Edit selected
+      items" dialog possible to batch change only some properties in a very
+      clean and universal way. (gh#martinrotter/rssguard#1010,
+      gh#martinrotter/rssguard#89)
+    - Localizations updated.
+    - Documentation updated.
+    - Arguments parsing is now totally overhauled. It is now possible to use
+      both double and single quotes to quote arguments. Read "Scraping
+      Websites" chapter in docs to know more.
+    - Local files can now be used directly as sources for feeds, just select
+      "Local file" in add/edit feed dialog.
+  + Fixed:
+    - Fixed OPML import/export when some feeds use custom script as source.
+      (gh#martinrotter/rssguard#1133)
+    - RSS/ATOM parsing is now greatly enhanced.
+- Update to version 4.5.1
+  + Added:
+    - Completely new, custom "toast" notifications:
+      - Configurable position on screen.
+      - Can be displayed on secondary screens.
+      - Automatically adopts look of currently active RSS Guard skin.
+      - Can be close via close corner button or via Esc keyboard button.
+      - When hovered with mouse, notification stays shown, when not hovered,
+        it is automatically hidden after 15 seconds.
+      - Displays list of newly fetched articles and offers some basic actions
+        like marking as read, showing in article list or in web browser.
+      - These notifications do not need "tray icon" to be activated.
+      - Can be tweaked in Notifications section of settings.
+    - pdb debugging file is now distributed with RSS Guard on Windows.
+    - NPM packages updated to latest versions.
+  + Fixed:
+    - AppData file now does not contain <pre> tags.
+    - HTTP redirection cycles are now solved.
+    - Web cache is now stored in correct directory on Linux.
+      (gh#martinrotter/rssguard#1098)
+    - Fixed behavior of Google-based phrase suggestion in web browser
+      navigation text box.
+    - Many different features of RSS Guard got minor fixes, some parts of
+      source code were refactored. Particularly, one nasty "semi-bug" was fixed
+      which influenced speed of article switching in article list. It should
+      now be faster. Much faster.
+    - Article counting for "regex queries" is now disabled because this was
+      very performance-hungry even with small number of regex queries, sadly.
+    - Translations of some languages are now more complete.
+    - Some unused source code was removed.
+    - Some unused deps were removed.
+- Update to version 4.5.0
+  + Added:
+    - List of article filters assigned to feed is now visible in feed details
+      pane. (gh#martinrotter/rssguard#1045)
+    - Right-to-left optional layout for feeds/articles. You can switch this in
+      each feed properties.
+    - Gmail: Labels are now fetched from the service too and they are
+      synchronizable.
+    - New feature called "regex queries" allowing users to have (persistent)
+      regular expression based article list filters. See your feed list for
+      "Regex queries" item and right click to add one.
+    - "reader mode" feature now uses skin-based format & colors.
+    - All features which generate random colors now use better HSV-based
+      algorithm.
+    - Added application-wide and feed-wide ability to limit articles based on
+      article date/time. This can be changed in application settings in "Feed
+      fetching" section and in feed properties dialog in "Articles" section.
+    - JavaScript code of article filters now has syntax highlighting.
+    - Use non-standard "url" element as fallback for article URLs in RSS
+      format.
+    - Percentages of localization progres for each translation is now shown in
+      "Localization" settings section.
+    - "clang-format" updated.
+    - User CSS styles can now be supplied via file
+      <user-data-folder>/web/user-styles.css.
+    - When fetching metadata during OPML import, there is now option to NOT
+      fetch icons. (gh#martinrotter/rssguard#1009)
+  + Fixed:
+    - Icons in feed list are now correctly vertically centered.
+      (gh#martinrotter/rssguard#999)
+    - Fixes related to word-wrap of long texts in article list and feed details
+      pane. (gh#martinrotter/rssguard#1033)
+    - Multi-column sorting is now correctly persistent.
+      (gh#martinrotter/rssguard#1039)
+    - Fixed a problem where article filters are sometimes not applied correctly
+      when feed is fetched.
+    - Skin's pallete (dark) are now applied depending on slightly enhanced
+      logic.
+    - Skin's custom colors are now applied depending on slightly enhanced
+      logic.
+    - HTTP redirection was not working sometimes, breaking some feeds.
+    - Docs updated.
+    - Feedly: Fix errors when some feeds did not have titles.
+    - Almost all localizations refreshed.
+    - Fixed multiple crashes.
+    - Correctly show numeric badge on Windows if RSS Guard starts in
+      tray/minimized mode.
+- Update to version 4.4.0
+  + Added:
+    - Read/unread state is now also shown by coloured dot in article list,
+      inspired by similar feature of QuiteRSS. The behavior is switchable in
+      settings. (gh#martinrotter/rssguard#948)
+    - Details of selected feed list item are now enhanced with new information.
+      (gh#martinrotter/rssguard#962)
+    - Item (feed) ID is now visible in item details and in tooltips of feed
+      list. (gh#martinrotter/rssguard#965)
+    - "nudus" skin is bit tweaked. (gh#martinrotter/rssguard#942)
+    - Added option to reorganize any folder in feed list alphabetically even in
+      manual sorting mode. (gh#martinrotter/rssguard#918)
+    - Added shortcuts to scroll article up/down. (gh#martinrotter/rssguard#408)
+    - Added global option to open all hyperlinks by default in external web
+      browser. (gh#martinrotter/rssguard#386)
+    - Email editor for Gmail now supports rich-text.
+    - Added support for very fast feed fetching intervals.
+    - Added button to clear web cache and storage.
+    - Added some missing icons.
+  + Fixed:
+    - Application performance is now hugely improved when using big number of
+      labels and/or article filters. There are some possibilities for extra
+      performance fine-tuning which might be addressed in the future.
+      (gh#martinrotter/rssguard#952)
+    - Behavior and visual representation of "article highlighter" and "article
+      list filter" tool buttons is now fixed. (gh#martinrotter/rssguard#943)
+    - Newly created label is now placed in correct sort position in feed list.
+      (gh#martinrotter/rssguard#978)
+    - Fixed html/plain auto-detection for
+      "https://blog.torproject.org/blog/feed". (gh#martinrotter/rssguard#979)
+    - Modal dialogs are also taken into account for feature "do not fetch feeds
+      when main window is unfocused". (gh#martinrotter/rssguard#973)
+    - Hamburger menu did not work in fullscreen mode in some cases.
+      (gh#martinrotter/rssguard#953)
+    - Resizing of feed import dialog is now better. (gh#martinrotter/rssguard#945)
+    - Unwanted application restarts. (gh#martinrotter/rssguard#940)
+    - Main window fade-in effect on Windows OS is now consistent.
+      (gh#martinrotter/rssguard#933)
+    - Many other smaller fixes.
+- Refresh rssguard-4.2.2-add_library_version.patch
+- Drop rssguard-4.3.4-fix-build.patch: merged upstream
+- Add the Group tags
+
+-------------------------------------------------------------------
 Wed Apr 26 20:17:04 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 4.3.4
