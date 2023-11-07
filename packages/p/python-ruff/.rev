@@ -126,4 +126,41 @@
    * docs: fix name of magic-trailing-comma option in README</comment>
     <requestid>1120740</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6d8cd251f8693cd51e650cd8230a880</srcmd5>
+    <version>0.1.4</version>
+    <time>1699388887</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.1.4
+ * Preview features
+   * [flake8-trio] Implement timeout-without-await (TRIO001)
+   * [numpy] Implement NumPy 2.0 migration rule (NPY200)
+   * [pylint] Implement bad-open-mode (W1501)
+   * [pylint] Implement import-outside-toplevel (C0415) rule
+   * [pylint] Implement useless-with-lock (W2101)
+   * [pyupgrade] Implement timeout-error-alias (UP041)
+   * [refurb] Implement isinstance-type-none (FURB168)
+   * Detect confusable Unicode-to-Unicode units in RUF001, RUF002, and RUF003
+   * Add newline after module docstrings in preview style
+ * Formatter
+   * Add a note on line-too-long to the formatter docs
+   * Preserve trailing statement semicolons when using fmt: skip
+   * Preserve trailing semicolons when using fmt: off
+   * Avoid duplicating linter-formatter compatibility warnings
+   * Avoid inserting a newline after function docstrings
+   * Insert newline between docstring and following own line comment
+   * Split tuples in return positions by comma first
+   * Avoid treating byte strings as docstrings
+   * Add --line-length option to format command
+   * Avoid parenthesizing unsplittable because of comments
+ * CLI
+   * Add --output-format to ruff rule and ruff linter
+ * Bug fixes
+   * Respect --force-exclude in lint.exclude and format.exclude
+   * Respect --extend-per-file-ignores on the CLI
+   * Extend bad-dunder-method-name to permit __index__
+   * Fix panic with 8 in octal escape
+   * Avoid raising D300 when both triple quote styles are present</comment>
+    <requestid>1123950</requestid>
+  </revision>
 </revisionlist>
