@@ -1,7 +1,7 @@
 #
 # spec file for package spu-tools
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           spu-tools
 Version:        2.3.0
 Release:        0
-Url:            http://sourceforge.net/projects/libspe
+URL:            http://sourceforge.net/projects/libspe
 Summary:        User space tools for Cell/B.E.
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Management
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  help2man
@@ -31,7 +31,7 @@ Source:         %{name}-%{version}.tar.bz2
 Supplements:    modalias(platform:cbe-mic)
 # match ps3flash for package installation
 Supplements:    modalias(ps3:8)
-Patch:          spu-tools-2.3.0-as-needed.patch
+Patch0:         spu-tools-2.3.0-as-needed.patch
 
 %description
 The spu-tools package contains user space tools for Cell/B.E.
@@ -42,22 +42,20 @@ The spu-tools package contains user space tools for Cell/B.E.
 - spu-ps: a tool like ps, which dumps a report on the currently running
 SPU contexts.
 
-
-
 %prep
 %setup -q
-%patch
+%patch0
 
 %build
 make CFLAGS="$RPM_OPT_FLAGS -fgnu89-inline" CC="%__cc" %{?_smp_mflags}
 
-%clean 
+%clean
 #rm -rf $RPM_BUILD_ROOT
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install
 
-%files 
+%files
 %defattr(-,root,root)
 /usr/bin/spu-top
 /usr/bin/spu-ps

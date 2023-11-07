@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:06:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Jun 18 15:20:06 UTC 2015 - crrodriguez@opensuse.org
 
 - Force GNU inline semantics, fixes build with GCC5 
