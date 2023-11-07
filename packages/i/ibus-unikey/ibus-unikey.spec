@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-unikey
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@ Name:           ibus-unikey
 Version:        0.6.1
 Release:        0
 Summary:        Vietnamese engine for IBus input platform
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          System/Localization
-Url:            http://code.google.com/p/ibus-unikey/
+URL:            http://code.google.com/p/ibus-unikey/
 Source:         http://%{name}.googlecode.com/files/%{name}-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM i@marguerite.su fix narrowing conversion from char to unsigned char
-Patch:          ibus-unikey-static_cast.patch
+Patch0:         ibus-unikey-static_cast.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  ibus
@@ -40,7 +40,7 @@ A Vietnamese engine for IBus input platform that uses Unikey.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 %configure
