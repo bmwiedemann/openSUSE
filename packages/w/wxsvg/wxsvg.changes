@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:13:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Mar 30 07:26:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add wxsvg-fix-missing-include.patch: Add a missing include.
