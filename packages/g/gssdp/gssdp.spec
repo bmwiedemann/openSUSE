@@ -20,7 +20,7 @@
 %define sover 1.6
 %bcond_with sniffer
 Name:           gssdp
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Library for resource discovery and announcement over SSDP
 License:        LGPL-2.1-or-later

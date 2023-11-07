@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  3 08:33:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.3:
+  + Do not crash if socket receive fails
+  + Do not leak local address in SocketSource
+
+-------------------------------------------------------------------
 Fri Apr 21 14:51:22 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update license tag to LGPL-2.1-or-later.
