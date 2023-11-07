@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  7 07:03:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.5
+  * Giveaway phrases and sticker fixes.
+  * Show quoted part in channel comments.
+  * Show replies with icons and multiline preview.
+  * Send correct replies in topics and channel comments.
+  * In monochrome Windows tray icon use dot instead of counter.
+
+-------------------------------------------------------------------
+Fri Nov  3 07:03:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.3
+  * Fix adding a link to media captions in scheduled / comments.
+  * Fix crash in link preview options saving.
+  * Fix possible crash in statistics.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:43:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.2
+  * Highlight quoted parts in jump-to-message from replies.
+  * Ctrl+Click on message field reply bar to jump to message.
+  * Fix empty link preview displaying when generation failed.
+  * Fix external replies in topic groups.
+  * Allow enabling legacy tray icon on Windows.
+
+-------------------------------------------------------------------
 Sun Oct 29 09:29:50 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.11.1
