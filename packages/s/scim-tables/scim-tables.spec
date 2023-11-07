@@ -1,7 +1,7 @@
 #
 # spec file for package scim-tables
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@ Name:           scim-tables
 Version:        0.5.14.1
 Release:        0
 Summary:        Data Files for SCIM Generic Table Input Method Module
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/scim-im/scim-tables
+URL:            https://github.com/scim-im/scim-tables
 Source:         https://github.com/scim-im/scim-tables/archive/%{name}-%{version}.tar.gz
 #PATCH-FIX-SLE define G_GNUC_BEGIN/END_xx for glib < 2.32
-Patch:          G_GNUC_BEGIN_IGNORE_DEPRECATIONS.patch
+Patch0:         G_GNUC_BEGIN_IGNORE_DEPRECATIONS.patch
 #PATCH-FIX-UPSTREAM delete unused variables
 Patch1:         unused-variable.patch
 BuildRequires:  gcc-c++
@@ -90,7 +90,7 @@ scim-tables input method module.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 
 %build

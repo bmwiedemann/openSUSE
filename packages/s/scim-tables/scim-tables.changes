@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:04:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Fri Sep 18 15:14:16 UTC 2015 - i@marguerite.su
 
 - use macros from macros.scim
