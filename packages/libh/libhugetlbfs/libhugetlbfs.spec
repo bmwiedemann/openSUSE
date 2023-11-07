@@ -1,7 +1,7 @@
 #
 # spec file for package libhugetlbfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch1:         libhugetlbfs_ia64_fix_missing_test.patch
 Patch2:         disable-rw-on-non-ldscripts.diff
 Patch3:         zero_filesize_segment.patch
 Patch4:         glibc-2.34-fix.patch
+Patch5:         libhugetlbfs-increase-mount-buffer.patch
 BuildRequires:  doxygen
 BuildRequires:  glibc-devel-static
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
