@@ -33,7 +33,7 @@ Source1:        cyrus-sasl-rc.tar.bz2
 Source2:        README.Source
 Source3:        baselibs.conf
 Source4:        saslauthd.service
-Patch:          cyrus-sasl.dif
+Patch0:         cyrus-sasl.dif
 Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
@@ -75,7 +75,7 @@ The SQL auxprop plugin supports PostgreSQL and MySQL
 
 %prep
 %setup -n cyrus-sasl-%{version} -a 1
-%patch
+%patch0
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1

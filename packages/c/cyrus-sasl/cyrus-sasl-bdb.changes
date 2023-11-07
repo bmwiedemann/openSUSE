@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  6 09:03:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Thu May  4 11:21:19 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Mon Jan 23 20:35:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop optional opie dependency 
+
+-------------------------------------------------------------------
 Wed Dec  7 11:15:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not set directories inside doc/ mode 644; otherwise the
