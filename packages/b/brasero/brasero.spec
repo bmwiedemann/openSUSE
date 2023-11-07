@@ -1,7 +1,7 @@
 #
 # spec file for package brasero
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Group:          Productivity/Multimedia/CD/Record
 URL:            http://gnome.org/projects/brasero
 Source:         https://download.gnome.org/sources/brasero/3.12/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 9b3f451e72cfa3bac700517a036faab61f683b3f.patch -- libbrasero-media: Fix duplicated if
-Patch:          https://gitlab.gnome.org/GNOME/brasero/-/commit/9b3f451e72cfa3bac700517a036faab61f683b3f.patch
+Patch0:         https://gitlab.gnome.org/GNOME/brasero/-/commit/9b3f451e72cfa3bac700517a036faab61f683b3f.patch
 
 BuildRequires:  fdupes
 # Needed, as we provide a git snapshot
