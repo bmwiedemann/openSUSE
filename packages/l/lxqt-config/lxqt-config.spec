@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-config
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Screen) >= 5.2.0
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(lxqt-menu-data)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -96,8 +97,6 @@ EOF
 %dir %{_libdir}/lxqt-config
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/icons
-%dir %{_sysconfdir}/xdg/menus
-%config %{_sysconfdir}/xdg/menus/*.menu
 %config %{_sysconfdir}/ld.so.conf.d/lxqt-config.conf
 %{_bindir}/%{name}
 %{_bindir}/%{name}-appearance
@@ -111,7 +110,6 @@ EOF
 %{_datadir}/icons/hicolor/48x48/apps/brightnesssettings.svg
 %{_datadir}/lxqt/icons/monitor.svg
 %{_mandir}/man?/%{name}*.?%{ext_man}
-%{_datadir}/desktop-directories/
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  6 03:31:23 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated to 1.4.0:
+  * Fixed setting of primary monitor after a change in libkscreen
+  * Fixed a problem about not being able to set the cursor or its
+    size when Xresources from /etc is read.
+  * Use lxqt-menu-data
+  * Corrected some typos and improved the message about default
+    monitor settings 
+
+-------------------------------------------------------------------
 Sat Apr 15 19:28:23 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated to 1.3.0:
