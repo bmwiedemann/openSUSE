@@ -175,7 +175,7 @@ Source51:       matrix-synapse-generate-config.sh
 # cd synapse ; ln -s .. patches ; quilt push -a
 # to clean up your working copy afterwards: git reset --hard ; rm -rv .pc patches
 Source99:       series
-Patch:          matrix-synapse-1.4.1-paths.patch
+Patch0:         matrix-synapse-1.4.1-paths.patch
 Patch1:         bump-dependencies.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream

@@ -848,4 +848,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>add missing bugnumber</comment>
     <requestid>1122657</requestid>
   </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>e28ae544dcf6805e7de9c58a263f6e35</srcmd5>
+    <version>1.95.1</version>
+    <time>1699388834</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123893</requestid>
+  </revision>
 </revisionlist>
