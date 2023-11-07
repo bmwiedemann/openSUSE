@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  7 11:04:04 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.26.0
+  * Bugfixes:
+    #9072: Omitting %s from LDAP search filter results in corrupt search filter
+    #9106: Posting config with invalid versioner type causes panic
+    #9120: Deduplicated files on Windows aren't treated as regular files any more (Go 1.21)
+    #9133: Syncthing Docker container fails to start if underlying filesystem doesn't support chown
+    #9143: traefik no longer url escape X-Forwarded-Tls-Client-Cert header
+    #9149: Favicon is stuck in notify state
+  * Enhancements:
+    #4137: Use a real login screen + sessions instead of HTTP basic auth
+
+-------------------------------------------------------------------
 Wed Oct  4 08:17:47 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.25.0
