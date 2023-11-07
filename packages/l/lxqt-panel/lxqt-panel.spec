@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  cmake(KF5Solid) >= 5.36.0
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(lxqt-menu-data)
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.12.0
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
@@ -61,7 +62,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
-Requires:       lxmenu-data
+Requires:       lxqt-menu-data
 Recommends:     %{name}-lang
 
 %description
@@ -79,7 +80,7 @@ BuildArch:      noarch
 LXQt panel development files and headers
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %define _lto_cflags %{nil}
@@ -96,22 +97,15 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %license LICENSE
 %doc AUTHORS CHANGELOG
 %{_bindir}/%{name}
-%dir %{_datadir}/desktop-directories/
 %dir %{_datadir}/lxqt
 %dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/autostart
-%dir %{_sysconfdir}/xdg/menus
-%config %{_sysconfdir}/xdg/menus/lxqt-applications.menu
-%config %{_sysconfdir}/xdg/menus/lxqt-applications-compact.menu
-%config %{_sysconfdir}/xdg/menus/lxqt-applications-simple.menu
 %{_libdir}/%{name}
 %{_datadir}/lxqt/panel
 %{_datadir}/lxqt/lxqt-panel
 %{_datadir}/lxqt/panel/qeyes-types
 %{_mandir}/man1/lxqt-panel.1%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-panel.desktop
-%{_datadir}/desktop-directories/lxqt-leave.directory
-%{_datadir}/desktop-directories/lxqt-settings.directory
 %{_datadir}/lxqt/panel.conf
 
 %files devel

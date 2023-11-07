@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  6 02:32:25 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.4.0:
+  * Use lxqt-menu-data instead of lxmenu-data.
+  * Fixed checking/clearing of urgency in task bar.
+  * Fixed window cycling with mouse wheel and focus stealing 
+    prevention in task bar.
+  * Added parameter parsing to launched command of volume plugin.
+  * Fixed the initial displayed volume with PulseAudio in volume 
+    plugin.
+  * An option is added to the custom command plugin for showing
+    the output as an image.
+  * Added a clear button to the search bar of Add Plugins dialog.
+  * Fixed the tooltips of volume control under Wayland.
+  * Prevented a crash on Wayland.
+  * Some code cleanup.
+ 
+
+-------------------------------------------------------------------
 Sat Apr 15 19:00:30 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 1.3.0:
