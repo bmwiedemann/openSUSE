@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:05:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Dec 14 11:19:24 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build on SLE 15: python-rpm-macros required for build (bsc#1193718).
