@@ -24,7 +24,7 @@ License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/console/-/commit/d259c18bc21ad83381e990b48bc66ea1dec21528.patch -- close-dialog: clamp row title to maximum length
-Patch:          d259c18bc21ad83381e990b48bc66ea1dec21528.patch
+Patch0:         d259c18bc21ad83381e990b48bc66ea1dec21528.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
