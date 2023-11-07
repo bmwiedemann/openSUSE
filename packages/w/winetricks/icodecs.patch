@@ -1,0 +1,13 @@
+diff -Pdpru winetricks-20230212.orig/src/winetricks winetricks-20230212/src/winetricks
+--- winetricks-20230212.orig/src/winetricks	2023-02-12 12:41:26.000000000 +0300
++++ winetricks-20230212/src/winetricks	2023-10-16 05:07:53.896228338 +0300
+@@ -10522,7 +10522,8 @@ load_icodecs()
+     # Work around bug in codec's installer?
+     # https://support.britannica.com/other/touchthesky/win/issues/TSTUw_150.htm
+     # https://appdb.winehq.org/objectManager.php?sClass=version&iId=7091
+-    w_try_regsvr ir50_32.dll
++    w_override_dlls native,builtin ir50_32
++    w_try_regsvr ir50_32
+ 
+     # Apparently some codecs are missing, see https://github.com/Winetricks/winetricks/issues/302
+     # Download at https://www.moviecodec.com/download-codec-packs/indeo-codecs-legacy-package-31/

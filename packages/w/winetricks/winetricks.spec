@@ -24,6 +24,7 @@ License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
 URL:            https://github.com/Winetricks/winetricks
 Source0:        https://github.com/Winetricks/%{name}/archive/%{version}.tar.gz##/%{name}-%{version}.tar.gz
+Patch0:         icodecs.patch
 BuildRequires:  update-desktop-files
 Requires:       cabextract
 Requires:       unzip

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 09:37:29 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Added file icodecs.patch for fixed icodecs install
+  https://github.com/Winetricks/winetricks/issues/2103
+
+-------------------------------------------------------------------
 Tue Feb 14 14:27:22 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 20230212
