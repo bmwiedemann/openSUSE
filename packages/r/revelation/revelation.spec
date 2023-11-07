@@ -1,7 +1,7 @@
 #
 # spec file for package revelation
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          Productivity/Security
 URL:            http://revelation.olasagasti.info
 Source:         https://github.com/mikelolasagasti/revelation/releases/download/revelation-%{version}/revelation-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM revelation-mesonfix-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
-Patch:          revelation-mesonfix-061.patch
+Patch0:         revelation-mesonfix-061.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection

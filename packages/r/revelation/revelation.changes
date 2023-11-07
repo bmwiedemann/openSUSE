@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:00:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Feb 10 10:45:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add revelation-mesonfix-061.patch: Fix build with meson 0.61 and
