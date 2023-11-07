@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:56:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Oct  5 15:01:10 UTC 2011 - uli@suse.com
 
 - cross-build fix: use %__cc macro (not %configure, this is not

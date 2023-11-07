@@ -1,7 +1,7 @@
 #
 # spec file for package ftp
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           ftp
-Url:            ftp://ftp.uk.linux.org/pub/linux/Networking/netkit
+URL:            ftp://ftp.uk.linux.org/pub/linux/Networking/netkit
 Prefix:         /usr
 License:        BSD-3-Clause
 BuildRequires:  ncurses-devel
 Group:          Productivity/Networking/Ftp/Clients
 Conflicts:      lukemftp
-AutoReqProv:    on
 Version:        0.17
-Release:        672
+Release:        0
 Summary:        The Standard UNIX FTP Client
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         netkit-ftp-%{version}.tar.bz2
-Patch:          netkit-ftp-%{version}.dif
+Patch0:         netkit-ftp-%{version}.dif
 Patch1:         ipv6-usagi-20010122.diff
 Patch2:         netkit-ftp-0.17-glibc28.patch
 
@@ -48,7 +45,7 @@ Authors:
 
 %prep
 %setup -n netkit-ftp-%{version}
-%patch
+%patch0
 %patch1 -p2
 %patch2
 
