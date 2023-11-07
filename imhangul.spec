@@ -1,7 +1,7 @@
 #
 # spec file for package imhangul
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@ Name:           imhangul
 Version:        3.1.1+git20130112.a4c2796
 Release:        0
 Summary:        GTK+-3.0 Hangul Input Modules
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Korean
-Url:            https://github.com/choehwanjin/imhangul
+URL:            https://github.com/choehwanjin/imhangul
 Source:         imhangul-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org don't use gtk_alignment_set_padding
-Patch:          deprecated-gtkalignment-gtk3.14.patch
+Patch0:         deprecated-gtkalignment-gtk3.14.patch
 BuildRequires:  glib2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  libhangul-devel
@@ -40,10 +40,10 @@ GTK+-2.0 Hangul input modules.
 
 %prep
 %setup -q
-%patch -p1
-NOCONFIGURE=1 ./autogen.sh
+%patch0 -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 export CFLAGS="%{optflags}"
 ./configure \
 	--prefix=%{_prefix} \
