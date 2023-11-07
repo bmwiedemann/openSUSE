@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  5 22:08:36 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.4.0:
+  * Prevent multiple instances of authentication-in-progress dialog
+  * Prevent waiting indefinitely for the authentication by
+    notifying polkit that we couldn't do the next authentication
+    if one is already in progress. 
+
+-------------------------------------------------------------------
 Sat Nov  5 20:41:23 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:

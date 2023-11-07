@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-policykit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-policykit
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        PolicyKit authentication agent
 License:        LGPL-2.1-or-later
