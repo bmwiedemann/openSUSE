@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 02:58:39 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update macros.zig
+  * Change %zig to %__zig to avoid confusion between `zig` or `%zig`.
+
+-------------------------------------------------------------------
 Sat Oct 21 06:20:47 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Drelease-safe is now Doptimize

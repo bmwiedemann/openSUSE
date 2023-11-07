@@ -1,7 +1,7 @@
 %zig_arches x86_64 aarch64 riscv64 %{mips64}
 
 %_zig_version @@ZIG_VERSION@@
-%zig /usr/bin/zig
+%__zig %{_bindir}/zig
 
 # expected features for each arch when targeting baseline
 # found in https://github.com/ziglang/zig/tree/master/lib/std/target
@@ -28,7 +28,7 @@
 %_zig_build_options %{?_zig_general_options} %{?_zig_project_options} %{?_zig_advanced_options}
 %_zig_install_options --prefix "%{_prefix}" --prefix-lib-dir "%{_libdir}" --prefix-exe-dir "%{_bindir}" --prefix-include-dir "%{_includedir}"
 
-%zig_build %zig \\\
+%zig_build %__zig \\\
         build \\\
         %{?_zig_build_options}
 
