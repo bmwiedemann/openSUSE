@@ -26,7 +26,7 @@ Group:          Productivity/Networking/System
 URL:            https://gitlab.freedesktop.org/mobile-broadband/libmbim
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 0001-intel-mutual-authentication-new-service-fcc-lock.patch -- intel-mutual-authentication: new service, fcc-lock
-Patch:          0001-intel-mutual-authentication-new-service-fcc-lock.patch
+Patch0:         0001-intel-mutual-authentication-new-service-fcc-lock.patch
 # PATCH-FIX-UPSTREAM 0002-intel-tools-new-service-trace-config.patch --intel-tools: new service, trace-config
 Patch2:         0002-intel-tools-new-service-trace-config.patch
 
