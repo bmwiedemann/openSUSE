@@ -1,7 +1,7 @@
 #
 # spec file for package tamil-gtk2im
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ URL:            http://tamillinux.sourceforge.net/projects/project/gtk2tamilim/
 Source0:        http://tamillinux.sourceforge.net/projects/project/gtk2tamilim/files/tamilgtk2im-src-2.2.tar.bz2
 Source1:        License
 Source2:        baselibs.conf
-Patch:          tamilgtk2im-rpath.patch
+Patch0:         tamilgtk2im-rpath.patch
 Patch1:         tamilgtk2im-biarch.patch
 Patch2:         tamilgtk2im-cflags.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -50,7 +50,7 @@ Authors:
 %prep
 %setup -q -n tamilgtk2im-src-%{version}
 cp %{SOURCE1} .
-%patch
+%patch0
 %ifarch x86_64 riscv64 ppc64 ppc64le aarch64
 %patch1
 %endif
