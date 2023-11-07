@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:54:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Fri Dec  2 06:33:29 UTC 2011 - coolo@suse.com
 
 - add automake as buildrequire to avoid implicit dependency

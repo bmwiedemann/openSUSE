@@ -1,7 +1,7 @@
 #
 # spec file for package pavumeter
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,14 +27,14 @@ BuildRequires:  gtkmm2-devel
 BuildRequires:  gtkmm24-devel
 %endif
 Summary:        PulseAudio Volume Meter
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Visualization
 Version:        0.9.3
 Release:        0
-Url:            http://0pointer.de/lennart/projects/pavumeter/
+URL:            http://0pointer.de/lennart/projects/pavumeter/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        pavumeter.png
-Patch:          pavumeter-desktop-fix.diff
+Patch0:         pavumeter-desktop-fix.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -43,7 +43,7 @@ the PulseAudio sound server.
 
 %prep
 %setup -q
-%patch
+%patch0
 
 %build
 autoreconf -fi
