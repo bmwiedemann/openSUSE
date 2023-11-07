@@ -1,12 +1,9 @@
 <services>
   <service name="download_files" mode="manual" /> 
   <service name="cargo_vendor" mode="manual">
-     <param name="update">true</param>
-     <param name="srctar">kak-lsp-14.2.0.tar.gz</param>
-     <param name="compression">zst</param>
+     <param name="update">false</param>
+     <param name="src">kak-lsp-*.tar.gz</param>
   </service>
-  <service name="cargo_audit" mode="manual">
-     <param name="srcdir">kak-lsp-14.2.0</param>
-  </service>
+  <service name="cargo_audit" mode="manual" />
 </services>
 
