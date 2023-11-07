@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Nov 07 07:39:19 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.21
+- Update to version 0.28.0:
+  * release v0.28.0
+  * Introduce File transfer command
+  * Various fixes and clean up
+  * check for plausible overflow when seting up env
+  * fix manual sorting not working when sortColumn is configured
+    (#2253)
+  * chore(deps): bump github.com/rs/zerolog from 1.29.1 to 1.31.0
+    (#2241)
+  * chore(deps): bump github.com/docker/docker (#2266)
+  * fix fsnotify not fully working (#2258)
+  * chore(deps): bump github.com/fsnotify/fsnotify from 1.6.0 to
+    1.7.0 (#2259)
+  * chore(deps): bump actions/checkout from 4.1.0 to 4.1.1 (#2260)
+  * chore(deps): bump google.golang.org/grpc from 1.54.0 to 1.56.3
+    (#2263)
+  * chore(deps): bump k8s.io/metrics from 0.28.2 to 0.28.3 (#2254)
+  * chore(deps): bump helm.sh/helm/v3 from 3.13.0 to 3.13.1 (#2250)
+  * consider units when sorting capacity (#2252)
+  * fix: honor defaults from drain dialog in request (#2239)
+  * chore(deps): bump golang.org/x/text from 0.12.0 to 0.13.0
+    (#2242)
+  * chore(deps): bump golang.org/x/net from 0.13.0 to 0.17.0
+    (#2245)
+  * fix(typo): pdb header typo (#2243)
+  * docs: add plugin.yml JSON schema (#2235)
+  * fix(log): clear bold log format after timestamp (#2229)
+  * Bump actions/checkout from 3.5.2 to 4.1.0 (#2232)
+  * Bump helm.sh/helm/v3 from 3.12.0 to 3.13.0 (#2236)
+  * Bump alpine from 3.18.3 to 3.18.4 (#2237)
+  * Bump k8s.io/metrics from 0.27.1 to 0.27.4 (#2172)
+  * chore(skins): add solarized-16 (dark/light) (#2176)
+  * Bump golang.org/x/text from 0.11.0 to 0.12.0 (#2191)
+  * Bump alpine from 3.18.2 to 3.18.3 (#2192)
+  * Update flux.yml with shortcuts for helm repo and oci repos
+    (#2141)
+  * feat: Added support for arm in dockerfile (#2180)
+  * feat(alias): add `qa` for quit (#2188)
+  * Focus command bar if active on startup (#2179)
+  * Bump golang.org/x/text from 0.9.0 to 0.11.0 (#2182)
+  * Bump alpine from 3.18.0 to 3.18.2 (#2142)
+  * Bump k8s.io/cli-runtime from 0.27.2 to 0.27.4 (#2174)
+  * Show the default container as the first entry (#2158)
+  * Changed checksums extension to checksums.sha256 (#2153)
+  * Only apply keyConv to mnemonic in menus (#2161)
+  * Add namespace for rolebinding on a clusterrole (#2170)
+  * feat: plugin for adding an ephemeral debug container (#2147)
+  * chore: pkg imported more than once (#2151)
+  * Remove unsupported key binding on users view (#2134)
+  * Correctly display the numbers in the Ready column of the pods
+    view (#2137)
+  * Bump github.com/spf13/cobra from 1.6.1 to 1.7.0 (#2110)
+  * Bump helm.sh/helm/v3 from 3.11.1 to 3.12.0 (#2116)
+  * Fix for styles (#2112)
+  * Add instruction how to install k9s through winget (#2117)
+  * fix: add correct flags when deleting resources from Dir (#2124)
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.3 (#2111)
+  * Bump github.com/fvbommel/sortorder from 1.0.2 to 1.1.0 (#2080)
+  * Bump github.com/cenkalti/backoff/v4 from 4.2.0 to 4.2.1 (#2081)
+  * Bump github.com/docker/distribution (#2088)
+  * Bump k8s.io/cli-runtime from 0.26.1 to 0.27.2 (#2102)
+  * Bump alpine from 3.17.3 to 3.18.0 (#2093)
+  * Add get-all plugin specific for namespace view (#2091)
+  * Bump k8s.io/client-go from 0.27.0 to 0.27.2 (#2101)
+  * Update carvel.yml to include contexts (#2103)
+  * Fix the wrong/redundant icon in the prompt bar (#2105)
+  * fix: (config) only respect the --command flag once (#2096)
+  * Bump actions/setup-go from 4.0.0 to 4.0.1 (#2092)
+  * Bump golang from 1.20.3-alpine3.16 to 1.20.4-alpine3.16 (#2078)
+  * Fix typo introduced in #2045 (#2082)
+
+-------------------------------------------------------------------
 Mon May 08 04:38:39 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.27.4:
