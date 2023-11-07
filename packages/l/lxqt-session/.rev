@@ -1365,4 +1365,12 @@ comply with openSUSE policy
     <comment></comment>
     <requestid>1080362</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c4118c5bd6b4878a4f969994f87de584</srcmd5>
+    <version>1.4.0</version>
+    <time>1699388752</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123550</requestid>
+  </revision>
 </revisionlist>
