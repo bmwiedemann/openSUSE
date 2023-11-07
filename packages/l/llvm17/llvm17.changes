@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  5 20:20:37 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 17.0.4.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Include libomptarget.devicertl.a in libomp*-devel, which is
+  required for (GPU) offloading.
+
+-------------------------------------------------------------------
 Thu Oct 19 21:04:06 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 17.0.3.

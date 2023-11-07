@@ -16,7 +16,7 @@
 #
 
 
-%global _relver 17.0.3
+%global _relver 17.0.4
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
 %global _sonum  17
@@ -24,7 +24,7 @@
 %global _soname %{_sonum}%{?_sosuffix}
 %global _itsme17 1
 # Integer version used by update-alternatives
-%global _uaver  1703
+%global _uaver  1704
 %global _soclang 13
 %global _socxx  1
 
@@ -1260,8 +1260,6 @@ rm -rf %{buildroot}%{_libdir}/cmake/lld/
 rm %{buildroot}%{_libdir}/libgomp.so
 rm %{buildroot}%{_libdir}/libiomp*.so
 rm %{buildroot}%{_libdir}/libarcher_static.a
-# Using -f because this isn't built for all architectures for some reason.
-rm -fv %{buildroot}%{_libdir}/libomptarget.devicertl.a
 %endif
 
 # Prepare for update-alternatives usage
@@ -1679,6 +1677,7 @@ fi
 %{_libdir}/libomptarget-amdgpu-*.bc
 %{_libdir}/libomptarget-nvptx-*.bc
 %ifarch aarch64 ppc64le x86_64
+%{_libdir}/libomptarget.devicertl.a
 %{_libdir}/libomptarget.rtl.{%{host_cpu},amdgpu,cuda}.so
 %{_libdir}/libomptarget.rtl.{%{host_cpu},amdgpu,cuda}.so.%{_soname}
 %endif

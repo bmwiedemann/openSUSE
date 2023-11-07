@@ -14,6 +14,9 @@ addFilter("SUSE_Backports_policy-SLE_conflict")
 # Archive seems to be deliberately empty on some architectures.
 addFilter("lto-no-text-in-archive .*/lib.*/clang/.*/lib/linux/libclang_rt.asan_static-.*.a")
 
+# LLVM IR archive for OpenMP offloading, deliberately contains no object code.
+addFilter("lto-no-text-in-archive .*/lib.*/libomptarget.devicertl.a")
+
 # Different versions of LLVM can produce the same SONAME, so we'll have to use
 # non-standard names sometimes. (Leap's rpmlint complains, Tumbleweed's doesn't.)
 addFilter("shlib-policy-name-error")

@@ -54,4 +54,18 @@
 </comment>
     <requestid>1119122</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>175a3a7e2e862023b2c568273ef46518</srcmd5>
+    <version>17.0.4</version>
+    <time>1699388735</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 17.0.4.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Include libomptarget.devicertl.a in libomp*-devel, which is
+  required for (GPU) offloading.
+</comment>
+    <requestid>1123592</requestid>
+  </revision>
 </revisionlist>
