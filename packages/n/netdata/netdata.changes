@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Nov  6 23:02:13 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.43.2
+  See https://github.com/netdata/netdata/releases/tag/v1.43.2
+
+-------------------------------------------------------------------
+Mon Nov  6 20:02:42 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.43.1 (go.d.plugin 0.56.4)
+  See https://github.com/netdata/netdata/releases/tag/v1.43.1
+  and https://github.com/netdata/go.d.plugin/releases/tag/v0.56.4
+- Required golang bumped to 1.21
+- Remove suid bits from freeipmi and nfacct plugins
+
+-------------------------------------------------------------------
+Mon Oct 23 00:44:32 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.43.0 (go.d.plugin 0.56.3)
+  See https://github.com/netdata/netdata/releases/tag/v1.43.0
+  and https://github.com/netdata/go.d.plugin/releases/tag/v0.56.3
+      https://github.com/netdata/go.d.plugin/releases/tag/v0.56.2
+      https://github.com/netdata/go.d.plugin/releases/tag/v0.56.1
+      https://github.com/netdata/go.d.plugin/releases/tag/v0.56.0
+
+-------------------------------------------------------------------
+Sat Sep 23 15:05:20 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to v1.42.4 (go.d.plugin 0.55.0)
+  See https://github.com/netdata/netdata/releases/tag/v1.42.4
+  and https://github.com/netdata/go.d.plugin/releases/tag/v0.55.0
+
+  Also https://github.com/netdata/netdata/releases/tag/v1.42.3
+
+-------------------------------------------------------------------
+Sat Sep  9 10:25:01 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to v1.42.2 (go.d.plugin 0.54.1)
+  See https://github.com/netdata/netdata/releases/tag/v1.42.2
+  and https://github.com/netdata/go.d.plugin/releases/tag/v0.54.1
+
+  Also https://github.com/netdata/netdata/releases/tag/v1.42.1
+  and https://github.com/netdata/netdata/releases/tag/v1.42.0
+  and https://github.com/netdata/netdata/releases/tag/v1.41.0
+- Switch Leap to python311 and remove python2 completely.
+- Extended rpmlintrc to build also under Leap.
+
+-------------------------------------------------------------------
+Thu Jun 15 07:11:29 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.40.1 (go.d.plugin 0.54.0)
+  See https://github.com/netdata/netdata/releases/tag/v1.40.1
+  and https://github.com/netdata/go.d.plugin/releases/tag/v0.54.0
+
+  Also https://github.com/netdata/netdata/releases/tag/v1.40.0
+  and https://github.com/netdata/go.d.plugin/releases/tag/v0.53.2
+- Split off plugin packages
+
+-------------------------------------------------------------------
 Sun May 21 13:09:11 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v1.39.1 (go.d.plugin 0.53.0)

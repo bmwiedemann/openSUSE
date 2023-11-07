@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.53.0
+%define godplugin_version 0.56.4
 Name:           netdata
-Version:        1.39.1
+Version:        1.43.2
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -32,6 +32,7 @@ Source1:        https://github.com/netdata/go.d.plugin/archive/v%{godplugin_vers
 Source2:        vendor.tar.gz
 Source3:        netdata-rpmlintrc
 Patch0:         netdata-logrotate-su.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -40,6 +41,7 @@ BuildRequires:  judy-devel
 BuildRequires:  m4
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
+BuildRequires:  golang(API) >= 1.21
 BuildRequires:  pkgconfig(grpc)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(libcap)
@@ -52,12 +54,13 @@ BuildRequires:  pkgconfig(libnetfilter_acct)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libwebsockets)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(protobuf)
+# Broken with current upstream protobuf - uses bundled copy
+# BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yajl)
 BuildRequires:  pkgconfig(yaml-0.1)
 BuildRequires:  pkgconfig(zlib)
-Requires(pre):  shadow
+Requires(pre):  shadow permissions
 Recommends:     PyYAML
 Recommends:     curl
 Recommends:     iproute-tc
@@ -66,34 +69,231 @@ Recommends:     nmap-ncat
 Recommends:     openssl(cli)
 Suggests:       logrotate
 Suggests:       nodejs
-# suse_version is set to 1500 even for 15.2
-%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
-BuildRequires:  go >= 1.20
+%if 0%{?suse_version} > 1550
 BuildRequires:  python3
 %else
-BuildRequires:  python2
+BuildRequires:  python311
 %endif
 %ifnarch ppc64 ppc64le armv7l s390x
 BuildRequires:  pkgconfig(xenstat)
 %endif
-%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1550
 Recommends:     python3
 Recommends:     python3-PyMySQL
 Recommends:     python3-psycopg2
 %else
-Recommends:     python
-Recommends:     python2-PyMySQL
-Recommends:     python2-psycopg2
+Recommends:     python311
+Recommends:     python311-PyMySQL
+Recommends:     python311-psycopg2
 %endif
 %ifarch i586 x86_64
 BuildRequires:  pkgconfig(libipmimonitoring)
 %endif
 
 %description
-netdata is a system for distributed real-time performance and health monitoring.
-It provides insights, in real-time, of everything happening on the system it
-runs on (including applications such as web and database servers),
-using interactive web dashboards.
+Netdata is a system for distributed real-time performance and
+health monitoring.
+It provides insights, in real-time, of everything happening on the
+system it runs on (including applications such as web and database
+servers), using interactive web dashboards.
+
+%package plugin-cups
+Summary:        The CUPS metrics collection plugin for the Netdata Agent
+Enhances:       cups
+Requires:       netdata = %{version}
+Supplements:    netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/cups.plugin
+
+%description plugin-cups
+This plugin allows the Netdata Agent to collect metrics from the
+Common UNIX Printing System.
+
+%files plugin-cups
+%attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/cups.plugin
+
+%ifarch i586 x86_64
+%package plugin-freeipmi
+Summary:        The FreeIPMI metrics collection plugin for the Netdata Agent
+Enhances:       freeipmi
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/freeipmi.plugin
+
+%description plugin-freeipmi
+This plugin allows the Netdata Agent to collect metrics from
+hardware using FreeIPMI.
+
+%post plugin-freeipmi
+%set_permissions
+
+%files plugin-freeipmi
+%attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/freeipmi.plugin
+%endif
+
+%package plugin-nfacct
+Summary:        The NFACCT metrics collection plugin for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/nfacct.plugin
+
+%description plugin-nfacct
+This plugin allows the Netdata Agent to collect metrics from the
+firewall using NFACCT objects.
+
+%post plugin-nfacct
+%set_permissions
+
+%files plugin-nfacct
+%attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/nfacct.plugin
+
+%package plugin-chartsd
+Summary:        The charts.d metrics collection plugin for the Netdata Agent
+Requires:       bash
+Requires:       netdata = %{version}
+Enhances:       nut
+Enhances:       apcupsd
+Enhances:       iw
+Suggests:       sudo
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/charts.d.plugin
+
+%description plugin-chartsd
+This plugin adds a selection of additional collectors written in
+shell script to the Netdata Agent.
+It includes collectors for NUT, APCUPSD, LibreSWAN, OpenSIPS, and
+Wireless access point statistics.
+
+%files plugin-chartsd
+%defattr(0750,root,%{netdata_user},0750)
+%{_libexecdir}/%{name}/plugins.d/charts.d.plugin
+%{_libexecdir}/%{name}/plugins.d/charts.d.dryrun-helper.sh
+%{_libexecdir}/%{name}/charts.d/
+%defattr(0644,root,%{netdata_user},0644)
+%{_libdir}/%{name}/conf.d/charts.d.conf
+%{_libdir}/%{name}/conf.d/charts.d/
+
+%package plugin-pythond
+Summary:        The python.d metrics collection plugin for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Requires:       python3
+Suggests:       sudo
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/python.d.plugin
+
+%description plugin-pythond
+This plugin adds a selection of additional collectors written in
+Python to the Netdata Agent.
+Many of the collectors provided by this package are also available
+in netdata-plugin-go. In msot cases, you probably want to use those
+versions instead of the Python versions.
+
+%files plugin-pythond
+%defattr(0750,root,%{netdata_user},0750)
+%{_libexecdir}/%{name}/plugins.d/python.d.plugin
+%{_libexecdir}/%{name}/python.d
+%defattr(0640,root,%{netdata_user},0640)
+%{_libdir}/%{name}/conf.d/python.d.conf
+%{_libdir}/%{name}/conf.d/python.d
+
+%package plugin-go
+Summary:        The go.d metrics collection plugin for the Netdata Agent
+Requires:       netdata = %{version}
+Suggests:       nvme-cli
+Suggests:       sudo
+Supplements:    netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/go.d.plugin
+
+%description plugin-go
+This plugin adds a selection of additional collectors written in Go
+to the Netdata Agent.
+A significant percentage of the application specific collectors
+provided by Netdata are part of this plugin, so most users will
+want it installed.
+
+%post plugin-go
+%set_permissions
+
+%files plugin-go
+%defattr(0750,root,%{netdata_user},0750)
+# CAP_NET_ADMIN needed for WireGuard collector
+# CAP_NET_RAW needed for ping collector
+%caps(cap_net_admin,cap_net_raw=eip) %{_libexecdir}/%{name}/plugins.d/go.d.plugin
+%defattr(0644,root,%{netdata_user},0644)
+%{_libdir}/%{name}/conf.d/go.d.conf
+%{_libdir}/%{name}/conf.d/go.d
+
+%package plugin-apps
+Summary:        The per-application metrics collection plugin for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/apps.plugin
+
+%description plugin-apps
+This plugin allows the Netdata Agent to collect per-application and
+per-user metrics without using cgroups.
+
+%post plugin-apps
+%set_permissions
+
+%files plugin-apps
+%defattr(0750,root,%{netdata_user},0750)
+# CAP_DAC_READ_SEARCH and CAP_SYS_PTRACE needed for data collection by the plugin.
+%caps(cap_dac_read_search,cap_sys_ptrace=ep) %{_libexecdir}/%{name}/plugins.d/apps.plugin
+%defattr(0644,root,%{netdata_user},0644)
+%{_libdir}/%{name}/conf.d/apps_groups.conf
+
+%package plugin-slabinfo
+Summary:        The slabinfo metrics collector for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/slabinfo.plugin
+
+%description plugin-slabinfo
+This plugin allows the Netdata Agent to collect perfromance and
+utilization metrics for the Linux kernel’s SLAB allocator.
+
+%post plugin-slabinfo
+%set_permissions
+
+%files plugin-slabinfo
+%defattr(0750,root,%{netdata_user},0750)
+# CAP_DAC_READ_SEARCH needed to access the files the plugin reads to collect data.
+%caps(cap_dac_read_search=ep) %{_libexecdir}/%{name}/plugins.d/slabinfo.plugin
+
+%package plugin-perf
+Summary:        The perf metrics collector for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/perf.plugin
+
+%description plugin-perf
+This plugin allows the Netdata to collect metrics from the Linux
+perf subsystem.
+
+%post plugin-perf
+%set_permissions
+
+%files plugin-perf
+%defattr(0750,root,%{netdata_user},0750)
+# Either CAP_SYS_ADMIN or CAP_PERFMON needed for data collection
+%caps(cap_perfmon=ep) %{_libexecdir}/%{name}/plugins.d/perf.plugin
+
+%package plugin-debugfs
+Summary:        The debugfs metrics collector for the Netdata Agent
+Requires:       netdata = %{version}
+Enhances:       netdata
+Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/debugfs.plugin
+
+%description plugin-debugfs
+This plugin allows the Netdata Agent to collect Linux kernel
+metrics exposed through debugfs.
+
+%post plugin-debugfs
+%set_permissions
+
+%files plugin-debugfs
+# CAP_DAC_READ_SEARCH required for data collection.
+%caps(cap_dac_read_search=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/debugfs.plugin
 
 %prep
 %autosetup -n %{name}-v%{version} -p1
@@ -102,9 +302,8 @@ sed -i 's,%{_bindir}/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3,' collectors/python.d.plugin/python.d.plugin.in
 
-tar xf %{SOURCE1}
-cd go.d.plugin-%{godplugin_version}
-tar xf %{SOURCE2}
+tar -xf %{SOURCE1}
+tar -xf %{SOURCE2} -C go.d.plugin-%{godplugin_version}
 %endif
 
 %build
@@ -116,7 +315,6 @@ export GOFLAGS=-mod=vendor
     --enable-plugin-freeipmi \
 %endif
     --enable-plugin-cups \
-    --with-zlib \
     --with-math \
     --with-user=%{netdata_user} \
     %{?conf}
@@ -197,8 +395,31 @@ getent passwd %{netdata_user} >/dev/null || \
 
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
-%{_libexecdir}/%{name}
-%{_libdir}/%{name}
+%dir %{_libexecdir}/%{name}
+%dir %{_libexecdir}/%{name}/plugins.d
+%{_libexecdir}/%{name}/plugins.d/*.sh
+%exclude %{_libexecdir}/%{name}/plugins.d/charts.d.dryrun-helper.sh
+%{_libexecdir}/%{name}/plugins.d/cgroup-network
+%{_libexecdir}/%{name}/plugins.d/ioping.plugin
+%{_libexecdir}/%{name}/plugins.d/local-listeners
+%{_libexecdir}/%{name}/plugins.d/loopsleepms.sh.inc
+%ifnarch ppc64 ppc64le armv7l s390x
+%{_libexecdir}/%{name}/plugins.d/xenstat.plugin
+%endif
+
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/conf.d
+%{_libdir}/%{name}/conf.d/ebpf.d
+%{_libdir}/%{name}/conf.d/health.d
+%{_libdir}/%{name}/conf.d/statsd.d
+%{_libdir}/%{name}/conf.d/vnodes
+
+%{_libdir}/%{name}/conf.d/ebpf.d.conf
+%{_libdir}/%{name}/conf.d/exporting.conf
+%{_libdir}/%{name}/conf.d/health_alarm_notify.conf
+%{_libdir}/%{name}/conf.d/health_email_recipients.conf
+%{_libdir}/%{name}/conf.d/ioping.conf
+%{_libdir}/%{name}/conf.d/stream.conf
 
 %{_sbindir}/%{name}
 %{_sbindir}/%{name}-claim.sh
