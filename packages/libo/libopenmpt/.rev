@@ -787,4 +787,14 @@ Changes in 0.5.3:
     <comment></comment>
     <requestid>1095930</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>84af09907206d748e4170801bb0d47d6</srcmd5>
+    <version>0.7.3</version>
+    <time>1699388711</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.3:
+  * Fix: set_pitch_factor no longer affected OPL instruments since
+    version 0.6.0.</comment>
+    <requestid>1123699</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  7 00:48:48 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.3:
+  * Fix: set_pitch_factor no longer affected OPL instruments since
+    version 0.6.0.
+
+-------------------------------------------------------------------
 Thu Jun 29 09:03:50 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 0.7.2:
