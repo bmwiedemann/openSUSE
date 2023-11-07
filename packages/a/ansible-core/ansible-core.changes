@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov  7 07:46:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.6:
+  * Minor Changes
+    - ansible-test - Windows 2012 and 2012-R2 instances are now
+      requested from Azure instead of AWS.
+  * Bugfixes
+    - Fix run_once being incorrectly interpreted on handlers
+      (#81666)
+    - Plugin loader does not dedupe nor cache filter/test plugins
+      by file basename, but full path name.
+    - Properly template tags in parent blocks (#81053)
+    - Restoring the ability of filters/tests can have same file
+      base name but different tests/filters defined inside.
+    - import_role reverts to previous behavior of exporting vars at
+      compile time.
+    - ansible-galaxy - Provide a better error message when using a
+      requirements file with an invalid format - #81901
+    - ansible-inventory - index available_hosts for major
+      performance boost when dumping large inventories
+    - ansible-test - Fix parsing of cgroup entries which contain a
+      : in the path (#81977).
+
+-------------------------------------------------------------------
 Tue Oct 10 04:44:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.15.5:
@@ -6,11 +30,11 @@ Tue Oct 10 04:44:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
     - ansible-galaxy dependency resolution messages have changed
       the unexplained 'virtual' collection for the specific type
       ('scm', 'dir', etc) that is more user friendly
-  * - Security Fixes
+  * Security Fixes
     - ansible-galaxy - Prevent roles from using symlinks to
       overwrite files outside of the installation directory
       (CVE-2023-5115)
-  * - Bugfixes
+  * Bugfixes
     - Allow for searching handler subdir for included task via
       include_role (#81722)
     - PluginLoader - fix Jinja plugin performance issues (#79652)
