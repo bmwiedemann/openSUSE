@@ -96,7 +96,7 @@ Source5:        vendor.tar.xz
 Source6:        cargo_config
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
-Patch:          use-pie.patch
+Patch0:         use-pie.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang
