@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-sendto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          Productivity/File utilities
 URL:            http://www.es.gnome.org/~telemaco/
 Source:         https://download.gnome.org/sources/nautilus-sendto/3.8/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM nautilus-sendto-fix-meson-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
-Patch:          nautilus-sendto-fix-meson-061.patch
+Patch0:         nautilus-sendto-fix-meson-061.patch
 
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  meson

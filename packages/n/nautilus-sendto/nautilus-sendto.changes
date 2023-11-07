@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:49:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Feb  2 19:08:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add nautilus-sendto-fix-meson-061.patch: Fix build with meson
