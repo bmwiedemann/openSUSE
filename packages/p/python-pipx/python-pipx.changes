@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 13:01:47 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Upstream version 1.2.1
+  * Fix compatibility to packaging 23.2+
+
+-------------------------------------------------------------------
 Thu Aug 10 07:17:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68, jsc#PED-5573)
