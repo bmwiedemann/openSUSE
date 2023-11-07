@@ -1,15 +1,53 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:44:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * General:
+    * Fix: Count units inside transporters for mission end results
+    * Fix: Issues with intel map and saveload
+    * Fix: Improve the VTOL Strike / CB rearming behavior
+    * Fix: Fixup functionality when transferring a structure via
+      giftSingleStructure
+    * Fix: Use SDL physical key codes (scancodes) instead of SDL
+      virtual key codes
+    * Fix: Prevent campaign difficulty influencing skirmish
+      in-game saveload
+    * Fix: Various crashes and sanity checks
+  * Graphics:
+    * Add: Add separate "Terrain Shading" quality setting
+    * Change: Classic model fixes for scavenger structures
+    * Fix: Various gfx_api / shadow tweaks, better first-run
+      determination of settings
+    * Fix: Vulkan MSAA issues
+    * Fix: Tweak medium terrain shader to better match the
+      previous shader
+  * Campaign:
+    * Change: Obsolete some more tech in Gamma campaign
+    * Change: Refine starting designs for Beta/Gamma 1
+  * Multiplayer:
+    * Change: Allow demolishing departed ally structures
+  * Balance MP:
+    * Change: Decrease Heavy Plasma Launcher effectivness
+      against moving units, increase against stationary units
+      and structures
+    * Change: Allow transporters to gain bonuses from armor
+      upgrades
+  * see https://raw.githubusercontent.com/Warzone2100/warzone2100/4.4.0/ChangeLog
+- drop warzone2100_fix_build_with_newer_curl.patch,
+  warzone2100_fix_build_with_newer_vulkan.patch: upstream
+
+-------------------------------------------------------------------
 Mon Oct 16 16:59:45 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add warzone2100_fix_build_with_newer_curl.patch, fix building
   with cURL >= 8.3.0
   https://github.com/Warzone2100/warzone2100/pull/3406
-  
+
 -------------------------------------------------------------------
 Sun Sep  3 17:46:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add warzone2100_fix_build_with_newer_vulkan.patch, fix building
-  with vulkan-header >= 1.3.260, see 
+  with vulkan-header >= 1.3.260, see
   https://github.com/Warzone2100/warzone2100/pull/3353
 
 -------------------------------------------------------------------
@@ -18,7 +56,7 @@ Mon Apr 17 19:08:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 - update to 4.3.5:
   * General:
     * Add: Display kills and units in spectator stats UI
-    * Fix: "Get off my land" and "kill selected" cheats 
+    * Fix: "Get off my land" and "kill selected" cheats
     * Fix: Don't assign trucks from factories to commanders
     * Fix: Repairs: Reset secondary only after "go-to-rally-point"
       was triggered, separate RTR logic from RTR_SPECIFIED
@@ -70,7 +108,7 @@ Mon Mar 27 11:33:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
       depending on what part of the valley you exit
   * Multiplayer:
     * Add: Add lobby command: makeplayer
-    * Add: Add a join message 
+    * Add: Add a join message
     * Fix: Do not truncate spectator labels
     * Fix: Stop Mission Time and store it when the results screen
       pops up
@@ -80,7 +118,7 @@ Mon Mar 27 11:33:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
       and HEAT Rocket Warhead Mk2
     * Change: Reduce effectiveness of artillery modifier on bunkers
       40% to 20%, Reduce effectiveness of artillery modifiers
-      against Tracked 40% to 30% 
+      against Tracked 40% to 30%
     * Change: Make Heavy Repair Turret and Repair Facility appear
       at same time, improve facility repair speed by 10, and make
       light repair turret cost less and build faster
@@ -384,13 +422,13 @@ Thu Nov  3 15:46:50 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
       ValueTracker on low-perf system affecting blueprints,
       rotation of camera, etc.
     * Fix: Improve autorating request policy
-- Drop warzone2100-silence-gcc12-warning.patch and 
+- Drop warzone2100-silence-gcc12-warning.patch and
   warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch,
   fixed in upstream
 - Add BuildRequires pkgconfig(opus)
 - Add build option DWZ_APPSTREAM_ID=warzone2100
 - Drop remove .portable file, it is removed upstream
-  
+
 -------------------------------------------------------------------
 Mon May 23 04:41:54 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
@@ -408,7 +446,7 @@ Wed Mar  9 16:39:02 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
     * Fix: Optimum range not moving past long range when clicking
       a target
 - Correct the changelog entry for 4.2.6 update
-- Dropped unneeded glew dependencies 
+- Dropped unneeded glew dependencies
 
 -------------------------------------------------------------------
 Tue Mar  8 13:58:49 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -420,17 +458,17 @@ Tue Mar  1 05:26:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.2.6
   * General:
-    * Fix: Potential crash due to reinitializing default fog color 
+    * Fix: Potential crash due to reinitializing default fog color
 - Changes in 4.2.5
   * General:
     * Fix: Do not make units move unnecessarily when attached
-      to commanders and ordering an attack 
+      to commanders and ordering an attack
     * Fix: Fix Autorepair not working on units waiting to be
-      built inside a factory when the research is completed 
+      built inside a factory when the research is completed
     * Fix: Headless spectator performance improvements
     * Fix: Prevent the drawing of the Command Turret from
       crashing some systems using flatpak versions
-    * Fix: Various potential crashes 
+    * Fix: Various potential crashes
   * Graphics:
     * Add: Allow modding fog color via the palette file and
       move the fog start/end distance to the config file
@@ -443,12 +481,12 @@ Tue Mar  1 05:26:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
       remove a lone bunker in the very NorthWest part of the
       middle base
     * Change: Give generous experience to all transporter unit
-      loads on Beta/Gamma when starting from the main menu 
+      loads on Beta/Gamma when starting from the main menu
     * Change: Make the southern scavenger base on Alpha 5 also
       trigger the transporter reinforcements for the player
     * Change: Upgrade a few campaign maps with better defenses for
       camBalance, add missing modules on some buildings,
-      and add oil drums to many Beta maps 
+      and add oil drums to many Beta maps
     * Change: Move Whirlwind research later into Beta campaign so
       Cyclone gets used for a bit longer
     * Change: The Collective uses Whirlwind tanks like in previous
@@ -487,7 +525,7 @@ Tue Mar  1 05:26:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
     * Change: Make Bombard unlock Ground Shaker instead of the
       Howitzer, Remove Ground Shaker requirement for HEAP Howitzer
       Shells, and make Howitzer Autoloader depend on
-      HE Howitzer Shells Mk3 
+      HE Howitzer Shells Mk3
   * Other:
     * Add: New maxReplaySaved and oldLogsLimit config options
     * Fix: Prevent truncating time in the Intelligence menu in
@@ -507,7 +545,7 @@ Mon Dec 20 20:38:48 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
     * Fix: Various crashes and resource leaks
   * Campaign:
     * Change: Ignore VTOLs when a campaign enemy group unit can't
-      hit them 
+      hit them
     * Change: Better target selections by sorting targets
       relative to group average coordinate
     * Change: Add a time range to cam3-1 launch / detonate sounds
@@ -517,9 +555,9 @@ Mon Dec 20 20:38:48 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
   * Multiplayer:
     * Add: Additional lobby chat slash commands, cmdinterface
       event output
-    * Change: Set default AI back to Nexus 
+    * Change: Set default AI back to Nexus
     * Change: Make some AIs easier when using Easy difficulty
-    * Change: Remove old Cobra Hard / Insane weapon perks 
+    * Change: Remove old Cobra Hard / Insane weapon perks
     * Fix: Repeated game over message
     * Fix: Add campaign Collective and Nexus structures back into
       mp stats file, fixing old maps
@@ -534,7 +572,7 @@ Sat Dec  4 06:28:49 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add warzone2100-fix-building-with-vk-1.2.198.patch, fix for
   building with vk-1.2.198, gh#Warzone2100/warzone2100#2477
-  
+
 -------------------------------------------------------------------
 Sat Dec  4 05:58:05 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
@@ -659,14 +697,14 @@ Mon Nov  1 21:36:15 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
     * Add: Increase oil drum power in Beta (150) and Gamma (200)
     * Fix: Fix fastplay video not working since 4.2.0-beta2
     * Fix: Prevent old transporter issue on Beta-end where it can come
-      back and fail the player due to little time left to send it away 
+      back and fail the player due to little time left to send it away
       again
   * Scripting:
     * Change: Update JS documents
   * Multiplayer:
     * Change: Display team chooser column at all times
     * Change: Make inactivityMinutes / idleTime configurable
-    * Fix: Fix a desync in replays due to structure limits not being the 
+    * Fix: Fix a desync in replays due to structure limits not being the
       same in the replay
     * Fix: Fix a crash/assert when players were transitioned to
       spectators
@@ -719,10 +757,10 @@ Mon Nov  1 21:36:15 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
     * Change: Add video install information for Ubuntu in README
 - Updated to 4.2.0-beta1
   * General:
-    * Add: Add Ultimate Scavengers to the game 
-    * Add: Implement remove from group shortcut 
+    * Add: Add Ultimate Scavengers to the game
+    * Add: Implement remove from group shortcut
     * Add: Use a stable config directory for release builds
-    * Change: First steps at moving savegame format totally to JSON--now 
+    * Change: First steps at moving savegame format totally to JSON--now
       converted the .gam file
     * Change: Return units to mobiles turrets & randomize repair points
     * Fix: Fix orders from Commanders after loading saves
@@ -776,35 +814,35 @@ Mon Nov  1 21:36:15 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
       and Nexus Resistance Circuits. Balancing weapon parameters
     * Change: Heavy Laser weight reduction from 20,000 to 5,000.
       Restoring the playability of this turret
-    * Change: Additional reduction in the cost of Tank Killer and Super 
+    * Change: Additional reduction in the cost of Tank Killer and Super
       Tank Killer Cyborg research
-    * Change: Reducing the cost and time of producing black and red 
+    * Change: Reducing the cost and time of producing black and red
       bodies to increase the relevance of their use
     * Change: Increase Super Rail Cyborg range and reduce damage to
-      maintain relevance 
+      maintain relevance
     * Change: Make the VTOL MG parameters more balanced by reducing
       damage
     * Change: Change Howitzer research to not depend on Cannon Laser
-      Designator, Bind Hellstorm Emplacement to Howitzer Emplacement, 
-      Increase Ground 
+      Designator, Bind Hellstorm Emplacement to Howitzer Emplacement,
+      Increase Ground
       Shaker production time, reduce periodical damage on Incendiary
       Howitzer
     * Change: Improve accuracy of VTOL HMG
-    * Change: Swap precedence of VTOL Factory, VTOL Propulsion, and VTOL 
+    * Change: Swap precedence of VTOL Factory, VTOL Propulsion, and VTOL
       Rearming Pad
     * Change: Nerf VTOL Heavy Laser range and damage, VTOL Pulse Laser
       damage, and VTOL Scourge Missile splash radius
     * Change: Reduce costs of Anti-Air structures, Increase
-      Stormbringer range, reduce weights of Tornado, Vindicator, 
-      Stormbringer, and Whirlwind, 
-      reduce build time for Whirlwind, and reduce total held rockets in 
+      Stormbringer range, reduce weights of Tornado, Vindicator,
+      Stormbringer, and Whirlwind,
+      reduce build time for Whirlwind, and reduce total held rockets in
       Sunburst AA before a rearm
     * Change: start time Base 4.5 -> 3, AdvancedBase 7.9 -> 6.4
     * Change: Nerf Super Auto-Cannon Cyborg damage, improved ROF of
-      HVC Cyborg, improved ROF of Super Tank-Killer Cyborg and 
+      HVC Cyborg, improved ROF of Super Tank-Killer Cyborg and
       Tank Killer Rocket
     * Change: Increasing HVC turret range from 9 to 9.5 and decreasing
-      weight from 4000 to 2500 to make HVC playable on light 
+      weight from 4000 to 2500 to make HVC playable on light
       bodies, Slightly improved ROF for Super HVC Cyborg
     * Change: Move Tank-Killer so it comes a littler earlier and only
       depend on the fifth rocket damage upgrade
@@ -950,14 +988,14 @@ Sun Apr 25 07:44:03 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
     * Add: Additional Collective faction textures
   * Multiplayer:
     * Change: Change multiplayer super transporter research icon
-      to show a tank in the corner rather than a cyborg 
+      to show a tank in the corner rather than a cyborg
     * Change: Some improvements to 6c-Entropy for easier modding
     * Fix: Reset ready status in lobby when a player leaves
     * Fix: Fixed incorrect player positioning in procedurally
       generated maps
     * Fix: Fix skirmish power modifier after saveload
   * AI:
-    * Fix: AI messages wrongly targeting players 
+    * Fix: AI messages wrongly targeting players
   * Balance:
     * Change: Start splash damage at the center of intended droid
       targets and increase splash radii of such weapons
@@ -1094,7 +1132,7 @@ Mon Apr 11 18:47:57 UTC 2016 - kieltux@gmail.com
 Mon Apr 11 17:12:05 UTC 2016 - kieltux@gmail.com
 
 - Update to 3.1.5
-  + Campaign loading & offworld transport missions should be 
+  + Campaign loading & offworld transport missions should be
     working again.
   + Loading games with teams & alliances now works again.
   + Starting games in alliance mode now always works.
@@ -1116,7 +1154,7 @@ Sun Jan 31 14:31:24 UTC 2016 - kieltux@gmail.com
   + Update included miniUPNP to version 1.219.
   + 'kill' command for SP games.
   + 'Assigned to Commander' voice over issue.
-  + Fix assert failure when Nexus AI tries to build a sensor 
+  + Fix assert failure when Nexus AI tries to build a sensor
     tower.
   + Check if received templates are valid when received.
   + Many potential issues found with static analysis tools
@@ -1124,13 +1162,13 @@ Sun Jan 31 14:31:24 UTC 2016 - kieltux@gmail.com
   + Updated translations:
     Chinese, German, French, Hungarian.
 - Removed fix-glew.patch (fixed upstream: Remove hack to support
-    some old systems that breaks with GLEW 1.12).    
+    some old systems that breaks with GLEW 1.12).
 
 -------------------------------------------------------------------
 Fri Feb  6 09:21:36 UTC 2015 - mimi.vx@gmail.com
 
-- add fix-glew.patch from archlinux 
-- Update to 3.1.2 
+- add fix-glew.patch from archlinux
+- Update to 3.1.2
   + Too many changes since version 3.1.1 to list, see installed
     ChangeLog file instead
     (/usr/share/doc/packages/warzone2100/ChangeLog)
@@ -1151,7 +1189,7 @@ Tue Oct 21 07:14:59 UTC 2014 - kieltux@gmail.com
 -------------------------------------------------------------------
 Mon Jun 24 09:04:09 UTC 2013 - joop.boonen@opensuse.org
 
-- Reformated the spec file to make it more readable 
+- Reformated the spec file to make it more readable
 
 -------------------------------------------------------------------
 Fri Feb 15 05:15:11 UTC 2013 - badshah400@gmail.com
@@ -1172,7 +1210,7 @@ Fri Feb 15 05:15:11 UTC 2013 - badshah400@gmail.com
 -------------------------------------------------------------------
 Wed Dec 26 11:11:21 UTC 2012 - joop.boonen@opensuse.org
 
-- openal-devel is now called openal-soft-devel 
+- openal-devel is now called openal-soft-devel
 
 -------------------------------------------------------------------
 Fri Mar 23 19:54:25 UTC 2012 - jengelh@medozas.de
@@ -1259,12 +1297,12 @@ Wed Feb  2 21:05:14 UTC 2011 - freespacer@gmx.de
 Tue Oct 19 03:23:24 UTC 2010 - highwaystar.ru@gmail.com
 
 - updated to version 2.3.5, maintance release
-- see ChangeLog  
+- see ChangeLog
 
 -------------------------------------------------------------------
 Wed Jun 30 01:40:41 UTC 2010 - highwaystar.ru@gmail.com
 
-- updated to version 2.3.1a, bugfix release 
+- updated to version 2.3.1a, bugfix release
 
 -------------------------------------------------------------------
 Mon Apr 26 14:05:52 CEST 2010 - prusnak@suse.cz

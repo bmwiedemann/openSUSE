@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.3.5
+Version:        4.4.0
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -32,10 +32,6 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            http://wz2100.net/
 Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{version}/warzone2100_src.tar.xz
 Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM - warzone2100_fix_build_with_newer_vulkan.patch - fix building with vulkan >= 1.3.260
-Patch0:         warzone2100_fix_build_with_newer_vulkan.patch
-# PATCH-FIX-UPSTREAM - warzone2100_fix_build_with_newer_curl.patch - fix building with cURL >= 8.3.0
-Patch1:         warzone2100_fix_build_with_newer_curl.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
@@ -113,11 +109,7 @@ working on it.
 This package provides the game data for Warzone 2100.
 
 %prep
-%setup -q -n %{name}
-%if %{with vulkan}
-%patch0 -p1
-%endif
-%patch1 -p1
+%autosetup -p1 -n %{name}
 
 # constant timestamp for reproducible builds
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
@@ -139,11 +131,12 @@ find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 %find_lang %{name}
 %suse_update_desktop_file -i %{name}
 
-mkdir -p %{buildroot}%{_datadir}/appdata/
-mv %{buildroot}%{_datadir}/metainfo/warzone2100.appdata.xml %{buildroot}%{_datadir}/appdata/warzone2100.appdata.xml
-
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/warzone2100.png
+
+# not needed - we don't want a devel package
+rm -rf  %{buildroot}%{_includedir}/fmt  %{buildroot}%{_libdir}/libfmt.a %{buildroot}%{_libdir}/cmake/fmt %{buildroot}/%{_libdir}/pkgconfig/fmt.pc
+rmdir -v %{buildroot}%{_libdir}/cmake %{buildroot}/%{_libdir}/pkgconfig
 
 # remove redundant files
 rm %{buildroot}%{_datadir}/doc/%{name}/AUTHORS
@@ -160,7 +153,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %doc AUTHORS ChangeLog README.md
 %{_bindir}/*
 %{_datadir}/applications/*
-%{_datadir}/appdata/warzone2100.appdata.xml
+%{_datadir}/metainfo/warzone2100.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/warzone2100.png
 %{_datadir}/doc/%{name}
 %{_mandir}/man6/%{name}.6.*
