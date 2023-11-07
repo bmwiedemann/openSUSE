@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Tue Oct 31 05:15:17 UTC 2023 - david.anes@suse.com
+
+- Update to version v0.7.0:
+  * chore: bump version to 0.7.0
+  * ci(github): add release workflow
+  * ci(github): do not lock issues on forks
+  * chore(assets): add Documentation category to desktop entry file
+  * build(cmake): add support for base64-encoded signing certificate
+  * docs(readme): update screenshot
+  * chore: update .editorconfig
+  * chore: cleanup .gitignore
+  * cmake(build): indicate portable build in package name
+  * build(cmake): enable 7-Zip CPack generator
+  * build(cmake): check ZEAL_RELEASE_BUILD environment variable
+  * fix(ui): show correct number of docsets being installed
+  * fix(core): register Settings::ContentAppearance type explicitly
+  * fix(browser): handle blob URL scheme for Qt older than 5.12
+  * fix(browser): optimize request interceptor
+  * ci(github): add libvulcan-dev dependency for Ubuntu builds
+  * build(cmake): s/CERTIFICATE_PASSWORD/PASSWORD for codesign
+  * cmake(build): include OS and architecture in package name
+  * cmake(build): skip signing for source packaging
+  * build(cmake): cleanup variable use
+  * build(cmake): set package description
+  * build(cmake): add code signing
+  * build(cmake): fix windeployqt deployment path
+  * build(cmake): fix vcpkg dependency installation
+  * ci(github): build with Qt 6.5.2
+  * build(cmake): use Qt deployment functions only with Qt 6.5.1
+  * fix(registry): default-initialize revision number
+  * chore: use recommended .yaml extension where possible (#1533)
+  * build(cmake): add CPack WiX installer generator (#1528)
+  * fix(registry): treat docset revision as integer
+  * fix(ui): do not intercept Alt+Left and Alt+Right
+  * build(vcpkg): add vulkan-headers dependency
+  * ci(github): bump actions/checkout from 3 to 4 (#1529)
+  * style: use Q_DISABLE_COPY macro consistently
+  * style: fix version checks
+  * build(core): update cpp-httplib to v0.13.3
+  * fix(app): properly set desktop file name
+  * fix(core): register ExternalLinkPolicy type for Qt 6
+  * style: fix minor coding style issues
+  * feat(core): add option to ignore SSL errors (#1521)
+  * chore(assets): fix email address in AppStream metadata
+  * ci(github): migrate issue locking to actions
+  * ci(github): use upstream code sign action
+  * feat(ui): use Fusion style on Windows 10 & 11 (#1495)
+  * feat(browser): use native Chromium dark mode (#1494)
+  * ci(github): do not pack ilk files
+  * ci(github): fix code signing
+  * ci(github): sign executable for Windows
+  * ci(github): refactor artifact publishing check
+  * ci(github): do not run Coverity Scan on forks
+  * chore(gitignore): add vcpkg and vcpkg_install directories (#1492)
+  * docs(readme): update contact information
+  * feat(core): enable smooth scrolling by default
+  * fix(ui): use cache location for temporary download files
+  * refactor: fix naming of boolean properties
+  * ci(github): simplify app version retrieval
+  * ci(github): upload build artifacts for Windows (#1485)
+  * ci(github): add Git ref to concurrency group names
+  * ci(github): upload Coverity Scan build log
+  * ci(github): fetch full commit log for Coverity scan
+  * build(cmake): fix build with CMake 3.16
+  * build(cmake): require Qt 6.5 to install runtime dependencies (#1483)
+  * ci(github): update run-vcpkg action to v11, vcpkg
+  * ci(github): ensure single running workflow
+  * fix(ui): replace QKeySequence::NextChild with manual shortcut (#1478)
+  * fix(ui): fix RTL layout in list delegates (#1475)
+  * feat(browser): add Ctrl+Enter shortcut for Highlight All option (#1476)
+  * fix(ui): use Unicode ellipsis instead of triple-dot (#1477)
+  * build(cmake): fix Qt 6.3 detection
+  * build(cmake): write calculated version to file
+  * build(cmake): print calculated version
+  * ci(github): prevent storing partial vcpkg cache
+  * build(cmake): install Qt runtime dependencies on Windows (#1474)
+  * build(core): update cpp-httplib to v0.12.1
+  * chore: update copyright year
+  * ci(github): use Ubuntu 22.04 and Qt 6 for CodeQL analysis
+  * ci(github): rename CodeQL workflow file
+  * ci(github): install git for Coverity scan versioning
+  * ci(github): send app version to Coverity
+  * chore(github): update CODEOWNERS
+  * ci(github): add Coverity Scan action
+  * ci(github): update default branch name
+  * docs(readme): fix link to the COPYING file
+  * build(cmake): do not hard-code default branch name
+  * docs(readme): fix CI build badge
+  * ci(github): fix CodeQL analysis (#1473)
+  * ci(github): bump lukka/run-cmake from 3 to 10 (#1462)
+  * build(vcpkg): update schema link (#1471)
+  * build(appimage): update to Ubuntu 22.04 (#1472)
+  * build(cmake): use LibArchive imported target
+  * build(cmake): use built-in FindSQLite3 module
+  * chore(cmake): allow integrated graphics on macOS (#1447)
+  * chore(gitignore): add CMakeUserPresets.json (#1445)
+  * chore(core): update cpp-httplib to v0.11.2
+  * ci(github): use CMake presets for Ubuntu builds (#1432)
+  * build(cmake): add basic build presets
+  * build(cmake): treat compiler warnings as errors
+  * fix(ui): correctly use QKeyCombination with Qt 6
+  * ci(github): add Qt 6 build on Ubuntu 22.04 (#1431)
+  * ci(github): update Ubuntu and Qt versions (#1430)
+  * feat: add Qt 6 support (#1420)
+  * build(cmake): move macOS LibArchive fix to core module
+  * build(cmake): set include path for LibArchive on macOS
+  * build(cmake): fix warning on Linux
+  * fix(ui): fix typo
+  * chore(editorconfig): add .json files
+  * chore(github): disable Dependabot pull request label
+  * ci(github): bump actions/upload-artifact from 2 to 3 (#1416)
+  * ci(github): bump actions/cache from 2 to 3 (#1419)
+  * ci(github): bump actions/checkout from 2 to 3 (#1418)
+  * ci(github): bump github/codeql-action from 1 to 2 (#1417)
+  * chore(github): set Dependabot commit message
+  * chore(github): enable Debendabot for GitHub Actions
+  * build(cmake): add CMakePresets.json (#1410)
+  * build(app): restructure resources to rely on CMAKE_AUTORCC
+  * build(cmake): bump minimum CMake version to 3.16.3
+  * fix(browser): prevent WebEngine taking away focus from searchbox (#1322)
+  * fix: use system CA certificates for requests (#1367)
+  * refactor(core,registry): use std::async instead of QtConcurrent::run
+  * build(appimage): bundle qt5-gtk-platformtheme
+  * docs: update contact information
+  * chore(core): update cpp-httplib to v0.9.0
+  * docs: update IRC links
+  * refactor(browser): remove unnecessary include
+  * build(cmake): remove reference to .appveyor.yml
+  * docs(readme): update build check badge
+  * ci(appveyor): remove .appveyor.yml
+  * ci(github): fix CMake build type selection
+  * build(appimage): pin appimage-builder to v0.8.3 (#1318)
+  * build(cmake): make unreleased code message more noticeable
+  * build(cmake): detect shallow clone, log failed Git checks
+  * build(cmake): check for .git directory before calculating version
+  * build(appimage): add dependencies, disable Qt WebEngine sandbox (#1315)
+  * build(cmake): use full version for source tarballs
+  * ci(github): fix CodeQL action
+  * ci(github): set build type to RelWithDebInfo
+  * build(cmake): add versioning for unstable builds
+  * ci(github): checkout full repository
+  * feat(browser,core,ui): display version with v prefix
+  * feat(ui): make version copyable in the about dialog
+  * fix(ui): adjust size of the about dialog
+  * fix(wix): fix ARPHELPLINK
+  * fix(assets): update AppStream ID to org.zealdocs.zeal
+  * fix(assets): fix AppStream validation errors
+  * fix(core): use QNetworkRequest::RedirectPolicyAttribute (#1313)
+  * ci(github): build with Ninja (#1314)
+  * ci(github): update CodeQL workflow
+  * ci(github): update vcpkg
+  * ci(github): update actions
+  * ci(github): switch AppImage build to Ubuntu 20.04
+  * fix(assets): prevent duplicating application icons in GNOME dock (#1286)
+  * ci(github): enable code scanning (#1279)
+  * fix(ui): fix crash on tab duplication
+  * fix(core): create root directory before extracting files
+  * build(sidebar): add missing STATIC keyword (#1270)
+  * build(wix): bundle Universal C Runtime
+  * build(wix): pack Qt WebEngline and OpenSSL 1.1
+  * build(wix): rename license file
+  * build(wix): add dev build mode
+  * chore(git): fix .gitattributes
+  * build(wix): add WiX Toolset files
+  * feat(browser): restore custom request interceptor
+  * fix(registry): fix incorrect QMultiMap casts
+  * docs: cleanup readme
+  * build(cmake): use CPack to generate source archives
+  * chore(git): fix .gitignore
+  * feat(core): make cpp-httplib use poll()
+  * chore(core): update cpp-httplib to v0.7.0
+  * ci(appveyor): fix packaging of 32-bit OpenSSL libraries one more time
+  * ci(appveyor): fix packing of 32-bit OpenSSL libraries
+  * ci(github): build on Windows with Qt 5.15.0
+  * ci(appveyor): package OpenSSL 1.1 libraries
+  * docs: fix insecure links
+  * chore(lock): disable locking comment
+  * fix(registry): do not truncate feed name if there is no extension
+  * fix(browser): fix regressions in external link handling
+  * ci(github): update vcpkg
+  * fix(registry): use QRandomGenerator with Qt 5.10+
+  * fix(ui): fix use of deprecated Qt::SystemLocaleShortDate
+  * fix(registry): use QMultiMap instead of deprecated QMap::insertMulti()
+  * fix(ui): adjust default height for the settings dialog
+  * fix(ui): fix typo in settings dialog
+  * fix(ui): add missing header
+  * fix(ui): fix docset storage writable check
+  * fix(browser): silence web console
+  * fix(browser): always use off-the-record profile
+  * fix(core,ui): do not use deprecated QWebSettings::globalSettings()
+
+-------------------------------------------------------------------
 Fri Jan 15 00:22:25 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - %cmake_build is replacing %make_jobs
@@ -6,7 +198,7 @@ Fri Jan 15 00:22:25 UTC 2021 - Simon Lees <sflees@suse.de>
 -------------------------------------------------------------------
 Mon May 25 11:05:55 UTC 2020 - hpj@urpla.net
 
-- Update to version 2.7.0~git20200517.404c3aa:
+- Update to version 0.7.0~git20200517.404c3aa:
   * chore(app): update FontAwesome to v5.13.0, switch to WOFF2 fonts
   * ci(github): unify configure & build steps
   * fix(registry): fix page TOC

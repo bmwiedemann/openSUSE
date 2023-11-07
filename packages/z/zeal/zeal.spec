@@ -1,7 +1,7 @@
 #
 # spec file for package zeal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%global optflags %{optflags} -Wno-unused-variable
+
 Name:           zeal
-Version:        2.7.0~git20200517.404c3aa
+Version:        0.7.0
 Release:        0
 Summary:        Offline API documentation browser
 License:        GPL-3.0-only
@@ -43,8 +45,8 @@ BuildRequires:  pkgconfig(xcb-keysyms)
 Requires:       libQt5Sql5-sqlite >= 5.2.0
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 
 %description
 Zeal is an offline API documentation browser inspired by Dash
@@ -65,7 +67,7 @@ Zeal is an offline API documentation browser inspired by Dash
 
 %install
 %kf5_makeinstall -C build
-%suse_update_desktop_file -r org.zealdocs.Zeal Office Viewer
+%suse_update_desktop_file -r org.zealdocs.zeal Office Viewer
 %fdupes -s %{buildroot}%{_datadir}
 
 # Man pages:
@@ -85,8 +87,8 @@ cp %{SOURCE9} %{buildroot}%{_mandir}/man1
 %doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
-%{_datadir}/applications/org.zealdocs.Zeal.desktop
-%{_datadir}/metainfo/org.zealdocs.Zeal.appdata.xml
+%{_datadir}/applications/org.zealdocs.zeal.desktop
+%{_datadir}/metainfo/org.zealdocs.zeal.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 
 %changelog
