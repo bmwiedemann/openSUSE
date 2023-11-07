@@ -1,7 +1,7 @@
 #
 # spec file for package libnscd
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,12 @@ Name:           libnscd
 Version:        2.0.2
 Release:        0
 Summary:        Library to Allow Applications to Communicate with nscd
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 
 Source:         http://ftp.suse.com/pub/people/kukuk/libnscd/libnscd-%version.tar.bz2
 Source2:        baselibs.conf
-Patch:          decls.patch
+Patch0:         decls.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # bug437293
 %ifarch ppc64
@@ -41,7 +41,7 @@ for special services, if they have the necessary permissions.
 %package -n %lname
 Summary:        Library to Allow Applications to Communicate with nscd
 # O/P added for 13.1
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
 Obsoletes:      libnscd < %version-%release
 Provides:       libnscd = %version-%release
@@ -53,7 +53,7 @@ cache for special services, if they have the necessary permissions.
 
 %package devel
 Summary:        Development files for libnscd
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 # bug437293
@@ -66,11 +66,9 @@ Obsoletes:      libnscd-devel-64bit
 This package contains all necessary include files and libraries needed
 to develop applications that needs to communicate with a running nscd.
 
-
-
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 %configure --disable-static

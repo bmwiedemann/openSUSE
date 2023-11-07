@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:58:06 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Sep 12 18:00:10 UTC 2017 - jengelh@inai.de
 
 - Drop ineffective --with-pic. Replace old RPM macros by new
