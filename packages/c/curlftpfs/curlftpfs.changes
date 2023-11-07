@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:56:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
 Fri Nov 20 16:04:58 UTC 2015 - ernestopheles@googlemail.com
 
 - bug-955687.patch: fixed memory leak. openSUSE bug boo#955687

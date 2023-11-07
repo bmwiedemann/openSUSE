@@ -1,7 +1,7 @@
 #
 # spec file for package curlftpfs
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           curlftpfs
 Version:        0.9.2
 Release:        0
 Summary:        Filesystem for mounting FTP hosts using FUSE and libcurl
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://curlftpfs.sourceforge.net/
+URL:            http://curlftpfs.sourceforge.net/
 Source:         %{name}-%{version}.tar.bz2
-Patch:          bug-580609.patch
+Patch0:         bug-580609.patch
 Patch1:         curlftpfs-needs-pthread
 Patch2:         bug-955687.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -52,7 +52,7 @@ Authors:
 
 %prep
 %setup -q
-%patch
+%patch0
 %patch1 -p1
 %patch2
 
