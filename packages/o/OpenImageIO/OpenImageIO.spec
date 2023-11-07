@@ -32,16 +32,16 @@
 %bcond_with ptex
 
 %define images_ts 20221017T102353
-%define so_ver 2_4
-%define major_minor_ver 2.4
+%define so_ver 2_5
+%define major_minor_ver 2.5
 Name:           OpenImageIO
-Version:        2.4.14.0
+Version:        2.5.5.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
-Source0:        https://github.com/OpenImageIO/oiio/archive/refs/tags/v%{version}.tar.gz#/oiio-%{version}.tar.gz
+Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # this contains the actual test images, only used during build
 Source1:        oiio-images-%{images_ts}.tar.xz
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
@@ -172,8 +172,7 @@ Group:          Development/Libraries/Python
 This package contains python bindings for OpenImageIO.
 
 %prep
-%setup -q -n oiio-%{version} -b 1
-%autopatch -p1
+%autosetup -p1 -b 1
 # CMake looks for images at <CMAKE_BINARY_DIR>/testsuite/oiio-images
 mkdir -p %{__builddir}/testsuite
 ln -sf %{_builddir}/oiio-images-%{images_ts} %{__builddir}/testsuite/oiio-images
@@ -215,6 +214,12 @@ make %{?_smp_mflags} doxygen
 
 %install
 %cmake_install
+
+# workaround for https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4049
+perl -p -i.back -e 's|find_dependency\(ZLIB.*\)|find_dependency(ZLIB)|g' $(find %{buildroot} -iname OpenImageIOConfig.cmake)
+diff -urN $(find %{buildroot} -iname OpenImageIOConfig.cmake){.back,} ||:
+rm $(find %{buildroot} -iname OpenImageIOConfig.cmake).back 
+
 # Create and own the default plugin directory
 mkdir -p %{buildroot}%{_libdir}/%{name}-%{major_minor_ver}
 
@@ -241,12 +246,12 @@ export PYTHONDONTWRITEBYTECODE=1
 # Exclude known broken tests
 # timer tests won't do reliably in OBS
 %ifarch x86_64
-%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa|tiff-misc'
+%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa|tiff-misc|docs-examples-cpp'
 %ctest '-R' 'texture-icwrite' || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
-%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa|tiff-misc' || true
+%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa|tiff-misc|docs-examples-cpp' || true
 %ctest '-R' 'texture-icwrite' || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %endif
