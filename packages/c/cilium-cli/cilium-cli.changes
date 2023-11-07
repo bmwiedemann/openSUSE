@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 07 07:38:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.13:
+  * Prepare for v0.15.13 release
+  * connectivity: Detect WG encap on >= 1.15
+  * chore(deps): update actions/checkout action to v4.1.1
+  * chore(deps): update golang:1.21.3-alpine3.18 docker digest to
+    96a8a70
+
+-------------------------------------------------------------------
 Fri Nov 03 05:21:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.12:
