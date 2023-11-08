@@ -58,6 +58,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
+# PATCH-FIX-UPSTREAM astropy-pr15479-pvstar.patch gh#astropy/astropy#15479 gh#astropy/astropy#15476 gh#astropy/astropy#15537
+Patch0:         https://github.com/astropy/astropy/pull/15479.patch#/astropy-pr15479-pvstar.patch
 # https://docs.astropy.org/en/v5.3/install.html#requirements
 BuildRequires:  %{python_module Cython >= 0.29.36 with %python-Cython < 3}
 BuildRequires:  %{python_module Jinja2}

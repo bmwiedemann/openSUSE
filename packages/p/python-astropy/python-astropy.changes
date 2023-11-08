@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  8 01:37:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add astropy-pr15479-pvstar.patch
+  * PR gh#astropy/astropy#15479 backports gh#astropy/astropy#15476
+  * Issue at gh#astropy/astropy#15537
+
+-------------------------------------------------------------------
 Fri Oct  6 08:19:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.3.4
