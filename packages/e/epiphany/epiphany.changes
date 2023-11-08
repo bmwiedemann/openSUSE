@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  6 19:00:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Fix URLs improperly not found when searching history
+  + Normalize text when middle clicking new tab button
+  + Fix critical when deleting bookmark tags
+  + Fix crash when dropping URLs onto Open Tabs view
+  + Fix window leak when installing web apps
+  + Update AdGuard YouTube ad blocker
+  + Fix memory leak when creating web apps
+  + Fix crashes related to WebExtensions
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 15 19:00:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
