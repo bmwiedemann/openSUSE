@@ -17,7 +17,7 @@
 
 
 Name:           libgusb
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        GObject-based library for libusb1
 License:        LGPL-2.1-or-later
