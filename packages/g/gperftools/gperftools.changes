@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 29 08:10:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.13:
+  * generic_fp backtracing method now uses robust address probing method.
+    The previous approach had occasional false positives, which caused
+    occasional rare crashes.
+  * fix pkg-config files
+  * we now support HEAPPROFILE_USE_PID and CPUPROFILE_USE_PID environment
+    variables that force profile filenames to have pid appended.
+    Which will be useful for some programs that fork for parallelism
+  * MPI detection has been extended
+
+-------------------------------------------------------------------
 Sun Jul 10 12:06:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 2.10:
