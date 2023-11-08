@@ -1,7 +1,7 @@
 #
 # spec file for package reg
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,21 @@ License:        MIT
 Group:          System/Management
 URL:            https://github.com/genuinetools/reg
 Source:         %{name}-%{version}.tar.gz
-Patch:          go-mod-vendor.patch
+Patch0:         go-mod-vendor.patch
 BuildRequires:  golang(API) >= 1.12
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
 %description
 Container registry v2 command line client and repo listing generator
-with security checks. It can be used to get and manipulate several 
+with security checks. It can be used to get and manipulate several
 informations about container images, manifestes and layers from a
 container registry including vulnerability reports and can generate a
 static website for a registry.
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p0
 
 %build
 make build GITCOMMIT=4a4d0e5d108ca9558879bdf1aba94d09e921cf1e

@@ -17,4 +17,12 @@
   - Adds support for passing a context with all http requests</comment>
     <requestid>757720</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>52110884ca54afeb6d16b66e52af2893</srcmd5>
+    <version>0.16.1</version>
+    <time>1699478321</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124194</requestid>
+  </revision>
 </revisionlist>
