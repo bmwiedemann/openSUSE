@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov  3 09:23:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.44.0
+  * Aggregate functions can now include an ORDER BY clause after
+    their last parameter. The arguments to the function are
+    processed in the order specified. This can be important for
+    functions like string_agg() and json_group_array().
+  * Add support for the concat() and concat_ws() scalar SQL
+    functions, compatible with PostgreSQL, SQLServer, and MySQL.
+  * Add support for the string_agg() aggregate SQL function,
+    compatible with PostgreSQL and SQLServer.
+  * New conversion letters on the strftime() SQL function: %e %F
+    %I %k %l %p %P %R %T %u
+  * Add new C-language APIs: sqlite3_get_clientdata() and
+    sqlite3_set_clientdata().
+  * Many errors associated with CREATE TABLE are now raised when
+    the CREATE TABLE statement itself is run, rather than being
+    deferred until the first time the table is actually used.
+
+-------------------------------------------------------------------
 Thu Oct 19 13:08:35 UTC 2023 - Reinhard Max <max@suse.com>
 
 - sqlite3-rtree-i686.patch: temporary build fix for 32-bit x86.

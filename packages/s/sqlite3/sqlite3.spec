@@ -17,11 +17,11 @@
 
 
 %define oname sqlite
-%define tarversion 3430200
+%define tarversion 3440000
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.43.2
+Version:        3.44.0
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -128,8 +128,7 @@ other documentation found on sqlite.org. The files can be found in
 %{_docdir}/%{name}-doc.
 
 %prep
-%setup -q -n sqlite-src-%{tarversion} -a2
-%patch0
+%autosetup -p1 -n sqlite-src-%{tarversion} -a2
 
 rm -v sqlite-doc-%{tarversion}/releaselog/current.html
 ln -sv `echo %{version} | sed "s/\./_/g"`.html sqlite-doc-%{tarversion}/releaselog/current.html

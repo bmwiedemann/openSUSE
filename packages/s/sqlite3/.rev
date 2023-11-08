@@ -1597,4 +1597,12 @@ CVE-2020-13871 boo#1172646</comment>
   * Added the octet_length(X) SQL function.</comment>
     <requestid>1119230</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>030fe0252e50fe843fb3562541852547</srcmd5>
+    <version>3.44.0</version>
+    <time>1699478202</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123976</requestid>
+  </revision>
 </revisionlist>
