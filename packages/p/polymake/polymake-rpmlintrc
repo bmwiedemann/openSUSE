@@ -1,0 +1,3 @@
+#[ 2123s] polymake.x86_64: E: devel-file-in-non-devel-package (Badness: 50) /usr/share/polymake/lib/core/skel/bindings.h
+#[ 2123s] polymake.x86_64: E: devel-file-in-non-devel-package (Badness: 50) /usr/share/polymake/resources/JuPyMake/JuPyMake.cpp
+addFilter("devel-file-in-non-devel-package")

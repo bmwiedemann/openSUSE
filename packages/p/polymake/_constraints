@@ -1,0 +1,17 @@
+<constraints>
+	<hardware>
+<!--
+		https://github.com/openSUSE/open-build-service/issues/10167
+		<memoryperjob>
+			<size unit="M">3400</size>
+		</memoryperjob>
+-->
+		<physicalmemory>
+			<!-- using %%limit_build, plus 200 for kernel -->
+			<size unit="M">3600</size>
+		</physicalmemory>
+		<disk>
+			<size unit="G">18</size>
+		</disk>
+	</hardware>
+</constraints>
