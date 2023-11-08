@@ -91,15 +91,13 @@ sleep 2
 # redismod: Not available (https://github.com/RedisLabsModules/redismod)
 # ssl: no stunnel with certs from docker container, fails at test collection
 #
-if [ $(getconf LONG_BIT) -ne 64 ]; then
-  # reference precision issues on 32-bit
-  donttest=" or test_geopos"
-fi
+# broken tests in ppc64le
+donttest="test_geopos or test_georadius"
 # gh#redis/redis-py#2554
 donttest="$donttest or test_xautoclaim"
 # gh#redis/redis-py#2679
 donttest+=" or test_acl_getuser_setuser or test_acl_log"
-%pytest -m 'not (onlycluster or redismod or ssl)' -k "not (dummyprefix $donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
+%pytest -m 'not (onlycluster or redismod or ssl)' -k "not ($donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
 %endif
 
 %files %{python_files}

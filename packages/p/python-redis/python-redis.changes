@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 30 13:09:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests for ppc64le, bsc#1216606
+
+-------------------------------------------------------------------
 Mon Oct 23 10:42:41 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pytest.ini source needed to run tests
