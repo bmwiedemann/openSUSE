@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 Name:           python-python-lsp-jsonrpc
 Version:        1.1.2
 Release:        0
