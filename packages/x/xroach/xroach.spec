@@ -1,7 +1,7 @@
 #
 # spec file for package xroach
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@ BuildRequires:  pkgconfig(xext)
 Version:        12.6.97
 Release:        0
 Summary:        Some cockroaches on your root window
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
 Source:         %{name}.tar.bz2
 Source1:        toon_root.c
 Source2:        README.SUSE
-Patch:          xroach.dif
+Patch0:         xroach.dif
 Patch1:         xroach-return.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define _xorg7libs %_lib
@@ -52,7 +52,7 @@ scamper for cover.
 
 %prep
 %setup -q -n xroach
-%patch
+%patch0
 %patch1
 cp %{S:1} %{S:2} .
 

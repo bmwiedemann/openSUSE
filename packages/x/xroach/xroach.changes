@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:18:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Nov 14 13:52:11 UTC 2017 - dimstar@opensuse.org
 
 - Rename README.SuSE to README.SUSE, adhering to the correct
