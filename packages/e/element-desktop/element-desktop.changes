@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov  7 18:23:49 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- - Version 1.11.48
+
+  ## ✨ Features
+   * Correctly fill window.matrixChat even when a Wrapper module is active (https://github.com/vector-im/element-web/pull/26395). Contributed by @dhenneke.
+   * Knock on a ask-to-join room if a module wants to join the room when navigating to a room (https://github.com/matrix-org/matrix-react-sdk/pull/11787). Contributed by @dhenneke.
+   * Element-R:  Include crypto info in sentry (https://github.com/matrix-org/matrix-react-sdk/pull/11798). Contributed by @florianduros.
+   * Element-R:  Include crypto info in rageshake (https://github.com/matrix-org/matrix-react-sdk/pull/11797). Contributed by @florianduros.
+   * Element-R: Add current version of the rust-sdk and vodozemac (https://github.com/matrix-org/matrix-react-sdk/pull/11785). Contributed by @florianduros.
+   * Fix unfederated invite dialog (https://github.com/matrix-org/matrix-react-sdk/pull/9618). Fixes vector-im/element-meta#1466 and vector-im/element-web#22102. Contributed by @owi92.
+   * New right panel visual language (https://github.com/matrix-org/matrix-react-sdk/pull/11664).
+   * OIDC: add friendly errors (https://github.com/matrix-org/matrix-react-sdk/pull/11184). Fixes vector-im/element-web#25665. Contributed by @kerryarchibald.
+
+  ## 🐛 Bug Fixes
+   * Fix rightpanel hiding scrollbar (https://github.com/matrix-org/matrix-react-sdk/pull/11831). Contributed by @kerryarchibald.
+   * Fix edge cases around macos draggability (https://github.com/vector-im/element-desktop/pull/1291). Fixes #1290.
+   * Fix multi-tab session lock on Firefox not being cleared (https://github.com/matrix-org/matrix-react-sdk/pull/11800). Fixes vector-im/element-web#26165. Contributed by @ManuelHu.
+   * Deserialise spoilers back into slash command form (https://github.com/matrix-org/matrix-react-sdk/pull/11805). Fixes vector-im/element-web#26344.
+   * Fix Incorrect message scaling for verification request (https://github.com/matrix-org/matrix-react-sdk/pull/11793). Fixes vector-im/element-web#24304. Contributed by @capGoblin.
+   * Fix: Unable to restore a soft-logged-out session established via SSO (https://github.com/matrix-org/matrix-react-sdk/pull/11794). Fixes vector-im/element-web#25957. Contributed by @kerryarchibald.
+   * Use configurable github issue links more consistently (https://github.com/matrix-org/matrix-react-sdk/pull/11796).
+   * Fix io.element.late_event received_ts vs received_at (https://github.com/matrix-org/matrix-react-sdk/pull/11789).
+   * Make invitation dialog scrollable when infos are too long (https://github.com/matrix-org/matrix-react-sdk/pull/11753). Contributed by @nurjinjafar.
+   * Fix spoiler text-align (https://github.com/matrix-org/matrix-react-sdk/pull/11790). Contributed by @ajbura.
+   * Fix: Right panel keeps showing chat when unmaximizing widget.  (https://github.com/matrix-org/matrix-react-sdk/pull/11697). Fixes vector-im/element-web#26265. Contributed by @manancodes.
+   * Fix margin of invite to room button (https://github.com/matrix-org/matrix-react-sdk/pull/11780). Fixes vector-im/element-web#26410.
+   * Update base64 import (https://github.com/matrix-org/matrix-react-sdk/pull/11784).
+   * Set max size for Element logo in search warning (https://github.com/matrix-org/matrix-react-sdk/pull/11779). Fixes vector-im/element-web#26408.
+   * Fix: emoji size in room header topic, remove obsolete emoji style (https://github.com/matrix-org/matrix-react-sdk/pull/11757). Fixes vector-im/element-web#26326. Contributed by @kerryarchibald.
+   * Fix: Bubble layout design is broken (https://github.com/matrix-org/matrix-react-sdk/pull/11763). Fixes vector-im/element-web#25818. Contributed by @manancodes.
+
+-------------------------------------------------------------------
 Thu Nov  2 10:43:19 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.47

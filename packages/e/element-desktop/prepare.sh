@@ -23,7 +23,7 @@ tar xzvf element-desktop-${version}.tar.gz
 cd element-desktop-${version}
 
 last_packaged_version=$(osc cat devel:languages:nodejs/element-desktop/element-desktop.spec | grep "^Version:" | awk '{print $NF}')
-changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/')
+changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/' -e 's/\[.*\](\(.*\))/\1/g')
 
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 yarn cache clean
