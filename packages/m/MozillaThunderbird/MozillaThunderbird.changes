@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  4 15:34:08 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.4.2
+  https://www.thunderbird.net/en-US/thunderbird/115.4.2/releasenotes
+- build using rust/cargo 1.72 (1.69 about to be dropped from Factory)
+
+-------------------------------------------------------------------
 Tue Oct 24 20:52:32 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.4.1

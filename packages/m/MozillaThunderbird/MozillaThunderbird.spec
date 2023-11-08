@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          115
-%define mainver        %major.4.1
-%define orig_version   115.4.1
+%define mainver        %major.4.2
+%define orig_version   115.4.2
 %define orig_suffix    %nil
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -96,8 +96,8 @@ BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo1.69
-BuildRequires:  rust1.69
+BuildRequires:  cargo1.72
+BuildRequires:  rust1.72
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif

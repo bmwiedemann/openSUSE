@@ -5084,4 +5084,14 @@ I cannot test locally unfortunately.
     local folders (bmo#1843979)</comment>
     <requestid>1120173</requestid>
   </revision>
+  <revision rev="322" vrev="1">
+    <srcmd5>c578cbcea45c738372a0f7082966da17</srcmd5>
+    <version>115.4.2</version>
+    <time>1699478334</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.4.2
+  https://www.thunderbird.net/en-US/thunderbird/115.4.2/releasenotes
+- build using rust/cargo 1.72 (1.69 about to be dropped from Factory)</comment>
+    <requestid>1124229</requestid>
+  </revision>
 </revisionlist>
