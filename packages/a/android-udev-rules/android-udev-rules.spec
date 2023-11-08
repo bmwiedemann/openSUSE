@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20231030
+Version:        20231104
 Release:        0
 Summary:        Android udev rules list aimed to be the most comprehensive on the net
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ URL:            https://github.com/M0Rf30/android-udev-rules
 Source0:        https://github.com/M0Rf30/android-udev-rules/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  udev
 Recommends:     android-tools
 Provides:       android-tools-udev = %{version}
 Obsoletes:      android-tools-udev < %{version}
@@ -45,6 +46,14 @@ and include many suggestions from the Archlinux and Github Communities.
 %install
 install -D -m 0644 -t %{buildroot}%{_sysusersdir} android-udev.conf
 install -D -m 0644 -t %{buildroot}%{_udevrulesdir} 51-android.rules
+
+# the Leap version of udevadm does not support "verify"
+%if 0%{?suse_version} > 1500
+%check
+echo check deactivated for the time being, causes an error on factory:
+echo udevadm verify --resolve-names=never --no-style 51-android.rules
+echo udevadm: symbol lookup error: udevadm: undefined symbol: module_load_and_warn, version SD_SHARED
+%endif
 
 %pre -f adbusers.pre
 

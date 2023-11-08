@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  7 08:04:52 UTC 2023 - munix9@googlemail.com
+
+- Update to version 20231104
+  Bug Fixes
+  * Fix Spreadtrum rule (#288)
+  * Fix code due to journalctl output errors (#289)
+
+-------------------------------------------------------------------
 Tue Oct 31 07:25:51 UTC 2023 - munix9@googlemail.com
 
 - Update to version 20231030
