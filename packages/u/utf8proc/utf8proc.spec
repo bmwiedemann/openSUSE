@@ -2,6 +2,7 @@
 # spec file for package utf8proc
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +17,16 @@
 #
 
 
-%define lib_ver 2
+%define lib_ver 3
 Name:           utf8proc
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Library for processing UTF-8 encoded Unicode strings
 License:        MIT
 Group:          System/Libraries
 URL:            https://julialang.org/utf8proc/
 Source:         https://github.com/JuliaStrings/utf8proc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 
 %description
@@ -67,29 +69,28 @@ This package provides libraries and header files for developing applications
 that use utf8proc.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export CFLAGS="%{optflags}"
-%make_build
+%cmake
+%cmake_build
 
 %install
-make %{?_smp_mflags} \
-	DESTDIR=%{buildroot} \
-	prefix=%{_prefix} \
-	libdir=%{_libdir} \
-	install
+%cmake_install
 find %{buildroot}/%{_libdir} -type f -name "*.a" -print -delete
 
-%post -n lib%{name}%{lib_ver} -p /sbin/ldconfig
-%postun -n lib%{name}%{lib_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{lib_ver}
 
 %files -n lib%{name}%{lib_ver}
 %license LICENSE.md
 %doc lump.md NEWS.md README.md
 %{_libdir}/libutf8proc.so.*
 
+%check
+%ctest
+
 %files devel
+%license LICENSE.md
 %{_includedir}/utf8proc.h
 %{_libdir}/libutf8proc.so
 %{_libdir}/pkgconfig/libutf8proc.pc
