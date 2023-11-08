@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Tue Nov  7 21:53:45 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.32.0:
+  + A small update brought to you by yours truly :)
+    This time without breaking changes. I think.
+  + New features:
+    - binds: add ignoreMods flag
+    - binds: add movefocus_cycles_fullscreen
+    - example: add special workspace to default config
+    - fractional-scale: fix addon existence check
+    - groups: add option to configure font name (#3751)
+    - hooksystem: add callbackinfo struct and cancellable events
+    - hyprctl: add a query for workspace rules (#3630)
+    - hyprctl: add focusHistoryID to hyprctl clients
+    - pluginapi: add a config keyword adding method
+    - renderer: add transformers
+    - renderer: added new customization options to the blur shaders
+	  (#3650)
+    - windowrules: add nearestneighbor
+    - workspacerules: Add new optional "default command" for
+	  auto-launching apps on new workspaces (#3559)
+  + Fixes:
+    - Master: fix drop_at_cursor when there are only two windows
+	  (#3734)
+    - compositor: Fix a lack of a check for workspace equality on
+	  same monitors in getInDirection (#3625)
+    - config: fixup usage of plugin in handles
+    - fix(build): do not include wlr headers directly, use
+	  includes.hpp instead. (#3587)
+    - fractional-scale: fix addon existence check
+    - group: fixes for dragging groups onto groupbars (#3708)
+    - includes: fix box headers (#3771)
+    - input: fix force_zero_scaling for tablet and touch (#3644)
+    - input: fix mouse down handling on unset last surface
+    - input: simulate mouse movement to fix focus on open/close
+	  window
+    - layout: fix missed setWindowSize in no_gaps_when_only node
+	  apply
+    - layout: fix various rounding errors
+    - master: fix movewindow across monitors (#3628)
+    - master: fix moving window between monitors (#3721)
+    - master: fix resizing wrong window behind in special workspace
+	  (#3591)
+    - pluginapi: fixup get_hash functions
+    - renderer: fix legacy_renderer build (#3732)
+    - renderer: fix missed box scale
+    - renderer: fix shimmers when manual resizing
+    - renderer: fix small surface's blur region being offset by
+	  monitor coords
+    - renderer: fixup blend disable conditions in renderSurface
+    - shadow: fix ignore_window false
+    - shadow: fix missed fullBox.scale
+    - shadows: fix on transformed
+    - wlsurface: fix small detection
+  + Other:
+    - Core: various unsafe state improvements (#3713)
+    - Decos: Window decoration flags, shadow improvements (#3739)
+    - Internal: Hyprland box implementation (#3755)
+    - Map cmake None to meson's plain
+    - box: use std::round instead of std::floor in ::round()
+    - compositor: allow windowfromregex floating param
+    - compositor: allow windowfromregex tiled param
+    - compositor: do not process fullscreen events in unsafe
+    - compositor: find windows in direction on floating
+    - compositor: remove old comment
+    - compositor: send preferred scale and transform events to
+	  surfaces
+    - dwindle: move to CBox for expressing nodes
+    - events: better adjust to unreported sizes for xwayland apps
+    - events: ignore takes_over_fullscreen for floating windows
+    - events: make new windows taking over fullscreen keep the
+	  existing mode (#3588)
+    - events: set reported size on floating map
+    - events: set reported size on the end of mapping
+    - fractional-scale: post error on taken fs objects
+    - hyprctl: log monitor id in workspaces request
+    - includes: include sharedDefs in includes.hpp
+    - includes: include vector2d for sharedDefs
+    - input: Apply scaling to cursorPosOnActivate position (#3664)
+    - input: better cursor image infrastructure
+    - input: don't reset cursor movement timer on
+	  simulateMouseMovement (#3595)
+    - input: handle mouse on decorations (#3560)
+    - input: let input-grabbing decos have prio over resize on
+	  border
+    - input: properly track xdg surfaces' geometry in
+	  vectorToSurfaceLocal
+    - input: remove incorrect check in re-enter
+    - input: send motion events on focusWindow if follows_mouse is 0
+    - input: simulate movement only if mouse is over in open/close
+	  window
+    - internal: create canBeGroupedInto() (#3693)
+    - internal: honor close_special_on_empty on moveToWorkspace
+    - layershell: support ON_DEMAND keyboard mode
+    - layout: avoid redundant size sets on new fullscreen
+    - layout: better storage for no fullscreen checks var
+    - layout: round box in mouseMove
+    - layout: round window boxes after special scale factor
+    - main: set isShuttingDown after display dispatch reaches the
+	  end
+    - meson: generate version.h before install_headers (#3612)
+    - region: include box in the header
+    - renderer: allow transform enabling from outside opengl
+    - renderer: avoid drawing invisibly small surfaces in
+	  renderSurface
+    - renderer: blur properly behind small surfaces
+    - renderer: cast std::clamp args to be of the same type (#3589)
+    - renderer: improvements to wayland surface small() detection
+    - renderer: properly pass 10-bit formats to opengl
+    - renderer: properly set currentFB on snapshot renders
+    - renderer: render oversized blur with respect to fade alpha
+    - renderer: respect viewporter dest on base surfaces
+    - renderer: use optional for cursor surface storing
+    - renderer: use preOffset pos instead of offset
+    - shaders: support changing the outer radius of borders
+	  independently
+    - subprojects: update tracy
+    - surface/wayland: conform to small surface requirements
+    - transformers: allow modifying renderdata pre-pass
+    - window: update window reported size on damage events
+    - workspacerules: search for special properly
+    - xdg: send unconstrain events after a popup reposition (#3716)
+    - xdg: use std::ceil for sending scale to surfaces
+- Dropped "fix_ia86_std_clamp.patch" as it has been merged upstream.
+
+
+-------------------------------------------------------------------
 Sun Oct 22 22:21:49 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Added "fix_ia86_std_clamp.patch" that is required for Hyprland to
