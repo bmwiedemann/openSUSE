@@ -277,4 +277,18 @@
     ``mocker.spy`` (`#364`_).</comment>
     <requestid>1100451</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>87d9d29d8a2578d765313b103493ad07</srcmd5>
+    <version>3.12.0</version>
+    <time>1699478229</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.12.0:
+  * Added support for Python 3.12.
+  * Dropped support for EOL Python 3.7.
+  * ``mocker.resetall()`` now also resets mocks created by
+    ``mocker.create_autospec`` (`#390`_).
+
+- add upstream patch to test with pytest5 - fix_tests.patch</comment>
+    <requestid>1124082</requestid>
+  </revision>
 </revisionlist>

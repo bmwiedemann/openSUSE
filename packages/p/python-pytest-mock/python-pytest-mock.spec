@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mock
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-mock
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest-mock-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module py}
