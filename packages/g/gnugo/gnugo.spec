@@ -1,7 +1,7 @@
 #
 # spec file for package gnugo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@ URL:            https://savannah.gnu.org/projects/gnugo
 Source:         %{name}-%{version}.tar.xz
 Source1:        suse-start-gnugo.el
 Source2:        xemacs-auto-autoloads.el
-Patch:          xemacs.patch
+Patch0:         xemacs.patch
 Patch1:         mouse-2-dont-insert-junk.patch
 BuildRequires:  emacs-x11
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  xemacs
 BuildRequires:  xz
-Requires(pre):	info
+Requires(pre):  info
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -41,7 +41,7 @@ Chinese ancient board game.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 
 %build
