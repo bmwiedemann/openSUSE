@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  7 19:46:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Ignore AttributeError when shutting down server
+  * Add support for Python 3.12 (or at least, list it explicitly
+    in the classifiers)
+
+-------------------------------------------------------------------
 Mon Jul 24 19:05:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.0:
@@ -118,7 +126,7 @@ Sun Sep 18 09:30:17 UTC 2016 - mardnh@gmx.de
 -------------------------------------------------------------------
 Mon Feb  9 17:17:11 UTC 2015 - p.drouand@gmail.com
 
-- Do not provide bundled certificate; 
+- Do not provide bundled certificate;
   add python-pytest-localserver-do-not-use-shipped-pem.patch
 
 -------------------------------------------------------------------

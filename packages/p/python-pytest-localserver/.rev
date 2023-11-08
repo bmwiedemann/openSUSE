@@ -75,4 +75,17 @@
   * Clean up the smtp module's driver code</comment>
     <requestid>1100447</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01d8a5158ca3bb6361ffd1690b96232f</srcmd5>
+    <version>0.8.1</version>
+    <time>1699478233</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.1:
+  * Ignore AttributeError when shutting down server
+  * Add support for Python 3.12 (or at least, list it explicitly
+    in the classifiers)
+
+- Do not provide bundled certificate;</comment>
+    <requestid>1124088</requestid>
+  </revision>
 </revisionlist>

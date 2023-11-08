@@ -17,12 +17,10 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %bcond_with extras
 %{?sle15_python_module_pythons}
 Name:           python-pytest-localserver
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Plugin for py.test to test server connections locally
 License:        MIT
