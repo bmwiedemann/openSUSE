@@ -27,13 +27,16 @@
 
 %define skip_python2 1
 Name:           python-mocket%{psuffix}
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
@@ -67,19 +70,19 @@ included, with gevent/asyncio/SSL support.
 
 %prep
 %autosetup -p1 -n mocket-%{version}
-sed -i '/cov/ d' setup.cfg
-sed -i '/pipenv/ d' setup.py
+#sed -i '/cov/ d' setup.cfg
+#sed -i '/pipenv/ d' setup.py
 
 %build
 %if !%{with test}
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -114,7 +117,7 @@ donttest="$donttest or test_truesendall_with_dump_from_recording"
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/mocket
-%{python_sitelib}/mocket-%{version}-py*.egg-info
+%{python_sitelib}/mocket-%{version}.dist-info
 %endif
 
 %changelog

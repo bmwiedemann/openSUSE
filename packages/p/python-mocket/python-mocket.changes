@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 31 17:34:29 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 3.12.0:
+ * Support for Python 3.12 (#204)
+ * Fix for Python 3.12
+ * Getting rid of Python 3.7, since it's not supported anymore.
+ * Precommit hooks' autoupdate.
+ * Disabling `aiohttp` for testing Python 3.12.
+
+-------------------------------------------------------------------
 Tue Oct 24 10:15:32 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run redis server on %check to fix redis tests that depends on a real
