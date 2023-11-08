@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  7 21:13:29 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20231107.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20231107
+  * ruby-build now prints external commands as they are executed - @mislav in #2230
+    Now there is more transparency to what ruby-build does: at the glance of the output, it should be clear that ruby-build is mostly just a wrapper around the curl → untar → `./configure` → `make` → `make install` combo. Furthermore, when an error arises, it should now be more apparent which build step failed, even before having to dive into the log file.
+    Additionally, network downloaders such as `curl`, `wget`, and `git` are now connected directly to the terminal, allowing them to display progress information.
+    In `ruby-build --verbose` mode, the output of all external commands is now connected to the same stdout/stderr as the ruby-build process, and a log file doesn't get created anymore.
+    The "BUILD FAILED" output is now improved: it includes CPU architecture information and is cleaner, drawing attention to the location of the build log on disk. (Most often, the real cause of a build failure is only discoverable via the log.)
+  * Automatically link to Homebrew OpenSSL by @mislav in #2275 #2292
+    With this change, it is no longer necessary to set `RUBY_CONFIGURE_OPTS=--with-openssl-dir=...` after doing `brew install openssl@3`. An appropriate OpenSSL version installed with Homebrew will get used for configuring Ruby automatically, even if the formula is "keg-only".
+  * Add JRuby 9.4.5.0 and 9.3.13.0 by @headius in #2289
+  * Add `ruby-build(1)` man page by @mislav in #2297
+  * Respect NO_COLOR and CLICOLOR_FORCE by @mislav in #2295
+  * Remove support for Topaz and Maglev by @mislav in #2294
+  * Unmark Ruby 2.7 as soon-to-be-EOL since it's already EOL by @mislav in #2286
+
+-------------------------------------------------------------------
 Wed Oct 25 15:19:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20231025.
