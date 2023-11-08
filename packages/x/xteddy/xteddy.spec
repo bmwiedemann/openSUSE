@@ -1,7 +1,7 @@
 #
 # spec file for package xteddy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,14 +25,14 @@ BuildRequires:  pkgconfig(xext)
 Provides:       xteddy10
 Requires:       imlib2-loaders
 Summary:        A cuddly teddy bear for your X Window desktop
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Graphics
 Version:        2.2
 Release:        0
 Source:         xteddy_2.2.orig.tar.bz2
-Patch:          teddy-2.2-as-needed.patch
+Patch0:         teddy-2.2-as-needed.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://webstaff.itn.liu.se/~stegu/xteddy/
+URL:            http://webstaff.itn.liu.se/~stegu/xteddy/
 
 %description
 Normally, xteddy just sits around doing nothing. After all, that's what
@@ -55,12 +55,12 @@ Authors:
 
 %prep
 %setup -q
-%patch
+%patch0
 sed -i s,/usr/games,/usr/bin, xtoys
 
 %build
 autoreconf --force --install
-%configure 
+%configure
 %{__make} %{?jobs:-j%jobs}
 
 %install

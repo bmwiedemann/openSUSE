@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:18:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Jan 25 13:03:35 CET 2018 - ma@suse.com
 
 - imlib2-loaders are required to display images (bsc#1076908)
