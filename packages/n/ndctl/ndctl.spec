@@ -33,7 +33,7 @@ Group:          Hardware/Other
 URL:            https://github.com/pmem/ndctl
 Source0:        https://github.com/pmem/ndctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        ndctl-rpmlintrc
-Patch:          harden_ndctl-monitor.service.patch
+Patch0:         harden_ndctl-monitor.service.patch
 BuildRequires:  keyutils-devel
 BuildRequires:  libiniparser-devel
 BuildRequires:  libtool
