@@ -24,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20231025
+Version:        20231107
 Release:        0
 BuildArch:      noarch
 License:        MIT
@@ -119,6 +119,7 @@ bats test
 %{_bindir}/*
 %dir %{_datadir}/ruby-build
 %{_datadir}/ruby-build/*
+%{_mandir}/man1/ruby-build*
 
 %files dependencies-mri
 
