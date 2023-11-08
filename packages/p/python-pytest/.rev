@@ -1274,4 +1274,18 @@
     <comment></comment>
     <requestid>1117662</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>b436d221c169d014721b6cc9813055be</srcmd5>
+    <version>7.4.3</version>
+    <time>1699478202</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.4.3:
+  * Markers are now considered in the
+    reverse mro order to ensure base  class markers are
+    considered first -- this resolves a regression.
+  * Fixed ``:=`` in asserts impacting unrelated test cases.
+  * Handled an edge case where :data:`sys.stderr` might already
+    be closed when :ref:`faulthandler` is tearing down.</comment>
+    <requestid>1123974</requestid>
+  </revision>
 </revisionlist>

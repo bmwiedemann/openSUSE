@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  7 12:01:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.3:
+  * Markers are now considered in the
+    reverse mro order to ensure base  class markers are
+    considered first -- this resolves a regression.
+  * Fixed ``:=`` in asserts impacting unrelated test cases.
+  * Handled an edge case where :data:`sys.stderr` might already
+    be closed when :ref:`faulthandler` is tearing down.
+
+-------------------------------------------------------------------
 Mon Sep 18 15:04:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.2:
