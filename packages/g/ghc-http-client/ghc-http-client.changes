@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 30 08:14:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http-client to version 0.7.15.
+  ## 0.7.15
+
+  * Adds `shouldStripHeaderOnRedirectIfOnDifferentHostOnly` option to `Request` [#520](https://github.com/snoyberg/http-client/pull/520)
+
+-------------------------------------------------------------------
 Fri Oct 13 17:29:57 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update http-client to version 0.7.14 revision 1.
