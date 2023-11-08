@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pytest-httpbin
-Version:        1.0.2
+Version:        2.0.0
 Release:        0
 Summary:        Web service for testing HTTP libraries
 License:        MIT
@@ -27,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/kevin1024/pytest-httpbin
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-httpbin/pytest-httpbin-%{version}.tar.gz
 Source99:       pytest-httpbin-rpmlintrc
-# https://github.com/kevin1024/pytest-httpbin/issues/75
-Patch0:         python-pytest-httpbin-no-six.patch
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -50,8 +47,7 @@ in a separate thread running httpbin and provides your test with the URL in the
 fixture.
 
 %prep
-%setup -q -n pytest-httpbin-%{version}
-%patch0 -p1
+%autosetup -p1 -n pytest-httpbin-%{version}
 
 %build
 %python_build

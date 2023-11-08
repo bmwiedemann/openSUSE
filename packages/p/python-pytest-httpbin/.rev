@@ -87,4 +87,19 @@
     <comment></comment>
     <requestid>1082436</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a8013e2c924bb066e900db0fc20490f</srcmd5>
+    <version>2.0.0</version>
+    <time>1699478232</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.0:
+  * This is a major release since it drops comparability with
+    some older versions of python.
+  * Drop support for Python 2.6, 2.7, 3.4, 3.5 and 3.6 (#68)
+  * Add support for Python 3.7, 3.8, 3.9 and 3.10 (#68)
+  * Avoid deprecation warnings and resource warnings (#71)
+  * Add support for Python 3.11 and 3.12, drop dependency on six
+- drop python-pytest-httpbin-no-six.patch (upstream)</comment>
+    <requestid>1124086</requestid>
+  </revision>
 </revisionlist>

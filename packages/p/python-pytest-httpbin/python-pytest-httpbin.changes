@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  7 19:42:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * This is a major release since it drops comparability with
+    some older versions of python.
+  * Drop support for Python 2.6, 2.7, 3.4, 3.5 and 3.6 (#68)
+  * Add support for Python 3.7, 3.8, 3.9 and 3.10 (#68)
+  * Avoid deprecation warnings and resource warnings (#71)
+  * Add support for Python 3.11 and 3.12, drop dependency on six
+- drop python-pytest-httpbin-no-six.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
