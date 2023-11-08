@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-flask
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A set of py.test fixtures to test Flask applications
 License:        MIT
