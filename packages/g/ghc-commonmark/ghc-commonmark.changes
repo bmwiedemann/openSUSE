@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 27 17:00:53 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark to version 0.2.4.
+  ## 0.2.4
+
+    * Do not parse hard line breaks in fenced codeblock info (#116,
+      Michael Howell). This change makes commonmark-hs conform to the spec
+      and behave like other implementations when an info string in a code
+      block ends with a backslash.
+
+    * [API change] Commonmark.Inlines now exports `pEscapedSymbol`
+      (#116, Michael Howell).
+
+    * Tokenize combining marks as WordChars not Symbol (#114).
+
+-------------------------------------------------------------------
 Sun Jun 25 16:54:28 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update commonmark to version 0.2.3.
