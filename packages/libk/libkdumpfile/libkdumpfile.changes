@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  8 06:50:42 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Do not build Python bindings.
+
+-------------------------------------------------------------------
 Mon Nov  6 14:27:10 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Upgrade to libkdumpfile version 0.5.3

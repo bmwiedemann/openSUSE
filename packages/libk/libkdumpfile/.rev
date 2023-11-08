@@ -233,4 +233,13 @@
     <comment></comment>
     <requestid>1123600</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>d22ed937981c523b8a78290a457b2e8b</srcmd5>
+    <version>0.5.3</version>
+    <time>1699478359</time>
+    <user>anag+factory</user>
+    <comment>- Do not build Python bindings.
+</comment>
+    <requestid>1124286</requestid>
+  </revision>
 </revisionlist>

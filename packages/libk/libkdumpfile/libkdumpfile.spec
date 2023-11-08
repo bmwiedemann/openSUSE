@@ -29,23 +29,8 @@
 %endif
 %endif
 
-# There was no Python single-spec before SLE15
-%if %{defined pythons}
-%define new_python_macros 1
-%else
-%define new_python_macros 0
-%define python_module() python-%{**} python3-%{**}
-%define ifpython2 %if 0
-%define python_build python setup.py build
-%define python_install python setup.py install --skip-build --root %{?buildroot}
-%define python3_build python3 setup.py build
-%define python3_install python3 setup.py install --skip-build --root %{?buildroot}
-%endif
-
 #
 # End compatibility cruft
-
-%define oldpython python
 
 Name:           libkdumpfile
 Version:        0.5.3
@@ -68,54 +53,16 @@ BuildRequires:  libtool
 %if %{have_zstd}
 BuildRequires:  libzstd-devel
 %endif
-BuildRequires:  %{python_module devel}
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%ifpython2
-Provides:       %{oldpython}-libaddrxlat = %{version}-%{release}
-Obsoletes:      %{oldpython}-libaddrxlat < %{version}-%{release}
-%endif
-
-%if %new_python_macros
-%python_subpackages
-%endif
 
 %description
-%if "%name" == "libkdumpfile"
 A library that provides an abstraction layer for reading kernel dump
 core files.  It supports different kernel dump core formats, virtual
 to physical translation, Xen mappings and more.
-%else
-This package contains all necessary python modules to use libkdumpfile via
-the Python interpreter.
-%endif
-
-%if !%new_python_macros
-
-%package -n python2-libkdumpfile
-Summary:        Python interface for libkdumpfile
-Group:          Development/Languages/Python
-Provides:       python-libkdumpfile = %{version}-%{release}
-Obsoletes:      python-libkdumpfile < %{version}-%{release}
-Provides:       python-libaddrxlat = %{version}-%{release}
-Obsoletes:      python-libaddrxlat < %{version}-%{release}
-
-%description -n python2-libkdumpfile
-This package contains all necessary python modules to use libkdumpfile via
-the Python interpreter.
-
-%package -n python3-libkdumpfile
-Summary:        Python interface for libkdumpfile
-Group:          Development/Languages/Python
-
-%description -n python3-libkdumpfile
-This package contains all necessary python modules to use libkdumpfile via
-the Python interpreter.
-
-%endif
 
 %package -n %{name}-devel
 Summary:        Include files and libraries for libkdumpfile development
@@ -167,28 +114,9 @@ aclocal
 autoreconf -fvi
 %configure --disable-static --without-python
 make %{?_smp_mflags}
-cd python
-%if %new_python_macros
-%{python_expand # Build for each Python version
-rm -f setup.cfg
-make setup.cfg DESTDIR=%{?buildroot} pyexecdir=%{$python_sitearch}
-%$python_build
-}
-%else
-make setup.cfg DESTDIR=%{?buildroot} pyexecdir=%{python_sitearch}
-%python_build
-rm -f setup.cfg
-make setup.cfg DESTDIR=%{?buildroot} pyexecdir=%{python3_sitearch}
-%python3_build
-%endif
 
 %install
 %make_install
-cd python
-%python_install
-%if !%new_python_macros
-%python3_install
-%endif
 
 # Do not install example code
 rm -v %{?buildroot}%{_bindir}/dumpattr
@@ -197,17 +125,6 @@ rm -v %{?buildroot}%{_bindir}/showxlat
 # Remove Libtool files
 rm -v %{?buildroot}%{_libdir}/libkdumpfile.la
 rm -v %{?buildroot}%{_libdir}/libaddrxlat.la
-%if %new_python_macros
-%{python_expand # Libtool files for extension modules
-rm -v %{?buildroot}%{$python_sitearch}/_kdumpfile*.la
-rm -v %{?buildroot}%{$python_sitearch}/_addrxlat*.la
-}
-%else
-rm -v %{?buildroot}%{python_sitearch}/_kdumpfile*.la
-rm -v %{?buildroot}%{python_sitearch}/_addrxlat*.la
-rm -v %{?buildroot}%{python3_sitearch}/_kdumpfile*.la
-rm -v %{?buildroot}%{python3_sitearch}/_addrxlat*.la
-%endif
 
 %post -n libkdumpfile10 -p /sbin/ldconfig
 
@@ -241,23 +158,5 @@ rm -v %{?buildroot}%{python3_sitearch}/_addrxlat*.la
 %{_includedir}/libkdumpfile/addrxlat.h
 %{_libdir}/libaddrxlat.so
 %{_libdir}/pkgconfig/libaddrxlat.pc
-
-%if %new_python_macros
-
-%files %{python_files}
-%defattr(-,root,root)
-%{python_sitearch}/*
-
-%else
-
-%files -n python2-libkdumpfile
-%defattr(-,root,root)
-%{python_sitearch}/*
-
-%files -n python3-libkdumpfile
-%defattr(-,root,root)
-%{python3_sitearch}/*
-
-%endif
 
 %changelog
