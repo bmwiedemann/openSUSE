@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 07 07:37:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.35.0:
+  * feat(set): add raw flag for set variable command
+  * chore(templates): Add environment information section to bug
+    template
+  * fix(repo search): Fix missing color reset and broken links in
+    Bash
+  * chore: Bump minimum supported Go version to 1.19
+  * feat(cluster): Implement basic `update-kubeconfig` command
+  * feat(get): add perpage and page options to ssh-key get command
+  * fix(mr create): better error message when no accces
+
+-------------------------------------------------------------------
 Tue Oct 24 09:39:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.34.0:
