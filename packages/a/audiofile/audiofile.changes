@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:49:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Thu Oct 18 07:45:17 UTC 2018 - qzheng@suse.com
 
 - Add 0007-set-the-output-chunk-to-the-amount-of-frames.patch to

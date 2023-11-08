@@ -1,7 +1,7 @@
 #
 # spec file for package audiofile
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,11 +25,11 @@ Summary:        An Audio File Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 %define lname	libaudiofile%{so_num}
-Url:            http://www.68k.org/~michael/audiofile/
+URL:            http://www.68k.org/~michael/audiofile/
 Source:         http://download.gnome.org/sources/audiofile/0.3/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 # PATCH-FIX-SECURITY audiofile-CVE-2015-7747.patch bsc949399 CVE-2015-7747 sbrabec@suse.com -- Fix overflow when changing both number of channels and sample format https://github.com/mpruett/audiofile/pull/25/files https://github.com/mpruett/audiofile/pull/25.patch
-Patch:          audiofile-CVE-2015-7747.patch
+Patch0:         audiofile-CVE-2015-7747.patch
 Patch2:         audiofile-gcc6.patch
 # PATCH-FIX-UPSTREAM 0001-Always-check-the-number-of-coefficients.patch boo#1026978 alarrosa@suse.com -- Check number of coefficients https://github.com/mpruett/audiofile/pull/42
 Patch3:         0001-Always-check-the-number-of-coefficients.patch
@@ -110,7 +110,7 @@ NeXT/Sun).
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch2
 %patch3 -p1
 %patch4 -p1
