@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  8 20:26:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Any python flavor is okay
+
+-------------------------------------------------------------------
+Wed Nov  8 10:28:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Fix a bad Requires: with %{python_module construct.
+
+-------------------------------------------------------------------
 Sun Jan 22 13:00:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.4.4

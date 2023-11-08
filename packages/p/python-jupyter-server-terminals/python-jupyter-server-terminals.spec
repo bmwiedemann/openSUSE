@@ -56,8 +56,7 @@ A Jupyter Server Extension Providing Terminals.
 
 %package -n jupyter-server-terminals
 Summary:        Jupyter Server Extension registration for python*-jupyter-server-terminals
-# Any flavor is okay
-Requires:       (%(echo "%{python_module jupyter-server-terminals = %{version}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
+Requires:       python3dist(jupyter-server-terminals)
 
 %description -n jupyter-server-terminals
 A Jupyter Server Extension Providing Terminals.

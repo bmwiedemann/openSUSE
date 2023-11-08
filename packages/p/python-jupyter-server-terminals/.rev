@@ -18,4 +18,14 @@
 </comment>
     <requestid>1060264</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d3418cc9d1846a93e28fdd7d8ccd9f7b</srcmd5>
+    <version>0.4.4</version>
+    <time>1699478331</time>
+    <user>anag+factory</user>
+    <comment>- Any python flavor is okay
+- Fix a bad Requires: with %{python_module construct.
+</comment>
+    <requestid>1124287</requestid>
+  </revision>
 </revisionlist>
