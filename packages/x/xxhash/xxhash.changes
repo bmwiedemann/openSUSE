@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  3 10:00:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.2
+  * ARM NEON speed improvements; on M1 Pro it is +20% speed for
+    XXH3 and XXH128 (from 30.0 GB/s to 36 GB/s).
+  * Added support for ARM's SVE vector extension.
+  * Resolved some issues with XXH3's s390x vector implementation.
+- Delete xxhash-avoid-armv6-unaligned-access.patch (should be
+  fixed by c0dd448b), delete 836f4e735cf368542f14005e41d2f84ec29dfd60.patch
+  (merged), delete 15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch
+  (merged)
+
+-------------------------------------------------------------------
 Wed Mar  8 21:28:23 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Add 15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch: fix build
