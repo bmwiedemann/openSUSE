@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Nov 08 05:55:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.0:
+  * docs: update changelog for v2.9.0 (#9165)
+  * chore: add new skip-unreachable-dirs to not error on init
+    command when a dir can not be read (#9163)
+  * chore: bump golang.org/x/net from 0.7.0 to 0.17.0 in
+    /hack/tools (#9129)
+  * chore: bump golang.org/x/net in
+    /examples/grpc-e2e-tests/service (#9130)
+  * chore: bump golang.org/x/net (#9131)
+  * chore: bump golang.org/x/net (#9128)
+  * chore: bump google.golang.org/grpc from 1.55.0 to 1.56.3
+    (#9156)
+  * chore: bump google.golang.org/grpc (#9154)
+  * chore: bump google.golang.org/grpc in
+    /examples/grpc-e2e-tests/service (#9153)
+  * chore: bump google.golang.org/grpc (#9152)
+  * chore: bump google.golang.org/grpc (#9155)
+  * chore: bump github/codeql-action from 2.22.4 to 2.22.5 (#9157)
+  * chore: add new config to control the pull behaviour for verify
+    (#9150)
+  * fix: kpt force named "false" in schema (#9074)
+  * chore: change custom actions pull logic, to check if an image
+    exists locally first before triggering a pull (#9147)
+  * chore: bump ossf/scorecard-action from 2.3.0 to 2.3.1 (#9149)
+  * chore: bump schema version to v4beta8 (#9143)
+  * chore: bump peter-evans/create-or-update-comment from 3.0.2 to
+    3.1.0 (#9142)
+  * chore: bump github/codeql-action from 2.22.3 to 2.22.4 (#9146)
+  * chore: bump github/codeql-action from 2.22.2 to 2.22.3 (#9137)
+  * chore: bump golang.org/x/net (#9132)
+  * chore: bump github/codeql-action from 2.22.1 to 2.22.2 (#9133)
+  * docs: fix releaseNoteLink for v2.8.0 (#9125)
+  * chore: bump ossf/scorecard-action from 2.2.0 to 2.3.0 (#9122)
+  * chore: bump github/codeql-action from 2.22.0 to 2.22.1 (#9123)
+  * chore: bump github/codeql-action from 2.21.9 to 2.22.0 (#9115)
+  * chore: bump flask from 2.3.3 to 3.0.0 in /integration/examples
+    (#9107)
+  * chore: bump flask from 2.3.3 to 3.0.0 in /examples (#9106)
+
+-------------------------------------------------------------------
 Thu Oct 05 04:41:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version v2.8.0:
