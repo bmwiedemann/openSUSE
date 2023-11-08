@@ -47,7 +47,6 @@ Requires:       python-typing-extensions >= 3.7.2
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module async_generator >= 1.3}
 BuildRequires:  %{python_module flaky >= 3.5.0}
 BuildRequires:  %{python_module hypothesis >= 5.7.1}
 BuildRequires:  %{python_module pytest >= 7.0.0}

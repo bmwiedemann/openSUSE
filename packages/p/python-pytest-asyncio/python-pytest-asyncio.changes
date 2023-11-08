@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  7 19:34:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove unnecessary dependency on async_generator
+
+-------------------------------------------------------------------
 Tue Oct 17 08:19:39 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add hypothesis-health-check.patch to fix tests
@@ -37,7 +42,7 @@ Thu Apr 13 22:43:58 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Fri Dec  9 11:11:04 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.20.3:
-  * Prevent DeprecationWarning to bubble up on CPython 3.10.9 and 3.11.1. #460 
+  * Prevent DeprecationWarning to bubble up on CPython 3.10.9 and 3.11.1. #460
 
 -------------------------------------------------------------------
 Wed Nov 30 07:13:34 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
@@ -71,7 +76,7 @@ Fri Aug  5 04:57:24 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Wed Jul  6 07:59:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject multibuild to defeat a build loop 
+- Inject multibuild to defeat a build loop
 
 -------------------------------------------------------------------
 Tue Jun 28 19:00:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -193,4 +198,4 @@ Tue Sep  4 13:10:57 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Fri Jan  5 09:47:11 UTC 2018 - alarrosa@suse.com
 
-- Initial release of python-pytest-asyncio 0.8.0 
+- Initial release of python-pytest-asyncio 0.8.0

@@ -181,4 +181,16 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>1118228</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>fbf1684c880f30df4dbfddafc5a9aa3d</srcmd5>
+    <version>0.21.1</version>
+    <time>1699478228</time>
+    <user>anag+factory</user>
+    <comment>remove unnecessary dependency on async_generator
+
+  * Prevent DeprecationWarning to bubble up on CPython 3.10.9 and 3.11.1. #460
+- Inject multibuild to defeat a build loop
+- Initial release of python-pytest-asyncio 0.8.0</comment>
+    <requestid>1124081</requestid>
+  </revision>
 </revisionlist>
