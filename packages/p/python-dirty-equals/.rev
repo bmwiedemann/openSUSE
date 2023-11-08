@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1118345</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a87cba94a0738148768a811fa15a70b2</srcmd5>
+    <version>0.7.0</version>
+    <time>1699478205</time>
+    <user>anag+factory</user>
+    <comment>- build against newer python stack for sle15
+
+ *Remove Poetry and transition to hatchling, #49
+- Correct a Requires into a BuildRequires, as was meant.</comment>
+    <requestid>1123994</requestid>
+  </revision>
 </revisionlist>
