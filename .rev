@@ -760,4 +760,41 @@
     <comment></comment>
     <requestid>1118015</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>1e14ed3045ab614bc3be868460494e2a</srcmd5>
+    <version>1.57.0</version>
+    <time>1699478204</time>
+    <user>anag+factory</user>
+    <comment>- add keyring for gpg validation
+- spec file cleanups
+
+    For example, if GOAWAY frame has been received, a
+  * https://nghttp2.org/blog/2023/05/10/nghttp2-v1-53-0/
+  checking leading and trailing white spaces against HTTP field value.
+  * https://nghttp2.org/blog/2022/08/22/nghttp2-v1-49-0/
+  * third-party: Bump neverbleed based on the latest head (GH-1708)
+  * see https://nghttp2.org/blog/2022/02/23/nghttp2-v1-47-0/
+  * see https://nghttp2.org/blog/2021/10/19/nghttp2-v1-46-0/
+  * nghttpx: Fix logging integer
+- Conditionally remove dependecy on jemalloc for SLE-12
+    if table size is changed from default
+  * Add nghttp2_option_set_max_send_header_block_length API
+  * Fix warning: declaration of 'free' shadows a global declaration
+  * nghttpx: Add healthmon parameter to -f option to enable health
+  * nghttpx: Add --api-max-request-body option to set maximum API
+  * nghttpx: Add api parameter to --frontend option to mark API
+  * h2load: Add content-length header field for HTTP/2 and SPDY as
+  * Run error callback when peer does not send initial SETTINGS
+  * nghttpx: Fix bug that server push from mruby script did not
+  * nghttpx: Try next HTTP/1 backend address when connection
+  * nghttpx: Retry next HTTP/2 backend address when connection
+  * nghttpx: Enable link header field based push for non-final
+  * nghttpx: Fix bug that logger wrote string which was not
+  * nghttpx: Fix bug that backend tls keyword did not work with -s
+  * lib: Add nghttp2_error_callback to tell application human
+  * lib: Add nghttp2_http2_strerror() to return HTTP/2 error code
+  * integration: Disable tests that sometimes break randomly on
+  * h2load: Fix bug that initial max concurrent streams was too</comment>
+    <requestid>1123980</requestid>
+  </revision>
 </revisionlist>

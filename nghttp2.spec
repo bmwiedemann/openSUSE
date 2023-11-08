@@ -18,8 +18,6 @@
 
 %global soname  libnghttp2
 %global sover   14
-%global soname_asio libnghttp2_asio
-%global sover_asio 1
 %global flavor @BUILD_FLAVOR@%{nil}
 Name:           nghttp2
 Version:        1.57.0
@@ -28,14 +26,13 @@ Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://nghttp2.org/
-Source:         https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz
-Source1:        baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source0:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz
+Source1:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz.asc
+Source2:        nghttp2.keyring
+Source3:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cunit)
@@ -100,7 +97,6 @@ HTTP/2 client, server and proxy.
 sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:g' script/fetch-ocsp-response
 
 %build
-autoreconf -fiv
 %configure \
   --disable-static        \
   --disable-silent-rules  \
@@ -112,7 +108,7 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-# Do not ship theis
+# Do not ship this
 rm -rf %{buildroot}%{_datadir}/doc/nghttp2
 
 # None of applications using these man pages are built.
@@ -120,8 +116,7 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
   doc/manual/html/.buildinfo
 
 %check
-# One test fails if python-sphinx is not present
-%make_build check ||:
+%make_build check
 
 %ldconfig_scriptlets -n %{soname}-%{sover}
 
