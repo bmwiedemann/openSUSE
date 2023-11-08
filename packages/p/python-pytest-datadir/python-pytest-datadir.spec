@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-datadir
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Plugin for test data directories and files
 License:        MIT
 URL:            https://github.com/gabrielcnr/pytest-datadir
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-datadir/pytest-datadir-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
