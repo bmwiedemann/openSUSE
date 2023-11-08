@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.7.3
+Version:        0.2.8.0
 Release:        0
 Summary:        Pure priority search queues
 License:        BSD-3-Clause
