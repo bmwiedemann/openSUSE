@@ -27,7 +27,7 @@
 %define skip_python2 1
 %define modname proto-plus
 Name:           python-proto-plus%{psuffix}
-Version:        1.22.2
+Version:        1.22.3
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  7 12:59:38 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 1.22.3
+  * Resolve issue where marshal fails with cross api dependency
+    (gh#googleapis/proto-plus-python#349)
+
+-------------------------------------------------------------------
 Fri Feb 24 11:03:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.22.2
