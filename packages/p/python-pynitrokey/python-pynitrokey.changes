@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  8 10:24:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Fix a bad Requires: with %{python_module construct.
+
+-------------------------------------------------------------------
 Thu Nov  2 13:53:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - clarify licensing, as this is dual-licensed with MIT and

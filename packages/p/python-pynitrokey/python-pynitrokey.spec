@@ -69,10 +69,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       intelhex
-Requires:       %{python_module click-aliases}
-Requires:       %{python_module semver}
 Requires:       python-certifi >= 14.5.14
 Requires:       python-cffi
+Requires:       python-click-aliases
 Requires:       python-cryptography
 Requires:       python-ecdsa
 Requires:       python-frozendict >= 2.3.4
@@ -82,6 +81,7 @@ Requires:       python-pyserial
 Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-pyusb
 Requires:       python-requests
+Requires:       python-semver
 Requires:       python-spsdk >= 1.7.0
 Requires:       python-tlv8
 Requires:       python-tqdm
