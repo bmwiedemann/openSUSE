@@ -180,4 +180,14 @@
   * Track GNOME 41 for Leap 15.4 and SLE15SP4</comment>
     <requestid>1067139</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d7d5eb2ecf918978f6040c50fe78b643</srcmd5>
+    <version>0.104+30</version>
+    <time>1699478244</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.104+30:
+  * Fix definition of APIURL with newer osc
+  * Track more base packages, mostly filesystem related (forwarded request 1123872 from dimstar)</comment>
+    <requestid>1123873</requestid>
+  </revision>
 </revisionlist>
