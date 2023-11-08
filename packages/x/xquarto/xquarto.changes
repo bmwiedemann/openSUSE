@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:17:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Feb  8 17:46:27 CET 2017 - kukuk@suse.de
 
 - Move from /usr/games to /usr/bin (as done for the rest 4 years ago)

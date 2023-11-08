@@ -1,7 +1,7 @@
 #
 # spec file for package xquarto
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           xquarto
 Version:        2.5
 Release:        0
 Summary:        Xquarto is a board game designed for the X windows environment
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-Url:            ftp://ftp.ac-grenoble.fr/ge/educational_games/
+URL:            ftp://ftp.ac-grenoble.fr/ge/educational_games/
 Source:         ftp://ftp.ac-grenoble.fr/ge/educational_games/%name-%version.tar.bz2
-Patch:          xquarto-2.5-imake_font.patch
+Patch0:         xquarto-2.5-imake_font.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  imake
 BuildRequires:  pkgconfig(x11)
@@ -60,7 +60,7 @@ more details).
 
 %prep
 %setup
-%patch
+%patch0
 
 %build
 xmkmf -a
