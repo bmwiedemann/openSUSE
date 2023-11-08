@@ -1,3 +1,17 @@
+Libbytesize 2.10
+----------------
+
+Alexandre Detiste (1):
+
+- remove dependency on python3-six and python2 crumbs
+
+Vojtech Trefny (4):
+
+- dist: Fix release number in spec
+- Squashed 'translation-canary/' changes from 4d4e65b..5bb8125
+- ci: Bump actions/checkout from v3 to v4
+- Rename 'master' branch to 'main'
+
 Libbytesize 2.9
 ---------------
 

@@ -19,7 +19,7 @@
 %define soversion 1
 
 Name:           libbytesize
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        A library for working with sizes in bytes
 License:        LGPL-2.1-only
@@ -75,7 +75,6 @@ with the LibBytesize library.
 Summary:        Python 3 bindings for LibBytesize
 Group:          Development/Libraries/Python
 Requires:       libbytesize%{soversion} = %{version}
-Requires:       python3-six
 
 %description -n python3-bytesize
 This package contains Python 3 bindings for LibBytesize making the use of

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  1 20:25:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.10
+  * remove dependency on python3-six
+
+-------------------------------------------------------------------
 Sat Sep 23 01:07:32 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Rename python3-libbytesize sub-package to python3-bytesize. This
