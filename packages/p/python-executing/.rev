@@ -49,4 +49,35 @@
     <comment></comment>
     <requestid>1081931</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>38ef96850b56ab55c69b24ce11647aed</srcmd5>
+    <version>2.0.1</version>
+    <time>1699478228</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.1:
+  * fix: self.fail() is only available in TestCase classes
+  * fix: mark expressions which can be evaluated at compile time
+    as deadcode
+  * fix: implemented DELETE_DEREF
+  * feat: 3.12 support for the PositionNodeFinder
+  * feat: support LOAD_CONST
+  * test: verify exception generation for asserts &gt;= python 3.11.2
+  * test: skip test of module_files for the SentinelNodeFinder
+  * test: do not check qualnames for files with syntax errors
+  * fix: handle List/Set/DictComp inlining
+  * fix: handle super optimization
+  * fix: type parameter related things
+  * fix: f-string
+  * fix: disabled type checking for 3.12
+  * test: added test results for 3.12
+  * fix: workaround for a bug in six
+  * remove python2 code
+  * feat: support for __iter__
+  * feat: support for __next__
+
+      Clear caches when modules are reloaded
+- Update to 0.9.0
+  * handle new iphython cell code names</comment>
+    <requestid>1124080</requestid>
+  </revision>
 </revisionlist>

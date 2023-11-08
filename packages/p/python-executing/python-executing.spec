@@ -16,31 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-executing
-Version:        1.2.0
+Version:        2.0.1
 Release:        0
-License:        MIT
 Summary:        Get the currently executing AST node of a frame, and other information
-URL:            https://github.com/alexmojaki/executing
+License:        MIT
 Group:          Development/Languages/Python
-#Source:         https://github.com/alexmojaki/executing/archive/v%%{version}/%%{name}-%%{version}.tar.gz
+URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
 BuildRequires:  %{python_module asttokens}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module littleutils}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 4.0.0}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -50,10 +45,10 @@ Get the currently executing AST node of a frame, and other information
 %setup -q -n executing-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +57,7 @@ Get the currently executing AST node of a frame, and other information
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/executing
+%{python_sitelib}/executing-%{version}*-info
 
 %changelog

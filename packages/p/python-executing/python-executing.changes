@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov  7 18:46:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * fix: self.fail() is only available in TestCase classes
+  * fix: mark expressions which can be evaluated at compile time
+    as deadcode
+  * fix: implemented DELETE_DEREF
+  * feat: 3.12 support for the PositionNodeFinder
+  * feat: support LOAD_CONST
+  * test: verify exception generation for asserts >= python 3.11.2
+  * test: skip test of module_files for the SentinelNodeFinder
+  * test: do not check qualnames for files with syntax errors
+  * fix: handle List/Set/DictComp inlining
+  * fix: handle super optimization
+  * fix: type parameter related things
+  * fix: f-string
+  * fix: disabled type checking for 3.12
+  * test: added test results for 3.12
+  * fix: workaround for a bug in six
+  * remove python2 code
+  * feat: support for __iter__
+  * feat: support for __next__
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -27,13 +51,13 @@ Fri Dec  2 17:32:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.10.0
   Merge pull request #45 from alexmojaki/reload
-      Clear caches when modules are reloaded  
+      Clear caches when modules are reloaded
 
 - Update to 0.9.1
   Merge pull request #41 from alexmojaki/node_linenos
       Extract node_linenos to account for end_lineno and use in assert_linenos
 
-- Update to 0.9.0 
+- Update to 0.9.0
   * Merge pull request #38 from alexmojaki/pwwang/master
       Support STORE_ATTR and STORE_SUBSCR
 
@@ -41,7 +65,7 @@ Fri Dec  2 17:32:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 Sun Mar 27 10:48:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.3:
-  * handle new iphython cell code names 
+  * handle new iphython cell code names
   * link to futurecoder
 
 -------------------------------------------------------------------
