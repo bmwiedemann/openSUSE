@@ -1,7 +1,7 @@
 #
 # spec file for package linode-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ URL:            https://github.com/linode/linode-cli
 Source:         https://github.com/linode/linode-cli/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        openapi.yaml
 # PATCH-FIX-OPENSUSE 0001-Remove-shebang-from-non-executable-files.patch
-Patch:          0001-Remove-shebang-from-non-executable-files.patch
+Patch0:         0001-Remove-shebang-from-non-executable-files.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
