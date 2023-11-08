@@ -271,4 +271,41 @@
 </comment>
     <requestid>1119161</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>47561dcd38cd5572d77a46ec92f89a94</srcmd5>
+    <version>0.104.1</version>
+    <time>1699478209</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.104.1:
+  * Pin Swagger UI version to 5.9.0 temporarily to handle a bug
+    crashing it in 5.9.1.
+  * Update data structure and render for external-links.
+  * Fix link to SPDX license identifier in
+    `docs/en/docs/tutorial/metadata.md`.
+  * Update example validation error from Pydantic v1 to match
+    Pydantic v2 in `docs/en/docs/tutorial/path-params.md`.
+  * Fix typos in emoji docs and in some source examples.
+  * Fix typo in `docs/en/docs/reference/dependencies.md`.
+  * Fix typos and rewordings in `docs/en/docs/tutorial/body-
+    nested-models.md`.
+  * Update docs, remove references to removed
+    `pydantic.Required` in `docs/en/docs/tutorial/query-params-
+    str-validations.md`.
+  * Fix typo in `docs/en/docs/reference/index.md`.
+  * Update Pydantic links to dotenv support.
+  * Update links in `docs/en/docs/async.md` and
+    `docs/zh/docs/async.md` to make them relative.
+  * Fix links in `docs/em/docs/async.md`.
+  * Fix typo in `docs/em/docs/index.md`
+
+    with custom docstrings for BackgroundTasks, refactor docs structure.
+ * dd support for openapi_examples in all FastAPI parameters.
+- update to 0.97.0:
+    - Add exception handler for WebSocketRequestValidationError
+    - Upgrade and fully migrate to Ruff, remove isort, includes a
+    - Update internal type annotations and upgrade mypy.
+    - Simplify AsyncExitStackMiddleware as without Python 3.6
+- Update to version 0.96.0:</comment>
+    <requestid>1124010</requestid>
+  </revision>
 </revisionlist>

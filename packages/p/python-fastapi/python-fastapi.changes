@@ -1,9 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov  7 14:13:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.104.1:
+  * Pin Swagger UI version to 5.9.0 temporarily to handle a bug
+    crashing it in 5.9.1.
+  * Update data structure and render for external-links.
+  * Fix link to SPDX license identifier in
+    `docs/en/docs/tutorial/metadata.md`.
+  * Update example validation error from Pydantic v1 to match
+    Pydantic v2 in `docs/en/docs/tutorial/path-params.md`.
+  * Fix typos in emoji docs and in some source examples.
+  * Fix typo in `docs/en/docs/reference/dependencies.md`.
+  * Fix typos and rewordings in `docs/en/docs/tutorial/body-
+    nested-models.md`.
+  * Update docs, remove references to removed
+    `pydantic.Required` in `docs/en/docs/tutorial/query-params-
+    str-validations.md`.
+  * Fix typo in `docs/en/docs/reference/index.md`.
+  * Update Pydantic links to dotenv support.
+  * Update links in `docs/en/docs/async.md` and
+    `docs/zh/docs/async.md` to make them relative.
+  * Fix links in `docs/em/docs/async.md`.
+  * Fix typo in `docs/em/docs/index.md`
+
+-------------------------------------------------------------------
 Thu Oct 19 11:21:33 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.104.0
  * Add reference (code API) docs with PEP 727, add subclass
-    with custom docstrings for BackgroundTasks, refactor docs structure. 
+    with custom docstrings for BackgroundTasks, refactor docs structure.
 - disable test_dependency_gets_exception -> https://github.com/tiangolo/fastapi/discussions/9934
 
 -------------------------------------------------------------------
@@ -16,7 +41,7 @@ Sun Oct  1 15:35:20 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 Tue Sep 26 07:23:15 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.103.1
- * dd support for openapi_examples in all FastAPI parameters. 
+ * dd support for openapi_examples in all FastAPI parameters.
  * Refactor tests for new Pydantic 2.2.1
  * Add ResponseValidationError printable details, to show up in server error logs.
  * Replace MultHostUrl to AnyUrl for compatibility with older versions of Pydantic v1.
@@ -57,16 +82,16 @@ Sun Jun 25 17:54:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Jun 20 10:11:51 UTC 2023 - David Anes <david.anes@suse.com>
 
-- update to 0.97.0: 
+- update to 0.97.0:
   * Features
     - Add support for dependencies in WebSocket routes.
-    - Add exception handler for WebSocketRequestValidationError 
+    - Add exception handler for WebSocketRequestValidationError
       (which also allows to override it).
   * Refactors
-    - Upgrade and fully migrate to Ruff, remove isort, includes a 
+    - Upgrade and fully migrate to Ruff, remove isort, includes a
       couple of tweaks suggested by the new version of Ruff.
-    - Update internal type annotations and upgrade mypy. 
-    - Simplify AsyncExitStackMiddleware as without Python 3.6 
+    - Update internal type annotations and upgrade mypy.
+    - Simplify AsyncExitStackMiddleware as without Python 3.6
       AsyncExitStack is always available.
   * Upgrades
     - Upgrade Black.
@@ -82,13 +107,13 @@ Sun Jun 11 11:52:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jun  5 13:26:32 UTC 2023 - David Anes <david.anes@suse.com>
 
-- Update to version 0.96.0: 
+- Update to version 0.96.0:
   * Features
     - Update create_cloned_field to use a global cache and improve
       startup performance.
 
   * Docs
-    - Update Deta deployment tutorial for compatibility with Deta 
+    - Update Deta deployment tutorial for compatibility with Deta
       Space.
     - Fix typo in Deta deployment tutorial.
 
@@ -117,16 +142,16 @@ Wed May 17 07:38:30 UTC 2023 - David Anes <david.anes@suse.com>
   * Add setup for translations to Lao
   * Add Russian translation for docs/ru/docs/tutorial/testing.md
   * Add Russian translation for docs/ru/docs/deployment/https.md
-  * Fix command to install requirements in Windows. 
+  * Fix command to install requirements in Windows.
   * Add French translation for docs/fr/docs/advanced/response-directly.m*.
-  * Initiate Czech translation setup. 
+  * Initiate Czech translation setup.
   * Fix typo in Portuguese docs for docs/pt/docs/index.md
   * Add Russian translation for docs/ru/docs/tutorial/response-status-co*.md
- 
+
 -------------------------------------------------------------------
 Sat May  6 15:45:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- test against sqlalchemy 1.x 
+- test against sqlalchemy 1.x
 
 -------------------------------------------------------------------
 Fri Apr 14 04:20:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
@@ -135,7 +160,7 @@ Fri Apr 14 04:20:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix using Annotated in routers or path operations decorated multiple
     times.
 - Add patch remove-classifiers.patch:
-  * Remove unknown classifiers. 
+  * Remove unknown classifiers.
 
 -------------------------------------------------------------------
 Mon Mar 20 11:52:11 UTC 2023 - David Anes <david.anes@suse.com>
@@ -144,17 +169,17 @@ Mon Mar 20 11:52:11 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.95.0:
   * Highlights
-    - This release adds support for dependencies and parameters 
-      using Annotated and recommends its usage. 
+    - This release adds support for dependencies and parameters
+      using Annotated and recommends its usage.
   * Features
-    - Add support for PEP-593 Annotated for specifying dependencies 
+    - Add support for PEP-593 Annotated for specifying dependencies
       and parameters. PR #4871 by @nzig.
   * Docs
-    - Tweak tip recommending Annotated in docs. 
+    - Tweak tip recommending Annotated in docs.
       PR #9270 by @tiangolo.
-    - Update order of examples, latest Python version first, and 
+    - Update order of examples, latest Python version first, and
       simplify version tab names. PR #9269 by @tiangolo.
-    - Update all docs to use Annotated as the main recommendation, 
+    - Update all docs to use Annotated as the main recommendation,
       with new examples and tests. PR #9268 by @tiangolo.
 
 -------------------------------------------------------------------
@@ -162,28 +187,28 @@ Tue Mar 14 09:28:08 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.94.1:
   * Fixes:
-    - Fix types for lifespan, upgrade Starlette to 0.26.1. 
+    - Fix types for lifespan, upgrade Starlette to 0.26.1.
       PR #9245 by @tiangolo.
 
-- Update to 0.94.0: 
+- Update to 0.94.0:
   * Upgrades
-    - Upgrade python-multipart to support 0.0.6. 
+    - Upgrade python-multipart to support 0.0.6.
       PR #9212 by @musicinmybrain.
-    - Upgrade Starlette version, support new lifespan with state. 
+    - Upgrade Starlette version, support new lifespan with state.
       PR #9239 by @tiangolo.
   * Docs
     - Update Sentry link in docs. PR #9218 by @smeubank.
   * Translations
-    - Add Russian translation for docs/ru/docs/history-design-future.md. 
+    - Add Russian translation for docs/ru/docs/history-design-future.md.
       PR #5986 by @Xewus.
   * Internal
     - Add pydantic to PyPI classifiers. PR #5914 by @yezz123.
     - Bump black from 22.10.0 to 23.1.0. PR #5953 by @dependabot[bot].
-    - Bump types-ujson from 5.6.0.0 to 5.7.0.1. 
+    - Bump types-ujson from 5.6.0.0 to 5.7.0.1.
       PR #6027 by @dependabot[bot].
-    - Bump dawidd6/action-download-artifact from 2.24.3 to 2.26.0. 
+    - Bump dawidd6/action-download-artifact from 2.24.3 to 2.26.0.
       PR #6034 by @dependabot[bot].
-    - [pre-commit.ci] pre-commit autoupdate. 
+    - [pre-commit.ci] pre-commit autoupdate.
       PR #5709 by @pre-commit-ci[bot].
 
 -------------------------------------------------------------------
@@ -191,19 +216,19 @@ Fri Mar 10 11:38:38 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.93.0:
   * Features
-    - Add support for lifespan async context managers (superseding 
+    - Add support for lifespan async context managers (superseding
       startup and shutdown events). Initial PR #2944 by @uSpike.
   * Docs
-    - Fix formatting in docs/en/docs/tutorial/metadata.md for ReDoc. 
+    - Fix formatting in docs/en/docs/tutorial/metadata.md for ReDoc.
       PR #6005 by @eykamp.
   * Translations
     - Tamil translations - initial setup. PR #5564 by @gusty1g.
-    - Add French translation for docs/fr/docs/advanced/path-operation-advanced-configuration.md. 
+    - Add French translation for docs/fr/docs/advanced/path-operation-advanced-configuration.md.
       PR #9221 by @axel584.
-    - Add French translation for docs/tutorial/debugging.md. 
+    - Add French translation for docs/tutorial/debugging.md.
       PR #9175 by @frabc.
     - Initiate Armenian translation setup. PR #5844 by @har8.
-    - Add French translation for deployment/manually.md. 
+    - Add French translation for deployment/manually.md.
       PR #3693 by @rjNemo.
   * Internal
     - Update translation bot messages. PR #9206 by @tiangolo.
@@ -213,12 +238,12 @@ Fri Mar 10 11:38:38 UTC 2023 - David Anes <david.anes@suse.com>
     - Update FastAPI People. PR #9181 by @github-actions[bot].
     - Log GraphQL errors in FastAPI People, because it returns 200,
       with a payload with an error. PR #9171 by @tiangolo.
-    - Fix/workaround GitHub Actions in Docker with git for FastAPI 
+    - Fix/workaround GitHub Actions in Docker with git for FastAPI
       People. PR #9169 by @tiangolo.
-    - Refactor FastAPI Experts to use only discussions now that 
+    - Refactor FastAPI Experts to use only discussions now that
       questions are migrated. PR #9165 by @tiangolo.
     - Upgrade analytics. PR #6025 by @tiangolo.
-    - Upgrade and re-enable installing Typer-CLI. 
+    - Upgrade and re-enable installing Typer-CLI.
       PR #6008 by @tiangolo.
 
 -------------------------------------------------------------------
@@ -227,10 +252,10 @@ Thu Feb 16 16:19:51 UTC 2023 - David Anes <david.anes@suse.com>
 - Update to 0.92.0:
   * Upgrades
     - Upgrade Starlette to 0.25.0. This solves a vulnerability that
-      could allow denial of service attacks by using many small 
+      could allow denial of service attacks by using many small
       multipart fields/files (parts), consuming high CPU and memory.
-      Only applications using forms (e.g. file uploads) could be 
-      affected. For most cases, upgrading won't have any breaking 
+      Only applications using forms (e.g. file uploads) could be
+      affected. For most cases, upgrading won't have any breaking
       changes.
 
 -------------------------------------------------------------------
@@ -239,14 +264,14 @@ Fri Feb 10 18:09:02 UTC 2023 - David Anes <david.anes@suse.com>
 - Update to 0.91.0:
   * Upgrades
     - Upgrade Starlette version to 0.24.0 and refactor internals for
-      compatibility. This can solve nuanced errors when using 
+      compatibility. This can solve nuanced errors when using
       middlewares. Before Starlette 0.24.0, a new instance of each
       middleware class would be created when a new middleware was
       added. That normally was not a problem, unless the middleware
-      class expected to be created only once, with only one 
-      instance, that happened in some cases. This upgrade would 
-      solve those cases. Now the middleware class instances are 
-      created once, right before the first request (the first time 
+      class expected to be created only once, with only one
+      instance, that happened in some cases. This upgrade would
+      solve those cases. Now the middleware class instances are
+      created once, right before the first request (the first time
       the app is called). If you depended on that previous behavior,
       you might need to update your code. As always, make sure your
       tests pass before merging the upgrade.
@@ -257,7 +282,7 @@ Fri Feb 10 18:09:02 UTC 2023 - David Anes <david.anes@suse.com>
   * Docs
     - Tweak wording to clarify docs/en/docs/project-generation.md.
     - Update Pydantic GitHub URLs.
-    - Add opinion from Cisco. 
+    - Add opinion from Cisco.
   * Translations
     - Add Russian translation for docs/ru/docs/tutorial/cookie-params.md
 
@@ -265,8 +290,8 @@ Fri Feb 10 18:09:02 UTC 2023 - David Anes <david.anes@suse.com>
   * Upgrades
     - Bump Starlette from 0.22.0 to 0.23.0.
   * Docs
-    - Add article "Tortoise ORM / FastAPI 整合快速筆記" to External 
-      Links. 
+    - Add article "Tortoise ORM / FastAPI 整合快速筆記" to External
+      Links.
     - Update FastAPI People.
     - Micro-tweak help docs.
     - Update new issue chooser to direct to GitHub Discussions.
@@ -291,16 +316,16 @@ Thu Jan 12 09:52:02 UTC 2023 - David Anes <david.anes@suse.com>
   * Fixes
     - Ignore Response classes on return annotation.
   * Docs
-    - Update docs and examples for Response Model with Return Type 
-      Annotations, and update runtime error. 
-    - New docs at Response Model - Return Type: Other Return Type 
+    - Update docs and examples for Response Model with Return Type
+      Annotations, and update runtime error.
+    - New docs at Response Model - Return Type: Other Return Type
       Annotations.
-    - Add External Link: FastAPI lambda container: serverless 
+    - Add External Link: FastAPI lambda container: serverless
       simplified.
   * Translations
     - Add Turkish translation for docs/tr/docs/tutorial/first_steps.md.
 
-- Update to 0.89.0: 
+- Update to 0.89.0:
   * Features
     - Add support for function return type annotations to declare the response_model.
   * Docs
@@ -358,31 +383,31 @@ Mon Nov 14 09:12:12 UTC 2022 - David Anes <david.anes@suse.com>
   * Docs
     - Fix typo in docs for docs/en/docs/advanced/middleware.md.
   * Translations
-    - Add Portuguese translation for 
+    - Add Portuguese translation for
       docs/pt/docs/deployment/docker.md.
 
 - Update to 0.87.0
   * Highlights of this release:
     - Upgraded Starlette
       + Now the TestClient is based on HTTPX instead of Requests.
-      + There are some possible breaking changes in the TestClient 
-        usage, but @Kludex built bump-testclient to help you 
+      + There are some possible breaking changes in the TestClient
+        usage, but @Kludex built bump-testclient to help you
         automatize migrating your tests. Make sure you are using Git
-        and that you can undo any unnecessary changes (false 
+        and that you can undo any unnecessary changes (false
         positive changes, etc) before using bump-testclient.
     - New WebSocketException (and docs), re-exported from Starlette.
-    - Upgraded and relaxed dependencies for package extras all 
-      (including new Uvicorn version), when you install 
+    - Upgraded and relaxed dependencies for package extras all
+      (including new Uvicorn version), when you install
       "fastapi[all]".
     - New docs about how to Help Maintain FastAPI.
 
   * Features:
     - Upgrade and relax dependencies for extras "all".
-    - Re-export Starlette's WebSocketException and add it 
+    - Re-export Starlette's WebSocketException and add it
       to docs.
     - Update references to Requests for tests to HTTPX, and add
       HTTPX to extras.
-    - Upgrade Starlette to 0.21.0, including the new 
+    - Upgrade Starlette to 0.21.0, including the new
       TestClient based on HTTPX. PR #5471 by @pawelrubin.
 
   * Docs:
@@ -391,13 +416,13 @@ Mon Nov 14 09:12:12 UTC 2022 - David Anes <david.anes@suse.com>
     - Update Help FastAPI: Help Maintain FastAPI.
 
   * Translations:
-    - Fix highlight lines for Japanese 
-      translation for docs/tutorial/query-params.md. 
-    - Add French translation for 
+    - Fix highlight lines for Japanese
+      translation for docs/tutorial/query-params.md.
+    - Add French translation for
       docs/fr/docs/advanced/additional-status-code.md.
-    - Add Portuguese translation for 
+    - Add Portuguese translation for
       docs/pt/docs/tutorial/request-forms-and-files.md.
-    - Add Japanese translation for 
+    - Add Japanese translation for
       docs/ja/docs/advanced/websockets.md.
 
   * Internal:
@@ -418,17 +443,17 @@ Fri Nov  4 11:06:39 UTC 2022 - Michael Ströder <michael@stroeder.com>
     - Close FormData (uploaded files) after the request is done. PR #5465
   * Docs:
     - Fix typo in docs/en/docs/tutorial/security/oauth2-jwt.md. PR #5584
-    
+
 -------------------------------------------------------------------
 Wed Nov  2 10:35:31 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 0.85.2
   * Docs:
     - Fix grammar and add helpful links to dependencies in docs/en/docs/async.md.
-    - Fix broken link in alternatives.md. 
-    - Fix typo in docs about contributing, for compatibility with pip in Zsh. 
+    - Fix broken link in alternatives.md.
+    - Fix typo in docs about contributing, for compatibility with pip in Zsh.
     - Fix typo in docs with examples for Python 3.10 instead of 3.9.
-  
+
   * Translations:
     - Add Portuguese translation for docs/pt/docs/tutorial/request-forms.md.
     - Add Chinese translation for docs/zh/docs/tutorial/dependencies/classes-as-dependencies.md.
@@ -448,7 +473,7 @@ Wed Nov  2 10:35:31 UTC 2022 - David Anes <david.anes@suse.com>
 Mon Oct 31 08:45:35 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 0.85.1
-  * Fix support for strings in OpenAPI status codes: default, 1XX, 
+  * Fix support for strings in OpenAPI status codes: default, 1XX,
     2XX, 3XX, 4XX, 5XX.
   * Docs: Add WayScript x FastAPI Tutorial to External Links section
 
@@ -473,12 +498,12 @@ Thu Sep 15 14:24:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
     - Fix RuntimeError raised when HTTPException has a status code with no content. PR #5365 by @iudeen.
     - Fix empty reponse body when default status_code is empty but the a Response parameter with response.status_code is set. PR #5360 by @tmeckel.
   * Docs
-    - Update SECURITY.md. PR #5377 
+    - Update SECURITY.md. PR #5377
 
 -------------------------------------------------------------------
 Thu Sep  8 07:30:26 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use email-validator package instead of email_validator. 
+- Use email-validator package instead of email_validator.
 
 -------------------------------------------------------------------
 Sun Sep  4 20:34:02 UTC 2022 - Michael Ströder <michael@stroeder.com>
@@ -500,7 +525,7 @@ Sun Sep  4 20:34:02 UTC 2022 - Michael Ströder <michael@stroeder.com>
   * Docs
     - Update Hypercorn link, now pointing to GitHub. PR #5346
     - Tweak wording in docs/en/docs/advanced/dataclasses.md. PR #3698
-    - Add note about Python 3.10 X | Y operator in explanation about 
+    - Add note about Python 3.10 X | Y operator in explanation about
       Response Models. PR #5307
     - Add link to New Relic article: "How to monitor FastAPI application
       performance using Python agent". PR #5260
@@ -539,7 +564,7 @@ Tue Aug 23 15:37:25 UTC 2022 - Michael Ströder <michael@stroeder.com>
       fixes for flavors of authorization code flows in Swagger UI. PR #3439
     - Strip empty whitespace from description extracted from
       docstrings. PR #2821
-    - Fix cached dependencies when using a dependency in Security() and 
+    - Fix cached dependencies when using a dependency in Security() and
       other places (e.g. Depends()) with different OAuth2 scopes. PR #2945
     - Update type annotations for response_model, allow things like
       Union[str, None]. PR #5294
