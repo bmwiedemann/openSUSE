@@ -152,4 +152,31 @@
     <comment></comment>
     <requestid>1082446</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>60676ed5d6e33c655b02dd0a5ed31d80</srcmd5>
+    <version>1.3.0</version>
+    <time>1699478194</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * Python 3.7 is no longer supported.
+  * Pluggy now exposes its typings to static type checkers.
+  * Some fields and classes are marked ``Final`` and ``@final``.
+  * The :ref:`api-reference` is updated to clearly delineate
+    pluggy's public API.
+    Compatibility aliases are put in place for the renamed types.
+    Please note that pluggy is currently unable to provide strong
+    typing for hook calls, e.g. ``pm.hook.my_hook(...)``,
+    nor to statically check that a hook implementation matches
+    the hook specification's type.
+  * The new-style hook wrappers, added in the yanked 1.1.0
+    release, now require an explicit ``wrapper=True`` designation
+    in the ``@hookimpl()`` decorator.
+
+  Deprecations and Removals
+    The deprecation was announced in release 0.7.0.
+    deprecation was announced in release 0.7.0.
+    deprecation was announced in release 0.6.0.
+  * fix issue #4: specific HookCallError exception for when a hook call</comment>
+    <requestid>1124102</requestid>
+  </revision>
 </revisionlist>

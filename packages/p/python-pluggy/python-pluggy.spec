@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pluggy%{psuffix}
-Version:        1.0.0
+Version:        1.3.0
 Release:        0
 Summary:        A minimalist production ready plugin system
 License:        MIT
@@ -45,7 +45,8 @@ Requires:       python-importlib-metadata >= 0.12
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module importlib-metadata >= 0.12 if %python-base < 3.8}
-BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module pluggy = %{version}}
+BuildRequires:  %{python_module pytest >= 7.3.0}
 %endif
 %python_subpackages
 

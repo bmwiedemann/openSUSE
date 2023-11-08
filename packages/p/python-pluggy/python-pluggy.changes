@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  7 20:23:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Python 3.7 is no longer supported.
+  * Pluggy now exposes its typings to static type checkers.
+  * Some fields and classes are marked ``Final`` and ``@final``.
+  * The :ref:`api-reference` is updated to clearly delineate
+    pluggy's public API.
+    Compatibility aliases are put in place for the renamed types.
+    Please note that pluggy is currently unable to provide strong
+    typing for hook calls, e.g. ``pm.hook.my_hook(...)``,
+    nor to statically check that a hook implementation matches
+    the hook specification's type.
+  * The new-style hook wrappers, added in the yanked 1.1.0
+    release, now require an explicit ``wrapper=True`` designation
+    in the ``@hookimpl()`` decorator.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -12,17 +30,17 @@ Thu Apr 13 22:43:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Sun Oct 17 12:12:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.0.0
-  Deprecations and Removals 
+  Deprecations and Removals
   * #116: Remove deprecated implprefix support. Decorate hook
     implementations using an instance of HookimplMarker instead.
-    The deprecation was announced in release 0.7.0.  
+    The deprecation was announced in release 0.7.0.
   * #120: Remove the deprecated proc argument to call_historic. Use
     result_callback instead, which has the same behavior. The
-    deprecation was announced in release 0.7.0.  
+    deprecation was announced in release 0.7.0.
   * #265: Remove the _Result.result property. Use
     _Result.get_result() instead. Note that unlike result,
     get_result() raises the exception if the hook raised. The
-    deprecation was announced in release 0.6.0.  
+    deprecation was announced in release 0.6.0.
   * #267: Remove official support for Python 3.4.
   * #272: Dropped support for Python 2. Continue to use pluggy
     0.13.x for Python 2 support.
@@ -200,7 +218,7 @@ Fri Apr  7 15:09:41 UTC 2017 - jmatejek@suse.com
   * add has_plugin(name) method to pluginmanager.  thanks Bruno Oliveira.
   * fix issue11: make plugin parsing more resilient against exceptions
     from __getattr__ functions. Thanks Bruno Oliveira.
-  * fix issue #4: specific HookCallError exception for when a hook call 
+  * fix issue #4: specific HookCallError exception for when a hook call
     provides not enough arguments.
   * better error message when loading setuptools entrypoints fails
     due to a VersionConflict.  Thanks Daniel Hahler.
