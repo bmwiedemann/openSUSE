@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-cmpi-devel
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sblim-cmpi-devel
 Version:        2.0.3
 Release:        0
-Url:            http://sblim.sf.net/
+URL:            http://sblim.sf.net/
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -28,9 +28,9 @@ Conflicts:      tog-pegasus < 2.11
 Source0:        http://prdownloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
 Source1:        Doxyfile
 %if 0%{?mandriva_version}
-Patch:          mandriva-docdir.patch
+Patch0:         mandriva-docdir.patch
 %else
-Patch:          opensuse-docdir.patch
+Patch0:         opensuse-docdir.patch
 %endif
 Patch1:         old-gcc.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -44,8 +44,6 @@ provider developers and can be used standalone. If used for C++
 provider development it is also necessary to have tog-pegasus-devel
 installed.
 
-
-
 %package -n sblim-cmpi-c++-devel
 Summary:        SBLIM CMPI Provider Development Support
 Group:          Development/Libraries/C and C++
@@ -58,8 +56,6 @@ This packages provides the C and C++ CMPI header files needed by
 provider developers and can be used standalone. If used for C++
 provider development it is also necessary to have tog-pegasus-devel
 installed.
-
-
 
 %package -n libcmpiCppImpl0
 Summary:        SBLIM CMPI Provider Development Support
@@ -83,7 +79,7 @@ installed.
 %setup -T -b 0 -n %{name}-%{version}
 %if 0%{?suse_version} || 0%{?mandriva_version}
 # adapt docdir
-%patch
+%patch0
 %endif
 %patch1 -p1
 
@@ -104,7 +100,7 @@ mkdir -p $RPM_BUILD_ROOT/%{cmpi_docdir}
 cp -r autodocs/ $RPM_BUILD_ROOT/%{cmpi_docdir}
 
 %clean
-rm -rf $RPM_BUILD_ROOT 
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
