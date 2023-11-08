@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 29 16:08:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lucid to version 2.11.20230408 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Apr  8 12:47:40 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update lucid to version 2.11.20230408.
