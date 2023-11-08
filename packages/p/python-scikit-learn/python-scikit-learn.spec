@@ -44,7 +44,7 @@
 %bcond_with pytestcolor
 %{?sle15_python_module_pythons}
 Name:           python-scikit-learn%{psuffix}
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause

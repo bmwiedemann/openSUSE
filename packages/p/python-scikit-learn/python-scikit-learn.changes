@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  7 20:38:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * All dataset fetchers now accept `data_home` as any object that
+    implements the :class:`os.PathLike` interface, for instance,
+    :class:`pathlib.Path`.
+  * Fixes a bug in :class:`decomposition.KernelPCA` by forcing the
+    output of the internal :class:`preprocessing.KernelCenterer` to
+    be a default array. When the arpack solver is used, it expects
+    an array with a `dtype` attribute.
+  * Fixes a bug for metrics using `zero_division=np.nan`
+    (e.g. :func:`~metrics.precision_score`) within a paralell loop
+    (e.g. :func:`~model_selection.cross_val_score`) where the
+    singleton for `np.nan` will be different in the sub-processes.
+  * Do not leak data via non-initialized memory in decision tree
+    pickle files and make the generation of those files
+    deterministic.
+  * Ridge models with `solver='sparse_cg'` may have slightly
+    different results with scipy>=1.12, because of an underlying
+    change in the scipy solver
+  * The `set_output` API correctly works with list input.
+  * :class:`calibration.CalibratedClassifierCV` can now handle
+    models that produce large prediction scores.
+
+-------------------------------------------------------------------
 Wed Aug  9 01:43:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip another recalcitrant test on 32 bit. 
+- Skip another recalcitrant test on 32 bit.
 
 -------------------------------------------------------------------
 Tue Aug  1 14:07:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
@@ -12,23 +37,23 @@ Tue Aug  1 14:07:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
 Tue Jul 25 08:39:12 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.3.0
-  * We are in the process of introducing a new way to route metadata 
-    such as sample_weight throughout the codebase, which would 
-    affect how meta-estimators such as pipeline.Pipeline and 
+  * We are in the process of introducing a new way to route metadata
+    such as sample_weight throughout the codebase, which would
+    affect how meta-estimators such as pipeline.Pipeline and
     model_selection.GridSearchCV route metadata.
-  * Originally hosted in the scikit-learn-contrib repository, 
+  * Originally hosted in the scikit-learn-contrib repository,
     cluster.HDBSCAN has been adopted into scikit-learn.
-  * A new category encoding strategy preprocessing.TargetEncoder 
-    encodes the categories based on a shrunk estimate of the average 
+  * A new category encoding strategy preprocessing.TargetEncoder
+    encodes the categories based on a shrunk estimate of the average
     target values for observations belonging to that category.
-  * The classes tree.DecisionTreeClassifier and tree.DecisionTreeRegressor 
+  * The classes tree.DecisionTreeClassifier and tree.DecisionTreeRegressor
     now support missing values.
-  * model_selection.ValidationCurveDisplay is now available to plot 
+  * model_selection.ValidationCurveDisplay is now available to plot
     results from model_selection.validation_curve
-  * The class ensemble.HistGradientBoostingRegressor supports the 
+  * The class ensemble.HistGradientBoostingRegressor supports the
     Gamma deviance loss function via loss="gamma".
-  * Similarly to preprocessing.OneHotEncoder, the class preprocessing.OrdinalEncoder 
-    now supports aggregating infrequent categories into a single 
+  * Similarly to preprocessing.OneHotEncoder, the class preprocessing.OrdinalEncoder
+    now supports aggregating infrequent categories into a single
     output for each feature.
   * More changes, see https://scikit-learn.org/stable/whats_new/v1.3.html
 
@@ -282,12 +307,12 @@ long changelog, see https://scikit-learn.org/stable/whats_new/v1.1.html#version-
 Mon May 30 10:40:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Split up to using multibuild per Python version since the test suite
-  may take a while. 
+  may take a while.
 
 -------------------------------------------------------------------
 Wed Feb  2 02:07:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 1.0.2: 
+- Update to 1.0.2:
   * Fixed an infinite loop in cluster.SpectralClustering by moving an iteration counter from try to except. #21271 by Tyler Martin.
   * datasets.fetch_openml is now thread safe. Data is first downloaded to a temporary subfolder and then renamed. #21833 by Siavash Rezazadeh.
   * Fixed the constraint on the objective function of decomposition.DictionaryLearning, decomposition.MiniBatchDictionaryLearning, decomposition.SparsePCA and decomposition.MiniBatchSparsePCA to be convex and match the referenced article. #19210 by Jérémie du Boisberranger.
@@ -326,7 +351,7 @@ Sun Jun  6 13:27:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Sat Feb 13 19:10:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add scikit-learn-pr19101-npfloat.patch in order to work with
-  NumPy 1.20 
+  NumPy 1.20
 
 -------------------------------------------------------------------
 Fri Jan 22 18:54:07 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
@@ -338,130 +363,130 @@ Fri Jan 22 18:54:07 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Jan 22 08:11:53 UTC 2021 - andy great <andythe_great@pm.me>
 
-- Skip test_convergence_dtype_consistency on 32 bit arch due to 
+- Skip test_convergence_dtype_consistency on 32 bit arch due to
   precision-related errors on 32 bit arch.
   https://github.com/scikit-learn/scikit-learn/issues/19230
 - Remove explicit dependecy python-matplotlib
-  
+
 -------------------------------------------------------------------
 Wed Jan 20 19:43:33 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Remove assert_allclose-for-FP-comparison.patch, fixed.
 - Update to version 0.24.1.
   * sklearn.metrics
-    * Fix numerical stability bug that could happen in 
+    * Fix numerical stability bug that could happen in
       metrics.adjusted_mutual_info_score and metrics.mutual_info_score
       with NumPy 1.20+.
   * sklearn.semi_supervised
-    * Fix semi_supervised.SelfTrainingClassifier is now accepting 
-      meta-estimator (e.g. ensemble.StackingClassifier). The 
+    * Fix semi_supervised.SelfTrainingClassifier is now accepting
+      meta-estimator (e.g. ensemble.StackingClassifier). The
       validation of this estimator is done on the fitted estimator,
-      once we know the existence of the method predict_proba. 
+      once we know the existence of the method predict_proba.
 - Updates for version 0.24.0.
   * sklearn.base
-    * Fix base.BaseEstimator.get_params now will raise an 
-      AttributeError if a parameter cannot be retrieved as an 
+    * Fix base.BaseEstimator.get_params now will raise an
+      AttributeError if a parameter cannot be retrieved as an
       instance attribute. Previously it would return None.
   * sklearn.calibration
     * Efficiency calibration.CalibratedClassifierCV.fit now supports
       parallelization via joblib.Parallel using argument n_jobs.
-    * Enhancement Allow calibration.CalibratedClassifierCV use with 
+    * Enhancement Allow calibration.CalibratedClassifierCV use with
       prefit pipeline.Pipeline where data is not X is not array-like,
       sparse matrix or dataframe at the start. #17546 by Lucy Liu.
-    * Enhancement Add ensemble parameter to 
-      calibration.CalibratedClassifierCV, which enables 
-      implementation of calibration via an ensemble of calibrators 
-      (current method) or just one calibrator using all the data 
+    * Enhancement Add ensemble parameter to
+      calibration.CalibratedClassifierCV, which enables
+      implementation of calibration via an ensemble of calibrators
+      (current method) or just one calibrator using all the data
       (similar to the built-in feature of sklearn.svm estimators with
       the probabilities=True parameter).
   * sklearn.cluster
-    * Enhancement cluster.AgglomerativeClustering has a new 
-      parameter compute_distances. When set to True, distances 
-      between clusters are computed and stored in the distances_ 
-      attribute even when the parameter distance_threshold is not 
-      used. This new parameter is useful to produce dendrogram 
-      visualizations, but introduces a computational and memory 
+    * Enhancement cluster.AgglomerativeClustering has a new
+      parameter compute_distances. When set to True, distances
+      between clusters are computed and stored in the distances_
+      attribute even when the parameter distance_threshold is not
+      used. This new parameter is useful to produce dendrogram
+      visualizations, but introduces a computational and memory
       overhead.
-    * Enhancement cluster.SpectralClustering and 
+    * Enhancement cluster.SpectralClustering and
       cluster.spectral_clustering have a new keyword argument verbose.
-      When set to True, additional messages will be displayed which 
+      When set to True, additional messages will be displayed which
       can aid with debugging. #18052 by Sean O. Stalley.
-    * Enhancement Added cluster.kmeans_plusplus as public function. 
-      Initialization by KMeans++ can now be called separately to 
+    * Enhancement Added cluster.kmeans_plusplus as public function.
+      Initialization by KMeans++ can now be called separately to
       generate initial cluster centroids.
-    * API Change cluster.MiniBatchKMeans attributes, counts_ and 
-      init_size_, are deprecated and will be removed in 1.1 
+    * API Change cluster.MiniBatchKMeans attributes, counts_ and
+      init_size_, are deprecated and will be removed in 1.1
       (renaming of 0.26).
   * sklearn.compose
-    * Fix compose.ColumnTransformer will skip transformers the 
+    * Fix compose.ColumnTransformer will skip transformers the
       column selector is a list of bools that are False.
-    * Fix compose.ColumnTransformer now displays the remainder in 
+    * Fix compose.ColumnTransformer now displays the remainder in
       the diagram display. #18167 by Thomas Fan.
     * Fix compose.ColumnTransformer enforces strict count and order
-      of column names between fit and transform by raising an error 
+      of column names between fit and transform by raising an error
       instead of a warning, following the deprecation cycle.
   * sklearn.covariance
-    * API Change Deprecates cv_alphas_ in favor of 
+    * API Change Deprecates cv_alphas_ in favor of
       cv_results_['alphas'] and grid_scores_ in favor of split scores
-      in cv_results_ in covariance.GraphicalLassoCV. cv_alphas_ and 
+      in cv_results_ in covariance.GraphicalLassoCV. cv_alphas_ and
       grid_scores_ will be removed in version 1.1 (renaming of 0.26).
   * sklearn.cross_decomposition
     * Fixed a bug in cross_decomposition.PLSSVD which would sometimes
       return components in the reversed order of importance.
-    * Fixed a bug in cross_decomposition.PLSSVD, 
+    * Fixed a bug in cross_decomposition.PLSSVD,
       cross_decomposition.CCA, and cross_decomposition.PLSCanonical,
-      which would lead to incorrect predictions for est.transform(Y) 
+      which would lead to incorrect predictions for est.transform(Y)
       when the training data is single-target.
     * Fix Increases the stability of cross_decomposition.CCA
     * API Change For cross_decomposition.NMF, the init value, when
-      ‘init=None’ and n_components <= min(n_samples, n_features) 
-      will be changed from 'nndsvd' to 'nndsvda' in 1.1 
+      ‘init=None’ and n_components <= min(n_samples, n_features)
+      will be changed from 'nndsvd' to 'nndsvda' in 1.1
       (renaming of 0.26).
-    * API Change The bounds of the n_components parameter is now 
+    * API Change The bounds of the n_components parameter is now
       restricted:
-      * into [1, min(n_samples, n_features, n_targets)], for 
-        cross_decomposition.PLSSVD, cross_decomposition.CCA, and 
+      * into [1, min(n_samples, n_features, n_targets)], for
+        cross_decomposition.PLSSVD, cross_decomposition.CCA, and
         cross_decomposition.PLSCanonical.
       * into [1, n_features] or cross_decomposition.PLSRegression.
     * An error will be raised in 1.1 (renaming of 0.26).
-    * API Change For cross_decomposition.PLSSVD, 
+    * API Change For cross_decomposition.PLSSVD,
       cross_decomposition.CCA, and cross_decomposition.PLSCanonical,
       the x_scores_ and y_scores_ attributes were deprecated and will
-      be removed in 1.1 (renaming of 0.26). They can be retrieved 
+      be removed in 1.1 (renaming of 0.26). They can be retrieved
       by calling transform on the training data. The norm_y_weights
       attribute will also be removed. #17095 by Nicolas Hug.
-    * API Change For cross_decomposition.PLSRegression, 
-      cross_decomposition.PLSCanonical, cross_decomposition.CCA, 
+    * API Change For cross_decomposition.PLSRegression,
+      cross_decomposition.PLSCanonical, cross_decomposition.CCA,
       and cross_decomposition.PLSSVD, the x_mean_, y_mean_, x_std_,
-      and y_std_ attributes were deprecated and will be removed in 
+      and y_std_ attributes were deprecated and will be removed in
       1.1 (renaming of 0.26).
     * Fix decomposition.TruncatedSVD becomes deterministic by using
-      the random_state. It controls the weights’ initialization of 
+      the random_state. It controls the weights’ initialization of
       the underlying ARPACK solver.
   * sklearn.datasets
-    * Feature datasets.fetch_openml now validates md5 checksum of 
-      arff files downloaded or cached to ensure data integrity. 
-    * Feature datasets.fetch_openml now validates md5checksum of 
-      arff files downloaded or cached to ensure data integrity. 
-    * Enhancement datasets.fetch_openml now allows argument 
-      as_frame to be ‘auto’, which tries to convert returned data 
+    * Feature datasets.fetch_openml now validates md5 checksum of
+      arff files downloaded or cached to ensure data integrity.
+    * Feature datasets.fetch_openml now validates md5checksum of
+      arff files downloaded or cached to ensure data integrity.
+    * Enhancement datasets.fetch_openml now allows argument
+      as_frame to be ‘auto’, which tries to convert returned data
       to pandas DataFrame unless data is sparse. #17396 by Jiaxiang.
     * Enhancement datasets.fetch_covtype now now supports the optional
-      argument as_frame; when it is set to True, the returned Bunch 
-      object’s data and frame members are pandas DataFrames, and the 
+      argument as_frame; when it is set to True, the returned Bunch
+      object’s data and frame members are pandas DataFrames, and the
       target member is a pandas Series.
-    * Enhancement datasets.fetch_kddcup99 now now supports the 
+    * Enhancement datasets.fetch_kddcup99 now now supports the
       optional argument as_frame; when it is set to True, the returned
-      Bunch object’s data and frame members are pandas DataFrames, 
+      Bunch object’s data and frame members are pandas DataFrames,
       and the target member is a pandas Series.
-    * Enhancement datasets.fetch_20newsgroups_vectorized now supports 
+    * Enhancement datasets.fetch_20newsgroups_vectorized now supports
       loading as a pandas DataFrame by setting as_frame=True.
-    * API Change The default value of as_frame in 
+    * API Change The default value of as_frame in
       datasets.fetch_openml is changed from False to ‘auto’.
   * Many more updates and fixes.
 - Skip tests for test_fetch_openml_verify_checksum[True] and
   test_fetch_openml_verify_checksum[False], not sure why it fail.
-  
+
 -------------------------------------------------------------------
 Sun Dec 13 01:16:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
@@ -631,7 +656,7 @@ Tue Nov 19 20:10:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
       :class:`impute.IterativeImputer` so that no errors are thrown when there are
       missing values in training data.
   + sklearn.inspection
-    * Fix: Fixed a bug in :func:`inspection.plot_partial_dependence` where 
+    * Fix: Fixed a bug in :func:`inspection.plot_partial_dependence` where
       ``target`` parameter was not being taken into account for multiclass problems.
       :pr:`14393` by :user:`Guillem G. Subies <guillemgsubies>`.
   + sklearn.linear_model
@@ -646,7 +671,7 @@ Tue Nov 19 20:10:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
       the validation of initial parameters ``n_components``, ``max_iter`` and
       ``tol`` required too strict types.
   + sklearn.tree
-    * Fix: Fixed bug in :func:`tree.export_text` when the tree has one feature and 
+    * Fix: Fixed bug in :func:`tree.export_text` when the tree has one feature and
       a single feature name is passed in.
     * Fix: Fixed an issue with :func:`plot_tree` where it displayed
       entropy calculations even for `gini` criterion in DecisionTreeClassifiers.
