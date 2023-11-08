@@ -26,4 +26,17 @@
 - add sle15_python_module_pythons</comment>
     <requestid>1086047</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c08dfd6ee873b80857fec41d3d49c39</srcmd5>
+    <version>0.6.0</version>
+    <time>1699478271</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.0:
+  * Add checks for test id length and content
+  * Allow _, - and . in test id
+  * Prevent duplicate test names
+  * Enable mypy
+  * Replace flake8 with ruff</comment>
+    <requestid>1124090</requestid>
+  </revision>
 </revisionlist>
