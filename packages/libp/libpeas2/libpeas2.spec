@@ -27,12 +27,12 @@
 %bcond_with     vapi
 
 Name:           libpeas2
-Version:        1.99.1
+Version:        2.0.0
 Release:        0
 Summary:        GObject-based Plugin Engine version 2
 License:        LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/1.99/libpeas-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libpeas/2.0/libpeas-%{version}.tar.xz
 
 BuildRequires:  c_compiler
 BuildRequires:  c++_compiler
