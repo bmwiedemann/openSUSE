@@ -1,7 +1,7 @@
 #
 # spec file for package xprompt
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,7 +32,7 @@ Summary:        Small tool for prompting users
 License:        BSD-3-Clause
 Group:          System/X11/Utilities
 Source:         xprompt-28sep91.tar.gz
-Patch:          warn.diff
+Patch0:         warn.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -47,7 +47,7 @@ Authors:
 
 %prep
 %setup -n xprompt-28sep91
-%patch
+%patch0
 
 %build
 xmkmf -a

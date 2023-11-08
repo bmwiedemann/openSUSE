@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:17:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Mon Dec 18 15:02:46 UTC 2017 - crrodriguez@opensuse.org
 
 - Replace xorg-x11-devel buildrequires for the needed individual
