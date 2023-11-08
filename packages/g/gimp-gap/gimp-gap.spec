@@ -26,7 +26,6 @@ BuildRequires:  automake
 BuildRequires:  gimp-devel >= 2.6.0
 BuildRequires:  intltool
 BuildRequires:  libjpeg-devel
-BuildRequires:  translation-update-upstream
 %if 0%{?BUILD_ORIG}
 %if ! 0%{?BUILD_ORIG_ADDON}
 Provides:       %{name}-orig = %{version}
@@ -42,13 +41,13 @@ Summary:        GIMP Animation Package
 License:        GPL-2.0
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 %if 0%{?BUILD_ORIG}
-Source:         ftp://ftp.gimp.org/pub/gimp/plug-ins/v2.6/gap/%{name}-%{version}.tar.bz2
+Source:         https://ftp.gimp.org/pub/gimp/plug-ins/v2.6/gap/%{name}-%{version}.tar.bz2
 %else
 # WARNING: This is not a comment, but the real command to repack souce:
 #%(bash %{_sourcedir}/%{name}-patch-source.sh %{name}-%{version}.tar.bz2)
 Source:         %{name}-%{version}-patched.tar.bz2
 %endif
-Patch:          %{name}-patched.patch
+Patch0:         %{name}-patched.patch
 # PATCH-FIX-OPENSUSE gimp-gap-no-strict-aliasing.patch sbrabec@suse.cz -- Disables strict aliasing for part of the code.
 Patch1:         %{name}-no-strict-aliasing.patch
 # PATCH-FIX-UPSTREAM gimp-gap-warnings.patch bgo585343 sbrabec@suse.cz -- Fix of serious warnings.
@@ -95,9 +94,8 @@ sequences of single frames.
 %setup -q
 chmod -x ChangeLog
 %if ! 0%{?BUILD_ORIG}
-%patch
+%patch0
 %endif
-translation-update-upstream
 %if 0%{?BUILD_ORIG}
 %patch1
 %endif

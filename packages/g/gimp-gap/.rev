@@ -170,4 +170,18 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="25" vrev="30">
+    <srcmd5>579c1f56305b6488c5714f6ba7208055</srcmd5>
+    <version>2.6.0</version>
+    <time>1699478256</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+- switch to https source url
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).</comment>
+    <requestid>1123931</requestid>
+  </revision>
 </revisionlist>
