@@ -442,4 +442,12 @@
   * X11: Fix a crash on startup when the ibus service returns errors and the GLFW_IM_MODULE env var is set to ibus (#6650)</comment>
     <requestid>1115916</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a633a00f21de28adaa65aeef6bf6dcba</srcmd5>
+    <version>0.31.0</version>
+    <time>1699478352</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124263</requestid>
+  </revision>
 </revisionlist>

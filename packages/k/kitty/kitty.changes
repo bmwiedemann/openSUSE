@@ -1,13 +1,73 @@
 -------------------------------------------------------------------
+Wed Nov  8 15:19:32 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.31.0:
+  * Allow easily running arbitrarily complex remote control scripts without
+    needing to turn on remote control (#6712)
+  * A new option menu_map that allows adding entries to the global menubar on
+    macOS (#6680)
+  * A new escape code that can be used by programs running in the terminal to
+    change the shape of the mouse pointer (#6711)
+  * Graphics protocol: Support for positioning images relative to other
+    images (#6400)
+  * A new option single_window_padding_width to use a different padding when
+    only a single window is visible (#6734)
+  * A new mouse action mouse_selection word_and_line_from_point to select the
+    current word under the mouse cursor and extend to end of line (#6663)
+  * A new option underline_hyperlinks to control when hyperlinks are
+    underlined (#6766)
+  * Allow using the full range of standard mouse cursor shapes when customizing
+    the mouse cursor
+  * macOS: When running the default shell with the login program fix
+    ~/.hushlogin not being respected when opening windows not in the home
+    directory (#6689)
+  * macOS: Fix poor performance when using ligatures with some fonts,
+    caused by slow harfbuzz shaping (#6743)
+  * kitten @ set-background-opacity --toggle - a new flag to easily switch
+    opacity between the specified value and the default (#6691)
+  * Fix a regression caused by rewrite of kittens to Go that made various
+    kittens reset colors in a terminal when the colors were changed by
+    escape code (#6708)
+  * Fix trailing bracket not ignored when detecting a multi-line URL with the
+    trailing bracket as the first character on the last line (#6710)
+  * Fix the kitten @ launch --copy-env option not copying current environment
+    variables (#6724)
+  * Fix a regression that broke kitten update-self (#6729)
+  * Two new event types for watchers, on_title_change and on_set_user_var
+  * When pasting, if the text contains terminal control codes ask the user for
+    permission. See paste_actions for details. Thanks to David Leadbeater for
+    discovering this.
+  * Render Private Use Unicode symbols using two cells if the second cell
+    contains an en-space as well as a normal space
+  * macOS: Fix a regression in the previous release that caused kitten @ ls to
+    not report the environment variables for the default shell (#6749)
+  * Desktop notification protocol: Allow applications sending notifications to
+    specify that the notification should only be displayed if the window is
+    currently unfocused (#6755)
+  * unicode_input kitten: Fix a regression that broke the "Emoticons"
+    tab (#6760)
+  * Shell integration: Fix sudo --edit not working and also fix completions for
+    sudo not working in zsh (#6754, #6771)
+  * A new action set_window_title to interactively change the title of the
+    active window
+  * ssh kitten: Fix a regression that broken ctrl+space mapping in zsh (#6780)
+  * Wayland: Fix primary selections not working with the river
+    compositor (#6785)
+
+-------------------------------------------------------------------
 Thu Oct  5 14:19:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.30.1:
-  * Shell integration: Automatically alias sudo to make the kitty terminfo files available in the sudo environment. Can be turned off via shell_integration
-  * ssh kitten: Fix a regression in 0.28.0 that caused using --kitten to override ssh.conf not inheriting settings from ssh.conf (#6639)
+  * Shell integration: Automatically alias sudo to make the kitty terminfo
+    files available in the sudo environment. Can be turned off via shell_integration
+  * ssh kitten: Fix a regression in 0.28.0 that caused using --kitten to
+    override ssh.conf not inheriting settings from ssh.conf (#6639)
   * themes kitten: Allow absolute paths for --config-file-name (#6638)
   * Expand environment variables in the shell option (#6511)
-  * macOS: When running the default shell, run it via the login program so that calls to getlogin() work (#6511)
-  * X11: Fix a crash on startup when the ibus service returns errors and the GLFW_IM_MODULE env var is set to ibus (#6650)
+  * macOS: When running the default shell, run it via the login program so that
+    calls to getlogin() work (#6511)
+  * X11: Fix a crash on startup when the ibus service returns errors and the
+    GLFW_IM_MODULE env var is set to ibus (#6650)
 
 -------------------------------------------------------------------
 Thu Sep 21 05:01:36 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
