@@ -39,6 +39,7 @@ mwifiex:	mwifiex		mwifiex mwifiex_pcie mwifiex_usb mwifiex_sdio btmrvl_sdio
 iwlwifi:	iwlwifi		iwlwifi iwl4965 iwl3945
 ipu3-imgu:	intel
 cx231xx:	media		cx25840
+ixp4xx-npe:	platform
 tehuti:		network
 typhoon:	network
 yam:		platform

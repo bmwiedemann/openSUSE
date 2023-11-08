@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov 07 15:03:06 UTC 2023 - tiwai@suse.com
+
+- Update to version 20231107 (git commit a5a6dded0c7f):
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth BE200
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX101
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for Magnetor Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for SolarF Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for SolarF Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Solar Intel Bluetooth AX210
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+  * qca: add bluetooth firmware for WCN3988
+  * linux-firmware: ixp4xx: Add the IXP4xx firmware
+  * rtw89: 8852b: update fw to v0.29.29.5
+  * rtw89: 8852b: update fw to v0.29.29.4
+  * rtw89: 8851b: update fw to v0.29.41.3
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth AX211
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth AX210
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth Magnetor AX101
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth AX203
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth Magnetor AX201
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth Magnetor AX211
+  * Intel Bluetooth: Update firmware file for Intel Bluetooth BE200
+  * Disable deb and rpm CI other than at release
+  * Use `git am` instead of `b4 shazam`
+  * rtl_nic: update firmware of RTL8156B
+  * Catch unicode decode errors
+
+-------------------------------------------------------------------
 Mon Oct 23 10:43:17 UTC 2023 - tiwai@suse.com
 
 - Update to version 20231019 (git commit d983107a2dfa):

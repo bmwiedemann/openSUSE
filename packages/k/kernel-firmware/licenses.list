@@ -39,6 +39,7 @@ mwifiex:	marvell		LICENCE.Marvell
 iwlwifi:	iwlwifi		LICENCE.iwlwifi_firmware
 ipu3-imgu:	intel		LICENSE.ipu3_firmware
 cx231xx:	media
+ixp4xx-npe:	platform	LICENSE.ixp4xx
 tehuti:		network
 typhoon:	network
 yam:		platform
