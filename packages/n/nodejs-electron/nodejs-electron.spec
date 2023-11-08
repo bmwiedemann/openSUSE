@@ -383,6 +383,7 @@ Patch3223:      absl-make_unique-missing-include.patch
 Patch3224:      autofill_i18n_parsing_expressions-constexpr.patch
 Patch3225:      simple_font_data-freetype-include.patch
 Patch3226:      perfetto-numeric_storage-double_t.patch
+Patch3227:      crash_gpu_process_and_clear_shader_cache_when_skia_reports.patch
 
 
 %if %{with clang}
