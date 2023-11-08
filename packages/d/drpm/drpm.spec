@@ -1,7 +1,7 @@
 #
 # spec file for package drpm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,7 @@
 %endif
 
 Name:           drpm
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        A small library for fetching information from DeltaRPM packages
 License:        LGPL-2.1-or-later
