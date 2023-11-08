@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  8 13:37:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.8:
+  * Replace GtkVolumeControl with a custom volume control widget
+  * Add a keyboard shortcut 'm' for mute
+
+-------------------------------------------------------------------
 Wed Oct 11 06:55:36 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.7.7:
