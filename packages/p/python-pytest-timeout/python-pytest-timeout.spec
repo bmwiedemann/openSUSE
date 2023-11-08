@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-pytest-timeout
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Pytest plugin to abort hanging tests
 License:        MIT

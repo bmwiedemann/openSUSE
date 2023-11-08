@@ -119,4 +119,18 @@
     <comment></comment>
     <requestid>1082426</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28d25d1065328d25c241ac2ff95886bc</srcmd5>
+    <version>2.2.0</version>
+    <time>1699478234</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * Update _validate_func_only to return None so it can utilize the
+    environment
+  * Add --timeout-disable-debugger-detection flag
+
+  * Dropped support for Python 2, minimum pytest version upported is 5.0.0.
+ * Fix deprecation warning on Python 3.6.</comment>
+    <requestid>1124096</requestid>
+  </revision>
 </revisionlist>
