@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 12:54:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add keyring for gpg validation
+- spec file cleanups
+
+-------------------------------------------------------------------
 Mon Oct 16 10:24:50 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.57.0 [bsc#1216174]
@@ -38,7 +44,7 @@ Sat Jul 15 15:11:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
     This commit fixes memory leak that happens when
     PUSH_PROMISE or HEADERS frame cannot be sent, and
     nghttp2_on_stream_close_callback fails with a fatal error.
-    For example, if GOAWAY frame has been received, a 
+    For example, if GOAWAY frame has been received, a
     HEADERS frame that opens new stream cannot be sent.
     This issue has already been made public via CVE-2023-35945
     by envoyproxy/envoy project.  During embargo period, the
@@ -83,7 +89,7 @@ Tue Jun 20 20:48:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Thu May 18 04:53:42 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.53.0:
-  * https://nghttp2.org/blog/2023/05/10/nghttp2-v1-53-0/ 
+  * https://nghttp2.org/blog/2023/05/10/nghttp2-v1-53-0/
 
 -------------------------------------------------------------------
 Tue Mar 14 09:33:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -113,7 +119,7 @@ Sat Sep 24 11:21:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * https://nghttp2.org/blog/2022/09/21/nghttp2-v1-50-0/
   This release adds
   nghttp2_option_set_no_rfc9113_leading_and_trailing_ws_validation which disables
-  checking leading and trailing white spaces against HTTP field value. 
+  checking leading and trailing white spaces against HTTP field value.
 
 -------------------------------------------------------------------
 Fri Sep 23 15:38:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -125,7 +131,7 @@ Fri Sep 23 15:38:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Aug 22 21:23:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.49.0:
-  * https://nghttp2.org/blog/2022/08/22/nghttp2-v1-49-0/ 
+  * https://nghttp2.org/blog/2022/08/22/nghttp2-v1-49-0/
 
 -------------------------------------------------------------------
 Mon Jul 11 19:43:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -161,13 +167,13 @@ Mon Jul 11 19:43:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * third-party: Bump llhttp to 75b45129db961e1fb3c56044e1b8f7721bfaee5d
   * third-party: Bump libbpf to v0.8.0
   * third-party: Bump mruby to 3.1.0
-  * third-party: Bump neverbleed based on the latest head (GH-1708) 
+  * third-party: Bump neverbleed based on the latest head (GH-1708)
 
 -------------------------------------------------------------------
 Sun Mar 20 21:13:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.47.0:
-  * see https://nghttp2.org/blog/2022/02/23/nghttp2-v1-47-0/ 
+  * see https://nghttp2.org/blog/2022/02/23/nghttp2-v1-47-0/
 
 -------------------------------------------------------------------
 Sat Dec 18 19:24:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -175,7 +181,7 @@ Sat Dec 18 19:24:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 1.46.0:
   * see https://nghttp2.org/blog/2021/07/18/nghttp2-v1-44-0/
   * see https://nghttp2.org/blog/2021/09/20/nghttp2-v1-45-0/
-  * see https://nghttp2.org/blog/2021/10/19/nghttp2-v1-46-0/ 
+  * see https://nghttp2.org/blog/2021/10/19/nghttp2-v1-46-0/
 
 -------------------------------------------------------------------
 Thu Feb  4 11:22:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -204,7 +210,7 @@ Wed Jan  6 12:22:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * nghttpx: Deal with the case when h2 backend is retired before it is initialized
   * nghttpx: Add accesslog variables to record request path without query (GH-1511)
   * nghttpx: Fix stall when TLS follows after proxy protocol
-  * nghttpx: Fix logging integer 
+  * nghttpx: Fix logging integer
 
 -------------------------------------------------------------------
 Wed Jun  3 11:45:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
@@ -243,7 +249,7 @@ Tue Jan 14 18:01:52 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 -------------------------------------------------------------------
 Fri Aug 30 02:45:32 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
-- Conditionally remove dependecy on jemalloc for SLE-12 
+- Conditionally remove dependecy on jemalloc for SLE-12
 
 -------------------------------------------------------------------
 Mon Aug 19 12:27:38 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
@@ -771,7 +777,7 @@ Thu Sep  8 08:35:52 UTC 2016 - idonmez@suse.com
     received and ignored
   * nghttp: Allow multiple -p option
   * deflatehd: Call nghttp2_hd_deflate_change_table_size only
-    if table size is changed from default 
+    if table size is changed from default
 
 -------------------------------------------------------------------
 Sun Aug  7 17:23:20 UTC 2016 - mpluskal@suse.com
@@ -793,9 +799,9 @@ Thu Jul 14 13:08:52 UTC 2016 - mpluskal@suse.com
 
 - Update to version 1.12.0:
   * Add nghttp2_session_set_local_window_size API function
-  * Add nghttp2_option_set_max_send_header_block_length API 
+  * Add nghttp2_option_set_max_send_header_block_length API
     function (GH-613)
-  * Fix warning: declaration of 'free' shadows a global declaration 
+  * Fix warning: declaration of 'free' shadows a global declaration
     (Patch from Alexis La Goutte)
   * examples: Add ALPN support to tutorial client/server (GH-614)
   * nghttpx: Reduce TTFB with large number of incoming connections
@@ -803,16 +809,16 @@ Thu Jul 14 13:08:52 UTC 2016 - mpluskal@suse.com
   * nghttpx: Clean up neverbleed AF_UNIX socket
   * nghttpx: Add --backend-max-backoff option
   * nghttpx: Use 16KiB buffer for reading to match TLS record size
-  * nghttpx: Add healthmon parameter to -f option to enable health 
+  * nghttpx: Add healthmon parameter to -f option to enable health
     monitor mode
   * nghttpx: Receive reference of std::mt19937, not making a copy
   * nghttpx: Fix bug that backend never return to online (GH-615)
   * nghttpx: Implement client IP based session affinity
-  * nghttpx: Add --api-max-request-body option to set maximum API 
+  * nghttpx: Add --api-max-request-body option to set maximum API
     request body size
-  * nghttpx: Add api parameter to --frontend option to mark API 
+  * nghttpx: Add api parameter to --frontend option to mark API
     endpoint
-  * h2load: Add content-length header field for HTTP/2 and SPDY as 
+  * h2load: Add content-length header field for HTTP/2 and SPDY as
     well
   * h2load: Implement HTTP/1 upload (GH-611)
 
@@ -849,20 +855,20 @@ Wed Apr 27 10:04:48 UTC 2016 - mpluskal@suse.com
 - Update to 1.10.0
   * Pass unknown SETTINGS values to nghttp2_on_frame_recv_callback
   * Add ALTSVC frame support
-  * Run error callback when peer does not send initial SETTINGS 
+  * Run error callback when peer does not send initial SETTINGS
     frame
   * Update http-parser
   * Update sphinx_rtd_theme
   * nghttp: add an --expect-continue option
   * nghttpx: Fix downstream connect callback called early
   * nghttpx: Truncate too long -b option signature
-  * nghttpx: Fix bug that server push from mruby script did not 
+  * nghttpx: Fix bug that server push from mruby script did not
     work
-  * nghttpx: Try next HTTP/1 backend address when connection 
+  * nghttpx: Try next HTTP/1 backend address when connection
     cannot be made
-  * nghttpx: Retry next HTTP/2 backend address when connection 
+  * nghttpx: Retry next HTTP/2 backend address when connection
     cannot be made
-  * nghttpx: Enable link header field based push for non-final 
+  * nghttpx: Enable link header field based push for non-final
     response
   * nghttpx: Detect online/offline state of backend servers
   * nghttpx: Better load balancing between backend HTTP/2 servers
@@ -875,7 +881,7 @@ Wed Apr 13 18:31:20 UTC 2016 - mpluskal@suse.com
   * nghttpx: Fix crash with backend failure
   * nghttpx: Better distribute load to backend h2 servers
   * nghttpx: Fix error messages on deprecated mode
-  * nghttpx: Fix bug that logger wrote string which was not 
+  * nghttpx: Fix bug that logger wrote string which was not
     NULL-terminated
   * nghttpx: Fix bug that proxy with HTTP/1.1 CONNECT did not work
 
@@ -883,52 +889,52 @@ Wed Apr 13 18:31:20 UTC 2016 - mpluskal@suse.com
 Sun Mar 27 16:57:17 UTC 2016 - mpluskal@suse.com
 
 - Update to 1.9.1
-  * nghttpx: Fix bug that backend tls keyword did not work with -s 
+  * nghttpx: Fix bug that backend tls keyword did not work with -s
     option
   * nghttpx: Fix handing stream after connection check was failed
 - Changes for 1.9.0
-  * lib: Add nghttp2_error_callback to tell application human 
+  * lib: Add nghttp2_error_callback to tell application human
     readable error message
   * lib: Reference counted HPACK name/value pair, adding
   * nghttp2_on_header_callback2
   * lib: Add nghttp2_option_set_no_auto_ping_ack() option
-  * lib: Add nghttp2_http2_strerror() to return HTTP/2 error code 
+  * lib: Add nghttp2_http2_strerror() to return HTTP/2 error code
     string
   * build: Makefile.msvc enhancements (Patch from Jan-E)
   * build: Lower libev version requirement (Patch from Peter Wu)
   * build: cmake build support (Patch from Peter Wu)
   * asio: Fix bug that server event loop breaks with exception
-  * integration: Disable tests that sometimes break randomly on 
+  * integration: Disable tests that sometimes break randomly on
     travis
   * integration: do not use recursive target (Patch from Peter Wu)
   * h2load: Fix bug that it did not try to connect to server again
-  * h2load: Fix bug that initial max concurrent streams was too 
+  * h2load: Fix bug that initial max concurrent streams was too
     large
   * nghttpx: Memcached connection encryption with tls keyword
   * nghttpx: Enable/disable TLS per frontend address
   * nghttpx: Configure TLS per backend routing pattern
-  * nghttpx: Workaround for Ubuntu 15.04 which does not 
+  * nghttpx: Workaround for Ubuntu 15.04 which does not
     value-initialize on std::make_shared.
   * nghttpx: Add --error-page option to set custom error pages
   * nghttpx: Add wildcard host routing
   * nghttpx: Change read timeout reset timing
   * nghttpx: Don't push if Link header field includes nopush
-  * nghttpx: Deprecate backend-http1-connections-per-host in favor 
+  * nghttpx: Deprecate backend-http1-connections-per-host in favor
     of backend-connections-per-host
-  * nghttpx: Restructure mode settings, removing --http2-bridge, 
+  * nghttpx: Restructure mode settings, removing --http2-bridge,
     --client, and --client-proxy options
-  * nghttpx: Deprecate backend-http1-connections-per-frontend in 
+  * nghttpx: Deprecate backend-http1-connections-per-frontend in
     favor of backend-connections-per-frontend
-  * nghttpx: Don't share session which is already in draining 
+  * nghttpx: Don't share session which is already in draining
     state
-  * nghttpx: Effectively disable backend HTTP/2 connection flow 
+  * nghttpx: Effectively disable backend HTTP/2 connection flow
     control
-  * nghttpx: Add --frontend-http2-max-concurrent-streams and 
-    --backend-http2-max-concurrent-streams, and deprecate 
+  * nghttpx: Add --frontend-http2-max-concurrent-streams and
+    --backend-http2-max-concurrent-streams, and deprecate
     --http2-max-concurrent-streams option
-  * nghttpx: Deprecate --backend-http2-connections-per-worker 
+  * nghttpx: Deprecate --backend-http2-connections-per-worker
     option
-  * nghttpx: Share TLS session cache between HTTP/2 and HTTP/1 
+  * nghttpx: Share TLS session cache between HTTP/2 and HTTP/1
     backend
   * nghttpx: Rewrite backend HTTP/2 connection coalesce strategy
 
@@ -939,55 +945,55 @@ Fri Feb 26 13:00:38 UTC 2016 - mpluskal@suse.com
 	* Add Architecture documents (work in progress)
   * List all contributors in AUTHORS
   * doc: fix out-of-tree doc builds (Patch from Peter Wu)
-  * Wrap AM_PATH_XML2 by m4_ifdef to handle the case when 
+  * Wrap AM_PATH_XML2 by m4_ifdef to handle the case when
     _PATH_XML2 is not found
   * Fix configure script for non-gcc, clang build
-  * Document compiling apps and include h2load in configure (Patch 
+  * Document compiling apps and include h2load in configure (Patch
     from David Beitey)
   * Don't check for dlopen/libdl on *BSD (Patch from Bernard Spil)
   * Don't taint CXXFLAGS from AX_CXX_COMPILE_STDCXX_11
-  * Fixing Windows Makefile version detection (Patch from Reza 
+  * Fixing Windows Makefile version detection (Patch from Reza
     Tavakoli)
   * lib: Tokenize extra HTTP header fields
   * lib: Fix typo in HAVE_CONFIG_H name (Patch from Peter Wu)
-  * lib: Add HTTP/2 extension framework to send and receive 
+  * lib: Add HTTP/2 extension framework to send and receive
     non-critical frames
   * tests: remove unused macros (Patch from Peter Wu)
   * src: Update default cipher list
   * src: Fix compile error with gcc-6 which enables C++14 by default
-  * asio: client: Fix connect timeout does not work, return from cb 
-    if session stopped, removing client::session::connect_timeout() 
+  * asio: client: Fix connect timeout does not work, return from cb
+    if session stopped, removing client::session::connect_timeout()
     functon
-  * nghttpd: Start SETTINGS timer after it is written to output 
+  * nghttpd: Start SETTINGS timer after it is written to output
     buffer
   * nghttpd: Add trailer header field to status responses
   * nghttpd: Add -w and -W options to change window size
-  * nghttpx: Worker wide blocker which is used when socket(2) is 
+  * nghttpx: Worker wide blocker which is used when socket(2) is
     failed
   * nghttpx: ConnectBlocker per backend address
-  * nghttpx: Interleave text/html pushed resources with associated 
+  * nghttpx: Interleave text/html pushed resources with associated
     resource
-  * nghttpx: Add headers given in add-response-headers for mruby 
+  * nghttpx: Add headers given in add-response-headers for mruby
     response
-  * nghttpx: Deprecate --backend-ipv4 and --backend-ipv6 in favor 
+  * nghttpx: Deprecate --backend-ipv4 and --backend-ipv6 in favor
     of --backend-address-family
-  * nghttpx: Add options to specify address family of memcached 
+  * nghttpx: Add options to specify address family of memcached
     connections
   * nghttpx: Add encryption support for TLS ticket key retrieval
   * nghttpx: Add TLS support for session cache memcached connection
-  * nghttpx: Refactor blacklisted cipher suite check (Patch from 
+  * nghttpx: Refactor blacklisted cipher suite check (Patch from
     Jay Satiro)
   * nghttpx: Add TLS support for HTTP/1 backend
-  * nghttpx: Add request-header-field-buffer and 
-    max-request-header-fields options, deprecating 
+  * nghttpx: Add request-header-field-buffer and
+    max-request-header-fields options, deprecating
     header-field-buffer and max-header-fields options.
-  * nghttpx: Add --no-http2-cipher-black-list to allow black listed 
+  * nghttpx: Add --no-http2-cipher-black-list to allow black listed
     cipher suite
   * nghttpx: Limit header fields from backend
-  * nghttpx: Fix bug that IPv6 address in Forwarded "for" is not 
+  * nghttpx: Fix bug that IPv6 address in Forwarded "for" is not
     quoted-string
   * nghttpx: Support multiple frontend addresses
-  * integration-tests: support out-of-tree tests (Patch from Peter 
+  * integration-tests: support out-of-tree tests (Patch from Peter
     Wu)
   * examples: fix compile warnings (Patch from Peter Wu)
 - Drop upstreamed nghttp2-c++14.patch
@@ -1002,7 +1008,7 @@ Fri Feb 12 17:21:54 UTC 2016 - mpluskal@suse.com
 Thu Jan 28 14:43:56 UTC 2016 - rguenther@suse.com
 
 - Add nghttp2-c++14.patch to properly guard make_unique templates.
-  [bsc#964140]  
+  [bsc#964140]
 
 -------------------------------------------------------------------
 Tue Jan 26 20:02:00 UTC 2016 - mpluskal@suse.com
@@ -1012,7 +1018,7 @@ Tue Jan 26 20:02:00 UTC 2016 - mpluskal@suse.com
   * Validate :authroity, host, and :scheme value more strictly
   * Check request/response submission error based side of session
   * Strict outgoing idle stream detection
-  * Return error from nghttp2_submit_{headers,request} when self 
+  * Return error from nghttp2_submit_{headers,request} when self
     dependency is made
   * Add -ldl to APPLDFLAGS for static openssl linking
   * asio: Stop acceptor on server::http2::stop
@@ -1021,31 +1027,31 @@ Tue Jan 26 20:02:00 UTC 2016 - mpluskal@suse.com
   * h2load: Improve readability of traffic numbers
   * h2load: Remove "auto" for -m option
   * h2load: Show progress in rate mode
-  * h2load: Perform sampling for request and connection timings to 
+  * h2load: Perform sampling for request and connection timings to
     reduce memory consumption
-  * nghttpd: Add --no-content-length option to omit content-length 
+  * nghttpd: Add --no-content-length option to omit content-length
     in response
-  * nghttpx: Interleave pushed streams with the associated stream 
+  * nghttpx: Interleave pushed streams with the associated stream
     if pushed streams are javascript and CSS resources
-  * nghttpx: The initial value of request/response buffer is 
+  * nghttpx: The initial value of request/response buffer is
     increased to 128K
-  * nghttpx: Fix bug that --listener-disable-timeout option is not 
+  * nghttpx: Fix bug that --listener-disable-timeout option is not
     used
   * nghttpx: Don't emit :authority if request does not contain
     authority information
   * nghttpx: Add clarification of quotes in configuration file
-  * nghttpx: Don't allow certain characters in host and :scheme 
+  * nghttpx: Don't allow certain characters in host and :scheme
     header field
   * nghttpx: Add RFC 7239 Forwarded header field support
-  * nghttpx: Fix crash when running on IPv6 only (Patch from Vernon 
+  * nghttpx: Fix crash when running on IPv6 only (Patch from Vernon
     Tang)
-  * nghttpx: Take into account of trailers when applying 
+  * nghttpx: Take into account of trailers when applying
     max_header_fields
-  * nghttpx: Don't apply max_header_fields and header_field_buffer 
+  * nghttpx: Don't apply max_header_fields and header_field_buffer
     limit to response
-  * nghttpx: Strict validation for header fields given in 
+  * nghttpx: Strict validation for header fields given in
     configuration
-  * nghttpx: header value should not be lower-cased (Patch from 
+  * nghttpx: header value should not be lower-cased (Patch from
     ayanamist)
 
 -------------------------------------------------------------------
@@ -1058,24 +1064,24 @@ Wed Dec 23 17:48:47 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.6.0
 	* Fix heap-use-after-free bug when handling idle streams
-	* Strict error handling for frames which are not allowed after 
+	* Strict error handling for frames which are not allowed after
     closed (remote)
-	* Set max number of outgoing concurrent streams to 100 by 
+	* Set max number of outgoing concurrent streams to 100 by
     default
 	* Keep incoming streams only at server side
-	* Create stream object for pushed resource during 
+	* Create stream object for pushed resource during
     nghttp2_submit_push_promise()
 	* Add nghttp2_session_create_idle_stream() API
 	* Handle response in nghttp2_on_begin_frame_callback
 	* Add --lib-only configure option
 	* Compile with OpenSSL 1.1.0-pre1
-	* Fix build when OpenSSL 1.0.2 is not available (patch from 
+	* Fix build when OpenSSL 1.0.2 is not available (patch from
     Sunpoet Po-Chuan Hsieh)
 	* asio: Add connect and read timeout to client API
 	* asio: Add TLS handshake and read timeout to server API
-	* asio: Added access to a requests remote endpoint (patch from 
+	* asio: Added access to a requests remote endpoint (patch from
     Andreas Pohl)
-	* asio: libnghttp2_asio: Added io_service accessors (patch from 
+	* asio: libnghttp2_asio: Added io_service accessors (patch from
     Andreas Pohl)
 	* h2load: Add req/s min, max, mean and sd for clients
 	* h2load: Fix broken connection times
@@ -1084,48 +1090,48 @@ Wed Dec 23 17:48:47 UTC 2015 - mpluskal@suse.com
 Tue Dec  1 14:13:15 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.5.0
-  * Fix bug that nghttp2_session_find_stream(session, 0) returned 
+  * Fix bug that nghttp2_session_find_stream(session, 0) returned
 		NULL
-	* Add nghttp2_session_change_stream_priority() to change stream 
+	* Add nghttp2_session_change_stream_priority() to change stream
 		priority without sending PRIORITY frame
 	* Add nghttp2_session_check_server_session() API
-	* Consider to use CANCEL error code when closing streams with 
+	* Consider to use CANCEL error code when closing streams with
 		GOAWAY
 	* Don't send push response if GOAWAY has been received
-	* Use error code CANCEL to reset pushed reserved stream from 
+	* Use error code CANCEL to reset pushed reserved stream from
 		remote
-	* Add nghttp2_session_upgrade2(), deprecate 
+	* Add nghttp2_session_upgrade2(), deprecate
 		nghttp2_session_upgrade()
-	* Workaround HTTP upgrade with HEAD request in 
+	* Workaround HTTP upgrade with HEAD request in
 		nghttp2_session_upgrade()
-	* Introduce NGHTTP2_NV_FLAG_NO_COPY_NAME and 
+	* Introduce NGHTTP2_NV_FLAG_NO_COPY_NAME and
 		NGHTTP2_NV_FLAG_NO_COPY_VALUE
 	* Add nghttp2_session_check_request_allowed() API function
 	* Switch to clang-format-3.6
 	* Update mruby to 1.2.0
-	* tests: fix broken linkage with --disable-static (Patch from 
+	* tests: fix broken linkage with --disable-static (Patch from
 		Kamil Dudka)
-	* python: Send RST_STREAM if remote side is not closed and 
+	* python: Send RST_STREAM if remote side is not closed and
 		response finished
 	* asio: client: call on_error when connection is dropped
 	* asio: ALPN support
-	* h2load: Add --h1 option to force http/1.1 for both http and 
+	* h2load: Add --h1 option to force http/1.1 for both http and
 		https URI
-	* h2load: Fix crash when dealing with "connection: close" form 
+	* h2load: Fix crash when dealing with "connection: close" form
 		HTTP/1.1 server
-	* h2load: h2load goes into infinite loop when timing script file 
+	* h2load: h2load goes into infinite loop when timing script file
 		starts with 0.0 in first line (Patch from Kit Chan)
 	* h2load: Override user-agent with -H option
-	*	h2load: Print "space savings" to measure header compression 
+	*	h2load: Print "space savings" to measure header compression
 		efficiency
 	* h2load: Stream error should be counted toward errored
 	* h2load: Show application protocol with OpenSSL < 1.0.2
-	* nghttpx: Don't send RST_STREAM to h2 backend if backend is 
+	* nghttpx: Don't send RST_STREAM to h2 backend if backend is
 		disconnected state
 	* nghttpx: Support server push from HTTP/2 backend
-	* nghttpx: Fix bug that causes connection failure with backend 
+	* nghttpx: Fix bug that causes connection failure with backend
 		proxy URI
-	* nghttpx: Use --backend-tls-sni-field to verify certificate 
+	* nghttpx: Use --backend-tls-sni-field to verify certificate
 		hostname
 	* nghttpx: Log :authority as $http_host if available
 	* nghttpd: Fix crash with CONNECT request
@@ -1187,9 +1193,9 @@ Sat Oct 31 10:21:56 UTC 2015 - sor.alexei@meowr.ru
 Sun Sep 27 12:38:17 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.3.4
-  * Make traditional init script fail if new config file is broken 
+  * Make traditional init script fail if new config file is broken
     (Patch from Janusz Dziemidowicz)
-  * nghttpx-logrotate: Don't use killall since we have multiple 
+  * nghttpx-logrotate: Don't use killall since we have multiple
     processes
   * nghttpx: Fix improper signal handling
 - Changes for 1.3.3
@@ -1198,15 +1204,15 @@ Sun Sep 27 12:38:17 UTC 2015 - mpluskal@suse.com
   * More warning flags for --enable-werror
   * Update mruby
   * h2load: HTTP/1.1 support (Patch from Lucas Pardue)
-  * nghttpx: Do not try to set TCP_NODELAY when frontend is an 
+  * nghttpx: Do not try to set TCP_NODELAY when frontend is an
     UNIX socket (Patch from Janusz Dziemidowicz)
   * nghttpx: Chown UNIX domain socket to user specified as --user
-  * nghttpx: Split monolithic one process into control and worker 
+  * nghttpx: Split monolithic one process into control and worker
     processes
   * nghttpx: Handle SSL/TLS data following PROXY protocol line
 - Changes for 1.3.2
   * Check header block limit after new stream is opened
-  * nghttp: Show error if HEADERS frame cannot be sent for 
+  * nghttp: Show error if HEADERS frame cannot be sent for
     whatever reason
   * nghttpx: Fix assertion failure on TLS handshake
   * nghttpx: Add x-http2-push header field for pushed resource
@@ -1216,27 +1222,27 @@ Sun Sep 27 12:38:17 UTC 2015 - mpluskal@suse.com
 Mon Sep 14 13:33:16 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.3.1
-  * Avoid usage of typeof and replace __builtin_offsetof with 
+  * Avoid usage of typeof and replace __builtin_offsetof with
     offsetof
   * Honor stream->weight even if stream->last_writelen is 0
   * Compile third-party libraries if hpack-tools is enabled
   * nghttpx-init: Start nghttpx with --daemon
   * Bundle sphinxcontrib.rubydomain https://bitbucket.org/birkenfeld/sphinx-contrib/src/default/rubydomain/
   * Bundle mruby
-  * h2load: Record TTFB on first byte of response body, rather 
+  * h2load: Record TTFB on first byte of response body, rather
     than first socket read
-  * h2load: Improve checking for timing script input, prevent 
-    false positive in certain situations 
-  * nghttpx: Implement PROXY protocol version 1 
+  * h2load: Improve checking for timing script input, prevent
+    false positive in certain situations
+  * nghttpx: Implement PROXY protocol version 1
     (--accept-proxy-protocol option)
-  * nghttpx: Allow link header server push for HTTP/2 backend 
+  * nghttpx: Allow link header server push for HTTP/2 backend
     as well
   * nghttpx: Don't initiate push if client disabled push
   * nghttpx: Allow absolute URI in Link header field for push
   * nghttpx: Fix crash with multi workers and QUIT signal
-  * nghttpx: Add mruby support which is disabled by default 
-    (use --with-mruby configure option to enable it)   
-  * nghttpx: Drop connection before TLS finish if h2 requirement 
+  * nghttpx: Add mruby support which is disabled by default
+    (use --with-mruby configure option to enable it)
+  * nghttpx: Drop connection before TLS finish if h2 requirement
     is not fulfilled
 - Fix typo in previous changelog entry
 
@@ -1248,19 +1254,19 @@ Tue Sep  1 06:59:43 UTC 2015 - mpluskal@suse.com
   * Add stream public API
   * Rewrite priority tree handling
   * Fix parallel make distcheck
-  * Define it and itprep recursive target if 
+  * Define it and itprep recursive target if
     AM_EXTRA_RECURSIVE_TARGETS is defined
   * fetch-ocsp-response: Handle spurious openssl exist status 0
-  * nghttpx: Use nghttp2::ssl::DEFAULT_CIPHER_LIST for backend TLS 
+  * nghttpx: Use nghttp2::ssl::DEFAULT_CIPHER_LIST for backend TLS
     connection
-  * nghttpx: Don't allow blacked listed cipher suites for HTTP/2 
+  * nghttpx: Don't allow blacked listed cipher suites for HTTP/2
     connection
-  * nghttpx: better handle /dev/stderr and /dev/stdout (Patch from 
+  * nghttpx: better handle /dev/stderr and /dev/stdout (Patch from
     Tomasz Buchert)
   * nghttpd: GOAWAY if SSL/TLS requirements for HTTP/2 are not met
   * nghttpd: Return date header field for 304
   * nghttpd: Support HEAD request
-  * h2load: Add Timing-script and base URI support (Patch from 
+  * h2load: Add Timing-script and base URI support (Patch from
     Lucas Pardue)
   * h2load: Add timeout options (Patch from Nora)
 - Fix typo in changelog
@@ -1283,23 +1289,23 @@ Mon Aug 10 14:10:20 UTC 2015 - mpluskal@suse.com
   * Allow multiple in-flight SETTINGS
   * Strictly check occurrence of dynamic table size update
   * Fix configure warning that 'missing' is missing or too old
-  * Fix rm: cannot remove ‘*.rst’: No such file or directory when 
+  * Fix rm: cannot remove ‘*.rst’: No such file or directory when
     "make clean" (Patch from Alexis La Goutte)
-  * doc: Reword some of the server and client tutorial (Patch 
+  * doc: Reword some of the server and client tutorial (Patch
     from Tom Harwood)
   * src: Remove monotonic_clock replacement macro for gcc-4.6
-  * nghttpx: Add TLS ticket key sharing among nghttpx instances 
+  * nghttpx: Add TLS ticket key sharing among nghttpx instances
     using memcached
   * nghttpx: Add shared session cache using memcached
   * nghttpx: Set SSL/TLS session timeout to 12 hours
   * nghttpx: Enable session resumption on HTTP/2 backend
   * nghttpx: Don't rewrite host header field by default
-  * nghttpx: Generate new ticket key every 1hr and its life time 
+  * nghttpx: Generate new ticket key every 1hr and its life time
     is now 12hrs
   * nghttpx: Don't reuse backend connection if it is not clean
   * nghttpx: Add AES-256-CBC encryption for TLS session ticket
   * nghttpd: Fix the bug that 304 response has non-empty body
-  * h2load: Add -r and -C options to h2load (Patch from 
+  * h2load: Add -r and -C options to h2load (Patch from
     Nora Shoemaker)
 - Changes for 1.1.2
   * Fix linker error with libnghttp2_asio
@@ -1318,48 +1324,48 @@ Thu Jul 16 06:58:40 UTC 2015 - mpluskal@suse.com
   * msvc build fixes and enchantments (Patch from Gabi Davar)
   * Compile with IRIX gcc-4.7 (Patch from Klaus Ziegler)
   * nghttp: Add --max-concurrent-streams option
-  * nghttp: Add comment on HAR on pushed objects (Patch from 
+  * nghttp: Add comment on HAR on pushed objects (Patch from
     acesso)
-  * nghttpx: Add --include option to read additional configuration 
+  * nghttpx: Add --include option to read additional configuration
     from given file
-  * nghttpx: Add backend routing based on request host and path by 
+  * nghttpx: Add backend routing based on request host and path by
     extending -b option
-  * nghttpx: Allow log variable to be enclosed by curly braces for 
+  * nghttpx: Allow log variable to be enclosed by curly braces for
     disambiguation
   * nghttpx: Add log variables related to SSL/TLS connection
   * h2load: Add --ciphers option
 - Add patches
   * missing_nghttp2_timegm.patch to fix building of asio library
-  * nghttp2-remove-python-build.patch to fix python bindings 
+  * nghttp2-remove-python-build.patch to fix python bindings
     installation when autotools are used
 
 -------------------------------------------------------------------
 Tue Jun 30 11:54:06 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.0.5
-  * Add STREAM_DEP_DEBUG macro switch to enable runtime validation 
+  * Add STREAM_DEP_DEBUG macro switch to enable runtime validation
     of depedency tree
-  * Fix another bug in priority handling; sibling's item is not 
+  * Fix another bug in priority handling; sibling's item is not
     queued when ancestor's item is detached
-  * nghttpx: Fix crash with --http2-bridge and both frontend and 
+  * nghttpx: Fix crash with --http2-bridge and both frontend and
     backend TLS
 
 -------------------------------------------------------------------
 Wed Jun 24 10:52:12 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.0.4
-  * Fix assertion failure in stream_update_dep_on_detach_item 
+  * Fix assertion failure in stream_update_dep_on_detach_item
     (GH-264)
 - Changes for 1.0.3
-  * Fix bug that idle self-depending PRIORITY is not handled 
+  * Fix bug that idle self-depending PRIORITY is not handled
     gracefully
   * Optimize dependency based priority code to Firefox style tree
-  * enable third-party for asio_lib too (Patch from Mike 
+  * enable third-party for asio_lib too (Patch from Mike
     Frysinger)
-  * fetch-ocsp-response: Support LibreSSL, and include port in 
+  * fetch-ocsp-response: Support LibreSSL, and include port in
     ocsp_host
   * src: Support compile with LibreSSL
-  * nghttpx: Fix bug that x-forwarded-proto header field does not 
+  * nghttpx: Fix bug that x-forwarded-proto header field does not
     reflect frontend scheme on HTTP/2 backend
   * nghttpx: Validate :path on SPDY frontend
 
@@ -1367,22 +1373,22 @@ Wed Jun 24 10:52:12 UTC 2015 - mpluskal@suse.com
 Tue Jun 16 08:27:32 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.0.2
-  * Fix bug that data are not consumed for connection in race 
+  * Fix bug that data are not consumed for connection in race
     condition (GH-253)
-  * Define NGHTTP2_EXTERN to __declspec(dllimport) when using 
+  * Define NGHTTP2_EXTERN to __declspec(dllimport) when using
     nghttp2 for Windows build
   * Translate fetch-ocsp-response into Python
-  * libevent-client: Fix bug that path is broken if URI does not 
+  * libevent-client: Fix bug that path is broken if URI does not
     contain path part
-  * python: Call on_close callback when connection is lost for 
+  * python: Call on_close callback when connection is lost for
     server session
-  * python: Expose client certificate, if available (Patch from 
+  * python: Expose client certificate, if available (Patch from
     Fabian Wiesel)
-  * python: Catch and log failure to set TCP_NODELAY (Patch from 
+  * python: Catch and log failure to set TCP_NODELAY (Patch from
     Fabian Wiesel)
   * nghttpx: Add --add-request-header option
   * nghttpx: Make WebSocket upgrade work
-  * nghttpx: Fix bug that END_STREAM is not set in backend for 
+  * nghttpx: Fix bug that END_STREAM is not set in backend for
     POST with Upgrade
   * nghttpx: Don't send "Expect" header field twice
 
@@ -1390,19 +1396,19 @@ Tue Jun 16 08:27:32 UTC 2015 - mpluskal@suse.com
 Mon May 25 15:13:45 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.0.1
-  * Include stdint.h instead of inttypes.h when compiled with MSVC 
+  * Include stdint.h instead of inttypes.h when compiled with MSVC
     < 2013
   * Fix invalid memory free on out-of-memory handling
   * integration: Use our own copy of golang spdy package
   * android: Don't link zlib bundled with android NDK
-  * Dockerfile.android: Update NDK ver, and ubuntu; build and link 
+  * Dockerfile.android: Update NDK ver, and ubuntu; build and link
     zlib
   * src, examples: Fix up OpenSSL initialization
-  * nghttpx: Allow HTTP Upgrade from POST request if response 
+  * nghttpx: Allow HTTP Upgrade from POST request if response
     header has not been sent to the client
-  * nghttpx: Fix bug that PUSH_PROMISE is sent after associated 
+  * nghttpx: Fix bug that PUSH_PROMISE is sent after associated
     response HEADERS
-  * nghttpd: Close connection after settings timeout and GOAWAY 
+  * nghttpd: Close connection after settings timeout and GOAWAY
     was sent
   * h2load: Fix bug that NPN fails if ALPN is enabled
 
@@ -1410,8 +1416,8 @@ Mon May 25 15:13:45 UTC 2015 - mpluskal@suse.com
 Thu May 21 06:50:36 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.0.0
-  * v1.0.0 introduced backward incompatible changes from 0.7 
-    series. Read https://nghttp2.org/documentation/package_README.html#migration-from-v0-7-15-or-earlier 
+  * v1.0.0 introduced backward incompatible changes from 0.7
+    series. Read https://nghttp2.org/documentation/package_README.html#migration-from-v0-7-15-or-earlier
     to migrate from older version to this latest version.
 - Changes for 0.7.15
   * Hopefully, this is the last release for 0.7.x series.
@@ -1428,18 +1434,18 @@ Wed May 13 13:07:14 UTC 2015 - mpluskal@suse.com
 - Update to 0.7.14
   * Fix global-buffer-overflow in HPACK code
   * Fix doc for nghttp2_select_next_protocol
-  * Fix bug that promised stream was not reset on decompression 
+  * Fix bug that promised stream was not reset on decompression
     error
-  * Add systemd and upstart configuration file for nghttpx 
+  * Add systemd and upstart configuration file for nghttpx
     (Patch from Zhuoyun Wei)
-  * Improve nghttpx logrotate configuration file (Patch from 
+  * Improve nghttpx logrotate configuration file (Patch from
     Zhuoyun Wei)
   * Update sphinx_rtd_theme
-  * h2load: Update h2load to give connect time and ttfb stats 
+  * h2load: Update h2load to give connect time and ttfb stats
     (Patch from ericcarlschwartz)
   * nghttpd: Add -m, --max-concurrent-streams option
   * nghttpx: Log absolute URI for HTTP/2 or client proxy request
-  * nghttpx: Add --header-field-buffer and --max-header-fields 
+  * nghttpx: Add --header-field-buffer and --max-header-fields
     options
   * nghttp: Fix assertion error if very large value is given to -t
 
@@ -1447,38 +1453,38 @@ Wed May 13 13:07:14 UTC 2015 - mpluskal@suse.com
 Fri May  1 13:47:12 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.7.13
-  * Fix bug that promised stream was not reset by returning 
-    NGHTTP2_ERR_TEMPORAL_CALLBACK_FAILURE from 
+  * Fix bug that promised stream was not reset by returning
+    NGHTTP2_ERR_TEMPORAL_CALLBACK_FAILURE from
     nghttp2_on_header_callback. Instead, associated stream was reset.
-  * Allow NGHTTP2_ERR_TEMPORAL_CALLBACK_FAILURE from 
+  * Allow NGHTTP2_ERR_TEMPORAL_CALLBACK_FAILURE from
     nghttp2_on_begin_headers_callback
-  * h2load: Effectively disable flow control by setting large 
+  * h2load: Effectively disable flow control by setting large
     window size
-  * asio: Graceful shutdown and joinable server (Patch from 
+  * asio: Graceful shutdown and joinable server (Patch from
     Xiaoguang Sun)
 
 -------------------------------------------------------------------
 Mon Apr 20 08:40:33 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.7.12
-  * Fix bug that nghttp2_session_set_next_stream_id accepts invalid 
+  * Fix bug that nghttp2_session_set_next_stream_id accepts invalid
     stream_id
   * HPACK: Rewrite static header table handling
   * HPACK: Never index authorization and small cookie header field
   * Don't install libnghttp2_asio headers if they are disabled
-  * doc: Specify program directive so that hyperlink to option is 
+  * doc: Specify program directive so that hyperlink to option is
     correctly pointed to the intended location
-  * asio: client: Call error_cb on error occurred in do_read and 
+  * asio: client: Call error_cb on error occurred in do_read and
     do_write (Fixes GH-207)
   * nghttp: Add --no-push option to disable server push
   * nghttp: Show stream ID in statistics output
   * nghttp: Remove --dep-idle option
   * nghttp: Use same priority anchor nodes as Firefox does
-  * nghttpx: Don't push resource if link header has non empty 
+  * nghttpx: Don't push resource if link header has non empty
     loadpolicy
-  * nghttpx: Add logging for somewhat important events (logs, 
+  * nghttpx: Add logging for somewhat important events (logs,
     tickets, and ocsp)
-  * nghttpx: Set Downstream to stream user data on HTTP Upgrade 
+  * nghttpx: Set Downstream to stream user data on HTTP Upgrade
     to h2
 
 -------------------------------------------------------------------
@@ -1486,24 +1492,24 @@ Sun Apr 12 17:38:36 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.7.11
   * nghttpx: Fix waitpid race condition in ocsp response update
-  * nghttp: Consider user-provided :authority header field for SNI 
+  * nghttp: Consider user-provided :authority header field for SNI
     as well as host header field
 - Changes for 0.7.10
   * Make sure that nghttp2 license is MIT license
-  * Add nghttp2_session_consume_{connection,stream} to consume 
+  * Add nghttp2_session_consume_{connection,stream} to consume
     bytes independent
-  * Add nghttp2_send_data_callback to send DATA payload without 
-    copying "static inline" fix for build with VS2013 (Patch from 
+  * Add nghttp2_send_data_callback to send DATA payload without
+    copying "static inline" fix for build with VS2013 (Patch from
     Remo E)
   * Update lib/Makefile.msvc (Patch from Remo E)
   * Remove dependency on libws2_32 on Windows build
-  * Define NGHTTP2_EXTERN macro to export function for Windows 
+  * Define NGHTTP2_EXTERN macro to export function for Windows
     build
   * doc: Generate API doc per function
   * python: Add async body generation support
   * python: Fix pseudo-header field ordering bug
   * nghttpx: Redirect stderr to errorlog file
-  * nghttpx: Fix bug that data buffered in SSL object are not 
+  * nghttpx: Fix bug that data buffered in SSL object are not
     read
   * nghttpx: Remove --tls-ctx-per-worker option
   * nghttpx: Add OCSP stapling feature
@@ -1544,30 +1550,30 @@ Fri Mar  6 18:19:47 UTC 2015 - mpluskal@suse.com
 Tue Mar  3 22:15:13 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.7.5
-  * Implements h2-14 protocol 
+  * Implements h2-14 protocol
     (http://tools.ietf.org/html/draft-ietf-httpbis-http2-14)
-  * Implements HPACK 09 
+  * Implements HPACK 09
     (http://tools.ietf.org/html/draft-ietf-httpbis-header-compression-09)
   * Validate HTTP semantics by default
   * Add nghttp2_option_set_no_http_messaging() API function
   * Update http-parser
-  * nghttp, nghttpd, nghttpx: Use "sensitive" to indicate 
+  * nghttp, nghttpd, nghttpx: Use "sensitive" to indicate
     "never indexed" header field
-  * nghttp, nghttpd, nghttpx, h2load: Select/announce h2 in 
+  * nghttp, nghttpd, nghttpx, h2load: Select/announce h2 in
     ALPN/NPN
   * nghttp: Fix unaligned field output in --stat
   * nghttp: Fix -H does not work with -u upgrade request
-  * nghttp: Update resource timing terminology according to 
+  * nghttp: Update resource timing terminology according to
     Resource Timing TR
-  * nghttpd: Add -a option which takes an address parameter that 
-    allows nghttpd to bind to a non-default address. Patch 
+  * nghttpd: Add -a option which takes an address parameter that
+    allows nghttpd to bind to a non-default address. Patch
     from Brian Card
-  * nghttpx: Use omit minor version in case of HTTP/2 in via 
+  * nghttpx: Use omit minor version in case of HTTP/2 in via
     header and access log
   * nghttpx: Support UNIX domain socket on both frontend and backend
-  * nghttpx: Fix crash in http/1 backend when backend returns more 
+  * nghttpx: Fix crash in http/1 backend when backend returns more
     bytes than CL
-  * nghttpx: Cast configuration value to rlim_t to avoid compile 
+  * nghttpx: Cast configuration value to rlim_t to avoid compile
     error on 32bit
   * nghttpx: Fix 1 second delay in HTTP/2 backend connection
   * nghttpx: Fix request re-submission bug in HTTP/2 backend
