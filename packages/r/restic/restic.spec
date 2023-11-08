@@ -30,7 +30,7 @@ Source0:        https://github.com/restic/restic/releases/download/v%{version}/%
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        vendor.tar.gz
-Patch:          disable-selfupdate.patch
+Patch0:         disable-selfupdate.patch
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
