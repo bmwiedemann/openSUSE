@@ -1,13 +1,11 @@
-Index: element-web-1.11.20/package.json
-===================================================================
---- element-web-1.11.20.orig/package.json	2023-01-20 13:52:01.000000000 +0100
-+++ element-web-1.11.20/package.json	2023-01-27 13:02:23.452017454 +0100
+--- element-web-1.11.48/package.json	2023-11-07 16:23:24.000000000 +0100
++++ element-web-1.11.48a/package.json	2023-11-07 19:28:10.853001362 +0100
 @@ -41,7 +41,7 @@
          "build:res": "ts-node scripts/copy-res.ts",
          "build:genfiles": "yarn build:res && yarn build:jitsi && yarn build:module_system",
          "build:modernizr": "modernizr -c .modernizr.json -d src/vector/modernizr.js",
--        "build:bundle": "webpack --progress --bail --mode production",
-+        "build:bundle": "node --max_old_space_size=4000 --optimize_for_size $(which webpack) --progress --bail --mode production",
-         "build:bundle-stats": "webpack --progress --bail --mode production --json > webpack-stats.json",
+-        "build:bundle": "webpack --progress --mode production",
++        "build:bundle": "node --max_old_space_size=4000 --optimize_for_size $(which webpack) --progress --mode production",
+         "build:bundle-stats": "webpack --progress --mode production --json > webpack-stats.json",
          "build:module_system": "tsc --project ./tsconfig.module_system.json && node ./lib/module_system/scripts/install.js",
          "dist": "scripts/package.sh",

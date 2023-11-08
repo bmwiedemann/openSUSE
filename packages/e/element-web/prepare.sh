@@ -20,7 +20,7 @@ osc add element-web-*.tar.gz
 rm -rf "element-web-${version}"
 tar xzvf element-web-${version}.tar.gz
 cd element-web-${version}
-changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/')
+changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/' -e 's/\[.*\](\(.*\))/\1/g')
 
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 yarn cache clean
