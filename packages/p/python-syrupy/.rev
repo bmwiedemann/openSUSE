@@ -19,4 +19,24 @@
   * hide empty snapshot report (#768) (8f581d5)</comment>
     <requestid>1100458</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1751ee27cfac5c7bf4afde1cc5fbca43</srcmd5>
+    <version>4.6.0</version>
+    <time>1699478194</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.0:
+  * **serializer:** add support for FunctionType serialization
+  * support setting defaults
+  * **filter:** add paths_include filter
+  * add include option to snapshots, similar to exclude
+  * remove colored dependency
+  * support python 3.12
+  * **serializer:** add snapshot regex value matcher and bypass
+    custom repr helper
+  * preserve Falsy values in assertion diff function
+  * **amber:** expose serialize_custom_iterable method of
+    AmberDataSerializer
+- drop no-colored.patch: obsolete</comment>
+    <requestid>1124101</requestid>
+  </revision>
 </revisionlist>

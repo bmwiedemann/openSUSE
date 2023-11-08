@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  7 20:20:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * **serializer:** add support for FunctionType serialization
+  * support setting defaults
+  * **filter:** add paths_include filter
+  * add include option to snapshots, similar to exclude
+  * remove colored dependency
+  * support python 3.12
+  * **serializer:** add snapshot regex value matcher and bypass
+    custom repr helper
+  * preserve Falsy values in assertion diff function
+  * **amber:** expose serialize_custom_iterable method of
+    AmberDataSerializer
+- drop no-colored.patch: obsolete
+
+-------------------------------------------------------------------
 Mon Jul 24 19:59:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.8:

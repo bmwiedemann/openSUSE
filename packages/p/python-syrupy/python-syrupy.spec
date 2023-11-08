@@ -17,14 +17,12 @@
 
 
 Name:           python-syrupy
-Version:        4.0.8
+Version:        4.6.0
 Release:        0
 Summary:        Pytest Snapshot Test Utility
 License:        Apache-2.0
 URL:            https://github.com/tophat/syrupy
 Source:         https://github.com/tophat/syrupy/archive/refs/tags/v%{version}.tar.gz#/syrupy-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE mmachova@suse.com syrupy has a dependency colored (yet another terminal colors), which we don't have in the distribution and I couldn't manage to package it.
-Patch:          no-colored.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.4.0}
 BuildRequires:  %{python_module pytest >= 7.0.0}
