@@ -74,4 +74,30 @@
     <comment></comment>
     <requestid>1096277</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f9e6c53c66d4bbf54b4f651ef33f41c</srcmd5>
+    <version>0.26.0</version>
+    <time>1699478270</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.26.0:
+  * Added `proxy_url` parameter which allows matching on proxy
+    URL.
+  * Requires `httpx`==0.25.\*
+  * Added `match_json` parameter which allows matching on JSON
+    decoded body (matching against python representation instead
+    of bytes).
+  * Even if it was never documented as a feature, the
+    `match_headers` parameter was not considering header names
+    case when matching.
+  * Matching on headers does not ignore name case anymore, the
+    name must now be cased as sent (as some servers might expect
+    a specific case).
+  * Add `:Any` type hint to `**matchers` function arguments to
+    satisfy strict type checking mode in `pyright`.
+  * Python `3.7` and `3.8` are no longer supported.
+  * `httpx_mock.add_response` is now returning a new
+    `httpx.Response` instance upon each matching request.
+    Preventing unnecessary recursion in streams.</comment>
+    <requestid>1124087</requestid>
+  </revision>
 </revisionlist>

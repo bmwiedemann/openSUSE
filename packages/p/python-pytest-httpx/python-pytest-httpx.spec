@@ -18,23 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-httpx
-Version:        0.22.0
+Version:        0.26.0
 Release:        0
 Summary:        Send responses to httpx
 License:        MIT
 URL:            https://colin-b.github.io/pytest_httpx/
 Source:         https://github.com/Colin-b/pytest_httpx/archive/refs/tags/v%{version}.tar.gz#/pytest_httpx-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module httpx >= 0.24.0}
-BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module httpx >= 0.25.0}
+BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.20.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-httpx >= 0.24.0
-Requires:       python-pytest >= 6.0
+Requires:       python-httpx >= 0.25.0
+Requires:       python-pytest >= 7.0
 BuildArch:      noarch
 %python_subpackages
 
