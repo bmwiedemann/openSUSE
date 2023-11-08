@@ -1,7 +1,7 @@
 #
 # spec file for package freedup
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,11 @@ Name:           freedup
 Version:        %{mainversion}~%{subversion}
 Release:        0
 Summary:        Links substantially identical, duplicate files to save file system space
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
-Url:            http://freedup.org/
+URL:            http://freedup.org/
 Source:         http://freedup.org/freedup-%{version}-src.tar.bz2
-Patch:          nostrip.patch
+Patch0:         nostrip.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -41,7 +41,7 @@ a good target for deduplication.
 
 %prep
 %setup -q -n %{name}-%{mainversion}-%{subversion}
-%patch -p1
+%patch0 -p1
 
 %build
 make CFLAGS='%{optflags} -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DFLAVOUR="\"d\"" -DHASHSUM=0 -std=gnu99' clean freedup symharden ChangeLog
