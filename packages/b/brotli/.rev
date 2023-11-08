@@ -97,4 +97,12 @@
     <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1070173 from pluskalm)</comment>
     <requestid>1070177</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2380cad80efba89743c5c23b365d950c</srcmd5>
+    <version>1.1.0</version>
+    <time>1699478192</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118318</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 17 10:43:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with optflags again
+
+-------------------------------------------------------------------
+Thu Aug 31 09:53:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1
+  * CLI: added a --dictionary option
+- Reomve 0001-Revert-Add-runtime-linker-path-to-pkg-config-files-7.patch
+
+-------------------------------------------------------------------
 Wed Mar  8 12:09:38 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
@@ -28,7 +40,7 @@ Thu Aug 27 14:32:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Wed Aug 12 14:52:42 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Fix W: shared-lib-calls-exit /usr/lib64/libbrotlienc.so.1.0.7 
+- Fix W: shared-lib-calls-exit /usr/lib64/libbrotlienc.so.1.0.7
   exit@GLIBC_2.2.5.
 
 -------------------------------------------------------------------

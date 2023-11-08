@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           brotli
-Version:        1.0.9
+Version:        1.1.0
 Release:        0
 Summary:        Lossless Compression Algorithm
 License:        MIT
@@ -27,7 +27,6 @@ Group:          Productivity/Archiving/Compression
 URL:            https://github.com/google/brotli
 Source:         https://github.com/google/brotli/archive/v%version.tar.gz
 Source99:       baselibs.conf
-Patch1:         0001-Revert-Add-runtime-linker-path-to-pkg-config-files-7.patch
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  gzip
@@ -102,12 +101,12 @@ RFC 7932.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_C_FLAGS="-DBROTLI_ENCODER_CLEANUP_ON_OOM"
+export CFLAGS="%{optflags} -DBROTLI_ENCODER_CLEANUP_ON_OOM"
+%cmake
 %cmake_build
 
 %install
 %cmake_install
-rm %buildroot/%_libdir/libbrotli*-static.a
 mkdir -p "%buildroot/%_mandir/man1" "%buildroot/%_mandir/man3"
 install -pm0644 docs/*.1 "%buildroot/%_mandir/man1/"
 install -pm0644 docs/*.3 "%buildroot/%_mandir/man3/"
