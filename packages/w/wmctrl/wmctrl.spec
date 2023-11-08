@@ -1,7 +1,7 @@
 #
 # spec file for package wmctrl
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,13 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xmu)
 Version:        1.07
 Release:        0
-Url:            http://sweb.cz/tripie/utils/wmctrl/
+URL:            http://sweb.cz/tripie/utils/wmctrl/
 Summary:        Command line tool to interact with an EWMH/NetWM compatible X Window Manager
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 Source:         %name-%version.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Patch:          wmctrl_1.07-6.diff.bz2
+Patch0:         wmctrl_1.07-6.diff.bz2
 
 %description
 Wmctrl provides command line access to almost all the features defined
@@ -54,7 +54,7 @@ Authors:
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 ls -lha .

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:59:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Mon Dec  4 20:14:02 UTC 2017 - crrodriguez@opensuse.org
 
 - BuildRequire pkgconfig(x11) and pkgconfig(xmu), not
