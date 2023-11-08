@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 09:00:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Mar 10 14:37:34 CET 2020 - sbrabec@suse.com
 
 - Reset outdated translations and turn translate-update-upstream

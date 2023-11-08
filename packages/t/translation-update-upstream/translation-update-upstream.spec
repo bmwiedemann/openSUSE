@@ -1,7 +1,7 @@
 #
 # spec file for package translation-update-upstream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Source8:        msgheadermerge-parse
 Source9:        msgheadermerge-empty.pot
 Source10:       %{name}-embedded-README
 Source11:       translation-update-mandatory-%{version}.tar.bz2
-Patch:          %{name}-embedded.patch
+Patch0:         %{name}-embedded.patch
 # Files below are package maintainer tools, not used for package build:
 Source50:       upstream-collect.sh
 Source51:       upstream-collect.conf
@@ -89,7 +89,7 @@ cp -a %{S:6} %{S:7} %{S:8} %{S:9} .
 cp -a %{S:10} translation-update-upstream-embedded.README
 sed 's:@DATADIR@:%{_datadir}:g;s:@LIBEXECDIR@:%{_prefix}/lib:g' <translation-update-upstream.in >translation-update-upstream
 sed 's/@LIBEXECDIR@/\$BASE_DIR/g;s:@DATADIR@/translation-update-upstream:\$BASE_DIR/translation-update-upstream/po:g;s/translation-update-upstream\./translation-update-upstream-embedded./g' <translation-update-upstream.in >translation-update-upstream-embedded.sh
-%patch
+%patch0
 chmod +x translation-update-upstream-embedded.sh
 
 %build
