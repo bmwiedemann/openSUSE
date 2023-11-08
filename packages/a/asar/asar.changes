@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  8 06:12:12 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream version 3.2.8
+  * better error message when extracting a file that doesn't exist in the archive
+
+-------------------------------------------------------------------
 Wed Sep 27 04:34:29 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream version 3.2.7
