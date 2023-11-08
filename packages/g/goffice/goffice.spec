@@ -17,7 +17,7 @@
 
 
 Name:           goffice
-Version:        0.10.55
+Version:        0.10.56
 Release:        0
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -47,6 +47,8 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(pango) >= 1.24.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.24.0
+# https://gitlab.gnome.org/GNOME/goffice/-/issues/70            
+ExcludeArch:    %{ix86}
 
 %description
 GOffice is a GLib/GTK+ set of document-centric objects and utilities.

@@ -891,4 +891,12 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
     <comment>New stable release (forwarded request 1063293 from iznogood)</comment>
     <requestid>1063400</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>1b79ff3219b6ccf4da0a2da17ae6a7f6</srcmd5>
+    <version>0.10.56</version>
+    <time>1699478284</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124111</requestid>
+  </revision>
 </revisionlist>
