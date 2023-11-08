@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  4 17:46:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 5.3.0:
+  * Built-in CSV file parsing (--csv)
+  * Support a new \u escape sequence for specifying code points in
+    multi-byte encodings
+  * Pipe output is buffered if PROCINFO["BUFFERPIPE"] exists
+
+-------------------------------------------------------------------
 Sat May 13 08:31:16 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - enable profiling

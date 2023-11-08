@@ -17,7 +17,7 @@
 
 
 Name:           gawk
-Version:        5.2.2
+Version:        5.3.0
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
@@ -42,7 +42,6 @@ almost completely POSIX 1003.2 compliant.
 %autosetup -p1
 
 %build
-%configure
 export CFLAGS="%{optflags}"
 %configure
 %if %{do_profiling}
