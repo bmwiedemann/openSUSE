@@ -27,7 +27,7 @@ Source1:        sysusers.attr
 Source2:        sysusers-generate-pre
 Source3:        macros.sysusers
 Source4:        sysusers2shadow.sh
-Patch:          disable-systemd-sysusers.patch
+Patch0:         disable-systemd-sysusers.patch
 BuildArch:      noarch
 Requires:       sysuser-shadow
 #!BuildIgnore:  sysuser-shadow
