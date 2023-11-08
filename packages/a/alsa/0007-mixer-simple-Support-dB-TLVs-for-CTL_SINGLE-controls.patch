@@ -1,0 +1,42 @@
+From f202ec3c23abf16a2382acc0de35900173e32160 Mon Sep 17 00:00:00 2001
+From: Hector Martin <marcan@marcan.st>
+Date: Sat, 28 Oct 2023 21:33:29 +0900
+Subject: [PATCH] mixer: simple: Support dB TLVs for CTL_SINGLE controls
+
+dB mappings do not work for controls not named "* Volume", since we do not
+fall back to CTL_SINGLE in get_selem_ctl. Add that branch to make it
+work.
+
+Fixes dB ranges for e.g. controls named "* Gain".
+
+Closes: https://github.com/alsa-project/alsa-lib/pull/358
+Signed-off-by: Hector Martin <marcan@marcan.st>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/mixer/simple_none.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/mixer/simple_none.c b/src/mixer/simple_none.c
+index 846b0ca92467..dd03fcf13d01 100644
+--- a/src/mixer/simple_none.c
++++ b/src/mixer/simple_none.c
+@@ -1155,11 +1155,12 @@ static selem_ctl_t *get_selem_ctl(selem_none_t *s, int dir)
+ 		c = &s->ctls[CTL_CAPTURE_VOLUME];
+ 	else
+ 		return NULL;
+-	if (! c->elem) {
++	if (! c->elem)
+ 		c = &s->ctls[CTL_GLOBAL_VOLUME];
+-		if (! c->elem)
+-			return NULL;
+-	}
++	if (! c->elem)
++		c = &s->ctls[CTL_SINGLE];
++	if (! c->elem)
++		return NULL;
+ 	if (c->type != SND_CTL_ELEM_TYPE_INTEGER)
+ 		return NULL;
+ 	return c;
+-- 
+2.35.3
+

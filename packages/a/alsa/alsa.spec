@@ -61,6 +61,11 @@ Patch2:         0002-global.h-move-__STRING-macro-outside-PIC-ifdef-block.patch
 Patch3:         0003-pcm-Fix-segfault-with-32bit-libs.patch
 Patch4:         0004-reshuffle-included-files-to-include-config.h-as-firs.patch
 Patch5:         0005-seq-Fix-typos-in-symbol-version-definitions.patch
+Patch6:         0006-seq-Fix-invalid-sanity-check-in-snd_seq_set_input_bu.patch
+Patch7:         0007-mixer-simple-Support-dB-TLVs-for-CTL_SINGLE-controls.patch
+Patch8:         0008-seq-Clear-UMP-event-flag-for-legacy-apps.patch
+Patch9:         0009-seq-Simplify-snd_seq_extract_output.patch
+Patch10:        0010-seq-Check-protocol-compatibility-with-the-current-ve.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -148,13 +153,7 @@ This package contains the library for ALSA topology support.
 %endif
 
 %prep
-%setup -q -n alsa-lib-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch101 -p1
+%autosetup -p1 -n alsa-lib-%{version}
 
 %build
 # disable LTO; otherwise some apps confused with versioned symbols (boo#1149461)

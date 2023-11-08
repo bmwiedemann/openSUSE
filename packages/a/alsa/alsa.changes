@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  7 14:51:05 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Backport upstream fixes for sequencer and mixer:
+  0006-seq-Fix-invalid-sanity-check-in-snd_seq_set_input_bu.patch 
+  0007-mixer-simple-Support-dB-TLVs-for-CTL_SINGLE-controls.patch 
+  0008-seq-Clear-UMP-event-flag-for-legacy-apps.patch 
+  0009-seq-Simplify-snd_seq_extract_output.patch 
+  0010-seq-Check-protocol-compatibility-with-the-current-ve.patch 
+- Clean up spec file
+
+-------------------------------------------------------------------
 Tue Oct 10 06:38:35 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Fix symbol version:
