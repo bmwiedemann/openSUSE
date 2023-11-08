@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:37:35 UTC 2023 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.14.0
+  * add susChkSrv HA/DR provider
+  * make providers configurable
+
+-------------------------------------------------------------------
 Mon Nov  7 08:59:19 UTC 2022 - Steven Stringer <steven.stringer@suse.com>
 
 - Version bump 0.13.1
