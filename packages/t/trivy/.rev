@@ -997,4 +997,16 @@
 (🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/9 by dirkmueller)</comment>
     <requestid>1104218</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>3fbb5a32ba6e3ebe6b63dbbeacc94cc6</srcmd5>
+    <version>0.47.0</version>
+    <time>1699478354</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.47.0
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/2 by dirkmueller)</comment>
+    <requestid>1124268</requestid>
+  </revision>
 </revisionlist>
