@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Thu Sep 14 17:16:34 UTC 2023 - david.mulder@suse.com
+
+- Update to version 0.1.0+git.2.2391ac0:
+  * Update version to 0.1.0
+  * Update the README
+  * idprovider: Fix mixed case auth failure
+  * daemon: Port daemon changes from kanidm
+  * provider: Skip provider init on silent auth and offline
+  * daemon: Run himmelblaud as non-root dynamic user
+
+-------------------------------------------------------------------
+Tue Sep 12 21:12:46 UTC 2023 - david.mulder@suse.com
+
+- Update to version 0.0.4+git.50.112df77:
+  * Always match DAG where present
+  * Prohibit authentication with changing IDs
+
+-------------------------------------------------------------------
+Fri Sep 08 14:16:20 UTC 2023 - david.mulder@suse.com
+
+- Update to version 0.0.4+git.42.d641c8b:
+  * Run cargo fmt and cargo clippy
+  * Implement DeviceAuthorizationGrant for MFA
+  * test: Initialize the pam_allow_groups with users
+  * Use new pam state machine in himmelblau
+  * Remove the non-functional device enrollment
+  * TODO: New details regarding MS auth cache
+  * daemon: Implement pam allow groups
+  * Code rearrangement
+
+-------------------------------------------------------------------
+Thu Aug 10 14:55:54 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.4+git.30.26c26e7:
+  * aad-tool: Disable enrollment by default
+  * provider: Fetch GECOS from old token on silent acquire
+  * msal: Add bindings for device auth flow
+  * Add debug for local user ignore
+  * provider: Only retry auth if we're sure group read was requested
+  * provider: Provide user token refresh
+  * provider: Cause unix_group_get to respond with BadRequest
+  * provider: Implement provider_authenticate
+
+-------------------------------------------------------------------
+Tue Aug 08 19:29:40 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.4+git.9.a7c5ac2:
+  * osc breaks with workspace errors using symlinks
+  * gp: Disable MDM policies by default
+
+-------------------------------------------------------------------
+Mon Aug 07 20:31:52 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.4+git.3.b500f1f:
+  * Update serde version
+  * Update version to 0.0.4
+  * Only build necessary bits of kanidm proto
+  * Add cache operations to daemon and aad-tool
+  * tests: Include local cache of rust deps
+  * cache: Use the kanidm cache backend
+
+-------------------------------------------------------------------
+Mon Jul 31 21:16:59 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.3+git.10.761b4d2:
+  * gp: Apply chromium policies
+  * gp: Implement Group Policy object listing
+  * test: Fix build test failure
+  * tests: Return the correct error code from tests
+  * test: Separate project build from docker build
+  * tests: Deploy config when testing
+
+-------------------------------------------------------------------
+Tue Jul 18 18:54:07 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.3+git.3.f0883b1:
+  * nss: Fix misaligned pointer dereference errors
+  * Fix code links
+
+-------------------------------------------------------------------
+Mon Jul 17 19:43:26 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.3+git.1.e6847eb:
+  * Revert "nss: Use kanidm nss code"
+  * Update lib versions to match package version
+  * Shallow clone kanidm for pam/nss
+  * tests: Fix tar recursion
+
+-------------------------------------------------------------------
+Fri Jul 14 17:23:46 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.2+git.22.1c3ce4b:
+  * Remove symlinks and just point to kanidm sources
+  * nss: Use kanidm nss code
+  * Add submodule commands to main Makefile
+  * pam: Use kanidm pam code, glue into himmelblau
+  * TODO: Only auth to configured domains
+
+-------------------------------------------------------------------
+Mon Jul 10 21:19:19 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.2+git.15.d42b114:
+  * aad-tool: Enroll via the daemon
+  * config: Add func for requesting configured socket path
+  * aad-tool: Improve enroll options
+
+-------------------------------------------------------------------
+Mon Jul 10 19:23:50 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.2+git.11.91df240:
+  * daemon: Add a systemd service
+  * daemon: Don't request group read scope if using Intune
+  * TODO: Mention the work needed for the cache
+  * README: Include homedir creation instructions
+  * daemon: If auth fails, indicate the user
+
+-------------------------------------------------------------------
+Fri Jul 07 16:18:10 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.2+git.6.de1afd6:
+  * test: Ensure invalid users aren't cached
+  * test: Skip getent group tests failing due to nss issue
+  * tests: Add nss tests
+  * tests: Test pam auth
+  * msal: Allow fetching auth url
+
+-------------------------------------------------------------------
+Wed Jun 28 16:55:26 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.2+git.0.5bfbedd:
+  * cache: Make the cache persistent
+  * TODO: Cannot fudge an initial nss request
+  * Use tracing for debug instead of log
+  * aad-tool: Fix some build warnings
+  * aad-tool: Add TODO comments regarding enrollment issues
+  * aad-tool: Always use interactive enrollment
+  * fix readme
+  * aad-tool: Save the device_id after enrollment
+  * aad-tool: Cannot enroll in Intune Portal directly
+  * aad-tool: Parse the enrollment response
+  * aad-tool: Add a enroll command for Azure AD device
+  * memcache: Only append existing group member if missing
+  * himmelblaud: Fix login when Intune errors on group read
+  * memcache: Create a memcache for user and group caching
+  * TODO: Group memberships
+  * TODO: NSS requests via GET reqs
+  * config: Include default for authority_host
+  * config: Specify constants for defaults
+  * Cleanup the build depencencies
+  * TODO: Fix the headings
+  * TODO: Add major reqs section
+  * Cause the odc provider to supply the authority_host
+  * TODO: Use tracing module
+  * Include offline logon in todo list
+  * Add a TODO list
+  * Discover the tenant_id in the same manner as Intune
+  * himmelblaud: Debug for unknown user/group
+  * himmelblaud: Fix failure to cache user
+  * himmelblaud: Pam Allowed and Sessions stubs
+  * himmelblaud: Implement NssGroupByGid and NssAccountByUid
+  * himmelblaud: Implement group lookups
+  * Include the gecos in the mem cache
+  * Use config for shell, homedir, uid range, tenant
+  * Improve Developer Readme
+  * config: Config should not default app_id
+  * Remove invalid comment
+  * himmelblaud: Return with failure without tenant_id
+  * config: Move the config to unix_common module
+  * himmelblaud: Make the socket path configurable
+  * himmelblaud: Use Intune portal when app_id unset
+
+-------------------------------------------------------------------
+Fri Jun 02 21:16:00 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.1+git.15.f9a024e:
+  * Generate unix uid/gid
+  * himmelblaud: Stubs for NssGroupByName and NssGroups
+  * himmelblaud: Fix auth failure error message
+  * himmelblaud: Open socket with permissions for users to read/write
+  * msal: Fix nssaccountbyname lookup
+  * himmelblaud: Improve logging
+  * Include systemd journal logging
+  * msal: Fix failure parsing user token dict
+  * Implement simple NssAccountByName
+  * Implement basic NssAccounts request
+  * pam: Fix unused variable warning
+  * himmelblaud: Rewrite the daemon in Rust
+  * msal: Add a simple rust binding to python msal
+  * Remove the python daemon in favor of Rust
+
+-------------------------------------------------------------------
+Fri May 26 20:48:17 UTC 2023 - dmulder@suse.com
+
+- Update to version 0.0.1+git.0.56eb9f0:
+  * himmelblaud: Implement nss lookups in the daemon
+  * himmelblaud: Allow anyone to r/w the socket
+  * himmelblaud: Implement simple nss getpwent name
+  * pam: Remove account allowed and being session impl
+  * unix_common: UID and GID need not match
+  * himmelblaud: Improve the debug output
+  * himmelblaud: Remove stdout debug since logging to journald
+  * himmelblaud: Log to the systemd journal
+  * nss: Add the nss module
+  * Improve directory structure
+

@@ -1,0 +1,10 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/ubuntu/libnss-rs.git?branch=misc-fixes"]
+git = "https://github.com/ubuntu/libnss-rs.git"
+branch = "misc-fixes"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
