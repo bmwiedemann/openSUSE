@@ -45,4 +45,17 @@
   * Add ruff</comment>
     <requestid>1100444</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9bdeb11e016088b4ef3750782f697894</srcmd5>
+    <version>1.1.1</version>
+    <time>1699478231</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.1:
+  * Fix native toml documentation does not match code
+  * Fix type checker
+  * Drop the pytest dot
+  * Add native toml support
+  * Disable plugin autoloading in the test suite</comment>
+    <requestid>1124084</requestid>
+  </revision>
 </revisionlist>
