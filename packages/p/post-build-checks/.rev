@@ -988,4 +988,13 @@ Marcus
   * Revert &quot;Set SOURCE_DATE_EPOCH&quot;</comment>
     <requestid>1121441</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>c08d3261da38bc03ee7d3ac3b87228b0</srcmd5>
+    <version>84.87+git20231107.61af484</version>
+    <time>1699478189</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20231107.61af484:
+  * Add abuild to trusted group without using usermod</comment>
+    <requestid>1123797</requestid>
+  </revision>
 </revisionlist>

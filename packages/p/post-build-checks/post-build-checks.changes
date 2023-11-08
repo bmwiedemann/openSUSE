@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 07 09:34:30 UTC 2023 - dmueller@suse.com
+
+- Update to version 84.87+git20231107.61af484:
+  * Add abuild to trusted group without using usermod
+
+-------------------------------------------------------------------
 Tue Oct 31 12:57:16 UTC 2023 - dmueller@suse.com
 
 - Update to version 84.87+git20231031.bfa988b:
