@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-gempc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
 Version:        1.0.8
 Release:        0
-Url:            http://ludovic.rousseau.free.fr/softwares/ifd-GemPC/
+URL:            http://ludovic.rousseau.free.fr/softwares/ifd-GemPC/
 Summary:        PCSC driver for the Gemplus GemPC 410/430 smartcard readers
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Security
@@ -31,7 +31,7 @@ Source:         http://ludovic.rousseau.free.fr/softwares/ifd-GemPC/%{_name}-%{v
 Source1:        http://ludovic.rousseau.free.fr/softwares/ifd-GemPC/%{_name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE pcsc-gempc-1.0.0-devname.diff okir@suse.de -- Use standard device nodes.
-Patch:          %{_name}-1.0.0-devname.diff
+Patch0:         %{_name}-1.0.0-devname.diff
 # PATCH-FIX-OPENSUSE pcsc-gempc-makefile.diff mjancar@suse.cz -- Fix build environment.
 Patch1:         %{_name}-1.0.0-makefile.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -50,7 +50,7 @@ pcsc-lite package.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch
+%patch0
 %patch1
 mv README.410 README_410
 mv README.430 README_430
