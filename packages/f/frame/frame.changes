@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 16:04:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Sep 29 01:51:58 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - add frame-cstdio.patch, fix FTBFS for TW

@@ -1,7 +1,7 @@
 #
 # spec file for package frame
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@ Name:           frame
 Version:        2.5.0+bzr20160809
 Release:        0
 Summary:        Touch frame library
-License:        LGPL-3.0-only AND GPL-3.0-only
+License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://launchpad.net/frame
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_version}.orig.tar.gz
 Source1:        baselibs.conf
-Patch:          frame-cstdio.patch
+Patch0:         frame-cstdio.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -70,7 +70,7 @@ This package includes the development files for frame.
 
 %prep
 %setup -q -c
-%patch -p1
+%patch0 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
