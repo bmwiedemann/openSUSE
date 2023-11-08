@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f44c688a5433d4642334026f5dbcdaf</srcmd5>
+    <version>0.5.3.1</version>
+    <time>1699478358</time>
+    <user>anag+factory</user>
+    <comment>The Python bindings bundled with libkdumpfile are now deprecated in favour of this package. To prevent regression, submit to Factory before disabling Python build in libkdumpfile.
+Version obsolete has been solved with a new upstream release, as long as this SR is accepted together with a libkdumpfile SR.</comment>
+    <requestid>1124285</requestid>
+  </revision>
+</revisionlist>

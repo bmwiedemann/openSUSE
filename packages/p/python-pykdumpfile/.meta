@@ -1,0 +1,5 @@
+<package name="python-pykdumpfile" project="openSUSE:Factory">
+  <title>libkdumpfile Python bindings</title>
+  <description>Access the libaddrxlat and libkdumpfile libraries from Python.</description>
+  <devel project="Kernel:kdump" package="python-pykdumpfile"/>
+</package>
