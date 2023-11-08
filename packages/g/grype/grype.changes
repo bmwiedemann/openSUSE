@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 08 05:53:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.0:
+  * chore(deps): update Syft to v0.95.0 (#1591)
+  * chore: account for syft package metadata changes (#1423)
+  * fix: bump fangs to enable setting golang CPE config using env
+    var (#1585)
+  * chore(deps): update bootstrap tools to latest versions (#1588)
+  * chore(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+    (#1586)
+  * chore: bootstrap action cleanup (#1587)
+  * chore(deps): update bootstrap tools to latest versions (#1584)
+  * Incorporate format API changes from syft (#1582)
+  * chore(deps): bump github.com/docker/docker (#1579)
+  * feat(config): added reason field (#1532)
+  * chore(deps): bump github.com/glebarez/sqlite from 1.9.0 to
+    1.10.0 (#1583)
+  * Colorize severity in table output (#1284)
+  * feat: add custom maven comparator (#1571)
+  * chore: fix path to quality tests (#1578)
+  * capture quality gate state on failures (#1576)
+  * chore(deps): bump github.com/google/uuid from 1.3.1 to 1.4.0
+    (#1575)
+  * chore(deps): update bootstrap tools to latest versions (#1574)
+  * chore(deps): bump google.golang.org/grpc from 1.56.0 to 1.56.3
+    (#1573)
+  * docs: add cbl-mariner to supported distro (#1569)
+  * chore(deps): bump ossf/scorecard-action from 2.3.0 to 2.3.1
+    (#1570)
+  * chore(deps): update bootstrap tools to latest versions (#1567)
+
+-------------------------------------------------------------------
 Fri Nov  3 09:14:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.21
