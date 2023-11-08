@@ -1,7 +1,7 @@
 #
 # spec file for package dkimproxy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,13 @@ Group:          Productivity/Networking/Email/Utilities
 Name:           dkimproxy
 Version:        1.4.1
 Release:        0
-URL:            http://dkimproxy.sourceforge.net/
+URL:            https://dkimproxy.sourceforge.net/
 Source:         %{name}-%{version}.tar.gz
 Source2:        %{name}.sysconfig
 Source3:        %{name}-in.service
 Source4:        %{name}-out.service
 Source5:        %{name}_env.sh
+Source6:        %{name}-tmpfiles
 %define services %{name}-in.service %{name}-out.service
 
 Patch0:         dkimproxy-1.4.1-avoid-perl-provides.diff
@@ -43,7 +44,8 @@ BuildRequires:  git-core
 BuildRequires:  perl-Mail-DKIM
 BuildRequires:  perl-Net-Server
 BuildRequires:  pwdutils
-PreReq:         pwdutils %fillup_prereq
+PreReq:         %fillup_prereq
+PreReq:         pwdutils
 Requires:       git-core
 Requires:       perl-Mail-DKIM
 Requires:       perl-Net-Server
@@ -76,6 +78,8 @@ chmod 644 $( find %{buildroot}/%{dkimproxy_prefix} -name "*.pm" )
     install -m 0644 %{S:3} %{buildroot}%{_unitdir}/
     install -m 0644 %{S:4} %{buildroot}%{_unitdir}/
     install -m 0755 %{S:5} %{buildroot}%{_libexecdir}/%{name}
+    mkdir -p %{buildroot}%{_tmpfilesdir}
+    install -m 0744 %{S:6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 # ---------------------------------------------------------------------------
 ### Clean up buildroot
@@ -96,19 +100,23 @@ find %{buildroot} -name .packlist -exec %{__rm} {} \;
 %post
 %service_add_post %services
 %{fillup_only}
+%tmpfiles_create %{name}.conf
 
 %postun
 %service_del_postun %services
 
 %files
 %defattr(-, root, root, 0755)
-%doc AUTHORS ChangeLog INSTALL NEWS README TODO smtpprox.ChangeLog smtpprox.README smtpprox.TODO 
+%doc AUTHORS ChangeLog INSTALL NEWS README TODO smtpprox.ChangeLog smtpprox.README smtpprox.TODO
 %license COPYING
 %{dkimproxy_prefix}
 %{_fillupdir}/sysconfig.%{name}
 %{_unitdir}/%{name}-in.service
 %{_unitdir}/%{name}-out.service
 %{_libexecdir}/%{name}/
+%dir %{_tmpfilesdir}
+%{_tmpfilesdir}/%{name}.conf
+%ghost %{_rundir}/%{name}
 # ---------------------------------------------------------------------------
 
 %changelog

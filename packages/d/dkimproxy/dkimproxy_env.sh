@@ -5,10 +5,10 @@
 # systemd unit files.
 
 if [ -r /etc/sysconfig/dkimproxy ]; then
-	cat /etc/sysconfig/dkimproxy > /run/sysconfig/dkimproxy
+	cat /etc/sysconfig/dkimproxy > /run/dkimproxy/sysconfig
 fi
 
-echo "#Fully qualified hostanme" >> /run/sysconfig/dkimproxy
-echo "HFQHN=$( hostname -f )" >> /run/sysconfig/dkimproxy
+echo "#Fully qualified hostanme" >> /run/dkimproxy/sysconfig
+echo "FQHN=$( hostname -f )" >> /run/dkimproxy/sysconfig
 
 
