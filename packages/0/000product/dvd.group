@@ -2988,6 +2988,9 @@
     <package name="net-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="netcat-openbsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="netdata" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="netdata-plugin-cups" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="netdata-plugin-go" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="netpbm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nfs-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="nfs-kernel-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
@@ -3419,6 +3422,7 @@
     <package name="python311-Mako" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-MarkupSafe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-Pillow" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
+    <package name="python311-PyMySQL" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python311-PyNaCl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-PySocks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-PyYAML" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
