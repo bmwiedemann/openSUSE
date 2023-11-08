@@ -17,7 +17,7 @@
 
 
 Name:           python-specfile
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
@@ -29,8 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       %{python_module typing_extensions}
 Requires:       python-rpm
+Requires:       python-typing_extensions
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flexmock}

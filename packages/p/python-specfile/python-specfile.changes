@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  8 10:08:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.24.0:
+  - Improved type annotations for UserList subclasses. (#299)
+  - Macro definitions gained a new commented_out property
+    indicating that a macro definition is commented out. Another
+    new property, comment_out_style, determines if it is achieved
+    by using a %dnl (discard next line) directive (e.g. %dnl
+    %global prerelease beta2) or by replacing the starting % with
+    # (e.g. #global prerelease beta2). (#298)
+- Fix a bad Requires: %{python_module typing_extensions}
+
+-------------------------------------------------------------------
 Mon Oct 30 10:14:03 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.23.0:

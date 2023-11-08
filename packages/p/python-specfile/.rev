@@ -154,4 +154,21 @@
     <comment></comment>
     <requestid>1121152</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e69a51ff74b8b31b29321dca3b575fa1</srcmd5>
+    <version>0.24.0</version>
+    <time>1699478327</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.24.0:
+  - Improved type annotations for UserList subclasses. (#299)
+  - Macro definitions gained a new commented_out property
+    indicating that a macro definition is commented out. Another
+    new property, comment_out_style, determines if it is achieved
+    by using a %dnl (discard next line) directive (e.g. %dnl
+    %global prerelease beta2) or by replacing the starting % with
+    # (e.g. #global prerelease beta2). (#298)
+- Fix a bad Requires: %{python_module typing_extensions}
+</comment>
+    <requestid>1124208</requestid>
+  </revision>
 </revisionlist>
