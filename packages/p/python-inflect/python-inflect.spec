@@ -18,17 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-inflect
-Version:        6.0.4
+Version:        7.0.0
 Release:        0
 Summary:        Methods for working on numbers and nouns
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/inflect
 Source0:        https://files.pythonhosted.org/packages/source/i/inflect/inflect-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 1.9.1}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -57,7 +58,8 @@ Correctly generate plurals, singular nouns, ordinals, indefinite articles; conve
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%doc NEWS.rst README.rst
+%{python_sitelib}/inflect
+%{python_sitelib}/inflect-%{version}*-info
 
 %changelog

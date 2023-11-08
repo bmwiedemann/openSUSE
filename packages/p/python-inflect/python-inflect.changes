@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov  7 14:57:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Refine type hint for ``singular_noun`` to indicate a literal
+    return type for ``False``. (#186)
+  * Removed methods renamed in 0.2.0.
+  * Project now supports Pydantic 2 while retaining support for
+    Pydantic 1. (#187)
+  * Added validation of user-defined words and amended the type
+    declarations to match, allowing for null values but not empty
+    strings. (#187)
+  * ``ordinal`` now handles float types correctly without first
+    coercing them to strings. (#178)
+  * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
+Tue Nov  7 14:56:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.5:
+  * Pin to Pydantic 1 to avoid breaking in Pydantic 2.
+
+-------------------------------------------------------------------
 Wed May 10 06:42:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.4:
@@ -82,7 +104,7 @@ Tue Jun 11 08:38:40 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * Relicensed under the more permissive MIT License.
   * fix inconsistencies with the inflect method
   * Improved unicode handling.
-  * Fix capitalization issues in processes where more than one word 
+  * Fix capitalization issues in processes where more than one word
     is involved.
   * fix extraneous close parentheses.
   * Dropped support for Python 3.3.

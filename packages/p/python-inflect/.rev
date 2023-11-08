@@ -84,4 +84,28 @@
   * Refreshed package metadata.</comment>
     <requestid>1085979</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c79bad048e83f108ffb0c74ae8861217</srcmd5>
+    <version>7.0.0</version>
+    <time>1699478210</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.0:
+  * Refine type hint for ``singular_noun`` to indicate a literal
+    return type for ``False``. (#186)
+  * Removed methods renamed in 0.2.0.
+  * Project now supports Pydantic 2 while retaining support for
+    Pydantic 1. (#187)
+  * Added validation of user-defined words and amended the type
+    declarations to match, allowing for null values but not empty
+    strings. (#187)
+  * ``ordinal`` now handles float types correctly without first
+    coercing them to strings. (#178)
+  * Require Python 3.8 or later.
+
+- update to 6.0.5:
+  * Pin to Pydantic 1 to avoid breaking in Pydantic 2.
+
+  * Fix capitalization issues in processes where more than one word</comment>
+    <requestid>1124031</requestid>
+  </revision>
 </revisionlist>
