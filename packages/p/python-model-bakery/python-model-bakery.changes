@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov  7 20:02:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.0:
+  * Add support to `auto_now` and `auto_now_add` fields.
+  * Remove unnecessary casting to string methods
+    `random_gen.gen_slug` and `random_gen.gen_string`
+  * Improved performance of `Baker.get_fields()`
+  * Add Python 3.12 support
+  * Revert erroneous optimisation of related logic (fix #439)
+  * forward "_create_files" flag to child generators for
+    relational fields
+  * Small improvements to `recipe.py::_mapping`
+  * Improvements to `baker.py::bulk_create`
+  * Drop `baker.py::is_iterator`
+  * Drop Python 3.7 support (reached end of life)
+  * Add support for global seeding to baker random generation
+  * Fix utils.seq with start=0
+  * Add psycopg3 support for Django 4.2
+  * Enforce Python 3.7 as a minimum version in project metadata
+  * dropped support for `FloatRangeField` as it was removed in
+    Django 3.1
+  * Django 4.2 support
+
+-------------------------------------------------------------------
 Wed Jan 25 23:51:55 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.9.0

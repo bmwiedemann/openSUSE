@@ -16,26 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-model-bakery
-Version:        1.9.0
+Version:        1.17.0
 Release:        0
 Summary:        Smart object creation facility for Django
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/model-bakers/model_bakery
-Source:         https://files.pythonhosted.org/packages/source/m/model-bakery/model_bakery-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+URL:            https://github.com/model-bakers/model_bakery
+Source:         https://github.com/model-bakers/model_bakery/archive/refs/tags/%{version}.tar.gz#/model-bakery-%{version}-gh.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django >= 2.2
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module pytest-django}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Django >= 2.2
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,10 +45,10 @@ Smart object creation facility for Django.
 %setup -q -n model_bakery-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +58,7 @@ export PYTHONPATH=${PWD}
 %files %{python_files}
 %doc CHANGELOG.md README.md docs/source/*.rst
 %license LICENSE
-%{python_sitelib}/model[-_]bakery*/
+%{python_sitelib}/model_bakery
+%{python_sitelib}/model_bakery-%{version}.dist-info
 
 %changelog

@@ -23,4 +23,31 @@
     <comment></comment>
     <requestid>1061075</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>182bc3216c850f6b3fc383a405009a82</srcmd5>
+    <version>1.17.0</version>
+    <time>1699478268</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.17.0:
+  * Add support to `auto_now` and `auto_now_add` fields.
+  * Remove unnecessary casting to string methods
+    `random_gen.gen_slug` and `random_gen.gen_string`
+  * Improved performance of `Baker.get_fields()`
+  * Add Python 3.12 support
+  * Revert erroneous optimisation of related logic (fix #439)
+  * forward &quot;_create_files&quot; flag to child generators for
+    relational fields
+  * Small improvements to `recipe.py::_mapping`
+  * Improvements to `baker.py::bulk_create`
+  * Drop `baker.py::is_iterator`
+  * Drop Python 3.7 support (reached end of life)
+  * Add support for global seeding to baker random generation
+  * Fix utils.seq with start=0
+  * Add psycopg3 support for Django 4.2
+  * Enforce Python 3.7 as a minimum version in project metadata
+  * dropped support for `FloatRangeField` as it was removed in
+    Django 3.1
+  * Django 4.2 support</comment>
+    <requestid>1124091</requestid>
+  </revision>
 </revisionlist>
