@@ -10035,8 +10035,8 @@ unsorted:
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise1 
-  - libOpenImageIO2_4 
-  - libOpenImageIO_Util2_4 
+  - libOpenImageIO2_5 
+  - libOpenImageIO_Util2_5 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
@@ -11831,7 +11831,7 @@ unsorted:
   - libfm-qt-data 
   - libfm-qt-devel 
   - libfm-qt-lang 
-  - libfm-qt13 
+  - libfm-qt14 
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
@@ -13563,14 +13563,8 @@ unsorted:
   - libopenjp2-7-32bit 
   - libopenjp2-7-x86-64-v3 
   - libopenlibm4 
-  - libopenmpi1-gnu-hpc 
-  - libopenmpi2-gnu-hpc 
-  - libopenmpi3-gnu-hpc 
   - libopenmpi4-gnu-hpc 
   - libopenmpi5-gnu-hpc 
-  - libopenmpi_1_10_7-gnu-hpc 
-  - libopenmpi_2_1_6-gnu-hpc 
-  - libopenmpi_3_1_6-gnu-hpc 
   - libopenmpi_4_1_6-gnu-hpc 
   - libopenmpi_5_0_0-gnu-hpc 
   - libopenmpt-devel 
@@ -14518,7 +14512,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_3_4 
+  - librssguard-4_5_3 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16469,6 +16463,8 @@ unsorted:
   - lxqt-globalkeys 
   - lxqt-globalkeys-devel 
   - lxqt-globalkeys-lang 
+  - lxqt-menu-data 
+  - lxqt-menu-data-devel 
   - lxqt-notificationd 
   - lxqt-notificationd-lang 
   - lxqt-openssh-askpass 
@@ -18055,7 +18051,14 @@ unsorted:
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
-  - netdata 
+  - netdata-plugin-apps 
+  - netdata-plugin-chartsd 
+  - netdata-plugin-debugfs 
+  - netdata-plugin-freeipmi 
+  - netdata-plugin-nfacct 
+  - netdata-plugin-perf 
+  - netdata-plugin-pythond 
+  - netdata-plugin-slabinfo 
   - netdate 
   - netdiscover 
   - netease-cloud-music-gtk 
@@ -19042,42 +19045,6 @@ unsorted:
   - openmarkup 
   - openmarkup-javadoc 
   - openmarkup-manual 
-  - openmpi1 
-  - openmpi1-config 
-  - openmpi1-devel 
-  - openmpi1-docs 
-  - openmpi1-gnu-hpc 
-  - openmpi1-gnu-hpc-devel 
-  - openmpi1-gnu-hpc-devel-static 
-  - openmpi1-gnu-hpc-docs 
-  - openmpi1-gnu-hpc-macros-devel 
-  - openmpi1-libs 
-  - openmpi1-macros-devel 
-  - openmpi1-testsuite 
-  - openmpi2 
-  - openmpi2-config 
-  - openmpi2-devel 
-  - openmpi2-docs 
-  - openmpi2-gnu-hpc 
-  - openmpi2-gnu-hpc-devel 
-  - openmpi2-gnu-hpc-devel-static 
-  - openmpi2-gnu-hpc-docs 
-  - openmpi2-gnu-hpc-macros-devel 
-  - openmpi2-libs 
-  - openmpi2-macros-devel 
-  - openmpi2-testsuite 
-  - openmpi3 
-  - openmpi3-config 
-  - openmpi3-devel 
-  - openmpi3-docs 
-  - openmpi3-gnu-hpc 
-  - openmpi3-gnu-hpc-devel 
-  - openmpi3-gnu-hpc-devel-static 
-  - openmpi3-gnu-hpc-docs 
-  - openmpi3-gnu-hpc-macros-devel 
-  - openmpi3-libs 
-  - openmpi3-macros-devel 
-  - openmpi3-testsuite 
   - openmpi4 
   - openmpi4-config 
   - openmpi4-devel 
@@ -19103,24 +19070,6 @@ unsorted:
   - openmpi5-libs 
   - openmpi5-macros-devel 
   - openmpi5-testsuite 
-  - openmpi_1_10_7-gnu-hpc 
-  - openmpi_1_10_7-gnu-hpc-devel 
-  - openmpi_1_10_7-gnu-hpc-devel-static 
-  - openmpi_1_10_7-gnu-hpc-docs 
-  - openmpi_1_10_7-gnu-hpc-macros-devel 
-  - openmpi_1_10_7-gnu-hpc-testsuite 
-  - openmpi_2_1_6-gnu-hpc 
-  - openmpi_2_1_6-gnu-hpc-devel 
-  - openmpi_2_1_6-gnu-hpc-devel-static 
-  - openmpi_2_1_6-gnu-hpc-docs 
-  - openmpi_2_1_6-gnu-hpc-macros-devel 
-  - openmpi_2_1_6-gnu-hpc-testsuite 
-  - openmpi_3_1_6-gnu-hpc 
-  - openmpi_3_1_6-gnu-hpc-devel 
-  - openmpi_3_1_6-gnu-hpc-devel-static 
-  - openmpi_3_1_6-gnu-hpc-docs 
-  - openmpi_3_1_6-gnu-hpc-macros-devel 
-  - openmpi_3_1_6-gnu-hpc-testsuite 
   - openmpi_4_1_6-gnu-hpc 
   - openmpi_4_1_6-gnu-hpc-devel 
   - openmpi_4_1_6-gnu-hpc-devel-static 
@@ -25311,7 +25260,6 @@ unsorted:
   - python310-python-redmine 
   - python310-python-rpm-spec 
   - python310-python-rtmidi 
-  - python310-python-rtmidi-doc 
   - python310-python-slugify 
   - python310-python-snappy 
   - python310-python-socketio 
@@ -26224,7 +26172,6 @@ unsorted:
   - python311-PyMeta3 
   - python311-PyMsgBox 
   - python311-PyMuPDF 
-  - python311-PyMySQL 
   - python311-PyNamecheap 
   - python311-PyOgg 
   - python311-PyOpenAL 
@@ -28686,7 +28633,6 @@ unsorted:
   - python311-python-redmine 
   - python311-python-rpm-spec 
   - python311-python-rtmidi 
-  - python311-python-rtmidi-doc 
   - python311-python-snappy 
   - python311-python-socketio 
   - python311-python-socks 
@@ -32181,7 +32127,6 @@ unsorted:
   - python39-python-redmine 
   - python39-python-rpm-spec 
   - python39-python-rtmidi 
-  - python39-python-rtmidi-doc 
   - python39-python-slugify 
   - python39-python-snappy 
   - python39-python-socketio 
