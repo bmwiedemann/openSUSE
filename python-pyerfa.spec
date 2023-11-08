@@ -23,16 +23,16 @@
 %bcond_without systemlibs
 %endif
 
-%define erfaversion 2.0.0
+%define erfaversion 2.0.1
 Name:           python-pyerfa
-Version:        2.0.0.3
+Version:        2.0.1.1
 Release:        0
 Summary:        Python bindings for ERFA
 License:        BSD-3-Clause
 URL:            https://github.com/liberfa/pyerfa
 Source:         https://files.pythonhosted.org/packages/source/p/pyerfa/pyerfa-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.7}
 BuildRequires:  %{python_module pytest}
@@ -45,7 +45,7 @@ BuildRequires:  python-rpm-macros
 %if %{with systemlibs}
 BuildRequires:  pkgconfig(erfa) >= %{erfaversion}
 %endif
-Requires:       python-numpy >= 1.17
+Requires:       python-numpy >= 1.19
 %python_subpackages
 
 %description
