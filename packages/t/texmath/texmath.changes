@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 27 16:59:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.4.
+  texmath (0.12.8.4)
+
+    * TeX reader: ignore `\allowbreak` (#230).
+
+    * TeX reader: handle `*{5}{lr}` in array column specifier (#229).
+
+    * OMML reader: allow `m:e` to be missing in `m:nary` (#228).
+      Technically this is not allowed, according to the spec, but
+      Word and LibreOffice seem to tolerate it.
+
+-------------------------------------------------------------------
 Thu Sep 14 02:54:13 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.8.3.
