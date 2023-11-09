@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:17:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix required versions for BuildRequires and Requieres to use
+  right version and to can build under Leap.
+
+-------------------------------------------------------------------
 Thu Oct  5 11:35:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.11.3:

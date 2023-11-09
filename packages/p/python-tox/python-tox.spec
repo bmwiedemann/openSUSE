@@ -35,47 +35,47 @@ Patch0:         optional_devpi_process.patch
 # PATCH-FEATURE-UPSTREAM mark-network-tests.patch bsc#[0-9]+ mcepl@suse.com
 # to skip test which require network access
 Patch1:         mark-network-tests.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module build >= 0.10.0}
-BuildRequires:  %{python_module cachetools >= 5.3}
-BuildRequires:  %{python_module chardet >= 5.1}
+BuildRequires:  %{python_module cachetools >= 5.3.1}
+BuildRequires:  %{python_module chardet >= 5.2}
 BuildRequires:  %{python_module colorama >= 0.4.6}
-BuildRequires:  %{python_module filelock >= 3.11.0}
+BuildRequires:  %{python_module filelock >= 3.12.3}
 BuildRequires:  %{python_module hatch >= 0.3}
-BuildRequires:  %{python_module hatch_vcs}
-BuildRequires:  %{python_module hatchling >= 1.14}
+BuildRequires:  %{python_module hatch_vcs >= 0.3}
+BuildRequires:  %{python_module hatchling >= 1.18}
 BuildRequires:  %{python_module packaging >= 23.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module platformdirs >= 3.5.1}
-BuildRequires:  %{python_module pluggy >= 1.0.0}
+BuildRequires:  %{python_module platformdirs >= 3.10}
+BuildRequires:  %{python_module pluggy >= 1.3}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pyproject-api >= 1.5.1}
+BuildRequires:  %{python_module pyproject-api >= 1.6.1}
 BuildRequires:  %{python_module pytoml >= 0.1}
 BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module setuptools >= 41.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
-BuildRequires:  %{python_module time-machine}
+BuildRequires:  %{python_module time-machine >= 2.12}
 BuildRequires:  %{python_module tomli >= 2.0.1}
-BuildRequires:  %{python_module virtualenv >= 20.21.0}
-BuildRequires:  %{python_module wheel >= 0.29.0}
+BuildRequires:  %{python_module virtualenv >= 20.24.3}
+BuildRequires:  %{python_module wheel >= 0.41.2}
 %if %{with devpi_process}
-BuildRequires:  %{python_module devpi-process}
+BuildRequires:  %{python_module devpi-process > 1}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-BuildRequires:  (python3-importlib-metadata >= 0.12 if python3-base < 3.8)
-BuildRequires:  (python36-importlib-metadata >= 0.12 if python36-base)
-Requires:       python-cachetools
-Requires:       python-chardet
-Requires:       python-colorama
-Requires:       python-filelock >= 3.0.0
-Requires:       python-packaging >= 14
-Requires:       python-platformdirs >= 3.5.1
-Requires:       python-pluggy >= 1.0.0
-Requires:       python-pyproject-api
-Requires:       python-tomli >= 2.0.1
-Requires:       python-virtualenv >= 20.0.8
+BuildRequires:  %{python_module importlib-metadata >= 6.8}
+Requires:       python-cachetools >= 5.3.1
+Requires:       python-chardet >= 5.2
+Requires:       python-colorama >= 0.4.6
+Requires:       python-filelock >= 3.12.3
+Requires:       python-packaging >= 23.1
+Requires:       python-platformdirs >= 3.10
+Requires:       python-pluggy >= 1.3
+Requires:       python-pyproject-api >= 1.6.1
+Requires:       python-virtualenv >= 20.24.3
 Requires:       (python-importlib-metadata >= 0.12 if python3-base < 3.8)
+Requires:       (python-tomli >= 2.0.1 if python3-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # last detox version is 0.19
@@ -84,14 +84,15 @@ Provides:       python-detox > 0.19
 BuildArch:      noarch
 # SECTION setup.cfg [options.extras_requires] testing=
 # (except for pytest-cov and -randomly)
-BuildRequires:  %{python_module flaky >= 3.4.0}
+BuildRequires:  %{python_module flaky >= 3.7.0}
 BuildRequires:  %{python_module freezegun >= 0.3.11}
 BuildRequires:  %{python_module numpy >= 1.25}
-BuildRequires:  %{python_module psutil >= 5.6.1}
-BuildRequires:  %{python_module pytest >= 4.0.0}
-BuildRequires:  %{python_module pytest-mock >= 1.10.0}
+BuildRequires:  %{python_module psutil >= 5.9.5}
+BuildRequires:  %{python_module pytest >= 7.4}
+BuildRequires:  %{python_module pytest-cov >= 4.1}
+BuildRequires:  %{python_module pytest-mock >= 3.11.1}
 BuildRequires:  %{python_module pytest-randomly >= 3.0.0}
-BuildRequires:  %{python_module pytest-xdist >= 1.22.2}
+BuildRequires:  %{python_module pytest-xdist >= 3.3.1}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       tox = %{version}

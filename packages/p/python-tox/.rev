@@ -651,4 +651,15 @@ please add to Staging:E, should fix the tox failure</comment>
  - depend on virtualenv-1.9.1</comment>
     <requestid>1115808</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>054c23abb500f926de62fd7e4cf4f077</srcmd5>
+    <version>4.11.3</version>
+    <time>1699562160</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124399 from ecsos
+
+- Fix required versions for BuildRequires and Requieres to use
+    right version and to can build under Leap.</comment>
+    <requestid>1124422</requestid>
+  </revision>
 </revisionlist>
