@@ -29,12 +29,14 @@ Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kphotoalbum.keyring
 %endif
+Patch0:         kphotoalbum-exiv2.patch
 BuildRequires:  QtAV-devel
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libexiv2-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
@@ -57,7 +59,6 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libvlc)
 Requires:       sqlite3
 Recommends:     marble

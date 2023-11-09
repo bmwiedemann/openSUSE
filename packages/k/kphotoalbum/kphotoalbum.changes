@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  9 12:30:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add kphotoalbum-exiv2.patch: Fix linking against libexiv2.so.
+
+-------------------------------------------------------------------
 Wed Jul 12 16:19:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.11.0
