@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://photoqt.org/
 Source0:        https://gitlab.com/lspies/photoqt/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Patch0:         photoqt-exiv2.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freeimage-devel

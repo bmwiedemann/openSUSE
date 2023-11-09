@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  9 12:39:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add photoqt-exiv2.patch: Fix linking exiv2.
+
+-------------------------------------------------------------------
 Mon Oct  9 15:46:23 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 3.4:
