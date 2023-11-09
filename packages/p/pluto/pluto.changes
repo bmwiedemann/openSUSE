@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 09 14:48:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.6:
+  * Fixing isReplacementAvailableIn logic when field available in
+    is empty (#516)
+
+-------------------------------------------------------------------
 Thu Oct 12 05:31:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.18.5:
