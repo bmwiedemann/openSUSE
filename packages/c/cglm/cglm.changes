@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov  9 08:35:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * Now we have **mat2x3**, **mat2x4**, **mat3x2**, **mat3x4**,
+    **mat4x2** and **mat4x3** types and its functions
+  * README: add build docs for WebAssembly
+  * io: fix test runner.c implicit declaration glm_arch_print
+  * https://github.com/recp/cglm/pull/309: fix and improve
+    CGLM_USE_ANONYMOUS_STRUCT definition with more robust
+    compiler version check
+  * suppress sign conversion warnings
+  * Implement missing 3D
+    Affine Transforms in the Struct API
+  * drop "-Werror" to allow skip warnings on production build
+  * more robust __builtin_assume_aligned detection
+  * reduce glms_mat[4|3|2]_make()'s dest parameter
+  * fix and improve printing arch name in tests
+  * make GLM_TESTS_NO_COLORFUL_OUTPUT work on non-test print
+    colors too
+  * Now we have WASM 128 SIMD support
+  * `CGLM_OMIT_NS_FROM_STRUCT_API`, omits CGLM_STRUCT_API_NS
+    (glms_) namespace  completely if there is sub namespace e.g
+    mat4_, vec4_ ... **DEFAULT** is not defined
+  * `CGLM_STRUCT_API_NS`: define name space for struct api,
+    **DEFAULT** is `glms`
+  * `CGLM_STRUCT_API_NAME_SUFFIX`: define name suffix,
+    **DEFAULT** is empty e.g `defining it as #define
+    CGLM_STRUCT_API_NAME_SUFFIX  s` will add `s` suffix to
+    `mat4_mul -> mat4s_mul`
+
+-------------------------------------------------------------------
 Wed Feb 15 12:31:28 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.8.9
