@@ -17,52 +17,45 @@
 
 
 Name:           vlan
-BuildRequires:  gcc-c++
-URL:            http://www.candelatech.com/~greear/vlan.html
 Version:        1.9
 Release:        0
 Summary:        802.1q VLAN Implementation for Linux
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
+URL:            https://www.candelatech.com/~greear/vlan.html
 # online url http://www.candelatech.com/~greear/vlan/vlan.1.9.tar.gz but tarball is broken there
 # this is a bz2 version of it
 Source:         vlan.%{version}.tar.bz2
 # from now offline       http://scry.wanfear.com/~greear/vlan/cisco_howto.html, accessible through https://web.archive.org/web/20070429115150/http://scry.wanfear.com/~greear/vlan/cisco_howto.html
 Source1:        cisco_howto.html.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  gcc-c++
 
 %description
 An 802.1q vlan implementation for Linux. See
 http://www.candelatech.com/~greear/vlan.html for more information.
 
-
-
-Authors:
---------
-    Ben Greear <greearb@candelatech.com>
-
 %prep
-%setup -n vlan
-cp -p %{S:1} .
+%setup -q -n vlan
+cp -p %{SOURCE1} .
 
 %build
-make clean
-make CCFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE -Wall" STRIP=true
+%make_build clean
+%make_build CCFLAGS="%{optflags} -D_GNU_SOURCE -Wall" STRIP=true
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/{sbin,%_sbindir,%{_mandir}/man8/}
-install -m755 vconfig   $RPM_BUILD_ROOT/%_sbindir
-install -m644 vconfig.8 $RPM_BUILD_ROOT%{_mandir}/man8/
+make DESTDIR=%{buildroot}
+mkdir -p %{buildroot}/{sbin,%{_sbindir},%{_mandir}/man8/}
+install -m755 vconfig   %{buildroot}/%{_sbindir}
+install -m644 vconfig.8 %{buildroot}%{_mandir}/man8/
 %if 0%{?suse_version} < 1550
-ln -sf %_sbindir/vconfig $RPM_BUILD_ROOT/sbin
+ln -sf %{_sbindir}/vconfig %{buildroot}/sbin
 %endif
 
 %files
 %defattr(644,root,root,755)
 %doc *.html *.pl CHANGELOG README
-%doc %{_mandir}/man8/vconfig.8.gz
-%attr(755,root,root) %_sbindir/vconfig
+%{_mandir}/man8/vconfig.8%{?ext_man}
+%attr(755,root,root) %{_sbindir}/vconfig
 %if 0%{?suse_version} < 1550
 %attr(755,root,root) /sbin/vconfig
 %endif

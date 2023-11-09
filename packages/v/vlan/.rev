@@ -146,4 +146,14 @@
     <comment></comment>
     <requestid>1120267</requestid>
   </revision>
+  <revision rev="22" vrev="144">
+    <srcmd5>18aa5ec4e89678b27aa9007bb3edcb90</srcmd5>
+    <version>1.9</version>
+    <time>1699562066</time>
+    <user>anag+factory</user>
+    <comment>- spec-cleaner run
+
+- up to version 1.6 to fix compile issues</comment>
+    <requestid>1124125</requestid>
+  </revision>
 </revisionlist>

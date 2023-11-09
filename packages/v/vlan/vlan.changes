@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  7 22:08:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run
+
+-------------------------------------------------------------------
 Thu Oct 19 13:21:08 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Drop url for sources, they are no longer valid.
@@ -97,7 +102,7 @@ Wed Jul 17 12:38:01 CEST 2002 - okir@suse.de
 -------------------------------------------------------------------
 Thu Apr 11 17:39:30 CEST 2002 - ro@suse.de
 
-- up to version 1.6 to fix compile issues 
+- up to version 1.6 to fix compile issues
 
 -------------------------------------------------------------------
 Sat Feb  2 18:20:52 CET 2002 - poeml@suse.de
