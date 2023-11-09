@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  7 19:29:09 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.4 (released 2023-11-07) includes security fixes to the
+  path/filepath package, as well as bug fixes to the linker, the
+  runtime, the compiler, and the go/types, net/http, and
+  runtime/cgo packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-45283 CVE-2023-45284
+  * go#63715 go#63713 boo#1216943 boo#1216944 security: fix CVE-2023-45283 CVE-2023-45284 path/filepath: insecure parsing of Windows paths
+  * go#62207 spec: update unification rules
+  * go#62545 cmd/compile: internal compiler error: expected struct value to have type struct
+  * go#63317 cmd/link: split text sections for arm 32-bit
+  * go#63335 runtime: MADV_COLLAPSE causes production performance issues on Linux
+  * go#63339 go/types, x/tools/go/ssa: panic: type param without replacement encountered
+  * go#63509 cmd/compile: -buildmode=c-archive produces code not suitable for use in a shared object on arm64
+  * go#63560 net/http: http2 page fails on firefox/safari if pushing resources
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:08 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.21.3 (released 2023-10-10) includes a security fix to the
