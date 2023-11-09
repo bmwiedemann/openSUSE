@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Nov 09 10:01:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.36.0:
+  * Update README to point download link to 0.36.0
+  * Update docs for release 0.36.0
+  * Update the helm reference
+  * Update helm chart to 4.0.34 to use gitops 0.36.0
+  * Update javascript library version to 0.36.0
+  * ci: Remove Slack notification to archived channel
+  * ci: Simplify docs creation
+  * Refactor /inventory code to expose some helpers (#4090)
+  * add gitops-ee bootstrap cli user documentation (#4073)
+  * Reorders sidebar and fixes typos (#4122)
+  * fix duplicate icons (#3846)
+  * fix: Remove flag as source file has been deleted
+  * Ensure the yarn.lock file is being used in container images
+  * build(deps): Bump @babel/traverse from 7.20.13 to 7.23.2 in
+    /website
+  * chore: Remove unused code previously used for GitOps Run
+  * build(deps): Remove gitops bucket server from build
+  * chore: Remove GitOps Run components
+  * build(deps): Bump postcss from 8.4.21 to 8.4.31 in /website
+  * update import order
+  * build(deps): Bump github.com/weaveworks/tf-controller/api
+    version
+  * build(deps): Bump google.golang.org/grpc from 1.51.0 to 1.56.3
+  * fix typo
+  * add new svg icon as CLusterDiscovery icon
+  * Replace the Sync/Suspend/Resume controls, used in the
+    `SyncActions` and `CheckboxActions` components, with the new
+    Sync/Suspend/Resume controls (the `SyncControl` component)
+    (#4080)
+  * fix: Remove GitOps Run CLI commands
+  * Refactoring Status column  (#4098)
+  * Update pkg/run/session/connect/connect.go
+  * Cleanup datatable (#4091)
+  * Add some more redirects
+  * docs: Add command to remove podinfo
+  * Remove beta run references
+  * Remove GitOps Run CLI refs
+  * Remove refs
+  * Removes GitOps Run and makes small add
+  * try to update github.com/fluxcd/pkg/runtime to the earliest
+    version with updated controller-runtime
+  * refactor: refactor away from deprecated wait.Poll calls
+  * Generic sync/suspend/inventory listing (#4096)
+  * Remove webkit-scrollbar css (#4074)
+  * Add notification component (#4079)
+  * generate sitemap injecting ALGOLIA_API_KEY
+  * update dependencies msg with links (#4099)
+
+-------------------------------------------------------------------
 Wed Oct 25 13:26:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.35.0:
