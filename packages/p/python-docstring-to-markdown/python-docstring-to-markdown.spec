@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 Name:           python-docstring-to-markdown
 Version:        0.12
 Release:        0
