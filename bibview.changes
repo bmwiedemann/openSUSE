@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:53:48 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
 Tue Feb 19 12:46:57 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Correct documentation as there is no X11R6 anymore for a long time 
