@@ -214,4 +214,12 @@ trim changes file</comment>
   for https://github.com/rpm-software-management/rpm/issues/2343 (forwarded request 1061850 from bmwiedemann)</comment>
     <requestid>1062399</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ea8fc1b2a682e96b55d82beb371b96fb</srcmd5>
+    <version>20231101</version>
+    <time>1699562067</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1124189</requestid>
+  </revision>
 </revisionlist>

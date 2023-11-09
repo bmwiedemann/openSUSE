@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 31 21:44:55 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Increase stack size limit for riscv64 like for ppc64(le).
+
+-------------------------------------------------------------------
 Sun Jan 29 08:34:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Allow variables in smp_mflags to be interpolated

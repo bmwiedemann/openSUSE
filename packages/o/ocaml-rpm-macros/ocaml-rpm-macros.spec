@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20230101
+Version:        20231101
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -421,7 +421,7 @@ ocaml setup.ml -configure \\\
 	ocaml setup.ml -test
 #
 %%ocaml_dune_setup \
-%ifarch ppc64 ppc64le
+%ifarch ppc64 ppc64le riscv64
 	ulimit -s $((1024 * 64)) ; \
 %endif
 %if 0
@@ -475,7 +475,7 @@ ocaml setup.ml -configure \\\
 		'@install' \\\
 		$OCAML_DUNE_BUILD_INSTALL_ARGS
 %%ocaml_dune_install \
-%ifarch ppc64 ppc64le
+%ifarch ppc64 ppc64le riscv64
 	ulimit -s $((1024 * 64)) ; \
 %endif
 	if test -z "${_smp_mflags}" ;\
