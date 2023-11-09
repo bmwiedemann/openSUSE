@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov  8 14:35:06 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 13.13:
+  * bsc#1216962, CVE-2023-5868: Fix handling of unknown-type
+    arguments in DISTINCT "any" aggregate functions. This error led
+    to a text-type value being interpreted as an unknown-type value
+    (that is, a zero-terminated string) at runtime. This could
+    result in disclosure of server memory following the text value.
+  * bsc#1216961, CVE-2023-5869: Detect integer overflow while
+    computing new array dimensions. When assigning new elements to
+    array subscripts that are outside the current array bounds, an
+    undetected integer overflow could occur in edge cases. Memory
+    stomps that are potentially exploitable for arbitrary code
+    execution are possible, and so is disclosure of server memory.
+  * bsc#1216960, CVE-2023-5870: Prevent the pg_signal_backend role
+    from signalling background workers and autovacuum processes.
+    The documentation says that pg_signal_backend cannot issue
+    signals to superuser-owned processes. It was able to signal
+    these background  processes, though, because they advertise a
+    role OID of zero. Treat that as indicating superuser ownership.
+    The security implications of cancelling one of these process
+    types are fairly small so far as the core code goes (we'll just
+    start another one), but extensions might add background workers
+    that are more vulnerable.
+    Also ensure that the is_superuser parameter is set correctly in
+    such processes. No specific security consequences are known for
+    that oversight, but it might be significant for some extensions.
+  * Add support for LLVM 16 and 17
+  * https://www.postgresql.org/about/news/2749
+  * https://www.postgresql.org/docs/13/release-13-13.html
+
+-------------------------------------------------------------------
 Tue Oct 31 10:57:13 UTC 2023 - Reinhard Max <max@suse.com>
 
 - boo#1216734: Revert the last change and make the devel package
