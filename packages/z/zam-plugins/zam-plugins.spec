@@ -1,7 +1,7 @@
 #
 # spec file for package zam-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Edgar Aichinger <edogawa@aon.at>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,14 @@
 
 %define         _lto_cflags      %{nil}
 Name:           zam-plugins
-Version:        3.14
+Version:        4.2
 Release:        0
 Summary:        A collection of audio plugins for high quality processing
 License:        GPL-2.0-or-later
 URL:            http://www.zamaudio.com/?p=976
 Source:         %{name}-%{version}.tar.xz
+# 'make' in Leap doesn't parse shell here
+Patch0:         01-fix-shell-in-make-for-leap.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
@@ -63,8 +65,7 @@ ZamGEQ31 - Mono 31 band graphic equalizer plugin
 ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %package -n ladspa-%{name}
-Summary:        A collection of audio plugins for high quality processing
-Requires:       ladspa
+Summary:        A collection of audio plugins for high quality processing (LADSPA)
 Conflicts:      %{name}
 
 %description -n ladspa-%{name}
@@ -89,8 +90,7 @@ ZamGEQ31 - Mono 31 band graphic equalizer plugin
 ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
 %package -n lv2-%{name}
-Summary:        A collection of audio plugins for high quality processing
-Requires:       lv2
+Summary:        A collection of audio plugins for high quality processing (LV2)
 Conflicts:      %{name}
 
 %description -n lv2-%{name}
@@ -114,11 +114,12 @@ ZamValve - Valve distortion (WDF physical model or tanh) plugin
 ZamGEQ31 - Mono 31 band graphic equalizer plugin
 ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
-%package vst
-Summary:        A collection of audio plugins for high quality processing
+%package -n vst-%{name}
+Summary:        A collection of audio plugins for high quality processing (VST)
 Conflicts:      %{name}
+Obsoletes:      %{name}-vst < %{version}
 
-%description vst
+%description -n vst-%{name}
 These plugins provide DSP. Of these, ZamValve has two different
 models, one of which uses very large proportion of CPU, but has been
 reported to produce more realistic sound than the tanh model.
@@ -164,8 +165,62 @@ ZamValve - Valve distortion (WDF physical model or tanh) plugin
 ZamGEQ31 - Mono 31 band graphic equalizer plugin
 ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
 
+%package -n clap-%{name}
+Summary:        A collection of audio plugins for high quality processing (CLAP)
+Conflicts:      %{name}
+
+%description -n clap-%{name}
+These plugins provide DSP. Of these, ZamValve has two different
+models, one of which uses very large proportion of CPU, but has been
+reported to produce more realistic sound than the tanh model.
+
+There currently is no documentation on how to use these plugins, but
+anyone who is familiar with outboard gear should be able to work it out.
+The default settings and almost every slider is calibrated to
+standard ranges.
+
+The suite so far consists of:
+
+ZamAutoSat - Automatic saturation plugin
+ZamComp - Mono Compressor plugin
+ZamCompX2 - Stereo Compressor plugin
+ZamCompExp - Stereo Compressor/Expander plugin
+ZamEQ2 - 2x parametric EQ (with high/lowshelf and HP/LP) plugin
+ZamValve - Valve distortion (WDF physical model or tanh) plugin
+ZamGEQ31 - Mono 31 band graphic equalizer plugin
+ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
+
+%package -n vst3-%{name}
+Summary:        A collection of audio plugins for high quality processing (VST3)
+Conflicts:      %{name}
+
+%description -n vst3-%{name}
+These plugins provide DSP. Of these, ZamValve has two different
+models, one of which uses very large proportion of CPU, but has been
+reported to produce more realistic sound than the tanh model.
+
+There currently is no documentation on how to use these plugins, but
+anyone who is familiar with outboard gear should be able to work it out.
+The default settings and almost every slider is calibrated to
+standard ranges.
+
+The suite so far consists of:
+
+ZamAutoSat - Automatic saturation plugin
+ZamComp - Mono Compressor plugin
+ZamCompX2 - Stereo Compressor plugin
+ZamCompExp - Stereo Compressor/Expander plugin
+ZamEQ2 - 2x parametric EQ (with high/lowshelf and HP/LP) plugin
+ZamValve - Valve distortion (WDF physical model or tanh) plugin
+ZamGEQ31 - Mono 31 band graphic equalizer plugin
+ZamGEQ31X2 - Stereo 31 band graphic equalizer plugin
+
 %prep
-%autosetup -p1
+%setup -q
+
+%if 0%{?suse_version} < 1600
+%patch0 -p1
+%endif
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
@@ -185,7 +240,15 @@ find %{buildroot}%{_libdir}/lv2 -name \*.ttl -exec chmod -x {} +
 %files -n lv2-%{name}
 %{_libdir}/lv2/Za*.lv2
 
-%files vst
+%files -n vst3-%{name}
+%dir %{_libdir}/vst3
+%{_libdir}/vst3/Za*.vst3
+
+%files -n clap-%{name}
+%dir %{_libdir}/clap
+%{_libdir}/clap/Za*.clap
+
+%files -n vst-%{name}
 %dir %{_libdir}/vst
 %{_libdir}/vst/Za*-vst.so
 

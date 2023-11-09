@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Nov  8 23:01:14 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- fix conditional patch in .spec
+
+-------------------------------------------------------------------
+Sun Nov 05 22:22:18 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add 01-fix-shell-in-make-for-leap.patch fix build in Leap
+- Update to version 4.2:
+  * Version 4.2
+  * Update dpf to latest main
+  * ZamHeadX2: Fix mapping of FIR filter selection
+  * ZamTube: Tweak input gain on gridleaking tube to distinguish modes better
+  * ZamTube: Make gridleak mode produce less muddy bass
+  * ZamTube: Make insane mode less harsh, adds more bass by fixing gridleak
+  * ZamTube: Use two tube stages with tonestack in between
+  * ZamTube: Use 20dB max of tube drive and scale output better
+  * ZamTube: Move tonestack post tube again, shapes wave better.
+  * ZaMultiCompX2: Use detection switch for mono LF when averaging
+
+-------------------------------------------------------------------
+Wed Dec 21 21:46:50 UTC 2022 - kv@kott.no-ip.biz
+
+- Update to version 4.1:
+  * Version 4.1
+  * Makefile compat with non-GNU extensions, install clap and vst3
+  * Fix inline processing
+  * Handle dynamic buffer size and sample rate changes
+  * Version 4.0
+  * Update DPF
+  * Fix invalid use of dpf states
+  * ZamHeadX2: Fix bad initial state
+  * ZamVerb: Fix uninitialised values
+  * Delete samplerate converter state when done (fix memleak)
+
+-------------------------------------------------------------------
 Thu Apr 15 00:05:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.14
