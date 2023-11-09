@@ -2432,6 +2432,7 @@ unsorted:
   - coredns-for-k8s1.28 
   - coredns-for-k8s1.28-extras 
   - corepack20 
+  - corepack21 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -7675,6 +7676,7 @@ unsorted:
   - highway-devel-doc 
   - himalaya 
   - himeno 
+  - himmelblau 
   - hiredis 
   - hiredis-devel 
   - hitori 
@@ -15234,7 +15236,7 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutempter0-32bit 
-  - libutf8proc2 
+  - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
@@ -15936,6 +15938,10 @@ unsorted:
   - linbox-devel 
   - link-grammar 
   - link-grammar-devel 
+  - linkerd-cli 
+  - linkerd-cli-bash-completion 
+  - linkerd-cli-fish-completion 
+  - linkerd-cli-zsh-completion 
   - linkloop 
   - links 
   - linode-cli-bash-completion 
@@ -18168,8 +18174,11 @@ unsorted:
   - nodejs-electron-doc 
   - nodejs-packaging 
   - nodejs-underscore 
+  - nodejs20 
   - nodejs20-devel 
   - nodejs20-docs 
+  - nodejs21-devel 
+  - nodejs21-docs 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -18432,6 +18441,7 @@ unsorted:
   - nping 
   - npkg 
   - npm-default 
+  - npm20 
   - npth-devel 
   - nqp 
   - nqptp 
@@ -18440,6 +18450,7 @@ unsorted:
   - nsd 
   - nsjail 
   - nsnake 
+  - nss-himmelblau 
   - nss-pam-ldapd 
   - nss-shared-helper-devel 
   - nss_synth 
@@ -19387,6 +19398,7 @@ unsorted:
   - pam-doc 
   - pam-extra 
   - pam-fscrypt 
+  - pam-himmelblau 
   - pam-test 
   - pam-userdb 
   - pam_apparmor 
@@ -21577,6 +21589,8 @@ unsorted:
   - polybar 
   - polylib 
   - polylib-devel 
+  - polymake 
+  - polymake-devel 
   - pommed 
   - pongix 
   - popeye 
@@ -24316,7 +24330,6 @@ unsorted:
   - python310-libfwnt 
   - python310-libfwps 
   - python310-libfwsi 
-  - python310-libkdumpfile 
   - python310-liblarch 
   - python310-liblarch-gtk 
   - python310-liblnk 
@@ -24987,6 +25000,7 @@ unsorted:
   - python310-pyjsparser 
   - python310-pyjwkest 
   - python310-pykafka 
+  - python310-pykdumpfile 
   - python310-pykeepass 
   - python310-pykerberos 
   - python310-pykickstart 
@@ -27737,7 +27751,6 @@ unsorted:
   - python311-libfwnt 
   - python311-libfwps 
   - python311-libfwsi 
-  - python311-libkdumpfile 
   - python311-liblarch 
   - python311-liblarch-gtk 
   - python311-liblnk 
@@ -28368,6 +28381,7 @@ unsorted:
   - python311-pyjsparser 
   - python311-pyjwkest 
   - python311-pykafka 
+  - python311-pykdumpfile 
   - python311-pykeepass 
   - python311-pykerberos 
   - python311-pykickstart 
@@ -31185,7 +31199,6 @@ unsorted:
   - python39-libfwnt 
   - python39-libfwps 
   - python39-libfwsi 
-  - python39-libkdumpfile 
   - python39-liblarch 
   - python39-liblarch-gtk 
   - python39-liblnk 
@@ -31855,6 +31868,7 @@ unsorted:
   - python39-pyjsparser 
   - python39-pyjwkest 
   - python39-pykafka 
+  - python39-pykdumpfile 
   - python39-pykeepass 
   - python39-pykerberos 
   - python39-pykickstart 
@@ -45385,6 +45399,7 @@ unsorted:
   - wl-clipboard-fish-completion 
   - wl-clipboard-rs 
   - wl-clipboard-zsh-completion 
+  - wl-screenrec 
   - wlgreet 
   - wlopm 
   - wlr-randr 
