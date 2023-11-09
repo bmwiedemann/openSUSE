@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  9 08:41:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Small hotfix release:
+  * Removing test-files from dist
+  * Making builds/prs gated on warnings. Added VS2022 to the gate
+
+-------------------------------------------------------------------
 Tue Jul 11 15:27:42 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0

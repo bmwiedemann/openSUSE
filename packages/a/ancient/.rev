@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1098706</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd9339bb4340dc56d075923744ac3798</srcmd5>
+    <version>2.1.1</version>
+    <time>1699562131</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.1:
+  * Small hotfix release:
+  * Removing test-files from dist
+  * Making builds/prs gated on warnings. Added VS2022 to the gate</comment>
+    <requestid>1124358</requestid>
+  </revision>
 </revisionlist>
