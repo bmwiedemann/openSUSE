@@ -86,4 +86,16 @@
     <comment></comment>
     <requestid>1113287</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3a956b9d30789b1ae00e18b6f34de05a</srcmd5>
+    <version>0.6.2</version>
+    <time>1699562161</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124410 from ecsos
+
+- Update to 0.6.2
+    * OAS30Validator readonly writeonly fix #135
+  - Disable test_validators to fix build error.</comment>
+    <requestid>1124423</requestid>
+  </revision>
 </revisionlist>

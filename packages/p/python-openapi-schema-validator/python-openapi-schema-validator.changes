@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  9 10:28:51 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.6.2
+  * OAS30Validator readonly writeonly fix #135
+- Disable test_validators to fix build error.
+
+-------------------------------------------------------------------
 Sat Sep 23 10:37:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.1
