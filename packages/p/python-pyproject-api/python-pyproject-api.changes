@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  9 08:57:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.6.1:
+  - Fix metadata_from_built only extracts one of the dist info files
+    in #100
+- Update to 1.6.0:
+  - Extrat build_<wheel|editable> from 
+    prepare_metadata_for_build_<wheel|editable> in #99
+
+-------------------------------------------------------------------
 Mon Aug 28 21:46:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.5.4:

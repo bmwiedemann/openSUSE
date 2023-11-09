@@ -32,4 +32,19 @@
 </comment>
     <requestid>1107822</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2501f5fa05cab5929570a1733f05008d</srcmd5>
+    <version>1.6.1</version>
+    <time>1699562159</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124388 from ecsos
+
+- Update to 1.6.1:
+    - Fix metadata_from_built only extracts one of the dist info files
+      in #100
+  - Update to 1.6.0:
+    - Extrat build_&lt;wheel|editable&gt; from 
+      prepare_metadata_for_build_&lt;wheel|editable&gt; in #99</comment>
+    <requestid>1124420</requestid>
+  </revision>
 </revisionlist>

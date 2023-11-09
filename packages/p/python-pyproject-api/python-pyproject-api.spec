@@ -18,21 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-api
-Version:        1.5.4
+Version:        1.6.1
 Release:        0
 Summary:        API to interact with the python pyproject.toml based projects
 License:        MIT
 URL:            https://github.com/tox-dev/pyproject-api
 Source:         https://files.pythonhosted.org/packages/source/p/pyproject_api/pyproject_api-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch >= 0.3}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
-BuildRequires:  %{python_module hatchling >= 1.12.2}
+BuildRequires:  %{python_module hatchling >= 1.18}
 BuildRequires:  %{python_module importlib-metadata >= 6 if %python-base < 3.8}
 BuildRequires:  %{python_module packaging >= 23.1}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 68.1.2}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module tomli >= 2.0.1 if %python-base < 3.11}
-BuildRequires:  %{python_module wheel >= 0.40.0}
+BuildRequires:  %{python_module wheel >= 0.41.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -45,6 +47,7 @@ BuildArch:      noarch
 # (except for pytest-cov and -randomly)
 BuildRequires:  %{python_module covdefaults >= 2.3}
 BuildRequires:  %{python_module pytest >= 7.4}
+BuildRequires:  %{python_module pytest-cov >= 4.1}
 BuildRequires:  %{python_module pytest-mock >= 3.11.1}
 BuildRequires:  %{python_module virtualenv >= 20.17.1}
 # /SECTION
