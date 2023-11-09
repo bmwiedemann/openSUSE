@@ -68,6 +68,7 @@ Features
 %patch3 -p1
 
 %build
+export CXXFLAGS="%{optflags} -DBOOST_TIMER_ENABLE_DEPRECATED"
 %cmake \
   -DWITH_MP3LAME=OFF \
   -DWITH_OGG=OFF

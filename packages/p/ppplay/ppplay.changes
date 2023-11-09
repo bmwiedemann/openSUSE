@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  9 13:33:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Temporary fix to build with Boost 1.83: export
+  BOOST_TIMER_ENABLE_DEPRECATED into CXXFLAGS. For now we can still
+  build with the deprecated header, but upstream needs to fix this
+  for good.
+
+-------------------------------------------------------------------
 Sat Apr  1 21:25:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add patch:
