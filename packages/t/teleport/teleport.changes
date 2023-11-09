@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Thu Nov 09 06:48:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 14.1.2:
+  * Release 14.1.2 (#34327)
+  * docs: add team scope to automatic updates (#34343)
+  * Document workload ID for AKS for the helm guide (#34323)
+  * [v14] event fanout rework (#33841)
+  * [v14] Add first step of guided flow for Connect My Computer in
+    Discover (#34335)
+  * chore: Bump golangci-lint to v1.55.2 (#34313) (#34336)
+  * [v14] Return server's `subKind` from tshd (#34297)
+  * Fix an issue MySQL auto-user deletion fails on usernames that
+    requite quotes (#34258) (#34304)
+  * [v14] Added Database Automatic User Provisioning support for
+    MariaDB (#34256)
+  * [v14] Add Connect My Computer tile to Discover (#34287)
+  * [v14] Filter dangerous environment variables before reexec
+    (#34274)
+  * [v14] chore: Bump Go to v1.21.4 (#34308)
+  * [v14] Fix an issue auto-provisioned PostgreSQL user may keep
+    old roles indefinitely (#34121)
+  * [v14] Fix Machine ID selection of Kubernetes Access
+    address/port (#34283)
+  * Update e (#34295)
+  * [v14] Link to version-specific docs pages from the support page
+    (#34261)
+  * [v14] Tidy up pointer/value receivers in tbot (#34269)
+  * Replace getPlatform implementation (#34193)
+  * Add missing private key policy field to
+    UserCertificateIssuedEvent.Anonymize. (#34264)
+  * [v14] docs: update Server SSH getting started to SSH video
+    (#34248)
+  * use upgradeEnrollAlertID in error logs (#34219)
+  * [v14] Database Automatic User Provisioning support for Redshift
+    (#34126)
+  * Dynamic Discovery Matchers for Databases (#33693)
+  * Remove nodeCount from Web server and UI (#34216)
+  * fix step number (#34225)
+  * [v14] Special case the subsystems handled by `teleport exec`
+    (#34142)
+  * [v14] include state of access request after review in audit log
+    description (#34213)
+  * Update e reference (#34210)
+  * Web: Ease AWS integration with Discover Flow (#33777) (#34189)
+  * Cherrypick 3b23d9d (#34206)
+  * Fix Teleport update reconciliation on `status` updates (#34063)
+    (#34194)
+  * Fix links in the Predicate Language guide (#34160)
+  * Consolidate context usage for client src/dst addresses into
+    authz package (#34168)
+  * [v14] Add Access List owners to suggested reviewers. (#34131)
+  * docs: add join token in MySQL CloudSQL config (#34155)
+  * Discover Kube Agent: use automatic upgrades version (#34145)
+    (#34157)
+  * [v14] Installer Scripts: use bash instead of sh (#34144)
+  * [v14] [docs] troubleshooting for AWS Access SSM sessions
+    (#34118)
+  * chore: Bump golangci-lint to v1.55.1 (#34048) (#34127)
+  * fix: Use octal mode for Windows TPM files (#34113)
+  * [v14] terraform: Add/restore support for TELEPORT_AUTH_TYPE
+    (#34124)
+  * [v14] Show alert about insufficient permissions in Connect My
+    Computer setup tab  (#34064)
+  * [v14] Access Plugins: Support dynamic credential reloading
+    (#34079)
+  * Clean up logging of watcher kinds (#33957)
+  * Improve error messaging when instance is newer than auth
+    (#34083)
+  * [v14] Prevent SSO Redirects to other origins (#34077)
+  * AWS OIDC IdP Configure script: remove region (#34061)
+  * Fix agentless leaf node authorization (#33993) (#34053)
+  * Fix potential SEO issues (#33948)
+  * chore: Bump OpenSSL to 3.0.12 (#34066)
+  * [v14] Connect My Computer: Implement in-app flow after deep
+    link click (#34062)
+  * [v14] Improve styling of the shared `UnifiedResources`
+    component (#34059)
+  * Fix non-interactive kube benchmark (#33560)
+  * [v14] Update permissions required in Slack access request docs
+    (#34047)
+  * Fix Azure Identity federated Application ID (#33960)
+  * [v14] DiscoveryConfig: fix `CheckAndSetDefaults` for matchers
+    (#34024)
+  * [v14] docker `v24.0.7+incompatible` update (#34043)
+  * [v14] Fix discrepancies with dynamo events retention period
+    (#34007)
+  * Fix table alignment in `tctl tokens ls` examples (#34001)
+  * Change deep links to include port number (#34027)
+  * [v14] Make unified resources data fetching mechanism more
+    flexible  (#33976)
+  * Unify auth server receiver names (#33994)
+  * [v14] update-SSO-troubleshooting docs (#33897)
+  * Automatically forward some spans from tsh to Cloud (#33329)
+    (#33991)
+  * [v14] Ignore shared aws config not found error (#33933)
+  * [v14] Remove "Preview" designation (#33986)
+  * [v14] Explain template variables wherever they appear (#33977)
+  * [v14] Limit gRPC Active streams (#33985)
+  * Bump github.com/crewjam/saml from
+    0.4.14-0.20230420111643-34930b26d33b to 0.4.14 (#33500)
+    (#33989)
+  * Ensure upload streams use the correct context (#33978)
+  * Clarify Opsgenie prerequisites (#33970)
+  * [v14] Use the correct error when inspecting Kubernetes session
+    (#33950)
+  * Fix git installation path on CentOS 7 docker image (#33132)
+  * [v14] handle empty lists for yaml and json formatted lists in
+    tctl (#33633)
+  * [v14] docs: Add Docker to the PagerDuty access request plugin
+    (#33829)
+  * [v14] Await peristed state restoration before concluding UI
+    initialization (#33914)
+  * Return predicate failed message in unified resource requests
+    (#33902)
+  * [v14] Update Oracle DB docs and messaging (#33926)
+  * Add a missing trace.Wrap to first time joining errors (#33894)
+  * Fix an issue `tsh aws ecs execute-command` fails (#33833)
+  * [v14] Add suggested reviewers as assingee to servicenow
+    incidents (#33845)
+  * [v14] Require SSH prefix in `router.DialHost` connections
+    (#33729)
+  * Fix flaky test by avoiding session recording test cleanup race
+    condition. (#33906)
+  * [v14] tsh: Add support for host:port combinations to tsh
+    puttyconfig (#33883)
+  * Enforce body size limits for http responses (#33768) (#33859)
+  * [v14] Update docs with database user auto provisioning modes
+    (#33901)
+  * Add missing redirect (#33889)
+  * [v14] Improve UX for headless kube proxy by giving user more
+    time when reissuing expired certificates (#33855)
+  * [v14] Web: Redirect to login upon missing session cookie
+    (#33806)
+  * [v14] Fix Assume Roles switch back, don't delete role if access
+    list is using it. (#33834)
+  * [v14] Refactor unified resources view (#33874)
+  * [v14] Send deep link clicks to frontend app in Connect (#33878)
+  * [v14] Add hosted plugin docs (#33881)
+  * [v14] Parse deep links sent to Connect (#33740)
+  * Disambiguate directory sharing's disabled and inactive states
+    (#33814)
+  * [auto] docs: Update version to v14.1.1 (#33848)
+  * Remove unused docs images (#33268)
+  * Fix title conflict (#33261)
+  * [v14] Update manual AD configuration for desktop access
+    (#33837)
+
+-------------------------------------------------------------------
 Tue Oct 24 14:15:31 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 14.1.1:
