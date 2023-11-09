@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  9 15:23:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.0
+  * trace-cmd extract: Do not extract top level unless told to
+- Drop 0001-libtracecmd-Add-initial-support-for-meson.patch
+  0002-trace-cmd-Add-initial-support-for-meson.patch (merged)
+
+-------------------------------------------------------------------
 Tue Feb  7 13:40:37 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Sync meson build patch with latest upstream version

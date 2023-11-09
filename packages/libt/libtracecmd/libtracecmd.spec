@@ -18,15 +18,13 @@
 
 Name:           libtracecmd
 %define lname   libtracecmd1
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Library for creating and reading trace-cmd data files
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 Source:         https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/trace-cmd-libtracecmd-%version.tar.gz
-Patch1:         0001-libtracecmd-Add-initial-support-for-meson.patch
-Patch2:         0002-trace-cmd-Add-initial-support-for-meson.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel

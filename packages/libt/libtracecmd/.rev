@@ -39,4 +39,12 @@
     <comment>- Sync meson build patch with latest upstream version</comment>
     <requestid>1063769</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c8871a28564ec2d978e2bebe96cb1cbe</srcmd5>
+    <version>1.4.0</version>
+    <time>1699562178</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.4.0</comment>
+    <requestid>1124723</requestid>
+  </revision>
 </revisionlist>
