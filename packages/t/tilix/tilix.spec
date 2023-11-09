@@ -19,7 +19,7 @@
 #
 %define _lto_cflags %{nil}
 Name:           tilix
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        A tiling terminal emulator based on GTK+ 3
 License:        LGPL-3.0-only AND MPL-2.0
@@ -34,10 +34,6 @@ Patch0:         gnome-ssh-agent.patch
 # PATCH-FIX-OPENSUSE 0001-Don-t-generate-appstream-meta-data-on-older-versions.patch -- Provide appdata.xml instead of generating one since we have to old version of appstream in Leap releases
 Patch1:         0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
 %endif
-# PATCH-FIX-UPSTREAM tilix-nautilus-43-compat.patch  gh#gnunn1/tilix#2115 badshah400@gmail.com -- nautilus: Add compatibility with Nautilus 43
-Patch2:         tilix-nautilus-43-compat.patch
-# PATCH-FIX-UPSTREAM b027797.patch -- Replace std.xml with GMarkup-based parser
-Patch3:         %{url}/commit/b027797.patch
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -108,7 +104,8 @@ install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/metainfo/com.gexperts.Tilix.ap
 %find_lang %{name} %{?no_lang_C} --with-man
 
 # Some localized man directories are not provided by filesystem package yet
-for locale in uk en_GB hr nb_NO oc pt_PT ro sr tr zh_Hant; do
+#for locale in uk en_GB hr nb_NO oc pt_PT ro sr tr zh_Hant; do
+for locale in uk hr oc ro sr tr zh_Hant; do
   echo "%%dir %{_mandir}/${locale}" >> %{name}.lang
   echo "%%dir %{_mandir}/${locale}/man1" >> %{name}.lang
 done

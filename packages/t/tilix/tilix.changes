@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov  9 10:14:33 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 1.9.6
+  Features:
+  * Add close button to search box
+  * Replace variables in custom link commands
+  * Follow system color-scheme for default theme-variant
+  Bugfixes:
+  * nautilus: Don't import a specific version
+  * nautilus: Add compatibility with Nautilus 43
+  * nautilus: Avoid shell injection in open-tilix plugin
+  * Drop manpage country names
+  * Replace std.xml with GMarkup-based parser
+  * icon: Fix up prompt pictogram alignment
+  * Fix GLib critical warnings on startup
+  Miscellaneous:
+  * Change Gnome to GNOME
+  * Replaced icon with more proportional one
+  * Update to GtkD 3.10.0
+  * ci: Run Ubuntu builds in container as well
+  * Change label of "view shortcuts" action
+  * Clarify tooltip of "reset to default" button for keyboard shortcuts
+- drop patches fixed in release:
+  * tilix-nautilus-43-compat.patch
+  * b027797.patch 
+
+-------------------------------------------------------------------
 Tue Apr 25 07:35:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add b027797.patch: Replace std.xml with GMarkup-based parser.
