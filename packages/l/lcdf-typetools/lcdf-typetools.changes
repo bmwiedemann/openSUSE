@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:13:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.110:
+  * Support `otfinfo --var`, which prints information about
+    variable fonts.
+  * `otfinfo -u` reports all Unicode code positions, not just the
+    BMP.
+  * `otfinfo -i` reports embedding permissions.
+  * Update feature, language, and script descriptions.
+  * Change output to avoid triggering pdftex bug.
+
+-------------------------------------------------------------------
 Mon May 17 14:53:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.108
@@ -62,7 +74,7 @@ Wed May 29 05:47:59 UTC 2013 - mrdocs@opensuse.org
 Sun Apr 22 18:53:49 UTC 2012 - mrdocs@opensuse.org
 
 - revert to 2.91, until a fix is made for broken build in 2.92
-- Correct licensing version to SPDX bnc:#741820 
+- Correct licensing version to SPDX bnc:#741820
 
 -------------------------------------------------------------------
 Sun Oct 16 04:49:54 UTC 2011 - mrdocs@opensuse.org
@@ -74,8 +86,8 @@ Sun Oct 16 04:49:54 UTC 2011 - mrdocs@opensuse.org
 -------------------------------------------------------------------
 Wed Jul  6 09:36:05 UTC 2011 - mrdocs@opensuse.org
 
--version bump to 2.91 
--fixes Correct some compilation problems on unusual systems 
+-version bump to 2.91
+-fixes Correct some compilation problems on unusual systems
  reported by Vladimir Volovich.
 
 -------------------------------------------------------------------
@@ -84,11 +96,11 @@ Tue Jun  7 07:55:39 UTC 2011 - mrdocs@opensuse.org
 -version bump to 2.90
 -run spec-cleaner on spec file
  +Changes since 2.88
- -Better handle combinations of fonts and options that 
-  would create so many   substitutions that otftotfm would run 
+ -Better handle combinations of fonts and options that
+  would create so many   substitutions that otftotfm would run
   out of memory.  Marc van Dongen report.
- -Correct crash on glyph names that start with a dot.  Marc van 
-   Dongen report. 
+ -Correct crash on glyph names that start with a dot.  Marc van
+   Dongen report.
 
 -------------------------------------------------------------------
 Tue May 10 20:54:51 UTC 2011 - mrdocs@opensuse.org
@@ -96,8 +108,8 @@ Tue May 10 20:54:51 UTC 2011 - mrdocs@opensuse.org
 -version bump to 2.88
  +Changes since 2.86
   -Avoid double-free error in t1testpage.  Reported by Kurt Pfeifle.
-  -Support version 4 of the OpenType OS/2 table.  Reported by 
-   Thomas Zumbrunn. 
+  -Support version 4 of the OpenType OS/2 table.  Reported by
+   Thomas Zumbrunn.
 
 Mon Sep 27 09:06:59 UTC 2010 - mrdocs@opensuse.org
 

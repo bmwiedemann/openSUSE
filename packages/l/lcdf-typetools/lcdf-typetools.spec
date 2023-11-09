@@ -17,7 +17,7 @@
 
 
 Name:           lcdf-typetools
-Version:        2.108
+Version:        2.110
 Release:        0
 Summary:        Programs to manipulate OpenType and multiple-master fonts
 License:        GPL-2.0-only
