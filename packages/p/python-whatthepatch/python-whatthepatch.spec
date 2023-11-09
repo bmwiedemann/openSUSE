@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 %define skip_python2 1
 Name:           python-whatthepatch
 Version:        1.0.5
