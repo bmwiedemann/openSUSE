@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 24 11:11:11 UTC 2023 - olaf@aepfle.de
+
+- Fix build with old glibc with 6419b008fde783fd0cc2cc266bd1c9cf35e99a0e.patch
+
+-------------------------------------------------------------------
 Wed Sep  6 09:10:09 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - update to 2.0.27:

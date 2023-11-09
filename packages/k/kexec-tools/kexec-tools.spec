@@ -29,6 +29,7 @@ Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{versio
 Source2:        kexec-tools.keyring
 Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
+Patch0:         6419b008fde783fd0cc2cc266bd1c9cf35e99a0e.patch
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
 # https://patchwork.kernel.org/project/linux-riscv/patch/20190416123233.4779-1-mick@ics.forth.gr/
