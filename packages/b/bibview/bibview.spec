@@ -1,7 +1,7 @@
 #
 # spec file for package bibview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,7 +29,7 @@ Summary:        X11 Front-End for BibTeX Databases
 License:        SUSE-Permissive
 Group:          Productivity/Publishing/TeX/Utilities
 Source:         bibview-2.2.tar.gz
-Patch:          bibview-2.2.dif
+Patch0:         bibview-2.2.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define _x11data    %{_datadir}/X11
 %define _appdefdir  %{_x11data}/app-defaults
@@ -40,7 +40,7 @@ manipulated, created, and searched.
 
 %prep
 %setup
-%patch
+%patch0
 
 %build
     xmkmf -a
