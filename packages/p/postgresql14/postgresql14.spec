@@ -16,11 +16,11 @@
 #
 
 
-%define pgversion 14.9
+%define pgversion 14.10
 %define pgmajor 14
 %define buildlibs 0
 %define tarversion %{pgversion}
-%define latest_supported_llvm_ver 15
+%define latest_supported_llvm_ver 17
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -797,11 +797,9 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %post -n %pgname-%devel
 /sbin/ldconfig
-/usr/share/postgresql/install-alternatives %pgmajor
 
 %postun -n %pgname-%devel
 /sbin/ldconfig
-/usr/share/postgresql/install-alternatives %pgmajor
 
 %if %{with server_devel}
 %post server-devel
