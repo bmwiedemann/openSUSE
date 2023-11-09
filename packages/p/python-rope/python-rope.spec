@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 %define upname rope
 Name:           python-rope
 Version:        1.9.0

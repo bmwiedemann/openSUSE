@@ -357,4 +357,14 @@
     <comment></comment>
     <requestid>1108787</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>b54bdf86e26dc2f82a89229d74d90f6c</srcmd5>
+    <version>1.9.0</version>
+    <time>1699562142</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124314 from gcomes.obs
+
+- add sle15_python_module_pythons</comment>
+    <requestid>1124380</requestid>
+  </revision>
 </revisionlist>
