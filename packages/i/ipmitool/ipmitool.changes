@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 31 15:55:01 UTC 2023 - Thomas Renninger <trenn@suse.de>
+
+- bsc#1216556 L3: ipmitool: Unsupported LAN Parameter
+                  lookup error SLE15 SP4+
+  Fix regression introduced by 351dad24a26f56580ba6
+  lan: Add processing of get/set specific CCs:
+https://github.com/ipmitool/ipmitool/pull/388
+https://github.com/ipmitool/ipmitool/pull/389
+  Be aware: Even the pullrequest is open for a while, this patch is not
+  integrated in latest mainstream master branch.
+A    lanp-Fix-error-response-from-Unsupported-Parameter-lookup.patch.txt
+M    enterprise-numbers
+
+-------------------------------------------------------------------
 Mon Jul 24 10:38:53 UTC 2023 - trenn@suse.de
 
 - Fix: ipmitool duplicates the timestamp (bsc#1213390)

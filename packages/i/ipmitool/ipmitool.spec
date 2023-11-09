@@ -33,6 +33,7 @@ Patch3:         0003-Cleanup-and-compiler-issues-only-no-functional-chang.patch
 Patch4:         0004-Adjust-SUSE-paths.patch
 Patch5:         0005-HPM-x-compatibility-message-is-DEBUG-only.patch
 Patch6:         Fix-time-format-for-sel-list-v.patch
+Patch7:         lanp-Fix-error-response-from-Unsupported-Parameter-lookup.patch.txt
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel
