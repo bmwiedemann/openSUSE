@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 12:57:49 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-bsc1216664.patch, works around SAP ASE DB crash during
+  C++ standard library initialization.  [bsc#1216664]
+
+-------------------------------------------------------------------
 Fri Sep 22 08:07:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add pr111411.patch (bsc#1215427)

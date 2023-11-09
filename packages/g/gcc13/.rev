@@ -212,4 +212,13 @@
 - Redo floatn fixinclude pick-up to simply keep what is there. (forwarded request 1112960 from dirkmueller)</comment>
     <requestid>1113437</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>3dffec4e552a6b3c62df82cc6667837a</srcmd5>
+    <version>13.2.1+git7813</version>
+    <time>1699562073</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc13-bsc1216664.patch, works around SAP ASE DB crash during
+  C++ standard library initialization.  [bsc#1216664]</comment>
+    <requestid>1124004</requestid>
+  </revision>
 </revisionlist>
