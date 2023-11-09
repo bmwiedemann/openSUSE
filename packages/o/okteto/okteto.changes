@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 09 14:48:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.2:
+  * Added OKTETO_GIT_BRANCH environment variable to remote
+    Dockerfile as argument to have it available in the commands
+    executed there (#4039) (#4040)
+
+-------------------------------------------------------------------
+Wed Nov 08 19:35:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.1:
+  * add feature flag to enable disable pull first approach (#4036)
+    (#4038)
+
+-------------------------------------------------------------------
 Tue Nov 07 11:30:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.22.0:
