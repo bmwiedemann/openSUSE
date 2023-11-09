@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Nov  9 10:17:39 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Removed patches:
+  vst-system-path.patch, vst3sdk-fix-include-cstdint.patch and
+  vst3sdk-fix-std-atomic-for-gcc12.patch.
+- Added patches:
+  lib64-plugins-default-path.patch,
+  vst3sdk-fix-limits-include-moduleinfoparser.patch and
+  vst3sdk-fix-include-cstdint-for-gcc13.patch
+
+-------------------------------------------------------------------
+Wed Nov  8 22:12:25 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 3.4.1
+  This is a hotfix release. It fixes the following bugs:
+
+  * #5467 Fix 24-bit recording.
+  * #5488 Fix a crash with .aup importing.
+  * #5471 #5483 Fix crossfading of clips and tracks.
+  * #5473 Exporting multiple files honors sample rate settings again.
+  * #5480 #5417 Fix crashes related to external program exports.
+  * #5479 #5476 Fix BSD and ARM builds.
+  * #5498 Ctrl+J is now a standard shortcut for joining clips.
+  * #5389 Stereo tracks no longer randomly split into mono.
+  * #5007 When exporting a file, the file extension is now always
+    added (except for custom FFmpeg and external program exports).
+  * #5516 Fix a crash when exporting Opus with older CPUs that 
+    don't support AVX.
+
+-------------------------------------------------------------------
+Sun Nov  5 23:27:49 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- set vst3sdk to 3.7.7_build_19
+- update patchset
+- update dependencies in .spec
+- Update to 3.4.0
+  Major changes
+
+  * Music workflows
+    Audacity now features several music related features, such as
+    switching between hh:mm:ss time and Beats & Measures, and
+    time-stretching clips to align them to a song's tempo.
+  * Time stretching
+    Hold Alt (macOS: Option) while hovering over the top third
+    of a clip edge to stretch it.
+  * New exporter
+    Audacity now features a new export window with easier access
+    to options such as sample rate and custom mapping (for 5.1 or 7.1 audio).
+    Additionally, the "Browse" button uses the native file browser now!
+
+  Other changes
+
+  * For MP3, Audacity now always uses Joint Stereo mode, which
+    always delivers the best possible quality.
+  * #4720 Simplified pasting logic.
+  * Simplified stereo tracks. Left and right channels now always
+    have synchronized clip starts and ends, and the same sample
+    rate in both channels.
+  * #5014 Added cursors trimming and stretching left and right,
+    and changed the I-beam cursor to be less similar to either.
+  * #4448 When importing audio, the project sample rate no longer changes.
+  * #5204 The spectrogram colors are now perceptually uniform, and
+    the colormap has gotten a name: Roseus. It also can be used
+    for dataviz outside of Audacity, see https://github.com/dofuuz/roseus
+    for more info! (Thanks, Myungchul Keum)
+  * New defaults: The Time Signature toolbar now gets shown,
+    the solo button is set to multi-track mode, time tracks have
+    a wider starting range.
+  * #5291 Unsquished the Audacity logo found in some places of the app.
+  * #2330 Clicking on the border of two clips no longer merges them.
+  * #2530 Overdubbing on Windows fails with WASAPI with default
+    Recording device.
+  * #443 Built-in Opus support.
+
+  Libraries
+
+  * lib-time-and-pitch implements a time stretching algorithm
+    originating in Staffpad.
+  * Audacity now uses Conan 2.
+  * Continued extracting code into libraries and modules,
+    especially in the context of importing and exporting.
+
+  Bug fixes
+
+  * #3778 --nogap metadata no longer is ignored.
+  * #4410 fixed a crash with LV2 plugins (thanks jfroyall!).
+  * #2471 #4798 fixed some crashes related to macros.
+  * #4769 fixed a crash when pasting in certain configurations.
+  * #4677 Accessibility: GUI can be disabled again for VST2
+    plugins (thanks, David Bailes!).
+  * #4988 Accessibility: Restored window control IDs, improving
+    NVDA compatibility (thanks again, David Bailes!).
+  * #4872 fixed a crash on launch on OSX 10.9 (thanks, René Bertin!).
+
+-------------------------------------------------------------------
 Wed Jul 12 14:39:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update constraints for riscv64

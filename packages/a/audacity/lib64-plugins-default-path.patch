@@ -1,0 +1,48 @@
+diff -ur audacity-Audacity-3.4.0.orig/cmake-proxies/lv2/CMakeLists.txt audacity-Audacity-3.4.0/cmake-proxies/lv2/CMakeLists.txt
+--- audacity-Audacity-3.4.0.orig/cmake-proxies/lv2/CMakeLists.txt	2023-11-02 04:14:25.000000000 -0700
++++ audacity-Audacity-3.4.0/cmake-proxies/lv2/CMakeLists.txt	2023-11-05 16:29:31.976019263 -0800
+@@ -217,7 +217,7 @@
+ elseif( UNIX )
+    set( LILV_PATH_SEP ":" )
+    set( LILV_DIR_SEP "/" )
+-   set( LILV_DEFAULT_LV2_PATH "~/.lv2:/usr/lib/lv2:/usr/local/lib/lv2" )
++   set( LILV_DEFAULT_LV2_PATH "~/.lv2:/usr/lib64/lv2:/usr/local/lib/lv2" )
+ 
+    set( SUIL_MODULE_DIR "" )
+    set( SUIL_DIR_SEP "" )
+diff -ur audacity-Audacity-3.4.0.orig/libraries/lib-vst/VSTEffectsModule.cpp audacity-Audacity-3.4.0/libraries/lib-vst/VSTEffectsModule.cpp
+--- audacity-Audacity-3.4.0.orig/libraries/lib-vst/VSTEffectsModule.cpp	2023-11-02 04:14:25.000000000 -0700
++++ audacity-Audacity-3.4.0/libraries/lib-vst/VSTEffectsModule.cpp	2023-11-05 16:28:29.117199672 -0800
+@@ -238,7 +238,7 @@
+       pathList.push_back(wxT(LIBDIR) wxT("/vst"));
+ 
+       // These are the defaults used by other hosts
+-      pathList.push_back(wxT("/usr/lib/vst"));
++      pathList.push_back(wxT("/usr/lib64/vst"));
+       pathList.push_back(wxT("/usr/local/lib/vst"));
+       pathList.push_back(wxGetHomeDir() + wxFILE_SEP_PATH + wxT(".vst"));
+    }
+diff -ur audacity-Audacity-3.4.0.orig/libraries/lib-vst3/module_linux.cpp audacity-Audacity-3.4.0/libraries/lib-vst3/module_linux.cpp
+--- audacity-Audacity-3.4.0.orig/libraries/lib-vst3/module_linux.cpp	2023-11-02 04:14:25.000000000 -0700
++++ audacity-Audacity-3.4.0/libraries/lib-vst3/module_linux.cpp	2023-11-05 16:27:31.894953308 -0800
+@@ -278,7 +278,7 @@
+ 	 * Application				: /$APPFOLDER/vst3/
+ 	 */
+ 
+-	const auto systemPaths = {"/usr/lib/vst3/", "/usr/local/lib/vst3/"};
++	const auto systemPaths = {"/usr/lib64/vst3/", "/usr/local/lib/vst3/"};
+ 
+ 	PathList list;
+ 	if (auto homeDir = getenv ("HOME"))
+diff -ur audacity-Audacity-3.4.0.orig/libraries/lib-vst3/VST3EffectsModule.cpp audacity-Audacity-3.4.0/libraries/lib-vst3/VST3EffectsModule.cpp
+--- audacity-Audacity-3.4.0.orig/libraries/lib-vst3/VST3EffectsModule.cpp	2023-11-02 04:14:25.000000000 -0700
++++ audacity-Audacity-3.4.0/libraries/lib-vst3/VST3EffectsModule.cpp	2023-11-05 16:27:31.894953308 -0800
+@@ -169,7 +169,7 @@
+    pathList.push_back("/Network/Library/Audio/Plug-ins/VST3/");
+ #elif __WXGTK__
+    pathList.push_back(wxGetHomeDir() + "/.vst3/");
+-   pathList.push_back("/usr/lib/vst3/");
++   pathList.push_back("/usr/lib64/vst3/");
+    pathList.push_back("/usr/local/lib/vst3/");
+ #endif
+ 

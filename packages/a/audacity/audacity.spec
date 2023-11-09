@@ -24,7 +24,7 @@
 %endif
 
 Name:           audacity
-Version:        3.3.3
+Version:        3.4.1
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -33,16 +33,16 @@ URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
-Source3:        vst3sdk-3.7.3_build_20.tar.xz
+Source3:        vst3sdk-3.7.7_build_19.tar.xz
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch1:         audacity-no_return_in_nonvoid.patch
 Patch2:         mod-script-pipe-disable-rpath.patch
 # PATCH-FIX-OPENSUSE vst-system-path.patch - search fo vsts in /usr/lib64 in x86_64 and ARM system
-Patch3:         vst-system-path.patch
-Patch94:        vst3sdk-fix-std-atomic-for-gcc12.patch
-Patch95:        vst3sdk-fix-include-cstdint.patch
+Patch3:         lib64-plugins-default-path.patch
+Patch94:        vst3sdk-fix-include-cstdint-for-gcc13.patch
+Patch95:        vst3sdk-fix-limits-include-moduleinfoparser.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -51,6 +51,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
 BuildRequires:  portmidi-devel
 BuildRequires:  wxWidgets-3_2-nostl-devel
+BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac) >= 1.3.1
@@ -69,6 +70,7 @@ BuildRequires:  pkgconfig(lv2) >= 1.16.0
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(serd-0) >= 0.30.2
 BuildRequires:  pkgconfig(shared-mime-info)
@@ -86,6 +88,7 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(wavpack)
+BuildRequires:  pkgconfig(zlib)
 # WARNING lilv-0 >= 0.24.6;lv2 >= 1.16.0;serd-0 >= 0.30.2;sord-0 >= 0.16.4;sratom-0 >= 0.6.4;suil-0 >= 0.10.6
 # check these versions after every update otherwise audacity builds libsuil itself.
 
