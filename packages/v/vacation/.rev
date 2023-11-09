@@ -156,4 +156,25 @@
 for enhanced user privacy (forwarded request 1029683 from bmwiedemann)</comment>
     <requestid>1029686</requestid>
   </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>14c3930d9783bf76f337b208c248dee0</srcmd5>
+    <version>1.2.7.1</version>
+    <time>1699562065</time>
+    <user>anag+factory</user>
+    <comment>- spec file cleanups
+
+- Add some more senders and mail tags which should not be answered
+  * Added patch from Roberto Piola &lt;roberto@ilpiola.it&gt; to avoid
+    replying to emails that have been marked as spam by SpamAssassin
+  * Added patch from Jacek Kalinski that automatically creates a
+    vacation database for users who do not have one.  Stops vacation
+  * Added documentation for the &quot;-h&quot; option to specify a domain
+  * Add the Auto-Submitted: header as per RFC3834 - patch from
+  * Applied patch from Dr. Tilmann Bubeck to stop Vacation from
+    munging the GECOS information of users and instead pass it
+- removed bogus self-provides
+  default message file, but also the one specified on the
+- doc relocation</comment>
+    <requestid>1124124</requestid>
+  </revision>
 </revisionlist>

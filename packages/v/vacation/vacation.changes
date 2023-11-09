@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  7 22:06:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- spec file cleanups
+
+-------------------------------------------------------------------
 Tue Sep  8 03:41:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add vacation-1.2.7.1-nogecos.patch to strip GECOS field of most info
@@ -6,7 +11,7 @@ Tue Sep  8 03:41:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 -------------------------------------------------------------------
 Wed Feb  1 09:34:04 UTC 2017 - werner@suse.de
 
-- Add some more senders and mail tags which should not be answered 
+- Add some more senders and mail tags which should not be answered
 
 -------------------------------------------------------------------
 Tue Sep  8 12:28:48 UTC 2015 - werner@suse.de
@@ -26,21 +31,21 @@ Tue Oct 14 09:48:08 UTC 2014 - jengelh@inai.de
 Tue Jan 31 01:44:09 UTC 2012 - tabraham@novell.com
 
 - update to version 1.2.7.1
-  * Added patch from Roberto Piola <roberto@ilpiola.it> to avoid 
-    replying to emails that have been marked as spam by SpamAssassin 
+  * Added patch from Roberto Piola <roberto@ilpiola.it> to avoid
+    replying to emails that have been marked as spam by SpamAssassin
     via the "X-Spam-Status: Yes" header.
   * made "-i" an alias for "-I" to initialize the database and
     update the man page to reflect this
-  * Added patch from Jacek Kalinski that automatically creates a 
-    vacation database for users who do not have one.  Stops vacation 
+  * Added patch from Jacek Kalinski that automatically creates a
+    vacation database for users who do not have one.  Stops vacation
     dieing if they have forgotten to init the database.
-  * Added documentation for the "-h" option to specify a domain 
+  * Added documentation for the "-h" option to specify a domain
     name for email replies to be from.
   * added List-Id to the headers that junkmail() searches for
-  * Add the Auto-Submitted: header as per RFC3834 - patch from 
+  * Add the Auto-Submitted: header as per RFC3834 - patch from
     Dr. Tilmann Bubeck.
-  * Applied patch from Dr. Tilmann Bubeck to stop Vacation from 
-    munging the GECOS information of users and instead pass it 
+  * Applied patch from Dr. Tilmann Bubeck to stop Vacation from
+    munging the GECOS information of users and instead pass it
     quoted to the MTA for it to deal with.
   * Abide by the RFC 3834 header "Auto-Submitted".
 
@@ -131,13 +136,13 @@ Fri May 23 15:58:25 CEST 2003 - coolo@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Mon Apr 22 16:08:14 MEST 2002 - draht@suse.de
 
 - added -f option to vacation, which now supports not only the
-  default message file, but also the one specified on the 
+  default message file, but also the one specified on the
   commandline. Manpage changes are also complete.
 
 -------------------------------------------------------------------
@@ -169,7 +174,7 @@ Fri Jul 14 13:42:22 CEST 2000 - werner@suse.de
 -------------------------------------------------------------------
 Thu Jun  8 00:28:29 CEST 2000 - ro@suse.de
 
-- doc relocation 
+- doc relocation
 
 -------------------------------------------------------------------
 Mon Mar  6 17:29:10 CET 2000 - werner@suse.de

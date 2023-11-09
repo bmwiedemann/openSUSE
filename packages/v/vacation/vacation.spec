@@ -1,7 +1,7 @@
 #
 # spec file for package vacation
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,10 @@ Name:           vacation
 Version:        1.2.7.1
 Release:        0
 Summary:        A way to automatically reply to incoming e-mail
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
-Url:            http://vacation.sf.net/
-Source:         http://downloads.sf.net/vacation/%name-%version.tar.gz
+URL:            https://www.csamuel.org/software/vacation
+Source:         https://downloads.sf.net/vacation/%{name}-%{version}.tar.gz
 Patch0:         vacation-%{version}.diff
 Patch1:         vacation-%{version}.multiple-vacationmsg_files.diff
 Patch3:         vacation-%{version}.strip.diff
@@ -32,7 +32,6 @@ Patch4:         0001-Patch-to-handle-long-folded-headers-from-Zdenek-Havr.patch
 # PATCH-FIX-SUSE Also handle junkfilter based on procmail
 Patch5:         vacation-%{version}-junkfilter.diff
 Patch6:         vacation-1.2.7.1-nogecos.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gdbm-devel
 
 %description
@@ -40,16 +39,8 @@ This program answers your e-mail when you are lying on the beach.
 
 Documentation: man vacation
 
-
-
-Authors:
---------
-    Sean F Rima <sean.rima@tcob1.uklinux.net>
-    Eric P. Allman
-    Harald Milz <hm@seneca.muc.de>
-
 %prep
-%setup
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
@@ -58,35 +49,24 @@ Authors:
 %patch6 -p1
 
 %build
-# %ifarch ia64 x86_64 s390x ppc64
-# # neededforbuild  gdbm-32bit gdbm-devel-32bit glibc-devel-32bit
-#    RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -m32"
-#%endif
-    chmod -R u+w,g+r,o+r .
-    make %{?jobs:-j%jobs} clobber
-    make %{?jobs:-j%jobs}
+chmod -R u+w,g+r,o+r .
+%make_build clobber
+%make_build
 
 %install
-# %ifarch ia64 x86_64 s390x ppc64
-# # neededforbuild  gdbm-32bit gdbm-devel-32bit glibc-devel-32bit
-#     RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -m32"
-# %endif
-    mkdir -p $RPM_BUILD_ROOT/usr/bin $RPM_BUILD_ROOT%{_mandir}/man{1,5}
-    make install MANDIR=$RPM_BUILD_ROOT%{_mandir}/man BINDIR=$RPM_BUILD_ROOT/usr/bin
-    rm -f $RPM_BUILD_ROOT%{_mandir}/man5/forward.5
-    echo '.so man5/aliases.5' > $RPM_BUILD_ROOT%{_mandir}/man5/forward.5
-    chmod 0444 $RPM_BUILD_ROOT%{_mandir}/man5/forward.5
-
-%clean
-    rm -rf $RPM_BUILD_ROOT
+mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man{1,5}
+make install MANDIR=%{buildroot}%{_mandir}/man BINDIR=%{buildroot}%{_bindir}
+rm -f %{buildroot}%{_mandir}/man5/forward.5
+echo '.so man5/aliases.5' > %{buildroot}%{_mandir}/man5/forward.5
+chmod 0444 %{buildroot}%{_mandir}/man5/forward.5
 
 %files
-%defattr(-, root, root)
-%doc COPYING ChangeLog README
-/usr/bin/vacation
-/usr/bin/vaclook
-%{_mandir}/man1/vacation.1.gz
-%{_mandir}/man1/vaclook.1.gz
-%{_mandir}/man5/forward.5.gz
+%license COPYING
+%doc ChangeLog README
+%{_bindir}/vacation
+%{_bindir}/vaclook
+%{_mandir}/man1/vacation.1%{?ext_man}
+%{_mandir}/man1/vaclook.1%{?ext_man}
+%{_mandir}/man5/forward.5%{?ext_man}
 
 %changelog
