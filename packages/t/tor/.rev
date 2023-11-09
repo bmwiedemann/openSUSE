@@ -1068,4 +1068,18 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1123499</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>d60c7775cf983876349046974ac59dd0</srcmd5>
+    <version>0.4.8.9</version>
+    <time>1699562189</time>
+    <user>anag+factory</user>
+    <comment>tor 0.4.8.9:
+  * (onion service, TROVE-2023-006):
+    - Fix a possible hard assert on a NULL pointer
+  * (guard usage):
+    - When Tor excluded a guard due to temporary circuit restrictions,
+      it considered *additional* primary guards for potential usage by
+      that circuit.</comment>
+    <requestid>1124741</requestid>
+  </revision>
 </revisionlist>

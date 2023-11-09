@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  9 14:29:00 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.8.9:
+  * (onion service, TROVE-2023-006):
+    - Fix a possible hard assert on a NULL pointer
+  * (guard usage):
+    - When Tor excluded a guard due to temporary circuit restrictions,
+      it considered *additional* primary guards for potential usage by
+      that circuit.
+
+-------------------------------------------------------------------
 Fri Nov  3 20:51:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.8.8:
