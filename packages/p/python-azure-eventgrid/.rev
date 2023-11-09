@@ -229,4 +229,15 @@
     <comment></comment>
     <requestid>1117876</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>116286f19985baa80f2e9416d7d3e125</srcmd5>
+    <version>4.16.0</version>
+    <time>1699562163</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.16.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1124425 from glaubitz)</comment>
+    <requestid>1124430</requestid>
+  </revision>
 </revisionlist>
