@@ -162,4 +162,12 @@
   * Add Ctrl+Q to Quit action</comment>
     <requestid>1121013</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d6071754a9f4920c511730d83084757f</srcmd5>
+    <version>0.6.0</version>
+    <time>1699562085</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.0.</comment>
+    <requestid>1124308</requestid>
+  </revision>
 </revisionlist>
