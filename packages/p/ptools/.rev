@@ -114,4 +114,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>e1f61758dc67cc8c0e1eb09106f0ba9e</srcmd5>
+    <version>0.1</version>
+    <time>1699562064</time>
+    <user>anag+factory</user>
+    <comment>- spec-cleaner run</comment>
+    <requestid>1124122</requestid>
+  </revision>
 </revisionlist>
