@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov  8 07:03:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.10.36:
+  - New features and improvements
+    - ASE and ACB palettes support
+    - New Gradient: FG to Transparent (Hardedge)
+    - GIF: non-square ratio support
+    - Text tool: improved formatting behavior when selecting and
+      changing text on canvas.
+    - Theme: better feedback when hovering lock buttons (with a white frame)
+      as well as when activating a lock (a small padlock shows up in the corner).
+  - Security and bug fixes
+    - Fixed Vulnerabilities (DDS: ZDI-CAN-22093, PSD: ZDI-CAN-22094,
+      PSP: ZDI-CAN-22096 and ZDI-CAN-22097)
+    - Broken Graphics Tablets with recent linuxwacom driver
+
+-------------------------------------------------------------------
 Fri Jun 30 07:45:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the biarch module is not used anymore.
