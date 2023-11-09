@@ -25,15 +25,16 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/model-bakers/model_bakery
 Source:         https://github.com/model-bakers/model_bakery/archive/refs/tags/%{version}.tar.gz#/model-bakery-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module pytest-django}
 # /SECTION
 %python_subpackages
