@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-formrecognizer
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Microsoft Azure Form Recognizer Client Library for Python
 License:        MIT
