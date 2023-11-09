@@ -115,9 +115,7 @@ popd
 mkdir -p "$b/%_includedir/External/"
 cp -a glslang "$b/%_includedir/"
 cp -a SPIRV StandAlone "$b/%_includedir/External/"
-ln -sf "%_includedir/External/SPIRV" "$b/%_includedir/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
-ln -s SPIRV/spirv.hpp "$b/%_includedir/"
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"
 
 pushd "$b"

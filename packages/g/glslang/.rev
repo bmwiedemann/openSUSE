@@ -384,4 +384,13 @@
   StandAlone should be installed in %{_includedir}/External</comment>
     <requestid>1122948</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>28d47b6dd36ae4005f072e2a33911181</srcmd5>
+    <version>13.1.1</version>
+    <time>1699562053</time>
+    <user>anag+factory</user>
+    <comment>- Drop symlinks from /usr/include; inhibits upgrade procedure
+  from 13.0.0 package where some were a directory.</comment>
+    <requestid>1124258</requestid>
+  </revision>
 </revisionlist>
