@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define _name   omemo-dr
 Name:           python-omemo-dr
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        OMEMO Encryption Library
 License:        GPL-3.0-or-later
