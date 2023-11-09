@@ -17,10 +17,10 @@
 #
 
 
-%define _llvm_version 16
+%define _llvm_version 17
 
 Name:           include-what-you-use
-Version:        0.20
+Version:        0.21
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA

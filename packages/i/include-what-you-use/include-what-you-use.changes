@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov  8 22:44:57 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.21, update LLVM/Clang to version 17.
+  * Improve analysis of type aliases (typedef and using).
+  * Improve analysis of namespace aliases (namespace xyz = foobar).
+  * Improve support for elaborated forward declarations
+    (typedef struct Foo Bar).
+  * Improve handling of "autocast" and function return types,
+    particularly with complex template types.
+  * Add new IWYU pragma: always_keep, which lets a header announce
+    that it should always be kept wherever included.
+  * Automatically use builtin libc++ mappings if libc++ is the
+    active standard library.
+  * Improve mappings for libc++ and posix headers.
+- Rebase iwyu_include_picker.patch.
+
+-------------------------------------------------------------------
 Tue Apr  4 21:14:23 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.20, update LLVM/Clang to version 16.
