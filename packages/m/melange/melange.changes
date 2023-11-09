@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Nov 09 14:56:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.5.2:
+  * Update pkg/config/config.go
+  * GithubReleaseMonitor: add tagprefix and tagcontains to be used
+    in github tags filtering
+  * Plumb check configs through to linters
+  * Delete no-op sbom code
+  * remove unimplemented references to fulcio support
+  * fail if 'with' is used with 'runs'
+  * Error early if uses and runs are both present
+  * Get rid of PackageContext and SubpackageContext
+  * Remove impossible errors
+  * Make loadUse test actually test something
+  * Remove impossible errors
+  * build: use util.Dedup instead of slices.Compact
+  * util: bring back Dedup, slices.Collapse requires sorting
+  * Bump go-apk
+  * Filter out noise opening non-ELF files
+  * Bump go-apk and use faster tarfs implementation
+  * Add a test to ensure that ranges are handled properly.
+  * Add linters for #805 and #804.
+  * Refactor linting logic and clean things up
+  * Add SBOM linter
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump chainguard.dev/apko
+  * build(deps): bump sigs.k8s.io/release-utils from 0.7.5 to 0.7.6
+  * Add GID/UID remapping to improve permissions. Fix permission
+    issues resulting from running with the build user.
+  * Separate out package and build lints
+  * Add json tags to melange Configuration.
+  * Add python/test linter
+  * util: drop Dedup in favor of golang.org/x/exp/slices.Compact
+  * sca: fix compile by moving a few things around
+  * sca: move analyzer invocation into Analyze() function
+  * sca: implement abstract interface between build engine and sca
+    engine
+  * sca: pass FS into dependency generators rather than creating it
+    on demand
+  * sca: move out of package.go into sca.go as a first pass
+  * Rename Python linters to python/*
+  * readlinkfs: ignore security.selinux xattrs
+  * Add Python docs linter
+  * SCA: add python dependency generator
+  * linter: refactor check block generation in tests
+  * Improve linter diagnostic output
+  * Add GID/UID remapping to improve permissions. Fix permission
+    issues resulting from running with the build user.
+  * build(deps): bump sigs.k8s.io/yaml from 1.3.0 to 1.4.0
+  * Fixups
+  * Handle .so files a little smarter
+  * Ignore all packages starting with _
+  * build(deps): bump google.golang.org/api from 0.147.0 to 0.148.0
+  * build(deps): bump k8s.io/client-go from 0.28.2 to 0.28.3
+  * build(deps): bump github.com/klauspost/compress from 1.17.1 to
+    1.17.2
+  * build(deps): bump chainguard.dev/apko
+  * build(deps): bump actions/checkout from 4.1.0 to 4.1.1
+  * Centralize SOURCE_DATE_EPOCH parsing.
+  * Run go fmt
+  * Exclude docs
+  * Exclude tests
+  * drop sync-issues-to-project-board.yaml not used anymore
+  * Exclude more files from Python multiple package linter
+  * Improve filtering and diagnostics
+  * Use the correct path for Python.
+  * Add multiple Python packages post-linter
+  * pipelines: add npm-install pipeline
+  * replace the fetch python url to more friendly URI
+  * Silence the linter
+  * Make empty linter work by disregarding directories and SBOM in
+    package linting
+  * Really shut up docs linter
+  * Docs changes/consistency fixes
+  * Document melange lint
+  * Module updates
+  * Resolve circular import
+  * Small fix
+  * Update go-apk dep
+  * Remove redundant package
+  * Update pkg/config/config.go
+  * Add basic test for APK linting
+  * Document the release steps.
+  * melange bump: move the reset / bump epoch logic up and inline
+    version
+  * melange bump: only reset the epoch if version changes, else
+    increment it
+  * Add APK linting.
+  * document full-version, add pointer to docs.
+  * Fix Typo
+
+-------------------------------------------------------------------
 Thu Oct 19 05:46:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.5.1:
