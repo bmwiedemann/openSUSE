@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  9 12:17:24 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- hg-git 1.0.3
+  
+  This is a minor release, focusing on bugs and compatibility.
+
+  * Fix tests with Mercurial 6.5
+  * Handle failures to save refs, such as when they use characters
+    forbidden by the file system; this is most easily noticed on Windows
+    and macOS. (#397)
+  * Fix pulling annotated tags with `-r`/`--rev`.
+- drop fix_mercurial_6.5_compatibility.patch
+
+-------------------------------------------------------------------
 Sat Oct  7 22:17:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Add BuildRequires that makes /usr/bin/ssh available in tests.

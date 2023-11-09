@@ -89,4 +89,14 @@
     <comment></comment>
     <requestid>1116248</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08130cb3146c45a37b94d236398b0aa3</srcmd5>
+    <version>1.0.3</version>
+    <time>1699562171</time>
+    <user>anag+factory</user>
+    <comment>- hg-git 1.0.3
+- drop fix_mercurial_6.5_compatibility.patch
+</comment>
+    <requestid>1124540</requestid>
+  </revision>
 </revisionlist>
