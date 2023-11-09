@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:00:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.1:
+  * Update to spec 1.8.0
+
+-------------------------------------------------------------------
 Fri Sep  1 03:26:09 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.14.0
@@ -67,7 +73,7 @@ Wed Apr 19 17:05:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
 - API Headers, Loader, & Validation Layer based on oneAPI Level Zero Specification v1.6.0
 - oneAPI Level Zero API Headers generated from:
   * oneAPI Level Zero v1.6.0 Core API Headers
-  * oneAPI Level Zero v1.6.0 Tools API Headers  
+  * oneAPI Level Zero v1.6.0 Tools API Headers
   * neAPI Level Zero v1.6.0 Sysman API Headers
 - oneAPI Level Zero Loader v1.10.0
 - oneAPI Level Zero Validation Layer v1.10.0

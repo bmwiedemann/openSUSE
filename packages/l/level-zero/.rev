@@ -196,4 +196,15 @@
 </comment>
     <requestid>1108357</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7e63ca041bd7f946d185b22a0d2ccdd6</srcmd5>
+    <version>1.15.1</version>
+    <time>1699562132</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.15.1:
+  * Update to spec 1.8.0
+
+  * oneAPI Level Zero v1.6.0 Tools API Headers</comment>
+    <requestid>1124363</requestid>
+  </revision>
 </revisionlist>
