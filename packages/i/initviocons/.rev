@@ -166,4 +166,16 @@
     <comment></comment>
     <requestid>1055202</requestid>
   </revision>
+  <revision rev="25" vrev="107">
+    <srcmd5>34a6a97c50a48fc169c3b56756e6d24e</srcmd5>
+    <version>0.5</version>
+    <time>1699562058</time>
+    <user>anag+factory</user>
+    <comment>- spec-cleaner run
+
+    https://bugzilla.novell.com/show_bug.cgi?id=256139
+                    initviocons.ps3-matching.patch
+  on the virtual console.</comment>
+    <requestid>1124115</requestid>
+  </revision>
 </revisionlist>

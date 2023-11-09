@@ -17,15 +17,14 @@
 
 
 Name:           initviocons
-URL:            http://svn.poeml.de/viewcvs/initviocons/
 Version:        0.5
 Release:        0
 Summary:        Terminal Initialization, e.g. for the iSeries Virtual Console
 License:        GPL-2.0-or-later
 Group:          System/Console
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  automake
+URL:            http://svn.poeml.de/viewcvs/initviocons/
 Source:         initviocons-%{version}.tar.bz2
+BuildRequires:  automake
 
 %description
 Initviocons can be used on the iSeries platform to recognize terminal
@@ -35,33 +34,27 @@ sequences to find out the screen size and a suitable TERM type. It also
 does special initialization if possible (for example, carriage return
 suppression for Windows telnet clients). On the iSeries platform, it
 additionally checks for the presence of more than one terminal
-connected on the same line. See /etc/profile for a usage example.
-
-
-
-Authors:
---------
-    Peter Poeml <poeml@suse.de>
+connected on the same line. See %{_sysconfdir}/profile for a usage example.
 
 %prep
-%setup -n initviocons-%{version}
+%setup -q -n initviocons-%{version}
 
 %build
 autoreconf -fi
 %configure
-make CFLAGS="$RPM_OPT_FLAGS -Wall"
+%make_build CFLAGS="%{optflags} -Wall"
 
 %install
 %make_install
-install -m 0755 termprobes $RPM_BUILD_ROOT/%{_bindir}/termprobes
+install -m 0755 termprobes %{buildroot}/%{_bindir}/termprobes
 %if 0%{?suse_version} < 1550
-mkdir -p $RPM_BUILD_ROOT/bin
-ln -sf %{_bindir}/initviocons $RPM_BUILD_ROOT/bin
+mkdir -p %{buildroot}/bin
+ln -sf %{_bindir}/initviocons %{buildroot}/bin
 %endif
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %if 0%{?suse_version} < 1550
 /bin/*
 %endif

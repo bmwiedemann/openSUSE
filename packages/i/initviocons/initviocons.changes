@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  7 21:45:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run
+
+-------------------------------------------------------------------
 Tue Dec 27 12:27:04 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
@@ -48,7 +53,7 @@ Wed Nov 14 12:20:42 CET 2007 - poeml@suse.de
 
 - update to r25:
   - recognize WebSM console
-    https://bugzilla.novell.com/show_bug.cgi?id=256139 
+    https://bugzilla.novell.com/show_bug.cgi?id=256139
     which sends a characteristic primary da
 
 -------------------------------------------------------------------
@@ -63,7 +68,7 @@ Thu Jul 19 07:28:29 CEST 2007 - poeml@suse.de
   - fold in patches initviocons-0.4.dif (c shell eval mode)
                     initviocons.minimal-termsize.patch [#140383]
                     initviocons.ps3-hack.patch
-                    initviocons.ps3-matching.patch                                                                     
+                    initviocons.ps3-matching.patch
 
 -------------------------------------------------------------------
 Tue Jul 17 12:22:22 CEST 2007 - sassmann@suse.de
@@ -104,7 +109,7 @@ Sun Jun  9 18:20:34 CEST 2002 - poeml@suse.de
   handle the Network Virtual Terminal newline correctly.  If the
   respective Program Temporary Fixes are installed on the iSeries,
   this fix here is needed as well to prevent Enter key malfunction
-  on the virtual console. 
+  on the virtual console.
 
 -------------------------------------------------------------------
 Tue Mar 12 10:26:54 CET 2002 - kukuk@suse.de
