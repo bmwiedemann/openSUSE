@@ -2652,4 +2652,13 @@ thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comme
   (bsc#1215596) (forwarded request 1113476 from dmdiss)</comment>
     <requestid>1113527</requestid>
   </revision>
+  <revision rev="198" vrev="6">
+    <srcmd5>ffd7c1a17c74671a598835a50e251a64</srcmd5>
+    <version>3.1.6</version>
+    <time>1699562070</time>
+    <user>anag+factory</user>
+    <comment>- Add apparmor-systemd-sessions.patch to allow read access to
+  /run/systemd/sessions/ (bsc#1216878)</comment>
+    <requestid>1124276</requestid>
+  </revision>
 </revisionlist>

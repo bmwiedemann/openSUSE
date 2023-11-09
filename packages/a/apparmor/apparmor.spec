@@ -92,6 +92,11 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
 
+# To allow access to /run/systemd/sessions/ until the next release including the fix
+# for https://gitlab.com/apparmor/apparmor/-/issues/360 is out
+# Upstream MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/1121 (merged 2023-11-08 into master, 3.1 and 3.0)
+Patch8:         apparmor-systemd-sessions.patch
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
@@ -359,6 +364,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch7
 %endif
+%patch8 -p1
 
 %build
 export SUSE_ASNEEDED=0
