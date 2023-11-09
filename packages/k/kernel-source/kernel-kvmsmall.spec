@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.5
-%define patchversion 6.5.9
+%define srcversion 6.6
+%define patchversion 6.6.1
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-kvmsmall
 Summary:        The Small Developer Kernel for KVM
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.5.9
+Version:        6.6.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g29edc7c
+Release:        <RELEASE>.g1fcc265
 %else
 Release:        0
 %endif
@@ -385,10 +385,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
-Provides:       kernel-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
+Provides:       kernel-%build_flavor-base-srchash-1fcc265d62f50cb2666f9c9b4876e08a6222b8cb
+Provides:       kernel-srchash-1fcc265d62f50cb2666f9c9b4876e08a6222b8cb
 # END COMMON DEPS
-Provides:       %name-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
+Provides:       %name-srchash-1fcc265d62f50cb2666f9c9b4876e08a6222b8cb
 %obsolete_rebuilds %name
 
 %define kmp_target_cpu %_target_cpu
@@ -1309,8 +1309,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
-Provides:       kernel-srchash-29edc7cd9a87ec6d4ca952c6a054bd93cbd5cce6
+Provides:       kernel-%build_flavor-base-srchash-1fcc265d62f50cb2666f9c9b4876e08a6222b8cb
+Provides:       kernel-srchash-1fcc265d62f50cb2666f9c9b4876e08a6222b8cb
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86
