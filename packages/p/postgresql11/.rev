@@ -410,4 +410,12 @@ Upgrade to version 11.11:
   symbol and the existing buildignores do not suffice.</comment>
     <requestid>1121438</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c9dc9eed261fd3790e3022c96875c189</srcmd5>
+    <version>11.22</version>
+    <time>1699562176</time>
+    <user>anag+factory</user>
+    <comment>November 2023 Security Updates</comment>
+    <requestid>1124720</requestid>
+  </revision>
 </revisionlist>
