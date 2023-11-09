@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  7 21:48:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run
+
+-------------------------------------------------------------------
 Fri Jul 21 15:06:25 UTC 2023 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
-- Fix EOF handling in xml-reader to avoid `virsh iface-*` commands 
+- Fix EOF handling in xml-reader to avoid `virsh iface-*` commands
   hang on aarch64 (bsc#1213349)
   [+ 0001-xml-reader-fix-xml_getc-and-xml_ungetc.patch,
    + 0002-xml-reader-allow-uppercase-for-lt-gt-and-amp-expansi.patch]
@@ -131,7 +136,7 @@ Mon Jul  2 11:00:33 UTC 2012 - mt@suse.de
     interface operstate to better match ifstatus results
   - Check type while creating topology tree as well, not
     only if the interface specific data exists.
-  - Do not report error in ncf_if_xml_state when interface 
+  - Do not report error in ncf_if_xml_state when interface
     does not exists any more [has been stopped/removed].
   - Improved error handling, report several errors once
   - Expose a lot of error details to the caller
@@ -140,9 +145,9 @@ Mon Jul  2 11:00:33 UTC 2012 - mt@suse.de
   - Fetch mac address from system when not in the config
   - Fixed arp ip target bonding option handling and expose
     errors while trying to add not unique slave interface.
-  - Refresh config handle earlier in ncf_define, fixed a 
+  - Refresh config handle earlier in ncf_define, fixed a
     double free in regression test it does.
-  - Automatically start port/slave/base interfeces when 
+  - Automatically start port/slave/base interfeces when
     stating a bridge/bond/vlan.
 
 -------------------------------------------------------------------
@@ -205,7 +210,7 @@ Wed Jul  6 19:03:28 UTC 2011 - mt@suse.de
 - version 0.2.1, fixing config cleanup of depending interfaces
   while configure and delete action, ifup and ifdown actions,
   adding several checks and removing patch level from the API
-  version (fate#306765).  
+  version (fate#306765).
 
 -------------------------------------------------------------------
 Fri Jul  1 11:17:17 UTC 2011 - mt@suse.de

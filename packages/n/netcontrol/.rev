@@ -210,4 +210,18 @@
 </comment>
     <requestid>1099929</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>57b980cfab52c0e8e024da9f1f00a4fa</srcmd5>
+    <version>0.3.2</version>
+    <time>1699562063</time>
+    <user>anag+factory</user>
+    <comment>- spec-cleaner run
+
+- Fix EOF handling in xml-reader to avoid `virsh iface-*` commands
+  - Do not report error in ncf_if_xml_state when interface
+  - Refresh config handle earlier in ncf_define, fixed a
+  - Automatically start port/slave/base interfeces when
+  version (fate#306765).</comment>
+    <requestid>1124120</requestid>
+  </revision>
 </revisionlist>

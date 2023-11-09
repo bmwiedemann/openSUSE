@@ -33,39 +33,18 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Patch1:         0001-xml-reader-fix-xml_getc-and-xml_ungetc.patch
 Patch2:         0002-xml-reader-allow-uppercase-for-lt-gt-and-amp-expansi.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} >= 1310
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnl3-devel
 BuildRequires:  libtool
-%else
-%if 0%{?suse_version} >= 1210
-BuildRequires:  libnl-1_1-devel
-%else
-BuildRequires:  libnl-devel
-%endif
-%endif
-BuildRequires:  pkg-config
-%if 0%{?suse_version} >= 1230
+BuildRequires:  pkgconfig
 Requires:       sysconfig >= 0.80.0
-%else
-Requires:       sysconfig >= 0.71.0
-%endif
 
 %description
 A interim network configuration library, currently implementing the
 libnetcf interface for libvirt.
 
-
-
-Authors:
---------
-    Olaf Kirch <okir@suse.de>
-    Marius Tomaschewski <mt@suse.de>
-
 %package -n     libnetcontrol0
-
 Summary:        A network configuration library
 Group:          Productivity/Networking/System
 
@@ -75,15 +54,7 @@ libnetcf interface for libvirt.
 
 The libnetcontrol0 package provides the shared library.
 
-
-
-Authors:
---------
-    Olaf Kirch <okir@suse.de>
-    Marius Tomaschewski <mt@suse.de>
-
 %package -n     libnetcontrol-devel
-
 Summary:        Development header and library files
 Group:          Development/Libraries/C and C++
 Requires:       libnetcontrol0 = %{version}
@@ -95,45 +66,31 @@ libnetcf interface for libvirt.
 The libnetcontrol-devel package contains libraries and header files
 required for development.
 
-
-
-Authors:
---------
-    Olaf Kirch <okir@suse.de>
-    Marius Tomaschewski <mt@suse.de>
-
 %prep
 %setup -q
 %patch1 -p1
 %patch2 -p1
 
 %build
-export CFLAGS="-W -Wall $RPM_OPT_FLAGS"
 %configure \
-%if 0%{?suse_version} >= 1230
 	--enable-network-service \
-%endif
 	--enable-pthreads \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libnetcontrol0
-/sbin/ldconfig
-
-%postun -n libnetcontrol0
-/sbin/ldconfig
+%post -n libnetcontrol0 -p /sbin/ldconfig
+%postun -n libnetcontrol0 -p /sbin/ldconfig
 
 %files -n libnetcontrol0
-%defattr(-,root,root,-)
 %{_libdir}/*.so.*
 
 %files -n libnetcontrol-devel
-%defattr(-,root,root,-)
-%doc README COPYING.LGPL COPYING.GPL ChangeLog.git
+%license COPYING.LGPL COPYING.GPL
+%doc README ChangeLog.git
 %{_libdir}/*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/netcontrol.pc
