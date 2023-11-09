@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  8 22:57:15 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Follow-up fix for boo#1216919
+  * make sure dkimproxy-in works even when the dynamically-created
+    config file under /run does not exist 
+
+-------------------------------------------------------------------
 Mon Nov  6 22:46:16 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
 - Fix boo#1216919 
-+ create /run/dkimproxy using tmpfiles
-+ use the correct env var for the hostname
+  * create /run/dkimproxy using tmpfiles
+  * use the correct env var for the hostname
 
 -------------------------------------------------------------------
 Thu Jun 10 20:17:05 UTC 2021 - Mihaly Meszaros <mmeszaros@npsh.hu>
