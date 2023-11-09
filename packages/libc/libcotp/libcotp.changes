@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:18:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Improved CMakeLists
+  * Drop link_options, leave it up to every distro
+
+-------------------------------------------------------------------
 Tue May  2 13:41:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.1:
@@ -9,7 +16,7 @@ Tue May  2 13:41:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Wed Mar  8 15:46:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
-- Build AVX2 enabled hwcaps library for x86_64-v3 
+- Build AVX2 enabled hwcaps library for x86_64-v3
 
 -------------------------------------------------------------------
 Wed Feb  1 09:37:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
@@ -69,25 +76,25 @@ Mon Apr 20 17:13:49 UTC 2020 - Markos Chandras <markos@chandras.me>
 -------------------------------------------------------------------
 Tue Mar 17 08:50:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- run spec cleaner 
+- run spec cleaner
 
 -------------------------------------------------------------------
 Tue Mar 12 13:01:09 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v1.2.2
-  * add c++ support 
+  * add c++ support
 
 -------------------------------------------------------------------
 Sun Oct 21 08:19:32 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
 
-- Fix soname 
+- Fix soname
 
 -------------------------------------------------------------------
 Sun Oct 21 08:12:22 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update libcotp to v1.2.1 
+- Update libcotp to v1.2.1
 
 -------------------------------------------------------------------
 Sat Aug 25 08:50:12 UTC 2018 - info@paolostivanin.com
 
-- First release on OBS 
+- First release on OBS

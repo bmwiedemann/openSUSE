@@ -99,4 +99,21 @@
 </comment>
     <requestid>1084053</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72f49994844fd5e729b40c8b2f010cee</srcmd5>
+    <version>2.0.2</version>
+    <time>1699562143</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * Improved CMakeLists
+  * Drop link_options, leave it up to every distro
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+- run spec cleaner
+  * add c++ support
+- Fix soname
+- Update libcotp to v1.2.1
+- First release on OBS</comment>
+    <requestid>1124372</requestid>
+  </revision>
 </revisionlist>

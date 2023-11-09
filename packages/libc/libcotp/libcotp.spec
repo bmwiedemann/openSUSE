@@ -21,7 +21,7 @@
 %global debug_package %{nil}
 %endif
 Name:           libcotp
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
