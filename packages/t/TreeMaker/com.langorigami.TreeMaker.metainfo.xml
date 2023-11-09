@@ -28,13 +28,20 @@
     <keyword>design</keyword>
   </keywords>
   <url type="homepage">https://www.langorigami.com/article/treemaker</url>
-  <launchable type="desktop-id">com.langorigami.TreeMaker</launchable>
+  <launchable type="desktop-id">com.langorigami.TreeMaker.desktop</launchable>
   <releases>
     <release version="5.0.1" date="2006-04-13"/>
   </releases>
   <provides>
     <binary>TreeMaker</binary>
   </provides>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source" width="1024" height="768">
+        https://www.langorigami.com/wp-content/uploads/2015/09/tm5_mac.png
+      </image>
+    </screenshot>
+  </screenshots>
   <project_license>GPL-2.0-only</project_license>
   <content_rating type="oars-1.1"/>
 </component>

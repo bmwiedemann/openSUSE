@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  8 22:23:52 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix "launchable" and add screenshot in AppStream metadata.
+- Warn at build time if hhp2cached source version doesn't match
+  the wxWidgets we build with.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
 Mon Apr 10 21:38:37 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Initial release based on version 5.0.1.

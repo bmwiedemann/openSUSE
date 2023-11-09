@@ -29,4 +29,16 @@
   * Make-some-build-options-configurable.patch</comment>
     <requestid>1080207</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12f6d48ee900930c35890a983914f2cd</srcmd5>
+    <version>5.0.1</version>
+    <time>1699562087</time>
+    <user>anag+factory</user>
+    <comment>- Fix &quot;launchable&quot; and add screenshot in AppStream metadata.
+- Warn at build time if hhp2cached source version doesn't match
+  the wxWidgets we build with.
+- Run spec-cleaner.
+</comment>
+    <requestid>1124312</requestid>
+  </revision>
 </revisionlist>

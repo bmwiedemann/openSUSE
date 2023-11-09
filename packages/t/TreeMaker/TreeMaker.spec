@@ -1,6 +1,7 @@
 #
 # spec file for package TreeMaker
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,9 +13,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# We have to build hhp2cached ourselves. We take the source from a fixed version
+# of wxWidgets to not break source validation, but warn if it doesn't match.
+%global hhp2cached_ver 3.2.2.1
+%if %{pkg_vcmp wxGTK3-devel != %{hhp2cached_ver}}
+%{warn:hhp2cached version does not match wxGTK3-devel}
+%endif
 
 Name:           TreeMaker
 Version:        5.0.1
@@ -27,7 +35,7 @@ Source:         https://www.langorigami.com/wp-content/uploads/2015/09/TreeMaker
 Source1:        com.langorigami.TreeMaker.desktop
 Source2:        com.langorigami.TreeMaker.metainfo.xml
 Source3:        treemaker.xml
-Source4:        https://github.com/wxWidgets/wxWidgets/raw/v3.2.1/utils/hhp2cached/hhp2cached.cpp
+Source4:        https://github.com/wxWidgets/wxWidgets/raw/v%{hhp2cached_ver}/utils/hhp2cached/hhp2cached.cpp
 # Patches are kept in https://github.com/aaronpuchert/TreeMaker.
 Patch1:         Allow-building-with-system-wxWidgets.patch
 Patch2:         Use-explicit-this-for-dependent-base-members.patch
@@ -50,13 +58,13 @@ Patch18:        Fix-popups-about-ignored-flags-at-startup.patch
 Patch19:        Fix-crash-on-opening-help.patch
 Patch20:        Make-some-build-options-configurable.patch
 BuildRequires:  c++_compiler
-BuildRequires:  update-desktop-files
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  unzip
+BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel
 BuildRequires:  zip
+BuildRequires:  pkgconfig(gtk+-3.0)
 
 %description
 TreeMaker is a program for the design of origami bases. You draw a stick figure
