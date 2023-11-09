@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 09 06:29:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231106T041923Z:
+  * Add support for STS credentials (#4744)
+  * Show net info spinner in health diagnostics (#4741)
+
+-------------------------------------------------------------------
 Wed Nov 01 12:24:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20231030T184332Z:
