@@ -70,7 +70,7 @@ chmod a+x utils/update_build_version.sh
 echo "\"%version\"" >glslc/src/build-version.inc
 
 %build
-export CPPFLAGS="-I%_includedir/External"
+export CXXFLAGS="%{optflags} -I%_includedir/External"
 %cmake -DSHADERC_SKIP_TESTS=ON
 %cmake_build
 

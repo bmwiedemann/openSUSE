@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  9 15:46:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix previous change: export to CXXFLAGS instead of CPPFLAGS so
+  that it's actually picked up. Add optflags to CXXFLAGS to ensure
+  it's not lost.
+
+-------------------------------------------------------------------
 Thu Nov  2 18:07:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Adjust for glslang-nonstd-devel switching paths

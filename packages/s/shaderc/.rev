@@ -199,4 +199,14 @@
     <comment>- Adjust for glslang-nonstd-devel switching paths</comment>
     <requestid>1122949</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>1bb9d8026cb22077f6a2af1855c3c22f</srcmd5>
+    <version>2023.7</version>
+    <time>1699562055</time>
+    <user>anag+factory</user>
+    <comment>- Fix previous change: export to CXXFLAGS instead of CPPFLAGS so
+  that it's actually picked up. Add optflags to CXXFLAGS to ensure
+  it's not lost.</comment>
+    <requestid>1124722</requestid>
+  </revision>
 </revisionlist>
