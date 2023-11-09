@@ -126,7 +126,7 @@
 %endif
 
 Name:           go1.20
-Version:        1.20.10
+Version:        1.20.11
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

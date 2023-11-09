@@ -234,4 +234,19 @@
   * go#63426 go#63417 boo#1216109 security: fix CVE-2023-39325 CVE-2023-44487 net/http: rapid stream resets can cause excessive work (forwarded request 1116740 from jfkw)</comment>
     <requestid>1116742</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>324ab590e4de826c4f8ab9c4a82922cf</srcmd5>
+    <version>1.20.11</version>
+    <time>1699562059</time>
+    <user>anag+factory</user>
+    <comment>- go1.20.11 (released 2023-11-07) includes security fixes to the
+  path/filepath package, as well as bug fixes to the linker and the
+  net/http package.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-45283 CVE-2023-45284
+  * go#63714 go#63713 boo#1216943 boo#1216944 security: fix CVE-2023-45283 CVE-2023-45284 path/filepath: insecure parsing of Windows paths
+  * go#63316 cmd/link: split text sections for arm 32-bit
+  * go#63740 net/http: http2 page fails on firefox/safari if pushing resources (forwarded request 1124116 from jfkw)</comment>
+    <requestid>1124118</requestid>
+  </revision>
 </revisionlist>

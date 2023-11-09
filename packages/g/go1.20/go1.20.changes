@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  7 19:29:09 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.11 (released 2023-11-07) includes security fixes to the
+  path/filepath package, as well as bug fixes to the linker and the
+  net/http package.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-45283 CVE-2023-45284
+  * go#63714 go#63713 boo#1216943 boo#1216944 security: fix CVE-2023-45283 CVE-2023-45284 path/filepath: insecure parsing of Windows paths
+  * go#63316 cmd/link: split text sections for arm 32-bit
+  * go#63740 net/http: http2 page fails on firefox/safari if pushing resources
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:08 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.20.10 (released 2023-10-10) includes a security fix to the
