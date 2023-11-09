@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Nov  9 07:08:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.173:
+  * Meshery UI
+    - Fix Dark mode @ptdatta (#9318)
+    - Enable status col in connection and add ping check
+      @sudhanshutech (#9317)
+    - [bug] Fix broken UI @sudhanshutech (#9315)
+  * Bug Fixes
+    - [bug] Fix broken UI @sudhanshutech (#9315)
+  * Documentation
+    - [docs] Fix Redirection /platforms/page -> /page
+      @theBeginner86 (#9316)
+    - [bug/docs] Fix redirect from /platforms @theBeginner86
+      (#9314)
+
+-------------------------------------------------------------------
+Thu Nov  9 06:55:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.172:
+  * Meshery UI
+    - [Server] K8s connection management @MUzairS15 (#9170)
+    - Meshmodel new UI @ptdatta (#9184)
+    - Bump billboard.js from 3.9.0 to 3.10.2 in /ui @dependabot
+      (#9269)
+    - Bump eslint-config-next from 13.5.3 to 14.0.1 in /provider-ui
+      @dependabot (#9277)
+    - Bump cypress from 13.3.0 to 13.4.0 in /provider-ui
+      @dependabot (#9279)
+    - Add sidecar icon @ShatilKhan (#9291)
+    - [UI] Expose generic RJSF modal to meshery extension
+      @Yashsharma1911 (#9304)
+  * Maintenance
+    - Bump billboard.js from 3.9.0 to 3.10.2 in /ui @dependabot
+      (#9269)
+    - Bump fortio.org/fortio from 1.57.5 to 1.60.3 @dependabot
+      (#9272)
+    - Bump eslint-config-next from 13.5.3 to 14.0.1 in /provider-ui
+      @dependabot (#9277)
+    - Bump cypress from 13.3.0 to 13.4.0 in /provider-ui
+      @dependabot (#9279)
+  * Documentation
+    - added some svgs in docs @iArchitSharma (#9312)
+    - [Docs] Exclude old versions from rendering in local builds
+      @leecalcote (#9310)
+    - Added description of Docs capability for "alerts"
+      @Debaditya-Som (#9226)
+    - [docs] Add docs for notification center @aabidsofi19 (#9303)
+
+-------------------------------------------------------------------
 Fri Nov  3 06:22:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - skip non-existent release 0.6.170
