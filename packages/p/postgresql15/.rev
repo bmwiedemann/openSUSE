@@ -138,4 +138,12 @@
     <comment>Revert last change and make the devel package independend</comment>
     <requestid>1121435</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8cbd55f3e8e89e75b939734b801f3d4d</srcmd5>
+    <version>15.5</version>
+    <time>1699615742</time>
+    <user>anag+factory</user>
+    <comment>November 2023 Security Updates</comment>
+    <requestid>1124708</requestid>
+  </revision>
 </revisionlist>
