@@ -21,7 +21,7 @@
 %endif
 
 Name:           grommunio-web
-Version:        3.3.0.f7738a0
+Version:        3.5.1.31715c1e
 Release:        0
 Summary:        Web client for access to grommunio features from the web
 License:        AGPL-3.0-or-later AND GPL-3.0-only AND LGPL-2.1-only AND MIT
@@ -45,6 +45,7 @@ BuildRequires:  php8-gettext
 Requires:       php8-bcmath
 Requires:       php8-ctype
 Requires:       php8-curl
+Requires:       php8-dom
 Requires:       php8-gd
 Requires:       php8-gettext
 Requires:       php8-iconv
@@ -62,6 +63,7 @@ BuildRequires:  php7-json
 Requires:       php7-bcmath
 Requires:       php7-ctype
 Requires:       php7-curl
+Requires:       php7-dom
 Requires:       php7-gd
 Requires:       php7-gettext
 Requires:       php7-iconv
@@ -80,33 +82,18 @@ Requires:       php-bcmath
 Requires:       php-common
 Requires:       php-ctype
 Requires:       php-curl
+Requires:       php-dom
 Requires:       php-gd
 Requires:       php-mbstring
 Requires:       php-sodium
 Requires:       php-sqlite3
 Requires:       php-xml
 %endif
-
 Requires(pre):  user(groweb)
 Requires:       gromox >= 2.11
-BuildRequires:  mapi-header-php
-Requires:       mapi-header-php
-
+Requires:       mapi-header-php >= 1.2.3
 %if 0%{?suse_version}
 BuildRequires:  fdupes
-BuildRequires:  java >= 1.9.0
-BuildRequires:  java-devel >= 1.9.0
-%else
-BuildRequires:  java-11-openjdk-devel
-BuildRequires:  php-cli
-BuildRequires:  php-json
-%endif
-BuildRequires:  php
-BuildRequires:  xz
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libxml2-tools
-%else
-BuildRequires:  libxml2
 %endif
 
 %define langdir %_datadir/%name/server/language
@@ -115,8 +102,7 @@ BuildRequires:  libxml2
 
 %description
 A web client written in PHP that makes use of HTML5, JSON and ExtJS
-to allow users to make full use of the grommunio
-through a web browser.
+to allow users to make full use of grommunio through a web browser.
 
 %prep
 %autosetup -p1
@@ -127,14 +113,11 @@ echo "%version-%release" >version
 echo "%version-%release" | sha1sum | cut -b 1-8 >cachebuster
 
 %build
-%make_build -j1
 
 %install
 b="%buildroot"
-d="$b/%_datadir"
-mkdir -p "$d"
-cp -a deploy "$b/%_datadir/%name"
-
+mkdir -p "$b/%_datadir/%name"
+cp -a * "$b/%_datadir/%name"
 install -vm 644 LICENSE.txt "$b/%_datadir/%name/LICENSE.txt"
 
 # Nginx conf
@@ -155,7 +138,6 @@ rm -v "$b/%_datadir/%name/debug.php.dist"
 mkdir -pv "$b/var/lib/%name/tmp"
 mkdir -pv "$b/var/lib/%name/sqlite-index"
 mkdir -pv "$b/var/lib/%name/session"
-mkdir -pv "$b/var/log/grommunio"
 
 # Signatures template scripts
 mkdir -pv "$b/%_datadir/doc/grommunio-web/scripts"
@@ -169,7 +151,7 @@ for dir in "$b/%_datadir/%name/plugins"/*; do
 		echo "we did not find a config.php"
 	fi
 done
-
+rm -Rf build "$b/%_datadir/%name/build"
 %if 0%{?fdupes:1}
 %fdupes %buildroot/%_prefix
 %endif
@@ -219,7 +201,6 @@ runuser -u groweb -- ipcrm -M 0x950412DE 2>/dev/null || :
 %_datadir/%name/server/manifest.dtd
 %_datadir/%name/version
 %_datadir/%name/cachebuster
-%attr(750,root,root) /var/log/grommunio/
 
 %dir %langdir/
 %lang(af_ZA) %langdir/af_ZA.UTF-8

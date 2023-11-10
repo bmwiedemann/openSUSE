@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  3 08:55:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5
+  * Modern authentication system using keycloak openID Connect
+    workflow
+  * Style updates
+  * Remove incorrect filtering of PNG ressources
+- Update to snapshot 3.5.1.31715c1e
+  * Duplicate folder autorenaming on deletion now uses
+    parenthesized counters
+
+-------------------------------------------------------------------
 Sat Sep 23 21:30:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3

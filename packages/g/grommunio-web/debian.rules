@@ -15,7 +15,6 @@ export DH_VERBOSE=1
 
 # Mark build as supported (license checks)
 override_dh_auto_build:
-	dh_auto_build -- SUPPORTED_BUILD=1
 
 override_dh_auto_clean:
 
@@ -29,7 +28,7 @@ override_dh_auto_install:
 	dpkg-parsechangelog | grep Version | sed -e 's/^Version: //g' > $(INSTDIR)$(WABASE)/version
 	dpkg-parsechangelog -S Version | sha1sum | cut -b 1-8 >$(INSTDIR)$(WABASE)/cachebuster
 
-	cp -av deploy/* $(INSTDIR)$(WABASE)/
+	cp -av client server plugins *.php *.dist $(INSTDIR)$(WABASE)/
 
 	install -vm 644 LICENSE.txt $(INSTDIR)$(WABASE)/LICENSE.txt
 
@@ -66,6 +65,8 @@ override_dh_auto_install:
 			echo "we did not find a config.php"; \
 		fi; \
 	done
+
+	rm -rf build $(INSTDIR)$(WABASE)/build
 
 override_dh_fixperms:
 	dh_fixperms -Xvar/lib/grommunio-web/tmp
