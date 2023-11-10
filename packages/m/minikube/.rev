@@ -671,4 +671,41 @@
   * Change restart policy on gvisor pod</comment>
     <requestid>1118281</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>dfe521a2870fe8446e86228917950f55</srcmd5>
+    <version>1.32.0</version>
+    <time>1699616014</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.32.0:
+  * rootless: support `--container-runtime=docker` #17520
+  * Install NVIDIA container toolkit during image build (offline
+    support)
+  * Fix no-limit option for config validation #17530
+  * NVIDIA GPU support with new `--gpus=nvidia` flag for docker
+    driver #15927 #17314 #17488
+  * New `kubeflow` addon #17114
+  * New `local-path-provisioner` addon #15062
+  * Kicbase: Add `no-limit` option to `--cpus` &amp; `--memory` flags
+    #17491
+  * Hyper-V: Add memory validation for odd numbers #17325
+  * QEMU: Improve cpu type and IP detection #17217
+  * Mask http(s)_proxy password from startup output #17116
+  * `--delete-on-faliure` also recreates cluster for kubeadm
+    failures #16890
+  * Addon auto-pause: Configure intervals using `--auto-pause-
+    interval` #17070
+  * `--kubernetes-version` checks GitHub for version validation
+    and improved error output for invalid versions #16865
+  * Bugs:
+  * QEMU: Fix addons failing to enable #17402
+  * Fix downloading the wrong kubeadm images for k8s versions
+    after minikube release #17373
+  * Fix enabling &amp; disabling addons with non-existing cluster
+    #17324
+  * Fix delete if container-runtime doesn't exist #17347
+  * Fix network not found not being detected on new Docker
+    versions #17323
+  * Fix addon registry doesn't follow Minikube DNS domain name</comment>
+    <requestid>1124810</requestid>
+  </revision>
 </revisionlist>
