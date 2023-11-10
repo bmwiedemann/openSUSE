@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 08:57:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Mon Dec 14 16:29:28 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add icu-68.patch: fix build with ICU 68
