@@ -2006,4 +2006,41 @@
 - jsc#SLE-16566 jsc#SLE-15188</comment>
     <requestid>1112967</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>807b1199ef3c8139e7cf116c627af149</srcmd5>
+    <version>6.05.01</version>
+    <time>1699615730</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.05.01:
+  * Ignore dot-dirs within $MANDIR
+
+              Add documentation for the the PR_SET_TAGGED_ADDR_CTRL and
+    s390_guarded_storage.2
+        Document cgroup v2 delegation via the 'nsdelegate' mount
+  * removed pages:
+    * unshare.2: Document CLONE_NEWPID, CLONE_NEWUSER, CLONE_THREAD,
+  * new and rewritten pages:
+- complete description of /proc/[pid]/smaps fields
+  * new and rewritten pages:
+     + open_by_handle_at.2
+     + Document _LARGEFILE_SOURCE (feature_test_macros.7)
+  * Document PACKET_QDISC_BYPASS
+- added fanotify_init.2, fanotify_mark.2, open_by_handle_at.2,
+  * Various pages that formerly lacked the information now have
+  * Peng Haitao has submitted patches to around 50 pages that note
+    functions that are thread-safe or thread-unsafe. For this
+    purpose, the man-pages add a new section, ATTRIBUTES, as
+    described in the man-pages(7) manual page. Peng Haitao's
+    substantial work is ongoing, and more pages will add this
+- update to 2.60 [#288732]
+- workaround in spec file: remove deprecated
+- Auto-Update to version
+- updated specfile
+- fix test
+- don't stop for missing man-pages present in system
+- no COPYING file in source anymore, adapt specfile
+- Rename ldpman to man-pages
+- ready for autobuild (forwarded request 1124364 from dirkmueller)</comment>
+    <requestid>1124374</requestid>
+  </revision>
 </revisionlist>
