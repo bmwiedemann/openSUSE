@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Nov  9 11:29:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.1+git37.a5e3753
+  * support ``bcache show -d`` for nvdimm-meta device
+- Abolish /usr/bin/env [boo#1216370]
+- Delete (merged):
+  0001-bcache-tools-set-zoned-size-aligned-data_offset-on-b.patch
+  0002-bcache-tools-add-is_zoned_device.patch
+  0003-bcache-tools-convert-writeback-to-writethrough-mode-.patch
+  0004-bcache-tools-add-struct-cache_sb_disk-into-bcache.h.patch
+  0005-bcache-tools-bitwise.h-more-swap-bitwise-for-differe.patch
+  0006-bcache-tools-list.h-only-define-offsetof-when-it-is-.patch
+  0007-bcache-tools-add-to_cache_sb-and-to_cache_sb_disk.patch
+  0008-bcache-tools-define-separated-super-block-for-in-mem.patch
+  0009-bcache-tools-upgrade-super-block-versions-for-featur.patch
+  0010-bcache-tools-add-large_bucket-incompat-feature.patch
+  0011-bcache-tools-add-print_cache_set_supported_feature_s.patch
+  0012-bcache-tools-Fix-potential-coredump-issues.patch
+  0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
+  0014-bcache-tools-Remove-the-dependency-on-libsmartcols.patch
+  0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
+  0016-bcache-tools-add-bcache-status.patch
+  0017-bcache-tools-add-man-page-bcache-status.8.patch
+  0018-Makefile-install-bcache-status.patch
+  0019-bcache.h-fix-typo-from-SUUP-to-SUPP.patch
+  0020-bcache-tools-only-call-set_bucket_size-for-cache-dev.patch
+  0021-bcache.h-add-BCH_FEATURE_INCOMPAT_LARGE_BUCKET-to-BC.patch
+  0022-bcache-tools-check-incompatible-feature-set.patch
+  0023-bcache-tools-introduce-BCH_FEATURE_INCOMPAT_LOG_LARG.patch
+  0024-bcache-tools-display-obsoleted-bucket-size-configura.patch
+  0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
+  0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
+  0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
+  0028-bcache-tools-Update-super-block-version-in-bch_set_f.patch
+  0029-bcache-tools-improve-is_zoned_device.patch
+
+-------------------------------------------------------------------
 Thu Mar  2 07:58:54 UTC 2023 - Coly Li <colyli@suse.com>
 
 - bcache-tools: improve is_zoned_device() (bsc#1208425)

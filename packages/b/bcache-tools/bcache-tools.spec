@@ -17,50 +17,21 @@
 
 
 Name:           bcache-tools
-Version:        1.1
+Version:        1.1+git37.a5e3753
 Release:        0
 Summary:        Configuration utilities for bcache
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            http://bcache.evilpiepirate.org/
-
 Source:         %name-%version.tar.xz
-Patch1:         0001-bcache-tools-set-zoned-size-aligned-data_offset-on-b.patch
-Patch2:         0002-bcache-tools-add-is_zoned_device.patch
-Patch3:         0003-bcache-tools-convert-writeback-to-writethrough-mode-.patch
-Patch4:         0004-bcache-tools-add-struct-cache_sb_disk-into-bcache.h.patch
-Patch5:         0005-bcache-tools-bitwise.h-more-swap-bitwise-for-differe.patch
-Patch6:         0006-bcache-tools-list.h-only-define-offsetof-when-it-is-.patch
-Patch7:         0007-bcache-tools-add-to_cache_sb-and-to_cache_sb_disk.patch
-Patch8:         0008-bcache-tools-define-separated-super-block-for-in-mem.patch
-Patch9:         0009-bcache-tools-upgrade-super-block-versions-for-featur.patch
-Patch10:        0010-bcache-tools-add-large_bucket-incompat-feature.patch
-Patch11:        0011-bcache-tools-add-print_cache_set_supported_feature_s.patch
-Patch12:        0012-bcache-tools-Fix-potential-coredump-issues.patch
-Patch13:        0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
-Patch14:        0014-bcache-tools-Remove-the-dependency-on-libsmartcols.patch
-Patch15:        0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
-Patch16:        0016-bcache-tools-add-bcache-status.patch
-Patch17:        0017-bcache-tools-add-man-page-bcache-status.8.patch
-Patch18:        0018-Makefile-install-bcache-status.patch
-Patch19:        0019-bcache.h-fix-typo-from-SUUP-to-SUPP.patch
-Patch20:        0020-bcache-tools-only-call-set_bucket_size-for-cache-dev.patch
-Patch21:        0021-bcache.h-add-BCH_FEATURE_INCOMPAT_LARGE_BUCKET-to-BC.patch
-Patch22:        0022-bcache-tools-check-incompatible-feature-set.patch
-Patch23:        0023-bcache-tools-introduce-BCH_FEATURE_INCOMPAT_LOG_LARG.patch
-Patch24:        0024-bcache-tools-display-obsoleted-bucket-size-configura.patch
-Patch25:        0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
-Patch26:        0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
-Patch27:        0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
-Patch28:        0028-bcache-tools-Update-super-block-version-in-bch_set_f.patch
-Patch29:        0029-bcache-tools-improve-is_zoned_device.patch
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(uuid)
 
 %description
-This package contains utilities for configuring the bcache Module.
+This package contains utilities for creating and inspecting
+bcache filesystems.
 
 %prep
 %autosetup -p1
@@ -70,6 +41,7 @@ export SUSE_ASNEEDED=0
 %make_build all \
 	CFLAGS="%optflags $(pkg-config blkid uuid --cflags) -std=gnu99" \
 	LDFLAGS="$(pkg-config blkid uuid --libs)"
+perl -i -lpe 's{^#!/usr/bin/env python\b}{#!/usr/bin/python3}' bcache-status
 
 %install
 b="%buildroot"

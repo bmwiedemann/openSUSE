@@ -137,4 +137,12 @@
   0029-bcache-tools-improve-is_zoned_device.patch (forwarded request 1068623 from colyli)</comment>
     <requestid>1068637</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ef988a2c198d3c33309e203c1168e88d</srcmd5>
+    <version>1.1+git37.a5e3753</version>
+    <time>1699615739</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 1.1+git37.a5e3753</comment>
+    <requestid>1124427</requestid>
+  </revision>
 </revisionlist>
