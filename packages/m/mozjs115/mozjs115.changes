@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  9 08:37:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 115.4.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2023-5721: Queued up rendering could have allowed websites
+    to clickjack
+  + CVE-2023-5732: Address bar spoofing via bidirectional
+    characters
+  + CVE-2023-5724: Large WebGL draw could have led to a crash
+  + CVE-2023-5725: WebExtensions could open arbitrary URLs
+  + CVE-2023-5726: Full screen notification obscured by file open
+    dialog on macOS
+  + CVE-2023-5727: Download Protections were bypassed by .msix,
+    .msixbundle, .appx, and .appxbundle files on Windows
+  + CVE-2023-5728: Improper object tracking during GC in the
+    JavaScript engine could have led to a crash
+  + CVE-2023-5730: Memory safety bugs fixed in Firefox 119, Firefox
+    ESR 115.4, and Thunderbird 115.4.1
+
+-------------------------------------------------------------------
 Sun Oct  1 11:40:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 115.3.1:

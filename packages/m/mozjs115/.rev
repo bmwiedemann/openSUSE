@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1114710</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7aa4a631e53ee6994d1218cd1b1323a</srcmd5>
+    <version>115.4.0</version>
+    <time>1699615745</time>
+    <user>anag+factory</user>
+    <comment>New upstream release (forwarded request 1124359 from iznogood)</comment>
+    <requestid>1124717</requestid>
+  </revision>
 </revisionlist>
