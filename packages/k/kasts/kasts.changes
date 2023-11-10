@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: Store rejected. Try just the plug.
+  * Add CI template for building APKs on invent
+  * snapcraft: Use new mpris plug for dbus.
+  * snapcraft: Fix dbus name. Add alsa conf to layouts and add plug. Add missing dev and runtime packages.
+  * Fix streaming button showing up instead of download button (kde#476144)
+  * Disable failing qt6 tests on release/23.08 branch
+  * Remove network connectivity check
+  * snapcraft: add qml and plugin import path to env. Add network-manager plug.
+  * Add snapcraft.yaml to reuse.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
