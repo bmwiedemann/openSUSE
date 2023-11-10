@@ -214,6 +214,7 @@ Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
 Patch5:         pass-correct-size-to-snprintf.patch
 Patch6:         mvapich2-allow-building-with-external-hwloc.patch
+Patch7:         mvapich2-openpa-add-memory-barriers.patch
 ## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch50:        0001-Drop-real128.patch
@@ -352,6 +353,7 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch4
 %patch5 -p1
 %patch6
+%patch7
 
 # Only apply these patches on Armv7
 %ifarch armv7hl

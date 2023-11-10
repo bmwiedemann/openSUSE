@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 26 10:42:07 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add mvapich2-openpa-add-memory-barriers.patch to fix testsuite issue
+  on pcc64 (bsc#1216610, bsc#1216612)
+
+-------------------------------------------------------------------
 Mon Aug  7 16:57:40 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete TrueScale (bsc#1212146)
