@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Nov 10 09:18:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.38.0:
+  * `extension install` no longer errors unhelpfully if the
+    extension is already installed
+  * All tables now have headers
+  * `project` commands have a clearer error message when no owner
+    can be resolved
+  * `workflow run` now presents a select for `choice` workflow
+    input types
+  * `codespace create` no longer polls for additional codespace
+    permissions unnecessarily
+  * `go install` now works with the removal of our crypto fork
+- update to 2.37.0:
+  * `project`: Remove `template` field from `--format=json`
+    output
+  * In v2.34.0 we introduced the `template` field when outputing
+    projects to JSON, unfortunately we forgot to take into account
+    our GHES users. This field does not exist on GHES 3.8 and older.
+    Including this field in our queries and output broke nearly
+    all the `project` commands for users targeting these older
+    versions of GHES. As we try our hardest to keep `gh` compatible
+    with all * non-deprecated GHES versions this was a pretty big
+    mistake.  In order to fix it we are reverting the querying and
+    exporting of the `template` field for `project` commands. We
+    apologize for the inconvenience this may cause, and plan to
+    bring back this field once GHES 3.8 gets deprecated.
+  * `repo create`: Allow `--disable-issues` and `--template`
+    flags to be used together
+  * `repo create`: Allow `--homepage` and `--template` flag to be
+    used together
+  * `repo create`: Allow creating repositories from templates in
+    interactive mode
+  * `repo fork`: Set default repo when forking repo
+  * `codespace`: Migrate all Codespaces operations from Live
+    Share to Dev Tunnels
+  * `codespace create`: Poll permission acceptance endpoint on
+    codespace creation
+  * `pr create`: Remove duplicates targets for push survey
+  * `pr create`: Fix typo in documentation
+  * `browse`: Do not use relative paths when `--repo` flag is
+    used
+
+-------------------------------------------------------------------
 Wed Oct 04 15:31:43 UTC 2023 - pdostal@suse.com
 
 - Update to version 2.36.0:
@@ -1294,7 +1338,7 @@ Sat Dec 18 03:04:36 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 -------------------------------------------------------------------
 Fri Dec 10 10:33:33 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
-- Fix boogh#cli/cli#1192421 - Changed git dependency to only git-core 
+- Fix boogh#cli/cli#1192421 - Changed git dependency to only git-core
 
 -------------------------------------------------------------------
 Thu Sep  2 07:12:02 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
@@ -1400,7 +1444,7 @@ Sat May 22 21:38:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 - Update to version 1.10.3:
   * Fix gh pr merge with GitHub Enterprise Server < 3.0 gh#cli/cli#3688
   * Speed up measuring display width of text gh#cli/cli#3668
-  * Simplify Debian/Ubuntu installation docs gh#cli/cli#3672 
+  * Simplify Debian/Ubuntu installation docs gh#cli/cli#3672
 
 - Changes from 1.10.2:
   * Fix creating Windows directory for gh config gh#cli/cli#3666
@@ -1409,7 +1453,7 @@ Sat May 22 21:38:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 Wed May 19 13:49:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 1.10.1:
-  * Fix pr checkout for cross-repository pull requests gh#cli/cli#3663 
+  * Fix pr checkout for cross-repository pull requests gh#cli/cli#3663
 
 -------------------------------------------------------------------
 Wed May 19 06:32:33 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
@@ -1496,7 +1540,7 @@ Mon Apr 19 15:19:07 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 -------------------------------------------------------------------
 Tue Apr 13 07:50:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
-- Supplement bash-completion instead of bash 
+- Supplement bash-completion instead of bash
 
 -------------------------------------------------------------------
 Mon Apr 12 08:17:36 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
@@ -1514,7 +1558,7 @@ Sun Mar  7 18:06:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:
   * see https://github.com/cli/cli/releases/tag/v1.7.0
-  * https://github.com/cli/cli/releases/tag/v1.6.0 
+  * https://github.com/cli/cli/releases/tag/v1.6.0
   * https://github.com/cli/cli/releases/tag/v1.5.0
 
 -------------------------------------------------------------------
