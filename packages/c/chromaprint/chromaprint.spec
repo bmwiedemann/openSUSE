@@ -54,7 +54,6 @@ audio source.
 Summary:        Audio Fingerprinting Library
 License:        LGPL-2.1-or-later
 Requires:       libchromaprint%{soname} = %{version}
-Requires:       libtag-devel
 
 %description -n libchromaprint-devel
 Chromaprint is the core component of the Acoustid project. It's a client-side
