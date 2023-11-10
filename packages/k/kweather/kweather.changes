@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:05:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Adapt to plasma-framework moving to Plasma
+  * CI: Comment out flatpak CI it uses some KF6 dependencies
+  * Add snapcraft file to reuse.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:28:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
