@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:05:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Add CI template for building APKs on invent
+  * Reflect move of KActivities out of Frameworks to Plasma
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Mon Oct 30 13:27:08 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rework patch that informs the user about missing postscript
