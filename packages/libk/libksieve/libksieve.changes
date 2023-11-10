@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:05:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Fix bug 476456: No scrollbar in simple editing mode (kde#476456)
+  * Add scrollarea
+  * Rename variables
+  * Fix update button when we click on clear
+
+-------------------------------------------------------------------
 Tue Oct 10 18:28:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
