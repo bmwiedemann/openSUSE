@@ -625,4 +625,41 @@ The less license is a choice of either GPL-3.0+ or BSD-2-Clause (less license). 
     <comment></comment>
     <requestid>1104175</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>d5f6f8dbdb29683c11716d72b68c4f30</srcmd5>
+    <version>643</version>
+    <time>1699615741</time>
+    <user>anag+factory</user>
+    <comment>- add zstd support to lessopen
+
+  * Fix buffer overflow when invoking lessecho with more than 63 -m/-n
+  * Fix termlib detection when compiler doesn't accept
+  * Fix bug using multibyte UTF-8 char in search string
+  * If XDG_CONFIG_HOME is set, find lesskey source file
+  * If XDG_DATA_HOME is set, find and store history file
+  * If XDG_CONFIG_HOME is set, find lesskey source file
+  * If XDG_DATA_HOME is set, find and store history file
+  * Fix bug which could leave terminal in mouse-reporting mode
+    mouse-reporting mode after exiting less.
+  * Display error message immediately when -o is toggled and
+  * Fix regression: make screen repaint when &quot;squished&quot; and
+  * Display error message immediately when -o is toggled and
+- Extend lesskey with mappings for 8-bit controls key escape sequences
+  * Update Unicode database to 9.0.0.
+  * Automate construction of Unicode tables from Unicode database.
+  * added less-fix_crash_in_hilite_line.patch
+  * Fix display bug when using up/down arrow on the command line.
+- Update to version 456
+- Update to version 455
+    * Fix possible crashes caused by malformed LESSOPEN or
+  * Fix bug in unget handling that can cause strange effects
+- fix build
+- updated to version 418
+  * Update GPL to version 3.
+- add head of changelog to rpm listing
+- make expand_linebuf() faster [#39724]
+    * system-wide lesskey file now defaults to sysless in etc directory
+- improved detection for input conding from keyboard, proper input</comment>
+    <requestid>1124451</requestid>
+  </revision>
 </revisionlist>

@@ -59,6 +59,8 @@ case ${type#"$SRC": } in
 	*"xz compressed data"*|\
 	*"XZ compressed data"*)
 		CMD="xz -dc" ;;
+	*"Zstandard compressed data"*)
+		CMD="zstd -dc" ;;
 	*)
 		rm -f "$TMPF_pre"
 		TMPF_pre="$SRC" ;;

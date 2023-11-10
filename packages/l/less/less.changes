@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  9 13:44:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add zstd support to lessopen
+
+-------------------------------------------------------------------
 Mon Aug 14 07:04:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 643:
@@ -103,17 +108,17 @@ Wed Sep 14 09:05:33 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
   * Fix bug when empty file is modified while viewing it.
   * Fix bug when parsing a malformed lesskey file (githb #234).
   * Fix bug scrolling history when --incsearch is set (github #214).
-  * Fix buffer overflow when invoking lessecho with more than 63 -m/-n 
+  * Fix buffer overflow when invoking lessecho with more than 63 -m/-n
     options (github #198).
   * Fix buffer overflow in bin_file (github #271).
   * Fix bug restoring color at end of highlighted text.
   * Fix bug in parsing lesskey file.
   * Defer moving cursor to lower left in some more cases.
   * Suppress TAB filename expansion in some cases where it doesn't make sense.
-  * Fix termlib detection when compiler doesn't accept 
+  * Fix termlib detection when compiler doesn't accept
     calls to undeclared functions.
   * Escape filenames when invoking LESSCLOSE.
-  * Fix bug using multibyte UTF-8 char in search string 
+  * Fix bug using multibyte UTF-8 char in search string
     with --incsearch (github #273).
 
 -------------------------------------------------------------------
@@ -138,9 +143,9 @@ Thu Jun 17 20:26:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 590:
   * Make less able to read lesskey source files (deprecating lesskey).
-  * If XDG_CONFIG_HOME is set, find lesskey source file 
+  * If XDG_CONFIG_HOME is set, find lesskey source file
     in $XDG_CONFIG_HOME/lesskey rather than $HOME/.lesskey.
-  * If XDG_DATA_HOME is set, find and store history file 
+  * If XDG_DATA_HOME is set, find and store history file
     in $XDG_DATA_HOME/lesshst rather than $HOME/.lesshst.
   * Add the --lesskey-src option.
   * Add the --file-size option.
@@ -156,13 +161,13 @@ Sun May 16 21:49:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 586:
   * Make less able to read lesskey source files (deprecating lesskey).
-  * If XDG_CONFIG_HOME is set, find lesskey source file 
+  * If XDG_CONFIG_HOME is set, find lesskey source file
     in $XDG_CONFIG_HOME/lesskey rather than $HOME/.lesskey.
-  * If XDG_DATA_HOME is set, find and store history file 
+  * If XDG_DATA_HOME is set, find and store history file
     in $XDG_DATA_HOME/lesshst rather than $HOME/.lesshst.
   * Add the --lesskey-src option.
   * Add the --file-size option.
-  * Fix bug which could leave terminal in mouse-reporting mode 
+  * Fix bug which could leave terminal in mouse-reporting mode
     after exiting less.
   * Fix bug which caused failure to respond to window resize.
   * Fix backslash bug searching in tag file.
@@ -172,7 +177,7 @@ Thu Apr 29 07:19:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 581.2:
   * This fixes a bug found in less-581 where the terminal was sometimes left in
-    mouse-reporting mode after exiting less. 
+    mouse-reporting mode after exiting less.
 
 -------------------------------------------------------------------
 Fri Apr 23 09:37:19 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -212,10 +217,10 @@ Sat Aug 15 16:25:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
   * Treat Hangul Jamo medial vowels and final consonants as zero width.
 
-  * Display error message immediately when -o is toggled and 
+  * Display error message immediately when -o is toggled and
     input is not a pipe.
 
-  * Fix regression: make screen repaint when "squished" and 
+  * Fix regression: make screen repaint when "squished" and
     a no-movement command is given.
 
   * Fix erroneous EOF calculation when F command is interrupted.
@@ -242,7 +247,7 @@ Sat Apr  4 18:54:52 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - less 557:
   * Update Unicode tables
   * Treat Hangul Jamo medial vowels and final consonants as zero width
-  * Display error message immediately when -o is toggled and 
+  * Display error message immediately when -o is toggled and
     input is not a pipe
   * Fix memory corruption when built with libtermcap
   * Support libtinfow
@@ -330,7 +335,7 @@ Fri Oct 27 06:03:36 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Fri Apr 28 11:45:22 UTC 2017 - werner@suse.de
 
-- Extend lesskey with mappings for 8-bit controls key escape sequences 
+- Extend lesskey with mappings for 8-bit controls key escape sequences
 
 -------------------------------------------------------------------
 Tue Apr  4 09:22:05 UTC 2017 - kstreitova@suse.com
@@ -348,7 +353,7 @@ Tue Apr  4 09:22:05 UTC 2017 - kstreitova@suse.com
     string.
   * Fix bug in Unicode handling that missed some double width
     characters.
-  * Update Unicode database to 9.0.0. 
+  * Update Unicode database to 9.0.0.
 - remove less-429-widechars.patch that is no longer needed
   (fixed upstream)
 - refresh less-429-shell.patch
@@ -381,7 +386,7 @@ Sun Nov  1 17:38:36 UTC 2015 - astieger@suse.com
   * Fix possible memory corruption
   * Fix bugs and improve performance in ampersand filtering.
   * Allow %% escape sequence in LESSOPEN variable.
-  * Automate construction of Unicode tables from Unicode database. 
+  * Automate construction of Unicode tables from Unicode database.
 - add keyring and verify source signature
 - drop upstream patches:
   * less-458-out_of_bounds_read.patch
@@ -391,7 +396,7 @@ Sun Nov  1 17:38:36 UTC 2015 - astieger@suse.com
 Thu Jun 25 09:17:17 UTC 2015 - vcizek@suse.com
 
 - fix a crash in hilite_line (boo#915387)
-  * added less-fix_crash_in_hilite_line.patch 
+  * added less-fix_crash_in_hilite_line.patch
 
 -------------------------------------------------------------------
 Fri Mar 13 16:10:30 UTC 2015 - kstreitova@suse.com
@@ -427,7 +432,7 @@ Tue Jul 30 15:42:34 UTC 2013 - sweet_f_a@gmx.de
 
 - Update to version 458
   * Fix Win32 attribute display bug.
-  * Fix display bug when using up/down arrow on the command line. 
+  * Fix display bug when using up/down arrow on the command line.
 
 -------------------------------------------------------------------
 Mon May  6 20:20:03 UTC 2013 - sleep_walker@suse.cz
@@ -454,13 +459,13 @@ Wed Mar 20 16:31:12 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Mon Nov 12 20:48:29 UTC 2012 - puzel@suse.com
 
-- Update to version 456 
+- Update to version 456
   * Yet another bugfix in option string parser
 
 -------------------------------------------------------------------
 Tue Nov  6 11:24:25 UTC 2012 - puzel@suse.com
 
-- Update to version 455 
+- Update to version 455
   * Bugfixes in buildsystem and option parser
 
 -------------------------------------------------------------------
@@ -493,7 +498,7 @@ Tue Sep 25 07:48:44 UTC 2012 - vdziewiecki@suse.com
     * Add configure option --with-regex=none and fix compile
     * errors when compiling with no regex library.
 
-    * Fix possible crashes caused by malformed LESSOPEN or 
+    * Fix possible crashes caused by malformed LESSOPEN or
       LESSCLOSE variables.
 
     * Fix bug highlighting text which is discontiguous in the
@@ -525,7 +530,7 @@ Fri Nov  4 09:56:02 UTC 2011 - puzel@suse.com
 Thu Jun 16 08:26:41 UTC 2011 - idonmez@novell.com
 
 - Update to version 444
-  * Fix bug in unget handling that can cause strange effects 
+  * Fix bug in unget handling that can cause strange effects
     on the command line.
   * Remove vestiges of obsolete -l option that can cause a crash.
 
@@ -627,16 +632,16 @@ Thu Aug 28 15:16:05 CEST 2008 - anosek@suse.cz
 -------------------------------------------------------------------
 Sun Jul 20 20:19:27 CEST 2008 - crrodriguez@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Tue Jan 29 08:02:13 CET 2008 - anosek@suse.cz
 
-- updated to version 418  
+- updated to version 418
   * Fix search bug when using -R and text contains ANSI color escape sequences.
   * Fix crash when using -r with UTF-8 text containing 0x9B bytes.
   * Fix display bug when using ' command to move less than one page forward.
-  * Update GPL to version 3. 
+  * Update GPL to version 3.
 
 -------------------------------------------------------------------
 Thu Dec 20 09:07:33 CET 2007 - anosek@suse.cz
@@ -756,7 +761,7 @@ Mon Dec 19 12:53:10 CET 2005 - mmarek@suse.cz
 -------------------------------------------------------------------
 Fri Oct  7 13:59:41 CEST 2005 - dmueller@suse.de
 
-- add head of changelog to rpm listing 
+- add head of changelog to rpm listing
 
 -------------------------------------------------------------------
 Wed Oct  5 09:56:20 CEST 2005 - mmarek@suse.cz
@@ -768,7 +773,7 @@ Wed Oct  5 09:56:20 CEST 2005 - mmarek@suse.cz
 -------------------------------------------------------------------
 Thu Sep 15 09:46:33 CEST 2005 - mmarek@suse.cz
 
-- make expand_linebuf() faster [#39724] 
+- make expand_linebuf() faster [#39724]
 
 -------------------------------------------------------------------
 Tue Sep 13 17:39:46 CEST 2005 - mmarek@suse.cz
@@ -871,7 +876,7 @@ Fri Aug 09 21:54:22 CEST 2002 - pmladek@suse.cz
     * new option --no-keypad disables keypad initialization
     * new commands t and T step through multiple tag matches
     * new prompt style set by option -Pw
-    * system-wide lesskey file now defaults to sysless in etc directory 
+    * system-wide lesskey file now defaults to sysless in etc directory
       instead of .sysless in bin directory
     * pressing RightArrow or LeftArrow while entering a number now shifts
       the display N columns rather than editing the number itself
@@ -899,7 +904,7 @@ Fri May 17 14:37:48 CEST 2002 - pmladek@suse.cz
 -------------------------------------------------------------------
 Thu Mar 21 15:37:11 CET 2002 - pmladek@suse.cz
 
-- improved detection for input conding from keyboard, proper input 
+- improved detection for input conding from keyboard, proper input
   coding is detected by locales now [#15155]
 - changed default input coding from "japanese-iso7" to "iso8859"
 - user can still define his input conding by the environment
@@ -926,7 +931,7 @@ Mon Feb 18 11:59:36 CET 2002 - pmladek@suse.cz
 -------------------------------------------------------------------
 Fri Feb 15 19:06:05 CET 2002 - pmladek@suse.cz
 
-- error messages in lessopen.sh must be redirected to the standard 
+- error messages in lessopen.sh must be redirected to the standard
   error output
 - fixed Copyright in lessopen.sh and lessclose.sh
 
@@ -947,7 +952,7 @@ Mon Nov  5 16:32:10 CET 2001 - mfabian@suse.de
   Thanks to Michael Schroeder <mls@suse.de>
 - add arabic.diff to fix typo in possible values of JLESSPLANESET
   (alabic -> arabic).
-- remove %attr(644, -, -) in front of %doc, this gives 
+- remove %attr(644, -, -) in front of %doc, this gives
   wrong permissions to the directory /usr/share/doc/packages/less
   use 'chmod 644 LICENSE COPYING NEWS' instead.
 
@@ -1048,7 +1053,7 @@ Fri Mar 16 16:25:55 CET 2001 - vinil@suse.cz
 -------------------------------------------------------------------
 Wed Jan 10 16:58:25 CET 2001 - smid@suse.cz
 
-- lesspipe.sh fixed 
+- lesspipe.sh fixed
 
 -------------------------------------------------------------------
 Tue Jan  9 19:14:31 CET 2001 - smid@suse.cz
@@ -1086,7 +1091,7 @@ Tue Nov 21 16:52:57 CET 2000 - werner@suse.de
 -------------------------------------------------------------------
 Tue Sep 26 01:05:22 CEST 2000 - ro@suse.de
 
-- make lesspipe executable again 
+- make lesspipe executable again
 
 -------------------------------------------------------------------
 Mon Sep 25 15:46:03 CEST 2000 - smid@suse.cz
