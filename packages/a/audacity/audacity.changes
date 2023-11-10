@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 10 08:06:47 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Use gcc12 in Leap to fix build error.
+
+-------------------------------------------------------------------
 Thu Nov  9 10:17:39 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Removed patches:

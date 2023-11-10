@@ -45,7 +45,13 @@ Patch94:        vst3sdk-fix-include-cstdint-for-gcc13.patch
 Patch95:        vst3sdk-fix-limits-include-moduleinfoparser.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 #!BuildIgnore:  gstreamer-0_10-plugins-base
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
@@ -141,6 +147,10 @@ tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
 %endif
 
 %build
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 if ! test -e %{_libdir}/pkgconfig/lame.pc
 then
 export PKG_CONFIG_PATH="`echo $PWD`:%{_libdir}/pkgconfig"
