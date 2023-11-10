@@ -19,14 +19,14 @@
 %{?sle15_python_module_pythons}
 Name:           python-time-machine
 Group:          Development/Languages/Python
-Version:        2.9.0
+Version:        2.13.0
 Release:        0
 Summary:        Travel through time in your tests
 License:        MIT
 URL:            https://github.com/adamchainz/time-machine
 # pypi packages don't contain the tests anymore since 2.2.0, see changelog
 Source:         https://github.com/adamchainz/time-machine/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

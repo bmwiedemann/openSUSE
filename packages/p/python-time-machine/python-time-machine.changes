@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:05:38 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.13.0
+  - Add support for datetime.timedelta to time_machine.travel().
+  - Fix documentation about using local time for naive date(time) strings.
+  - Add shift() method to the time_machine pytest fixture.
+  - Mock time.monotonic() and time.monotonic_ns(). 
+    They return the values of time.time() and time.time_ns()
+    respectively, rather than real monotonic clocks.
+- Changes from 2.12.0
+  - Include wheels for Python 3.12.
+- Changes from 2.11.0
+  - Drop Python 3.7 support.
+- Changes from 2.10.0
+  - Support Python 3.12.
+
+-------------------------------------------------------------------
 Fri Jun  9 06:20:34 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
