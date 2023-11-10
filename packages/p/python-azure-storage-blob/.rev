@@ -300,4 +300,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1116859 from glaubitz)</comment>
     <requestid>1116920</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>358fce03514d5446521f770148566bec</srcmd5>
+    <version>12.19.0</version>
+    <time>1699616027</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.19.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1124819 from glaubitz)</comment>
+    <requestid>1124839</requestid>
+  </revision>
 </revisionlist>
