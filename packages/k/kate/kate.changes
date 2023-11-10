@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: Don't bundle c++ libs. (kde#476498)
+  * Reflect move of KActivities out of Frameworks to Plasma
+  * Update to reflect move of KUserFeedback to Frameworks
+  * snapcraft: Fix wayland installs by bundling qtwayland libs.
+  * Fix crash on dropping file in project (kde#476016)
+  * snapcraft: add missig build dep gettext.
+  * [flatpak] Use Qt5 branch for deps
+  * snapcraft: initial import snacraft files
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
