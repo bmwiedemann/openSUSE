@@ -6477,6 +6477,7 @@ unsorted:
   - gitk 
   - gitleaks 
   - gitolite 
+  - gitsign 
   - gitslave 
   - gitslave-doc 
   - gitui 
@@ -14063,6 +14064,8 @@ unsorted:
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit 
   - libqaccessibilityclient-qt5-devel 
+  - libqaccessibilityclient-qt6-0 
+  - libqaccessibilityclient-qt6-devel 
   - libqalculate-devel 
   - libqat3 
   - libqatzip3 
@@ -21623,7 +21626,6 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
-  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -21741,7 +21743,6 @@ unsorted:
   - postgresql16-devel 
   - postgresql16-devel-mini 
   - postgresql16-docs 
-  - postgresql16-llvmjit 
   - postgresql16-llvmjit-devel 
   - postgresql16-orafce 
   - postgresql16-plperl 
@@ -34851,6 +34852,7 @@ unsorted:
   - stp 
   - stp-devel 
   - strawberry 
+  - streamdeck-linux-gui 
   - streamdeck-ui 
   - streamlink 
   - stress-ng 
