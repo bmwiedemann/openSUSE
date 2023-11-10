@@ -2,6 +2,7 @@
 # spec file for package libmaxminddb
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define lname	libmaxminddb0
 Name:           libmaxminddb
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        C library for the MaxMind DB file format
 License:        Apache-2.0
@@ -72,7 +73,7 @@ data associated with an address.
 This package contains the development files for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -86,8 +87,7 @@ This package contains the development files for %{name}.
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}/%{_prefix}
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license LICENSE
