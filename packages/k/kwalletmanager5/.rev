@@ -817,4 +817,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
     <requestid>1117383</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>469e20f08d37b1006d2fc7db219e7721</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615817</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124645</requestid>
+  </revision>
 </revisionlist>
