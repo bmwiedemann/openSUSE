@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Add CI template for building APKs on invent
+  * snapcraft: Use source icon, Add license header, Fix qml import path.
+  * snapcraft: add qml module qtquickcontrols 2
+  * snapcraft: initial import snapcraft files
+
+-------------------------------------------------------------------
 Tue Oct 10 18:26:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
