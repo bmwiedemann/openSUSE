@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: set version, appstream sets a non release service version.
+  * snapcraft: initial import snapcraft files.
+  * Disable flatpak CI
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
