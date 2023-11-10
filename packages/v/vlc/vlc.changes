@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  8 15:38:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop fdk_aac bcond and move pkgconfig(fdk-aac) BuildRequires out
+  of build_orig conditional, build support for all targets.
+- Move pkgconfig(libdca) BuildRequires out of build_orig
+  conditional, build support for all targets.
+
+-------------------------------------------------------------------
 Sat Nov  4 20:49:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.20:

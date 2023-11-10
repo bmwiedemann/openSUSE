@@ -31,7 +31,7 @@
 # VNC support - the module is not really usable in most cases tested so far (e.g. against qemu-kvm -vnc :xx)
 %bcond_with vnc
 %bcond_with faad
-%bcond_with fdk_aac
+
 Name:           vlc
 Version:        3.0.20
 Release:        0
@@ -128,10 +128,12 @@ BuildRequires:  pkgconfig(caca) >= 0.99.beta20
 BuildRequires:  pkgconfig(dbus-1) >= 1.6.0
 BuildRequires:  pkgconfig(dvdnav) > 4.9.0
 BuildRequires:  pkgconfig(dvdread) > 4.9.0
+BuildRequires:  pkgconfig(fdk-aac)
 BuildRequires:  pkgconfig(gnutls) >= 3.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
+BuildRequires:  pkgconfig(libdca) >= 0.0.5
 BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
 BuildRequires:  pkgconfig(libmpeg2) > 0.3.2
@@ -229,14 +231,10 @@ BuildRequires:  pkgconfig(ncursesw)
 # Those are dependencies which are NOT provided in openSUSE, mostly for legal reasons.
 %if 0%{?BUILD_ORIG}
 BuildRequires:  libxvidcore-devel
-BuildRequires:  pkgconfig(libdca) >= 0.0.5
 BuildRequires:  pkgconfig(x264) >= 0.8.6
 BuildRequires:  pkgconfig(x265)
 %if %{with faad}
 BuildRequires:  libfaad-devel
-%endif
-%if %{with fdk_aac}
-BuildRequires:  pkgconfig(fdk-aac)
 %endif
 %endif
 
@@ -440,10 +438,12 @@ autoreconf -fiv
    --enable-alsa                        \
    --enable-avcodec                     \
    --enable-chromecast                  \
+   --enable-dca                         \
    --enable-dvbpsi                      \
    --enable-dvdnav                      \
    --enable-dvdread                     \
    --enable-fast-install                \
+   --enable-fdkaac                      \
    --enable-flac                        \
    --enable-freetype                    \
    --enable-fribidi                     \
@@ -493,18 +493,12 @@ autoreconf -fiv
   --disable-wayland                     \
 %endif
 %if 0%{?BUILD_ORIG}
-%if %{with fdk_aac}
-   --enable-fdkaac                      \
-%endif
 %if %{with faad}
    --enable-faad                        \
 %endif
-   --enable-dca                         \
    --enable-x265                        \
 %else
    --disable-faad                       \
-   --disable-fdkaac                     \
-   --disable-dca                        \
    --disable-x265                       \
 %endif
 	%{nil}
@@ -893,9 +887,11 @@ fi
 %{_libdir}/vlc/plugins/codec/libqsv_plugin.so
 %endif
 %endif
+%{_libdir}/vlc/plugins/codec/libdca_plugin.so
 %{_libdir}/vlc/plugins/codec/libddummy_plugin.so
 %{_libdir}/vlc/plugins/codec/libdvbsub_plugin.so
 %{_libdir}/vlc/plugins/codec/libedummy_plugin.so
+%{_libdir}/vlc/plugins/codec/libfdkaac_plugin.so
 %{_libdir}/vlc/plugins/codec/libflac_plugin.so
 %if %{with fluidsynth}
 %{_libdir}/vlc/plugins/codec/libfluidsynth_plugin.so
@@ -1221,12 +1217,8 @@ fi
 
 %if 0%{?BUILD_ORIG}
 %files codecs
-%{_libdir}/vlc/plugins/codec/libdca_plugin.so
 %if %{with faad}
 %{_libdir}/vlc/plugins/codec/libfaad_plugin.so
-%endif
-%if %{with fdk_aac}
-%{_libdir}/vlc/plugins/codec/libfdkaac_plugin.so
 %endif
 %{_libdir}/vlc/plugins/codec/libx264_plugin.so
 %{_libdir}/vlc/plugins/codec/libx26410b_plugin.so
