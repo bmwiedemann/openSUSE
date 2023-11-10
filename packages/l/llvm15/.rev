@@ -143,4 +143,14 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1093401</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>be2be1bd5edbaf4bd3285df6490a5f22</srcmd5>
+    <version>15.0.7</version>
+    <time>1699615721</time>
+    <user>anag+factory</user>
+    <comment>- Disable zstd support for now regardless of whether libzstd-devel
+  is installed. (boo#1216121)
+</comment>
+    <requestid>1119116</requestid>
+  </revision>
 </revisionlist>

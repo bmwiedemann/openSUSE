@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 21:04:06 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Disable zstd support for now regardless of whether libzstd-devel
+  is installed. (boo#1216121)
+
+-------------------------------------------------------------------
 Thu Jun 15 23:45:39 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Make python3-clang noarch again and fix conflicts/provides to
