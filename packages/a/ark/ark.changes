@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:03:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Fix opening of AppImage files
+  * Fix checks using old ISO mimetype
+  * Don't hardcode bzip2 mimetype in tests
+  * Fix support for bzip2 format with shared-mime-info 2.3
+  * Explicitly support new application/vnd.efi.iso mimetype
+  * snapcraft: bump content pack version.
+- Drop patch, merged upstream:
+  * 0001-Fix-support-for-bzip2-format-with-shared-mime-info-2.patch
+
+-------------------------------------------------------------------
 Sat Oct 14 17:41:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix bzip2 support with shared-mime-info >= 2.3:
