@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-platformdirs
-Version:        3.5.1
+Version:        3.11.0
 Release:        0
 Summary:        Module for determining appropriate platform-specific dirs
 License:        MIT
@@ -29,8 +29,9 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling >= 0.22.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  %{python_module pytest-mock >= 3.6}
+BuildRequires:  %{python_module pytest >= 7.4}
+BuildRequires:  %{python_module pytest-cov >= 4.1}
+BuildRequires:  %{python_module pytest-mock >= 3.11.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

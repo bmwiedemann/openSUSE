@@ -76,4 +76,39 @@
   * platformdirs: introduce `user_pictures_dir()`</comment>
     <requestid>1090568</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aec43772e469e5454536423d88d46c1a</srcmd5>
+    <version>3.11.0</version>
+    <time>1699615737</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124386 from ecsos
+
+- Update to 3.11.0
+    - README: Fix CI badge in #222
+    - Fix documentation build in #225
+    - Add support for Homebrew-installed software in #232
+  - Changes from 3.10.0
+    - Fix docs build failure in #210
+    - platformdirs: introduce site_runtime_dir in #212
+  - Changes from 3.9.1
+    - unix: Optionally create the opinionated log/ in user_log_dir() 
+      in #208
+  - Changes from 3.9.0
+    - Added desktop folder in #200
+  - Changes from 3.8.1
+    - BSD: provide a fallback for user_runtime_dir in #201
+  - Changes from 3.8.0
+    - Add missing user media directory docs in #195
+  - Changes from 3.7.0
+    - Have user_runtime_dir return /var/run/user/uid for *BSD in #194
+  - Changes from 3.6.0
+    - platformdirs: introduce user_downloads_dir() in #192
+  - Changes from 3.5.3
+    - https://github.com/platformdirs/platformdirs/compare/3.5.2...3.5.3
+  - Changes from 3.5.2
+    - git ls-files -z -- .github/workflows/check.yml | xargs -0 
+      sed -i 's|3.12.0-alpha.7|3.12.0-beta.1|g' in #187
+    - Use ruff in #189</comment>
+    <requestid>1124419</requestid>
+  </revision>
 </revisionlist>
