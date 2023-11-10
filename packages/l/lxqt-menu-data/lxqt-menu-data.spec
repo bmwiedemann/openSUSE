@@ -17,27 +17,27 @@
 
 
 Name:           lxqt-menu-data
-Version:        1.4.0 
+Version:        1.4.1
 Release:        0
 Summary:        FD.O compliant menu files for LXQt
 License:        LGPL-2.1-or-later
-URL:            http://github.com/lxqt/lxqt-menu-data
+URL:            https://github.com/lxqt/lxqt-menu-data
 Source0:        https://github.com/lxqt/lxqt-menu-data/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:	https://github.com/lxqt/lxqt-menu-data/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
-BuildArch:	noarch
+Source1:        https://github.com/lxqt/lxqt-menu-data/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 BuildRequires:  cmake >= 3.1.0
-BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  lxqt-build-tools-devel >= 0.13.0
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildArch:      noarch
 
 %description
 Freedesktop.org compliant menu files for LXQt Panel, Configuration Center and PCManFM-Qt/libfm-qt.
 
 %package -n %{name}-devel
-Summary:	Development files for %{name}
-Group:		Development/Libraries/C and C++
-BuildArch:	noarch
-Requires:	%{name} >= %{version}
-Requires:	cmake
+Summary:        Development files for %{name}
+Group:          Development/Libraries/C and C++
+Requires:       %{name} >= %{version}
+Requires:       cmake
+BuildArch:      noarch
 
 %description -n %{name}-devel
 lxqt-menu-data libraries for development
@@ -53,7 +53,7 @@ lxqt-menu-data libraries for development
 %cmake_install
 
 %files
-%license LICENSE 
+%license LICENSE
 %doc README.md
 %dir %{_sysconfdir}/xdg/menus
 %config %{_sysconfdir}/xdg/menus/*.menu
@@ -65,4 +65,3 @@ lxqt-menu-data libraries for development
 %{_datadir}/cmake/%{name}/*.cmake
 
 %changelog
-
