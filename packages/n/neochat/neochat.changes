@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:05:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: remove dbus slots rejected by store.
+  * Add CI template for building APKs
+  * snapcraft: Fix libsecret support! BUndle gnomekeychain. 
+    Set XDG variables so it finds keychain. Update qtkeychain.
+  * snapcraft: initial import snapcraft files.
+  * Use KF5 version of kirigami-addons in flatpak builds
+
+-------------------------------------------------------------------
 Tue Oct 10 18:28:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
