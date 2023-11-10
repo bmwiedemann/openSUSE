@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        6.04
+Version:        6.05.01
 Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT

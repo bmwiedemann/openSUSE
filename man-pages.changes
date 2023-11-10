@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:07:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.05.01:
+  * Ignore dot-dirs within $MANDIR
+
+-------------------------------------------------------------------
 Mon May 29 19:52:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.04:
@@ -124,7 +130,7 @@ Thu Aug 13 12:46:18 UTC 2020 - pgajdos@suse.com
               prctls added in Linux 4.15 for arm64.
       Dave Martin  [Catalin Marinas]
           Add tagged address ABI control prctls (arm64)
-              Add documentation for the the PR_SET_TAGGED_ADDR_CTRL and 
+              Add documentation for the the PR_SET_TAGGED_ADDR_CTRL and
               PR_GET_TAGGED_ADDR_CTRL prctls added in Linux 5.4 for arm64.
   setns.2
       Michael Kerrisk
@@ -170,7 +176,7 @@ Wed Jun 10 06:37:13 UTC 2020 - pgajdos@suse.com
   ---------------------------------------------
   adjtimex.2
           Document clock_adjtime(2)
-  
+
   clock_getres.2
           Explain dynamic clocks
   clone.2
@@ -346,7 +352,7 @@ Thu Mar  7 12:24:16 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 5.00:
   * new or rewritten pages:
-    s390_guarded_storage.2 
+    s390_guarded_storage.2
     address_families.7
     bpf-helpers.7
   * newly documented interfaces:
@@ -392,7 +398,7 @@ Fri May  4 08:13:02 UTC 2018 - pgajdos@suse.com
   * newly documented interfaces:
     cgroups.7
         Document cgroups v2 "thread mode"
-        Document cgroup v2 delegation via the 'nsdelegate' mount 
+        Document cgroup v2 delegation via the 'nsdelegate' mount
                  option
         Document the cgroup.max.depth and cgroup.max.descendants
                  files
@@ -429,7 +435,7 @@ Mon Nov 27 07:50:13 UTC 2017 - pgajdos@suse.com
   * new or rewritten pages:
     pthread_spin_init.3, pthread_spin_lock.3, smartpqi.4,
     veth.4
-  * removed pages: 
+  * removed pages:
     infnan.3
 - see Changes for detailed upstream change log
 
@@ -856,7 +862,7 @@ Mon Sep 22 06:02:23 UTC 2014 - pgajdos@suse.com
   - newly documented interfaces in existing pages
     * clone.2: Document CLONE_NEWUSER for creating a new user namespace
     * setns.2: Document the PID, user, and mount namespace support
-    * unshare.2: Document CLONE_NEWPID, CLONE_NEWUSER, CLONE_THREAD, 
+    * unshare.2: Document CLONE_NEWPID, CLONE_NEWUSER, CLONE_THREAD,
                  CLONE_SIGHAND, and CLONE_VM
   - see Changes for details
 
@@ -972,7 +978,7 @@ Thu May  8 22:35:13 UTC 2014 - andreas.stieger@gmx.de
 Tue Apr 22 07:15:29 UTC 2014 - pgajdos@suse.com
 
 - update to version 3.65:
-  * new and rewritten pages: 
+  * new and rewritten pages:
      inet_net_pton.3
   * newly documented interfaces in existing pages
      fallocate.2: Document FALLOC_FL_COLLAPSE_RANGE
@@ -989,7 +995,7 @@ Wed Apr 16 06:35:18 UTC 2014 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Apr 11 09:20:11 UTC 2014 - pgajdos@suse.com
 
-- complete description of /proc/[pid]/smaps fields 
+- complete description of /proc/[pid]/smaps fields
   *  [bnc#782157] (internal)
   * added proc.5.patch
 
@@ -997,12 +1003,12 @@ Fri Apr 11 09:20:11 UTC 2014 - pgajdos@suse.com
 Mon Apr  7 06:32:28 UTC 2014 - pgajdos@suse.com
 
 - update to version 3.64:
-  * new and rewritten pages: 
-     + open_by_handle_at.2 
+  * new and rewritten pages:
+     + open_by_handle_at.2
      +inotify.7
   * newly documented interfaces in existing pages:
      + PERF_FLAG_FD_CLOEXEC flag (perf_event_open.2)
-     + Document _LARGEFILE_SOURCE (feature_test_macros.7) 
+     + Document _LARGEFILE_SOURCE (feature_test_macros.7)
   * see Changes for details
 
 -------------------------------------------------------------------
@@ -1047,7 +1053,7 @@ Mon Feb 17 07:37:43 UTC 2014 - pgajdos@suse.com
 
 - update to version 3.58
   * Document the pipe2() O_DIRECT
-  * Document PACKET_QDISC_BYPASS 
+  * Document PACKET_QDISC_BYPASS
   * etc. see Changes for details
 
 -------------------------------------------------------------------
@@ -1214,20 +1220,20 @@ Wed Aug  7 10:31:34 CEST 2013 - pgajdos@suse.cz
             terminator is always set at the old, longer offset.)  This could
             cause the program to operate on uninitialized data.
 - removed source gai.conf.5 as upstream provides it yet
-- added fanotify_init.2, fanotify_mark.2, open_by_handle_at.2, 
+- added fanotify_init.2, fanotify_mark.2, open_by_handle_at.2,
   name_to_handle_at.2
 
 -------------------------------------------------------------------
 Mon Jul 15 13:28:05 CEST 2013 - pgajdos@suse.cz
 
 - update to version 3.52
-  * Various pages that formerly lacked the information now have 
+  * Various pages that formerly lacked the information now have
     a note under RETURN VALUE that errno is set on error.
-  * Peng Haitao has submitted patches to around 50 pages that note 
-    functions that are thread-safe or thread-unsafe. For this 
-    purpose, the man-pages add a new section, ATTRIBUTES, as 
-    described in the man-pages(7) manual page. Peng Haitao's 
-    substantial work is ongoing, and more pages will add this 
+  * Peng Haitao has submitted patches to around 50 pages that note
+    functions that are thread-safe or thread-unsafe. For this
+    purpose, the man-pages add a new section, ATTRIBUTES, as
+    described in the man-pages(7) manual page. Peng Haitao's
+    substantial work is ongoing, and more pages will add this
     information in the future.
 
 -------------------------------------------------------------------
@@ -4017,12 +4023,12 @@ Tue Jul 10 09:37:35 CEST 2007 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue Jul  3 13:04:26 CEST 2007 - pgajdos@suse.cz
 
-- update to 2.60 [#288732] 
+- update to 2.60 [#288732]
 
 -------------------------------------------------------------------
 Thu May 31 10:58:59 CEST 2007 - pgajdos@suse.cz
 
-- workaround in spec file: remove deprecated 
+- workaround in spec file: remove deprecated
   man1p/ipcs.1p [#274338]
 
 -------------------------------------------------------------------
@@ -4068,7 +4074,7 @@ Thu Jul 27 17:09:02 CEST 2006 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Jul 17 02:40:05 CEST 2006 - kukuk@suse.de
 
-- Auto-Update to version 
+- Auto-Update to version
 
 -------------------------------------------------------------------
 Tue Jul  4 11:28:48 CEST 2006 - jreuter@suse.de
@@ -4164,7 +4170,7 @@ Wed May 26 02:03:25 CEST 2004 - ro@suse.de
 Tue May 25 16:29:13 CEST 2004 - thomas@suse.de
 
 - added changes from SLES8 for EAL3+ needed for EAL4+ too
-  
+
 
 -------------------------------------------------------------------
 Fri May 21 10:57:54 CEST 2004 - kukuk@suse.de
@@ -4200,7 +4206,7 @@ Tue Jan 27 10:46:31 CET 2004 - kukuk@suse.de
 -------------------------------------------------------------------
 Fri Aug 29 00:58:49 CEST 2003 - ro@suse.de
 
-- updated specfile 
+- updated specfile
 
 -------------------------------------------------------------------
 Wed Aug 13 09:45:49 CEST 2003 - kukuk@suse.de
@@ -4210,12 +4216,12 @@ Wed Aug 13 09:45:49 CEST 2003 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue Aug  5 22:34:20 CEST 2003 - ro@suse.de
 
-- fix test 
+- fix test
 
 -------------------------------------------------------------------
 Tue Aug  5 19:02:39 CEST 2003 - ro@suse.de
 
-- don't stop for missing man-pages present in system 
+- don't stop for missing man-pages present in system
 
 -------------------------------------------------------------------
 Thu Feb 13 20:11:49 CET 2003 - olh@suse.de
@@ -4225,7 +4231,7 @@ Thu Feb 13 20:11:49 CET 2003 - olh@suse.de
 -------------------------------------------------------------------
 Fri Mar  1 09:47:22 CET 2002 - ro@suse.de
 
-- no COPYING file in source anymore, adapt specfile 
+- no COPYING file in source anymore, adapt specfile
 
 -------------------------------------------------------------------
 Mon Apr  9 17:48:34 CEST 2001 - kukuk@suse.de
@@ -4251,7 +4257,7 @@ Sun Dec 10 08:39:47 CET 2000 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue Oct 31 09:31:50 CET 2000 - kukuk@suse.de
 
-- Rename ldpman to man-pages 
+- Rename ldpman to man-pages
 - Use bzip2 version
 
 -------------------------------------------------------------------
@@ -4273,4 +4279,4 @@ Thu Jan 14 11:27:10 MET 1999 - bs@suse.de
 -------------------------------------------------------------------
 Wed Oct 15 12:35:20 MEST 1997 - ro@suse.de
 
-- ready for autobuild 
+- ready for autobuild
