@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- No code change since 23.08.2
+
+-------------------------------------------------------------------
 Mon Nov  6 10:11:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add the missing kirigami-addons runtime dependency

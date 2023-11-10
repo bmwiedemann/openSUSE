@@ -55,4 +55,12 @@
     <comment>- Add the missing kirigami-addons runtime dependency</comment>
     <requestid>1123537</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>45b064744116e7ad578ff28d29d19108</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615904</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124552</requestid>
+  </revision>
 </revisionlist>
