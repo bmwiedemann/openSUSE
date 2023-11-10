@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:05:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Fix account switcher not working in certain sections (kde#475897)
+  * snapcraft: fix package, gnome-keyring not gnome-keychain
+  * snapcraft: Bundle gnome-keychain for libsecret. New content pack.
+    Use kirigami-addons meta package.
+  * Add CI template for building APKs on invent
+  * snapcraft: Add missing qml module for purpose.
+  * snapcraft: remove quote accidently placed at the end of LD_LIBRARY_PATH..
+  * snapcraft: Set LD_LIBRARY_PATH at runtime to include libs in subdirs
+    not found. Add missing qml module.
+  * snapcraft: add missing libblas and add to LD search path. Add libsecret dep.
+  * Remove _L1 from cherry-picking error
+  * Fix some weird attachment issues if they don't exist locally
+  * snapcraft: add missing dep libmpv.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:28:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2

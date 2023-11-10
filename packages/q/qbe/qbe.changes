@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 10 06:21:15 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version v1.1+24:
+  * Fix architecture detection on OpenBSD/arm64
+  * comments in amd64 isel
+  * Fix conversion from float/double to unsigned int
+  * test.sh fixes for devuan linux
+  * file,loc become dbgfile,dbgloc
+  * parseline() tweaks
+  * implement line number info tracking
+  * Bump NString
+  * fix sub-word returns on arm64_apple
+  * Fix 1 C UB
+
+-------------------------------------------------------------------
 Sun Feb  5 03:51:45 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.1:

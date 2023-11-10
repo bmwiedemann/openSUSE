@@ -1,6 +1,8 @@
---- sonic-pi-4.3.0/app/gui/qt/cmake/FindQScintilla.cmake
-+++ sonic-pi-4.3.0/app/gui/qt/cmake/FindQScintilla.cmake
-@@ -3,7 +3,7 @@
+Index: sonic-pi-4.4.0/app/gui/qt/cmake/FindQScintilla.cmake
+===================================================================
+--- sonic-pi-4.4.0.orig/app/gui/qt/cmake/FindQScintilla.cmake
++++ sonic-pi-4.4.0/app/gui/qt/cmake/FindQScintilla.cmake
+@@ -3,7 +3,7 @@ if(QSCINTILLA_INCLUDE_DIR)
  endif()
  
  find_path(QSCINTILLA_INCLUDE_DIR Qsci/qsciscintilla.h
@@ -9,7 +11,7 @@
  
  find_library(QSCINTILLA_LIBRARY
    NAMES
-@@ -13,7 +13,7 @@
+@@ -13,7 +13,7 @@ find_library(QSCINTILLA_LIBRARY
      libqscintilla2
      libqscintilla2_qt6
      libqscintilla2_qt5

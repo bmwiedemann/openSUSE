@@ -17,8 +17,15 @@
 #
 
 
+# TODO: In wiki stands 1600, but this rise up an error in rpmlint:
+# E: invalid-suse-version-check 1600.
+%if 0%{?suse_version} > 1550
+%define with_qt6 1
+%else
+%define with_qt6 0
+%endif
 Name:           qjackctl
-Version:        0.9.10
+Version:        0.9.12
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later
@@ -30,6 +37,17 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if %{with_qt6}
+BuildRequires:  cmake(Qt6LinguistTools)
+# TODO: Upstream use 6.6
+BuildRequires:  pkgconfig(Qt6Core) >= 6.5
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
+%else
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -39,6 +57,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(portaudio-2.0)
@@ -61,12 +80,20 @@ including a enhanced patchbay and connection control features.
 sed -i '/^X-SuSE-translate/d' src/appdata/org.rncbc.%{name}.desktop
 
 %build
+%if %{with_qt6}
+%cmake -DCONFIG_QT6=1
+%else
 %cmake -DCONFIG_QT6=0
+%endif
 %cmake_build
 
 %install
 %cmake_install
+%if %{with_qt6}
+lrelease6 src/translations/*
+%else
 lrelease-qt5 src/translations/*
+%endif
 install -dm 0755 %{buildroot}%{_datadir}/%{name}/translations
 install -Dm 0644 src/translations/*.qm %{buildroot}%{_datadir}/%{name}/translations/
 install -Dm 0644 src/man1/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1

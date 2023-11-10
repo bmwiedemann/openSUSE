@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep  9 09:10:31 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.12
+  - Setup: disable Settings parameters altogether, except
+    frames/period (aka. buffer-size) if running in the so called
+    'Active' pure-client mode (eg. under PipeWire's pw-jack
+    substitution).
+  - Connections: Fixed an old JACK client/ports aliases
+    malfunction, hopefully.
+  - Graph: Ctrl+left or middle-button click-dragging for panning,
+    is now a lot smoother, hopefully.
+  - Graph: Click-dragging with the mouse middle-button is now used
+    for panning only, not to start a selection anymore.
+  - Preppings to next development cycle (Qt >= 6.6)
+- Changes from 0.9.11
+  - Graph: Soft incremental bounds constraints now imposed to all
+    new and old nodes positioning.
+  - Prepping into the next development cycle (with Qt >= 6.5).
+- Switch Tumbleweed to qt6.
+
+-------------------------------------------------------------------
 Fri Mar 24 14:07:10 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.9.10

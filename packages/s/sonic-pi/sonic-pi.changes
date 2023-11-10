@@ -1,22 +1,90 @@
 -------------------------------------------------------------------
+Thu Nov  9 21:34:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * This release comes packed with a number of exciting new synths
+    for you to play with. We have a new hard-hitting kick drum
+    :gabberkick for that gabber sound and a new vintage electric
+    piano :rhodey synth. There are also 16 new percussive synths
+    inspired by the infamous TR-808 drum synthesiser. All the
+    synths come with many opts for you to play with to manipulate
+    and change the default timbres.
+  * see https://github.com/sonic-pi-net/sonic-pi/blob/v4.5.0/CHANGELOG.md#v4.5.0
+- drop qscintilla-2.14.patch (upstream)
+
+-------------------------------------------------------------------
+Wed Oct 11 09:59:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * This release comes chock-full of new samples to play with.
+    Firstly we have 5 new samples donated to Sonic Pi by the
+    wonderful electric artist Arovane. These are a selection of
+    glitchy beats recorded at 130 BPM. To best use these either
+    `use_bpm 130` or use the `beat_stretch` opt to make them fit
+    seamlessly into your current BPM. They're also wonderful to
+    use with the `onset:` option for extracting individual sounds
+    to use on their own. Thank-you so much to Arovane for letting
+    us play with these amazing new sounds.
+  * Continuing on the sample theme, there are also 20 new hi-hat
+    samples. These all have a `:hat_` prefix and there's a wide
+    variety of sounds to play with ranging from acoustic to
+    electro to metal. They're perfect for adding a sense of drive
+    or groove to your tracks.
+  * This version of Sonic Pi is also the first to support a fully
+    native build for Apple Macs running Apple Silicon CPUs such
+    as the M1 and M2. This means that Sonic Pi can now run on
+    modern Mac computers without needing Rosetta to run things
+    under emulation.
+  * New looping samples contributed by the wonderful electronic
+    artist Arovane. The new samples are: `:arovane_beat_a`,
+    `:arovane_beat_b`, `:arovane_beat_c`, `:arovane_beat_d`,
+    `:arovane_beat_e`.
+  * 20 new hi-hat samples: `:hat_snap`, `:hat_zap`, `:hat_cats`,
+    `:hat_tap`, `:hat_bdu`, `:hat_psych`, `:hat_zild`,
+    `:hat_zan`, `:hat_zgump`, `:hat_noiz`, `:hat_sci`,
+    `:hat_star`, `:hat_gem`, `:hat_raw`, `:hat_yosh`,
+    `:hat_mess`, `:hat_cab`, `:hat_gnu`, `:hat_hier`,
+    `:hat_metal`.
+  * Improve text formatting of the information window that pops
+    up with a boot error.
+  * Improvements to section 8.2 of the tutorial where the code
+    has been updated to better match the behaviour of
+    `play_pattern_timed`.
+  * Improved `play_pattern_timed` function documentation.
+  * Improvements to the Catalan, Chinese, Croatian, French,
+    Georgian, Hebrew, Indonesian, Latvian, German, Portuguese,
+    Russian, Slovak, Spanish, Swahili and Turkish translations.
+  * Syntax and runtime errors are now correctly coloured once
+    again - pink for runtime and blue for syntax.
+  * Fix `==` operator when comparing maps with `nil`. Now returns
+    `false` as expected.
+- drop ruby32.patch (upstream)
+- add qscintilla-2.14.patch (fix build with qscintilla 2.14)
+
+-------------------------------------------------------------------
+Sun Feb 26 19:47:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use libexecdir
+
+-------------------------------------------------------------------
 Sun Feb 26 13:35:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add desktop file
 - recommend supercollider-sc3-plugins which is actually heavily
-  relied on by sonic pi 
+  relied on by sonic pi
 
 -------------------------------------------------------------------
 Fri Feb 24 23:58:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:
-  * too many changes to list here, see 
+  * too many changes to list here, see
     https://github.com/sonic-pi-net/sonic-pi/releases
     for a summary
 
 -------------------------------------------------------------------
 Tue Mar  1 09:59:07 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
 
-- Updated to latest version from fork 
+- Updated to latest version from fork
 https://github.com/lilyinstarlight/sonic-pi/ with support for
 offline building and the Elixir pipeline
 

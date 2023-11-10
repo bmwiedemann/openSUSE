@@ -17,12 +17,13 @@
 
 
 Name:           qbe
-Version:        1.1
+Version:        1.1+24
 Release:        0
 Summary:        Small embeddable C compiler backend
 Group:          Development/Languages/Other
 URL:            https://c9x.me/compile
-Source0:        https://c9x.me/compile/release/qbe-%{version}.tar.xz
+Source0:        qbe-v%{version}.tar.zst
+BuildRequires:  zstd
 License:        MIT
 
 %description
@@ -35,7 +36,7 @@ The size limit constrains QBE to focus on the essential and
 prevents embarking on a never-ending path of diminishing returns.
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 
 %build
 export CC="cc"

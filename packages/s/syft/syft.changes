@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 09 14:48:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.96.0:
+  * include image labels in cycloneDX SBOM (#2294)
+  * Add accessPath on Location objects to syft-json output (#2287)
+  * SPDX file has duplicate sha256 tag in versionInfo (#2300)
+  * Check maven central as well for licenses in parents poms for
+    nested jars (#2302)
+  * chore(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+    (#2293)
+  * chore(deps): update tools to latest versions (#2301)
+  * fix: identify cyclone-json without $schema (#2303)
+
+-------------------------------------------------------------------
 Tue Nov 07 20:40:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.95.0:
