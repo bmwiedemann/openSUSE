@@ -1065,9 +1065,6 @@ Prefer: -gtk3-devel-32bit
 Prefer: -gtk4-devel-32bit
 Prefer: -hdf5-devel-32bit
 Prefer: -hdf5-mvapich2-devel-32bit
-Prefer: -hdf5-openmpi1-devel-32bit
-Prefer: -hdf5-openmpi2-devel-32bit
-Prefer: -hdf5-openmpi3-devel-32bit
 Prefer: -hdf5-openmpi4-devel-32bit
 Prefer: -hunspell-devel-32bit
 Prefer: -isl-devel-32bit
@@ -1229,9 +1226,6 @@ Prefer: -libraw1394-devel-32bit
 Prefer: -libref_array-devel-32bit
 Prefer: -libressl-devel-32bit
 Prefer: -libscalapack2-mvapich2-devel-32bit
-Prefer: -libscalapack2-openmpi1-devel-32bit
-Prefer: -libscalapack2-openmpi2-devel-32bit
-Prefer: -libscalapack2-openmpi3-devel-32bit
 Prefer: -libscalapack2-openmpi4-devel-32bit
 Prefer: -libsmartcols-devel-32bit
 Prefer: -libsoup-devel-32bit
@@ -1278,9 +1272,6 @@ Prefer: -opensm-devel-32bit
 Prefer: -pam-devel-32bit
 Prefer: -pango-devel-32bit
 Prefer: -papi-devel-32bit
-Prefer: -parpack-openmpi1-devel-32bit
-Prefer: -parpack-openmpi2-devel-32bit
-Prefer: -parpack-openmpi3-devel-32bit
 Prefer: -pciutils-devel-32bit
 Prefer: -pcsc-lite-devel-32bit
 Prefer: -pipewire-libjack-0_3-32bit
@@ -1380,15 +1371,9 @@ Prefer: -icc-profiles
 Prefer: vala
 # in doubt, take higher versions
 Prefer: geronimo-servlet-2_4-api
-Prefer: libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_cpp103-openmpi1 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi2 -libhdf5-103-openmpi3 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi2 -libhdf5_cpp103-openmpi3 -libhdf5_cpp103-openmpi4
-Prefer: libhdf5_hl200 -libhdf5-200-openmpi1 -libhdf5-200-mvapich2 -libhdf5_cpp200-openmpi1 -libhdf5_cpp200-mvapich2 -libhdf5-200-openmpi2 -libhdf5-200-openmpi3 -libhdf5-200-openmpi4 -libhdf5_cpp200-openmpi2 -libhdf5_cpp200-openmpi3 -libhdf5_cpp200-openmpi4
-Prefer: libvtk1-openmpi2
-Prefer: -vtk-openmpi2-qt -vtk-openmpi3-qt
-Prefer: -openmpi3-libs
+Prefer: libhdf5_hl100 -libhdf5-103-mvapich2 -libhdf5_cpp103-mvapich2 -libhdf5-103-openmpi4 -libhdf5_cpp103-openmpi4
+Prefer: libhdf5_hl200 -libhdf5-200-mvapich2 -libhdf5_cpp200-mvapich2 -libhdf5-200-openmpi4 -libhdf5_cpp200-openmpi4
 Prefer: -openmpi5-libs
-Prefer: -openmpi1-config
-Prefer: -openmpi2-config 
-Prefer: -openmpi3-config
 Prefer: -openmpi5-config
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
 # prefer the small systemd for building
@@ -2833,6 +2818,7 @@ BuildFlags: onlybuild:python-pyqt-rpm-macros
 BuildFlags: onlybuild:python-pyserial
 BuildFlags: onlybuild:python-pytest
 BuildFlags: onlybuild:python-pytest-asyncio
+BuildFlags: onlybuild:python-pytest-cov
 BuildFlags: onlybuild:python-pytest-expect
 BuildFlags: onlybuild:python-pytest-forked
 BuildFlags: onlybuild:python-pytest-mock
