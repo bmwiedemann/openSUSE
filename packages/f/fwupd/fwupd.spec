@@ -231,7 +231,6 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_uefi_capsule=enabled \
   -Dplugin_uefi_pk=enabled \
   -Defi_binary=false \
-  -Dsystemd_unit_user=root \
   -Dcompat_cli=true \
 %else
   -Dplugin_uefi_capsule=false \

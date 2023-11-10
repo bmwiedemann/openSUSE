@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:56:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not pass -Dsystemd_unit_user=root to meson: use fwupd's
+  defautl fwupd_refresh user (boo#1216973).
+
+-------------------------------------------------------------------
 Thu Nov  2 08:15:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable passim support for now. For openSUSE users this is likely
