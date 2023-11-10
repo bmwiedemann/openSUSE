@@ -188,4 +188,29 @@
     string.h include fixes)</comment>
     <requestid>1083358</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b3d32bf1d318701cc2ced9e61688b167</srcmd5>
+    <version>1.17.0</version>
+    <time>1699615738</time>
+    <user>anag+factory</user>
+    <comment>- update to libdnet-1.17.0:
+  * Stronger cmake support, updated autotools and a few smaller
+    fixes.
+- update to libdnet-1.16.4:
+  * Various fixes around the build process (esp. cmake support +
+    string.h include fixes)
+  * Sync in latest changes
+  * IPv6 support
+  * Fixed some potential buffer overflows #41
+  * configure: Use AC_CONFIG_HEADERS instead of deprecated
+    AM_CONFIG_HEADER
+  * Don't try to convert hostnames to addresses in addr_pton()
+
+  - IPv6 support
+  * many fixes included
+- update download URLs
+- correct some minor packaging issues
+- Initial package (1.11)</comment>
+    <requestid>1124424</requestid>
+  </revision>
 </revisionlist>
