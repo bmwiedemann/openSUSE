@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:05:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: initial import snapcraft files.
+  * Fix signed integer overflow due to uninitialized vars warning
+  * Account for CJK wide chars in copyLineToStream
+  * Add test case for block selection of CJK chars
+  * Don't select half a CJK character (kde#474055)
+  * Don't require FreeBSD/Qt5 tests to pass
+  * Don't try to free terminalPart.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
