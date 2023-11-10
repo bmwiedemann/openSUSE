@@ -1862,7 +1862,6 @@ unsorted:
   - cargo-c 
   - cargo-packaging 
   - cargo-vendor-filterer 
-  - cargo1.69 
   - cargo1.70 
   - cargo1.71 
   - cargo1.72 
@@ -2110,6 +2109,7 @@ unsorted:
   - clanlib-doc 
   - clanlib-examples 
   - clap-lsp-plugins 
+  - clap-zam-plugins 
   - clapper 
   - clapper-devel 
   - clapper-lang 
@@ -3225,6 +3225,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -18969,11 +18970,14 @@ unsorted:
   - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -21927,6 +21931,7 @@ unsorted:
   - protobuf-java 
   - protobuf21-devel 
   - protobuf21-source 
+  - protontricks 
   - protonvpn-cli 
   - protonvpn-gui 
   - proxychains-ng 
@@ -25882,6 +25887,7 @@ unsorted:
   - python310-vcrpy 
   - python310-vcver 
   - python310-vcversioner 
+  - python310-vdf 
   - python310-vdirsyncer 
   - python310-vega 
   - python310-vega_datasets 
@@ -29222,6 +29228,7 @@ unsorted:
   - python311-vcrpy 
   - python311-vcver 
   - python311-vcversioner 
+  - python311-vdf 
   - python311-vdirsyncer 
   - python311-vega 
   - python311-vega_datasets 
@@ -32748,6 +32755,7 @@ unsorted:
   - python39-vcrpy 
   - python39-vcver 
   - python39-vcversioner 
+  - python39-vdf 
   - python39-vdirsyncer 
   - python39-vega 
   - python39-vega_datasets 
@@ -34055,7 +34063,6 @@ unsorted:
   - rust 
   - rust-bindgen 
   - rust-cbindgen 
-  - rust1.69 
   - rust1.70 
   - rust1.71 
   - rust1.72 
@@ -45191,7 +45198,9 @@ unsorted:
   - vsqlite++-devel 
   - vst-lsp-plugins 
   - vst-rnnoise 
+  - vst-zam-plugins 
   - vst3-rnnoise 
+  - vst3-zam-plugins 
   - vtable-dumper 
   - vtcl 
   - vte-devel 
@@ -46083,7 +46092,6 @@ unsorted:
   - zabbix-server-postgresql 
   - zabbix-ui 
   - zam-plugins-jack 
-  - zam-plugins-vst 
   - zanshin 
   - zanshin-lang 
   - zathura 
