@@ -1664,4 +1664,12 @@ As usual, a lot of patches don't make it to this list since they're more interna
   * run-tests: detect HGWITHRUSTEXT value (forwarded request 1109476 from develop7)</comment>
     <requestid>1109477</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>8cb87fc06736cb8d9f0a95a4c64dcd17</srcmd5>
+    <version>6.5.3</version>
+    <time>1699615735</time>
+    <user>anag+factory</user>
+    <comment>Mercurial 6.5.3 (forwarded request 1124407 from develop7)</comment>
+    <requestid>1124408</requestid>
+  </revision>
 </revisionlist>

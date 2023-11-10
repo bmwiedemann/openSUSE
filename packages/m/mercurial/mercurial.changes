@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:33:30 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.5.3 
+  
+  * hgweb: pass strings in WSGI environment correctly from wsgicgi
+  * perf: introduce more cache invalidation option in perf::tags
+  * perf: add a `--clear-fnode-cache-rev` argument to perf::tags
+  * perf: add a --update-last flag to perf::tags
+  * blackbox: add a option to duplicate output to stderr too
+  * tags: avoid expensive access to repo.changelog in a loop
+  * revlog: fix a bug where NULL_NODE failed to be resolved to NULL_REV
+  * httppeer: fix static-http: scheme autodetection (issue6833)
+  * tests: backed out changeset 8037ddacad47
+  * stream-clone: fix a crash when a repo with an empty revlog is cloned
+  * censor: accept censored revision during upgrade
+  * revlog: avoid opening and closing the file for each cloned revision
+
+-------------------------------------------------------------------
 Wed Sep  6 17:00:37 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.5.2
