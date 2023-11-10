@@ -602,4 +602,25 @@ See changelog in:
   * chore(deps): bump golang.org/x/text from 0.11.0 to 0.13.0</comment>
     <requestid>1117486</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>18c651459beee76b14ce8e708afa58c8</srcmd5>
+    <version>3.13.2</version>
+    <time>1699616012</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.2 (bsc#1217013):
+  * chore(deps): bump google.golang.org/grpc from 1.54.0 to 1.56.3
+  * Update get-helm-3
+  * chore(deps): bump github.com/docker/docker
+  * Fixing release labelling in rollback
+  * Drop filterSystemLabels usage from Query method
+  * Apply review suggestions
+  * Allow using label selectors for system labels for sql backend.
+  * Allow using label selectors for system labels for secrets and
+    configmap backends.
+  * Revert &quot;fix(main): fix basic auth for helm pull or push&quot;
+  * Revert &quot;fix(registry): address anonymous pull issue&quot;
+  * chore(deps): bump golang.org/x/net from 0.13.0 to 0.17.0
+  * Update get-helm-3 to get version through get.helm.sh</comment>
+    <requestid>1124808</requestid>
+  </revision>
 </revisionlist>

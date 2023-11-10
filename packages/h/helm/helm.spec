@@ -17,16 +17,16 @@
 
 
 %define goipath helm.sh/helm/v3
-%define git_commit 3547a4b5bf5edb5478ce352e18858d8a552a4110
+%define git_commit 2a2fb3b98829f1e0be6fb18af2f6599e0f4e8243
 %define git_dirty clean
 Name:           helm
-Version:        3.13.1
+Version:        3.13.2
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
-Source0:        https://github.com/helm/helm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.20
