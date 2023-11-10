@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.3.1
+Version:        4.3.2
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1267,7 +1267,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.84
+Version:        0.8.85
 Release:        %release
 Requires:       R-base
 
@@ -1297,7 +1297,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.21
+Version:        2.23.22
 Release:        %release
 Requires:       R-base
 
@@ -1326,7 +1326,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.21.8
+Version:        0.21.9
 Release:        %release
 Requires:       R-base
 
@@ -1393,7 +1393,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.5.4
+Version:        1.6.1
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1408,11 +1408,9 @@ This packages provides R-Matrix, one of the recommended packages.
 %defattr(-, root, root)
 
 %dir %{_libdir}/R/library/Matrix/
-%license %{_libdir}/R/library/Matrix/Copyrights
 %{_libdir}/R/library/Matrix/data/
 %{_libdir}/R/library/Matrix/doc/
 %{_libdir}/R/library/Matrix/DESCRIPTION
-%{_libdir}/R/library/Matrix/Doxyfile
 %{_libdir}/R/library/Matrix/external/
 %{_libdir}/R/library/Matrix/help/
 %{_libdir}/R/library/Matrix/html/
@@ -1441,7 +1439,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.42
+Version:        1.9.0
 Release:        %release
 Requires:       R-base
 
@@ -1466,12 +1464,13 @@ This packages provides R-mgcv, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/mgcv/po/de/
 %lang(en) %{_libdir}/R/library/mgcv/po/en*/
 %lang(fr) %{_libdir}/R/library/mgcv/po/fr/
+%lang(it) %{_libdir}/R/library/mgcv/po/it/
 %lang(ko) %{_libdir}/R/library/mgcv/po/ko/
 %lang(pl) %{_libdir}/R/library/mgcv/po/pl/
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.162
+Version:        3.1.163
 Release:        %release
 Requires:       R-base
 
@@ -1534,7 +1533,7 @@ This packages provides R-nnet, one of the recommended packages.
 
 %package -n R-rpart
 Summary:        Package provides recommended R-rpart
-Version:        4.1.19
+Version:        4.1.21
 Release:        %release
 Requires:       R-base
 
@@ -1566,7 +1565,7 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Version:        7.3.16
+Version:        7.3.17
 Release:        %release
 Requires:       R-base
 
@@ -1599,7 +1598,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.5.5
+Version:        3.5.7
 Release:        %release
 Requires:       R-base
 
