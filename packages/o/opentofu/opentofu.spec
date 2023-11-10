@@ -16,8 +16,10 @@
 #
 
 
+%define executable_name tofu
+
 Name:           opentofu
-Version:        1.6.0~alpha3
+Version:        1.6.0~alpha4
 Release:        0
 Summary:        Declaratively manage your cloud infrastructure
 License:        MPL-2.0
@@ -49,15 +51,16 @@ The key features of OpenTofu are:
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -o bin/%{name} ./cmd/tofu
+   -ldflags "-w -s -X github.com/opentofu/opentofu/version.dev=no -X github.com/opentofu/opentofu/version.Version=%{version}" \
+   -o bin/%{executable_name} ./cmd/tofu
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{executable_name} "%{buildroot}/%{_bindir}/%{executable_name}"
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{_bindir}/%{name}
+%{_bindir}/%{executable_name}
 
 %changelog

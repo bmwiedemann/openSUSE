@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Nov 10 08:06:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- properly report the version (otherwise this would report
+  1.6.0-dev)
+- rename the executable to 'tofu', to match upstream naming
+
+-------------------------------------------------------------------
+Fri Nov 10 07:19:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~alpha4:
+  * Address s3 compatible remote state issues + logging (#840)
+  * Bump version file. (#845)
+  * Update go-tfe to 1.36.0 (#844)
+  * Add changelog that was missed in PR #830 (#843)
+  * Fix crash during destroy planning due to validation (#830)
+  * Revert PRs that introduced propogating contexts (#835)
+  * Weekly update for the 2023-11-07. (#831)
+  * Add Technical Steering Committee Summary for 2023-11-02 (#823)
+  * Backend/S3: Update the `Put` method (#795)
+  * Backend/S3: Add support for `skip_requesting_account_id` (#788)
+  * Weekly update for the 2023-11-02 (#809)
+  * Update user-agent from go-tfe to opentofu where go-tfe is used
+    (#807)
+  * Backend/S3: Custom Service Endpoint Configuration (#794)
+  * Stop reading providers from the HashiCorp registry based on the
+    statefile if not specified in code. (#773)
+  * Backend/S3: Add support for `use_path_style` (#787)
+  * Add DEBUGGING.md (#711)
+  * Pass context to all statemgr.Locker operations (#789)
+  * Pass context to all remote.Client operations (#786)
+  * Make backend.Workspaces accept a context (#784)
+  * Backend/S3: Add HTTP parameters for parity with AWS Provider
+    (#770)
+  * Make backend.DeleteWorkspace accept a context (#782)
+  * Backend/S3: Allow specifying retry mode for AWS API requests
+    (#769)
+  * Backend/S3: Add support for overriding EC2 Metadata Service
+    endpoint (#767)
+  * Weekly update for the 2023-10-24 (#781)
+  * Backend/S3: Allow use of an alternative region for STS
+    operations (#768)
+  * Backend/s3: Add support for `assume_role_with_web_identity`
+    block (#759)
+  * Make backend.StateMgr accept a context (#780)
+  * Make backend.Configure accept a context (#779)
+  * Backend/S3: Add support for custom CA bundle (#762)
+  * backend/s3: skip account verification when no constraints given
+    (#772)
+  * Make backend.PrepareConfig accept a context (#777)
+  * Make backend.ConfigSchema accept a context (#776)
+  * Improve logging of global provider schema cache hits. (#766)
+  * S3 backend add account ID whitelisting arguments (#760)
+  * Backend/S3: Extract `assume_role` as a separate block (#754)
+  * Added Security disclousure policy (#749)
+  * Add comparison to Terraform link (#737)
+  * Provide git for module installation (#751)
+  * Upgrade AWS SDK (#701)
+  * Update core team email. (#752)
+
+-------------------------------------------------------------------
 Thu Oct 19 06:52:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.6.0~alpha3:
