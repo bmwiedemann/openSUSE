@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
