@@ -24,13 +24,14 @@
 
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 Name:           mingw32-cross-gcc-bootstrap
-Version:        12.2.0
+Version:        13.2.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source:         ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
+Source100:      mingw32-gcc-rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
 BuildRequires:  mingw32-cross-binutils
@@ -125,7 +126,6 @@ ln -sf %{_bindir}/%{_mingw32_target}-cpp \
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}/include
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed/README
-%{_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed/*.h
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/include/*.h
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}/install-tools
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/install-tools/*

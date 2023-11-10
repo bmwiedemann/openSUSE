@@ -19,14 +19,14 @@
 %define include_ada 0
 %_mingw32_package_header_debug
 Name:           mingw32-gcc
-Version:        12.2.0
+Version:        13.2.0
 Release:        0
 Summary:        MinGW Windows compiler (GCC) for C
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
-Source100:      %{name}-rpmlintrc
+Source100:      mingw32-gcc-rpmlintrc
 Patch1:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
 Patch2:         gcc-12.1.0-fix-install-gdb-support-files.patch
 BuildRequires:  gcc-c++
@@ -61,6 +61,7 @@ Requires:       mingw32-winpthreads-devel
 BuildRequires:  gcc-ada
 BuildRequires:  mingw32-cross-gcc-ada >= %{version}
 %endif
+BuildArch:      noarch
 # bugzilla.opensuse.org/1184052
 #!BuildIgnore:  mingw32(libstdc++-6.dll)
 #!BuildIgnore:  mingw32(libgcc_s_sjlj-1.dll)
@@ -317,7 +318,6 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include/ssp
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed/README
-%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed/*.h
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include/*.h
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include/ssp/*.h
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/install-tools
@@ -376,6 +376,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include/c++/
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.dll.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++exp.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.a
 %{_mingw32_libexecdir}/gcc/%{_mingw32_target}/%{version}/cc1plus.exe

@@ -25,13 +25,14 @@
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 %define include_ada 0
 Name:           mingw32-cross-gcc
-Version:        12.2.0
+Version:        13.2.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
+Source100:      mingw32-gcc-rpmlintrc
 Patch1:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
@@ -236,7 +237,6 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}/include/ssp
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed/README
-%{_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed/*.h
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/include/*.h
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/include/ssp/*.h
 %dir %{_libdir}/gcc/%{_mingw32_target}/%{version}/install-tools
@@ -268,6 +268,8 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.dll.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.la
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++exp.a
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++exp.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.a
