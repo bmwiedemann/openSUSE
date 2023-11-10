@@ -1,0 +1,24 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-11-10 08:08:51.524730522 +0100
+
+Stop breaking the build at every TIFF update even if the API did not
+change. (This is as silly as other projects testing for Linux kernel
+"2.6" back in the 3.x days.)
+
+---
+ configure |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: hylafax-7.0.7/configure
+===================================================================
+--- hylafax-7.0.7.orig/configure
++++ hylafax-7.0.7/configure
+@@ -2583,7 +2583,7 @@ EOF
+ 				echo '#define TIFFSTRIPBYTECOUNTS uint32_t'
+ 				echo '#define TIFFVERSION TIFF_VERSION'
+ 				echo '#define TIFFHEADER TIFFHeader';;
+-		4.[012345])	tiff_runlen_t="uint32_t"
++		*)	tiff_runlen_t="uint32_t"
+ 				tiff_offset_t="uint64_t"
+ 				echo '#define TIFFSTRIPBYTECOUNTS uint64_t'
+ 				echo '#define TIFFVERSION TIFF_VERSION_CLASSIC'

@@ -25,6 +25,7 @@ Summary:        A fax server
 License:        BSD-3-Clause
 Group:          Productivity/Telephony/Servers
 URL:            https://hylafax.sourceforge.io
+#Git-Clone:     https://gitlab.com/libtiff/libtiff.git
 Source0:        https://prdownloads.sourceforge.net/hylafax/hylafax-%{version}.tar.gz
 Source4:        hylafax-hfaxd.service
 Source5:        hylafax-faxq.service
@@ -40,7 +41,7 @@ Source13:       hylafax-faxqclean.service
 Source14:       hylafax-faxmodem@.service
 Source15:       hylafax-service.xml
 Source16:       hylafax-helper.xml
-
+Patch1:         tiff.patch
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
@@ -104,8 +105,7 @@ server is already running on another machine, this package can be
 used to access the server.
 
 %prep
-%setup -q -n hylafax-%{version}
-%autopatch -p1
+%autosetup -p1 -n hylafax-%{version}
 
 cp %{SOURCE8} .
 cp %{SOURCE9} .
