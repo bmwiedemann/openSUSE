@@ -127,4 +127,14 @@
 </comment>
     <requestid>1093450</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ae53204793928b13d4bc5ae5d77056a3</srcmd5>
+    <version>16.0.6</version>
+    <time>1699615717</time>
+    <user>anag+factory</user>
+    <comment>- Disable zstd support for now regardless of whether libzstd-devel
+  is installed. (boo#1216121)
+</comment>
+    <requestid>1119115</requestid>
+  </revision>
 </revisionlist>
