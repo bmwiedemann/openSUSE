@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:05:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: let appstream set version. refresh dependencies.
+  * Ensure we mark element as selected in contact list
+  * Typo in reuse for snapcraft.yaml
+  * Add snapcraft.yaml to reuse.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:28:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2

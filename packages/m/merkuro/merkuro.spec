@@ -20,7 +20,7 @@
 %define kf5_version 5.105.0
 %bcond_without released
 Name:           merkuro
-Version:        23.08.2
+Version:        23.08.3
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
