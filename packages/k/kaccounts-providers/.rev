@@ -833,4 +833,12 @@
   dependson QtWebEngine. (forwarded request 1120202 from dimstar)</comment>
     <requestid>1120212</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>addc2624b28cda876abc8cbfee583832</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615775</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124501</requestid>
+  </revision>
 </revisionlist>
