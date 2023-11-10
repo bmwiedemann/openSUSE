@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Fix remap crashes
+  * Ensure timeremap option is disabled when effect is deleted
+  * Time remap: fix changing speed broken / crashing
+  * Fix timeremap
+  * Fix replace clip keeping audio index from previous clip, sometimes breaking audio.
+  * Create sequence from selection: ensure we have enough audio tracks for AV groups
+  * Fix timeline duration incorrect after create sequence from timeline selection
+  * Fix project duration not updating when moving the last clip of a track to another non last position
+  * Don't lose subtitle styling when switching to another sequence (kde#476544)
+  * Fix crash dropping url to Library
+  * When dropping multiple files in project bin, improve import speed by not checking if every file is on a remote drive
+  * Fix titler shadow incorrectly pasted on selection. (kde#476393)
+  * Fix pasted effects not adjusted to track length
+  * Fix timeline preview ignored in temporary data dialog. (kde#475980)
+  * Speech to text: fix whisper install aborting after 30secs. Text based edit: allow creating a new timeline sequence with current edit
+  * Don't try to generate proxy clips for audio with clipart
+  * Clip loading: switch to Mlt::Producer probe() instead of fetching frame. (kde##475554)
+  * Multiple fixes for time remap losing keyframes
+  * Add png with alpha render profile
+  * Fix Mix not correctly deleted on group track move
+  * Fix rendering with alpha
+  * Rotoscoping: don't auto add a second kfr at cursor pos when creating the initial shape, don't auto add keyframes until there are 2 keyframes created
+  * Fix keyframe param not correctly enabled when selecting a clip
+  * Fix smooth keyframe path sometimes incorrectly drawn on monitor
+  * Properly adjust timeline clips on sequence resize
+  * Remove unused debug stuff
+  * Fix project duration not correctly updated on hide / show track
+  * Fix resize clip with mix test
+  * Fix resize clip start to frame 0 of timeline not correctly working in some zoom levels, Fix hanging test
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
