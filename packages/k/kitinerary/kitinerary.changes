@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Specify an encoding for libxml2 when reading from byte array data as well
+  * Work around broken date/time values in booking.com mails without times
+  * Make Uic9183Header externally usable
+  * Adapt DB online import parser to also handle DB Next API replies
+  * Adapt online ticket dumping tool to DB Next API changes
+  * Fix booking.com address country extraction
+  * Handle multi-line airport names in Qatar Airways tickets
+  * Display non-ascii chars in PKP tickets
+  * Add no-q event booking extractor
+  * Sanity-check terminal names to deal with weird Iberia PDFs
+  * Handle Iberia pkpass boarding passes and PDFs without a boarding group
+  * Fix extracting Thalys tickets with a program membership used
+  * Fix extraction from multi-line Pretix PDF tickets
+  * Handle Pretix pkpass files with non-formatted date/time values
+  * Handle Dutch language European Sleeper seat reservations
+  * Handle Dutch language variants of European Sleeper tickets
+  * Small optimizations for the static build
+  * Update train station data from Wikidata
+  * Fix train station country SPARQL query
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
