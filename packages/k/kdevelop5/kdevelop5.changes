@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:04:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: Bundle Qt libs, host isn't necessarily going to have them installed!
+  * snapcraft: Add missing runtime deps. Change approach to patching.
+  * snapcraft: Fix patches location and command.
+  * snapcraft: fix runtime dep ninja-build.
+  * snapcraft: Fix version, Add license header, update dep5 file, add missing runtime dep ninja.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:27:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
