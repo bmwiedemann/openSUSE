@@ -17,6 +17,9 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
+#
+# preamble is present twice, watch out
+#
 %if "%{flavor}" != "ffmpeg-6-mini"
 
 # Create proper conflicts to make sure we require all from one version
@@ -107,6 +110,7 @@ Patch5:         work-around-abi-break.patch
 Patch6:         0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
+Patch92:        0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
 
 %if %{with amf_sdk}
 BuildRequires:  AMF-devel
@@ -537,6 +541,7 @@ break compatibility without any notice.
 %patch5 -p1
 %patch10 -p1
 %patch91 -p1
+%patch92 -p1
 # Remove when packaging ffmpeg 6.1
 if pkg-config --atleast-version 6 libplacebo; then
 %patch6 -p1
@@ -855,6 +860,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
+Patch92:        0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

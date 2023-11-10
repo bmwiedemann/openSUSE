@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:59:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve a build failure on 15.4/15.5.
+
+-------------------------------------------------------------------
 Mon Jul 31 09:05:39 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Bump required libplacebo version to v6.292.0 or newer for TW

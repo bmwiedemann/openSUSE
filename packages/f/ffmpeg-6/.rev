@@ -23,4 +23,13 @@
     <comment>- Bump required libplacebo version to v6.292.0 or newer for TW</comment>
     <requestid>1101527</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5c823ff8669447ec19ea66b3ed68f9e5</srcmd5>
+    <version>6.0</version>
+    <time>1699615715</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve a build failure on 15.4/15.5.</comment>
+    <requestid>1115602</requestid>
+  </revision>
 </revisionlist>
