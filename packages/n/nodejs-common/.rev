@@ -182,4 +182,12 @@
     <comment>Changelog only change</comment>
     <requestid>1107935</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4fdca0c270dbbe5b43c9aacc7653efb1</srcmd5>
+    <version>6.1</version>
+    <time>1699615728</time>
+    <user>anag+factory</user>
+    <comment>- Update default TW to nodejs21</comment>
+    <requestid>1124370</requestid>
+  </revision>
 </revisionlist>

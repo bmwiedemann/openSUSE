@@ -25,8 +25,8 @@
 #
 ###########################################################
 
-%define NODEJS_LTS      18
-%define NODEJS_CURRENT  20
+%define NODEJS_LTS      20
+%define NODEJS_CURRENT  21
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
@@ -80,7 +80,7 @@
 %endif
 
 Name:           nodejs-common
-Version:        6.0
+Version:        6.1
 Release:        0
 Summary:        Common files for the NodeJS ecosystem
 License:        MIT
