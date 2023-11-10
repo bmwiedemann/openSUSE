@@ -19,14 +19,14 @@
 %define include_ada 0
 %_mingw64_package_header_debug
 Name:           mingw64-gcc
-Version:        12.2.0
+Version:        13.2.0
 Release:        0
 Summary:        MinGW Windows compiler (GCC) for C
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
-Source100:      %{name}-rpmlintrc
+Source10:       mingw64-gcc-rpmlintrc
 Patch1:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
 Patch2:         gcc-12.1.0-fix-install-gdb-support-files.patch
 BuildRequires:  gcc-c++
@@ -317,7 +317,6 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %dir %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include-fixed
 %dir %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include/ssp
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include-fixed/README
-%{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include-fixed/*.h
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include/*.h
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include/ssp/*.h
 %dir %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/install-tools
@@ -376,6 +375,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/include/c++/
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.a
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.dll.a
+%{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++exp.a
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++fs.a
 %{_mingw64_libdir}/gcc/%{_mingw64_target}/%{version}/libsupc++.a
 %{_mingw64_libexecdir}/gcc/%{_mingw64_target}/%{version}/cc1plus.exe
