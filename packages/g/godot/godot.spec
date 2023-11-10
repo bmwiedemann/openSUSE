@@ -29,7 +29,7 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -133,7 +133,7 @@ Provides:       bundled(enet) = 1.3.17
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
-Provides:       bundled(minizip) = 1.2.13
+Provides:       bundled(minizip) = 1.3
 
 Provides:       bundled(FastLZ)
 Provides:       bundled(FastNoiseLite)

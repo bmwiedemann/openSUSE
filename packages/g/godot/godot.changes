@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Nov 7 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.1.3
+
+  Added:
+  * Support loading of translations on threads
+  * GDScript: check for "super()" methods not being implemented
+
+  Changed:
+  * Allow using floating-point bone sizes
+    and outline widths in the 2D editor
+  * Convert TileSet Atlas Merge input images to RGBA8 to match output, if needed
+  * Make CSGShape follow curve's tilt in Path mode
+  * Initialize View Frame Time estimates to match 120 FPS
+  * Animation: Improve and clarify paused Tweens
+  * Limit mesh complexity in LOD generation to prevent crashing
+  * Update Blender export flags for 3.6
+
+  Fixed:
+  * TileMap editor so that pressing control deselects cells correctly
+  * GridMap: Ensure the visibility is updated when entering the tree
+  * Animation keyframes being skipped when played backwards
+  * BoneAttachment3D signal connection
+  * SkeletonIK3D editor preview when changing active node
+  * Clear the previously set state when configuring for a new scene root node
+  * Non-deterministic behavior in PCKPacker
+  * Conversion of hex color strings in project converter
+  * Indentation in script templates
+  * LSP: Fix connection error when launched in a separate thread
+  * LSP: Fix autocomplete quote handling
+  * Native popups auto-closing when interacting with non-client area
+  * Scrolling "PopupMenu" on keyboard/controller input
+  * "OptionButton" minimum size when "Fit Longest Item" is enabled
+  * 2D/3D viewport context switching issues when script editor is floating
+  * Crash when generating LODs on meshes with non-finite vertices
+  * Particle shader deterministic random values
+  * Use EWMH for "DisplayServerX11::_window_minimize_check()" implementation
+  * Ensure "POINT_SIZE" takes effect in the canvas item shader
+  * Avoid default fallback material when using "world_vertex_coords"
+  * Disabling depth prepass break opaque materials
+
+  and more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.1.3
+
+-------------------------------------------------------------------
 Thu Oct 5 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 4.1.2
