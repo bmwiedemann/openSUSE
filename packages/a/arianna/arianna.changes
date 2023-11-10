@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  7 17:03:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * CI: Comment out flatpak as it uses some KF6 dependencies
+  * snapcraft: bump content pack version, remove deps now in content pack.
+
+-------------------------------------------------------------------
 Tue Oct 10 18:26:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.2
