@@ -1,0 +1,8 @@
+<package name="libqaccessibilityclient" project="openSUSE:Factory">
+  <title>Accessibilty tools helper library, used e.g. by screen readers</title>
+  <description>This library is used when writing accessibility clients such as screen readers.
+
+</description>
+  <devel project="KDE:Frameworks5" package="libqaccessibilityclient"/>
+  <url>https://www.kde.org</url>
+</package>
