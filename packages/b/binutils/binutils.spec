@@ -64,7 +64,7 @@ BuildRequires:  zlib-devel
 %if %{suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
-Version:        2.40
+Version:        2.41
 Release:        0
 
 # disable libalternatives for now until it's changed to not
@@ -131,7 +131,7 @@ Source:         binutils-%{version}.tar.bz2
 Source2:        binutils-%{version}.tar.bz2.sig
 Source3:        binutils.keyring
 Source4:        baselibs.conf
-Patch1:         binutils-2.40-branch.diff.gz
+Patch1:         binutils-2.41-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -153,9 +153,9 @@ Patch41:        binutils-fix-relax.diff
 Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
-Patch45:        extensa-gcc-4_3-fix.diff
-Patch46:        riscv-dynamic-tls-reloc-pie.patch
-Patch47:        riscv-pr22263-1.patch
+Patch45:        binutils-old-makeinfo.diff
+Patch46:        riscv-relro.patch
+Patch47:        binutils-use-less-memory.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -197,6 +197,9 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       binutils = %{version}-%{release}
 Requires:       zlib-devel
+%if %{suse_version} > 1500
+Requires:       libzstd-devel
+%endif
 Provides:       binutils:/usr/include/bfd.h
 
 %description devel
@@ -278,6 +281,8 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch42 -p1
 %patch43 -p1
 %patch44 -p1
+%endif
+%if %{suse_version} < 1500
 %patch45 -p1
 %endif
 %patch46 -p1

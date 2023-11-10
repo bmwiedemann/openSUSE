@@ -26,10 +26,10 @@ of missing support in ld.so.
 proper predicate to guard themself)
 
 
-Index: binutils-2.40/bfd/elf64-x86-64.c
+Index: binutils-2.41/bfd/elf64-x86-64.c
 ===================================================================
---- binutils-2.40.orig/bfd/elf64-x86-64.c	2023-03-08 16:21:20.818669606 +0100
-+++ binutils-2.40/bfd/elf64-x86-64.c	2023-03-08 16:22:22.915673946 +0100
+--- binutils-2.41.orig/bfd/elf64-x86-64.c	2023-08-16 17:34:14.991069097 +0200
++++ binutils-2.41/bfd/elf64-x86-64.c	2023-08-16 17:34:48.295651473 +0200
 @@ -48,127 +48,127 @@ static reloc_howto_type x86_64_elf_howto
  	bfd_elf_generic_reloc, "R_X86_64_NONE",	false, 0, 0x00000000,
  	false),
@@ -208,21 +208,9 @@ Index: binutils-2.40/bfd/elf64-x86-64.c
  	false)
  };
  
-Index: binutils-2.40/gas/testsuite/gas/i386/i386.exp
+Index: binutils-2.41/gas/testsuite/gas/i386/rela.d
 ===================================================================
---- binutils-2.40.orig/gas/testsuite/gas/i386/i386.exp	2023-03-08 16:21:20.818669606 +0100
-+++ binutils-2.40/gas/testsuite/gas/i386/i386.exp	2023-03-08 16:22:22.915673946 +0100
-@@ -1328,7 +1328,6 @@ if [gas_64_check] then {
- 	run_list_test "reloc64" "--defsym _bad_=1"
- 	run_list_test "x86-64-inval-tls"
- 	run_dump_test "mixed-mode-reloc64"
--	run_dump_test "rela"
- 	run_dump_test "x86-64-ifunc"
- 	run_dump_test "x86-64-opcode-inval"
- 	run_dump_test "x86-64-opcode-inval-intel"
-Index: binutils-2.40/gas/testsuite/gas/i386/rela.d
-===================================================================
---- binutils-2.40.orig/gas/testsuite/gas/i386/rela.d	2023-03-08 16:21:20.818669606 +0100
+--- binutils-2.41.orig/gas/testsuite/gas/i386/rela.d	2023-07-03 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,13 +0,0 @@
 -#name: x86-64 rela relocs w/ non-zero relocated fields
@@ -238,9 +226,9 @@ Index: binutils-2.40/gas/testsuite/gas/i386/rela.d
 -
 -Contents of section .data:
 - 0+0 11 ?11 ?11 ?11 22 ?22 ?22 ?22 33 ?33 ?33 ?33 44 ?44 ?44 ?44 .*
-Index: binutils-2.40/gas/testsuite/gas/i386/rela.s
+Index: binutils-2.41/gas/testsuite/gas/i386/rela.s
 ===================================================================
---- binutils-2.40.orig/gas/testsuite/gas/i386/rela.s	2023-03-08 16:21:20.818669606 +0100
+--- binutils-2.41.orig/gas/testsuite/gas/i386/rela.s	2023-07-03 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,14 +0,0 @@
 -# Note: This file is also used by an ld test case.
@@ -257,9 +245,9 @@ Index: binutils-2.40/gas/testsuite/gas/i386/rela.s
 -
 -	.reloc l, BFD_RELOC_64, q
 -	.reloc q, BFD_RELOC_32, l
-Index: binutils-2.40/ld/testsuite/ld-x86-64/rela.d
+Index: binutils-2.41/ld/testsuite/ld-x86-64/rela.d
 ===================================================================
---- binutils-2.40.orig/ld/testsuite/ld-x86-64/rela.d	2023-03-08 16:21:20.818669606 +0100
+--- binutils-2.41.orig/ld/testsuite/ld-x86-64/rela.d	2023-07-03 01:00:00.000000000 +0200
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,10 +0,0 @@
 -#name: x86-64 rela relocs w/ non-zero relocated fields
@@ -272,10 +260,10 @@ Index: binutils-2.40/ld/testsuite/ld-x86-64/rela.d
 -
 -Contents of section .data:
 - *[0-9a-f]*0 .8 ?.. ?.. ?.. 00 ?00 ?00 ?00 .0 ?.. ?.. ?.. 44 ?44 ?44 ?44 .*
-Index: binutils-2.40/ld/testsuite/ld-x86-64/x86-64.exp
+Index: binutils-2.41/ld/testsuite/ld-x86-64/x86-64.exp
 ===================================================================
---- binutils-2.40.orig/ld/testsuite/ld-x86-64/x86-64.exp	2023-03-08 16:21:20.818669606 +0100
-+++ binutils-2.40/ld/testsuite/ld-x86-64/x86-64.exp	2023-03-08 16:22:22.919674009 +0100
+--- binutils-2.41.orig/ld/testsuite/ld-x86-64/x86-64.exp	2023-08-16 17:34:14.967068677 +0200
++++ binutils-2.41/ld/testsuite/ld-x86-64/x86-64.exp	2023-08-16 17:34:48.295651473 +0200
 @@ -286,7 +286,6 @@ run_dump_test "apic"
  run_dump_test "pcrel8"
  run_dump_test "pcrel16"
@@ -299,11 +287,11 @@ Index: binutils-2.40/ld/testsuite/ld-x86-64/x86-64.exp
  
  if { ![skip_sframe_tests] } {
      run_dump_test "sframe-simple-1"
-Index: binutils-2.40/binutils/testsuite/lib/binutils-common.exp
+Index: binutils-2.41/binutils/testsuite/lib/binutils-common.exp
 ===================================================================
---- binutils-2.40.orig/binutils/testsuite/lib/binutils-common.exp	2023-03-08 16:21:20.818669606 +0100
-+++ binutils-2.40/binutils/testsuite/lib/binutils-common.exp	2023-03-08 16:22:22.919674009 +0100
-@@ -429,6 +429,8 @@ proc supports_persistent_section {} {
+--- binutils-2.41.orig/binutils/testsuite/lib/binutils-common.exp	2023-07-03 01:00:00.000000000 +0200
++++ binutils-2.41/binutils/testsuite/lib/binutils-common.exp	2023-08-16 17:34:48.295651473 +0200
+@@ -442,6 +442,8 @@ proc supports_persistent_section {} {
  
  # Whether a target support DT_RELR sections.
  proc supports_dt_relr {} {
@@ -312,10 +300,10 @@ Index: binutils-2.40/binutils/testsuite/lib/binutils-common.exp
      if { ([istarget x86_64-*-*]
  	  || [istarget i?86-*-*]
  	  || [istarget powerpc64*-*-*])
-Index: binutils-2.40/ld/emulparams/dt-relr.sh
+Index: binutils-2.41/ld/emulparams/dt-relr.sh
 ===================================================================
---- binutils-2.40.orig/ld/emulparams/dt-relr.sh	2023-03-08 16:21:20.818669606 +0100
-+++ binutils-2.40/ld/emulparams/dt-relr.sh	2023-03-08 16:22:22.919674009 +0100
+--- binutils-2.41.orig/ld/emulparams/dt-relr.sh	2023-07-03 01:00:00.000000000 +0200
++++ binutils-2.41/ld/emulparams/dt-relr.sh	2023-08-16 17:34:48.295651473 +0200
 @@ -1,3 +1,8 @@
 +if false; then
 +    # on old codestreams we don't have the DT_RELR support in the dynamic
@@ -331,10 +319,10 @@ Index: binutils-2.40/ld/emulparams/dt-relr.sh
  PARSE_AND_LIST_ARGS_CASE_Z="$PARSE_AND_LIST_ARGS_CASE_Z $PARSE_AND_LIST_ARGS_CASE_Z_PACK_RELATIVE_RELOCS"
 +
 +fi
-Index: binutils-2.40/ld/testsuite/ld-i386/i386.exp
+Index: binutils-2.41/ld/testsuite/ld-i386/i386.exp
 ===================================================================
---- binutils-2.40.orig/ld/testsuite/ld-i386/i386.exp	2023-03-08 16:21:20.818669606 +0100
-+++ binutils-2.40/ld/testsuite/ld-i386/i386.exp	2023-03-08 16:22:22.919674009 +0100
+--- binutils-2.41.orig/ld/testsuite/ld-i386/i386.exp	2023-07-03 01:00:00.000000000 +0200
++++ binutils-2.41/ld/testsuite/ld-i386/i386.exp	2023-08-16 17:34:48.299651544 +0200
 @@ -507,8 +507,8 @@ run_dump_test "pr27491-1c"
  run_dump_test "pr27491-2"
  run_dump_test "pr27491-3"
@@ -346,10 +334,10 @@ Index: binutils-2.40/ld/testsuite/ld-i386/i386.exp
  run_dump_test "pr28870"
  run_dump_test "pr28894"
  
-Index: binutils-2.40/ld/testsuite/ld-powerpc/powerpc.exp
+Index: binutils-2.41/ld/testsuite/ld-powerpc/powerpc.exp
 ===================================================================
---- binutils-2.40.orig/ld/testsuite/ld-powerpc/powerpc.exp	2023-01-14 01:00:00.000000000 +0100
-+++ binutils-2.40/ld/testsuite/ld-powerpc/powerpc.exp	2023-03-08 16:25:29.926698626 +0100
+--- binutils-2.41.orig/ld/testsuite/ld-powerpc/powerpc.exp	2023-08-16 17:34:14.895067416 +0200
++++ binutils-2.41/ld/testsuite/ld-powerpc/powerpc.exp	2023-08-16 17:34:48.299651544 +0200
 @@ -378,14 +378,14 @@ set ppc64elftests {
  	"-a64" {abs-reloc.s}
  	{{objdump {-sdr} abs-shared.d}
@@ -373,3 +361,15 @@ Index: binutils-2.40/ld/testsuite/ld-powerpc/powerpc.exp
  }
  
  set ppceabitests {
+Index: binutils-2.41/gas/testsuite/gas/i386/x86-64.exp
+===================================================================
+--- binutils-2.41.orig/gas/testsuite/gas/i386/x86-64.exp	2023-07-03 01:00:00.000000000 +0200
++++ binutils-2.41/gas/testsuite/gas/i386/x86-64.exp	2023-08-16 17:38:35.023605534 +0200
+@@ -588,7 +588,6 @@ if [is_elf_format] then {
+     run_list_test "reloc64" "--defsym _bad_=1"
+     run_list_test "x86-64-inval-tls"
+     run_dump_test "mixed-mode-reloc64"
+-    run_dump_test "rela"
+     run_dump_test "x86-64-ifunc"
+     if { [gas_32_check] } then {
+ 	run_dump_test "x86-64-opcode-inval"

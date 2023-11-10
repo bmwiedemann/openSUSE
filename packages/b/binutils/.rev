@@ -2172,4 +2172,44 @@ contain it.
 - riscv-pr22263-1.patch: Backport for PR ld/22263 (forwarded request 1089774 from Andreas_Schwab)</comment>
     <requestid>1089814</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>471b681ebcc57f12ec28433a9700d977</srcmd5>
+    <version>2.41</version>
+    <time>1699615725</time>
+    <user>anag+factory</user>
+    <comment>This should fix the last fail in Staging, the build of
+libQt5WebEngine on i586.  *knockonwood*
+
+- Add binutils-use-less-memory.diff to be a little nicer to 32bit
+  userspace and huge links.  [bsc#1216908]
+
+- riscv-relro.patch: RISC-V: Protect .got with relro
+
+- Add libzstd-devel to Requires of binutils-devel. (bsc#1215341)
+
+- Update to version 2.41 [PED-5778]:
+* The MIPS port now supports the Sony Interactive Entertainment Allegrex
+  processor, used with the PlayStation Portable, which implements the MIPS
+  II ISA along with a single-precision FPU and a few implementation-specific
+  integer instructions.
+* Objdump's --private option can now be used on PE format files to display the
+  fields in the file header and section headers.
+* New versioned release of libsframe: libsframe.so.1.  This release introduces
+  versioned symbols with version node name LIBSFRAME_1.0.  This release also
+  updates the ABI in an incompatible way: this includes removal of
+  sframe_get_funcdesc_with_addr API, change in the behavior of
+  sframe_fre_get_ra_offset and sframe_fre_get_fp_offset APIs.
+* SFrame Version 2 is now the default (and only) format version supported by
+  gas, ld, readelf and objdump.
+* Add command-line option, --strip-section-headers, to objcopy and strip to
+  remove ELF section header from ELF file.
+* The RISC-V port now supports the following new standard extensions:
+  - Zicond (conditional zero instructions)
+  - Zfa (additional floating-point instructions)
+  - Zvbb, Zvbc, Zvkg, Zvkned, Zvknh[ab], Zvksed, Zvksh, Zvkn, Zvknc, Zvkng,
+    Zvks, Zvksc, Zvkg, Zvkt (vector crypto instructions)
+* The RISC-V port now supports the following vendor-defined extensions:
+  - XVentanaCondOps</comment>
+    <requestid>1124735</requestid>
+  </revision>
 </revisionlist>

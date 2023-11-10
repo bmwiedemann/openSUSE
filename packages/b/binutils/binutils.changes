@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Thu Nov  9 16:51:13 UTC 2023 - Michael Matz <matz@suse.com>
+
+- Add binutils-use-less-memory.diff to be a little nicer to 32bit
+  userspace and huge links.  [bsc#1216908]
+
+-------------------------------------------------------------------
+Mon Sep 25 11:12:43 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv-relro.patch: RISC-V: Protect .got with relro
+
+-------------------------------------------------------------------
+Thu Sep 14 12:27:48 UTC 2023 - Michael Matz <matz@suse.com>
+
+- Add libzstd-devel to Requires of binutils-devel. (bsc#1215341)
+
+-------------------------------------------------------------------
+Wed Aug 16 14:36:57 UTC 2023 - Michael Matz <matz@suse.com>
+
+- Update to version 2.41 [PED-5778]:
+* The MIPS port now supports the Sony Interactive Entertainment Allegrex
+  processor, used with the PlayStation Portable, which implements the MIPS
+  II ISA along with a single-precision FPU and a few implementation-specific
+  integer instructions.
+* Objdump's --private option can now be used on PE format files to display the
+  fields in the file header and section headers.
+* New versioned release of libsframe: libsframe.so.1.  This release introduces
+  versioned symbols with version node name LIBSFRAME_1.0.  This release also
+  updates the ABI in an incompatible way: this includes removal of
+  sframe_get_funcdesc_with_addr API, change in the behavior of
+  sframe_fre_get_ra_offset and sframe_fre_get_fp_offset APIs.
+* SFrame Version 2 is now the default (and only) format version supported by
+  gas, ld, readelf and objdump.
+* Add command-line option, --strip-section-headers, to objcopy and strip to
+  remove ELF section header from ELF file.
+* The RISC-V port now supports the following new standard extensions:
+  - Zicond (conditional zero instructions)
+  - Zfa (additional floating-point instructions)
+  - Zvbb, Zvbc, Zvkg, Zvkned, Zvknh[ab], Zvksed, Zvksh, Zvkn, Zvknc, Zvkng,
+    Zvks, Zvksc, Zvkg, Zvkt (vector crypto instructions)
+* The RISC-V port now supports the following vendor-defined extensions:
+  - XVentanaCondOps
+* Add support for Intel FRED, LKGS and AMX-COMPLEX instructions.
+* A new .insn directive is recognized by x86 gas.
+* Add SME2 support to the AArch64 port.
+* The linker now accepts a command line option of --remap-inputs
+  <PATTERN>=<FILE> to relace any input file that matches <PATTERN> with
+  <FILE>.  In addition the option --remap-inputs-file=<FILE> can be used to
+  specify a file containing any number of these remapping directives.
+* The linker command line option --print-map-locals can be used to include
+  local symbols in a linker map.  (ELF targets only).
+* For most ELF based targets, if the --enable-linker-version option is used
+  then the version of the linker will be inserted as a string into the .comment
+  section.
+* The linker script syntax has a new command for output sections: ASCIZ "string"
+  This will insert a zero-terminated string at the current location.
+* Add command-line option, -z nosectionheader, to omit ELF section
+  header.
+- Removed obsolete patches: binutils-2.40-branch.diff.gz,
+  riscv-dynamic-tls-reloc-pie.patch, riscv-pr22263-1.patch,
+  extensa-gcc-4_3-fix.diff .
+- Add binutils-2.41-branch.diff.gz .
+- Add binutils-old-makeinfo.diff for SLE-12 and older.
+- Rebased aarch64-common-pagesize.patch and binutils-revert-rela.diff .
+- Contains fixes for these non-CVEs (not security bugs per upstreams
+  SECURITY.md):
+  * bsc#1209642 aka CVE-2023-1579 aka PR29988
+  * bsc#1210297 aka CVE-2023-1972 aka PR30285
+  * bsc#1210733 aka CVE-2023-2222 aka PR29936
+  * bsc#1213458 aka CVE-2021-32256 aka PR105039 (gcc)
+  * bsc#1214565 aka CVE-2020-19726 aka PR26240
+  * bsc#1214567 aka CVE-2022-35206 aka PR29290
+  * bsc#1214579 aka CVE-2022-35205 aka PR29289
+  * bsc#1214580 aka CVE-2022-44840 aka PR29732
+  * bsc#1214604 aka CVE-2022-45703 aka PR29799
+  * bsc#1214611 aka CVE-2022-48065 aka PR29925
+  * bsc#1214619 aka CVE-2022-48064 aka PR29922
+  * bsc#1214620 aka CVE-2022-48063 aka PR29924
+  * bsc#1214623 aka CVE-2022-47696 aka PR29677
+  * bsc#1214624 aka CVE-2022-47695 aka PR29846
+  * bsc#1214625 aka CVE-2022-47673 aka PR29876
+
+-------------------------------------------------------------------
+Thu Jul 13 14:31:57 UTC 2023 - Michael Matz <matz@suse.com>
+
+- Add binutils-disable-dt-relr.sh for an compatibility problem
+  caused by binutils-revert-rela.diff in SLE codestreams.
+  Needed for update of glibc as that would otherwise pick up
+  the broken relative relocs support.  [bsc#1213282, PED-1435]
+- This only existed only for a very short while in SLE-15, as the main
+  variant in devel:gcc subsumed this in binutils-revert-rela.diff.
+  Hence:
+- Remove binutils-disable-dt-relr.sh as subsumed.
+
+-------------------------------------------------------------------
 Tue May 30 09:43:15 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - riscv-dynamic-tls-reloc-pie.patch: Backport for PR ld/22263 and PR
