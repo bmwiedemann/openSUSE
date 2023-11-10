@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        7.0.6
+Version:        7.1.3
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
+BuildRequires:  ladspa-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
