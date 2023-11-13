@@ -100,4 +100,17 @@
     <comment></comment>
     <requestid>1093677</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bc0e0273e05ca5b7b75e3cc449fe8d0a</srcmd5>
+    <version>2.11.0</version>
+    <time>1699910294</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.11.0:
+  * Drop Django 2.2 support, now require &gt;=3.2.
+  * Drop Python 3.6 and 3.7 support, now require &gt;=3.8.
+  * Add Django 4.1 and 4.2 support.
+  * Add Python 3.11 support.
+  * Provide a better default template engine NAME than 'backend'</comment>
+    <requestid>1124988</requestid>
+  </revision>
 </revisionlist>

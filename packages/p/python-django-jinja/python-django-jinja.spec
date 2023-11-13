@@ -18,9 +18,8 @@
 
 %{?sle15_python_module_pythons}
 %define modname django_jinja
-%bcond_without python2
 Name:           python-django-jinja
-Version:        2.10.2
+Version:        2.11.0
 Release:        0
 Summary:        Jinja2 templating language integrated in Django
 License:        BSD-3-Clause
@@ -35,9 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
 Requires:       python-Jinja2 >= 2.5
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-mock
-%endif
 %python_subpackages
 
 %description
