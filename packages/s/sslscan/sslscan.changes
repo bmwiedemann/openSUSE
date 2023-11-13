@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 10 15:21:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Work around several dodgy TLS implementations
+
+-------------------------------------------------------------------
 Thu Sep 14 12:41:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.1.0:
@@ -67,7 +73,7 @@ Fri Dec 18 10:01:53 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 Mon Sep 28 10:16:55 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgrade to version 2.0.1
-  
+
   * Correctly set SNI name when using --targets. Fixes gh#rbsec/sslscan#215
 
 -------------------------------------------------------------------
@@ -82,7 +88,7 @@ Thu Jul 23 12:25:27 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   where possible, but dynamically built version should be significantly more
   useful.
 
-  Note that there are also some breaking changes to the XML output, which are 
+  Note that there are also some breaking changes to the XML output, which are
   documented in the readme file.
 
   This rewrite been made possible largely by the work of jtesta, who has been
@@ -160,7 +166,7 @@ Thu Oct 27 09:12:12 UTC 2016 - jweberhofer@weberhofer.at
     - IPv6 addresses
     - TLSv1.1 and TLSv1.2
     - XMPP server-to-server connections
-  * Added check for 
+  * Added check for
     - OpenSSL Heartbleed
     - POODLE
   * Highlight the following issues
@@ -332,7 +338,7 @@ Thu Oct 27 09:12:12 UTC 2016 - jweberhofer@weberhofer.at
 
 - Version 1.8.3
 
-   * Improve new protocol setup support for STARTTLS: POP3, IMAP, FTP, and 
+   * Improve new protocol setup support for STARTTLS: POP3, IMAP, FTP, and
      XMPP This modeled after the support found in OpenSSL's s_client
    * Add verbose option to print more info
    * Add default ports when a STARTTLS setup flag is called without any port at all
