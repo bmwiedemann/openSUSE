@@ -1,7 +1,7 @@
 #
 # spec file for package schily
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%define rver	2022-10-16
-%global box_version	2022.10.16
+%define rver	2023-09-28
+%global box_version	2023.09.28
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.6
@@ -892,7 +892,6 @@ fi
 %_mandir/man3/fexecle.3*
 %_mandir/man3/fexecv.3*
 %exclude %_mandir/man3/fexecve.3*
-%_mandir/man3/fgetline.3*
 %_mandir/man3/file_raise.3*
 %_mandir/man3/fileclose.3*
 %_mandir/man3/fileluopen.3*
@@ -919,11 +918,12 @@ fi
 %_mandir/man3/getlallargs.3*
 %_mandir/man3/getlargs.3*
 %_mandir/man3/getlfiles.3*
-%exclude %_mandir/man3/getline.3*
 %_mandir/man3/getvallargs.3*
 %_mandir/man3/getvargs.3*
 %_mandir/man3/getvfiles.3*
 %_mandir/man3/handlecond.3*
+%_mandir/man3/js_fgetline.3*
+%_mandir/man3/js_getline.3*
 %_mandir/man3/movebytes.3*
 %_mandir/man3/ofindline.3*
 %_mandir/man3/patcompile.3*

@@ -442,4 +442,12 @@ make glibc-2.34 happy</comment>
     <comment>- Update to release 2022.10.16</comment>
     <requestid>1037572</requestid>
   </revision>
+  <revision rev="48" vrev="48">
+    <srcmd5>faf0b413f6dc2f65eaa7bb4d9ba6506a</srcmd5>
+    <version>unknown</version>
+    <time>1699910152</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2023.09.26</comment>
+    <requestid>1125374</requestid>
+  </revision>
 </revisionlist>

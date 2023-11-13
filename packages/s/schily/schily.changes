@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 12 23:22:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.09.26
+  * smake: add new -V option to print the expanded value of macros
+  * Bourne Shell: Fix bug where set -o notify or set -b would cause
+    the shell to exit when ^C was pressed
+
+-------------------------------------------------------------------
 Thu Nov 17 16:35:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.10.16
