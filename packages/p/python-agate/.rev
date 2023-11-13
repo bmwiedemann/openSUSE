@@ -130,4 +130,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1072310</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ed6e863dc06df47244faaaf78c9f66cf</srcmd5>
+    <version>1.9.0</version>
+    <time>1699910306</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.0:
+  * feat: Add a ``text_truncation_chars`` configuration for
+    values that exceed ``max_column_width`` in
+    :meth:`.Table.print_table` and :meth:`.Table.print_html`.
+  * feat: Add a ``number_truncation_chars`` configuration for
+    values that exceed ``max_precision`` in
+    :meth:`.Table.print_table` and :meth:`.Table.print_html`.
+  * feat: Lowercase the ``null_values`` provided to individual
+    data types, since all comparisons to ``null_values`` are
+    case-insensitive. (#770)
+  * feat: :class:`.Mean` works with :class:`.TimeDelta`. (#761)
+  * Switch from ``pytz`` to ``ZoneInfo``.
+  * Add Python 3.12 support.
+  * Drop Python 3.7 support (end-of-life was June 27, 2023).
+
+- buildrequire glibc-locale for tests
+- Only BuildRequire unittest2 under Python 2.</comment>
+    <requestid>1124989</requestid>
+  </revision>
 </revisionlist>

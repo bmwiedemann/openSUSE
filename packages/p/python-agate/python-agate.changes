@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 10 13:39:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * feat: Add a ``text_truncation_chars`` configuration for
+    values that exceed ``max_column_width`` in
+    :meth:`.Table.print_table` and :meth:`.Table.print_html`.
+  * feat: Add a ``number_truncation_chars`` configuration for
+    values that exceed ``max_precision`` in
+    :meth:`.Table.print_table` and :meth:`.Table.print_html`.
+  * feat: Lowercase the ``null_values`` provided to individual
+    data types, since all comparisons to ``null_values`` are
+    case-insensitive. (#770)
+  * feat: :class:`.Mean` works with :class:`.TimeDelta`. (#761)
+  * Switch from ``pytz`` to ``ZoneInfo``.
+  * Add Python 3.12 support.
+  * Drop Python 3.7 support (end-of-life was June 27, 2023).
+
+-------------------------------------------------------------------
 Thu Mar  9 09:23:31 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
@@ -19,7 +37,7 @@ Wed Jan  4 20:11:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Mar  1 08:25:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- buildrequire glibc-locale for tests 
+- buildrequire glibc-locale for tests
 
 -------------------------------------------------------------------
 Sat Jan 15 12:54:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -95,7 +113,7 @@ Wed Jun 10 15:19:54 UTC 2020 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Apr 23 04:26:37 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Only BuildRequire unittest2 under Python 2. 
+- Only BuildRequire unittest2 under Python 2.
 
 -------------------------------------------------------------------
 Thu Apr 16 11:54:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
