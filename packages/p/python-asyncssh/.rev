@@ -457,4 +457,23 @@
 - Skip more tests that are unstable.</comment>
     <requestid>1115789</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ce2c27fef348f354a0785a307726382a</srcmd5>
+    <version>2.14.1</version>
+    <time>1699910285</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.1 (bsc#1217028, CVE-2023-46445):
+  * Hardened AsyncSSH state machine against potential message
+    injection attacks, described in more detail in
+    `CVE-2023-46445 and CVE-2023-46446
+  * Added support for passing in a regex in readuntil in
+    SSHReader,
+  * Added support for get_addresses() and get_port() methods on
+  * SSHAcceptor.
+  * Fixed an issue with AsyncFileWriter potentially writing data
+  * out of order.
+  * Updated testing to include Python 3.12.
+  * Updated readthedocs integration to use YAML config file.</comment>
+    <requestid>1124972</requestid>
+  </revision>
 </revisionlist>

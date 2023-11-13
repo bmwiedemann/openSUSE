@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:34:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.1 (bsc#1217028, CVE-2023-46445):
+  * Hardened AsyncSSH state machine against potential message
+    injection attacks, described in more detail in
+    `CVE-2023-46445 and CVE-2023-46446
+  * Added support for passing in a regex in readuntil in
+    SSHReader,
+  * Added support for get_addresses() and get_port() methods on
+  * SSHAcceptor.
+  * Fixed an issue with AsyncFileWriter potentially writing data
+  * out of order.
+  * Updated testing to include Python 3.12.
+  * Updated readthedocs integration to use YAML config file.
+
+-------------------------------------------------------------------
 Thu Oct  5 09:42:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.0:
