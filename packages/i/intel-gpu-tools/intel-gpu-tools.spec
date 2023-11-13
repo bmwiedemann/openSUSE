@@ -17,18 +17,16 @@
 
 
 Name:           intel-gpu-tools
-Version:        1.27.1
+Version:        1.28
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz
-Source1:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz.sig
-Patch0:         u_%{name}-1.7-fix-bashisms.patch
-Patch1:         intel-gpu-tools-libproc2_libproc2_library.patch
-
+Source0:        https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz.sig
 BuildRequires:  bison
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  meson
 BuildRequires:  peg
@@ -54,6 +52,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xv)
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
+Provides:       igt-gpu-tools = %{version}
 # Intel GPU is only available on x86 and x86-64
 ExclusiveArch:  %{ix86} x86_64
 
@@ -70,30 +69,37 @@ Requires:       %{name} = %{version}
 Development files and library headers for %{name}
 
 %prep
-%setup -q -n igt-gpu-tools-%{version}
-%patch0
-#Only works with libproc2, not libprocps, despite description
-%patch1 -p1
+%autosetup -n igt-gpu-tools-%{version}
 
 %build
-#Tests fail on x86_64 with -z now
-#https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/102
-export SUSE_ZNOW=0
-%meson
+# Tests fail on x86_64 with -z now
+# https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/102
+%meson -Dc_link_args="-z lazy"
 %meson_build
+# build documentation
+ninja -C %{_vpath_builddir} igt-gpu-tools-doc
 
 %install
 %meson_install
-sed -i 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{_bindir}/code_cov_gather_on_test
+
+# fix env-script-interpreter
+sed -i 's#/usr/bin/env python3#/usr/bin/python3#' \
+	%{buildroot}%{_bindir}/{code_cov_gather_on_test,intel-gfx-fw-info}
+
+%fdupes %{buildroot}%{_libexecdir}
 
 %check
 %meson_test
 
-%post -p /sbin/ldconfig
+%if 0%{?suse_version} > 1500
+%ldconfig_scriptlets
+%else
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+%endif
 
 %files
-%doc README.md
+%doc NEWS README.md
 %license COPYING
 %{_bindir}/*
 %{_libexecdir}/igt-gpu-tools/

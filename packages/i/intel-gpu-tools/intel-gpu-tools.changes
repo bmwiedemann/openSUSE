@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Nov  5 09:48:04 UTC 2023 - munix9@googlemail.com
+
+- Update to version 1.28:
+  * New meson options testplan, sphinx and xe_driver.
+  * Add amdgpu GFX1036, GFX1037 chips.
+  * Add xe_pciids.h with Lunar Lake (LNL) support.
+  * Use the new procps library libproc2.
+  * Add helper for srandom seed initialization.
+  * Support for vmwgfx driver.
+  * i915_pciids.h updated to include Pontevecchio (PVC) platform.
+  * Add OAM formats and support for media engines in perf tests.
+  * Support for Xe driver.
+  * igt_runner can now dump GPU state on timeout.
+  * igt_runner will now use proper 'abort' as result instead of pseudoresult.
+  * New vendor agnostic gputop tool.
+  * New tool to dump Intel GuC/HuC CSS header.
+  * Improve tools intel_watermark, intel_vbt_decode, intel_reg.
+  * New way for documenting tests will allow to generate documentation and
+    testlists during build, see README.md and test_documentation.md. This
+    is mandatory for Intel (both i915 and xe) and kms tests.
+  * Move intel specific tests to new directory.
+  * Ported and refactored drmlib security tests in amdgpu.
+  * Switch DRM selftests to KUnit.
+  * Enabled MeteorLake aux ccs tests.
+  * Exercise oversized object detection for Xe.
+  * Enable validation for VDSC output formats.
+  * Add support for Bigjoiner / 8K mode.
+  * Use intel_cmds_info library.
+  * Use Intel kernel gpu command definitions.
+  * Add a basic perf_pmu test.
+  * Add test for V3D's Wait BO IOCTL.
+  * Add i915_power test for power measurement.
+  * Remove sysfs_clients.
+
+- Remove intel-gpu-tools-libproc2_libproc2_library.patch (fixed upstream)
+- Remove u_intel-gpu-tools-1.7-fix-bashisms.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Apr 20 00:55:37 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Build against libproc2 instead of libprocps
@@ -7,7 +45,7 @@ Thu Apr 20 00:55:37 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 -------------------------------------------------------------------
 Sat Mar  4 04:16:41 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
-- Update to version 1.27.1:   
+- Update to version 1.27.1:
   * Support for Intel discrete graphics and other new platforms (Andrzej
     Turko, Matt Roper, Clint Taylor, Tejas Upadhyay, et al)
   * Support for MSM driver. (Mark Yacoub, Rob Clark)
