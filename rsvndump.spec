@@ -1,8 +1,7 @@
-# vim: set ts=4 sw=4 et:
 #
 # spec file for package rsvndump
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,18 +18,18 @@
 
 
 Name:           rsvndump
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Remote Subversion Repository Dumping Tool
 License:        GPL-3.0-only
 Group:          Development/Tools/Version Control
 URL:            https://rsvndump.sourceforge.net/
 Source:         http://prdownloads.sourceforge.net/rsvndump/rsvndump-%{version}.tar.gz
-BuildRequires:  libapr-util1-devel
-BuildRequires:  libapr1-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(apr-1)
+BuildRequires:  pkgconfig(apr-util-1)
 BuildRequires:  pkgconfig(libsvn_delta)
 BuildRequires:  pkgconfig(libsvn_fs)
 BuildRequires:  pkgconfig(libsvn_ra)
@@ -54,6 +53,9 @@ rsvndump can easily be imported into a new subversion repository.
 %install
 %make_install
 %find_lang rsvndump
+
+%check
+%make_build check
 
 %files
 %license COPYING

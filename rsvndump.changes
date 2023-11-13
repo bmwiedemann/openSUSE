@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 12 17:14:41 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.6.2:
+  * fix an edge-case where delete actions would be issued for
+    non-existent paths, resulting in unloadable dumps
+
+-------------------------------------------------------------------
 Sun Dec  4 20:09:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.6.1:
