@@ -100,4 +100,12 @@
     <comment>- Update to release 5.0.1</comment>
     <requestid>1121599</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>fa95a032d643a8fd839e1c6aa20503e6</srcmd5>
+    <version>5.0.1</version>
+    <time>1699910504</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125415</requestid>
+  </revision>
 </revisionlist>

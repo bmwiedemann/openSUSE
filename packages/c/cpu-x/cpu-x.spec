@@ -26,6 +26,10 @@ Group:          System/X11/Utilities
 URL:            https://github.com/TheTumultuousUnicornOfDarkness/CPU-X
 Source:         https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v%version.tar.gz
 Patch1:         no-no-pie.patch
+%if 0%{suse_version} < 1599
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%endif
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gettext-tools
@@ -36,6 +40,7 @@ BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
+BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcpuid) >= 0.6.0
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libprocps)
@@ -84,8 +89,10 @@ Shell completion definitions from %name for %name.
 %autosetup -p1 -n %src_name
 
 %build
-%cmake \
-  -DWITH_OPENCL=1
+%if 0%{suse_version} < 1599
+export CC=gcc-12 CXX=g++-12
+%endif
+%cmake -DWITH_OPENCL=1
 %cmake_build
 
 %install

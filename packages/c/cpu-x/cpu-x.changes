@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  5 10:29:24 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use newer g++, as Leap's default compiler does not provide the
+  <filesystem> header.
+- Add build requires for glibmm.
+
+-------------------------------------------------------------------
 Wed Nov  1 11:09:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.0.1
