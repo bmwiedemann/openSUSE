@@ -42,7 +42,7 @@ All files are stored in user's home directory. Following are the details:
 %build
 # From the Makefile
 GITCOMMIT="HEAD"
-BUILDDATE="$(TZ=UTC date +%Y-%m-%dT%H:%M:%%S%z)"
+BUILDDATE="$(TZ=UTC date -d@${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%S%%z)"
 VERSION="%{version}"
 GOOS=linux CGO_CPPFLAGS="-D_FORTIFY_SOURCE=2" go build \
 	   -mod=vendor \
