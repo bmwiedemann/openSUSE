@@ -65,4 +65,16 @@
   * drop python 3.6 support</comment>
     <requestid>1085335</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df5e483ee06cdfb0555abeb9a5f50c4c</srcmd5>
+    <version>1.0.10</version>
+    <time>1699910280</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.10:
+  * Fix selector specificity calculation for pseudo-classes
+
+  * replace deprecated use of cgi.parse_header
+  * tests: adjust exception string checks for python 3.11</comment>
+    <requestid>1124874</requestid>
+  </revision>
 </revisionlist>

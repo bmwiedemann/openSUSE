@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:20:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.10:
+  * Fix selector specificity calculation for pseudo-classes
+
+-------------------------------------------------------------------
 Sun May  7 18:46:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.9:
-  * replace deprecated use of cgi.parse_header 
+  * replace deprecated use of cgi.parse_header
   * drop python 3.6 support
 
 -------------------------------------------------------------------
@@ -11,7 +17,7 @@ Mon Oct  3 15:50:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 1.0.8:
   * Replace removed assertEquals with assertEqual
   * Upgrade other unittest asserts for clearer error messages
-  * tests: adjust exception string checks for python 3.11 
+  * tests: adjust exception string checks for python 3.11
   * tests: fix warning about \( and \o being invalid sequences
   * Fix serialization of unknown rules containing comments
 - drop relax_error_msg_check.patch (upstream)

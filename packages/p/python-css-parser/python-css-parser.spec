@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-css-parser
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        CSS related utilities (parsing, serialization, etc) for python
 License:        LGPL-3.0-or-later
