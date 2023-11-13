@@ -244,4 +244,16 @@
   * Added readthedocs yaml file.</comment>
     <requestid>1111924</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ad4fcd4c429eb0d44d237a4835d2f2a9</srcmd5>
+    <version>3.0.8</version>
+    <time>1699910278</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.8:
+  * Fixed collectstatic with ManifestStaticFilesStorage.
+  * Fixed removing text with DateTime Shortcuts.
+  * Fixed autocomplete inlines with new rows.
+  * Improved CSS (removed compass).</comment>
+    <requestid>1124870</requestid>
+  </revision>
 </revisionlist>

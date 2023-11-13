@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:02:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.8:
+  * Fixed collectstatic with ManifestStaticFilesStorage.
+  * Fixed removing text with DateTime Shortcuts.
+  * Fixed autocomplete inlines with new rows.
+  * Improved CSS (removed compass).
+
+-------------------------------------------------------------------
 Mon Sep 18 09:18:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.7:
