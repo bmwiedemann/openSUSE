@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Nov 13 10:46:52 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20231103:
+  - Features
+    * info screen: enable <save-message>
+    * add :color command
+    * color: add ANSI RGB support
+    * color: Support ANSI 2x clear sequences
+  - Bug Fixes
+    * color: fix palette conversion
+    * fix logging on error
+    * log: vim-style
+    * fix file auto-completion
+    * improve logic for growing mailbox memory
+  - Translations
+    100% Czech
+    100% German
+    100% Lithuanian
+    100% Serbian
+    100% Slovak
+    100% Turkish
+  - Build
+    * fix CFLAGS/LDFLAGS for ncurses
+    * configure --with-iconv
+  - Code
+    * remove unused count of new mails from index private data
+    * smtp: Simplify the API of smtp_code()
+    * simplify CLAMP by expressing it with MIN/MAX
+    * color: introduce ColorElement
+    * color: log gui info on startup
+    * color: move business logic out of parsers
+    * color: tidy OptNoCurses cases
+    * log: add log_multiline()
+    * test: increase coverage
+- Update to version 20231023:
+  - Bug Fixes
+    * fix crash on exit
+    * fix header colour
+    * fix 32-bit date overflow
+    * fix new mail in limited view
+    * nntp: fix use-after-free
+    * color: fix ansi colours
+    * color: add +truecolor to version string
+- Update neomutt.keyring
+
+-------------------------------------------------------------------
 Tue Oct 10 16:42:29 UTC 2023 - Victorhck <victorhck@opensuse.org>
 
 - Update to version 20231006:
