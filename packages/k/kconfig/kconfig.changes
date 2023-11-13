@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  6 09:13:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- Changes since 5.111.0:
+  * kconfigwatcher: do not assert absolute paths
+  * dbussanitizer: do not allow trailing slashes
+  * dbussanitizer: qassertx to print the path
+  * notify: don't try to send or receive dbus notifications on absolute paths
+  * more aggressively sanitize dbus paths
+
+-------------------------------------------------------------------
 Mon Oct  9 20:20:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.111.0
