@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  1 13:56:47 UTC 2023 - Alexandre Almeida <me@aoalmeida.com>
+
+- Remove upper version bound for urllib3 
+
+-------------------------------------------------------------------
 Mon Oct  2 16:35:20 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Fix requires for urllib3 
