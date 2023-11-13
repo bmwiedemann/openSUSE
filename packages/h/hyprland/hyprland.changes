@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Nov 11 19:05:40 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Upstream seams incapable of properly validating their releases.
+- Update to version 0.32.3:
+  + A small hotfix for 0.32.2's occasional crashes.
+  + Fixes:
+    - decoration-positioner: improve stability
+  + Other:
+    - props: bump ver to 0.32.3
+- Changes from version 0.32.2:
+  + A result of a few small hurried mistakes in 0.32.1. Hypr-active
+    development, am I right? :)
+  + Fixes:
+    - shadow: move workspace offset calcs to draw
+    - xdg: set state maximized for all tiled windows
+  + Other:
+    - props: bump ver to 0.32.2
+	- shaders: Avoid calculating unused values in hsl2rgb. (#3827)
+	- shaders: Small optimization in rgb2hsl. (#3831)
+- Changes from version 0.32.1:
+  + Small update with some fixes for screencopy, xdg surface
+    handling, shadows on 10bit, etc.
+  + Fixes:
+    - hyprctl: Fix build warnings (#3821)
+    - screencopy: round boxes
+    - xdg-shell: improve ack-configure handling
+    - xdg-shell: update reported size on ack_configure
+    - xwayland: add half of delta to configure request sizes
+  + Other:
+    - animationmgr: push shadow avs to ended on disabled
+    - deco-positioner: recalc after uncache
+    - decoration-positioner: improve extent handling
+    - decorations: Decoration Positioner (#3800)
+    - deps: update wlroots
+    - hyprctl: return group list in correct order (#3683)
+    - input: don't schedule repaint on cursor move if hardware
+	  cursors are in use
+    - opengl: remove unused alpha matte from shadow
+    - opengl: switch to black-and-white for alpha mattes
+    - shaders: Use clamp in doubleCircleSigmoid. (#3824)
+    - shadow: alpha treatment improvements
+
+-------------------------------------------------------------------
 Tue Nov  7 21:53:45 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.32.0:
