@@ -187,4 +187,14 @@
   * Depend on Python &gt;= 3.7.</comment>
     <requestid>1089608</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d134e4859d6877207938a0dafb0acf00</srcmd5>
+    <version>5.3.2</version>
+    <time>1699910183</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.2:
+  * Add support for Python 3.12.
+  * Various documentation improvements.</comment>
+    <requestid>1124987</requestid>
+  </revision>
 </revisionlist>
