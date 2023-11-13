@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/openSUSE/inst-source-utils.git</param>
     <param name="scm">git</param>
-    <param name="version">2021.09.09</param>
-    <param name="revision">2021.09.09</param>
+    <param name="version">2023.11.08</param>
+    <param name="revision">2023.11.08</param>
     <param name="extract">inst-source-utils.changes</param>
     <param name="extract">inst-source-utils.spec</param>
   </service>

@@ -486,4 +486,16 @@ this is fixing crashes during product build
     <comment></comment>
     <requestid>978210</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>9c301926dbc3bbe669c617a8344a132a</srcmd5>
+    <version>2023.11.08</version>
+    <time>1699910271</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.11.08:
+  - Handle zstd repos in rezip_repo_rsyncable
+
+- added a small perl helper to create updateinfos on your own
+- added some help</comment>
+    <requestid>1124271</requestid>
+  </revision>
 </revisionlist>
