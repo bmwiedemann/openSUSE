@@ -1,7 +1,7 @@
 #
 # spec file for package mac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,24 @@
 #
 
 
-%define _version 892
+%define _version 1026
 Name:           mac
-Version:        8.92
+Version:        10.26
 Release:        0
 Summary:        APE codec and decompressor
-License:        SUSE-Permissive
-URL:            https://www.monkeysaudio.com/index.html
+License:        BSD-3-Clause
+URL:            https://www.monkeysaudio.com/
 Source0:        https://monkeysaudio.com/files/MAC_%{_version}_SDK.zip
-Source1:        https://monkeysaudio.com/license.html
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  unzip
-BuildRequires:  %{python_module html2text}
-%debug_package
 
 %description
 Monkey’s Audio is a fast and easy way to compress digital music.
 
-%postun
-ldconfig
-
-%post
-ldconfig
-
 %package devel
 Summary:        Development files for APE
 Requires:       mac = %{version}
-BuildArch:      noarch
 
 %description devel
 Development files for Monkey's Audio codec and decompressor.
@@ -50,25 +41,24 @@ Development files for Monkey's Audio codec and decompressor.
 %prep
 %setup -qc
 tr -d '\r' <Readme.txt >README
-ls -l
-html2text --ignore-links "%{_sourcedir}/license.html" | sed -n '/^## License$/,$p' > LICENSE.md
 
 %build
-%make_build -C Source/Projects/NonWindows
+%cmake
+%cmake_build
 
 %install
-make DESTDIR=%{buildroot} prefix=%{_prefix} install -C Source/Projects/NonWindows
-install -d %{buildroot}%{_docdir}
-install -m0644 LICENSE.md %{buildroot}%{_docdir}
+%cmake_install
+
+%ldconfig_scriptlets
 
 %files
 %doc README
-%license %{_docdir}/LICENSE.md
+%license License.txt
 %{_bindir}/mac
-%{_prefix}/lib/libMAC.so.8
+%{_libdir}/libMAC.so.10
 
 %files devel
-%{_includedir}/*
-%{_prefix}/lib/libMAC.so
+%{_includedir}/MAC
+%{_libdir}/libMAC.so
 
 %changelog

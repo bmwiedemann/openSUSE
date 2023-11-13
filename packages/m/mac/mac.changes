@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sat Nov 11 16:37:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.26:
+  * Changed: Added decoding support for version 4.11 files. There
+    have been a couple reports of them. I don't know where they
+    came from, but they verify using the latest code. Please share
+    if you know about the origins.
+  * Changed: Made use of a new APE_INFO_MD5_MATCHES test during
+    quick verify. This way reading the MD5 is wrapped up nicely.
+  * NEW: Added APE_INFO_MD5 to the info object because a
+    third-party developer wanted it.
+  * Fixed: 32-bit ARM could crash because it was enabling an
+    intrinsic that was not available.
+  * Fixed: Little endian AIFF files would not encode properly.
+  * Changed: Updated to Visual Studio 17.7.4.
+  * Changed: Updated the copyrights to 2024.
+  * Changed: The check for AIFF / AIFC in file headers was
+    incorrectly allowing other things to pass.
+  * Changed: Added a License.txt file by the installer that gets
+    copied to the install path (also included in the SDK).
+  * Changed: Updated to Visual Studio 17.7.2.
+  * Changed: Added a license link to the help menu.
+  * Changed: Changed a few variables to have APE_ names because
+    JRiver was having compile problems (Objective C doesn't care
+    that things are in a namespace).
+  * NEW: Added the ability to convert tags to legacy ID3v1 in the
+    console program (my car stereo needs this).
+  * Changed: Switched to the three clause BSD license to simplify
+    inclusion of the source code.
+  * Fixed: Getting a large APE tag field could return a buffer size
+    that was too small so the next get would fail.
+  * Changed: Tuned the error handling a little more.
+  * Fixed: A corrupt frame could put the decoder into an endless
+    loop trying the frame again which made players like Winamp, MC,
+    etc. hang (feedback appreciated).
+  * Changed: Updated to Visual Studio 17.6.2.
+  * Fixed: The AVX-512 code could fail to compile on some systems.
+  * Changed: Updated to Visual Studio 17.6.1.
+  * Changed: Enabled reference optimization which makes the build smaller.
+  * Changed: Updated to WavPack 5.6.4.
+  * Changed: Simplified the license agreement to make it easier for
+    inclusion in other projects.
+  * Changed: Updated to version 2.79 of the ALAC tool.
+  * Changed: The button images are created only once instead of
+    again for the options dialog (slightly faster).
+  * Changed: Winamp settings are stored in a section marked APE
+    Plugin Settings when writing to the Winamp INI file.
+  * Changed: Workaround a few NOLINT markers.
+  * Changed: Improved ARM support.
+  * Changed: Switched the size of the float transform to int64 to
+    avoid overflows.
+  * Changed: Made whole file reading cap 200 MB for 32-bit and
+    64-bit instead of switching.
+  * Intel SSE/AVX optimizations are now selected at runtime based
+    on CPU capbilities.
+  * Added SSE4.1 and AVX2 optimizations for 24/32 coding.
+  * Added ARM Neon optimizations.
+  * Improved existing SSE2 and AVX2 optimizations for improved
+    performance.
+  * General optimizations for improved performance.
+  * NEW: Switched to the CMake build system for non-Windows and
+    MinGW/MSYS builds.
+
+-------------------------------------------------------------------
+Wed Oct 12 08:12:59 UTC 2022 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Remove cruft
+- Move LICENSE.md to /usr/share/doc/packages/$PACKAGE directory
+
+-------------------------------------------------------------------
 Mon Oct 10 14:04:23 UTC 2022 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
 
 - Include the license in a different way
