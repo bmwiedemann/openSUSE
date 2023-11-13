@@ -19,7 +19,7 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           libcloudproviders
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Library/Client to integrate cloud storage providers
 License:        LGPL-3.0-or-later
