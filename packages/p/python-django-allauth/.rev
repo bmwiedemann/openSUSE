@@ -90,4 +90,15 @@
     <comment></comment>
     <requestid>1123462</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>22eb4f1de5ebaf547168b6f9f34af677</srcmd5>
+    <version>0.58.2</version>
+    <time>1699910279</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.58.2:
+  * Added rate limiting to the MFA login form.
+
+  * Fixed Twitch get_avatar_url()</comment>
+    <requestid>1124871</requestid>
+  </revision>
 </revisionlist>

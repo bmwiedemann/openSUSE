@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# keep in sync in setup.cfg
+
 %global django_min_version 3.2
 %global python3_openid_min_version 3.0.8
 %global requests_oauthlib_min_version 0.3.0
@@ -32,7 +32,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        0.58.1
+Version:        0.58.2
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
@@ -43,23 +43,23 @@ Patch:          missing-template-in-test.patch
 BuildRequires:  %{python_module Django >= %{django_min_version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python3-openid >= %{python3_openid_min_version}}
-BuildRequires:  %{python_module requests-oauthlib >= %{requests_oauthlib_min_version}}
 BuildRequires:  %{python_module requests >= %{requests_min_version}}
+BuildRequires:  %{python_module requests-oauthlib >= %{requests_oauthlib_min_version}}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= %{django_min_version}
+Requires:       python-PyJWT >= %{pyjwt_min_version}
 Requires:       python-python3-openid >= %{python3_openid_min_version}
 Requires:       python-requests >= %{requests_min_version}
 Requires:       python-requests-oauthlib >= %{requests_oauthlib_min_version}
-Requires:       python-PyJWT >= %{pyjwt_min_version}
-Recommends:     (python-python3-saml >= %{python3_saml_min_version} with python-python3-saml < %{python3_saml_max_version})
 Recommends:     python-qrcode >= %{qrcode_min_version}
+Recommends:     (python-python3-saml >= %{python3_saml_min_version} with python-python3-saml < %{python3_saml_max_version})
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow >= %{pillow_min_version}}
-BuildRequires:  %{python_module pytest-django >= %{pytest_django_min_version}}
 BuildRequires:  %{python_module pytest >= %{pytest_min_version}}
+BuildRequires:  %{python_module pytest-django >= %{pytest_django_min_version}}
 BuildRequires:  %{python_module python3-saml >= %{python3_saml_min_version}}
 BuildRequires:  %{python_module qrcode >= %{qrcode_min_version}}
 # /SECTION

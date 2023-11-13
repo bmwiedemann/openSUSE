@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:03:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.58.2:
+  * Added rate limiting to the MFA login form.
+
+-------------------------------------------------------------------
 Mon Nov  6 00:48:51 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - make it easier to notice to keep buildrequires and runtime
@@ -75,7 +81,7 @@ Tue Jun  9 10:00:44 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.42.0
   * New providers: EDX, Yandex, Mixer.
-  * Fixed Twitch get_avatar_url() 
+  * Fixed Twitch get_avatar_url()
   * The Facebook API version now defaults to v7.0.
 
 -------------------------------------------------------------------
