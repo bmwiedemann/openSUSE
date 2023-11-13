@@ -18,7 +18,7 @@
 
 
 Name:           tcping
-Version:        2.0.0
+Version:        2.4.0
 Release:        0
 Summary:        A ping program for TCP ports
 License:        MIT
@@ -29,7 +29,6 @@ Source:         https://github.com/pouriyajamshidi/tcping/archive/refs/tags/v%{v
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.18
 BuildRequires:  golang-packaging
-%{go_provides}
 
 %description
 TCPing will send TCP probes to an IP address or a hostname specified
@@ -60,11 +59,10 @@ would be illustrative enough.
 %autosetup -p 1 -a 1
 
 %build
-%{goprep} github.com/pouriyajamshidi/tcping
-%{gobuild} -mod=vendor .
+go build -mod=vendor -buildmode=pie -trimpath -o tcping
 
 %install
-%{goinstall}
+install -m 755 -D tcping %{buildroot}/%{_bindir}/tcping
 
 %files
 %license LICENSE

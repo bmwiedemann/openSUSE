@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 12 20:34:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * new feature: add `-i` to specify the interval between sending
+    probes.
+  * new feature: add `-I` to specify the source interface to use
+    for sending probes.
+  * new feature: add `-t` to specify a custom timeout for probes.
+  * new feature: add `--db` to specify the path and file name to
+    store tcping output to sqlite database. e.g. `--db
+    /tmp/tcping.db`.
+  * fix: add `rtt` to JSON output
+  * refactor: remove unnecessary custom types
+  * refactor: memory align `structs`
+  * refactor: Debian packaging instructions
+
+-------------------------------------------------------------------
 Sun Aug 27 14:52:34 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0

@@ -31,4 +31,24 @@
     <comment></comment>
     <requestid>1107100</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85b91acd6cd377f3712f662fa6ae167a</srcmd5>
+    <version>2.4.0</version>
+    <time>1699910502</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * new feature: add `-i` to specify the interval between sending
+    probes.
+  * new feature: add `-I` to specify the source interface to use
+    for sending probes.
+  * new feature: add `-t` to specify a custom timeout for probes.
+  * new feature: add `--db` to specify the path and file name to
+    store tcping output to sqlite database. e.g. `--db
+    /tmp/tcping.db`.
+  * fix: add `rtt` to JSON output
+  * refactor: remove unnecessary custom types
+  * refactor: memory align `structs`
+  * refactor: Debian packaging instructions</comment>
+    <requestid>1125281</requestid>
+  </revision>
 </revisionlist>
