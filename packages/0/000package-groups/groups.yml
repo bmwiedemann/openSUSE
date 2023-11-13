@@ -40,6 +40,7 @@ common_locks:
   - clang17: [locked]
   - gnome-backgrounds: [locked]
   - gcc12: [locked]
+  - postgresql16-llvmjit: [locked]
 
 dvd:
   # We add the kernel-firmware-* packages

@@ -1791,4 +1791,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <comment>Allow sdbootutil-rpm-scriptlets. Let's play it safe</comment>
     <requestid>1116725</requestid>
   </revision>
+  <revision rev="251" vrev="249">
+    <srcmd5>b28f15d7f74c40e27011e83712ac810f</srcmd5>
+    <version>unknown</version>
+    <time>1699883267</time>
+    <user>dimstar_suse</user>
+    <comment>Block pgsql-llvmjit from the DVD</comment>
+  </revision>
 </revisionlist>
