@@ -1,0 +1,35 @@
+[   75s] ../src/gn/desc_builder.cc: In member function 'base::Value {anonymous}::BaseDescBuilder::ToBaseValue(const Scope*)':
+[   75s] ../src/gn/desc_builder.cc:180:21: error: redundant move in return statement [-Werror=redundant-move]
+[   75s]   180 |     return std::move(res);
+[   75s]       |            ~~~~~~~~~^~~~~
+[   75s] ../src/gn/desc_builder.cc:180:21: note: remove 'std::move' call
+[   75s] ../src/gn/desc_builder.cc: In instantiation of 'base::Value {anonymous}::BaseDescBuilder::ToBaseValue(const std::vector<T>&) [with T = Value]':
+[   75s] ../src/gn/desc_builder.cc:194:27:   required from here
+[   75s] ../src/gn/desc_builder.cc:171:25: error: redundant move in return statement [-Werror=redundant-move]
+[   75s]   171 |     return std::move(res);
+[   75s]       |                         ^
+[   75s] ../src/gn/desc_builder.cc:171:25: note: remove 'std::move' call
+[   75s] cc1plus: all warnings being treated as errors
+
+Index: gn-0.20231023/src/gn/desc_builder.cc
+===================================================================
+--- gn-0.20231023.orig/src/gn/desc_builder.cc
++++ gn-0.20231023/src/gn/desc_builder.cc
+@@ -168,7 +168,7 @@ class BaseDescBuilder {
+     base::ListValue res;
+     for (const auto& v : vector)
+       res.GetList().emplace_back(ToBaseValue(v));
+-    return std::move(res);
++    return res;
+   }
+ 
+   base::Value ToBaseValue(const Scope* scope) {
+@@ -177,7 +177,7 @@ class BaseDescBuilder {
+     scope->GetCurrentScopeValues(&map);
+     for (const auto& v : map)
+       res.SetKey(v.first, ToBaseValue(v.second));
+-    return std::move(res);
++    return res;
+   }
+ 
+   base::Value ToBaseValue(const Value& val) {

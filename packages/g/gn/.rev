@@ -141,4 +141,13 @@
     <comment>gcc + exclude ppc</comment>
     <requestid>1070457</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>40f4f42df8a4e61edc3a434886fe3de9</srcmd5>
+    <version>0.20231023</version>
+    <time>1699910403</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.20231023:
+  * many updates to support Chromium 119 build</comment>
+    <requestid>1125118</requestid>
+  </revision>
 </revisionlist>

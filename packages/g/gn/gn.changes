@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 10 20:27:59 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.20231023:
+  * many updates to support Chromium 119 build
+- drop deprecated_copy.patch
+- add redundant-move.patch
+
+-------------------------------------------------------------------
 Thu Mar  9 15:43:20 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Bump Leap's GCC version to 12 to align with the other Chromium
