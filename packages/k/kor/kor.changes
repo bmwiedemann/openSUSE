@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 13 06:34:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.2.8:
+  * Crd Readme and multi support (#144)
+  * Bump github.com/fatih/color from 1.15.0 to 1.16.0 (#143)
+  * Refactor the GetUnusedMulti function (#142)
+  * chore: update to golang 1.21 and scratch (#141)
+  * feat: add support for linux arm64 (#139)
+  * add support for finding unused CRDs (#134)
+  * grafana dashboard ds selector and repeat kinds (#135)
+  * Fix exporter typo (#133)
+  * fix: clear counter between iterations (#132)
+  * fix: add filter options in export command (#129)
+
+-------------------------------------------------------------------
 Mon Nov 06 05:45:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.2.7:
