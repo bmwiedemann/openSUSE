@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 10 19:30:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.8:
+  * guile: fix module installation path
+  * infodir: allow passing absolute path
+  * mu4e-view: assign gnus-article-buffer (helps with some external
+    programs)
+  * mu4e: fix completion with non-quick keys (when using completion
+    frameworks)
+
+-------------------------------------------------------------------
 Fri Sep  1 07:38:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.7:

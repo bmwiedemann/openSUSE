@@ -681,4 +681,18 @@
     meson setup -Dguile-extension-dir= build</comment>
     <requestid>1108391</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d57309ee3f02af457bc0193d8840c1e5</srcmd5>
+    <version>1.10.8</version>
+    <time>1699910327</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.8:
+  * guile: fix module installation path
+  * infodir: allow passing absolute path
+  * mu4e-view: assign gnus-article-buffer (helps with some external
+    programs)
+  * mu4e: fix completion with non-quick keys (when using completion
+    frameworks)</comment>
+    <requestid>1125110</requestid>
+  </revision>
 </revisionlist>
