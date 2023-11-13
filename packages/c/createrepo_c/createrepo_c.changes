@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov  7 15:38:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Don't allow building without zstd
+  * Remove dependency on libmagic, hardcode magic number detection
+- update to 1.0.1:
+  * Fix some invalid C code to cover a wider ranger of compilers
+  * Python API: Fix a crash when setting pkg files
+  * Add support for building with sanitizers
+  * Fix a memory leak of nevra in case there are duplicate package
+  * Free loaded zchunk dictionary
+  * Fix few deltarpm related memory leaks
+update to 1.0.0:
+  * Add zstd compression support
+update to 0.21.1:
+  * Rename --filelists_ext to --filelists-ext to be consistent
+  * Change test to compare contents instead of checksum
+  * Don't remove old metadata packages with --update
+  * New --duplicated-nevra <solution> option
+- drop 0001-Add-optional-filelists_ext-metadata.patch
+  0002-Rename-filelists_ext-to-filelists-ext-to-be-consiste.patch
+  0003-Rename-filelists_ext.xml-metadata-to-filelists-ext.x.patch
+  0004-Add-missing-ext-to-filelists-ext-repomd-record.patch
+  0005-Complete-renaming-to-filelists-ext.patch: (merged upstream)
+
+-------------------------------------------------------------------
 Thu May 18 11:32:19 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - disable DeltaRPM for ALP
@@ -50,7 +76,7 @@ Wed Mar 30 11:39:21 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
 Tue Nov 30 04:52:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - python3-nose is not required for the testsuite, update BuildRequires
-  to the actual package used, python3-setuptools. 
+  to the actual package used, python3-setuptools.
 
 -------------------------------------------------------------------
 Wed Jun 30 15:35:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
@@ -66,7 +92,7 @@ Wed Jun 30 15:35:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 Fri Feb 26 07:16:58 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - removed %is_opensuse (CtLG)
-- disabled drpm for SLE/Leap 15.3 
+- disabled drpm for SLE/Leap 15.3
 
 -------------------------------------------------------------------
 Tue Jul  7 01:12:50 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
@@ -176,7 +202,7 @@ Sat Jun 29 13:06:18 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 Wed May 15 23:17:38 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.14.0
-  + Fix crash when dumping updateinfo and module is omitted (rh#1707981) 
+  + Fix crash when dumping updateinfo and module is omitted (rh#1707981)
   + Add --pkgorigins mode
 
 -------------------------------------------------------------------
