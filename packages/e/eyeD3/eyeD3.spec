@@ -1,7 +1,7 @@
 #
 # spec file for package eyeD3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,32 +21,15 @@ Version:        0.9.7
 Release:        0
 Summary:        Audio files and ID3 Manipulation Tool
 License:        GPL-2.0-or-later AND GPL-3.0-only
-Group:          Development/Languages/Python
+Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://eyed3.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/e/eyeD3/eyeD3-%{version}.tar.gz
-BuildRequires:  python3-deprecation
-BuildRequires:  python3-devel
-BuildRequires:  python3-filetype
-BuildRequires:  python3-scipy
-BuildRequires:  python3-setuptools
-Requires:       python3-chardet >= 4.0.0
-Requires:       python3-colorama >= 0.4.4
-Requires:       python3-deprecation >= 2.1.0
-Requires:       python3-filetype >= 1.0.7
-Requires:       python3-idna >= 2.10
-Requires:       python3-packaging >= 20.8
-Requires:       python3-pyparsing >= 2.4.7
-Requires:       python3-requests >= 2.25.1
-Requires:       python3-six >= 1.15.0
-Requires:       python3-toml >= 0.10.2
-Requires:       python3-urllib3 >= 1.26.2
-Recommends:     python-grako
-Recommends:     python-pillow
-# for plugins
-Recommends:     python-pylast
-Recommends:     python-requests
-Recommends:     python-ruamel.yaml
+BuildRequires:  %{python_module setuptools}
 BuildArch:      noarch
+# %%primary_python not available in Leap yet
+Requires:       %(echo %{python_module eyed3} | perl -pe 's{.* }{}g')
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 eyeD3 is a Python tool for working with audio files, specifically MP3
@@ -64,16 +47,43 @@ Features:
 - Abstract design allowing future support for different audio formats and
   metadata containers.
 
+%package -n python-eyed3
+Summary:        Component library of eyeD3, an ID3 tag manipulation tool
+Group:          Development/Languages/Python
+Requires:       python-chardet >= 4.0.0
+Requires:       python-colorama >= 0.4.4
+Requires:       python-deprecation >= 2.1.0
+Requires:       python-filetype >= 1.0.7
+Requires:       python-idna >= 2.10
+Requires:       python-packaging >= 20.8
+Requires:       python-pyparsing >= 2.4.7
+Requires:       python-requests >= 2.25.1
+Requires:       python-six >= 1.15.0
+Requires:       python-toml >= 0.10.2
+Requires:       python-urllib3 >= 1.26.2
+Recommends:     python-grako
+Recommends:     python-pillow
+# for plugins
+Recommends:     python-pylast
+Recommends:     python-requests
+Recommends:     python-ruamel.yaml
+
+%description -n python-eyed3
+eyeD3 is a Python tool for working with audio files, specifically MP3
+files containing ID3 metadata (i.e. song info).
+
 %prep
-%setup -q
+%autosetup -p1
 # currently broken
 rm eyed3/plugins/mimetype.py
 
 %build
-python3 setup.py build
+%python_build
+#python3.11 setup.py build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%python_install
+#python3.11 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
 %license LICENSE
@@ -82,8 +92,10 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %doc CONTRIBUTING.rst
 %doc HISTORY.rst
 #%doc docs
-%doc examples
+#%doc examples
 %{_bindir}/eyeD3
-%{python3_sitelib}/eyed3*
+
+%files %{python_files eyed3}
+%{python_sitelib}/eyed3*
 
 %changelog
