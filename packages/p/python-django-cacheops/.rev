@@ -97,4 +97,17 @@
   * some docs improvements</comment>
     <requestid>1085792</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>02218ee31d9a5661db9551506b3b226e</srcmd5>
+    <version>7.0.2</version>
+    <time>1699910280</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.2:
+  * fixed .aggregate()
+  * fixed big memory usage during migrations
+  * fixed INSIDEOUT in older redises
+  * better handle model families with abstracts in them
+  * allow funcy 2.0+</comment>
+    <requestid>1124878</requestid>
+  </revision>
 </revisionlist>
