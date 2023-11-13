@@ -82,4 +82,14 @@
     target is &quot;.&quot;.</comment>
     <requestid>1105337</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>21b9ccd113b796ede36a2255a8a2686a</srcmd5>
+    <version>0.3.9</version>
+    <time>1699910331</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.9:
+  * Also apply timeout when server doesn't reply to StartTLS
+    initialisation.</comment>
+    <requestid>1125121</requestid>
+  </revision>
 </revisionlist>
