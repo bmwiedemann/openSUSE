@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 10 13:58:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.8:
+  * s7: error handling, reader-cond, various (*s7* 'max-*) checks
+  * checked: sbcl 2.3.9
+
+-------------------------------------------------------------------
 Mon Sep 11 12:46:47 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 23.7:

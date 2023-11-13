@@ -336,4 +336,14 @@
     <comment></comment>
     <requestid>1111324</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1e5432fe5f33d2df84e3396ae6e44d0e</srcmd5>
+    <version>23.8</version>
+    <time>1699910308</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.8:
+  * s7: error handling, reader-cond, various (*s7* 'max-*) checks
+  * checked: sbcl 2.3.9</comment>
+    <requestid>1124995</requestid>
+  </revision>
 </revisionlist>
