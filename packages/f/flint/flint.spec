@@ -18,7 +18,7 @@
 
 Name:           flint
 %define lname	libflint18
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-2.1-or-later

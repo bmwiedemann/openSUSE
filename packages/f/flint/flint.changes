@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:20:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.1
+  * A few build fixes
+  * n_factor_ecm_select_curve: fix rare arithmetic bug and
+    fix memory leak
+
+-------------------------------------------------------------------
 Sat Oct 21 00:32:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.0.0
