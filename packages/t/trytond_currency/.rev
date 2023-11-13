@@ -158,4 +158,12 @@
     <comment>Remove %python3_install prefix and root options, that's included in the macro by default. (forwarded request 1118925 from dgarcia)</comment>
     <requestid>1118959</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>30797b09934e07f71dfe16d7bd0bacbf</srcmd5>
+    <version>6.0.5</version>
+    <time>1699910482</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125407</requestid>
+  </revision>
 </revisionlist>
