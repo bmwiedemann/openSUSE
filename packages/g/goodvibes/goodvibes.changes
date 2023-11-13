@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 11 14:27:58 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.9:
+  Fix: Preserve symlink when writing 'stations.xml'
+
+-------------------------------------------------------------------
 Wed Nov  8 13:37:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.7.8:
