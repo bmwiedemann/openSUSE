@@ -40,7 +40,7 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme: Introduce nvme_realloc function
   * nvme: Fix for fdpa reserved field printing
   * completion: add 'version' and 'help' to list
-  * udev-rule: apply round-robin iopolicy on i/o subsystems alone
+  * udev-rule: apply round-robin iopolicy on i/o subsystems alone (bsc#1215994)
   * nvme: Add support for the OAQD ID controller field
   * plugins/solidigm: use static log macro to calc bitmask
   * plugins/ocp: Rename FW activation history command
@@ -53,8 +53,8 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * fabrics: Removing duplicate code and moving to libnvme
   * nvme-print: omit size of protection information
   * tree: Modify label name close_fd to close_dev
-  * fabrics: For TCP/RDMA, compare IP addresses with nvme_ipaddrs_eq()
-  * fabrics: lookup_discovery_ctrl() must look under host and not root
+  * fabrics: For TCP/RDMA, compare IP addresses with nvme_ipaddrs_eq() (bsc#1213768)
+  * fabrics: lookup_discovery_ctrl() must look under host and not root (bsc#1213768)
   * nvme: Do not map status to errno codes
   * completions: Add bash completion for DSSD Power state feature(FID: C7h)
   * Documentation: Add document for DSSD Power state feature(FID: C7h)
@@ -83,7 +83,7 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * ccan: Remove unused documentation (bsc#1212598)
   * nvme-print: Split max power flags
   * nvme-print: fix counter while looping through uuid_list (bsc#1212598)
-  * fabrics: only look for matching ctrl on same host
+  * fabrics: only look for matching ctrl on same host (bsc#1213768)
   * README: Correct hugetlbfs spelling error
   * util: Delete unused CFG_BOOL argconfig type as duplicated with CFG_FLAG
   * util: Set LC_ALL=C as default if -H option is not used
