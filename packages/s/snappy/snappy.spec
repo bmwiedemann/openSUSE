@@ -1,7 +1,7 @@
 #
 # spec file for package snappy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libsnappy1
 Name:           snappy
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 Summary:        A compressor/decompressor library favoring time
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ Source0:        https://github.com/google/snappy/archive/%{version}.tar.gz
 Source1:        snappy.pc
 Source99:       baselibs.conf
 Patch0:         use-system-test-libs.patch
-Patch1:         fix-always-inline.patch
 Patch2:         reenable-rtti.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

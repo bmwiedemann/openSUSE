@@ -87,4 +87,17 @@
     <comment></comment>
     <requestid>929633</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5a478a07becc55fc207fee4d43142eb4</srcmd5>
+    <version>1.1.10</version>
+    <time>1699910142</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.10:
+  * Performance improvements
+  * Compilation fixes for various environments
+- drop fix-always-inline.patch (obsolete)
+
+  - This is a maintenance release with no changes to the actual</comment>
+    <requestid>1124994</requestid>
+  </revision>
 </revisionlist>

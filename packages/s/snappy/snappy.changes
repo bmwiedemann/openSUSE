@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 10 13:54:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.10:
+  * Performance improvements
+  * Compilation fixes for various environments
+- drop fix-always-inline.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Oct 27 06:25:52 UTC 2021 - Tim Serong <tserong@suse.com>
 
 - Re-enable RTTI, without which other applications can't subclass
@@ -72,7 +80,7 @@ Wed Jul 29 09:58:16 UTC 2015 - dimstar@opensuse.org
 Thu Sep 11 09:34:36 UTC 2014 - toddrme2178@gmail.com
 
 - Update to version 1.1.2
-  - This is a maintenance release with no changes to the actual 
+  - This is a maintenance release with no changes to the actual
     library source code.
     * Stop distributing benchmark data files that have unclear
       or unsuitable licensing.
