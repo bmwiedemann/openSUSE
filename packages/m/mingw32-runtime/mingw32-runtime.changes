@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  3 12:33:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.0.1
+  * New Hyper-V APIs
+  * Updates to DX12 headers and much more from Wine
+  * Many other new Win32 APIs
+
+-------------------------------------------------------------------
 Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10
