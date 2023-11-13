@@ -253,4 +253,13 @@
     <comment></comment>
     <requestid>991351</requestid>
   </revision>
+  <revision rev="36" vrev="89">
+    <srcmd5>08c5f0fc0a5a68e9d540982af3318299</srcmd5>
+    <version>1.4.0.1.r2065</version>
+    <time>1699910549</time>
+    <user>anag+factory</user>
+    <comment>- Remove bin86 from BuildRequires.  It isn't used since a very
+  long time now. (forwarded request 1125682 from matz2)</comment>
+    <requestid>1125684</requestid>
+  </revision>
 </revisionlist>

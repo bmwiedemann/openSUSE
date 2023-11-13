@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 13 15:27:29 UTC 2023 - Michael Matz <matz@suse.com>
+
+- Remove bin86 from BuildRequires.  It isn't used since a very
+  long time now.
+
+-------------------------------------------------------------------
 Thu Jul 21 13:13:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile constructs and all the things pre-15.x;

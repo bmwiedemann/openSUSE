@@ -1,7 +1,7 @@
 #
 # spec file for package dosemu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Patch4:         dosemu-skip-glibc-test.patch
 Patch5:         reproducible.patch
 Patch6:         dosemu-LTO-fix.patch
 BuildRequires:  bdftopcf
-BuildRequires:  bin86
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gpm-devel
