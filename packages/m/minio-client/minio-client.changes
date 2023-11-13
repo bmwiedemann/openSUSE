@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 13 06:17:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231110T213717Z:
+  * Updating example with correct flag (#4751)
+  * Change go version to 1.21.4 to fix vulncheck failures (#4749)
+  * fix: broken docker builds for microdnf command (#4746)
+  * Add anonymize flag to support-diag (#4742)
+
+-------------------------------------------------------------------
 Thu Nov 09 06:29:30 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20231106T041923Z:
