@@ -135,4 +135,12 @@
     <comment>bugfix release</comment>
     <requestid>1116282</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>94156d4ebac42ad99f3e43495730cc3f</srcmd5>
+    <version>6.0.30</version>
+    <time>1699910479</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125403</requestid>
+  </revision>
 </revisionlist>
