@@ -600,4 +600,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
     <requestid>1118738</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>935488e726fd27282e7b1b38ef3b7b17</srcmd5>
+    <version>5.112.0</version>
+    <time>1699910263</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.112.0. Public release next weekend (forwarded request 1124218 from krop)</comment>
+    <requestid>1125366</requestid>
+  </revision>
 </revisionlist>
