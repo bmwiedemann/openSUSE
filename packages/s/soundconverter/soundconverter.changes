@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 10 13:44:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * minor Russian translation fixes
+  * tests/test.py, tests/testcases/batch_integration.py,
+  * tests/testcases/{integration.py => gui_integration.py},
+  * tests/util.py: split integration tests into multiple files
+    for batch
+  * and gui
+  * Update Turkish
+  * Fix a typo Without
+    space sentence seems as "moreinformation".
+  * Add release dates to appdata.xml
+  * Using GLib events instead of callbacks, fixed recursion problems
+  * Using a signal on Task instead of TaskQueue for task_done
+  * soundconverter/interface/filelist.py,
+  * soundconverter/interface/ui.py: Optimized filelist progress
+    updates
+  * soundconverter/gstreamer/discoverer.py,
+    tests/testcases/batch.py,
+  * tests/testcases/discoverer.py: Not treating images as audio
+
+-------------------------------------------------------------------
 Tue May 31 09:23:34 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.0.3: bugfix release.
