@@ -29,7 +29,7 @@ If Suil supports a particular toolkit, then all hosts that use Suil will\
 support that toolkit.
 
 Name:           suil
-Version:        0.10.18
+Version:        0.10.20
 Release:        0
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 License:        ISC
@@ -63,37 +63,6 @@ Requires:       pkgconfig
 
 %description    devel
 Development files needed to build applications against suil library.
-
-%package     -n suil-plugin-gtk2-in-qt5
-Summary:        Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
-Group:          System/Libraries
-Requires:       gtk2-tools
-Requires:       libsuil-0-0 = %{version}
-Supplements:    (gtk2 and lv2)
-
-%description -n suil-plugin-gtk2-in-qt5
-Module plugin for:
-* GTK2 hosts displaying Qt5 LV2 GUIs using suil
-
-%package     -n suil-plugin-qt5-in-gtk2
-Summary:        Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
-Group:          System/Libraries
-Requires:       libsuil-0-0 = %{version}
-Supplements:    (libQt5Widgets5 and lv2)
-
-%description -n suil-plugin-qt5-in-gtk2
-Module plugin for:
-* Qt5 hosts displaying GTK2 LV2 GUIs using suil
-
-%package     -n suil-plugin-qt5-in-gtk3
-Summary:        Shared object for Qt5 hosts displaying GTK3 LV2 GUIs
-Group:          System/Libraries
-Requires:       libsuil-0-0 = %{version}
-Supplements:    (libQt5Widgets5 and lv2)
-
-%description -n suil-plugin-qt5-in-gtk3
-Module plugin for:
-* Qt5 hosts displaying GTK2 LV2 GUIs using suil
 
 %package     -n suil-plugin-x11
 Summary:        Shared object for X11 LV2 GUIs
@@ -166,21 +135,6 @@ Module plugin for:
 %doc README.md
 %dir %{_libdir}/suil-0
 %{_libdir}/libsuil-0.so.*
-
-%files -n suil-plugin-gtk2-in-qt5
-%license COPYING
-%doc README.md
-%{_libdir}/suil-0/libsuil_gtk2_in_qt5.so
-
-%files -n suil-plugin-qt5-in-gtk2
-%license COPYING
-%doc README.md
-%{_libdir}/suil-0/libsuil_qt5_in_gtk2.so
-
-%files -n suil-plugin-qt5-in-gtk3
-%license COPYING
-%doc README.md
-%{_libdir}/suil-0/libsuil_qt5_in_gtk3.so
 
 %files -n suil-plugin-x11
 %license COPYING
