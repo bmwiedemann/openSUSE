@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 10 18:09:50 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.4.24
+ * Make IBusEngineSimple read ~/.XCompose
+ * Do not hide empty preedit text before committing text
+
+-------------------------------------------------------------------
 Fri Aug  4 04:26:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.4.20

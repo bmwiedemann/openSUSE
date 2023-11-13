@@ -283,4 +283,14 @@
  * Add missing g_free (buf) in ibus_m17n_mtext_to_utf8()</comment>
     <requestid>1102259</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>883699c9b8a077437e8ca2e4f3e3a36f</srcmd5>
+    <version>1.4.24</version>
+    <time>1699910322</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.24
+ * Make IBusEngineSimple read ~/.XCompose
+ * Do not hide empty preedit text before committing text</comment>
+    <requestid>1125102</requestid>
+  </revision>
 </revisionlist>
