@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:43:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.4:
+  * **`beartype.claw` + methods + PEP 526.** Previously,
+    `beartype.claw` silently failed to type-check PEP
+    526-compliant annotated variable assignments in methods. Now,
+    `beartype.claw` does so: e.g.,
+- update to 0.16.3:
+  * This bug-defying patch release adds official support for
+    **hot module reloading,** **root superclass validators,**
+    **forward reference `issubclass()` proxying,** **readable
+    forward reference exceptions,** and **class redecoration
+    eliding** as well as documenting a medley of topics and APIs
+    first introduced with the `beartype.claw` subpackage under
+- update to 0.16.2:
+  * **Plum** + **class methods** (i.e., `@classmethod`-decorated
+    methods) + **PEP 563** (i.e., `from __future__ import
+    annotations`). If you use Plum – which you surely do, of
+    course – you want this.
+- update to 0.16.0:
+  * @beartype 0.16.0 **[**codename: _Super Unsexy Stabilization
+    Asinine Force (SUSAF)_**]** boringly stabilizes everything
+    unstable about @beartype that made your coworker who only
+    wears skinny jeans while squinting whenever you mention
+
+-------------------------------------------------------------------
 Wed Jul 26 12:56:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.0:
@@ -120,9 +146,9 @@ Wed Jan 25 13:18:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 02:44:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.11.0 
+- Update to version 0.11.0
   Change log - https://github.com/beartype/beartype/releases
- 
+
 -------------------------------------------------------------------
 Thu May  5 06:14:45 UTC 2022 - Matej Cepl <mcepl@suse.com>
 

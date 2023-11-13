@@ -146,4 +146,35 @@
     mandate.</comment>
     <requestid>1100856</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>516fb954da651b985fe6783c142cd146</srcmd5>
+    <version>0.16.4</version>
+    <time>1699910286</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.16.4:
+  * **`beartype.claw` + methods + PEP 526.** Previously,
+    `beartype.claw` silently failed to type-check PEP
+    526-compliant annotated variable assignments in methods. Now,
+    `beartype.claw` does so: e.g.,
+- update to 0.16.3:
+  * This bug-defying patch release adds official support for
+    **hot module reloading,** **root superclass validators,**
+    **forward reference `issubclass()` proxying,** **readable
+    forward reference exceptions,** and **class redecoration
+    eliding** as well as documenting a medley of topics and APIs
+    first introduced with the `beartype.claw` subpackage under
+- update to 0.16.2:
+  * **Plum** + **class methods** (i.e., `@classmethod`-decorated
+    methods) + **PEP 563** (i.e., `from __future__ import
+    annotations`). If you use Plum – which you surely do, of
+    course – you want this.
+- update to 0.16.0:
+  * @beartype 0.16.0 **[**codename: _Super Unsexy Stabilization
+    Asinine Force (SUSAF)_**]** boringly stabilizes everything
+    unstable about @beartype that made your coworker who only
+    wears skinny jeans while squinting whenever you mention
+
+- Update to version 0.11.0</comment>
+    <requestid>1124971</requestid>
+  </revision>
 </revisionlist>
