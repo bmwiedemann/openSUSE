@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:21:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Update process.py to close during join only if process has
+    completed.
+  * Adjust the __repr__ in ApplyResult.
+  * Remove python 3.7 from CI.
+  * Added Python 3.12 support.
+  * Fixed (co_positions): resolve issue caused by absence
+    co_positions (#395).
+  * Fixed: Replaced mktemp usage for Python 3 from python 2.
+  * Changed nose test to pytest (#397) in Integration test.
+  * Changed nose dependency for unit test (#383).
+
+-------------------------------------------------------------------
 Sun Jun 11 13:41:00 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

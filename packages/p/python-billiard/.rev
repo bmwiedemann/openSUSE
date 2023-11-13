@@ -220,4 +220,22 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092387</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c9b8cf34e696b3009d82ed21e20f9aa8</srcmd5>
+    <version>4.2.0</version>
+    <time>1699910281</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.0:
+  * Update process.py to close during join only if process has
+    completed.
+  * Adjust the __repr__ in ApplyResult.
+  * Remove python 3.7 from CI.
+  * Added Python 3.12 support.
+  * Fixed (co_positions): resolve issue caused by absence
+    co_positions (#395).
+  * Fixed: Replaced mktemp usage for Python 3 from python 2.
+  * Changed nose test to pytest (#397) in Integration test.
+  * Changed nose dependency for unit test (#383).</comment>
+    <requestid>1124875</requestid>
+  </revision>
 </revisionlist>
