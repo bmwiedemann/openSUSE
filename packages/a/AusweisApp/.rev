@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21653e04ab6db0c518c5f953acdf8cb4</srcmd5>
+    <version>2.0.0</version>
+    <time>1699910521</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+    - Renamed AusweisApp2 to AusweisApp.
+    - Completely revised graphical user interface.
+    - Dark mode is now supported on all platforms.
+    - The display in landscape mode has been
+      optimized and is now set automatically.
+    - System font and size are now honored by the app.
+    - Optimized usability of the title bar.
+    - Online help is no longer available.
+    - The provider list is no longer integrated in AusweisApp
+      but can now be accessed via the AusweisApp website.
+    - History of authentication processes has been removed.
+    - The PDF export function for personal data has been removed.
+    - macOS Catalina 10.15 is no longer supported.
+    - Android 7 is no longer supported.
+    - iOS 13 is no longer supported.
+    - Updated Qt to version 6.5.3.
+    - Updated OpenSSL to version 3.1.4.
+- Pass adjusted source tree name to %setup macro
+- Use adjusted source tree name in %install section
+- Rename package from AusweisApp2 to AusweisApp
+- Drop patches for issues fixed upstream
+  + 0001-fix-ftbfs-with-qt6.6.patch
+  + 0002-update-qml-for-qt6.6.patch</comment>
+    <requestid>1125596</requestid>
+  </revision>
+</revisionlist>
