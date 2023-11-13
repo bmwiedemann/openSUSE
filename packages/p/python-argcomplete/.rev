@@ -302,4 +302,17 @@
     <comment>- add setuptools_scm for proper version detection</comment>
     <requestid>1119967</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2990d232a5fa496322e31174389a56a8</srcmd5>
+    <version>3.1.4</version>
+    <time>1699910172</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.4:
+  * Call \_default as a fallback in zsh global completion
+  * zsh: Allow to use external script (#453)
+  * Add support for Python 3.12 and drop EOL 3.6 and 3.7 (#449)
+  * Use homebrew prefix by default
+  * zsh: Allow to use external script (#453)</comment>
+    <requestid>1124879</requestid>
+  </revision>
 </revisionlist>

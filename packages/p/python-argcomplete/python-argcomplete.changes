@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 10 12:26:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.4:
+  * Call \_default as a fallback in zsh global completion
+  * zsh: Allow to use external script (#453)
+  * Add support for Python 3.12 and drop EOL 3.6 and 3.7 (#449)
+  * Use homebrew prefix by default
+  * zsh: Allow to use external script (#453)
+
+-------------------------------------------------------------------
 Tue Oct 24 12:01:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add setuptools_scm for proper version detection
