@@ -16,9 +16,8 @@
 #
 
 
-%global skip_python2 1
 Name:           python-autopage
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        A library to provide automatic paging for console output
 License:        Apache-2.0
