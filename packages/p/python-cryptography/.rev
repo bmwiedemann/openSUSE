@@ -984,4 +984,41 @@
   * .. _v41-0-3:</comment>
     <requestid>1115782</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4c7206dd923d48ee140926bc035882ee</srcmd5>
+    <version>41.0.5</version>
+    <time>1699910179</time>
+    <user>anag+factory</user>
+    <comment>- update to 41.0.5:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.1.4.
+  * Added a function to support an upcoming ``pyOpenSSL``
+    release.
+
+    parameters in X.509 certificates, which are
+  * Fixed error when using py2app to build an application with a cryptography dependency.
+  * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 1.1.1n.
+- split tests in a multibuild variant to optimize rebuild time a bit
+  * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 1.1.1m.
+- drop disable-RustExtension.patch: building rust extension now
+  * Re-added a legacy symbol causing problems for older ``pyOpenSSL`` use
+    signature.
+  * wheels compiled with OpenSSL 1.1.1h.
+    - Removed support for calling public_bytes() with no arguments, as per
+  * BACKWARDS INCOMPATIBLE:
+    Removedcryptography.hazmat.primitives.asymmetric.utils.encode_rfc6979_signature
+    andcryptography.hazmat.primitives.asymmetric.utils.decode_rfc6979_signature,
+    which had been deprecated for nearly 4 years. Use encode_dss_signature()
+  * BACKWARDS INCOMPATIBLE: Removed cryptography.x509.Certificate.serial, which
+  * Add support for easily mapping an object identifier to its elliptic curve
+  * Add support for OpenSSL when compiled with the no-engine
+  * BACKWARDS INCOMPATIBLE: U-label strings were deprecated in version 2.1,
+    but this version removes the default idna dependency as well. If you still
+    need this deprecated path please install cryptography with the idna extra:
+  * Numerous classes and functions have been updated to allow bytes-like
+    types for keying material and passwords, including symmetric algorithms,
+  * Added rfc4514_string() method to x509.Name,
+    x509.RelativeDistinguishedName, and x509.NameAttribute to format the name</comment>
+    <requestid>1124982</requestid>
+  </revision>
 </revisionlist>
