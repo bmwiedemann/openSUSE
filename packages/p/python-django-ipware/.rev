@@ -45,4 +45,19 @@
   * add deprecation notice</comment>
     <requestid>1115779</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58a085873b3e8768117937b11e178267</srcmd5>
+    <version>5.0.2</version>
+    <time>1699910293</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.2:
+  * Enhancement:
+  * Drop Python 3.7 support
+  * Add support for Django 4.2
+  * Drop support for Django 4.0
+  * Drop support for PyPy
+  * Readme updates to encourage users to use `python-ipware`
+    instead of `django-ipware` (thx: rposborne)</comment>
+    <requestid>1124973</requestid>
+  </revision>
 </revisionlist>

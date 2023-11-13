@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 10 13:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.2:
+  * Enhancement:
+  * Drop Python 3.7 support
+  * Add support for Django 4.2
+  * Drop support for Django 4.0
+  * Drop support for PyPy
+  * Readme updates to encourage users to use `python-ipware`
+    instead of `django-ipware` (thx: rposborne)
+
+-------------------------------------------------------------------
 Thu Oct  5 09:20:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:
