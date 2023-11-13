@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 12 22:52:11 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Revert last change: this is now set in ocaml-rpm-macros.
+- Increase stack size limit in QEMU user space builds. Here ulimit
+  has no effect, so we add a wrapper around ocamlopt.opt to PATH
+  that adds "-s ..." to the qemu-<arch> command line.
+
+-------------------------------------------------------------------
 Mon Oct 30 22:26:00 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Increase stack size limit to fix build on riscv64.

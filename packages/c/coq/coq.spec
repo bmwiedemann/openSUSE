@@ -91,8 +91,17 @@ HTML reference manual for Coq and full documentation of the standard library.
 %setup -q -a 50 -a 51
 
 %build
-# The default stack size limit is insufficient on riscv64, so we double it.
-ulimit -s 16384
+%if 0%{?qemu_user_space_build}
+# The OCaml compiler sometimes needs a bit more stack than the usual limit.
+# While ocaml-rpm-macros increases the limit, this doesn't affect a QEMU build.
+# We add a wrapper script to PATH. This doesn't affect the processes started by
+# Dune, but coqc itself uses the compiler from PATH.
+mkdir bin
+echo "#!/bin/bash
+exec /usr/bin/qemu-%{_host_cpu} -s $((64*1024*1024)) /usr/bin/ocamlopt.opt \"\$@\"" >bin/ocamlopt.opt
+chmod +x bin/ocamlopt.opt
+export PATH=$PWD/bin:$PATH
+%endif
 
 export CFLAGS='%{optflags}'
 ./configure                \

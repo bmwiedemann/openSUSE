@@ -443,4 +443,16 @@
 </comment>
     <requestid>1121332</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>736483d2f0d2ec33c5514f8a3a22af19</srcmd5>
+    <version>8.18.0</version>
+    <time>1699910517</time>
+    <user>anag+factory</user>
+    <comment>- Revert last change: this is now set in ocaml-rpm-macros.
+- Increase stack size limit in QEMU user space builds. Here ulimit
+  has no effect, so we add a wrapper around ocamlopt.opt to PATH
+  that adds &quot;-s ...&quot; to the qemu-&lt;arch&gt; command line.
+</comment>
+    <requestid>1125372</requestid>
+  </revision>
 </revisionlist>
