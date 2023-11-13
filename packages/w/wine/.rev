@@ -4963,4 +4963,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.19 release</comment>
     <requestid>1121111</requestid>
   </revision>
+  <revision rev="424" vrev="1">
+    <srcmd5>1ec3daef1d7164e6ea9902bcbffb94c8</srcmd5>
+    <version>8.20</version>
+    <time>1699910334</time>
+    <user>anag+factory</user>
+    <comment>- Requires libvulkan_intel only on %{ix86} x86_64 (forwarded request 1125423 from Guillaume_G)</comment>
+    <requestid>1125425</requestid>
+  </revision>
 </revisionlist>

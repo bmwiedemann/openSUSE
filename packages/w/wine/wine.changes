@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 13 09:37:18 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires libvulkan_intel only on %{ix86} x86_64
+
+-------------------------------------------------------------------
+Sat Nov 11 12:27:32 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.20 release
+  - More DirectMusic implementation.
+  - Protocol associations exported to the Unix desktop.
+  - Code cleanups in preparation for code freeze.
+  - Various bug fixes.
+- update staging to 8.20 release
+
+-------------------------------------------------------------------
 Mon Oct 30 08:36:05 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.19 release

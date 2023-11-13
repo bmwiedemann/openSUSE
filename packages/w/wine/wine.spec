@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 8.19
-Version:        8.19
+%define realver 8.20
+Version:        8.20
 Release:        0
 
 %if "%{flavor}" != ""
@@ -80,7 +80,9 @@ BuildRequires:  libxslt-devel
 %if 0%{?suse_version} >= 1330
 BuildRequires:  mpg123-devel
 BuildRequires:  vulkan-devel
+%ifarch %{ix86} x86_64
 Requires:       libvulkan_intel
+%endif
 Requires:       libvulkan_radeon
 Provides:       wine-mp3 = %version
 Obsoletes:      wine-mp3 < %version
@@ -169,7 +171,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 8.19
+%define staging_version 8.20
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
