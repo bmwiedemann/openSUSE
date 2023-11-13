@@ -21626,6 +21626,7 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
+  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -21743,6 +21744,7 @@ unsorted:
   - postgresql16-devel 
   - postgresql16-devel-mini 
   - postgresql16-docs 
+  - postgresql16-llvmjit 
   - postgresql16-llvmjit-devel 
   - postgresql16-orafce 
   - postgresql16-plperl 
