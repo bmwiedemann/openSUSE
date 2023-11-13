@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-autoray
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        A lightweight python automatic-array library
 License:        Apache-2.0

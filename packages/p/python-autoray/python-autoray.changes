@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 10 13:34:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.7:
+  * `lazy.einsum`: allow `cotengra` or `opt_einsum` for advanced
+    parsing, fall back to basic when neither present
+  * add `torch.expand_dims`.
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.6.6...v0.6.7
+
+-------------------------------------------------------------------
 Mon Sep 25 02:48:25 UTC 2023 - jun wang <junguo.wang@suse.com>
 
 - update to 0.6.6
@@ -11,7 +21,7 @@ Mon Sep 25 02:48:25 UTC 2023 - jun wang <junguo.wang@suse.com>
   * added docs
   * autoray.lazy.LazyArray support all fancy indexing
   * add experimental complexity cost tracing
-  * fix: matmul shape for lazy by @yangguohao in #16 
+  * fix: matmul shape for lazy by @yangguohao in #16
 
 -------------------------------------------------------------------
 Sun Apr 16 17:00:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -88,4 +98,4 @@ Wed Aug 19 08:59:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Tue Aug 18 09:48:36 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Initial package release. 
+- Initial package release.
