@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Nov 10 13:22:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.4:
+  * Regression: a positional argument with an underscore used in
+    `@arg` decorator would cause Argh fail on the assembling stage.
+  * As reported in #204 and #206, the new default name mapping
+    policy in fact silently changed the CLI API of some scripts:
+    arguments which were previously translated as CLI options
+    became optional positionals.
+    Although the instructions were supplied in the release notes,
+    the upgrade may not necessarily be intentional, so a waste of
+    users' time is quite likely.
+  * To alleviate this, the default value for
+    `name_mapping_policy` in standard functions has been changed
+    to `None`; if it's not specified, Argh falls back to the new
+    default policy, but raises `ArgumentNameMappingError` with
+    detailed instructions if it sees a non-kwonly argument with a
+    default value.
+  * Please specify the policy explicitly in order to avoid this
+    error if you need to infer optional positionals (``nargs="?"``)
+    from function signature.
+  * Regression: certain special values in argument default value
+    would cause an exception (#204)
+  * Added a more informative error message when the reason is
+    likely to be related to the migration from Argh v0.29 to a
+    version with a new argument name mapping policy.
+  * A new policy for mapping function arguments to CLI arguments
+    is used by default
+  * If you cannot modify the function signature to use kwonly
+    args for options, please consider explicitly specifying the
+    legacy name mapping
+  * The name mapping policy `BY_NAME_IF_HAS_DEFAULT` slightly
+    deviates from the old behaviour. Kwonly arguments without
+    default values used to be marked as required options
+    (``--foo FOO``), now they are treated as positionals
+    (``foo``). Please consider the new default policy
+    (`BY_NAME_IF_KWONLY`) for a better treatment of kwonly.
+  * Removed previously deprecated features (#184 → #188):
+  * Added support for Python 3.12.
+  * Added type annotations to existing Argh code (#185 → #189).
+  * The `dispatch()` function has been refactored, so in case you
+    need finer control over the process, two new, more granular
+    functions can be used.
+
+-------------------------------------------------------------------
 Wed Oct 11 08:41:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.4:
