@@ -39,4 +39,12 @@
     <comment>- Update to release 10</comment>
     <requestid>985451</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>793376faa0d2084d0fe9a9ace7897fb3</srcmd5>
+    <version>11.0.1</version>
+    <time>1699910507</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125431</requestid>
+  </revision>
 </revisionlist>

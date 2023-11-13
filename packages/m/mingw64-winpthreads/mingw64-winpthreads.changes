@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  3 12:37:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.0.1
+  * crt: Fix .seh_handler directives for ARM
+
+-------------------------------------------------------------------
 Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10
