@@ -64,4 +64,19 @@
     <comment></comment>
     <requestid>1094866</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4956dcc22e3a55717d164646f5409d8b</srcmd5>
+    <version>1.3.1</version>
+    <time>1699910276</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.1:
+  * Modified existing ``setup.py`` hook from an install hook to a
+    build hook to ensure the generated module files are present.
+    Should any of those modules are missing and the required
+    dependencies for are not present (i.e. ``ply`` and
+    ``setuptools``), the build will result in a
+    non-zero exit status and the documented error message should
+    reflect which of the required dependencies are missing.</comment>
+    <requestid>1124864</requestid>
+  </revision>
 </revisionlist>
