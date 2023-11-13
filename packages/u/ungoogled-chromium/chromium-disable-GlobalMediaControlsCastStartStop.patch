@@ -1,13 +1,13 @@
-Index: chromium-113.0.5672.53/chrome/browser/media/router/media_router_feature.cc
+Index: chromium-119.0.6045.21/chrome/browser/media/router/media_router_feature.cc
 ===================================================================
---- chromium-113.0.5672.53.orig/chrome/browser/media/router/media_router_feature.cc
-+++ chromium-113.0.5672.53/chrome/browser/media/router/media_router_feature.cc
-@@ -68,7 +68,7 @@ BASE_FEATURE(kGlobalMediaControlsCastSta
+--- chromium-119.0.6045.21.orig/chrome/browser/media/router/media_router_feature.cc
++++ chromium-119.0.6045.21/chrome/browser/media/router/media_router_feature.cc
+@@ -75,7 +75,7 @@ BASE_FEATURE(kGlobalMediaControlsCastSta
  #else
  BASE_FEATURE(kGlobalMediaControlsCastStartStop,
               "GlobalMediaControlsCastStartStop",
 -             base::FEATURE_ENABLED_BY_DEFAULT);
 +             base::FEATURE_DISABLED_BY_DEFAULT);
  #endif  // BUILDFLAG(IS_CHROMEOS)
- #endif  // BUILDFLAG(IS_ANDROID)
+ #endif  // !BUILDFLAG(IS_ANDROID)
  

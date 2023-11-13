@@ -85,3 +85,37 @@ diff -up chromium-114.0.5735.35/media/gpu/vaapi/BUILD.gn.revert-av1enc chromium-
      "//third_party/libvpx:libvpxrc",
      "//third_party/libyuv",
      "//ui/gfx",
+diff -up chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.cc.me chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.cc
+--- chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.cc.me	2023-11-02 15:08:30.921325747 +0100
++++ chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.cc	2023-11-02 15:09:46.123692602 +0100
+@@ -3124,6 +3124,7 @@ bool VaapiWrapper::GetSupportedPackedHea
+   return true;
+ }
+ 
++#if 0 //disable AV1 due to old libva on epel9
+ bool VaapiWrapper::GetMinAV1SegmentSize(VideoCodecProfile profile,
+                                         uint32_t& min_seg_size) {
+   CHECK(!enforce_sequence_affinity_ ||
+@@ -3141,6 +3142,7 @@ bool VaapiWrapper::GetMinAV1SegmentSize(
+ 
+   return true;
+ }
++#endif
+ 
+ bool VaapiWrapper::BlitSurface(const VASurface& va_surface_src,
+                                const VASurface& va_surface_dest,
+diff -up chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.h.me chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.h
+--- chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.h.me	2023-11-02 15:09:58.973928395 +0100
++++ chromium-119.0.6045.105/media/gpu/vaapi/vaapi_wrapper.h	2023-11-02 15:10:45.990791114 +0100
+@@ -553,9 +553,11 @@ class MEDIA_GPU_EXPORT VaapiWrapper
+       bool& packed_pps,
+       bool& packed_slice);
+ 
++#if 0 //disable AV1 due to old libva on epel9
+   // Gets the minimum segment block size supported for AV1 encoding.
+   [[nodiscard]] bool GetMinAV1SegmentSize(VideoCodecProfile profile,
+                                           uint32_t& min_seg_size);
++#endif
+ 
+   // Blits a VASurface |va_surface_src| into another VASurface
+   // |va_surface_dest| applying pixel format conversion, cropping

@@ -69,7 +69,7 @@
 %bcond_without lto
 %bcond_without pipewire
 %bcond_without system_ffmpeg
-%bcond_without system_zlib
+%bcond_with system_zlib
 %bcond_with system_vpx
 # FFmpeg version
 %if %{with ffmpeg_51}
@@ -79,7 +79,7 @@
 %endif
 # Package names
 Name:           ungoogled-chromium
-Version:        118.0.5993.117
+Version:        119.0.6045.123
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -114,7 +114,6 @@ Patch15:        chromium-110-compiler.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
-Patch87:        chromium-98-gtk4-build.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -136,9 +135,13 @@ Patch239:       chromium-117-includes.patch
 Patch240:       chromium-117-string-convert.patch
 Patch241:       chromium-117-lp155-typename.patch
 Patch242:       chromium-118-includes.patch
-Patch243:       chromium-118-system-freetype.patch
 Patch244:       chromium-117-system-zstd.patch
-Patch245:       chromium-118-no_matching_constructor.patch
+Patch245:       chromium-119-no_matching_constructor.patch
+Patch246:       chromium-119-dont-redefine-ATSPI-version-macros.patch
+Patch247:       chromium-119-nullptr_t-without-namespace-std.patch
+Patch248:       chromium-119-assert.patch
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -148,11 +151,9 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
 BuildRequires:  gn >= 0.1807
+BuildRequires:  golang(API)
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
-BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
@@ -442,6 +443,7 @@ keeplibs=(
     third_party/angle/src/third_party/ceval
     third_party/angle/src/third_party/libXNVCtrl
     third_party/angle/src/third_party/volk
+    third_party/anonymous_tokens
     third_party/apple_apsl
     third_party/axe-core
     third_party/bidimapper
@@ -481,7 +483,6 @@ keeplibs=(
     third_party/dawn
     third_party/dawn/third_party
     third_party/depot_tools
-    third_party/depot_tools/third_party/six
     third_party/devscripts
     third_party/devtools-frontend
     third_party/devtools-frontend/src/front_end/third_party
@@ -614,6 +615,7 @@ keeplibs=(
     third_party/tflite
     third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
+    third_party/tflite/src/third_party/xla/third_party/tsl
     third_party/ukey2
     third_party/utf
     third_party/vulkan
@@ -774,7 +776,6 @@ gn_system_libraries=(
     libxslt
     opus
     snappy
-    zlib
 )
 %if %{with system_harfbuzz}
 gn_system_libraries+=(
@@ -807,6 +808,9 @@ gn_system_libraries+=( libwebp )
 %endif
 %if %{with system_zstd}
 gn_system_libraries+=( zstd )
+%endif
+%if %{with system_zlib}
+gn_system_libraries+=( zlib )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
