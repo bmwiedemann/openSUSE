@@ -1,7 +1,7 @@
 #
 # spec file for package librist
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # BRs would expand rings
 %bcond_with unbundle
 Name:           librist
-Version:        0.2.7
+Version:        0.2.10
 Release:        0
 Summary:        Reliable Internet Stream Transport protocol
 License:        BSD-2-Clause
