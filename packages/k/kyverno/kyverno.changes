@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 13 06:51:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.5:
+  * Release 1.10.5 (#8881)
+  * feat:  add GHSA-vfp6-jrw2-99g9 fixes in cosign v1.13.1 (#8870)
+  * fixL upgrade cosign installer version in release 1.10 and use
+    cosign 1.13.1 (#8813)
+  * chore(deps): bump helm/chart-testing-action from 2.4.0 to 2.6.0
+    (#8809) (#8811)
+
+-------------------------------------------------------------------
 Wed Nov 01 08:18:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.10.4:
