@@ -1,7 +1,7 @@
 #
 # spec file for package AMF
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           AMF
-Version:        1.4.26
+Version:        1.4.30
 Release:        0
 Summary:        Advanced Media Framework (AMF) SDK
 License:        MIT
@@ -35,8 +35,8 @@ Summary:        Development files for %{name}
 Suggests:       AMF-docs
 
 %description    devel
-A lightweight, portable multimedia framework that abstracts away most of the 
-platform and API-specific details. %{name} is supported on the closed-source           
+A lightweight, portable multimedia framework that abstracts away most of the
+platform and API-specific details. %{name} is supported on the closed-source
 AMDGPU-Pro driver.
 
 The %{name}-devel package contains header files for developing
@@ -63,7 +63,7 @@ install -Dm644 amf/public/include/core/*.h %{buildroot}%{_includedir}/%{name}/co
 
 %files devel
 %license LICENSE.txt
-%doc amf/doc/README.md amf/doc/Readme.txt
+%doc amf/doc/README.md
 %{_includedir}/%{name}/
 
 %files docs
