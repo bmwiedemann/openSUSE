@@ -17,7 +17,7 @@
 
 
 Name:           traceroute
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Packet route path tracing utility
 License:        GPL-2.0-or-later
