@@ -92,4 +92,13 @@
   * include fingerprint in the gpg keys (still bsc#1184326)</comment>
     <requestid>890354</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e5bcaec32885663a8ebb6d7266a46c53</srcmd5>
+    <version>0.3.8</version>
+    <time>1699910270</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.3.8:
+  * handle primary xml in zstd format</comment>
+    <requestid>1124270</requestid>
+  </revision>
 </revisionlist>

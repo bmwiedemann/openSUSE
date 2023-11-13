@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  8 14:27:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to version 0.3.8:
+  * handle primary xml in zstd format
+
+-------------------------------------------------------------------
 Tue May 04 14:35:48 CEST 2021 - ro@suse.de
 
 - update to version 0.3.7
@@ -8,7 +14,7 @@ Tue May 04 14:35:48 CEST 2021 - ro@suse.de
 Thu Apr 15 16:18:09 CEST 2021 - ro@suse.de
 
 - update to version 0.3.6
-  * add option to add gpg keys as content tags (bsc#1184326) 
+  * add option to add gpg keys as content tags (bsc#1184326)
 
 -------------------------------------------------------------------
 Wed Apr 29 00:27:25 CEST 2020 - ro@suse.de
@@ -62,13 +68,13 @@ Mon Oct 17 11:01:28 UTC 2016 - jengelh@inai.de
 -------------------------------------------------------------------
 Tue Sep 27 17:41:40 CEST 2016 - ro@suse.de
 
-- use is_opensuse for requiring proper EULAs package 
+- use is_opensuse for requiring proper EULAs package
 
 -------------------------------------------------------------------
 Tue Jul 26 12:32:44 CEST 2016 - ro@suse.de
 
 - add option "-p" for adding diskusage information to susedata
-  (fate#320517) 
+  (fate#320517)
 
 -------------------------------------------------------------------
 Wed Mar 12 11:30:26 CET 2014 - ro@suse.de
@@ -78,12 +84,12 @@ Wed Mar 12 11:30:26 CET 2014 - ro@suse.de
 -------------------------------------------------------------------
 Tue Mar  4 15:05:34 CET 2014 - ro@suse.de
 
-- add appdata.xml.gz and app-icons.tar.gz if exising 
+- add appdata.xml.gz and app-icons.tar.gz if exising
 
 -------------------------------------------------------------------
 Tue Mar  4 12:28:08 CET 2014 - ro@suse.de
 
-- drop use of BSUtil.pm 
+- drop use of BSUtil.pm
 - drop private copy of ABXML.pm (will be added to inst-source-utils)
 
 -------------------------------------------------------------------
@@ -94,5 +100,5 @@ Wed Feb 26 01:25:46 CET 2014 - ro@suse.de
 -------------------------------------------------------------------
 Tue Feb 25 13:49:54 CET 2014 - ro@suse.de
 
-- created initial package 
+- created initial package
 
