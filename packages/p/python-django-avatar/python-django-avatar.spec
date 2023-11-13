@@ -17,7 +17,7 @@
 
 
 Name:           python-django-avatar
-Version:        7.1.1
+Version:        8.0.0
 Release:        0
 Summary:        Django-avatar package
 License:        BSD-3-Clause
