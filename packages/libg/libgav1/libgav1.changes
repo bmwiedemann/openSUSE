@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  2 20:20:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.19
+  * obu_parser: Add support for av1c box generation
+
+-------------------------------------------------------------------
 Sat Apr 29 19:30:55 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Run testsuite in %check
   * 0001-Unbundle-abseil.patch
   * Unbundle-gtest.patch

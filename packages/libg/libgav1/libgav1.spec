@@ -1,7 +1,7 @@
 #
 # spec file for package libgav1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libgav1-1
 Name:           libgav1
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        AV1 video decoding library
 License:        Apache-2.0
@@ -31,13 +31,13 @@ Patch3:         Unbundle-gtest.patch
 Patch4:         modern-cxx-standard.patch
 Patch5:         cpu_test-disable-test.patch
 BuildRequires:  cmake >= 3.7.1
-BuildRequires:  cmake(absl)
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+BuildRequires:  xz
+BuildRequires:  cmake(absl)
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(gtest_main)
-BuildRequires:  xz
 
 %description
 libgav1 is a Main profile (0) & High profile (1) compliant AV1 decoder written

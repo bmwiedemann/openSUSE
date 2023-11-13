@@ -1,5 +1,11 @@
---- a/tests/libgav1_tests.cmake	2022-06-30 20:41:58.000000000 +0000
-+++ b/tests/libgav1_tests.cmake	2023-04-29 13:01:10.517636900 +0000
+---
+ tests/libgav1_tests.cmake |   64 ++++++++++++----------------------------------
+ 1 file changed, 17 insertions(+), 47 deletions(-)
+
+Index: libgav1-0.19.0/tests/libgav1_tests.cmake
+===================================================================
+--- libgav1-0.19.0.orig/tests/libgav1_tests.cmake
++++ libgav1-0.19.0/tests/libgav1_tests.cmake
 @@ -12,28 +12,9 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -20,7 +26,7 @@
 -      "GoogleTest not found, setting LIBGAV1_ENABLE_TESTS to false.\n"
 -      "To enable tests download the GoogleTest repository to"
 -      " third_party/googletest:\n\n  git \\\n    -C ${libgav1_root} \\\n"
--      "    clone \\\n"
+-      "    clone -b release-1.12.1 --depth 1 \\\n"
 -      "    https://github.com/google/googletest.git third_party/googletest\n")
 -    set(LIBGAV1_ENABLE_TESTS FALSE CACHE BOOL "Enables tests." FORCE)
 -  endif()
@@ -32,7 +38,7 @@
  
  # Check GoogleTest compiler requirements.
  if((CMAKE_CXX_COMPILER_ID
-@@ -195,31 +176,20 @@
+@@ -199,31 +180,20 @@ macro(libgav1_add_tests_targets)
          "This version of libgav1_add_tests_targets() should only be used with"
          " LIBGAV1_ENABLE_TESTS set to true.")
    endif()
