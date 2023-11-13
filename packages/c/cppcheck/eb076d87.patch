@@ -1,0 +1,73 @@
+From eb076d877b48c09d5c34cad27b001d18971fde3f Mon Sep 17 00:00:00 2001
+From: moui0 <69300707+moui0@users.noreply.github.com>
+Date: Sun, 8 Oct 2023 05:04:57 +0800
+Subject: [PATCH] Improve testcases for unsigned char platforms (#5524)
+
+I got error messages while building `cppcheck 2.12.0` for RISC-V Arch
+Linux:
+```
+Testing Complete
+Number of tests: 4420
+Number of todos: 331
+Tests failed: 2
+
+/usr/src/debug/cppcheck/cppcheck/test/testcondition.cpp:4501(TestCondition::alwaysTrue): Assertion failed.
+Expected:
+[test.cpp:6]: (style) Condition 'o[1]=='\0'' is always false\n
+
+Actual:
+[test.cpp:4] -> [test.cpp:6]: (style) Condition 'o[1]=='\0'' is always false\n
+
+_____
+/usr/src/debug/cppcheck/cppcheck/test/testcondition.cpp:5014(TestCondition::alwaysTrueContainer): Assertion failed.
+Expected:
+[test.cpp:5]: (style) Condition 'buffer.back()=='\0'' is always false\n
+
+Actual:
+[test.cpp:3] -> [test.cpp:5]: (style) Condition 'buffer.back()=='\0'' is always false\n
+```
+
+I found out the reason is that the testcases were designed for
+x86/x86_64 or other `signed char` platforms (i.e. default character type
+is `signed char` ), whereareas RISC-V is an `unsigned char` platform,
+which causes different behavior in
+`lib/valueflow.cpp:valueFlowImpossibleValues`. I'm not sure whether this
+error leads from a functional bug, so if you have a better approach to
+fix it, please let me know.
+
+Maybe you could reproduce this error on x86_64 platform by setting
+`defaultSign = 'u';` in `Platform::set(Type t)`.
+---
+ test/testcondition.cpp | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/test/testcondition.cpp b/test/testcondition.cpp
+index bfe9713fce3..ae9dfdb7a61 100644
+--- a/test/testcondition.cpp
++++ b/test/testcondition.cpp
+@@ -4498,7 +4498,11 @@ class TestCondition : public TestFixture {
+               "        if (o[1] == '\\0') {}\n"
+               "    }\n"
+               "}\n");
+-        ASSERT_EQUALS("[test.cpp:6]: (style) Condition 'o[1]=='\\0'' is always false\n", errout.str());
++        if (std::numeric_limits<char>::is_signed) {
++            ASSERT_EQUALS("[test.cpp:6]: (style) Condition 'o[1]=='\\0'' is always false\n", errout.str());
++        } else {
++            ASSERT_EQUALS("[test.cpp:4] -> [test.cpp:6]: (style) Condition 'o[1]=='\\0'' is always false\n", errout.str());
++        }
+ 
+         check("void f(int x) {\n" // #11449
+               "    int i = x;\n"
+@@ -5016,7 +5020,11 @@ class TestCondition : public TestFixture {
+               "       buffer.back() == '\\n' ||\n"
+               "       buffer.back() == '\\0') {}\n"
+               "}\n");
+-        ASSERT_EQUALS("[test.cpp:5]: (style) Condition 'buffer.back()=='\\0'' is always false\n", errout.str());
++        if (std::numeric_limits<char>::is_signed) {
++            ASSERT_EQUALS("[test.cpp:5]: (style) Condition 'buffer.back()=='\\0'' is always false\n", errout.str());
++        } else {
++            ASSERT_EQUALS("[test.cpp:3] -> [test.cpp:5]: (style) Condition 'buffer.back()=='\\0'' is always false\n", errout.str());
++        }
+ 
+         // #9353
+         check("typedef struct { std::string s; } X;\n"

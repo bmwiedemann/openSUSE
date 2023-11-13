@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  9 10:21:24 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Replace disable-some-tests-about-char-signedness.patch with
+  upstream patch to fix tests on non-x86_64 (such as aarch64):
+  * eb076d87.patch
+
+-------------------------------------------------------------------
 Tue Sep 19 14:21:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.1:

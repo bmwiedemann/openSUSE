@@ -397,4 +397,15 @@
   * ValueFlow can infer possible values from possible symbolic</comment>
     <requestid>1114263</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>de679e8d97d8879c88a9338550c212a0</srcmd5>
+    <version>2.12.1</version>
+    <time>1699910470</time>
+    <user>anag+factory</user>
+    <comment>- Replace disable-some-tests-about-char-signedness.patch with
+  upstream patch to fix tests on non-x86_64 (such as aarch64):
+  * eb076d87.patch
+</comment>
+    <requestid>1125244</requestid>
+  </revision>
 </revisionlist>
