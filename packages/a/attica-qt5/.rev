@@ -973,4 +973,12 @@ This sr depends on 222654 &amp; 222655</comment>
     <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
     <requestid>1118662</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>c4ae5365d693aa87fe72eec5ae9449a2</srcmd5>
+    <version>5.112.0</version>
+    <time>1699910184</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.112.0. Public release next weekend (forwarded request 1124218 from krop)</comment>
+    <requestid>1125289</requestid>
+  </revision>
 </revisionlist>
