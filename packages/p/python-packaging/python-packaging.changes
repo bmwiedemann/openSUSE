@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov  9 12:05:35 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update ot 23.2:
+  * parse_marker should consume the entire source string in #687
+  * Create a Security Policy file in #695
+  * Add python 3.12 to CI in #689
+  * Remove URL validation from requirement parsing in #684
+  * Add types for packaging.version._Version in #665
+  * Add PyPy 3.10 to CI in #699
+  * Remove unused argument in _manylinux._is_compatible in #700
+  * Canonicalize names for requirements comparison in #696
+  * Add platform tag support for LoongArch in #693
+  * Ability to install armv7l manylinux/musllinux wheels on armv8l in #690
+  * Include CHANGELOG.rst in sdist in #704
+  * Update pyupgrade to Python 3.7+ in #580
+  * Fix version pattern pre-releases in #705
+  * Fix typos found by codespell in #706
+  * Support enriched metadata in #686
+  * Correct rST syntax in CHANGELOG.rst in #709
+  * fix: platform tag for GraalPy in #711
+  * Document that this library uses a calendar-based versioning scheme in #717
+  * fix: Update copyright date for docs in #713
+  * Bump pip version to avoid known vulnerabilities in #720
+  * Typing annotations fixed in version.py in #723
+  * parse_{sdist,wheel}_filename: don't raise InvalidVersion in #721
+  * Fix code blocks in CHANGELOG.md in #724
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -300,4 +300,12 @@
     <comment>- Update in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)</comment>
     <requestid>1109351</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f73dfe96f24a46218a11d2c49395e556</srcmd5>
+    <version>23.2</version>
+    <time>1699910141</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125176</requestid>
+  </revision>
 </revisionlist>
