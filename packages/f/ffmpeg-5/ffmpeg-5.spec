@@ -17,6 +17,9 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
+#
+# preamble is present twice, watch out
+#
 %if "%{flavor}" != "ffmpeg-5-mini"
 
 # Create proper conflicts to make sure we require all from one version
@@ -80,7 +83,7 @@
 %define _major_expected 6
 
 Name:           ffmpeg-5
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -106,10 +109,6 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
-Patch11:        0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch
-Patch12:        0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
-Patch13:        0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch
-Patch14:        0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
 
@@ -823,7 +822,7 @@ done
 %define _name ffmpeg
 
 Name:           ffmpeg-5-mini
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later

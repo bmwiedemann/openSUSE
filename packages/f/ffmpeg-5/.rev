@@ -162,4 +162,20 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
   0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch</comment>
     <requestid>1095979</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>601acd4908179675d2236f52569543cd</srcmd5>
+    <version>5.1.4</version>
+    <time>1699910298</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.4:
+  * Updates and bugfixes to avcodecs, avformat and avfilters
+    mainly.
+- Drop patches fixed upstream:
+  * 0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch
+  * 0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
+  * 0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch
+  * 0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch
+  * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch (forwarded request 1124867 from iznogood)</comment>
+    <requestid>1124970</requestid>
+  </revision>
 </revisionlist>
