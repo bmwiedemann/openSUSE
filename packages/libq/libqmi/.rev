@@ -387,4 +387,41 @@
     <comment></comment>
     <requestid>1077981</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3b5aa3ac616b23b5d14eb16908a954c2</srcmd5>
+    <version>1.34.0</version>
+    <time>1699910144</time>
+    <user>anag+factory</user>
+    <comment>- update to update to 1.34.0:
+  * New services:
+    ** New 'ATR' service to support AT commands over QMI,
+    defined by Telit, including &quot;Send&quot; request and &quot;Received&quot;
+    indication.
+    ** New 'IMS' service, including &quot;Get IMS Services Enabled
+    Setting&quot; request/response.
+    ** New 'IMSA' (IMS Application) service, including &quot;Get
+    IMS Registration Status&quot; and &quot;Get IMS Services Status&quot;
+    request/responses.
+    ** New 'IMSP' (IMS Presence) service, including &quot;Get
+    Enabler State&quot; request/response.
+    ** New 'SSC' service (Qualcomm Snapdragon Sensor Core),
+    including the &quot;Control&quot; request/response, and
+    &quot;Report Small&quot;/&quot;Report Large&quot; indications.
+    ** nas: added the &quot;WCDMA RSCP&quot; TLV in &quot;Get Signal Info&quot;
+    response and &quot;Signal Info&quot; indication.
+    ** wds: added the &quot;Report Profile Changes&quot; TLV in
+    ** Support for 16-bit service ids added, used in the QRTR
+    backend.
+    ** Response and indication parser messages are now
+    published in the API.
+    ** The library now allows connecting to a unix domain
+    socket named 'qmux_socket' instead of a device file.
+    ** Extended the 'QmiWdsProfileType' enum type with EPC and
+    ALL values.
+    ** Extended the
+    'QmiUimCardApplicationPersonalizationFeature' enum type with
+     additional GW-related values.
+    ** New 'QmiUimCardApplicationPersonalizationFeatureStatus'</comment>
+    <requestid>1124996</requestid>
+  </revision>
 </revisionlist>

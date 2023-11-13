@@ -19,7 +19,7 @@
 
 %define _soname libqmi-glib5
 Name:           libqmi
-Version:        1.32.4
+Version:        1.34.0
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
