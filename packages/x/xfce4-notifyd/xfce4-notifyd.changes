@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 12 09:42:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.3:
+  * Make the DELETE with LIMIT/OFFSET query work
+  * Make the text in the 'Clear log' dialog less crowded
+  * Set a transient parent on the 'Clear log' dialog if possible
+  * 'Clear log' dialog's initial focus should be on the 'Cancel'
+    button
+  * Drop required xdt-autogen version to 4.18.1
+  * Simplify markup sanitizing code a little
+  * Re-escape text in GMarkupParser text handler
+  * Sanitize instead of validating body text markup
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Oct 24 08:34:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add xfce4-notifyd-relax-x11-version.patch, see boo#1216516
@@ -273,7 +288,7 @@ Sat Sep  3 10:43:41 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
   - build: Fix intltool lock file problem during make distcheck
   - Update gitignore
   - Update COPYING (gxo#apps/xfce4-notifyd#61)
-  - Translation Updates 
+  - Translation Updates
 
 -------------------------------------------------------------------
 Tue Feb 15 20:04:35 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>

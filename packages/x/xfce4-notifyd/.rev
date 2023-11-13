@@ -475,4 +475,22 @@
     <comment></comment>
     <requestid>1120282</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>543d3ce72054a518166ce3b6da175134</srcmd5>
+    <version>0.9.3</version>
+    <time>1699910467</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.3:
+  * Make the DELETE with LIMIT/OFFSET query work
+  * Make the text in the 'Clear log' dialog less crowded
+  * Set a transient parent on the 'Clear log' dialog if possible
+  * 'Clear log' dialog's initial focus should be on the 'Cancel'
+    button
+  * Drop required xdt-autogen version to 4.18.1
+  * Simplify markup sanitizing code a little
+  * Re-escape text in GMarkupParser text handler
+  * Sanitize instead of validating body text markup
+  * Translation Updates</comment>
+    <requestid>1125234</requestid>
+  </revision>
 </revisionlist>
