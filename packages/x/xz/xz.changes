@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov  7 16:10:26 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.4.5:
+  * liblzma:
+      - Fixed an assertion failure that could be triggered by a large
+        unpadded_size argument. It was verified that there was no
+        other bug than the assertion failure.
+
+      - Fixed a bug that prevented building with Windows Vista
+        threading when __attribute__((__constructor__)) is not
+        supported.
+
+  * xz now properly handles special files such as "con" or "nul" on
+    Windows. Before this fix, the following wrote "foo" to the
+    console and deleted the input file "con_xz":
+
+        echo foo | xz > con_xz
+        xz --suffix=_xz --decompress con_xz
+
+  * Small fixes and improvements to the tests.
+  * Updated translations: Chinese (simplified) and Esperanto.
+
+-------------------------------------------------------------------
 Wed Aug 16 13:58:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - xznew: Remove bashsism.
