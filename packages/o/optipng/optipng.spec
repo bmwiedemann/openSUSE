@@ -17,17 +17,17 @@
 
 
 %define asan_build     0
-
 Name:           optipng
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        A PNG File Compressor
 License:        Zlib
 Group:          Productivity/Archiving/Compression
-URL:            http://optipng.sourceforge.net/
+URL:            https://optipng.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/project/optipng/OptiPNG/optipng-%{version}/optipng-%{version}.tar.gz
-BuildRequires:  libpng-devel
-BuildRequires:  zlib-devel
+BuildRequires:  libpng-devel >= 1.6.35
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib) >= 1.2.8
 
 %description
 OptiPNG is a PNG optimizer that recompresses image files to a smaller
@@ -45,10 +45,10 @@ export CFLAGS="%{optflags}"
 CFLAGS="$CFLAGS -fsanitize=address"
 %endif
 ./configure \
-	-with-system-zlib \
-	-with-system-libpng \
-	-prefix=%{_prefix} \
-	-mandir=%{_mandir}
+  -with-system-zlib \
+  -with-system-libpng \
+  -prefix=%{_prefix} \
+  -mandir=%{_mandir}
 
 #don't strip binaries
 sed -i "s:\(LDFLAGS = \)-s:\1:" src/optipng/Makefile

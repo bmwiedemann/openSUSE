@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 10 11:12:58 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 0.7.8:
+  * Upgraded libpng to version 1.6.40.
+  * Upgraded zlib to version 1.3-optipng.
+  * Upgraded cexcept to version 2.0.2-optipng.
+ !! Fixed a global-buffer-overflow vulnerability in the GIF reader
+    (boo#1215937 CVE-2023-43907).
+  ! Fixed a stack-print-after-scope defect in the error handler.
+  ! Fixed an assertion failure in the image reduction module.
+  ! Fixed the command-line wildargs expansion in the Windows port.
+  * Raised the minimum required libpng version from 1.2.9 to 1.6.35.
+  * Raised the minimum required zlib version from 1.2.1 to 1.2.8.
+  * Refactored the structured exception handling.
+
+-------------------------------------------------------------------
 Mon Oct  9 10:14:29 UTC 2023 - pgajdos@suse.com
 
 - asan_build to disable or enable asan build
