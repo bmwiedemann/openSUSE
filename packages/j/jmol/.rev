@@ -65,4 +65,12 @@
     <comment>- Update to release 16.1.13</comment>
     <requestid>1095210</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>41a20069e568e19b3e5f7f131177eda2</srcmd5>
+    <version>16.1.45</version>
+    <time>1699910519</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 16.1.45</comment>
+    <requestid>1125373</requestid>
+  </revision>
 </revisionlist>

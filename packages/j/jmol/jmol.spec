@@ -17,7 +17,7 @@
 
 
 Name:           jmol
-Version:        16.1.13
+Version:        16.1.45
 Release:        0
 Summary:        3D Viewer for chemical structures
 License:        LGPL-2.1-only
