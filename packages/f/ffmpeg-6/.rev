@@ -32,4 +32,16 @@
   to resolve a build failure on 15.4/15.5.</comment>
     <requestid>1115602</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a418533f47104b284370ddacd8f06c21</srcmd5>
+    <version>6.0.1</version>
+    <time>1699910154</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.0.1:
+  * Updates and bugfixes to avcodecs, avformat and avfilters
+    mainly.
+- Drop patch fixed upstream:
+  * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch (forwarded request 1124854 from iznogood)</comment>
+    <requestid>1125127</requestid>
+  </revision>
 </revisionlist>

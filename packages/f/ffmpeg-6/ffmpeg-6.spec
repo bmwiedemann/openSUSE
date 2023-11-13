@@ -83,7 +83,7 @@
 %define _major_expected 7
 
 Name:           ffmpeg-6
-Version:        6.0
+Version:        6.0.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -110,7 +110,6 @@ Patch5:         work-around-abi-break.patch
 Patch6:         0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch92:        0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
 
 %if %{with amf_sdk}
 BuildRequires:  AMF-devel
@@ -541,7 +540,6 @@ break compatibility without any notice.
 %patch5 -p1
 %patch10 -p1
 %patch91 -p1
-%patch92 -p1
 # Remove when packaging ffmpeg 6.1
 if pkg-config --atleast-version 6 libplacebo; then
 %patch6 -p1
@@ -843,7 +841,7 @@ done
 %define _name ffmpeg
 
 Name:           ffmpeg-6-mini
-Version:        6.0
+Version:        6.0.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -860,7 +858,6 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch92:        0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

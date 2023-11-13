@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 10 10:09:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 6.0.1:
+  * Updates and bugfixes to avcodecs, avformat and avfilters
+    mainly.
+- Drop patch fixed upstream:
+  * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 07:59:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
