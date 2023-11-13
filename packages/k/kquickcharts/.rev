@@ -385,4 +385,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
     <requestid>1118719</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c3e1cf8f3b6e9a61c6e2f0613c2b356b</srcmd5>
+    <version>5.112.0</version>
+    <time>1699910241</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.112.0. Public release next weekend (forwarded request 1124218 from krop)</comment>
+    <requestid>1125347</requestid>
+  </revision>
 </revisionlist>
