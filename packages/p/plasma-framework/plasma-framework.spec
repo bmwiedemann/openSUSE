@@ -24,7 +24,7 @@
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma-framework
-Version:        5.111.0
+Version:        5.112.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -75,7 +75,7 @@ BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(x11)
-Requires:       (plasma-framework-desktoptheme or kf6-plasma-framework-desktoptheme)
+Requires:       (plasma-framework-desktoptheme or plasma6-framework-desktoptheme)
 Recommends:     %{name}-components = %{version}
 Provides:       %{name}-private = %{version}
 Obsoletes:      %{name}-private < %{version}
@@ -112,7 +112,7 @@ Plasma QML and runtime components based upon KF5 and Qt5
 %package desktoptheme
 Summary:        Desktop themes usable by Plasma 5 or Plasma 6
 # Split from the main package
-Conflicts:      plasma-framework < 5.111.0
+Conflicts:      plasma-framework < 5.112.0
 
 %description desktoptheme
 Desktop themes usable by plasma 5 or plasma 6.
