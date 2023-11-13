@@ -15,4 +15,16 @@
     <comment>yascreen 1.97</comment>
     <requestid>1066546</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>39a9391ff3a69a450c7374e3d3c004a1</srcmd5>
+    <version>1.99</version>
+    <time>1699910469</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.99:
+  * Implement timeout for all escape sequences
+  * Handle more alt-arrow/shift-arrow codes
+
+- yascreen 1.96:</comment>
+    <requestid>1125230</requestid>
+  </revision>
 </revisionlist>

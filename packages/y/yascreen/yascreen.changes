@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 12 09:45:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.99:
+  * Implement timeout for all escape sequences
+  * Handle more alt-arrow/shift-arrow codes
+
+-------------------------------------------------------------------
 Sat Feb 18 14:03:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - yascreen 1.97:
@@ -8,7 +15,7 @@ Sat Feb 18 14:03:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Sun Feb  5 17:04:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- yascreen 1.96: 
+- yascreen 1.96:
  * various bug fixes, compatibility fixes, and build system fixes
  * re-licenced to LGPL-3.0+
 - spec file fix-up for Factory, add upstream signing key
