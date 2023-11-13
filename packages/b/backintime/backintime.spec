@@ -17,13 +17,12 @@
 
 
 Name:           backintime
-Version:        1.3.3
+Version:        1.4.1
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 License:        GPL-2.0-or-later
 URL:            https://github.com/bit-team/backintime
 Source0:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 # Public key mentioned in https://github.com/bit-team/backintime#archlinux
 Source2:        %{name}.keyring
 Source3:        %{name}.png
@@ -31,7 +30,7 @@ Source3:        %{name}.png
 Patch0:         %{name}-polkit_priv_downgrade.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.8
 BuildRequires:  update-desktop-files
 Requires:       cron
 Requires:       dbus-1-python3
@@ -39,7 +38,7 @@ Requires:       openssh
 %if 0%{?suse_version} > 1500
 Requires:       pkexec
 %endif
-Requires:       python3
+Requires:       python3 >= 3.8
 Requires:       python3-keyring
 Requires:       python3-packaging
 Requires:       rsync
@@ -67,8 +66,11 @@ You only need to specify 3 things:
 Summary:        Back In Time Qt5 GUI
 Requires:       %{name} = %{version}
 Requires:       dbus-1-python3
+Requires:       libqt5-qttranslations
 Requires:       polkit
 Requires:       python3-qt5
+# used as a fallback in case of missing icons
+Recommends:     oxygen5-icon-theme
 Obsoletes:      backintime-qt4
 
 %description qt
@@ -110,9 +112,6 @@ popd
 pushd qt
 %make_install
 popd
-
-# Remove unmaintained documentation.
-rm -r %{buildroot}%{_docdir}/qt
 
 install -D -m 644 %{SOURCE3} %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 

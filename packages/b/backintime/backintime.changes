@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Nov  3 21:29:18 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 1.4.1:
+  * Dependency: Add "qt translations" to GUI runtime dependencies (gh#bit-team/backintime#1538)
+  * Build: Unit tests do generically ignore all instead of well-known warnings now (gh#bit-team/backintime#1539).
+  * Build: Warnings about missing Qt translation now are ignored while testing (gh#bit-team/backintime#1537).
+  * Fix bug: GUI didn't start when "show hidden files" button was on (gh#bit-team/backintime#1535).
+- update to 1.4.0:
+  * Project: Renamed branch "master" to "main" and started "gitflow" branching
+    model.
+  * Refactor: Renamed qt4plugin.py to systrayiconplugin.py (we are using Qt5
+    for years now ;-)
+  * Refactor: Removed unfinished feature "Full system backup" (gh#bit-team/backintime#1526)
+  * Fix bug: AttributeError: can't set attribute 'showHiddenFiles' in app.py (gh#bit-team/backintime#1532)
+  * Fix bug: Check SSH login works on machines with limited commands (gh#bit-team/backintime#1442)
+  * Fix bug: Missing icon in SSH private key button (gh#bit-team/backintime#1364)
+  * Fix bug: Master issue for missing or empty system-tray icon (gh#bit-team/backintime#1306)
+  * Fix bug: System-tray icon missing or empty (GUI and cron) (gh#bit-team/backintime#1236)
+  * Fix bug: Improve KDE plasma icon compatibility (gh#bit-team/backintime#1159)
+  * GUI Change: View last (snapshot) log button in GUI uses
+    "document-open-recent" icon now instead of "document-new"
+    (gh#bit-team/backintime#1386)
+  * Fix bug: Unit test fails on some machines due to warning "Ignoring
+    XDG_SESSION_TYPE=wayland on Gnome..." (gh#bit-team/backintime#1429)
+  * Fix bug: Generation of config-manpage caused an error with Debian's Lintian (gh#bit-team/backintime#1398).
+  * Fix bug: Return empty list in smartRemove (gh#bit-team/backintime#1392,
+    Debian Bug Report 973760)
+  * Fix bug: Taking a snapshot reports rsync errors now even if no snapshot was
+    taken (gh#bit-team/backintime#1491)
+  * Fix bug: takeSnapshot() recognizes errors now by also evaluating the rsync
+    exit code (gh#bit-team/backintime#489)
+  * Fixes related problem: Killing rsync was not handled gracefully (by
+    ignoring the rsync exit code)
+  * Fix bug: The error user-callback is now always called if an error happened
+    while taking a snapshot (gh#bit-team/backintime#1491)
+  * Fix bug: D-Bus serviceHelper error "LimitExceeded: Maximum length of
+    command line reached (100)":
+  * Max command length is now 120 instead of 100 (gh#bit-team/backintime#1027)
+  * Feature: Introduce new error codes for the "error" user callback (as part
+    of gh#bit-team/backintime#1491):
+    5: Error while taking a snapshot.
+    6: New snapshot taken but with errors.
+  * Feature: The rsync exit code is now contained in the snapshot log (part
+    of gh#bit-team/backintime#489). Example:
+    [E] Error: 'rsync' ended with exit code -9 (negative values are signal numbers, see 'kill -l')
+  * Fix bug: Treat rsync exit code 24 as INFO instead of ERROR (gh#bit-team/backintime#1506)
+  * Breaking change: Minimal Python version 3.8 required (gh#bit-team/backintime#1358).
+  * Removed: Handling and checking of user group "fuse" (gh#bit-team/backintime#1472).
+  * Feature: Exclude /swapfile by default (gh#bit-team/backintime#1053)
+  * Feature: Rearranged menu bar and its entries in the main window
+    (gh#bit-team/backintime#1487, gh#bit-team/backintime#1478).
+  * Feature: Configure user interface language via config file and GUI.
+  * Documentation: Removed outdated docbook (gh#bit-team/backintime#1345).
+  * Build: Introduced .readthedocs.yaml as asked by ReadTheDocs.org (gh#bit-team/backintime#1443).
+  * Dependency: The oxygen icons should be installed with the BiT Qt GUI since
+  * they are used as fallback in case of missing icons
+  * Fix bug: Add support for ChainerBackend class as keyring which iterates
+    over all supported keyring backends (gh#bit-team/backintime#1410)
+  * Translation: Strings to translate now easier to understand for translators
+    (gh#bit-team/backintime#1448, gh#bit-team/backintime#1457,
+    gh#bit-team/backintime#1462, gh#bit-team/backintime#1465).
+  * Translation: Improved completeness of translations and additional
+    modifications of source strings
+    (gh#bit-team/backintime#1454,gh#bit-team/backintime#1512)
+  * Translation: Plural forms support (gh#bit-team/backintime#1488).
+  * Removed: Translation in Canadian English, British English and Javanese (gh#bit-team/backintime#1455).
+  * Added: Translation in Persian and Vietnamese (gh#bit-team/backintime#1460).
+  * Added: Message to users (after 10 starts of BIT Gui) to motivate them
+    contributing translations (gh#bit-team/backintime#1473).
+
+-------------------------------------------------------------------
 Sun Feb  5 18:45:23 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Require python3-packaging
