@@ -1,0 +1,6 @@
+<package name="contour-terminal" project="openSUSE:Factory">
+  <title>Modern C++ Terminal Emulator </title>
+  <description>Modern and actually fast, modal, virtual terminal emulator, for everyday use. It is aiming for power users with a modern feature mindset.</description>
+  <devel project="X11:terminals" package="contour-terminal"/>
+  <url>https://github.com/contour-terminal/contour</url>
+</package>

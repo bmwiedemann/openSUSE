@@ -1,0 +1,26 @@
+From 782fb7248d6fe643e7163bf57b0bcef50a81a8f7 Mon Sep 17 00:00:00 2001
+From: Christian Parpart <christian@parpart.family>
+Date: Thu, 1 Jun 2023 12:36:00 +0200
+Subject: [PATCH] [vtbackend] Terminal: Work around MSVC compiler error wrt
+ fmt::localtime(.)
+
+Signed-off-by: Christian Parpart <christian@parpart.family>
+---
+ src/vtbackend/Terminal.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/vtbackend/Terminal.cpp b/src/vtbackend/Terminal.cpp
+index 6e361223c3..09e600c642 100644
+--- a/src/vtbackend/Terminal.cpp
++++ b/src/vtbackend/Terminal.cpp
+@@ -605,7 +605,9 @@ void Terminal::updateIndicatorStatusLine()
+ 
+     if (!rightString.empty())
+         rightString += " │ ";
+-    rightString += fmt::format("{:%H:%M} ", fmt::localtime(std::chrono::system_clock::now()));
++
++    // NB: Cannot use std::chrono::system_clock::now() here, because MSVC can't handle it.
++    rightString += fmt::format("{:%H:%M} ", fmt::localtime(std::time(nullptr)));
+ 
+     auto const columnsAvailable = _indicatorStatusScreen.pageSize().columns.as<int>()
+                                   - _indicatorStatusScreen.cursor().position.column.as<int>();
