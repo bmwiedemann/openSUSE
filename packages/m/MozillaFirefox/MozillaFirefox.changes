@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  8 20:27:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 119.0.1
+  * Fixed a bug causing colors in the <select> HTML element to not
+    be applied to dropdown menu arrows (bmo#1861253)
+  * Fixed a bug with the <input> HTML element state not changing
+    when dynamically updating the `disabled` attribute on an
+    ancestor <fieldset> (bmo#1861027)
+  * Fixed a bug causing elements with the indeterminate CSS
+    selector in a radio group to not update (bmo#1861346)
+
+-------------------------------------------------------------------
 Thu Oct 26 10:31:03 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 119.0
