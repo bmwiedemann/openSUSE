@@ -196,4 +196,27 @@
   * Add Typst to the recognized files</comment>
     <requestid>1122243</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0b36f587e6a5ce85e77b077ccc15e9d3</srcmd5>
+    <version>0.15.3~0</version>
+    <time>1699910325</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.3:
+  Bug Fixes:
+  * Changed quote in --almost-all completion
+  * Reformat help.rs
+  * Allow unused macro rule arms
+  Documentation:
+  * Improve CONTRIBUTING.md, README.md
+  * Improve README.md
+  * Introduce INSTALL.md
+  Features:
+  * Create EZA_ICONS_AUTO environment variable
+  * Create EZA_ICONS_AUTO environment variable
+  * Demo gif and gif generation recipe
+  * Add ocaml icon filetypes
+  * Add PRQL
+  * Add --color-scale</comment>
+    <requestid>1125111</requestid>
+  </revision>
 </revisionlist>

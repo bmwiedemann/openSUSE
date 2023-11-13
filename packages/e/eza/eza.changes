@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 10 19:24:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.3:
+  Bug Fixes:
+  * Changed quote in --almost-all completion
+  * Reformat help.rs
+  * Allow unused macro rule arms
+  Documentation:
+  * Improve CONTRIBUTING.md, README.md
+  * Improve README.md
+  * Introduce INSTALL.md
+  Features:
+  * Create EZA_ICONS_AUTO environment variable
+  * Create EZA_ICONS_AUTO environment variable
+  * Demo gif and gif generation recipe
+  * Add ocaml icon filetypes
+  * Add PRQL
+  * Add --color-scale
+
+-------------------------------------------------------------------
 Thu Nov  2 09:52:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.2:
