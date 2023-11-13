@@ -205,6 +205,12 @@ BuildArch:      i686
 %bcond_with system_abseil
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
+%define PYVER 3
+%else
+%define PYVER 311
+%endif
+
 # We always ship the following bundled libraries as part of Electron despite a system version being available in either openSUSE or Fedora:
 # Name         | Path in tarball                   | Reason
 # -------------+-----------------------------------+---------------------------------------
@@ -221,7 +227,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.0.3
+Version:        27.0.4
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -348,6 +354,7 @@ Patch2040:      build-without-extensions.patch
 Patch2041:      chromium-117-blink-BUILD-mnemonic.patch
 Patch2042:      brotli-remove-shared-dictionary.patch
 Patch2043:      keyboard_util-gcc12-invalid-constexpr.patch
+Patch2044:      computed_style_base-nbsp.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -383,7 +390,7 @@ Patch3223:      absl-make_unique-missing-include.patch
 Patch3224:      autofill_i18n_parsing_expressions-constexpr.patch
 Patch3225:      simple_font_data-freetype-include.patch
 Patch3226:      perfetto-numeric_storage-double_t.patch
-Patch3227:      crash_gpu_process_and_clear_shader_cache_when_skia_reports.patch
+Patch3227:      policy_templates-deterministic.patch
 
 
 %if %{with clang}
@@ -465,14 +472,12 @@ BuildRequires:  npm
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  plasma-wayland-protocols
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-BuildRequires:  python3-dataclasses
-%endif
 BuildRequires:  python3-json5
+BuildRequires:  python%{PYVER}-jinja2 >= 3.0.2
 BuildRequires:  python3-mako
 BuildRequires:  python3-ply
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-six
+BuildRequires:  python%{PYVER}-PyYAML >= 6
+BuildRequires:  python%{PYVER}-six
 %if %{with system_simdutf}
 BuildRequires:  simdutf-devel >= 3
 %endif
@@ -797,9 +802,20 @@ export SUSE_ELECTRON_VERSION=%{version}
 
 # Make sure python is python3
 install -d -m 0755 python3-path
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 ln -sf %{_bindir}/python3 "$(pwd)/python3-path/python"
+%else
+ln -sf %{_bindir}/python3.11 "$(pwd)/python3-path/python"
+ln -sf %{_bindir}/python3.11 "$(pwd)/python3-path/python3"
+%endif
 export PATH="$(pwd)/python3-path:${PATH}"
 
+#HACK: Those packages on Leap are available only in python3.6 versions.
+%if 0%{?suse_version}  && 0%{?suse_version} < 1550
+install -d -m 0755 python3-site
+cp -pr %{python3_sitelib}/{json5,mako,ply} -t "$(pwd)/python3-site"
+export PYTHONPATH="$(pwd)/python3-site"
+%endif
 
 #some Fedora ports still try to build with LTO
 ARCH_FLAGS=$(echo "%optflags"|sed 's/-f[^ ]*lto[^ ]*//g' )

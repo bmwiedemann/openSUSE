@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 10 20:12:45 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix non-deterministic build in cloud_policy.pb.cc (bsc#1041090)
+  * add policy_templates-deterministic.patch
+
+-------------------------------------------------------------------
+Fri Nov 10 18:26:45 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.0.4
+  * Chromium 118.0.5993.129
+  * Fixed an issue where WebViews could sometimes crash on unload
+  * obsolete crash_gpu_process_and_clear_shader_cache_when_skia_reports.patch
+- Use system jinja2 for building
+  * add computed_style_base-nbsp.patch
+  * update system-pydeps.patch
+- Leap: use python 3.11 for building (was 3.6)
+
+-------------------------------------------------------------------
 Tue Nov  7 17:10:19 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add backported crash_gpu_process_and_clear_shader_cache_when_skia_reports.patch

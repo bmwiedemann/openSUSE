@@ -65,6 +65,8 @@ solutions = [
 ]
 EOF
 
+export DEPOT_TOOLS_UPDATE=0
+
 echo ">>>>>> Downloading electron-${ELECTRON_PKGVERSION}"
 gclient sync -v --jobs $(nproc) --nohooks --no-history --shallow --revision=v"${ELECTRON_PKGVERSION}"
 if [ $? -ne 0 ]; then
@@ -222,7 +224,6 @@ keeplibs=(
     third_party/iccjpeg #not in any distro
     third_party/inspector_protocol #integral part of chrome
     third_party/ipcz #not in any distro
-    third_party/jinja2 #Patch for deterministic builds. CONSIDER UNBUNDLING this when chrome switches to jinja 3.x
     third_party/jstemplate #javascript
     third_party/khronos #Modified to add ANGLE definitions
     third_party/leveldatabase #use of private headers
@@ -251,7 +252,6 @@ keeplibs=(
     third_party/lss #Wrapper for linux ABI
     #third_party/maldoca #integral part of chrome, but not used in electron.
     #third_party/maldoca/src/third_party
-    third_party/markupsafe #ImportError: cannot import name 'soft_unicode' from 'markupsafe' (/usr/lib64/python3.10/site-packages/markupsafe/__init__.py). CONSIDER UNBUNDLING when jinja is fixed
     third_party/material_color_utilities #not in any distro
     third_party/mesa_headers #ui/gl/gl_bindings.cc depends on GL_KHR_robustness not being defined.
     third_party/metrics_proto #integral part of chrome
