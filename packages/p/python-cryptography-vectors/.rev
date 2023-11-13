@@ -283,4 +283,13 @@
   * updated vectors for cryptography 3.1.1</comment>
     <requestid>1115783</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>17b13976c6232707e9ee20ebb66ae2c4</srcmd5>
+    <version>41.0.5</version>
+    <time>1699910181</time>
+    <user>anag+factory</user>
+    <comment>- update to 41.0.5:
+  * Update test vectors to match python-cryptography 41.0.5</comment>
+    <requestid>1124983</requestid>
+  </revision>
 </revisionlist>
