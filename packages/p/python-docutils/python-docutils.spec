@@ -26,15 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-docutils%{psuffix}
-Version:        0.19
+Version:        0.20.1
 Release:        0
 Summary:        Python Documentation Utilities
 License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
-# PATCH-FIX-OPENSUSE pygments-2.14.patch shp#docutils#201
-Patch0:         pygments-2.14.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -129,7 +127,7 @@ done
 %python_alternative %{_bindir}/rst2html4
 %python_alternative %{_bindir}/rst2html5
 %{python_sitelib}/docutils/
-%{python_sitelib}/docutils-%{version}*-info
+%{python_sitelib}/docutils-%{version}.dist-info
 %endif
 
 %changelog

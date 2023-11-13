@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Nov 10 02:31:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.20.1:
+  * Include tox.ini and docutils.conf in the source package
+  * Docutils 0.20 is the last version supporting Python 3.7 and 3.8.
+  * Support Python 3.11 (patch #198 by Hugo van Kemenade).
+  * New functions `rst2…()` for use as "console_scripts" `entry points`_.
+  * Fix `previous_sibling()` method that led to invalid HTML in some cases
+  * Fix bug #463. Spurious comma in deprecation warning.
+  * Improved mock Sphinx module.
+  * `Transformer.populate_from_components()` now silently ignores
+    components that are not instances of `docutils.TransformSpec`.
+  * Accept author names with initials like ``A. Einstein`` in the "author"
+    `bibliographic field`_ instead of rising an error
+  * `DanglingReferences` ignores `citation_reference` nodes if the
+    "use_bibex" setting is active.
+  * New utility function `xml_declaration()`.
+  * `DependencyList.add()` accepts `pathlib.Path` instances.
+  * Support "mod" notation for modulo operation / modulus arithmetic.
+  * Wrap definition lists with "details" class argument in a <div>
+    with the "id" and "class" values of the list node.
+  * Use dpub-ARIA role "doc-footnote__" (instead of ARIA role "note")
+    for footnotes.
+  * Do not load the `inputenc` package in UTF-8 encoded LaTeX sources.
+    (UTF-8 is the default encoding for LaTeX2e since 2018).
+  * Fix behaviour of the use_bibtex_ setting.
+  * Outsource parts of `depart_document()` to new auxiliary methods
+    `make_title()` and `append_bibliography()`.
+  * Drop ``\usepackage{fixltx2e}`` from template.
+  * Fix SetuptoolsDeprecationWarning: ``Installing '' as data is deprecated``
+    by adding data directories to package_data.packages list.
+  * Refactored tests to use common `unittest` idioms.
+- Drop pygments-2.14.patch, no longer needed.
+
+-------------------------------------------------------------------
 Fri Oct 13 22:59:14 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - python-roman is not actually necessary for testing.
