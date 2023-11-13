@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov  3 14:55:20 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.8.3
+  * Bugfix (defect introduced Postfix 2.5, date 20080104): the
+    Postfix SMTP server was waiting for a client command instead
+    of replying immediately, after a client certificate verification
+    error in TLS wrappermode. Reported by Andreas Kinzler.
+  * Usability: the Postfix SMTP server (finally) attempts to log
+    the SASL username after authentication failure. In Postfix
+    logging, this appends ", sasl_username=xxx" after the reason
+    for SASL authentication failure. The logging replaces an
+    unavailable reason with "(reason unavailable)", and replaces
+    an unavailable sasl_username with "(unavailable)". Based on
+    code by Jozsef Kadlecsik.
+  * Compatibility bugfix (defect introduced: Postfix 2.11, date
+    20130405): in forward_path, the expression ${recipient_delimiter}
+    would expand to an empty string when a recipient address had
+    no recipient delimiter. The compatibility fix is to use a
+    configured recipient delimiter value instead. Reported by Tod
+    A. Sandman.
+
+-------------------------------------------------------------------
+Mon Oct 23 07:43:31 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- Syntax error in update_postmaps script (bsc#1216061) 
+
+-------------------------------------------------------------------
+Mon Sep 18 12:38:19 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- postfix: config.postfix causes too tight permission on main.cf
+  (bsc#1215372)  
+
+-------------------------------------------------------------------
 Tue Aug 15 09:07:07 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - CVE-2023-32182: postfix: config_postfix SUSE specific script

@@ -2183,4 +2183,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1105486</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>41121cdae5e2e08657cdbd7c08cbd75d</srcmd5>
+    <version>3.8.3</version>
+    <time>1699910144</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125117</requestid>
+  </revision>
 </revisionlist>
