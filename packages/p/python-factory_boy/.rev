@@ -158,4 +158,41 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1083112</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>651d6e74a2544e798a7627ecbb2affe2</srcmd5>
+    <version>3.3.0</version>
+    <time>1699910147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.0
+  * New:
+    - :issue:`366`: Add :class:`factory.django.Password` to generate Django 
+      :class:`~django.contrib.auth.models.User` passwords.
+    - :issue:`304`: Add :attr:`~factory.alchemy.SQLAlchemyOptions.sqlalchemy_session_factory`
+      to dynamically create sessions for use by the :class:`~factory.alchemy.SQLAlchemyModelFactory`.
+    - Add support for Django 4.0
+    - Add support for Django 4.1
+    - Add support for Python 3.10
+    - Add support for Python 3.11
+  * Bugfix:
+    - Make :meth:`~factory.django.mute_signals` mute signals during post-generation.
+    - :issue:`775`: Change the signature for :meth:`~factory.alchemy.SQLAlchemyModelFactory._save`
+      and :meth:`~factory.alchemy.SQLAlchemyModelFactory._get_or_create` to avoid argument names
+      clashes with a field named session.
+  * Deprecated:
+    - :class:`~factory.django.DjangoModelFactory` will stop issuing
+      a second call to :meth:`~django.db.models.Model.save` on the
+      created instance when :ref:`post-generation-hooks` return a value.
+    - To help with the transition, :class:`factory.django.DjangoModelFactory._after_postgeneration`
+      raises a :class:`DeprecationWarning` when calling :meth:`~django.db.models.Model.save`.
+      Inspect your :class:`~factory.django.DjangoModelFactory` subclasses:
+      + If the :meth:`~django.db.models.Model.save` call is not needed after :class:`~factory.PostGeneration`, set   
+        :attr:`factory.django.DjangoOptions.skip_postgeneration_save` to True in the factory meta.
+      + Otherwise, the instance has been modified by :class:`~factory.PostGeneration`
+        hooks and needs to be :meth:`~django.db.models.Model.save`d. Either:
+        - call :meth:`django.db.models.Model.save` in the :class:`~factory.PostGeneration`
+          hook that modifies the instance, or
+        - override :class:`~factory.django.DjangoModelFactory._after_postgeneration`
+          to :meth:`~django.db.models.Model.save` the instance.</comment>
+    <requestid>1125175</requestid>
+  </revision>
 </revisionlist>

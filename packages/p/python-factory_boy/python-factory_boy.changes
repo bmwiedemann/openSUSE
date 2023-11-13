@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Nov  9 11:32:25 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.0
+  * New:
+    - :issue:`366`: Add :class:`factory.django.Password` to generate Django 
+      :class:`~django.contrib.auth.models.User` passwords.
+    - :issue:`304`: Add :attr:`~factory.alchemy.SQLAlchemyOptions.sqlalchemy_session_factory`
+      to dynamically create sessions for use by the :class:`~factory.alchemy.SQLAlchemyModelFactory`.
+    - Add support for Django 4.0
+    - Add support for Django 4.1
+    - Add support for Python 3.10
+    - Add support for Python 3.11
+  * Bugfix:
+    - Make :meth:`~factory.django.mute_signals` mute signals during post-generation.
+    - :issue:`775`: Change the signature for :meth:`~factory.alchemy.SQLAlchemyModelFactory._save`
+      and :meth:`~factory.alchemy.SQLAlchemyModelFactory._get_or_create` to avoid argument names
+      clashes with a field named session.
+  * Deprecated:
+    - :class:`~factory.django.DjangoModelFactory` will stop issuing
+      a second call to :meth:`~django.db.models.Model.save` on the
+      created instance when :ref:`post-generation-hooks` return a value.
+    - To help with the transition, :class:`factory.django.DjangoModelFactory._after_postgeneration`
+      raises a :class:`DeprecationWarning` when calling :meth:`~django.db.models.Model.save`.
+      Inspect your :class:`~factory.django.DjangoModelFactory` subclasses:
+      + If the :meth:`~django.db.models.Model.save` call is not needed after :class:`~factory.PostGeneration`, set   
+        :attr:`factory.django.DjangoOptions.skip_postgeneration_save` to True in the factory meta.
+      + Otherwise, the instance has been modified by :class:`~factory.PostGeneration`
+        hooks and needs to be :meth:`~django.db.models.Model.save`d. Either:
+        - call :meth:`django.db.models.Model.save` in the :class:`~factory.PostGeneration`
+          hook that modifies the instance, or
+        - override :class:`~factory.django.DjangoModelFactory._after_postgeneration`
+          to :meth:`~django.db.models.Model.save` the instance.
+  * Removed:
+    - Drop support for Django 2.2
+    - Drop support for Django 3.0
+    - Drop support for Django 3.1
+    - Drop support for Python 3.6
+    - Drop support for Python 3.7
+
+- Drop tests-skip-django-py36.patch because new version need 
+  python >= 3.7.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

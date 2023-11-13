@@ -16,20 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-factory_boy
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Python test fixtures
 License:        MIT
 URL:            https://github.com/rbarrois/factory_boy
 Source:         https://files.pythonhosted.org/packages/source/f/factory_boy/factory_boy-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE  tests-skip-django-py36.patch -- don't test django on python36: no python36-Django 4, code@bnavigator.de
-Patch0:         tests-skip-django-py36.patch
 BuildRequires:  %{python_module Faker >= 0.7.0}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
@@ -52,6 +49,8 @@ sed -i -e '/test_mongoengine/d' tests/__init__.py
 # sqlalchemy hickups a lot
 rm tests/test_alchemy.py
 sed -i -e '/test_alchemy/d' tests/__init__.py
+# Fix wrong version
+sed -i -e 's|"3.2.1.dev0"|"3.3.0"|g' tests/test_version.py
 
 %build
 %python_build
