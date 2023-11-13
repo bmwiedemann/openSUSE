@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 12 09:43:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.4:
+  * This is a stable release, with several minor improvements and
+    one fix for a possible buffer overrun while using
+    inflateCopy().
+  * Zlib-ng's zlib-compat mode is now targeting zlib 1.3
+    compatibility.
+  * Of note, we have new optimizations for ARM and Risc-V RVV,
+    and a lot of fixes and improvements to the buildsystem.
+  * Fix: inflateCopy() allocate window with padding #1583
+  * Pull zlib 1.3 changes #1563
+  * Deprecate ZLIBNG_VER_STATUS, use ZLIBNG_VER_STATUSH #1581
+  * Optimize slide_hash for ARMv6 #1538
+  * Handle ARM64EC #1539
+  * Remove inert check for HAVE_ACLE_FLAG in
+    check_acle_compiler_flag #1554
+  * Clean up ARM detection and allow ACLE on all ARM archs #1567
+  * Initial loongarch port #1537
+  * Fix building benchmarks on 32-bit PowerPC #1588
+  * Optimize adler32 using rvv #1532
+  * Optimize chunkset #1568
+  * Support RVV hwcap detect at runtime #1585
+  * Move the AVX compatibility functions into a separate file
+  * Clean up SSE4.2 support, fixes compile issues under docker/VM
+
+-------------------------------------------------------------------
 Wed Jul 19 11:46:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Fix build on riscv64

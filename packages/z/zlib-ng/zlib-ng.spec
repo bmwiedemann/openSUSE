@@ -30,7 +30,7 @@
 %define soversion 2
 %endif
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
@@ -77,8 +77,11 @@ developing application that use %{name}.
 # zlib-ng uses a different macro for library directory.
 # 32-bit Arm requires to set soft/hard float
 %cmake \
-%ifarch %{arm}
+%ifarch %{arm32}
   -DCMAKE_C_FLAGS="%{optflags} -mfloat-abi=hard" \
+%endif
+%ifnarch armv6l armv6hl
+  -DWITH_ARMV6:BOOL=OFF \
 %endif
 %if %{with zlib_compat}
   -DZLIB_COMPAT=ON \
