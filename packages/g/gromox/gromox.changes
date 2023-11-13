@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 11 11:56:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.17
+  * Enhancements:
+  * http: Windows SSO support via HTTP Negotiate authentication
+  * daemons: support for alternate login names
+    (this allows for assigning shorter usernames for grommunio-web)
+  * exmdb: augment create_folder and movecopy_folder RPCs with a
+    32-bit error code, which allows g-web to better detect folders
+    with duplicate names
+  * ews: implement Subscribe, Unsubscribe, GetEvents, GetUserPhoto
+  * mbop: add subcommand `clear-rwz` to clear out RuleOrganizer
+    FAI messages
+- Delete 0001-build-resolve-i586-compile-error.patch (merged)
+
+-------------------------------------------------------------------
 Sun Oct 29 18:44:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.16
@@ -13,7 +29,6 @@ Sun Oct 29 18:44:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
   * oxvcard: export to .vcf now positions the VERSION property in
     accordance with the vCard 4.0 specification.
   * oxcmail: cease gratuitous RTF conversion of calendar items.
-- Add 0001-build-resolve-i586-compile-error.patch
 
 -------------------------------------------------------------------
 Wed Oct 18 13:01:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>

@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -28,18 +28,16 @@ URL:            https://grommunio.com/
 Source:         https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.zst
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
-Patch1:         0001-build-resolve-i586-compile-error.patch
-BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}
 BuildRequires:  libmysqlclient-devel >= 5.6
+BuildRequires:  openldap2-devel
 %else
 BuildRequires:  mariadb-devel >= 5.6
+BuildRequiers:  openldap-devel
 %endif
-BuildRequires:  libtool >= 2
 BuildRequires:  make
-BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
@@ -126,7 +124,6 @@ ready-to-run installation of Gromox.
 %autosetup -p1
 
 %build
-autoreconf -fi
 %configure
 %make_build V=1
 
@@ -247,7 +244,7 @@ fi
 %_tmpfilesdir/*.conf
 %_unitdir/*
 %attr(0770,gromox,gromox) /var/lib/gromox/
-%attr(0750,gromox,gromox) /var/log/gromox/
+%attr(0770,gromox,gromox) /var/log/gromox/
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
 %dir %_libexecdir
 %endif
