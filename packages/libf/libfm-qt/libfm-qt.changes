@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 10 17:27:16 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Change in .spec to clear install issue with -lang subpackage
+  * https://build.opensuse.org/package/show/openSUSE:Factory/libfm-qt#comment-1846136 
+
+-------------------------------------------------------------------
 Sun Nov  5 14:30:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.0:
