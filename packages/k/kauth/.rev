@@ -1002,4 +1002,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.111.0. Public release next weekend (forwarded request 1116638 from krop)</comment>
     <requestid>1118672</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>84ff5aeca254d936f4b3fee2e8e42d46</srcmd5>
+    <version>5.112.0</version>
+    <time>1699910194</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.112.0. Public release next weekend (forwarded request 1124218 from krop)</comment>
+    <requestid>1125299</requestid>
+  </revision>
 </revisionlist>
