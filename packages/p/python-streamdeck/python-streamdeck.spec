@@ -17,7 +17,7 @@
 
 
 Name:           python-streamdeck
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Library to control Elgato StreamDeck devices
 License:        MIT

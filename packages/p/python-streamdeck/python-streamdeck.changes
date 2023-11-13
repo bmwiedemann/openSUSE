@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 13 12:21:44 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 0.9.4:
+  * Updated Windows HIDAPI backend to attempt to load from the
+    local working directory.
+  * Added detection for MacOS Homebrew installations of the
+    libhidapi back-end library.
+
+-------------------------------------------------------------------
 Wed Jul 19 09:32:34 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add requires on libhidapi-libusb0, its shared library is loaded
