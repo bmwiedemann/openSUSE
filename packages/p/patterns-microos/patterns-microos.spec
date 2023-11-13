@@ -69,8 +69,12 @@ Requires:       coreutils
 Requires:       coreutils-systemd
 Requires:       glibc
 Requires:       (grub2-branding-openSUSE if grub2)
+### Packages formerly provided by bootloader
+Requires:       (grub2-snapper-plugin if grub2)
+###
 Suggests:       busybox-hostname
 Requires:       NetworkManager
+Requires:       NetworkManager-bluetooth
 Requires:       NetworkManager-wifi
 Requires:       iproute2
 Requires:       lastlog2
@@ -483,6 +487,8 @@ Requires:       gnome-user-docs
 Requires:       gpgme
 # for online accounts and calendar integration
 Requires:       gnome-bluetooth
+# for display color profile support
+Requires:       gnome-control-center-color
 # needed to ensure bluetooth is enabled at startup (glgo#GNOME/gnome-bluetooth#110)
 Requires:       bluez-auto-enable-devices
 Requires:       gnome-control-center-goa
@@ -594,9 +600,9 @@ Requires:       partitionmanager
 Requires:       ksshaskpass5
 
 #KAccounts to be installed by default (boo#1216397)
-Requires:   kaccounts-integration
-Requires:   kaccounts-providers
-Requires:   kio-gdrive
+Requires:       kaccounts-integration
+Requires:       kaccounts-providers
+Requires:       kio-gdrive
 
 # Recommended by kde_plasma
 Requires:       bluedevil5
