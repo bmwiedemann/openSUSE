@@ -17,12 +17,10 @@
 
 
 Name:           babelstone-han-fonts
-Version:        15.1.1
+Version:        15.1.2
 Release:        0
 Summary:        BabelStone font for Han Script
 License:        Arphic-1999
-# rpmlint has not been updated yet to reflect the new license names already present on
-# format specfile https://github.com/rpm-software-management/rpmlint/pull/982
 Group:          System/X11/Fonts
 URL:            http://www.babelstone.co.uk/Fonts/
 Source0:        http://babelstone.co.uk/Fonts/Download/BabelStoneHan.zip

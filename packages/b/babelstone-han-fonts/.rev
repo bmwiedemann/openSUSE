@@ -46,4 +46,13 @@
     <comment></comment>
     <requestid>1110887</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>432ccad8cd03a0c127f682bb07bbd5f0</srcmd5>
+    <version>15.1.2</version>
+    <time>1699910318</time>
+    <user>anag+factory</user>
+    <comment>- Update to 15.1.2
+ * 49 glyph corrections and improvements</comment>
+    <requestid>1125101</requestid>
+  </revision>
 </revisionlist>
