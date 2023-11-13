@@ -1042,4 +1042,35 @@
 </comment>
     <requestid>1118531</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>f631a448f124e6b42b0db1bb0856af81</srcmd5>
+    <version>3.0.5</version>
+    <time>1699910178</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.5:
+  * Preliminary support for CPython 3.13a1 was added to allow
+    early testing.
+  * Bugs fixed
+  * A compiler crash was fixed.
+  * A typo in the ``always_allow_keywords`` directive for Python
+    code was fixed.
+  * Some C compiler warnings were resolved.
+
+    resolved if the for-loop's  ``else:`` branch executes
+    track these dependencies.
+    would trigger C compiler warnings with tracing support enabled.
+- Drop cython_use_imgmath.patch
+- Update to 0.29.22
+ * Remove an incorrect cast when using true-division in C++ operations.
+ * C compile errors with CPython 3.8 were resolved.
+  needed by Ceph - stopgap measure until issue can be addressed
+    of the main source file.
+- Remove Cython-fix-version-detection.patch
+  detecting Cython's presence.  It is already merged upstream and
+  Note that despite what upstream says,
+  this, which is why the patch is going here instead of
+  * For loop docs fix and pointer iteration.
+  * Py2.4 fix: PySet_Pop() appeared in Py2.5</comment>
+    <requestid>1124974</requestid>
+  </revision>
 </revisionlist>
