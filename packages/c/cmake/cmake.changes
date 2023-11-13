@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct 13 08:06:23 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.27.7:
+  * Tests: Clarify RunCMake.CTestTimeout case name
+  * ctest: Restore support for --timeout values higher than default test timeout
+  * Help: Document CMP0124 behavior on already-set variables
+  * FindPostgreSQL: Add support for version 16
+
+-------------------------------------------------------------------
+Fri Sep 15 05:49:45 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.27.5:
+  * cmGeneratorTarget: support config-independent Fortran source queries
+  * cmComputeLinkInformation: compute link info for module-using targets
+  * FortranCInterface: forward CMAKE_OSX_DEPLOYMENT_TARGET
+  * cxxmodules: detect and message about non-compiled sources
+  * Source: Link libatomic when needed on any Linux architecture
+  * Help: MSVC_DEBUG_INFORMATION_FORMAT is initialized from associated variable
+  * FindBoost: Add support for Boost 1.83
+  * Autogen: Evaluate INTERFACE_AUTOMOC_MACRO_NAMES efficiently
+  * VS: Avoid unnecessary CUDA device linking for OBJECT libraries
+
+-------------------------------------------------------------------
+Wed Aug 23 20:04:25 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.27.4:
+  * Fix support for Intel compiler with modern GNU system compiler
+  * Graphviz: Restore support for per-target dependency graph options
+  * FindOpenSSL: Fix OpenSSL 3.0.0 version extraction
+
+-------------------------------------------------------------------
 Sat Aug 12 12:38:42 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - update to 3.27.2
