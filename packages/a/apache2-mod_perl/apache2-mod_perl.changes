@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 13 16:41:31 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 2.0.13: 
+  * Use get_server_banner() instead of deprecated get_server_version() in
+    Apache2::Status.  
+  * Avoid generating APR precompiled headers.
+  * Fix build for perl >= 5.37.1.
+
+- Removed apache2-mod_perl-perl-5.38.patch (fix already upstream)
+
+-------------------------------------------------------------------
 Tue Aug  8 09:38:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add apache2-mod_perl-perl-5.38.patch: Fix build with Perl 5.38.

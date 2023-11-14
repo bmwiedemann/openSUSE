@@ -18,7 +18,7 @@
 
 %define srcname mod_perl
 Name:           apache2-mod_perl
-Version:        2.0.12
+Version:        2.0.13
 Release:        0
 Summary:        Embedded Perl for Apache
 License:        Apache-2.0
@@ -30,7 +30,6 @@ Source2:        https://www.apache.org/dist/perl/KEYS#/%{name}.keyring
 Patch1:         avoid-broken-provides.diff
 # bsc#1091625, workaround, according to mls it should be solved in perl
 Patch2:         apache2-mod_perl-prctl-short-name.patch
-Patch3:         apache2-mod_perl-perl-5.38.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  db-devel
