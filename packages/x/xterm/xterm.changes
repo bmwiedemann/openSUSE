@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 12 09:47:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 388:
+  * improve disallowPasteControls by adding a category for the
+    special characters known to stty (prompted by discussion
+    with David Leadbeater).
+  * amend support of DECAUPSS, undoing change to initialization of
+    G2/G3 so that pasting of GR characters work properly
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
 Mon Oct 16 21:07:38 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update 387:
@@ -205,14 +216,14 @@ Sat Nov  5 19:20:27 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 - update to 375:
   * improve error-recovery when setting a bitmap font for the VT100
     window, e.g., in case OSC 50 failed, restoring the most recent
-    valid font so that a subsequent OSC 50 reports this correctly 
+    valid font so that a subsequent OSC 50 reports this correctly
     CVE-2022-45063 boo#1205305
   * exclude MC_XDG_OPEN from environment variables trimmed on
     startup
   * check for null pointer in isSelect()
 - includes changes from 374:
   * change default for sixelScrolling resource to better match
-    VT330/VT340 DECSDM setting 
+    VT330/VT340 DECSDM setting
   * fix some gcc and coverity warnings.
   * improve memory usage for OSC 52
   * fix regression in xterm-373 change adding resources
@@ -362,7 +373,7 @@ Fri Nov 26 21:16:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
     070.
   * amend a change in patch #348 which caused left/right margin mode to
     be  reset  when  resizing  the terminal window
-  * fix a misnamed macro-parameter 
+  * fix a misnamed macro-parameter
   * fix spacing of wideFont when its width is not exactly twice as wide
     as the normal font
   * suppress loading of italic font in a few places when colorITmode is
@@ -601,8 +612,8 @@ Tue Sep 15 21:25:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * enable SIXEL feature by default.
   * update config.guess, config.sub
   * correct logic for decodeTerminalID changes in patch #357
-  * modify makefile to use plink.sh when linking test-programs, to fix build when using pcre 
-  * build-fix for test_ptydata program 
+  * modify makefile to use plink.sh when linking test-programs, to fix build when using pcre
+  * build-fix for test_ptydata program
   * several minor optimizations for the ReGIS and SIXEL features, improving performance by 10%.
   * add resource decGraphicsID to allow displaying graphics when the emulation level would ordinarily disallow this
   * add control sequences for fast switching of color palettes: XTPUSHCOLORS, XTPOPCOLORS, XTREPORTCOLORS
@@ -639,7 +650,7 @@ Tue Sep 15 21:25:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * use improved xm example for xterm+x11mouse, xterm+sm+1006 from ncurses 6.2 terminfo.src
   * two fixes for left/right wheel mouse event reporting
   * filter identical button-events
-  * correct order of button-range versus protocol type 
+  * correct order of button-range versus protocol type
   * change “make check” makefile-rule to use test-drivers for charclass and wcwidth data.
   * quiet “did not find a usable xxx TrueType font” warnings by making fontWarnings apply to these messages
   * improve reinitialization of parameter list
@@ -812,7 +823,7 @@ Wed May 15 13:59:14 UTC 2019 - seanlew@opensuse.org
   * correct a typo in setDirectFG
   * add resource useBorderClipping
   * fix a special case in XTPOPSGR to check direct colors
-  * increase response-buffer size 
+  * increase response-buffer size
   * reduce the number of buffer-flashes for tcap-query batches
 
 -------------------------------------------------------------------
@@ -862,14 +873,14 @@ Sat Dec 29 07:01:48 UTC 2018 - sean@suspend.net
   * correct off-by-one right margin checks for double-width char adjustments
   * modify the initial pattern passed to fontconfig to disallow color bmps
   * improve error recovery for a case where fontconfig ignores the requested pattern
- 
+
 -------------------------------------------------------------------
 Sun Sep 23 11:40:33 UTC 2018 - sean@suspend.net
 
 - Patch #337
   * regenerated configure script
   * revise/improve fix for scrolling in margins
-  * amend change to default-translations "select" to ensure that specific key-press actions are listed first 
+  * amend change to default-translations "select" to ensure that specific key-press actions are listed first
 
 -------------------------------------------------------------------
 Sun Aug 26 20:30:58 UTC 2018 - pcerny@suse.com
@@ -1142,7 +1153,7 @@ Sat Feb  3 04:26:19 UTC 2018 - avindra@opensuse.org
 Fri Nov 10 15:40:46 UTC 2017 - sndirsch@suse.com
 
 - xterm-settings.patch
-  * define also wideBoldFont to get rid of a warning (bsc#1067530) 
+  * define also wideBoldFont to get rid of a warning (bsc#1067530)
 
 -------------------------------------------------------------------
 Thu Aug 10 15:29:31 UTC 2017 - pcerny@suse.com
@@ -1636,18 +1647,18 @@ Wed Sep  2 13:50:49 UTC 2015 - pcerny@suse.com
 Sun Apr 19 09:03:43 UTC 2015 - mpluskal@suse.com
 
 - Update to version 318
-  * rename new(er) configure option --enable-initial-erase to 
-    --enable-pty-erase, since that conflicted with an existing 
+  * rename new(er) configure option --enable-initial-erase to
+    --enable-pty-erase, since that conflicted with an existing
     option (report by Jens Schweikhardt).
-  * fix cut/paste error in --with-builtin-xpms configure option 
+  * fix cut/paste error in --with-builtin-xpms configure option
     (reports by Jens Schweikhardt, Ross Combs).
-  * fix minor formatting issue in xterm manual (report by Jens 
+  * fix minor formatting issue in xterm manual (report by Jens
     Schweikhardt).
-  * eliminate unnecessary "#(vi" markers in autoconf macros by 
-    using "(" to begin case-statement cases (suggested by Jens 
+  * eliminate unnecessary "#(vi" markers in autoconf macros by
+    using "(" to begin case-statement cases (suggested by Jens
     Schweikhardt).
   * minor fixes to improve const usage (Ross Combs).
-- Add pkgconfig and groff as dependency as configure is looking 
+- Add pkgconfig and groff as dependency as configure is looking
   for them
 
 -------------------------------------------------------------------
@@ -1885,7 +1896,7 @@ Sun Oct 12 18:39:01 UTC 2014 - badshah400@gmail.com
 
 - Add xterm-desktop-item-in-gnome-utilities-appfolder.patch to
   group xterm desktop item in the Utilities app-folder in the
-  GNOME shell. 
+  GNOME shell.
 
 -------------------------------------------------------------------
 Mon Sep 29 14:12:20 UTC 2014 - pcerny@suse.com
@@ -1933,7 +1944,7 @@ Wed Sep 17 09:39:07 UTC 2014 - pcerny@suse.com
 -------------------------------------------------------------------
 Tue Aug 12 15:56:01 UTC 2014 - pcerny@suse.com
 
-- fix SUSE naming in the package files (bnc#888995) 
+- fix SUSE naming in the package files (bnc#888995)
 
 -------------------------------------------------------------------
 Thu Jul 31 10:39:19 UTC 2014 - pcerny@suse.com
@@ -2547,7 +2558,7 @@ Tue Oct 30 12:04:34 UTC 2012 - pcerny@suse.com
  * improve check for window-manager name needed to establish
    usable default for activeIcon resource. This works around a
    scenario where gdm does incomplete cleanup, leaving window
-   properties that refer to windows which no longer exist 
+   properties that refer to windows which no longer exist
    (Redhat #869959).
 
 
