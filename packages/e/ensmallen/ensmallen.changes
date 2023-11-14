@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 14 04:26:56 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.20.0:
+  * Implementation of Active CMAES (gh#mlpack/ensmallen#367).
+  * LBFGS: avoid generation of NaNs, and add checks for finite
+    values (gh#mlpack/ensmallen#368).
+  * Fix CNE test tolerances (gh#mlpack/ensmallen#360).
+  * Rename SCD optimizer, to CD (gh#mlpack/ensmallen#379).
+- Build and run tests.
+
+-------------------------------------------------------------------
 Fri Mar  3 09:13:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.1:

@@ -59,4 +59,12 @@
   * Avoid deprecation warnings in Armadillo 11.2+</comment>
     <requestid>1069112</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ac762ad49d3aa71a6d2c2abe2da695a</srcmd5>
+    <version>2.20.0</version>
+    <time>1699994564</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125829</requestid>
+  </revision>
 </revisionlist>

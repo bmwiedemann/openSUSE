@@ -18,7 +18,7 @@
 
 
 Name:           ensmallen
-Version:        2.19.1
+Version:        2.20.0
 Release:        0
 Summary:        Math optimization C++ library
 License:        BSD-3-Clause AND MPL-2.0 AND BSL-1.0
@@ -56,11 +56,14 @@ techniques, gradient-free optimizers, and constrained optimization.
 %build
 %cmake -DENSMALLEN_CMAKE_DIR=%{_libdir}/cmake/ensmallen/
 # Build the tests
-%cmake_build
+%cmake_build ensmallen_tests
 
 %install
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
+
+%check
+%ctest
 
 %files devel
 %license COPYRIGHT.txt
