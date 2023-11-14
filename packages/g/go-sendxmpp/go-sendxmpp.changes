@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 14 06:55:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Reply to XEP-0092 software version requests.
+  * Add support for PLUS variants of SCRAM authentification mechanisms
+    (requires go-xmpp commit 4c385a334c606e8bc387f0a3d4d84975802b3984).
+  * Add pinning of last used authentification mechanism if a SCRAM
+    mechanism was used.
+  * Print every stanza in a new line (requires go-xmpp commit
+    31c7eb6919b67b18e901dc45a8e5681040ea7f31).
+
+-------------------------------------------------------------------
+Sat Sep 30 06:42:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * Properly close connection to server if ^C is pressed in
+    interactive mode.
+  * Replace invalid characters by UTF8 replacement char.
+  * Add warning that there is no Ox support for messages of type
+    headline.
+  * Suppress warnings about reading from closed connection if
+    go-sendxmpp closes the connection before exiting.
+  * Remove unnecessary newlines after stanzas.
+  * Fix segfault when authentication fails due to invalid username
+    or password.
+
+-------------------------------------------------------------------
 Wed Jul 26 06:04:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.1:
