@@ -1590,4 +1590,12 @@ Last accepted SR#253447 from opensuse132-syncer to rsyslog 8.4.1 contained an in
     <comment>restart daemon after modules packages have been updated (bsc#1214996) (forwarded request 1119625 from tsaupe)</comment>
     <requestid>1120194</requestid>
   </revision>
+  <revision rev="175" vrev="3">
+    <srcmd5>b1505b18c1e45404b6e46ee4fd0a59c2</srcmd5>
+    <version>8.2306.0</version>
+    <time>1699994503</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125597</requestid>
+  </revision>
 </revisionlist>

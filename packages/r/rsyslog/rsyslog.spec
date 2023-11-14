@@ -222,6 +222,8 @@ Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
 
+Patch1:         0001-use-logind-instead-of-utmp-for-wall-messages-with-sy.patch
+
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing
 %define APPARMOR_PROFILE_PATH /usr/share/apparmor/extra-profiles
@@ -581,6 +583,7 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -W -Wall -I../grammar -I../..
 
 # for patch1
 autoreconf -fiv
+%autopatch -p1
 
 %configure			\
 	--with-moddirs=%{rsyslog_module_dir_withdeps} \

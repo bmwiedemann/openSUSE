@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 25 08:27:13 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
+
+- use logind instead of utmp for wall messages with systemd
+
+Future SUSE versions will get rid of utmp due to a 32bit time_t counter
+overflow in 2038.
+See details at:
+
+https://github.com/thkukuk/utmpx/blob/main/Y2038.md
+
+On systemd based systems logind is an alternative to utmp.
+
+* add: 0001-use-logind-instead-of-utmp-for-wall-messages-with-sy.patch
+
+-------------------------------------------------------------------
 Tue Sep  5 12:43:28 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
 
 - trigger daemon restart after modules packages have been updated 
