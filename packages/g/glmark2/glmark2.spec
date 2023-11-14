@@ -18,7 +18,7 @@
 
 
 Name:           glmark2
-Version:        20230104
+Version:        20231101
 Release:        0
 Summary:        OpenGL 2.0 and ES 2.0 benchmark
 License:        GPL-3.0-only

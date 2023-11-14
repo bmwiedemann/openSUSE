@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:15:45 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20231101:
+  * GLVisualConfig: By default don't care about the stencil config component
+  * Options,GLStateEGL,GLStateGLX: Add option to require a good visual config
+  * GLStateEGL,GLStateGLX: Change failure to get a "good" visual config to warning
+  * libmatrix: Add Log::warning() function
+  * meson.build: fix build and avoid sigsegv
+  * NativeStateX11: Add winsys option for position
+  * Build,Doc: Update files for 2023.01 release
+  * NativeStateMir: Remove Mir/mirclient support
+
+-------------------------------------------------------------------
 Thu Jan 19 09:46:29 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230104:
