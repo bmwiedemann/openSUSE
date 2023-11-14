@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 08:50:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Sep 07 12:27:17 UTC 2022 - kastl@b1-systems.de
 
 - refresh patch kured-imagePullPolicy.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package kured
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Group:          System/Management
 URL:            https://github.com/weaveworks/kured
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch:          systemctl-path.patch
+Patch0:         systemctl-path.patch
 Patch1:         kured-imagePullPolicy.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
@@ -61,7 +61,7 @@ kured container in a kubernetes cluster.
 
 %prep
 %setup -qa1
-%patch -p1
+%patch0 -p1
 %patch1 -p1
 
 %build
