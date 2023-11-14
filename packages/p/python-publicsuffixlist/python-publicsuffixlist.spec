@@ -1,7 +1,7 @@
 #
 # spec file for package python-publicsuffixlist
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-publicsuffixlist
-Version:        0.9.1
+Version:        0.10.0.20231109
 Release:        0
 Summary:        Public suffix list implementaion in Python
 License:        MPL-2.0

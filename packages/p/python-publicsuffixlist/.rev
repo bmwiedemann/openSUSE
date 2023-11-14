@@ -142,4 +142,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1034312</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a9772b1b40c401229b42eac7a51fed31</srcmd5>
+    <version>0.10.0.20231109</version>
+    <time>1699994626</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10.0.20231109:
+  * switch to automatically generated and uploaded to PyPI
+  release.
+
+- Update to version 0.9.1</comment>
+    <requestid>1125881</requestid>
+  </revision>
 </revisionlist>
