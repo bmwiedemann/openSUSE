@@ -389,4 +389,16 @@
   * snapshot: Add context cancellation handling (#318) (forwarded request 1121623 from glaubitz)</comment>
     <requestid>1121627</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>06743ba96acd38fa7adc63a5fb2e56ce</srcmd5>
+    <version>20231110.00</version>
+    <time>1699994623</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231110.00
+  * Update Google UEFI variable (#329)
+  * Update owners (#328)
+- from version 20231103.00
+  * Make config parsing order consistent (#327) (forwarded request 1125864 from glaubitz)</comment>
+    <requestid>1125878</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:13:32 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231110.00
+  * Update Google UEFI variable (#329)
+  * Update owners (#328)
+- from version 20231103.00
+  * Make config parsing order consistent (#327)
+
+-------------------------------------------------------------------
 Wed Nov  1 14:05:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20231031.01 (bsc#1216547, bsc#1216751)
