@@ -18,7 +18,7 @@
 
 %define new_name mysql-connector-j
 Name:           mysql-connector-java
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later

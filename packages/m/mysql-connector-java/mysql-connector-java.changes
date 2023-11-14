@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov 13 16:34:19 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 8.2.0: 
+  - Added the missing implementation for 
+    Connection.releaseSavepoint(). (Bug #35811592)
+  - Connector/J now supports WebAuthn Authentication. See Connecting
+    Using Web Authentication (WebAuthn) Authentication for details. 
+    (WL #15197)
+  - The auto-deserialization function for BLOB objects, deprecated 
+    since release 8.1.0, is now removed. (WL #15747)
+  - The SessionStateChanges objects failed to provide proper values 
+    for section state changes. This was because Connector/J parsed 
+    the OK_Packet incorrectly, and this patch fixes the issue. 
+    (Bug #35358417)
+  - Using javax.sql.rowset.CachedRowSet#getDate() or 
+    javax.sql.rowset.CachedRowSet#getTimestamp() on DATETIME fields 
+    resulted in a ClassCastException. It was because the default 
+    return type of DATETIME fields by ResultSet.getObject() was 
+    java.time.LocalDateTime instead of java.sql.Timestamp. To 
+    prevent the exception, a new connection property, 
+    treatMysqlDatetimeAsTimestamp, now allows the return type of 
+    DATETIME by ResultSet.getObject() to be changed to 
+    java.sql.Timestamp. (Bug #107215, Bug #34139593)
+  - Obtaining a connection from a MysqlConnectionPoolDataSource made 
+    Connector/J reset its connection state unless the connection 
+    property paranoid was set to be true. During the reset, the 
+    autocommit mode of the session was restored to the default value
+    specified on the server by the system variable autocommit, while 
+    the JDBC specification mandates that autocommit be always 
+    enabled for a freshly created connection. With this patch, the 
+    connection reset will always enable autocommit in the situation. 
+    (Bug #91351, Bug #28225464)
+
+-------------------------------------------------------------------
 Tue Sep 26 05:14:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
