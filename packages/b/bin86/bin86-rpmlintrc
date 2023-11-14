@@ -1,4 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter("dev86.* devel-file-in-non-devel-package")
