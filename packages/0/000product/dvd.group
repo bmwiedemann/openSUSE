@@ -1688,7 +1688,7 @@
     <package name="libcpupower0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libcreaterepo_c0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libcreaterepo_c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2045,7 +2045,7 @@
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libicu73" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libicu73-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libid3tag0_16_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libidn2-0-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
