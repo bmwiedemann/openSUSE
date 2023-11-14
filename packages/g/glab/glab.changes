@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 10 09:33:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adapt BuildRequires to allow building on
+  Fedora/RHEL/CentOS/Almalinux/RockyLinux
+- BuildRequire go1.19 on openSUSE
+
+-------------------------------------------------------------------
 Tue Nov 07 07:37:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.35.0:

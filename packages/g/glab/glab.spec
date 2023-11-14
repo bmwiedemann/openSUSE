@@ -29,7 +29,11 @@ URL:            https://gitlab.com/gitlab-org/cli
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.18
+%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
+BuildRequires:  golang >= 1.19
+%else
+BuildRequires:  golang(API) >= 1.19
+%endif
 Suggests:       glab-doc
 
 %description
