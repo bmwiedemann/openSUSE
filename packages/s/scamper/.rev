@@ -294,4 +294,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117776</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a4ffc85e54435ca154e7b09d5d3926e8</srcmd5>
+    <version>20230614d</version>
+    <time>1699994509</time>
+    <user>anag+factory</user>
+    <comment>- update to 20230614d (bsc#1217032):
+  * fix buffer overflow when parsing TCP packets where the sender
+    includes a TCP fast open cookie larger than 16 bytes
+
+    sc_hoiho man page</comment>
+    <requestid>1125095</requestid>
+  </revision>
 </revisionlist>

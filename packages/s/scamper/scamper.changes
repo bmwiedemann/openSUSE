@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 10 15:00:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230614d (bsc#1217032):
+  * fix buffer overflow when parsing TCP packets where the sender
+    includes a TCP fast open cookie larger than 16 bytes
+
+-------------------------------------------------------------------
 Sat Oct  7 09:04:41 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20230614c:
@@ -326,7 +333,7 @@ Tue Dec 14 17:50:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - sc_hoiho:
   * add the ability to learn regular expressions that extract
     network names from router hostnames, documented in the
-    sc_hoiho man page 
+    sc_hoiho man page
 
 -------------------------------------------------------------------
 Wed Oct 27 18:47:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
@@ -611,15 +618,15 @@ Thu Aug 24 06:58:41 UTC 2017 - sebix+novell.com@sebix.at
   * fix possible memory leaks detected with static analysis.
   * quality assurance on research paper cites in manual pages.
   * spelling errors noticed by Iain R. Learmonth.
-  
+
   sc_ally:
   * add feature to dump inferred aliases from the collected data.
-  
+
   sc_speedtrap:
   * add threaded implementation of pairwise comparison to form candidate
     alias sets, if pthreads are detected at compilation time and
     --disable-threads configure option is not supplied.
-  
+
   sc_uptime:
   * new scamper driver to infer IPv6 device reboot windows if the device
     returns an incrementing identifier field in the IPv6 fragmentation
