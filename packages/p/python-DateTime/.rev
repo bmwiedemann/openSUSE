@@ -72,4 +72,14 @@
   * Fix compare methods between DateTime instances and None.</comment>
     <requestid>1100472</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3942d128c86f631308ad281dd97790c</srcmd5>
+    <version>5.3</version>
+    <time>1699994614</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3:
+  * Add support for Python 3.12.
+  * Add preliminary support for Python 3.13a2.</comment>
+    <requestid>1125873</requestid>
+  </revision>
 </revisionlist>

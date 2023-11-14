@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:39:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3:
+  * Add support for Python 3.12.
+  * Add preliminary support for Python 3.13a2.
+
+-------------------------------------------------------------------
 Mon Jul 24 20:22:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2:
