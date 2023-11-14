@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:40:16 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- # 1.17.0
+
+* Ensure `$LOAD_PATH.dup` is Ractor shareable to fix an conflit with `did_you_mean`.
+* Allow to ignore direcotries using absolute paths.
+* Support YAML and JSON CompileCache on TruffleRuby.
+* Support LoadPathCache on TruffleRuby.
+
+# 1.16.0
+
+* Use `RbConfig::CONFIG["rubylibdir"]` instead of `RbConfig::CONFIG["libdir"]` to check for stdlib files. See #431.
+* Fix the cached version of `YAML.load_file` being slightly more permissive than the default `Psych` one. See #434.
+  `Date` and `Time` values are now properly rejected, as well as aliases.
+  If this causes a regression in your application, it is recommended to load *trusted* YAML files with `YAML.unsafe_load_file`.
+
+
+-------------------------------------------------------------------
 Wed Dec  7 11:13:46 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.15.0
