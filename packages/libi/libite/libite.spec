@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           libite
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        BSD function library
 License:        MIT AND X11

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 12 17:14:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+  * FTBFS uClibc and musl libc, `lite.h` missing `stdarg.h`
+    include
+
+-------------------------------------------------------------------
 Mon Sep 18 14:53:04 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 2.6.0:
