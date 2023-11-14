@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:36:06 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 10.4.15.0
+* Improved startup time and reduced JS bundle size (by Kārlis Gaņģis).
+* Fixed `::backdrop` prefixes (by 一丝).
+
+## 10.4.13.0
+* Fixed missed prefixes on vendor prefixes in name of CSS Custom Property.
+* Fixed support of unit-less zero angle in backgrounds (by 一丝).
+* Fixed `text-decoration` prefixes by moving to MDN data (by Romain Menke).
+* Fixed `unicode-bidi` prefixes by moving to MDN data.
+* Fixed `css-unicode-bidi` issue from latest Can I Use.
+* Do not print `color-adjust` warning if `print-color-adjust` also is in rule.
+
+
+-------------------------------------------------------------------
 Thu Aug  4 12:55:00 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 10.4.7.0
