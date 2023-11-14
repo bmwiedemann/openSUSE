@@ -1157,4 +1157,12 @@ goes in line with 946250</comment>
   see the &quot;Examples&quot; section of the sssd.conf(5) manpage)</comment>
     <requestid>1122924</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>23de2d35cb0ea89ab9a6ef688402197f</srcmd5>
+    <version>2.9.3</version>
+    <time>1699994501</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.9.3</comment>
+    <requestid>1125590</requestid>
+  </revision>
 </revisionlist>

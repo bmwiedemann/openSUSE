@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 13 12:48:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.3
+  * The proxy provider is now able to handle certificate mapping
+    and matching rules and users handled by the proxy provider can
+    be configured for local Smartcard authentication. Besides the
+    mapping rule local Smartcard authentication should be enabled
+    with the `local_auth_policy` option in the backend and with
+    `pam_cert_auth` in the PAM responder.
+
+-------------------------------------------------------------------
 Thu Nov  2 16:09:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Offer the sssd.conf template as %doc (for examples, do actually
