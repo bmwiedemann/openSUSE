@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 10 07:40:00 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Macro %{?sle15_python_module_pythons} must at beginn of spec to
+  fix build error in Leap.
+
+-------------------------------------------------------------------
 Mon Nov  6 23:25:32 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 5.1.0:

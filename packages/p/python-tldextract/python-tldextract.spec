@@ -17,6 +17,7 @@
 
 
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-tldextract
 Version:        5.1.0
 Release:        0
@@ -48,7 +49,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Obsoletes:      %{oldpython}-tldextract <= 2.0.1
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
+
 %python_subpackages
 
 %description
