@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 13 23:51:00 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update 14.0.1
+ * GH-38431 - [Python][CI] Update fs.type_name checks for s3fs tests
+ * GH-38607 - [Python] Disable PyExtensionType autoload
+- update to 14.0.1
+ * very long list of changes can be found here:
+ https://arrow.apache.org/release/14.0.0.html
+
+-------------------------------------------------------------------
 Fri Aug 25 09:05:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 13.0.0
