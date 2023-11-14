@@ -1,12 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 10 15:24:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Fix the problem that the URL cannot be opened on MS Windows
+    (:issue:`391`)
+
+-------------------------------------------------------------------
 Wed Jan 11 15:35:11 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.5.0
   Features:
-  * Able to identify Nordic GTK Theme as dark theme 
+  * Able to identify Nordic GTK Theme as dark theme
   * Activate the corresponding buffer to a response user query
   Changes:
-  * Suppress error message when connection keeps failing 
+  * Suppress error message when connection keeps failing
   Bug fixes:
   * Fix SASL authentication error when connecting to Soju
 
@@ -14,7 +21,7 @@ Wed Jan 11 15:35:11 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
   Features:
   * Add support for IRCv3 standard-replies
   * Add support for SASL EXTERNAL, invite-notify, server-time
-  * Add conf item server-visibility for setting default server visiblity 
+  * Add conf item server-visibility for setting default server visiblity
   * Add /clear command for clearing messages of current buffer
 
 -------------------------------------------------------------------
@@ -155,10 +162,10 @@ Sat Mar 14 08:22:06 UTC 2020 - aloisio@gmx.com
   Changes:
   * Make header bar buttons repect default belief (#205, #218)
   Bug fixes:
-  * Fix case sensitivity issue for IRC messages (#202), thanks 
+  * Fix case sensitivity issue for IRC messages (#202), thanks
     to @hhirtz
   * Fix invalid changelog section of appdata file (#214)
-  * Fix missing dependences in documentation (#216), thanks to 
+  * Fix missing dependences in documentation (#216), thanks to
     @avoidr
 
 -------------------------------------------------------------------
@@ -217,7 +224,7 @@ Mon May 13 06:38:26 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 -------------------------------------------------------------------
 Sun Apr 14 11:22:59 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
-- Update to version 1.0.0rc3 (no changelog supplied) 
+- Update to version 1.0.0rc3 (no changelog supplied)
 
 -------------------------------------------------------------------
 Thu Jan 24 12:09:57 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>

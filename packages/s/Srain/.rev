@@ -95,4 +95,21 @@
     <comment></comment>
     <requestid>1058450</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c986cd9b3e57877bbb39dc8496cc8f8a</srcmd5>
+    <version>1.5.1</version>
+    <time>1699994508</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Fix the problem that the URL cannot be opened on MS Windows
+    (:issue:`391`)
+
+  * Able to identify Nordic GTK Theme as dark theme
+  * Suppress error message when connection keeps failing
+  * Add conf item server-visibility for setting default server visiblity
+  * Fix case sensitivity issue for IRC messages (#202), thanks
+  * Fix missing dependences in documentation (#216), thanks to
+- Update to version 1.0.0rc3 (no changelog supplied)</comment>
+    <requestid>1125007</requestid>
+  </revision>
 </revisionlist>
