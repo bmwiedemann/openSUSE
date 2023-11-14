@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov 13 09:17:21 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.19.1
+  * Support all iterators
+  * Support parsing bitfields from BTF/DWARF and printing entire
+    structs
+  * Support using BTF for tracepoints defined in modules
+  * PowerPC
+    * Enable watchpoint support
+  * Add new function, offsetof, get the offset of the element in
+    the struct
+  * Add iter:task_vma iterators detection
+  * Add trailer to truncated strings
+  * Support func builtin for k(ret)func probes
+  * Support casting int <-> int array
+  * Support targeting all running processes for USDTs
+  * Improve attaching to uprobes with size 0
+  * Make args a structure (instead of a pointer)
+  * Improve user symbol resolution
+  * uprobes: make C++ symbol demangling explicit
+  * uprobe: improve C++ probes listing
+  * Fix segfaults in dwarf_parser
+  * Fix resolving username for malformed /etc/passwd
+  * Fix crashes when maps are concurrently modified
+  * Fix alignment of byte arrays inside tuples
+  * Allow '+' in attach point path
+  * Improve listing and 'probe' builtin for several probe types
+  * Allow probe builtin with aliased software/hardware probes
+  * Support executing symlinked binaries with -c
+  * Add access to CLOCK_MONOTONIC with nsecs(monotonic)
+  * iter: Skip structures with '__safe_trusted' suffix
+  * Improve detection of unknown typedefs in ClangParser
+- Drop Vendor-BPF_F_KPROBE_MULTI_RETURN-definition.patch since it
+  is included from v0.18.0
+
+-------------------------------------------------------------------
 Mon Mar  6 08:57:00 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Add Vendor-BPF_F_KPROBE_MULTI_RETURN-definition.patch to fix build on

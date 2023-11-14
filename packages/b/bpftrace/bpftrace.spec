@@ -31,14 +31,13 @@
 %endif
 
 Name:           bpftrace
-Version:        0.17.0
+Version:        0.19.1
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         Vendor-BPF_F_KPROBE_MULTI_RETURN-definition.patch
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison
