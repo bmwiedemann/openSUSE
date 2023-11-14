@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:32:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to detect and use libexiv2 0.28.1
+  * 0001-Use-FindLibExiv2.cmake-from-ECM.patch
+
+-------------------------------------------------------------------
 Sat Aug 26 10:01:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Adapt once again to the build system changes in akonadi*

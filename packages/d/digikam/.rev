@@ -1876,4 +1876,13 @@ General : Update internal Libraw to snapshot 202110
 - Add the optional libpulse dependency (boo#1210750)</comment>
     <requestid>1106031</requestid>
   </revision>
+  <revision rev="217" vrev="3">
+    <srcmd5>f835862ed10aa32730b7db62feb7d2f7</srcmd5>
+    <version>8.1.0</version>
+    <time>1699994627</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to detect and use libexiv2 0.28.1
+  * 0001-Use-FindLibExiv2.cmake-from-ECM.patch</comment>
+    <requestid>1125891</requestid>
+  </revision>
 </revisionlist>

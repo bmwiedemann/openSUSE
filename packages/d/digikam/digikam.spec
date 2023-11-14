@@ -32,6 +32,8 @@ Source2:        %{name}.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Look-for-each-akonadi-component-separately.patch
+# PATCH-FIX-UPSTREAM fixed differently upstream
+Patch1:         0001-Use-FindLibExiv2.cmake-from-ECM.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
