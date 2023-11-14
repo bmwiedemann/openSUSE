@@ -163,4 +163,41 @@
    * Avoid raising D300 when both triple quote styles are present</comment>
     <requestid>1123950</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9aecac61f0953ca41b3b191cfd3c088e</srcmd5>
+    <version>0.1.5</version>
+    <time>1699994536</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.5
+ * Preview features
+   * [flake8-bandit] Implement mako-templates (S702)
+   * [flake8-trio] Implement TRIO105
+   * [flake8-trio] Implement TRIO109
+   * [flake8-trio] Implement TRIO110
+   * [flake8-trio] Implement TRIO115
+   * [refurb] Implement type-none-comparison (FURB169)
+   * Flag all comparisons against builtin types in E721
+   * Make SIM118 fix as safe when the expression is a known dictionary
+ * Formatter
+   * Fix multiline lambda expression statement formatting
+ * CLI
+   * Add hidden --extension to override inference of source type from file extension
+   * Configuration
+   * Account for selector specificity when merging extend_unsafe_fixes and override extend_safe_fixes
+   * Add support for disabling cache with RUFF_NO_CACHE environment variable
+ * Bug fixes
+   * [E721] Flag comparisons to memoryview
+   * Allow collapsed-ellipsis bodies in other statements
+   * Avoid D301 autofix for u prefixed strings
+   * Only flag flake8-trio rules when trio import is present
+   * Reject more syntactically invalid Python programs
+   * Avoid raising TRIO115 violations for trio.sleep(...) calls with non-number values
+   * Fix F841 false negative on assignment to multiple variables
+ * Documentation
+   * Fix link to isort known-first-party
+   * Add notes on fix safety to a few rules
+   * Add missing toml config tabs
+   * Add instructions for configuration of Emacs</comment>
+    <requestid>1125607</requestid>
+  </revision>
 </revisionlist>

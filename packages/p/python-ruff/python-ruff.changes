@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Nov 13 14:21:57 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.5
+ * Preview features
+   * [flake8-bandit] Implement mako-templates (S702)
+   * [flake8-trio] Implement TRIO105
+   * [flake8-trio] Implement TRIO109
+   * [flake8-trio] Implement TRIO110
+   * [flake8-trio] Implement TRIO115
+   * [refurb] Implement type-none-comparison (FURB169)
+   * Flag all comparisons against builtin types in E721
+   * Make SIM118 fix as safe when the expression is a known dictionary
+ * Formatter
+   * Fix multiline lambda expression statement formatting
+ * CLI
+   * Add hidden --extension to override inference of source type from file extension
+   * Configuration
+   * Account for selector specificity when merging extend_unsafe_fixes and override extend_safe_fixes
+   * Add support for disabling cache with RUFF_NO_CACHE environment variable
+ * Bug fixes
+   * [E721] Flag comparisons to memoryview
+   * Allow collapsed-ellipsis bodies in other statements
+   * Avoid D301 autofix for u prefixed strings
+   * Only flag flake8-trio rules when trio import is present
+   * Reject more syntactically invalid Python programs
+   * Avoid raising TRIO115 violations for trio.sleep(...) calls with non-number values
+   * Fix F841 false negative on assignment to multiple variables
+ * Documentation
+   * Fix link to isort known-first-party
+   * Add notes on fix safety to a few rules
+   * Add missing toml config tabs
+   * Add instructions for configuration of Emacs
+   * Improve detail link contrast in dark mode
+   * Fix typo in example
+   * Added tabs for configuration files in the documentation
+   * Recommend project.requires-python over target-version
+   * Add singleton escape hatch to B008 documentation
+   * Fix tab configuration docs
+
+-------------------------------------------------------------------
 Tue Nov  7 11:29:10 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.1.4
