@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Apr 20 08:33:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20230419:
+  * Fix assert lo < hi in std::clamp
+  * Update metainfo
+
+-------------------------------------------------------------------
+Mon Apr 17 08:48:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Initial OBS release.
+- Add use_system_libxisf.patch.
