@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 13 16:15:54 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add skip-doctests.patch skipping failing tests
+  (gh#profusion/sgqlc#241)
+
+-------------------------------------------------------------------
 Fri Jun 23 03:30:31 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 16.3 

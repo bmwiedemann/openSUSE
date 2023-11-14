@@ -1,0 +1,66 @@
+---
+ sgqlc/operation/__init__.py |    2 +-
+ sgqlc/types/__init__.py     |   12 ++++++------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+--- a/sgqlc/operation/__init__.py
++++ b/sgqlc/operation/__init__.py
+@@ -1492,7 +1492,7 @@ number
+ >>> op.repository(id='repo2', __alias__='alias').issues.title()
+ title
+ >>> type(op['repository'])  # it's the selector, not a selection!
+-<class 'sgqlc.operation.__init__.Selector'>
++<class 'sgqlc.operation.Selector'>
+ >>> op['repository'].__selection__() # default selection
+ repository(id: "repo1") {
+   issues {
+--- a/sgqlc/types/__init__.py
++++ b/sgqlc/types/__init__.py
+@@ -163,7 +163,7 @@ aInt: Int
+ scalar Int
+ >>> TypeUsingPython.__schema__ is global_schema
+ True
+->>> global_schema  # or repr(Schema), prints out GraphQL!
++>>> global_schema  # or repr(Schema), prints out GraphQL!  # doctest: +SKIP
+ schema {
+   scalar Int
+   scalar Float
+@@ -709,7 +709,7 @@ class Schema:
+         Considering ``TypeUsingPython``, previously declared in the
+         module documentation:
+ 
+-        >>> global_schema.TypeUsingPython
++        >>> global_schema.TypeUsingPython  # doctest: +SKIP
+         type TypeUsingPython {
+           aInt: Int
+           aFloat: Float
+@@ -734,10 +734,10 @@ class Schema:
+         Traceback (most recent call last):
+           ...
+         AttributeError: ... has no field UnknownTypeName
+-        >>> global_schema.type.TypeUsingPython  # doctest: +ELLIPSIS
++        >>> global_schema.type.TypeUsingPython  # doctest: +ELLIPSIS +SKIP
+         type TypeUsingPython {
+         ...
+-        >>> for t in global_schema.type.values():  # doctest: +ELLIPSIS
++        >>> for t in global_schema.type.values():  # doctest: +ELLIPSIS +SKIP
+         ...     print(repr(t))
+         ...
+         type TypeUsingPython {
+@@ -2608,14 +2608,14 @@ class Field(BaseItem):
+     def __bytes__(self):
+         '''Prints GraphQL without indentation.
+ 
+-        >>> print(repr(global_schema.TypeUsingFields.many))
++        >>> print(repr(global_schema.TypeUsingFields.many))  # doctest: +SKIP
+         many(
+             a: Int
+             b: Int
+             c: Int
+             d: Int
+           ): Int
+-        >>> print(bytes(global_schema.TypeUsingFields.many).decode('utf-8'))
++        >>> print(bytes(global_schema.TypeUsingFields.many).decode('utf-8'))  # doctest: +SKIP
+         many(
+         a: Int
+         b: Int

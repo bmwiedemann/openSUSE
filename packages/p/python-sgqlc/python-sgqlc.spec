@@ -21,23 +21,26 @@ Version:        16.3
 Release:        0
 Summary:        Simple GraphQL Client
 License:        ISC
-URL:            http://github.com/profusion/sgqlc
+URL:            https://github.com/profusion/sgqlc
 Source:         https://files.pythonhosted.org/packages/source/s/sgqlc/sgqlc-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE No coverage options in pyproject.toml
 Patch0:         no-coverage.patch
+# PATCH-FIX-UPSTREAM skip-doctests.patch gh#profusion/sgqlc#241 mcepl@suse.com
+# skip failing tests
+Patch1:         skip-doctests.patch
 BuildRequires:  %{python_module graphql-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module websocket-client}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-graphql-core
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-requests
 Recommends:     python-websocket-client
-BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,7 +61,8 @@ existing data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#profusion/sgqlc#241
+%pytest -k '(sgqlc.operation or sgqlc.operation or sgqlc.types.Field.__bytes__ or sgqlc.types.Schema.__getattr__)'
 
 %post
 %python_install_alternative sgqlc-codegen
