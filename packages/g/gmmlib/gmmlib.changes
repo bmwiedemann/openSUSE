@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:26:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.13:
+  * Fix Multiadapter ULT issue reproducibilty
+  * Add new PVC Device ID
+￼
+-------------------------------------------------------------------
 Wed Sep 13 12:09:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.11:
