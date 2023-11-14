@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 14 09:28:23 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 14.0.1 
+- drop pyarrow-pr37481-pandas2.1.patch
+- fixes boo#1216991 CVE--2023-47248
+ * GH-38431 - [Python][CI] Update fs.type_name checks for s3fs tests
+ * GH-38607 - [Python] Disable PyExtensionType autoload
+- update to 14.0.0
+ * very long list of changes can be found here:
+ https://arrow.apache.org/release/14.0.0.html
+
+-------------------------------------------------------------------
 Thu Aug 31 18:43:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 13.0.0

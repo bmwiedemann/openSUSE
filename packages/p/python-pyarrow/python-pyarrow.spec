@@ -19,7 +19,7 @@
 %bcond_with xsimd
 %define plainpython python
 Name:           python-pyarrow
-Version:        13.0.0
+Version:        14.0.1
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -27,10 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://arrow.apache.org/
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
-# PATCH-FIX-UPSTREAM pyarrow-pr37481-pandas2.1.patch gh#apache/arrow#37481
-Patch0:         pyarrow-pr37481-pandas2.1.patch
 BuildRequires:  %{python_module Cython >= 0.29.31 with %python-Cython < 3}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.16.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}

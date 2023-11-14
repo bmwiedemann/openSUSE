@@ -80,4 +80,19 @@ https://datapythonista.me/blog/pandas-20-and-the-arrow-revolution-part-i</commen
     <comment></comment>
     <requestid>1109688</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>915ec552ab385eadf89b3681e2ec0856</srcmd5>
+    <version>14.0.1</version>
+    <time>1699994550</time>
+    <user>anag+factory</user>
+    <comment>- Update to 14.0.1 
+- drop pyarrow-pr37481-pandas2.1.patch
+- fixes boo#1216991 CVE--2023-47248
+ * GH-38431 - [Python][CI] Update fs.type_name checks for s3fs tests
+ * GH-38607 - [Python] Disable PyExtensionType autoload
+- update to 14.0.0
+ * very long list of changes can be found here:
+ https://arrow.apache.org/release/14.0.0.html (forwarded request 1125831 from mimi_vx)</comment>
+    <requestid>1125832</requestid>
+  </revision>
 </revisionlist>
