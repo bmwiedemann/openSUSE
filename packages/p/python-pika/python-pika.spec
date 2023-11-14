@@ -17,7 +17,7 @@
 
 
 %define mod_name pika
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-%{mod_name}
 Version:        1.3.2
 Release:        0
@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pika/pika
 Source:         https://github.com/pika/pika/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado}
@@ -66,7 +67,7 @@ export PYTHONPATH='.'
 %files %{python_files}
 %doc README.rst CHANGELOG.md
 %license LICENSE
-# You may have to add additional files here (documentation and binaries mostly)
-%{python_sitelib}/%{mod_name}*
+%{python_sitelib}/%{mod_name}
+%{python_sitelib}/%{mod_name}-%{version}.dist-info
 
 %changelog

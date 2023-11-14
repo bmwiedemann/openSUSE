@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 13 09:33:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch SLE15 build to the new python stack as only >= 3.7 is
+  supported
+
+-------------------------------------------------------------------
 Tue Jun 27 15:55:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.2:
@@ -14,7 +20,7 @@ Mon Jan  2 20:00:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Sat Oct  1 14:07:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:
-  * see https://github.com/pika/pika/milestone/19?closed=1 
+  * see https://github.com/pika/pika/milestone/19?closed=1
 
 -------------------------------------------------------------------
 Thu Apr 28 15:23:41 UTC 2022 - pgajdos@suse.com
@@ -240,7 +246,7 @@ Wed Dec  4 20:39:50 UTC 2013 - p.drouand@gmail.com
     renamed and constants used. If you relied on any of these callbacks
     outside of their internal use, make sure to check out the new constants.
   + Connection._connect method, which was an internal only method is now
-    deprecated and will raise a DeprecationWarning. If you relied on 
+    deprecated and will raise a DeprecationWarning. If you relied on
     this method, your code needs to change.
   + pika.simplebuffer has been removed
   + BlockingConnection consumer generator does not free buffer
