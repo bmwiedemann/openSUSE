@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 13 19:12:51 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7.2: 
+  * bugfix: crash was possible when no file loaded and change to
+    main chart
+  * bugfix: lp#2043152 lock icon for transaction sometime disapear
+    due to column resize
+  * bugfix: lp#2042771 currency don't update due to wrong api url
+    since 5.7
+  * bugfix: lp#2042770 HomeBank closes after leaving "preferences"
+    menu with no file open.
+  * bugfix: lp#2042668 remove/sanitize GTK listview quicksearch
+  * bugfix: lp#2042484 category popoverlist shows subcat income
+    standalone its expense parent
+  * bugfix: lp#2042463 manage categories add subcategory fail
+    after a search
+  * bugfix: lp#2042035 assign edit cancel faultly persist the
+    rule search
+  * bugfix: lp#2040494 App crashes when exporting a report after
+    I delete a category that contained data
+  * bugfix: lp#2040010 ISO 8601 date format not respected when
+    exporting to clipboard or CSV
+  * bugfix: lp#2039995 budget by time do not filter txn type
+    exp/inc
+  * bugfix: lp#2039493 statistics report crash when opened with
+    a too wide date range 
+  * wish  : lp#2042692 count and show number of selected
+    transactions when suppressing them
+
+-------------------------------------------------------------------
 Mon Oct  9 15:34:02 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.7.1:
