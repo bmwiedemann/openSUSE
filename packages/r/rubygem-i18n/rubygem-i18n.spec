@@ -28,15 +28,9 @@ Version:        1.14.1
 Release:        0
 %define mod_name i18n
 %define mod_full_name %{mod_name}-%{version}
-# MANUAL
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%define rb_build_versions ruby25 ruby26
-%define rb_build_ruby_abis ruby:2.5.0 ruby:2.6.0
-%endif
-# /MANUAL
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby-i18n/i18n
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
@@ -52,6 +46,7 @@ New wave Internationalization support for Ruby.
 
 %install
 %gem_install \
+  --no-document \
   --doc-files="MIT-LICENSE README.md" \
   -f
 
