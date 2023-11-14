@@ -27,7 +27,3 @@ for dev in $(ls -d /sys/bus/pci/devices/*); do
   fi
 done
 
-# Workaround needed on TW for simpledrm (boo#1201392)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
-pbl --add-option nosimplefb=1 --config
-%endif

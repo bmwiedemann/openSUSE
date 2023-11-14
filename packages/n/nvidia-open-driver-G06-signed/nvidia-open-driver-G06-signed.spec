@@ -30,7 +30,7 @@
 %define compress_modules xz
 %endif
 Name:           nvidia-open-driver-G06-signed
-Version:        535.129.03
+Version:        545.29.02
 Release:        0
 Summary:        NVIDIA open kernel module driver for GeForce RTX 2000 series and newer
 License:        GPL-2.0-only AND MIT
@@ -61,7 +61,7 @@ BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
 BuildRequires:  zstd
 %ifnarch aarch64
-%if 0%{?sle_version} >= 120400 && !0%{?is_opensuse}
+%if !0%{?is_opensuse}
 BuildRequires:  kernel-syms-azure
 %endif
 %endif
@@ -158,9 +158,7 @@ mkdir -p $MODPROBE_DIR
 for flavor in %flavors_to_build; do
     cat > $MODPROBE_DIR/50-nvidia-$flavor.conf << EOF
 blacklist nouveau
-options nvidia-drm modeset=1
-### Enable support on *all* Turing/Ampere GPUs: Alpha Quality!
-#options nvidia NVreg_OpenRmEnableUnsupportedGpus=1
+options nvidia-drm modeset=1 fbdev=1
 EOF
     echo -n "install nvidia " >> $MODPROBE_DIR/50-nvidia-$flavor.conf
     tail -n +3 %_sourcedir/modprobe.nvidia.install | awk '{ printf "%s ", $0 }' >> $MODPROBE_DIR/50-nvidia-$flavor.conf

@@ -198,4 +198,21 @@
     <comment>- Update to version 535.129.03</comment>
     <requestid>1121705</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>19141bcbc5562442337b931858035123</srcmd5>
+    <version>545.29.02</version>
+    <time>1699994525</time>
+    <user>anag+factory</user>
+    <comment>- Update to 545.29.02
+- added fbdev=1 option for nvidia-drm module, which gives us a proper
+  framebuffer console now ...
+- nosimplefb kernel option no longer needed with usage of nvidia-drm's
+  fbdev=1 option
+- nvidia's NVreg_OpenRmEnableUnsupportedGpus=1 option no longer
+  needed; GeForce and Workstation GPUs now officially supported
+- support added for H100/H800 GPUs (Hopper)
+
+- cleanup; sle12 no longer supported</comment>
+    <requestid>1125886</requestid>
+  </revision>
 </revisionlist>
