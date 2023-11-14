@@ -71,7 +71,7 @@
 #       /bin/echo foo
 :disable_docs: true
 :preamble: |-
-    %if ! 0%{?suse_version} >= 1550
-    %define rb_build_versions     ruby26       ruby27
-    %define rb_build_ruby_abis    ruby:2.6.0   ruby:2.7.0
+    %if 0%{?suse_version} && 0%{?suse_version} < 1699
+    %define rb_build_versions       ruby32       ruby31       ruby27
+    %define rb_build_ruby_abis      ruby:3.2.0   ruby:3.1.0   ruby:2.7.0
     %endif

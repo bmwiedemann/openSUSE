@@ -150,4 +150,12 @@ rubygem-vagrant submission was announced to opensuse-factory at http://lists.ope
     <comment></comment>
     <requestid>1123200</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>96d1857dde8e8a7f517fca02c4499199</srcmd5>
+    <version>3.8.0</version>
+    <time>1699994496</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125452</requestid>
+  </revision>
 </revisionlist>
