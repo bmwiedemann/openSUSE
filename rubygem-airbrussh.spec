@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-airbrussh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-airbrussh
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 %define mod_name airbrussh
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Airbrussh pretties up your SSHKit and Capistrano output
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A replacement log formatter for SSHKit that makes Capistrano output much
