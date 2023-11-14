@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Nov 14 11:14:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.19.4:
+  * Automator: update ztunnel@release-1.19 in
+    istio/istio@release-1.19 (#47794)
+  * Update deps for 1.19.4 (#47796)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47795)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47790)
+  * Automator: update istio/client-go@release-1.19 dependency in
+    istio/istio@release-1.19 (#47788)
+  * Automator: update common-files@release-1.19 in
+    istio/istio@release-1.19 (#47787)
+  * Update BASE_VERSION to 1.19-2023-11-06T19-02-47 (#47765)
+  * Fix header present match (#47704) (#47736)
+  * [release-1.19] Fix tag list output command not working (#47710)
+  * [release-1.19] Sidecar resources using defaultEndpoint can use
+    ::1 in all cases (#47676)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47663)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47635)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47594)
+  * [release-1.19] fix multiple header matches in root vs (#47274)
+  * prevent running crdclient twice, this will cause
+    crdClient.queue stop… (#47399) (#47597)
+  * Fix traffic to terminating headless services (#47379) (#47589)
+  * Update BASE_VERSION to 1.19-2023-10-25T19-03-30 (#47586)
+  * [release-1.19] istioctl: allow file configdump missing eds for
+    `proxy-config` (#47554)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47570)
+  * Skip+Warn instead of NACK on invalid TLS gateway (#47560)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47557)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47542)
+  * reduce logging level to DEBUG when td don't match but
+    SkipValidateTrustDomain is enabled (#47528)
+  * Allow setting priorityClassName in Istio gateway helm chart
+    (#47460)
+  * 1.19: Bump iptables image to fix glibc (#47339) (#47497)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47485)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47452)
+  * [release-1.19] Fix multicluster secret filtering (#47438)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47421)
+  * [release-1.19] Gated feature flag to add a secondary outbound
+    bind for IPv6-only clusters (#47408)
+  * cni: 1.19 cherrypicks (#47392)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47387)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47365)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47363)
+  * [release-1.19] Clarify telemetry deployment namespace (#47360)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47345)
+  * Update BASE_VERSION to 1.19-2023-10-13T03-27-30 (#47343)
+  * # Adjust DNS Proxy CNAME wildcard response to be compatible
+    with glibc and musl (#47323)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47317)
+  * Automator: update ztunnel@release-1.19 in
+    istio/istio@release-1.19 (#47314)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47296)
+
+-------------------------------------------------------------------
 Thu Oct 12 05:30:26 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.19.3:
