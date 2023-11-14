@@ -59,4 +59,12 @@
 </comment>
     <requestid>1094398</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>30ee8d4ee0350db563e99f8e3f5b94c2</srcmd5>
+    <version>1.2.0</version>
+    <time>1699994610</time>
+    <user>anag+factory</user>
+    <comment>- build for all python versions in sle15</comment>
+    <requestid>1125856</requestid>
+  </revision>
 </revisionlist>
