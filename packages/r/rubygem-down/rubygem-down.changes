@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:45:17 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 5.4.1 (2023-05-20)
+
+* Handle additional params in `Content-Disposition` header (@janko)
+
+* Add ability to detect response URI when using net/http (@aglushkov)
+
+* Avoid deprecation warning in HTTPX (@ollym)
+
+* Handle unknown response status in net/http backend (@janko)
+
+## 5.4.0 (2022-12-26)
+
+* Add new HTTPX backend, which supports HTTP/2 protocol among other features (@HoneyryderChuck)
+
+
+-------------------------------------------------------------------
 Thu Aug  4 13:07:38 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 5.3.1
