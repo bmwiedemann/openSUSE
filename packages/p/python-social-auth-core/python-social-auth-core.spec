@@ -23,13 +23,13 @@
 %bcond_with saml
 
 Name:           python-social-auth-core
-Version:        4.4.2
+Version:        4.5.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
 URL:            https://github.com/python-social-auth/social-core
 Source:         https://github.com/python-social-auth/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module PyJWT >= 2.0.0}
+BuildRequires:  %{python_module PyJWT >= 2.7.0}
 BuildRequires:  %{python_module cryptography >= 2.1.1}
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
 BuildRequires:  %{python_module oauthlib >= 1.0.3}

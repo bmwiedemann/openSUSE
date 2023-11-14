@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 13 15:52:13 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 4.5.0 
+  - Add backend for LinkedIn OpenID Connect
+  - Add backend for EGI Check-in
+  - Support Python 3.12 (and 3.11)
+  - Add backend for the WLCG IAM testing site
+  - Add ping identity OIDC backend
+  - Add uffd oauth2 backend
+  - Add Clever backend
+  - Add Twitter OAuth2 backend
+  - Add backend for e-infra.cz
+  - Replace jose with pyjwt
+
+
+-------------------------------------------------------------------
 Tue Apr 25 06:55:46 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 4.4.2
