@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov 12 17:15:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.128:
+  * revert of `identityref` canonical value change
+  * the identity always printed with the module name as the
+    prefix
+  * data tree and hash table optimizations
+  * opaque node handling fixes and improvements
+  * lots of other bug fixes
+- update to 2.1.111:
+  * opaque node parsing improved
+  * native RESTCONF operation parsing support
+  * `union` value error reporting improved
+  * new `yanglint` and `yangre` tests
+  * optional support for leafref with XPath functions
+  * lots of other fixes and improvements
+- update to 2.1.80:
+  * RESTCONF message parsing
+  * JSON parser refactor
+  * timezone DST handling
+  * public hash table API
+  * stored union value bugfix
+  * many other clarifications, improvements, and bugfixes
+
+-------------------------------------------------------------------
 Tue Apr  4 13:42:28 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - update to v2.1.55:
@@ -34,7 +59,7 @@ Sat Dec  3 10:12:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * error path logging improvements
   * fixed unions with leafrefs
   * yanglint schema mount support
-  * huge number of other fixes and improvements 
+  * huge number of other fixes and improvements
 
 -------------------------------------------------------------------
 Mon Aug 29 10:05:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
@@ -64,7 +89,7 @@ Sun Apr 10 11:56:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * XML parser CDATA support
   * module caching improvements
   * doc improvements
-  * many other various bugfixes 
+  * many other various bugfixes
 
 -------------------------------------------------------------------
 Wed Nov 17 05:23:08 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
