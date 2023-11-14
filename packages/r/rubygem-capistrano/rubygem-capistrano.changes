@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:41:14 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 3.18.0:
+
+## Changes
+
+- Remove default webpacker path to linked_dirs (#2139) @taketo1113
+
+## 🐛 Bug Fixes
+
+- Fix "lambda method requires a literal block" error (Ruby 3.3) (#2141) @mattbrictson
+
+## 🏠 Housekeeping
+
+- Upgrade to latest ver of release-drafter and update config (#2143) @mattbrictson
+- Upgrade CI to actions/checkout v4 (#2142) @mattbrictson
+- Auto-bump version number in generated release notes (#2140) @mattbrictson
+- Migrate from CircleCI to GitHub Actions; add Cucumber features to CI (#2132) @mattbrictson
+
+**Full Changelog:** https://github.com/capistrano/capistrano/compare/v3.17.3...v3.18.0
+
+
+3.17.3:
+
+This is a gem housekeeping release. No user-facing changes.
+
+## 📚 Documentation
+
+- Fix typo in authorization docs (#2128) @HLFH
+
+## 🏠 Housekeeping
+
+- Fix deprecated usage of open-uri so feature tests work on Ruby 3 (#2129) @mattbrictson
+- Fix failing OpenSSL install on Ruby 2.3 CI image (#2130) @mattbrictson
+- Add Ruby 3.2 to CI matrix (#2126) @mattbrictson
+- Fix failing CI builds for Ruby < 2.3 (#2124) @mattbrictson
+
+## New Contributors
+
+- @HLFH made their first contribution in https://github.com/capistrano/capistrano/pull/2128
+
+**Full Changelog**: https://github.com/capistrano/capistrano/compare/v3.17.2...v3.17.3
+
+3.17.2:
+
+## 📚 Documentation
+
+- Add capistrano-mysql_tables as 3rd party plugin (#2121) @floydj
+
+## 🏠 Housekeeping
+
+- Fix failing Ruby 2.0 CI build (#2116) @mattbrictson
+
+**Full Changelog**: https://github.com/capistrano/capistrano/compare/v3.17.1...v3.17.2
+
+
+
+-------------------------------------------------------------------
 Mon Aug 29 06:49:46 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.17.1
