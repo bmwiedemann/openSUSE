@@ -452,4 +452,25 @@
   * Add MBEDTLS_TARGET_PREFIX to 3rdparty CMake</comment>
     <requestid>1116911</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>64348d3d9b3fe7ebdf27296df5965260</srcmd5>
+    <version>3.5.1</version>
+    <time>1699994620</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.5.1:
+  * Add docs re Everest license
+  * Update Changelog with bugfix entry
+  * Update BRANCHES
+  * Bump version
+  * Fix typos in changelog
+  * Fix 3rdparty target names for custom config
+  * assemble Changelog
+  * README improvements to 3rdparty section
+  * Update license for p256-m
+  * Add Changelog for license
+  * Update documentation
+  * Fix some non-standard headers
+  * Header updates</comment>
+    <requestid>1125871</requestid>
+  </revision>
 </revisionlist>
