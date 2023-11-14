@@ -17,7 +17,7 @@
 
 
 Name:           python-hvplot
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause

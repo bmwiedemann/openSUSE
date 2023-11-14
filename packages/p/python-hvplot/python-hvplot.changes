@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 14 11:38:42 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.9.0
+  * The Explorer has been extended with some features
+  * Add experimental Fugue integration
+  * Add basic Polars integration
+  * Add .hvplot.explorer() as an alternate entry point to create an explorer
+  * Add the resample_when option to dynamically enable datashade/rasterize/downsample
+  * Fix x-limit, y-limit, and rasterize support for geo features
+  * Preparations before the release of Param 2.0 
+  * Drop Python 3.6 and 3.7
+  * More changes, see https://hvplot.holoviz.org/releases.html
+
+-------------------------------------------------------------------
 Thu Jun  8 12:26:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.4
