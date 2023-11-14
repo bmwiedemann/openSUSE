@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 10 16:20:12 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 2.28.6:
+  Changes:
+  * Mbed TLS is now released under a dual Apache-2.0 OR GPL-2.0-or-later
+    license. Users may choose which license they take the code under.
+
+-------------------------------------------------------------------
 Sat Oct  7 13:08:45 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.28.5:
