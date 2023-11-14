@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-aenum
 Version:        3.1.12
 Release:        0

@@ -129,4 +129,15 @@ https://build.opensuse.org/request/show/612101</comment>
   * no changelog available</comment>
     <requestid>1094127</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5c5aae9394ca4137468527e61fd8f8d1</srcmd5>
+    <version>3.1.12</version>
+    <time>1699994530</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons for SLE15 build
+
+  * AutoNumber and auto() now work together
+  * add _create_pseudo_member_values_</comment>
+    <requestid>1125419</requestid>
+  </revision>
 </revisionlist>
