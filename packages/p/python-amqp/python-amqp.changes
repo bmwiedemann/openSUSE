@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:43:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Added python 3.12 and drop python 3.7 (#423).
+  * Test vine 5.1.0 (#424).
+  * Set an explicit timeout on SSL handshake to prevent hangs.
+  * Add MessageNacked to recoverable errors.
+  * Send heartbeat frames more often.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:59:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -7,7 +17,7 @@ Sun Jun 11 13:59:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 Sat Jun  4 11:37:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.1:
-  - Use AF_UNSPEC for name resolution 
+  - Use AF_UNSPEC for name resolution
 
 -------------------------------------------------------------------
 Sat Mar 26 20:22:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -32,10 +42,10 @@ Mon Dec 20 11:07:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.8:
   - Reduce memory usage of Connection (#377)
-  - Add additional error handling around code where an OSError 
+  - Add additional error handling around code where an OSError
     may be raised on failed connections. Fixes (#378)
   - Remove dependency to case
-  - Bugfix: not closing socket after server disconnect 
+  - Bugfix: not closing socket after server disconnect
 
 -------------------------------------------------------------------
 Thu Jun 17 20:47:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -47,7 +57,7 @@ Thu Jun 17 20:47:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
     "ValueError: Cannot set verify_mode to CERT_NONE when check_hostname is enabled."
     Setting context.check_hostname prior to setting context.verify_mode resolves the
     issue.
-  - Remove TCP_USER_TIMEOUT option for Solaris (#355) 
+  - Remove TCP_USER_TIMEOUT option for Solaris (#355)
   - Pass long_description to setup() (#353)
   - Fix for tox-docker 2.0
   - Moved to GitHub actions CI (#359)
@@ -73,7 +83,7 @@ Mon Feb  1 17:40:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
     ssl.CERT_NONE to ssl.CERT_REQUIRED in the stdlib ssl and it cannot
     be set back to ssl.CERT_NONE as long as hostname checking is enabled.
   - Refactor the SNI tests to test one thing at a time and removing some
-    tests that were being repeated over an 
+    tests that were being repeated over an
 
 -------------------------------------------------------------------
 Sun Dec 20 09:46:14 UTC 2020 - Dirk Müller <dmueller@suse.com>
@@ -124,8 +134,8 @@ Wed Oct  9 08:40:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.2:
   - Ignore all methods except Close and Close-OK when channel/connection is closing
-  - Fix faulty ssl sni intiation parameters (#283) 
-  - Undeprecate auto_delete flag for exchanges. (#287) 
+  - Fix faulty ssl sni intiation parameters (#283)
+  - Undeprecate auto_delete flag for exchanges. (#287)
   - Improved tests and testing environments
 
 -------------------------------------------------------------------
@@ -133,8 +143,8 @@ Wed Sep 11 13:18:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.1:
   - Ignore all methods except Close and Close-OK when channel/connection is closing
-  - Fix faulty ssl sni intiation parameters (#283) 
-  - Undeprecate auto_delete flag for exchanges. (#287) 
+  - Fix faulty ssl sni intiation parameters (#283)
+  - Undeprecate auto_delete flag for exchanges. (#287)
   - Improved tests and testing environments
 
 -------------------------------------------------------------------
@@ -398,7 +408,7 @@ Thu Aug  6 13:20:10 UTC 2015 - cdenicolo@suse.com
 -------------------------------------------------------------------
 Thu Jan 29 16:15:42 UTC 2015 - dmueller@suse.com
 
-- replace set_socket_TCP_KEEPALIVE_and_TCP_USER_TIMEOUT.patch 
+- replace set_socket_TCP_KEEPALIVE_and_TCP_USER_TIMEOUT.patch
   with tune-keepalive-intervals.diff (bnc#902207)
 
 -------------------------------------------------------------------

@@ -429,4 +429,28 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092377</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8daa3e41bd5066baf83a99a366b04675</srcmd5>
+    <version>5.2.0</version>
+    <time>1699994621</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.0:
+  * Added python 3.12 and drop python 3.7 (#423).
+  * Test vine 5.1.0 (#424).
+  * Set an explicit timeout on SSL handshake to prevent hangs.
+  * Add MessageNacked to recoverable errors.
+  * Send heartbeat frames more often.
+
+  - Use AF_UNSPEC for name resolution
+  - Add additional error handling around code where an OSError
+  - Bugfix: not closing socket after server disconnect
+  - Remove TCP_USER_TIMEOUT option for Solaris (#355)
+    tests that were being repeated over an
+  - Fix faulty ssl sni intiation parameters (#283)
+  - Undeprecate auto_delete flag for exchanges. (#287)
+  - Fix faulty ssl sni intiation parameters (#283)
+  - Undeprecate auto_delete flag for exchanges. (#287)
+- replace set_socket_TCP_KEEPALIVE_and_TCP_USER_TIMEOUT.patch</comment>
+    <requestid>1125876</requestid>
+  </revision>
 </revisionlist>
