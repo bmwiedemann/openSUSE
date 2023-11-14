@@ -48,4 +48,12 @@
   * add support for rubocop-rspec syntax extensions (forwarded request 1093452 from amanzini)</comment>
     <requestid>1093565</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>051f087f846c1190635768b7ef94d35c</srcmd5>
+    <version>2.3.1</version>
+    <time>1699994607</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123168</requestid>
+  </revision>
 </revisionlist>

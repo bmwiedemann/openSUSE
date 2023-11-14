@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:51:03 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Unreleased
+
+Nothing.
+
+## 2.3.1 (2023-07-17)
+
+### Fixed
+
+- Use `Kernel.warn` instead of `ActiveSupport::Deprecation.warn` for deprecations (#764)
+- Policy generator now works on Ruby 3.2 (#754)
+
+
+-------------------------------------------------------------------
 Fri Jun 16 08:35:04 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - updated to version 2.3.0

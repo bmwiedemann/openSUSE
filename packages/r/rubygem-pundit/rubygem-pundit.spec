@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-pundit
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 %define mod_name pundit
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        OO authorization for Rails
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Object oriented authorization for Rails applications.
