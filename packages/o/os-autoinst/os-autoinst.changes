@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 14 07:38:37 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1699947509.970d060:
+  * Disable SVIRT_WORKER_CACHE by default
+  * Use commit message checks from os-autoinst-common
+  * backend::baseclass: Fix wording of informative message
+  * Slightly simplify backend::baseclass
+  * Remove unused tools/absolutize
+  * git subrepo commit (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Thu Oct 26 20:45:43 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1698238759.64b339c:
