@@ -1325,7 +1325,6 @@ unsorted:
   - bibview 
   - bijiben 
   - bijiben-lang 
-  - bin86 
   - bind-modules-bdbhpt 
   - bind-modules-generic 
   - bind-modules-ldap 
@@ -3014,7 +3013,6 @@ unsorted:
   - desktopfolder 
   - desktopfolder-lang 
   - deutex 
-  - dev86 
   - devhelp 
   - devhelp-devel 
   - devhelp-lang 
@@ -10659,9 +10657,9 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow1300 
-  - libarrow_acero1300 
-  - libarrow_dataset1300 
+  - libarrow1400 
+  - libarrow_acero1400 
+  - libarrow_dataset1400 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -13758,7 +13756,7 @@ unsorted:
   - libparlatype-devel 
   - libparlatype5 
   - libparpack2-openmpi4 
-  - libparquet1300 
+  - libparquet1400 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -35212,6 +35210,7 @@ unsorted:
   - template-glib-lang 
   - template-resolver 
   - template-resolver-javadoc 
+  - tenmon 
   - tennebon-dynamic-wallpaper 
   - tensorflow-lite 
   - tensorflow-lite-devel 
