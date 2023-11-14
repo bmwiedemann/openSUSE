@@ -21,6 +21,7 @@ unsorted:
   - AppStream-compose-devel 
   - AppStream-devel 
   - AppStream-doc 
+  - AusweisApp 
   - AusweisApp2 
   - Bear 
   - Botan 
@@ -2398,6 +2399,7 @@ unsorted:
   - containerized-data-importer-uploadproxy 
   - containerized-data-importer-uploadserver 
   - containment-rpm 
+  - contour-terminal 
   - contractor 
   - contrast 
   - contrast-lang 
@@ -7532,6 +7534,7 @@ unsorted:
   - haproxy 
   - hardening-check 
   - hardinfo 
+  - harec 
   - harfbuzz-devel 
   - harfbuzz-tools 
   - harminv 
@@ -15191,6 +15194,9 @@ unsorted:
   - libunibreak5 
   - libunicap-devel 
   - libunicap2 
+  - libunicode-devel 
+  - libunicode-tools 
+  - libunicode0_2 
   - libuninameslist-devel 
   - libuninameslist1 
   - libunistring-devel 
@@ -23818,6 +23824,7 @@ unsorted:
   - python310-extension-helpers 
   - python310-extras 
   - python310-extratools 
+  - python310-eyed3 
   - python310-ez_setup 
   - python310-ezdxf 
   - python310-fabio 
@@ -27276,6 +27283,7 @@ unsorted:
   - python311-exrex 
   - python311-extension-helpers 
   - python311-extratools 
+  - python311-eyed3 
   - python311-ez_setup 
   - python311-ezdxf 
   - python311-fabio 
@@ -30690,6 +30698,7 @@ unsorted:
   - python39-extension-helpers 
   - python39-extras 
   - python39-extratools 
+  - python39-eyed3 
   - python39-ez_setup 
   - python39-ezdxf 
   - python39-fabio 
@@ -34855,7 +34864,6 @@ unsorted:
   - stp-devel 
   - strawberry 
   - streamdeck-linux-gui 
-  - streamdeck-ui 
   - streamlink 
   - stress-ng 
   - stress-ng-bash-completion 
@@ -34904,9 +34912,6 @@ unsorted:
   - sudo-test 
   - sudoku-sensei 
   - suil-devel 
-  - suil-plugin-gtk2-in-qt5 
-  - suil-plugin-qt5-in-gtk2 
-  - suil-plugin-qt5-in-gtk3 
   - suil-plugin-x11 
   - suil-plugin-x11-in-gtk2 
   - suil-plugin-x11-in-gtk3 
