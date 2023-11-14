@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 13 21:15:40 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Fix assertion in ext-mode BLOCK_STATUS, CVE-2023-5871
+  4451e5b6-CVE-2023-5871.patch
+  bsc#1216769
+
+-------------------------------------------------------------------
 Wed Oct 25 19:29:55 UTC 2023 - jfehlig@suse.com
 
 - Update to version 1.18.1:

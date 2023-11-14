@@ -115,4 +115,14 @@ near future.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1121701</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6f443ad15f648e0e0ed4184168b14ee9</srcmd5>
+    <version>1.18.1</version>
+    <time>1699994545</time>
+    <user>anag+factory</user>
+    <comment>- Fix assertion in ext-mode BLOCK_STATUS, CVE-2023-5871
+  4451e5b6-CVE-2023-5871.patch
+  bsc#1216769</comment>
+    <requestid>1125731</requestid>
+  </revision>
 </revisionlist>

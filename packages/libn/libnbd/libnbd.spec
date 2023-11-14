@@ -25,6 +25,7 @@ Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.com/nbdkit/libnbd
 Source0:        %{name}-%{version}.tar.bz2
+Patch0:         4451e5b6-CVE-2023-5871.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
