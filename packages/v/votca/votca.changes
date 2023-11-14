@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 13 23:26:43 UTC 2023 - Christoph Junghans <junghans@votca.org>
+
+- Add 1083.patch to fix build with boost-1.82
+
+-------------------------------------------------------------------
 Mon Jan  2 15:23:48 UTC 2023 - Christoph Junghans <junghans@votca.org>
 
 - don't use mpi gromacs on ix86

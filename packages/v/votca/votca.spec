@@ -34,6 +34,8 @@ License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://www.votca.org
 Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
+# PATCH-FIX-UPSTREAM 1083.patch -- based on upsteam PR 1083, fix build with boost-1.82
+Patch0:         1083.patch
 
 BuildRequires:  cmake >= 3.13
 BuildRequires:  eigen3-devel
@@ -179,6 +181,7 @@ This package contains the bash completion support for votca.
 
 %prep
 %setup -n %{name}-%{uversion} -q
+%patch 0 -p1
 
 %build
 %setup_openmpi
