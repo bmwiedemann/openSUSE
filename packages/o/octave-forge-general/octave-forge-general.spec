@@ -1,5 +1,5 @@
 #
-# spec file for package octave-forge-general
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -37,6 +37,9 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+if test -f /usr/lib/rpm/config.guess; then
+  cp /usr/lib/rpm/config.{guess,sub} */src
+fi
 %octave_pkg_src
 
 # Save metainfo file, we only have tarballs later
