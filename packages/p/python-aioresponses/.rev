@@ -142,4 +142,14 @@
   * Fix type annotations</comment>
     <requestid>1046200</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>95d46d57b0471e6b179690bec88abcce</srcmd5>
+    <version>0.7.5</version>
+    <time>1699994611</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.5:
+  * replaced pkg\_resources with packaging module
+  * Add Python 3.11 support</comment>
+    <requestid>1125857</requestid>
+  </revision>
 </revisionlist>
