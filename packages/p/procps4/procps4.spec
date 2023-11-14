@@ -37,6 +37,8 @@ Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/p
 #Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%{version}/procps-v%{version}.tar.gz
 Source2:        procps-rpmlintrc
 Source3:        procps4.keyring
+# PATCH-FIX-USTREAM -- w: Don't crash when using short option
+Patch0:         79042e07.patch
 Patch1:         procps-v3.3.3-ia64.diff
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
 Patch7:         procps-ng-3.3.8-readeof.patch
@@ -130,22 +132,23 @@ the process information pseudo-file system.
 
 %prep
 %setup -q -n procps-ng-%{version}
-%patch1
-%patch3 -p1 -b .trcate
-%patch7 -b .rof
-%patch8 -b .cache
-%patch11
-%patch13 -b .column
-%patch14 -b .ovrflw
-%patch17 -b .sysctl
-%patch18
-%patch20 -b .p20
-%patch21
-%patch28
-%patch31 -p1
-%patch32 -b .p32
-%patch33 -b .pmap4us
-%patch37
+%patch -P0 -p1
+%patch -P1
+%patch -P3 -p1 -b .trcate
+%patch -P7 -b .rof
+%patch -P8 -b .cache
+%patch -P11
+%patch -P13 -b .column
+%patch -P14 -b .ovrflw
+%patch -P17 -b .sysctl
+%patch -P18
+%patch -P20 -b .p20
+%patch -P21
+%patch -P28
+%patch -P31 -p1
+%patch -P32 -b .p32
+%patch -P33 -b .pmap4us
+%patch -P37
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

@@ -111,4 +111,13 @@
 - Port patches</comment>
     <requestid>1110606</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>146d610d324a73656d300849ebfd25df</srcmd5>
+    <version>4.0.4</version>
+    <time>1699994532</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream commit as patch 79042e07.patch (boo#1216719)
+- Port patch procps-ng-3.3.9-w-notruncate.diff</comment>
+    <requestid>1125582</requestid>
+  </revision>
 </revisionlist>

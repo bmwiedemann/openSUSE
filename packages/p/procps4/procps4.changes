@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 13 13:26:05 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit as patch 79042e07.patch (boo#1216719)
+- Port patch procps-ng-3.3.9-w-notruncate.diff
+
+-------------------------------------------------------------------
 Tue Sep 12 12:33:45 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to procps-ng-4.0.4
