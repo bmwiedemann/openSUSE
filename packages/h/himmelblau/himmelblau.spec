@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.1.0+git.2.2391ac0
+Version:        0.1.1+git.0.6d2f645
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure AD and Intune
 License:        MPL-2.0
@@ -36,13 +36,19 @@ Recommends:     nss-himmelblau
 Recommends:     pam-himmelblau
 
 %description
-Himmelblau is an interoperability suite for Microsoft Azure AD and Intune, which allows users to sign into a Linux machine using Azure Active Directory credentials. It relies on the Microsoft Authentication Library to communicate with the Microsoft service.
+Himmelblau is an interoperability suite for Microsoft Azure AD and
+Intune, which allows users to sign into a Linux machine using Azure
+Active Directory credentials. It relies on the Microsoft
+Authentication Library to communicate with the Microsoft service.
 
 %package -n pam-himmelblau
 Summary:        Azure AD authentication PAM module
 
 %description -n pam-himmelblau
-Himmelblau is an interoperability suite for Microsoft Azure AD and Intune, which allows users to sign into a Linux machine using Azure Active Directory credentials. It relies on the Microsoft Authentication Library to communicate with the Microsoft service.
+Himmelblau is an interoperability suite for Microsoft Azure AD and
+Intune, which allows users to sign into a Linux machine using Azure
+Active Directory credentials. It relies on the Microsoft
+Authentication Library to communicate with the Microsoft service.
 
 %package -n nss-himmelblau
 Summary:        Azure AD authentication NSS module
@@ -50,7 +56,10 @@ Requires(post): /sbin/ldconfig
 Requires(postun):/sbin/ldconfig
 
 %description -n nss-himmelblau
-Himmelblau is an interoperability suite for Microsoft Azure AD and Intune, which allows users to sign into a Linux machine using Azure Active Directory credentials. It relies on the Microsoft Authentication Library to communicate with the Microsoft service.
+Himmelblau is an interoperability suite for Microsoft Azure AD and
+Intune, which allows users to sign into a Linux machine using Azure
+Active Directory credentials. It relies on the Microsoft
+Authentication Library to communicate with the Microsoft service.
 
 %post   -n nss-himmelblau -p /sbin/ldconfig
 %postun -n nss-himmelblau -p /sbin/ldconfig
@@ -80,20 +89,16 @@ install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/himmelblaud.se
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/himmelblaud-tasks.service %{buildroot}%{_unitdir}/himmelblaud-tasks.service
 
 %pre
-%service_add_pre himmelblaud.service
-%service_add_pre himmelblaud-tasks.service
+%service_add_pre himmelblaud.service himmelblaud-tasks.service
 
 %post
-%service_add_post himmelblaud.service
-%service_add_post himmelblaud-tasks.service
+%service_add_post himmelblaud.service himmelblaud-tasks.service
 
 %preun
-%service_del_preun himmelblaud.service
-%service_del_preun himmelblaud-tasks.service
+%service_del_preun himmelblaud.service himmelblaud-tasks.service
 
 %postun
-%service_del_postun himmelblaud.service
-%service_del_postun himmelblaud-tasks.service
+%service_del_postun himmelblaud.service himmelblaud-tasks.service
 
 %files
 %dir %{_sysconfdir}/himmelblau
