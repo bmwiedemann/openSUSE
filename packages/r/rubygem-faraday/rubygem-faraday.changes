@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:47:19 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.7.11:
+
+## What's Changed
+* Refer to correct branch [ci skip] by @olleolleolle in https://github.com/lostisland/faraday/pull/1516
+* 📄 New docs 🎉  by @iMacTia in https://github.com/lostisland/faraday/pull/1517
+* Fix capitalization for Elasticsearch by @picandocodigo in https://github.com/lostisland/faraday/pull/1520
+* Fix 404 link in UPGRADING documentation by @shanempope in https://github.com/lostisland/faraday/pull/1521
+* Fix included middleware links by @edwardloveall in https://github.com/lostisland/faraday/pull/1522
+* Fix a test failure using Ruby 3.3.0dev by @koic in https://github.com/lostisland/faraday/pull/1523
+* Format code with less indent by @olleolleolle in https://github.com/lostisland/faraday/pull/1524
+* Add `base64` to runtime dependency by @koic in https://github.com/lostisland/faraday/pull/1525
+* Add option for omitting request data from Faraday exceptions by @ClaytonPassmore in https://github.com/lostisland/faraday/pull/1526
+
+## New Contributors
+* @picandocodigo made their first contribution in https://github.com/lostisland/faraday/pull/1520
+* @shanempope made their first contribution in https://github.com/lostisland/faraday/pull/1521
+* @edwardloveall made their first contribution in https://github.com/lostisland/faraday/pull/1522
+* @koic made their first contribution in https://github.com/lostisland/faraday/pull/1523
+* @ClaytonPassmore made their first contribution in https://github.com/lostisland/faraday/pull/1526
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.10...v2.7.11
+
+2.7.10:
+
+## What's Changed
+* Fix some logging inefficiencies by @semaperepelitsa in https://github.com/lostisland/faraday/pull/1515
+
+## New Contributors
+* @semaperepelitsa made their first contribution in https://github.com/lostisland/faraday/pull/1515
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.9...v2.7.10
+
+2.7.9:
+
+## What's Changed
+* Raise Error: Add Faraday::RequestTimeoutError by @tisba in https://github.com/lostisland/faraday/pull/1513
+* Include `env[:headers]` in `Stubs::NotFound` by @yykamei in https://github.com/lostisland/faraday/pull/1514
+
+## New Contributors
+* @tisba made their first contribution in https://github.com/lostisland/faraday/pull/1513
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.8...v2.7.9
+
+2.7.8:
+
+## What's Changed
+* Failing test: Logging headers & errors fails when ConnectionFailed is raised by @eikes in https://github.com/lostisland/faraday/pull/1512
+
+## New Contributors
+* @eikes made their first contribution in https://github.com/lostisland/faraday/pull/1512
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.7...v2.7.8
+
+2.7.7:
+
+## What's Changed
+* Fix implementation of Faraday::Error helpers. by @iMacTia in https://github.com/lostisland/faraday/pull/1510
+
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.6...v2.7.7
+
+2.7.6:
+
+## What's Changed
+* Fix "method redefined" warnings introduced in Faraday 2.7.5 by @mattbrictson in https://github.com/lostisland/faraday/pull/1506
+
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.5...v2.7.6
+
+2.7.5:
+
+## What's Changed
+* Subclass Options structs using a block by @bdewater in https://github.com/lostisland/faraday/pull/1489
+* Remove direct struct subclassing by @bdewater in https://github.com/lostisland/faraday/pull/1491
+* Fix incorrect use of logger middleware in docs by @mattbrictson in https://github.com/lostisland/faraday/pull/1497
+* Always assume the existence of `URI::Generic#find_proxy` by @yykamei in https://github.com/lostisland/faraday/pull/1502
+* Encode `false` to `"false"` in `Faraday::Request::Json` by @yykamei in https://github.com/lostisland/faraday/pull/1504
+* ProxyOptions should treat empty string as nil by @exoego in https://github.com/lostisland/faraday/pull/1493
+
+## New Contributors
+* @mattbrictson made their first contribution in https://github.com/lostisland/faraday/pull/1497
+* @exoego made their first contribution in https://github.com/lostisland/faraday/pull/1493
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.4...v2.7.5
+
+2.7.4:
+
+## What's Changed
+* Fix support for custom URI parsers by @iMacTia in https://github.com/lostisland/faraday/pull/1485
+
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.3...v2.7.4
+
+2.7.3:
+
+## What's Changed
+
+Fixes:
+* Fix Style/ZeroLengthPredicate by @olleolleolle in https://github.com/lostisland/faraday/pull/1480
+* Connection#build_exclusive_url: replace simple syntax by @hyuraku in https://github.com/lostisland/faraday/pull/1481
+* Add URL to to_hash in Faraday::Response (#1474) by @aaronstillwell in https://github.com/lostisland/faraday/pull/1475
+
+Misc:
+* Clarify diff between connection settings `timeout` and `open_timeout`  by @Yu-Chieh-Henry-Yang in https://github.com/lostisland/faraday/pull/1470
+* Adds Ruby 3.2 to the CI matrix. by @petergoldstein in https://github.com/lostisland/faraday/pull/1471
+* Fix typo in Adapters documentation by @henrialb in https://github.com/lostisland/faraday/pull/1473
+* docs: Update to 2023 by @frederikspang in https://github.com/lostisland/faraday/pull/1477
+* Update connection.rb documentation to use PUT in an example  by @wlads in https://github.com/lostisland/faraday/pull/1482
+
+## New Contributors
+* @Yu-Chieh-Henry-Yang made their first contribution in https://github.com/lostisland/faraday/pull/1470
+* @henrialb made their first contribution in https://github.com/lostisland/faraday/pull/1473
+* @frederikspang made their first contribution in https://github.com/lostisland/faraday/pull/1477
+* @aaronstillwell made their first contribution in https://github.com/lostisland/faraday/pull/1475
+* @wlads made their first contribution in https://github.com/lostisland/faraday/pull/1482
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.2...v2.7.3
+
+2.7.2:
+
+## What's Changed
+* Replace actions/setup-ruby with ruby/setup-ruby by @kyoshidajp in https://github.com/lostisland/faraday/pull/1466
+* Enforce timeouts in Faraday's test adapter by @dpep in https://github.com/lostisland/faraday/pull/1465
+* Rename Faraday::Logger::Formatter#error to #exception by @iMacTia in https://github.com/lostisland/faraday/pull/1468
+
+## ATTENTION
+Rename Faraday::Logger::Formatter#error ([#1468](https://github.com/lostisland/faraday/pull/1468)) is potentially a breaking change IF you've created a custom `Faraday::Logging::Formatter` implementing the new `error` method introduced in v2.7.0.
+
+We've decided to rollout this change in a fix version anyway because the name of the method was potentially causing infinite loop issues, and because the feature was very recently released.
+
+This should not be impacting you otherwise and you can safely upgrade.
+
+## New Contributors
+* @kyoshidajp made their first contribution in https://github.com/lostisland/faraday/pull/1466
+* @dpep made their first contribution in https://github.com/lostisland/faraday/pull/1465
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.1...v2.7.2
+
+
+
+-------------------------------------------------------------------
 Wed Dec  7 11:20:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.7.1
