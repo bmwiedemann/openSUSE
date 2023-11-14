@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 14 08:44:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.3.1:
+  * add a test for the long term weight cache
+  * Fix: long term block weight cache The long term block weight cache was doing a wrong calculation when adding a new block to the cache.
+  * build: prepare v0.18.3.1
+  * wallet2: fix refresh function parameters
+  * storages: change error log category to serialization
+  * wallet: store watch-only wallet correctly when `change_password()` is called
+  * build: prepare v0.18.3.0
+  * wallet2: fix `store_to()` and `change_password()`
+  * functional_tests: fix multisig tests noutputs assertion
+  * wallet_rpc_server: chunk refresh to keep responding to RPC while refreshing
+  * wallet_rpc_server: add --no-initial-sync flag for quicker network binding
+  * wallet-rpc: restore from multisig seed
+  * scan_tx: fix custom comparator for == case; fixes #8951
+  * wallet2: when checking frozen multisig tx set, don't assume order
+  * Enforce restricted # pool txs served via RPC + optimize chunked reqs [release-v0.18]
+  * wallet2, RPC: Optimize RPC calls for periodic refresh from 3 down to 1 call [release-v0.18]
+  * core_rpc_server: return ID of submitted block
+  * wallet2: do not lose exception in current thread on refresh
+  * wallet2: fix missing exceptions from failing wallet refresh
+  * protocol: drop peers sending duplicate txes
+  * Set SSL SNI even when server verification is disabled
+  * Add CLSAG serialization to ZMQ code
+  * wallet: respect frozen key images in multisig wallets [RELEASE]
+  * properly terminate interrupted TCP connection. fixes #8685
+  * Speed up perf_timer init on x86
+  * cryptonote_basic: fix amount overflow detection on 32-bit systems [RELEASE]
+  * wallet_rpc_server: dedup transfer RPC responses [RELEASE]
+  * depends: update openssl to 1.1.1u
+  * common: do not use DNS to determine if address is local
+  * blockchain: ensure base fee cannot reach 0
+  * fix missing <cstdint> includes
+  * Fixed RandomX initialization when mining from scratch
+  * wallet2: fix rescanning tx via scan_tx
+  * Handle case where a command line flag is not allowed in the config file
+- Drop no longer needed fixbuild.patch
+
+-------------------------------------------------------------------
 Sun Jul  2 08:35:49 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add upstream fixbuild.patch to build with gcc-13

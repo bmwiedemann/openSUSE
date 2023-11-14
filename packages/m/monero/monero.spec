@@ -36,15 +36,13 @@
 %define description_text_3 Security: Using the power of a distributed peer-to-peer consensus network, every transaction on the network is cryptographically secured. Individual wallets have a 24 word mnemonic seed that is only displayed once, and can be written down to backup the wallet. Wallet files are encrypted with a passphrase to ensure they are useless if stolen.
 %define description_text_4 Untraceability: By taking advantage of ring signatures, a special property of a certain type of cryptography, Monero is able to ensure that transactions are not only untraceable, but have an optional measure of ambiguity that ensures that transactions cannot easily be tied back to an individual user or computer.
 Name:           monero
-Version:        0.18.2.2
+Version:        0.18.3.1
 Release:        0
 Summary:        P2P digital currency
 License:        MIT
 Group:          Productivity/Networking/Other
 URL:            https://get%{name}.org/
 Source0:        %{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/monero-project/monero/commit/c32befe4f.patch
-Patch0:         fixbuild.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  cppzmq-devel
 BuildRequires:  gcc-c++ >= 4.7.3
@@ -114,7 +112,7 @@ Group:          Development/Libraries/C and C++
 The %{name}-devel package contains libraries and header files for developing applications that use %{name}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 # setup systemd service
 sed -i 's#^Description=Monero Full Node$#Description=%{display_name} Daemon#g' utils/systemd/%{daemon_name}.service
