@@ -89,4 +89,16 @@
   * Fixed the CKEditor styles when used with the dark Django admin theme.</comment>
     <requestid>1096320</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5fc95c11b07fea4703e28aa393b60a71</srcmd5>
+    <version>6.7.0</version>
+    <time>1699994615</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.7.0:
+  * Dark mode fixes.
+  * Added support for Pillow 10.
+
+  * Fixed the CKEditor styles when used with the dark Django admin theme.</comment>
+    <requestid>1125875</requestid>
+  </revision>
 </revisionlist>
