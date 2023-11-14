@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bindata
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,19 @@
 #
 
 Name:           rubygem-bindata
-Version:        2.4.14
+Version:        2.4.15
 Release:        0
 %define mod_name bindata
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/dmendel/bindata
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A declarative way to read and write binary file formats
-License:        Ruby
-Group:          Development/Languages/Ruby
+License:        BSD-2-Clause
 
 %description
 BinData is a declarative way to read and write binary file formats.
@@ -53,7 +51,7 @@ ruby's #pack and #unpack methods.
 
 %install
 %gem_install \
-  --doc-files="COPYING ChangeLog.rdoc NEWS.rdoc README.md" \
+  --doc-files="ChangeLog.rdoc LICENSE NEWS.rdoc README.md" \
   -f
 
 %gem_packages
