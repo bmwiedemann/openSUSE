@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Nov  8 22:12:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.3:
+  * Profile: Show error page on errors after saving.
+  * Close main window when pressing Escape key.
+  * GroupchatRoster: Display participants correctly on reveal.
+  * Filetransfer: Always focus confirm button.
+  * AccountWizard: Don’t allow multiple anonymous accounts for the
+    same domain.
+  * AccountPage: Show anonymous address.
+  * Accounts: Don’t try to save password for anonymous accounts.
+  * Message row menu: Show quote and copy actions only if there is
+    text.
+  * Audio/Video: Disable broken stun server code.
+  * Presence: Don’t fail on unknown MUC presences.
+  * Control: Add events with correct timestamp.
+  * Avatar: Send presence after changing avatar.
+  * ServerInfo: Use domain instead of hostname for queries.
+  * Emojis: Improve detection of shortcode start.
+  * DBusFileManager: Set self._proxy attribute on init.
+  * GroupchatRoster: Check for contact before trying to load
+    roster.
+
+-------------------------------------------------------------------
+Mon Oct 30 20:22:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.2:
+  * Raise minimum GLib version to 2.66.0.
+  * Avatar: Don’t use custom avatar for IRC group chats.
+  * Raise minimum nbxmpp version to 4.4.0.
+  * Depend on Pillow >= 9.1.0.
+  * Allow adjusting user interface font size via key bindings.
+  * Display composing participants in MUC chat banner.
+  * ChatBanner: Show contact tooltip when hovering the avatar.
+  * Hint that a contact is a bot in the chat banner.
+  * Support multiple item dataforms.
+  * Display gateway icon in avatars.
+  * RosterTooltip: Display BareContact presence.
+  * Display status message in banner.
+  * ChatMenu: Always show "Execute command" action.
+  * MUC features: Use better icons for public and anonymous
+    properties.
+  * Allow GroupChatInfoScrolled to be set with minimal information.
+  * Settings: Allow to set step size for spin settings; bind
+    setting value.
+  * StartChat: Better discover MUC services.
+  * StartChat: Allow to start chats with domain JIDs.
+  * ChatBanner: Don't show QR code for privated MUCs.
+  * Windows: Add gst-plugins-bad dependency for broader media
+    preview support.
+  * MUC: Raise rejoin timeout.
+  * Accounts: Be more consistent with chat state settings.
+  * GroupChatInfo: Improve scaling of subject text.
+  * View: Reset view faster.
+  * VideoPreview: Disable preview on destroy.
+  * GroupchatDetails: Depend on joined state for some elements.
+  * GroupChatInfo: Align max width of labels.
+  * SynchronizeAccounts: Adapt to connection state changes.
+  * Tooltip: Do not escape presence status text.
+  * Chatstates: Remove timeout id on remote timeout.
+  * NotificationManager: Update actions if online state changes.
+  * Caps: Add disco info to cache after query.
+  * MUC: Don’t show old join errors when disconnected from room.
+  * MUC: Always remove rejoin timer when closing chat.
+  * MUC: Update state correctly on disco info error.
+  * Switch phone icon to something more widely supported.
+  * ChatListStack: Handle missing last visible child.
+  * Observable: Fix race condition when removing handlers.
+  * PasswordDialog: Use verb instead of noun for log in button.
+  * AdHoc: Wrap notes label.
+  * Unpack string correctly while handling update error.
+  * CSSConfig: Quote font-family property correctly.
+  * File transfers: Don't fail when tryting to send non-existing
+    file.
+  * MusicTrackListener: Don't fail if playing track could not be
+    determined.
+  * Catch error if loading image with PIL fails due to
+    unidentifiable image.
+  * CSSConfig: Fix parsing float sizes for font description.
+  * Modules: Make sure BaseModule.cleanup() is always called on
+    destroy.
+  * Roster: Unregister all handlers on destroy.
+  * Observable: Don’t allow to register handler multiple times.
+  * View: Add newline after username when copying a message.
+  * Show notification on group chat mentions again.
+  * Make it impossible to connect without config.
+
+-------------------------------------------------------------------
 Mon Aug  7 23:17:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.8.1:
