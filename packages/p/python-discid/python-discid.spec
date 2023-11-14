@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15allpythons}
 Name:           python-discid
 Version:        1.2.0
 Release:        0
