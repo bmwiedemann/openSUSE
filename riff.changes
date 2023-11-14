@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 14 06:57:44 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.27.1:
+  * Don't require file names with -b #54.
+
+-------------------------------------------------------------------
 Sun Sep 24 18:20:49 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.27.0:
