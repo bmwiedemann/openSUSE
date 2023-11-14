@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:44:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0:
+  * Port code to setuptools. It will not work with distutils any
+    more.
+  * Format code with black and imports with isort.
+  * Address pycodestyle and pylint complaints.
+  * Use python3 in shebangs.
+  * Fix TypeError when calling pylint command.
+  * Drop obsolete python3-distutils dependency.
+
+-------------------------------------------------------------------
 Sun Apr 16 16:52:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.50:
@@ -57,7 +69,7 @@ Fri Sep 18 07:39:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 Wed Mar 13 09:00:35 UTC 2019 - qzheng <qzheng@suse.com>
 
 - Make use of %license macro and get ready for submitting this
-  package (the dependency of onboard) to SLE-15 
+  package (the dependency of onboard) to SLE-15
   (fate#326794, bsc#1082318).
 
 -------------------------------------------------------------------
@@ -126,7 +138,7 @@ Thu Jan 12 11:31:12 UTC 2012 - saschpe@suse.de
 Sat Dec 11 16:51:38 UTC 2010 - rwobben@hotmail.com
 
 - Update to 2.23
-  According to this page https://launchpad.net/python-distutils-extra/trunk/2.23) this release has no changelog  
+  According to this page https://launchpad.net/python-distutils-extra/trunk/2.23) this release has no changelog
 
 -------------------------------------------------------------------
 Sat Oct 30 08:22:11 UTC 2010 - rwobben@hotmail.com
@@ -161,7 +173,7 @@ Changelog to 2.22
     external test modules instead of -xdg and -dateutil, since the latter are
     not available for Python 3 yet.
 
-Changelog to 2.20 
+Changelog to 2.20
 
  [Didier Roche ]
  * build_i18n.py: add support for LINGUAS (Siegfried Gevatter) (LP: #510957)

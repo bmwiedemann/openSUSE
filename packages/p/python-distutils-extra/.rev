@@ -262,4 +262,23 @@
     DistUtilsExtra version</comment>
     <requestid>1079775</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>89f08e00f2c0edc931712bc8f7746c08</srcmd5>
+    <version>3.0</version>
+    <time>1699994622</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0:
+  * Port code to setuptools. It will not work with distutils any
+    more.
+  * Format code with black and imports with isort.
+  * Address pycodestyle and pylint complaints.
+  * Use python3 in shebangs.
+  * Fix TypeError when calling pylint command.
+  * Drop obsolete python3-distutils dependency.
+
+  package (the dependency of onboard) to SLE-15
+  According to this page https://launchpad.net/python-distutils-extra/trunk/2.23) this release has no changelog
+Changelog to 2.20</comment>
+    <requestid>1125877</requestid>
+  </revision>
 </revisionlist>
