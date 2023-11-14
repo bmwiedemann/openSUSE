@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.28.0
+%global icedtea_version 3.29.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,8 +31,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       382
-%global buildver        05
+%global updatever       392
+%global buildver        08
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -172,6 +172,8 @@ Source3:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_
 # nss fips configuration file
 Source17:       nss.fips.cfg.in
 # RPM/distribution specific patches
+# bsc#1211968
+Patch1:         bsc1211968.patch
 # RHBZ 1015432
 Patch2:         1015432.patch
 # Restrict access to java-atk-wrapper classes
@@ -508,6 +510,7 @@ sh autogen.sh
 
 make patch %{?_smp_mflags}
 
+patch -p0 -i %{PATCH1}
 patch -p0 -i %{PATCH2}
 patch -p0 -i %{PATCH3}
 patch -p0 -i %{PATCH12}
@@ -765,7 +768,7 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
 %if 0%{?suse_version} <= 1130
 # bnc496378 - check the size of installed cacerts
 # 32 bytes means a default empty one
-if [[ $(stat -c "%{s}" %{buildroot}/%{cacerts}) == "32" ]]; then
+if [[ $(stat -c "%%s" %{buildroot}/%{cacerts}) == "32" ]]; then
     echo "ERROR: Default keystore seems empty"
     exit 1
 fi
@@ -850,7 +853,7 @@ if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
 fi
 
 # remove the default empty cacert file, if it's installed
-if [ 0`stat -c "%{s}" %{cacerts} 2>/dev/null` = "032" ] ; then
+if [ 0`stat -c "%%s" %{cacerts} 2>/dev/null` = "032" ] ; then
     rm -f %{cacerts}
 fi
 

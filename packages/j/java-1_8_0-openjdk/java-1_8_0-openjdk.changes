@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Nov 14 06:00:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u392 (icedtea-3.29.0)
+  * October 2023 CPU
+  * CVEs
+    + CVE-2023-22067, bsc#1216379
+    + CVE-2023-22081, bsc#1216374
+  * Security fixes
+    + JDK-8286503, JDK-8312367: Enhance security classes
+    + JDK-8297856: Improve handling of Bidi characters
+    + JDK-8303384: Improved communication in CORBA
+    + JDK-8305815, JDK-8307278: Update Libpng to 1.6.39
+    + JDK-8309966: Enhanced TLS connections
+  * Import of OpenJDK 8 u392 build 08
+    + JDK-6722928: Provide a default native GSS-API library on
+      Windows
+    + JDK-8040887: [TESTBUG] Remove
+      test/runtime/6925573/SortMethodsTest.java
+    + JDK-8042726: [TESTBUG] TEST.groups file was not updated after
+      runtime/6925573/SortMethodsTest.java removal
+    + JDK-8139348: Deprecate 3DES and RC4 in Kerberos
+    + JDK-8173072: zipfs fails to handle incorrect info-zip
+      "extended timestamp extra field"
+    + JDK-8200468: Port the native GSS-API bridge to Windows
+    + JDK-8202952: C2: Unexpected dead nodes after matching
+    + JDK-8205399: Set node color on pinned HashMap.TreeNode
+      deletion
+    + JDK-8209115: adjust libsplashscreen linux ppc64le builds for
+      easier libpng update
+    + JDK-8214046: [macosx] Undecorated Frame does not Iconify when
+      set to
+    + JDK-8219804: java/net/MulticastSocket/Promiscuous.java fails
+      intermittently due to NumberFormatException
+    + JDK-8225687: Newly added sspi.cpp in JDK-6722928 still
+      contains some small errors
+    + JDK-8232225: Rework the fix for JDK-8071483
+    + JDK-8242330: Arrays should be cloned in several JAAS Callback
+      classes
+    + JDK-8253269: The CheckCommonColors test should provide more
+      info on failure
+    + JDK-8283441: C2: segmentation fault in
+      ciMethodBlocks::make_block_at(int)
+    + JDK-8284910: Buffer clean in PasswordCallback
+    + JDK-8287073: NPE from CgroupV2Subsystem.getInstance()
+    + JDK-8287663: Add a regression test for JDK-8287073
+    + JDK-8295685: Update Libpng to 1.6.38
+    + JDK-8295894: Remove SECOM certificate that is expiring in
+      September 2023
+    + JDK-8308788: [8u] Remove duplicate HaricaCA.java test
+    + JDK-8309122: Bump update version of OpenJDK: 8u392
+    + JDK-8309143: [8u] fix archiving inconsistencies in GHA
+    + JDK-8310026: [8u] make java_lang_String::hash_code consistent
+      across platforms
+    + JDK-8314960: Add Certigna Root CA - 2
+    + JDK-8315135: Memory leak in the native implementation of
+      Pack200.Unpacker.unpack()
+    + JDK-8317040: Exclude cleaner test failing on older releases
+- Added patch:
+  * bsc1211968.patch
+    + fix bsc#1211968: SLES12SP5 vulnerable to CVE-2015-4000
+      (Logjam)?
+
+-------------------------------------------------------------------
 Mon Jul 31 05:52:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u382 (icedtea-3.28.0)
