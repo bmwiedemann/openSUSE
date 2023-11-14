@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Nov 12 17:10:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.5:
+  * new-newa-traditional-extended: New input method
+  * ml-pn-c: New input method for Malayalam
+  * en-pn-eqf: This is a slightly modified version of the QWERTY
+    English layout to be used along with the ml-pn-c input method
+  * ** New input methods are added.
+  * ks-kbd: Fix typo in description, add icon.
+  * ug-kbd: Add icon.
+  * tai-sonla-kbd.png: Add icon.
+  * mni-inscript2-mtei.png: Add icon.
+  * sat-inscript2-olck.png: Add icon.
+  * or-phonetic.png: Add icon.
+  * sa-harvard-kyoto.png: Add icon.
+  * pa-anmollipi.png: Add icon.
+  * pa-remington.png: Add icon.
+  * si-singlish.png: Add icon.
+  * ta-lk-renganathan.png: Add icon.
+  * te-rts.png: Add icon.
+  * vi-han.png: Add icon.
+  * vi-nomvni: Make existing icon work.
+  * vi-nomtelex: Make existing icon work.
+  * lsymbol: Add icon.
+  * ssymbol: Add icon.
+  * kok-inscript2-deva, mr-inscript, mr-inscript2: Fix digit 0
+  * ta-vutam: Change the header comment to a description
+  * mr-gamabhana: icon resized to 48x48
+  * latn1-pre: add icon
+  * ar-translit: add icon
+  * ath-phonetic: add icon
+  * bla-phonetic: add icon
+  * cr-western: add icon
+  * iu-phonetic: add icon
+  * nsk-phonetic: add icon
+  * oj-phonetic: add icon
+  * uk-kbd: add icon
+  * eo-vi-sistemo: add icon
+  * Rename the .mim files of some eo input methods to improve
+    search for the icons
+  * Workarounds for doxygen
+  * Update some links to fonts in the documentation
+
+-------------------------------------------------------------------
 Tue May 30 07:49:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:
@@ -62,7 +106,7 @@ Mon Aug 24 20:04:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.8.0:
   ** New input methods are added.
-  
+
   mr-remigton.mim: Marathi input method for remington layout
   mr-typewriter.mim: Marathi input method for typewriter layout
   ne-rom-translit.mim: Nepali input method with roman transliteration
@@ -130,7 +174,7 @@ Tue Dec 10 22:14:19 CST 2013 - hillwood@linuxfans.org
   * MIM/yi-yivo.mim: Add various maps.
   * and more...
 
-  
+
 
 -------------------------------------------------------------------
 Mon Jul  1 04:14:12 UTC 2013 - i@marguerite.su

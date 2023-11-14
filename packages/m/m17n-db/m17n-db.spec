@@ -17,7 +17,7 @@
 
 
 Name:           m17n-db
-Version:        1.8.2
+Version:        1.8.5
 Release:        0
 Summary:        Database Needed by the m17n Library m17n-lib
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain AND MIT
