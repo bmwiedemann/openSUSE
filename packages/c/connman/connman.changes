@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 13 13:12:16 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to 1.42
+  * Fix issue with iwd and signal strength calculation.
+  * Fix issue with iwd and handling service removal.
+  * Fix issue with iwd and handling new connections.
+  * Fix issue with handling default online check URL.
+  * Fix issue with handling nameservers refresh.
+  * Fix issue with handling proxy from DHCP lease. (bsc#1210395 CVE-2023-28488)
+  * Fix issue with handling multiple proxies from PAC.
+  * Fix issue with handling manual time update changes.
+  * Fix issue with handling invalid gateway routes.
+  * Fix issue with handling hidden WiFi agent requests.
+  * Fix issue with handling WiFi SAE authentication failure.
+  * Fix issue with handling DNS Proxy and TCP server replies.
+  * Add support for regulatory domain following timezone.
+  * Add support for localtime configuration option.
+  * add 0001-scripts-add-missing-header-file.patch
+- remove patches
+  * remove 0001-wispr-Rename-wispr_portal_list-to-wispr_portal_hash.patch
+  * remove 0002-wispr-Ignore-NULL-proxy.patch
+  * remove 0003-wispr-Add-reference-counter-to-portal-context.patch
+  * remove 0004-wispr-Update-portal-context-references.patch
+  * remove 0005-gweb-Fix-OOB-write-in-received_data.patch
+
+-------------------------------------------------------------------
 Mon Aug  1 13:48:53 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Add refcounting to wispr portal detection (bsc#1200190)
