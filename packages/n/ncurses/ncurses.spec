@@ -350,10 +350,10 @@ find -name '*.orig' -delete
 # separate tarball
 rm -fr tack
 mv tack-* tack
-%patch1 -p0 -b .327x
-%patch2 -p0 -b .hs
-%patch0 -p0 -b .p0
-%patch3 -p1
+%patch -P1 -p0 -b .327x
+%patch -P2 -p0 -b .hs
+%patch -P0 -p0 -b .p0
+%patch -P3 -p1
 
 %build
 #

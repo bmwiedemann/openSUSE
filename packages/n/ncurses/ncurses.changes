@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 13 08:32:53 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231111
+  + used "infocmp -u" to help trim redundant capabilities -TD
+  + add limit checks in infocmp needed when processing extended
+    capabilities with the "-u" option.
+  + fix inconsistent sort-order in see-also sections of manpages.
+  + fix a few compiler warnings for Solaris 10.
+  + modify endwin() to return an error if it is called again without an
+    intervening screen update (report by Rajeev Pillai, NetBSD #57592).
+- Add ncurses patch 20231104
+  + modify reset command to avoid altering clocal if the terminal uses a
+    modem (prompted by discussion with Werner Fink, Michal Suchanek,
+    OpenSUSE #1201384, Debian #60377).
+  + build-fixes for --with-caps variations.
+  + correct a couple of section-references in INSTALL
+- Add ncurses patch 20231028
+  + move xterm focus mode 1004 from xterm+sm+1006 into xterm+focus as
+    fe/fd capabilities, like vim (vim-pr #13440).
+  + modify --with-pkg-config-libdir option to make "libdir" the default,
+    as documented, rather than "auto" (report by Branden Robinson).
+  + improve messages from configure script (patches by Branden Robinson).
+- Fix offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Mon Oct 23 07:49:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20231021
