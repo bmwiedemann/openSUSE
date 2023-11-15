@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-optimist
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-optimist
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 %define mod_name optimist
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Optimist is a commandline option parser for Ruby that just gets out
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Optimist is a commandline option parser for Ruby that just
@@ -52,7 +50,7 @@ specify.
 
 %install
 %gem_install \
-  --doc-files="History.txt LICENSE.txt README.md" \
+  --doc-files="CHANGELOG.md History.txt LICENSE.txt README.md" \
   -f
 
 %gem_packages
