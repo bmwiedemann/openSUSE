@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:57:50 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.6.0
+=====
+
+* #193 Add support for Ruby 3.2 as File.exists? has been removed [@sato11](https://github.com/sato11)
+
+2.5.0
+=====
+
+* #192 Add padding and rounded borders to code examples [@p8](https://github.com/p8)
+* #191 Add css class for constant [@p8](https://github.com/p8)
+* #189 `index_path` should handle a nil `main_page` [@ghiculescu](https://github.com/ghiculescu)
+
+
+-------------------------------------------------------------------
 Thu Aug  4 13:28:41 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.4.0
