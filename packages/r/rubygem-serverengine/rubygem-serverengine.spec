@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-serverengine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-serverengine
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 %define mod_name serverengine
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.1.0}
+BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/fluent/serverengine
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        ServerEngine - multiprocess server framework
 License:        Apache-2.0
-Group:          Development/Languages/Ruby
 
 %description
 A framework to implement robust multiprocess servers like Unicorn.
