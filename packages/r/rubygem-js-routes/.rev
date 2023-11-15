@@ -244,4 +244,12 @@
 - older changes entries had mixed content. the new changes file matches the changelog.md</comment>
     <requestid>1083483</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7c4a9d4457a7b68d2dec56278523ea2c</srcmd5>
+    <version>2.2.7</version>
+    <time>1700078846</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123202</requestid>
+  </revision>
 </revisionlist>
