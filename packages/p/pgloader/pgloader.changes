@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 13 17:49:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Partially undo change from Wed Aug 18 07:46:37 UTC 2021 and
+  replace the way the program is packaged following new findings
+  about how SBCL works. [boo#1215562]
+
+-------------------------------------------------------------------
 Tue Jan 31 15:25:03 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Update to version 3.6.9

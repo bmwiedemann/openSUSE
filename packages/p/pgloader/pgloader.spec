@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(zlib)
 %else
 BuildRequires:  libopenssl-devel
 %endif
+Requires:       /usr/bin/sbcl
 
 %description
 pgloader imports data from different kind of sources and COPY it into
@@ -55,7 +56,7 @@ indexes in PostgreSQL. In the MySQL case it's possible to edit CASTing rules
 from the pgloader command directly.
 
 %prep
-%setup -q -n %{name}-bundle-%{version}
+%autosetup -n %{name}-bundle-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -65,26 +66,35 @@ echo "Arch is : %{_arch}"
 %if "%{_arch}" == "i386" || "%{_arch}" == "arm"
 export DYNSIZE="DYNSIZE=1024"
 %endif
-%make_build V=1 ${DYNSIZE} %{name}
+#
+# SBCL "programs" are similar to self-extracting archives, i.e. they are
+# comprised of a well-known stub plus some data appended. Such appendages
+# (called "core" in SBCL) are generally prone to getting removed by e.g.
+# strip, upx, etc.
+#
+# Build just the core. This has two benefits:
+# * reuse /usr/bin/sbcl interpreter and save bytes
+# * the core itself is not ELF, so not subject to strip
+#
+%make_build V=1 ${DYNSIZE} COMPRESS_CORE_OPT="--compress-core --core-only" %{name}
 
 %install
-install -d %{buildroot}%{_bindir}
+# That core is likely arch-dependent, so place into libexecdir not datadir.
 #
-# SBCL produces ELF files that
-# (1.) have excessive gaps and which could be fixed by objcopy/strip/etc.
-# (2.) do not have any .debug_* sections, therefore rpm's debuginfo
-#      mechanism (would do strip) does not trigger at all.
-#
-# Hence this copyin-copyout call with objcopy, which reduces filesize from 20MB
-# to 300KB.
-#
-objcopy bin/pgloader %{buildroot}%{_bindir}/pgloader
+mkdir -p "%{buildroot}/%{_bindir}" "%{buildroot}/%{_libexecdir}/%{name}"
+cp bin/pgloader "%{buildroot}/%{_libexecdir}/%{name}/"
+cat >"%{buildroot}/%{_bindir}/pgloader" <<-EOF
+	#!/bin/sh
+	exec /usr/bin/sbcl --core %{_libexecdir}/%{name}/pgloader "\$@"
+EOF
+chmod a+x "%{buildroot}/%{_bindir}/pgloader"
 
-%fdupes %{buildroot}
+%fdupes %{buildroot}/%{_prefix}
 
 %files
 %license local-projects/%{name}-%{version}/LICENSE
 %doc local-projects/%{name}-%{version}/README.md local-projects/%{name}-%{version}/TODO.md
 %{_bindir}/pgloader
+%{_libexecdir}/%{name}/
 
 %changelog
