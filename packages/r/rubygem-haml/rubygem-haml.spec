@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-haml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-haml
-Version:        6.0.12
+Version:        6.2.3
 Release:        0
 %define mod_name haml
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.1.0}
+BuildRequires:  %{ruby >= 2.1.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        An elegant, structured (X)HTML/XML templating engine
 License:        MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
@@ -53,7 +51,6 @@ An elegant, structured (X)HTML/XML templating engine.
   --symlink-binaries \
   --doc-files="CHANGELOG.md MIT-LICENSE README.md" \
   -f
-%gem_cleanup
 
 %gem_packages
 
