@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 14 17:10:32 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20231114.6bcf1d3:
+  * Fix quoting when calling dracut
+
+-------------------------------------------------------------------
 Thu Nov 02 14:57:57 UTC 2023 - lnussel@suse.de
 
 - Update to version 1+git20231102.beb4c19:

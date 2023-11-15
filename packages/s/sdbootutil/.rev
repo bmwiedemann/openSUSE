@@ -87,4 +87,13 @@
     <comment></comment>
     <requestid>1123573</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2746186249d616872c4ed7167d4021a8</srcmd5>
+    <version>1+git20231114.6bcf1d3</version>
+    <time>1700078809</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20231114.6bcf1d3:
+  * Fix quoting when calling dracut (forwarded request 1126270 from lnussel)</comment>
+    <requestid>1126272</requestid>
+  </revision>
 </revisionlist>
