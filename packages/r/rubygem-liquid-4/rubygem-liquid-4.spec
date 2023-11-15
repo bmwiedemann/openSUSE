@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-liquid-4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-liquid-4
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 %define mod_name liquid
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -4
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.1.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A secure, non-evaling end user template engine with aesthetic markup
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A secure, non-evaling end user template engine with aesthetic markup.
