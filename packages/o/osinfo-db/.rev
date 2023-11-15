@@ -528,4 +528,12 @@
     <comment>Update to database version 20230719. Add support for SLE15-SP6 and SLE Micro 5.5</comment>
     <requestid>1102786</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>b5dff4301ed1103364ef65f054067bd3</srcmd5>
+    <version>20231027</version>
+    <time>1700078794</time>
+    <user>anag+factory</user>
+    <comment>Update to database version 20231027</comment>
+    <requestid>1125734</requestid>
+  </revision>
 </revisionlist>
