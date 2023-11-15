@@ -26,6 +26,7 @@ URL:            http://jetmore.org/john/code/swaks/
 Source:         http://jetmore.org/john/code/swaks/files/swaks-%{version}.tar.gz
 Requires:       perl-Net-SSLeay
 Requires:       perl-Net-DNS
+Requires:       perl-IO-Socket-INET6
 BuildArch:      noarch
 
 %description

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  6 21:41:52 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- 🙄 also require perl-IO-Socket-INET6 to ipv6 works out of the box
+
+-------------------------------------------------------------------
 Sat Oct  7 23:22:08 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - some feature require perl-Net-DNS
