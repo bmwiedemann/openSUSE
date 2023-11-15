@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-debase-ruby_core_source
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,24 +24,22 @@
 #
 
 Name:           rubygem-debase-ruby_core_source
-Version:        0.10.18
+Version:        3.2.2
 Release:        0
 %define mod_name debase-ruby_core_source
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  fdupes
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby-debug/debase-ruby_core_source
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-debase-ruby_core_source-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Provide Ruby core source files
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Provide Ruby core source files for C extensions that need them.
