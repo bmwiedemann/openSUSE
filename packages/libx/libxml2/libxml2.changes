@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 13 15:02:14 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Security fix: CVE-2023-45322 (bsc#1216129)
+  * use-after-free in xmlUnlinkNode() in tree.c
+  * Added file libxml2-CVE-2023-45322.patch
+
+-------------------------------------------------------------------
 Mon Oct 23 08:26:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python312.patch to make it compatible with python 3.12

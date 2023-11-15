@@ -48,6 +48,9 @@ Patch2:         libxml2-CVE-2023-39615.patch
 # PATCH-FIX-UPSTREAM python312.patch
 # https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/226
 Patch3:         python312.patch
+# PATCH-FIX-UPSTREAM CVE-2023-45322 bsc#1216129
+# https://gitlab.gnome.org/GNOME/libxml2/-/commit/d39f78069dff496ec865c73aa44d7110e429bce9
+Patch4:         libxml2-CVE-2023-45322.patch
 #
 ### -- openSUSE patches range from 1000 to 1999 -- ###
 # PATCH-FIX-OPENSUSE
