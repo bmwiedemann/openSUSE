@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 13 11:40:34 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.6.22
+  * core: fix incr/decr/ma failing in some conditions
+  * extstore: fix item loss during page defrag
+  * Note that counts for track_sizes are best effort
+  * core: fix build on BSD
+  * core: speedup for async IO handling
+  * core: don't ignore sighup in daemonize mode
+  * proxy: add label to proxy backend error logs
+  * proxy: if a ustat label is "", skip printing
+  * proxy: fix ms ignoring T flag for mcp.internal
+  * proxy: fix ms parsing error
+  * proxy: fix backend cleanup when using worker IO
+  * proxy: fix response code in the event of dead backend
+  * proxy: fix race condition in first load
+  * proxy: fix off-by-one if \r is missing
+  * proxy: update backends if conncount changes
+  * proxy: io submission queue opt
+  * proxy: io return optimization
+  * proxy: fix for dropping -O2 from lua compile
+  * proxy: fix buffer overflow with multiget syntax
+  * proxy: fix flaky test in t/proxylimits.t
+- fixes [bsc#1216700] (CVE-2023-46853)
+- fixes [bsc#1216699] (CVE-2023-46852) 
+
+-------------------------------------------------------------------
 Mon Jun 26 13:26:48 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.6.21
