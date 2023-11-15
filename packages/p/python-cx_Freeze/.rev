@@ -137,4 +137,13 @@
   * Use pytest rather than nose in one test case.</comment>
     <requestid>1115790</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2a2b4c9a0ee3fbe1b4fc2025887fedb</srcmd5>
+    <version>6.15.10</version>
+    <time>1700078906</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.15.10:
+  https://github.com/marcelotduarte/cx_Freeze/compare/6.15.9...6.15.10</comment>
+    <requestid>1126232</requestid>
+  </revision>
 </revisionlist>
