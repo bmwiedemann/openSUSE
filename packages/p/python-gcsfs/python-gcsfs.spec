@@ -17,14 +17,14 @@
 
 
 Name:           python-gcsfs
-Version:        2023.9.2
+Version:        2023.10.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
 Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{version}.tar.gz#/gcsfs-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -64,7 +64,6 @@ File-system interface for Google Cloud Storage.
 
 %package        fuse
 Summary:        Filesystem interface over GCS - FUSE interface
-Group:          Development/Languages/Python
 Requires:       python-click
 Requires:       python-fusepy
 
