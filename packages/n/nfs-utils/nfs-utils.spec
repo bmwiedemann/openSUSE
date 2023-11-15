@@ -53,9 +53,11 @@ BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libtirpc)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(sqlite3)
 Suggests:       python-base
@@ -139,6 +141,7 @@ export LDFLAGS="-pie"
 	--enable-nfsdcltrack \
 	--enable-mount \
 	--enable-libmount-mount \
+	--enable-junction \
 	--disable-static \
 	--disable-sbin-override \
 	--with-pluginpath=%{_libdir}/libnfsidmap-1.0.0 \
@@ -350,6 +353,7 @@ fi
 %{_sbindir}/rpc.mountd
 %{_sbindir}/rpc.nfsd
 %{_sbindir}/nfsdcltrack
+%{_sbindir}/nfsref
 %attr(0755,root,root) %{_sbindir}/nfsdclddb
 %attr(0755,root,root) %{_sbindir}/nfsdclnts
 %{_mandir}/man5/exports.5%{ext_man}
@@ -357,6 +361,7 @@ fi
 %{_mandir}/man8/exportfs.8%{ext_man}
 %{_mandir}/man8/mountd.8%{ext_man}
 %{_mandir}/man8/nfsd.8%{ext_man}
+%{_mandir}/man8/nfsref.8%{ext_man}
 %{_mandir}/man8/rpc.mountd.8%{ext_man}
 %{_mandir}/man8/rpc.nfsd.8%{ext_man}
 %{_mandir}/man8/nfsdcltrack.8%{ext_man}

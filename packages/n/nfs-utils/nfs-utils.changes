@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 15 00:03:44 UTC 2023 - Neil Brown <nfbrown@suse.com>
+
+- Build with --enable-junction so that nfsref is built
+  https://lore.kernel.org/linux-nfs/DFBBA6DD-7F22-4A38-BAA2-DBD40EB81BB9@oracle.com/
+
+-------------------------------------------------------------------
 Mon Oct 16 00:43:42 UTC 2023 - Neil Brown <nfbrown@suse.com>
 
 - 0001-export-fix-handling-of-error-from-match_fsid.patch

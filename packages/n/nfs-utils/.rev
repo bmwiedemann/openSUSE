@@ -1736,4 +1736,13 @@
   (bsc#1214540)</comment>
     <requestid>1117914</requestid>
   </revision>
+  <revision rev="180" vrev="41">
+    <srcmd5>c60b8d06b8ff9dbe6852f2d759a8348f</srcmd5>
+    <version>unknown</version>
+    <time>1700078822</time>
+    <user>anag+factory</user>
+    <comment>- Build with --enable-junction so that nfsref is built
+  https://lore.kernel.org/linux-nfs/DFBBA6DD-7F22-4A38-BAA2-DBD40EB81BB9@oracle.com/</comment>
+    <requestid>1126501</requestid>
+  </revision>
 </revisionlist>
