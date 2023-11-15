@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gpgme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gpgme
-Version:        2.0.22
+Version:        2.0.23
 Release:        0
 %define mod_name gpgme
 %define mod_full_name %{mod_name}-%{version}
@@ -33,17 +33,15 @@ BuildRequires:  libassuan-devel >= 2.0.2
 BuildRequires:  libgpg-error-devel >= 1.8
 BuildRequires:  libgpgme-devel >= 1.2.0
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            http://github.com/ueno/ruby-gpgme
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-gpgme-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Ruby binding of GPGME
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Ruby
 
 %description
 Ruby-GPGME is a Ruby language binding of GPGME (GnuPG
