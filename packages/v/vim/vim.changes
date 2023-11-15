@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Nov 13 19:03:12 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to version 9.0.2103
+- drop vim-changelog.sh
+ *  recursive callback may cause issues on some archs
+ *  matchparen highlight not cleared in completion mode
+ *  improve the breakpoint sign label (#13525)
+ *  Improve CONTRIBUTING.md
+ *  Renamed "makefile_*.mak" for Vim documentation (#13517)
+ *  Update for Lynx 2.8.9 (#13510)
+ *  Improve :let-heredoc syntax highlighting (#12923)
+ *  clarify when formatoptions applies
+ *  Update for i3 4.23 (#13522)
+ *  Update usr_51.txt to be more inclusive (#13496)
+ *  Add missing null_<type> help tags (#13498)
+ *  labeler.yml use all instead of any for doc detection (#13507)
+ *  No filetype support for xcompose files
+ *  clarify `:help inclusion` section
+ *  labeler.yml: Add some more component detection rules (#13511)
+ *  No support for cypher files
+ *  Vim9: confusing usage of private
+ *  labeler.yml: add documentation label (#13506)
+ *  fix grammar in termdebug doc, remove trailing spaces (#13505)
+ *  improve window handling, shorten var types
+ *  handle buffer-local mappings properly
+ *  statusline may look different than expected
+ *  Vim9: need more assignment tests
+ *  Update for Wget2 2.1.0 (#13497)
+ *  Unsupported option causes skipping of modeline test
+ *  tests: failure in test_arabic
+ *  Switch Hindu-Arabic to Arabic numerals in arabic keymap (#13430)
+ *  Update the translation of Russian messages to Vim 9.0.2091 (#13490)
+ *  improve the error detection
+ *  document vim-script library function
+ *  Make dist/vim.vim work properly when lacking vim9script support (#13487)
+ *  Vim9: cannot convert list to string using +=
+ *  add legacy version for central vim library
+ *  centralize safe executable check and add vim library (#13413)
+ *  clarify terminal capabilities for focus reporting
+ *  complete_info() skips entries with 'noselect'
+ *  Add Makefile for the Vim documentation on Windows (#13467)
+ *  sound_playfile() fails when using powershell
+ *  Vim9: still allows abstract static methods
+ *  Update sh syntax and add shDerefOffset to shDerefVarArray for bash (#13480)
+ *  make strace ft check less strict (#13482)
+ *  build-failure in vim9class
+ *  code cleanup for option callbacks needed
+ *  Vim9: abstract can be used in interface
+ *  Vim9: abstract static methods are possible
+ *  runtime(sh) Update sh syntax and add shDblParen to shCaseList (#13469)
+ *  Perl: xsubpp may be in non-standard location
+ *  Add noble (24.04 LTS) as Ubuntu release name (#13472)
+ *  test_channel may fail because of IPv6 config issue
+ *  smoothscroll may result in wrong cursor position
+ *  add shDblParen to shLoopList for bash (#13445)
+ *  vim9_script test too large
+ *  all secure options should note this restriction in the documentation (#13448)
+ *  Not all Dart files detected
+
+-------------------------------------------------------------------
 Sat Oct 28 14:45:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to version 9.0.2078

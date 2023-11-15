@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.0
-%define patchlevel 2078
+%define patchlevel 2103
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site
@@ -60,7 +60,6 @@ Source30:       gvim_128.png
 Source31:       gvim_256.png
 Source32:       gvim_512.png
 # /Section
-Source98:       vim-changelog.sh
 Source99:       %{name}-7.4-rpmlintrc
 Patch3:         %{name}-7.4-disable_lang_no.patch
 Patch4:         %{name}-7.3-gvimrc_fontset.patch

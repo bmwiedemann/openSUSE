@@ -7274,4 +7274,41 @@ always built-in because vim has direct perl dependencies anyway.
  * do not use hard-coded match id (#13393)</comment>
     <requestid>1120907</requestid>
   </revision>
+  <revision rev="356" vrev="1">
+    <srcmd5>ae29148ced6e2172d5026666e457682f</srcmd5>
+    <version>9.0.2103</version>
+    <time>1700078820</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 9.0.2103
+- drop vim-changelog.sh
+ *  recursive callback may cause issues on some archs
+ *  matchparen highlight not cleared in completion mode
+ *  improve the breakpoint sign label (#13525)
+ *  Improve CONTRIBUTING.md
+ *  Renamed &quot;makefile_*.mak&quot; for Vim documentation (#13517)
+ *  Update for Lynx 2.8.9 (#13510)
+ *  Improve :let-heredoc syntax highlighting (#12923)
+ *  clarify when formatoptions applies
+ *  Update for i3 4.23 (#13522)
+ *  Update usr_51.txt to be more inclusive (#13496)
+ *  Add missing null_&lt;type&gt; help tags (#13498)
+ *  labeler.yml use all instead of any for doc detection (#13507)
+ *  No filetype support for xcompose files
+ *  clarify `:help inclusion` section
+ *  labeler.yml: Add some more component detection rules (#13511)
+ *  No support for cypher files
+ *  Vim9: confusing usage of private
+ *  labeler.yml: add documentation label (#13506)
+ *  fix grammar in termdebug doc, remove trailing spaces (#13505)
+ *  improve window handling, shorten var types
+ *  handle buffer-local mappings properly
+ *  statusline may look different than expected
+ *  Vim9: need more assignment tests
+ *  Update for Wget2 2.1.0 (#13497)
+ *  Unsupported option causes skipping of modeline test
+ *  tests: failure in test_arabic
+ *  Switch Hindu-Arabic to Arabic numerals in arabic keymap (#13430)
+ *  Update the translation of Russian messages to Vim 9.0.2091 (#13490)</comment>
+    <requestid>1126465</requestid>
+  </revision>
 </revisionlist>
