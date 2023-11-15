@@ -268,4 +268,14 @@
    OffsetCurve</comment>
     <requestid>1075604</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9b82bd7c7fdf3a2471bf9d976dcae882</srcmd5>
+    <version>3.12.1</version>
+    <time>1700078911</time>
+    <user>anag+factory</user>
+    <comment>- Update to verstion 3.12.1:
+  - See provided NEWS.md for a complete list of changes
+- Drop no longer needed geos-add-missing-include.patch</comment>
+    <requestid>1126245</requestid>
+  </revision>
 </revisionlist>

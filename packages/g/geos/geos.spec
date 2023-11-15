@@ -16,17 +16,15 @@
 #
 
 
-%define uver	3_11_2
+%define uver	3_12_1
 Name:           geos
-Version:        3.11.2
+Version:        3.12.1
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://libgeos.org
 Source0:        https://download.osgeo.org/%{name}/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM geos-add-missing-include.patch -- Add missing #include <cstdint>
-Patch0:         geos-add-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -78,7 +76,7 @@ This package contains the development files to build applications that
 use GEOS.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %cmake

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 14 16:12:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to verstion 3.12.1:
+  - See provided NEWS.md for a complete list of changes
+- Drop no longer needed geos-add-missing-include.patch
+
+-------------------------------------------------------------------
 Thu Mar 30 17:23:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Disable testuite on i586
