@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  3 08:01:36 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- Version 1.2.11 - 28-Jan-2023
+----------------------------
+
+* Eliminate Object#untaint deprecation warnings on JRuby 9.4.0.0. #145.
+
+
+-------------------------------------------------------------------
 Thu Aug  4 13:33:36 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.2.10
