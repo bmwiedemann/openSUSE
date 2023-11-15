@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:40:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Fixed regression caused by :ticket:`879` released in 1.7.0
+    where the ".info" dictionary of ``Table`` would not render in
+    autogenerate create table statements.
+    This can be useful for custom create table DDL rendering
+    schemes so it is restored.
+  * Improved typing in the
+    :paramref:`.EnvironmentContext.configure.process_revision_dir
+    ectives` callable to better indicate that the passed-in type is
+    :class:`.MigrationScript`, not the :class:`.MigrationOperation`
+    base class, and added typing to the example at
+    :ref:`cookbook_no_empty_migrations` to illustrate.
+  * Repaired :class:`.ExecuteSQLOp` so that it can participate in
+    "diff" operations; while this object is typically not present
+    in a reflected operation stream, custom hooks may be adding
+    this construct where it needs to have the correct
+    ``to_diff_tuple()`` method.
+  * Improved the ``op.execute()`` method to correctly accept the
+  * ``Executable`` type that is the same which is used in
+    SQLAlchemy ``Connection.execute()``.
+  * Improve typing of the revision parameter in various command
+    functions.
+  * Fixed autogen render issue where expressions inside of
+    indexes for PG need to be double-parenthesized, meaning a
+    single parens must be present within the generated ``text()``
+    construct.
+  * Alembic now accommodates for Sequence and Identity that
+    support dialect kwargs.
+    This is a change that will be added to SQLAlchemy v2.1.
+
+-------------------------------------------------------------------
 Mon Sep 25 22:38:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file
@@ -45,7 +78,7 @@ Sat Jul 29 21:17:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.1:
   * As Alembic 1.11.0 is considered a major release (Alembic does
-    not use semver, nor does its parent project SQLAlchemy; 
+    not use semver, nor does its parent project SQLAlchemy;
     this has been `clarified <versioning_scheme>` in the documentation),
   * :ticket:`1130` modified calling signatures for most
     operations to consider all optional keyword parameters to
@@ -54,7 +87,7 @@ Sat Jul 29 21:17:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
     changes were identified as possibly problematic without a
     more formal deprecation warning being emitted which were the
     ``table_name`` parameter to :meth:`.Operations.drop_index`,
-    which was generated positionally by autogenerate prior to 
+    which was generated positionally by autogenerate prior to
     version 0.6.3 released in 2014, and
     ``type_`` in :meth:`.Operations.drop_constraint` and
     :meth:`.BatchOperations.drop_constraint`, which was
@@ -76,7 +109,7 @@ Sat Jul 29 21:17:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Correctly pass previously ignored arguments ``insert_before``
     and ``insert_after`` in ``batch_alter_column``
   * Argument signatures of Alembic operations now enforce
-    keyword-only arguments as passed as keyword and not 
+    keyword-only arguments as passed as keyword and not
     positionally, such as Operations.create_table.schema
     .Operations.add_column.type_, etc.
   * Fix autogenerate issue with PostgreSQL
@@ -96,7 +129,7 @@ Sat Jul 29 21:17:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
     apply any quoting to the value before comparing it to the
     server-reported default, except for within dialect-specific
     routines as needed. This change will affect the format of
-    the server default as passed to the 
+    the server default as passed to the
     :paramref:`.EnvironmentContext.configure.compare_server_defau
     lt` hook, as well as for third party dialects that implement
     a custom ``compare_server_default`` hook in their alembic
@@ -119,7 +152,7 @@ Fri May  5 22:12:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.4:
   * Added support for autogenerate comparison of indexes on
-    PostgreSQL which include SQL sort option, such as 
+    PostgreSQL which include SQL sort option, such as
     ``ASC`` or ``NULLS FIRST``.
   * Fixed various typing issues observed with pyright, including
     issues involving the combination of :class:`.Function` and
@@ -127,7 +160,7 @@ Fri May  5 22:12:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fixed error raised by alembic when running autogenerate after
     removing a function based index.
   * Fixed regression where Alembic would not run with older
-    SQLAlchemy 1.3 versions prior to 1.3.24 due to a 
+    SQLAlchemy 1.3 versions prior to 1.3.24 due to a
     missing symbol. Workarounds have been applied for older
     1.3 versions.
   * Fixed issue regarding PostgreSQL :class:`.ExcludeConstraint`,
@@ -140,7 +173,7 @@ Fri May  5 22:12:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
     different order as equal, while in general they are not equivalent
     in how a database will use them.
   * Recursive traversal of revision files in a particular
-    revision directory is now supported, by indicating 
+    revision directory is now supported, by indicating
     ``recursive_version_locations = true`` in alembic.ini.
   * Fixed issue where indexes on SQLite which include SQL
     expressions would not compare correctly, generating false
@@ -202,7 +235,7 @@ Thu Jan  5 20:33:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Jan  5 19:06:37 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.9.0: 
+- Update to 1.9.0:
   feature
   * Added new Alembic command alembic check. This performs the widely requested feature of running an “autogenerate” comparison
     between the current database and the MetaData that’s currently set up for autogenerate, returning an error code if the two do not match,
@@ -322,7 +355,7 @@ Mon Feb 14 21:37:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Dec  6 17:51:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.5:
-  * Adjustments to the test suite to accommodate for error message change 
+  * Adjustments to the test suite to accommodate for error message change
     in newer SQLAlchemy
 
 -------------------------------------------------------------------
@@ -336,7 +369,7 @@ Sun Oct 17 22:28:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.4:
   * Fixed a regression that prevented the use of post write hooks on python
-    version lower than 3.9 
+    version lower than 3.9
   * Added missing attributes from context stubs.
   * Fixed issue where registration of custom ops was prone to failure due to
     the registration process running exec() on generated code that as of the
@@ -458,7 +491,7 @@ Sun Jun  6 13:39:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
       a persistent version of each schema object internally; instead,
       the state variables of each operation object will be used to
       produce the corresponding construct when the operation is
-      invoked. The rationale is so that environments which m 
+      invoked. The rationale is so that environments which m
 
 -------------------------------------------------------------------
 Fri May 14 01:18:46 UTC 2021 - Arun Persaud <arun@gmx.de>

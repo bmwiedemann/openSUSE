@@ -1636,4 +1636,40 @@
    command when  `type_` is `None`.</comment>
     <requestid>1113553</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>06257557709e4818ce9717345ad08b4f</srcmd5>
+    <version>1.12.1</version>
+    <time>1700078802</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.12.1:
+  * Fixed regression caused by :ticket:`879` released in 1.7.0
+    where the &quot;.info&quot; dictionary of ``Table`` would not render in
+    autogenerate create table statements.
+    This can be useful for custom create table DDL rendering
+    schemes so it is restored.
+  * Improved typing in the
+    :paramref:`.EnvironmentContext.configure.process_revision_dir
+    ectives` callable to better indicate that the passed-in type is
+    :class:`.MigrationScript`, not the :class:`.MigrationOperation`
+    base class, and added typing to the example at
+    :ref:`cookbook_no_empty_migrations` to illustrate.
+  * Repaired :class:`.ExecuteSQLOp` so that it can participate in
+    &quot;diff&quot; operations; while this object is typically not present
+    in a reflected operation stream, custom hooks may be adding
+    this construct where it needs to have the correct
+    ``to_diff_tuple()`` method.
+  * Improved the ``op.execute()`` method to correctly accept the
+  * ``Executable`` type that is the same which is used in
+    SQLAlchemy ``Connection.execute()``.
+  * Improve typing of the revision parameter in various command
+    functions.
+  * Fixed autogen render issue where expressions inside of
+    indexes for PG need to be double-parenthesized, meaning a
+    single parens must be present within the generated ``text()``
+    construct.
+  * Alembic now accommodates for Sequence and Identity that
+    support dialect kwargs.
+    This is a change that will be added to SQLAlchemy v2.1.</comment>
+    <requestid>1125874</requestid>
+  </revision>
 </revisionlist>
