@@ -312,4 +312,30 @@
 - Build AVX2 enabled hwcaps library for x86_64-v3</comment>
     <requestid>1070165</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>51f5cef07c8f973ff62404156181dc4a</srcmd5>
+    <version>1.19.0+git.20231114</version>
+    <time>1700078799</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.19.0+git.20231114:
+  * Log necessary message on internal reconnect
+  * Dump opcode string in iscsi_dump_pdu_header()
+  * Introduce helper function scsi_opcode_str
+  * Declare value-string maps as static
+  * Distinguish command timeout
+  * doc: Add iscsi-md5sum
+  * fixup! checking if task is in outqueue
+  * checking if task is in outqueue
+  * Add add  a timeout to the event_loop in sync.c
+  * iscsi-discard: adapt block limits
+  * gitignore: Add utils/iscsi-md5sum
+  * iscsi-md5sum: Add new tool
+  * gitignore: add utils/iscsi-discard
+  * iscsi-discard: Add new tool
+  * utils: use strtol instead of atoi
+  * Add iscsi_set_fd_dup_cb
+  * Add /utils/iscsi-pr into .gitignore
+  * iscsi-perf: Add -h/--help</comment>
+    <requestid>1125840</requestid>
+  </revision>
 </revisionlist>
