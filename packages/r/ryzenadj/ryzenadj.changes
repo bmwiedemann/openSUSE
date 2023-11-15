@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Wed Nov 15 08:40:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * Improve documentation and building process
+  * Mendocino and Phoenix Point support
+  * Phoenix CPU improvements
+
+-------------------------------------------------------------------
+Fri Jun  2 09:45:20 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 0.13.0:
+
+  * Experimental Mendocino and Phoenix Point support @JamesCJ60
+  * Cumulative optimizations @Peppe289
+
+-------------------------------------------------------------------
+Mon Jan  9 05:18:50 UTC 2023 - Erefd X <zzndb001@gmail.com>
+
+- Update to 0.12.0:
+  * Rembrandt PMTable support (ryzenadj --info), thanks to @patrickschur.
+  * Cumulative fixes.
+
+-------------------------------------------------------------------
+Wed Aug 10 14:34:58 UTC 2022 - Erefd X <zzndb001@gmail.com>
+
+- Update to 0.11.1:
+  * Vangogh and Rembrandt enhancements
+  * New commands from Curve Optimiser
+  * Add OC related features
+  * Fix cpuid for Rembrandt
+
+-------------------------------------------------------------------
+Tue Apr 12 11:49:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Added TDP modification support for Van Gogh and Rembrandt
+
+-------------------------------------------------------------------
+Thu Nov 25 20:42:33 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 0.8.2:
+  * Does not return with error on adjustment calls without pm table anymore
+  * Fix Slow Time and STAPM Time output for Cezanne
+  * Fix Core Temp reading for Dual Core CPUs.
+  * Add Core Clock Boost setpoint and Core Clock busy value to output and api
+  * Add workaround for fixed Zen3 STAPM limit to PowerShell
+
+-------------------------------------------------------------------
+Sun Oct 18 11:47:57 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Initial release
+- Patch which fixes the output formatting. Submitted upstream as
+  https://github.com/FlyGoat/RyzenAdj/pull/70
+  * 0001-main-Use-d-instead-of-x-to-format-the-value.patch
+- Patch which fixes return-type gcc errors.
+  * 0002-Fix-return-type-error.patch
