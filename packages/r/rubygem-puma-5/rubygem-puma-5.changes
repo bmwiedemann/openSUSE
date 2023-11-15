@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:50:54 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 5.6.7:
+
+Security
+Address HTTP request smuggling vulnerabilities with zero-length Content Length header and trailer fields ([GHSA-68xg-gqqm-vgj8](https://github.com/puma/puma/security/advisories/GHSA-68xg-gqqm-vgj8))
+
+
+
+-------------------------------------------------------------------
 Mon Jan  2 09:29:45 UTC 2023 - Stephan Kulow <coolo@suse.com>
 
 - Update to version 5.6.5 (decoupling from main puma)
