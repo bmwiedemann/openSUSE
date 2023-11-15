@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-execjs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-execjs
-Version:        2.8.1
+Version:        2.9.1
 Release:        0
 %define mod_name execjs
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/rails/execjs
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Run JavaScript code from Ruby
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 ExecJS lets you run JavaScript code from Ruby.
