@@ -1,0 +1,6 @@
+<package name="human-theme-gtk" project="openSUSE:Factory">
+  <title></title>
+  <description>This theme works with GTK 2.24 (with gtk2-engine-murrine), 3.24, and 4.12. Better rendering with Pango 1.42- or 1.51+. It is mainly intended for Mate and Xfce Desktop Environments.</description>
+  <devel project="X11:common:Factory" package="human-theme-gtk"/>
+  <url>https://github.com/luigifab/human-theme</url>
+</package>

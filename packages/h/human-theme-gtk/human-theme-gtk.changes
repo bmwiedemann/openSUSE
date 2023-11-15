@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Tue Oct 10 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.1.0)
+  * (gtk 3 & 4) small fix for geany messages window
+  * (gtk 3 & 4) almost same rendering between pango 1.42 and 1.51
+  * (gtk 4) compatibility with 4.12
+
+-------------------------------------------------------------------
+Fri Jun 16 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
+
+- Package spec update
+
+-------------------------------------------------------------------
+Thu Jun  6 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.0.0)
+  * (gtk 3) alternating row colours in tree views is back
+  * Xfce users have now decorations for windows
+  * Mate users will enjoy better styles for lock screen and OSD
+  * Mate users have now styles for window selector and date/hour
+    applets when clicked
+  * status bar styles works with or without gtk3-classic
+  * added styles for CSD windows
+
+-------------------------------------------------------------------
+Thu Sep  9 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (1.5.0)
+  * (gtk 3 & 4) fix text color for image settings of print dialog
+  * (gtk 3) set background color for RTL scales
+  * (gtk 4) set vertical scale marks position
+
+-------------------------------------------------------------------
+Wed Jul  7 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (1.4.0)
+  * (gtk 3 & 4) fix style for disabled switchs, spinbuttons, images
+  * (gtk 3 & 4) fix text color for progressbars in treeviews
+  * (gtk 3 & 4) fix credits and license borders in about dialogs
+  * (gtk 3 & 4) set same focused border color (outline)
+  * (gtk 3 & 4) add border for focused scales (outline)
+  * (gtk 3 & 4) add style for disabled toggle buttons in toolbars
+  * (gtk 3 & 4) add RTL styles
+  * (gtk 3) fix right click menu style for mate-calc and gedit
+  * (gtk 3) remove borders separators for mate window
+    selector applet
+  * (gtk 4) refactor style of toolbar buttons and scales
+
+-------------------------------------------------------------------
+Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (1.3.0)
+  * (gtk3 & 4) new style for switch buttons
+  * (gtk3 & 4) new style for scales (for 0% and 100%)
+  * (gtk3 & 4) set style for selection box (rubberband)
+  * (gtk3 & 4) set style for check, radio, progress and icon
+    widgets in treeviews
+  * (gtk3) fix menuitems style for mate-calc
+  * (gtk3) fix selected days style in calendars
+  * (gtk4) set style for menuitems
+  * (gtk4) set style for calendars
+  * (gtk4) set style for toolbar buttons (without flat class)
+
+-------------------------------------------------------------------
+Tue Apr  6 14:43:45 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- Initial openSUSE package release 
