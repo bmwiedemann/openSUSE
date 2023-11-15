@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-grape
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-grape
-Version:        1.6.2
+Version:        2.0.0
 Release:        0
 %define mod_name grape
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.5.0}
+BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby-grape/grape
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A simple Ruby framework for building REST-like APIs
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A Ruby framework for rapid API development with great conventions.
