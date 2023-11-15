@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-regexp_parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,18 @@
 #
 
 Name:           rubygem-regexp_parser
-Version:        2.6.1
+Version:        2.8.2
 Release:        0
 %define mod_name regexp_parser
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ammar/regexp_parser
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Scanner, lexer, parser for ruby's regular expressions
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A library for tokenizing, lexing, and parsing Ruby regular expressions.
@@ -49,7 +46,7 @@ A library for tokenizing, lexing, and parsing Ruby regular expressions.
 
 %install
 %gem_install \
-  --doc-files="CHANGELOG.md LICENSE README.md" \
+  --doc-files="LICENSE" \
   -f
 
 %gem_packages
