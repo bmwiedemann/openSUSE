@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:38:33 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 5.2.0, see bundled CHANGES
+
+-------------------------------------------------------------------
+Fri Nov  3 07:59:20 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 5.1.1 (2023-05-16)
+
+  * Support lambda functions as shortcuts - #677 #813 #903
+  * Support --enable-frozen-string-literal - #851
+
+
+-------------------------------------------------------------------
 Fri Apr 21 11:01:38 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 5.1.0 

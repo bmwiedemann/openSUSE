@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-slim
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 %define mod_name slim
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -39,7 +38,6 @@ Source1:        series
 Source2:        gem2rpm.yml
 Summary:        Slim is a template language
 License:        MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
