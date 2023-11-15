@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-excon
-Version:        0.99.0
+Version:        0.104.0
 Release:        0
 %define mod_name excon
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        speed, persistence, http(s)
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 EXtended http(s) CONnections.
