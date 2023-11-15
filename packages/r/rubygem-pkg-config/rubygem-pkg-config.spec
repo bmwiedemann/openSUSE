@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pkg-config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-pkg-config
-Version:        1.5.1
+Version:        1.5.5
 Release:        0
 %define mod_name pkg-config
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A pkg-config implementation for Ruby
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Ruby
 
 %description
 pkg-config can be used in your extconf.rb to properly detect need libraries
