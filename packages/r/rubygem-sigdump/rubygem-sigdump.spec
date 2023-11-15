@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sigdump
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-sigdump
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 %define mod_name sigdump
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/frsyuki/sigdump
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            https://github.com/frsyuki/sigdump
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Setup signal handler which dumps backtrace of running threads and
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Setup signal handler which dumps backtrace of running threads and number of

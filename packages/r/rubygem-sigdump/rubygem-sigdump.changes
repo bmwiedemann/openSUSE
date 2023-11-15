@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:58:37 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2023-07-03 version 0.2.5:
+
+* Added nil guard for thread.backtrace (by @yui-knk)
+* Fixed wrong calculation for array_size and hash_size (by @fatkodima)
+* Improved dumping speed (by @fatkodima)
+
+
+-------------------------------------------------------------------
 Wed Dec  7 14:23:25 UTC 2016 - mrueckert@suse.de
 
 - update to new schema
