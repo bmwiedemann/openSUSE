@@ -31,7 +31,11 @@ Source2:        %name-rpmlintrc
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  opencensus-proto-source
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcares) >= 1.19.1
@@ -124,6 +128,10 @@ This subpackage contains source code of the gRPC reference implementation.
 rm -Rf third_party/abseil-cpp/
 
 %build
+%if 0%{?suse_version} < 1550
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %define _lto_cflags %nil
 # protoc is invoked strangely; make it happy with this dir or it will assert()
 mkdir -p third_party/protobuf/src
@@ -141,7 +149,9 @@ export CXXFLAGS="$CFLAGS"
        -DgRPC_SSL_PROVIDER=package        \
        -DZLIB_LIBRARY=%{_libdir}/libz.so  \
        -DgRPC_ZLIB_PROVIDER=package \
-	-DCMAKE_CXX_STANDARD=17
+       -DCMAKE_CXX_STANDARD=17 \
+       -DCMAKE_SKIP_RPATH=FALSE \
+       -DCMAKE_SKIP_INSTALL_RPATH=TRUE
 %cmake_build
 
 %install

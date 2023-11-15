@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 14 10:21:58 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Adjust RPATH handling to fix FTBFS on SLE-15
+  * Set CMAKE_SKIP_RPATH to FALSE
+  * Set CMAKE_SKIP_INSTALL_RPATH to TRUE
+- Build with gcc-12 on SLE-15 to fix FTBFS on ppc64le
+
+-------------------------------------------------------------------
 Tue Oct 31 05:21:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.59.2
