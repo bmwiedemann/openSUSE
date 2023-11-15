@@ -649,4 +649,30 @@
     instruction. (d3188e3)</comment>
     <requestid>1123388</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3c9fef09a20d48bcbd3005bcbb806f43</srcmd5>
+    <version>2.3.3</version>
+    <time>1700078899</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3.3
+  * --dynamic-list has different semantics for executables and DSOs. Previously,
+    mold implemented only the semantics for executables, causing issues with
+    libraries such as musl that used this option. mold now handles the option for
+    DSOs correctly. (da3f5dd)
+  * Old object files often contain .ctors and .dtors sections, which hold function
+    pointers for initializing and finalizing processes, respectively. Their roles
+    have been superseded by .init_array and .fini_array on most targets. mold worked
+    functioned correctly as long as input object files consistently use the old or
+    the new sections. However, mixing object files that contain both types of
+    initializers/finalizers resulted in some functions not being executed. This
+    issue has been fixed. (3f88964)
+  * --defsym can cause the linker to crash if a given symbol is not defined. The
+    crash bug has been fixed. (ff3d54d)
+  * [POWER10] On rare occasions, pointers statically initialized to functions could
+    be left as null pointers. This bug has been fixed. (31c3b53)
+- Remove upstreamed patch power10-fix.patch.
+
+- Add power10 fix power10-fix.patch for #1142.</comment>
+    <requestid>1126103</requestid>
+  </revision>
 </revisionlist>
