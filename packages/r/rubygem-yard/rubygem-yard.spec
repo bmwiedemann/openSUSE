@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-yard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-yard
-Version:        0.9.28
+Version:        0.9.34
 Release:        0
 %define mod_name yard
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -41,7 +40,6 @@ Patch0:         yard-do-not-record-timestamps.diff
 # /MANUAL
 Summary:        Documentation tool for consistent and usable documentation in Ruby
 License:        MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
