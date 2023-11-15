@@ -216,4 +216,12 @@
     * Address CVE-2022-23516, uncontrolled recursion. See GHSA-3x8r-x6xp-q4vm for more information.</comment>
     <requestid>1069966</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3c603f51bc181150d7e63431aa312ad1</srcmd5>
+    <version>2.22.0</version>
+    <time>1700078870</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126292</requestid>
+  </revision>
 </revisionlist>

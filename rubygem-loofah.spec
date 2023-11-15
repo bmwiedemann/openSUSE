@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-loofah
-Version:        2.19.1
+Version:        2.22.0
 Release:        0
 %define mod_name loofah
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/flavorjones/loofah
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        HTML/XML manipulation and sanitization based on Nokogiri
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Loofah is a general library for manipulating and transforming HTML/XML documents and fragments.
