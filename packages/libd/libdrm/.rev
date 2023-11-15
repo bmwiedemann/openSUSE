@@ -1728,4 +1728,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * ci: bump FreeBSD to 13.2</comment>
     <requestid>1119220</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>27346c78f4aa45cacb1726655c75bfb0</srcmd5>
+    <version>2.4.117</version>
+    <time>1700078829</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126582</requestid>
+  </revision>
 </revisionlist>

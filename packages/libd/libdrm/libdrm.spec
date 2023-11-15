@@ -16,7 +16,7 @@
 #
 
 
-%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm}
+%ifarch aarch64 x86_64 ppc64le s390x
 %bcond_without valgrind_support
 %else
 %bcond_with valgrind_support

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 15 10:17:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use valgrind support only on 64bit platforms
+
+-------------------------------------------------------------------
 Fri Oct 20 11:48:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 2.4.117
@@ -34,7 +39,7 @@ Fri Oct 20 11:48:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Thu Sep 21 08:29:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- provide/obsolete dropped packages libkms1/libkms-devel (bsc#1215526) 
+- provide/obsolete dropped packages libkms1/libkms-devel (bsc#1215526)
 
 -------------------------------------------------------------------
 Wed Sep 20 14:10:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
@@ -153,7 +158,7 @@ Thu Nov  3 15:11:15 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Tue Sep 13 10:34:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- disabled intel driver on s390x 
+- disabled intel driver on s390x
 
 -------------------------------------------------------------------
 Mon Sep 12 19:11:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -161,11 +166,11 @@ Mon Sep 12 19:11:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 2.4.113:
   * amdgpu: update marketing names
   * sync i915_pciids with kernel
-  * atomic: fix atomic_add_unless() fallback's return value 
+  * atomic: fix atomic_add_unless() fallback's return value
   * intel: Avoid aliasing violation
   * intel: Hook up new platforms IDs
-  * meson: auto-enable etnaviv on arm, arc, mips and loongarch architectures 
-  * modetest: use drmGetFormatName() 
+  * meson: auto-enable etnaviv on arm, arc, mips and loongarch architectures
+  * modetest: use drmGetFormatName()
   * lots of testsuite and CI improvements
 - enable intel support everywhere as there are now discrete intel GPUs
 - enable vc4 support on armv7/aarch64
@@ -176,17 +181,17 @@ Fri Jul 22 21:42:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.112:
   * xf86drmMode: introduce drmModeConnectorGetPossibleCrtcs
-  * xf86drmMode: introduce drmModeGetConnectorTypeName 
+  * xf86drmMode: introduce drmModeGetConnectorTypeName
   * xf86drmMode: constify drmModeAtomicReq functions
   * gen_table_fourcc: strip _MODIFIER suffix for INVALID
-  * testsuite fixes 
+  * testsuite fixes
 
 -------------------------------------------------------------------
 Fri Jun  3 20:16:41 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.4.111
   * bugfixes
-  * drops libkms 
+  * drops libkms
 - added tegra-* tools on aarch64 to spefile
 
 -------------------------------------------------------------------
@@ -199,7 +204,7 @@ Mon Feb 28 19:26:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * intel: Add support for ADL-N
   * intel: Add support for RPLS platform
   * intel: sync pciids with Linux kernel
-  * update to tests 
+  * update to tests
 
 -------------------------------------------------------------------
 Fri Nov 26 18:18:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -208,7 +213,7 @@ Fri Nov 26 18:18:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * amdgpu: add new function to get fd
   * radeon: remove duplicate struct declaration
   * xf86drm: fix compiler warnings
-  * ci fixes 
+  * ci fixes
 
 -------------------------------------------------------------------
 Wed Nov 24 20:50:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -290,24 +295,24 @@ Wed May 19 08:13:47 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 Wed Apr  7 23:25:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.105:
-  * amdgpu: add function of INFO ioctl for querying video caps 
-  * amdgpu: sync up amdgpu_drm.h with latest from kernel 
-  * xf86drmMode: set FB_MODIFIERS flag when modifiers are supplied 
+  * amdgpu: add function of INFO ioctl for querying video caps
+  * amdgpu: sync up amdgpu_drm.h with latest from kernel
+  * xf86drmMode: set FB_MODIFIERS flag when modifiers are supplied
   * xf86drmMode: introduce drmModeGetPropertyType
-  * intel: Keep libdrm working without pread/pwrite ioctls 
-  * xf86drm: fix null pointer deref in drmGetBufInfo 
+  * intel: Keep libdrm working without pread/pwrite ioctls
+  * xf86drm: fix null pointer deref in drmGetBufInfo
   * intel: Add support for JSL
-  * xf86drm: warn about GEM handle reference counting 
+  * xf86drm: warn about GEM handle reference counting
   * xf86drmMode: add drmIsKMS
-  * intel: add INTEL_ADLS_IDS to the pciids list 
-  * intel: sync i915_pciids.h with kernel 
-  * amdgpu: update marketing names 
+  * intel: add INTEL_ADLS_IDS to the pciids list
+  * intel: sync i915_pciids.h with kernel
+  * amdgpu: update marketing names
   * tests and build system fixes
 
 -------------------------------------------------------------------
 Sun Jan 24 11:45:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- reenabled build of manual pages (switch from xsltproc to rst2man) 
+- reenabled build of manual pages (switch from xsltproc to rst2man)
 
 -------------------------------------------------------------------
 Sun Jan 24 09:45:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -325,7 +330,7 @@ Sun Jan 24 09:45:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Wed Jan  6 16:03:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.103:
-  * xf86drm.c: Use integer logarithm. 
+  * xf86drm.c: Use integer logarithm.
   * amdgpu: only enable security tests on raven family
   * amdgpu: sync up amdgpu_drm.h with latest from kernel
   * amdgpu: add marketing names from 20.40
@@ -347,7 +352,7 @@ Mon Aug 31 17:30:37 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Wed May 27 12:23:01 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - upgrade to version 2.4.102
-  * lots of FreeBSD and modetest stuff 
+  * lots of FreeBSD and modetest stuff
 
 -------------------------------------------------------------------
 Mon Apr 20 13:57:17 UTC 2020 - Philipp Seiler <p.seiler@linuxmail.org>
@@ -358,27 +363,27 @@ Mon Apr 20 13:57:17 UTC 2020 - Philipp Seiler <p.seiler@linuxmail.org>
 -------------------------------------------------------------------
 Thu Nov  7 11:37:12 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
-- This release includes support for latest Intel GPUs 
-  (jsc#SLE-7962, jsc#SLE-8024, jsc#SLE-8022, jsc#SLE-10182, 
+- This release includes support for latest Intel GPUs
+  (jsc#SLE-7962, jsc#SLE-8024, jsc#SLE-8022, jsc#SLE-10182,
    jsc#SLE-4989, jsc#SLE-4983, bsc#1137515)
 
 -------------------------------------------------------------------
 Wed Oct 30 11:51:37 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.4.100
-  * bugfixes (boo#1155382) 
+  * bugfixes (boo#1155382)
 
 -------------------------------------------------------------------
 Wed Jul  3 09:40:25 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.4.99
-  * bug fixes 
+  * bug fixes
 
 -------------------------------------------------------------------
 Tue Apr 23 10:37:10 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.4.98
-  * This release adds marketing names for AMDGPU devices, a 
+  * This release adds marketing names for AMDGPU devices, a
     fallback path in drmDevice for devices lacking OF data
     and drmIsMaster API, amongst other changes.
 
@@ -634,7 +639,7 @@ Mon Dec 18 17:37:26 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
 Sun Nov  5 15:58:16 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 2.4.88:
-  + amdgpu: Fix wrappers for AMDGPU_VM IOCTL. 
+  + amdgpu: Fix wrappers for AMDGPU_VM IOCTL.
 
 -------------------------------------------------------------------
 Wed Nov  1 13:43:53 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
@@ -715,7 +720,7 @@ Fri Aug 25 09:26:15 UTC 2017 - sndirsch@suse.com
 -------------------------------------------------------------------
 Wed Aug  2 13:41:50 CEST 2017 - ro@suse.de
 
-- build-require util-macros-devel for suse_version > 1320 
+- build-require util-macros-devel for suse_version > 1320
 
 -------------------------------------------------------------------
 Thu Jul 20 14:32:58 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
@@ -961,14 +966,14 @@ Mon Jul 25 11:56:07 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
 Sun Jul 24 22:30:52 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 2.4.69:
-  A new libdrm release, in order to use the new vc4 ioctl in Mesa. A few 
+  A new libdrm release, in order to use the new vc4 ioctl in Mesa. A few
   bugfixes on top as well.
 
 -------------------------------------------------------------------
 Thu Apr 28 13:36:17 UTC 2016 - sndirsch@suse.com
 
 - update to 2.4.68
-  * bugfixes 
+  * bugfixes
 
 -------------------------------------------------------------------
 Wed Apr 20 15:17:44 UTC 2016 - sndirsch@suse.com
@@ -1002,7 +1007,7 @@ Wed Dec 30 02:06:48 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
 Mon Sep 21 07:33:11 UTC 2015 - sndirsch@suse.com
 
 - Update to version 2.4.65
-  * bugfixes 
+  * bugfixes
 
 -------------------------------------------------------------------
 Wed Aug 19 14:18:09 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
@@ -1037,7 +1042,7 @@ Tue Aug 18 20:14:40 UTC 2015 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri Aug 14 18:51:06 UTC 2015 - mimi.vx@gmail.com
 
-- update baselibs.conf for AMDGPU 
+- update baselibs.conf for AMDGPU
 
 -------------------------------------------------------------------
 Fri Aug 14 13:25:00 UTC 2015 - mimi.vx@gmail.com
@@ -1091,19 +1096,19 @@ Fri Mar 20 21:19:37 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Sun Feb 22 14:11:43 UTC 2015 - zombah@gmail.com
 
-- Fix include directories 
+- Fix include directories
 
 -------------------------------------------------------------------
 Thu Feb 19 13:33:22 UTC 2015 - zombah@gmail.com
 
-- Add subpackage libdrm_tegra0 for Nvidia Tegra chips 
+- Add subpackage libdrm_tegra0 for Nvidia Tegra chips
 
 -------------------------------------------------------------------
 Mon Feb  9 12:59:54 UTC 2015 - sndirsch@suse.com
 
 - Update to version 2.4.59:
   * bugfixes
-  * more Intel Skylake support 
+  * more Intel Skylake support
 
 -------------------------------------------------------------------
 Sun Sep 28 19:35:01 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
@@ -1120,7 +1125,7 @@ Sun Sep 28 17:29:22 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
   + New "SI" and "CIK" PCI IDs for the libdrm Radeon graphics
     driver code.
   + DMA-BUF import/export helpers were added to libdrm's Freedreno
-    driver support. 
+    driver support.
 
 -------------------------------------------------------------------
 Tue Jul 29 22:33:46 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
@@ -1129,7 +1134,7 @@ Tue Jul 29 22:33:46 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
   Libdrm 2.4.56 has been released. It fixes MSAA for the Radeon Hawaii GPU.
 - Remove upstreamed patch:
   u_No-longer-hardcode-path-for-drm.h-include-in-qxl_drm.patch
-  
+
 -------------------------------------------------------------------
 Fri Jul 25 15:08:00 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
 
@@ -1282,12 +1287,12 @@ Sat Nov 16 18:43:00 UTC 2013 - hrvoje.senjan@gmail.com
   + intel: Add support for GPU reset status query ioctl
   + libdrm: bump to 2.4.48
   + Add DRM_MODE_PAGE_FLIP_ASYNC define
-  + intel: Add the Gen6+ version of MI_REPORT_PERF_COUNT to 
+  + intel: Add the Gen6+ version of MI_REPORT_PERF_COUNT to
     intel_decode.c.
   + intel: Add MI_LOAD_REGISTER_MEM to intel_decode.c.
-  + intel/bdw/aub: Update AUB trace block writes for 48-bit 
+  + intel/bdw/aub: Update AUB trace block writes for 48-bit
     addressing.
-  + nouveau: prevent undefined behavior in nouveau_pushbuf_reloc 
+  + nouveau: prevent undefined behavior in nouveau_pushbuf_reloc
     with gcc-4.8
 
 -------------------------------------------------------------------
@@ -1304,7 +1309,7 @@ Fri Oct 11 17:42:15 UTC 2013 - hrvoje.senjan@gmail.com
   + radeon: add berlin pci ids
   + intel: Update package name and description in libdrm_intel.pc
   + freedreno fixes
-  + radeon: Fix tiling mode index for 1D tiled depth/stencil 
+  + radeon: Fix tiling mode index for 1D tiled depth/stencil
     surfaces on CIK
   + radeon: fix pitch alignment for non-power-of-two mipmaps on SI
   + drm: Synchronize the stereo 3D mode flags from the kernel headers
@@ -1316,14 +1321,14 @@ Fri Oct 11 17:42:15 UTC 2013 - hrvoje.senjan@gmail.com
 -------------------------------------------------------------------
 Tue Sep 17 17:49:28 UTC 2013 - hrvoje.senjan@gmail.com
 
-- Added U_radeon-pad-CS-to-8-DW.patch from upstream -- aligns the 
-  IB to 8 DWs. r6xx also require at least 4 DW alignment to avoid 
+- Added U_radeon-pad-CS-to-8-DW.patch from upstream -- aligns the
+  IB to 8 DWs. r6xx also require at least 4 DW alignment to avoid
   a hw bug.
 
 -------------------------------------------------------------------
 Fri Aug 30 00:28:37 CEST 2013 - ro@suse.de
 
-- buildrequire valgrind on the arch list that valgrind builds on 
+- buildrequire valgrind on the arch list that valgrind builds on
 
 -------------------------------------------------------------------
 Tue Jul  2 16:42:39 UTC 2013 - hrvoje.senjan@gmail.com
@@ -1410,7 +1415,7 @@ Mon Mar 25 20:40:32 UTC 2013 - jengelh@inai.de
 -------------------------------------------------------------------
 Wed Feb 27 16:40:51 UTC 2013 - dmueller@suse.com
 
-- disable valgrind support for aarch64 
+- disable valgrind support for aarch64
 
 -------------------------------------------------------------------
 Tue Feb  5 16:50:49 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
@@ -1478,12 +1483,12 @@ Tue Nov  6 00:37:44 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
 -------------------------------------------------------------------
 Thu Sep 27 09:45:10 UTC 2012 - idonmez@suse.com
 
-- Require libdrm_omap1-32bit only on ARM 
+- Require libdrm_omap1-32bit only on ARM
 
 -------------------------------------------------------------------
 Sun Sep 23 10:53:52 UTC 2012 - sndirsch@suse.com
 
-- u_Fix-compilation-on-systems-that-don-t-provide-O_CLOE.patch 
+- u_Fix-compilation-on-systems-that-don-t-provide-O_CLOE.patch
   * Fix compilation on systems that don't provide O_CLOEXEC.
     Patch suggestion by Thomas Klausner <wiz%NetBSD.org@localhost>.
     See also http://mail-index.netbsd.org/pkgsrc-changes/2012/08/13/msg076887.html
@@ -1491,7 +1496,7 @@ Sun Sep 23 10:53:52 UTC 2012 - sndirsch@suse.com
 -------------------------------------------------------------------
 Thu Sep 20 22:13:32 UTC 2012 - sndirsch@suse.com
 
-- let libdrm-devel require libkms-devel 
+- let libdrm-devel require libkms-devel
 
 -------------------------------------------------------------------
 Fri Aug 24 21:10:18 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
@@ -1501,10 +1506,10 @@ Fri Aug 24 21:10:18 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
   + intel: Use VG_CLEAR on the context destroy ioctl as well.
   + radeon: fix allocation of MSAA surfaces on r600-r700
   + radeon: align r600 msaa buffers to a multiple of macrotile size
-    * num samples  
+    * num samples
   + tests/modetest: Add a forgotten return, needed for opensuse buildservice
   + omap: include omap_drm.h independently
-  
+
 -------------------------------------------------------------------
 Mon Aug 13 16:44:20 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
 
@@ -1544,13 +1549,13 @@ Mon Jul  2 08:52:51 UTC 2012 - guillaume@opensuse.org
 -------------------------------------------------------------------
 Fri Jun 29 09:27:32 UTC 2012 - sndirsch@suse.com
 
-- U_intel-add-Ivy-Bridge-GT2-server-variant.patch 
+- U_intel-add-Ivy-Bridge-GT2-server-variant.patch
   * intel: add Ivy Bridge GT2 server variant (bnc#769209)
 
 -------------------------------------------------------------------
 Wed Jun 27 20:04:08 UTC 2012 - guillaume@opensuse.org
 
-- enable omapdrm support 
+- enable omapdrm support
 
 -------------------------------------------------------------------
 Tue May 29 09:47:00 UTC 2012 - sndirsch@suse.com
@@ -1561,7 +1566,7 @@ Tue May 29 09:47:00 UTC 2012 - sndirsch@suse.com
 -------------------------------------------------------------------
 Sat May 26 22:25:01 UTC 2012 - crrodriguez@opensuse.org
 
-- update to version 2.4.34, see NEWS for detail, here follows 
+- update to version 2.4.34, see NEWS for detail, here follows
   packaging changes only.
   + nouveau.h was moved out from its subdirectory (upstream change)
   + lidrm_nouveau version bumped to 2.
@@ -1594,13 +1599,13 @@ Thu Apr 12 11:30:32 UTC 2012 - vuntz@opensuse.org
 -------------------------------------------------------------------
 Sun Feb 26 15:57:23 CET 2012 - dmueller@suse.de
 
-- fix build on arm 
+- fix build on arm
 
 -------------------------------------------------------------------
 Wed Feb 22 12:30:56 UTC 2012 - dvaleev@suse.com
 
 - don't package libdrm-intel on ppc, ppc64. As there is not intel
-  cards 
+  cards
 
 -------------------------------------------------------------------
 Sat Feb 11 16:37:39 UTC 2012 - jengelh@medozas.de
@@ -1629,7 +1634,7 @@ Sun Nov 13 09:15:31 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Wed Nov  2 12:58:04 UTC 2011 - sndirsch@suse.com
 
-- Update to libdrm 2.4.27 
+- Update to libdrm 2.4.27
   * required for latest intel driver ...
 
 -------------------------------------------------------------------
@@ -1649,7 +1654,7 @@ Fri Jun 17 18:19:08 UTC 2011 - vljn@ovi.com
 Wed May 25 10:38:44 UTC 2011 - sndirsch@novell.com
 
 - install the binaries of dristat, drmstat, drmmodeprint and
-  drmmodetest instead of the useless libtool wrappers ... 
+  drmmodetest instead of the useless libtool wrappers ...
 
 -------------------------------------------------------------------
 Tue May 24 16:56:34 UTC 2011 - eich@suse.de
@@ -1683,7 +1688,7 @@ Sat Dec 11 20:55:58 UTC 2010 - sndirsch@novell.com
 -------------------------------------------------------------------
 Sat Dec  4 05:57:28 UTC 2010 - sndirsch@novell.com
 
-- updated to git master commit #af3d282 (2010-12-03, still 2.4.22) 
+- updated to git master commit #af3d282 (2010-12-03, still 2.4.22)
 - obsoletes intel-initialize-bufmgr.bo_mrb_exec-unconditionally.patch
 
 -------------------------------------------------------------------
@@ -1709,7 +1714,7 @@ Tue Nov  2 13:28:24 UTC 2010 - sndirsch@novell.com
 -------------------------------------------------------------------
 Wed Sep 29 12:34:42 UTC 2010 - sndirsch@novell.com
 
-- libdrm 2.4.22 
+- libdrm 2.4.22
   * nouveau: fix thinko in drm version check
   * nouveau: fix drm version check some more
   * intel: Replace open-coded drmIoctl with calls to drmIoctl()
@@ -1717,7 +1722,7 @@ Wed Sep 29 12:34:42 UTC 2010 - sndirsch@novell.com
 -------------------------------------------------------------------
 Wed Sep 15 04:08:53 UTC 2010 - sndirsch@novell.com
 
-- updated to git master commit #7ec9a1e (2010-09-09, still 2.4.21) 
+- updated to git master commit #7ec9a1e (2010-09-09, still 2.4.21)
 
 -------------------------------------------------------------------
 Sat Aug 28 14:02:09 UTC 2010 - sndirsch@novell.com
@@ -1743,7 +1748,7 @@ Thu Jun 24 16:57:19 CEST 2010 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Jun 15 12:10:49 CEST 2010 - sndirsch@suse.de
 
-- libdrm 2.4.21 
+- libdrm 2.4.21
 - obsoletes commit-3506173.diff
 - adjusted enable_test_tools.diff
 - libdrm-204c76c.diff (reverse applied)
@@ -1760,20 +1765,20 @@ Mon May 31 22:08:35 CEST 2010 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri Apr  9 09:40:21 CEST 2010 - sndirsch@suse.de
 
-- libdrm 2.4.20 
+- libdrm 2.4.20
   * /usr/include/drm/ --> /usr/include/libdrm/
   * /usr/include/intel_bufmgr.h --> /usr/include/libdrm
 
 
 -------------------------------------------------------------------
 Thu Mar 18 07:26:44 UTC 2010 - coolo@novell.com
- 
+
 - fix typo in description
 
 -------------------------------------------------------------------
 Wed Mar 17 21:38:43 CET 2010 - ro@suse.de
 
-- update to 2.4.19 for Mesa-7.8 
+- update to 2.4.19 for Mesa-7.8
   * added nouveau driver
   * added kms wrapper library driver
 
@@ -1827,8 +1832,8 @@ Fri Dec  4 21:46:53 CET 2009 - sndirsch@suse.de
 Tue Dec  1 22:52:13 CET 2009 - sndirsch@suse.de
 
 - libdrm 2.4.15_2009-12-01_8ffd2e1
-  * update to git commit 8ffd2e1 (2009-12-01); required for 
-    xf86-video-intel 2.10 RC1 
+  * update to git commit 8ffd2e1 (2009-12-01); required for
+    xf86-video-intel 2.10 RC1
 - adjusted enable_test_tools.diff
 
 -------------------------------------------------------------------
@@ -1847,7 +1852,7 @@ Thu Oct 29 11:54:08 CET 2009 - sndirsch@suse.de
 -------------------------------------------------------------------
 Wed Oct 28 16:34:52 UTC 2009 - crrodriguez@opensuse.org
 
-- libdrm-devel requires glibc-devel. 
+- libdrm-devel requires glibc-devel.
 
 -------------------------------------------------------------------
 Tue Sep 29 20:56:36 CEST 2009 - sndirsch@suse.de
@@ -1884,7 +1889,7 @@ Fri Apr 10 12:38:59 CEST 2009 - sndirsch@suse.de
 Tue Apr  7 21:50:09 CEST 2009 - sndirsch@suse.de
 
 - libdrm 2.4.6
-  * various fixes 
+  * various fixes
 - libdrm-commit-1faab66.diff
   * fixes build of 2.4.6
 
@@ -1968,7 +1973,7 @@ Sun Aug 17 12:33:38 CEST 2008 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri Jul  4 22:16:39 CEST 2008 - sndirsch@suse.de
 
-- updated to release 2.3.1 
+- updated to release 2.3.1
 
 -------------------------------------------------------------------
 Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
@@ -1980,7 +1985,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 Thu Dec 27 05:13:17 CET 2007 - crrodriguez@suse.de
 
 - fix library-without-ldconfig-postun warning
-- libdrm.la had an empty dependency_libs, removed. 
+- libdrm.la had an empty dependency_libs, removed.
 
 -------------------------------------------------------------------
 Sat Dec  2 20:39:53 CET 2006 - sndirsch@suse.de
@@ -1995,18 +2000,18 @@ Fri Jul 28 14:42:41 CEST 2006 - sndirsch@suse.de
 -------------------------------------------------------------------
 Thu Jul 27 11:31:48 CEST 2006 - sndirsch@suse.de
 
-- use $RPM_OPT_FLAGS 
+- use $RPM_OPT_FLAGS
 
 -------------------------------------------------------------------
 Wed Jun 28 08:06:51 CEST 2006 - sndirsch@suse.de
 
 - updated to 2.0.2
-  * various bugfixes in libdrm 
+  * various bugfixes in libdrm
 
 -------------------------------------------------------------------
 Wed Jun 21 22:14:29 CEST 2006 - sndirsch@suse.de
 
-- updated to current CVS (2006-06-21) 
+- updated to current CVS (2006-06-21)
 
 -------------------------------------------------------------------
 Sat Apr 15 20:28:06 CEST 2006 - sndirsch@suse.de
@@ -2032,7 +2037,7 @@ Fri Dec 23 20:02:15 CET 2005 - mls@suse.de
 -------------------------------------------------------------------
 Wed Nov 30 22:33:20 CET 2005 - sndirsch@suse.de
 
-- update to 2.0 branch (2005-11-30) 
+- update to 2.0 branch (2005-11-30)
 
 -------------------------------------------------------------------
 Tue Nov  1 17:35:43 CET 2005 - sndirsch@suse.de
@@ -2042,20 +2047,20 @@ Tue Nov  1 17:35:43 CET 2005 - sndirsch@suse.de
 -------------------------------------------------------------------
 Sat Oct 29 18:05:45 CEST 2005 - sndirsch@suse.de
 
-- call ldconfig in %post 
+- call ldconfig in %post
 
 -------------------------------------------------------------------
 Tue Oct 25 05:03:47 CEST 2005 - sndirsch@suse.de
 
-- updated to CVS 051025 (required for Mesa 6.4) 
+- updated to CVS 051025 (required for Mesa 6.4)
 
 -------------------------------------------------------------------
 Tue Oct  4 20:04:46 CEST 2005 - sndirsch@suse.de
 
-- added libdrm.so to filelist 
+- added libdrm.so to filelist
 
 -------------------------------------------------------------------
 Sun Oct  2 18:30:17 CEST 2005 - sndirsch@suse.de
 
-- created package 
+- created package
 
