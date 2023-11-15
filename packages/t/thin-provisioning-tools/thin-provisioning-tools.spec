@@ -1,7 +1,7 @@
 #
 # spec file for package thin-provisioning-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,15 @@
 
 
 Name:           thin-provisioning-tools
-Version:        0.9.0
+Version:        1.0.7
 Release:        0
 Summary:        Thin Provisioning Tools
 License:        GPL-3.0-only
-Group:          System/Base
 URL:            https://github.com/jthornber/thin-provisioning-tools/
-Source0:        https://github.com/jthornber/thin-provisioning-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  gcc-c++
-BuildRequires:  libaio-devel
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libtool
-BuildRequires:  ncurses-devel
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
 BuildRequires:  suse-module-tools
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -42,23 +35,14 @@ Conflicts:      device-mapper < 1.02.115
 A suite of tools for thin provisioning on Linux.
 
 %prep
-%autosetup
+%autosetup -a1
+install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
-export CXXFLAGS="${CXXFLAGS} -fPIC"
-export LDFLAGS="-pie"
-autoreconf -fiv
-%configure \
-  --bindir=%{_sbindir} \
-  --enable-testing \
-  --enable-dev-tools \
-  --with-optimisation="%{optflags}" \
-# In generated Makefile V=@ is used, in order to achieve verbose build ve
-# must override it as V=""
-make %{?_smp_mflags} V=""
+%{cargo_build}
 
 %install
-%make_install STRIP="/bin/true"
+%{cargo_install}
 
 %post
 %{?regenerate_initrd_post}
@@ -70,49 +54,8 @@ make %{?_smp_mflags} V=""
 %{?regenerate_initrd_posttrans}
 
 %files
+%doc README.md
 %license COPYING
-%{_sbindir}/cache_check
-%{_sbindir}/cache_dump
-%{_sbindir}/cache_metadata_size
-%{_sbindir}/cache_repair
-%{_sbindir}/cache_restore
-%{_sbindir}/cache_writeback
-%{_sbindir}/era_check
-%{_sbindir}/era_dump
-%{_sbindir}/era_invalidate
-%{_sbindir}/era_restore
-%{_sbindir}/pdata_tools
-%{_sbindir}/thin_check
-%{_sbindir}/thin_delta
-%{_sbindir}/thin_dump
-%{_sbindir}/thin_generate_metadata
-%{_sbindir}/thin_ll_dump
-%{_sbindir}/thin_ls
-%{_sbindir}/thin_metadata_size
-%{_sbindir}/thin_repair
-%{_sbindir}/thin_restore
-%{_sbindir}/thin_rmap
-%{_sbindir}/thin_scan
-%{_sbindir}/thin_show_duplicates
-%{_sbindir}/thin_trim
-%{_mandir}/man8/cache_check.8%{?ext_man}
-%{_mandir}/man8/cache_dump.8%{?ext_man}
-%{_mandir}/man8/cache_metadata_size.8%{?ext_man}
-%{_mandir}/man8/cache_repair.8%{?ext_man}
-%{_mandir}/man8/cache_restore.8%{?ext_man}
-%{_mandir}/man8/cache_writeback.8%{?ext_man}
-%{_mandir}/man8/era_check.8%{?ext_man}
-%{_mandir}/man8/era_dump.8%{?ext_man}
-%{_mandir}/man8/era_invalidate.8%{?ext_man}
-%{_mandir}/man8/era_restore.8%{?ext_man}
-%{_mandir}/man8/thin_check.8%{?ext_man}
-%{_mandir}/man8/thin_delta.8%{?ext_man}
-%{_mandir}/man8/thin_dump.8%{?ext_man}
-%{_mandir}/man8/thin_ls.8%{?ext_man}
-%{_mandir}/man8/thin_metadata_size.8%{?ext_man}
-%{_mandir}/man8/thin_repair.8%{?ext_man}
-%{_mandir}/man8/thin_restore.8%{?ext_man}
-%{_mandir}/man8/thin_rmap.8%{?ext_man}
-%{_mandir}/man8/thin_trim.8%{?ext_man}
+%{_bindir}/pdata_tools
 
 %changelog

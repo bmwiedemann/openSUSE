@@ -198,4 +198,41 @@
     <comment></comment>
     <requestid>900189</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>41167914f85c75a5da67a432ed3c72bf</srcmd5>
+    <version>1.0.7</version>
+    <time>1700078797</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.7:
+  * v1.0.7
+  * [thin_generate_metadata] Fix command line parsing
+  * [tests] Introduce era_generate_metadata
+  * [era] Factor out MetadataGenerator
+  * [era_invalidate] Fix missing value_parser for the --written-since option
+  * [tests] Support additional program-specific arguments in IO tests
+  * [examples] Add a custom emitter examples
+  * Remove unnecesary type casting
+  * [file_utils] Verify ioctl request code in tests
+  * [file_utils] Fix the ioctl request code for the powerpc architecture
+  * bump version to 1.0.6
+  * [build] Update dependencies
+  * [thin_delta] Remove redundant code
+  * [thin_delta] Fix range mappings construction
+  * [thin_delta] Fix command line parsing
+  * [pack/unpack] Fix clippy lints
+  * Bump version to v1.05
+  * Add some test cases to delta_list
+  * [pack/unpack]  Fix some wrapping issues
+  * [tests] Ensure the scope of thin_check --super-block-only
+  * [tests] Test repairing thin metadata with stale superblock
+  * [thin_generate_damage] Support overriding superblock fields
+  * [tests] Validate more fields in repaired thin superblock
+  * [thin_explore] Fix visiting empty leaves
+  * [xml] Improve xml value parsing and error handling
+  * [all] Update error messages for xml parsers
+  * [build] Update quick-xml to v0.29
+  * [build] Update clap to v4.3
+  * [build] Update dependencies</comment>
+    <requestid>1125837</requestid>
+  </revision>
 </revisionlist>

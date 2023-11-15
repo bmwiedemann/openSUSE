@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Nov 14 09:09:28 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.7:
+  * v1.0.7
+  * [thin_generate_metadata] Fix command line parsing
+  * [tests] Introduce era_generate_metadata
+  * [era] Factor out MetadataGenerator
+  * [era_invalidate] Fix missing value_parser for the --written-since option
+  * [tests] Support additional program-specific arguments in IO tests
+  * [examples] Add a custom emitter examples
+  * Remove unnecesary type casting
+  * [file_utils] Verify ioctl request code in tests
+  * [file_utils] Fix the ioctl request code for the powerpc architecture
+  * bump version to 1.0.6
+  * [build] Update dependencies
+  * [thin_delta] Remove redundant code
+  * [thin_delta] Fix range mappings construction
+  * [thin_delta] Fix command line parsing
+  * [pack/unpack] Fix clippy lints
+  * Bump version to v1.05
+  * Add some test cases to delta_list
+  * [pack/unpack]  Fix some wrapping issues
+  * [tests] Ensure the scope of thin_check --super-block-only
+  * [tests] Test repairing thin metadata with stale superblock
+  * [thin_generate_damage] Support overriding superblock fields
+  * [tests] Validate more fields in repaired thin superblock
+  * [thin_explore] Fix visiting empty leaves
+  * [xml] Improve xml value parsing and error handling
+  * [all] Update error messages for xml parsers
+  * [build] Update quick-xml to v0.29
+  * [build] Update clap to v4.3
+  * [build] Update dependencies
+  * [thin_rmap] Check the input ranges
+  * [thin_dump/repair] Fix the ordering of found empty roots
+  * [report] Fix stderr redirection
+  * [thin_dump/repair] Ensure the tools never fail with repairable metadata
+  * [build] allow overriding PDATA_TOOLS in Makefile
+  * [build] fix build on musl
+  * [thin_stat] Display column headers and further statistics
+  * [thin_stat] Display data run length statistics for measuring data locality
+  * [thin_explore] Fix unit conversion for data block size
+  * [thin_explore] Display space maps usage and roots
+  * [thin_stat] Fix opening read-only files
+  * [thin_dump] Fix a regression that cannot keep shared defs with only one predecessor
+  * [commands] Print out error root cause if available
+
+-------------------------------------------------------------------
+Fri Jun  9 12:18:33 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.4:
+  * Bump version to 1.0.4
+  * [build] Update dependencies
+  * [all] Fix clippy lints for Rust 1.69.0
+  * [build] Drop the nix crate
+  * [file_utils] Fix the BLKGETSIZE64 ioctl for 32-bit platoforms
+  * [file_utils] Use stat64 explicitly to handle large files on 32-bit systems
+  * [write_batcher] Fix compilation error on 32-bit platforms
+
+-------------------------------------------------------------------
 Wed Jun  9 13:29:05 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link as position-independent executable (bsc#1184124).
