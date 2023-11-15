@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-proxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-rack-proxy
-Version:        0.7.4
+Version:        0.7.7
 Release:        0
 %define mod_name rack-proxy
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ncr/rack-proxy
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A request/response rewriting HTTP proxy. A Rack app
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A Rack app that provides request/response rewriting proxy capabilities with
