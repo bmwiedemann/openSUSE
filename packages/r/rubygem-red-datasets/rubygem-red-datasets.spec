@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-red-datasets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-red-datasets
-Version:        0.1.5
+Version:        0.1.7
 Release:        0
 %define mod_name red-datasets
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Red Datasets provides classes that provide common datasets such as
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 You can use datasets easily because you can access each dataset with multiple
