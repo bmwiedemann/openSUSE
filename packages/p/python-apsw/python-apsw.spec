@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apsw
-Version:        3.43.1.0
+Version:        3.44.0.0
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(sqlite3) >= 3.43.1
+BuildRequires:  pkgconfig(sqlite3) >= 3.44
 %python_subpackages
 
 %description

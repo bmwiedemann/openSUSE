@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:52:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.44.0.0:
+  * Added virtual table :meth:`VTTable.Integrity` support.
+  * On 64 bit platforms with the amalgamation,
+    `SQLITE_MAX_MMAP_SIZE SQLite's default limit is 2GB.
+  * :meth:`Connection.create_aggregate_function` can take a class
+    with step and final methods. (:issue:`421`)
+  * Corrected non :pep:`8` :ref:`compliant names <renaming>`.
+    The old names remain as aliases to the new ones, and your
+    code will not break.
+  * :doc:`Exception <exceptions>` handling has been updated, with
+    multiple exceptions in the same SQLite control flow being
+    chained together.
+
+-------------------------------------------------------------------
 Fri Oct  6 06:51:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.43.1.0
@@ -30,7 +46,7 @@ Fri Oct  6 06:51:24 UTC 2023 - ecsos <ecsos@opensuse.org>
     parameter on execute/executemany methods. (APSW issue 474)
   - Added documentation and helper class for implementing custom
     pragmas in your own Virtual File System (VFS) (APSW issue 464)
-  - Reduced overhead of the Column method when using 
+  - Reduced overhead of the Column method when using
     apsw.ext.make_virtual_module() (APSW issue 465)
 
 -------------------------------------------------------------------
@@ -204,7 +220,7 @@ Mon Jan 17 20:40:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.37.0-r1:
   * Allow breaking of reference cycles between objects that contain a
-    Connection or Cursor 
+    Connection or Cursor
   * Fixed custom VFS extension loading failure could leave the error message
     unterminated
   * Updated size of mutex array used by the fork checker
@@ -225,7 +241,7 @@ Fri Jun 25 06:20:00 UTC 2021 - ecsos <ecsos@opensuse.org>
     it by default with –enable-all-extensions.
   - Use the newer buffer API for Python 3
     (old API removed in Python 3.10).
-- Fix loadable extensions are missing, 
+- Fix loadable extensions are missing,
   so insert --enable-all-extensions and --enable=load_extension.
   See: https://rogerbinns.github.io/apsw/build.html#building
 
@@ -235,7 +251,7 @@ Tue Dec 29 13:46:03 UTC 2020 - Dirk Müller <dmueller@suse.com>
 - udpate to 3.34.0-r1:
   * Windows MSI installer files are now provided
   * Added Connection.txn_state()
-  * Added constants: SQLITE_IOERR_CORRUPTFS 
+  * Added constants: SQLITE_IOERR_CORRUPTFS
 
 -------------------------------------------------------------------
 Tue Sep 22 11:54:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
