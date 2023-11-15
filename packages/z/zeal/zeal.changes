@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:40:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build against Qt6.
+- Add zeal-deprecate-qAsConst.patch --  replace deprecated
+  qAsConst with std::as_const() (gh#zealdocs/zeal#1565); patch
+  taken from upstream commit.
+- Use qt6 RPM macros for build.
+- Pass -DCMAKE_SKIP_INSTALL_RPATH=ON to cmake to avoid rpath being
+  left to installed binary.
+- Drop deprecated scriptlets from %post(un).
+
+-------------------------------------------------------------------
 Tue Oct 31 05:15:17 UTC 2023 - david.anes@suse.com
 
 - Update to version v0.7.0:

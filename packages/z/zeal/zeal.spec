@@ -28,21 +28,25 @@ URL:            https://zealdocs.org
 Source0:        %{name}-%{version}.tar.xz
 # `help2man zeal > zeal.1` can't be run without X started.
 Source9:        zeal.1
+# PATCH-FIX-UPSTREAM zeal-deprecate-qAsConst.patch gh#zealdocs/zeal#1565 badshah400@gmail.com --  replace deprecated qAsConst with std::as_const()
+Patch0:         https://github.com/zealdocs/zeal/commit/9630cc94c155d87295e51b41fbab2bd5798f8229.patch#/%{name}-deprecate-qAsConst.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.2.0
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.2.0
+BuildRequires:  pkgconfig(Qt6Concurrent) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Gui) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.2.0
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xcb-keysyms)
-Requires:       libQt5Sql5-sqlite >= 5.2.0
+Requires:       libQt6Sql6 >= 6.2.0
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
 Requires(postun):hicolor-icon-theme
@@ -59,28 +63,20 @@ Zeal is an offline API documentation browser inspired by Dash
    Editor plugins for details.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_qt6 -DCMAKE_SKIP_INSTALL_RPATH=ON
+%qt6_build
 
 %install
-%kf5_makeinstall -C build
+%qt6_install
 %suse_update_desktop_file -r org.zealdocs.zeal Office Viewer
 %fdupes -s %{buildroot}%{_datadir}
 
 # Man pages:
 mkdir -p %{buildroot}%{_mandir}/man1
 cp %{SOURCE9} %{buildroot}%{_mandir}/man1
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %license COPYING
