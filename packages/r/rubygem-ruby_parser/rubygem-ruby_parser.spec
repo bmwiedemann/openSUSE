@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby_parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,12 @@
 #
 
 Name:           rubygem-ruby_parser
-Version:        3.19.2
+Version:        3.20.3
 Release:        0
 %define mod_name ruby_parser
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby < 4}
-BuildRequires:  %{ruby >= 2.1}
+BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
@@ -40,7 +39,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        ruby_parser (RP) is a ruby parser written in pure ruby (utilizing
 License:        MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
