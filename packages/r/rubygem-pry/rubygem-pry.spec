@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pry
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-pry
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 %define mod_name pry
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A runtime developer console and IRB alternative with powerful
 License:        MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
