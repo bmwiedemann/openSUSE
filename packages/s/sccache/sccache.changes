@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Wed Nov 15 00:17:24 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.7.2~0:
+  * Add experimental concurrent cache support
+  * Fix some typos
+  * prepare version 0.7.2
+  * Don't pass wd4668 to clang-cl
+  * build(deps): bump zstd from 0.12.4 to 0.13.0
+  * build(deps): bump bytes from 1.4.0 to 1.5.0
+  * build(deps): bump base64 from 0.21.3 to 0.21.5
+  * build(deps): bump jobserver from 0.1.26 to 0.1.27
+  * build(deps): bump semver from 1.0.17 to 1.0.20
+  * Activate preprocessor cache mode by default
+  * Fix input file times in end-to-end tests
+  * Appease the TOML formatter
+  * Parametrize relevant tests with preprocessor cache
+  * Add dummy input file to all tests that call the preprocessor
+  * Improve context for open error when opening the input file
+  * Comment out the logging setup in the test harness
+  * Fix location of the local daemon log in the test harness
+  * Fail early if the local daemon doesn't start properly during tests
+  * Fix off-by-one in line number replacement code
+  * prepare version 0.7.1
+  * When fails to connect, show the error
+  * build(deps): bump directories from 5.0.0 to 5.0.1
+  * build(deps): bump toml from 0.7.6 to 0.8.6
+  * build(deps): bump byteorder from 1.4.3 to 1.5.0
+  * add a pre-commit conf
+  * build(deps): bump assert_cmd from 2.0.11 to 2.0.12
+  * build(deps): bump hyper from 0.14.25 to 0.14.27
+  * build(deps): bump blake3 from 1.3.3 to 1.5.0
+  * build(deps): bump filetime from 0.2.21 to 0.2.22
+  * Cosmetic: add some spaces to separate blocks
+  * --show-stats should show if we are using direct access/mode
+  * add a check to fail quickly if SCCACHE_DIRECT is set but no directory info
+  * Add a suggestion in case of error message
+  * Allow using preprocessor mode from env without a disk config
+  * direct access: adjust the doc (#1935)
+  * Document how to set the direct access (#1936)
+  * update to libc 0.2.149 (#1933)
+  * build(deps): bump regex from 1.7.3 to 1.8.4 (#1794)
+  * build(deps): bump num_cpus from 1.15.0 to 1.16.0
+  * build(deps): bump assert_cmd from 2.0.10 to 2.0.11
+  * build(deps): bump once_cell from 1.17.1 to 1.18.0
+  * build(deps): bump walkdir from 2.3.3 to 2.4.0
+  * build(deps): bump serde from 1.0.159 to 1.0.190
+  * build(deps): bump syslog from 6.0.1 to 6.1.0
+  * build(deps): bump flate2 from 1.0.26 to 1.0.28
+  * build(deps): bump rouille from 3.6.1 to 3.6.2
+  * build(deps): bump zstd from 0.12.3+zstd.1.5.2 to 0.12.4
+  * prepare release 0.7.0
+
+-------------------------------------------------------------------
+Tue Oct 31 00:19:08 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.6.0:
+  * Add experimental concurrent cache support
+  * workflow(ci): fix musl-tools:arm64 installation
+  * workflows(ci): label each architecture's musl-tools installation
+  * Revert "Disable aarch64-unknown-linux-musl"
+  * Disable direct mode if `-Wp,*` is present
+  * Rename `PreprocessorCacheEntry::write` to `serialize_to`
+  * Sort include files before saving them
+  * Simplify logic around time macros
+  * Add entry about preprocessor caching to `Caching.md`
+  * Address naming issues
+  * Split up preprocessor processing
+  * Don't use direct mode if `-Xpreprocessor` is used
+  * Only emit lines in preprocessor output if in direct mode
+  * Add docs for direct mode
+  * Add commands to read the direct mode manifests
+  * Introduce preprocessor caching (aka direct mode)
+  * Add utils to scan for C time macros while hashing
+  * Add timestamp-related utils
+  * Make path encoding/decoding available as a util
+  * install the hub package to publish the release
+  * build(deps): bump tokio-util from 0.7.7 to 0.7.9
+  * build(deps): bump memmap2 from 0.6.2 to 0.9.0
+  * build(deps): bump async-trait from 0.1.68 to 0.1.74
+  * build(deps): bump toml from 0.7.3 to 0.7.6
+  * build(deps): bump base64 from 0.21.0 to 0.21.3
+  * sccache 0.6.0
+  * Fix typo in the doc
+  * feat(s3): add server side encryption
+  * Disable aarch64-unknown-linux-musl
+  * clippy: remove the clippy suggestion Maybe the source of perf issue:  https://github.com/mozilla/sccache/issues/1910
+  * build(deps): bump rustix from 0.36.15 to 0.36.16
+  * Correct issues found by CI
+  * Add `show-adv-stats` flag which shows per compiler hits/misses
+  * Also update rust in snap
+  * Fix more clippy warning - without autofix
+  * Fix some clippy warnings
+  * bump rust-version to 1.67 (was 1.65)
+  * tests/system.rs Now correctly identifies apple clang (#1905)
+  * sccache now tracks compiler hits/misses on a per language basis. (#1895)
+  * Update opendal to 0.40.0
+  * Bring back redis-over-tls (rediss) support
+  * build(deps): bump webpki from 0.22.0 to 0.22.2
+  * Fix a couple of typos (#1898)
+  * Add clang as a supported cuda compiler
+  * Add nvhpc ( nvc, nvc++ ) to the set of supported compilers
+  * Address feedback of code-review.
+  * Correct style issues found by clippy
+  * Support nvc as the host compiler for nvcc
+  * compiler: Support detecting compilers with pre-amble in -E
+  * Support msvc as the host compiler for nvcc
+  * nvcc: Support option files
+  * Add cache hit/miss test for cuda compilation
+  * services/gcs: Fix typo in to_scope (#1890)
+  * chore: Bump OpenDAL to v0.40.0 (#1885)
+  *  Add MacPorts as a new installation method (#1881)
+  * sccache fails to build on non x86_64/aarch64 arches (#1866)
+  * update doc for cmake 3.25 on windows (#1873)
+  * Add nvcc cubin,fatbin,optix-ir compilation mode support (#1872)
+  * Update FreeBSD CI to 13.2-RELEASE (#1879)
+  * Fix detection of clang version and v14+ unit tests (#1878)
+  * build(deps): bump actions/checkout from 3 to 4
+  * build(deps): bump semver from 1.0.16 to 1.0.17
+  * build(deps): bump anyhow from 1.0.70 to 1.0.71
+  * Properly propagate cache write errors
+  * Log hash key at debug level instead of trace
+  * nvcc: Support -Werror with argument
+  * Bump proc-macro2 from 1.0.47 to 1.0.63
+
+-------------------------------------------------------------------
 Fri Sep 22 03:08:33 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.5.4~2:
