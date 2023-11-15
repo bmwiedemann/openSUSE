@@ -95,4 +95,12 @@
     <comment>Sync changelog with SLE15-SP5. No code change.</comment>
     <requestid>1031591</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cbf546af81ff7e15c06bfc04202f8045</srcmd5>
+    <version>1.11.0</version>
+    <time>1700078793</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.11.0</comment>
+    <requestid>1125733</requestid>
+  </revision>
 </revisionlist>

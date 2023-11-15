@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 13 13:56:39 MST 2023 - carnold@suse.com
+
+- Update to version 1.11.0 (jsc#PED-2104)
+  * Added --nightly option to osinfo-db-import
+  * Several CI improvements
+  * Several translation improvements
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
