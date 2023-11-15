@@ -16,19 +16,19 @@
 #
 
 
+%define sover 0
 Name:           lsof
-Version:        4.98.0
+Version:        4.99.0
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
-#Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# Repacked tarball to remove proprietary code in dialects/uw/uw7/sys/fs/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/lsof-org/lsof/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  groff
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(libtirpc)
 
 %description
 Lsof lists information about files opened by processes. An open file
@@ -38,36 +38,56 @@ network file (Internet socket, NFS file, or UNIX domain socket.)  A
 specific  file or all the files in a file system may be selected by
 path.
 
+%package -n liblsof%{sover}
+Summary:        Library for listing information about files opened by process
+
+%description -n liblsof%{sover}
+This package contains a library for listing information about files opened by process.
+It allows accessing the functionality of the lsof command from C functions without
+spawning a subprocess.
+
+%package devel
+Summary:        Library for listing information about files opened by process
+Requires:       liblsof%{sover} = %{version}
+
+%description devel
+This package contains a library for listing information about files opened by process.
+It allows accessing the functionality of the lsof command from C functions without
+spawning a subprocess.
+
+This package contains the files required to build with liblsof.
+
 %prep
 %autosetup -p1
 
 %build
-./Configure -n linux
-%make_build DEBUG="%{optflags}"
-soelim -r Lsof.8 > lsof.8
+%configure
+%make_build
 
 %install
-%make_install DEBUG="%{optflags}"
-install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man8
-install -m755 lsof %{buildroot}%{_bindir}
-install -m644 lsof.8 %{buildroot}%{_mandir}/man8/lsof.8
-mkdir SUSE_docs
-for s in 00* ; do
-	mv $s SUSE_docs/${s#00}
-done
-sed -i -e "s|%{_prefix}/local/bin/perl4\?|%{_bindir}/perl|g" scripts/*
-mv scripts/00MANIFEST scripts/MANIFEST
-mv scripts/00README scripts/README
+%make_install
+find %{buildroot}%{_libdir} -type f -name "*.a" -print -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-cd tests
-chmod u+w TestDB
-./Add2TestDB
-%make_build DEBUG="%{optflags} -Wall -Wno-unused"
+%make_build check
+
+%ldconfig_scriptlets -n liblsof%{sover}
 
 %files
-%doc SUSE_docs/* scripts
-%{_mandir}/man8/lsof.8%{?ext_man}
+%license COPYING
+%doc  ChangeLog README 00*
 %{_bindir}/lsof
+%{_mandir}/man8/lsof.8%{?ext_man}
+
+%files devel
+%license COPYING
+%{_includedir}/*.h
+%{_libdir}/liblsof.so
+
+%files -n liblsof%{sover}
+%license COPYING
+%{_libdir}/liblsof.so.%{sover}
+%{_libdir}/liblsof.so.%{sover}.*
 
 %changelog
