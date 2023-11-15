@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mime-types-data
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-mime-types-data
-Version:        3.2022.0105
+Version:        3.2023.1003
 Release:        0
 %define mod_name mime-types-data
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        mime-types-data provides a registry for information about MIME media
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 mime-types-data provides a registry for information about MIME media type
