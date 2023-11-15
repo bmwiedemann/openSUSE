@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:27:14 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> 1.79.2.2
+
+- Raise version to 1.79.2.2
+  Integrate latest changes from assembly/assemble.xsl and
+  assembly/effectivity.xsl
+- Remove docbook-xsl-1.79.2-assembly-assemble.xsl.patch
+  We copy the two files directly.
+
+These two files contains the following overall changes:
+
+- Fix #254: Pass structure/@xml:lang to result doc
+- Support filterin/filterout elements
+- Fix problem with resourceref to another structure in assemblies
+- fix #28 assemble.xsl: imagedata filerefs in assembled output
+  document may be incorrect
+- Fix #27 to allow merge from resource of titles not inside info
+  because they are equivalent to titles inside info. Also fixe
+  a couple of other problems noticed during testing.
+
+For details, see the upstream Git repo and run:
+
+  $ git diff release/1.79.2..master -- \
+    xsl/assembly/assemble.xsl xsl/assembly/effectivity.xsl
+
+-------------------------------------------------------------------
 Wed Apr 19 15:29:00 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 1.79.2.1
 
 * Raise version to 1.79.2.1

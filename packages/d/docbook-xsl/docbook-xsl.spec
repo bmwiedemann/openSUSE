@@ -29,7 +29,7 @@
 %define etcxmlcatalogd         %{_sysconfdir}/xml/catalog.d
 #
 Name:           docbook-xsl
-Version:        1.79.2.1
+Version:        1.79.2.2
 Release:        0
 Summary:        XSL Stylesheets for DocBook
 License:        MIT AND MPL-1.1
@@ -42,12 +42,14 @@ Source3:        %{db5style_catalog}
 # Build scripts
 Source10:       dbxslt-install.sh
 Source11:       xslnons-build
+#
+Source20:       assemble.xsl
+Source21:       effectivity.xsl
 ## PATCH-FIX-OPENSUSE docbook-xsl-stylesheets-dbtoepub.patch Fixed dirname
 Patch0:         %{name}-dbtoepub.patch
 ## PATCH-FIX-OPENSUSE docbook-xsl-stylesheets-non-recursive_string_subst.patch Use EXSLT replace function to avoid recursive implementation of string.subst
 Patch1:         %{name}-non-recursive_string_subst.patch
-## PATCH-FIX-OPENSUSE docbook-xsl-1.79.2-assembly-assemble.xsl.patch Copy xml:lang of to result (assemble.xsl)
-Patch2:         %{name}-%{realversion}-assembly-assemble.xsl.patch
+
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel >= 0.7
 BuildRequires:  unzip
@@ -145,7 +147,7 @@ tar xf %{SOURCE1} -C docbook-xsl-%{realversion}-ns --strip-components 1
 (cd docbook-xsl-%{realversion}-ns
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+# %%patch2 -p1
 
 # Remove some Python and Java extensions
 # Remove dbtoepub Ruby script. This has been moved to devel:languages:ruby:extensions
@@ -191,6 +193,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/xml/catalog.d \
 
 # The directory is already available at this point:
 install -m644 %{db4style_catalog} %{db5style_catalog} %{buildroot}%{etcxmlcatalogd}
+
+# Overwrite our files from assembly directory
+cp %{SOURCE20} %{SOURCE21} %{buildroot}%{db5rootdir}/%{realversion}/assembly/
 
 %fdupes -s %{buildroot}
 

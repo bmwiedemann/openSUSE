@@ -52,4 +52,12 @@
     <comment>Correct URL (replace &quot;%2f&quot; -&gt; &quot;/&quot;), use %{realversion} instead of %{version}</comment>
     <requestid>1082369</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c321899575efa3b849c8b4b130825ca</srcmd5>
+    <version>1.79.2.2</version>
+    <time>1700078825</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126557</requestid>
+  </revision>
 </revisionlist>
