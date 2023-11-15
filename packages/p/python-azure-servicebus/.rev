@@ -326,4 +326,15 @@
     <comment></comment>
     <requestid>1117875</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>719335bdca5c6723707b191f2a978179</srcmd5>
+    <version>7.11.4</version>
+    <time>1700078920</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.11.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1125834 from glaubitz)</comment>
+    <requestid>1126454</requestid>
+  </revision>
 </revisionlist>
