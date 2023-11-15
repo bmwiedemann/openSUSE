@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-spring
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-spring
-Version:        4.1.0
+Version:        4.1.2
 Release:        0
 %define mod_name spring
 %define mod_full_name %{mod_name}-%{version}
@@ -34,17 +34,15 @@ Release:        0
 %define rb_build_ruby_abis ruby:2.7.0
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://github.com/rails/spring
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Rails application preloader
 License:        MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
