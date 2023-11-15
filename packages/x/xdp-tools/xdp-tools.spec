@@ -1,7 +1,7 @@
 #
 # spec file for package xdp-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,36 +15,36 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define sover_major 1
+%define libname libxdp%{sover_major}
+
 # check_abi will fail otherwise
 # See https://github.com/xdp-project/xdp-tools/issues/137
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
-%define sover_major 1
-%define libname libxdp%{sover_major}
+# workaround binutils/strip issue with BPF object, see #boo#1217108
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           xdp-tools
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Group:          Productivity/Networking/Other
 Summary:        Utilities and example programs for use with XDP
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            https://github.com/xdp-project/xdp-tools
 Source:         https://github.com/xdp-project/xdp-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM util-xdp_samples-Only-ignore-Wstringop-truncation-di.patch -- PR#332 
-Patch1:         util-xdp_samples-Only-ignore-Wstringop-truncation-di.patch
-# PATCH-FIX-UPSTREAM lib-Install-BPF-objects-as-non-executable.patch -- PR#332 
-Patch2:         lib-Install-BPF-objects-as-non-executable.patch
+BuildRequires:  bpftool
+BuildRequires:  clang >= 10.0.0
+BuildRequires:  gcc
 BuildRequires:  libbpf-devel
 BuildRequires:  libelf-devel
-BuildRequires:  zlib-devel
 BuildRequires:  libpcap-devel
-BuildRequires:  clang >= 10.0.0
 BuildRequires:  llvm >= 10.0.0
-BuildRequires:  make
-BuildRequires:  gcc
-BuildRequires:  pkg-config
 BuildRequires:  m4
-BuildRequires:  bpftool
+BuildRequires:  make
+BuildRequires:  pkg-config
+BuildRequires:  zlib-devel
 # For README.org file, but pulls in too much dependency
 #BuildRequires:  emacs-nox
 # Always keep xdp-tools and libxdp packages in sync
@@ -65,8 +65,8 @@ used by the %{name} package
 %package -n libxdp-devel
 Group:          Development/Libraries/C and C++
 Summary:        Development files for libxdp
-Requires:       kernel-devel
 Requires:       %{libname} = %{version}-%{release}
+Requires:       kernel-devel
 
 %description -n libxdp-devel
 The libxdp-devel package contains headers used for building XDP programs using

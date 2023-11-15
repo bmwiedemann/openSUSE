@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 14 03:35:12 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v1.4.1
+  * Detect presence of bpf_program__type(),
+    libbpf_program__flags(), and fix detection for btf__type_cnt()
+  * Correctly detect bpftool skeleton generation
+  * Clear xdp_frags flag before loading single prog if kernel
+    support is missing
+  * Allow creation of xsk with exclusive umem without CAP_NET_RAW
+  * Install BPF objects as non-executable
+  * xdp-loader: introduce features command
+  * xdp-bench: Enable the xdp_frags flag
+  * libxdp: don't use direct call to readelf for symbol table
+    comparison
+- Drop patches merged upstream
+  * drop lib-Install-BPF-objects-as-non-executable.patch
+  * drop util-xdp_samples-Only-ignore-Wstringop-truncation-di.patch
+
+-------------------------------------------------------------------
 Mon Jun 26 06:20:32 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Do not package test files for xdp-tools

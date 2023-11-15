@@ -7,4 +7,14 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/message/EURIQ6GQXTLB5C47WP7PU3BVS5SWM6Z6/</comment>
     <requestid>1095327</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d85196daa5d2e0e4a7e4f7a224bd40c8</srcmd5>
+    <version>1.4.1</version>
+    <time>1700078935</time>
+    <user>anag+factory</user>
+    <comment>- Add temporary workaround for boo#1217108, disabling binary stripping until it is resolved
+- Update to v1.4.1
+- Drop patches merged upstream</comment>
+    <requestid>1126513</requestid>
+  </revision>
 </revisionlist>
