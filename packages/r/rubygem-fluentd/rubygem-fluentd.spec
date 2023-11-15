@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-fluentd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-fluentd
-Version:        1.15.3
+Version:        1.16.3
 Release:        0
 %define mod_name fluentd
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -40,7 +39,6 @@ Source2:        gem2rpm.yml
 Source3:        gem2rpm.yml
 Summary:        Fluentd event collector
 License:        Apache-2.0
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
