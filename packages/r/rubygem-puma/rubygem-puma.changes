@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Nov  4 00:13:18 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.4.0
+  * Features
+    * on_thread_exit hook ([#2920])
+    * on_thread_start_hook ([#3195]) 
+    * Shutdown on idle ([#3209], [#2580])
+    * New error message when control server port taken ([#3204])
+
+  * Refactor
+    * Remove `Forwardable` dependency ([#3191], #3190)
+    * Update URLMap Regexp usage for Ruby v3.3 ([#3165])
+
+  * Bugfixes
+    * Bring the cert_pem: parameter into parity with the cert: parameter to ssl_bind. ([#3174])
+    * Fix using control server with IPv6 host ([#3181]) 
+    * control_cli.rb - add require_relative 'log_writer' ([#3187])
+    * Fix cases where fallback Rack response wasn't sent to the client ([#3094])
+
+-------------------------------------------------------------------
+Fri Nov  3 07:50:44 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 6.3.1:
+  * Security 
+    * Address HTTP request smuggling vulnerabilities with
+      zero-length Content Length header and trailer fields
+      ([GHSA-68xg-gqqm-vgj8](https://github.com/puma/puma/security/advisories/GHSA-68xg-gqqm-vgj8))
+
+-------------------------------------------------------------------
+Wed Jun 21 21:31:39 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.3.0
+  - Features
+    - Add dsl method `supported_http_methods` ([#3106], [#3014])
+    - Puma error responses no longer have any fingerprints to
+      indicate Puma ([#3161], [#3037])
+    - Support decryption of SSL key ([#3133], [#3132])
+
+  - Bugfixes
+    - Don't send 103 early hints response when only invalid headers
+      are used ([#3163])
+    - Handle malformed request path ([#3155], [#3148])
+    - Misc lib file fixes - trapping additional errors, CI helper
+      ([#3129])
+    - Fixup req form data file upload with "r\n" line endings
+      ([#3137])
+    - Restore rack 1.6 compatibility Restore rack 1.6 compatibility
+      ([#3156])
+
+  - Refactor
+    - const.rb - Update Puma::HTTP_STATUS_CODES ([#3162])
+    - Clarify Reactor#initialize ([#3151])
+
+-------------------------------------------------------------------
 Fri Apr 28 21:46:00 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 6.2.2

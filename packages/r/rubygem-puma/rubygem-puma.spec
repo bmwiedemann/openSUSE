@@ -24,17 +24,16 @@
 #
 
 Name:           rubygem-puma
-Version:        6.2.2
+Version:        6.4.0
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  openssl-devel
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://puma.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
@@ -42,7 +41,6 @@ Source1:        rubygem-puma-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Puma is a simple, fast, threaded, and highly parallel HTTP 1.1
 License:        BSD-3-Clause
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
