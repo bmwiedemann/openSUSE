@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-po_to_json
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-po_to_json
-Version:        1.0.1
+Version:        2.0.0
 Release:        0
 %define mod_name po_to_json
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 1.9.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/webhippie/po_to_json
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            https://github.com/webhippie/po_to_json
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Convert gettext PO files to JSON
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Convert gettext PO files to JSON objects so that you can use it in your
