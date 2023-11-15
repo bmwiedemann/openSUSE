@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:47:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Disallow creating an instruction targeting a
+    pseudo/instrumented opcode PR #133
+  * Fixes encoding of 0 as a varint PR #132
+  * Correct spelling of "INTRINSIC" in several places; this
+    affected some ops in Python 3.12.  PR #131
+
+-------------------------------------------------------------------
 Mon Sep 18 10:14:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.0:

@@ -85,4 +85,17 @@
 - initial version 0.11.0, required by python-enaml</comment>
     <requestid>1111939</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f76482dee37251afb9393baf56fd1769</srcmd5>
+    <version>0.15.1</version>
+    <time>1700078905</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.1:
+  * Disallow creating an instruction targeting a
+    pseudo/instrumented opcode PR #133
+  * Fixes encoding of 0 as a varint PR #132
+  * Correct spelling of &quot;INTRINSIC&quot; in several places; this
+    affected some ops in Python 3.12.  PR #131</comment>
+    <requestid>1126231</requestid>
+  </revision>
 </revisionlist>
