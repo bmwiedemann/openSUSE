@@ -354,4 +354,12 @@ Required by the latest version of python-gcsfs</comment>
   * #1305, use get_file rather than get in file caching</comment>
     <requestid>1115766</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d8337656999d531aba46150416339253</srcmd5>
+    <version>2023.10.0</version>
+    <time>1700078922</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126463</requestid>
+  </revision>
 </revisionlist>

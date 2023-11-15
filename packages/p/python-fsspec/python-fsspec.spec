@@ -27,14 +27,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
-Version:        2023.9.2
+Version:        2023.10.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/filesystem_spec
 # the tests are only in the GitHub archive
 Source:         https://github.com/fsspec/filesystem_spec/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
