@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  5 22:26:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.27.3
+  * New indexed light mode (software fidelity in OpenGL).
+  * Improved controller support.
+  * A new HUD system with new components.
+  * New console commands and better usability.
+  * UDMF support, MAPINFO support
+  * ZIP file loading
+  * Improved Heretic and Hexen suport
+  * Upgraded to OPL3 emulation
+  * You can switch back to OPL2 with config option mus_opl_opl3mode
+- Delete prboom-nodatetime.diff, fluidsynth1.diff
+- Add cmake-path-suffix.diff
+- Note: If you updated from an old dsda-doom and use the same
+  config file, your default complevel may have been reset to 0. If
+  you run into an issue, check it out (suggested value is 21 /
+  mbf21, if you don't know what to pick).
+
+-------------------------------------------------------------------
 Wed Mar 30 18:39:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.24.3
