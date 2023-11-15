@@ -3,7 +3,7 @@
     <param name="url">https://github.com/kanidm/kanidm.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">1.1.0-beta.13</param>
+    <param name="revision">1.1.0-rc.15</param>
     <param name="match-tag">v*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)-([a-z]+)\.(\d+)</param>
     <param name="versionrewrite-replacement">\1~\2\3</param>
@@ -19,10 +19,10 @@
   <service name="cargo_vendor" mode="disabled">
      <param name="srctar">kanidm-*.tar.zst</param>
      <param name="compression">zst</param>
-     <param name="update">false</param>
+     <param name="i-accept-the-risk">RUSTSEC-2022-0040</param>
+     <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">kanidm</param>
   </service>
 </services>
 
