@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:54:39 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   Omit `webdrivers` gem dependency from `Gemfile` template
+
+    *Sean Doyle*
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   Update default scaffold templates to set 303 (See Other) as status code
+    on redirect for the update action for XHR requests other than GET or POST
+    to avoid issues (e.g browsers trying to follow the redirect using the
+    original request method resulting in double PATCH/PUT)
+
+    *Guillermo Iguaran*
+
+## Rails 7.0.6 (June 29, 2023) ##
+*   Avoid escaping paths when editing credentials.
+
+    *Jonathan Hefner*
+
+
+-------------------------------------------------------------------
 Tue Jun 27 19:31:19 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - updated to version 7.0.5.1
