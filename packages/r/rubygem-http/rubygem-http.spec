@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-http
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-http
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 %define mod_name http
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        HTTP should be easy
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 An easy-to-use client library for making requests from Ruby. It uses a simple
