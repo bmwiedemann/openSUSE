@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:46:23 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2023-07-18 1.7.2:
+
+* Fix a potential GC bug when packing data using recursive extensions and buffers containing over 512KkiB of data (See #341).
+* Fix a regression where feeding an empty string to an Unpacker would be considered like the end of the buffer.
+
+2023-05-19 1.7.1:
+
+* Fix JRuby 9.4 compatibility.
+* Fix compilation on older compilers (gcc 4.x).
+* Fix an infinite recursion issue when registering a Symbol type with a `nil` packer.
+
+2023-03-29 1.7.0:
+
+* Fix a possible double-free issue when GC triggers inside `_msgpack_rmem_alloc2`.
+* `Unpacker#feed` now always directly read in provided strings instead of copying content in its buffer.
+* `Unpacker#feed` is now an alias of `Unpacker#feed_reference`.
+* Implement `Factory::Pool#unpacker` and `Factory::Pool#packer` to allow for more precise serialization.
+* Require Ruby 2.5+.
+
+2023-03-03 1.6.1:
+
+* Undefine `#clone` and `#dup` on `MessagePack::Buffer`, `MessagePack::Packer` and `MessagePack::Unpacker`.
+  These methods were never intended, and using them could cause leaks or crashes or worse.
+* Fix a possible GC crash when GC trigger inside `MessagePack::Buffer.new` (#314).
+
+
+-------------------------------------------------------------------
 Mon Oct 10 13:10:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.6.0

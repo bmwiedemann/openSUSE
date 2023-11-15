@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-msgpack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-msgpack
-Version:        1.6.0
+Version:        1.7.2
 Release:        0
 %define mod_name msgpack
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.4}
+BuildRequires:  %{rubydevel >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            http://msgpack.org/
@@ -39,7 +38,6 @@ Source2:        rubygem-msgpack-rpmlintrc
 Source3:        gem2rpm.yml
 Summary:        MessagePack, a binary-based efficient data interchange format
 License:        Apache-2.0
-Group:          Development/Languages/Ruby
 
 %description
 MessagePack is a binary-based efficient object serialization library. It
