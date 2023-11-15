@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.12.0+git50.5c26404e
+Version:        4.13.0+git6.ae50f94f
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -47,6 +47,7 @@ BuildRequires:  automake
 BuildRequires:  cluster-glue-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
+BuildRequires:  libqb-devel
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros

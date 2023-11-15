@@ -1663,4 +1663,27 @@
   * Filesystem: create systemd drop-in for network filesystems</comment>
     <requestid>1100831</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>f0aa1974bf162f9389537d13dbc0d3da</srcmd5>
+    <version>4.13.0+git6.ae50f94f</version>
+    <time>1700078828</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.13.0+git6.ae50f94f:
+  * findif.sh: fix loopback handling
+  * exportfs: remove test for &quot;fsid=&quot; parameter
+  * Fix PRIMARY_IFACE variable. In some cases ip returns two lines
+  * build: update ChangeLog for 4.13.0
+  * README: update IRC info to link to ClusterLabs wiki IRC page
+  * findif.sh: dont use table parameter as it returns no netmask (tested with main/local/custom tables)
+  * build: update ChangeLog for 4.13.0-rc1
+  * iSCSI: add support for scst
+  * Low: storage-mon: Remove unnecessary code and fix typos.
+  * mysql-common: improve error message (#1887)
+  * Mid: storage-mon RA: Changed OCF_RESKEY_daemonize_default and OCF_RESKEY_daemonize default and judgment part.
+  * postfix: Update permission check from su to runuser/su (#1880)
+  * Mid: storage-mon: Retry failed attrd_updater.
+  * Mid: storage-mon: Added daemon/client mode.
+  * Mid: storage-mon: Functionalization of test_device call processing.</comment>
+    <requestid>1126564</requestid>
+  </revision>
 </revisionlist>

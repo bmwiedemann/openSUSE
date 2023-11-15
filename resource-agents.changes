@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 14 18:56:26 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.13.0+git6.ae50f94f:
+  * findif.sh: fix loopback handling
+  * exportfs: remove test for "fsid=" parameter
+  * Fix PRIMARY_IFACE variable. In some cases ip returns two lines
+  * build: update ChangeLog for 4.13.0
+  * README: update IRC info to link to ClusterLabs wiki IRC page
+  * findif.sh: dont use table parameter as it returns no netmask (tested with main/local/custom tables)
+  * build: update ChangeLog for 4.13.0-rc1
+  * iSCSI: add support for scst
+  * Low: storage-mon: Remove unnecessary code and fix typos.
+  * mysql-common: improve error message (#1887)
+  * Mid: storage-mon RA: Changed OCF_RESKEY_daemonize_default and OCF_RESKEY_daemonize default and judgment part.
+  * postfix: Update permission check from su to runuser/su (#1880)
+  * Mid: storage-mon: Retry failed attrd_updater.
+  * Mid: storage-mon: Added daemon/client mode.
+  * Mid: storage-mon: Functionalization of test_device call processing.
+
+-------------------------------------------------------------------
 Tue Jul 25 09:22:06 UTC 2023 - varkoly@suse.com
 
 - Update to version 4.12.0+git50.5c26404e:
