@@ -4820,4 +4820,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2023-5859: Incorrect security UI in Picture In Picture</comment>
     <requestid>1125107</requestid>
   </revision>
+  <revision rev="407" vrev="1">
+    <srcmd5>0eb7a64d075d62a09266c748b8f1e239</srcmd5>
+    <version>119.0.6045.159</version>
+    <time>1700078938</time>
+    <user>anag+factory</user>
+    <comment>chromium 119.0.6045.159 (boo#1217142)</comment>
+    <requestid>1126528</requestid>
+  </revision>
 </revisionlist>

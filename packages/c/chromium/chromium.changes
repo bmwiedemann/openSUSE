@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 15 06:18:42 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 119.0.6045.159 (boo#1217142)
+  * CVE-2023-5997: Use after free in Garbage Collection
+  * CVE-2023-6112: Use after free in Navigation
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Fri Nov 10 18:50:48 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 119.0.6045.123 (boo#1216978)
