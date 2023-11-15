@@ -1,7 +1,7 @@
 #
 # spec file for package libosinfo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,16 +20,13 @@
 %define with_lang 1
 
 Name:           libosinfo
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Operating system and hypervisor information management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://releases.pagure.org/libosinfo
 Source0:        %{url}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 3a0fef72.patch -- build: Add option to select libsoup ABI
-Patch0:         https://gitlab.com/libosinfo/libosinfo/-/commit/3a0fef72.patch
-
 BuildRequires:  gtk-doc
 BuildRequires:  hwdata
 BuildRequires:  libcurl-devel

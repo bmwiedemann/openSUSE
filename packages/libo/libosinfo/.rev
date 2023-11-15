@@ -422,4 +422,12 @@ New package for Factory, dependency for gnome-boxes. Hardware seems to be the be
     <comment>Sync changelog with SLE15-SP5. No code change.</comment>
     <requestid>1031590</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8fa2b865dab875c0a3ed48bf6f67b274</srcmd5>
+    <version>1.11.0</version>
+    <time>1700078792</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.11.0</comment>
+    <requestid>1125732</requestid>
+  </revision>
 </revisionlist>

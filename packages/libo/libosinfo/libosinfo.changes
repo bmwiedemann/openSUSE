@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 13 13:47:19 MST 2023 - carnold@suse.com
+
+- Update to version 1.11.0 (jsc#PED-2104)
+  Changes in this release include:
+  * Several minor memory leak fixes
+  * Several CI improvements
+  * Several translations improvements
+- Drop 3a0fef72.patch as it is now part of the tarball
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
