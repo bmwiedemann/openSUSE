@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  3 08:02:35 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Edge
+
+## 1.2.10
+
+- ensure correct port is always specified for handshake
+- no longer using Base64 for compatibility with Ruby 3.4+
+
+
+-------------------------------------------------------------------
 Wed Jan 20 13:34:45 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.2.9
