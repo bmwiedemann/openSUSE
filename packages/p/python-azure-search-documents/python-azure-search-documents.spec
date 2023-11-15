@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-search-documents
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,28 +21,26 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-search-documents
-Version:        11.3.0
+Version:        11.4.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-search-documents/azure-search-documents-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-search-documents/azure-search-documents-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-search-nspkg >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.19.0
+Requires:       python-azure-core >= 1.28.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-search-nspkg >= 1.0.0
-Requires:       python-msrest >= 0.6.21
-Requires:       python-typing_extensions >= 3.7.4.3
+Requires:       python-isodate >= 0.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
