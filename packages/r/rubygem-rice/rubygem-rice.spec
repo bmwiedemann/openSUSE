@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rice
-Version:        4.0.4
+Version:        4.1.0
 Release:        0
 %define mod_name rice
 %define mod_full_name %{mod_name}-%{version}
@@ -35,16 +35,14 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/jasonroelofs/rice
+Url:            https://github.com/jasonroelofs/rice
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ruby Interface for C++ Extensions
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Rice is a C++ interface to Ruby's C API. It provides a type-safe and
