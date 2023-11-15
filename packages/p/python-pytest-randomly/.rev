@@ -126,4 +126,12 @@
 - drop fix-tests-pytest-73.patch (upstream)</comment>
     <requestid>1101314</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>86c02272070a3edacd787a365d9d7a42</srcmd5>
+    <version>3.15.0</version>
+    <time>1700078921</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1126456</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-randomly
-Version:        3.13.0
+Version:        3.15.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        MIT
@@ -37,9 +37,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Faker >= 13.11.0}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0}
+BuildRequires:  %{python_module model-bakery >= 1.13.0}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
