@@ -192,4 +192,18 @@
   * When an ATTACH occurs creating a new encrypted database as the first operation after keying the main database, the new database will have the same salt value.</comment>
     <requestid>1087742</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4a82b6709a5860189b43cfc82eee1f55</srcmd5>
+    <version>4.5.5</version>
+    <time>1700078912</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.5.5:
+* Updates baseline to upstream SQLite 3.42.0
+ * Does not allow key to be set again on a connection after it has been successfully used for an encryption or decryption operation to prevent accidental database corruption
+ * Raises an error if a rekey operation is attempted on an unencrypted database
+ * Raises an error when a key or rekey operation is passed an empty key
+ * Minor improvements to constant time functions
+ * Miscellaneous code and comment cleanup</comment>
+    <requestid>1126246</requestid>
+  </revision>
 </revisionlist>

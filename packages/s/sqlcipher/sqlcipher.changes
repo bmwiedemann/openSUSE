@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 14 16:24:37 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.5:
+* Updates baseline to upstream SQLite 3.42.0
+ * Does not allow key to be set again on a connection after it has been successfully used for an encryption or decryption operation to prevent accidental database corruption
+ * Raises an error if a rekey operation is attempted on an unencrypted database
+ * Raises an error when a key or rekey operation is passed an empty key
+ * Minor improvements to constant time functions
+ * Miscellaneous code and comment cleanup
+
+-------------------------------------------------------------------
 Thu May 18 06:14:17 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.4:

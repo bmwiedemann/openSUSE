@@ -16,10 +16,10 @@
 #
 
 
-%define         lib_version 3.41.2
-%define         lib_name libsqlcipher-3_41_2-0
+%define         lib_version 3.42.0
+%define         lib_name libsqlcipher-3_42_0-0
 Name:           sqlcipher
-Version:        4.5.4
+Version:        4.5.5
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
