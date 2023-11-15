@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  3 08:00:27 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.10.3
+
+  * Remove test files from the gem package (#146)
+  * Add DynamicMerger filter (#147)
+
+0.10.2
+
+  * Fix Sinatra capture_generator problem (#145)
+
+0.10.1
+
+  * Use specified :capture_generator for nested captures (#112, #144)
+  * Compatibility with frozen string literals
+
+
+-------------------------------------------------------------------
 Fri Apr 21 12:58:11 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - updated to version 0.10.0

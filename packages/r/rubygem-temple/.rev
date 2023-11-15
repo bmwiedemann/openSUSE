@@ -61,4 +61,12 @@
   * Drop support for Rails 4.x</comment>
     <requestid>1081282</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cab703d01fadaa26ac7064909df35c2</srcmd5>
+    <version>0.10.3</version>
+    <time>1700078837</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123157</requestid>
+  </revision>
 </revisionlist>

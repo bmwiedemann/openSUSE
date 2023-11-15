@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-temple
-Version:        0.10.0
+Version:        0.10.3
 Release:        0
 %define mod_name temple
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Template compilation framework in Ruby
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Template compilation framework in Ruby.
