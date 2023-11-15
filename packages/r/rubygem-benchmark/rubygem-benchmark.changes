@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 14 14:50:29 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.3.0:
+
+## What's Changed
+* Migrate `set-output` to `$GITHUB_OUTPUT` by @znz in https://github.com/ruby/benchmark/pull/17
+* Replace reusing actions by @hsbt in https://github.com/ruby/benchmark/pull/18
+* Don't use version.rb by @hsbt in https://github.com/ruby/benchmark/pull/19
+
+## New Contributors
+* @znz made their first contribution in https://github.com/ruby/benchmark/pull/17
+
+**Full Changelog**: https://github.com/ruby/benchmark/compare/v0.2.1...v0.3.0
+
+
+
+-------------------------------------------------------------------
 Wed Dec  7 11:13:11 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.2.1

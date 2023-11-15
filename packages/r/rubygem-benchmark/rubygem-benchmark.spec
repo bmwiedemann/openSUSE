@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-benchmark
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-benchmark
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 %define mod_name benchmark
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -40,7 +39,6 @@ Patch0:         0001-Change-shebang-from-usr-bin-env-bash-to-usr-bin-bash.patch
 # /MANUAL
 Summary:        A performance benchmarking library
 License:        BSD-2-Clause AND Ruby
-Group:          Development/Languages/Ruby
 
 %description
 The Benchmark module provides methods for benchmarking Ruby code, giving
