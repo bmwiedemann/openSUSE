@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov  2 15:34:24 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   Fix retrieving rotation value from FFmpeg on version 5.0+.
+
+    In FFmpeg version 5.0+ the rotation value has been removed from tags.
+    Instead the value can be found in side_data_list. Along with
+    this update it's possible to have values of -90, -270 to denote the video
+    has been rotated.
+
+    *Haroon Ahmed*
+
+
+-------------------------------------------------------------------
 Tue Jun 27 19:31:13 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - updated to version 7.0.5.1
