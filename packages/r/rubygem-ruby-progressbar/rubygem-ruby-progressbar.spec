@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby-progressbar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-ruby-progressbar
-Version:        1.11.0
+Version:        1.13.0
 Release:        0
 %define mod_name ruby-progressbar
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ruby/ProgressBar is a flexible text progress bar library for Ruby
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Ruby/ProgressBar is an extremely flexible text progress bar library for Ruby.
