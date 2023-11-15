@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 14 16:04:03 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.41.0:
+  - Features
+    * feat: Add git-commit-message to generate command
+    * feat: Make commit message templates regular templates
+    * feat: Add git.commitMessageTemplateFile config variable
+    * feat: Add edit-config-template command
+  - Fixes
+    * fix: Don't escape HTML characters in JSON strings
+  - Documentation updates
+    * docs: Document support for the passage password manager
+    * docs: add how-to for gpg ↔ age migration
+    * docs: Fix default value of persistentState variable
+  - Other
+    * refactor: Allow mkdocs build from any origin
+
+-------------------------------------------------------------------
 Mon Oct 30 16:08:52 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.40.4:
