@@ -41,4 +41,17 @@
 - address some rpmlint warnings/errors</comment>
     <requestid>1095881</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>12dc4d99c32a4fc89d4c546dc4417fa9</srcmd5>
+    <version>1.2.1</version>
+    <time>1700078825</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.1 (bsc#1214927, CVE-2023-36328):
+  + Bugfix release because of potential integer overflow (
+    CVE-2023-36328).
+- Drop 546.patch: fixed upstream.
+- Update libtommath.keyring to contain gpg key
+  7B24BC73AFEEFA69A5BDE9C53FAA94B3BD9016D9.</comment>
+    <requestid>1126546</requestid>
+  </revision>
 </revisionlist>

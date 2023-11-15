@@ -19,7 +19,7 @@
 
 Name:           libtommath
 %define libsoname %{name}1
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Routines For a Integer Based Number Theoretic Applications
 License:        Unlicense
@@ -30,7 +30,6 @@ Source2:        https://github.com/libtom/libtommath/releases/download/v%{versio
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 Source5:        libtommath-rpmlintrc
-Patch1:         https://patch-diff.githubusercontent.com/raw/libtom/libtommath/pull/546.patch
 BuildRequires:  dos2unix
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -90,7 +89,6 @@ routines].
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"

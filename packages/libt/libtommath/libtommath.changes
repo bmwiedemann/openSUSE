@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 18 11:11:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.1 (bsc#1214927, CVE-2023-36328):
+  + Bugfix release because of potential integer overflow (
+    CVE-2023-36328).
+- Drop 546.patch: fixed upstream.
+- Update libtommath.keyring to contain gpg key
+  7B24BC73AFEEFA69A5BDE9C53FAA94B3BD9016D9.
+
+-------------------------------------------------------------------
 Wed Jun 28 15:07:14 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
 
 - handle rpmlint warnings/errors:
