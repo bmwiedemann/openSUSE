@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 14 14:56:36 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## [v0.6.20231109](https://github.com/knu/ruby-domain_name/tree/v0.6.20231109) (2023-11-14)
+[Full Changelog](https://github.com/knu/ruby-domain_name/compare/v0.6.20190701...v0.6.20231109)
+
+- Update the eTLD database to 2023-11-09 00:10:10 UTC
+
+- Require Ruby >=2.7 and drop the dependency on unf
+
+
+-------------------------------------------------------------------
 Fri Jul 19 09:04:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to version 0.5.20190701

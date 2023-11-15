@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-domain_name
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-domain_name
-Version:        0.5.20190701
+Version:        0.6.20231109
 Release:        0
 %define mod_name domain_name
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/knu/ruby-domain_name
+URL:            https://github.com/knu/ruby-domain_name
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Domain Name manipulation library for Ruby
 License:        BSD-2-Clause AND BSD-3-Clause AND MPL-2.0
-Group:          Development/Languages/Ruby
 
 %description
 This is a Domain Name manipulation library for Ruby.
