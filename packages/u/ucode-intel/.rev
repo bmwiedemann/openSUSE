@@ -1072,4 +1072,41 @@
   - CVE-2022-41804: Security updates for [INTEL-SA-00837](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00837.html) (forwarded request 1103090 from abergmann)</comment>
     <requestid>1103094</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9e6e772f6bcfff8200e2173c509f0961</srcmd5>
+    <version>20231114</version>
+    <time>1700078824</time>
+    <user>anag+factory</user>
+    <comment>- Updated to Intel CPU Microcode 20231114 release. (bsc#1215278)
+  - Security updates for [INTEL-SA-00950](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00950.html)
+    - CVE-2023-23583: Fixed potential CPU deadlocks or privilege escalation (bsc#1215278)
+  - Update for functional issues. Refer to [13th Generation Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/740518) for details.
+  - Update for functional issues. Refer to [12th Generation Intel® Core™ Processor Family](https://cdrdv2.intel.com/v1/dl/getContent/682436) for details.
+  - Update for functional issues. Refer to [11th Gen Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/631123) for details.
+  - Update for functional issues. Refer to [10th Gen Intel® Core™ Processor Families Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/341079) for details.
+  - Update for functional issues. Refer to [4th Gen Intel® Xeon® Scalable Processors Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/772415) for details.
+  - Update for functional issues. Refer to [3rd Generation Intel® Xeon® Scalable Processors Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/634897) for details.
+  - Update for functional issues. Refer to [Intel® Processors and Intel® Core™ i3 N-Series](https://cdrdv2.intel.com/v1/dl/getContent/764616) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® D-2700 Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/714071) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® E-2300 Processor Specification Update ](https://cdrdv2.intel.com/v1/dl/getContent/709192) for details.
+  ### Updated Platforms
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | ADL            | C0       | 06-97-02/07 | 0000002e | 00000032 | Core Gen12
+  | ADL            | H0       | 06-97-05/07 | 0000002e | 00000032 | Core Gen12
+  | ADL            | L0       | 06-9a-03/80 | 0000042c | 00000430 | Core Gen12
+  | ADL            | R0       | 06-9a-04/80 | 0000042c | 00000430 | Core Gen12
+  | ADL-N          | N0       | 06-be-00/11 | 00000011 | 00000012 | Core i3-N305/N300, N50/N97/N100/N200, Atom x7211E/x7213E/x7425E
+  | AZB            | A0       | 06-9a-04/40 | 00000004 | 00000005 | Intel(R) Atom(R) C1100
+  | AZB            | R0       | 06-9a-04/40 | 00000004 | 00000005 | Intel(R) Atom(R) C1100
+  | ICL-D          | B0       | 06-6c-01/10 | 01000230 | 01000268 | Xeon D-17xx, D-27xx
+  | ICX-SP         | Dx/M1    | 06-6a-06/87 | 0d0003a5 | 0d0003b9 | Xeon Scalable Gen3
+  | ICL-U/Y        | D1       | 06-7e-05/80 | 000000bc | 000000c2 | Core Gen10 Mobile
+  | RPL-H/P/PX 6+8 | J0       | 06-ba-02/e0 | 00004119 | 0000411c | Core Gen13
+  | RPL-S          | B0       | 06-b7-01/32 | 00000119 | 0000011d | Core Gen13
+  | RKL-S          | B0       | 06-a7-01/02 | 00000059 | 0000005d | Core Gen11
+  | RPL-S          | H0       | 06-bf-05/07 | 0000002e | 00000032 | Core Gen12
+  | RPL-S/HX       | C0       | 06-bf-02/07 | 0000002e | 00000032 | Core Gen12 (forwarded request 1126539 from msmeissn)</comment>
+    <requestid>1126540</requestid>
+  </revision>
 </revisionlist>
