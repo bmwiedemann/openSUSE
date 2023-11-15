@@ -263,4 +263,12 @@
   * Make Result#fields return interned strings in Ruby 3+ by @casperisfine in #1181</comment>
     <requestid>1010083</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>199dd47fe640a81ee5a1ee218692129f</srcmd5>
+    <version>0.5.5</version>
+    <time>1700078844</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123185</requestid>
+  </revision>
 </revisionlist>

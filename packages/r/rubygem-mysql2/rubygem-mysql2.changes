@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:46:49 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.5.5:
+
+# New
+* Support for Ruby GC compaction (#1192)
+* Add `--with-openssl-dir` option for improved linking with OpenSSL (#1303)
+
+# Changed
+* Lock on the current Fiber rather than current Thread (#1284)
+* Improve SSL support on MySQL 5.6.36+ and MariaDB Connector/C 3.0+ (#1304, #1306)
+* Additional search paths to find MySQL libraries by Homebrew (#1278)
+* README: Improve docs for SSL/TLS (#1142, #1306)
+* CI: Upgrade RuboCop and run in its own CI step (#1259, #1268, #1295)
+* CI: Update runtime environments (#1290, #1291, #1292, #1298, #1299)
+
+Full Changelog: https://github.com/brianmario/mysql2/compare/0.5.4...0.5.5
+
+
+
+-------------------------------------------------------------------
 Sun May 15 15:41:53 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 
