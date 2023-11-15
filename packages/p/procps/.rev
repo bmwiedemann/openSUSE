@@ -1372,4 +1372,12 @@ There are also man pages translations but they doesn't get installed automatical
   logind over utmp (jsc#PED-3144)</comment>
     <requestid>1104653</requestid>
   </revision>
+  <revision rev="134" vrev="15">
+    <srcmd5>38e9cae24bb4f546723085f5462b54cf</srcmd5>
+    <version>3.3.17</version>
+    <time>1700078790</time>
+    <user>anag+factory</user>
+    <comment>- procps-ng-3.3.17-logind.patch: Fix crash of &quot;w -s -h&quot; (forwarded request 1121081 from kukuk)</comment>
+    <requestid>1125698</requestid>
+  </revision>
 </revisionlist>

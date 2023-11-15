@@ -1,12 +1,7 @@
----
- configure.ac    |    7 +
- proc/whattime.c |   18 ++++
- w.c             |  206 ++++++++++++++++++++++++++++++++++++++++++++++++--------
- 3 files changed, 203 insertions(+), 28 deletions(-)
-
---- a/configure.ac
-+++ b/configure.ac	2023-08-17 08:13:43.400631603 +0000
-@@ -214,6 +214,13 @@ AC_ARG_WITH([systemd],
+diff -ur procps-3.3.17/configure.ac procps-3.3.17-no-utmp/configure.ac
+--- procps-3.3.17/configure.ac	2023-10-27 17:02:55.230522174 +0200
++++ procps-3.3.17-no-utmp/configure.ac	2023-10-27 17:05:56.027565296 +0200
+@@ -214,6 +214,13 @@
  AS_IF([test "x$with_systemd" != "xno"], [
    PKG_CHECK_MODULES([SYSTEMD], [libsystemd])
    AC_DEFINE(WITH_SYSTEMD, 1, [enable systemd support])
@@ -20,8 +15,52 @@
  ])
  AM_CONDITIONAL([WITH_SYSTEMD], [test x$with_systemd != xno])
  
---- a/w.c
-+++ b/w.c	2023-08-18 09:05:49.745019308 +0000
+diff -ur procps-3.3.17/proc/whattime.c procps-3.3.17-no-utmp/proc/whattime.c
+--- procps-3.3.17/proc/whattime.c	2021-02-09 11:11:25.000000000 +0100
++++ procps-3.3.17-no-utmp/proc/whattime.c	2023-10-27 17:05:56.027565296 +0200
+@@ -38,6 +38,15 @@
+ #include "whattime.h"
+ #include "sysinfo.h"
+ 
++#ifdef WITH_SYSTEMD
++#include <systemd/sd-daemon.h>
++#include <systemd/sd-login.h>
++#endif
++#ifdef WITH_ELOGIND
++#include <elogind/sd-daemon.h>
++#include <elogind/sd-login.h>
++#endif
++
+ static char buf[256];
+ static double av[3];
+ 
+@@ -98,6 +107,11 @@
+ /* count the number of users */
+ 
+     numuser = 0;
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
++    if (sd_booted() > 0)
++      numuser = sd_get_sessions(NULL);
++    else {
++#endif
+     setutent();
+     while ((utmpstruct = getutent())) {
+       if ((utmpstruct->ut_type == USER_PROCESS) &&
+@@ -105,6 +119,10 @@
+         numuser++;
+     }
+     endutent();
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
++       }
++#endif
++
+ 
+     pos += sprintf(buf + pos, "%2d user%s, ", numuser, numuser == 1 ? "" : "s");
+ 
+Datei procps-3.3.17/screen.620TQo/23075..f05 ist ein Socket, während Datei procps-3.3.17-no-utmp/screen.620TQo/23075..f05 ein Socket ist.
+diff -ur procps-3.3.17/w.c procps-3.3.17-no-utmp/w.c
+--- procps-3.3.17/w.c	2023-10-27 17:02:55.194521966 +0200
++++ procps-3.3.17-no-utmp/w.c	2023-10-27 18:10:00.371042829 +0200
 @@ -56,11 +56,22 @@
  #include <time.h>
  #include <unistd.h>
@@ -46,7 +85,7 @@
  
  static int ignoreuser = 0;	/* for '-u' */
  static int oldstyle = 0;	/* for '-o' */
-@@ -72,12 +83,6 @@ typedef struct utmpx utmp_t;
+@@ -72,12 +83,6 @@
  typedef struct utmp utmp_t;
  #endif
  
@@ -59,7 +98,7 @@
  #ifdef W_SHOWFROM
  # define FROM_STRING "on"
  #else
-@@ -198,7 +203,25 @@ static void print_display_or_interface(c
+@@ -198,7 +203,25 @@
  
  
  /* This routine prints either the hostname or the IP address of the remote */
@@ -86,7 +125,7 @@
  	char buf[fromlen + 1];
  	char buf_ipv6[INET6_ADDRSTRLEN];
  	int len;
-@@ -243,6 +266,9 @@ static void print_from(const utmp_t *res
+@@ -243,6 +266,9 @@
  #else
  	print_host(u->ut_host, UT_HOSTSIZE, fromlen);
  #endif
@@ -96,7 +135,7 @@
  }
  
  
-@@ -341,7 +367,11 @@ error:
+@@ -341,7 +367,11 @@
   * the user for that login session is doing currently. This the
   * essential core of 'w'.
   */
@@ -109,7 +148,7 @@
  			     const char *restrict const tty,
  			     unsigned long long *restrict const jcpu,
  			     int *restrict const found_utpid)
-@@ -351,9 +381,16 @@ static const proc_t *getproc(const utmp_
+@@ -351,9 +381,16 @@
  	const proc_t *best = NULL;
  	const proc_t *secondbest = NULL;
  	unsigned uid = ~0U;
@@ -126,7 +165,7 @@
  		char buf[UT_NAMESIZE + 1];
  		/* pointer to static data */
  		struct passwd *passwd_data;
-@@ -364,12 +401,21 @@ static const proc_t *getproc(const utmp_
+@@ -364,12 +401,21 @@
  			return NULL;
  		uid = passwd_data->pw_uid;
  		/* OK to have passwd_data go out of scope here */
@@ -150,7 +189,7 @@
  			*found_utpid = 1;
              if (!best)
                  best = tmp;
-@@ -393,7 +439,11 @@ static const proc_t *getproc(const utmp_
+@@ -393,7 +439,11 @@
  	return best ? best : secondbest;
  }
  
@@ -163,7 +202,7 @@
  		     int userlen, int fromlen, const int ip_addresses)
  {
  	unsigned long long jcpu;
-@@ -402,14 +452,36 @@ static void showinfo(utmp_t * u, int for
+@@ -402,14 +452,36 @@
  	char uname[UT_NAMESIZE + 1] = "", tty[5 + UT_LINESIZE + 1] = "/dev/";
  	const proc_t *best;
  
@@ -201,7 +240,7 @@
  
  	/*
  	 * just skip if stale utmp entry (i.e. login proc doesn't
-@@ -420,26 +492,56 @@ static void showinfo(utmp_t * u, int for
+@@ -420,26 +492,56 @@
  	if (!ut_pid_found)
  		return;
  
@@ -268,22 +307,27 @@
  			/* idle unknown for xdm logins */
  			printf(" ?xdm? ");
  		else
-@@ -457,8 +559,12 @@ static void showinfo(utmp_t * u, int for
- 		printf("%-*.*s%-9.8s", userlen + 1, userlen, u->ut_user,
- 		       u->ut_line);
+@@ -454,11 +556,15 @@
+ 		} else
+ 			printf("   ?   ");
+ 	} else {
+-		printf("%-*.*s%-9.8s", userlen + 1, userlen, u->ut_user,
+-		       u->ut_line);
++		printf("%-*.*s%-9.8s", userlen + 1, userlen, uname,
++		       tty+5);
  		if (from)
 -			print_from(u, ip_addresses, fromlen);
 -		if (*u->ut_line == ':')
 +		  print_from(
 +#if (defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)) && defined(HAVE_SD_SESSION_GET_LEADER)
-+			     NULL,
++			     session,
 +#endif
 +			     u, ip_addresses, fromlen);
 +		if (u && *u->ut_line == ':')
  			/* idle unknown for xdm logins */
  			printf(" ?xdm? ");
  		else
-@@ -635,7 +741,40 @@ int main(int argc, char **argv)
+@@ -635,7 +741,40 @@
  		else
  			printf(_("   IDLE WHAT\n"));
  	}
@@ -325,7 +369,7 @@
  #ifdef HAVE_UTMPX_H
  	setutxent();
  #else
-@@ -654,7 +793,11 @@ int main(int argc, char **argv)
+@@ -654,7 +793,11 @@
  			if (u->ut_type != USER_PROCESS)
  				continue;
  			if (!strncmp(u->ut_user, user, UT_NAMESIZE))
@@ -338,7 +382,7 @@
  					 fromlen, ip_addresses);
  		}
  	} else {
-@@ -669,7 +812,11 @@ int main(int argc, char **argv)
+@@ -669,7 +812,11 @@
  			if (u->ut_type != USER_PROCESS)
  				continue;
  			if (*u->ut_user)
@@ -351,7 +395,7 @@
  					 fromlen, ip_addresses);
  		}
  	}
-@@ -678,6 +825,9 @@ int main(int argc, char **argv)
+@@ -678,6 +825,9 @@
  #else
  	endutent();
  #endif
@@ -361,44 +405,3 @@
  
  	return EXIT_SUCCESS;
  }
---- a/proc/whattime.c
-+++ b/proc/whattime.c	2023-08-17 08:13:43.400631603 +0000
-@@ -38,6 +38,15 @@
- #include "whattime.h"
- #include "sysinfo.h"
- 
-+#ifdef WITH_SYSTEMD
-+#include <systemd/sd-daemon.h>
-+#include <systemd/sd-login.h>
-+#endif
-+#ifdef WITH_ELOGIND
-+#include <elogind/sd-daemon.h>
-+#include <elogind/sd-login.h>
-+#endif
-+
- static char buf[256];
- static double av[3];
- 
-@@ -98,6 +107,11 @@ char *sprint_uptime(int human_readable)
- /* count the number of users */
- 
-     numuser = 0;
-+#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
-+    if (sd_booted() > 0)
-+      numuser = sd_get_sessions(NULL);
-+    else {
-+#endif
-     setutent();
-     while ((utmpstruct = getutent())) {
-       if ((utmpstruct->ut_type == USER_PROCESS) &&
-@@ -105,6 +119,10 @@ char *sprint_uptime(int human_readable)
-         numuser++;
-     }
-     endutent();
-+#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
-+       }
-+#endif
-+
- 
-     pos += sprintf(buf + pos, "%2d user%s, ", numuser, numuser == 1 ? "" : "s");
- 

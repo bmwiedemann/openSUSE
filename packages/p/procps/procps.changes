@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 30 07:03:50 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- procps-ng-3.3.17-logind.patch: Fix crash of "w -s -h"
+
+-------------------------------------------------------------------
 Fri Aug 18 09:08:36 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patches
