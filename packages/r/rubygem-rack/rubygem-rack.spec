@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -36,17 +36,15 @@ BuildRequires:  fdupes
 %define rb_build_ruby_abi ruby:2.3.0 ruby:2.4.0 ruby:2.5.0
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/rack/rack
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-rack-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        A modular Ruby webserver interface
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Rack provides a minimal, modular and adaptable interface for developing

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:25:36 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 3.0.8:
+
+## What's Changed
+* Backport "Fix some unused variable verbose warnings" by @skipkayhil in https://github.com/rack/rack/pull/2084
+
+## New Contributors
+* @skipkayhil made their first contribution in https://github.com/rack/rack/pull/2084
+
+**Full Changelog**: https://github.com/rack/rack/compare/v3.0.7...v3.0.8
+
+
+
+-------------------------------------------------------------------
 Mon Mar 20 11:53:21 UTC 2023 - pgajdos@suse.com
 
 - version update to 3.0.7
