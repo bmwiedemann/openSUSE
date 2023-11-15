@@ -1447,4 +1447,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- remove buildrequires on 32bit packages</comment>
     <requestid>1120367</requestid>
   </revision>
+  <revision rev="147" vrev="5">
+    <srcmd5>a1046dc6e38dbd762e8ce2926f192162</srcmd5>
+    <version>3.21.0</version>
+    <time>1700078796</time>
+    <user>anag+factory</user>
+    <comment>- add VEX-x86-pinsrd.patch (bko#276780)</comment>
+    <requestid>1125820</requestid>
+  </revision>
 </revisionlist>

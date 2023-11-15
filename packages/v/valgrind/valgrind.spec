@@ -39,6 +39,8 @@ Source0:        https://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://bugs.kde.org/show_bug.cgi?id=390553
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
+# bko#276780 missing implementation for PINSRD
+Patch1:         VEX-x86-pinsrd.patch
 Patch2:         armv6-support.diff
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
@@ -148,8 +150,7 @@ but it has been successfully used to optimize several KDE applications.
 %endif
 
 %prep
-%setup -q -n valgrind-%{version}
-%autopatch -p1
+%autosetup -p1 -n valgrind-%{version}
 
 %build
 %define _lto_cflags %{nil}
