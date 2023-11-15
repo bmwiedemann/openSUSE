@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-json-jwt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-json-jwt
-Version:        1.16.1
+Version:        1.16.3
 Release:        0
 %define mod_name json-jwt
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        JSON Web Token and its family (JSON Web Signature, JSON Web
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 JSON Web Token and its family (JSON Web Signature, JSON Web Encryption and
