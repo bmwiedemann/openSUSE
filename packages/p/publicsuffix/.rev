@@ -1349,4 +1349,15 @@ Now with build cycle removed.</comment>
     <comment></comment>
     <requestid>1121570</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>6c6ec7f141058ba38da01d1cea823cd4</srcmd5>
+    <version>20231108</version>
+    <time>1700078800</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231108:
+  * Update public_suffix_list.dat (#1848)
+  * util: gTLD data autopull updates for 2023-11-03T15:13:18 UTC (#1887)
+  * Add `torun.pl` (#1684)</comment>
+    <requestid>1125868</requestid>
+  </revision>
 </revisionlist>

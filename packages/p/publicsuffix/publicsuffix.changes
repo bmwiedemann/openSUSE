@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:30:21 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20231108:
+  * Update public_suffix_list.dat (#1848)
+  * util: gTLD data autopull updates for 2023-11-03T15:13:18 UTC (#1887)
+  * Add `torun.pl` (#1684)
+
+-------------------------------------------------------------------
 Tue Oct 31 20:07:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20231028:
