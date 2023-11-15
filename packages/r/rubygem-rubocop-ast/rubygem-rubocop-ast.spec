@@ -24,23 +24,21 @@
 #
 
 Name:           rubygem-rubocop-ast
-Version:        1.29.0
+Version:        1.30.0
 Release:        0
 %define mod_name rubocop-ast
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  fdupes
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/rubocop/rubocop-ast
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        RuboCop tools to deal with Ruby code AST
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 RuboCop's Node and NodePattern classes.
