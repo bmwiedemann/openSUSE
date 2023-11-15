@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  3 07:59:29 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- v4.10.1 (2023-02-26)
+--------------------
+
+Bug fixes
+  * Fix boolean flags from being invalid when followed by arguments #279
+
+v4.10.0 (2023-02-15)
+--------------------
+
+Features:
+  * Add support for optional type validation [#278](https://github.com/leejarvis/slop/pull/278) (Victor Gama)
+
+
+-------------------------------------------------------------------
 Mon Oct 10 13:23:21 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.9.3
