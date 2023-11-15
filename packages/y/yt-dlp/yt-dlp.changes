@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 14 23:44:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.11.14
+  * Security: [CVE-2023-46121] Patch Generic Extractor MITM
+    Vulnerability via Arbitrary Proxy Injection
+  * Disallow smuggling of arbitrary http_headers; extractors now
+    only use specific headers
+
+-------------------------------------------------------------------
 Sun Nov  5 10:22:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Make yt-dlp require the one pythonXX-yt-dlp that /usr/bin/yt-dlp
