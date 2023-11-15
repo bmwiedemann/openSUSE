@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-globalid
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 %define mod_name globalid
 %define mod_full_name %{mod_name}-%{version}
@@ -33,16 +33,14 @@ Release:        0
 %define rb_build_versions ruby21
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            http://www.rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Refer to any model with a URI: gid://app/class/id
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 URIs for your models makes it easy to pass references around.
