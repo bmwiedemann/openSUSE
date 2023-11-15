@@ -108,7 +108,11 @@ Patch1:         fef2457.diff
 Patch2:         d15c7ab.diff
 Patch3:         63801cf.diff
 Patch4:         538f450.diff
-Patch5:         474750a.diff
+Patch6:         6de0a64.diff
+# PATCH-FIX-UPSTREAM fix build with kernel 6.6
+Patch5:         5b647bf.diff
+Patch7:         6413fdb.diff
+Patch8:         4f1d810.diff
 
 #	GENERAL BuildRequires and Requires
 #
@@ -324,6 +328,9 @@ done
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 ./regen.sh
 
