@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-csv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-csv
-Version:        3.2.5
+Version:        3.2.8
 Release:        0
 %define mod_name csv
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        CSV Reading and Writing
 License:        BSD-2-Clause AND Ruby
-Group:          Development/Languages/Ruby
 
 %description
 The CSV library provides a complete interface to CSV files and data. It offers
