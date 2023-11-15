@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rails-dom-testing
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rails-dom-testing
-Version:        2.0.3
+Version:        2.2.0
 Release:        0
 %define mod_name rails-dom-testing
 %define mod_full_name %{mod_name}-%{version}
@@ -33,20 +33,18 @@ Release:        0
 %define rb_build_versions ruby21
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/rails/rails-dom-testing
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+BuildRequires:  %{ruby >= 2.5.0}
+BuildRequires:  %{rubygem gem2rpm}
+URL:            https://github.com/rails/rails-dom-testing
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Dom and Selector assertions for Rails applications
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 This gem can compare doms and assert certain elements exists in doms using
-Nokogiri. .
+Nokogiri.
 
 %prep
 
