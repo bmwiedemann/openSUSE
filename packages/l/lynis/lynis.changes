@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 12 09:54:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add missing gawk dependency
+
+-------------------------------------------------------------------
 Thu Aug  3 12:56:11 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.0.9:
@@ -40,7 +45,7 @@ Fri Feb  4 10:08:03 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 -------------------------------------------------------------------
 Tue Jan 18 13:29:42 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
-- Update to 3.0.7: 
+- Update to 3.0.7:
   * Added
     - MALW-3290 - Show status of malware components
     - OS detection for RHEL 6 and Funtoo Linux
@@ -83,7 +88,7 @@ Mon Oct 11 06:45:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 Thu Sep 16 08:59:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Changed tests_binary_rpath to subtract points for files found with RPATH set,
-  not add points for files that are configured correctly. This resulted in a 
+  not add points for files that are configured correctly. This resulted in a
   huge number of points that skewed the overal result
 
 -------------------------------------------------------------------
@@ -94,7 +99,7 @@ Sat Jul  3 11:54:47 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Fri Jul  2 12:56:40 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
-- Update to 3.0.5 
+- Update to 3.0.5
   * Added
     - OS detection of Arch Linux 32, BunsenLabs Linux, and Rocky Linux
     - CRYP-8006 - Check MemoryOverwriteRequest bit to protect against cold-boot
@@ -111,7 +116,7 @@ attacks (Linux)
 -------------------------------------------------------------------
 Tue May 11 12:43:28 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
-- Update to 3.0.4 
+- Update to 3.0.4
   * Added
     - ACCT-9670 - Detection of cmd tooling
     - ACCT-9672 - Test cmd configuration file
@@ -128,7 +133,7 @@ Tue May 11 12:43:28 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Thu Jan  7 16:38:00 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
 
-- Update to 3.0.3 
+- Update to 3.0.3
   * Added
     - Check for registered non-native binary formats
     - OS detection of Parrot GNU/Linux
@@ -217,7 +222,7 @@ Mon Oct  5 13:50:24 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 -------------------------------------------------------------------
 Thu Jun 18 12:17:36 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
-- Update to 3.0.0 
+- Update to 3.0.0
   * Security issues
     - CVE-2020-13882: incorrect Access Control because of a TOCTOU race condition (boo#1173141).
     - CVE-2019-13033: local disclosure of license key when data is uploaded (boo#1173142).
@@ -275,7 +280,7 @@ Wed May 29 11:47:34 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 -------------------------------------------------------------------
 Tue Apr 23 07:24:21 UTC 2019 - Robert Frohl <rfrohl@suse.com>
 
-- Update to 2.7.4 
+- Update to 2.7.4
   Added
   * FILE-6324 - Discover XFS mount points
   * INSE-8000 - Installed inetd package
@@ -325,7 +330,7 @@ Thu Mar 21 12:11:32 UTC 2019 - Robert Frohl <rfrohl@suse.com>
 -------------------------------------------------------------------
 Thu Mar  7 11:54:18 UTC 2019 - Robert Frohl <rfrohl@suse.com>
 
-- update to 2.7.2 
+- update to 2.7.2
   * Added support for doas (OpenBSD)
   * Added test file permissions of doas configuration
   * Added support for systemd-boot boot loader
@@ -339,7 +344,7 @@ Thu Mar  7 11:54:18 UTC 2019 - Robert Frohl <rfrohl@suse.com>
 -------------------------------------------------------------------
 Fri Feb  1 10:28:13 UTC 2019 - Robert Frohl <rfrohl@suse.com>
 
-- update to 2.7.1 
+- update to 2.7.1
   * Improve support for Red Hat and clones
   * Additional support for Hands Off!, LuLu, and Radio Silence
   * Added MariaDB filter for deleted files (tested on CentOS)
@@ -515,7 +520,7 @@ Tests:
 -------------------------------------------------------------------
 Fri Nov  4 13:41:25 UTC 2016 - matthias.gerstner@suse.com
 
-- lynis 2.4.0  
+- lynis 2.4.0
   * Mainly improved support for macOS users
   * Support for CoreOS
   * Support for clamconf utility
@@ -609,55 +614,55 @@ Tue May 12 15:19:07 UTC 2015 - astieger@suse.com
     + --dump-options (see all options)
     + --report-file (define a different location for the report file)
 - use tarball supplied default.prf
-- clean or silence rpmlint warnings 
+- clean or silence rpmlint warnings
 
 -------------------------------------------------------------------
 Tue Feb 17 12:32:20 UTC 2015 - astieger@suse.com
 
 - lynis 1.6.4:
   * New:
-    + Boot loader detection for AIX 
+    + Boot loader detection for AIX
     + Detection of getcap and lsvg binary
     + Added filesystem_ext to report
     + Detect rootsh
   * Changes:
-    + Hide errors when RPM database is faulty and show suggestion instead 
-    + Allow OpenBSD to gather information on listening network ports 
-    + Don't trigger warning for Shellshock when doing segfault test 
-    + Do not run Apache test on OpenBSD and strip control chars 
-    + Extended AIDE test with configuration validation test 
-    + Improved Shellshock test regarding non-Linux support 
-    + Added support for gathering volume groups on AIX 
-    + Properly parse PAM lines and add them to report 
-    + Support for boot loader detection on OpenBSD 
-    + Added uptime detection for OpenBSD systems 
-    + Support for volume groups on AIX 
+    + Hide errors when RPM database is faulty and show suggestion instead
+    + Allow OpenBSD to gather information on listening network ports
+    + Don't trigger warning for Shellshock when doing segfault test
+    + Do not run Apache test on OpenBSD and strip control chars
+    + Extended AIDE test with configuration validation test
+    + Improved Shellshock test regarding non-Linux support
+    + Added support for gathering volume groups on AIX
+    + Properly parse PAM lines and add them to report
+    + Support for boot loader detection on OpenBSD
+    + Added uptime detection for OpenBSD systems
+    + Support for volume groups on AIX
     + Redirect errors when searching for readlink binary
 - includes changes from 1.6.3:
   * New:
-    + Added tests for Shellshock bash vulnerability 
-    + Added test to determine if Snoopy is used 
-    + New test for qdaemon configuration file 
-    + Test for GRUB boot loader password 
-    + New test for qdaemon printer jobs 
-    + Added ClamXav test for Mac OS X 
-    + Gentoo vulnerable packages test 
-    + New test for qdaemon status 
-    + Gentoo package listing 
+    + Added tests for Shellshock bash vulnerability
+    + Added test to determine if Snoopy is used
+    + New test for qdaemon configuration file
+    + Test for GRUB boot loader password
+    + New test for qdaemon printer jobs
+    + Added ClamXav test for Mac OS X
+    + Gentoo vulnerable packages test
+    + New test for qdaemon status
+    + Gentoo package listing
     + Running Lynis without root permissions will start non-privileged scan
     + Systemd service and timer example file added
     + Added grub2-install to binaries
   * Changes:
-    + Adjustments so insecure SSL protocols are detected in nginx config 
-    + Directories will be skipped when searching for nginx log files 
-    + Only gather unique name servers from /etc/resolv.conf 
-    + Properly detect mod_evasive on Gentoo and others 
-    + Improved swap partition detection in /etc/fstab 
-    + Improvements to kernel detection (e.g. Gentoo) 
-    + Test for built-in security options in YUM 
-    + Improved boot loader detection for GRUB2 
-    + Split GRUB test into two tests 
-    + Added Mac OS uptime check 
+    + Adjustments so insecure SSL protocols are detected in nginx config
+    + Directories will be skipped when searching for nginx log files
+    + Only gather unique name servers from /etc/resolv.conf
+    + Properly detect mod_evasive on Gentoo and others
+    + Improved swap partition detection in /etc/fstab
+    + Improvements to kernel detection (e.g. Gentoo)
+    + Test for built-in security options in YUM
+    + Improved boot loader detection for GRUB2
+    + Split GRUB test into two tests
+    + Added Mac OS uptime check
     + Improved GetHostID function for systems having only ip binary
     + Improved testing for symlinked binary directories
     + Minor adjustments to log output
@@ -679,14 +684,14 @@ Wed Sep 24 16:36:21 UTC 2014 - citypw@gmail.com
 - Upgrade to version 1.6.2
 - Remove files:
   * lynis_1.3.7_include-test-filesystem.diff( already fixed)
-  * lynis-1.3.9.tar.gz 
+  * lynis-1.3.9.tar.gz
 
 -------------------------------------------------------------------
 Thu Jan  9 18:45:44 UTC 2014 - saigkill@opensuse.org
 
 - updated to version 1.3.9
 - removed patch
-  * lynis_1.3.6_include-test-kernel.diff (fixed upstream) 
+  * lynis_1.3.6_include-test-kernel.diff (fixed upstream)
 
 -------------------------------------------------------------------
 Wed Dec 11 20:14:06 UTC 2013 - saigkill@opensuse.org
@@ -697,14 +702,14 @@ Wed Dec 11 20:14:06 UTC 2013 - saigkill@opensuse.org
     check and iptables binary check were improved, and the report was
     extended to show which tests have been executed or skipped
 - updated patch
-  * lynis_1.3.7_include-test-filesystem.diff 
+  * lynis_1.3.7_include-test-filesystem.diff
 
 -------------------------------------------------------------------
 Tue Dec 10 18:46:14 UTC 2013 - saigkill@opensuse.org
 
 - updated to version 1.3.6
 - Removed patches (obsolete):
-  * lynis_1.3.5_include_binaries.diff 
+  * lynis_1.3.5_include_binaries.diff
 
 - Updated patches
   * lynis_1.3.6_include_osdetection.diff
@@ -721,7 +726,7 @@ Sun Nov 24 14:29:06 UTC 2013 - saigkill@opensuse.org
   o lynis_1.3.1_include-osdetection.diff
   o lynis_1.3.1_include-test-kernel.diff
 
-- Removed patches (obsolete) 
+- Removed patches (obsolete)
   o lynis_1.3.1_include-test-databases.diff
   o lynis_1.3.1_include-test-storage.diff
   o lynis_1.3.1_include-test-homedirs.diff
@@ -735,18 +740,18 @@ Fri Jun 21 12:22:08 UTC 2013 - thomas@suse.com
 Fri Jan 25 09:40:52 UTC 2013 - thomas@suse.com
 
 - fixed log message for dbus test
-- fixed bash variable incrementation that sneaked in the code 
+- fixed bash variable incrementation that sneaked in the code
 
 -------------------------------------------------------------------
 Mon Jan 14 14:57:15 UTC 2013 - thomas@suse.com
 
 - fixed tests_network_allowed_ports to increment index vars
-  and not loop forever 
+  and not loop forever
 
 -------------------------------------------------------------------
 Thu Jan 10 16:53:32 UTC 2013 - thomas@suse.com
 
-- fixed test_homedirs 
+- fixed test_homedirs
 
 -------------------------------------------------------------------
 Thu Jan 10 16:46:02 UTC 2013 - thomas@suse.com
@@ -754,12 +759,12 @@ Thu Jan 10 16:46:02 UTC 2013 - thomas@suse.com
 - some bugfixing for pathnames, didn't work with sudo
 - improved default.prf by adding more sysctl vars
 - fixed test_storage
-- generated fileperm.db and dbus-whitelist for 12.2 
+- generated fileperm.db and dbus-whitelist for 12.2
 
 -------------------------------------------------------------------
 Mon Dec 26 16:24:35 UTC 2011 - Sascha.Manns@open-slx.de
 
-- fixed conflict in spec 
+- fixed conflict in spec
 
 -------------------------------------------------------------------
 Mon Dec 26 16:18:01 UTC 2011 - Sascha.Manns@open-slx.de
@@ -785,44 +790,44 @@ Mon Dec 26 16:18:01 UTC 2011 - Sascha.Manns@open-slx.de
  - Improved list/layout of scan options
  - Improved binary check for compilers
  - Added configuration option in scan profile (show_tool_tips, default
-   true) 
+   true)
 
 -------------------------------------------------------------------
 Thu Apr  7 15:57:31 UTC 2011 - thomas@novell.com
 
-- added patch for apache2 and oracle detection 
+- added patch for apache2 and oracle detection
 
 -------------------------------------------------------------------
 Fri Apr  1 22:00:13 UTC 2011 - saigkill@opensuse.org
 
-- removed rpmlintrc and fixed non-executable-script 
+- removed rpmlintrc and fixed non-executable-script
 
 -------------------------------------------------------------------
 Sun Dec 26 19:55:21 UTC 2010 - saigkill@opensuse.org
 
 - prettyfied spec file
-- NOTE: Please submit submitrequests to home:saigkill. This Package links to this Repository. 
+- NOTE: Please submit submitrequests to home:saigkill. This Package links to this Repository.
 
 -------------------------------------------------------------------
 Fri Sep  3 05:41:52 UTC 2010 - thomas@novell.com
 
-- fixed %files section to include /etc/lynis 
+- fixed %files section to include /etc/lynis
 
 -------------------------------------------------------------------
 Fri Sep  3 05:12:43 UTC 2010 - thomas@novell.com
 
-- fixed %files section to reflect new default.prf location 
+- fixed %files section to reflect new default.prf location
 
 -------------------------------------------------------------------
 Fri Sep  3 05:09:47 UTC 2010 - thomas@novell.com
 
-- added permdir /root/.gnupg to default.prf 
+- added permdir /root/.gnupg to default.prf
 
 -------------------------------------------------------------------
 Fri Sep  3 05:04:03 UTC 2010 - thomas@novell.com
 
 - copy default.prf to /etc/lynis/ instead of /etc/, otherwise
-  lynis will not find it and hang 
+  lynis will not find it and hang
 
 -------------------------------------------------------------------
 Thu Sep  2 11:32:50 UTC 2010 - thomas@novell.com
@@ -832,7 +837,7 @@ Thu Sep  2 11:32:50 UTC 2010 - thomas@novell.com
 -------------------------------------------------------------------
 Thu Sep  2 10:56:55 UTC 2010 - thomas@novell.com
 
-- adjusted patch and spec file to make it build 
+- adjusted patch and spec file to make it build
 
 -------------------------------------------------------------------
 Wed Sep  1 12:30:43 UTC 2010 - thomas@novell.com
@@ -853,18 +858,18 @@ Wed Sep  1 12:30:43 UTC 2010 - thomas@novell.com
 Wed Dec 16 05:19:37 UTC 2009 - saigkill@opensuse.org
 
 - updated to version 1.2.9
-- added default.prf 
+- added default.prf
 
 -------------------------------------------------------------------
 Wed Dec  9 16:21:53 UTC 2009 - saigkill@opensuse.org
 
-- update to 1.2.8 
+- update to 1.2.8
 
 -------------------------------------------------------------------
 Mon Nov  2 18:16:38 UTC 2009 - saigkill@opensuse.org
 
 - update to 1.2.7
-- This release adds AIX Support and several new tests related to SSH, logging, databases and SMTP. Many minor issues are solved or improved. 
+- This release adds AIX Support and several new tests related to SSH, logging, databases and SMTP. Many minor issues are solved or improved.
 
 -----------------------------------------------------------------
 Mon Apr  6 09:04:05 CEST 2009 - saigkill@opensuse.org
@@ -878,15 +883,15 @@ Mon Apr  6 09:04:05 CEST 2009 - saigkill@opensuse.org
 Sat Mar 28 10:27:12 CET 2009 - saigkill@opensuse.org
 
 - update to 1.2.5
-- This release adds 40+ new tests for services like Dovecot, 
+- This release adds 40+ new tests for services like Dovecot,
   BIND, PowerDNS, SSH, Exim, and nginx
 
 -----------------------------------------------------------------
 Tue Mar 17 2009 20:32 CET - mrdocs@opensuse.org
 
 - added 1.2.4 release
-- This release adds more than 30 new tests, 
-including NTP, auditd, PAM, NFS and ClamAV. 
+- This release adds more than 30 new tests,
+including NTP, auditd, PAM, NFS and ClamAV.
 
 ------------------------------------------------------------------
 Mon Mar 02 22:32 CET 2009 - mrdocs@opensuse.org
@@ -907,7 +912,7 @@ Sun Feb 17 2009 - mrdocs@opensuse.org
 - 1.2.2 release - see CHANGELOG for changes
 
 ------------------------------------------------------------------
-Mon Feb 16 03:15:44 CET 2009 - saigkill@opensuse.org 
+Mon Feb 16 03:15:44 CET 2009 - saigkill@opensuse.org
 
 - updated to Version 1.2.2
 

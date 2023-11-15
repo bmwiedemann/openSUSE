@@ -56,6 +56,7 @@ BuildRequires:  libxml2-devel
 Requires:       bash
 Requires:       cron
 Requires:       findutils
+Requires:       gawk
 Requires:       logrotate
 Requires:       net-tools-deprecated
 Requires:       netcfg
