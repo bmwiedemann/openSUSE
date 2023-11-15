@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mime-types
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-mime-types
-Version:        3.4.1
+Version:        3.5.1
 Release:        0
 %define mod_name mime-types
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        The mime-types library provides a library and registry for
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 The mime-types library provides a library and registry for information about
