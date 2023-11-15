@@ -181,7 +181,7 @@ BuildRequires:  pkgconfig(libdrm_amdgpu) >= 2.4.95
 BuildRequires:  pkgconfig(libdrm_nouveau) >= 2.4.66
 BuildRequires:  pkgconfig(libdrm_radeon) >= 2.4.71
 BuildRequires:  pkgconfig(libglvnd) >= 0.1.0
-%ifarch aarch64 %{ix86} x86_64 ppc64le s390x
+%ifarch aarch64 x86_64 ppc64le s390x
 BuildRequires:  pkgconfig(valgrind)
 %endif
 BuildRequires:  pkgconfig(libva)
@@ -885,7 +885,7 @@ egl_platforms=x11,wayland
 %else
             -Dgallium-drivers=swrast \
 %endif
-%ifarch aarch64 %{ix86} x86_64 ppc64le s390x
+%ifarch aarch64 x86_64 ppc64le s390x
             -Dvalgrind=enabled \
 %endif
             -Db_ndebug=true \
