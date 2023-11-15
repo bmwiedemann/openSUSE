@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rouge
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-rouge
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 %define mod_name rouge
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A pure-ruby colorizer based on pygments
 License:        BSD-2-Clause OR MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
