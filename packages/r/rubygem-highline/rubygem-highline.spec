@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-highline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,11 @@
 #
 
 Name:           rubygem-highline
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 %define mod_name highline
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/JEG2/highline
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        HighLine is a high-level command-line IO library
 License:        Ruby
-Group:          Development/Languages/Ruby
 
 %description
 A high-level IO library that provides validation, type conversion, and more
