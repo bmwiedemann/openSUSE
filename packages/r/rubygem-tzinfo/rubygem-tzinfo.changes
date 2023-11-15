@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 14 18:42:23 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.0.6:
+
+* Eliminate `Object#untaint` deprecation warnings on JRuby 9.4.0.0. #145.
+
+[TZInfo v2.0.6 on RubyGems.org](https://rubygems.org/gems/tzinfo/versions/2.0.6)
+
+
+
+-------------------------------------------------------------------
 Thu Aug  4 13:33:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.0.5
