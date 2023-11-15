@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:41:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Bugfix: 'Future exception was never retrieved' warning in
+    SMTPProtocol after successful connection close and garbage
+    collection.
+  * Cleanup: Updated FlowControlMixin logic from stdlib
+    are keyword only.
+  * **BREAKING**: Passing ``source_address`` as a string argument
+    is now an error. ``source_address``  takes a (addr, port)
+    tuple that is used as the ``local_addr`` param of
+    ``asyncio.create_connection``, allowing for binding
+    to a specific IP. The ``local_hostname`` argument takes the
+    value to be sent to the server with the EHLO/HELO message
+    (which is what ``source_address`` was used for prior to 2.0).
+  * Change: don't use timeout value passed to ``connect``
+    everywhere, only for the initial connection
+  * Change: removed unnecessary connection lost callback
+  * Change: revised handling for 'Future exception was never
+    retrieved' warnings in protocol
+
+-------------------------------------------------------------------
 Tue Jun 20 16:49:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
@@ -16,7 +38,7 @@ Fri Feb 10 10:34:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Nov 10 16:08:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v2.0.0 
+- Update to v2.0.0
   * BREAKING: Drop Python 3.5 and 3.6 support.
   * BREAKING: On connect, if the server supports STARTTLS, automatically try to upgrade the connection.
     STARTTLS after connect can be turned on or off explicitly by passing start_tls=True or start_tls=False respectively.
@@ -44,7 +66,7 @@ Sat Jan 15 17:24:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.6:
   * update auth other than login
-- remove failing_smtpd_tests.patch: not needed 
+- remove failing_smtpd_tests.patch: not needed
 
 -------------------------------------------------------------------
 Fri May  7 20:53:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -84,7 +106,7 @@ Thu Jan 16 17:00:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.1.2
   * Fix handling of sending legacy email API (Message) objects.
-  * Fix SMTPNotSupported error with UTF8 sender/recipient names 
+  * Fix SMTPNotSupported error with UTF8 sender/recipient names
     on servers that don’t support SMTPUTF8.
 
 -------------------------------------------------------------------
