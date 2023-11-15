@@ -120,4 +120,12 @@
 - Port patch procps-ng-3.3.9-w-notruncate.diff</comment>
     <requestid>1125582</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ce34cfaa12e06ac82ce56a843f171b1b</srcmd5>
+    <version>4.0.4</version>
+    <time>1700079025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126623</requestid>
+  </revision>
 </revisionlist>

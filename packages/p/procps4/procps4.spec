@@ -75,9 +75,6 @@ Conflicts:      procps < 4.0.0
 Provides:       procps = %{version}
 Provides:       ps = %{version}-%{release}
 Obsoletes:      ps < %{version}-%{release}
-%ifarch ia64 x86_64 ppc64 ppc %{sparc}
-BuildRequires:  libnuma-devel
-%endif
 
 %description
 The procps package contains a set of system utilities that provide

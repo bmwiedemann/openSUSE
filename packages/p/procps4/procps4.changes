@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 15 08:49:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Remove duplicate BuildRequires
+
+-------------------------------------------------------------------
 Mon Nov 13 13:26:05 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream commit as patch 79042e07.patch (boo#1216719)
