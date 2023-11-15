@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-tzinfo-data
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-tzinfo-data
-Version:        1.2022.7
+Version:        1.2023.3
 Release:        0
 %define mod_name tzinfo-data
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 1.8.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -38,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Timezone Data for TZInfo
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 TZInfo::Data contains data from the IANA Time Zone database packaged as Ruby
