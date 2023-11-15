@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 15 10:45:32 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 3.9.2:
+  * UI/UX
+    - Review of the status buffer UI. The URL area is now clickable 
+  * Bug fixes
+    - blocker-mode ensures that hostlist files are loaded when missing
+    - Fix connection to Nyxt via commands start-swank and start-slynk
+  * Programming interface
+    - When running Nyxt as a Flatpak, programs available on the host
+      can be invoked via flatpak-spawn --host <command> <command-args>
+
+-------------------------------------------------------------------
 Thu Nov  2 14:35:25 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - fixed .desktop file not added with %suse_update_desktop_file 

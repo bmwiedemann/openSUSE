@@ -95,4 +95,12 @@ These issues are now fixed with a patch, hence this new submission.</comment>
 </comment>
     <requestid>1122810</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f13dc3e2c32834a39100492aa046ae8b</srcmd5>
+    <version>3.9.2</version>
+    <time>1700079022</time>
+    <user>anag+factory</user>
+    <comment>Update to version 3.9.2</comment>
+    <requestid>1126581</requestid>
+  </revision>
 </revisionlist>
