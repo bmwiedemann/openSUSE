@@ -552,4 +552,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1124390</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d2b13c50cf1dd526ea58cd270d0588eb</srcmd5>
+    <version>1.9.8</version>
+    <time>1700162807</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126545</requestid>
+  </revision>
 </revisionlist>

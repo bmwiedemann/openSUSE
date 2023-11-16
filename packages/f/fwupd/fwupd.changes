@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 15 08:06:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.8:
+  + This release adds the following features:
+    - Add a DP AUX device subclass and port the Synaptics MST
+      plugin to it
+    - Add a feature flag for non-generic requests where
+      translations are required
+    - Hide generic VID/PIDs to avoid accidental firmware matches
+    - Optionally set the modem carrier configuration as the branch
+      name
+    - Rename 'fwupdmgr sync-bkc' to 'fwupdmgr sync' and also
+      consider the branch
+    - Require additional requirements for devices using non-OEM USB
+      VIDs
+    - Set the waiting-for-user status when sending a request
+    - Support uSWID SBoM data with LZMA compressed payloads
+  + This release adds support for the following hardware:
+    - Kinetic SST/MST DisplayPort converters
+    - Wacom Cintiq Pros (DTH172, DTH227)
+
+-------------------------------------------------------------------
 Thu Nov  9 09:56:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not pass -Dsystemd_unit_user=root to meson: use fwupd's
