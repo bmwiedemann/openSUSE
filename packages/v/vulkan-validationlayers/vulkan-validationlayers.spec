@@ -84,6 +84,10 @@ export CXX="$PWD/gxx"
 b="%buildroot"
 rm -Rfv "$b/%_includedir" "$b/%_libdir"/*.a
 
+%check
+find . -name "*.so" -exec ldd -r {} + >ldd.log 2>&1 || :
+! grep 'undefined symbol:' ldd.log
+
 %files
 %license LICENSE.txt
 %_libdir/libVkLayer_khr*.so

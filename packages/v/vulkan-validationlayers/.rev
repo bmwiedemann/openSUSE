@@ -369,4 +369,12 @@
     <comment>new_version</comment>
     <requestid>1120704</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>706709762986dc2b826b6761884584d5</srcmd5>
+    <version>1.3.268.0</version>
+    <time>1700162860</time>
+    <user>anag+factory</user>
+    <comment>- Add %check routine [boo#1217046]</comment>
+    <requestid>1126578</requestid>
+  </revision>
 </revisionlist>
