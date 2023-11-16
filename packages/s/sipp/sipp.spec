@@ -1,7 +1,7 @@
 #
 # spec file for package sipp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sipp
-Version:        3.6.1
+Version:        3.7.1
 Release:        0
 Summary:        A SIP protocol testing tool
 License:        GPL-2.0-or-later
@@ -42,8 +42,6 @@ statistics.
 
 %prep
 %setup -q
-## FIXME: cmake oot-builds is broken
-cp version.h src
 
 %build
 %cmake \
