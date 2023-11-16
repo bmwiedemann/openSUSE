@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 15 12:33:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use the pythons flavor expansion, as this package simply
+  relies on the default python version, which is always provided as
+  python3-*. All Build- and runtime dependencies were already set
+  accordingly. Use python3_pyproject_wheel instead of
+  pyproject_wheel macros during build/install phase to make this
+  work.
+
+-------------------------------------------------------------------
+Sun Nov  5 03:42:22 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Use latest python with primary_python macro
+
+-------------------------------------------------------------------
+Mon Oct 30 13:12:50 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove the following suggestions.:
+  * python3-jupyter_console
+  * python3-jupyter_ipykernel
+  * python3-tk
+- Add the following suggestions:
+  * xdg-desktop-portal-wlr
+  * xdg-desktop-portal-gtk
+  * xdg-desktop-portal-hyprland
+- Move pyxdg to requires
+- Add qtile-portals.conf for XDP
+
+-------------------------------------------------------------------
 Sun Oct 29 12:59:15 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Cleanup specfile

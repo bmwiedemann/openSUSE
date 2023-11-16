@@ -283,4 +283,12 @@
     !!! Notice for packagers - wlroots (optional dependency) bump !!!</comment>
     <requestid>1120985</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>58bc9731fe2eb92ca47ed73afe1b834f</srcmd5>
+    <version>0.23.0</version>
+    <time>1700162843</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126666</requestid>
+  </revision>
 </revisionlist>

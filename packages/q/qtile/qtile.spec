@@ -17,7 +17,7 @@
 
 
 %bcond_with     test
-%define pythons python3
+
 Name:           qtile
 Version:        0.23.0
 Release:        0
@@ -28,9 +28,9 @@ Group:          System/X11/Displaymanagers
 URL:            http://qtile.org
 Source0:        https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# Patch0:         https://github.com/qtile/qtile/pull/3985.patch#/0000-fix-and-new-features-on-latest-wlroots.patch
-BuildRequires:  gcc
+Source3:        %{name}-portals.conf
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  librsvg
 BuildRequires:  pango-devel
@@ -59,6 +59,7 @@ Requires:       python3-cffi >= 1.1.0
 Requires:       python3-pycairo >= 1.25.1
 Requires:       python3-pywayland
 Requires:       python3-pywlroots
+Requires:       python3-pyxdg
 Requires:       python3-xcffib >= 0.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -70,11 +71,11 @@ Recommends:     python3-keyring
 Recommends:     python3-psutil
 Recommends:     python3-python-dateutil
 Recommends:     python3-python-mpd2
-Recommends:     python3-pyxdg
 Recommends:     sensors
-Suggests:       python3-jupyter_console
-Suggests:       python3-jupyter_ipykernel
-Suggests:       python3-tk
+Recommends:     xdg-desktop-portal-gtk
+Recommends:     xdg-desktop-portal-wlr
+# XDP-WLR alternative. This could be installed with no-recommends flag
+Suggests:       xdg-desktop-portal-hyprland
 # v0.21.0 has lots of additional failures on i586
 ExcludeArch:    %{ix86} %arm %arm64
 
@@ -131,16 +132,18 @@ export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
 export PYTHONPATH="$PWD:$PYTHONPATH"
 ./scripts/ffibuild -v
-%pyproject_wheel
+%python3_pyproject_wheel
 
 %install
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
 export PYTHONPATH="$PWD:$PYTHONPATH"
 ./scripts/ffibuild -v
-%pyproject_install
+%python3_pyproject_install
 mkdir -p %{buildroot}%{_datadir}/xsessions/
 install -m 644 %{_builddir}/qtile-%{version}/resources/qtile.desktop %{buildroot}%{_datadir}/xsessions/
+# XDP >= 0.18.0 requires a portal for the environment and onwards
+install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
 
 %suse_update_desktop_file %{buildroot}%{_datadir}/xsessions/qtile.desktop
 
@@ -149,14 +152,14 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-%python_expand %fdupes %{buildroot}%{python3_sitearch}
+%fdupes %{buildroot}%{python3_sitearch}
 
 %if %{with test}
 %check
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
 export PYTHONPATH=%{buildroot}%{python3_sitearch}:%{python3_sitearch}
-%pytest -vv -rs --backend x11
-%pytest -vv -rs --backend wayland
+pytest -vv -rs --backend x11
+pytest -vv -rs --backend wayland
 %endif
 
 %post
@@ -176,5 +179,7 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}:%{python3_sitearch}
 %{python3_sitearch}/*qtile*/
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/qtile.desktop
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/%{name}-portals.conf
 
 %changelog
