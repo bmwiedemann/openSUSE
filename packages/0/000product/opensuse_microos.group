@@ -2495,6 +2495,8 @@
     <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="qt6-network-tls" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="qt6-networkinformation-glib" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="qt6-networkinformation-nm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="qt6-platformtheme-gtk3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="qt6-translations" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="qt6-wayland" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
