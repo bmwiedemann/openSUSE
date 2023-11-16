@@ -28,18 +28,23 @@
 %bcond_without aws
 %endif
 
+%if %{?pkg_vcmp:%{pkg_vcmp dav1d-devel >= 1.3.0}}%{!?pkg_vcmp:0}
+%define has_dav1d_1_3_0 1
+%endif
+
 Name:           gstreamer-plugins-rs
-Version:        1.22.6
+Version:        0.11.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 
-Source:         %{_name}-%{version}.tar.zst
+Source:         %{_name}-%{version}.tar.xz
 Source2:        vendor.tar.zst
 Source3:        cargo_config
 Source4:        gstreamer-plugins-rs.appdata.xml
+Source5:        vendor-for-dav1d-1.3.0.tar.zst
 
 BuildRequires:  cargo-c
 BuildRequires:  cargo-packaging >= 1.2.0+3
@@ -67,7 +72,7 @@ BuildRequires:  pkgconfig(pango)
 Requires:       gstreamer
 Requires:       gstreamer-plugins-base
 Enhances:       gstreamer
-ExcludeArch:    ppc ppc64 ppc64le s390
+ExcludeArch:    ppc ppc64 ppc64le s390 %ix86
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -97,7 +102,20 @@ This package contains the pkgconfig development files for the rust
 plugins.
 
 %prep
+%if 0%{?has_dav1d_1_3_0}
+%autosetup -n %{_name}-%{version} -a5 -p1
+
+sed -ie 's/^dav1d = "[0-9\.]*"/dav1d = "0.10"/' video/dav1d/Cargo.toml
+%else
 %autosetup -n %{_name}-%{version} -a2 -p1
+%endif
+
+%if %{?suse_version} < 1600
+sed -ie "s/meson_version : '>= 1.1'/meson_version : '>= 0.61.4'/" meson.build
+sed -ie "s/\.enable_if.*//" meson.build
+sed -ie "s/find_program('cargo-cbuild', version:'>=0.9.21'/find_program('cargo-cbuild', version:'>=0.9.15'/" meson.build
+%endif
+
 mkdir .cargo
 cp %{SOURCE3} .cargo/config
 

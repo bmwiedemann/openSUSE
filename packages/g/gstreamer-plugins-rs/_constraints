@@ -16,6 +16,19 @@
   </overwrite>
   <overwrite>
     <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">27</size>
+      </disk>
+      <memory>
+        <size unit="G">16</size>
+      </memory>
+    </hardware>
+  </overwrite>  
+  <overwrite>
+    <conditions>
       <arch>s390x</arch>
     </conditions>
     <hardware>

@@ -175,4 +175,58 @@
     <comment></comment>
     <requestid>1113997</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fb85136755d15390cbe02779ac61791a</srcmd5>
+    <version>0.11.2</version>
+    <time>1700162951</time>
+    <user>anag+factory</user>
+    <comment>- Use xz format in the _service file since services in SLE SP6
+  don't support zstd.
+- Update to version 0.11.2:
+  + Fixed
+    - filesink / s3sink: Set sync=false to allow processing faster
+      than real-time.
+    - hlssink3: Various minor bugfixes and cleanups.
+    - livesync: Various minor bugfixes and cleanups that should
+      make the element work more reliable.
+    - s3sink: Fix handling of non-ASCII characters in URIs and
+      keys.
+    - sccparse: Parse SCC files that are incorrectly created by
+      CCExtractor.
+    - ndisrc: Assume &gt; 8 channels are unpositioned.
+    - rtpav1depay: Skip unexpected leading fragments instead of
+      repeatedly warning
+    - about the stream possibly being corrupted.
+    - rtpav1depay: Don't push stale temporal delimiters downstream
+      but wait until a complete OBU is collected.
+    - whipwebrtcsink: Use correct URL during redirects.
+    - webrtcsink: Make sure to not miss any ICE candidates.
+    - webrtcsink: Fix deadlock when calling set-local-description.
+    - webrtcsrc: Fix reference cycles that prevented the element
+      from being freed.
+    - webrtcsrc: Define signaller property as CONSTRUCT_ONLY to
+      make it actually possible to set different signallers.
+    - webrtc: Update livekit signaller to livekit 0.2.
+    - meson: Various fixes to the meson-based build system.
+  + Added
+    - audiornnoise: Attach audio level meta to output buffers.
+    - hlssink3: Allow adding EXT-X-PROGRAM-DATE-TIME tag to the
+      manifest.
+    - webrtcsrc: Add turn-servers property.
+  + Changed
+    - aws/webrtc: Update to AWS SDK 0.57/0.35.
+- The last update to 1.22.6 was actually a downgrade to the 0.9
+  branch that upstream seems to tag following the gstreamer version
+  number but we should stick to the gstreamer-plugins-rs versioning
+  scheme.
+- To see the changes between 0.10.11 and 0.11.2, please check:
+  https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/blob/main/CHANGELOG.md
+- Add a vendor-for-dav1d-1.3.0.tar.zst vendor file specifically
+  for Tumbleweed where dav1d 1.3.0 is used and is not supported by
+  the dav1d crate used in 0.11.2 by default, so in this manually
+  created vendor file, the dav1d 0.10 crate is forced.
+- Add ix86 to excluded arches.
+</comment>
+    <requestid>1126843</requestid>
+  </revision>
 </revisionlist>
