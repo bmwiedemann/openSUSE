@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch x86_64 aarch64
 %define with_wasmedge 1
 %else
@@ -22,7 +23,7 @@
 %endif
 
 Name:           crun
-Version:        1.9.2
+Version:        1.11.1
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later

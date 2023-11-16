@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov  6 10:19:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.1:
+  * force a remount operation with bind mounts from the host to
+    correctly set all the mount flags.
+  * cgroup: honor cpu burst.
+  * systemd: set CPUQuota and CPUPeriod on the scope cgroup.
+  * linux: append tmpfs mode if missing for mounts.  This is the
+    same behavior of runc.
+  * cgroup: always use the user session for rootless.
+  * support for Intel Resource Director Technology (RDT).
+  * new mount option "copy-symlink".  When provided for a mount,
+    if the source is a symlink, then it is copied in the container
+    instead of attempting a mount.
+  * linux: open mounts before setgroups if in a userns.  This
+    solves a problem where a directory that was previously
+    accessible to the user, become inaccessible after setgroups
+    causing the bind mount to fail.
+
+-------------------------------------------------------------------
 Thu Oct 12 08:02:18 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.9.2:
@@ -114,16 +134,16 @@ Tue Mar 28 10:27:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Tue Feb 28 20:14:52 UTC 2023 - Niels Abspoel <aboe76@gmail.com>
 
 - Update to 1.8.1
-  * linux: idmapped mounts expect the same configuration as 
+  * linux: idmapped mounts expect the same configuration as
     the user namespace mappings. Before they were expecting the inverted
-    mapping. It is a breaking change, but the behavior was aligned 
+    mapping. It is a breaking change, but the behavior was aligned
     to what runc will do as well.
   * krun: always allow /dev/kvm in the cgroup configuration.
   * handlers: disable exec for handlers that do not support it.
   * selinux: allow setting fscontext using a custom annotation.
   * cgroup: reset systemd unit if start fails.
   * cgroup: rmdir the entire systemd scope. It fixes a leak on cgroupv1.
-  * cgroup: always delete the cgroup on errors. 
+  * cgroup: always delete the cgroup on errors.
     On some errors it could have been leaked before.
 
 - changes from 1.8
@@ -227,7 +247,7 @@ Mon May  9 12:43:12 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
   + linux: the hook processes inherit the crun process
     environment if there is no environment block specified in the
     OCI configuration.
-  ° exec: fix double free when using --apparmor and 
+  ° exec: fix double free when using --apparmor and
     --process-label.
 
 -------------------------------------------------------------------
