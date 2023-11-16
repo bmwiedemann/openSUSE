@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 30 03:06:33 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.400
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.400     2023-10-29T18:55:47Z
+
+    - Add CLI options for local-module, man, and perldoc url prefixes.
+      Thanks josch! (gh-25)
+
+-------------------------------------------------------------------
 Sun Nov  1 03:10:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.300
