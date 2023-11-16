@@ -5094,4 +5094,14 @@ I cannot test locally unfortunately.
 - build using rust/cargo 1.72 (1.69 about to be dropped from Factory)</comment>
     <requestid>1124229</requestid>
   </revision>
+  <revision rev="323" vrev="1">
+    <srcmd5>1b11d7927849dd83083b98ebc4c57269</srcmd5>
+    <version>115.4.3</version>
+    <time>1700162923</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.4.3
+  Bugfix release
+  https://www.thunderbird.net/en-US/thunderbird/115.4.3/releasenotes</comment>
+    <requestid>1126791</requestid>
+  </revision>
 </revisionlist>
