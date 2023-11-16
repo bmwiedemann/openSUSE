@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 15 11:43:34 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.32
+
+- Update to 2.3.32
+  - Describe --no-rehash option in the manpage by @fsc-eriker in #2832
+  - Make adding $PYENV_ROOT/bin to PATH independent of other software by @native-api in #2837
+  - Make pyenv init output insertable to startup files by @native-api in #2838
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.31...v2.3.32
+
+-------------------------------------------------------------------
+Wed Nov 15 11:42:52 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.31
+
+- Update to 2.3.31
+  - Add new anaconda and miniconda definitions by @aphedges in #2824
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/2.3.30...v2.3.31
+
+-------------------------------------------------------------------
 Mon Oct 16 18:42:03 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.30
 
 - Update to 2.3.30
