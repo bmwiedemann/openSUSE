@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rails-7.0
-Version:        7.0.5.1
+Version:        7.0.8
 Release:        0
 %define mod_name rails
 %define mod_full_name %{mod_name}-%{version}
@@ -52,16 +52,14 @@ BuildRequires:  %{rubygem web-console }
 # still have in Factory, let's go newer
 BuildRequires:  %{rubygem sprockets > 3.8}
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            https://rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Full-stack web application framework
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Ruby on Rails is a full-stack web framework optimized for programmer happiness
@@ -74,7 +72,7 @@ convention over configuration.
 
 %install
 %gem_install \
-  --doc-files="README.md" \
+  --doc-files="MIT-LICENSE README.md" \
   -f
 
 %gem_packages

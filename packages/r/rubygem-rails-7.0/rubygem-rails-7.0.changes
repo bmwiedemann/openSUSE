@@ -1,4 +1,557 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:27:29 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 7.0.8:
+
+
+## Active Support
+
+*   Fix `TimeWithZone` still using deprecated `#to_s` when `ENV` or `config` to
+    disable it are set.
+
+    *Hartley McGuire*
+
+*   Fix CacheStore#write_multi when using a distributed Redis cache with a connection pool.
+
+    Fixes [#48938](https://github.com/rails/rails/issues/48938).
+
+    *Jonathan del Strother*
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   Fix `change_column` not setting `precision: 6` on `datetime` columns when
+    using 7.0+ Migrations and SQLite.
+
+    *Hartley McGuire*
+
+*   Fix unscope is not working in specific case
+
+    Before:
+    ```ruby
+    Post.where(id: 1...3).unscope(where: :id).to_sql # "SELECT `posts`.* FROM `posts` WHERE `posts`.`id` >= 1 AND `posts`.`id` < 3"
+
+    ```
+
+    After:
+    ```ruby
+    Post.where(id: 1...3).unscope(where: :id).to_sql # "SELECT `posts`.* FROM `posts`"
+    ```
+
+    Fixes #48094.
+
+    *Kazuya Hatanaka*
+
+*   Fix associations to a STI model including a `class_name` parameter
+
+    ```ruby
+    class Product < ApplicationRecord
+      has_many :requests, as: :requestable, class_name: "ProductRequest", dependent: :destroy
+    end
+
+    # STI tables
+    class Request < ApplicationRecord
+      belongs_to :requestable, polymorphic: true
+
+      validate :request_type, presence: true
+    end
+
+    class ProductRequest < Request
+      belongs_to :user
+    end
+    ```
+
+    Accessing such association would lead to:
+
+    ```
+    table_metadata.rb:22:in `has_column?': undefined method `key?' for nil:NilClass (NoMethodError)
+    ```
+
+    *Romain Filinto*
+
+*   Fix `change_table` setting datetime precision for 6.1 Migrations
+
+    *Hartley McGuire*
+
+*   Fix change_column setting datetime precision for 6.1 Migrations
+
+    *Hartley McGuire*
+
+
+## Action View
+
+*   Fix `form_for` missing the hidden `_method` input for models with a
+    namespaced route.
+
+    *Hartley McGuire*
+
+*   Fix `render collection: @records, cache: true` inside `jbuilder` templates
+
+    The previous fix that shipped in `7.0.7` assumed template fragments are always strings,
+    this isn't true with `jbuilder`.
+
+    *Jean Boussier*
+
+
+## Action Pack
+
+*   Fix `HostAuthorization` potentially displaying the value of the
+    X_FORWARDED_HOST header when the HTTP_HOST header is being blocked.
+
+    *Hartley McGuire*, *Daniel Schlosser*
+
+
+
+## Active Job
+
+*   Fix Active Job log message to correctly report a job failed to enqueue
+    when the adapter raises an `ActiveJob::EnqueueError`.
+
+    *Ben Sheldon*
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   Omit `webdrivers` gem dependency from `Gemfile` template
+
+    *Sean Doyle*
+
+
+
+
+7.0.7.2:
+
+No changes between this and 7.0.7.2.  This release was just to fix file permissions in the previous release.
+
+7.0.7.1:
+
+
+## Active Support
+
+*   Use a temporary file for storing unencrypted files while editing
+
+    [CVE-2023-38037]
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   No changes.
+
+
+
+## Action View
+
+*   No changes.
+
+
+
+## Action Pack
+
+*   No changes.
+
+
+
+## Active Job
+
+*   No changes.
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   No changes.
+
+
+
+
+7.0.7:
+
+
+## Active Support
+
+*   Fix `Cache::NullStore` with local caching for repeated reads.
+
+    *fatkodima*
+
+*   Fix `to_s` with no arguments not respecting custom `:default` formats
+
+    *Hartley McGuire*
+
+*   Fix `ActiveSupport::Inflector.humanize(nil)` raising ``NoMethodError: undefined method `end_with?' for nil:NilClass``.
+
+    *James Robinson*
+
+*   Fix `Enumerable#sum` for `Enumerator#lazy`.
+
+    *fatkodima*, *Matthew Draper*, *Jonathan Hefner*
+
+*   Improve error message when EventedFileUpdateChecker is used without a
+    compatible version of the Listen gem
+
+    *Hartley McGuire*
+
+
+
+## Active Model
+
+*   Error.full_message now strips ":base" from the message.
+
+    *zzak*
+
+*   Add a load hook for `ActiveModel::Model` (named `active_model`) to match the load hook for
+    `ActiveRecord::Base` and allow for overriding aspects of the `ActiveModel::Model` class.
+
+
+
+## Active Record
+
+*   Restores functionality to the missing method when using enums and fixes.
+
+    *paulreece*
+
+*   Fix `StatementCache::Substitute` with serialized type.
+
+    *ywenc*
+
+*   Fix `:db_runtime` on notification payload when application have multiple databases.
+
+    *Eileen M. Uchitelle*
+
+*   Correctly dump check constraints for MySQL 8.0.16+.
+
+    *Steve Hill*
+
+*   Fix `ActiveRecord::QueryMethods#in_order_of` to include `nil`s, to match the
+    behavior of `Enumerable#in_order_of`.
+
+    For example, `Post.in_order_of(:title, [nil, "foo"])` will now include posts
+    with `nil` titles, the same as `Post.all.to_a.in_order_of(:title, [nil, "foo"])`.
+
+    *fatkodima*
+
+*   Revert "Fix autosave associations with validations added on `:base` of the associated objects."
+
+    This change intended to remove the :base attribute from the message,
+    but broke many assumptions which key these errors were stored.
+
+    *zzak*
+
+*   Fix `#previously_new_record?` to return true for destroyed records.
+
+    Before, if a record was created and then destroyed, `#previously_new_record?` would return true.
+    Now, any UPDATE or DELETE to a record is considered a change, and will result in `#previously_new_record?`
+    returning false.
+
+    *Adrianna Chang*
+
+*   Revert breaking changes to `has_one` relationship deleting the old record before the new one is validated.
+
+    *zzak*
+
+*   Fix support for Active Record instances being uses in queries.
+
+    As of `7.0.5`, query arguments were deep duped to avoid mutations impacting
+    the query cache, but this had the adverse effect to clearing the primary key when
+    the query argument contained an `ActiveRecord::Base` instance.
+
+    This broke the `noticed` gem.
+
+    *Jean Boussier*
+
+
+
+## Action View
+
+*   Fix `render collection: @records, cache: true` to cache fragments as bare strings
+
+    Previously it would incorrectly cache them as Action View buffers.
+
+    *Jean Boussier*
+
+*   Don't double-encode nested `field_id` and `field_name` index values
+
+    Pass `index: @options` as a default keyword argument to `field_id` and
+    `field_name` view helper methods.
+
+    *Sean Doyle*
+
+
+
+## Action Pack
+
+*   No changes.
+
+
+
+## Active Job
+
+*   No changes.
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   No changes.
+
+
+
+## Active Storage
+
+*   No changes.
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   Update default scaffold templates to set 303 (See Other) as status code
+    on redirect for the update action for XHR requests other than GET or POST
+    to avoid issues (e.g browsers trying to follow the redirect using the
+    original request method resulting in double PATCH/PUT)
+
+    *Guillermo Iguaran*
+
+
+
+
+
+7.0.6:
+
+## Active Support
+
+*   Fix `EncryptedConfiguration` returning incorrect values for some `Hash`
+    methods
+
+    *Hartley McGuire*
+
+*   Fix arguments being destructed `Enumerable#many?` with block.
+
+    *Andrew Novoselac*
+
+*   Fix humanize for strings ending with id.
+
+    *fatkodima*
+
+
+
+## Active Model
+
+*   No changes.
+
+
+
+## Active Record
+
+*   Fix autosave associations with validations added on `:base` of the associated objects.
+
+    *fatkodima*
+
+*   Fix result with anonymous PostgreSQL columns of different type from json.
+
+    *Oleksandr Avoiants*
+
+*   Preserve timestamp when setting an `ActiveSupport::TimeWithZone` value to `timestamptz` attribute.
+
+    *fatkodima*
+
+*   Fix where on association with has_one/has_many polymorphic relations.
+
+    Before:
+    ```ruby
+    Treasure.where(price_estimates: PriceEstimate.all)
+    #=> SELECT (...) WHERE "treasures"."id" IN (SELECT "price_estimates"."estimate_of_id" FROM "price_estimates")
+    ```
+
+    Later:
+    ```ruby
+    Treasure.where(price_estimates: PriceEstimate.all)
+    #=> SELECT (...) WHERE "treasures"."id" IN (SELECT "price_estimates"."estimate_of_id" FROM "price_estimates" WHERE "price_estimates"."estimate_of_type" = 'Treasure')
+    ```
+
+    *Lázaro Nixon*
+
+*   Fix decrementing counter caches on optimistically locked record deletion
+
+    *fatkodima*
+
+*   Ensure binary-destined values have binary encoding during type cast.
+
+    *Matthew Draper*
+
+*   Preserve existing column default functions when altering table in SQLite.
+
+    *fatkodima*
+
+*   Remove table alias added when using `where.missing` or `where.associated`.
+
+    *fatkodima*
+
+*   Fix `Enumerable#in_order_of` to only flatten first level to preserve nesting.
+
+    *Miha Rekar*
+
+
+
+## Action View
+
+*   No changes.
+
+
+
+## Action Pack
+
+*   No changes.
+
+
+
+## Active Job
+
+*   Fix error Active Job passed class with `permitted?`.
+
+    *Alex Baldwin*
+
+
+
+## Action Mailer
+
+*   No changes.
+
+
+
+## Action Cable
+
+*   Fix Action Cable Redis configuration with sentinels.
+
+    *Dmitriy Ivliev*
+
+
+
+## Active Storage
+
+*   Fix retrieving rotation value from FFmpeg on version 5.0+.
+
+    In FFmpeg version 5.0+ the rotation value has been removed from tags.
+    Instead the value can be found in side_data_list. Along with
+    this update it's possible to have values of -90, -270 to denote the video
+    has been rotated.
+
+    *Haroon Ahmed*
+
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+
+## Action Text
+
+*   No changes.
+
+
+
+## Railties
+
+*   Avoid escaping paths when editing credentials.
+
+    *Jonathan Hefner*
+
+
+
+-------------------------------------------------------------------
 Tue Jun 27 19:31:17 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - updated to version 7.0.5.1
