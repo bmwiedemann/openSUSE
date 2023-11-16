@@ -395,4 +395,14 @@
 - Drop seamonkey from the rest_dvd pattern recommends: it did not
   end up on the DVD anyway due to other locks.</comment>
   </revision>
+  <revision rev="47" vrev="47">
+    <srcmd5>538a5f79477176ecfc4d886b3d326e84</srcmd5>
+    <version>20170319</version>
+    <time>1700148883</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop hylafax as well: has not been on the DVD until below pattern
+  fix was merged.
+- Also drop patterns-network_admin: quite large with nagios and
+  wireshark.</comment>
+  </revision>
 </revisionlist>

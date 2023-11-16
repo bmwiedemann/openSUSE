@@ -7,6 +7,10 @@ Thu Nov 16 15:11:15 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 - Do not recommend 32bit libraries on the DVD, except glibc-32bit.
 - Drop seamonkey from the rest_dvd pattern recommends: it did not
   end up on the DVD anyway due to other locks.
+- Drop hylafax as well: has not been on the DVD until below pattern
+  fix was merged.
+- Also drop patterns-network_admin: quite large with nagios and
+  wireshark.
 
 -------------------------------------------------------------------
 Thu Nov 16 14:58:30 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>

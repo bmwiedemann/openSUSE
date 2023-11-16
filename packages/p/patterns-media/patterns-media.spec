@@ -276,7 +276,6 @@ Requires:       pattern() = lamp_server
 Requires:       pattern() = laptop
 Requires:       pattern() = mail_server
 Requires:       pattern() = multimedia
-Recommends:     pattern() = network_admin
 Requires:       pattern() = office
 Requires:       pattern() = print_server
 Requires:       pattern() = rest_cd_core
@@ -371,9 +370,6 @@ Recommends:     clicfs
 Recommends:     createrepo
 Recommends:     eekboard
 Recommends:     git
-# hylafax as requested by kkeil
-Recommends:     hylafax+
-Recommends:     hylafax+-client
 Recommends:     isns
 # kdump+tools
 Recommends:     kdump
