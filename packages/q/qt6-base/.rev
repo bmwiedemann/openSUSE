@@ -360,4 +360,12 @@
 - Turn FEATURE_forkfd_pidfd off until QTBUG-117954 gets fixed (forwarded request 1123223 from krop)</comment>
     <requestid>1123234</requestid>
   </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>7e8effb54f67dec0c285f5e15e4f7b58</srcmd5>
+    <version>6.6.0</version>
+    <time>1700162920</time>
+    <user>anag+factory</user>
+    <comment>- Make libQt6Network6 require the network plugins</comment>
+    <requestid>1126794</requestid>
+  </revision>
 </revisionlist>

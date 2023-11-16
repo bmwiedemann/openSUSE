@@ -340,8 +340,10 @@ ABI or API guarantees.
 Summary:        Qt 6 Network library
 Requires:       libQt6Core6 = %{version}
 Requires:       libQt6DBus6 = %{version}
-# The backends became plugins in Qt 6.2
+# Require network plugins. The library is not very useful without these
 Requires:       qt6-network-tls = %{version}
+Requires:       qt6-networkinformation-glib = %{version}
+Requires:       qt6-networkinformation-nm = %{version}
 
 %description -n libQt6Network6
 Qt Network provides a set of APIs for programming applications that
