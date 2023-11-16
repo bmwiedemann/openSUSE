@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:56:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.3:
+  * Update release.md
+  * Create release.md
+  * Drop cloud keychains
+  * Try to approximate ~ in apko dot
+  * build(deps): bump sigs.k8s.io/release-utils from 0.7.6 to 0.7.7
+  * build(deps): bump github/codeql-action from 2.22.5 to 2.22.6
+  * build(deps): bump golang.org/x/term from 0.13.0 to 0.14.0
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.2.0 to
+    2.2.1
+  * update go-apk dependency
+  * build(deps): bump go.opentelemetry.io/otel from 1.19.0 to
+    1.20.0
+  * build(deps): bump sigstore/cosign-installer from 3.1.2 to 3.2.0
+  * build with go 1.21
+  * use main
+  * use pushed PR
+  * WIP: use forked alpine-go in go-apk
+  * cleanup: remove unused flags
+  * build(deps): bump github.com/docker/docker
+
+-------------------------------------------------------------------
 Mon Oct 30 19:10:59 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.11.2:
