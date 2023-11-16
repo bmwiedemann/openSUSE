@@ -104,4 +104,23 @@
     <comment></comment>
     <requestid>1071429</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>26d8a2f337394e629be8c8fd96ecaa9c</srcmd5>
+    <version>0.9.5</version>
+    <time>1700163062</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.5:
+  * Support for multiple --set and --del, or --get operations,
+    allowing for more efficient and atomic updates to multiple
+    parameters.
+  * Support indented ini files with --ini-options=ignoreindent.
+    Indentation is ignored (and maintained) in the ini file.
+  * --format=sh will now attempt to output a whole ini file in
+    sh format.
+    Previously it would have only printed the section names.
+
+    lingering lock file.
+- Initial package (0.3)</comment>
+    <requestid>1126962</requestid>
+  </revision>
 </revisionlist>

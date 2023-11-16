@@ -17,7 +17,7 @@
 
 
 Name:           crudini
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        A utility for manipulating ini files
 License:        GPL-2.0-only

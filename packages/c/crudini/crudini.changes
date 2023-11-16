@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 16 15:58:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.5:
+  * Support for multiple --set and --del, or --get operations,
+    allowing for more efficient and atomic updates to multiple
+    parameters.
+  * Support indented ini files with --ini-options=ignoreindent.
+    Indentation is ignored (and maintained) in the ini file.
+  * --format=sh will now attempt to output a whole ini file in
+    sh format.
+    Previously it would have only printed the section names.
+
+-------------------------------------------------------------------
 Mon Mar 13 17:39:44 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.9.4
@@ -60,7 +73,7 @@ Thu Feb 18 16:44:06 UTC 2016 - aplanas@suse.com
   Bug fixes
   * Lock files are cleaned up robustly. Previously there was a race
     condition resulting in blocked subsequent edits, due to a
-    lingering lock file.  
+    lingering lock file.
   * --del will ignore requests to delete a parameter in a non-existing
       section (unless --existing is used). Previously it failed citing
       the missing section.
@@ -101,5 +114,5 @@ Fri Oct 10 19:21:16 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Fri Sep 27 16:11:52 UTC 2013 - dmueller@suse.com
 
-- Initial package (0.3) 
+- Initial package (0.3)
 
