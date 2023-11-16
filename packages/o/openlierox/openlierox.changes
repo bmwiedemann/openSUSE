@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 09:52:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Mon Apr 10 22:21:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add openlierox-add-missing-include.patch: Add missing include

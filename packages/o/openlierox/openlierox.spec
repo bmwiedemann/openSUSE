@@ -25,7 +25,7 @@ Group:          Amusements/Games/Other
 URL:            http://www.openlierox.net/
 Source:         http://downloads.sourceforge.net/%{name}/OpenLieroX_%{version}.src.tar.bz2
 # PATCH-FIX-UPSTREAM openlierox-add-missing-include.patch -- Add missing include cstdint
-Patch:          openlierox-add-missing-include.patch
+Patch0:         openlierox-add-missing-include.patch
 BuildRequires:  SDL_image-devel
 BuildRequires:  SDL_mixer-devel
 BuildRequires:  cmake
