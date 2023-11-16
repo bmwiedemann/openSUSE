@@ -1871,4 +1871,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1118826</requestid>
   </revision>
+  <revision rev="180" vrev="7">
+    <srcmd5>96c38efce29f3b8484ddae7d9f73bce2</srcmd5>
+    <version>29.1</version>
+    <time>1700162825</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126636</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 15 10:34:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- only use valgrind on 64 bit architectures
+
+-------------------------------------------------------------------
 Thu Oct 12 07:01:56 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Only recommend at-spi2-core 
+- Only recommend at-spi2-core
 
 -------------------------------------------------------------------
 Wed Oct 11 13:16:41 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
@@ -11,13 +16,13 @@ Wed Oct 11 13:16:41 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 -------------------------------------------------------------------
 Tue Oct 10 11:36:25 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- For the at-spi bus the package at-spi2-core is required 
+- For the at-spi bus the package at-spi2-core is required
 - Move eln prune code from ~/.gnu-emacs to site-start
 
 -------------------------------------------------------------------
 Mon Oct  9 08:41:27 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Avoid warnings about eln files as well as prune older eln files 
+- Avoid warnings about eln files as well as prune older eln files
 
 -------------------------------------------------------------------
 Fri Oct  6 22:37:59 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
@@ -117,7 +122,7 @@ Thu Mar  9 09:04:28 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch d3209119.patch
   boo#1209089,CVE-2023-27985: Fix shell command injection in emacsclient-mail.desktop
-- Add patch 3c1693d0.patch 
+- Add patch 3c1693d0.patch
   boo#1209090,CVE-2023-27986: Fix Emacs Lisp code injection in emacsclient-mail.desktop
 
 -------------------------------------------------------------------
@@ -152,13 +157,13 @@ Tue Nov 29 10:41:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 Thu Nov 10 13:48:45 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - dbus-update-activation-environment handles only variables with
-  their names 
+  their names
 
 -------------------------------------------------------------------
 Wed Nov  9 13:46:06 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add workaround for boo#1205109, that is started with sudo there
-  is maybe no active user session for root hence no dbus 
+  is maybe no active user session for root hence no dbus
 
 -------------------------------------------------------------------
 Wed Oct 26 11:56:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
@@ -235,12 +240,12 @@ Fri Nov 19 11:56:17 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Fri Nov 19 10:54:09 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Enable the NO_AT_BRIDGE code 
+- Enable the NO_AT_BRIDGE code
 
 -------------------------------------------------------------------
 Mon Nov 15 13:07:51 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Again disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1191517) 
+- Again disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1191517)
 - Correct quoting of anonymous function calls
 
 -------------------------------------------------------------------
@@ -254,7 +259,7 @@ Wed Sep  8 09:05:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Work for boo#1183497: make sure that if ibus is the input method
   that there exists a working gtk immodule for ibus as well as the
-  ibus daemon is up and running 
+  ibus daemon is up and running
 
 -------------------------------------------------------------------
 Wed Jul 21 09:22:45 UTC 2021 - Andreas Schwab <schwab@suse.de>
@@ -264,7 +269,7 @@ Wed Jul 21 09:22:45 UTC 2021 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Fri Jun 11 10:24:47 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Enable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341) 
+- Enable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341)
 
 -------------------------------------------------------------------
 Mon May 31 05:49:58 UTC 2021 - Duncan Mac-Vicar P <duncan@mac-vicar.eu>
@@ -278,12 +283,12 @@ Mon May 31 05:49:58 UTC 2021 - Duncan Mac-Vicar P <duncan@mac-vicar.eu>
 -------------------------------------------------------------------
 Wed May 26 13:31:49 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341) 
+- Disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341)
 
 -------------------------------------------------------------------
 Fri Mar 26 09:35:15 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Update emacs.keyring 
+- Update emacs.keyring
 
 -------------------------------------------------------------------
 Thu Mar 25 14:24:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
@@ -314,7 +319,7 @@ Mon Mar  8 13:40:06 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 - Add patch emacs-27.1-Xauthority4server.patch
   * Allow GNU Emacs server to open X Display even if the Xauthority
     file is not the default expected by XCloseDisplay()
-  * Hopefully fix boo#1174534 and boo#1179854 
+  * Hopefully fix boo#1174534 and boo#1179854
 
 -------------------------------------------------------------------
 Tue Jan 26 14:17:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -522,7 +527,7 @@ Tue Oct 23 06:37:33 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 Mon Oct 22 13:56:16 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
 - Help ispell(.el) to find and provide the usable dictionaries
-  even for hunspell (boo#1110387) 
+  even for hunspell (boo#1110387)
 
 -------------------------------------------------------------------
 Fri Jul 20 09:33:08 UTC 2018 - werner@suse.de
@@ -540,7 +545,7 @@ Sun Jul  8 20:14:24 UTC 2018 - schwab@linux-m68k.org
 Fri Jun 15 05:14:18 UTC 2018 - werner@suse.de
 
 - Simplify patch emacs-25.3-xft4x11.patch (from Henryk Hecht) for
-  boo#1096354 
+  boo#1096354
 
 -------------------------------------------------------------------
 Tue Jun 12 07:52:20 UTC 2018 - werner@suse.de
@@ -557,21 +562,21 @@ Fri Jun  8 17:35:59 UTC 2018 - bjorn.lie@gmail.com
 -------------------------------------------------------------------
 Thu Jun  7 13:05:03 UTC 2018 - werner@suse.de
 
-- Use -fPIE/-pie for helper binaries 
+- Use -fPIE/-pie for helper binaries
 - Use Groups tag Productivity/Text/Editors
 
 -------------------------------------------------------------------
 Thu Jun  7 11:33:27 UTC 2018 - werner@suse.de
 
 - Add configure option for mailutils as recommended by GNU Emacs upstream
-- Re-enable games with GNU Emacs which requires system-user-games 
+- Re-enable games with GNU Emacs which requires system-user-games
 
 -------------------------------------------------------------------
 Thu Jun  7 08:14:04 UTC 2018 - werner@suse.de
 
 - Cleanup the spec file by removing old suse_versions
   and reordering configure options
-- Add some missed packages for configure 
+- Add some missed packages for configure
 - Avoid Xwidgets on 32bit architectures as this does not build
 
 -------------------------------------------------------------------
@@ -588,7 +593,7 @@ Tue May 29 13:09:38 UTC 2018 - werner@suse.de
   * Various Changes in Specialized Modes and Packages in Emacs 26.1, see NEWS
   * Some Incompatible Lisp Changes in Emacs 26.1, see NEWS
   * Various Lisp Changes in Emacs 26.1, see NEWS
-- Removed patch now upstream 
+- Removed patch now upstream
   * emacs-24.4-decl.dif
   * emacs-25.2-bsc1058425.patch
   * emacs-25.2-xwidget.patch
@@ -616,7 +621,7 @@ Tue Mar 27 16:34:37 UTC 2018 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Wed Mar 14 21:08:52 UTC 2018 - crrodriguez@opensuse.org
 
-- Remove xorg-x11-devel from buildrequires, replace 
+- Remove xorg-x11-devel from buildrequires, replace
   by an extense list of pkgconfig()-style dependencies.
 
 -------------------------------------------------------------------
@@ -634,7 +639,7 @@ Fri Sep 22 10:06:54 UTC 2017 - werner@suse.de
 Wed Sep 13 07:21:34 UTC 2017 - werner@suse.de
 
 - Add patch emacs-25.2-bsc1058425.patch to fix bsc#1058425
-  VUL-0: emacs: GNU Emacs 25.2 enriched text remote code execution 
+  VUL-0: emacs: GNU Emacs 25.2 enriched text remote code execution
 
 -------------------------------------------------------------------
 Tue Aug 22 18:43:38 UTC 2017 - astieger@suse.com
@@ -656,7 +661,7 @@ Tue May  2 11:02:57 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Wed Apr 26 07:33:45 UTC 2017 - werner@suse.de
 
-- Use socket activation to get dbus up before starting emacs 
+- Use socket activation to get dbus up before starting emacs
 
 -------------------------------------------------------------------
 Tue Apr 25 14:51:25 UTC 2017 - werner@suse.de
@@ -745,7 +750,7 @@ Tue Feb 28 12:28:46 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Tue Dec 20 16:10:47 UTC 2016 - werner@suse.de
 
-- Add patch emacs-25.1-custom-fonts.patch as workaround for boo#1016172 
+- Add patch emacs-25.1-custom-fonts.patch as workaround for boo#1016172
 
 -------------------------------------------------------------------
 Fri Nov 11 09:01:36 UTC 2016 - werner@suse.de
@@ -757,7 +762,7 @@ Fri Nov 11 09:01:36 UTC 2016 - werner@suse.de
 Wed Sep 21 06:31:44 UTC 2016 - werner@suse.de
 
 - Diable experimental cairo support as it cause trouble with spacemacs
-  as well as with the w3 mode 
+  as well as with the w3 mode
 
 -------------------------------------------------------------------
 Mon Sep 19 15:01:07 UTC 2016 - werner@suse.de
@@ -900,7 +905,7 @@ Tue Sep  1 10:05:35 UTC 2015 - werner@suse.de
 -------------------------------------------------------------------
 Tue Jul 28 14:50:45 UTC 2015 - werner@suse.de
 
-- Give XFt a try for emacs-x11 
+- Give XFt a try for emacs-x11
 
 -------------------------------------------------------------------
 Thu Apr 30 13:08:13 UTC 2015 - werner@suse.de
@@ -950,7 +955,7 @@ Sat Feb  7 19:47:29 UTC 2015 - coolo@suse.com
 -------------------------------------------------------------------
 Tue Jan 13 14:59:50 UTC 2015 - werner@suse.de
 
-- Add upstream patches 
+- Add upstream patches
   * emacs-gnupg-15th-field.patch
     epg.el (epg--list-keys-1): Ignore fields after the 15th field
   * emacs24-primarysel2.patch
@@ -968,7 +973,7 @@ Wed Oct 29 11:27:26 UTC 2014 - werner@suse.de
 Fri Oct 24 14:35:43 UTC 2014 - werner@suse.de
 
 - The gtk3 libraries are linked with libudev therefore add the
-  appropiate BuildRequire 
+  appropiate BuildRequire
 
 -------------------------------------------------------------------
 Wed Oct 22 08:45:42 UTC 2014 - werner@suse.de
@@ -1074,7 +1079,7 @@ Tue Oct 21 14:47:54 UTC 2014 - werner@suse.de
   CVE-2014-3422.patch
   CVE-2014-3423.patch
   CVE-2014-3424.patch
-  emacs-24.3-giflib5.patch 
+  emacs-24.3-giflib5.patch
   emacs-24.3-nntp-typhoon-fix.patch
 - Change patches
   emacs-24.3-decl.dif becomes emacs-24.4-decl.dif
@@ -1112,7 +1117,7 @@ Sun Jun 29 10:06:23 UTC 2014 - schwab@linux-m68k.org
 Fri May  9 07:38:29 UTC 2014 - werner@suse.de
 
 - Modify emacs-24.3-giflib5-interlace.patch in such a way that
-  it works with older giflibraries 
+  it works with older giflibraries
 
 -------------------------------------------------------------------
 Thu May  8 11:59:32 UTC 2014 - werner@suse.de
@@ -1134,7 +1139,7 @@ Wed Apr 30 16:10:14 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Fri Feb 28 07:57:30 UTC 2014 - werner@suse.de
 
-- Adding coreutils to etags scriptlets requirements (bnc#865845) 
+- Adding coreutils to etags scriptlets requirements (bnc#865845)
 
 -------------------------------------------------------------------
 Sat Jan 18 09:47:37 UTC 2014 - schwab@linux-m68k.org
@@ -1144,7 +1149,7 @@ Sat Jan 18 09:47:37 UTC 2014 - schwab@linux-m68k.org
 -------------------------------------------------------------------
 Wed Jan 15 10:31:16 UTC 2014 - werner@suse.de
 
-- Do not reassign S-left, S-right, S-up and S-down anymore (bnc#858430) 
+- Do not reassign S-left, S-right, S-up and S-down anymore (bnc#858430)
 
 -------------------------------------------------------------------
 Tue Dec  3 11:00:44 UTC 2013 - werner@suse.de
@@ -1170,8 +1175,8 @@ Wed Sep 11 12:30:07 UTC 2013 - boris@steki.net
 Sat Jun 15 15:14:01 UTC 2013 - toganm@opensuse.org
 
 - Fix connection problem to Typhoon nntp servers. Instead of
-  CAPABILITIES use HELP 
-  *  emacs-24.3-nntp-typhoon-fix.patch 
+  CAPABILITIES use HELP
+  *  emacs-24.3-nntp-typhoon-fix.patch
 
 -------------------------------------------------------------------
 Fri Jun  7 07:53:58 UTC 2013 - werner@suse.de
@@ -1182,12 +1187,12 @@ Fri Jun  7 07:53:58 UTC 2013 - werner@suse.de
 -------------------------------------------------------------------
 Thu Jun  6 16:13:16 UTC 2013 - werner@suse.de
 
-- Disable fontsets and enforce Xft as font backend 
+- Disable fontsets and enforce Xft as font backend
 
 -------------------------------------------------------------------
 Tue May 28 09:58:49 UTC 2013 - werner@suse.de
 
-- Remove not used spec file scriplets 
+- Remove not used spec file scriplets
 - Make pre requires more smart
 - Avoid trouble with new byte compile format and old font-latex.elc
 
@@ -1357,14 +1362,14 @@ Thu Oct 18 14:51:50 UTC 2012 - sleep_walker@suse.cz
 Fri Oct  5 12:03:38 UTC 2012 - werner@suse.de
 
 - Add workaround into emacs starter script for gtk/gstreamer bug
-  which overrides the locale 
+  which overrides the locale
 
 -------------------------------------------------------------------
 Tue Sep 18 12:07:26 UTC 2012 - werner@suse.de
 
 - Update to to emacs version 24.2
   * This is mainly a bug-fix release
-- Last patch already included 
+- Last patch already included
 
 -------------------------------------------------------------------
 Mon Sep 10 09:25:05 UTC 2012 - aj@suse.de
@@ -1375,13 +1380,13 @@ Mon Sep 10 09:25:05 UTC 2012 - aj@suse.de
 -------------------------------------------------------------------
 Thu Jul 26 07:39:27 UTC 2012 - werner@suse.de
 
-- Avoid missing fonts due minimal installation 
+- Avoid missing fonts due minimal installation
 
 -------------------------------------------------------------------
 Fri Jul 20 10:54:15 UTC 2012 - werner@suse.de
 
 - xorg-x11-libs is not in default installation anymore, use libX11-6
-  to be enhanced by emacs-x11 
+  to be enhanced by emacs-x11
 
 -------------------------------------------------------------------
 Tue Jul  3 12:25:05 UTC 2012 - werner@suse.de
@@ -1392,7 +1397,7 @@ Tue Jul  3 12:25:05 UTC 2012 - werner@suse.de
 -------------------------------------------------------------------
 Fri Jun 29 15:22:42 UTC 2012 - werner@suse.de
 
-- make it build even for older distries 
+- make it build even for older distries
 
 -------------------------------------------------------------------
 Thu Jun 28 09:42:17 UTC 2012 - werner@suse.de
@@ -1469,22 +1474,22 @@ Tue Dec 20 20:23:40 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Mon Nov 28 08:36:10 UTC 2011 - werner@suse.de
 
-- Resolve build conflicts 
+- Resolve build conflicts
 
 -------------------------------------------------------------------
 Thu Nov 24 14:01:22 UTC 2011 - werner@suse.de
 
-- Avoid SLES10 systems using kernel 2.6.16 
+- Avoid SLES10 systems using kernel 2.6.16
 
 -------------------------------------------------------------------
 Tue Nov 22 14:40:45 UTC 2011 - werner@suse.de
 
-- Add patch to use libtinfo if available 
+- Add patch to use libtinfo if available
 
 -------------------------------------------------------------------
 Sun Oct  2 14:36:52 CEST 2011 - dmueller@suse.de
 
-- switch back to standard gcc, as bootstrapping gcc 4.3 on 
+- switch back to standard gcc, as bootstrapping gcc 4.3 on
   arm is essentially impossible, and 4.3 is not needed anymore
   (bnc#587307#c9)
 
@@ -1787,7 +1792,7 @@ Tue Oct 19 09:36:29 CEST 2010 - werner@suse.de
     functionality.
   * Face aliases can now be marked as obsolete, using the macro
     `define-obsolete-face-alias'.
-  
+
 -------------------------------------------------------------------
 Wed Oct 13 11:38:11 CEST 2010 - werner@suse.de
 
@@ -1823,12 +1828,12 @@ Tue Apr 27 16:19:58 CEST 2010 - werner@suse.de
 Mon Apr  5 18:32:53 CEST 2010 - ro@suse.de
 
 - make emacs wrapper script a little more smart
-  check if default toolkit is installed, else use fallbacks 
+  check if default toolkit is installed, else use fallbacks
 
 -------------------------------------------------------------------
 Sun Apr  4 15:39:02 CEST 2010 - ro@suse.de
 
-- replace png_check_sig with !png_sig_cmp for libpng14 
+- replace png_check_sig with !png_sig_cmp for libpng14
 
 -------------------------------------------------------------------
 Fri Mar 26 18:32:03 CET 2010 - werner@suse.de
@@ -1939,7 +1944,7 @@ Fri Oct 17 14:39:25 CEST 2008 - werner@suse.de
 -------------------------------------------------------------------
 Wed Oct  1 12:11:40 CEST 2008 - ro@suse.de
 
-- drop texinfo from buildrequires (is guaranteed to be there) 
+- drop texinfo from buildrequires (is guaranteed to be there)
 
 -------------------------------------------------------------------
 Fri Sep 19 18:14:04 CEST 2008 - werner@suse.de
@@ -2111,7 +2116,7 @@ Mon Jun  4 15:28:38 CEST 2007 - werner@suse.de
 -------------------------------------------------------------------
 Fri Jun  1 17:12:35 CEST 2007 - dmueller@suse.de
 
-- fix buildrequires 
+- fix buildrequires
 
 -------------------------------------------------------------------
 Fri May 25 11:05:14 CEST 2007 - schwab@suse.de
@@ -2197,12 +2202,12 @@ Fri Jun 30 17:07:59 CEST 2006 - werner@suse.de
 -------------------------------------------------------------------
 Mon Jun 19 12:02:25 CEST 2006 - dmueller@suse.de
 
-- revert last change by package maintainer's request 
+- revert last change by package maintainer's request
 
 -------------------------------------------------------------------
 Thu Jun 15 00:15:01 CEST 2006 - dmueller@suse.de
 
-- build parallel 
+- build parallel
 
 -------------------------------------------------------------------
 Fri Apr 21 16:08:43 CEST 2006 - werner@suse.de
@@ -2234,7 +2239,7 @@ Mon Oct 10 17:15:21 CEST 2005 - werner@suse.de
 -------------------------------------------------------------------
 Mon Sep 26 12:49:30 CEST 2005 - ro@suse.de
 
-- list dot.gnu-emacs as source 
+- list dot.gnu-emacs as source
 
 -------------------------------------------------------------------
 Mon Sep 26 08:58:07 CEST 2005 - cthiel@suse.de
@@ -2247,7 +2252,7 @@ Fri Apr 15 13:41:21 CEST 2005 - werner@suse.de
 - Get emacs back on ppc
 - Block input on architectures which do not use system malloc
 - Fix stupid multibyte bug in Fformat
-- Avoid XIM status error of the xft 
+- Avoid XIM status error of the xft
 
 -------------------------------------------------------------------
 Thu Apr 14 14:00:46 CEST 2005 - werner@suse.de
@@ -2365,7 +2370,7 @@ Wed Jul 23 19:29:30 CEST 2003 - werner@suse.de
 -------------------------------------------------------------------
 Fri Jun 20 02:24:11 CEST 2003 - ro@suse.de
 
-- remove unpackaged files from buildroot 
+- remove unpackaged files from buildroot
 
 -------------------------------------------------------------------
 Fri May 16 14:40:51 CEST 2003 - mfabian@suse.de
@@ -2455,7 +2460,7 @@ Fri Aug 16 23:52:39 CEST 2002 - schwab@suse.de
 -------------------------------------------------------------------
 Thu Aug 15 18:41:14 CEST 2002 - ro@suse.de
 
-- fixed typo in specfile 
+- fixed typo in specfile
 
 -------------------------------------------------------------------
 Thu Aug 15 16:32:51 CEST 2002 - werner@suse.de
@@ -2465,7 +2470,7 @@ Thu Aug 15 16:32:51 CEST 2002 - werner@suse.de
 -------------------------------------------------------------------
 Fri Aug  9 00:11:01 CEST 2002 - ro@suse.de
 
-- dont include /usr/share/info/dir in filelist 
+- dont include /usr/share/info/dir in filelist
 
 -------------------------------------------------------------------
 Thu Aug  8 16:58:34 CEST 2002 - werner@suse.de
@@ -2612,7 +2617,7 @@ Wed Jun 13 16:26:31 CEST 2001 - schwab@suse.de
 -------------------------------------------------------------------
 Tue Jun 12 19:06:10 UTC 2001 - bk@suse.de
 
-- updated s390 config to 20.7 version and added support for s390x 
+- updated s390 config to 20.7 version and added support for s390x
 
 -------------------------------------------------------------------
 Tue May  8 19:38:53 CEST 2001 - werner@suse.de
@@ -2689,7 +2694,7 @@ Tue Jan 16 22:57:21 CET 2001 - mfabian@suse.de
   M-x set-language-environment RET Japanese RET M-x dired
   and
   M-x set-language-environment RET Korean RET M-x dired
-  works now. 
+  works now.
 - added patch for ps-mule.el which makes Korean PostScript printing
   work.
 
@@ -2790,12 +2795,12 @@ Wed Jan 19 22:20:40 CET 2000 - werner@suse.de
 -------------------------------------------------------------------
 Fri Dec 31 18:38:04 CET 1999 - kukuk@suse.de
 
-	- Fix filelist in spec file 
+	- Fix filelist in spec file
 
 -------------------------------------------------------------------
 Fri Dec 31 08:52:24 CET 1999 - kukuk@suse.de
 
-	- Use %{_target_cpu}-suse-linux-gnu instead of 
+	- Use %{_target_cpu}-suse-linux-gnu instead of
 	  ${RPM_ARCH}-suse-linux (necessary for SPARC)
 
 -------------------------------------------------------------------
@@ -2822,7 +2827,7 @@ Wed Oct 20 21:58:04 CEST 1999 - werner@suse.de
 -------------------------------------------------------------------
 Sun Oct 17 02:18:29 CEST 1999 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Mon Sep 27 16:31:01 CEST 1999 - bs@suse.de
@@ -2884,7 +2889,7 @@ Wed Apr 14 16:28:31 CEST 1999 - werner@suse.de
 
 -------------------------------------------------------------------
 Mon Mar  8 20:43:58 MET 1999 - werner@suse.de
- 
+
 	- Remove site-lisp/hacks/ispell.el* to use the dynamic
 	  rebuild of the Spell menu of the ispell package
 

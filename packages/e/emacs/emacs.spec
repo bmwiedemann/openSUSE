@@ -104,7 +104,9 @@ BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libwebp)
+%ifarch aarch64 x86_64 ppc64le s390x
 BuildRequires:  pkgconfig(valgrind)
+%endif
 %if %{with tex4pdf}
 BuildRequires:  tex(babel.sty)
 BuildRequires:  tex(fontenc.sty)
