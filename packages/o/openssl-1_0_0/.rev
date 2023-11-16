@@ -394,4 +394,22 @@
   * Add openssl-1_0-CVE-2023-3817.patch</comment>
     <requestid>1102939</requestid>
   </revision>
+  <revision rev="41" vrev="23">
+    <srcmd5>72d2ea95bb69751e7309f8e94ad0d351</srcmd5>
+    <version>1.0.2u</version>
+    <time>1700162918</time>
+    <user>anag+factory</user>
+    <comment>- Security fix: [bsc#1216922, CVE-2023-5678]
+  * Fix excessive time spent in DH check / generation with large Q
+    parameter value.
+  * Applications that use the functions DH_generate_key() to generate
+    an X9.42 DH key may experience long delays. Likewise,
+    applications that use DH_check_pub_key(), DH_check_pub_key_ex
+    () or EVP_PKEY_public_check() to check an X9.42 DH key or X9.42
+    DH parameters may experience long delays. Where the key or
+    parameters that are being checked have been obtained from an
+    untrusted source this may lead to a Denial of Service.
+  * Add openssl-CVE-2023-5678.patch</comment>
+    <requestid>1126788</requestid>
+  </revision>
 </revisionlist>

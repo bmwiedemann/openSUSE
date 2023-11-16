@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 13 09:29:26 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: [bsc#1216922, CVE-2023-5678]
+  * Fix excessive time spent in DH check / generation with large Q
+    parameter value.
+  * Applications that use the functions DH_generate_key() to generate
+    an X9.42 DH key may experience long delays. Likewise,
+    applications that use DH_check_pub_key(), DH_check_pub_key_ex
+    () or EVP_PKEY_public_check() to check an X9.42 DH key or X9.42
+    DH parameters may experience long delays. Where the key or
+    parameters that are being checked have been obtained from an
+    untrusted source this may lead to a Denial of Service.
+  * Add openssl-CVE-2023-5678.patch
+
+-------------------------------------------------------------------
 Mon Aug  7 14:21:09 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: (bsc#1213853, CVE-2023-3817)

@@ -132,6 +132,9 @@ Patch101:       openssl-CVE-2023-2650.patch
 Patch102:       openssl-CVE-2023-3446.patch
 # PATCH-FIX-UPSTREAM bsc#1213853 CVE-2023-3817 Excessive time spent checking DH q parameter value
 Patch103:       openssl-1_0-CVE-2023-3817.patch
+# PATCH-FIX-UPSTREAM: bsc#1216922 CVE-2023-5678 Generating excessively long X9.42 DH keys or
+# checking excessively long X9.42 DH keys or parameters may be very slow
+Patch104:       openssl-CVE-2023-5678.patch
 # steam patches
 Patch150:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -298,6 +301,7 @@ testing framework and utilities.
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
+%patch104 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
