@@ -2006,4 +2006,12 @@ New stable rel</comment>
   gnome-control-center-bring-back-firewall-zone.patch(bsc#1216601). (forwarded request 1121525 from JonathanKang)</comment>
     <requestid>1121624</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>742a94a6f15ce871828963ca1acd2e46</srcmd5>
+    <version>45.1+14</version>
+    <time>1700162816</time>
+    <user>anag+factory</user>
+    <comment>New checkout from stable branch, explicit commit (forwarded request 1125574 from iznogood)</comment>
+    <requestid>1126605</requestid>
+  </revision>
 </revisionlist>
