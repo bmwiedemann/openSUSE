@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 13 07:05:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patch 4ab4f1c7_improve_test_names.patch
+  https://github.com/ansible/molecule/commit/4ab4f1c76fca978485ba63c67c944c489277aa0d
+  to fix the pytest failures due to test names and duplicates
+
+-------------------------------------------------------------------
 Wed Sep  6 06:29:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.0.2:

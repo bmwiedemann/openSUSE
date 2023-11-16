@@ -1,0 +1,1088 @@
+From 4ab4f1c76fca978485ba63c67c944c489277aa0d Mon Sep 17 00:00:00 2001
+From: Sorin Sbarnea <ssbarnea@redhat.com>
+Date: Tue, 24 Oct 2023 12:43:34 +0100
+Subject: [PATCH] Improve test names (#4076)
+
+This fixes issues reported by newer version of pytest-plus.
+---
+ .../test/a_unit/command/init/test_scenario.py |  2 +-
+ src/molecule/test/a_unit/command/test_base.py |  4 +--
+ .../test/a_unit/command/test_check.py         |  2 +-
+ .../test/a_unit/command/test_cleanup.py       |  4 +--
+ .../test/a_unit/command/test_converge.py      |  2 +-
+ .../test/a_unit/command/test_create.py        |  2 +-
+ .../test/a_unit/command/test_dependency.py    |  2 +-
+ .../test/a_unit/command/test_destroy.py       |  2 +-
+ .../test/a_unit/command/test_idempotence.py   |  2 +-
+ src/molecule/test/a_unit/command/test_list.py |  2 +-
+ .../test/a_unit/command/test_login.py         |  2 +-
+ .../test/a_unit/command/test_prepare.py       |  4 +--
+ .../test/a_unit/command/test_side_effect.py   |  4 +--
+ .../test/a_unit/command/test_syntax.py        |  2 +-
+ .../test/a_unit/command/test_verify.py        |  2 +-
+ .../ansible_galaxy/test_collections.py        | 30 +++++++++----------
+ .../dependency/ansible_galaxy/test_roles.py   | 24 +++++++--------
+ .../test/a_unit/dependency/test_shell.py      | 26 +++++++++-------
+ .../test/a_unit/driver/test_delegated.py      | 12 ++++----
+ .../test/a_unit/provisioner/test_ansible.py   | 20 ++++++-------
+ .../provisioner/test_ansible_playbook.py      |  2 +-
+ src/molecule/test/a_unit/test_scenario.py     |  8 ++---
+ src/molecule/test/a_unit/test_state.py        |  2 +-
+ .../test/a_unit/verifier/test_ansible.py      | 20 ++++++-------
+ .../test/a_unit/verifier/test_testinfra.py    | 30 +++++++++++--------
+ .../test/b_functional/test_command.py         | 30 ++++++++++---------
+ 26 files changed, 126 insertions(+), 116 deletions(-)
+
+diff --git a/src/molecule/test/a_unit/command/init/test_scenario.py b/src/molecule/test/a_unit/command/init/test_scenario.py
+index ef7eafa8c..51098b51d 100644
+--- a/src/molecule/test/a_unit/command/init/test_scenario.py
++++ b/src/molecule/test/a_unit/command/init/test_scenario.py
+@@ -41,7 +41,7 @@ def _instance(_command_args):
+     return scenario.Scenario(_command_args)
+ 
+ 
+-def test_execute(temp_dir, _instance, patched_logger_info):
++def test_scenario_execute(temp_dir, _instance, patched_logger_info):
+     _instance.execute()
+ 
+     msg = "Initializing new scenario test-scenario..."
+diff --git a/src/molecule/test/a_unit/command/test_base.py b/src/molecule/test/a_unit/command/test_base.py
+index 28d3a1333..512ba661c 100644
+--- a/src/molecule/test/a_unit/command/test_base.py
++++ b/src/molecule/test/a_unit/command/test_base.py
+@@ -87,7 +87,7 @@ def _patched_sysexit(mocker):
+     return mocker.patch("molecule.util.sysexit")
+ 
+ 
+-def test_config_private_member(_instance):
++def test_command_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+@@ -95,7 +95,7 @@ def test_init_calls_setup(_patched_base_setup, _instance):
+     _patched_base_setup.assert_called_once_with()
+ 
+ 
+-def test_setup(
++def test_command_setup(
+     mocker: MockerFixture,
+     patched_add_or_update_vars,
+     _patched_write_config,
+diff --git a/src/molecule/test/a_unit/command/test_check.py b/src/molecule/test/a_unit/command/test_check.py
+index f18e19a24..346593d70 100644
+--- a/src/molecule/test/a_unit/command/test_check.py
++++ b/src/molecule/test/a_unit/command/test_check.py
+@@ -33,7 +33,7 @@ def _patched_ansible_check(mocker):
+ # NOTE(retr0h): The use of the `patched_config_validate` fixture, disables
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+-def test_execute(
++def test_check_execute(
+     mocker: MockerFixture,
+     caplog,
+     _patched_ansible_check,
+diff --git a/src/molecule/test/a_unit/command/test_cleanup.py b/src/molecule/test/a_unit/command/test_cleanup.py
+index 0648537b6..b1531333e 100644
+--- a/src/molecule/test/a_unit/command/test_cleanup.py
++++ b/src/molecule/test/a_unit/command/test_cleanup.py
+@@ -45,7 +45,7 @@ def _patched_ansible_cleanup(mocker):
+     ["_command_provisioner_section_with_cleanup_data"],
+     indirect=True,
+ )
+-def test_execute(
++def test_cleanup_execute(
+     mocker: MockerFixture,
+     _patched_ansible_cleanup,
+     caplog,
+@@ -63,7 +63,7 @@ def test_execute(
+     _patched_ansible_cleanup.assert_called_once_with()
+ 
+ 
+-def test_execute_skips_when_playbook_not_configured(
++def test_cleanup_execute_skips_when_playbook_not_configured(
+     caplog,
+     _patched_ansible_cleanup,
+     config_instance: config.Config,
+diff --git a/src/molecule/test/a_unit/command/test_converge.py b/src/molecule/test/a_unit/command/test_converge.py
+index 72f0fa13c..b035ea438 100644
+--- a/src/molecule/test/a_unit/command/test_converge.py
++++ b/src/molecule/test/a_unit/command/test_converge.py
+@@ -33,7 +33,7 @@
+ # NOTE(retr0h): The use of the `patched_config_validate` fixture, disables
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+-def test_execute(
++def test_converge_execute(
+     mocker: MockerFixture,
+     caplog: LogCaptureFixture,
+     patched_ansible_converge: Mock,
+diff --git a/src/molecule/test/a_unit/command/test_create.py b/src/molecule/test/a_unit/command/test_create.py
+index c3ab5eb6a..1381fb6d1 100644
+--- a/src/molecule/test/a_unit/command/test_create.py
++++ b/src/molecule/test/a_unit/command/test_create.py
+@@ -35,7 +35,7 @@ def _patched_create_setup(mocker):
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+ @pytest.mark.skip(reason="create not running for delegated")
+-def test_execute(
++def test_create_execute(
+     mocker: MockerFixture,
+     caplog,
+     command_patched_ansible_create,
+diff --git a/src/molecule/test/a_unit/command/test_dependency.py b/src/molecule/test/a_unit/command/test_dependency.py
+index 9328d4633..a5c0c79ca 100644
+--- a/src/molecule/test/a_unit/command/test_dependency.py
++++ b/src/molecule/test/a_unit/command/test_dependency.py
+@@ -27,7 +27,7 @@
+ # NOTE(retr0h): The use of the `patched_config_validate` fixture, disables
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+-def test_execute(
++def test_dependency_execute(
+     mocker: MockerFixture,
+     caplog,
+     patched_ansible_galaxy,
+diff --git a/src/molecule/test/a_unit/command/test_destroy.py b/src/molecule/test/a_unit/command/test_destroy.py
+index 465039f35..79645961b 100644
+--- a/src/molecule/test/a_unit/command/test_destroy.py
++++ b/src/molecule/test/a_unit/command/test_destroy.py
+@@ -40,7 +40,7 @@ def _patched_destroy_setup(mocker):
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+ @pytest.mark.skip(reason="destroy not running for delegated")
+-def test_execute(
++def test_destroy_execute(
+     mocker: MockerFixture,
+     caplog,
+     patched_config_validate,
+diff --git a/src/molecule/test/a_unit/command/test_idempotence.py b/src/molecule/test/a_unit/command/test_idempotence.py
+index 181b51bc7..14cea5779 100644
+--- a/src/molecule/test/a_unit/command/test_idempotence.py
++++ b/src/molecule/test/a_unit/command/test_idempotence.py
+@@ -42,7 +42,7 @@ def _instance(patched_config_validate, config_instance: config.Config):
+     return idempotence.Idempotence(config_instance)
+ 
+ 
+-def test_execute(
++def test_idempotence_execute(
+     mocker: MockerFixture,
+     caplog: pytest.LogCaptureFixture,
+     patched_ansible_converge,
+diff --git a/src/molecule/test/a_unit/command/test_list.py b/src/molecule/test/a_unit/command/test_list.py
+index cf414da4c..2f075dab4 100644
+--- a/src/molecule/test/a_unit/command/test_list.py
++++ b/src/molecule/test/a_unit/command/test_list.py
+@@ -23,7 +23,7 @@
+ from molecule.driver import base
+ 
+ 
+-def test_execute(capsys, config_instance: config.Config):
++def test_list_execute(capsys, config_instance: config.Config):
+     l = list.List(config_instance)
+     x = [
+         base.Status(
+diff --git a/src/molecule/test/a_unit/command/test_login.py b/src/molecule/test/a_unit/command/test_login.py
+index 5fa4de717..76c1653e1 100644
+--- a/src/molecule/test/a_unit/command/test_login.py
++++ b/src/molecule/test/a_unit/command/test_login.py
+@@ -33,7 +33,7 @@ def _instance(config_instance: config.Config):
+     return login.Login(config_instance)
+ 
+ 
+-def test_execute(mocker: MockerFixture, _instance):
++def test_login_execute(mocker: MockerFixture, _instance):
+     _instance._config.command_args = {"host": "instance-1"}
+     m = mocker.patch("molecule.command.login.Login._get_login")
+     _instance.execute()
+diff --git a/src/molecule/test/a_unit/command/test_prepare.py b/src/molecule/test/a_unit/command/test_prepare.py
+index 535514bc0..1ebc31c00 100644
+--- a/src/molecule/test/a_unit/command/test_prepare.py
++++ b/src/molecule/test/a_unit/command/test_prepare.py
+@@ -35,7 +35,7 @@ def _patched_ansible_prepare(mocker):
+ # NOTE(retr0h): The use of the `patched_config_validate` fixture, disables
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+-def test_execute(
++def test_prepare_execute(
+     mocker: MockerFixture,
+     caplog,
+     _patched_ansible_prepare,
+@@ -71,7 +71,7 @@ def test_execute_skips_when_instances_already_prepared(
+     assert not _patched_ansible_prepare.called
+ 
+ 
+-def test_execute_skips_when_playbook_not_configured(
++def test_prepare_execute_skips_when_playbook_not_configured(
+     caplog,
+     _patched_ansible_prepare,
+     config_instance: config.Config,
+diff --git a/src/molecule/test/a_unit/command/test_side_effect.py b/src/molecule/test/a_unit/command/test_side_effect.py
+index 21627070c..90d647906 100644
+--- a/src/molecule/test/a_unit/command/test_side_effect.py
++++ b/src/molecule/test/a_unit/command/test_side_effect.py
+@@ -50,7 +50,7 @@ def _patched_ansible_side_effect(mocker):
+     ["_command_provisioner_section_with_side_effect_data"],
+     indirect=True,
+ )
+-def test_execute(
++def test_side_effect_execute(
+     mocker: MockerFixture,
+     _patched_ansible_side_effect,
+     caplog,
+@@ -69,7 +69,7 @@ def test_execute(
+     _patched_ansible_side_effect.assert_called_once_with(None)
+ 
+ 
+-def test_execute_skips_when_playbook_not_configured(
++def test_side_effect_execute_skips_when_playbook_not_configured(
+     caplog,
+     _patched_ansible_side_effect,
+     config_instance: config.Config,
+diff --git a/src/molecule/test/a_unit/command/test_syntax.py b/src/molecule/test/a_unit/command/test_syntax.py
+index 580b83f30..9147f051d 100644
+--- a/src/molecule/test/a_unit/command/test_syntax.py
++++ b/src/molecule/test/a_unit/command/test_syntax.py
+@@ -33,7 +33,7 @@ def _patched_ansible_syntax(mocker):
+ # NOTE(retr0h): The use of the `patched_config_validate` fixture, disables
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+-def test_execute(
++def test_syntax_execute(
+     mocker: MockerFixture,
+     caplog,
+     _patched_ansible_syntax,
+diff --git a/src/molecule/test/a_unit/command/test_verify.py b/src/molecule/test/a_unit/command/test_verify.py
+index 4a4a5fa96..a334a5d7f 100644
+--- a/src/molecule/test/a_unit/command/test_verify.py
++++ b/src/molecule/test/a_unit/command/test_verify.py
+@@ -27,7 +27,7 @@
+ # NOTE(retr0h): The use of the `patched_config_validate` fixture, disables
+ # config.Config._validate from executing.  Thus preventing odd side-effects
+ # throughout patched.assert_called unit tests.
+-def test_execute(
++def test_verify_execute(
+     mocker: MockerFixture,
+     caplog,
+     patched_default_verifier,
+diff --git a/src/molecule/test/a_unit/dependency/ansible_galaxy/test_collections.py b/src/molecule/test/a_unit/dependency/ansible_galaxy/test_collections.py
+index e4796b82d..fd1a80e85 100644
+--- a/src/molecule/test/a_unit/dependency/ansible_galaxy/test_collections.py
++++ b/src/molecule/test/a_unit/dependency/ansible_galaxy/test_collections.py
+@@ -65,17 +65,17 @@ def role_file(_instance):
+     return os.path.join(_instance._config.scenario.directory, "collections.yml")
+ 
+ 
+-def test_config_private_member(_instance):
++def test_collections_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+-def test_default_options_property(_instance, role_file):
++def test_collections_default_options_property(_instance, role_file):
+     x = {"requirements-file": role_file, "force": False}
+ 
+     assert x == _instance.default_options
+ 
+ 
+-def test_default_env_property(_instance):
++def test_collections_default_env_property(_instance):
+     env = _instance.default_env
+ 
+     assert "MOLECULE_FILE" in env
+@@ -84,16 +84,16 @@ def test_default_env_property(_instance):
+     assert "MOLECULE_INSTANCE_CONFIG" in env
+ 
+ 
+-def test_name_property(_instance):
++def test_collections_name_property(_instance):
+     assert _instance.name == "galaxy"
+ 
+ 
+-def test_enabled_property(_instance):
++def test_collections_enabled_property(_instance):
+     assert _instance.enabled
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_options_property(_instance, role_file):
++def test_collections_options_property(_instance, role_file):
+     x = {
+         "force": False,
+         "requirements-file": role_file,
+@@ -105,7 +105,7 @@ def test_options_property(_instance, role_file):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_options_property_handles_cli_args(role_file, _instance):
++def test_collections_options_property_handles_cli_args(role_file, _instance):
+     _instance._config.args = {"debug": True}
+     x = {
+         "force": False,
+@@ -118,7 +118,7 @@ def test_options_property_handles_cli_args(role_file, _instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_env_property(_instance):
++def test_collections_env_property(_instance):
+     assert _instance.env["FOO"] == "bar"
+ 
+ 
+@@ -138,7 +138,7 @@ def test_collections_bake(_instance, role_file):
+     assert _instance._sh_command == args
+ 
+ 
+-def test_execute(
++def test_collections_execute(
+     patched_run_command,
+     _patched_ansible_galaxy_has_requirements_file,
+     caplog,
+@@ -157,7 +157,7 @@ def test_execute(
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_does_not_execute_when_disabled(
++def test_collections_execute_does_not_execute_when_disabled(
+     patched_run_command,
+     caplog,
+     _instance,
+@@ -171,7 +171,7 @@ def test_execute_does_not_execute_when_disabled(
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_does_not_execute_when_no_requirements_file(
++def test_collections_execute_does_not_execute_when_no_requirements_file(
+     patched_run_command,
+     _patched_ansible_galaxy_has_requirements_file,
+     caplog,
+@@ -186,7 +186,7 @@ def test_execute_does_not_execute_when_no_requirements_file(
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_bakes(
++def test_collections_execute_bakes(
+     patched_run_command,
+     _instance,
+     role_file,
+@@ -209,13 +209,13 @@ def test_collections_executes_catches_and_exits_return_code(
+     assert e.value.code == 1
+ 
+ 
+-def test_setup(_instance):
++def test_collections_setup(_instance):
+     _instance._setup()
+ 
+ 
+-def test_role_file(role_file, _instance):
++def test_collections_role_file(role_file, _instance):
+     assert role_file == _instance.requirements_file
+ 
+ 
+-def test_has_requirements_file(_instance):
++def test_collections_has_requirements_file(_instance):
+     assert not _instance._has_requirements_file()
+diff --git a/src/molecule/test/a_unit/dependency/ansible_galaxy/test_roles.py b/src/molecule/test/a_unit/dependency/ansible_galaxy/test_roles.py
+index 44048c6e0..39b19b9b8 100644
+--- a/src/molecule/test/a_unit/dependency/ansible_galaxy/test_roles.py
++++ b/src/molecule/test/a_unit/dependency/ansible_galaxy/test_roles.py
+@@ -64,17 +64,17 @@ def role_file(_instance):
+     return os.path.join(_instance._config.scenario.directory, "requirements.yml")
+ 
+ 
+-def test_config_private_member(_instance):
++def test_roles_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+-def test_default_options_property(_instance, role_file):
++def test_roles_default_options_property(_instance, role_file):
+     x = {"role-file": role_file, "force": False}
+ 
+     assert x == _instance.default_options
+ 
+ 
+-def test_default_env_property(_instance):
++def test_roles_default_env_property(_instance):
+     env = _instance.default_env
+ 
+     assert "MOLECULE_FILE" in env
+@@ -83,16 +83,16 @@ def test_default_env_property(_instance):
+     assert "MOLECULE_INSTANCE_CONFIG" in env
+ 
+ 
+-def test_name_property(_instance):
++def test_roles_name_property(_instance):
+     assert _instance.name == "galaxy"
+ 
+ 
+-def test_enabled_property(_instance):
++def test_roles_enabled_property(_instance):
+     assert _instance.enabled
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_options_property(_instance, role_file):
++def test_roles_options_property(_instance, role_file):
+     x = {
+         "force": False,
+         "role-file": role_file,
+@@ -104,7 +104,7 @@ def test_options_property(_instance, role_file):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_options_property_handles_cli_args(role_file, _instance):
++def test_roles_options_property_handles_cli_args(role_file, _instance):
+     _instance._config.args = {"debug": True}
+     x = {
+         "force": False,
+@@ -117,7 +117,7 @@ def test_options_property_handles_cli_args(role_file, _instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_env_property(_instance):
++def test_roles_env_property(_instance):
+     assert _instance.env["FOO"] == "bar"
+ 
+ 
+@@ -155,7 +155,7 @@ def test_execute(
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_does_not_execute_when_disabled(
++def test_roles_execute_does_not_execute_when_disabled(
+     patched_run_command,
+     caplog,
+     _instance,
+@@ -169,7 +169,7 @@ def test_execute_does_not_execute_when_disabled(
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_does_not_execute_when_no_requirements_file(
++def test_roles_execute_does_not_execute_when_no_requirements_file(
+     patched_run_command,
+     _patched_ansible_galaxy_has_requirements_file,
+     caplog,
+@@ -184,7 +184,7 @@ def test_execute_does_not_execute_when_no_requirements_file(
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_bakes(
++def test_roles_execute_bakes(
+     patched_run_command,
+     _instance,
+     role_file,
+@@ -212,5 +212,5 @@ def test_role_file(role_file, _instance):
+     assert role_file == _instance.requirements_file
+ 
+ 
+-def test_has_requirements_file(_instance):
++def test_roles_has_requirements_file(_instance):
+     assert not _instance._has_requirements_file()
+diff --git a/src/molecule/test/a_unit/dependency/test_shell.py b/src/molecule/test/a_unit/dependency/test_shell.py
+index 387fe157d..cf896099e 100644
+--- a/src/molecule/test/a_unit/dependency/test_shell.py
++++ b/src/molecule/test/a_unit/dependency/test_shell.py
+@@ -49,17 +49,17 @@ def _instance(
+     return shell.Shell(config_instance)
+ 
+ 
+-def test_config_private_member(_instance):
++def test_shell_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+-def test_default_options_property(_instance):
++def test_shell_default_options_property(_instance):
+     x = {}
+ 
+     assert x == _instance.default_options
+ 
+ 
+-def test_default_env_property(_instance):
++def test_shell_default_env_property(_instance):
+     assert "MOLECULE_FILE" in _instance.default_env
+     assert "MOLECULE_INVENTORY_FILE" in _instance.default_env
+     assert "MOLECULE_SCENARIO_DIRECTORY" in _instance.default_env
+@@ -67,23 +67,23 @@ def test_default_env_property(_instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_name_property(_instance):
++def test_shell_name_property(_instance):
+     assert _instance.name == "shell"
+ 
+ 
+-def test_enabled_property(_instance):
++def test_shell_enabled_property(_instance):
+     assert _instance.enabled
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_options_property(_instance):
++def test_shell_options_property(_instance):
+     x = {"foo": "bar"}
+ 
+     assert x == _instance.options
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_options_property_handles_cli_args(_instance):
++def test_shell_options_property_handles_cli_args(_instance):
+     _instance._config.args = {}
+     x = {"foo": "bar"}
+ 
+@@ -91,11 +91,15 @@ def test_options_property_handles_cli_args(_instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_env_property(_instance):
++def test_shell_env_property(_instance):
+     assert _instance.env["FOO"] == "bar"
+ 
+ 
+-def test_execute(patched_run_command, caplog: pytest.LogCaptureFixture, _instance):
++def test_shell_execute(
++    patched_run_command,
++    caplog: pytest.LogCaptureFixture,
++    _instance,
++):
+     _instance._sh_command = "patched-command"
+     _instance.execute()
+ 
+@@ -109,7 +113,7 @@ def test_execute(patched_run_command, caplog: pytest.LogCaptureFixture, _instanc
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_does_not_execute_when_disabled(
++def test_shell_execute_does_not_execute_when_disabled(
+     patched_run_command,
+     caplog: pytest.LogCaptureFixture,
+     _instance,
+@@ -124,7 +128,7 @@ def test_execute_does_not_execute_when_disabled(
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_dependency_section_data"], indirect=True)
+-def test_execute_bakes(patched_run_command, _instance):
++def test_dependency_execute_bakes(patched_run_command, _instance):
+     _instance.execute()
+     assert patched_run_command.call_count == 1
+ 
+diff --git a/src/molecule/test/a_unit/driver/test_delegated.py b/src/molecule/test/a_unit/driver/test_delegated.py
+index 3e1b32cc7..d78d54fd6 100644
+--- a/src/molecule/test/a_unit/driver/test_delegated.py
++++ b/src/molecule/test/a_unit/driver/test_delegated.py
+@@ -57,18 +57,18 @@ def _instance(config_instance: config.Config):
+     return delegated.Delegated(config_instance)
+ 
+ 
+-def test_config_private_member(_instance):
++def test_delegated_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+-def test_testinfra_options_property(_instance):
++def test_delegated_options_property2(_instance):
+     assert {
+         "connection": "ansible",
+         "ansible-inventory": _instance._config.provisioner.inventory_directory,
+     } == _instance.testinfra_options
+ 
+ 
+-def test_name_property(_instance):
++def test_delegated_name_property(_instance):
+     assert _instance.name == "default"
+ 
+ 
+@@ -77,7 +77,7 @@ def test_name_property(_instance):
+     ["_driver_unmanaged_section_data"],
+     indirect=True,
+ )
+-def test_options_property(_instance):
++def test_delegated_options_property(_instance):
+     x = {
+         "managed": False,
+     }
+@@ -90,7 +90,7 @@ def test_options_property(_instance):
+     ["_driver_managed_section_data"],
+     indirect=True,
+ )
+-def test_options_property_when_managed(_instance):
++def test_delegated_options_property_when_managed(_instance):
+     x = {"managed": True}
+ 
+     assert x == _instance.options
+@@ -331,7 +331,7 @@ def test_status(mocker: MockerFixture, _instance):
+     assert result[1].converged == "false"
+ 
+ 
+-def test_created(_instance):
++def test_delegated_created(_instance):
+     assert _instance._created() == "false"
+ 
+ 
+diff --git a/src/molecule/test/a_unit/provisioner/test_ansible.py b/src/molecule/test/a_unit/provisioner/test_ansible.py
+index 76e928159..f69bb54b0 100644
+--- a/src/molecule/test/a_unit/provisioner/test_ansible.py
++++ b/src/molecule/test/a_unit/provisioner/test_ansible.py
+@@ -92,7 +92,7 @@ def _instance(_provisioner_section_data, config_instance: config.Config):
+     return ansible.Ansible(config_instance)
+ 
+ 
+-def test_config_private_member(_instance):
++def test_profisioner_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+@@ -117,11 +117,11 @@ def test_default_config_options_property(_instance):
+     assert x == _instance.default_config_options
+ 
+ 
+-def test_default_options_property(_instance):
++def test_provisioner_default_options_property(_instance):
+     assert {"skip-tags": "molecule-notest,notest"} == _instance.default_options
+ 
+ 
+-def test_default_env_property(_instance):
++def test_ansible_default_env_property(_instance):
+     x = _instance._config.provisioner.config_file
+ 
+     assert x == _instance.default_env["ANSIBLE_CONFIG"]
+@@ -135,7 +135,7 @@ def test_default_env_property(_instance):
+     assert "ANSIBLE_FILTER_PLUGINS" in _instance.env
+ 
+ 
+-def test_name_property(_instance):
++def test_provisioner_name_property(_instance):
+     assert _instance.name == "ansible"
+ 
+ 
+@@ -170,20 +170,20 @@ def test_config_options_property(_instance):
+     ["_provisioner_section_data"],
+     indirect=True,
+ )
+-def test_options_property(_instance):
++def test_ansible_options_property(_instance):
+     x = {"become": True, "foo": "bar", "v": True, "skip-tags": "molecule-notest,notest"}
+ 
+     assert x == _instance.options
+ 
+ 
+-def test_options_property_does_not_merge(_instance):
++def test_ansible_options_property_does_not_merge(_instance):
+     for action in ["create", "destroy"]:
+         _instance._config.action = action
+ 
+         assert {"skip-tags": "molecule-notest,notest"} == _instance.options
+ 
+ 
+-def test_options_property_handles_cli_args(_instance):
++def test_provisioner_ansible_options_property_handles_cli_args(_instance):
+     _instance._config.args = {"debug": True}
+     x = {
+         "vvv": True,
+@@ -200,7 +200,7 @@ def test_options_property_handles_cli_args(_instance):
+     ["_provisioner_section_data"],
+     indirect=True,
+ )
+-def test_env_property(_instance):
++def test_provisioner_env_property(_instance):
+     x = _instance._config.provisioner.config_file
+ 
+     assert x == _instance.env["ANSIBLE_CONFIG"]
+@@ -306,7 +306,7 @@ def test_playbooks_property(_instance):
+     assert isinstance(_instance.playbooks, ansible_playbooks.AnsiblePlaybooks)
+ 
+ 
+-def test_directory_property(_instance):
++def test_provisioner_directory_property(_instance):
+     result = _instance.directory
+     parts = os_split(result)
+ 
+@@ -457,7 +457,7 @@ def test_verify(_instance, mocker: MockerFixture, _patched_ansible_playbook):
+         _patched_ansible_playbook.return_value.execute.assert_called_once_with()
+ 
+ 
+-def test_write_config(temp_dir, _instance):
++def test_ansible_write_config(temp_dir, _instance):
+     _instance.write_config()
+ 
+     assert os.path.isfile(_instance.config_file)
+diff --git a/src/molecule/test/a_unit/provisioner/test_ansible_playbook.py b/src/molecule/test/a_unit/provisioner/test_ansible_playbook.py
+index 31600982c..ebd21bc93 100644
+--- a/src/molecule/test/a_unit/provisioner/test_ansible_playbook.py
++++ b/src/molecule/test/a_unit/provisioner/test_ansible_playbook.py
+@@ -194,7 +194,7 @@ def test_execute_playbook(patched_run_command, _instance):
+     assert result == "patched-run-command-stdout"
+ 
+ 
+-def test_execute_bakes(_inventory_directory, patched_run_command, _instance):
++def test_ansible_execute_bakes(_inventory_directory, patched_run_command, _instance):
+     _instance.execute()
+ 
+     assert _instance._ansible_command is not None
+diff --git a/src/molecule/test/a_unit/test_scenario.py b/src/molecule/test/a_unit/test_scenario.py
+index 539d53a07..d9f2748ba 100644
+--- a/src/molecule/test/a_unit/test_scenario.py
++++ b/src/molecule/test/a_unit/test_scenario.py
+@@ -79,15 +79,15 @@ def test_config_member(_instance):
+     assert isinstance(_instance.config, config.Config)
+ 
+ 
+-def test_init_calls_setup(patched_scenario_setup, _instance):
++def test_scenario_init_calls_setup(patched_scenario_setup, _instance):
+     patched_scenario_setup.assert_called_once_with()
+ 
+ 
+-def test_name_property(_instance):
++def test_scenario_name_property(_instance):
+     assert _instance.name == "default"
+ 
+ 
+-def test_directory_property(molecule_scenario_directory_fixture, _instance):
++def test_scenario_directory_property(molecule_scenario_directory_fixture, _instance):
+     assert molecule_scenario_directory_fixture == _instance.directory
+ 
+ 
+@@ -95,7 +95,7 @@ def test_ephemeral_directory_property(_instance):
+     assert os.access(_instance.ephemeral_directory, os.W_OK)
+ 
+ 
+-def test_inventory_directory_property(_instance):
++def test_scenario_inventory_directory_property(_instance):
+     ephemeral_directory = _instance.config.scenario.ephemeral_directory
+     e_dir = os.path.join(ephemeral_directory, "inventory")
+ 
+diff --git a/src/molecule/test/a_unit/test_state.py b/src/molecule/test/a_unit/test_state.py
+index f4332545e..6e3d244e7 100644
+--- a/src/molecule/test/a_unit/test_state.py
++++ b/src/molecule/test/a_unit/test_state.py
+@@ -44,7 +44,7 @@ def test_created(_instance):
+     assert not _instance.created
+ 
+ 
+-def test_driver(_instance):
++def test_state_driver(_instance):
+     assert not _instance.driver
+ 
+ 
+diff --git a/src/molecule/test/a_unit/verifier/test_ansible.py b/src/molecule/test/a_unit/verifier/test_ansible.py
+index 3ebda2278..05d89c34b 100644
+--- a/src/molecule/test/a_unit/verifier/test_ansible.py
++++ b/src/molecule/test/a_unit/verifier/test_ansible.py
+@@ -31,15 +31,15 @@ def _instance(
+     return ansible.Ansible(config_instance)
+ 
+ 
+-def test_config_private_member(_instance):
++def test_verifier_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+-def test_default_options_property(_instance):
++def test_verifier_default_options_property(_instance):
+     assert {} == _instance.default_options
+ 
+ 
+-def test_default_env_property(_instance):
++def test_verifier_ansible_default_env_property(_instance):
+     assert "MOLECULE_FILE" in _instance.default_env
+     assert "MOLECULE_INVENTORY_FILE" in _instance.default_env
+     assert "MOLECULE_SCENARIO_DIRECTORY" in _instance.default_env
+@@ -47,40 +47,40 @@ def test_default_env_property(_instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_verifier_section_data"], indirect=True)
+-def test_env_property(_instance):
++def test_verifier_env_property(_instance):
+     assert _instance.env["FOO"] == "bar"
+ 
+ 
+-def test_name_property(_instance):
++def test_verifier_name_property(_instance):
+     assert _instance.name == "ansible"
+ 
+ 
+-def test_enabled_property(_instance):
++def test_ansible_enabled_property(_instance):
+     assert _instance.enabled
+ 
+ 
+-def test_directory_property(_instance):
++def test_verifier_directory_property(_instance):
+     parts = _instance.directory.split(os.path.sep)
+     # Unused by Ansible verifier
+     assert ["molecule", "default", "tests"] == parts[-3:]
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_verifier_section_data"], indirect=True)
+-def test_options_property(_instance):
++def test_verifier_ansible_options_property(_instance):
+     x = {}
+ 
+     assert x == _instance.options
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_verifier_section_data"], indirect=True)
+-def test_options_property_handles_cli_args(_instance):
++def test_verifier_ansible_options_property_handles_cli_args(_instance):
+     _instance._config.args = {"debug": True}
+     x = {}
+ 
+     assert x == _instance.options
+ 
+ 
+-def test_execute(caplog, _patched_ansible_verify, _instance):
++def test_ansible_execute(caplog, _patched_ansible_verify, _instance):
+     _instance.execute()
+ 
+     _patched_ansible_verify.assert_called_once_with(None)
+diff --git a/src/molecule/test/a_unit/verifier/test_testinfra.py b/src/molecule/test/a_unit/verifier/test_testinfra.py
+index 640790a4c..6027d3746 100644
+--- a/src/molecule/test/a_unit/verifier/test_testinfra.py
++++ b/src/molecule/test/a_unit/verifier/test_testinfra.py
+@@ -64,11 +64,11 @@ def inventory_directory(_instance):
+     return _instance._config.provisioner.inventory_directory
+ 
+ 
+-def test_config_private_member(_instance):
++def test_testinfra_config_private_member(_instance):
+     assert isinstance(_instance._config, config.Config)
+ 
+ 
+-def test_default_options_property(inventory_directory, _instance):
++def test_testinfra_default_options_property(inventory_directory, _instance):
+     x = {
+         "connection": "ansible",
+         "ansible-inventory": inventory_directory,
+@@ -107,7 +107,7 @@ def test_default_options_property_updates_sudo(
+     assert x == _instance.default_options
+ 
+ 
+-def test_default_env_property(_instance):
++def test_testinfra_default_env_property(_instance):
+     assert "MOLECULE_FILE" in _instance.default_env
+     assert "MOLECULE_INVENTORY_FILE" in _instance.default_env
+     assert "MOLECULE_SCENARIO_DIRECTORY" in _instance.default_env
+@@ -134,7 +134,7 @@ def test_additional_files_or_dirs_property(_instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_verifier_section_data"], indirect=True)
+-def test_env_property(_instance):
++def test_testinfra_env_property(_instance):
+     assert _instance.env["FOO"] == "bar"
+     assert "ANSIBLE_CONFIG" in _instance.env
+     assert "ANSIBLE_ROLES_PATH" in _instance.env
+@@ -142,15 +142,15 @@ def test_env_property(_instance):
+     assert "ANSIBLE_FILTER_PLUGINS" in _instance.env
+ 
+ 
+-def test_name_property(_instance):
++def test_testinfra_name_property(_instance):
+     assert _instance.name == "testinfra"
+ 
+ 
+-def test_enabled_property(_instance):
++def test_testinfra_enabled_property(_instance):
+     assert _instance.enabled
+ 
+ 
+-def test_directory_property(_instance):
++def test_testinfra_directory_property(_instance):
+     parts = _instance.directory.split(os.path.sep)
+ 
+     assert ["molecule", "default", "tests"] == parts[-3:]
+@@ -171,7 +171,7 @@ def test_directory_property_overridden(_instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_verifier_section_data"], indirect=True)
+-def test_options_property(inventory_directory, _instance):
++def test_testinfra_options_property(inventory_directory, _instance):
+     x = {
+         "connection": "ansible",
+         "ansible-inventory": inventory_directory,
+@@ -185,7 +185,7 @@ def test_options_property(inventory_directory, _instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_verifier_section_data"], indirect=True)
+-def test_options_property_handles_cli_args(inventory_directory, _instance):
++def test_tesinfra_options_property_handles_cli_args(inventory_directory, _instance):
+     _instance._config.args = {"debug": True}
+     x = {
+         "connection": "ansible",
+@@ -201,7 +201,7 @@ def test_options_property_handles_cli_args(inventory_directory, _instance):
+ 
+ 
+ @pytest.mark.parametrize("config_instance", ["_verifier_section_data"], indirect=True)
+-def test_bake(_patched_testinfra_get_tests, inventory_directory, _instance):
++def test_testinfra_bake(_patched_testinfra_get_tests, inventory_directory, _instance):
+     _instance._tests = ["foo.py", "bar.py"]
+     _instance.bake()
+     args = [
+@@ -222,7 +222,7 @@ def test_bake(_patched_testinfra_get_tests, inventory_directory, _instance):
+     assert _instance._testinfra_command == args
+ 
+ 
+-def test_execute(
++def test_testinfra_execute(
+     caplog,
+     patched_run_command,
+     _patched_testinfra_get_tests,
+@@ -239,7 +239,7 @@ def test_execute(
+     assert "pytest" == patched_run_command.call_args[0][0][0]
+ 
+ 
+-def test_execute_does_not_execute(
++def test_testinfra_execute_does_not_execute(
+     patched_run_command,
+     caplog,
+     _instance,
+@@ -266,7 +266,11 @@ def test_does_not_execute_without_tests(
+     assert msg in caplog.text
+ 
+ 
+-def test_execute_bakes(patched_run_command, _patched_testinfra_get_tests, _instance):
++def test_testinfra_execute_bakes(
++    patched_run_command,
++    _patched_testinfra_get_tests,
++    _instance,
++):
+     _instance.execute()
+ 
+     assert _instance._testinfra_command is not None
+diff --git a/src/molecule/test/b_functional/test_command.py b/src/molecule/test/b_functional/test_command.py
+index 05f8c68da..14c15cd7c 100644
+--- a/src/molecule/test/b_functional/test_command.py
++++ b/src/molecule/test/b_functional/test_command.py
+@@ -70,7 +70,7 @@ def platform_name(request):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -83,7 +83,7 @@ def test_command_check(scenario_to_test, with_scenario, scenario_name):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -97,7 +97,7 @@ def test_command_cleanup(scenario_to_test, with_scenario, scenario_name):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -111,7 +111,7 @@ def test_command_converge(scenario_to_test, with_scenario, scenario_name):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -152,7 +152,7 @@ def test_command_dependency(request, scenario_to_test, with_scenario, scenario_n
+ @pytest.mark.extensive()
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+-    [("driver/delegated", "default", "default")],
++    [pytest.param("driver/delegated", "default", "default", id="0")],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+ def test_command_destroy(scenario_to_test, with_scenario, scenario_name):
+@@ -165,7 +165,7 @@ def test_command_destroy(scenario_to_test, with_scenario, scenario_name):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -182,10 +182,11 @@ def test_command_init_scenario(temp_dir):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "expected"),
+     [
+-        (
++        pytest.param(
+             "driver/delegated",
+             "default",
+             "instance        default ansible default",
++            id="0",
+         ),
+     ],
+     indirect=["scenario_to_test", "driver_name"],
+@@ -199,7 +200,7 @@ def test_command_list_with_format_plain(scenario_to_test, with_scenario, expecte
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -216,7 +217,7 @@ def test_command_prepare(scenario_to_test, with_scenario, scenario_name):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -230,7 +231,7 @@ def test_command_side_effect(scenario_to_test, with_scenario, scenario_name):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -243,7 +244,7 @@ def test_command_syntax(scenario_to_test, with_scenario, scenario_name):
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )
+@@ -280,7 +281,7 @@ def run_test_with_platform_name(
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name", "platform_name"),
+     [
+-        ("driver/delegated", "default", "default", "instance"),
++        pytest.param("driver/delegated", "default", "default", "instance", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name", "platform_name"],
+ )
+@@ -298,10 +299,11 @@ def test_command_test_with_platform_name(
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        (
++        pytest.param(
+             "driver/delegated_invalid_role_name_with_role_name_check_equals_to_1",
+             "default",
+             "default",
++            id="0",
+         ),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+@@ -320,7 +322,7 @@ def test_command_test_with_role_name_check_equals_to_1(
+ @pytest.mark.parametrize(
+     ("scenario_to_test", "driver_name", "scenario_name"),
+     [
+-        ("driver/delegated", "default", "default"),
++        pytest.param("driver/delegated", "default", "default", id="0"),
+     ],
+     indirect=["scenario_to_test", "driver_name", "scenario_name"],
+ )

@@ -45,6 +45,7 @@ Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
 URL:            https://github.com/ansible-community/molecule
 Source:         https://files.pythonhosted.org/packages/source/m/molecule/molecule-%{version}.tar.gz
+Patch1:         4ab4f1c7_improve_test_names.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
@@ -102,7 +103,7 @@ systems and distributions, virtualization providers, test frameworks and
 testing scenarios.
 
 %prep
-%setup -q -n molecule-%{version}
+%autosetup -p 1 -n molecule-%{version}
 
 %build
 %pyproject_wheel
