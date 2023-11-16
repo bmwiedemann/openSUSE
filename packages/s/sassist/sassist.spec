@@ -1,7 +1,7 @@
 #
 # spec file for package sassist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Dell, Inc.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +12,7 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
@@ -25,9 +25,9 @@ License:        MIT
 Group:          System/Monitoring
 URL:            http://www.dell.com/en-us/work/learn/supportassist
 Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  systemd
-Requires:       supportutils
+BuildRequires:  pkgconfig(systemd)
 Requires:       freeipmi
+Requires:       supportutils
 Requires:       zip
 BuildArch:      noarch
 
@@ -63,3 +63,5 @@ install -p -m644 src/systemd/run-media-iDRAC_NATOSC.mount %{buildroot}%{_unitdir
 
 %postun
 %systemd_postun_with_restart sassist.service
+
+%changelog
