@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:23:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.5.3:
+  * Update release.md
+  * build(deps): bump golang.org/x/time from 0.3.0 to 0.4.0
+  * pipelines: go/build: add support for go.mod overlay files
+  * build(deps): bump cloud.google.com/go/storage from 1.33.0 to
+    1.35.1
+  * go mod tidy
+  * update go-apk dependency
+  * build(deps): bump sigstore/cosign-installer from 3.1.2 to 3.2.0
+  * build(deps): bump go.opentelemetry.io/otel from 1.19.0 to
+    1.20.0
+  * apply substitutions to .environment.contents.packages
+  * test runtime replacements
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.2.0 to
+    2.2.1
+  * build(deps): bump google.golang.org/api from 0.149.0 to 0.150.0
+  * go mod tidy
+  * use merged PR
+  * update dep
+  * use pushed PRs
+  * WIP: use forked alpine-go in go-apk
+  * move spammy logs to debugf
+
+-------------------------------------------------------------------
 Thu Nov 09 14:56:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.5.2:
