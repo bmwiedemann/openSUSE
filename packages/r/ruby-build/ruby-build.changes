@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 15 16:40:56 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20231114.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20231114
+  * Fix commands printed when TMPDIR is empty by @mislav in #2303
+  * Add option flags to ruby-build man page by @mislav in #2302
+  * Abandon using `--show-progress` for wget by @mislav in #2304
+  * Added 3.3.0-preview3 by @andreimaxim in #2310
+
+-------------------------------------------------------------------
 Tue Nov  7 21:13:29 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20231107.
