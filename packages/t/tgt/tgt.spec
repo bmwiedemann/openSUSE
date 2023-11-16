@@ -25,7 +25,7 @@
   %define make_build %{__make} %{?_smp_mflags}
 %endif
 Name:           tgt
-Version:        1.0.85
+Version:        1.0.89
 Release:        0
 Summary:        Generic Linux target framework (tgt)
 License:        GPL-2.0-only

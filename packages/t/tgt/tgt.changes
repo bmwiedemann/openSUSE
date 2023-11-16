@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 15 07:31:31 UTC 2023 - ming li <mli@suse.com>
+
+- Update to version v1.0.89 (from 1.0.85):
+  * tgt 1.0.89
+  * tgtd.initd
+    add missing
+  * Prevents threads from looping indefinitely
+  * tgt 1.0.88
+  * Create tgtd.confd
+    /etc/conf.d/tgtd config file for openrc init system
+  * openrc init script
+    An openrc init script for tgtd.
+  * tgt 1.0.87
+  * fix posix_fallocate ret check
+    "posix_fallocate() returns zero on success, or an error number on failure. Note that errno is not set."
+  * Add rotation_rate parameter to tgtadm.8.xml
+    Add `rotation_rate` parameter and description.
+  * tgt 1.0.86
+  * fix: unused function errors
+  * add github actions CI
+    just build test.
+  * README: minor update
+    update URLs.
+    remove too old kernel version info. 
+
+-------------------------------------------------------------------
 Mon Jan  2 13:28:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.85:

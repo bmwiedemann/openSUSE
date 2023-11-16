@@ -345,4 +345,12 @@ Most of the source code files carry a GPL-2.0 notice, not GPL-2.0+ (forwarded re
   * dropped tgt-include-sys-macros-for-major.patch (obsolete)</comment>
     <requestid>1046187</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6937421fc7ea6b8fac40995c2955b47c</srcmd5>
+    <version>1.0.89</version>
+    <time>1700163113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127146</requestid>
+  </revision>
 </revisionlist>
