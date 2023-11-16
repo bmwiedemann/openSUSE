@@ -346,4 +346,13 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     <comment></comment>
     <requestid>1124050</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>35af6f2a3f24c2013c55762ba3768b7f</srcmd5>
+    <version>2.5.5.0</version>
+    <time>1700163013</time>
+    <user>anag+factory</user>
+    <comment>- revert the workaround again now that we have the proper cmake for
+  zlib 1.3</comment>
+    <requestid>1126933</requestid>
+  </revision>
 </revisionlist>

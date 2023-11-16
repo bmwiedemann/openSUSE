@@ -215,11 +215,6 @@ make %{?_smp_mflags} doxygen
 %install
 %cmake_install
 
-# workaround for https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4049
-perl -p -i.back -e 's|find_dependency\(ZLIB.*\)|find_dependency(ZLIB)|g' $(find %{buildroot} -iname OpenImageIOConfig.cmake)
-diff -urN $(find %{buildroot} -iname OpenImageIOConfig.cmake){.back,} ||:
-rm $(find %{buildroot} -iname OpenImageIOConfig.cmake).back 
-
 # Create and own the default plugin directory
 mkdir -p %{buildroot}%{_libdir}/%{name}-%{major_minor_ver}
 
