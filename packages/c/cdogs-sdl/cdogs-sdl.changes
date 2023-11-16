@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov  9 08:38:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Customize hats, hair, facial hair and glasses, plus many bug
+    fixes
+  * Remove quick play
+  * Fix weapons being picked up into incorrect slots
+  * Fix grenades not persisting across levels
+  * Fix bullets not falling
+  * Fix unable to start game with co-op AI, stuck in weapon menu
+  * Fix or replace many files with missing or problematic
+    licenses (@reinerh)
+  * Fix duplicate brass shells
+  * Fix poison grenade icon
+  * Fix incorrect zapper spritesheet
+  * Fix missing music error message
+  * Improve character customization by separating hats, hair,
+    facial hair and glasses
+  * Improve controls info by renaming button1/button2 to
+    fire/switch
+
+-------------------------------------------------------------------
 Tue May 23 15:31:31 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 1.4.2:
@@ -28,7 +50,7 @@ Fri Apr  7 12:45:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 11:15:38 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
-- Update to version 1.4.0 
+- Update to version 1.4.0
   * Fix Spear of Destiny compatibility with steam Wolfenstein 3D
   * Improve several campaigns with auto-melee weapons (Doom, Wolf3D+SoD)
 
