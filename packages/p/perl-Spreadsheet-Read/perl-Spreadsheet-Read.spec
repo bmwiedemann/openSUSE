@@ -18,12 +18,13 @@
 
 %define cpan_name Spreadsheet-Read
 Name:           perl-Spreadsheet-Read
-Version:        0.87
+Version:        0.880.0
 Release:        0
+%define cpan_version 0.88
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Meta-Wrapper for reading spreadsheet data
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
+Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -38,7 +39,11 @@ Requires:       perl(File::Temp) >= 0.22
 Requires:       perl(IO::Scalar)
 Requires:       perl(Test::More) >= 0.88
 Requires:       perl(Test::NoWarnings)
+Provides:       perl(Spreadsheet::Read) = 0.880.0
+%define         __perllib_provides /bin/true
+Recommends:     perl(Data::Dumper) >= 2.188.0
 Recommends:     perl(Data::Peek) >= 0.52
+Recommends:     perl(Encode) >= 3.19
 Recommends:     perl(File::Temp) >= 0.2311
 Recommends:     perl(IO::Scalar)
 %{perl_requires}
@@ -67,9 +72,9 @@ preferred) or Text::CSV_PP (1.05 or up required).
 For SquirrelCalc there is a very simplistic built-in parser
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

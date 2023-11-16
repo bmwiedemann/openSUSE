@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  8 03:07:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.88
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.88	- 07 Nov 2023, H.Merijn Brand
+      * Guard $_ globbering from external bitrotted code
+      * Use recommended and suggested versions based on known CVEs
+      * Improve user feedback on failing xlsx2csv & xlscat
+      * Fix static docs for groff-1.24
+      * Basic support for Excel::ValueReader::XLSX (issue#50)
+      * Allow backend for parser option without version check
+
+-------------------------------------------------------------------
 Thu Mar  9 16:51:41 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Remove nonstdperlpath.patch, fixed paths upstream, thanks Tux :)
