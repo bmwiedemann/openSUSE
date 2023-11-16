@@ -761,6 +761,8 @@ Ignore: util-linux:info
 
 Ignore: polkit-default-privs:polkit
 
+Ignore: libeconf:python-libeconf
+
 # syslog-service only starts with network enabled, but inside OBS we have no network anyway
 Ignore: syslog-service:sysvinit(network)
 Ignore: syslog-service:service(network)
@@ -1518,7 +1520,6 @@ Ignore: cronie:systemd
 Ignore: systemd:kbd
 Ignore: systemd:kmod
 Ignore: systemd:systemd-presets-branding
-Ignore: systemd:dbus-1
 Ignore: systemd:pam-config
 Ignore: systemd:udev
 Ignore: pesign:systemd
