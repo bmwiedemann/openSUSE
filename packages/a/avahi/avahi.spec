@@ -1,5 +1,5 @@
 #
-# spec file for package avahi
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -413,8 +413,8 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -713,8 +713,10 @@ fi
 
 %post autoipd
 %{fillup_only -ns avahi autoipd}
-# Change ownership of /var/lib/avahi-autoipd after upgrade from openSUSE <= 12.3 and SLE <= 11.
-find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:avahi-autoipd {} +
+if getent passwd avahi > /dev/null; then
+  # Change ownership of /var/lib/avahi-autoipd after upgrade from openSUSE <= 12.3 and SLE <= 11.
+  find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:avahi-autoipd {} +
+fi
 
 %ldconfig_scriptlets -n libavahi-client%{avahi_client_sover}
 %ldconfig_scriptlets -n libavahi-common%{avahi_common_sover}

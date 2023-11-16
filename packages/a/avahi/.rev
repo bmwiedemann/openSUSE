@@ -1259,4 +1259,14 @@ Pushing GNOME 45.rc packages</comment>
   byte long (bsc#1215947, CVE-2023-38470). (forwarded request 1121540 from AZhou)</comment>
     <requestid>1121609</requestid>
   </revision>
+  <revision rev="162" vrev="28">
+    <srcmd5>9150e035868f4700d303ca1f7409aa91</srcmd5>
+    <version>0.8</version>
+    <time>1700162813</time>
+    <user>anag+factory</user>
+    <comment>- avahi-autoipd: only migrate files owned by avahi user if said
+  user exists: if the user does not exist (fresh installs), then
+  there is no chance any file is owned by the user (boo#1216730). (forwarded request 1125434 from dimstar)</comment>
+    <requestid>1126603</requestid>
+  </revision>
 </revisionlist>
