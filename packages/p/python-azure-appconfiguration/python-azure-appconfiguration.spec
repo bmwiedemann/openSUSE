@@ -21,21 +21,20 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-appconfiguration
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration/azure-appconfiguration-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration/azure-appconfiguration-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.24.0
+Requires:       python-azure-core >= 1.28.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-isodate >= 0.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
