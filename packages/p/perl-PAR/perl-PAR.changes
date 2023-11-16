@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  2 03:07:21 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.019
+   see /usr/share/doc/packages/perl-PAR/Changes
+
+  1.019  2023-11-01
+  - register XS DLLs extracted into $PAR_TEMP/inc with %PAR::Heavy::FullCache
+    This solves the problems mentioned in GitHub PR #8
+    ("Special case Gtk related dlls to dl_load from the unpacked inc dir")
+    with applications using modules Gtk2, Pango, Cairo and others (this is
+    a Windows only problem)
+  - Heavy.pm: use strict; use warnings
+    Thanks @shawnlaffan
+
+-------------------------------------------------------------------
 Thu Sep 29 03:06:53 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.018

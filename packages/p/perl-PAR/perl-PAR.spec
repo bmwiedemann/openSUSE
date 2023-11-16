@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PAR
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name PAR
 Name:           perl-PAR
-Version:        1.018
+Version:        1.19.0
 Release:        0
+%define cpan_version 1.019
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl Archive Toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -38,6 +39,11 @@ Requires:       perl(AutoLoader) >= 5.66_02
 Requires:       perl(Compress::Zlib) >= 1.30
 Requires:       perl(Digest::SHA) >= 5.45
 Requires:       perl(PAR::Dist) >= 0.32
+Provides:       perl(PAR) = 1.19.0
+Provides:       perl(PAR::Heavy) = 0.12
+Provides:       perl(PAR::SetupProgname) = 1.002
+Provides:       perl(PAR::SetupTemp) = 1.002
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -78,7 +84,7 @@ _pp_ may also be used as _.par_ archives:
 Please see SYNOPSIS for most typical use cases.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
