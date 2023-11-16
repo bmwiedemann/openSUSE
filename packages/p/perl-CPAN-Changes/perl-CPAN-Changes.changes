@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 27 03:06:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.500002
+   see /usr/share/doc/packages/perl-CPAN-Changes/Changes
+
+  0.500002 - 2023-10-26
+    - releasing as stable
+
+  0.500_001 - 2023-08-27
+    - Full rewrite. The new version can parse nested entries to an arbitrary
+      depth, rather than just groups. It can parse many more formats, and can
+      format the outputs more flexibly. This means it can better handle the
+      change logs that actually exist on CPAN.
+    - parsed releases keep their original order
+    - Pass given ChangeLog filename for --check (Tux)
+
+-------------------------------------------------------------------
 Thu Jul 20 12:10:45 UTC 2017 - coolo@suse.com
 
 - disable perl(version) - obsolete by perl
