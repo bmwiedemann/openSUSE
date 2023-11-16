@@ -271,7 +271,6 @@ Requires:       pattern() = file_server
 Requires:       pattern() = fonts
 Requires:       pattern() = fonts_opt
 Requires:       pattern() = games
-Requires:       pattern() = gateway_server
 Requires:       pattern() = lamp_server
 Requires:       pattern() = laptop
 Requires:       pattern() = mail_server
