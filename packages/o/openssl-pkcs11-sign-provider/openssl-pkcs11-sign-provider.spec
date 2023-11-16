@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global modulesdir %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           openssl-pkcs11-sign-provider
@@ -26,15 +27,23 @@ URL:            https://github.com/opencryptoki/openssl-pkcs11-sign-provider
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 
-Requires:      openssl >= 3.0.0
+%if 0%{?suse_version} >= 1600
+Requires:       openssl >= 3.0.0
+%else
+Requires:       openssl-3 >= 3.0.0
+%endif
 
-BuildRequires: openssl-devel >= 3.0.0
-BuildRequires: openCryptoki-devel >= 3.17.0
-BuildRequires: gcc
-BuildRequires: gcc-c++
-BuildRequires: autoconf-archive
-BuildRequires: automake
-BuildRequires: libtool
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+BuildRequires:  libtool
+BuildRequires:  openCryptoki-devel >= 3.17.0
+%if 0%{?suse_version} >= 1600
+BuildRequires:  openssl-devel >= 3.0.0
+%else
+BuildRequires:  libopenssl-3-devel >= 3.0.0
+%endif
 
 # test dependencies
 # BuildRequires: openssl >= 3.0.0
@@ -64,6 +73,7 @@ for file in openssl-*.cnf.sample; do mv $file $file.%{_arch}; done
 %make_install
 
 %post
+
 %postun
 
 %files
@@ -72,5 +82,5 @@ for file in openssl-*.cnf.sample; do mv $file $file.%{_arch}; done
 %{modulesdir}/pkcs11sign.{so,la}
 %{_mandir}/man5/pkcs11sign.cnf.5*
 %{_mandir}/man7/pkcs11sign.7*
-%changelog
 
+%changelog
