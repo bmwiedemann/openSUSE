@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Encode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Encode
 Name:           perl-Encode
-Version:        3.19
+Version:        3.200.0
 Release:        0
+%define cpan_version 3.20
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Character encodings in Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DA/DANKOGAI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DANKOGAI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        perl-Encode-rpmlintrc
 Source2:        cpanspec.yml
 BuildRequires:  perl
@@ -31,6 +32,27 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.92
 BuildRequires:  perl(parent) >= 0.221
 Requires:       perl(parent) >= 0.221
+Provides:       perl(Encode) = 3.200.0
+Provides:       perl(Encode::Alias) = 2.25
+Provides:       perl(Encode::CJKConstants) = 2.200.0
+Provides:       perl(Encode::CN::HZ) = 2.10
+Provides:       perl(Encode::Config) = 2.500.0
+Provides:       perl(Encode::Encoder) = 2.300.0
+Provides:       perl(Encode::Encoding) = 2.800.0
+Provides:       perl(Encode::GSM0338) = 2.10
+Provides:       perl(Encode::Guess) = 2.800.0
+Provides:       perl(Encode::JP::H2Z) = 2.200.0
+Provides:       perl(Encode::JP::JIS7) = 2.800.0
+Provides:       perl(Encode::KR::2022_KR) = 2.400.0
+Provides:       perl(Encode::MIME::Header) = 2.29
+Provides:       perl(Encode::MIME::Header::ISO_2022_JP) = 1.900.0
+Provides:       perl(Encode::MIME::Name) = 1.300.0
+Provides:       perl(Encode::UTF_EBCDIC)
+Provides:       perl(Encode::Unicode::UTF7) = 2.10
+Provides:       perl(Encode::XS)
+Provides:       perl(Encode::utf8)
+Provides:       perl(encoding) = 3.00
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -59,7 +81,7 @@ This document mostly explains the _how_. perlunitut and perlunifaq explain
 the _why_.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
