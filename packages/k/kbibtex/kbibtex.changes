@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Oct 29 21:38:16 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Remove the rpaths that rpmlint complains about
+
+-------------------------------------------------------------------
+Sun Oct 29 20:59:21 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- The devel package is of no use to anyone, so do not have one and
+  remove the devel files
+
+-------------------------------------------------------------------
+Sat Oct 28 10:02:01 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.10.0:
+  * New online search: Semantic Scholar
+  * Fixing and revamping ACM's Digital Library (a.k.a. ACM Portal)
+    online search
+  * Tabs in the entry editor can show short messages to use, e.g.
+    in which tab DOIs or URLs are to be entered
+  * Fixing missing <bibliography> tag in XML export
+  * Fix: Can't associate a file with a relative path without having
+    the file copied (kde#424033)
+  * Fix: When formatting IDs, non-word characters should be used as
+    word separators (kde#423976)
+  * Fix: Cannot unselect entry list view columns in BibLaTeX mode
+    (kde#433005)
+  * Fixing crash when opening .bib file (kde#433084, kde#453455)
+  * And many other smaller fixes and changes in the code, generally
+    not visible to the user
+- BuildRequires: cmake(Qt5Network) --> cmake(Qt5NetworkAuth)
+- Update file list
+
+-------------------------------------------------------------------
 Sat Mar 18 18:26:06 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Update to version 0.9.3.2:

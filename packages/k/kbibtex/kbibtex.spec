@@ -18,13 +18,14 @@
 
 %bcond_without lang
 Name:           kbibtex
-Version:        0.9.3.2
+Version:        0.10.0
 Release:        0
 Summary:        The BibTeX (Latex) bibliography manager by KDE
 License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://apps.kde.org/nl/kbibtex/
 Source:         https://download.kde.org/stable/KBibTeX/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  chrpath
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libicu-devel
 BuildRequires:  libpoppler-qt5-devel
@@ -46,7 +47,7 @@ BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5NetworkAuth)
 BuildRequires:  cmake(Qt5Test)
 # Only include WebEngine for platforms that support it
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
@@ -66,14 +67,6 @@ LaTeX. Features include comfortable input masks, starting web queries
 XML/HTML. As KBibTeX is using KDE's KParts technology, KBibTeX can be
 embedded into Kile or Konqueror.
 
-%package        devel
-Summary:        Devel Files for %{name}
-Group:          Development/Libraries/KDE
-Requires:       %{name} = %{version}
-
-%description    devel
-This package contains the devel files for %{name}.
-
 %lang_package
 
 %prep
@@ -86,6 +79,19 @@ This package contains the devel files for %{name}.
 %install
 %make_install -C build
 %suse_update_desktop_file -r org.kde.kbibtex Qt KDE Office Database Science DataVisualization Education
+
+# Remove all devel files, they are not needed
+rm -rf %{buildroot}/%{_includedir}/KBibTeX
+rm -rf %{buildroot}/%{_kf5_libdir}/libkbibtex*.so
+rm -rf %{buildroot}/%{_kf5_libdir}/cmake/KBibTeX
+
+# Remove the rpaths that rpmlint complains about
+# According to https://en.opensuse.org/openSUSE:Packaging_checks
+# this is a last resort option.
+# Reported in kde#476502
+chrpath -d %{buildroot}/%{_kf5_bindir}/kbibtex
+chrpath -d %{buildroot}%{_kf5_libdir}/libkbibtex*.so.*
+chrpath -d %{buildroot}%{_kf5_plugindir}/kbibtexpart.so*
 
 %if %{with lang}
 %find_lang %{name}
@@ -101,7 +107,6 @@ This package contains the devel files for %{name}.
 %{_kf5_applicationsdir}/org.kde.kbibtex.desktop
 %{_kf5_appstreamdir}/org.kde.kbibtex.appdata.xml
 %{_kf5_bindir}/kbibtex
-%{_kf5_configdir}/kbibtexrc
 %{_kf5_htmldir}/*/kbibtex/
 %{_kf5_iconsdir}/hicolor/*/apps/kbibtex.png
 %{_kf5_kxmlguidir}/kbibtex/
@@ -111,13 +116,12 @@ This package contains the devel files for %{name}.
 %{_kf5_servicesdir}/kbibtexpart.desktop
 %{_kf5_sharedir}/kbibtex/
 %{_kf5_sharedir}/man/man1/kbibtex.1.gz
+%{_kf5_sharedir}/man/*/man1/kbibtex.1.gz
 %{_kf5_sharedir}/mime/packages/bibliography.xml
+%{_kf5_sharedir}/qlogging-categories5/kbibtex.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
 %endif
-
-%files devel
-%{_kf5_libdir}/libkbibtex*.so
 
 %changelog
