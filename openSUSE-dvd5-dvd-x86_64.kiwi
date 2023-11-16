@@ -374,6 +374,7 @@
       <repopackage name="ed"/>
       <repopackage name="edict-eucjp"/>
       <repopackage name="edict2"/>
+      <repopackage name="eekboard"/>
       <repopackage name="efibootmgr"/>
       <repopackage name="efont-unicode-bitmap-fonts"/>
       <repopackage name="elfutils"/>
@@ -1002,6 +1003,7 @@
       <repopackage name="kernel-firmware-network"/>
       <repopackage name="kernel-firmware-nfp"/>
       <repopackage name="kernel-firmware-nvidia"/>
+      <repopackage name="kernel-firmware-nvidia-gspx-G06"/>
       <repopackage name="kernel-firmware-platform"/>
       <repopackage name="kernel-firmware-prestera"/>
       <repopackage name="kernel-firmware-qcom"/>
@@ -1059,6 +1061,7 @@
       <repopackage name="kitemmodels-imports"/>
       <repopackage name="kiten"/>
       <repopackage name="kiten-lang"/>
+      <repopackage name="kiwi-pxeboot"/>
       <repopackage name="kldap"/>
       <repopackage name="kldap-lang"/>
       <repopackage name="kleopatra"/>
@@ -1161,6 +1164,7 @@
       <repopackage name="lastlog2"/>
       <repopackage name="layer-shell-qt5"/>
       <repopackage name="ldmtool"/>
+      <repopackage name="ldns"/>
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
       <repopackage name="lftp"/>
@@ -1238,6 +1242,7 @@
       <repopackage name="libb2-1"/>
       <repopackage name="libb64-0"/>
       <repopackage name="libbabl-0_1-0"/>
+      <repopackage name="libbabl-0_1-0-x86-64-v3"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
       <repopackage name="libBasicUsageEnvironment2"/>
@@ -1260,17 +1265,25 @@
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
       <repopackage name="libboost_filesystem1_83_0"/>
+      <repopackage name="libboost_filesystem1_83_0-x86-64-v3"/>
       <repopackage name="libboost_iostreams1_83_0"/>
+      <repopackage name="libboost_iostreams1_83_0-x86-64-v3"/>
       <repopackage name="libboost_locale1_83_0"/>
+      <repopackage name="libboost_locale1_83_0-x86-64-v3"/>
       <repopackage name="libboost_python-py3-1_83_0"/>
+      <repopackage name="libboost_python-py3-1_83_0-x86-64-v3"/>
       <repopackage name="libboost_thread1_83_0"/>
+      <repopackage name="libboost_thread1_83_0-x86-64-v3"/>
       <repopackage name="libbox2d2"/>
       <repopackage name="libbpf1"/>
       <repopackage name="libbreezecommon5-5"/>
       <repopackage name="libbrlapi0_8"/>
       <repopackage name="libbrotlicommon1"/>
+      <repopackage name="libbrotlicommon1-x86-64-v3"/>
       <repopackage name="libbrotlidec1"/>
+      <repopackage name="libbrotlidec1-x86-64-v3"/>
       <repopackage name="libbrotlienc1"/>
+      <repopackage name="libbrotlienc1-x86-64-v3"/>
       <repopackage name="libbs2b0"/>
       <repopackage name="libbsd0"/>
       <repopackage name="libbtrfs0"/>
@@ -1279,6 +1292,7 @@
       <repopackage name="libbytesize-lang"/>
       <repopackage name="libbytesize1"/>
       <repopackage name="libbz2-1"/>
+      <repopackage name="libbz2-1-x86-64-v3"/>
       <repopackage name="libcaca0"/>
       <repopackage name="libcacard0"/>
       <repopackage name="libcairo-gobject2"/>
@@ -1353,6 +1367,7 @@
       <repopackage name="libcrack2"/>
       <repopackage name="libcrack2-32bit"/>
       <repopackage name="libcreaterepo_c1"/>
+      <repopackage name="libcroco-0_6-3"/>
       <repopackage name="libcrypt1"/>
       <repopackage name="libcrypt1-32bit"/>
       <repopackage name="libcryptmount0"/>
@@ -1372,6 +1387,7 @@
       <repopackage name="libdazzle-1_0-0"/>
       <repopackage name="libdazzle-lang"/>
       <repopackage name="libdb-4_8"/>
+      <repopackage name="libdb-4_8-x86-64-v3"/>
       <repopackage name="libdbus-1-3"/>
       <repopackage name="libdbus-1-3-32bit"/>
       <repopackage name="libdbus-glib-1-2"/>
@@ -1452,6 +1468,7 @@
       <repopackage name="libexempi8"/>
       <repopackage name="libexif12"/>
       <repopackage name="libexiv2-28"/>
+      <repopackage name="libexiv2-28-x86-64-v3"/>
       <repopackage name="libexo-2-0"/>
       <repopackage name="libexpat1"/>
       <repopackage name="libexslt0"/>
@@ -1479,6 +1496,7 @@
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind4_0"/>
       <repopackage name="libFLAC12"/>
+      <repopackage name="libFLAC12-x86-64-v3"/>
       <repopackage name="libflashrom1"/>
       <repopackage name="libflatpak0"/>
       <repopackage name="libfltk1_3"/>
@@ -1512,6 +1530,7 @@
       <repopackage name="libgc1"/>
       <repopackage name="libgcab-1_0-0"/>
       <repopackage name="libgcc_s1"/>
+      <repopackage name="libgcc_s1-32bit"/>
       <repopackage name="libgccjit0"/>
       <repopackage name="libgcin-im-client1"/>
       <repopackage name="libgck-1-0"/>
@@ -1521,6 +1540,7 @@
       <repopackage name="libgcr-4-4"/>
       <repopackage name="libgcrypt20"/>
       <repopackage name="libgcrypt20-32bit"/>
+      <repopackage name="libgcrypt20-x86-64-v3"/>
       <repopackage name="libgd3"/>
       <repopackage name="libgdata-lang"/>
       <repopackage name="libgdata22"/>
@@ -1703,6 +1723,7 @@
       <repopackage name="libhivex0"/>
       <repopackage name="libhogweed6"/>
       <repopackage name="libhogweed6-32bit"/>
+      <repopackage name="libhogweed6-x86-64-v3"/>
       <repopackage name="libhugetlbfs"/>
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libhwasan0"/>
@@ -1743,6 +1764,7 @@
       <repopackage name="libiptcdata-lang"/>
       <repopackage name="libiptcdata0"/>
       <repopackage name="libiscsi9"/>
+      <repopackage name="libiscsi9-x86-64-v3"/>
       <repopackage name="libisl23"/>
       <repopackage name="libisoburn1"/>
       <repopackage name="libisofs6"/>
@@ -1766,12 +1788,14 @@
       <repopackage name="libjitterentropy3"/>
       <repopackage name="libjitterentropy3-32bit"/>
       <repopackage name="libjpeg8"/>
+      <repopackage name="libjpeg8-x86-64-v3"/>
       <repopackage name="libjq1"/>
       <repopackage name="libjson-c5"/>
       <repopackage name="libjson-glib-1_0-0"/>
       <repopackage name="libjte2"/>
       <repopackage name="libJudy1"/>
       <repopackage name="libjxl0_8"/>
+      <repopackage name="libjxl0_8-x86-64-v3"/>
       <repopackage name="libkaccounts2"/>
       <repopackage name="libkate1"/>
       <repopackage name="libkcddb"/>
@@ -2032,6 +2056,7 @@
       <repopackage name="libldb2"/>
       <repopackage name="libldb2-32bit"/>
       <repopackage name="libldm-1_0-0"/>
+      <repopackage name="libldns3"/>
       <repopackage name="liblensfun1"/>
       <repopackage name="liblhasa0"/>
       <repopackage name="liblightdm-gobject-1-0"/>
@@ -2059,9 +2084,12 @@
       <repopackage name="liblvm2cmd2_03"/>
       <repopackage name="liblz4-1"/>
       <repopackage name="liblz4-1-32bit"/>
+      <repopackage name="liblz4-1-x86-64-v3"/>
       <repopackage name="liblzma5"/>
       <repopackage name="liblzma5-32bit"/>
+      <repopackage name="liblzma5-x86-64-v3"/>
       <repopackage name="liblzo2-2"/>
+      <repopackage name="liblzo2-2-x86-64-v3"/>
       <repopackage name="libm17n0"/>
       <repopackage name="libmad0"/>
       <repopackage name="libmagic1"/>
@@ -2091,18 +2119,21 @@
       <repopackage name="libmilter1_0"/>
       <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
+      <repopackage name="libminizip1-x86-64-v3"/>
       <repopackage name="libmission-control-plugins0"/>
       <repopackage name="libmjpegutils-2_2-0"/>
       <repopackage name="libmlx4-1"/>
       <repopackage name="libmlx5-1"/>
       <repopackage name="libmm-glib0"/>
       <repopackage name="libmng2"/>
+      <repopackage name="libmng2-x86-64-v3"/>
       <repopackage name="libmnl0"/>
       <repopackage name="libmodulemd2"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmousepad0"/>
       <repopackage name="libmozjs-115-0"/>
       <repopackage name="libmp3lame0"/>
+      <repopackage name="libmp3lame0-x86-64-v3"/>
       <repopackage name="libmpath0"/>
       <repopackage name="libmpc3"/>
       <repopackage name="libmpcdec6"/>
@@ -2136,6 +2167,7 @@
       <repopackage name="libnetpbm11"/>
       <repopackage name="libnettle8"/>
       <repopackage name="libnettle8-32bit"/>
+      <repopackage name="libnettle8-x86-64-v3"/>
       <repopackage name="libnewt0_52"/>
       <repopackage name="libnfnetlink0"/>
       <repopackage name="libnfs14"/>
@@ -2183,12 +2215,14 @@
       <repopackage name="libOpenEXR-3_1-30"/>
       <repopackage name="libopeniscsiusr0"/>
       <repopackage name="libopenjp2-7"/>
+      <repopackage name="libopenjp2-7-x86-64-v3"/>
       <repopackage name="libopenmpt0"/>
       <repopackage name="libopenobex2"/>
       <repopackage name="libopenraw9"/>
       <repopackage name="libopenssl1_1"/>
       <repopackage name="libopenssl3"/>
       <repopackage name="libopenssl3-32bit"/>
+      <repopackage name="libopenssl3-x86-64-v3"/>
       <repopackage name="libopus0"/>
       <repopackage name="liborc-0_4-0"/>
       <repopackage name="liborcus-0_18-0"/>
@@ -2248,6 +2282,7 @@
       <repopackage name="libply5"/>
       <repopackage name="libpmem1"/>
       <repopackage name="libpng16-16"/>
+      <repopackage name="libpng16-16-x86-64-v3"/>
       <repopackage name="libpolkit-agent-1-0"/>
       <repopackage name="libpolkit-gobject-1-0"/>
       <repopackage name="libpolkit-qt5-1-1"/>
@@ -2282,6 +2317,7 @@
       <repopackage name="libpwquality1-32bit"/>
       <repopackage name="libpxbackend-1_0"/>
       <repopackage name="libpython3_11-1_0"/>
+      <repopackage name="libpython3_11-1_0-x86-64-v3"/>
       <repopackage name="libqaccessibilityclient-qt5-0"/>
       <repopackage name="libqalculate22"/>
       <repopackage name="libqb100"/>
@@ -2524,6 +2560,7 @@
       <repopackage name="libspice-server1"/>
       <repopackage name="libSPIRV-Tools-2023_5_rc1"/>
       <repopackage name="libsqlite3-0"/>
+      <repopackage name="libsqlite3-0-x86-64-v3"/>
       <repopackage name="libsratom-0-0"/>
       <repopackage name="libsrt1_5"/>
       <repopackage name="libsrtp2-1"/>
@@ -2536,8 +2573,10 @@
       <repopackage name="libstaroffice-0_0-0"/>
       <repopackage name="libstartup-notification-1-0"/>
       <repopackage name="libstdc++6"/>
+      <repopackage name="libstdc++6-32bit"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp"/>
+      <repopackage name="libstdc++6-pp-32bit"/>
       <repopackage name="libstemmer1d"/>
       <repopackage name="libstoken1"/>
       <repopackage name="libstorage-ng-lang"/>
@@ -2561,6 +2600,7 @@
       <repopackage name="libtag_c0"/>
       <repopackage name="libtalloc2"/>
       <repopackage name="libtalloc2-32bit"/>
+      <repopackage name="libtalloc2-x86-64-v3"/>
       <repopackage name="libtasn1-6"/>
       <repopackage name="libtasn1-6-32bit"/>
       <repopackage name="libtdb1"/>
@@ -2582,12 +2622,14 @@
       <repopackage name="libtirpc3"/>
       <repopackage name="libtomcrypt1"/>
       <repopackage name="libtommath1"/>
+      <repopackage name="libtommath1-x86-64-v3"/>
       <repopackage name="libtotem-plparser-mini18"/>
       <repopackage name="libtotem-plparser18"/>
       <repopackage name="libtowitoko2"/>
       <repopackage name="libtpms0"/>
       <repopackage name="libtracker-sparql-3_0-0"/>
       <repopackage name="libtree-sitter0"/>
+      <repopackage name="libtree-sitter0-x86-64-v3"/>
       <repopackage name="libts0"/>
       <repopackage name="libtsan2"/>
       <repopackage name="libtss2-esys0"/>
@@ -2671,8 +2713,11 @@
       <repopackage name="libvncserver1"/>
       <repopackage name="libvo-amrwbenc0"/>
       <repopackage name="libvorbis0"/>
+      <repopackage name="libvorbis0-x86-64-v3"/>
       <repopackage name="libvorbisenc2"/>
+      <repopackage name="libvorbisenc2-x86-64-v3"/>
       <repopackage name="libvorbisfile3"/>
+      <repopackage name="libvorbisfile3-x86-64-v3"/>
       <repopackage name="libvpx8"/>
       <repopackage name="libvte-2_91-0"/>
       <repopackage name="libvulkan1"/>
@@ -2772,6 +2817,7 @@
       <repopackage name="libxml2-2"/>
       <repopackage name="libxml2-tools"/>
       <repopackage name="libxmlb2"/>
+      <repopackage name="libxmlb2-x86-64-v3"/>
       <repopackage name="libxmlsec1-1"/>
       <repopackage name="libxmlsec1-nss1"/>
       <repopackage name="libxmlsec1-openssl1"/>
@@ -2809,6 +2855,7 @@
       <repopackage name="libz-ng-compat1"/>
       <repopackage name="libz1"/>
       <repopackage name="libz1-32bit"/>
+      <repopackage name="libz1-x86-64-v3"/>
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzhuyin15"/>
@@ -2819,6 +2866,7 @@
       <repopackage name="libzmq5"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzstd1-32bit"/>
+      <repopackage name="libzstd1-x86-64-v3"/>
       <repopackage name="libzvbi0"/>
       <repopackage name="libZXing3"/>
       <repopackage name="libzypp"/>
@@ -2988,6 +3036,7 @@
       <repopackage name="nautilus-sendto-lang"/>
       <repopackage name="nautilus-share"/>
       <repopackage name="nautilus-share-lang"/>
+      <repopackage name="nbd"/>
       <repopackage name="nbdkit"/>
       <repopackage name="nbdkit-basic-filters"/>
       <repopackage name="nbdkit-basic-plugins"/>
@@ -3049,6 +3098,7 @@
       <repopackage name="ntfsprogs"/>
       <repopackage name="numactl"/>
       <repopackage name="numlockx"/>
+      <repopackage name="nvidia-open-driver-G06-signed-kmp-default"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="obex-data-server"/>
@@ -3071,6 +3121,7 @@
       <repopackage name="OpenPrintingPPDs-postscript"/>
       <repopackage name="opensc"/>
       <repopackage name="openslp"/>
+      <repopackage name="openslp-server"/>
       <repopackage name="openssh"/>
       <repopackage name="openssh-askpass-gnome"/>
       <repopackage name="openssh-clients"/>
@@ -3134,11 +3185,14 @@
       <repopackage name="patterns-base-transactional_base"/>
       <repopackage name="patterns-base-x11"/>
       <repopackage name="patterns-base-x11_enhanced"/>
+      <repopackage name="patterns-desktop-books"/>
       <repopackage name="patterns-desktop-imaging"/>
+      <repopackage name="patterns-desktop-mobile"/>
       <repopackage name="patterns-desktop-multimedia"/>
       <repopackage name="patterns-fonts-fonts"/>
       <repopackage name="patterns-fonts-fonts_opt"/>
       <repopackage name="patterns-games-games"/>
+      <repopackage name="patterns-glibc-hwcaps-x86_64_v3"/>
       <repopackage name="patterns-gnome-gnome"/>
       <repopackage name="patterns-gnome-gnome_basic"/>
       <repopackage name="patterns-gnome-gnome_basis"/>
@@ -3166,6 +3220,7 @@
       <repopackage name="patterns-kde-kde_utilities_opt"/>
       <repopackage name="patterns-kde-kde_yast"/>
       <repopackage name="patterns-media-rest_cd_core"/>
+      <repopackage name="patterns-media-rest_dvd"/>
       <repopackage name="patterns-office-office"/>
       <repopackage name="patterns-server-dhcp_dns_server"/>
       <repopackage name="patterns-server-directory_server"/>
@@ -3455,6 +3510,7 @@
       <repopackage name="python3-solv"/>
       <repopackage name="python3-speechd"/>
       <repopackage name="python3-talloc"/>
+      <repopackage name="python3-talloc-x86-64-v3"/>
       <repopackage name="python3-tdb"/>
       <repopackage name="python3-tevent"/>
       <repopackage name="python311"/>
@@ -3476,6 +3532,7 @@
       <repopackage name="python311-Automat"/>
       <repopackage name="python311-Babel"/>
       <repopackage name="python311-base"/>
+      <repopackage name="python311-base-x86-64-v3"/>
       <repopackage name="python311-bcrypt"/>
       <repopackage name="python311-Beaker"/>
       <repopackage name="python311-Brotli"/>
@@ -3615,6 +3672,7 @@
       <repopackage name="python311-typing_extensions"/>
       <repopackage name="python311-unicodedata2"/>
       <repopackage name="python311-urllib3"/>
+      <repopackage name="python311-x86-64-v3"/>
       <repopackage name="python311-zipp"/>
       <repopackage name="python311-zope.component"/>
       <repopackage name="python311-zope.configuration"/>
@@ -3645,6 +3703,7 @@
       <repopackage name="qemu-img"/>
       <repopackage name="qemu-ipxe"/>
       <repopackage name="qemu-ksm"/>
+      <repopackage name="qemu-kvm"/>
       <repopackage name="qemu-lang"/>
       <repopackage name="qemu-microvm"/>
       <repopackage name="qemu-ovmf-x86_64"/>
@@ -3670,6 +3729,7 @@
       <repopackage name="quadrapassel-lang"/>
       <repopackage name="quota"/>
       <repopackage name="quota-nfs"/>
+      <repopackage name="rdesktop"/>
       <repopackage name="rdma-core"/>
       <repopackage name="rdma-ndd"/>
       <repopackage name="re2c"/>
@@ -4131,6 +4191,7 @@
       <repopackage name="sharutils"/>
       <repopackage name="sharutils-lang"/>
       <repopackage name="shim"/>
+      <repopackage name="siga"/>
       <repopackage name="signon-kwallet-extension"/>
       <repopackage name="signon-plugin-oauth2"/>
       <repopackage name="signon-plugins"/>
@@ -4166,6 +4227,7 @@
       <repopackage name="splix"/>
       <repopackage name="spu-tools"/>
       <repopackage name="sqlite3-tcl"/>
+      <repopackage name="squashfs"/>
       <repopackage name="sscep"/>
       <repopackage name="sshfs"/>
       <repopackage name="sssd"/>
@@ -4287,6 +4349,8 @@
       <repopackage name="time"/>
       <repopackage name="timezone"/>
       <repopackage name="timezone-java"/>
+      <repopackage name="tlp"/>
+      <repopackage name="tlp-rdw"/>
       <repopackage name="tmux"/>
       <repopackage name="tnef"/>
       <repopackage name="tnftp"/>
@@ -4416,6 +4480,7 @@
       <repopackage name="typelib-1_0-Xfconf-0"/>
       <repopackage name="udev"/>
       <repopackage name="udev-configure-printer"/>
+      <repopackage name="udftools"/>
       <repopackage name="udisks2"/>
       <repopackage name="udisks2-bash-completion"/>
       <repopackage name="udisks2-lang"/>
@@ -4423,7 +4488,9 @@
       <repopackage name="umbrello-lang"/>
       <repopackage name="un-fonts"/>
       <repopackage name="unar"/>
+      <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
+      <repopackage name="unison"/>
       <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
       <repopackage name="unzip-doc"/>
@@ -4685,6 +4752,7 @@
       <repopackage name="xset"/>
       <repopackage name="xsetroot"/>
       <repopackage name="xsettingsd"/>
+      <repopackage name="xstroke"/>
       <repopackage name="xtables-plugins"/>
       <repopackage name="xterm"/>
       <repopackage name="xterm-bin"/>
@@ -4713,7 +4781,9 @@
       <repopackage name="yast2-ftp-server"/>
       <repopackage name="yast2-hardware-detection"/>
       <repopackage name="yast2-installation"/>
+      <repopackage name="yast2-instserver"/>
       <repopackage name="yast2-iscsi-client"/>
+      <repopackage name="yast2-isns"/>
       <repopackage name="yast2-journal"/>
       <repopackage name="yast2-kdump"/>
       <repopackage name="yast2-ldap"/>
@@ -4744,6 +4814,7 @@
       <repopackage name="yast2-security"/>
       <repopackage name="yast2-services-manager"/>
       <repopackage name="yast2-slp"/>
+      <repopackage name="yast2-slp-server"/>
       <repopackage name="yast2-snapper"/>
       <repopackage name="yast2-squid"/>
       <repopackage name="yast2-storage-ng"/>
@@ -4795,9 +4866,12 @@
       <repopackage name="yast2-trans-ru"/>
       <repopackage name="yast2-trans-si"/>
       <repopackage name="yast2-trans-sk"/>
+      <repopackage name="yast2-trans-sl"/>
       <repopackage name="yast2-trans-sr"/>
       <repopackage name="yast2-trans-stats"/>
       <repopackage name="yast2-trans-sv"/>
+      <repopackage name="yast2-trans-ta"/>
+      <repopackage name="yast2-trans-th"/>
       <repopackage name="yast2-trans-tr"/>
       <repopackage name="yast2-trans-uk"/>
       <repopackage name="yast2-trans-vi"/>
