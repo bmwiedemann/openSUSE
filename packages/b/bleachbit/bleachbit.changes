@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov 14 16:47:15 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 4.6.0
+  * Clean recently-closed tabs on Firefox.
+  * Clean autofill data in Chromium-based browsers.
+  * Clean more of Firefox: AlternativeServices.txt.
+  * Improve support for FileZilla.
+  * Support new versions of GIMP and add runtime detection.
+  * Fix AttributeError and "OperationalError: no such table" when cleaning Firefox.
+  * Add workaround for DLL security vulnerability.
+  * Prevent opening other dialogs when making chaff.
+  * Vacuum last after other operations in every language.
+  * Add title for dialogs.
+  * Enable more strings to be translated.
+  * Improve organization of --help in the CLI.
+  * Show debug information in CLI only if --debug or --preset is set.
+  * Fix crash when wiping free space with Brazilian Portuguese.
+  * Specific to Linux
+    * Clean Microsoft Edge on Linux.
+    * Clean Firefox and Thunderbird when installed as Flatpak.
+    * Clean Google Chrome as Flatpak.
+    * Clean recent documents list on KDE 5.
+    * Clean Firefox installed as a snap.
+    * Add shred context menu for KDE.
+    * Keep bookmark icons in Firefox.
+    * Keep xauth files in /tmp.
+    * Fix "Permission denied: /proc/".
+    * Use branded icon in application launcher.
+    * Fix detection of invalid .desktop files.
+    * Fix the error "The child memory-wiping process returned code 9.".
+    * Notify user when running as root with Wayland.
+    * Fix ModuleNotFoundError.
+    * Remove Windows-specific files from Linux packages, again.
+    * Remove unneeded SafeConfigParser causing startup error on Python 3.12.
+    * Do not show error "Gtk-CRITICAL **: gtk_text_view_scroll_mark_onscreen".
+    * Add python3-psutil dependency.
+- Disable unit test for get_ip_for_url() which won't work in OBS
+
+-------------------------------------------------------------------
 Sat Nov  5 04:23:41 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

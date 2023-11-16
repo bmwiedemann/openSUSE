@@ -1,7 +1,7 @@
 #
 # spec file for package bleachbit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 8/2011 by open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2010 - 7/2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -20,7 +20,7 @@
 
 %define         _desktopname       org.bleachbit.BleachBit
 Name:           bleachbit
-Version:        4.4.2
+Version:        4.6.0
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only
@@ -34,7 +34,6 @@ BuildRequires:  gobject-introspection
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-chardet
 BuildRequires:  python3-gobject
@@ -43,10 +42,11 @@ BuildRequires:  python3-psutil
 BuildRequires:  python3-requests
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-xml
-BuildRequires:  typelib(Notify)
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
 BuildRequires:  xvfb-run
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  typelib(Notify)
 Requires:       python3
 Requires:       python3-chardet
 Requires:       python3-gobject
@@ -74,8 +74,8 @@ sed -i 's/^import mock/import unittest.mock as mock/' tests/*.py
 
 # These two use network
 sed -Ei 's/(test_download_url_to_fn|test_Chaff)/_\1/g' tests/TestChaff.py
-# These two use network
-sed -Ei 's/(test_update_url|test_update_winapp2)/_\1/g' tests/TestUpdate.py
+# These three use network
+sed -Ei 's/(test_update_url|test_update_winapp2|test_get_ip_for_url)/_\1/g' tests/TestUpdate.py
 # Test fails
 sed -Ei 's/(test_notify)/_\1/g' tests/TestGUI.py
 
