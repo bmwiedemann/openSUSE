@@ -281,4 +281,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1097057 from glaubitz)</comment>
     <requestid>1097146</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>aa0bc4ec4f788e9b85098f79e68a5a67</srcmd5>
+    <version>10.2.0b11</version>
+    <time>1700162895</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 10.2.0b11
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1126635 from glaubitz)</comment>
+    <requestid>1126691</requestid>
+  </revision>
 </revisionlist>
