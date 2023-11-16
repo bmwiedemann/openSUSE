@@ -18,7 +18,7 @@
 
 Name:           arti
 #               This will be set by osc services, that will run after this.
-Version:        1.1.9~0
+Version:        1.1.10~0
 Release:        0
 Summary:        An implementation of Tor, in Rust.
 #               If you know the license, put it's SPDX string here.
@@ -26,7 +26,7 @@ Summary:        An implementation of Tor, in Rust.
 License:        Apache-2.0 OR MIT
 URL:            https://gitlab.torproject.org/tpo/core/arti
 Source0:        %{name}-%{version}.tar
-Source1:        vendor.tar.zstd
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)

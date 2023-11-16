@@ -16,4 +16,13 @@ of the Tor anonymity protocols in the Rust programming language.</comment>
     <comment></comment>
     <requestid>1123642</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a2f9a7909dd74731897ad57fc84a7989</srcmd5>
+    <version>1.1.10~0</version>
+    <time>1700162876</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.1.10:
+</comment>
+    <requestid>1126653</requestid>
+  </revision>
 </revisionlist>

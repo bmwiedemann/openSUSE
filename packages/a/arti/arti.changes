@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Nov 13 17:17:23 UTC 2023 - eyadlorenzo@gmail.com
+
+- Update to version 1.1.10:
+  
+  Arti 1.1.10 continues work on support for onion services in
+  Arti. At last, we can (technically) run as an onion service...
+  though not yet in a useful way. (Onion services don't yet recover
+  correctly after a restart, outdated keys are not removed, and we
+  are missing other important security features.)
+
+  ### Breaking changes in lower-level crates
+
+  - The [`IoErrorExt`] trait in [`tor-basic-utils`] is now
+    sealed. ([!1654])
+  - The [`Requestable`] trait in [`tor-dirclient`] is now sealed,
+    and most of its members are now private. ([!1679])
+  - In [`tor-cell`], stream and circuit IDs are now inherently
+    non-zero. To represent an ID that might be zero on the wire, we
+    now use
+    `Option<StreamId>` or `Option<CircId>`. ([#1080], [!1697])
+  - In [`tor-cell`], `CREATE2` handshake types are no longer raw
+    `u16` values. ([!1703])
+  - In [`tor-cert`], `encode_and_sign` now returns an
+    `Ed25519EncodedCert` rather than a raw `Vec<u8>`. ([!1702])
+
+  
+  ### Client features
+
+  - Arti can now be configured to listen for connections on
+    multiple arbitrary addresses—not just `localhost`. ([!1613])
+
+  ### Key manager
+
+  - The key manager code now has improved support for generating
+    keypairs, keys with derived data, and other structures needed for
+    onion services. ([!1653])
+  - The key manager now encodes whether a key is private or public in its
+    file extension. ([!1672])
+  - The key manager now disallows path components that could lead
+    (under some programming errors) to directory traversal. ([!1661])
+  - We can now list keys by path and type; this is important so that
+    we can identify disused keys and eventually expire them. ([!1677])
+
+  See https://gitlab.torproject.org/tpo/core/arti/-/blob/c39857a8a63200ed5ed539d1f9231b05d7da7e0d/CHANGELOG.md
+  for more info
+-------------------------------------------------------------------
 Mon Oct 30 12:37:00 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints file to avoid build failures
