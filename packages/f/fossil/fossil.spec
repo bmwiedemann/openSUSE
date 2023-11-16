@@ -16,15 +16,15 @@
 #
 
 
-%define fossil_uuid 66ee0beb9b47d827bde533fe6a1fb2ead4ceb1936468881b4fb621bd6bdfd862
-%if 0%{?suse_version} > 1500
+%define fossil_uuid 47362306a7dd7c6fc3cab77cebe5d25469b0a9448479d9718eb5c49c8337b29
+%if 0%{?suse_version} > 1600
 %bcond_without system_sqlite
 %else
 %bcond_with system_sqlite
 %endif
 %bcond_without tests
 Name:           fossil
-Version:        2.22
+Version:        2.23
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
@@ -37,7 +37,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  tcl
 BuildRequires:  zlib-devel
 %if %{with system_sqlite}
-BuildRequires:  sqlite3-devel >= 3.38.0
+BuildRequires:  sqlite3-devel >= 3.43.0
 %endif
 
 %description
@@ -62,8 +62,10 @@ grep -qFx %{version} VERSION
         --prefix=%{_prefix} \
         --with-openssl=auto \
 %if %{with system_sqlite}
-        --disable-internal-sqlite
+        --disable-internal-sqlite \
+	--with-sqlite=%{_prefix} \
 %endif
+	%{nil}
 
 %make_build
 

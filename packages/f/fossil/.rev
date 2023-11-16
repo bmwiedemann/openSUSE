@@ -406,4 +406,12 @@
     <comment>fossil 2.22 (forwarded request 1090557 from AndreasStieger)</comment>
     <requestid>1090677</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9bf9a5babe9462f9186ddcfa25ab6f51</srcmd5>
+    <version>2.23</version>
+    <time>1700162873</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126652</requestid>
+  </revision>
 </revisionlist>

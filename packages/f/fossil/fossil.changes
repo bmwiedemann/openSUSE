@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  4 14:38:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.23:
+  * Add ability to "close" forum threads
+  * Add the fossil all whatis command
+  * Some web UI ind command output mprovements
+  * New options for email notification to limit to only new threads
+  * Fix a search failure with non-ASCII characters
+  * Improve defense-in-depth against SQL injection, and cross-site
+    request forgery
+
+-------------------------------------------------------------------
 Fri Jun  2 20:05:52 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - fossil 2.22:
