@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 12 20:32:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.1:
+  * Fix zooming on local tiles
+  * Many other bug and documentation fixes
+  * New background: Reavers, spellswords with powerful but
+    situational Conjurations.
+  * Palentongas reworked into Armataurs, with innate rampage and
+    an affinity for potions.
+  * A variety of exciting new spells for warriors and wizards
+    alike.
+  * Many new and reworked artefacts, both random and fixed.
+  * Lugonu made more available and tempting to unfortunates cast
+    into the Abyss.
+  * It is now possible to enter the Vaults without holding a
+    rune. However, a rune is still required to leave.
+  * Slime walls now apply corrosion to the player, rather than
+    dealing damage.
+  * Jiyva's Oozemancy ability still deals damage as before.
+  * Thunderstorms now deal much more damage.
+
+-------------------------------------------------------------------
 Fri Jun 24 09:16:46 UTC 2022 - Jon Brightwell <jon@moozaad.co.uk>
 
 - Update to version 0.28.0
@@ -265,7 +287,7 @@ Mon Jun  9 13:31:02 MSK 2014 - bemyak@gmail.com
 * Different users now uses different settings
 * Users can now change setting without root privilages
   (by creating ~/.crawl/init.txt or ~/.crawlrc file)
-  
+
 - Old saves moved to /root/.crawl directory
 
 -------------------------------------------------------------------
@@ -316,7 +338,7 @@ Fri Jul  6 19:26:50 UTC 2012 - devel.openSUSE.org@gmail.com
     just gain
   * shops show item slot letters assigned to your new purchases
   * enchanteable missiles are listed in the wield menu if you have scrolls
-    of Enchant Weapon 
+    of Enchant Weapon
 - Adapt crawl-ncurses-with-tinfo.patch to new version of the game
 
 -------------------------------------------------------------------
