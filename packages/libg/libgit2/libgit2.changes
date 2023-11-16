@@ -95,7 +95,7 @@ Thu Jul 14 20:41:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Tue Jul 12 18:50:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 1.4.4:
+- update to 1.4.4 (bsc#1198234)
   * Compatibility with git's changes to address CVE 2022-29187. As
     a follow up to CVE 2022-24765, now not only is the working
     directory of a non-bare repository examined for its ownership,
