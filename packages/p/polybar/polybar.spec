@@ -24,6 +24,7 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/polybar/polybar
 Source:         https://github.com/polybar/polybar/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:         cmake.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.5
 BuildRequires:  i3
@@ -61,6 +62,10 @@ A fast and easy-to-use status bar for tilling WM
 
 %prep
 %setup -q
+
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse} || 0%{?sle_version} == 150500 && 0%{?is_opensuse}
+    %autopatch -p1
+%endif
 
 %build
 %cmake

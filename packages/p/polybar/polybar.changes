@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  8 12:31:49 UTC 2023 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Add 'cmake.patch' to pass build on openSUSE 15.4 and 15.5 
+
+-------------------------------------------------------------------
 Mon Nov  6 13:17:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.7.0:
