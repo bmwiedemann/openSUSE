@@ -1172,4 +1172,21 @@ See README.static for an explanation why static linking is preferred for some li
     <comment></comment>
     <requestid>1115998</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>fa11f61093f3f7a2df675e3411c3e3d7</srcmd5>
+    <version>1.7.4</version>
+    <time>1700162839</time>
+    <user>anag+factory</user>
+    <comment>- Enable build for riscv64.
+- Reduce compatibility cruft.
+- Update to 1.7.4:
+  * Add riscv64 support
+  * Support kernels up to v6.6 (x86_64)
+- Drop upstreamed patches:
+  * ppc64-do-page-traversal-if-vmemmap_list-not-po.patch
+  * Support-struct-module_memory-on-Linux-6.4-and-.patch
+- Build with a bundled eppic git snapshot.
+</comment>
+    <requestid>1126689</requestid>
+  </revision>
 </revisionlist>

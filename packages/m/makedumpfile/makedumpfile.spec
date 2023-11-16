@@ -16,19 +16,8 @@
 #
 
 
-%if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define build_eppic 1
-%else
-%define build_eppic 0
-%endif
-
-%if 0%{!?have_snappy:1}
-%if 0%{?suse_version} >= 1310
-%define have_snappy 1
-%else
-%define have_snappy 0
-%endif
-%endif
+%define eppic_commit 21808c78596d6d80c67eeaa08a618570ae0d886d
 
 %if 0%{!?have_zstd:1}
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
@@ -38,44 +27,35 @@
 %endif
 %endif
 
-# Compatibility cruft
-# there is no separate -ltinfo until openSUSE 13.1 / SLE 12
-%if 0%{?suse_version} < 1310 && 0%{?sles_version} < 12
-%define ncurses_make_opts TINFOLIB=-lncurses
-%endif
-# End of compatibility cruft
-
 Name:           makedumpfile
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/makedumpfile/makedumpfile
 Source:         https://github.com/makedumpfile/makedumpfile/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/lucchouina/eppic/archive/%{eppic_commit}.tar.gz#/eppic-%{eppic_commit}.tar.gz
 Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
-Patch3:         Support-struct-module_memory-on-Linux-6.4-and-.patch
-Patch4:         ppc64-do-page-traversal-if-vmemmap_list-not-po.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
-%if %{build_eppic}
-BuildRequires:  libeppic-devel
-%endif
 BuildRequires:  lzo-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  snappy-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %{ix86} x86_64 ia64 ppc ppc64 ppc64le s390x %{arm} aarch64
-%if %{have_snappy}
-BuildRequires:  snappy-devel
-%endif
+ExclusiveArch:  %{ix86} x86_64 ia64 ppc ppc64 ppc64le riscv64 s390x %{arm} aarch64
 %if %{have_zstd}
 BuildRequires:  libzstd-devel
+%endif
+%if %{build_eppic}
+BuildRequires:  bison
+BuildRequires:  flex
 %endif
 
 %description
@@ -85,20 +65,28 @@ and can compress the page data. The obtained dump file can by analyzed
 via gdb or crash utility.
 
 %prep
+%if %{build_eppic}
+%autosetup -p1 -b1
+%else
 %autosetup -p1
+%endif
 
 %build
 export CFLAGS="%{optflags} -fcommon"
-%if %{have_snappy}
 export USESNAPPY=on
-%endif
 %if %{have_zstd}
 export USEZSTD=on
 %endif
 export USELZO=on
 export LINKTYPE=dynamic
 make %{?_smp_mflags} LDFLAGS="-Wl,-rpath,%{_libdir}/%{name}-%{version}"
+
 %if %{build_eppic}
+pushd ../eppic-%{eppic_commit}/libeppic
+make
+popd
+export CFLAGS="-I../eppic-%{eppic_commit}/libeppic $CFLAGS"
+export LDFLAGS="-L../eppic-%{eppic_commit}/libeppic $LDFLAGS"
 make %{?_smp_mflags} eppic_makedumpfile.so %{?ncurses_make_opts}
 %endif
 
@@ -122,8 +110,7 @@ install -m 0644 -t %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts/ epp
 %if 0%(test ! -d %{_defaultlicensedir} && echo 1)
 %define _defaultlicensedir %{_defaultdocdir}
 %endif
-%endif
-# End of compatibility cruft
+%endif # End of compatibility cruft
 
 %files
 %defattr(-,root,root)

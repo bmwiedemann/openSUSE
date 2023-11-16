@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 15 14:00:28 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Enable build for riscv64.
+
+-------------------------------------------------------------------
+Wed Nov 15 12:29:49 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Reduce compatibility cruft.
+
+-------------------------------------------------------------------
+Wed Nov 15 12:05:18 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to 1.7.4:
+  * Add riscv64 support
+  * Support kernels up to v6.6 (x86_64)
+- Drop upstreamed patches:
+  * ppc64-do-page-traversal-if-vmemmap_list-not-po.patch
+  * Support-struct-module_memory-on-Linux-6.4-and-.patch
+- Build with a bundled eppic git snapshot.
+
+-------------------------------------------------------------------
 Fri Oct  6 08:29:14 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Add Support-struct-module_memory-on-Linux-6.4-and-.patch (jsc#PED-4593)

@@ -54,8 +54,8 @@ Index: makedumpfile-1.7.1/makedumpfile.h
 --- makedumpfile-1.7.1.orig/makedumpfile.h
 +++ makedumpfile-1.7.1/makedumpfile.h
 @@ -2069,6 +2069,9 @@ struct number_table {
- 	unsigned long	PHYS_OFFSET;
- 	unsigned long	kimage_voffset;
+ 	unsigned long kernel_link_addr;
+ 	unsigned long va_kernel_pa_offset;
  #endif
 +
 +	/* Distro-specific */
