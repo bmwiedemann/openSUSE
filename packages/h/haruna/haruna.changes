@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 16 08:41:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.3
+  Bugfixes:
+  * Fixed subtitle chooser dialog not opening in the folder the
+    current playing file is in
+  * Fixed playlist covering the footer/bottom toolbar and making
+    it hard to close the playlist when toggling it with the mouse
+    is turned off
+  * Fixed clearing the playlist not working
+  * Fixed url not being added to recent files when opened
+    through the "Open Url" action
+  Features:
+  * Added "Escape" shortcut to close the settings window
+
+-------------------------------------------------------------------
 Fri Nov  3 04:59:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.12.2
