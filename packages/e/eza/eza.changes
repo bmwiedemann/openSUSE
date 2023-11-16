@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 16 10:33:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  Bug Fixes:
+  * [breaking] Remove Repo column when using --git-repos when no git repo
+  * Fix cross compilation
+  * Snap requires a base
+  * Move --smart-group to long view options
+  * Colo[u]r-scale didn't have a base value
+  * Fix snapcraft.yaml formatting
+  Documentation:
+  * Add comments for bzip variants
+  * Added the fact that total-size is unix only
+  Features:
+  * Add some file extensions
+  * Abort on panic (saving 0.1 M)
+  * Add powertest
+- Switch from ~ to + in version
+
+-------------------------------------------------------------------
 Fri Nov 10 19:24:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.3:
