@@ -1,7 +1,7 @@
 #
 # spec file for package dunelegacy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,16 +20,16 @@ Name:           dunelegacy
 Version:        0.96.4
 Release:        0
 Summary:        A modern Dune II reimplementation
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Real Time
-Url:            http://dunelegacy.sourceforge.net/
+URL:            http://dunelegacy.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.bz2
 # PATCH-FEATURE-UPSTREAM https://sourceforge.net/p/dunelegacy/patches/8/
 Source8:        %{name}.appdata.xml
 # PATCH-FEATURE-UPSTREAM https://sourceforge.net/p/dunelegacy/patches/7/
 Source9:        %{name}.6
 # PATCH-FIX-OPENSUSE fix-build-with-SDL_mixer-2.0.2.patch wbauer@tmo.at -- fix build with SDL2_mixer 2.0.2 where MIX_INIT_FLUIDSYNTH has been renamed to MIX_INIT_MID
-Patch:          fix-build-with-SDL_mixer-2.0.2.patch
+Patch0:         fix-build-with-SDL_mixer-2.0.2.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -57,7 +57,7 @@ NOTE: Original Dune 2 game files are needed.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 dos2unix ToDo.txt
 
 %build

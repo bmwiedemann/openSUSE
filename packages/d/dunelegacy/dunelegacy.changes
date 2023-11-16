@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:58:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
 Sat Apr  7 18:21:47 UTC 2018 - wbauer@tmo.at
 
 - Add fix-build-with-SDL_mixer-2.0.2.patch to fix build with
