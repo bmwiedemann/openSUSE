@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 12 16:59:58 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.27:
+  * Fix a bug in two test suite functions in the Krumm examples
+    collection.
+  * Update version of krumm/2D/Wolf_DistanceDirectionAngle_free.xml
+
+-------------------------------------------------------------------
 Tue Oct  3 16:08:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.26:
