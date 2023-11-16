@@ -493,4 +493,16 @@
   * Translation Updates</comment>
     <requestid>1125234</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>0240c6f59beab4d747c59a6132cdfd20</srcmd5>
+    <version>0.9.3</version>
+    <time>1700162937</time>
+    <user>anag+factory</user>
+    <comment>- relax branding requires (remove -version-release), so we can use 
+  xfce4-branding-openSUSE based branding. (bsc#1217193 bsc#1216470)
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut over systemd-mini.
+</comment>
+    <requestid>1126796</requestid>
+  </revision>
 </revisionlist>

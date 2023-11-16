@@ -30,7 +30,6 @@ Source100:      %{name}-rpmlintrc
 Patch0:         xfce4-notifyd-relax-x11-version.patch
 BuildRequires:  gettext
 BuildRequires:  pkgconfig
-BuildRequires:  systemd >= 245
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools >= 4.18.1
 BuildRequires:  pkgconfig(dbus-1) >= 1.0
@@ -45,9 +44,10 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.34
+BuildRequires:  pkgconfig(systemd) >= 245
 BuildRequires:  pkgconfig(x11) >= 1.6.5
 Requires:       libnotify-tools
-Requires:       xfce4-notifyd-branding = %{version}-%{release}
+Requires:       %{name}-branding
 Recommends:     %{name}-lang = %{version}-%{release}
 Provides:       notification-daemon-xfce = %{version}-%{release}
 Obsoletes:      notification-daemon-xfce < %{version}-%{release}
