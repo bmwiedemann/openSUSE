@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.25
+Version:        10.260.0
 Release:        0
+%define cpan_version 10.26
 License:        Artistic-2.0
 Summary:        Job queue
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,6 +33,18 @@ BuildRequires:  perl(Mojolicious) >= 9.0
 BuildRequires:  perl(YAML::XS) >= 0.67
 Requires:       perl(Mojolicious) >= 9.0
 Requires:       perl(YAML::XS) >= 0.67
+Provides:       perl(Minion) = 10.260.0
+Provides:       perl(Minion::Backend)
+Provides:       perl(Minion::Backend::Pg)
+Provides:       perl(Minion::Command::minion)
+Provides:       perl(Minion::Command::minion::job)
+Provides:       perl(Minion::Command::minion::worker)
+Provides:       perl(Minion::Iterator)
+Provides:       perl(Minion::Job)
+Provides:       perl(Minion::Worker)
+Provides:       perl(Mojolicious::Plugin::Minion)
+Provides:       perl(Mojolicious::Plugin::Minion::Admin)
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -52,8 +65,9 @@ everything else you can imagine that's not super fast.
 Take a look at our excellent documentation in Minion::Guide!
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
