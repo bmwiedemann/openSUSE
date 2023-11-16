@@ -75,8 +75,13 @@ Bash completion script for %{name}.
 %autopatch -p1
 
 %build
+%if 0%{?suse_version} <= 1600
+%cmake
+%cmake_build
+%else
 %cmake xca
 %cmake_build
+%endif
 
 %install
 %cmake_install
