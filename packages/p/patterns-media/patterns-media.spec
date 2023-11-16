@@ -254,9 +254,6 @@ Requires:       pattern() = kde_yast
 %endif
 Requires:       arabic-fonts
 Requires:       arphic-uming-fonts
-# Only recommended by the Plasma pattern, but we want it on the DVD so that it
-# really gets installed by default (boo#1209838)
-Requires:       breeze5-wallpapers
 Requires:       cracklib-dict-full
 Requires:       indic-fonts
 Requires:       ipa-gothic-fonts

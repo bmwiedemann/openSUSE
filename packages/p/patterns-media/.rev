@@ -373,4 +373,14 @@
     <comment></comment>
     <requestid>1118571</requestid>
   </revision>
+  <revision rev="45" vrev="45">
+    <srcmd5>941dd885752820e7705f357ea40dd456</srcmd5>
+    <version>20170319</version>
+    <time>1700146787</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer require breeze5-wallpapers: this has been locked from
+  the DVD for a long time already, but the requirement here
+  actually makes the entire patterns-media-rest_dvd fall off the
+  DVD.</comment>
+  </revision>
 </revisionlist>

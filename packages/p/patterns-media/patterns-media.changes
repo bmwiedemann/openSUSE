@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:58:30 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- No longer require breeze5-wallpapers: this has been locked from
+  the DVD for a long time already, but the requirement here
+  actually makes the entire patterns-media-rest_dvd fall off the
+  DVD.
+
+-------------------------------------------------------------------
 Thu Oct 12 09:18:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require kernel-firmware-all instead of kernel-firmware
