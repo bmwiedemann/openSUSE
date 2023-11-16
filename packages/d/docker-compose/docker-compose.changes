@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:24:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.1:
+  * Strip project prefix from docker-compose up output
+  * render quiet after filtering applied
+  * bump golang to version 1.21.4
+  * bump compose-go to v1.20.1
+  * reject compose file using `secrets|configs.driver or
+    template_driver`
+  * skips flaky e2e tests on watch and attach
+  * fix docker/compose#11170 add newline in cmd/compose/build.go
+    fmt.Fprint
+  * fix --pull documentation
+  * improve watch configuration logging Add action associated to
+    each managed path
+  * lint
+  * do not resolve cache dir until remote resource is in use
+  * add a copyright notice with original author
+  * implement runtime file selection
+  * re-implement cache folder detection
+  * introduce --resolve-image-digests for publish to seal service
+    images by digest
+  * fix build
+  * fix
+  * ENGDOCS-1764
+  * add docs upstream validation workflow
+  * build(deps): bump go.uber.org/goleak from 1.2.1 to 1.3.0
+  * linter errors fixed
+  * NetworkList to NetworkInspect for ID search
+  * Squashing feature branch commits in order to add signoff
+    message.
+  * Use project.ServiceNames() if no service specified in hash
+  * Add branch configuration for pull_request trigger
+  * Initial codeql.yml commit
+  * fix SIGTERM support to stop/kill stack
+  * align with OCI artifact best practices
+  * refactor(cmd/compose/run): remove redundant `len` check
+  * fail start if depependency is missing
+
+-------------------------------------------------------------------
 Thu Oct 19 05:44:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.23.0:
