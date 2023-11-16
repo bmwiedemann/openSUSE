@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 13 08:48:49 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- SLP got dropped, remove config (bsc#1214884)
+
+-------------------------------------------------------------------
 Sat May 13 16:48:15 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Correct rundir from /var/run to /run for pid file

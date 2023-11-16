@@ -31,7 +31,6 @@ URL:            https://thekelleys.org.uk/dnsmasq/
 Source0:        https://thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Source3:        dnsmasq.reg
 Source4:        dnsmasq.service
 Source5:        rc.dnsmasq-suse
 Source6:        system-user-dnsmasq.conf
@@ -167,9 +166,8 @@ fi
 
 %install
 make install-i18n DESTDIR=%{buildroot} PREFIX=%{_prefix} AWK=gawk COPTS=%{_copts}
-install -d -m 755 %{buildroot}/%{_sysconfdir}/slp.reg.d
+install -d -m 755 %{buildroot}/%{_sysconfdir}/
 install -m 644 dnsmasq.conf.example %{buildroot}/%{_sysconfdir}/dnsmasq.conf
-install -m 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/slp.reg.d/
 install -d 755 %{buildroot}%{_datadir}/dbus-1/system.d/
 install -m 644 dbus/dnsmasq.conf %{buildroot}%{_datadir}/dbus-1/system.d/dnsmasq.conf
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/dnsmasq.service
@@ -207,8 +205,6 @@ rm -rf contrib/MacOSX-launchd
 %config(noreplace) %{_sysconfdir}/dnsmasq.conf
 %{_sbindir}/dnsmasq
 %{_sbindir}/rcdnsmasq
-%dir %{_sysconfdir}/slp.reg.d/
-%config %attr(0644,root,root) /%{_sysconfdir}/slp.reg.d/dnsmasq.reg
 %{_mandir}/man8/dnsmasq.8%{?ext_man}
 %{_datadir}/dbus-1/system.d/dnsmasq.conf
 %{_unitdir}/dnsmasq.service
