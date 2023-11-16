@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  6 03:06:33 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.35
+   see /usr/share/doc/packages/perl-Module-ScanDeps/Changes
+
+  1.35  2023-11-05
+
+  - massive speed up, esp. for scripts using stuff from
+    the Moose ecosystem, thanks to @shawnlaffan:
+
+    - add package level caches for INC searches (_find_in_inc, _glob_in_inc)
+    - faster add_deps on case insensitive systems AKA Windows
+
+-------------------------------------------------------------------
 Mon Sep 25 03:06:45 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.34
