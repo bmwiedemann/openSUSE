@@ -1,7 +1,7 @@
 #
 # spec file for package python-antlr4-python3-runtime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-antlr4-python3-runtime
-Version:        4.9.3
+Version:        4.13.1
 Release:        0
 Summary:        ANTLR runtime for Python 3
 License:        BSD-3-Clause
 URL:            https://www.antlr.org
 Source:         https://github.com/antlr/antlr4/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -48,10 +49,10 @@ This package contains the runtime for Python 3.
 cp %{SOURCE1} LICENSE.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pygrun
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %prepare_alternative pygrun
@@ -64,13 +65,15 @@ cp %{SOURCE1} LICENSE.txt
 
 %check
 cd %{_builddir}/antlr4-%{version}/runtime/Python3
-%pyunittest discover -v --pattern "*.py" --start-directory tests
+%{python_expand #
+PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/run.py
+}
 
 %files %{python_files}
 %doc README.txt
 %license LICENSE.txt
 %python_alternative %{_bindir}/pygrun
-%{python_sitelib}/antlr4_python3_runtime-*.egg-info
+%{python_sitelib}/antlr4_python3_runtime-*.dist-info
 %{python_sitelib}/antlr4
 
 %changelog
