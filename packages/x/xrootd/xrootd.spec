@@ -1,5 +1,5 @@
 #
-# spec file for package xrootd
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -34,13 +34,13 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.6.2
+Version:        5.6.3
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
 Group:          System/Daemons
-URL:            http://xrootd.org/
-Source0:        http://xrootd.org/download/v%{version}/xrootd-%{version}.tar.gz
+URL:            https://xrootd.slac.stanford.edu/
+Source0:        https://xrootd.slac.stanford.edu/download/v%{version}/xrootd-%{version}.tar.gz
 Source1:        xrootd-user.conf
 Source100:      xrootd-rpmlintrc
 # PATCH-FEATURE-OPENSUSE Hardening patches
@@ -73,11 +73,11 @@ BuildRequires:  libradosstriper-devel
 %endif
 BuildRequires:  pkgconfig(libtirpc)
 %if %{with python3}
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 BuildRequires:  xrootd-client-devel  = %{version}
 BuildRequires:  xrootd-libs-devel    = %{version}
 BuildRequires:  xrootd-private-devel = %{version}

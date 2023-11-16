@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 12 09:40:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.3:
+  * Export project version in CMake config (issue #2094)
+  * Find only XRootD matching XRootDConfig.cmake installation path
+  * Do not use PEP517 by default, not supported on CentOS 7
+  * Call tzset() early to ensure thread-safety of localtime_r()
+    and mktime() (issue #2107)
+  * Correct maximum exp/act value in XrdNetPMark::getEA
+  * Create environment file within adminpath (issue #2106)
+  * Fix incorrect patch for authfile parsing (issue #2088)
+  * Skip server checksum query test on unsupported filesystems
+  * Return an error if xrdfs rm fails to delete any file
+  * Try to load blacklist even if some entries are invalid
+  * Wait for pipeline including XrdCl::AppendFile() to finish
+  * Fix parsing of chunked PUT lengths (#2102, #2103)
+
+-------------------------------------------------------------------
 Sun Sep 17 12:57:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.2:
@@ -67,13 +85,13 @@ Thu Jul 20 12:37:56 UTC 2023 - pgajdos@suse.com
 
 - version update to 5.6.1
   * Version 5.6.1
-    Minor bug fixes 
-    [CMake] Fix Findlibuuid.cmake to use kernel provided uuid on macOS 
+    Minor bug fixes
+    [CMake] Fix Findlibuuid.cmake to use kernel provided uuid on macOS
     [XrdCl] Avoid race in postmaster QueryTransport
     [XrdCl] Add missing argument in call to debug log message.
-      This fixes sporadic crashes seen in FTS when debug logging is enabled. 
+      This fixes sporadic crashes seen in FTS when debug logging is enabled.
     [XrdCrypto] Avoid race in GetCryptoFactory
-    Miscellaneous 
+    Miscellaneous
     [CMake] Make sure Python is required in PyPI build
     [CMake] Set RPATH that works for binaries and libraries on macOS
     [CMake,Python] Handle RPATH for Python bindings on macOS
@@ -532,7 +550,7 @@ Fri Dec 22 18:51:02 UTC 2017 - bugs@vdm-design.de
 -------------------------------------------------------------------
 Thu Nov 23 13:54:23 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -726,4 +744,4 @@ Wed Jun 13 14:52:53 UTC 2012 - bugs@vdm-design.de
 Mon Feb 20 20:14:15 UTC 2012 - bugs@vdm-design.de
 
 - Add spec file based on the one distributed with the sources
- 
+
