@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 15 12:03:39 UTC 2023 - pgajdos@suse.com
+
+- increase required memory in _constraints [bsc#1217165]
+  (tests still fails in ETA related tests)
+
+-------------------------------------------------------------------
 Tue Sep 26 13:31:17 UTC 2023 - pgajdos@suse.com
 
 - add _constraints [bsc#1215338]
