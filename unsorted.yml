@@ -4953,10 +4953,6 @@ unsorted:
   - ghc-cpphs-devel 
   - ghc-cpphs-doc 
   - ghc-cpphs-prof 
-  - ghc-cprng-aes 
-  - ghc-cprng-aes-devel 
-  - ghc-cprng-aes-doc 
-  - ghc-cprng-aes-prof 
   - ghc-criterion 
   - ghc-criterion-devel 
   - ghc-criterion-doc 
@@ -8820,7 +8816,6 @@ unsorted:
   - kbfs-git 
   - kbfs-tool 
   - kbibtex 
-  - kbibtex-devel 
   - kbibtex-lang 
   - kblackbox 
   - kblackbox-lang 
@@ -11184,7 +11179,7 @@ unsorted:
   - libcinnamon-desktop4 
   - libcinnamon-menu-3-0 
   - libcinnamon-menu-3-devel 
-  - libcint4 
+  - libcint5 
   - libcircle-devel 
   - libcircle2 
   - libcircllhist-devel 
@@ -14485,7 +14480,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_5_3 
+  - librssguard-4_5_5 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -15346,7 +15341,7 @@ unsorted:
   - libvorbisenc2-32bit 
   - libvorbisfile3-32bit 
   - libvoro++0 
-  - libvotca2022 
+  - libvotca2023 
   - libvotequorum8 
   - libvotequorum8-32bit 
   - libvpd-2_2-3 
@@ -21304,7 +21299,6 @@ unsorted:
   - pix-lang 
   - pixd 
   - pixelorama 
-  - pixmap 
   - pixz 
   - pkTriggerCord 
   - pkcs11-helper-devel 
@@ -33219,8 +33213,6 @@ unsorted:
   - qt6-networkauth-docs-qch 
   - qt6-networkauth-examples 
   - qt6-networkauth-private-devel 
-  - qt6-networkinformation-glib 
-  - qt6-networkinformation-nm 
   - qt6-opcua 
   - qt6-opcua-devel 
   - qt6-opcua-docs-html 
@@ -33982,9 +33974,8 @@ unsorted:
   - ruby3.2-doc-ri 
   - ruby3.2-rubygem-agama 
   - ruby3.2-rubygem-commander 
-  - ruby3.2-rubygem-gettext_i18n_rails_js 
+  - ruby3.2-rubygem-http 
   - ruby3.2-rubygem-lolcat 
-  - ruby3.2-rubygem-rails-7.0 
   - ruby3.2-rubygem-tmuxinator 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
@@ -45891,7 +45882,6 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
-  - yarn 
   - yaru-icon-theme 
   - yascreen-devel 
   - yasm 

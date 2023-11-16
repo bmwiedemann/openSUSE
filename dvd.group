@@ -3672,6 +3672,8 @@
     <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-network-tls" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="qt6-networkinformation-glib" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="qt6-networkinformation-nm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-platformtheme-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-translations" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-wayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3816,6 +3818,7 @@
     <package name="ruby3.2-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gli" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-globalid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-google-protobuf" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3836,7 +3839,6 @@
     <package name="ruby3.2-rubygem-hoe" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-hpricot" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-html2haml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-http" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-http-cookie" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-http-form_data" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-http_parser.rb" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3954,6 +3956,7 @@
     <package name="ruby3.2-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rails-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4710,6 +4713,7 @@
     <package name="xxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="yarn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
