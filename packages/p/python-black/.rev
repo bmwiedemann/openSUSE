@@ -294,4 +294,26 @@
     errors in verbose mode</comment>
     <requestid>1120053</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d64d81a318d1063c2ead1d0d6eb3dcb5</srcmd5>
+    <version>23.11.0</version>
+    <time>1700163114</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11.0:
+  * Support formatting ranges of lines with the new `--line-
+    ranges` command-line option
+  * Fix crash on formatting bytes strings that look like
+    docstrings (#4003)
+  * Fix crash when whitespace followed a backslash before newline
+    in a docstring (#4008)
+  * Fix standalone comments inside complex blocks crashing Black
+  * Fix crash on formatting code like `await (a ** b)` (#3994)
+  * No longer treat leading f-strings as docstrings. This matches
+    Python's behaviour and fixes a crash (#4019)
+  * Consistently apply force exclusion logic before resolving
+    symlinks (#4015)
+  * Fix a bug in the matching of absolute path names in
+    `--include` (#3976)</comment>
+    <requestid>1127150</requestid>
+  </revision>
 </revisionlist>

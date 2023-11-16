@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-black
-Version:        23.10.1
+Version:        23.11.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
