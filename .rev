@@ -15,4 +15,12 @@
     <comment>New upstream release 0.4.0</comment>
     <requestid>921169</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d689dabaa14d1cf6e2dc86baf396560</srcmd5>
+    <version>0.5.0</version>
+    <time>1700163064</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1126964</requestid>
+  </revision>
 </revisionlist>
