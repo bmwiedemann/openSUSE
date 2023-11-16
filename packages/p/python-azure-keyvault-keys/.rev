@@ -210,4 +210,18 @@
 - Remove temporary version override (forwarded request 1072539 from glaubitz)</comment>
     <requestid>1072561</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>112e27d4509a2bf68f13231198a74731</srcmd5>
+    <version>4.9.0~b3</version>
+    <time>1700162894</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.9.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 4.9.0~b3
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1126633 from glaubitz)</comment>
+    <requestid>1126690</requestid>
+  </revision>
 </revisionlist>
