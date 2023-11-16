@@ -1191,4 +1191,13 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1119668</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>ee62ac1ca57e817c5559cf2f9fa24d01</srcmd5>
+    <version>0.74.1</version>
+    <time>1700162821</time>
+    <user>anag+factory</user>
+    <comment>- Update vte-revert-back-to-c++17.patch
+  * revert more C++20 features (forwarded request 1125778 from yudaike)</comment>
+    <requestid>1126606</requestid>
+  </revision>
 </revisionlist>
