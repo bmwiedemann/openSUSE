@@ -67,6 +67,8 @@ Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.pat
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1209266 - OVMF firmware hangs when booting SEV or SEV-ES guest
 Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
+# Bug 1216472 - VMs with secure boot do not start (assertion in edk2)
+Patch11:        %{name}-UefiCpuPkg-BaseXApicX2ApicLib-fix-CPUID_V2_EXTENDED_.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -203,6 +205,7 @@ rm -rf $PKG_TO_REMOVE
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 15 12:17:26 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-UefiCpuPkg-BaseXApicX2ApicLib-fix-CPUID_V2_EXTENDED_.patch
+  fix CPUID_V2_EXTENDED_TOPOLOGY detection (bsc#1216472)
+
+-------------------------------------------------------------------
+Wed Nov 15 09:16:43 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Sync change log to prepare for sending edk2-stable202308 ovmf to SLE15-SP6
+  (jsc#PED-6233, jsc#PED-5523)
+    - Removed the following backported patches because they are merged
+      to edk2 mainline:
+        - ovmf-MdeModulePkg-PiSmmCore-SmmEntryPoint-underflow-CVE-2.patch
+	  cab1f02565 MdeModulePkg/PiSmmCore: SmmEntryPoint underflow (CVE-2021-38578)
+	  (bsc#1196741)
+
+-------------------------------------------------------------------
 Sat Sep 23 02:24:40 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Update to edk2-stable202308
