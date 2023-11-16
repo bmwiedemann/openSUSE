@@ -18,7 +18,7 @@
 
 Name:           pcsc-ccid
 %define _name ccid
-Version:        1.5.2
+Version:        1.5.4
 Release:        0
 Summary:        PCSC Driver for CCID Based Smart Card Readers and GemPC Twin Serial Reader
 License:        LGPL-2.1-or-later
@@ -29,9 +29,11 @@ Source1:        %{name}-rpmlintrc
 Source2:        https://ccid.apdu.fr/files/%{_name}-%{version}.tar.bz2.asc
 Source3:        %{name}.keyring
 BuildRequires:  automake
+BuildRequires:  flex
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(udev)
 # openSUSE package pcsc-lite 1.6.6 is the first one which creates the scard UID and GID:
 Requires:       pcsc-lite >= 1.6.6
