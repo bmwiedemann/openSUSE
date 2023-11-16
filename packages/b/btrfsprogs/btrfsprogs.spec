@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.5.1
+Version:        6.6.2
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only

@@ -11,10 +11,10 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  utils.h |    4 ++++
  1 file changed, 4 insertions(+)
 
-Index: btrfs-progs-v6.0/common/fsfeatures.h
+Index: btrfs-progs-v6.5.3/common/fsfeatures.h
 ===================================================================
---- btrfs-progs-v6.0.orig/common/fsfeatures.h
-+++ btrfs-progs-v6.0/common/fsfeatures.h
+--- btrfs-progs-v6.5.3.orig/common/fsfeatures.h
++++ btrfs-progs-v6.5.3/common/fsfeatures.h
 @@ -21,7 +21,9 @@
  #include <stdio.h>
  #include "kernel-lib/sizes.h"
@@ -26,7 +26,7 @@ Index: btrfs-progs-v6.0/common/fsfeatures.h
  /*
   * Since one feature can set at least one bit in either
 @@ -44,11 +46,20 @@ struct btrfs_mkfs_features {
- #define BTRFS_FEATURE_STRING_BUF_SIZE		(160)
+ #define BTRFS_FEATURE_STRING_BUF_SIZE		(512)
  
  static const struct btrfs_mkfs_features btrfs_mkfs_default_features = {
 +#ifndef BTRFS_MKFS_DEFAULT_RUNTIME_FEATURES
