@@ -96,4 +96,18 @@
     <comment></comment>
     <requestid>1072720</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7559ef3fbcd9d75fb4c519149638191c</srcmd5>
+    <version>4.4.0~b2</version>
+    <time>1700162887</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.4.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 4.4.0~b2
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1126629 from glaubitz)</comment>
+    <requestid>1126675</requestid>
+  </revision>
 </revisionlist>
