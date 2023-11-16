@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:29:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.4:
+  * Release notes for v0.24.4 (#1378)
+  * docs: Correct skipRecreate description (#1371)
+  * feat: write help message to stdout (#1377)
+  * Bump github.com/onsi/ginkgo/v2 from 2.13.0 to 2.13.1 (#1374)
+  * Bump golang.org/x/crypto from 0.14.0 to 0.15.0 (#1375)
+  * Bump github.com/onsi/gomega from 1.29.0 to 1.30.0 (#1376)
+  * Set up LastTransitionTime in case that it is empty (#1370)
+  * Bump k8s.io/klog/v2 from 2.100.1 to 2.110.1 (#1367)
+  * Improve examples with a more legible kubeseal command (#1366)
+  * Include refereces to the maintainers team  email (#1365)
+  * Release Carvel v0.24.3 (#1363)
+  * Release Chart v0.24.3 (#1362)
+
+-------------------------------------------------------------------
 Thu Nov 02 09:30:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.24.3:
