@@ -293,4 +293,41 @@
     <comment></comment>
     <requestid>1101714</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>27584f852fc06250564acfae3bd89c7e</srcmd5>
+    <version>1.47.0</version>
+    <time>1700162841</time>
+    <user>anag+factory</user>
+    <comment>- libuv.keyring: added keyid 79A67C55A3679C8B
+  Jameson Nash &lt;vtjnash@gmail.com&gt;
+
+- refresh fix_tests.patch
+- Update to 1.47.0
+ * test: fix license blurb (Ben Noordhuis)
+ * linux: fix harmless warn_unused_result warning (Shuduo Sang)
+ * darwin: fix build warnings (小明)
+ * linux: don't use io_uring on pre-5.10.186 kernels (Ben Noordhuis)
+ * fs: fix WTF-8 decoding issue (Jameson Nash)
+ * test: enable disabled tcp_connect6_error_fault Ben Noordhuis)(
+ * test: enable disabled fs_link (Ben Noordhuis)
+ * test: enable disabled spawn_same_stdout_stderr (Ben Noordhuis)
+ * linux: handle UNAME26 personality (Ben Noordhuis)
+ * build: move cmake_minimum_required version to 3.9 (Keith Winstein)
+ * unix: set ipv6 scope id for link-local addresses (Ben Noordhuis)
+ * unix: match kqueue and epoll code (Trevor Norris)
+ * win,spawn: allow `%PATH%` to be unset (Kyle Edwards)
+ * doc: switch to Furo, a more modern Sphinx theme (Saúl Ibarra Corretgé)
+ * darwin: make TCP_KEEPINTVL and TCP_KEEPCNT available (小明)
+ * win,fs: avoid winapi macro redefinition (Brad King)
+ * linux: add missing riscv syscall numbers (michalbiesek)
+ * doc: fix broken &quot;Shared library&quot; Wikipedia link (Alois Klink)
+ * unix: get mainline kernel version in Ubuntu (Santiago Gimeno)
+ * unix: get mainline kernel version in Debian (Ben Noordhuis)
+ * unix: disable io_uring close on selected kernels (Santiago Gimeno)
+ * test: skip tests when ipv6 is not available (Santiago Gimeno)
+ * ibmi: implement ifaddrs, getifaddrs, freeifaddrs (Abdirahim Musse)
+ * unix: reset signal counters after fork (SmorkalovG)
+ * unix: remove pread/preadv conditionals (Ben Noordhuis)</comment>
+    <requestid>1126710</requestid>
+  </revision>
 </revisionlist>
