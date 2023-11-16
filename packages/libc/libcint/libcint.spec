@@ -1,7 +1,7 @@
 #
 # spec file for package libcint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,16 @@
 #
 
 
-%define major 4
-%define minor 4
+%define major 5
 %define libname %{name}%{major}
 %define develname   cint
 Name:           libcint
-Version:        %{major}.%{minor}.1
+Version:        5.5.0
 Release:        0
 Summary:        General Gaussian-type orbitals integrals for quantum chemistry
 License:        BSD-2-Clause
 URL:            https://github.com/sunqm/libcint
 Source:         https://github.com/sunqm/libcint/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_control_reaches_end_of_non-void_function.patch andythe_great@pm.me -- Fix error control reaches end of non-void function in int3c2e.c
-Patch0:         fix_control_reaches_end_of_non-void_function.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
@@ -87,7 +84,7 @@ developing applications that use %{name}.
 
 %files -n %{develname}-devel
 %license LICENSE
-%doc README doc/program_ref.pdf
+%doc README.rst doc/program_ref.pdf
 %{_includedir}/cint.h
 %{_includedir}/cint_funcs.h
 %{_libdir}/libcint.so
