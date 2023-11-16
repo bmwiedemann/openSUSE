@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  groff
+BuildRequires:  libattr-devel
 BuildRequires:  librsync-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
@@ -39,7 +40,6 @@ BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(gpg-error)
 BuildRequires:  pkgconfig(gpgme) >= 1.2.0
 BuildRequires:  pkgconfig(libargon2)
-BuildRequires:  pkgconfig(libattr)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(liblz4)
