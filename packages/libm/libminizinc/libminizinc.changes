@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:14:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.6:
+  * Change the library and solver configuration path of builtin
+    version of Chuffed to prevent file conflicts
+  * Use the verbose compilation flag to control the verbosity of
+    the MIP domains stage
+  * Introduces the ``arg_val`` and ``arg_val_weak`` globals that
+    return the index of the first occurrence of a value in a given
+    array.
+  * Introduces the ``var_perm_sym`` and ``var_sqr_sym`` symmetry
+    breaking globals.
+  * Enable parallel search for the built-in Gecode presolver.
+  * Use native Qt dark mode on Windows where supported.
+  * Improve behaviour of the custom solver parameter dialog.
+  * ``ASTString`` constructor that uses ``std::string`` is now
+    explicit to avoid unexpected or unnecessary GC allocation.
+  * Circular definitions through the use of annotations will now
+    be reported as type errors, rather incurring infinite recursion
+  * Optimize the compilation of identical calls in different
+    contexts by recursively changing the contexts of the (uncompiled)
+    dependent calls, instead of flattening multiple times.
+  * Change domains of set variables when encountering (par)
+    equalities, or negated ``in`` constraints at the root level.
+  * Calls to ``min`` and ``max`` with ``par set of int`` type
+    argument will now be undefined (becoming ``false`` in the
+    closest Boolean context). This makes them consistent with
+    the calls with an argument of type ``var set of int``.
+  * Note that previous behaviour would have returned ``infinity``
+    or ``-infinity`` respectively (:bugref:`661`).
+  * Only show MOOC error code when response is actually an error
+  * Add documentation for ``--input-is-flatzinc`` flag
+  * Add ``ceil``, ``floor`` and ``round`` functions for ``var
+    float``, and corresponding FlatZinc builtins ``float_ceil``,
+    ``float_floor`` and ``float_round`` that can be overridden
+    by solvers in the new ``redefinitions-2.7.1.mzn`` library file
+  * Fix highlighting of multiline comments starting with ``/*/``
+  * Fix bundling of incompatible OpenSSL version in linux
+    packages.
+  * Support for tuple and record types as well as type-inst
+    synonyms has been added.
+  * Extended enumerated types can now be constructed from non-
+    contiguous sets.
+  * WebAssembly is now fully supported as a target platform.
+  * MiniZinc now includes a solver interface for the `HiGHS
+    linear optimisation suite. HiGHS is included by default in
+    the MiniZincIDE package, and available using ``--solver highs``.
+  * The SCIP interface has been updated and is now compatible
+    with version 7 and 8 only.
+  * A solver's globals library specified in a configuration file
+    will now always be passed to the compiler using the ``-G``
+    flag. This allows users to easily override this library from
+    command line when required.
+  * Automatically detect Gurobi 10.0 and potential future
+    versions.
+  * Avoid loading all solver plugin DLLs on startup, instead
+    loading when required.
+  * The non-FlatZinc interfaces now also accept the ``--free-
+    search`` flag in addition to the ``-f`` flag.
+  * Ensure user config directory is created when modifying
+    solver search paths (:idebugref:`167`).
+  * Add tooltips to the CP-Profiler status bar legend.
+  * Add support for mooc submissions which include file editing
+    history.
+  * bugfixes
+
+-------------------------------------------------------------------
 Sat Jul 16 21:50:27 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.6.4

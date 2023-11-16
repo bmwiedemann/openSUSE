@@ -1,7 +1,7 @@
 #
 # spec file for package libminizinc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libminizinc
-Version:        2.6.4
+Version:        2.7.6
 Release:        0
 Summary:        A high-level constraint modelling language
 Group:          Productivity/Scientific/Math
@@ -26,8 +26,8 @@ URL:            https://www.minizinc.org/
 Source:         https://github.com/MiniZinc/libminizinc/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.4.0
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(mpfr)
 BuildRequires:  gecode-devel
+BuildRequires:  pkgconfig(mpfr)
 
 %description
 MiniZinc is a free and open-source constraint modeling language.
