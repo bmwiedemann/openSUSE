@@ -1102,4 +1102,12 @@
     <comment></comment>
     <requestid>1073278</requestid>
   </revision>
+  <revision rev="114" vrev="7">
+    <srcmd5>1830cf12f84b3bc8149f60a7e4959e70</srcmd5>
+    <version>93vu</version>
+    <time>1700162850</time>
+    <user>anag+factory</user>
+    <comment>Fix build with RPM 4.19: unnumbered patches are no longer supported. (forwarded request 1123739 from dimstar)</comment>
+    <requestid>1125861</requestid>
+  </revision>
 </revisionlist>

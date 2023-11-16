@@ -1,7 +1,7 @@
 #
 # spec file for package ksh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,7 +78,7 @@ Source21:       Warning
 Source30:       ksh-rpmlintrc
 Source31:       vmbalance
 Source42:       sigexec.c
-Patch:          ksh93.dif
+Patch0:         ksh93.dif
 Patch1:         workaround-stupid-build-system.diff
 Patch2:         ksh-qemu.patch
 Patch3:         ksh93-shift_ijs.dif
@@ -204,7 +204,7 @@ if test -d share ; then
     find share/ -type d -a -empty | xargs -r rm -vrf
     find share/ -type d -a -empty | xargs -r rm -vrf
 fi
-%patch
+%patch0
 %patch62
 %patch1
 %ifarch %arm
