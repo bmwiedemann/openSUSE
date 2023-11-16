@@ -16,8 +16,9 @@
 #
 
 
+%define lname   io.github.endless_sky.endless_sky
 Name:           endless-sky
-Version:        0.9.16.1
+Version:        0.10.4
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
@@ -26,8 +27,6 @@ URL:            https://endless-sky.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE endless-sky-fix-data-path.patch -- Fix installation path of data
 Patch0:         endless-sky-fix-data-path.patch 
-# Patch1 based on https://patch-diff.githubusercontent.com/raw/endless-sky/endless-sky/pull/8235.patch
-Patch1:         8235.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -84,9 +83,9 @@ mv %{buildroot}%{_prefix}/games/endless-sky %{buildroot}%{_bindir}/endless-sky
 %{_bindir}/endless-sky
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{lname}.desktop
 %{_mandir}/man6/*
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/io.github.endless_sky.endless_sky.appdata.xml
+%{_datadir}/metainfo/%{lname}.appdata.xml
 
 %changelog
