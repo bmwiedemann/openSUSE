@@ -1798,4 +1798,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Block pgsql-llvmjit from the DVD</comment>
   </revision>
+  <revision rev="252" vrev="250">
+    <srcmd5>2f96e7360137e8ccfdc65a22bda97390</srcmd5>
+    <version>unknown</version>
+    <time>1700135857</time>
+    <user>dimstar_suse</user>
+    <comment>Skip openafs for now - this was not on the DVD for quite some time until it was fixed</comment>
+  </revision>
 </revisionlist>
