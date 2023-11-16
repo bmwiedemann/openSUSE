@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 30 03:07:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.71
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.71 2023-10-29
+   - Add Prima::Image::webp filter dialog
+   - Add DeviceBitmap.maskPixel
+   - Add menus to file dialogs
+   - Remove obsolete RadioGroup and CheckBoxGroup - use GroupBox instead
+   - Proofread all documentation through Grammarly
+
+-------------------------------------------------------------------
 Tue Sep  5 16:57:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.70

@@ -18,9 +18,9 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.70000
+Version:        1.71000
 Release:        0
-%define cpan_version 1.70
+%define cpan_version 1.71
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
 Summary:        Perl graphic toolkit
@@ -51,16 +51,17 @@ Requires:       xorg-x11
 # MANUAL END
 
 %description
-The toolkit is a combination of two basic sets of classes - core and
-external. The core classes are coded in C and form a baseline for every
-Prima object written in Perl. The usage of C is possible together with the
-toolkit; however, its full power is revealed in the Perl domain. The
-external classes present an easily expandable set of widgets, written
-entirely in Perl and communicating with the system using Prima library
-calls.
+Prima is a classic 2D GUI toolkit that works under Windows and X11
+environments. The toolkit features a rich widget library, extensive 2D
+graphic support, PDF generation, modern Unicode text input and output, and
+supports a wide set of image formats. Additionally, the RAD-style Visual
+Builder and POD viewer are included. The toolkit can interoperate with
+other popular event loop libraries.
 
 %prep
 %autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
