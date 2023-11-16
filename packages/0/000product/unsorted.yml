@@ -7759,6 +7759,7 @@ unsorted:
   - hugin 
   - hugo 
   - hugo-bash-completion 
+  - human-theme-gtk 
   - humanity-icon-theme 
   - hunspell 
   - hunspell-devel 
@@ -12061,7 +12062,7 @@ unsorted:
   - libgensiomdns6 
   - libgensioosh6 
   - libgeocode-glib0 
-  - libgeos3_11_2 
+  - libgeos3_12_1 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -12954,6 +12955,7 @@ unsorted:
   - liblsan0-gcc7 
   - liblscp-devel 
   - liblscp6 
+  - liblsof0 
   - libltc-devel 
   - libltc11 
   - libltdl7-32bit 
@@ -13938,7 +13940,7 @@ unsorted:
   - libpowerman0 
   - libppl14 
   - libppl_c4 
-  - libpplite1 
+  - libpplite4 
   - libpq5-32bit 
   - libpqos-devel 
   - libpqos4 
@@ -14795,8 +14797,8 @@ unsorted:
   - libspooles2_2-openmpi 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_41_2-0 
-  - libsqlcipher-3_41_2-0-x86-64-v3 
+  - libsqlcipher-3_42_0-0 
+  - libsqlcipher-3_42_0-0-x86-64-v3 
   - libsqlite3-0-32bit 
   - libsqlite3-0-x86-64-v3 
   - libsqlparser1 
@@ -15175,7 +15177,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_5_0 
+  - libuhd4_6_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -16166,6 +16168,7 @@ unsorted:
   - lshw-lang 
   - lskat 
   - lskat-lang 
+  - lsof-devel 
   - lsp-plugins 
   - lsp-plugins-common 
   - lsp-plugins-devel 
@@ -18977,14 +18980,11 @@ unsorted:
   - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -22144,6 +22144,7 @@ unsorted:
   - python-khal-zsh-completion 
   - python-langtable-data 
   - python-libcomps-doc 
+  - python-libeconf-doc 
   - python-logutils-doc 
   - python-logzero-doc 
   - python-lxml-doc 
@@ -24326,6 +24327,7 @@ unsorted:
   - python310-libcaes 
   - python310-libcreg 
   - python310-libcst 
+  - python310-libeconf 
   - python310-libesedb 
   - python310-libevdev 
   - python310-libevt 
@@ -27749,6 +27751,7 @@ unsorted:
   - python311-libcaes 
   - python311-libcreg 
   - python311-libcst 
+  - python311-libeconf 
   - python311-libesedb 
   - python311-libevdev 
   - python311-libevt 
@@ -34034,35 +34037,12 @@ unsorted:
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
-  - ruby3.2-rubygem-actionmailbox-7.0 
-  - ruby3.2-rubygem-actiontext-7.0 
-  - ruby3.2-rubygem-activerecord-7.0 
-  - ruby3.2-rubygem-activestorage-7.0 
-  - ruby3.2-rubygem-coffee-rails 
-  - ruby3.2-rubygem-delayed_job_active_record 
-  - ruby3.2-rubygem-devise 
-  - ruby3.2-rubygem-devise-i18n 
-  - ruby3.2-rubygem-devise_ldap_authenticatable 
-  - ruby3.2-rubygem-font-awesome-rails 
+  - ruby3.2-rubygem-agama 
+  - ruby3.2-rubygem-commander 
   - ruby3.2-rubygem-gettext_i18n_rails_js 
-  - ruby3.2-rubygem-haml-rails 
-  - ruby3.2-rubygem-importmap-rails 
-  - ruby3.2-rubygem-jquery-rails 
-  - ruby3.2-rubygem-js-routes 
-  - ruby3.2-rubygem-lightbox2 
+  - ruby3.2-rubygem-lolcat 
   - ruby3.2-rubygem-rails-7.0 
-  - ruby3.2-rubygem-rails-i18n 
-  - ruby3.2-rubygem-railties-7.0 
-  - ruby3.2-rubygem-responders 
-  - ruby3.2-rubygem-rspec-rails 
-  - ruby3.2-rubygem-rspec-rails-4.0 
-  - ruby3.2-rubygem-sass-rails 
-  - ruby3.2-rubygem-sass-rails-5.1 
-  - ruby3.2-rubygem-sassc-rails 
-  - ruby3.2-rubygem-stimulus-rails 
-  - ruby3.2-rubygem-turbo-rails 
-  - ruby3.2-rubygem-web-console 
-  - ruby3.2-rubygem-webpacker 
+  - ruby3.2-rubygem-tmuxinator 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
   - runawk 
@@ -34089,6 +34069,7 @@ unsorted:
   - rygel-plugin-gstreamer-renderer 
   - rygel-plugin-tracker 
   - rypper 
+  - ryzenadj 
   - rzsz 
   - s-tui 
   - s3backer 
@@ -44265,6 +44246,8 @@ unsorted:
   - tomcat-docs-webapp 
   - tomcat-el-3_0-api 
   - tomcat-embed 
+  - tomcat-jakartaee-migration 
+  - tomcat-jakartaee-migration-javadoc 
   - tomcat-javadoc 
   - tomcat-jsp-2_3-api 
   - tomcat-jsvc 
@@ -45128,6 +45111,7 @@ unsorted:
   - vim-plugin-zoomwin 
   - vim-poke 
   - vimb 
+  - vinci 
   - vino 
   - vino-lang 
   - vips-doc 
@@ -46085,7 +46069,6 @@ unsorted:
   - yudit 
   - yum 
   - yum-utils 
-  - yuzu 
   - z 
   - z3 
   - z3-devel 
