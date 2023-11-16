@@ -1,4 +1,198 @@
 -------------------------------------------------------------------
+Thu Nov 16 15:02:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.0:
+  * Breaking (Potentially) ❗
+    - Policy Reports are now created on a per-resource basis and
+      using a UID as the name rather than the previous behavior of
+      per-policy. This may be a breaking change if you relied upon
+      either of these attributes in previous versions. This change
+      has the benefit of putting less pressure on the Kubernetes
+      API server and less storage cost on etcd.
+    - In accordance with Cosign 2.0 updates, the Rekor URL is now
+      required in a policy. The url field may be empty ("") but
+      must be specified even if you've opted not to store
+      signatures in a Rekor instance. Users upgrading from Kyverno
+      v1.10 to v1.11 who have image verification policies using
+      cosign will have to explicitly disable Tlogs and SCT
+      verification in their policy using the rekor.ignoreTlogs and
+      ctlog.IgnoreSCT fields if they did not use Rekor while
+      signing the image.
+  * Added
+    - Context variables are now supported in cleanup policies
+      (#6084)
+    - Introduced ability to cleanup resources based upon assignment
+      of a new reserved label cleanup.kyverno.io/ttl (#7821, #8096,
+      #8128, #8660)
+    - ValidatingAdmissionPolicies (VAP) can now be tested in the
+      Kyverno CLI in both test and apply commands (#6656)
+    - ValidatingAdmissionPolicies can be generated/managed by
+      Kyverno when a compatible validate.cel rule is created
+      (#7840, #8219)
+    - Generate Policy Reports for VAPs (#8135)
+    - Kyverno validate rules can now be written using CEL
+      expressions, including auto-gen support (#7859, #8024, #8071,
+      #8084, #8098, #8099, #8196)
+    - Added a new field in a policy at spec.admission which, when
+      set to false, allows policies to work in background-only mode
+      (#6666)
+    - Added a new field under verifyImages rules called
+      imageRegistryCredentials which allows flexible, easier
+      configuration of credentials for image registries including
+      defining the required credential helpers (#7114)
+    - Added new caching of image signature verifications (#7890,
+      #7969)
+    - New lookup() JMESPath filter (#7136)
+    - New round() JMESPath filter (#7489)
+    - Support for Cosign 2.0 (#7248, #8521)
+    - Added an auth checker interface from Kyverno Playground
+      (#7323)
+    - Added a check for digest mismatch in verifyImages rules
+      (#8443)
+    - Added new ability to more finely control configuration of
+      metrics (#8569)
+    - Added an --aggregateReports flag to the reports controller to
+      enable/disable aggregated reports (#7475)
+    - Events are now created in the events.k8s.io/v1 API group and
+      version (#7673)
+    - Generate rules now support using server-side apply via the
+      field spec.useServerSideApply (#7705)
+    - Added CLI API schema for test command (#8422, #8438, #8439,
+      see also Changed below)
+    - Added new create commands to the Kyverno CLI used to easily
+      create the various resources needed for testing (#7778,
+      #7779, #7780, #7781, #7782, #8160)
+    - Added new Kyverno CLI docs command to generate CLI
+      documentation (#8179, #8180, #8181, #8191, #8193, #8200,
+      #8259)
+    - Added Kyverno CLI experimental fix command (#8213, #8404)
+    - Added support for wildcards in CLI test command (#8216)
+    - Kyverno CLI now has experimental validation of policies being
+      tested (#8384, #8406, #8410)
+    - Added ability to test supported ValidatingAdmissionPolicies
+      (VAP) variables in both Kyverno CLI test and apply commands
+      (#8182)
+    - Kyverno is now tested against and uses libraries from
+      Kubernetes version 1.28 (#8036, #8037)
+    - Kyverno now supports configuring matchConditions in webhooks
+      (Kubernetes 1.27+) (#8042)
+    - Wildcards now work in subject statements in match/exclude
+      (#8068)
+    - Added variables support for Kyverno validate.cel policies
+      (#8103, #8113)
+    - Added CTLogs verification to Cosign (#8130, #8166)
+    - New metric of type Meter is added for the TTL cleanup manager
+      with attributes resource_group, resource_version, and
+      resource_resource (#8134)
+    - Added ability to configure TUF when using a custom Sigstore
+      implementation (#8385)
+    - Added ability to disable TUF when used in air-gapped
+      environments (#8509)
+    - Helm
+      - Added API priority and fairness resources to the Kyverno
+        chart (FlowSchema and PriorityLevelConfiguration) (#7468)
+      - Added ability to set security contexts for the webhook
+        cleanup Pod (#7970)
+      - Added Helm secret size check to CI to detect of the current
+        chart size exceeds the Helm secret size limit (#8195)
+      - Allow resourceNames on extraResources for the cleanup
+        controller (#8307)
+      - Added a global image registry value (#8625)
+  * Changed
+    - Policy Exceptions and Cleanup Policies graduated from alpha
+      API to beta (#8594, #8609, #8621, #8378, #8587)
+    - Policy Exceptions are now enabled by default (#8545)
+    - Policy Reports are changed to be generated per-resource
+      rather than per-policy, and intermediary aggregated reports
+      are expunged immediately (#8426)
+    - Schema validation will no longer be done on patterns
+      (including internal validation for mutate rules) obviating
+      the need for spec.schemaValidation. We will deprecate and
+      remove this field in a future version (#8538)
+    - Cleanup policies no longer use CronJobs to invoke the cleanup
+      action. This is all handled internally now (#8526, #8529,
+      #8531)
+    - Kyverno CLI test command has been refactored and includes a
+      formal test manifest schema (#8422, #6871, #6942, #7995,
+      #8145, #8163, #8168, #8177, #8189, #8212, #8387, and more)
+    - Kyverno CLI apply command now has a nice tabular output
+      format (#7757)
+    - Kyverno CLI apply now shows failure messages when a result
+      fails (#7758)
+    - Kyverno CLI --compact flag has been renamed to
+      --detailed-results (#7937)
+    - Kyverno CLI the --set flag can be used to set a variable for
+      multiple input resources rather than just one (#7984)
+    - Kyverno CLI certain more "internal" flags will no longer be
+      hidden (#8077)
+    - Refactored JSON patches to use structure instead of byte
+      arrays (#7186)
+    - Deprecated the --imageSignatureRepository container flag. Use
+      verifyImages.Repository in a policy definition instead
+      (#7391)
+    - Replaced the internal package used to apply JSON patches.
+      This resulted in some fixes and slight behavioral changes
+      (#7401, #7452)
+    - The policies.kyverno.io/last-applied-patches annotation upon
+      successful mutation has been removed (#7438)
+    - RBAC has been hardened for a couple controllers to better
+      follow least privileges (#7626, #7634, #7638, #8083)
+    - The images variable ({{ images }}) can be used correctly in a
+      policy (#7787)
+    - Use a new custom keychains from Flux package preventing some
+      timeouts (#7908)
+    - Allow overriding CA and TLS secret names which store the
+      Kyverno certificates (#8137)
+    - Replaced CLI manifest commands by create command (#8165)
+    - Kyverno CLI test command has been extended to support
+      multiple paths (#8247)
+    - The remainder of match/excludewill be skipped if
+      theoperations[]` do not match (#8324)
+    - Helm
+      - The Grafana dashboard has been moved to its own subchart in
+        an effort to reduce the size of the main Kyverno chart
+        (#8619)
+      - Kyverno CRDs have been moved to a subchart for the same
+        reason (#8623)
+      - Updated the Chart metadata so the minimum version is
+        correctly aligned with that of Kyverno itself (#8708)
+  * Fixed
+    - Abort pattern validation earlier when processing can occur
+      (#7307)
+    - Fixed an issue when testing for mutations using foreach
+      (#7396)
+    - Fixed not validating that subject kinds were on the allowed
+      list (#7582)
+    - Fixed a panic when certain environment variables weren't
+      passed to the controllers (#7613)
+    - Fixed the missing severity type when generating a policy
+      report (#7974)
+    - Fixed adding server name into TLS certs when running Kyverno
+      with --serverIP flag (#8053)
+    - Fixed an issue which prevented mutation of policy report
+      resources (#8080)
+    - Fixed a crash when using an unquoted null (#8081)
+    - Fixed indefinitely retry for the mutateExisting rule by
+      applying the retry limit (#8100)
+    - Fixed nil-dereferences by adding mocks to unit tests (#8102)
+    - Fixed TLS cert renewal when the CA cert is deleted (#8114)
+    - Fixed a nil dereference in validate.podSecurity subrules
+      (#8271)
+    - Fixed an issue where generating an empty kind would be
+      allowed (#8332)
+    - Fixed/improved some logs (#8442, #8673)
+    - Fixed a couple issues impacting generate rules when a trigger
+      or clone source resource name exceeded 63 characeters (#8466)
+    - Fixed an issue where Kyverno would modify reports it didn't
+      own (#8502)
+    - Fixed an image cache panic issue (#8512)
+    - Fixed an issue preventing creation of ClusterAdmissionReports
+      if the resource had a colon in the name (#8530)
+    - Kyverno CLI: fixed using the --fail-only flag in the test
+      command now exits properly upon failed tests (#7717)
+    - Kyverno CLI: fixed logging failure (#8110)
+
+-------------------------------------------------------------------
 Mon Nov 13 06:51:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.10.5:
