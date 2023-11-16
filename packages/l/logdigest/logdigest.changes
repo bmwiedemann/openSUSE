@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 25 19:53:56 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate from cron to systemd timers.
+- Added systemd services:
+  - logdigest.service
+  - logdigest-all-ignores-autogeneration.service
+- Added systemd timers:
+  - logdigest.timer (runs daily)
+  - logdigest-all-ignores-autogeneration.timer (runs every 30 minutes,
+    like the old cron job)
+- Fixes bsc#1115444.
+
+-------------------------------------------------------------------
 Tue Aug 20 11:46:47 CEST 2019 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]

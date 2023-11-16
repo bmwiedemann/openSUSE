@@ -1,0 +1,16 @@
+[Unit]
+Description=Concatenate logdigest ignore files into a single file
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+
+Type=oneshot
+ExecStart=/usr/share/logdigest/logdigest-all-ignores-autogeneration
