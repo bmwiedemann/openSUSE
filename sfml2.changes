@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 10 15:22:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+  General:
+  * Stop overwriting CMAKE_MODULE_PATH (#2577)
+  * Loosen restrictions on unknown compilers (#2585)
+  * Fix unused compiler flag error in Clang (#2625)
+  * Disable warnings as errors by default (#2680)
+  Window:
+  * Skip ClientMessage events with other window ID unless it is
+    for IM (#2651)
+  Graphics:
+  * Ensure OpenGL extensions are loaded before querying maximum
+    texture size (#2603)
+  * Fix warnings in Linux OpenGL ES codepaths (#2747)
+  * Remove use of C++11 header (#2591)
+
+-------------------------------------------------------------------
 Wed Jun 21 13:42:07 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.6.0

@@ -18,7 +18,7 @@
 
 %define so_ver -2_6
 Name:           sfml2
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        C++ multimedia library with access to input, sound and display
 License:        Zlib
