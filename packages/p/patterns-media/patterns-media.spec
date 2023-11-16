@@ -427,14 +427,11 @@ Recommends:     qinternet
 # bnc#626952
 Recommends:     quota-nfs
 Recommends:     rdesktop
-Recommends:     scim-hangul
 # bnc#697047
 Recommends:     siga
 Recommends:     squashfs
 Recommends:     sshfs
 # could not find a better pattern
-Recommends:     subversion-server
-Recommends:     subversion-tools
 Recommends:     tigervnc
 Recommends:     tsclient
 # minimal korean support (bnc#390099)
@@ -490,9 +487,6 @@ Recommends:     nss_ldap-64bit
 Recommends:     pam_krb5-64bit
 Recommends:     pam_ldap-64bit
 %endif
-# Ensure we have Pulseaudio on the DVD (for upgrade scenarios)
-Recommends:     pulseaudio
-Recommends:     pulseaudio-module-x11
 # NVIDIA's openGPU driver
 %ifarch x86_64 aarch64
 Recommends:     kernel-firmware-nvidia-gsp-G06

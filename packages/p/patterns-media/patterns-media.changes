@@ -11,6 +11,8 @@ Thu Nov 16 15:11:15 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
   fix was merged.
 - Also drop patterns-network_admin: quite large with nagios and
   wireshark.
+- Drop pulseaudio (which was missing for a while already) as we
+  switched long ago to pipewire.
 
 -------------------------------------------------------------------
 Thu Nov 16 14:58:30 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
