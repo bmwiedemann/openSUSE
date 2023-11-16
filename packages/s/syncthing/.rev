@@ -1370,4 +1370,12 @@
     <comment>Update to 1.26.0</comment>
     <requestid>1123935</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>e320c4423c4d649b9c781cf75db4c169</srcmd5>
+    <version>1.26.1</version>
+    <time>1700162868</time>
+    <user>anag+factory</user>
+    <comment>Update to v1.26.1</comment>
+    <requestid>1126639</requestid>
+  </revision>
 </revisionlist>
