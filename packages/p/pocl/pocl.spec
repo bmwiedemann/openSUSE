@@ -34,13 +34,13 @@ Patch0:         link_against_libclang-cpp_so.patch
 # https://github.com/pocl/pocl/commit/20d1bfa9bfd301964f7b2fc6d7f4589dd04e1b5c
 # https://github.com/pocl/pocl/commit/bf50f0052e4248cd1acfaaa8da95c5e4ca52f815
 Patch1:         pocl-llvm16.patch
-BuildRequires:  (clang-devel >= 6.0.0 with clang-devel < 17)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
+BuildRequires:  ((clang-devel >= 6.0.0 with clang-devel < 17) or clang16-devel)
 BuildRequires:  pkgconfig(hwloc)
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
