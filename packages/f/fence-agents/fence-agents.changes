@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 14 18:57:33 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.13.1+git.1698672892.6f7e4327:
+  * fence_ovm: Replace all_opt "ssl_client_cert_file" with "ssl_client_certificate_file"
+  * fence_ovm: new fence agent for Oracle VM
+  * fence_cisco_mds: undo metadata change, as it is an I/O agent
+  * all agents: update metadata from I/O to e.g. Power, Network, etc for non-I/O agents
+  * fence_azure_arm: fix get virtual machines call
+  * README: update IRC info to link to ClusterLabs wiki IRC page
+  * configure: require 3.6 or higher
+  * build: add test-fencing rule and make it part of "make check"
+  * fence_zvmip: Update longdesc to document all required functions
+  * fence_scsi: fix registration handling in device 'off' workflows
+  * fa-dev-guide: improve fail()/error code description
+  * fa-dev-guide: add reboot_cycle() section
+  * fa-dev-guide: add General git section
+
+-------------------------------------------------------------------
 Tue Jul 25 09:21:24 UTC 2023 - varkoly@suse.com
 
 - Update to version 4.12.1+git.1690196437.64f62dbb:
