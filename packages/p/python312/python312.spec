@@ -69,7 +69,7 @@
 %define tarversion %{version}
 %endif
 # We don't process beta signs well
-%define         folderversion 3.12.0
+%define         folderversion %{tarversion}
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -136,13 +136,6 @@ Source99:       python.keyring
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
 Source100:      PACKAGING-NOTES
-# PATCH-FEATURE-UPSTREAM F00251-change-user-install-location.patch bsc#[0-9]+ mcepl@suse.com
-# Fix installation in /usr/local (boo#1071941), originally from Fedora
-# https://src.fedoraproject.org/rpms/python3/blob/master/f/00251-change-user-install-location.patch
-# Set values of prefix and exec_prefix in distutils install command
-# to /usr/local if executable is /usr/bin/python* and RPM build
-# is not detected to make pip and distutils install into separate location
-Patch02:        F00251-change-user-install-location.patch
 # support finding packages in /usr/local, install to /usr/local by default
 Patch07:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
@@ -418,7 +411,6 @@ other applications.
 
 %prep
 %setup -q -n %{tarname}
-%patch02 -p1
 %patch07 -p1
 %patch08 -p1
 %patch09 -p1

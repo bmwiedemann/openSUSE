@@ -554,4 +554,14 @@
 </comment>
     <requestid>1114870</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1cfdd943a089a4220758d39350ac3c2c</srcmd5>
+    <version>3.12.0</version>
+    <time>1700162957</time>
+    <user>anag+factory</user>
+    <comment>- Remove F00251-change-user-install-location.patch, that patch breaks
+  the python-rpm-macros usage with multibuild
+</comment>
+    <requestid>1126824</requestid>
+  </revision>
 </revisionlist>

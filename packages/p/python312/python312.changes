@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 16 10:02:18 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove F00251-change-user-install-location.patch, that patch breaks
+  the python-rpm-macros usage with multibuild
+
+-------------------------------------------------------------------
 Mon Oct  2 17:15:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to the final release of 3.12.0:
