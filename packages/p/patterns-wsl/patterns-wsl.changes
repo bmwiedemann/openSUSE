@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 16 10:35:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace systemd BuildRequires with pkgconfig(systemd): Allow OBS
+  to shortcut through systemd-mini.
+
+-------------------------------------------------------------------
 Wed Dec 21 03:04:19 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adjusting how $PREEXISTING_COMMANDS is fed into the while loop for

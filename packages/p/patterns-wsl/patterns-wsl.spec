@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-wsl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,15 @@ License:        MIT
 Group:          Metapackages
 URL:            https://github.com/sbradnick/patterns
 BuildRequires:  patterns-rpm-macros
-BuildRequires:  systemd
 BuildRequires:  udev
+BuildRequires:  pkgconfig(systemd)
 BuildArch:      noarch
 
 %description
 This is an internal package that is used to create the patterns as part
 of the installation source setup.  Installation of this package does
 not make sense.
+
 
 # ----
 
@@ -234,4 +235,3 @@ mkdir -p %{buildroot}/usr/share/doc/packages/patterns/
 echo 'This file marks the pattern wsl_systemd to be installed.' > %{buildroot}/usr/share/doc/packages/patterns/wsl_systemd.txt
 
 %changelog
-
