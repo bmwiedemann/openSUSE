@@ -622,4 +622,12 @@
     <comment> (forwarded request 1117712 from iznogood)</comment>
     <requestid>1117966</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ec856e7bd9df80def65f4a8e33e2d605</srcmd5>
+    <version>2.4</version>
+    <time>1700162810</time>
+    <user>anag+factory</user>
+    <comment>Update to 2.4 (forwarded request 1125243 from krop)</comment>
+    <requestid>1126602</requestid>
+  </revision>
 </revisionlist>

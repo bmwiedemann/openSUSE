@@ -18,7 +18,7 @@
 
 %global __requires_exclude ^/usr/bin/pkg-config$
 Name:           shared-mime-info
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Shared MIME Database
 License:        GPL-2.0-or-later
