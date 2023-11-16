@@ -17,7 +17,7 @@
 
 
 Name:           bpfmon
-Version:        2.51
+Version:        2.52
 Release:        0
 Summary:        Traffic monitor for BPF expression/iptables rule
 License:        GPL-2.0-or-later
