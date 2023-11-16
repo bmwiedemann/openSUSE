@@ -30,7 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(oniguruma)
 # https://github.com/stedolan/jq/issues/1904
 Requires:       libjq%{jq_sover} = %{version}
-%ifnarch riscv64
+%ifarch aarch64 x86_64 ppc64le s390x
 BuildRequires:  valgrind
 %endif
 
@@ -61,7 +61,9 @@ Development files (headers and libraries for jq).
 %build
 %configure \
   --disable-static \
-%ifarch riscv64
+%ifarch aarch64 x86_64 ppc64le s390x
+  --enable-valgrind \
+%else
   --disable-valgrind \
 %endif
 %{nil}
