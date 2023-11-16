@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:54:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~alpha5:
+  * Bump version for release. (#871)
+  * Add GPG Expiration entry in the CHANGELOG (#870)
+  * Updated changelog to reflect consistent spelling of the word
+    initialization (#869)
+  * Upload packages to PackageCloud during release action (#860)
+  * S3 Client HeadObject requires SSE parameters (#864)
+  * Move S3 CHANGELOG entries I added to S3 upgrade section (#862)
+  * Remove draft CHANGELOG section of PR template (#861)
+  * keep init wording consistent in internal/command/init.go (#855)
+  * Allow expired provider pgp keys, with warning (#848)
+  * Add link to installation guide to readme (#857)
+  * Avoid mutating input config in node_resource_validate (#850)
+  * Update hcl version to v2.19.1 (#852)
+  * Pull in docker cross buildx tooling (#849)
+
+-------------------------------------------------------------------
 Fri Nov 10 08:06:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - properly report the version (otherwise this would report
