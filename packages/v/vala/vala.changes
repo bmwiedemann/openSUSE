@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 13 11:25:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.14:
+  + Various improvements and bug fixes:
+    - codegen: Generate compatible wrapper of ref-void functions
+    - vala: Prevent usage of strlen() on non-null-terminated string
+  + Bindings:
+    - glib-2.0: Add new symbols from 2.78
+    - gstreamer-1.0: Make ElementFactory.make()'s name parameter
+      default to null
+    - gtk4-wayland: Add the missing wayland-client bindings
+    - wayland-client: Complete the binding
+
+-------------------------------------------------------------------
 Wed Aug 30 07:36:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.13:

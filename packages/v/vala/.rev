@@ -1263,4 +1263,12 @@
     <comment></comment>
     <requestid>1108350</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>7a2084dbea3868ac33cfe44b9a5f2e57</srcmd5>
+    <version>0.56.14</version>
+    <time>1700162814</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1125465 from iznogood)</comment>
+    <requestid>1126604</requestid>
+  </revision>
 </revisionlist>
