@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 10 03:10:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.37.0
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  v0.37.0 2023-11-09 16:46:43+01:00
+
+      - Breaking change: Make cyclic_refs fatal by default for safety, like
+        announced (avoid memory leaks)
+      - Add support for plain scalars ending with colons (Issue #48, ingy++)
+
+-------------------------------------------------------------------
 Thu May 11 03:07:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.036
