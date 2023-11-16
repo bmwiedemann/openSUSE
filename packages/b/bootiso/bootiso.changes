@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 15:54:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+-  Fix build with RPM 4.19: unnumbered patches are no longer
+   supported.
+
+-------------------------------------------------------------------
 Thu Apr  8 16:48:55 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
 
 - Rename export-syslinux-lib-root.patch to syslinux-lib-root.patch

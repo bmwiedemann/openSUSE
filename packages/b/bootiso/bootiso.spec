@@ -1,7 +1,7 @@
 #
 # spec file for package bootiso
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Group:          Development/Tools/Other
 Summary:        A bash script to securely create a bootable USB device from one image file
 URL:            https://github.com/jsamr/bootiso
 Source:         https://github.com/jsamr/bootiso/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch:          syslinux-lib-root.patch
+Patch0:         syslinux-lib-root.patch
 BuildArch:      noarch
 Requires:       bc
 Requires:       jq
