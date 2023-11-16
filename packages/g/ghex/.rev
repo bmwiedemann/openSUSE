@@ -559,4 +559,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>New stable release (forwarded request 1117052 from iznogood)</comment>
     <requestid>1117452</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ab0c9313e87840a049b4cb2524c3e634</srcmd5>
+    <version>45.1</version>
+    <time>1700162863</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1125823 from iznogood)</comment>
+    <requestid>1126641</requestid>
+  </revision>
 </revisionlist>

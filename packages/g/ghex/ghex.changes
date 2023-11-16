@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 14 08:55:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + gtkhex: Local variables in switch statement should be in own
+    scope (ie, fix clang build issues)
+  + appwin: Mark error message string properly translatable
+
+-------------------------------------------------------------------
 Wed Oct 11 17:36:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
