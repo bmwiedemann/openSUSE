@@ -24,10 +24,10 @@ License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
-Patch:          wyrmgus-gl-includes.patch
-BuildRequires:  libboost_date_time-devel >= 1.69.0
+Patch0:         wyrmgus-gl-includes.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_date_time-devel >= 1.69.0
 BuildRequires:  libqt5-qtlocation-private-headers-devel
 BuildRequires:  libtolua++-5_1-devel
 BuildRequires:  lua51-devel

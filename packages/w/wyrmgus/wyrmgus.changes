@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  7 10:14:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Aug 16 21:19:55 UTC 2023 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Precise boost dependency sub package.
