@@ -1,0 +1,22 @@
+--- booth/conf/booth-arbitrator.service.in.orig	2023-11-14 20:07:50.278192100 +0100
++++ booth/conf/booth-arbitrator.service.in	2023-11-14 20:09:11.842793043 +0100
+@@ -11,6 +11,19 @@
+ WantedBy=multi-user.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions
+ Type=simple
+ @NOTIFY_ACCESS_SWITCH@NotifyAccess=main
+ ExecStart=/usr/sbin/boothd daemon -S -c /etc/booth/booth.conf

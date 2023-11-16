@@ -469,4 +469,24 @@
   * unit file: Remove Alias directive</comment>
     <requestid>1089002</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>91a53687bb797172588c8e890f193797</srcmd5>
+    <version>1.1+git0.09b0074</version>
+    <time>1700162856</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1+git0.09b0074:
+  * build: Prepare version 1.1 release
+  * build: Make distcheck work for non-root user
+  * build: Include icons in release tarballs
+  * build: Add release.mk
+  * build: Add gitlog-to-changelog
+  * tests: Fix Python 3.12 warning
+  * attr: Fix glib hash_table != NULL assert
+  * attr: Fix memory leak for list and get operation
+  * main: Fix exit code on grant/revoke command error
+  * spec: Migrate to SPDX license
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_booth-arbitrator.service.patch</comment>
+    <requestid>1126570</requestid>
+  </revision>
 </revisionlist>

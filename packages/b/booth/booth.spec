@@ -29,7 +29,7 @@
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           booth
-Version:        1.0+20221117.9d4029a
+Version:        1.1+git0.09b0074
 Release:        0
 Summary:        Ticket Manager for Multi-site Clusters
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ Group:          Productivity/Clustering/HA
 URL:            https://github.com/ClusterLabs/booth
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
+Patch1:         harden_booth-arbitrator.service.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -76,6 +77,7 @@ the Cluster Ticket Manager for Pacemaker.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch1 -p1
 
 %build
 autoreconf -fvi
