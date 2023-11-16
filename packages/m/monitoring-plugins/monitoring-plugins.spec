@@ -691,6 +691,9 @@ Summary:        Test the current system load average
 Group:          System/Monitoring
 Provides:       nagios-plugins-load = %{version}
 Obsoletes:      nagios-plugins-load <= 1.5
+%if 0%{?suse_version} > 1599
+Requires:       coreutils-systemd
+%endif
 
 %description load
 This plugin tests the current system load average.

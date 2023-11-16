@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:04:40 CET 2023 - ro@suse.de
+
+- also require coreutils-systemd in monitoring-plugins-load
+  as the check uses the uptime binary at runtime
+  revisiting [bsc#1216148] 
+
+-------------------------------------------------------------------
 Mon Oct 30 18:19:23 CET 2023 - ro@suse.de
 
 - renamed patches

@@ -322,4 +322,14 @@ New patches:
   obsoleted by monitoring-plugins-2.3.3-root-plugins-Makefile_-_no_chown.patch</comment>
     <requestid>1121479</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4bb72df1dfc11d020c0e89654d4e77f2</srcmd5>
+    <version>2.3.3</version>
+    <time>1700162974</time>
+    <user>anag+factory</user>
+    <comment>- also require coreutils-systemd in monitoring-plugins-load
+  as the check uses the uptime binary at runtime
+  revisiting [bsc#1216148]</comment>
+    <requestid>1126870</requestid>
+  </revision>
 </revisionlist>
