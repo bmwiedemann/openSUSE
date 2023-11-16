@@ -18,7 +18,7 @@
 
 %define cpan_name DBM-Deep
 Name:           perl-DBM-Deep
-Version:        2.0017
+Version:        2.0019
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Pure perl multi-level hash/array DBM that supports transactions
