@@ -173,4 +173,12 @@
   xinetd is not supported any longer</comment>
     <requestid>1072360</requestid>
   </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>d4b63eb0fe72f86b20486bea6b7816f5</srcmd5>
+    <version>4.0.3</version>
+    <time>1700162992</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126912</requestid>
+  </revision>
 </revisionlist>

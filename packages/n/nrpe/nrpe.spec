@@ -401,7 +401,7 @@ fi
 %{_mandir}/man8/nrpe.8%{?ext_man}
 %dir %{_sysconfdir}/nrpe.d
 %config(noreplace) %{_sysconfdir}/nrpe.cfg
-%if 0%{?suse_version} > 1315 && 0%{?suse_version} < 1599
+%if 0%{?suse_version} < 1599
 %dir %{_sysconfdir}/xinetd.d
 %config(noreplace) %{_sysconfdir}/xinetd.d/nrpe
 %endif
