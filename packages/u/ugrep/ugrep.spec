@@ -17,7 +17,7 @@
 
 
 Name:           ugrep
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
@@ -27,6 +27,8 @@ Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{n
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(bzip3)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)

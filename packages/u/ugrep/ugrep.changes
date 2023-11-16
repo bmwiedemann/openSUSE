@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 15 20:52:19 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3.3:
+  * support brotli compressed files
+  * support bzip3 compressed files
+  * update option --pretty to accept an optional WHEN argument
+    never, always, auto similar to the --color option
+  * improve TUI screen blanking response when a new search starts,
+    while also avoiding screen flicker
+  * fix option --zmax>1 when a decompression library produces a
+    decompression error when decompressing a nested compressed file
+
+-------------------------------------------------------------------
 Fri Nov  3 16:02:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.3.2:
