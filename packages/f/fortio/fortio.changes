@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:25:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.61.0:
+  * Updated build image with go1.21.4, dep updates, linter related
+    fixes (#858)
+  * Bump actions/checkout from 4.1.0 to 4.1.1 (#853)
+
+-------------------------------------------------------------------
 Thu Oct 12 05:15:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.60.3:
