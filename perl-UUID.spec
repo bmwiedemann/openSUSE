@@ -1,7 +1,7 @@
 #
 # spec file for package perl-UUID
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-Name:           perl-UUID
-Version:        0.28
-Release:        0
 %define cpan_name UUID
-Summary:        DCE compatible Universally Unique Identifier library for Perl
+Name:           perl-UUID
+Version:        0.310.0
+Release:        0
+%define cpan_version 0.31
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/J/JR/JRM/%{cpan_name}-%{version}.tar.gz
+Summary:        DCE compatible Universally Unique Identifier library for Perl
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JR/JRM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Devel::CheckLib) >= 1.02
+BuildRequires:  perl(CPAN::Meta)
+BuildRequires:  perl(Devel::CheckLib) >= 1.14
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
+Provides:       perl(UUID) = 0.310.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libuuid-devel
@@ -47,11 +50,11 @@ created by the Open Software Foundation (OSF) Distributed Computing
 Environment (DCE) utility uuidgen.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -62,8 +65,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
-%license License
+%license LICENSE
 
 %changelog

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Nov  8 03:09:24 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-UUID/Changes
+
+  ToDo:
+    - Bump dev version.
+    - Bump release version and fixup Changes.
+  0.31 Mon Nov  6 23:43:58 EST 2023
+    - Strip leading whitespace from assertlib files.
+    - Use not_execute during configure.
+    - Remove double quote area in Makefile.PL.
+    - Remove placeholder files in repo.
+    - Manifest tidy.
+    - Add tests for generated files.
+    - Remove old README_new file first. Make generation required.
+    - Generate license file and test.
+    - Skip 0gen test except in disttest. (UUID_DISTTEST=1)
+    - Make 0gen tests fail for empty files.
+    - OCD manifest tweak.
+    - Add comments to Makefile modifications.
+    - Silence manicopy call in configure.
+    - Make generated metafiles authoritative.
+      - Thanks to twata. [rt.cpan.org #150311]
+    - Test metafiles for authority.
+    - Bump dev version.
+    - Add DynaLoader and Exporter to PREREQ_PM.
+    - Add comments for other prereqs.
+    - Move VERSION closer to top.
+    - Remove NO_MYMETA if EUMM < 6.58.
+    - Re-enable warnings.
+    - Remove forced debug.
+    - Bump dev version.
+    - Rename License to LICENSE, per Kwalitee.
+    - Add check for copyright year in disttest.
+    - Add 'provides' info to metafiles, per Kwalitee.
+    - Move dynamic_config to WriteMakefile().
+    - Tweak copyright test.
+    - Bump dev version.
+    - Make sure generated files are in manifest.
+    - Fix wayward LICENSE.
+    - Add test deps, per Kwalitee.
+    - Bump dev version.
+    - Check copyright date in LICENSE.
+    - Bump release version.
+  0.30 Tue Oct 31 17:16:50 EDT 2023
+    - Make all devel version use UUID_DEBUG=1.
+    - Bump ExtUtils::MakeMaker prereq to 6.64 (first version supporting
+      TEST_REQUIRES).
+    - Add debug message to show current Devel::CheckLib::VERSION.
+    - Add debug message to show current ExtUtils::MakeMaker::VERSION.
+    - Reorder configure tests for win32.
+    - Add RPC_CSTR typedef for older Win32.
+    - Define UuidCreateSequential() for older Win32.
+    - Make META.json and META.yml placeholders. Generate during distdir.
+    - Make README a placeholder. Generate during distdir.
+    - Fix trivial build warning.
+  0.29 Wed Oct 25 01:15:57 EDT 2023
+    - Bump prereq version for Devel::CheckLib to 1.14 to fix problems with
+      Strawberry versions 5.18 to 5.28. Earlier Strawberry did not ship
+      Devel::CheckLib. Newer versions shipped 1.14 or later.
+      - Thanks to twata. [rt.cpan.org #143841]
+
+-------------------------------------------------------------------
 Tue Sep  3 20:29:14 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Add BuildRequires:  libuuid-devel
