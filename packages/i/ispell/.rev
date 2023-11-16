@@ -313,4 +313,13 @@
   * ispell-3.3.02.dif</comment>
     <requestid>1008768</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>5986c5fb366ea79e89571bd8bc0a7c6b</srcmd5>
+    <version>3.4.05</version>
+    <time>1700162890</time>
+    <user>anag+factory</user>
+    <comment>- The dictionaries require at (un)install the update script of
+  ispell (boo#1217133)</comment>
+    <requestid>1126678</requestid>
+  </revision>
 </revisionlist>

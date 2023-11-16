@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 15 13:31:05 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- The dictionaries require at (un)install the update script of
+  ispell (boo#1217133)
+
+-------------------------------------------------------------------
 Fri Oct  7 11:22:50 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to ispell 3.4.05

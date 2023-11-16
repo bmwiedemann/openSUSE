@@ -1,7 +1,7 @@
 #
 # spec file for package ispell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -90,8 +90,10 @@ Provides:       ispell_dictionary
 Provides:       ispell_english_dictionary
 Provides:       locale(ispell:en)
 Requires(post): bash
+Requires(post): ispell
 Requires(post): fileutils
 Requires(postun):bash
+Requires(postun):ispell
 Requires(postun):fileutils
 
 %description -n ispell-american
@@ -109,8 +111,10 @@ Provides:       ispell_dictionary
 Provides:       ispell_english_dictionary
 Provides:       locale(ispell:en_GB)
 Requires(post): bash
+Requires(post): ispell
 Requires(post): fileutils
 Requires(postun):bash
+Requires(postun):ispell
 Requires(postun):fileutils
 
 %description -n ispell-british
