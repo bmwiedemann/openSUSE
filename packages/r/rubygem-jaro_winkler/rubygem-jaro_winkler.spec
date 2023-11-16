@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-jaro_winkler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-jaro_winkler
-Version:        1.5.4
+Version:        1.5.6
 Release:        0
 %define mod_name jaro_winkler
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -38,13 +37,13 @@ Source1:        %{name}-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Ruby & C implementation of Jaro-Winkler distance algorithm which supports UTF-8 string
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 jaro_winkler is an implementation of Jaro-Winkler distance algorithm which is
 written in C extension and will fallback to pure Ruby version in platforms
 other than MRI/KRI like JRuby or Rubinius. Both of C and Ruby implementation
 support any kind of string encoding, such as UTF-8, EUC-JP, Big5, etc.
+
 %prep
 
 %build
