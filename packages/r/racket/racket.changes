@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Nov 15 18:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
+
+- Update to 8.11:
+
+  * Match clauses can include a #:do option to allow evaluation of code and
+    bindings before a following #:when clause.
+
+  * JSON Serialization supports indentation with an #:indent option to
+    write-json. Cf. https://docs.racket-lang.org/json/index.html#%28def._%28%28lib._json%2Fmain..rkt%29._write-json%29%29
+
+  * An initiate-sequence function simplifies the creation of
+    sequences. Cf. https://docs.racket-lang.org/reference/sequences.html#%28def._%28%28lib._racket%2Fsequence..rkt%29._initiate-sequence%29%29
+
+  * The :do-in form allows an inner definition
+    sequence. Cf. https://docs.racket-lang.org/reference/for.html#%28form._%28%28lib.racket%2Fprivate%2Fbase..rkt%29.~3ado-in%29%29
+
+  * The redex-define form allows pattern-matching in PLT Redex using a
+    define-like syntax.
+    Cf. https://docs.racket-lang.org/redex/reference.html#%28form._%28%28lib._redex%2Freduction-semantics..rkt%29._redex-define%29%29
+
+  * Racket and Chez Scheme use Robert L. Smith’s “Algorithm 116” for division of
+    complex numbers. Cf. https://dl.acm.org/doi/10.1145/368637.368661
+
+  * DrRacket has indentation guides that provide visual cues indicating how code
+    is indented and grouped, accessible by using (<menu-key>-shift-i).
+
+  * “Comment-out” menu items can be specific to the #lang used by the current
+    file.
+    Cf. https://docs.racket-lang.org/framework/Text.html#%28def._%28%28lib._framework%2Fmain..rkt%29._text~3aindent-guides~3c~25~3e%29%29
+
+  * Unused identifiers have a tooltip indicating that they have no bound
+    occurrences.
+
+  * Quickscript includes a new form of scripting in the form of “hook” functions
+    that can be attached to existing
+    events. Cf. https://docs.racket-lang.org/quickscript/index.html#%28part._.Hooks%29
+
+  * Plots include plot-inset and plot-legend-padding parameters to control the
+    amount of space left unused around the plot edge and plot
+    legend. Cf. https://docs.racket-lang.org/plot/params.html#%28def._%28%28lib._plot%2Fmain..rkt%29._plot-inset%29%29
+
+  * There are many other documentation improvements, optimizations, and bug fixes!
+
+-------------------------------------------------------------------
 Fri Aug 18 20:18:56 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 8.10:
