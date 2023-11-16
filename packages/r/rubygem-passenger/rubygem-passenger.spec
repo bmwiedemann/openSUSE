@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-passenger
-Version:        6.0.17
+Version:        6.0.18
 Release:        0
 %define mod_name passenger
 %define mod_full_name %{mod_name}-%{version}
@@ -60,10 +60,9 @@ Recommends:     packageand(nginx:rubygem-passenger-nginx)
 Requires:       rubygem(passenger) = %{version}
 Recommends:     rubygem(%{rb_default_ruby_abi}:passenger) = %{version}
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://www.phusionpassenger.com/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
@@ -81,7 +80,6 @@ Patch1:         0002-fix-shebangs.patch
 # /MANUAL
 Summary:        A fast and robust web server and application server for Ruby, Python
 License:        GPL-2.0-only AND MIT
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
@@ -212,7 +210,7 @@ Summary:        Passenger apache module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(apache2:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.0.17
+# Requires:      rubygem-passenger = 6.0.18
 %description apache2
 
 A modern web server and application server for Ruby, Python and Node.js,
@@ -233,7 +231,7 @@ Summary:        Passenger Nginx module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(nginx:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.0.17
+# Requires:      rubygem-passenger = 6.0.18
 %description nginx
 
 A modern web server and application server for Ruby, Python and Node.js,
