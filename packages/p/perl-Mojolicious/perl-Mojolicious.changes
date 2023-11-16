@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 28 03:07:23 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.35
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.35  2023-10-27
+    - Added EXPERIMENTAL support for persistent cookies in Netscape format.
+    - Added EXPERIMENTAL file attribute to Mojo::UserAgent::CookieJar.
+    - Added EXPERIMENTAL load, save and to_string methods to Mojo::UserAgent::CookieJar.
+    - Fixed error reporting when loading applicartions with syntax errors. (haarg)
+    - Fixed absolute URL support in url_for_file and url_for_asset methods. (rawleyfowler)
+
+-------------------------------------------------------------------
 Tue Sep 12 03:08:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.34
