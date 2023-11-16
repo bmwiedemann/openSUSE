@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-llhttp-ffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,29 @@
 #
 
 
-%define mod_name llhttp-ffi
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-llhttp-ffi
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
-Summary:        Ruby FFI bindings for llhttp
-License:        MPL-2.0
-Group:          Development/Languages/Ruby
-URL:            https://github.com/metabahn/llhttp/
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
-BuildRequires:  %{rubydevel >= 2.5.0}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
+%define mod_name llhttp-ffi
+%define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  %{rubygem ffi-compiler}
 # /MANUAL
+BuildRequires:  ruby-macros >= 5
+BuildRequires:  %{rubydevel >= 2.5.0}
+BuildRequires:  %{rubygem gem2rpm}
+URL:            https://github.com/bryanp/llhttp/
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        Ruby FFI bindings for llhttp
+License:        MPL-2.0
 
 %description
 Ruby FFI bindings for llhttp.
@@ -51,12 +51,11 @@ Ruby FFI bindings for llhttp.
 %gem_install \
   --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
-%{gem_cleanup}
+%gem_cleanup
 # MANUAL
 # drop files from the git repository
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.rubocop*' -o -name '.github' -o -name '.yardopts' -o -name '.rspec' -o -name '.gitignore' \) | xargs rm -rf
 # /MANUAL
-
 
 %gem_packages
 
