@@ -1,0 +1,74 @@
+From e1e568942fef46f63cfae0317a72f86cf4bddf46 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Wed, 15 Nov 2023 19:56:20 -0700
+Subject: [PATCH] py: fix all shebangs
+
+---
+ tools/scripts/extract_xml_metadata.py           | 2 +-
+ xtp-tutorials/pyxtp/scripts/run_energy.py       | 2 +-
+ xtp-tutorials/pyxtp/scripts/run_gradient.py     | 2 +-
+ xtp-tutorials/pyxtp/scripts/run_mapchecker.py   | 2 +-
+ xtp-tutorials/pyxtp/scripts/run_optimization.py | 2 +-
+ xtp/src/pyxtp/pyxtp/capture_standard_output.py  | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tools/scripts/extract_xml_metadata.py b/tools/scripts/extract_xml_metadata.py
+index 413fb81f07..fde43f5ec3 100755
+--- a/tools/scripts/extract_xml_metadata.py
++++ b/tools/scripts/extract_xml_metadata.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #
+ # Copyright 2009-2020 The VOTCA Development Team (http://www.votca.org)
+ #
+diff --git a/xtp-tutorials/pyxtp/scripts/run_energy.py b/xtp-tutorials/pyxtp/scripts/run_energy.py
+index bf585b91e8..dbc8d2b9d0 100644
+--- a/xtp-tutorials/pyxtp/scripts/run_energy.py
++++ b/xtp-tutorials/pyxtp/scripts/run_energy.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ """Example to compute energies using XTP."""
+ from pyxtp import xtp, Visualization
+ from ase import Atoms
+diff --git a/xtp-tutorials/pyxtp/scripts/run_gradient.py b/xtp-tutorials/pyxtp/scripts/run_gradient.py
+index 30bfbf0472..16aa6c8730 100644
+--- a/xtp-tutorials/pyxtp/scripts/run_gradient.py
++++ b/xtp-tutorials/pyxtp/scripts/run_gradient.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ """Example to perform a gradient calculation."""
+ from pyxtp import xtp
+ from ase import Atoms
+diff --git a/xtp-tutorials/pyxtp/scripts/run_mapchecker.py b/xtp-tutorials/pyxtp/scripts/run_mapchecker.py
+index 41db246465..f53783ce68 100755
+--- a/xtp-tutorials/pyxtp/scripts/run_mapchecker.py
++++ b/xtp-tutorials/pyxtp/scripts/run_mapchecker.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ """Examples to show xtp_binds usage."""
+ from pyxtp import xtp_binds
+ from pathlib import Path
+diff --git a/xtp-tutorials/pyxtp/scripts/run_optimization.py b/xtp-tutorials/pyxtp/scripts/run_optimization.py
+index 3a624e35b5..c4301b43af 100644
+--- a/xtp-tutorials/pyxtp/scripts/run_optimization.py
++++ b/xtp-tutorials/pyxtp/scripts/run_optimization.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ """Example to optimize the geometry of CO"""
+ from pyxtp import xtp
+ from ase.io import write
+diff --git a/xtp/src/pyxtp/pyxtp/capture_standard_output.py b/xtp/src/pyxtp/pyxtp/capture_standard_output.py
+index 5cc5e14c2d..ec5514ac33 100644
+--- a/xtp/src/pyxtp/pyxtp/capture_standard_output.py
++++ b/xtp/src/pyxtp/pyxtp/capture_standard_output.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ """Examples to show xtp_binds usage."""
+ import io
+ from contextlib import redirect_stdout

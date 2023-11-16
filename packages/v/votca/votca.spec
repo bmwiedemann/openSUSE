@@ -25,17 +25,17 @@
 %endif
 
 Name:           votca
-Version:        2022.1
+Version:        2023
 Release:        0
 %define         uversion %{version}
-%define         sover 2022
+%define         sover 2023
 Summary:        Versatile Object-oriented Toolkit for Coarse-graining Applications
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://www.votca.org
 Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-# PATCH-FIX-UPSTREAM 1083.patch -- based on upsteam PR 1083, fix build with boost-1.82
-Patch0:         1083.patch
+# PATCH-FIX-UPSTREAM 1093.patch -- fix python shebang
+Patch0:         1093.patch
 
 BuildRequires:  cmake >= 3.13
 BuildRequires:  eigen3-devel
@@ -196,7 +196,7 @@ This package contains the bash completion support for votca.
 
 %install
 %cmake_install
-sed -i '1s@env @@' %{buildroot}/%{_bindir}/votca_{compare,help2doc} \
+sed -i '1s@env @@' \
   %{buildroot}/%{_datadir}/votca/scripts/inverse/{iie,cma_processor,table_smooth_at_cut_off}.py \
   %{buildroot}/%{_datadir}/votca/csg-tutorials/LJ1-LJ2/imc/svd.py \
   %{buildroot}/%{_datadir}/votca/csg-tutorials/spce/ibi*/spce.py
@@ -207,7 +207,7 @@ sed -i '1s@env @@' %{buildroot}/%{_bindir}/xtp_* %{buildroot}/%{_datadir}/votca/
 
 # Move bash completion file to correct location
 mkdir -p %{buildroot}%{_datadir}/bash_completion.d
-cp %{buildroot}%{_datadir}/votca/rc/csg-completion.bash %{buildroot}%{_datadir}/bash_completion.d/votca
+cp %{__builddir}/csg/scripts/csg-completion.bash %{buildroot}%{_datadir}/bash_completion.d/votca
 
 %fdupes %{buildroot}%{_prefix}
 
