@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:52:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.176:
+  * General
+    - [Models] Update Component Updater to use new Spreadsheet
+      column PublishToRegistry. @MUzairS15 (#9362)
+    - add mehsery components back @aabidsofi19 (#9359)
+  * Meshery CLI
+    - [mesheryctl] cleanup golden response files @leecalcote
+      (#9237)
+  * Meshery UI
+    - info modal opening issue fixed in table view @vaibhavpnimkar
+      (#9361)
+    - [connections] use default connection chip and fix bugs
+      @sudhanshutech (#9356)
+    - [UI] Connections Table enhancements and refactor @aabidsofi19
+      (#9360)
+    - Use Sistent components and packages @sudhanshutech (#9313)
+    - [UI] Fix technology and type not showing in Info modal
+      @Yashsharma1911 (#9337)
+    - [Server] Clean applications from configuration subscription i
+      @aabidsofi19 (#9354)
+  * Maintenance
+    - Bump github.com/nats-io/nkeys from 0.4.5 to 0.4.6 @dependabot
+      (#9253)
+  * Documentation
+    - [DOCS] Build REST API docs @MUzairS15 (#9355)
+
+-------------------------------------------------------------------
 Tue Nov 14 05:56:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.175:
