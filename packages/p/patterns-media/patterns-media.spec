@@ -391,62 +391,17 @@ Recommends:     kiwi-desc-vmxboot
 Recommends:     kiwi-media-requires
 Recommends:     kiwi-pxeboot
 Recommends:     kiwi-templates
-Recommends:     libICE.so.6
-Recommends:     libQtCore.so.4
-Recommends:     libQtDBus.so.4
-Recommends:     libQtGui.so.4
-Recommends:     libQtNetwork.so.4
-Recommends:     libQtXml.so.4
-Recommends:     libSM.so.6
-Recommends:     libX11.so.6
-Recommends:     libXcursor.so.1
-Recommends:     libXext.so.6
-Recommends:     libXfixes.so.3
-Recommends:     libXi.so.6
-Recommends:     libXinerama.so.1
-Recommends:     libXrandr.so.2
-Recommends:     libXrender.so.1
-Recommends:     libXss.so.1
-Recommends:     libXv.so.1
-# dependencies of skype.rpm
-Recommends:     libasound.so.2
 Recommends:     libc.so.6
-Recommends:     libdbus-1.so.3
-Recommends:     libdl.so.2
-Recommends:     libfontconfig.so.1
-Recommends:     libfreetype.so.6
-Recommends:     libgcc_s.so.1
-Recommends:     libglib-2.0.so.0
-Recommends:     libgthread-2.0.so.0
-Recommends:     libm.so.6
-Recommends:     libasound.so.2(ALSA_0.9)
-Recommends:     libasound.so.2(ALSA_0.9.0rc4)
-Recommends:     libc.so.6(GLIBC_2.0)
-Recommends:     libc.so.6(GLIBC_2.1)
-Recommends:     libc.so.6(GLIBC_2.1.3)
-Recommends:     libc.so.6(GLIBC_2.2)
-Recommends:     libc.so.6(GLIBC_2.3)
-Recommends:     libc.so.6(GLIBC_2.3.4)
-Recommends:     libc.so.6(GLIBC_2.4)
-Recommends:     libdl.so.2(GLIBC_2.0)
-Recommends:     libdl.so.2(GLIBC_2.1)
-Recommends:     libgcc_s.so.1(GCC_3.0)
-Recommends:     libgcc_s.so.1(GLIBC_2.0)
-Recommends:     libm.so.6(GLIBC_2.0)
 # register your hardware
 # no sync pattern
 Recommends:     libopensync-plugin-google-calendar
 Recommends:     libopensync-plugin-moto
 Recommends:     libopensync-plugin-python-module
-Recommends:     libpng12.so.0
 Recommends:     libpthread.so.0
 Recommends:     libpthread.so.0(GLIBC_2.0)
 Recommends:     libpthread.so.0(GLIBC_2.1)
 Recommends:     libpthread.so.0(GLIBC_2.2)
 Recommends:     libpthread.so.0(GLIBC_2.3.2)
-# meanwhile plugin (bnc#549711)
-Recommends:     libpurple-meanwhile
-Recommends:     librt.so.1
 Recommends:     libstdc++.so.6
 Recommends:     libstdc++.so.6(CXXABI_1.3)
 Recommends:     libstdc++.so.6(GLIBCXX_3.4)
@@ -457,7 +412,6 @@ Recommends:     libstdc++33
 Recommends:     libsyncml-tools
 # bnc#605888
 Recommends:     libvdpau1
-Recommends:     libz.so.1
 Recommends:     msynctool
 Recommends:     nbd
 Recommends:     nbd-doc
@@ -478,10 +432,6 @@ Recommends:     qinternet
 Recommends:     quota-nfs
 Recommends:     rdesktop
 Recommends:     scim-hangul
-# #297414, #304221
-Recommends:     seamonkey
-Recommends:     seamonkey-dom-inspector
-Recommends:     seamonkey-irc
 # bnc#697047
 Recommends:     siga
 Recommends:     squashfs
@@ -543,10 +493,6 @@ Recommends:     pam_ldap-32bit
 Recommends:     nss_ldap-64bit
 Recommends:     pam_krb5-64bit
 Recommends:     pam_ldap-64bit
-%endif
-%ifarch x86_64
-# bnc#581144
-Recommends:     gtk2-32bit
 %endif
 # Ensure we have Pulseaudio on the DVD (for upgrade scenarios)
 Recommends:     pulseaudio

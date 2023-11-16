@@ -383,4 +383,16 @@
   actually makes the entire patterns-media-rest_dvd fall off the
   DVD.</comment>
   </revision>
+  <revision rev="46" vrev="46">
+    <srcmd5>7a8b260f0335f0d395c6604b323907fb</srcmd5>
+    <version>20170319</version>
+    <time>1700147943</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop libpurple-meanwhile plugin from the DVD; as the
+  media-rest_dvd pattern was not installable for so long, some cruft
+  that has not been missing from the DVD has accumulated.
+- Do not recommend 32bit libraries on the DVD, except glibc-32bit.
+- Drop seamonkey from the rest_dvd pattern recommends: it did not
+  end up on the DVD anyway due to other locks.</comment>
+  </revision>
 </revisionlist>

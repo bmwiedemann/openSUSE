@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 16 15:11:15 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop libpurple-meanwhile plugin from the DVD; as the
+  media-rest_dvd pattern was not installable for so long, some cruft
+  that has not been missing from the DVD has accumulated.
+- Do not recommend 32bit libraries on the DVD, except glibc-32bit.
+- Drop seamonkey from the rest_dvd pattern recommends: it did not
+  end up on the DVD anyway due to other locks.
+
+-------------------------------------------------------------------
 Thu Nov 16 14:58:30 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - No longer require breeze5-wallpapers: this has been locked from
