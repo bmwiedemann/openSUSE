@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:30:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.17.1:
+  * build(deps): bump github.com/fatih/color from 1.15.0 to 1.16.0
+  * ci: add the permission `packages: write` to push images to
+    ghcr.io
+  * ci: fix deprecation warnings
+  * setup-go@v3 wrong detect go.mod version 1.20 as 1.2 -
+    https://github.com/boz/kail/actions/runs/6710981136/job/18237337728#step:4:21
+    change to v4 and switch to go 1.21
+- BuildRequire go1.21
+
+-------------------------------------------------------------------
 Wed Nov 01 08:06:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.17.0:

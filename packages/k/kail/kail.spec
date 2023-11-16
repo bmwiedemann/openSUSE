@@ -17,7 +17,7 @@
 
 
 Name:           kail
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        Kubernetes log viewer
 License:        MIT
@@ -25,7 +25,7 @@ Group:          System/Management
 URL:            https://github.com/boz/kail
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.21
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
