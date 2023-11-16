@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:24:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.4.11:
+  * Enhancements
+    Introduced v1.26.9-rancher1-1, v1.25.14-rancher1-1
+  * Bug Fixes
+    - N/A
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported
+      Kubernetes versions. If you want to use a different version
+      than listed below, you will need to update Kubernetes using
+      the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.26.9-rancher1-1 (Default)
+        - v1.25.14-rancher1-1
+        - v1.24.17-rancher1-1
+        - v1.23.16-rancher2-3
+      - Experimental Kubernetes version
+        - N/A
+
+-------------------------------------------------------------------
 Wed Sep 20 05:09:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.4.10:

@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           rke
-Version:        1.4.10
+Version:        1.4.11
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
