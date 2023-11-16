@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           stern
-Version:        1.26.0
+Version:        1.27.0
 Release:        0
 Summary:        Multi pod and container log tailing for Kubernetes
 License:        Apache-2.0
@@ -36,8 +36,7 @@ The query is a regular expression so the pod name can easily be filtered and you
 When a pod contains multiple containers Stern can tail all of them too without having to do this manually for each one. Simply specify the container flag to limit what containers to show. By default all containers are listened to.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \

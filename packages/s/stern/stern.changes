@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:30:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.27.0:
+  * Update CHANGELOG for v1.27.0 (#285)
+  * Add generic cli options (#283)
+  * 281: Support toTimestamp template function (#282)
+
+-------------------------------------------------------------------
 Thu Sep 07 07:23:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.26.0:
