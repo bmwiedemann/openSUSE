@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20231114" schemaversion="4.1">
+<image name="OBS__openSUSE___20231115" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231114</productvar>
+      <productvar name="VERSION">20231115</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231114,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231115,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231114/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231115/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3060,6 +3060,9 @@
       <repopackage name="open-isns"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -3697,16 +3700,19 @@
       <repopackage name="ruby3.2"/>
       <repopackage name="ruby3.2-rubygem-abstract_method"/>
       <repopackage name="ruby3.2-rubygem-actioncable-7.0"/>
+      <repopackage name="ruby3.2-rubygem-actionmailbox-7.0"/>
       <repopackage name="ruby3.2-rubygem-actionmailer-7.0"/>
       <repopackage name="ruby3.2-rubygem-actionpack-7.0"/>
+      <repopackage name="ruby3.2-rubygem-actiontext-7.0"/>
       <repopackage name="ruby3.2-rubygem-actionview-7.0"/>
       <repopackage name="ruby3.2-rubygem-activejob-7.0"/>
       <repopackage name="ruby3.2-rubygem-activemodel-7.0"/>
+      <repopackage name="ruby3.2-rubygem-activerecord-7.0"/>
+      <repopackage name="ruby3.2-rubygem-activestorage-7.0"/>
       <repopackage name="ruby3.2-rubygem-activesupport-7.0"/>
       <repopackage name="ruby3.2-rubygem-addressable"/>
       <repopackage name="ruby3.2-rubygem-aes_key_wrap"/>
       <repopackage name="ruby3.2-rubygem-afm"/>
-      <repopackage name="ruby3.2-rubygem-agama"/>
       <repopackage name="ruby3.2-rubygem-airbrussh"/>
       <repopackage name="ruby3.2-rubygem-amq-protocol"/>
       <repopackage name="ruby3.2-rubygem-arel"/>
@@ -3739,10 +3745,10 @@
       <repopackage name="ruby3.2-rubygem-childprocess"/>
       <repopackage name="ruby3.2-rubygem-coderay"/>
       <repopackage name="ruby3.2-rubygem-coercible"/>
+      <repopackage name="ruby3.2-rubygem-coffee-rails"/>
       <repopackage name="ruby3.2-rubygem-coffee-script"/>
       <repopackage name="ruby3.2-rubygem-coffee-script-source"/>
       <repopackage name="ruby3.2-rubygem-colorator"/>
-      <repopackage name="ruby3.2-rubygem-commander"/>
       <repopackage name="ruby3.2-rubygem-concurrent-ruby"/>
       <repopackage name="ruby3.2-rubygem-cool.io"/>
       <repopackage name="ruby3.2-rubygem-crack"/>
@@ -3753,7 +3759,11 @@
       <repopackage name="ruby3.2-rubygem-debase-ruby_core_source"/>
       <repopackage name="ruby3.2-rubygem-debug_inspector"/>
       <repopackage name="ruby3.2-rubygem-delayed_job"/>
+      <repopackage name="ruby3.2-rubygem-delayed_job_active_record"/>
       <repopackage name="ruby3.2-rubygem-descendants_tracker"/>
+      <repopackage name="ruby3.2-rubygem-devise"/>
+      <repopackage name="ruby3.2-rubygem-devise-i18n"/>
+      <repopackage name="ruby3.2-rubygem-devise_ldap_authenticatable"/>
       <repopackage name="ruby3.2-rubygem-diff-lcs"/>
       <repopackage name="ruby3.2-rubygem-diffy"/>
       <repopackage name="ruby3.2-rubygem-docile"/>
@@ -3791,6 +3801,7 @@
       <repopackage name="ruby3.2-rubygem-fog-json"/>
       <repopackage name="ruby3.2-rubygem-fog-libvirt"/>
       <repopackage name="ruby3.2-rubygem-fog-xml"/>
+      <repopackage name="ruby3.2-rubygem-font-awesome-rails"/>
       <repopackage name="ruby3.2-rubygem-formatador"/>
       <repopackage name="ruby3.2-rubygem-forwardable-extended"/>
       <repopackage name="ruby3.2-rubygem-gem2rpm"/>
@@ -3807,6 +3818,7 @@
       <repopackage name="ruby3.2-rubygem-gssapi"/>
       <repopackage name="ruby3.2-rubygem-gyoku"/>
       <repopackage name="ruby3.2-rubygem-haml"/>
+      <repopackage name="ruby3.2-rubygem-haml-rails"/>
       <repopackage name="ruby3.2-rubygem-hashdiff"/>
       <repopackage name="ruby3.2-rubygem-hashery"/>
       <repopackage name="ruby3.2-rubygem-hashicorp-checkpoint"/>
@@ -3823,12 +3835,15 @@
       <repopackage name="ruby3.2-rubygem-httpclient"/>
       <repopackage name="ruby3.2-rubygem-i18n"/>
       <repopackage name="ruby3.2-rubygem-ice_nine"/>
+      <repopackage name="ruby3.2-rubygem-importmap-rails"/>
       <repopackage name="ruby3.2-rubygem-inifile"/>
       <repopackage name="ruby3.2-rubygem-jaro_winkler"/>
       <repopackage name="ruby3.2-rubygem-jbuilder"/>
       <repopackage name="ruby3.2-rubygem-jekyll"/>
       <repopackage name="ruby3.2-rubygem-jekyll-sass-converter"/>
       <repopackage name="ruby3.2-rubygem-jekyll-watch"/>
+      <repopackage name="ruby3.2-rubygem-jquery-rails"/>
+      <repopackage name="ruby3.2-rubygem-js-routes"/>
       <repopackage name="ruby3.2-rubygem-json"/>
       <repopackage name="ruby3.2-rubygem-json-jwt"/>
       <repopackage name="ruby3.2-rubygem-json-schema"/>
@@ -3840,6 +3855,7 @@
       <repopackage name="ruby3.2-rubygem-language_server-protocol"/>
       <repopackage name="ruby3.2-rubygem-launchy"/>
       <repopackage name="ruby3.2-rubygem-libyui-rake"/>
+      <repopackage name="ruby3.2-rubygem-lightbox2"/>
       <repopackage name="ruby3.2-rubygem-liquid"/>
       <repopackage name="ruby3.2-rubygem-liquid-4"/>
       <repopackage name="ruby3.2-rubygem-listen"/>
@@ -3848,7 +3864,6 @@
       <repopackage name="ruby3.2-rubygem-locale"/>
       <repopackage name="ruby3.2-rubygem-log4r"/>
       <repopackage name="ruby3.2-rubygem-logging"/>
-      <repopackage name="ruby3.2-rubygem-lolcat"/>
       <repopackage name="ruby3.2-rubygem-loofah"/>
       <repopackage name="ruby3.2-rubygem-mail"/>
       <repopackage name="ruby3.2-rubygem-manpages"/>
@@ -3933,6 +3948,8 @@
       <repopackage name="ruby3.2-rubygem-rack-test-0_6"/>
       <repopackage name="ruby3.2-rubygem-rails-dom-testing"/>
       <repopackage name="ruby3.2-rubygem-rails-html-sanitizer"/>
+      <repopackage name="ruby3.2-rubygem-rails-i18n"/>
+      <repopackage name="ruby3.2-rubygem-railties-7.0"/>
       <repopackage name="ruby3.2-rubygem-rainbow"/>
       <repopackage name="ruby3.2-rubygem-raindrops"/>
       <repopackage name="ruby3.2-rubygem-rake-compiler"/>
@@ -3942,6 +3959,7 @@
       <repopackage name="ruby3.2-rubygem-rdiscount"/>
       <repopackage name="ruby3.2-rubygem-red-datasets"/>
       <repopackage name="ruby3.2-rubygem-regexp_parser"/>
+      <repopackage name="ruby3.2-rubygem-responders"/>
       <repopackage name="ruby3.2-rubygem-reverse_markdown"/>
       <repopackage name="ruby3.2-rubygem-rgl"/>
       <repopackage name="ruby3.2-rubygem-rice"/>
@@ -3957,6 +3975,8 @@
       <repopackage name="ruby3.2-rubygem-rspec-its"/>
       <repopackage name="ruby3.2-rubygem-rspec-mocks"/>
       <repopackage name="ruby3.2-rubygem-rspec-mocks-3_5"/>
+      <repopackage name="ruby3.2-rubygem-rspec-rails"/>
+      <repopackage name="ruby3.2-rubygem-rspec-rails-4.0"/>
       <repopackage name="ruby3.2-rubygem-rspec-support"/>
       <repopackage name="ruby3.2-rubygem-rspec-support-3_5"/>
       <repopackage name="ruby3.2-rubygem-rubocop"/>
@@ -3974,7 +3994,10 @@
       <repopackage name="ruby3.2-rubygem-safe_yaml"/>
       <repopackage name="ruby3.2-rubygem-sass"/>
       <repopackage name="ruby3.2-rubygem-sass-listen"/>
+      <repopackage name="ruby3.2-rubygem-sass-rails"/>
+      <repopackage name="ruby3.2-rubygem-sass-rails-5.1"/>
       <repopackage name="ruby3.2-rubygem-sassc"/>
+      <repopackage name="ruby3.2-rubygem-sassc-rails"/>
       <repopackage name="ruby3.2-rubygem-sdoc"/>
       <repopackage name="ruby3.2-rubygem-semantic_range"/>
       <repopackage name="ruby3.2-rubygem-serverengine"/>
@@ -3994,6 +4017,7 @@
       <repopackage name="ruby3.2-rubygem-sprockets-rails"/>
       <repopackage name="ruby3.2-rubygem-sqlite3"/>
       <repopackage name="ruby3.2-rubygem-sshkit"/>
+      <repopackage name="ruby3.2-rubygem-stimulus-rails"/>
       <repopackage name="ruby3.2-rubygem-stomp"/>
       <repopackage name="ruby3.2-rubygem-stream"/>
       <repopackage name="ruby3.2-rubygem-strptime"/>
@@ -4007,11 +4031,11 @@
       <repopackage name="ruby3.2-rubygem-thread_safe"/>
       <repopackage name="ruby3.2-rubygem-tilt"/>
       <repopackage name="ruby3.2-rubygem-timers"/>
-      <repopackage name="ruby3.2-rubygem-tmuxinator"/>
       <repopackage name="ruby3.2-rubygem-tomlrb"/>
       <repopackage name="ruby3.2-rubygem-treetop"/>
       <repopackage name="ruby3.2-rubygem-trollop"/>
       <repopackage name="ruby3.2-rubygem-ttfunk"/>
+      <repopackage name="ruby3.2-rubygem-turbo-rails"/>
       <repopackage name="ruby3.2-rubygem-turbolinks"/>
       <repopackage name="ruby3.2-rubygem-turbolinks-source"/>
       <repopackage name="ruby3.2-rubygem-tzinfo"/>
@@ -4029,7 +4053,9 @@
       <repopackage name="ruby3.2-rubygem-version_gem"/>
       <repopackage name="ruby3.2-rubygem-virtus"/>
       <repopackage name="ruby3.2-rubygem-warden"/>
+      <repopackage name="ruby3.2-rubygem-web-console"/>
       <repopackage name="ruby3.2-rubygem-webfinger"/>
+      <repopackage name="ruby3.2-rubygem-webpacker"/>
       <repopackage name="ruby3.2-rubygem-webrick"/>
       <repopackage name="ruby3.2-rubygem-websocket"/>
       <repopackage name="ruby3.2-rubygem-websocket-driver"/>

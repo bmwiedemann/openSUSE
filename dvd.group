@@ -3024,6 +3024,9 @@
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
     <package name="openSUSE-repos-Tumbleweed" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3649,16 +3652,19 @@
     <package name="ruby3.2-rubygem-Ascii85" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.2-rubygem-actioncable-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-actionmailbox-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-actionmailer-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-actionpack-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-actiontext-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-actionview-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-activejob-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-activemodel-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-activerecord-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-activestorage-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-activesupport-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-aes_key_wrap" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-afm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-agama" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-airbrussh" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-amq-protocol" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-arel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3690,10 +3696,10 @@
     <package name="ruby3.2-rubygem-childprocess" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coderay" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coercible" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-coffee-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coffee-script" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coffee-script-source" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-colorator" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-commander" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-concurrent-ruby" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-cool.io" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-crack" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3704,7 +3710,11 @@
     <package name="ruby3.2-rubygem-debase-ruby_core_source" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-debug_inspector" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-delayed_job" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-delayed_job_active_record" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-descendants_tracker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-devise" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-devise-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-devise_ldap_authenticatable" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-diff-lcs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-diffy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-docile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3742,6 +3752,7 @@
     <package name="ruby3.2-rubygem-fog-json" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-fog-libvirt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-fog-xml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-font-awesome-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-formatador" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-forwardable-extended" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gem2rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
@@ -3758,6 +3769,7 @@
     <package name="ruby3.2-rubygem-gssapi" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gyoku" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-haml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-haml-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-hashdiff" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-hashery" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-hashicorp-checkpoint" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3774,12 +3786,15 @@
     <package name="ruby3.2-rubygem-httpclient" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-ice_nine" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-importmap-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-inifile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jaro_winkler" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jekyll" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jekyll-sass-converter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jekyll-watch" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-jquery-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-js-routes" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json-jwt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json-schema" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3791,6 +3806,7 @@
     <package name="ruby3.2-rubygem-language_server-protocol" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-launchy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-libyui-rake" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-lightbox2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-liquid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-liquid-4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-listen" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3799,7 +3815,6 @@
     <package name="ruby3.2-rubygem-locale" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-log4r" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-logging" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-lolcat" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-loofah" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-mail" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-manpages" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3884,6 +3899,8 @@
     <package name="ruby3.2-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-railties-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rainbow" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-raindrops" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rake-compiler" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3893,6 +3910,7 @@
     <package name="ruby3.2-rubygem-rdiscount" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-red-datasets" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-regexp_parser" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-responders" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-reverse_markdown" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rgl" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rice" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3908,6 +3926,8 @@
     <package name="ruby3.2-rubygem-rspec-its" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-mocks" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-mocks-3_5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rspec-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rspec-rails-4.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-support" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-support-3_5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rubocop" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3925,7 +3945,10 @@
     <package name="ruby3.2-rubygem-safe_yaml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sass" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sass-listen" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-sass-rails-5.1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sdoc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-semantic_range" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-serverengine" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3945,6 +3968,7 @@
     <package name="ruby3.2-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sshkit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-stimulus-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-stomp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-stream" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-strptime" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3958,11 +3982,11 @@
     <package name="ruby3.2-rubygem-thread_safe" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-tilt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-timers" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-tmuxinator" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-tomlrb" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-treetop" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-trollop" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-ttfunk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-turbo-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-tzinfo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3980,7 +4004,9 @@
     <package name="ruby3.2-rubygem-version_gem" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-virtus" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-warden" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-webfinger" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-webrick" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-websocket" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-websocket-driver" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4760,7 +4786,6 @@
 <group name="dvd.x86_64">
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 6.5.9-1-default needed by openafs-kmp-default-1.8.10.1_k6.5.9_1-1.4.x86_64-->
     <!-- patterns-media-rest_dvd uninstallable: package patterns-media-rest_dvd-20170319-44.1.x86_64 requires breeze5-wallpapers, but none of the providers can be installed-->
   </packagelist>
 </group>
