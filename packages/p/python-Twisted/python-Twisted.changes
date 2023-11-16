@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 15 13:48:33 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2023-46137-HTTP-pipeline-response.patch (bsc#1216588,
+  CVE-2023-46137) serializing pipelined HTTP requests.
+
+-------------------------------------------------------------------
 Mon Jun 26 20:21:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add regenerate-cert-to-work-with-latest-service-identity.patch

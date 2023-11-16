@@ -1537,4 +1537,14 @@
     <comment>    + drops CVE-2022-39348-do-not-echo-host-header.patch in older dists</comment>
     <requestid>1109330</requestid>
   </revision>
+  <revision rev="65" vrev="9">
+    <srcmd5>177e11e657250072c4246369fdf6003c</srcmd5>
+    <version>22.10.0</version>
+    <time>1700162834</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2023-46137-HTTP-pipeline-response.patch (bsc#1216588,
+  CVE-2023-46137) serializing pipelined HTTP requests.
+</comment>
+    <requestid>1126660</requestid>
+  </revision>
 </revisionlist>

@@ -56,6 +56,9 @@ Patch8:         support-new-glibc.patch
 Patch9:         regenerate-cert-to-work-with-latest-service-identity.patch
 # PATCH-FIX-UPSTREAM gh#twisted/twisted#11873
 Patch10:        remove-pynacl-optional-dependency.patch
+# PATCH-FIX-UPSTREAM CVE-2023-46137-HTTP-pipeline-response.patch bsc#1216588 mcepl@suse.com
+# disordered HTTP pipeline response in twisted.web
+Patch11:        CVE-2023-46137-HTTP-pipeline-response.patch
 BuildRequires:  %{python_module incremental >= 21.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
