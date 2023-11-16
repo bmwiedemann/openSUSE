@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 16 12:09:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.3:
+  * Improved explanation of missing aws creds (#2787)
+  * Update usage of private repo docs (#2784)
+  * Add missing terraform commands (#2780)
+
+-------------------------------------------------------------------
 Mon Nov 06 05:45:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.53.2:
