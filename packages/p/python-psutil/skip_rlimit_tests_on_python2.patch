@@ -2,10 +2,10 @@
  psutil/tests/test_process.py |    6 ++++++
  1 file changed, 6 insertions(+)
 
-Index: psutil-5.9.5/psutil/tests/test_process.py
+Index: psutil-5.9.6/psutil/tests/test_process.py
 ===================================================================
---- psutil-5.9.5.orig/psutil/tests/test_process.py
-+++ psutil-5.9.5/psutil/tests/test_process.py
+--- psutil-5.9.6.orig/psutil/tests/test_process.py
++++ psutil-5.9.6/psutil/tests/test_process.py
 @@ -419,6 +419,7 @@ class TestProcess(PsutilTestCase):
              p.ionice(init)
  
@@ -46,11 +46,11 @@ Index: psutil-5.9.5/psutil/tests/test_process.py
      def test_rlimit_infinity_value(self):
          # RLIMIT_FSIZE should be RLIM_INFINITY, which will be a really
          # big number on a platform with large file support.  On these
-@@ -1320,6 +1325,7 @@ class TestProcess(PsutilTestCase):
-             self.assertEqual(normcase(p.exe()), normcase(PYTHON_EXE))
+@@ -1303,6 +1308,7 @@ class TestProcess(PsutilTestCase):
+             assert_raises_nsp(fun, name)
  
      @unittest.skipIf(not POSIX, 'POSIX only')
 +    @unittest.skipIf(sys.version_info.major == 2, "not supported on python2")
      def test_zombie_process(self):
-         def succeed_or_zombie_p_exc(fun):
-             try:
+         parent, zombie = self.spawn_zombie()
+         self.assertProcessZombie(zombie)

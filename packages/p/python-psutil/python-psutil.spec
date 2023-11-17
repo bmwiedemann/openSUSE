@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-psutil
-Version:        5.9.5
+Version:        5.9.6
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
@@ -62,9 +62,6 @@ A graphical interface that lets you easily analyze and introspect unaltered runn
 %prep
 %setup -q -n psutil-%{version}
 %autopatch -p1
-
-# Remove shebangs
-sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.py,_psposix.py,_pssunos.py,_pswindows.py}
 
 %build
 %pyproject_wheel

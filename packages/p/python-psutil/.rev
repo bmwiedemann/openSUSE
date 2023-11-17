@@ -768,4 +768,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
 - Rebase logind_y2038.patch based on the reviewed code</comment>
     <requestid>1120305</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>9d3a414e84f5765d0736ed9e7b6a4b7d</srcmd5>
+    <version>5.9.6</version>
+    <time>1700250500</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126805</requestid>
+  </revision>
 </revisionlist>

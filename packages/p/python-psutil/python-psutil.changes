@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 15 20:38:35 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 5.9.6:
+  * Enhancements
+    + 1703: cpu_percent() and cpu_times_percent() are now thread
+      safe, meaning they can be called from different threads and
+      still return meaningful and independent results.
+    + 2266: if Process class is passed a very high PID, raise
+      NoSuchProcess instead of OverflowError. (patch by Xuehai Pan)
+    + 2246: drop python 3.4 & 3.5 support. (patch by Matthieu
+      Darbois)
+    + 2290: PID reuse is now pre-emptively checked for
+      Process.ppid() and Process.parents().
+    + 2312: use ruff Python linter instead of flake8 + isort. It's
+      an order of magnitude faster + it adds a ton of new code
+      quality checks.
+  * Bug fixes
+    + 2195, [Linux]: no longer print exception at import time in
+      case /proc/stat can't be read due to permission error.
+    + 2268: bytes2human() utility function was unable to properly
+      represent negative values.
+    + 2284, [Linux]: Process.memory_full_info() may incorrectly
+      raise ZombieProcess if it's determined via
+      /proc/pid/smaps_rollup.
+    + 2288, [Linux]: correctly raise ZombieProcess on
+      Process.exe(), Process.cmdline() and Process.memory_maps()
+      instead of returning a "null" value.
+    + 2290: differently from what stated in the doc, PID reuse is
+      not pre-emptively checked for Process.nice() (set),
+      Process.ionice(), (set), Process.cpu_affinity() (set),
+      Process.rlimit() (set), Process.parent().
+- refresh skip_rlimit_tests_on_python2.patch
+- drop removal of shebang: fixed upstream
+
+-------------------------------------------------------------------
 Tue Oct 24 14:59:47 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Rebase logind_y2038.patch based on the reviewed code
