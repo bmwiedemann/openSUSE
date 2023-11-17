@@ -1529,4 +1529,11 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1112496</requestid>
   </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>45d9966b63c1cdbd24bdbecabeb45016</srcmd5>
+    <version>1.14.10</version>
+    <time>1700230308</time>
+    <user>dimstar_suse</user>
+    <comment>Expedited checkin of diffutils -&gt; cmp migration</comment>
+  </revision>
 </revisionlist>

@@ -50,7 +50,7 @@ BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires:       alts
 Requires(post): %{_libname} = %{version}
-Requires(post): diffutils
+Requires(post): /usr/bin/cmp
 Requires(pre):  permissions
 Provides:       dbus-launch = %{version}
 %if %{with selinux}
