@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Nov 15 09:30:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.7:
+  + audiobuffersplit: disable max-silence-time if set to 0
+  + libde265: Do not decode the non 4:2:0 8 bits format
+  + codecparsers: av1: Clip max tile rows and cols values
+  + codecs: h265: Do not free slice header before using it
+  + d3d11converter: Fix 10/12bits planar output
+  + d3d11decoder: Fix crash on negotiate() when decoder is not
+    configured
+  + d3d11videosink: Fix toggling between fullscreen and maximized
+  + d3d11videosink: Fix window switching in case of fullscreen mode
+  + d3d11screencapturesrc: Fix mouse cursor blending
+  + decklink: Fix broken COM string conversion
+  + decklink: Decklink Device Provider wrongly parses SDK strings
+  + gstwayland: Don't depend on wayland-protocols
+  + interaudiosrc: Add audio meta to buffers containing
+    non-interleaved samples
+  + kmssink: Add TIDSS auto-detection
+  + mfvideoencoder: Fix typo in template caps
+  + mxfdemux: Store GstMXFDemuxEssenceTrack in their own fixed
+    allocation
+  + nvcodec: fix bounds for auto-select GPU enumeration
+  + openh264: Fail gracefully if openh264 encoder/decoder creation
+    fails
+  + tsmux: More cleanups
+  + tsmux: Fill padding packets with stuffing bytes
+  + v4l2codecs: Fix tiled formats stride conversion
+  + v4l2videodec: Correctly free caps to avoid memory leak
+  + wasapi2: Don't use global volume control object
+  + wasapi2device: Ignore activation failed device
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Fri Sep 22 11:44:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.6:
