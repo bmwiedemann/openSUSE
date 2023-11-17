@@ -430,4 +430,24 @@ Features:
   libappstream-compose0 to stop rpmlint from reporting an error. (forwarded request 1118338 from alarrosa)</comment>
     <requestid>1118339</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e95252a2d20d3b2c9c574c0900f843af</srcmd5>
+    <version>0.16.4</version>
+    <time>1700250492</time>
+    <user>anag+factory</user>
+    <comment>Yes I know 1.0 just dropped, but lets get the newly released old stable in first.
+
+- Update to version 0.16.4:
+  * Features:
+    - Allow hyphens in the last segment of a component-ID
+    - Implement the developer element for unique developer IDs
+    - Add meson overrides
+  * Bugfixes:
+    - meson: Prevent building attempts with MSVC
+    - meson: Avoid potentially bad sed backup filename when fixing
+      .pc file
+  * Miscellaneous: Make sed invocation more portable
+- Rebase patch with quilt. (forwarded request 1126593 from iznogood)</comment>
+    <requestid>1126792</requestid>
+  </revision>
 </revisionlist>

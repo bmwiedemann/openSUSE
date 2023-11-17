@@ -1,8 +1,8 @@
-diff --git a/data/meson.build b/data/meson.build
-index aea0cb25..55da0981 100644
---- a/data/meson.build
-+++ b/data/meson.build
-@@ -17,6 +17,17 @@ metainfo_with_relinfo = custom_target('gen-output',
+Index: AppStream-0.16.4/data/meson.build
+===================================================================
+--- AppStream-0.16.4.orig/data/meson.build
++++ AppStream-0.16.4/data/meson.build
+@@ -17,6 +17,17 @@ metainfo_with_relinfo = custom_target('g
      command : [ascli_exe, 'news-to-metainfo', '--limit=6', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
  )
  
@@ -28,10 +28,10 @@ index aea0cb25..55da0981 100644
  
  test('as-validate_metainfo.cli',
      ascli_exe,
-diff --git a/meson.build b/meson.build
-index b67d1a65..10e3d815 100644
---- a/meson.build
-+++ b/meson.build
+Index: AppStream-0.16.4/meson.build
+===================================================================
+--- AppStream-0.16.4.orig/meson.build
++++ AppStream-0.16.4/meson.build
 @@ -1,5 +1,5 @@
  project('AppStream', 'c',
 -  meson_version: '>=0.62',
@@ -39,7 +39,7 @@ index b67d1a65..10e3d815 100644
    default_options: ['c_std=c11', 'cpp_std=gnu++14'],
  
    license: 'LGPL-2.1+',
-@@ -114,7 +114,7 @@ add_project_arguments(
+@@ -113,7 +113,7 @@ add_project_arguments(
      '-Werror=missing-include-dirs',
      '-Werror=declaration-after-statement',
      '-Werror=format-security',
@@ -48,7 +48,7 @@ index b67d1a65..10e3d815 100644
      '-Wno-missing-field-initializers',
      '-Wno-error=missing-field-initializers',
      '-Wno-unused-parameter',
-@@ -132,9 +132,7 @@ add_project_arguments(
+@@ -131,9 +131,7 @@ add_project_arguments(
    '-Werror=return-type',
    '-Werror=misleading-indentation',
    '-Werror=format-security',
@@ -59,10 +59,10 @@ index b67d1a65..10e3d815 100644
    language: 'cpp'
  )
  
-diff --git a/po/meson.build b/po/meson.build
-index e9ede195..f7c1d842 100644
---- a/po/meson.build
-+++ b/po/meson.build
+Index: AppStream-0.16.4/po/meson.build
+===================================================================
+--- AppStream-0.16.4.orig/po/meson.build
++++ AppStream-0.16.4/po/meson.build
 @@ -1,5 +1,19 @@
  
  as_gettext_domain = 'appstream'
@@ -83,7 +83,7 @@ index e9ede195..f7c1d842 100644
  i18n_result = i18n.gettext(as_gettext_domain,
      preset : 'glib',
      data_dirs: [join_paths(source_root, 'data')],
-@@ -12,6 +26,7 @@ i18n_result = i18n.gettext(as_gettext_domain,
+@@ -12,6 +26,7 @@ i18n_result = i18n.gettext(as_gettext_do
          '--msgid-bugs-address=appstream@lists.freedesktop.org'
      ]
  )

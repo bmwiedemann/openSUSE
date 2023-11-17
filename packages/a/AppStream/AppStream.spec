@@ -23,7 +23,7 @@
 %bcond_without vala
 %endif
 Name:           AppStream
-Version:        0.16.3
+Version:        0.16.4
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
