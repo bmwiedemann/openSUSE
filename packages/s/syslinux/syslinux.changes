@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 26 08:42:21 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Build the system installable binaries with RPM_OPT_FLAGS, to allow
+  utilization of stack-protector and FORTIFY_SOURCE. (bsc#1211640)
+
+-------------------------------------------------------------------
 Wed Jun  9 10:45:24 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link all binaries as Position Independent Executables (bsc#1184124).

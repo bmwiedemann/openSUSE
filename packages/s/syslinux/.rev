@@ -526,4 +526,13 @@ helps ipxe iso reproducibility. (forwarded request 868912 from bmwiedemann)</com
     <comment></comment>
     <requestid>922417</requestid>
   </revision>
+  <revision rev="70" vrev="49">
+    <srcmd5>3c1faf1f95937fc174657e110e87b6bc</srcmd5>
+    <version>4.04</version>
+    <time>1700250541</time>
+    <user>anag+factory</user>
+    <comment>- Build the system installable binaries with RPM_OPT_FLAGS, to allow
+  utilization of stack-protector and FORTIFY_SOURCE. (bsc#1211640) (forwarded request 1089159 from msmeissn)</comment>
+    <requestid>1126911</requestid>
+  </revision>
 </revisionlist>

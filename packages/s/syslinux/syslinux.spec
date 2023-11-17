@@ -1,7 +1,7 @@
 #
 # spec file for package syslinux
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,6 +112,14 @@ Authors:
 cp %{SOURCE2} .
 make spotless
 make
+# rebuild the on-system binaries with distribution optflags for stack protector etc.
+for dir in extlinux utils linux mtools
+do
+	cd $dir
+	make clean
+	make OPTFLAGS="%optflags"
+	cd ..
+done
 
 %install
 make install-all \
