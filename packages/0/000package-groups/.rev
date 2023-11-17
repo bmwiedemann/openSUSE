@@ -1817,4 +1817,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <time>1700213082</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="255" vrev="253">
+    <srcmd5>0ed82915a2b348c9a2472b3b7b7cd161</srcmd5>
+    <version>unknown</version>
+    <time>1700218081</time>
+    <user>dimstar_suse</user>
+    <comment>Create 32bit FTP tree for slowroll</comment>
+  </revision>
 </revisionlist>

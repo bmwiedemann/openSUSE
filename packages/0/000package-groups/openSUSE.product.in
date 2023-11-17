@@ -111,6 +111,17 @@
       <use group="kernel_pae_special" create_pattern="false" />
     </media>
 
+    <media type="ftp" flavor="ftp" debugmedia="2" mediastyle="tumbleweed"
+           create_pattern="false" repo_only="true" run_make_listings="true" download_mirror_policy="true"
+           use_required="true" use_recommended="true" use_suggested="false" use_undecided="true">
+
+      <archsets>
+        <!-- for this we generate a product file -->
+        <archset ref="i586"/>
+        <!-- so we get 1 product file on this medium -->
+      </archsets>
+    </media
+
     <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
     <media type="cd" flavor="mini" name="openSUSE-Tumbleweed-NET" run_hybridiso="true"
            mediastyle="tumbleweed" sourcemedia="0" firmware="uefi"
