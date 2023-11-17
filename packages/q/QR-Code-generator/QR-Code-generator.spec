@@ -1,7 +1,7 @@
 #
 # spec file for package QR-Code-generator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libcname libqrcodegen1
 %define libcppname libqrcodegencpp1
+%{?sle15_python_module_pythons}
 Name:           QR-Code-generator
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        QR Code generator library
 License:        MIT
@@ -29,7 +29,6 @@ Source:         https://github.com/nayuki/QR-Code-generator/archive/v%{version}.
 Patch2:         0002-Make-use-of-fPIC-parameter-when-building.patch
 Patch3:         0003-Generate-both-shared-and-static-libraries.patch
 Patch4:         0004-Create-install-targets-for-C-and-CPP.patch
-Patch5:         0005-Rename-cpp-library-to-qrcodegencpp-to-avoid-conflict.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
