@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 16 17:01:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.1
+  - Add PHP 8.3 support
+  - Login Redirect Loop #5133
+  - UI database migration not fully compatible with PostgreSQL #5129
+  - Missing styles when logging out and in while CSP is enabled #5126
+
+-------------------------------------------------------------------
 Fri Sep 22 11:11:44 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.12.0
