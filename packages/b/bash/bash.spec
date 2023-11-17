@@ -89,6 +89,7 @@ Patch49:        bash-4.3-pathtemp.patch
 # PATCH-FIX-SUSE
 Patch50:        quotes-man2html.patch
 BuildRequires:  autoconf
+# latest bash uses with patch 18 the tag YYEOF
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  glibc-locale
@@ -256,31 +257,31 @@ for patch in ../bash-%{bversion}-patches/*-*[0-9]; do
     patch -s -p$level < $patch
 done
 set -x
-%patch1   -b .manual
-%patch3   -b .2.4.4
-%patch4   -b .evalexp
-%patch5   -b .warnlc
-%patch7   -b .decl
-%patch9   -b .unistd
-%patch10  -b .printf
-%patch11  -b .plugins
-%patch12  -b .completion
-%patch13  -b .nscdunmap
-%patch14  -b .sigrestart
-%patch16  -b .setlocale
-#%patch18 -p0 -b .winch
-%patch40  -b .bashrc
+%patch -P1   -b .manual
+%patch -P3   -b .2.4.4
+%patch -P4   -b .evalexp
+%patch -P5   -b .warnlc
+%patch -P7   -b .decl
+%patch -P9   -b .unistd
+%patch -P10  -b .printf
+%patch -P11  -b .plugins
+%patch -P12  -b .completion
+%patch -P13  -b .nscdunmap
+%patch -P14  -b .sigrestart
+%patch -P16  -b .setlocale
+#%patch -P18 -p0 -b .winch
+%patch -P40  -b .bashrc
 %if %{with sjis}
-%patch42  -b .sjis
+%patch -P42  -b .sjis
 %endif
-%patch46  -b .notimestamp
-%patch47  -b .perl522
+%patch -P46  -b .notimestamp
+%patch -P47  -b .perl522
 %if %{with import_function}
-%patch48 -b .eif
+%patch -P48 -b .eif
 %endif
-%patch49  -b .pthtmp
-%patch50  -b .qd
-%patch0
+%patch -P49  -b .pthtmp
+%patch -P50  -b .qd
+%patch -P0   -b .p0
 
 # This has to be always the same version as included in the bash its self
 rl1=($(sed -rn '/RL_READLINE_VERSION/p' lib/readline/readline.h))
@@ -482,6 +483,8 @@ echo exit 0 > tests/read7.sub
 %if 0%{?do_profiling}
   profilecflags=CFLAGS="$CFLAGS %{cflags_profile_generate}"
 %endif
+  ulimit -Hv unlimited
+  ulimit -v unlimited
   makeopts="Machine=${HOSTTYPE} OS=${OSTYPE} VENDOR=${VENDOR} MACHTYPE=${MACHTYPE}"
   %make_build $makeopts "$profilecflags" \
 	all printenv recho zecho xcase
@@ -503,6 +506,7 @@ echo exit 0 > tests/read7.sub
   grep -F '$'\' doc/bash.html %{nil:test for boo#1203091}
 
 %check
+  rm -vf tests/*.p0
   %make_build -j1 check
 
 %install

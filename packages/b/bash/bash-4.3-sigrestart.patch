@@ -13,7 +13,7 @@
    /* Let's see if we can keep SIGWINCH from interrupting interruptible system
       calls, like open(2)/read(2)/write(2) */
  #if defined (SIGWINCH)
-@@ -826,6 +826,10 @@ set_signal_handler (sig, handler)
+@@ -824,6 +826,10 @@ set_signal_handler (sig, handler)
       it to be as close to SIG_IGN as possible. */
    if (sig == SIGTERM && handler == sigterm_sighandler)
      act.sa_flags |= SA_RESTART;		/* XXX */

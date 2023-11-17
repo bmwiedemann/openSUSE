@@ -4,7 +4,7 @@
  doc/Makefile.in    |    2 +-
  doc/bash.1         |    7 +++++--
  general.h          |    3 +++
- parse.y            |    2 +-
+ parse.y            |    6 +++++-
  shell.c            |    6 +++++-
  support/man2html.c |    1 +
  support/rlvers.sh  |    6 +++---
@@ -12,7 +12,7 @@
  tests/glob.tests   |    4 ++--
  tests/run-intl     |    2 +-
  tests/run-read     |    2 +-
- 13 files changed, 37 insertions(+), 21 deletions(-)
+ 13 files changed, 41 insertions(+), 21 deletions(-)
 
 --- Makefile.in
 +++ Makefile.in	2022-06-22 06:38:20.511747259 +0000
@@ -129,7 +129,18 @@
  #  if defined (HAVE_SYS_TIME_H)
 --- parse.y
 +++ parse.y	2022-04-28 11:53:04.334380153 +0000
-@@ -1498,7 +1498,7 @@ input_file_descriptor ()
+@@ -366,6 +366,10 @@ static FILE *yyerrstream;
+ /* Special; never created by yylex; only set by parse_comsub and xparse_dolparen */
+ %token DOLPAREN
+ 
++/* Declare token YYEOF as older bison version fails
++   with not defined as a token and has no rules */
++%token YYEOF
++
+ /* The types that the various syntactical units return. */
+ 
+ %type <command> inputunit command pipeline pipeline_command
+@@ -1513,7 +1513,7 @@ input_file_descriptor ()
  
  #if defined (READLINE)
  char *current_readline_prompt = (char *)NULL;

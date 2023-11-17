@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Nov 15 09:08:33 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Declare token YYEOF to be able to support older bison versions
+  as well 
+
+-------------------------------------------------------------------
+Wed Nov 15 07:36:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Be sure to have a usable bison installed at build time 
+
+-------------------------------------------------------------------
+Tue Nov 14 16:40:23 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * bash52-021
+    There is an off-by-one error that causes command substitutions to fail when
+    they appear in a word expansion inside a here-document.
+  * bash52-020
+    The parser did not allow `time' to appear as the first reserved word in a
+    command substitution.
+  * bash52-019
+    There are some cases where the shell reaped a background (asynchronous) job
+    and would incorrectly try to set the terminal's process group back to the
+    shell's. In these cases it never set the terminal process group to that
+    jobs's process group initially, so resetting it is incorrect.
+  * bash52-018
+    There are two problems with returning tokens to yyparse() when the shell
+    encounters a syntax error or when it reads EOF.
+    When reading a WORD token, the parser has to return the correct value to
+    yyparse. Previous versions returned a value < 0, which the bash parser
+    translated into YYERRCODE for bison, and in newer versions of bison, the
+    appropriate reset actions didn't happen. We should return YYUNDEF, which
+    bison uses for `invalid token'. Since we can return a token < 0 for both
+    invalid tokens and EOF, the bash tokenizer needs to differentiate between
+    those two cases.
+  * bash52-017
+    In certain cases, using the `.' builtin in a subshell would optimize away
+    the rest of the commands in the subshell.
+  * bash52-016
+    If an expression in an arithmetic for loop expands to NULL, the shell
+    would crash.
+- Correct offsets of patches
+  * bash-4.3-sigrestart.patch
+  * bash-5.2.dif
+
+-------------------------------------------------------------------
 Tue Dec 27 10:23:00 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
