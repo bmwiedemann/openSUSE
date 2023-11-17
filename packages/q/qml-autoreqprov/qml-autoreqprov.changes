@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 14 23:57:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Bump version to 1.3
+- qml.req:
+  * Use qtpaths instead of qmake
+  * Generate requirements for unversioned imports
+- qmldirreqprov.sh:
+  * Generate provides and requirements for unversioned imports
+- README.md: Fix typo
+
+-------------------------------------------------------------------
 Tue Jul 11 09:04:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Bump version to 1.2

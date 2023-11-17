@@ -44,8 +44,8 @@ with QML files inside. The capability has to include both the full module
 identifier and version. As modules with a different major version are pretty
 much independent, the major version is part of the capabilities' name and the
 minor version is used as the capabilities' version. Additionally, the system
-import paths are specific to a Qt major version, this is also included. The end
-result are QML modules providing capabilities like:
+import paths are specific to a Qt major version, this is also included. The
+end result are QML modules providing capabilities like:
 
 `Provides: qt5qmlimport(QtQuick.Controls.2) = 15`
 
@@ -54,6 +54,14 @@ On the import side, packages with QML files get requirements like:
 `Requires: qt5qmlimport(QtQuick.Controls.2) >= 13`
 for a statement like `import QtQuick.Controls 2.13`. The `>=` is there so that
 modules with a higher minor version satisfy it as well.
+
+With Qt 6, unversioned QML import statements got introduced which import the
+highest available major version (which IMO does not make sense...).
+Representing those in RPM requires using separate unversioned capabilities
+alongside the versioned ones:
+
+`Provides: qt6qmlimport(QtQuick.Controls)`
+`Requires: qt6qmlimport(QtQuick.Controls)`
 
 Generating Requires from .qml files
 -----------------------------------
@@ -72,7 +80,7 @@ installed. If multiple versions are found, the requires scanner aborts. This
 can be overwritten by setting a variable in the .spec file (unfortunately not
 possible per subpackage):
 
-`%global %__qml_requires_opts --qtver 5`
+`%global __qml_requires_opts --qtver 5`
 
 Currently, only .qml files directly part of the package are handled, so if
 those are part of a resources file embedded into an executable or library, they

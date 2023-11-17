@@ -1,5 +1,5 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: 2020-2021 Fabian Vogt <fabian@ritter-vogt.de>
+# SPDX-FileCopyrightText: 2020-2023 Fabian Vogt <fabian@ritter-vogt.de>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set -euo pipefail
@@ -54,11 +54,15 @@ while read file; do
 	fi
 
 	if [[ $requires ]]; then
-		# TODO: Handle "auto" as version. This could generate versionless qmlimport(Foo.Bar.2) for each exported major version.
-		gawk '$1 == "depends" && match($3, /^([0-9]+)\.([0-9]+)$/, ver) { printf "qt'${qtver}'qmlimport(%s.%d) >= %d\n", $2, ver[1], ver[2]; }' "$file"
+		gawk '$1 != "depends" { next } $3 == "auto" { printf "qt'${qtver}'qmlimport(%s)\n", $2; }
+		      match($3, /^([0-9]+)\.([0-9]+)$/, ver) { printf "qt'${qtver}'qmlimport(%s.%d) >= %d\n", $2, ver[1], ver[2]; } ' "$file"
 	fi
 
 	if [[ $provides ]]; then
+		if [[ $qtver -ge 6 ]]; then
+			moduleExports["qt${qtver}qmlimport(${module})"]="" # Provides for unversioned imports
+		fi
+
 		# Handle regular (.qml, .js) exports
 		while read maj min; do
 			foundModuleExport "qt${qtver}qmlimport(${module}.${maj})" "$min"
@@ -104,7 +108,12 @@ while read file; do
 done
 
 for export in "${!moduleExports[@]}"; do
-	echo "${export} = ${moduleExports["$export"]}"
+	ver="${moduleExports["$export"]}"
+	if [ -n "$ver" ]; then
+		echo "${export} = ${ver}"
+	else
+		echo "${export}"
+	fi
 done
 
 exit $ret

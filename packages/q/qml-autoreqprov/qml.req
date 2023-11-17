@@ -1,5 +1,5 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: 2020-2021 Fabian Vogt <fabian@ritter-vogt.de>
+# SPDX-FileCopyrightText: 2020-2023 Fabian Vogt <fabian@ritter-vogt.de>
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set -euo pipefail
@@ -37,32 +37,46 @@ fi
 if [[ ${qtver} == 5 ]]; then
 	importscanner="qmlimportscanner-qt5"
 else
-	importscanner="$(qmake${qtver} -query QT_HOST_LIBEXECS)/qmlimportscanner"
+	importscanner="$(qtpaths${qtver} --qt-query QT_HOST_LIBEXECS)/qmlimportscanner"
 fi
 
 command -v "${importscanner}" &>/dev/null || echo "Failed to locate qmlimportscanner"
 
 declare -A dependencies
-# foundDependency qt5qmlimport(Module.Uri.42) 69
-# In the dependencies array, it sets the version of qt5qmlimport(Module.Uri.42) to 69, if lower
+# foundDependency Module.Uri 42 69
+# In the dependencies array, it sets the version of qt5qmlimport(Module.Uri.42) to 69, if lower.
 foundDependency() {
-	if [ ${dependencies[$1]:=0} -lt $2 ]; then
-		dependencies[$1]=$2
+	uri="$1.$2"
+	if [ ${dependencies[$uri]:=0} -lt $3 ]; then
+		dependencies[$uri]=$3
 	fi
 }
 
 # TODO: Get exit status of qmlimportscanner
-while read import min; do
+while read import version; do
+	if [ -z "$version" ]; then
+		dependencies[$import]=0
+		continue
+	fi
+
+	maj="${version%.*}"
+	min="${version#*.}"
+
 	# For imports without minor version like "import org.kde.kirigami 2",
 	# the minor version is reported as 255. Treat that as 0 instead.
-	if [ $min -eq 255 ]; then
+	if [ "$min" = 255 ]; then
 		min=0
 	fi
-	foundDependency "qt${qtver}qmlimport(${import})" "$min"
-done < <(grep -vE '/designer/.*\.qml' | xargs -r "$importscanner" -qmlFiles | jq -r '.[] | select(.type == "module") | .name + " " + .version' | gawk 'match($2, /^([0-9]+)\.([0-9]+)$/, ver) { printf "%s.%d %d\n", $1, ver[1], ver[2]; }')
+	foundDependency "$import" "$maj" "$min"
+done < <(grep -vE '/designer/.*\.qml' | xargs -r "$importscanner" -qmlFiles | jq -r '.[] | select(.type == "module") | .name + " " + .version')
 
 for export in "${!dependencies[@]}"; do
-	echo "${export} >= ${dependencies["$export"]}"
+	ver="${dependencies["$export"]}"
+	if [ "$ver" != 0 ]; then
+		echo "qt${qtver}qmlimport(${export}) >= ${ver}"
+	else
+		echo "qt${qtver}qmlimport(${export})"
+	fi
 done
 
 exit $ret

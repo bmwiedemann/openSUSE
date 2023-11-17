@@ -17,7 +17,7 @@
 
 
 Name:           qml-autoreqprov
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Automatic dependency generator for QML files and modules
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildArch:      noarch
 Requires:       (libqt5-qtdeclarative-tools if libQtQuick5)
 Requires:       (qmlpluginexports-qt5 if libqt5-qtdeclarative-devel)
 Requires:       (qmlpluginexports-qt6 if qt6-qml-devel)
+Requires:       (qt6-base-common-devel if libQt6Qml6)
 Requires:       (qt6-declarative-tools if libQt6Qml6)
 # Version 1.1 is not compatible with qt6-declarative < 6.2
 Conflicts:      qt6-declarative-tools < 6.2.0
