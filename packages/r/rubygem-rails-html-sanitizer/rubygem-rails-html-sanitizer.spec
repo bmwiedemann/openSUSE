@@ -24,15 +24,10 @@
 #
 
 Name:           rubygem-rails-html-sanitizer
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 %define mod_name rails-html-sanitizer
 %define mod_full_name %{mod_name}-%{version}
-# MANUAL
-%if 0%{?suse_version} == 1110
-%define rb_build_versions ruby21
-%endif
-# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
@@ -45,7 +40,13 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-HTML sanitization for Rails applications.
+This gem is responsible for sanitizing HTML fragments in Rails applications.
+Specifically, this is the set of sanitizers used to implement the Action View
+SanitizerHelper methods sanitize, sanitize_css, strip_tags and strip_links.
+
+Rails HTML Sanitizer is only intended to be used with Rails applications. If
+you need similar functionality but aren't using Rails, consider using the
+underlying sanitization library Loofah directly.
 
 %prep
 

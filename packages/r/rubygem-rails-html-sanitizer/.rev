@@ -87,4 +87,12 @@
     <comment>Added bugzilla references to fixed CVEs (forwarded request 1102388 from pperego)</comment>
     <requestid>1104046</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>65472f83bf855ab1517fee5d98094939</srcmd5>
+    <version>1.6.0</version>
+    <time>1700250560</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108558</requestid>
+  </revision>
 </revisionlist>

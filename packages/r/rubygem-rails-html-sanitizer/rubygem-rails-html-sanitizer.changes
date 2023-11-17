@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Aug 31 14:35:11 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- Updated to version 1.6.0
+
+    * Dependencies have been updated:
+
+      - Loofah `~>2.21` and Nokogiri `~>1.14` for HTML5 parser support
+      - As a result, required Ruby version is now `>= 2.7.0`
+
+      Security updates will continue to be made on the `1.5.x` release branch as long as Rails 6.1
+      (which supports Ruby 2.5) is still in security support.
+
+      *Mike Dalessio*
+
+    * HTML5 standards-compliant sanitizers are now available on platforms supported by
+      Nokogiri::HTML5. These are available as:
+
+      - `Rails::HTML5::FullSanitizer`
+      - `Rails::HTML5::LinkSanitizer`
+      - `Rails::HTML5::SafeListSanitizer`
+
+      And a new "vendor" is provided at `Rails::HTML5::Sanitizer` that can be used in a future version
+      of Rails.
+
+      Note that for symmetry `Rails::HTML4::Sanitizer` is also added, though its behavior is identical
+      to the vendor class methods on `Rails::HTML::Sanitizer`.
+
+      Users may call `Rails::HTML::Sanitizer.best_supported_vendor` to get back the HTML5 vendor if it's
+      supported, else the legacy HTML4 vendor.
+
+      *Mike Dalessio*
+
+    * Module namespaces have changed, but backwards compatibility is provided by aliases.
+
+      The library defines three additional modules:
+
+      - `Rails::HTML` for general functionality (replacing `Rails::Html`)
+      - `Rails::HTML4` containing sanitizers that parse content as HTML4
+      - `Rails::HTML5` containing sanitizers that parse content as HTML5
+
+      The following aliases are maintained for backwards compatibility:
+
+      - `Rails::Html` points to `Rails::HTML`
+      - `Rails::HTML::FullSanitizer` points to `Rails::HTML4::FullSanitizer`
+      - `Rails::HTML::LinkSanitizer` points to `Rails::HTML4::LinkSanitizer`
+      - `Rails::HTML::SafeListSanitizer` points to `Rails::HTML4::SafeListSanitizer`
+
+      *Mike Dalessio*
+
+    * `LinkSanitizer` always returns UTF-8 encoded strings. `SafeListSanitizer` and `FullSanitizer`
+      already ensured this encoding.
+
+      *Mike Dalessio*
+
+    * `SafeListSanitizer` allows `time` tag and `lang` attribute by default.
+
+      *Mike Dalessio*
+
+    * The constant `Rails::Html::XPATHS_TO_REMOVE` has been removed. It's not necessary with the
+      existing sanitizers, and should have been a private constant all along anyway.
+
+      *Mike Dalessio*
+
+- Removed comparison against a very old ruby code no longer maintained
+- Updated description in spec file
+
+-------------------------------------------------------------------
 Wed Feb 22 16:23:02 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
 
 - updated to version 1.5.0
