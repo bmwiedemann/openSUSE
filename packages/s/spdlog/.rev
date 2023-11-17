@@ -447,4 +447,23 @@
     <comment></comment>
     <requestid>1102662</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>43c95a4838d8c3c743fb284f9e18e3a2</srcmd5>
+    <version>1.12.0</version>
+    <time>1700250545</time>
+    <user>anag+factory</user>
+    <comment>- download 2823.patch from upstream again to fix metadata
+  mismatch
+
+- Removed e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch as [boo#1199306] is now integrated.
+- Add e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch
+  lower than (new) 3
+  * CMake improvement regarding cmake_minimum_required and policy.
+  * Avoid c-style casting in stdout sinks.
+  * Support for FMT_STRING compile time checking.
+- Added additional building options
+  * Ability to add sinks to a logger after its creation
+  * Replaced set_async_mode(..) with factory template.</comment>
+    <requestid>1126931</requestid>
+  </revision>
 </revisionlist>

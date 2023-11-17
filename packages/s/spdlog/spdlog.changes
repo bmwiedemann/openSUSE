@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:08:02 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- download 2823.patch from upstream again to fix metadata
+  mismatch
+
+-------------------------------------------------------------------
 Wed Aug  2 12:48:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2827.patch: Added missing square bracket to fix the
@@ -47,7 +53,7 @@ Sun Jul  9 12:02:44 UTC 2023 - Bernd Ritter <comrad@posteo.de>
   * patch v1.11.0_removed_brackets_for_fmt_10.diff removed
   * patch tt4g-fix-2735.diff removed
 
-  
+
 
 -------------------------------------------------------------------
 Sat May 20 12:51:48 UTC 2023 - Bernd Ritter <comrad@posteo.de>
@@ -94,7 +100,7 @@ Wed Nov  2 22:51:57 UTC 2022 - Bernd Ritter <comrad@posteo.de>
   * Fix shadow warning in dist_sink #2431. Thanks @MohammadKanan for reporting.
   * Fixed msvc warning C4800 in win_eventlog_sink
   * Check IsDebuggerPresent() in msvc_sink before doing actual work #2408. To use old behavior pass false to the msvc_sink constructor. Thanks @DominikGrabiec and @sylveon
-- Removed e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch as [boo#1199306] is now integrated. 
+- Removed e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch as [boo#1199306] is now integrated.
   * Updated baselibs.conf accordingly.
 
 -------------------------------------------------------------------
@@ -106,14 +112,14 @@ Mon Oct 24 22:04:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Thu Oct 20 20:00:13 UTC 2022 - Bernd Ritter <comrad@posteo.de>
 
-- Add e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch 
+- Add e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch
   [boo#1199306]; changes SONAME to be more distinct
 
 -------------------------------------------------------------------
 Wed Oct 19 21:16:08 UTC 2022 - Bernd Ritter <comrad@posteo.de>
 
 - Limit build choices on catch2-dependency to catch2 2.13.4 and
-  lower than (new) 3 
+  lower than (new) 3
 
 -------------------------------------------------------------------
 Mon Apr 18 19:47:37 UTC 2022 - Bernd Ritter <comrad@posteo.de>
@@ -129,12 +135,12 @@ Mon Apr 18 19:47:37 UTC 2022 - Bernd Ritter <comrad@posteo.de>
   * List Debian instructions in the README.
   * Updated to latest Travis CI Build Status.
   * Fixed unhandled errors in udp sink.
-  * CMake improvement regarding cmake_minimum_required and policy. 
+  * CMake improvement regarding cmake_minimum_required and policy.
   * Fixed mongo_sink compile in older gcc versions.
   * Remove mutable keyword from mutex_ member in of sinks.
   * Fix typos.
   * Fixed udp sink build on FreeBSD
-  * Avoid c-style casting in stdout sinks. 
+  * Avoid c-style casting in stdout sinks.
   * Fixed tweakme.h compile error under msvcs when SPDLOG_FUNCTION is defined #2182. Thanks @Light3039 .
   * Fixed compiling errors on AIX #2181. Thanks @lisr .
   * Fixed runtime when build with -fsanitize=cfi #1972. Thanks @bansan85 .
@@ -309,7 +315,7 @@ Thu Jul  9 19:59:07 UTC 2020 - aloisio@gmx.com
 - Update to version 1.7.0
   * Support fmt version 7.x.
   * Fixed to_hex segmentation fault
-  * Support for FMT_STRING compile time checking. 
+  * Support for FMT_STRING compile time checking.
   * Clean CMakeLists.txt.
 - Drop spdlog-1.6.1-fmt7_build.patch and
   spdlog-1.6.1-fmt7_tests.patch (merged upstream)
@@ -590,7 +596,7 @@ Fri Nov 29 08:12:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 -------------------------------------------------------------------
 Mon May 27 06:11:03 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Added additional building options 
+- Added additional building options
 
 -------------------------------------------------------------------
 Tue Apr 16 13:33:41 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
@@ -774,14 +780,14 @@ Mon Aug 13 08:32:18 UTC 2018 - windowskaput@gmail.com
     flush all registered loggers.
   * Improved performance - by caching some recently used values in
     the pattern formatter.
-  * Ability to add sinks to a logger after its creation 
+  * Ability to add sinks to a logger after its creation
     (but it is not thread safe to do so - so use with caution).
 
 - Breaking changes
   * Include what you need. For example to use basic_logger add
     #include "spdlog/sinks/basic_file_sink.h"
   * To use async loggers - include "spdlog/async.h"
-  * Replaced set_async_mode(..) with factory template. 
+  * Replaced set_async_mode(..) with factory template.
   * Removed printf support.
   * Removed warmup/teardown functions from async.
   * Custom sinks inheriting from sinks::base_sink need to format

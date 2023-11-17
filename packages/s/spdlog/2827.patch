@@ -9,7 +9,7 @@ Subject: [PATCH] Added missing square bracket to fix the level_to_string_view
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/test_misc.cpp b/tests/test_misc.cpp
-index 9f3cb1744..6199641ff 100644
+index 9f3cb1744d..6199641ff2 100644
 --- a/tests/test_misc.cpp
 +++ b/tests/test_misc.cpp
 @@ -43,7 +43,7 @@ TEST_CASE("log_levels", "[log_levels]")
