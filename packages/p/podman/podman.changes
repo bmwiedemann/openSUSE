@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  8 07:48:11 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Use crun only on selected archs
+
+-------------------------------------------------------------------
 Wed Nov 01 07:15:17 UTC 2023 - dcermak@suse.com
 
 - Update to version 4.7.2:

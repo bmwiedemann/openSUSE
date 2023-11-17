@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
@@ -64,11 +65,11 @@ Requires:       iptables
 Requires:       libcontainers-common >= 20230214
 # use crun on Tumbleweed & ALP for WASM support
 %if 0%{suse_version} >= 1600
-%ifarch armv6l armv6hl
-# crun not available for armv6 (because of criu)
-Requires:       runc >= 1.0.1
-%else
+# crun is only available for selected archs (because of criu)
+%ifarch x86_64 aarch64 ppc64le armv7l armv7hl s390x
 Requires:       crun
+%else
+Requires:       runc >= 1.0.1
 %endif
 %else
 Requires:       runc >= 1.0.1
@@ -80,7 +81,6 @@ Suggests:       katacontainers
 # deprecate unused podman-cni-config subpackage
 Provides:       %{name}-cni-config = %{version}
 Obsoletes:      %{name}-cni-config < 4.5.1
-
 
 %description
 Podman is a container engine for managing pods, containers, and container
@@ -94,7 +94,7 @@ skopeo, as they all share the same datastore backend.
 %autosetup -p1
 
 %package remote
-Summary: Client for managing podman containers remotely
+Summary:        Client for managing podman containers remotely
 Group:          System/Management
 Conflicts:      %{name} < 3.1.2
 Provides:       podman:%{_bindir}/%{name}-remote
@@ -119,10 +119,10 @@ executes podman commands, it also creates links between all Docker CLI man
 pages and %{name}.
 
 %package -n %{name}sh
-Summary: Confined login and user shell using %{name}
-Requires: %{name} = %{version}
-Provides: %{name}-shell = %{version}
-Provides: %{name}-%{name}sh = %{version}
+Summary:        Confined login and user shell using %{name}
+Requires:       %{name} = %{version}
+Provides:       %{name}-%{name}sh = %{version}
+Provides:       %{name}-shell = %{version}
 
 %description -n %{name}sh
 %{name}sh provides a confined login and user shell with access to volumes and
