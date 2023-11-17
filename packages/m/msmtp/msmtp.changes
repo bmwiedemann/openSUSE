@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 29 18:32:58 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.25:
+  * Generation of Message-ID headers was improved to avoid problems
+    with rspamd assigning SPAM points
+  * Documentation of ignored options was fixed
+  * The combination of envelope from addresses with wildcards and
+    automatic account selection was fixed
+  * Translations were updated, including a new Romanian translation
+
+-------------------------------------------------------------------
 Fri Jun 30 20:50:45 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.24:

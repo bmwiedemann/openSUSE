@@ -501,4 +501,12 @@ I hope it's ok this time. (forwarded request 138894 from benoit_monin)</comment>
 update to version 1.8.24</comment>
     <requestid>1096525</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>64400ccf0cc0f9da41cf2fefb174f311</srcmd5>
+    <version>1.8.25</version>
+    <time>1700250582</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127181</requestid>
+  </revision>
 </revisionlist>
