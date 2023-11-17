@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 17 05:57:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.4:
+  * Add a new built-in function `get_working_dir()` (#2791)
+  * Fix TestErrorExplaining (#2793)
+  * Add shell completion (#2788)
+
+-------------------------------------------------------------------
 Thu Nov 16 12:09:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.53.3:
