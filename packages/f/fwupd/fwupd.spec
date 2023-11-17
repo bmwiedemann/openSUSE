@@ -48,6 +48,8 @@ Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
 
+# PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
+Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
 # PATCH-FEATURE-OPENSUSE harden_fwupd-offline-update.service.patch -- Harden services

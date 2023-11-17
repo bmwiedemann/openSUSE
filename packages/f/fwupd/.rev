@@ -560,4 +560,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1126545</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>fbd8c793a9a094d9ba551ec20735df51</srcmd5>
+    <version>1.9.8</version>
+    <time>1700250552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127172</requestid>
+  </revision>
 </revisionlist>
