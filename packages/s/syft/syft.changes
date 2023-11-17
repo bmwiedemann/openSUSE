@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 17 05:46:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.97.0:
+  * fix: prevent writing non-report output to stdout (#2324)
+  * chore(deps): bump github/codeql-action from 2.22.6 to 2.22.7
+    (#2332)
+  * export metadata type helper (#2328)
+  * fix(java): add manual groupid mappings for org.apache.velocity
+    jars (#2327)
+  * fix(java): skip maven bundle plugin logic if vendor id and
+    symbolic name match (#2326)
+  * Refine license searching from groupIDFromJavaMetadata to allow
+    for having the artfactId in the groupId (#2313)
+  * chore(deps): update tools to latest versions (#2325)
+  * chore(deps): update tools to latest versions (#2318)
+  * Add license for golang stdlib (#2317)
+  * chore(deps): bump github/codeql-action from 2.22.5 to 2.22.6
+    (#2321)
+  * docs: Update README.md for dotnet-portable-executable (#2322)
+  * Fall back to searching maven central using
+    groupIDFromJavaMetadata (#2295)
+  * rename file.Location.VirtualPath to AccessPath (#2288)
+  * chore(deps): update tools to latest versions (#2308)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.11
+    to 0.4.12 (#2310)
+  * chore(deps): bump golang.org/x/net from 0.17.0 to 0.18.0
+    (#2311)
+
+-------------------------------------------------------------------
 Thu Nov 09 14:48:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.96.0:
