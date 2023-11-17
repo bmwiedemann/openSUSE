@@ -2098,4 +2098,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1121165</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>232a75c8ad56bed85a20ab008fd5591e</srcmd5>
+    <version>23.11.0</version>
+    <time>1700250526</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127258</requestid>
+  </revision>
 </revisionlist>

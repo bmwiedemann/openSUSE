@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 16 12:12:13 UTC 2023 - pgajdos@suse.com
+
+- version update to 23.11.0
+    core:
+     * CairoOutputDev: Use internal downscaling algorithm if image exceeds Cairo's maximum dimensions.
+     * Internal code improvements
+     * Fix crash on malformed files
+    utils:
+     * pdftocairo: Add option to document logical structure if output is pdf
+     * pdftocairo: EPS output should not contain %%PageOrientation
+
+-------------------------------------------------------------------
 Mon Oct 30 08:50:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to let it build with the heavily patched tiff 4.0.9
