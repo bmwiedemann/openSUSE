@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 16 20:12:43 UTC 2023 - David Mair <dmair@suse.com>
+
+- Update to crash-8.0.4
+ - Removed patches already present in upstream source:
+  * crash-fix-glibc-redefs.patch
+  * crash-get-linux_banner-without-using-syment-type.patch
+- Removed the redundant clean section from the spec file
+
+-------------------------------------------------------------------
 Thu Oct  5 18:12:20 UTC 2023 - David Mair <dmair@suse.com>
 
 - Updated crash gcore extension to current upstream v1.64 dated
