@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 17 05:48:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.2:
+  * chore(deps): update Syft to v0.97.0 (#1608)
+  * chore: bump vulnerability match label dataset (#1606)
+  * fix: golang version parsing (#1599)
+  * chore(deps): update bootstrap tools to latest versions (#1595)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.11
+    to 0.4.12 (#1597)
+
+-------------------------------------------------------------------
 Thu Nov 09 15:04:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.73.1:
