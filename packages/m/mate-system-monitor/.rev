@@ -185,4 +185,16 @@
     <comment></comment>
     <requestid>913157</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>faa623f13c9243feeb20a167a6959c4a</srcmd5>
+    <version>1.26.1</version>
+    <time>1700250660</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 1.26.1
+  * Translations update
+  * Fix Information Fields not being saved
+  * Fix a warning in japanese translations
+  * Add preferences.ui in POTFILES.in (forwarded request 1127303 from hillwood)</comment>
+    <requestid>1127304</requestid>
+  </revision>
 </revisionlist>

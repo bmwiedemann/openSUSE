@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 17 13:12:56 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.1
+  * Translations update
+  * Fix Information Fields not being saved
+  * Fix a warning in japanese translations
+  * Add preferences.ui in POTFILES.in
+
+-------------------------------------------------------------------
 Thu Aug 12 08:28:50 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
