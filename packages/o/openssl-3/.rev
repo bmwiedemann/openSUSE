@@ -186,4 +186,22 @@
     - openssl-Add-Kernel-FIPS-mode-flag-support.patch</comment>
     <requestid>1120189</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>57ef149c823e47a2ea7227079ae9a400</srcmd5>
+    <version>3.1.4</version>
+    <time>1700250475</time>
+    <user>anag+factory</user>
+    <comment>- Security fix: [bsc#1216922, CVE-2023-5678]
+  * Fix excessive time spent in DH check / generation with large Q
+    parameter value.
+  * Applications that use the functions DH_generate_key() to generate
+    an X9.42 DH key may experience long delays. Likewise,
+    applications that use DH_check_pub_key(), DH_check_pub_key_ex
+    () or EVP_PKEY_public_check() to check an X9.42 DH key or X9.42
+    DH parameters may experience long delays. Where the key or
+    parameters that are being checked have been obtained from an
+    untrusted source this may lead to a Denial of Service.
+  * Add openssl-CVE-2023-5678.patch</comment>
+    <requestid>1126784</requestid>
+  </revision>
 </revisionlist>
