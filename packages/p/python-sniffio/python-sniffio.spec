@@ -33,7 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 BuildArch:      noarch
 # SECTION test requirements
-# BuildRequires:  %%{python_module curio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

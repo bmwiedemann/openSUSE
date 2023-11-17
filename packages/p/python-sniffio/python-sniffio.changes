@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 20:53:23 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove dependency on curio completely.
+
+-------------------------------------------------------------------
 Thu Oct  5 17:20:13 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file
