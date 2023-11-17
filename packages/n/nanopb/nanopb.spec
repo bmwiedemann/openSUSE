@@ -19,7 +19,7 @@
 %define sover 0
 %define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.4.6
+Version:        0.4.8
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
@@ -80,10 +80,7 @@ tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rfv \{\} +
 # Fix env-script-interpreter rpmlint error
 files=$(grep -rl '#!/usr/bin/env python' %{buildroot}%{src_install_dir}) && echo $files | xargs sed -i 's|#!/usr/bin/env python|#!%{_bindir}/python|'
-# Fix name and interpreter
-ln -s %{_bindir}/nanopb_generator.py %{buildroot}%{_bindir}/nanopb_generator
-sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/nanopb_generator.py
-sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/protoc-gen-nanopb
+sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/*
 
 %fdupes %{buildroot}%{src_install_dir}
 
@@ -99,11 +96,12 @@ sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/protoc-gen-nanopb
 %{_bindir}/nanopb_generator.py
 %{_bindir}/nanopb_generator
 %{_bindir}/protoc-gen-nanopb
-%{python3_sitelib}/proto
-%{_includedir}/pb.h
-%{_includedir}/pb_common.h
-%{_includedir}/pb_decode.h
-%{_includedir}/pb_encode.h
+%{python3_sitelib}/nanopb
+%dir %{_includedir}/nanopb
+%{_includedir}/nanopb/pb.h
+%{_includedir}/nanopb/pb_common.h
+%{_includedir}/nanopb/pb_decode.h
+%{_includedir}/nanopb/pb_encode.h
 %{_libdir}/cmake/nanopb
 %{_libdir}/libprotobuf-nanopb.so
 

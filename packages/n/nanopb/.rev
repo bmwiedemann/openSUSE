@@ -145,4 +145,42 @@
   some packages (e.g. Criterion: https://github.com/nanopb/nanopb/issues/845)</comment>
     <requestid>1063469</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a5112272833f56b437ef1b940b6e5796</srcmd5>
+    <version>0.4.8</version>
+    <time>1700250618</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.8: 
+  * Fix name mangling with dependent proto files (#892, #899)
+  * Fix initializer macros for custom callback datatype (#806)
+  * Use UTF-8 encoding for generated files irrespective of locale (#868)
+  * Add integer size overrides for fixed width types (#897)
+  * Add ability to specify size of generated enums (#867)
+  * Provide define for largest message in file (#893)
+  * Automatically break circular dependencies (#881)
+  * Use static_assert keyword on MSVC in C89 mode (#843)
+  * Fix comments generation for submessages (#788)
+  * Fix handling of spaces in arguments passed through protoc (#810)
+  * Fix problems with multiple files and mangle_names option (#783, #820)
+  * Fix generator error when using M_STRIP_PACKAGE without package name (#795)
+  * Fix compilation error with fixed size array and FT_POINTER (#630)
+  * Fix wrong format in Python Poetry project file (#811)
+  * Fix unnecessary generator message when using --quiet (#831)
+  * Fix enum_to_string with C++ (#838)
+  * Fix /* */ inside .proto file comment
+  * Workaround python-protobuf version issues (#787)
+  * Safeguard substraction in pb_read() with custom streams (#697)
+  * Always include pb_release() as function, instead of macro. (#802)
+  * Allow using = instead of : with generator option -s
+  * Allow specifying include format without special characters (#810)
+  * Allow including headers from inside of extern C (#814)
+  * Add option NANOPB_PB2_TEMP_DIR to store nanopb_pb2.py in a temporary dir (#601)
+  * Add compile-time error message for when PB_FIELD_32BIT is needed (#680, #827)
+  * Add --c-style command line option for naming style (#199, #533, #791)
+  * Add --protoc-opt to nanopb_generator.py (#628)
+  * Add ENUMTYPE convenience macros (#803)
+  * Generator: keep order of messages when possible
+</comment>
+    <requestid>1127246</requestid>
+  </revision>
 </revisionlist>
