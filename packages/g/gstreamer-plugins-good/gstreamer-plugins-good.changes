@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 15 09:33:32 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.7:
+  + adaptivedemux2: Do not submit_transfer when cancelled
+  + adaptivedemux2: Call GTasks's return functions for blocking
+    tasks
+  + flacenc: Correctly handle up to 255 cue entries
+  + flvmux: set the src segment position as running time
+  + imagesequencesrc: fix deadlock when feeding the same image in
+    a loop
+  + pngenc: output one frame only in snapshot mode and mark output
+    frames as I-frames
+  + qmlglsrc: sync on the streaming thread
+  + souphttpsrc: Chain up to finalize to fix memory leak
+  + wavparse: fix buffer leak with adtl tag
+  + v4l2codecs: Avoid QBUF/DQBUF struct timeval .tv_usec
+    wrap-around at frame 1000000
+  + v4l2codecs: Fix tiled formats stride conversion
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Fri Sep 22 11:40:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.6:
