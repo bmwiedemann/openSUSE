@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 16 22:31:01 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.120.4:
+  * Upgrade to go 1.21.4
+  * Add a new test helper
+
+-------------------------------------------------------------------
 Thu Nov 02 16:51:45 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.120.3:

@@ -860,4 +860,14 @@
   * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.1 to 2.20.5 (forwarded request 1122931 from jfkw)</comment>
     <requestid>1122963</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>daa43ee90319f014736d8c8aa8f208a1</srcmd5>
+    <version>0.120.4</version>
+    <time>1700250589</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.120.4:
+  * Upgrade to go 1.21.4
+  * Add a new test helper (forwarded request 1127193 from jfkw)</comment>
+    <requestid>1127200</requestid>
+  </revision>
 </revisionlist>
