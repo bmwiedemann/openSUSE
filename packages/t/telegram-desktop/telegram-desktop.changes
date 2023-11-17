@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 14 07:56:18 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.11.7
+  * Fix sending media files with quote replies.
+  * Fix quoted text highlighting in some cases.
+  * Fix loading statistics for some channels.
+  * Fix Ctrl+Shift+. shortcut on X11.
+  * Fix a crash in statistics.
+
+-------------------------------------------------------------------
 Fri Nov 10 10:19:16 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.11.6
