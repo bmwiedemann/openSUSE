@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.12.7+git0.d1eb70b
+Version:        3.13.3
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause

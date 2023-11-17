@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 15 16:48:15 UTC 2023 - antonio.teixeira@suse.com
+
+- Update to version 3.13.3:
+  * wlserver: Fix removal of gamescope_control resources
+  * steamcompmgr: Fix pipewire color mgmt luts
+  * steamcompmgr: Save 11MB of VRAM on images we weren't using
+  * steamcompmgr: Naiively handle streaming HDR content
+  * rendervulkan: Fix NV12 capture colors
+  * drm: Allow reading color primaries from EDID on Galileo
+  * protocol: Add only_change_refresh_rate flag to target_refresh_cycle_flag
+  * layer: Disable EXT_swapchain_maintenance1
+  * subprojects: Bump vkroots
+  * layer: Migrate display timing impl to EnumerateDeviceExtensionProperties
+
+-------------------------------------------------------------------
 Mon Oct 09 12:23:30 UTC 2023 - antonio.teixeira@suse.com
 
 - Update to version 3.12.7+git0.d1eb70b:
