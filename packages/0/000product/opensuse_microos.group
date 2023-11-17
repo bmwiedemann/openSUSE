@@ -151,6 +151,7 @@
     <package name="bubblewrap" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="busybox-diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-hostname" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -250,8 +251,8 @@
     <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="dialog" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="dialog-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="diffutils-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="diffutils-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="dirmngr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="discover" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="discover-backend-flatpak" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->

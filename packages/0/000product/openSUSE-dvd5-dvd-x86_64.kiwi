@@ -223,6 +223,7 @@
       <repopackage name="busybox"/>
       <repopackage name="busybox-bzip2"/>
       <repopackage name="busybox-coreutils"/>
+      <repopackage name="busybox-diffutils"/>
       <repopackage name="busybox-ed"/>
       <repopackage name="busybox-findutils"/>
       <repopackage name="busybox-gawk"/>

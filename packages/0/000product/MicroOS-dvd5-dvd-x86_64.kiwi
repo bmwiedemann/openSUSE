@@ -159,6 +159,7 @@
       <repopackage name="bubblewrap"/>
       <repopackage name="busybox"/>
       <repopackage name="busybox-coreutils"/>
+      <repopackage name="busybox-diffutils"/>
       <repopackage name="busybox-grep"/>
       <repopackage name="busybox-gzip"/>
       <repopackage name="busybox-hostname"/>
