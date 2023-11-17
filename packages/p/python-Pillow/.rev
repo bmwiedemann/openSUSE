@@ -666,4 +666,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1112103</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>178212c25eaa60774f47ee5ab633fa15</srcmd5>
+    <version>10.0.1</version>
+    <time>1700250533</time>
+    <user>anag+factory</user>
+    <comment>Add link to cve in changelog: (bsc#1216894, CVE-2023-44271)</comment>
+    <requestid>1125429</requestid>
+  </revision>
 </revisionlist>
