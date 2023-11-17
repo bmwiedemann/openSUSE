@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 14 07:36:17 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.1.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.1.0
+- Drop upstreamed patches
+  0001-Fix-qemu-system-lookup.patch
+  0003-Virtiofs-Remove-duplicated-functional-tests.patch
+  0005-Support-multiple-watchdogs-in-the-domain-schema.patch
+- Add patches
+  0001-Update-google.golang.org-grpc-to-1.56.3.patch (CVE-2023-44487)
+  0002-virt-launcher-fix-qemu-non-root-path.patch
+  0003-cgroupsv2-reconstruct-device-allowlist.patch
+
+-------------------------------------------------------------------
 Wed Oct 18 07:41:49 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.0.1

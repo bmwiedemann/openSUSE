@@ -1,0 +1,29 @@
+From 962ce51df790f9a42885db3de5e34bef99d595de Mon Sep 17 00:00:00 2001
+From: Enrique Llorente <ellorent@redhat.com>
+Date: Wed, 8 Nov 2023 14:05:43 +0100
+Subject: [PATCH] virt-launcher: fix qemu non root path
+
+The qemu log path is now under /var/run/kubevirt-private/libvirt/qemu instead of
+/var/run/libvirt/qemu. This change adapt the virt-launcher code to that
+
+Signed-off-by: Enrique Llorente <ellorent@redhat.com>
+---
+ pkg/virt-launcher/virtwrap/util/libvirt_helper.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg/virt-launcher/virtwrap/util/libvirt_helper.go b/pkg/virt-launcher/virtwrap/util/libvirt_helper.go
+index 8dd514f11..b342c034f 100644
+--- a/pkg/virt-launcher/virtwrap/util/libvirt_helper.go
++++ b/pkg/virt-launcher/virtwrap/util/libvirt_helper.go
+@@ -286,7 +286,7 @@ func startVirtlogdLogging(stopChan chan struct{}, domainName string, nonRoot boo
+ 		go func() {
+ 			logfile := fmt.Sprintf("/var/log/libvirt/qemu/%s.log", domainName)
+ 			if nonRoot {
+-				logfile = filepath.Join("/var", "run", "libvirt", "qemu", "log", fmt.Sprintf("%s.log", domainName))
++				logfile = filepath.Join("/var", "run", "kubevirt-private", "libvirt", "qemu", "log", fmt.Sprintf("%s.log", domainName))
+ 			}
+ 
+ 			// It can take a few seconds to the log file to be created
+-- 
+2.42.1
+

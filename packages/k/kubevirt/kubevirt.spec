@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -28,9 +28,9 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-Fix-qemu-system-lookup.patch
-Patch3:         0003-Virtiofs-Remove-duplicated-functional-tests.patch
-Patch5:         0005-Support-multiple-watchdogs-in-the-domain-schema.patch
+Patch1:         0001-Update-google.golang.org-grpc-to-1.56.3.patch
+Patch2:         0002-virt-launcher-fix-qemu-non-root-path.patch
+Patch3:         0003-cgroupsv2-reconstruct-device-allowlist.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -97,6 +97,9 @@ The virt-handler package provides a handler for kubevirt
 %package        virt-launcher
 Summary:        Launcher component for kubevirt
 Group:          System/Packages
+# Starting from v1.1.0, KubeVirt ships /usr/bin/virt-tail which conflicts with
+# the respective guestfs tool.
+Conflicts:      guestfs-tools
 
 %description    virt-launcher
 The virt-launcher package provides a launcher for kubevirt
@@ -234,6 +237,7 @@ build_tests="true" \
     cmd/virt-launcher-monitor \
     cmd/virt-operator \
     cmd/virt-probe \
+    cmd/virt-tail \
     cmd/virtctl \
     %{nil}
 
@@ -254,6 +258,7 @@ install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher-monitor/virt-launcher-monitor %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-freezer/virt-freezer %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-probe/virt-probe %{buildroot}%{_bindir}/
+install -p -m 0755 _out/cmd/virt-tail/virt-tail %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
 install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}%{_bindir}/
@@ -333,6 +338,7 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %{_bindir}/virt-launcher-monitor
 %{_bindir}/virt-freezer
 %{_bindir}/virt-probe
+%{_bindir}/virt-tail
 %{_bindir}/node-labeller.sh
 
 %files virt-operator
