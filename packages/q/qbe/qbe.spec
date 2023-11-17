@@ -20,7 +20,7 @@ Name:           qbe
 Version:        1.1+24
 Release:        0
 Summary:        Small embeddable C compiler backend
-Group:          Development/Languages/Other
+Group:          Development/Tools/Building
 URL:            https://c9x.me/compile
 Source0:        qbe-v%{version}.tar.zst
 BuildRequires:  zstd
