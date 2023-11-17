@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Fri Nov 17 05:52:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.0:
+  * Revert "build: rework node resolution"
+  * chore: add docs reminder comments for driver opts
+  * docs: minor cli reference editorial updates
+  * docs: fix imagetools inspect json format
+  * build: rework node resolution
+  * build: wait from child targets to complete before session
+    release
+  * driver: docker-container driver uses --config correctly in
+    rootless mode
+  * bake: fix global target access when using a matrix
+  * bake: improve error message for empty definition
+  * ci: enable SAST scanning with CodeQL
+  * build: make annotations work with push flag
+  * command(bake): Specify local and remote bake files
+  * builder: return error if all nodes fail to boot
+  * bake: display read definition files in build output
+  * vendor: update buildkit to master@d5c1d785b042
+  * compose: fix deprecated Load func
+  * vendor: update compose-go to v1.20.0
+  * chore: fix lint issues
+  * bake: set attribute even if diagnosed as duplicated
+  * bake: fork merged bodies interface logic from hcl repo and use
+    it
+  * debug: print error message on monitor instead of processes pkg
+  * debug: monitor: return last build result
+  * bake: deny access to local dockerfile for remote invocation
+    with local context
+  * bake: local dockerfile support for remote definition
+  * docs: clarify bake file lookup order and merge
+  * vendor: update github.com/zclconf/go-cty to v1.14.1
+  * vendor: update github.com/hashicorp/go-cty-funcs to
+    a090f58aa992
+  * vendor: update github.com/hashicorp/hcl/v2 to v2.19.1
+  * fix lint issues after update
+  * update golangci-lint to 1.54.2
+  * build: fix racy localstate group removal
+  * debug: do not print error when error is nil
+  * debug: reload: print error message
+  * update to go 1.21.3
+  * test: docker host-gateway
+  * driver(docker): opt to set additional dial meta to the client
+  * builder: use variadic options in LoadNodes func
+  * driver: move Features and HostGatewayIP to specific driver
+  * ci: update docs upstream validation workflow
+  * debug: update docs
+  * monitor: print error information before launching monitor
+  * controller: return original error to preserve stacktrace
+  * process: Do not print error log when process is canceled
+  * debug: set on=error by default
+  * exec, rollback: return error when no session found
+  * debug: Add `buildx debug` command
+  * Revert "Introduce a client interface, to abstract from buildkit
+    client."
+  * Introduce a client interface, to abstract from buildkit client.
+    This will allow further enhancement like caching remote driver
+    responses.
+  * builder: set node worker ids
+  * inspect: do not display platforms field if empty
+  * compose: test with develop section
+  * localstate: tests
+  * build: handle local state group file removal
+  * build: support local state group
+  * build: opt to set build ref
+  * build: set target to local state
+  * build: move localstate logic
+  * commands: release the file lock before attempting to boot
+    during create
+  * vendor: update compose-go to v1.19.0
+  * feat: support memory and cpu driver options for
+    docker-container
+  * progress: create new display object after unpause
+  * remote: remove explicit backoff config from client opts
+  * vendor: update buildkit to master@cbfd4023383d
+  * build: sublogger to show docker load progress output
+  * build(deps): bump docker/bake-action from 3 to 4
+  * build(deps): bump docker/login-action from 2 to 3
+  * build(deps): bump docker/metadata-action from 4 to 5
+  * build(deps): bump docker/setup-buildx-action from 2 to 3
+  * build(deps): bump docker/setup-qemu-action from 2 to 3
+  * build: improve error messages for docker driver
+  * build: validate build args and labels
+  * bake: add annotations field
+  * build: add --annotation shortcut flag
+  * imagetools: make annotation parser more generic
+  * imagetools: simplify return type of annotation parser
+  * update to go1.20.8
+  * docs: remove broken link
+  * migrate to github.com/distribution/reference v0.5.0
+  * vendor: github.com/compose-spec/compose-go v1.18.3
+  * enable trace delegation for docker/remote driver
+  * build(deps): bump actions/checkout from 3 to 4
+  * vendor: github.com/theupdateframework/notary v0.7.0
+  * chore: slice loop replace
+  * debug: fix short-form custom command name on `--invoke` isn't
+    used
+  * chore: reorder target fields
+  * test: fix non-deterministic compose context path
+  * tests: add imagetools tests for copying manifests and indexes
+  * git: fix error wrapping to ensure internal errors are
+    propogated
+  * git: propogate failure to locate git binary
+  * docker-container: avoid fail if container conflict
+  * vendor: bump k8s to v0.26.7
+  * build: read body response to check for erroneous image export
+    to docker
+  * README: fix whitespace
+  * README: fix typo
+  * bake: test compose include
+  * adapt compose unit tests, build context is now transformed to
+    absolute paths by compose-go
+  * bump compose-go version to v1.17.0 to fix issue with depends_on
+  * build: error on attests on non-multiplatform driver
+  * tests: add unsupported features detection skeleton
+  * vendor: update buildkit to master@b49a8873179b
+  * tests: avoid hardcoded driver check in testImageIDOutput
+  * Integration test for docker buildx version
+  * tests: add testImagetoolsAnnotation integration test
+  * allow annotations for OCI image index
+  * README: clarify the Linux package install instructions
+  * update to go1.20.7
+  * tests: add integration test for imagetools create
+  * remote controller: Fix entrypoint interaction bugs
+  * docs: fix platform example for create command
+  * progress: don't modify ResetTime inputs
+  * vendor: github.com/docker/cli v24.0.5
+  * vendor: github.com/docker/docker v24.0.5
+  * vendor: golang.org/x/net v0.10.0
+  * vendor: golang.org/x/text v0.9.0
+  * vendor: golang.org/x/term v0.8.0
+  * vendor: golang.org/x/sys v0.8.0
+  * vendor: github.com/sirupsen/logrus v1.9.3
+  * chore: tidy splitToDriverPairs to avoid unneccessary int
+  * allow custom annotations and labels into kubernetes manifests
+  * remote: use buildkit's client.Wait method to bootstrap
+  * commands: NewRootCmd: remove obsolete logrus filter hook
+  * build: set remote bake def and remote dockerfile as internal
+    solve
+  * vendor: github.com/docker/cli v24.0.4
+  * build: mark result handle build as internal
+  * vendor: github.com/moby/buildkit
+    v0.12.1-0.20230717122532-faa0cc7da353
+  * vendor: github.com/tonistiigi/vt100
+    v0.0.0-20230623042737-f9a4f7ef6531
+  * vendor: github.com/tonistiigi/fsutil
+    v0.0.0-20230629203738-36ef4d8c0dbb
+  * vendor: github.com/xeipuuv/gojsonpointer
+    v0.0.0-20190905194746-02993c407bfb
+  * util/imagetools: remove unused Resolver.ImageConfig
+  * hack(generated-files): bump golang image to bookworm
+  * update go to 1.20.6
+  * vendor: github.com/docker/docker@24.0 36e9e79
+  * k8s: fix missing kubeconfig check from endpoint
+  * hack: force go version to 1.20.5
+  * tests: add basic build progress test
+  * test: build details output
+  * build: missing newline when printing build details on error
+  * docs: update generated content
+  * vendor: update cli-docs-tool to 0.6.0
+  * tests: add simple local bake test
+  * docs: debug: update the output of `help` command to the latest
+    message
+  * monitor: attach: fix typo in long help message
+  * controller: include CgroupParent in build.Options
+  * build: fix host-gateway handling
+  * utils/buildflags: ParseEntitlements(): use BuildKit's parsing
+  * update flag-description for --cgroup-parent
+  * bake: ignore profiles in compose definitions
+  * build: prefer local image resolution for docker driver
+  * build: add GO_EXTRA_FLAGS argument
+  * test: fix testImageIDOutput
+  * test: fix inspect and ls
+  * test: register docker worker with containerd snapshotter
+  * dockerfile: update docker to 24.0.2
+  * tests: set a dedicated buildx config dir for each worker
+  * ci: run docker-container tests in parallel
+  * tests: share single docker between docker-container backends
+  * vendor: update buildkit to master@2d91ddcceedc
+  * chore: make docs
+  * docs: set experimental annotation
+  * Add Bearer token
+  * build(deps): Bump peter-evans/create-pull-request from 5.0.1 to
+    5.0.2
+  * builder: skip name validation for docker context
+  * bake: fix incorrect dockerfile resolution against cwd://
+    context
+  * commands: consume DEBUG environment variable
+  * docs: update since buildinfo removal
+
+-------------------------------------------------------------------
 Tue Jul 18 18:54:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.11.2:
