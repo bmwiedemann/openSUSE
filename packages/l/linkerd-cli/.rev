@@ -7,4 +7,12 @@
     <comment>new package linkerd-cli: CLI for the linkerd service mesh for Kubernetes</comment>
     <requestid>1124162</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c53ca0188c18f784d0106258d7fe31f0</srcmd5>
+    <version>2.14.4</version>
+    <time>1700250604</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127237</requestid>
+  </revision>
 </revisionlist>
