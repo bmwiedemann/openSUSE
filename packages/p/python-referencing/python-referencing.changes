@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:51:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.0:
+  * Add referencing.jsonschema.EMPTY_REGISTRY.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * Enable TCH rules for slightly reducing runtime imports.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add tests for Registry being truthy or falsy.
+  * Apparently this setting is now autodetected.
+  * yarl -> url.py in the (trivial) docs usage.
+  * Ignore the dirhtml directory usable for docs generation.
+  * Unpin pyright, as whatever was previously broken seems fixed.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * Pull in some style ignores that we don't really need yet.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * referencing, not Bowtie
+  * New pip-compile default.
+  * Update requirements.
+  * Remove the now-unneeded noqa's.
+  * Ask ruff to fix things when it runs.
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add and ensure the noxfile gets documented.
+  * Bump actions/checkout from 3 to 4
+  * [pre-commit.ci] pre-commit autoupdate
+  * Few more ruff rules.
+  * Bump docs requirements.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `fa1b818` to `9153b05`
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `b094fe5` to `fa1b818`
+  * Minor tweaks to some annotations.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Sun Aug 06 07:54:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.30.2:

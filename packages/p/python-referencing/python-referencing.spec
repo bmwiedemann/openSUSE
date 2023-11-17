@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-referencing%{psuffix}
-Version:        0.30.2
+Version:        0.31.0
 Release:        0
 Summary:        JSON Referencing + Python
 License:        MIT
