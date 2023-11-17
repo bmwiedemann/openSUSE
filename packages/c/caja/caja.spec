@@ -1,7 +1,7 @@
 #
 # spec file for package caja
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _version 1.26
 
 Name:           caja
-Version:        1.26.1
+Version:        1.26.3
 Release:        0
 Summary:        File manager for the MATE desktop
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -90,7 +90,10 @@ desktop. It works on local and remote filesystems.
 
 
 
+
+
 # Needed for using pluma as standalone from MATE.
+
 %package gschemas
 Summary:        Caja GSchemas
 Group:          System/GUI/Other

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:03:48 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.3
+  * update translations
+  * caja-file: fix future informal date bug
+  * caja-file: fix yesterday/today informal date bug
+  * Replace deprecated code from xrandr
+  * caja-desktop-window: Fix the xrandr error
+
+-------------------------------------------------------------------
 Mon Jul 18 15:10:14 UTC 2022 - Mihai Moldovan <ionic@ionic.de>
 
 - Update to upstream version 1.26.1:
