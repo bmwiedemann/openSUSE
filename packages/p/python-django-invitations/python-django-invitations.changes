@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Nov 17 09:58:22 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.0.0:
+  - Added Ukrainian language
+  - MANIFEST.in: Include usual targets
+  - JazzBand project guidelines
+  - Update import for django 4.0
+  - Update README.md
+  - Add django 4.0 and python 3.9/3.10 to test matrix.
+  - Fix docstring for accepted invite signal
+  - Passed request as an argument into invite_accepted signal
+  - refactor(models): use get_current_site from django shortcuts
+  - Make "inviter" be an raw_id_field in admin
+  - Add i18n tags
+  - Add invitation object as an argument to the invite accepted signal
+  - Set inviter in SendJSONInvite
+  - Make accept-invite viewname configurable in django settings
+  - Use poetry for package management.
+  - Sphinx based documentation
+  - Add documentation for swappable forms.
+  - Correct spelling mistakes
+  - Fix release workflow to actually publish
+  - Fix flake8 and tox dependencies
+- Remove upstreamed patches:
+  - django-4.0.patch
+  - python-django-invitations-no-mock.patch
+- Add configure-django.patch to add missing configuration values
+  for Django.
+
+-------------------------------------------------------------------
 Mon May  9 10:36:29 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-invitations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,23 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-invitations
-Version:        1.9.3
+Version:        2.0.0
 Release:        0
 Summary:        Generic invitations app with support for Django-allauth
 License:        GPL-3.0-only
 URL:            https://github.com/bee-keeper/django-invitations
 Source:         https://github.com/bee-keeper/django-invitations/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#bee-keeper/django-invitations#169
-Patch0:         django-4.0.patch
-# https://github.com/jazzband/django-invitations/blob/master/tests/basic/tests.py#L4
-Patch1:         python-django-invitations-no-mock.patch
+# PATCH-FIX-UPSTREAM configure-django.patch gh#jazzband/django-invitations!235 mcepl@suse.com
+# Add missing configuration settings
+Patch0:         configure-django.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-allauth}
 BuildRequires:  %{python_module freezegun >= 0.3.5}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-django >= 3.1.2}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
@@ -50,11 +49,10 @@ Generic invitations app with support for Django-allauth.
 rm tox.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,7 +61,8 @@ rm tox.ini
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/invitations/
-%{python_sitelib}/django_invitations-*.egg-info/
+%doc CHANGELOG.md README.md
+%{python_sitelib}/invitations
+%{python_sitelib}/django_invitations-%{version}*-info
 
 %changelog

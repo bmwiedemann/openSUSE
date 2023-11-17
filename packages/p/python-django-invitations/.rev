@@ -50,4 +50,37 @@
     <comment></comment>
     <requestid>975866</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85450d91b5c2de3dbe8a99e72fd6329d</srcmd5>
+    <version>2.0.0</version>
+    <time>1700250652</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.0:
+  - Added Ukrainian language
+  - MANIFEST.in: Include usual targets
+  - JazzBand project guidelines
+  - Update import for django 4.0
+  - Update README.md
+  - Add django 4.0 and python 3.9/3.10 to test matrix.
+  - Fix docstring for accepted invite signal
+  - Passed request as an argument into invite_accepted signal
+  - refactor(models): use get_current_site from django shortcuts
+  - Make &quot;inviter&quot; be an raw_id_field in admin
+  - Add i18n tags
+  - Add invitation object as an argument to the invite accepted signal
+  - Set inviter in SendJSONInvite
+  - Make accept-invite viewname configurable in django settings
+  - Use poetry for package management.
+  - Sphinx based documentation
+  - Add documentation for swappable forms.
+  - Correct spelling mistakes
+  - Fix release workflow to actually publish
+  - Fix flake8 and tox dependencies
+- Remove upstreamed patches:
+  - django-4.0.patch
+  - python-django-invitations-no-mock.patch
+- Add configure-django.patch to add missing configuration values
+  for Django.</comment>
+    <requestid>1127294</requestid>
+  </revision>
 </revisionlist>
