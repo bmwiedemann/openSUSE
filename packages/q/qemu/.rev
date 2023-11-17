@@ -3562,4 +3562,14 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
   * roms/ipxe: Backport 0aa2e4ec9635, in preparation of binutils 2.41 (bsc#1215311)</comment>
     <requestid>1120310</requestid>
   </revision>
+  <revision rev="262" vrev="2">
+    <srcmd5>7ce3cdd69df22b2cf46c37932d550862</srcmd5>
+    <version>8.1.2</version>
+    <time>1700250484</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1216638:
+  * target/s390x: Fix LAALG not updating cc_src
+  * target/s390x: Fix CLC corrupting cc_src</comment>
+    <requestid>1126776</requestid>
+  </revision>
 </revisionlist>

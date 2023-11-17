@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 15 17:39:42 UTC 2023 - dfaggioli@suse.com
+
+- Fix bsc#1216638:
+  * target/s390x: Fix LAALG not updating cc_src
+  * target/s390x: Fix CLC corrupting cc_src
+
+-------------------------------------------------------------------
 Tue Oct 24 11:05:13 UTC 2023 - dfaggioli@suse.com
 
 - [openSUSE] supportconfig: Adapt plugin to modern supportconfig
@@ -20,7 +27,7 @@ Wed Oct 18 13:34:20 UTC 2023 - dfaggioli@suse.com
    * https://gitlab.com/qemu-project/qemu/-/issues/1846
 
   It also contains a fix for:
-   * CVE-2023-42467
+   * CVE-2023-42467 (bsc#1215192)
 
   As well as several upstream backports (list available at:
   https://lore.kernel.org/qemu-devel/24dfb1c2-dc40-4841-893d-5d530638b684@tls.msk.ru/)
