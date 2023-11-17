@@ -611,4 +611,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>1119254</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>b22bdf328e4a03dd90498d7d93a6af03</srcmd5>
+    <version>2.11.2</version>
+    <time>1700250528</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127261</requestid>
+  </revision>
 </revisionlist>

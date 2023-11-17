@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 16 08:59:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Fix winpr-devel dependencies. WinePRTargets-*.cmake defines
+  CMake targets for winpr-hash and winpr-makecert. They have to be
+  present.
+
+-------------------------------------------------------------------
 Fri Oct 20 12:30:10 UTC 2023 - Adriankhl <dlshcbmuipmam@hotmail.com>
 
 - Update to 2.11.2

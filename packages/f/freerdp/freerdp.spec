@@ -163,6 +163,8 @@ the equivalent WinPR implementation, without having to modify the code using it.
 Summary:        Windows Portable Runtime development files
 Group:          Development/Languages/C and C++
 Requires:       cmake >= 2.8
+# WinPRTargets-*.cmake defines targets for winpr-hash and winpr-makecert
+Requires:       freerdp-server = %{version}-%{release}
 Requires:       libwinpr%{libfreerdp_package} = %{version}-%{release}
 Obsoletes:      libwinpr2-devel < %{version}-%{release}
 Provides:       libwinpr2-devel = %{version}-%{release}
