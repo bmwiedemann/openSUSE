@@ -3803,7 +3803,6 @@
     <package name="ruby3.2-rubygem-google-protobuf" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-googleapis-common-protos-types" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gpgme" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-grpc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gssapi" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gyoku" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-haml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
