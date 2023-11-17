@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 16 21:20:48 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 2023.11.0
+- add distributed-ignore-rerun.patch to ignore pytest runners during
+  test code introspection
+ * Zero-copy P2P Array Rechunking
+ * Deprecating PyArrow <14.0.1
+ * Improved PyArrow filesystem for Parquet
+ * Improve Type Reconciliation in P2P Shuffling
+ * official support for Python 3.12
+ * Reduced memory pressure for multi array reductions
+ * improved P2P shuffling robustness
+ * Reduced scheduler CPU load for large graphs
+
+-------------------------------------------------------------------
 Sun Sep 10 13:45:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2023.9.1

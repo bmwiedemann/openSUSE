@@ -20,21 +20,18 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test-py39"
 %define psuffix -test-py39
-%define skip_python38 1
 %define skip_python310 1
 %define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
-%define skip_python38 1
 %define skip_python39 1
 %define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
-%define skip_python38 1
 %define skip_python39 1
 %define skip_python310 1
 %bcond_without test
@@ -47,7 +44,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.9.1
+Version:        2023.11.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -59,10 +56,12 @@ Source99:       python-distributed-rpmlintrc
 Patch3:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
 Patch4:         distributed-ignore-thread-leaks.patch
-BuildRequires:  %{python_module base >= 3.8}
+# PATCH-FIX-OPENSUSE distributed-ignore-rerun.patch -- extend ignore pytest array, mimi.vx@gmail.com
+Patch5:         distributed-ignore-rerun.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module versioneer-toml >= 0.28}
+BuildRequires:  %{python_module versioneer-toml >= 0.29}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -201,7 +200,7 @@ notparallel+=" or test_ensure_no_new_clients"
 %pytest distributed/tests -m "not avoid_ci" -n auto -k "not ($notparallel or $donttest ${$python_donttest})"
 %pytest distributed/tests -m "not avoid_ci" -k "($notparallel) and not ($donttest ${$python_donttest})"
 %else
-%pytest distributed/tests -m "not avoid_ci" -k "not ($donttest ${$python_donttest})" --reruns 3 --reruns-delay 3
+%pytest distributed/tests -m "not avoid_ci" -k "not ($donttest ${$python_donttest})"
 %endif
 %endif
 
