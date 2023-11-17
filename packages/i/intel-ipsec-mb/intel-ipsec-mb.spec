@@ -18,7 +18,7 @@
 
 
 %global major        1
-%global minor        4
+%global minor        5
 %global patch        0
 
 # GitHub properties
