@@ -1,25 +1,5 @@
 #!/bin/bash
 
-# Note:
-# Occasionally we run into PR28561 - "[gdb/testsuite] Error due to not
-# reading \r\n at end of mi prompt".
-# https://sourceware.org/bugzilla/show_bug.cgi?id=28561
-# Not sure how to filter for that.
-
-# TODO:
-#
-# We run into FAILs like this:
-# FAIL: gdb.base/options.exp: test-print: \
-#   tab complete "thread apply all print " (clearing input line) (timeout)
-# FAIL: gdb.base/options.exp: test-print: \
-#   cmd complete "thread apply all print "
-# in various test-cases.  One instance is reported here (
-# https://sourceware.org/bugzilla/show_bug.cgi?id=27813 ).
-# We could do a generic kfail for "(clearing input line) (timeout)", but that
-# doesn't filter out the following FAIL.  We need to update the testsuite to
-# emit only one FAIL for this, or alternatively, add a possibility in this
-# script to KFAIL one and all following FAILs in the same test-case.
-
 usage ()
 {
     echo "usage: $0 <1-5>"
@@ -152,33 +132,37 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26971
     "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: check post FLD1 value of .fop"
     "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: check post FLD1 value of .fioff"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=24845
     "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=off: single step over clone"
     "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=off: continue to marker \(clone\)"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=19436#c1
     "FAIL: gdb.cp/no-dmgl-verbose.exp: setting breakpoint at 'f\(std::string\)'"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=25504
     "FAIL: gdb.threads/process-dies-while-detaching.exp: single-process: continue: .*: continue"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28065
     "FAIL: gdb.threads/access-mem-running-thread-exit.exp:"
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=27813
-    "FAIL: gdb.cp/cpcompletion.exp:"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=25503
     "FAIL: gdb.threads/signal-while-stepping-over-bp-other-thread.exp: step \(pattern 3\)"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26915
     "FAIL: gdb.threads/schedlock.exp: schedlock=off: .*: other threads ran - unlocked"
     "FAIL: gdb.threads/watchthreads-threaded.exp: watchpoint on args\[[1-3]\] hit in thread"
     "FAIL: gdb.threads/watchthreads-threaded.exp: watch args\[[1-3]\]"
     "FAIL: gdb.threads/watchthreads-threaded.exp: threaded watch loop"
     "FAIL: gdb.threads/watchthreads-threaded.exp: combination of threaded watchpoints = 30 \+ initial values"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28479
     "FAIL: gdb.mi/mi-nonstop.exp: wait for thread exit \(timeout\)"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26273
     "FAIL: gdb.threads/gcore-stale-thread.exp: save a corefile"
     "FAIL: gdb.threads/gcore-stale-thread.exp: exited thread is current due to non-stop"
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28467
-    # -pie, x86_64 -m32 or i586.
-    "FAIL: gdb.base/nodebug.exp: p/c \(int\) array_index\(\"abcdef\",2\)"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28617
     "FAIL: gdb.base/info-os.exp: get process groups \(timeout\)"
     "FAIL: gdb.base/info-os.exp: get threads \(timeout\)"
@@ -196,7 +180,9 @@ kfail=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26363
     "FAIL: gdb.xml/tdesc-reload.exp: .*internal error"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26761
+    # Should be fixed in gdb-14.
     "FAIL: gdb.base/gdb-sigterm.exp: .*internal error"
 
     # If a test-case fails to compile, it's not a GDB FAIL, ignore.
@@ -279,19 +265,21 @@ kfail=(
     "FAIL: gdb.base/info-os.exp: get shared-memory regions"
     "FAIL: gdb.base/info-os.exp: get threads"
 
-    #https://sourceware.org/bugzilla/show_bug.cgi?id=29790
+    # Fails related to PKRU register.  To be investigated.  Might be fixed in
+    # gdb 14, but related patches look non-trivial to backport.
+    "FAIL: gdb.arch/i386-pkru.exp: pkru register"
+    "FAIL: gdb.arch/i386-pkru.exp: read pkru register"
     "FAIL: gdb.arch/i386-pkru.exp: read value after setting value"
     "FAIL: gdb.arch/i386-pkru.exp: variable after reading pkru"
+    "FAIL: gdb.base/gcore.exp: corefile restored all registers"
+    "FAIL: gdb.reverse/insn-reverse.exp: rdrand: compare registers on insn"
+    "FAIL: gdb.reverse/insn-reverse.exp: rdseed: compare registers on insn"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28478
     "FAIL: gdb.gdb/selftest.exp: backtrace through signal handler"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29781
-    "FAIL: gdb.mi/mi-multi-commands.exp: args=: look for second command output, command length .* \(timeout\)"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=27813
-    "FAIL: .*.exp: .*tab complete .* \(clearing input line\) \(timeout\)"
-    "FAIL: .*.exp: .*cmd complete .*"
+    "FAIL: gdb.mi/mi-multi-commands.exp: args=.*: look for second command output, command length .* \(timeout\)"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=27027
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28464
@@ -311,6 +299,10 @@ kfail=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30521
     "FAIL: gdb.base/printcmds.exp: print {unsigned char\[\]}{0xffffffff}"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30528
+    # Fixed in 15.  Backportable to 14.
+    "FAIL: gdb.dwarf2/per-bfd-sharing.exp: couldn't remove files in temporary cache dir"
 
 ) # kfail
 
@@ -373,11 +365,6 @@ kfail_sle12=(
     "FAIL: gdb.base/premature-dummy-frame-removal.exp: set debug frame on"
     "FAIL: gdb.base/longjmp-until-in-main.exp: until \\\$line, in main"
     
-    # Commit 2d77a94ff17 ("[gdb/testsuite] Require debug info for
-    # gdb.tui/tui-layout-asm-short-prog.exp")
-    "FAIL: gdb.tui/tui-layout-asm-short-prog.exp: check asm box contents"
-    "FAIL: gdb.tui/tui-layout-asm-short-prog.exp: check asm box contents again"
-
     # Test-cases that use -static but may turn out to be PIE when using
     # unix/-fPIE/-fpie.
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29244
@@ -399,6 +386,10 @@ kfail_sle12=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30180
     "FAIL: gdb.fortran/module.exp: print var_d"
     "FAIL: gdb.fortran/module.exp: print var_x value 31"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30531
+    "FAIL: gdb.threads/clone-thread_db.exp: continue to clone_fn \(the program exited\)"
+    "FAIL: gdb.threads/clone-thread_db.exp: continue to end \(the program is no longer running\)"
 
 ) # kfail_sle12
 
@@ -452,28 +443,24 @@ kfail_sle11=(
 
 kfail_factory=(
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28463
-    "FAIL: gdb.ada/set_pckd_arr_elt.exp: scenario=minimal: print va.t\(1\) := 15"
-    "FAIL: gdb.ada/set_pckd_arr_elt.exp: scenario=minimal: continue to update_small for va.t"
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=28108
-    "FAIL: gdb.base/langs.exp: up to foo in langs.exp"
-    "FAIL: gdb.base/langs.exp: up to cppsub_ in langs.exp"
-    "FAIL: gdb.base/langs.exp: up to fsub in langs.exp"
     # https://sourceware.org/pipermail/gdb-patches/2021-October/182449.html
     "FAIL: gdb.threads/current-lwp-dead.exp: continue to breakpoint: fn_return"
+
     # Similar error message to the one above, see if fixing that one fixes this.
     "FAIL: gdb.threads/clone-new-thread-event.exp: catch SIGUSR1"
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=27238
-    "FAIL: gdb.go/package.exp: gdb_breakpoint: set breakpoint at package2.Foo"
-    "FAIL: gdb.go/package.exp: going to first breakpoint \(the program exited\)"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28551
     "FAIL: gdb.go/package.exp: going to first breakpoint \\(GDB internal error\\)"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28468
     "FAIL: gdb.threads/signal-command-handle-nopass.exp: step-over (yes|no): signal SIGUSR1"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28477
     "FAIL: gdb.base/step-over-syscall.exp: clone: displaced=off: continue to marker \(clone\)"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26867
     "FAIL: gdb.threads/signal-sigtrap.exp: sigtrap thread 1: signal SIGTRAP reaches handler"
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28510
     "FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: br main"
     "FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: l"
@@ -481,20 +468,9 @@ kfail_factory=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28667
     "FAIL: gdb.reverse/watch-precsave.exp: watchpoint hit, fourth time \\(GDB internal error\\)"
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29160
-    "FAIL: gdb.ctf/.*.exp"
-    "FAIL: gdb.base/ctf-.*.exp"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29196
     "FAIL: gdb.base/gdb11531.exp: watchpoint variable triggers at next"
     "FAIL: gdb.base/gdb11531.exp: watchpoint variable triggers at continue"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29247
-    "FAIL: gdb.base/varargs.exp: print find_max_long_double_real\(4, ldc1, ldc2, ldc3, ldc4\)"
-    
-    # We get "value has been optimized out", which is possible for an optimized gdb, due
-    # to optimization of function c_print_type.
-    "FAIL: gdb.gdb/python-helper.exp: print \*type->main_type"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29253
     "FAIL: gdb.server/stop-reply-no-thread.exp: to_disable=threads: continue to main \(timeout\)"
@@ -502,15 +478,6 @@ kfail_factory=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29706
     "FAIL: gdb.base/eof-exit.exp: with non-dump terminal: with bracketed-paste-mode on: close GDB with eof \(missed the prompt\)"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29965
-    "FAIL: gdb.threads/process-exit-status-is-leader-exit-status.exp: iteration=.*: continue \(the program exited\)"
-
-    # To be investigated.
-    "FAIL: gdb.ada/mi_task_arg.exp: -stack-list-arguments 1 \(unexpected output\)"
-    "FAIL: gdb.ada/str_binop_equal.exp: print my_str = \"ABCD\""
-    "FAIL: gdb.ada/widewide.exp: print my_wws = \" helo\""
-    "FAIL: gdb.ada/widewide.exp: print my_ws = \"wide\""
 
     # Looks like a problem with modern debug info, where stepping out of a
     # function takes more one step.
@@ -524,88 +491,38 @@ kfail_factory=(
     # Sets breakpoints in gdb build with lto.  This is known to be slow, and
     # likely to cause timeouts.
     gdb.gdb/python-helper.exp
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=30540
-    FAIL: gdb.base/auxv.exp: info auxv on live process
-    FAIL: gdb.base/auxv.exp: info auxv on gcore-created dump
     
 ) # kfail_factory
 
 kfail_aarch64=(
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29408
-    "FAIL: gdb.base/large-frame.exp: optimize=-O0: backtrace"
-    "FAIL: gdb.base/large-frame.exp: optimize=-O1: backtrace"
-    "FAIL: gdb.base/large-frame.exp: optimize=-O2: backtrace"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29405
     "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=(on|off): pc after stepi matches insn addr after syscall"
     "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=(on|off): check_pc_after_cross_syscall: single step over fork final pc"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29418
-    "FAIL: gdb.ada/O2_float_param.exp: scenario=all: frame"
-    "FAIL: gdb.ada/O2_float_param.exp: scenario=minimal: frame"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29420
-    "FAIL: gdb.ada/convvar_comp.exp: print \\\$item.started"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29423
     "FAIL: gdb.base/watchpoint-unaligned.exp: continue \(timeout\)"
     "FAIL: gdb.base/watchpoint-unaligned.exp: size8twice write"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=28561
+    # "[gdb/testsuite] Error due to not reading \r\n at end of mi prompt"
+    # We match pretty aggressively here.
+    "FAIL: gdb.mi/.*.exp:"
+    "FAIL: gdb.python/.*-mi.exp:"
+    "FAIL: gdb.python/py-mi-.*.exp:"
+    "FAIL: gdb.ada/mi.*.exp:"
+    "FAIL: gdb.base/annota.*.exp:"
+    "FAIL: gdb.dwarf2/dw2-opt-structptr.exp: mi"
+
 ) # kfail_aarch64
 
 kfail_powerpc64le=(
 
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29420
-    "FAIL: gdb.ada/convvar_comp.exp: print \\\$item.started"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29814
-    "FAIL: gdb.base/msym-bp-shl.exp: debug=0: before run: info breakpoint"
-    "FAIL: gdb.base/msym-bp-shl.exp: debug=1: before run: info breakpoint"
-
-    # Commit a0eda3df5b7 ("PowerPC, fix support for printing the function
-    # return value for non-trivial values").
-    "FAIL: gdb.cp/non-trivial-retval.exp: finish from"
-    "FAIL: gdb.ada/array_return.exp: value printed by finish of Create_Small_Float_Vector"
-    "FAIL: gdb.base/gnu_vector.exp: call add_structvecs"
-
-    # Commit f68eca29d3b ("PowerPC, fix gdb.base/retval-large-struct.exp").
-    "FAIL: gdb.base/retval-large-struct.exp: finish from return_large_struct"
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29792
     "FAIL: gdb.opt/solib-intra-step.exp: second-hit"
     
-    # Carl Love mentioned he's working on these.
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29793#c2
-    "FAIL: gdb.reverse/finish-precsave.exp"
-    "FAIL: gdb.reverse/finish-reverse.exp"
-    
-    # Commit 29004660c94 ("PowerPC fix for gdb.server/sysroot.exp").
-    "FAIL: gdb.server/sysroot.exp: sysroot=local: continue to printf"
-    "FAIL: gdb.server/sysroot.exp: sysroot=remote: continue to printf"    
-
     # Known to run into timeouts.
     "FAIL: gdb.gdb/python-helper.exp"
-
-    # Fedora test.  Fails because it doesn't handle ppc64le.
-    "FAIL: gdb.arch/powerpc-bcl-prologue.exp: powerpc arch test"
-
-    # Commit 301fe55e9c4 ("PowerPC: bp-permanent.exp, kill-after-signal fix").
-    "FAIL: gdb.base/kill-after-signal.exp: stepi"
-    "FAIL: gdb.base/bp-permanent.exp: always_inserted=off, sw_watchpoint=0: stepi signal with handler: mainline pc points at permanent breakpoint"
-    "FAIL: gdb.base/bp-permanent.exp: always_inserted=off, sw_watchpoint=1: stepi signal with handler: mainline pc points at permanent breakpoint"
-    "FAIL: gdb.base/bp-permanent.exp: always_inserted=on, sw_watchpoint=0: stepi signal with handler: mainline pc points at permanent breakpoint"
-    "FAIL: gdb.base/bp-permanent.exp: always_inserted=on, sw_watchpoint=1: stepi signal with handler: mainline pc points at permanent breakpoint"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29813
-    "FAIL: gdb.base/vla-optimized-out.exp: o1: printed size of optimized out vla"
-
-    # Commit 4d88ae0c7b5 ("[gdb/testsuite] Fix gdb.base/maint.exp on powerpc64le").
-    "FAIL: gdb.base/maint.exp: maint print objfiles: symtabs"
-
-    # Commit e7d69e72bfd ("gdb: always add the default register groups").
-    "FAIL: gdb.xml/tdesc-regs.exp: maintenance print reggroups"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30548
     "FAIL: gdb.base/inline-frame-cycle-unwind.exp: cycle at level [0-9]*: backtrace when the unwind is broken at frame [0-9]*"
@@ -615,15 +532,6 @@ kfail_powerpc64le=(
     "FAIL: gdb.reverse/finish-reverse-bkpt.exp: no spurious proceed after breakpoint stop"
     "FAIL: gdb.reverse/next-reverse-bkpt-over-sr.exp: reverse-next over call trips user breakpoint at function entry"
     "FAIL: gdb.reverse/next-reverse-bkpt-over-sr.exp: stopped at the right callee call"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29816
-    "FAIL: gdb.ada/float-bits.exp: print 16llf#4000921fb54442d18469898cc51701b8#"
-    "FAIL: gdb.ada/float-bits.exp: print \\\$foo:=16llf#4000921fb54442d18469898cc51701b8#"
-    "FAIL: gdb.ada/float-bits.exp: print internal long double variable after assignment"
-
-    # Commit 8b272d7671f ("[gdb/testsuite] Fix gdb.guile/scm-symtab.exp for
-    # ppc64le").
-    "FAIL: gdb.guile/scm-symtab.exp: test find-pc-line with resume address"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29897
     "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=start: start \(GDB internal error\)"
@@ -636,27 +544,58 @@ kfail_powerpc64le=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30542
     "FAIL: gdb.base/watch-before-fork.exp: test: continue to catch fork"
 
-
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30543
     "FAIL: gdb.python/py-send-packet.exp: call python run_auxv_send_packet_test function"
+
+    # Cluster of fails related to hw watchpoint support.
+    "FAIL: gdb.ada/scoped_watch.exp:"
+    "FAIL: gdb.ada/task_watch.exp:"
+    "FAIL: gdb.ada/watch_minus_l.exp:"
+    "FAIL: gdb.base/watch-before-fork.exp:"
+    "FAIL: gdb.base/watch-bitfields.exp:"
+    "FAIL: gdb.base/watch-cond.exp:"
+    "FAIL: gdb.base/watch-cond-infcall.exp:"
+    "FAIL: gdb.base/watchpoint-during-step.exp:"
+    "FAIL: gdb.base/watchpoint.exp:"
+    "FAIL: gdb.base/watchpoint-hw-attach.exp:"
+    "FAIL: gdb.base/watchpoint-hw-hit-once.exp:"
+    "FAIL: gdb.base/watchpoints.exp:"
+    "FAIL: gdb.base/watchpoint-solib.exp:"
+    "FAIL: gdb.base/watchpoint-stops-at-right-insn.exp:"
+    "FAIL: gdb.base/watchpoint-unaligned.exp:"
+    "FAIL: gdb.base/watch-read.exp:"
+    "FAIL: gdb.base/watch_thread_num.exp:"
+    "FAIL: gdb.base/watch-vfork.exp:"
+    "FAIL: gdb.cp/watch-cp.exp:"
+    "FAIL: gdb.mi/mi-watch.exp:"
+    "FAIL: gdb.threads/step-over-trips-on-watchpoint.exp:"
+    "FAIL: gdb.threads/watchpoint-fork.exp:"
+    "FAIL: gdb.threads/watchthreads2.exp:"
+    "FAIL: gdb.threads/wp-replication.exp:"
+    "FAIL: gdb.base/display.exp:"
+    "FAIL: gdb.base/recurse.exp:"
+    "FAIL: gdb.base/gdb11531.exp:"
+    "FAIL: gdb.base/pr11022.exp:"
+    "FAIL: gdb.base/value-double-free.exp: continue \(the program exited\)"
+    "FAIL: gdb.base/value-double-free.exp: print empty\(\)"
+    "FAIL: gdb.cp/annota2.exp: watch triggered on a.x \(timeout\)"
+    "FAIL: gdb.cp/annota2.exp: annotate-quit"
+    "FAIL: gdb.cp/annota3.exp: watch triggered on a.x \(timeout\)"
+    "FAIL: gdb.cp/annota3.exp: annotate-quit \(pattern 1\)"
+    "FAIL: gdb.mi/pr11022.exp:"
+    "FAIL: gdb.python/py-breakpoint.exp: test_watchpoints: Test watchpoint write \(the program exited\)"
+    "FAIL: gdb.python/py-breakpoint.exp: test_bkpt_internal: Test watchpoint write \(the program exited\)"
+    "FAIL: gdb.python/py-breakpoint.exp: test_bkpt_eval_funcs: Test watchpoint write \(the program exited\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31004
+    "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=run: run"
 )
 
 kfail_powerpc64le_sle12=(
 
-    # Commit 85819864f7c ("[gdb/testsuite] Fix gdb.arch/altivec-regs.exp with
-    # gcc 4.8.5").
-    "FAIL: gdb.arch/altivec-regs.exp: down to vector_fun"
-    "FAIL: gdb.arch/altivec-regs.exp: finish returned correct value"
-    "FAIL: gdb.arch/altivec-regs.exp: print vector parameter a"
-    "FAIL: gdb.arch/altivec-regs.exp: print vector parameter b"
-
 )
 
 kfail_s390x_s390=(
-
-    # Commit 167f3beb655 ("[gdb/testsuite] Fix gdb.base/write_mem.exp for big
-    # endian")
-    "FAIL: gdb.base/write_mem.exp: x /xh main"
 
 )
 
@@ -767,10 +706,12 @@ case $n in
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28323
 	    "SLE-12.x86_64.*gdb.ada/mi_dyn_arr.exp"
 
+	    # Gdb runs out of virtual memory, we can expect an internal error.
+	    "UNRESOLVED: gdb.base/gcore-excessive-memory.exp: attach"
 	    "UNRESOLVED: gdb.base/gcore-excessive-memory.exp: verify we can get to main"
 
-	    # https://sourceware.org/bugzilla/show_bug.cgi?id=30547
-	    "UNRESOLVED: gdb.base/vfork-follow-parent.exp: resolution_method=schedule-multiple: continue to break_parent"
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=31001
+	    "UNRESOLVED: gdb.threads/async.exp: thread 1: current thread is 1"
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")
@@ -936,7 +877,7 @@ case $n in
 
 	(
 	    # Known clean config: Factory i586
-	    config=openSUSE_Factory.i586/gdb-testresults
+	    config=openSUSE_Factory_LegacyX86.i586/gdb-testresults
 	    sums=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
 		   "$config/gdb-i586-suse-linux-m32.sum")
 
@@ -1051,3 +992,5 @@ case $n in
 	exit 1
 	;;
 esac
+
+true
