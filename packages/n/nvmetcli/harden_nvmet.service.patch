@@ -1,9 +1,11 @@
-Index: nvmetcli-v0.7/nvmet.service
-===================================================================
---- nvmetcli-v0.7.orig/nvmet.service
-+++ nvmetcli-v0.7/nvmet.service
-@@ -4,6 +4,16 @@ Requires=sys-kernel-config.mount
- After=sys-kernel-config.mount network.target local-fs.target
+---
+ nvmet.service |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- a/nvmet.service
++++ b/nvmet.service
+@@ -5,6 +5,16 @@ After=sys-kernel-config.mount network-on
+ Wants=network-online.target
  
  [Service]
 +# added automatically, for details please see
@@ -15,7 +17,7 @@ Index: nvmetcli-v0.7/nvmet.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=oneshot
  RemainAfterExit=yes
  ExecStart=/usr/sbin/nvmetcli restore

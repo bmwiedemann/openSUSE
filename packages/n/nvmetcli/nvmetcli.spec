@@ -1,7 +1,7 @@
 #
 # spec file for package nvmetcli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,20 @@
 
 
 Name:           nvmetcli
-Version:        0.7
+Version:        0.8
 Release:        1%{?dist}
 Summary:        Command line interface for the kernel NVMe nvmet
 License:        Apache-2.0
 Group:          System/Management
 URL:            http://git.infradead.org/users/hch/nvmetcli.git
 Source:         nvmetcli-v%{version}.tar.gz
-Patch1:         %{name}-update-python-to-python3.patch
-Patch2:         0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
-Patch3:         harden_nvmet.service.patch
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+Patch1:         nvmetcli-update-python-to-python3.patch
+Patch2:         harden_nvmet.service.patch
+BuildRequires:  %{pythons}
+BuildRequires:  fdupes
+BuildRequires:  python3-pip
+BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-wheel
 Requires:       python3-configshell-fb
 Requires:       python3-kmod
 Requires(post): systemd
@@ -44,23 +46,22 @@ target interactively as well as saving / restoring the configuration
 to / from a json file.
 
 %prep
-%setup -q -n nvmetcli-v%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n nvmetcli-v%{version}
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 
 %install
-python3 setup.py install --skip-build --root=%{buildroot} --prefix=usr
+%python3_pyproject_install
 mkdir -p %{buildroot}%{_sysconfdir}/nvmet
 mkdir -p %{buildroot}%{_prefix}/sbin
-install -m 755 nvmetcli %{buildroot}%{_sbindir}/nvmetcli
+mv %{buildroot}%{_bindir}/nvmetcli %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_prefix}/usr/sbin
 ln -s /usr/sbin/service %{buildroot}/usr/sbin/rcnvmet
 mkdir -p %{buildroot}%{_unitdir}
 install -m 644 nvmet.service %{buildroot}%{_unitdir}/nvmet.service
+
+%fdupes %{buildroot}/%{python3_sitelib}/nvmet
 
 %post
 %service_add_post nvmet.service

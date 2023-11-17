@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 17 14:59:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not define pythons: direclt use the python3 - relevant macros.
+
+-------------------------------------------------------------------
+Thu Nov 09 08:31:02 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v0.8: (jsc#PED-6252 jsc#PED-5728)
+  * nvmetcli: set up the target only after the network is configured
+  * nvmetcli: fixup ana groupid setting for namespaces
+  * nvmetcli: add a tcp example json
+  * nvmetcli: Correct xrange usage for py3
+  * nvmetcli: Allow different devices for make test
+  * nvmetcli: Report save name correctly
+  * nvme.py: Make modprobe work for kmod lib too
+  * nvme.py: Sync the containing directory
+  * nvme.py: Explicit close is redundant
+  * nvmetcli: Improve IOError handling on restore
+  * nvmetcli: don't remove ANA Group 1 on clear
+- remove 0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
+- use autosetup instead listing all patches individual
+- build package according PEP 517, 518. Thus don't call setup.py directly
+- use fdupes to reduce package size
+
+-------------------------------------------------------------------
 Fri Nov 25 11:39:56 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
