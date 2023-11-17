@@ -1,6 +1,7 @@
 #
 # spec file for package rust-bindgen
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           rust-bindgen
-Version:        0.63.0
+Version:        0.69.1
 Release:        0
 Summary:        Automatically generates Rust FFI bindings to C and C++ libraries
 License:        BSD-3-Clause
@@ -25,7 +26,7 @@ Group:          Development/Languages/Rust
 #Git-Clone:     https://github.com/rust-lang/rust-bindgen.git
 URL:            https://rust-lang.github.io/rust-bindgen/
 Source:         https://github.com/rust-lang/rust-bindgen/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
