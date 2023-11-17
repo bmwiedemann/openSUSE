@@ -33972,11 +33972,62 @@ unsorted:
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
+  - ruby3.2-rubygem-actioncable-7.0 
+  - ruby3.2-rubygem-actionmailbox-7.0 
+  - ruby3.2-rubygem-actionmailer-7.0 
+  - ruby3.2-rubygem-actionpack-7.0 
+  - ruby3.2-rubygem-actiontext-7.0 
+  - ruby3.2-rubygem-actionview-7.0 
+  - ruby3.2-rubygem-activejob-7.0 
+  - ruby3.2-rubygem-activemodel-7.0 
+  - ruby3.2-rubygem-activerecord-7.0 
+  - ruby3.2-rubygem-activestorage-7.0 
+  - ruby3.2-rubygem-activesupport-7.0 
   - ruby3.2-rubygem-agama 
+  - ruby3.2-rubygem-coffee-rails 
   - ruby3.2-rubygem-commander 
+  - ruby3.2-rubygem-delayed_job 
+  - ruby3.2-rubygem-delayed_job_active_record 
+  - ruby3.2-rubygem-devise 
+  - ruby3.2-rubygem-devise-i18n 
+  - ruby3.2-rubygem-devise_ldap_authenticatable 
+  - ruby3.2-rubygem-exception_notification 
+  - ruby3.2-rubygem-font-awesome-rails 
+  - ruby3.2-rubygem-gettext_i18n_rails_js 
+  - ruby3.2-rubygem-globalid 
+  - ruby3.2-rubygem-grape 
+  - ruby3.2-rubygem-haml-rails 
   - ruby3.2-rubygem-http 
+  - ruby3.2-rubygem-importmap-rails 
+  - ruby3.2-rubygem-jbuilder 
+  - ruby3.2-rubygem-jquery-rails 
+  - ruby3.2-rubygem-js-routes 
+  - ruby3.2-rubygem-json-jwt 
+  - ruby3.2-rubygem-lightbox2 
   - ruby3.2-rubygem-lolcat 
+  - ruby3.2-rubygem-openid_connect 
+  - ruby3.2-rubygem-pundit 
+  - ruby3.2-rubygem-rack-oauth2 
+  - ruby3.2-rubygem-rails-7.0 
+  - ruby3.2-rubygem-rails-dom-testing 
+  - ruby3.2-rubygem-rails-i18n 
+  - ruby3.2-rubygem-railties-7.0 
+  - ruby3.2-rubygem-responders 
+  - ruby3.2-rubygem-rspec-rails 
+  - ruby3.2-rubygem-rspec-rails-4.0 
+  - ruby3.2-rubygem-sass-rails 
+  - ruby3.2-rubygem-sass-rails-5.1 
+  - ruby3.2-rubygem-sassc-rails 
+  - ruby3.2-rubygem-sprockets-rails 
+  - ruby3.2-rubygem-stimulus-rails 
+  - ruby3.2-rubygem-swd 
   - ruby3.2-rubygem-tmuxinator 
+  - ruby3.2-rubygem-turbo-rails 
+  - ruby3.2-rubygem-validate_email 
+  - ruby3.2-rubygem-validate_url 
+  - ruby3.2-rubygem-web-console 
+  - ruby3.2-rubygem-webfinger 
+  - ruby3.2-rubygem-webpacker 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
   - runawk 
@@ -45882,6 +45933,7 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
+  - yarn 
   - yaru-icon-theme 
   - yascreen-devel 
   - yasm 
