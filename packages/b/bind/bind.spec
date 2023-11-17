@@ -56,7 +56,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.18.19
+Version:        9.18.20
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -315,7 +315,9 @@ mkdir -p \
 	%{buildroot}/%{_sysconfdir}/init.d \
 	%{buildroot}/%{_sysconfdir}/named.d \
 	%{buildroot}/%{_sysconfdir}/openldap/schema \
+%if 0%{?suse_version} <= 1600
 	%{buildroot}/%{_sysconfdir}/slp.reg.d \
+%endif
 	%{buildroot}/%{_sysconfdir}/crypto-policies/back-ends \
 	%{buildroot}%{_prefix}/{bin,%{_lib},sbin,include} \
 	%{buildroot}/%{_datadir}/bind \
@@ -358,7 +360,9 @@ mkdir -p %{buildroot}/%{_libdir}/bind-plugins
 # remove useless .la files
 rm -f %{buildroot}/%{_libdir}/lib*.{la,a} %{buildroot}/%{_libdir}/bind/*.la
 mv vendor-files/config/named.conf %{buildroot}/%{_sysconfdir}
+%if 0%{?suse_version} <= 1600
 mv vendor-files/config/bind.reg %{buildroot}/%{_sysconfdir}/slp.reg.d
+%endif
 mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 
 %if %{with_systemd}
@@ -481,8 +485,10 @@ fi
 %files
 %license LICENSE
 %attr(0644,root,named) %config(noreplace) /%{_sysconfdir}/named.conf
+%if 0%{?suse_version} <= 1600
 %dir %{_sysconfdir}/slp.reg.d
 %attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
+%endif
 %if %{with_systemd}
 %{_unitdir}/named.service
 %dir %{_unitdir}/named.service.d

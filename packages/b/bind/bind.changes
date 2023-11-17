@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 15 16:16:29 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.20
+  Feature Changes:
+  * The IP addresses for B.ROOT-SERVERS.NET have been updated to
+    170.247.170.2 and 2801:1b8:10::b.
+
+  Bug Fixes:
+  * If the unsigned version of an inline-signed zone contained
+    DNSSEC records, it was incorrectly scheduled for resigning.
+    This has been fixed.
+  * Looking up stale data from the cache did not take local
+    authoritative data into account. This has been fixed. 
+  * An assertion failure was triggered when lock-file was used at
+    the same time as the named -X command-line option. This has
+    been fixed.
+  * The lock-file file was being removed when it should not have
+    been, making the statement ineffective when named was started
+    three or more times. This has been fixed.
+
+-------------------------------------------------------------------
+Fri Oct 13 08:18:24 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable SLP by default for Factory and ALP (bsc#1214884)
+
+-------------------------------------------------------------------
 Tue Sep 19 13:28:53 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.19
