@@ -17,7 +17,7 @@
 
 
 Name:           tenmon
-Version:        20230419
+Version:        20231116
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
@@ -28,11 +28,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libXISF-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(cfitsio)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libraw)
@@ -58,6 +58,8 @@ Features included, but not limited to:
 %autosetup -p1 -n %{name}
 
 %build
+export CFLAGS=$(echo "$CFLAGS -Wno-switch -Wno-catch-value")
+export  CXXFLAGS=$(echo "$CXXFLAGS -Wno-switch -Wno-catch-value")
 %cmake \
  -DRELEASE_BUILD=ON
 %cmake_build

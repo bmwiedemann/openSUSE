@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 17 10:06:10 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20231116:
+  * Add scaling for float images that are out of 0.0-1.0 range
+  * Optimize calculating stast for debayer
+  * Better stretch non full range images like CR2
+  * Made unlinked stretch white balancing
+  * Make STF slider wider
+  * Add tooltip with filenames
+  * Support for unlinked stretch
+  * Sum all channels histograms
+  * Improve histogram for 8 bit images
+  * Add histogram
+  * Fix loading RAW files
+  * Show stats for each channel
+  * Update translations and help
+
+-------------------------------------------------------------------
 Thu Apr 20 08:33:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20230419:

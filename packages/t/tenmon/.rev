@@ -7,4 +7,26 @@
     <comment>RAW/FITS/XISF image viewer with multithreaded image loading.</comment>
     <requestid>1125592</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9e246ca9834e24d14b471ad70b38fba</srcmd5>
+    <version>20231116</version>
+    <time>1700250641</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20231116:
+  * Add scaling for float images that are out of 0.0-1.0 range
+  * Optimize calculating stast for debayer
+  * Better stretch non full range images like CR2
+  * Made unlinked stretch white balancing
+  * Make STF slider wider
+  * Add tooltip with filenames
+  * Support for unlinked stretch
+  * Sum all channels histograms
+  * Improve histogram for 8 bit images
+  * Add histogram
+  * Fix loading RAW files
+  * Show stats for each channel
+  * Update translations and help
+</comment>
+    <requestid>1127270</requestid>
+  </revision>
 </revisionlist>
