@@ -22,11 +22,10 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE/obs-service-cargo_vendor
-Version:        0.8.4
+Version:        0.8.9
 Release:        0
 Source0:        https://github.com/openSUSE/obs-service-cargo_vendor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
 Requires:       (cargo or rustup)
@@ -49,8 +48,6 @@ This vendors and audits dependencies for packaging Rust software.
 %prep
 # -n will be removed in the future if name changed
 %autosetup -a1 -n %{name}_vendor-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

@@ -35,4 +35,25 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1121524</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49c89c898e84c442f2e9deae6ef35fb1</srcmd5>
+    <version>0.8.9</version>
+    <time>1700250606</time>
+    <user>anag+factory</user>
+    <comment>- Remove cargo_config. Part of vendored tarball now
+- Update to 0.8.9:
+  * dummy determine the path of the lockfile
+- Update to 0.8.8:
+  * clippy: change match to if let
+  * docs: add dependencies section in the README
+  * fix: just warn and don't return an error
+  * fix: hasdeps should inherit should_vendor value
+  * fix: also join the paths from `prjdir`
+  * Remove tags, fix multitoml vendor, automatically add .cargo/config
+  * fix multi cargo issue
+  * do not exit process when terminfo is not found.
+- Disable update. Cargo cannot find glob crate when trying to update.
+</comment>
+    <requestid>1127232</requestid>
+  </revision>
 </revisionlist>

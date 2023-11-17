@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 17 05:54:00 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove cargo_config. Part of vendored tarball now
+- Update to 0.8.9:
+  * dummy determine the path of the lockfile
+
+-------------------------------------------------------------------
+Fri Nov 17 05:16:27 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to 0.8.8:
+  * clippy: change match to if let
+  * docs: add dependencies section in the README
+  * fix: just warn and don't return an error
+  * fix: hasdeps should inherit should_vendor value
+  * fix: also join the paths from `prjdir`
+  * Remove tags, fix multitoml vendor, automatically add .cargo/config
+  * fix multi cargo issue
+  * do not exit process when terminfo is not found.
+- Disable update. Cargo cannot find glob crate when trying to update.
+
+-------------------------------------------------------------------
 Tue Oct 31 16:03:21 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.8.4:
