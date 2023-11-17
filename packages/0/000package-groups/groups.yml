@@ -364,6 +364,7 @@ dvd:
 
   # DVD still too large - blocking the Ruby-On-Rails stack (did not find why it's even added) - dimstar, 20231117
   - ruby3.2-rubygem-activesupport-7.0: [locked]
+  - ruby3.2-rubygem-grpc: [locked]
 
   # additional packages not picked
   - atftp
