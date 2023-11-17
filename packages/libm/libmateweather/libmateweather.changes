@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 17 13:08:29 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.2
+  * Translations update
+  * Tbilisi, Georgia (Country) IATA Airport code (TBS) changed to ICAO code (UGTB)
+  * fix some location names
+  * Dataserver url changed
+
+-------------------------------------------------------------------
 Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
