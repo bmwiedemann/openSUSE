@@ -1410,4 +1410,14 @@
 - Remove skip_python312 (see changelog for 8.15)</comment>
     <requestid>1116206</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>518b199d72ef9f9dbe57d09232404226</srcmd5>
+    <version>8.16.1</version>
+    <time>1700250551</time>
+    <user>anag+factory</user>
+    <comment>- Remove the dependency on python-curio, we don’t actually need
+  it, tests can run without it.
+</comment>
+    <requestid>1127169</requestid>
+  </revision>
 </revisionlist>

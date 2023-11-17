@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 16 18:58:40 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove the dependency on python-curio, we don’t actually need
+  it, tests can run without it.
+
+-------------------------------------------------------------------
 Sat Oct  7 12:57:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.16.1

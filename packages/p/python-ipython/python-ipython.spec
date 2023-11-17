@@ -87,7 +87,6 @@ Provides:       python-jupyter_ipython-doc-pdf = %{version}
 Obsoletes:      python-jupyter_ipython-doc-pdf < %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module curio}
 BuildRequires:  %{python_module ipython = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.21}
