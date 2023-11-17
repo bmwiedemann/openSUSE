@@ -1,0 +1,147 @@
+From c55a452eaf9390d5659d3205f762aa2cb84511e1 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 9 Nov 2023 09:05:01 +0100
+Subject: [PATCH 6/6] [gdb/tui] Fix resizing of terminal to 1 or 2 lines
+
+When starting TUI in a terminal with 3 lines:
+...
+$ echo $LINES
+3
+$ gdb -q -tui
+...
+and resizing the terminal to 2 lines we run into a segfault.
+
+The problem is that for the source window:
+- the minimum height is 3 (the default), but
+- the maximum height is only 2 because there are only 2 lines.
+
+This discrepancy eventually leads to a call to newwin in make_window with:
+...
+(gdb) p height
+$1 = 3
+(gdb) p width
+$2 = 56
+(gdb) p y
+$3 = -1
+(gdb) p x
+$4 = 0
+...
+which results in a nullptr.
+
+This violates the assumption here in tui_apply_current_layout:
+....
+  /* Get the new list of currently visible windows.  */
+  std::vector<tui_win_info *> new_tui_windows;
+  applied_layout->get_windows (&new_tui_windows);
+...
+that get_windows only returns visible windows, which leads to tui_windows
+holding a dangling pointer, which results in the segfault.
+
+Fix this by:
+- making sure get_windows only returns visible windows, and
+- detecting the situation and dropping windows from the layout if
+  there's no room for them.
+
+Tested on x86_64-linux.
+
+PR tui/31044
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31044
+---
+ gdb/testsuite/gdb.tui/resize.exp |  9 +++++++++
+ gdb/tui/tui-layout.c             | 22 ++++++++++++++++++++--
+ gdb/tui/tui-layout.h             |  6 +++++-
+ 3 files changed, 34 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.tui/resize.exp b/gdb/testsuite/gdb.tui/resize.exp
+index 60d5116886b..e15f8a2f507 100644
+--- a/gdb/testsuite/gdb.tui/resize.exp
++++ b/gdb/testsuite/gdb.tui/resize.exp
+@@ -39,3 +39,12 @@ Term::check_contents "source at startup" "\\|.*21 *return 0"
+ 
+ Term::resize 40 90
+ Term::check_box "source box after resize" 0 0 90 26
++
++# Check that resizing to less than 3 lines doesn't cause problems.
++foreach lines { 2 1 } {
++    with_test_prefix lines=$lines {
++	Term::resize $lines 90 0
++	Term::wait_for ""
++	Term::check_region_contents "has prompt" 0 0 90 $lines "$gdb_prompt"
++    }
++}
+diff --git a/gdb/tui/tui-layout.c b/gdb/tui/tui-layout.c
+index 27abee02087..362c1447910 100644
+--- a/gdb/tui/tui-layout.c
++++ b/gdb/tui/tui-layout.c
+@@ -442,6 +442,13 @@ tui_layout_window::apply (int x_, int y_, int width_, int height_,
+   width = width_;
+   height = height_;
+   gdb_assert (m_window != nullptr);
++  if (width == 0 || height == 0)
++    {
++      /* The window was dropped, so it's going to be deleted, reset the
++	 soon to be dangling pointer.  */
++      m_window = nullptr;
++      return;
++    }
+   m_window->resize (height, width, x, y);
+ }
+ 
+@@ -823,6 +830,7 @@ tui_layout_split::apply (int x_, int y_, int width_, int height_,
+   int available_size = m_vertical ? height : width;
+   int last_index = -1;
+   int total_weight = 0;
++  int prev = -1;
+   for (int i = 0; i < m_splits.size (); ++i)
+     {
+       bool cmd_win_already_exists = TUI_CMD_WIN != nullptr;
+@@ -854,6 +862,14 @@ tui_layout_split::apply (int x_, int y_, int width_, int height_,
+ 	  info[i].max_size = info[i].min_size;
+ 	}
+ 
++      if (info[i].min_size > info[i].max_size)
++	{
++	  /* There is not enough room for this window, drop it.  */
++	  info[i].min_size = 0;
++	  info[i].max_size = 0;
++	  continue;
++	}
++
+       if (info[i].min_size == info[i].max_size)
+ 	available_size -= info[i].min_size;
+       else
+@@ -864,10 +880,12 @@ tui_layout_split::apply (int x_, int y_, int width_, int height_,
+ 
+       /* Two adjacent boxed windows will share a border, making a bit
+ 	 more size available.  */
+-      if (i > 0
+-	  && m_splits[i - 1].layout->last_edge_has_border_p ()
++      if (prev != -1
++	  && m_splits[prev].layout->last_edge_has_border_p ()
+ 	  && m_splits[i].layout->first_edge_has_border_p ())
+ 	info[i].share_box = true;
++
++      prev = i;
+     }
+ 
+   /* If last_index is set then we have a window that is not of a fixed
+diff --git a/gdb/tui/tui-layout.h b/gdb/tui/tui-layout.h
+index 206f1117445..ec013a3f051 100644
+--- a/gdb/tui/tui-layout.h
++++ b/gdb/tui/tui-layout.h
+@@ -185,7 +185,11 @@ class tui_layout_window : public tui_layout_base
+   /* See tui_layout_base::get_windows.  */
+   void get_windows (std::vector<tui_win_info *> *windows) override
+   {
+-    windows->push_back (m_window);
++    if (m_window != nullptr && m_window->is_visible ())
++      {
++	/* Only get visible windows.  */
++	windows->push_back (m_window);
++      }
+   }
+ 
+ protected:
+-- 
+2.35.3
+

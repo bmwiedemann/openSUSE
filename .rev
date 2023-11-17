@@ -2472,4 +2472,126 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment></comment>
     <requestid>1104994</requestid>
   </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>4929420d5651d07e498f9cdc75ca7658</srcmd5>
+    <version>13.2</version>
+    <time>1700250482</time>
+    <user>anag+factory</user>
+    <comment>- Maintenance script qa.sh:
+  * Update PR31004 kfail.
+- Patches added (backport from gdb-patches):
+  * gdb-fix-segfault-in-for_each_block-part-1.patch
+- Maintenance script qa.sh:
+  * Update PR28561 kfail.
+  * Remove PR31015 kfail.
+  * Remove PR30547 kfail.
+- Patches added (backport from master):
+  * gdb-symtab-add-producer_is_gas.patch
+  * gdb-symtab-work-around-gas-pr28629.patch
+  * gdb-tdep-fix-nr-array-elements-in-ppc64_aggregate_ca.patch
+  * gdb-testsuite-fix-gdb.python-py-breakpoint.exp-with-.patch
+  * gdb-tui-fix-segfault-in-tui_find_disassembly_address.patch
+  * gdb-tui-fix-wmaybe-uninitialized-in-tui_find_disasse.patch
+  * gdb-testsuite-add-wait_for_msg-arg-to-term-resize-fi.patch
+- Patches added (backport from gdb-patches):
+  * gdb-fix-segfault-in-for_each_block-part-2.patch
+  * gdb-tui-allow-command-window-of-1-or-2-lines.patch
+  * gdb-tui-fix-resizing-of-terminal-to-1-or-2-lines.patch
+- Maintenance script qa.sh:
+  * Remove PR28467, PR29418, PR29420, PR29814 and PR29408 kfail.
+  * Remove gdb.tui/tui-layout-asm-short-prog.exp kfail.
+  * Remove commit f68eca29d3b, 29004660c94, 301fe55e9c4,
+    4d88ae0c7b5, e7d69e72bfd, 8b272d7671f, 85819864f7c, 167f3beb655
+    and a0eda3df5b7 kfails.
+  * Add PR31015 kfail.
+  * Remove PR29793 kfail.
+  * Remove gdb.arch/powerpc-bcl-prologue.exp kfail.
+  * Remove PR29813 and PR29816 kfail.
+- Maintenance script qa.sh:
+  * Update PR28561 kfail.
+  * Update PR29781 kfail.
+- Maintenance script qa-local.sh:
+  * Add &quot;Verify quilt setup&quot; step.
+- Patches added (backport from master):
+  * gdb-symtab-handle-self-reference-die.patch
+  * gdb-symtab-handle-self-reference-in-inherit_abstract.patch
+  * gdb-symtab-add-optimized-out-static-var-to-cooked-in.patch
+- Maintenance script qa.sh:
+  * Add comment to kfail for PR30528.
+  * Add UNRESOLVED kfail for gdb.base/gcore-excessive-memory.exp.
+  * Add UNRESOLVED kfail for PR31001.
+  * Remove PR27238 kfail.
+  * Add powerpc64le hw watchpoint kfails.
+  * Add PR31004 kfail.
+  * Add PR30531 kfail.
+- Patches added (backport from master):
+  * xcoffread.c-fix-werror-dangling-pointer-issue-with-m.patch
+  * avoid-manual-memory-management-in-go-lang.c.patch
+  * gdb-go-handle-v3-go_0-mangled-prefix.patch
+- Patches added (backport from master):
+  * gdb-symtab-don-t-deduplicate-variables-in-gdb-index.patch 
+- Patches dropped (requires unsupported command):
+  * gdb-testsuite-add-wait-for-index-cache-in-gdb.dwarf2.patch
+- Maintenance script qa.sh:
+  * Added PR30528 kfail.
+- Patches added (manual import from fedora rawhide @ 52a4dab):
+  * gdb-rhbz1773651-gdb-index-internal-error.patch
+- Patches added (backport from master):
+  * gdb-support-rseq-auxvs.patch
+  * gdb-symtab-fix-line-number-of-static-const-class-mem.patch
+  * gdb-symtab-fix-too-many-symbols-in-gdbpy_lookup_stat.patch
+  * gdb-symtab-handle-pu-in-iterate_over_some_symtabs.patch
+  * gdb-symtab-work-around-pr-gas-29517.patch
+  * gdb-testsuite-add-kfail-for-pr-ada-30908.patch
+  * gdb-testsuite-add-xfail-for-gdb-29965-in-gdb.threads.patch
+  * gdb-testsuite-fix-gdb.ada-mi_task_arg.exp-with-newer.patch
+  * gdb-testsuite-fix-gdb.arch-i386-signal.exp-on-x86_64.patch
+  * gdb-testsuite-fix-gdb.cp-m-static.exp-regression-on-.patch
+  * gdb-testsuite-fix-gdb.dwarf2-nullptr_t.exp-with-cc-w.patch
+  * gdb-testsuite-fix-regexps-in-gdb.base-step-over-sysc.patch
+  * gdb-symtab-find-main-language-without-symtab-expansi.patch
+  * gdb-testsuite-add-wait-for-index-cache-in-gdb.dwarf2.patch
+- Patches moved (from &quot;Backport from gdb-patches&quot; to
+  &quot;Backports from master, available in next release&quot;):
+  * gdb-cli-handle-pending-c-after-rl_callback_read_char.patch
+  * gdb-testsuite-add-have_host_locale.patch
+- Maintenance script qa.sh:
+  * Remove PR28463, PR28108, PR29247 and PR29160 kfails.
+  * Remove PR30540, PR30908, PR29965 kfails.
+  * Remove gdb.ada/mi_task_arg.exp kfail.
+- Limit &quot;Suggests: %{python}-Pygments&quot; to SLE-15 and later.
+- Mention import-fedora.sh to fix warning.
+- Maintenance script qa.sh:
+  * Update kfail for PR28561.
+- Maintenance script import-fedora.sh:
+  * New script.  Move skipped patches list from gdb.spec to script.
+- Update to fedora 38 @ 82cc8e0.
+- Patch renamed:
+  * pass-const-frame_info_ptr-reference-for-skip_-langua.patch -&gt;
+    gdb-rhbz2192105-ftbs-dangling-pointer
+- Patches added:
+  * gdb-bz2237392-dwarf-obstack-allocation.patch
+  * gdb-bz2237515-debuginfod-double-free.patch
+  * gdb-rhbz2160211-excessive-core-file-warnings.patch
+  * gdb-rhbz2196395-debuginfod-legacy-openssl-crash.patch
+  * gdb-rhbz2233961-CVE-2022-4806.patch
+  * gdb-rhbz2233965-memory-leak.patch
+- Maintenance script qa-local.sh:
+  * Add openSUSE_Leap_15.5 and openSUSE_Factory_LegacyX86.
+  * Add &quot;List configs&quot; item.
+  * Skip i586 for SLE-11.
+- Maintenance script qa.sh:
+  * Make sure exit status is 0
+- Add &quot;Suggests: %{python}-Pygments&quot;.
+- Maintenance script qa.sh:
+  * Note investigation of some ada test-cases.
+  * Update PR30547 kfail.
+  * Add PR28561 kfail.
+  * Update PKRU-related kfail.
+  * Use openSUSE_Factory_LegacyX86.i586 instead of
+    openSUSE_Factory.i586.
+  * Remove PR27813 kfail and corresponding todo.
+</comment>
+    <requestid>1126771</requestid>
+  </revision>
 </revisionlist>
