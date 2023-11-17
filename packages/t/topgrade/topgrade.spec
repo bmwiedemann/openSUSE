@@ -17,7 +17,7 @@
 
 
 Name:           topgrade
-Version:        12.0.2
+Version:        13.0.0
 Release:        0
 Summary:        Upgrade all the things
 License:        GPL-3.0-only

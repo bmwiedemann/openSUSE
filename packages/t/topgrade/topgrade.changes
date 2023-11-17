@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Nov 16 08:03:45 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 13.0.0:
+  * bump deps 
+  * docs: new demo video (#584)
+  * fix: make logger work while loading config file (#581)
+  * switch git push and pull order (#578)
+  * fix: shellexpand git.pull_only_repos & git.push_only_repos (#576)
+  * Add support for pushing custom git repositories (#574)
+  * fix: disable dotnet greeting msg with DOTNET_NOLOGO=true (#573)
+  * fix: Support yes option for opam upgrade (#570)
+  * Fix builds and runs on DragonFly BSD (#569)
+  * fix: --yes option for protonup (#560)
+  * chore: add the check for the --yes opt in PR template (#561)
+  * feat(wsl): pass verbose to topgrade-in-wsl (#556)
+  * feat: add option for nix-env arguments (#555)
+  * fix: remote oh-my-zsh env var export issue (#528)
+  * Make error messages nicer (#551)
+  * fix: fix "Nix" step to use `nix upgrade-nix` in more situations (#550)
+  * feat: allow setting `misc.log_filters` in `config.toml` (#552)
+  * fix: skip needrestart when using nala on debian-based distro (#548)
+  * refactor: deprioritize please-sudo (#541)
+  * feat: support LURE (#537)
+  * feat: support Vscode packages updates (#536)
+  * chore: add check for dry-run opt in PR template (#538)
+  * feat: support miktex packages update (#535)
+  * Prioritize sudo steps to prevent sudo timeout (#532)
+  * chore: add ssh-related questions in issue template (#523)
+
+-------------------------------------------------------------------
 Sat Jul 29 06:47:10 UTC 2023 -  stigpro@outlook.fr 
 
 - Update to version 12.0.2:
