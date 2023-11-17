@@ -18,7 +18,7 @@
 
 %define cpan_name Mail-AuthenticationResults
 Name:           perl-Mail-AuthenticationResults
-Version:        2.20230112
+Version:        2.20231031
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Object Oriented Authentication-Results Headers

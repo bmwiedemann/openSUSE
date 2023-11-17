@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  1 03:07:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20231031
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+
+  2.20231031 2023-10-31 23:57:33+00:00 UTC
+    - Option to set more strict quoting of string
+
+-------------------------------------------------------------------
 Fri Jan 13 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.20230112
