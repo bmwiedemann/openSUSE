@@ -56,7 +56,6 @@ BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  file-devel
 BuildRequires:  git-core
 BuildRequires:  glib2-devel >= 2.22.0
 BuildRequires:  libbz2-devel
