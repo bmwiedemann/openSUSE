@@ -93,6 +93,7 @@
     <package name="btrfsprogs-udev-rules" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="bubblewrap" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="busybox-diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -155,8 +156,8 @@
     <package name="desktop-file-utils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="desktop-translations" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="device-mapper" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="diffutils-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="diffutils-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="dirmngr" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
