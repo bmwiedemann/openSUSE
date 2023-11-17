@@ -14,10 +14,10 @@ area for this purpose.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h       |   22 ++++++++++++----------
- tools/libs/guest/xg_sr_save.c         |   26 ++++----------------------
- tools/libs/guest/xg_sr_save_x86_hvm.c |    5 +++--
- tools/libs/guest/xg_sr_save_x86_pv.c  |   31 +++++++++++++++++++++----------
+ tools/libs/guest/xg_sr_common.h       | 22 ++++++++++---------
+ tools/libs/guest/xg_sr_save.c         | 26 ++++------------------
+ tools/libs/guest/xg_sr_save_x86_hvm.c |  5 +++--
+ tools/libs/guest/xg_sr_save_x86_pv.c  | 31 ++++++++++++++++++---------
  4 files changed, 40 insertions(+), 44 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h

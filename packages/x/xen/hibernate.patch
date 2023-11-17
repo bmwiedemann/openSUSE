@@ -1,8 +1,8 @@
-Index: xen-4.8.0-testing/tools/libacpi/ssdt_s3.asl
+Index: xen-4.18.0-testing/tools/libacpi/ssdt_s3.asl
 ===================================================================
---- xen-4.8.0-testing.orig/tools/libacpi/ssdt_s3.asl
-+++ xen-4.8.0-testing/tools/libacpi/ssdt_s3.asl
-@@ -16,13 +16,9 @@
+--- xen-4.18.0-testing.orig/tools/libacpi/ssdt_s3.asl
++++ xen-4.18.0-testing/tools/libacpi/ssdt_s3.asl
+@@ -7,13 +7,9 @@
  
  DefinitionBlock ("SSDT_S3.aml", "SSDT", 2, "Xen", "HVM", 0)
  {
@@ -20,11 +20,11 @@ Index: xen-4.8.0-testing/tools/libacpi/ssdt_s3.asl
 +     */
  }
  
-Index: xen-4.8.0-testing/tools/libacpi/ssdt_s4.asl
+Index: xen-4.18.0-testing/tools/libacpi/ssdt_s4.asl
 ===================================================================
---- xen-4.8.0-testing.orig/tools/libacpi/ssdt_s4.asl
-+++ xen-4.8.0-testing/tools/libacpi/ssdt_s4.asl
-@@ -16,13 +16,9 @@
+--- xen-4.18.0-testing.orig/tools/libacpi/ssdt_s4.asl
++++ xen-4.18.0-testing/tools/libacpi/ssdt_s4.asl
+@@ -7,13 +7,9 @@
  
  DefinitionBlock ("SSDT_S4.aml", "SSDT", 2, "Xen", "HVM", 0)
  {

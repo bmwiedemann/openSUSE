@@ -1,69 +1,62 @@
-Index: xen-4.14.0-testing/tools/python/xen/migration/legacy.py
+Index: xen-4.18.0-testing/tools/python/xen/migration/legacy.py
 ===================================================================
---- xen-4.14.0-testing.orig/tools/python/xen/migration/legacy.py
-+++ xen-4.14.0-testing/tools/python/xen/migration/legacy.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
+--- xen-4.18.0-testing.orig/tools/python/xen/migration/legacy.py
++++ xen-4.18.0-testing/tools/python/xen/migration/legacy.py
+@@ -1,3 +1,4 @@
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  """
-Index: xen-4.14.0-testing/tools/python/xen/migration/libxc.py
+Index: xen-4.18.0-testing/tools/python/xen/migration/libxc.py
 ===================================================================
---- xen-4.14.0-testing.orig/tools/python/xen/migration/libxc.py
-+++ xen-4.14.0-testing/tools/python/xen/migration/libxc.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
+--- xen-4.18.0-testing.orig/tools/python/xen/migration/libxc.py
++++ xen-4.18.0-testing/tools/python/xen/migration/libxc.py
+@@ -1,3 +1,4 @@
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  """
-Index: xen-4.14.0-testing/tools/python/xen/migration/libxl.py
+Index: xen-4.18.0-testing/tools/python/xen/migration/libxl.py
 ===================================================================
---- xen-4.14.0-testing.orig/tools/python/xen/migration/libxl.py
-+++ xen-4.14.0-testing/tools/python/xen/migration/libxl.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
+--- xen-4.18.0-testing.orig/tools/python/xen/migration/libxl.py
++++ xen-4.18.0-testing/tools/python/xen/migration/libxl.py
+@@ -1,3 +1,4 @@
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  """
-Index: xen-4.14.0-testing/tools/python/xen/migration/public.py
+Index: xen-4.18.0-testing/tools/python/xen/migration/public.py
 ===================================================================
---- xen-4.14.0-testing.orig/tools/python/xen/migration/public.py
-+++ xen-4.14.0-testing/tools/python/xen/migration/public.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
+--- xen-4.18.0-testing.orig/tools/python/xen/migration/public.py
++++ xen-4.18.0-testing/tools/python/xen/migration/public.py
+@@ -1,3 +1,4 @@
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  """
-Index: xen-4.14.0-testing/tools/python/xen/migration/tests.py
+Index: xen-4.18.0-testing/tools/python/xen/migration/tests.py
 ===================================================================
---- xen-4.14.0-testing.orig/tools/python/xen/migration/tests.py
-+++ xen-4.14.0-testing/tools/python/xen/migration/tests.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
+--- xen-4.18.0-testing.orig/tools/python/xen/migration/tests.py
++++ xen-4.18.0-testing/tools/python/xen/migration/tests.py
+@@ -1,3 +1,4 @@
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  """
-Index: xen-4.14.0-testing/tools/python/xen/migration/verify.py
+Index: xen-4.18.0-testing/tools/python/xen/migration/verify.py
 ===================================================================
---- xen-4.14.0-testing.orig/tools/python/xen/migration/verify.py
-+++ xen-4.14.0-testing/tools/python/xen/migration/verify.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
+--- xen-4.18.0-testing.orig/tools/python/xen/migration/verify.py
++++ xen-4.18.0-testing/tools/python/xen/migration/verify.py
+@@ -1,3 +1,4 @@
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  """
-Index: xen-4.14.0-testing/tools/python/xen/migration/xl.py
+Index: xen-4.18.0-testing/tools/python/xen/migration/xl.py
 ===================================================================
---- xen-4.14.0-testing.orig/tools/python/xen/migration/xl.py
-+++ xen-4.14.0-testing/tools/python/xen/migration/xl.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
+--- xen-4.18.0-testing.orig/tools/python/xen/migration/xl.py
++++ xen-4.18.0-testing/tools/python/xen/migration/xl.py
+@@ -1,3 +1,4 @@
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  

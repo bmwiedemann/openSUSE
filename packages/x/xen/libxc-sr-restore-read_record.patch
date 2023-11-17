@@ -15,10 +15,10 @@ no change in behavior is intended.
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 Reviewed-by: Juergen Gross <jgross@suse.com>
 ---
- tools/libs/guest/xg_sr_common.c  |   33 +++++++++++++++-----------
- tools/libs/guest/xg_sr_common.h  |    4 ++-
- tools/libs/guest/xg_sr_restore.c |   49 +++++++++++++++++++++++++++------------
- tools/libs/guest/xg_sr_save.c    |    7 ++++-
+ tools/libs/guest/xg_sr_common.c  | 33 ++++++++++++---------
+ tools/libs/guest/xg_sr_common.h  |  4 ++-
+ tools/libs/guest/xg_sr_restore.c | 49 ++++++++++++++++++++++----------
+ tools/libs/guest/xg_sr_save.c    |  7 ++++-
  4 files changed, 63 insertions(+), 30 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.c
@@ -112,7 +112,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
   * This would ideally be private in restore.c, but is needed by
 --- a/tools/libs/guest/xg_sr_restore.c
 +++ b/tools/libs/guest/xg_sr_restore.c
-@@ -466,7 +466,7 @@ static int send_checkpoint_dirty_pfn_lis
+@@ -453,7 +453,7 @@ static int send_checkpoint_dirty_pfn_lis
      return rc;
  }
  
@@ -121,7 +121,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
  static int handle_checkpoint(struct xc_sr_context *ctx)
  {
      xc_interface *xch = ctx->xch;
-@@ -505,7 +505,7 @@ static int handle_checkpoint(struct xc_s
+@@ -492,7 +492,7 @@ static int handle_checkpoint(struct xc_s
  
          for ( i = 0; i < ctx->restore.buffered_rec_num; i++ )
          {
@@ -130,7 +130,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
              if ( rc )
                  goto err;
          }
-@@ -566,10 +566,11 @@ static int handle_checkpoint(struct xc_s
+@@ -553,10 +553,11 @@ static int handle_checkpoint(struct xc_s
      return rc;
  }
  
@@ -143,7 +143,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
      struct xc_sr_record *p;
  
      if ( ctx->restore.buffered_rec_num >= ctx->restore.allocated_rec_num )
-@@ -587,8 +588,13 @@ static int buffer_record(struct xc_sr_co
+@@ -574,8 +575,13 @@ static int buffer_record(struct xc_sr_co
          ctx->restore.allocated_rec_num = new_alloc_num;
      }
  
@@ -158,7 +158,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
  
      return 0;
  }
-@@ -619,7 +625,7 @@ int handle_static_data_end(struct xc_sr_
+@@ -606,7 +612,7 @@ int handle_static_data_end(struct xc_sr_
      return rc;
  }
  
@@ -167,7 +167,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
  {
      xc_interface *xch = ctx->xch;
      int rc = 0;
-@@ -657,6 +663,19 @@ static int process_record(struct xc_sr_c
+@@ -644,6 +650,19 @@ static int process_record(struct xc_sr_c
      return rc;
  }
  
@@ -187,7 +187,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
  static int setup(struct xc_sr_context *ctx)
  {
      xc_interface *xch = ctx->xch;
-@@ -753,7 +772,7 @@ static void cleanup(struct xc_sr_context
+@@ -740,7 +759,7 @@ static void cleanup(struct xc_sr_context
  static int restore(struct xc_sr_context *ctx)
  {
      xc_interface *xch = ctx->xch;
@@ -196,7 +196,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
      int rc, saved_rc = 0, saved_errno = 0;
  
      IPRINTF("Restoring domain");
-@@ -764,7 +783,7 @@ static int restore(struct xc_sr_context
+@@ -751,7 +770,7 @@ static int restore(struct xc_sr_context
  
      do
      {
@@ -205,7 +205,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
          if ( rc )
          {
              if ( ctx->restore.buffer_all_records )
-@@ -774,25 +793,25 @@ static int restore(struct xc_sr_context
+@@ -761,25 +780,25 @@ static int restore(struct xc_sr_context
          }
  
          if ( ctx->restore.buffer_all_records &&
@@ -238,7 +238,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
                      rc = -1;
                      goto err;
                  }
-@@ -803,7 +822,7 @@ static int restore(struct xc_sr_context
+@@ -790,7 +809,7 @@ static int restore(struct xc_sr_context
                  goto err;
          }
  
@@ -249,7 +249,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
      if ( ctx->stream_type == XC_STREAM_COLO )
 --- a/tools/libs/guest/xg_sr_save.c
 +++ b/tools/libs/guest/xg_sr_save.c
-@@ -591,6 +591,7 @@ static int send_memory_live(struct xc_sr
+@@ -590,6 +590,7 @@ static int send_memory_live(struct xc_sr
  static int colo_merge_secondary_dirty_bitmap(struct xc_sr_context *ctx)
  {
      xc_interface *xch = ctx->xch;
@@ -257,7 +257,7 @@ Reviewed-by: Juergen Gross <jgross@suse.com>
      struct xc_sr_record rec;
      uint64_t *pfns = NULL;
      uint64_t pfn;
-@@ -599,7 +600,11 @@ static int colo_merge_secondary_dirty_bi
+@@ -598,7 +599,11 @@ static int colo_merge_secondary_dirty_bi
      DECLARE_HYPERCALL_BUFFER_SHADOW(unsigned long, dirty_bitmap,
                                      &ctx->save.dirty_bitmap_hbuf);
  

@@ -10,8 +10,8 @@ performance penalty.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |    3 
- tools/libs/guest/xg_sr_restore.c |  155 +++++++++++++++++++++++++++++++++++++--
+ tools/libs/guest/xg_sr_common.h  |   3 +
+ tools/libs/guest/xg_sr_restore.c | 155 ++++++++++++++++++++++++++++++-
  2 files changed, 153 insertions(+), 5 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -165,7 +165,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
   * Handle PAGE_DATA record from an existing buffer
   * Given a list of pfns, their types, and a block of page data from the
   * stream, populate and record their types, map the relevant subset and copy
-@@ -726,6 +849,15 @@ static int process_buffered_record(struc
+@@ -713,6 +836,15 @@ static int process_buffered_record(struc
      case REC_TYPE_VERIFY:
          DPRINTF("Verify mode enabled");
          ctx->restore.verify = true;
@@ -181,7 +181,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          break;
  
      case REC_TYPE_CHECKPOINT:
-@@ -752,11 +884,19 @@ static int process_incoming_record_heade
+@@ -739,11 +871,19 @@ static int process_incoming_record_heade
      struct xc_sr_record rec;
      int rc;
  
@@ -205,7 +205,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  }
  
  
-@@ -801,9 +941,12 @@ static int setup(struct xc_sr_context *c
+@@ -788,9 +928,12 @@ static int setup(struct xc_sr_context *c
      ctx->restore.pp_pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_pfns));
      ctx->restore.pp_mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_mfns));
      ctx->restore.guest_data = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.guest_data));
@@ -219,7 +219,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
          ERROR("Unable to allocate memory");
          rc = -1;
-@@ -840,6 +983,8 @@ static void cleanup(struct xc_sr_context
+@@ -827,6 +970,8 @@ static void cleanup(struct xc_sr_context
  
      free(ctx->restore.buffered_records);
      free(ctx->restore.populated_pfns);

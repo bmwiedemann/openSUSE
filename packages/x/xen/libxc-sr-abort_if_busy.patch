@@ -23,20 +23,20 @@ of the new .abort_if_busy property.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- docs/man/xl.1.pod.in                  |    8 ++++++++
- tools/include/libxl.h                 |    1 +
- tools/libs/light/libxl_dom_save.c     |    7 ++++++-
- tools/libs/light/libxl_domain.c       |    1 +
- tools/libs/light/libxl_internal.h     |    2 ++
- tools/libs/light/libxl_stream_write.c |    9 ++++++++-
- tools/libs/light/libxl_types.idl      |    1 +
- tools/xl/xl_cmdtable.c                |    6 +++++-
- tools/xl/xl_migrate.c                 |   30 +++++++++++++++++++++++-------
+ docs/man/xl.1.pod.in                  |  8 +++++++
+ tools/include/libxl.h                 |  1 +
+ tools/libs/light/libxl_dom_save.c     |  7 ++++++-
+ tools/libs/light/libxl_domain.c       |  1 +
+ tools/libs/light/libxl_internal.h     |  2 ++
+ tools/libs/light/libxl_stream_write.c |  9 +++++++-
+ tools/libs/light/libxl_types.idl      |  1 +
+ tools/xl/xl_cmdtable.c                |  6 +++++-
+ tools/xl/xl_migrate.c                 | 30 ++++++++++++++++++++-------
  9 files changed, 55 insertions(+), 10 deletions(-)
 
 --- a/docs/man/xl.1.pod.in
 +++ b/docs/man/xl.1.pod.in
-@@ -507,6 +507,14 @@ low, the guest is suspended and the domU
+@@ -513,6 +513,14 @@ low, the guest is suspended and the domU
  This allows the host admin to control for how long the domU will likely
  be suspended during transit.
  
@@ -53,7 +53,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1774,6 +1774,7 @@ typedef struct {
+@@ -1824,6 +1824,7 @@ typedef struct {
  } libxl_domain_suspend_suse_properties;
  #define LIBXL_SUSPEND_DEBUG 1
  #define LIBXL_SUSPEND_LIVE 2
@@ -83,7 +83,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 --- a/tools/libs/light/libxl_domain.c
 +++ b/tools/libs/light/libxl_domain.c
-@@ -530,6 +530,7 @@ static int do_libxl_domain_suspend(libxl
+@@ -526,6 +526,7 @@ static int do_libxl_domain_suspend(libxl
      dss->type = type;
      dss->max_iters = props->max_iters ?: LIBXL_XGS_POLICY_MAX_ITERATIONS;
      dss->min_remaining = props->min_remaining ?: LIBXL_XGS_POLICY_TARGET_DIRTY_COUNT;
@@ -93,7 +93,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -3654,9 +3654,11 @@ struct libxl__domain_save_state {
+@@ -3655,9 +3655,11 @@ struct libxl__domain_save_state {
      libxl_domain_type type;
      int live;
      int debug;
@@ -139,7 +139,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  libxl_domain_type = Enumeration("domain_type", [
 --- a/tools/xl/xl_cmdtable.c
 +++ b/tools/xl/xl_cmdtable.c
-@@ -176,7 +176,11 @@ const struct cmd_spec cmd_table[] = {
+@@ -177,7 +177,11 @@ const struct cmd_spec cmd_table[] = {
        "-p                Do not unpause domain after migrating it.\n"
        "-D                Preserve the domain id\n"
        "--max_iters N     Number of copy iterations before final stop+move\n"

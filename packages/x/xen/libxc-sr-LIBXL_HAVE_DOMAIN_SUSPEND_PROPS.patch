@@ -12,16 +12,15 @@ No change in behavior intented.
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 Acked-by: Christian Lindig <christian.lindig@citrix.com>
 ---
- tools/include/libxl.h                |   23 +++++++++++++++++++----
- tools/libs/light/libxl_domain.c      |   22 +++++++++++++++++++---
- tools/ocaml/libs/xl/xenlight_stubs.c |    3 ++-
- tools/xl/xl_migrate.c                |    9 ++++++---
- tools/xl/xl_saverestore.c            |    3 ++-
- 5 files changed, 48 insertions(+), 12 deletions(-)
+ tools/include/libxl.h           | 26 +++++++++++++++++++++++---
+ tools/libs/light/libxl_domain.c |  7 ++++---
+ tools/xl/xl_migrate.c           |  9 ++++++---
+ tools/xl/xl_saverestore.c       |  3 ++-
+ 4 files changed, 35 insertions(+), 10 deletions(-)
 
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1761,13 +1761,28 @@ static inline int libxl_retrieve_domain_
+@@ -1811,13 +1811,28 @@ static inline int libxl_retrieve_domain_
      libxl_retrieve_domain_configuration_0x041200
  #endif
  
@@ -56,7 +55,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
   * Suspended domain can be resumed with libxl_domain_resume()
 --- a/tools/libs/light/libxl_domain.c
 +++ b/tools/libs/light/libxl_domain.c
-@@ -506,7 +506,8 @@ static void domain_suspend_cb(libxl__egc
+@@ -502,7 +502,8 @@ static void domain_suspend_cb(libxl__egc
  
  }
  
@@ -66,7 +65,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
                           const libxl_asyncop_how *ao_how)
  {
      AO_CREATE(ctx, domid, ao_how);
-@@ -527,8 +528,8 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+@@ -523,8 +524,8 @@ int libxl_domain_suspend(libxl_ctx *ctx,
      dss->domid = domid;
      dss->fd = fd;
      dss->type = type;
@@ -77,7 +76,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
  
      rc = libxl__fd_flags_modify_save(gc, dss->fd,
-@@ -543,6 +544,21 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+@@ -539,6 +540,21 @@ int libxl_domain_suspend(libxl_ctx *ctx,
      return AO_CREATE_FAIL(rc);
  }
  
@@ -99,21 +98,6 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
  static void domain_suspend_empty_cb(libxl__egc *egc,
                                libxl__domain_suspend_state *dss, int rc)
  {
---- a/tools/ocaml/libs/xl/xenlight_stubs.c
-+++ b/tools/ocaml/libs/xl/xenlight_stubs.c
-@@ -618,10 +618,11 @@ value stub_libxl_domain_suspend(value ct
- 	int ret;
- 	uint32_t c_domid = Int_val(domid);
- 	int c_fd = Int_val(fd);
-+	libxl_domain_suspend_props props = {};
- 	libxl_asyncop_how *ao_how = aohow_val(async);
- 
- 	caml_enter_blocking_section();
--	ret = libxl_domain_suspend(CTX, c_domid, c_fd, 0, ao_how);
-+	ret = libxl_domain_suspend(CTX, c_domid, c_fd, &props, ao_how);
- 	caml_leave_blocking_section();
- 
- 	free(ao_how);
 --- a/tools/xl/xl_migrate.c
 +++ b/tools/xl/xl_migrate.c
 @@ -186,7 +186,10 @@ static void migrate_domain(uint32_t domi

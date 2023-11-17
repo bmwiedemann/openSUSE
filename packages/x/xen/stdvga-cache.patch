@@ -1,8 +1,8 @@
-Index: xen-4.9.0-testing/xen/arch/x86/hvm/stdvga.c
+Index: xen-4.18.0-testing/xen/arch/x86/hvm/stdvga.c
 ===================================================================
---- xen-4.9.0-testing.orig/xen/arch/x86/hvm/stdvga.c
-+++ xen-4.9.0-testing/xen/arch/x86/hvm/stdvga.c
-@@ -166,7 +166,10 @@ static int stdvga_outb(uint64_t addr, ui
+--- xen-4.18.0-testing.orig/xen/arch/x86/hvm/stdvga.c
++++ xen-4.18.0-testing/xen/arch/x86/hvm/stdvga.c
+@@ -165,7 +165,10 @@ static int stdvga_outb(uint64_t addr, ui
  
      /* When in standard vga mode, emulate here all writes to the vram buffer
       * so we can immediately satisfy reads without waiting for qemu. */

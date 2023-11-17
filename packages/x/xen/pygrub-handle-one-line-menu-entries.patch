@@ -5,10 +5,10 @@ For example: menuentry 'halt' { halt }
 Force it to fall through where it will handle the closing brace.
 Also change warning to debug to cut down on verbose output.
 
-Index: xen-4.13.0-testing/tools/pygrub/src/GrubConf.py
+Index: xen-4.18.0-testing/tools/pygrub/src/GrubConf.py
 ===================================================================
---- xen-4.13.0-testing.orig/tools/pygrub/src/GrubConf.py
-+++ xen-4.13.0-testing/tools/pygrub/src/GrubConf.py
+--- xen-4.18.0-testing.orig/tools/pygrub/src/GrubConf.py
++++ xen-4.18.0-testing/tools/pygrub/src/GrubConf.py
 @@ -150,7 +150,7 @@ class GrubImage(_GrubImage):
              else:
                  logging.info("Ignored image directive %s" %(com,))
@@ -24,7 +24,7 @@ Index: xen-4.13.0-testing/tools/pygrub/src/GrubConf.py
              else:
 -                logging.warning("Unknown directive %s" %(com,))
 +                logging.debug("Unknown directive %s" %(com,))
-                 
+ 
          if img:
              self.add_image(GrubImage(title, img))
 @@ -343,7 +343,7 @@ class Grub2Image(_GrubImage):
@@ -54,6 +54,6 @@ Index: xen-4.13.0-testing/tools/pygrub/src/GrubConf.py
              else:
 -                logging.warning("Unknown directive %s" %(com,))
 +                logging.debug("Unknown directive %s" %(com,))
-             
+ 
          if img is not None:
              raise RuntimeError("syntax error: end of file with open menuentry(%d %s)" % (len(img),img))

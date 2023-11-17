@@ -11,8 +11,8 @@ Add an API for expandable bitmaps, loosely based on pfn_set_populated.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.c |   39 +++++++++++++++++++++++
- tools/libs/guest/xg_sr_common.h |   67 ++++++++++++++++++++++++++++++++++++++++
+ tools/libs/guest/xg_sr_common.c | 39 +++++++++++++++++++
+ tools/libs/guest/xg_sr_common.h | 67 +++++++++++++++++++++++++++++++++
  2 files changed, 106 insertions(+)
 
 --- a/tools/libs/guest/xg_sr_common.c
@@ -108,7 +108,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +static inline void sr_clear_bit(unsigned long bit, struct sr_bitmap *bm)
 +{
-+    if (bit <= bm->bits)
++    if (bit + 1 <= bm->bits)
 +        clear_bit(bit, bm->p);
 +}
 +
@@ -129,7 +129,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +static inline bool sr_set_long_bit(unsigned long base_bit, struct sr_bitmap *bm)
 +{
-+    if (sr_bitmap_expand(bm, base_bit + BITS_PER_LONG + 1) == false)
++    if (sr_bitmap_expand(bm, base_bit + BITS_PER_LONG) == false)
 +        return false;
 +
 +    set_bit_long(base_bit, bm->p);

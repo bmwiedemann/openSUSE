@@ -10,8 +10,8 @@ Allocate the space once.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h |    1 +
- tools/libs/guest/xg_sr_save.c   |   28 +++++++++++++---------------
+ tools/libs/guest/xg_sr_common.h |  1 +
+ tools/libs/guest/xg_sr_save.c   | 28 +++++++++++++---------------
  2 files changed, 14 insertions(+), 15 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -132,7 +132,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      return rc;
  }
-@@ -850,9 +846,10 @@ static int setup(struct xc_sr_context *c
+@@ -849,9 +845,10 @@ static int setup(struct xc_sr_context *c
      ctx->save.batch_pfns = malloc(MAX_BATCH_SIZE *
                                    sizeof(*ctx->save.batch_pfns));
      ctx->save.mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->save.mfns));
@@ -144,7 +144,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
           !dirty_bitmap || !ctx->save.deferred_pages )
      {
          ERROR("Unable to allocate memory for dirty bitmaps, batch pfns and"
-@@ -884,6 +881,7 @@ static void cleanup(struct xc_sr_context
+@@ -883,6 +880,7 @@ static void cleanup(struct xc_sr_context
      xc_hypercall_buffer_free_pages(xch, dirty_bitmap,
                                     NRPAGES(bitmap_size(ctx->save.p2m_size)));
      free(ctx->save.deferred_pages);

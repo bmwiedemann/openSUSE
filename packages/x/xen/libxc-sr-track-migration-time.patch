@@ -6,15 +6,15 @@ Track live migration state unconditionally in logfiles to see how long a domU wa
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/include/xentoollog.h       |    1 
- tools/libs/ctrl/xc_domain.c      |   12 ++++++-
- tools/libs/ctrl/xc_private.h     |    9 +++++
- tools/libs/guest/xg_resume.c     |    5 ++-
- tools/libs/guest/xg_sr_common.c  |   59 +++++++++++++++++++++++++++++++++++++++
- tools/libs/guest/xg_sr_common.h  |    3 +
- tools/libs/guest/xg_sr_restore.c |    3 +
- tools/libs/guest/xg_sr_save.c    |    6 +++
- tools/xl/xl.c                    |    2 +
+ tools/include/xentoollog.h       |  1 +
+ tools/libs/ctrl/xc_domain.c      | 12 +++++--
+ tools/libs/ctrl/xc_private.h     |  9 +++++
+ tools/libs/guest/xg_resume.c     |  5 ++-
+ tools/libs/guest/xg_sr_common.c  | 59 ++++++++++++++++++++++++++++++++
+ tools/libs/guest/xg_sr_common.h  |  3 ++
+ tools/libs/guest/xg_sr_restore.c |  3 ++
+ tools/libs/guest/xg_sr_save.c    |  6 +++-
+ tools/xl/xl.c                    |  2 ++
  9 files changed, 96 insertions(+), 4 deletions(-)
 
 --- a/tools/include/xentoollog.h
@@ -62,9 +62,9 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 --- a/tools/libs/ctrl/xc_private.h
 +++ b/tools/libs/ctrl/xc_private.h
-@@ -41,6 +41,15 @@
+@@ -42,6 +42,15 @@
  
- #include <xen-tools/libs.h>
+ #include <xen-tools/common-macros.h>
  
 +/*
 + * Using loglevel ERROR to make sure the intended informational messages appear
@@ -165,7 +165,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 @@ -294,6 +294,7 @@ struct xc_sr_context
      xc_stream_type_t stream_type;
  
-     xc_dominfo_t dominfo;
+     xc_domaininfo_t dominfo;
 +    char uuid[16*2+4+1];
  
      union /* Common save or restore data. */
@@ -181,7 +181,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      uint32_t type;
 --- a/tools/libs/guest/xg_sr_restore.c
 +++ b/tools/libs/guest/xg_sr_restore.c
-@@ -884,6 +884,8 @@ static int restore(struct xc_sr_context
+@@ -871,6 +871,8 @@ static int restore(struct xc_sr_context
      struct xc_sr_rhdr rhdr;
      int rc, saved_rc = 0, saved_errno = 0;
  
@@ -190,7 +190,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      IPRINTF("Restoring domain");
  
      rc = setup(ctx);
-@@ -959,6 +960,7 @@ static int restore(struct xc_sr_context
+@@ -946,6 +948,7 @@ static int restore(struct xc_sr_context
      PERROR("Restore failed");
  
   done:
@@ -198,8 +198,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      cleanup(ctx);
  
      if ( saved_rc )
-@@ -1028,6 +1030,7 @@ int xc_domain_restore(xc_interface *xch,
-             io_fd, dom, ctx.dominfo.hvm, stream_type);
+@@ -1011,6 +1014,7 @@ int xc_domain_restore(xc_interface *xch,
+             io_fd, dom, hvm, stream_type);
  
      ctx.domid = dom;
 +    sr_uuid_to_string(ctx.uuid, ctx.dominfo.handle);
@@ -208,7 +208,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          return -1;
 --- a/tools/libs/guest/xg_sr_save.c
 +++ b/tools/libs/guest/xg_sr_save.c
-@@ -354,7 +354,7 @@ static void show_transfer_rate(struct xc
+@@ -353,7 +353,7 @@ static void show_transfer_rate(struct xc
      MiB_sec = (ctx->save.pages_sent * PAGE_SIZE * 1000U) / ms / (1024U*1024U);
  
      errno = 0;
@@ -217,11 +217,13 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
              ctx->save.overhead_sent, ctx->save.pages_sent,
              diff.tv_sec, diff.tv_nsec, MiB_sec);
  }
-@@ -877,12 +877,14 @@ static int save(struct xc_sr_context *ct
+@@ -875,13 +875,16 @@ static int save(struct xc_sr_context *ct
+ {
      xc_interface *xch = ctx->xch;
      int rc, saved_rc = 0, saved_errno = 0;
++    unsigned long tot_pages = ctx->dominfo.tot_pages;
  
-+    SUSEINFO("domid %u: %s %s start, %lu pages allocated", ctx->domid, ctx->uuid, __func__, ctx->dominfo.nr_pages);
++    SUSEINFO("domid %u: %s %s start, %lu pages allocated", ctx->domid, ctx->uuid, __func__, tot_pages);
      IPRINTF("Saving domain %d, type %s",
              ctx->domid, dhdr_type_to_str(guest_type));
  
@@ -232,7 +234,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      xc_report_progress_single(xch, "Start of stream");
  
-@@ -997,6 +999,7 @@ static int save(struct xc_sr_context *ct
+@@ -995,6 +998,7 @@ static int save(struct xc_sr_context *ct
      PERROR("Save failed");
  
   done:
@@ -240,17 +242,17 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      cleanup(ctx);
  
      if ( saved_rc )
-@@ -1059,6 +1062,7 @@ int xc_domain_save(xc_interface *xch, in
-             io_fd, dom, flags, ctx.dominfo.hvm);
+@@ -1054,6 +1058,7 @@ int xc_domain_save(xc_interface *xch, in
+             io_fd, dom, flags, hvm);
  
      ctx.domid = dom;
 +    sr_uuid_to_string(ctx.uuid, ctx.dominfo.handle);
  
-     if ( ctx.dominfo.hvm )
+     if ( hvm )
      {
 --- a/tools/xl/xl.c
 +++ b/tools/xl/xl.c
-@@ -420,6 +420,8 @@ int main(int argc, char **argv)
+@@ -424,6 +424,8 @@ int main(int argc, char **argv)
      logger = xtl_createlogger_stdiostream(stderr, minmsglevel, xtl_flags);
      if (!logger) exit(EXIT_FAILURE);
  

@@ -6,10 +6,10 @@ tools: use xg_sr_bitmap for populated_pfns
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h          |   20 ++++++++
- tools/libs/guest/xg_sr_restore.c         |   69 -------------------------------
- tools/libs/guest/xg_sr_restore_x86_hvm.c |    9 ++++
- tools/libs/guest/xg_sr_restore_x86_pv.c  |    7 +++
+ tools/libs/guest/xg_sr_common.h          | 20 ++++++-
+ tools/libs/guest/xg_sr_restore.c         | 69 ------------------------
+ tools/libs/guest/xg_sr_restore_x86_hvm.c |  9 ++++
+ tools/libs/guest/xg_sr_restore_x86_pv.c  |  7 +++
  4 files changed, 34 insertions(+), 71 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -115,7 +115,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
   * Given a set of pfns, obtain memory from Xen to fill the physmap for the
   * unpopulated subset.  If types is NULL, no page type checking is performed
   * and all unpopulated pfns are populated.
-@@ -924,16 +866,6 @@ static int setup(struct xc_sr_context *c
+@@ -911,16 +853,6 @@ static int setup(struct xc_sr_context *c
      if ( rc )
          goto err;
  
@@ -132,7 +132,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      ctx->restore.pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pfns));
      ctx->restore.types = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.types));
      ctx->restore.mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.mfns));
-@@ -982,7 +914,6 @@ static void cleanup(struct xc_sr_context
+@@ -969,7 +901,6 @@ static void cleanup(struct xc_sr_context
              xch, dirty_bitmap, NRPAGES(bitmap_size(ctx->restore.p2m_size)));
  
      free(ctx->restore.buffered_records);
@@ -146,7 +146,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  static int x86_hvm_setup(struct xc_sr_context *ctx)
  {
      xc_interface *xch = ctx->xch;
-+    unsigned long max_pfn;
++    unsigned long max_pfn, max_pages = ctx->dominfo.max_pages;
  
      if ( ctx->restore.guest_type != DHDR_TYPE_X86_HVM )
      {
@@ -154,7 +154,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      }
  #endif
  
-+    max_pfn = max(ctx->restore.p2m_size, ctx->dominfo.max_memkb >> (PAGE_SHIFT-10));
++    max_pfn = max(ctx->restore.p2m_size, max_pages);
 +    if ( !sr_bitmap_expand(&ctx->restore.populated_pfns, max_pfn) )
 +    {
 +        PERROR("Unable to allocate memory for populated_pfns bitmap");

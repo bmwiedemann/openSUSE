@@ -12,8 +12,8 @@ Use some prefix to avoid conflict with an array used in handle_page_data.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |    1 +
- tools/libs/guest/xg_sr_restore.c |   23 ++++++++---------------
+ tools/libs/guest/xg_sr_common.h  |  1 +
+ tools/libs/guest/xg_sr_restore.c | 23 ++++++++---------------
  2 files changed, 9 insertions(+), 15 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -89,7 +89,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      return rc;
  }
  
-@@ -706,8 +696,10 @@ static int setup(struct xc_sr_context *c
+@@ -693,8 +683,10 @@ static int setup(struct xc_sr_context *c
      ctx->restore.mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.mfns));
      ctx->restore.map_errs = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.map_errs));
      ctx->restore.pp_pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_pfns));
@@ -101,7 +101,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
          ERROR("Unable to allocate memory");
          rc = -1;
-@@ -744,6 +736,7 @@ static void cleanup(struct xc_sr_context
+@@ -731,6 +723,7 @@ static void cleanup(struct xc_sr_context
  
      free(ctx->restore.buffered_records);
      free(ctx->restore.populated_pfns);

@@ -13,10 +13,10 @@ Keep going if the flag is seen.
 Watch again for @releaseDomain events.
 Keep going if the event type and shutdown reason remains the same.
 ---
- tools/xl/Makefile         |    3 +-
- tools/xl/xl.h             |    1 
- tools/xl/xl_saverestore.c |   15 ++++++++++++++
- tools/xl/xl_vmcontrol.c   |   48 ++++++++++++++++++++++++++++++++++++++++++++++
+ tools/xl/Makefile         |  3 ++-
+ tools/xl/xl.h             |  1 +
+ tools/xl/xl_saverestore.c | 15 ++++++++++++
+ tools/xl/xl_vmcontrol.c   | 48 +++++++++++++++++++++++++++++++++++++++
  4 files changed, 66 insertions(+), 1 deletion(-)
 
 --- a/tools/xl/Makefile
@@ -40,7 +40,7 @@ Keep going if the event type and shutdown reason remains the same.
  install: all
 --- a/tools/xl/xl.h
 +++ b/tools/xl/xl.h
-@@ -299,6 +299,7 @@ typedef enum {
+@@ -303,6 +303,7 @@ typedef enum {
      DOMAIN_RESTART_SOFT_RESET,   /* Soft reset should be performed */
  } domain_restart_type;
  

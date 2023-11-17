@@ -10,8 +10,8 @@ Allocate the space once.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |    1 +
- tools/libs/guest/xg_sr_restore.c |   16 ++++++++--------
+ tools/libs/guest/xg_sr_common.h  |  1 +
+ tools/libs/guest/xg_sr_restore.c | 16 ++++++++--------
  2 files changed, 9 insertions(+), 8 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -83,7 +83,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      return rc;
  }
-@@ -718,7 +716,8 @@ static int setup(struct xc_sr_context *c
+@@ -705,7 +703,8 @@ static int setup(struct xc_sr_context *c
  
      ctx->restore.pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pfns));
      ctx->restore.types = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.types));
@@ -93,7 +93,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
          ERROR("Unable to allocate memory");
          rc = -1;
-@@ -755,6 +754,7 @@ static void cleanup(struct xc_sr_context
+@@ -742,6 +741,7 @@ static void cleanup(struct xc_sr_context
  
      free(ctx->restore.buffered_records);
      free(ctx->restore.populated_pfns);

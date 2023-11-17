@@ -3,14 +3,14 @@
 # Name:        Supportconfig Plugin for Xen
 # Description: Gathers important troubleshooting information
 #              about Xen and its tools
-# Author:      Jim Fehlig <jfehlig@suse.com>
 #############################################################
 
 # TODO:
 # - Anything needed for UEFI?
 #
 
-RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
+RCFILE="/usr/lib/supportconfig/resources/supportconfig.rc"
+OF="output-xen.txt"
 
 GRUB2_CONF_FILES="/etc/default/grub"
 XEN_CONF_FILES="/etc/xen/xl.conf /etc/sysconfig/xencommons /etc/sysconfig/xendomains"
@@ -21,89 +21,61 @@ XEN_LOG_FILES=""
 
 if [ -s $RCFILE ]; then
     if ! source $RCFILE; then
-        echo "ERROR: Initializing resource file: $RCFILE" >&2
+        log_write $OF "ERROR: Initializing resource file: $RCFILE"
         exit 1
     fi
 fi
 
-rpm_verify() {
-    thisrpm="$1"
-    local ret=0
-
-    echo
-    echo "#==[ Validating RPM ]=================================#"
-    if rpm -q "$thisrpm" >/dev/null 2>&1; then
-        echo "# rpm -V $thisrpm"
-
-        if rpm -V "$thisrpm"; then
-            echo "Status: Passed"
-        else
-            echo "Status: WARNING"
-        fi
-    else
-        echo "package $thisrpm is not installed"
-	ret=1
-    fi
-    echo
-    return $ret
-}
-
 # if no xen package we are done
-if ! rpm_verify xen; then
-    echo "Skipped"
-    exit 0
-fi
+rpm_verify $OF xen || exit 111
 
 # if not a xen host (dom0) we are done
-echo "#==[ Checking if booted Xen ]=================================#"
+log_write $OF "#==[ Checking if booted Xen ]=================================#"
 if [ ! -d /proc/xen ] || [ ! -e /proc/xen/capabilities ] || [ `cat /proc/xen/capabilities` != "control_d" ]; then
-    echo "No"
-    echo "Skipped"
+    log_write $OF "No"
+    log_write $OF "Skipped"
     exit 0
 else
-    echo "Yes"
-    echo
+    log_write $OF "Yes"
 fi
 
 # basic system information:
-plugin_command "uname -r"
+log_cmd $OF "uname -r"
 for service in $XEN_SERVICES; do
-    plugin_command "systemctl status $service"
-    plugin_command "systemctl is-enabled $service"
+    log_cmd $OF "systemctl status $service"
+    log_cmd $OF "systemctl is-enabled $service"
 done
-plugin_command "lscpu"
-plugin_command "xl info --numa"
-plugin_command "xl list"
-plugin_command "xl pci-assignable-list"
-plugin_command "xenstore-ls"
-plugin_command "ps -ef | grep xen"
+log_cmd $OF "lscpu"
+log_cmd $OF "xl info --numa"
+log_cmd $OF "xl list"
+log_cmd $OF "xl pci-assignable-list"
+log_cmd $OF "xenstore-ls"
+log_cmd $OF "ps -ef | grep xen"
 # dump grub2-related conf files
-pconf_files "$GRUB2_CONF_FILES"
+conf_files $OF "$GRUB2_CONF_FILES"
 # dump Xen-related conf files
-pconf_files "$XEN_CONF_FILES"
+conf_files $OF "$XEN_CONF_FILES"
 
 # detailed system info:
-plugin_command "xl list --long"
-plugin_command "xl dmesg"
+log_cmd $OF "xl list --long"
+log_cmd $OF "xl dmesg"
 # network-related info often useful for debugging
 if [ systemctl is-enabled NetworkManager.service 2>&1 > /dev/null ]; then
-    echo "NOTE: NetworkManager should not be enabled on a Xen host"
+    log_write $OF "NOTE: NetworkManager should not be enabled on a Xen host"
 fi
-plugin_command "route -n"
-plugin_command "arp -v"
-plugin_command "ip link show type bridge"
-plugin_command "bridge link show"
+log_cmd $OF "route -n"
+log_cmd $OF "arp -v"
+log_cmd $OF "ip link show type bridge"
+log_cmd $OF "bridge link show"
 # list contents of common config and image directories
-plugin_command "ls -alR /etc/xen/vm/"
-plugin_command "ls -alR /etc/xen/auto/"
-plugin_command "ls -alR /var/lib/xen/images/"
+log_cmd $OF "ls -alR /etc/xen/vm/"
+log_cmd $OF "ls -alR /etc/xen/auto/"
+log_cmd $OF "ls -alR /var/lib/xen/images/"
 # dump VM-related conf files
 test -d /etc/xen/vm && PERSISTENT_VM_CONF_FILES=$(find -L /etc/xen/vm/ -type f | sort)
-pconf_files "$PERSISTENT_VM_CONF_FILES"
+conf_files $OF "$PERSISTENT_VM_CONF_FILES"
 test -d /var/lib/xen && ACTIVE_VM_CONF_FILES=$(find -L /var/lib/xen/userdata* -type f | sort)
-pconf_files "$ACTIVE_VM_CONF_FILES"
+conf_files $OF "$ACTIVE_VM_CONF_FILES"
 # dump log files
 test -d /var/log/xen && XEN_LOG_FILES="$(find -L /var/log/xen/ -type f | grep 'log$' | sort)"
-plog_files 0 "$XEN_LOG_FILES"
-
-echo "Done"
+log_files $OF 0 "$XEN_LOG_FILES"

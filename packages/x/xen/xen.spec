@@ -28,7 +28,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.17.2-testing
+%define xen_build_dir xen-4.18.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -119,15 +119,14 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.17.2_04
+Version:        4.18.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.17.2-testing-src.tar.bz2
+Source0:        xen-4.18.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
-Source3:        xen-utils-0.1.tar.bz2
 Source9:        xen.changes
 Source10:       README.SUSE
 Source11:       boot.xen
@@ -155,22 +154,6 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdom.patch
-Patch2:         643e3810-CONFIG_DEBUG_INFO-no-EXPERT.patch
-Patch3:         643e387f-xen-update-CONFIG_DEBUG_INFO-help-text.patch
-Patch4:         6447a8fd-x86-EFI-permit-crash-dump-analysis.patch
-Patch5:         64d33a57-libxenstat-Linux-nul-terminate-string.patch
-Patch9:         xsa438.patch
-Patch10:        xsa439-00.patch
-Patch11:        xsa439-01.patch
-Patch12:        xsa439-02.patch
-Patch13:        xsa439-03.patch
-Patch14:        xsa439-04.patch
-Patch15:        xsa439-05.patch
-Patch16:        xsa439-06.patch
-Patch17:        xsa439-07.patch
-Patch18:        xsa439-08.patch
-Patch19:        xsa439-09.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
@@ -224,14 +207,12 @@ Patch453:       stdvga-cache.patch
 Patch454:       xl-save-pc.patch
 Patch455:       pygrub-boot-legacy-sles.patch
 Patch456:       pygrub-handle-one-line-menu-entries.patch
-Patch457:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
 Patch461:       libxl.max_event_channels.patch
 Patch463:       libxl.add-option-to-disable-disk-cache-flushes-in-qdisk.patch
-Patch464:       libxl.pvscsi.patch
-Patch465:       xen.libxl.dmmd.patch
-Patch467:       xenstore-run-in-studomain.patch
-Patch468:       libxl.helper_done-crash.patch
-Patch469:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
+Patch464:       xen.libxl.dmmd.patch
+Patch465:       xenstore-run-in-studomain.patch
+Patch466:       libxl.helper_done-crash.patch
+Patch467:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
 Patch501:       migration-python3-conversion.patch
@@ -242,7 +223,6 @@ Patch601:       x86-ioapic-ack-default.patch
 Patch602:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 # Build patches
-Patch99996:     xen.stubdom.newlib.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define pyver %(python3 -c "import sys; print(sys.version.rpartition('.')[0])")
@@ -419,7 +399,7 @@ Authors:
 %endif
 
 %prep
-%setup -q -n %xen_build_dir -a 1 -a 2 -a 3
+%setup -q -n %xen_build_dir -a 1 -a 2
 %autosetup -D -T -n %xen_build_dir -p1
 
 %build
@@ -521,9 +501,6 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
         ${configure_flags}
 make -C tools/include/xen-foreign %{?_smp_mflags}
 make %{?_smp_mflags}
-%if %{?with_dom0_support}0
-make -C tools/xen-utils-0.1 XEN_INTREE_BUILD=yes XEN_ROOT=$PWD
-%endif
 #
 
 %install
@@ -825,8 +802,7 @@ for name in vtpm-platforms.txt crashdb.txt xenpaging.txt \
     install -m 644 docs/misc/$name %{buildroot}/%{_defaultdocdir}/xen/misc/
 done
 
-# xen-utils
-make -C tools/xen-utils-0.1 install DESTDIR=%{buildroot} XEN_INTREE_BUILD=yes XEN_ROOT=$PWD
+# Xen utilities
 install -m755 %SOURCE36 %{buildroot}/usr/sbin/xen2libvirt
 install -m755 %SOURCE10183 %{buildroot}/usr/sbin/xen_maskcalc
 
@@ -992,7 +968,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %files tools
 %defattr(-,root,root)
 /usr/bin/xenalyze
-/usr/bin/xencons
 /usr/bin/xenstore*
 /usr/bin/pygrub
 /usr/bin/vchan-socket-proxy
@@ -1040,8 +1015,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/sbin/xen-vmtrace
 %endif
 /usr/sbin/xenhypfs
-/usr/sbin/xen-list
-/usr/sbin/xen-destroy
 /usr/sbin/xen-livepatch
 /usr/sbin/xen-diag
 %dir %attr(700,root,root) /etc/xen

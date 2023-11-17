@@ -14,8 +14,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 v02:
 - rearrange MiB_sec calculation (jgross)
 ---
- tools/libs/guest/xg_sr_common.h |    2 +
- tools/libs/guest/xg_sr_save.c   |   46 ++++++++++++++++++++++++++++++++++++++++
+ tools/libs/guest/xg_sr_common.h |  2 ++
+ tools/libs/guest/xg_sr_save.c   | 46 +++++++++++++++++++++++++++++++++
  2 files changed, 48 insertions(+)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -47,7 +47,7 @@ v02:
  
      if ( nr_pages )
      {
-@@ -357,6 +360,42 @@ static int suspend_domain(struct xc_sr_c
+@@ -356,6 +359,42 @@ static int suspend_domain(struct xc_sr_c
      return 0;
  }
  
@@ -90,7 +90,7 @@ v02:
  /*
   * Send a subset of pages in the guests p2m, according to the dirty bitmap.
   * Used for each subsequent iteration of the live migration loop.
-@@ -370,9 +409,15 @@ static int send_dirty_pages(struct xc_sr
+@@ -369,9 +408,15 @@ static int send_dirty_pages(struct xc_sr
      xen_pfn_t p;
      unsigned long written;
      int rc;
@@ -106,7 +106,7 @@ v02:
      for ( p = 0, written = 0; p < ctx->save.p2m_size; ++p )
      {
          if ( !test_bit(p, dirty_bitmap) )
-@@ -396,6 +441,7 @@ static int send_dirty_pages(struct xc_sr
+@@ -395,6 +440,7 @@ static int send_dirty_pages(struct xc_sr
      if ( written > entries )
          DPRINTF("Bitmap contained more entries than expected...");
  

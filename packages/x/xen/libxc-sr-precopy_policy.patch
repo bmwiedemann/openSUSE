@@ -18,9 +18,9 @@ v02:
 - use plain struct precopy_stats instead of inventing
   a new precopy_stats_t (anthony)
 ---
- tools/libs/light/libxl_dom_save.c       |   19 +++++++++++++++++++
- tools/libs/light/libxl_internal.h       |    2 ++
- tools/libs/light/libxl_save_msgs_gen.pl |    3 ++-
+ tools/libs/light/libxl_dom_save.c       | 19 +++++++++++++++++++
+ tools/libs/light/libxl_internal.h       |  2 ++
+ tools/libs/light/libxl_save_msgs_gen.pl |  3 ++-
  3 files changed, 23 insertions(+), 1 deletion(-)
 
 --- a/tools/libs/light/libxl_dom_save.c
@@ -60,7 +60,7 @@ v02:
      dss->sws.dss = dss;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -123,6 +123,8 @@
+@@ -124,6 +124,8 @@
  #define DOMID_XS_PATH "domid"
  #define PVSHIM_BASENAME "xen-shim"
  #define PVSHIM_CMDLINE "pv-shim console=xen,pv"
@@ -68,7 +68,7 @@ v02:
 +#define LIBXL_XGS_POLICY_TARGET_DIRTY_COUNT 50
  
  /* Size macros. */
- #define __AC(X,Y)   (X##Y)
+ #define MB(_mb)     (_AC(_mb, ULL) << 20)
 --- a/tools/libs/light/libxl_save_msgs_gen.pl
 +++ b/tools/libs/light/libxl_save_msgs_gen.pl
 @@ -23,6 +23,7 @@ our @msgs = (

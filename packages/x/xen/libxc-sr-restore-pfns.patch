@@ -13,8 +13,8 @@ but not more than MAX_BATCH_SIZE.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |    1 +
- tools/libs/guest/xg_sr_restore.c |   23 +++++++++++++++--------
+ tools/libs/guest/xg_sr_common.h  |  1 +
+ tools/libs/guest/xg_sr_restore.c | 23 +++++++++++++++--------
  2 files changed, 16 insertions(+), 8 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -83,7 +83,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      return rc;
  }
-@@ -728,6 +726,14 @@ static int setup(struct xc_sr_context *c
+@@ -715,6 +713,14 @@ static int setup(struct xc_sr_context *c
          goto err;
      }
  
@@ -98,7 +98,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      ctx->restore.buffered_records = malloc(
          DEFAULT_BUF_RECORDS * sizeof(struct xc_sr_record));
      if ( !ctx->restore.buffered_records )
-@@ -758,6 +764,7 @@ static void cleanup(struct xc_sr_context
+@@ -745,6 +751,7 @@ static void cleanup(struct xc_sr_context
  
      free(ctx->restore.buffered_records);
      free(ctx->restore.populated_pfns);

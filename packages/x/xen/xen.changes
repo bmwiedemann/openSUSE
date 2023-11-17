@@ -1,4 +1,191 @@
 -------------------------------------------------------------------
+Thu Nov 16 06:24:59 MST 2023 - carnold@suse.com
+
+- Update to Xen 4.18.0 FCS release (jsc#PED-4984)
+  xen-4.18.0-testing-src.tar.bz2
+  * Repurpose command line gnttab_max_{maptrack_,}frames options so they don't
+    cap toolstack provided values.
+  * Ignore VCPUOP_set_singleshot_timer's VCPU_SSHOTTMR_future flag. The only
+    known user doesn't use it properly, leading to in-guest breakage.
+  * The "dom0" option is now supported on Arm and "sve=" sub-option can be used
+    to enable dom0 guest to use SVE/SVE2 instructions.
+  * Physical CPU Hotplug downgraded to Experimental and renamed "ACPI CPU
+    Hotplug" for clarity
+  * On x86, support for features new in Intel Sapphire Rapids CPUs:
+    - PKS (Protection Key Supervisor) available to HVM/PVH guests.
+    - VM-Notify used by Xen to mitigate certain micro-architectural pipeline
+      livelocks, instead of crashing the entire server.
+    - Bus-lock detection, used by Xen to mitigate (by rate-limiting) the system
+      wide impact of a guest misusing atomic instructions.
+  * xl/libxl can customize SMBIOS strings for HVM guests.
+  * Add support for AVX512-FP16 on x86.
+  * On Arm, Xen supports guests running SVE/SVE2 instructions. (Tech Preview)
+  * On Arm, add suport for Firmware Framework for Arm A-profile (FF-A) Mediator
+    (Tech Preview)
+  * Add Intel Hardware P-States (HWP) cpufreq driver.
+  * On Arm, experimental support for dynamic addition/removal of Xen device tree
+    nodes using a device tree overlay binary (.dtbo).
+  * Introduce two new hypercalls to map the vCPU runstate and time areas by
+    physical rather than linear/virtual addresses.
+  * On x86, support for enforcing system-wide operation in Data Operand
+    Independent Timing Mode.
+  * The project has now officially adopted 6 directives and 65 rules of MISRA-C.
+  * On x86, the "pku" command line option has been removed.  It has never
+    behaved precisely as described, and was redundant with the unsupported
+    "cpuid=no-pku".  Visibility of PKU to guests should be via its vm.cfg file.
+  * xenpvnetboot removed as unable to convert to Python 3.
+  * xencons is no longer supported or present. See 5d22d69b30
+- Droppped patches contained in new tarballs
+  63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdom.patch
+  643e3810-CONFIG_DEBUG_INFO-no-EXPERT.patch
+  643e387f-xen-update-CONFIG_DEBUG_INFO-help-text.patch
+  6447a8fd-x86-EFI-permit-crash-dump-analysis.patch
+  64d33a57-libxenstat-Linux-nul-terminate-string.patch
+  aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
+  xen.stubdom.newlib.patch
+  xsa446.patch
+  xsa445.patch
+  xsa438.patch
+  xsa439-00.patch
+  xsa439-01.patch
+  xsa439-02.patch
+  xsa439-03.patch
+  xsa439-04.patch
+  xsa439-05.patch
+  xsa439-06.patch
+  xsa439-07.patch
+  xsa439-08.patch
+  xsa439-09.patch
+  xsa443-10.patch
+  xsa443-11.patch
+  xsa440.patch
+- Dropped xen-utils-0.1.tar.bz2
+  The xen-list and xen-destroy commands are removed. Originally
+  created as a better replacement for 'xm'. The 'xl' equivalent
+  commands should be used instead.
+- Dropped libxl.pvscsi.patch
+  Support for PVSCSI devices in the guest is no longer supported.
+
+-------------------------------------------------------------------
+Thu Nov  2 06:44:38 MDT 2023 - carnold@suse.com
+
+- bsc#1216807 - VUL-0: CVE-2023-46836: xen: x86: BTC/SRSO fixes not
+  fully effective (XSA-446)
+  xsa446.patch
+
+-------------------------------------------------------------------
+Fri Oct 27 09:22:33 MDT 2023 - carnold@suse.com
+
+- bsc#1216654 - VUL-0: CVE-2023-46835: xen: x86/AMD: mismatch in
+  IOMMU quarantine page table levels (XSA-445)
+  xsa445.patch
+
+-------------------------------------------------------------------
+Wed Oct 18 15:30:33 MDT 2023 - jfehlig@suse.com
+
+- Supportconfig: Adapt plugin to modern supportconfig
+  The supportconfig 'scplugin.rc' file is deprecated in favor of
+  supportconfig.rc'. Adapt the xen plugin to the new scheme.
+  xen-supportconfig
+    
+-------------------------------------------------------------------
+Tue Oct 17 14:40:00 CEST 2023 - jbeulich@suse.com
+
+- bsc#1215145 - VUL-0: CVE-2023-34322: xen: top-level shadow
+  reference dropped too early for 64-bit PV guests (XSA-438)
+  650abbfe-x86-shadow-defer-PV-top-level-release.patch
+- bsc#1215474 - VUL-0: CVE-2023-20588: xen: AMD CPU transitional
+  execution leak via division by zero (XSA-439)
+  64e5b4ac-x86-AMD-extend-Zenbleed-check.patch
+  65087000-x86-spec-ctrl-SPEC_CTRL_EXIT_TO_XEN-confusion.patch
+  65087001-x86-spec-ctrl-fold-DO_SPEC_CTRL_EXIT_TO_XEN.patch
+  65087002-x86-spec-ctrl-SPEC_CTRL-ENTRY-EXIT-asm-macros.patch
+  65087003-x86-spec-ctrl-SPEC_CTRL-ENTER-EXIT-comments.patch
+  65087004-x86-entry-restore_all_xen-stack_end.patch
+  65087005-x86-entry-track-IST-ness-of-entry.patch
+  65087006-x86-spec-ctrl-VERW-on-IST-exit-to-Xen.patch
+  65087007-x86-AMD-Zen-1-2-predicates.patch
+  65087008-x86-spec-ctrl-Zen1-DIV-leakage.patch
+- bsc#1215746 - VUL-0: CVE-2023-34326: xen: x86/AMD: missing IOMMU
+  TLB flushing (XSA-442)
+  65263470-AMD-IOMMU-flush-TLB-when-flushing-DTE.patch
+- bsc#1215747 - VUL-0: CVE-2023-34325: xen: Multiple
+  vulnerabilities in libfsimage disk handling (XSA-443)
+  65263471-libfsimage-xfs-remove-dead-code.patch
+  65263472-libfsimage-xfs-amend-mask32lo.patch
+  65263473-libfsimage-xfs-sanity-check-superblock.patch
+  65263474-libfsimage-xfs-compile-time-check.patch
+  65263475-pygrub-remove-unnecessary-hypercall.patch
+  65263476-pygrub-small-refactors.patch
+  65263477-pygrub-open-output-files-earlier.patch
+  65263478-libfsimage-function-to-preload-plugins.patch
+  65263479-pygrub-deprivilege.patch
+  6526347a-libxl-allow-bootloader-restricted-mode.patch
+  6526347b-libxl-limit-bootloader-when-restricted.patch
+- bsc#1215748 - VUL-0: CVE-2023-34327,CVE-2023-34328: xen: x86/AMD:
+  Debug Mask handling (XSA-444)
+  6526347c-SVM-fix-AMD-DR-MASK-context-switch-asymmetry.patch
+  6526347d-x86-PV-auditing-of-guest-breakpoints.patch
+- Upstream bug fixes (bsc#1027519)
+  64e6459b-revert-VMX-sanitize-rIP-before-reentering.patch
+  64eef7e9-x86-reporting-spurious-i8259-interrupts.patch
+  64f71f50-Arm-handle-cache-flush-at-top.patch
+  65084ba5-x86-AMD-dont-expose-TscFreqSel.patch
+- Patches dropped / replaced by newer upstream versions
+  xsa438.patch
+  xsa439-00.patch
+  xsa439-01.patch
+  xsa439-02.patch
+  xsa439-03.patch
+  xsa439-04.patch
+  xsa439-05.patch
+  xsa439-06.patch
+  xsa439-07.patch
+  xsa439-08.patch
+  xsa439-09.patch
+  xsa442.patch
+  xsa443-01.patch
+  xsa443-02.patch
+  xsa443-03.patch
+  xsa443-04.patch
+  xsa443-05.patch
+  xsa443-06.patch
+  xsa443-07.patch
+  xsa443-08.patch
+  xsa443-09.patch
+  xsa443-10.patch
+  xsa443-11.patch
+  xsa444-1.patch
+  xsa444-2.patch
+
+-------------------------------------------------------------------
+Wed Sep 27 13:17:04 MDT 2023 - carnold@suse.com
+
+- bsc#1215744 - VUL-0: CVE-2023-34323: xen: xenstored: A
+  transaction conflict can crash C Xenstored (XSA-440)
+  xsa440.patch
+- bsc#1215746 - VUL-0: CVE-2023-34326: xen: x86/AMD: missing IOMMU
+  TLB flushing (XSA-442)
+  xsa442.patch
+- bsc#1215747 - VUL-0: CVE-2023-34325: xen: Multiple
+  vulnerabilities in libfsimage disk handling (XSA-443)
+  xsa443-01.patch
+  xsa443-02.patch
+  xsa443-03.patch
+  xsa443-04.patch
+  xsa443-05.patch
+  xsa443-06.patch
+  xsa443-07.patch
+  xsa443-08.patch
+  xsa443-09.patch
+  xsa443-10.patch
+  xsa443-11.patch
+- bsc#1215748 - VUL-0: CVE-2023-34327,CVE-2023-34328: xen: x86/AMD:
+  Debug Mask handling (XSA-444)
+  xsa444-1.patch
+  xsa444-2.patch
+
+-------------------------------------------------------------------
 Mon Sep 18 11:36:39 MDT 2023 - carnold@suse.com
 
 - bsc#1215474 - VUL-0: CVE-2023-20588: xen: AMD CPU transitional

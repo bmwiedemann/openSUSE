@@ -20,22 +20,22 @@ actually handle. The default is zero tolerance.
  unsigned long __read_mostly cpu_khz;  /* CPU clock frequency in kHz. */
  DEFINE_SPINLOCK(rtc_lock);
  unsigned long pit0_ticks;
-@@ -2581,6 +2584,8 @@ int tsc_set_info(struct domain *d,
+@@ -2720,6 +2723,8 @@ int tsc_set_info(struct domain *d,
  
      switch ( tsc_mode )
      {
 +        bool disable_vtsc;
 +
-     case TSC_MODE_DEFAULT:
-     case TSC_MODE_ALWAYS_EMULATE:
+     case XEN_CPUID_TSC_MODE_DEFAULT:
+     case XEN_CPUID_TSC_MODE_ALWAYS_EMULATE:
          d->arch.vtsc_offset = get_s_time() - elapsed_nsec;
-@@ -2594,8 +2599,25 @@ int tsc_set_info(struct domain *d,
+@@ -2733,8 +2738,25 @@ int tsc_set_info(struct domain *d,
           * When a guest is created, gtsc_khz is passed in as zero, making
           * d->arch.tsc_khz == cpu_khz. Thus no need to check incarnation.
           */
 +        disable_vtsc = d->arch.tsc_khz == cpu_khz;
 +
-+        if ( tsc_mode == TSC_MODE_DEFAULT && !disable_vtsc &&
++        if ( tsc_mode == XEN_CPUID_TSC_MODE_DEFAULT && !disable_vtsc &&
 +             opt_suse_vtsc_tolerance && is_hvm_domain(d) )
 +        {
 +            long khz_diff = ABS((long)cpu_khz - gtsc_khz);
@@ -50,7 +50,7 @@ actually handle. The default is zero tolerance.
 +                   opt_suse_vtsc_tolerance);
 +        }
 +
-         if ( tsc_mode == TSC_MODE_DEFAULT && host_tsc_is_safe() &&
+         if ( tsc_mode == XEN_CPUID_TSC_MODE_DEFAULT && host_tsc_is_safe() &&
 -             (d->arch.tsc_khz == cpu_khz ||
 +             (disable_vtsc ||
                (is_hvm_domain(d) &&

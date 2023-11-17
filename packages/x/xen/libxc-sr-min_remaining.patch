@@ -23,18 +23,18 @@ of the new .min_remaining property.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- docs/man/xl.1.pod.in              |    8 ++++++++
- tools/include/libxl.h             |    1 +
- tools/libs/light/libxl_dom_save.c |    2 +-
- tools/libs/light/libxl_domain.c   |    1 +
- tools/libs/light/libxl_internal.h |    1 +
- tools/xl/xl_cmdtable.c            |   23 ++++++++++++-----------
- tools/xl/xl_migrate.c             |    9 ++++++++-
+ docs/man/xl.1.pod.in              |  8 ++++++++
+ tools/include/libxl.h             |  1 +
+ tools/libs/light/libxl_dom_save.c |  2 +-
+ tools/libs/light/libxl_domain.c   |  1 +
+ tools/libs/light/libxl_internal.h |  1 +
+ tools/xl/xl_cmdtable.c            | 23 ++++++++++++-----------
+ tools/xl/xl_migrate.c             |  9 ++++++++-
  7 files changed, 32 insertions(+), 13 deletions(-)
 
 --- a/docs/man/xl.1.pod.in
 +++ b/docs/man/xl.1.pod.in
-@@ -499,6 +499,14 @@ possible to use this option for a 'local
+@@ -505,6 +505,14 @@ possible to use this option for a 'local
  
  Number of copy iterations before final suspend+move (default: 5)
  
@@ -51,7 +51,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1770,6 +1770,7 @@ static inline int libxl_retrieve_domain_
+@@ -1820,6 +1820,7 @@ static inline int libxl_retrieve_domain_
  typedef struct {
      uint32_t flags; /* LIBXL_SUSPEND_* */
      uint32_t max_iters;
@@ -72,7 +72,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          goto stop_copy;
 --- a/tools/libs/light/libxl_domain.c
 +++ b/tools/libs/light/libxl_domain.c
-@@ -529,6 +529,7 @@ static int do_libxl_domain_suspend(libxl
+@@ -525,6 +525,7 @@ static int do_libxl_domain_suspend(libxl
      dss->fd = fd;
      dss->type = type;
      dss->max_iters = props->max_iters ?: LIBXL_XGS_POLICY_MAX_ITERATIONS;
@@ -82,7 +82,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -3656,6 +3656,7 @@ struct libxl__domain_save_state {
+@@ -3657,6 +3657,7 @@ struct libxl__domain_save_state {
      int debug;
      int checkpointed_stream;
      uint32_t max_iters;
@@ -92,7 +92,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      int rc;
 --- a/tools/xl/xl_cmdtable.c
 +++ b/tools/xl/xl_cmdtable.c
-@@ -165,17 +165,18 @@ const struct cmd_spec cmd_table[] = {
+@@ -166,17 +166,18 @@ const struct cmd_spec cmd_table[] = {
        &main_migrate, 0, 1,
        "Migrate a domain to another host",
        "[options] <Domain> <host>",

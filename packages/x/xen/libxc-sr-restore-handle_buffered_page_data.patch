@@ -17,8 +17,8 @@ no change in behavior is intended.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |    4 
- tools/libs/guest/xg_sr_restore.c |  320 ++++++++++++++++++++++++---------------
+ tools/libs/guest/xg_sr_common.h  |   4 +
+ tools/libs/guest/xg_sr_restore.c | 320 ++++++++++++++++++++-----------
  2 files changed, 207 insertions(+), 117 deletions(-)
 
 --- a/tools/libs/guest/xg_sr_common.h
@@ -404,7 +404,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      return rc;
  }
  
-@@ -636,7 +720,7 @@ static int process_buffered_record(struc
+@@ -623,7 +707,7 @@ static int process_buffered_record(struc
          break;
  
      case REC_TYPE_PAGE_DATA:
@@ -413,7 +413,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          break;
  
      case REC_TYPE_VERIFY:
-@@ -716,9 +800,10 @@ static int setup(struct xc_sr_context *c
+@@ -703,9 +787,10 @@ static int setup(struct xc_sr_context *c
      ctx->restore.map_errs = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.map_errs));
      ctx->restore.pp_pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_pfns));
      ctx->restore.pp_mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_mfns));
@@ -425,7 +425,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
          ERROR("Unable to allocate memory");
          rc = -1;
-@@ -755,6 +840,7 @@ static void cleanup(struct xc_sr_context
+@@ -742,6 +827,7 @@ static void cleanup(struct xc_sr_context
  
      free(ctx->restore.buffered_records);
      free(ctx->restore.populated_pfns);
