@@ -1,0 +1,12 @@
+Index: apache-tomcat-9.0.43-src/conf/logging.properties
+===================================================================
+--- apache-tomcat-9.0.43-src.orig/conf/logging.properties
++++ apache-tomcat-9.0.43-src/conf/logging.properties
+@@ -80,3 +80,7 @@ org.apache.catalina.core.ContainerBase.[
+ 
+ 1catalina.org.apache.juli.AsyncFileHandler.suffix = out
+ 1catalina.org.apache.juli.AsyncFileHandler.rotatable = false
++
++2localhost.org.apache.juli.AsyncFileHandler.rotatable = false
++3manager.org.apache.juli.AsyncFileHandler.rotatable = false
++4host-manager.org.apache.juli.AsyncFileHandler.rotatable = false
