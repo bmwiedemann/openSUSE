@@ -69,4 +69,14 @@
   * go/packages: don't fail if GOPACKAGESDRIVER leaves Compiler/GOARCH=&quot;&quot; (forwarded request 1121254 from jfkw)</comment>
     <requestid>1121256</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66fdbbfde8fd42d690ae6661ceb60ce9</srcmd5>
+    <version>0.14.2</version>
+    <time>1700250574</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.2:
+  * gopls: update go.mod for v0.14.2-pre.1
+  * gopls: upgrade x/telemetry and account for new mode logic (forwarded request 1127178 from jfkw)</comment>
+    <requestid>1127191</requestid>
+  </revision>
 </revisionlist>
