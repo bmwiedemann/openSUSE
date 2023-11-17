@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema-specifications
-Version:        2023.7.1
+Version:        2023.11.1
 Release:        0
 Summary:        The JSON Schema meta-schemas and vocabularies, exposed as a Registry
 License:        MIT
@@ -32,11 +32,10 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module referencing >= 0.25.0}
+BuildRequires:  %{python_module referencing >= 0.31.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-referencing >= 0.25.0
-Suggests:       python-importlib_resources >= 1.4.0
+Requires:       python-referencing >= 0.31.0
 BuildArch:      noarch
 %python_subpackages
 
