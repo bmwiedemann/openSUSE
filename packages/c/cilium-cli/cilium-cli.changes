@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov 17 05:46:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.14:
+  * Prepare for v0.15.14 release
+  * chore(deps): update docker/dockerfile docker tag to v1.6
+  * connectivity: fix encryption validation if
+    net.ipv4.conf.lo.rp_filter=1
+  * connectivity: Add exception to policy map recreation
+  * fix(deps): update all go dependencies main
+  * chore(deps): update go to v1.21.4
+  * connectivity: Add IPFamily() to Action
+  * connectivity: Add more tests for Ingress Controller
+  * chore(deps): update docker.io/library/golang:1.21.3-alpine3.18
+    docker digest to 96a8a70
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    b896eb5
+  * Add node addr type to pod to host test
+  * chore(deps): update quay.io/cilium/alpine-curl docker tag to
+    v1.8.0
+  * chore(deps): update quay.io/cilium/json-mock docker tag to
+    v1.3.6
+  * fix(deps): update module helm.sh/helm/v3 to v3.13.2
+  * Rename GetTestOrDie to MustGetTest
+  * chore(deps): update golang docker tag to v1.21.4
+  * connectivity: Add GetTestOrDie()
+  * connectivity: Add Control Plane Node Connectivity Tests
+  * fix(connectivity): add dns rules and change protocol to ANY
+  * Add SPIRE entries to sysdump
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.55.2
+  * sysdump: Add gops trace data
+  * sysdump: Add support for serial tasks
+  * sysdump: ignore node filter for non daemonset pods
+  * misc: drop custom implementations of slices.Contains
+  * k8s/copy: check file size
+  * fix(deps): update all go dependencies main
+  * Update stable release to v0.15.12
+
+-------------------------------------------------------------------
 Tue Nov 07 07:38:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.13:
