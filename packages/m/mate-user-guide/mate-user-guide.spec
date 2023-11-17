@@ -18,7 +18,7 @@
 
 %define _version 1.26
 Name:           mate-user-guide
-Version:        1.26.1
+Version:        1.26.2
 Release:        0
 Summary:        User guide for the MATE desktop
 License:        GFDL-1.1-or-later
