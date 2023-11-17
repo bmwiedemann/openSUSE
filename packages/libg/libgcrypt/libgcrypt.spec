@@ -20,7 +20,7 @@
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -35,10 +35,8 @@ Source4:        hwf.deny
 Source5:        libgcrypt.keyring
 Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.10.0-allow_FSM_same_state.patch
-#PATCH-FIX-SUSE bsc#1182983 gpg: out of core handler ignored in FIPS mode while typing Tab key to Auto-Completion
-Patch2:         libgcrypt-1.10.0-out-of-core-handler.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
-Patch3:         libgcrypt-nobetasuffix.patch
+Patch2:         libgcrypt-nobetasuffix.patch
 # FIPS patches:
 #PATCH-FIX-SUSE bsc#1190700 FIPS: Provide a service-level indicator for PK
 Patch100:       libgcrypt-FIPS-SLI-pk.patch
