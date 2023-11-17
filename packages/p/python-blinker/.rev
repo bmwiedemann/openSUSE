@@ -199,4 +199,12 @@
   interpreter to avoid the usage of default python, bsc#1213698.</comment>
     <requestid>1102380</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b6a0d613fc81401328dee6075e3f1bd3</srcmd5>
+    <version>1.7.0</version>
+    <time>1700250514</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126823</requestid>
+  </revision>
 </revisionlist>

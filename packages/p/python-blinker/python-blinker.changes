@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 14 21:30:44 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.7.0:
+  * Fixed messages printed to standard error about unraisable
+    exceptions during signal cleanup, typically during interpreter
+    shutdown. #123
+  * Allow the Signal set_class to be customised, to allow calling
+    of receivers in registration order. #116.
+  * Drop Python 3.7 and support Python 3.12. #126
+- additional changes from 1.6.3:
+  * Fix SyncWrapperType and AsyncWrapperType #108
+  * Fixed issue where signal.connected_to would not disconnect the
+    receiver if an instance of BaseException was raised. #114
+- require python >= 3.8: upstream dropped 3.7 support
+- drop setuptools and wheel, add flit-core as BuildRequires:
+  upstream switched build system
+
+-------------------------------------------------------------------
 Mon Jul 31 12:04:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove no-stdpy-pyc.patch

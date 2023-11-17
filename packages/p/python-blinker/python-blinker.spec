@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blinker
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Object-to-object and broadcast signaling in Python
 License:        MIT
@@ -27,12 +27,12 @@ URL:            https://github.com/pallets-eco/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
 BuildRequires:  %{python_module Pallets-Sphinx-Themes}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx-issues}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
