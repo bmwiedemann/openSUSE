@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  7 03:08:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.084
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.084 2023/11/06
+  - various fixes for edge cases and build: #136, #141, #142, #143, #145
+  - update documentation to reflect default SSL_version
+
+-------------------------------------------------------------------
 Fri May 19 03:07:24 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.083
