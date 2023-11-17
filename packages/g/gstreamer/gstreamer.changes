@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 15 09:24:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.7:
+  + Highlighted bugfixes:
+    - Security fixes for the MXF demuxer and AV1 codec parser
+    - glfilter: Memory leak fix for OpenGL filter elements
+    - d3d11videosink: Fix toggling between fullscreen and maximized, and window switching in fullscreen mode
+    - DASH / HLS adaptive streaming fixes
+    - Decklink card device provider device name string handling fixes
+    - interaudiosrc: handle non-interleaved audio properly
+    - openh264: Fail gracefully if openh264 encoder/decoder creation fails
+    - rtspsrc: improved whitespace handling in response headers by certain cameras
+    - v4l2codecs: avoid wrap-around after 1000000 frames; tiled formats handling fixes
+    - video-scaler, audio-resampler: downgraded "Can't find exact taps" debug log messages
+    - wasapi2: Don't use global volume control object
+    - Rust plugins: various improvements in aws, fmp4mux, hlssink3, livesync, ndisrc, rtpav1depay, rsfilesink, s3sink, sccparse
+    - WebRTC: various webrtchttp, webrtcsrc, and webrtcsink improvements and fixes
+    - Cerbero build tools: recognise Windows 11; restrict parallelism of gst-plugins-rs build on small systems
+    - Packages: ca-certificates update; fix gio module loading and TLS support on macOS
+  + gstreamer:
+    - debugutils: provide gst_debug_bin_to_dot_data() implementation even if debug system is disabled
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Fri Sep 22 11:31:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.6:
