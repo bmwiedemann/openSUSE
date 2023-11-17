@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        6.29.0
+Version:        7.0.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -69,13 +69,14 @@ BuildRequires:  update-desktop-files
 BuildRequires:  chmlib-devel >= 0.40
 #BuildRequires:  dbus-1-python3 >= 1.2.0
 BuildRequires:  chmlib-devel >= 0.40
-BuildRequires:  freetype2-devel >= 2.11.0
+BuildRequires:  freetype2-devel >= 2.13.2
 BuildRequires:  graphite2-devel >= 1.3.14
 BuildRequires:  hyphen-devel >= 2.8.8
-#upstream use:  iconv >= 1.16
+#upstream use:  iconv >= 1.17
 BuildRequires:  liberation-fonts
-BuildRequires:  libmtp-devel >= 1.1.20
-BuildRequires:  libopenssl-devel >= 1.1.1l
+BuildRequires:  libmtp-devel >= 1.1.21
+# Upstream use libopenssl-devel >= 3.1.3
+BuildRequires:  libopenssl-3-devel >= 3.0.8
 BuildRequires:  libpodofo-devel >= 0.10.1
 BuildRequires:  libpoppler-devel >= 21.11.0
 # upstream use: libstemmer-devel >= 2.2.0
@@ -106,30 +107,34 @@ BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.4.0
 BuildRequires:  pkgconfig(Qt6Widgets) >= 6.4.0
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.112
 BuildRequires:  pkgconfig(espeak-ng)
-BuildRequires:  pkgconfig(fontconfig) >= 2.13.94
+BuildRequires:  pkgconfig(fontconfig) >= 2.14.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.70.1
 BuildRequires:  pkgconfig(gpg-error) >= 1.43
 BuildRequires:  pkgconfig(hunspell) >= 1.7.0
-BuildRequires:  pkgconfig(icu-i18n) >= 70.1
-BuildRequires:  pkgconfig(libffi) >= 3.4.2
+BuildRequires:  pkgconfig(icu-i18n) >= 73.2
+BuildRequires:  pkgconfig(libffi) >= 3.4.4
 BuildRequires:  pkgconfig(libgcrypt) >= 1.9.4
 BuildRequires:  pkgconfig(libmspack)
-BuildRequires:  pkgconfig(libopenjp2) >= 2.4.0
-BuildRequires:  pkgconfig(libpng16) >= 1.6.37
+BuildRequires:  pkgconfig(libopenjp2) >= 2.5.0
+BuildRequires:  pkgconfig(libpng16) >= 1.6.40
+# Upstream use pkgconfig(libusb-1.0) >= 1.0.26
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.24
-# upstream use BuildRequires:  pkgconfig(ncurses) >= 6.3
+# Upstream use pkgconfig(libtiff) >= 4.6.0
+BuildRequires:  pkgconfig(libtiff-4) >= 4.0.9
+# upstream use BuildRequires:  pkgconfig(ncurses) >= 6.4
 BuildRequires:  pkgconfig(ncurses) >= 6.1
-BuildRequires:  pkgconfig(readline) >= 8.1
-BuildRequires:  pkgconfig(sqlite3) >= 3.42.0
+BuildRequires:  pkgconfig(readline) >= 8.2
+BuildRequires:  pkgconfig(sqlite3) >= 3.43.0
 BuildRequires:  pkgconfig(uchardet) >= 0.0.7
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 #
 BuildRequires:  jxrlib-devel >= 0.2.4
-BuildRequires:  libjpeg-turbo >= 2.0.5
+# Upstream use libjpeg-turbo >= 3.0.0
+BuildRequires:  libjpeg-turbo >= 2.1.5.1
 BuildRequires:  python-rpm-macros
-BuildRequires:  python311-Brotli >= 1.0.9
+BuildRequires:  python311-Brotli >= 1.1.0
 BuildRequires:  python311-FontTools >= 4.39.3
 BuildRequires:  python311-Markdown >= 3.3.6
 BuildRequires:  python311-Pillow >= 8.4.0
@@ -168,18 +173,19 @@ BuildRequires:  python311-qt6-devel >= 6.4.0
 BuildRequires:  python311-regex >= 2021.11.10
 # Upstream use: BuildRequires:  python311-setuptools >= 68.2.2
 BuildRequires:  python311-setuptools >= 67.8.0
+BuildRequires:  python311-qtwebengine-qt6 >= 6.4.0
 BuildRequires:  python311-sgmllib3k >= 1.0.0
 BuildRequires:  python311-sip-devel >= 6.7.5
+BuildRequires:  python311-six >= 1.16.0
+BuildRequires:  python311-soupsieve >= 2.5
 BuildRequires:  python311-texttable >= 1.6.4
 BuildRequires:  python311-toml >= 0.10.2
+BuildRequires:  python311-xxhash >= 3.3.0
 BuildRequires:  pkgconfig(libjpeg) >= 2.1.2
-BuildRequires:  pkgconfig(libwebp) >= 1.2.1
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.14
-BuildRequires:  pkgconfig(libxslt) >= 1.1.35
-# Need at buildtime too, to produce the bash completion
-BuildRequires:  python311-qtwebengine-qt6 >= 6.4.0
-BuildRequires:  python311-six >= 1.16.0
-BuildRequires:  python311-soupsieve >= 2.3.1
+BuildRequires:  pkgconfig(libwebp) >= 1.3.2
+# Upstream use pkgconfig(libxml-2.0) >= 2.11.5
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
+BuildRequires:  pkgconfig(libxslt) >= 1.1.38
 #BuildRequires:  python-unrardll >= 0.1.5
 BuildRequires:  python311-py7zr >= 0.16.3
 %if 0%{?suse_version} > 1500
@@ -193,14 +199,14 @@ BuildRequires:  python311-zeroconf >= 0.37.0
 Requires:       chmlib >= 0.40
 #Requires:       dbus-1-python3 >= 1.2.0
 Requires:       liberation-fonts
-Requires:       libmtp9 >= 1.1.20
-Requires:       libpng16-16 >= 1.6.37
+Requires:       libmtp9 >= 1.1.21
+Requires:       libpng16-16 >= 1.6.40
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5
 Requires:       podofo >= 0.10.1
 Requires:       poppler-tools >= 21.11.0
 Requires:       python311 >= 3.10
-Requires:       python311-Brotli >= 1.0.9
+Requires:       python311-Brotli >= 1.1.0
 Requires:       python311-Markdown >= 3.3.6
 Requires:       python311-Pillow >= 8.4.0
 Requires:       python311-Pygments >= 2.10.0
@@ -239,8 +245,9 @@ Requires:       python311-qtwebengine-qt6 >= 6.4.0
 Requires:       python311-regex >= 2021.11.10
 Requires:       python311-sgmllib3k >= 1.0.0
 Requires:       python311-six >= 1.16.0
-Requires:       python311-soupsieve >= 2.3.1
+Requires:       python311-soupsieve >= 2.5
 Requires:       python311-texttable >= 1.6.4
+Requires:       python311-xxhash >= 3.3.0
 #Requires:       python311-unrardll >= 0.1.5
 Requires:       python311-py7zr >= 0.16.3
 %if 0%{?suse_version} > 1500
@@ -251,14 +258,15 @@ Requires:       python311-speechd >= 0.11.1
 Requires:       python311-webencodings >= 0.5.1
 Requires:       python311-zeroconf >= 0.37.0
 #
-Requires:       sqlite3 >= 3.42.0
+Requires:       sqlite3 >= 3.43.0
 Requires:       bzip2 >= 1.0.8
-Requires:       expat >= 2.4.1
-Requires:       libsqlite3-0 >= 3.42.0
-Requires:       unrar >= 6.1.2
+# Upstream use expat >= 2.5.0
+Requires:       expat >= 2.4.4
+Requires:       libsqlite3-0 >= 3.43.0
+Requires:       unrar >= 6.2.5
 Requires:       xdg-utils >= 1.0.2
 Requires:       xz >= 5.2.3
-Requires:       zlib >= 1.2.11
+Requires:       zlib >= 1.2.13
 
 Requires(pretrans):findutils
 
