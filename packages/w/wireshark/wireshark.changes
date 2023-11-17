@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 16 07:52:45 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.11:
+  * SSH dissector crash.
+  * NetScreen file parser crash.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.11.html
+
+-------------------------------------------------------------------
 Thu Oct  5 16:51:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 4.0.10:
