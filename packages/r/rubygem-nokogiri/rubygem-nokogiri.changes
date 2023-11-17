@@ -1,4 +1,648 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:18:47 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- Bump mini_portile2 version in the spec
+- 1.15.4:
+
+## 1.15.4 / 2023-08-11
+
+### Dependencies
+
+* [CRuby] Vendored libxml2 is updated to v2.11.5 from v2.11.4. For details please see https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.11.5
+
+
+### Fixed
+
+* Fixed a typo in a HTML5 parser error message. [[#2927](https://github.com/sparklemotion/nokogiri/issues/2927)] (Thanks, [@anishathalye](https://github.com/anishathalye)!)
+* [CRuby] `ObjectSpace.memsize_of` is now safe to call on `Document`s with complex DTDs. In previous versions, this debugging method could result in a segfault. [[#2923](https://github.com/sparklemotion/nokogiri/issues/2923), [#2924](https://github.com/sparklemotion/nokogiri/issues/2924)]
+
+
+
+---
+
+sha256 checksums:
+
+```
+14091a07e07045a440213f7d5ced732fa7654ae8b6c7d180137f4124c5284ab8  nokogiri-1.15.4-aarch64-linux.gem
+572ddc19934d010e98821a946d89462ae66b310fecc3fe12c48b0025c2f76855  nokogiri-1.15.4-arm-linux.gem
+707288e293f4fc82a008f90b7ba0180d9f803f6a239a13e424378fedf8cf93e9  nokogiri-1.15.4-arm64-darwin.gem
+04745925f63af61144eccef38a703928629cf97c34dbb1c42e3def17ac77ec92  nokogiri-1.15.4-java.gem
+a0bfb65461a0453afed1a41b235fe84d5b9c7f4d70afd45f0dc2fdec8909faf1  nokogiri-1.15.4-x64-mingw-ucrt.gem
+b9d01b9202e33cc23d19b2c1fc18ff4029cdda9b4f937a4baaefd4124a2158ba  nokogiri-1.15.4-x64-mingw32.gem
+f6ae258d7ed5f81715118282aa45486e68fd44b9747d0244a236e9ed5b94c45d  nokogiri-1.15.4-x86-linux.gem
+3f65b2426ece8da908bd5df5b6262ce525393f5245f8258a245bb4c3f5759b98  nokogiri-1.15.4-x86-mingw32.gem
+d756605c540034debd7f486ae27802e6b1b129013fd6b1bb823783ef6f2bc5d7  nokogiri-1.15.4-x86_64-darwin.gem
+872ced3d72d797ed9b5a76c67141c6cee7589711358e11c73e9c53724ffd1842  nokogiri-1.15.4-x86_64-linux.gem
+e4a801e5ef643cc0036f0a7e93433d18818b31d48c9c287596b68e92c0173c4d  nokogiri-1.15.4.gem
+```
+
+1.15.3:
+
+## 1.15.3 / 2023-07-05
+
+### Fixed
+
+* Passing an object that is not a kind of `XML::Node` as the first parameter to `CDATA.new` now raises a `TypeError`. Previously this would result in either a segfault (CRuby) or a Java exception (JRuby). [[#2920](https://github.com/sparklemotion/nokogiri/issues/2920)]
+* Passing an object that is not a kind of `XML::Node` as the first parameter to `Schema.from_document` now raises a `TypeError`. Previously this would result in either a segfault (CRuby) or a Java exception (JRuby). [[#2920](https://github.com/sparklemotion/nokogiri/issues/2920)]
+* [CRuby] Passing an object that is not a kind of `XML::Node` as the second parameter to `Text.new` now raises a `TypeError`. Previously this would result in a segfault. [[#2920](https://github.com/sparklemotion/nokogiri/issues/2920)]
+* [CRuby] Replacing a node's children via methods like `Node#inner_html=`, `#children=`, and `#replace` no longer defensively dups the node's next sibling if it is a Text node. This behavior was originally adopted to work around libxml2's memory management (see [#283](https://github.com/sparklemotion/nokogiri/issues/283) and [#595](https://github.com/sparklemotion/nokogiri/issues/595)) but should not have included operations involving `xmlAddChild()`. [[#2916](https://github.com/sparklemotion/nokogiri/issues/2916)]
+* [JRuby] Fixed NPE when serializing an unparented HTML node. [[#2559](https://github.com/sparklemotion/nokogiri/issues/2559), [#2895](https://github.com/sparklemotion/nokogiri/issues/2895)] (Thanks, [@cbasguti](https://github.com/cbasguti)!)
+
+---
+
+sha256 checksums:
+
+```
+70dadf636ae026f475f07c16b12c685544d4f8a764777df629abf1f7af0f2fb5  nokogiri-1.15.3-aarch64-linux.gem
+83871fa3f544dc601e27abbdef87315a77fe1270fe4904986bd3a7df9ca3d56f  nokogiri-1.15.3-arm-linux.gem
+fa4a027478df9004a2ce91389af7b7b5a4fc790c23492dca43b210a0f8770596  nokogiri-1.15.3-arm64-darwin.gem
+95d410f995364d9780c4147d8fca6974447a1ccd3a1e1b092f0408836a36cc9c  nokogiri-1.15.3-java.gem
+599a46b6e4f5a34dd21da06bdbd69611728304af5ef42bb183e4b4ca073fd7a3  nokogiri-1.15.3-x64-mingw-ucrt.gem
+92ebfb637c9b7ba92a221b49ea3328c7e5ee79a28307d75ef55bfe4b5807face  nokogiri-1.15.3-x64-mingw32.gem
+ee314666eca832fa71b5bb4c090be46a80aded857aa26121b3b51f3ed658a646  nokogiri-1.15.3-x86-linux.gem
+44b7f18817894a5b697bab3d757b12bb7857a0218c1b2e0000929456a2178b34  nokogiri-1.15.3-x86-mingw32.gem
+1f0bc0343f9dd1db8dd42e4c9110dd24fc11a7f923b9fa0f866e7f90739e4e7a  nokogiri-1.15.3-x86_64-darwin.gem
+ca244ed58568d7265088f83c568d2947102fb00bac14b5bc0e63f678dcd6323d  nokogiri-1.15.3-x86_64-linux.gem
+876631295a85315dac37e7a71386d62d9eb452a891083cfe7505cca4805088cb  nokogiri-1.15.3.gem
+```
+
+1.15.2:
+
+## 1.15.2 / 2023-05-24
+
+### Dependencies
+
+* [JRuby] Vendored org.nokogiri:nekodtd is updated to v0.1.11.noko2. This is functionally equivalent to v0.1.11.noko1 but restores support for Java 8.
+
+
+### Fixed
+
+* [JRuby] Java 8 support is restored, fixing a regression present in v1.14.0..v1.14.4 and v1.15.0..v1.15.1. [[#2887](https://github.com/sparklemotion/nokogiri/issues/2887)]
+
+---
+
+sha256 checksums:
+
+```
+497c698f0cc0f283934c9c93064249d113408e97e5f3677b0b5111af24a67c29  nokogiri-1.15.2-aarch64-linux.gem
+505ad4b80cedd12bc3c53065079cc825e7f3d4094ca7b54176ae6f3734dbe2cc  nokogiri-1.15.2-arm-linux.gem
+bbedeaf45ce1494f51806e5fab0d31816fc4584f8e2ec757dd516b9b30847ee4  nokogiri-1.15.2-arm64-darwin.gem
+b15ba3c1aa5b3726d7aceb44f635250653467c5b0d04248fa0f6a6afc6515fb0  nokogiri-1.15.2-java.gem
+bc3cc9631c9dd7a74a59554215474da657f956ccb126391d082a2a8c45d3ee14  nokogiri-1.15.2-x64-mingw-ucrt.gem
+1fd27732b161a497275798e502b31e97dfe1ab58aac02c0d6ace9cbe1fd6a38c  nokogiri-1.15.2-x64-mingw32.gem
+931383c6351d79903149b5c6a988e88daada59d7069f3a01b4dcf6730d411cc6  nokogiri-1.15.2-x86-linux.gem
+3f4a6350ca1d87d185f4bf509d953820c7191d1cf4213cc3bac9c492b9b4a720  nokogiri-1.15.2-x86-mingw32.gem
+b57eeec09ee1c4010e317f50d2897fb9c1133d02598260db229e81127b337930  nokogiri-1.15.2-x86_64-darwin.gem
+5bca696b9283ad7ce97b9c0dfdf029a62c26e92f39f440a65795e377d44f119a  nokogiri-1.15.2-x86_64-linux.gem
+20dc800b8fbe4c4f4b5b164e6aa3ab82a371bcb27eb685c166961c34dd8a22d7  nokogiri-1.15.2.gem
+```
+
+
+1.14.5:
+
+## 1.14.5 / 2023-05-24
+
+### Note
+
+To ensure that JRuby users on Java 8 can apply the security changes from v1.14.4, we're cutting this release on the v1.14.x branch. We don't expect to make any more v1.14.x releases.
+
+
+### Dependencies
+
+* [JRuby] Vendored org.nokogiri:nekodtd is updated to v0.1.11.noko2. This is functionally equivalent to v0.1.11.noko1 but restores support for Java 8.
+
+
+### Fixed
+
+* [JRuby] Java 8 support is restored, fixing a regression introduced in v1.14.0. [[#2887](https://github.com/sparklemotion/nokogiri/issues/2887)]
+
+---
+
+sha256 checksums:
+
+```
+60e521687e7fb81dbaa2c942d48efc22083780bc76d45586dc0a324bf0fb0e97  nokogiri-1.14.5-aarch64-linux.gem
+80ea31d2534b14409e37437934c1c614de9844c806f72fc64134f50e0f3c1131  nokogiri-1.14.5-arm-linux.gem
+3ab8ff3b62f4ff5826406007befea2d7ac33de2ee0c66209dd72ec16d0e8f5bf  nokogiri-1.14.5-arm64-darwin.gem
+edc932157786888c8f83b49c811ac0ec26a5b23f8e3c69590c311cc14b7e6bf0  nokogiri-1.14.5-java.gem
+75e476c4e0c91f0f8f00f7c8e697bb3f5c9932f948658cf90babdbebbd6f6c27  nokogiri-1.14.5-x64-mingw-ucrt.gem
+73bd6ee2dbabd1a337c6878a8d349a872f04a3448505fbe7c773a1dfbb69e310  nokogiri-1.14.5-x64-mingw32.gem
+a9e4dc50c1cc327bfca3516281eba3fe972fd80bac64c7cdee4bcf07fbfd817d  nokogiri-1.14.5-x86-linux.gem
+aea78a61c684f36213d38777a7cd09aa272c5193f11cbaf2b455bcaeebd4196b  nokogiri-1.14.5-x86-mingw32.gem
+7375a81e5fba6a5ada3e47cd02a53ca54d0d25ae73b8ebc6e3a962e46947a7b9  nokogiri-1.14.5-x86_64-darwin.gem
+0b2150ae90a676a504cbab018d24188eb526bc886ab18b4303102df6b3077160  nokogiri-1.14.5-x86_64-linux.gem
+23f69ddeb1e8ead5341bbbbca18d37de29c0265bc90e94bc5d9663b254dfdcbc  nokogiri-1.14.5.gem
+```
+
+
+1.15.1:
+
+## 1.15.1 / 2023-05-19
+
+### Dependencies
+
+* [CRuby] Vendored libxml2 is updated to v2.11.4 from v2.11.3. For details please see https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.11.4
+
+
+### Fixed
+
+* [CRuby] The libxml2 update fixes an encoding regression when push-parsing UTF-8 sequences. [[#2882](https://github.com/sparklemotion/nokogiri/issues/2882), upstream [issue](https://gitlab.gnome.org/GNOME/libxml2/-/issues/542) and [commit](https://gitlab.gnome.org/GNOME/libxml2/-/commit/e0f3016f71297314502a3620a301d7e064cbb612)]
+
+
+---
+
+sha256 checksums:
+
+```
+a5d622a36d67c5296cf892871501abf0ca168056276d6c52519254cc05e2ed8e  nokogiri-1.15.1-aarch64-linux.gem
+ccc3b40e1f75e683107c78d0c77503df6520c614a0ea145743e929e492459662  nokogiri-1.15.1-arm-linux.gem
+6d2ea3421f05dbd761017de1a16eae0fd83fbacf344310050796e674598ad711  nokogiri-1.15.1-arm64-darwin.gem
+123c0c2f8e4bdb5b4bb42a2048ac3683b11b37d1778b804e4cb71c8fc7422d00  nokogiri-1.15.1-java.gem
+bf7e93658c7ec590ccbcbf67793a12fd229c806568fdbbe4c67f03c057f0ffbe  nokogiri-1.15.1-x64-mingw-ucrt.gem
+accc1d3815c92fab56b54bc0ec2512b0cd8c7c0c2aeb57f2aafcdd012565600b  nokogiri-1.15.1-x64-mingw32.gem
+6f43de41616d627a2b1262f09c062f475aff0b9ed67df68f4b06eb8209fdb797  nokogiri-1.15.1-x86-linux.gem
+b3b3b5c4e9315463496b4af94446a0b5b26c7cf8fbe26fd3ddd35cdcbdd60710  nokogiri-1.15.1-x86-mingw32.gem
+3a2fbb7a1d641f30d06293683d6baf80183de6e0250a807061ed97a4ba4a8e52  nokogiri-1.15.1-x86_64-darwin.gem
+f7992293b0a85932fed1932cf6074107e81c4e84344efbdbaf8eccc9b891dbaa  nokogiri-1.15.1-x86_64-linux.gem
+68d511e3cffde00225fbbf0e7845a906581b598bf6656f9346649b05e6b7f583  nokogiri-1.15.1.gem
+```
+
+
+1.15.0:
+
+## 1.15.0 / 2023-05-15
+
+### Notes
+
+#### Ability to opt into system `malloc` and `free`
+
+Since 2009, Nokogiri has configured libxml2 to use `ruby_xmalloc` et al for memory management. This has provided benefits for memory management, but comes with a performance penalty.
+
+Users can now opt into using system `malloc` for libxml2 memory management by setting an environment variable:
+
+``` sh
+# "default" here means "libxml2's default" which is system malloc
+NOKOGIRI_LIBXML_MEMORY_MANAGEMENT=default
+```
+
+Benchmarks show that this setting will significantly improve performance, but be aware that the tradeoff may involve poorer memory management including bloated heap sizes and/or OOM conditions.
+
+You can read more about this in the decision record at [`adr/2023-04-libxml-memory-management.md`](adr/2023-04-libxml-memory-management.md).
+
+
+### Dependencies
+
+* [CRuby] Vendored libxml2 is updated to v2.11.3 from v2.10.4. For details please see:
+  * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.11.0
+  * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.11.1
+  * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.11.2
+  * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.11.3
+* [CRuby] Vendored libxslt is updated to v1.1.38 from v1.1.37. For details please see:
+  * https://gitlab.gnome.org/GNOME/libxslt/-/releases/v1.1.38
+
+
+### Added
+
+* `Encoding` objects may now be passed to serialization methods like `#to_xml`, `#to_html`, `#serialize`, and `#write_to` to specify the output encoding. Previously only encoding names (strings) were accepted. [[#2774](https://github.com/sparklemotion/nokogiri/issues/2774), [#2798](https://github.com/sparklemotion/nokogiri/issues/2798)] (Thanks, [@ellaklara](https://github.com/ellaklara)!)
+* [CRuby] Users may opt into using system `malloc` for libxml2 memory management. For more detail, see note above or [`adr/2023-04-libxml-memory-management.md`](adr/2023-04-libxml-memory-management.md).
+
+
+### Changed
+
+* [CRuby] `Schema.from_document` now makes a defensive copy of the document if it has blank text nodes with Ruby objects instantiated for them. This prevents unsafe behavior in libxml2 from causing a segfault. There is a small performance cost, but we think this has the virtue of being "what the user meant" since modifying the original is surprising behavior for most users. Previously this was addressed in v1.10.9 by raising an exception.
+
+
+### Fixed
+
+* [CRuby] `XSLT.transform` now makes a defensive copy of the document if it has blank text nodes with Ruby objects instantiated for them _and_ the template uses `xsl:strip-spaces`. This prevents unsafe behavior in libxslt from causing a segfault. There is a small performance cost, but we think this has the virtue of being "what the user meant" since modifying the original is surprising behavior for most users. Previously this would allow unsafe memory access and potentially segfault. [[#2800](https://github.com/sparklemotion/nokogiri/issues/2800)]
+
+
+### Improved
+
+* `Nokogiri::XML::Node::SaveOptions#inspect` now shows the names of the options set in the bitmask, similar to `ParseOptions`. [[#2767](https://github.com/sparklemotion/nokogiri/issues/2767)]
+* `#inspect` and pretty-printing are improved for `AttributeDecl`, `ElementContent`, `ElementDecl`, and `EntityDecl`.
+* [CRuby] The C extension now uses Ruby's [TypedData API](https://docs.ruby-lang.org/en/3.0/extension_rdoc.html#label-Encapsulate+C+Data+into+a+Ruby+Object) for managing all the libxml2 structs. Write barriers may improve GC performance in some extreme cases. [[#2808](https://github.com/sparklemotion/nokogiri/issues/2808)] (Thanks, [@etiennebarrie](https://github.com/etiennebarrie) and [@byroot](https://github.com/byroot)!)
+* [CRuby] `ObjectSpace.memsize_of` reports a pretty good guess of memory usage when called on `Nokogiri::XML::Document` objects. [[#2807](https://github.com/sparklemotion/nokogiri/issues/2807)] (Thanks, [@etiennebarrie](https://github.com/etiennebarrie) and [@byroot](https://github.com/byroot)!)
+* [CRuby] Users installing the "ruby" platform gem and compiling libxml2 and libxslt from source will now be using a modern `config.guess` and `config.sub` that supports new architectures like `loongarch64`. [[#2831](https://github.com/sparklemotion/nokogiri/issues/2831)] (Thanks, [@zhangwenlong8911](https://github.com/zhangwenlong8911)!)
+* [CRuby] HTML5 parser:
+  * adjusts the specified attributes, adding `xlink:arcrole` and removing `xml:base` [[#2841](https://github.com/sparklemotion/nokogiri/issues/2841), [#2842](https://github.com/sparklemotion/nokogiri/issues/2842)]
+  * allows `<hr>` in `<select>` [[whatwg/html#3410](https://github.com/whatwg/html/issues/3410), [whatwg/html#9124](https://github.com/whatwg/html/pull/9124)]
+* [JRuby] `Node#first_element_child` now returns `nil` if there are only non-element children. Previously a null pointer exception was raised. [[#2808](https://github.com/sparklemotion/nokogiri/issues/2808), [#2844](https://github.com/sparklemotion/nokogiri/issues/2844)]
+* Documentation for `Nokogiri::XSLT` now has usage examples including custom function handlers.
+
+
+### Deprecated
+
+* Passing a `Nokogiri::XML::Node` as the first parameter to `CDATA.new` is deprecated and will generate a warning. This parameter should be a kind of `Nokogiri::XML::Document`. This will become an error in a future version of Nokogiri.
+* Passing a `Nokogiri::XML::Node` as the first parameter to `Schema.from_document` is deprecated and will generate a warning. This parameter should be a kind of `Nokogiri::XML::Document`. This will become an error in a future version of Nokogiri.
+* Passing a `Nokogiri::XML::Node` as the second parameter to `Text.new` is deprecated and will generate a warning. This parameter should be a kind of `Nokogiri::XML::Document`. This will become an error in a future version of Nokogiri.
+* [CRuby] Calling a custom XPath function without the `nokogiri` namespace is deprecated and will generate a warning. Support for non-namespaced functions will be removed in a future version of Nokogiri. (Note that JRuby has never supported non-namespaced custom XPath functions.)
+
+
+### Thank you!
+
+The following people and organizations were kind enough to sponsor @flavorjones or the Nokogiri project during the development of v1.15.0:
+
+* Götz Görisch (@GoetzGoerisch)
+* Airbnb (@airbnb)
+* Kyohei Nanba (@kyo-nanba)
+* Maxime Gauthier (@biximilien)
+* @renuo
+* @dbootyfvrt
+* YOSHIDA Katsuhiko (@kyoshidajp)
+* Homebrew (@Homebrew)
+* Hiroshi SHIBATA (@hsbt)
+* PuLLi (@the-pulli)
+* SiteLog GmbH (@sitelog-gmbh)
+* @zzak
+* Evil Martians (@evilmartians)
+* Ajaya Agrawalla (@ajaya)
+* Modern Treasury (@Modern-Treasury)
+* Danilo Lessa Bernardineli (@danlessa)
+
+We'd also like to thank @github who donate a ton of compute time for our CI pipelines!
+
+---
+
+sha256 checksums:
+
+```
+7dbb717c6abc6b99baa4a4e1586a6de5332513f72a8b3568a69836268c2e1f86  nokogiri-1.15.0-aarch64-linux.gem
+a60c373d86a9a181f9ace78793c4a91ab8fa971af3cce93e9fdf022cd808fe41  nokogiri-1.15.0-arm-linux.gem
+41d312b2d4aa6b6750c2431a25c1bf25fb567bc1e0a750cf55dd02354967724b  nokogiri-1.15.0-arm64-darwin.gem
+51cc8d4d98473d00c0ee18266d146677161b6dd16f8c89cc637db91d47b87c63  nokogiri-1.15.0-java.gem
+1b2d92e240d12ac0a27cb0618f52af6c405831fd339a45aaab265cecda1dc6ab  nokogiri-1.15.0-x64-mingw-ucrt.gem
+497840b3ed9037095fbdd1bf6f7c63d23efab5bcbb03b89d94a6ac8bcab3eda5  nokogiri-1.15.0-x64-mingw32.gem
+5c26427f3cf28d8c1e43f7a7bc58e50298461c7bed5179456b122eefc2b2c5cb  nokogiri-1.15.0-x86-linux.gem
+cbf93df1c257693dfe804c01252415ca7cb9d2452d6cebddf7a35a5dbeb3ea12  nokogiri-1.15.0-x86-mingw32.gem
+ca6cd6ed08e736063539c4aa7454391dfa4153908342e3d873f5bd9218d6f644  nokogiri-1.15.0-x86_64-darwin.gem
+4b28e9151e884c10794e0acf4a6f49db933eee3cd90b20aab952ee0102a03b0c  nokogiri-1.15.0-x86_64-linux.gem
+0ca8ea2149bdaaae8db39f11971af86c83923ec58b72c519d498ec44e1dfe97f  nokogiri-1.15.0.gem
+```
+
+
+
+1.14.4:
+
+## 1.14.4 / 2023-05-11
+
+### Dependencies
+
+* [JRuby] Vendored Xalan-J is updated to [v2.7.3](https://xalan.apache.org/xalan-j/readme.html). This is the first Xalan release in nine years, and it was done to address [CVE-2022-34169](https://github.com/advisories/GHSA-9339-86wc-4qgf).
+
+  The Nokogiri maintainers wish to stress that Nokogiri users were not vulnerable to this CVE, as we explained in [GHSA-qwq9-89rg-ww72](https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-qwq9-89rg-ww72), and so upgrading is really at the discretion of users.
+
+  This release was cut primarily so that JRuby users of v1.14.x can avoid vulnerability scanner alerts on earlier versions of Xalan-J.
+
+---
+
+sha256 checksums:
+
+```
+0fbca96bd832e0b12a2c4419b9a102329630d4e40a125cb85a0cae1585bc295d  nokogiri-1.14.4-aarch64-linux.gem
+fe5b2c44c07b8042421634676c692d2780359c0df5d94daecb11493c028bcdf0  nokogiri-1.14.4-arm-linux.gem
+44ded02aae759bada0161b7872116305f5e8b5dae924427290efd63e9adc2f3f  nokogiri-1.14.4-arm64-darwin.gem
+d915a9b96d333c57d3a1bb72f05435ef311ecb19ae3b1c8c3f2263b67b519dde  nokogiri-1.14.4-java.gem
+3ba597a50b6217e19a1bf1e5467022669ebad598951fa53314ed6e0ecbf41438  nokogiri-1.14.4-x64-mingw-ucrt.gem
+2270ef8fc1f57fc0fa2391f82d460c0bf34b4d9e4a19a0ac81a2cb9bcffbaf2b  nokogiri-1.14.4-x64-mingw32.gem
+bcccf4720d459be74f08e5b4c9704e67fbab8498cc36c686dcba69111996fb6b  nokogiri-1.14.4-x86-linux.gem
+1a574a0a375dff5449af4168e432185ee77d0ad8368b60f6c4a2a699aff5c955  nokogiri-1.14.4-x86-mingw32.gem
+c6400189fec268546d981a072828a44b8d4a1b2a32bee5026243c99af231b602  nokogiri-1.14.4-x86_64-darwin.gem
+6d0e4e4f079fc03aa8b01cd8493acc1c34f7ae51fc0d58a04b6a0de73f8a53d8  nokogiri-1.14.4-x86_64-linux.gem
+2bd1af41a980c51b8f073a3414213c8cf1c756a6e42984ad20a4a23f2e87e00d  nokogiri-1.14.4.gem
+```
+
+
+1.14.3:
+
+## 1.14.3 / 2023-04-11
+
+### Security
+
+* [CRuby] Vendored libxml2 is updated to address CVE-2023-29469, CVE-2023-28484, and one other security-related issue. See [GHSA-pxvg-2qj5-37jqGHSA-pxvg-2qj5-37jq](https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-pxvg-2qj5-37jq) for more information.
+
+
+### Dependencies
+
+* [CRuby] Vendored libxml2 is updated to [v2.10.4](https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.10.4) from v2.10.3.
+
+---
+
+sha256 checksums:
+
+```
+9cc53dd8d92868a0f5bcee44396357a19f95e32d8b9754092622a25bc954c60c  nokogiri-1.14.3-aarch64-linux.gem
+320fa1836b8e59e86a804baee534893bcf3b901cc255bbec6d87f3dd3e431610  nokogiri-1.14.3-arm-linux.gem
+67dd4ac33a8cf0967c521fa57e5a5422db39da8a9d131aaa2cd53deaa12be4cd  nokogiri-1.14.3-arm64-darwin.gem
+13969ec7f41d9cff46fc7707224c55490a519feef7cfea727c6945c5b444caa2  nokogiri-1.14.3-java.gem
+9885085249303461ee08f9a9b161d0a570391b8f5be0316b3ac5a6d9a947e1e2  nokogiri-1.14.3-x64-mingw-ucrt.gem
+997943d7582a23ad6e7a0abe081d0d40d2c1319a6b2749f9b30fd18037f0c38a  nokogiri-1.14.3-x64-mingw32.gem
+58c30b763aebd62dc4222385509d7f83ac398ee520490fadc4b6d7877e29895a  nokogiri-1.14.3-x86-linux.gem
+e1d58a5c56c34aab71b00901a969e19bf9f7322ee459b4e9380f433213887c04  nokogiri-1.14.3-x86-mingw32.gem
+f0a1ed1460a91fd2daf558357f4c0ceac6d994899da1bf98431aeda301e4dc74  nokogiri-1.14.3-x86_64-darwin.gem
+e323a7c654ef846e64582fb6e26f6fed869a96753f8e048ff723e74d8005cb11  nokogiri-1.14.3-x86_64-linux.gem
+3b1cee0eb8879e9e25b6dd431be597ca68f20283b0d4f4ca986521fad107dc3a  nokogiri-1.14.3.gem
+```
+
+
+1.14.2:
+
+## 1.14.2 / 2023-02-13
+
+### Fixed
+
+* Calling `NodeSet#to_html` on an empty node set no longer raises an encoding-related exception. This bug was introduced in v1.14.0 while fixing [#2649](https://github.com/sparklemotion/nokogiri/issues/2649). [[#2784](https://github.com/sparklemotion/nokogiri/issues/2784)]
+
+---
+
+sha256 checksums:
+
+``` text
+966acf4f6c1fba10518f86498141cf44265564ac5a65dcc8496b65f8c354f776  nokogiri-1.14.2-aarch64-linux.gem
+8a3a35cadae4a800ddc0b967394257343d62196d9d059b54e38cf067981db428  nokogiri-1.14.2-arm-linux.gem
+81404cd014ecb597725c3847523c2ee365191a968d0b5f7d857e03f388c57631  nokogiri-1.14.2-arm64-darwin.gem
+0a39222af14e75eb0243e8d969345e03b90c0e02b0f33c61f1ebb6ae53538bb5  nokogiri-1.14.2-java.gem
+62a18f9213a0ceeaf563d1bc7ccfd93273323c4356ded58a5617c59bc4635bc5  nokogiri-1.14.2-x64-mingw-ucrt.gem
+54f6ac2c15a7a88f431bb5e23f4616aa8fc97a92eb63336bcf65b7050f2d3be0  nokogiri-1.14.2-x64-mingw32.gem
+c42fa0856f01f901954898e28c3c2b4dce0e843056b1b126f441d06e887e1b77  nokogiri-1.14.2-x86-linux.gem
+f940d9c8e47b0f19875465376f2d1c8911bc9489ac9a48c124579819dc4a7f19  nokogiri-1.14.2-x86-mingw32.gem
+2508978f5ca28944919973f6300f0a7355fbe72604ab6a6913f1630be1030265  nokogiri-1.14.2-x86_64-darwin.gem
+bc6405e1f3ddac6e401f82d775f1c0c24c6e58c371b3fadaca0596d5d511e476  nokogiri-1.14.2-x86_64-linux.gem
+c765a74aac6cf430a710bb0b6038b8ee11f177393cd6ae8dadc7a44a6e2658b6  nokogiri-1.14.2.gem
+```
+
+
+
+
+1.14.1:
+
+## 1.14.1 / 2023-01-30
+
+### Fixed
+
+* Serializing documents now works again with pseudo-IO objects that don't support IO's encoding API (like rubyzip's `Zip::OutputStream`). This was a regression in v1.14.0 due to the fix for [#752](https://github.com/sparklemotion/nokogiri/issues/752) in [#2434](https://github.com/sparklemotion/nokogiri/issues/2434), and was not completely fixed by [#2753](https://github.com/sparklemotion/nokogiri/issues/2753). [[#2773](https://github.com/sparklemotion/nokogiri/issues/2773)]
+* [CRuby] Address compiler warnings about `void*` casting and old-style C function definitions.
+
+---
+
+sha256 checksums:
+
+```
+99594e8b94f576644ac640a223d74c79e840218948e963aa635f0254927bff10  nokogiri-1.14.1-aarch64-linux.gem
+1dc9b7821e1fa1f3fda40659662e51a4b3692acc4ee6342ee34a6a537fc1d5d8  nokogiri-1.14.1-arm-linux.gem
+1a693df86da8c4c97b01d614470f9c3e10b9c755de8803fbfcfffe0f9dff522a  nokogiri-1.14.1-arm64-darwin.gem
+c1f87a8f7bc56028deb2aecbb29e9b318405f7c468b29047aede78b41bc735a2  nokogiri-1.14.1-java.gem
+2463a1ae0be5f06a10f3f3b374c2b743bff6280db993d488511a19bb7bc7cb7c  nokogiri-1.14.1-x64-mingw-ucrt.gem
+f3a2b0ceedf51d776b39dc759ce191a4df842d7d4f5900c64f33d4753db39877  nokogiri-1.14.1-x64-mingw32.gem
+f395d6c28c822b0877cfb0c71781f05243c034b4823359ab25b3288a73b9fc82  nokogiri-1.14.1-x86-linux.gem
+be34b32fe74e82bffca5b1f3df8727c8fdc828762b6dddab53a11cd8f8515785  nokogiri-1.14.1-x86-mingw32.gem
+9b14091f77086c4f0f09451ba3acd1b5f7e0076fb34fc536682170fa9f1a5074  nokogiri-1.14.1-x86_64-darwin.gem
+21d234c51582b292e2e1e02e6c30eea9188894348985d6910aa8e993749c0aff  nokogiri-1.14.1-x86_64-linux.gem
+b2db3af7769c29cd77d5f39cd3d0b65ab10975bdecf04be71d683f9c9abe2663  nokogiri-1.14.1.gem
+```
+
+
+
+
+1.14.0:
+
+## 1.14.0 / 2023-01-12
+
+### Notable Changes
+
+#### Ruby
+
+This release introduces native gem support for Ruby 3.2. (Also see "Technical note" under "Changed" below.)
+
+This release ends support for:
+
+* Ruby 2.6, for which [upstream support ended 2022-04-12](https://www.ruby-lang.org/en/downloads/branches/).
+* JRuby 9.3, which is not fully compatible with Ruby 2.7+
+
+
+#### Faster, more reliable installation: Native Gem for `aarch64-linux` (aka `linux/arm64/v8`)
+
+This version of Nokogiri ships _official_ native gem support for the `aarch64-linux` platform, which should support AWS Graviton and other ARM64 Linux platforms. Please note that glibc >= 2.29 is required for aarch64-linux systems, see [Supported Platforms](https://nokogiri.org/#supported-platforms) for more information.
+
+
+#### Faster, more reliable installation: Native Gem for `arm-linux` (aka `linux/arm/v7`)
+
+This version of Nokogiri ships _experimental_ native gem support for the `arm-linux` platform. Please note that glibc >= 2.29 is required for arm-linux systems, see [Supported Platforms](https://nokogiri.org/#supported-platforms) for more information.
+
+
+#### Pattern matching
+
+This version introduces an _experimental_ pattern matching API for `XML::Attr`, `XML::Document`, `XML::DocumentFragment`, `XML::Namespace`, `XML::Node`, and `XML::NodeSet` (and their subclasses).
+
+Some documentation on what can be matched:
+
+* [`XML::Attr#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Attr.html?h=deconstruct#method-i-deconstruct_keys)
+* [`XML::Document#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Document.html?h=deconstruct#method-i-deconstruct_keys)
+* [`XML::Namespace#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Namespace.html?h=deconstruct+namespace#method-i-deconstruct_keys)
+* [`XML::Node#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Node.html?h=deconstruct#method-i-deconstruct_keys)
+* [`XML::DocumentFragment#deconstruct`](https://nokogiri.org/rdoc/Nokogiri/XML/DocumentFragment.html?h=deconstruct#method-i-deconstruct)
+* [`XML::NodeSet#deconstruct`](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet.html?h=deconstruct#method-i-deconstruct)
+
+We welcome feedback on this API at [#2360](https://github.com/sparklemotion/nokogiri/issues/2360).
+
+
+### Dependencies
+
+#### CRuby
+
+* Vendored libiconv is updated to [v1.17](https://savannah.gnu.org/forum/forum.php?forum_id=10175)
+
+#### JRuby
+
+* This version of Nokogiri uses [`jar-dependencies`](https://github.com/mkristian/jar-dependencies) to manage most of the vendored Java dependencies. `nokogiri -v` now outputs maven metadata for all Java dependencies, and `Nokogiri::VERSION_INFO` also contains this metadata. [[#2432](https://github.com/sparklemotion/nokogiri/issues/2432)]
+* HTML parsing is now provided by `net.sourceforge.htmlunit:neko-htmlunit:2.61.0` (previously Nokogiri used a fork of `org.cyberneko.html:nekohtml`)
+* Vendored Jing is updated from `com.thaiopensource:jing:20091111` to `nu.validator:jing:20200702VNU`.
+* New dependency on `net.sf.saxon:Saxon-HE:9.6.0-4` (via `nu.validator:jing:20200702VNU`).
+
+
+### Added
+
+* `Node#wrap` and `NodeSet#wrap` now also accept a `Node` type argument, which will be `dup`ed for each wrapper. For cases where many nodes are being wrapped, creating a `Node` once using `Document#create_element` and passing that `Node` multiple times is significantly faster than re-parsing markup on each call. [[#2657](https://github.com/sparklemotion/nokogiri/issues/2657)]
+* [CRuby] Invocation of custom XPath or CSS handler functions may now use the `nokogiri` namespace prefix. Historically, the JRuby implementation _required_ this namespace but the CRuby implementation did not support it. It's recommended that all XPath and CSS queries use the `nokogiri` namespace going forward. Invocation without the namespace is planned for deprecation in v1.15.0 and removal in a future release. [[#2147](https://github.com/sparklemotion/nokogiri/issues/2147)]
+* `HTML5::Document#quirks_mode` and `HTML5::DocumentFragment#quirks_mode` expose the quirks mode used by the parser.
+
+
+### Improved
+
+#### Functional
+
+* HTML5 parser update to reflect changes to the living specification:
+  * [Add the &lt;search&gt; element by domenic · whatwg/html](https://github.com/whatwg/html/pull/7320)
+  * [Remove parse error for &lt;template&gt;&lt;tr&gt;&lt;/tr&gt; &lt;/template&gt; by zcorpan · whatwg/html](https://github.com/whatwg/html/pull/8271)
+
+#### Performance
+
+* Serialization of HTML5 documents and fragments has been re-implemented and is ~10x faster than previous versions. [[#2596](https://github.com/sparklemotion/nokogiri/issues/2596), [#2569](https://github.com/sparklemotion/nokogiri/issues/2569)]
+* Parsing of HTML5 documents is ~90% faster thanks to additional compiler optimizations being applied. [[#2639](https://github.com/sparklemotion/nokogiri/issues/2639)]
+* Compare `Encoding` objects rather than compare their names. This is a slight performance improvement and is future-proof. [[#2454](https://github.com/sparklemotion/nokogiri/issues/2454)] (Thanks, [@casperisfine](https://github.com/casperisfine)!)
+
+#### Error handling
+
+* `Document#canonicalize` now raises an exception if `inclusive_namespaces` is non-nil and the mode is inclusive, i.e. `XML_C14N_1_0` or `XML_C14N_1_1`. `inclusive_namespaces` can only be passed with exclusive modes, and previously this silently failed.
+* Empty CSS selectors now raise a clearer `Nokogiri::CSS::SyntaxError` message, "empty CSS selector". Previously the exception raised from the bowels of `racc` was "unexpected '$' after ''". [[#2700](https://github.com/sparklemotion/nokogiri/issues/2700)]
+* [CRuby] `XML::Reader` parsing errors encountered during `Reader#attribute_hash` and `Reader#namespaces` now raise an `XML::SyntaxError`. Previously these methods would return `nil` and users would generally experience `NoMethodErrors` from elsewhere in the code.
+* Prefer `ruby_xmalloc` to `malloc` within the C extension. [[#2480](https://github.com/sparklemotion/nokogiri/issues/2480)] (Thanks, [@Garfield96](https://github.com/Garfield96)!)
+
+#### Installation
+
+* Avoid compile-time conflict with system-installed `gumbo.h` on OpenBSD. [[#2464](https://github.com/sparklemotion/nokogiri/issues/2464)]
+* Remove calls to `vasprintf` in favor of platform-independent `rb_vsprintf`
+* Installation from source on systems missing libiconv will once again generate a helpful error message (broken since v1.11.0). [[#2505](https://github.com/sparklemotion/nokogiri/issues/2505)]
+* [CRuby+OSX] Compiling from source on MacOS will use the clang option `-Wno-unknown-warning-option` to avoid errors when Ruby injects options that clang doesn't know about. [[#2689](https://github.com/sparklemotion/nokogiri/issues/2689)]
+
+
+### Fixed
+
+* `SAX::Parser`'s `encoding` attribute will not be clobbered when an alternative encoding is passed into `SAX::Parser#parse_io`. [[#1942](https://github.com/sparklemotion/nokogiri/issues/1942)] (Thanks, [@kp666](https://github.com/kp666)!)
+* Serialized `HTML4::DocumentFragment` will now be properly encoded. Previously this empty string was encoded as `US-ASCII`. [[#2649](https://github.com/sparklemotion/nokogiri/issues/2649)]
+* `Node#wrap` now uses the parent as the context node for parsing wrapper markup, falling back to the document for unparented nodes. Previously the document was always used.
+* [CRuby] UTF-16-encoded documents longer than ~4000 code points now serialize properly. Previously the serialized document was corrupted when it exceeded the length of libxml2's internal string buffer. [[#752](https://github.com/sparklemotion/nokogiri/issues/752)]
+* [CRuby] The HTML5 parser now correctly handles text at the end of `form` elements.
+* [CRuby] `HTML5::Document#fragment` now always uses `body` as the parsing context. Previously, fragments were parsed in the context of the associated document's root node, which allowed for inconsistent parsing. [[#2553](https://github.com/sparklemotion/nokogiri/issues/2553)]
+* [CRuby] `Nokogiri::HTML5::Document#url` now correctly returns the URL passed to the constructor method. Previously it always returned `nil`. [[#2583](https://github.com/sparklemotion/nokogiri/issues/2583)]
+* [CRuby] `HTML5` encoding detection is now case-insensitive with respect to `meta` tag charset declaration. [[#2693](https://github.com/sparklemotion/nokogiri/issues/2693)]
+* [CRuby] `HTML5` fragment parsing in context of an annotation-xml node now works. Previously this rarely-used path invoked rb_funcall with incorrect parameters, resulting in an exception, a fatal error, or potentially a segfault. [[#2692](https://github.com/sparklemotion/nokogiri/issues/2692)]
+* [CRuby] `HTML5` quirks mode during fragment parsing more closely matches document parsing. [[#2646](https://github.com/sparklemotion/nokogiri/issues/2646)]
+* [JRuby] Fixed a bug with adding the same namespace to multiple nodes via `#add_namespace_definition`. [[#1247](https:<//github.com/sparklemotion/nokogiri/issues/1247)]
+* [JRuby] `NodeSet#[]` now raises a TypeError if passed an invalid parameter type. [[#2211](https://github.com/sparklemotion/nokogiri/issues/2211)]
+
+
+### Deprecated
+
+* `Nokogiri.install_default_aliases` is deprecated in favor of `Nokogiri::EncodingHandler.install_default_aliases`. This is part of a private API and is probably not called by anybody, but we'll go through a deprecation cycle before removal anyway. [[#2643](https://github.com/sparklemotion/nokogiri/issues/2643), [#2446](https://github.com/sparklemotion/nokogiri/issues/2446)]
+
+
+### Changed
+
+* [CRuby+OSX] Technical note: On MacOS Ruby 3.2, the symbols from libxml2 and libxslt are no longer exported. Ruby 3.2 adopted new features from the Darwin toolchain that make it challenging to continue to support this rarely-used binary API. A future minor release of Nokogiri may remove these symbols (and others) entirely. Feedback from downstream gem maintainers is welcome at [#2746](https://github.com/sparklemotion/nokogiri/issues/2746), where you'll also be able to read deeper context on this decision.
+
+
+### Thank you!
+
+The following people and organizations were kind enough to sponsor [@flavorjones](https://github.com/flavorjones) or the Nokogiri project during the development of v1.14.0:
+
+* Götz Görisch [@GoetzGoerisch](https://github.com/GoetzGoerisch)
+* Airbnb [@airbnb](https://github.com/airbnb)
+* Kyohei Nanba [@kyo-nanba](https://github.com/kyo-nanba)
+* Maxime Gauthier [@biximilien](https://github.com/biximilien)
+* [@renuo](https://github.com/renuo)
+* [@dbootyfvrt](https://github.com/dbootyfvrt)
+* YOSHIDA Katsuhiko [@kyoshidajp](https://github.com/kyoshidajp)
+* Homebrew [@Homebrew](https://github.com/Homebrew)
+* David Vrensk [@dvrensk](https://github.com/dvrensk)
+* Alex Daragiu [@daragiu](https://github.com/daragiu)
+* Github [@github](https://github.com/github)
+* Julian Joseph [@Julian88Tex](https://github.com/Julian88Tex)
+* Charles Simon-Meunier [@csimonmeunier](https://github.com/csimonmeunier)
+* Ben Slaughter [@benSlaughter](https://github.com/benSlaughter)
+* Garen Torikian [@gjtorikian](https://github.com/gjtorikian)
+* Frank Groeneveld [@frenkel](https://github.com/frenkel)
+* Hiroshi SHIBATA [@hsbt](https://github.com/hsbt)
+
+---
+
+sha256 checksums:
+
+```
+c87564f5f8fbfb72fbcb7ed9781f6472ceabe2f288ede6b9c37071dc32320ba6  nokogiri-1.14.0-aarch64-linux.gem
+33617e8a94993b8130a50bd59d6141a8d4d2aa4d4053f5c7874c71608e6e6dcc  nokogiri-1.14.0-arm-linux.gem
+5c0cd4eeb8501526e7e2aaba93b60ebf3dda37bfda665691196d4e9bb87adb1a  nokogiri-1.14.0-arm64-darwin.gem
+772936bf635b33b99bc89828de8e7077de47009638fe5ff11795f8b1d578465c  nokogiri-1.14.0-java.gem
+ee11c092b2cf2b137e71f623746162c578b53483dccf4c6209c80f5ba47927fe  nokogiri-1.14.0-x64-mingw-ucrt.gem
+9b91eede6155eb8891d7d95d8087d514f3007dd19813982104ed77452a2a7ace  nokogiri-1.14.0-x64-mingw32.gem
+649019d961b0ea8aee1bc8aa2573ab8ffb77d3f5e9c333aa2462a79fc56745fc  nokogiri-1.14.0-x86-linux.gem
+40985fc46315ea3d33ed900a649c0bb77484035ea882b7c9e55aef436b1958a8  nokogiri-1.14.0-x86-mingw32.gem
+5d328c0d0c5f6f37a26c75b0282f9014c9686d4c10578ec8dfbbfcbea7da8b95  nokogiri-1.14.0-x86_64-darwin.gem
+faa88b2bca46adaa3420c6e27eb8eb71f5b8d9f454ed7488a194a00c5ef52fbe  nokogiri-1.14.0-x86_64-linux.gem
+55ca6e87ae85e944a5901dd5a6cacbb961eaaf8b8dd3901b57475665396914bb  nokogiri-1.14.0.gem
+```
+
+
+1.14.0rc1:
+
+## 1.14.0.rc1 / 2022-12-29
+
+This is a prerelease.
+
+- Please provide feedback on it at https://github.com/sparklemotion/nokogiri/discussions/2747
+- Full details on this release are at https://github.com/sparklemotion/nokogiri/blob/main/CHANGELOG.md
+
+Notable changes:
+
+- Introduces native gem support for Ruby 3.2.
+- Ends support for Ruby 2.6 and JRuby 9.3
+- Official native gem support for `aarch64-linux`
+- Experimental native gem support for `arm-linux`
+- Pattern matching API
+
+Please note that Ruby 3.2 changes how symbols are resolved on MacOS, so we're particularly interested in hearing feedback from MacOS users about the native (precompiled) gem packages for Ruby 3.2.
+
+We're waiting for the following to do a final release:
+
+- a final release of rake-compiler-dock that supports Ruby 3.2
+- Windows CI environment that runs Ruby 3.2.0, and green tests
+- feedback to build confidence that our approach to Darwin symbol resolution in the precompiled extension works for everyone
+
+---
+
+sha256 checksums:
+
+```
+9cb5140f400c3599ba9da92a338d2384976179a05e15267d5bda27ce5ab5294a  nokogiri-1.14.0.rc1-aarch64-linux.gem
+70946d652626925f0e7d8cb0f03e45b81423496e8f0db30dce7aecccc33336c6  nokogiri-1.14.0.rc1-arm-linux.gem
+8562ed2a3765f2020e340d4cbde72c582843191b20114eb24bcc313307483873  nokogiri-1.14.0.rc1-arm64-darwin.gem
+6359f13cccc526936913bac3515a3d3d7d1ffde5dffff4eadaaf3cad126fc753  nokogiri-1.14.0.rc1-java.gem
+c83050f34b78690bd13398ad91cace3c32957614fd7b6e5ce7098386340cd23d  nokogiri-1.14.0.rc1-x64-mingw-ucrt.gem
+4d2edec4b79735b648eca12c5d52b52d03f4ffd300ccacf8fda9169227eb6a4d  nokogiri-1.14.0.rc1-x64-mingw32.gem
+55d334f128d86a20497a3fa4e24c67098199dc9428a44b77284cff6c95104c35  nokogiri-1.14.0.rc1-x86-linux.gem
+79e1b2f25a26a9a4a87d3af64a47be27ee3cc4ec0d02eef681b64cd8b610e2a6  nokogiri-1.14.0.rc1-x86-mingw32.gem
+c359c27e275da0f82d09c25f6efafd116546d2c7c43c91e9393567f00aa3064a  nokogiri-1.14.0.rc1-x86_64-darwin.gem
+e15e2c0f844bd113e1b409dfb534b7e2c727b10812734064c05a732b6342f28c  nokogiri-1.14.0.rc1-x86_64-linux.gem
+9d527b0b6eeb88f48bc90648df11824f247019e08b95f5a75b6ea02cefcf499a  nokogiri-1.14.0.rc1.gem
+```
+
+
+1.13.10:
+
+## 1.13.10 / 2022-12-07
+
+### Security
+
+* [CRuby] Address CVE-2022-23476, unchecked return value from `xmlTextReaderExpand`. See [GHSA-qv4q-mr5r-qprj](https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-qv4q-mr5r-qprj) for more information.
+
+
+### Improvements
+
+* [CRuby] `XML::Reader#attribute_hash` now returns `nil` on parse errors. This restores the behavior of `#attributes` from v1.13.7 and earlier. [[#2715](https://github.com/sparklemotion/nokogiri/issues/2715)]
+
+---
+
+sha256 checksums:
+
+```
+777ce2e80f64772e91459b943e531dfef387e768f2255f9bc7a1655f254bbaa1  nokogiri-1.13.10-aarch64-linux.gem
+b432ff47c51386e07f7e275374fe031c1349e37eaef2216759063bc5fa5624aa  nokogiri-1.13.10-arm64-darwin.gem
+73ac581ddcb680a912e92da928ffdbac7b36afd3368418f2cee861b96e8c830b  nokogiri-1.13.10-java.gem
+916aa17e624611dddbf2976ecce1b4a80633c6378f8465cff0efab022ebc2900  nokogiri-1.13.10-x64-mingw-ucrt.gem
+0f85a1ad8c2b02c166a6637237133505b71a05f1bb41b91447005449769bced0  nokogiri-1.13.10-x64-mingw32.gem
+91fa3a8724a1ce20fccbd718dafd9acbde099258183ac486992a61b00bb17020  nokogiri-1.13.10-x86-linux.gem
+d6663f5900ccd8f72d43660d7f082565b7ffcaade0b9a59a74b3ef8791034168  nokogiri-1.13.10-x86-mingw32.gem
+81755fc4b8130ef9678c76a2e5af3db7a0a6664b3cba7d9fe8ef75e7d979e91b  nokogiri-1.13.10-x86_64-darwin.gem
+51d5246705dedad0a09b374d09cc193e7383a5dd32136a690a3cd56e95adf0a3  nokogiri-1.13.10-x86_64-linux.gem
+d3ee00f26c151763da1691c7fc6871ddd03e532f74f85101f5acedc2d099e958  nokogiri-1.13.10.gem
+```
+
+
+
+
+
+
+-------------------------------------------------------------------
 Mon Oct  2 13:09:53 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - Buildrequire openssl gem to fix building with Ruby 3.0

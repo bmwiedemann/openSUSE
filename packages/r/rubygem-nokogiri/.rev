@@ -639,4 +639,12 @@
     <comment>- Buildrequire openssl gem to fix building with Ruby 3.0 (forwarded request 1114817 from mvidner)</comment>
     <requestid>1115105</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>237e0448c1417691511ff13451851f2f</srcmd5>
+    <version>1.15.4</version>
+    <time>1700250524</time>
+    <user>anag+factory</user>
+    <comment>New upstream release 1.15.4</comment>
+    <requestid>1127245</requestid>
+  </revision>
 </revisionlist>
