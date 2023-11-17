@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:10:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add skip-tests_big-endian.patch to skip little-endian-only
+  tests (bsc#1216930).
+
+-------------------------------------------------------------------
 Mon May 29 16:23:16 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Library is always liblua5_4-5: due to SOVERSION leading digit

@@ -269,4 +269,14 @@
 </comment>
     <requestid>1089611</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0d2683c92a163ae679d1fe8f728975d8</srcmd5>
+    <version>5.4.6</version>
+    <time>1700250477</time>
+    <user>anag+factory</user>
+    <comment>- Add skip-tests_big-endian.patch to skip little-endian-only
+  tests (bsc#1216930).
+</comment>
+    <requestid>1126143</requestid>
+  </revision>
 </revisionlist>
