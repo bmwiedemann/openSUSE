@@ -3005,6 +3005,7 @@ tar -xzf %{SOURCE0} -C .
 # Fix weight too https://github.com/notofonts/Arimo/issues/13
 ttx ttf/Arimo/Arimo-BoldItalic.ttf
 %patch0
+touch -d 2022-08-22 ttf/Arimo/Arimo-BoldItalic.ttx # have constant mtime after patch0 so output files do not vary across builds - may be dropped once https://github.com/notofonts/Arimo/pull/17 gets into the .tar
 ttx -f ttf/Arimo/Arimo-BoldItalic.ttx
 rm ttf/Arimo/Arimo-BoldItalic.ttx
 

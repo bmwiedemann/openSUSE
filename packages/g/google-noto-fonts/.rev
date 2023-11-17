@@ -218,4 +218,12 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
 </comment>
     <requestid>998725</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>4e11c501d59c9beb1564857a5be43827</srcmd5>
+    <version>20220607</version>
+    <time>1700250533</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127314</requestid>
+  </revision>
 </revisionlist>
