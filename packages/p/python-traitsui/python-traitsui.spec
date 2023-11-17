@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitsui
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-traitsui
-Version:        7.2.1
+Version:        8.0.0
 Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
@@ -28,12 +27,11 @@ License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/traitsui
 Source:         https://files.pythonhosted.org/packages/source/t/traitsui/traitsui-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM traitsui-pr1689-deprecations.patch -- gh#enthought/traitsui#1689 + gh#enthought/traitsui#1681
-Patch0:         traitsui-pr1689-deprecations.patch
 BuildRequires:  %{python_module configobj}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyface >= 7.3}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyface >= 7.3
@@ -66,10 +64,10 @@ Part of the Enthought Tool Suite (ETS).
 %autosetup -p1 -n traitsui-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 ln -sf examples/tutorials/doc_exmaples/default.css examples/tutorials/traitsui_4.0/default.css
 
@@ -77,7 +75,7 @@ ln -sf examples/tutorials/doc_exmaples/default.css examples/tutorials/traitsui_4
 export LANG=en_US.UTF-8
 # different splitters?
 donttest="test_splitter_prefs_are_restored"
-%pytest traitsui/tests -k "not ($donttest)"
+%pytest traitsui/tests -k "not (${donttest})"
 
 %files %{python_files}
 %doc README.rst

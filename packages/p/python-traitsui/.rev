@@ -80,4 +80,41 @@
     <comment></comment>
     <requestid>946884</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0a3ac57fc9e2f2e202b0d170ad097c8b</srcmd5>
+    <version>8.0.0</version>
+    <time>1700250639</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.0.0:
+  - This is a major release that provides support for PySide
+    6.4 and 6.5 as well as Python 3.11. It includes a number
+    of backwards-incompatible changes following the example of
+    Pyface 8.0.0, most notable is moving the traitsui.qt4.*
+    modules to traitsui.qt.*. As with Pyface 8.0 we include a
+    backwards-compatibility mode which allows importing from the
+    'qt4' namespace via:
+    - setting the ETS toolkit to &quot;qt4&quot;
+    - setting the ETS_QT4_IMPORTS environment variable
+    - manually adding appropriate finders to sys.meta_path
+    - Be strict about 'handler.init()' return values
+    - Move 'traitsui.qt4.' to 'traitsui.qt.'
+    - Remove deprecated 'format' trait
+    - Deprecate imports from traitsui.editors (use
+      traitsui.editors.api)
+    - Remove backwards-compatibility mode in undo/redo code
+    - Support for Python 3.11 and PySide 6.4+
+    - Fix uses of None in date range editor
+    - Add comments for Wx-only examples
+    - Replace uses of &quot;fast_ui&quot; dispatch with &quot;ui&quot; dispatch
+    - Fix FileDialog selection actions
+    - Fix regression in Wx version of FileEditor
+    - Fix missing attribute of InstanceFactoryChocie
+    - Replace some relative imports in tests
+- Update to 7.4.3:
+  - This is a small bugfix release which resolves some bugs that
+    have come to light as we get more experience with PySide
+    6, together with changes to run CI on more recent Python
+    versions and current Github infrastructure.</comment>
+    <requestid>1127266</requestid>
+  </revision>
 </revisionlist>

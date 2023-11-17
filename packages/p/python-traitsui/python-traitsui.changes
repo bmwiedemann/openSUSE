@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Fri Nov 17 09:34:27 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 8.0.0:
+  - This is a major release that provides support for PySide
+    6.4 and 6.5 as well as Python 3.11. It includes a number
+    of backwards-incompatible changes following the example of
+    Pyface 8.0.0, most notable is moving the traitsui.qt4.*
+    modules to traitsui.qt.*. As with Pyface 8.0 we include a
+    backwards-compatibility mode which allows importing from the
+    'qt4' namespace via:
+    - setting the ETS toolkit to "qt4"
+    - setting the ETS_QT4_IMPORTS environment variable
+    - manually adding appropriate finders to sys.meta_path
+    - Be strict about 'handler.init()' return values
+    - Move 'traitsui.qt4.' to 'traitsui.qt.'
+    - Remove deprecated 'format' trait
+    - Deprecate imports from traitsui.editors (use
+      traitsui.editors.api)
+    - Remove backwards-compatibility mode in undo/redo code
+    - Support for Python 3.11 and PySide 6.4+
+    - Fix uses of None in date range editor
+    - Add comments for Wx-only examples
+    - Replace uses of "fast_ui" dispatch with "ui" dispatch
+    - Fix FileDialog selection actions
+    - Fix regression in Wx version of FileEditor
+    - Fix missing attribute of InstanceFactoryChocie
+    - Replace some relative imports in tests
+- Update to 7.4.3:
+  - This is a small bugfix release which resolves some bugs that
+    have come to light as we get more experience with PySide
+    6, together with changes to run CI on more recent Python
+    versions and current Github infrastructure.
+    - Fix rendering of dragged tree nodes on Qt6
+    - Add explicit allow_none in Datetime traits
+    - Generate extra TableEditor menus dynamically
+    - Display the selected date in the DateEditor in custom style
+    - Guard Qt TreeEditor against destroyed QTreeViewItems
+- Update to 7.4.2:
+  - This is a small bug fix release which resolves a couple of
+    bugs in the RangeEditor and TreeEditor. It also pins the
+    PySide6 version to < 6.4.0 due to incompatibilities with the
+    new enum system, which should improve the install experience.
+    - Fix RangeTextEditor handling of None for low/high
+    - Pin PySide6 to < 6.4
+    - Fix issues with shared "New" context menu in TreeEditor
+- Update to 7.4.1:
+  - This is a bug fix release which resolves an issue with
+    RangeEditor not handling None for either the high or low
+    value, as well as an issue with ProgressColumn rendering.
+    - Fix issue with progress column rendering on Linux and
+      Windows.
+    - Fix typos in docstrings
+    - Fix range text editor bug
+    - Fix issue where file editor filters were not used in simple
+      editor
+- Update to 7.4.0:
+  - This is a minor release which fixes a number of bugs and adds
+    smala couple of l features. The most significant changes
+    are the to Eability to add separators numEditor comboboxes,
+    the ability and to use Pyface action Schemas for menu bars
+    toolbars in Views, QtMuand getting the VideoEditor working
+    against the new ltimedia QtMuAPIs in Qt6.
+    - Separators in Combobox EnumEditors.
+    - Allow the use of Pyface Schemas for View menus and
+      toolbars.
+    - Delay imports which force toolkit selection
+    - Fix ImageEditor paintEvent when image is None.
+    - Fix VideoEditor for Qt6
+    - Fix the ImageEnumEditor on Qt5+
+    - Fix some height and width calls for Qt and Python 3.10+
+    - Fix a crash on PyQt5 when a Group has no content
+    - Numerous fixes for tests and CI
+    - Add a copy button to code blocks in documentation
+- Update to 7.3.1:
+  - This is a bugfix release that resolves a couple of critical
+    errors in some Editors.
+    - Fix an issue with KeyBindingsEditor double-click and dark
+      mode colors
+    - Fix an issue with integer division in ImageEnumEditor
+    - Fix an attribute name and type error in the FileEditor
+- Update to 7.3.0:
+  - This is a minor release which includes numerous bug fixes,
+    documentation improvements, code maintenance changes, and
+    enhancements.
+    - The most important new features are experimental support
+      for Qt6, both for PySide6 and PyQt6 (although the latter is
+      less complete).
+    - Qt4 is deprecated and is no longer being tested in
+      CI. Support will be removed in the next major release.
+    - The new Pyface Font and Color classes can now be used with
+      the TraitsUI Color and Font traits.
+    - The image editor can now use any Pyface IImage instance,
+      allowing simple dynamic image editing.
+    - Numerous bugfixes and small improvements to existing
+      editors.
+  - Features
+    - Expose TreeEditor actions and IconSize in
+      traitsui.editors.api
+    - Add UITester support for qt TableEditor
+    - Add UITester DirectoryEditor support
+    - Add an expand_all method to TreeEditor
+    - Used Black to ensure a uniform codestyle for TraitsUI
+    - Allow per-row tooltips in the ListStrEditor's adapter
+    - PySide6 support
+    - Add support for Pyface Color and standaize color names
+    - Pyface Fonts can be used with TraitsUI Font traits
+    - Add ListStrAdapter to traitsui.api
+    - Remove uses of the archaic property_depends_on decorator
+    - Require Pyface 7.4.1
+  - Fixes
+    - Call HasPrivateTraits.init() in GroupEditor.init
+    - Add RangeEditor support for format_func and deprecate
+      format trait on
+    - RangeEditor factory / toolkit specific Editor
+      implementations
+    - Fix Dynamic EnumEditor on qt
+    - Fix ProgressColumn bars overlapping with PyQt5 and PySide2
+    - Fix selectable InstanceEditor combobox updates
+    - Fix Qt InstanceEditor appearance when None selected
+    - Prevent RangeTextEditor from allowing values outside range
+    - Fix droppable InstanceEditor
+    - Fix double error dialogs
+    - Convert traitsui.instance_choice.InstanceChoiceItem into an
+      instance of traits.api.ABCHasStrictTraits to avoid users
+      from instantiating the object directly
+    - Fix issue with incorrect items added via context menu in a
+      TreeEditor
+    - Fix name errors and refactor flake8 config to reduce the
+      chance of future errors.
+    - Fix NotebookEditor initial selected
+    - Convert Qt Enums to be compatible with PyQt6
+    - Fix SimpleSpinEditor "enter set" on qt
+    - Fix issue with ImageEditor not updating for all IImage
+      implementations.
+    - Fix issues with KeyBindings.
+    - Fix the KeyBindingEditor.
+    - Improve error colors for dark mode on Qt.
+  - Documentation changes
+    - Move "array_editor" to "StandardEditors" contributed
+      examples
+- Remove upstramed patch:
+  - traitsui-pr1689-deprecations.patch
+
+-------------------------------------------------------------------
 Sun Jan 16 15:11:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.1
