@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 11 18:01:47 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.8.1
+  * Fix missing commandline option in man page. (Issue #119)
+  * Fix incorrect category icons by disabling fallbacks. (Issue #116)
+  * Remember order of recently used when searching.
+  * Translation updates
+
+-------------------------------------------------------------------
 Tue Aug 29 15:44:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 2.8.0
