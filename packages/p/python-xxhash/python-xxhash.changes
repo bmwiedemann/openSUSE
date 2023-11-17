@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 17 08:07:01 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.1
+  - Build wheels for Python 3.12
+  - Remove setuptools_scm
+- Changes from 3.3.0
+  - Upgrade xxHash to v0.8.2
+  - Drop support for Python 3.6
+- Changes from 3.2.0
+  - Build Python 3.11 wheels.
+  - Remove setup.py test_suites, call unittest directly
+
+-------------------------------------------------------------------
 Tue Oct 24 13:48:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use setuptools_scm to handle version in metadata properly
