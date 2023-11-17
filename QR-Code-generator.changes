@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 12 12:17:20 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.8.0
+  * https://github.com/nayuki/QR-Code-generator/compare/v1.6.0...v1.8.0
+- Rebase 0003-Generate-both-shared-and-static-libraries.patch
+- Rebase 0004-Create-install-targets-for-C-and-CPP.patch
+- Drop 0005-Rename-cpp-library-to-qrcodegencpp-to-avoid-conflict.patch
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Mar  8 23:39:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:

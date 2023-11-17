@@ -8,10 +8,10 @@ Subject: [PATCH 3/5] Generate both shared and static libraries
  cpp/Makefile | 14 ++++++++++----
  2 files changed, 20 insertions(+), 8 deletions(-)
 
-Index: QR-Code-generator-1.6.0/c/Makefile
+Index: QR-Code-generator-1.8.0/c/Makefile
 ===================================================================
---- QR-Code-generator-1.6.0.orig/c/Makefile
-+++ QR-Code-generator-1.6.0/c/Makefile
+--- QR-Code-generator-1.8.0.orig/c/Makefile
++++ QR-Code-generator-1.8.0/c/Makefile
 @@ -51,16 +51,19 @@ CFLAGS += -std=c99 -O
  # ---- Targets to build ----
  
@@ -22,7 +22,7 @@ Index: QR-Code-generator-1.6.0/c/Makefile
 +# Bump the soname number when the ABI changes and gets incompatible
 +SO_NAME = $(LIBFILE).1
  LIBOBJ = qrcodegen.o
- MAINS = qrcodegen-demo qrcodegen-test qrcodegen-worker
+ MAINS = qrcodegen-demo qrcodegen-test
  
  # Build all binaries
 -all: $(LIBFILE) $(MAINS)
@@ -36,7 +36,7 @@ Index: QR-Code-generator-1.6.0/c/Makefile
  
  # Executable files
 @@ -72,9 +75,12 @@ qrcodegen-test: qrcodegen-test.c $(LIBOB
- 	$(CC) $(CFLAGS) -DQRCODEGEN_TEST -o $@ $^
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -DQRCODEGEN_TEST -o $@ $^
  
  # The library
 -$(LIBFILE): $(LIBOBJ)
@@ -49,25 +49,25 @@ Index: QR-Code-generator-1.6.0/c/Makefile
  # Object files
  %.o: %.c .deps/timestamp
  	$(CC) $(CFLAGS) -fPIC -c -o $@ -MMD -MF .deps/$*.d $<
-Index: QR-Code-generator-1.6.0/cpp/Makefile
+Index: QR-Code-generator-1.8.0/cpp/Makefile
 ===================================================================
---- QR-Code-generator-1.6.0.orig/cpp/Makefile
-+++ QR-Code-generator-1.6.0/cpp/Makefile
+--- QR-Code-generator-1.8.0.orig/cpp/Makefile
++++ QR-Code-generator-1.8.0/cpp/Makefile
 @@ -51,16 +51,19 @@ CXXFLAGS += -std=c++11 -O
  # ---- Targets to build ----
  
- LIB = qrcodegen
+ LIB = qrcodegencpp
 -LIBFILE = lib$(LIB).a
 +ARFILE = lib$(LIB).a
 +LIBFILE = lib$(LIB).so
 +# Bump the soname number when the ABI changes and gets incompatible
 +SO_NAME = $(LIBFILE).1
- LIBOBJ = QrCode.o
- MAINS = QrCodeGeneratorDemo QrCodeGeneratorWorker
+ LIBOBJ = qrcodegen.o
+ MAINS = QrCodeGeneratorDemo
  
  # Build all binaries
 -all: $(LIBFILE) $(MAINS)
-+all: $(ARFILE) $(LIBFILE) $(MAINS)
++all: $(LIBFILE) $(LIBFILE) $(MAINS)
  
  # Delete build output
  clean:
@@ -77,7 +77,7 @@ Index: QR-Code-generator-1.6.0/cpp/Makefile
  
  # Executable files
 @@ -68,9 +71,12 @@ clean:
- 	$(CXX) $(CXXFLAGS) -o $@ $< -L . -l $(LIB)
+ 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $< -L . -l $(LIB)
  
  # The library
 -$(LIBFILE): $(LIBOBJ)

@@ -8,16 +8,16 @@ Subject: [PATCH 4/5] Create install targets for C and CPP
  cpp/Makefile | 27 +++++++++++++++++++++++++++
  2 files changed, 53 insertions(+)
 
-Index: QR-Code-generator-1.6.0/c/Makefile
+Index: QR-Code-generator-1.8.0/c/Makefile
 ===================================================================
---- QR-Code-generator-1.6.0.orig/c/Makefile
-+++ QR-Code-generator-1.6.0/c/Makefile
+--- QR-Code-generator-1.8.0.orig/c/Makefile
++++ QR-Code-generator-1.8.0/c/Makefile
 @@ -34,6 +34,8 @@ CFLAGS += -std=c99 -O
  # Extra flags for diagnostics:
  # CFLAGS += -g -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -fsanitize=undefined,address
  
 +# Version information
-+VERSION = 1.5.0
++VERSION = 1.8.0
  
  # ---- Controlling make ----
  
@@ -28,7 +28,7 @@ Index: QR-Code-generator-1.6.0/c/Makefile
 +REAL_NAME = $(LIBFILE).$(VERSION)
 +HEADERS = qrcodegen.h
  LIBOBJ = qrcodegen.o
- MAINS = qrcodegen-demo qrcodegen-test qrcodegen-worker
+ MAINS = qrcodegen-demo qrcodegen-test
  
 +# define paths to install
 +INCLUDEDIR ?= $(DESTDIR)/usr/include/qrcodegen
@@ -61,17 +61,17 @@ Index: QR-Code-generator-1.6.0/c/Makefile
 +
  # Executable files
  %: %.o $(LIBFILE)
- 	$(CC) $(CFLAGS) -o $@ $< -L . -l $(LIB)
-Index: QR-Code-generator-1.6.0/cpp/Makefile
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -L . -l $(LIB)
+Index: QR-Code-generator-1.8.0/cpp/Makefile
 ===================================================================
---- QR-Code-generator-1.6.0.orig/cpp/Makefile
-+++ QR-Code-generator-1.6.0/cpp/Makefile
+--- QR-Code-generator-1.8.0.orig/cpp/Makefile
++++ QR-Code-generator-1.8.0/cpp/Makefile
 @@ -34,6 +34,8 @@ CXXFLAGS += -std=c++11 -O
  # Extra flags for diagnostics:
  # CXXFLAGS += -g -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -fsanitize=undefined,address
  
 +# Version information
-+VERSION = 1.5.0
++VERSION = 1.8.0
  
  # ---- Controlling make ----
  
@@ -80,16 +80,16 @@ Index: QR-Code-generator-1.6.0/cpp/Makefile
  # Bump the soname number when the ABI changes and gets incompatible
  SO_NAME = $(LIBFILE).1
 +REAL_NAME = $(LIBFILE).$(VERSION)
-+HEADERS = QrCode.hpp
- LIBOBJ = QrCode.o
- MAINS = QrCodeGeneratorDemo QrCodeGeneratorWorker
++HEADERS = qrcodegen.hpp
+ LIBOBJ = qrcodegen.o
+ MAINS = QrCodeGeneratorDemo
  
 +# define paths to install
 +INCLUDEDIR ?= $(DESTDIR)/usr/include/qrcodegen
 +LIBDIR ?= $(DESTDIR)/usr/lib
 +
  # Build all binaries
- all: $(ARFILE) $(LIBFILE) $(MAINS)
+ all: $(LIBFILE) $(LIBFILE) $(MAINS)
  
 @@ -66,6 +74,24 @@ clean:
  	rm -f -- $(LIBOBJ) $(ARFILE) $(LIBFILE) $(MAINS:=.o) $(MAINS)
@@ -115,4 +115,4 @@ Index: QR-Code-generator-1.6.0/cpp/Makefile
 +
  # Executable files
  %: %.o $(LIBFILE)
- 	$(CXX) $(CXXFLAGS) -o $@ $< -L . -l $(LIB)
+ 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $< -L . -l $(LIB)
