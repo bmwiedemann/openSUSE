@@ -1,7 +1,7 @@
 #
 # spec file for package warewulf-nhc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,13 @@
 %{!?nhc_helper_dir:%global nhc_helper_dir %{_libexecdir}/%{sname}}
 
 Name:           warewulf-nhc
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Warewulf Node Health Check (NHC)
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            http://warewulf.lbl.gov/trac
 Source0:        https://github.com/mej/nhc/archive/%{version}.tar.gz#./warewulf-nhc-%{version}.tar.gz
-Patch0:         test-test_lbnl_file.nhc-Put-all-process-substitution.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  autoconf
@@ -51,7 +50,6 @@ to misconfiguration, hardware failures, etc.
 
 %prep
 %setup -q -n %{sname}-%{version}
-%autopatch -p1
 
 %build
 ./autogen.sh
@@ -72,17 +70,17 @@ rm -vr %{buildroot}/%{_localstatedir}/run/nhc
 mv %{buildroot}/etc/logrotate.d/%{sname} %{buildroot}/etc/logrotate.d/%{name}
 
 # test fails for factory, will be fixed in next release
-%if !0%{?suse_version} > 1500 
+%if !0%{?suse_version} > 1500
 %check
 %{__make} test
 %endif
 
-%post 
+%post
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %files
 %defattr(-, root, root)
-%license LICENSE COPYING 
+%license LICENSE COPYING
 %doc nhc.conf contrib/nhc.cron
 %dir %{_sysconfdir}/%{sname}/
 %dir %{_localstatedir}/lib/%{sname}/
