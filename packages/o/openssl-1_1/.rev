@@ -500,4 +500,41 @@
     <comment></comment>
     <requestid>1120190</requestid>
   </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>9697c56789f39402f382878501698879</srcmd5>
+    <version>1.1.1w</version>
+    <time>1700250491</time>
+    <user>anag+factory</user>
+    <comment>- Security fix: [bsc#1216922, CVE-2023-5678]
+  * Fix excessive time spent in DH check / generation with large Q
+    parameter value.
+  * Applications that use the functions DH_generate_key() to generate
+    an X9.42 DH key may experience long delays. Likewise,
+    applications that use DH_check_pub_key(), DH_check_pub_key_ex
+    () or EVP_PKEY_public_check() to check an X9.42 DH key or X9.42
+    DH parameters may experience long delays. Where the key or
+    parameters that are being checked have been obtained from an
+    untrusted source this may lead to a Denial of Service.
+  * Add openssl-CVE-2023-5678.patch
+- Remove trailing spaces from changelog
+
+- Remove a hack for bsc#936563
+  bsc936563_hack.patch (bsc#936563)
+- Build with no-ssl3, for details on why this is needed read
+  require us to patch dependant packages as the relevant
+  functions are still available (SSLv3_(client|server)_method)
+- openssl.keyring: use Matt Caswells current key.
+- openSSL 1.0.1j
+- openssl.keyring: the 1.0.1i release was done by
+- 012-Fix-eckey_priv_encode.patch eckey_priv_encode should
+- 0001-Axe-builtin-printf-implementation-use-glibc-instead.patch
+  it is already in RPM_OPT_FLAGS and is replaced by
+- Remove the &quot;gmp&quot; and &quot;capi&quot; shared engines, nobody noticed
+  but they are just dummies that do nothing.
+- Use enable-rfc3779 to allow projects such as rpki.net
+- openssl-buffreelistbug-aka-CVE-2010-5298.patch fix
+- openssl-gcc-attributes.patch: fix thinko, CRYPTO_realloc_clean does
+- openssl-gcc-attributes.patch</comment>
+    <requestid>1126787</requestid>
+  </revision>
 </revisionlist>

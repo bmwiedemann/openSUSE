@@ -185,6 +185,9 @@ Patch111:       openssl-ec-powerpc64le-Add-asm-implementation-of-felem_-squa.pat
 Patch112:       openssl-ecc-Remove-extraneous-parentheses-in-secp384r1.patch
 Patch113:       openssl-powerpc-ecc-Fix-stack-allocation-secp384r1-asm.patch
 Patch114:       openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.patch
+# PATCH-FIX-UPSTREAM: bsc#1216922 CVE-2023-5678 Generating excessively long X9.42 DH keys or
+# checking excessively long X9.42 DH keys or parameters may be very slow
+Patch115:       openssl-CVE-2023-5678.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
