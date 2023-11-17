@@ -22,10 +22,10 @@
 Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later
 Name:           setroubleshoot
-Version:        3.3.31
+Version:        3.3.32
 Release:        0
 URL:            https://gitlab.com/setroubleshoot/setroubleshoot
-Source0:        https://gitlab.com/setroubleshoot/setroubleshoot/-/archive/%{version}/setroubleshoot-%{version}.tar.gz
+Source0:        https://gitlab.com/setroubleshoot/setroubleshoot/-/archive/%{version}/setroubleshoot-%{version}.tar.bz2
 Source1:        %{name}.tmpfiles
 Source2:        %{name}.sysusers
 Source3:        %{name}.logrotate
@@ -40,7 +40,6 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc
 BuildRequires:  gettext
-BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libcap-ng-devel
@@ -100,7 +99,7 @@ to user preference. The same tools can be run on existing log files.
 %else
 %{_metainfodir}/*.appdata.xml
 %endif
-%{_datadir}/dbus-1/services/sealert.service
+%{_datadir}/dbus-1/services/org.fedoraproject.sealert.service
 %{_datadir}/icons/hicolor/*/*/*
 %dir %attr(0755,root,root) %{pkgpythondir}
 %{pkgpythondir}/browser.py
@@ -172,6 +171,7 @@ Requires:       python3-gobject >= 3.11
 Requires:       python3-libxml2
 Requires:       python3-rpm
 Requires:       python3-selinux  >= 2.1.5-1
+Requires:       python3-six
 Requires:       python3-systemd >= 206-1
 BuildRequires:  gettext
 BuildRequires:  intltool

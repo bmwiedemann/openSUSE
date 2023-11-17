@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>1102659</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2a2f28c2b5af3925a7089b5459628ba5</srcmd5>
+    <version>3.3.32</version>
+    <time>1700250498</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.32:
+  * Rename session bus name to org.fedoraproject.sealert
+  * seapplet: wrap SEApplet() to try except
+  * util.py: Add doctext test for build_module_type_cache()
+  * Update translations
+- Add explicit dependency on python3-six for server subpackage.
+- Remove buildrequires on gtk2-devel
+</comment>
+    <requestid>1126803</requestid>
+  </revision>
 </revisionlist>

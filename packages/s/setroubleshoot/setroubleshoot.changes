@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 10 15:39:45 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 3.3.32:
+  * Rename session bus name to org.fedoraproject.sealert
+  * seapplet: wrap SEApplet() to try except
+  * util.py: Add doctext test for build_module_type_cache()
+  * Update translations
+- Add explicit dependency on python3-six for server subpackage.
+- Remove buildrequires on gtk2-devel
+
+-------------------------------------------------------------------
 Wed Jun  7 13:16:23 UTC 2023 - Zdenek Kubala <zkubala@suse.cz>
 
 - Add patch remove-pip-from-makefile.patch to temp fix build error
