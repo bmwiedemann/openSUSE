@@ -120,7 +120,7 @@
         <archset ref="i586"/>
         <!-- so we get 1 product file on this medium -->
       </archsets>
-    </media
+    </media>
 
     <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
     <media type="cd" flavor="mini" name="openSUSE-Tumbleweed-NET" run_hybridiso="true"
