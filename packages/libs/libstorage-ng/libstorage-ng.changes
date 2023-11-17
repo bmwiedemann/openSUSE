@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Nov 16 19:34:43 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#965
+- refactored class SystemCmd
+- fixed passing huge amount of data to stdin
+- coding style
+- 4.5.157
+
+--------------------------------------------------------------------
 Mon Nov 13 10:42:22 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#964
