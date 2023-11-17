@@ -1675,4 +1675,20 @@
     <comment></comment>
     <requestid>1110218</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>feb054780051918c2eaa25c54d3e42a1</srcmd5>
+    <version>2023.11.0</version>
+    <time>1700250579</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2023.11.0
+ * Zero-copy P2P Array Rechunking
+ * Deprecating PyArrow &lt;14.0.1
+ * Improved PyArrow filesystem for Parquet
+ * Improve Type Reconciliation in P2P Shuffling
+ * official support for Python 3.12
+ * Reduced memory pressure for multi array reductions
+ * improved P2P shuffling robustness
+ * Reduced scheduler CPU load for large graphs (forwarded request 1127183 from mimi_vx)</comment>
+    <requestid>1127184</requestid>
+  </revision>
 </revisionlist>

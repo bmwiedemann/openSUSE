@@ -20,21 +20,18 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test-py39"
 %define psuffix -test-py39
-%define skip_python38 1
 %define skip_python310 1
 %define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
-%define skip_python38 1
 %define skip_python39 1
 %define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
-%define skip_python38 1
 %define skip_python39 1
 %define skip_python310 1
 %bcond_without test
@@ -46,7 +43,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.9.1
+Version:        2023.11.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -57,12 +54,12 @@ BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module versioneer-toml >= 0.28}
+BuildRequires:  %{python_module versioneer-toml >= 0.29}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3.1
-Requires:       python-click >= 8
+Requires:       python-click >= 8.1
 Requires:       python-cloudpickle >= 1.5
 Requires:       python-fsspec >= 2021.9
 Requires:       python-importlib-metadata >= 4.13.0
@@ -88,7 +85,7 @@ Suggests:       python-fastavro >= 0.22.6
 Suggests:       python-graphviz >= 0.8.4
 Suggests:       python-h5py >= 2.10.0
 Suggests:       python-psutil >= 0.5.7
-Suggests:       python-pyarrow >= 0.14.0
+Suggests:       python-pyarrow >= 14.0.1
 Suggests:       python-matplotlib
 Suggests:       python-mimesis >= 5.3.0
 Suggests:       python-mmh3 >= 2.5.1
@@ -338,6 +335,8 @@ donttest+=" or (test_threaded and test_interrupt)"
 donttest+=" or test_select_from_select"
 # tries to get an IP address
 donttest+=" or test_map_partitions_df_input"
+# needs s3fs support in arrow
+donttest+=" or test_pyarrow_filesystem_option_real_data"
 %pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 
