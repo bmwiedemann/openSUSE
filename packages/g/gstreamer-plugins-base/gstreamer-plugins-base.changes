@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 15 09:32:47 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.7:
+  + audioaggregator, audiomixer: Make access to the pad list
+    thread-safe while mixing
+  + basetextoverlay: Fix overlay never rendering again if width
+    reaches 1px
+  + glfiter: Protect GstGLContext access
+  + glfilter: Only add parent meta if inbuf != outbuf
+  + macOS: fix huge memory leak with glfilter-based elements
+  + rtspconnection: Ignore trailing whitespace in rtsp headers
+  + video-scaler, audio-resampler: downgrade 'can't find exact
+    taps' to debug
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Fri Sep 22 11:36:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.6:
