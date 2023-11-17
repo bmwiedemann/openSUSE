@@ -2633,4 +2633,12 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1121401</requestid>
   </revision>
+  <revision rev="307" vrev="9">
+    <srcmd5>fc648fbf3973c526cc08489ad40b48d8</srcmd5>
+    <version>2.12~rc1</version>
+    <time>1700250523</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127241</requestid>
+  </revision>
 </revisionlist>

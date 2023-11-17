@@ -390,6 +390,9 @@ Patch197:       0006-fs-ntfs-Make-code-more-readable.patch
 Patch198:       0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
 Patch199:       Fix-the-size-calculation-for-the-synthesized-initrd.patch
 Patch200:       0001-kern-ieee1275-init-Restrict-high-memory-in-presence-.patch
+Patch201:       0001-fs-xfs-Incorrect-short-form-directory-data-boundary-.patch
+Patch202:       0002-fs-xfs-Fix-XFS-directory-extent-parsing.patch
+Patch203:       0003-fs-xfs-add-large-extent-counters-incompat-feature-su.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

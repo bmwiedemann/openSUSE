@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 14 07:52:41 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix XFS regression in 2.12~rc1 and support large extent counters
+  * 0001-fs-xfs-Incorrect-short-form-directory-data-boundary-.patch
+  * 0002-fs-xfs-Fix-XFS-directory-extent-parsing.patch
+  * 0003-fs-xfs-add-large-extent-counters-incompat-feature-su.patch
+
+-------------------------------------------------------------------
 Mon Oct 30 07:15:17 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix fadump not working with 1GB/2GB/4GB LMB[P10] (bsc#1216253) 
