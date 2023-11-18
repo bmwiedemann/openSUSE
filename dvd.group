@@ -2414,7 +2414,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler132" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpoppler133" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libportal-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3824,8 +3824,6 @@
     <package name="ruby3.2-rubygem-ice_nine" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-inifile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jaro_winkler" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-jekyll" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-jekyll-sass-converter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jekyll-watch" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json-schema" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
