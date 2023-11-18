@@ -3075,6 +3075,7 @@ unsorted:
   - dirvish 
   - discord-rpc-devel 
   - discount 
+  - disk-encryption-tool 
   - diskimage-builder 
   - diskmonitor 
   - diskmonitor-lang 
@@ -13883,7 +13884,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler132-32bit 
+  - libpoppler133-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -19349,7 +19350,6 @@ unsorted:
   - palaura 
   - palette 
   - palette-lang 
-  - palm-db-tools 
   - pam-devel 
   - pam-devel-32bit 
   - pam-doc 
@@ -25079,7 +25079,6 @@ unsorted:
   - python310-pytest-click 
   - python310-pytest-console-scripts 
   - python310-pytest-cov 
-  - python310-pytest-curio 
   - python310-pytest-datadir 
   - python310-pytest-dependency 
   - python310-pytest-describe 
@@ -25783,6 +25782,7 @@ unsorted:
   - python310-typeguard 
   - python310-typepy 
   - python310-typer 
+  - python310-types-python-dateutil 
   - python310-typing-inspect 
   - python310-typing_extensions 
   - python310-typogrify 
@@ -28455,7 +28455,6 @@ unsorted:
   - python311-pytest-click 
   - python311-pytest-console-scripts 
   - python311-pytest-cov 
-  - python311-pytest-curio 
   - python311-pytest-datadir 
   - python311-pytest-dependency 
   - python311-pytest-describe 
@@ -29128,6 +29127,7 @@ unsorted:
   - python311-typeguard 
   - python311-typepy 
   - python311-typer 
+  - python311-types-python-dateutil 
   - python311-typing-inspect 
   - python311-typogrify 
   - python311-tzlocal 
@@ -31950,7 +31950,6 @@ unsorted:
   - python39-pytest-click 
   - python39-pytest-console-scripts 
   - python39-pytest-cov 
-  - python39-pytest-curio 
   - python39-pytest-datadir 
   - python39-pytest-dependency 
   - python39-pytest-describe 
@@ -32652,6 +32651,7 @@ unsorted:
   - python39-typeguard 
   - python39-typepy 
   - python39-typer 
+  - python39-types-python-dateutil 
   - python39-typing-inspect 
   - python39-typing_extensions 
   - python39-typogrify 
@@ -44235,6 +44235,17 @@ unsorted:
   - tomcat-lib 
   - tomcat-servlet-4_0-api 
   - tomcat-webapps 
+  - tomcat10 
+  - tomcat10-admin-webapps 
+  - tomcat10-doc 
+  - tomcat10-docs-webapp 
+  - tomcat10-el-5_0-api 
+  - tomcat10-embed 
+  - tomcat10-jsp-3_1-api 
+  - tomcat10-jsvc 
+  - tomcat10-lib 
+  - tomcat10-servlet-6_0-api 
+  - tomcat10-webapps 
   - toml11-devel 
   - tomoe 
   - tomoe-devel 
