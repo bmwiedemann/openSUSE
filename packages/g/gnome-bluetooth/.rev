@@ -866,4 +866,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment></comment>
     <requestid>1104213</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>87f873c4f66eb91a6e4c8793a3e71a0e</srcmd5>
+    <version>42.7</version>
+    <time>1700421246</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1126807 from iznogood)</comment>
+    <requestid>1127341</requestid>
+  </revision>
 </revisionlist>
