@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 10 18:04:34 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update version to 1.17.4
+ * Fix compose support for ibus >= 1.5.28 (Resolves: #145)
+ * Translation update from Weblate (New language, Russian, (ru) 80%)
+
+-------------------------------------------------------------------
 Fri Jul 14 06:51:54 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.17.1

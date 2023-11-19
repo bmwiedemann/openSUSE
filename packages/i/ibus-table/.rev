@@ -419,4 +419,12 @@ feat: use _service files to automate fetching sources</comment>
   updated when the focus changes (forwarded request 1098624 from hillwood)</comment>
     <requestid>1098626</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3be5c0edb63d02c5941ddb90a492fccb</srcmd5>
+    <version>1.17.4</version>
+    <time>1700421332</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1127356</requestid>
+  </revision>
 </revisionlist>
