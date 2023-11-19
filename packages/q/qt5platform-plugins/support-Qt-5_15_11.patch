@@ -1,7 +1,7 @@
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbatom.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbatom.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbatom.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbatom.h	2023-10-30 21:02:00.133664897 +0800
-@@ -0,0 +1,259 @@
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbatom.h	2023-11-12 21:16:01.385804523 +0800
+@@ -0,0 +1,261 @@
 +/****************************************************************************
 +**
 +** Copyright (C) 2018 The Qt Company Ltd.
@@ -94,6 +94,8 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbatom.h qt
 +
 +        // Qt/XCB specific
 +        _QT_CLOSE_CONNECTION,
++
++        _QT_GET_TIMESTAMP,
 +
 +        _MOTIF_WM_HINTS,
 +
@@ -263,7 +265,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbatom.h qt
 +#endif // QXCBATOM_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbbackingstore.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbbackingstore.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbbackingstore.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbbackingstore.h	2023-10-30 21:02:00.133664897 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbbackingstore.h	2023-11-12 21:16:01.385804523 +0800
 @@ -0,0 +1,116 @@
 +/****************************************************************************
 +**
@@ -383,7 +385,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbbackingst
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbclipboard.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbclipboard.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbclipboard.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbclipboard.h	2023-10-30 21:02:00.133664897 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbclipboard.h	2023-11-12 21:16:01.385804523 +0800
 @@ -0,0 +1,152 @@
 +/****************************************************************************
 +**
@@ -539,7 +541,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbclipboard
 +#endif // QXCBCLIPBOARD_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection_basic.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection_basic.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection_basic.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection_basic.h	2023-10-30 21:02:00.133664897 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection_basic.h	2023-11-12 21:16:01.385804523 +0800
 @@ -0,0 +1,175 @@
 +/****************************************************************************
 +**
@@ -718,7 +720,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnectio
 +#endif // QXCBBASICCONNECTION_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection.h	2023-10-30 21:02:00.133664897 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnection.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,409 @@
 +/****************************************************************************
 +**
@@ -1131,8 +1133,8 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbconnectio
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbcursor.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbcursor.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbcursor.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbcursor.h	2023-10-30 21:02:00.136998220 +0800
-@@ -0,0 +1,129 @@
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbcursor.h	2023-11-12 21:16:01.389137838 +0800
+@@ -0,0 +1,130 @@
 +/****************************************************************************
 +**
 +** Copyright (C) 2016 The Qt Company Ltd.
@@ -1257,6 +1259,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbcursor.h 
 +                                           void *handle);
 +#endif
 +    bool m_gtkCursorThemeInitialized;
++    bool m_callbackForPropertyRegistered;
 +};
 +
 +QT_END_NAMESPACE
@@ -1264,7 +1267,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbcursor.h 
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbdrag.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbdrag.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbdrag.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbdrag.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbdrag.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,198 @@
 +/****************************************************************************
 +**
@@ -1466,7 +1469,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbdrag.h qt
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventdispatcher.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventdispatcher.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventdispatcher.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventdispatcher.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventdispatcher.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,114 @@
 +/****************************************************************************
 +**
@@ -1584,7 +1587,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventdisp
 +#endif // QXCBEVENTDISPATCHER_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventqueue.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventqueue.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventqueue.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventqueue.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventqueue.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,170 @@
 +/****************************************************************************
 +**
@@ -1758,7 +1761,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbeventqueu
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbexport.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbexport.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbexport.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbexport.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbexport.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,55 @@
 +/****************************************************************************
 +**
@@ -1817,7 +1820,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbexport.h 
 +
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbimage.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbimage.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbimage.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbimage.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbimage.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,62 @@
 +/****************************************************************************
 +**
@@ -1883,7 +1886,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbimage.h q
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbintegration.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbintegration.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbintegration.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbintegration.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbintegration.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,150 @@
 +/****************************************************************************
 +**
@@ -2037,7 +2040,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbintegrati
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbkeyboard.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbkeyboard.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbkeyboard.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbkeyboard.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbkeyboard.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,141 @@
 +/****************************************************************************
 +**
@@ -2182,7 +2185,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbkeyboard.
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbmime.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbmime.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbmime.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbmime.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbmime.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,70 @@
 +/****************************************************************************
 +**
@@ -2256,7 +2259,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbmime.h qt
 +#endif // QXCBMIME_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbnativeinterface.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbnativeinterface.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbnativeinterface.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbnativeinterface.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbnativeinterface.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,154 @@
 +/****************************************************************************
 +**
@@ -2414,7 +2417,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbnativeint
 +#endif // QXCBNATIVEINTERFACE_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbobject.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbobject.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbobject.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbobject.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbobject.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,64 @@
 +/****************************************************************************
 +**
@@ -2482,7 +2485,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbobject.h 
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbscreen.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbscreen.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbscreen.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbscreen.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbscreen.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,244 @@
 +/****************************************************************************
 +**
@@ -2730,7 +2733,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbscreen.h 
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsessionmanager.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsessionmanager.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsessionmanager.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsessionmanager.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsessionmanager.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,94 @@
 +/****************************************************************************
 +**
@@ -2828,7 +2831,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsessionma
 +#endif //QXCBSESSIONMANAGER_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsystemtraytracker.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsystemtraytracker.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsystemtraytracker.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsystemtraytracker.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsystemtraytracker.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,85 @@
 +/****************************************************************************
 +**
@@ -2917,7 +2920,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbsystemtra
 +#endif // QXCBSYSTEMTRAYTRACKER_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkaninstance.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkaninstance.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkaninstance.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkaninstance.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkaninstance.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,76 @@
 +/****************************************************************************
 +**
@@ -2997,7 +3000,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkanins
 +#endif // QXCBVULKANINSTANCE_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkanwindow.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkanwindow.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkanwindow.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkanwindow.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkanwindow.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,65 @@
 +/****************************************************************************
 +**
@@ -3066,7 +3069,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbvulkanwin
 +#endif // QXCBVULKANWINDOW_H
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwindow.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwindow.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwindow.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwindow.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwindow.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,313 @@
 +/****************************************************************************
 +**
@@ -3383,7 +3386,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwindow.h 
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwmsupport.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwmsupport.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwmsupport.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwmsupport.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwmsupport.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,68 @@
 +/****************************************************************************
 +**
@@ -3455,7 +3458,7 @@ diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbwmsupport
 +#endif
 diff -Nurp qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbxsettings.h qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbxsettings.h
 --- qt5platform-plugins-5.6.16/xcb/libqt5xcbqpa-dev/5.15.11/qxcbxsettings.h	1970-01-01 08:00:00.000000000 +0800
-+++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbxsettings.h	2023-10-30 21:02:00.136998220 +0800
++++ qt5platform-plugins-5.6.16-new/xcb/libqt5xcbqpa-dev/5.15.11/qxcbxsettings.h	2023-11-12 21:16:01.389137838 +0800
 @@ -0,0 +1,71 @@
 +/****************************************************************************
 +**

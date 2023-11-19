@@ -174,4 +174,12 @@
     <comment></comment>
     <requestid>1121527</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>27a78798cc69367f8e8429a8bbc2748e</srcmd5>
+    <version>5.6.12</version>
+    <time>1700421350</time>
+    <user>anag+factory</user>
+    <comment>- Refrash support-Qt-5_15_11.patch, fix a crash issue. (forwarded request 1127418 from hillwood)</comment>
+    <requestid>1127419</requestid>
+  </revision>
 </revisionlist>

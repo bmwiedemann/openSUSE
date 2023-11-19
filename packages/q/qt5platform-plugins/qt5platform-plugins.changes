@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 18 09:24:01 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Refrash support-Qt-5_15_11.patch, fix a crash issue. 
+
+-------------------------------------------------------------------
 Tue Oct 31 12:51:07 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add support-Qt-5_15_11.patch, support Qt 5.15.11 
