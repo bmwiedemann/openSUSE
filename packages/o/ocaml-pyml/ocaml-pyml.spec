@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-pyml
 Name:           %pkg%nsuffix
-Version:        20220905
+Version:        20231101
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library
@@ -39,7 +39,7 @@ URL:            https://opam.ocaml.org/packages/pyml
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(stdcompat)
 BuildRequires:  ocamlfind(unix)

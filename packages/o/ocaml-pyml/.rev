@@ -48,4 +48,12 @@
   use _multibuild for testsuite</comment>
     <requestid>1056078</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>23a229813109de74164aab4b133903f0</srcmd5>
+    <version>20231101</version>
+    <time>1700421357</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1127432</requestid>
+  </revision>
 </revisionlist>
