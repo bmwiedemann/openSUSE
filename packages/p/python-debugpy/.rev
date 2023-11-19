@@ -89,4 +89,23 @@
 </comment>
     <requestid>1087981</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aff55ec88021248383b4e38609577a42</srcmd5>
+    <version>1.8.0</version>
+    <time>1700421334</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  - Error while enumerating installed packages.
+  - Drops Python 3.7 support. Please use debugpy v1.7.0 if you
+    need to debug Python 3.7.
+  - Remove DeprecationWarning: Deprecated call to
+    pkg_resources.declare_namespace('pydevd_plugins.extensions')
+  - Fix invalid file hashes in RECORD of wheels
+  - Support &quot;restart&quot; in &quot;terminated&quot; event for &quot;attach&quot;{&quot;listen&quot;}
+  - Use &quot;startDebugging&quot; request for subprocesses
+- Remove upstreamed patch setuptools-67.3.0.patch
+- Skip test test_attach_pid_client (gh#microsoft/debugpy#1462)
+</comment>
+    <requestid>1127362</requestid>
+  </revision>
 </revisionlist>

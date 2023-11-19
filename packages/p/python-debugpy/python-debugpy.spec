@@ -31,14 +31,12 @@
 %define skip_python36 1
 %define modname debugpy
 Name:           python-%{modname}%{psuffix}
-Version:        1.6.6
+Version:        1.8.0
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
 URL:            https://github.com/microsoft/debugpy/
 Source:         https://github.com/microsoft/debugpy/archive/v%{version}.tar.gz#/debugpy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM setuptools-67.3.0.patch (gh#microsoft/debugpy#1230, gh#microsoft/debugpy@35504f83ed80)
-Patch1:         setuptools-67.3.0.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -122,6 +120,8 @@ donttest="test_custom_python_args"
 # python 3.11 failures
 donttest="$donttest or test_redirect_output or test_with_no_output or test_systemexit or test_exceptions_and_partial_exclude_rules or test_exception_stack or test_flask_template_exception_no_multiproc or test_flask_exception_no_multiproc or test_gevent"
 rm -v tests/debugpy/test_exception.py tests/debugpy/test_django.py
+# gh#microsoft/debugpy#1462
+donttest="$donttest or test_attach_pid_client"
 %pytest_arch -k "not ($donttest)"
 %endif
 

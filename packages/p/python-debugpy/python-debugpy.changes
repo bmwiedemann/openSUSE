@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 17 17:44:21 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.8.0:
+  - Error while enumerating installed packages.
+  - Drops Python 3.7 support. Please use debugpy v1.7.0 if you
+    need to debug Python 3.7.
+  - Remove DeprecationWarning: Deprecated call to
+    pkg_resources.declare_namespace('pydevd_plugins.extensions')
+  - Fix invalid file hashes in RECORD of wheels
+  - Support "restart" in "terminated" event for "attach"{"listen"}
+  - Use "startDebugging" request for subprocesses
+- Remove upstreamed patch setuptools-67.3.0.patch
+- Skip test test_attach_pid_client (gh#microsoft/debugpy#1462)
+
+-------------------------------------------------------------------
 Fri May 19 09:32:55 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - refresh the tarball from upstream
