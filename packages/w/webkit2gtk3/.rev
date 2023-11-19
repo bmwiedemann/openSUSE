@@ -1552,4 +1552,13 @@
   renderer for NVIDIA proprietary drivers (boo#1216778). (forwarded request 1121694 from mgorse)</comment>
     <requestid>1123045</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>193c67217afd3d1e69fa781cfde29392</srcmd5>
+    <version>2.42.2</version>
+    <time>1700421249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.42.2 (boo#1217210):
+  + Bump Safari version in user agent header. (forwarded request 1126960 from mgorse)</comment>
+    <requestid>1127343</requestid>
+  </revision>
 </revisionlist>
