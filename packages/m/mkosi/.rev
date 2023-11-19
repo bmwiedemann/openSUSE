@@ -65,4 +65,12 @@
     <comment></comment>
     <requestid>1041151</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4889f03db8dc0de3e0564827cd010e76</srcmd5>
+    <version>18</version>
+    <time>1700421333</time>
+    <user>anag+factory</user>
+    <comment>- set singlepython version to python3 instead of python311 to allow build on Leap and not require changes on every Python change in Tumbleweed</comment>
+    <requestid>1127433</requestid>
+  </revision>
 </revisionlist>

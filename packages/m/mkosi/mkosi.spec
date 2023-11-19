@@ -1,7 +1,7 @@
 #
 # spec file for package mkosi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,24 @@
 #
 
 
+%define pythons python3
+
 Name:           mkosi
-Version:        14
+Version:        18
 Release:        0
 Summary:        Build Legacy-Free OS Images
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source:         https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig
-BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(python3) >= 3.7
-Requires:       python3 >= 3.7
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  %{pythons}
+BuildRequires:  fdupes
+BuildRequires:  pandoc
+BuildRequires:  python-rpm-macros
+Requires:       python3 >= 3.9
 Requires:       squashfs
 Requires:       tar
 Requires:       xz
@@ -56,23 +62,27 @@ supported (not plain MBR/BIOS).
 
 %prep
 %setup -q
-sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' bin/mkosi
 
 %build
-%py3_build
+tools/make-man-page.sh
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}/mkosi
+
+mkdir -p %{buildroot}%{_mandir}/man1
+cp %{buildroot}%{python3_sitelib}/mkosi/resources/mkosi.1* %{buildroot}%{_mandir}/man1/
 
 %check
-%{buildroot}%{_bindir}/mkosi -h >/dev/null
+%pytest
 
 %files
 %doc mkosi.md README.md
 %license LICENSE
-%{_bindir}/%{name}
-%{_mandir}/man1/mkosi.1%{?ext_man}
-%{python3_sitelib}/mkosi/
-%{python3_sitelib}/mkosi-%{version}-py*.egg-info/
+%{_bindir}/mkosi
+%{_mandir}/man1/mkosi.1*
+%{python3_sitelib}/mkosi
+%{python3_sitelib}/mkosi-%{version}.dist-info
 
 %changelog
