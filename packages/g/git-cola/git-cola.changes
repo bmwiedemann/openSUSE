@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov 18 08:53:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Git Cola now preserves `# commentary` in commit messages by
+    default.
+  * `git dag` now includes completions for `git log` options in
+    the text input field.
+  * `git dag` now provides convenient search filters when right-
+    clicking in the text input field.
+  * A `1.25 x` Hi-DPI magnification option mode is now available
+    in the Appearance settings.
+  * Git Cola now runs `git commit` in the background and feedback
+    is provided while the commit is running. This prevents the
+    UI from freezing when running pre-commit hooks that can make
+    `git commit` take a long time to run.
+  * The Diff context menu was reworked to reduce visual clutter
+    and better match the Status context menu.
+  * The standalone `git cola tag` tool now autocompletes the tag
+    name field.
+  * The "Branches" dock widget now has a "Visualize" right-click
+    menu option.
+  * The "Stash" dialog learned to rename stashes.
+  * The "Fetch", "Push" and "Pull" dialogs can now display remote
+    messages from the server.
+  * `git dag` fixed how it was handling refspec arguments.
+  * `git dag` will now properly refresh itself when remote
+    branches are updated.
+  * Git Cola's python code style. We were previously disabling
+    quote normalization when using `black`. Use of `cercis`
+    allows us to enable quote normalization under its default
+    single-quote settings.
+  * Compatibility with Sphinx 7.2.0 was added to the
+    `sphinxtogithub` sphinx documentation plugin.
+
+-------------------------------------------------------------------
 Sat Sep  2 18:31:13 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.3.2
@@ -664,7 +699,7 @@ Wed Nov 27 14:31:31 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
 -------------------------------------------------------------------
 Mon Sep 23 13:32:36 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
 
-- Force to use python3 
+- Force to use python3
 
 -------------------------------------------------------------------
 Mon Sep 23 06:59:02 UTC 2019 - Marcin Bajor <marcin.bajor@gmail.com>
@@ -1123,12 +1158,12 @@ https://github.com/git-cola/git-cola/pull/679
 * The filesystem monitor would sometimes emit backtraces when directories are modified. This has been fixed.
 https://bugzilla.redhat.com/show_bug.cgi?id=1438522
 * Absolute paths are now returned when querying for .git-relative paths from within a submodule, which uses .git-files. This fixes launching git cola from within a subdirectory of a submodule.
-https://github.com/git-cola/git-cola/pull/675 
+https://github.com/git-cola/git-cola/pull/675
 
 -------------------------------------------------------------------
 Sat Jan 14 16:11:17 UTC 2017 - marcin.bajor@gmail.com
 
-- Removed appdata.patch 
+- Removed appdata.patch
 
 -------------------------------------------------------------------
 Sat Jan 14 16:07:24 UTC 2017 - marcin.bajor@gmail.com
@@ -1241,7 +1276,7 @@ https://github.com/git-cola/git-cola/pull/589
 -------------------------------------------------------------------
 Thu Aug  4 16:22:36 UTC 2016 - marcin.bajor@gmail.com
 
-- Fixed: git-cola can not find python-qt 
+- Fixed: git-cola can not find python-qt
 
 -------------------------------------------------------------------
 Sun Jul 31 20:21:46 UTC 2016 - marcin.bajor@gmail.com
@@ -1261,7 +1296,7 @@ https://github.com/git-cola/git-cola/issues/232
 NOTE: We do not yet recommend using PyQt5 because there are known exit-on-segfault bugs in Qt5 that have not yet been addressed. git cola is sensitive to this bug and is known to crash on exit when using git dag or the interactive rebase feature on PyQt5.
 https://bugreports.qt.io/browse/QTBUG-52988
 * PyQt4 is stable and there are no known issues when using it so we recommend using it until the Qt5 bugs have been resolved.
-git cola now depends on QtPy and includes a bundled copy of the qtpy library. If you are packaging git cola and would prefer to use qtpy from your distribution instead of the built-in version then use make NO_VENDOR_LIBS=1 when building git cola. This will prevent vendored libraries from being installed. 
+git cola now depends on QtPy and includes a bundled copy of the qtpy library. If you are packaging git cola and would prefer to use qtpy from your distribution instead of the built-in version then use make NO_VENDOR_LIBS=1 when building git cola. This will prevent vendored libraries from being installed.
 
 -------------------------------------------------------------------
 Sun May  1 09:08:27 UTC 2016 - marcin.bajor@gmail.com
@@ -1359,7 +1394,7 @@ https://github.com/git-cola/git-cola/issues/508
 https://github.com/git-cola/git-cola/pull/485
 - Packaging
 * git-cola’s documentation no longer uses an intersphinx link mapping to docs.python.org. This fixes warnings when building rpms using koji, where network access is prevented.
-https://bugzilla.redhat.com/show_bug.cgi?id=1231812 
+https://bugzilla.redhat.com/show_bug.cgi?id=1231812
 
 -------------------------------------------------------------------
 Mon Aug 10 06:27:47 UTC 2015 - marcin.bajor@gmail.com
@@ -1430,7 +1465,7 @@ https://github.com/git-cola/git-cola/issues/456
 
 We now set the $GIT_EDITOR environment variable when performing the “Continue”, “Skip”, and “Edit Todo” rebase actions so that the correct editor is used during the rebase.
 
-https://github.com/git-cola/git-cola/issues/445 
+https://github.com/git-cola/git-cola/issues/445
 
 -------------------------------------------------------------------
 Tue Mar 31 10:11:19 UTC 2015 - marcin.bajor@gmail.com
@@ -1448,7 +1483,7 @@ https://github.com/git-cola/git-cola/issues/378
 * Improved hotkey documentation.
 - Fixes
 * git cola will now allow starting an interactive rebase with a dirty worktree when rebase.autostash is set.
-https://github.com/git-cola/git-cola/issues/360 
+https://github.com/git-cola/git-cola/issues/360
 
 -------------------------------------------------------------------
 Sun Feb  8 18:02:08 UTC 2015 - mailaender@opensuse.org
@@ -1548,7 +1583,7 @@ https://github.com/git-cola/git-cola/issues/342
 https://github.com/git-cola/git-cola/pull/344
 - Fixes
 * Newly added remotes are now properly seen by the fetch/push/pull dialogs.
-https://github.com/git-cola/git-cola/issues/343 
+https://github.com/git-cola/git-cola/issues/343
 
 -------------------------------------------------------------------
 Wed Jul 30 15:16:51 UTC 2014 - marcin.bajor@gmail.com
@@ -1625,7 +1660,7 @@ https://github.com/git-cola/git-cola/pull/295
 * The default git dag layout is now setup so that its widgets can be freely resized on Linux.
 https://github.com/git-cola/git-cola/issues/299
 * Invalid tag names are now reported when creating tags.
-https://github.com/git-cola/git-cola/pull/296 
+https://github.com/git-cola/git-cola/pull/296
 
 -------------------------------------------------------------------
 Mon May 26 20:26:36 UTC 2014 - marcin.bajor@gmail.com
@@ -1648,7 +1683,7 @@ https://github.com/git-cola/git-cola/pull/253
 * Switching repositories using the bookmarks widget was not refreshing the inotify watcher.
 https://github.com/git-cola/git-cola/pull/256
 * Special commit messages trailers (e.g. “Acked-by:”) are now special-cased to fix word wrapping lines that start with “foo:”.
-https://github.com/git-cola/git-cola/issues/257 
+https://github.com/git-cola/git-cola/issues/257
 
 -------------------------------------------------------------------
 Sun Apr 20 16:27:24 UTC 2014 - marcin.bajor@gmail.com
@@ -1670,7 +1705,7 @@ https://github.com/git-cola/git-cola/issues/242
 * Better support for Python3 on Windows
 https://github.com/git-cola/git-cola/issues/246
 - Packaging
-* git-cola no longer depends on Asciidoc for building its documentation and man-pages. We now depend on [Sphinx](http://sphinx-doc.org/) only. 
+* git-cola no longer depends on Asciidoc for building its documentation and man-pages. We now depend on [Sphinx](http://sphinx-doc.org/) only.
 
 -------------------------------------------------------------------
 Sun Mar 16 19:13:38 UTC 2014 - marcin.bajor@gmail.com
@@ -1687,7 +1722,7 @@ https://github.com/git-cola/git-cola/issues/234
 * The browser now guards itself against missing files.
 https://bugzilla.redhat.com/show_bug.cgi?id=1071378
 * Saving widget state now works under Python3.
-https://github.com/git-cola/git-cola/pull/236 
+https://github.com/git-cola/git-cola/pull/236
 
 -------------------------------------------------------------------
 Mon Feb 24 13:45:50 UTC 2014 - marcin.bajor@gmail.com
@@ -1703,7 +1738,7 @@ https://github.com/git-cola/git-cola/pull/231
 * git-cola.app build fixes thanks to Maicon D. Filippsen.
 https://github.com/git-cola/git-cola/pull/230
 * Lots of pylint improvements thanks to Alex Chernetz.
-https://github.com/git-cola/git-cola/pull/229 
+https://github.com/git-cola/git-cola/pull/229
 
 -------------------------------------------------------------------
 Fri Jan 31 14:22:02 UTC 2014 - marcin.bajor@gmail.com
@@ -1718,7 +1753,7 @@ https://github.com/git-cola/git-cola/issues/215
 * Fixed a typo that caused inotify events to be silently ignored.
 * Fixed the sys.path setup for Mac OS X (Homebrew).
 https://github.com/git-cola/git-cola/issues/221
-* Lots of pylint fixes thanks to Alex Chernetz. 
+* Lots of pylint fixes thanks to Alex Chernetz.
 
 -------------------------------------------------------------------
 Wed Dec 11 22:12:43 UTC 2013 - marcin.bajor@gmail.com
@@ -1733,7 +1768,7 @@ https://github.com/git-cola/git-cola/issues/212
 * Stray whitespace in .git files is now ignored.
 https://github.com/git-cola/git-cola/issues/213
 * Fix “known incorrect sRGB profile” in staged-item.png.
-http://comments.gmane.org/gmane.linux.gentoo.devel/85066 
+http://comments.gmane.org/gmane.linux.gentoo.devel/85066
 
 -------------------------------------------------------------------
 Fri Nov 29 09:41:22 UTC 2013 - marcin.bajor@gmail.com
@@ -1776,7 +1811,7 @@ http://thread.gmane.org/gmane.comp.version-control.git/232683
 - Fixes
 * Unicode stash names are now supported
 http://github.com/git-cola/git-cola/issues/198
-* The diffs produced when reverting workspace changes were made more robust. 
+* The diffs produced when reverting workspace changes were made more robust.
 
 -------------------------------------------------------------------
 Thu Aug 29 19:50:01 UTC 2013 - marcin.bajor@gmail.com
@@ -1795,7 +1830,7 @@ Thu Aug 29 19:50:01 UTC 2013 - marcin.bajor@gmail.com
 * Python 2.6 on Mac OS X Snow Leopard does not provide a namedtuple at sys.version_info. We now avoid using that variable for better portability.
 * We now read the user’s Git configuration from ~/.config/git/config if that file is available, otherwise we use the traditional ~/.gitconfig path, just like Git itself.
 * Some edge cases were fixed when applying partial/selected diffs.
-* The diff viewer is now properly cleared when refreshing. http://github.com/git-cola/git-cola/issues/194 
+* The diff viewer is now properly cleared when refreshing. http://github.com/git-cola/git-cola/issues/194
 
 -------------------------------------------------------------------
 Tue May  7 18:37:37 UTC 2013 - marcin.bajor@gmail.com
@@ -1821,7 +1856,7 @@ https://github.com/git-cola/git-cola/issues/172
 * Performance is now vastly improved when staging hundreds or thousands of files.
 * git cola was not correctly saving repo-specific configuration.
 https://github.com/git-cola/git-cola/issues/174
-* Fix a UnicodeDecode in sphinxtogithub when building from source.- 
+* Fix a UnicodeDecode in sphinxtogithub when building from source.-
 
 -------------------------------------------------------------------
 Wed Feb 27 20:03:51 UTC 2013 - marcin.bajor@gmail.com
@@ -1842,7 +1877,7 @@ http://github.com/git-cola/git-cola/issues/159
 * Better error handling when cloning repositories.
 We were not handling the case where a git URL has no basename, e.g. https://git.example.com/. git cola originally rejected these URLs instead of allowing users to clone them. It now allows these URLs when they point to valid git repositories.
 Additionally, git cola learned to echo the errors reported by git clone when it fails.
-http://github.com/git-cola/git-cola/issues/156 
+http://github.com/git-cola/git-cola/issues/156
 
 -------------------------------------------------------------------
 Sat Dec  8 22:38:35 UTC 2012 - marcin.bajor@gmail.com
@@ -1898,7 +1933,7 @@ Fri May 11 20:39:55 UTC 2012 - marcin.bajor@gmail.com
 * More shortcut key labels and misc. UX improvements.
 - Fixes
 * Selecting an item no longer copies its filename to the copy/paste buffer. Ctrl-c or the “Copy” context-menu action can be used instead.
-* The repository monitoring feature on Windows learned to ignore changes within the ”.git” directory. Thanks to Andreas Sommer.- 
+* The repository monitoring feature on Windows learned to ignore changes within the ”.git” directory. Thanks to Andreas Sommer.-
 
 -------------------------------------------------------------------
 Sat Mar 24 14:55:36 UTC 2012 - marcin.bajor@gmail.com
@@ -1938,7 +1973,7 @@ Thu Jan  5 23:33:33 UTC 2012 - marcin.bajor@gmail.com
 - git-dag learned about gravatar and uses it to show images for commit authors.
 - git-dag learned to use OpenGL for rendering resulting in much faster rendering.
 - More dialogs learned vim-style keyboard shortcuts.
-- The commit message editor learned better arrow key navigatio 
+- The commit message editor learned better arrow key navigatio
 
 -------------------------------------------------------------------
 Wed Dec 28 15:15:25 UTC 2011 - marcin.bajor@gmail.com
@@ -1985,7 +2020,7 @@ Sat Nov 26 10:24:20 UTC 2011 - marcin.bajor@gmail.com
 - Update to version 1.7.1.1
 - Fixes
 * Further enhanced the staging/unstaging behavior in the status widget.
-* Unmerged files are no longer listed as modified. 
+* Unmerged files are no longer listed as modified.
 
 -------------------------------------------------------------------
 Thu Nov  3 00:07:07 UTC 2011 - marcin.bajor@gmail.com

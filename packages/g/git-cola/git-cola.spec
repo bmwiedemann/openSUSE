@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.3.2
+Version:        4.4.0
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
