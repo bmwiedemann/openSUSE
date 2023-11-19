@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Nov 18 16:45:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.1:
+  * Fixed the maximal value of the "SYSEX Hauptwerk 32 Byte LCD"
+    midi send events
+  * Fixed discard in the Organ Settings dialog when multiple
+    objects are selected
+  * Moved all Organ Settings dialog buttons to the single button
+    row
+  * Decreased number of decimal digits in the Organ Settings
+    dialog
+  * Added a confirmation box when restoring Organ Settings to
+    default
+  * Replaced the Cancel and OK buttons in the Organ Settings
+    dialog with the single Close button
+  * Fixed change tracking and enableing/disabling the Discard and
+    Apply buttons in the Organ Settings dialog
+  * Renamed the Reset button to Discard in the Organ Settings
+    dialog
+  * Adopted the build instruction and the build scripts to new
+    ubuntu versions
+  * Improved concurrency handling
+  * Added deregistering organs in the temporary directory that do
+    not more exist
+  * Fixed error messages after multiple runs of GrandOrgue ftom
+    Appimage with a demo organ
+  * Implemented option to send MIDI Note Off as 0x8X or 0x9X with
+    velocity 0
+  * Added capability of control buttons with Control Change MIDI
+    events with different keys but same values using "Bx Ctrl
+    Change Fixed On Value Toggle" and "Bx Ctrl Change Fixed Off
+    Value Toggle"
+  * Added saving dialog positions and sizes
+  * Increased maximum value of Pipe999LoopCrossfadeLength and
+    Pipe999ReleaseCrossfadeLength. Now they are 3000
+  * Fixed saving manual switches as global in yaml
+  * Fixed convolution enabling warrning in the Settings dialog
+  * Fixed "Release Length is not valid" error when applying
+    changes for several Organ Settings objects at once
+  * Fixed saving all combinations as full
+
+-------------------------------------------------------------------
 Sun Jul 23 13:47:18 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.12.2.

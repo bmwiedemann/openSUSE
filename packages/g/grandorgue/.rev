@@ -89,4 +89,41 @@
     <comment></comment>
     <requestid>1100196</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7cfc7e47f33099cd347bed6e33595b83</srcmd5>
+    <version>3.13.1</version>
+    <time>1700421388</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.1:
+  * Fixed the maximal value of the &quot;SYSEX Hauptwerk 32 Byte LCD&quot;
+    midi send events
+  * Fixed discard in the Organ Settings dialog when multiple
+    objects are selected
+  * Moved all Organ Settings dialog buttons to the single button
+    row
+  * Decreased number of decimal digits in the Organ Settings
+    dialog
+  * Added a confirmation box when restoring Organ Settings to
+    default
+  * Replaced the Cancel and OK buttons in the Organ Settings
+    dialog with the single Close button
+  * Fixed change tracking and enableing/disabling the Discard and
+    Apply buttons in the Organ Settings dialog
+  * Renamed the Reset button to Discard in the Organ Settings
+    dialog
+  * Adopted the build instruction and the build scripts to new
+    ubuntu versions
+  * Improved concurrency handling
+  * Added deregistering organs in the temporary directory that do
+    not more exist
+  * Fixed error messages after multiple runs of GrandOrgue ftom
+    Appimage with a demo organ
+  * Implemented option to send MIDI Note Off as 0x8X or 0x9X with
+    velocity 0
+  * Added capability of control buttons with Control Change MIDI
+    events with different keys but same values using &quot;Bx Ctrl
+    Change Fixed On Value Toggle&quot; and &quot;Bx Ctrl Change Fixed Off
+    Value Toggle&quot;</comment>
+    <requestid>1127445</requestid>
+  </revision>
 </revisionlist>
