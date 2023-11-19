@@ -1,7 +1,7 @@
 #
 # spec file for package gio-qt
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,24 +16,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define   libver          0
 
 Name:           gio-qt
-Version:        0.0.11
+Version:        0.0.12
 Release:        0
 Summary:        A Qt wrapper library for Gio
 License:        LGPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/linuxdeepin/gio-qt
+URL:            https://github.com/linuxdeepin/gio-qt
 Source0:        https://github.com/linuxdeepin/gio-qt/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         drop-invalid-file.patch
-BuildRequires:  fdupes
+BuildRequires:  cmake >= 3.12.4
 BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  libqt5-qttools-qhelpgenerator
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(giomm-2.4)
-BuildRequires:  cmake >= 3.12.4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -61,9 +62,9 @@ Requires:       lib%{name}%{libver} = %{version}
 The gio-qt-devel package contains the header files and developer
 docs for gio-qt.
 
-
 %prep
 %autosetup -p1 -n %{name}-%{version}
+sed -i 's/qhelpgenerator/qhelpgenerator-qt5/g' CMakeLists.txt
 
 %build
 %cmake
@@ -75,17 +76,16 @@ docs for gio-qt.
 %post -n lib%{name}%{libver} -p /sbin/ldconfig
 %postun -n lib%{name}%{libver} -p /sbin/ldconfig
 
-
 %files -n lib%{name}%{libver}
 %defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so.*
 
 %files devel
 %defattr(-,root,root,-)
+%dir %{_datadir}/qt5/doc
+%{_datadir}/qt5/doc/gio-qt.qch
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
-
 %changelog
-
