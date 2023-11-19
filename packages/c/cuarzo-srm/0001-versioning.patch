@@ -1,0 +1,24 @@
+From f4bdb3557fa382e13eb396f4e7a766325cf53544 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 18 Nov 2023 12:04:08 +0100
+
+Unversioned libraries suck.
+---
+ src/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/meson.build b/src/meson.build
+index e710f12..427b423 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -75,6 +75,7 @@ SRM = library(
+     'SRM',
+     sources : sources,
+     include_directories : include_paths,
++    soversion: 'suse0',
+     dependencies : [
+         display_info_dep,
+         egl_dep,
+-- 
+2.42.1
+
