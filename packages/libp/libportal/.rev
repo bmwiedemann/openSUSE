@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1110334</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9e10df79f92ba0565b1b90f0ebb77685</srcmd5>
+    <version>0.7.1</version>
+    <time>1700421245</time>
+    <user>anag+factory</user>
+    <comment>- Rename package name from libportal-1 to libportal1, this is
+  necessary to conform to the shared library policy:
+  https://en.opensuse.org/openSUSE:Shared_library_packaging_policy#Package_naming (forwarded request 1126530 from yfjiang)</comment>
+    <requestid>1127340</requestid>
+  </revision>
 </revisionlist>

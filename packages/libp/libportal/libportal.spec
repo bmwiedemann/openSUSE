@@ -46,10 +46,12 @@ BuildRequires:  pkgconfig(vapigen)
 %description
 A GIO-style async APIs for most Flatpak portals.
 
-%package     -n %{name}-%{sover}
+%package     -n %{name}%{sover}
 Summary:        Shared library for %{name}
+Obsoletes:      libportal-1
+Provides:       libportal-1
 
-%description -n %{name}-%{sover}
+%description -n %{name}%{sover}
 A GIO-style async APIs for most Flatpak portals.
 This package contains the shared library of %{name}.
 
@@ -97,7 +99,7 @@ This package contains the introspection files of %{name}.
 
 %package devel
 Summary:        A GIO-style async APIs for most Flatpak portals -- Development files
-Requires:       %{name}-%{sover} = %{version}
+Requires:       %{name}%{sover} = %{version}
 Requires:       typelib-1_0-Xdp-1_0 = %{version}
 
 %description devel
@@ -141,12 +143,12 @@ header files for developing applications that use %{name}.
 %install
 %meson_install
 
-%ldconfig_scriptlets -n %{name}-%{sover}
+%ldconfig_scriptlets -n %{name}%{sover}
 %ldconfig_scriptlets -n %{name}-gtk3-%{sover}
 %ldconfig_scriptlets -n %{name}-gtk4-%{sover}
 %ldconfig_scriptlets -n %{name}-qt5-%{sover}
 
-%files -n %{name}-%{sover}
+%files -n %{name}%{sover}
 %license COPYING
 %{_libdir}/libportal.so.%{sover}*
 

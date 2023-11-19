@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 15 06:43:09 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Rename package name from libportal-1 to libportal1, this is
+  necessary to conform to the shared library policy:
+  https://en.opensuse.org/openSUSE:Shared_library_packaging_policy#Package_naming
+
+-------------------------------------------------------------------
 Sun Sep 10 08:53:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7.1:
