@@ -1400,4 +1400,13 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
     <requestid>1120098</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>397288f2b6b09dbb4d4046d6b32a365a</srcmd5>
+    <version>84.87~git20231117T211718~757fefa</version>
+    <time>1700421253</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87~git20231117T211718~757fefa:
+  * Fix active titlebar color with OpenSUSEdark(alternate) color schemes</comment>
+    <requestid>1127365</requestid>
+  </revision>
 </revisionlist>
