@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 14 20:16:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Fix sandbox for image decoding not enabled by default
+  + Fix printing on different printer than selected
+  + Fix print dialog crashes on confirmation
+  + Fix print dialog needs second confirmation inside Flatpaks
+  + Fix SVGs sometimes not re-rendering for zoom level
+  + Fix animated image formats with variable frame length using
+    only one length
+  + Fix rotation getting applied twice to HEIF images
+- Drop patches fixed upstream:
+  + loupe_glycin-loaders_sandbox.patch
+  + loupe_print_fix.patch
+
+-------------------------------------------------------------------
 Tue Nov  7 09:08:27 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

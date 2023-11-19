@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>1123785</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41f1b81a40d642b0ba72b41bbf3ead89</srcmd5>
+    <version>45.1</version>
+    <time>1700421323</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.1:
+  + Fix sandbox for image decoding not enabled by default
+  + Fix printing on different printer than selected
+  + Fix print dialog crashes on confirmation
+  + Fix print dialog needs second confirmation inside Flatpaks
+  + Fix SVGs sometimes not re-rendering for zoom level
+  + Fix animated image formats with variable frame length using
+    only one length
+  + Fix rotation getting applied twice to HEIF images
+- Drop patches fixed upstream:
+  + loupe_glycin-loaders_sandbox.patch
+  + loupe_print_fix.patch (forwarded request 1126467 from iznogood)</comment>
+    <requestid>1127338</requestid>
+  </revision>
 </revisionlist>

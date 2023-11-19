@@ -17,7 +17,7 @@
 
 
 Name:           loupe
-Version:        45.0
+Version:        45.1
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
@@ -25,11 +25,6 @@ URL:            https://gitlab.gnome.org/GNOME/loupe
 Source:         %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source3:        cargo_config
-
-# PATCH-FIX-UPSTREAM loupe_glycin-loaders_sandbox.patch -- Enable the glycin-loaders sandbox
-Patch0:         loupe_glycin-loaders_sandbox.patch
-# PATCH-FIX-UPSTREAM loupe_print_fix.patch -- print: Use same print operation throughout
-Patch2:         loupe_print_fix.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging >= 1.2.0+3
