@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 17 18:18:03 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Migrate from cron to systemd timers.
+
+-------------------------------------------------------------------
 Fri Oct 20 16:43:03 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Light path diagnostics: Support Enclosure Fault LEDs on new enclosures (bsc#1216074 ltc#201656)
