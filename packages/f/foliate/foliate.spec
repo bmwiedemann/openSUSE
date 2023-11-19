@@ -1,7 +1,7 @@
 #
 # spec file for package foliate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,29 @@
 #
 
 
-%global __requires_exclude typelib(\\(Handy\\) = 0.0|\\(Tracker\\))
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.6.4
+Version:        3.0.0
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
-
+# PATCH-FIX-OPENSUSE foliate-fix-export-of-incorrect-dep-Adw.patch -- Dependencies are not exported correctly
+Patch0:         foliate-fix-export-of-incorrect-dep-Adw.patch
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.52
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.76
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk4) >= 4.12
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(webkitgtk-6.0)
 Requires:       gjs
 BuildArch:      noarch
 
@@ -55,27 +59,18 @@ A GTK eBook viewer, built with GJS and Epub.js.
 
 chmod a-x README.md COPYING
 find %{buildroot}/%{_datadir} -type f -executable -exec chmod -x "{}" +
-
-chmod a-x %{buildroot}/%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/*
-
-pushd %{buildroot}%{_datadir}/com.github.johnfactotum.Foliate/assets/KindleUnpack/
-sed -i -e '/^#!/, 1d' *.py
-popd
 %fdupes %{buildroot}/%{_datadir}/%{oname}
 
 %find_lang %{oname} --with-gnome
 
-ln -sr %{buildroot}/%{_bindir}/%{oname} %{buildroot}/%{_bindir}/%{name}
-
 %files
 %license COPYING
 %doc README.md
-%{_bindir}/%{oname}
 %{_bindir}/%{name}
-%{_datadir}/applications/com.github.johnfactotum.Foliate.desktop
-%{_datadir}/com.github.johnfactotum.Foliate
+%{_datadir}/applications/%{oname}.desktop
+%{_datadir}/%{oname}
 %{_datadir}/glib-2.0/schemas/
-%{_datadir}/metainfo/com.github.johnfactotum.Foliate.metainfo.xml
+%{_datadir}/metainfo/%{oname}.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/*
 
 %files lang -f %{oname}.lang

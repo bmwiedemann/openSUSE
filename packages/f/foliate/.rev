@@ -300,4 +300,111 @@
     <comment></comment>
     <requestid>946549</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>42e966a69a18c6ee6a37085990201f48</srcmd5>
+    <version>3.0.0</version>
+    <time>1700421325</time>
+    <user>anag+factory</user>
+    <comment>- Fixed export of incorrect dependencies 'typelib(Adw)})'.
+  Patch added foliate-fix-export-of-incorrect-dep-Adw.patch.
+- Update to version 3.0.0
+  * UI changes:
+    - The library and the e-book viewer are unified in a single 
+      window.
+    - The library now loads more books as you scroll, no longer
+      requiring clicks to load more items.
+    - Table of contents, annotations, bookmarks are now in a sidebar,
+      which is docked to the side by default, but can also be set 
+      to be always folded (overlaid on top of content when revealed).
+    - The &quot;Add Bookmark&quot; button is moved to the header bar, 
+      and the page will show a ribbon when bookmarked.
+    - Removed &quot;turn page on tap&quot;; use swiping instead.
+    - Removed option for skeuomorphic shadows.
+    - Removed experimental traditional titlebar option.
+  * Book rendering:
+    - It no longer loads the entire file into memory, 
+      greatly reducing startup time and memory usage,
+      and it no longer loads every item in the TOC,
+      further improving startup time.
+    - Reloading now properly reloads the file, rather than merely 
+      re-rendering.
+    - Mobipocket and Kindle files are no longer extracted on disk; 
+      they are processed entirely in memory.
+    - Mobipocket files are now divided into sections at 
+      &lt;mbp:pagebreak&gt; tags, which greatly improves performance 
+      as it no longer requires rendering the whole book at once. 
+      Unfortunately this also means existing annotations for 
+      this format will not be displayed correctly.
+    - When a page is not valid XHTML, it will be processed as HTML.
+    - It no longer tries to override fonts with CSS. Instead, 
+      you can now configure the default serif, sans-serif, 
+      and monospace fonts, as well as setting the minimum font size.
+    - Added support for obfuscated fonts.
+    - Added support for user stylesheet.
+    - FB2: fixed infinite recursion bug (#935) and comments 
+      are now correctly ignored.
+    - Added experimental support for PDF files.
+    - Removed support for CBR, CBT, and CB7 files 
+      (CBZ is still supported).
+  * Layout:
+    - Paginated mode now has animation and 1:1 touchscreen 
+      and touchpad swipe gestures.
+    - Paginated mode supports more than two columns. 
+      The number of columns is controlled by a maximum width 
+      setting. As the window gets wider, it will add more columns 
+      to prevent lines from getting too long.
+    - Margins are now relative to the viewport size.
+    - It is now possible to configure both max width and max height.
+    - The page reflows faster when resizing, and reliably stays 
+      at the same location without flashing.
+    - Switching between paginated and scrolled layouts is faster 
+      and can be done with a shortcut (Ctrl+M).
+    - Removed continuous scrolling mode, as the new renderer does 
+      not support it (yet).
+  * Locations:
+    - Locations are now calculated from raw byte size instead 
+      of character count. The progress slider and reading time 
+      estimates are available instantly when you first open a book,
+      and locations are no longer cached. Old .json files in the
+      cache directory can be deleted.
+    - The progress slider now turns pages as you drag, 
+      and can be used with keyboard and mouse wheel.
+    - Page-list and landmarks are now supported and can be 
+      accessed from the location popover.
+  * Find in book:
+    - Results are now shown in the sidebar.
+    - Added option to ignore diacritics and to match whole words only.
+    - Added shortcuts for going to next and previous matches 
+      (Ctrl+G and Ctrl+Shift+G).
+  * Image viewer:
+    - Images are opened with double click by default; 
+      removed options for single, right, and middle click.
+    - Images are now copied and saved in their original format 
+      (previously, they were always converted to PNG).
+  * Narration:
+    - Text-to-speech now uses Speech Dispatcher, 
+      and supports pausing, skipping, word highlighting, 
+      SSML, and speed and pitch controls.
+    - Added support for EPUB Media Overlays.
+  * Copying:
+    - Selected text can now be copied with HTML formatting.
+    - Added &quot;Copy with Citation&quot;, which adds the author and title 
+      info to the copied text.
+    - Added &quot;Copy Identifier&quot;, which copies the CFI of 
+      the text fragment.
+  * Security:
+    - The WebView no longer has unlimited file access.
+  * Other changes:
+    - Added underline option for annotations.
+    - Annotations are now saved with timestamps.
+    - Added the ability to print chapters and selections.
+    - WebKit's inspector is always enabled, and can be accessed 
+      from the menu, or by pressing F12.
+  * Added BuildRequires:
+    - gtk4
+    - libadwaita
+    - webkitgtk-6.0
+    - desktop-file-utils (forwarded request 1127202 from Dead_Mozay)</comment>
+    <requestid>1127344</requestid>
+  </revision>
 </revisionlist>
