@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 18 14:10:04 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update package to version 2111.01:
+  * The brace ligatures in the italic style will no longer look totally hilarious and terrible
+
+For previous releases, see:
+* https://github.com/microsoft/cascadia-code/releases/tag/v2110.31
+* https://github.com/microsoft/cascadia-code/releases/tag/v2108.26
+* https://github.com/microsoft/cascadia-code/releases/tag/v2106.17
+* https://github.com/microsoft/cascadia-code/releases/tag/v2105.24
+
+-------------------------------------------------------------------
 Thu Apr  8 10:11:08 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 2102.25
 
 - Update to version 2102.25
