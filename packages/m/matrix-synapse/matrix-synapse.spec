@@ -29,7 +29,7 @@
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
 %global canonicaljson_version         2.0.0
-%global cryptography_version          41.0.4
+%global cryptography_version          41.0.5
 %global immutabledict_version         3.0.0
 %global idna_version                  3.4
 %global ijson_version                 3.2.3
@@ -39,7 +39,7 @@
 # TODO: 1.0.7
 %global msgpack_version               1.0.5
 %global netaddr_version               0.9.0
-# TODO: 8.13.22
+# TODO: 8.13.23
 %global phonenumbers_version          8.13.18
 # TODO: 0.17.1
 %global prometheus_client_version     0.17.0
@@ -56,9 +56,8 @@
 %global typing_extensions_version     4.1.1
 %global treq_version                  22.2.0
 %global unpaddedbase64_version        2.1.0
-%global matrix_synapse_ldap3_version  0.2.2
-# TODO: 23.2
-%global packaging_version             23.1
+%global matrix_synapse_ldap3_version  0.3.0
+%global packaging_version             23.2
 # TODO: 2.9.9
 %global psycopg2_version              2.9.7
 # TODO             7.3.1
@@ -157,7 +156,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.95.1
+Version:        1.96.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -195,7 +194,7 @@ BuildRequires:  (%{use_python}-poetry-core >= 1.1.0 with %{use_python}-poetry-co
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.7.0)
+BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.8.0)
 # NOTE: Keep this is in the same order as pyproject.toml.
 # some version locks based on poetry.lock
 BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}

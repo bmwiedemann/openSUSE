@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Nov 17 23:44:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.96.0
+  Synapse will soon be forked by Element under an AGPLv3.0 licence
+  (with CLA, for proprietary dual licensing). You can read more
+  about this here:
+
+  https://matrix.org/blog/2023/11/06/future-of-synapse-dendrite/
+  https://element.io/blog/element-to-adopt-agplv3/
+
+  The Matrix.org Foundation copy of the project will be archived.
+  Any changes needed by server administrators will be communicated
+  via our usual announcements channels, but we are striving to make
+  this as seamless as possible. 
+
+  - Features
+    - Add experimental support to allow multiple workers to write
+      to receipts stream. (#16432)
+    - Add a new module API for controller presence. (#16544)
+    - Add a new module API callback that allows adding extra fields
+      to events' unsigned section when sent down to clients.
+      (#16549)
+    - Improve the performance of claiming encryption keys. (#16565,
+      #16570)
+  - Bugfixes
+    - Fix "'int' object is not iterable" error in
+      set_device_id_for_pushers background update introduced in
+      Synapse 1.95.0. (#16594)
+    - Fixed a bug in the example Grafana dashboard that prevents it
+      from finding the correct datasource. Contributed by
+      @MichaelSasser. (#16471)
+    - Fix a long-standing, exceedingly rare edge case where the
+      first event persisted by a new event persister worker might
+      not be sent down /sync. (#16473, #16557, #16561, #16578,
+      #16580)
+    - Fix long-standing bug where /sync incorrectly did not mark a
+      room as limited in a sync requests when there were missing
+      remote events. (#16485)
+    - Fix a bug introduced in Synapse 1.41 where HTTP(S) forward
+      proxy authorization would fail when using basic HTTP
+      authentication with a long username:password string. (#16504)
+    - Force TLS certificate verification in user registration
+      script. (#16530)
+    - Fix long-standing bug where /sync could tightloop after
+      restart when using SQLite. (#16540)
+    - Fix ratelimiting of message sending when using workers, where
+      the ratelimit would only be applied after most of the work
+      has been done. (#16558)
+    - Fix a long-standing bug where invited/knocking users would
+      not leave during a room purge. (#16559)
+  - Improved Documentation
+    - Improve documentation of presence router. (#16529)
+    - Add a sentence to the opentracing docs on how you can have
+      jaeger in a different place than synapse. (#16531)
+    - Correctly describe the meaning of unspecified rule lists in
+      the alias_creation_rules and room_list_publication_rules
+      config options and improve their descriptions more generally.
+      (#16541)
+    - Pin the recommended poetry version in contributors' guide.
+      (#16550)
+    - Fix a broken link to the client breakdown in the README.
+      (#16569)
+  - Internal Changes
+    - Improve performance of delete device messages query, cf issue
+      16479. (#16492)
+    - Reduce memory allocations. (#16505)
+    - Improve replication performance when purging rooms. (#16510)
+    - Run tests against Python 3.12. (#16511)
+    - Run trial & integration tests in continuous integration when
+      .ci directory is modified. (#16512)
+    - Remove duplicate call to mark remote server 'awake' when
+      using a federation sending worker. (#16515)
+    - Enable dirty runs on Complement CI, which is significantly
+      faster. (#16520)
+    - Stop deleting from an unused table. (#16521)
+    - Improve type hints. (#16526, #16551)
+    - Fix running unit tests on Twisted trunk. (#16528)
+    - Reduce some spurious logging in worker mode. (#16555)
+    - Stop porting a table in port db that we're going to nuke and
+      rebuild anyway. (#16563)
+    - Deal with warnings from running complement in CI. (#16567)
+    - Allow building with setuptools_rust 1.8.0. (#16574)
+
+-------------------------------------------------------------------
 Tue Nov  7 09:14:10 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
