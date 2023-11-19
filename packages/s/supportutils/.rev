@@ -298,4 +298,12 @@
     <comment>PED-4456 PED-4524 bsc#1216388 bsc#1216150 bsc#1216147 bsc#1216146 bsc#1216229 bsc#1216233 bsc#1216151 bsc#1216228 bsc#1216230 bsc#1216232 bsc#1216231 bsc#1216241 (forwarded request 1118654 from jrecord)</comment>
     <requestid>1118655</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>59a99c25ae57853b0d97f630b2842d37</srcmd5>
+    <version>3.2.3</version>
+    <time>1700421335</time>
+    <user>anag+factory</user>
+    <comment>bsc#1217287 bsc#1216827 bsc#1216049 bsc#1216522 pr#168 pr#161 (forwarded request 1127372 from jrecord)</comment>
+    <requestid>1127373</requestid>
+  </revision>
 </revisionlist>
