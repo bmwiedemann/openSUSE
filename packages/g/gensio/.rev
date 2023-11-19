@@ -186,4 +186,15 @@
     <comment></comment>
     <requestid>1108794</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>80fde593d1f59df3fa2295645c65dcdc</srcmd5>
+    <version>2.7.6</version>
+    <time>1700421386</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.6:
+    https://github.com/cminyard/gensio/compare/v2.7.5...v2.7.6
+
+  * https://github.com/cminyard/gensio/compare/v2.5.4...v2.6.1</comment>
+    <requestid>1127446</requestid>
+  </revision>
 </revisionlist>

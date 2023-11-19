@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 18 16:53:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.6:
+    https://github.com/cminyard/gensio/compare/v2.7.5...v2.7.6
+
+-------------------------------------------------------------------
 Tue Aug 29 13:04:25 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 2.7.5
@@ -8,7 +14,7 @@ Tue Aug 29 13:04:25 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 Sun Dec  4 22:03:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.4:
-  * https://github.com/cminyard/gensio/compare/v2.5.4...v2.6.1 
+  * https://github.com/cminyard/gensio/compare/v2.5.4...v2.6.1
   * The internal structure has been reworked so that gensios are dynamically loaded
     by default and can be individually selected at build time. The library itself
     was getting too many dependencies, so these dependencies are pushed to the
