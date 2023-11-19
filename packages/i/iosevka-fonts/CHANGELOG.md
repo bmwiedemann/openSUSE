@@ -1,5 +1,81 @@
 ## Modifications since last major version
 
+### 27.3.5
+
+* Add italic form of CYRILLIC SMALL LETTER THREE-LEGGED TE (`U+1C85`).
+* Add top-right serif to fully serifed form for CYRILLIC SMALL LETTER TALL TE (`U+1C84`).
+* Fix serifs of GREEK LETTER DIGAMMA (`U+03DC`) under `ss12`.
+* Improve crossbar position of GREEK SMALL LETTER DIGAMMA (`U+03DD`) and add a middle serif under slab.
+* Refine Greek Capital Sho (U+03F7) glyph (#2079).
+* \[Experimental\] Add a font feature for texture control (#2081).
+  - Currently only available through custom builds with `build-texture-feature = true`.
+* Make SYMBOL FOR DELETE FORM TWO (`U+2425`) narrow by default, align with other Control Pictures characters (#2084).
+* Make APL FUNCTIONAL SYMBOL CIRCLE STAR (`U+235F`) always be five-pointed and upright, to align its pentagram history (#2083).
+
+
+### 27.3.4
+
+* Disunify anonymous untagged variant selectors for Cyrillic Capital Yeri/Yery for consistency in style-driven configurations.
+* Make LATIN CAPITAL LETTER Y WITH LOOP (`U+1EFE`) follow variants of capital `Y` (`cv24`) for a more balanced slab-italic form like that of Cyrillic Capital U.
+* Remove `base-serifed`-only variants for CYRILLIC SMALL LETTER STRAIGHT U (`U+04AF`, `U+04B1`).
+* Make Etoile use `flat-bottom-serifed` for `M` and Cyrillic Lower Em (`cv13`, `cv74`).
+
+
+### 27.3.3
+
+* Make `cv96` take effect on math asterisk operators (#2066).
+* Fix serifs of italic small Yat in Etoile (#2067).
+* Add characters:
+  - LEFTWARDS HARPOON WITH BARB UP TO BAR (`U+2952`) .. DOWNWARDS HARPOON WITH BARB LEFT FROM BAR (`U+2961`).
+
+
+### 27.3.2
+
+* Fix overlapping serifs of italic Yat (#2061).
+* Fix width of VERY MUCH GREATER-THAN (`U+22D9`).
+* Remove duplicate variants for `U+0181`, `U+018A`, `U+01A4`, and `U+2C64`.
+* Remove asymmetric variants for small capital `B` (`U+0299`, `U+1D03`) and Cyrillic Lower Ve (`U+0432`).
+
+
+### 27.3.1
+
+* Fix application of `cv39` on italic Cyrillic Yat.
+* Fix mark placement for `U+024F`.
+* Fix overlay placement of Tugrik Sign (U+20AE) under Etoile (#2060).
+
+
+### 27.3.0
+
+* Make the tailed variants of `i` and `l` use the fully-tailed shape even when upright, as is consistent with `t = bent-hook` (#1692).
+  - The old, slightly-curly variants for `i`, `l`, iota (`ι`) and tau (`τ`) are moved to `semi-tailed` variants.
+  - Corresponded SSes are changed to keep the shape identical to the old version.
+* Make Cyrillic Yat to follow Yeri variants. Italic Yat will also respond to variants of `n` (#2047).
+* Add short-tailed lowercase tau (`τ`) (#2050).
+* Fix tailed variants for `U+02A0`.
+* Stylistic set fixes:
+  * Fix `cv44` and `cv99` for `ss13`.
+  * Fix `cv48` and `cv54` for `ss17`.
+  * Fix `cv51` for Etoile.
+  * Fix `cv52` for `ss15` and Etoile.
+  * Fix `cv58` for `ss15`.
+  * Fix `cv59` for `ss07`.
+  * Fix `cv61` for `ss15` and `ss17`.
+  * Fix `cv66` for `ss01`, `ss06`, and `ss15`.
+  * Fix `vsAF` for `ss11`.
+  * Fix `vsAL` for `ss09` and `ss18`.
+
+
+### 27.2.1
+
+* Refine shape of flat `5` (#2030).
+* Fix `ss02`, `ss04`, `ss06`, `ss13`, `ss17`'s application on `i` and `j` (#2033).
+* Add tailed lower lambda (#2036).
+* Add Chancery and Semi-Chancery variants for lowercase `x` and Greek Chi (#2037).
+* Add `arrow-lr` ligation group for C-like's spaceship operators (#2041).
+* Add raised cap-height cent sign (`¢`) variants to `VSAM` (#2044).
+* Fix `cv02`, `cv04`, `cv05`, `cv06`, `cv11`, `cv12`, `cv15`, `cv17`, `cv18`, `cv25`, `cv28`, `cv43`, `cv70`, `cv71`, `cv81`, and `cv82` for `ss17` under slab.
+
+
 ### 27.2.0
 
 * Add characters
