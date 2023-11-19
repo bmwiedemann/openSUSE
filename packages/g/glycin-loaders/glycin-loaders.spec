@@ -17,10 +17,10 @@
 
 
 Name:           glycin-loaders
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Sandboxed image rendering
-License:        MPL-2.0 OR LGPL-2.1-or-later
+License:        LGPL-2.1-or-later OR MPL-2.0
 URL:            https://gitlab.gnome.org/sophie-h/glycin
 Source0:        %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst

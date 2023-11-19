@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 14 20:05:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.2:
+  + GIF/APNG/WEBP: Assume frame length of 100ms if provided frame
+    length is zero or invalid.
+
+-------------------------------------------------------------------
 Mon Sep 18 22:31:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.1:
