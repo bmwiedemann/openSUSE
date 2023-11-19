@@ -369,4 +369,41 @@
     to call due to argument list requirements, and never worked.</comment>
     <requestid>1089639</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e066cd5c6a3bba8166da35afbe99e37c</srcmd5>
+    <version>0.8.0</version>
+    <time>1700421390</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.0:
+  * The release fixes many vulnerabilities from corrupt DWARF
+    and/or corrupt Elf. Two new functions are added for DWARF Frame
+    access to get the correct sign of an argument (the pre-existing
+    functions remain in place and working avoiding any need for
+    recompilation or relinking of user code).
+
+    now pass section indexes as Dwarf_Unsigned instead of Dwarf_Half.
+    to call due to argument list requirements, and never worked.
+  * The dealloc required for dwarf_offset_list() was incorrect,
+    documented in libdwarf.pdf and in the on-line html.
+    users accessing near-identical builds).
+    and the interface was changed to make it easier to use.
+- replace symlink by directory with hardlinks (bsc#1196198)
+  * Release fixes a n assign offset = offset;
+- drop libdwarf-gcc11.patch, libdwarf-gcc11-fixup.patch: upstream
+- libdwarf-gcc11.patch: refresh with upstream patch
+- update to 20201020:
+- move libdwarf headers back to the old location
+  are known to work on Linux(Ubuntu on x86_64 and i686),
+  for dwarfdump/libdwarf (the current dwarfdump
+  make check actually does run dwarfdump and
+  or relocation record data are not available in a
+  --disable-libelf build.
+  available in a --disable-libelf build.
+  on sourceforge) to get more detail about the problems found.
+  ensures the build won't use libelf or elf.h anywhere.
+  to access DWARF information.
+  No elf.h, libelf.h or zlib.h should be present.
+  no longer any two-stage aspect of the build.</comment>
+    <requestid>1127452</requestid>
+  </revision>
 </revisionlist>
