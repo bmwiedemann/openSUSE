@@ -267,4 +267,19 @@
   * Reviewed rlgl module for automatic limits checking: Again, rlgl has been reviewed to simplify usage. Now</comment>
     <requestid>1087397</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f6f70812eee62a9b09b29a82fd03694</srcmd5>
+    <version>5.0</version>
+    <time>1700421358</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0:
+  * rcore module platform-spli
+  * New platform backend supported: SDL
+  * New platform backend supported: Nintendo Switch 
+  * New splines drawing and evaluation API
+  * Pseudo-random numbers generator: rprand
+  * Automation Events System API
+  * For details check project changelog</comment>
+    <requestid>1127465</requestid>
+  </revision>
 </revisionlist>
