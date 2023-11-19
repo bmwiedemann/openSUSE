@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 11 16:50:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.3.0:
+  + Improve memory barrier to fix potential segfaults
+  + Various subsetting and instancing fixes.
+  + Rename “hb-subset” option “--instance” to “--variations” to
+    match the other tools, old option kept as an alias
+- -devel: fix no-library-dependency-on libharbuzz-cairo0
+
+-------------------------------------------------------------------
 Wed Oct 18 09:05:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 8.2.2:

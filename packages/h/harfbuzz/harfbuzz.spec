@@ -17,7 +17,7 @@
 
 
 Name:           harfbuzz
-Version:        8.2.2
+Version:        8.3.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
@@ -92,6 +92,7 @@ This package provides a set of tools for HarfBuzz.
 
 %package devel
 Summary:        Development files for the HarfBuzz OpenType text shaping engine
+Requires:       libharfbuzz-cairo0 = %{version}
 Requires:       libharfbuzz-gobject0 = %{version}
 Requires:       libharfbuzz-icu0 = %{version}
 Requires:       libharfbuzz-subset0 = %{version}
