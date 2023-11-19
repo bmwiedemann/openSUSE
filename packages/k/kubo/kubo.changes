@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 11 01:23:24 UTC 2023 - Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+- Update to 0.24.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.24.0
+  * Support for content blocking
+  * Gateway: the root of the CARs are no longer meaningful
+  * IPNS: improved publishing defaults
+  * IPNS: record TTL is used for caching
+  * Experimental Transport: WebRTC Direct
+
+-------------------------------------------------------------------
 Fri Oct  6 05:52:19 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 0.23.0 - for details see

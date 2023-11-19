@@ -1,15 +1,15 @@
 <services>
 
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/ipfs/kubo</param>
     <param name="scm">git</param>
-    <param name="revision">v0.23.0</param>
-    <param name="version">0.23.0</param>
+    <param name="revision">v0.24.0</param>
+    <param name="version">0.24.0</param>
   </service>
-  <service name="go_modules" mode="disabled">
+  <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
   </service>
-  <service name="set_version" mode="disabled" />
+  <service name="set_version" mode="manual" />
 
   <service name="tar" mode="buildtime" />
 </services>

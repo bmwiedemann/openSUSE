@@ -37,4 +37,20 @@ now with fixed build</comment>
   * Fixed FUSE multiblock structures</comment>
     <requestid>1115959</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0e6b9ee8474ad058578886df9ab7fe8</srcmd5>
+    <version>0.24.0</version>
+    <time>1700421344</time>
+    <user>anag+factory</user>
+    <comment>fixup name in .changes
+
+- Update to 0.24.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.24.0
+  * Support for content blocking
+  * Gateway: the root of the CARs are no longer meaningful
+  * IPNS: improved publishing defaults
+  * IPNS: record TTL is used for caching
+  * Experimental Transport: WebRTC Direct</comment>
+    <requestid>1127487</requestid>
+  </revision>
 </revisionlist>
