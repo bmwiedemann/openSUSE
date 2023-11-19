@@ -17,7 +17,7 @@
 
 
 %define libname libflatpak0
-%define bubblewrap_version 0.5.0
+%define bubblewrap_version 0.8.0
 %define ostree_version 2020.8
 %define xdg_dbus_proxy_version 0.1.0
 
@@ -34,7 +34,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.15.4
+Version:        1.15.6
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -85,6 +85,9 @@ BuildRequires:  pkgconfig(libzstd) >= 0.8.1
 BuildRequires:  pkgconfig(ostree-1) >= %{ostree_version}
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(wayland-client) >= 1.15
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.32
+BuildRequires:  pkgconfig(wayland-scanner) >= 1.15
 BuildRequires:  pkgconfig(xau)
 Requires:       %{libname} = %{version}
 Requires:       bubblewrap >= %{bubblewrap_version}
@@ -195,6 +198,7 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 %endif
 	--enable-documentation \
 	--enable-gtk-doc \
+	--with-wayland-security-context=yes \
 	%{nil}
 %make_build
 %sysusers_generate_pre system-helper/flatpak.conf system-user-flatpak flatpak.conf
@@ -252,6 +256,7 @@ if [ -e "%{_localstatedir}/lib/flatpak/repo" ] && [ -z "$(ls -A %{_localstatedir
 rm -r %{_localstatedir}/lib/flatpak/repo
 fi
 %{_bindir}/flatpak remotes 1> /dev/null
+%tmpfiles_create %{_tmpfilesdir}/flatpak.conf
 
 %postun
 %service_del_postun flatpak-system-helper.service
@@ -316,6 +321,7 @@ fi
 %{_userunitdir}/flatpak-oci-authenticator.service
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Flatpak.Authenticator.xml
 %{_datadir}/dbus-1/services/org.flatpak.Authenticator.Oci.service
+%{_tmpfilesdir}/flatpak.conf
 
 %files -n system-user-flatpak
 %license COPYING
