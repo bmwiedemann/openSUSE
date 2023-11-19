@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 18 19:02:46 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.0
+  * Build fixes for non-Linux systems
+
+-------------------------------------------------------------------
 Mon Aug 28 11:59:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.9
