@@ -309,4 +309,12 @@
     <comment></comment>
     <requestid>1125171</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e0c314b78bdb12b322d14480bb3f73b3</srcmd5>
+    <version>119.0.6045.159</version>
+    <time>1700421257</time>
+    <user>anag+factory</user>
+    <comment>119.0.6045.159 (boo#1217142)</comment>
+    <requestid>1127290</requestid>
+  </revision>
 </revisionlist>
