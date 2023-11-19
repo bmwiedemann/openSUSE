@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 16 21:15:05 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 3.4.0:
+  * #963: Wait for workers to finish reporting when test run stops
+    early.
+  * #965: Added support for Python 3.12.
+
+-------------------------------------------------------------------
 Mon May 22 21:13:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:
