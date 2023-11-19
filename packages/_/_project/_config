@@ -549,6 +549,10 @@ Prefer: -sdbootutil-rpm-scriptlets
 # have choice for chromedriver needed by openQA-devel: chromedriver ungoogled-chromium-chromedriver
 Prefer: -ungoogled-chromium-chromedriver
 
+# have choice for mvn
+Prefer: -tomcat10 -tomcat10-lib tomcat tomcat-lib
+Prefer: -tomcat10-servlet-6_0-api tomcat-servlet-4_0-api
+
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
 Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
