@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 16 12:29:43 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 1.4.0+12:
+  + docs: Use `<property>` instead of `<child> for
+    `AdwNavigationSplitView`
+  + navigation-view: Add missing space to warning message
+  + tab-view: Fix typo causing crash on AdwTabPages dispose
+  + combo-row: Make the selected indicator a presentational element
+  + tab-view: pages model can outlive it's view
+  + tab-view: keep view alive during ::page-detached
+  + about-window: Fix build with newer libappstream (boo#1217047)
+  + combo-row: Preserve focus when opening the popover
+  + Revert "Add some default options to the GTK subproject"
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 15 17:43:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.0:
