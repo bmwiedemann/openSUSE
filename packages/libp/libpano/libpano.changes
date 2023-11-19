@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 18 19:47:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.22:
+  * Fix some insecure data handling in command-line tools, this
+    doesn't affect Hugin usage. In particular the ShowScript and
+    LaunchAndSendScript functions have been replaced with
+    non-functional stubs. These functions are not used by
+    libpano13 itself and have security issues.
+  * Clean-up some older deprecated C code, minor build improvements
+  * Write TIFFTAG_EXTRASAMPLE tag for files with alpha channel
+
+-------------------------------------------------------------------
 Fri Jan 28 15:09:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.9.21
@@ -39,7 +51,7 @@ architectural output, orthographic output and Thoby input.
 -------------------------------------------------------------------
 Tue Jan 10 02:17:36 UTC 2012 - crrodriguez@opensuse.org
 
-- Add explicit BuildRequires on libjpeg-devel and zlib-devel 
+- Add explicit BuildRequires on libjpeg-devel and zlib-devel
 - libpano-devel should not require libtiff-devel, libjpeg-devel
   or libtiff-devel as they are not needed for building or linking.
   This may break packages with wrong buildrequires.
@@ -143,7 +155,7 @@ Sun Feb 27 23:58:46 CET 2005 - ro@suse.de
 -------------------------------------------------------------------
 Sun Feb 20 11:28:18 CET 2005 - ro@suse.de
 
-- temporary workaround to fix build 
+- temporary workaround to fix build
 
 -------------------------------------------------------------------
 Tue Dec 21 17:36:50 CET 2004 - mcihar@suse.cz

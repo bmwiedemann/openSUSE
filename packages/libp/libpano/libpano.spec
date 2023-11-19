@@ -1,7 +1,7 @@
 #
 # spec file for package libpano
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %bcond_with java
 
 Name:           libpano
-Version:        2.9.21
+Version:        2.9.22
 Release:        0
 Summary:        Panorama Tools Back-End Library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://panotools.sourceforge.net/
+URL:            https://panotools.sourceforge.net/
 Source:         https://sourceforge.net/projects/panotools/files/libpano13/libpano13-%{version}/libpano13-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
