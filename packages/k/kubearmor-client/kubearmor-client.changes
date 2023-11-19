@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 17 17:55:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.3:
+  * update go version to v1.21
+  * fix `karmor uninstall`
+  * fixing the issue about progress bar
+  * default read permissions for all workflows
+- BuildRequire go1.21
+
+-------------------------------------------------------------------
 Wed Oct 25 13:41:55 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.2:

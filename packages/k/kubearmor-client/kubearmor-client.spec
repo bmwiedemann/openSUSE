@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubearmor-client
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        KubeArmor cli tool aka kArmor
 License:        Apache-2.0
 URL:            https://github.com/kubearmor/kubearmor-client
 Source:         kubearmor-client-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.21
 
 %description
 karmor is a client tool to help manage KubeArmor, which is a Cloud-native
