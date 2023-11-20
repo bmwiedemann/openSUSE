@@ -402,4 +402,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1111783</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c246ad73640d3213a9ab6f120c94d7e9</srcmd5>
+    <version>1.18.0</version>
+    <time>1700511582</time>
+    <user>anag+factory</user>
+    <comment>- cleanup spec and enable tests
+- drop cargo_config
+- update to 1.18.0
+ * Add support for microseconds via --time-unit microsecond
+ * Proper argument quoting on Windows CMD (forwarded request 1127593 from mimi_vx)</comment>
+    <requestid>1127594</requestid>
+  </revision>
 </revisionlist>

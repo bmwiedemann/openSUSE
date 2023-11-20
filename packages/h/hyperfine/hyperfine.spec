@@ -17,15 +17,13 @@
 
 
 Name:           hyperfine
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT
-Group:          System/Benchmark
 URL:            https://github.com/sharkdp/%{name}
 Source0:        https://github.com/sharkdp/hyperfine/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust >= 1.46
 BuildRequires:  zstd
@@ -70,8 +68,6 @@ The official zsh completion script for %{name}.
 
 %prep
 %setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
@@ -90,10 +86,10 @@ install -Dm644 completions/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_comp
 install -Dm644 completions/_%{name}     %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -Dm644 doc/%{name}.1                                   %{buildroot}%{_mandir}/man1/%{name}.1
 
-%if %{with check}
+#%%if %{with check}
 %check
 %{cargo_test}
-%endif
+#%%endif
 
 %files
 %license LICENSE-APACHE LICENSE-MIT

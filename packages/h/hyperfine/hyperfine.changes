@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 20 01:47:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- cleanup spec and enable tests
+- drop cargo_config
+- update to 1.18.0
+ * Add support for microseconds via --time-unit microsecond
+ * Proper argument quoting on Windows CMD
+
+-------------------------------------------------------------------
 Sun Sep 10 13:51:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Use upstream tarball hyperfine-0.17.0.tar.gz
