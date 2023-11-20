@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 19 21:57:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.13:
+  * wrap-around/loop: fix modulo calculation (by trinitou)
+  * Add Xinerama support (linux, by Ion Reguera)
+  * Update build-scripts, fix macOS portmidi support
+
+-------------------------------------------------------------------
 Sun Jan  1 19:00:19 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to version 0.8.12:
@@ -73,8 +81,8 @@ Mon Oct  5 17:22:15 UTC 2015 - avvissu@yandex.ru
 - Update to 0.8.2:
   * see: /usr/share/doc/packages/xjadeo/ChangeLog
 - Del pkgconfig(QtGui):
-  * qjadeo is deprecated an not intended to be used 
-- Remove xjadeo.desktop: use %%suse_update_desktop_file 
+  * qjadeo is deprecated an not intended to be used
+- Remove xjadeo.desktop: use %%suse_update_desktop_file
 - Use a detailed list of files
 - Spec file cleanup
 

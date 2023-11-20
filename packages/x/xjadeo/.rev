@@ -63,4 +63,18 @@
     <comment></comment>
     <requestid>1046037</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>764c6d5c96771e12b00e2929511e00d6</srcmd5>
+    <version>0.8.13</version>
+    <time>1700511589</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.13:
+  * wrap-around/loop: fix modulo calculation (by trinitou)
+  * Add Xinerama support (linux, by Ion Reguera)
+  * Update build-scripts, fix macOS portmidi support
+
+  * qjadeo is deprecated an not intended to be used
+- Remove xjadeo.desktop: use %%suse_update_desktop_file</comment>
+    <requestid>1127585</requestid>
+  </revision>
 </revisionlist>
