@@ -31,4 +31,12 @@
     <comment>- Update to release 20221229</comment>
     <requestid>1045742</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>dd1d2a527d656c5c6bb02f89ce96dceb</srcmd5>
+    <version>20221229</version>
+    <time>1700511574</time>
+    <user>anag+factory</user>
+    <comment>- system-libs.patch requires autoconf rerun; add the dependency.</comment>
+    <requestid>1127555</requestid>
+  </revision>
 </revisionlist>
