@@ -1,0 +1,107 @@
+From a000a5577210929ca808fe19719186cb7e917f44 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20WanzenBug=20Wanzenb=C3=B6ck?=
+ <moritz.wanzenboeck@linbit.com>
+Date: Wed, 13 Sep 2023 13:30:57 +0200
+Subject: [PATCH] compat: sock: Remove ->sendpage*() in favour of
+ sendmsg(MSG_SPLICE_PAGES)
+
+See also upstream Linux kernel commits
+dc97391e6610 ("sock: Remove ->sendpage*() in favour of sendmsg(MSG_SPLICE_PAGES)")
+eeac7405c735 ("drbd: Use sendmsg(MSG_SPLICE_PAGES) rather than sendpage()")
+4b9c2edaf728 ("drbd: swap bvec_set_page len and offset")
+
+Original message:
+
+Remove ->sendpage() and ->sendpage_locked().  sendmsg() with
+MSG_SPLICE_PAGES should be used instead.  This allows multiple pages and
+multipage folios to be passed through.
+---
+ .../cocci/msg_splice_pages__no_present.cocci     | 16 ++++++++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c        |  3 +++
+ .../tests/have_msg_splice_pages.c                |  7 +++++++
+ drbd/drbd_transport_tcp.c                        |  8 ++++++--
+ 4 files changed, 32 insertions(+), 2 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/msg_splice_pages__no_present.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/have_msg_splice_pages.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/msg_splice_pages__no_present.cocci b/drbd/drbd-kernel-compat/cocci/msg_splice_pages__no_present.cocci
+new file mode 100644
+index 000000000000..0fdf77e43737
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/msg_splice_pages__no_present.cocci
+@@ -0,0 +1,16 @@
++@@
++expression flags;
++@@
++  flags
++- | MSG_SPLICE_PAGES
++
++@@
++identifier bvec, page, len, offset, msg, socket;
++@@
++- struct bio_vec bvec;
++  ...
++  int sent;
++- bvec_set_page(&bvec, page, len, offset);
++- iov_iter_bvec(&msg.msg_iter, ITER_SOURCE, &bvec, 1, len);
++- sent = sock_sendmsg(socket, &msg);
+++ sent = socket->ops->sendpage(socket, page, offset, len, msg.msg_flags);
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 608be8b4f099..6a96c5b89f11 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -127,6 +127,9 @@ int main(int argc, char **argv)
+ 	patch(1, "bvec_kmap_local", true, false,
+ 	      COMPAT_HAVE_BVEC_KMAP_LOCAL, "present");
+ 
++	patch(1, "msg_splice_pages", true, false,
++	      COMPAT_HAVE_MSG_SPLICE_PAGES, "present");
++
+ 	patch(1, "struct_bvec_iter", true, false,
+ 	      COMPAT_HAVE_STRUCT_BVEC_ITER, "present");
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/have_msg_splice_pages.c b/drbd/drbd-kernel-compat/tests/have_msg_splice_pages.c
+new file mode 100644
+index 000000000000..0bb23ef6d39a
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/have_msg_splice_pages.c
+@@ -0,0 +1,7 @@
++/* { "version": "v6.5-rc1", "commit": "dc97391e661009eab46783030d2404c9b6e6f2e7", "comment": "sock: Remove ->sendpage*() in favour of sendmsg(MSG_SPLICE_PAGES)", "author": "David Howells <dhowells@redhat.com>", "date": "Fri Jun 23 23:55:12 2023 +0100" } */
++#include <linux/net.h>
++
++int foo(void)
++{
++	return MSG_SPLICE_PAGES;
++}
+diff --git a/drbd/drbd_transport_tcp.c b/drbd/drbd_transport_tcp.c
+index ca60833f73d7..5dcba50dd0eb 100644
+--- a/drbd/drbd_transport_tcp.c
++++ b/drbd/drbd_transport_tcp.c
+@@ -1193,18 +1193,22 @@ static int dtt_send_page(struct drbd_transport *transport, enum drbd_stream stre
+ 	struct drbd_tcp_transport *tcp_transport =
+ 		container_of(transport, struct drbd_tcp_transport, transport);
+ 	struct socket *socket = tcp_transport->stream[stream];
++	struct msghdr msg = { .msg_flags = msg_flags | MSG_NOSIGNAL | MSG_SPLICE_PAGES };
++	struct bio_vec bvec;
+ 	int len = size;
+ 	int err = -EIO;
+ 
+ 	if (!socket)
+ 		return -ENOTCONN;
+ 
+-	msg_flags |= MSG_NOSIGNAL;
+ 	dtt_update_congested(tcp_transport);
+ 	do {
+ 		int sent;
+ 
+-		sent = socket->ops->sendpage(socket, page, offset, len, msg_flags);
++		bvec_set_page(&bvec, page, len, offset);
++		iov_iter_bvec(&msg.msg_iter, ITER_SOURCE, &bvec, 1, len);
++
++		sent = sock_sendmsg(socket, &msg);
+ 		if (sent <= 0) {
+ 			if (sent == -EAGAIN) {
+ 				if (drbd_stream_send_timed_out(transport, stream))
+-- 
+2.42.1
+

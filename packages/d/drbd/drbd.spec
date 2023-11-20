@@ -56,10 +56,12 @@ Patch0017:   0017-drbd-propagate-exposed-UUIDs-only-into-established-c.patch
 Patch0018:   0018-drbd-rework-autopromote.patch
 Patch0019:   0019-compat-block-remove-the-unused-mode-argument-to-rele.patch
 Patch0020:   0020-drbd-do-not-allow-auto-demote-to-be-interrupted-by-s.patch
+Patch0021:   0021-compat-sock-Remove-sendpage-in-favour-of-sendmsg-MSG.patch
+Patch0022:   0022-compat-block-replace-fmode_t-with-a-block-specific-t.patch
+Patch0023:   0023-compat-genetlink-remove-userhdr-from-struct-genl_inf.patch
 # suse special patch
 Patch1001:   bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:   suse-coccinelle.patch
-Patch1003:   bsc-1215699_fix-build-error-against-kernel-v6.5.4.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
@@ -115,9 +117,11 @@ installed kernel.
 %patch0018 -p1
 %patch0019 -p1
 %patch0020 -p1
+%patch0021 -p1
+%patch0022 -p1
+%patch0023 -p1
 %patch1001 -p1
 %patch1002 -p1
-%patch1003 -p1
 
 mkdir source
 cp -a drbd/. source/. || :
