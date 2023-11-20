@@ -88,6 +88,8 @@ Patch404:       hplip-3.20.6-python-includes.patch
 Patch500:       hplip-missing-drivers.patch
 # PATCH-FIX-UPSTREAM boo#1209866 lp#2013185
 Patch501:       fix-printer-attributes-parsing.patch
+# PATCH-FIX-SUSE bsc#1214399
+Patch502:       hppsfilter-booklet-printing-change-insecure-fixed-tm.patch
 BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod qt5-devel}
 BuildRequires:  %{pymod xml}
@@ -334,6 +336,7 @@ This sub-package is only required by developers.
 %patch404 -p1
 %patch500 -p1
 %patch501 -p1
+%patch502 -p1
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
     xargs -n 1 sed -i '1s,^#!\(%{_bindir}/env python\|%{_bindir}/python\),#!%{pyexe},'

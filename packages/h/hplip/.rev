@@ -1416,4 +1416,16 @@
   * HP Color LaserJet Pro 4203cdn</comment>
     <requestid>1116522</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>ac6cb7efc3cb593a8a2a93a12543e6bd</srcmd5>
+    <version>3.23.8</version>
+    <time>1700511518</time>
+    <user>anag+factory</user>
+    <comment>- hppsfilter: booklet printing: change insecure fixed /tmp file paths
+  (bsc#1214399)
+  * add hppsfilter-booklet-printing-change-insecure-fixed-tm.patch
+
+- Update to hplip 3.23.8 (jsc#PED-5846)</comment>
+    <requestid>1127274</requestid>
+  </revision>
 </revisionlist>

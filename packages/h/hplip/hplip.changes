@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 15 20:21:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- hppsfilter: booklet printing: change insecure fixed /tmp file paths
+  (bsc#1214399)
+  * add hppsfilter-booklet-printing-change-insecure-fixed-tm.patch
+
+-------------------------------------------------------------------
 Mon Oct  9 17:56:07 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
-- Update to hplip 3.23.8
+- Update to hplip 3.23.8 (jsc#PED-5846)
 - Support for new printers:
   * HP Color LaserJet Pro MFP 4301fdne
   * HP Color LaserJet Pro MFP 4301fdwe
