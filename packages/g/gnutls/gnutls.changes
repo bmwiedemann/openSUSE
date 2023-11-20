@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Nov 17 10:17:02 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.2: [bsc#1217277, CVE-2023-5981]
+  * libgnutls: Fix timing side-channel inside RSA-PSK key exchange.
+    [GNUTLS-SA-2023-10-23, CVSS: medium] [CVE-2023-5981]
+  * libgnutls: Add API functions to perform ECDH and DH key agreement
+    The functionality has been there for a long time though they were
+    not available as part of the public API.  This enables applications
+    to implement custom protocols leveraging non-interactive key
+    agreement with ECDH and DH.
+  * libgnutls: Added support for AES-GCM-SIV ciphers (RFC 8452)
+    The new algorithms GNUTLS_CIPHER_AES_128_SIV_GCM and
+    GNUTLS_CIPHER_AES_256_SIV_GCM have been added to be used through
+    the AEAD interface.  Note that, unlike
+    GNUTLS_CIPHER_AES_{128,256}_SIV_GCM, the authentication tag is
+    appended to the ciphertext, not prepended.
+  * libgnutls: transparent KTLS support is extended to FreeBSD kernel
+    The kernel TLS feature can now be enabled on FreeBSD as well as
+    Linux when compiled with the --enable-ktls configure option.
+  * gnutls-cli: New option --starttls-name
+    Depending on deployment, application protocols such as XMPP may
+    require a different origin address than the external address to be
+    presented prior to STARTTLS negotiation.  The --starttls-name can
+    be used to specify specify the addresses separately.
+  * API and ABI modifications:
+    - gnutls_pubkey_import_dh_raw: New function
+    - gnutls_privkey_import_dh_raw: New function
+    - gnutls_pubkey_export_dh_raw: New function
+    - gnutls_privkey_export_dh_raw: New function
+    - gnutls_x509_privkey_import_dh_raw: New function
+    - gnutls_privkey_derive_secret: New function
+    - GNUTLS_KEYGEN_DH: New enum member of gnutls_keygen_types_t
+    - GNUTLS_CIPHER_AES_128_SIV_GCM: Added
+    - GNUTLS_CIPHER_AES_256_SIV_GCM: Added
+  * Rebase gnutls-FIPS-140-3-references.patch
+  * Remove upstream: gnutls-GNUTLS_NO_EXTENSIONS-compatibility.patch
+
+-------------------------------------------------------------------
 Tue Aug 22 15:00:57 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix missing GNUTLS_NO_EXTENSIONS compatibility.
