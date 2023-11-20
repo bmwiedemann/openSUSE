@@ -1165,4 +1165,12 @@ goes in line with 946250</comment>
     <comment>- Update to release 2.9.3</comment>
     <requestid>1125590</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>4c020bb78fe38b9a06c755b8cc8c86ed</srcmd5>
+    <version>2.9.3</version>
+    <time>1700511544</time>
+    <user>anag+factory</user>
+    <comment>- Fix spec file for Leap (forwarded request 1127633 from scabrero)</comment>
+    <requestid>1127656</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 17 14:52:30 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix spec file for Leap
+
+-------------------------------------------------------------------
+Fri Nov 17 12:30:33 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- /usr/etc migration, restore /etc/sssd/sssd.conf.rpmsave after
+  update (bsc#1216865)
+- Do not install the KRB5 IDP plugin, it is useless without the
+  OIDC child
+- Drop no longer valid --without-secrets configure switch
+
+-------------------------------------------------------------------
 Mon Nov 13 12:48:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9.3
@@ -38,6 +52,8 @@ Thu Sep  7 12:07:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
     non-root user.
   * New option local_auth_policy is added to control which offline
     authentication methods will be enabled by SSSD.
+  * Fix sssd entering failed state under heavy load by adding
+    watchdog to monitor sbus_call_DBus_Hello_send(); (bsc#1213283);
 
 -------------------------------------------------------------------
 Fri Jun 23 14:49:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
@@ -48,6 +64,8 @@ Fri Jun 23 14:49:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
   * A regression where SSSD failed to properly watch for changes
     in ``/etc/resolv.conf`` when it was a symbolic link or was a
     relative path, was fixed.
+  * ldap password policy: return failure if there are no grace logins
+    left; (bsc#1214434);
 
 -------------------------------------------------------------------
 Fri May  5 10:47:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
@@ -82,7 +100,7 @@ Wed Dec 21 19:29:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Take systemd units off the restart list that have
   RefuseManualStart=yes [boo#1206592]
-- Add symvers.patch [boo#1206592]
+- Add symvers.patch [boo#1206592] [bsc#1182058] [bsc#1196166]
 
 -------------------------------------------------------------------
 Sun Dec 11 14:17:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
@@ -114,6 +132,8 @@ Fri Oct  7 12:05:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
     level independently.
   * A number of new configuration options are available,
     cf. https://sssd.io/release-notes/sssd-2.8.0.html .
+  * Fix sdap_access_host No matching host rule found;
+    (bsc#1202559);
 
 -------------------------------------------------------------------
 Thu Sep  1 13:45:36 UTC 2022 - Stefan Schubert <schubi@suse.com>
@@ -199,6 +219,9 @@ Thu Apr 14 22:43:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
   * Added support for anonymous PKINIT to get FAST credentials.
   * SSSD now correctly falls back to UPN search if the user was
     not found even with `cache_first = true`.
+  * Add 'ldap_ignore_unreadable_references' parameter to skip
+    unreadable objects referenced by 'member' attributte;
+    (bsc#1190775); (gh#SSSD/sssd#4893);
 
 -------------------------------------------------------------------
 Mon Feb 21 14:50:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
@@ -276,14 +299,14 @@ Fri Oct 15 13:41:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
   * Support of long time deprecated local provider was dropped.
   * The sssctl command was vulnerable to shell command injection
     via the logs-fetch and cache-expire subcommands,
-    which was fixed.
+    which was fixed; (CVE-2021-3621); (bsc#1189492);
   * Basic support of user's 'subuid and subgid ranges' for IPA
     provider and corresponding plugin for shadow-utils were added.
 
 -------------------------------------------------------------------
 Mon Jul 12 19:45:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 2.5.2
+- Update to release 2.5.2; (jsc#SLE-17763);
   * originalADgidNumber attribute in the SSSD cache is now indexed.
   * Add new config option fallback_to_nss.
 
@@ -295,8 +318,7 @@ Tue Jun  8 16:35:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
     range setting in IPA (see ipa idrange commands family). This
     feature requires SSSD update on both client and server. This
     feature also requires freeipa 4.9.4 and newer.
-  * Fix getsidbyname issues with IPA users with a
-    user-private-group.
+  * Fix getsidbyname issues with IPA users with a user-private-group.
   * Default value of ldap_sudo_random_offset changed to 0
     (disabled). This makes sure that sudo rules are available as
     soon as possible after SSSD start in default configuration.
@@ -310,8 +332,25 @@ Mon May 10 13:58:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
     tgt_renewal = true. See the sssd-kcm man page for more
     details. This feature requires MIT Kerberos
     krb5-1.19-0.beta2.3 or higher.
+  * Backround sudo periodic tasks (smart and full refresh) periods are
+    now extended by a random offset to spread the load on the server in
+    environments with many clients.
+  * Completing a sudo full refresh now postpones the smart refresh by
+    ldap_sudo_smart_refresh_interval value. This ensure that the smart
+    refresh is not run too soon after a successful full refresh.
+  * If debug_backtrace_enabled is set to true then on any error all prior
+    debug messages (to some limit) are printed even if debug_level is set
+    to low value.
+  * Besides trusted domains known by the forest root, trusted domains known
+    by the local domain are used as well.
+  * New configuration option offline_timeout_random_offset to control random
+    factor in backend probing interval when SSSD is in offline mode.
   * ad_gpo_implicit_deny is now respected even if there are no
     applicable GPOs present.
+  * During the IPA subdomains request a failure in reading a single specific
+    configuration option is not considered fatal and the request will
+    continue.
+  * Unknown IPA id-range types are not considered as an error
 
 -------------------------------------------------------------------
 Tue Apr  6 12:08:29 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
@@ -367,6 +406,8 @@ Fri Feb  5 12:56:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
     with principal that can be associated with target user.
   * Added pam_gssapi_services to list PAM services that can
     authenticate using GSSAPI.
+  * Create timestamp attribute in cache objects if missing;
+    (bsc#1182637);
 
 -------------------------------------------------------------------
 Mon Oct 12 13:10:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
@@ -400,6 +441,7 @@ Fri Jul 24 16:57:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
     lookups are no longer considered fatal.
   * Fixed regression in proxy provider: pwfield=x is now default
     value only for sssd-shadowutils target.
+  * Rotate child debug file descriptors on SIGHUP (bsc#1080156)
 - sssd-wbclient is obsolete and no longer shipped
 
 -------------------------------------------------------------------
@@ -419,6 +461,9 @@ Tue May 19 11:32:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
   * SSSD now accepts host entries from GPO's security filter.
   * New debug level (0x10000) added for low level LDB messages
     only (see sssd.conf man page).
+  * Update samba secrets after changing machine password; (jsc#SLE-11503);
+  * Delete linked local user overrides when deleting a user
+    (bsc#1133168)
 - Drop sssd-gpo_host_security_filter-2.2.2.patch,
   0001-Resolve-computer-lookup-failure-when-sam-cn.patch,
   0001-AD-use-getaddrinfo-with-AI_CANONNAME-to-find-the-FQD.patch (merged)
@@ -436,11 +481,12 @@ Tue Mar 24 10:49:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
     the checks for revoked certificates more flexible if the
     system is offline.
   * Smart card authentication in polkit is now allowed by default.
-  * Fixes:
-  * Handling of FreeIPA users and groups containing ‘@’ sign now
-    works.
+  * Handling of FreeIPA users and groups containing ‘@’ sign now works.
+  * Issue when autofs was unable to mount shares was fixed.
   * SSSD was unable to hande ldap_uri containing URIs with
     different port numbers, which has been rectified.
+  * Fix domain offline after first boot when resolv.conf is a symlink
+    (bsc#1136139)
 - Add 0001-Fix-build-failure-against-samba-4.12.0rc1.patch
 
 -------------------------------------------------------------------
@@ -509,6 +555,10 @@ Tue Jun 18 08:00:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
     "GSS-SPNEGO" in addition to "GSSAPI".
   * The sssctl tool has two new commands, "cert-show" and
     "cert-map".
+  * Added an option to skip GPOs that have groupPolicyContainers,
+    unreadable by SSSD (bsc#1124194) (CVE-2018-16838)
+  * Fix fallback_homedir returning '/' for empty home directories
+    (CVE-2019-3811) (bsc#1121759)
 
 -------------------------------------------------------------------
 Fri Apr 26 10:59:25 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
@@ -530,12 +580,16 @@ Sat Mar 16 11:50:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
     users even if there is not applicable GPO.
   * The dynamic DNS update can now batch DNS updates to include
     all address family updates in a single transaction.
+  * Fix sss_cache spurious error messages when invoked from shadow-utils;
+    (bsc#1185017);
+  * Fix building with newer samba versions (bsc#1137876)
+  * Fix memory leak in nss netgroup enumeration (bsc#1139247);
 
 -------------------------------------------------------------------
 Wed Feb 20 16:01:52 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
 
 - Install systemd service unit file created from source's template
-  (bsc#1120852)
+  (bsc#1120852); (bsc#1185185);
 - Install logrotate configuration (bsc#1004220)
 - Set journald as system logger
 
@@ -571,6 +625,7 @@ Fri Sep  7 18:52:18 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
   * The list of PAM services which are allowed to authenticate
     using a Smart Card is now configurable using a new option
     pam_p11_allowed_services.
+  * Allow defaults sudoRole without sudoUser attribute (bsc#1135247)
 
 -------------------------------------------------------------------
 Fri Aug 31 07:14:39 UTC 2018 - kbabioch@suse.com
@@ -603,6 +658,9 @@ Fri Aug 31 07:14:39 UTC 2018 - kbabioch@suse.com
   * The grace logins with an expired password when authenticating
     against certain newer versions of the 389DS/RHDS LDAP server
     did not work.
+  * Fix login not possible when email address is duplicated in ldap
+    attributes (bsc#1149597)
+  * Strip whitespaces in netgroup triples (bsc#1087320)
 - Removed patches that are included upstream now:
   0001-SUDO-Create-the-socket-with-stricter-permissions.patch,
   0002-intg-Do-not-hardcode-nsslibdir.patch,
@@ -672,6 +730,10 @@ Bugfixes:
     domain resolution order was used (#3740)
   * SSSD start up issue on systems that use the libldb library
     with version 1.4.0 or newer was fixed.
+  * Update winbind idmap plugin to support interface version 6
+    (jsc#SLE-9819)
+  * Add a netgroup counter to struct nss_enum_index (bsc#1132657)
+  * Fix sssd not starting in foreground mode (bsc#1125277)
 Introduce a patch:
   * Fix build of sssd of 1.16.2 version:
     0003-Fix-build-for-1-16-2-version.patch

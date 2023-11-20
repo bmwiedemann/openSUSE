@@ -41,7 +41,9 @@ BuildRequires:  cyrus-sasl-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  krb5-devel >= 1.12
 BuildRequires:  libcmocka-devel
+%if 0%{?suse_version} >= 1600
 BuildRequires:  libsubid-devel
+%endif
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-tools
@@ -366,12 +368,13 @@ autoreconf -fiv
 	--enable-pammoddir="%_pam_moduledir" \
 	--with-ldb-lib-dir="%ldbdir" \
 	--with-selinux=yes \
-	--with-subid \
 	--with-os=suse \
 	--disable-ldb-version-check \
-	--without-secrets \
 	--without-python2-bindings \
-	--without-oidc-child
+	--without-oidc-child \
+%if 0%{?suse_version} >= 1600
+	--with-subid
+%endif
 %make_build all
 
 %install
@@ -407,14 +410,10 @@ ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 
 %pre
 %service_add_pre sssd.service
-%if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in pam.d/sssd-shadowutils logrotate.d/sssd ; do
-	if [ -f "%_sysconfdir/$i.rpmsave" ]; then
-		mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i.rpmsave.old" || :
-	fi
+for i in sssd/sssd.conf pam.d/sssd-shadowutils logrotate.d/sssd ; do
+	test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
-%endif
 
 %post
 /sbin/ldconfig
@@ -484,15 +483,11 @@ fi
 %postun kcm
 %service_del_postun sssd-kcm.service sssd-kcm.socket
 
-%if 0%{?suse_version} > 1500
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/sssd pam.d/sssd-shadowutils ; do
-	if [ -f "%_sysconfdir/$i.rpmsave" ]; then
-		mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i.rpmsave.old" || :
-	fi
+for i in sssd/sssd.conf logrotate.d/sssd pam.d/sssd-shadowutils ; do
+	test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
-%endif
 
 %files -f sssd.lang
 %license COPYING
@@ -592,8 +587,10 @@ done
 %_pam_moduledir/pam_sss_gss.so
 %_libdir/krb5/
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
-%_libdir/%name/modules/sssd_krb5_idp_plugin.so
+%exclude %_libdir/%name/modules/sssd_krb5_idp_plugin.so
+%if 0%{?suse_version} >= 1600
 %_libdir/libsubid_sss.so
+%endif
 %_mandir/??/man8/sssd_krb5_locator_plugin.8*
 %_mandir/??/man8/pam_sss.8*
 %_mandir/??/man8/pam_sss_gss.8*
@@ -658,7 +655,7 @@ done
 %dir %_libdir/%name/
 %_libdir/%name/libsss_krb5.so
 %dir %_datadir/%name/
-%_datadir/%name/krb5-snippets/
+%exclude %_datadir/%name/krb5-snippets/
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-krb5.conf
 %dir %_mandir/??/
