@@ -52,7 +52,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.6.2.1
+Version:        7.6.3.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -78,15 +78,18 @@ Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.t
 # GPGME bundle list
 Source1000:     %{external_url}/gpgme-1.18.0.tar.bz2
 Source1001:     %{external_url}/libgpg-error-1.43.tar.bz2
-Source1002:     %{external_url}/libassuan-2.5.6.tar.bz2
+Provides:       bundled(gpgme) = 1.18.0
+Provides:       bundled(libgpg-error) = 1.43
 # Internal bundled stuff we can't remove
 # To build this we would pull cygwin; not worth it
 Source2001:     https://dev-www.libreoffice.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll
 # hsqldb simply does not work with new system version, but luckily we migrate to firebird
 Source2002:     %{external_url}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip
+Provides:       bundled(hsqldb) = 1.8.0
 # Heavily patched and not possible to use system one
 Source2003:     %{external_url}/798b2ffdc8bcfe7bca2cf92b62caf685-rhino1_5R5.zip
 Source2004:     %{external_url}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip
+Provides:       bundled(rhino) = 1.5R5
 # Needed for wiki-published and always taken as bundled
 Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip
 # Needed for integration tests
@@ -98,7 +101,8 @@ Source2008:     %{external_url}/pdfium-5778.tar.bz2
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
 Source2010:     %{external_url}/skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz
-Source2012:     %{external_url}/libcmis-0.5.2.tar.xz
+Source2012:     %{external_url}/libcmis-0.6.0.tar.xz
+Provides:       bundled(libcmis) = 0.6.0
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -140,6 +144,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  curl-devel >= 7.68.0
 %else
 Source2013:     %{external_url}/curl-8.2.1.tar.xz
+Provides:       bundled(curl) = 8.2.1
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -210,6 +215,8 @@ BuildRequires:  pkgconfig(harfbuzz-icu) >= 2.6.8
 %else
 Source2025:     %{external_url}/harfbuzz-8.0.0.tar.xz
 Source2026:     %{external_url}/graphite2-minimal-1.3.14.tgz
+Provides:       bundled(graphite2) = 1.3.14
+Provides:       bundled(harfbuzz) = 8.0.0
 %endif
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(krb5)
@@ -287,8 +294,11 @@ Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_82_0.tar.xz
-Source2023:     %{external_url}/poppler-23.06.0.tar.xz
+Source2023:     %{external_url}/poppler-23.09.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
+Provides:       bundled(boost) = 1.82.0
+Provides:       bundled(poppler) = 23.06.0
+Provides:       bundled(poppler-data) = 0.4.12
 %else
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
@@ -302,6 +312,7 @@ BuildRequires:  pkgconfig(poppler-cpp)
 # Too old icu on the system
 Source2021:     %{external_url}/icu4c-73_2-src.tgz
 Source2022:     %{external_url}/icu4c-73_2-data.zip
+Provides:       bundled(icu) = 73.2
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
@@ -339,6 +350,13 @@ BuildRequires:  python-rpm-macros
 %endif
 %if %{with system_gpgme}
 BuildRequires:  libgpgmepp-devel >= 1.14
+%else
+Source1000:     %{external_url}/gpgme-1.18.0.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.43.tar.bz2
+Source1002:     %{external_url}/libassuan-2.5.6.tar.bz2
+Provides:       bundled(gpgme) = 1.18.0
+Provides:       bundled(libassuan) = 2.5.6
+Provides:       bundled(libgpg-error) = 1.43
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)
