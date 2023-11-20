@@ -2,6 +2,9 @@
 
 set -ex
 
+version=$1
+sed -i -e "s/^\(Version: *\)[^ ]*$/\1${version}/" element-web.spec
+
 oldwd="$(pwd)"
 
 # cleanup old stuff
@@ -20,7 +23,7 @@ osc add element-web-*.tar.gz
 rm -rf "element-web-${version}"
 tar xzvf element-web-${version}.tar.gz
 cd element-web-${version}
-changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/' -e 's/\[.*\](\(.*\))/\1/g')
+changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/Version \1/' -e 's/^\([^-].*\)$/  \1/' -e 's/\[.*\](\(.*\))/\1/g' -e 's/^ *Version /Version /g')
 
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 yarn cache clean
