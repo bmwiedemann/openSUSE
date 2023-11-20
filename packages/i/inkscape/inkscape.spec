@@ -16,16 +16,16 @@
 #
 
 
-%define _version 1.3_2023-07-21_0e150ed6c4
+%define _version 1.3.1_2023-11-16_91b66b0783
 
 Name:           inkscape
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
 
-Source:         https://inkscape.org/gallery/item/42328/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
+Source:         https://inkscape.org/gallery/item/44467/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
@@ -42,11 +42,11 @@ BuildRequires:  gcc10-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  intltool
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_stacktrace-devel
+BuildRequires:  libboost_filesystem-devel >= 1.75
+BuildRequires:  libboost_headers-devel >= 1.75
+BuildRequires:  libboost_stacktrace-devel >= 1.75
 BuildRequires:  liblcms2-devel
-BuildRequires:  libpoppler-glib-devel
+BuildRequires:  libpoppler-glib-devel > 22.01.0
 BuildRequires:  libxslt-devel
 BuildRequires:  ninja
 BuildRequires:  perl
@@ -239,6 +239,8 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 # create a conflict between the lang subpackage and bundles
 %dir %{_mandir}/hr/
 %dir %{_mandir}/hr/man1/
+%dir %{_mandir}/ko/
+%dir %{_mandir}/ko/man1/
 %{_mandir}/*/man1/*.1%{?ext_man}
 
 %files extensions-extra -f inkscape-extensions-extra.lst
