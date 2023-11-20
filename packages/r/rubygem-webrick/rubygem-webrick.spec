@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-webrick
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,26 @@
 #
 
 
-%define mod_name webrick
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-webrick
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
-Summary:        HTTP server toolkit
-License:        Ruby AND BSD-2-Clause
-Group:          Development/Languages/Ruby
+%define mod_name webrick
+%define mod_full_name %{mod_name}-%{version}
+BuildRequires:  %{ruby >= 2.4.0}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby/webrick
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-BuildRequires:  %{ruby >= 2.3.0}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
+Summary:        HTTP server toolkit
+License:        BSD-2-Clause AND Ruby
 
 %description
 WEBrick is an HTTP server toolkit that can be configured as an HTTPS server, a
