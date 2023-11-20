@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 15 08:26:31 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Add pkgconfig(libva) BuildRequires: Enable support for hardware
+  video acceleration
+- Add pkgconfig(vulkan) BuildRequires: Enable support for venus on
+  Tumbleweed (build failed on leap)
+
+-------------------------------------------------------------------
 Wed Oct 18 09:30:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.0:

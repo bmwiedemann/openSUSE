@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without vulkan
+%else
+%bcond_with vulkan
+%endif
 %define         libname lib%{name}1
 Name:           virglrenderer
 Version:        1.0.0
@@ -32,6 +37,10 @@ BuildRequires:  python3-base
 BuildRequires:  pkgconfig(epoxy) >= 1.5.4
 BuildRequires:  pkgconfig(gbm) >= 18.0.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.50
+BuildRequires:  pkgconfig(libva)
+%if %{with vulkan}
+BuildRequires:  pkgconfig(vulkan)
+%endif
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -72,7 +81,12 @@ without GL.
 %autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
-%meson
+%meson \
+%if %{with vulkan}
+    -Dvenus=true \
+    -Dvenus-validate=true \
+%endif
+    -Dvideo=true 
 %meson_build
 
 %install
@@ -84,6 +98,9 @@ without GL.
 %files -n %{libname}
 %license COPYING
 %{_libdir}/lib*.so.*
+%if %{with vulkan}
+%{_libexecdir}/virgl_render_server
+%endif
 
 %files devel
 %dir %{_includedir}/virgl/
