@@ -211,6 +211,19 @@ BuildArch:      i686
 %define PYVER 311
 %endif
 
+%if 0%{?fedora} >= 40
+%define AVFORMAT_VER 6.0.1
+%define RPMFUSION_VER 6.1-3
+%endif
+%if 0%{?fedora} >= 38 && 0%{?fedora} < 40
+%define AVFORMAT_VER 6.0.1
+%define RPMFUSION_VER 6.0.1-2
+%endif
+%if 0%{?fedora} >= 37 && 0%{?fedora} < 38
+%define AVFORMAT_VER 5.1.4
+%define RPMFUSION_VER 5.1.4-2
+%endif
+
 # We always ship the following bundled libraries as part of Electron despite a system version being available in either openSUSE or Fedora:
 # Name         | Path in tarball                   | Reason
 # -------------+-----------------------------------+---------------------------------------
@@ -227,7 +240,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.0.4
+Version:        27.1.0
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -273,7 +286,6 @@ Patch39:        support-i386.patch
 Patch67:        disable-catapult.patch
 Patch69:        nasm-generate-debuginfo.patch
 Patch70:        disable-fuses.patch
-Patch72:        electron-version-from-env.patch
 # https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit/?h=102-based&id=d617766b236a93749ddbb50b75573dd35238ffc9
 Patch73:        disable-webspeech.patch
 Patch74:        common.gypi-remove-fno-omit-frame-pointer.patch
@@ -321,12 +333,9 @@ Patch2004:      chromium-gcc11.patch
 Patch2010:      chromium-93-ffmpeg-4.4.patch
 
 #Since ffmpeg 5, there is no longer first_dts member in AVFormat. Chromium upstream (and Tumbleweed) patches ffmpeg to add a av_stream_get_first_dts function.
-#This workaround is only used on Fedora. It is known to break some H264 videos produced by Apple® iPhone™ camera. Further testing is needed.
 #Upstream ref: https://chromium-review.googlesource.com/c/chromium/src/+/3525614
-Patch2011:      chromium-ffmpeg-first-dts.patch
 #This patch is only for Leap which uses ffmpeg 4. It makes chromium use the old api and does not work with ffmpeg 5.
 Patch2012:      chromium-94-ffmpeg-roll.patch
-#Tumbleweed needs neither of these.
 
 # Fixe builds with older clang versions that do not allow
 # nomerge attributes on declaration. Otherwise, the following error
@@ -355,6 +364,7 @@ Patch2041:      chromium-117-blink-BUILD-mnemonic.patch
 Patch2042:      brotli-remove-shared-dictionary.patch
 Patch2043:      keyboard_util-gcc12-invalid-constexpr.patch
 Patch2044:      computed_style_base-nbsp.patch
+Patch2045:      libxml-2.12-xmlCtxtGetLastError-const.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -560,10 +570,18 @@ BuildRequires:  pkgconfig(icu-i18n) >= 73
 BuildRequires:  pkgconfig(icu-i18n) >= 71
 %endif
 BuildRequires:  pkgconfig(jsoncpp)
+%if 0%{?fedora}
+Recommends: (ffmpeg-libs%{_isa} or libavcodec-freeworld%{_isa})
+%endif
 %if %{with ffmpeg_5}
 BuildRequires:  pkgconfig(libavcodec) >= 59
 BuildRequires:  pkgconfig(libavformat) >= 59
 BuildRequires:  pkgconfig(libavutil) >= 57
+%if 0%{?fedora}
+#requires av_stream_get_first_dts, see rhbz#2240127
+BuildRequires:  libavformat-free-devel >= %AVFORMAT_VER
+Requires: (ffmpeg-libs%{_isa} >= %RPMFUSION_VER or libavformat-free%{_isa} >= %AVFORMAT_VER)
+%endif
 %else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat) >= 58
@@ -731,9 +749,7 @@ patch -R -p1 < %PATCH2012
 patch -R -p1 < %SOURCE400
 %endif
 
-%if 0%{?suse_version}
-patch -R -p1 < %PATCH2011
-%endif
+
 
 %if %{without system_vma}
 patch -R -p1 < %PATCH2039
@@ -796,9 +812,6 @@ popd
 
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
-
-# see electron-version-from-env.patch
-export SUSE_ELECTRON_VERSION=%{version}
 
 # Make sure python is python3
 install -d -m 0755 python3-path
@@ -1090,6 +1103,7 @@ find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
+myconf_gn+=' override_electron_version="%{version}"'
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
@@ -1242,6 +1256,7 @@ myconf_gn+=' enable_chrome_notifications=false'
 myconf_gn+=' enable_message_center=false'
 myconf_gn+=' enable_system_notifications=false'
 myconf_gn+=' enable_supervised_users=false'
+
 
 
 #FIXME: possibly enable this when skia gets built with rust code by default.

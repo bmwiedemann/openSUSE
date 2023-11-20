@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 18 12:34:15 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 27.1.0
+  * Chromium 118.0.5993.144
+  * Added keyboardLock to ses.setPermissionRequestHandler(handler).
+  * Fixed "will-navigate" not being emitted when pressing links in chrome: pages.
+- Drop chromium-ffmpeg-first-dts.patch also on Fedora 37 (rh#2240127)
+- Drop no longer relevant electron-version-from-env.patch
+- Add libxml-2.12-xmlCtxtGetLastError-const.patch to fix ftbfs with new libxml (rh#2250062)
+
+-------------------------------------------------------------------
+Wed Nov 15 20:57:49 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fedora 38+: allow using fixed ffmpeg-libs with electron
+
+-------------------------------------------------------------------
+Sat Nov 11 21:53:38 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Disable chromium-ffmpeg-first-dts.patch on Fedora 38+ to fix some MP4 videos not playing (rh#2240127)
+
+-------------------------------------------------------------------
 Fri Nov 10 20:12:45 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix non-deterministic build in cloud_policy.pb.cc (bsc#1041090)
