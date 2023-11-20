@@ -248,4 +248,17 @@ This version works with llvm 4.</comment>
 - Drop patch python311.patch, not required.</comment>
     <requestid>1089197</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>225bcc8ca6014219d7272b699fc0fc2c</srcmd5>
+    <version>0.41.1</version>
+    <time>1700511617</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+
+- Update to 0.41.1
+  * Refactor native library loading
+  * Add ORCJITv2 support
+  * Remove support for LLVM &lt; 14</comment>
+    <requestid>1127705</requestid>
+  </revision>
 </revisionlist>

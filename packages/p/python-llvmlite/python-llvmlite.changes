@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 20 13:29:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Mon Nov 20 12:42:27 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.41.1
+  * Refactor native library loading
+  * Add ORCJITv2 support
+  * Remove support for LLVM < 14
+
+-------------------------------------------------------------------
 Fri May 26 13:34:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.40.0:
