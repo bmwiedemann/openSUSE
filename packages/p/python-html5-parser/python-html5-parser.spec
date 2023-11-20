@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-html5-parser
-Version:        0.4.11
+Version:        0.4.12
 Release:        0
 Summary:        C based HTML 5 parsing for Python
 License:        Apache-2.0
