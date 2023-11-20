@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 20 10:07:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231120
+  * Table lookup was reworked
+  * Build system changes related to Python
+
+-------------------------------------------------------------------
 Tue Aug  1 15:55:34 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility

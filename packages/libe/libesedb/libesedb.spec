@@ -18,7 +18,7 @@
 
 %define lname	libesedb1
 Name:           libesedb
-Version:        20230318
+Version:        20231120
 Release:        0
 Summary:        Library and tools to access the ESE Database File (EDB) format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -89,7 +89,7 @@ Requires:       %lname = %version
 Requires:       libbfio-devel
 
 %description devel
-libesedb is a library to access EDB files.  ESEDB is used in many different
+libesedb is a library to access EDB files. ESEDB is used in many different
 applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
 
 This subpackage contains libraries and header files for developing
