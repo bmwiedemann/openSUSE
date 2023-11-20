@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Nov 20 13:32:19 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.23.0:
+  - Bug Fixes
+    - Allow custom ToDeviceEvents via UnknownToDeviceEvent
+    - Remove callback execution boilerplate + allow arbitrary
+      callable/awaitable objects
+    - Fix schemas for m.room.avatar and m.room.canonical_alias
+    - Propagate asyncio.CancelledError in sync_forever
+  - Features
+    - Introduce the DM room account data (m.direct)
+  - Miscellaneous Tasks
+    - Update the nio-bot description
+    - Bump aiohttp from 3.8.5 to 3.8.6
+- Update to 0.22.1:
+    - Fix ImportError from when e2e is not installed
+- Update to 0.22.0:
+  - Bug Fixes
+    - Fix space handling to account for Matrix spec ambiguities.
+  - Features
+    - Add a simple streamed response to download to files
+    - Add get space hierarchy capability
+    - Support for Token-Authenticated Registration
+    - Add room_type to room_create API function to allow for
+      custom room types
+    - Add support for m.reaction events
+  - Miscellaneous Tasks
+    - Add .readthedocs.yaml v2 to support ReadTheDocs migration
+    - Remove future dependency
+    - Fix jsonschema deprecations
+    - Replace cgi.parse_header()
+    - Run pre-commit autoupdate to fix deprecation
+    - Introduce ruff as a pre-commit hook + run on whole codebase
+    - Update pre-commit hooks
+    - Replace ALL type comments with type hints
+    - Add pyupgrade, async, various flake8, Perflint, and more
+      ruff linting rules
+- Remove upstreamed patch:
+  - remove-future-requirement.patch
+
+-------------------------------------------------------------------
 Mon Sep  4 03:30:04 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.21.2:
