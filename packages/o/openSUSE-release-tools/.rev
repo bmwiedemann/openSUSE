@@ -4407,4 +4407,12 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
     <comment>automatic update</comment>
     <requestid>1123343</requestid>
   </revision>
+  <revision rev="513" vrev="1">
+    <srcmd5>b5a277fbbd23bc277bded974e26c880f</srcmd5>
+    <version>20231119.6bcc046</version>
+    <time>1700511571</time>
+    <user>anag+factory</user>
+    <comment>automatic update</comment>
+    <requestid>1127567</requestid>
+  </revision>
 </revisionlist>
