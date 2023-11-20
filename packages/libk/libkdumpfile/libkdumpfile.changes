@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 19 11:08:18 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Upgrade to libkdumpfile version 0.5.4
+  * Full support for 64-bit RISC-V.
+  * Improve error messages (detailed OS error, optional file names)
+  * Bug fixes and minor performance tweaks.
+
+-------------------------------------------------------------------
 Wed Nov  8 06:50:42 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Do not build Python bindings.

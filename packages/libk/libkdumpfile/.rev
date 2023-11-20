@@ -242,4 +242,16 @@
 </comment>
     <requestid>1124286</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fcbad62fb4fb2eabc46e9de0c0db4da0</srcmd5>
+    <version>0.5.4</version>
+    <time>1700511567</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to libkdumpfile version 0.5.4
+  * Full support for 64-bit RISC-V.
+  * Improve error messages (detailed OS error, optional file names)
+  * Bug fixes and minor performance tweaks.
+</comment>
+    <requestid>1127551</requestid>
+  </revision>
 </revisionlist>
