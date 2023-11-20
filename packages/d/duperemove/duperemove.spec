@@ -17,23 +17,23 @@
 
 
 %define samename btrfs-extent-same
+%if 0%{?suse_version} <= 1500
+%define req_gcc_ver 12
+BuildRequires:  gcc%{req_gcc_ver}
+%endif
 Name:           duperemove
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Software to find duplicate extents in files and remove them
 License:        GPL-2.0-only
 Group:          System/Filesystems
 URL:            https://github.com/markfasheh/duperemove
 Source:         https://github.com/markfasheh/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-%if 0%{?suse_version} <= 1500
-%define req_gcc_ver 12
-BuildRequires:  gcc%{req_gcc_ver}
-%endif
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  libuuid-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Duperemove finds duplicate extents in files and prints them to the
@@ -52,26 +52,24 @@ Debug/Test tool to exercise a btrfs ioctl for deduplicating file regions.
 
 %build
 %if 0%{?suse_version} <= 1500
-CC="CC=/usr/bin/gcc-%{req_gcc_ver}"
+CC="CC=%{_bindir}/gcc-%{req_gcc_ver}"
 %endif
-make %{?_smp_mflags} $CC CFLAGS="%{optflags} -fcommon"
+%make_build $CC CFLAGS="%{optflags} -fcommon"
 
 %install
 %make_install PREFIX="%{_prefix}"
 
 %files -n %{samename}
-%defattr(-, root, root)
 %{_bindir}/%{samename}
-%{_mandir}/man?/%{samename}.8%{ext_man}
+%{_mandir}/man?/%{samename}.8%{?ext_man}
 
 %files
-%defattr(-, root, root)
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/duperemove
 %{_bindir}/hashstats
-%{_bindir}/show-shared-extents
-%{_mandir}/man?/%{name}.8%{ext_man}
-%{_mandir}/man?/hashstats.8%{ext_man}
-%{_mandir}/man?/show-shared-extents.8%{ext_man}
+%{_mandir}/man?/%{name}.8%{?ext_man}
+%{_mandir}/man?/hashstats.8%{?ext_man}
+%{_mandir}/man?/show-shared-extents.8%{?ext_man}
 
 %changelog

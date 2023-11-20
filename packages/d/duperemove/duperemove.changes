@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 19 09:04:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14:
+  * Batching has been reimplemented on top of the dedupe_seq.
+  * The "scan" phase has been reimplemented (see 8264336 for details).
+  * Filesystem locking has been implemented. See f3947e9 for details.
+
+-------------------------------------------------------------------
 Fri Sep 29 10:11:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13:
