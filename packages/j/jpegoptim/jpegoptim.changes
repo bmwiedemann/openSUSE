@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 18 16:59:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.5:
+  * Improved JFIF marker handling
+  * New command line options: --keep-jfif and --strip-jfif
+
+-------------------------------------------------------------------
 Mon May 15 16:14:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.4:
@@ -53,7 +60,7 @@ Thu Apr 21 20:44:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Optimization now works same with stdin as with standard files
   * Fixed --size (-S) option not working correctly when processing multiple files
   * New --keep-* options to use with --strip-all (see man page)
-  * Other minor fixes 
+  * Other minor fixes
 
 -------------------------------------------------------------------
 Wed Apr 18 14:28:21 UTC 2018 - lazy.kent@opensuse.org
