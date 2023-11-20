@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 19 10:48:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.0:
+  * Explicit support for python `3.12`.
+  * Custom HTTP transport are now handled (parent call to
+    `handle_async_request` or `handle_request`).
+  * Only HTTP transport are now mocked, this should not have any
+    impact, however if it does, please feel free to open an issue
+    describing your use case.
+
+-------------------------------------------------------------------
 Tue Nov  7 19:44:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.0:

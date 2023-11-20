@@ -100,4 +100,18 @@
     Preventing unnecessary recursion in streams.</comment>
     <requestid>1124087</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>316c5e8390da483f65299bad2794b20c</srcmd5>
+    <version>0.27.0</version>
+    <time>1700511567</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.27.0:
+  * Explicit support for python `3.12`.
+  * Custom HTTP transport are now handled (parent call to
+    `handle_async_request` or `handle_request`).
+  * Only HTTP transport are now mocked, this should not have any
+    impact, however if it does, please feel free to open an issue
+    describing your use case.</comment>
+    <requestid>1127546</requestid>
+  </revision>
 </revisionlist>
