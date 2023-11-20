@@ -423,4 +423,15 @@
   * feat: support exception regex in `sentence` (forwarded request 1119223 from jfkw)</comment>
     <requestid>1119224</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>74034940b07a6617c3c945862899dec9</srcmd5>
+    <version>2.29.7</version>
+    <time>1700511615</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.29.7:
+  * fix: add implicit `(?-i)` flags
+  * chore: bump twine to v0.8.0
+  * Remove Digital Ocean (forwarded request 1127707 from jfkw)</comment>
+    <requestid>1127708</requestid>
+  </revision>
 </revisionlist>

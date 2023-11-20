@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 20 05:48:17 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.29.7:
+  * fix: add implicit `(?-i)` flags
+  * chore: bump twine to v0.8.0
+  * Remove Digital Ocean
+
+-------------------------------------------------------------------
 Fri Oct 20 11:58:43 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.29.6:
