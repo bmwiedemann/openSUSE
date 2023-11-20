@@ -1,8 +1,8 @@
-Index: google-protobuf-3.23.1/ext/google/protobuf_c/extconf.rb
+Index: google-protobuf-3.25.1/ext/google/protobuf_c/extconf.rb
 ===================================================================
---- google-protobuf-3.23.1.orig/ext/google/protobuf_c/extconf.rb
-+++ google-protobuf-3.23.1/ext/google/protobuf_c/extconf.rb
-@@ -12,16 +12,11 @@ else
+--- google-protobuf-3.25.1.orig/ext/google/protobuf_c/extconf.rb
++++ google-protobuf-3.25.1/ext/google/protobuf_c/extconf.rb
+@@ -12,17 +12,12 @@ else
    $CFLAGS += " -std=gnu99 -O3 -DNDEBUG"
  end
  
@@ -17,6 +17,7 @@ Index: google-protobuf-3.23.1/ext/google/protobuf_c/extconf.rb
  $srcs = ["protobuf.c", "convert.c", "defs.c", "message.c",
 -         "repeated_field.c", "map.c", "ruby-upb.c", "wrap_memcpy.c",
 +         "repeated_field.c", "map.c", "ruby-upb.c",
-          "naive.c", "range2-neon.c", "range2-sse.c"]
+          "naive.c", "range2-neon.c", "range2-sse.c", "shared_convert.c",
+          "shared_message.c"]
  
  create_makefile(ext_name)

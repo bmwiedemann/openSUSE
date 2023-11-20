@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 20 10:15:44 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 3.25.1
+- Add 0001-ruby-return-0-from-shared_convert.c-shared_message.c.patch to fix
+  build failures with -Werror=return-type
+
+-------------------------------------------------------------------
+Thu Nov 16 14:41:55 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Fix spurious +x permissions in the sources
+
+-------------------------------------------------------------------
 Tue May 23 06:46:49 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 3.23.1
