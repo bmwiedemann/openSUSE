@@ -1661,6 +1661,8 @@ License:        LPPL-1.0
 Summary:        Binary files of latex-bin
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://www.tug.org/texlive/
+# Needs to have the same version of zlib on system that it is compiled against
+%requires_eq    libz1
 Requires(pre):  texlive-latex-bin >= %{texlive_version}
 #!BuildIgnore:  texlive-latex-bin
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -1965,6 +1967,8 @@ License:        LPPL-1.0
 Summary:        Binary files of luahbtex
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://www.tug.org/texlive/
+# Needs to have the same version of zlib on system that it is compiled against
+%requires_eq    libz1
 Requires(pre):  texlive-luahbtex >= %{texlive_version}
 #!BuildIgnore:  texlive-luahbtex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -1982,6 +1986,8 @@ License:        LPPL-1.0
 Summary:        Binary files of luajittex
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://www.tug.org/texlive/
+# Needs to have the same version of zlib on system that it is compiled against
+%requires_eq    libz1
 Requires(pre):  texlive-luajittex >= %{texlive_version}
 #!BuildIgnore:  texlive-luajittex
 Recommends:     texlive-collection-basic >= %{texlive_version}
@@ -2013,6 +2019,8 @@ License:        LPPL-1.0
 Summary:        Binary files of luatex
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://www.tug.org/texlive/
+# Needs to have the same version of zlib on system that it is compiled against
+%requires_eq    libz1
 Requires(pre):  texlive-luatex >= %{texlive_version}
 #!BuildIgnore:  texlive-luatex
 Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
@@ -3848,6 +3856,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.tug.org/texlive/
 Requires:       libtexlua53-5 = 5.3.6
+Requires:       libtexluajit2 = 2.1.0beta3
 
 %description -n %{name}-texluajit-devel
 This package includes the LuaJIT development files.
@@ -4537,8 +4546,6 @@ popd
 %if %{with buildbiber}
     pushd ../biblatex-biber-*/
 	./Build install destdir=%{buildroot}
-	sed -rn '\@^#![[:space:]]*/usr/bin/env[[:space:]]+perl@{s@(/usr/bin/)env[[:space:]]+(perl)@\1\2@p}' \
-		      %{buildroot}%{_bindir}/biber
 	chmod    0755 %{buildroot}%{_bindir}/biber
 	rm -vf        %{buildroot}%{_mandir}/man1/biber.1*
 	chmod    0644 %{buildroot}%{perl_vendorlib}/Biber.pm
@@ -4565,8 +4572,6 @@ popd
     mv ../biblatex-biber-*/texlive.files perl-biber-ms.files
     pushd ../biber-*/
 	./Build install destdir=%{buildroot}
-	sed -rn '\@^#![[:space:]]*/usr/bin/env[[:space:]]+perl@{s@(/usr/bin/)env[[:space:]]+(perl)@\1\2@p}' \
-		      %{buildroot}%{_bindir}/biber
 	chmod    0755 %{buildroot}%{_bindir}/biber
 	rm -vf        %{buildroot}%{_mandir}/man1/biber.1*
 	chmod    0644 %{buildroot}%{perl_vendorlib}/Biber.pm
@@ -4735,6 +4740,7 @@ popd
 %endif
     # install manual page of public
     install -m 0644 %{S:51} %{buildroot}%{_mandir}/man8/public.8
+    gzip %{buildroot}%{_mandir}/man8/public.8
 
     # is part of texlive-kpathsea
     rm -vf %{buildroot}%{_texmfconfdir}/web2c/fmtutil.cnf
@@ -4782,6 +4788,7 @@ popd
 
 %if %{with buildbiber}
     for scr in %{_bindir}/biber \
+	%{_bindir}/biber-ms \
 %else
     for scr in \
 %endif
@@ -4870,7 +4877,7 @@ fi
 # is part of texlive-luatex
 #%config(noreplace) %verify(not md5 size mtime) %{_texmfconfdir}/web2c/texmfcnf.lua
 #%verify(link) %{_texmfmaindir}/web2c/texmfcnf.lua
-%{_mandir}/man8/public.*
+%{_mandir}/man8/public.8%{?ext_man}
 %if %{with zypper_posttrans}
 %verify(link) /var/adm/update-scripts/%{name}-%{version}-%{release}-zypper
 %endif

@@ -1106,4 +1106,18 @@
     <comment>- The rungs lua script belongs to texlive-scripts(-bin) only</comment>
     <requestid>1098678</requestid>
   </revision>
+  <revision rev="91" vrev="94">
+    <srcmd5>e7a8d3b1256a7991cc0e04b0a76b51c9</srcmd5>
+    <version>unknown</version>
+    <time>1700511542</time>
+    <user>anag+factory</user>
+    <comment>- Silent some rpmlint errors 
+
+- Catch all lua based binaries for boo#1216650 
+
+- texlive-latex-bin-bin: Ensure the same version of libz1 is
+  installed in system as against what texlive was compiled
+  (boo#1216650).</comment>
+    <requestid>1127649</requestid>
+  </revision>
 </revisionlist>
