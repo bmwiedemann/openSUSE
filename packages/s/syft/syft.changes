@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 18 08:51:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.97.1:
+  * chore(deps): update stereoscope to
+    3610f4ef3e83e8ff2edf8859e8916bce326fa260 (#2336)
+  * feat: allow for stdout to be buffered on each command (#2335)
+
+-------------------------------------------------------------------
 Fri Nov 17 05:46:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.97.0:
