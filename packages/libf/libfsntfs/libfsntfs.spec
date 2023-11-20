@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 %define lname	libfsntfs1
 Name:           libfsntfs
-Version:        20230606
+Version:        20231119
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -49,7 +50,7 @@ BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfusn) >= 20220119
 BuildRequires:  pkgconfig(libfwnt) >= 20220922
 BuildRequires:  pkgconfig(libhmac) >= 20230407
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
