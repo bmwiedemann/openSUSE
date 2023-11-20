@@ -430,4 +430,12 @@
 - add 0011-remove-ssl-extension.patch to remove the vagrant ssl extension</comment>
     <requestid>1093683</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>6a9c15d9d667d335ef9105cb05104345</srcmd5>
+    <version>2.3.7</version>
+    <time>1700511507</time>
+    <user>anag+factory</user>
+    <comment>relax webrick and rgl dependencies</comment>
+    <requestid>1126967</requestid>
+  </revision>
 </revisionlist>

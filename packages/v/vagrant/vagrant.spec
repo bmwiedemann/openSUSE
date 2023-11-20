@@ -57,7 +57,9 @@ Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Remove-dependency-on-grpc-tools.patch
-Patch11:        0011-remove-ssl-extension.patch
+Patch11:        0011-Remove-vagrant-ssl-extension.patch
+Patch12:        0012-Bump-rgl-dependency-to-0.6.6.patch
+Patch13:        0013-Bump-webrick-dependency-to-1.8.0.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -122,8 +124,9 @@ BuildRequires:  %{rubygem net-scp:4 }
 BuildRequires:  %{rubygem rb-kqueue:0.2 }
 #  s.add_dependency "rexml", "~> 3.2"
 BuildRequires:  %{rubygem rexml:3 >= 3.2 }
-#  s.add_dependency "rgl", "~> 0.5.10"
-BuildRequires:  %{rubygem rgl:0.5 >= 0.5.10}
+# PATCHED
+#  s.add_dependency "rgl", "~> 0.6.6"
+BuildRequires:  %{rubygem rgl:0.6 >= 0.6.6}
 #  s.add_dependency "rubyzip", "~> 2.0"
 BuildRequires:  %{rubygem rubyzip:2}
 # Intentionally removed, wdm only works on Windows
@@ -150,8 +153,9 @@ BuildRequires:  %{rubygem rspec:3 >= 3.11 }
 BuildRequires:  %{rubygem rspec-its:1.3 }
 #  s.add_development_dependency "fake_ftp", "~> 0.3.0"
 BuildRequires:  %{rubygem fake_ftp:0.3 >= 0.3.0 }
-#  s.add_development_dependency "webrick", "~> 1.7.0"
-BuildRequires:  %{rubygem webrick:1.7 }
+# PATCHED
+#  s.add_development_dependency "webrick", "~> 1.8.0"
+BuildRequires:  %{rubygem webrick:1.8 }
 
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }
@@ -216,8 +220,9 @@ Requires:       %{rubygem net-scp:4 }
 Requires:       %{rubygem rb-kqueue:0.2}
 #  s.add_dependency "rexml", "~> 3.2"
 Requires:       %{rubygem rexml:3 >= 3.2 }
-#  s.add_dependency "rgl", "~> 0.5.10"
-Requires:       %{rubygem rgl:0.5 >= 0.5.10}
+# PATCHED
+#  s.add_dependency "rgl", "~> 0.6.6"
+Requires:       %{rubygem rgl:0.6 >= 0.6.6}
 #  s.add_dependency "rubyzip", "~> 2.0"
 Requires:       %{rubygem rubyzip:2}
 #   s.add_dependency "wdm", "~> 0.1.0"

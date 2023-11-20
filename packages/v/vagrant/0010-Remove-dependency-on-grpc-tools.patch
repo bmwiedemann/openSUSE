@@ -1,7 +1,7 @@
-From fa0e7bc761285ce8a929e55b7038fecaf8491a2e Mon Sep 17 00:00:00 2001
+From 5a8e538a994d8850333de713dc13f9c9f2416caa Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 23 Aug 2022 16:19:11 +0200
-Subject: [PATCH 10/12] Remove dependency on grpc-tools
+Subject: [PATCH 10/13] Remove dependency on grpc-tools
 
 This package is only needed to build the go plugins, which we do not use at the
 moment.
@@ -10,7 +10,7 @@ moment.
  1 file changed, 3 deletions(-)
 
 diff --git a/vagrant.gemspec b/vagrant.gemspec
-index f51b8d263..6550462ae 100644
+index 7d417b019..809500649 100644
 --- a/vagrant.gemspec
 +++ b/vagrant.gemspec
 @@ -39,9 +39,6 @@ Gem::Specification.new do |s|
@@ -23,3 +23,6 @@ index f51b8d263..6550462ae 100644
    # required to include https://github.com/ruby/ipaddr/issues/35
    s.add_dependency "ipaddr", ">= 1.2.4"
  
+-- 
+2.41.0
+

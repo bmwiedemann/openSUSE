@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 16 15:50:55 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- relax webrick and rgl dependencies
+
+  Add patches:
+  * 0012-Bump-rgl-dependency-to-0.6.6.patch
+  * 0013-Bump-webrick-dependency-to-1.8.0.patch
+
+  Rebase patches:
+
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+  * 0010-Remove-dependency-on-grpc-tools.patch
+  * 0011-Remove-vagrant-ssl-extension.patch as 0011-remove-ssl-extension.patch
+
+-------------------------------------------------------------------
 Sun Jun 18 10:48:43 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to 2.3.7
