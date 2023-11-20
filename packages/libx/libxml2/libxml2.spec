@@ -25,7 +25,7 @@
 %endif
 
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.11.5
+Version:        2.11.6
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
