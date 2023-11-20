@@ -1,9 +1,8 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">sheldon-0.7.3.tar.gz</param>
+     <param name="srctar">sheldon-*.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="manual" />
 </services>
