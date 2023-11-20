@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 20 11:51:29 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Adjust license field based on legaldb scan
+  * newly added Unicode-TOU compared to the previous scan
+
+-------------------------------------------------------------------
 Thu Oct 19 17:04:50 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Use Rust 1.71 for build since build is known to be broken on 1.72+
