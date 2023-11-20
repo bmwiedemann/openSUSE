@@ -18,7 +18,7 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        A X.509 Library
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND MIT
