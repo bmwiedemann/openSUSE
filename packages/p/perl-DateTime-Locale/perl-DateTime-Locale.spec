@@ -18,10 +18,9 @@
 
 %define cpan_name DateTime-Locale
 Name:           perl-DateTime-Locale
-Version:        1.390000
+Version:        1.400000
 Release:        0
-%define cpan_version 1.39
-Provides:       perl(DateTime::Locale) = 1.390000
+%define cpan_version 1.40
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Localization support for DateTime.pm
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -56,6 +55,8 @@ Requires:       perl(Specio::Declare)
 Requires:       perl(Specio::Library::String)
 Requires:       perl(namespace::autoclean) >= 0.19
 %{perl_requires}
+# old version workaround provide, should be removed after transition to new versioning is finished
+Provides:       perl(DateTime::Locale) = 1.400000
 
 %description
 DateTime::Locale is primarily a factory for the various locale subclasses.
