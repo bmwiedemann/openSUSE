@@ -1,3 +1,14 @@
+gpxsee (13.11) stable; urgency=low
+
+  * Added support for GPSDump WPT files.
+  * Added "Open recent" menu.
+  * Fixed broken menu items placement (Mac).
+  * Huge MBTiles maps now load in a "geologically short" time.
+  * Vector MBTiles maps now rendered asynchronous.
+  * Fixed map bounds limiting.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 19 Nov 2023 11:52:02 +0100
+
 gpxsee (13.10) stable; urgency=low
 
   * New GUI icons that fit the current platform styles.

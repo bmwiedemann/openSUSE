@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 19 11:42:43 CET 2023 - tumic@cbox.cz
+
+- Update to version 13.11
+  * Added support for GPSDump WPT files.
+  * Added "Open recent" menu.
+  * Fixed broken menu items placement (Mac).
+  * Huge MBTiles maps now load in a "geologically short" time.
+  * Vector MBTiles maps now rendered asynchronous.
+  * Fixed map bounds limiting.
+
+-------------------------------------------------------------------
 Sat Oct 28 13:52:06 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.10
