@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 20 05:37:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.10:
+  *  Fixed #6356: Version selector can't be disabled via mike's
+     configuration
+  *  Fixed #6281: Navigation not rendering due to Safari bug (9.4.2
+     regression)
+  *  Fixed #6261: Navigation expansion animates on first load
+     (9.4.2 regression)
+
+-------------------------------------------------------------------
 Fri Nov 17 13:46:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.9:
