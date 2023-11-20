@@ -1,8 +1,7 @@
-Index: nut-2.7.4/scripts/systemd/nut-driver.service.in
-===================================================================
---- a/scripts/systemd/nut-driver@.service.in
-+++ b/scripts/systemd/nut-driver@.service.in
-@@ -38,6 +38,17 @@
+diff -purN a/scripts/systemd/nut-driver@.service.in b/scripts/systemd/nut-driver@.service.in
+--- a/scripts/systemd/nut-driver@.service.in	2023-10-07 16:06:44.000000000 +0200
++++ b/scripts/systemd/nut-driver@.service.in	2023-11-03 19:46:30.856267504 +0100
+@@ -46,6 +46,17 @@ PartOf=nut-driver.target
  # Finally note that "nut-driver-enumerator.service" should take care of this.
  
  [Service]
@@ -17,6 +16,6 @@ Index: nut-2.7.4/scripts/systemd/nut-driver.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
+ Environment=NUT_IGNORE_NOWAIT=true
  EnvironmentFile=-@CONFPATH@/nut.conf
  SyslogIdentifier=%N
- ExecStart=/bin/sh -c 'NUTDEV="`@NUT_LIBEXECDIR@/nut-driver-enumerator.sh --get-device-for-service %i`" && [ -n "$NUTDEV" ] || { echo "FATAL: Could not find a NUT device section for service unit %i" >&2 ; exit 1 ; } ; @SBINDIR@/upsdrvctl start "$NUTDEV"'

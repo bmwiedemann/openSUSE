@@ -55,7 +55,7 @@
 %bcond_with libfreeipmi
 %endif
 Name:           nut
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
@@ -71,8 +71,6 @@ Patch0:         nut-preconfig.patch
 Patch1:         nut-notifyflag.patch
 # PATCH-FEATURE-OPENSUSE nut-doc-fixed-date.patch sbrabec@suse.cz -- Make doc builds reproducible.
 Patch2:         nut-doc-fixed-date.patch
-# PATCH-FIX-UPSTREAM - do not install Solaris init files uninvited
-Patch3:         nut-Solaris-init-files.patch
 Patch10:        harden_nut-driver.service.patch
 Patch11:        harden_nut-monitor.service.patch
 Patch12:        harden_nut-server.service.patch
@@ -92,6 +90,7 @@ BuildRequires:  pkgconfig(avahi-core)
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gdlib)
+BuildRequires:  pkgconfig(libgpiod) >= 1.0.0
 BuildRequires:  pkgconfig(libpowerman)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -369,7 +368,6 @@ ln -s service %{buildroot}%{_sbindir}/rcnut-driver
 ln -s service %{buildroot}%{_sbindir}/rcnut-server
 ln -s service %{buildroot}%{_sbindir}/rcnut-monitor
 rename .sample "" %{buildroot}%{_sysconfdir}/ups/*.sample
-mv %{buildroot}%{_tmpfilesdir}/nut-common.{tmpfiles,conf}
 
 install -D -m 750 %{SOURCE6} %{buildroot}%{systemdsystemdutildir}/system-sleep/%{name}.sh
 install -D -m 644 scripts/logrotate/nutlogd %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
@@ -419,7 +417,7 @@ fi
 # And finally trigger udev to set permissions according to newly installed rules files.
 udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %service_add_post nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target
-%tmpfiles_create %{_tmpfilesdir}/%{name}-common.conf
+%tmpfiles_create %{_tmpfilesdir}/%{name}-common-tmpfiles.conf
 
 %preun
 %service_del_preun nut-server.service nut-monitor.service nut-driver-enumerator.path nut-driver-enumerator.service nut-driver.target nut.target
@@ -444,7 +442,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %endif
 
 %files
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README README.SUSE UPGRADING
+%doc AUTHORS ChangeLog MAINTAINERS NEWS.adoc README.adoc README.SUSE UPGRADING.adoc
 %license COPYING
 %config %{_sysconfdir}/logrotate.d/*
 %{_bindir}/*
@@ -455,6 +453,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %exclude %{_mandir}/man8/snmp-ups*.*
 %dir %{_libexecdir}/ups
 %{_libexecdir}/nut-driver-enumerator.sh
+%python_sitearch/PyNUT.py
 %{_sbindir}/*
 %{_udevrulesdir}/*.rules
 %config(noreplace) %{CONFPATH}/hosts.conf
@@ -477,9 +476,9 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{systemdsystemdutildir}/system-shutdown/*
 %{systemdsystemdutildir}/system-sleep/%{name}.sh
 %{bashcompletionsdir}/*
-%{_tmpfilesdir}/%{name}-common.conf
+%{_tmpfilesdir}/%{name}-common-tmpfiles.conf
 %ghost %{_rundir}/%{name}
-%ghost %attr(700,%{NUT_USER},%{NUT_GROUP}) %{STATEPATH}/%{name}
+%ghost %attr(700,%{NUT_USER},%{NUT_GROUP}) %{STATEPATH}/upssched
 
 %files drivers-net
 %{MODELPATH}/snmp-ups
@@ -509,7 +508,9 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_includedir}/*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_libexecdir}/sockdebug
 %{_mandir}/man3/*%{ext_man}
+%python_sitearch/test_nutclient.py
 
 %files doc-asciidoc
 %doc %dir %{_docdir}/%{name}{,/cables}
@@ -520,8 +521,10 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_docdir}/%{name}/developer-guide.html
 
 %files doc-html
+%{_docdir}/%{name}/ChangeLog.html
 %{_docdir}/%{name}/FAQ.html
 %{_docdir}/%{name}/cables.html
+%{_docdir}/%{name}/release-notes.html
 %{_docdir}/%{name}/solaris-usb.html
 %{_docdir}/%{name}/user-manual.html
 %{_docdir}/%{name}/*.css
