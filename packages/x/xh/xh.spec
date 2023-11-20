@@ -17,9 +17,9 @@
 
 
 Name:           xh
-Version:        0.19.4~0
+Version:        0.20.1~0
 Release:        0
-Summary:        Tool for sending HTTP requests 
+Summary:        Tool for sending HTTP requests
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/ducaale/xh
