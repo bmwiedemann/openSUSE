@@ -738,4 +738,14 @@
     <comment>Softwarestack update</comment>
     <requestid>1112865</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>90879ec579cbdf5c8b6eb509a1dd5450</srcmd5>
+    <version>0.7.26</version>
+    <time>1700511512</time>
+    <user>anag+factory</user>
+    <comment>- fix evr roundtrip in testcases
+- do not use deprecated headerUnload with newer rpm versions
+- bump version to 0.7.26</comment>
+    <requestid>1126733</requestid>
+  </revision>
 </revisionlist>
