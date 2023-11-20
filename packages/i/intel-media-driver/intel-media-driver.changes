@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 18 17:02:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to intel-media-23.3.5:
+  * Upstream ARL-S
+  * Enabled AV1 Encode ICQ feature for ACM+
+  * Deprecated VAEntrypointEncSliceLP
+  * Enabled PAT index setting when creating bo
+  * Optimized media reset threashold through resolution
+  * Fixed MTL VP9 Encode visual corruption issue for non-8 pixel
+    aligned resolution
+  * Fixed AVC Decode non-existing frame issue
+  * Fixed MTL XRGB/ARGB tiling create/report mismatch issue
+  * Fixed AV1 Encode max reference frame num caps report issue
+    for ACM onwards
+  * Fixed AV1 Encode multi-tiles R2R bitstream mismatch issue on
+    ACM
+  * Fixed VP9 header packer issue for segmentation
+  * Fixed FC Corruption when Blending without Colorfill
+  * Fixed a segfault for compressed surface non-32 aligned width
+
+-------------------------------------------------------------------
 Wed Sep 13 12:11:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to intel-media-23.2.4:

@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        23.3.3
+Version:        23.3.5
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        BSD-3-Clause AND MIT
@@ -31,10 +31,10 @@ Source2:        supplements.inc
 Source3:        baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.5
-BuildRequires:  gmmlib-devel >= 22.3.7
+BuildRequires:  gmmlib-devel >= 22.3.12
 BuildRequires:  pkgconfig
 #Note this is NOT libva library version!
-BuildRequires:  pkgconfig(libva) >= 1.19.0
+BuildRequires:  pkgconfig(libva) >= 1.20.0
 BuildRequires:  pkgconfig(pciaccess)
 ExclusiveArch:  x86_64 i586
 %include %{S:2}
