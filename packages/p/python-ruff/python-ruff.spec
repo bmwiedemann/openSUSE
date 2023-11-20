@@ -16,23 +16,23 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
 URL:            https://docs.astral.sh/ruff
 Source:         https://files.pythonhosted.org/packages/source/r/ruff/ruff-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires:       alts
+BuildRequires:  alts
 ExclusiveArch:  %{rust_tier1_arches}
 %python_subpackages
 
@@ -41,8 +41,6 @@ Ruff extremely fast Python linter written in rust supperseding many other lintin
 
 %prep
 %autosetup -a1 -p1 -n ruff-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %pyproject_wheel
@@ -51,12 +49,10 @@ cp %{SOURCE2} .cargo/config
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/ruff
+%python_group_libalternatives ruff
 
-%post
-%python_install_alternative ruff
-
-%postun
-%python_uninstall_alternative ruff
+%pre
+%python_libalternatives_reset_alternative ruff
 
 %files %{python_files}
 %python_alternative %{_bindir}/ruff

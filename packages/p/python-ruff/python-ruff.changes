@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Nov 19 03:53:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- switch to libalternatives
+- drop cargo_config
+- update _service for new cargo-vendor service
+- update to 0.1.6
+ * Preview features
+   * [flake8-boolean-trap] Extend boolean-type-hint-positional-argument (FBT001) to include booleans in unions
+   * [flake8-pie] Extend reimplemented-list-builtin (PIE807) to dict reimplementations
+   * [flake8-pie] Extend unnecessary-pass (PIE790) to include ellipses (...)
+   * [flake8-pie] Implement fix for unnecessary-spread (PIE800)
+   * [flake8-quotes] Implement unnecessary-escaped-quote (Q004)
+   * [pycodestyle] Implement fix for multiple-spaces-after-keyword (E271) and multiple-spaces-before-keyword (E272)
+   * [pycodestyle] Implement fix for multiple-spaces-after-operator (E222) and multiple-spaces-before-operator (E221)
+   * [pyflakes] Extend is-literal (F632) to include comparisons against mutable initializers
+   * [pylint] Implement redefined-argument-from-local (PLR1704)
+   * [pylint] Implement fix for unnecessary-lambda (PLW0108)
+   * [refurb] Implement if-expr-min-max (FURB136)
+   * [refurb] Implement math-constant (FURB152)
+ * Rule changes
+   * [flake8-annotations] Add autotyping-like return type inference for annotation rules
+   * [flake8-future-annotations] Implement fix for future-required-type-annotation (FA102)
+   * [flake8-implicit-namespace-package] Avoid missing namespace violations in scripts with shebangs
+   * [pydocstyle] Update over-indentation (D208) to preserve indentation offsets when fixing overindented lines
+   * [pyupgrade] Refine timeout-error-alias (UP041) to remove false positives
+ * Formatter
+   * Fix instability in await formatting with fluent style
+   * Compare formatted and unformatted ASTs during formatter tests
+   * Preserve trailing semicolon for Notebooks
+ * CLI
+   * Improve debug printing for resolving origin of config settings
+   * Write unchanged, excluded files to stdout when read via stdin
+   * Configuration
+   * [isort] Support disabling sections with no-sections = true
+   * [pep8-naming] Support local and dynamic class- and static-method decorators
+   * [pydocstyle] Allow overriding pydocstyle convention rules
+ * Bug fixes
+   * Avoid syntax error via importing trio.lowlevel
+   * Omit unrolled augmented assignments in PIE794
+   * Slice source code instead of generating it for EM fixes
+   * Allow whitespace around colon in slices for whitespace-before-punctuation (E203)
+   * Use function range for no-self-use
+   * F-strings doesn't contain bytes literal for PLW0129
+   * Improve detection of TYPE_CHECKING blocks imported from typing_extensions or _typeshed
+   * Treat display as a builtin in IPython
+   * Avoid FURB113 autofix if comments are present
+   * Consider the new f-string tokens for flake8-commas
+   * Remove erroneous bad-dunder-name reference
+   * Avoid recommending Self usages in metaclasses
+   * Detect runtime-evaluated base classes defined in the current file
+   * Avoid inserting trailing commas within f-strings
+   * Remove incorrect deprecation label for stdout and stderr
+   * Fix unnecessary parentheses in UP007 fix
+   * Remove repeated and erroneous scoped settings headers in docs
+   * Trim trailing empty strings when converting to f-strings
+   * Fix ordering for force-sort-within-sections
+   * Run unicode prefix rule over tokens
+   * Update UP032 to unescape curly braces in literal parts of converted strings
+   * List all ipython builtins
+ * Documentation
+   * Document conventions in the FAQ
+   * Redirect from rule codes to rule pages in docs
+   * Fix permalink to convention setting
+
+-------------------------------------------------------------------
 Mon Nov 13 14:21:57 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.5

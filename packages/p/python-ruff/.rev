@@ -200,4 +200,41 @@
    * Add instructions for configuration of Emacs</comment>
     <requestid>1125607</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57faa40e0426a938dcc394fa683d349c</srcmd5>
+    <version>0.1.6</version>
+    <time>1700511557</time>
+    <user>anag+factory</user>
+    <comment>- switch to libalternatives
+- drop cargo_config
+- update _service for new cargo-vendor service
+- update to 0.1.6
+ * Preview features
+   * [flake8-boolean-trap] Extend boolean-type-hint-positional-argument (FBT001) to include booleans in unions
+   * [flake8-pie] Extend reimplemented-list-builtin (PIE807) to dict reimplementations
+   * [flake8-pie] Extend unnecessary-pass (PIE790) to include ellipses (...)
+   * [flake8-pie] Implement fix for unnecessary-spread (PIE800)
+   * [flake8-quotes] Implement unnecessary-escaped-quote (Q004)
+   * [pycodestyle] Implement fix for multiple-spaces-after-keyword (E271) and multiple-spaces-before-keyword (E272)
+   * [pycodestyle] Implement fix for multiple-spaces-after-operator (E222) and multiple-spaces-before-operator (E221)
+   * [pyflakes] Extend is-literal (F632) to include comparisons against mutable initializers
+   * [pylint] Implement redefined-argument-from-local (PLR1704)
+   * [pylint] Implement fix for unnecessary-lambda (PLW0108)
+   * [refurb] Implement if-expr-min-max (FURB136)
+   * [refurb] Implement math-constant (FURB152)
+ * Rule changes
+   * [flake8-annotations] Add autotyping-like return type inference for annotation rules
+   * [flake8-future-annotations] Implement fix for future-required-type-annotation (FA102)
+   * [flake8-implicit-namespace-package] Avoid missing namespace violations in scripts with shebangs
+   * [pydocstyle] Update over-indentation (D208) to preserve indentation offsets when fixing overindented lines
+   * [pyupgrade] Refine timeout-error-alias (UP041) to remove false positives
+ * Formatter
+   * Fix instability in await formatting with fluent style
+   * Compare formatted and unformatted ASTs during formatter tests
+   * Preserve trailing semicolon for Notebooks
+ * CLI
+   * Improve debug printing for resolving origin of config settings
+   * Write unchanged, excluded files to stdout when read via stdin</comment>
+    <requestid>1127488</requestid>
+  </revision>
 </revisionlist>
