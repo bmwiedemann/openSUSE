@@ -78,4 +78,17 @@ bi-level image compression spec.</comment>
     <comment></comment>
     <requestid>1118753</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>aed6fb35b770d5767b0207ef845d04a9</srcmd5>
+    <version>0.20</version>
+    <time>1700511559</time>
+    <user>anag+factory</user>
+    <comment>- security update
+- added patches
+  fix CVE-2023-46361 [bsc#1216729], SEGV vulnerability via
+  jbig2_error at /jbig2dec/jbig2.c.
+  + jbig2dec-CVE-2023-46361.patch
+</comment>
+    <requestid>1127514</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,8 @@ Source:         https://github.com/ArtifexSoftware/jbig2dec/releases/download/%{
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM fix-for-restore-abi.patch deb#940605 -- Restores the ABI export of jbig2_ctx_new
 Patch1:         fix-for-restore-abi.patch
+# CVE-2023-46361 [bsc#1216729], SEGV vulnerability via jbig2_error at /jbig2dec/jbig2.c.
+Patch2:         jbig2dec-CVE-2023-46361.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 16 08:48:29 UTC 2023 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2023-46361 [bsc#1216729], SEGV vulnerability via
+  jbig2_error at /jbig2dec/jbig2.c.
+  + jbig2dec-CVE-2023-46361.patch
+
+-------------------------------------------------------------------
 Sat Oct 14 13:08:10 UTC 2023 - Atri Bhattacharya <A.Bhattacharya@uliege.be>
 
 - Update to version 0.20:
