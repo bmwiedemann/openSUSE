@@ -19,7 +19,7 @@
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT
@@ -36,9 +36,10 @@ Source2:        https://github.com/HaxeFoundation/hx3compat/archive/%{commit_hx3
 BuildRequires:  help2man
 BuildRequires:  neko-devel >= 2.3.0
 BuildRequires:  neko >= 2.3.0
-BuildRequires:  ocaml >= 4.02.3
+BuildRequires:  ocaml >= 4.08
 BuildRequires:  ocaml-dune
 BuildRequires:  ocamlfind(camlp5)
+BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(extlib)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(luv)
