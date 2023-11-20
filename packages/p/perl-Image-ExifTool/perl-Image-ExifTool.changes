@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov 19 21:09:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.70:
+  * Added ability to read/delete C2PA CAI JUMBF metadata from
+    TIFF-based images (eg. DNG), QuickTime-based files
+    (eg. MP4) and WebP images, and read JUMBF from other RIFF-based
+    files (eg. WAV, AVI), GIF images and ID3v2
+  metadata
+  * Added read/write support for JPH images
+  * Added ability to read Leica Q3 maker notes
+  * Added ability to recognize and write FujiFilm M-RAW RAF images
+    (multiple raw images in a single file) and the ability to read
+    preview-less RAF images
+  * Added support for reading a number of obscure Microsoft EXIF tags
+  * Added a few new Sony lenses and support for the ILCE-9M3
+  * Added a couple of new Panasonic Leica lenses
+  * Added a couple of new Canon RF lenses
+  * Added a number of new CPUType values for ELF executables
+  * Added some new Olympus CameraType values
+  * Decode a few more ID3v2.2 tags (github #142)
+  * Decode a few new Canon G5X Mark II tags
+  * Decode WB_RGGBLevels for a few more Nikon cameras
+  * Extract information from FujiFilm M-RAW header
+  * Improved decoding of a few Nikon Z tags
+  * Marked misspelt XMP-drone-dji:GPSLongtitude tag to Avoid when writing
+  * Changed RIFF MaxDataRate conversion to use SI prefixes by default
+  * Fixed decoding of unknown ColorBalance information for some Nikon models
+  * Fixed an incorrect Nikon Z LensID
+  * API Changes:
+    + Added ByteUnit option
+
+-------------------------------------------------------------------
 Mon Oct 30 21:28:07 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.69:
