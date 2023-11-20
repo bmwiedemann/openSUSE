@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov 19 15:46:50 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 0.21.0:
+  * Add Python 3.12 support, drop Python 3.7 support by @gi0baro in
+    #248
+- additional changes from 0.20.0:
+  * Bump pymdown-extensions from 9.5 to 10.0 in /requirements by
+    @dependabot in #229
+  * Bump pygments from 2.13.0 to 2.15.0 in /requirements by
+    @dependabot in #237
+  * Allow maturin 1.x by @heirecka in #233
+  * Fix: Memory leak of PyO3 by @koseki2580 in #240
+  * Improve debug by @samuelcolvin in #242
+  * add grace period during which file changes are ignored by
+    @samuelcolvin in #243
+  * Add ignore_permission_denied option by @aminalaee in #224
+  * Catch SIGTERM and kill running process before exitting by
+    @samuelcolvin in #244
+- refresh vendor.tar.xz
+- drop cargo_config.patch: included in vendor archive now
+- build one wheel per python flavor: a single wheel for all flavor
+  does not work anymore
+- set the minimum python version to 3.8
+
+-------------------------------------------------------------------
 Thu May 11 18:43:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.19.0
