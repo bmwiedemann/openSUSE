@@ -72,4 +72,29 @@
     <comment></comment>
     <requestid>1088913</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ff25135d0468fe1413eb5918ba98529a</srcmd5>
+    <version>0.78.0</version>
+    <time>1700511586</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.78.0:
+  * Added: align_nl_cont_spaces
+  * Added: sp_after_bit_colon
+  * Added: sp_before_bit_colon
+  * Added: sp_between_ptr_ref
+  * Added: nl_min_after_func_body
+  * Added: sp_before_keyword_ptr_star
+  * Added: sp_before_global_scope_ptr_star
+  * Added: sp_before_scope_ptr_star
+  * Added: sp_before_operator_ptr_star
+  * Added: sp_before_qualifier_ptr_star
+  * Removed: sp_before_keyword_ptr_star
+  * Added: debug_use_the_exit_function_pop
+  * Added: nl_max_after_func_body
+  * Added: sp_cpp_lambda_argument_list_empty
+  * Added: align_func_proto_span_ignore_cont_lines
+
+  * Added sp_ptr_star_func_type</comment>
+    <requestid>1127584</requestid>
+  </revision>
 </revisionlist>
