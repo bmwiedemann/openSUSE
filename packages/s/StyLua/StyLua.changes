@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Nov 12 13:56:19 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.19.0:
+
+  ### Added
+
+  - Added flag `--respect-ignores`. By default, files explicitly passed
+  to stylua (e.g. `stylua foo.lua`) will always be formatted, regardless of
+  whether the file is ignored. Enabling this flag will consider `.styluaignore`
+  or glob matches before formatting the file.
+  
+    - Note: for backwards compatibility reasons, formatting via stdin always
+    respects ignores. This behaviour will change in the next major release
+
+  ### Changed
+
+  - Updated parser crate with following changes:
+
+    - Support Luau floor division (`//`)
+    - Fix Luau string interpolation parsing
+    - Fix Luau `\z` escape parsing
+
+  - Simplified access and modification patterns for StyLua configuration. You
+  can now access the properties directly
+
+    - **Deprecated:** the old access patterns of `.property()` and
+    `.with_property()` are now deprecated
+    - **Breaking Change (WASM):** due to JS/TS lack of differentiation
+    between `.property` / `.property()` implementation, the `.property()`
+    functions were removed from WASM output.
+
+  - Multiline comments before commas will now remain in place and not move
+  to after the comma. This is to support type-assertions-via-comments that
+  is commonly used by some language servers.
+
+-------------------------------------------------------------------
 Mon Oct  9 13:14:58 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.18.2:
