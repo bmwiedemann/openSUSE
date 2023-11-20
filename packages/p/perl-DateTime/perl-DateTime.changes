@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  7 03:07:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.65
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.65   2023-11-05
+  - This release is the same as 1.64. This release fixes builds on macOS with
+    Perls before 5.22.0. Reported by Simon Sawert. GH #141.
+  1.64   2023-10-29 (TRIAL RELEASE)
+  - Fix builds on macOS with Perls before 5.22.0. This seems to have the same
+    issue as Windows on older Perls. Reported by Simon Sawert. GH #141.
+
+-------------------------------------------------------------------
 Mon Oct 23 03:06:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.63

@@ -18,9 +18,9 @@
 
 %define cpan_name DateTime
 Name:           perl-DateTime
-Version:        1.630.0
+Version:        1.650.0
 Release:        0
-%define cpan_version 1.63
+%define cpan_version 1.65
 License:        Artistic-2.0
 Summary:        Date and time object for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -62,16 +62,16 @@ Requires:       perl(Specio::Subs)
 Requires:       perl(Try::Tiny)
 Requires:       perl(namespace::autoclean) >= 0.19
 Requires:       perl(parent)
-Provides:       perl(DateTime) = 1.630.0
-Provides:       perl(DateTime::Duration) = 1.630.0
-Provides:       perl(DateTime::Helpers) = 1.630.0
-Provides:       perl(DateTime::Infinite) = 1.630.0
-Provides:       perl(DateTime::Infinite::Future) = 1.630.0
-Provides:       perl(DateTime::Infinite::Past) = 1.630.0
-Provides:       perl(DateTime::LeapSecond) = 1.630.0
-Provides:       perl(DateTime::PP) = 1.630.0
-Provides:       perl(DateTime::PPExtra) = 1.630.0
-Provides:       perl(DateTime::Types) = 1.630.0
+Provides:       perl(DateTime) = 1.650.0
+Provides:       perl(DateTime::Duration) = 1.650.0
+Provides:       perl(DateTime::Helpers) = 1.650.0
+Provides:       perl(DateTime::Infinite) = 1.650.0
+Provides:       perl(DateTime::Infinite::Future) = 1.650.0
+Provides:       perl(DateTime::Infinite::Past) = 1.650.0
+Provides:       perl(DateTime::LeapSecond) = 1.650.0
+Provides:       perl(DateTime::PP) = 1.650.0
+Provides:       perl(DateTime::PPExtra) = 1.650.0
+Provides:       perl(DateTime::Types) = 1.650.0
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
