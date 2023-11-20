@@ -32,4 +32,19 @@
 - Update Requires from setup.py (forwarded request 997505 from glaubitz)</comment>
     <requestid>997522</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>78e0ad26647100021db2de289f03895b</srcmd5>
+    <version>1.1.0</version>
+    <time>1700511629</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1127736 from glaubitz)</comment>
+    <requestid>1127738</requestid>
+  </revision>
 </revisionlist>
