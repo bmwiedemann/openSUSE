@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1103368</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5bf865633a93072c1ee170501fe55cd8</srcmd5>
+    <version>20230506</version>
+    <time>1700511575</time>
+    <user>anag+factory</user>
+    <comment>- system-libs.patch requires autoconf rerun; add the dependency.</comment>
+    <requestid>1127556</requestid>
+  </revision>
 </revisionlist>

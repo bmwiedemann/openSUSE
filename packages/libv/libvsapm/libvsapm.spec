@@ -31,6 +31,7 @@ Source2:        https://github.com/libyal/libvsapm/releases/download/%version/li
 Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool

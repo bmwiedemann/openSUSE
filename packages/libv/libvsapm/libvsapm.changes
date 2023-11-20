@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 19 13:51:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- system-libs.patch requires autoconf rerun; add the dependency.
+
+-------------------------------------------------------------------
 Thu Aug 10 16:29:59 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v20230506 
