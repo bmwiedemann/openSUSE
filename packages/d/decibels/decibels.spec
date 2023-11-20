@@ -19,7 +19,7 @@
 %define sname   gi-typescript-definitions
 %define scommit eb2a87a25c5e2fb580b605fbec0bd312fe34c492
 Name:           decibels
-Version:        0.1.4
+Version:        0.1.6
 Release:        0
 Summary:        Play audio files with a waveform
 License:        GPL-3.0-or-later
@@ -29,7 +29,7 @@ Source1:        https://gitlab.gnome.org/BrainBlasted/%{sname}/-/archive/%{scomm
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  typescript
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gjs-1.0)
@@ -56,7 +56,7 @@ tar -xf %{SOURCE1} --strip-components 1 -C gi-types
 %install
 %meson_install
 
-%find_lang %{name}
+%find_lang %{lname}
 
 %files
 %license LICENCE
@@ -70,7 +70,7 @@ tar -xf %{SOURCE1} --strip-components 1 -C gi-types
 %{_datadir}/glib-2.0/schemas/%{lname}.gschema.xml
 %{_datadir}/dbus-1/services/%{lname}.service
 
-%files lang -f %{name}.lang
+%files lang -f %{lname}.lang
 
 %changelog
 
