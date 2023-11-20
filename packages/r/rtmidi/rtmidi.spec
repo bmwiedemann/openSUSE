@@ -1,7 +1,7 @@
 #
 # spec file for package rtmidi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define sover   6
+%define sover   7
 Name:           rtmidi
-Version:        5.0.0
+Version:        6.0.0
 Release:        0
 Summary:        C++ library for realtime MIDI input/ouput
 License:        MIT
@@ -28,8 +28,9 @@ URL:            https://www.music.mcgill.ca/~gary/rtmidi/index.html
 Source0:        https://www.music.mcgill.ca/~gary/rtmidi/release/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE pkgconfig.patch avvissu@yandex.ru
 Patch0:         rtmidi-4.0.0-pkgconfig.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+# PATCH-FIX-OPENSUSE set proper .cmake files path, lower cmake version for Leap (3.24 is required for Android)
+Patch1:         rtmidi-cmake.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -66,16 +67,20 @@ application that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
+
+# generate rtmidi-config for compatibility
 %configure --disable-static \
     --with-jack \
     --with-alsa
-make %{?_smp_mflags} CXXFLAGS="%{optflags}" V=1
+
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 install -Dm0755 %{name}-config %{buildroot}%{_bindir}/%{name}-config
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -91,5 +96,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/%{name}
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 19 10:51:00 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Switch build to cmake
+- add rtmidi-cmake.patch
+- Update to version 6.0.0 
+  * run "git log 5.0.0..HEAD" to see commits since last release
+  * new Android API (thanks to YellowLabrador!)
+  * new Windows UWP API support (thanks to Masamichi Hosoda!)
+  * various build system updates and code efficiencies
+
+-------------------------------------------------------------------
 Sat Dec 18 01:30:22 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Update to Version 5.0.0
