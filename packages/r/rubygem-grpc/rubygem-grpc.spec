@@ -24,29 +24,34 @@
 #
 
 Name:           rubygem-grpc
-Version:        1.55.0
+Version:        1.59.2
 Release:        0
 %define mod_name grpc
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-BuildRequires:  gcc-c++
+BuildRequires: gcc-c++
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/google/grpc/tree/master/src/ruby
-Source0:        https://rubygems.org/gems/%{mod_full_name}.gem
+Url:            https://github.com/google/grpc/tree/master/src/ruby
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-grpc.rpmlintrc
 Source2:        gem2rpm.yml
+# MANUAL
+Patch0:  0001-Return-Qnil-from-grpc_rb_fork_unsafe_begin-end_api.patch
+# /MANUAL
 Summary:        GRPC system in Ruby
 License:        Apache-2.0
-Group:          Development/Languages/Ruby
 
 %description
 Send RPCs from Ruby using GRPC.
 
 %prep
+%gem_unpack
+%patch0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 
@@ -59,9 +64,8 @@ Send RPCs from Ruby using GRPC.
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.grpc.time' -o -name '.yardopts' \) | xargs rm
 # fix permissions
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ca.pem' -o -name 'server1.key' -o -name 'server1.pem' \) | xargs chmod -x
-# remove buildroot from .dep files
-find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '*.dep' \) | xargs sed -i 's|%{buildroot}||'
 # /MANUAL
+
 
 %gem_packages
 

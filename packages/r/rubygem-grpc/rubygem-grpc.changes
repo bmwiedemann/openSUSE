@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:05:34 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 1.59.2, no changelog found
+  * Add 0001-Return-Qnil-from-grpc_rb_fork_unsafe_begin-end_api.patch
+    (https://github.com/grpc/grpc/pull/35015)
+
+-------------------------------------------------------------------
 Tue May 23 05:59:30 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.55.0

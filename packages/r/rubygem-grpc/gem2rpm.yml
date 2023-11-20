@@ -19,8 +19,8 @@
   BuildRequires: gcc-c++
 #   Requires: foobar
 # ## used by gem2rpm
-# :patches:
-#   foo.patch: -p1
+:patches:
+  0001-Return-Qnil-from-grpc_rb_fork_unsafe_begin-end_api.patch: -p1
 #   bar.patch:
 # :post_patch:
 #   if you need to fiddle with the source dir before rebuilding the gem
@@ -43,8 +43,6 @@
   find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.grpc.time' -o -name '.yardopts' \) | xargs rm
   # fix permissions
   find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ca.pem' -o -name 'server1.key' -o -name 'server1.pem' \) | xargs chmod -x
-  # remove buildroot from .dep files
-  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '*.dep' \) | xargs sed -i 's|%{buildroot}||'
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)
