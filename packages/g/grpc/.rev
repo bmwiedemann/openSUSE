@@ -551,4 +551,16 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment></comment>
     <requestid>1125885</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>7e4acc867dfb73c5715c0b8832ecbf8b</srcmd5>
+    <version>1.59.3</version>
+    <time>1700511539</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.59.3:
+  * Security - Revocation: Crl backport to 1.59. (#34926)
+
+- pin to protobuf &lt; 22 until next version update
+- Update to 1.36.1:</comment>
+    <requestid>1127415</requestid>
+  </revision>
 </revisionlist>
