@@ -16,27 +16,27 @@
 #
 
 
-%define mod_name rgl
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-rgl
-Version:        0.5.10
+Version:        0.6.6
 Release:        0
-Summary:        Ruby Graph Library
-License:        BSD-2-Clause
-Group:          Development/Languages/Ruby
-URL:            https://github.com/monora/rgl
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name rgl
+%define mod_full_name %{mod_name}-%{version}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/monora/rgl
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        Ruby Graph Library
+License:        BSD-2-Clause
 
 %description
 RGL is a framework for graph data structures and algorithms.
@@ -47,7 +47,7 @@ RGL is a framework for graph data structures and algorithms.
 
 %install
 %gem_install \
-  --doc-files="ChangeLog README.md" \
+  --doc-files="CHANGELOG.md README.md" \
   -f
 
 %gem_packages
