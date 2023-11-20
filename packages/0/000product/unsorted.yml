@@ -2717,6 +2717,7 @@ unsorted:
   - ctop 
   - ctris 
   - cttop 
+  - cuarzo-srm-devel 
   - cudd-devel 
   - cuishark 
   - culmus-ancient-semitic-fonts 
@@ -9332,6 +9333,7 @@ unsorted:
   - kubectl-neat 
   - kubectl-node-shell 
   - kubectl-oomd 
+  - kubectl-operator 
   - kubectl-tree 
   - kubectl-who-can 
   - kubectx 
@@ -10338,6 +10340,7 @@ unsorted:
   - libSM-devel-32bit 
   - libSM6-32bit 
   - libSPIRV-Tools-2023_5_rc1-32bit 
+  - libSRM-suse0 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -10345,7 +10348,7 @@ unsorted:
   - libSciTokens0 
   - libShowMySky-Qt6-15 
   - libShowMySky-Qt6-devel 
-  - libSimGearCore-2020_3_18 
+  - libSimGearCore-2020_3_19 
   - libSingular-4_3_2 
   - libSingular-devel 
   - libSoQt20 
@@ -12347,6 +12350,7 @@ unsorted:
   - libhangul-devel 
   - libhangul1 
   - libharfbuzz-cairo0 
+  - libharfbuzz-cairo0-32bit 
   - libharfbuzz-gobject0-32bit 
   - libharfbuzz-icu0-32bit 
   - libharfbuzz-subset0-32bit 
@@ -14273,7 +14277,7 @@ unsorted:
   - libraw1394-devel-32bit 
   - libraw1394-tools 
   - libraw23-32bit 
-  - libraylib420 
+  - libraylib450 
   - librbd-devel 
   - librbio2 
   - librbl1 
@@ -18635,8 +18639,6 @@ unsorted:
   - ocaml-re-devel 
   - ocaml-result 
   - ocaml-result-devel 
-  - ocaml-rope 
-  - ocaml-rope-devel 
   - ocaml-rpm-macros 
   - ocaml-rresult 
   - ocaml-rresult-devel 
@@ -20066,6 +20068,7 @@ unsorted:
   - perl-Digest-SHA3 
   - perl-Dist-CheckConflicts 
   - perl-Dist-Zilla 
+  - perl-Domain-PublicSuffix 
   - perl-Dumbbench 
   - perl-Email-Abstract 
   - perl-Email-Address 
