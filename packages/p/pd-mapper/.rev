@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e9578a1713c8e5963c11590aee65e6e</srcmd5>
+    <version>1.0_107104b20b</version>
+    <time>1700511549</time>
+    <user>anag+factory</user>
+    <comment>pd-mapper provides systemd service to access Qualcomm's protection domains inside SoCs, such as wifi, modem, sensors, battery, and so on via remoteproc, which also relies on QRTR as the IPC protocol. This package is required by Lenovo X13s and further Qualcomm-based laptops/devices that need to access hardware components [e.g. power-supply &amp; battery] inside protection domains. (bsc#1216806)</comment>
+    <requestid>1125579</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,20 @@
+--------------------------------------------------------------------
+Thu Nov 09 15:52:51 UTC 2023 - Chester Lin <clin@suse.com>
+- Fix %changelog
+- Fix the BuildRequires from libqrtr1 to qrtr due to package name changed.
+
+--------------------------------------------------------------------
+Fri Nov 03 12:20:00 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Add post/postun scripts to check whether the required remoteproc FW
+  blobs are compressed [xz] or not since currently pd-mapper can only
+  recognize uncompressed format.
+- Add Supplements tag.
+- Add URL tag.
+- Strip debug symbols from pd-mapper.
+- Remove a redundant "Requires:" tag.
+
+--------------------------------------------------------------------
+Wed Sep 27 10:05:00 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Initial commit
