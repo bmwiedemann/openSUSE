@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 18 21:31:29 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.23
+  * Revert use of monotonic clock for TTL
+  * Fix a crash when serializing packed arrays (e.g. lists) in PHP 8.2+
+    with `apc.serializer=default`.
+  * Reduce memory usage when serializing packed arrays (e.g. lists) in
+    PHP 8.2+ with `apc.serializer=default`.
+  * Speed up serializing arrays with `apc.serializer=default`.
+  * Reduce memory usage when unserializing instances of the empty array
+    in PHP 7.3+.
+  * Removed no longer working apcue extension.
+  * Increased limit on maximum number of slots.
+  * Made tests compatible with PHP 8.3.
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
