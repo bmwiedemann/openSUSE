@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 17 11:38:12 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.522.g0fc72191:
+  * fix(install.d): do not create rescue entry when working with UKIs
+  * fix(install.d): skip if $KERNEL_INSTALL_INITRD_GENERATOR is set otherwise
+  * feat(resume): do not attempt to install systemd-hibernate-resume@.service
+  * feat(install.d): add sort-key field to rescue BLS entries
+  * fix(install.d): do not generate a new initrd if any INITRD_FILE is provided
+  * fix(install.d): do not create initramfs if the supplied image is UKI
+  * feat(install.d): allow using dracut in combination with ukify
+  * fix(resume): add new systemd-hibernate-resume.service
+  * feat(systemd): install systemd-executor
+
+-------------------------------------------------------------------
 Mon Oct 30 12:53:53 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.511.g0bdb16ac:
