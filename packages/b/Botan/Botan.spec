@@ -1,7 +1,7 @@
 #
 # spec file for package Botan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,14 +125,13 @@ rm -f %{buildroot}/%{_libdir}/libbotan*.a
 chmod +x %{buildroot}%{python3_sitearch}/botan2.py
 sed -i '1s@^#!/.*@#!%{_bindir}/python3@' %{buildroot}%{python3_sitearch}/botan2.py
 
+rm %{buildroot}%{_bindir}/botan
+
 %check
 %make_build check
 
 %post -n libbotan-%{version_suffix} -p /sbin/ldconfig
 %postun -n libbotan-%{version_suffix} -p /sbin/ldconfig
-
-%files
-%{_bindir}/botan
 
 %files doc
 %docdir %{botan_docdir}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 17 13:18:55 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- remove botan binary (moves to Botan3)
+
+-------------------------------------------------------------------
 Thu Nov 17 21:26:01 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 2.19.3:

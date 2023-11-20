@@ -647,4 +647,12 @@
     <comment></comment>
     <requestid>1036531</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>e0208dc873e019bba77bb272fc0b8b68</srcmd5>
+    <version>2.19.3</version>
+    <time>1700511614</time>
+    <user>anag+factory</user>
+    <comment>- remove botan binary (moves to Botan3)</comment>
+    <requestid>1127662</requestid>
+  </revision>
 </revisionlist>
