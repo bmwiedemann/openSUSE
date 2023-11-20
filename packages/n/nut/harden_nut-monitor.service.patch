@@ -1,8 +1,7 @@
-Index: nut-2.7.4/scripts/systemd/nut-monitor.service.in
-===================================================================
---- a/scripts/systemd/nut-monitor.service.in
-+++ b/scripts/systemd/nut-monitor.service.in
-@@ -3,6 +3,17 @@
+diff -purN a/scripts/systemd/nut-monitor.service.in b/scripts/systemd/nut-monitor.service.in
+--- a/scripts/systemd/nut-monitor.service.in	2023-10-07 16:06:44.000000000 +0200
++++ b/scripts/systemd/nut-monitor.service.in	2023-11-03 19:48:16.280004811 +0100
+@@ -25,6 +25,17 @@ Wants=nut-server.service
  PartOf=nut.target
  
  [Service]
@@ -19,4 +18,4 @@ Index: nut-2.7.4/scripts/systemd/nut-monitor.service.in
 +# end of automatic additions 
  EnvironmentFile=-@CONFPATH@/nut.conf
  SyslogIdentifier=%N
- ExecStart=@SBINDIR@/upsmon -F
+ ExecStartPre=-@SYSTEMD_TMPFILES_PROGRAM@ --create @systemdtmpfilesdir@/nut-common-tmpfiles.conf

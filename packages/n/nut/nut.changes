@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  4 16:30:32 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 2.8.1
+  For more see NEWS.adoc and UPGRADING.adoc in /usr/share/doc/packages/nut
+  (the list of changes is too long to list).
+- Remove obsolete patch:
+  * nut-Solaris-init-files.patch
+
+-------------------------------------------------------------------
 Thu Jul  6 20:29:12 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix nut.system-sleep script to allow NUT usage with sleep and
