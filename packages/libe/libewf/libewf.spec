@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 %define lname libewf3
 Name:           libewf
-Version:        20230212
+Version:        20231119
 Release:        0
 Summary:        Library for the Expert Witness Compression Format (EWF)
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -33,8 +34,8 @@ Source21:       Expert_Witness_Compression_Format_EWF.pdf
 Source23:       Expert_Witness_Compression_Format_2_EWF2.pdf
 Patch1:         remove_date_time_macros.patch
 Patch2:         system-libs.patch
-Patch3:         20230324.diff
 BuildRequires:  %{python_module devel}
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  bison
 BuildRequires:  c_compiler
 BuildRequires:  flex
@@ -46,7 +47,7 @@ BuildRequires:  timezone
 BuildRequires:  pkgconfig(bzip2) >= 1.0
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcaes) >= 20221127
+BuildRequires:  pkgconfig(libcaes) >= 20230406
 BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcdatetime) >= 20230115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -57,15 +58,15 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20230115
-BuildRequires:  pkgconfig(libfdata) >= 20220111
+BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libhmac) >= 20230205
+BuildRequires:  pkgconfig(libhmac) >= 20230407
 BuildRequires:  pkgconfig(libodraw) >= 20210503
 BuildRequires:  pkgconfig(libsmdev) >= 20221028
-BuildRequires:  pkgconfig(libsmraw) >= 20221028
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libsmraw) >= 20230320
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(uuid) >= 2.20
 BuildRequires:  pkgconfig(zlib) >= 1.2.5

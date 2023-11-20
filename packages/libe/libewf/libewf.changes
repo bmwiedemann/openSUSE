@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 19 10:30:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231119
+  * Allow UTF-16 stream unpaired surrogates in ltree
+  * Changed ltree path segment separator
+- Delete 20230324.diff (merged)
+
+-------------------------------------------------------------------
 Tue Aug  1 15:56:21 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility

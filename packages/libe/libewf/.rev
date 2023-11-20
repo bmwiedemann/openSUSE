@@ -215,4 +215,12 @@ Replace python 2 with python 3</comment>
     <comment></comment>
     <requestid>1102219</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2d0d46260e653adadd480758d9e0e21f</srcmd5>
+    <version>20231119</version>
+    <time>1700511573</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231119</comment>
+    <requestid>1127554</requestid>
+  </revision>
 </revisionlist>
