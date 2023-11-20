@@ -30,7 +30,7 @@
 ExcludeArch:    i586
 
 Name:           lilypond
-Version:        2.24.2
+Version:        2.24.3
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
@@ -45,6 +45,7 @@ Patch0:         reproducible.patch
 Patch2:         add_dircategories_to_documentation.patch
 Patch4:         use_cstring_and_ctype_includes.patch
 Patch5:         lilypond-missing-lgc.patch
+#!BuildIgnore:  icu.691-devel
 BuildRequires:  ImageMagick
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -310,6 +311,7 @@ done
 for d in '.usr.share' '.usr.share.doc' '.usr.share.info' '.usr.share.doc.packages'; do
   sed -i "/^%%dir $d$/d" files-en
 done
+chmod 0644 %{buildroot}%{_datadir}/%{name}/%{version}/python/langdefs.py
 %fdupes -s %{buildroot}%{_docdir}/%{name}
 # End of Documentation section
 

@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 20 10:05:13 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 2.24.3
+- Upstream changes:
+  *This version contains a number of fixes since the release of the
+   previous stable version in August 2023. We recommend all users to
+   update. Scores converted to or written for 2.24.0 will continue
+   to work with this release.
+  *A list of added features and other user-visible changes can be
+   found at https://lilypond.org/doc/v2.24/Documentation/changes/.
+  *For distributions, LilyPond 2.24.3 most notably includes a fix
+   to restore PDF conversion with the recent Ghostscript 10.02.1.
+   Also Guile 3.0 is now officially supported, even though the
+   recommended version will be Guile 2.2 for LilyPond 2.24 series.
+
+-------------------------------------------------------------------
 Sun Aug 13 08:20:21 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
-- Update to release 2.24.1
+- Update to release 2.24.2
 - Upstream changes:
   *This version contains a number of fixes since the release of the
    previous stable version in February 2023. This includes an
