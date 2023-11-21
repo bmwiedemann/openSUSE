@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Nov 21 05:43:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.2:
+  * Bump version to 2.9.2 (#16405)
+  * feat: add support for ALL_PROXY (#10451) (#16401)
+  * fix: set max for max cookie number to `math.MaxInt` (#16388)
+    (#16397)
+  * docs: fix documentation of ignoreApplicationDifferences
+    (#16365) (#16380)
+  * bump helm 3.13.2 (#16344)
+  * fix: check for double definition (#16335)
+  * docs: fix upgrade instructions (#16327)
+
+-------------------------------------------------------------------
+Fri Nov 17 20:00:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package argocd-cli: CLI for the ArgoCD declarative continuous
+  deployment tool
