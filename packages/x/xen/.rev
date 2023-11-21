@@ -2878,4 +2878,12 @@
     <comment>Update Xen to version 4.18.0 (jsc#PED-4984)</comment>
     <requestid>1126897</requestid>
   </revision>
+  <revision rev="338" vrev="2">
+    <srcmd5>f4442cc7d62499e597286a29e51faaea</srcmd5>
+    <version>4.18.0_02</version>
+    <time>1700598690</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127727</requestid>
+  </revision>
 </revisionlist>

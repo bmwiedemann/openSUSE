@@ -734,14 +734,14 @@ rm -fv xen/.config
 echo CONFIG_DEBUG=y > xen/.config
 echo "CONFIG_DOM0_MEM=\"1G+10%%,max:64G\"" >> xen/.config
 yes '' | make -C xen oldconfig
-make -C xen install DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}
+make -C xen install XEN_BUILD_DATE="$XEN_BUILD_DATE" XEN_BUILD_TIME="$XEN_BUILD_TIME" DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}
 install_xen dbg
 make -C xen clean
 %endif
 echo CONFIG_DEBUG=n > xen/.config
 echo "CONFIG_DOM0_MEM=\"1G+10%%,max:64G\"" >> xen/.config
 yes '' | make -C xen oldconfig
-make -C xen install DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}
+make -C xen install XEN_BUILD_DATE="$XEN_BUILD_DATE" XEN_BUILD_TIME="$XEN_BUILD_TIME" DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}
 install_xen
 make -C xen clean
 %endif
