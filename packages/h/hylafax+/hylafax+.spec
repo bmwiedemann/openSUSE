@@ -25,7 +25,6 @@ Summary:        A fax server
 License:        BSD-3-Clause
 Group:          Productivity/Telephony/Servers
 URL:            https://hylafax.sourceforge.io
-#Git-Clone:     https://gitlab.com/libtiff/libtiff.git
 Source0:        https://prdownloads.sourceforge.net/hylafax/hylafax-%{version}.tar.gz
 Source4:        hylafax-hfaxd.service
 Source5:        hylafax-faxq.service

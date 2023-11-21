@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 20 17:05:09 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove stray pseudo comment (from Bjørn Lie)
+
+-------------------------------------------------------------------
 Fri Nov 10 07:09:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add tiff.patch to unbreak build
