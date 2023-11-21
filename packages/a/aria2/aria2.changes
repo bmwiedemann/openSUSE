@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 20 15:04:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.37.0
+  * Fix header in --http-accept-gzip documentation
+  * Allow empty dist name in bencode which is needed for hybrid torrent
+  * Fix undefined behavior/crash in GZipEncoder
+  * Fix Metalink4 parsing with foreign namespaces
+  * fix wrong dht.dat binary file structure in docs
+  * Increase ByteArrayDiskWriter maximum size 
+  * Logger: Fix format string overflow in writeHeader() 
+  * Cap infoHashLength in .aria2 file 
+  * Various documentation fixes and rewords
+
+-------------------------------------------------------------------
 Mon Sep 13 20:16:12 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 1.36.0

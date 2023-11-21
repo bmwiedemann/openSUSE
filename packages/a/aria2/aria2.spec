@@ -1,7 +1,7 @@
 #
 # spec file for package aria2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         somajor 0
 Name:           aria2
-Version:        1.36.0
+Version:        1.37.0
 Release:        0
 Summary:        Parallelizing Multi-Protocol Utility for Downloading Files
 License:        SUSE-GPL-2.0-with-openssl-exception

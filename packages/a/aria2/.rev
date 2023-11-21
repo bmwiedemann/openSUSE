@@ -794,4 +794,12 @@ SPDX format for this license - which has an openssl exception (forwarded request
     <comment></comment>
     <requestid>918825</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>5be4f0fa73dca04c34bd6e549f01b4af</srcmd5>
+    <version>1.37.0</version>
+    <time>1700598764</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127870</requestid>
+  </revision>
 </revisionlist>
