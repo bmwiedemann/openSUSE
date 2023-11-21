@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Nov 20 22:22:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.1:
+  * General:
+    * Fix: Potential corrupt game config file issue
+    * Fix: Loading old maps with invalid map tile numbers
+    * Fix: Text input handling of virtual key codes, CTRL+V paste,
+      and displaying virtual key names
+    * Fix: aiBestNearestTarget throttling
+    * Fix: Log spam for multi-weapon bodies
+    * Fix: Spawn position of first clone in clone cheat
+    * Fix: Bring back the 3 turret Ultimate Scavenger truck, Delay
+      Ultimate Scavenger Helicopters a bit
+    * Fix: Always tell VTOLs to rearm after their VTOL Strike/CB
+      sensor dies
+    * Fix: Check for non-default sensor/ecm stats like with repair
+    * Fix: Various crashes and memory leaks
+   * Graphics:
+    * Fix: Handling of MAX_VERTEX_OUTPUT_COMPONENTS on OpenGL < 3.2
+    * Fix: Additional fixes for fallback shaders, gfx_api logging
+    * Fix: [OpenGL] Additional error handling for init
+    * Fix: Model connectors for Ultimate Scavenger Helicopters
+    * Fix: DROID_PERSON model display size
+   * Campaign:
+     * Fix: Remove unused artifact label from Alpha 3
+     * Fix: Repair Facility ID on Alpha 9
+     * Fix: Command/Build reticule init for LDS_EXPAND_LIMBO
+       missions
+  * Multiplayer:
+     * Add: Chat Options UI, host mute / options
+     * Fix: Player mute state handling
+     * Fix: Non-builtin map replay desync
+     * Fix: Allow hosts to pre-configure all team slot choices
+     * Fix: Sort loading players by position
+     * Fix: Grey-out button for AI difficulty if not host
+     * Fix: Adjust how pending disconnects are handled
+     * Fix: Kick message appearing for map change
+     * Fix: Mod hashing issue
+     * Fix: Refactor NETallowJoining, add async join approval
+       support
+
+-------------------------------------------------------------------
 Tue Nov  7 10:44:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:
