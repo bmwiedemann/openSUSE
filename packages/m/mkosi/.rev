@@ -73,4 +73,12 @@
     <comment>- set singlepython version to python3 instead of python311 to allow build on Leap and not require changes on every Python change in Tumbleweed</comment>
     <requestid>1127433</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>06c3a21b722b6d6911998310e3b5183b</srcmd5>
+    <version>19</version>
+    <time>1700598725</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127787</requestid>
+  </revision>
 </revisionlist>
