@@ -38,7 +38,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Conflicts:      python-Cython < 3
 Provides:       python-Cython3 = %{version}
-Obsoletes:      python-Cython3 <= %{version}
+Obsoletes:      python-Cython3 < %{version}
 %python_subpackages
 
 %description

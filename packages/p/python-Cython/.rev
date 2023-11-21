@@ -1073,4 +1073,12 @@
   * Py2.4 fix: PySet_Pop() appeared in Py2.5</comment>
     <requestid>1124974</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>a7b14821270085c88354e8d984396270</srcmd5>
+    <version>3.0.5</version>
+    <time>1700598683</time>
+    <user>anag+factory</user>
+    <comment>- avoid obsoletes on provides as we now had a version update</comment>
+    <requestid>1127690</requestid>
+  </revision>
 </revisionlist>
