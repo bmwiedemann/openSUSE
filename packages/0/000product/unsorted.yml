@@ -24,7 +24,6 @@ unsorted:
   - AusweisApp 
   - AusweisApp2 
   - Bear 
-  - Botan 
   - Botan-doc 
   - CSXCAD-devel 
   - CSXCAD-matlab 
@@ -1350,7 +1349,6 @@ unsorted:
   - bitlbee-discord 
   - bitlbee-doc 
   - bitlbee-facebook 
-  - bitlbee-mastodon 
   - bitlbee-steam 
   - bitmap 
   - bitstream-vera-fonts 
@@ -3226,7 +3224,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -8714,6 +8711,7 @@ unsorted:
   - jupyter-threejs 
   - jupyter-threejs-jupyterlab 
   - jupyter-widgetsnbextension 
+  - jurand 
   - just 
   - just-bash-completion 
   - just-fish-completion 
@@ -8950,6 +8948,7 @@ unsorted:
   - kernelshark 
   - kernelshark-devel 
   - ketchup 
+  - kew 
   - kexi 
   - kexi-lang 
   - keybase-client 
@@ -14492,7 +14491,7 @@ unsorted:
   - librsync2 
   - librtaudio6 
   - librtlsdr2 
-  - librtmidi6 
+  - librtmidi7 
   - librtprocess-devel 
   - librtprocess0 
   - librtr0 
@@ -15818,6 +15817,7 @@ unsorted:
   - libzip5-32bit 
   - libzita-convolver4 
   - libzita-resampler1 
+  - libzix-0-0 
   - libzlui0_99 
   - libzmf-devel 
   - libzmf-devel-doc 
@@ -33987,7 +33987,6 @@ unsorted:
   - ruby3.2-rubygem-activesupport-7.0 
   - ruby3.2-rubygem-agama 
   - ruby3.2-rubygem-coffee-rails 
-  - ruby3.2-rubygem-commander 
   - ruby3.2-rubygem-delayed_job 
   - ruby3.2-rubygem-delayed_job_active_record 
   - ruby3.2-rubygem-devise 
@@ -34000,7 +33999,6 @@ unsorted:
   - ruby3.2-rubygem-grape 
   - ruby3.2-rubygem-grpc 
   - ruby3.2-rubygem-haml-rails 
-  - ruby3.2-rubygem-http 
   - ruby3.2-rubygem-importmap-rails 
   - ruby3.2-rubygem-jbuilder 
   - ruby3.2-rubygem-jquery-rails 
@@ -46111,6 +46109,7 @@ unsorted:
   - zita-convolver-devel 
   - zita-resampler-devel 
   - zita-resampler-tools 
+  - zix-devel 
   - zk 
   - zk-spaced 
   - zlib-devel 
