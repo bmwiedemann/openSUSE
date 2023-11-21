@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 21 14:49:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5:
+  * Report correct error if open(3) fails
+
+-------------------------------------------------------------------
 Fri Sep  8 09:23:42 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.4
@@ -163,7 +169,7 @@ Sun Dec 11 17:10:52 UTC 2016 - daniel.lichtenberger@gmail.com
 - Moved configure to %build, use separate changelog file.
 
 -------------------------------------------------------------------
-Sun Dec 11 2016 - daniel.lichtenberger@gmail.com 
+Sun Dec 11 2016 - daniel.lichtenberger@gmail.com
 
 - Added NEWS and README.md
 
@@ -173,11 +179,11 @@ Sun Dec 11 2016 - daniel.lichtenberger@gmail.com
 - Use %%doc instead of %%license
 
 -------------------------------------------------------------------
-Sat Dec 10 2016 - daniel.lichtenberger@gmail.com 
+Sat Dec 10 2016 - daniel.lichtenberger@gmail.com
 
 - Fix for rpm older than 4.12
 
 -------------------------------------------------------------------
-Sat Dec 10 2016 - daniel.lichtenberger@gmail.com 
+Sat Dec 10 2016 - daniel.lichtenberger@gmail.com
 
 - Initial version based on Fedora spec file by Lubomír Sedlář <lsedlar@redhat.com>

@@ -18,7 +18,7 @@
 
 
 Name:           entr
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC

@@ -111,4 +111,13 @@
     <comment></comment>
     <requestid>1110017</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>503ede1e7ac9360ba5797c72fb42eb27</srcmd5>
+    <version>5.5</version>
+    <time>1700598786</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.5:
+  * Report correct error if open(3) fails</comment>
+    <requestid>1127931</requestid>
+  </revision>
 </revisionlist>
