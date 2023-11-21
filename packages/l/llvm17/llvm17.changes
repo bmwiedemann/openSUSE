@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 18 22:07:04 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 17.0.5.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Also test clang-tools-extra (at least most parts) and lld.
+- Adapt test in lld-default-sha1.patch.
+- Don't disable testing if qemu_user_space_build has been set to 0.
+
+-------------------------------------------------------------------
 Sun Nov  5 20:20:37 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 17.0.4.

@@ -16,7 +16,7 @@
 #
 
 
-%global _relver 17.0.4
+%global _relver 17.0.5
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
 %global _sonum  17
@@ -24,7 +24,7 @@
 %global _soname %{_sonum}%{?_sosuffix}
 %global _itsme17 1
 # Integer version used by update-alternatives
-%global _uaver  1704
+%global _uaver  1705
 %global _soclang 13
 %global _socxx  1
 
@@ -1367,7 +1367,7 @@ export LANG=C.UTF-8
 # NOTE: We're not running the tests via ninja, because we've removed object
 # files and static libraries already.
 pushd build
-%if !0%{?qemu_user_space_build:1}
+%if !0%{?qemu_user_space_build}
 # we just do not have enough memory with qemu emulation
 
 # We don't build llvm-exegesis.
@@ -1399,6 +1399,14 @@ rm -r ../tools/clang/test/ClangScanDeps
 %endif
 python3 bin/llvm-lit -sv --param clang_site_config=tools/clang/test/lit.site.cfg \
 	--param USE_Z3_SOLVER=0 tools/clang/test/
+
+# The implementation of abseil-duration-factory-scale breaks with extended
+# precision, and the Altera test assumes 8-byte alignment for double.
+sed -i '1i// XFAIL: target=i586-{{.*}}' ../tools/clang/tools/extra/test/clang-tidy/checkers/{abseil/duration-factory-scale.cpp,altera/struct-pack-align.cpp}
+python3 bin/llvm-lit -sv tools/clang/tools/extra/test/
+python3 bin/llvm-lit -sv tools/clang/tools/extra/clangd/test/
+
+python3 bin/llvm-lit -sv tools/lld/test/
 
 %if %{with libcxx}
 # libcxx tests run too long for what they're worth to us.

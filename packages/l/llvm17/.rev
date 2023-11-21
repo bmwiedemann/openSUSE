@@ -68,4 +68,19 @@
 </comment>
     <requestid>1123592</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8a9e6babe71313be023cc32241697802</srcmd5>
+    <version>17.0.5</version>
+    <time>1700598501</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 17.0.5.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Also test clang-tools-extra (at least most parts) and lld.
+- Adapt test in lld-default-sha1.patch.
+- Don't disable testing if qemu_user_space_build has been set to 0.
+</comment>
+    <requestid>1127717</requestid>
+  </revision>
 </revisionlist>
