@@ -57,7 +57,6 @@ Source21:       dhclient6.conf
 Source22:       dhcpd.conf
 Source23:       dhcpd6.conf
 Source26:       sysconfig.syslog-dhcpd
-Source27:       dhclient-script
 #
 Source41:       dhcp.README
 Source43:       DDNS-howto.txt
@@ -168,9 +167,7 @@ configure the network setup.  IP address, hostname, routing,
 nameserver, netmask, and broadcast can be dynamically assigned while
 booting the machine.
 
-It is configurable via the configuration file %{_sysconfdir}/dhclient.conf and
-you can define your own 'hooks' to be used by the /sbin/dhclient-script
-(which is called by the daemon).
+It is configurable via the configuration file %{_sysconfdir}/dhclient.conf.
 
 %description relay
 This is the ISC DHCP relay agent. It can be used as a 'gateway' for
@@ -288,7 +285,6 @@ cat bind/install.log
 # check syntax in our scripts
 bash -n $RPM_SOURCE_DIR/dhcpd.script
 bash -n $RPM_SOURCE_DIR/dhcrelay.script
-bash -n $RPM_SOURCE_DIR/dhclient-script
 
 %install
 %make_install
@@ -313,12 +309,13 @@ mv -f %{buildroot}%{_sbindir}/dhclient %{buildroot}/sbin/
 ln -sf dhcpd      %{buildroot}%{_sbindir}/dhcpd6
 ln -sf dhcrelay   %{buildroot}%{_sbindir}/dhcrelay6
 ln -sf dhclient   %{buildroot}%{sbindir}/dhclient6
-# install our adopted config examples and dhclient-script:
+# install our adopted config examples:
 install    -m0644 $RPM_SOURCE_DIR/dhcpd.conf      %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhcpd6.conf     %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhclient.conf   %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhclient6.conf  %{buildroot}%{_sysconfdir}/
-install    -m0754 $RPM_SOURCE_DIR/dhclient-script %{buildroot}%{sbindir}/
+# We don't ship dhclient-script any more (boo#1216822)
+rm -f %{buildroot}%{_mandir}/man8/dhclient-script.8
 # helper / wrapper scripts
 install -d -m0755 %{buildroot}%{_libexecdir}/dhcp
 install    -m0755 $RPM_SOURCE_DIR/dhcpd.script              \
@@ -540,13 +537,11 @@ fi
 %files client
 %{sbindir}/dhclient
 %{sbindir}/dhclient6
-%{sbindir}/dhclient-script
 %config(noreplace) %{_sysconfdir}/dhclient.conf
 %config(noreplace) %{_sysconfdir}/dhclient6.conf
 %{_mandir}/man5/dhclient.conf.5%{?ext_man}
 %{_mandir}/man5/dhclient.leases.5%{?ext_man}
 %{_mandir}/man8/dhclient.8%{?ext_man}
-%{_mandir}/man8/dhclient-script.8%{?ext_man}
 %dir %{_localstatedir}/lib/dhcp
 %dir %{_localstatedir}/lib/dhcp6
 

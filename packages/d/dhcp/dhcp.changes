@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  2 13:53:11 UTC 2023 - Petr Vorel <pvorel@suse.cz>
+
+- Remove dhclient-script (boo#1216822).
+
+-------------------------------------------------------------------
 Tue Dec 27 10:32:19 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
