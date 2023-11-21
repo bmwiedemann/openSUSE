@@ -761,4 +761,13 @@ M email.patch
     <comment></comment>
     <requestid>1110657</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>aeb019e3941bfe1678e679fdfa2df45f</srcmd5>
+    <version>196</version>
+    <time>1700598684</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 196:
+  * mcelog: Add second model number for Arrowlake</comment>
+    <requestid>1127693</requestid>
+  </revision>
 </revisionlist>
