@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Mon Nov 20 13:55:46 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#674
+- ltrace now exists for riscv64
+- Fix too broad glob in ruby template
+- Updates for riscv64
+- 17.104
+
+--------------------------------------------------------------------
 Fri Nov 3 14:12:24 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#673

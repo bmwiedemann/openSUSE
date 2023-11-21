@@ -459,9 +459,7 @@ BuildRequires:  plymouth-scripts
 BuildRequires:  plymouth-theme-tribar
 %endif
 BuildRequires:  klogd
-%ifnarch riscv64
 BuildRequires:  ltrace
-%endif
 BuildRequires:  nscd
 BuildRequires:  polkit
 BuildRequires:  popt-devel
@@ -672,7 +670,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.103
+Version:        17.104
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
