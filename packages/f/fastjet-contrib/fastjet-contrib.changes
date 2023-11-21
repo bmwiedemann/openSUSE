@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 21 14:38:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.052:
+  * update of ConstituentSubtractor to v1.4.6, which brings small
+    bug fixes
+  * new KTClusCXX (1.0.1), a C++ re-implementation of the
+    interface and features of Mike Seymour's Fortran ktclus package
+  * Update of LundPlane to 2.0.3, to fix missing header
+    installation
+  * updated LundPlane to 2.0.2, fixing compilation issues with
+    g++-12
+
+-------------------------------------------------------------------
 Sun Dec  4 20:36:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.049:
