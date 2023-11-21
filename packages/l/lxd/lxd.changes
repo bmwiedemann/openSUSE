@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 20 21:51:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add attr as dependency for setfattr (bsc#1190416)
+
+-------------------------------------------------------------------
 Sun Oct 29 15:06:18 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - update to 5.19. Full changelog at:
@@ -48,12 +53,12 @@ Sun Jul 23 17:44:26 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 -------------------------------------------------------------------
 Sat Jul 15 15:28:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update keyring 
+- update keyring
 
 -------------------------------------------------------------------
 Wed Jul  5 07:03:20 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
-- Update to 5.15. Full upstream changelogs are at 
+- Update to 5.15. Full upstream changelogs are at
   https://discuss.linuxcontainers.org/t/lxd-5-14-has-been-released/17259 and
   https://discuss.linuxcontainers.org/t/lxd-5-15-has-been-released/17493
 

@@ -72,6 +72,7 @@ BuildRequires:  pkgconfig(libuv) >= 1.8.0
 Requires:       kernel-base >= 5.4
 # Bits required for images and other things at runtime.
 Requires:       acl
+Requires:       attr
 Requires:       ebtables
 BuildRequires:  dnsmasq
 Requires:       dnsmasq

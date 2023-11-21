@@ -532,4 +532,15 @@ seemed okay with the last submission. *fingers crossed*</comment>
     <comment></comment>
     <requestid>1123913</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>02c46ffc3626dedc81a05e6f1d755169</srcmd5>
+    <version>5.19</version>
+    <time>1700598726</time>
+    <user>anag+factory</user>
+    <comment>- add attr as dependency for setfattr (bsc#1190416)
+
+- update keyring
+- Update to 5.15. Full upstream changelogs are at</comment>
+    <requestid>1127791</requestid>
+  </revision>
 </revisionlist>
