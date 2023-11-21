@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 17 17:27:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.32.3:
+  + Fix asking twice on closing viewer with modified image
+  + Do not try to reload photo on shutdown
+  + Do not abort if new thumbnail size does not exist
+  + Open fullscreen windows on correct monitor
+  + Do not show toolbar if mouse is on another monitor
+  + Do not leak zoom buffers
+  + Remove length limit for GPhoto import
+  + Be more robust against invalid UTF-8 filenames
+  + Drop some old work-arounds
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jul 22 18:38:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.2:
