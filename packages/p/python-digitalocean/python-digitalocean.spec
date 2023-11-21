@@ -1,7 +1,7 @@
 #
 # spec file for package python-digitalocean
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/koalalorenzo/python-digitalocean/
 Source:         https://github.com/koalalorenzo/python-digitalocean/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module jsonpickle}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.2.1}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module urllib3 < 2.0.6}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -37,6 +40,8 @@ Requires:       python-jsonpickle
 Requires:       python-pytest
 Requires:       python-requests >= 2.2.1
 Requires:       python-responses
+# urllib3 2.0.6 strips Cookies header, which changes the behavior of requests, which in turn breaks the Firewall tests
+Requires:       python-urllib3 < 2.0.6
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,15 +49,15 @@ BuildArch:      noarch
 Python module to manage Digital Ocean droplets.
 
 %prep
-%setup -q -n python-digitalocean-%{version}
+%autosetup -p1 -n python-digitalocean-%{version}
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +67,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/digitalocean
+%{python_sitelib}/python_digitalocean-%{version}*-info
 
 %changelog

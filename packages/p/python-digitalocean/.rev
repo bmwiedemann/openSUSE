@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1096404</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>fbdfaefd688cddae8a92fe2bf767e1ad</srcmd5>
+    <version>1.17.0</version>
+    <time>1700598792</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Require old urllib3
+  * Cookie headers are stripped since urllib3 2.0.6, which breaks Firewall
+</comment>
+    <requestid>1127964</requestid>
+  </revision>
 </revisionlist>

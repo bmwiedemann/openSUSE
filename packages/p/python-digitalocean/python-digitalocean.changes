@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 21 16:58:50 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Tue Nov 21 15:07:55 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Require old urllib3
+  * Cookie headers are stripped since urllib3 2.0.6, which breaks Firewall
+
+-------------------------------------------------------------------
 Sun Jul  2 12:24:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
