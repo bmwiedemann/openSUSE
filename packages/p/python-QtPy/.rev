@@ -187,4 +187,28 @@
     <comment></comment>
     <requestid>1113368</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3a6ef3742df8daf72106f79ef807759a</srcmd5>
+    <version>2.4.1</version>
+    <time>1700598761</time>
+    <user>anag+factory</user>
+    <comment>- add qt6.6-deprecations.patch to avoid deprecation warnings
+  with qt 6.6
+
+- Update to 2.4.1
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #456
+  * PR: Fix bug when importing from PySide6.QtWebEngineCore/QtWebEngineWidgets
+    (QWebEngineScrip vs QWebEngineScript) by @damonlynch in #455
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #459
+
+  * Add support for PySide2.QtOpenGL
+  + New features
+      macOS and Qt versions.
+  + Issues Closed
+    * Issue 123 - Wrap QWebChannel module (PR 157)
+  + Pull Requests Merged
+    * PR 157 - Add more Qt modules (123)
+    * Changes to QDesktop split</comment>
+    <requestid>1127913</requestid>
+  </revision>
 </revisionlist>

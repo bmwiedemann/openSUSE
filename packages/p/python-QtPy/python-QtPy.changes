@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 21 13:39:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add qt6.6-deprecations.patch to avoid deprecation warnings
+  with qt 6.6
+
+-------------------------------------------------------------------
+Tue Nov 21 07:34:39 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.4.1
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #456
+  * PR: Fix bug when importing from PySide6.QtWebEngineCore/QtWebEngineWidgets
+    (QWebEngineScrip vs QWebEngineScript) by @damonlynch in #455
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #459
+
+-------------------------------------------------------------------
 Sun Sep 24 18:51:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.0
@@ -371,23 +386,23 @@ Thu Nov  8 17:02:01 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Update to Version 1.5.2
   * Fix tests
-  * Add support for PySide2.QtOpenGL 
+  * Add support for PySide2.QtOpenGL
 - Update to Version 1.5.1
   * Make PythonQtError inherit from RuntimeError to be easily
     catchable
 - Update to Version 1.5
-  + New features 
+  + New features
     * Add support for QtLocation, QtMultimediaWidgets, QtQml,
       QtQuick, QtWebChannel, QtWebSockets and QtXmlPatterns.
     * Raise an error when trying to use the wrong combination of
-      macOS and Qt versions. 
-  + Issues Closed 
+      macOS and Qt versions.
+  + Issues Closed
     * Issue 155 - Add warnings for Qt 5.9 in macOS 10.9 and
       Qt 5.11 and macOS 10.11 (PR 168)
     * Issue 153 - Shim PyQt5 ToPyDateTime for compatibility with
       PySide2 (PR 169)
-    * Issue 123 - Wrap QWebChannel module (PR 157) 
-  + Pull Requests Merged 
+    * Issue 123 - Wrap QWebChannel module (PR 157)
+  + Pull Requests Merged
     * PR 169 - Shim PyQt5 QDateTime.toPyDateTime to
       QDateTime.toPython for compatibility with PySide2 (153)
     * PR 168 - Raise error when trying to use the wrong
@@ -397,7 +412,7 @@ Thu Nov  8 17:02:01 UTC 2018 - Todd R <toddrme2178@gmail.com>
     * PR 162 - Update readme to remove funding appeal, harmonize
       with other readmes and minor fixes
     * PR 161 - Fix pyside2 wheels install
-    * PR 157 - Add more Qt modules (123) 
+    * PR 157 - Add more Qt modules (123)
 
 -------------------------------------------------------------------
 Thu May 31 15:38:45 UTC 2018 - toddrme2178@gmail.com
@@ -441,7 +456,7 @@ Sat Apr 28 19:47:37 UTC 2018 - toddrme2178@gmail.com
     * Pin PyQt5 to 5.9.2 in CircleCI because 5.10 is generating segfaults
     * If a Qt binding is already imported, then use it.
     * Add QtSql wrapper (incl. test)
-    * Changes to QDesktop split 
+    * Changes to QDesktop split
     * Add QtHelp Wrapper
 
 -------------------------------------------------------------------
@@ -527,4 +542,3 @@ Thu Feb 16 09:13:41 UTC 2017 - joerg.lorenzen@ki.tng.de
 Thu Oct 13 18:58:01 UTC 2016 - toddrme2178@gmail.com
 
 - Initial version
-
