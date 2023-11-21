@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 21 05:01:43 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.1
+  New features:
+  * Add option to enable previous Add new torrent dialog behavior
+  Fixed bugs:
+  * Prevent crash due to race condition when adding magnet link
+  * Fix Enter key behavior when add new torrent
+  * Add missing main window icon
+  * Update size of selected files when selection is changed
+  * Correctly handle changing save path of torrent w/o metadata
+  * Use appropriate icon for "moving" torrents in transfer list
+  Web UI:
+  * Drop WebUI default credentials
+  * Add I2P settings to WebUI
+  * Fix duplicate scrollbar on Transfer List
+  * Fix incorrect subcategory sorting
+  * Correctly set save path in RSS rules
+  * Allow to request torrents count via WebAPI
+  * Improve performance of getting torrent numbers via WebAPI
+  * Improve free disk space checking for WebAPI
+  Misc:
+  * Fix invisible tray icon with Qt5 in Linux
+
+-------------------------------------------------------------------
 Fri Oct 27 20:02:13 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Reintroduce qbittorrent-fix_boost_1.66_build.patch that had
