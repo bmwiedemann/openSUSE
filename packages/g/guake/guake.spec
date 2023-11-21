@@ -78,7 +78,8 @@ cp %{SOURCE1} guake/
 %pyproject_wheel
 
 # Build documentation
-%make_build -C docs html man
+# non-parallel to avoid non-determinism in man/guake.1 from https://github.com/sphinx-doc/sphinx/issues/6714
+make -C docs man html
 rm docs/_build/html/.buildinfo
 
 %install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 19 11:08:23 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Workaround Sphinx issue to generate reproducible docs (boo#1102408)
+
+-------------------------------------------------------------------
 Tue Jun 27 16:09:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.10:
