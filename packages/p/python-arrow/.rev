@@ -306,4 +306,19 @@
 - new version needs pytest instead of nose</comment>
     <requestid>1110582</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b41e73e314b293d9014da789fee63ad1</srcmd5>
+    <version>1.3.0</version>
+    <time>1700598665</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0
+ * [ADDED] Added official support for Python 3.11 and 3.12.
+ * [ADDED] Added dependency on types-python-dateutil to improve Arrow mypy compatibility. PR #1102
+ * [FIX] Updates to Italian, Romansh, Hungarian, Finish and Arabic locales.
+ * [FIX] Handling parsing of UTC prefix in timezone strings.
+ * [CHANGED] Update documentation to improve readability.
+ * [CHANGED] Dropped support for Python 3.6 and 3.7, which are end-of-life.
+ * [INTERNAL Migrate from setup.py/Twine to pyproject.toml/Flit for packaging and distribution. (forwarded request 1126469 from mimi_vx)</comment>
+    <requestid>1126470</requestid>
+  </revision>
 </revisionlist>

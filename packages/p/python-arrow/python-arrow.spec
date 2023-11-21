@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,16 +25,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-arrow%{?psuffix}
-Version:        1.2.3
+Version:        1.3.0
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
 URL:            https://github.com/arrow-py/arrow
 Source:         https://files.pythonhosted.org/packages/source/a/arrow/arrow-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.7.0
+Requires:       python-types-python-dateutil >= 2.8.10
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module arrow == %{version}}
@@ -65,11 +65,11 @@ Arrow is heavily inspired by moment.js and requests.
 rm -rf arrow.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if %{without test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -84,7 +84,7 @@ rm tox.ini
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/arrow
-%{python_sitelib}/arrow-%{version}-py*.egg-info
+%{python_sitelib}/arrow-%{version}*-info
 %endif
 
 %changelog
