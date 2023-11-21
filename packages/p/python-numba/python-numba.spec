@@ -17,9 +17,9 @@
 
 
 %define plainpython python
-# upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ve
-%define min_numpy_ver 1.21
-%define max_numpy_ver 1.26
+# upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
+%define min_numpy_ver 1.22
+%define max_numpy_ver 1.27
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -46,19 +46,15 @@
 %endif
 
 Name:           python-numba%{?psuffix}
-Version:        0.57.1
+Version:        0.58.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
 URL:            https://numba.pydata.org/
 # SourceRepository: https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM numba-pr9105-np1.25.patch gh#numba/numba#9105
-Patch0:         numba-pr9105-np1.25.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
-# PATCH-FIX-UPSTREAM https://github.com/numba/numba/commit/c59e46a177bf7134dec3a9a374ec75aec4576e31 Fix issue with incompatible multiprocessing context in test.
-Patch4:         multiprocessing-context.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
@@ -68,7 +64,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.40 with python-llvmlite < 0.41)
+Requires:       (python-llvmlite >= 0.41 with python-llvmlite < 0.42)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

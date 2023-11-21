@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 20 12:15:07 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.58.1
+  * Added towncrier
+  * The minimum supported NumPy version is 1.22.
+  * Add support for NumPy 1.26
+  * Remove NVVM 3.4 and CTK 11.0 / 11.1 support
+  * Removal of Windows 32-bit Support
+  * The minimum llvmlite version is now 0.41.0.
+  * Added RVSDG-frontend
+- Drop merged patches:
+  * numba-pr9105-np1.25.patch
+  * multiprocessing-context.patch
+
+-------------------------------------------------------------------
 Tue Sep 19 12:08:03 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add multiprocessing-context.patch fixing tests for Python 3.11.5
