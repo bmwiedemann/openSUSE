@@ -262,4 +262,41 @@
     reset the `max.poll.interval.ms`.</comment>
     <requestid>1087789</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>03b66ca212c961bc49e4afbd14830e8e</srcmd5>
+    <version>2.3.0</version>
+    <time>1700598668</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.0:
+  * Partial support of topic identifiers. Topic identifiers in
+    metadata response available through the new
+    `rd_kafka_DescribeTopics` function
+  * KIP-117 Add support for AdminAPI `DescribeCluster()` and
+    `DescribeTopics()`
+  * Return authorized operations in Describe Responses.
+  * KIP-580: Added Exponential Backoff mechanism for
+    retriable requests with `retry.backoff.ms` as minimum backoff
+    and `retry.backoff.max.ms` as the
+    maximum backoff, with 20% jitter (#4422).
+  * Fixed ListConsumerGroupOffsets not fetching offsets for all
+    the topics in a group with Apache Kafka version below 2.4.0.
+  * Add missing destroy that leads to leaking partition structure
+    memory when there are partition leader changes and a stale
+    leader epoch is received (#4429).
+  * Fix a segmentation fault when closing a consumer using the
+    cooperative-sticky assignor before the first assignment
+  * Fix for insufficient buffer allocation when allocating rack
+    information (@wolfchimneyrock, #4449).
+  * Fix for infinite loop of OffsetForLeaderEpoch requests on
+    quick leader changes. (#4433).
+  * Fix for stored offsets not being committed if they lacked the
+    leader epoch (#4442).
+  * Upgrade OpenSSL to v3.0.11 (while building from source) with
+    various security fixes, check the release notes
+  * Fix to ensure permanent errors during offset validation
+    continue being retried and don't cause an offset reset (#4447).
+  * Fix to ensure max.poll.interval.ms is reset when
+    rd_kafka_poll is called with consume_cb (#4431).</comment>
+    <requestid>1127461</requestid>
+  </revision>
 </revisionlist>
