@@ -1,9 +1,24 @@
 <services>
-  <service mode="manual" name="download_files" />
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/wez/wezterm</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">600652583594e9f6195a6427d1fabb09068622a7</param>
+    <param name="versionrewrite-pattern">(\d+)-(\d+)-(\w+)</param>
+    <param name="versionrewrite-replacement">\1.\2.\3</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">wezterm-20230712.072601.f4abf8fd.tar.gz</param>
-     <param name="compression">zst</param>
-     <param name="update">false</param>
+     <param name="src">wezterm</param>
+     <param name="update">true</param>
+     <param name="i-accept-the-risk">RUSTSEC-2022-0090</param>
   </service>
   <service name="cargo_audit" mode="manual" />
 </services>

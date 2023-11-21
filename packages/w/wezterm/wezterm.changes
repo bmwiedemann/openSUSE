@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Nov 19 13:26:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update vendored dependencies.
+- Add add-terminator-to-sync-capability.patch
+
+-------------------------------------------------------------------
+Sat Nov 18 22:03:10 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20230712.072601.f4abf8fd+git210:
+  * cargo update
+  * docs: changelog for #4563
+  * Make RIS also clear the alternate screen
+
+-------------------------------------------------------------------
+Sat Nov 18 21:57:26 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add do-not-send-eof-when-closing-application.patch
+  * resolves issue when closing app but also sends an EOF
+  to other multiplexers e.g. tmux, screen, zellij
+
+-------------------------------------------------------------------
+Sun Nov 12 07:56:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Move shell integration to /usr/etc. It won't be read but it's optional
+
+-------------------------------------------------------------------
+Sun Nov 12 06:24:46 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove cargo_config from source. It's part of the vendored tarball now
+
+-------------------------------------------------------------------
+Sun Nov 12 05:51:03 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20230712.072601.f4abf8fd+git207:
+  * Default G1 to ASCII
+  * docs: fix emoji stuff
+  * Fallback to SGR when rendering 16/256 colors when MaxColors is 16M
+  * Detect true color set by max_colors
+  * deps: wgpu -> 0.18
+  * docs: Fix typo
+
+-------------------------------------------------------------------
 Sun Oct 29 06:30:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Set wezterm-terminfo as noarch

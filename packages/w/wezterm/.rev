@@ -668,4 +668,30 @@
 </comment>
     <requestid>1120963</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>04df5f93849a58314b9e1fc19692bdce</srcmd5>
+    <version>20230712.072601.f4abf8fd+git210</version>
+    <time>1700598772</time>
+    <user>anag+factory</user>
+    <comment>- Update vendored dependencies.
+- Add add-terminator-to-sync-capability.patch
+- Update to version 20230712.072601.f4abf8fd+git210:
+  * cargo update
+  * docs: changelog for #4563
+  * Make RIS also clear the alternate screen
+- Add do-not-send-eof-when-closing-application.patch
+  * resolves issue when closing app but also sends an EOF
+  to other multiplexers e.g. tmux, screen, zellij
+- Move shell integration to /usr/etc. It won't be read but it's optional
+- Remove cargo_config from source. It's part of the vendored tarball now
+- Update to version 20230712.072601.f4abf8fd+git207:
+  * Default G1 to ASCII
+  * docs: fix emoji stuff
+  * Fallback to SGR when rendering 16/256 colors when MaxColors is 16M
+  * Detect true color set by max_colors
+  * deps: wgpu -&gt; 0.18
+  * docs: Fix typo
+</comment>
+    <requestid>1127902</requestid>
+  </revision>
 </revisionlist>

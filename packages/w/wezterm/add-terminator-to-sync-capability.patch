@@ -1,0 +1,27 @@
+From 963413f8c550e7cf417a468a9f78bafcda512006 Mon Sep 17 00:00:00 2001
+From: Gregory Anders <greg@gpanders.com>
+Date: Mon, 13 Nov 2023 19:14:14 -0600
+Subject: [PATCH] wezterm.terminfo: add terminator to Sync capability
+
+I'm not sure if this is strictly necessary, but according to the
+terminfo specification [1], a conditional string should be terminated
+with `%;`.
+
+[1]: https://man7.org/linux/man-pages/man5/terminfo.5.html
+---
+ termwiz/data/wezterm.terminfo | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/termwiz/data/wezterm.terminfo b/termwiz/data/wezterm.terminfo
+index f7a4af4275b..369763f63f6 100644
+--- a/termwiz/data/wezterm.terminfo
++++ b/termwiz/data/wezterm.terminfo
+@@ -29,7 +29,7 @@ wezterm|Wez's terminal emulator,
+   Cr=\E]112\007, Cs=\E]12;%p1%s\007, Ms=\E]52;%p1%s;%p2%s\007, Se=\E[2\sq,
+   Ss=\E[%p1%d\sq,
+   Smulx=\E[4:%p1%dm,
+-  Sync=\E[?2026%?%p1%{1}%-%tl%eh,
++  Sync=\E[?2026%?%p1%{1}%-%tl%eh%;,
+   Setulc=\E[58:2::%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%d%;m,
+   Smol=\E[53m,
+ 	am, bce, ccc, km, mc5i, mir, msgr, npc, xenl,

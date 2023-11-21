@@ -17,17 +17,18 @@
 
 
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
-%global _dashed_version 20230712-072601-f4abf8fd
+# %%global _dashed_version 20230712-072601-f4abf8fd
 
 Name:           wezterm
-Version:        20230712.072601.f4abf8fd
+Version:        20230712.072601.f4abf8fd+git210
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND LGPL-2.1-only AND MIT AND MPL-2.0 AND WTFPL AND Zlib AND MIT
-Source0:        https://github.com/wez/wezterm/releases/download/%{_dashed_version}/wezterm-%{_dashed_version}-src.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
+Patch0:         do-not-send-eof-when-closing-application.patch
+Patch1:         https://github.com/wez/wezterm/pull/4578/commits/963413f8c550e7cf417a468a9f78bafcda512006.patch#/add-terminator-to-sync-capability.patch
 Requires:       terminfo
 BuildRequires:  Mesa-libEGL-devel
 
@@ -109,9 +110,7 @@ BuildArch:      noarch
 Zsh completion script for %{name}.
 
 %prep
-%autosetup -a1 -n %{name}-%{_dashed_version}
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
+%autosetup -a1 -p1
 tic -vvv -x -o terminfo termwiz/data/%{name}.terminfo
 printf "%{version}" > .tag
 
@@ -127,16 +126,16 @@ cargo build --offline --release --no-default-features --features vendored-fonts,
 %endif
 
 %install
-install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/wezterm %{buildroot}%{_bindir}/wezterm
-install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/wezterm-gui %{buildroot}%{_bindir}/wezterm-gui
-install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/wezterm-mux-server %{buildroot}%{_bindir}/wezterm-mux-server
-install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/strip-ansi-escapes %{buildroot}%{_bindir}/strip-ansi-escapes
+install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm %{buildroot}%{_bindir}/wezterm
+install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm-gui %{buildroot}%{_bindir}/wezterm-gui
+install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm-mux-server %{buildroot}%{_bindir}/wezterm-mux-server
+install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/strip-ansi-escapes %{buildroot}%{_bindir}/strip-ansi-escapes
 
 install -Dm 0644 terminfo/w/wezterm %{buildroot}%{_datadir}/terminfo/w/wezterm
 install -Dm 0644 assets/%{name}.desktop %{buildroot}%{_datadir}/applications/org.wezfurlong.%{name}.desktop
 install -Dm 0644 assets/icon/%{name}-icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.wezfurlong.%{name}.svg
 install -Dm 0644 assets/%{name}.appdata.xml %{buildroot}%{_datadir}/metainfo/org.wezfurlong.%{name}.appdata.xml
-install -Dm 0644 assets/shell-integration/* -t %{buildroot}%{_sysconfdir}/profile.d
+install -Dm 0644 assets/shell-integration/* -t %{buildroot}%{_distconfdir}/profile.d
 install -Dm 0644 assets/%{name}-nautilus.py %{buildroot}%{_datadir}/nautilus-python/extensions/%{name}-nautilus.py
 
 # Bash completion
@@ -161,7 +160,7 @@ install -D -m 0644 assets/shell-completion/fish %{buildroot}%{_datadir}/fish/ven
 %{_datadir}/icons/hicolor/scalable/apps/org.wezfurlong.wezterm.svg
 %{_datadir}/metainfo/org.wezfurlong.wezterm.appdata.xml
 %{_datadir}/nautilus-python/extensions/wezterm-nautilus.py
-%config %{_sysconfdir}/profile.d/wezterm.sh
+%{_distconfdir}/profile.d/wezterm.sh
 
 %files mux-server
 %license LICENSE.md
