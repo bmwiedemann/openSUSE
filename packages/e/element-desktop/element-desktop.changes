@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 13 14:01:32 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.49
+
+  ## 🐛 Bug Fixes
+   * Ensure `setUserCreator` is called when a store is assigned (https://github.com/matrix-org/matrix-js-sdk/pull/3867). Fixes vector-im/element-web#26520. Contributed by @MidhunSureshR.
+
+-------------------------------------------------------------------
 Tue Nov  7 18:23:49 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - - Version 1.11.48
