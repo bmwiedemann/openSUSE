@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 21 02:58:02 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Sync change log to prepare for sending edk2-stable202308 ovmf to SLE15-SP6
+  (jsc#PED-6233, jsc#PED-5523)
+    - Removed the following backported patches because they are merged
+      to edk2 mainline:
+        - ovmf-SecurityPkg-DxeImageVerificationLib-Check-result-of-.patch
+	  494127613b SecurityPkg/DxeImageVerificationLib: Check result of GetEfiGlobalVariable2
+	  (CVE-2019-14560, bsc#1174246)
+
+-------------------------------------------------------------------
 Wed Nov 15 12:17:26 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-UefiCpuPkg-BaseXApicX2ApicLib-fix-CPUID_V2_EXTENDED_.patch
