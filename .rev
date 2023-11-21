@@ -1264,4 +1264,41 @@
     open_pages_in_browser.</comment>
     <requestid>1112734</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>36b11dcca16ceae71472a15ed4e22792</srcmd5>
+    <version>4.29.0</version>
+    <time>1700598788</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.29.0:
+  * Update translations.
+  * Retry Calibre metadata update when it fails due to
+    conflicting program(Windows File Explorer)
+  * adapter_asianfanficscom: Fix for 'friend only' stories
+    initially giving 404
+  * Change bs4.find(text=) to string= for deprecation change.
+  * Add use_flaresolverr_proxy:directimages experimental for
+    #1007
+  * Add base_adapter.img_url_trans() for adapter_fictionlive
+    image URLs #1004
+  * Update six.py to 1.16 for Python 3.12 compatibility. #1006
+  * ConfigParser.read_file added in py3.2, readfp removed in
+    py3.12, only used in plugin #1006
+  * Update translations.
+  * adapter_fanficsme: More fixes for unusual cases, now using
+    regexp #999
+  * adapter_fanficsme: Fixes for some unusual cases Closes #999
+  * Switch from setup.py to pyproject.toml for CLI packaging.
+  * Remove site: www.lotrgfic.com - DNS removed +1year ago
+  * Remove site: www.lushstories.com - Changed +2years ago
+    incompatibly Closes #988
+  * Remove site: www.silmarillionwritersguild.org - Changed
+    +2years ago incompatibly
+  * Remove site: www.scarvesandcoffee.net - Changed +2years ago
+    incompatibly
+  * Remove site: merengo.hu - Doesn't serve text in full print
+    +1year
+  * Remove site: www.destinysgateway.com - Domain parked +1year
+  * Remove site: archive.skyehawke.com - Domain parked, broken</comment>
+    <requestid>1127938</requestid>
+  </revision>
 </revisionlist>
