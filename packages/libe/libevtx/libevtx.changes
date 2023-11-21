@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 21 09:57:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231121
+  * Improved Python 3 Unicode support
+  * Error with a memory allocation/free pair resolved
+
+-------------------------------------------------------------------
 Tue Aug  1 15:56:07 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
