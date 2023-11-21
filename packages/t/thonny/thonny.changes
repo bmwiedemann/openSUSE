@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 17 22:59:00 UTC 2023 - malcolmlewis@opensuse.org
+
+- Add python3-wheel to requires for plugin-manager, (boo#1216951).
+- Add python3-setuptools to requires as per rpmlint session.
+
+-------------------------------------------------------------------
 Wed Aug  9 20:36:58 UTC 2023 - Dominik George <nik@naturalnet.de>
 
 - Drop CONTRIBUTING.rst (removed from upstream tarball)

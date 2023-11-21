@@ -2,7 +2,7 @@
 # spec file for package thonny
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2019-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,9 @@ Requires:       python3-docutils
 Requires:       python3-jedi
 Requires:       python3-pylint
 Requires:       python3-pyserial
+Requires:       python3-setuptools
 Requires:       python3-tk
+Requires:       python3-wheel
 ## MANUAL END
 Requires(post): desktop-file-utils
 Requires(postun):desktop-file-utils
