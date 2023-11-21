@@ -6,7 +6,7 @@ Index: b/main.c
 ===================================================================
 --- a/main.c
 +++ b/main.c
-@@ -1182,12 +1182,6 @@ setup_environment(int argc, char **argv)
+@@ -1183,12 +1183,6 @@ setup_environment(int argc, char **argv)
  	pc->flags |= READLINE;
  	pc->editing_mode = "no_mode";
  
@@ -19,7 +19,7 @@ Index: b/main.c
  
  	/*
  	 *  Resolve $HOME .rc file first, then the one in the local directory.
-@@ -1237,7 +1231,7 @@ setup_environment(int argc, char **argv)
+@@ -1238,7 +1232,7 @@ setup_environment(int argc, char **argv)
  	}
  
  	if (STREQ(pc->editing_mode, "no_mode"))

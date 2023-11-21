@@ -16,7 +16,7 @@ Index: b/symbols.c
 ===================================================================
 --- a/symbols.c
 +++ b/symbols.c
-@@ -204,9 +204,9 @@ symtab_init(void)
+@@ -240,9 +240,9 @@ symtab_init(void)
  	 *  Pull a bait-and-switch on st->bfd if we've got a separate
           *  .gnu_debuglink file that matches the CRC. Not done for kerntypes.
  	 */
@@ -29,7 +29,7 @@ Index: b/symbols.c
  			no_debugging_data(FATAL);
  	}
  	
-@@ -268,13 +268,16 @@ check_gnu_debuglink(bfd *bfd)
+@@ -304,13 +304,16 @@ check_gnu_debuglink(bfd *bfd)
  	char *contents;
  	int crc_offset;	
  	unsigned long crc32;
@@ -47,7 +47,7 @@ Index: b/symbols.c
  		return FALSE;
  	}
  
-@@ -295,14 +298,14 @@ check_gnu_debuglink(bfd *bfd)
+@@ -331,14 +334,14 @@ check_gnu_debuglink(bfd *bfd)
  			contents, crc32);
  
    	if ((pc->debuginfo_file = (char *)

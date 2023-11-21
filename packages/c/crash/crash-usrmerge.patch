@@ -39,7 +39,7 @@ Index: b/symbols.c
 ===================================================================
 --- a/symbols.c
 +++ b/symbols.c
-@@ -299,7 +299,7 @@ check_gnu_debuglink(bfd *bfd)
+@@ -335,7 +335,7 @@ check_gnu_debuglink(bfd *bfd)
  
    	if ((pc->debuginfo_file = (char *)
  	    malloc(((strlen(namelist) + strlen("/.debug/") +
@@ -48,7 +48,7 @@ Index: b/symbols.c
  	    + strlen(pc->namelist_debug ? pc->namelist_debug : " "))) == NULL)
  		error(FATAL, "debuginfo file name malloc: %s\n", 
  			strerror(errno));
-@@ -375,7 +375,7 @@ check_gnu_debuglink(bfd *bfd)
+@@ -411,7 +411,7 @@ check_gnu_debuglink(bfd *bfd)
  		}
  	}
  
