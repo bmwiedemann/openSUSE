@@ -18,7 +18,7 @@
 
 %define apiver  v58
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 8.3.0
+%define pkg_ver 8.4.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
