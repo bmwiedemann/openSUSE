@@ -18,7 +18,7 @@
 
 %define lname	libevt1
 Name:           libevt
-Version:        20221022
+Version:        20231121
 Release:        0
 Summary:        Library and tools to access the Windows Event Log (EVT) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcdirectory) >= 20220105
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
@@ -43,15 +43,15 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libexe) >= 20210424
-BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libfwevt) >= 20220723
 BuildRequires:  pkgconfig(libfwnt) >= 20210906
-BuildRequires:  pkgconfig(libregf) >= 20220131
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libregf) >= 20231029
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(libwrc) >= 20220720
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
