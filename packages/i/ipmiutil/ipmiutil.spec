@@ -30,6 +30,8 @@ Patch0:         harden_ipmi_port.service.patch
 Patch1:         harden_ipmiutil_asy.service.patch
 Patch2:         harden_ipmiutil_evt.service.patch
 Patch3:         harden_ipmiutil_wdt.service.patch
+Source1:        ipmiutil_checksel.service
+Source2:        ipmiutil_checksel.timer
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -83,6 +85,8 @@ autoreconf -fiv
 
 %install
 %make_install
+install -D -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/ipmiutil_checksel.service
+install -D -m 0644 %{SOURCE2} %{buildroot}/%{_unitdir}/ipmiutil_checksel.timer
 
 %files
 %dir %{_datadir}/%{name}
@@ -120,6 +124,8 @@ autoreconf -fiv
 %{_unitdir}/ipmiutil_asy.service
 %{_unitdir}/ipmiutil_wdt.service
 %{_unitdir}/ipmi_port.service
+%{_unitdir}/ipmiutil_checksel.service
+%{_unitdir}/ipmiutil_checksel.timer
 %{_datadir}/%{name}/ipmiutil.pre
 %{_datadir}/%{name}/ipmiutil.setup
 %{_datadir}/%{name}/ipmi_if.sh
@@ -192,7 +198,7 @@ then
    vardir=%{_var}/lib/%{name}
    scr_dir=%{_datadir}/%{name}
 
-%service_add_post ipmi_port.service ipmiutil_evt.service ipmiutil_asy.service ipmiutil_wdt.service
+%service_add_post ipmi_port.service ipmiutil_evt.service ipmiutil_asy.service ipmiutil_wdt.service ipmiutil_checksel.service ipmiutil_checksel.timer
 
    # Test whether an IPMI interface is known to the motherboard
    IPMIret=1
@@ -211,9 +217,7 @@ then
          cp -f %{scr_dir}/ipmi.init.basic  %{_initddir}/ipmi
       fi
       # If IPMI is enabled, automate managing the IPMI SEL
-      if [ -d %{_sysconfdir}/cron.daily ]; then
-         cp -f %{_datadir}/%{name}/checksel %{_sysconfdir}/cron.daily
-      fi
+      systemctl enable ipmiutil_checksel.timer
       # IPMI_IS_ENABLED, so enable services, but only if Red Hat
       if [ -f %{_sysconfdir}/redhat-release ]; then
          if [ -x /bin/systemctl ]; then
@@ -246,9 +250,7 @@ else
     IPMIret=1
     %{_sbindir}/dmidecode |grep -q IPMI && IPMIret=0
     if [ $IPMIret -eq 0 ]; then
-      if [ -d %{_sysconfdir}/cron.daily ]; then
-         cp -f %{_datadir}/%{name}/checksel %{_sysconfdir}/cron.daily
-      fi
+      systemctl enable ipmiutil_checksel.timer
     fi
    fi
 fi
@@ -257,15 +259,12 @@ fi
 # before uninstall,  $1 = 1 if rpm -U, $1 = 0 if rpm -e
 if [ "$1" = "0" ]
 then
-%service_del_preun ipmi_port.service ipmiutil_evt.service ipmiutil_asy.service ipmiutil_wdt.service
-   if [ -f %{_sysconfdir}/cron.daily/checksel ]; then
-	rm -f %{_sysconfdir}/cron.daily/checksel
-   fi
+%service_del_preun ipmi_port.service ipmiutil_evt.service ipmiutil_asy.service ipmiutil_wdt.service ipmiutil_checksel.service ipmiutil_checksel.timer
 fi
 
 %postun
 # after uninstall,  $1 = 1 if update, $1 = 0 if rpm -e
 /sbin/ldconfig
-%service_del_postun ipmi_port.service ipmiutil_evt.service ipmiutil_asy.service ipmiutil_wdt.service
+%service_del_postun ipmi_port.service ipmiutil_evt.service ipmiutil_asy.service ipmiutil_wdt.service ipmiutil_checksel.service ipmiutil_checksel.timer
 
 %changelog
