@@ -21,7 +21,8 @@ Name:           ppsspp
 Version:        1.16.6
 Release:        0
 Summary:        PlayStation Portable Emulator
-License:        GPL-2.0-or-later
+License:        Apache-2.0 AND BSD-1-Clause AND BSL-1.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND (BSD-2-Clause OR GPL-2.0-or-later) AND (BSD-3-Clause OR GPL-2.0-only) AND CC0-1.0 AND GPL-2.0-or-later WITH Autoconf-exception-3.0 AND GPL-3.0-or-later WITH Bison-exception-2.2 AND Libpng AND ISC AND IJG AND Zlib AND MIT AND CC-BY-4.0 AND FTL
+
 Group:          System/Emulators/Other
 URL:            https://www.ppsspp.org
 Source:         https://github.com/hrydgard/ppsspp/releases/download/v%{version}/%{name}-%{version}.tar.xz
