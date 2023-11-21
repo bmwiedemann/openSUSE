@@ -17,7 +17,7 @@
 
 
 Name:           python-Shapely
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
@@ -67,7 +67,7 @@ CFLAGS="%{optflags} `geos-config --cflags` LDFLAGS=`geos-config --clibs`"
 %check
 # make sure not to import the source dir without compiled shapely.vectorized during tests
 mkdir testenv
-cp -r tests setup.cfg testenv
+cp -r shapely/tests setup.cfg testenv
 pushd testenv
 %pytest_arch -ra
 popd

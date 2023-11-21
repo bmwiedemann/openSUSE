@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 20 14:09:13 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 2.0.2 
+  ## Bug fixes:
+  * Fix regression in the (in)equality comparison (geom1 == geom2)
+    using __eq__ to not ignore the z-coordinates (#1732).
+  * Fix MultiPolygon() constructor to accept polygons without
+    holes (#1850).
+  * Fix minimum_rotated_rectangle (oriented_envelope) to
+    always return the minimum area solution (instead of minimum
+    width). In practice, it will use the GEOS implementation only
+    for GEOS 3.12+, and for older GEOS versions fall back to
+    the implementation that was included in Shapely < 2 (#1670).
+  * Fix from_ragged_array to work with read-only array input
+    (#1744).
+  * Fix the handling of z coordinates shapely.ops.substring
+    (#1699).
+
+-------------------------------------------------------------------
 Sat Sep 23 09:08:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.1
