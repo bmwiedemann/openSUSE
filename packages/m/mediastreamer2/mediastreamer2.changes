@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 21 07:08:04 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add ENABLE_QT_GL for x86_64 (boo#1217352).
+
+-------------------------------------------------------------------
 Sun Oct  8 11:02:40 UTC 2023 - thod_@gmx.de
 
 - Remove BuildRequires: vim, not needed

@@ -31,6 +31,7 @@ Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
 Patch2:         fix-build-ffmpeg5.patch
 Patch3:         set_current_version.patch
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  bcmatroska2-devel >= 0.23
 BuildRequires:  broadvoice16-devel
 BuildRequires:  cmake
@@ -38,20 +39,8 @@ BuildRequires:  doxygen
 BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-%if 0%{?suse_version}
 BuildRequires:  libgsm-devel
-%else
-BuildRequires:  gsm-devel
-%endif
 BuildRequires:  libjpeg-turbo >= 2.0.0
-%if 0%{?fedora}
-BuildRequires:  turbojpeg-devel
-%endif
-%if 0%{?suse_version}
-BuildRequires:  Mesa-libGL-devel
-%else
-BuildRequires:  mesa-libGL-devel
-%endif
 BuildRequires:  libpcap-devel
 BuildRequires:  libsrtp2-linphone-devel
 BuildRequires:  libv4l-devel
@@ -59,16 +48,26 @@ BuildRequires:  libvpx-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  spandsp-devel
-%if 0%{?suse_version}
 BuildRequires:  sqlite3-devel
-%else
-BuildRequires:  libsqlite3x-devel
+BuildRequires:  vim
+%if 0%{?suse_version} > 1690
+%ifarch x86_64
+BuildRequires:  libyuv-devel
+BuildRequires:  zxing-cpp-devel
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5OpenGL)
 %endif
+%endif
+BuildRequires:  libjpeg-devel >= 8.2.0
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
 BuildRequires:  pkgconfig(libbcg729)
 BuildRequires:  pkgconfig(libbzrtp) >= %{version}
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libswscale) >= 0.7.0
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(ortp) >= %{version}
@@ -78,14 +77,6 @@ BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libjpeg-devel >= 8.2.0
-%endif
-BuildRequires:  chrpath
-BuildRequires:  pkgconfig(glew)
-BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
-BuildRequires:  pkgconfig(libswscale) >= 0.7.0
 
 %description
 Mediastreamer2 is a library to make audio and video real-time
@@ -142,10 +133,12 @@ export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
 export CXXFLAGS="$CFLAGS"
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,-z,now" \
-    -DENABLE_STATIC=NO \
-%if 0%{?fedora}
-   -DCMAKE_INSTALL_LIBDIR=lib64 \
+%if 0%{?suse_version} > 1690
+%ifarch x86_64
+    -DENABLE_QT_GL=ON \
 %endif
+%endif
+    -DENABLE_STATIC=NO \
     -DENABLE_STRICT=NO
 %cmake_build
 
@@ -156,9 +149,6 @@ mkdir -p %{buildroot}%{_docdir}/%{name}/
 mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
   %{buildroot}%{_docdir}/%{name}/
 
-chrpath -d %{buildroot}%{_bindir}/mediastream %{buildroot}%{_bindir}/mkvstream %{buildroot}%{_bindir}/mediastreamer2_tester
-chrpath -d %{buildroot}%{_libdir}/%{sobase}.so.%{sover}* %{buildroot}%{_libdir}/libmediastreamer.so
-
 %post -n %{sobase}%{sover} -p /sbin/ldconfig
 %postun -n %{sobase}%{sover} -p /sbin/ldconfig
 
@@ -166,6 +156,13 @@ chrpath -d %{buildroot}%{_libdir}/%{sobase}.so.%{sover}* %{buildroot}%{_libdir}/
 %license LICENSE.txt
 %{_bindir}/mediastream
 %{_bindir}/mkvstream
+%if 0%{?suse_version} > 1690
+%ifarch x86_64
+%dir %{_libdir}/mediastreamer
+%dir %{_libdir}/mediastreamer/plugins
+%{_libdir}/mediastreamer/plugins/libmsqogl.so
+%endif
+%endif
 
 %files -n %{sobase}%{sover}
 %{_libdir}/%{sobase}.so.%{sover}*
