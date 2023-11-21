@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 20 06:36:04 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upate to 6.4.1:
+  * Remove use of ``OrderedDict`` in ``partition_dict``.
+  * Added ``summarize``.
+  * Require Python 3.8 or later.
+  * Added ``find_subseq``.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

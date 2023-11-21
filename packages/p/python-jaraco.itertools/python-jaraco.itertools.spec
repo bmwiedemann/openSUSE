@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.itertools
-Version:        6.2.1
+Version:        6.4.1
 Release:        0
 Summary:        Tools to work with iterables
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/jaraco.itertools
 Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.itertools/jaraco.itertools-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module inflect}
 BuildRequires:  %{python_module more-itertools >= 4.0.0}
 BuildRequires:  %{python_module pip}
@@ -56,15 +55,13 @@ rm -r jaraco.itertools.egg-info
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-#  work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
-touch jaraco/__init__.py
 %pytest --doctest-modules
 
 %files %{python_files}
 %license LICENSE
-%doc docs/*.rst README.rst CHANGES.rst
+%doc docs/*.rst README.rst NEWS.rst
 %dir %{python_sitelib}/jaraco
-%{python_sitelib}/jaraco.itertools-%{version}*-info
+%{python_sitelib}/jaraco.itertools-%{version}.dist-info
 %{python_sitelib}/jaraco/itertools.py*
 %pycache_only %dir %{python_sitelib}/jaraco/__pycache__
 %pycache_only %{python_sitelib}/jaraco/__pycache__/itertools*.py*

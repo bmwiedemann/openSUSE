@@ -56,4 +56,16 @@
     <comment></comment>
     <requestid>1081873</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>276279d689ef592bcb6f20a23c249ac4</srcmd5>
+    <version>6.4.1</version>
+    <time>1700598672</time>
+    <user>anag+factory</user>
+    <comment>- Upate to 6.4.1:
+  * Remove use of ``OrderedDict`` in ``partition_dict``.
+  * Added ``summarize``.
+  * Require Python 3.8 or later.
+  * Added ``find_subseq``.</comment>
+    <requestid>1127625</requestid>
+  </revision>
 </revisionlist>
