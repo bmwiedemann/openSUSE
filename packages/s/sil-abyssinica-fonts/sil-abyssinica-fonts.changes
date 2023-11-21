@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 21 15:02:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.201:
+  * Fixed bug in TypeTuner support for cv46 tswa alternate
+
+-------------------------------------------------------------------
 Sun Dec  4 15:18:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.200:
@@ -28,7 +34,7 @@ Sun Dec  4 15:18:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Updated for Unicode 6.0 (U+AB00..U+AB2F)
   * Added Stylistic Sets and Graphite Features
   * Removed AAT support
-  * AAT source added 
+  * AAT source added
 
 -------------------------------------------------------------------
 Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
