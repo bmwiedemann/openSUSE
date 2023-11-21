@@ -261,4 +261,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1120501 from glaubitz)</comment>
     <requestid>1120982</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6e25f5439b2a1d0e74a04262c3a2d565</srcmd5>
+    <version>0.1.0b3273802</version>
+    <time>1700598710</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 0.1.0b3273802
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1127766 from glaubitz)</comment>
+    <requestid>1127768</requestid>
+  </revision>
 </revisionlist>
