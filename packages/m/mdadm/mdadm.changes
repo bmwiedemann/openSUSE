@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 17 15:34:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend smtp-daemon: this was a remainder from the
+  cron configuration, which was removed back in 2018.
+
+-------------------------------------------------------------------
 Mon Jul 24 15:31:30 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - mdadm.spec: replace transitional %usrmerged macro with regular

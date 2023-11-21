@@ -1502,4 +1502,13 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>1100535</requestid>
   </revision>
+  <revision rev="145" vrev="10">
+    <srcmd5>4f59c5228e9c1a8e7612b42c1636001e</srcmd5>
+    <version>4.2</version>
+    <time>1700598667</time>
+    <user>anag+factory</user>
+    <comment>- No longer recommend smtp-daemon: this was a remainder from the
+  cron configuration, which was removed back in 2018.</comment>
+    <requestid>1127378</requestid>
+  </revision>
 </revisionlist>

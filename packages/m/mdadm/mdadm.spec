@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 PreReq:         %fillup_prereq
 PreReq:         coreutils
-Recommends:     smtp_daemon
 URL:            http://www.kernel.org/pub/linux/utils/raid/mdadm/
 Summary:        Utility for configuring "MD" software RAID devices
 License:        GPL-2.0-only
