@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Nov 20 10:24:32 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add fix_rsa.patch to support the export in PEM format of the public
+  key
+
+-------------------------------------------------------------------
+Mon Nov 20 10:16:20 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- FAPI is not present until tpm2-tss >= 2.4.0. Express that in the
+  BuildRequirement
+
+-------------------------------------------------------------------
+Wed Nov 15 20:54:57 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 0.5.2
+  - Support EV_EVENT_TAG events from the kernel (PCR9 for the cmdline
+    and the kernel)
+  - Fix cmdline measurements
+- Update to 0.5.1
+  - Measure the kernel as an EFI binary (PCR4)
+
+-------------------------------------------------------------------
+Mon Nov 13 10:53:20 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 0.5.0
+  - Support systemd-cryptenroll JSON files
+  - Generate RSA keys in more scenarios
+  - Select RSA key size
+- Drop systemd-boot.patch (already present in upstream)
+
+-------------------------------------------------------------------
 Thu Oct 19 11:01:10 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add systemd-boot.patch to support systemd-cryptenroll JSON files

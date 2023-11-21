@@ -18,17 +18,17 @@
 
 
 Name:           pcr-oracle
-Version:        0.4.6
+Version:        0.5.2
 Release:        0
 Summary:        Predict TPM PCR values
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://github.com/okirch/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FEATURE-UPSTREAM systemd-boot.patch gh#okirch/pcr-oracle#31
-Patch01:        systemd-boot.patch
+# PATCH-FEATURE-UPSTREAM fix_rsa.patch gh#okirch/pcr-oracle#37
+Patch:          fix_rsa.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
-BuildRequires:  tpm2-0-tss-devel
+BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0
 ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 

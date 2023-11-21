@@ -1,0 +1,224 @@
+From bba8e4aa53d7c75ad3a153418c6c8ece19d8049b Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Fri, 17 Nov 2023 08:40:39 +0100
+Subject: [PATCH 1/2] Add rsa-public-pem paramenter
+
+This parameter will instruct store-public-key to store the public part
+in PEM format.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ man/pcr-oracle.8.in | 23 +++++++++++++++++++
+ src/oracle.c        | 16 ++++++++++++--
+ src/rsa.c           | 54 +++++++++++++++++++++++++++++++++------------
+ src/rsa.h           |  2 ++
+ 4 files changed, 79 insertions(+), 16 deletions(-)
+
+diff --git a/man/pcr-oracle.8.in b/man/pcr-oracle.8.in
+index 8fed99e..bc210c5 100644
+--- a/man/pcr-oracle.8.in
++++ b/man/pcr-oracle.8.in
+@@ -199,6 +199,29 @@ supports this via its \fBstore-public-key\fP subcommand:
+ This command will read the RSA private key from the PEM file,
+ and write the public key as a \fBTPM2B_PUBLIC\fP object to
+ the indicated output file \fBpolicy-pubkey\fP.
++.P
++In other cases it is convenient to generate a private key and store
++the public and the private components without using \fBopenssl\fP, but
++using more conventional formats like PEM.
++.P
++.nf
++.in +2
++# pcr-oracle \\
++.br
++        --rsa-generate-key \\
++.br
++        --rsa-public-pem \\
++.br
++        --private-key policy-key.pem \\
++.br
++        --public-key policy-pubkey \\
++.br
++        store-public-key
++.fi
++.P
++This command will read the RSA private key from the PEM file,
++and write the public key as a \fBTPM2B_PUBLIC\fP object to
++the indicated output file \fBpolicy-pubkey\fP.
+ .\" ##################################################################
+ .\" # New key format
+ .\" ##################################################################
+diff --git a/src/oracle.c b/src/oracle.c
+index 0238110..726c11d 100644
+--- a/src/oracle.c
++++ b/src/oracle.c
+@@ -89,6 +89,7 @@ enum {
+ 	OPT_RSA_PUBLIC_KEY,
+ 	OPT_RSA_GENERATE_KEY,
+ 	OPT_RSA_BITS,
++	OPT_RSA_PUBLIC_PEM,
+ 	OPT_INPUT,
+ 	OPT_OUTPUT,
+ 	OPT_AUTHORIZED_POLICY,
+@@ -119,6 +120,7 @@ static struct option options[] = {
+ 	{ "public-key",		required_argument,	0,	OPT_RSA_PUBLIC_KEY },
+ 	{ "rsa-generate-key",	no_argument,		0,	OPT_RSA_GENERATE_KEY },
+ 	{ "rsa-bits",		required_argument,	0,	OPT_RSA_BITS },
++	{ "rsa-public-pem",	no_argument,		0,	OPT_RSA_PUBLIC_PEM },
+ 	{ "input",		required_argument,	0,	OPT_INPUT },
+ 	{ "output",		required_argument,	0,	OPT_OUTPUT },
+ 	{ "authorized-policy",	required_argument,	0,	OPT_AUTHORIZED_POLICY },
+@@ -1016,6 +1018,7 @@ main(int argc, char **argv)
+ 	char *opt_rsa_public_key = NULL;
+ 	bool opt_rsa_generate = false;
+ 	char *opt_rsa_bits = NULL;
++	bool opt_rsa_public_pem = false;
+ 	char *opt_key_format = NULL;
+ 	char *opt_policy_name = NULL;
+ 	char *opt_policy_format = NULL;
+@@ -1086,6 +1089,9 @@ main(int argc, char **argv)
+ 		case OPT_RSA_BITS:
+ 			opt_rsa_bits = optarg;
+ 			break;
++		case OPT_RSA_PUBLIC_PEM:
++			opt_rsa_public_pem = true;
++			break;
+ 		case OPT_INPUT:
+ 			opt_input = optarg;
+ 			break;
+@@ -1267,8 +1273,14 @@ main(int argc, char **argv)
+ 	}
+ 
+ 	if (action == ACTION_STORE_PUBLIC_KEY) {
+-		if (!pcr_store_public_key(opt_rsa_private_key, opt_rsa_public_key))
+-			return 1;
++		if (opt_rsa_public_pem) {
++			tpm_rsa_key_t *key = tpm_rsa_key_read_private(opt_rsa_private_key);
++			if (!key || !tpm_rsa_key_write_public(opt_rsa_public_key, key))
++				return 1;
++		}
++		else
++			if (!pcr_store_public_key(opt_rsa_private_key, opt_rsa_public_key))
++				return 1;
+ 		return 0;
+ 	}
+ 
+diff --git a/src/rsa.c b/src/rsa.c
+index f3672b1..5385441 100644
+--- a/src/rsa.c
++++ b/src/rsa.c
+@@ -95,36 +95,27 @@ tpm_rsa_key_read_public(const char *pathname)
+ }
+ 
+ /*
+- * Write a private key to a PEM file.
+- * Pass phrases currently not supported.
++ * Write a public key to a PEM file.
+  */
+ bool
+-tpm_rsa_key_write_private(const char *pathname, const tpm_rsa_key_t *key)
++tpm_rsa_key_write_public(const char *pathname, const tpm_rsa_key_t *key)
+ {
+ 	bool ok = false;
+-	mode_t omask;
+ 	FILE *fp;
+ 
+-	/* Turn off group and other rw bits to make the private key mode 600 
+-	 * right from the start. */
+-	omask = umask(077);
+-
+ 	if (!(fp = fopen(pathname, "w"))) {
+-		error("Cannot open RSA private key file %s: %m\n", pathname);
++		error("Cannot open RSA public key file %s: %m\n", pathname);
+ 		goto fail;
+ 	}
+ 
+-	if (!PEM_write_PrivateKey(fp, key->pkey, NULL, NULL, 0, 0, NULL)) {
+-		error("Unable to write private key to %s\n", pathname);
++	if (!PEM_write_PUBKEY(fp, key->pkey)) {
++		error("Unable to write public key to %s\n", pathname);
+ 		goto fail;
+ 	}
+ 
+ 	ok = true;
+ 
+ fail:
+-	/* Reset the umask */
+-	umask(omask);
+-
+ 	fclose(fp);
+ 	return ok;
+ }
+@@ -164,6 +155,41 @@ tpm_rsa_key_read_private(const char *pathname)
+ 	return NULL;
+ }
+ 
++/*
++ * Write a private key to a PEM file.
++ * Pass phrases currently not supported.
++ */
++bool
++tpm_rsa_key_write_private(const char *pathname, const tpm_rsa_key_t *key)
++{
++	bool ok = false;
++	mode_t omask;
++	FILE *fp;
++
++	/* Turn off group and other rw bits to make the private key mode 600
++	 * right from the start. */
++	omask = umask(077);
++
++	if (!(fp = fopen(pathname, "w"))) {
++		error("Cannot open RSA private key file %s: %m\n", pathname);
++		goto fail;
++	}
++
++	if (!PEM_write_PrivateKey(fp, key->pkey, NULL, NULL, 0, 0, NULL)) {
++		error("Unable to write private key to %s\n", pathname);
++		goto fail;
++	}
++
++	ok = true;
++
++fail:
++	/* Reset the umask */
++	umask(omask);
++
++	fclose(fp);
++	return ok;
++}
++
+ tpm_rsa_key_t *
+ tpm_rsa_generate(unsigned int bits)
+ {
+diff --git a/src/rsa.h b/src/rsa.h
+index 49c0bb4..7b8362f 100644
+--- a/src/rsa.h
++++ b/src/rsa.h
+@@ -26,6 +26,8 @@
+ typedef struct tpm_rsa_key	tpm_rsa_key_t;
+ 
+ extern tpm_rsa_key_t *	tpm_rsa_key_read_public(const char *pathname);
++extern bool		tpm_rsa_key_write_public(const char *pathname,
++				const tpm_rsa_key_t *key);
+ extern tpm_rsa_key_t *	tpm_rsa_key_read_private(const char *pathname);
+ extern bool		tpm_rsa_key_write_private(const char *pathname,
+ 				const tpm_rsa_key_t *key);
+
+From ddd92b8f58d0f3bb89aada4adeb71d6ba9d1573a Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Fri, 17 Nov 2023 08:43:47 +0100
+Subject: [PATCH 2/2] Update version 0.5.3
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ microconf/version | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/microconf/version b/microconf/version
+index a486208..c4f2939 100644
+--- a/microconf/version
++++ b/microconf/version
+@@ -1 +1 @@
+-uc_version=0.5.2
++uc_version=0.5.3
