@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1ac49b88552dcadb0cb90564076b3eb</srcmd5>
+    <version>1.0</version>
+    <time>1700598762</time>
+    <user>anag+factory</user>
+    <comment>A userspace reference of Qualcomm IPC router protocol based on pure libc. This is a lib package required by Lenovo X13s and further Qualcomm-based laptops when userspace applications need to access components [e.g. wifi, sensors, power supply &amp; battery, .. etc] inside SoCs via QRTR.
+boo#1216806</comment>
+    <requestid>1127861</requestid>
+  </revision>
+</revisionlist>
