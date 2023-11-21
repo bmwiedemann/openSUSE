@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 21 06:14:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.5:
+  * Reverted function name, added test to track usage of function
+    (#2801)
+  * feat: disallow undefined flags (#2799)
+
+-------------------------------------------------------------------
 Fri Nov 17 05:57:40 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.53.4:
