@@ -18,7 +18,7 @@
 
 %define project github.com/containers/buildah
 Name:           buildah
-Version:        1.32.2
+Version:        1.33.1
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -26,6 +26,8 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
+# https://github.com/containers/buildah/pull/5183
+Patch0:         0001-set-makefile-target-entrypoint.gz-as-.PHONY-on-non-x.patch
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
