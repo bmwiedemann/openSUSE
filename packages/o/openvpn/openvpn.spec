@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.6.7
+Version:        2.6.8
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        GPL-2.0-only WITH openvpn-openssl-exception

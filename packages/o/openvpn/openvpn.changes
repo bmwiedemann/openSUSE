@@ -1,7 +1,10 @@
 -------------------------------------------------------------------
-Wed Nov 15 07:41:26 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+Mon Nov 20 07:15:13 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
-- update to 2.6.7:
+- update to 2.6.8:
+  * SIGSEGV crash: Do not check key_state buffers that are in S_UNDEF
+    state - the new sanity check function introduced in 2.6.7 sometimes
+    tried to use a NULL pointer after an unsuccessful TLS handshake
   * CVE-2023-46850 OpenVPN versions between 2.6.0 and 2.6.6 incorrectly
     use a send buffer after it has been free()d in some circumstances,
     causing some free()d memory to be sent to the peer. All configurations
