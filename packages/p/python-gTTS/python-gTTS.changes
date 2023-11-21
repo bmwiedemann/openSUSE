@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 20 20:46:05 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.4.0:
+  - Add Python 3.12 support
+  - Remove Python 3.7 support (end-of-life)
+- Add process-markdown.patch replaces sphinxcontrib-mdinclude
+  with processed Changelog in the restructured text format.
+
+-------------------------------------------------------------------
 Fri Sep 15 09:08:13 UTC 2023 - pgajdos@suse.com
 
 - version update to 2.3.2

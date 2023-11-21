@@ -161,4 +161,17 @@ Features
     <comment></comment>
     <requestid>1112028</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cb1c3c31967a76afea9259e83ac139db</srcmd5>
+    <version>2.4.0</version>
+    <time>1700598752</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.0:
+  - Add Python 3.12 support
+  - Remove Python 3.7 support (end-of-life)
+- Add process-markdown.patch replaces sphinxcontrib-mdinclude
+  with processed Changelog in the restructured text format.
+</comment>
+    <requestid>1127784</requestid>
+  </revision>
 </revisionlist>
