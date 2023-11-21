@@ -619,4 +619,15 @@ additions, including new UTF-8 compose sequences for:
     !217, !219, !220, !222, !223, !226, !227, !229)</comment>
     <requestid>1115072</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>db7be126bdb0ed31f7643a99e6495375</srcmd5>
+    <version>1.8.7</version>
+    <time>1700598723</time>
+    <user>anag+factory</user>
+    <comment>- this update is needed due to jsc#PED-7282; it includes the
+  security fix for CVE-2022-3555 (bsc#1204425, bsc#1208881) and
+  a fix for a race condition in libX11 that causes various
+  applications to crash randomly (boo#1181963)</comment>
+    <requestid>1127741</requestid>
+  </revision>
 </revisionlist>

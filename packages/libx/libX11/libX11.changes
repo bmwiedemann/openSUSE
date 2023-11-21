@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 20 15:55:51 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- this update is needed due to jsc#PED-7282; it includes the
+  security fix for CVE-2022-3555 (bsc#1204425, bsc#1208881) and
+  a fix for a race condition in libX11 that causes various
+  applications to crash randomly (boo#1181963)
+
+-------------------------------------------------------------------
 Tue Oct  3 20:51:22 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.8.7
