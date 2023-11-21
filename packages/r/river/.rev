@@ -215,4 +215,24 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment></comment>
     <requestid>1123707</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ecc967d437a35334b7509a9e1520c206</srcmd5>
+    <version>0.2.4+g985</version>
+    <time>1700598780</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.4+985:
+  * session-lock: fix pointer focus handling on map
+- Update to version 0.2.4+984:
+  * Cursor: fix high polling rate resize regression
+  * Cursor: clamp cursor movement to resize bounds
+  * View: handle map while no outputs are available
+  * keyboard: add the ability to load layout from file
+  * river: remove dead code
+  * xdg-toplevel: ignore redundant move/resize requests
+  * rules: rename &quot;tag&quot; action to &quot;tags&quot;
+  * river: add fullscreen rule
+  * river: add position and dimensions rules
+</comment>
+    <requestid>1127912</requestid>
+  </revision>
 </revisionlist>

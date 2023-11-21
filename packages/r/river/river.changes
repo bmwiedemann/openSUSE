@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov 18 13:58:37 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.4+985:
+  * session-lock: fix pointer focus handling on map
+
+-------------------------------------------------------------------
+Fri Nov 17 10:05:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.4+984:
+  * Cursor: fix high polling rate resize regression
+  * Cursor: clamp cursor movement to resize bounds
+  * View: handle map while no outputs are available
+  * keyboard: add the ability to load layout from file
+  * river: remove dead code
+  * xdg-toplevel: ignore redundant move/resize requests
+  * rules: rename "tag" action to "tags"
+  * river: add fullscreen rule
+  * river: add position and dimensions rules
+
+-------------------------------------------------------------------
 Tue Nov  7 02:16:42 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.2.4+g976:

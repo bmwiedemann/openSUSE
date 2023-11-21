@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/riverwm/river.git</param>
-    <param name="revision">18a440b6063db07604fa8626fda893cc77d841dc</param>
+    <param name="revision">50ccd4c5b3cd700bed09d26eb75552f08f9af262</param>
     <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
     <param name="match-tag">v0.2.4</param>
     <param name="versionrewrite-pattern">v(.*)</param>
