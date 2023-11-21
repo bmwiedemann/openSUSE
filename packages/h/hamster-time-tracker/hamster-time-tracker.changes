@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 20 11:33:04 UTC 2023 - mwilck@suse.com
+
+- Update to version 3.0.3
+- Changed fact entry syntax (see NEWS.md for details)
+  * Remove the need for using a double comma to start the description,
+    a single comma can be used instead.
+  * The tags part must now be separated by a comma. This allows using
+    '#' inside activityx, category and description
+  * extract simple #haswords from description, like
+    "fix #bugs in #hamster"
+  * consistent limitations on field content
+- spec file: fix build with python 3.6
+  * added remove-text-keyword-from-subprocess.run.patch
+  * refreshed replace-env-python-invocation-by-direct-call.patch
+
+-------------------------------------------------------------------
 Wed Sep 27 21:07:24 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update GNOME extension for GNOME shell 45 support

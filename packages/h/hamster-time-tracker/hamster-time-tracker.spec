@@ -42,7 +42,7 @@
 %bcond_without extension
 
 Name:           hamster-time-tracker
-Version:        3.0.3~20
+Version:        3.0.3
 Release:        0
 Summary:        A time tracker for GNOME
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -53,9 +53,9 @@ Source:         hamster-time-tracker-%{version}.tar.xz
 Source1:        hamster-shell-extension-%{ext_version}.tar.gz
 # necessary for GNOME < 3.32
 Source2:        https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/gnome-3-30/lib/convenience.js
-# avoid rpm error: env-script-interpreter
 Patch1:         replace-env-python-invocation-by-direct-call.patch
 Patch2:         waf-skip-gsettings-schema-compilation.patch
+Patch3:         remove-text-keyword-from-subprocess.run.patch
 # Patches for GNOME extension
 # GNOME up to 3.30
 Patch101:       0101-Don-t-try-to-access-controller.activities-before-it-.patch
@@ -192,8 +192,13 @@ is spent during the day on activities that are set up.
 
 %prep
 %setup -q -n hamster-time-tracker-%{version} -a1
+
 %patch1 -p1
 %patch2 -p1
+%if 0%{?suse_version} < 1550
+%patch3 -p1
+%endif
+
 %if %{with extension}
 cd hamster-shell-extension-%{ext_version}
 %patch101 -p1
@@ -277,12 +282,13 @@ cd hamster-shell-extension-%{ext_version}
 %patch171 -p1
 %patch172 -p1
 %patch173 -p1
-%endif
-%endif
 
+%endif # suse_version >= 1600
+%endif # sle_version >= 150400
+%else  # sle_version >= 150200
 mkdir build
 cp %{SOURCE2} build
-%endif
+%endif # sle_version >= 150200
 
 %build
 ./waf --prefix=%{_prefix} --libdir=%{_libdir} --libexecdir=%{_libexecdir} \
@@ -330,7 +336,7 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tar.gz \
 %{_libexecdir}/hamster/
 %{python3_sitelib}/hamster/
 %{_datadir}/bash-completion/completions/hamster.bash
-%{_datadir}/metainfo/org.gnome.Hamster.GUI.metainfo.xml
+%{_datadir}/metainfo/org.gnome.Hamster.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.hamster.gschema.xml
 %{_datadir}/help/C/hamster
 
@@ -339,7 +345,7 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tar.gz \
    if x < 4 then print(string.format("%.02f", x + 0.01)) else print(x + 1) end}
 
 %package -n gnome-shell-extension-hamster-time-tracker
-Version:        3.0.3~20_%{ext_version}_%{ext_gnome_version}
+Version:        3.0.3_%{ext_version}_%{ext_gnome_version}
 Release:        0
 Summary:        Hamster time tracker extension for GNOME Shell
 License:        GPL-3.0-only

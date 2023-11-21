@@ -3,11 +3,10 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/projecthamster/hamster.git</param>
     <param name="filename">hamster-time-tracker</param>
-    <!-- <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param> -->
-    <param name="version">3.0.3~20</param>
-    <param name="revision">d10ae12</param>
-    <!-- <param name="versionrewrite-pattern">v(.*)[+]0$</param>
-         <param name="versionrewrite-replacement">\1</param> -->
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)[+]0$</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">v3.0.3</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="manual">

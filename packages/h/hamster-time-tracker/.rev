@@ -194,4 +194,23 @@
   * del 0133-Bump-latest-validated-gnome-shell-version-1.patch (empty)</comment>
     <requestid>1114055</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>45123bc24843d4b16c20e463566bcada</srcmd5>
+    <version>unknown</version>
+    <time>1700598704</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.3
+- Changed fact entry syntax (see NEWS.md for details)
+  * Remove the need for using a double comma to start the description,
+    a single comma can be used instead.
+  * The tags part must now be separated by a comma. This allows using
+    '#' inside activityx, category and description
+  * extract simple #haswords from description, like
+    &quot;fix #bugs in #hamster&quot;
+  * consistent limitations on field content
+- spec file: fix build with python 3.6
+  * added remove-text-keyword-from-subprocess.run.patch
+  * refreshed replace-env-python-invocation-by-direct-call.patch</comment>
+    <requestid>1127748</requestid>
+  </revision>
 </revisionlist>
