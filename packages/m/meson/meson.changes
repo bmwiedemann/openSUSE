@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Nov 14 15:18:10 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.3.0:
+  + Clarify of implicitly-included headers in C-like compiler
+    checks.
+  + Treat warnings as error in compiler checks.
+  + Compilers now have a has_define method.
+  + configure_file() now has a macro_name parameter.
+  + c_std and cpp_std options now accepts a list of values.
+  + More meaningful description of many generative tasks.
+  + Deprecate 'jar' as a build_target type.
+  + generator.process() gains 'env' keyword argument.
+  + Target names for executables now take into account suffixes.
+  + Executable gains vs_module_defs keyword.
+  + find_program() now supports the 'default_options' argument.
+  + Added follow_symlinks arg to install_data, install_header, and
+    install_subdir.
+  + Added 'fill' kwarg to int.to_string().
+  + Added 'json' output_format to configure_file().
+  + @GLOBAL_SOURCE_ROOT@ and @DIRNAME@ in machine files.
+  + clang-tidy-fix target.
+  + Meson compile command now accepts suffixes for TARGET.
+  + New environment variable MESON_PACKAGE_CACHE_DIR.
+  + Update options with meson setup <builddir> -Dopt=value.
+  + Clear persistent cache with meson setup --clearcache.
+  + pkg-config dependencies can now get a variable with multiple
+    replacements.
+  + Machine files: pkgconfig field deprecated and replaced by
+    pkg-config.
+  + Support targeting Python's limited C API.
+  + All compiler has_* methods support the required keyword.
+  + Deprecated rust_crate_type and replaced by rust_abi.
+  + Tests now abort on errors by default under sanitizers.
+  + <lang>_(shared|static)_args for both_library, library, and
+    build_target.
+  + -j shorthand for --num-processes.
+  + Unified message(), str.format() and f-string formatting.
+  + Subprojects excluded from scan-build reports.
+  + vs_module_defs keyword now supports indexes of custom_target.
+  + Automatic fallback to cmake and cargo subproject
+- BuildRequire clang-tools to run the test suite: new dependency.
+- Run test suite only on x86_64.
+
+-------------------------------------------------------------------
 Mon Oct 23 09:17:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.3:

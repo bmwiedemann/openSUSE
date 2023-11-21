@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 %global pythons python311
 %else
@@ -34,7 +35,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.2.3
+Version:        1.3.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -64,10 +65,11 @@ Provides:       meson-gui = %{version}
 Obsoletes:      meson-gui < %{version}
 BuildArch:      noarch
 %else
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  x86_64
 BuildRequires:  %{python_module devel}
 BuildRequires:  bison
 BuildRequires:  clang >= 15
+BuildRequires:  clang-tools >= 15
 BuildRequires:  cups-devel
 BuildRequires:  distribution-release
 BuildRequires:  flex
