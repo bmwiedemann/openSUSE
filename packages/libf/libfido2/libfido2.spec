@@ -18,7 +18,7 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
+Source2:        libfido2.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} >= 1540 || 0%{?sle_version} >= 150400
