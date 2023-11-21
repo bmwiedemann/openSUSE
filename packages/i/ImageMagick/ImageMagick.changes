@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 13 10:09:38 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.1.21
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+- modified patches
+  [bsc#1217014][bsc#1216811]
+  % ImageMagick-s390x-disable-tests.patch (refreshed)
+- deleted patches
+  - ImageMagick-correct-time-to-live.patch (upstreamed)
+- added patches
+  https://github.com/ImageMagick/ImageMagick/commit/8f3c56fabc619c1672865257e5aafe33cbfaaf3e
+  https://github.com/ImageMagick/ImageMagick/commit/3a7b915d9a810ce742987b37c935f6ae8b36df10
+  + ImageMagick-infinite-resource-time-limit.patch
+
+-------------------------------------------------------------------
 Fri Oct 13 10:35:49 UTC 2023 - pgajdos@suse.com
 
 - added patches

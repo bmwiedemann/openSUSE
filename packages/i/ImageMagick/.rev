@@ -3740,4 +3740,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   + ImageMagick-correct-time-to-live.patch</comment>
     <requestid>1117649</requestid>
   </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>1a0edb91c5d7698ceffe27a6c0dafb0c</srcmd5>
+    <version>7.1.1.21</version>
+    <time>1700598681</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1127688</requestid>
+  </revision>
 </revisionlist>

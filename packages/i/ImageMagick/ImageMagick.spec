@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   20
+%define mfr_revision   21
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -55,9 +55,9 @@ Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%endif
 #%%ifarch s390x
 Patch5:         ImageMagick-s390x-disable-tests.patch
+# https://github.com/ImageMagick/ImageMagick/commit/8f3c56fabc619c1672865257e5aafe33cbfaaf3e https://github.com/ImageMagick/ImageMagick/commit/3a7b915d9a810ce742987b37c935f6ae8b36df10
+Patch6:         ImageMagick-infinite-resource-time-limit.patch
 #%%endif
-# https://github.com/ImageMagick/ImageMagick/commit/3c727503c6ae449160dc92cf6222ebe28ef8fb52
-Patch6:         ImageMagick-correct-time-to-live.patch
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
