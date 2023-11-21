@@ -367,6 +367,7 @@
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="dracut-transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drkonqi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="drkonqi5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
