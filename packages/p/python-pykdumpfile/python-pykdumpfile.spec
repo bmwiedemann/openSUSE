@@ -16,15 +16,15 @@
 #
 
 
+%define skip_python2 1
+
 Name:           python-pykdumpfile
-Version:        0.5.3.1
+Version:        0.5.4
 Release:        0
 Summary:        Python bindings to libkdumpfile
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 URL:            https://github.com/ptesarik/pykdumpfile
 Source:         https://files.pythonhosted.org/packages/source/p/pykdumpfile/pykdumpfile-%{version}.tar.gz
-BuildRequires:  libkdumpfile-devel
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  libkdumpfile-devel
+BuildRequires:  python-rpm-macros
 %requires_eq    python-cffi
 Obsoletes:      python-libkdumpfile < %{version}
 Provides:       python-libkdumpfile = %{version}
@@ -42,13 +44,15 @@ Python bindings to libkdumpfile
 
 %prep
 %autosetup -p1 -n pykdumpfile-%{version}
+rm addrxlat/defs_py2.py
+rm kdumpfile/defs_py2.py
 
 %build
 export CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
-%pyproject_install
+%pyproject_install --ignore-installed
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

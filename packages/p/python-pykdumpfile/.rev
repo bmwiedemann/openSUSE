@@ -8,4 +8,12 @@
 Version obsolete has been solved with a new upstream release, as long as this SR is accepted together with a libkdumpfile SR.</comment>
     <requestid>1124285</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb5d12e5cf289845b1898b2a4adff958</srcmd5>
+    <version>0.5.4</version>
+    <time>1700598718</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127834</requestid>
+  </revision>
 </revisionlist>
