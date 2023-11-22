@@ -808,6 +808,9 @@ unsorted:
   - arch-install-scripts 
   - archivemount 
   - ardour 
+  - argocd-cli 
+  - argocd-cli-bash-completion 
+  - argocd-cli-zsh-completion 
   - argon2 
   - argon2-devel 
   - argon2-doc 
@@ -2713,6 +2716,7 @@ unsorted:
   - ctdb 
   - ctdb-pcp-pmda 
   - ctop 
+  - ctre-devel 
   - ctris 
   - cttop 
   - cuarzo-srm-devel 
@@ -3224,6 +3228,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -8932,6 +8937,7 @@ unsorted:
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
+  - kernel-firmware-nvidia-gspx-G06 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -13339,8 +13345,13 @@ unsorted:
   - libnftnl-devel 
   - libnghttp2-14-32bit 
   - libnghttp2-devel 
+  - libnghttp3-9 
+  - libnghttp3-devel 
   - libngspice-devel 
   - libngspice0 
+  - libngtcp2-16 
+  - libngtcp2-devel 
+  - libngtcp2_crypto_gnutls8 
   - libnice 
   - libnice-devel 
   - libnice10-32bit 
@@ -15270,6 +15281,9 @@ unsorted:
   - libvdpau_virtio_gpu 
   - libvdpau_virtio_gpu-32bit 
   - libverdict1_4 
+  - libversion 
+  - libversion-devel 
+  - libversion1 
   - libverto-devel 
   - libverto-devel-32bit 
   - libverto-glib-devel 
@@ -18456,6 +18470,7 @@ unsorted:
   - nut-drivers-net 
   - nvdock 
   - nvidia-open-driver-G06-signed-default-devel 
+  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
@@ -23484,7 +23499,6 @@ unsorted:
   - python310-csvkit 
   - python310-cu2qu 
   - python310-cufflinks 
-  - python310-curio 
   - python310-curlylint 
   - python310-curses 
   - python310-curtsies 
@@ -24946,7 +24960,6 @@ unsorted:
   - python310-pygn 
   - python310-pygraphviz 
   - python310-pyhcl 
-  - python310-pyheif 
   - python310-pyhibp 
   - python310-pyicumessageformat 
   - python310-pyinotify 
@@ -26951,7 +26964,6 @@ unsorted:
   - python311-csvkit 
   - python311-cu2qu 
   - python311-cufflinks 
-  - python311-curio 
   - python311-curlylint 
   - python311-curtsies 
   - python311-cwcwidth 
@@ -28330,7 +28342,6 @@ unsorted:
   - python311-pygn 
   - python311-pygraphviz 
   - python311-pyhcl 
-  - python311-pyheif 
   - python311-pyhibp 
   - python311-pyicumessageformat 
   - python311-pyinstaller-hooks-contrib 
@@ -30359,7 +30370,6 @@ unsorted:
   - python39-csvkit 
   - python39-cu2qu 
   - python39-cufflinks 
-  - python39-curio 
   - python39-curlylint 
   - python39-curses 
   - python39-curtsies 
@@ -31817,7 +31827,6 @@ unsorted:
   - python39-pygn 
   - python39-pygraphviz 
   - python39-pyhcl 
-  - python39-pyheif 
   - python39-pyhibp 
   - python39-pyicumessageformat 
   - python39-pyinotify 
@@ -45121,7 +45130,9 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
+  - virtualbox-guest-tools 
   - virtualbox-host-source 
+  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
