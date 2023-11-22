@@ -156,7 +156,6 @@
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-hostname" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -286,7 +285,7 @@
     <package name="drkonqi5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="dump-rmt" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="e2fsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="ed" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="ed" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="edict-eucjp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="edict2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
@@ -2338,7 +2337,7 @@
     <package name="poppler-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="poppler-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="popt-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="postfix" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="postfix" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="powerdevil5" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="powerdevil5-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2632,7 +2631,7 @@
     <package name="system-user-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="system-user-flatpak" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="system-user-lp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="system-user-mail" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="system-user-mail" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="system-user-man" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="system-user-pulse" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
