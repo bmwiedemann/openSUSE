@@ -23,4 +23,12 @@
     <comment>- Undo the change in kiwi to use &quot;ix86&quot; as arch for 32-bit x86</comment>
     <requestid>812904</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>254a689e451c6fc1f8af6ffd97473d37</srcmd5>
+    <version>1.0</version>
+    <time>1701289072</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129852</requestid>
+  </revision>
 </revisionlist>

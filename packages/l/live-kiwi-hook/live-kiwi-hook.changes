@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 29 15:48:06 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Allow 1G for rescue image on aarch64 only (USB sticks are
+  not under 1G)
+
+-------------------------------------------------------------------
 Tue Jun  9 11:47:31 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Undo the change in kiwi to use "ix86" as arch for 32-bit x86

@@ -42,13 +42,21 @@ rename -v "${oldiso}" "${newiso}" ./*
 sed -i"" "s/${oldiso}/${newiso}/g" ./*.sha256
 
 isosize="$(stat -c %s "${newiso}.iso")"
+arch="$(uname -m)"
 
 case "${flavor}" in
 	GNOME|KDE|XFCE)
 		msize=1000000000
 		;;
 	Rescue)
-		msize=680000000
+		case "${arch}" in
+			aarch64)
+				msize=1000000000
+				;;
+			*)
+				msize=680000000
+				;;
+		esac
 		;;
 	*)
 		echo "Unknown flavor ${flavor}" >&2
