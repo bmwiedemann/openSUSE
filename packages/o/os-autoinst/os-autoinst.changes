@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 26 02:27:11 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1700826581.a2deffd:
+  * Fix connection delete behavior when no connection is present
+  * Refactor common parts
+  * Add support for NetworkManager in setup multi-machine script
+  * Fix shell-check warnings
+  * dist: Add missing dependency on ssh in s390_zvm_requires
+  * t/18-backend-qemu.t: Test for uppercase OVMF file names
+  * backend/qemu: Preserve case when modifying OVMF file names
+
+-------------------------------------------------------------------
+Thu Nov 23 17:07:46 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1700759257.6f41f56:
+  * dist: Add missing dependency on ssh in s390_zvm_requires
+  * Rewrite s390 console to work with arbitrary IP and Hostname combinations
+  * t/18-backend-qemu.t: Test for uppercase OVMF file names
+  * backend/qemu: Preserve case when modifying OVMF file names
+  * Disable SVIRT_WORKER_CACHE by default
+
+-------------------------------------------------------------------
 Tue Nov 14 07:38:37 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1699947509.970d060:

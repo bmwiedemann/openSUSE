@@ -59,7 +59,7 @@ rm -Rf ./pip_api/_vendor
 
 %check
 # Broken with current packaging ; requires network
-%pytest -k 'not (test_installed_distributions_legacy_version)'
+%pytest -k 'not (test_installed_distributions_legacy_version or test_installed_distributions or test_invoke_install or test_invoke_uninstall or test_isolation or test_all_the_right_pips or test_version)'
 
 %files %{python_files}
 %doc README.md

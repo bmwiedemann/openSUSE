@@ -244,4 +244,14 @@
 </comment>
     <requestid>1124310</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3d2240e511b7e2895b2e22f38a5cb5f4</srcmd5>
+    <version>0.21</version>
+    <time>1701023862</time>
+    <user>anag+factory</user>
+    <comment>- Tests require at least Python 3.8, so we use a newer Python on
+  Leap than the system default 3.6.
+</comment>
+    <requestid>1128803</requestid>
+  </revision>
 </revisionlist>

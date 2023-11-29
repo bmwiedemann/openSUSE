@@ -1,9 +1,0 @@
-[Unit]
-Description=Qualcomm Protection Domain mapper service
-
-[Service]
-ExecStart=/usr/sbin/pd-mapper
-Restart=always
-
-[Install]
-WantedBy=multi-user.target

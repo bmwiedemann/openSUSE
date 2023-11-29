@@ -31,4 +31,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1126024</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9edbd434ff2761b90085a53f01ce9df5</srcmd5>
+    <version>20201014.0</version>
+    <time>1700865313</time>
+    <user>anag+factory</user>
+    <comment>- user request: manpage added
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1193140</comment>
+    <requestid>1128574</requestid>
+  </revision>
 </revisionlist>

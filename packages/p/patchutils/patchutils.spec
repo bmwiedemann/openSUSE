@@ -1,7 +1,7 @@
 #
 # spec file for package patchutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        http://cyberelk.net/tim/data/patchutils/stable/%{name}-%{version
 Source1:        http://cyberelk.net/tim/data/patchutils/stable/%{name}-%{version}.tar.xz.sig
 Patch2:         rediff-hunk-init-fix.diff
 BuildRequires:  automake
+BuildRequires:  python-rpm-macros
 Requires:       diffutils
 Requires:       patch
 
@@ -54,6 +55,8 @@ files in a patch. Rediff corrects hand-edited patches.
 %make_install
 install -m 0755 -d %{buildroot}%{_mandir}/man1/
 install -m 0644 -t %{buildroot}%{_mandir}/man1/ doc/*.1
+
+%python3_fix_shebang
 
 %files
 %license COPYING

@@ -60,6 +60,7 @@ Patch4:         u_change-button-layout-in-ServerDialog.patch
 Patch5:         n_tigervnc-date-time.patch
 Patch6:         n_correct_path_in_desktop_file.patch
 Patch7:         n_vncserver.patch
+Patch8:         n_dont_sign_java_client.patch
 Provides:       tightvnc = 1.5.0
 Obsoletes:      tightvnc < 1.5.0
 Provides:       vnc
@@ -242,6 +243,7 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p0
+%patch8 -p0
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver

@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Fri Nov 24 11:31:13 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.8.4+git0.a4ebf9d3b:
+  * [RELEASE] Released version 2.8.4
+  * BUG/MINOR: stconn: Report read activity on non-indep streams for partial sends
+  * BUG/MINOR: stconn/applet: Report send activity only if there was output data
+  * BUG/MINOR: stconn: Use HTX-aware channel's functions to get info on buffer
+  * BUG/MINOR: stconn: Fix streamer detection for HTX streams
+  * MINOR: channel: Add functions to get info on buffers and deal with HTX streams
+  * MINOR: htx: Use a macro for overhead induced by HTX
+  * BUG/MEDIUM: stconn: Update fsb date on partial sends
+  * BUG/MEDIUM: stream: Don't call mux .ctl() callback if not implemented
+  * BUG/MEDIUM: mworker: set the master variable earlier
+  * BUG/MEDIUM: applet: Report a send activity everytime data were sent
+  * BUG/MEDIUM: stconn: Report a send activity everytime data were sent
+  * REGTESTS: http: Improve script testing abortonclose option
+  * BUG/MEDIUM: stream: Properly handle abortonclose when set on backend only
+  * MEDIUM: mux-h1: Handle MUX_SUBS_RECV flag in h1_ctl() and susbscribe for reads
+  * MINOR: connection: Add a CTL flag to notify mux it should wait for reads again
+  * BUG/MINOR: stconn: Handle abortonclose if backend connection was already set up
+  * BUG/MEDIUM: connection: report connection errors even when no mux is installed
+  * DOC: quic: Wrong syntax for "quic-cc-algo" keyword.
+  * BUG/MINOR: sink: don't learn srv port from srv addr
+  * BUG/MEDIUM: applet: Remove appctx from buffer wait list on release
+  * DOC: config: use the word 'backend' instead of 'proxy' in 'track' description
+  * BUG/MINOR: quic: fix retry token check inconsistency
+  * DOC: management: -q is quiet all the time
+  * BUG/MEDIUM: stconn: Don't update stream expiration date if already expired
+  * BUG/MEDIUM: quic: Avoid some crashes upon TX packet allocation failures
+  * BUG/MEDIUM: quic: Possible crashes when sending too short Initial packets
+  * BUG/MEDIUM: quic: Avoid trying to send ACK frames from an empty ack ranges tree
+  * BUG/MINOR: quic: idle timer task requeued in the past
+  * BUG/MEDIUM: pool: fix releasable pool calculation when overloaded
+  * BUG/MEDIUM: freq-ctr: Don't report overshoot for long inactivity period
+  * BUG/MINOR: mux-h1: Properly handle http-request and http-keep-alive timeouts
+  * BUG/MINOR: stick-table/cli: Check for invalid ipv4 key
+  * BUG/MEDIUM: quic: fix sslconns on quic_conn alloc failure
+  * BUG/MEDIUM: quic: fix actconn on quic_conn alloc failure
+  * CLEANUP: htx: Properly indent htx_reserve_max_data() function
+  * BUG/MINOR: stconn: Sanitize report for read activity
+  * BUG/MEDIUM: Don't apply a max value on room_needed in sc_need_room()
+  * BUG/MEDIUM: stconn: Don't report rcv/snd expiration date if SC cannot epxire
+  * BUG/MEDIUM: pattern: don't trim pools under lock in pat_ref_purge_range()
+  * BUG/MINOR: cfgparse/stktable: fix error message on stktable_init() failure
+  * BUG/MINOR: stktable: missing free in parse_stick_table()
+  * BUG/MINOR: tcpcheck: Report hexstring instead of binary one on check failure
+  * BUG/MEDIUM: ssl: segfault when cipher is NULL
+  * BUG/MINOR: mux-quic: fix early close if unset client timeout
+  * BUG/MINOR: ssl: suboptimal certificate selection with TLSv1.3 and dual ECDSA/RSA
+  * MEDIUM: quic: count quic_conn for global sslconns
+  * MEDIUM: quic: count quic_conn instance for maxconn
+  * MINOR: frontend: implement a dedicated actconn increment function
+  * BUG/MINOR: ssl: use a thread-safe sslconns increment
+  * BUG/MINOR: quic: do not consider idle timeout on CLOSING state
+  * BUG/MEDIUM: server: "proto" not working for dynamic servers
+  * MINOR: connection: add conn_pr_mode_to_proto_mode() helper func
+  * DEBUG: mux-h2/flags: fix list of h2c flags used by the flags decoder
+  * MINOR: lua: Add flags to configure logging behaviour
+  * BUG/MINOR: ssl: load correctly @system-ca when ca-base is define
+  * DOC: internal: filters: fix reference to entities.pdf
+  * BUG/MINOR: mux-h2: update tracked counters with req cnt/req err
+  * BUG/MINOR: mux-h2: commit the current stream ID even on reject
+  * BUG/MEDIUM: peers: Fix synchro for huge number of tables
+  * BUG/MEDIUM: peers: Be sure to always refresh recconnect timer in sync task
+  * BUG/MINOR: trace: fix trace parser error reporting
+  * BUG/MINOR: mux-h2: fix http-request and http-keep-alive timeouts again
+  * BUG/MEDIUM: mux-h2: Don't report an error on shutr if a shutw is pending
+  * BUG/MINOR: mux-h2: make up other blocked streams upon removal from list
+  * BUG/MINOR: mux-h1: Send a 400-bad-request on shutdown before the first request
+  * BUG/MEDIUM: quic-conn: free unsent frames on retransmit to prevent crash
+  * BUG/MINOR: mux-quic: fix free on qcs-new fail alloc
+  * BUG/MINOR: h3: strengthen host/authority header parsing
+  * BUG/MINOR: mux-quic: support initial 0 max-stream-data
+  * BUG/MEDIUM: mux-quic: fix RESET_STREAM on send-only stream
+  * BUG/MINOR: quic: reject packet with no frame
+  * BUG/MINOR: quic: Avoid crashing with unsupported cryptographic algos
+  * BUG/MEDIUM: stconn: Fix comparison sign in sc_need_room()
+  * BUG/MINOR: hq-interop: simplify parser requirement
+  * BUG/MEDIUM: h1: Ignore C-L value in the H1 parser if T-E is also set
+  * BUG/MINOR: mux-h1: Ignore C-L when sending H1 messages if T-E is also set
+  * BUG/MINOR: mux-h1: Handle read0 in rcv_pipe() only when data receipt was tried
+  * BUG/MEDIUM: hlua: Initialize appctx used by a lua socket on connect only
+  * MINOR: hlua: Test the hlua struct first when the lua socket is connecting
+  * MINOR: hlua: Save the lua socket's server in its context
+  * MINOR: hlua: Save the lua socket's timeout in its context
+  * MINOR: hlua: Don't preform operations on a not connected socket
+  * MINOR: hlua: Set context's appctx when the lua socket is created
+  * BUG/MEDIUM: http-ana: Try to handle response before handling server abort
+  * BUG/MEDIUM: quic_conn: let the scheduler kill the task when needed
+  * BUG/MEDIUM: actions: always apply a longest match on prefix lookup
+  * BUG/MINOR: mux-quic: remove full demux flag on ncbuf release
+  * BUG/MEDIUM: server/cli: don't delete a dynamic server that has streams
+  * MINOR: pattern: fix pat_{parse,match}_ip() function comments
+  * BUG/MINOR: server: add missing free for server->rdr_pfx
+  * BUG/MAJOR: mux-h2: Report a protocol error for any DATA frame before headers
+  * BUG/MINOR: freq_ctr: fix possible negative rate with the scaled API
+  * BUG/MEDIUM: master/cli: Pin the master CLI on the first thread of the group 1
+  * BUG/MINOR: promex: fix backend_agg_check_status
+  * BUG/MEDIUM: mux-fcgi: Don't swap trash and dbuf when handling STDERR records
+  * BUG/MINOR: hlua/init: coroutine may not resume itself
+  * BUG/MEDIUM: hlua: don't pass stale nargs argument to lua_resume()
+  * CI: musl: drop shopt in workflow invocation
+  * CI: musl: highlight section if there are coredumps
+  * Revert "BUG/MEDIUM: quic: missing check of dcid for init pkt including a token"
+  * BUG/MEDIUM: hlua: streams don't support mixing lua-load with lua-load-per-thread
+  * MINOR: hlua: add hlua_stream_ctx_prepare helper function
+  * BUILD: quic: fix build on centos 8 and USE_QUIC_OPENSSL_COMPAT
+  * BUG/MINOR: quic: ssl_quic_initial_ctx() uses error count not error code
+  * BUG/MINOR: quic: allow-0rtt warning must only be emitted with quic bind
+  * BUILD: Makefile: add USE_QUIC_OPENSSL_COMPAT to make help
+  * MINOR: quic+openssl_compat: Emit an alert for "allow-0rtt" option
+  * MINOR: quic+openssl_compat: Do not start without "limited-quic"
+  * MINOR: quic: Warning for OpenSSL wrapper QUIC bindings without "limited-quic"
+  * BUG/MINOR: quic+openssl_compat: Non initialized TLS encryption levels
+  * DOC: quic: Add "limited-quic" new tuning setting
+  * MINOR: quic: Add "limited-quic" new tuning setting
+  * MINOR: quic: SSL context initialization with QUIC OpenSSL wrapper.
+  * MINOR: quic: Add a quic_openssl_compat struct to quic_conn struct
+  * MINOR: quic: Call the keylog callback for QUIC openssl wrapper from SSL_CTX_keylog()
+  * MINOR: quic: Initialize TLS contexts for QUIC openssl wrapper
+  * MINOR: quic: Export some KDF functions (QUIC-TLS)
+  * MINOR: quic: Add a compilation option for the QUIC OpenSSL wrapper
+  * MINOR: quic: Do not enable 0RTT with SSL_set_quic_early_data_enabled()
+  * MINOR: quic: Set the QUIC connection as extra data before calling SSL_set_quic_method()
+  * MINOR: quic: Do not enable O-RTT with USE_QUIC_OPENSSL_COMPAT
+  * MINOR: quic: Include QUIC opensssl wrapper header from TLS stacks compatibility header
+  * MINOR: quic: QUIC openssl wrapper implementation
+  * BUG/MINOR: quic: Wrong cluster secret initialization
+  * BUG/MINOR: quic: Leak of frames to send.
+  * BUILD: bug: make BUG_ON() void to avoid a rare warning
+
+-------------------------------------------------------------------
 Thu Sep 07 22:07:54 UTC 2023 - mrueckert@suse.de
 
 - Update to version 2.8.3+git0.86e043add:

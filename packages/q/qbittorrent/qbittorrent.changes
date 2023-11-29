@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 28 06:50:10 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.2
+  Bug fixes:
+  * Do not apply share limit if the previous one was applied
+  * Show Add new torrent dialog on main window screen
+  Web UI:
+  * Fix JS memory leak
+  * Disable stdout buffering for qbt-nox
+  Wayland:
+  * Fix parent widget of "Lock qBittorrent" submenu
+
+-------------------------------------------------------------------
 Tue Nov 21 05:01:43 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.6.1

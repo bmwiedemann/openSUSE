@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 Name:           libfsapfs
 %define lname   libfsapfs1
-Version:        20230617
+Version:        20231122
 Release:        0
 Summary:        Library and tools to access the Apple File System (APFS)
 License:        LGPL-3.0-only
@@ -34,22 +35,22 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcaes) >= 20220529
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcaes) >= 20230406
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20220111
+BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfmos) >= 20220811
-BuildRequires:  pkgconfig(libhmac) >= 20220425
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libfmos) >= 20230707
+BuildRequires:  pkgconfig(libhmac) >= 20230407
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
@@ -87,12 +88,20 @@ Requires:       libbfio-devel
 %description devel
 Development files for %{name}.
 
+%package tools
+Summary:        Tools to access the Apple File System format
+License:        LGPL-3.0-or-later
+Group:          Productivity/File utilities
+
+%description tools
+Tools to inspect Apple File System (APFS) images.
+
 %package -n %lname
-Summary:        Library for access the Apple File System (APFS)
+Summary:        Library for access to the Apple File System (APFS)
 Group:          System/Libraries
 
 %description -n %lname
-%lname is a library for access the Apple File System (APFS).
+%lname is a library for access to the Apple File System (APFS).
 
 %prep
 %autosetup -p1

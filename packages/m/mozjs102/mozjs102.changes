@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:59:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 25 15:09:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 102.15.1:

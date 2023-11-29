@@ -17,14 +17,14 @@
 
 
 Name:           uimaj
-Version:        2.8.1
+Version:        3.5.0
 Release:        0
 Summary:        Apache UIMA is an implementation of the OASIS-UIMA specifications
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://uima.apache.org/
 Source0:        http://archive.apache.org/dist/uima/%{name}-%{version}/%{name}-%{version}-source-release.zip
-Patch0:         uimaj-2.8.1-jackson2.7.patch
+Patch0:         0001-Revert-Issue-350-Clean-up-and-modernize-code.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -33,15 +33,22 @@ BuildRequires:  mvn(ant-contrib:ant-contrib)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(jakarta-regexp:jakarta-regexp)
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.ant:ant-apache-regexp)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.logging.log4j:log4j-api)
+BuildRequires:  mvn(org.apache.logging.log4j:log4j-core)
+BuildRequires:  mvn(org.apache.logging.log4j:log4j-slf4j-impl)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.apache.uima:parent-pom:pom:)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
+BuildRequires:  mvn(org.junit.vintage:junit-vintage-engine)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 
 %description
@@ -94,9 +101,16 @@ find .  -name "*.cmd" -delete
 
 # Build @ random fails
 %pom_remove_plugin -r :apache-rat-plugin
-# org.semver:enforcer-rule:0.9.33
-%pom_remove_plugin -r :maven-enforcer-plugin
 %pom_remove_plugin -r :maven-javadoc-plugin
+%pom_remove_plugin -r :japicmp-maven-plugin
+%pom_remove_plugin -r :maven-toolchains-plugin
+%pom_remove_plugin -r :p2-layout-resolver
+%pom_remove_plugin -r :asciidoctor-maven-plugin
+
+%pom_remove_dep -r :junit-bom
+%pom_remove_dep -r :assertj-bom
+%pom_remove_dep -r :mockito-bom
+%pom_remove_dep -r :log4j-bom
 
 # Remove eclipse stuff (dont provides pom or depmap file)
 %pom_disable_module ../aggregate-%{name}-eclipse-plugins aggregate-%{name}
@@ -110,13 +124,14 @@ find .  -name "*.cmd" -delete
 %pom_remove_dep org.apache.uima:%{name}-ep-launcher
 %pom_remove_dep org.apache.uima:%{name}-examples
 %pom_disable_module ../%{name}-examples aggregate-%{name}
-
-# Disable SOAP module which relies upon the ancient and obsolete axis library
-%pom_disable_module ../%{name}-adapter-soap aggregate-%{name}
-%pom_remove_dep org.apache.uima:%{name}-adapter-soap
-
-# Unavailable deps org.apache.uima:uima-docbook-olink:zip:olink:1-SNAPSHOT
-%pom_disable_module ../aggregate-%{name}-docbooks aggregate-%{name}
+%pom_disable_module ../%{name}-test-util aggregate-%{name}
+%pom_disable_module ../%{name}-component-test-util aggregate-%{name}
+%pom_remove_dep :procyon-core
+%pom_remove_dep :procyon-compilertools
+%pom_remove_dep :javaparser-core
+%pom_remove_dep :slf4j-jdk14
+%pom_remove_dep org.apache.uima:%{name}-v3migration-jcas
+%pom_disable_module ../%{name}-v3migration-jcas aggregate-%{name}
 
 # These tests @ random fails
 rm -r %{name}-core/src/test/java/org/apache/uima/internal/util/UIMAClassLoaderTest.java \
@@ -130,11 +145,6 @@ rm -r %{name}-tools/src/test/java/org/apache/uima/tools/viewer/CasAnnotationView
 # Unavailable test:crossref2:1.0.0-SNAPSHOT
 %pom_remove_plugin :maven-invoker-plugin jcasgen-maven-plugin
 
-sed -i 's/\r//' NOTICE README
-
-%pom_xpath_set "pom:dependency[pom:artifactId = 'log4j']/pom:version" 1.2.17 %{name}-core
-
-%pom_change_dep :maven-project :maven-core:3.0.3 PearPackagingMavenPlugin
 %pom_change_dep org.apache.maven: :::provided PearPackagingMavenPlugin jcasgen-maven-plugin
 
 %{mvn_package} :PearPackagingMavenPlugin uima-pear-maven-plugin
@@ -145,6 +155,7 @@ sed -i 's/\r//' NOTICE README
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8 -Dproject.build.sourceEncoding=UTF-8
 
 %install
@@ -152,7 +163,7 @@ sed -i 's/\r//' NOTICE README
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc README RELEASE_NOTES.html
+%doc README.md RELEASE_NOTES.md
 %license LICENSE NOTICE
 
 %files -n jcasgen-maven-plugin -f .mfiles-jcasgen-maven-plugin

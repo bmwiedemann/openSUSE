@@ -205,4 +205,27 @@ Please link to python3-polib.
     <comment></comment>
     <requestid>1102345</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b970516bab3d33e351d9239880af999c</srcmd5>
+    <version>1.2.0</version>
+    <time>1701121506</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Added setter for the fuzzy property
+  * Escape/unescape ^k, ^h and ^l
+  * Added path to error message processing parser symbols
+  * Ensure empty previous values for msgid and msgstr are
+    properly saved
+  * Fixed relative ordering of comments and translator
+    comments
+  * Do not count obsolete entries in fuzzy() method
+  * Close files properly
+  * Fixed support for loading mo files from bytes object
+  * Fixed msgstr_plural comparison
+  * Simplified python version check
+  * Updated docs
+
+  endian_magic.patch</comment>
+    <requestid>1129236</requestid>
+  </revision>
 </revisionlist>

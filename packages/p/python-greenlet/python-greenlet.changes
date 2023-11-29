@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:46:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Fix a potential crash on Python 3.8 at interpreter shutdown
+    time.  This was a regression from earlier 3.0.x releases.
+
+-------------------------------------------------------------------
 Wed Oct  4 06:25:18 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.0.0:

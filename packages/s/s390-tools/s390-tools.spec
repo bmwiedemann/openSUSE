@@ -131,6 +131,7 @@ Source200:      cargo_config
 Source201:      vendor.tar.gz
 ###
 
+###
 # IBM patches
 ###
 # SUSE patches
@@ -150,11 +151,9 @@ Patch908:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy
 Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
 Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
-#
-Patch912:       s390-tools-sles15sp6-zkey-Support-EP11-AES-keys-with-prepended-header-to-.patch
-#
-Patch999:       s390-tools-ALP-zdev-live.patch
-#
+Patch912:       s390-tools-ALP-zdev-live.patch
+Patch913:       s390-tools-sles15sp6-zkey-Support-EP11-AES-keys-with-prepended-header-to-.patch
+###
 
 BuildRequires:  curl-devel
 BuildRequires:  dracut
@@ -319,9 +318,7 @@ operational path.
 %prep
 %autosetup -p1
 
-#
 cp -vi %{SOURCE22} CAUTION
-#
 
 ###
 install -D -m 0644 %{SOURCE200} .cargo/config
@@ -330,8 +327,6 @@ tar -xzvf %{SOURCE201}
 
 %build
 
-#
-#
 # The "DISTRELEASE=%%{release}" needs to be on both the make and make install
 # commands, since make install runs sed commands against various scripts to
 # modify the "-v" output appropriately.
@@ -347,8 +342,6 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
 %install
-
-#
 mkdir -p %{buildroot}/boot/zipl
 mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
 %make_install \
@@ -446,7 +439,7 @@ if [ ! -d %{_bindir} ]; then
 fi
 install -D -m755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
 
-install -m644 -t %{buildroot}/%{_mandir}/man1 %{SOURCE25}
+install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
 
 # If building for openSUSE, move all the binaries installed via
 # the IBM-provided Makefile from /sbin to /usr/sbin/ to

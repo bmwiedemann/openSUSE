@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  5 18:06:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update config-ini to version 0.2.7.0.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Jun 22 19:46:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update config-ini to version 0.2.6.0.

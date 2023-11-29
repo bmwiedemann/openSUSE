@@ -16,19 +16,25 @@
 #
 
 
+%define elixirdir %{_prefix}/lib/elixir
+
 Name:           elixir
-Version:        1.14.2
+Version:        1.15.7
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            http://elixir-lang.org
-Source0:        https://github.com/elixir-lang/elixir/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/elixir-lang/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/elixir-lang/%{name}/releases/download/v%{version}/Docs.zip#/%{name}-%{version}-doc.zip
 Source2:        macros.elixir
+Patch0:         0001-Use-PID-valid-for-32-bit-systems-closes-12741.patch
+Patch1:         0001-Use-PID-valid-for-32-bit-systems-followup-to-12741-1.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  make
-Requires:       erlang >= 23
-BuildRequires:  erlang >= 23
+Requires:       erlang >= 24
+BuildRequires:  erlang >= 24
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
 # required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
@@ -52,18 +58,20 @@ Finally, Elixir and Erlang share the same bytecode and data types.
 This means one can invoke Erlang code from Elixir (and vice-versa)
 without any conversion or performance impact.
 
-%package src
-Summary:        Elixir programming language sources
-Group:          Development/Sources
-Requires:       %{name} = %{version}
+%package doc
+Summary:        Documentation for elixir
+Group:          Documentation/Other
+BuildArch:      noarch
+Requires:       elixir = %{version}
 
-%description src
-Elixir source code.
-
-%define elixirdir %{_prefix}/lib/elixir
+%description doc
+Documentation for the Elixir language.
 
 %prep
-%setup -q
+%autosetup -p1
+
+unzip -o %{SOURCE1}
+find doc \( -name ".build" -or -name ".ex_doc" \) -delete
 
 %build
 # Elixir wants UTF-8 locale, force it
@@ -73,13 +81,20 @@ make
 
 %install
 make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
-# install -D -m 0644
-# Relink
+
+mkdir -p %{buildroot}%{_bindir}
 for I in iex elixir elixirc mix
 do
 	ln -sf %{elixirdir}/bin/$I %{buildroot}%{_bindir}/$I
 done
+
 install -D -m 0644 %{S:2} %{buildroot}%{_rpmmacrodir}/macros.elixir
+
+mkdir -p %{buildroot}%{_defaultdocdir}
+cp -pa doc %{buildroot}%{_defaultdocdir}/elixir-doc
+
+%fdupes -s %{buildroot}/%{_mandir}
+%fdupes %{buildroot}/%{_prefix}
 
 %check
 export LANG=en_US.UTF-8
@@ -106,5 +121,10 @@ make test
 %{elixirdir}/bin/elixir
 %{elixirdir}/lib/*
 %{_rpmmacrodir}/macros.elixir
+
+%files doc
+%defattr(-,root,root)
+%license LICENSE
+%{_defaultdocdir}/elixir-doc
 
 %changelog

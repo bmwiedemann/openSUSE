@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 27 14:30:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup -p1 instead of multiple %patch lines. Allows us to
+  get rid of deprecated %patchN.
+
+-------------------------------------------------------------------
 Wed Aug  2 03:56:55 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Explicitly use --with-cups-serverbin-dir to find SERVERBIN when

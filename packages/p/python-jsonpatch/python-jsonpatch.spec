@@ -22,10 +22,9 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-jsonpatch
-Version:        1.32
+Version:        1.33
 Release:        0
 Summary:        Python - JSON-Patches
 License:        BSD-3-Clause
@@ -78,7 +77,7 @@ rm %{buildroot}%{_bindir}/jsondiff
 %python_uninstall_alternative jsonpatch
 
 %files %{python_files}
-%license COPYING
+%license LICENSE
 %doc AUTHORS README.md
 %python_alternative %{_bindir}/jsonpatch
 %{python_sitelib}/jsonpatch*

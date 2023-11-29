@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kiwisolver
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        An implementation of the Cassowary constraint solver
 License:        BSD-3-Clause

@@ -72,7 +72,7 @@ BuildRequires:  pkgconfig(pango)
 Requires:       gstreamer
 Requires:       gstreamer-plugins-base
 Enhances:       gstreamer
-ExcludeArch:    ppc ppc64 ppc64le s390 %ix86
+ExcludeArch:    ppc ppc64 ppc64le s390 %ix86 %arm
 
 %description
 GStreamer is a streaming media framework based on graphs of filters

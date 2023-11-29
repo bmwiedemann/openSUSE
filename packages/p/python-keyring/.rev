@@ -632,4 +632,22 @@
     <comment></comment>
     <requestid>1099483</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>668278fd3e86ec15af6e1a6ec3cafc2e</srcmd5>
+    <version>24.3.0</version>
+    <time>1701206332</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * Added bash completion support. (#643)
+
+- Update to version 23.11.0
+- Inject multibuild to prevent a build cycle
+- update to 23.6.0
+- Added keyring-import-gi.patch: gi.require_version is called and not
+- reduce/fix build requires
+  * All code now runs natively on both Python 2 and Python 3,
+  * Renamed ``keyring.util.platform`` to ``keyring.util.platform_``.
+  Introspection, not the obsolete python-gnomekeyring module</comment>
+    <requestid>1129228</requestid>
+  </revision>
 </revisionlist>

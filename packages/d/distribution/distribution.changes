@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 27 21:17:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.3 (bsc#1216491):
+  * Pass `BUILDTAGS` argument to `go build`
+  * Enable Go build tags
+  * `reference`: replace deprecated function `SplitHostname`
+  * Dont parse errors as JSON unless Content-Type is set to JSON
+  * update to go 1.20.8
+  * Set `Content-Type` header in registry client `ReadFrom`
+  * deprecate reference package, migrate to
+    github.com/distribution/reference
+  * `digestset`: deprecate package in favor of `go-
+    digest/digestset`
+  * Do not close HTTP request body in HTTP handler
+  * Add v2.8.3 release notes
+
+-------------------------------------------------------------------
 Fri May 12 16:05:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.2 (bsc#1207705, CVE-2023-2253, bsc#1210428):
@@ -29,7 +46,7 @@ Fri Feb 17 09:08:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Fri Jan 13 11:06:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add aws-sdk-1.42.27-update.patch to include AWS_ROLE_ARN
-  support (SD-106252) 
+  support (SD-106252)
 
 -------------------------------------------------------------------
 Fri Sep  9 14:16:41 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
@@ -43,7 +60,7 @@ Wed Jun  8 15:53:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - switch to go 1.16 for 2.8.1 (jsc#SLE-24963)
 - build the additional commands as well
 - rename to follow upstream renaming
-- cleanups 
+- cleanups
 - switch to systemd for user generation
 
 -------------------------------------------------------------------
@@ -76,13 +93,13 @@ Tue Feb 15 09:51:24 UTC 2022 - rbrown@suse.com
 -------------------------------------------------------------------
 Thu Jul 15 07:30:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- go back to golang 1.15 to fix the build for now 
+- go back to golang 1.15 to fix the build for now
 
 -------------------------------------------------------------------
 Mon Oct 12 08:28:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add 0004-Make-ipfilteredby-not-required.patch
-  Make ipfilteredby optional 
+  Make ipfilteredby optional
 
 -------------------------------------------------------------------
 Thu Sep 10 10:23:33 CEST 2020 - Jiri Suchomel <jsuchome@suse.com>
@@ -116,7 +133,7 @@ Tue Jul 28 14:00:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Fri Jul 24 13:42:41 CEST 2020 - jsuchome@suse.com
 
-- enabled changesgenerate option to automatically generate changes 
+- enabled changesgenerate option to automatically generate changes
 
 -------------------------------------------------------------------
 Tue Jul  7 21:44:45 UTC 2020 - Stefan Nica <snica@suse.com>

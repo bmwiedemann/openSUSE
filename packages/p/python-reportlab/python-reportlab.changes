@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 27 18:38:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.7:
+  * allow testutils.makeSuiteForClasses to specify a prefix for
+    test method names
+  * SpiderChart can have direct draw flowable labels
+  * fix and improve tests for python -mreportlab.lib.rl_accel
+  * fix barchart 3D stacked case & fix barchart valueAxis
+    reverseDirection behaviour.
+  * fix importlib usage in reportlab init, reported by Frank
+    Epperlein and others
+  * add value axes extraMinMaxValues as aid to parallel axes
+  * add styles str2alignment maps
+    left/right/center/centre/justify etc
+  * fix validators.isSubclassOf
+  * test ddfStyle as instance first in textlabels.py
+  * allow Pie Doughnut classes to control label class
+- drop importlib.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Oct  3 08:31:37 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - drop reportlab-missing-includes.patch
@@ -37,7 +57,7 @@ Thu Jul 27 13:03:29 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Thu Feb 16 23:33:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- pick the primary interpreter for doc generation even if it is not "python3" 
+- pick the primary interpreter for doc generation even if it is not "python3"
 
 -------------------------------------------------------------------
 Tue Jan 10 08:19:43 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -155,10 +175,10 @@ Tue Nov 16 12:39:08 UTC 2021 - ecsos <ecsos@opensuse.org>
 - Update to 3.5.62
   * add adjustableArrow widget
   * allow para tag borderPadding attribute
-  * minor cosmetics in renderPM C extension and add fontSize setattr 
+  * minor cosmetics in renderPM C extension and add fontSize setattr
   * allow a bounding box constraint in definePath
   * efficiency savings in text2Path
-  * refactor transformation math and text2Path functionality  
+  * refactor transformation math and text2Path functionality
   * allow a renderPM plugin cairo backend package rlPyCairo
 - Update to 3.5.61
   * Allow legend column control of vertical alignment
@@ -195,7 +215,7 @@ Wed Dec  9 15:56:35 UTC 2020 - Markéta Machová <mmachova@suse.com>
   * allow setting initial template cycle
   * fix for pillow 8.0.x
   * added trustedHosts & trustedSchemes settings
-  * allow Drawing.outDir to be a callable 
+  * allow Drawing.outDir to be a callable
 - Rebased reportlab-missing-includes.patch
 
 -------------------------------------------------------------------
@@ -310,7 +330,7 @@ Tue Jul 23 18:12:53 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - version update to 3.5.23
   * fix rendering to stdout doesn't work in python3
-  * fix relative links within pdf broken 
+  * fix relative links within pdf broken
   * fix paragraph justification broken in the presence of no-break spaces
   * add wordSpace keyword to Canvas draw methods
   * fix an extra blank page shows up between two KeepTogether() groups
@@ -369,7 +389,7 @@ Fri Jan  4 17:31:38 UTC 2019 - Todd R <toddrme2178@gmail.com>
     * Bug fix for Paragraph space bugs reported by Kayley Lane
     * Use local libart code by default (libart 2.3.21-3)
 - Update to RELEASE 3.5.3
-    * Bug fix release to make really simple paras work OK 
+    * Bug fix release to make really simple paras work OK
       Reported by Kayley.Lane @ oracle.com
     * Use local libart by default
     * Use upgrade libart source to 2.3.21-3 https://salsa.debian.org/gnome-team/libart-lgpl@aa059539
@@ -426,7 +446,7 @@ Wed Apr 19 20:33:58 UTC 2017 - toddrme2178@gmail.com
   * The <barCodeFlowable> and <barCode> tags now support additional
     encodings.
   * We have considerably expanded our support for fillable forms
-    within PDF files. The <textField> tag has many more attributes 
+    within PDF files. The <textField> tag has many more attributes
     <checkboxField>, <radioField>, <choiceField> & <listboxField>
     which along with the new <textField> make possible PDF forms.
   * The <ul> & <ol> tags now support automatic style change for the
@@ -449,15 +469,15 @@ Fri Jun  5 07:15:04 UTC 2015 - kkaempf@suse.com
 
 - Update to 3.2.0
   * Added proportional underlining specific to font sizes, set via
-    the `underlineProportion` attribute of ParagraphStyles. 
+    the `underlineProportion` attribute of ParagraphStyles.
   * TrueType fonts: added support for cmaps 10 & 13
   * DocTemplate class now supports a boolean `displayDocTitle` argument.
   * TableofContents now supports a formatter argument to allow
     formatting of the displayed page numbers (eg for appendices etc).
   * Table `repeatRows` can now be a tuple of row numbers to allow
-    incomplete ranges of rows to be repeated. 
+    incomplete ranges of rows to be repeated.
   * Tables now do pass instance.`spaceBefore` & `spaceAfter` to
-    their split children when split 
+    their split children when split
   * Several strangenesses were fixed in the pdfbase.pdfform module;
     Multiple usage is now allowed.
   * Error message fixes
@@ -465,12 +485,12 @@ Fri Jun  5 07:15:04 UTC 2015 - kkaempf@suse.com
   * Resource fixes
   * PDFDoc can now set the `Lang` attribute
   * canvas.drawString and similar now allow the character spacing
-    to be set 
+    to be set
   * Index of accented stuff has been improved
   * RTL code was improved
   * fix Propertyset.clone
   * `flowables.py`: fix ImageAndFlowables so it avoids testing
-    negative availableWidth 
+    negative availableWidth
 
 -------------------------------------------------------------------
 Fri Jun  5 07:15:03 UTC 2015 - kkaempf@suse.com
@@ -483,7 +503,7 @@ Fri Jun  5 07:15:03 UTC 2015 - kkaempf@suse.com
 Fri Jun  5 07:15:02 UTC 2015 - kkaempf@suse.com
 
 - Update to 3.0
-  * ReportLab 3.0 now supports Python 2.7, 3.3 and higher.  
+  * ReportLab 3.0 now supports Python 2.7, 3.3 and higher.
   * There has been a substantial internal rewrite to ensure
     consistent use of unicode strings for natural-language text,
     and of bytes for all file format internals.
@@ -530,27 +550,27 @@ Thu Jan 24 20:09:08 UTC 2013 - p.drouand@gmail.com
 
 - Update to version 2.6:
   * General changes
-    - Manuals have been reformatted with more pleasing code snippets and tables of 
+    - Manuals have been reformatted with more pleasing code snippets and tables of
       contents, and reviewed and expanded
   * Flowing documents (Platypus):
     - Added support for HTML-style list objects
     - Added flexible mechanism for drawing bullets
     - Allowed XPreformatted objects to use Asian line wrapping
-    - Added an 'autoNextPageTemplate' attribute to PageTemplates.  For example you 
+    - Added an 'autoNextPageTemplate' attribute to PageTemplates.  For example you
       can now set up a 'chapter first page template' which will always be followed
       by a 'continuation template' on the next page break, saving the programmer from
       having to issue control flow commands in the story.
-    - added a TopPadder flowable, which will 'wrap' another Flowable and move it 
-      to the bottom of the current page.  
+    - added a TopPadder flowable, which will 'wrap' another Flowable and move it
+      to the bottom of the current page.
     - More helpful error messages when large tables cannot be rendered
     - Documentation for images within text (test_032_images)
     - Trailing dots for use on contents pages
   * Charts and graphics:
     - Support for UPCA bar codes
-    - We now have a semi-intelligent system for labelling pie charts with 
-      callout lines.  Thanks to James Martin-Collar, a maths student at Warwick 
+    - We now have a semi-intelligent system for labelling pie charts with
+      callout lines.  Thanks to James Martin-Collar, a maths student at Warwick
       University, who did this as his summer internship.
-    - Axes - added startOffset and endOffset properties; allowed for axis 
+    - Axes - added startOffset and endOffset properties; allowed for axis
       background annotations.
     - Bar charts - allow more control of z Index (i.e. drawing order of axes and
       lines)

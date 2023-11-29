@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 26 15:27:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.27.0
+  * Extend argument handling of do_execute with cell metadata #1169
+    (@jjvraw)
+- Release 6.26.0
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
 Sat Sep 23 16:44:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.25.2

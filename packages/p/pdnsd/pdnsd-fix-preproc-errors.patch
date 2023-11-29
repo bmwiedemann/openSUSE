@@ -1,0 +1,75 @@
+Subject: fix non-working preset selection via configure
+Author: Stefan Seyfried <stefan.seyfried@sap.com>
+
+enum constants can not be used in preprocessor comparisons, so use #define
+for these.
+Also, missing whitespace around preprocessor comparions apparently breaks
+them. Fix that, too.
+
+Index: b/src/consts.h
+===================================================================
+--- a/src/consts.h
++++ b/src/consts.h
+@@ -41,10 +41,10 @@ enum {
+ 	C_QUERY,
+ 	C_ONQUERY,
+ 	C_ONTIMEOUT,
+-	UDP_ONLY,
+-	TCP_ONLY,
+-	TCP_UDP,
+-	UDP_TCP,
++	_UDP_ONLY,
++	_TCP_ONLY,
++	_TCP_UDP,
++	_UDP_TCP,
+ 	C_DEV,
+ 	C_DIALD,
+ 	C_INCLUDED,
+@@ -57,6 +57,11 @@ enum {
+ 	C_NEGATE
+ };
+ 
++#define UDP_ONLY 1
++#define TCP_ONLY 2
++#define TCP_UDP  3
++#define UDP_TCP  4
++
+ typedef struct {
+ 	const char *name;
+ 	int         val;
+Index: b/src/main.c
+===================================================================
+--- a/src/main.c
++++ b/src/main.c
+@@ -128,11 +128,11 @@ static const char help_message[] =
+ 	"\t\tuo (UDP only), to (TCP only), tu (TCP or, if the server\n"
+ 	"\t\tdoes not support this, UDP) and ut (UDP and, if the reply was\n"
+ 	"\t\ttruncated, TCP). Use like -muo. Preset: "
+-#if M_PRESET==UDP_ONLY
++#if M_PRESET == UDP_ONLY
+ 	"-muo"
+-#elif M_PRESET==TCP_ONLY
++#elif M_PRESET == TCP_ONLY
+ 	"-mto"
+-#elif M_PRESET==TCP_UDP
++#elif M_PRESET == TCP_UDP
+ 	"-mtu"
+ #else
+ 	"-mut"
+Index: b/src/dns_query.c
+===================================================================
+--- a/src/dns_query.c
++++ b/src/dns_query.c
+@@ -47,10 +47,10 @@
+ #include "debug.h"
+ 
+ 
+-#if defined(NO_TCP_QUERIES) && M_PRESET!=UDP_ONLY
++#if defined(NO_TCP_QUERIES) && M_PRESET != UDP_ONLY
+ # error "You may not define NO_TCP_QUERIES when M_PRESET is not set to UDP_ONLY"
+ #endif
+-#if defined(NO_UDP_QUERIES) && M_PRESET!=TCP_ONLY
++#if defined(NO_UDP_QUERIES) && M_PRESET != TCP_ONLY
+ # error "You may not define NO_UDP_QUERIES when M_PRESET is not set to TCP_ONLY"
+ #endif
+ 

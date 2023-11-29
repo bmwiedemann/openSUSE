@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 19 18:37:36 UTC 2023 - Alex Bihlmaier <thalunil@kallisti.at>
+
+- user request: manpage added
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1193140
+
+-------------------------------------------------------------------
 Mon Nov  6 21:41:52 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - 🙄 also require perl-IO-Socket-INET6 to ipv6 works out of the box

@@ -64,4 +64,17 @@
 </comment>
     <requestid>1120658</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7b1e7a27cf95a5f6459183c34a72563e</srcmd5>
+    <version>2.3.0</version>
+    <time>1700772054</time>
+    <user>anag+factory</user>
+    <comment>- fixed typo: Requires: /usr/bin/chardet -&gt; Requires: /usr/bin/chardetect
+- replace Requires: python3-chardet with Requires: /usr/bin/chardet
+- use %{python_module} macro for BuildRequires: of python modules
+- use %{pythons} macro for Requires: of python modules
+- cleanup in the %files section
+</comment>
+    <requestid>1128167</requestid>
+  </revision>
 </revisionlist>

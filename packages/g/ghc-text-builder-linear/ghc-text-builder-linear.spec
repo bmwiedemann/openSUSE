@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Builder for Text and ByteString based on linear types
 License:        BSD-3-Clause

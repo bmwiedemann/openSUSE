@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 22 09:38:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.5:
+  * Fixes installation of the Gnome "heif.thumbnailer" config
+    file.
+
+-------------------------------------------------------------------
+Mon Nov 20 22:18:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.4:
+  * ispe boxes in AVIF images with clap boxes were written with
+    the wrong size (would only happen with svt-av1 encoder),
+    always output MIAF brand for AVIF images
+  * fix kvazaar encoding with odd image sizes and encodings with
+    non-4:2:0 chroma
+
+-------------------------------------------------------------------
 Fri Nov  3 14:49:07 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.17.3
@@ -189,7 +206,7 @@ Sat Dec  3 10:35:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * heif_enc: add benchmarking function to compare codecs
   * copy EXIF/XMP between HEIC/AVIF files and JPEG/PNG in all kinds of combinations
   * remove EXIF orientation tag from input when converting to HEIC/AVIF and
-  * generate irot/imir boxes matching the input orientation 
+  * generate irot/imir boxes matching the input orientation
 
 -------------------------------------------------------------------
 Thu Nov  3 01:53:22 UTC 2022 - Yifan Jiang <yfjiang@suse.com>

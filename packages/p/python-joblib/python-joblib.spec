@@ -1,7 +1,7 @@
 #
 # spec file for package python-joblib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joblib
-Version:        1.2.0
+Version:        1.3.2
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
 URL:            https://github.com/joblib/joblib
 Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#joblib/joblib#05caf0772d605799e5d2337018fd32ac829b37aa
+Patch0:         avoid-deprecated-ast.patch
+# PATCH-FIX-OPENSUSE Also avoid a DeprecationWarning when using fork() under
+# multiprocessing
+Patch1:         also-filter-new-fork-warning.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-lz4
@@ -57,10 +64,10 @@ Joblib can handle large data and has specific optimizations for `numpy` arrays.
 %autosetup -p1 -n joblib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -110,7 +117,7 @@ fi
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/joblib-%{version}*-info
+%{python_sitelib}/joblib-%{version}.dist-info
 %{python_sitelib}/joblib/
 
 %changelog

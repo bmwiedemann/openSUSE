@@ -38,7 +38,7 @@ Provides:       spell
 Requires:       ispell_dictionary
 Requires:       ispell_english_dictionary
 Requires:       words
-Version:        3.4.05
+Version:        3.4.06
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        A Spell Checker

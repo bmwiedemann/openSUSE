@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 25 22:32:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.99:
+  * Export to image functionality disabled for now (I don't know
+    how to accomplish this in GTK 4)
+  * Switch default font from Cascadia Code to Cascadia Mono (GTK
+    4 Cascadia Code would render ligatures, which don't fit well in
+    NFO;
+  * Mono is basically the same font, but without ligatures)
+  * Bump required Python version to 3.8
+  * Add Georgian translation
+
+-------------------------------------------------------------------
 Thu Oct 27 13:12:40 UTC 2022 - C J <c.j@tuta.io>
 
 - update to 1.29:

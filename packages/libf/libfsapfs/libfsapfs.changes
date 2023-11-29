@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 22 13:44:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231122
+  * Build system updates only
+
+-------------------------------------------------------------------
+Wed Nov 15 08:10:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231115
+  * Recognize BTNODE_HASHED and BTNODE_NOHEADER
+
+-------------------------------------------------------------------
 Tue Aug  1 02:39:48 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility 

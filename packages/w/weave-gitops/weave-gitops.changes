@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 23 06:42:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.37.0:
+  * Update README to point download link to 0.37.0
+  * Update docs for release 0.37.0
+  * Update the helm reference
+  * Update helm chart to 4.0.35 to use gitops 0.37.0
+  * Update javascript library version to 0.37.0
+  *  added repo url examples in cli bootstrapping docs (#4142)
+  * Add sidebar for anonymous access back. (#4143)
+  * Docs: Keycloak OIDC Guide (#4113)
+  * Add note about lack of persistent storage. (#4144)
+  * backporting docs to v0.36.0 so users in that version could have
+    up to date docs
+  * UI | fix markdown editor overflow style (#4141)
+  * added docs suggestions while reviewing (#4137)
+  * fix cli flux bootstrap docs
+  * revert Ui changes and stick with the metadata component
+  * Add guides for common OIDC providers (#3917)
+  * Update Explorer monitoring documentation to include the object
+    cleaner metrics.
+  * add wge release notes for v0.32 to v0.3.60 (#4138)
+  * Add cli bootstrap flux docs
+  * Add suspended annotations (#4131)
+  * added dependabot support for github actions
+  * Fix website README
+  * Allow optional values in OIDC secret
+
+-------------------------------------------------------------------
 Thu Nov 09 10:01:16 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.36.0:

@@ -911,4 +911,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment>Update to 5.15.15 (forwarded request 1108449 from krop)</comment>
     <requestid>1108481</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>34237511a72d17650c4f90320fe6182d</srcmd5>
+    <version>5.15.16</version>
+    <time>1701023786</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128419</requestid>
+  </revision>
 </revisionlist>

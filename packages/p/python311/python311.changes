@@ -1,4 +1,215 @@
 -------------------------------------------------------------------
+Wed Nov 15 09:06:16 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed patch 103213-fetch-CONFIG_ARGS.patch
+- Refresh patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - fix_configure_rst.patch
+
+- Update to 3.11.6:
+  - Core and Builtins
+    - gh-109351: Fix crash when compiling an invalid AST involving a
+      named (walrus) expression.
+    - gh-109207: Fix a SystemError in __repr__ of symtable entry
+      object.
+    - gh-109179: Fix bug where the C traceback display drops notes
+      from SyntaxError.
+    - gh-88943: Improve syntax error for non-ASCII character that
+      follows a numerical literal. It now points on the invalid
+      non-ASCII character, not on the valid numerical literal.
+    - gh-108959: Fix caret placement for error locations for subscript
+      and binary operations that involve non-semantic parentheses and
+      spaces. Patch by Pablo Galindo
+    - gh-108520: Fix
+      multiprocessing.synchronize.SemLock.__setstate__() to properly
+      initialize multiprocessing.synchronize.SemLock._is_fork_ctx.
+      This fixes a regression when passing a SemLock accross nested
+      processes.
+    - Rename multiprocessing.synchronize.SemLock.is_fork_ctx to
+      multiprocessing.synchronize.SemLock._is_fork_ctx to avoid
+      exposing it as public API.
+  - Library
+    - gh-110036: On Windows, multiprocessing Popen.terminate() now
+      catchs PermissionError and get the process exit code. If the
+      process is still running, raise again the PermissionError.
+      Otherwise, the process terminated as expected: store its exit
+      code. Patch by Victor Stinner.
+    - gh-110038: Fixed an issue that caused KqueueSelector.select() to
+      not return all the ready events in some cases when a file
+      descriptor is registered for both read and write.
+    - gh-109631: re functions such as re.findall(), re.split(),
+      re.search() and re.sub() which perform short repeated matches
+      can now be interrupted by user.
+    - gh-109593: Avoid deadlocking on a reentrant call to the
+      multiprocessing resource tracker. Such a reentrant call, though
+      unlikely, can happen if a GC pass invokes the finalizer for a
+      multiprocessing object such as SemLock.
+    - gh-109613: Fix os.stat() and os.DirEntry.stat(): check for
+      exceptions. Previously, on Python built in debug mode, these
+      functions could trigger a fatal Python error (and abort the
+      process) when a function succeeded with an exception set. Patch
+      by Victor Stinner.
+    - gh-109375: The pdb alias command now prevents registering
+      aliases without arguments.
+    - gh-107219: Fix a race condition in concurrent.futures. When a
+      process in the process pool was terminated abruptly (while the
+      future was running or pending), close the connection write end.
+      If the call queue is blocked on sending bytes to a worker
+      process, closing the connection write end interrupts the send,
+      so the queue can be closed. Patch by Victor Stinner.
+    - gh-50644: Attempts to pickle or create a shallow or deep copy of
+      codecs streams now raise a TypeError. Previously, copying failed
+      with a RecursionError, while pickling produced wrong results
+      that eventually caused unpickling to fail with a RecursionError.
+    - gh-108987: Fix _thread.start_new_thread() race condition. If a
+      thread is created during Python finalization, the newly spawned
+      thread now exits immediately instead of trying to access freed
+      memory and lead to a crash. Patch by Victor Stinner.
+    - gh-108843: Fix an issue in ast.unparse() when unparsing
+      f-strings containing many quote types.
+    - gh-108682: Enum: raise TypeError if super().__new__() is called
+      from a custom __new__.
+    - gh-105829: Fix concurrent.futures.ProcessPoolExecutor deadlock
+    - gh-64662: Fix support for virtual tables in
+      sqlite3.Connection.iterdump(). Patch by Aviv Palivoda.
+    - gh-107913: Fix possible losses of errno and winerror values in
+      OSError exceptions if they were cleared or modified by the
+      cleanup code before creating the exception object.
+    - gh-104372: On Linux where subprocess can use the vfork() syscall
+      for faster spawning, prevent the parent process from blocking
+      other threads by dropping the GIL while it waits for the
+      vfork’ed child process exec() outcome. This prevents spawning a
+      binary from a slow filesystem from blocking the rest of the
+      application.
+    - gh-84867: unittest.TestLoader no longer loads test cases from
+      exact unittest.TestCase and unittest.FunctionTestCase classes.
+  - Documentation
+    - gh-109209: The minimum Sphinx version required for the
+      documentation is now 4.2.
+    - gh-105052: Update timeit doc to specify that time in seconds is
+      just the default.
+    - gh-102823: Document the return type of x // y when x and y have
+      type float.
+  - Tests
+    - gh-110031: Skip test_threading tests using thread+fork if Python
+      is built with Address Sanitizer (ASAN). Patch by Victor Stinner.
+    - gh-110088: Fix test_asyncio timeouts: don’t measure the maximum
+      duration, a test should not measure a CI performance. Only
+      measure the minimum duration when a task has a timeout or delay.
+      Add CLOCK_RES to test_asyncio.utils. Patch by Victor Stinner.
+    - gh-110033: Fix test_interprocess_signal() of test_signal. Make
+      sure that the subprocess.Popen object is deleted before the test
+      raising an exception in a signal handler. Otherwise,
+      Popen.__del__() can get the exception which is logged as
+      Exception ignored in: ... and the test fails. Patch by Victor
+      Stinner.
+    - gh-109594: Fix test_timeout() of
+      test_concurrent_futures.test_wait. Remove the future which may
+      or may not complete depending if it takes longer than the
+      timeout ot not. Keep the second future which does not complete
+      before wait() timeout. Patch by Victor Stinner.
+    - gh-109748: Fix test_zippath_from_non_installed_posix() of
+      test_venv: don’t copy __pycache__/ sub-directories, because they
+      can be modified by other Python tests running in parallel. Patch
+      by Victor Stinner.
+    - gh-103053: Skip test_freeze_simple_script() of
+      test_tools.test_freeze if Python is built with ./configure
+      --enable-optimizations, which means with Profile Guided
+      Optimization (PGO): it just makes the test too slow. The freeze
+      tool is tested by many other CIs with other (faster) compiler
+      flags. Patch by Victor Stinner.
+    - gh-109396: Fix test_socket.test_hmac_sha1() in FIPS mode. Use a
+      longer key: FIPS mode requires at least of at least 112 bits.
+      The previous key was only 32 bits. Patch by Victor Stinner.
+    - gh-104736: Fix test_gdb on Python built with LLVM clang 16 on
+      Linux ppc64le (ex: Fedora 38). Search patterns in gdb “bt”
+      command output to detect when gdb fails to retrieve the
+      traceback. For example, skip a test if Backtrace stopped: frame
+      did not save the PC is found. Patch by Victor Stinner.
+    - gh-109237: Fix test_site.test_underpth_basic() when the working
+      directory contains at least one non-ASCII character: encode the
+      ._pth file to UTF-8 and enable the UTF-8 Mode to use UTF-8 for
+      the child process stdout. Patch by Victor Stinner.
+    - gh-109230: Fix test_pyexpat.test_exception(): it can now be run
+      from a directory different than Python source code directory.
+      Before, the test failed in this case. Skip the test if
+      Modules/pyexpat.c source is not available. Skip also the test on
+      Python implementations other than CPython. Patch by Victor
+      Stinner.
+    - gh-109015: Fix test_asyncio, test_imaplib and test_socket tests
+      on FreeBSD if the TCP blackhole is enabled (sysctl
+      net.inet.tcp.blackhole). Skip the few tests which failed with
+      ETIMEDOUT which such non standard configuration. Currently, the
+      FreeBSD GCP image enables TCP and UDP blackhole (sysctl
+      net.inet.tcp.blackhole=2 and sysctl net.inet.udp.blackhole=1).
+      Patch by Victor Stinner.
+    - gh-91960: Skip test_gdb if gdb is unable to retrieve Python
+      frame objects: if a frame is <optimized out>. When Python is
+      built with “clang -Og”, gdb can fail to retrive the frame
+      parameter of _PyEval_EvalFrameDefault(). In this case, tests
+      like py_bt() are likely to fail. Without getting access to
+      Python frames, python-gdb.py is mostly clueless on retrieving
+      the Python traceback. Moreover, test_gdb is no longer skipped on
+      macOS if Python is built with Clang. Patch by Victor Stinner.
+    - gh-108962: Skip test_tempfile.test_flags() if chflags() fails
+      with “OSError: [Errno 45] Operation not supported” (ex: on
+      FreeBSD 13). Patch by Victor Stinner.
+    - gh-89392: Removed support of test_main() function in tests. They
+      now always use normal unittest test runner.
+    - gh-108851: Fix test_tomllib recursion tests for WASI buildbots:
+      reduce the recursion limit and compute the maximum nested
+      array/dict depending on the current available recursion limit.
+      Patch by Victor Stinner.
+    - gh-108851: Add get_recursion_available() and
+      get_recursion_depth() functions to the test.support module.
+      Patch by Victor Stinner.
+    - gh-108822: regrtest now computes statistics on all tests:
+      successes, failures and skipped. test_netrc, test_pep646_syntax
+      and test_xml_etree now return results in their test_main()
+      function. Patch by Victor Stinner and Alex Waygood.
+    - gh-108388: Convert test_concurrent_futures to a package of 7
+      sub-tests. Patch by Victor Stinner.
+    - gh-108388: Split test_multiprocessing_fork,
+      test_multiprocessing_forkserver and test_multiprocessing_spawn
+      into test packages. Each package is made of 4 sub-tests:
+      processes, threads, manager and misc. It allows running more
+      tests in parallel and so reduce the total test duration. Patch
+      by Victor Stinner.
+    - gh-101634: When running the Python test suite with -jN option,
+      if a worker stdout cannot be decoded from the locale encoding
+      report a failed testn so the exitcode is non-zero. Patch by
+      Victor Stinner.
+    - gh-100086: The Python test runner (libregrtest) now logs Python
+      build information like “debug” vs “release” build, or LTO and
+      PGO optimizations. Patch by Victor Stinner.
+    - gh-98903: The Python test suite now fails wit exit code 4 if no
+      tests ran. It should help detecting typos in test names and test
+      methods.
+    - gh-95027: On Windows, when the Python test suite is run with the
+      -jN option, the ANSI code page is now used as the encoding for
+      the stdout temporary file, rather than using UTF-8 which can
+      lead to decoding errors. Patch by Victor Stinner.
+    - gh-93353: regrtest now checks if a test leaks temporary files or
+      directories if run with -jN option. Patch by Victor Stinner.
+  - Build
+    - gh-63760: Fix Solaris build: no longer redefine the
+      gethostname() function. Solaris defines the function since 2005.
+      Patch by Victor Stinner, original patch by Jakub Kulík.
+    - gh-108740: Fix a race condition in make regen-all. The
+      deepfreeze.c source and files generated by Argument Clinic are
+      now generated or updated before generating “global objects”.
+      Previously, some identifiers may miss depending on the order in
+      which these files were generated. Patch by Victor Stinner.
+  - Windows
+    - gh-109991: Update Windows build to use OpenSSL 3.0.11.
+    - gh-107565: Update Windows build to use OpenSSL 3.0.10.
+  - macOS
+    - gh-109991: Update macOS installer to use OpenSSL 3.0.11.
+  - Tools/Demos
+    - gh-109991: Update GitHub CI workflows to use OpenSSL 3.0.11 and
+      multissltests to use 1.1.1w, 3.0.11, and 3.1.3.
+
+-------------------------------------------------------------------
 Wed Sep  6 07:52:11 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.11.5 (bsc#1214692):

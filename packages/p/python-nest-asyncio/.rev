@@ -51,4 +51,13 @@
   * Add Python 3.11 support</comment>
     <requestid>1011266</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8803fd8886da6d24c09fc71b6856263d</srcmd5>
+    <version>1.5.8</version>
+    <time>1701121504</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.8:
+  * Python 3.12 support.</comment>
+    <requestid>1129232</requestid>
+  </revision>
 </revisionlist>

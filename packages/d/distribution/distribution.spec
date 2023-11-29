@@ -18,7 +18,7 @@
 
 %define goipath github.com/docker/distribution
 Name:           distribution
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        The toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.19
+BuildRequires:  golang(API) = 1.21
 Provides:       docker-distribution = %{version}
 Obsoletes:      docker-distribution < %{version}
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64

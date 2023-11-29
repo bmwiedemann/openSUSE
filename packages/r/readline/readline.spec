@@ -1,7 +1,7 @@
 #
 # spec file for package readline
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,19 @@ Source4:        https://tiswww.case.edu/php/chet/gpgkey.asc#/%{name}.keyring
 # signatures for official patches
 # official patches
 Patch101:       readline82-001
+Patch102:       readline82-002
+Patch103:       readline82-003
+Patch104:       readline82-004
+Patch105:       readline82-005
+Patch106:       readline82-006
+Patch107:       readline82-007
 Source101:      readline82-001.sig
+Source102:      readline82-002.sig
+Source103:      readline82-003.sig
+Source104:      readline82-004.sig
+Source105:      readline82-005.sig
+Source106:      readline82-006.sig
+Source107:      readline82-007.sig
 # local patches
 Patch200:       readline-%{version}.dif
 Patch201:       readline-6.3-input.dif
@@ -105,16 +117,22 @@ as well as programming with the interface of the readline library.
 %prep
 %setup -q -n readline-%{version}%{rextend}
 # official patches
-%patch101 -p0
+%patch -P101 -p0
+%patch -P102 -p0
+%patch -P103 -p0
+%patch -P104 -p0
+%patch -P105 -p0
+%patch -P106 -p0
+%patch -P107 -p0
 # local patches
-%patch201 -p2 -b .zerotty
-%patch202 -p2 -b .conf
-%patch203 -p2 -b .metamode
-%patch205  -b .xm
-%patch206  -b .destdir
-%patch207 -p2 -b .tmp
-%patch208 -p2 -b .screen
-%patch200  -b .0
+%patch -P201 -p2 -b .zerotty
+%patch -P202 -p2 -b .conf
+%patch -P203 -p2 -b .metamode
+%patch -P205  -b .xm
+%patch -P206  -b .destdir
+%patch -P207 -p2 -b .tmp
+%patch -P208 -p2 -b .screen
+%patch -P200  -b .0
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Nov 21 18:02:41 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.6
+
+  Regularly scheduled major release
+  As usual, a *lot* of patches don't make it to this list.
+
+  + New Features 
+    * rust-config: add support for default config items
+    * rhg: add config defaults to configitems.toml
+    * rhg: support "status FILE"
+    * rhg: support rhg files [FILE]
+    * commands: add admin namespace
+    * admin-command: add verify command
+    * debug-delta-chain: add options to control what we compute
+    * Added some caching for uncompressed revlog chunks that speed up 
+      some operations
+
+  + Bug Fixes 
+    * Improve OpenVMS support
+    * byteify-strings: passe sysstr to attr function and wrapper
+    * journal: track bookmark deletion
+    * transaction: actually delete file created during the transaction 
+      on rollback
+    * pull: avoid referencing a variable before it is initialized
+    * rust-filepatterns: also normalize RelPath
+    * narrow: hoist a variable to a higher level to avoid use-before-init 
+      warning
+    * convert: stabilize subversion date sorter
+    * run-tests: detect HGWITHRUSTEXT value
+    * censor: accept censored revision during upgrade
+    * rust-matchers: fix quadratic complexity in `FileMatcher`
+    * unstable: do not consider internal phases when computing unstable
+    * Still a whole bunch of Python 2 -> 3 migration leftovers
+
+  + Backwards Compatibility Changes 
+    * perf: display all timing by default
+    * infinitepush: drop the extension
+    * debug-delta-chain: print less data by default
+
+  + Internal API Changes 
+    * The revlog interface has been significantly cleaned up.
+    * configitems: add `documentation` field
+    * configitems: declare items in a TOML file
+    * configitems: move blackbox's config items to the new configitems.toml
+    * path-suboption: deprecated specifying the attributes as bytes
+    * pycompat: deprecate using bytes
+    * check-code: drop the `safehasattr` rule
+    * safehasattr: drop usage in favor of hasattr
+    * rust: add `UncheckedRevision` type
+    * rust: implement the `Graph` trait for all revlogs
+    * rust: make `Revision` a newtype
+    * perf: change the way we approach revlog reading
+    * perf: ensure all readlog's reading is done within a `reading` context
+    * delta-chain: move the debugdeltachain command in revlogutils
+
+-------------------------------------------------------------------
 Tue Nov  7 10:33:30 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.5.3 

@@ -1,7 +1,7 @@
 #
 # spec file for package tango-icon-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,8 @@ Patch0:         tango-icon-theme-rsvg-2_35_2.patch
 Patch1:         tango-icon-theme-extras-rsvg-2_35_2.patch
 # PATCH-FIX-UPSTREAM tango-icon-theme-reproducible.patch fdo#94510 bwiedemann@suse.com -- Drop png timestamps.
 Patch2:         tango-icon-theme-reproducible.patch
-BuildRequires:  bitstream-vera-fonts
 BuildRequires:  ImageMagick-devel
+BuildRequires:  bitstream-vera-fonts
 BuildRequires:  fdupes
 BuildRequires:  icon-naming-utils
 BuildRequires:  intltool
@@ -50,11 +50,11 @@ some specific icons from the legacy tango-icon-theme-extras package.
 
 %prep
 %setup -q -b 1
-%patch0 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 2 -p1
 cd ../%{name}-extras-0.1.1
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 # Needed by patch0, patch1 and patch2.

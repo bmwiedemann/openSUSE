@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 23 09:53:18 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid stuck build/tests
+
+-------------------------------------------------------------------
 Tue Aug  1 19:25:15 UTC 2023 - Martin Liška <martin.liska@hey.com>
 
 * Add use-FORTIFY_SOURCE-from-distribution.patch and use FS settings from distribution

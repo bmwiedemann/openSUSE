@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 27 16:10:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.3:
+  * Improve the performance when parsing a table with nested
+    dotted keys. (#193)
+  * Keep the newlines when replacing a table. (#323)
+  * Fixed a bug that overwriting a sub table with a plain value
+    raises an error. (#313)
+  * Correct the return type of integer division. (#312)
+
+-------------------------------------------------------------------
 Thu Sep  7 11:29:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.1:

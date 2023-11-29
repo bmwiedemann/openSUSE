@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 14 12:09:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.0:
+  * New method to determine the actual zone name for a given
+    FQDN. Historically it was an extraction
+    of the second-level domain given well-known TLDs (eg.,
+    `domain.net` for `www.domain.net`) using
+    `tldextract`, and usage of `--delegated` option to enforce a
+    specific zone name that is useful for
+    third-level domains hosted on a specific zone (eg., sub-zone
+    `sub.domain.net` delegated from zone
+    `domain.net`).
+  * It is now possible to use the `--resolve-zone-name` flag on
+    Lexicon client to trigger an actual
+    resolution of the zone name from a given FQDN using live DNS
+    servers by leveraging `dnspython`
+    utilities. Most of the time this makes `--delegated` useless,
+    since Lexicon will be able to guess the correct zone name.
+  * Add support to Python 3.12.
+  * Support older versions of requests (<2.27.0) in `ovh`
+    provider.
+  * Drop support for Python 3.7
+  * Protect `ovh` provider against invalid response bodies
+  * that are returned sometimes by OVH APIs.
+  * Fix filtering by record content in `godaddy` provider.
+  * Add `pyotp` Python dependency in Lexicon to help implementing
+    OTP (one-time password) on providers whose API supports this
+    kind of authentication.
+  * Add OTP support on `hover` provider, with a new flag named
+    `--auth-totp-secret`.
+  * Add type marker `py.typed` to inform types checkers about
+    availability of type annotations in Lexicon codebase.
+  * Stop using `cryptography` in providers where only hashing is
+    needed.
+
+-------------------------------------------------------------------
 Mon Jul 31 12:33:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.0:
@@ -81,14 +117,14 @@ Wed Jul 14 10:45:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Jan 28 01:09:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to Version 3.5.3
-  * Handle large number of hosted zones in route53 provider 
+  * Handle large number of hosted zones in route53 provider
 - Changelog for 3.5.2
   * Fix domains in "lock" state with joker provider
 - Changelog for 3.5.1
   * Add the Joker.com provider
-  * Add environment variable TLDEXTRACT_CACHE_PATH to configure a 
+  * Add environment variable TLDEXTRACT_CACHE_PATH to configure a
     tldextract cache custom location for Lexicon
-  * Old environment variable TLDEXTRACT_CACHE_FILE is deprecated 
+  * Old environment variable TLDEXTRACT_CACHE_FILE is deprecated
     and will be removed in a future release
 - Changelog for 3.5.0
   * Avoid installation problems with setuptools==50
@@ -106,18 +142,18 @@ Thu Jan 28 01:09:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Improve versions constraints by declaring latest major versions
     known to work with Lexicon
 - Changelog for 3.4.2
-  * Relax versions constraints on Lexicon dependencies until there 
-    is a real need. 
+  * Relax versions constraints on Lexicon dependencies until there
+    is a real need.
 - Changelog for 3.4.1
   * Add the Njalla provider
 - Changelog for 3.4.0
   * Use poetry to manage dependencies, build and package Lexicon.
-  * The beautifulsoup4 dependency has been integrated to the core 
+  * The beautifulsoup4 dependency has been integrated to the core
     ones for generic purpose. As a consequence henet, easyname and
     gratisdns providers do not have optional dependencies anymore.
   * Remove support for Python 2.7.
   * Remove support for Python 3.5.
-  * Remove the extra security from requests dependency which does 
+  * Remove the extra security from requests dependency which does
     not make sense anymore on recent versions of Python.
 - Changelog for 3.3.28
   * Fix localzone provider to make it work with dnspython 2.x.
@@ -138,7 +174,7 @@ Wed Jul  8 04:43:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Register properly the pytest mark ext_suite_1
   * Use Bearer Token Authorization for Cloudflare API Tokens
   * Remove Hetzner KonsoleH provider that is broken and not maintained
-  * Implement pagination for cloudflare 
+  * Implement pagination for cloudflare
 - add remove-mock.patch gh#AnalogJ/lexicon#706
 
 -------------------------------------------------------------------
@@ -180,7 +216,7 @@ Fri Sep 13 08:42:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.3.3:
   * Failsafe list of records when some content is missing
-  * Update provider specific dependencies link 
+  * Update provider specific dependencies link
   * Add DirectAdmin Provider (#418) * Add provider skeleton for DirectAdmin
 
 -------------------------------------------------------------------

@@ -1561,4 +1561,12 @@
   + Bump Safari version in user agent header. (forwarded request 1126960 from mgorse)</comment>
     <requestid>1127343</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>1afceb03549829eb54a3b4e5bbc803ec</srcmd5>
+    <version>2.42.2</version>
+    <time>1700771927</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128051</requestid>
+  </revision>
 </revisionlist>

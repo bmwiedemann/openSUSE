@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 27 08:56:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6:
+  * Fix regression to include tests in source distribution.
+  * Update to Unicode 15.1.0
+  * String codec name is now "idna2008" as overriding the system codec
+    "idna" was not working.
+  * Fix typing error for codec encoding
+  * "setup.cfg" has been added for this release due to some downstream
+  * lack of adherence to PEP 517. Should be removed in a future release
+    so please prepare accordingly.
+  * Removed reliance on a symlink for the "idna-data" tool to comport
+    with PEP 517 and the Python Packaging User Guide for sdist
+    archives.
+  * Added security reporting protocol for project
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

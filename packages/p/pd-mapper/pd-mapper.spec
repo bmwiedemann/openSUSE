@@ -14,40 +14,35 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-Name:		pd-mapper
-Version:	1.0_107104b20b
-Release:	0
-Summary:	Qualcomm Protection Domain mapper
-License:	BSD-3-Clause
-Group:		System/Daemons
-URL:		https://github.com/andersson/pd-mapper
-BuildRequires:	qrtr qrtr-devel
-Source0:	pd-mapper-%{version}.tar.xz
-Source1:	pd-mapper.service
+
+
+Name:           pd-mapper
+Version:        1.0~git20230901.10997ba
+Release:        0
+Summary:        Qualcomm Protection Domain mapper
+License:        BSD-3-Clause
+Group:          System/Daemons
+URL:            https://github.com/andersson/pd-mapper
+BuildRequires:  qrtr-devel
+BuildRequires:  xz-devel
+Requires:       qrtr
+Source0:        pd-mapper-%{version}.tar.xz
 ExclusiveArch:  aarch64
-Supplements:	modalias(of:Npmic-glinkT*Cqcom,sc8280xp-pmic-glinkCqcom,pmic-glink)
-%define pdmdir	%{_sbindir}
-%define pdmsrv	%{_unitdir}
-%define fwdir	/lib/firmware/qcom/sc8280xp/LENOVO/21BX
-%define fwbkup	%{fwdir}/fw_backup
+Supplements:    modalias(of:Npmic-glinkT*Cqcom,sc8280xp-pmic-glinkCqcom,pmic-glink)
 
 %description
 Qualcomm protection domain mapper service, which is required by userspace
-applications to access remote processors [Wifi, modem, sensors, battery ..
-,etc] on Qualcomm SoCs using the QRTR protocol.
+applications to access remote processors [Wifi, modem, sensors, battery, etc]
+on Qualcomm SoCs using the QRTR protocol.
 
 %prep
 %autosetup
 
 %build
-%make_build
+%make_build  prefix="%{_prefix}"
 
 %install
-mkdir -p %{buildroot}%{pdmdir}
-strip pd-mapper
-install -m 744 pd-mapper %{buildroot}%{pdmdir}
-mkdir -p %{buildroot}%{pdmsrv}
-install -m 644 %{_sourcedir}/pd-mapper.service %{buildroot}%{pdmsrv}
+%make_install  prefix="%{_prefix}"
 
 %pre
 %service_add_pre pd-mapper.service
@@ -57,37 +52,12 @@ install -m 644 %{_sourcedir}/pd-mapper.service %{buildroot}%{pdmsrv}
 
 %post
 %service_add_post pd-mapper.service
-  fw_blobs="qcadsp8280.mbn qccdsp8280.mbn"
-  for i in $fw_blobs; do
-    file="%{fwdir}/$i.xz"
-      if [ -f $file ]; then
-        [ ! -d %{fwbkup} ] && mkdir -p %{fwbkup}
-
-        echo "Backup and uncompress $i.xz .."
-        cp -a $file %{fwbkup}/
-        unxz $file
-      fi
-  done
-  echo "Kernel needs to reload uncompressed remoteproc firmware. Please reboot system."
 
 %postun
 %service_del_postun pd-mapper.service
-  fw_blobs="qcadsp8280.mbn qccdsp8280.mbn"
-  for i in $fw_blobs; do
-    file="%{fwdir}/$i"
-    backup_file="%{fwbkup}/$i.xz"
-      if [ -f $file ]  && [ -f $backup_file ]; then
-        echo "Delete $i and rollback $i.xz .."
-        rm -f $file
-        mv $backup_file %{fwdir}/ 
-      fi
-  done
-
-  if [ -d "%{fwbkup}" ]; then rm -rf %{fwbkup}; fi
 
 %files
-%defattr(-,root,root)
-%{pdmdir}/pd-mapper
-%{pdmsrv}/pd-mapper.service
+%{_bindir}/pd-mapper
+%{_unitdir}/pd-mapper.service
 
 %changelog

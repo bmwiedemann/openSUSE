@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 21 07:39:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.9 (boo#1217295):
+  + This release adds the following features:
+    - Add a new generic request for the device power cable.
+  + This release adds support for the following hardware:
+    - Lenovo X1 Yoga Gen7 530E.
+    - Advantech BMC devices.
+
+-------------------------------------------------------------------
 Thu Nov 16 10:51:27 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-add fwupd-bsc1130056-change-shim-path.patch: patch was dropped

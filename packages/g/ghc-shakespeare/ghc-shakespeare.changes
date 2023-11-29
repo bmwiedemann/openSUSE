@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 11 03:58:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update shakespeare to version 2.1.0.1.
+  ### 2.1.0.1
+
+  * Fix 100⨯ slowdown on parsec-3.1.15 [#277](https://github.com/yesodweb/shakespeare/pull/277)
+
+  ### 2.1.0
+
+  * Add `OverloadedRecordDot`-style record access in expressions
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:15 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

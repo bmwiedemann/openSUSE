@@ -87,6 +87,8 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedF-scanT-raises_n
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedT-scanF-raises_not_foundT]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedT-scanT-raises_not_foundT]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_upgrade_collection"
+# Disable checks on test names: https://github.com/pytest-dev/pytest-plus#user-content-avoiding-problematic-test-identifiers https://github.com/ansible/ansible-compat/issues/340
+export PYTEST_CHECK_TEST_ID_REGEX=0
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}

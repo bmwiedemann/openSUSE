@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Nov 26 10:49:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reference github tarball
+- cleanup dependencies
+
+-------------------------------------------------------------------
+Sun Nov 19 16:49:31 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.9.1:
+  * Ensure tzdata dependency is installed on Windows
+- additional changes from 4.9.0:
+  * Upgrade code to new minimum supported Python version: 3.8
+  * Settings support for pathlib.Path (#2758)
+  * Various improvements to Simple theme (#2976 & #3234)
+  * Use Furo as Sphinx documentation theme (#3023)
+  * Default to 100 articles maximum in feeds (#3127)
+  * Add period_archives common context variable (#3148)
+  * Use watchfiles as the file-watching backend (#3151)
+  * Add GitHub Actions workflow for GitHub Pages (#3189)
+  * Allow dataclasses in settings (#3204)
+  * Switch build tool to PDM instead of Setuptools/Poetry (#3220)
+  * Provide a plugin_enabled Jinja test for themes (#3235)
+  * Preserve connection order in Blinker (#3238)
+  * Remove social icons from default notmyidea theme (#3240)
+  * Remove unreliable WRITE_SELECTED feature (#3243)
+  * Importer: Report broken embedded video links when importing
+    from Tumblr (#3177)
+  * Importer: Remove newline addition when iterating Photo post
+    types (#3178)
+  * Importer: Force timestamp conversion in Tumblr importer to be
+    UTC with offset (#3221)
+  * Importer: Use tempfile for intermediate HTML file for Pandoc
+    (#3221)
+  * Switch linters to Ruff (#3223)
+- drop python-311.patch: fixed upstream
+- update BuildRequires and Requires to match upstream requirements
+- switch build to pdm
+
+-------------------------------------------------------------------
 Wed Mar  1 07:17:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-311.patch to support python 3.11
@@ -444,7 +483,7 @@ Sun Nov  9 16:39:39 UTC 2014 - benoit.monin@gmx.fr
 -------------------------------------------------------------------
 Sat Sep 20 15:02:41 UTC 2014 - benoit.monin@gmx.fr
 
-- add the requires as buildrequires to guarantee they are available 
+- add the requires as buildrequires to guarantee they are available
 
 -------------------------------------------------------------------
 Mon Sep 15 19:07:03 UTC 2014 - benoit.monin@gmx.fr

@@ -118,4 +118,40 @@
   * Update benchmarks, add psycopg3 (#1042)</comment>
     <requestid>1098177</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4a3052ddfddcfb658f960d1b93ca2227</srcmd5>
+    <version>0.29.0</version>
+    <time>1701023837</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.29.0:
+  * Python 3.12 and PostgreSQL 16 support (#1084)
+  * Add support for tuple-format custom codecs on composite types
+  * Support `target_session_attrs` in URL format, add tests
+  * Infinity numeric support (#1067)
+  * Add support for the `WHERE` clause in `copy_to` methods
+  * Add query logging callbacks and context manager (#1043)
+  * When prepared statements are disabled, avoid relying on them
+    harder (#1065)
+  * Handle environments with HOME set to a not-a-directory
+  * Fix handling of non-ASCII passwords (#1062)
+  * Disable JIT while doing type introspection (#1082)
+  * Remove connection parameter caching in `Pool` (#1053)
+  * Switch to Python 3.12-style `wait_for` (#1086)
+  * Update automatic PostGIS type conversion for Shapely 2.0
+  * Use the `timeout` context manager in the connection path
+  * Small fix for documentation on using SSL in Connection (#995)
+  * Use cleanup_ctx in pool usage doc (#878)
+  * Close cursor portals once the iterator is exhausted (#1088)
+  * Cut BaseProtocol circular reference on close. (#1049)
+  * Allow passing hosts as tuples to `connect()` (in addition to
+  * Drop support for Python 3.7 (#1064)
+
+- Update to 0.27.0
+- update
+  * Add support for password functions (useful for RDS IAM auth)
+  * Vastly speedup executemany by batching protocol messages
+  * Avoid unnecessary overhead during connection reset
+- Update to version 0.20.1</comment>
+    <requestid>1128744</requestid>
+  </revision>
 </revisionlist>

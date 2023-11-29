@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:20:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply fix-build-with-ghc-9.6.x.patch to support ghc-9.6.x.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:23 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

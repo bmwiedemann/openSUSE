@@ -13,20 +13,22 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  5 files changed, 34 insertions(+), 9 deletions(-)
  create mode 100644 Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 
---- a/Doc/library/ensurepip.rst
-+++ b/Doc/library/ensurepip.rst
-@@ -59,8 +59,9 @@ is at least as recent as the one availab
+Index: Python-3.11.6/Doc/library/ensurepip.rst
+===================================================================
+--- Python-3.11.6.orig/Doc/library/ensurepip.rst
++++ Python-3.11.6/Doc/library/ensurepip.rst
+@@ -59,7 +59,9 @@ is at least as recent as the one availab
  By default, ``pip`` is installed into the current virtual environment
  (if one is active) or into the system site packages (if there is no
  active virtual environment). The installation location can be controlled
 -through two additional command line options:
 +through some additional command line options:
- 
++
 +* ``--prefix <dir>``: Installs ``pip`` using the given directory prefix.
- * ``--root <dir>``: Installs ``pip`` relative to the given root directory
+ 
+ * :samp:`--root {dir}`: Installs ``pip`` relative to the given root directory
    rather than the root of the currently active virtual environment (if any)
-   or the default root for the current Python installation.
-@@ -92,7 +93,7 @@ Module API
+@@ -92,7 +94,7 @@ Module API
     Returns a string specifying the available version of pip that will be
     installed when bootstrapping an environment.
  
@@ -35,7 +37,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
                          altinstall=False, default_pip=False, \
                          verbosity=0)
  
-@@ -102,6 +103,8 @@ Module API
+@@ -102,6 +104,8 @@ Module API
     If *root* is ``None``, then installation uses the default install location
     for the current environment.
  
@@ -44,7 +46,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
     *upgrade* indicates whether or not to upgrade an existing installation
     of an earlier version of ``pip`` to the available version.
  
-@@ -122,6 +125,8 @@ Module API
+@@ -122,6 +126,8 @@ Module API
     *verbosity* controls the level of output to :data:`sys.stdout` from the
     bootstrapping operation.
  
@@ -53,8 +55,10 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
     .. audit-event:: ensurepip.bootstrap root ensurepip.bootstrap
  
     .. note::
---- a/Lib/ensurepip/__init__.py
-+++ b/Lib/ensurepip/__init__.py
+Index: Python-3.11.6/Lib/ensurepip/__init__.py
+===================================================================
+--- Python-3.11.6.orig/Lib/ensurepip/__init__.py
++++ Python-3.11.6/Lib/ensurepip/__init__.py
 @@ -122,27 +122,27 @@ def _disable_pip_configuration_settings(
      os.environ['PIP_CONFIG_FILE'] = os.devnull
  
@@ -117,8 +121,10 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          upgrade=args.upgrade,
          user=args.user,
          verbosity=args.verbosity,
---- a/Lib/test/test_ensurepip.py
-+++ b/Lib/test/test_ensurepip.py
+Index: Python-3.11.6/Lib/test/test_ensurepip.py
+===================================================================
+--- Python-3.11.6.orig/Lib/test/test_ensurepip.py
++++ Python-3.11.6/Lib/test/test_ensurepip.py
 @@ -112,6 +112,17 @@ class TestBootstrap(EnsurepipMixin, unit
              unittest.mock.ANY,
          )
@@ -137,9 +143,11 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
      def test_bootstrapping_with_user(self):
          ensurepip.bootstrap(user=True)
  
---- a/Makefile.pre.in
-+++ b/Makefile.pre.in
-@@ -1756,7 +1756,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
+Index: Python-3.11.6/Makefile.pre.in
+===================================================================
+--- Python-3.11.6.orig/Makefile.pre.in
++++ Python-3.11.6/Makefile.pre.in
+@@ -1758,7 +1758,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -148,7 +156,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  	fi
  
  altinstall: commoninstall
-@@ -1766,7 +1766,7 @@ altinstall: commoninstall
+@@ -1768,7 +1768,7 @@ altinstall: commoninstall
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -157,7 +165,9 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  	fi
  
  commoninstall:  check-clean-src @FRAMEWORKALTINSTALLFIRST@ \
+Index: Python-3.11.6/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
+===================================================================
 --- /dev/null
-+++ b/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
++++ Python-3.11.6/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 @@ -0,0 +1 @@
 +A directory prefix can now be specified when using :mod:`ensurepip`.

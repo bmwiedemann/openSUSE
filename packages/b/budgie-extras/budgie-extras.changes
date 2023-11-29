@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:24:39 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Budgie Extras 1.7.0 "TLC"
+  * Lots of new and updated translations
+  * Support compiling WeatherShow with either libsoup3
+    (recommended) or the legacy libsoup2.4
+  * Quicknote - add graphical copy and paste buttons to complement
+    equivalent shortcut keys
+  * Visualspace - add an applet setting to reverse hover-icon
+    scrolling through workspaces
+  * Screen Brightness - don't override Nightlight colour when
+    opening the applet popover
+  * Wallstreet - default to changing wallpapers in alphabetical
+    file-order
+- Trash applet not needed for 10.8
+
+-------------------------------------------------------------------
 Wed Mar 29 13:07:28 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Budgie Extras 1.6.0 "Snap Fantastic"

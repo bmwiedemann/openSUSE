@@ -1,7 +1,7 @@
 #
 # spec file for package kded
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,8 @@ BuildRequires:  cmake(Qt5Network) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
+# One of the main tasks of kded is to run kconf_update when necessary
+Requires:       kconf_update5
 
 %description
 KDED runs in the background and performs a number of small tasks.

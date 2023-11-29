@@ -109,4 +109,12 @@ Required for python-puppetboard SR# 263316</comment>
 - Switch to pyproject macros.</comment>
     <requestid>1096052</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>690e790ec53f101a4ed000340d086836</srcmd5>
+    <version>1.2.1</version>
+    <time>1701121464</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129137</requestid>
+  </revision>
 </revisionlist>

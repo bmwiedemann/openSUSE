@@ -116,6 +116,8 @@ BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dirac) >= 0.10
+BuildRequires:  pkgconfig(dvdnav) >= 4.1.2
+BuildRequires:  pkgconfig(dvdread) >= 4.1.2
 BuildRequires:  pkgconfig(egl)
 %if %{with fluidsynth}
 BuildRequires:  pkgconfig(fluidsynth)
@@ -228,8 +230,6 @@ BuildRequires:  pkgconfig(libmfx)
 %endif
 
 %if 0%{?BUILD_ORIG}
-BuildRequires:  pkgconfig(dvdnav) >= 4.1.2
-BuildRequires:  pkgconfig(dvdread) >= 4.1.2
 BuildRequires:  pkgconfig(libde265) >= 0.9
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libopenaptx) == 0.2.0
@@ -750,91 +750,89 @@ sed -ie "/subdir('decklink')/d" sys/meson.build
 export PYTHON=%{_bindir}/python3
 %meson \
 %if ! 0%{?BUILD_ORIG}
-	-Dpackage-name='openSUSE GStreamer-plugins-bad package' \
-	-Dpackage-origin='http://download.opensuse.org' \
-	-Ddecklink=disabled \
-	-Dlibde265=disabled \
-	-Dmodplug=disabled \
-	-Dopenh264=disabled \
-	-Dresindvd=disabled \
-	-Drtmp=disabled \
-	-Dsiren=disabled \
-	-Dvoaacenc=disabled \
-	-Dx265=disabled \
-	-Dopenaptx=disabled \
+	-D package-name='openSUSE GStreamer-plugins-bad package' \
+	-D package-origin='http://download.opensuse.org' \
+	-D decklink=disabled \
+	-D libde265=disabled \
+	-D modplug=disabled \
+	-D openh264=disabled \
+	-D rtmp=disabled \
+	-D voaacenc=disabled \
+	-D x265=disabled \
+	-D openaptx=disabled \
 %endif
-	-Dgpl=enabled \
+	-D gpl=enabled \
 %if %{without avtp}
-	-Davtp=disabled \
+	-D avtp=disabled \
 %endif
 %if %{without faac}
-	-Dfaac=disabled \
+	-D faac=disabled \
 %endif
 %if %{without faad}
-	-Dfaad=disabled \
+	-D faad=disabled \
 %endif
 %if %{without fdk_aac}
-	-Dfdkaac=disabled \
+	-D fdkaac=disabled \
 %endif
 %if %{without openh264}
-	-Dopenh264=disabled \
+	-D openh264=disabled \
 %endif
-	-Ddirectfb=disabled \
-	-Ddoc=disabled \
-	-Dexamples=disabled \
-	-Dfestival=disabled \
-	-Dflite=disabled \
+	-D directfb=disabled \
+	-D doc=disabled \
+	-D examples=disabled \
+	-D festival=disabled \
+	-D flite=disabled \
 %if %{without fluidsynth}
-	-Dfluidsynth=disabled \
+	-D fluidsynth=disabled \
 %endif
 %if %{without openjp2}
-	-Dopenjpeg=disabled \
+	-D openjpeg=disabled \
 %endif
 %if %{without zxing}
-	-Dzxing=disabled \
+	-D zxing=disabled \
 %endif
 %if %{without zbar}
-	-Dzbar=disabled \
+	-D zbar=disabled \
 %endif
 %if %{without ldacBT}
-	-Dldac=disabled \
+	-D ldac=disabled \
 %endif
-	-Dhls-crypto=openssl \
-	-Dintrospection=enabled \
-	-Diqa=disabled \
-	-Dkate=disabled \
-	-Dmagicleap=disabled \
+	-D hls-crypto=openssl \
+	-D introspection=enabled \
+	-D iqa=disabled \
+	-D kate=disabled \
+	-D magicleap=disabled \
 %if %{without microdns}
-	-Dmicrodns=disabled \
+	-D microdns=disabled \
 %else
-	-Dmicrodns=enabled \
+	-D microdns=enabled \
 %endif
-	-Dopencv=disabled \
-	-Dopenni2=disabled \
-	-Dopensles=disabled \
-	-Dsctp=disabled \
-	-Dsvthevcenc=disabled \
-	-Dtinyalsa=disabled \
+	-D opencv=disabled \
+	-D openni2=disabled \
+	-D opensles=disabled \
+	-D sctp=enabled \
+	-D svthevcenc=disabled \
+	-D tinyalsa=disabled \
 %if %{without voamrwbenc}
-	-Dvoamrwbenc=disabled \
+	-D voamrwbenc=disabled \
 %endif
-	-Dwasapi=disabled \
-	-Dwasapi2=disabled \
-	-Dwayland=enabled \
-	-Dwildmidi=disabled \
-	-Dwpe=disabled \
-	-Dgs=disabled \
-	-Disac=disabled \
-	-Donnx=disabled \
+	-D wasapi=disabled \
+	-D wasapi2=disabled \
+	-D wayland=enabled \
+	-D wildmidi=disabled \
+	-D wpe=disabled \
+	-D gs=disabled \
+	-D isac=disabled \
+	-D onnx=disabled \
 %ifarch x86_64
-	-Dmsdk=enabled \
-	-Dqsv=enabled \
+	-D msdk=enabled \
+	-D qsv=enabled \
 %else
-	-Dmsdk=disabled \
-	-Dqsv=disabled \
+	-D msdk=disabled \
+	-D qsv=disabled \
 %endif
-	-Damfcodec=disabled \
-	-Ddirectshow=disabled \
+	-D amfcodec=disabled \
+	-D directshow=disabled \
 	%{nil}
 %meson_build
 
@@ -984,6 +982,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtpmanagerbad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtponvif.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsbc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstsctp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsdpelem.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsegmentclip.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstshm.so
@@ -1028,6 +1027,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ifarch x86_64
 %{_libdir}/gstreamer-%{gst_branch}/libgstqsv.so
 %endif
+%{_libdir}/gstreamer-%{gst_branch}/libgstsiren.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstresindvd.so
 
 # Explicitly list openSUSE only plugins
 %if %{with bs2b}
@@ -1206,9 +1207,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenh264.so
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtmp.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstsiren.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstx265.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstresindvd.so
 %endif
 
 %changelog

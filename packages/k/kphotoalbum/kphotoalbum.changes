@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 27 08:23:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.12.0
+  https://www.kphotoalbum.org/2023/11/27/anniversary-release-kphotoalbum-5.12.0/
+  New features:
+  * Support annotating images from the viewer by using letters
+    to assign tags
+  * Add option to sort category page by natural order (kde#475339)
+  * Allow selecting a date range in the DateBar via keyboard
+  * Allow closing the annotation dialog's fullscreen preview
+    using the Escape key
+- Drop patch, no longer needed:
+  * kphotoalbum-exiv2.patch
+
+-------------------------------------------------------------------
 Thu Nov  9 12:30:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add kphotoalbum-exiv2.patch: Fix linking against libexiv2.so.

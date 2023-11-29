@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?sle15allpythons}
 
 Name:           python-editdistance
 Version:        0.6.2

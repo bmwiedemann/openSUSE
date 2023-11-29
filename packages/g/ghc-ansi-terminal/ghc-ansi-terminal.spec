@@ -19,9 +19,9 @@
 %global pkg_name ansi-terminal
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.11.5
+Version:        1.0
 Release:        0
-Summary:        Simple ANSI terminal support, with Windows compatibility
+Summary:        Simple ANSI terminal support
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz

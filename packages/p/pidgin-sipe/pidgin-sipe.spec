@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://sipe.sourceforge.io/
 Source:         http://downloads.sf.net/sipe/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Fix-test-failures-with-appstream-1.0.patch
 BuildRequires:  AppStream
 BuildRequires:  intltool
 BuildRequires:  libtool
@@ -125,7 +127,7 @@ SIP/SIMPLE used by various products:
  * Reuters Messaging.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

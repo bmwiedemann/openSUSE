@@ -254,4 +254,20 @@ This is a maintained fork of python-Flask-Security</comment>
     <comment>- Add required python-requests build dependency to fix tests.</comment>
     <requestid>1114897</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c2622b0e635c8b78efb07497934a5667</srcmd5>
+    <version>5.3.2</version>
+    <time>1701121402</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.2:
+  * Update Quickstart to show how to properly handle SQLAlchemy connections.
+  * Auth Token not returned from /tf-validate.
+  * Fix for latest email_validator deprecation - bump minimum to 2.0.0
+  * Deprecate passing in the anonymous_user class
+  * Compatability with Flask 3.0
+  * Revert change in 5.3.0 that added a Referrer-Policy header.
+  * Fix 'next' propagation when passed as form.next
+- Drop patch filterwarnings-ignore-pkg_resources.patch, no longer needed</comment>
+    <requestid>1129021</requestid>
+  </revision>
 </revisionlist>

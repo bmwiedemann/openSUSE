@@ -21,9 +21,9 @@
 %endif
 
 Name:           raspberrypi-eeprom
-Version:        2023.01.11
+Version:        2023.10.30
 Release:        0
-Summary:        Raspberry Pi 4 EEPROM firmware
+Summary:        Raspberry Pi 4 and Pi 5 EEPROM firmware
 License:        SUSE-Firmware
 Group:          System/Boot
 URL:            https://github.com/raspberrypi/rpi-eeprom
@@ -42,7 +42,7 @@ Requires:       raspberrypi-eeprom-firmware
 BuildArch:      noarch
 
 %description
-First stage bootloader packages for Raspberry Pi 4
+First stage bootloader packages for Raspberry Pi 4 and Pi 5
 
 %package firmware
 Summary:        Raspberry Pi 4 EEPROM firmware blobs
@@ -53,7 +53,7 @@ Requires:       raspberrypi-eeprom
 BuildRequires:  fdupes
 
 %description firmware
-First stage bootloader fimware blobs for Raspberry Pi 4
+First stage bootloader fimware blobs for Raspberry Pi 4 and Pi 5
 
 %prep
 %autosetup -p1
@@ -68,13 +68,15 @@ install -m 0755 rpi-eeprom-update %{buildroot}%{_bindir}
 mkdir -p %{buildroot}/etc/default
 install -m 644 rpi-eeprom-update-default %{buildroot}/etc/default/rpi-eeprom-update
 
-mkdir -p %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
-mv firmware/beta %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
-mv firmware/critical %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
-mv firmware/stable %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
-cp -a firmware/latest %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
-cp -a firmware/default %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
-%fdupes -s %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
+for model in 2711 2712; do
+  mkdir -p %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader-$model
+  mv firmware-$model/beta %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader-$model
+  mv firmware-$model/critical %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader-$model
+  mv firmware-$model/stable %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader-$model
+  cp -a firmware-$model/latest %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader-$model
+  cp -a firmware-$model/default %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader-$model
+  %fdupes -s %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader-$model
+done
 
 %files
 %license LICENSE
@@ -86,10 +88,10 @@ cp -a firmware/default %{buildroot}/%{_firmwaredir}/raspberrypi/bootloader
 %files firmware
 %{_firmwaredir}
 %{_firmwaredir}/raspberrypi
-%{_firmwaredir}/raspberrypi/bootloader/beta
-%{_firmwaredir}/raspberrypi/bootloader/critical
-%{_firmwaredir}/raspberrypi/bootloader/stable
-%{_firmwaredir}/raspberrypi/bootloader/latest
-%{_firmwaredir}/raspberrypi/bootloader/default
+%{_firmwaredir}/raspberrypi/bootloader-*/beta
+%{_firmwaredir}/raspberrypi/bootloader-*/critical
+%{_firmwaredir}/raspberrypi/bootloader-*/stable
+%{_firmwaredir}/raspberrypi/bootloader-*/latest
+%{_firmwaredir}/raspberrypi/bootloader-*/default
 
 %changelog

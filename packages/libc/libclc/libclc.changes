@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 20 12:57:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- let sle15-sp6 require llvm17/clang17
+
+-------------------------------------------------------------------
 Wed Sep 20 21:30:56 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 17.0.1.

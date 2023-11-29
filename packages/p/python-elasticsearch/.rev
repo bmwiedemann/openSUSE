@@ -161,4 +161,23 @@
   * Add the Synonyms APIs</comment>
     <requestid>1114802</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eedb2697966606b961870e811886b279</srcmd5>
+    <version>8.11.0</version>
+    <time>1701206327</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.11.0:
+  * Added support for Python 3.12
+  * Added missing `scores` parameter to create trained model
+    vocabulary API
+  * Added missing `delete_dest_index` parameter to delete
+    transform API
+  * Removed deprecation warnings when using `body` parameter
+  * Fixed some type hints to use covariant Sequence instead of
+    invariant List (#2324, #2325)
+
+  * Using insecure SSL configuration (verify_cert=False) raises a
+- fix Source url, use pypi package</comment>
+    <requestid>1129218</requestid>
+  </revision>
 </revisionlist>

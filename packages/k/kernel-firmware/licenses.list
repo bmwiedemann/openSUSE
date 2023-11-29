@@ -163,6 +163,7 @@ mt76x2u:	mediatek	LICENCE.mediatek
 mt7615e:	mediatek	LICENCE.mediatek
 mt7921:		mediatek	LICENCE.mediatek
 mt7922:		mediatek	LICENCE.mediatek
+mt7988:		mediatek	LICENCE.mediatek
 nfp:		nfp		LICENCE.Netronome
 wil6210:	atheros		LICENSE.QualcommAtheros_ath10k
 venus:		media		LICENSE.qcom qcom/NOTICE.txt
@@ -187,3 +188,4 @@ nxp-sr1xx:	platform	LICENSE.nxp
 btnxpuart:	platform	LICENSE.nxp
 qcom-sc8280xp:	sound		LICENCE.linaro
 amlogic:	bluetooth	LICENSE.amlogic
+powervr:	platform	LICENSE.powervr

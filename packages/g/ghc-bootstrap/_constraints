@@ -4,14 +4,4 @@
       <size unit="G">8</size>
     </disk> 
   </hardware>
-  <overwrite>
-    <conditions>
-      <arch>riscv64</arch>
-    </conditions>
-    <hardware>
-      <memory>
-        <size unit="G">8</size>
-      </memory>
-    </hardware>
-  </overwrite>
 </constraints>

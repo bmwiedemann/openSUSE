@@ -119,4 +119,26 @@ now with fixed empty debuginfo extraction</comment>
 - Fix build error in Leap, because it must not be two &quot;Patch:&quot; lines.</comment>
     <requestid>1103601</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e22d527e6120c463e29bcf25e2d86123</srcmd5>
+    <version>0.14.0</version>
+    <time>1700675646</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.0:
+  * Numpy compatibility - update signatures, complex number handling, long
+    double support
+  * Lazyly import top-level modules and submodules
+  * Improve array indexing by an array
+  * Require at least clang 7 or gcc 8
+  * Make pythran compilation reproducible
+  * Support np.roll with multiple axis
+  * Support numpy.ndarray.view
+  * Improve list resizing speed
+  * Fix bug when filtering an empty sequence
+- Drop patches, now included upstream:
+  * numpy-longdouble.patch
+  * numpy-complex.patch
+- Switch to pyproject macros.</comment>
+    <requestid>1127832</requestid>
+  </revision>
 </revisionlist>

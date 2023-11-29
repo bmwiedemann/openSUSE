@@ -279,4 +279,18 @@
   * Dropped support for Python 3.6.</comment>
     <requestid>1004177</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f602c2293ebae55ff491c0bc5c4b01c7</srcmd5>
+    <version>1.3.3</version>
+    <time>1701121488</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.3:
+  * Add support for Python 3.12
+  * Fix package metadata to include Python 3.11, 3.12.
+
+  - Fixed segfault after ``os.environ.clear()`` (issue #88).
+- Update to version 1.2
+  * Initialisation of the module moved to the first usage:</comment>
+    <requestid>1129198</requestid>
+  </revision>
 </revisionlist>

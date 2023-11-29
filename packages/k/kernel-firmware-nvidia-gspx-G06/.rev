@@ -42,4 +42,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
     <comment>- update firmware to version 545.29.02</comment>
     <requestid>1125883</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>94996c91c8f87e43d92dc471d4ccc933</srcmd5>
+    <version>545.29.06</version>
+    <time>1700865240</time>
+    <user>anag+factory</user>
+    <comment>- update firmware to version 545.29.06</comment>
+    <requestid>1128389</requestid>
+  </revision>
 </revisionlist>

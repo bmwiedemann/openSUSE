@@ -540,4 +540,41 @@
     <comment></comment>
     <requestid>1119283</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>89ac04ac822210decd8916fc085b7872</srcmd5>
+    <version>3.0.2</version>
+    <time>1701121506</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * Fix ``used-before-assignment`` false positive for generic
+    type syntax (PEP 695, Python 3.12).
+  * Escape special symbols and newlines in messages.
+  * Fixes suggestion for ``nested-min-max`` for expressions with
+    additive operators, list and dict comprehensions.
+  * Fixes ignoring conditional imports with ``ignore-imports=y``.
+  * Emit ``inconsistent-quotes`` for f-strings with 3.12
+    interpreter only if targeting pre-3.12 versions.
+
+    names:
+  * Fix false positive for undefined-loop-variable in for-else loops that
+- Unpin mccabe and astroid in sitelib metadata.
+  * ``unspecified-encoding`` now checks the encoding of
+    ``pathlib.Path()`` correctly
+  * The python3 porting mode checker and it's ``py3k`` option were
+    removed. You can still find it in older pylints  versions.
+  * ``raising-bad-type`` is now properly emitted when  raising a
+    ``use-set-for-membership`` check: Emitted when using an
+    in-place defined ``list`` or ``tuple`` to do a membership
+  * ``CodeStyleChecker``
+    flow (e. g. if-else clause).
+  * Fix false positive for ``protected-access`` if a protected
+  * Fix false positive ``dict-iter-missing-items`` for dictionaries
+  * The ``unspecified-encoding`` checker now also checks calls to
+  * Fix false positive ``superfluous-parens`` for tuples created
+  * Fix false positive ``unused-private-member`` for accessing
+  * Fix false positive ``unused-private-member`` for private
+  * Extended ``consider-using-in`` check to work for attribute
+  * Setting ``min-similarity-lines`` to 0 now makes the similarty</comment>
+    <requestid>1129239</requestid>
+  </revision>
 </revisionlist>

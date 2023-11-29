@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 Name:           libmodi
 %define lname	libmodi1
-Version:        20221023
+Version:        20231123
 Release:        0
 Summary:        Library and tools to access the Mac OS disk image formats
 License:        LGPL-3.0-or-later
@@ -34,26 +35,26 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcaes) >= 20220529
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcaes) >= 20231120
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcdirectory) >= 20220105
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20220111
+BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfmos) >= 20220811
-BuildRequires:  pkgconfig(libfplist) >= 20220116
+BuildRequires:  pkgconfig(libfmos) >= 20231122
+BuildRequires:  pkgconfig(libfplist) >= 20231023
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libhmac) >= 20220425
+BuildRequires:  pkgconfig(libhmac) >= 20230407
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(zlib)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

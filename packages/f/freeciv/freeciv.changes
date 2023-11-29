@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 21 16:06:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to version 3.0.9:
+  * Generic bugfix release
+  * Set diplomatic relations state correctly between team members
+    osdn#48295
+  * Fixed assert failures when city grows to freeciv's internal max
+    city size (255)
+  * Sammarinese city name Borgo Maggiore corrected osdn#48316
+  * Cargo gets bounced when transport is lost due to terrain change
+  * Fixed crash with recursive autoattacks in case of occupychance
+    setting being > 0
+  * Fixed memory corruption when transport is not bounced, but
+    cargo is
+  * Corrected amount treasury gets increased by a city in some
+    situations
+  * Cities stop working tiles turned unworkable at turn change
+  * Fixed clearing city border claims when player gets removed
+    from the game osdn#48837
+  * see https://freeciv.fandom.com/wiki/NEWS-3.0.9
+-------------------------------------------------------------------
 Sat Jul 15 14:31:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to version 3.0.8:
@@ -978,12 +999,12 @@ Sat Oct 22 17:51:21 CEST 2005 - sndirsch@suse.de
 -------------------------------------------------------------------
 Wed Sep 28 08:44:42 CEST 2005 - sndirsch@suse.de
 
-- update to bugfix release 2.0.6 
+- update to bugfix release 2.0.6
 
 -------------------------------------------------------------------
 Tue Sep 27 12:29:32 CEST 2005 - sndirsch@suse.de
 
-- fixed build with gcc 4.1 
+- fixed build with gcc 4.1
 
 -------------------------------------------------------------------
 Sat Sep  3 16:56:57 CEST 2005 - sndirsch@suse.de
@@ -992,56 +1013,56 @@ Sat Sep  3 16:56:57 CEST 2005 - sndirsch@suse.de
 - update to bugfix release 2.0.5
   * Fix bugs with government setting of new civs (barbarians and
     civil war nations).
-  * Fix a bug where some mapgen settings would create more 
-    continents than the server could handle. 
-  * Fix a bug that allowed free changing of techs after finding a 
-    tech other than the one currently being researched. 
-  * Fix a bug where removing and creating a new player would give 
-    the new player the old one's team. 
-  * When the player disconnects in a normal game, make a savegame 
-    and exit immediately rather than continuing to run. (This fixes 
-    the bug where savegames made after a client crash would reveal 
-    the entire map.) 
-  * Fix a bug in the "endyear" setting. 
-  * Don't send server-only settings to the client (to be shown in 
-    the settings dialog). 
-  * Send a unit's info to the client when its transporter is 
-    disbanded. 
-  * Fix several bugs where crashes could happen if an invalid 
-    connection was left in the lists. 
-  * Better fallbacks when starting positions can't be placed 
-    (previously the server would crash in this situation). 
-  * Fix several bugs in the detection of multiple servers on the 
-    LAN. 
-  * Make sure units in combat are not in the hidden (focus unit) 
+  * Fix a bug where some mapgen settings would create more
+    continents than the server could handle.
+  * Fix a bug that allowed free changing of techs after finding a
+    tech other than the one currently being researched.
+  * Fix a bug where removing and creating a new player would give
+    the new player the old one's team.
+  * When the player disconnects in a normal game, make a savegame
+    and exit immediately rather than continuing to run. (This fixes
+    the bug where savegames made after a client crash would reveal
+    the entire map.)
+  * Fix a bug in the "endyear" setting.
+  * Don't send server-only settings to the client (to be shown in
+    the settings dialog).
+  * Send a unit's info to the client when its transporter is
+    disbanded.
+  * Fix several bugs where crashes could happen if an invalid
+    connection was left in the lists.
+  * Better fallbacks when starting positions can't be placed
+    (previously the server would crash in this situation).
+  * Fix several bugs in the detection of multiple servers on the
+    LAN.
+  * Make sure units in combat are not in the hidden (focus unit)
     state.
-  * Update menus for the focus unit when a transporter becomes 
-    available for it. 
-  * Fix a bug in the GTK2 client where diplomat actions would sometimes 
-    become impossible. 
-  * Clicking on the focus unit in the panel will center it. 
+  * Update menus for the focus unit when a transporter becomes
+    available for it.
+  * Fix a bug in the GTK2 client where diplomat actions would sometimes
+    become impossible.
+  * Clicking on the focus unit in the panel will center it.
   * Set aifill values for several scenarios.
 
 -------------------------------------------------------------------
 Sat Jul 30 13:57:52 CEST 2005 - sndirsch@suse.de
 
-- update to bugfix release 2.0.4 
+- update to bugfix release 2.0.4
 
 -------------------------------------------------------------------
 Wed Jul 13 15:53:35 CEST 2005 - sndirsch@suse.de
 
-- update to bugfix release 2.0.3 
+- update to bugfix release 2.0.3
 
 -------------------------------------------------------------------
 Fri Jun 24 12:06:12 CEST 2005 - sndirsch@suse.de
 
-- update to bugfix release 2.0.2 
+- update to bugfix release 2.0.2
 
 -------------------------------------------------------------------
 Wed Apr 27 18:31:57 CEST 2005 - sndirsch@suse.de
 
 - update to bugfix release 2.0.1
-  * Fix a bug causing easy and novice AIs to be much harder than 
+  * Fix a bug causing easy and novice AIs to be much harder than
     they were supposed to be.
   * New behavior of the /start command in multi-player mode.
   * Minor translation updates.
@@ -1050,7 +1071,7 @@ Wed Apr 27 18:31:57 CEST 2005 - sndirsch@suse.de
 -------------------------------------------------------------------
 Tue Apr 19 12:23:38 CEST 2005 - sndirsch@suse.de
 
-- update to final release 2.0.0 
+- update to final release 2.0.0
 
 -------------------------------------------------------------------
 Fri Apr 15 22:41:01 CEST 2005 - sndirsch@suse.de
@@ -1066,23 +1087,23 @@ Fri Apr  1 22:26:06 CEST 2005 - sndirsch@suse.de
 Thu Feb 24 00:13:46 CET 2005 - sndirsch@suse.de
 
 - update to release 2.0.0 Beta 8
-  * AI diplomacy bug fixes. 
-  * Fix for team-mode research. 
-  * Fix for infinite recursion in autoexplorers. 
-  * Fix for SDL mixer freeze during exit. 
-  * Fix for when the default username isn't a valid one. 
-  * Fix for when we can't make a temp file when querying the 
-    metaserver. 
-  * Change some default client option values. 
-  * Fix some client refresh problems. 
-  * Fix some out-of-sync city dialog problems. 
-  * Fix a crash when a nation flag isn't available. 
-  * Fix a potential CMA crash. 
-  * Rewrite some of the CMA dialog (gtk2 client). 
-  * Some startscreen fixes. 
-  * Many gui-win32 fixes. 
-  * Fix some bugs with unloading of units. 
-  * Fix some bugs with seeing subs when you shouldn't. 
+  * AI diplomacy bug fixes.
+  * Fix for team-mode research.
+  * Fix for infinite recursion in autoexplorers.
+  * Fix for SDL mixer freeze during exit.
+  * Fix for when the default username isn't a valid one.
+  * Fix for when we can't make a temp file when querying the
+    metaserver.
+  * Change some default client option values.
+  * Fix some client refresh problems.
+  * Fix some out-of-sync city dialog problems.
+  * Fix a crash when a nation flag isn't available.
+  * Fix a potential CMA crash.
+  * Rewrite some of the CMA dialog (gtk2 client).
+  * Some startscreen fixes.
+  * Many gui-win32 fixes.
+  * Fix some bugs with unloading of units.
+  * Fix some bugs with seeing subs when you shouldn't.
 
 -------------------------------------------------------------------
 Thu Feb 17 07:12:01 CET 2005 - sndirsch@suse.de
@@ -1093,50 +1114,50 @@ Thu Feb 17 07:12:01 CET 2005 - sndirsch@suse.de
 Fri Jan 21 18:42:54 CET 2005 - sndirsch@suse.de
 
 - update to release 2.0.0 Beta 7
-  * Fix for using "nb" as the Norwegian translation (as well as 
-    "no"). 
-  * Some portability fixes to the compilation code. 
-  * AI doesn't overvalue techs so much. 
-  * Fix a potential crash when bribing cities. 
-  * Fix a potential crash in the AI ferry code. 
-  * Fix a potential crash when an exploring unit dies. 
-  * Don't show empty helptext for techs. 
-  * Fix some compilation problems on C99 compilers. 
-  * Fix a bug when transferring embassies. 
-  * Fix a bug with fog-of-war code in the GTK-2.0 client on 
-    windows. 
-  * Fix numerous bugs in the win32 client. 
-  * Fix a crash when researching future techs. 
-  * Make some server commands have different access levels during 
-    pregame. 
-  * Fix some bugs when breaking alliances. 
-  * Fix some bugs with observers. 
-  * Fix some major bugs with autosettlers (the new autosettlers 
-    should be a lot more usable). 
+  * Fix for using "nb" as the Norwegian translation (as well as
+    "no").
+  * Some portability fixes to the compilation code.
+  * AI doesn't overvalue techs so much.
+  * Fix a potential crash when bribing cities.
+  * Fix a potential crash in the AI ferry code.
+  * Fix a potential crash when an exploring unit dies.
+  * Don't show empty helptext for techs.
+  * Fix some compilation problems on C99 compilers.
+  * Fix a bug when transferring embassies.
+  * Fix a bug with fog-of-war code in the GTK-2.0 client on
+    windows.
+  * Fix numerous bugs in the win32 client.
+  * Fix a crash when researching future techs.
+  * Make some server commands have different access levels during
+    pregame.
+  * Fix some bugs when breaking alliances.
+  * Fix some bugs with observers.
+  * Fix some major bugs with autosettlers (the new autosettlers
+    should be a lot more usable).
 
 -------------------------------------------------------------------
 Tue Jan  4 22:35:10 CET 2005 - sndirsch@suse.de
 
 - updated to release 2.0.0 Beta6
-  * Speed up AI calculations by recalculating some things only 
+  * Speed up AI calculations by recalculating some things only
     every few turms.
-  * Fix a bug with long-distance exploring. 
-  * Fix some bugs with out-of-sync cities. 
-  * Change client-side goto to take the path with the lowest 
-    "best time" rather than the one with the lowest "worst time". 
-  * Add a new method for drawing fog of war (gtk2-client and 
-    win32-client only). Change the trident tileset to use this new 
-    method. 
-  * Remove veteran status from the panel unit info string. 
-  * Improve some keyboard controls in the gtk2 client. 
-  * Fix a bug when cross-compiling the XAW client. 
-  * Improve server citizen placement when a city's minimums cannot 
-    be met. 
-  * Change novice and "away" AIs to not cheat by having instant 
-    revolutions. 
-  * Fix a bug when loading old/invalid savegames that have 
-    invalid alliances. 
-  * Fix some bugs with voting (more may remain). 
+  * Fix a bug with long-distance exploring.
+  * Fix some bugs with out-of-sync cities.
+  * Change client-side goto to take the path with the lowest
+    "best time" rather than the one with the lowest "worst time".
+  * Add a new method for drawing fog of war (gtk2-client and
+    win32-client only). Change the trident tileset to use this new
+    method.
+  * Remove veteran status from the panel unit info string.
+  * Improve some keyboard controls in the gtk2 client.
+  * Fix a bug when cross-compiling the XAW client.
+  * Improve server citizen placement when a city's minimums cannot
+    be met.
+  * Change novice and "away" AIs to not cheat by having instant
+    revolutions.
+  * Fix a bug when loading old/invalid savegames that have
+    invalid alliances.
+  * Fix some bugs with voting (more may remain).
 
 -------------------------------------------------------------------
 Tue Dec 14 10:24:20 CET 2004 - sndirsch@suse.de
@@ -1155,7 +1176,7 @@ Fri Nov 19 18:55:25 CET 2004 - sndirsch@suse.de
 Thu Nov 18 18:05:02 CET 2004 - sndirsch@suse.de
 
 - freeciv-da_DK.diff:
-  * fixes start with da_DK/da_DK.UTF-8 locale (Bug #48341) 
+  * fixes start with da_DK/da_DK.UTF-8 locale (Bug #48341)
 
 -------------------------------------------------------------------
 Wed Nov 17 12:56:12 CET 2004 - sndirsch@suse.de
@@ -1173,9 +1194,9 @@ Thu Oct 28 22:15:19 CEST 2004 - sndirsch@suse.de
 
 - updated to release 2.0.0 Beta2
   * removed obsolete patches (autoconf.diff, code_cleanup.diff)
-  * removed wrapper script, which started both civserver and 
-    civclient; obsolete as the server can now be started by the 
-    client (freeciv,freeciv.info,freeciv.info.de, 
+  * removed wrapper script, which started both civserver and
+    civclient; obsolete as the server can now be started by the
+    client (freeciv,freeciv.info,freeciv.info.de,
     gxmessage-2.0.8.tar.gz)
   * civworld (map editor) disabled for now; patch for 2.0.0 is not
     available yet
@@ -1190,21 +1211,21 @@ Tue Oct 19 13:06:03 CEST 2004 - sndirsch@suse.de
 Thu Sep  9 13:34:38 CEST 2004 - sndirsch@suse.de
 
 - updated to release 1.14.2
-  * important compile fixes for some platforms 
+  * important compile fixes for some platforms
   * game balance adjustments:
-    - all buildings except wonders and space parts 30% cheaper 
-    - some wonders cheaper: Colossus, Copernicus, Isaac Newton's, 
-      King Richard's, Oracle and Shakespeare's 
-    - submarine has more attack and movement, and costs less 
-  * reputation recovery bug fixed (now much slower) 
-  * a few other minor bugfixes 
+    - all buildings except wonders and space parts 30% cheaper
+    - some wonders cheaper: Colossus, Copernicus, Isaac Newton's,
+      King Richard's, Oracle and Shakespeare's
+    - submarine has more attack and movement, and costs less
+  * reputation recovery bug fixed (now much slower)
+  * a few other minor bugfixes
 - adjusted autoconf.diff
 
 -------------------------------------------------------------------
 Mon Jul  5 11:50:39 CEST 2004 - sndirsch@suse.de
 
 - freeciv.serv:
-  use "set aifill 2" instead of "create tux" to create a game; 
+  use "set aifill 2" instead of "create tux" to create a game;
   otherwise the game runs as a demo without any opponents if
   username is "tux" (Bug #42751)
 
@@ -1227,7 +1248,7 @@ Thu Mar 11 19:17:28 CET 2004 - sndirsch@suse.de
 -------------------------------------------------------------------
 Thu Mar 11 08:11:38 CET 2004 - sndirsch@suse.de
 
-- moved manuals to doc directory 
+- moved manuals to doc directory
 
 -------------------------------------------------------------------
 Thu Mar 11 07:43:22 CET 2004 - sndirsch@suse.de
@@ -1245,7 +1266,7 @@ Sat Mar  6 18:44:47 CET 2004 - sndirsch@suse.de
 Sun Feb 29 15:05:57 CET 2004 - sndirsch@suse.de
 
 - reencode wav files to ogg to save some space (and maybe add later
-  a more complete soundset); removed esd support as it doesn't 
+  a more complete soundset); removed esd support as it doesn't
   support ogg files
 - added wrapper for easy use (starts server + client preconfigured)
 - added desktop files (including icons) for wrapper and map editor
@@ -1259,7 +1280,7 @@ Sun Feb 29 00:25:40 CET 2004 - sndirsch@suse.de
 Sat Feb 28 20:37:09 CET 2004 - sndirsch@suse.de
 
 - use GTK 2.x GUI for civclient now; civworld map editor still uses
-  old GTK 1.x GUI 
+  old GTK 1.x GUI
 
 -------------------------------------------------------------------
 Sat Feb 28 17:53:20 CET 2004 - sndirsch@suse.de
@@ -1294,7 +1315,7 @@ Fri Jun 20 02:53:43 CEST 2003 - ro@suse.de
 -------------------------------------------------------------------
 Thu Nov 21 13:25:27 CET 2002 - ro@suse.de
 
-- fixed neededforbuild "libvorbis_devel" is "libvorbis-devel" 
+- fixed neededforbuild "libvorbis_devel" is "libvorbis-devel"
 
 -------------------------------------------------------------------
 Wed Nov 20 12:13:08 CET 2002 - pthomas@suse.de
@@ -1306,7 +1327,7 @@ Wed Nov 20 12:13:08 CET 2002 - pthomas@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Mon Sep 16 13:56:30 CEST 2002 - uli@suse.de
@@ -1374,7 +1395,7 @@ Tue Jan 30 23:35:01 CET 2001 - ro@suse.de
 -------------------------------------------------------------------
 Mon Nov  6 02:26:12 CET 2000 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Thu Aug 10 16:50:58 CEST 2000 - uli@suse.de
@@ -1447,7 +1468,7 @@ Wed Jul  1 01:44:02 MEST 1998 - rb@suse.de
 Tue Mar  3 20:01:08 MET 1998 - rb@suse.de
 
 - copied man-pages civserver.6 and civclient.6 to /usr/X11R6/man/man6
-- made /usr/X11R6/bin/ the home of 'civserver' in order to have a 
+- made /usr/X11R6/bin/ the home of 'civserver' in order to have a
   consistent place for 'civserver' and 'civ'. civclient still resides
   in /usr/games/freeciv since it requires an environment variable to
   be set. It is startet by 'civ' which also sets the variable.

@@ -264,4 +264,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1073126 from glaubitz)</comment>
     <requestid>1073134</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>207c5841898f8273f60e3c1c63d888ef</srcmd5>
+    <version>4.0.0</version>
+    <time>1700675726</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1128147 from glaubitz)</comment>
+    <requestid>1128149</requestid>
+  </revision>
 </revisionlist>

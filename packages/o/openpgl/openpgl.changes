@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov 24 22:28:13 UTC 2023 - draskmont@protonmail.com
+
+- Update to version v0.5.0:
+  * [doc] Updated Readme
+  * [tbb/omp] Removing/deactivating OMP threading support since we would still have a TBB dependency
+  * [compile] Making sure that fast-math is disabled and fp:precise is used
+  * [doc] Updating Readme.md
+  * [cleanup] Adding brackets for code clarity
+  * [doc] fixing typo
+  * [field] Adding 'UpdateSurface' and 'UpdateVolume' functions
+  * [samplestorage] Added 'ClearSurface' and 'ClearVolume' functions to the `SampleStorage`
+  * [field] Fixing bug when a surface or volume field was not initialized in a previous update step.
+  * [tools] Adding openpgl_check tool
+  * [cmake] Moved find_package(TBB) into the first CMake file, added includes into the openpgl target
+  * [compiler] Adding Intel ICX compiler support
+  * [samplingdistributions] Adding IncomingRadiancePDF functions to estimate the incoming radiance distribution
+  * [release] Bumping version to 0.5.0
+  * [ci] Adding binary signing capabilities
+  * [compiler] Fix a couple of compile warnings
+  * [kdtree] Fix allocation/deallocation mismatch in the KDTree implementation
+  * [superbuild] Renaming external project targets for openpgl and tbb to ep_openpgl and dep_tbb
+  * [pathsegmentstorage] Adding PropagateSamples function
+  * [doc] Updating README and CHANGELOG
+  * [splatting] Removing `splatSample` function form the Region
+  * [pavmm] Renamed the files for the PAVMM and its factory
+  * [pavmm] Merging WeightedEMVMMFactory and WeightedEMParallaxAwareVMMFactory
+  * [pavmm] Merging the VMM and the PAVMM classes as well as the VMMFactory and the WeightedVMMFactory classes
+  * [splatting] Removing the splatting of training samples
+  * [parallax] Making the use of parallax comp. implicit based on the used representation (e.g., PAVMM)
+
+-------------------------------------------------------------------
 Wed Mar  8 08:29:28 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - Update to version 0.4.1:

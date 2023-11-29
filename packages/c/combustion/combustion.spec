@@ -17,15 +17,19 @@
 
 
 Name:           combustion
-Version:        1.2+git9
+Version:        1.3
 Release:        0
 Summary:        System for initial configuration of appliances
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/openSUSE/combustion
 Source0:        %{name}-%{version}.tar.xz
-# This doesn't work with old ignition,conflict with the old firstboot mechanism.
+# This doesn't work with old ignition, conflict with the old firstboot mechanism.
 Conflicts:      ignition-dracut-grub2
+Requires:       awk
+# For VMware guestinfo
+Suggests:       open-vm-tools
+Requires:       (gzip if open-vm-tools)
 BuildArch:      noarch
 
 %description

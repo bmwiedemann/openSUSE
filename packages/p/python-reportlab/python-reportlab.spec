@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-reportlab
-Version:        4.0.5
+Version:        4.0.7
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
 URL:            https://www.reportlab.com/
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
-# PATCH-FIX-UPSTREAM importlib.path https://hg.reportlab.com/hg-public/reportlab/rev/18ae86d14b0a
-Patch0:         importlib.patch
 BuildRequires:  %{python_module Pillow >= 9.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 21 15:05:11 UTC 2023 - Marina Latini <marina.latini@suse.com>
+
+- Do not strip if SUSE Linux Enterprise 15 SP3
+- Exclude debug for RHEL >= 8
+- Build with Go >= 1.20 when the OS is not RHEL
+- Spec file clean up
+
+-------------------------------------------------------------------
 Mon Sep  4 10:40:18 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Fix apparmor profile for SLE 12

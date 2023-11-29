@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov 27 09:13:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.0:
+  * Add more tests for `zip_broadcast()`
+  * Added takewhile_inclusive
+  * Speed up `zip_broadcast()` by pre-filling the scalar elements
+  * Added outer_product.
+  * Simplify `zip_broadcast`
+  * Simplify `_zip_equal`
+  * fix consume() type annotation
+  * Update recipes.iter_index to match CPython PR 102360
+  * fixup - add missing commas to the readme function table
+  * fixup remove 3.6 from tox
+  * seekable: Add relative_seek
+  * Optimize _chunked_even_finite()
+  * Indexing of combinations with replacement
+  * Add notes for transposing empty inputs
+  * Add the polynomial_eval recipe
+  * Add nth_combination_with_replacement
+  * Add sum_of_squares, sync with itertools
+  * Issue #707: fix ``iterate()`` to enable ``func`` to raise
+    StopIteration + 3 unittests
+  * Update polynomial_from roots and convolve
+  * Issue #677: Improve `partition`
+  * Issue #713: Fix `partial_product` (also simplify and clean
+    up)
+  * Issue #711: Optimize `pairwise`
+  * Issue #715: Simplify/optimize `partial_product`
+  * Issue #717: Improve `duplicates_justseen`
+  * Fix unique_in_window to match described behavior
+  * Add polynomial_derivative recipe
+  * Update recipes with CPython PRs: 105403 and 106371
+  * Changes for version 10.0.0
+  * Delay computation of numeric_range len until needed
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -17,7 +53,7 @@ Tue Mar  7 12:12:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 18:32:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 9.0.0 
+- Update to 9.0.0
   * Potentially breaking changes
    grouper() no longer accepts an integer as its first argument. Previously this raised a DeprecationWarning.
    collate() has been removed. Use the built-in heapq.merge() instead.
@@ -73,7 +109,7 @@ Sun Jun  5 14:27:12 UTC 2022 - Arun Persaud <arun@gmx.de>
 -------------------------------------------------------------------
 Tue Mar 15 08:49:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use python_expand for fdupes 
+- use python_expand for fdupes
 
 -------------------------------------------------------------------
 Thu Feb  3 20:13:01 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -120,7 +156,7 @@ Sat Oct 16 19:09:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
     * Changes to existing functions
       * The type stub for :func:`chunked` was improved (thanks to  PhilMacKay)
       * The type stubs for :func:`zip_equal` and `zip_offset` were improved (thanks to maffoo)
-      * Building Sphinx docs locally was improved (thanks to MarcinKonowalczyk) 
+      * Building Sphinx docs locally was improved (thanks to MarcinKonowalczyk)
 
 -------------------------------------------------------------------
 Sun Jun  6 12:43:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -221,13 +257,13 @@ Wed Jan 22 15:56:53 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to 8.1.0:
     * Bug fixes
-        :func:`partition` works with pred=None again. (thanks 
+        :func:`partition` works with pred=None again. (thanks
         to MSeifert04)
     * New itertools
         :func:`sample` (thanks to tommyod)
         :func:`nth_or_last` (thanks to d-ryzhikov)
     * Changes to existing itertools:
-        The implementation for :func:`divide` was improved.  
+        The implementation for :func:`divide` was improved.
 
 -------------------------------------------------------------------
 Fri Dec 20 19:18:54 UTC 2019 - Dirk Mueller <dmueller@suse.com>
@@ -259,11 +295,11 @@ Tue Aug 27 12:15:12 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - update to version 7.2.0
   * new itertools: distinct_combinations, set_partitions, filter_except,
     map_except, ichunked, only, time_limited, partitions, substrings_indexes
-  * Python 2.7 is no longer supported. All future releases will target 
+  * Python 2.7 is no longer supported. All future releases will target
     the active versions of Python 3.
   * The six library is no longer a dependency.
   * collapse now treats bytes objects the same as str objects.
-  * numeric_range now supports ranges specified by datetime.datetime 
+  * numeric_range now supports ranges specified by datetime.datetime
     and datetime.timedelta objects
 
 -------------------------------------------------------------------
@@ -280,7 +316,7 @@ Fri May 24 12:20:33 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * locate can now search for multiple items
   * The docs now include a nice table of tools
 
-- There are newer versions of more-itertools but this is the last 
+- There are newer versions of more-itertools but this is the last
   version which supports Python 2.7
 
 -------------------------------------------------------------------

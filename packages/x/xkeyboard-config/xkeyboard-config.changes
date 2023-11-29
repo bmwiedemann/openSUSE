@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 22 12:33:07 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- the current source supersedes old sle15-sp5 patches (see
+  changelog below)
+  * U_Map-evdev-keycodes-KEY_RFKILL-and-KEY_WWAN-to-XF86RF.patch
+  * U_Updating-Old-Hungarian.patch
+  * U_Fix-media-keys-lag-on-ABNT2-keyboard.patch
+  * U_Add-the-new-AZERTY-layout-norm-NF-Z71-300.patch
+
+-------------------------------------------------------------------
+Tue Nov 21 18:28:31 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- includes fixes for 
+  * missing mappings for evdev keys KEY_RFKILL and KEY_WWAN
+    (boo#1123784)
+  * capslock in Old Hungarian layout (boo#1153774)
+  * wrong keyboard mapping causing input delays with ABNT2 keyboards
+    (bsc#1191242)
+- includes backport of French standardized AZERTY layout (AFNOR:
+  NF Z71-300) (bsc#1188867)
+
+-------------------------------------------------------------------
+Tue Nov 21 15:52:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- supersedes a patch called 'U_fixed-keycode-comment.patch' from
+  sle15-sp5, which wasn't applied there any longer either.
+
+    <I247> = 247;   // #define KEY_UWB                 239 
+
+  is defined in keycodes/evdev since a long time ...
+
+-------------------------------------------------------------------
 Mon Oct  9 10:49:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.40

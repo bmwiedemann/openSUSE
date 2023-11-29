@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:13:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20231122:
+  * -a file1 -a +file2 will link file2 to file1 similar to ::::+
+    --bar shows total time when all jobs are done.
+
+-------------------------------------------------------------------
 Wed Nov  1 21:30:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231022
@@ -160,7 +167,7 @@ Sun Mar 20 19:49:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sun Jan 23 16:15:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220122:
-  * Bug fixes and man page updates. 
+  * Bug fixes and man page updates.
 
 -------------------------------------------------------------------
 Mon Dec 27 14:31:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -182,7 +189,7 @@ Fri Oct  8 11:06:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 - Update to release 20210922
   * --ctag/--ctagstring colors the tag in different colors for
     each job.
-  * You can use unit prefixes (k, m, g, etc) with -n -N -L. 
+  * You can use unit prefixes (k, m, g, etc) with -n -N -L.
 
 -------------------------------------------------------------------
 Tue Jul 27 06:41:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -210,7 +217,7 @@ Tue Mar 23 15:02:34 UTC 2021 - Anton Smorodskyi <asmorodskyi@suse.com>
 
 - Update to release 20210322
   * parallel: Partial Reuse licensing support.
-  * parallel: Bugfix {0%}/{0#}. Added warning_once(). 
+  * parallel: Bugfix {0%}/{0#}. Added warning_once().
 
 -------------------------------------------------------------------
 Sun Feb 21 23:22:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
@@ -648,7 +655,7 @@ Sun Jan 24 09:26:20 UTC 2016 - mpluskal@suse.com
   * --sqlandworker is a shorthand for --sql and --sqlworker.
   * --sqlworker requires the output of a single job to fit in
     memory.
-  * --results now also saves a file called 'seq' containing the 
+  * --results now also saves a file called 'seq' containing the
     sequence number.
   * If $PARALLEL_ENV is a file, then that file will be read into
     $PARALLEL_ENV.

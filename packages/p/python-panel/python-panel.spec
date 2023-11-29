@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-panel%{psuffix}
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module param >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
-BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
+BuildRequires:  %{python_module pyviz-comms >= 2.0.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tqdm >= 4.48.0}
@@ -52,8 +52,8 @@ BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module altair}
+BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module diskcache}
-BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module folium}
 BuildRequires:  %{python_module holoviews >= 1.16.0}
 BuildRequires:  %{python_module ipympl}
@@ -62,6 +62,7 @@ BuildRequires:  %{python_module panel = %{version}}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -72,13 +73,13 @@ BuildRequires:  %{python_module streamz}
 Requires:       jupyter-panel
 Requires:       python-Markdown
 Requires:       python-bleach
-Requires:       python-bokeh >= 3.3.0
+Requires:       python-bokeh >= 3.2.0
 Requires:       python-linkify-it-py
-Requires:       python-markdown-it-py < 3
+Requires:       python-markdown-it-py
 Requires:       python-mdit-py-plugins
 Requires:       python-pandas >= 1.2
 Requires:       python-param >= 2.0.0
-Requires:       python-pyviz_comms >= 0.7.4
+Requires:       python-pyviz_comms >= 2.0.0
 Requires:       python-requests
 Requires:       python-tqdm >= 4.48.0
 Requires:       python-typing_extensions
@@ -114,6 +115,8 @@ to all Python flavors.
 %autosetup -p1 -n panel-%{version}
 # Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
 sed -i '/def _build_paneljs/ a \    return' setup.py
+# no color for pytest
+sed -i '/addopts/ s/--color=yes//' pyproject.toml
 for p in panel/tests/io/reload_module.py
 do \
     [ -f $p -a ! -s $p ] || exit 1 && echo "# Empty module" > $p
@@ -148,6 +151,8 @@ donttest="$donttest or (test_svg_scale_ and True)"
 donttest="$donttest or (test_svg_stretch_ and True)"
 # flaky async test
 donttest="$donttest or test_server_async_callbacks"
+# flaky timeout
+donttest="$donttest or test_server_thread_pool_change_event"
 # upstream skips it for win and osx, we skip it because it (flakily) terminates everything on aarch64
 donttest="$donttest or (test_terminal and test_subprocess)"
 # file sample.pdf missing

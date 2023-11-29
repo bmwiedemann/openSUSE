@@ -17,7 +17,7 @@
 
 
 Name:           picplanner
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A GTK application for photographers using GNU Linux or especially Linux phones
 License:        GPL-3.0-or-later
@@ -66,7 +66,6 @@ photograph.
 %{_datadir}/icons/elevation-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/de.zwarf.picplanner.svg
 %{_datadir}/icons/hicolor/symbolic/apps/de.zwarf.picplanner-symbolic.svg
-%{_datadir}/icons/map-symbolic.svg
 %{_datadir}/icons/milky-way-color.svg
 %{_datadir}/icons/milky-way-symbolic.svg
 %{_datadir}/icons/moon-full.svg

@@ -1,8 +1,8 @@
-Index: conf/catalina.policy
+Index: apache-tomcat-9.0.82-src/conf/catalina.policy
 ===================================================================
---- conf/catalina.policy.orig
-+++ conf/catalina.policy
-@@ -167,6 +167,9 @@ grant {
+--- apache-tomcat-9.0.82-src.orig/conf/catalina.policy
++++ apache-tomcat-9.0.82-src/conf/catalina.policy
+@@ -171,6 +171,9 @@ grant {
      permission java.lang.RuntimePermission "accessClassInPackage.org.apache.tomcat";
  
      // Precompiled JSPs need access to these packages.
@@ -12,7 +12,7 @@ Index: conf/catalina.policy
      permission java.lang.RuntimePermission "accessClassInPackage.org.apache.jasper.el";
      permission java.lang.RuntimePermission "accessClassInPackage.org.apache.jasper.runtime";
      permission java.lang.RuntimePermission
-@@ -216,6 +219,15 @@ grant codeBase "file:${catalina.home}/we
+@@ -220,6 +223,15 @@ grant codeBase "file:${catalina.home}/we
  };
  
  

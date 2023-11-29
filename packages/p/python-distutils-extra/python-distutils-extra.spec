@@ -28,6 +28,7 @@ Source:         %{url}/-/archive/%{version}/python-distutils-extra-%{version}.ta
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 

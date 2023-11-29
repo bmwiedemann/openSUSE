@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 22 09:25:23 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix unattended boot with TPM2 allows downgrading kernel and rootfs, also
+  enhancing the overall security posture (bsc#1216680)
+  * 0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+  * 0002-Restrict-file-access-on-cryptodisk-print.patch
+  * 0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
+  * 0004-Key-revocation-on-out-of-bound-file-access.patch
+
+-------------------------------------------------------------------
+Tue Nov 21 06:52:08 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- grub2.spec: Fix openQA test failure in SLE-15-SP6 due to missing
+  font in memdisk
+
+-------------------------------------------------------------------
+Thu Nov 16 06:39:46 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the TPM2 patches to skip the persistent SRK handle if not
+  specified and improve the error messages
+  + 0003-protectors-Add-TPM2-Key-Protector.patch
+  + 0005-util-grub-protect-Add-new-tool.patch
+  + 0004-tpm2-Support-authorized-policy.patch
+
+-------------------------------------------------------------------
 Tue Nov 14 07:52:41 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix XFS regression in 2.12~rc1 and support large extent counters

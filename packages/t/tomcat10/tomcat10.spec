@@ -1,5 +1,5 @@
 #
-# spec file for package tomcat
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define app_name tomcat
 %define jspspec_major 3
@@ -179,8 +180,8 @@ Requires(preun):update-alternatives
 Provides:       %{app_name}-el-%{elspec}-api = %{version}-%{release}
 Provides:       el_%{elspec_major}_%{elspec_minor}_api = %{version}-%{release}
 Provides:       el_api = %{elspec}
-Obsoletes:      el_api < %{elspec}
 Obsoletes:      %{app_name}-el-2_2-api < %{version}
+Obsoletes:      el_api < %{elspec}
 Conflicts:      %{app_name}-el-3_0-api < %{version}
 
 %description el-%{elspec_major}_%{elspec_minor}-api
@@ -203,8 +204,8 @@ Requires(postun):update-alternatives
 Provides:       %{app_name}-jsp-%{jspspec}-api
 Provides:       jsp = %{jspspec}
 Provides:       jsp%{jspspec_major}%{jspspec_minor}
-Obsoletes:      jsp < %{jspspec}
 Obsoletes:      %{app_name}-jsp-2_2-api < %{version}
+Obsoletes:      jsp < %{jspspec}
 Conflicts:      %{app_name}-jsp-2_3-api < %{version}
 
 %description jsp-%{jspspec_major}_%{jspspec_minor}-api
@@ -247,9 +248,9 @@ Provides:       %{app_name}-servlet-%{servletspec}-api = %{version}-%{release}
 Provides:       servlet = %{servletspec}
 Provides:       servlet11
 Provides:       servlet60
-Obsoletes:      servlet < %{servletspec}
 Obsoletes:      %{app_name}-servlet-3_0-api < %{version}
 Obsoletes:      %{app_name}-servlet-3_1-api < %{version}
+Obsoletes:      servlet < %{servletspec}
 Conflicts:      %{app_name}-servlet-4_0-api < %{version}
 
 %description servlet-%{servletspec_major}_%{servletspec_minor}-api
@@ -266,20 +267,11 @@ Conflicts:      %{app_name}-webapps
 The ROOT and examples web applications for Apache Tomcat
 
 %prep
-%setup -q -n %{packdname} -b33
+%autosetup -p1 -n %{packdname} -b 33
 
 # remove pre-built binaries and windows files
 find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "*.gz" -o \
           -name "*.jar" -o -name "*.war" -o -name "*.zip" \) -print -delete
-%patch0
-%patch1
-%patch2
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

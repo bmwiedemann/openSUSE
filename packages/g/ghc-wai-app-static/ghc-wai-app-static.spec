@@ -30,8 +30,6 @@ BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-base64-bytestring-devel
-BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-blaze-html-prof
 BuildRequires:  ghc-blaze-markup-devel
@@ -40,8 +38,8 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-cryptohash-md5-devel
-BuildRequires:  ghc-cryptohash-md5-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-file-embed-devel
@@ -52,6 +50,8 @@ BuildRequires:  ghc-http-date-devel
 BuildRequires:  ghc-http-date-prof
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
+BuildRequires:  ghc-memory-devel
+BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-mime-types-devel
 BuildRequires:  ghc-mime-types-prof
 BuildRequires:  ghc-old-locale-devel

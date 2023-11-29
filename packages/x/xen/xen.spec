@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.18.0_02
+Version:        4.18.0_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -154,6 +154,9 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         654370e2-x86-x2APIC-remove-ACPI_FADT_APIC_CLUSTER-use.patch
+Patch2:         65437103-x86-i8259-dont-assume-IRQs-always-target-CPU0.patch
+Patch3:         655b2ba9-fix-sched_move_domain.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
@@ -730,15 +733,17 @@ CC=gcc-4.7
 CC=gcc-4.8
 %endif
 rm -fv xen/.config
+echo CONFIG_REQUIRE_NX=y > xen/.config
+echo CONFIG_DIT_DEFAULT=y >> xen/.config
 %if %{with xen_debug}
-echo CONFIG_DEBUG=y > xen/.config
+echo CONFIG_DEBUG=y >> xen/.config
 echo "CONFIG_DOM0_MEM=\"1G+10%%,max:64G\"" >> xen/.config
 yes '' | make -C xen oldconfig
 make -C xen install XEN_BUILD_DATE="$XEN_BUILD_DATE" XEN_BUILD_TIME="$XEN_BUILD_TIME" DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}
 install_xen dbg
 make -C xen clean
 %endif
-echo CONFIG_DEBUG=n > xen/.config
+echo CONFIG_DEBUG=n >> xen/.config
 echo "CONFIG_DOM0_MEM=\"1G+10%%,max:64G\"" >> xen/.config
 yes '' | make -C xen oldconfig
 make -C xen install XEN_BUILD_DATE="$XEN_BUILD_DATE" XEN_BUILD_TIME="$XEN_BUILD_TIME" DEBUG_DIR=/boot DESTDIR=%{buildroot} CC=$CC %{?_smp_mflags}

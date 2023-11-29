@@ -349,4 +349,12 @@
 - log: fix potential overflow with long log messages (gh#ClusterLabs/libqb#490) (forwarded request 1100597 from yan_gao)</comment>
     <requestid>1100598</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>9d3bf59f35ba12c83397b6490fe367aa</srcmd5>
+    <version>2.0.8+20230721.002171b</version>
+    <time>1700675670</time>
+    <user>anag+factory</user>
+    <comment>- log: fix potential overflow with long log messages (gh#ClusterLabs/libqb#490, CVE-2023-39976, bsc#1214066) (forwarded request 1128098 from yan_gao)</comment>
+    <requestid>1128101</requestid>
+  </revision>
 </revisionlist>

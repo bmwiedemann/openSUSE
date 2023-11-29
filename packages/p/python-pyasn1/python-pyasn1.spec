@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-pyasn1
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        ASN.1 types and codecs
 License:        BSD-2-Clause
@@ -33,10 +31,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-asn1 < 0.2.3
-Provides:       %{oldpython}-asn1 = %{version}
-%endif
 %python_subpackages
 
 %description

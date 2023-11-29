@@ -1,7 +1,7 @@
-From e5a1c5fe660e74d99d33d7d28914e968077ae603 Mon Sep 17 00:00:00 2001
+From 1116bc4b9a27aceaec53421e89eb887e6ad3aef8 Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:57 -0800
-Subject: [PATCH v6 12/20] util/grub-protect: Add new tool
+Subject: [PATCH v7 12/20] util/grub-protect: Add new tool
 
 To utilize the key protectors framework, there must be a way to protect
 full-disk encryption keys in the first place. The grub-protect tool
@@ -51,21 +51,21 @@ cryptomount -u <SDB1_UUID> -P tpm2
 Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
- .gitignore          |    2 +
  Makefile.util.def   |   22 +
  configure.ac        |    9 +
- util/grub-protect.c | 1524 +++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 1557 insertions(+)
+ util/grub-protect.c | 1492 +++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 1525 insertions(+)
  create mode 100644 util/grub-protect.c
 
-Index: grub-2.12~rc1/Makefile.util.def
-===================================================================
---- grub-2.12~rc1.orig/Makefile.util.def
-+++ grub-2.12~rc1/Makefile.util.def
-@@ -208,6 +208,28 @@ program = {
+diff --git a/Makefile.util.def b/Makefile.util.def
+index e89abb38f..f43c223b9 100644
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -207,6 +207,28 @@ program = {
+   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
  };
  
- program = {
++program = {
 +  name = grub-protect;
 +
 +  common = grub-core/osdep/init.c;
@@ -87,14 +87,13 @@ Index: grub-2.12~rc1/Makefile.util.def
 +  enable = efi;
 +};
 +
-+program = {
+ program = {
    name = grub-mkrelpath;
    mansection = 1;
- 
-Index: grub-2.12~rc1/configure.ac
-===================================================================
---- grub-2.12~rc1.orig/configure.ac
-+++ grub-2.12~rc1/configure.ac
+diff --git a/configure.ac b/configure.ac
+index c19779c14..9796e5f9b 100644
+--- a/configure.ac
++++ b/configure.ac
 @@ -76,6 +76,7 @@ grub_TRANSFORM([grub-mkpasswd-pbkdf2])
  grub_TRANSFORM([grub-mkrelpath])
  grub_TRANSFORM([grub-mkrescue])
@@ -103,7 +102,7 @@ Index: grub-2.12~rc1/configure.ac
  grub_TRANSFORM([grub-reboot])
  grub_TRANSFORM([grub-script-check])
  grub_TRANSFORM([grub-set-default])
-@@ -1992,6 +1993,14 @@ fi
+@@ -2018,6 +2019,14 @@ fi
  AC_SUBST([LIBZFS])
  AC_SUBST([LIBNVPAIR])
  
@@ -118,11 +117,12 @@ Index: grub-2.12~rc1/configure.ac
  LIBS=""
  
  AC_SUBST([FONT_SOURCE])
-Index: grub-2.12~rc1/util/grub-protect.c
-===================================================================
+diff --git a/util/grub-protect.c b/util/grub-protect.c
+new file mode 100644
+index 000000000..c6d41ea40
 --- /dev/null
-+++ grub-2.12~rc1/util/grub-protect.c
-@@ -0,0 +1,1524 @@
++++ b/util/grub-protect.c
+@@ -0,0 +1,1492 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -184,7 +184,6 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  GRUB_PROTECT_OPT_TPM2_SRK,
 +  GRUB_PROTECT_OPT_TPM2_KEYFILE,
 +  GRUB_PROTECT_OPT_TPM2_OUTFILE,
-+  GRUB_PROTECT_OPT_TPM2_PERSIST,
 +  GRUB_PROTECT_OPT_TPM2_EVICT,
 +  GRUB_PROTECT_OPT_TPM2_TPM2KEY
 +} grub_protect_opt;
@@ -203,9 +202,8 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  GRUB_PROTECT_ARG_TPM2_SRK        = 1 << 6,
 +  GRUB_PROTECT_ARG_TPM2_KEYFILE    = 1 << 7,
 +  GRUB_PROTECT_ARG_TPM2_OUTFILE    = 1 << 8,
-+  GRUB_PROTECT_ARG_TPM2_PERSIST    = 1 << 9,
-+  GRUB_PROTECT_ARG_TPM2_EVICT      = 1 << 10,
-+  GRUB_PROTECT_ARG_TPM2_TPM2KEY    = 1 << 11
++  GRUB_PROTECT_ARG_TPM2_EVICT      = 1 << 9,
++  GRUB_PROTECT_ARG_TPM2_TPM2KEY    = 1 << 10
 +} grub_protect_arg_t;
 +
 +typedef enum grub_protect_protector
@@ -237,7 +235,6 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  TPM_HANDLE tpm2_srk;
 +  const char *tpm2_keyfile;
 +  const char *tpm2_outfile;
-+  int tpm2_persist;
 +  int tpm2_evict;
 +  int tpm2_tpm2key;
 +};
@@ -318,8 +315,7 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +      .arg   = "NUM",
 +      .flags = 0,
 +      .doc   =
-+	N_("The SRK handle if the SRK is to be made persistent "
-+	   "(default is 0x81000001)."),
++	N_("The SRK handle if the SRK is to be made persistent."),
 +      .group = 0
 +    },
 +    {
@@ -332,16 +328,6 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +	   "ECC (ECC_NIST_P256), ECC_NIST_P384, ECC_NIST_P521, "
 +	   "ECC_BN_P256, ECC_BN_P638, and ECC_SM2_P256. "
 +	   "(default is RSA2048)"),
-+      .group = 0
-+    },
-+    {
-+      .name = "tpm2-persist",
-+      .key   = GRUB_PROTECT_OPT_TPM2_PERSIST,
-+      .arg   = NULL,
-+      .flags = 0,
-+      .doc   =
-+	N_("Whether to persist the SRK onto the TPM, otherwise it is recreated "
-+	   "ephemerally during boot (default is to not persist it)."),
 +      .group = 0
 +    },
 +    {
@@ -634,7 +620,7 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  rc = TPM2_PCR_Read (NULL, &pcr_sel, NULL, &pcr_sel_out, &pcr_values, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
-+      fprintf (stderr, _("Failed to read PCRs (TPM error: 0x%x).\n"), rc);
++      fprintf (stderr, _("Failed to read PCRs (TPM2_PCR_Read: 0x%x).\n"), rc);
 +      return GRUB_ERR_BAD_DEVICE;
 +    }
 +
@@ -711,7 +697,7 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  if (rc != TPM_RC_SUCCESS)
 +    {
 +      fprintf (stderr,
-+	       _("Failed to start trial policy session (TPM error: 0x%x).\n"),
++	       _("Failed to start trial policy session (TPM2_StartAuthSession: 0x%x).\n"),
 +	       rc);
 +      err = GRUB_ERR_BAD_DEVICE;
 +      goto exit2;
@@ -723,7 +709,7 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  rc = TPM2_PolicyPCR (session, NULL, &pcr_digest_in, &pcr_sel, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
-+      fprintf (stderr, _("Failed to submit PCR policy (TPM error: 0x%x).\n"),
++      fprintf (stderr, _("Failed to submit PCR policy (TPM2_PolicyPCR: 0x%x).\n"),
 +	       rc);
 +      err = GRUB_ERR_BAD_DEVICE;
 +      goto exit3;
@@ -733,7 +719,7 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  rc = TPM2_PolicyGetDigest (session, NULL, &policy_digest, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
-+      fprintf (stderr, _("Failed to get policy digest (TPM error: 0x%x).\n"),
++      fprintf (stderr, _("Failed to get policy digest (TPM2_PolicyGetDigest: 0x%x).\n"),
 +	       rc);
 +      err = GRUB_ERR_BAD_DEVICE;
 +      goto exit3;
@@ -772,26 +758,25 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  TPM2B_NAME srkName = { 0 };
 +  TPM_HANDLE srkHandle;
 +
-+  /* Find SRK */
-+  rc = TPM2_ReadPublic (args->tpm2_srk, NULL, &public);
-+  if (rc == TPM_RC_SUCCESS)
++  if (args->tpm2_srk != 0)
 +    {
-+      if (args->tpm2_persist)
-+	fprintf (stderr,
-+		 _("Warning: --tpm2-persist was specified but the SRK already "
-+		   "exists on the TPM. Continuing anyway...\n"));
++      /* Find SRK */
++      rc = TPM2_ReadPublic (args->tpm2_srk, NULL, &public);
++      if (rc == TPM_RC_SUCCESS)
++	{
++	  printf (_("Read SRK from 0x%x\n"), args->tpm2_srk);
++	  *srk = args->tpm2_srk;
++	  return GRUB_ERR_NONE;
++	}
 +
-+      *srk = TPM2_SRK_HANDLE;
-+      return GRUB_ERR_NONE;
-+    }
-+
-+  /* The handle exists but its public area could not be read. */
-+  if ((rc & ~TPM_RC_N_MASK) != TPM_RC_HANDLE)
-+    {
-+      fprintf (stderr,
-+	       _("The SRK exists on the TPM but its public area cannot be read "
-+		 "(TPM error: 0x%x).\n"), rc);
-+      return GRUB_ERR_BAD_DEVICE;
++      /* The handle exists but its public area could not be read. */
++      if ((rc & ~TPM_RC_N_MASK) != TPM_RC_HANDLE)
++	{
++	  fprintf (stderr,
++		   _("Failed to retrieve SRK from 0x%x (TPM2_ReadPublic: 0x%x).\n"),
++		   args->tpm2_srk, rc);
++	  return GRUB_ERR_BAD_DEVICE;
++	}
 +    }
 +
 +  /* Create SRK */
@@ -836,12 +821,12 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +			   &srkName, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
-+      fprintf (stderr, _("Failed to create SRK (TPM error: 0x%x).\n"), rc);
++      fprintf (stderr, _("Failed to create SRK (TPM2_CreatePrimary: 0x%x).\n"), rc);
 +      return GRUB_ERR_BAD_DEVICE;
 +    }
 +
 +  /* Persist SRK */
-+  if (args->tpm2_persist)
++  if (args->tpm2_srk != 0)
 +    {
 +      rc = TPM2_EvictControl (TPM_RH_OWNER, srkHandle, &authCommand,
 +			      args->tpm2_srk, NULL);
@@ -852,8 +837,8 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +	}
 +      else
 +	fprintf (stderr,
-+		 _("Warning: Failed to persist SRK (TPM error: 0x%x\n). "
-+		   "Continuing anyway...\n"), rc);
++		 _("Warning: Failed to persist SRK (0x%x) (TPM2_EvictControl: 0x%x\n). "
++		   "Continuing anyway...\n"), args->tpm2_srk, rc);
 +    }
 +
 +  /* Epilogue */
@@ -891,7 +876,7 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +		    &pcr_sel, &outPrivate, &outPublic, NULL, NULL, NULL, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
-+      fprintf (stderr, _("Failed to seal key (TPM error: 0x%x).\n"), rc);
++      fprintf (stderr, _("Failed to seal key (TPM2_Create: 0x%x).\n"), rc);
 +      return GRUB_ERR_BAD_DEVICE;
 +    }
 +
@@ -1202,7 +1187,7 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +  if (rc != TPM_RC_SUCCESS)
 +    {
 +      fprintf (stderr,
-+	       _("Failed to evict SRK with handle 0x%x (TPM Error: 0x%x).\n"),
++	       _("Failed to evict SRK with handle 0x%x (TPM2_EvictControl: 0x%x).\n"),
 +	       args->tpm2_srk, rc);
 +      err = GRUB_ERR_BAD_DEVICE;
 +      goto exit2;
@@ -1269,9 +1254,6 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +	  args->tpm2_pcr_count = 1;
 +	}
 +
-+      if (args->tpm2_srk == 0)
-+	args->tpm2_srk = TPM2_SRK_HANDLE;
-+
 +      if (args->tpm2_asymmetric == TPM_ALG_ERROR)
 +	{
 +	  args->tpm2_asymmetric = TPM_ALG_RSA;
@@ -1319,18 +1301,15 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +	  return GRUB_ERR_BAD_ARGUMENT;
 +	}
 +
-+      if (args->args & GRUB_PROTECT_ARG_TPM2_PERSIST)
++      if (args->tpm2_srk == 0)
 +	{
 +	  fprintf (stderr,
-+		   _("--tpm2-persist is invalid when --action is 'remove'.\n"));
++		   _("--tpm2-srk is not specified when --action is 'remove'.\n"));
 +	  return GRUB_ERR_BAD_ARGUMENT;
 +	}
 +
 +      if (args->tpm2_device == NULL)
 +	args->tpm2_device = "/dev/tpm0";
-+
-+      if (args->tpm2_srk == 0)
-+	args->tpm2_srk = TPM2_SRK_HANDLE;
 +
 +      break;
 +
@@ -1497,17 +1476,6 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +      args->args |= GRUB_PROTECT_ARG_TPM2_OUTFILE;
 +      break;
 +
-+    case GRUB_PROTECT_OPT_TPM2_PERSIST:
-+      if (args->args & GRUB_PROTECT_ARG_TPM2_PERSIST)
-+	{
-+	  fprintf (stderr, _("--tpm2-persist can only be specified once.\n"));
-+	  return EINVAL;
-+	}
-+
-+      args->tpm2_persist = 1;
-+      args->args |= GRUB_PROTECT_ARG_TPM2_PERSIST;
-+      break;
-+
 +    case GRUB_PROTECT_OPT_TPM2_EVICT:
 +      if (args->args & GRUB_PROTECT_ARG_TPM2_EVICT)
 +	{
@@ -1647,3 +1615,6 @@ Index: grub-2.12~rc1/util/grub-protect.c
 +
 +  return err;
 +}
+-- 
+2.35.3
+

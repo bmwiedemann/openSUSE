@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Nov 27 09:25:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.2:
+  * Fix a packaging issue on macOS
+  * Updated lexers:
+  * TOML: Fix bug making lexing of single-quoted strings too
+    eager
+  * Cypher: fix comment matching, add missing keywords
+  * Fortran: add ``elseif`` keyword
+  * Lean: make it available as ``lean3``, in preparation for
+  * a possible switch to ``lean`` highlighting as Lean 4
+  * JSON: add MIME types and file extensions for several line-
+    delimited JSON formats
+  * Nix: many improvements
+  * OCaml: Add ``and`` keyword, remove ``value`` from keywords
+  * Python: add ``starlark`` and ``bazel`` aliases
+  * Snowball: Treat ``len`` like ``size``
+  * Spice: add ``panic`` keyword and ``->`` operator
+  * squid.conf: fix catastrophic backtracking
+  * TOML: rewritten, with many fixes
+  * Turtle: support blank nodes
+  * Wikitext: fix erroneous highlighting of LanguageConverter
+    markup
+  * CMake: support ``[=[ bracketed arguments ]=]```
+  * Fix ctags support and tests
+  * Include ``Lexer.add_filter`` in the documentation
+  * Add a ``Lean3Lexer`` alias
+  * The ``pygments.styles`` module contains a new ``STYLES``
+    variable with a dictionary of built-in styles.  The old
+    ``STYLE_MAP`` variable, which uses a different format,
+    is kept for backwards compatibility.
+  * On Windows, add a new installation extra (``windows-
+    terminal``) which pulls in dependencies for colored
+    console output. See :doc:`cmdline` for more details.
+  * Support more file types in ``autopygmentize`` script
+  * Change color of numbers in ``rrt`` style
+  * Fix error when trying to look up plugin formatters by file
+    extension of the output format
+  * Use Hatchling as a build backend instead of setuptools.
+  * This change is transparent to most users. Distribution
+    packagers who build without build isolation need to add
+    hatchling as a build dependency and remove setuptools.
+    People downloading source distributions and wheels from PyPI
+    directly should note that they now have ``pygments`` in their
+    file names instead of ``Pygments``.
+  * Improve the test framework to also check for lost tokens when
+    processing the snippets and example files
+  * Improve the *Dracula* style definition to make it easier to
+    maintain
+
+-------------------------------------------------------------------
 Sun Nov  5 07:15:50 UTC 2023 - Matěj Cepl <mcepl@cepl.eu>
 
 - Add skip-wcag-contrast-ratio.patch to make
@@ -377,7 +428,7 @@ Mon Jan  3 11:09:21 UTC 2022 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Thu Sep  9 08:48:02 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Thu Jul 15 05:11:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -929,7 +980,7 @@ Wed Mar 11 22:36:07 UTC 2015 - tbehrens@suse.com
 -------------------------------------------------------------------
 Mon Apr  7 11:36:38 UTC 2014 - dmueller@suse.com
 
-- add LICENSE to doc section 
+- add LICENSE to doc section
 
 -------------------------------------------------------------------
 Thu Oct 24 11:11:51 UTC 2013 - speilicke@suse.com
@@ -1060,5 +1111,5 @@ Tue Dec 09 23:28:25 UTC 2008 - cfarrell1980@gmail.com
 -------------------------------------------------------------------
 Thu Jun 21 10:30:25 UTC 2007 - judas_iscariote@shorewall.net
 
-- Initial package version. 
+- Initial package version.
 

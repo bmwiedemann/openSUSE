@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-smmap
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        A pure python implementation of a sliding window memory map manager
 License:        BSD-2-Clause
@@ -62,6 +60,7 @@ dos2unix README.md
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/smmap
+%{python_sitelib}/smmap-%{version}-py*-info
 
 %changelog

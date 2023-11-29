@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-devpi-client%{psuffix}
-Version:        7.0.1
+Version:        7.0.2
 Release:        0
 Summary:        Client for devpi
 License:        MIT

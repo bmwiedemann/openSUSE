@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:27:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.8.0:
+  * Update version to 4.8.0-dev by @umohnani8 in #329
+  * Fix up docs and format issues by @umohnani8 in #338
+  * Fix readthedocs yaml by @umohnani8 in #339
+  * Add progress_bar option to image pull by @umohnani8 in #340
+  * Update dependency containers/automation_images to v20231004 by
+    @renovate in #335
+  * Update pull progress bar colour by @umohnani8 in #341
+  * Fix readthedocs build issues by @umohnani8 in #342
+  * Update dependency containers/automation_images to v20231116 by
+    @renovate in #344
+  * Bump version v4.8.0 by @umohnani8 in #345
+
+-------------------------------------------------------------------
 Thu Sep 28 04:38:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.6.0:

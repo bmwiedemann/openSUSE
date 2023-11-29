@@ -20,14 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.3
+Version:        3.1.9
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch1:         CVE-2023-35936.patch
-Patch2:         CVE-2023-38745.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-Glob-prof
@@ -65,10 +63,10 @@ BuildRequires:  ghc-commonmark-extensions-prof
 BuildRequires:  ghc-commonmark-pandoc-devel
 BuildRequires:  ghc-commonmark-pandoc-prof
 BuildRequires:  ghc-commonmark-prof
-BuildRequires:  ghc-connection-devel
-BuildRequires:  ghc-connection-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-connection-devel
+BuildRequires:  ghc-crypton-connection-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-deepseq-devel
@@ -231,7 +229,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -p1 -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
@@ -366,7 +364,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/affiliations.jats
 %{_datadir}/%{pkg_name}-%{version}/data/templates/article.jats_publishing
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.asciidoc
-%{_datadir}/%{pkg_name}-%{version}/data/templates/default.asciidoctor
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.biblatex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.bibtex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.chunkedhtml

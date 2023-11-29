@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-dt
-Version:        2023.05.02
+Version:        2023.11.21
 Release:        0
 Summary:        Device trees for the Raspberry Pi firmware loader
 License:        GPL-2.0-only
@@ -53,7 +53,7 @@ mkdir pp
 PPDIR=`pwd`/pp
 
 export DTC_FLAGS="-R 4 -p 0x1000 -@ -H epapr"
-for dts in arch/arm/boot/dts/bcm27*dts arch/arm64/boot/dts/broadcom/bcm27*dts; do
+for dts in arch/arm/boot/dts/broadcom/bcm27*dts arch/arm64/boot/dts/broadcom/bcm27*dts; do
     target=$(basename ${dts%*.dts})
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $dts -o $PPDIR/$target.dts
     dtc $DTC_FLAGS -I dts -O dtb -i ./$(dirname $dts) -o $PPDIR/$target.dtb $PPDIR/$target.dts

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 25 20:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.90:
+  * BeginChild(): Upgraded 'bool border = false' parameter to
+    'ImGuiChildFlags flags = 0'.
+  * Added ImGuiChildFlags_Border value. As with our prior
+    "bool-to-flags" API updates, the ImGuiChildFlags_Border
+    value is guaranteed to be == true forever to ensure a
+    smoother transition, meaning all existing calls will still
+    work.
+  * BeginChildFrame()/EndChildFrame(): removed functions in
+    favor of using BeginChild() with the ImGuiChildFlags_FrameStyle
+    flag.
+  * IO: Removed io.MetricsActiveAllocations introduced in
+    1.63, was displayed in Metrics and unlikely to
+    be accessed by end-user. Value still visible in the UI and
+    easily to recompute from a delta.
+  * Commented out runtime support for hardcoded ~0 or
+    0x01..0x0F rounding flags values for
+    AddRect()/AddRectFilled()/PathRect()/AddImageRounded().
+
+-------------------------------------------------------------------
 Tue Jun 27 14:57:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.89.6:
@@ -184,7 +206,7 @@ Fri Jan  6 08:51:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Tue Dec  6 20:58:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.89.1:
-  * too many changes to list here, see https://github.com/ocornut/imgui/releases/tag/v1.89.1 
+  * too many changes to list here, see https://github.com/ocornut/imgui/releases/tag/v1.89.1
 
 -------------------------------------------------------------------
 Mon Aug 23 13:52:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
@@ -206,7 +228,7 @@ Sat Aug 21 21:26:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 Tue Apr 20 11:18:02 UTC 2021 - Anton Smorodskyi <asmorodskyi@suse.com>
 
 - drop logic building imgui.so because this library is dummy and not
-ship any actual functionality. ImGui suppose to be used as sources 
+ship any actual functionality. ImGui suppose to be used as sources
 
 -------------------------------------------------------------------
 Sat Feb 20 15:07:04 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>

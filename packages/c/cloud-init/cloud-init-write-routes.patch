@@ -1,6 +1,6 @@
 --- cloudinit/distros/__init__.py.orig
 +++ cloudinit/distros/__init__.py
-@@ -276,6 +276,15 @@ class Distro(persistence.CloudInitPickle
+@@ -287,6 +287,15 @@ class Distro(persistence.CloudInitPickle
  
          network_state = parse_net_config_data(netconfig, renderer=renderer)
          self._write_network_state(network_state, renderer)
@@ -18,15 +18,16 @@
          if bring_up:
 --- cloudinit/distros/opensuse.py.orig
 +++ cloudinit/distros/opensuse.py
-@@ -15,6 +15,7 @@ from cloudinit import log as logging
+@@ -10,7 +10,7 @@
+ 
+ import os
+ 
+-from cloudinit import distros, helpers
++from cloudinit import distros, helpers, net
+ from cloudinit import log as logging
  from cloudinit import subp, util
  from cloudinit.distros import rhel_util as rhutil
- from cloudinit.distros.parsers.hostname import HostnameConf
-+from cloudinit.net import ipv4_mask_to_net_prefix
- from cloudinit.settings import PER_INSTANCE
- 
- LOG = logging.getLogger(__name__)
-@@ -238,6 +239,144 @@ class Distro(distros.Distro):
+@@ -238,6 +238,147 @@ class Distro(distros.Distro):
              conf.set_hostname(hostname)
              util.write_file(filename, str(conf), 0o644)
  
@@ -66,7 +67,10 @@
 +                    if dest != 'default':
 +                        netmask = route.get('netmask')
 +                        if netmask:
-+                            prefix = ipv4_mask_to_net_prefix(netmask)
++                            if net.is_ipv4_network(netmask):
++                                prefix = net.ipv4_mask_to_net_prefix(netmask)
++                            if net.is_ipv6_network(netmask):
++                                prefix = net.ipv6_mask_to_net_prefix(netmask)
 +                            dest += '/' + str(prefix)
 +                        if '/' not in dest:
 +                            LOG.warning(

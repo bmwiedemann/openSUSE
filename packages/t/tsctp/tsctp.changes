@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov 25 19:53:02 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.10
+  * https://github.com/dreibh/tsctp/compare/tsctp-0.7.5...tsctp-0.7.10
+  * Update URL
+
+-------------------------------------------------------------------
+Sat Nov 25 16:51:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.5:
+  * build cleanups
+  * new signing key
+
+-------------------------------------------------------------------
 Sat Jun 27 13:42:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.7.4

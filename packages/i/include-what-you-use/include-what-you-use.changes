@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 25 18:49:09 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Tests require at least Python 3.8, so we use a newer Python on
+  Leap than the system default 3.6.
+
+-------------------------------------------------------------------
 Wed Nov  8 22:44:57 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.21, update LLVM/Clang to version 17.

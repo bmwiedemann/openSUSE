@@ -465,4 +465,12 @@
     <comment>10.8</comment>
     <requestid>1108125</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9b5f8d8258c64e3850445aca0f777192</srcmd5>
+    <version>10.8.2+0</version>
+    <time>1701023834</time>
+    <user>anag+factory</user>
+    <comment>10.8.2 but fixed</comment>
+    <requestid>1128771</requestid>
+  </revision>
 </revisionlist>

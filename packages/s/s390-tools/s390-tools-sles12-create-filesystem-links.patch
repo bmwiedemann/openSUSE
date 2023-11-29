@@ -1,7 +1,3 @@
----
- etc/udev/rules.d/59-dasd.rules |   10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
 Index: s390-tools-2.29.0/etc/udev/rules.d/59-dasd.rules
 ===================================================================
 --- s390-tools-2.29.0.orig/etc/udev/rules.d/59-dasd.rules

@@ -1,7 +1,7 @@
 #
 # spec file for package python-restview
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-restview
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        ReStructuredText viewer
 License:        GPL-3.0-only
@@ -25,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://mg.pov.lt/restview/
 Source:         https://files.pythonhosted.org/packages/source/r/restview/restview-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-tests.patch gh#mgedmin/restview@5033eacb1d55
-Patch1:         fix-tests.patch
+Patch:          fix-tests.patch
+# PATCH-FIX-UPSTREAM fix_tests.patch gh#mgedmin/restview@6a1d6b44ee40
+Patch:          fix_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -668,4 +668,12 @@ rename the package from spyder3 to spyder.
   * Add spyder-pr21470-pylint3.diff (forwarded request 1121002 from bnavigator)</comment>
     <requestid>1121004</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>03cb9f5209ed7f7b7af7135e42541a02</srcmd5>
+    <version>5.5.0</version>
+    <time>1701121388</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128649</requestid>
+  </revision>
 </revisionlist>

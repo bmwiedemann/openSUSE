@@ -1,4 +1,203 @@
 -------------------------------------------------------------------
+Sun Nov 26 19:04:28 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.65.0:
+  * Version v1.65.0
+  * onedrive: add --onedrive-delta flag to enable ListR
+  * smb: fix modtime of multithread uploads by setting PartialUploads
+  * smb: fix about size wrong by switching to github.com/cloudsoda/go-smb2/ fork
+  * serve s3: fix overwrite of files with 0 length file
+  * serve s3: fix error handling for listing non-existent prefix - fixes #7455
+  * test_all: make integration test for serve s3
+  * Add Abhinav Dhiman to contributors
+  * Add 你知道未来吗 to contributors
+  * imagekit: Added ImageKit backend
+  * fs/fshttp: fix --contimeout being ignored
+  * s3: ensure we can set upload cutoff that we use for Rclone provider
+  * serve s3: document multipart copy doesn't work #7454
+  * b2: fix streaming chunked files an exact multiple of chunk size
+  * fstest: factor chunked streaming tests from b2 and use in all backends
+  * b2: fix server side chunked copy when file size was exactly --b2-copy-cutoff
+  * fstest: factor chunked copy tests from b2 and use them in s3 and oos
+  * operations: fix overwrite of destination when multi-thread transfer fails
+  * random: stop using deprecated rand.Seed in go1.20 and later
+  * random: speed up String function for generating larger blocks
+  * hash: allow runtime configuration of supported hashes for testing
+  * Add Alen Šiljak to contributors
+  * http: enable methods used with WebDAV - fixes #7444
+  * s3: detect looping when using gcs and versions
+  * dropbox: fix missing encoding for rclone purge again
+  * test_all: limit the Zoho tests to just the backend
+  * test_all: remove uptobox from integration tests
+  * operations: use less memory when doing multithread uploads
+  * operations: make Open() return an io.ReadSeekCloser #7350
+  * fs: add ChunkWriterDoesntSeek feature flag and set it for b2
+  * mockobject: fix SetUnknownSize method to obey parameter passed in
+  * box: fix performance problem reading metadata for single files
+  * gcs: fix 400 Bad request errors when using multi-thread copy
+  * http: implement set backend command to update running backend
+  * dropbox: fix missing encoding for rclone purge
+  * Update Docs to show SMB remote supports modtime.md
+  * docs: cleanup backend hashes sections
+  * docs: replace mod-time with modtime
+  * march: Fix excessive parallelism when using --no-traverse
+  * Add Mina Galić to contributors
+  * Makefile: use POSIX compatible install arguments
+  * install.sh: Clean up temp files in install script
+  * drive: fix integration tests by enabling metadata support from the context
+  * fstests: make sure Metadata is enabled in the context for metadata tests
+  * Refresh CONTRIBUTING.md
+  * fs: implement --metadata-mapper to transform metatadata with a user supplied program
+  * drive: fix error updating created time metadata on existing object
+  * drive: add read/write metadata support
+  * Add moongdal to contributors
+  * Add viktor to contributors
+  * Add karan to contributors
+  * Add Oksana Zhykina to contributors
+  * linkbox: pre-merge fixes
+  * backend: add Linkbox backend
+  * vfs: error out early if can't upload 0 length file
+  * azurefiles: finish docs and implementation and add optional interfaces
+  * Implement Azure Files backend
+  * fs: fix a typo in a comment
+  * quatrix: overwrite files on conflict during server-side move
+  * quatrix: add partial upload support
+  * serve s3: pre-merge tweaks
+  * Add Saw-jan to contributors
+  * serve s3: fixes before merge
+  * Add Artur Neumann to contributors
+  * serve s3: fix file name encoding using s3 serve with mc client
+  * Add Mikubill to contributors
+  * serve s3: let rclone act as an S3 compatible server
+  * s3: add --s3-disable-multipart-uploads flag
+  * bin/update_authors.py: add authors from Co-authored-by: lines too
+  * size: dont show duplicate object count when less than 1k
+  * lib/file: fix MkdirAll after go1.21.4 stdlib update
+  * docs: factor large docs into separate .md files to make them easier to maintain.
+  * Add Tayo-pasedaRJ to contributors
+  * Add Adithya Kumar to contributors
+  * Add wuxingzhong to contributors
+  * hdfs: added support for list of namenodes in hdfs remote config
+  * webdav: added an rclone vendor to work with rclone serve webdav
+  * docs: show hashsum arguments as optional in usage string
+  * docs: document how to build with version info and icon resources on windows
+  * build: refactor version info and icon resource handling on windows
+  * serve dnla: fix crash on graceful exit
+  * operations: fix server side copies on partial upload backends after refactor
+  * mount: disable mount for freebsd
+  * build: update all dependencies
+  * operations: fix invalid UTF-8 when truncating file names when not using --inplace
+  * operations: refactor Copy into methods on an temporary object
+  * operations: factor Copy into its own file
+  * build(deps): bump google.golang.org/grpc from 1.56.2 to 1.56.3
+  * b2: fix multi-thread upload with copyto going to wrong name
+  * fstests: add integration test for OpenChunkWriter uploading to the wrong name
+  * b2: fix error handler to remove confusing DEBUG messages
+  * s3: emit a debug message if anonymous credentials are in use
+  * ncdu: fix crash when re-entering changed directory after rescan
+  * fs: fix docs for Bits
+  * fs: add IsSet convenience method to Bits
+  * docs: remove third party logos from source tree
+  * docs: update Storj image and link
+  * Add alfish2000 to contributors
+  * union: fix documentation
+  * build: fix new lint errors with golangci-lint v1.55.0
+  * selfupdate: make sure we don't run tests if selfupdate is set
+  * local: fix copying from Windows Volume Shadows
+  * Changelog updates from Version 1.64.2
+  * selfupdate: fix "invalid hashsum signature" error
+  * build: add the serve docker tests to the integration tester
+  * build: fix docker build running out of space
+  * Add Ivan Yanitra to contributors
+  * Add Keigo Imai to contributors
+  * Add Gabriel Espinoza to contributors
+  * azureblob: add support cold tier
+  * drive: add a note that --drive-scope accepts comma-separated list of scopes
+  * docs: change authors email for SimJoSt
+  * Changelog updates from Version 1.64.1
+  * lib/http: export basic go strings functions
+  * docs: update documentation for --fast-list adding info about ListR
+  * mount: fix automount not detecting drive is ready
+  * sftp: implement --sftp-copy-is-hardlink to server side copy as hardlink
+  * serve sftp: return not supported error for not supported commands
+  * b2: fix chunked streaming uploads
+  * build: upgrade golang.org/x/net to v0.17.0 to fix HTTP/2 rapid reset
+  * b2: fix server side copies greater than 4GB
+  * cmd: Make --progress output logs in the same format as without
+  * operations: fix error message on delete to have file name - fixes #7355
+  * operations: fix OpenOptions ignored in copy if operation was a multiThreadCopy
+  * build: fix docker beta build running out of space
+  * Add Volodymyr to contributors
+  * operations: implement --partial-suffix to control extension of temporary file names
+  * s3: fix no error being returned when creating a bucket we don't own
+  * oracleobjectstorage: fix OpenOptions being ignored in uploadMultipart with chunkWriter
+  * s3: fix OpenOptions being ignored in uploadMultipart with chunkWriter
+  * drive: add --drive-show-all-gdocs to allow unexportable gdocs to be server side copied
+  * Add Saleh Dindar to contributors
+  * Add Beyond Meat to contributors
+  * nfsmount: documentation for new NFS mount feature for macOS
+  * nfsmount: New mount command to provide mount mechanism on macOS without FUSE
+  * serve nfs: new `serve nfs` command
+  * vfs: Add go-billy dependency and make sure vfs.Handle implements billy.File
+  * vfs: [bugfix] Update dir modification time
+  * vfs: [bugfix] Implement Name() method in WriteFileHandle and ReadFileHandle
+  * vfs: add --vfs-refresh flag to read all the directories on start
+  * operations: add operations/check to the rc API
+  * operations: close file in TestUploadFile test so it can be deleted on Windows
+  * googlephotos: implement batcher for uploads - fixes #6920
+  * dropbox: factor batcher into lib/batcher
+  * fs: re-implement DumpMode with Bits
+  * fs: create fs.Bits for easy creation of parameters from a bitset of choices
+  * vfs: re-implement CacheMode with fs.Enum
+  * fs: re-implement CutoffMode, LogLevel, TerminalColorMode with Enum
+  * fs: create fs.Enum for easy creation of parameters from a list of choices
+  * fs: fix option types printing incorrectly for backend flags
+  * onedrive: implement ListR method which gives --fast-list support
+  * onedrive: factor API types back into correct file
+  * b2: reduce default --b2-upload-concurrency to 4 to reduce memory usage
+  * b2: fix locking window when getting mutipart upload URL
+  * pacer: fix b2 deadlock by defaulting max connections to unlimited
+  * docs: add utime (time of file upload) to standard system metadata
+  * jottacloud: add support for reading and writing metadata
+  * s3: fix slice bounds out of range error when listing
+  * Add rinsuki to contributors
+  * drive: add support of SHA-1 and SHA-256 checksum
+  * s3: add docs on how to add a new provider
+  * s3: add Linode provider
+  * s3: Factor providers list out and auto generate textual version
+  * docs: fix backend doc generator to not output duplicate config names
+  * Add Nikita Shoshin to contributors
+  * rcserver: set `Last-Modified` header for files served by `--rc-serve`
+  * docs: fix typos found by codespell in docs and code comments
+  * onedrive: fix the configurator to allow /teams/ID in the config
+  * build: add btesth target to output beta log in HTML for email pasting
+  * lsjson: make sure we set the global metadata flag too
+  * rc: always report an error as JSON
+  * b2: fix multipart upload: corrupted on transfer: sizes differ XXX vs 0
+  * b2: implement --b2-lifecycle to control lifecycle when creating buckets
+  * b2: implement "rclone backend lifecycle" to read and set bucket lifecycles
+  * b2: fix listing all buckets when not needed
+  * azureblob: fix "fatal error: concurrent map writes"
+  * build(deps): bump docker/setup-qemu-action from 2 to 3
+  * box: add more logging for polling
+  * box: filter more EventIDs when polling
+  * build(deps): bump docker/setup-buildx-action from 2 to 3
+  * storj: update storj.io/uplink to v1.12.0
+  * docs: add notes on how to update the website between releases
+  * docs: remove minio sponsor box for the moment
+  * docs: update Storj partner link
+  * Add Herby Gillot to contributors
+  * Add Pat Patterson to contributors
+  * docs: add MacPorts install info
+  * build(deps): bump docker/metadata-action from 4 to 5
+  * build(deps): bump docker/login-action from 2 to 3
+  * build(deps): bump docker/build-push-action from 4 to 5
+  * fix overview of oracle object storage as it supports multithreaded
+  * operations: ensure concurrency is no greater than the number of chunks - fixes #7299
+  * docs: fix minimum Go version and update to 1.18
+  * Start v1.65.0-DEV development
+
+-------------------------------------------------------------------
 Thu Oct 19 11:48:57 UTC 2023 - mrueckert@suse.de
 
 - Update to version 1.64.2:

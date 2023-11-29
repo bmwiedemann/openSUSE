@@ -158,4 +158,22 @@
   - Add support for systemd soft-reboot</comment>
     <requestid>1115961</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ed3c0a82930050f9408f00b0a7d8b07b</srcmd5>
+    <version>1.13</version>
+    <time>1700772149</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.13
+  - Skip restart of virtlockd by default</comment>
+    <requestid>1128342</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6a3994cceea9ff5944b0c7d7a933982a</srcmd5>
+    <version>1.14</version>
+    <time>1700865309</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.14
+  - Fix check if rebootmgrctl is installed</comment>
+    <requestid>1128573</requestid>
+  </revision>
 </revisionlist>

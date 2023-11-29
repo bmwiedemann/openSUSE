@@ -18,7 +18,7 @@
 
 
 Name:           fx
-Version:        24.1.0
+Version:        31.0.0
 Release:        0
 Summary:        Terminal JSON viewer
 License:        MIT
@@ -46,7 +46,7 @@ Terminal JSON viewer.
 
 %files
 %license LICENSE
-%doc README.md doc/*.md
+%doc README.md
 %{_bindir}/fx
 
 %changelog

@@ -18,22 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pexpect
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        Pure Python Expect-like module
 License:        ISC
 URL:            https://github.com/pexpect/pexpect
 Source:         https://files.pythonhosted.org/packages/source/p/pexpect/pexpect-%{version}.tar.gz
-Patch0:         no-python-binary.patch
-# Newer asyncio / python 3.11 support
-Patch1:         https://github.com/pexpect/pexpect/pull/715.patch
-Patch2:         https://github.com/pexpect/pexpect/pull/684.patch
-Patch3:         fix-fail-no-alias.patch
-# Python 3.12 tests
-Patch4:         https://github.com/pexpect/pexpect/commit/dae602d37493bae239e0e8db5b3dabafebfd59db.patch
-Patch5:         https://github.com/pexpect/pexpect/commit/31fab7b0edbe9b3401507b5dfa4db6aaf3fabca5.patch
-# PATCH-FIX-UPSTREAM 742.patch gh#pexpect/pexpect#742
-Patch6:         742.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}
@@ -62,7 +52,6 @@ find examples -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {}
 find examples -type f -name "*.cgi" -exec sed -i "s|##!%{_bindir}/env python|##!%{_bindir}/python|" {} \;
 # Mark example *.py as non-executable (we already patch the shebang out, so they can't be started anyway)
 find examples -type f -name "*.py" -exec chmod 644 {} \;
-
 # Remove shebang
 sed -i '1 {/^#!/d}' pexpect/FSM.py
 
@@ -79,14 +68,7 @@ echo "set enable-bracketed-paste off" > .inputrc
 export INPUTRC=$(readlink -f .inputrc) TRAVIS=true
 # test_pager_as_cat - needs manpages that would pull extra deps
 # test_interrupt, test_multiple_interrupts - hangs under linux-user emulation
-# test_bash https://github.com/pexpect/pexpect/issues/568
-# test_large_stdout_stream - random
-# test_spawn_uses_env - seen failed on s390x
-# test_forced_terminate - seen failed on armv7l
-# test_interact_escape_None - seen failed on s390x
-# test_existing_spawn - fails under linux-user emulation
-# test_existing_spawn fails on s390x - gh#pexpect/pexpect#750
-%pytest -k "not (test_pager_as_cat %{?qemu_user_space_build: or test_interrupt or test_multiple_interrupts})"
+%pytest -k "not (test_pager_as_cat or test_zsh %{?qemu_user_space_build: or test_interrupt or test_multiple_interrupts})"
 
 %files %{python_files}
 %license LICENSE

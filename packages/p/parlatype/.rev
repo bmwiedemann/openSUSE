@@ -112,4 +112,20 @@
 - Remove parlatype-asr.patch: upstreamed</comment>
     <requestid>945370</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8794e332b6175714ef540fcf627b03d9</srcmd5>
+    <version>4.0</version>
+    <time>1701121383</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0:
+  * New: Switch to GTK 4 (new dependency: gtk4.0 &gt;= 4.0)
+  * New: Removed dependency gladeui-2.0 and meson option glade
+  * New: Removed support for GNOME MediaKeys (use MPRIS instead)
+  * New: Some screenshots for help pages are generated automatically for
+    available locales
+  * Fix: #98, MPRIS related crash at startup
+  * Fix: #105, Audio stops playing after some time
+    Related to this: disabled dragging the playback cursor</comment>
+    <requestid>1128969</requestid>
+  </revision>
 </revisionlist>

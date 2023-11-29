@@ -1,8 +1,41 @@
 -------------------------------------------------------------------
+Thu Nov 23 19:53:41 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 27.1.4
+  - No changelog from upstream at this time.
+
+-------------------------------------------------------------------
 Fri Oct 27 05:33:23 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 27.1.3
-  - No changelog from upstream at this time.
+  - Fix: Escape group names for LDAP (server#37201) 2
+  - Fix(updatenotification): Skip update check (server#39826)
+  - Fix: Avoid failing with duplicate checks (server#40383) 1
+  - Add wrapper for external storage to ensure we don’t get an mtime that is lower than we know it is (server#40569)
+  - Clear progress bar text when hiding it (server#40572) 1
+  - Use multipart copy for s3 (server#40577)
+  - Enh(a11y): Add label to share note textbox (server#40681)
+  - Fix(unifiedsearch): Allow searching for “0” (server#40683)
+  - Fix Dashboard IManager getWidgets return annotation (server#40695)
+  - Multiple bug fix in users list (server#40718)
+  - Fix: Escape group names for LDAP (server#40739) 1
+  - Updates to new sharing flow (server#40747) 1
+  - Fix: encode uri for trashbin delete (server#40757)
+  - Feat: Add occ user:user:sync-account-data for updating oc_accounts information from user backends (server#40759)
+  - Fix(files): Show correct quota size (file size base 2) (server#40787) 1
+  - Fix(user): Log affected user of app token login name mismatch (server#40797) 1
+  - Added CORS skip if session was created by AppAPI (server#40830)
+  - Generate all preview sizes for Imaginary (server#40834) 1
+  - Fixed mixed translations in sharing details (server#40837)
+  - Fix: Log critical session renewal and logout paths (server#40849)
+  - Remove leading slash (server#40856)
+  - Add in:users as a search filter to limit searches to users (server#40882)
+  - Update version.php to owncloud 10.13 (server#40987) 2
+  - Fix(external): Get storage before update it (server#41124)
+  - Fixes and additions to editor API (text#4838)
+  - Enh(editorApi): Introduce editor API version number (text#4841)
+  - Fix(editorApi): Use attachment resolver in MarkdownContentEditor (text#4845)
+  - Fix(paste): paste plaintext with separate paragraphs (text#4879)
   
 -------------------------------------------------------------------
 Thu Oct  5 14:13:03 UTC 2023 - ecsos <ecsos@opensuse.org>

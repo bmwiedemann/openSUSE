@@ -235,4 +235,28 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
 </comment>
     <requestid>1127912</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ae26f892b06f28aedebe1b443ba5f2e2</srcmd5>
+    <version>0.2.5</version>
+    <time>1700865327</time>
+    <user>anag+factory</user>
+    <comment>- Update sources
+  * Add river.keyring
+  * Add river-0.2.5.tar.gz properly
+  * Add river-0.2.5.tar.gz.sig
+- Update to version 0.2.5:
+  * No changes. Just a new tagged release
+</comment>
+    <requestid>1128606</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d0f99aeb3978aaa4e995db766a3f2eb2</srcmd5>
+    <version>0.2.6</version>
+    <time>1701023829</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.6:
+  * InputDevice: fix identifier generation
+</comment>
+    <requestid>1128734</requestid>
+  </revision>
 </revisionlist>

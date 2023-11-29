@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:58:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.23.4
+  * Export detect_gce_residency_linux function (#1403)
+- from version 2.23.3
+  * Serialize signer keys on __getstate__ for pickling (#1394),
+    closes (#1383)
+
+-------------------------------------------------------------------
 Tue Oct  3 12:48:18 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.23.2

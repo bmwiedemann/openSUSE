@@ -1,0 +1,49 @@
+From 22a4eb02f00f2b332d3199d18ee7f546640564d0 Mon Sep 17 00:00:00 2001
+From: Ofek Lev <ofekmeister@gmail.com>
+Date: Sat, 7 Oct 2023 20:04:32 -0400
+Subject: [PATCH] Fix tests
+
+---
+ tests/cli/env/test_show.py          | 18 +++++++++---------
+ tests/index/server/devpi/Dockerfile |  2 +-
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/tests/cli/env/test_show.py b/tests/cli/env/test_show.py
+index 3588ce243..9cc2f42a2 100644
+--- a/tests/cli/env/test_show.py
++++ b/tests/cli/env/test_show.py
+@@ -439,15 +439,15 @@ def test_context_formatting(hatch, helpers, temp_dir, config_file):
+         +======+=========+==============+=======================+
+         | foo  | virtual | pydantic     | BAR=FOO_BAR           |
+         +------+---------+--------------+-----------------------+
+-                                  Matrices
+-        +---------+---------+------------+-------------------------+
+-        | Name    | Type    | Envs       | Dependencies            |
+-        +=========+=========+============+=========================+
+-        | default | virtual | py39-9000  | foo @ {root:uri}/../foo |
+-        |         |         | py39-3.14  |                         |
+-        |         |         | py310-9000 |                         |
+-        |         |         | py310-3.14 |                         |
+-        +---------+---------+------------+-------------------------+
++                                 Matrices
++        +---------+---------+------------+------------------------+
++        | Name    | Type    | Envs       | Dependencies           |
++        +=========+=========+============+========================+
++        | default | virtual | py39-9000  | foo@ {root:uri}/../foo |
++        |         |         | py39-3.14  |                        |
++        |         |         | py310-9000 |                        |
++        |         |         | py310-3.14 |                        |
++        +---------+---------+------------+------------------------+
+         """
+     )
+ 
+diff --git a/tests/index/server/devpi/Dockerfile b/tests/index/server/devpi/Dockerfile
+index d00434f84..01d4c0ddd 100644
+--- a/tests/index/server/devpi/Dockerfile
++++ b/tests/index/server/devpi/Dockerfile
+@@ -1,4 +1,4 @@
+-FROM python:alpine
++FROM python:3.11-alpine
+ 
+ RUN apk add --update build-base && \
+     pip install -U devpi-server devpi-client devpi-web

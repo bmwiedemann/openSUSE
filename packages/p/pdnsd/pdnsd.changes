@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov 26 11:20:55 UTC 2023 - seife+obs@b1-systems.com
+
+- add pdnsd-nodaemon-logfix.patch to remove the useless additional
+  timestamp from journal logs
+
+-------------------------------------------------------------------
+Tue Nov 21 13:25:45 UTC 2023 - seife+obs@b1-systems.com
+
+- reorganize specfile:
+  * patches back to -p1, much easier to handle
+  * create pdnsd.service from single template for SLES12 (no
+    hardening) and newer (hardening), do not maintain 2 files
+  * put licences back into main package, only large doc into
+    -doc subpackage
+- add patch pdnsd-fix-preproc-errors.patch to make compiletime
+  default query selection actually work
+- remove cache file creation from package, the daemon creates this
+  on first exit (see discussion in boo#1216277)
+
+-------------------------------------------------------------------
+Tue Nov  7 07:49:31 UTC 2023 - chris@computersalat.de
+
+- fix typo in tmpfile
+
+-------------------------------------------------------------------
+Thu Nov  2 15:23:28 UTC 2023 - chris@computersalat.de
+
+- fix for boo#1216277
+  * add pdnsd.tmpfile to safely create cache file
+  * remove ExecStartPre from service file
+
+-------------------------------------------------------------------
 Wed Oct 11 14:34:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer reference the full URL to the tarball: the website no

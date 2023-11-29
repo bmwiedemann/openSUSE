@@ -87,4 +87,12 @@
     <comment>Fix build with jdk 21</comment>
     <requestid>1120418</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9073d81f4f20c1499fdc3bf9d52c5684</srcmd5>
+    <version>3.25.6</version>
+    <time>1700675683</time>
+    <user>anag+factory</user>
+    <comment>3.25.6</comment>
+    <requestid>1128023</requestid>
+  </revision>
 </revisionlist>

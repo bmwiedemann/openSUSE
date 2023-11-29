@@ -1,7 +1,7 @@
 #
 # spec file for package libmatemixer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _version 1.26
 
 Name:           libmatemixer
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Mixer library for MATE Desktop
 License:        LGPL-2.1-or-later

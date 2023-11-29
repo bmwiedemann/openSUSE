@@ -17,7 +17,7 @@
 
 
 Name:           bpftool
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 Summary:        Tool for inspection and manipulation of BPF programs and maps
 License:        GPL-2.0-only
@@ -25,10 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://www.kernel.org/
 Source0:        https://github.com/libbpf/bpftool/releases/download/v%{version}/bpftool-libbpf-v%{version}-sources.tar.gz
 Patch0:         binutils-2.40.patch
-Patch1:         0001-bpftool-use-a-local-copy-of-perf_event-to-fix-access.patch
-Patch2:         0002-bpftool-define-a-local-bpf_perf_link-to-fix-accessin.patch
-Patch3:         0003-bpftool-use-a-local-bpf_perf_event_value-to-fix-acce.patch
-Patch4:         0004-bpftool-Use-a-local-copy-of-BPF_LINK_TYPE_PERF_EVENT.patch
 BuildRequires:  binutils-devel
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %if 0%{?sle_version} < 150400
@@ -59,7 +55,7 @@ Supplements:    (%{name} and bash-completion)
 bash command line completion support for bpftool.
 
 %prep
-%autosetup -p1 -n %{name}
+%autosetup -p1 -n bpftool-libbpf-v%{version}-sources
 sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' src/Makefile
 
 %build

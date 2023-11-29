@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:30:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * Fix #952, add support for HTTP 307 and 308 redirect codes
+  * Fix type hints issues
+  * Add support for Python beta release 3.12 in CI
+  * Add maintainer email in setup.py
+  * Add support for SSLKEYLOGFILE environment variable
+  * Add support for callable header arguments
+  * Change handling of proxy environment variables, is_secure set
+    to true now prevents http_proxy from getting used
+  * Fix Dispatcher keyboard interrupt. Should solve reconnect
+    loop with rel
+  * Fix teardown issue when ping thread is not properly ended
+  * Fix double ping wait time on first ping
+  * Minor type hints improvements (eda6724, 54b3013)
+  * Add logic to avoid error in the case where content-length
+    header does not exist, bug introduced in 1.5.2
+  * Fix wsdump.py script typing, bug introduced in 1.5.2
+  * Add type hints
+  * Fix pytype errors
+  * Fix args passed to logging function
+  * Standardize PEP 3101 formatting (c6a445f)
+  * Add more verbose exception for unsuccessful handshake
+
+-------------------------------------------------------------------
 Wed May 10 07:00:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.1:

@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1699947509.970d060
+Version:        4.6.1700826581.a2deffd
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -92,7 +92,7 @@ Source0:        %{name}-%{version}.tar.xz
 %define test_requires %build_requires %ocr_requires %spellcheck_requires %test_base_requires %yamllint_requires perl(Inline::Python) python3-Pillow-tk
 # The following line is generated from dependencies.yaml
 %define devel_requires %python_style_requires %test_requires ShellCheck perl(Code::TidyAll) perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy) perl(Template::Toolkit)
-%define s390_zvm_requires /usr/bin/xkbcomp /usr/bin/Xvnc x3270 icewm xterm xterm-console xdotool fonts-config mkfontdir mkfontscale
+%define s390_zvm_requires /usr/bin/xkbcomp /usr/bin/Xvnc x3270 icewm xterm xterm-console xdotool fonts-config mkfontdir mkfontscale openssh-clients
 %define qemu_requires qemu-tools e2fsprogs
 BuildRequires:  %test_requires %test_version_only_requires
 # For unbuffered output of Perl testsuite, especially when running it on OBS so timestamps in the log are actually useful

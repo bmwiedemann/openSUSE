@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  1 22:46:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http-client-restricted to version 0.1.0.
+  http-client-restricted (0.1.0) unstable; urgency=medium
+
+    * Switch from connection to crypton-connection in order to support
+      being used with tls-1.7, which use crypton rather than cryptonite.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 01 Aug 2023 18:45:47 -0400
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:10 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

@@ -48,4 +48,32 @@ Dependency of several other projects</comment>
     <comment></comment>
     <requestid>1095646</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a9da5c6062577f5448af4ce75a28c144</srcmd5>
+    <version>1.90</version>
+    <time>1701023861</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.90:
+  * BeginChild(): Upgraded 'bool border = false' parameter to
+    'ImGuiChildFlags flags = 0'.
+  * Added ImGuiChildFlags_Border value. As with our prior
+    &quot;bool-to-flags&quot; API updates, the ImGuiChildFlags_Border
+    value is guaranteed to be == true forever to ensure a
+    smoother transition, meaning all existing calls will still
+    work.
+  * BeginChildFrame()/EndChildFrame(): removed functions in
+    favor of using BeginChild() with the ImGuiChildFlags_FrameStyle
+    flag.
+  * IO: Removed io.MetricsActiveAllocations introduced in
+    1.63, was displayed in Metrics and unlikely to
+    be accessed by end-user. Value still visible in the UI and
+    easily to recompute from a delta.
+  * Commented out runtime support for hardcoded ~0 or
+    0x01..0x0F rounding flags values for
+    AddRect()/AddRectFilled()/PathRect()/AddImageRounded().
+
+  * too many changes to list here, see https://github.com/ocornut/imgui/releases/tag/v1.89.1
+ship any actual functionality. ImGui suppose to be used as sources</comment>
+    <requestid>1128802</requestid>
+  </revision>
 </revisionlist>

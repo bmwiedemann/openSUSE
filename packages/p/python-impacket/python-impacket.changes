@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 23 20:28:09 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add python-dsinternals to BuildRequires
+
+-------------------------------------------------------------------
 Tue Sep  5 01:47:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-future-requirement.patch, remove future requirement.

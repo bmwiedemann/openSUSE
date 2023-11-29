@@ -30,7 +30,7 @@
 %define compress_modules xz
 %endif
 Name:           nvidia-open-driver-G06-signed
-Version:        545.29.02
+Version:        545.29.06
 Release:        0
 Summary:        NVIDIA open kernel module driver for GeForce RTX 2000 series and newer
 License:        GPL-2.0-only AND MIT
@@ -156,12 +156,12 @@ MODPROBE_DIR=%{buildroot}%{_sysconfdir}/modprobe.d
 
 mkdir -p $MODPROBE_DIR
 for flavor in %flavors_to_build; do
-    cat > $MODPROBE_DIR/50-nvidia-$flavor.conf << EOF
+    cat > $MODPROBE_DIR/60-nvidia-$flavor.conf << EOF
 blacklist nouveau
 options nvidia-drm modeset=1 fbdev=1
 EOF
-    echo -n "install nvidia " >> $MODPROBE_DIR/50-nvidia-$flavor.conf
-    tail -n +3 %_sourcedir/modprobe.nvidia.install | awk '{ printf "%s ", $0 }' >> $MODPROBE_DIR/50-nvidia-$flavor.conf
+    echo -n "install nvidia " >> $MODPROBE_DIR/60-nvidia-$flavor.conf
+    tail -n +3 %_sourcedir/modprobe.nvidia.install | awk '{ printf "%s ", $0 }' >> $MODPROBE_DIR/60-nvidia-$flavor.conf
 # otherwise nvidia-uvm is missing in initrd and won't get loaded when nvidia
 # module is loaded in initrd; so better let's load all the nvidia modules
 # later ...

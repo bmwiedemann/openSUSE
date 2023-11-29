@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 24 21:14:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.rc2:
+  + Dependency changes:
+    - Updated to use gtk4 (>=4.6)
+    - libgnome-games-support (>=2.0.0).
+    - Dropped gtk3, cogl, clutter, clutter-gtk.
+    - Added pangocairo
+    - glib target version of 2.78.
+  + Feature: added a 3D view.
+  + Fix issues:
+    - Computer Worms get stuck
+    - Keys do not work in a non-Latin keyboard layout
+  + Updated translations.
+- Drop pkgconfig(clutter-1.0), pkgconfig(clutter-gtk-1.0),
+  pkgconfig(gtk+-3.0) and pkgconfig(libgnome-games-support-1)
+  BuildRequires following upstream changes.
+- Add pkgconfig(gtk4), pkgconfig(libgnome-games-support-2) and
+  pkgconfig(pangocairo) BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
 Tue May  2 08:06:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.3:

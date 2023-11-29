@@ -315,4 +315,15 @@
   * zsh: Allow to use external script (#453)</comment>
     <requestid>1124879</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e68ada3db72c30a6d53279c4516d3a0f</srcmd5>
+    <version>3.1.6</version>
+    <time>1701206304</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.6:
+  *  Respect user choice in activate-global-python-argcomplete
+  *  Escape colon in zsh completions. Fixes #456
+  *  Call \_default as a fallback in zsh global completion</comment>
+    <requestid>1129173</requestid>
+  </revision>
 </revisionlist>

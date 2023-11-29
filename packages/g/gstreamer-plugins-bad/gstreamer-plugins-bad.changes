@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 23 20:05:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing sctp=disabled and pass sctp=enabled to meson setup
+  instead, enable build of sctp plugin.
+
+-------------------------------------------------------------------
+Tue Nov 21 16:06:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move pkgconfig(dvdnav) and pkgconfig(dvdread) BuildRequires out
+  of BUILD_ORIG conditional, and stop passing resindvd=disabled and
+  siren=disabled to meson setup, build dvd and siren 7 support in
+  main package.
+
+-------------------------------------------------------------------
 Wed Nov 15 09:30:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.7:

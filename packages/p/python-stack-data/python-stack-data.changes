@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 27 16:11:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.3:
+  * Python 3.12 support
+  * handle weird six import error
+- drop support-typeguard-4.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Aug 23 07:28:06 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Revert restrict to older Cython. Can not find any specification.
@@ -11,7 +19,7 @@ Mon Aug 14 12:52:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sun Aug 13 19:27:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restrict to older Cython 
+- restrict to older Cython
 
 -------------------------------------------------------------------
 Mon May 15 09:53:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>

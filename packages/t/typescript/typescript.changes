@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 24 14:28:37 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.3.2:
+  * Import Attributes
+  * Stable Support resolution-mode in Import Types
+  * resolution-mode Supported in All Module Modes
+  * switch (true) Narrowing
+  * Narrowing On Comparisons to Booleans
+  * instanceof Narrowing Through Symbol.hasInstance
+  * Checks for super Property Accesses on Instance Fields
+  * Interactive Inlay Hints for Types
+  * Settings to Prefer type Auto-Imports
+  * Optimizations by Skipping JSDoc Parsing
+  * Optimizations by Comparing Non-Normalized Intersections
+  * Consolidation Between tsserverlibrary.js and typescript.js
+  * for details see https://devblogs.microsoft.com/typescript/announcing-typescript-5-3/ 
+  * Breaking Changes and Correctness Improvements:
+    - lib.d.ts Changes
+      Types generated for the DOM may have an impact on your codebase. 
+      For more information, see the DOM updates for TypeScript 5.3. 
+      https://github.com/microsoft/TypeScript/pull/55798
+
+-------------------------------------------------------------------
 Sat Aug 26 14:47:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.2.2:

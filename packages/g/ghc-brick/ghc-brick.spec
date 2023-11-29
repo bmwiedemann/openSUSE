@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6
+Version:        1.10
 Release:        0
 Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause
@@ -38,8 +38,6 @@ BuildRequires:  ghc-config-ini-devel
 BuildRequires:  ghc-config-ini-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-contravariant-devel
-BuildRequires:  ghc-contravariant-prof
 BuildRequires:  ghc-data-clist-devel
 BuildRequires:  ghc-data-clist-prof
 BuildRequires:  ghc-deepseq-devel

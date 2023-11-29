@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.1.2
+Version:        2.2.3
 Release:        0
 Summary:        Neofetch-like tool written in C
 License:        MIT
@@ -58,8 +58,9 @@ Recommends:     xrandr
 Recommends:     zlib
 
 %description
-Fastfetch is a neofetch-like tool for fetching system information and displaying them in a pretty way.
-It is written in pure c, with performance and customizability in mind. Currently Linux, Android, FreeBSD,
+Fastfetch is a neofetch-like tool for fetching system information and
+displaying them in a pretty way.  It is written in pure c, with performance and
+customizability in mind. Currently Linux, Android, FreeBSD,
 MacOS and Windows 7+ are supported.
 
 %prep

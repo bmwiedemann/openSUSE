@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 16 14:20:31 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- gem_cleanup macro: yet another place which got hit by ruby 3.3
+  replace `gem env gemdir` with
+  `ruby -r rubygems -e 'puts Gem.default_dir'`
+
+-------------------------------------------------------------------
+Tue Nov 14 10:29:27 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix for the previous change. we need to set the GEM_HOME before
+  even wrapping into the re-exec with ruby.
+
+-------------------------------------------------------------------
+Mon Nov 13 20:51:12 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- add workaround for https://github.com/rubygems/rubygems/commit/64273fd7e3
+  for now we will always set GEM_HOME to ensure that this new logic
+  does not break our paths
+
+-------------------------------------------------------------------
+Sat Nov  4 00:41:49 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure that gems built against an jemalloc enabled ruby
+  also pulls a ruby version that is built with jemalloc
+
+-------------------------------------------------------------------
 Fri May 12 21:28:54 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump the version so we can require the new version to make it

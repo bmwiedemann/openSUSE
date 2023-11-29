@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:52:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.1:
+  * Added support for PyPy 3.10 and Python 3.12
+  * Updated RTD configuration to include a dummy index.rst
+    redirecting to contents.html, ensuring compatibility with
+    third-party documentation and search indexes.
+  * Fixed the API breakage wih decoder.decode(substrateFun=...).
+  * A substrateFun passed to ``decoder.decode()`` can now be
+    either v0.4 Non-Streaming or v0.5 Streaming.
+    pyasn1 will detect and handle both cases transparently.
+  * A substrateFun passed to one of the new streaming decoders is
+  * still expected to be v0.5 Streaming only.
+
+-------------------------------------------------------------------
 Thu May  4 19:21:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:
@@ -51,11 +66,11 @@ Tue Sep 10 12:45:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Mon Jan 28 14:25:21 UTC 2019 - Michael Ströder <michael@stroeder.com>
 
 - update to 0.4.5
-  * Debug logging refactored for more efficiency when disabled and for more 
-    functionality when in use. Specifically, the global LOG object can easily 
-    be used from any function/method, not just from codec main loop as it used 
+  * Debug logging refactored for more efficiency when disabled and for more
+    functionality when in use. Specifically, the global LOG object can easily
+    be used from any function/method, not just from codec main loop as it used
     to be.
-  * More debug logging added to BER family of codecs to ease encoding problems 
+  * More debug logging added to BER family of codecs to ease encoding problems
     troubleshooting.
   * Copyright notice extended to the year 2019
   * Fixed defaulted constructed SEQUENCE component initialization.
@@ -431,10 +446,10 @@ Sat Jul  4 20:42:15 UTC 2015 - michael@stroeder.com
   - When comparing ASN.1 types, by-tag and/or by-constraints matching
     can now be performed with the isSuperTypeOf()/isSameTypeWith() optional
     flags.
-  - Constructed types now verify their consistency by invoking 
+  - Constructed types now verify their consistency by invoking
     isSameTypeWith(matchTags=True, matchConstraints=False) and
     isSuperTypeOf(matchTags=False, matchConstraints=True) for each of their
-    components rather than isSuperTypeOf() as it used to be. Constriants check 
+    components rather than isSuperTypeOf() as it used to be. Constriants check
     could be enforced to isSameTypeWith() with the strictConstraints=True
     constructed classes attribute.
   - Constructed types can now be initialized with new .setComponents() method
@@ -442,7 +457,7 @@ Sat Jul  4 20:42:15 UTC 2015 - michael@stroeder.com
     reflect this change.
   - NamedTypes() and NamedValues() made comparable.
   - Test coverage extended to cover pyasn1 types __repr__() function.
-  - The abs(Integer()) & abs(Real()) operation now returns respective pyasn1 
+  - The abs(Integer()) & abs(Real()) operation now returns respective pyasn1
     type, not a Python type.
   - More Python magic methods implementations added to Integer & Real classes
     (e.g.  __pos__, __neg__, __round__, __floor__, __ceil__, __trunc__)
@@ -499,7 +514,7 @@ Tue May  7 08:23:39 UTC 2013 - michael@stroeder.com
     marker is now detected by both tag and value. Otherwise zero values may
     interfere with end-of-octets marker.
   - Fix to decoder to fail in cases where tagFormat indicates inappropriate
-    format for the type (e.g. BOOLEAN is always PRIMITIVE, SET is always 
+    format for the type (e.g. BOOLEAN is always PRIMITIVE, SET is always
     CONSTRUCTED and OCTET STRING is either of the two)
   - Fix to REAL type encoder to force primitive encoding form encoding.
   - Fix to CHOICE decoder to handle explicitly tagged, indefinite length
@@ -581,7 +596,7 @@ Tue Nov  8 06:25:13 UTC 2011 - highwaystar.ru@gmail.com
  * Hex/bin string initializer to OctetString object reworked
    (in a backward-incompatible manner)
  * Fixed float() infinity compatibility issue (affects 2.5 and earlier)
- * Fixed a bug/typo at Boolean CER encoder 
+ * Fixed a bug/typo at Boolean CER encoder
  * Major overhawl for Python 2.4 -- 3.2 compatibility
   +  get rid of old-style types
   + drop string module usage

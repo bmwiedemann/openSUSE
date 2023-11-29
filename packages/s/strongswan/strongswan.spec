@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.11
+Version:        5.9.12
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}

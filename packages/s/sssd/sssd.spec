@@ -65,12 +65,16 @@ BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(ldb) >= 0.9.2
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcrypto)
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libcurl)
+%endif
 BuildRequires:  pkgconfig(libnfsidmap)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnl-route-3.0) >= 3.0
 BuildRequires:  pkgconfig(libpcre2-8)
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libsemanage)
+%endif
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ndr_krb5pac)
 BuildRequires:  pkgconfig(ndr_nbt)
@@ -88,6 +92,8 @@ Requires(postun):pam-config
 Provides:       libsss_sudo = %version-%release
 Provides:       sssd-client = %version-%release
 Obsoletes:      libsss_sudo < %version-%release
+Provides:       sssd-common = %version-%release
+Obsoletes:      sssd-common < %version-%release
 
 %define servicename	sssd
 %define sssdstatedir	%_localstatedir/lib/sss
@@ -298,6 +304,31 @@ Requires:       libsss_nss_idmap0 = %version
 %description -n libsss_nss_idmap-devel
 A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
+%if 0%{?suse_version} < 1600
+%package -n libsss_simpleifp0
+Summary:        The SSSD D-Bus responder helper library
+License:        GPL-3.0-or-later
+Group:          System/Libraries
+# Even though sssd has obsoleted simpleifp, the plan here is to retain ABI
+# compatibility with the existing SUSE 15.x product line. ...at least, until
+# sssd completely removes SIFP from source.
+
+%description -n libsss_simpleifp0
+This subpackage provides a library that simplifies the D-Bus API for
+the SSSD InfoPipe responder.
+
+%package -n libsss_simpleifp-devel
+Summary:        Development files for the SSSD D-Bus responder helper library
+License:        GPL-3.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       libsss_simpleifp0 = %version
+
+%description -n libsss_simpleifp-devel
+This subpackage provides the development files for sssd's simpleifp,
+a library that simplifies the D-Bus API for the SSSD InfoPipe
+responder.
+%endif
+
 %package -n libsss_sudo
 Summary:        A library to allow communication between sudo and SSSD
 License:        LGPL-3.0-or-later
@@ -367,13 +398,18 @@ autoreconf -fiv
 	--enable-nsslibdir="/%_lib" \
 	--enable-pammoddir="%_pam_moduledir" \
 	--with-ldb-lib-dir="%ldbdir" \
-	--with-selinux=yes \
 	--with-os=suse \
 	--disable-ldb-version-check \
 	--without-python2-bindings \
 	--without-oidc-child \
 %if 0%{?suse_version} >= 1600
+	--with-selinux=yes \
 	--with-subid
+%else
+	--with-selinux=no \
+	--with-semanage=no \
+	--with-libsifp \
+	--with-files-provider
 %endif
 %make_build all
 
@@ -396,6 +432,10 @@ install -m644 src/examples/logrotate "$b/%_sysconfdir/logrotate.d/sssd"
 %endif
 
 rm -Rfv "$b/%_initddir"
+%if 0%{?suse_version} < 1600
+ln -s service "$b/%_sbindir/rcsssd"
+%endif
+
 mkdir -pv "$b/%sssdstatedir/mc"
 find "$b" -type f -name "*.la" -print -delete
 %find_lang %name --all-name
@@ -449,6 +489,10 @@ fi
 %postun -n libsss_idmap0 -p /sbin/ldconfig
 %post   -n libsss_nss_idmap0 -p /sbin/ldconfig
 %postun -n libsss_nss_idmap0 -p /sbin/ldconfig
+%if 0%{?suse_version} < 1600
+%post   -n libsss_simpleifp0 -p /sbin/ldconfig
+%postun -n libsss_simpleifp0 -p /sbin/ldconfig
+%endif
 
 %triggerun -- %name < %version-%release
 # sssd takes care of upgrading the database but it doesn't handle downgrades.
@@ -483,11 +527,41 @@ fi
 %postun kcm
 %service_del_postun sssd-kcm.service sssd-kcm.socket
 
+%pretrans
+# Migrate sssd.service from sssd-common to sssd
+systemctl is-enabled sssd.service > /dev/null
+if [ $? -eq 0 ]; then
+mkdir -p /run/systemd/rpm/
+touch /run/systemd/rpm/sssd-was-enabled
+fi
+systemctl is-active sssd.service > /dev/null
+if [ $? -eq 0 ]; then
+mkdir -p /run/systemd/rpm/
+touch /run/systemd/rpm/sssd-was-active
+fi
+
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
 for i in sssd/sssd.conf logrotate.d/sssd pam.d/sssd-shadowutils ; do
 	test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
+# Migrate sssd.service from sssd-common to sssd
+if [ -e /run/systemd/rpm/sssd-was-enabled ]; then
+systemctl is-enabled sssd.service > /dev/null
+if [ $? -ne 0 ]; then
+    echo "Migrating sssd.service, was enabled"
+    systemctl enable sssd.service
+fi
+rm /run/systemd/rpm/sssd-was-enabled
+fi
+if [ -e /run/systemd/rpm/sssd-was-active ]; then
+systemctl is-active sssd.service > /dev/null
+if [ $? -ne 0 ]; then
+    echo "Migrating sssd.service, was active"
+    systemctl start sssd.service
+fi
+rm /run/systemd/rpm/sssd-was-active
+fi
 
 %files -f sssd.lang
 %license COPYING
@@ -507,11 +581,17 @@ done
 %_unitdir/sssd-sudo.service
 %_bindir/sss_ssh_*
 %_sbindir/sssd
+%if 0%{?suse_version} < 1600
+%_sbindir/rcsssd
+%endif
 %dir %_mandir/??/
 %dir %_mandir/??/man[158]/
 %_mandir/??/man1/sss_ssh_*
 %_mandir/??/man5/sss-certmap.5*
 %_mandir/??/man5/sssd-ad.5*
+%if 0%{?suse_version} < 1600
+%_mandir/??/man5/sssd-files.5*
+%endif
 %_mandir/??/man5/sssd-ldap-attributes.5*
 %_mandir/??/man5/sssd-session-recording.5*
 %_mandir/??/man5/sssd-simple.5*
@@ -522,6 +602,9 @@ done
 %_mandir/??/man8/sssd.8*
 %_mandir/man1/sss_ssh_*
 %_mandir/man5/sss-certmap.5*
+%if 0%{?suse_version} < 1600
+%_mandir/man5/sssd-files.5*
+%endif
 %_mandir/man5/sssd-ldap-attributes.5*
 %_mandir/man5/sssd-session-recording.5*
 %_mandir/man5/sssd-simple.5*
@@ -535,6 +618,9 @@ done
 %_libdir/%name/libsss_cert*
 %_libdir/%name/libsss_crypt*
 %_libdir/%name/libsss_debug*
+%if 0%{?suse_version} < 1600
+%_libdir/%name/libsss_files*
+%endif
 %_libdir/%name/libsss_iface*
 %_libdir/%name/libsss_semanage*
 %_libdir/%name/libsss_sbus*
@@ -554,7 +640,9 @@ done
 %_libexecdir/%name/sssd_sudo
 %_libexecdir/%name/sss_signal
 %_libexecdir/%name/sssd_check_socket_activated_responders
+%if 0%{?suse_version} >= 1600
 %_libexecdir/%name/selinux_child
+%endif
 %dir %sssdstatedir
 %attr(700,root,root) %dir %dbpath/
 %attr(755,root,root) %dir %pipepath/
@@ -577,7 +665,11 @@ done
 %_datadir/%name/sssd.api.conf
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-simple.conf
+%if 0%{?suse_version} < 1600
+%_datadir/%name/sssd.api.d/sssd-files.conf
+%else
 %exclude %_mandir/*/*/sssd-files.5.gz
+%endif
 %doc src/examples/sssd.conf
 #
 # sssd-client
@@ -746,6 +838,16 @@ done
 %_includedir/sss_nss_idmap.h
 %_libdir/libsss_nss_idmap.so
 %_libdir/pkgconfig/sss_nss_idmap.pc
+
+%if 0%{?suse_version} < 1600
+%files -n libsss_simpleifp0
+%_libdir/libsss_simpleifp.so.0*
+
+%files -n libsss_simpleifp-devel
+%_includedir/sss_sifp*.h
+%_libdir/libsss_simpleifp.so
+%_libdir/pkgconfig/sss_simpleifp.pc
+%endif
 
 %files -n python3-ipa_hbac
 %dir %python3_sitearch

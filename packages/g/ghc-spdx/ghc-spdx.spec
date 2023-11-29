@@ -78,6 +78,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %autosetup -n %{pkg_name}-%{version}
 cabal-tweak-dep-ver base '<4.17' '< 5'
 cabal-tweak-dep-ver Cabal '^>=3.6.0.0' '< 4'
+cabal-tweak-dep-ver transformers '<0.6' '< 1'
 
 %build
 %ghc_lib_build

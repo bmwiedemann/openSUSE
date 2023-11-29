@@ -1,13 +1,11 @@
-From 51d1d57485576dc4f735b5228dec6cf7c1c3e424 Mon Sep 17 00:00:00 2001
-From: Christophe Giboudeaux <christophe@krop.fr>
-Date: Wed, 15 Jul 2020 10:09:31 +0200
+From 0d9c61a3f436000880b735ed86330760fc41c8d1 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 26 Oct 2023 21:03:47 +0200
 Subject: [PATCH] Disable some plugins
 
-- The updateinfo plugin only works when
-using the installer
+- The updateinfo plugin only works when using the installer
 
-- The clangformat plugin requires a clang patch
-which was never accepted upstream [1]
+- The clangformat plugin requires a clang patch which was never accepted upstream [1]
 
 [1] https://reviews.llvm.org/D53072
 ---
@@ -15,13 +13,13 @@ which was never accepted upstream [1]
  1 file changed, 2 deletions(-)
 
 diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
-index 4fd8b65..59557a8 100644
+index 5d7316d..48ef211 100644
 --- a/src/plugins/CMakeLists.txt
 +++ b/src/plugins/CMakeLists.txt
-@@ -7,7 +7,6 @@ add_subdirectory(serialterminal)
- add_subdirectory(helloworld)
+@@ -8,7 +8,6 @@ add_subdirectory(helloworld)
  add_subdirectory(imageviewer)
  add_subdirectory(marketplace)
+ add_subdirectory(screenrecorder)
 -add_subdirectory(updateinfo)
  add_subdirectory(welcome)
  
@@ -34,3 +32,6 @@ index 4fd8b65..59557a8 100644
  add_subdirectory(clearcase)
  add_subdirectory(cvs)
  add_subdirectory(designer)
+-- 
+2.42.0
+

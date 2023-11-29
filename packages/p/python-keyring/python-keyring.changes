@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:29:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.3.0:
+  * Added bash completion support. (#643)
+
+-------------------------------------------------------------------
 Wed Jul 19 07:31:09 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - %{?sle15_python_module_pythons} must at the beginning to work.
@@ -66,7 +72,7 @@ Wed Nov  9 14:34:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Nov  8 17:17:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 23.11.0 
+- Update to version 23.11.0
   #603: In libsecret, check that the service is available before declaring viability.
 
 - Update to version 23.10.0
@@ -121,7 +127,7 @@ Sat Sep 17 08:34:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Aug 29 04:50:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject multibuild to prevent a build cycle 
+- Inject multibuild to prevent a build cycle
 
 -------------------------------------------------------------------
 Sun Jul 24 09:11:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -132,7 +138,7 @@ Sun Jul 24 09:11:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jun 15 20:24:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 23.6.0 
+- update to 23.6.0
   #575: Only require importlib_metadata on older Pythons.
   #579: Add .with_keychain method on macOS for easy reference to alternate keychains.
 
@@ -773,7 +779,7 @@ Fri Dec 11 14:45:37 UTC 2015 - michael@stroeder.com
 -------------------------------------------------------------------
 Mon Sep  17 11:41:56 UTC 2015 - m0ses@samaxi.de
 
-- Added keyring-import-gi.patch: gi.require_version is called and not 
+- Added keyring-import-gi.patch: gi.require_version is called and not
   found if gi is not imported
 
 -------------------------------------------------------------------
@@ -829,7 +835,7 @@ Tue Oct 14 09:57:54 UTC 2014 - kgronlund@suse.com
 -------------------------------------------------------------------
 Thu Aug 28 13:05:31 UTC 2014 - dmueller@suse.com
 
-- reduce/fix build requires 
+- reduce/fix build requires
 
 -------------------------------------------------------------------
 Mon Mar 17 10:12:00 UTC 2014 - speilicke@suse.com
@@ -875,7 +881,7 @@ Sun Dec  8 18:49:56 UTC 2013 - p.drouand@gmail.com
     See keyring.core._load_library_extensions for information on
     supplying a third-party backend.
 - Changes from 3.1
-  * All code now runs natively on both Python 2 and Python 3, 
+  * All code now runs natively on both Python 2 and Python 3,
     no 2to3 conversion is required.
   * Testsuite: clean up, and make more use of unittest2 methods.
 
@@ -885,7 +891,7 @@ Fri Sep 27 07:11:55 UTC 2013 - dmueller@suse.com
 - update to 3.0.5:
   * Simplified the implementation of ``keyring.core.load_keyring``. It now uses
   ``__import__`` instead of loading modules explicitly.
-  * Renamed ``keyring.util.platform`` to ``keyring.util.platform_``. 
+  * Renamed ``keyring.util.platform`` to ``keyring.util.platform_``.
   * Ensure that modules are actually imported even in Mercurial's Demand Import
   environment.
   * Removed support for Python 2.5.
@@ -926,7 +932,7 @@ Wed Jul  3 15:45:06 UTC 2013 - dmueller@suse.com
   * SecretService: allow deleting items created using previous python-keyring versions.
   * Use secretstorage.get_default_collection if it's available.
   * Switch GnomeKeyring backend to use native libgnome-keyring via GObject
-  Introspection, not the obsolete python-gnomekeyring module 
+  Introspection, not the obsolete python-gnomekeyring module
   * Use the SecretStorage library to implement the Secret Service backend
   (instead of using dbus directly)
   * Now the keyring supports prompting for and deleting passwords

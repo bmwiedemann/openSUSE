@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 26 17:19:40 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to v1.0.11
+  * Bugfixes and compiler compatibility updates.
+  * LoongArch, MIPS support
+  * aarch64 vector instruction support
+
+- removed patch stressapptest-cstdint.patch as included in upstream
+
+-------------------------------------------------------------------
 Thu Mar 30 13:52:51 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build in Factory stressapptest-cstdint.patch

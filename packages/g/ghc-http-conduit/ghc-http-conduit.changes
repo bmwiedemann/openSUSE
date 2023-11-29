@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:26:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http-conduit to version 2.3.8.3.
+  * aeson 2.2 support [#512](https://github.com/snoyberg/http-client/pull/512)
+
+- Apply drop-dependency-on-empty-attoparsec-aeson-library.patch to
+  fix the build.
+
+-------------------------------------------------------------------
 Mon Jul 17 23:04:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update http-conduit to version 2.3.8.2 revision 1.
@@ -32,9 +41,9 @@ Sun Feb 21 12:48:14 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Fri Dec  4 10:52:00 UTC 2020 - psimons@suse.com
 

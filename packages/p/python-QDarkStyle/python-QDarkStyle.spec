@@ -1,7 +1,7 @@
 #
-# spec file for package python-QDarkStyle-test
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,24 +27,23 @@
 %{?sle15_python_module_pythons}
 %define         X_display         ":98"
 Name:           python-QDarkStyle%{psuffix}
-Version:        3.0.2
+Version:        3.2.1
 Release:        0
 Summary:        A dark stylesheet for Python and Qt applications
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ColinDuquesnoy/QDarkStyleSheet
 Source:         https://github.com/ColinDuquesnoy/QDarkStyleSheet/archive/v%{version}.tar.gz#/QDarkStyle-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM QDarkStyle-issue275-pyside2.patch -- gh#ColinDuquesnoy/QDarkStyleSheet#275
-Patch0:         https://github.com/ColinDuquesnoy/QDarkStyleSheet/commit/67fe9c1.patch#/QDarkStyle-issue275-pyside2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-QtPy >= 1.9
-Requires:       python-setuptools
+Requires:       python-QtPy >= 2
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module QDarkStyle = %{version}}
-BuildRequires:  %{python_module QtPy >= 1.9}
+BuildRequires:  %{python_module QtPy >= 2}
 BuildRequires:  %{python_module qt5-devel}
 # pyside2 is for primary python3 flavor only
 BuildRequires:  python3-pyside2

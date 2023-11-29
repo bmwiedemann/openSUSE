@@ -1,7 +1,7 @@
 #
 # spec file for package log4net
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,7 @@ variety of output targets. log4net is a port of the excellent log4j
 framework to the .NET runtime
 
 %prep
-%setup -q -c
-%patch1 -p1
+%autosetup -c -p1
 sed -i "s|@VERSION@|%{version}|" %{SOURCE2}
 #=============================================================================
 

@@ -17,16 +17,16 @@
 
 
 %bcond_without     test
+%{?sle15_python_module_pythons}
 Name:           python-Flask-WTF
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        WTForms support for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/lepture/flask-wtf
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-WTF/Flask-WTF-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#wtforms/flask-wtf#565
-Patch0:         flask-2.3-support.patch
-BuildRequires:  %{python_module base >= 3.7}
+Source:         https://files.pythonhosted.org/packages/source/F/Flask-WTF/flask_wtf-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -52,7 +52,7 @@ BuildRequires:  %{python_module pytest}
 Adds WTForms support to your Flask application
 
 %prep
-%autosetup -p1 -n Flask-WTF-%{version}
+%autosetup -p1 -n flask_wtf-%{version}
 
 %build
 %pyproject_wheel
@@ -72,6 +72,6 @@ export LANG=en_US.UTF-8
 %license LICENSE.rst
 %doc README.rst
 %{python_sitelib}/flask_wtf
-%{python_sitelib}/Flask_WTF-%{version}.dist-info
+%{python_sitelib}/flask_wtf-%{version}.dist-info
 
 %changelog

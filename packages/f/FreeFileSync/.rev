@@ -227,4 +227,16 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1123534</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7fd2400a9f57b1918fb5b1a06771b2ae</srcmd5>
+    <version>13.2</version>
+    <time>1701206369</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.2:
+  * Prevent files from being moved to versioning recursively
+  * Return first FTP parsing error when trying multiple variants
+  * Allow file times from the future for Linux-style FTP listing
+</comment>
+    <requestid>1129308</requestid>
+  </revision>
 </revisionlist>

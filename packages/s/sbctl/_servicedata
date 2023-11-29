@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/Foxboron/sbctl.git</param>
+    <param name="changesrevision">748bc59d24a4d14087d8d92431606c5fb57afeb0</param>
+  </service>
+</servicedata>

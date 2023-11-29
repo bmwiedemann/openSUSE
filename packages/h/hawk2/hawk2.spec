@@ -71,8 +71,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:bundler)
 Requires:       rubygem(%{rb_default_ruby_abi}:bundler)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rails:7)
 Requires:       rubygem(%{rb_default_ruby_abi}:rails:7)
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:websocket-driver:0.7.5)
-Requires:       rubygem(%{rb_default_ruby_abi}:websocket-driver:0.7.5)
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:websocket-driver:0.7.6)
+Requires:       rubygem(%{rb_default_ruby_abi}:websocket-driver:0.7.6)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:puma) >= 5
 Requires:       rubygem(%{rb_default_ruby_abi}:puma) >= 5
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:sass-rails:5)

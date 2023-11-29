@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:15:42 UTC 2023 - gmbr3@opensuse.org
+
+- Update to version 10.8.2+0:
+  * Use user-space variables to pass temporary screenshot data
+  * notifications: Try to guess app id if getting from hints fails
+  * Fix oversight in custom icon theme path reading
+  * Fix initial tray icon scaling
+  * Simplify Raven notification group
+  * Update translations
+  * fix compilation errors against latest gcc
+  * Unbox primitives for DBusMenu nodes
+  * Add setting for tray icon scaling
+  * Make dark theme switch apply to color scheme pref
+  * Include keywords when performing fuzzy searches
+  * Add xdg-desktop-portal config
+  * Work around more SN/dbusmenu quirks
+  * Move below initialization of radio buttons
+  * Update README for 10.8 assets
+- Trash applet not needed for 10.8
+
+-------------------------------------------------------------------
 Tue Aug 29 19:23:54 UTC 2023 - gmbr3@opensuse.org
 
 - Update to version 10.8+0:

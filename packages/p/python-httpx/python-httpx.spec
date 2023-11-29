@@ -27,14 +27,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx%{psuffix}
-Version:        0.25.0
+Version:        0.25.2
 Release:        0
 Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
 URL:            https://github.com/encode/httpx
 Source:         https://github.com/encode/httpx/archive/%{version}.tar.gz#/httpx-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/encode/httpx/pull/2885 Support newer versions of httpcore
-Patch:          newer-httpcore.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
@@ -80,8 +78,6 @@ Python HTTP client with async support.
 
 %prep
 %autosetup -p1 -n httpx-%{version}
-# remove turning pytest warnings into error
-#sed -i '/tool.pytest/,$ {/error/d}' setup.cfg
 
 %build
 %pyproject_wheel

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 25 14:08:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.6:
+  * refactor: Make mock for writer compatible with 3.9.0b1 and
+    older
+  * fix: aiohttp 3.9 \_writer can't await
+
+-------------------------------------------------------------------
 Tue Nov 14 12:00:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.5:

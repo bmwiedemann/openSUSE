@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 11.0.3
-%define short_version 11.0
+%define real_version 12.0.0
+%define short_version 12.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((CameraGeometry|GridGeometry|HelperWidgets|LightUtils|LineGeometry|MaterialToolBarAction|MouseArea3D|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StudioControls|StudioFonts|StudioTheme|TextureToolBarAction|ToolBar|WebFetcher).*
+%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|EffectMakerBackend|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|MouseArea3D|NewProjectDialog|ProjectType|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor|StudioControls|StudioFonts|StudioTheme|TextureToolBarAction|ToolBar|WebFetcher).*
 
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
@@ -50,7 +50,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{pkgname_prefix}-creator
-Version:        11.0.3
+Version:        12.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -121,6 +121,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt_min_version}
 # Explicitly require qt6-sql-sqlite (needed by help system).
 Requires:       qt6-sql-sqlite
+Recommends:     cmake-doc-qhelp
 Recommends:     qt6-base-devel
 Recommends:     qt6-base-docs-qch
 Recommends:     qt6-declarative-devel
@@ -139,7 +140,6 @@ facilitate development with the Qt application framework.
 
 %package plugin-devel
 Summary:        Qt Creator Plugin Development Files
-Group:          Development/Tools/IDE
 Requires:       %{pkgname_prefix}-creator = %{version}
 %if 0%{?qt6}
 Requires:       qt6-base-devel >= %{qt_min_version}
@@ -254,7 +254,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 %{_libexecdir}/qtcreator/cpaster
 %{_libexecdir}/qtcreator/perf2text
 %{_libexecdir}/qtcreator/perfparser
-%{_libexecdir}/qtcreator/qml2puppet-%{version}
+%{_libexecdir}/qtcreator/qml2puppet-*
 %{_libexecdir}/qtcreator/qtc-askpass
 %{_libexecdir}/qtcreator/qtcreator_process_stub
 %{_libexecdir}/qtcreator/qtcreator_processlauncher

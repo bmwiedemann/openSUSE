@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 22 20:01:21 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Fix RPATH problem with cmake options instead of chrpath
+
+-------------------------------------------------------------------
 Sun Oct 29 21:38:16 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Remove the rpaths that rpmlint complains about

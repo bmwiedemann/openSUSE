@@ -226,13 +226,13 @@ scripts and plugins.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %if 0%{?sle_version} >= 120000 && !0%{?is_opensuse}
-%patch3 -p1
+%patch -P 3 -p1
 %endif
-%patch4 -p1
+%patch -P 4 -p1
 
 cp -f %{SOURCE3} %{name}-prefs.xml
 

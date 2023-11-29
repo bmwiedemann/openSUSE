@@ -52,6 +52,7 @@ Patch14:        manpage.patch
 Patch15:        option-to-not-force-hw-control.patch
 Patch16:        spelling.patch
 Patch17:        wait-for-correct-parent.patch
+Patch18:        pipe-command-hostname-not-null.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
@@ -126,6 +127,7 @@ service units.
 %patch15 -p0 -b .p15
 %patch16 -p0 -b .p16
 %patch17 -p0 -b .p17
+%patch18 -p0 -b .p18
 
 %build
 autoreconf -fvi

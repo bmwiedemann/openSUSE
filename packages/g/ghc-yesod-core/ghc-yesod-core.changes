@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 25 17:05:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.25.0.
+  ## 1.6.25.0
+
+  * Add an options structure that allows the user to set which instances will be derived for a routes structure. [#1819](https://github.com/yesodweb/yesod/pull/1819)
+
+  ## 1.6.24.5
+
+  * Support Aeson 2.2 [#1818](https://github.com/yesodweb/yesod/pull/1818)
+
+- Apply drop-dependency-on-empty-attoparsec-aeson-library.patch to
+  fix the build.
+
+-------------------------------------------------------------------
 Wed Jul 26 10:47:01 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.24.4.
@@ -119,9 +134,9 @@ Fri Apr  9 08:54:53 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Mon Dec 14 13:07:07 UTC 2020 - psimons@suse.com
 
@@ -194,4 +209,3 @@ Tue Aug 18 10:46:46 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jun  9 09:26:13 UTC 2020 - psimons@suse.com
 
 - Add yesod-core at version 1.6.18.
-

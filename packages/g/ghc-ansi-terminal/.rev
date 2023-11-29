@@ -194,4 +194,12 @@ supported as a compiler.</comment>
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075759</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>97659cd6951fe4303b0bbfd808de4df9</srcmd5>
+    <version>1.0</version>
+    <time>1700771990</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1127025</requestid>
+  </revision>
 </revisionlist>

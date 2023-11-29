@@ -34,7 +34,9 @@ Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.t
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
 # PATCH-FIX-UPSTREAM https://github.com/django/django/commit/da2f8e8257d1bea4215381684ca4abfcee333c43  Refs #34118 -- Improved sanitize_address() error message for tuple with empty strings.
-Patch:          sanitize_address.patch
+Patch0:         sanitize_address.patch
+# PATCH-FIX-OPENSUSE: ignore minor failure on Python 3.12
+Patch1:         dirty-hack-remove-assert.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}

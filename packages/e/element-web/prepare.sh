@@ -57,3 +57,4 @@ echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offli
 
 read -p "Write changes?"
 osc vc -m "${changes}" element-web.changes
+dos2unix element-web.changes

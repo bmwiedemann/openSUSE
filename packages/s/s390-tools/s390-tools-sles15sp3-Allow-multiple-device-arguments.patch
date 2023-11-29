@@ -7,9 +7,9 @@ Allow the user to specify several devices as arguments to dasdfmt.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 |    5 -
- dasdfmt/dasdfmt.c |  197 +++++++++++++++++++++++++++++++-----------------------
- 2 files changed, 119 insertions(+), 83 deletions(-)
+ dasdfmt/dasdfmt.8 |   5 +-
+ dasdfmt/dasdfmt.c | 175 ++++++++++++++++++++++++++++++------------------------
+ 2 files changed, 100 insertions(+), 80 deletions(-)
 
 Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
 ===================================================================

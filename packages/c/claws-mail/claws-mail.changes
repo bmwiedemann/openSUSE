@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Nov 21 08:09:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.0:
+  * An easy way to open any folder on start-up has been added:
+    Right-click a folder and choose 'Open on start-up'.
+    This can also be configured on the 'Folder list' tab of the
+    /Configuration/Preferences/Display/Summaries page.
+  * Spam statistics have been added to the session statistics.
+  * It is now possible to save message attachments only, without the
+    other message parts.
+  * QuickSearch: support for a "v H V" search expression has been added
+    and the 'y S' expression has been removed ('v X-Label S' can be
+    used instead).
+  * font/* and chemical/* MIME types are now recognised.
+  * The image viewer now works correctly when not auto-loading images.
+  * Icon Themes: it is no longer possible to install or remove system
+    themes.
+  * IMAP: Support for SCRAM-SHA-{224,256,384,512} authentication
+    mechanisms has been added.
+  * IMAP: The statusbar now shows that expunge is happening.
+  * The GData plugin has been removed.
+  * The Fancy plugin no longer requires libsoup or libsoup-gnome.
+  * The LiteHTML Viewer plugin has been synchronised with litehtml 0.7.
+  * The LiteHTML viewer plugin will now only be built automatically if
+    libgumbo 0.12 or newer is available. Building with libgumbo 0.10
+    must be explicitly requested using --enable-litehtml_viewer-plugin.
+  * For extra debug output use --enable-more-addressbook-debug and
+    --enable-more-ldap-debug.
+  * Added translation: Portuguese
+  * Updated translations: Brazilian Portuguese, Catalan, Czech, French,
+    Polish, Russian, Slovak, Spanish, Swedish, Traditional Chinese,
+    Turkish.
+  * bug 4491, 'address autocompletion list does not expand in
+    height with the number of matches'
+  * bug 4618, 'Rate limit by remote breaks queued/marked
+    actions (Delete/Move)'
+  * bug 4631, 'Embedding external editor crashes Claws-Mail on Wayland'
+  * bug 4637, 'Segmentation fault when using SUMMARY is empty'
+  * bug 4645, 'fails to check for perl-ExtUtils::Embed'
+  * bug 4648, 'fails to build with gcc 13'
+  * bug 4658, 'Headers unfolded incorrectly in message view'
+  * bug 4664, 'OAUTH2 overwrites passwords even for plaintext logins'
+  * bug 4666, 'fancy plugin doesn't build with libwebkit2gtk-4.1'
+  * bug 4670, 'To/CC incorrectly escaped with a trailing backslash'
+  * bug 4679, 'The correct date header is interpreted incorrectly to display strange date.'
+  * bug 4693, 'Hang and crash when enable disable SVG Rendering prefs'
+  * when starting with msgview hidden, toggling msgview to show it
+    would use incorrect height
+  * update quicksearch history list when changing type
+  * wrong message which is shown when mail can't be sent
+  * when redirecting, disable queueing
+  * arbitrary paste restriction
+  * when queueing or drafting a msg with an attachment which no longer
+    exists, use the correct label on the button of the warning dialogue * using
+    a custom header in found_in_addressbook match expressions
+  * URIs may contain the '$' dollar sign
+  * OAuth2, Update on-disk tokens as well when in-memory tokens are updated
+  * Microsoft POP3 OAuth2 protocol
+
+-------------------------------------------------------------------
 Mon Mar  6 20:48:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Deactive litehtml/gumbo as gumbo will be deleted [boo#1208381]

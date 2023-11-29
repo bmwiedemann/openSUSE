@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 22 08:02:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.8.5:
+  * [gh#cern-fts/davix#107] - CVE-2023-38545 in bundled curl
+    library.
+  * [gh#cern-fts/davix#106] - Add git mailmap file.
+- Use macros to define version, to avoid changing version related
+  strings in multiple places.
+
+-------------------------------------------------------------------
 Wed Feb 15 07:23:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.8.4:

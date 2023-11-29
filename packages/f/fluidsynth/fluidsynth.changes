@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 21 15:00:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.4:
+  * Fix a build failure when specifying `CMAKE_INSTALL_LIBDIR` as
+    an absolute path (#1261, thanks to @OPNA2608)
+  * Fix some MIDI files never finish playing (#1257, thanks to
+    @joanbm)
+  * Implement IPv6 to IPv4 fallback (#1208, thanks to @ivan-
+    zaera)
+  * Fix a build failure when using CMake's Xcode generator
+    (#1266, thanks to @bradhowes)
+  * Fix pipewire's Jack implementation not found by CMake (#1268,
+    thanks to @pedrolcl)
+  * Fix a regression causing the MIDI Player to terminate
+    prematurely (#1272, thanks to @albedozero)
+
+-------------------------------------------------------------------
 Wed Jun 14 14:32:46 UTC 2023 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.3.3

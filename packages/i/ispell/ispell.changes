@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 26 22:23:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.06:
+  * Fix a place where buildhash could reference beyond the end of
+    the hash table, causing a segfault if that happened to cross a
+    page boundary.
+  * dictionary updates
+
+-------------------------------------------------------------------
 Wed Nov 15 13:31:05 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - The dictionaries require at (un)install the update script of
@@ -71,12 +80,12 @@ Tue Feb 14 11:22:50 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Tue Nov 22 09:18:52 UTC 2016 - werner@suse.de
 
-- Extend patch boo966124.dif for bug boo#1010330 
+- Extend patch boo966124.dif for bug boo#1010330
 
 -------------------------------------------------------------------
 Mon May 30 11:57:15 UTC 2016 - werner@suse.de
 
-- Extend patch boo966124.dif for bug boo#981024 
+- Extend patch boo966124.dif for bug boo#981024
 
 -------------------------------------------------------------------
 Fri Feb 12 10:42:52 UTC 2016 - werner@suse.de
@@ -112,12 +121,12 @@ Fri Feb 12 10:42:52 UTC 2016 - werner@suse.de
 -------------------------------------------------------------------
 Tue Feb 10 16:14:17 UTC 2015 - werner@suse.de
 
-- Xemacs knows about define-coding-system-alia therefore use it (boo#896947) 
+- Xemacs knows about define-coding-system-alia therefore use it (boo#896947)
 
 -------------------------------------------------------------------
 Wed Feb  4 09:07:06 UTC 2015 - werner@suse.de
 
-- Use real POSIX shell syntax 
+- Use real POSIX shell syntax
 - Fix ispell update script thas is do not try to source old SUSE
   config files (boo#916001)
 
@@ -129,13 +138,13 @@ Sat Dec 13 21:30:00 UTC 2014 - Led <ledest@gmail.com>
 -------------------------------------------------------------------
 Mon Dec  9 12:07:36 UTC 2013 - werner@suse.de
 
-- Remove mixed patch leftover 
+- Remove mixed patch leftover
 
 -------------------------------------------------------------------
 Fri Dec  6 13:09:04 UTC 2013 - werner@suse.de
 
 - Hint from Björn Jacke that old style sort is broken, therefore
-  enforce usage of modern sort options 
+  enforce usage of modern sort options
 
 -------------------------------------------------------------------
 Mon Jun 18 14:08:25 UTC 2012 - werner@suse.de
@@ -162,7 +171,7 @@ Sun Aug 30 20:05:52 CEST 2009 - coolo@novell.com
 Sun Jun  7 12:04:12 CEST 2009 - ro@suse.de
 
 - rename getline to my_getline to avoid conflict with function
-  from glibc 
+  from glibc
 
 -------------------------------------------------------------------
 Thu May 31 19:25:20 CEST 2007 - werner@suse.de
@@ -232,7 +241,7 @@ Mon May  3 14:51:41 CEST 2004 - werner@suse.de
 -------------------------------------------------------------------
 Thu Jan  8 18:22:41 CET 2004 - ro@suse.de
 
-- fix build with current bison 
+- fix build with current bison
 
 -------------------------------------------------------------------
 Fri Aug 29 13:40:00 CEST 2003 - werner@suse.de
@@ -272,12 +281,12 @@ Thu Feb 20 11:27:01 CET 2003 - mmj@suse.de
 -------------------------------------------------------------------
 Wed Sep 18 01:47:36 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Thu Aug 15 18:42:36 CEST 2002 - ro@suse.de
 
-- fixed typo in specfile 
+- fixed typo in specfile
 
 -------------------------------------------------------------------
 Thu Aug 15 16:44:18 CEST 2002 - werner@suse.de

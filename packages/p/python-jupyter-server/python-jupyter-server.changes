@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 26 16:16:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.11.0
+  * Support get file(notebook) md5 #1363 (@Wh1isper)
+- Release 2.10.1
+  * ContentsHandler return 404 rather than raise exc #1357
+    (@bloomsa)
+- Release 2.10.0
+  * Update kernel env to reflect changes in session #1354
+    (@blink1073)
+- Release 2.9.0
+  * Ability to configure cull_idle_timeout with kernelSpec #1342
+    (@akshaychitneni)
+  * Run Gateway token renewers even if the auth token is empty.
+    #1340 (@ojarjur)
+- Release 2.8.0
+  * Added Logs for get_os_path closes issue #1336
+    (@jayeshsingh9767)
+  * Avoid showing "No answer for 5s" when shutdown is slow #1320
+    (@minrk)
+
+-------------------------------------------------------------------
 Sun Sep 24 18:04:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.7.3

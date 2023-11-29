@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 21 08:08:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update async to version 2.2.5.
+  ## Changes in 2.2.5
+
+   - #117: Document that empty for Concurrently waits forever
+   - #120: Add ConcurrentlyE.
+   - #123: Fix failing concurrentlyE tests in older GHCs.
+   - #124: Allow hashable 1.4
+   - #126: Semigroup and Monoid instances for ConcurrentlyE
+   - #120: Add ConcurrentlyE
+   - #138: expose internals as Control.Concurrent.Async.Internal
+   - #131: Fix typos in docs
+   - #132: waitAny(Catch): clarify non-empty input list requirement
+   - #142: Add cancelMany
+   - #135, #145, #150: Support for GHC 9.4, 9.6, 9.8
+   - Document that empty for Concurrently waits forever.
+
+-------------------------------------------------------------------
 Tue Oct 10 13:31:03 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update async to version 2.2.4 revision 4.

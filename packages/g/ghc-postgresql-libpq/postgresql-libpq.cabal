@@ -1,6 +1,6 @@
 cabal-version:      2.4
 name:               postgresql-libpq
-version:            0.9.5.0
+version:            0.10.0.0
 x-revision:         1
 synopsis:           low-level binding to libpq
 description:
@@ -25,7 +25,14 @@ category:           Database
 build-type:         Custom
 extra-source-files: cbits/hs-libpq.h
 tested-with:
-  GHC ==8.6.5 || ==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.7 || ==9.4.4 || ==9.6.1
+  GHC ==8.6.5
+   || ==8.8.4
+   || ==8.10.7
+   || ==9.0.2
+   || ==9.2.8
+   || ==9.4.8
+   || ==9.6.3
+   || ==9.8.1
 
 extra-source-files: CHANGELOG.md
 
@@ -68,8 +75,8 @@ library
     Database.PostgreSQL.LibPQ.Oid
 
   build-depends:
-    , base        >=4.12.0.0 && <4.19
-    , bytestring  >=0.10.8.2 && <0.12
+    , base        >=4.12.0.0 && <4.20
+    , bytestring  >=0.10.8.2 && <0.13
 
   if !os(windows)
     build-depends: unix >=2.7.2.2 && <2.9

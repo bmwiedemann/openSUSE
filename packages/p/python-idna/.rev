@@ -173,4 +173,24 @@ update to version v2.5
     <comment></comment>
     <requestid>1081889</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>54d5a5b08b27ef6c70d5aa3ea20072e3</srcmd5>
+    <version>3.6</version>
+    <time>1701206285</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.6:
+  * Fix regression to include tests in source distribution.
+  * Update to Unicode 15.1.0
+  * String codec name is now &quot;idna2008&quot; as overriding the system codec
+    &quot;idna&quot; was not working.
+  * Fix typing error for codec encoding
+  * &quot;setup.cfg&quot; has been added for this release due to some downstream
+  * lack of adherence to PEP 517. Should be removed in a future release
+    so please prepare accordingly.
+  * Removed reliance on a symlink for the &quot;idna-data&quot; tool to comport
+    with PEP 517 and the Python Packaging User Guide for sdist
+    archives.
+  * Added security reporting protocol for project</comment>
+    <requestid>1129063</requestid>
+  </revision>
 </revisionlist>

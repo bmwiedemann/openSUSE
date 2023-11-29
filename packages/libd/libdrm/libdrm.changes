@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 25 10:09:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.118:
+  * improve SMPTE color LUT accuracy
+  * util: factor out and optimize C8 SMPTE color LUT
+  * util: add support for DRM_FORMAT_C[124]
+  * util: store number of colors for indexed formats
+  * util: add SMPTE pattern support for C4 format
+  * util: add SMPTE pattern support for C1 format
+  * util: add SMPTE pattern support for C2 format
+  * modetest: add support for DRM_FORMAT_C[124]
+  * modetest: add SMPTE pattern support for C[124] formats
+  * intel: determine target endianness using meson
+  * util: fix 32 bpp patterns on big-endian
+  * util: fix 16 bpp patterns on big-endian
+  * util: add missing big-endian RGB16 frame buffer formats
+  * modetest: add support for parsing big-endian formats
+  * util: add test pattern support for big-endian XRGB1555/RGB565
+  * util: fix pwetty on big-endian
+  * util: add pwetty support for big-endian RGB565
+  * modetest: add support for big-endian XRGB1555/RGB565
+  * modetest: add support for DRM_FORMAT_NV{15,20,30}
+  * modetest: switch usage to proper options grammar
+  * xf86drm: add drmGetNodeTypeFromDevId
+  * Sync headers with drm-next
+  * xf86drmMode: add drmModeCloseFB()
+
+-------------------------------------------------------------------
+Fri Nov 17 13:42:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted n_libdrm-drop-valgrind-dep-generic.patch,
+  n_libdrm-drop-valgrind-dep-intel.patch
+
+-------------------------------------------------------------------
 Wed Nov 15 10:17:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use valgrind support only on 64bit platforms

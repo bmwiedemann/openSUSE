@@ -446,8 +446,8 @@ Provides translations for the "%{name}" package.
 
 %build
 # Here we must muzzle our dog so it doesn't eat all the memory
-max_link_jobs="%{?jobs:%{jobs}}"
-max_compile_jobs="%{?jobs:%{jobs}}"
+max_link_jobs="%{?jobs}%{!?jobs:1}"
+max_compile_jobs="%{?jobs}%{!?jobs:4}"
 echo "Available memory:"
 cat /proc/meminfo
 echo "System limits:"

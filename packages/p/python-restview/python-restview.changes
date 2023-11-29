@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 23 13:41:52 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.1
+  * Add support for Python 3.11.
+  * Drop support for Python 3.6.
+- Add fix_tests.patch to fix tests one more time
+  * from the commit message: "Doctests were a bad idea."
+
+-------------------------------------------------------------------
 Fri Dec  2 09:54:28 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests.patch gh#mgedmin/restview@5033eacb1d55

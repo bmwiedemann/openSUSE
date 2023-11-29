@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 21 17:52:42 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.58.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.58.0
+
+-------------------------------------------------------------------
 Mon Sep 18 12:36:39 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Enable the build for ALP and remove no longer supported SLE versions

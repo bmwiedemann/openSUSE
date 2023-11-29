@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 23 09:52:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231123
+  * doc: additional information about status flags
+  * Improved Python3 Unicode support
+- Delete system-libs.patch (only needed when _service makes
+  tarballs directly from git)
+
+-------------------------------------------------------------------
 Sun Nov 19 13:51:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - system-libs.patch requires autoconf rerun; add the dependency.

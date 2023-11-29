@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 27 08:30:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.27.8 (bsc#1215888, CVE-2023-38545):
+  * cmComputeLinkDepends: also copy the target from object link items
+  * cmComputeLinkInformation: skip over linking to items for object purposes
+  * Fortran: Restore support for TARGET_OBJECTS providing modules
+  * curl: Backport SOCKS5 heap buffer overflow fix from curl 8.4.0
+  * GetPrerequisites: Revert “Ignore relative paths printed by ldd”
+  * cmCommonTargetGenerator: Factor out GetLinkedTargetDirectories loop body
+  * cmComputeLinkInformation: Track targets named by TARGET_OBJECTS sources
+  * FindOpenMP: Add support for openmp 5.1 (llvm 17) and 5.2
+
+-------------------------------------------------------------------
 Fri Oct 13 08:06:23 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.27.7:
@@ -77,7 +90,7 @@ Thu Jul  6 07:16:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jun 12 22:59:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- modify shebang to the actual python interpreter on install 
+- modify shebang to the actual python interpreter on install
 
 -------------------------------------------------------------------
 Fri May 19 07:20:35 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
@@ -275,7 +288,7 @@ Sun Jun  5 00:03:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
     expected the ``CPACK_PACKAGEMAKER_CHOICES`` variable to be defined.
     The old ``CPACK_PACKAGEMAKER_CHOICES`` variable is now also set to the
     same content as it was before, but it is formally deprecated.
- 
+
 -------------------------------------------------------------------
 Sat May 28 18:54:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
@@ -294,13 +307,13 @@ Wed Apr 13 20:48:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
     type HEADERS to such targets on Apple platforms.
   * The HEADER_SETS and INTERFACE_HEADER_SETS target properties added in CMake
     3.23.0 are now read-only records of the header sets created by the
-    target_sources() command. 
+    target_sources() command.
 
 -------------------------------------------------------------------
 Fri Apr  8 11:48:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - speed up build of :mini flavor by using external zstd (part of 0-Bootstrap)
-  and turn off LTO 
+  and turn off LTO
 
 -------------------------------------------------------------------
 Tue Mar 29 19:18:02 UTC 2022 - Christoph G <foss@grueninger.de>
@@ -326,7 +339,7 @@ Sun Mar 20 21:08:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * The while() command again ignores errors in condition evaluation as CMake
     3.21 and below did. This bug was fixed in 3.22.0, but exposed errors in
     existing projects. The fix has been reverted to restore compatibility. The
-    fix may be restored in a future version of CMake via a policy. 
+    fix may be restored in a future version of CMake via a policy.
 
 -------------------------------------------------------------------
 Fri Jan 28 18:46:59 UTC 2022 - Markus Ebner <info@ebner-markus.de>
@@ -382,8 +395,8 @@ Thu Nov 18 20:25:16 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
     ISO 8601 week numbers.
   * New variables:
     CMAKE_BUILD_TYPE
-    CMAKE_CONFIGURATION_TYPES 
-    CMAKE_INSTALL_MODE 
+    CMAKE_CONFIGURATION_TYPES
+    CMAKE_INSTALL_MODE
     CMAKE_<LANG>_LINK_WHAT_YOU_USE_FLAG, CMAKE_LINK_WHAT_YOU_USE_CHECK
     CMAKE_REQUIRE_FIND_PACKAGE_<PackageName>
   * The <LANG>_EXTENSIONS target property is now initialized to
@@ -520,7 +533,7 @@ Fri May 28 16:05:26 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
   * ExternalProject: Ensure git fetch if updating to hash not in
     local repository
   * Updates to GNU C++17 defaults, C++20 flags, C++23 support
-  * Multiple further bug fixes 
+  * Multiple further bug fixes
 
 -------------------------------------------------------------------
 Mon May 10 14:52:45 UTC 2021 - Andreas Schwab <schwab@suse.de>
@@ -547,7 +560,7 @@ Fri May  7 20:34:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Thu Apr 29 07:33:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add 53d523f2e11839bcbbdc9288b4f71c764d0efd5c.diff to fix automoc
-  race 
+  race
 
 -------------------------------------------------------------------
 Fri Apr  9 16:10:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -621,7 +634,7 @@ Sat Dec 19 09:33:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * various Apple-Silicon support fixes
   * The CMAKE_ISPC_HEADER_SUFFIX variable and corresponding ISPC_HEADER_SUFFIX
   target property were added to control the header suffix used by ISPC
-  compiler generated headers. 
+  compiler generated headers.
 - remove 5556.patch (upstream)
 
 -------------------------------------------------------------------
@@ -670,7 +683,7 @@ Mon Oct 19 21:56:10 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 Wed Sep 23 06:16:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.18.3:
-  * The Compile Features functionality was updated for MSVC 19.28 
+  * The Compile Features functionality was updated for MSVC 19.28
 
 -------------------------------------------------------------------
 Mon Sep 14 10:29:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -804,7 +817,7 @@ Sun Mar 22 06:18:20 UTC 2020 - Christoph G <foss@grueninger.de>
   * cmake(1) gained a “-E rm” command-line tool that can
     be used to remove directories and files.
   Full changelog see
-  https://blog.kitware.com/cmake-3-17-0-available-for-download/  
+  https://blog.kitware.com/cmake-3-17-0-available-for-download/
 
 -------------------------------------------------------------------
 Wed Feb 19 13:30:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -903,12 +916,12 @@ Fri Nov  1 08:02:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Sun Oct 27 23:24:39 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - cmake 3.15.4
-  * In CMake 3.15.0 through 3.15.3, the EXCLUDE_FROM_ALL directory 
+  * In CMake 3.15.0 through 3.15.3, the EXCLUDE_FROM_ALL directory
     property was regressed from pre-3.14 behavior and caused targets
-    within the directory to be excluded even from its own “all”. 
-    This has been fixed. The bug also existed in 3.14.0 through 
+    within the directory to be excluded even from its own “all”.
+    This has been fixed. The bug also existed in 3.14.0 through
     3.14.6 and is fixed in 3.14.7.
-- Use pkgconfig for dependencies where possible (required due to 
+- Use pkgconfig for dependencies where possible (required due to
   tumbleweed build changes)
 
 -------------------------------------------------------------------
@@ -918,7 +931,7 @@ Wed Sep  4 20:52:50 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
   * CrayPrgEnv compiler wrapper support updated for 19.06
 - includes changes from 3.15.2:
   * Fix CMAKE_FIND_PACKAGE_PREFER_CONFIG variable causing the
-    find_package() command to fail on a missing package even 
+    find_package() command to fail on a missing package even
     without the REQUIRED option
 
 -------------------------------------------------------------------
@@ -1117,7 +1130,7 @@ Tue Jan 15 01:57:19 UTC 2019 - seanlew@opensuse.org
 Fri Dec 28 06:22:18 UTC 2018 - sean@suspend.net
 
 - update to 3.13.2:
-  * reverted change to pass compiler implicit include directories 
+  * reverted change to pass compiler implicit include directories
 
 -------------------------------------------------------------------
 Wed Dec 19 16:19:24 UTC 2018 - Todd R <toddrme2178@gmail.com>
@@ -1155,15 +1168,15 @@ Thu Nov 22 04:33:14 UTC 2018 - sean@suspend.net
 Fri Nov 09 14:59:33 UTC 2018 - sean@suspend.net
 
 - update to 3.12.4 (bsc#1127105):
-  * Cmake(1) build tool (cmake--build) gained --parallel [<jobs>] 
+  * Cmake(1) build tool (cmake--build) gained --parallel [<jobs>]
   and -j [<jobs>] options to specify a parallel build level.
   * add_compile_definitions() command was added to set preprocessor
   definitions at directory level. This supersedes add_definitions()
-  * CMAKE_FOLDER variable was added to initialze the FOLDER property 
+  * CMAKE_FOLDER variable was added to initialze the FOLDER property
   on all targets.
   * COMMON_LANGUAGE_RUNTIME target property was introduced to configure
   * the use of managed C++ for VS 2010 ad above.
-  * ChangeLog, see: https://cmake.org/cmake/help/v3.12/release/3.12.html 
+  * ChangeLog, see: https://cmake.org/cmake/help/v3.12/release/3.12.html
 
 -------------------------------------------------------------------
 Fri Aug 17 12:56:19 UTC 2018 - asn@cryptomilk.org
@@ -1184,7 +1197,7 @@ direct dependents and also propagates usage requirements.
     “FindPython” module, have been added to provide a new way to locate
     python environments.
   full changelog https://cmake.org/cmake/help/v3.12/release/3.12.html
-- adjust c17-default.patch 
+- adjust c17-default.patch
 
 -------------------------------------------------------------------
 Fri Jun 22 22:45:39 UTC 2018 - astieger@suse.com
@@ -1284,7 +1297,7 @@ Fri Jan 19 01:49:19 UTC 2018 - avindra@opensuse.org
 -------------------------------------------------------------------
 Thu Jan  4 11:42:59 UTC 2018 - sflees@suse.de
 
-- Add feature-suse-python-interp-search-order.patch to make sure 
+- Add feature-suse-python-interp-search-order.patch to make sure
   that python3 is found before python2
 - switch to using %autopatch
 
@@ -1338,7 +1351,7 @@ Tue Nov  7 15:36:19 UTC 2017 - jmatejek@suse.com
 Fri Nov  3 14:29:04 UTC 2017 - aavindraa@gmail.com
 
 - update to 3.9.5:
-  * Autogen: Don't add AUTOMOC_MOC_OPTIONS to moc-predefs command 
+  * Autogen: Don't add AUTOMOC_MOC_OPTIONS to moc-predefs command
 
 -------------------------------------------------------------------
 Thu Oct  5 14:10:07 UTC 2017 - riafarov@suse.com

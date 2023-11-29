@@ -228,14 +228,14 @@
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
     <package name="busybox-diffutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
+    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-base -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-misc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="busybox-psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_utilities -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="busybox-tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -270,9 +270,9 @@
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="clutter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cm-unicode-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cnf-rs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="cnf-rs-bash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="cnf-rs-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="cnf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="cnf-bash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="cnf-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cogl-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="colord-color-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -560,7 +560,7 @@
     <package name="glib2-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="glibc-extra" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1763,7 +1763,7 @@
     <package name="libduktape207" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdv4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdvbpsi10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libdvdnav4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="libdvdnav4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdvdread8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdw1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libe-book-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2692,6 +2692,7 @@
     <package name="liburing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libusb-0_1-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libusb-1_0-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbmuxd-2_0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirhost1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2814,7 +2815,7 @@
     <package name="libxcb-xkb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcb-xv0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxcb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxcvt0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxerces-c-3_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxfce4kbd-private-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2884,7 +2885,7 @@
     <package name="lightdm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="lightsoff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lightsoff-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:lklug-fonts -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4202,6 +4203,7 @@
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="systemd-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

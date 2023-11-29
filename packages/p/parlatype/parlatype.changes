@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 26 18:32:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0:
+  * New: Switch to GTK 4 (new dependency: gtk4.0 >= 4.0)
+  * New: Removed dependency gladeui-2.0 and meson option glade
+  * New: Removed support for GNOME MediaKeys (use MPRIS instead)
+  * New: Some screenshots for help pages are generated automatically for
+    available locales
+  * Fix: #98, MPRIS related crash at startup
+  * Fix: #105, Audio stops playing after some time
+    Related to this: disabled dragging the playback cursor
+
+-------------------------------------------------------------------
 Mon Jan 10 16:19:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.1:

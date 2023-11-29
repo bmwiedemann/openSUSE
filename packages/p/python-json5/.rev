@@ -95,4 +95,16 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
   * No code changes.</comment>
     <requestid>1074504</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>90617aa3e21f64cf4d758cd692e5a77c</srcmd5>
+    <version>0.9.14</version>
+    <time>1701121498</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.14:
+  * Handle `+Infinity` as well as `-Infinity` and `Infinity`.
+
+  * No code changes.
+  * fix GitHub actions</comment>
+    <requestid>1129222</requestid>
+  </revision>
 </revisionlist>

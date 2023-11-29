@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:56:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.1:
+  * E275: fix false positive with fstrings containing keyword
+    parts in python 3.12
+
+-------------------------------------------------------------------
 Tue Aug  8 15:10:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - %{?sle15_python_module_pythons} must at beginning of spec to work.
@@ -24,7 +31,7 @@ Thu Aug  3 14:59:59 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 Tue Jul 18 11:27:38 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add patch to fix testsuite with python 3.11.4 and 3.12
-  testsuite_fixes.patch 
+  testsuite_fixes.patch
 
 -------------------------------------------------------------------
 Tue May  9 05:08:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
@@ -86,13 +93,13 @@ Thu May 14 10:03:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - Update to version 2.6.0
   * E306: fix detection inside ``async def``.
     PR gh#PyCQA/pycodestyle#929.
-  * E301: fix regression disallowing decorated one-liners.  
+  * E301: fix regression disallowing decorated one-liners.
     PR gh#PyCQA/pycodestyle#927.
-  * E714: fix false positive with chained ``is not``.  
+  * E714: fix false positive with chained ``is not``.
     PR gh#PyCQA/pycodestyle#931.
 - Update to version 2.6.0a1
   New checks:
-  * E225: require whitespace around ``and`` ``in`` ``is`` and ``or``. 
+  * E225: require whitespace around ``and`` ``in`` ``is`` and ``or``.
     PR gh#PyCQA/pycodestyle#847.
   Changes:
   * E117: fix indentation using tabs by treating as 8-space indents.
@@ -119,7 +126,7 @@ Thu May 14 10:03:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * E302: allow two blank lines after a block of one-liners.
     PR gh#PyCQA/pycodestyle#913.
   * E302: allow two-and-fewer newlines at the top of the file.
-    PR gh#PyCQA/pycodestyle#919. 
+    PR gh#PyCQA/pycodestyle#919.
 - install executable as alternative
 
 -------------------------------------------------------------------
@@ -387,7 +394,7 @@ Tue May 28 07:32:40 UTC 2013 - speilicke@suse.com
 Sat May 18 19:52:53 UTC 2013 - dmueller@suse.com
 
 - udpate to 1.4.5:
-* When no path is specified, do not try to read from stdin. 
+* When no path is specified, do not try to read from stdin.
 * Do not require ``setuptools`` in setup.py.  It works around an issue
   with ``pip`` and Python 3. (Issue #172)
 * Add ``__pycache__`` to the ignore list.
@@ -403,7 +410,7 @@ Sat May 18 19:52:53 UTC 2013 - dmueller@suse.com
 Sun Feb 24 21:41:18 UTC 2013 - p.drouand@gmail.com
 
 - Update to version 1.4.4:
-  * Report E227 or E228 instead of E225 for whitespace around bitwise, 
+  * Report E227 or E228 instead of E225 for whitespace around bitwise,
     shift or modulo operators. (Issue #166)
   * Change the message for E226 to make clear that it is about arithmetic operators.
   * Fix a false positive E128 for continuation line indentation with tabs.
@@ -517,7 +524,7 @@ Fri Apr 13 15:50:43 UTC 2012 - toganm@opensuse.org
 - Update to release 1.0.1 For more details regarding changes since
   release 0.6.1 please consult CHANGES.txt
   * Fix inconsistent version numbers.
- 
+
 
 -------------------------------------------------------------------
 Thu Sep 22 09:11:41 UTC 2011 - saschpe@suse.de

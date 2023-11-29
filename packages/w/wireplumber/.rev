@@ -261,4 +261,12 @@
   * 0001-policy-dsp-add-ability-to-hide-parent-nodes.patch</comment>
     <requestid>1121413</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f754950e678be72427e197b0e87378e1</srcmd5>
+    <version>0.4.16</version>
+    <time>1701121355</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128889</requestid>
+  </revision>
 </revisionlist>

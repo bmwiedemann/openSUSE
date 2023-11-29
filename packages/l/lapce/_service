@@ -3,10 +3,9 @@
     <param name="url">https://github.com/lapce/lapce</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">14534f4</param>
-	<param name="match-tag">v0.2.8</param>
+    <param name="revision">c49e281</param>
+	<param name="match-tag">v0.3.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>

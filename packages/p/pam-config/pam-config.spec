@@ -1,7 +1,7 @@
 #
 # spec file for package pam-config
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pam-config
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
@@ -41,7 +41,7 @@ add/adjust/remove other PAM modules and their options.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -79,7 +79,7 @@ pam-config --debug --update ||:
 %files -f pam-config.lang
 %license COPYING
 %{_sbindir}/pam-config
-%{_mandir}/man8/pam-config.8*
+%{_mandir}/man8/pam-config.8%{?ext_man}
 %ghost %config %{_sysconfdir}/pam.d/common-account-pc
 %ghost %config %{_sysconfdir}/pam.d/common-auth-pc
 %ghost %config %{_sysconfdir}/pam.d/common-password-pc

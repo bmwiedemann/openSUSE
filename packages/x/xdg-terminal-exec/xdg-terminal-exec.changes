@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 24 17:32:00 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231124+git.fc8a6e0:
+  * do not let alias chew on empty data
+  * Support Desktop Actions, update docs
+  * xdg-terminal-exec: Don't default to `xterm`
+  * README: Reflect new `XTE_STOCK_TERMINALS` behaviour
+  * xdg-terminal-exec: Convert all IDs in one `tr` call
+  * xdg-terminal-exec: Map ID-path pairs using aliases
+  * xdg-terminal-exec: Mask `IFS` inside functions
+  * xdg-terminal-exec: Introduce `check_entry_key`
+  * xdg-terminal-exec: Introduce `find_entry`
+  * xdg-terminal-exec: Introduce `find_entry_paths`
+  * xdg-terminal-exec: check `Categories` in `check_entry`
+  * xdg-terminal-exec: Use `$XTE_STOCK_TERMINALS`
+  * xdg-terminal-exec: Introduce `read_config_paths`
+  * xdg-terminal-exec: Introduce `find_config_paths`
+  * xdg-terminal-exec: Use `find -print`
+  * xdg-terminal-exec: Make `find` call POSIX compliant
+  * xdg-terminal-exec: match default paths with spec
+  * xdg-terminal-exec: disable pathname expansion
+
+-------------------------------------------------------------------
 Thu Oct 26 14:51:17 UTC 2023 - mcepl@cepl.eu
 
 - Update to version 20231014+git.b6d2874:

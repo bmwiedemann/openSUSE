@@ -17,7 +17,7 @@
 
 
 Name:           spotify-easyrpm
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Tool to download, convert and install the Spotify for Linux package
 License:        GPL-3.0-only

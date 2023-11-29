@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 21 09:43:57 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Adapt spec file for SLE 15 SP6/Leap 15.6; (jsc#PED-6714);
+  * Remove package sssd-common, merged into sssd
+  * Continue building deprecated files provider and infopipe
+    responder
+  * Disable selinux and semanage
+  * Provide rcsssd shortcut
+
+-------------------------------------------------------------------
 Fri Nov 17 14:52:30 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix spec file for Leap
@@ -54,6 +64,7 @@ Thu Sep  7 12:07:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
     authentication methods will be enabled by SSSD.
   * Fix sssd entering failed state under heavy load by adding
     watchdog to monitor sbus_call_DBus_Hello_send(); (bsc#1213283);
+    Drop SLE patch 0001-sssd-watchdog.patch
 
 -------------------------------------------------------------------
 Fri Jun 23 14:49:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
@@ -65,7 +76,8 @@ Fri Jun 23 14:49:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
     in ``/etc/resolv.conf`` when it was a symbolic link or was a
     relative path, was fixed.
   * ldap password policy: return failure if there are no grace logins
-    left; (bsc#1214434);
+    left; (bsc#1214434); Drop SLE patch
+    0006-ldap-return-failure-if-there-are-no-grace-logins-lef.patch
 
 -------------------------------------------------------------------
 Fri May  5 10:47:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
@@ -133,7 +145,10 @@ Fri Oct  7 12:05:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
   * A number of new configuration options are available,
     cf. https://sssd.io/release-notes/sssd-2.8.0.html .
   * Fix sdap_access_host No matching host rule found;
-    (bsc#1202559);
+    (bsc#1202559); Drop SLE patch
+    0001-Fix-sdap_access_host-No-matching-host-rule-found.patch
+  * Accept krb5 1.20 for building the PAC plugin; Drop SLE patch
+    0004-BUILD-Accept-krb5-1.20-for-building-the-PAC-plugin.patch
 
 -------------------------------------------------------------------
 Thu Sep  1 13:45:36 UTC 2022 - Stefan Schubert <schubi@suse.com>
@@ -221,7 +236,8 @@ Thu Apr 14 22:43:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
     not found even with `cache_first = true`.
   * Add 'ldap_ignore_unreadable_references' parameter to skip
     unreadable objects referenced by 'member' attributte;
-    (bsc#1190775); (gh#SSSD/sssd#4893);
+    (bsc#1190775); (gh#SSSD/sssd#4893); Drop SLE patch
+    0001-ldap-ignore-unreadable-references.patch
 
 -------------------------------------------------------------------
 Mon Feb 21 14:50:38 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
@@ -299,7 +315,8 @@ Fri Oct 15 13:41:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
   * Support of long time deprecated local provider was dropped.
   * The sssctl command was vulnerable to shell command injection
     via the logs-fetch and cache-expire subcommands,
-    which was fixed; (CVE-2021-3621); (bsc#1189492);
+    which was fixed; (CVE-2021-3621); (bsc#1189492); Drop SLE patch
+    0002-TOOLS-replace-system-with-execvp-to-avoid-execution-.patch
   * Basic support of user's 'subuid and subgid ranges' for IPA
     provider and corresponding plugin for shadow-utils were added.
 

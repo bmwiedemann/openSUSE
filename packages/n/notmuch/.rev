@@ -407,4 +407,41 @@ From the NEWS file, this version reports the following:
     <comment>- Fix libnotmuch pkg description, fixes boo#1020067</comment>
     <requestid>1102631</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2ebd40d3048c10e85af2078794e53809</srcmd5>
+    <version>0.38.1</version>
+    <time>1701023864</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.38.1:
+  * Report parse errors in config files.
+  * Fix image toggling for Emacs &gt;= 29.1.
+  * Support relative lastmod queries (see notmuch-sexp-queries(7)
+    and notmuch-search-terms(7) for details).
+  * Support indexing of designated attachments as text (see
+  * notmuch-config(1) for details).
+  * Add options --offset and --limit to notmuch-show(1).
+  * New commands notmuch-search-edit-search and notmuch-tree-
+    edit-search.
+  * Introduce notmuch-tree-outline-mode.
+  * Some compatibility fixes for Emacs 29. At least one issue
+    (hiding images) remains in 0.38.
+  * Support completion when piping to external command.
+  * Fix regression in updating tag display introduced by 0.37.
+  * Fix bug creating database when database.path is not set.
+  * Incremental performance improvements for message deletion.
+  * Catch Xapian exceptions when deleting messages.
+  * Sync removed message properties to the database.
+  * Replace use of thread-unsafe Query::MatchAll in the infix
+    query parser.
+  * Be more careful when clearing the results directory.
+  * Use `database_open_with_config`, and provide compatible path
+    search semantics.
+  * Support testing installed version of notmuch.
+  * Adapt to some breaking changes in glib handling of init
+    files.
+  * Replace OpenPGP key used in test suite.
+  * Performance Tests
+  * Update signatures for performance test corpus.</comment>
+    <requestid>1128817</requestid>
+  </revision>
 </revisionlist>

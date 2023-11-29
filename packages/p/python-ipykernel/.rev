@@ -492,4 +492,17 @@
 </comment>
     <requestid>1113234</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>469366a0fd2646c0f2f401586c2ae259</srcmd5>
+    <version>6.27.0</version>
+    <time>1701121377</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.27.0
+  * Extend argument handling of do_execute with cell metadata #1169
+    (@jjvraw)
+- Release 6.26.0
+  * Maintenance and upkeep improvements
+</comment>
+    <requestid>1128957</requestid>
+  </revision>
 </revisionlist>

@@ -19,13 +19,13 @@
 %global pkg_name free
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        5.1.10
+Version:        5.2
 Release:        0
 Summary:        Monads for free
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -73,8 +73,8 @@ trees. The cofree comonad can be seen as a stream parameterized by a 'Functor'
 that controls its branching factor.
 
 More information on free monads, including examples, can be found in the
-following blog posts: <http://comonad.com/reader/2008/monads-for-free/>
-<http://comonad.com/reader/2011/free-monads-for-less/>.
+following blog posts: <https://ekmett.github.io/reader/2008/monads-for-free/>
+<https://ekmett.github.io/reader/2011/free-monads-for-less/>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

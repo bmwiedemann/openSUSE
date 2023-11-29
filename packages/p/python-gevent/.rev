@@ -743,4 +743,14 @@
     <comment>  bsc#1211861</comment>
     <requestid>1115549</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7d6847804be96dc29961f0ae8cbb68fd</srcmd5>
+    <version>23.9.1</version>
+    <time>1701206318</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.9.1:
+  * Require greenlet 3.0 on Python 3.11 and Python 3.12; greenlet
+    3.0 is recommended for all platforms.</comment>
+    <requestid>1129187</requestid>
+  </revision>
 </revisionlist>

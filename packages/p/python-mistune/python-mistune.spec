@@ -31,6 +31,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Conflicts:      python-mistune2 < %{version}
+Obsoletes:      python-mistune2 < %{version}
 %python_subpackages
 
 %description

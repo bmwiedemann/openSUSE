@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:31:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update build dependencies for ghc-9.6.x.
+
+-------------------------------------------------------------------
 Tue Sep 26 17:36:33 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20230926.

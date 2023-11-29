@@ -792,4 +792,29 @@ https://github.com/git-cola/git-cola/issues/991
   * Compatibility with Sphinx 7.2.0 was added to the</comment>
     <requestid>1127414</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>88fb7c3800508baeee74b85a65444c2f</srcmd5>
+    <version>4.4.1</version>
+    <time>1701023857</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.4.1:
+  * Usability, bells and whistles
+  * The remote messages dialog is now displayed for the Pull and
+    Push actions in the
+  * Branches widget only. This dialog is disabled by default and
+    enabled in the
+  * main Push and Pull dialog settings.
+  * The whole-file staging actions in the Diff widget's right-
+    click menu are now listed
+  * after the selection and hunk staging actions. This helps
+    prevent accidental clicks
+  * from clobbering the index for the entire file.
+  * The completion popup no longer reappears after an item is
+    selected in the
+  * &quot;Checkout Branch&quot; action and similar dialogs.
+  * Fixes
+  * PyQt6 compatibility was improved.
+- switch to PyQt6</comment>
+    <requestid>1128784</requestid>
+  </revision>
 </revisionlist>

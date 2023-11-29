@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 17 10:11:56 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.25.3:
+  * rpc: fix serialization of NULL mechanism pointer [#601]
+  * fix meson build failure in macOS (appleframeworks not found) [#603]
+
+-------------------------------------------------------------------
 Thu Nov  2 08:58:08 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.25.2:

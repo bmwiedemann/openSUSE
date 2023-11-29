@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 15 15:37:47 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.4-pmapX-not-twice-anymore.patch
+  * with 4.0.4 the totals on -X option are always reset for each pid
+
+-------------------------------------------------------------------
 Wed Nov 15 08:49:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Remove duplicate BuildRequires

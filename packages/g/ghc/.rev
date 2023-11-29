@@ -1048,4 +1048,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
  * Accurately account for mutator allocations when using the non-moving GC (forwarded request 1103464 from mimi_vx)</comment>
     <requestid>1103611</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>90f1443e60eb84d7bbb26c09ed61952d</srcmd5>
+    <version>9.6.3</version>
+    <time>1700771953</time>
+    <user>anag+factory</user>
+    <comment>- cabal-riscv64.patch: libraries/Cabal: Add support for the 64-bit RISC-V (forwarded request 1126684 from mimi_vx)</comment>
+    <requestid>1126685</requestid>
+  </revision>
 </revisionlist>

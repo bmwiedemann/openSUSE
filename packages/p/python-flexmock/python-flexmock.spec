@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flexmock
-Version:        0.10.8
+Version:        0.11.3
 Release:        0
 Summary:        Testing library for creating mocks, stubs and fakes
 License:        BSD-2-Clause
@@ -53,9 +53,8 @@ a number of Python-only features.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG
-%{python_sitelib}/flexmock.py*
-%pycache_only %{python_sitelib}/__pycache__/flexmock*.py*
+%doc README.md CHANGELOG.md
+%{python_sitelib}/flexmock
 %{python_sitelib}/flexmock-%{version}-py*.egg-info
 
 %changelog

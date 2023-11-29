@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.4.5
+Version:        5.5.0
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -29,7 +29,6 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
-Patch0:         spyder-pr21470-pylint3.diff
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -51,9 +50,6 @@ Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-flake8 >= 3.8.0
 Requires:       python3-intervaltree
-Requires:       (python3-ipython >= 7.31.1 with python3-ipython < 9)
-Conflicts:      (python3-ipython >= 8.8 with python3-ipython < 8.10.1)
-Requires:       python3-jedi >= 0.17.2
 Requires:       python3-jellyfish >= 0.7
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keyring >= 17.0.0
@@ -72,8 +68,8 @@ Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 22.1.0
 Requires:       python3-qstylizer >= 0.2.2
-Requires:       python3-qt5
-Requires:       python3-qtwebengine-qt5
+Requires:       python3-qt5 >= 5.10
+Requires:       python3-qtwebengine-qt5 >= 5.10
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 49.6.0
 Requires:       python3-textdistance >= 4.2.0
@@ -81,12 +77,14 @@ Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
 Requires:       python3-whatthepatch
 Requires:       python3-yapf
-Requires:       (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.2.0)
+Requires:       (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
+Requires:       (python3-ipython >= 8.13 with python3-ipython < 9)
+Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3.1)
 Requires:       (python3-python-lsp-black >= 1.2.0 with python3-python-lsp-black < 3)
-Requires:       (python3-python-lsp-server >= 1.7.4 with python3-python-lsp-server < 1.9)
-Requires:       (python3-qtconsole >= 5.4.2 with python3-qtconsole < 5.5.0)
-Requires:       (python3-spyder-kernels >= 2.4.4 with python3-spyder-kernels < 2.5)
+Requires:       (python3-python-lsp-server >= 1.9.0 with python3-python-lsp-server < 1.10)
+Requires:       (python3-qtconsole >= 5.5.0 with python3-qtconsole < 5.6.0)
+Requires:       (python3-spyder-kernels >= 2.5 with python3-spyder-kernels < 2.6)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -132,7 +130,6 @@ BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-flake8 >= 3.8.0
 BuildRequires:  python3-flaky
 BuildRequires:  python3-intervaltree
-BuildRequires:  python3-jedi >= 0.17.2
 BuildRequires:  python3-jellyfish >= 0.7
 BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keyring >= 17.0.0
@@ -163,8 +160,8 @@ BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 22.1.0
 BuildRequires:  python3-qstylizer >= 0.2.2
-BuildRequires:  python3-qt5
-BuildRequires:  python3-qtwebengine-qt5
+BuildRequires:  python3-qt5 >= 5.10
+BuildRequires:  python3-qtwebengine-qt5 >= 5.10
 BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-scipy
 BuildRequires:  python3-sympy >= 0.7.3
@@ -175,14 +172,14 @@ BuildRequires:  python3-whatthepatch
 BuildRequires:  python3-yapf
 BuildRequires:  xdpyinfo
 BuildRequires:  xvfb-run
-BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.2.0)
-BuildRequires:  (python3-ipython >= 7.31.1 with python3-ipython < 9)
-BuildRequires:  (python3-python-lsp-black >= 1.2.0 with python3-python-lsp-black < 3)
-BuildConflicts: (python3-ipython >= 8.8 with python3-ipython < 8.10.1)
+BuildRequires:  (python3-QDarkStyle >= 3.2 with python3-QDarkStyle < 3.3)
+BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 9)
+BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3.1)
-BuildRequires:  (python3-python-lsp-server >= 1.7.4 with python3-python-lsp-server < 1.9)
-BuildRequires:  (python3-qtconsole >= 5.4.2 with python3-qtconsole < 5.5)
-BuildRequires:  (python3-spyder-kernels >= 2.4.4 with python3-spyder-kernels < 2.5)
+BuildRequires:  (python3-python-lsp-black >= 1.2.0 with python3-python-lsp-black < 3)
+BuildRequires:  (python3-python-lsp-server >= 1.9 with python3-python-lsp-server < 1.10)
+BuildRequires:  (python3-qtconsole >= 5.5 with python3-qtconsole < 5.6)
+BuildRequires:  (python3-spyder-kernels >= 2.5 with python3-spyder-kernels < 2.6)
 # /SECTION
 
 %description
@@ -359,8 +356,6 @@ donttest+=" or (test_update and not test_no_update)"
 donttest+=" or (test_editor_and_outline and test_empty_file)"
 donttest+=" or test_class_func_selector"
 donttest+=" or test_console_working_directory"
-# tries to download stuff
-donttest+=" or test_kite_install"
 # qtbot timeout
 donttest+=" or test_get_hints"
 # occasional segfaults. fails to get the root tree otherwise (LSP problem?)
@@ -369,7 +364,7 @@ donttest+=" or test_editor_outlineexplorer"
 donttest+=" or test_hide_widget_completion"
 # ultimate rationale: skip whole mainwindow as these tests are leaking file descriptors
 # https://github.com/spyder-ide/spyder/issues/13483
-donttest+=" or test_mainwindow"
+# donttest+=" or test_mainwindow"
 # no config for appearance.css_path without mainwindow
 donttest+=" or test_ipython_config_dialog"
 # fails on server but not locally

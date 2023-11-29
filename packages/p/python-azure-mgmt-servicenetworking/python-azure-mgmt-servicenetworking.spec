@@ -16,27 +16,24 @@
 #
 
 
-%define realversion 1.0.0b2
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-servicenetworking
-Version:        1.0.0~b2
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Servicenetworking Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-servicenetworking/azure-mgmt-servicenetworking-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-servicenetworking/azure-mgmt-servicenetworking-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
@@ -56,10 +53,10 @@ This is the Microsoft Azure Servicenetworking Management Client Library.
 This package has been tested with Python 2.7, 3.6+.
 
 %prep
-%setup -q -n azure-mgmt-servicenetworking-%{realversion}
+%setup -q -n azure-mgmt-servicenetworking-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-servicenetworking-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-servicenetworking-%{version}
 %python_build
 
 %install

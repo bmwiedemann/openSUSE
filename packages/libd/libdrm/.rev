@@ -1736,4 +1736,21 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>1126582</requestid>
   </revision>
+  <revision rev="171" vrev="3">
+    <srcmd5>ddbd404cb2a8118480f033cc4b527a83</srcmd5>
+    <version>2.4.117</version>
+    <time>1700771940</time>
+    <user>anag+factory</user>
+    <comment>- adjusted n_libdrm-drop-valgrind-dep-generic.patch,
+  n_libdrm-drop-valgrind-dep-intel.patch</comment>
+    <requestid>1128179</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>92813fba10b3ab06aba0861f37c77e6f</srcmd5>
+    <version>2.4.118</version>
+    <time>1701121350</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128871</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Fri Nov 24 12:51:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.1.0
+  ## New Features
+  * Added the ability to skip over errors raised for invalid fits
+    files when passing a list of files to map using the existing
+    keyword argument silence_errors. (#7018)
+  * Added a sunpy.coordinates.Helioprojective.is_visible method to
+    return whether the coordinate is visible (i.e., not obscured
+    from the observer assuming that the Sun is an opaque sphere).
+    (#7118)
+  * Added a keyword option (quiet) for
+    ~sunpy.coordinates.get_body_heliographic_stonyhurst to silence
+    the normal reporting of the light-travel-time correction when
+    observer is specified. (#7142)
+  * Added the function sunpy.coordinates.sun.eclipse_amount to
+    calculate the solar-eclipse amount for an observer. (#7142)
+  * Add a keyword (map_center_longitude) to
+    ~sunpy.map.header_helper.make_heliographic_header for centering
+    the heliographic map at a longitude other than zero longitude.
+    (#7143)
+  * The minimum required version of Glymur (an optional dependency
+    for reading JPEG2000 files) has been increase to 0.9.1. (#7164)
+  * Added new default colormap scalings for WISPR Maps. Plots are
+    now clipped at zero, and ~astropy.visualization.AsinhStretch is
+    used for the scaling to ensure coronal details are visible
+    despite the much-brighter stars. Parsing of the detector and
+    level fields of the FITS headers is also improved. (#7180)
+  * When creating a coordinate or coordinate frame without
+    specifying obstime, the obstime value from the observer frame
+    attribute will be used if present. (#7186)
+  * Added a GONG synoptic map class which fixes non-compliant FITS
+    metadata (#7220)
+  * Added the module sunpy.coordinates.spice to enable the use of
+    the ~astropy.coordinates.SkyCoord API to perform computations
+    using SPICE kernels. (#7237)
+  * Added three coordinate frames that depend on the orientation of
+    Earth's magnetic dipole: ~sunpy.coordinates.Geomagnetic (MAG),
+    ~sunpy.coordinates.SolarMagnetic (SM), and
+    ~sunpy.coordinates.GeocentricSolarMagnetospheric (GSM). (#7239)
+  ## Bug Fixes
+  * Fix RHESSI (~sunpy.net.dataretriever.RHESSIClient) fallback
+    server detection. (#7092)
+  * Fix bug in ~sunpy.coordinates.get_horizons_coord when
+    specifying a time range via a dictionary that could cause the
+    returned times to be slightly different from the supplied
+    times. (#7106)
+  * Updated the url of the ~sunpy.net.dataretriever.GBMClient to
+    match on files other than those that end with version 0 (i.e.,
+    V0.pha). (#7148)
+  * When directly instantiating a ~astropy.wcs.WCS from a FITS
+    header that contains both Stonyhurst and Carrington
+    heliographic coordinates for the observer location, the
+    Stonyhurst coordinates will now be prioritized. This behavior
+    is now consistent with the ~sunpy.map.Map class, which has
+    always prioritized Stonyhurst coordinates over Carrington
+    coordinates. (#7188)
+  * Fixed a bug with ~sunpy.map.sample_at_coords() where sampling
+    outside the bounds of the map would sometimes not error and
+    instead return strange pixel values. (#7206)
+  * Improved code when loading CDF files to improve performance and
+    avoid raising of pandas performance warnings. (#7247)
+  * Fixed a bug with sunpy.map.GenericMap.plot where setting norm
+    to None would result in an error. (#7261)
+  ## Deprecations
+  * Deprecated silence_errors in Map and Timeseries. This has been
+    replaced with allow_errors keyword. (#7021)
+  * The sunpy.coordinates.transformations module is now slated for
+    removal from the public API as it consists of internal
+    functions used by coordinate transformations. The context
+    managers sunpy.coordinates.transform_with_sun_center and
+    sunpy.coordinates.propagate_with_solar_surface should be
+    accessed under sunpy.coordinates. (#7113)
+  ## Removals
+  * sunpy.map.extract_along_coord() has been removed. Instead, use
+    ~sunpy.map.pixelate_coord_path, and then pass its output to
+    ~sunpy.map.sample_at_coords. pixelate_coord_path uses a
+    different line algorithm by default, but you can specify
+    bresenham=True as an argument to use the same line algorithm as
+    extract_along_coord. (#7200)
+  * sunpy.visualisation.limb.draw_limb() has been removed. Use
+    sunpy.visualization.drawing.limb instead. (#7202)
+  * Removed GenericTimeSeries.index. Use GenericTimeseries.time
+    instead as a direct replacement. (#7203)
+  * Removed the deprecated sunpy.io.cdf submodule, which is not
+    intended to be user facing. (#7240)
+  * Removed the deprecated sunpy.io.jp2, which is not intended to
+    be user facing. (#7241)
+  * Removed the deprecated sunpy.io.file_tools, which is not
+    intended to be user facing. (#7242)
+  * The deprecated sunpy.data.download_sample_data() has been
+    removed Use sunpy.data.sample.download_all instead. (#7250)
+  ## Internal Changes
+  * Removed the Binder configuration and link in README. This is
+    because the configuration was untested, and does not currently
+    work. (#7062)
+  * Add a Dependabot config file to auto-update GitHub action
+    versions. (#7068)
+  * Add tests to check whether various ~sunpy.map.Map methods
+    preserve laziness when operating on Maps backed by a
+    dask.array.Array. (#7100)
+  * Added missing support to find GOES-18 XRS data in
+    ~sunpy.net.dataretriever.XRSClient. (#7108)
+  * Raise an error with a helpful message when
+    sunpy.map.GenericMap.plot is called with a non-boolean value
+    for the annotate keyword, because the user is probably trying
+    to specify the axes. (#7163)
+  * Fixed our ASDF manifest having the incorrect ID. (#7282)
+  * Fix example formatting in a few asdf schemas. (#7292)
+  * Pinned the drms requirement to < 0.7 to avoid breaking changes
+    in drms version 0.7. (#7308)
+
+-------------------------------------------------------------------
 Thu Sep 14 14:02:59 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.0.1

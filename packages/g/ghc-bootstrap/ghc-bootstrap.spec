@@ -16,15 +16,7 @@
 #
 
 
-%if 0%{?suse_version} > 1550
-%global llvm_major 12
-%else
-%global llvm_major 9
-%endif
-%ifarch ppc64
-%define longarch powerpc64
-%define arch ppc64
-%endif
+%global llvm_major 14
 %ifarch ppc64le
 %define longarch powerpc64le
 # something weird on ghc arch detection
@@ -48,7 +40,7 @@
 %define longarch riscv64
 %define arch riscv64
 %endif
-%ifarch ppc64 ppc64le %{arm} aarch64 riscv64
+%ifarch ppc64le aarch64 riscv64
 %define sysname unknown
 %endif
 Name:           ghc-bootstrap
@@ -57,14 +49,16 @@ License:        BSD-3-Clause
 URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Source1:        README.openSUSE
 Source2:        LICENSE
-Source12:       ghc-9.2.3-powerpc64-unknown-linux.tar.xz
-Source13:       ghc-9.2.3-powerpc64le-unknown-linux.tar.xz
-Source14:       ghc-9.2.3-x86_64-unknown-linux.tar.xz
-Source16:       ghc-9.2.3-s390x-ibm-linux.tar.xz
-Source17:       ghc-9.2.3-aarch64-unknown-linux.tar.xz
-Source19:       ghc-9.2.3-riscv64-unknown-linux.tar.xz
+Source13:       ghc-9.4.4-powerpc64le-unknown-linux.tar.xz
+Source14:       ghc-9.4.4-x86_64-unknown-linux.tar.xz
+Source16:       ghc-9.4.4-s390x-ibm-linux.tar.xz
+Source17:       ghc-9.4.4-aarch64-unknown-linux.tar.xz
+Source19:       ghc-9.4.4-riscv64-unknown-linux.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  fdupes
+BuildRequires:  gcc-PIE
+BuildRequires:  gcc-c++
+BuildRequires:  gmp-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libffi8 >= 3.4.4
 BuildRequires:  libncurses5
@@ -78,14 +72,15 @@ Conflicts:      ghc-base
 Requires:       this-is-only-for-build-envs
 Requires:       pkgconfig(libffi)
 Provides:       ghc-bootstrap-devel
-ExclusiveArch:  ppc64 ppc64le x86_64 s390x aarch64 riscv64
+ExclusiveArch:  ppc64le x86_64 s390x aarch64 riscv64
 AutoReq:        off
-Version:        9.2.3
+Version:        9.4.4
 Release:        0
 %ifnarch s390x
 BuildRequires:  libnuma-devel
 %endif
 %ifarch s390x riscv64
+Requires:       clang%{llvm_major}
 Requires:       llvm%{llvm_major}
 %endif
 %ifnarch s390x
@@ -103,7 +98,6 @@ Do not install this package! Install 'ghc' instead.
 %prep
 cp %{SOURCE1} .
 cp %{SOURCE2} .
-cp %{SOURCE12} .
 cp %{SOURCE13} .
 cp %{SOURCE14} .
 cp %{SOURCE16} .

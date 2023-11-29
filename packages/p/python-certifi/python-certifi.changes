@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 28 09:10:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.11.17:
+  Added certs:
+  * Subject: CN=TrustAsia Global Root CA G3 O=TrustAsia Technologies, Inc.
+  * Subject: CN=TrustAsia Global Root CA G4 O=TrustAsia Technologies, Inc.
+  * Subject: CN=CommScope Public Trust ECC Root-01 O=CommScope
+  * Subject: CN=CommScope Public Trust ECC Root-02 O=CommScope
+  * Subject: CN=CommScope Public Trust RSA Root-01 O=CommScope
+  * Subject: CN=CommScope Public Trust RSA Root-02 O=CommScope
+  Removed certs:
+  * Subject: CN=Autoridad de Certificacion Firmaprofesional CIF A62634068
+
+-------------------------------------------------------------------
 Wed Aug  9 07:54:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.7.22:
@@ -98,13 +112,13 @@ Thu Jun 17 20:53:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Dec 19 10:43:30 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
-- update to 2020.12.5 
+- update to 2020.12.5
 
 -------------------------------------------------------------------
 Thu Nov 26 09:21:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2020.11.8:
-  * Python 3.8+ support 
+  * Python 3.8+ support
 
 -------------------------------------------------------------------
 Wed Nov 25 11:41:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
@@ -188,7 +202,7 @@ Tue Jan  8 23:55:51 UTC 2019 - Jonathan Brownell <jbrownell@suse.com>
 
 - Limit SUSE certificate patch to exclude Red Hat platforms since
   the relevant /etc/ssl/ca-bundle.pem does not exist there
-  
+
 - %py_compile and %py3_compile macros do not exist on Red Hat;
   substitute them with equivalent %python_exec invocations
 

@@ -1,7 +1,7 @@
 #
 # spec file for package docbook-utils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,13 @@ BuildRequires:  openjade
 BuildRequires:  perl-SGMLS
 BuildRequires:  sgml-skel
 Summary:        Small Wrapper Scripts for Processing DocBook Files
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/DocBook
 Version:        0.6.14
 Release:        0
 Requires:       %{name}-minimal
 Requires:       texlive-jadetex
-Source:         ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/%{name}-%{version}.tar.gz
+Source:         https://src.fedoraproject.org/repo/pkgs/docbook-utils/%{name}-%{version}.tar.gz/6b41b18c365c01f225bc417cf632d81c/%{name}-%{version}.tar.gz
 Patch0:         docbook-utils-catalog-jw.patch
 Patch1:         docbook-utils-0.6.14-fix-bashisms.patch
 # PATCH-FIX-TO-UPSTREAM

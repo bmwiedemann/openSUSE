@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:28:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.1:
+  Build:
+  * Fixed missing header when using libc++ in clang 15 and below
+  Changed:
+  * internal/tray: The module must use the <tray> tag (this is the default) (#3037)
+  Fixed:
+  * Modules did not validate that all tags (e.g. <label>) used in
+    a format were valid for that format (#3043, #3045)
+  * internal/tray: Fixed module-margin and separator being applied
+    to completely empty tray module (#3036, #3037)
+
+-------------------------------------------------------------------
 Wed Nov  8 12:31:49 UTC 2023 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
 
 - Add 'cmake.patch' to pass build on openSUSE 15.4 and 15.5 

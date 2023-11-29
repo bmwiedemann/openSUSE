@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 15 17:38:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update megaparsec to version 9.5.0 revision 4.
+  ## Megaparsec 9.5.0
+
+  * Dropped a number of redundant constraints here and there. [PR
+    523](https://github.com/mrkkrp/megaparsec/pull/523).
+
+  * Added a `MonadWriter` instance for `ParsecT`. [PR
+    534](https://github.com/mrkkrp/megaparsec/pull/534).
+
+  ## Megaparsec 9.4.1
+
+  * Removed `Monad m` constraints in several places where they were introduced
+    in 9.4.0. [Issue 532](https://github.com/mrkkrp/megaparsec/issues/532).
+
+  ## Megaparsec 9.4.0
+
+  * `dbg` now prints hints among other debug information. [PR
+    530](https://github.com/mrkkrp/megaparsec/pull/530).
+
+  * Hints are no longer lost in certain methods of MTL instances for
+    `ParsecT`. [Issue 528](https://github.com/mrkkrp/megaparsec/issues/528).
+
+  * Added a new method to the `MonadParsec` type class—`mkParsec`. This can be
+    used to construct “new primitives” with arbitrary behavior at the expense
+    of having to dive into Megaparsec's internals. [PR
+    514](https://github.com/mrkkrp/megaparsec/pull/514).
+
+-------------------------------------------------------------------
 Thu May 18 18:11:54 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update megaparsec to version 9.3.1.

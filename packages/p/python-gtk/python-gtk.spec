@@ -1,7 +1,7 @@
 #
 # spec file for package python-gtk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,9 +75,7 @@ can write in python with PyGTK (within reason), but with all of
 python's benefits.
 
 %prep
-%setup -q -n pygtk-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n pygtk-%{version}
 
 find examples -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python|#!%{_bindir}/python2|" {} \;
 find examples -type f -name "*.py" -exec sed -i "s|#! %{_bindir}/env python|#!%{_bindir}/python2|" {} \;

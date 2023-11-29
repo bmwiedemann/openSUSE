@@ -346,4 +346,23 @@
   * checked: sbcl 2.3.9</comment>
     <requestid>1124995</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>00b84f4e55a5479a74f0968e196da5ca</srcmd5>
+    <version>23.9</version>
+    <time>1701023839</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.9:
+  * s7: added optional let argument to immutable? and immutable!
+  * finally added error checks to the tree-* functions
+  * ' (apostrophe) now is (#_quote ...) and similarly
+    for the quasiquote helpers, apply-values, and list-
+    values.
+
+- Update to 20.6 (no changelog)
+- Update to 20.2 (no changelog)
+- Update to 20.1 (no changelog)
+- added missing sentinel
+- fix for current autoconf</comment>
+    <requestid>1128746</requestid>
+  </revision>
 </revisionlist>

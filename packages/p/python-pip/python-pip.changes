@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Nov 21 10:38:00 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 23.3.1:
+  - Bug Fixes
+    - Handle a timezone indicator of Z when parsing dates in the
+      self check. (#12338)
+    - Fix bug where installing the same package at the same time
+      with multiple pip processes could fail. (#12361)
+- Update to 23.3:
+  - Process
+    - Added reference to vulnerability reporting guidelines to
+      pip's security policy.
+  - Features
+    - Improve extras resolution for multiple constraints on same
+      base package. (#11924)
+    - Improve use of datastructures to make candidate selection
+      1.6x faster. (#12204)
+    - Allow pip install --dry-run to use platform and ABI
+      overriding options. (#12215)
+    - Add is_yanked boolean entry to the installation report
+      (--report) to indicate whether the requirement was yanked
+      from the index, but was still selected by pip conform to
+      PEP 592. (#12224)
+  - Bug Fixes
+    - Ignore errors in temporary directory cleanup (show a
+      warning instead). (#11394)
+    - Normalize extras according to PEP 685 from package metadata
+      in the resolver for comparison. This ensures extras are
+      correctly compared and merged as long as the package
+      providing the extra(s) is built with values normalized
+      according to the standard. Note, however, that this
+      does not solve cases where the package itself contains
+      unnormalized extra values in the metadata. (#11649)
+    - Prevent downloading sdists twice when PEP 658 metadata is
+      present. (#11847)
+    - Include all requested extras in the install report
+      (--report). (#11924)
+    - Removed uses of datetime.datetime.utcnow from non-vendored
+      code. (#12005)
+    - Consistently report whether a dependency comes from an
+      extra. (#12095)
+    - Fix completion script for zsh (#12166)
+    - Fix improper handling of the new onexc argument of
+      shutil.rmtree() in Python 3.12. (#12187)
+    - Filter out yanked links from the available versions
+      error message: "(from versions: 1.0, 2.0, 3.0)" will
+      not contain yanked versions conform PEP 592. The yanked
+      versions (if any) will be mentioned in a separate error
+      message. (#12225)
+    - Fix crash when the git version number contains something
+      else than digits and dots. (#12280)
+    - Use -r=... instead of -r ... to specify references with
+      Mercurial. (#12306, CVE-2023-5752, bsc#1217353)
+    - Redact password from URLs in some additional
+      places. (#12350)
+    - pip uses less memory when caching large packages. As a
+      result, there is a new on-disk cache format stored in a new
+      directory ($PIP_CACHE_DIR/http-v2). (#2984)
+  - Vendored Libraries
+    - Upgrade certifi to 2023.7.22
+    - Add truststore 0.8.0
+    - Upgrade urllib3 to 1.26.17
+  - Improved Documentation
+    - Document that pip search support has been removed from PyPI
+      (#12059)
+    - Clarify --prefer-binary in CLI and docs (#12122)
+    - Document that using OS-provided Python can cause pip's test
+      suite to report false failures. (#12334)
+- Adjust pip-shipped-requests-cabundle.patch.
+
+-------------------------------------------------------------------
 Mon Aug 28 03:30:09 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Finally drop csv23, it has been removed upstream since 2021. 

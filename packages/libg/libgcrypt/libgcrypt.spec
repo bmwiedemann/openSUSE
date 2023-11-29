@@ -131,11 +131,27 @@ make -k check
 # run the regression tests also in FIPS mode
 LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check || true
 
-# Install the FIPS hmac file
-cp src/.libgcrypt.so.%{libsover}.hmac %{buildroot}%{_libdir}/
-
 %install
 %make_install
+
+# this is a hack that re-defines the __spec_install_post macro
+# for a simple reason: the macro strips the binaries and thereby
+# invalidates a HMAC that may have been created earlier.
+# solution: create the hashes _after_ the macro runs.
+
+%define libpath %{buildroot}%{_libdir}/libgcrypt.so.%{libsover}.?.?
+%define __spec_install_post \
+    %{?__debug_package:%{__debug_install_post}} \
+    %{__arch_install_post} \
+    %{__os_install_post} \
+    cd src \
+    sed -i -e 's|FILE=.*|FILE=\\\$1|' gen-note-integrity.sh \
+    READELF=readelf AWK=awk ECHO_N="-n" bash gen-note-integrity.sh %{libpath} > %{libpath}.hmac \
+    objcopy --update-section .note.fdo.integrity=%{libpath}.hmac %{libpath} %{libpath}.new \
+    mv -f %{libpath}.new %{libpath} \
+    rm -f %{libpath}.hmac \
+%{nil}
+
 rm %{buildroot}%{_libdir}/%{name}.la
 
 # Create /etc/gcrypt directory and install random.conf
@@ -153,7 +169,6 @@ install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/gcrypt/hwf.deny
 %dir %{_sysconfdir}/gcrypt
 %config(noreplace) %{_sysconfdir}/gcrypt/random.conf
 %config(noreplace) %{_sysconfdir}/gcrypt/hwf.deny
-%{_libdir}/.libgcrypt.so.*.hmac
 
 %files devel
 %license COPYING COPYING.LIB LICENSES

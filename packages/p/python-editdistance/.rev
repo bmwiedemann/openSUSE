@@ -54,4 +54,14 @@
 - Add missing Requires on python-base for the devel package.</comment>
     <requestid>1066901</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>38b3d0e965504d630ec69f2b0c221468</srcmd5>
+    <version>0.6.2</version>
+    <time>1700772158</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1128199 from theMarix
+
+- Also build for modern Python on Leap</comment>
+    <requestid>1128369</requestid>
+  </revision>
 </revisionlist>

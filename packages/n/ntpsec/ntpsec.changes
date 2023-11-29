@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 25 22:33:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2a (bsc#1214024, CVE-2023-4012):
+  * Fix a crash in ntpd if NTS is disabled and an NTS-enabled
+    client request (mode 3) is received. (CVE-2023-4012)
+
+-------------------------------------------------------------------
 Mon Feb  6 11:46:52 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to version 1.2.2
@@ -93,7 +100,7 @@ Fri May 29 07:25:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
   * NTS client now requires ALPN on TLSv1.3.
   * asciidoctor (1.5.8 or newer) is now supported and is the
     preferred AsciiDoc processor.
-  
+
 -------------------------------------------------------------------
 Mon Feb 17 08:13:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
@@ -156,7 +163,7 @@ Wed Jan 16 10:16:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Wed Jan 16 09:06:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 1.1.3 bsc#1122131 CVE-2019-6445 bsc#1122132 
+- Update to 1.1.3 bsc#1122131 CVE-2019-6445 bsc#1122132
   CVE-2019-6442 bsc#1122134 CVE-2019-6444 bsc#1122144
   CVE-2019-6443:
   * Lots of typo fixes, documentation cleanups, test targets.

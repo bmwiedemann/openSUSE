@@ -17,7 +17,7 @@
 
 
 Name:           ser2net
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        Serial port to network proxy
 License:        GPL-2.0-or-later

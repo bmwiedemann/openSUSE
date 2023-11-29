@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 11 11:42:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http-api-data to version 0.6 revision 1.
+  0.6
+  ---
+
+  * Use [`text-iso8601`](https://hackage.haskell.org/package/text-iso8601)
+    to parse and serialise `time` types. (Instead of `attoparsec-iso8601`).
+    Due this change some formats are slightly changed:
+
+    - Space between timezone is not accepted
+    - Timezone offset can be between -23:59..23:59
+    - Timezone offset is output with colon between hours and minutes
+
+  * Require at least GHC-8.2
+
+  0.5.1
+  -----
+
+  * Add `toEncodedQueryParam` to `ToHttpApiData` type class. It has default
+    implementation using `toQueryParam`, but may be overriden with more efficient
+    one.
+
+-------------------------------------------------------------------
 Wed Jun 21 17:08:10 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Relax overspecified constraint on base-compat.

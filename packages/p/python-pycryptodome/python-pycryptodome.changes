@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:55:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.0:
+  * The ``update()`` methods of TupleHash128 and TupleHash256
+    objects can now hash multiple items (byte strings) at once.
+  * Added support for ECDH, with ``Crypto.Protocol.DH``.
+  * GH#754: due to a bug in ``cffi``, do not use it on Windows
+    with Python 3.12+.
+
+-------------------------------------------------------------------
 Wed Jun 28 13:36:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -102,7 +112,7 @@ Mon Mar 27 09:16:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Dec  6 13:06:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.16.0 
+- Update to version 3.16.0
   * New features
     Build wheels for musl Linux. Thanks to Ben Raz.
   * Resolved issues
@@ -135,7 +145,7 @@ Tue Feb 15 08:52:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Relaxed ECDSA requirements for FIPS 186 signatures and accept any SHA-2 or
   * SHA-3 hash.  ``sign()`` and ``verify()`` will be performed even if the hash is stronger
     than the ECC key.
-   
+
 -------------------------------------------------------------------
 Sat Dec 11 13:19:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -199,12 +209,12 @@ Tue Aug  4 14:36:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 Thu Mar 19 13:12:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.9.7
-  * Align stack of functions using SSE2 intrinsics to avoid crashes, 
+  * Align stack of functions using SSE2 intrinsics to avoid crashes,
     when compiled with gcc on 32-bit x86 platforms.
   * Prevent key_to_english from creating invalid data when fed with
     keys of length not multiple of 8.
   * Fix blocking RSA signing/decryption when key has very small factor.
-  * fixed memory leak for operations that use memoryviews when cffi 
+  * fixed memory leak for operations that use memoryviews when cffi
     is not installed.
   * RSA OAEP decryption was not verifying that all PS bytes are zero.
   * Fixed wrong ASN.1 OID for HMAC-SHA512 in PBE2.
@@ -231,7 +241,7 @@ Sun Nov 10 16:54:21 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
     * GH#328: minor speed-up when importing RSA.
 
 - Add export LC_ALL=en_US.UTF-8 to %build, %install and %check to
-  fix the build on older distros 
+  fix the build on older distros
   (as done from Thomas Bechtold in python-pycryptodomex)
 
 -------------------------------------------------------------------
@@ -265,26 +275,26 @@ Fri May 24 11:36:30 UTC 2019 - Martin Liška <mliska@suse.cz>
 Tue May 14 13:03:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.8.1
-  * Add support for loading PEM files encrypted with AES192-CBC, 
+  * Add support for loading PEM files encrypted with AES192-CBC,
     AES256-CBC, and AES256-GCM.
-  * When importing ECC keys, ignore EC PARAMS section that was 
+  * When importing ECC keys, ignore EC PARAMS section that was
     included by some openssl commands.
   * repr() did not work for ECC.EccKey.
   * Minimal length for Blowfish cipher is 32 bits, not 40 bits.
   3.8.0
-  * Speed-up ECC performance. ECDSA is 33 times faster on the 
+  * Speed-up ECC performance. ECDSA is 33 times faster on the
     NIST P-256 curve.
   * Added support for NIST P-384 and P-521 curves.
   * EccKey has new methods size_in_bits() and size_in_bytes().
-  * Support HMAC-SHA224, HMAC-SHA256, HMAC-SHA384, and HMAC-SHA512 
+  * Support HMAC-SHA224, HMAC-SHA256, HMAC-SHA384, and HMAC-SHA512
     in PBE2/PBKDF2.
-  * DER objects were not rejected if their length field had 
+  * DER objects were not rejected if their length field had
     a leading zero.
   * Allow legacy RC2 ciphers to have 40-bit keys.
-  * point_at_infinity() becomes an instance method for 
+  * point_at_infinity() becomes an instance method for
     Crypto.PublicKey.ECC.EccKey, from a static one.
   3.7.3
-  * GH#258: False positive on PSS signatures when externally 
+  * GH#258: False positive on PSS signatures when externally
     provided salt is too long.
 
 -------------------------------------------------------------------
@@ -340,12 +350,12 @@ Thu Nov  1 10:42:04 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
     * Added support for Poly1305 MAC (with AES and ChaCha20 ciphers
       for key derivation).
     * Added support for ChaCha20-Poly1305 AEAD cipher.
-    * New parameter output for Crypto.Util.strxor.strxor, 
-      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in 
-      symmetric ciphers (Crypto.Cipher package). output is a 
-      pre-allocated buffer (a bytearray or a writeable memoryview) 
-      where the result must be stored. This requires less memory for 
-      very large payloads; it is also more efficient when encrypting 
+    * New parameter output for Crypto.Util.strxor.strxor,
+      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in
+      symmetric ciphers (Crypto.Cipher package). output is a
+      pre-allocated buffer (a bytearray or a writeable memoryview)
+      where the result must be stored. This requires less memory for
+      very large payloads; it is also more efficient when encrypting
       (or decrypting) several small payloads.
 
   - Resolved issues
@@ -371,17 +381,17 @@ Mon Sep  3 14:21:25 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.6.6
   - Resolved issues:
-    * Fix vulnerability on AESNI ECB with payloads smaller than 
+    * Fix vulnerability on AESNI ECB with payloads smaller than
       16 bytes.
 
 - Update to 3.5.5
   - Resolved issues
 
-    * Fixed incorrect AES encryption/decryption with AES 
-      acceleration on x86 due to gcc’s optimization and strict 
+    * Fixed incorrect AES encryption/decryption with AES
+      acceleration on x86 due to gcc’s optimization and strict
       aliasing rules.
-    * More prime number candidates than necessary where discarded 
-      as composite due to the limited way D values were searched 
+    * More prime number candidates than necessary where discarded
+      as composite due to the limited way D values were searched
       in the Lucas test.
     * Fixed ResouceWarnings and DeprecationWarnings.
 
@@ -389,7 +399,7 @@ Mon Sep  3 14:21:25 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
   - New features:
     * Build Python 3.7 wheels on Linux, Windows and Mac.
   - Resolved issues:
-    * More meaningful exceptions in case of mismatch in IV length 
+    * More meaningful exceptions in case of mismatch in IV length
       (CBC/OFB/CFB modes).
 
 -------------------------------------------------------------------

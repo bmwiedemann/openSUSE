@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 27 09:06:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.0:
+  * Added ``CompleteDirs.inject`` classmethod to make available
+    for use elsewhere.
+  * Avoid matching path separators for '?' in glob.
+  * In ``Path.match``, Windows path separators are no longer
+    honored. The fact that they were was incidental and never
+    supported. (#92)
+  * Fixed name/suffix/suffixes/stem operations when no filename
+    is present and the Path is not at the root of the zipfile.
+    (#96)
+  * Reworked glob utilizing the namelist directly. (#101)
+  * Replaced the ``fnmatch.translate`` with a fresh glob-to-regex
+    translator for more correct matching behavior. (#98)
+  * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:39:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -51,7 +69,7 @@ Tue Aug 23 20:33:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sun May 29 19:02:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.0:
-  * Removed compatibility code. 
+  * Removed compatibility code.
 
 -------------------------------------------------------------------
 Tue Jan  4 16:40:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -62,14 +80,14 @@ Tue Jan  4 16:40:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Jan  4 14:41:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add python-rpm-macros buildrequires 
+- add python-rpm-macros buildrequires
 
 -------------------------------------------------------------------
 Sat Oct 16 19:42:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.0:
   *  Only ``Path`` is exposed in the public API.
-  *  Remove news file intended only for CPython. 
+  *  Remove news file intended only for CPython.
 
 -------------------------------------------------------------------
 Sat Jul 17 13:36:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -81,7 +99,7 @@ Sat Jul 17 13:36:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Mon Mar  8 09:07:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.1:
-  * refresh packaging 
+  * refresh packaging
 
 -------------------------------------------------------------------
 Wed Nov 25 14:52:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -140,7 +158,7 @@ Mon Mar  9 12:20:53 UTC 2020 - pgajdos@suse.com
 Thu Aug 29 14:07:59 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.6.0
-  * When adding implicit dirs, ensure that ancestral directories 
+  * When adding implicit dirs, ensure that ancestral directories
     are added and that duplicates are excluded.
   * The library now relies on more_itertools.
 
@@ -159,7 +177,7 @@ Thu Jun  6 15:51:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Thu May 16 20:56:11 UTC 2019 - ranand@suse.com
 
 - update to 0.5.1
-  * Declared package as backport. 
+  * Declared package as backport.
 
 -------------------------------------------------------------------
 Tue May 14 23:13:22 UTC 2019 - svasudevan@suse.com

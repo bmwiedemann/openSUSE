@@ -21,9 +21,12 @@
 # Due to std::filesystem and std::charconv used by code, at least gcc-c++ >= 10 and std=c++17 is required
 %if 0%{?suse_version} < 1550
 %define gcc_ver 10
+%bcond_with tests
+%else
+%bcond_without tests
 %endif
 Name:           nuspell
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
@@ -37,9 +40,11 @@ BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  graphviz
 BuildRequires:  libicu-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(catch2) < 3
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:ronn)
 Requires:       hunspell
+%if %{with tests}
+BuildRequires:  pkgconfig(catch2) >= 3.3.2
+%endif
 
 %description
 Nuspell is a spell checker written in C++. It supports languages with
@@ -100,7 +105,7 @@ This package provides API documentation for Nuspell.
        -DCMAKE_CXX_COMPILER:STRING=g++-%{?gcc_ver} \
        -DCMAKE_CXX_FLAGS:STRING="%{optflags} -std=c++17" \
 %endif
-       -DBUILD_TESTING:BOOL=ON  \
+       -DBUILD_TESTING:BOOL=%{?with_tests:ON}%{!?with_tests:OFF}  \
        -DCMAKE_SKIP_RPATH:BOOL=OFF
 %cmake_build
 
@@ -118,8 +123,10 @@ cp -pR doxygen/html %{buildroot}%{_docdir}/%{name}-doc/
 %post -n %{libname}%{sonum} -p /sbin/ldconfig
 %postun -n %{libname}%{sonum} -p /sbin/ldconfig
 
+%if %{with tests}
 %check
 %ctest
+%endif
 
 %files -n %{name}
 %doc README.md CHANGELOG.md AUTHORS

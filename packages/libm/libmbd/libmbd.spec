@@ -1,7 +1,7 @@
 #
-# spec file for package libmbd
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 # /SECTION MPI DEFINITIONS
 
 Name:           %{srcname}%{?my_suffix}
-Version:        0.12.6
+Version:        0.12.7
 Release:        0
 Summary:        Many-body dispersion library
 License:        MPL-2.0

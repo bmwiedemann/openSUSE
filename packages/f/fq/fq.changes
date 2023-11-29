@@ -1,4 +1,644 @@
 -------------------------------------------------------------------
+Sat Nov 25 17:45:41 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.9.0:
+  * fq: Release 0.9.0
+  * mod: Update golang.org/x/exp and github.com/gomarkdown/markdown
+  * webp,avi,wav,aiff: Trim RIFF id string
+  * Update gomod-gopacket to 1.2.0 from 1.1.1
+  * doc: Remove spurious backtick
+  * Update gomod-golang-x-net to 0.18.0 from 0.17.0
+  * Update gomod-golang-x-crypto to 0.15.0 from 0.14.0
+  * Update github-go-version to 1.21.4 from 1.21.3
+  * Update docker-golang to 1.21.4 from 1.21.3
+  * gojq: Update rebased fq fork
+  * Update gomod-golang/text to 0.14.0 from 0.13.0
+  * Update github-golangci-lint to 1.55.2 from 1.55.1
+  * Update make-golangci-lint to 1.55.2 from 1.55.1
+  * exif,tiff: Handle broken last next ifd offset by treating it as end marker
+  * webp: Refactor to use riff code and decode VP8X, EXIF, ICCP and XMP chunks
+  * interp: Fix infinite recursion when casting synthetic raw value into a jq value
+  * protobuf: No need for synthetic for string and bytes value
+  * Update github-golangci-lint to 1.55.1 from 1.55.0
+  * Update make-golangci-lint to 1.55.1 from 1.55.0
+  * macho: Move timestamp string to description
+  * macho: Respect endian when decoding flags
+  * gzip: Correctly handle multiple members
+  * zip: Fix incorrect time/date, add extended timestamp and refactor
+  * Update github-golangci-lint to 1.55.0 from 1.54.2
+  * Update make-golangci-lint to 1.55.0 from 1.54.2
+  * avi: Add extended chunks support and option
+  * interp: Change bit ranges to use exclusive end
+  * interp: Better from_jq error handling
+  * matroska: Decode ebml date type
+  * Update github-go-version to 1.21.3 from 1.21.2
+  * Update gomod-golang-x-net to 0.17.0 from 0.16.0
+  * Update docker-golang to 1.21.3 from 1.21.2
+  * avi: Add unused field for extra indx chunk space
+  * interp: Improve colors when using light background
+  * avi: Increase sample size heuristics to 32bit stereo
+  * avi: Add stream type constants
+  * avi: Only use sample size heuristics if there is no format
+  * decode,interp: Make synthetic values more visible and not act as decode values
+  * avi: Handle stream sample size
+  * avi: Add type, handler, format_tag and compreession per stream
+  * Update github-go-version to 1.21.2 from 1.21.1
+  * Update gomod-golang-x-net to 0.16.0 from 0.15.0
+  * Update docker-golang to 1.21.2 from 1.21.1
+  * avi: More correct strf chunk extra data
+  * Update gomod-golang-x-crypto to 0.14.0 from 0.13.0
+
+-------------------------------------------------------------------
+Wed Sep 27 16:26:15 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.8.0:
+  * fq: Release 0.8.0
+  * opentimestamps: one last make doc.
+  * opentimestamps: add help text.
+  * opentimestamps: account for unknown attestation types.
+  * opentimestamps: abstract away file digest sizes and support sha1, ripemd160 and keccac256.
+  * opentimestamps: address comments and improve things.
+  * opentimestamps: satisfy linter.
+  * opentimestamps: add tests.
+  * opentimestamps: add parser.
+  * mod: Update golang.org/x/exp and github.com/gomarkdown/markdown
+  * interp: split: Correctly split binary
+  * moc3: update tests
+  * moc3: Fix field order in blend_shape_keyform_bindings structure, version detection in count_info
+  * mp3_frame_xing: Detect lame ext more similar to ffmpeg and mediainfo
+  * Update github-go-version to 1.21.1 from 1.21.0
+  * Update docker-golang to 1.21.1 from 1.21.0
+  * Update gomod-golang-x-net to 0.15.0 from 0.14.0
+  * Update gomod-golang-x-crypto to 0.13.0 from 0.12.0
+  * id3v2: Handle W000-WZZZ,W00-WZZ URL frames
+  * decode,interp: Don't shadow _key and error on missing _key
+  * Update gomod-golang/text to 0.13.0 from 0.12.0
+  * mp4: Decode emsg box
+  * mp4: Decode cslg box
+  * mp4,mpeg_es: Decode iods box and MP4_IOD_Tag OD
+  * doc: Move up and update differences jq section a bit
+  * golangci: Fix gosec aliasing warnings
+  * html: Add forgotten re test
+  * Update github-golangci-lint to 1.54.2 from 1.54.1
+  * Update make-golangci-lint to 1.54.2 from 1.54.1
+  * doc,moc3,caff: Add author and regenerate docs
+  * moc3: update test data
+  * moc3: count_info: extra space is reserved, not normal alignment/padding
+  * moc3: eliminate gaps and properly handle padding, fix version 5 format decoding
+  * caff: run go fmt
+  * caff: eliminate gaps and specify unused fields
+  * caff: run go fmt
+  * moc3: add test data for new version 5
+  * caff: obfuscation key is a signed integer, add test data
+  * moc3: add support for version 5
+  * moc3: consistency - scales array contains value elements, not scale elements
+  * moc3: nicer tree structure, use more meaningful names for array elements
+  * caff: update doc/formats.md
+  * caff: include uncompressed bits for proper decompressed entries that can't be decoded as a format
+  * moc3, caff: update tests and README
+  * caff: minor formatting changes
+  * moc3: update certain array element names, explicitly mark unused or reserved space
+  * protobuf_widevine: Make protection_scheme constants less magic
+  * moc3: remove dead code
+  * moc3: initial implementation
+  * caff: remove dead code
+  * caff: initial implementation
+  * Update github-golangci-lint to 1.54.1 from 1.54.0
+  * Update make-golangci-lint to 1.54.1 from 1.54.0
+  * Update github-go-version to 1.21.0 from 1.20.7
+  * Update github-golangci-lint to 1.54.0 from 1.53.3
+  * Update make-golangci-lint to 1.54.0 from 1.53.3
+  * Update docker-golang to 1.21.0 from 1.20.7
+  * gomod: Update x/exp and gomarkdown
+  * matroska: Update spec and regenerate
+  * cli: Rename --null/nul-output to --raw-output0
+  * gojq: Update fq fork
+  * Update gomod-golang-x-net to 0.14.0 from 0.13.0
+  * Update gomod-golang-x-crypto to 0.12.0 from 0.11.0
+  * Update gomod-golang/text to 0.12.0 from 0.11.0
+  * elf: Fix broken static and segfault tests
+  * Update github-go-version to 1.20.7 from 1.20.6
+  * Update gomod-golang-x-net to 0.13.0 from 0.12.0
+  * Update docker-golang to 1.20.7 from 1.20.6
+  * dev,jq: Reformat jq code to look more the same
+  * mp4: Nicer major brand and handle some qt brand short strings better
+  * dev: Move examples and snippets to wiki
+  * luajit: file null terminator: raw bits, validate
+  * docker: Change to bookworm
+  * Update github-go-version to 1.20.6 from 1.20.5
+  * Update docker-golang to 1.20.6 from 1.20.5
+
+-------------------------------------------------------------------
+Fri Jul  7 09:35:44 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.7.0:
+  * fq: Release 0.7.0
+  * Update gomod-gopacket to 1.1.1 from 1.1.0
+  * Update gomod-golang-x-net to 0.12.0 from 0.11.0
+  * Update gomod-golang-x-crypto to 0.11.0 from 0.10.0
+  * Update gomod-BurntSushi/toml to 1.3.2 from 1.2.1
+  * Update gomod-golang/text to 0.11.0 from 0.10.0
+  * wav: Decode bext chunk
+  * luajit: make doc
+  * luajit: typo
+  * luajit: remove unused variable
+  * luajit: fix regression: (u64 vs i64)
+  * luajit: tests: rename lua source file
+  * luajit: explain LuaJITDecodeKNum, fix negative in bug
+  * luajit: improve debuginfo decoding
+  * luajit: tests: improve coverage
+  * luajit: standardize field names (key/value/type ect.)
+  * luajit: fallbackUintMapSymStr
+  * luajit: remove unecessary dependency
+  * sgpd box entries parsing
+  * luajit: add to probe group
+  * luajit: clarify description
+  * luajit: *.fqtest: add comments for generating .luac from source
+  * luajit: split in smaller decode functions
+  * luajit: add luajit.md
+  * luajit: opcodes: implement scalar.UintMapper
+  * luajit: use UTF8 strings
+  * luajit: check binary.Read() error
+  * luajit: magic number: raw bits, check with assert
+  * luajit: lowercase flags
+  * go fmt
+  * luajit: initial support
+  * Update github-golangci-lint to 1.53.3 from 1.53.2
+  * Update make-golangci-lint to 1.53.3 from 1.53.2
+  * interp: Add to binary fast path for arrays with only 0-255 numbers and strings
+  * Update gomod-golang/text to 0.10.0 from 0.9.0
+  * Update gomod-golang-x-net to 0.11.0 from 0.10.0
+  * Update gomod-golang-x-crypto to 0.10.0 from 0.9.0
+  * Update github-go-version to 1.20.5 from 1.20.4
+  * Update docker-golang to 1.20.5 from 1.20.4
+  * Update README.md
+  * Improved README.md
+  * Update github-golangci-lint to 1.53.2 from 1.53.1
+  * Update make-golangci-lint to 1.53.2 from 1.53.1
+  * doc: Fix broken link in README
+  * Update github-golangci-lint to 1.53.1 from 1.52.2
+  * Update make-golangci-lint to 1.53.1 from 1.52.2
+  * gojq: Update rebased fq fork
+  * interp: Make binary also respect bits_format
+  * mp4: udta: Improve length/lang box probe and support empty value
+
+-------------------------------------------------------------------
+Tue May 16 14:00:47 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.0:
+  * fq: Release 0.6.0
+  * mp4: Use correct epoch for quicktime timestamps
+  * fix non-ascii characters handling in to_hex and to_base64 functions
+  * interp: Add hex bits format
+  * bitcoin: fix witness item structs
+  * doc: fix typos
+  * interp: trim: Add multi-line support
+  * html: Add to probe group
+  * bits,bytes: Behave as binary instead of raw decode value
+  * interp: Don't output raw binary if display is called explicitly
+  * Update gomod-golang-x-net to 0.10.0 from 0.9.0
+  * Update gomod-golang-x-crypto to 0.9.0 from 0.8.0
+  * doc: Hopefully fix svg fixed font issue
+  * help,markdown: Rewrote and made text rendering nicer
+  * postgres: doc
+  * postgres: use bit stream instead of masks to get flags
+  * postgres: btree refactored by Mattias Wadman
+  * postgres: fix line endings in error messages, simplify code, add comments
+  * postgres: refactoring
+  * postgres: update doc
+  * Update github-go-version to 1.20.4 from 1.20.3
+  * Update docker-golang to 1.20.4 from 1.20.3
+  * postgres: refactoring
+  * postgres: fix lint
+  * interp,decode: Support decode group argument
+  * postgres: fix compilation, fix tests
+  * id3v2: Decode CTOC flags
+  * id3v2: Add WXXX (desc/url) frame support
+  * bson: fix doc formatting and add author info
+  * dev,doc Clarify some dev docs and rename launch.json to be a template
+  * pcap: Add forgotten help test
+  * formats: Clenaup naming a bit
+  * mp4: Better description for QuickTime terminator atom
+  * bson: add BSON test file generator module and correct BSON format docs
+  * bson: support all non-deprecated types and fix int/uint bugs
+  * interp: Add skip_gaps option for tovalue/-V
+  * interp: Make tovalue output behave as jq value
+  * decode,interp: Refactor format groups into a proper struct
+  * matroska: file_data: Fallback to raw if probe fails
+  * gzip.go: fix typo in variablename: delfate
+  * postgres: version 15 support
+  * mp4: ctts,infe,iinf,trun: More ISOMFF version handling
+  * doc: Add some more examples
+  * postgres: fix error in tests
+  * postgres: add page arg in pg_btree, change args names in pg_heap
+  * postgres: fail on error in pg_heap
+  * postgres: lint fixes
+  * postgres: remove pg_wal. Failed to implement.
+  * postgres: wal support multiple xlog_body for wal record
+  * postgres: fix pg_wal when XLogRecord size is more than page size
+  * postgres: refactor ItemIdData
+  * postgres: remove lsn parameter in pg_wal
+  * postgres: remove unused code
+  * postgres: refactoring
+  * psotgres: refactoring
+  * postgres: remove arg in pg_btree
+  * postgres: add btree index tests
+  * postgres: add tests data
+  * postgres: add test files
+  * postgres: refactoring, tests
+  * postgres: wal refactoring
+  * postgres: pgpro wal refactoring
+  * postgres: pgpro wal implementation
+  * postgres: add wal tests
+  * postgres: refactoring
+  * postgres: wal refactoring
+  * postgres: refactoring
+  * postgres: wal implementation
+  * postgres: wal refactoing
+  * postgres: wal refactoing
+  * postgres: wal impl
+  * postgres: wal const
+  * postgres: add pg_wal for pgproee11 as copy of postgres14
+  * postgres: allow all flovours to decode btree index
+  * postgres: add additional checks in pg_heap
+  * postgres: remove SeekAbs(0) where it's not used.
+  * postgres: how_to.md
+  * postgres: add btree, pg_control to how_to.md
+  * postgres: add how_to.md - how to generate test files for postgres
+  * postgres: lint, doc
+  * postgres: refactoring
+  * postgres: refactoring
+  * postgres: add argument to calc page's check sum correctly
+  * postgres: make page size const
+  * postgres: page sum impl
+  * postgres: regenerate docs
+  * postgres: refactoring
+  * postgres: postgres 10 support
+  * postgres: pg_heap fix page_begin, page_end
+  * postgres: pg_control change default flavour to empty string - it uses versions prober. Fix root name in pg_heap.
+  * postgres: generate docs by embedded md
+  * postgres: add postgres.md to format
+  * postgres: refactoring
+  * postgres: move postgres.md to formats.md, add btree tests
+  * postgres: refactoring
+  * postgres: pg_heap refactoring
+  * postgresql: general logic for pg_heap, pg_btree
+  * postgres: pg_heap reafactoring
+  * postgres: change AssertPosBytes to AssertPos (bits)
+  * postgres: pg_control refactoring
+  * postgres: pg_heap refactoring
+  * postgres: btree handle full file
+  * postgres: btree add free space
+  * postgres: btree impl
+  * postgres: btree impl
+  * postgres: pg_btree add opaque flags
+  * postgres: pg_btree begin impl
+  * postgres: refactoring
+  * postgres: add state to wal struct
+  * postgres: try to implement pg_wal
+  * postgres: pgwal checks
+  * postgres: add wal checks
+  * postgres: wal decoding implement
+  * postgres: exclude wal tests for now
+  * postgres: first correct read of WAL file
+  * postgres: try to implement wal
+  * postgres: add test data with specific values
+  * postgres: fix linter
+  * postgres: refactoring
+  * postgres: refactoring - remove GetHeapD
+  * postgres: remove duplicate tests
+  * postgres: move SeekAbs(0) to Probe
+  * postgres: better versions probing in pg_control, fix holes, better tests
+  * postgres: change tuple struct in heap
+  * postgres: fill gap alignment in heap tuple
+  * postgres: fix some unknown, chanche tests tovalue -> dv
+  * postgres: add tests
+  * postgres: add postgres format docs, refactoing postgres flavours
+  * postgres: made root an array
+  * allow to change FillGaps in decoder
+  * add postgres tests for mem, cpu profiling
+  * add pgpro11 for postgres
+  * add pgpro12 postgres
+  * add pgpro13 heap
+  * add pgpro13 to postgres
+  * PostgreSQL: pgheap impl for pgproee10
+  * PostgreSQL: pg_control impl for pgproee 10
+  * PostgreSQL: pg_control, pgheap impl for pgproee13
+  * PostgreSQL: add heap for pgpro14
+  * PostgreSQL: add pg_control to pgpro14
+  * PostgreSQl: heap impl for version 13
+  * PostgreSQl: pg_control impl for version 13
+  * PostgreSQL: ref
+  * PostgreSQL: fix
+  * PostgreSQL: heap impl for pgproee 12
+  * PostgreSQL: add pg_control for pgproee 12
+  * PostgreSQL: heap impl for version 11
+  * ref
+  * PostgreSQL: pg_control for ver 12
+  * PostgreSQl: fix offset
+  * PostgreSQL: pgproee11 pg_control impl
+  * PostgreSQL: pgproee11 heap impl
+  * PostgreSQL: fixes
+  * PostgreSQL: implement pgproee 14
+  * PostgreSQL: accept only normal item pointers
+  * PostgreSQL: lp_flags format
+  * Add heap infomask flags parser to PostgreSQL
+  * PostgrreSQl heap decode refactoring
+  * PostgreSQL: heap tuples implementation
+  * PostgreSQL heap page parser implememtation.
+  * Try to implement pgwal - fail.
+  * mappers for postgres
+  * pgpro version mapper
+  * unix time mapper for postgres
+  * lsn mapper
+  * add icu version mapper
+  * WalLevel for postgres
+  * show mock_authentication_nonce as hex
+  * DBState enum for postgres
+  * Add pgproee14 flavour to postgres
+  * Add flavour arg to postgres parser
+  * pg_control implementation
+  * Add postgres pg_control parser
+  * [WIP] initial attempt to add postgres
+
+-------------------------------------------------------------------
+Thu Apr 13 15:39:42 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.5.0:
+  * fq: Release 0.5.0
+  * matroska: Update ebml specification
+  * interp: Add --value-output/-V option to do tovalue before output
+  * interp: Allow and convert JQValues:s (ex decode value) in function arg objects
+  * wav: Cleanup avi leftovers
+  * msgpack: Add str, array and object type tests
+  * msgpack: fixstr length field is 5 bits
+  * Update gomod-golang-x-net to 0.9.0 from 0.8.0
+  * Update gomod-golang-x-crypto to 0.8.0 from 0.7.0
+  * Update gomod-golang/text to 0.9.0 from 0.8.0
+  * Update github-go-version to 1.20.3 from 1.20.2
+  * Update docker-golang to 1.20.3 from 1.20.2
+  * decode,fuzz,dev: Move recoverable error check to recoverfn.Run
+  * decode: Cleanup old unused help system code
+  * Update gomod-gopacket to 1.1.0 from 1.0.0
+  * Update github-golangci-lint to 1.52.2 from 1.52.1
+  * Update make-golangci-lint to 1.52.2 from 1.52.1
+  * Update github-golangci-lint to 1.52.1 from 1.52.0
+  * Update make-golangci-lint to 1.52.1 from 1.52.0
+  * golangci-lint: Disable revive unused-parameter and update for new default config
+  * Update github-golangci-lint to 1.52.0 from 1.51.2
+  * Update make-golangci-lint to 1.52.0 from 1.51.2
+  * Update gomod-creasty-defaults to 1.7.0 from 1.6.0
+  * interp: Make completion work again
+  * interp: Fix input completion regression in sub-REPLs
+  * decode: Add float 80 reader
+  * aiff: Add basic decoder
+  * fix typo
+  * readline: remove direct access to (*Instance).Config
+
+-------------------------------------------------------------------
+Wed Mar  8 16:41:02 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.4.0:
+  * fq: Release 0.4.0
+  * Update github-go-version to 1.20.2 from 1.20.1
+  * Update docker-golang to 1.20.2 from 1.20.1
+  * gojq: Update fq fork
+  * readline: Update fq fork
+  * id3v2: Decode subframes for CTOC and add struct for headers
+  * Update gomod-golang-x-net to 0.8.0 from 0.7.0
+  * Update gomod-golang-x-crypto to 0.7.0 from 0.6.0
+  * tls: Add TLS 1.0, 1.1, 1.2 decode and decryption
+  * Update gomod-golang/text to 0.8.0 from 0.7.0
+  * help: Show default option value as JSON
+  * help,markdown: Fix double line breaks when converting to text
+  * pcap,pcapng,ipv4,ipv6: Support raw link type (ipv4 or ipv6)
+  * doc: Run make doc
+  * interp: Exit with error if -o name=@path fails to be read, also document
+  * zip: Correctly peek for zip64 EOCD
+  * zip: Correctly look for and decode both zip32/64 EOCD record
+  * toml,xml: Fail fast on invalid content
+  * Update github-golangci-lint to 1.51.2 from 1.51.1
+  * Update make-golangci-lint to 1.51.2 from 1.51.1
+  * pcap: Add ipv4 fragments tcp test
+  * ipv4_packet,ipv6_packet,sll_packet,sll2_packet: Support ipv4/ipv6 link frames and pass correct in arg
+  * decode: Support multiple format args and some rename and refactor
+  * Update github-go-version to 1.20.1 from 1.20.0, 1.20.0, 1.20.0
+  * Update gomod-golang-x-net to 0.7.0 from 0.6.0
+  * Update docker-golang to 1.20.1 from 1.20.0
+  * doc,fq: Improve cli help and some cleanup
+  * matroska: Add unknown size test and add description to ebml header
+  * matroska: Update spec and make refs in descriptions look nicer
+  * matroska: Assume master with unknown size has ended if a valid parent is found
+  * Update gomod-golang/text to 0.7.0 from 0.6.0
+  * Update gomod-golang-x-net to 0.6.0 from 0.5.0
+  * Update gomod-golang-x-crypto to 0.6.0 from 0.5.0
+  * matroska: Handle unknown size for non-master types a bit better
+  * matroska: Add decode_samples option
+  * interp,json: Move error handling to colorjson
+  * colorjson: Handle encoding error value
+  * colorjson: Refactor to option struct
+  * doc: Add FOSDEM 2023 talk
+  * Update github-golangci-lint to 1.51.1 from 1.51.0
+  * Update make-golangci-lint to 1.51.1 from 1.51.0
+
+-------------------------------------------------------------------
+Thu Feb  2 10:32:47 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.3.0:
+  * fq: Release 0.3.0
+  * github-action: Use quotes becase yaml (1.20 -> 1.2)
+  * Update github-go-version to 1.20.0 from 1.19.5, 1.19.5, 1.19.5
+  * Update github-golangci-lint to 1.51.0 from 1.50.1
+  * Update make-golangci-lint to 1.51.0 from 1.50.1
+  * Update docker-golang to 1.20.0 from 1.19.5
+  * gomod: Update non-bump tracked mods and add bump config
+  * gojq: Update rebased fq fork
+  * tcp_segment: Decode standard options and rename maxseg to mss
+  * readline: Update fq fork to fix draw issue when using del key
+  * tcp: Ignore TCP option check for now as it seems unreliable in dumps
+  * mp4: udta: Handle box with value rest of box
+  * mp3: Add max_unknown option to fail decode if too much unknown bits
+  * flac_picture,mpeg: Fix trailing ")" typo in map sym and description
+  * mp4: Decode qt minor verison as YYYY.MM description
+  * mp4: Decode udta metadata boxes without meta box
+  * mp4: Decode tkhd flags
+  * Update github-go-version to 1.19.5 from 1.19.4, 1.19.4, 1.19.4
+  * Update docker-golang to 1.19.5 from 1.19.4
+  * mp4: sgpd,sbgp: Change grouping_type to a string
+  * Update gomod-golang/text to 0.6.0 from 0.5.0
+  * interp: Wrap Binary in decodeValue to fix prompt issue with bits/bytes format
+  * doc: Add _parent for decode values and clenaup doc a bit
+  * goreleaser: Use name_template instead of deprecated archive replacements
+
+-------------------------------------------------------------------
+Fri Dec 23 13:25:56 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.2.0:
+  * fq: Release 0.2.0
+  * interp: Don't auto convert to binary for string functions, is just confusing
+  * mod: Update modules not tracked with bump
+  * gojq: Update rebased fq fork
+  * interp: Rename to/from<format> functions to to_/from_<format>
+  * bplist: Harmonize ns_keyed_archive jq style a bit
+  * doc: remake
+  * bplist: doc: update docs to reflect changes to ns_keyed_archiver
+  * bplist: updates from_ns_keyed_archiver to do automatic torepr based on format detection
+  * bplist: minor fix to from_ns_keyed_archiver
+  * bplist: update docs with from_ns_keyed_archiver reference, add error case to function
+  * decode: Make FieldFormat usage more consistent
+  * Add related file format projects to README
+  * bplist: added overload for from_ns_keyed_archiver jq func
+  * decode: rename parameter for consistency
+  * decode: change PosLoopDetector to use generics
+  * decode: moves PosLoopDetector into its own package
+  * decode: updates all.go with correct macho path
+  * decode: moves macho decoder to apple package
+  * decode: remove dead code from ns_keyed_archiver
+  * decode: add ns_keyed_archiver, restructure apple decoder into apple package
+  * mp4,doc: Add JSON box tree example and reorder a bit
+  * mp3_frame_tags: Covert to decode group and split to mp3_frame_{xing,vbri} decoders
+  * mp4: Add pdin box support
+  * decode: More type safe API and split scalar into multiple types
+  * mp3_tags,mp3: Add VBRI header support and rename tags to tag as there is only one
+  * mp4: Add namespace to mdta ilst boxes
+  * decode: unexport methods
+  * decode: implements lost and found for unreferenced objects
+  * decode: fixes endian of unicode strings
+  * interp,display: Add workaround for go 1.18 when escaping 0x7f
+  * decode: removed unnecessary struct
+  * mp4: Fix typo in sample flags sample_is_depended_on description
+  * mp4: Add sym and description for traf sample flags
+  * decode: fix type on defer function call, test: add loop.fqtest
+  * mp4: Decode hint and hnti child boxes
+  * mp4,decode: Properly decode ilst items (both mdta and mdir)
+  * test: applebookmark: adds problematic test case
+  * decode: apple_bookmark: simplifies flag decoding
+  * decode: minor change to method receiver name
+  * decode: revert decode.D back, place posLoopDetector in apple_bookmark
+  * Update github-go-version to 1.19.4 from 1.19.3, 1.19.3, 1.19.3
+  * Update docker-golang to 1.19.4 from 1.19.3
+  * gojq: Update rebased fq fork
+  * test: fixed doc test
+  * pkg/decode/D: Adds PushAndPop, Push, Pop methods. doc: adds help_applebookmark.fqtestdecode: converts applebookmark to use new d.PushAndPop method
+  * doc: remake
+  * decode: remove unused field from decoder, unused parens from torepr
+  * dev,test: Use jqtest code from jqjq for jq tests
+  * text,test: Unbeak base64 tests
+  * mp4: sidx version 1 segment_duration is s64
+  * doc: Add some padding margin to formats table to make it less likely to cause git conflicts
+  * Update gomod-golang/text to 0.5.0 from 0.4.0
+  * tzif: add help_tzif.fqtest
+  * tzif: moved document to tzif.md
+  * tzif: use scalar.Fn() to define a mapper ad hoc
+  * tzif: use PeekFindByte() to find end of the string
+  * support tzif (time zone information format)
+  * dev,doc,make: Cleanup makefile and have proper targets for *.md and *.svg
+  * doc: remake
+  * decode: improve stack push/pop
+  * doc: fixes snippet for recursive bookmark searching
+  * doc,dev: Add more usage and dev tips
+  * created stack type
+  * updates bplist fq tests
+  * updated docs
+  * moved a flag bit fields into correct positions
+  * fixes unknown bit ranges
+  * added checks to prevent infinite looping and recursion
+  * migrates tests to per-sample files
+  * adds flag parsing to applebookmark
+  * removed commented out line
+  * updates fqtest for torepr in apple_bookmarkdata
+  * fixed one more snake_case letter
+  * fixes broken test and removes long link from markdown body
+  * added some sfl2 test files to bplist package
+  * fixes tests and adds torepr test
+  * missed a letter on last commit - converting to snake_case
+  * refactors some decoder logic in apple_bookmark for better querying
+  * tweaks apple_bookmark markdown documentation
+  * fixes spacing in jq files
+  * removes unused function
+  * fixes broken uid parsing in plist decoder
+  * removes underscore from apple_bookmark package name
+  * changes decoder package name from bookmark to apple_bookmark
+  * removed unnecessary conversions
+  * converts to snake_case and refactors decode helper
+  * fixes broken test for all.fqtest
+  * removed unused function
+  * remade documentation
+  * updated documentation
+  * updated doc with apple reference
+  * regenerated docs, added tests, fixed torepr
+  * forgot to add bookmark.jq in last commit
+  * decoding well but torepr needs work
+  * apple bookmarkdata decoder initial commit
+  * decode,interp: Rename unknown gap fields from "unknown#" to "gap#"
+  * interp: Change default bits_format=string
+  * interp,help: Properly count line length when breaking on whole words
+  * interp: mimic jq: if expr arg is given read stdin even if tty
+  * interp: Fix panic when trigger before any context has been pushed
+  * mp4: Add png mapping
+
+-------------------------------------------------------------------
+Thu Nov 24 15:26:04 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.1.0:
+  * fq: Release 0.1.0
+  * mp4: Decode more sample flags
+  * matroska: Fix path tests and make _tree_path more robust
+  * raw,bits,bytes: Replace raw format with bits and bytes format that decode to a binary
+  * wav,avi,avc_au: Add avi decoder and refactor wav decoder
+  * mod: Update ones without bump config
+  * gojq: Update rebased fq fork
+  * Improve README.md a bit, one more demo and move up usage
+  * mp3_frame_tags: Refactor and rename xing format to mp3_frame_tags
+  * mp3_frame: Fix issue calc frame size for some configs
+  * Update github-go-version to 1.19.3 from 1.19.2, 1.19.2, 1.19.2
+  * Update docker-golang to 1.19.3 from 1.19.2
+  * cli: Better decode error help
+  * gomod: Update modules that lack bump config
+  * gojq: Update rebased fq fork
+  * doc: Add link to nttw6 presentation video and slides
+  * Update github-golangci-lint to 1.50.1 from 1.50.0
+  * Update gomod-BurntSushi/toml to 1.2.1 from 1.2.0
+  * Update make-golangci-lint to 1.50.1 from 1.50.0
+  * id3v2: In the wild COMM and TXXX frame might not have a null terminator
+  * decode,elf,fuzz: TryBytesRange error on negative size
+  * Update gomod-golang/text to 0.4.0 from 0.3.8
+  * flac,fuzz: Fatal error on negative partition sample count
+  * doc: Add gomarkdown to license/dependencies
+  * Update gomod-golang/text to 0.3.8 from 0.3.7
+  * yaml,fuzz: gojq.Normalize value to fix type panic
+  * flac_frame: Properly decode zero escape sample size
+  * fuzz: gotip not needed anymore
+  * decode,fuzz: Signed integer (S) read require at least one bit
+  * markdown,fuzz: Update gomarkdown
+  * fuzz: make fuzz GROUP=mp4 to fuzz one group
+  * makes dictionary key type checking more sensible
+  * doc,rtmp,pcap,markdown: Add more examples
+  * matroska: Update spec and regenerate
+  * fixes signed integer parsing
+  * renames test data file
+  * changes Errorf to Fatalf on infinite loops
+  * adds check for recursion in decodeReference, adds test to verify fix
+  * gofmt
+  * drop indented else block per lint
+  * fixes reference calculation to use reference size from trailer
+  * fixes bad path in test output
+  * adds test to verify fix
+  * removes unnecessary cast
+  * adds necessary cast
+  * fixes calculation of floating point lengths
+  * Update github-go-version to 1.19.2 from 1.19.1, 1.19.1, 1.19.1
+  * Update docker-golang to 1.19.2 from 1.19.1
+
+-------------------------------------------------------------------
+Thu Nov 24 15:20:12 UTC 2022 - jkowalczyk@suse.com
+
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+
+-------------------------------------------------------------------
 Thu Oct 20 23:39:03 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.0.10:

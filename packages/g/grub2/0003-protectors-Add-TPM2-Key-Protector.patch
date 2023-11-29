@@ -1,7 +1,7 @@
-From 0ecf5ff31a89e061aef5e40ee68f8828e7b5eb81 Mon Sep 17 00:00:00 2001
+From 2a63876ca714d177f919b2392d8efa0e3bd3ebe2 Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:55 -0800
-Subject: [PATCH v6 10/20] protectors: Add TPM2 Key Protector
+Subject: [PATCH v7 10/20] protectors: Add TPM2 Key Protector
 
 The TPM2 key protector is a module that enables the automatic retrieval
 of a fully-encrypted disk's unlocking key from a TPM 2.0.
@@ -111,20 +111,20 @@ parameters.
 
 Currently, there is only one supported policy command: TPM2_PolicyPCR.
 The command set can be extended to support advanced features, such as
-as authorized policy, in the future.
+authorized policy, in the future.
 
 Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
  grub-core/Makefile.core.def       |   13 +
  grub-core/tpm2/args.c             |  177 +++++
- grub-core/tpm2/module.c           | 1040 +++++++++++++++++++++++++++++
+ grub-core/tpm2/module.c           | 1028 +++++++++++++++++++++++++++++
  grub-core/tpm2/tpm2key.asn        |   31 +
- grub-core/tpm2/tpm2key.c          |  440 ++++++++++++
+ grub-core/tpm2/tpm2key.c          |  447 +++++++++++++
  grub-core/tpm2/tpm2key_asn1_tab.c |   41 ++
  include/grub/tpm2/internal/args.h |   41 ++
  include/grub/tpm2/tpm2key.h       |   83 +++
- 8 files changed, 1866 insertions(+)
+ 8 files changed, 1861 insertions(+)
  create mode 100644 grub-core/tpm2/args.c
  create mode 100644 grub-core/tpm2/module.c
  create mode 100644 grub-core/tpm2/tpm2key.asn
@@ -342,10 +342,10 @@ index 000000000..274f4fef0
 +}
 diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
 new file mode 100644
-index 000000000..9605ddbc7
+index 000000000..df0727215
 --- /dev/null
 +++ b/grub-core/tpm2/module.c
-@@ -0,0 +1,1040 @@
+@@ -0,0 +1,1028 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -477,8 +477,7 @@ index 000000000..9605ddbc7
 +      .arg      = NULL,
 +      .type     = ARG_TYPE_STRING,
 +      .doc      =
-+	N_("In SRK mode, the SRK handle if the SRK is persistent "
-+	   "(default is 0x81000001)."),
++	N_("In SRK mode, the SRK handle if the SRK is persistent."),
 +    },
 +    {
 +      .longarg  = "asymmetric",
@@ -519,51 +518,58 @@ index 000000000..9605ddbc7
 +  grub_off_t file_size;
 +  void *read_buffer;
 +  grub_off_t read_n;
++  grub_err_t err;
 +
 +  /* Using GRUB_FILE_TYPE_SIGNATURE ensures we do not hash the keyfile into PCR9
 +   * otherwise we'll never be able to predict the value of PCR9 at unseal time */
 +  file = grub_file_open (filepath, GRUB_FILE_TYPE_SIGNATURE);
 +  if (file == NULL)
 +    {
-+      grub_dprintf ("tpm2", "Could not open file: %s\n", filepath);
-+      /* grub_file_open sets grub_errno on error, and if we do no unset it,
-+       * future calls to grub_file_open will fail (and so will anybody up the
-+       * stack who checks the value, if any). */
-+      grub_errno = GRUB_ERR_NONE;
-+      return GRUB_ERR_FILE_NOT_FOUND;
++      /* Push errno from grub_file_open() into the error message stack */
++      grub_error_push();
++      err = grub_error (GRUB_ERR_FILE_NOT_FOUND,
++			N_("Could not open file: %s\n"),
++			filepath);
++      goto error;
 +    }
 +
 +  file_size = grub_file_size (file);
 +  if (file_size == 0)
 +    {
-+      grub_dprintf ("tpm2", "Could not read file size: %s\n", filepath);
-+      grub_file_close (file);
-+      return GRUB_ERR_OUT_OF_RANGE;
++      err = grub_error (GRUB_ERR_OUT_OF_RANGE,
++			N_("Could not read file size: %s"),
++			filepath);
++      goto error;
 +    }
 +
 +  read_buffer = grub_malloc (file_size);
 +  if (read_buffer == NULL)
 +    {
-+      grub_dprintf ("tpm2", "Could not allocate buffer for %s.\n", filepath);
-+      grub_file_close (file);
-+      return GRUB_ERR_OUT_OF_MEMORY;
++      err = grub_error (GRUB_ERR_OUT_OF_MEMORY,
++			N_("Could not allocate buffer for %s"),
++			filepath);
++      goto error;
 +    }
 +
 +  read_n = grub_file_read (file, read_buffer, file_size);
 +  if (read_n != file_size)
 +    {
-+      grub_dprintf ("tpm2", "Could not retrieve file contents: %s\n", filepath);
 +      grub_free (read_buffer);
-+      grub_file_close (file);
-+      return GRUB_ERR_FILE_READ_ERROR;
++      err = grub_error (GRUB_ERR_FILE_READ_ERROR,
++			N_("Could not retrieve file contents: %s"),
++			filepath);
++      goto error;
 +    }
-+
-+  grub_file_close (file);
 +
 +  *buffer = read_buffer;
 +  *buffer_size = file_size;
 +
-+  return GRUB_ERR_NONE;
++  err = GRUB_ERR_NONE;
++
++error:
++  grub_file_close (file);
++
++  return err;
 +}
 +
 +static grub_err_t
@@ -575,12 +581,9 @@ index 000000000..9605ddbc7
 +
 +  grub_tpm2_buffer_init (&buf);
 +  if (sealed_key_size > buf.cap)
-+    {
-+      grub_dprintf ("tpm2", "Sealed key file is larger than decode buffer "
-+			    "(%" PRIuGRUB_SIZE " vs %" PRIuGRUB_SIZE " bytes).\n",
-+			    sealed_key_size, buf.cap);
-+      return GRUB_ERR_BAD_ARGUMENT;
-+    }
++    return grub_error (GRUB_ERR_BAD_ARGUMENT,
++		       N_("Sealed key larger than %" PRIuGRUB_SIZE " bytes"),
++		       buf.cap);
 +
 +  grub_memcpy (buf.data, sealed_key, sealed_key_size);
 +  buf.size = sealed_key_size;
@@ -589,11 +592,7 @@ index 000000000..9605ddbc7
 +  grub_tpm2_mu_TPM2B_Unmarshal (&buf, (TPM2B *)&sk->private);
 +
 +  if (buf.error)
-+    {
-+      grub_dprintf ("tpm2", "Could not unmarshal sealed key file, it is likely "
-+			    "malformed.\n");
-+      return GRUB_ERR_BAD_ARGUMENT;
-+    }
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("Malformed TPM wire key file"));
 +
 +  return GRUB_ERR_NONE;
 +}
@@ -668,10 +667,9 @@ index 000000000..9605ddbc7
 +  grub_tpm2_buffer_init (&buf);
 +  if (sealed_pub_size + sealed_priv_size > buf.cap)
 +    {
-+      grub_dprintf ("tpm2", "Sealed key is larger than decode buffer "
-+			    "(%" PRIuGRUB_SIZE " vs %" PRIuGRUB_SIZE " bytes).\n",
-+			    sealed_pub_size, buf.cap);
-+      err = GRUB_ERR_BAD_ARGUMENT;
++      err = grub_error (GRUB_ERR_BAD_ARGUMENT,
++			N_("Sealed key larger than %" PRIuGRUB_SIZE " bytes"),
++			buf.cap);
 +      goto error;
 +    }
 +
@@ -685,9 +683,7 @@ index 000000000..9605ddbc7
 +
 +  if (buf.error)
 +    {
-+      grub_dprintf ("tpm2", "Could not unmarshal sealed key, it is likely "
-+			    "malformed.\n");
-+      err = GRUB_ERR_BAD_ARGUMENT;
++      err = grub_error (GRUB_ERR_BAD_ARGUMENT, N_("Malformed TPM 2.0 key file"));
 +      goto error;
 +    }
 +
@@ -720,21 +716,19 @@ index 000000000..9605ddbc7
 +  TPM2B_NAME srkName = { 0 };
 +  TPM_HANDLE srkHandle;
 +
-+  /* Find SRK */
-+  rc = TPM2_ReadPublic (ctx->srk, NULL, &public);
-+  if (rc == TPM_RC_SUCCESS)
++  if (ctx->srk != 0)
 +    {
-+      *srk = ctx->srk;
-+      return GRUB_ERR_NONE;
-+    }
++      /* Find SRK */
++      rc = TPM2_ReadPublic (ctx->srk, NULL, &public);
++      if (rc == TPM_RC_SUCCESS)
++	{
++	  *srk = ctx->srk;
++	  return GRUB_ERR_NONE;
++	}
 +
-+  /* The handle exists but its public area could not be read. */
-+  if ((rc & ~TPM_RC_N_MASK) != TPM_RC_HANDLE)
-+    {
-+      grub_dprintf ("tpm2", "The SRK handle (0x%x) exists on the TPM but its "
-+			    "public area could not be read (TPM2_ReadPublic "
-+			    "failed with TSS/TPM error %u).\n", ctx->srk, rc);
-+      return GRUB_ERR_BAD_DEVICE;
++      return grub_error (GRUB_ERR_BAD_DEVICE,
++			 N_("Failed to retrieve SRK (TPM2_ReadPublic: 0x%x)"),
++			 rc);
 +    }
 +
 +  /* Create SRK */
@@ -768,7 +762,7 @@ index 000000000..9605ddbc7
 +      inPublic.publicArea.parameters.eccDetail.kdf.scheme = TPM_ALG_NULL;
 +    }
 +  else
-+    return GRUB_ERR_BAD_ARGUMENT;
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("Unknown SRK algorithm"));
 +
 +  rc = TPM2_CreatePrimary (parent, &authCommand, &inSensitive, &inPublic,
 +			   &outsideInfo, &creationPcr, &srkHandle, &outPublic,
@@ -931,8 +925,8 @@ index 000000000..9605ddbc7
 +			      &session, NULL, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    return grub_error (GRUB_ERR_BAD_DEVICE,
-+		       N_("Failed to start auth session (TPM2_StartAuthSession: "
-+			  "0x%x)"), rc);
++		       N_("Failed to start auth session (TPM2_StartAuthSession: 0x%x)"),
++		       rc);
 +
 +  /* Enforce the policy command sequence */
 +  err = grub_tpm2_protector_enforce_policy_seq (policy_seq, session);
@@ -944,9 +938,9 @@ index 000000000..9605ddbc7
 +  rc = TPM2_Unseal (sealed_handle, &authCmd, &data, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
-+      err = GRUB_ERR_BAD_DEVICE;
-+      grub_error (err, N_("Failed to unseal sealed key (TPM2_Unseal: 0x%x)"),
-+		  rc);
++      err = grub_error (GRUB_ERR_BAD_DEVICE,
++			N_("Failed to unseal sealed key (TPM2_Unseal: 0x%x)"),
++			rc);
 +      goto error;
 +    }
 +
@@ -954,8 +948,8 @@ index 000000000..9605ddbc7
 +  key_out = grub_malloc (data.size);
 +  if (key_out == NULL)
 +    {
-+      err = GRUB_ERR_OUT_OF_MEMORY;
-+      grub_error (err, N_("No memory left to allocate unlock key buffer"));
++      err = grub_error (GRUB_ERR_OUT_OF_MEMORY,
++			N_("No memory left to allocate unlock key buffer"));
 +      goto error;
 +    }
 +
@@ -999,7 +993,7 @@ index 000000000..9605ddbc7
 +      err = grub_tpm2_protector_srk_read_file (ctx->tpm2key, &file_bytes,
 +					       &file_size);
 +      if (err != GRUB_ERR_NONE)
-+	return grub_error (err, N_("Failed to read key file %s"), ctx->tpm2key);
++	return err;
 +
 +      err = grub_tpm2_protector_srk_unmarshal_tpm2key (file_bytes,
 +						       file_size,
@@ -1008,29 +1002,21 @@ index 000000000..9605ddbc7
 +						       &parent_handle,
 +						       &sealed_key);
 +      if (err != GRUB_ERR_NONE)
-+	{
-+	  grub_error (err, N_("Failed to unmarshal key, ensure the key file is in "
-+			      "TPM 2.0 Key File format"));
-+	  goto exit1;
-+	}
++	goto exit1;
 +    }
 +  else
 +    {
 +      err = grub_tpm2_protector_srk_read_file (ctx->keyfile, &file_bytes,
 +					       &file_size);
 +      if (err != GRUB_ERR_NONE)
-+	return grub_error (err, N_("Failed to read key file %s"), ctx->keyfile);
++	return err;
 +
 +      parent_handle = TPM_RH_OWNER;
 +      err = grub_tpm2_protector_srk_unmarshal_keyfile (file_bytes,
 +						       file_size,
 +						       &sealed_key);
 +      if (err != GRUB_ERR_NONE)
-+	{
-+	  grub_error (err, N_("Failed to unmarshal key, ensure the key file is in "
-+			      "TPM wire format"));
-+	  goto exit1;
-+	}
++	goto exit1;
 +    }
 +
 +  /* Get the SRK to unseal the sealed key */
@@ -1044,11 +1030,16 @@ index 000000000..9605ddbc7
 +		  &sealed_handle, &name, NULL);
 +  if (rc != TPM_RC_SUCCESS)
 +    {
-+      err = GRUB_ERR_BAD_DEVICE;
-+      grub_error (err, N_("Failed to load sealed key (TPM2_Load: 0x%x)"), rc);
++      err = grub_error (GRUB_ERR_BAD_DEVICE,
++			N_("Failed to load sealed key (TPM2_Load: 0x%x)"),
++			rc);
 +      goto exit2;
 +    }
 +
++  /*
++   * Set err to an error code to trigger the standalone policy sequence
++   * if there is no authpolicy sequence
++   */
 +  err = GRUB_ERR_READ_ERROR;
 +
 +  /* Iterate the authpolicy sequence to find one that unseals the key */
@@ -1200,9 +1191,6 @@ index 000000000..9605ddbc7
 +
 +  if (ctx->mode == GRUB_TPM2_PROTECTOR_MODE_SRK)
 +    {
-+      if (!ctx->srk)
-+	ctx->srk = TPM2_SRK_HANDLE;
-+
 +      if (!ctx->asymmetric)
 +        {
 +	  ctx->asymmetric = TPM_ALG_RSA;
@@ -1425,10 +1413,10 @@ index 000000000..e3b6a03e0
 +END
 diff --git a/grub-core/tpm2/tpm2key.c b/grub-core/tpm2/tpm2key.c
 new file mode 100644
-index 000000000..62f6d865b
+index 000000000..a26c287c9
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2key.c
-@@ -0,0 +1,440 @@
+@@ -0,0 +1,447 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2023 SUSE LLC
@@ -1543,24 +1531,29 @@ index 000000000..62f6d865b
 +  */
 +  ret = asn1_array2tree (tpm2key_asn1_tab, &tpm2key_asn1, NULL);
 +  if (ret != ASN1_SUCCESS)
-+    return GRUB_ERR_BAD_ARGUMENT;
++    return grub_error (GRUB_ERR_BAD_ARGUMENT,
++		       N_("Failed to parse TPM2KEY ASN.1 array"));
 +
 +  ret = asn1_create_element (tpm2key_asn1, "TPM2KEY.TPMKey", &tpm2key);
 +  if (ret != ASN1_SUCCESS)
-+    return GRUB_ERR_BAD_ARGUMENT;
++    return grub_error (GRUB_ERR_BAD_ARGUMENT,
++		       N_("Failed to create TPM2KEY.TPMKey"));
 +
 +  ret = asn1_der_decoding (&tpm2key, data, size, NULL);
 +  if (ret != ASN1_SUCCESS)
-+    return GRUB_ERR_BAD_ARGUMENT;
++    return grub_error (GRUB_ERR_BAD_ARGUMENT,
++		       N_("Failed to decode TPM2KEY DER"));
 +
 +  /* Check if 'type' is Sealed Key or not */
 +  ret = asn1_allocate_and_read (tpm2key, "type", &type_oid, &type_oid_size);
 +  if (ret != ASN1_SUCCESS)
-+    return GRUB_ERR_BAD_FILE_TYPE;
++    return grub_error (GRUB_ERR_BAD_FILE_TYPE,
++		       N_("Not a valid TPM2KEY file"));
 +
 +  if (grub_memcmp (sealed_key_oid, type_oid, type_oid_size) != 0)
 +    {
-+      err = GRUB_ERR_BAD_FILE_TYPE;
++      err = grub_error (GRUB_ERR_BAD_FILE_TYPE,
++			N_("Not a valid TPM2KEY file"));
 +      goto error;
 +    }
 +
@@ -1568,7 +1561,7 @@ index 000000000..62f6d865b
 +  ret = asn1_allocate_and_read (tpm2key, "emptyAuth", &empty_auth, &empty_auth_size);
 +  if (ret != ASN1_SUCCESS || grub_strncmp ("TRUE", empty_auth, empty_auth_size) != 0)
 +    {
-+      err = GRUB_ERR_BAD_ARGUMENT;
++      err = grub_error (GRUB_ERR_BAD_ARGUMENT, N_("emptyAuth not TRUE"));
 +      goto error;
 +    }
 +
@@ -1576,7 +1569,8 @@ index 000000000..62f6d865b
 +  ret = asn1_read_value (tpm2key, "secret", NULL, &tmp_size);
 +  if (ret != ASN1_ELEMENT_NOT_FOUND)
 +    {
-+      err = GRUB_ERR_BAD_ARGUMENT;
++      err = grub_error (GRUB_ERR_BAD_ARGUMENT,
++			N_("\"secret\" not allowed for Sealed Key"));
 +      goto error;
 +    }
 +
@@ -1608,14 +1602,14 @@ index 000000000..62f6d865b
 +  int ret;
 +
 +  if (parent == NULL)
-+    return GRUB_ERR_BAD_ARGUMENT;
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("NULL pointer detected"));
 +
 +  if (tpm2key == NULL)
-+    return GRUB_ERR_READ_ERROR;
++    return grub_error (GRUB_ERR_READ_ERROR, N_("Invalid parent node"));
 +
 +  ret = asn1_read_uint32 (tpm2key, "parent", parent);
 +  if (ret != ASN1_SUCCESS)
-+    return GRUB_ERR_READ_ERROR;
++    return grub_error (GRUB_ERR_READ_ERROR, N_("Failed to retrieve parent"));
 +
 +  return GRUB_ERR_NONE;
 +}
@@ -1626,14 +1620,16 @@ index 000000000..62f6d865b
 +  int ret;
 +
 +  if (name == NULL || data == NULL || size == NULL)
-+    return GRUB_ERR_BAD_ARGUMENT;
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("Invalid parameter(s)"));
 +
 +  if (tpm2key == NULL)
-+    return GRUB_ERR_READ_ERROR;
++    return grub_error (GRUB_ERR_READ_ERROR, N_("Invalid %s node"), name);
 +
 +  ret = asn1_allocate_and_read (tpm2key, name, data, size);
 +  if (ret != ASN1_SUCCESS)
-+    return GRUB_ERR_READ_ERROR;
++    return grub_error (GRUB_ERR_READ_ERROR,
++		       N_("Failed to retrieve %s"),
++		       name);
 +
 +  return GRUB_ERR_NONE;
 +}
@@ -1764,9 +1760,7 @@ index 000000000..62f6d865b
 +      return GRUB_ERR_NONE;
 +    }
 +  else if (ret != ASN1_SUCCESS)
-+    {
-+      return GRUB_ERR_READ_ERROR;
-+    }
++    return grub_error (GRUB_ERR_READ_ERROR, N_("Failed to retrieve policy"));
 +
 +  return GRUB_ERR_NONE;
 +}
@@ -1806,13 +1800,12 @@ index 000000000..62f6d865b
 +      return GRUB_ERR_NONE;
 +    }
 +  else if (ret != ASN1_SUCCESS)
-+    {
-+      return GRUB_ERR_READ_ERROR;
-+    }
++    return grub_error (GRUB_ERR_READ_ERROR, N_("Failed to retrieve authPolicy"));
 +
 +  /* Limit the number of authPolicy elements to two digits (99) */
 +  if (authpol_n > 100 || authpol_n < 1)
-+    return GRUB_ERR_OUT_OF_RANGE;
++    return grub_error (GRUB_ERR_OUT_OF_RANGE,
++		       N_("Invalid number of autoPolicy elements"));
 +
 +  /*
 +   * Iterate the authPolicy elements backwards since grub_list_push() prepends
@@ -1822,7 +1815,8 @@ index 000000000..62f6d865b
 +    authpol = grub_zalloc (sizeof (struct tpm2key_authpolicy));
 +    if (authpol == NULL)
 +      {
-+	err = GRUB_ERR_OUT_OF_MEMORY;
++	err = grub_error (GRUB_ERR_OUT_OF_MEMORY,
++			  N_("Failed to allocate memory for authPolicy"));
 +	goto error;
 +      }
 +    grub_snprintf (authpol_pol, AUTHPOLICY_POL_MAX, "authPolicy.?%d.Policy", i);
@@ -1830,7 +1824,8 @@ index 000000000..62f6d865b
 +    ret = tpm2key_get_policy_seq (tpm2key, authpol_pol, &authpol->policy_seq);
 +    if (ret != ASN1_SUCCESS)
 +      {
-+        err = GRUB_ERR_READ_ERROR;
++        err = grub_error (GRUB_ERR_READ_ERROR,
++			  N_("Failed to retrieve policy from authPolicy"));
 +        goto error;
 +      }
 +

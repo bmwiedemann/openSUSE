@@ -1,7 +1,7 @@
 #
 # spec file for package nauty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           nauty
-%define lname   libnauty-2_8_6
-%define fuv      2_8_6
-Version:        2.8.6
+%define lname   libnauty-2_8_8
+%define fuv     2_8_8
+Version:        2.8.8
 Release:        0
 Summary:        Tools for computing automorphism groups of graphs
 License:        Apache-2.0
 Group:          Productivity/Scientific/Math
-URL:            http://pallini.di.uniroma1.it/
+URL:            https://pallini.di.uniroma1.it/
 
-Source:         http://pallini.di.uniroma1.it/nauty%fuv.tar.gz
+Source:         https://pallini.di.uniroma1.it/nauty%fuv.tar.gz
 Patch1:         nauty-am.diff
 Patch2:         nauty-uninitialized.diff
 BuildRequires:  automake
@@ -91,17 +91,12 @@ rm -f "%buildroot/%_libdir"/*.la
 %license COPYRIGHT
 
 %files -n %lname
-%_libdir/libnauty*-2.8.6.so
+%_libdir/libnauty*-2.8.8.so
 
 %files devel
 %_includedir/nauty/
 %_libdir/libnauty.so
-%_libdir/libnautyA1.so
-%_libdir/libnautyL0.so
-%_libdir/libnautyL1.so
-%_libdir/libnautyS0.so
-%_libdir/libnautyS1.so
-%_libdir/libnautyW0.so
-%_libdir/libnautyW1.so
+%_libdir/libnauty?0.so
+%_libdir/libnauty?1.so
 
 %changelog

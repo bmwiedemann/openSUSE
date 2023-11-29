@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 26 15:10:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.6.0
+  * Fix possibly not defined tracker #991 (@davidbrochart)
+  * BUG: Fix Kwarg only in update_env #989 (@Carreau)
+- Release 8.5.0
+  * Allow to update kernels env in between restart. #987 (@Carreau)
+
+-------------------------------------------------------------------
 Sat Oct 14 08:34:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.4.0

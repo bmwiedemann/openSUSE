@@ -1514,7 +1514,7 @@ BuildRequires:  postfix
 Requires:       postfix-doc
 BuildRequires:  postfix-doc
 %endif
-Supplements:    pcp
+Supplements:    (pcp and postfix)
 
 %description pmda-postfix
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
@@ -1532,7 +1532,7 @@ License:        %{license_gplv2plus}
 Group:          %{pcp_gr}
 URL:            https://pcp.io
 Requires:       perl-PCP-PMDA = %{version}-%{release}
-Supplements:    pcp
+Supplements:    (pcp and rsyslog)
 
 %description pmda-rsyslog
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for

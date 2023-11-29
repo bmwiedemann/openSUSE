@@ -40,11 +40,11 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
-Version:        23.2.1
+Version:        23.3.1
 Release:        0
 Summary:        A Python package management system
 License:        MIT
-URL:            http://www.pip-installer.org
+URL:            https://pip.pypa.io
 # The PyPI archive lacks the tests
 Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pip-shipped-requests-cabundle.patch -- adapted patch from python-certifi package

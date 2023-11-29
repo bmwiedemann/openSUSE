@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 26 04:39:30 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- fix rtmidi.pc:
+  rework rtmidi-4.0.0-pkgconfig.patch to rtmidi-6.0.0-pkgconfig.patch
+  update rtmidi-cmake.patch
+- add ALSA-Avoid-listing-ports-that-are-usually-from-3rd-party.patch
+  from upstream
+
+-------------------------------------------------------------------
 Sun Nov 19 10:51:00 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Switch build to cmake

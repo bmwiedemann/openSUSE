@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 23 13:56:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.5.0:
+  * Reduced input lag on touch screens significantly
+  * Complet UI redesign for a more compact view
+  * Add French translation
+  * Switch to the GNOME 45 runtime
+  * Rotate the information on the map if the map is rotated
+  * Fix a double scrolling bug which caused the map to be unresponsive
+  * App is now recognized as mobile friendly
+
+-------------------------------------------------------------------
 Fri Apr 28 08:50:34 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.4.0:

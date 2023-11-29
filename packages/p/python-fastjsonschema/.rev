@@ -60,4 +60,19 @@
     <comment></comment>
     <requestid>1114016</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7a29e81f7944d07e1e0d1f0998fc573d</srcmd5>
+    <version>2.19.0</version>
+    <time>1701206327</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.19.0:
+  * Added `use_formats` parameter to allow disable automatic assertions
+
+- update to 2.18.0
+  * Fixed support of boolean schema in if-then-else application
+- update to 2.17.1:
+  * Added tests in sdist
+  * Fix variable name resolving with references</comment>
+    <requestid>1129214</requestid>
+  </revision>
 </revisionlist>

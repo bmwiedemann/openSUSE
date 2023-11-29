@@ -17,9 +17,9 @@
 
 
 Name:           javaparser
-Version:        3.25.5
+Version:        3.25.6
 Release:        0
-Summary:        Java 1 to 15 Parser and Abstract Syntax Tree for Java
+Summary:        Java Parser and Abstract Syntax Tree for Java
 License:        Apache-2.0 OR LGPL-3.0-or-later
 Group:          Development/Libraries/Java
 URL:            https://javaparser.org
@@ -28,8 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
-BuildRequires:  mvn(javax.annotation:javax.annotation-api)
-BuildRequires:  mvn(net.java.dev.javacc:javacc)
+BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(org.checkerframework:checker-qual)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:javacc-maven-plugin)
@@ -38,8 +37,7 @@ BuildArch:      noarch
 
 %description
 A set of libraries implementing a Java 1.0 - Java 17 Parser with advanced
-analysis functionalities. This includes preview features to Java 13, with Java
-14 preview features work-in-progress.
+analysis functionalities.
 
 %package javadoc
 Summary:        Javadoc for %{name}

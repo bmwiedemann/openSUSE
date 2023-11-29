@@ -393,6 +393,10 @@ Patch200:       0001-kern-ieee1275-init-Restrict-high-memory-in-presence-.patch
 Patch201:       0001-fs-xfs-Incorrect-short-form-directory-data-boundary-.patch
 Patch202:       0002-fs-xfs-Fix-XFS-directory-extent-parsing.patch
 Patch203:       0003-fs-xfs-add-large-extent-counters-incompat-feature-su.patch
+Patch204:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+Patch205:       0002-Restrict-file-access-on-cryptodisk-print.patch
+Patch206:       0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
+Patch207:       0004-Key-revocation-on-out-of-bound-file-access.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -747,7 +751,7 @@ cp ./unicode.pf2 ./fonts
 %if 0%{?suse_version} > 1500
 tar -cf - ./fonts | mksquashfs - memdisk.sqsh -tar -comp xz -quiet -no-progress
 %else
-tar -cf mem.tar ./fonts && mksquashfs mem.tar memdisk.sqsh -comp xz -quiet -no-progress
+mksquashfs ./fonts memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
 %endif
 
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --memdisk=./memdisk.sqsh --prefix= %{?sbat_generation:--sbat sbat.csv} \

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 27 17:51:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update ghc-lib-parser-ex to version 9.6.0.2.
+  # 9.6.0.2 released
+  - New functions `isTypedSplice`, `isUntypedSpice`
+
+  # 9.6.0.1 released
+  - Add `&` to `baseFixities`
+  - Add support for ghc-9.8 series: `GH_9_8`
+  - New functions `isLetStmt` and `isDo`
+
+  # 9.6.0.0 released
+  - Add support for ghc-9.6 series: `GHC_9_6`
+
+  ## 0.20221201 released
+  - Update to `ghc-lib-parser-0.20221201`
+
+  ## 0.20221101 released
+  - Update to `ghc-lib-parser-0.20221101`
+
+  ## 0.20221001 released
+  - Update to `ghc-lib-parser-0.20221001`
+
+  ## 0.20220901 released
+  - Update to `ghc-lib-parser-0.20220901`
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:51 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

@@ -96,4 +96,18 @@
     <comment></comment>
     <requestid>1081477</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>261b957c25cb5ca0a950cc209126693b</srcmd5>
+    <version>1.4.5</version>
+    <time>1701206333</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.5:
+  * implement exceptions in Python
+  * add missing signature of Constraint.violated for Python
+    wrapper
+  * add support for Python 3.12
+
+  - revert use of nullpointer introduced in #142</comment>
+    <requestid>1129229</requestid>
+  </revision>
 </revisionlist>

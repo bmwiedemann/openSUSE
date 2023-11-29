@@ -1,6 +1,6 @@
---- jdk8/common/autoconf/libraries.m4	2015-02-17 13:27:11.468829365 +0100
-+++ jdk8/common/autoconf/libraries.m4	2015-02-17 13:27:49.143980484 +0100
-@@ -608,11 +608,36 @@
+--- jdk8/common/autoconf/libraries.m4	2023-11-22 18:11:00.405573557 +0100
++++ jdk8/common/autoconf/libraries.m4	2023-11-22 18:13:07.916625522 +0100
+@@ -609,11 +609,36 @@
    # Check for the jpeg library
    #
  
@@ -41,9 +41,9 @@
    AC_SUBST(USE_EXTERNAL_LIBJPEG)
  
    ###############################################################################
---- jdk8/jdk/make/lib/Awt2dLibraries.gmk	2015-02-17 13:25:22.125292473 +0100
-+++ jdk8/jdk/make/lib/Awt2dLibraries.gmk	2015-02-17 13:28:30.812041352 +0100
-@@ -704,18 +704,20 @@
+--- jdk8/jdk/make/lib/Awt2dLibraries.gmk	2023-11-22 18:11:00.615575289 +0100
++++ jdk8/jdk/make/lib/Awt2dLibraries.gmk	2023-11-22 18:15:26.204333006 +0100
+@@ -702,18 +702,20 @@
  
  ##########################################################################################
  
@@ -70,7 +70,7 @@
    endif
  endif
  
-@@ -730,37 +733,50 @@
+@@ -728,37 +730,50 @@
  #      $(shell $(EXPR) $(CC_MAJORVER) \> 4 \| \
  #          \( $(CC_MAJORVER) = 4 \& $(CC_MINORVER) \>= 3 \) )
  #  ifeq ($(CC_43_OR_NEWER), 1)
@@ -107,14 +107,14 @@
 -        $(BUILD_LIBJPEG_CLOSED_INCLUDES) \
 -        -I$(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg, \
 -    MAPFILE := $(BUILD_LIBJPEG_MAPFILE), \
--    LDFLAGS := $(LDFLAGS_JDKLIB) \
 +        $(BUILD_LIBJAVAJPEG_CLOSED_INCLUDES) \
 +        $(BUILD_LIBJAVAJPEG_HEADERS), \
 +    MAPFILE := $(BUILD_LIBJAVAJPEG_MAPFILE), \
-+    LDFLAGS := $(LDFLAGS_JDKLIB) $(LIBJPEG_LIBS) \
+     LDFLAGS := $(LDFLAGS_JDKLIB) \
          $(call SET_SHARED_LIBRARY_ORIGIN), \
      LDFLAGS_windows := $(WIN_JAVA_LIB) jvm.lib, \
-     LDFLAGS_SUFFIX := $(LDFLAGS_JDKLIB_SUFFIX), \
+-    LDFLAGS_SUFFIX := $(LDFLAGS_JDKLIB_SUFFIX), \
++    LDFLAGS_SUFFIX := $(LIBJPEG_LIBS) $(LDFLAGS_JDKLIB_SUFFIX), \
      VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
      RC_FLAGS := $(RC_FLAGS) \
 -        -D "JDK_FNAME=jpeg.dll" \
@@ -135,7 +135,7 @@
  
  ##########################################################################################
  
-@@ -1206,6 +1222,13 @@
+@@ -1197,6 +1212,13 @@
      GIFLIB_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/sun/awt/giflib
    endif
  
@@ -149,7 +149,7 @@
    ifneq ($(OPENJDK_TARGET_OS), macosx)
      LIBSPLASHSCREEN_DIRS += $(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/awt/splashscreen
    else
-@@ -1268,11 +1291,13 @@
+@@ -1259,11 +1281,13 @@
        EXCLUDE_FILES := imageioJPEG.c jpegdecoder.c pngtest.c, \
        LANG := C, \
        OPTIMIZATION := LOW, \
@@ -165,8 +165,8 @@
        LDFLAGS_SUFFIX_solaris := -lc, \
        VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
        RC_FLAGS := $(RC_FLAGS) \
---- jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java	2015-02-17 13:25:22.295288644 +0100
-+++ jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java	2015-02-17 13:27:49.145980439 +0100
+--- jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java	2023-11-22 18:11:00.668909063 +0100
++++ jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java	2023-11-22 18:13:07.916625522 +0100
 @@ -89,7 +89,7 @@
          java.security.AccessController.doPrivileged(
              new java.security.PrivilegedAction<Void>() {
@@ -176,9 +176,9 @@
                      return null;
                  }
              });
---- jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java	2015-02-17 13:25:22.295288644 +0100
-+++ jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java	2015-02-17 13:27:49.145980439 +0100
-@@ -179,7 +179,7 @@
+--- jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java	2023-11-22 18:11:00.668909063 +0100
++++ jdk8/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java	2023-11-22 18:13:07.916625522 +0100
+@@ -177,7 +177,7 @@
          java.security.AccessController.doPrivileged(
              new java.security.PrivilegedAction<Void>() {
                  public Void run() {
@@ -187,8 +187,8 @@
                      return null;
                  }
              });
---- jdk8/jdk/src/share/classes/sun/awt/image/JPEGImageDecoder.java	2015-02-17 13:25:22.170291459 +0100
-+++ jdk8/jdk/src/share/classes/sun/awt/image/JPEGImageDecoder.java	2015-02-17 13:27:49.146980416 +0100
+--- jdk8/jdk/src/share/classes/sun/awt/image/JPEGImageDecoder.java	2023-11-22 18:11:00.855577269 +0100
++++ jdk8/jdk/src/share/classes/sun/awt/image/JPEGImageDecoder.java	2023-11-22 18:13:07.916625522 +0100
 @@ -56,7 +56,7 @@
          java.security.AccessController.doPrivileged(
              new java.security.PrivilegedAction<Void>() {
@@ -198,8 +198,8 @@
                      return null;
                  }
              });
---- jdk8/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c	2015-02-17 13:25:22.531283329 +0100
-+++ jdk8/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c	2015-02-17 13:27:49.146980416 +0100
+--- jdk8/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c	2023-11-22 18:11:01.012245228 +0100
++++ jdk8/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c	2023-11-22 18:13:07.919958884 +0100
 @@ -51,7 +51,7 @@
  
  /* headers from the JPEG library */
@@ -209,8 +209,8 @@
  
  #undef MAX
  #define MAX(a,b)        ((a) > (b) ? (a) : (b))
---- jdk8/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c	2015-02-17 13:25:22.539283148 +0100
-+++ jdk8/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c	2015-02-17 13:27:49.147980394 +0100
+--- jdk8/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c	2023-11-22 18:11:01.028912033 +0100
++++ jdk8/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c	2023-11-22 18:13:07.919958884 +0100
 @@ -25,9 +25,9 @@
  
  #include "splashscreen_impl.h"

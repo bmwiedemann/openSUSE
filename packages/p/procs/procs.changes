@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 24 10:46:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.4:
+  * [Fixed] Build breaks on FreeBSD/arm64,i386
+
+-------------------------------------------------------------------
 Fri Oct 20 11:02:04 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Generate and use zst tarball

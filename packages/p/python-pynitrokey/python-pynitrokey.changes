@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 27 05:41:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.42:
+  * fido2 make-credential: Clenaup and add rk and uv options by
+    @robin-nitrokey in
+    https://github.com/Nitrokey/pynitrokey/pull/464
+  * Remove frozendict dependency by @mmerklinger in
+    https://github.com/Nitrokey/pynitrokey/pull/466
+  * nk3: Support build component in version string by
+    @robin-nitrokey in
+    https://github.com/Nitrokey/pynitrokey/pull/474
+  * Update nethsm dependency by @robin-nitrokey in
+    https://github.com/Nitrokey/pynitrokey/pull/469
+
+-------------------------------------------------------------------
 Wed Nov  8 10:24:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Fix a bad Requires: with %{python_module construct.

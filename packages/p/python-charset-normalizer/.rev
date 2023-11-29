@@ -279,4 +279,46 @@
     long' camel cased word (Issue #289)</comment>
     <requestid>1098807</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f893ad468015a82c4005d0b6ecf5ad11</srcmd5>
+    <version>3.3.0</version>
+    <time>1700771923</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.0:
+  * Allow to execute the CLI (e.g. normalizer) through `python -m
+    charset_normalizer.cli` or `python -m charset_normalizer`
+  * Support for 9 forgotten encoding that are supported by Python
+    but unlisted in `encoding.aliases` as they have no alias
+  * Optional mypyc compilation upgraded to version 1.5.1 for
+    Python &gt;= 3.7
+  * Unable to properly sort CharsetMatch when both chaos/noise
+    and coherence were close due to an unreachable condition in
+    \_\_lt\_\_ (#350)
+
+- Update to 3.0.1
+- Update to 3.0.0
+  * ASCII miss-detection on rare cases (PR #170)
+  * Wrong logging level applied when setting kwarg `explain` to True
+- require lower-case name instead of breaking build</comment>
+    <requestid>1114778</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3f0d7900b79fa8fd3b3fed002be91e20</srcmd5>
+    <version>3.3.2</version>
+    <time>1701121340</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.2:
+  * Unintentional memory usage regression when using large
+    payload that match several encoding (#376)
+  * Regression on some detection case showcased in the
+    documentation (#371)
+  * Noise (md) probe that identify malformed arabic
+    representation due to the presence of letters in isolated
+    form
+  * Optional mypyc compilation upgraded to version 1.6.1 for
+    Python &gt;= 3.8
+  * Improved the general detection reliability based on reports
+    from the community</comment>
+    <requestid>1128743</requestid>
+  </revision>
 </revisionlist>

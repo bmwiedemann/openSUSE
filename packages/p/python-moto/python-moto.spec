@@ -17,7 +17,7 @@
 
 
 Name:           python-moto
-Version:        4.1.13
+Version:        4.2.9
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -57,20 +57,21 @@ BuildRequires:  %{python_module boto3 >= 1.9.201}
 BuildRequires:  %{python_module botocore >= 1.12.201}
 BuildRequires:  %{python_module cfn-lint >= 0.40.0}
 BuildRequires:  %{python_module cryptography >= 3.3.1}
-BuildRequires:  %{python_module docker >= 2.5.1}
+BuildRequires:  %{python_module docker >= 3.0.0}
+BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module graphql-core}
-BuildRequires:  %{python_module idna >= 2.5}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
-BuildRequires:  %{python_module openapi-spec-validator >= 0.2.8}
-BuildRequires:  %{python_module py-partiql-parser}
+BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0}
+BuildRequires:  %{python_module py-partiql-parser >= 0.4.2}
 BuildRequires:  %{python_module pyparsing >= 3.0.7}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1 with %python-python-dateutil < 3}
 BuildRequires:  %{python_module python-jose}
+BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module requests >= 2.5}
 BuildRequires:  %{python_module responses >= 0.13.0}
 BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
@@ -85,26 +86,30 @@ A library that allows your python tests to mock out AWS Services
 
 %package all
 Summary:        Library to mock out the boto library -- all extras
+Provides:       python-moto-proxy = %{version}-%{release}
 Requires:       python-PyYAML >= 5.1
 Requires:       python-aws-xray-sdk >= 0.93
 Requires:       python-cfn-lint >= 0.40.0
-Requires:       python-docker >= 2.5.1
+Requires:       python-docker >= 3.0.0
+Requires:       python-ecdsa
 Requires:       python-graphql-core
-Requires:       python-idna >= 2.5
 Requires:       python-jsondiff >= 1.1.2
 Requires:       python-moto = %{version}
-Requires:       python-openapi-spec-validator
-Requires:       python-pyparsing >= 3
+Requires:       python-openapi-spec-validator >= 0.5.0
+Requires:       python-py-partiql-parser >= 0.4.1
+Requires:       python-pyparsing >= 3.0.7
 Requires:       python-python-jose
+Requires:       python-python-multipart
 Requires:       python-setuptools
 Requires:       python-sshpubkeys >= 3.1.0
 
 %description all
 A library that allows your python tests to mock out the boto
-library. Meta package to install all extras (moto[all])
+library. Meta package to install the extras moto[all], and
+moto[proxy], which have the same requirement definitions.
 
 %package server
-Summary:        Library to mock out the boto library -- all extras
+Summary:        Library to mock out the boto library -- moto[server]
 Requires:       python-Flask
 Requires:       python-Flask-Cors
 Requires:       python-moto-all = %{version}
@@ -112,16 +117,24 @@ Conflicts:      (python-Flask >= 2.2.0 with python-Flask < 2.2.2)
 
 %description server
 A library that allows your python tests to mock out the boto
-library. Meta package to install server extras (moto[server])
+library. Meta package to install server extra (moto[server])
 
 %prep
 %autosetup -p1 -n moto-%{version}
 # avoid zero-length modules
-for f in athena/utils.py ec2/regions.py medialive/exceptions.py redshift/utils.py support/exceptions.py; do
+for f in athena/utils.py \
+         ec2/regions.py \
+         medialive/exceptions.py \
+         meteringmarketplace/exceptions.py \
+         redshift/utils.py \
+         support/exceptions.py
+do
    [ -f moto/$f ] || (echo "moto/$f does not exist anymore"; exit 1)
    [ ! -s moto/$f ] || (echo "moto/$f is not empty anymore"; exit 1)
    echo '# empty module' > moto/$f
 done
+# unpin exact version
+sed -i '/py-partiql-parser/ s/==/>=/' setup.cfg
 
 %build
 %pyproject_wheel
@@ -131,6 +144,7 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/moto_server
+%python_clone -a %{buildroot}%{_bindir}/moto_proxy
 
 %check
 export BOTO_CONFIG=/dev/null
@@ -148,11 +162,12 @@ donttest+=" or (test_s3_lambda_integration and test_objectcreated_put__invokes_l
 donttest+=" or (test_server and test_appsync_list_tags_for_resource)"
 donttest+=" or (test_server and test_s3_server_post_to_bucket_redirect)"
 donttest+=" or (test_multiple_accounts_server and test_with_custom_request_header)"
-donttest+=" or test_invoke_function_from_sqs_exception"
 donttest+=" or test_docker_is_running_and_available"
 donttest+=" or test_s3_server_post_cors_multiple_origins"
+donttest+=" or test_invoke_function_from_sqs_exception"
 donttest+=" or test_invoke_function_from_sqs_fifo_queue"
 donttest+=" or test_invoke_function_from_sqs_queue"
+donttest+=" or test_invoke_local_lambda_layers"
 donttest+=" or test_failed_job or test_failed_dependencies"
 # 32-bit platforms can't handle dates beyond 2038
 [ $(getconf LONG_BIT) -eq 32 ] && donttest+=" or test_list_pipelines_created_after"
@@ -164,7 +179,7 @@ export MOTO_CALL_RESET_API=false
 %pytest -n auto -k "not ($donttest ${$python_donttest})" $parallel_tests
 
 %post
-%python_install_alternative moto_server
+%python_install_alternative moto_server moto_proxy
 
 %postun
 %python_uninstall_alternative moto_server
@@ -173,6 +188,7 @@ export MOTO_CALL_RESET_API=false
 %doc AUTHORS.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/moto_server
+%python_alternative %{_bindir}/moto_proxy
 %{python_sitelib}/moto
 %{python_sitelib}/moto-%{version}.dist-info
 

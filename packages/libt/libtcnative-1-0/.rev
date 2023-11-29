@@ -329,4 +329,12 @@
 </comment>
     <requestid>1126601</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>def08d7c7f29170c6d0a6bc51e53cf88</srcmd5>
+    <version>1.2.38</version>
+    <time>1701206304</time>
+    <user>anag+factory</user>
+    <comment>sync changes with sle</comment>
+    <requestid>1129304</requestid>
+  </revision>
 </revisionlist>

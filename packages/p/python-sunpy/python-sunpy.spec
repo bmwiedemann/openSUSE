@@ -17,33 +17,33 @@
 
 
 Name:           python-sunpy
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
-Source100:      python-sunpy-rpmlintrc
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
 BuildRequires:  %{python_module aioftp}
-BuildRequires:  %{python_module astropy >= 5.0.1}
+BuildRequires:  %{python_module astropy >= 5.0.6}
 BuildRequires:  %{python_module base => 3.9}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module numpy-devel >= 1.21.0}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module parfive >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aioftp >= 0.17.1
 Requires:       python-astropy >= 5.0.1
-Requires:       python-numpy > 1.21.0
+Requires:       python-numpy > 1.25
 Requires:       python-packaging >= 19
 Requires:       python-parfive >= 2.0.0
+# pafived[ftp], ignore rpmlint's python-leftover-require
+Requires:       python-aioftp >= 0.17.1
 # SECTION extras_require:asdf
 Recommends:     python-asdf >= 2.8
 Recommends:     python-asdf-astropy >= 0.1.1
@@ -59,7 +59,7 @@ Recommends:     python-scikit-image
 Recommends:     python-scipy > 1.7.0
 # /SECTION
 # SECTION extras_require:jpeg2000
-Recommends:     python-Glymur >= 0.8.18
+Recommends:     python-Glymur >= 0.9.1
 Recommends:     python-lxml >= 4.8
 # /SECTION
 # SECTION extras_require:map
@@ -136,6 +136,7 @@ export CFLAGS="%{optflags}"
 sed -i -e 's@^#!/usr/bin/env python@#!%__$python@' %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
 chmod +x %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
 find %{buildroot}%{$python_sitearch} -name '*.h' -delete -print
+find %{buildroot}%{$python_sitearch} -name '*.c' -delete -print
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
@@ -149,9 +150,8 @@ fi
 }
 # fails because it does not find any opencv-python dist metadata (even for python3-opencv installed)
 donttest="test_self_test"
-# no dask, numba for python 3.11
-python311_donttest="$python311_donttest or test_find_dependencies"
-%pytest_arch --pyargs sunpy -ra -n auto -k "not ($donttest ${$python_donttest})"
+# spiceypy not available
+%pytest_arch --pyargs sunpy -ra -n auto -k "not ($donttest ${$python_donttest})" --ignore %{buildroot}%{$python_sitearch}/sunpy/coordinates/tests/test_spice.py
 popd
 
 %files %{python_files}

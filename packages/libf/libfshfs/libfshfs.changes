@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 25 11:04:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231125
+  * Improved Python Unicode handling
+
+-------------------------------------------------------------------
 Tue Aug  1 15:56:59 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility

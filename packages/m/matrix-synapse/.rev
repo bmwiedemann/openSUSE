@@ -864,4 +864,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.96.0</comment>
     <requestid>1127380</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>00f8582c5b0d5c62bc235c0639b4144f</srcmd5>
+    <version>1.97.0</version>
+    <time>1701206430</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.97.0</comment>
+    <requestid>1129637</requestid>
+  </revision>
 </revisionlist>

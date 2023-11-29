@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 30 16:44:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd): configure checks for the
+  presence of systemctl, which is being pulled in like this.
+
+-------------------------------------------------------------------
 Fri Sep  8 12:11:34 UTC 2023 - Adam Majer <adam.majer@suse.de> - 1.8.1
 
 - update to 1.8.1

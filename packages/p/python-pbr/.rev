@@ -735,4 +735,19 @@
     <comment></comment>
     <requestid>1084561</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>fa56b59c94e8f45d24d51740120a7291</srcmd5>
+    <version>6.0.0</version>
+    <time>1701121315</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * build: Use kwargs
+  * Add support for PEP-660
+  * Fix PBR integration testing
+  * Replace imp with importlib.machinery
+  * Add release note for build\_sphinx removal
+  * Use \_ instead of - in setup.cfg directives
+  * Remove sphinx doc building integration</comment>
+    <requestid>1129112</requestid>
+  </revision>
 </revisionlist>

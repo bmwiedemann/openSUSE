@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nio4r
-Version:        2.5.9
+Version:        2.6.1
 Release:        0
 %define mod_name nio4r
 %define mod_full_name %{mod_name}-%{version}
@@ -54,7 +54,7 @@ servers. Inspired by the Java NIO API, but simplified for ease-of-use.
 
 %install
 %gem_install \
-  --doc-files="CHANGES.md README.md license.md" \
+  --doc-files="changes.md license.md readme.md" \
   -f
 %gem_cleanup
 

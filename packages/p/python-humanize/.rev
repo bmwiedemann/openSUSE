@@ -161,4 +161,20 @@
 - use %find_lang macro</comment>
     <requestid>1110845</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6028e2fd4002e32f78fa817a71fb6a54</srcmd5>
+    <version>4.9.0</version>
+    <time>1701121497</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.9.0:
+  * Add support for Python 3.13 (#156) @hugovk
+  * Add Norwegian localization (#155) @fdanielsen
+  * Add Hebrew localization (#149) @clsn
+  * Add Klingon translation (#150) @clsn
+  * Replace Flake8 with Ruff (#157) @hugovk
+  * Fix DeprecationWarning: Plural value must be an integer, got
+    float (#147) @dansarpong
+  * Remove useless shebangs (#141) @aueam</comment>
+    <requestid>1129221</requestid>
+  </revision>
 </revisionlist>

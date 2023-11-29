@@ -103,4 +103,12 @@
   * Correct in README `pre-commit` hook to run off</comment>
     <requestid>1103737</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d19e537cce7048208b06cc8cbaa04b09</srcmd5>
+    <version>7.3.0</version>
+    <time>1700865268</time>
+    <user>anag+factory</user>
+    <comment>- Skip a recalcitrant test with the backtracking resolver</comment>
+    <requestid>1128420</requestid>
+  </revision>
 </revisionlist>

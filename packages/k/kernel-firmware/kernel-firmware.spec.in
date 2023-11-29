@@ -167,9 +167,9 @@ cp %{SOURCE211} .
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
 %if "%{flavor}" == "uncompressed"
-sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh --ignore-duplicates %{buildroot}%{_firmwaredir}
 %else
-sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh -v --ignore-duplicates --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif

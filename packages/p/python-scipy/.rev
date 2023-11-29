@@ -1208,4 +1208,41 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>1116438</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c4e31394a35f1cba6b37a5edfb3fbae8</srcmd5>
+    <version>1.11.4</version>
+    <time>1700675647</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.4:
+  * MAINT: ensure cobyla objective returns scalar
+  * MAINT: fixup dep warning
+  * BUG: interpolate: fix spalde with len(c) &lt; len(t)
+  * BUG: pass unused xrtol in fmin_bfgs to _minimize_bfgs
+  * BUG: Regression test for lsq trf boundary error
+  * BUG: lsq trf gives x=1e-10 if x0 is near a bound
+  * BUG: make Bessel-roots function not hang and not skip roots
+  * io/matlab: Fix loading of mat files containing fn handles when
+    simplify_cells=True
+  * BUG: make L-BFGS-B work with single precision gradient
+  * MAINT: stats: fix NumPy DeprecationWarnings
+  * BUG: sparse.linalg: Cast to intc before SuperLU
+  * MAINT: Use deb_system scheme to match meson's path inference &amp; fix aarch64
+  * BUG: Fix python3.12 distutils dev.py build
+  * BUG: stats: remove use of `BOOST_MATH_DECLARE_SPECIAL_FUNCTIONS`
+  * MAINT: fix libquadmath licence
+  * MAINT: newton, make sure x0 is an inexact type
+  * MAINT: stats.CovViaEigendecomposition: fix _colorize for singular
+    covariance
+  * TST: fix `TestODR.test_implicit` test failure with tolerance bump
+  * BUG: signal: freqz rfft grid fix
+  * BUG: Support sparse arrays in scipy.sparse.csgraph.laplacian
+  * MAINT: signal: Remove the cval parameter from the private function
+    _pad_test.
+  * BLD: Avoid absolute pathnames in .pyx files
+  * BUG: Add back make_strictly_feasible to lsq trf.
+  * MAINT: should not be using np.float64() on arrays
+  * BUG: trust-constr Bounds exclusive
+  * BUG: sparse.csgraph: Support int64 indices in traversal.pyx</comment>
+    <requestid>1127833</requestid>
+  </revision>
 </revisionlist>

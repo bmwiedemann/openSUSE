@@ -141,4 +141,25 @@
 </comment>
     <requestid>1075234</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da72528e69971d832dd4c3f42c02d11e</srcmd5>
+    <version>1.7.0</version>
+    <time>1701023835</time>
+    <user>anag+factory</user>
+    <comment>- Budgie Extras 1.7.0 &quot;TLC&quot;
+  * Lots of new and updated translations
+  * Support compiling WeatherShow with either libsoup3
+    (recommended) or the legacy libsoup2.4
+  * Quicknote - add graphical copy and paste buttons to complement
+    equivalent shortcut keys
+  * Visualspace - add an applet setting to reverse hover-icon
+    scrolling through workspaces
+  * Screen Brightness - don't override Nightlight colour when
+    opening the applet popover
+  * Wallstreet - default to changing wallpapers in alphabetical
+    file-order
+- Trash applet not needed for 10.8
+</comment>
+    <requestid>1128773</requestid>
+  </revision>
 </revisionlist>

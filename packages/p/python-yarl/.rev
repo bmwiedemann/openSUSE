@@ -241,4 +241,40 @@
 </comment>
     <requestid>1096862</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3e3bf12249d65207ac600d95938848f0</srcmd5>
+    <version>1.9.3</version>
+    <time>1701206251</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.3:
+  * Stopped dropping trailing slashes in
+    :py:meth:`~yarl.URL.joinpath`
+  * Started accepting string subclasses in ``__truediv__()``
+    operations (``URL / segment``)
+  * Fixed the human representation of URLs with square brackets
+    in usernames and passwords
+  * Updated type hints to include ``URL.missing_port()``,
+    ``URL.__bytes__()`` and the ``encoding`` argument to
+    :py:meth:`~yarl.URL.joinpath`
+  * Integrated Cython 3 to enable building *yarl* under Python
+    3.12
+  * Declared modern ``setuptools.build_meta`` as the :pep:`517`
+    build backend in :file:`pyproject.toml` explicitly
+  * Converted most of the packaging setup into a declarative
+    :file:`setup.cfg`
+  * Declared Python 3.12 supported officially in the distribution
+    package metadata
+  * A regression test for no-host URLs was added per :issue:`821`
+  * and :rfc:`3986`
+  * MyST is now integrated in Sphinx
+- drop 882-sq_bracket_in_URL_netloc.patch (upstream)
+
+  * Marked tests that fail on older Python patch releases
+  * Skip a test under Python 3.11.
+- Update to version 1.8.2
+- needs typing-extensions
+  * Enforce building C Accelerated modules when installing from source tarball,
+    use YARL_NO_EXTENSIONS environment variable for falling back to (slower)</comment>
+    <requestid>1129244</requestid>
+  </revision>
 </revisionlist>

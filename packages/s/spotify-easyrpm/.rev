@@ -64,4 +64,12 @@
     <comment>- Snap package no longer includes share/doc directory. Thanks @LeoniePhiline</comment>
     <requestid>1079435</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3eba7d46b84b5a523e293843cbf9e447</srcmd5>
+    <version>3.0.5</version>
+    <time>1701206357</time>
+    <user>anag+factory</user>
+    <comment>- spotify now requires libayatana-appindicator3-1 installed to run</comment>
+    <requestid>1129259</requestid>
+  </revision>
 </revisionlist>

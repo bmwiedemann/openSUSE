@@ -56,4 +56,28 @@
     <comment></comment>
     <requestid>1081904</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f2da4307e0f2cb6db4bc384f597cb93</srcmd5>
+    <version>4.0.11</version>
+    <time>1701206329</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.11:
+  * Use ZLIB_RUNTIME_VERSION if available
+  * Add support for Python 3.12 and drop EOL 3.7
+  * Fix mkdir race condition in LooseObjectDB.store
+  * Don't cancel other jobs from the 3.12 job failing
+  * Use actions/checkout feature to fetch all commits
+  * Revert &quot;Drop support for EOL Python 3.7&quot;
+  * Fix top-of-file license URLs here in gitdb too
+  * No longer treat 3.12 as experimental on CI
+  * Add __all__ to exc for linting
+  * Have Dependabot update smmap submodule dependency
+  * Bump gitdb/ext/smmap from `334ef84` to `f1ace75`
+
+- Update to v4.0.10:
+  * Allow smmap 5
+  * Update smmap upper bound in setup.py
+- converted to singlespec</comment>
+    <requestid>1129220</requestid>
+  </revision>
 </revisionlist>

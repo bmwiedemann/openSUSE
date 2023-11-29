@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Thu Nov 16 15:31:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.1:
+  * Fixed sending large buffers via UNIX stream sockets on
+    asyncio
+  * Fixed several minor documentation issues (broken links to
+    classes, missing classes or attributes)
+  * Dropped support for Python 3.6
+  * Improved type annotations:
+  * Several functions and methods that were previously annotated
+    as accepting ``Coroutine[Any, Any, Any]`` as the return type
+    of the callable have been amended to accept ``Awaitable[Any]``
+    instead, to allow a slightly broader set of coroutine-like
+    inputs, like ``async_generator_asend`` objects returned from
+    the ``asend()`` method of async generators, and to match
+    the ``trio`` annotations:
+    * ``anyio.run()``
+    * ``anyio.from_thread.run()``
+    * ``TaskGroup.start_soon()``
+    * ``TaskGroup.start()``
+    * ``BlockingPortal.call()``
+    * ``BlockingPortal.start_task_soon()``
+    * ``BlockingPortal.start_task()``
+  * Changed ``TLSAttribute.shared_ciphers`` to match the
+    documented semantics of ``SSLSocket.shared_ciphers``
+    of always returning ``None`` for client-side streams
+  * Fixed ``CapacityLimiter`` on the asyncio backend to order
+    waiting tasks in the FIFO order (instead of LIFO)
+  * Fixed ``CancelScope.cancel()`` not working on asyncio if
+    called before entering the scope
+  * Fixed ``open_signal_receiver()`` inconsistently yielding
+    integers instead of ``signal.Signals`` instances on the
+    ``trio`` backend
+  * Fixed ``to_thread.run_sync()`` hanging on asyncio if the
+    target callable raises ``StopIteration``
+  * Fixed ``start_blocking_portal()`` raising an unwarranted
+  * ``RuntimeError: This portal is not running`` if a task raises
+    an exception that causes the event loop to be closed
+  * Fixed ``current_effective_deadline()`` not returning ``-inf``
+    on asyncio when the currently active cancel scope has been
+    cancelled (PR by Ganden Schaffner)
+  * Fixed the ``OP_IGNORE_UNEXPECTED_EOF`` flag in an SSL context
+    created by default in ``TLSStream.wrap()`` being inadvertently
+    set on Python 3.11.3 and 3.10.11
+  * Fixed ``CancelScope`` to properly handle asyncio task
+    uncancellation on Python 3.11
+  * Fixed ``OSError`` when trying to use
+    ``create_tcp_listener()`` to bind to a link-local
+  * IPv6 address (and worked around related bugs in ``uvloop``)
+  * Worked around a `PyPy bug
+    <https://foss.heptapod.net/pypy/pypy/-/issues/3938>`_
+    when using ``anyio.getaddrinfo()`` with for IPv6 link-local
+    addresses containing interface names
+- drop fix-failing-tls-tests.patch
+  support-trio-0.22.patch: obsolete
+
+-------------------------------------------------------------------
+Thu Nov 16 15:30:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.1:
+  * Fixed sending large buffers via UNIX stream sockets on
+    asyncio
+  * Fixed several minor documentation issues (broken links to
+    classes, missing classes or
+  * attributes)
+  * **3.7.0**
+  * Dropped support for Python 3.6
+  * Improved type annotations:
+  * Several functions and methods that were previously annotated
+    as accepting
+  * ``Coroutine[Any, Any, Any]`` as the return type of the
+    callable have been amended to
+  * accept ``Awaitable[Any]`` instead, to allow a slightly
+    broader set of coroutine-like
+  * inputs, like ``async_generator_asend`` objects returned from
+    the ``asend()`` method
+  * of async generators, and to match the ``trio`` annotations:
+  * ``anyio.run()``
+  * ``anyio.from_thread.run()``
+  * ``TaskGroup.start_soon()``
+  * ``TaskGroup.start()``
+  * ``BlockingPortal.call()``
+  * ``BlockingPortal.start_task_soon()``
+  * ``BlockingPortal.start_task()``
+  * Note that this change involved only changing the type
+    annotations; run-time
+  * functionality was not altered.
+  * The ``TaskStatus`` class is now a generic protocol, and
+    should be parametrized to
+  * indicate the type of the value passed to
+    ``task_status.started()``
+  * The ``Listener`` class is now covariant in its stream type
+  * ``create_memory_object_stream()`` now allows passing only
+    ``item_type``
+  * Object receive streams are now covariant and object send
+    streams are correspondingly
+  * contravariant
+  * Changed ``TLSAttribute.shared_ciphers`` to match the
+    documented semantics of
+  * ``SSLSocket.shared_ciphers`` of always returning ``None`` for
+    client-side streams
+  * Fixed ``CapacityLimiter`` on the asyncio backend to order
+    waiting tasks in the FIFO
+  * order (instead of LIFO) (PR by Conor Stevenson)
+  * Fixed ``CancelScope.cancel()`` not working on asyncio if
+    called before entering the
+  * scope
+  * Fixed ``open_signal_receiver()`` inconsistently yielding
+    integers instead of
+  * ``signal.Signals`` instances on the ``trio`` backend
+  * Fixed ``to_thread.run_sync()`` hanging on asyncio if the
+    target callable raises
+  * ``StopIteration``
+  * Fixed ``start_blocking_portal()`` raising an unwarranted
+  * ``RuntimeError: This portal is not running`` if a task raises
+    an exception that causes
+  * the event loop to be closed
+  * Fixed ``current_effective_deadline()`` not returning ``-inf``
+    on asyncio when the
+  * currently active cancel scope has been cancelled (PR by
+    Ganden Schaffner)
+  * Fixed the ``OP_IGNORE_UNEXPECTED_EOF`` flag in an SSL context
+    created by default in
+  * ``TLSStream.wrap()`` being inadvertently set on Python 3.11.3
+    and 3.10.11
+  * Fixed ``CancelScope`` to properly handle asyncio task
+    uncancellation on Python 3.11
+  * (PR by Nikolay Bryskin)
+  * Fixed ``OSError`` when trying to use
+    ``create_tcp_listener()`` to bind to a link-local
+  * IPv6 address (and worked around related bugs in ``uvloop``)
+  * Worked around a `PyPy bug
+    <https://foss.heptapod.net/pypy/pypy/-/issues/3938>`_
+  * when using ``anyio.getaddrinfo()`` with for IPv6 link-local
+    addresses containing
+  * interface names
+
+-------------------------------------------------------------------
 Thu Nov  2 10:42:51 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - add tests-test_fileio.py-don-t-follow-symlinks-in-dev.patch (kernel
@@ -8,7 +146,7 @@ Thu Nov  2 10:42:51 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 Thu May  4 07:29:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-failing-tls-tests.patch:
-  * Fix test failures with Python TLS changes. 
+  * Fix test failures with Python TLS changes.
 
 -------------------------------------------------------------------
 Fri Apr 21 12:21:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -29,7 +167,7 @@ Tue Mar  7 06:29:28 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Fri Dec 16 15:06:08 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
-- Skip trio exception tests for now 
+- Skip trio exception tests for now
   * https://github.com/agronholm/anyio/issues/508
   * https://github.com/agronholm/anyio/commit/787cb0c2e53c2a3307873d202fbd49dc5eac4e96
 
@@ -59,7 +197,7 @@ Sun Mar 27 18:32:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Feb 15 16:06:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- skip some tests for older distros (lack of TLSv1.3 support) 
+- skip some tests for older distros (lack of TLSv1.3 support)
 
 -------------------------------------------------------------------
 Sat Jan 15 16:36:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -102,7 +240,7 @@ Sat Oct 16 21:03:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Changed unconnected UDP sockets to be always bound to a local port (on
     "any" interface) to avoid errors on asyncio + Windows
   * Fixed cancellation problem on asyncio where level-triggered cancellation
-    for **all** parent cancel scopes would not resume after exiting a 
+    for **all** parent cancel scopes would not resume after exiting a
     shielded nested scope
 
 -------------------------------------------------------------------

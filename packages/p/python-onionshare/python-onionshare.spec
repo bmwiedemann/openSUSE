@@ -34,49 +34,70 @@ Patch1:         fix-test-cli-web.patch
 Patch2:         relax-async-mode.patch
 # PATCH-FIX-UPSTREAM onionshare-poetry-core.patch -- poetry-core is enough to build and has a much smaller footprint
 Patch3:         https://github.com/onionshare/onionshare/commit/a05d7af729585bdaa4f71437167339ac67bf3327.patch#/onionshare-poetry-core.patch
+# PATCH-FIX-UPSTREAM onionshare-pr1677-fix-werkzeug3.patch gh#onionshare/onionshare#1677
+Patch4:         onionshare-pr1677-fix-werkzeug3.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Flask >= 1.4.1
-BuildRequires:  python3-Flask-SocketIO >= 5.0.1
-BuildRequires:  python3-PyNaCl
-BuildRequires:  python3-PySocks
-BuildRequires:  python3-Unidecode
-BuildRequires:  python3-cepa >= 1.8.3
-BuildRequires:  python3-colorama
-BuildRequires:  python3-eventlet
+BuildRequires:  python3-pip
 BuildRequires:  python3-poetry-core
-BuildRequires:  python3-psutil
-BuildRequires:  python3-pyside2 >= 5.15.2
+BuildRequires:  update-desktop-files
+# SECTION test
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-xvfb
+# /SECTION
+# SECTION runtime test
+BuildRequires:  python3-Flask >= 2.3.2
+BuildRequires:  python3-Flask-Compress >= 1.13
+BuildRequires:  python3-Flask-SocketIO >= 5.3.1
+BuildRequires:  python3-PyNaCl
+BuildRequires:  python3-PySocks
+BuildRequires:  python3-Unidecode
+BuildRequires:  python3-Werkzeug >= 2.3.4
+BuildRequires:  python3-click
+BuildRequires:  python3-colorama
+BuildRequires:  python3-eventlet
+BuildRequires:  python3-gevent-websocket
+BuildRequires:  python3-psutil
+BuildRequires:  python3-pyside2 >= 5.15.2.1
+BuildRequires:  python3-python-gnupg
 BuildRequires:  python3-qrcode
 BuildRequires:  python3-requests
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-stem >= 1.8.1
 BuildRequires:  python3-urllib3
+BuildRequires:  python3-waitress >= 2.1.2
 BuildRequires:  tor
-BuildRequires:  update-desktop-files
-Requires:       python3-Flask >= 1.4.1
-Requires:       python3-Flask-SocketIO >= 5.0.1
+# /SECTION
+Requires:       python3-Flask >= 2.3.2
+Requires:       python3-Flask-Compress >= 1.13
+Requires:       python3-Flask-SocketIO >= 5.3.1
 Requires:       python3-PyNaCl
 Requires:       python3-PySocks
 Requires:       python3-Unidecode
-Requires:       python3-cepa >= 1.8.3
+Requires:       python3-Werkzeug >= 2.3.4
+Requires:       python3-click
 Requires:       python3-colorama
 Requires:       python3-eventlet
+Requires:       python3-gevent-websocket
 Requires:       python3-psutil
-Requires:       python3-pyside2 >= 5.15.2
+Requires:       python3-pyside2 >= 5.15.2.1
+Requires:       python3-python-gnupg
 Requires:       python3-qrcode
 Requires:       python3-requests
+Requires:       python3-setuptools
+Requires:       python3-stem >= 1.8.1
 Requires:       python3-urllib3
+Requires:       python3-waitress >= 2.1.2
 Requires:       tor
-Provides:       %{name}-%{version}
-Obsoletes:      %{name}-data < %{version}
-Obsoletes:      python310-onionshare < %{version}
-Obsoletes:      python36-onionshare < %{version}
-Obsoletes:      python38-onionshare < %{version}
-Obsoletes:      python39-onionshare < %{version}
+Provides:       python3-onionshare = %{version}-%{release}
+Provides:       python3-onionshare_cli = %{version}-%{release}
+Obsoletes:      python-onionshare-data < 2.3.1
+Obsoletes:      python310-onionshare < 2.3.1
+Obsoletes:      python36-onionshare < 2.3.1
+Obsoletes:      python38-onionshare < 2.3.1
+Obsoletes:      python39-onionshare < 2.3.1
 BuildArch:      noarch
 
 %description
@@ -93,17 +114,17 @@ Tor Browser to download the file.
 
 %build
 pushd cli
-%python3_build
+%python3_pyproject_wheel
 popd
 pushd desktop
-%python3_build
+%python3_pyproject_wheel
 
 %install
 pushd cli
-%python3_install
+%python3_pyproject_install
 popd
 pushd desktop
-%python3_install
+%python3_pyproject_install
 
 install -Dm 0644 org.onionshare.OnionShare.appdata.xml \
   %{buildroot}%{_datadir}/metainfo/org.onionshare.OnionShare.metainfo.xml

@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20231107
+%define version_unconverted 20231127
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20231107
+Version:        20231127
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -1687,6 +1687,10 @@ Supplements:    modalias(pci:v00008086d000056B0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056B1sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056B2sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056B3sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000056BAsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000056BBsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000056BCsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000056BDsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056C0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000056C1sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00005902sv*sd*bc03sc*i*)
@@ -1730,6 +1734,7 @@ Supplements:    modalias(pci:v00008086d00007D40sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D45sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D55sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D60sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00007D67sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007DD5sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000087C0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000087CAsv*sd*bc03sc*i*)
@@ -1796,6 +1801,10 @@ Supplements:    modalias(pci:v00008086d0000A7A0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7A1sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7A8sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7A9sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A7AAsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A7ABsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A7ACsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000A7ADsv*sd*bc03sc*i*)
 
 %description i915
 This package contains compressed kernel firmware files for
@@ -3074,6 +3083,7 @@ Supplements:    modalias(of:N*T*Cmediatek,mt8192-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-scpC*)
+Supplements:    modalias(pci:v00000B48d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00000608sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00000616sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007602sv*sd*bc*sc*i*)
@@ -3414,6 +3424,10 @@ Supplements:    modalias(pci:v00008086d0000124Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000124Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000124Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000124Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012D1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012D2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012D3sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000012D4sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000151Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001591sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001592sv*sd*bc*sc*i*)
@@ -6532,9 +6546,9 @@ cp %{SOURCE211} .
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
 %if "%{flavor}" == "uncompressed"
-sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh --ignore-duplicates %{buildroot}%{_firmwaredir}
 %else
-sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
+sh ./copy-firmware.sh -v --ignore-duplicates --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif

@@ -1,8 +1,8 @@
-Index: conf/tomcat-users.xml
+Index: apache-tomcat-9.0.82-src/conf/tomcat-users.xml
 ===================================================================
---- conf/tomcat-users.xml.orig
-+++ conf/tomcat-users.xml
-@@ -41,4 +41,14 @@
+--- apache-tomcat-9.0.82-src.orig/conf/tomcat-users.xml
++++ apache-tomcat-9.0.82-src/conf/tomcat-users.xml
+@@ -53,4 +53,14 @@
    <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
    <user username="role1" password="<must-be-changed>" roles="role1"/>
  -->

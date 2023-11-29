@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 22 11:36:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch (boo#1217047):
+  * 0001-Fix-test-failures-with-appstream-1.0.patch
+
+-------------------------------------------------------------------
 Mon Sep 20 20:19:33 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

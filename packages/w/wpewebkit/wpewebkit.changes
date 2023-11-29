@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 22 11:12:21 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Update to version 2.42.2:
+  * Bump Safari version in user agent header.
+  * Fix CSP regression that broke Unity WebGL applications.
+  * Fix the build with GBM disabled.
+  * Fix several crashes and rendering issues.
+- Temporaly disable LTO which is currently failing to link
+  (will be solved in a next release).
+
+-------------------------------------------------------------------
+Tue Sep 26 09:05:23 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Update to version 2.42.0:
+  * GBM is no longer required for WebGL implementation.
+  * Add API to configure experimental features at runtime.
+  * Add API to set the percentage of volume space that can be used for data storage.
+  * Fix several crashes and rendering issues. 
+
+-------------------------------------------------------------------
 Fri Jun 30 17:43:03 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Init repo.

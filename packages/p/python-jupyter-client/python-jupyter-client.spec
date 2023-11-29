@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-jupyter-client%{psuffix}
-Version:        8.4.0
+Version:        8.6.0
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause

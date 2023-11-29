@@ -18,7 +18,7 @@
 
 %define so_version 15
 Name:           wimlib
-Version:        1.14.1
+Version:        1.14.3
 Release:        0
 Summary:        Library to extract, create, modify, and mount WIM files
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT

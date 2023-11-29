@@ -17,14 +17,20 @@
 
 
 Name:           river
-Version:        0.2.4+g985
+Version:        0.2.6
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
 URL:            https://github.com/riverwm/river
-Source:         river-%{version}.tar.zst
-Source1:        river-run.sh
-Source2:        river-portals.conf
+Source0:        https://github.com/riverwm/river/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/riverwm/river/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
+Source2:        river-run.sh
+Source3:        river-portals.conf
+Source4:        https://isaacfreund.com/public_key.txt#/%{name}.keyring
+# Source4:        https://github.com/ifreund/zig-wayland/archive/%{_zig_wayland_commit}.tar.gz
+# Source5:        https://github.com/ifreund/zig-pixman/archive/%{_zig_pixman_commit}.tar.gz
+# Source6:        https://github.com/ifreund/zig-xkbcommon/archive/%{_zig_xkbcommon_commit}.tar.gz
+# Source7:        https://github.com/swaywm/zig-wlroots/archive/%{_zig_wlroots_commit}.tar.gz
 BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
@@ -151,13 +157,13 @@ mkdir -p %{buildroot}%{_datadir}/river
 sed -i 's|Exec=river|Exec=river-run.sh|' contrib/river.desktop
 install -Dpm 0644 contrib/river.desktop %{buildroot}%{_datadir}/wayland-sessions
 cp -rv contrib %{buildroot}%{_datadir}/river/contrib
-cp -v %{SOURCE1} %{buildroot}%{_datadir}/river/contrib/
+cp -v %{SOURCE2} %{buildroot}%{_datadir}/river/contrib/
 
 # Install convenient script to run river
-install -Dpm 0755 %{SOURCE1} %{buildroot}%{_bindir}
+install -Dpm 0755 %{SOURCE2} %{buildroot}%{_bindir}
 
 # XDP >= 0.18.0 requires a portal for the environment and onwards
-install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE2}
+install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
 
 %files
 %license LICENSE

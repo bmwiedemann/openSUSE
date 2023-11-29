@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 25 17:27:18 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.0.1
+  * SCardConnect(): return SCARD_W_SECURITY_VIOLATION when needed (polkit)
+  * SCardCancel(): return SCARD_S_SUCCESS even if the client already finished
+  * polkit is enabled by default
+  * libpcscspy: fix a crash with NULL pointers
+  * Doxygen: fix SCardBeginTransaction() documentation
+  * fix pcscd internal thread safety issues (clang -fsanitize=thread)
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Fri Jun  9 17:09:42 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - Version 2.0.0

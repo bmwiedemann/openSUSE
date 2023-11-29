@@ -18,4 +18,16 @@ https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-f
     <comment>- Update to version 0.0.10: (forwarded request 1030253 from jfkw)</comment>
     <requestid>1030254</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4b8578c7dcf29807b83c773dbb8377e</srcmd5>
+    <version>0.9.0</version>
+    <time>1701121393</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.0:
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead. (forwarded request 1128988 from jfkw)</comment>
+    <requestid>1128990</requestid>
+  </revision>
 </revisionlist>

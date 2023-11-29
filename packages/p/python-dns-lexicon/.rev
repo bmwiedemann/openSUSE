@@ -224,4 +224,12 @@
   * Fix check for extra dependencies (#1568)</comment>
     <requestid>1101533</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9cb8088ae31de8154686278e31bd0662</srcmd5>
+    <version>3.17.0</version>
+    <time>1701206394</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126890</requestid>
+  </revision>
 </revisionlist>

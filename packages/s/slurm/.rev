@@ -1365,4 +1365,12 @@
   a package mix (bsc#1216869). (forwarded request 1123595 from eeich)</comment>
     <requestid>1123596</requestid>
   </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>f3a2bae0db2fb8a29c65ad4ad71e1d9f</srcmd5>
+    <version>23.02.6</version>
+    <time>1701121482</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1129192</requestid>
+  </revision>
 </revisionlist>

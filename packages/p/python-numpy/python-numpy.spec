@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.25.2
-%define _ver 1_25_2
+%define ver 1.26.2
+%define _ver 1_26_2
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -86,15 +86,18 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-# PATCH-FIX-OPENSUSE Ignore DeprecationWarnings when importing pkg_resources
-Patch2:         ignore-pkg_resources-deprecation.patch
-BuildRequires:  %{python_module Cython >= 0.29.30 with %python-Cython < 3}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module Cython >= 3.0}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module meson-python >= 0.13}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 60.0.0}
+BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  cmake
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  ninja >= 1.8.2
+BuildRequires:  patchelf
 BuildRequires:  python-rpm-macros >= 20210929
 BuildConflicts: gcc11 < 11.2
 %if 0%{?suse_version}
@@ -186,7 +189,7 @@ This package contains files for developing applications using numpy.
 %prep
 %autosetup -p1 -n numpy-%{version}
 # Fix non-executable scripts
-sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
+sed -i '1s/^#!.*$//' numpy/{compat/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
 sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
 
 # force cythonization
@@ -218,9 +221,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %if !%{with hpc}
 %python_clone -a %{buildroot}%{_bindir}/f2py
-%python_expand rm %{buildroot}%{$python_sitearch}/numpy/core/include/numpy/.doxyfile
-%else
-rm %{buildroot}%{p_python_sitearch}/numpy/core/include/numpy/.doxyfile
 %endif
 
 %if 0%{?suse_version}
@@ -347,7 +347,8 @@ export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 [ -n "$test_failok" ] && $python runobstest.py "${test_failok:4}" ||:
 # test_new_policy: duplicates test runs and output and does not follow our deselection
-$python runobstest.py "not (test_new_policy ${test_failok})"
+# test_cython: https://github.com/numpy/numpy/issues/24956
+$python runobstest.py "not (test_new_policy ${test_failok} or slow or test_cython)"
 }
 
 popd
@@ -367,17 +368,11 @@ popd
 
 %files %{python_files}
 %doc README.md THANKS.txt
+%license LICENSE.txt
 %if %{without hpc}
 %python_alternative %{_bindir}/f2py
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-%{_bindir}/f2py3
-%else
-%exclude %{_bindir}/f2py3
-%endif
-%{_bindir}/f2py%{python_bin_suffix}
 %{python_sitearch}/numpy/
-%{python_sitearch}/numpy-%{version}*-info
-%license %{python_sitearch}/numpy/LICENSE.txt
+%{python_sitearch}/numpy-%{version}.dist-info
 %exclude %{python_sitearch}/numpy/core/include/
 %exclude %{python_sitearch}/numpy/distutils/mingw/*.c
 %exclude %{python_sitearch}/numpy/distutils/checks/*.c
@@ -387,15 +382,11 @@ popd
 %else
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 %{p_bindir}/f2py
-%{p_bindir}/f2py3
 %else
 %exclude %{p_bindir}/f2py
-%exclude %{p_bindir}/f2py3
 %endif
-%{p_bindir}/f2py%{python_bin_suffix}
 %{p_python_sitearch}/numpy/
-%{p_python_sitearch}/numpy-%{version}*-info
-%license %{p_python_sitearch}/numpy/LICENSE.txt
+%{p_python_sitearch}/numpy-%{version}.dist-info
 %exclude %{p_python_sitearch}/numpy/core/include/
 %exclude %{p_python_sitearch}/numpy/core/lib/libnpymath.a
 %exclude %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:27:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.14
+  - Fix check if rebootmgrctl is installed
+
+-------------------------------------------------------------------
+Thu Nov 23 13:27:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.13
+  - Skip restart of virtlockd by default
+
+-------------------------------------------------------------------
 Thu Oct  5 13:28:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.12

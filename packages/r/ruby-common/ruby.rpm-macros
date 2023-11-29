@@ -78,8 +78,8 @@ cd $GEMSPEC_SOURCE_DIR && %{gem_binary} build --verbose %{mod_name}-%{version}.g
 
 # we need to copy parts of the %fdupes macro as rpm can't expand parameters in macro "calls" ;(
 %gem_cleanup() \
-for gem in $(/usr/bin/ruby-find-versioned gem) ; do \
-  gem_base="$($gem env gemdir)" \
+for ruby in $(/usr/bin/ruby-find-versioned ruby) ; do \
+  gem_base="$(${ruby} -r rubygems -e 'puts Gem.default_dir')" \
   /usr/lib/rpm/gem_build_cleanup.sh %{buildroot}${gem_base} \
   fdupes -q -p -n -r -o name %{buildroot}${gem_base} | \
     while read _file; do \

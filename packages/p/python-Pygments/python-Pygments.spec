@@ -25,20 +25,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pygments
-Version:        2.16.1
+Version:        2.17.2
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://pygments.org
-Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/Pygments/pygments-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip-wcag-contrast-ratio.patch gh#pygments/pygments!2564 mcepl@suse.com
 # Don't make wcag-contrast-ratio mandatory for testing
 Patch0:         skip-wcag-contrast-ratio.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7}
-BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -69,7 +69,7 @@ source code. Highlights are:
  * highlights Brainfuck
 
 %prep
-%autosetup -n Pygments-%{version} -p1
+%autosetup -n pygments-%{version} -p1
 
 %build
 %pyproject_wheel
@@ -102,6 +102,6 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 %python_alternative %{_bindir}/pygmentize
 %python_alternative %{_mandir}/man1/pygmentize.1%{ext_man}
 %{python_sitelib}/pygments
-%{python_sitelib}/Pygments-%{version}*-info
+%{python_sitelib}/pygments-%{version}*-info
 
 %changelog

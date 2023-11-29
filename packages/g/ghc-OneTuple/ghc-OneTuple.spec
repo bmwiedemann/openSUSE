@@ -35,8 +35,6 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-foldable1-classes-compat-devel
-BuildRequires:  ghc-foldable1-classes-compat-prof
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 %endif

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Nov 20 02:35:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.11.0:
+  * Correctly draw the bracket of the cell under the cursor
+    (gh#wxMaxima-developers/wxmaxima#1811).
+  * Maths display was corrupted if the window was temporarily not
+    wide enough to display it in 2D
+    (gh#wxMaxima-developers/wxmaxima#1812).
+  * Added many range checks to the code.
+  * Correct label scaling after changing the zoom factor
+    (gh#wxMaxima-developers/wxmaxima#1815).
+  * Repaired "copy as bitmap"
+    (gh#wxMaxima-developers/wxmaxima#1820).
+  * Repaired EMF and SVG output
+    (gh#wxMaxima-developers/wxmaxima#1838).
+  * Focus the search text on activating the search box
+    (gh#wxMaxima-developers/wxmaxima#1821).
+  * Correctly support dropping multiple files on the worksheet.
+  * If the worksheet isn't empty dropping a file on the worksheet
+    no more closes the currently open file.
+  * Try harder to kill maxima on closing it
+    (gh#wxMaxima-developers/wxmaxima#1824).
+  * Menu items for displaying the internal representation.
+  * Better display of diff(), if multiplication dots are enabled
+    (gh#wxMaxima-developers/wxmaxima#1825).
+  * Tried to resolve a few asserts
+    (gh#wxMaxima-developers/wxmaxima#1831).
+  * Resolved many warnings from several static analysis tools.
+  * Fine-tuning of the "undo" function.
+
+-------------------------------------------------------------------
 Sun Oct  8 00:02:37 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.10.0:

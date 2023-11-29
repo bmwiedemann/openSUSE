@@ -40,4 +40,14 @@
   * Fix to parse the number of cpus correctly on s390(x)</comment>
     <requestid>1056781</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84154ba46bc9694282d2e655ec602fd3</srcmd5>
+    <version>0.7.3</version>
+    <time>1700772072</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.3:
+  * python 3.12 support (remove distutils)
+  * drop spec files and add SPDX licenses</comment>
+    <requestid>1128206</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 11 11:09:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update base-orphans to version 0.9.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/base-orphans-0.9.1/src/CHANGES.markdown
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:56 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

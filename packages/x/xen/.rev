@@ -2886,4 +2886,12 @@
     <comment></comment>
     <requestid>1127727</requestid>
   </revision>
+  <revision rev="339" vrev="1">
+    <srcmd5>00e2beb97da0eead415bb2ce036d6a56</srcmd5>
+    <version>4.18.0_04</version>
+    <time>1700675664</time>
+    <user>anag+factory</user>
+    <comment>Just a few upstream bug fixes and hypervisor config changes for better security.</comment>
+    <requestid>1127999</requestid>
+  </revision>
 </revisionlist>

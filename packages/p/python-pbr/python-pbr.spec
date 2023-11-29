@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.11.1
+Version:        6.0.0
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
@@ -37,11 +37,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
+Requires:       python-setuptools >= 64.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     git-core
-Suggests:       python-nose
 Obsoletes:      python-pbr-doc
 BuildArch:      noarch
 %if %{with test}

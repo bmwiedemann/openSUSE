@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 23 19:46:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (only needed when _service makes
+  tarballs directly from git)
+- Build the Python modules
+
+-------------------------------------------------------------------
 Sun Nov 19 13:51:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - system-libs.patch requires autoconf rerun; add the dependency.

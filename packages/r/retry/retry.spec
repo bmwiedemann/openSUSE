@@ -17,7 +17,7 @@
 
 
 Name:           retry
-Version:        1687953576.0230dc5
+Version:        1700850441.829db9e
 Release:        0
 Summary:        A simple tool for retrying command executions in plain POSIX sh
 License:        MIT

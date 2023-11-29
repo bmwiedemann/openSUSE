@@ -56,4 +56,42 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1127232</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d2d132ee58b3aa52e63054209802dc64</srcmd5>
+    <version>0.8.12</version>
+    <time>1700675698</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.12:
+  * improv: reintroduced tag in README
+  * Add tagging
+  * docs: add possible vendor failures in README
+  * make cargotoml usage clearer
+- Update to version 0.8.10:
+  * docs: update README
+  * move lints to configuration manifest
+  * an improvement of commit 24aaa0056
+  * configure rust version and toolchain&quot;
+  * check if there are lockfiles from aforementioned manifest paths
+  * fix: check if dependencies section is empty or not
+  * misc: remove redundant messages
+  * improvement: better handling on when and when not to vendor
+  
+</comment>
+    <requestid>1128058</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>005cba9514ca1ab74405f756b6890f60</srcmd5>
+    <version>0.8.15</version>
+    <time>1700865298</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.15:
+  * fix: we also include build_dependencies
+  * test: add VBox-Starter in runtests.sh
+  * fix: check also the targets section
+  * misc: nitpick. remove small space
+  * fix typo
+  * docs: put warning on README
+</comment>
+    <requestid>1128555</requestid>
+  </revision>
 </revisionlist>

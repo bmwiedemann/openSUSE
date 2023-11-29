@@ -1,7 +1,7 @@
 Index: avahi-sharp.pc.in
 ===================================================================
---- avahi-sharp.pc.in.orig
-+++ avahi-sharp.pc.in
+--- a/avahi-sharp.pc.in.orig
++++ b/avahi-sharp.pc.in
 @@ -1,6 +1,6 @@
  prefix=@prefix@
  exec_prefix=@prefix@
@@ -12,8 +12,8 @@ Index: avahi-sharp.pc.in
  Description: Mono bindings for the Avahi mDNS/DNS-SD stack
 Index: avahi-sharp/Makefile.am
 ===================================================================
---- avahi-sharp/Makefile.am.orig
-+++ avahi-sharp/Makefile.am
+--- a/avahi-sharp/Makefile.am.orig
++++ b/avahi-sharp/Makefile.am
 @@ -73,10 +73,10 @@ monodoc_DATA = avahi-sharp-docs.zip avah
  endif
  
@@ -29,8 +29,8 @@ Index: avahi-sharp/Makefile.am
  endif
 Index: avahi-sharp/Makefile.in
 ===================================================================
---- avahi-sharp/Makefile.in.orig
-+++ avahi-sharp/Makefile.in
+--- a/avahi-sharp/Makefile.in.orig
++++ b/avahi-sharp/Makefile.in
 @@ -611,10 +611,10 @@ $(ASSEMBLY).config: $(ASSEMBLY).config.i
  @HAVE_DBUS_TRUE@@HAVE_MONODOC_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)$(MDASSEMBLER) --out avahi-sharp-docs --ecma $(srcdir)/en
  
@@ -46,8 +46,8 @@ Index: avahi-sharp/Makefile.in
  # Otherwise a system limit (for SysV at least) may be exceeded.
 Index: avahi-ui-sharp/Makefile.am
 ===================================================================
---- avahi-ui-sharp/Makefile.am.orig
-+++ avahi-ui-sharp/Makefile.am
+--- a/avahi-ui-sharp/Makefile.am.orig
++++ b/avahi-ui-sharp/Makefile.am
 @@ -60,10 +60,10 @@ monodoc_DATA = avahi-ui-sharp-docs.zip a
  endif
  
@@ -63,8 +63,8 @@ Index: avahi-ui-sharp/Makefile.am
  endif
 Index: avahi-ui-sharp/Makefile.in
 ===================================================================
---- avahi-ui-sharp/Makefile.in.orig
-+++ avahi-ui-sharp/Makefile.in
+--- a/avahi-ui-sharp/Makefile.in.orig
++++ b/avahi-ui-sharp/Makefile.in
 @@ -600,10 +600,10 @@ bssh.exe: $(srcdir)/bssh.cs $(ASSEMBLY)
  @HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONODOC_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)$(MDASSEMBLER) --out avahi-ui-sharp-docs --ecma $(srcdir)/en
  

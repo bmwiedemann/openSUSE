@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov 25 14:10:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.0:
+  * Python 3.12 and PostgreSQL 16 support (#1084)
+  * Add support for tuple-format custom codecs on composite types
+  * Support `target_session_attrs` in URL format, add tests
+  * Infinity numeric support (#1067)
+  * Add support for the `WHERE` clause in `copy_to` methods
+  * Add query logging callbacks and context manager (#1043)
+  * When prepared statements are disabled, avoid relying on them
+    harder (#1065)
+  * Handle environments with HOME set to a not-a-directory
+  * Fix handling of non-ASCII passwords (#1062)
+  * Disable JIT while doing type introspection (#1082)
+  * Remove connection parameter caching in `Pool` (#1053)
+  * Switch to Python 3.12-style `wait_for` (#1086)
+  * Update automatic PostGIS type conversion for Shapely 2.0
+  * Use the `timeout` context manager in the connection path
+  * Small fix for documentation on using SSL in Connection (#995)
+  * Use cleanup_ctx in pool usage doc (#878)
+  * Close cursor portals once the iterator is exhausted (#1088)
+  * Cut BaseProtocol circular reference on close. (#1049)
+  * Allow passing hosts as tuples to `connect()` (in addition to
+  * Drop support for Python 3.7 (#1064)
+
+-------------------------------------------------------------------
 Tue Jul 11 13:32:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.0:
@@ -20,7 +46,7 @@ Tue Jul  4 13:09:00 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon Nov  7 20:50:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 0.27.0 
+- Update to 0.27.0
   Support Python 3.11 and PostgreSQL 15. This release also drops support
   for Python 3.6.
   * Changes
@@ -64,7 +90,7 @@ Thu Aug  4 08:57:47 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 -------------------------------------------------------------------
 Sun Jan 23 16:35:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update  
+- update
 
 -------------------------------------------------------------------
 Sun Jan 23 16:30:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -82,7 +108,7 @@ Sun Jan 23 16:30:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix the description of the database argument to connect()
   * Fix parsing of IPv6 addresses in the connection URI
   * Improve diagnostics of invalid executemany() input
- 
+
 -------------------------------------------------------------------
 Sun Oct 17 14:19:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
@@ -122,16 +148,16 @@ Mon May  3 20:51:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.0:
   * Add support for connection termination listeners
-  * Add support for password functions (useful for RDS IAM auth) 
+  * Add support for password functions (useful for RDS IAM auth)
   * Fix possible uninitalized pointer access on unexpected array
   * message data (CVE-2020-17446,
-  * Vastly speedup executemany by batching protocol messages 
+  * Vastly speedup executemany by batching protocol messages
   * Add Python 3.9 support
   * Allow using custom Record class
   * Prefer SSL connections by default
   * Add codecs for a bunch of new builtin types
   * Expose Pool as asyncpg.Pool
-  * Avoid unnecessary overhead during connection reset 
+  * Avoid unnecessary overhead during connection reset
   * Bugfixes
 - drop merged-static-fix.patch (upstream)
 
@@ -145,7 +171,7 @@ Sun Nov 22 14:12:03 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Fri Jan 24 08:54:51 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 0.20.1 
+- Update to version 0.20.1
 
 -------------------------------------------------------------------
 Wed Dec 26 14:01:50 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>

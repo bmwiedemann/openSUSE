@@ -476,4 +476,15 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1108219</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>73e8ad4b090b1b71d8f920bc14e2be6e</srcmd5>
+    <version>4.66.1</version>
+    <time>1701023782</time>
+    <user>anag+factory</user>
+    <comment>- Add patch sprinkle-in-timezone.patch:
+  * Add a timezone to the call fromtimestamp()
+- Switch to autosetup macro.
+- Remove conditionals from some BuildRequires.</comment>
+    <requestid>1128418</requestid>
+  </revision>
 </revisionlist>

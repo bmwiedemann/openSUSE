@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 28 09:37:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.8:
+  * Add handling of backend configs (#2810)
+
+-------------------------------------------------------------------
+Mon Nov 27 19:24:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.7:
+  * Updated jw v4 dependency version (#2805)
+
+-------------------------------------------------------------------
+Thu Nov 23 06:42:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.53.6:
+  * feat: Support assume_role in s3 backend config. Starting with
+    TF1.6 (#2800)
+  * Update Arch Linux package URL in install.md (#2802)
+
+-------------------------------------------------------------------
 Tue Nov 21 06:14:14 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.53.5:

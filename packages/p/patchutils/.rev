@@ -198,4 +198,12 @@
 - skip svndiff tools as those conflict with subversion</comment>
     <requestid>829595</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>deb0f04c45781209dca580354c39009a</srcmd5>
+    <version>0.4.2</version>
+    <time>1701206249</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129148</requestid>
+  </revision>
 </revisionlist>

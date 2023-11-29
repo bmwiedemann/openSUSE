@@ -302,4 +302,29 @@
     <comment></comment>
     <requestid>1084104</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c170dabe1f0c0153acaf151c7aa52b5e</srcmd5>
+    <version>4.0.rc2</version>
+    <time>1701121411</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0.rc2:
+  + Dependency changes:
+    - Updated to use gtk4 (&gt;=4.6)
+    - libgnome-games-support (&gt;=2.0.0).
+    - Dropped gtk3, cogl, clutter, clutter-gtk.
+    - Added pangocairo
+    - glib target version of 2.78.
+  + Feature: added a 3D view.
+  + Fix issues:
+    - Computer Worms get stuck
+    - Keys do not work in a non-Latin keyboard layout
+  + Updated translations.
+- Drop pkgconfig(clutter-1.0), pkgconfig(clutter-gtk-1.0),
+  pkgconfig(gtk+-3.0) and pkgconfig(libgnome-games-support-1)
+  BuildRequires following upstream changes.
+- Add pkgconfig(gtk4), pkgconfig(libgnome-games-support-2) and
+  pkgconfig(pangocairo) BuildRequires following upstream changes.
+</comment>
+    <requestid>1129070</requestid>
+  </revision>
 </revisionlist>

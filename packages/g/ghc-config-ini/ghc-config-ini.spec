@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.6.0
+Version:        0.2.7.0
 Release:        0
 Summary:        A library for simple INI-based configuration files
 License:        BSD-3-Clause

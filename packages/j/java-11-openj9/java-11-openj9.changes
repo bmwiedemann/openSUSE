@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 22 16:44:55 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.21 with OpenJ9 0.41.0 virtual machine
+- Including Oracle October 2023 CPU changes
+  * CVE-2023-22081, bsc#1216374
+- Including Openj9 0.41.0 fixes of CVE-2023-5676, bsc#1217214
+  * For other OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.41   
+
+-------------------------------------------------------------------
 Sat Aug 26 12:45:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
-- Update to OpenJDK 11.0.2.1 with OpenJ9 0.40.0 virtual machine
+- Update to OpenJDK 11.0.20.1 with OpenJ9 0.40.0 virtual machine
   * JDK-8313765: Invalid CEN header (invalid zip64 extra data
     field size)
 

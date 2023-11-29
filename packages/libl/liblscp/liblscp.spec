@@ -19,7 +19,7 @@
 
 %define sover  6
 Name:           liblscp
-Version:        0.9.9
+Version:        0.9.11
 Release:        0
 Summary:        LinuxSampler control protocol library
 License:        LGPL-2.1-or-later

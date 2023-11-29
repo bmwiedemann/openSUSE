@@ -69,11 +69,14 @@ Requires:       lib%{name}%{sover}-devel = %{version}
 %description -n lib%{name}%{sover}
 This packages contains all the libraries needed to use Criterion.
 
-%package -n lib%{name}%{sover}-devel
+%package -n lib%{name}-devel
 Summary:        Devel files for Criterion
 Requires:       lib%{name}%{sover} = %{version}
+# devel package was wrongly named after the library, including version
+Provides:       lib%{name}3-devel = 2.4.2
+Obsoletes:      lib%{name}3-devel <= 2.4.2
 
-%description -n lib%{name}%{sover}-devel
+%description -n lib%{name}-devel
 Contains all needed devel files for Criterion.
 
 %prep
@@ -100,7 +103,7 @@ chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}*
 %{_libdir}/libcriterion.so.3
 %{_libdir}/libcriterion.so.3.2.0
 
-%files -n lib%{name}%{sover}-devel
+%files -n lib%{name}-devel
 %dir %{_includedir}/criterion
 %dir %{_includedir}/criterion/internal
 %dir %{_includedir}/criterion/internal/assert

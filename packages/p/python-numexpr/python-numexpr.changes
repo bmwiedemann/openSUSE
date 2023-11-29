@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:44:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.7:
+  * More permissive rules in sanitizing regular expression: allow to
+    access digits after the . with scientific notation.
+  * Don't reject double underscores that are not at the start or end of
+    a variable name (pandas uses those), or scientific-notation numbers
+    with digits after the decimal point.
+  * Do not use numpy.alltrue in the test suite, as it has been
+    deprecated (replaced by numpy.all).
+  * Python 3.12 support
+
+-------------------------------------------------------------------
 Mon Sep  4 19:07:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Revert to version 2.8.4: Patch release breaks its API and thus
@@ -38,9 +51,9 @@ Mon Jan  2 18:44:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Thanks to Tobias Hangleiter for an improved accuracy complex `expm1` function.
     While it is 25 % slower, it is significantly more accurate for the real component
     over a range of values and matches NumPy outputs much more closely.
-  * Thanks to Kirill Kouzoubov for a range of fixes to constants parsing that was 
+  * Thanks to Kirill Kouzoubov for a range of fixes to constants parsing that was
     resulting in duplicated constants of the same value.
-  * Thanks to Mark Harfouche for noticing that we no longer need `numpy` version 
+  * Thanks to Mark Harfouche for noticing that we no longer need `numpy` version
     checks. `packaging` is no longer a requirement as a result.
 
 -------------------------------------------------------------------
@@ -103,7 +116,7 @@ Mon Feb  7 03:27:38 UTC 2022 - Arun Persaud <arun@gmx.de>
 -------------------------------------------------------------------
 Fri Mar 12 20:28:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python3.6 build (no numpy) 
+- skip python3.6 build (no numpy)
 
 -------------------------------------------------------------------
 Wed Mar  3 19:08:44 UTC 2021 - Arun Persaud <arun@gmx.de>
@@ -422,7 +435,7 @@ Tue Oct 22 13:32:08 UTC 2013 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Mon May  6 06:22:06 UTC 2013 - highwaystar.ru@gmail.com
 
-- python3 package added 
+- python3 package added
 - update to 2.1
  * New compatibility with Python 3:
  * switch from PyString to PyBytes API (requires Python >= 2.6).
@@ -430,16 +443,16 @@ Mon May  6 06:22:06 UTC 2013 - highwaystar.ru@gmail.com
  * use the Py_TYPE macro
  * use the PyVarObject_HEAD_INIT macro instead of PyObject_HEAD_INIT
  * Dropped compatibility with Python < 2.6.
- * Fixed several issues with different platforms not supporting 
+ * Fixed several issues with different platforms not supporting
  multithreading or subprocess properly (see tickets #75 and #77).
- * Now, when trying to use pure Python boolean operators, 'and', 
- 'or' and 'not, an error is issued and suggesting that '&', '|' 
+ * Now, when trying to use pure Python boolean operators, 'and',
+ 'or' and 'not, an error is issued and suggesting that '&', '|'
  and '~' should be used instead (fixes #24).
 
 -------------------------------------------------------------------
 Tue Aug 14 10:24:42 UTC 2012 - scorot@free.fr
 
-- fix requiements for SLE 11 
+- fix requiements for SLE 11
 
 -------------------------------------------------------------------
 Tue Jul 31 13:42:58 UTC 2012 - toddrme2178@gmail.com

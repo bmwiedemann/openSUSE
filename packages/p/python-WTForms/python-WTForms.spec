@@ -16,16 +16,18 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-WTForms
-Version:        3.0.1
+Version:        3.1.1
 Release:        0
 Summary:        A flexible forms validation and rendering library for Python web development
 License:        BSD-3-Clause
 URL:            https://github.com/wtforms/wtforms
 Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module email-validator}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -70,10 +72,9 @@ Translations for builtin WTForms messages.
 WTForms is a forms validation and rendering library for Python web development.
 
 %prep
-%autosetup -p1 -n WTForms-%{version}
+%autosetup -p1 -n wtforms-%{version}
 
 %build
-%python_exec setup.py compile_catalog
 %pyproject_wheel
 # Fix wrong EOL-encoding
 sed -i "s/\r//" CHANGES.rst
@@ -93,7 +94,7 @@ rm docs/changes.rst
 %doc CHANGES.rst README.rst
 %exclude %{python_sitelib}/wtforms/locale
 %{python_sitelib}/wtforms
-%{python_sitelib}/WTForms-%{version}.dist-info
+%{python_sitelib}/wtforms-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc docs/*.rst

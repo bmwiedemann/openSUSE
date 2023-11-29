@@ -956,4 +956,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment>- Deactive litehtml/gumbo as gumbo will be deleted [boo#1208381]</comment>
     <requestid>1069862</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>efe90a6fdc8e59c728dd88cb42d62511</srcmd5>
+    <version>4.2.0</version>
+    <time>1700865334</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128615</requestid>
+  </revision>
 </revisionlist>

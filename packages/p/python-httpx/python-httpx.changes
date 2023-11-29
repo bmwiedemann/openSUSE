@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:50:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.2:
+  * Add missing type hints to few `__init__()` methods. (#2938)
+  * Add support for Python 3.12. (#2854)
+  * Add support for httpcore 1.0 (#2885)
+  * Raise `ValueError` on `Response.encoding` being set after
+    `Response.text` has been accessed. (#2852)
+- drop newer-httpcore.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Oct 31 10:55:34 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream newer-httpcore.patch
@@ -159,7 +170,7 @@ Tue Jul 19 15:45:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Mon May  2 03:01:52 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch CVE-2021-41945-copy_with-data-leak.patch:
-  * Do not leak data in httpx.URL.copy_with (bsc#1199002, CVE-2021-41945) 
+  * Do not leak data in httpx.URL.copy_with (bsc#1199002, CVE-2021-41945)
 
 -------------------------------------------------------------------
 Fri Feb 11 19:31:34 UTC 2022 - Michael Ströder <michael@stroeder.com>

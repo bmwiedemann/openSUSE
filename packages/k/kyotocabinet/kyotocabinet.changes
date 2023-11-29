@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 25 20:41:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.80:
+  - configure.in supports strict C99 rules.
+  - Fixed errors of kcdirtest on BtrFS.
+  - Fixed build warnings.
+
+-------------------------------------------------------------------
 Tue May 30 10:50:48 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update url to new website.
@@ -7,7 +15,7 @@ Tue May 30 10:50:48 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 Wed Apr 21 06:51:44 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add yet an other patch kyotocabinet-pie.patch
-  * link all executables as pie (bsc#1185033) 
+  * link all executables as pie (bsc#1185033)
 
 -------------------------------------------------------------------
 Thu Mar 12 11:45:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
@@ -35,7 +43,7 @@ Tue May  9 14:46:10 UTC 2017 - werner@suse.de
 Tue Apr  4 03:47:22 UTC 2017 - crrodriguez@opensuse.org
 
 - kyotocabinet-fix-debuginfo.patch: Fix debuginfo generation
-- gcc6-fix-errors.patch: return NULL instead, make GCC7 happy 
+- gcc6-fix-errors.patch: return NULL instead, make GCC7 happy
 
 -------------------------------------------------------------------
 Wed May 25 09:38:17 UTC 2016 - martin.liska@suse.com
@@ -51,7 +59,7 @@ Fri Jan  4 16:30:01 UTC 2013 - jengelh@inai.de
 Thu Dec 27 10:34:38 UTC 2012 - dvaleev@suse.com
 
 - fix up configure test to handle lack of 8 byte atomics correctly
-  (configure-8-byte-atomics.patch) 
+  (configure-8-byte-atomics.patch)
 
 -------------------------------------------------------------------
 Sat Aug 11 14:19:14 UTC 2012 - jengelh@inai.de

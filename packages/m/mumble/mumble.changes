@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 23 19:14:57 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enable pulseaudio support boo#1217419
+
+-------------------------------------------------------------------
 Sat Oct 28 12:38:53 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - simplify spec file and package license file

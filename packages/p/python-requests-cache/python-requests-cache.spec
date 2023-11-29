@@ -17,7 +17,7 @@
 
 
 Name:           python-requests-cache
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        Persistent cache for requests library
 License:        BSD-2-Clause
@@ -50,6 +50,7 @@ BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module tenacity}
+BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module timeout-decorator}
 BuildRequires:  %{python_module url-normalize >= 1.4}
 BuildRequires:  redis

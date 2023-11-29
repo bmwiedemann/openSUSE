@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 23 11:43:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.13
+  * Fix handling of write_mode in dump functions (problem emerged discussing issue #191)
+- Update to 1.12
+  * Generate wheels on PyPI using final Python 3.12 release, thanks to cibuildwheel 2.16.2
+- Update to 1.11
+  * Use current master version of rapidjson
+  * Use cibuildwheel 2.15.0
+- Update to 1.10
+  * Use current master version of rapidjson
+  * Produce ppc64le wheels, thanks to mgiessing (PR #170)
+  * Use cibuildwheel 2.12.1
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Oct 28 20:41:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.9 

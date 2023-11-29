@@ -60,6 +60,8 @@ Patch32:        procps-ng-3.3.10-errno.patch
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
 # PATCH-FIX-SUSE -- Avoid float errors on 32bit architectures
 Patch37:        procps-ng-4.0.0-floats.dif
+# PATCH-FIX-SUSE -- with 4.0.4 the totals on -X option are always reset for each pid
+Patch38:        procps-ng-4.0.4-pmapX-not-twice-anymore.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -146,6 +148,7 @@ the process information pseudo-file system.
 %patch -P32 -b .p32
 %patch -P33 -b .pmap4us
 %patch -P37
+%patch -P38
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

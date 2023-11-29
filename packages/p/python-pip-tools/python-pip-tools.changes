@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 24 04:43:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a recalcitrant test with the backtracking resolver 
+
+-------------------------------------------------------------------
 Sun Aug 13 21:08:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.3.0:

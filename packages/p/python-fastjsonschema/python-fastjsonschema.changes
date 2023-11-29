@@ -1,17 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 27 18:48:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * Added `use_formats` parameter to allow disable automatic assertions
+
+-------------------------------------------------------------------
 Tue Sep 26 19:04:36 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
-- update to 1.18.0
+- update to 2.18.0
   * Improved error message for required props - only missing are reported
-  * Fixed support of boolean schema in if-then-else application 
+  * Fixed support of boolean schema in if-then-else application
 
 -------------------------------------------------------------------
 Mon May 29 14:28:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.17.1:
+- update to 2.17.1:
   * Fixed tests in sdist
   * Added support for Decimals
-  * Added tests in sdist 
+  * Added tests in sdist
 
 -------------------------------------------------------------------
 Fri May 12 10:18:43 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -22,7 +28,7 @@ Fri May 12 10:18:43 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 Mon Mar  6 21:23:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16.3:
-  * Fix variable name resolving with references 
+  * Fix variable name resolving with references
 
 -------------------------------------------------------------------
 Thu Oct  6 14:32:39 UTC 2022 - Dirk Müller <dmueller@suse.com>

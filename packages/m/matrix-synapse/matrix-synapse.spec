@@ -24,6 +24,7 @@
 # TODO: 10.1.0
 %global Pillow_version                10.0.1
 %global PyYAML_version                6.0.1
+# TODO: 23.10
 %global Twisted_version               22.10.0
 %global attrs_version                 23.1.0
 %global bcrypt_version                4.0.1
@@ -41,7 +42,7 @@
 %global netaddr_version               0.9.0
 # TODO: 8.13.23
 %global phonenumbers_version          8.13.18
-# TODO: 0.17.1
+# TODO: 0.18.0
 %global prometheus_client_version     0.17.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             23.0.0
@@ -54,6 +55,7 @@
 %global sortedcontainers_version      2.4.0
 %global systemd_version               234
 %global typing_extensions_version     4.1.1
+# TODO: 23.11
 %global treq_version                  22.2.0
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.3.0
@@ -73,6 +75,7 @@
 %global txredisapi_version            1.4.9
 %global Pympler_version               1.0.1
 %global pydantic_version              1.9.1
+# TODO: 2.12
 %global pyicu_version                 2.11
 %else
 # some version locks based on poetry.lock
@@ -156,7 +159,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.96.1
+Version:        1.97.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -164,7 +167,6 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/matrix-org/synapse
 Source0:        %{pkgname}-%{version}.tar.xz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 Source47:       matrix-synapse-user.conf
 Source48:       README.SUSE
 Source49:       matrix-synapse.tmpfiles.d
@@ -194,7 +196,7 @@ BuildRequires:  (%{use_python}-poetry-core >= 1.1.0 with %{use_python}-poetry-co
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.8.0)
+BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.8.1)
 # NOTE: Keep this is in the same order as pyproject.toml.
 # some version locks based on poetry.lock
 BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}
@@ -309,7 +311,6 @@ Matrix. Matrix is a system for federated Instant Messaging and VoIP.
 
 %prep
 %autosetup -p1 -a1
-install -m 0644 -D %{SOURCE2} .cargo/config
 
 # Remove all un-needed #!-lines.
 find synapse/ -type f -not -path './vendor/**' -exec sed -i '1{/^#!/d}' {} \;

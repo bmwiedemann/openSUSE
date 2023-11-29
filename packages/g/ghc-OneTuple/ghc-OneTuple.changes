@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:14:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete dependency on ghc-foldable1-classes-compat.
+
+-------------------------------------------------------------------
 Wed Oct  4 11:27:54 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update OneTuple to version 0.4.1.1 revision 1.

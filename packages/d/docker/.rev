@@ -1359,4 +1359,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   * cli-0001-docs-include-required-tools-in-source-tree.patch</comment>
     <requestid>1120880</requestid>
   </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>95f6dec3eda19e92b344e02c4f242189</srcmd5>
+    <version>24.0.7_ce</version>
+    <time>1701206306</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129616</requestid>
+  </revision>
 </revisionlist>

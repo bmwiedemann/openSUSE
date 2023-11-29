@@ -241,4 +241,14 @@ Update to 4.6.1</comment>
 </comment>
     <requestid>1117894</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3ac4649fd05bd674f0cd58b836bca063</srcmd5>
+    <version>5.5.0</version>
+    <time>1701121378</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.5.0
+  * Maintenance and upkeep improvements
+</comment>
+    <requestid>1128958</requestid>
+  </revision>
 </revisionlist>

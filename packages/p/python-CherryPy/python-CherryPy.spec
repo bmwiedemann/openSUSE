@@ -30,8 +30,11 @@ Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
 URL:            https://www.cherrypy.dev
 Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/CherryPy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/cherrypy/cherrypy/pull/1959
+Patch0:         use-read_file-not-readfp.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-cheroot >= 8.2.1
@@ -81,15 +84,15 @@ to the most demanding ones.
 Oh, and most importantly: CherryPy is fun to work with :-)
 
 %prep
-%setup -q -n CherryPy-%{version}
+%autosetup -p1 -n CherryPy-%{version}
 # do not require cov/xdist/etc
 rm pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cherryd
 
@@ -113,7 +116,7 @@ export TRAVIS="true"
 %license LICENSE.md
 %doc README.rst CHANGES.rst
 %python_alternative %{_bindir}/cherryd
-%{python_sitelib}/cherrypy/
-%{python_sitelib}/CherryPy-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/cherrypy
+%{python_sitelib}/CherryPy-%{version}.dist-info
 
 %changelog

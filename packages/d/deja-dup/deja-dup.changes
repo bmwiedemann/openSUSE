@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 22 11:11:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to version 45.1:
+  + Fix compilation with valac 0.56
+  + Use the modern flat header style
+  + Use latest Gtk file dialog
+  + Fix a vague SMB error into a more specific one
+  + Support duplicity 2.0's command line changes
+  + Update OneDrive api key to work with Duplicity 1.2.3
+  + Add more details to the error message about not enough space
+  + Fix not being able to open the preferences window after a
+    restore
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 31 07:04:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 44.1:

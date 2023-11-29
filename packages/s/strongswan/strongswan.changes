@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 20 13:32:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.12
+  * Fixed a buffer overflow in charon-tkm [CVEV-2023-41913]
+  * Support for ``nameConstraints`` of type ``iPAddress`` are now
+    supported by the "x509", "openssl" and "constraints" plugins
+  * Support for encoding subjectAlternativeName extensions of type
+    uniformResourceIdentifier in X.509 certificates has been added.
+  * Make the NetworkManager plugin (charon-nm) actually use the
+    XFRM interface it creates since 5.9.10. This involves setting
+    interface IDs on SAs and policies, and installing routes via
+    the interface. To avoid routing loops if the remote traffic
+    selectors include the VPN server, IKE and ESP packets are
+    marked to bypass the routing table that contains the routes via
+    XFRM interface.
+  * The kernel-libipsec plugin now always installs routes to remote
+    networks even if no address is found in the local traffic
+    selectors, which allows forwarding traffic from networks the
+    VPN host is not part of.
+  * Fixed issues while reestablishing multiple CHILD_SAs (e.g.
+    after a DPD timeout) that could cause a reqid to get assigned
+    to multiple CHILD_SAs with unrelated traffic selectors.
+
+-------------------------------------------------------------------
 Thu Jun 22 13:24:08 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - Removed .hmac files + hmac integrity check logic from strongswan-hmac

@@ -21,7 +21,7 @@
 # gh#brandon-rhodes/assay#15
 %define skip_python311 1
 Name:           python-skyfield
-Version:        1.45
+Version:        1.46
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT

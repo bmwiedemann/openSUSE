@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Nov 20 05:09:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.26.2:
+  * TYP: Trim down the ``_NestedSequence.__getitem__`` signature
+  * BUG: fix choose refcount leak
+  * TST: fix running the test suite in builds without BLAS/LAPACK
+  * BUG: random: Fix generation of nan by dirichlet.
+  * TST: fix distutils tests for deprecations in recent setuptools...
+  * MAINT: Remove versioneer
+  * MAINT: Pin upper version of sphinx.
+  * ENH: Add prefix to _ALIGN Macro
+  * BUG: cleanup warnings [skip azp][skip circle][skip travis][skip...
+  * BUG: ``asv dev`` has been removed, use ``asv run``.
+  * BUG: Fix meson build failure due to unchanged inplace auto-generated...
+  * BUG: fix issue with git-version script, needs a shebang to run
+  * BUG: Use a default assignment for git_hash [skip ci]
+  * BUG: fix NPY_cast_info error handling in choose
+  * BUG: Fix common block handling in f2py
+  * BUG: Fix assumed length f2py regression
+  * MAINT: Harmonize fortranobject
+  * TYP: add kind argument to numpy.isin type specification
+  * BUG: fix comparisons between masked and unmasked structured arrays
+  * ENH: Adopt new macOS Accelerate BLAS/LAPACK Interfaces, including...
+  * TYP: Add the missing ``casting`` keyword to ``np.clip``
+  * TST: convert cython test from setup.py to meson
+  * MAINT: Fixup ``fromnumeric.pyi``
+  * BUG, ENH: Fix ``iso_c_binding`` type maps
+  * TYP: Allow ``binary_repr`` to accept any object
+  * TYP: Explicitly declare ``dtype`` and ``generic`` hashable
+  * ENH: Refactor the typing "reveal" tests using `typing.assert_type`
+  * ENH: ``meson`` backend for ``f2py``
+  * MAINT: Refactor partial load Workaround for Clang
+  * BUG: Fix data stmt handling for complex values in f2py
+  * TYP: Add annotations for the py3.12 buffer protocol
+  * DOC: Updated the f2py docs to remove a note on -fimplicit-none
+  * BUG: Fix SIMD f32 trunc test on s390x when baseline is none
+  * BUG: Fix DATA statements for f2py
+  * API: Add ``NumpyUnpickler`` for backporting
+  * MAINT: Xfail test failing on PyPy.
+  * ENH: meson: implement BLAS/LAPACK auto-detection
+  * DOC: add a 1.26.1 release notes section for BLAS/LAPACK build
+  * MAINT: Backport ``numpy._core`` stubs. Remove ``NumpyUnpickler``
+  * BUG: loongarch doesn't use REAL(10)
+  * MAINT: align test_dispatcher s390x targets with _umath_tests_mtargets
+  * ENH: Add Cython enumeration for NPY_FR_GENERIC
+  * MAINT: Remove unhelpful error replacements from ``import_array()``
+  * BUG: Avoid intp conversion regression in Cython 3
+  * MAINT: Add missing ``noexcept`` to shuffle helpers
+  * DOC: Fix license identifier for OpenBLAS
+  * BLD: improve detection of Netlib libblas/libcblas/liblapack
+  * MAINT: Make bitfield integers unsigned
+  * BUG: Make n a long int for np.random.multinomial
+  * BUG: ensure passing ``np.dtype`` to itself doesn't crash
+- Update BuildRequires as appropiate, build system changed from setuptools
+  to meson.
+- Drop patch ignore-pkg_resources-deprecation.patch, no longer required
+- f2py3 no longer shipped
+
+-------------------------------------------------------------------
 Wed Aug 16 11:31:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use %pyproject_wheel and %pyproject_install macros

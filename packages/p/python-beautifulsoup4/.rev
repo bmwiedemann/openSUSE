@@ -559,4 +559,12 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
 </comment>
     <requestid>1085512</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2b045f65246321e317a33ccf105d7297</srcmd5>
+    <version>4.12.2</version>
+    <time>1700771948</time>
+    <user>anag+factory</user>
+    <comment>- Require cchardet explicitly to avoid charset-normalizer braindamage.</comment>
+    <requestid>1128224</requestid>
+  </revision>
 </revisionlist>

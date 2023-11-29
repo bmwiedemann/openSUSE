@@ -17,17 +17,16 @@
 
 
 Name:           fuc
-Version:        1.1.7
+Version:        1.1.9
 Release:        0
 Summary:        Modern unix commands focused on performance
 License:        Apache-2.0
 URL:            https://github.com/SUPERCILEX/fuc
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 # for cargo_install -p
 BuildRequires:  cargo-packaging >= 1.2.0
-BuildRequires:  rust >= 1.68
+BuildRequires:  rust >= 1.70
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -37,8 +36,6 @@ compatible with "rm" and "cp", respectively, in a "zippy" faster version.
 
 %prep
 %autosetup -a1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build} --all

@@ -151,4 +151,16 @@
     <comment></comment>
     <requestid>1109447</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6ccbe1debbfda91879eba55fa673d558</srcmd5>
+    <version>4.1.10</version>
+    <time>1700865308</time>
+    <user>anag+factory</user>
+    <comment>
+fix build
+
+- disable pytest's test name check
+  https://github.com/ansible/ansible-compat/issues/340</comment>
+    <requestid>1128568</requestid>
+  </revision>
 </revisionlist>

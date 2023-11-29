@@ -146,4 +146,21 @@
   * Substantially improved error handling. Both in terms of finding the more</comment>
     <requestid>1110808</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4b9c6fae656e78cbecfe668baf703e6c</srcmd5>
+    <version>5.1.2</version>
+    <time>1701023824</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.2:
+  * Update Vega-Lite from version 5.14.1 to version 5.15.1;
+  * Remove usage of deprecated Pandas parameter
+    ``convert_dtypes`` (#3191)
+  * Fix encoding type inference for boolean columns when pyarrow
+    is installed (#3210)
+
+  * Replace iteritems with items due to pandas deprecation (#2683).
+- Skip python36 build: With NumPy 1.20, Tumbleweed no longer
+    *  ``alz.LayerChart`` no longer has ``mark_*()`` methods, because they never</comment>
+    <requestid>1128724</requestid>
+  </revision>
 </revisionlist>

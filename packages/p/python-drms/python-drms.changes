@@ -1,10 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov 25 12:56:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Dropped Python 3.8 support.
+  * Updated all of the sphinx anchors to be more consistent.
+  * This means that any use of the old anchors (intersphinx links
+    to sunpy doc pages) will need to be updated.
+  * Removed ``verbose`` keyword argument from `drms.Client`.
+  * Now all prints are done via the logging module.
+  * ``drms.const`` was renamed to `drms.JsocInfoConstants`
+  * Renamed keywords or arguments from ``requestor`` to
+    ``requester``.
+  * Removed ``debug`` keyword argument from `drms.HttpJsonClient`
+  * Now all prints are done via the logging module.
+  * Removed all FTP options.
+  * All keywords have to be passed by reference, no more
+    positional keywords arguments are allowed.
+  * Added "ruff" to the pre-commit and fixed the errors.
+
+-------------------------------------------------------------------
 Tue Jun 27 08:43:40 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.6.4
-  * Modified `drms.client.Client._convert_numeric_keywords` to use 
-    a row-centric approach for handling hexadecimal strings. 
-  * Modified `drms.utils.to_datetime` to work with Pandas 2.0. 
+  * Modified `drms.client.Client._convert_numeric_keywords` to use
+    a row-centric approach for handling hexadecimal strings.
+  * Modified `drms.utils.to_datetime` to work with Pandas 2.0.
 
 -------------------------------------------------------------------
 Thu Aug  5 18:39:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -22,7 +42,7 @@ Thu Aug  5 18:39:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Apr 21 06:57:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Do not build for Python 3.6, due to no NumPy. 
+- Do not build for Python 3.6, due to no NumPy.
 
 -------------------------------------------------------------------
 Wed Nov 20 20:02:19 UTC 2019 - Todd R <toddrme2178@gmail.com>

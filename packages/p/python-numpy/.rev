@@ -1203,4 +1203,41 @@ The Python versions supported in this release are 3.9-3.11.
     <comment>  f2py using update-alternatives (catched by openQA, bsc#1166678, boo#1176832).</comment>
     <requestid>1112791</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>b6b3863db758b6104b1056eca1fe89b1</srcmd5>
+    <version>1.26.2</version>
+    <time>1700675642</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.26.2:
+  * TYP: Trim down the ``_NestedSequence.__getitem__`` signature
+  * BUG: fix choose refcount leak
+  * TST: fix running the test suite in builds without BLAS/LAPACK
+  * BUG: random: Fix generation of nan by dirichlet.
+  * TST: fix distutils tests for deprecations in recent setuptools...
+  * MAINT: Remove versioneer
+  * MAINT: Pin upper version of sphinx.
+  * ENH: Add prefix to _ALIGN Macro
+  * BUG: cleanup warnings [skip azp][skip circle][skip travis][skip...
+  * BUG: ``asv dev`` has been removed, use ``asv run``.
+  * BUG: Fix meson build failure due to unchanged inplace auto-generated...
+  * BUG: fix issue with git-version script, needs a shebang to run
+  * BUG: Use a default assignment for git_hash [skip ci]
+  * BUG: fix NPY_cast_info error handling in choose
+  * BUG: Fix common block handling in f2py
+  * BUG: Fix assumed length f2py regression
+  * MAINT: Harmonize fortranobject
+  * TYP: add kind argument to numpy.isin type specification
+  * BUG: fix comparisons between masked and unmasked structured arrays
+  * ENH: Adopt new macOS Accelerate BLAS/LAPACK Interfaces, including...
+  * TYP: Add the missing ``casting`` keyword to ``np.clip``
+  * TST: convert cython test from setup.py to meson
+  * MAINT: Fixup ``fromnumeric.pyi``
+  * BUG, ENH: Fix ``iso_c_binding`` type maps
+  * TYP: Allow ``binary_repr`` to accept any object
+  * TYP: Explicitly declare ``dtype`` and ``generic`` hashable
+  * ENH: Refactor the typing &quot;reveal&quot; tests using `typing.assert_type`
+  * ENH: ``meson`` backend for ``f2py``
+  * MAINT: Refactor partial load Workaround for Clang</comment>
+    <requestid>1127600</requestid>
+  </revision>
 </revisionlist>

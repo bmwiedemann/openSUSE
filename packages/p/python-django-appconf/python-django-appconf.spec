@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-appconf
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        A Helper Class for Handling Configuration Defaults of Packaged Apps
 License:        BSD-3-Clause

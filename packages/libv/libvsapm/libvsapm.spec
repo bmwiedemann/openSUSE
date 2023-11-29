@@ -20,7 +20,7 @@
 
 Name:           libvsapm
 %define lname	libvsapm1
-Version:        20230506
+Version:        20231123
 Release:        0
 Summary:        Library and tools to access the Apple Partition Map volume system format
 License:        LGPL-3.0-or-later
@@ -29,28 +29,27 @@ URL:            https://github.com/libyal/libvsapm
 Source:         https://github.com/libyal/libvsapm/releases/download/%version/libvsapm-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libvsapm/releases/download/%version/libvsapm-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  autoconf >= 2.71
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200913
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20230108
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcfile) >= 20220106
+BuildRequires:  pkgconfig(libclocale) >= 20221218
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libfdata) >= 20230319
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libvsapm is a library to access the Apple Partition Map (APM) volume
@@ -105,9 +104,6 @@ inspect Apple Partition Map partition tables.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
 # see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym

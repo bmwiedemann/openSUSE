@@ -234,4 +234,20 @@
     <comment></comment>
     <requestid>1081868</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b082eb8e40df022a0f877d92825511ae</srcmd5>
+    <version>1.33</version>
+    <time>1701206330</time>
+    <user>anag+factory</user>
+    <comment>- update 1.33:
+  * fix invalid remove index
+  * remove unused import
+  * feat(jsondiff): Add support for preserving Unicode characters
+
+  * take_index causing 'move' of incorrect values due to bad True==1 comparison
+  * Make it possible for from_diff to support custom types (issue #107)
+- update to 1.16
+  * first stable release, some bugfixes</comment>
+    <requestid>1129226</requestid>
+  </revision>
 </revisionlist>

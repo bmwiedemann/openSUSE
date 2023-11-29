@@ -31,7 +31,7 @@
 %endif
 
 Name:           python-nbclient%{psuffix}
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -76,7 +76,7 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 
 %prep
 %setup -q -n nbclient-%{version}
-sed -i 's/--color=yes//' pyproject.toml
+sed -i 's/, "--color=yes"//' pyproject.toml
 
 %if ! %{with test}
 %build

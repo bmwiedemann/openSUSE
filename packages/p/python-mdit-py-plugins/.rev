@@ -23,4 +23,43 @@
     <comment></comment>
     <requestid>1092245</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b17e46e26181d75f6989ffbe777d37b5</srcmd5>
+    <version>0.4.0</version>
+    <time>1700771913</time>
+    <user>anag+factory</user>
+    <comment>Should be staged with sr#1128266
+
+- Update to version 0.4.0:
+  * UPGRADE: Drop python 3.7 and support 3.11 (#77)
+  * UPGRADE: Allow markdown-it-py v3 (#85)
+    - Make field_list compatible with latest upstream (#75)
+    - Convert state.srcCharCode -&gt; state.src (#84)
+    - Remove unnecessary method arg by @chrisjsewell in( #76)
+    - Centralise code block test (#83 and #87)
+      - This means that disabling the code block rule in
+        markdown-it-py v3+ will now allow all syntax blocks to be
+        indented by any amount of whitespace.
+  * Improve dollarmath plugin: Add allow_blank_lines option, thanks
+    to @eric-wieser (#46)
+  * Improve admon plugin: Add ??? support, thanks to @KyleKing (#58)
+  * MAINTAIN: Make type checking strict (#86)
+- v0.3.5:
+  * FIX: Regression in dollarmath by @chrisjsewell in #69
+  * Fix regression in amsmath by @chrisjsewell in #70
+  * Correct project documentation link by @andersk in #73
+  * RELEASE v0.3.5 by @chrisjsewell in #74
+- v0.3.4:
+  * NEW: Add attrs_block_plugin by @chrisjsewell in #66
+  * Improve field lists by @chrisjsewell in #65
+  * Update pre-commit by @chrisjsewell in #64 (moving from flake8 to ruff)
+- v0.3.3:
+  * FIX: attrs: span with end of inline before attrs by @chrisjsewell in #57
+- v0.3.2:
+  * MAINTAIN: Fix pre-commit configuration by @hukkin in #54
+  * NEW: Add span parsing to inline attributes plugin by @chrisjsewell in #55
+  * FIX: Task list item marker can be followed by any GFM whitespace by @hukkin in #42
+  * NEW: Port admon plugin by @KyleKing in #53</comment>
+    <requestid>1128267</requestid>
+  </revision>
 </revisionlist>

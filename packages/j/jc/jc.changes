@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:29:55 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.23.6
+  * Fix XML parser for xmltodict library versions < 0.13.0
+  * Fix who command parser for cases when the from field contains
+    spaces
+- Update to version 1.23.5
+  * Add host command parser
+  * Add nsd-control command parser
+  * Add lsb_release command parser
+  * Add /etc/os-release file parser
+  * Enhance env command parser to support multi-line values
+  * Enhance ping and ping-s parsers to add error and corrupted
+    support
+  * Enhance xml parser to include comments in the JSON output
+  * Fix pidstat command parser when using -T ALL
+  * Fix x509-cert parser to allow negative serial numbers
+  * Fix x509-cert parser for cases when bitstrings are larger
+    than standard
+  * Fix xrandr command parser for associated device issues
+  * Fix error when pygments library is not installed
+- Update to version 1.23.4
+  * Add /etc/resolve.conf file parser
+  * Add /proc/net/tcp and /proc/net/tcp6 file parser
+  * Add find command parser
+  * Add ip route command parser
+  * Fix certbot command parser to be more robust with different
+    line endings
+- Update to version 1.23.3
+  * Add lsattr command parser
+  * Add srt file parser
+  * Add veracrypt command parser
+  * Add X509 Certificate Request file parser
+  * Enhance X509 Certificate parser to allow non-compliant email
+    addresses with a warning
+  * Enhance dig command parser to support the +nsid option
+  * Enhance last and lastb command parser to support the -x option
+  * Enhance route command parser to add Windows support
+  * Enhnace netstat command parser to add Windows support
+  * Enhance ss command parser to support extended options
+  * Enhance the compatibility warning message
+  * Fix bluetoothctl command parser for some mouse devices
+  * Fix ping command parsers for output with missing hostname
+  * Fix stat command parser for older versions that may not contain
+    all fields
+  * Fix deprecated option in setup.cfg
+- Update to version 1.23.2
+  * Add bluetoothctl command parser
+  * Add certbot command parser for certificates and show_account
+    options
+  * Fix acpi command parser for "Not charging" battery status lines
+  * Fix iwconfig command parser for SSIDs with dashes in the name
+  * Fix crontab command parsers for incorrect variable parsing in
+    some cases
+  * Fix git-log and git-log-s command parsers for incorrect
+    insertion/deletion parsing
+  * Fix ufw-appinfo command parser for parsing errors on multiline
+    description fields
+  * Fix pytest warnings
+- Update to version 1.23.1
+  * Fix zpool-status command parser for lines that start with tab
+  * Fix timedatectl command parser when RTC set to local
+  * Fix to ensure py.typed file is included in the package wheel
+  * Fix lsusb command parser to support CDC MBIM and CDC MBIM
+    Extended fields
+  * Add support for the timesync-status for the timedatectl command
+    parser
+  * Fix to ignore non-parser-plugins in the parser plugin directory
+- Update to version 1.22.5
+  * Add input slicing as a jc command-line option
+  * Add ssh configuration file parser
+  * Add ver Version string parser
+  * Add zpool iostat command parser
+  * Add zpool status command parser
+  * Fix acpi command parser for "will never fully discharge"
+    battery state
+  * Fix crontab and crontab-u command and file parsers for cases
+    where only
+  * shortcut schedule items exist
+  * Fix ifconfig command parser for older-style linux output
+  * Fix xrandr command parser for proper is_current output
+  * Fix xrandr command parser for infinite loop with some device
+    configurations
+  * Add reflection key to xrandr parser schema
+  * Add display model info from EDID to xrandr parser
+  * Add MPX-specific VMA support for VM Flags in /proc/<pid>/smaps
+    parser
+
+-------------------------------------------------------------------
 Mon Jan  2 20:39:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22.4:

@@ -26,8 +26,8 @@ URL:            https://github.com/grantjenks/blue
 Source:         https://github.com/grantjenks/blue/archive/v%{version}.tar.gz#/blue-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE unpin-tomli.patch -- gh#grantjenks/blue#66
 Patch1:         unpin-tomli.patch
-# PATCH-FIX-UPSTREAM flake8-v5-compatibility.patch -- gh#grantjenks/blue#78
-Patch2:         flake8-v5-compatibility.patch
+# PATCH-FIX-UPSTREAM flake8-v6-compatibility.patch -- gh#grantjenks/blue#96
+Patch2:         flake8-v6-compatibility.patch
 # PATCH-FIX-OPENSUSE black-23.3.patch -- gh#grantjenks/blue#97
 Patch3:         black-23.3.patch
 BuildRequires:  %{python_module Sphinx}

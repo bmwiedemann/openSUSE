@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 10 09:44:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-quickcheck to version 0.10.3 revision 1.
+  Version 0.10.3
+  --------------
+
+  * Print Quickcheck progress using Tasty progress reporting.
+    ([#311](https://github.com/UnkindPartition/tasty/pull/311)).
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:31 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

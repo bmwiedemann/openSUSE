@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 25 17:34:19 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.21 release
+  - High-DPI scaling and initial Vulkan support in the Wayland driver.
+  - Beginnings of support for ARM64EC target.
+  - Updates to the locale database.
+  - Various bug fixes.
+- update staging to 8.21 release
+
+-------------------------------------------------------------------
 Mon Nov 13 09:37:18 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Requires libvulkan_intel only on %{ix86} x86_64

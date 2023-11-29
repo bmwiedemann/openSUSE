@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 23 02:07:49 UTC 2023 - malcolmlewis@opensuse.org
+
+- Updated to version 3.3.31:
+  + /usr/share/doc/packages/inxi/inxi.changelog.
+- Updated spec file for new location of inxi at codeberg.org.
+
+-------------------------------------------------------------------
 Sun May 14 15:50:03 UTC 2023 - malcolmlewis@opensuse.org
 
 - Update to version 3.3.27:

@@ -112,6 +112,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup
 cp -p %{SOURCE1} %{name}.cabal
+cabal-tweak-dep-ver fgl '< 5.8.1.0' '< 6'
+cabal-tweak-dep-ver mtl '< 2.3' '< 3'
+cabal-tweak-dep-ver transformers '< 0.6' '< 1'
 
 %build
 %ghc_lib_build

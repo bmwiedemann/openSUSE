@@ -35,8 +35,6 @@ BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
-BuildRequires:  ghc-foldable1-classes-compat-devel
-BuildRequires:  ghc-foldable1-classes-compat-prof
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-rpm-macros

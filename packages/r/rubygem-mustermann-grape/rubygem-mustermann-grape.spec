@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mustermann-grape
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mustermann-grape
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 %define mod_name mustermann-grape
 %define mod_full_name %{mod_name}-%{version}
@@ -33,16 +33,14 @@ Release:        0
 %define rb_build_versions ruby24
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.1.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby-grape/mustermann-grape
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Grape syntax for Mustermann
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Adds Grape style patterns to Mustermman.
@@ -53,7 +51,7 @@ Adds Grape style patterns to Mustermman.
 
 %install
 %gem_install \
-  --doc-files="LICENSE README.md" \
+  --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
 
 %gem_packages

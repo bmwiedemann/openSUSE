@@ -20,7 +20,7 @@
 %global sover   14
 %global flavor @BUILD_FLAVOR@%{nil}
 Name:           nghttp2
-Version:        1.57.0
+Version:        1.58.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -77,7 +77,7 @@ Python bindings for implementation of Hypertext Transfer Protocol version
 Summary:        Development files for nghttp2
 Group:          Development/Languages/C and C++
 Requires:       %{soname}-%{sover} = %{version}
-Provides:       %{name}-devel
+Provides:       %{name}-devel = %{version}
 
 %description -n %{soname}-devel
 Development files for usage with libnghttp2, which implements

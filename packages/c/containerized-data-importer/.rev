@@ -279,4 +279,12 @@
     <comment></comment>
     <requestid>1117957</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0a75a9a2464c71583d469061b2815d49</srcmd5>
+    <version>1.58.0</version>
+    <time>1700675708</time>
+    <user>anag+factory</user>
+    <comment>Update CDI to version 1.58.0</comment>
+    <requestid>1128107</requestid>
+  </revision>
 </revisionlist>

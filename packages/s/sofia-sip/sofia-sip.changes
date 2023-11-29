@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:50:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup instead of %setup/%patch.
+
+-------------------------------------------------------------------
 Wed Jun  3 21:25:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12.11+20110422

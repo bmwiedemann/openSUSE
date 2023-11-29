@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:00:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.0
+  * Add 0xc000007f to mapping.
+  * Added the DiskFull error and message for the NTSTATUS code
+    0xC000007F.
+
+-------------------------------------------------------------------
 Tue Sep  5 21:56:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.11.0

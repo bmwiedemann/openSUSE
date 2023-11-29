@@ -18,6 +18,7 @@ Thu Nov 09 08:31:02 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme.py: Explicit close is redundant
   * nvmetcli: Improve IOError handling on restore
   * nvmetcli: don't remove ANA Group 1 on clear
+  * nvmetcli: ANA configuration support (bsc#1130981)
 - remove 0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
 - use autosetup instead listing all patches individual
 - build package according PEP 517, 518. Thus don't call setup.py directly

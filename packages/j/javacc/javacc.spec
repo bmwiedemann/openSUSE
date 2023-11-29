@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,15 +24,13 @@
 %bcond_with bootstrap
 %endif
 %global base_name javacc
-Version:        7.0.11
+Version:        7.0.13
 Release:        0
 Summary:        A Parser and Scanner Generator for Java
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://javacc.org
 Source0:        https://github.com/javacc/javacc/archive/refs/tags/%{base_name}-%{version}.tar.gz
-Patch0:         0001-Generate-max.-one-deprecated-annotation-per-method.patch
-Patch1:         0002-Fix-annotations-for-JavaCharStream.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildArch:      noarch
@@ -85,8 +83,6 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -n %{base_name}-%{base_name}-%{version}
-%patch0 -p1
-%patch1 -p1
 rm -f lib/*.jar
 %if %{without bootstrap}
 rm -f bootstrap/javacc.jar

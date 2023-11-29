@@ -29,6 +29,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://audaspace.github.io/
 Source0:        https://github.com/audaspace/audaspace/archive/refs/tags/v%{version}.tar.gz#/audaspace-%{version}.tar.gz
+Patch0:         audaspace-animated-sequence.patch
 BuildRequires:  cmake > 3
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -166,6 +167,7 @@ developing applications that use %{name}.
 
 %prep
 %setup -n audaspace-%{version} -q
+%autopatch -p1
 
 %build
 %cmake \

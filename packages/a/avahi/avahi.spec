@@ -414,6 +414,8 @@ Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
 
+
+
 # This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
@@ -494,22 +496,7 @@ sed "s:@docdir@:%{_docdir}:g" <%{SOURCE6} >sysconfig.avahi-autoipd
 cp -a %{SOURCE9} avahi-autoipd/README.SUSE
 sed -ie "s/libevent-[0-9\.]*/libevent/" avahi-libevent.pc.in
 cp -a %{SOURCE12} service-type-database/build-db
-%patch0
-%patch1 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
+%autopatch -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions
@@ -713,10 +700,6 @@ fi
 
 %post autoipd
 %{fillup_only -ns avahi autoipd}
-if getent passwd avahi > /dev/null; then
-  # Change ownership of /var/lib/avahi-autoipd after upgrade from openSUSE <= 12.3 and SLE <= 11.
-  find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:avahi-autoipd {} +
-fi
 
 %ldconfig_scriptlets -n libavahi-client%{avahi_client_sover}
 %ldconfig_scriptlets -n libavahi-common%{avahi_common_sover}

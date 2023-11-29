@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 21 07:04:06 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch readline82-002
+  * It's possible for readline to try to zero out a line that's not null-
+    terminated, leading to a memory fault.
+- Add upstream patch readline82-003
+- Add upstream patch readline82-004
+- Add upstream patch readline82-005
+  * If an application is using readline in callback mode, and a signal arrives
+    after readline checks for it in rl_callback_read_char() but before it
+    restores the application's signal handlers, it won't get processed until the
+    next time the application calls rl_callback_read_char(). Readline needs to
+    check for and resend any pending signals after restoring the application's
+    signal handlers.
+- Add upstream patch readline82-006
+  * This is a variant of the same issue as the one fixed by patch 5. In this
+    case, the signal arrives and is pending before readline calls rl_getc().
+    When this happens, the pending signal will be handled by the loop, but may
+    alter or destroy some state that the callback uses. Readline needs to treat
+    this case the same way it would if a signal interrupts pselect/select, so
+    compound operations like searches and reading numeric arguments get cleaned
+    up properly.
+- Add upstream patch readline82-007
+  * If readline is called with no prompt, it should display a newline if return
+    is typed on an empty line. It should still suppress the final newline if
+    return is typed on the last (empty) line of a multi-line command.
+
+-------------------------------------------------------------------
 Fri Oct 21 08:36:57 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Extend version linker map file to detect usage of new symbols (boo#1204336) 

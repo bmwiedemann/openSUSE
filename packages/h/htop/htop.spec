@@ -22,7 +22,7 @@ Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
 URL:            https://htop.dev
-Source0:        https://github.com/htop-dev/htop/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/htop-dev/htop/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig >= 0.9.0

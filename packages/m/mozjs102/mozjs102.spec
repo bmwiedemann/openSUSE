@@ -130,21 +130,21 @@ This package contains the header file and tools to develop with JavaScript.
 %setup -q -n firefox-%{version}/js/src
 
 pushd ../..
-%patch01 -p1
-%patch02 -p1
-%patch03 -p1
-%patch09 -p1
-%patch10 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch -P 01 -p1
+%patch -P 02 -p1
+%patch -P 03 -p1
+%patch -P 09 -p1
+%patch -P 10 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
 %ifarch s390x
-%patch18 -p1
+%patch -P 18 -p1
 %endif
 # Fixes for ppc64 and s390x, there is no need to keep it in ifarch here since mozilla tests support ifarch conditions
-%patch19 -p1
-%patch20 -p1
+%patch -P 19 -p1
+%patch -P 20 -p1
 
 # Copy out the LICENSE file
 cp LICENSE js/src/

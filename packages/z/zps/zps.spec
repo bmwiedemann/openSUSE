@@ -1,7 +1,7 @@
 #
 # spec file for package zps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           zps
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        Utility for listing and reaping zombie processes
 License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://github.com/orhun/zps
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
-Source2:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sha512
 BuildRequires:  c_compiler
 
 %description
@@ -35,7 +33,7 @@ if `--reap` argument is provided. There's also `--lreap` argument for reaping zo
 processes after listing.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %make_build

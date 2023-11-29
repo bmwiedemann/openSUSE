@@ -2126,4 +2126,41 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>1125174</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>b47ce911781f520267265910ac89c30d</srcmd5>
+    <version>3.27.8</version>
+    <time>1701121314</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.27.8 (bsc#1215888, CVE-2023-38545):
+  * cmComputeLinkDepends: also copy the target from object link items
+  * cmComputeLinkInformation: skip over linking to items for object purposes
+  * Fortran: Restore support for TARGET_OBJECTS providing modules
+  * curl: Backport SOCKS5 heap buffer overflow fix from curl 8.4.0
+  * GetPrerequisites: Revert “Ignore relative paths printed by ldd”
+  * cmCommonTargetGenerator: Factor out GetLinkedTargetDirectories loop body
+  * cmComputeLinkInformation: Track targets named by TARGET_OBJECTS sources
+  * FindOpenMP: Add support for openmp 5.1 (llvm 17) and 5.2
+
+- modify shebang to the actual python interpreter on install
+    target_sources() command.
+  and turn off LTO
+    fix may be restored in a future version of CMake via a policy.
+    CMAKE_CONFIGURATION_TYPES
+    CMAKE_INSTALL_MODE
+  * Multiple further bug fixes
+  race
+  compiler generated headers.
+  * The Compile Features functionality was updated for MSVC 19.28
+  https://blog.kitware.com/cmake-3-17-0-available-for-download/
+  * In CMake 3.15.0 through 3.15.3, the EXCLUDE_FROM_ALL directory
+    within the directory to be excluded even from its own “all”.
+    This has been fixed. The bug also existed in 3.14.0 through
+- Use pkgconfig for dependencies where possible (required due to
+    find_package() command to fail on a missing package even
+  * reverted change to pass compiler implicit include directories
+  * Cmake(1) build tool (cmake--build) gained --parallel [&lt;jobs&gt;]
+  * CMAKE_FOLDER variable was added to initialze the FOLDER property
+  * ChangeLog, see: https://cmake.org/cmake/help/v3.12/release/3.12.html</comment>
+    <requestid>1129091</requestid>
+  </revision>
 </revisionlist>

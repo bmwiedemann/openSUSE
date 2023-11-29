@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 24 09:34:20 UTC 2023 - cathy.hu@suse.com
+
+- Update to version 20231124:
+  * Allow virtnetworkd_t to execute bin_t (bsc#1216903)
+
+-------------------------------------------------------------------
+Wed Nov 22 14:37:56 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Add new modules that were missed in the last update to 
+  modules-mls-contrib.conf
+
+-------------------------------------------------------------------
+Wed Nov 22 13:49:14 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Add new modules that were missed in the last update to 
+  modules-targeted-contrib.conf
+
+-------------------------------------------------------------------
 Mon Oct 30 10:28:10 UTC 2023 - cathy.hu@suse.com
 
 - Update to version 20231030:

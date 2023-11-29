@@ -238,7 +238,7 @@ test -f %{buildroot}%{_libdir}/pkgconfig/tbb32.pc && mv %{buildroot}%{_libdir}/p
 mkdir python-test
 pushd python-test
 export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m tbb test -v
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} timeout 5m $python -m tbb test -v
 popd
 %endif
 

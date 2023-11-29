@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:55:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.0:
+  * The ``update()`` methods of TupleHash128 and TupleHash256
+    objects can now hash multiple items (byte strings) at once.
+  * Added support for ECDH, with ``Crypto.Protocol.DH``.
+  * GH#754: due to a bug in ``cffi``, do not use it on Windows
+    with Python 3.12+.
+
+-------------------------------------------------------------------
 Tue Jun 27 12:54:10 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -56,7 +66,7 @@ Mon Mar 27 09:18:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Dec  6 13:19:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.16.0 
+- Update to 3.16.0
   New features
   * Build wheels for musl Linux. Thanks to Ben Raz.
   Resolved issues
@@ -89,7 +99,7 @@ Tue Feb 15 08:52:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Relaxed ECDSA requirements for FIPS 186 signatures and accept any SHA-2 or
   * SHA-3 hash.  ``sign()`` and ``verify()`` will be performed even if the hash is stronger
     than the ECC key.
-   
+
 -------------------------------------------------------------------
 Sat Dec 11 13:50:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -123,10 +133,10 @@ Thu Apr 22 19:58:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 3.10.1:
   * Python 3 wheels use ``abi3`` ABI tag.
   * Remove Appveyor CI.
-  
+
   3.10.0 (6 February 2021)
   ++++++++++++++++++++++++
-  
+
   Resolved issues
   ---------------
   * Fixed a potential memory leak when initializing block ciphers.
@@ -141,14 +151,14 @@ Thu Apr 22 19:58:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * GH#496: added missing ``block_size`` member for ECB cipher objects. Thanks to willem.
   * GH#500: ``nonce`` member of an XChaCha20 cipher object was not matching the original nonce.
     Thanks to Charles Machalow.
-  
+
   Other changes
   -------------
   * The bulk of the test vectors have been moved to the separate
     package ``pycryptodome-test-vectors``. As result, packages ``pycryptodome`` and
     ``pycryptodomex`` become significantly smaller (from 14MB to 3MB).
   * Moved CI tests and build service from Travis CI to GitHub Actions.
-  
+
   Breaks in compatibility
   -----------------------
   * Drop support for Python 2.6 and 3.4.
@@ -309,12 +319,12 @@ Thu Nov  1 10:42:04 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
     * Added support for Poly1305 MAC (with AES and ChaCha20 ciphers
       for key derivation).
     * Added support for ChaCha20-Poly1305 AEAD cipher.
-    * New parameter output for Crypto.Util.strxor.strxor, 
-      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in 
-      symmetric ciphers (Crypto.Cipher package). output is a 
-      pre-allocated buffer (a bytearray or a writeable memoryview) 
-      where the result must be stored. This requires less memory for 
-      very large payloads; it is also more efficient when encrypting 
+    * New parameter output for Crypto.Util.strxor.strxor,
+      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in
+      symmetric ciphers (Crypto.Cipher package). output is a
+      pre-allocated buffer (a bytearray or a writeable memoryview)
+      where the result must be stored. This requires less memory for
+      very large payloads; it is also more efficient when encrypting
       (or decrypting) several small payloads.
 
   - Resolved issues
@@ -340,17 +350,17 @@ Mon Sep  3 14:21:25 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.6.6
   - Resolved issues:
-    * Fix vulnerability on AESNI ECB with payloads smaller than 
+    * Fix vulnerability on AESNI ECB with payloads smaller than
       16 bytes.
 
 - Update to 3.5.5
   - Resolved issues
 
-    * Fixed incorrect AES encryption/decryption with AES 
-      acceleration on x86 due to gcc’s optimization and strict 
+    * Fixed incorrect AES encryption/decryption with AES
+      acceleration on x86 due to gcc’s optimization and strict
       aliasing rules.
-    * More prime number candidates than necessary where discarded 
-      as composite due to the limited way D values were searched 
+    * More prime number candidates than necessary where discarded
+      as composite due to the limited way D values were searched
       in the Lucas test.
     * Fixed ResouceWarnings and DeprecationWarnings.
 
@@ -358,7 +368,7 @@ Mon Sep  3 14:21:25 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
   - New features:
     * Build Python 3.7 wheels on Linux, Windows and Mac.
   - Resolved issues:
-    * More meaningful exceptions in case of mismatch in IV length 
+    * More meaningful exceptions in case of mismatch in IV length
       (CBC/OFB/CFB modes).
 
 -------------------------------------------------------------------

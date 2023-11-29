@@ -16,10 +16,9 @@
 #
 
 
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dill
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
@@ -63,6 +62,7 @@ find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/undill
+%python_clone -a %{buildroot}%{_bindir}/get_gprof
 %python_clone -a %{buildroot}%{_bindir}/get_objgraph
 
 %check
@@ -72,7 +72,7 @@ export PYTHONPATH=%{_builddir}/dill-dill-%{version}
 %python_exec dill/tests/__main__.py
 
 %post
-%{python_install_alternative undill get_objgraph}
+%{python_install_alternative undill get_objgraph get_gprof}
 
 %postun
 %python_uninstall_alternative undill
@@ -81,6 +81,7 @@ export PYTHONPATH=%{_builddir}/dill-dill-%{version}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/undill
+%python_alternative %{_bindir}/get_gprof
 %python_alternative %{_bindir}/get_objgraph
 %{python_sitelib}/dill
 %{python_sitelib}/dill-%{version}*-info

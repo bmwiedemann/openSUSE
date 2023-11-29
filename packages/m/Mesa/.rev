@@ -5422,4 +5422,21 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1126583</requestid>
   </revision>
+  <revision rev="491" vrev="363">
+    <srcmd5>0aa64447abefa9c0ac28e89a59170806</srcmd5>
+    <version>unknown</version>
+    <time>1700771926</time>
+    <user>anag+factory</user>
+    <comment>- buildrequire 'pkgconfig(SPIRV-Tools)' also with disabled rusticl
+  (new dep since some time)
+
+- re-disable rusticl on sle15-sp6 to prevent more deps (rust-bindgen)
+- buildrequire 'pkgconfig(LLVMSPIRVLib)' also with disabled rusticl
+  (new dep since some time)
+
+- enable rusticl on sle15-sp6 
+
+- let sle15-sp6 require llvm17/clang17</comment>
+    <requestid>1128045</requestid>
+  </revision>
 </revisionlist>

@@ -200,6 +200,7 @@ export ESBUILD_BINARY_PATH=/bin/true
 export CFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden"
 export CXXFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden"
 export LDFLAGS="%{?build_ldflags}"
+export MAKEFLAGS="%{_smp_mflags}"
 
 %if 0%{?suse_version}
 auditable='auditable -vv'
@@ -223,7 +224,7 @@ cd build
 mkdir -pv node_modules/@bitwarden/desktop-native
 cp -plv ../desktop_native/{package.json,index.js} -t node_modules/@bitwarden/desktop-native
 cp -plvT ../desktop_native/target/release/*.so node_modules/@bitwarden/desktop-native/desktop_native.node
-rm -v ../../../node_modules/argon2/build-tmp-napi-v3/node_gyp_bins/python3
+rm -fv ../../../node_modules/argon2/build-tmp-napi-v3/node_gyp_bins/python3
 cp -plvr ../../../node_modules/argon2 -t node_modules/
 cp -plvr '../../../node_modules/@phc' -t node_modules/
 
@@ -293,14 +294,14 @@ find . -type d -empty -print -delete
 
 %check
 # Sanity check that we don't have unresolved symbols, and only call napi_* functions (which are ABI stable, unlike node_* ones)
-cd %{buildroot}%{_libdir}/%{name}
+pushd %{buildroot}%{_libdir}/%{name}
 find . -name '*.node' -print0 | xargs -0 -t -IXXX sh -c '! ldd -d -r XXX | \
 grep    '\''^undefined symbol'\'' | \
 grep -v '\''^undefined symbol: napi_'\'' '
 
 # Check that all native modules are loadable.
 find . -name '*.node' -print0 | xargs -0 -t -IXXX env ELECTRON_RUN_AS_NODE=1 %{_libdir}/electron/electron -e 'require("XXX")'
-
+popd
 
 
 

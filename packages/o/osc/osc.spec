@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define use_python python3
 %define use_python_pkg python3
 
@@ -48,6 +47,7 @@
 %endif
 
 %define argparse_manpage_pkg %{use_python_pkg}-argparse-manpage
+%define obs_build_pkg obs-build
 %define sphinx_pkg %{use_python_pkg}-Sphinx
 
 %if 0%{?fedora}
@@ -55,8 +55,12 @@
 %define sphinx_pkg %{use_python_pkg}-sphinx
 %endif
 
+%if 0%{?suse_version}
+%define obs_build_pkg build
+%endif
+
 Name:           osc
-Version:        1.4.4
+Version:        1.5.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -103,7 +107,7 @@ Recommends:     %{use_python_pkg}-distro
 Recommends:     %{use_python_pkg}-keyring
 Recommends:     %{use_python_pkg}-keyring-keyutils
 
-Recommends:     build
+Recommends:     %{obs_build_pkg}
 Recommends:     ca-certificates
 Recommends:     diffstat
 Recommends:     powerpc32

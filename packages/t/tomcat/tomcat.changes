@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 23 12:32:49 UTC 2023 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- replace prep setup and patches macro with autosetup
+
+-------------------------------------------------------------------
 Fri Oct 13 11:12:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to Tomcat 9.0.82

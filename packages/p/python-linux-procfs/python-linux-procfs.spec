@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-linux-procfs
-Version:        0.7.1
+Version:        0.7.3
 Release:        0
 Summary:        Linux /proc abstraction classes
 License:        GPL-2.0-or-later

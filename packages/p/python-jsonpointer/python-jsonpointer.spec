@@ -22,10 +22,9 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-jsonpointer
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Module to identify specific nodes in a JSON document
 License:        BSD-3-Clause

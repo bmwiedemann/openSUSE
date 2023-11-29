@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 28 07:24:46 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to version 7.3.0
+  * deprecate keyword "dev" for specifying interface name, use
+    offload_dev instead
+  * support passing an interface name with xdpmeta_dev <ifname>
+    with "prog load"
+  * show more details information when displaying BPF links
+  * show netfilter, tcx, and netkit information in the "net list"
+  * support cgroup UNIX socket attach points
+  * show inner map IDs (instead of raw values) with "map dump"
+  * support LLVM's v4 instructions in the disassembler
+  * fix JIT compiler global memory limit report for unprivileged
+    users on aarch64
+- Remove backported patches that have been included in v7.3.0
+  * drop 0001-bpftool-use-a-local-copy-of-perf_event-to-fix-access.patch
+  * drop 0002-bpftool-define-a-local-bpf_perf_link-to-fix-accessin.patch
+  * drop 0003-bpftool-use-a-local-bpf_perf_event_value-to-fix-acce.patch
+  * drop 0004-bpftool-Use-a-local-copy-of-BPF_LINK_TYPE_PERF_EVENT.patch
+
+-------------------------------------------------------------------
 Wed Mar 29 17:35:09 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to out-of-tree version 7.2.0

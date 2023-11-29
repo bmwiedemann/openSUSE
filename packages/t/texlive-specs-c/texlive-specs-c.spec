@@ -19,7 +19,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   209
+%define texlive_noarch   210
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -10894,10 +10894,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/example-bookinthesis.bib
 %{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/example-bookinthesis.dot
 %{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/example-bookinthesis.pdf
-%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/generate-crossref-graphs.py
-%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/latexmkrc
-%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/makefile
-%{_texmfdistdir}/doc/latex/biblatex-bookinother/makefile
 
 %files -n texlive-biblatex-bookinother
 %{_texmfdistdir}/tex/latex/biblatex-bookinother/bookinother.bbx
@@ -13812,10 +13808,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/example-maineditor.bib
 %{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/example-maineditor.dot
 %{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/example-maineditor.pdf
-%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/generate-crossref-graphs.py
-%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/latexmkrc
-%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/makefile
-%{_texmfdistdir}/doc/latex/biblatex-morenames/makefile
 
 %files -n texlive-biblatex-morenames
 %{_texmfdistdir}/tex/latex/biblatex-morenames/morenames.bbx
@@ -20053,12 +20045,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/generate-crossref-graphs.py
-    do
-	test -e %{buildroot}/$scr || continue
-	chmod 0755 %{buildroot}/$scr
-    done
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/generate-crossref-graphs.py
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/latexmkrc
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/makefile
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/makefile
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -20130,12 +20121,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/generate-crossref-graphs.py
-    do
-	test -e %{buildroot}/$scr || continue
-	chmod 0755 %{buildroot}/$scr
-    done
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/generate-crossref-graphs.py
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/latexmkrc
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/makefile
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/makefile
     tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist

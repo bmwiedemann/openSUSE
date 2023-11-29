@@ -1,3 +1,13 @@
+-------------------------------------------------------------------
+Thu Nov 23 08:33:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to latest git version 1.0~git20230901.10997ba:
+  * pd-mapper: Add ability to decompress .xz json files
+- Remove hack for compressed [xz] firmware since it now supports 
+  it
+- Clean-up spec file
+- Make use of _service
+
 --------------------------------------------------------------------
 Thu Nov 09 15:52:51 UTC 2023 - Chester Lin <clin@suse.com>
 - Fix %changelog

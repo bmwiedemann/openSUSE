@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Nov 21 04:25:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.11.4:
+  * MAINT: ensure cobyla objective returns scalar
+  * MAINT: fixup dep warning
+  * BUG: interpolate: fix spalde with len(c) < len(t)
+  * BUG: pass unused xrtol in fmin_bfgs to _minimize_bfgs
+  * BUG: Regression test for lsq trf boundary error
+  * BUG: lsq trf gives x=1e-10 if x0 is near a bound
+  * BUG: make Bessel-roots function not hang and not skip roots
+  * io/matlab: Fix loading of mat files containing fn handles when
+    simplify_cells=True
+  * BUG: make L-BFGS-B work with single precision gradient
+  * MAINT: stats: fix NumPy DeprecationWarnings
+  * BUG: sparse.linalg: Cast to intc before SuperLU
+  * MAINT: Use deb_system scheme to match meson's path inference & fix aarch64
+  * BUG: Fix python3.12 distutils dev.py build
+  * BUG: stats: remove use of `BOOST_MATH_DECLARE_SPECIAL_FUNCTIONS`
+  * MAINT: fix libquadmath licence
+  * MAINT: newton, make sure x0 is an inexact type
+  * MAINT: stats.CovViaEigendecomposition: fix _colorize for singular
+    covariance
+  * TST: fix `TestODR.test_implicit` test failure with tolerance bump
+  * BUG: signal: freqz rfft grid fix
+  * BUG: Support sparse arrays in scipy.sparse.csgraph.laplacian
+  * MAINT: signal: Remove the cval parameter from the private function
+    _pad_test.
+  * BLD: Avoid absolute pathnames in .pyx files
+  * BUG: Add back make_strictly_feasible to lsq trf.
+  * MAINT: should not be using np.float64() on arrays
+  * BUG: trust-constr Bounds exclusive
+  * BUG: sparse.csgraph: Support int64 indices in traversal.pyx
+  * BUG: add infeasibility checks to min_weight_full_bipartite_matching
+  * DOC, MAINT: workaround for py311 docs
+  * BUG: Fix typecasting problem in scipy.sparse.lil_matrix truediv
+  * BUG: In least_squares make initial guess sufficiently feasible w.r.t.
+    to bounds for method 'trf'
+  * BUG: fix pow method for sparrays with power zero
+  * BUG: set idx_dtype in sparse dia_array.tocoo
+- Drop patch intc.patch, included.
+
+-------------------------------------------------------------------
 Mon Oct  9 06:52:54 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Let it build for Leap 15.6 also.

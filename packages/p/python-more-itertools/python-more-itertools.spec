@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-more-itertools
-Version:        9.1.0
+Version:        10.1.0
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/erikrose/more-itertools
 Source:         https://files.pythonhosted.org/packages/source/m/more-itertools/more-itertools-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

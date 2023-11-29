@@ -1081,4 +1081,36 @@
     <comment>- avoid obsoletes on provides as we now had a version update</comment>
     <requestid>1127690</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5f15274ed98c589fcebaa2a1bed1aa3a</srcmd5>
+    <version>3.0.6</version>
+    <time>1701206282</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.6:
+  * Features added
+  * Fused def function dispatch is a bit faster.
+  * Declarations for the ``wchar`` PyUnicode API were added.
+  * The Python &quot;nogil&quot; fork is now also detected with the new
+    ``Py_GIL_DISABLED`` macro.
+  * Patch by Hugo van Kemenade   (Github issue :issue:`583652`)
+  * Bugs fixed
+  * Comparing dataclasses could give different results than
+    Python.
+  * ``float(std::string)`` generated invalid C code.
+  * Using ``cpdef`` functions with ``cimport_from_pyx`` failed.
+  * A crash was fixed when string-formatting a Python value
+    fails.
+  * On item access, Cython could try the sequence protocol before
+    the mapping protocol
+  * in some cases if an object supports both.
+  * A C compiler warning was resolved.
+  * Complex numbers failed to compile in MSVC with C11.
+  * Patch by Lysandros Nikolaou.  (Github issue :issue:`5809`)
+  * Some issues with the Limited API and with PyPy were resolved.
+  * A C++ issue in Python 3.13 was resolved.
+  * Several directives are now also available (as no-ops) in
+    Python code.
+  * An error message was corrected.</comment>
+    <requestid>1129058</requestid>
+  </revision>
 </revisionlist>

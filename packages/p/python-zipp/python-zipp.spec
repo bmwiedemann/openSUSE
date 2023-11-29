@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,15 +24,16 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-zipp%{psuffix}
-Version:        3.15.0
+Version:        3.17.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/zipp
 Source:         https://files.pythonhosted.org/packages/source/z/zipp/zipp-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
@@ -70,10 +70,6 @@ rm -r zipp.egg-info
 
 %if %{with test}
 %check
-# skip performance test (we do not have func_timeout sofar)
-sed -i -e 's:import func_timeout::' \
-       -e 's:@func_timeout.func_set_timeout(.):@unittest.skip("skip performance test"):' \
-       tests/test_zipp.py
 %pytest
 %endif
 

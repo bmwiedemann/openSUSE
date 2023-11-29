@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 25 12:54:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.2:
+  * Update Vega-Lite from version 5.14.1 to version 5.15.1;
+  * Remove usage of deprecated Pandas parameter
+    ``convert_dtypes`` (#3191)
+  * Fix encoding type inference for boolean columns when pyarrow
+    is installed (#3210)
+
+-------------------------------------------------------------------
 Wed Sep 13 06:39:45 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.1.1:
@@ -43,7 +53,7 @@ Sat Jan 28 13:22:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.2:
   * Disable uri-reference format check in jsonsschema (#2771).
-  * Replace iteritems with items due to pandas deprecation (#2683). 
+  * Replace iteritems with items due to pandas deprecation (#2683).
 
 -------------------------------------------------------------------
 Wed May 25 15:12:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -64,7 +74,7 @@ Wed May 25 15:12:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Feb 19 14:36:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Skip python36 build: With NumPy 1.20, Tumbleweed no longer 
+- Skip python36 build: With NumPy 1.20, Tumbleweed no longer
   provides a python36-numpy (NEP 29)
 
 -------------------------------------------------------------------
@@ -151,7 +161,7 @@ Fri Aug 16 16:10:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
     *  New encoding channels are properly parsed
     *  Data context is propagated when encodings are specified as lists
   + Backward-Incompatible Changes
-    *  ``alz.LayerChart`` no longer has ``mark_*()`` methods, because they never 
+    *  ``alz.LayerChart`` no longer has ``mark_*()`` methods, because they never
        produced valid chart specifications)
 
 -------------------------------------------------------------------

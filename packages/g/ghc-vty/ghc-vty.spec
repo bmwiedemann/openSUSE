@@ -19,7 +19,7 @@
 %global pkg_name vty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        5.38
+Version:        5.39
 Release:        0
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause
@@ -134,6 +134,8 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files -f %{name}.files
 %license LICENSE
 %{_bindir}/vty-build-width-table
+%{_bindir}/vty-crash-fix
+%{_bindir}/vty-crash-test
 %{_bindir}/vty-demo
 %{_bindir}/vty-mode-demo
 

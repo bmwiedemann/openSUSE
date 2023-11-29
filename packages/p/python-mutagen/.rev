@@ -317,4 +317,28 @@
     <comment></comment>
     <requestid>1097952</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a3c368efab47115ee1e2830c3fe42a9c</srcmd5>
+    <version>1.47.0</version>
+    <time>1701121426</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.47.0:
+  * ID3: Allow reading TYER tags in the form of &quot;yyyy-mm-dd&quot;
+  * ID3: Handle negative extended header sizes :pr:`607`
+  * ID3: id3 frames fix bad cast due to str.isdigit :pr:`616`
+  * MP3: Auto-detect MP3 files without ID3 tags :pr:`601`
+  * WAVE: Extensible wave format support :bug:`595` :pr:`596`
+  * WAVE, AIFF: Handle truncated IFF files :bug:`496` :pr:`517`
+  * MP4: add a check for wrong offsets in mp4 files :bug:`426`
+  * FLAC: Fix cuesheet and seektable saving :pr:`534`
+  * TrueAudio: Read sample rate as unsigned and handle zero
+    sample rate :pr:`609`
+  * docs: Fixed documentation for id3.ID3.save parameter
+    v2_version
+  * docs: Make extlinks compatible with sphinx 6.0 :pr:`590`
+  * docs: Fixed various typos :pr:`602`
+  * Add some more type annotations :pr:`622`
+  * Various minor fixes for issues uncovered by oss-fuzz</comment>
+    <requestid>1129065</requestid>
+  </revision>
 </revisionlist>

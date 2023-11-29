@@ -23,7 +23,7 @@
 %global descriptor An implementation of the Double Ratchet cryptographic ratchet \
 in C and C++, including an implementation of the Megolm cryptographic ratchet
 Name:           %{origname}
-Version:        3.2.15
+Version:        3.2.16
 Release:        0
 Summary:        Double Ratchet cryptographic library
 License:        Apache-2.0

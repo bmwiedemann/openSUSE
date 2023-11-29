@@ -1,13 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 27 16:09:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * remove support for python 3.6
+  * Fix tests for typeguard 3.x
+  * Add support for async sleep functions in tenacity.retry
+    annotation
+
+-------------------------------------------------------------------
 Wed May 31 19:54:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.2:
   * feat: accept datetime.timedelta instances as argument to `stop_after..
-  * fix: docstring for wait_exponential_jitter 
-  * fix: remove __iter__ from AsyncRetring 
+  * fix: docstring for wait_exponential_jitter
+  * fix: remove __iter__ from AsyncRetring
   * Add retry_if_exception_cause_type and wait_exponential_jitter
   * better wait.WaitBaseT annotation
-  * CI conversion to GitHub actions 
+  * CI conversion to GitHub actions
 
 -------------------------------------------------------------------
 Mon May 15 13:57:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
@@ -83,7 +92,7 @@ Wed Nov  9 19:19:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 15:50:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 8.0.1 
+- Update to version 8.0.1
  * no upstream changelog
 
 -------------------------------------------------------------------
@@ -286,7 +295,7 @@ Fri Dec  2 17:38:01 UTC 2016 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Nov  9 14:14:17 UTC 2016 - dmueller@suse.com
 
-- update to 3.3.0: 
+- update to 3.3.0:
   * Implement '+' operator for wait strategies
   * Rename `_retrying` attribute to `retry` and document it
   * Store retrying object as an attribute of retried function

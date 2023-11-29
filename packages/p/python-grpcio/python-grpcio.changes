@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 22 17:38:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches for embeeded xxhash 0.8.1 from SLE's xxhash package.
+- Add xxhash-ppc64le-gcc7.patch: fix build failure on ppc64le
+  when using gcc 7 (boo#1208794).
+- add patch xxhash-avoid-armv6-unaligned-access.patch
+  do not expect unaligned accesses to work on armv6, it breaks
+  in our build setup using aarch64 kernels 
+
+-------------------------------------------------------------------
 Tue Oct 31 08:50:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.59.2:

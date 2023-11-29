@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Nov 24 20:53:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.39:
+  * Bug fixes: extensions: Don't search imports for extension
+    prefixes
+  * Improvements:
+    - transform: Check maximum depth when processing default
+      templates
+    - build:
+      . Add more missing include
+      . Add missing includes
+    - python: Don't set deprecated global
+    - imports: Limit nesting depth
+    - extensions: Report top-level elements in
+      xsltDebugDumpExtensions
+    - Add extern "C" { } block to xsltlocale.h
+  * Portability:
+    - python: Make it compatible with python3.12
+    - date:
+      . Fix check for localtime_s
+      . Fix check for gmtime_s
+  * Build systems:
+    - pkg-config files include cflags for static builds
+    - Handle NOCONFIG case when setting locations from CMake target
+      properties
+    - autotools: Make xslt-config executable
+  * Tests:
+    - tests: Structured error handler now passes a const xmlError
+    - python: Fix tests on MinGW
+    - fuzz: Fix xmlFuzzEntityLoader after recent libxml2 changes
+
+-------------------------------------------------------------------
 Tue May  9 16:09:17 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Removed patch 0009-Make-generate-id-deterministic.patch as it's

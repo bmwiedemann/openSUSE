@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 22 10:06:42 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build without hyperscan:
+  * rspamd-d907a95.patch
+
+-------------------------------------------------------------------
 Tue Nov 14 20:41:32 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.7.4

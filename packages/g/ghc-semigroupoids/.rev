@@ -227,4 +227,12 @@ A 'Category' is any 'Semigroupoid' for which the Yoneda lemma holds.</comment>
     <comment>update for ghc-9.4.4</comment>
     <requestid>1076029</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>52bb79202f85d07d35b662329855e84f</srcmd5>
+    <version>6.0.0.1</version>
+    <time>1700772040</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128081</requestid>
+  </revision>
 </revisionlist>

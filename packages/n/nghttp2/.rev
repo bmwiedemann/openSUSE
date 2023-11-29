@@ -797,4 +797,20 @@
   * h2load: Fix bug that initial max concurrent streams was too</comment>
     <requestid>1123980</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>a72727013ba5aef81328a21f32c5ac09</srcmd5>
+    <version>1.57.0</version>
+    <time>1700675654</time>
+    <user>anag+factory</user>
+    <comment>- fix unversioned provides to be in sync with nghttp3</comment>
+    <requestid>1127896</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>eddb104470914cdd8162cd744efc15b8</srcmd5>
+    <version>1.58.0</version>
+    <time>1701121357</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128913</requestid>
+  </revision>
 </revisionlist>

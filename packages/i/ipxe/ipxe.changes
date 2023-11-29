@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 20 12:32:04 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add 1082.patch to make ipxe.sdsk build reproducible (boo#1062303)
+
+-------------------------------------------------------------------
 Mon Nov  6 16:16:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

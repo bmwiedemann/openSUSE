@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:19:07 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete dependency on foldable1-classes-compat.
+
+-------------------------------------------------------------------
 Wed Oct  4 14:28:03 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update indexed-traversable to version 0.1.3.

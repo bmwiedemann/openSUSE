@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:34:21 UTC 2023 - munix9@googlemail.com
+
+- Update to version 20231124
+  Bug Fixes
+  * Typo within README.md (#294)
+  * Motorola adbfast code, also sort codes and use default drop (#297)
+
+  Features
+  * Add CI to verify rules (#291)
+
+  Styling
+  * Remove all unused labels
+
+-------------------------------------------------------------------
 Tue Nov  7 08:04:52 UTC 2023 - munix9@googlemail.com
 
 - Update to version 20231104

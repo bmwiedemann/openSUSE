@@ -79,4 +79,17 @@
 - Update Requires from setup.py (forwarded request 1105201 from glaubitz)</comment>
     <requestid>1105207</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4da308077504871219738faa4f246020</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1701023895</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b7 (forwarded request 1128522 from glaubitz)</comment>
+    <requestid>1128900</requestid>
+  </revision>
 </revisionlist>

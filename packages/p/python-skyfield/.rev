@@ -320,4 +320,12 @@ research-grade positions for planets and Earth satellites.</comment>
     <comment>- Don't build for python311: gh#brandon-rhodes/assay#15</comment>
     <requestid>1066657</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ecc1173c2114b81d6f62a06e40b590e0</srcmd5>
+    <version>1.46</version>
+    <time>1700865288</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128528</requestid>
+  </revision>
 </revisionlist>

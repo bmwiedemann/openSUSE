@@ -225,4 +225,13 @@ no _service here, yo stupid bot</comment>
     <comment>- Update to release 1.17.4</comment>
     <requestid>1121595</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>848510b662e49817c8bb8eae9ccd2830</srcmd5>
+    <version>1.17.6</version>
+    <time>1701121340</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.17.6:
+  * Support negative --{uid,gid}-offset (issue #142)</comment>
+    <requestid>1128767</requestid>
+  </revision>
 </revisionlist>

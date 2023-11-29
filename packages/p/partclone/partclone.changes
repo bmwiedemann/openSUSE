@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov 25 22:26:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.27:
+  * add read-direct-io and write-direct-io options for O_DIRECT
+    flag
+  * add date time to log file
+
+-------------------------------------------------------------------
 Fri Sep 29 08:06:50 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 0.3.26:
   * add the direct-io option for writing data to a TARGET device or file.
-  * correction for item at offset 76 
-  * report used blocks and free space based on bitmap 
+  * correction for item at offset 76
+  * report used blocks and free space based on bitmap
 - force higher gcc version on Leap
 
 -------------------------------------------------------------------
@@ -12,7 +20,7 @@ Mon Sep  4 08:10:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.25:
   * update btrfs library to 6.3.3
-  * Full Changelog: 
+  * Full Changelog:
     https://github.com/Thomas-Tsai/partclone/compare/0.3.24...0.3.25
 - update to 0.3.24:
   * IO stream support for torrent info file.
@@ -113,7 +121,7 @@ Wed Mar 10 07:58:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 Tue Dec 29 13:32:01 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.17:
-  * fix progress 
+  * fix progress
   * update btrfs to 5.4.1
   * fix crash when backing up swap partition
   * Ignore free space check if compression is enabled
@@ -217,7 +225,7 @@ Wed Nov  7 10:30:28 UTC 2012 - fisiu@opensuse.org
 -------------------------------------------------------------------
 Thu Apr 19 02:26:17 UTC 2012 - highwaystar.ru@gmail.com
 
-- update to 0.2.38 
+- update to 0.2.38
 
 -------------------------------------------------------------------
 Sun Sep 19 08:07:37 UTC 2010 - highwaystar.ru@gmail.com
@@ -229,5 +237,5 @@ Sun Sep 19 08:07:37 UTC 2010 - highwaystar.ru@gmail.com
 Fri Sep 17 02:24:55 UTC 2010 - highwaystar.ru@gmail.com
 
 - initial build for openSUSE
-- not all filesystems supported yet 
+- not all filesystems supported yet
 

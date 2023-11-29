@@ -191,4 +191,41 @@ SR for python stack proposal</comment>
     <comment></comment>
     <requestid>1122669</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7fd699623429721ee668eb6d1ec5d3fb</srcmd5>
+    <version>3.7.1</version>
+    <time>1700771923</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.7.1:
+  * Fixed sending large buffers via UNIX stream sockets on
+    asyncio
+  * Fixed several minor documentation issues (broken links to
+    classes, missing classes or attributes)
+  * Dropped support for Python 3.6
+  * Improved type annotations:
+  * Several functions and methods that were previously annotated
+    as accepting ``Coroutine[Any, Any, Any]`` as the return type
+    of the callable have been amended to accept ``Awaitable[Any]``
+    instead, to allow a slightly broader set of coroutine-like
+    inputs, like ``async_generator_asend`` objects returned from
+    the ``asend()`` method of async generators, and to match
+    the ``trio`` annotations:
+    * ``anyio.run()``
+    * ``anyio.from_thread.run()``
+    * ``TaskGroup.start_soon()``
+    * ``TaskGroup.start()``
+    * ``BlockingPortal.call()``
+    * ``BlockingPortal.start_task_soon()``
+    * ``BlockingPortal.start_task()``
+  * Changed ``TLSAttribute.shared_ciphers`` to match the
+    documented semantics of ``SSLSocket.shared_ciphers``
+    of always returning ``None`` for client-side streams
+  * Fixed ``CapacityLimiter`` on the asyncio backend to order
+    waiting tasks in the FIFO order (instead of LIFO)
+  * Fixed ``CancelScope.cancel()`` not working on asyncio if
+    called before entering the scope
+  * Fixed ``open_signal_receiver()`` inconsistently yielding
+    integers instead of ``signal.Signals`` instances on the</comment>
+    <requestid>1126958</requestid>
+  </revision>
 </revisionlist>

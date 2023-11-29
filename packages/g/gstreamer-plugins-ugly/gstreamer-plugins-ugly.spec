@@ -106,14 +106,13 @@ openSUSE because of patent problems.
 export PYTHON=%{_bindir}/python3
 %meson \
 %if ! 0%{?BUILD_ORIG}
-	-Dpackage-name='openSUSE gstreamer-plugins-ugly package' \
-	-Dasfdemux=disabled \
-	-Dpackage-origin='http://www.opensuse.org/' \
-	-Dx264=disabled \
+	-D package-name='openSUSE gstreamer-plugins-ugly package' \
+	-D package-origin='http://www.opensuse.org/' \
+	-D x264=disabled \
 %endif
-	-Dgpl=enabled \
-	-Dsidplay=disabled \
-	-Ddoc=disabled \
+	-D gpl=enabled \
+	-D sidplay=disabled \
+	-D doc=disabled \
 	%{nil}
 %meson_build
 
@@ -128,6 +127,7 @@ export PYTHON=%{_bindir}/python3
 %{_libdir}/gstreamer-%{gst_branch}/libgsta52dec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstamrnb.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstamrwbdec.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstasf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdio.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdlpcmdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdread.so
@@ -140,7 +140,6 @@ export PYTHON=%{_bindir}/python3
 %files orig-addon
 %endif
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstX264Enc.prs
-%{_libdir}/gstreamer-%{gst_branch}/libgstasf.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstx264.so
 %endif
 

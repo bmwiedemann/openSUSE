@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 25 13:01:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.7:
+  * Fix _is_builtin_module
+  * minor changes from PR #554
+  * align LICENSE wording with BSD-3-Clause
+  * Python 3 Metaclasses [Support ABC and Enums - Part 1]
+  * Abstract Base Classes [Support ABC and Enums - Part 2]
+  * fix typo
+  * Bump requests from 2.27.1 to 2.31.0 in /docs
+  * Fixed crashed in _dill._is_builtin_module when a module's
+    __file__ is None
+  * Bump pygments from 2.11.2 to 2.15.0 in /docs
+
+-------------------------------------------------------------------
 Thu May  4 15:20:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build for python 3.7+ only
@@ -75,16 +90,16 @@ Thu Nov 17 13:02:13 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 Mon Oct  3 15:54:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.5.1:
-  * requires python 3.7 
+  * requires python 3.7
   * skip tests with broken stftime
   * resolve symlinks when determining if module is builtin
   * support python 3.10
   * adjust for python 3.11
-  * Support recursive and empty closure cells 
+  * Support recursive and empty closure cells
   * use CAN_NULL for 3.11a7 and above
   * better check for travis in tests
   * parse init file for dist meta
-  * drop rtfd build to 3.8 
+  * drop rtfd build to 3.8
 
 -------------------------------------------------------------------
 Sun Dec 19 17:30:19 UTC 2021 - Ben Greiner <code@bnavigator.de>

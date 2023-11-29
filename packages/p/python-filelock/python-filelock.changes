@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:45:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.1:
+  * Allow users to subclass FileLock with custom keyword
+    arguments
+  * Support reentrant locking on lock file path via optional
+    singleton instance
+  * change typing-extensions to be installed only with the
+    [typing] extra
+
+-------------------------------------------------------------------
 Fri Sep  8 04:26:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing Requires on typing-extensions if < 3.11 
+- Add missing Requires on typing-extensions if < 3.11
 
 -------------------------------------------------------------------
 Thu Sep  7 11:00:28 UTC 2023 - Dirk Müller <dmueller@suse.com>

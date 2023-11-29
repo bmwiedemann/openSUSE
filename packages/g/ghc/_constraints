@@ -24,10 +24,10 @@
     </conditions>
     <hardware>
       <memory>
-        <size unit="G">26</size>
+        <size unit="G">8</size>
       </memory>
       <disk>
-	<size unit="G">25</size>
+	<size unit="G">28</size>
       </disk> 
     </hardware>
   </overwrite>

@@ -62,7 +62,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.85
+Version:        1.0.0
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -625,6 +625,7 @@ fi
 %dir %{_libdir}/pipewire-%{apiver}
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-*.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
+%exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-pulse.so
 %dir %{_libdir}/pipewire-%{apiver}/v4l2/
 %{_libdir}/pipewire-%{apiver}/v4l2/libpw-v4l2.so
 %dir %{_datadir}/alsa-card-profile/
@@ -636,9 +637,13 @@ fi
 %{_datadir}/pipewire/client-rt.conf
 %{_datadir}/pipewire/client-rt.conf.avail/
 %{_datadir}/pipewire/minimal.conf
+%{_mandir}/man7/libpipewire-modules.7%{?ext_man}
+%{_mandir}/man7/libpipewire-module-*.7%{?ext_man}
+%exclude %{_mandir}/man7/libpipewire-module-x11-bell.7%{?ext_man}
 
 %files module-x11-%{apiver_str}
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
+%{_mandir}/man7/libpipewire-module-x11-bell.7%{?ext_man}
 
 %files spa-plugins-%{spa_ver_str}
 %dir %{_libdir}/spa-%{spa_ver}/
@@ -720,7 +725,9 @@ fi
 %{_mandir}/man1/pw-cli.1%{?ext_man}
 %{_mandir}/man1/pw-config.1%{?ext_man}
 %{_mandir}/man1/pw-dot.1%{?ext_man}
+%{_mandir}/man1/pw-dump.1%{?ext_man}
 %{_mandir}/man1/pw-link.1%{?ext_man}
+%{_mandir}/man1/pw-loopback.1%{?ext_man}
 %{_mandir}/man1/pw-metadata.1%{?ext_man}
 %{_mandir}/man1/pw-mididump.1%{?ext_man}
 %{_mandir}/man1/pw-mon.1%{?ext_man}
@@ -747,7 +754,11 @@ fi
 
 %files pulseaudio
 %{_bindir}/pipewire-pulse
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-pulse.so
 %{_mandir}/man1/pipewire-pulse.1%{?ext_man}
+%{_mandir}/man5/pipewire-pulse.conf.5%{?ext_man}
+%{_mandir}/man7/pipewire-pulse-module-*.7%{?ext_man}
+%{_mandir}/man7/pipewire-pulse-modules.7%{?ext_man}
 %{_userunitdir}/pipewire-pulse.*
 %{_datadir}/pipewire/pipewire-pulse.conf
 %{_datadir}/pipewire/pipewire-pulse.conf.avail/

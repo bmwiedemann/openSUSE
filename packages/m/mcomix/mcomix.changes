@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 22 16:03:49 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- fixed typo: Requires: /usr/bin/chardet -> Requires: /usr/bin/chardetect
+
+-------------------------------------------------------------------
+Wed Nov  1 05:28:09 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- replace Requires: python3-chardet with Requires: /usr/bin/chardet
+- use %{python_module} macro for BuildRequires: of python modules
+- use %{pythons} macro for Requires: of python modules
+- cleanup in the %files section
+
+-------------------------------------------------------------------
 Wed Oct 11 18:56:48 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - replace Requires: PyGObject with Requires: python3-gobject-Gdk

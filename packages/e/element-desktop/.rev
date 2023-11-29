@@ -564,4 +564,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1127723</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>535a8d0f4b78d0615c347bf47d6c4263</srcmd5>
+    <version>1.11.50</version>
+    <time>1700865232</time>
+    <user>anag+factory</user>
+    <comment>Version 1.11.50</comment>
+    <requestid>1128211</requestid>
+  </revision>
 </revisionlist>

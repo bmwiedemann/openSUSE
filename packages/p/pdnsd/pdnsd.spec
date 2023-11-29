@@ -1,7 +1,7 @@
 #
 # spec file for package pdnsd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,20 +35,21 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/DNS/Servers
 URL:            http://members.home.nl/p.a.rombouts/pdnsd.html
 
-#Source0:        http://members.home.nl/p.a.rombouts/%{name}/releases/%{name}-%{version}-par.tar.gz
+#Source0:        http://members.home.nl/p.a.rombouts/pdnsd/releases/pdnsd-1.2.9a-par.tar.gz
 Source0:        %{name}-%{version}-par.tar.gz
 Source1:        %{name}.sysconfig
-%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
-Source2:        %{name}.service.sle12
-%else
-Source2:        %{name}.service
-%endif
+Source2:        %{name}.service.in
 # PATCH-FIX-OPENSUSE -- fix UDP response packet for large responses being incorrectly truncated -- seife@novell.slipkontur.de
-Patch1:         %{name}-fix-udppacketsize.diff
+Patch0:         %{name}-fix-udppacketsize.diff
 # borrowed from debian's 1.2.9a-par-3 release
-Patch2:         %{name}-06_reproducible_build.patch
+Patch1:         %{name}-06_reproducible_build.patch
 # PATCH-FIX-OPENSUSE -- compile fix with newer glibc(?)/kernel-headers(?) where ordering matters -- seife+obs@b1-systems.com
-Patch3:         %{name}-net_if_h-vs-linux_if_h.patch
+Patch2:         %{name}-net_if_h-vs-linux_if_h.patch
+# without this, --with-query-method=udptcp is ignored and "-muo" is default
+# PATCH-FIX-OPENSUSE -- make compile-time preset selection work -- seife+obs@b1-systems.com
+Patch3:         %{name}-fix-preproc-errors.patch
+# PATCH-FIX-OPENSUSE -- the default nodaemon option adds a useless timestamp, remove that -- seife+obs@b1-systems.com
+Patch4:         %{name}-nodaemon-logfix.patch
 # PATCH-FIX-OPENSUSE -- cleanup default config
 Patch100:       %{name}_conf.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -67,7 +68,7 @@ For a description of the changes see http://www.phys.uu.nl/~rombouts/pdnsd.html
 and the file README.par in %{_docdir}/%{name}-doc.
 
 %package doc
-Summary:        Docs for pdnsd 
+Summary:        Docs for pdnsd
 Group:          Productivity/Networking/DNS/Servers
 BuildArch:      noarch
 Requires:       %{name}
@@ -77,7 +78,7 @@ This package provides various text files for pdnsd
 
 %prep
 %setup -q
-%autopatch -p0
+%autopatch -p1
 
 %build
 %configure \
@@ -90,13 +91,21 @@ This package provides various text files for pdnsd
 
 make %{?_smp_mflags}
 
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
+# sles12 does not know the hardening stuff...
+sed '/^# BEGIN_NOT_IN_SLES12/,/^# END_NOT_IN_SLES12/d' %{S:2} > %{name}.service
+%else
+sed '/^# BEGIN_NOT_IN_SLES12/d;/^# END_NOT_IN_SLES12/d' %{S:2} > %{name}.service
+%endif
+touch -r %{S:2} %{name}.service
+
 %install
 %make_install
 install -D -m 0644 %{S:1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 cp -a %{buildroot}%{_sysconfdir}/%{name}.conf.sample %{buildroot}%{_sysconfdir}/%{name}.conf
-install -D -m 0644 %{S:2} %{buildroot}%{_unitdir}/%{name}.service
-sed -i -e "s|@cache_file@|%{_cache_file}|" \
- -e "s/@user@/pdns/" -e "s/@group@/pdns/" %{buildroot}%{_unitdir}/%{name}.service
+install -d -m 0755 %{buildroot}/%{_docdir}/%{name}
+mv %{buildroot}%{_sysconfdir}/%{name}.conf.sample .
+install -D -m 0644 %{name}.service %{buildroot}%{_unitdir}/%{name}.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
@@ -120,16 +129,17 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files
 %defattr(-,root,root)
 %config(noreplace) %attr(0640,root,pdns) %{_sysconfdir}/%{name}.conf
-%{_sysconfdir}/%{name}.conf.sample
 %{_sbindir}/*%{name}*
 %{_mandir}/man*/%{name}*
-%dir %attr(0750,pdns,pdns) %{_cache_dir}
-%ghost %attr(-,pdns,pdns) %{_cache_file}
+%dir %attr(0750,pdns,root) %{_cache_dir}
+%ghost %attr(0600,pdns,root) %{_cache_file}
 %{_unitdir}/%{name}.service
 %{_fillupdir}/sysconfig.%{name}
+%license COPYING*
+%doc %{name}.conf.sample
 
 %files doc
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING* NEWS README* THANKS TODO
+%doc AUTHORS ChangeLog NEWS README* THANKS TODO
 
 %changelog

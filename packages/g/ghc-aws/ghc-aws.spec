@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.23
+Version:        0.24.1
 Release:        0
 Summary:        Amazon Web Services (AWS) for Haskell
 License:        BSD-3-Clause

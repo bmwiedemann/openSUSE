@@ -490,4 +490,41 @@
   (gh#pygments/pygments!2564).</comment>
     <requestid>1123390</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a725f883e9a6cadb4d5491d286a87944</srcmd5>
+    <version>2.17.2</version>
+    <time>1701206295</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.17.2:
+  * Fix a packaging issue on macOS
+  * Updated lexers:
+  * TOML: Fix bug making lexing of single-quoted strings too
+    eager
+  * Cypher: fix comment matching, add missing keywords
+  * Fortran: add ``elseif`` keyword
+  * Lean: make it available as ``lean3``, in preparation for
+  * a possible switch to ``lean`` highlighting as Lean 4
+  * JSON: add MIME types and file extensions for several line-
+    delimited JSON formats
+  * Nix: many improvements
+  * OCaml: Add ``and`` keyword, remove ``value`` from keywords
+  * Python: add ``starlark`` and ``bazel`` aliases
+  * Snowball: Treat ``len`` like ``size``
+  * Spice: add ``panic`` keyword and ``-&gt;`` operator
+  * squid.conf: fix catastrophic backtracking
+  * TOML: rewritten, with many fixes
+  * Turtle: support blank nodes
+  * Wikitext: fix erroneous highlighting of LanguageConverter
+    markup
+  * CMake: support ``[=[ bracketed arguments ]=]```
+  * Fix ctags support and tests
+  * Include ``Lexer.add_filter`` in the documentation
+  * Add a ``Lean3Lexer`` alias
+  * The ``pygments.styles`` module contains a new ``STYLES``
+    variable with a dictionary of built-in styles.  The old
+    ``STYLE_MAP`` variable, which uses a different format,
+    is kept for backwards compatibility.
+  * On Windows, add a new installation extra (``windows-</comment>
+    <requestid>1129077</requestid>
+  </revision>
 </revisionlist>

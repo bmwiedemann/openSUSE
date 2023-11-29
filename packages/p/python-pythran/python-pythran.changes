@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 21 06:35:39 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.14.0:
+  * Numpy compatibility - update signatures, complex number handling, long
+    double support
+  * Lazyly import top-level modules and submodules
+  * Improve array indexing by an array
+  * Require at least clang 7 or gcc 8
+  * Make pythran compilation reproducible
+  * Support np.roll with multiple axis
+  * Support numpy.ndarray.view
+  * Improve list resizing speed
+  * Fix bug when filtering an empty sequence
+- Drop patches, now included upstream:
+  * numpy-longdouble.patch
+  * numpy-complex.patch
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Aug  8 16:00:58 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap, because it must not be two "Patch:" lines.

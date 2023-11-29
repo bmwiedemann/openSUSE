@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:06:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.33.0:
+  * Update pyav plugin to reflect AV changes
+  * Unpin Pillow and allow versions >=10.1.0
+  * Support for AVIF image format
+  * Add support for HEIF format
+  * Raise warning instead of error when using fps in pillow
+  * Consistently load GIF frames using the same pixel format
+  * Refactor resolution metadata reading for TIFF and avoid failing on missing data
+  * Add bytes to ImageResource typehints
+  * Remove deprecations in CD
+  * Fix typo in README.md
+  * Fix several typos in the docs and source code comments
+  * Add migration note for format kwarg
+
+-------------------------------------------------------------------
 Thu Aug 17 13:28:50 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -25,12 +42,12 @@ Fri Jun 30 14:22:20 UTC 2023 - Markéta Machová <mmachova@suse.com>
 Sun Oct 16 17:47:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.22.1:
-  * Raise ImportError when iio-ffmpeg is missing  
+  * Raise ImportError when iio-ffmpeg is missing
 
 -------------------------------------------------------------------
 Thu Sep 29 02:30:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.22.0 
+- Update to 2.22.0
   Feature
   * Pyav API for procedural video writing (#853) (acbcb64)
 

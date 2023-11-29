@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Nov 21 15:32:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Update the latest mac models (Host, macOS)
+  * Fix terminal detection on NixOS (Terminal)
+  * `--percent-type` now defaults to 9 (colored percentage
+    numbers)
+  * `fastfetch` now prints LocalIp module by default
+  * Features:
+  * LocalIP module now prints netmask in CIDR format for IPv4
+  * Bios module now detects system firmware type (Bios)
+  * Improve detection of `Battery`
+  * Detect cycle count on supported platforms
+  * Detect temperature on Linux when supported
+  * Status detection on macOS has been adjusted to be consistant
+    with other platforms
+  * Linux binaries are built with imagemagick7 support
+  * Update NixOS_small
+  * Hotfix release for #606
+  * Fix broken presets due to the breaking changes introduced in
+  * Features:
+  * Pretty print `fastfetch --help`
+  * This release introduces a new option `--migrate-config`,
+    which migrates old flag based config file to new JSONC format
+  * Changes:
+  * `--pipe` and `--stat` are moved from `general` options to
+    `display` options. This affects cjson configuration.
+  * Display keys `percent*` and `size*` in JSON config are
+    restructured. e.g. `{ "sizeNdigits": 1 }` is now `{ "size": {
+    "ndigits": 1 } }`
+  * With the introduction of `--migrate-config`, the old flag
+    based config file is deprecated, and will be removed in 3.0.0
+    (next major version)
+  * Support of `--gen-config conf` is deprecated accordingly, and
+    will be removed in 2.3.0 (next minor version)
+  * The global flag `--allow-slow-operations` is splitted into
+    some explicit flags in differnet modules
+  * `--packages-winget`: control whether `winget` packages count
+    should be detected. Note it's a very slow operation, please
+    enable it with caution.
+  * `--chassis-use-wmi`: control whether `WMI` query should be
+    used to detect chassis type, which detects more information,
+    but slower. This flag only affects `--chassis-format` and
+    `--format json`.
+  * `--battery-use-setup-api`: control whether `SetupAPI` should
+    be used on Windows to detect battery info, which supports
+    multi batteries, but slower.
+  * `--wm-detect-plugin`: control whether WM plugins should be
+    detected. Note it's implemented with global processes
+    enumeration and can report false results.
+  * `--de-slow-version-detection`: control DE version should be
+    detected with slow operations. It's usually not necessary and
+    only provided as a backup.
+  * `--localip-default-route-only` and `--netio-default-route-
+    only` defaults to true to avoid large number of results
+  * Features:
+  * Quirks for MIPS platforms (CPU, Linux)
+  * Use devicetree path for OBP hosts (Host, Linux)
+  * Detect `tmux: server` as tmux (Terminal, Linux)
+  * Support urxvt version detection (Terminal, Linux)
+  * Support st version detection (Terminal, Linux)
+  * Support st terminal font detection (TerminalFont, Linux)
+  * Support xfce4-terminal 1.1.0+ terminal font detection
+    (TerminalFont, Linux)
+  * Add option `--migrate-config <?target-file-path>`
+  * Support Nvidia GPU temp and cuda core count detection via
+    nvml. Use `--gpu-use-nvml` to enable it (GPU)
+  * Try supporting Wifi authentication type detection in macOS
+    Sonoma. Please file a feature request if you get `to be
+    supported (num)` with result of `/System/Library/PrivateFrame
+    works/Apple80211.framework/Resources/airport -I | grep auth`
+    (Wifi, macOS)
+  * Bugfixes:
+  * Better GPU memory and type detection (GPU, Windows)
+  * Don't print display type twice (Display)
+  * Detect BSSID instead of Wifi MAC address to align with other
+    platforms (Wifi, macOS)
+  * Remove support of used GPU memory detection, which is not
+    reliable and only supported with `--gpu-force-vulkan`. (GPU)
+  * Fix flag `--brightness-ddcci-sleep` (Brightness, Linux)
+  * Fix hanging if a child process prints to both stdout and
+    stderr (Linux)
+  * Logos:
+  * Add Black Mesa
+  * Add cycledream
+  * Add Evolinx
+  * Add azos
+  * Add Interix
+
+-------------------------------------------------------------------
 Mon Oct 30 07:37:05 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Declare new build deps gcc and gcc-c++
@@ -106,7 +196,7 @@ Tue Aug 22 02:50:15 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 - Update to version 2.0.1:
   * Changes:
     - Unescape strings only when parsing .conf files
-        - Previously: $ NO_CONFIG=1 fastfetch --os-key \\\\ -s os -l none prints \: *. 
+        - Previously: $ NO_CONFIG=1 fastfetch --os-key \\\\ -s os -l none prints \: *.
           Note the backslashs are unescaped twice (once by shell and once by fastfetch).
         - Now: $ NO_CONFIG=1 fastfetch --os-key \\\\ -s os -l none prints \\: *
     - Remove option shortcut -c (alias of --color), which is more commonly used as alias of --config
@@ -164,11 +254,11 @@ Mon Jun 12 09:20:12 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
     * Fix Windows drives detection in WSL (Disk)
     * Fix a segfault bug, regression of 1.11.1
   Changes:
-    * In order to make Icons module consistant between different platforms, 
+    * In order to make Icons module consistant between different platforms,
       --icons-format no longer supports individual GTK / QT icon params.
     * --theme-format no longer supports individual GTK / plasma theme params.
     * --local-ip-* and --public-ip-* have been changed to --localip-* and --publicip-*
-    * --localip-compact-type is no longer supported. Fastfetch now display IPs as 
+    * --localip-compact-type is no longer supported. Fastfetch now display IPs as
       --localip-compat-type multiline by default, with --local-compact true can be set as an alias of --localip-compact-type oneline
     * --localip-v6first is no longer supported.
 
@@ -219,13 +309,13 @@ Mon Jan 23 16:30:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
   * fastfetch no longer creates a sample config file silently. Use --gen-config to generate one.
   * fastfetch now search for user config file in the order of fastfetch --list-config-paths
   * Unknown disks are hidden by default.
-  * Resolution module is renamed to Display. 
+  * Resolution module is renamed to Display.
   * new options: --logo-padding-top, --list-config-paths, --list-data-paths, --gpu-hide-integrated, --gpu-hide-discrete
-  * Raw image file as logo support 
+  * Raw image file as logo support
   * Add Brightness, Wifi module support
   * Disk name support for Linux
-  * Fix rpm package count detection 
-  * Fix cpu temp detection 
+  * Fix rpm package count detection
+  * Fix cpu temp detection
 
 -------------------------------------------------------------------
 Wed Jan 18 02:47:19 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>

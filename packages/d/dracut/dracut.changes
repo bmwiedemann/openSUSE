@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 27 14:34:08 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.530.gba7b6a35:
+  * fix(dracut.sh): skip README for AMD microcode generation (bsc#1217083)
+  * fix(90kernel-modules): add intel_lpss_pci for MacBook Pro 2017
+  * feat(kernel-modules): install SPMI modules on ARM/RISC-V
+  * feat(kernel-modules): add Qualcomm IPC router to enable USB
+  * fix(pcsc): add --disable-polkit to pcscd.service
+  * fix(pcsc): add opensc load module file
+
+-------------------------------------------------------------------
 Fri Nov 17 11:38:12 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.522.g0fc72191:

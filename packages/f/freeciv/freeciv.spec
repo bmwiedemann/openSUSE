@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later

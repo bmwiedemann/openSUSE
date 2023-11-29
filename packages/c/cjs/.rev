@@ -159,4 +159,17 @@ Thanks for the SR</comment>
 </comment>
     <requestid>1113201</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3333c1d34b211bca181db4fdb8d5077a</srcmd5>
+    <version>6.0.0</version>
+    <time>1701023843</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * fix(build, tests): move `have_gtk4` to the appropriate place
+  * Fix meson.build deprecations up to 0.56.0
+
+  * GObject: Handle versions of GLib without GBindingGroup
+  * prevent start-on-demand dbus service from working</comment>
+    <requestid>1128782</requestid>
+  </revision>
 </revisionlist>

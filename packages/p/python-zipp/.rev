@@ -205,4 +205,32 @@
     <comment></comment>
     <requestid>1081794</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>940d7690d1c8b938929a5010d7d3c098</srcmd5>
+    <version>3.17.0</version>
+    <time>1701206288</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.17.0:
+  * Added ``CompleteDirs.inject`` classmethod to make available
+    for use elsewhere.
+  * Avoid matching path separators for '?' in glob.
+  * In ``Path.match``, Windows path separators are no longer
+    honored. The fact that they were was incidental and never
+    supported. (#92)
+  * Fixed name/suffix/suffixes/stem operations when no filename
+    is present and the Path is not at the root of the zipfile.
+    (#96)
+  * Reworked glob utilizing the namelist directly. (#101)
+  * Replaced the ``fnmatch.translate`` with a fresh glob-to-regex
+    translator for more correct matching behavior. (#98)
+  * Require Python 3.8 or later.
+
+  * Removed compatibility code.
+- add python-rpm-macros buildrequires
+  *  Remove news file intended only for CPython.
+  * refresh packaging
+  * When adding implicit dirs, ensure that ancestral directories
+  * Declared package as backport.</comment>
+    <requestid>1129068</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 17 15:55:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only auto-trigger pcp-pmda-postfix for automatic installation
+  when pcp and postfix are present. Supplementing pcp alone would
+  auto-install postfix on all systems.
+- Supplement pcp-pmda-rsyslog against pcp and rsyslog.
+
+-------------------------------------------------------------------
 Tue Aug 30 12:50:27 UTC 2022 - David Disseldorp <ddiss@suse.com>
 
 - Add back Wants=pmcd from pmlogger and pmie services; (bsc#1202896)

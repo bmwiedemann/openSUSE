@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov 25 13:35:32 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.6:
+  * InputDevice: fix identifier generation
+
+-------------------------------------------------------------------
+Fri Nov 24 14:25:45 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update sources
+  * Add river.keyring
+  * Add river-0.2.5.tar.gz properly
+  * Add river-0.2.5.tar.gz.sig
+
+-------------------------------------------------------------------
+Fri Nov 24 13:58:47 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.5:
+  * No changes. Just a new tagged release
+
+-------------------------------------------------------------------
 Sat Nov 18 13:58:37 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.2.4+985:

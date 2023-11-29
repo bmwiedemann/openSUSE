@@ -294,4 +294,15 @@
 - Switch source archive format to TAR.GZ (forwarded request 1126635 from glaubitz)</comment>
     <requestid>1126691</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a7e771171995f060726ab2da7e025fd7</srcmd5>
+    <version>10.2.0b12</version>
+    <time>1700772073</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 10.2.0b12
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1128171 from glaubitz)</comment>
+    <requestid>1128205</requestid>
+  </revision>
 </revisionlist>

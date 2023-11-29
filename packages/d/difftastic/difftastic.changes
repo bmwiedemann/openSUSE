@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 26 19:11:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- 0.53.1:
+  * Parsing: Add support for SCSS,  Improve Kotlin support, and
+    detect snap files (Jest snapshots) as JavaScript files
+  * Fix an issue where adding or removing blank lines would be
+    ignored by the textual diffing logic.
+  * Directory diffing now respects .gitignore files.
+  * New --sort-paths option for sorting files by path
+  * New --strip-cr for improved diffing in mixed environment
+  * The option --skip-unchanged now has a corresponding environment
+    option DFT_SKIP_UNCHANGED
+
+-------------------------------------------------------------------
 Sun Oct 29 07:57:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - spec tweaks for submission

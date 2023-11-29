@@ -57,5 +57,7 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 set -x
 for gr in $(/usr/bin/ruby-find-versioned gem2rpm) ; do
+  ruby_suffix=${gr##/usr/bin/gem2rpm}
+  export GEM_HOME="$(/usr/bin/ruby${ruby_suffix} -r rubygems -e 'puts Gem.default_dir')"
   $gr $otheropts
 done

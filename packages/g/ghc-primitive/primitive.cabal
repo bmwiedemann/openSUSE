@@ -1,6 +1,6 @@
 Cabal-Version:  2.0
 Name:           primitive
-Version:        0.7.4.0
+Version:        0.8.0.0
 x-revision: 1
 License:        BSD3
 License-File:   LICENSE
@@ -20,15 +20,20 @@ Extra-Source-Files: changelog.md
                     test/LICENSE
 
 Tested-With:
-  GHC == 8.0.2,
-  GHC == 8.2.2,
-  GHC == 8.4.4,
-  GHC == 8.6.5,
-  GHC == 8.8.4,
+  GHC == 8.0.2
+  GHC == 8.2.2
+  GHC == 8.4.4
+  GHC == 8.6.5
+  GHC == 8.8.4
   GHC == 8.10.7
+  GHC == 9.0.2
+  GHC == 9.2.5
+  GHC == 9.4.4
 
 Library
   Default-Language: Haskell2010
+  Default-Extensions:
+        TypeOperators
   Other-Extensions:
         BangPatterns, CPP, DeriveDataTypeable,
         MagicHash, TypeFamilies, UnboxedTuples, UnliftedFFITypes
@@ -45,14 +50,21 @@ Library
         Data.Primitive.Ptr
         Data.Primitive.MutVar
         Data.Primitive.MVar
+        Data.Primitive.PrimVar
 
   Other-Modules:
         Data.Primitive.Internal.Operations
 
-  Build-Depends: base >= 4.9 && < 4.19
-               , deepseq >= 1.1 && < 1.5
+  Build-Depends: base >= 4.9 && < 4.20
+               , deepseq >= 1.1 && < 1.6
                , transformers >= 0.5 && < 0.7
                , template-haskell >= 2.11
+
+  if impl(ghc >= 9.2)
+    cpp-options: -DHAVE_KEEPALIVE
+
+  if impl(ghc < 9.4)
+    build-depends: data-array-byte >= 0.1 && < 0.1.1
 
   Ghc-Options: -O2
 

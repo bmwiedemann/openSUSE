@@ -143,4 +143,15 @@
     <comment></comment>
     <requestid>1081762</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c564905aa8da54e43ffddb0aa37ca47d</srcmd5>
+    <version>5.0.1</version>
+    <time>1701206321</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.1:
+  * Added support for Python 3.12
+
+- Converted to python singlespec</comment>
+    <requestid>1129193</requestid>
+  </revision>
 </revisionlist>

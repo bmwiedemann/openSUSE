@@ -17,9 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python2 1
 Name:           python-email-validator
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
@@ -30,6 +29,7 @@ Source:         https://github.com/JoshData/python-email-validator/archive/refs/
 Patch0:         ignore-urllib3-pyopenssl-warning.patch
 # PATCH-FIX-OPENSUSE do not require /etc/resolv.conf for testing
 Patch1:         dont-require-resolv-tests.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 5.0}

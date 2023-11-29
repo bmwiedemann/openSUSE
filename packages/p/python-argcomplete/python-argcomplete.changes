@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:26:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.6:
+  *  Respect user choice in activate-global-python-argcomplete
+  *  Escape colon in zsh completions. Fixes #456
+  *  Call \_default as a fallback in zsh global completion
+
+-------------------------------------------------------------------
 Fri Nov 10 12:26:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.4:

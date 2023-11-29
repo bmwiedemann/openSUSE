@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
-Version:        24.2.0
+Version:        24.3.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT

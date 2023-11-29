@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 24 14:33:30 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Remove some not needed python files as well as patch one
+  python file to do its python3 job (boo#1217476)
+
+-------------------------------------------------------------------
+Fri Aug  4 07:30:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Make texlive-iftex obsolete texlive-ifluatex from 2019 (boo#1211717)
+
+-------------------------------------------------------------------
 Tue Jul  4 09:17:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Rework lua(meta)tex/context resource findings

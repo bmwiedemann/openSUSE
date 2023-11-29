@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 27 16:06:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Added support for Python 3.12
+
+-------------------------------------------------------------------
 Fri Apr 21 12:34:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -69,7 +75,7 @@ Tue Dec  4 12:54:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Aug 15 17:49:10 UTC 2017 - daniel.molkentin@suse.com
 
-- Converted to python singlespec 
+- Converted to python singlespec
 
 -------------------------------------------------------------------
 Tue May  5 17:54:52 UTC 2015 - benoit.monin@gmx.fr

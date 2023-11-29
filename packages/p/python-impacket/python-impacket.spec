@@ -38,6 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0
 Requires:       python-charset-normalizer
+Requires:       python-dsinternals
 Requires:       python-ldap3 >= 2.5
 Requires:       python-ldapdomaindump >= 0.9.0
 Requires:       python-pyOpenSSL >= 0.13.1

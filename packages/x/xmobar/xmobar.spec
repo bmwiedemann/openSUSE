@@ -20,12 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.47.1
+Version:        0.47.2
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Patch1:         re-enable-support-for-libmpd.patch
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
@@ -68,6 +69,8 @@ BuildRequires:  ghc-http-conduit-devel
 BuildRequires:  ghc-http-conduit-prof
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
+BuildRequires:  ghc-libmpd-devel
+BuildRequires:  ghc-libmpd-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-netlink-devel
@@ -152,7 +155,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define cabal_configure_options -fall_extensions

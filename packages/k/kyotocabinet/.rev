@@ -112,4 +112,19 @@
     <comment></comment>
     <requestid>1090201</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>29e03720e12c19f9ccc0a74dae6b25eb</srcmd5>
+    <version>1.2.80</version>
+    <time>1701121345</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.80:
+  - configure.in supports strict C99 rules.
+  - Fixed errors of kcdirtest on BtrFS.
+  - Fixed build warnings.
+
+  * link all executables as pie (bsc#1185033)
+- gcc6-fix-errors.patch: return NULL instead, make GCC7 happy
+  (configure-8-byte-atomics.patch)</comment>
+    <requestid>1128805</requestid>
+  </revision>
 </revisionlist>

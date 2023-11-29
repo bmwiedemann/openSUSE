@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 27 12:36:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add libxml2212-tests.patch to fix tests with new libxml2
+
+-------------------------------------------------------------------
 Wed Sep  6 20:04:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip html5lib tests - cyclic dependency with html5lib tests

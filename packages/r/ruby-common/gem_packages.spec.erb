@@ -13,6 +13,33 @@
     path
   end
 
+  def self.rpm_jemalloc_prefix
+    jemalloc_prefix = nil
+
+    package_name = RbConfig::CONFIG['RUBY_SO_NAME']
+
+    IO.popen("rpm -q --provides #{package_name}") {|rpm_io|
+      rpm_provides = rpm_io.read
+      mo = /(?<jemalloc_prefix>with(out)?-jemalloc)/.match(rpm_provides)
+
+      if mo
+        jemalloc_prefix = mo[:jemalloc_prefix]
+      end
+    }
+
+    jemalloc_prefix
+  end
+
+  def self.jemalloc_requires
+    jemalloc_prefix = rpm_jemalloc_prefix
+
+    if jemalloc_prefix
+      return "Requires:       #{RbConfig::CONFIG['RUBY_SO_NAME']}-#{jemalloc_prefix} >= #{RbConfig::CONFIG['RUBY_PROGRAM_VERSION']}"
+    end
+    #
+    return ""
+  end
+
   def self.get_extension_doc_dir(gem_spec)
     return nil unless Gem.ruby_engine == 'ruby' && Gem::Requirement.new("~> 2.1.0").satisfied_by?(Gem.ruby_version)
     if gem_spec.respond_to?(:extensions_dir)
@@ -121,6 +148,9 @@
 <%= fix_up_rubygem_requires_with_rb_api(rb_api, config[:main][:preamble]) %>
 <% end -%>
 # /MANUAL
+<% unless spec.extensions.empty? -%>
+<%= jemalloc_requires %>
+<% end -%>
 Summary:        <%= config[:summary] or spec.summary %>
 Group:          Development/Languages/Ruby
 <% unless spec.executables.empty? -%>

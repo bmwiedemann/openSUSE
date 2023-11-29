@@ -979,4 +979,20 @@
 </comment>
     <requestid>1079390</requestid>
   </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>8a44f5302bd9c5e8bc5c44f0da298fae</srcmd5>
+    <version>1.13.1</version>
+    <time>1701206296</time>
+    <user>anag+factory</user>
+    <comment>- introduced n_dont_sign_java_client.patch and changed
+  n_tigervnc-date-time.patch to allow the build to be reproducible
+  (bsc#1208478):
+  * Dont sign the Java client so the jar file won't contain a
+    signed file with a variable timestamp.
+  * The signing was necessary for accessing the system clipboard 
+    when the Java client runs as an applet.
+    (This shouldn't harm due to the deprecation of Java applets 
+     was done in version 9).</comment>
+    <requestid>1129081</requestid>
+  </revision>
 </revisionlist>

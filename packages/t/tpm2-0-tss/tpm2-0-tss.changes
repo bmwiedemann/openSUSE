@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 27 10:41:32 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- libtss2-fapi1 requires system-user-tss for tmpfile creation
+
+-------------------------------------------------------------------
 Mon Jul 24 02:34:00 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Require openssl-3 over openssl-1 to assist migration of applications

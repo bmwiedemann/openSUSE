@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 20 14:53:17 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequire 'pkgconfig(SPIRV-Tools)' also with disabled rusticl
+  (new dep since some time)
+
+-------------------------------------------------------------------
+Mon Nov 20 14:44:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-disable rusticl on sle15-sp6 to prevent more deps (rust-bindgen)
+- buildrequire 'pkgconfig(LLVMSPIRVLib)' also with disabled rusticl
+  (new dep since some time)
+
+-------------------------------------------------------------------
+Mon Nov 20 14:40:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable rusticl on sle15-sp6 
+
+-------------------------------------------------------------------
+Fri Nov 17 14:14:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- let sle15-sp6 require llvm17/clang17
+
+-------------------------------------------------------------------
 Wed Nov 15 10:24:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build with valgrind only on 64bit platforms

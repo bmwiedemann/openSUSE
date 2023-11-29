@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ipykernel
-Version:        6.25.2
+Version:        6.27.0
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -89,7 +89,7 @@ This package provides the IPython kernel for Jupyter.
 
 %prep
 %autosetup -p1 -n ipykernel-%{version}
-sed -i -e 's/--color=yes//' pyproject.toml
+sed -i -e 's/, "--color=yes"//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -112,11 +112,11 @@ $python -m ipykernel install \
 
 %check
 # fails in obs setups
-ignoretests="--ignore ipykernel/tests/test_debugger.py"
+ignoretests="--ignore tests/test_debugger.py"
 # flaky obs timeouts
 donttest="test_init_ipc_socket"
 # we don't want ipyparallel and its dependencies in Ring1
-ignoretests="$ignoretests --ignore ipykernel/tests/test_pickleutil.py"
+ignoretests="$ignoretests --ignore tests/test_pickleutil.py"
 donttest="$donttest or test_do_apply"
 %pytest -k "not ($donttest)" $ignoretests
 

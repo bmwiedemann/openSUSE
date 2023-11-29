@@ -242,4 +242,20 @@
 - Switch from ~ to + in version</comment>
     <requestid>1126837</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f63a9d2902b3ab7ac459de12d62b2d13</srcmd5>
+    <version>0.16.1+0</version>
+    <time>1700772096</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.1:
+  Bug Fixes:
+  * Don't panic with todo!() on inaccessible dir
+  * Don't panic if the btime of a file is Err
+  * Lifetime annotations and manpage/shell completion nits
+  * Reflow help
+  Features:
+  * Handle formatting and display of binary extended attributes.
+  * Add netbsd and freebsd support for extended attributes</comment>
+    <requestid>1128263</requestid>
+  </revision>
 </revisionlist>

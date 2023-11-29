@@ -283,4 +283,14 @@ Add support for ppc64le.</comment>
     <comment>version update</comment>
     <requestid>1094476</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>33f1ceb4deb74a0eb1c4204b18907339</srcmd5>
+    <version>9.4.4</version>
+    <time>1700771953</time>
+    <user>anag+factory</user>
+    <comment>- Reduce memory constraints for riscv64
+
+- Update bootsrap compiler to ghc-9.4.4</comment>
+    <requestid>1126686</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %define typelib typelib-1_0-MateDesktop-2_0
 %define _version 1.26
 Name:           mate-desktop
-Version:        1.26.1
+Version:        1.26.2
 Release:        0
 Summary:        Library with common API for various MATE modules
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -61,8 +61,8 @@ This package contains the library with common API for various
 MATE modules.
 
 
-# Separate shared schemas to make MATE desktop applications usable standalone.
 
+# Separate shared schemas to make MATE desktop applications usable standalone.
 %package -n %{typelib}
 Summary:        Common API for various MATE modules typelib
 License:        GPL-2.0-or-later
@@ -142,6 +142,10 @@ install -Dpm 0644 %{SOURCE1} \
 %{_datadir}/lib%{name}/
 %{_datadir}/mate-about/mate-version.xml
 %{_datadir}/icons/hicolor/*/apps/mate*
+# FIXME: it would be great if xdg-desktop-portal would provide
+# that directory.
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/mate-portals.conf
 %{_mandir}/man?/*.?%{?ext_man}
 
 %files lang -f %{name}.lang

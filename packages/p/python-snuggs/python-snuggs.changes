@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 25 17:05:15 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add 28-non-strict-xfail.patch synchronizing skipping of failing
+  tests with Debian.
+
+-------------------------------------------------------------------
 Sat Sep  9 14:51:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing tests because of poor exception handling

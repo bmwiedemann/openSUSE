@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-themes-extras
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,7 @@ BuildArch:      noarch
 This package contains several extra GNOME themes.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -f -i

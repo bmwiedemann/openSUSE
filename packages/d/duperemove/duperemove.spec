@@ -22,7 +22,7 @@
 BuildRequires:  gcc%{req_gcc_ver}
 %endif
 Name:           duperemove
-Version:        0.14
+Version:        0.14.1
 Release:        0
 Summary:        Software to find duplicate extents in files and remove them
 License:        GPL-2.0-only

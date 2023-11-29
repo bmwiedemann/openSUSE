@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 12:11:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add arm to excluded arches.
+
+-------------------------------------------------------------------
 Thu Nov 16 10:57:33 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use xz format in the _service file since services in SLE SP6

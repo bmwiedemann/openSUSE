@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yapf
-Version:        0.40.1
+Version:        0.40.2
 Release:        0
 Summary:        A formatter for Python code
 License:        Apache-2.0
@@ -26,9 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/google/yapf
 Source:         https://files.pythonhosted.org/packages/source/y/yapf/yapf-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-platformdirs
@@ -54,10 +55,10 @@ be reformatted.
 %setup -q -n yapf-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/yapf
@@ -75,11 +76,11 @@ be reformatted.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG
+%doc README.md CHANGELOG.md
 %python_alternative %{_bindir}/yapf
 %python_alternative %{_bindir}/yapf-diff
 %{python_sitelib}/yapf/
 %{python_sitelib}/yapf_third_party/
-%{python_sitelib}/yapf-%{version}-py*.egg-info/
+%{python_sitelib}/yapf-%{version}.dist-info
 
 %changelog

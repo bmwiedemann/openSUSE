@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 25 21:30:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.15:
+  * Add the escape_to_latin command as a vi-cooperative cancel
+  * data: Update era.t with 2022
+  * setup: Minimum candidate window page size to 1
+  * travis: Move git master to main branch
+  * data: Add icon tag in ibus-anthy.appdata.xml.in
+  * engine: Enable IBus.Engine::has-focus-id property
+  * engine: Fix page_up/page_down class methods
+  * data: Update era.t with 2023
+  * engine: Fix to find compose resource in IBus core
+  * engine: Enable OSK mode
+  * engine: Distinguish Super-space and space shortcut keys
+  * Release 1.5.15
+  * data: Update era.t with 2022 (fujiwarat) ed99353
+  * setup: Minimum candidate window page size to 1
+  * data: Add icon tag in ibus-anthy.appdata.xml.in
+  * engine: Enable IBus.Engine::has-focus-id property
+  * Add the escape_to_latin command as a vi-cooperative cancel
+  * engine: Fix page_up/page_down class methods
+  * data: Update era.t with 2023
+  * engine: Fix to find compose resource in IBus core
+  * engine: Enable OSK mode (fujiwarat) ddb7d64
+  * engine: Distinguish Super-space and space shortcut keys
+  * po: Add translation (Georgian) (Temuri Doghonadze) b65c6d9
+  * po: Update translation (Turkish) (Oğuz Ersen) 3b290fe
+  * po: Update translation (Japanese) (김인수) d2ed8c4
+  * po: Update translation (Korean) (김인수) aa17a2e
+  * po: Update translation (Finnish) (Jan Kuparinen) 5f9363a
+  * po: Add translation (Sinhala) (Hela Basa) 7a0bf3d
+  * po: Add translation (Swedish) (Luna Jernberg) a1c2233
+
+-------------------------------------------------------------------
 Sun May  8 13:50:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.5.14
@@ -19,7 +53,7 @@ Sat May  8 11:05:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 - Update to version 1.5.12
   * Fix two emoji orders
   * Fix a regex pattern in engine.py
-  * Keep preedit with reset signal 
+  * Keep preedit with reset signal
   * Update translations
 - SPEC file: Drop parts related to outdated openSUSE versions
 
@@ -42,7 +76,7 @@ Wed Jan 20 07:33:13 UTC 2021 - Wang Jun <jgwang@suse.com>
   * Rename to default.inputMethod.xml to use ibus.its
   * Replace appdata with metainfo (#10)
   * Replaced AC_PROG_LIBTOOL with LT_INIT
-  * Set default input mode to Latin                                                                                           
+  * Set default input mode to Latin
   * Set GTK_IM_MODULE in test-console.sh
   * Updated emoji dictionary for emoji 12.0
   * Update po files
@@ -50,25 +84,25 @@ Wed Jan 20 07:33:13 UTC 2021 - Wang Jun <jgwang@suse.com>
 -------------------------------------------------------------------
 Tue Nov 10 12:32:15 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
-- Update ibus-anthy.spec: add a depending to anthy, to avoid the 
+- Update ibus-anthy.spec: add a depending to anthy, to avoid the
   crash(bnc#1178502, jsc#ECO-3104).
- 
+
 -------------------------------------------------------------------
 Fri Sep 20 22:26:20 UTC 2019 - Cliff Zhao <qzhao@suse.com>
 
 - update ibus-anthy.spec: update to depending anthy-devel, make it
-  can build successful in SLE15 and openSUSE-leap-15. 
+  can build successful in SLE15 and openSUSE-leap-15.
 
 -------------------------------------------------------------------
 Mon Apr  2 13:04:38 UTC 2018 - hillwood@opensuse.org
 
 - Update version to 1.5.10
-  * Fixed a warning in ibus-anthy.appdata.xml 
-  * Fix page_up, page_down, candidate_clicked 
+  * Fixed a warning in ibus-anthy.appdata.xml
+  * Fix page_up, page_down, candidate_clicked
   * Fixed circle_typing_method for Alt-Romaji, Ctrl-/
   * Added Shift-F7 shortcut key to convert all to Katakana
   * tests: Add automation testing
-  * Migrated DConf to GSettings 
+  * Migrated DConf to GSettings
   * Added ISSUE_TEMPLATE
   * Updated emoji dictionary
   * Added po/es.po po/cs.po
@@ -117,7 +151,7 @@ Sat Jul 25 18:40:34 UTC 2015 - ftake@geeko.jp
   * Added textdomain in default.xml
   * Added anthy.appdata.xml
   * Fixed to import sys
-  * Added icon_prop_key support for IBus 1.5.11 
+  * Added icon_prop_key support for IBus 1.5.11
 
 -------------------------------------------------------------------
 Sun Sep 28 12:05:16 UTC 2014 - ftake@geeko.jp
@@ -233,7 +267,7 @@ Fri Jul 22 16:54:55 CEST 2011 - tiwai@suse.de
 -------------------------------------------------------------------
 Tue Jun 14 03:17:14 UTC 2011 - swyear@gmail.com
 
-- Update to 1.2.6 
+- Update to 1.2.6
   translation updates; gconf-SEGV fix; fixes for new ibus; etc
 
 -------------------------------------------------------------------
@@ -244,5 +278,5 @@ Wed Mar 24 14:17:56 CET 2010 - tiwai@suse.de
 -------------------------------------------------------------------
 Thu Jan 28 08:39:54 UTC 2010 - mxwu@novell.com
 
-- Initial import 
+- Initial import
 

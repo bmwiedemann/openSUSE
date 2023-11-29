@@ -28,8 +28,6 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-orphans-devel
-BuildRequires:  ghc-base-orphans-prof
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}

@@ -25,7 +25,6 @@ License:        GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://apps.kde.org/nl/kbibtex/
 Source:         https://download.kde.org/stable/KBibTeX/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  chrpath
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libicu-devel
 BuildRequires:  libpoppler-qt5-devel
@@ -73,7 +72,7 @@ embedded into Kile or Konqueror.
 %autosetup -n %{name}-%{version}
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DCMAKE_SKIP_RPATH=FALSE -DCMAKE_SKIP_INSTALL_RPATH=TRUE
 %cmake_build
 
 %install
@@ -84,14 +83,6 @@ embedded into Kile or Konqueror.
 rm -rf %{buildroot}/%{_includedir}/KBibTeX
 rm -rf %{buildroot}/%{_kf5_libdir}/libkbibtex*.so
 rm -rf %{buildroot}/%{_kf5_libdir}/cmake/KBibTeX
-
-# Remove the rpaths that rpmlint complains about
-# According to https://en.opensuse.org/openSUSE:Packaging_checks
-# this is a last resort option.
-# Reported in kde#476502
-chrpath -d %{buildroot}/%{_kf5_bindir}/kbibtex
-chrpath -d %{buildroot}%{_kf5_libdir}/libkbibtex*.so.*
-chrpath -d %{buildroot}%{_kf5_plugindir}/kbibtexpart.so*
 
 %if %{with lang}
 %find_lang %{name}

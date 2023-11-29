@@ -19,20 +19,17 @@
 %global pkg_name warp-tls
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        3.3.6
+Version:        3.4.3
 Release:        0
 Summary:        HTTP over TLS support for Warp via the TLS package
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
 BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-data-default-class-prof
 BuildRequires:  ghc-network-devel
@@ -87,7 +84,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cPyparsing
-Version:        2.4.7.2.1.2
+Version:        2.4.7.2.3.0
 Release:        0
 Summary:        Cython implementation of PyParsing
 License:        Apache-2.0

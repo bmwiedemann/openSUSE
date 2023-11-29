@@ -37,7 +37,7 @@ Index: synapse/synapse/config/logger.py
 ===================================================================
 --- synapse.orig/synapse/config/logger.py
 +++ synapse/synapse/config/logger.py
-@@ -150,7 +150,7 @@ class LoggingConfig(Config):
+@@ -149,7 +149,7 @@ class LoggingConfig(Config):
      def generate_config_section(
          self, config_dir_path: str, server_name: str, **kwargs: Any
      ) -> str:
@@ -50,7 +50,7 @@ Index: synapse/synapse/config/server.py
 ===================================================================
 --- synapse.orig/synapse/config/server.py
 +++ synapse/synapse/config/server.py
-@@ -742,7 +742,7 @@ class ServerConfig(Config):
+@@ -793,7 +793,7 @@ class ServerConfig(Config):
              bind_port = 8448
              unsecure_port = 8008
  

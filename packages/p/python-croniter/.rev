@@ -267,4 +267,18 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1108278</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>62b74ec69c3d1383984addfe99a63ac2</srcmd5>
+    <version>2.0.1</version>
+    <time>1701023818</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.1:
+  * Fix release issue
+  * Add Python 3.12 support
+  * Make major release instructions
+
+  * Add a way to make next() easier to use. This fixes #11 [kiorky]
+    now raises a CroniterBadDateError.</comment>
+    <requestid>1128731</requestid>
+  </revision>
 </revisionlist>

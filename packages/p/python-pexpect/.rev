@@ -390,4 +390,41 @@
 </comment>
     <requestid>1118223</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0bbed325c9109cff6717532e82184604</srcmd5>
+    <version>4.9.0</version>
+    <time>1701023797</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.9:
+  * Add support for Python 3.12 #769.
+  * Clean up temporary files after UnicodeTests #753.
+  * Add Python 3.5, 3.6 and 3.12.0-rc.1 to test matrix #763.
+  * Set prompt correctly for zsh #712.
+  * Add zsh convenience function to replwrap module #751.
+  * Rework async unittests to rely on
+    unittest.IsolatedAsyncioTestCase #764.
+  * Make test_expect.py work on POSIX systems that are not Linux
+    based #698.
+  * Add support for ``socket``, which allows sockets to be used
+    crossplatform #745.
+  * Update async to work on newer versions of python #732.
+  * Remove deprecated RSAAuthentication option (SSHv1) #744.
+  * Multiple CI fixes #743 #737 #742 #739 #722.
+  * Use Github Actions for CI #734.
+  * Remove pytest-capturelog from testing requirements #730.
+  * Fix usage for Solaris #663 #604 #560.
+  * Fix threading for new versions of python #684.
+  * Fix documentation builds for use with Sphinx 3 #638.
+  * Use ``sys.executable`` for tests and wrapper, allowing the
+    calling python executable to be used instead #623.
+  * Update documentation about Wexpect #623.
+  * Added project urls to ``setup.py`` #620.
+  * Provide examples for how to use Pexpect and Pyte #587.
+  * Coerce compiled regex patterns type according to spawn
+    encoding #560.
+  * Several doc updates #626 #635 #643 #644 #728.
+  drop 31fab7b0edbe9b3401507b5dfa4db6aaf3fabca5.patch,
+       684.patch, 715.patch, 742.patch,</comment>
+    <requestid>1128703</requestid>
+  </revision>
 </revisionlist>

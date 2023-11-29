@@ -212,4 +212,26 @@
     <comment>- Drop sphinx doctrees for reproducible builds</comment>
     <requestid>1100880</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cac51051ca1f75d2add12049dd91779b</srcmd5>
+    <version>2.2.0</version>
+    <time>1701206334</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.0:
+  * Use ``pkg-config`` instead of ``mysql_config`` (#586)
+  * Raise ProgrammingError on -inf (#557)
+  * Raise IntegrityError for ER_BAD_NULL. (#579)
+  * Windows: Use MariaDB Connector/C 3.3.4 (#585)
+  * Use pkg-config instead of mysql_config (#586)
+  * Add collation option (#564)
+  * Drop Python 3.7 support (#593)
+  * Use pyproject.toml for build (#598)
+  * Add Cursor.mogrify (#477)
+  * Partial support of ssl_mode option with mariadbclient (#475)
+  * Discard remaining results without creating Python objects
+  * Fix executemany with binary prefix (#605)
+
+  * Support multibyte utf8 return values with new versions of MariaDB.</comment>
+    <requestid>1129231</requestid>
+  </revision>
 </revisionlist>

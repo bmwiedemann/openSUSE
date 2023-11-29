@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-shellingham
-Version:        1.5.0
+Version:        1.5.4
 Release:        0
 Summary:        Library to detect surrounding shell
 License:        ISC

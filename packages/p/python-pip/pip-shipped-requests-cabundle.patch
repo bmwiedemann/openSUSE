@@ -1,12 +1,10 @@
 ---
- src/pip/_vendor/certifi/core.py |   70 ++++------------------------------------
- tests/unit/test_options.py      |    5 ++
- 2 files changed, 13 insertions(+), 62 deletions(-)
+ src/pip/_vendor/certifi/core.py |  105 +++-------------------------------------
+ tests/unit/test_options.py      |    5 +
+ 2 files changed, 13 insertions(+), 97 deletions(-)
 
-Index: pip-22.3.1/src/pip/_vendor/certifi/core.py
-===================================================================
---- pip-22.3.1.orig/src/pip/_vendor/certifi/core.py
-+++ pip-22.3.1/src/pip/_vendor/certifi/core.py
+--- a/src/pip/_vendor/certifi/core.py
++++ b/src/pip/_vendor/certifi/core.py
 @@ -3,106 +3,17 @@ certifi.py
  ~~~~~~~~~~
  
@@ -122,10 +120,8 @@ Index: pip-22.3.1/src/pip/_vendor/certifi/core.py
 -        return read_text("pip._vendor.certifi", "cacert.pem", encoding="ascii")
 +def contents() -> str:
 +    return read_text(encoding="ascii")
-Index: pip-22.3.1/tests/unit/test_options.py
-===================================================================
---- pip-22.3.1.orig/tests/unit/test_options.py
-+++ pip-22.3.1/tests/unit/test_options.py
+--- a/tests/unit/test_options.py
++++ b/tests/unit/test_options.py
 @@ -1,4 +1,5 @@
  import os
 +import os.path
@@ -140,7 +136,7 @@ Index: pip-22.3.1/tests/unit/test_options.py
  from tests.lib.options_helpers import AddFakeCommandMixin
  
  
-@@ -619,6 +621,9 @@ class TestOptionsConfigFiles:
+@@ -618,6 +620,9 @@ class TestOptionsConfigFiles:
          else:
              assert expect == cmd._determine_file(options, need_value=False)
  

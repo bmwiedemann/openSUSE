@@ -236,4 +236,12 @@
   * SNS: Topics are no longer accessible across regions (only across accounts)</comment>
     <requestid>1100771</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>706c0070cde7e066fb3496745b99245c</srcmd5>
+    <version>4.2.9</version>
+    <time>1701023799</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128877</requestid>
+  </revision>
 </revisionlist>

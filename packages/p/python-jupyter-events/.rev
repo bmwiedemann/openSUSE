@@ -76,4 +76,17 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1105431</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>24e0ef54e53ff15bbd1224d96f38bdad</srcmd5>
+    <version>0.9.0</version>
+    <time>1701121379</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.0
+  * Clean up linting and fix a bug that was found #91 (@blink1073)
+- Release 0.8.0
+  * Allow for string annotations in listener signature #88
+    (@blink1073)
+</comment>
+    <requestid>1128959</requestid>
+  </revision>
 </revisionlist>

@@ -9,9 +9,9 @@ version of YaST we should accept this option, too.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 |    6 +++++-
- dasdfmt/dasdfmt.c |   10 ++++++++++
- 2 files changed, 15 insertions(+), 1 deletion(-)
+ dasdfmt/dasdfmt.8 | 6 +++++-
+ dasdfmt/dasdfmt.c | 8 ++++++++
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
 Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
 ===================================================================

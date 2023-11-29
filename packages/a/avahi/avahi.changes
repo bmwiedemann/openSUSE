@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 27 14:20:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Reformat avahi-gacdir.patch to apply as patch -p1.
+- Use %autopatch instead of deprecated %patchN format.
+
+-------------------------------------------------------------------
+Thu Nov 23 07:48:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- avahi-autoipd: drop the post script part migrating the user
+  owning files in /var/lib/avahi-autoipd: the code was aiding
+  migrations from SLE<=11/openSUSE<=12.3, which are no longer in
+  scope for upgrades nowadays.
+
+-------------------------------------------------------------------
+Wed Nov 22 12:55:06 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- avahi-autoipd: guard %post chown with -h, to not follow symlinks
+  (boo#1217398).
+
+-------------------------------------------------------------------
 Mon Nov 13 10:15:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - avahi-autoipd: only migrate files owned by avahi user if said

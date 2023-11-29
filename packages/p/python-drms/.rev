@@ -39,4 +39,32 @@
     <comment></comment>
     <requestid>1095768</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a37aa4d6d734eaa9cbb349e5fc2928b6</srcmd5>
+    <version>0.7.0</version>
+    <time>1701023825</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Dropped Python 3.8 support.
+  * Updated all of the sphinx anchors to be more consistent.
+  * This means that any use of the old anchors (intersphinx links
+    to sunpy doc pages) will need to be updated.
+  * Removed ``verbose`` keyword argument from `drms.Client`.
+  * Now all prints are done via the logging module.
+  * ``drms.const`` was renamed to `drms.JsocInfoConstants`
+  * Renamed keywords or arguments from ``requestor`` to
+    ``requester``.
+  * Removed ``debug`` keyword argument from `drms.HttpJsonClient`
+  * Now all prints are done via the logging module.
+  * Removed all FTP options.
+  * All keywords have to be passed by reference, no more
+    positional keywords arguments are allowed.
+  * Added &quot;ruff&quot; to the pre-commit and fixed the errors.
+
+  * Modified `drms.client.Client._convert_numeric_keywords` to use
+    a row-centric approach for handling hexadecimal strings.
+  * Modified `drms.utils.to_datetime` to work with Pandas 2.0.
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>1128725</requestid>
+  </revision>
 </revisionlist>

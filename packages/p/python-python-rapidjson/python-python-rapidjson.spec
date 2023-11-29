@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rapidjson
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 # check git submodule and update devel:libraries:c_c++/rapidjson
 %define rjversion 1.1.0+git20211015.4d6cb081
+%{?sle15_python_module_pythons}
 Name:           python-python-rapidjson
-Version:        1.9
+Version:        1.13
 Release:        0
 Summary:        Python wrapper around rapidjson
 License:        MIT
@@ -29,7 +28,7 @@ URL:            https://github.com/python-rapidjson/python-rapidjson
 Source:         https://github.com/python-rapidjson/python-rapidjson/archive/v%{version}.tar.gz#/python-rapidjson-%{version}.tar.gz
 Patch0:         rapidjson-system.patch
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  fdupes

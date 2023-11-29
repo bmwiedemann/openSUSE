@@ -18,17 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yarl
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/yarl/
 Source:         https://files.pythonhosted.org/packages/source/y/yarl/yarl-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 882-sq_bracket_in_URL_netloc.patch gh#aio-libs/yarl#876 mcepl@suse.com
-# Correct square bracket handling in URL netloc
-Patch0:         882-sq_bracket_in_URL_netloc.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module expandvars}
 BuildRequires:  %{python_module idna >= 2.0}
 # test requirements
 BuildRequires:  %{python_module multidict >= 4.0}

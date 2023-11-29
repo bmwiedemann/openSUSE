@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 22 17:12:38 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove pandas from the BuildRequires. It's not really needed.
+
+-------------------------------------------------------------------
 Thu Oct 12 11:30:53 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.103.0

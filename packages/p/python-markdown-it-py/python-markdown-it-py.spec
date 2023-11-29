@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-markdown-it-py
-Version:        2.2.0
+Version:        3.0.0
 Release:        0
 Summary:        Python port of markdown-it Markdown parsing
 License:        MIT
@@ -26,9 +26,10 @@ URL:            https://github.com/executablebooks/markdown-it-py/
 Source:         https://github.com/executablebooks/markdown-it-py/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Source:         https://files.pythonhosted.org/packages/source/m/markdown-it-py/markdown-it-py-%%{version}.tar.gz
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module mdurl}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 # SECTION tests
 BuildRequires:  %{python_module linkify-it-py}
 BuildRequires:  %{python_module pytest-regressions}
@@ -48,7 +49,7 @@ This is a Python port of [markdown-it], and some of its associated plugins.
 It follows the CommonMark spec for baseline parsing, has a configurable syntax and is pluggable.
 
 %prep
-%setup -q -n markdown-it-py-%{version}
+%autosetup -p1 -n markdown-it-py-%{version}
 sed -i '1{/\/usr\/bin\/env python*/d;}' markdown_it/cli/parse.py
 
 %build

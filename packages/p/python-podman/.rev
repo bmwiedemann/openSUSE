@@ -115,4 +115,12 @@
     <comment>update to 4.7.0 (forwarded request 1113958 from ojkastl_buildservice)</comment>
     <requestid>1113989</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b2674df054c0618f5465d09378b06c24</srcmd5>
+    <version>4.8.0</version>
+    <time>1701206398</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129563</requestid>
+  </revision>
 </revisionlist>

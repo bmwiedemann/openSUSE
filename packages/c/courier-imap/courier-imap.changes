@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 26 16:59:53 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.6
+  * Fix generated Date: header issues in timezones that have a
+    non-standard alternate timezone offset
+  * pop3 and imap logs also indicate whether the connections used
+    starttls or stls
+  * add missing TLS_PRIVATE_KEYFILE setting to esmtpd.dist
+
+-------------------------------------------------------------------
 Wed Aug 30 19:25:32 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.5

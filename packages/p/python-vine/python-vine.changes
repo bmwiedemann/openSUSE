@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:09:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Dropped Python 3.6 support.
+  * Added new Python versions support.
+  * Dropped old dependencies.
+  * Added new GHA based CI.
+  * Added slots support and impproved dynamic assignment.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:49:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

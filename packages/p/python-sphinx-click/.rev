@@ -54,4 +54,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1112497</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3058a205d541725c4ee7c7c160ac6b3</srcmd5>
+    <version>5.1.0</version>
+    <time>1700675695</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0:
+  * tox: Remove py37 entries
+  * Add support for mocking modules
+  * docs: Fix indentation
+  * setup: Add Sphinx classifier</comment>
+    <requestid>1128046</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:01:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9.0:
+  * Add support for Python 3.13 (#156) @hugovk
+  * Add Norwegian localization (#155) @fdanielsen
+  * Add Hebrew localization (#149) @clsn
+  * Add Klingon translation (#150) @clsn
+  * Replace Flake8 with Ruff (#157) @hugovk
+  * Fix DeprecationWarning: Plural value must be an integer, got
+    float (#147) @dansarpong
+  * Remove useless shebangs (#141) @aueam
+
+-------------------------------------------------------------------
 Wed Sep 13 08:17:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.0:

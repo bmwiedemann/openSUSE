@@ -1,0 +1,12 @@
+---
+ doc/latex/easyfloats/lexer/latex_atletter.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- texmf-dist/doc/latex/easyfloats/lexer/latex_atletter.py
++++ texmf-dist/doc/latex/easyfloats/lexer/latex_atletter.py	2023-11-24 14:01:31.016496136 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Copyright © 2020 E. Zöllner
+ # Alternatively to the terms of the LPPL, at your choice,

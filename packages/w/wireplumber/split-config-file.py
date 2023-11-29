@@ -10,7 +10,7 @@ def sha256_from_data(data):
 contents = open('90-enable-all.lua', 'r', encoding='utf-8').read()
 
 sha256sum = sha256_from_data(contents.encode('utf-8'))
-expected_sha256sum = 'cb9f05eb3b4959b84e94a67867645130f2bc0aa761eb864d227890aea310ab74'
+expected_sha256sum = '86888e9d3fcc952c41e778ab4edae4a0eb1f9f51b62ae0772befa9f0fdef611d'
 
 if sha256sum != expected_sha256sum:
     print('The script has to be updated for new changes in 90-enable-all.lua')
@@ -26,7 +26,8 @@ sections = ['enable-metadata',
             'track-user-choices-devices',
             'track-user-choices-streams',
             'link-nodes-by-roles',
-            'suspend-idle-nodes']
+            'suspend-idle-nodes',
+            'allow-loading-objects-on-demand']
 
 if len(content_sections) != len(sections):
     print('The script has to be updated for new changes in 90-enable-all.lua')
@@ -39,6 +40,8 @@ for i, (content, sec) in enumerate(zip(content_sections, sections)):
              encoding='utf-8').write(lines[1])
         open(f'90-{i}-2-enable-v4l2.lua', 'w',
              encoding='utf-8').write(lines[2])
+        open(f'90-{i}-3-enable-libcamera.lua', 'w',
+             encoding='utf-8').write(lines[3])
         continue
 
     filename = f'90-{i}-{sec}.lua'

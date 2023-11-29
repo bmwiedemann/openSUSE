@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 24 10:25:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.25.0
+  + Deprecation: allow_broker will be replaced by enable_broker_on_windows (#613)
+  + Bugfix: Device Code Flow (and Username Password Flow) and its subsequent silent
+    request will automatically bypass broker and succeed. (#569)
+  + Enhancement: acquire_token_interactive() supports running inside Docker
+  + Observability: Successful token response will contain a new token_source field
+    to indicate where the token was obtained from: identity_provider, cache or broker.
+    (#610)
+
+-------------------------------------------------------------------
 Mon Oct  9 09:52:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.24.1

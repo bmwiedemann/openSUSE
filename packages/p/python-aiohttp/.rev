@@ -415,4 +415,41 @@
   * Fixed display of ``BadStatusLine`` messages from llhttp_.</comment>
     <requestid>1124959</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b26ca9add42e052771639723c05569e5</srcmd5>
+    <version>3.9.0</version>
+    <time>1701121362</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.9.0:
+  * Introduced ``AppKey`` for static typing support of
+    ``Application`` storage.
+  * Added a graceful shutdown period which allows pending tasks
+    to complete before the application's cleanup is called.
+  * Added `handler_cancellation`_ parameter to cancel web handler on
+    client disconnection.
+  * This (optionally) reintroduces a feature removed in a
+    previous release.
+  * Recommended for those looking for an extra level of
+    protection against denial-of-service attacks.
+  * Added support for setting response header parameters
+    ``max_line_size`` and ``max_field_size``.
+  * Added ``auto_decompress`` parameter to
+    ``ClientSession.request`` to override
+    ``ClientSession._auto_decompress``.
+  * Changed ``raise_for_status`` to allow a coroutine.
+  * Added client brotli compression support (optional with
+    runtime check).
+  * Added ``client_max_size`` to ``BaseRequest.clone()`` to allow
+    overriding the request body size. -- :user:`anesabml`.
+  * Added a middleware type alias
+    ``aiohttp.typedefs.Middleware``.
+  * Exported ``HTTPMove`` which can be used to catch any
+    redirection request that has a location -- :user:`dreamsorcerer`.
+  * Changed the ``path`` parameter in ``web.run_app()`` to accept
+    a ``pathlib.Path`` object.
+  * Performance: Skipped filtering ``CookieJar`` when the jar is
+    empty or all cookies have expired.
+  * Performance: Only check origin if insecure scheme and there</comment>
+    <requestid>1129056</requestid>
+  </revision>
 </revisionlist>

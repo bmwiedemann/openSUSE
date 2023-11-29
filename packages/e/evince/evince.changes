@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:33:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Sep 18 21:13:13 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 45.0:

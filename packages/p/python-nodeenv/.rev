@@ -68,4 +68,16 @@
   * drop python 3.4-3.6</comment>
     <requestid>990226</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4cf0ce0bc8d7691eb442ada715f29450</srcmd5>
+    <version>1.7.0</version>
+    <time>1700772157</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1128298 from theMarix
+
+- Also build for modern Python on Leap.
+  - Drop explicit definition of %python_module in the spec file.
+    This is nowadays defined on all distributions we build for.</comment>
+    <requestid>1128370</requestid>
+  </revision>
 </revisionlist>

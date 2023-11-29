@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 23 11:10:54 UTC 2023 - guillaume.gardet@opensuse.org
+
+- Update to version 0.0.0.git20230926.96d63eb:
+  * kmscube: Add gears mode
+  * es: Update to prepare for gears mode
+  * ci: enable MR pipelines
+  * Revert "ci: use gitlab proxy to avoid hitting dockerhub every time"
+  * kmscube: Add [-n N] option to specify connector ID
+  * kmscube: add offscreen rendering support
+  * ci: use gitlab proxy to avoid hitting dockerhub every time
+  * ci: stop using the deprecated implicit `setup` command
+  * ci: extend from a common job instead of using a bunch of yaml anchors
+  * ci: bump meson to 0.48
+  * ci: force installation of python packages
+  * ci: drop wheel & setuptools install now that they are included
+  * perfcntrs.c: remove include GLES3/gl3.h
+  * meson: check GLES3 header within GLESv2 include dirs
+  * fix typos
+  * meson: upgrade the "GLES3 not supported" message into a warning
+  * meson: replace gles version check with a header presence check
+  * drm-common: fix return type of find_crtc_for_connector() & find_crtc_for_encoder()
+  * make GLES3 optional
+  * texturator: Use correct GL extension header
+  * Returns -1 when shaders creation fails
+  * drm-common.c: do not use invalid modifier
+  * kmscube: check return value when creating GBM device
+  * drm: fix crtc not found conditional
+  * ci/latest: use image with base-devel pre-installed
+  * ci/latest: fix build as dockerhub image was renamed
+
+-------------------------------------------------------------------
 Thu Mar 17 08:42:43 UTC 2022 - guillaume.gardet@opensuse.org
 
 - Update to version 0.0.0.git1612698153.9f63f35:

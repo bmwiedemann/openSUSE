@@ -5,6 +5,12 @@ Tue Nov  7 10:01:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
   supported.
 
 -------------------------------------------------------------------
+Sat Nov  4 00:42:57 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- add Provides that we can differentiate between between jemalloc
+  enabled and non enabled ruby
+
+-------------------------------------------------------------------
 Thu Mar 30 14:23:04 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 3.2.2 (boo#1209891 CVE-2023-28755 boo#1209967 CVE-2023-28756)

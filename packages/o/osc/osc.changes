@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 22 07:57:53 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.5.0
+  - Command-line:
+    - Change 'rdiff' command to display diff for _project if no package is specified
+    - Update 'build' command with initial support for 'productcompose' build type
+    - Change 'build' command to disable preinstall images in rootless builds
+  - Configuration:
+    - Fix conf.write_initial_config() to use read_file() instead of deprecated readfp()
+  - Other:
+    - Support installing osc into virtualenv
+  - Spec:
+    - Recommend 'build' on openSUSE/SLE and 'obs-build' on all other distros
+
+-------------------------------------------------------------------
 Thu Nov  2 14:51:36 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.4.4

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Converting to/from HTTP API data like URL pieces, headers and query parameters
 License:        BSD-2-Clause
@@ -28,12 +28,6 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-attoparsec-iso8601-devel
-BuildRequires:  ghc-attoparsec-iso8601-prof
-BuildRequires:  ghc-attoparsec-prof
-BuildRequires:  ghc-base-compat-devel
-BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
@@ -50,6 +44,8 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-iso8601-devel
+BuildRequires:  ghc-text-iso8601-prof
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-compat-devel
 BuildRequires:  ghc-time-compat-prof
@@ -106,7 +102,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver base-compat "< 0.13" "< 1"
 
 %build
 %ghc_lib_build

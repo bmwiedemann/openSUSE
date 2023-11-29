@@ -215,4 +215,30 @@
 - cleanup; sle12 no longer supported</comment>
     <requestid>1125886</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>d41cafdfce8773954619392ed5edfe3d</srcmd5>
+    <version>545.29.02</version>
+    <time>1700675720</time>
+    <user>anag+factory</user>
+    <comment>- no longer try to overwrite NVreg_OpenRMEnableSupporteGpus driver
+  option setting; apparently it's ignored by the driver (boo#1215981,
+  comment#26)
+
+- use different modprobe.d config file to resolve conflict with
+  older driver package (boo#1217370); overwrite 
+  NVreg_OpenRMEnableSupporteGpus driver option setting (disable it),
+  since letting it enabled is supposed to break booting (boo#1215981, 
+  comment#23)</comment>
+    <requestid>1128138</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ece5d5450a5396f5854d944145782c50</srcmd5>
+    <version>545.29.06</version>
+    <time>1700865253</time>
+    <user>anag+factory</user>
+    <comment>- Update to 545.29.06 
+
+- The brightness control of NVIDIA seems to be broken, [#573](https://github.com/NVIDIA/open-gpu-kernel-modules/issues/573)</comment>
+    <requestid>1128390</requestid>
+  </revision>
 </revisionlist>

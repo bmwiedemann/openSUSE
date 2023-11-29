@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 28 13:32:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.0:
+  * Fix base32 encoding and decoding of bytes array (#54)
+  * Add support for OpenSSL (#52), by @mchalain
+
+-------------------------------------------------------------------
 Thu Nov  9 09:18:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:

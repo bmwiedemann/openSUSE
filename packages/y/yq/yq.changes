@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 24 09:23:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.40.3:
+  * Fixed JSON output issue with empty arrays #1880
+- update to 4.40.2:
+  * Do not panic when StdIn is closed (#1867) Thanks @aleskandro!
+  * Fixed issue when update against self #1869
+  * Fixed multi doc anchor bug #1861
+  * Fixes doc line separator issue when reading expression file
+    #1860
+  * Bumped dependencies
+
+-------------------------------------------------------------------
 Wed Oct 11 12:40:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - trim paths in the binary

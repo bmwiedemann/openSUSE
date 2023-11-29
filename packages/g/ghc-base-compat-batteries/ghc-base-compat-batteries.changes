@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:15:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete dependency on ghc-foldable1-classes-compat.
+
+-------------------------------------------------------------------
 Wed Oct 11 11:37:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update base-compat-batteries to version 0.13.1.

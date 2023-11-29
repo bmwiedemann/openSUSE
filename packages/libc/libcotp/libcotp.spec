@@ -17,11 +17,8 @@
 
 
 %define libsoname %{name}2
-%if 0%{?fedora_version}
-%global debug_package %{nil}
-%endif
 Name:           libcotp
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
@@ -32,8 +29,12 @@ Source1:        https://github.com/paolostivanin/libcotp/releases/download/v%{ve
 Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  libgcrypt-devel
+%if 0%{?suse_version} >= 1600
+%ifarch x86_64
+BuildRequires:  libcriterion3-devel
+%endif
+%endif
+BuildRequires:  libgcrypt-devel >= 1.8.0
 BuildRequires:  pkgconfig
 Obsoletes:      libbaseencode <= 1.0.15
 
@@ -63,11 +64,28 @@ Pkg-config and header files for developing applications that use %{name}
 %autosetup -p1
 
 %build
-%cmake
+%cmake \
+%if 0%{?suse_version} >= 1600
+%ifarch x86_64
+  -DBUILD_TESTS=ON \
+%endif
+%endif
+  -DBUILD_SHARED_LIBS=ON \
+  -DHMAC_WRAPPER="gcrypt"
 %cmake_build
 
 %install
 %cmake_install
+
+%if 0%{?suse_version} >= 1600
+%ifarch x86_64
+%check
+cd build
+./tests/test_base32encode
+./tests/test_base32decode
+./tests/test_cotp
+%endif
+%endif
 
 %post -n        %{libsoname} -p /sbin/ldconfig
 %postun -n      %{libsoname} -p /sbin/ldconfig

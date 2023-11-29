@@ -43,4 +43,16 @@
     <comment></comment>
     <requestid>1081764</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02f352dd0814f840d6b5fd5fbf2387d3</srcmd5>
+    <version>1.5.4</version>
+    <time>1701121486</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.4:
+  * Detect proc format eagerly so it throws the error at the
+    correct location.
+  * Fixed a regression causing ``ShellDetectionFailure`` if
+    ``/proc`` is used for process lookup.</comment>
+    <requestid>1129196</requestid>
+  </revision>
 </revisionlist>

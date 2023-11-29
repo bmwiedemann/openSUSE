@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 25 22:37:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.7:
+  * Added python package rebuild on commit to verify package
+    generation (#822).
+  * Support Python 3.12 and Node 20, remove builds for Python 3.7
+    and Node 16 (#820).
+  * Add support of CMake config modules (#763).
+  * Several other minor fixes.
+- drop fix-soversion.patch (obsolete)
+
+-------------------------------------------------------------------
 Sun Dec 11 19:01:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.6:
@@ -14,7 +26,7 @@ Mon Aug  1 22:04:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 1.1.4:
   * Add python 3.10 support
   * remove support for python < 3.7 and node 10.x
-  * small bugfixes 
+  * small bugfixes
 - add fix-soversion.patch for fixing the leftover .so version tag
 
 -------------------------------------------------------------------
@@ -26,7 +38,7 @@ Mon Feb 14 21:28:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Support Node.js 16 (#597).
   * Support Python 3.9 (#603).
   * Fixed conversion errors.
-  * Several other small fixes.  
+  * Several other small fixes.
 
 -------------------------------------------------------------------
 Fri Mar 12 21:26:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -34,14 +46,14 @@ Fri Mar 12 21:26:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 1.1.2:
   * Added Hong Kong Traditional Chinese conversion.
   * Fix the compilation compatibility problem, including parallel compilation.
-  * Fixed the serious performance degradation problem introduced since 1.1.0. 
+  * Fixed the serious performance degradation problem introduced since 1.1.0.
 - drop opencc-1.1.1-missing-builtin-types.patch: upstream
 
 -------------------------------------------------------------------
 Mon Sep 28 05:07:44 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - add opencc-1.1.1-missing-builtin-types.patch
-  * SimpleConverter.hpp missed "#include <string>" that breaks pyzy 
+  * SimpleConverter.hpp missed "#include <string>" that breaks pyzy
 
 -------------------------------------------------------------------
 Sat Sep 12 19:49:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -79,7 +91,7 @@ Thu Oct  5 13:28:26 UTC 2017 - hillwood@opensuse.org
 - Update to 1.0.5
   * Fix link error for mingw
   * Try fix error nodejs_version=4; Platform: x86
-  * Add support for node stable && remove v0.12 
+  * Add support for node stable && remove v0.12
   * Update artifacts
   * Artifacts for appveyor
 
@@ -97,7 +109,7 @@ Wed Aug 12 00:16:09 UTC 2015 - i@marguerite.su
 Sun Feb 15 03:59:02 UTC 2015 - hillwood@linuxfans.org
 
 - Update to 1.0.2
-  * Update dictionary 
+  * Update dictionary
   * Fix scripts compatibility for Python3
   * Fix compatibility with Python3
   * Add non-allocation interface
@@ -135,5 +147,5 @@ Thu Feb 16 15:37:21 UTC 2012 - coolo@suse.com
 -------------------------------------------------------------------
 Mon Jan 23 12:40:44 UTC 2012 - i@marguerite.su
 
-- initial package 0.3.0 
+- initial package 0.3.0
 

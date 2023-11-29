@@ -70,4 +70,23 @@
     <comment></comment>
     <requestid>1117098</requestid>
   </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>86f7da1c6de12efb6e33eb580343ca0d</srcmd5>
+    <version>1.2.9a</version>
+    <time>1701023891</time>
+    <user>anag+factory</user>
+    <comment>- reorganize specfile:
+  * patches back to -p1, much easier to handle
+  * create pdnsd.service from single template for SLES12 (no
+    hardening) and newer (hardening), do not maintain 2 files
+  * put licences back into main package, only large doc into
+    -doc subpackage
+- add patch pdnsd-fix-preproc-errors.patch to make compiletime
+  default query selection actually work
+- remove cache file creation from package, the daemon creates this
+  on first exit (see discussion in boo#1216277)
+- add pdnsd-nodaemon-logfix.patch to remove the useless additional
+  timestamp from journal logs (forwarded request 1128892 from seife)</comment>
+    <requestid>1128893</requestid>
+  </revision>
 </revisionlist>

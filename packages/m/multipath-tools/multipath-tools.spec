@@ -19,7 +19,7 @@
 %global _lto_cflags %{nil}
 %global _make_output_sync -Orecurse
 
-# multipath-tools auto-detects support for -D_FORTFY_SOURCE.
+# multipath-tools auto-detects support for -D_FORTIFY_SOURCE.
 # This will lead to a compilation error if the distro overrides
 # -D_FORTIFY_SOURCE in optflags, unless it's preceded with -U_FORTIFY_SOURCE
 %global mp_optflags %(echo %{optflags} | sed '/-U_FORTIFY_SOURCE/!s/-D_FORTIFY_SOURCE=[0-9]/-U_FORTIFY_SOURCE &/')
@@ -35,14 +35,15 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.6+115+suse.07776fb
+Version:        0.9.7+76+suse.5f857af
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          System/Base
 URL:            http://christophe.varoqui.free.fr/
 Source:         multipath-tools-%{version}.tar
-Source1:        multipath.conf
+# modprobe.d configuration file
+Source1:        modprobe_d-scsi_dh.conf
 # SUSE policy: disable partition deletion by default
 Source2:        dont-del-part-nodes.rules
 # Dracut conf file to make sure 11-dm-parts.rules is included in initrd
@@ -149,7 +150,7 @@ This package provides development files and documentation for libdmmp.
 %global extraversion %(echo %{version} | sed 's/^[^+]*//')
 %define makeflags EXTRAVERSION="%{extraversion}" %{!?with_libdmmp:ENABLE_LIBDMMP=0}
 %if 0%{?suse_version} < 1550
-%define dirflags LIB=%{_lib} usr_prefix=%{_prefix}
+%define dirflags LIB=%{_lib}
 %define sbindir /sbin
 %define libdir  /%{_lib}
 %else
@@ -186,8 +187,7 @@ for x in mpathutil multipath mpathpersist mpathcmd mpathvalid; do
 done
 %endif
 ln -sf service %{buildroot}/usr/sbin/rcmultipathd
-mkdir -p %{buildroot}/usr/lib/modules-load.d
-install -m 644 -D %{SOURCE1} "%{buildroot}/usr/lib/modules-load.d/multipath.conf"
+install -m 644 -D %{SOURCE1} %{buildroot}/usr/lib/modprobe.d/90-scsi_dh.conf
 install -m 644 %{SOURCE2} %{buildroot}%{_udevrulesdir}/00-dont-del-part-nodes.rules
 install -m 644 -D %{SOURCE3} %{buildroot}/usr/lib/dracut/dracut.conf.d/dm-parts.conf
 install -m 644 -D %{SOURCE6} %{buildroot}/usr/lib/dracut/dracut.conf.d/multipath.conf
@@ -234,11 +234,14 @@ exit 0
 /usr/sbin/rcmultipathd
 %{_unitdir}/multipathd.service
 %{_unitdir}/multipathd.socket
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
 %dir /usr/lib/modules-load.d
 /usr/lib/modules-load.d/multipath.conf
+%endif
 %dir /usr/lib/dracut
 %dir /usr/lib/dracut/dracut.conf.d
 /usr/lib/dracut/dracut.conf.d/multipath.conf
+/usr/lib/modprobe.d/90-scsi_dh.conf
 %{_tmpfilesdir}/multipath.conf
 %{_mandir}/man8/multipath.8*
 %{_mandir}/man5/multipath.conf.5*

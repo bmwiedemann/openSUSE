@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 22 10:48:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 3e3967d5f69180644519936991cad10136e84ca9.patch: Fix building
+  against libappstream 1.0 (boo#1217047).
+
+-------------------------------------------------------------------
 Thu Nov 16 12:29:43 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 1.4.0+12:

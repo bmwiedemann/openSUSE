@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Sat Nov 25 19:45:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.18.1:
+  * dont crash on 100gb files pls (#1292)
+  * remove secretgroup from default config (#1288)
+  * feat: Hashicorp Terraform fields for password (#1237)
+  * perf: avoid allocations with
+    `(*regexp.Regexp).MatchString` (#1283)
+  * refactor: more explicit rules (#1280)
+  * bugfix: reduce false positives for stripe tokens by
+    using word boundaries in regex (#1278)
+  * add Infracost API rule (#1273)
+  * refactor: simplify test asserts (#1271)
+  * Update Makefile
+  * refactor: change detect tests to t.Fatal instead of
+    log.Fatal (#1270)
+  * feat(rules): Add detection for Scalingo API Token
+    (#1262)
+  * feat(jwt): detect base64-encoded tokens (#1256)
+  * feat: add --ignore-gitleaks-allow cmd flag (#1260)
+  * switch out libs (#1259)
+  * fix: no-color option should also affect zerolog
+    (#1242)
+  * Fixed lineEnd indexing if the match is the whole line
+    (#1223)
+  * feat: Add optional redaction value, default 100
+    (#1229)
+  * fix(jwt): longer segment lengths (#1214)
+  * Added yarn.lock file to default allowlist paths
+    (#1258)
+  * Update README.md
+  * feat(rules): make case insensitivity optional (#1215)
+  * feat(rules): detect Hugging Face access tokens
+  * Resolve #1170 - Enable selection of a single rule
+    (#1183)
+  * Update authress.go to include alternate form account
+    dash (-) (#1224)
+  * refactor: remove unnecessary removing temp files in
+    tests (#1255)
+  * refactor: use os.ReadFile instead of os.Open +
+    io.ReadAll (#1254)
+  * fix(sumologic): improve patterns (#1218)
+  * Fix inconsistent generated values in config
+  * feat: add JFrog API and Identity keys
+  * Add entropy check to plaid client/secret ID rules
+  * Update config template logic
+  * Include entropy in Plaid rule file
+  * refactor: fix #722 properly
+  * Add `REDACTED` to stopwords for `generic-api-key` rule
+  * Add detection for Snyk tokens
+  * Add makefile variable detections
+  * chore: update deps to fix solaris #1158
+  * Add junit report format
+  * Ignore all comits when `.gitleaksignore` fingerprint lacks
+    SHA
+  * Improved global exclusion list
+  * Add detection for OpenAI API keys
+  * Add warning for quoted `--log-opts` values
+  * Fixed docker run command in README.md
+  * add tags support for csv and sarif formats
+  * Update Slack token regexes
+
+-------------------------------------------------------------------
+Sat Nov 25 19:45:24 UTC 2023 - dmueller@suse.com
+
+- Update to version 8.18.1:
+  * dont crash on 100gb files pls (#1292)
+  * remove secretgroup from default config (#1288)
+  * feat: Hashicorp Terraform fields for password (#1237)
+  * perf: avoid allocations with `(*regexp.Regexp).MatchString` (#1283)
+  * refactor: more explicit rules (#1280)
+  * bugfix: reduce false positives for stripe tokens by using word boundaries in regex (#1278)
+  * add Infracost API rule (#1273)
+  * refactor: simplify test asserts (#1271)
+  * Update Makefile
+  * refactor: change detect tests to t.Fatal instead of log.Fatal (#1270)
+  * feat(rules): Add detection for Scalingo API Token (#1262)
+  * feat(jwt): detect base64-encoded tokens (#1256)
+  * feat: add --ignore-gitleaks-allow cmd flag (#1260)
+  * switch out libs (#1259)
+  * fix: no-color option should also affect zerolog output (#1242)
+  * Fixed lineEnd indexing if the match is the whole line (#1223)
+  * feat: Add optional redaction value, default 100 (#1229)
+  * fix(jwt): longer segment lengths (#1214)
+  * Added yarn.lock file to default allowlist paths (#1258)
+  * Update README.md
+  * feat(rules): make case insensitivity optional (#1215)
+  * feat(rules): detect Hugging Face access tokens (#1204)
+  * Resolve #1170 - Enable selection of a single rule  (#1183)
+  * Update authress.go to include alternate form account dash (-) (#1224)
+  * refactor: remove unnecessary removing temp files in tests (#1255)
+  * refactor: use os.ReadFile instead of os.Open + io.ReadAll (#1254)
+  * fix(sumologic): improve patterns (#1218)
+  * refactor: fix #722 properly (#1250)
+  * fix(plaid): include entropy in go definition (#1252)
+  * feat(config): update template logic (#1201)
+  * Add entropy check to plaid client/secret ID rules (#1213)
+  * feat: add JFrog API and Identity keys (#1233)
+  * chore(config): fix inconsistent generated values (#1200)
+  * Revert "Initial set of Azure secrets for #539 (#1079)" (#1197)
+  * Initial set of Azure secrets for #539 (#1079)
+  * feat(slack): update token regex (#1161)
+  * add tags support for csv and sarif formats (#1176)
+  * Fixed docker run command in README.md (#1194)
+  * feat: add warning for quoted --log-opts values (#1160)
+  * Add detection for OpenAI API keys (#1148)
+  * Add some useless files (#1193)
+  * add tests for commits
+  * fix broken vet, format some stuff
+  * add some gl ignores
+  * Ignore all comits when `.gitleaksignore` fingerprint lacks SHA (#1156)
+  * Add junit report format (#920)
+  * chore: update deps to fix solaris link (#1159)
+  * Add makefile variable detections (#1191)
+  * Add detection for Snyk tokens (#1190)
+  * Add `REDACTED` to stopwords for `generic-api-key` rule (#1188)
+  * Added option to specify .gitleaksignore path (#1179)
+  * Fix closing file in writeJson and writeSarif (#1187)
+  * Simplify tests by using T.TempDir (#1186)
+  * Fix typos in *.md, comments and logs (#1185)
+  * Update README.md
+  * Update bug_report.md
+  * Adding discord channel to readme
+  * 🐛 fix(sarif): update report to pass validator (#1167)
+  * fix(detect): extra secret from group before checking allowlist (#1152)
+  * Fix G307 warning:  Deferring unsafe method "Close" on type "*os.File" (#1154)
+  * fix(detect): avoid panic with verbose flag (#1143)
+  * Fix typo (#1142)
+  * No color (#1136)
+  * Update README.md
+  * safer out of bounds (#1135)
+  * Add Authress access key format: https://authress.io/knowledge-base/docs/authorization/service-clients/secrets-scanning/ (#1131)
+  * Update pre-commit address and rev tag in README (#1125)
+  * Update gitleaks.yml
+  * Update README.md
+  * Update README.md
+  * Update .gitleaksignore
+  * Bufix/1100 protect stagged files (#1121)
+  * remove extra default on source option
+  * fix README.md !? (#1123)
+  * Improve rule descriptions for Stripe and Facebook access tokens (#1119)
+  * Add Defined Networking API Tokens (#1096)
+  * Update gitleaks.toml (#1116)
+  * Update gitleaks.yml (#1117)
+  * Add gradle.lockfile to allowlist (#1112)
+  * Update pre-commit rev tag in README (#1108)
+  * Add pnpm-lock.yaml and Database.refactorlo (#1109)
+
+-------------------------------------------------------------------
 Mon Mar 13 10:37:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.19; fix wrong URL and Summary

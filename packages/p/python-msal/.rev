@@ -228,4 +228,19 @@
 - Remove temporary version override (forwarded request 1116418 from glaubitz)</comment>
     <requestid>1116468</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d2b99cec9ad88d822cad4cc918c9982e</srcmd5>
+    <version>1.25.0</version>
+    <time>1701023892</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.25.0
+  + Deprecation: allow_broker will be replaced by enable_broker_on_windows (#613)
+  + Bugfix: Device Code Flow (and Username Password Flow) and its subsequent silent
+    request will automatically bypass broker and succeed. (#569)
+  + Enhancement: acquire_token_interactive() supports running inside Docker
+  + Observability: Successful token response will contain a new token_source field
+    to indicate where the token was obtained from: identity_provider, cache or broker.
+    (#610) (forwarded request 1128530 from glaubitz)</comment>
+    <requestid>1128899</requestid>
+  </revision>
 </revisionlist>

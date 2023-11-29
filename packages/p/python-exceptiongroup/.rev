@@ -57,4 +57,36 @@
 </comment>
     <requestid>1096944</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>25406785ec4f2567376e2057844bb526</srcmd5>
+    <version>1.2.0</version>
+    <time>1701206306</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Added special monkeypatching if `Apport
+    &lt;https://github.com/canonical/apport&gt;`_ has
+    overridden ``sys.excepthook`` so it will format exception
+    groups correctly
+  * Added a backport of ``contextlib.suppress()`` from Python
+    3.12.1 which also handles suppressing exceptions inside
+    exception groups
+  * Fixed bare ``raise`` in a handler reraising the original
+    naked exception rather than an exception group which is what
+    is raised when you do a ``raise`` in an ``except*`` handler
+  * ``catch()`` now raises a ``TypeError`` if passed an async
+    exception handler instead of just giving a ``RuntimeWarning``
+    about the coroutine never being awaited.
+  * Fixed plain ``raise`` statement in an exception handler
+    callback to work like a ``raise`` in an ``except*`` block
+  * Fixed new exception group not being chained to the original
+    exception when raising an exception group from exceptions
+    raised in handler callbacks
+  * Fixed type annotations of the ``derive()``, ``subgroup()``
+    and ``split()`` methods to match the ones in typeshed
+- drop skip-test_catch_handler_raises-for-older-311.patch
+  (upstream)
+
+- Add skip-test_catch_handler_raises-for-older-311.patch</comment>
+    <requestid>1129176</requestid>
+  </revision>
 </revisionlist>

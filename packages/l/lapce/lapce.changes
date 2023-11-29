@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 21 23:27:47 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.3.0:
+  Features/Changes
+  * Rewrite with Floem UI
+  * Reimplement completion lens
+  * Show Lapce as an option when doing "Open With..." on Linux
+  * Implement multi-line vim-motion yank and delete (3dd, 2yy, etc.)
+  * Implement search and replace
+  * Implement debug adapter protocol
+  Bug Fixes
+  * Inform language servers that Lapce supports LSP diagnostics
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`

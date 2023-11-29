@@ -307,4 +307,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1110952</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6a6e1d1ee39c5197f3ac268f560ca730</srcmd5>
+    <version>2023.11.17</version>
+    <time>1701206258</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.11.17:
+  Added certs:
+  * Subject: CN=TrustAsia Global Root CA G3 O=TrustAsia Technologies, Inc.
+  * Subject: CN=TrustAsia Global Root CA G4 O=TrustAsia Technologies, Inc.
+  * Subject: CN=CommScope Public Trust ECC Root-01 O=CommScope
+  * Subject: CN=CommScope Public Trust ECC Root-02 O=CommScope
+  * Subject: CN=CommScope Public Trust RSA Root-01 O=CommScope
+  * Subject: CN=CommScope Public Trust RSA Root-02 O=CommScope
+  Removed certs:
+  * Subject: CN=Autoridad de Certificacion Firmaprofesional CIF A62634068
+
+- update to 2020.12.5
+  * Python 3.8+ support</comment>
+    <requestid>1129473</requestid>
+  </revision>
 </revisionlist>

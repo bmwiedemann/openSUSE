@@ -33,7 +33,7 @@
 %bcond_with localtest
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        8.16.1
+Version:        8.18.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -49,13 +49,11 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 # requires the full stdlib including sqlite3
-Requires:       python >= 3.8
-Requires:       python-backcall
+Requires:       python
 Requires:       python-decorator
 Requires:       python-jedi >= 0.16
 Requires:       python-matplotlib-inline
 Requires:       python-pexpect >= 4.3
-Requires:       python-pickleshare
 Requires:       python-pygments >= 2.4.0
 Requires:       python-stack-data
 Requires:       python-traitlets >= 5
@@ -89,8 +87,9 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ipython = %{version}}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy >= 1.21}
+BuildRequires:  %{python_module numpy >= 1.22}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pickleshare}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}

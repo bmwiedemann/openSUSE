@@ -324,4 +324,13 @@ factory)</comment>
   * NVMe: fix logical name with native multipath</comment>
     <requestid>1073912</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>07cdda247a90ae98ea7efb5310cf7253</srcmd5>
+    <version>B.02.19.2+git.20231115</version>
+    <time>1701206391</time>
+    <user>anag+factory</user>
+    <comment>- Update to version B.02.19.2+git.20231115:
+  * merge github PR #98</comment>
+    <requestid>1129554</requestid>
+  </revision>
 </revisionlist>

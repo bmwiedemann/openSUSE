@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Nov 27 13:05:40 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Nov 27 08:03:06 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.1.1:
+  - Display Flags values in their repr.
+  - ~SelectField and SelectMultipleField choices can be None if
+    validate_choice is False
+  - Documentation improvements
+  - Unit tests improvements
+  - Python 3.12 support
+  - Restored support for 3-items tuple return value from
+    iter_choices
+
+- Update to 3.1.0:
+  - Documentation improvements
+  - Translation improvements
+  - Implement :class:~fields.ColorField
+  - Delayed import of email_validator.
+  - <option> attributes can be passed by the
+    :class:~fields.SelectField choices parameter
+  - Use the standard datetime formats by default for
+    :class:~fields.DateTimeLocalField
+  - Python 3.11 support
+  - Added shorter format to
+    :class:~fields.DateTimeLocalField defaults
+  - Stop support for python 3.7
+  - Added shorter format to :class:~fields.WeekField defaults
+  - Move to pyproject.toml
+  - URL validator takes a allow_ip parameter
+  - Implement :class:~validators.ReadOnly and
+    :class:~validators.Disabled
+
+-------------------------------------------------------------------
 Tue Sep 26 03:05:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

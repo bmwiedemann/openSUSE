@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 23 10:12:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2023.10.30:
+  * Fix SDIO / WiFi clock-setup for BOOT_ORDER=0xf14
+  * Fix SD power-on-reset
+  * Firmware support for improved watchdog driver
+  * Update DHCP Option97 to be R,P,i,5 on Pi5
+- Updates from skipped v2023.10.18:
+  * Add support for HAT gpiomap for improved HAT compatibility.
+  * Add I2C probe for DSI display auto detect
+  * Automatically set dtparam=nvme if booted from nvme
+  * Fix network boot reset issue where only the first attempt works.
+  * Adding pciex4_reset=0 to config.txt will leave RP1 PCIe enabled
+    when ARM stage is started.
+  * Prevent HDMI diagnostics being displayed immediately when
+    waking after HALT.
+  * Update board-name - "Raspberry Pi 5"
+- Refresh patches:
+  * add-suse-config.patch
+  * rpi-eeprom-update-Use-tr-instead-of-strings.patch
+
+-------------------------------------------------------------------
 Sun Jan 29 14:42:22 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Refresh patch rpi-eeprom-update-Use-tr-instead-of-strings.patch

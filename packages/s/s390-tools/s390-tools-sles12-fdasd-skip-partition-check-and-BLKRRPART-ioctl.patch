@@ -12,8 +12,8 @@ so we should be suppressing the error message for these devices, too.
 
 Signed-off-by: Hannes Reinecke <hare@suse.de>
 ---
- fdasd/fdasd.c |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ fdasd/fdasd.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
 Index: s390-tools-2.29.0/fdasd/fdasd.c
 ===================================================================

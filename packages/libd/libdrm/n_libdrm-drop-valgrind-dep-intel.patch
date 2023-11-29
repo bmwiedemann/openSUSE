@@ -1,12 +1,11 @@
-Index: pkgconfig/libdrm_intel.pc
-===================================================================
---- pkgconfig.orig/libdrm_intel.pc
-+++ pkgconfig/libdrm_intel.pc
-@@ -6,6 +6,6 @@ Name: libdrm_intel
+--- pkgconfig/libdrm_intel.pc.orig	2023-11-17 14:37:37.898187134 +0100
++++ pkgconfig/libdrm_intel.pc	2023-11-17 14:38:39.303431015 +0100
+@@ -6,7 +6,7 @@
  Description: Userspace interface to intel kernel DRM services
- Version: 2.4.116
+ Version: 2.4.117
  Requires: libdrm
 -Requires.private: pciaccess >=  0.10, valgrind
 +Requires.private: pciaccess >=  0.10
  Libs: -L${libdir} -ldrm_intel
+ Libs.private: -pthread
  Cflags: -I${includedir} -I${includedir}/libdrm

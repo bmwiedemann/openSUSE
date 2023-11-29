@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 25 20:42:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.2:
+  * ensured compatibility with Pillow 10.0
+  * fixed crash when toggling the 'skip' or 'overview' PageProps
+  * made Raspberry Pi platform detection code more robust
+  * re-added pseudo-binary version to source release, but with
+    proper sourcecode instead of the rather problematic
+    bytecode we had in 0.13.0
+  * remove Tcl/Tk from the Win32 build (it was never used anyway)
+
+-------------------------------------------------------------------
 Sun Mar 20 09:19:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.13.1

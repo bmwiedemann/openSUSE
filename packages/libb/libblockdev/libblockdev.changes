@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 11 18:11:14 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add %{_libdir}/libbd_s390.so for s390x because missing file identitied
+
+-------------------------------------------------------------------
 Fri Oct 13 08:09:53 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.4:

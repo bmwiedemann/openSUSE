@@ -23,6 +23,8 @@ Summary:        Building blocks for modern GNOME applications
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/libadwaita
 Source:         %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM 3e3967d5f69180644519936991cad10136e84ca9.patch -- Fix building against libappstream 1.0
+Patch0:         https://gitlab.gnome.org/GNOME/libadwaita/-/commit/3e3967d5f69180644519936991cad10136e84ca9.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.59.0

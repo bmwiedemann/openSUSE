@@ -1677,4 +1677,25 @@
     <comment>- list-common: Ignore xorg-x11-fonts-converted (forwarded request 1123857 from favogt)</comment>
     <requestid>1123860</requestid>
   </revision>
+  <revision rev="210" vrev="210">
+    <srcmd5>e5ecf317eeb0c67e606e6646cbf52890</srcmd5>
+    <version>unknown</version>
+    <time>1700865271</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128490</requestid>
+  </revision>
+  <revision rev="211" vrev="211">
+    <srcmd5>0c187a64f605ecaebe9631e751ddb362</srcmd5>
+    <version>unknown</version>
+    <time>1701256700</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the nvidia/gsp firmware images: they make up &gt; 70MB.</comment>
+  </revision>
+  <revision rev="212" vrev="212">
+    <srcmd5>9ef702be5d7994f244198ecffc232d8d</srcmd5>
+    <version>unknown</version>
+    <time>1701257388</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

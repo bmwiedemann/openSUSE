@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-gitdb
-Version:        4.0.10
+Version:        4.0.11
 Release:        0
 Summary:        Git Object Database
 License:        BSD-3-Clause

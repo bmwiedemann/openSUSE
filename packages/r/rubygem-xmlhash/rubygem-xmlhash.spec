@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-xmlhash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-xmlhash
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 %define mod_name xmlhash
 %define mod_full_name %{mod_name}-%{version}
@@ -36,17 +36,15 @@ BuildRequires:  %{rubygem rake-compiler}
 BuildRequires:  %{rubygem rake}
 BuildRequires:  libxslt-devel
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/coolo/xmlhash
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Xmlhash is a naive form of XML::Simple
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A small C module that wraps libxml2's xmlreader to parse a XML

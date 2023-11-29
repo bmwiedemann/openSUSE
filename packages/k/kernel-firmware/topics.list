@@ -171,6 +171,7 @@ mt7663:		mediatek	mt7615e
 mt7915e:	mediatek	mt7915
 mt7921:		mediatek	mt7921e
 mt7922:		mediatek
+mt7988:		mediatek
 nfp:		nfp
 wil6210:	atheros
 venus:		media
@@ -197,4 +198,5 @@ nxp-sr1xx:	platform
 btnxpuart:	platform
 qcom-sc8280xp:	sound		snd-soc-sc8280xp
 amlogic:	bluetooth
+powervr:	platform
 ast:		platform

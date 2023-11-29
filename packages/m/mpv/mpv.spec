@@ -19,14 +19,9 @@
 #
 
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
-%bcond_without jxl
-%else
-%bcond_with jxl
-%endif
 %define lname   libmpv2
 Name:           mpv
-Version:        0.36.0+git20230923.140d0185
+Version:        0.37.0+git20231121.2a57a6ee
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -36,7 +31,6 @@ Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
-Patch1:         0001-Revert-meson-bump-required-version-to-0.62.patch
 # Install docs in proper directory
 Patch2:         fix-docs-path.patch
 BuildRequires:  bash
@@ -65,14 +59,9 @@ BuildRequires:  pkgconfig(libass) >= 0.12.2
 BuildRequires:  pkgconfig(libavcodec) >= 58.12.100
 BuildRequires:  pkgconfig(libavdevice) >= 57.0.0
 BuildRequires:  pkgconfig(libavfilter) >= 7.14.100
-%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libavformat) >= 59.27.100
 BuildRequires:  pkgconfig(libavif) >= 0.11.1
 BuildRequires:  pkgconfig(libavutil) >= 57.24.100
-%else
-BuildRequires:  pkgconfig(libavformat) >= 58.9.100
-BuildRequires:  pkgconfig(libavutil) >= 56.12.100
-%endif
 BuildRequires:  pkgconfig(libbluray) >= 0.3.0
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcdio_cdda)
@@ -80,16 +69,16 @@ BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.75
 BuildRequires:  pkgconfig(libiso9660)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(libjxl_threads)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
+BuildRequires:  pkgconfig(libsixel) >= 1.5
 BuildRequires:  pkgconfig(libswresample) >= 3.0.100
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
 BuildRequires:  pkgconfig(libva) >= 1.1.0
 BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(openal) >= 1.13
 BuildRequires:  pkgconfig(python3)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
-BuildRequires:  pkgconfig(libsixel) >= 1.5
-%endif
 BuildRequires:  pkgconfig(rubberband) >= 3.0.0
 BuildRequires:  pkgconfig(uchardet)
 BuildRequires:  pkgconfig(vapoursynth) >= 24
@@ -104,10 +93,6 @@ BuildRequires:  pkgconfig(xscrnsaver) >= 1.0.0
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(zimg) >= 2.9
 BuildRequires:  pkgconfig(zlib)
-%if %{with jxl}
-BuildRequires:  pkgconfig(libjxl)
-BuildRequires:  pkgconfig(libjxl_threads)
-%endif
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
@@ -119,20 +104,11 @@ Conflicts:      mpv-plugin-mpris < 0.4
 # Obsoletion of mplayer2 that is dead for 2 years now
 Provides:       mplayer2 = 20140101
 Obsoletes:      mplayer2 < 20140101
-# Use libplacebo v5.264 for Leap 15.5
-%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-BuildRequires:  (pkgconfig(libplacebo) >= 5 with pkgconfig(libplacebo) < 6.292.0)
-%endif
-# Use libplacebo v6.292 for Tumbleweed
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
-BuildRequires:  pkgconfig(shaderc)
-%endif
-# mujs is not available for Leap 15.5
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(mujs)
-%endif
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.48
+BuildRequires:  pkgconfig(libplacebo) >= 6.338.0
 BuildRequires:  pkgconfig(libva-wayland) >= 1.1.0
+BuildRequires:  pkgconfig(mujs)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(vulkan) >= 1.0.61
 BuildRequires:  pkgconfig(wayland-client) >= 1.20.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.20.0
@@ -140,9 +116,6 @@ BuildRequires:  pkgconfig(wayland-egl) >= 9.0.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.48
-%endif
 # JIT for lua.
 %ifarch aarch64 %{ix86} x86_64
 BuildRequires:  pkgconfig(luajit)
@@ -209,12 +182,6 @@ sed -i "s|UNKNOWN|$DATE|g;s|VERSION|\"%{version}\"|g" common/version.c
 %build
 # We don't want to rebuild all the time.
 myopts=" -Dbuild-date=false"
-# Disable pipwire for Leap because of build error
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150500
-myopts+=" -Dpipewire=disabled"
-%endif
-# Needs libavutil >= 58.11.100 (unreleased as of 2023-07-14)
-myopts+=" -Dvulkan-interop=disabled"
 %meson \
   --auto-features=auto       \
   -Dcdda=enabled             \

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           img2pdf
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        Python module for converting images to PDF via direct JPEG inclusion
 License:        LGPL-3.0-or-later

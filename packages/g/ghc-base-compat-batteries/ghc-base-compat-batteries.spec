@@ -27,14 +27,10 @@ License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-OneTuple-devel
-BuildRequires:  ghc-OneTuple-prof
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-foldable1-classes-compat-devel
-BuildRequires:  ghc-foldable1-classes-compat-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}

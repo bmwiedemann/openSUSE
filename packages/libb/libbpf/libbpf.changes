@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Nov 25 09:45:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * support for `netfilter` programs is added
+    `SEC("netfilter")` is now available
+  * API function `bpf_program__attach_netfilter()` is now
+    available
+  * support for `tcx` BPF programs is added:
+  * the following new SEC definitions are now available:
+    SEC("tc/egress"), SEC("tc/ingress"), SEC("tcx/egress"),
+    SEC("tcx/ingress")
+  * the following SEC definitions are now considered legacy:
+    SEC("tc"), SEC("action"), SEC("classifier")
+  * functions `bpf_prog_attach_opts()` and
+    `bpf_prog_query_opts()` are extended to work with `tcx`
+    programs, plus two new API functions are added:
+  * the following new SEC definitions are now available:
+    SEC("uprobe.multi"), SEC("uprobe.multi.s"),
+    SEC("uretprobe.multi"), SEC("uretprobe.multi.s")
+  * support for section `SEC("usdt.s")` is added for sleepable
+    `usdt` programs;
+  * support for Unix domain socket cgroup BPF programs is added
+    the following new SEC definitions are now available:
+     SEC("cgroup/connect_unix"),SEC("cgroup/sendmsg_unix"),
+     SEC("cgroup/recvmsg_unix"), SEC("cgroup/getpeername_unix"),
+     SEC("cgroup/getsockname_unix")
+  * new `LIBBPF_OPTS_RESET()` utility macro;
+  * new `bpf_object__unpin()` function to complement existing
+    `bpf_object__pin()`;
+  * new API functions for work with ring buffers
+  * uprobe SEC matcher extended to allow golang symbols;
+  * uprobe support for symbols versioning;
+  * `bpf_map__set_value_size()` can now be used to resize memory
+    mapped region for memory mapped maps;
+  * `struct bpf_xdp_query_opts` extended with `xdp_zc_max_segs`
+    output field;
+  * basic BTF sanity check pass added to reject bogus BTF.
+  * fix for btf_dump__dump_type_data() when type contains
+    bitfields;
+  * fix for correct work of offsetof() and container_of() macro
+    with CO-RE;
+  * no longer attempt to load modules BTF when resolving CO-RE
+    relocations if CAP_SYS_ADMIN are absent;
+  * regex based function search for "kprobe.multi/" programs no
+    longer attempts to trace functions that cannot be traced;
+  * bpf_program__set_type() no longer resets sec_def if it is set
+    to a custom fallback SEC handler;
+  * fix for memory leak possible after
+    bpf_program__set_attach_target() call;
+
+-------------------------------------------------------------------
 Fri Jul 14 05:04:50 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - update to v1.2.2:

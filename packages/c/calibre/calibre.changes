@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 24 07:31:48 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.1.0
+  * New Features
+    - Notes editor: When pasting HTML with images offer to download
+      remote images in the pasted content
+  * Bug Fixes
+    - Fix regression in 7.0 that broke restore of db from backups
+    - Content server: Fix newly added books on homepage not restricted
+      to the books the logged in user is allowed to access
+    - When starting in system tray do not flash the main window briefly
+    - Notes editor: Fix spurious error message when saving a note
+      that contains pasted HTML that refers to an image
+    - Fix a regression that caused the unknown/unset date to
+      incorrectly be displayed/edited as a date in the year AD 101
+      in some timezones
+    - Comments editor: Fix data file links not working
+    - Linux installer: Check that the user has libxcb-cursor.so.0
+      installed. If not quit early with an error message asking
+      them to install it
+    - LRF Output: Fix a regression in 7.0 that broke conversion to LRF
+
+-------------------------------------------------------------------
 Fri Nov 17 08:26:09 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.7.0

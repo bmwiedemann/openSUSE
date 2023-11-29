@@ -1,9 +1,93 @@
 -------------------------------------------------------------------
+Tue Nov 21 14:52:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.43.0:
+ * The "--rfc" option of "git format-patch" used to be a valid way to
+   override an earlier "--subject-prefix=<something>" on the command
+   line and replace it with "[RFC PATCH]", but from this release, it
+   merely prefixes the string "RFC " in front of the given subject
+   prefix.  If you are negatively affected by this change, please use
+   "--subject-prefix=PATCH --rfc" as a replacement.
+ * In Git 2.42, "git rev-list --stdin" learned to take non-revisions
+   (like "--not") from the standard input, but the way such a "--not" was
+   handled was quite confusing, which has been rethought.  The updated
+   rule is that "--not" given from the command line only affects revs
+   given from the command line that comes but not revs read from the
+   standard input, and "--not" read from the standard input affects
+   revs given from the standard input and not revs given from the
+   command line.
+ * A message written in olden time prevented a branch from getting
+   checked out, saying it is already checked out elsewhere. But these
+   days, we treat a branch that is being bisected or rebased just like
+   a branch that is checked out and protect it from getting modified
+   with the same codepath.  The message has been rephrased to say that
+   the branch is "in use" to avoid confusion.
+ * Hourly and other schedules of "git maintenance" jobs are randomly
+   distributed now.
+ * "git cmd -h" learned to signal which options can be negated by
+   listing such options like "--[no-]opt".
+ * The way authentication related data other than passwords (e.g.,
+   oauth token and password expiration data) are stored in libsecret
+   keyrings has been rethought.
+ * Update the libsecret and wincred credential helpers to correctly
+   match which credential to erase; they erased the wrong entry in
+   some cases.
+ * Git GUI updates.
+ * "git format-patch" learned a new "--description-file" option that
+   lets cover letter description to be fed; this can be used on
+   detached HEAD where there is no branch description available, and
+   also can override the branch description if there is one.
+ * Use of the "--max-pack-size" option to allow multiple packfiles to
+   be created is now supported even when we are sending unreachable
+   objects to cruft packs.
+ * "git format-patch --rfc --subject-prefix=<foo>" used to ignore the
+   "--subject-prefix" option and used "[RFC PATCH]"; now we will add
+   "RFC" prefix to whatever subject prefix is specified.
+ * "git log --format" has been taught the %(decorate) placeholder for
+   further customization over what the "--decorate" option offers.
+ * The default log message created by "git revert", when reverting a
+   commit that records a revert, has been tweaked, to encourage people
+   to describe complex "revert of revert of revert" situations better in
+   their own words.
+ * The command-line completion support (in contrib/) learned to
+   complete "git commit --trailer=" for possible trailer keys.
+ * "git update-index" learned the "--show-index-version" option to
+   inspect the index format version used by the on-disk index file.
+ * "git diff" learned the "diff.statNameWidth" configuration variable,
+   to give the default width for the name part in the "--stat" output.
+ * "git range-diff --notes=foo" compared "log --notes=foo --notes" of
+   the two ranges, instead of using just the specified notes tree,
+   which has been corrected to use only the specified notes tree.
+ * The command line completion script (in contrib/) can be told to
+   complete aliases by including ": git <cmd> ;" in the alias to tell
+   it that the alias should be completed in a similar way to how "git
+   <cmd>" is completed.  The parsing code for the alias has been
+   loosened to allow ';' without an extra space before it.
+ * "git for-each-ref" and friends learned to apply mailmap to
+   authorname and other fields in a more flexible way than using
+   separate placeholder letters like %a[eElL] every time we want to
+   come up with small variants.
+ * "git repack" machinery learned to pay attention to the "--filter="
+   option.
+ * "git repack" learned the "--max-cruft-size" option to prevent cruft
+   packs from growing without bounds.
+ * "git merge-tree" learned to take strategy backend specific options
+   via the "-X" option, like "git merge" does.
+ * "git log" and friends learned the "--dd" option that is a
+   short-hand for "--diff-merges=first-parent -p".
+ * The attribute subsystem learned to honor the "attr.tree"
+   configuration variable that specifies which tree to read the
+   .gitattributes files from.
+ * "git merge-file" learns a mode to read three variants of the
+   contents to be merged from blob objects.
+ * see https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.43.0.txt
+
+-------------------------------------------------------------------
 Sat Nov  4 12:15:19 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- git 2.24.1:
+- git 2.42.1:
   * The usual number of bug fixes, including
-  * Fix "git diff" exit code handling 
+  * Fix "git diff" exit code handling
   * Various fixes to the behavior of "rebase -i" when the command
     got interrupted by conflicting changes
 
@@ -97,7 +181,7 @@ Sat Jun  3 15:59:19 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - git 2.41.0: This update contains a number of compatible updates,
   improvements and extensions to multiple workflows. Some changes
-  may break backwards compatibility:  
+  may break backwards compatibility:
   * The libsecret credential helper obsoletes direct GNOME keyring
     support, which was dropped (git-credential-gnome-keyring)
   * "git format-patch" has been taught to ignore end-user
@@ -311,7 +395,7 @@ Fri Sep  2 13:32:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
   * Plug memory leaks in the failure code path in the "merge-ort"
     merge strategy backend.
   * "vimdiff3" regression has been corrected
-  * "git fsck" improvements  
+  * "git fsck" improvements
   * Fixes to sparse index compatibility work for "reset" and
     "checkout" commands
   * Documentation for "git add --renormalize" has been improved
@@ -510,7 +594,7 @@ Fri Jan 28 20:44:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
    use human-readable units.
  * "git -c branch.autosetupmerge=inherit branch new old" makes "new"
    to have the same upstream as the "old" branch, instead of marking
-   "old" itself as its upstream. 
+   "old" itself as its upstream.
 
 -------------------------------------------------------------------
 Fri Nov 26 21:20:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -531,7 +615,7 @@ Fri Nov 26 21:20:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sun Nov 21 11:11:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- fix url 
+- fix url
 
 -------------------------------------------------------------------
 Thu Nov 18 15:41:32 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
@@ -624,7 +708,7 @@ Thu Apr  8 11:29:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - add suse-use-builtin-add-interactive.patch (jsc#SLE-17838)
 - split git-core perl module into git-core, move instaweb
   to git-web, and the single remaining perl builtin to git, so
-  that git-core is perl free 
+  that git-core is perl free
 
 -------------------------------------------------------------------
 Sat Mar 27 09:10:32 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -731,7 +815,7 @@ Tue Dec 29 19:30:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - git 2.30.0:
   * Userdiff updates for PHP, Rust, CSS
   * New features and options to multiple subcommands and workflows
-  * Avoid administrator error leading to data loss with 
+  * Avoid administrator error leading to data loss with
     "git push --force-with-lease[=<ref>]" by introducing
     "--force-if-includes"
   * Updates to shell autocompletion
@@ -1048,7 +1132,7 @@ Mon Jul 15 12:02:09 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 -------------------------------------------------------------------
 Mon Jun 10 14:04:52 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
-- git 2.22.0 
+- git 2.22.0
   * The filter specification "--filter=sparse:path=<path>" used to
   create a lazy/partial clone has been removed. Using a blob that is
   part of the project as sparse specification is still supported with
@@ -1075,7 +1159,7 @@ Mon Jun 10 14:04:52 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   correctly, which has been corrected.
   * "git worktree add" used to do a "find an available name with stat
   and then mkdir", which is race-prone. This has been fixed by using
-  mkdir and reacting to EEXIST in a loop. 
+  mkdir and reacting to EEXIST in a loop.
 - Removed upstreamed patch worktree-fix-worktree-add-race.patch
   * previous item
 
@@ -1199,7 +1283,7 @@ Tue Dec  4 08:40:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Fri Nov 30 11:42:53 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
-- Avoid boo#1082023 - git send-email fails to authenticate with  
+- Avoid boo#1082023 - git send-email fails to authenticate with
   SMTP server
 
 -------------------------------------------------------------------
@@ -1505,7 +1589,7 @@ Fri Jan 19 02:00:31 UTC 2018 - avindra@opensuse.org
 Fri Dec  1 01:48:24 UTC 2017 - aavindraa@gmail.com
 
 - git 2.15.1:
-  * fix "auto" column output 
+  * fix "auto" column output
   * fixes to moved lines diffing
   * documentation updates
   * fix use of repositories immediately under the root directory
@@ -1521,7 +1605,7 @@ Tue Nov 28 15:14:59 CET 2017 - tiwai@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:50:00 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -1576,11 +1660,11 @@ Tue Sep 26 07:56:20 UTC 2017 - astieger@suse.com
   * "git svn --localtime" correctness fixes
   * "git grep -L" and "git grep --quiet -L" now report same exit code
   * fixes to "git apply" when converting line endings
-  * Various Perl scripts did not use safe_pipe_capture() instead 
+  * Various Perl scripts did not use safe_pipe_capture() instead
     of backticks, leaving them susceptible to end-user input.
     CVE-2017-14867 bsc#1061041
   * "git cvsserver" no longer is invoked by "git daemon" by
-    default 
+    default
 
 -------------------------------------------------------------------
 Thu Aug 10 19:19:07 UTC 2017 - astieger@suse.com
@@ -1689,7 +1773,7 @@ Wed May 10 21:09:53 UTC 2017 - astieger@suse.com
   * deprecated argument order "git merge <msg> HEAD <commit>..."
     was removed
   * default location "~/.git-credential-cache/socket" for the
-    socket used to communicate with the credential-cache daemon 
+    socket used to communicate with the credential-cache daemon
     moved to "~/.cache/git/credential/socket".
   * now avoid blindly falling back to ".git" when the setup
     sequence indicated otherwise
@@ -1712,7 +1796,7 @@ Sat Mar 25 13:43:23 UTC 2017 - astieger@suse.com
 - git 2.12.2:
   * CLI output fixes
   * "Dump http" transport fixes
-  * various fixes for internal code paths   
+  * various fixes for internal code paths
   * Trailer "Cc:" RFC fix
 
 -------------------------------------------------------------------
@@ -1833,7 +1917,7 @@ Sat Sep  3 19:25:08 UTC 2016 - astieger@suse.com
 -------------------------------------------------------------------
 Wed Aug 31 15:55:05 UTC 2016 - olaf@aepfle.de
 
-- Reduce build-compare noise 
+- Reduce build-compare noise
   git-asciidoc.patch
   git-tclIndex.patch
 
@@ -1870,7 +1954,7 @@ Mon Jun 13 21:49:43 UTC 2016 - astieger@suse.com
     merge" is by default forbidden now to prevent creating such an
     unusual merge by mistake.
   * output formats of "git log" that indents the commit log message
-    by 4 spaces now expands HT in the log message by default. 
+    by 4 spaces now expands HT in the log message by default.
     The "--no-expand-tabs" option disables this.
   * "git commit-tree" plumbing command required the user to always
     sign its result when the user sets the commit.gpgsign
@@ -2016,7 +2100,7 @@ Fri Apr  1 09:20:24 UTC 2016 - astieger@suse.com
     told to only use ipv4 (or ipv6).
   * http.[<url>.]pinnedpubkey to specify the pinned public key
   * bug fixes and performance improvements
-   
+
 -------------------------------------------------------------------
 Thu Mar 17 21:22:02 UTC 2016 - astieger@suse.com
 
@@ -2078,7 +2162,7 @@ Mon Feb 15 15:02:44 UTC 2016 - astieger@suse.com
 Sat Feb  6 08:30:57 UTC 2016 - astieger@suse.com
 
 - git 2.7.1:
-  * fix hooks and aliases fixes with GIT_WORK_TREE 
+  * fix hooks and aliases fixes with GIT_WORK_TREE
   * fix "git send-email" reading escaped quotes in mutt alias files
   * fix some crashes and regressions
 
@@ -2109,7 +2193,7 @@ Tue Jan  5 13:24:54 UTC 2016 - astieger@suse.com
 Tue Jan  5 06:58:11 UTC 2016 - astieger@suse.com
 
 - git 2.6.5:
-  * Update "git subtree" (in contrib/) so that it can take 
+  * Update "git subtree" (in contrib/) so that it can take
     whitespaces in the pathnames, not only in the in-tree pathname
     but the name of the directory that the repository is in.
   * "git p4" used to import Perforce CLs that touch only paths
@@ -2162,7 +2246,7 @@ Thu Oct 22 20:27:11 CEST 2015 - tiwai@suse.de
 Mon Oct 19 08:16:32 UTC 2015 - astieger@suse.com
 
 - git 2.6.2:
-  * git fsck return status fixes 
+  * git fsck return status fixes
   * Fix for case insensitive filesystems
   * Fix "git am" ignoring user.signingkey
   * For ssh transport, explicitly clear GIT_* environment variables
@@ -2202,7 +2286,7 @@ Sun Sep 20 16:34:29 UTC 2015 - astieger@suse.com
  * The experimental untracked-cache feature were buggy when paths
    with a few levels of subdirectories are involved.
  * Fix performance regression in "git am --skip"
-   
+
 -------------------------------------------------------------------
 Sat Sep 19 10:13:32 UTC 2015 - dimstar@opensuse.org
 
@@ -2246,7 +2330,7 @@ Tue Jul 28 13:56:51 UTC 2015 - astieger@suse.com
     sendmail program
   * For 3-way merge drivers, add %P (final path)
   * "git blame" learned blame.showEmail configuration variable.
-  * Add the "--allow-unknown-type" option to "cat-file" 
+  * Add the "--allow-unknown-type" option to "cat-file"
   * Many long-running operations now show progress eye-candy
 
 -------------------------------------------------------------------
@@ -2589,7 +2673,7 @@ Fri Feb  6 15:59:55 UTC 2015 - astieger@suse.com
     "Conflicts:" block at the end.
   * "git am" learned "--message-id" option
   * "git clone --reference=<over there>" learned the "--dissociate"
-    option 
+    option
   * "git send-email" learned the "--transfer-encoding" option
   * "git send-email" learned the "--no-xmailer" option
   * "git branch -d" (delete) and "git branch -m" (move) learned to
@@ -2828,7 +2912,7 @@ Mon Jun 16 23:18:17 UTC 2014 - andreas.stieger@gmx.de
 - Backward compatibility notes:
   * git push now uses "simple" semantics by default instead of
     old "matching", use variable "push.default" to revert
-  * "git add -u" and "git add -A" operate on entire tree, use 
+  * "git add -u" and "git add -A" operate on entire tree, use
     "git add -u ." or "git add -A ." for current directory only.
   * "git add <path>" is the same as "git add -A <path>" now, use
     "git add --ignore-removal <path>" for previous behaviour
@@ -2945,7 +3029,7 @@ Thu Dec 19 02:40:10 UTC 2013 - douglarek@outlook.com
 -------------------------------------------------------------------
 Tue Dec  3 16:21:45 CET 2013 - ohering@suse.de
 
-- Package also git-remote-hg and git-remote-bzr, so that 
+- Package also git-remote-hg and git-remote-bzr, so that
   git clone hg::$URL actually works
 
 -------------------------------------------------------------------
@@ -2990,7 +3074,7 @@ Wed Oct 30 02:07:09 UTC 2013 - douglarek@outlook.com
 - updated to version 1.8.4.2
 
   https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.4.2.txt
-  
+
 -------------------------------------------------------------------
 Mon Oct 21 06:45:43 UTC 2013 - douglarek@outlook.com
 
@@ -2998,7 +3082,7 @@ Mon Oct 21 06:45:43 UTC 2013 - douglarek@outlook.com
 
   Bug fixes and a handful of trivial code clean-ups, documentation
   updates, updates to the test suite, etc.
-  
+
   https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.4.1.txt
 
 -------------------------------------------------------------------
@@ -3072,7 +3156,7 @@ Wed May 15 05:45:30 UTC 2013 - douglarek@outlook.com
 Tue May  7 08:24:30 UTC 2013 - pgajdos@suse.com
 
 - revert change from Apr 26 07:22:29 UTC 2013; we will downgrade
-  cvsps package instead of having additional cvsps2, so git-cvs 
+  cvsps package instead of having additional cvsps2, so git-cvs
   requires cvsps again
 
 -------------------------------------------------------------------
@@ -3104,7 +3188,7 @@ Mon Apr  8 03:01:25 UTC 2013 - douglarek@outlook.com
 
 - updated to version 1.8.2.1:
   * bug fixes and documentation updates
-  
+
   more details, please see here:
   https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.2.1.txt
 
@@ -3209,7 +3293,7 @@ Tue Jan  1 15:18:58 UTC 2013 - douglarek@outlook.com
 
     * a bit of features.
     * other minor fixes and documentation updates since v1.8.0.
-    
+
     more details, please see here:
     https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.1.txt.
 
@@ -3270,7 +3354,7 @@ Mon Oct 22 12:21:08 UTC 2012 - douglarek@outlook.com
 
      * all the fixes since v1.7.12.
 
-     more details, please see here: 
+     more details, please see here:
      https://raw.github.com/git/git/master/Documentation/RelNotes/1.8.0.txt.
 
 -------------------------------------------------------------------
@@ -3520,10 +3604,10 @@ Wed Sep 12 14:43:30 UTC 2012 - frank.lichtenheld@sophos.com
 Tue Sep 11 14:53:25 CEST 2012 - tiwai@suse.de
 
 - updated to version 1.7.12:
-  Major version update; new XDG-compliant config file place, 
+  Major version update; new XDG-compliant config file place,
   new options, new commands:
   See Documentation/RelNotes/1.7.12.txt for details.
-  
+
 - fix broken bash completion when egrep is aliased with --color
   option (bnc#779536)
 
@@ -3774,7 +3858,7 @@ Wed Jan 11 12:41:46 UTC 2012 - idonmez@suse.com
     and type-changes from ordinary modification, and reported them with
     the same 'M' moniker. They now use 'D' (for deletion) and 'T' (for
     type-change) to match "git status -s" and "git diff --name-status".
-  
+
   * You could make "git commit" segfault by giving the "--no-message"
    option.
 
@@ -3838,7 +3922,7 @@ Tue Dec 13 18:11:00 UTC 2011 - idonmez@suse.com
 
  * The date parser now accepts timezone designators that lack minutes
    part and also has a colon between "hh:mm".
- 
+
  * The contents of the /etc/mailname file, if exists, is used as the
    default value of the hostname part of the committer/author e-mail.
 
@@ -3946,7 +4030,7 @@ Tue Dec 13 18:11:00 UTC 2011 - idonmez@suse.com
 
  * "gitweb" now has its own manual pages.
 
- Bugfixes since v1.7.7 
+ Bugfixes since v1.7.7
 
  * HTTP transport did not use pushurl correctly, and also did not tell
    what host it is trying to authenticate with when asking for
@@ -3975,7 +4059,7 @@ Tue Dec 13 18:11:00 UTC 2011 - idonmez@suse.com
  * Help text for "git remote set-url" and "git remote set-branches"
    were misspelled.
    (merge c49904e fc/remote-seturl-usage-fix later to maint).
-   (merge 656cdf0 jc/remote-setbranches-usage-fix later to maint). 
+   (merge 656cdf0 jc/remote-setbranches-usage-fix later to maint).
 
 -------------------------------------------------------------------
 Thu Nov 10 15:29:38 CET 2011 - tiwai@suse.de
@@ -3987,7 +4071,7 @@ Thu Nov 10 15:29:38 CET 2011 - tiwai@suse.de
 Thu Nov  3 10:49:09 CET 2011 - tiwai@suse.de
 
 - update to git 1.7.7.1:
-- update to git 1.7.7.2: bug-fix releases; 
+- update to git 1.7.7.2: bug-fix releases;
   See Documentation/RelNotes/1.7.7.1.txt and
       Documentation/RelNotes/1.7.7.2.txt for details.
 
@@ -4355,12 +4439,12 @@ Mon Aug 24 14:34:08 CEST 2009 - tiwai@suse.de
 - updated to version 1.6.4:
   git push into the currently checked-out branch will be refused
   by default.
-  See details in 
+  See details in
     http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.4.txt
 - updated to version 1.6.4.1:
-  Bug fix release.  See details in 
+  Bug fix release.  See details in
     http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.4.1.txt
-  
+
 -------------------------------------------------------------------
 Mon Jun 22 13:08:41 CEST 2009 - tiwai@suse.de
 
@@ -4370,7 +4454,7 @@ Mon Jun 22 13:08:41 CEST 2009 - tiwai@suse.de
  * improved the built-in regular expressions
  * fix import-tars script (in contrib) to import symbolic links
  * fix http.c to use correct CURLOPT_SSLKEY
- * fix low-level filelevel merge driver 
+ * fix low-level filelevel merge driver
  * fix "git rebase -i" left stray closing parenthesis in reflog
  * fix "git remote show" to show all the URLs associated with named
    remotes
@@ -4389,7 +4473,7 @@ Fri Jun  5 10:10:25 CEST 2009 - tiwai@suse.de
 Fri May  8 11:37:26 CEST 2009 - tiwai@suse.de
 
 - updated to 1.6.3:
-  * major version update: git push behavior change, 
+  * major version update: git push behavior change,
     With the next major release, "git push" into a branch that is
     currently checked out will be refused by default.  You can
     choose what should happen upon such a push by setting the
@@ -4411,7 +4495,7 @@ Mon Apr 20 12:44:42 CEST 2009 - tiwai@suse.de
   * "git-checkout <tree-ish> <submodule>" did not update the index
     entry at the named path; it now does.
   * "git-fast-export" choked when seeing a tag that does not point
-    at commit.  
+    at commit.
   * "git init" segfaulted when given an overlong template location
     via the --template= option.
   * "git-ls-tree" and "git-diff-tree" used a pathspec correctly
@@ -4685,9 +4769,9 @@ Thu Sep 25 16:04:22 CEST 2008 - tiwai@suse.de
 Tue Sep  9 12:18:09 CEST 2008 - tiwai@suse.de
 
 - updated to 1.6.0:
-  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.0.txt 
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.0.txt
 - updated to 1.6.0.1:
-  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.0.1.txt 
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.6.0.1.txt
 - install git subcommands now to libdir/git
   users have to set up properly if they want to keep the old style
   (refer git --execpath)
@@ -4741,7 +4825,7 @@ Tue May 20 15:18:40 CEST 2008 - lnussel@suse.de
 Mon Apr  7 16:40:38 CEST 2008 - dmueller@suse.de
 
 - update to 1.5.4.5:
-  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.5.txt 
+  * http://www.kernel.org/pub/software/scm/git/docs/RelNotes-1.5.4.5.txt
 
 -------------------------------------------------------------------
 Tue Mar 18 14:42:06 CET 2008 - dmueller@suse.de
@@ -4811,13 +4895,13 @@ Tue Jan  8 10:12:16 CET 2008 - crrodriguez@suse.de
    produce and gave incorrect results.
  * Many scripted Porcelains were confused when you happened to have a
    file called "HEAD" in your work tree.
- 
+
 
 -------------------------------------------------------------------
 Wed Nov 28 09:12:23 CET 2007 - dmueller@suse.de
 
 - update to 1.5.3.6:
-   * various smaller bugfixes 
+   * various smaller bugfixes
 - remove requires on release (#305826)
 - install bash completion (#336848)
 
@@ -4826,7 +4910,7 @@ Tue Oct  9 18:50:30 CEST 2007 - dmueller@suse.de
 
 - update to 1.5.3.4:
    * submodule support
-   * many new features and bugfixes 
+   * many new features and bugfixes
 
 -------------------------------------------------------------------
 Mon Aug  6 23:00:14 CEST 2007 - dmueller@suse.de
@@ -4882,7 +4966,7 @@ Fri Nov 17 05:24:23 CET 2006 - pbaudis@suse.cz
 -------------------------------------------------------------------
 Tue Nov  7 01:04:24 CET 2006 - ro@suse.de
 
-- fix permissions for manpages 
+- fix permissions for manpages
 
 -------------------------------------------------------------------
 Sat Oct 28 22:15:26 CEST 2006 - meissner@suse.de
@@ -4929,7 +5013,7 @@ Mon May 15 01:04:34 CEST 2006 - pbaudis@suse.cz
 Mon Mar 13 02:28:07 CET 2006 - ro@suse.de
 
 - change requires from "openssh-clients" to "openssh"
-  (former does not exist) 
+  (former does not exist)
 
 -------------------------------------------------------------------
 Fri Mar 10 01:54:28 CET 2006 - pbaudis@suse.cz
@@ -4979,7 +5063,7 @@ Mon Sep 19 11:11:41 CEST 2005 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Aug  5 11:24:34 CEST 2005 - kasievers@suse.de
 
-- New version 0.99.3git20050905 
+- New version 0.99.3git20050905
   rename git to git-core, to match the upstream package name
 
 -------------------------------------------------------------------
@@ -4990,17 +5074,17 @@ Sun Jul  3 03:21:00 CEST 2005 - kasievers@suse.de
 -------------------------------------------------------------------
 Thu Jun 30 22:16:53 CEST 2005 - kasievers@suse.de
 
-- New version 20050630 
+- New version 20050630
 
 -------------------------------------------------------------------
 Fri Jun 24 13:54:01 CEST 2005 - kasievers@suse.de
 
-- New version 20050624 
+- New version 20050624
 
 -------------------------------------------------------------------
 Sun Jun 12 03:50:05 CEST 2005 - kay.sievers@suse.de
 
-- New version 20050612 
+- New version 20050612
 
 -------------------------------------------------------------------
 Thu Jun  2 11:31:29 CEST 2005 - kay.sievers@suse.de

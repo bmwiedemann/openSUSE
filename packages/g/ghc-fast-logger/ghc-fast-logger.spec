@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.2
+Version:        3.2.2
 Release:        0
 Summary:        A fast logging system
 License:        BSD-3-Clause
@@ -42,6 +42,8 @@ BuildRequires:  ghc-easy-file-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-unix-compat-devel
@@ -50,6 +52,8 @@ BuildRequires:  ghc-unix-time-devel
 BuildRequires:  ghc-unix-time-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-async-devel
+BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 %endif

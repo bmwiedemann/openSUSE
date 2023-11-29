@@ -17,20 +17,17 @@
 #
 
 
-%define tar_ver 538
+%define tar_ver 540
 
 Name:           scite
-Version:        5.3.8
+Version:        5.4.0
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
 URL:            https://www.scintilla.org/SciTE.html
-Source0:        http://download.sourceforge.net/scintilla/%{name}%{tar_ver}.tgz
+Source0:        https://www.scintilla.org/%{name}%{tar_ver}.tgz
 # PATCH-FEATURE-OPENSUSE scite-use-system-scintilla.patch badshah400@gmail.com -- Compile against system scintilla library
 Patch0:         scite-use-system-scintilla.patch
-# PATCH-FIX-UPSTREAM scite-fix-missing-include.patch -- Fix missing include
-Patch1:         scite-fix-missing-include.patch
-
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  libscintilla-devel >= 5.3.0

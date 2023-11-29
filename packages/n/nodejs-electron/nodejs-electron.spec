@@ -221,7 +221,7 @@ BuildArch:      i686
 %endif
 %if 0%{?fedora} >= 37 && 0%{?fedora} < 38
 %define AVFORMAT_VER 5.1.4
-%define RPMFUSION_VER 5.1.4-2
+%define RPMFUSION_VER 5.1.4-1
 %endif
 
 # We always ship the following bundled libraries as part of Electron despite a system version being available in either openSUSE or Fedora:
@@ -240,7 +240,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        27.1.0
+Version:        27.1.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -1290,6 +1290,10 @@ myconf_gn+=" use_runtime_vlog=false"
 myconf_gn+=" rtc_disable_logging=true"
 myconf_gn+=" rtc_disable_metrics=true"
 myconf_gn+=" rtc_disable_trace_events=true"
+myconf_gn+=' enable_perfetto_system_consumer=false'
+myconf_gn+=' enable_perfetto_trace_processor_json=false'
+myconf_gn+=' enable_perfetto_trace_processor_httpd=false'
+myconf_gn+=' enable_perfetto_zlib=false'
 
 
 

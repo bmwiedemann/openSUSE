@@ -262,4 +262,17 @@
     <comment>- Update version to 1.26.1.</comment>
     <requestid>1074702</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>05d1fe50d8607ea22befb3d69881fd9c</srcmd5>
+    <version>1.26.2</version>
+    <time>1700865274</time>
+    <user>anag+factory</user>
+    <comment>- Update to new upstream version 1.26.2:
+  * tx: update resources
+  * tx: update translations
+  * tx: migrate to new API
+  * add xdg-desktop-portal config file
+- Add xdg-desktop-portal config file to %files list.</comment>
+    <requestid>1128494</requestid>
+  </revision>
 </revisionlist>

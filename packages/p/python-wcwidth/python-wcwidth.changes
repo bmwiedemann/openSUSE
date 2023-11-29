@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 27 09:09:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.12:
+  * Include tests files in the source distribution (PR #98, PR
+  * **Bugfix** accounting of some kinds of emoji sequences using
+    U+FE0F
+  * Variation Selector 16 (PR #97).
+  * **Bugfix** zero-width characters used in Emoji ZWJ sequences,
+    Balinese, Jamo, Devanagari, Tamil, Kannada and others (PR #91).
+  * Include requirements files in the source distibution (PR
+    #83).
+  * Update Unicode version to 15.1.0
+  * Add testing support for Python 3.12
+  * Update README
+  * Update requirements
+  * Enable GitHub Actions CI
+  * Prepare release 0.2.7
+  * Update tox envs in README
+  * Include bin, docs, and tox.ini in the source distribution
+
+-------------------------------------------------------------------
 Mon Aug  7 11:09:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use actual package name for importlib-metadata requires
@@ -35,7 +56,7 @@ Mon Jul 18 13:40:16 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 - Add patch remove-pkg_resources.patch:
   * Use importlib.metadata rather than pkg_resources.
 - Since importlib.metadata is not as a stickler as pkg_resources is, remove
-  multibuild. 
+  multibuild.
 
 -------------------------------------------------------------------
 Wed Jun  2 08:42:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
@@ -76,17 +97,17 @@ Mon Jun  8 07:13:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Tue Jun  2 06:52:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.2.2
-  * Enhancement: Unicode version may be selected by exporting the 
-    Environment variable UNICODE_VERSION, such as 13.0, or 6.3.0. 
+  * Enhancement: Unicode version may be selected by exporting the
+    Environment variable UNICODE_VERSION, such as 13.0, or 6.3.0.
     See the jquast/ucs-detect CLI utility for automatic detection.
   * Enhancement: API Documentation is published to readthedocs.org.
-  * Updated tables for all Unicode Specifications with files published 
+  * Updated tables for all Unicode Specifications with files published
     in a programmatically consumable format.
 
 -------------------------------------------------------------------
 Wed May  6 02:25:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Convert to multibuild to break a self-requires loop. 
+- Convert to multibuild to break a self-requires loop.
 
 -------------------------------------------------------------------
 Wed Mar 25 14:31:41 UTC 2020 - pgajdos@suse.com
@@ -144,7 +165,7 @@ Sat Apr  1 21:00:22 UTC 2017 - toddrme2178@gmail.com
     The module path ``wcwidth.table_comb`` is no longer available,
     it has been superseded by module path ``wcwidth.table_zero``.
 - Implement single-spec version
-    
+
 -------------------------------------------------------------------
 Mon Jan 30 21:50:06 UTC 2017 - rjschwei@suse.com
 

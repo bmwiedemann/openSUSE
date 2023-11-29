@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 26 15:02:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.25.2
+  * Maintenance and upkeep improvements
+- Release 2.25.1
+  * Add repository info when getting federated extensions #417
+    (@nbowditch-einblick)
+
+-------------------------------------------------------------------
 Wed Sep 13 07:53:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.25.0

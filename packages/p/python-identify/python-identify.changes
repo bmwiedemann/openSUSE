@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 24 21:27:25 UTC 2023 - Matthias Bach <marix@marix.org>
+
+- For Leap, build this on modern Python as 3.6 is no longer
+  supported.
+
+-------------------------------------------------------------------
 Wed Nov  1 09:17:44 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org>
 
 - update to version 2.5.31

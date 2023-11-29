@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 10:52:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup instead of %setup/%patch.
+
+-------------------------------------------------------------------
 Mon Sep 20 19:52:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

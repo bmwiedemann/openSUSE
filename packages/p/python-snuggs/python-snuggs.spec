@@ -25,6 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mapbox/snuggs
 Source:         https://files.pythonhosted.org/packages/source/s/snuggs/snuggs-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 28-non-strict-xfail.patch gh#mapbox/snuggs#27 mcepl@suse.com
+# synchronize skipping of failing tests with Debian
+Patch0:         28-non-strict-xfail.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -54,8 +57,7 @@ Snuggs are s-expressions for Numpy.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#mapbox/snuggs#27
-%pytest -k 'not (test_missing_closing_paren or test_missing_func2 or test_bogus_higher_order_func)' test_snuggs.py
+%pytest test_snuggs.py
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGES.txt README.rst

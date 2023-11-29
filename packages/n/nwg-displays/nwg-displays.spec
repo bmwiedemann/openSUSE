@@ -17,7 +17,7 @@
 
 
 Name:           nwg-displays
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        A GTK3 wrapper to display text on the desktop for wlroots
 License:        MIT

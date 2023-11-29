@@ -1269,4 +1269,20 @@ Pushing GNOME 45.rc packages</comment>
   there is no chance any file is owned by the user (boo#1216730). (forwarded request 1125434 from dimstar)</comment>
     <requestid>1126603</requestid>
   </revision>
+  <revision rev="163" vrev="29">
+    <srcmd5>5661acfeeade9d84c7d8a149ee8c2eda</srcmd5>
+    <version>0.8</version>
+    <time>1700771949</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128303</requestid>
+  </revision>
+  <revision rev="164" vrev="30">
+    <srcmd5>65d357fc5474bf9f9a041502f9a98423</srcmd5>
+    <version>0.8</version>
+    <time>1701206306</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129177</requestid>
+  </revision>
 </revisionlist>

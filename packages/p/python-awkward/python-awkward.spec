@@ -16,7 +16,7 @@
 #
 
 
-%define awkward_cpp_version 24
+%define awkward_cpp_version 26
 %{?sle15_python_module_pythons}
 Name:           python-awkward
 Version:        2.4.5

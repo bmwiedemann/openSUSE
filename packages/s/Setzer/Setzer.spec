@@ -17,7 +17,7 @@
 
 
 Name:           Setzer
-Version:        61
+Version:        62
 Release:        0
 Summary:        Simple yet full-featured LaTeX editor for GTK/GNOME
 License:        GPL-3.0-or-later

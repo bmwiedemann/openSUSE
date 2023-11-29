@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 24 20:04:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.0
+  * Add support for chained exceptions to the debugger.
+  * Improve getting signatures from docstrings.
+  * Restore compatibility with Python 2.
+
+-------------------------------------------------------------------
 Thu Aug 24 14:16:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.4

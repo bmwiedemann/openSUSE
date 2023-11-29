@@ -1,7 +1,7 @@
 #
 # spec file for package gitleaks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           gitleaks
-Version:        8.16.0
+Version:        8.18.1
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT
@@ -28,7 +29,9 @@ Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.19
 
 %description
-Gitleaks is a SAST tool for detecting and preventing hardcoded secrets like passwords, api keys, and tokens in git repos. Gitleaks is an easy-to-use, all-in-one solution for detecting secrets, past or present, in your code.
+Gitleaks is a SAST tool for detecting and preventing hardcoded secrets like
+passwords, api keys, and tokens in git repos. Gitleaks is an easy-to-use,
+all-in-one solution for detecting secrets, past or present, in your code.
 
 %prep
 %setup -q

@@ -39,4 +39,14 @@
     account for include in the function signature.</comment>
     <requestid>1117777</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>acbcce48067e28467442c04bd9f61466</srcmd5>
+    <version>0.7.1</version>
+    <time>1701121374</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.1
+  * feat: Raise Python error when file is missing (#345)
+</comment>
+    <requestid>1128955</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           deja-dup
-Version:        44.1
+Version:        45.1
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
@@ -31,20 +31,20 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  glib2-tools
 BuildRequires:  libgpg-error-devel
-BuildRequires:  meson >= 0.59
+BuildRequires:  meson >= 0.64
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.16.0
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66
+BuildRequires:  pkgconfig(gio-2.0) >= 2.70
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gtk4) >= 4.6
+BuildRequires:  pkgconfig(gtk4) >= 4.12
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(packagekit-glib2) >= 0.6.5
+BuildRequires:  pkgconfig(packagekit-glib2) >= 1.2
 Requires:       duplicity >= 0.8.21
 Requires:       python3-oauthlib
 Obsoletes:      nautilus-deja-dup <= 42.4

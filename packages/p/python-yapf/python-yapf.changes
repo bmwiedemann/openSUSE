@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:10:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.40.2:
+  * The verification module has been removed. NOTE: this changes
+    the public APIs by removing the "verify" parameter.
+  * Changed FORCE_MULTILINE_DICT to override
+    SPLIT_ALL_TOP_LEVEL_COMMA_SEPARATED_VALUES.
+  * Adopt pyproject.toml (PEP 517) for build system
+  * Do not treat variables named `match` as the match keyword.
+  * Fix SPLIT_ARGUMENTS_WHEN_COMMA_TERMINATED for one-item
+    argument lists.
+  * Fix trailing backslash-newline on Windows when using stdin.
+
+-------------------------------------------------------------------
 Thu Sep  7 11:12:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.40.1:

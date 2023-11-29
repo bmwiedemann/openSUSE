@@ -53,7 +53,7 @@ from internal representations to user defined representation.
 
 %prep
 %setup -q
-%patch2 -p1
+%patch -P2 -p1
 
 %build
 export CFLAGS="%{optflags}"

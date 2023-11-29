@@ -198,4 +198,20 @@
     <comment></comment>
     <requestid>1121509</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a5fe9e4c837ac5e2f3c06b4c9ba84156</srcmd5>
+    <version>0.25.2</version>
+    <time>1701206329</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.25.2:
+  * Add missing type hints to few `__init__()` methods. (#2938)
+  * Add support for Python 3.12. (#2854)
+  * Add support for httpcore 1.0 (#2885)
+  * Raise `ValueError` on `Response.encoding` being set after
+    `Response.text` has been accessed. (#2852)
+- drop newer-httpcore.patch (upstream)
+
+  * Do not leak data in httpx.URL.copy_with (bsc#1199002, CVE-2021-41945)</comment>
+    <requestid>1129219</requestid>
+  </revision>
 </revisionlist>

@@ -1,18 +1,15 @@
-Index: Twisted-22.10.0/setup.cfg
+Index: twisted-23.10.0/pyproject.toml
 ===================================================================
---- Twisted-22.10.0.orig/setup.cfg
-+++ Twisted-22.10.0/setup.cfg
-@@ -72,10 +72,10 @@ serial =
- 	pyserial >= 3.0
- 	pywin32 != 226; platform_system == "Windows"
- http2 = 
--	h2 >= 3.0, < 5.0
--	priority >= 1.1.0, < 2.0
-+	h2 >= 3.0
-+	priority >= 1.1.0
- contextvars = 
--	contextvars >= 2.4, < 3; python_version < "3.7"
-+	contextvars >= 2.4; python_version < "3.7"
- all_non_platform = 
- 	%(test)s
- 	%(tls)s
+--- twisted-23.10.0.orig/pyproject.toml
++++ twisted-23.10.0/pyproject.toml
+@@ -95,8 +95,8 @@ serial = [
+ ]
+ 
+ http2 = [
+-    "h2 >= 3.0, < 5.0",
+-    "priority >= 1.1.0, < 2.0",
++    "h2 >= 3.0",
++    "priority >= 1.1.0",
+ ]
+ 
+ all-non-platform = [

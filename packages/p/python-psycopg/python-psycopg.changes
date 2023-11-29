@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:58:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.1.13:
+  * Raise DataError instead of whatever internal failure trying to
+    dump a time object with with a tzinfo specified as ZoneInfo
+    (ambiguous offset, see ticket #652).
+  * Handle gracefully EINTR on signals instead of raising
+    InterruptedError, consistently with PEP 475 guideline
+    (ticket #667).
+  * Fix support for connection strings with multiple hosts/ports
+    and for the load_balance_hosts connection parameter
+    (ticket #674).
+  * Fix memory leak receiving notifications in Python
+    implementation (ticket #679).
+- Update to 3.1.12:
+  * Fix possible hanging if a connection is closed while querying
+    (ticket #608).
+  * Fix memory leak when register_*() functions are called
+    repeatedly (ticket #647).
+  * Release Python 3.12 binary packages.
+- Update to 3.1.11:
+  * Avoid caching the parsing results of large queries to avoid
+    excessive memory usage (ticket #628).
+  * Fix integer overflow in C/binary extension with OID > 2^31
+    (ticket #630).
+  * Fix loading of intervals with days and months or years
+    (ticket #643).
+  * Work around excessive CPU usage on Windows (reported in
+    ticket #645).
+  * Fix building on Solaris and derivatives (ticket #632).
+  * Fix possible lack of critical section guard in
+    async executemany().
+  * Fix missing pipeline fetch in async scroll().
+  * Build binary packages with libpq 15.4, which allows
+    group-readable permissions on the SSL certificate on the client
+    (ticket #528).
+- Update to 3.1.10
+  * Allow JSON dumpers to dump bytes directly instead of str, for
+    better compatibility with libraries like orjson and msgspec
+    (ticket #569)
+  * Fix prepared statement cache validation when exiting pipeline
+    mode (or executemany()) in case an error occurred within the
+    pipeline (ticket #585).
+  * Fix connect() to avoid “leaking” an open PGconn attached to
+    the OperationalError in case of connection failure.
+    Error.pgconn is now a shallow copy of the real libpq
+    connection, and the latter is closed before the exception
+    propagates (ticket #565).
+  * Fix possible (ignored) exception on objects deletion
+    (ticket #591).
+  * Don’t clobber a Python exception raised during COPY FROM with
+    the resulting QueryCanceled raised as a consequence
+    (ticket #593).
+  * Fix resetting Connection.read_only and deferrable to their
+    default value using None (ticket #612).
+  * Add support for Python 3.12.
+
+-------------------------------------------------------------------
 Wed Jul 12 05:41:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 3.1.9 

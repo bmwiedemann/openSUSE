@@ -80,4 +80,17 @@
 </comment>
     <requestid>1105466</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>010559a9dd2ec26f00446780df144cc5</srcmd5>
+    <version>0.6.3</version>
+    <time>1701206323</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.3:
+  * Python 3.12 support
+  * handle weird six import error
+- drop support-typeguard-4.patch (upstream)
+
+- restrict to older Cython</comment>
+    <requestid>1129197</requestid>
+  </revision>
 </revisionlist>

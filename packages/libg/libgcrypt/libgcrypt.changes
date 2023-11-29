@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 21 10:36:09 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Re-create HMAC checksum after RPM build strips the library
+  (bsc#1217058)
+
+-------------------------------------------------------------------
 Wed Nov 15 09:54:00 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.10.3:

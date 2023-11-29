@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vine
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Python Promises
 License:        BSD-3-Clause

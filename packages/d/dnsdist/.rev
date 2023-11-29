@@ -56,4 +56,12 @@
   https://dnsdist.org/changelog.html#change-1.8.1</comment>
     <requestid>1109721</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2f393a1feb3382dce8cd6d7a06252035</srcmd5>
+    <version>1.8.1</version>
+    <time>1700772153</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128351</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           librtas-doc
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Documents for librtas
 License:        LGPL-2.1-or-later

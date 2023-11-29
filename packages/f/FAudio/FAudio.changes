@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 21 14:50:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.11:
+  * The mixer thread no longer crashes when attempting to read
+    voices using WMAUDIO3 buffer data
+  * SDL2: Fix regression that prevented devices with >8 channels
+    from opening
+
+-------------------------------------------------------------------
 Wed Oct 18 22:45:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.10:

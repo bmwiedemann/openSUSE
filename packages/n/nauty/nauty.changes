@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 21 21:50:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.8
+  * `deledgeg` has a new option -v for removing only edges incident
+    to a particular vertex.
+  * `countneg` is a new utility for counting graphs by their number
+    of edges and/or vertices. Faster than countg, but does not
+    support sparse6 input or count'gs -p and -f options.
+  * `genspecialg` has a new option -X which can select one of 126
+    named graphs.
+  * countg/pickg: The chromatic number is selected by -N and the
+    chromatic index by -NN.
+  * countg/pickg: Connectivity is selected by -G and the
+    edge-connectivity by -GG.
+  * `genbg` got faster for trees
+  * Don Knuth's 30-bit random number generator has been replaced by
+    George Marsaglia's 64-bit random number generator.
+  * `genktreeg` is a new generator for making k-trees.
+  * `ransubg` is a new tool that extracts a random
+    subgraph/subdigraph from an input graph. It can make random
+    orientations.
+  * `geng -p` will exclude graphs with 5-cycles.
+
+-------------------------------------------------------------------
 Sun Dec 11 19:13:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to release 2.8.6

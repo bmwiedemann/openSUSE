@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 23 06:25:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.10:
+  * fix image processing for repo with port
+
+-------------------------------------------------------------------
+Thu Nov 23 06:24:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.9:
+  * Handle images with digests
+  * chore: remove refs to deprecated io/ioutil
+
+-------------------------------------------------------------------
 Mon Oct 30 09:30:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.4.8:

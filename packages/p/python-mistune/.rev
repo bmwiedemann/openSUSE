@@ -182,4 +182,18 @@
  * fix RecursionError for lists (forwarded request 1117987 from mimi_vx)</comment>
     <requestid>1117996</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>45ae0f988ba571b5bfb2962c5dcc2e18</srcmd5>
+    <version>3.0.2</version>
+    <time>1700675651</time>
+    <user>anag+factory</user>
+    <comment>- add conflicts with python-mistune2
+
+ * fix RecursionError for lists
+    regex
+  * Security fix for CVE-2022-34749
+  * Fix escape_url
+- Switch from nose to pytest</comment>
+    <requestid>1127857</requestid>
+  </revision>
 </revisionlist>

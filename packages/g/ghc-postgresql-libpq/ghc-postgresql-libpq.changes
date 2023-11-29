@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 19 19:07:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-libpq to version 0.10.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Jul 30 19:24:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-libpq to version 0.10.0.0.
+  0.10.0.0
+  --------
+
+  There are technicallly two breaking changes in this release,
+  but they shouldn't affect anyone not doing anything weird.
+
+  - Binary parameters are passed without copying.
+  - FFI functions are imported without `unsafe`. Most uses were incorrect.
+    We make all calls "safe", as checking whether libpq functions do IO
+    or may call a notifier (potentially calling back into Haskell),
+    is virtually impossible for all versions of libpq.
+    (The above properties are not specified in the documentation).
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:54 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

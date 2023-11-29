@@ -135,4 +135,41 @@
     <comment></comment>
     <requestid>1098588</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5ad0069fdaebedbd5600cf43e0d94436</srcmd5>
+    <version>1.3.0</version>
+    <time>1701023798</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * support for `netfilter` programs is added
+    `SEC(&quot;netfilter&quot;)` is now available
+  * API function `bpf_program__attach_netfilter()` is now
+    available
+  * support for `tcx` BPF programs is added:
+  * the following new SEC definitions are now available:
+    SEC(&quot;tc/egress&quot;), SEC(&quot;tc/ingress&quot;), SEC(&quot;tcx/egress&quot;),
+    SEC(&quot;tcx/ingress&quot;)
+  * the following SEC definitions are now considered legacy:
+    SEC(&quot;tc&quot;), SEC(&quot;action&quot;), SEC(&quot;classifier&quot;)
+  * functions `bpf_prog_attach_opts()` and
+    `bpf_prog_query_opts()` are extended to work with `tcx`
+    programs, plus two new API functions are added:
+  * the following new SEC definitions are now available:
+    SEC(&quot;uprobe.multi&quot;), SEC(&quot;uprobe.multi.s&quot;),
+    SEC(&quot;uretprobe.multi&quot;), SEC(&quot;uretprobe.multi.s&quot;)
+  * support for section `SEC(&quot;usdt.s&quot;)` is added for sleepable
+    `usdt` programs;
+  * support for Unix domain socket cgroup BPF programs is added
+    the following new SEC definitions are now available:
+     SEC(&quot;cgroup/connect_unix&quot;),SEC(&quot;cgroup/sendmsg_unix&quot;),
+     SEC(&quot;cgroup/recvmsg_unix&quot;), SEC(&quot;cgroup/getpeername_unix&quot;),
+     SEC(&quot;cgroup/getsockname_unix&quot;)
+  * new `LIBBPF_OPTS_RESET()` utility macro;
+  * new `bpf_object__unpin()` function to complement existing
+    `bpf_object__pin()`;
+  * new API functions for work with ring buffers
+  * uprobe SEC matcher extended to allow golang symbols;
+  * uprobe support for symbols versioning;</comment>
+    <requestid>1128704</requestid>
+  </revision>
 </revisionlist>

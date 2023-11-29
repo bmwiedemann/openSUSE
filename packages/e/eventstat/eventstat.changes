@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 17 17:12:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.05.01:
+  * Minor code cleanup, no functional changes
+  * Fix potential division by zero when duration is 0.0
+  * Limit sscanf string field sizes to match size of buffers
+    being used
+
+-------------------------------------------------------------------
 Thu Apr 28 07:39:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 0.04.13:

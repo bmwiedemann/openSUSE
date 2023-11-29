@@ -1,0 +1,16 @@
+Index: joblib-1.3.2/joblib/test/test_parallel.py
+===================================================================
+--- joblib-1.3.2.orig/joblib/test/test_parallel.py
++++ joblib-1.3.2/joblib/test/test_parallel.py
+@@ -193,6 +193,11 @@ def test_main_thread_renamed_no_warning(
+     # warninfo catches Warnings from worker timeouts. We remove it if it exists
+     warninfo = [w for w in warninfo if "worker timeout" not in str(w.message)]
+ 
++    # There's a new warning in Python 3.12 about multiprocessing and forking
++    # that we filter out
++    warninfo = [w for w in warninfo
++                if "is multi-threaded, use of fork" not in str(w.message)]
++
+     # The multiprocessing backend will raise a warning when detecting that is
+     # started from the non-main thread. Let's check that there is no false
+     # positive because of the name change.

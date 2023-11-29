@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-pip-tools
 Version:        7.3.0
 Release:        0
@@ -81,7 +80,10 @@ donttest+=" or test_direct_reference_with_extras"
 donttest+=" or test_local_duplicate_subdependency_combined"
 # test_compile_recursive_extras also requires network
 donttest+=" or test_compile_recursive_extras"
-%pytest -k "not ($donttest)"
+# test_combine_different_extras_of_the_same_package with the backtracking
+# resolver is broken with pip 23.3
+donttest+=" or test_combine_different_extras_of_the_same_package"
+%pytest -vv -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
@@ -89,6 +91,6 @@ donttest+=" or test_compile_recursive_extras"
 %python_alternative %{_bindir}/pip-compile
 %python_alternative %{_bindir}/pip-sync
 %{python_sitelib}/piptools
-%{python_sitelib}/pip_tools-%{version}*-info
+%{python_sitelib}/pip_tools-%{version}.dist-info
 
 %changelog

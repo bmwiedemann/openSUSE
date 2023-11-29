@@ -1,0 +1,42 @@
+From 2b765ff271ccfe5fdc513fe3a36829f18e30e861 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Thu, 23 Nov 2023 09:37:25 +0100
+Subject: [PATCH] Fix some depends statements in QML modules
+
+DEPENDENCIES refers to module identifiers, not CMake targets.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.de>
+---
+ src/helpers/impl/CMakeLists.txt           | 2 +-
+ src/quick3dparticleeffects/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/helpers/impl/CMakeLists.txt b/src/helpers/impl/CMakeLists.txt
+index 22c6f12ff..b3f773280 100644
+--- a/src/helpers/impl/CMakeLists.txt
++++ b/src/helpers/impl/CMakeLists.txt
+@@ -9,7 +9,7 @@ qt_internal_add_qml_module(Quick3DHelpersImpl
+     NO_PLUGIN_OPTIONAL
+     DEPENDENCIES
+         QtQuick3D/auto
+-        Quick3DHelpers/auto
++        QtQuick3D.Helpers/auto
+     SOURCES
+         sceneeffects.cpp sceneeffects_p.h
+         qquick3drenderstatsmeshesmodel_p.h qquick3drenderstatsmeshesmodel.cpp
+diff --git a/src/quick3dparticleeffects/CMakeLists.txt b/src/quick3dparticleeffects/CMakeLists.txt
+index 61528cddb..120afe6c7 100644
+--- a/src/quick3dparticleeffects/CMakeLists.txt
++++ b/src/quick3dparticleeffects/CMakeLists.txt
+@@ -13,7 +13,7 @@ qt_internal_add_qml_module(Quick3DParticleEffects
+     PLUGIN_TARGET qtquick3dparticleeffectsplugin
+     DEPENDENCIES
+         QtQuick3D/auto
+-        QtQuick3DParticles3D/auto
++        QtQuick3D.Particles3D/auto
+     NO_SYNC_QT
+     DEFINES
+         QT_BUILD_QUICK3DPARTICLEEFFECTS_LIB
+-- 
+2.42.1
+

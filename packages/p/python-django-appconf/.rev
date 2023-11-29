@@ -178,4 +178,14 @@
 - Use sle15_python_module_pythons</comment>
     <requestid>1094467</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4b6fdcdcdc5b12839dfd48bf390e6978</srcmd5>
+    <version>1.0.6</version>
+    <time>1701023821</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.6:
+  * Updated declared support and testing for Django 5.0 and 4.2,
+    and Python 3.12.</comment>
+    <requestid>1128726</requestid>
+  </revision>
 </revisionlist>

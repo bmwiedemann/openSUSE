@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:18:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete dependency on ghc-base-orphans.
+
+-------------------------------------------------------------------
 Wed Oct  4 18:22:20 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update generically to version 0.1.1 revision 2.

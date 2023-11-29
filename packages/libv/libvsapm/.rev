@@ -55,4 +55,12 @@
     <comment>- system-libs.patch requires autoconf rerun; add the dependency.</comment>
     <requestid>1127556</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ecdd3edad674e8089621461fbe0db900</srcmd5>
+    <version>20231123</version>
+    <time>1700865227</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231123</comment>
+    <requestid>1128393</requestid>
+  </revision>
 </revisionlist>

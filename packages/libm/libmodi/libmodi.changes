@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 23 19:37:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231123
+  * Limit huge allocations
+  * Improved Python3 Unicode handling
+
+-------------------------------------------------------------------
 Tue Aug  1 15:59:01 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 21 20:46:40 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.7+76+suse.5f857af:
+  * Update to upstream 0.9.7 (jsc#PED-6464)
+  * added max_retries config option to limit SCSI retries
+  * added auto_resize config option to enable resizing multipath maps automatically
+  * fixed memory and error handling for code using aio (marginal path code,
+    directio path checker)
+  * dropped modules-load.d/multipath.conf; replaced by a dependency on
+    modprobe@dm-multipath.service (systemd >= 245: SLE15-SP3 and later only)
+    and a softdep on sd_mod for the SCSI device handlers
+    (bsc#1217377)
+  * On SLE/Leap suse-module-tools doesn't ship a scsi_mod->sd_mod softdep yet.
+    Add it here, too. It will be overridden by s-m-t when it's added there.
+  * drop usr_prefix= setting in SLE build recipes (set to /usr by upstream
+    automatically)
+
+-------------------------------------------------------------------
 Wed Oct 25 10:46:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.6+115+suse.07776fb

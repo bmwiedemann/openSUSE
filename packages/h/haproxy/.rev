@@ -1391,4 +1391,12 @@
     <comment>- Update to version 2.8.3+git0.86e043add:</comment>
     <requestid>1109628</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>7471b47b232ab157d097a18c47bdad00</srcmd5>
+    <version>2.8.4+git0.a4ebf9d3b</version>
+    <time>1700865300</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.8.4+git0.a4ebf9d3b:</comment>
+    <requestid>1128544</requestid>
+  </revision>
 </revisionlist>

@@ -366,4 +366,16 @@ Update to 5.3.4</comment>
 </comment>
     <requestid>1117786</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a9fddd2bf711ef0cc68f0b687819aff3</srcmd5>
+    <version>8.6.0</version>
+    <time>1701121373</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.6.0
+  * Fix possibly not defined tracker #991 (@davidbrochart)
+  * BUG: Fix Kwarg only in update_env #989 (@Carreau)
+- Release 8.5.0
+  * Allow to update kernels env in between restart. #987 (@Carreau)</comment>
+    <requestid>1128950</requestid>
+  </revision>
 </revisionlist>

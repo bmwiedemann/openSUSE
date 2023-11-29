@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:00:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Fix ``used-before-assignment`` false positive for generic
+    type syntax (PEP 695, Python 3.12).
+  * Escape special symbols and newlines in messages.
+  * Fixes suggestion for ``nested-min-max`` for expressions with
+    additive operators, list and dict comprehensions.
+  * Fixes ignoring conditional imports with ``ignore-imports=y``.
+  * Emit ``inconsistent-quotes`` for f-strings with 3.12
+    interpreter only if targeting pre-3.12 versions.
+
+-------------------------------------------------------------------
 Fri Oct 20 11:48:34 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.0.1:
@@ -130,7 +143,7 @@ Mon Apr 17 19:33:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.2:
   * invalid-name now allows for integers in typealias
-    names: 
+    names:
     * now valid: Good2Name, GoodName2.
     * still invalid: _1BadName.
   * No longer consider Union as type annotation as type alias
@@ -277,7 +290,7 @@ Thu Sep 22 12:45:04 UTC 2022 - Michael Ströder <michael@stroeder.com>
     alongside another variable. #7467
   * Fix false positive for global-variable-not-assigned when a global
     variable is re-assigned via an ImportFrom node. #4809
-  * Fix false positive for undefined-loop-variable in for-else loops that 
+  * Fix false positive for undefined-loop-variable in for-else loops that
     use a function having a return type annotation of NoReturn or Never. #7311
   * --help-msg now accepts a comma-separated list of message IDs again. #7471
 
@@ -578,32 +591,32 @@ Sat Dec 11 14:54:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
     * Fix false-negative for ``deprecated-typing-alias`` and
       ``consider-using-alias`` with ``typing.Type`` +
       ``typing.Callable``.
-- Unpin mccabe and astroid in sitelib metadata.      
+- Unpin mccabe and astroid in sitelib metadata.
 
 -------------------------------------------------------------------
 Sat Oct 16 09:24:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Dropped pylint-pr4816-astroid27.patch
-  
+
 -------------------------------------------------------------------
 Sun Oct  3 17:04:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.11.1
-  * ``unspecified-encoding`` now checks the encoding of 
-    ``pathlib.Path()`` correctly 
-  * The python3 porting mode checker and it's ``py3k`` option were 
-    removed. You can still find it in older pylints  versions.  
-  * ``raising-bad-type`` is now properly emitted when  raising a 
+  * ``unspecified-encoding`` now checks the encoding of
+    ``pathlib.Path()`` correctly
+  * The python3 porting mode checker and it's ``py3k`` option were
+    removed. You can still find it in older pylints  versions.
+  * ``raising-bad-type`` is now properly emitted when  raising a
     string
   * Added new extension ``SetMembershipChecker`` with
-    ``use-set-for-membership`` check: Emitted when using an 
-    in-place defined ``list`` or ``tuple`` to do a membership 
+    ``use-set-for-membership`` check: Emitted when using an
+    in-place defined ``list`` or ``tuple`` to do a membership
     test. ``sets`` are better optimized for that.
   * Added ``py-version`` config key (if ``[MASTER]`` section). Used
     for version dependant checks.
     Will default to whatever Python version pylint is executed
     with.
-  * ``CodeStyleChecker``  
+  * ``CodeStyleChecker``
     Added ``consider-using-assignment-expr``: Emitted when an
     assignment is directly followed by an if statement and both can
     be combined by using an assignment expression ``:=``. Requires
@@ -612,138 +625,138 @@ Sun Oct  3 17:04:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
     is being used to format a string.
   * Fix false positive for ``consider-using-with`` if a context
     manager is assigned to a variable in different paths of control
-    flow (e. g. if-else clause).  
+    flow (e. g. if-else clause).
   * https is now prefered in the documentation and
     http://pylint.pycqa.org correctly redirect to
     https://pylint.pycqa.org
   * Fix false positive for ``function-redefined`` for simple type
     annotations
-  * Fix false positive for ``protected-access`` if a protected 
+  * Fix false positive for ``protected-access`` if a protected
     member is used in type hints of function definitions
-  * Fix false positive ``dict-iter-missing-items`` for dictionaries 
+  * Fix false positive ``dict-iter-missing-items`` for dictionaries
     only using tuples as keys
-  * The ``unspecified-encoding`` checker now also checks calls to 
+  * The ``unspecified-encoding`` checker now also checks calls to
     ``pathlib.Path().read_text()`` and
     ``pathlib.Path().write_text()``
-  * Fix false positive ``superfluous-parens`` for tuples created 
+  * Fix false positive ``superfluous-parens`` for tuples created
     with inner tuples
-  * Fix false positive ``unused-private-member`` for accessing 
+  * Fix false positive ``unused-private-member`` for accessing
     attributes in a class using ``cls``
-  * Fix false positive ``unused-private-member`` for private 
+  * Fix false positive ``unused-private-member`` for private
     staticmethods accessed in classmethods.
-  * Extended ``consider-using-in`` check to work for attribute 
+  * Extended ``consider-using-in`` check to work for attribute
     access.
-  * Setting ``min-similarity-lines`` to 0 now makes the similarty 
+  * Setting ``min-similarity-lines`` to 0 now makes the similarty
     checker stop checking for duplicate code
-  * Fix a bug where pylint complained if the cache's parent 
+  * Fix a bug where pylint complained if the cache's parent
     directory does not exist
-  * The ``global-variable-not-assigned`` checker now catches global 
+  * The ``global-variable-not-assigned`` checker now catches global
     variables that are never reassigned in a
     local scope and catches (reassigned) functions
-  * Fix false positives for invalid-all-format that are lists or 
+  * Fix false positives for invalid-all-format that are lists or
     tuples at runtime
-  * Fix ``no-self-use`` and ``docparams extension`` for async 
+  * Fix ``no-self-use`` and ``docparams extension`` for async
     functions and methods.
   * Add documentation for ``pyreverse`` and ``symilar``
-  * Non symbolic messages with the wrong capitalisation now 
+  * Non symbolic messages with the wrong capitalisation now
     correctly trigger ``use-symbolic-message-instead``
   * The ``consider-iterating-dictionary`` checker now also
     considers membership checks
-  * The ``invalid-name`` message is now more detailed when using 
+  * The ``invalid-name`` message is now more detailed when using
     multiple naming style regexes.
 - Release 2.10.2
-  * We now use platformdirs instead of appdirs since the latter is 
+  * We now use platformdirs instead of appdirs since the latter is
     not maintained.
-  * Fix a crash in the checker raising ``shallow-copy-environ`` 
+  * Fix a crash in the checker raising ``shallow-copy-environ``
     when failing to infer on ``copy.copy``
 - Release 2.10.1
   * pylint does not crash when PYLINT_HOME does not exist.
 - Release 2.10.0
   * pyreverse: add option to produce colored output.
   * pyreverse: add output in PlantUML format.
-  * ``consider-using-with`` is no longer triggered if a context 
+  * ``consider-using-with`` is no longer triggered if a context
     manager is returned from a function.
-  * pylint does not crash with a traceback anymore when a file is 
-    problematic. It creates a template text file for opening an 
+  * pylint does not crash with a traceback anymore when a file is
+    problematic. It creates a template text file for opening an
     issue on the bug tracker instead.
-    The linting can go on for other non problematic files instead 
+    The linting can go on for other non problematic files instead
     of being impossible.
-  * pyreverse: Show class has-a relationships inferred from the 
+  * pyreverse: Show class has-a relationships inferred from the
     type-hint
-  * Fixed a crash when importing beyond the top level package 
+  * Fixed a crash when importing beyond the top level package
     during ``import-error`` message creation
-  * Added ``ignored-parents`` option to the design checker to 
-    ignore specific classes from the ``too-many-ancestors`` check 
+  * Added ``ignored-parents`` option to the design checker to
+    ignore specific classes from the ``too-many-ancestors`` check
     (R0901).
-  * Added ``unspecified-encoding``: Emitted when open() is called 
+  * Added ``unspecified-encoding``: Emitted when open() is called
     without specifying an encoding
-  * Improved the Similarity checker performance. Fix issue with 
+  * Improved the Similarity checker performance. Fix issue with
     ``--min-similarity-lines`` used with ``--jobs``.
   * Don't emit ``no-member`` error if guarded behind if statement.
-  * The default for ``PYLINTHOME`` is now the standard 
+  * The default for ``PYLINTHOME`` is now the standard
     ``XDG_CACHE_HOME``, and pylint now uses ``appdirs``.
-  * Added ``use-list-literal``: Emitted when ``list()`` is called 
+  * Added ``use-list-literal``: Emitted when ``list()`` is called
     with no arguments instead of using ``[]``
-  * Added ``use-dict-literal``: Emitted when ``dict()`` is called 
+  * Added ``use-dict-literal``: Emitted when ``dict()`` is called
     with no arguments instead of using ``{}``
-  * Added optional extension ``consider-ternary-expression``: 
-    Emitted whenever a variable is assigned in both branches of an 
+  * Added optional extension ``consider-ternary-expression``:
+    Emitted whenever a variable is assigned in both branches of an
     if/else block.
-  * Added optional extension ``while-used``: Emitted whenever a 
+  * Added optional extension ``while-used``: Emitted whenever a
     ``while`` loop is used.
-  * Added ``forgotten-debug-statement``: Emitted when 
-    ``breakpoint``, ``pdb.set_trace`` or ``sys.breakpointhook`` 
+  * Added ``forgotten-debug-statement``: Emitted when
+    ``breakpoint``, ``pdb.set_trace`` or ``sys.breakpointhook``
     calls are found
-  * Fix false-positive of ``unused-private-member`` when using 
+  * Fix false-positive of ``unused-private-member`` when using
     nested functions in a class
-  * Fix crash for ``unused-private-member`` that occurred with 
+  * Fix crash for ``unused-private-member`` that occurred with
     nested attributes.
-  * Fix a false positive for ``unused-private-member`` with class 
+  * Fix a false positive for ``unused-private-member`` with class
     names
-  * Fix false positives for ``superfluous-parens`` with walrus 
+  * Fix false positives for ``superfluous-parens`` with walrus
     operator, ternary operator and inside list comprehension.
-  * Added ``format-string-without-interpolation`` checker: Emitted 
-    when formatting is applied to a string without any variables to 
+  * Added ``format-string-without-interpolation`` checker: Emitted
+    when formatting is applied to a string without any variables to
     be replaced
-  * Refactor of ``--list-msgs`` & ``--list-msgs-enabled``: both 
-    options now show whether messages are emittable with the 
+  * Refactor of ``--list-msgs`` & ``--list-msgs-enabled``: both
+    options now show whether messages are emittable with the
     current interpreter.
-  * Fix false negative for ``used-before-assignment`` when the 
-    variable is assigned in an exception handler, but used outside 
+  * Fix false negative for ``used-before-assignment`` when the
+    variable is assigned in an exception handler, but used outside
     of the handler.
-  * Added ``disable-next`` option: allows using `# pylint: 
+  * Added ``disable-next`` option: allows using `# pylint:
     disable-next=msgid` to disable a message for the following line
-  * Added ``redundant-u-string-prefix`` checker: Emitted when the u 
+  * Added ``redundant-u-string-prefix`` checker: Emitted when the u
     prefix is added to a string
-  * Fixed ``cell-var-from-loop`` checker: handle cell variables in 
-    comprehensions within functions, and function default argument 
+  * Fixed ``cell-var-from-loop`` checker: handle cell variables in
+    comprehensions within functions, and function default argument
     expressions. Also handle basic variable shadowing.
-  * Fixed bug with ``cell-var-from-loop`` checker: it no longer has 
-    false negatives when both ``unused-variable`` and 
+  * Fixed bug with ``cell-var-from-loop`` checker: it no longer has
+    false negatives when both ``unused-variable`` and
     ``used-before-assignment`` are disabled.
-  * Fix false postive for ``invalid-all-format`` if the list or 
+  * Fix false postive for ``invalid-all-format`` if the list or
     tuple builtin functions are used
   * Config files can now contain environment variables
-  * Fix false-positive ``used-before-assignment`` with an 
+  * Fix false-positive ``used-before-assignment`` with an
     assignment expression in a ``Return`` node
-  * Added ``use-sequence-for-iteration``: Emitted when iterating 
+  * Added ``use-sequence-for-iteration``: Emitted when iterating
     over an in-place defined ``set``.
   * ``CodeStyleChecker``
-    * Limit ``consider-using-tuple`` to be emitted only for 
+    * Limit ``consider-using-tuple`` to be emitted only for
     in-place defined ``lists``.
-    * Emit ``consider-using-tuple`` even if list contains a 
+    * Emit ``consider-using-tuple`` even if list contains a
     ``starred`` expression.
-  * Ignore decorators lines by similarities checker when ignore 
+  * Ignore decorators lines by similarities checker when ignore
     signatures flag enabled
-  * Allow ``true`` and ``false`` values in ``pylintrc`` for better 
+  * Allow ``true`` and ``false`` values in ``pylintrc`` for better
     compatibility with ``toml`` config.
-  * Class methods' signatures are ignored the same way as 
+  * Class methods' signatures are ignored the same way as
     functions' with similarities "ignore-signatures" option enabled
-  * Improve performance when inferring ``Call`` nodes, by utilizing 
+  * Improve performance when inferring ``Call`` nodes, by utilizing
     caching.
-  * Improve error message for invalid-metaclass when the node is an 
+  * Improve error message for invalid-metaclass when the node is an
     Instance.
-   
+
 -------------------------------------------------------------------
 Fri Aug 20 19:24:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
@@ -779,23 +792,23 @@ Fri Aug 20 10:03:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Sun Jun  6 12:04:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.3:
-  * pin astroid to 2.5.6 
+  * pin astroid to 2.5.6
 
 -----------------------------------------------------------------
 Fri May  7 14:41:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.8.2
-  * Keep ``__pkginfo__.numversion`` a tuple to avoid breaking 
+  * Keep ``__pkginfo__.numversion`` a tuple to avoid breaking
     pylint-django.
   * scm_setuptools has been added to the packaging.
   * Pylint's tags are now the standard form ``vX.Y.Z`` and not
     ``pylint-X.Y.Z`` anymore.
   * New warning message ``deprecated-class``. This message is
     emitted if import or call deprecated class of the standard
-    library (like ``collections.Iterable`` that will be removed 
+    library (like ``collections.Iterable`` that will be removed
     Python 3.10).
-  * Add numversion back (temporarily) in __pkginfo__ because it 
-    broke Pylama and revert the unnecessary pylint.version   
+  * Add numversion back (temporarily) in __pkginfo__ because it
+    broke Pylama and revert the unnecessary pylint.version
     beaking change.
 - Release 2.8.0
   * New refactoring message ``consider-using-with``. This message
@@ -807,65 +820,65 @@ Fri May  7 14:41:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
     functions
   * Add new extension ``ConfusingConsecutiveElifChecker``. This
     optional checker emits a refactoring message (R5601
-    ``confusing-consecutive-elif``) if if/elif statements with 
+    ``confusing-consecutive-elif``) if if/elif statements with
     different indentation levels follow   directly one after the
-    other.  
-  * New option ``--output=<file>`` to output result to a file 
+    other.
+  * New option ``--output=<file>`` to output result to a file
     rather   than printing to stdout.
   * Use a prescriptive message for ``unidiomatic-typecheck``
   * Apply ``const-naming-style`` to module constants annotated with
     ``typing.Final``
-  * The packaging is now done via setuptools exclusively. 
+  * The packaging is now done via setuptools exclusively.
     ``doc``,   ``tests``, ``man``, ``elisp`` and ``Changelog`` are
     not packaged anymore - reducing the size of the package by 75%.
-  * Debian packaging is now  (officially) done in https://salsa.  
+  * Debian packaging is now  (officially) done in https://salsa.
     debian.org/python-team/packages/pylint.
   * The 'doc' extra-require has been removed.
-  * ``__pkginfo__`` now only contain ``__version__`` (also   
-    accessible with ``pylint.__version__``), other 
+  * ``__pkginfo__`` now only contain ``__version__`` (also
+    accessible with ``pylint.__version__``), other
     meta-information   are still
-    accessible with ``from importlib import metadata;metadata.  
+    accessible with ``from importlib import metadata;metadata.
     metadata('pylint')``.
   * COPYING has been renamed to LICENSE for standardization.
-  * Fix false-positive ``used-before-assignment`` in function   
+  * Fix false-positive ``used-before-assignment`` in function
     returns.
   * Updated ``astroid`` to 2.5.3
-  * Add ``consider-using-min-max-builtin`` check for if 
-    statement   which could be replaced by Python builtin min or 
+  * Add ``consider-using-min-max-builtin`` check for if
+    statement   which could be replaced by Python builtin min or
     max
-  * Don't auto-enable postponed evaluation of type annotations 
+  * Don't auto-enable postponed evaluation of type annotations
     with Python 3.10
   * Update ``astroid`` to 2.5.4
-  * Add new extension ``TypingChecker``. This optional checker 
+  * Add new extension ``TypingChecker``. This optional checker
     can   detect the use of deprecated typing aliases
-    and can suggest the use of the alternative union syntax 
+    and can suggest the use of the alternative union syntax
     where   possible.
-    (For example, 'typing.Dict' can be replaced by 'dict', and   
+    (For example, 'typing.Dict' can be replaced by 'dict', and
     'typing.Unions' by '|', etc.)
     Make sure to check the config options if you plan on using it!
   * Reactivates old counts in report mode.
-  * During detection of ``inconsistent-return-statements`` 
+  * During detection of ``inconsistent-return-statements``
     consider   that ``assert False`` is a return node.
   * Run will not fail if score exactly equals ``config.
     fail_under``.
   * Functions that never returns may declare ``NoReturn`` as
     type hints, so that
     ``inconsistent-return-statements`` is not emitted.
-  * Improved protected access checks to allow access inside 
+  * Improved protected access checks to allow access inside
     class   methods
   * Fix issue with PEP 585 syntax and the use of ``collections.
     abc.  Set``
-  * Fix issue that caused class variables annotated with 
-    ``typing.  ClassVar`` to be  
-    identified as class constants. Now, class variables nnotated   
+  * Fix issue that caused class variables annotated with
+    ``typing.  ClassVar`` to be
+    identified as class constants. Now, class variables nnotated
     with ``typing.Final`` are identified as such.
   * Continuous integration with read the doc has been added.
   * Don't show ``DuplicateBasesError`` for attribute access
-  * Fix crash when checking ``setup.cfg`` for pylint config when   
-    there are non-ascii characters in there 
+  * Fix crash when checking ``setup.cfg`` for pylint config when
+    there are non-ascii characters in there
   * Allow code flanked in backticks to be skipped by spellchecker
-  * Allow Python tool directives (for black, flake8, zimports,   
-    isort, mypy, bandit, pycharm) at beginning of comments to be   
+  * Allow Python tool directives (for black, flake8, zimports,
+    isort, mypy, bandit, pycharm) at beginning of comments to be
     skipped by spellchecker
   * Fix issue that caused emacs pylint to fail when used with tramp
   * Improve check for invalid PEP 585 syntax inside functions
@@ -876,9 +889,9 @@ Fri May  7 14:41:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Fix a problem with disabled msgid not being ignored
   * Fix issue with annotated class constants
 - Release 2.7.3
-  * Introduce logic for checking deprecated attributes in   
+  * Introduce logic for checking deprecated attributes in
     DeprecationMixin.
-  * Reduce usage of blacklist/whitelist terminology. Notably,   
+  * Reduce usage of blacklist/whitelist terminology. Notably,
     ``extension-pkg-allow-list`` is an alternative to
     ``extension-pkg-whitelist`` and the message
     ``blacklisted-name`` is now emitted as
@@ -886,16 +899,16 @@ Fri May  7 14:41:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
     maintain   backward compatibility.
   * Move deprecated checker to ``DeprecatedMixin``
   * Bump ``astroid`` version to ``2.5.2``
-  * Fix false positive for ``method-hidden`` when using private   
+  * Fix false positive for ``method-hidden`` when using private
     attribute and method
-  * ``use-symbolic-message-instead`` now also works on legacy   
+  * ``use-symbolic-message-instead`` now also works on legacy
     messages like ``C0111`` (``missing-docstring``).
   * Remove unwanted print to stdout from ``_emit_no_member``
   * Introduce a command-line option to specify pyreverse output
     directory
   * Fix issue with Enums and
     ``class-attribute-naming-style=snake_case``
-  * Add ``allowed-redefined-builtins`` option for fine tuning 
+  * Add ``allowed-redefined-builtins`` option for fine tuning
     ``redefined-builtin`` check.
   * Fix issue when executing with ``python -m pylint``
   * Exempt ``typing.TypedDict`` from ``too-few-public-methods``
@@ -1018,9 +1031,9 @@ Mon Mar 22 13:00:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
     This check warns when a comprehension is used inside an
     ``any`` or ``all`` function, since it is unnecessary and
     should be replaced by a generator instead. Using a generator
-    would be less code and way faster.   
-  * Add Github Actions to replace Travis and AppVeyor in the 
-    future 
+    would be less code and way faster.
+  * Add Github Actions to replace Travis and AppVeyor in the
+    future
 
 -------------------------------------------------------------------
 Tue Feb 16 11:04:18 UTC 2021 - Michael Ströder <michael@stroeder.com>
@@ -1070,7 +1083,7 @@ Tue Jun 23 16:28:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - test import workarounds need rework
   gh#openSUSE/python-rpm-macros#48
-  gh#PyCQA/pylint#3636 
+  gh#PyCQA/pylint#3636
 - do not benchmark, just run the tests once
 
 -------------------------------------------------------------------
@@ -1099,7 +1112,7 @@ Mon Jun  8 19:33:50 UTC 2020 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Mon May 18 17:38:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Update to 2.5.2 
+- Update to 2.5.2
   * ``pylint.Run`` accepts ``do_exit`` as a deprecated parameter
     Close gh#PyCQA/pylint#3590
 - Changelog from 2.5.1
@@ -1185,11 +1198,11 @@ Mon May 18 17:38:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * ``undefined-variable`` can now find undefined loop iterables
     Close gh#PyCQA/pylint#498
   * ``safe_infer`` can infer a value as long as all the paths share the same type.
-    Close gh#PyCQA/pylint#2503   
-  * Add a --fail-under <score> flag, also configurable in a .pylintrc file. If 
-    the final score is more than the specified score, it's considered a success 
-    and pylint exits with exitcode 0. Otherwise, it's considered a failure and 
-    pylint exits with its current exitcode based on the messages issued.  
+    Close gh#PyCQA/pylint#2503
+  * Add a --fail-under <score> flag, also configurable in a .pylintrc file. If
+    the final score is more than the specified score, it's considered a success
+    and pylint exits with exitcode 0. Otherwise, it's considered a failure and
+    pylint exits with its current exitcode based on the messages issued.
     Close gh#PyCQA/pylint#2242
   * Don't emit ``line-too-long`` for multilines when `disable=line-too-long` comment stands at their end
     Close gh#PyCQA/pylint#2957
@@ -1275,7 +1288,7 @@ Mon May 18 17:38:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - two tests need special treatment:
   * test_functional[undefined_variable] gh#PyCQA/pylint#3635
   * test_do_not_import_files_from_local_directory gh#PyCQA/pylint#3636
-    
+
 -------------------------------------------------------------------
 Wed Mar 18 19:37:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
@@ -1447,7 +1460,7 @@ Sat May  7 21:44:44 UTC 2016 - michael@stroeder.com
 - Update to version 1.5.5:
   * Let visit_importfrom from Python 3 porting checker be called when everything is disabled
     Because the visit method was filtering the patterns it was expecting to be activated,
-    it didn't run when everything but one pattern was disabled, leading to spurious false 
+    it didn't run when everything but one pattern was disabled, leading to spurious false
     positives
   * Don't emit unsubscriptable-value for classes with unknown
     base classes.
@@ -1532,7 +1545,7 @@ Wed Jan 13 10:15:52 UTC 2016 - toddrme2178@gmail.com
 - update to version 1.5.0:
   * long list of changes, see Changelog file for details
 - Cleanup update-alternatives
-  
+
 -------------------------------------------------------------------
 Wed Sep  2 14:16:15 UTC 2015 - mcihar@suse.cz
 
@@ -1555,7 +1568,7 @@ Mon Mar 16 12:22:48 UTC 2015 - mcihar@suse.cz
       depth exceeded error, due to its visitor architecture. The peephole
       just transforms such calls, if it can, into the final resulting string
       and this exhibit a problem, because the visit_binop method stops being
-      called (in the optimized AST it will be a Const node).           
+      called (in the optimized AST it will be a Const node).
 
 -------------------------------------------------------------------
 Thu Mar 12 09:20:31 UTC 2015 - mcihar@suse.cz
@@ -1641,7 +1654,7 @@ Mon Dec  8 10:06:19 UTC 2014 - mcihar@suse.cz
     * Added new options for controlling the loading of C extensions.
       By default, only C extensions from the stdlib will be loaded
       into the active Python interpreter for inspection, because they
-      can run arbitrary code on import. The option 
+      can run arbitrary code on import. The option
       `--extension-pkg-whitelist` can be used to specify modules
       or packages that are safe to load.
     * Change default max-line-length to 100 rather than 80
@@ -1684,7 +1697,7 @@ Tue Nov  4 16:16:09 UTC 2014 - mcihar@suse.cz
       encountering a string which uses only position-based arguments.
       Closes issue #285.
     * Fix a false positive with string formatting checker, when using
-      keyword argument packing. Closes issue #288.    
+      keyword argument packing. Closes issue #288.
     * Handle 'too-few-format-args' or 'too-many-format-args' for format
       strings with both named and positional fields. Closes issue #286.
     * Analyze only strings by the string format checker. Closes issue #287.
@@ -1715,7 +1728,7 @@ Mon Aug 11 14:12:16 UTC 2014 - mcihar@suse.cz
     * Fix some false positives for the cellvar-from-loop warnings.
       Closes issue #233.
     * Return new astroid class nodes when the inferencer can detect that
-      that result of a function invocation on a type (like `type` or 
+      that result of a function invocation on a type (like `type` or
       `abc.ABCMeta`) is requested. Closes #205.
     * Emit 'undefined-variable' for undefined names when using the
       Python 3 `metaclass=` argument.
@@ -1785,7 +1798,7 @@ Thu Jul 10 12:39:09 UTC 2014 - toddrme2178@gmail.com
       (#211)
     * Add 'indexing-exception' warning, which detects that indexing
       an exception occurs in Python 2 (behaviour removed in Python 3).
-      
+
 -------------------------------------------------------------------
 Thu Apr 24 07:56:16 UTC 2014 - mcihar@suse.cz
 
@@ -2044,7 +2057,7 @@ Wed Sep 21 14:16:13 CEST 2011 - dmueller@suse.de
 -------------------------------------------------------------------
 Tue Aug 30 18:57:41 UTC 2011 - andrea.turrini@gmail.com
 
-- fixed typo and standardized "Authors:" format in description of 
+- fixed typo and standardized "Authors:" format in description of
   python-pylint.spec
 
 -------------------------------------------------------------------
@@ -2262,7 +2275,7 @@ Fri Aug 22 18:26:44 CEST 2008 - garloff@suse.de
 -------------------------------------------------------------------
 Tue Jul 17 01:59:42 CEST 2007 - garloff@suse.de
 
-- Update to pylint 0.13.2: 
+- Update to pylint 0.13.2:
   * fix disable-checker option so that it won't accidentally enable the
     rpython checker which is disabled by default
   * added note about the gedit plugin into documentation
@@ -2282,7 +2295,7 @@ Tue Jul 17 01:59:42 CEST 2007 - garloff@suse.de
   * new W0614 message to differentiate between unused 'import X' and
     unused 'from X import *" (#3209, patch submitted by Daniel Drake)
   * included Daniel Drake's patch to have a different message E1003 instead of
-    E1001 when a missing member is found but an inference failure has been 
+    E1001 when a missing member is found but an inference failure has been
     detected
   * msvs reporter for Visual Studio line number reporting (#3285)
   * allow disable-all option inline (#3218, patch submitted by Daniel Drake)
@@ -2312,7 +2325,7 @@ Tue Jul 17 01:59:42 CEST 2007 - garloff@suse.de
   * fixed some 2.5 issues
   * fixed generator expression scope bug (depends on astng 0.16.1)
   * stop requiring __revision__
-	
+
 
 -------------------------------------------------------------------
 Tue Sep 26 14:51:57 CEST 2006 - cthiel@suse.de
@@ -2410,7 +2423,7 @@ Wed Jan 25 21:40:43 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Thu Dec 22 11:09:58 CET 2005 - garloff@suse.de
 
-- Add dependency on python-logilab-astng. 
+- Add dependency on python-logilab-astng.
 
 -------------------------------------------------------------------
 Mon Dec 19 23:54:21 CET 2005 - garloff@suse.de
@@ -2459,6 +2472,6 @@ Tue Jul 26 02:56:40 CEST 2005 - garloff@suse.de
 -------------------------------------------------------------------
 Sun Jul 17 15:17:57 CEST 2005 - garloff@suse.de
 
-- Initial creation of package pylint-0.7.0. 
+- Initial creation of package pylint-0.7.0.
 
 -------------------------------------------------------------------

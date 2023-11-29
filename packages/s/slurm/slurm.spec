@@ -33,8 +33,9 @@
 
 %define slurm_testsuite 1
 
-%ifarch i586 %arm s390
-ExclusiveArch:  do_not_build
+ExcludeArch:    i586 %arm s390
+%if 0%{?suse_version} < 1500
+ExcludeArch:    s390x
 %endif
 
 %if 0%{?suse_version} < 1315

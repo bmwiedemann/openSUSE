@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 21 15:34:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.60:
+  * Fix issue with missing NETLINK_EXT_ACK definition.
+  * Fix issue with incorrect derivation of ECC compressed points.
+  * Add support for ECC usage from SPAKE2+ key exchange protocol.
+
+-------------------------------------------------------------------
 Wed Nov  1 12:45:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.59

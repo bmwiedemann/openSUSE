@@ -644,4 +644,20 @@
     <comment></comment>
     <requestid>1123725</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6e08600c2683e432a1e6ac2d65341946</srcmd5>
+    <version>1.23.6</version>
+    <time>1701206367</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.23.6:
+  * Add new text file document handler.
+  * Add interface for rearranging pages.
+  * Fix double free bug in html parser.
+  * Use CropBox as origin for fitz space in PDF documents so that page bounding box origin is at the top left.
+  * Fix parsing of cmap with surrogate characters.
+  * Fix bug in story handling resetting.
+  * Various smaller fixes for pymupdf.
+</comment>
+    <requestid>1129309</requestid>
+  </revision>
 </revisionlist>

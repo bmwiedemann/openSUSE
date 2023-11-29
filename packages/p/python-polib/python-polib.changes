@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:50:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Added setter for the fuzzy property
+  * Escape/unescape ^k, ^h and ^l
+  * Added path to error message processing parser symbols
+  * Ensure empty previous values for msgid and msgstr are
+    properly saved
+  * Fixed relative ordering of comments and translator
+    comments
+  * Do not count obsolete entries in fuzzy() method
+  * Close files properly
+  * Fixed support for loading mo files from bytes object
+  * Fixed msgstr_plural comparison
+  * Simplified python version check
+  * Updated docs
+
+-------------------------------------------------------------------
 Thu Aug  3 17:39:47 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -108,7 +126,7 @@ Mon May 11 13:09:37 UTC 2015 - benoit.monin@gmx.fr
 Thu Sep 12 14:51:41 UTC 2013 - dvaleev@suse.com
 
 - Fixed issue #53 (bad magic number written on big endian platforms)
-  endian_magic.patch 
+  endian_magic.patch
 
 -------------------------------------------------------------------
 Mon Feb 11 17:31:17 UTC 2013 - lazy.kent@opensuse.org

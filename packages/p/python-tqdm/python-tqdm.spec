@@ -34,6 +34,8 @@ Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#tqdm/tqdm#1519 Specify a timezone for fromtimestamp()
+Patch0:         sprinkle-in-timezone.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -48,13 +50,13 @@ Enhances:       python-ipython
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module numpy if (python-base without python36-base)}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module tqdm = %{version}}
 %if ! 0%{?_with_ringdisabled}
-BuildRequires:  %{python_module pandas if (python-base without python36-base)}
+BuildRequires:  %{python_module pandas}
 %endif
 # /SECTION
 %endif
@@ -80,9 +82,9 @@ and does not require ncurses.
 This package provides the completion file for bash
 
 %prep
-%setup -q -n tqdm-%{version}
+%autosetup -p1 -n tqdm-%{version}
 # ignore new asyncio mode warning from pytest-asyncio 0.17
-sed -i 's/-W=error//' setup.cfg
+sed -i 's/-W=error//' pyproject.toml
 # remove bash shebang for completion script
 sed -i '1 s/^#!.*/# bash completion for tqdm       -*- shell-script -*-/' tqdm/completion.sh
 chmod a-x tqdm/completion.sh
@@ -119,7 +121,7 @@ install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/com
 %doc examples/
 %license LICENCE
 %{python_sitelib}/tqdm/
-%{python_sitelib}/tqdm-%{version}*-info
+%{python_sitelib}/tqdm-%{version}.dist-info
 %python_alternative %{_bindir}/tqdm
 
 %files -n %{allpython}-tqdm-bash-completion

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 20 10:56:16 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 3.0.1:
+  * Updated translations.
+  * Fixed desktop entry and AppData.
+  * Fixed broken layout for some books.
+  * Fixed chromatic abberation in invert mode.
+  * Fixed sidebar background (pictured).
+
+-------------------------------------------------------------------
 Fri Nov 17 05:01:16 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Fixed export of incorrect dependencies 'typelib(Adw)})'.

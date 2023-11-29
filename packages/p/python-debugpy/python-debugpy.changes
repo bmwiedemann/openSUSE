@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 20 09:17:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Increase timeouts for tests, bsc#1217019
+
+-------------------------------------------------------------------
 Fri Nov 17 17:44:21 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.8.0:

@@ -381,4 +381,17 @@
     <comment></comment>
     <requestid>1108572</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>237a2586db39b4a89fc588eda06250aa</srcmd5>
+    <version>2.9</version>
+    <time>1700675677</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9:
+  * Fix issue with handling certain FT failures.
+  * Fix issue with handling user-disabled bands.
+  * Fix issue with handling roam on beacon loss event.
+  * Add support for PKEX configurator.
+  * Add support for PKEX enrollee. (forwarded request 1127951 from dirkmueller)</comment>
+    <requestid>1127972</requestid>
+  </revision>
 </revisionlist>

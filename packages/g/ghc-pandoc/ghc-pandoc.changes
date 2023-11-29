@@ -1,4 +1,662 @@
 -------------------------------------------------------------------
+Sat Oct 28 00:58:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete "CVE-2023-38745.patch" and "CVE-2023-35936.patch".
+
+- Update pandoc to version 3.1.9.
+
+  ## pandoc 3.1.9 (2023-10-27)
+
+    * Make `reference-section-title` work with `jats+element_citations`
+      (#9021).
+
+    * Add `bits` as synonym of `jats` as input format.
+
+    * JATS reader:
+
+      + Modify JATS reader to handle BITS too (#9138, Julia Diaz).
+	Add provision for title-group, book, book-part-wrapper, book-meta,
+	book-part-meta, book-title, book-title-group, index, toc, legend,
+	title, collection-meta
+      + Fix handling of alt-text (#9130, Julia Diaz). Previously we were
+	looking for an attribute that doesn't exist in JATS; alt-text is
+	provided by a child element.
+
+    * CommonMark reader:
+
+      + Handle `Ext_tex_math_gfm` (#9121). Parse GFM-specific math
+	constructions when `tex_math_gfm` enabled.
+
+    * DokuWiki reader:
+
+      + Allow autolinks to be avoided using e.g. `https:%%//%%...` (#9153).
+      + Parse `<code>` and `<file>` as block-level code (#9154).
+	Previously we treated them as inline code in some contexts,
+	but that is not how DokuWiki works.
+
+    * LaTeX reader:
+
+      + Better handle spacing commands `\hfill`, `\vfill`, `\hskip`,
+	`\vskip`, etc. (#9150).
+      + Fix incorrect abbreviation for astronomical unit (#9125,
+	Michael McClurg).
+
+    * Markdown reader:
+
+      + Fix blindspot with superscript in links (#8981).
+	Previously `[^super^](#ref)` wasn't parsed as a link, due to
+	code that was meant to prevent footnote markers from being
+	recognized as reference links.  This commit tightens up that
+	code to avoid this bad effect. We have also added a new
+	restriction on footnote labels: they cannot contain the characters
+	`^`, `[`, or `]`. Though this is technically a breaking change, we
+	suspect that the impact will be minimal, as it's very unlikely
+	people would be using these characters in their note labels.
+      + Don't apply `--default-image-extension` to data URIs (#9118).
+      + More accurate check that a normalCite is not a link,
+	bracketed span, or reference (#9080).
+
+    * HTML reader:
+
+      + Allow th to close td and vice versa (#9090).
+      + Parse task lists using input elements (#9047, Seth Speaks).
+
+    * Creole reader:
+
+      + Handle empty cells correctly (#9141, Sascha Wilde).
+
+    * Org writer:
+
+      + Escape literal `*`, `|`, `#` at beginning of line with ZWS (#9159).
+
+    * ICML writer:
+
+      + Prevent doubled attributes (#9158).
+
+    * Powerpoint writer:
+
+      + Fix a corruption error caused when the document used both a
+	regular png and a png in a data URI (#9113). (Similarly for any
+	other image format.) The problem was that duplicate entries in
+	`[Content Types].xml` were being created, one for the mime type
+	`image/png`, one for `image/png;base64`.
+
+    * LaTeX writer:
+
+      + Fix rowspans in tables so they use the width of
+	the column (`=` as the width parameter) (#9140).
+      + Don't treat table as "simple" if they have col widths.
+	This should help fix a problem wherein some grid tables with
+	colspans were overly wide (#9140).
+      + Fix uneven indents in line block output (#9088).
+
+    * JATS writer: fix 3.1.4 regression in handling block-level metadata
+      (#9092).
+
+    * Ms writer: improvements in image handling (#4475).
+
+      + PDFPIC is now used for PDF images in figures.
+      + Inline images that are postscript or PDF are rendered using
+	PSPIC or PDFPIC. This isn't ideal, because they will still be
+	rendered as if in a separate paragraph, but it's probably
+	better than just printing the image name.
+      + Units are included in height.
+
+    * HTML writer:
+
+      + If raw format is an HTML side deck format, emit it (James J Balamuta).
+
+    * Typst writer:
+
+      + Add `#box` around image to make it inline. (#9104)
+	An `#image` by itself in typst is a block-level element.
+	To force images to be inline (as they are in pandoc), we need
+	to add a box with an explicit width. When a width is not given
+	in image attributes, we compute one from the image itself, when
+	possible.
+      + Don't allow long heading to wrap (#9132).
+      + Escape `(` (#9137). If unescaped `(` occurs in
+	certain contexts, it can be parsed as function application.
+
+    * Man writer:
+
+      + Fix some spacing issues around links (#9120).
+	We need to use `\c` before a `.UR` or `.MT`, to avoid
+	an extra space, and also after.  To ensure that a space
+	at the beginning of the following line doesn't get swallowed
+	up, we escape it with `\`.
+      + Use UR, MT macros for URLs, emails (#9120).
+
+    * Text.Pandoc.Extensions:
+
+      + Add `Ext_tex_math_gfm` constructor to Extension (#9121).
+	[API change]. This handles two GitHub-specific syntaxes for math.
+	This is now default for `gfm`, in addition to `tex_math_dollars`.
+      + Remove duplicates for `Ext_raw_html` and `Ext_pipe_tables`
+	in some of the lists (Tim Stewart).
+
+    * Text.Pandoc.Metadata: Add helpful message on some metadata
+      YAML errors (#9155).
+
+    * Text.Pandoc.Shared:
+
+      + `splitSentences`: don't split after initials.
+	This improves the man and ms writer output, preventing
+	sentence breaks after initials.
+      + Add `addPandocAttributes` function [API change].
+	This is meant to simplify addition of attributes to Pandoc
+	elements: for elements that don't have a slot for attributes, an
+	enclosing Div or Span is added to hold the attributes.
+
+    * MANUAL.txt:
+
+      + Clarify that formatting can't cross line boundaries
+	in line blocks (#9119).
+      + Fix legacy option for citation (#8737, 3w36zj6)
+
+    * Update `et` translations (priiduonu).
+
+    * Updated `no` translations (Stephan Daus).
+      Renamed no.yaml (macrolanguage Norwegian) to nb.yaml (Norwegian Bokmål).
+      Created soft symbolic link from no.yaml pointing to nb.yaml.
+
+    * Lua subsystem: Use the newest LPeg version (lpeg-1.1.*) (#9107,
+      Albert Krewinkel).
+
+    * Default `epub.css`: Apply style to h6, format styles, and
+      combine identical styles under shared selectors (samuel-weinhardt).
+
+    * Update nix flake with dependencies (piq9117).
+
+    * LaTeX template: fix `\CSLBlock` vertical space (John Purnell).
+
+    * Allow tasty 1.5 and Diff 0.5.
+
+    * Require commonmark-extensions 0.2.4, commonmark 0.2.4.
+
+    * Require texmath 0.12.8.4. This should improve math in
+      powerpoint, fixing empty boxes around roots in some cases.
+
+    * Require typst 0.3.2.1
+
+  ## pandoc 3.1.8 (2023-09-08)
+
+    * JATS reader:
+
+      + Ignore `<processing-meta>` element (#9057, Julia Diaz).
+      + Fix conversion of date to ISO 8601 format (#8865).
+
+    * LaTeX template:
+
+      + Add code allow `\cite` to break across lines (#9050).
+      + Fix regression with CSL `display="block"` (#7363).
+	This restores the line break before the block.
+      + Rewrite `CSLReferences` environment to avoid depending on
+	`enumitem`, which plays badly with beamer.  Instead we use
+	a regular list environment. Thanks to @jpcirrus for the
+	concept (#9053).
+      + Restore the pre-3.1.7 format of the `CSLReferences`
+	environment, which again has two parameters. The first
+	determines whether a hanging indent is used (1 = yes, 0 = no),
+	and the second is the entry line spacing (0 = none).
+      + Add a strut to avoid inconsistencies in spacing (#9058).
+      - Remove a break at the end of `CSLRightInline` to avoid
+	inconsistencies in spacing. It shouldn't be necessary
+	because the paragraph should extend to the right margin (#9058).
+
+    * LaTeX writer:
+
+      + Fix regression with figure labels (#9045). In 3.1.7, pandoc
+	added two labels to LaTeX figure environments, one with a
+	phantomsection.
+      + Fix default citeproc entry-spacing. According to the CSL manual,
+	the default entry spacing is 1. We were treating it as 0 (#9058).
+
+    * HTML writer:
+
+      + Use the ID prefix in the ID for the footnotes section (#9044,
+	Benjamin Esham).
+      + Fix CSL entry-spacing default (#9058).
+
+    * Text.Pandoc.Citeproc:  always include an `entry-spacing` attribute
+      in the Div if the bibliography element contains an entry-spacing
+      attribute (previously we omitted it when it was 0) (#9058).
+
+    * Clean up pandoc's own man pages by regenerating with pandoc 3.1.7.
+
+    * pandoc-lua-engine: bump lower bound for pandoc (#9046).
+
+    * Depend on texmath 0.12.8.2, fixing binom in typst writer (#9063).
+
+  ## pandoc 3.1.7 (2023-08-31)
+
+    * Org reader:
+
+      + Don't parse alphabetical lists unless the `fancy_lists` extension is
+	enabled (#9042).
+      + Allow escaping commas in macro arguments (Amneesh Singh).
+
+    * JATS reader:
+
+      + Support for `<permissions>` metadata (#9037, Julia Diaz).
+	metadata objects with multiple fields are created, matching the
+	structure in JATS.
+      + Correct name of JATS element `attrib`.
+
+    * Markdown reader:
+
+      + Support images with wikilink syntax, e.g. `![[foo|bar]]`, when
+	one of the `wikilinks` extension is enabled (#8853).
+      + Allow a citation or reference link to be parsed after a `!` (#8254).
+      + Fix dropped `!` before nonexistent reference (#9038).
+
+    * LaTeX writer:
+
+      + Fix regression in escaping URLs (#9043).
+      + Use `\cite` and `\bibitem` to link up citations, even with citeproc.
+	(#9031). This will give us better accessibility; when tagging is
+	enabled, the citation can be linked to the bibliography entry.
+	This changes some of the details of the layout and the default
+	template. We now make `CSLReferences` a special enumitem list
+	that will contain `\bibitem`s. Internal links inside citations to
+	ids beginning in `ref-` are creating using `\cite` instead of
+	`\hyperref`.
+      + Use `\phantomsection` and `\label` instead of `\hypertarget` (#9022).
+      + Use `\hyperref` for LaTeX internal links, `\hyperlink` for
+	beamer (since `\hyperref` doesn't seem to work) (#9022).
+      + Backslash-escape `%` and `#` in URLs (#9014).
+
+    * JATS writer:
+
+      + Fix placement of ref-list when no title is specified for the
+	reference section (#9017). (In this case we place it in `back`
+	with an empty title.)
+
+    * Man writer:
+
+      + Avoid a `.PP` right after a section heading (#9020).
+	This is at best a no-op (in groff man and mandoc) and at worst
+	(in some formatters) may create extra whitespace.
+      + We revert the fanciness introduced in #7506, which employs a
+	custom font name `V` and a macro that makes this act like boldface
+	in a terminal and monospace in other formats.  Unfortunately,
+	this code uses a mechanism that is not portable (and does not
+	work in mandoc) (#9020).
+      + Instead of using `V` for inline code, we simply use `CR`.
+	Note that `\f[CR]` is emitted instead of plain `\f[C]`,
+	because there is no `C` font in man.  (This produces warnings
+	in recent versions of groff, #9020.)
+      + For code blocks, we now use the `.EX` and `.EE` macros,
+	together with `.IP` for spacing and indentation.  This gives
+	more standard code that can be better interpreted e.g. by mandoc
+	(#9020).
+
+    * Man template: don't emit `.hy`, regardless of setting of
+      `hyphenate` variable (#9020).
+
+    * LaTeX template: special redefinition of `\st` for CJK (#9019).
+      soul's version raises on error on CJK text.
+
+    * Use latest skylighting-format-blaze-html (#7248).
+      This works around a longstanding iOS Safari bug that caused long
+      lines to be displayed in a different font size in highlighted code.
+
+    * Allow skylighting 0.14 (and require it in pandoc core).
+
+    * Allow text 2.1.
+
+  ## pandoc 3.1.6.2 (2023-08-22)
+
+    * Org reader: allow example lines to end immediately after the colon
+      (Brian Leung).
+
+    * Docx reader:
+
+      + Omit "Table NN" from caption (#9002).
+      + Avoid spurious block quotes in list items (#8836).
+
+    * JATS reader: Fix display of block elements (#8889, Julia Diaz).
+      A number of block elements, like disp-quote, list, and disp-formula, were
+      always treated as inlines if appearing inside paragraphs, even if their
+      usage granted a separate block.
+
+    * HTML reader: avoid duplicate id on header and div (#8991).
+
+    * Typst writer:
+
+      + Use `~` for nonbreaking space, and escape literal `~` (#9010).
+      + Put the label in right place for Div, use `#block` (#8991).
+	Previously we were putting the label at the beginning of
+	the Div's contents, but according to the documentation such a
+	label gets attached to the *preceding* element.  We now use an
+	explicit `#block` and add the label at the end.
+
+    * LaTeX writer:
+
+      + Improve escaping of URIs in href, url (#8992).
+      + Improve internal links and targets (#8744). We no longer
+	wrap section headings in a `\hypertarget`. This is unnecessary
+	(hyperref creates an anchor based on the label) and it interferes with
+	tagging. In addition, we now use `\hyperref` rather than `\hyperlink`
+	for internal links. Currently `\hypertarget` is still being used for
+	link anchors not on headings. Thanks to @u-fischer.
+
+    * HTML format templates (style.html): Fix typo in clause for svg
+      (Jackson Schuster).
+
+    * Use lastest texmath, typst-symbols, typst. Targets typst 0.7.
+
+
+  ## pandoc 3.1.6.1 (2023-08-11)
+
+   * HTML reader: properly calculate RowHeadColumns (#8984). This fixes a
+     bug in the calculation of the number of header columns in table row.
+     It also changes the algorithm for determining the table body's
+     RowHeadColumns based on the numbers of head columns in each row.
+     Previously we used the max, and #8634 switched to the min, which
+     led to bad results. Now we only set RowHeadColumns to a non-zero value
+     if *all* rows have the same number of head columns.
+
+    * OpenDocument writer:
+
+      + Implement syntax highlighting for inline and block code (#6710).
+      + Support highlighted text in ODT/OpenDocument writers for Span
+	with class `mark` (#8960). The color can be adjusted by
+	modifying the Highlighted style.
+
+    * Typst writer: escape `//` so it doesn't get interpreted as a comment
+      (#8966).
+
+    * ChunkedHTML writer: Fix regression including MathJax script (#8967).
+      The fix for #8620 caused the script to be included when the table of
+      contents but not the body text of a page contains math.  But it broke the
+      case where the table of contents doesn't contain math but the page does.
+      This patch fixes the issue.
+
+    * Text.Pandoc.SelfContained:
+
+      + Retain attributes in SVG tag when referring to another
+	SVG's content using `<use>` (#8969).
+      + Allow units in width and height for SVG. Units are optional but allowed.
+      + Don't coerce calculated SVG dimensions to Int.
+      + fix calculation of SVG width and height. We were computing width and
+	height from viewBox incorrectly (#8969).
+      + Add clause for SVG to default CSS for HTML (#8969).
+      + Ensure that width and height attributes don't get specified
+	twice is both the img tag and the svg include them (#8965).
+      + Omit unnecessary attributes xmlns, xmlns:xlink, and version on
+	SVG element (#8965).
+      + Use 20 character rather than 40 character hashes for generated IDs
+	(#8965).
+
+    * Use pandoc-types 1.23.1. This fixes a regression with toJSONFilter (#8976),
+      which in 1.23.0.1 no longer worked on pure values of type `a -> [a]`.
+
+    * Use ghc 9.6 for release builds (#8947).
+
+    * Fix some links in FAQs (Diogo Almiro).
+
+
+  ## pandoc 3.1.6 (2023-07-20)
+
+    * Fix CVE-2023-38745, a variant of the vulnerability in CVE-2023-35936.
+      Guilhem Moulin noticed that the fix to CVE-2023-35936 was incomplete.
+      An attacker could get around it by double-encoding the malicious
+      extension to create or override arbitrary files.
+
+    * `--embed-resources`: Use inline SVG instead of data uris for SVG
+      images in HTML5 (#8948). Note that SelfContained does not have
+      access to the writer name, so we check for HTML5 by determining
+      whether the document starts with `<DOCTYPE! html>`. This means
+      that inline SVG won't be used when generating document fragments.
+
+    * Fix regression on short boolean arguments (#8956).
+      In 3.1.5 boolean arguments were allowed an optional argument
+      (`true|false`).  This created a regression for uses of fused
+      short arguments, e.g. `-somyfile.html`, which was equivalent
+      to `-s -omyfile.html`, but now raised an error because
+      pandoc attempted to parse `o` as a boolean `true` or `false`.
+      This change allows the fused short arguments to be used again.
+      Note that `-strue` will be interpreted as `-s` with an
+      argument `true`, not as `-s -t -rue`.  It is best to
+      use long option names with the optional boolean values,
+      to avoid confusion.
+
+    * Make `--epub-title-page`'s argument optional. It takes a boolean
+      argument, and now that all of our boolean flags take such an
+      argument, we can make this one optional for consistency.
+
+    * Improve errors for illegal output formats. Previously if you did
+      `pandoc -s -t bbb`, it would give you an error about the missing
+      `bbb` template instead of saying that `bbb` is not a
+      supported output format.
+
+    * Improve errors for incorrect command-line option values (#8879).
+      Always give the name of the relevant argument.
+
+    * Fix typo on error message for incorrect `--preserve-tabs` argument.
+      Thanks @fsoedjede
+
+    * Docx reader: use SVG version of image if present (#7244).
+      Previously the backup PNG was exported even if an SVG was
+      present, but the SVG should be preferred.
+
+    * Typst reader: fix regression in recognition of display math (#8949).
+      The last release caused all math to be parsed as inline math.
+
+    * JATS writer: don't use `<code>` for inline code (#8889).
+      It is intended for block-level code.
+
+    * HTML writer: don't make line blocks sensitive to `--wrap` (#8952).
+
+    * RST writer: fix figure handling (#8930, #8871).
+      This fixes a number of regressions from pandoc 2.x.
+      Properly handle caption, alt attribute in figures.
+      No longer treat a paragraph with a single image in it as a figure
+      (we have a dedicated Figure element now).
+
+    * Docx writer: Copy "mirror margins" property from reference.docx (#8946).
+
+    * Text.Pandoc.UTF8: Deprecate `decodeArg` which is now a no-op.
+      This was needed for old base versions which we no longer support.
+
+    * Use released skylighting, typst.
+
+    * Allow latest commonmark-extensions. This allows entities in wikilinks.
+
+    * Switch back to using ghc 9.2 for linux and Windows binary releases
+      (#8947, #8955). With ghc 9.4+, we were getting AVX instructions
+      in the amd64 binary, which aren't supported on older hardware.
+      For maximum compatibility we switch back to ghc 9.2, which doesn't
+      cause the problem. (As documented, ghc should not be emitting these
+      instructions, so we aren't clear on the diagnosis, but the cure
+      has been tested.)
+
+    * Change Windows release build to use cabal instead of stack.
+
+  ## pandoc 3.1.5 (2023-07-07)
+
+    * Allow all boolean flags to take an optional `true` or `false` value
+      (#8788, Sam S. Almahri). The default is true if no value is specified,
+      so this is fully backwards-compatible.
+
+    * Support `--id-prefix` for markdown output (#8878)
+
+    * Markdown reader:
+
+      + Add strictness annotations to fix a memory leak (#8762).
+
+    * Typst reader:
+
+      + Use typst-hs 0.3.0.0, which is more robust, fixes many bugs, and
+	targets typst 0.6.
+      + Package loading is now supported, as long as the package has been
+	cached or is local.
+      + Rewrite Typst reader in a way that makes it easier to extend.
+      + Filter out CR in raw.
+      + Handle block content for link element.
+      + Handle block-level content in text element.
+      + Handle style, align, place in inline contexts too.
+      + Improve info message for skipped elements.
+
+    * Add typst reader tests (#8942).
+
+    * MediaWiki reader:
+
+      + Revise treatment of "link trail." Previously we only included ASCII
+	letters. That is correct for English but not for, e.g., Spanish (see
+	comment in #8525). A safer approach is to include all letters except
+	those in the CJK unified ideograph ranges.
+
+    * AsciiDoc writer:
+
+      + Make modern AsciiDoc the target for `asciidoc` (#8936).
+	The AsciiDoc community now regards the dialect parsed by `asciidoctor`
+	as the official AsciiDoc syntax, so it should be the target of our
+	`asciidoc` format. The `asciidoc` output format now behaves like
+	`asciidoctor` used to. `asciidoctor` is a deprecated synonym. For
+	the old `asciidoc` behavior (targeting the Python script),
+	use `asciidoc_legacy`. The templates have been consolidated. Instead of
+	separate `default.asciidoctor` and `default.asciidoc` templates, there
+	is just `default.asciidoc`.
+      + Text.Pandoc.Writers.AsciiDoc API changes:
+	- `writeAsciiDoc` now behaves like `writeAsciiDoctor` used to.
+	- `writeAsciiDoctor` is now a deprecated synonym for `writeAsciiDoc`.
+	- New exported function `writeAsciiDocLegacy` behaves like
+	  `writeAsciDoc` used to.
+      + Update line-through for asciidoc writer to custom inline style (#8933,
+	Kevin Broch).
+
+    * Typst writer:
+
+      + Support `unlisted` class in headings (#8941).
+      + Consolidate bibliography files into one `#bibliography` command (#8937).
+      + Improve handling of autolinks (#8931).
+
+    * Docx writer:
+
+      + Make relative widths work in tables. This didn't work before because we
+	were missing an attribute that tells Word to used fixed widths rather
+	than computing optimal ones.
+
+    * DokuWiki writer: fix lists with Div elements (#8920).
+      The DokuWiki writer doesn't render Divs specially, so their presence in
+      a list (e.g. because of custom-styles) need not prevent a regular
+      DokuWiki list from being used. (Falling back to raw HTML in this case is
+      pointless because no new information is given.)
+
+    * LaTeX writer:
+
+      + Fix babel name for `fa` (should be `persian`).
+      + Prevent babel language from being imported twice (#8925).
+
+    * Text.Pandoc.Class:
+
+      + Add `toTextM` [API change]. This is like `Text.Pandoc.UTF8.toText`,
+	except:
+
+	- it takes a file path as first argument, in addition to
+	  bytestring contents
+	- it raises an informative error with source position if
+	  the contents are not UTF8-encoded
+
+      This replaces `utf8ToText` whenever we have the filename and are
+      in a PandocMonad instance. This will lead to more informative error
+      messages for UTF8-encoding, indicating the file path and byte offset
+      where the error occurs (#8884).
+
+    * Remove invalid term "Subject" from Turkish translations (#8921).
+
+    * stack.yaml: add pkg-config to nix packages (#8927, pacien).
+
+    * Allow aeson 2.2.
+
+    * MANUAL: Add clarification on --section-divs. Closes #8882.
+
+
+  ## pandoc 3.1.4 (2023-06-24)
+
+    * Fix a security vulnerability in MediaBag and T.P.Class.IO.writeMedia.
+      This vulnerability, discovered by Entroy C, allows users to write
+      arbitrary files to any location by feeding pandoc a specially crafted
+      URL in an image element.  The vulnerability is serious for anyone
+      using pandoc to process untrusted input.  The vulnerability does
+      not affect pandoc when run with the `--sandbox` flag. [CVE-2023-35936]
+
+    * Allow `epub-title-page` to be used in defaults files (#8908).
+
+    * Issue `Extracting` info message (in `--verbose` mode) when using
+      `--extract-media` or extracting media temporarily in PDF production.
+
+    * HTML reader: Update TableBody RowHeadColumns caculation (#8634,
+      Ruqi). This change sets RowHeadColumns to the minimum value of each row,
+      which gives better results in cases where rows have different numbers
+      of leading th tags.
+
+    * Dokuwiki reader: retain image query parameters as attributes (#8887, echo0).
+
+    * Textile reader: Add support for link references (#8706, Stephen Altamirano).
+      Textile supports what it calls "link alias", which are analogous to
+      Markdown's reference-style links.
+
+    * LaTeX reader: support alt text on images (#8743, Albert Krewinkel).
+
+    * Commonmark reader: Make `implicit_figures` work again.
+      Support for this (introduced in #6350) disappeared when we made an
+      architectural change.
+
+    * JATS reader:
+
+      + Add footer and multiple body parsing to table reader (#8765, Noah Malmed).
+      + Parse references title from ref-list (#8365).
+
+    * JATS writer:
+
+       + Make `--number-sections` work.
+       + Include title in ref-list (#8364). Previously the reference title ended
+	 up in a separate section at the back of the body instead of in the ref-list
+	 in the back matter.
+
+    * Mediawiki writer: allow highlighting to work for F# language
+      (Adelar da Silva Queiróz).
+
+    * LaTeX writer: Fix escaping of `&` in `\href` and `\url` (#8903).
+
+    * Docx writer:
+
+      + Fix localization of "Abstract" title (#8702).
+      + Allow `abstract-title` to be specified in docx metadata (#8794).
+
+    * ChunkedHTML writer: Make math work in top-level page (#8915).
+
+    * Text.Pandoc.Logging: add new log message type `ScriptingWarning`
+      [API change] (Albert Krewinkel).
+
+    * Lua: report warnings from Lua scripts (Albert Krewinkel).
+      Lua's warning system is plugged into pandoc's reporting architecture.
+      Warnings that are raised with the Lua `warn` function are now reported
+      together with other messages.
+
+    * Use crypton-connection instead of connection (#8896, Felix Yan).
+      Follows the change introduced in tls 1.7.0.
+
+    * Bump versions for skylighting-core, skylighting.
+
+    * Include lua/module/sample.svg in cabal extra-source-files (Felix Yan).
+
+    * Add Nynorsk (New Norwegian) translations (Per Christian Gaustad).
+
+    * Add tests for `fillMediaBag`/`extractMedia`.
+
+    * INSTALL.md:
+
+      + Mention alternatives to LaTeX to generate PDF (Norwid Behrnd).
+      + Update Linux install links (harabat).
+
+    * pandoc-extras.md: add to "Academic publishing workflows" (#8696,
+      Vladimir Alexiev).
+
+-------------------------------------------------------------------
 Thu Sep 21 09:22:22 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Apply "CVE-2023-38745.patch" to complete the fix of the arbitrary

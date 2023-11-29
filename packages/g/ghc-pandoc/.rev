@@ -39,4 +39,12 @@
     <comment>security update</comment>
     <requestid>1112771</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>554757b1a6703cb8c24ef51eb14a0875</srcmd5>
+    <version>3.1.9</version>
+    <time>1700772006</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1127078</requestid>
+  </revision>
 </revisionlist>

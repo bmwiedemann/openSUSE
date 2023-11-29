@@ -492,4 +492,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099420</requestid>
   </revision>
+  <revision rev="51" vrev="54">
+    <srcmd5>df49a38e5eed6e122839adadd1a1879a</srcmd5>
+    <version>unknown</version>
+    <time>1701121321</time>
+    <user>anag+factory</user>
+    <comment>- Remove some not needed python files as well as patch one
+  python file to do its python3 job (boo#1217476)
+
+- Make texlive-iftex obsolete texlive-ifluatex from 2019 (boo#1211717)</comment>
+    <requestid>1129122</requestid>
+  </revision>
 </revisionlist>

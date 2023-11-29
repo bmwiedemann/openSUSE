@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pycryptodomex
-Version:        3.18.0
+Version:        3.19.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause

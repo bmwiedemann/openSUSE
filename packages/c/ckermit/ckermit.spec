@@ -32,8 +32,6 @@ Provides:       kermit
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?fedora_version} || 0%{?rhel_version}
 BuildRequires:  zsh
-%else
-BuildRequires:  termcap
 %endif
 
 %description

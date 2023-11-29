@@ -2,7 +2,7 @@
 Mon Jul 24 09:15:39 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.8+20230721.002171b (v2.0.8):
-- log: fix potential overflow with long log messages (gh#ClusterLabs/libqb#490)
+- log: fix potential overflow with long log messages (gh#ClusterLabs/libqb#490, CVE-2023-39976, bsc#1214066)
 
 -------------------------------------------------------------------
 Mon Jun 19 18:31:05 UTC 2023 - Yan Gao <ygao@suse.com>

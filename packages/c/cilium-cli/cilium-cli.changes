@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 28 05:40:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.15:
+  * Prepare for v0.15.15 release
+  * Make --nodes-without-cilium work with SPIRE
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    19e4885
+  * chore(deps): update all github action dependencies
+  * e2e: add pod/container info in error form exec in pod.
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    19b2000
+  * chore(deps): update docker/build-push-action action to v5.1.0
+  * chore(deps): update dependency cilium/cilium to v1.14.4
+  * connectivity/check: remove stray newline in
+    (*Action).ValidateFlows
+  * Add connectivity tests counter
+  * connectivity: Add latency measurement
+  * action: allow to specify release repository
+  * clustermesh: add support for max-connected-clusters
+  * Update stable release to v0.15.14
+
+-------------------------------------------------------------------
 Fri Nov 17 05:46:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.14:

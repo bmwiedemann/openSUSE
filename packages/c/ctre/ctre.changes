@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 22 09:46:53 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- unsigned-char.patch: Fix bogus tests that depend on signed char
+
+-------------------------------------------------------------------
 Mon Nov 20 18:02:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial version.

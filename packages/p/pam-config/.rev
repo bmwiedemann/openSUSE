@@ -788,4 +788,13 @@
   - Add support for kanidm</comment>
     <requestid>1114381</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e6bcd000651102a16a0512f4d22b57fb</srcmd5>
+    <version>2.10</version>
+    <time>1701121311</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.10
+  - Enable session and account support for kanidm and himmelblau</comment>
+    <requestid>1129087</requestid>
+  </revision>
 </revisionlist>

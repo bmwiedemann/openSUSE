@@ -117,4 +117,12 @@ IMO the Conflicts tag is unavoidable, hence adding.
 - run tests</comment>
     <requestid>1116989</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd1e13d6465838594994502583af656b</srcmd5>
+    <version>4.40.3</version>
+    <time>1700865305</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128545</requestid>
+  </revision>
 </revisionlist>

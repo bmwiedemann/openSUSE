@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 24 09:07:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.22.0: (jsc#PED-5442):
+  * Memcheck now tests and warns about the values used for
+    alignment and size. These apply to various functions: memalign,
+    posix_memalign and aligned_alloc in C and various overloads
+    of operators new and delete in C++. The kinds of error that can
+    be detected are
+    - invalid alignment, for instance the alignment is usually required
+      to be a power of 2
+    - mismatched alignment between aligned allocation and aligned
+      deallocation
+    - mismatched size when sized delete is used
+    - bad size for functions that have implementation defined behaviour
+      when the requested size is zero
+  * many bug fixes, see https://valgrind.org/docs/manual/dist.news.html
+
+-------------------------------------------------------------------
+Wed Nov 15 10:09:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove 32bit support for ALP
+
+-------------------------------------------------------------------
 Tue Nov 14 08:42:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add VEX-x86-pinsrd.patch (bko#276780)

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.29
+Version:        1.3.1
 Release:        0
 Summary:        A client library for the D-Bus IPC system
 License:        Apache-2.0
@@ -88,6 +88,8 @@ BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
+BuildRequires:  ghc-temporary-devel
+BuildRequires:  ghc-temporary-prof
 %endif
 
 %description

@@ -16,15 +16,15 @@
 #
 
 
-%define full_version 9.4.6
-%define short_version 9.4.6
+%define full_version 9.6.3
+%define short_version 9.6.3
 
 %ifnarch s390x
 %define with_libnuma 1
 %else
 %define with_libnuma 0
 %endif
-# Keep in sync with ghc-bootstrap.spec
+
 %global llvm_major 14
 
 # conditionals
@@ -63,12 +63,19 @@
 %bcond_without perf_build
 %endif
 
+%if %{without hadrian}
+# locked together since disabling haddock causes no manuals built
+# and disabling haddock still created index.html
+# https://gitlab.haskell.org/ghc/ghc/-/issues/15190
+%{?with_haddock:%bcond_without manual}
+%endif
+
 %global ghc_llvm_archs s390x riscv64
 %global ghc_unregisterized_arches noarch
 
-%global base_ver 4.17.2.0
+%global base_ver 4.18.1.0
 %global ghc_compact_ver 0.1.0.0
-%global hpc_ver 0.6.1.0
+%global hpc_ver 0.6.2.0
 %global hsc2hs_ver 0.68.8
 
 Name:           ghc
@@ -79,29 +86,28 @@ License:        BSD-3-Clause
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
 Source2:        ghc-rpmlintrc
-Source3:        9_2_3-bootstrap-sources.tar.gz
+Source4:        9_4_4-bootstrap-sources.tar.gz
 Source5:        ghc-pkg.man
 Source6:        haddock.man
 Source7:        runghc.man
 Source9:        ghc.keyring
 Patch1:         ghc-gen_contents_index-haddock-path.patch
-# for unregisterized (s390x)
 # https://ghc.haskell.org/trac/ghc/ticket/15689
 Patch2:         ghc-Cabal-install-PATH-warning.patch
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-# PATCH-FIX-UPSTREAM execstack.patch -- RTS: Add stack marker to StgCRunAsm.S
-Patch7:         execstack.patch
-# Work around a bug in Sphinx 6.1.x to fix the documentation build. Remove this patch ASAP.
-Patch8:         bytestring.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
+# PATCH-FIX-UPSTREAM Hadrian: enable GHCi support on riscv64 (dd38aca95a)
+Patch100:       ghc-with-interpreter.patch
+# PATCH-FIX-UPSTREAM libraries/Cabal: Add support for the 64-bit RISC-V architecture (d89526f98)
+Patch101:       cabal-riscv64.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
-Patch300:       sphinx7.patch
+Patch300:       sphinx7.patch 
 BuildRequires:  binutils-devel
 BuildRequires:  gcc-PIE
 BuildRequires:  gcc-c++
-BuildRequires:  ghc-bootstrap >= 9.0
+BuildRequires:  ghc-bootstrap >= 9.2
 BuildRequires:  ghc-bootstrap-helpers >= 1.3
 BuildRequires:  ghc-rpm-macros-extra
 BuildRequires:  glibc-devel
@@ -110,7 +116,7 @@ BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libtool
-%ifarch s390x riscv64
+%ifarch %{ghc_llvm_archs}
 BuildRequires:  clang%{llvm_major}
 BuildRequires:  llvm%{llvm_major}
 BuildRequires:  llvm%{llvm_major}-devel
@@ -170,9 +176,9 @@ Haskell home page at <http://www.haskell.org/>.
 %package compiler
 Summary:        GHC compiler and utilities
 License:        BSD-3-Clause
-Requires:       %{name}-filesystem = %{version}-%{release}
 Requires:       gcc
 Requires:       ghc-base-devel = %{base_ver}-%{release}
+Requires:       %{name}-filesystem = %{version}-%{release}
 Provides:       hsc2hs-%{hsc2hs_ver}-%{release}
 %ifarch riscv64 s390x
 Requires:       clang%{llvm_major}
@@ -214,6 +220,7 @@ This package provides some common directories used for
 Haskell libraries documentation.
 %endif
 
+
 %if %{with manual}
 %package manual
 Summary:        GHC manual
@@ -225,6 +232,7 @@ BuildArch:      noarch
 This package provides the User Guide and Haddock manual.
 %endif
 
+
 %global ghc_version_override %{version}
 %global ghc_pkg_c_deps ghc-compiler = %{ghc_version_override}-%{release}
 %global version %{ghc_version_override}
@@ -234,37 +242,37 @@ This package provides the User Guide and Haddock manual.
 %define libnuma_dep %{nil}
 %endif
 #!ForceMultiversion
-%ghc_lib_subpackage -d Cabal-3.8.1.0
-%ghc_lib_subpackage -d Cabal-syntax-3.8.1.0
-%ghc_lib_subpackage -d array-0.5.4.0
+%ghc_lib_subpackage -d Cabal-3.10.1.0
+%ghc_lib_subpackage -d Cabal-syntax-3.10.1.0
+%ghc_lib_subpackage -d array-0.5.5.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-%{base_ver}
 %ghc_lib_subpackage -d binary-0.8.9.1
-%ghc_lib_subpackage -d bytestring-0.11.5.1
+%ghc_lib_subpackage -d bytestring-0.11.5.2
 %ghc_lib_subpackage -d containers-0.6.7
-%ghc_lib_subpackage -d deepseq-1.4.8.0
-%ghc_lib_subpackage -d directory-1.3.7.1
-%ghc_lib_subpackage -d exceptions-0.10.5
-%ghc_lib_subpackage -d filepath-1.4.2.2
+%ghc_lib_subpackage -d deepseq-1.4.8.1
+%ghc_lib_subpackage -d directory-1.3.8.1
+%ghc_lib_subpackage -d exceptions-0.10.7
+%ghc_lib_subpackage -d filepath-1.4.100.4
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghc-boot-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-th-%{ghc_version_override}
-%ghc_lib_subpackage -d -x ghc-compact-0.1.0.0
+%ghc_lib_subpackage -d -x ghc-compact-%{ghc_compact_ver}
 %ghc_lib_subpackage -d -x ghc-heap-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
-%ghc_lib_subpackage -d haskeline-0.8.2
-%ghc_lib_subpackage -d -x hpc-0.6.1.0
+%ghc_lib_subpackage -d haskeline-0.8.2.1
+%ghc_lib_subpackage -d -x hpc-%{hpc_ver}
 %ghc_lib_subpackage -d -x libiserv-%{ghc_version_override}
-%ghc_lib_subpackage -d mtl-2.2.2
+%ghc_lib_subpackage -d mtl-2.3.1
 %ghc_lib_subpackage -d parsec-3.1.16.1
 %ghc_lib_subpackage -d pretty-1.1.3.6
 %ghc_lib_subpackage -d process-1.6.17.0
 %ghc_lib_subpackage -d stm-2.5.1.0
-%ghc_lib_subpackage -d template-haskell-2.19.0.0
-%ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.5
+%ghc_lib_subpackage -d template-haskell-2.20.0.0
+%ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.6
 %ghc_lib_subpackage -d text-2.0.2
 %ghc_lib_subpackage -d time-1.12.2
-%ghc_lib_subpackage -d transformers-0.5.6.2
-%ghc_lib_subpackage -d unix-2.7.3
+%ghc_lib_subpackage -d transformers-0.6.1.0
+%ghc_lib_subpackage -d unix-2.8.1.0
 %ghc_lib_subpackage -d xhtml-3000.2.2.1
 
 %global version %{ghc_version_override}
@@ -295,13 +303,13 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %setup -q
 %patch1 -p1
 %patch2 -p1
-%patch7 -p1
-%patch8 -p1
-%ifarch ppc64 s390 s390x
+%ifarch s390x
 %patch3 -p1
 %endif
 %patch35 -p1
-%ifarch ppc64 ppc64le s390x riscv64
+%patch100 -p1
+%patch101 -p1
+%ifarch ppc64le s390x riscv64
 %patch200 -p1
 %endif
 %patch300 -p1
@@ -309,8 +317,9 @@ Installing this package causes %{name}-*-prof packages corresponding to
 rm libffi-tarballs/libffi-*.tar.gz
 
 %build
-cp %{SOURCE3} ./
-hadrian/bootstrap/bootstrap.py --bootstrap-sources 9_2_3-bootstrap-sources.tar.gz
+cp %{SOURCE4} ./
+hadrian/bootstrap/bootstrap.py --bootstrap-sources 9_4_4-bootstrap-sources.tar.gz
+
 %global hadrian _build/bin/hadrian
 
 %ghc_set_gcc_flags
@@ -343,7 +352,7 @@ python3 boot.source --hadrian
 %define hadrian_docs %{!?with_haddock:--docs=no-haddocks} %{!?with_manual:--docs=no-sphinx}%{?with_manual:--docs=no-sphinx-pdfs --docs=no-sphinx-man}
 
 %if 0%{?suse_version} >= 1500
-%ifarch %{unregisterised_archs} riscv64
+%ifarch %{unregisterised_archs}
 %if 0%{?qemu_user_space_build}
 %limit_build -m 15000
 %else
@@ -357,6 +366,7 @@ python3 boot.source --hadrian
 %{hadrian} -j1 --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:perf%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} binary-dist-dir
 %endif
 
+
 %install
 
 (
@@ -366,6 +376,7 @@ make install
 )
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{ghclibplatform}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}.conf
+
 # avoid 'E: binary-or-shlib-defines-rpath'
 for i in $(find %{buildroot} -type f -executable -exec sh -c "file {} | grep -q 'dynamically linked'" \; -print); do
   chrpath -d $i
@@ -398,7 +409,7 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 %ghc_gen_filelists libiserv %{ghc_version_override}
 
 %ghc_gen_filelists ghc-bignum 1.3
-%ghc_gen_filelists ghc-prim 0.9.1
+%ghc_gen_filelists ghc-prim 0.10.0
 %ghc_gen_filelists integer-gmp 1.1
 %ghc_gen_filelists rts 1.0.2
 
@@ -407,11 +418,11 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 %ghc_merge_filelist integer-gmp base
 %ghc_merge_filelist rts base
 
+# add rts libs
 for i in %{buildroot}%{ghclibplatform}/libHSrts*ghc%{ghc_version}.so; do
   echo $i >> %{name}-base.files
 done
 echo "%{_sysconfdir}/ld.so.conf.d/%{name}.conf" >> %{name}-base.files
-
 if [ -f %{buildroot}%{ghcliblib}/package.conf.d/system-cxx-std-lib-1.0.conf ]; then
 ls -d %{buildroot}%{ghcliblib}/package.conf.d/system-cxx-std-lib-1.0.conf >> %{name}-base-devel.files
 fi
@@ -494,7 +505,7 @@ $GHC --info
 %license LICENSE
 %dir %{ghcliblib}
 %dir %{ghclibdir}
-%dir %{ghcliblib}/%{ghcplatform}
+%dir %{ghcliblib}/%{ghcplatform} 
 
 %files compiler
 %license LICENSE
@@ -572,7 +583,6 @@ $GHC --info
 %if %{with manual} && %{without hadrian}
 %{_mandir}/man1/ghc.1%{?ext_man}
 %endif
-
 
 %files devel
 

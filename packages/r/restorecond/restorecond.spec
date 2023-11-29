@@ -38,7 +38,7 @@ Daemon that watches for file creation and then sets the default SELinux file con
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 export CFLAGS="%optflags"

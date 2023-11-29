@@ -376,4 +376,41 @@
     <comment></comment>
     <requestid>1081860</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4b289bc94a1a7acd31c8d39580ac0c1c</srcmd5>
+    <version>10.1.0</version>
+    <time>1701206293</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.1.0:
+  * Add more tests for `zip_broadcast()`
+  * Added takewhile_inclusive
+  * Speed up `zip_broadcast()` by pre-filling the scalar elements
+  * Added outer_product.
+  * Simplify `zip_broadcast`
+  * Simplify `_zip_equal`
+  * fix consume() type annotation
+  * Update recipes.iter_index to match CPython PR 102360
+  * fixup - add missing commas to the readme function table
+  * fixup remove 3.6 from tox
+  * seekable: Add relative_seek
+  * Optimize _chunked_even_finite()
+  * Indexing of combinations with replacement
+  * Add notes for transposing empty inputs
+  * Add the polynomial_eval recipe
+  * Add nth_combination_with_replacement
+  * Add sum_of_squares, sync with itertools
+  * Issue #707: fix ``iterate()`` to enable ``func`` to raise
+    StopIteration + 3 unittests
+  * Update polynomial_from roots and convolve
+  * Issue #677: Improve `partition`
+  * Issue #713: Fix `partial_product` (also simplify and clean
+    up)
+  * Issue #711: Optimize `pairwise`
+  * Issue #715: Simplify/optimize `partial_product`
+  * Issue #717: Improve `duplicates_justseen`
+  * Fix unique_in_window to match described behavior
+  * Add polynomial_derivative recipe
+  * Update recipes with CPython PRs: 105403 and 106371</comment>
+    <requestid>1129075</requestid>
+  </revision>
 </revisionlist>

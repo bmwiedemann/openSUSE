@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1081940</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ba69107a94bdcb7008920a14c3b0e09c</srcmd5>
+    <version>0.2.6</version>
+    <time>1700772155</time>
+    <user>anag+factory</user>
+    <comment>- Add 31-fix-erroneous-IPA-you-yong.patch (gh#tsroten/dragonmapper#31)
+- Skip failing tests (gh#tsroten/dragonmapper#35)
+</comment>
+    <requestid>1128360</requestid>
+  </revision>
 </revisionlist>

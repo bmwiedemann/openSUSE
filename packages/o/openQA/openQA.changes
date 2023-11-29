@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 26 02:14:23 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1700951825.872b397:
+  * Fix testrefs in lists
+  * Fix test short reference rendering
+  * Mention NetworkManager support
+  * Fix typo
+
+-------------------------------------------------------------------
+Thu Nov 23 17:16:08 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1700754150.dda8c55:
+  * Pass TMPDIR=1 to OBS Rsync authentication
+  * Dependency cron 2023-11-23
+  * Fix missing space in scheduling error message
+  * Set asset size on job creation
+
+-------------------------------------------------------------------
 Sun Nov 19 02:14:18 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1700240294.34068e3:

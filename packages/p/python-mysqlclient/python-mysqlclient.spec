@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-mysqlclient%{psuffix}
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Python interface to MySQL
 License:        GPL-2.0-or-later
@@ -90,7 +90,6 @@ cconf=abuild-myclient.cnf
 #
 # running the test
 #
-rm -r MySQLdb
 export TESTDB="$PWD/$cconf"
 %pytest_arch -k "not (test_LONG or test_TEXT)" || exit_code=1
 #

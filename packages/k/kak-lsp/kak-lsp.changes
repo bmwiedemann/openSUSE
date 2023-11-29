@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 22 09:23:30 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 15.0.0:
+  * Additions:
+    - Support multiple language servers per filetype (#17).
+    - The `kak-lsp.toml` format for specifying language servers has changed. The old format is still supported (#686).
+    - `lsp-goto-document-symbol` learned to show a preview of the jump target.
+    - Default configuration for PureScript and Scala.
+
+  * Fixes:
+    - A regression broke resolving completion item documentation when cycling through completion candidates, which has been fixed (#674).
+    - New command `lsp-declaration`, implementing `textDocument/declaration`.
+
+- cargo_config is now part of vendored tarball
+
+-------------------------------------------------------------------
 Tue Oct 31 12:02:28 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update _service file

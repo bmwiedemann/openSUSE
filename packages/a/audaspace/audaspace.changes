@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 26 13:47:56 UTC 2023 - draskmont@protonmail.com
+
+- Added upstream patch audaspace-animated-sequence.patch:
+  * Aditional functions required by Blender 4.0.
+  * Bugfix for reading an animated property with a negative 
+    time value
+  
+-------------------------------------------------------------------
 Sat Feb  4 17:22:00 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to release 1.4.0

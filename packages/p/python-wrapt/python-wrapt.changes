@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:31:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.0:
+  * Note that version 1.16.0 drops support for Python 2.7 and
+    3.5. Python version 3.6 or later is required.
+  * The ``patch_function_wrapper()`` decorator now accepts an
+    ``enabled`` argument, which can be a literal boolean value,
+    object that evaluates as boolean, or a callable object which
+    returns a boolean. In the case of a callable, determination
+    of whether the wrapper is invoked will be left until
+    the point of the call. In the other cases, the wrapper will
+    not be applied if the value evaluates false at the point of
+    applying the wrapper.
+  * The import hook loader and finder objects are now implemented
+    as transparent object proxies so they properly proxy pass
+    access to attributes/functions of the wrapped loader or finder.
+  * Code files in the implementation have been reorganized such
+    that the pure Python version of the ``ObjectProxy`` class
+    is directly available even if the C extension variant is
+    being used. This is to allow the pure Python variant to
+    be used in exceptional cases where the C extension variant is
+    not fully compatible with the pure Python implementation and the
+    behaviour of the pure Python variant is what is required.
+  * It was not possible to update the ``__class__`` attribute
+    through the transparent object proxy when relying on the C
+    implementation.
+
+-------------------------------------------------------------------
 Thu May  4 20:43:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.0:
@@ -61,7 +89,7 @@ Sat Nov  6 18:18:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.3:
   * Adds wheels for Python 3.10 on PyPi and where possible also now
-   generating binary wheels for ``musllinux``. 
+   generating binary wheels for ``musllinux``.
 
 -------------------------------------------------------------------
 Tue Oct 26 21:13:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -139,7 +167,7 @@ Mon Mar  9 16:25:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     class, if the class declared special methods to override the result for
     when the class instance was tested as a boolean so that it returned
     ``False`` all the time, the synchronized method would fail when called.
-  * When using an adapter function to change the signature of the decorated                    
+  * When using an adapter function to change the signature of the decorated
     function, ``inspect.signature()`` was returning the wrong signature
     when an instance method was inspected by accessing the method via the
     class type.
@@ -164,7 +192,7 @@ Sun Jul  9 10:26:29 UTC 2017 - adrian@suse.de
 - update to version 1.10.10:
   * Added back missing description and categorisations when releasing
   to PyPi.
-  * Code for inspect.getargspec() when using Python 2.6 was missing 
+  * Code for inspect.getargspec() when using Python 2.6 was missing
   import of sys module.
 
 -------------------------------------------------------------------

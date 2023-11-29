@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 21 12:20:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure max_link_jobs and max_compile_jobs have valid values even
+  when %{jobs} is not defined (like when building outside of OBS).
+
+-------------------------------------------------------------------
 Thu Nov 16 15:47:38 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.42.2 (boo#1217210):

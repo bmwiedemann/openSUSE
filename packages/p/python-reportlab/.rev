@@ -411,4 +411,41 @@
     <comment></comment>
     <requestid>1115632</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>29cc5b401d6ceaaf248dfc2c85a7900b</srcmd5>
+    <version>4.0.7</version>
+    <time>1701206325</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.7:
+  * allow testutils.makeSuiteForClasses to specify a prefix for
+    test method names
+  * SpiderChart can have direct draw flowable labels
+  * fix and improve tests for python -mreportlab.lib.rl_accel
+  * fix barchart 3D stacked case &amp; fix barchart valueAxis
+    reverseDirection behaviour.
+  * fix importlib usage in reportlab init, reported by Frank
+    Epperlein and others
+  * add value axes extraMinMaxValues as aid to parallel axes
+  * add styles str2alignment maps
+    left/right/center/centre/justify etc
+  * fix validators.isSubclassOf
+  * test ddfStyle as instance first in textlabels.py
+  * allow Pie Doughnut classes to control label class
+- drop importlib.patch (upstream)
+
+- pick the primary interpreter for doc generation even if it is not &quot;python3&quot;
+  * minor cosmetics in renderPM C extension and add fontSize setattr
+  * refactor transformation math and text2Path functionality
+  * allow Drawing.outDir to be a callable
+  * fix relative links within pdf broken
+    * Bug fix release to make really simple paras work OK
+    within PDF files. The &lt;textField&gt; tag has many more attributes
+    the `underlineProportion` attribute of ParagraphStyles.
+    incomplete ranges of rows to be repeated.
+    their split children when split
+    to be set
+    negative availableWidth
+  * ReportLab 3.0 now supports Python 2.7, 3.3 and higher.</comment>
+    <requestid>1129212</requestid>
+  </revision>
 </revisionlist>

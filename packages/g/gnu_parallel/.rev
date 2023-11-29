@@ -743,4 +743,19 @@
     <comment>- Update to release 20231022</comment>
     <requestid>1121728</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>50f313c83a79afa5259b0718cab1f4d2</srcmd5>
+    <version>20231122</version>
+    <time>1701121489</time>
+    <user>anag+factory</user>
+    <comment>- update to 20231122:
+  * -a file1 -a +file2 will link file2 to file1 similar to ::::+
+    --bar shows total time when all jobs are done.
+
+  * Bug fixes and man page updates.
+  * You can use unit prefixes (k, m, g, etc) with -n -N -L.
+  * parallel: Bugfix {0%}/{0#}. Added warning_once().
+  * --results now also saves a file called 'seq' containing the (forwarded request 1129168 from dirkmueller)</comment>
+    <requestid>1129202</requestid>
+  </revision>
 </revisionlist>

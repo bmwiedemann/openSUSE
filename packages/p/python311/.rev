@@ -1174,4 +1174,12 @@ C API
       CVE-2023-41105).</comment>
     <requestid>1113067</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d94cb125c170ef9d46faf589366e7bca</srcmd5>
+    <version>3.11.6</version>
+    <time>1700771908</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1128112</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 22 03:23:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-read_file-not-readfp.patch:
+  * Use read_file(), not readfp() for configparser.
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Mon May  8 07:19:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

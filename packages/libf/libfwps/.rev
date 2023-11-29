@@ -67,4 +67,12 @@ Required to allow builds to complete.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1102994</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a3f59aa019e37734ff79e6adbb166aa</srcmd5>
+    <version>20231126</version>
+    <time>1701121510</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231126</comment>
+    <requestid>1129234</requestid>
+  </revision>
 </revisionlist>

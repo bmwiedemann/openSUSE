@@ -17,14 +17,14 @@
 #
 
 
-%define _version 3.3.27-1
+%define _version 3.3.31-2
 Name:           inxi
-Version:        3.3.27
+Version:        3.3.31
 Release:        0
 Summary:        A system information script
 License:        GPL-3.0-or-later
-URL:            https://github.com/smxi/inxi
-Source:         https://github.com/smxi/inxi/archive/%{_version}.tar.gz#/%{_version}.tar.gz
+URL:            https://codeberg.org/smxi/inxi
+Source:         https://codeberg.org/smxi/inxi/archive/%{_version}.tar.gz#/%{_version}.tar.gz
 Requires:       pciutils
 Requires:       procps
 Requires:       util-linux
@@ -55,7 +55,7 @@ infobash. The primary purpose of inxi is for support, and sys admin
 use. inxi is used widely for forum and IRC support.
 
 %prep
-%autosetup -n %{name}-%{_version}
+%autosetup -n %{name}
 sed -i '/^#!/s/env \(.*\)$/\1/' %{name}
 
 %build

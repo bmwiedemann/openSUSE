@@ -56,4 +56,15 @@
     <comment>- Update to release 2023.10.30</comment>
     <requestid>1121654</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72b5b1547df681e3007e14f31c1ad9c7</srcmd5>
+    <version>2023.11.20.00</version>
+    <time>1701023856</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.11.20.00:
+  * Automated release from TagIt
+
+  * no changelog available</comment>
+    <requestid>1128785</requestid>
+  </revision>
 </revisionlist>

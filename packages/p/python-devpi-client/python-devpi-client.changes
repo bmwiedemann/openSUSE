@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 25 13:49:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.2:
+  * Fix #992: Fix error added in 6.0.4 when old authentication
+    data from before 6.x exists.
+
+-------------------------------------------------------------------
 Tue Oct 17 03:16:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.0.1:
@@ -41,7 +48,7 @@ Fri Jun  9 07:34:26 UTC 2023 - ecsos <ecsos@opensuse.org>
 Wed Apr 26 02:20:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch switch-to-build-module.patch:
-  - Drop {Build,}Requires on pep517. 
+  - Drop {Build,}Requires on pep517.
 
 -------------------------------------------------------------------
 Wed Apr 19 09:33:04 UTC 2023 - Dirk Müller <dmueller@suse.com>

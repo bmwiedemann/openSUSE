@@ -281,4 +281,15 @@
 Changelog to 2.20</comment>
     <requestid>1125877</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>e9193d595571c4a94b4b0e1e7efaa419</srcmd5>
+    <version>3.0</version>
+    <time>1700772157</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1128350 from dimstar
+
+- Add python-setuptools Requires: Version 3.0 has been ported to
+    use setuptools.</comment>
+    <requestid>1128371</requestid>
+  </revision>
 </revisionlist>

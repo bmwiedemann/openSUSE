@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Nov 22 03:20:54 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to upstream version 3.25.6
+  * Changed
+    + reformat javaconcept take 2 (PR #4167 by @JimmyGan437)
+    + Using JAXP on XMLPrinter implementation (PR #4166 by
+      @lcbarcellos)
+    + replace deprecated methond calls to their replacements (PR
+      #4157 by @JimmyGan437)
+    + feat(#4075): Improve the validation error messages (PR #4116
+      by @volodya-lombrozo)
+  * Fixed
+    + Fix: issue #2751 new HashSet()" != "new HashSet<>() (PR #4183
+      by @lcbarcellos)
+    + Fixes #2625 Add messages to thrown exceptions (PR #4177 by
+      @oannhpham)
+    + Fix: issue 4163 Calling
+      MethodDeclaration.getDeclarationAsString leads to
+      MethodDelaration.getComment returning no comment (PR #4165 by
+      @jlerbsc)
+    + Fix: issue 3673 isAssignableBy method StackOverflowError (PR
+      #4156 by @jlerbsc)
+    + fix: issue 3184 Unable to get the resolved type of class
+      ResolvedReferenceType from T (PR #4147 by @jlerbsc)
+    + Fix: issue #3269 Test resources containing included
+      interfaces do not compile (PR #4139 by @jlerbsc)
+    + CalculateResolvedType Type error (PR #4138 by @jlerbsc)
+    + Fix: issue #4036 LeastUpperBoundLogic.lub returns null when
+      matches ConditionalExpr (PR #4137 by @jlerbsc)
+    + Fix: issue #2484 SymbolResolver on MethodCallExpr fails if
+      method parameter is of kind Class<? extends y> (PR #4136 by
+      @jlerbsc)
+  * Developer Changes
+    + chore(deps): bump com.google.guava:guava from 32.1.2-jre to
+      32.1.3-jre (PR #4154 by @dependabot[bot])
+    + chore(deps): update actions/checkout action to v4 (PR #4141
+      by @renovate[bot])
+
+-------------------------------------------------------------------
 Thu Oct 26 04:44:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid incompatibilities in jdk 21 by building with release 8

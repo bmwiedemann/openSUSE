@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Sat Nov 25 23:25:00 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 1.7.5+wayland2+git.1697052256.5cd1e3c:
+  * Pass the xkb `group` (a.k.a. `layout`) to `nk_bindings`
+  * [Doc] Fix github issue templates
+  * [CI] Better test xcb and wayland-only builds
+  * Doc: Clarify issue template and CONTRIBUTING
+  * Wayland: fix wayland-only mode again
+  * [View|Textbox] cleanups to drawing code
+  * Clip text with extents rectangle
+  * [Rofi] Expand cache-dir
+  * Fix typos in dmenu docs (#1891)
+  * Support single quotes for strings as in CSS
+  * [Theme] Fix missing doxygen documentation
+  * [Theme] Fix opening abs path if no/wrong extension (backward comp.)
+  * [rofi-theme] fix typo
+  * [Theme] Try to fix importing of theme.
+  * script: Let script handle empty custom input
+  * widget_draw: clean useless calls in corner drawing
+  * Fix border segments stitch
+  * Fix mm type in description
+  * Remaining modi words in the code
+  * Better descriptions for sort options group
+  * update man pages without scripts
+  * [Lexer] Print some more debug info on error.
+  * [Script] Set type on Mode object.
+  * [window] Quick test of code scanning.
+  * Add CodeQL workflow (#1863)
+  * Remove unused variable.
+  * [ROFI] -e '-' reads from stdin
+  * [ConfigParser] Don't pass commandline options with very long args.
+  * [Build] Fix autotools build system.
+  * [Doc] Fix some missing/wrong doxygen headers.
+  * Print window manager in -help output
+  * Merging in the Recursive file browser.
+  * Add wezterm to rofi-sensible-terminal (#1838)
+  * [DRun] Add option to scan desktop directory for desktop files.
+  * gitmodules: Update libnkutils
+  * [IconFetcher] Fix small memory leak.
+  * Small memory leaks fixed and other cleanups.
+  * [MKDocs] Move logo to top.
+  * [MKDocs] Add logo
+  * [DMenu] Fix row initial tab if non-first column is shown first.
+  * [Doc] Update theme manpage with remark-lint hints.
+  * [Doc] More small markdown fixes.
+  * [DOC] Update rofi-script update with remark-lint remarks.
+  * Remove unneeded test and extra enforcement of 0 terminated buffer
+  * [Doc] Update rofi.1.markdown with markdown fixes.
+  * [DOC] update readme.md with remark-lint updates..
+  * [DOC] Update INSTALL,md with remark-lint fixes.
+  * [DOC] Add some remark markdown fixes.
+  * Fix to pointless or's.
+  * [UnitTest] Add more tests for environment parsing.
+  * [Doc] Mention location of scripts in manpage.
+  * Re-indent the code using clang-format
+  * Fix typo in template.
+  * Update issue template to include checkbox for version.
+  * [Doc] Re-generate manpage
+  * docs: element children theming (#1818)
+  * Add support for adding textbox widgets to listview elements (#1792)
+  * [Textbox] cairo_save/restore does not store path.
+  * More Unicode normalization with `-normalize-match` (#1813)
+  * #1802: Calc broken fix (#1803)
+  * [Dmenu] Small fix that disabled async mode when multi-select is enabled.
+  * [View] Fix wrong bitmask checking. (& not |)
+  * [rofi-theme-selector] prepend newline before specifying new theme (#1791)
+  * [MKDocs] Try to fix link.
+  * [MKDocs] Add downloads to side menu
+  * [MKDocs] Add a download page.
+  * [Script] Strip pango markup when matching rows (#1795)
+  * [Doc] theme, spelling fix and more textual tweaks.
+  * [Doc] More tweaks to get the formulation right.
+  * [Doc] themes manpage, small textual improvement.
+  * [Doc] Try to fix some markdown, themes.
+  * [Doc] Try to clarify the children situation for the listview widget.
+  * [EntryHistory] Disable entry history when dmenu password is set.
+  * I785 (#1789)
+  * [doc] Add conflicting constraint section to manpage.
+  * [mkdoc] add link to user scripts
+  * [Textbox] Replace 'space' with a space
+  * draw text after cursor (#1777)
+  * [Doc] Small tweak to markdown.
+  * [Example] Small change in escaping for caday.
+  * Update copyright dates.
+  * [Doc] Add manpage documentation for pango font string.
+  * [MKDocs] Add dynamic theme guide.
+  * [FileBrowser] Allow command to be overwritten
+  * [theme] Small theme tweak.
+  * [Theme] Add NO_IMAGE mode to theme.
+  * [Themes] add fullscreen theme with preview part.
+  * [window] When no window title set, handle this more gracefully
+  * [DMenu|Script] Add per row urgent/active option.
+  * sed & realpath workaround for BSD and Darwin OS
+  * [filebrowser] Add option to return 1 on cancel.
+  * [Theme] Small tweak to fancy2 theme
+  * update issue template
+  * update issue template
+  * update issue template
+  * update issue template with check
+  * [MKDocs] Link to rasi files in theme page.
+  * [Themes] Add fancy2 theme.
+  * [Themes] Add material theme
+  * Fix header theme
+  * [Helper] Quick fix for wrong dereference.
+  * MKDoc website (#1772)
+  * [themes] don't use screenshot transparency in shipped themes
+  * [IconFetcher] Fix for api change
+  * [Theme] support rasinc for theme include files.
+  * [listview] Don't calculate infinite rows on empty height.
+  * [CI] Maintenance. (#1767)
+  * [Theme] Move some definitions header around for plugin.
+  * [Textbox] Cursor goes over, not under. allow cursor outline.
+  * [Textbox] Add text-outline to style
+  * [Doc] Clarify documentation on `require-input` further.
+  * [Doc] Clarify that `require-input` only hides it.
+  * make cursor more customizable by adding cursor-width and cursor-color (#1753)
+  * [XIM] Fix an unitialized value problem.
+  * [Doc] Add example run command with cgroup support (#1752)
+  * [Build] Fix test building in makefile.
+  * [Doc] Add documentation for new functions.
+  * [Doc] Fix some missing docu.
+  * [DMenu] Add -ellipsize-mode option.
+  * Move config.h
+  * Move doxy-coverage to davatorium version
+  * [listview] Set ellipsize mode on creation of textbox
+  * Disable imdkit by default
+  * Build documentation (#1744)
+  * [Build] Use built-in lto option.
+  * [Window] Fix reloading windowcd from xserver request
+  * [Build]  Add option to build with lto to meson.
+  * [Build] Add option to disable imdkit at compile time.
+  * [Doc] Update support links.
+  * input method (#1735)
+  * [Window] Make sure their is a trailing 0 on the workspace strings.
+  * [FileBrowser] Bind kb-delete-entry to toggle show-hidden.
+  * [Textbox] Add a 'get_cursor_x_pos' function.
+  * [man] re-gen manpage.
+  * [DOC] Add parsing row options to dmenu manpage (#1734)
+  * [Build] Fix icon install path for makefile.
+  * [Window] Small fixes to prefer-icon-theme option
+  * [Window] Add -window-prefer-icon-theme option.
+  * [drun] Only pass path on launch, if one is set
+  * The mode is filebrowser (not file-browser) (#1723)
+  * [DOC] Rerun update-manpages.
+  * [filebrowser] Add an option to show hidden files. (#1716)
+  * gitmodules: fix submodule again.
+  * [Doc] Update rofi-keys manpage with unset section
+
+-------------------------------------------------------------------
+Sat Nov 25 23:22:08 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove
+  Use-xdg-terminal-instead-of-the-proprietary-solution.patch, it
+  is evil (gh#davatorium/rofi#355).
+
+-------------------------------------------------------------------
 Mon Jul 24 12:26:52 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 1.7.5+wayland2+git.1690115482.ff2338c:

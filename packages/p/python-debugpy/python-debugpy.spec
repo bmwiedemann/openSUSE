@@ -115,6 +115,8 @@ rm %{buildroot}%{$python_sitearch}/debugpy/_vendored/pydevd/_*/*.{c,h,pxd,pyx}
 %if %{with test}
 %check
 export DEBUGPY_TEST=1
+export DEBUGPY_PROCESS_EXIT_TIMEOUT=30
+export DEBUGPY_PROCESS_SPAWN_TIMEOUT=90
 # extra flags are not added
 donttest="test_custom_python_args"
 # python 3.11 failures

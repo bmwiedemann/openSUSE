@@ -1163,4 +1163,41 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment></comment>
     <requestid>1114908</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>1c3fdf3e7f5cad7d18b4165b26438746</srcmd5>
+    <version>2.0.23</version>
+    <time>1701206292</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.23:
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.23
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.22
+
+- use generic Cython &gt;= 3 buildrequires
+  https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.19
+  * see
+    update/delete statements.
+    producing the wrong ON clause for the joinedload.
+    is common when using ORM Declarative mixins. References: #9773
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.13
+  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.46
+  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.45
+  Bugfixes, see
+  * https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.28
+  * see https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.27
+    constraints as well table /view detection.
+    Oracle, PostgreSQL, and MySQL.
+  * bugfixes for various engines, see
+    stringify correctly. Pull request courtesy Andrzej Bartosiński.
+    the path registry is compared to a path registry in all cases;
+      invalid configuration, would fail to raise if the
+- add upstream fix_test_reflection.patch to fix tests with new sqlite
+    + [orm] [bug] Fixed regression in 1.2.7 caused by #4228, which
+      callable passed to a Session was assumed to be a subclass of
+      Query with class method availability, as opposed to an
+      arbitrary callable. In particular, the dogpile caching example
+      illustrates query_cls as a function and not a Query subclass.
+    + [orm] [bug] Fixed a long-standing regression that occurred in
+      version 1.0, which prevented the use of a custom MapperOption</comment>
+    <requestid>1129073</requestid>
+  </revision>
 </revisionlist>

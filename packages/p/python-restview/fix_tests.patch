@@ -1,0 +1,108 @@
+From 6a1d6b44ee400431d75ed2326bd0b4f35d4727fa Mon Sep 17 00:00:00 2001
+From: Marius Gedminas <marius@gedmin.as>
+Date: Mon, 21 Aug 2023 13:11:43 +0300
+Subject: [PATCH] Fix tests
+
+Not sure why they broke (new docutils release on PyPI)?  Doctests were a
+bad idea.
+---
+ src/restview/tests.py | 58 +++++++++----------------------------------
+ 1 file changed, 12 insertions(+), 46 deletions(-)
+
+Index: restview-3.0.1/src/restview/tests.py
+===================================================================
+--- restview-3.0.1.orig/src/restview/tests.py
++++ restview-3.0.1/src/restview/tests.py
+@@ -540,7 +540,7 @@ def doctest_RestViewer_rest_to_html():
+         ... This is an inline literal: ``README.txt``.
+         ... ''', settings={'cloak_email_addresses': True}).strip())
+         ... # doctest: +ELLIPSIS,+REPORT_NDIFF
+-        <?xml version="1.0" encoding="utf-8" ?>
++        <?xml version="1.0" encoding="utf-8"...?>
+         <!DOCTYPE html...>
+         <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+         <head>
+@@ -581,34 +581,12 @@ def doctest_RestViewer_rest_to_html():
+ def doctest_RestViewer_rest_to_html_css_url():
+     """Test for RestViewer.rest_to_html
+ 
+-    XXX: this shows pygments styles inlined *after* the external css, which
+-    means it's hard to override them!
+-
+         >>> viewer = RestViewer('.')
+         >>> viewer.stylesheets = 'http://example.com/my.css'
+-        >>> print(viewer.rest_to_html(b'''
+-        ... Some text
+-        ... ''').strip())
+-        ... # doctest: +ELLIPSIS,+REPORT_NDIFF
+-        <?xml version="1.0" encoding="utf-8" ?>
+-        <!DOCTYPE html...>
+-        ...
+-        <title>...</title>
++        >>> html = viewer.rest_to_html(b'Some text')
++        >>> grep('stylesheet', html)
+         <link rel="stylesheet" href="http://example.com/my.css" type="text/css" />
+-        <style type="text/css">
+-        ...
+-        </style>
+-        </head>
+-        <body>
+-        <main>
+-        <BLANKLINE>
+-        <BLANKLINE>
+-        <p>Some text</p>
+-        </main>
+-        </body>
+-        </html>
+-
+-    """
++            """
+ 
+ 
+ def doctest_RestViewer_rest_to_html_strict_and_error_handling():
+@@ -714,29 +692,16 @@ def doctest_RestViewer_rest_to_html_pypi
+         >>> viewer = RestViewer('.')
+         >>> viewer.stylesheets = None
+         >>> viewer.pypi_strict = True
+-        >>> print(viewer.rest_to_html(b'''
++        >>> html = viewer.rest_to_html(b'''
+         ... Hello
+         ... -----
+         ...
+         ... `This is fine <http://www.example.com>`__.
+         ...
+-        ... ''').strip().replace("&quot;", '"'))
+-        ... # doctest: +ELLIPSIS,+REPORT_NDIFF
+-        <?xml version="1.0" encoding="utf-8" ?>
+-        <!DOCTYPE html...>
+-        ...
++        ... ''')
++        >>> grep('Hello', html)
+         <title>Hello</title>
+-        <style type="text/css">
+-        ...
+-        </head>
+-        <body>
+-        <main id="hello">
+         <h1 class="title">Hello</h1>
+-        <BLANKLINE>
+-        <p><a href="http://www.example.com" rel="nofollow">This is fine</a>.</p>
+-        </main>
+-        </body>
+-        </html>
+ 
+     """
+ 
+@@ -1022,6 +987,12 @@ class TestMain(unittest.TestCase):
+                       serve_called=True, browser_launched=True)
+ 
+ 
++def grep(needle, haystack):
++    for line in haystack.splitlines():
++        if needle in line:
++            print(line)
++
++
+ def test_suite():
+     return unittest.TestSuite([
+         unittest.defaultTestLoader.loadTestsFromName(__name__),

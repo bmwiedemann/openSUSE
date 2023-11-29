@@ -16,13 +16,11 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-elasticsearch
 # DO NOT UPDATE until the compatible version of
-# python-elasticsearch-dsl is available (i.e., the same major
-# version ... currently we are waiting on 8.* release).
-Version:        8.10.0
+# python-elasticsearch-dsl is available
+Version:        8.11.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0

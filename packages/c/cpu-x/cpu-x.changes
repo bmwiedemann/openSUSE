@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 23 17:19:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.2
+  * Print vendor ID and device ID in Graphics tab for "Device ID"
+    label
+
+-------------------------------------------------------------------
 Sun Nov  5 10:29:24 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Use newer g++, as Leap's default compiler does not provide the

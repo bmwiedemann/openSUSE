@@ -27,10 +27,14 @@ How to apply this patch:
  create mode 100644 browser/components/shell/nsUnixShellService.h
 
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index 609b9a9d06178b42b0ba8509500a1b72d8bd3b88..05df0fc6ce279ab6161a3f93450e7296c95a371f 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -294,6 +294,13 @@ var gMainPane = {
+@@ -291,16 +291,23 @@ var gMainPane = {
+         }, backoffTimes[this._backoffIndex + 1 < backoffTimes.length ? this._backoffIndex++ : backoffTimes.length - 1]);
+       };
+ 
+       window.setTimeout(() => {
+         window.requestIdleCallback(pollForDefaultBrowser);
        }, backoffTimes[this._backoffIndex]);
      }
  
@@ -44,10 +48,20 @@ index 609b9a9d06178b42b0ba8509500a1b72d8bd3b88..05df0fc6ce279ab6161a3f93450e7296
      this.initBrowserContainers();
      this.buildContentProcessCountMenuList();
  
-@@ -1725,6 +1732,17 @@ var gMainPane = {
+     this.updateDefaultPerformanceSettingsPref();
+ 
+     let defaultPerformancePref = Preferences.get(
+       "browser.preferences.defaultPerformanceSettings.enabled"
+     );
+@@ -1744,16 +1751,27 @@ var gMainPane = {
+       this._backoffIndex = 0;
+ 
+       let shellSvc = getShellService();
+       if (!shellSvc) {
+         return;
        }
        try {
-         shellSvc.setDefaultBrowser(true, false);
+         shellSvc.setDefaultBrowser(false);
 +        if (kde_session == 1) {
 +          var shellObj = Components.classes["@mozilla.org/file/local;1"]
 +            .createInstance(Components.interfaces.nsILocalFile);
@@ -62,11 +76,20 @@ index 609b9a9d06178b42b0ba8509500a1b72d8bd3b88..05df0fc6ce279ab6161a3f93450e7296
        } catch (ex) {
          console.error(ex);
          return;
+       }
+ 
+       let isDefault = shellSvc.isDefaultBrowser(false, true);
+       let setDefaultPane = document.getElementById("setDefaultPane");
+       setDefaultPane.classList.toggle("is-default", isDefault);
 diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.build
-index eb88cb287dc3f04022b74b978666118bbd5fa6b2..95277533781a7224d108e3c45731a6d9a89ba1a0 100644
 --- a/browser/components/shell/moz.build
 +++ b/browser/components/shell/moz.build
-@@ -36,6 +36,8 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
+@@ -31,16 +31,18 @@ if CONFIG["MOZ_WIDGET_TOOLKIT"] == "coco
+     ]
+ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
+     XPIDL_SOURCES += [
+         "nsIGNOMEShellService.idl",
+     ]
  
      SOURCES += [
          "nsGNOMEShellService.cpp",
@@ -75,12 +98,16 @@ index eb88cb287dc3f04022b74b978666118bbd5fa6b2..95277533781a7224d108e3c45731a6d9
      ]
      if CONFIG["MOZ_ENABLE_DBUS"]:
          SOURCES += [
+             "nsGNOMEShellDBusHelper.cpp",
+             "nsGNOMEShellSearchProvider.cpp",
+         ]
+         include("/ipc/chromium/chromium-config.mozbuild")
+ 
 diff --git a/browser/components/shell/nsKDEShellService.cpp b/browser/components/shell/nsKDEShellService.cpp
 new file mode 100644
-index 0000000000000000000000000000000000000000..152a3aca87ea73477bc75c4e93c01e5a52dda102
 --- /dev/null
 +++ b/browser/components/shell/nsKDEShellService.cpp
-@@ -0,0 +1,109 @@
+@@ -0,0 +1,108 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -136,8 +163,7 @@ index 0000000000000000000000000000000000000000..152a3aca87ea73477bc75c4e93c01e5a
 +}
 +
 +NS_IMETHODIMP
-+nsKDEShellService::SetDefaultBrowser(bool aClaimAllTypes,
-+                                     bool aForAllUsers)
++nsKDEShellService::SetDefaultBrowser(bool aForAllUsers)
 +{
 +    nsCOMPtr<nsIMutableArray> command = do_CreateInstance( NS_ARRAY_CONTRACTID );
 +    if (!command)
@@ -151,7 +177,7 @@ index 0000000000000000000000000000000000000000..152a3aca87ea73477bc75c4e93c01e5a
 +    cmdstr->SetData("SETDEFAULTBROWSER"_ns);
 +    command->AppendElement( cmdstr );
 +
-+    paramstr->SetData( aClaimAllTypes ? "ALLTYPES"_ns : "NORMAL"_ns );
++    paramstr->SetData("ALLTYPES"_ns);
 +    command->AppendElement( paramstr );
 +
 +    return nsKDEUtils::command( command ) ? NS_OK : NS_ERROR_FAILURE;
@@ -192,7 +218,6 @@ index 0000000000000000000000000000000000000000..152a3aca87ea73477bc75c4e93c01e5a
 +
 diff --git a/browser/components/shell/nsKDEShellService.h b/browser/components/shell/nsKDEShellService.h
 new file mode 100644
-index 0000000000000000000000000000000000000000..8b0bb19164352453cfa453dd87c19263160b9ad8
 --- /dev/null
 +++ b/browser/components/shell/nsKDEShellService.h
 @@ -0,0 +1,32 @@
@@ -230,7 +255,6 @@ index 0000000000000000000000000000000000000000..8b0bb19164352453cfa453dd87c19263
 +#endif // nskdeshellservice_h____
 diff --git a/browser/components/shell/nsUnixShellService.cpp b/browser/components/shell/nsUnixShellService.cpp
 new file mode 100644
-index 0000000000000000000000000000000000000000..abf266ebdc52e136f495911da3454e69c770c6db
 --- /dev/null
 +++ b/browser/components/shell/nsUnixShellService.cpp
 @@ -0,0 +1,22 @@
@@ -258,7 +282,6 @@ index 0000000000000000000000000000000000000000..abf266ebdc52e136f495911da3454e69
 +}
 diff --git a/browser/components/shell/nsUnixShellService.h b/browser/components/shell/nsUnixShellService.h
 new file mode 100644
-index 0000000000000000000000000000000000000000..26b5dbac47dd9a8ec1fcb6c93575cca750692735
 --- /dev/null
 +++ b/browser/components/shell/nsUnixShellService.h
 @@ -0,0 +1,15 @@

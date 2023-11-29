@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 21 17:37:42 UTC 2023 - Michal Koutný <mkoutny@suse.com>
+
+- Update to 4f80263, release v1.6.2
+  * Update descriptor to match any python 3.x version
+  * Remove python2.x specific paths in the spec file after #33 got merged
+  * Update the github project location to github.com/SUSE/cpuset
+  * Remove Python 2 support
+  * cpuset.spec: Update source URL
+
+-------------------------------------------------------------------
+Wed Aug  2 12:27:18 UTC 2023 - Michal Koutný <mkoutny@suse.com>
+
+- Update to 394c8b0, release v1.6.1 
+  * Fix --syset typo (bsc#1210468)
+  * fix doc typo (bsc#1210468)
+- Remove cpuset-1.6-Fix_invalid_parentheses.patch: in upstream tarball
+
+-------------------------------------------------------------------
 Fri Nov 12 14:37:33 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
 
 - Add cpuset-1.6-Fix_invalid_parentheses.patch to fix 

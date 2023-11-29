@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 23 06:25:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.62.1:
+  * Bump fortio.org/scli from 1.13.0 to 1.13.1 (#863)
+
+-------------------------------------------------------------------
+Thu Nov 23 06:23:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.62.0:
+  * use new logger (#861)
+  * Bump docker/build-push-action from 5.0.0 to 5.1.0 (#859)
+
+-------------------------------------------------------------------
 Thu Nov 16 14:25:59 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.61.0:

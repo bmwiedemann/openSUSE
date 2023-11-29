@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov 25 20:05:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2023.3:
+  + Fixed:
+    - Add missing dependency
+    - Add missing test data to the source archive
+- Changes from version 2023.2:
+  + Added:
+    - Use packaging module to properly compare versions
+    - Add "implements" in class definition pseudocode
+    - Ignore the first class instance struct field
+    - Parse default-value attribute
+    - Test the gtk-doc sigil parsing
+    - Support admonitions in docblocks
+    - Add link to the extra content files location in the source
+      repository
+    - Search for GIR XML in $GI_GIR_PATH and /usr/share/gir-1.0
+    - Add fallback for missing "since"
+  + Changed:
+    - Redesign the search results
+    - Redesign the index for enumeration types
+  + Fixed:
+    - Match dependencies list in the index and sidebar
+    - Use KeyboardEvent.key to focus search input
+    - Build fixes for subproject use
+    - Remove display:flex from headings
+    - Split transfer notes based on direction
+    - Clarify signal flags
+    - Hide build section if empty
+    - Always explicitely use utf-8 when reading/writing files
+    - Use color-scheme: dark when in dark mode
+- Drop python3-tomli BuildRequires: No longer needed.
+- Add python3-packaging BuildRequires/Requires: New dependency.
+
+-------------------------------------------------------------------
 Tue Jan 10 13:13:36 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Drop python3-coverage and python3-green package sugestion as they

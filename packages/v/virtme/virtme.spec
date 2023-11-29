@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package virtme
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -16,22 +16,24 @@
 #
 
 
-%define name virtme
-%define version 0.1.2
-%define skip_python2 1
-
-Name:           %{name}
-Version:        %{version}
+%define pythons python3
+%define skip_python39 1
+%define skip_python310 1
+%{?sle15_python_module_pythons}
+Name:           virtme
+Version:        1.17
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-URL:            https://github.com/arighi/virtme
-Source0:        https://github.com/arighi/virtme/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/arighi/virtme-ng
+Source0:        https://github.com/arighi/virtme-ng/archive/v%{version}.tar.gz#/%{name}-ng-%{version}.tar.gz
+BuildRequires:  %{python_module argcomplete}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       busybox-static
 Requires:       qemu
+Requires:       virtiofsd
 BuildArch:      noarch
 
 %description
@@ -39,26 +41,28 @@ Virtme is a set of tools to run a virtualized Linux kernel that
 uses the host Linux distribution or a rootfs instead of a whole
 disk image.
 
-Right now it is not really configurable enough for being useful as a
-sort of sandbox.
-
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -n %{name}-ng-%{version} -p1
 
 %build
-%py3_build
+%python_build
 # remove pycache directories
 find . -name __pycache__ -type d -exec rm -fr {} +
 
 %install
-export PYTHONDONTWRITEBYTECODE=1 %py3_install
+export PYTHONDONTWRITEBYTECODE=1 %python_install
 
 %files
 %{_bindir}/virtme-configkernel
+%{_bindir}/virtme-ng
 %{_bindir}/virtme-mkinitramfs
 %{_bindir}/virtme-prep-kdir-mods
 %{_bindir}/virtme-run
+%{_bindir}/vng
 %{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-%{version}-py*.egg-info
+%{python_sitelib}/%{name}_ng
+%{python_sitelib}/%{name}_ng-%{version}-py*.egg-info
+%{_datadir}/bash-completion
+%config(noreplace) %{_sysconfdir}/%{name}-ng.conf
 
 %changelog

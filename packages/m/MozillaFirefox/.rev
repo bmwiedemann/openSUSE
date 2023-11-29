@@ -6454,4 +6454,40 @@
     <comment></comment>
     <requestid>1124746</requestid>
   </revision>
+  <revision rev="413" vrev="1">
+    <srcmd5>887962f31b6dfdfb4d30b36ef53df21d</srcmd5>
+    <version>120.0</version>
+    <time>1701121327</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 120.0
+  https://www.mozilla.org/en-US/firefox/120.0/releasenotes
+  MFSA 2023-49 (bsc#1217230)
+  * CVE-2023-6204 (bmo#1841050)
+    Out-of-bound memory access in WebGL2 blitFramebuffer
+  * CVE-2023-6205 (bmo#1854076)
+    Use-after-free in MessagePort::Entangled
+  * CVE-2023-6206 (bmo#1857430)
+    Clickjacking permission prompts using the fullscreen
+    transition
+  * CVE-2023-6207 (bmo#1861344)
+    Use-after-free in ReadableByteStreamQueueEntry::Buffer
+  * CVE-2023-6208 (bmo#1855345)
+    Using Selection API would copy contents into X11 primary
+    selection.
+  * CVE-2023-6209 (bmo#1858570)
+    Incorrect parsing of relative URLs starting with &quot;///&quot;
+  * CVE-2023-6210 (bmo#1801501)
+    Mixed-content resources not blocked in a javascript: pop-up
+  * CVE-2023-6211 (bmo#1850200)
+    Clickjacking to load insecure pages in HTTPS-only mode
+  * CVE-2023-6212 (bmo#1658432, bmo#1820983, bmo#1829252,
+    bmo#1856072, bmo#1856091, bmo#1859030, bmo#1860943,
+    bmo#1862782)
+    Memory safety bugs fixed in Firefox 120, Firefox ESR 115.5,
+    and Thunderbird 115.5
+  * CVE-2023-6213 (bmo#1849265, bmo#1851118, bmo#1854911)
+    Memory safety bugs fixed in Firefox 120
+- rebased patches</comment>
+    <requestid>1129161</requestid>
+  </revision>
 </revisionlist>

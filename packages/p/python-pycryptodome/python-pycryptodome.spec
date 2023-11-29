@@ -16,18 +16,18 @@
 #
 
 
-%define oldpython python
 %define min_version %{lua:rpm.expand("%{version}"):gsub("^(%d+%.%d+).*", "%1")}
 %{?sle15_python_module_pythons}
 Name:           python-pycryptodome
-Version:        3.18.0
+Version:        3.19.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
 URL:            https://www.pycryptodome.org
 Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}.tar.gz#/pycryptodome-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-pycrypto = %{version}
@@ -37,10 +37,6 @@ Obsoletes:      python-pycrypto < %{version}
 # would be better, if libgmp* would provide gmp
 Suggests:       libgmp10
 Suggests:       python-cffi
-%endif
-%ifpython2
-Provides:       %{oldpython}-pycrypto = %{version}
-Obsoletes:      %{oldpython}-pycrypto < %{version}
 %endif
 %python_subpackages
 
@@ -85,11 +81,11 @@ Python. Only the pieces that are extremely critical to performance
 %build
 export LC_ALL=en_US.UTF-8
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

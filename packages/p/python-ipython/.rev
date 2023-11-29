@@ -1420,4 +1420,41 @@
 </comment>
     <requestid>1127169</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0f0d60a79ebb39ececd14cc1b1c5ffca</srcmd5>
+    <version>8.18.0</version>
+    <time>1701121358</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.18.0
+  * Small release of IPython that fixes a small number of
+    inconveniences.
+  * PR #14251 Fix a memory leak in qt event loop integration by
+    setting the Loop parent to None.
+  * PR #14252 Pickleshare was made an optional dependency in 8.17,
+    this leads to warnings in some installations when using modules
+    completions. The warning has been silenced.
+  * PR #14241 Update event loop code for compatibility with more
+    recent prompt_toolkit due to deprecations in Python 3.12.
+  * PR #14245 Fix doc example on Pygments styles
+  * PR #14238 Remove dependency on app_nope, this is actually only
+    a dependency of IPykernel.
+- Release 8.17, 8.17.1
+  * Medium-sized release of IPython that includes some cleanup
+    (backcall, python2 leftovers) and some refactoring improvements
+    (typing, pathlib) and a fix on completion.
+  * PR #14216 remove backcall dependency
+  * PR #14217 make pickleshare dependency optional
+  * PR #14185 support completion based on type annotations of calls
+  * Reverted in 8.17.1:PR #14190 remove support for python 2 in
+    lexers (reverted in  8.17.1 as it is imported by
+    qtconsole/spyder)
+  * Mamba and Micromamba magic: In addition to the conda command to
+    manage conda environment, mamba and micromamba can now be used
+    using the corresponding magic in IPython. Since these commands
+    are compatible with conda, they are following the same logic.
+    These two magic require to have the corresponding commands
+    available either in the conda environment or system wide. PR
+    #14191</comment>
+    <requestid>1128952</requestid>
+  </revision>
 </revisionlist>

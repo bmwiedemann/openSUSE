@@ -364,4 +364,28 @@
   * Finally, Xwayland now uses libbsd-overlay instead of libbsd.</comment>
     <requestid>1120261</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d052c4c42aca271ba3f73c53b4c90c41</srcmd5>
+    <version>23.2.2</version>
+    <time>1701121393</time>
+    <user>anag+factory</user>
+    <comment>- This release contains the following patches mentioned in previous
+  sle15 releases
+  * U_Xext-fix-invalid-event-type-mask-in-XTestSwapFakeInp.patch:
+    fixes regression introduced with security update for
+    CVE-2022-46340 (bsc#1205874)     
+  * U_bsc1216135-Xi-randr-fix-handling-of-PropModeAppend-Prepend.patch:
+    fix handling of PropModeAppend/Prepend ((CVE-2023-5367, ZDI-CAN-22153,
+    bsc#1216135)
+  * U_bsc1216261-0001-mi-fix-CloseScreen-initialization-order.patch,
+    U_bsc1216261-0002-fb-properly-wrap-unwrap-CloseScreen.patch:
+    Server Damage Object Use-After-Free Local Privilege Escalation
+    Vulnerability (CVE-2023-5574, ZDI-CAN-21213, bsc#1216261)
+  * U_bsc1216261-0003-dix-always-initialize-pScreen-CloseScreen.patch:
+    fixes a regresion, which can trigger a segfault in Xwayland on
+    exit, introduced by 
+    U_bsc1216261-0002-fb-properly-wrap-unwrap-CloseScreen.patch 
+    (CVE-2023-5574, ZDI-CAN-21213, bsc#1216261)</comment>
+    <requestid>1128531</requestid>
+  </revision>
 </revisionlist>

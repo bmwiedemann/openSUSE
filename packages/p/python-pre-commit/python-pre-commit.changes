@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:27:50 UTC 2023 - Matthias Bach <marix@marix.org> - 3.5.0
+
+- For Leap, build this on modern Python as 3.6 is no longer supported.
+- On Leap, use Lua 5.3 as luarocks is not packaged for Lua 5.4.
+- On Leap, disable Perl install test as that requires network for
+  CPAN initialisation.
+
+-------------------------------------------------------------------
 Wed Nov  1 10:32:51 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org> - 3.5.0
 
 - update to version 3.5.0

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Nov 26 00:54:44 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.7.3
+  * Fixed issue with crashing after a few plays with repeat
+    enabled.
+  * Fixed issue with crash after seeking to the end of songs a few
+    times.
+
+-------------------------------------------------------------------
+Thu Nov 23 00:48:18 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.7.2
+  * Introduced Nerd Font glyphs for things like pause, repeat, fast
+    forward and so on.
+  * More minor fixes.
+  * Fixed issues with the makefile.
+
+-------------------------------------------------------------------
+Mon Nov 20 18:32:23 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.7.1
+  * Fixes a few issues in 1.7.0
+
+-------------------------------------------------------------------
 Fri Nov 17 01:57:55 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package

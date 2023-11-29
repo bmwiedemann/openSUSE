@@ -1,6 +1,6 @@
-From 1aa8ce47108233b40930e34f79f11233e5aef958 Mon Sep 17 00:00:00 2001
+From c6a136e30370e2b94e6373b9c22f6ec3d0d9a738 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
-Date: Fri, 13 Oct 2023 16:31:30 +1100
+Date: Tue, 28 Nov 2023 22:54:03 +1100
 Subject: [PATCH] BUILD: SLE12: revert "btrfs: depend on kernel UAPI instead of
  libbtrfs"
 
@@ -30,14 +30,14 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  .../containerd/btrfs/{v2 => }/ioctl.go        |   0
  vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s   |  18 --
  vendor/golang.org/x/sys/cpu/byteorder.go      |  66 ----
- vendor/golang.org/x/sys/cpu/cpu.go            | 287 ------------------
- vendor/golang.org/x/sys/cpu/cpu_aix.go        |  34 ---
+ vendor/golang.org/x/sys/cpu/cpu.go            | 290 ------------------
+ vendor/golang.org/x/sys/cpu/cpu_aix.go        |  34 --
  vendor/golang.org/x/sys/cpu/cpu_arm.go        |  73 -----
  vendor/golang.org/x/sys/cpu/cpu_arm64.go      | 172 -----------
  vendor/golang.org/x/sys/cpu/cpu_arm64.s       |  32 --
  vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go   |  12 -
  vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go   |  22 --
- vendor/golang.org/x/sys/cpu/cpu_gc_x86.go     |  17 --
+ vendor/golang.org/x/sys/cpu/cpu_gc_x86.go     |  17 -
  .../golang.org/x/sys/cpu/cpu_gccgo_arm64.go   |  12 -
  .../golang.org/x/sys/cpu/cpu_gccgo_s390x.go   |  23 --
  vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c   |  39 ---
@@ -60,12 +60,12 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  .../golang.org/x/sys/cpu/cpu_other_mips64x.go |  13 -
  .../golang.org/x/sys/cpu/cpu_other_ppc64x.go  |  15 -
  .../golang.org/x/sys/cpu/cpu_other_riscv64.go |  12 -
- vendor/golang.org/x/sys/cpu/cpu_ppc64x.go     |  17 --
+ vendor/golang.org/x/sys/cpu/cpu_ppc64x.go     |  17 -
  vendor/golang.org/x/sys/cpu/cpu_riscv64.go    |  12 -
  vendor/golang.org/x/sys/cpu/cpu_s390x.go      | 172 -----------
  vendor/golang.org/x/sys/cpu/cpu_s390x.s       |  58 ----
  vendor/golang.org/x/sys/cpu/cpu_wasm.go       |  18 --
- vendor/golang.org/x/sys/cpu/cpu_x86.go        | 145 ---------
+ vendor/golang.org/x/sys/cpu/cpu_x86.go        | 152 ---------
  vendor/golang.org/x/sys/cpu/cpu_x86.s         |  28 --
  vendor/golang.org/x/sys/cpu/cpu_zos.go        |  10 -
  vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go  |  25 --
@@ -79,7 +79,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  .../golang.org/x/sys/cpu/syscall_aix_gccgo.go |  27 --
  .../x/sys/cpu/syscall_aix_ppc64_gc.go         |  36 ---
  vendor/modules.txt                            |   7 +-
- 65 files changed, 54 insertions(+), 2320 deletions(-)
+ 65 files changed, 54 insertions(+), 2330 deletions(-)
  rename vendor/github.com/containerd/btrfs/{v2 => }/.gitignore (100%)
  rename vendor/github.com/containerd/btrfs/{v2 => }/LICENSE (100%)
  rename vendor/github.com/containerd/btrfs/{v2 => }/Makefile (100%)
@@ -143,7 +143,7 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
 
 diff --git a/go.mod b/go.mod
-index ce0aa0c50543..6f5efd048f3a 100644
+index 9bafb7ba5944..532d2d63f104 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -9,7 +9,7 @@ require (
@@ -156,10 +156,10 @@ index ce0aa0c50543..6f5efd048f3a 100644
  	github.com/containerd/console v1.0.3
  	github.com/containerd/continuity v0.4.2
 diff --git a/go.sum b/go.sum
-index 2f50e5e54df7..51ac40303347 100644
+index 00dae8b4104a..0e90a8e8855c 100644
 --- a/go.sum
 +++ b/go.sum
-@@ -186,9 +186,8 @@ github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY
+@@ -187,9 +187,8 @@ github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY
  github.com/containerd/aufs v1.0.0/go.mod h1:kL5kd6KM5TzQjR79jljyi4olc1Vrx6XBlcyj3gNv2PU=
  github.com/containerd/btrfs v0.0.0-20201111183144-404b9149801e/go.mod h1:jg2QkJcsabfHugurUvvPhS3E08Oxiuh5W/g1ybB4e0E=
  github.com/containerd/btrfs v0.0.0-20210316141732-918d888fb676/go.mod h1:zMcX3qkXTAi9GI50+0HOeuV8LU2ryCE/V2vG/ZBiTss=
@@ -681,10 +681,10 @@ index 271055be0b1e..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu.go b/vendor/golang.org/x/sys/cpu/cpu.go
 deleted file mode 100644
-index 83f112c4c808..000000000000
+index 4756ad5f7951..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu.go
 +++ /dev/null
-@@ -1,287 +0,0 @@
+@@ -1,290 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -725,7 +725,7 @@ index 83f112c4c808..000000000000
 -	HasAVX512F          bool // Advanced vector extension 512 Foundation Instructions
 -	HasAVX512CD         bool // Advanced vector extension 512 Conflict Detection Instructions
 -	HasAVX512ER         bool // Advanced vector extension 512 Exponential and Reciprocal Instructions
--	HasAVX512PF         bool // Advanced vector extension 512 Prefetch Instructions Instructions
+-	HasAVX512PF         bool // Advanced vector extension 512 Prefetch Instructions
 -	HasAVX512VL         bool // Advanced vector extension 512 Vector Length Extensions
 -	HasAVX512BW         bool // Advanced vector extension 512 Byte and Word Instructions
 -	HasAVX512DQ         bool // Advanced vector extension 512 Doubleword and Quadword Instructions
@@ -741,6 +741,9 @@ index 83f112c4c808..000000000000
 -	HasAVX512VBMI2      bool // Advanced vector extension 512 Vector Byte Manipulation Instructions 2
 -	HasAVX512BITALG     bool // Advanced vector extension 512 Bit Algorithms
 -	HasAVX512BF16       bool // Advanced vector extension 512 BFloat16 Instructions
+-	HasAMXTile          bool // Advanced Matrix Extension Tile instructions
+-	HasAMXInt8          bool // Advanced Matrix Extension Int8 instructions
+-	HasAMXBF16          bool // Advanced Matrix Extension BFloat16 instructions
 -	HasBMI1             bool // Bit manipulation instruction set 1
 -	HasBMI2             bool // Bit manipulation instruction set 2
 -	HasCX16             bool // Compare and exchange 16 Bytes
@@ -2262,7 +2265,7 @@ index 4e8acd16583d..000000000000
 -}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go b/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
 deleted file mode 100644
-index bd6c128af9b9..000000000000
+index ff7da60eb8d7..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -2275,7 +2278,7 @@ index bd6c128af9b9..000000000000
 -
 -package cpu
 -
--const cacheLineSize = 32
+-const cacheLineSize = 64
 -
 -func initOptions() {}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_s390x.go
@@ -2546,10 +2549,10 @@ index 7747d888a692..000000000000
 -func archInit() {}
 diff --git a/vendor/golang.org/x/sys/cpu/cpu_x86.go b/vendor/golang.org/x/sys/cpu/cpu_x86.go
 deleted file mode 100644
-index f5aacfc825d5..000000000000
+index 2dcde8285d59..000000000000
 --- a/vendor/golang.org/x/sys/cpu/cpu_x86.go
 +++ /dev/null
-@@ -1,145 +0,0 @@
+@@ -1,152 +0,0 @@
 -// Copyright 2018 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
@@ -2589,6 +2592,9 @@ index f5aacfc825d5..000000000000
 -		{Name: "avx512vbmi2", Feature: &X86.HasAVX512VBMI2},
 -		{Name: "avx512bitalg", Feature: &X86.HasAVX512BITALG},
 -		{Name: "avx512bf16", Feature: &X86.HasAVX512BF16},
+-		{Name: "amxtile", Feature: &X86.HasAMXTile},
+-		{Name: "amxint8", Feature: &X86.HasAMXInt8},
+-		{Name: "amxbf16", Feature: &X86.HasAMXBF16},
 -		{Name: "bmi1", Feature: &X86.HasBMI1},
 -		{Name: "bmi2", Feature: &X86.HasBMI2},
 -		{Name: "cx16", Feature: &X86.HasCX16},
@@ -2690,6 +2696,10 @@ index f5aacfc825d5..000000000000
 -		eax71, _, _, _ := cpuid(7, 1)
 -		X86.HasAVX512BF16 = isSet(5, eax71)
 -	}
+-
+-	X86.HasAMXTile = isSet(24, edx7)
+-	X86.HasAMXInt8 = isSet(25, edx7)
+-	X86.HasAMXBF16 = isSet(22, edx7)
 -}
 -
 -func isSet(bitpos uint, value uint32) bool {
@@ -2812,7 +2822,7 @@ index 55db853efbec..000000000000
 -const IsBigEndian = false
 diff --git a/vendor/golang.org/x/sys/cpu/hwcap_linux.go b/vendor/golang.org/x/sys/cpu/hwcap_linux.go
 deleted file mode 100644
-index 1d9d91f3ed81..000000000000
+index 34e49f955a87..000000000000
 --- a/vendor/golang.org/x/sys/cpu/hwcap_linux.go
 +++ /dev/null
 @@ -1,71 +0,0 @@
@@ -2823,7 +2833,7 @@ index 1d9d91f3ed81..000000000000
 -package cpu
 -
 -import (
--	"io/ioutil"
+-	"os"
 -)
 -
 -const (
@@ -2857,7 +2867,7 @@ index 1d9d91f3ed81..000000000000
 -		return nil
 -	}
 -
--	buf, err := ioutil.ReadFile(procAuxv)
+-	buf, err := os.ReadFile(procAuxv)
 -	if err != nil {
 -		// e.g. on android /proc/self/auxv is not accessible, so silently
 -		// ignore the error and leave Initialized = false. On some
@@ -3119,7 +3129,7 @@ index 904be42ffdce..000000000000
 -	return
 -}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index a5e53860c22c..d5e56db76a48 100644
+index d38e3a52bf83..3a9043e2b3fd 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -88,9 +88,9 @@ github.com/container-orchestrated-devices/container-device-interface/specs-go
@@ -3135,14 +3145,14 @@ index a5e53860c22c..d5e56db76a48 100644
  # github.com/containerd/cgroups v1.1.0
  ## explicit; go 1.17
  github.com/containerd/cgroups/stats/v1
-@@ -530,7 +530,6 @@ golang.org/x/sync/errgroup
+@@ -529,7 +529,6 @@ golang.org/x/sync/errgroup
  golang.org/x/sync/semaphore
- # golang.org/x/sys v0.10.0
+ # golang.org/x/sys v0.13.0
  ## explicit; go 1.17
 -golang.org/x/sys/cpu
  golang.org/x/sys/execabs
- golang.org/x/sys/internal/unsafeheader
  golang.org/x/sys/plan9
+ golang.org/x/sys/unix
 -- 
-2.42.0
+2.43.0
 

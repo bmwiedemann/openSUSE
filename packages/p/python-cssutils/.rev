@@ -272,4 +272,19 @@ This fixes the file conflict in factory (forwarded request 171294 from TheBlackC
     <comment></comment>
     <requestid>1104928</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8e3d35ddfc7a1fd345095f5b0932e5bd</srcmd5>
+    <version>2.9.0</version>
+    <time>1701023832</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Made URL fetcher lenient to missing metadata.
+  * Require Python 3.8 or later.
+  * Made some unreachable tests reachable.
+
+  * No changelog provided
+- Remove BuildRequires: python-2to3, useless since included in main
+- new features:</comment>
+    <requestid>1128742</requestid>
+  </revision>
 </revisionlist>

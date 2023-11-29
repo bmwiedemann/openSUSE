@@ -20,7 +20,7 @@
 %define libexver    0
 
 Name:           libxslt
-Version:        1.1.38
+Version:        1.1.39
 Release:        0
 Summary:        XSL Transformation Library
 License:        GPL-2.0-or-later AND MIT

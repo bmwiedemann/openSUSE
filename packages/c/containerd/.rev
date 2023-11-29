@@ -508,4 +508,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
   &lt;https://github.com/containerd/containerd/releases/tag/v1.7.8&gt;</comment>
     <requestid>1120881</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>3a418a2acf705cacf04381ec0d3891c0</srcmd5>
+    <version>1.7.8</version>
+    <time>1701206268</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129532</requestid>
+  </revision>
 </revisionlist>

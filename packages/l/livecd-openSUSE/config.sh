@@ -82,6 +82,13 @@ if [ "$desktop" = "x11" ]; then
 	rm /etc/udev/hwdb.bin
 fi
 
+# Kernel modules (+ firmware) for X13s
+if [ "$(arch)" == "aarch64" ]; then
+	echo 'add_drivers+=" clk-rpmh dispcc-sc8280xp gcc-sc8280xp gpucc-sc8280xp nvmem_qcom-spmi-sdam qcom_hwspinlock qcom_q6v5 qcom_q6v5_pas qnoc-sc8280xp pmic_glink pmic_glink_altmode smp2p spmi-pmic-arb leds-qcom-lpg "'  > /etc/dracut.conf.d/x13s_modules.conf
+	echo 'add_drivers+=" nvme phy_qcom_qmp_pcie pcie-qcom-ep i2c_hid_of i2c_qcom_geni leds-qcom-lpg pwm_bl qrtr pmic_glink_altmode gpio_sbu_mux phy_qcom_qmp_combo panel-edp msm phy_qcom_edp "' >> /etc/dracut.conf.d/x13s_modules.conf
+	echo 'install_items+=" /lib/firmware/qcom/sc8280xp/LENOVO/21BX/qcadsp8280.mbn.xz /lib/firmware/qcom/sc8280xp/LENOVO/21BX/qccdsp8280.mbn.xz "' >> /etc/dracut.conf.d/x13s_modules.conf
+fi
+
 cd /
 
 # Import keys for installation
@@ -106,8 +113,13 @@ zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 # Some packages really exaggerate here
 rm -rf /usr/share/doc/packages/*
 
-# Save more than 200 MiB by removing this, not very useful for lives
-rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress,dpaa2,bnx2x,cxgb4}
+# Save more than 150 MiB by removing this, not very useful for lives
+rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,cypress,dpaa2,bnx2x,cxgb4}
+# Keep some qcom firmware for Lenovo X13s and delete others (save ~50MiB)
+rm -rf /lib/firmware/qcom/{apq8016,apq8096,qcm2290,qrb4210,sdm845,sm8250,venus*,vpu*}
+# the new, optional nvidia gsp firmware blobs are huge - ~ 70MB
+find /lib/firmware/nvidia -name gsp | xargs -r rm -rf 
+
 
 # The gems are unpackaged already, no need to store them twice
 rm -rf /usr/lib*/ruby/gems/*/cache/

@@ -27,9 +27,13 @@ Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.music.mcgill.ca/~gary/rtmidi/index.html
 Source0:        https://www.music.mcgill.ca/~gary/rtmidi/release/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE pkgconfig.patch avvissu@yandex.ru
-Patch0:         rtmidi-4.0.0-pkgconfig.patch
+Patch0:         rtmidi-6.0.0-pkgconfig.patch
 # PATCH-FIX-OPENSUSE set proper .cmake files path, lower cmake version for Leap (3.24 is required for Android)
 Patch1:         rtmidi-cmake.patch
+# PATCH-FIX-UPSTREAM ALSA: Avoid listing ports that are usually from 3rd.party
+Patch2:         ALSA-Avoid-listing-ports-that-are-usually-from-3rd-party.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

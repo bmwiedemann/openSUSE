@@ -1,7 +1,7 @@
 #
 # spec file for package kmscube
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019, Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           kmscube
-Version:        0.0.0.git1612698153.9f63f35
+Version:        0.0.0.git20230926.96d63eb
 Release:        0
 Summary:        Demo for bare metal graphics
 License:        MIT

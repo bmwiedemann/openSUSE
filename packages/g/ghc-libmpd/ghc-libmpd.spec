@@ -26,6 +26,7 @@ Summary:        An MPD client library
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch1:         https://github.com/vimus/libmpd-haskell/pull/138.patch#/fix-build-with-ghc-9.6.x.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
@@ -92,8 +93,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver text '>= 0.11 && < 2' '< 3'
+%autosetup -n %{pkg_name}-%{version} -p1
 
 %build
 %ghc_lib_build

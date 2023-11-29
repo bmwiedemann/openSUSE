@@ -1,7 +1,7 @@
 #
 # spec file for package parlatype
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%define c_lib   libparlatype5
+%define c_lib   libparlatype7
 Name:           parlatype
-Version:        3.1
+Version:        4.0
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://gkarsay.github.io/parlatype/
-Source:         https://github.com/gkarsay/parlatype/releases/download/v%{version}/parlatype-%{version}.tar.gz
+Source:         https://github.com/gkarsay/parlatype/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  AppStream-devel
 BuildRequires:  automake
 BuildRequires:  glib2-devel >= 2.58
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk3-devel
+BuildRequires:  gtk4-devel
 BuildRequires:  intltool
 BuildRequires:  iso-codes-devel
 BuildRequires:  libtool
@@ -76,7 +76,7 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %find_lang %{name}
 %find_lang org.parlatype.Parlatype %{no_lang_C} %{name}.lang
-%find_lang libparlatype5
+%find_lang %{c_lib}
 
 %post -n %{c_lib} -p /sbin/ldconfig
 %postun -n %{c_lib} -p /sbin/ldconfig
@@ -103,6 +103,6 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %files lang -f %{name}.lang
 
-%files lang -f libparlatype5.lang
+%files lang -f %{c_lib}.lang
 
 %changelog

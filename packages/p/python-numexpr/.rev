@@ -195,4 +195,29 @@ Implement single-spec version</comment>
     <comment></comment>
     <requestid>1109001</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>469fc47056f3fbea6b1563f5368846ec</srcmd5>
+    <version>2.8.7</version>
+    <time>1701121508</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.7:
+  * More permissive rules in sanitizing regular expression: allow to
+    access digits after the . with scientific notation.
+  * Don't reject double underscores that are not at the start or end of
+    a variable name (pandas uses those), or scientific-notation numbers
+    with digits after the decimal point.
+  * Do not use numpy.alltrue in the test suite, as it has been
+    deprecated (replaced by numpy.all).
+  * Python 3.12 support
+
+  * Thanks to Kirill Kouzoubov for a range of fixes to constants parsing that was
+  * Thanks to Mark Harfouche for noticing that we no longer need `numpy` version
+- skip python3.6 build (no numpy)
+- python3 package added
+ * Fixed several issues with different platforms not supporting
+ * Now, when trying to use pure Python boolean operators, 'and',
+ 'or' and 'not, an error is issued and suggesting that '&amp;', '|'
+- fix requiements for SLE 11</comment>
+    <requestid>1129235</requestid>
+  </revision>
 </revisionlist>

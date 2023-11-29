@@ -17,7 +17,7 @@
 
 
 Name:           pcsc-tools
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Smart card tools
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ or send commands in a friendly environment
 
 %prep
 %setup -q
-sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis gscriptor scriptor
+sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis.in gscriptor scriptor
 
 %build
 %configure
@@ -57,5 +57,8 @@ sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis gscriptor scriptor
 %{_bindir}/scriptor
 %{_datadir}/pcsc/
 %{_mandir}/man1/*
+%{_datadir}/applications/gscriptor.desktop
+%{_datadir}/locale/fr/LC_MESSAGES/pcsc-tools.mo
+%{_datadir}/locale/ru/LC_MESSAGES/pcsc-tools.mo
 
 %changelog

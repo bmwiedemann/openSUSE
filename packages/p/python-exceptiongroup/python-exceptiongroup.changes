@@ -1,11 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:43:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Added special monkeypatching if `Apport
+    <https://github.com/canonical/apport>`_ has
+    overridden ``sys.excepthook`` so it will format exception
+    groups correctly
+  * Added a backport of ``contextlib.suppress()`` from Python
+    3.12.1 which also handles suppressing exceptions inside
+    exception groups
+  * Fixed bare ``raise`` in a handler reraising the original
+    naked exception rather than an exception group which is what
+    is raised when you do a ``raise`` in an ``except*`` handler
+  * ``catch()`` now raises a ``TypeError`` if passed an async
+    exception handler instead of just giving a ``RuntimeWarning``
+    about the coroutine never being awaited.
+  * Fixed plain ``raise`` statement in an exception handler
+    callback to work like a ``raise`` in an ``except*`` block
+  * Fixed new exception group not being chained to the original
+    exception when raising an exception group from exceptions
+    raised in handler callbacks
+  * Fixed type annotations of the ``derive()``, ``subgroup()``
+    and ``split()`` methods to match the ones in typeshed
+- drop skip-test_catch_handler_raises-for-older-311.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Tue Jul  4 22:32:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.1.2:
   - Changed handling of exceptions in exception group handler
     callbacks to not wrap a single exception in an exception
     group, as per CPython issue gh#python/cpython#103590.
-- Add skip-test_catch_handler_raises-for-older-311.patch 
+- Add skip-test_catch_handler_raises-for-older-311.patch
   (gh#agronholm/exceptiongroup#64).
 
 -------------------------------------------------------------------

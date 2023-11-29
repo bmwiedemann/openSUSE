@@ -432,4 +432,31 @@
     <comment></comment>
     <requestid>1095663</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e229f0293fad4621b96116ce2690c24e</srcmd5>
+    <version>3.19.0</version>
+    <time>1701121480</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.0:
+  * The ``update()`` methods of TupleHash128 and TupleHash256
+    objects can now hash multiple items (byte strings) at once.
+  * Added support for ECDH, with ``Crypto.Protocol.DH``.
+  * GH#754: due to a bug in ``cffi``, do not use it on Windows
+    with Python 3.12+.
+
+- Update to 3.16.0
+    * New parameter output for Crypto.Util.strxor.strxor,
+      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in
+      symmetric ciphers (Crypto.Cipher package). output is a
+      pre-allocated buffer (a bytearray or a writeable memoryview)
+      where the result must be stored. This requires less memory for
+      very large payloads; it is also more efficient when encrypting
+    * Fix vulnerability on AESNI ECB with payloads smaller than
+    * Fixed incorrect AES encryption/decryption with AES
+      acceleration on x86 due to gcc’s optimization and strict
+    * More prime number candidates than necessary where discarded
+      as composite due to the limited way D values were searched
+    * More meaningful exceptions in case of mismatch in IV length</comment>
+    <requestid>1129189</requestid>
+  </revision>
 </revisionlist>

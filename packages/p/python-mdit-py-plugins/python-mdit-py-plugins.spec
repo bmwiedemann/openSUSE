@@ -1,7 +1,7 @@
 #
 # spec file for package python-mdit-py-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,21 @@
 #
 
 
-%{?sle15_python_module_pythons} 
+%{?sle15_python_module_pythons}
 Name:           python-mdit-py-plugins
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Collection of plugins for markdown-it-py
 License:        MIT
 URL:            https://mdit-py-plugins.readthedocs.io/
 Source:         https://github.com/executablebooks/mdit-py-plugins/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module markdown-it-py}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+# SECTION tests
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  fdupes
 #Source:         https://files.pythonhosted.org/packages/source/m/mdit-py-plugins/mdit-py-plugins-%%{version}.tar.gz
 BuildRequires:  python-rpm-macros
@@ -37,17 +42,17 @@ BuildArch:      noarch
 Collection of core plugins for markdown-it-py.
 
 %prep
-%setup -q -n mdit-py-plugins-%{version}
+%autosetup -p1 -n mdit-py-plugins-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest
+%pytest
 
 %files %{python_files}
 %doc README.md CHANGELOG.md docs/index.md

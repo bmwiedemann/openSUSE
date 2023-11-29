@@ -28,4 +28,41 @@
   * k8schain: Log and proceed if secret or SA are not found</comment>
     <requestid>1046393</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8e50b99cc3998bb4d95d0f73e4fabd7b</srcmd5>
+    <version>0.16.1</version>
+    <time>1701023853</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.16.1:
+  * bump deps using ./hack/bump-deps.sh
+  * Allow crane to export schema 1 images
+  * fixed a goroutine leak
+  * retry HTTP 522 errors by default
+  * Limit size of manifest
+  * Add crane auth token
+  * Bump codecov/codecov-action from 3.1.3 to 3.1.4
+  * Pass scopes through crane auth token
+  * fix: add bounds checking to addendum layer mutations to
+    prevent panic
+  * Surface better error messages in crane index
+  * crane: add missing name option in crane index commands
+  * crane: Respect cmd.OutOrStdout
+  * Make ErrSchema1 checkable via errors.Is()
+  * Don't load into daemon if the image already exists
+  * add --blobs-to-disk to 'crane registry serve'
+  * Correct crane registry help text
+  * Allow concurrent blob Sets, use RWMutex
+  * Use RWLock, limit scope of locking, write digest first
+  * Let the filesystem handle atomicity
+  * Don't try cross-origin mounting against dockerhub
+  * Drop localhost to support crane registry serve in a container
+  * Return OCI Index content-type for referrers response
+  * Allow crane edit to generate non-image artifacts
+  * Allow setting Content-Type in crane edit manifest
+  * Avoid v1.Manifest in crane edit config (#1583)
+  * Support for OCI 1.1+ referrers via API (#1546)
+  * Support for OCI 1.1+ referrers via fallback tag
+  * Update descriptor &quot;data&quot; field (when valid) during</comment>
+    <requestid>1128791</requestid>
+  </revision>
 </revisionlist>

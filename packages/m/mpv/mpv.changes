@@ -1,4 +1,496 @@
 -------------------------------------------------------------------
+Tue Nov 21 19:02:57 UTC 2023 - llyyr.public@gmail.com
+
+- Remove 0001-Revert-meson-bump-required-version-to-0.62.patch:
+  * Leap 15.5 does not provide libplacebo>=6.338 so mpv can't be built
+    there anymore.
+- Clean up spec file since building on Leap 15.5 isn't a possibility
+- Update to version 0.37.0+git20231121.2a57a6ee:
+  * Update VERSION
+  * Release 0.37.0
+  * vo_gpu_next: reduce number of requested frames from VO
+  * mac: title bar fix 1px none covered video at top
+  * mac: add rotation menubar entries
+  * mac: fix reporting of left wheel and right wheel scrolling
+  * command: add missing null check to event handler
+  * DOCS/options: admonish users for touching --3dlut-size
+  * vo_gpu_next: bump ICC cache size limit to 20 MB
+  * DOCS/options: reword cache options
+  * vo_gpu_next: don't re-save unmodified cache
+  * vo_gpu_next: dramatically simplify cache code
+  * vo_direct3d: remove redundant condition
+  * opengl/context: remove duplicated conditions
+  * ra_d3d11: fix off by one check
+  * vo: add missing return variable assignment
+  * win32: don't jump over variable init with goto
+  * various: add some missing error checks
+  * demux: add missing NULL check
+  * common/msg: remove redundant check
+  * ao_wasapi: add missing comma in strings array
+  * vo_gpu_next: disable drift compensation for screenshots
+  * vo_gpu_next: add validation for invalid pl_queue usage
+  * vo_gpu_next: set frame duration if provided by VO
+  * vo_gpu_next: interpolate only if display_synced or a still frame
+  * vo_gpu_next: request more frames to account for anti aliasing
+  * vo_gpu_next: make the first frame check less ominous
+  * vo_gpu_next: remove incorrect interpolation disabling
+  * vo_gpu_next: fix pl_queue refill on reset
+  * vo: pass approximate frame duration in vo_frame
+  * vo: avoid overshooting the expected end of the frame during pause
+  * player/video: account for repeats in ideal_frame_vsync_duration
+  * vo_sdl: fix broken mouse wheel multiplier
+  * DOCS: properly document --force-window-position for sdl vo
+  * loadfile: remove some dead code
+  * hwdec_vulkan: use VK_NULL_HANDLE when counting the number of images
+  * test: update ffmpeg format refs
+  * vo_gpu_next: set max cache size back down to 10 MiB
+  * hwdec: support videotoolbox with libplacebo
+  * osxbundle: sign bundle with ad-hoc pseudo identity
+  * osxbundle: remove mpv-bundle symlink to allow code signing
+  * osxbundle: resolve relative linked dependency paths
+  * zsh-completion: complete options after --help
+  * command: notify media-title on force-media-title change
+  * audio: fix UB when casting INFINITY to integer
+  * vo: delay vsync samples by at least 10 refreshes
+  * player: don't remove all selected sub tracks in mp_dselect_track
+  * stats.lua: fix incorrect storage aspect ratio value
+  * command: export storage aspect ratio (sar) properties
+  * vo_gpu_next: guard from cache save conflict
+  * demux_playlist: simplify ini parsing
+  * DOCS/options: update watch-later-options docs
+  * options: add more properties to default watch-later-options
+  * options: remove not relevant props from default watch-later-options
+  * vo_gpu_next: disable libplacebo drift_compensation
+  * player/video: fix calculation of ideal_frame_vsync_duration
+  * m_option: remove leftovers of del action
+  * vo_gpu_next: update overlays for blend subtitles on frame redraws
+  * DOCS/options: osd-shadow is ignored with osd-back-color
+  * demux: always update the cache on init
+  * vo_gpu_next: fix interpolation
+  * vo: add frame vsync and vsync duration
+  * vo_gpu_next: improve PTS clamping
+  * vo_gpu_next: add some additional sanity checking for interpolation
+  * wayland: fix shift+tab keyboard input
+  * console: fix crash for long suggestion strings
+  * osdep/w32_keyboard: remove duplicated MP_KEY_BACK mapping
+  * wayland: obey initial size hints set by the compositor
+  * cocoa: remove OpenGL cocoa backend
+  * mac: change display name retrieval to localizedName NSScreen property
+  * mac: fix build on older swift versions
+  * TOOLS/macos-sdk-version: remove legacy sdk version retrieval
+  * vo_gpu_next: overwrite cache files atomically
+  * osdep/io: implement rename() wrapper
+  * vo_gpu_next: refactor cache saving code
+  * DOSC/input: clarify a couple of commands where no-osd has no effect
+  * player/command: make show-progress work regardless of osd prefix
+  * vo: don't sleep 1ms always when requested time is in the past
+  * vo: replace some magic numbers with timer macros
+  * demux/lavf: don't use deprecated side data
+  * editorconfig: add max line
+  * mac: remove runtime checks and compatibility for macOS older than 10.15
+  * meson: remove several macos-10-* build options
+  * player/loadfile: remove blank line on exit
+  * msg: ensure status line is always visible
+  * msg: factor out print code
+  * msg: convert dump_stats to bstr
+  * msg: use bstr for partial msg
+  * msg: check isatty separately per each stream
+  * Revert "player: cut off status line on terminal width"
+  * Revert "player: don't print status line again when quitting"
+  * msg: refactor how terminal messages are printed
+  * stats.lua: disable ASS formatting when printing to terminal
+  * msg: don't mix partial log messages, with unrelated log levels
+  * vo: replace VOCTRL_HDR_METADATA with direct VO params read
+  * audio: avoid unnecessary silence padding in read_buffer()
+  * ao_audiotrack: switch to ao_read_data_nonblocking()
+  * ao_coreaudio: switch to ao_read_data_nonblocking()
+  * ao_pipewire: switch to ao_read_data_nonblocking()
+  * audio: introduce ao_read_data_nonblocking()
+  * threads-win32: add comment about local decl of a function
+  * threads-win32: support UWP in mp_thread_set_name
+  * meson: add missing source file for UWP
+  * osdep/threads-posix: use CLOCK_MONOTONIC if supported
+  * osdep/timer-linux: check clock availability on init
+  * DOCS/option: discourage the use of video-latency-hacks a bit more
+  * vo_gpu_next: add --target-gamut option
+  * stats.lua: remove unused variable
+  * console.lua: don't print the console log to the OSD when switching VO
+  * player/command: handle force window on runtime vo changes
+  * stats: don't overwrite color and alpha of `osd-back-color`
+  * console: don't overwrite color and alpha of `osd-back-color`
+  * sub: add --sub-stretch-durations option
+  * player/command: fix typo in sig-peak value computation
+  * win32: fix hit test using client rc instead window
+  * vo_gpu: apply ICC profile and dithering only to window screenshots
+  * vo_gpu_next: drop alpha channel from screenshots if unneeded
+  * image_writer: improve format conversion logging
+  * console: wrap rows at the top
+  * console: optimize table generation
+  * console: enable completions without a prefix
+  * console.lua: complete raw properties
+  * console: avoid redundant completion appendage
+  * present_sync: remove unneeded clear_values function
+  * vo: require successive vsyncs to be more than swapchain depth
+  * present_sync: only save as many entries as the swapchain depth
+  * vo: replace max swapchain depth magic number
+  * DOCS/mpv: consistent formatting of keybindings
+  * DOCS/console: correct capitalization of keybindings
+  * wayland: improve wl_output guessing before mpv window is mapped
+  * sub: adjust offsets when sub seeking/stepping
+  * DOCS/input: stop documenting vf del
+  * dec_sub: always copy packet for new segments
+  * drm: use present_sync mechanism for presentation feedback
+  * present_sync: rename function to present_sync_update_values
+  * present_sync: rewrite around linked list
+  * ytdl_hook: fix mixed thumbnail.preference availability
+  * Revert "vo: clear vsync_offset if drawing while paused"
+  * video: reset `display_sync_error` when resetting state
+  * threads: unbreak mpv on builds without asserts
+  * player/command: add video-params and siblings to MPV_EVENT_TICK
+  * ALL: use pl_hdr_metadata and nuke sig_peak
+  * demux_mkv: parse mastering metadata
+  * player/command: remove hdr-metadata property
+  * csputils: add pl_hdr_metadata to mp_colorspace and deprecate sig_peak
+  * player/command: use pl_hdr_metadata_contains
+  * csputils: change mp_hdr_metadata to pl_hdr_metadata
+  * timer: remove unnecesary time conversions
+  * win32/pthread: remove unused code
+  * timer: remove unused code
+  * threads: remove unused code
+  * threads: rename threads.c to threads-posix.c
+  * threads: move pthread debug to threads-posix.h
+  * mp_thread: add win32 implementation
+  * mp_thread: prefer tracking threads with id
+  * ALL: use new mp_thread abstraction
+  * threads: add new mp_thread abstraction
+  * sub: redecode cached packets on UPDATE_SUB_HARD or UPDATE_SUB_FILT
+  * options: add UPDATE_SUB_HARD flag to sub-ass-override
+  * vo_gpu_next: update to newer cache API
+  * ra_pl: drop deprecated cached_program param
+  * vo_gpu_next: remove unneeded PL_API_VER guarding and defines
+  * mp_image: pass rotation correctly to/from AVFrame
+  * win32: add more values for monitor refresh rate detection
+  * DOCS/man/console: update type examples
+  * lua: remove a ton of unneeded parentheses
+  * console.lua: complete file paths
+  * console.lua: complete list option verbs
+  * console.lua: inline mp.options
+  * console.lua: complete list options
+  * console.lua: complete profiles
+  * console.lua: complete commands after help
+  * console: complete infinite cycle-values arguments
+  * m_option: don't try to remove all filter matches
+  * player/main: set main thread name as mpv
+  * vo_gpu_next: use pl_queue_params() macro
+  * vf_vapoursynth: set crop metadata after mapping vapoursynth frame
+  * player/video: loosen logic checks for adjust_sync
+  * player/video: don't reset ao on video chain reinit
+  * demux: make hysteresis-secs respect cache-secs
+  * demux: cosmetics
+  * m_option: drop support for -del for list options
+  * m_option: remove all matches when using -remove
+  * options: make --screenshot-directory/--watch-later-directory aliases
+  * ytdl_hook: reverse thumbnail order
+  * ytdl_hook: support the preference field of thumbnails
+  * ytdl_hook: add thumbnail option
+  * ytdl_hook: support thumbnails
+  * various: remove trailing whitespace
+  * ao_coreaudio: signal buffer underruns
+  * meson: do the macos sdk version comparison in meson
+  * Revert "meson: import python module"
+  * meson: import python module
+  * TOOLS/{file2string,matroska}: drop unneeded stdout output
+  * timer-linux: fallback to CLOCK_MONOTONIC instead of timespec_get
+  * scripting: add 'script' to messages
+  * scripting: rename backend names for concise naming
+  * mp_threads: rename threads for consistent naming across all of them
+  * TOOLS/macos-sdk-version: use packaging instead of distutils for version
+  * timer: remove MP_START_TIME
+  * player/lua: use mp_msg_find_level in check_loglevel
+  * msg: make mp_msg_find_level case insensitive
+  * DOCS/options: clarify `no-config` is a command line flag
+  * player/audio: fix incorrect check on adding delay
+  * semaphore_osx: change mp_sem_timedwait to mp_time
+  * semaphore_osx: don't overwrite global symbols
+  * Revert "hwdec_vulkan: account for vulkan frames now using presentation size"
+  * javascript: use --js-memory-report option instead of MPV_LEAK_REPORT
+  * test: unbreak build when win32-internal-pthreads is disabled
+  * timer: use MP_TIME macros
+  * osdep/timer-win2: rename to timer-win32
+  * ci/msys2: create a wrap file for libplacebo
+  * meson: remove libplacebo wrap
+  * options: rename --play-dir to --play-direction
+  * options: rename --watch-later-directory to --watch-later-dir
+  * options: rename --screenshot-directory to --screenshot-dir
+  * options: rename --sub-ass-force-style to --sub-ass-style-overrides
+  * options: rename --override-display-fps to --display-fps-override
+  * options: rename --fps to --container-fps-override
+  * player: don't calculate av delay if there's no audio or video
+  * console.lua: complete choice and flag options
+  * console.lua: remove unused capture from completion patterns
+  * console.lua: use string.match()
+  * console.lua: generate completion lists lazily
+  * console.lua: remove repetition from build_completers()
+  * console.lua: remove unnecessary copy
+  * github/workflows: use ubuntu-latest host for freebsd
+  * options: disable --allow-delayed-peak-detect by default
+  * osdep: fix clang warnings with `_FORTIFY_SOURCE`
+  * github/workflows: use macos-13 host for freebsd
+  * README: bump macOS version as a consequence of libplacebo version bump
+  * README: add libplacebo to dependencies and mention wrap
+  * Revert "audio: don't block on lock in ao_read_data"
+  * osdep/meson: add libplacebo include dir to swift compile
+  * test/meson: add missing libplacebo dep
+  * sub: update subtitles if current track is an image
+  * demux_mkv: check if the video codec is an image
+  * demux: put type2format into codec_tags with helper functions
+  * ci/freebsd: disable iconv
+  * github/workflows: use cross-platform-actions for freebsd
+  * ci: disable Werror for libplacebo subproject build
+  * ci/msys2: disable autocrlf
+  * gitignore: update for meson wraps
+  * m_option: initialize m_option_value union properly
+  * workflows/build: install git in freebsd image
+  * meson: make libplacebo a required dependency
+  * subprojects: add a libplacebo wrap
+  * workflows/build: explicitly define `CXX` in the env
+  * .gitignore: ignore subprojects but allow later overriding
+  * vo: define <= 0 as unsupported for last_queue_display_time
+  * vo: change spammy log to trace
+  * vo: average more vsync samples
+  * d3d11: calc vsync interval on real stats, not just last interval
+  * img_format: remove duplicated macros
+  * ta: don't hardcode alignment requirement
+  * osdep: remove alignof emulation
+  * aspect: remove unused multiplication
+  * hwtransfer: handle constraints for hwdec with NULL supported_formats
+  * DOCS/contribute: increase hard column limit to 100
+  * stats.lua: disable tonemapping plot by default
+  * path: don't treat "hidden" files as extension
+  * ytdl_hook: remove extra playlist insert
+  * ytdl_hook: parse the separate cookies field
+  * vf_vapoursynth: set nominal_fps after the filter
+  * Revert "demux_mkv: PAR should be calculated after applying crop"
+  * demux_mkv: don't set codec crop rect when there is no crop
+  * DOCS/contribute: stop pretending that C11 isn't allowed
+  * meson: remove -D_ISOC99_SOURCE flag
+  * timer: drop ancient macOS fallback
+  * win32/pthread: fix calculation error in pthread_cond_timedwait
+  * dvbin: do a big cleanup on code style and functions
+  * stream_dvb: avoid static function variable
+  * dvb_tune: remove use of time()
+  * dvbin: revise many log lines
+  * stream_dvb: use talloc
+  * stream_dvb: fix missing newlines on log messages
+  * audio: don't block on lock in ao_read_data
+  * win32/pthread: add support for pthread_mutex_trylock
+  * threads: add support for pthread_mutex_trylock
+  * various: sort some standard headers
+  * various: remove ATOMIC_VAR_INIT
+  * osdep: remove atomic.h
+  * osdep: drop atomic fallback
+  * win32/pthread: try to fix system headers leaking through
+  * test: add basic tests for timer code
+  * meson: streamline selection of certain osdep sources
+  * win32/pthread: implement clock_gettime for high-res timer purposes
+  * Revert "win32/pthread: don't convert time through unrelated timer"
+  * mp_image: set crop metadata when converting to AVFrame
+  * demux_mkv: PAR should be calculated after applying crop
+  * ci/lint: allow the first word to be all caps
+  * stats.lua: hide images' FPS
+  * stream_cdda: deprecate --cdda-toc-bias and always check for offsets
+  * stream_cdda: remove printing track info in fill_buffer
+  * stream_cdda: remove fallback for ancient libcdio versions
+  * vo_gpu_next: optimally align DR buffers
+  * vd_lavc: align buffers to multiple of image size
+  * video/mp_image: handle non-power-of-two alignment
+  * common: add mp_lcm helper
+  * github/workflows: put a 20 minute timeout on the freebsd job
+  * thread_tools: suppress -Wstringop-overflow false-positive
+  * stream_cdda: suppress -Wstrict-prototypes from cdio
+  * win32: suppress pointer cast warning
+  * charset_conv: suppress unused-label warning
+  * vo_gpu_next: cast const away to suppress warning
+  * d3d11: don't skip last char in buffer
+  * ci: enable -Werror
+  * win32: clear background only on first paint
+  * TOOLS/autocrop.lua: disable hwdec when needed instead using -copy one
+  * demux/lavf: move tags instead of copying
+  * common/tags: add mp_tags_move_from_av_dictionary()
+  * player/command: truncate anything < 1e-4 in pretty printer
+  * wayland: use ppoll if possible
+  * poll_wrapper: use the actual correct timeout for ppoll
+  * DOCS/options: remove obsolete notice
+  * DOCS/mpv: fix typos in List Options
+  * DOCS/interface-changes: remove redundant change
+  * hwtransfer: handle hwcontexts that don't implement frame constraints
+  * github/workflows: remove macOS 11 build
+  * timer: remove microsecond timer functions
+  * test: change test_utils stubs to ns variants
+  * dither: removed some unused code
+  * vo: convert some final low-hanging things to nanoseconds
+  * client: change underlying mpv_wait_event timer to nanoseconds
+  * dispatch: change mp_dispatch_queue_process timer to nanoseconds
+  * input: convert autorepeat timing to nanoseconds
+  * filters: change end time calculation to nanoseconds
+  * ao: convert all timing code to nanoseconds
+  * stats: convert timers to nanoseconds
+  * demux: convert cache updates to nanoseconds
+  * timer: add convenience time unit conversion macros
+  * command: unbreak runtime play-dir changes
+  * stats.lua: remove compatibility aliases of properties
+  * af_scaletempo2: better defaults
+  * stats.lua: fix page 2 alignment of "Total"
+  * vo_gpu/vo_gpu_next: add vulkan support for macOS
+  * mac: add a window animation lock to wait for animations to finish
+  * hwdec_dxva2egl: fix log value type
+  * stats.lua: add chroma-location
+  * stats.lua: change "Pixel Format" to "Format"
+  * stats.lua: fix missing newline when print_perfdata_passes is enabled
+  * stats.lua: sort filter parameters to ensure consistent output
+  * player/command: change how floating point number are printed
+  * stats.lua: don't print custom pixel format, when hwdec
+  * stats.lua: remove leading zeros from pass timings
+  * stats.lua: add frame info
+  * stats.lua: simplify fps display
+  * stats.lua: adjust spacing between values a little
+  * stats.lua: show HDR meta if not equal to 203
+  * stats.lua: separate video parameters from video out
+  * f_decoder_wrapper: change video-codec to show description or name
+  * command: fix fps property name
+  * command: early exit in some properties to avoid going through VOCTRL
+  * m_property: add read_sub_validate to check if should be processed
+  * vo_gpu_next: only increment osd_sync in update_overlays if paused
+  * command: fix segfault with playlist-{next,prev}-playlist
+  * README: update release frequency
+  * terminal-unix: make stop/cont sighandlers pipe based
+  * terminal-unix: avoid data race + simplify
+  * terminal-unix: avoid data-race on do_deactivate_getch2
+  * drm_common: don't spoil errno in signal handler
+  * terminal-unix: don't spoil errno in signal handler
+  * console.lua: print the log and input line to the terminal
+  * ytdl_hook.lua: set metadata with single tracks
+  * defaults.lua: add a disabled parameter to timer constructors
+  * DOCS/options: vdpau requires GLX
+  * win32: improve window snapping behavior
+  * osdep/timer-win2: use Waitable Timer for sleeping
+  * timer: change mp_sleep_us to mp_sleep_ns
+  * libmpv: add mpv_time_ns()
+  * vo: use mp_poll wrapper in wait_events when applicable
+  * osdep: rename polldev to poll_wrapper
+  * vo: change vo->driver->wait_events to nanoseconds
+  * vo: use nanoseconds for frame duration and pts
+  * player: store last_time timestamp in nanoseconds
+  * vo: remove vo_get_estimated_vsync_interval conversion to seconds
+  * DOCS/lua: update read_options example
+  * console.lua: exit with with Ctrl+[
+  * command: add playlist-next-playlist and playlist-prev-playlist
+  * ci: add sanitizers to Tumbleweed build
+  * core: remove duplicate init_{audio,video}_decoder declarations
+  * core: remove declarations of unused functions
+  * TOOLS/autocrop.lua: add support for detect_min_ratio
+  * DOCS/input: document the full sub-property
+  * console: support utf8 for table formatting
+  * console: cull lines outside of visible area
+  * console: show completion suggestions as table
+  * console: show suggestions for completion
+  * console: refactor text styles for log levels
+  * TOOLS/autocrop.lua: simplify code
+  * player/video: mention --profile=fast and --hwdec in AV desync message
+  * vo: remove frame timing check from vo_still_displaying()
+  * Revert "video: remove another redundant wakeup"
+  * ci/mingw: use vulkan-loader v1.3.266
+  * mp_image: don't copy crop value from opaque_ref
+  * demux_playlist: use --metacode-codepage when parsing playlist files
+  * demux: change the default of metadata-codepage to auto
+  * demux_cue: deprecate --demuxer-cue-codepage for --metadata-codepage
+  * charset_conv: remove ancient warning about deprecated syntax
+  * stream_lavf: use metadata-codepage option for codepage conversion
+  * af_scaletempo: overlap is a factor not a percentage
+  * DOCS/mpv: update mpv.conf's documentation
+  * TOOLS/autocrop.lua: update comment
+  * sd_ass: enable sub-start and sub-end with unknown duration subs
+  * vo_gpu_next: improve updating overlays
+  * vo_dmabuf_wayland: correct full window size calculation
+  * win32: clear client area to black early
+  * player: remove unused mutate argument in mp_next_file
+  * loadfile: fix an old wonky playlist heuristic
+  * af/vf-command: add ability to target a specific lavfi filter
+  * vo_dmabuf_wayland: free frame if the visibility check fails
+  * external_files: remove duplicate from cover art whitelist
+  * vo_dmabuf_wayland: eliminate an extra frame copy
+  * TOOLS/lua/autoload: bump the msg-level of some logging
+  * meson: declare libmpv as a dependency and override it
+  * win32: adjust WM_NCACTIVATE for better compatibility with window state
+  * vo_dmabuf_wayland: attach solid buffer when using force window
+  * codec_tags: map some more image mimetypes
+  * path: don't override "cache" and "state" paths with configdir
+  * demux: move parent_stream_info before the goto
+  * Revert "demux: constify a struct member"
+  * external_files: base cover-art-whitelist on cover-art-auto-exts
+  * DOCS/interface-changes: also mention --window-affinity
+  * DOCS/interface-changes: mention --backdrop-type
+  * win32: add WS_THICKFRAME style in borderless mode
+  * vo: fully replace draw_image with draw_frame
+  * restore-old-bindings.conf: remove unusable bindings
+  * demux: fix erroneous condition in lazy_stream_needs_wait
+  * win32: set WS_SYSMENU style always
+  * DOCS/lua: remove superfluous parameter
+  * Revert "demux: improve stream selection state"
+  * msg: use nanosecond precision
+  * vo: don't invoke wait, when not needed
+  * vo: increase display refresh rate estimation limit from 99 Hz to 400 Hz
+  * vo: change vsync base to nanoseconds
+  * win32/pthread: define _POSIX_TIMERS to notify they are not supported
+  * win32/pthread: don't convert time through unrelated timer
+  * meson: don't link pthreads when internal impl is used
+  * meson: add missing gl-video test dependency
+  * timer: teach it about nanoseconds
+  * timer: rename mp_add_timeout to reflect what it actually does
+  * timer: remove dead code
+  * timer: simplify mp_time_us_to_realtime
+  * timer: rename mp_time_us_to_timespec to reflect what it actually does
+  * ao_audiotrack: convert to nanoseconds
+  * playloop: make chapter property more accurate when seeking chapters
+  * vo_dmabuf_wayland: assume counter-clockwise rotations
+  * hwdec_drmprime: add nv16 support
+  * audio/chmap: support up to 64 channels
+  * wasapi: clamp number of output channels to 8
+  * chmap: add more channel layouts up to 22.2
+  * audio/chmap: link string buffer size to MP_NUM_CHANNELS
+  * playloop: don't refresh seek on external sub streams
+  * demux: improve stream selection state
+  * Revert "demux: eagerly read subtitle streams when switching tracks while paused"
+  * demux: eagerly read subtitle streams when switching tracks while paused
+  * osc: move the idle logo behind other overlays
+  * meson: don't require swift when checking macos sdk
+  * command: only warn shared-script-properties once
+  * wayland: don't double close display fd
+  * command: deprecate shared-script-properties
+  * osc: remove shared-script-properties usage
+  * DOCS/options: update lavfi-complex examples
+  * console.lua: complete properties after cycle-values
+  * af_scaletempo2: raise max playback rate to 8.0
+  * DOCS/options: add example for custom pitch correction filter
+  * restore-old-bindings.conf: add the old wheel bindings
+  * DOCS/mpv: update the wheel bindings
+  * win32: add option to change backdrop style
+  * recorder: fix a couple of memory leaks
+  * DOCS/options: update libplacebo-opts documentation URL
+  * input.conf: make `u` toggle between force and yes
+  * DOCS/input: update aegisub URL
+  * osc.lua: fix calculation for slider's min-max average
+  * win32: pass window handle to the window-id property
+  * vo_gpu: remove --scaler-lut-size
+  * vo_gpu: remove --scale-cutoff etc
+  * DOCS/af: update audio filters section
+  * github/workflows: rename the job for the docs check
+  * github/workflows: add a workflow to check doc changes
+  * github/workflows: only run build if source/build files change
+  * DOCS/man: remove outdated note about gnome and idle-inhibit
+  * wayland: remove gnome-specific idle-inhibit warning
+
+-------------------------------------------------------------------
 Sat Sep 23 18:56:16 UTC 2023 - llyyr.public@gmail.com
 
 - Update to version 0.36.0+git20230923.140d0185:

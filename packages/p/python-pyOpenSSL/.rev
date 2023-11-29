@@ -523,4 +523,41 @@
   * Added ``X509VerificationCodes`` to ``OpenSSL.SSL``.</comment>
     <requestid>1093835</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0a4a2c9715db2113dc67277bb0cbdea4</srcmd5>
+    <version>23.3.0</version>
+    <time>1701206284</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.3.0:
+  * Dropped support for Python 3.6.
+  * The minimum ``cryptography`` version is now 41.0.5.
+  * Removed ``OpenSSL.crypto.loads_pkcs7`` and
+    ``OpenSSL.crypto.loads_pkcs12`` which had been deprecated for
+    3 years.
+  * Added ``OpenSSL.SSL.OP_LEGACY_SERVER_CONNECT`` to allow
+    legacy insecure renegotiation between OpenSSL and unpatched
+    servers.
+  * Deprecated ``OpenSSL.crypto.PKCS12`` (which was intended to
+    have been deprecated at the same time as
+    ``OpenSSL.crypto.load_pkcs12``).
+  * Deprecated ``OpenSSL.crypto.NetscapeSPKI``.
+  * Deprecated ``OpenSSL.crypto.CRL``
+  * Deprecated ``OpenSSL.crypto.Revoked``
+  * Deprecated ``OpenSSL.crypto.load_crl`` and
+    ``OpenSSL.crypto.dump_crl``
+  * Deprecated ``OpenSSL.crypto.sign`` and
+    ``OpenSSL.crypto.verify``
+  * Deprecated ``OpenSSL.crypto.X509Extension``
+  * Changed ``OpenSSL.crypto.X509Store.add_crl`` to also accept
+  * ``cryptography``'s ``x509.CertificateRevocationList``
+    arguments in addition
+  * to the now deprecated ``OpenSSL.crypto.CRL`` arguments.
+  * Fixed ``test_set_default_verify_paths`` test so that it is
+    skipped if no network connection is available.
+
+- Inject multibuild to avoid a build loop.
+  python-pyOpenSSL-always-overflow.patch
+- fixed doc generation</comment>
+    <requestid>1129059</requestid>
+  </revision>
 </revisionlist>

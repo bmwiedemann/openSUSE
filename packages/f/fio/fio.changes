@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 21 15:01:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.36:
+  * https://git.kernel.dk/?p=fio.git;a=shortlog;h=refs/tags/fio-3.36
+
+-------------------------------------------------------------------
 Sun Jun 11 20:36:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.35:
@@ -20,7 +26,7 @@ Fri Mar 17 16:46:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Sun Dec  4 21:27:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.33:
-  * https://git.kernel.dk/?p=fio.git;a=shortlog;h=refs/tags/fio-3.33 
+  * https://git.kernel.dk/?p=fio.git;a=shortlog;h=refs/tags/fio-3.33
 
 -------------------------------------------------------------------
 Wed Sep 14 09:22:12 UTC 2022 - Marcelo Martins <mmartins@suse.com>
@@ -41,7 +47,7 @@ Mon Dec 20 21:53:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * io_uring fixes
   * io_uring: fix bandwidth calculation
   * fix for loop count when do_verify=0
-  * zbd: fix unexpected job termination by open zone search failure 
+  * zbd: fix unexpected job termination by open zone search failure
 
 -------------------------------------------------------------------
 Sun Sep 19 08:26:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
@@ -52,12 +58,12 @@ Sun Sep 19 08:26:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 -------------------------------------------------------------------
 Tue Apr 20 09:25:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 3.26 (no changelog) 
+- Update to 3.26 (no changelog)
 
 -------------------------------------------------------------------
 Thu Dec 17 14:27:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 3.25 (no changelog) 
+- Update to 3.25 (no changelog)
 
 -------------------------------------------------------------------
 Mon Sep 14 00:00:00 CEST 2020 - dsterba@suse.cz
@@ -67,7 +73,7 @@ Mon Sep 14 00:00:00 CEST 2020 - dsterba@suse.cz
 -------------------------------------------------------------------
 Fri Jul 24 09:27:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 3.21 (no changelog) 
+- Update to 3.21 (no changelog)
 - Remove fio-gfio_main_ui.patch
 
 -------------------------------------------------------------------
@@ -80,7 +86,7 @@ Fri Jun  5 08:16:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Thu May 21 08:21:20 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 3.19 (no changelog) 
+- Update to 3.19 (no changelog)
 - Remove 0001-Fix-compilation-error-with-gfio.patch
 - Remove fio.python2.patch
 
@@ -191,7 +197,7 @@ Mon Nov 13 09:07:37 UTC 2017 - mpluskal@suse.com
 Thu Nov  9 13:35:56 UTC 2017 - jzelazkova@suse.com
 
 - Update to version 3.2:
-  * no upstream changelog available 
+  * no upstream changelog available
 
 -------------------------------------------------------------------
 Fri Sep  1 08:31:12 UTC 2017 - mpluskal@suse.com

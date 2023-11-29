@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           paho-mqtt-c
-Version:        1.3.12
+Version:        1.3.13
 Release:        0
 Summary:        MQTT C Client
 License:        BSD-3-Clause AND EPL-1.0

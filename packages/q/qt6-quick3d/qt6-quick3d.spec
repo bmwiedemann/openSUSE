@@ -34,6 +34,8 @@ License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-quick3d-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-some-depends-statements-in-QML-modules.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
@@ -359,6 +361,7 @@ Requires:       cmake(Qt6Quick3DUtils) = %{real_version}
 %description -n qt6-quick3dutils-private-devel
 This package provides private headers of libQt6Quick3DUtils that do not have any
 ABI or API guarantees.
+
 
 ### Private only library ###
 

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Nov 13 17:46:41 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+
+- Create sub-packages for the config
+  + Remove config manipulation from image building
+  + Set up a config for SLE-Micro
+  + Makes deafult upstream config available
+
+- Update to 2.9.1.1 (bsc#1217301, bsc#1217302)
+  + Update remove-mock.patch
+  + Download certificates when goal state source is fast track #2761
+  + Increase the max number of extension events by 20% #2785
+  + Remove version suffix from extension slice #2782
+  + Support int type for eventPid and eventTid fields #2786
+  + Improve log for swap counter not found #2789
+  + Remove cgroup files during deprovisioning #2790
+  + Log VM architecture in heartbeat telemetry for arm64 adoption
+     monitoring #2818
+  + Enforce memory usage for agent #2671
+  + Use common download logic for agent downloads #2682
+  + Implement Fedora distro #2642
+  + Report message in handler heartbeat #2688
+  + Remove dependency on pathlib from makepkg #2717
+  + Do not fetch extensions goal state in log collector #2713
+  + Update log collector unit file to remove memory limit #2757
+  + Fix bug in get_dhcp_pid (CoreOS) #2784
+  + Fetch full distro version for mariner #2773
+From 2.9.04
+  + Resource Governance on extensions (CPU monitoring and enforcing & Memory
+    monitoring) #2632 #2581 #2555
+  + Agent resource governance #2597 #2591 #2546
+  + monitor system-wide memory metrics (#2610)
+  + Additional telemetry for goal state (#2675)
+  + HostGAPlugin usage improvements #2662 #2673 #2655 #2651
+  + Add logging statements for mrseq migration during update (#2667)
+  + Logcollector memory usage #2658 #2637
+  + Update Log Collector default in Comments and Readme (#2608)
+  + Improve telemetry success and failure markers (#2605) #2604 #2599
+  + Fix formatting of exceptions on Python 3.10
+    (traceback.format's etype argument) (#2663)
+  + Fix UNKNOWN(Zombie) Process in unexpected processes check (#2644)
+  + SUSE: Fix valid values for DHCLIENT_HOSTNAME_OPTION (#2643)
+  + Debian - string conversion for systemd service (#2574)
+  + Do not set a CPU quota on the agent for RHEL and Centos (#2685) #2689 #2693
+  + support rhel distro (#2620) #2598
+  + Added support for devuan linux distribution (#2553)
+
+No incremental updates between 2.8.011 and 2.9.0.4
+
+-------------------------------------------------------------------
 Thu Feb  9 11:37:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Clean up conditions in spec file:

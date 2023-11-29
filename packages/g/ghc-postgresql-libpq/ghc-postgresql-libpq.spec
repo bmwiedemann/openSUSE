@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.5.0
+Version:        0.10.0.0
 Release:        0
 Summary:        Low-level binding to libpq
 License:        BSD-3-Clause

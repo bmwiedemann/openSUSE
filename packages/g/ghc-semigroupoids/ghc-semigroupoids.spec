@@ -19,7 +19,7 @@
 %global pkg_name semigroupoids
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        5.3.7
+Version:        6.0.0.1
 Release:        0
 Summary:        Semigroupoids: Category sans id
 License:        BSD-2-Clause

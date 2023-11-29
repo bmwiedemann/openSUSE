@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 21 15:35:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9:
+  * Fix issue with handling certain FT failures.
+  * Fix issue with handling user-disabled bands.
+  * Fix issue with handling roam on beacon loss event.
+  * Add support for PKEX configurator.
+  * Add support for PKEX enrollee.
+
+-------------------------------------------------------------------
 Tue Aug 29 12:27:09 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.8

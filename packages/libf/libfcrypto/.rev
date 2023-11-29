@@ -39,4 +39,14 @@
     <comment>- system-libs.patch requires autoconf rerun; add the dependency.</comment>
     <requestid>1127555</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c2ff766ccbaa859b97952080ab57aa40</srcmd5>
+    <version>20221229</version>
+    <time>1700865261</time>
+    <user>anag+factory</user>
+    <comment>- Delete system-libs.patch (only needed when _service makes
+  tarballs directly from git)
+- Build the Python modules</comment>
+    <requestid>1128394</requestid>
+  </revision>
 </revisionlist>

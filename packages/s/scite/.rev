@@ -432,4 +432,14 @@
     <comment></comment>
     <requestid>1114641</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2e0a146171cd8f9766647d42087726f6</srcmd5>
+    <version>5.4.0</version>
+    <time>1700675724</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.4.0:
+  * No Linux specific changes.
+- Drop scite-fix-missing-include.patch: upstreamed.</comment>
+    <requestid>1128137</requestid>
+  </revision>
 </revisionlist>

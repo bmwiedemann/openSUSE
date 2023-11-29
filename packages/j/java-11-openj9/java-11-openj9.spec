@@ -33,19 +33,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       20
-%global patchver        1
-%global buildver        1
+%global updatever       21
+%global patchver        0
+%global buildver        9
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   0880e8df04a4bc00a61571fcf118ba77c214f458
-%global root_branch     v0.40.0-jdk11.0.20.1-release
+%global root_revision   0fd7a052778ac4c067ee4c0f7ee9f481e8b0ef68
+%global root_branch     v0.41.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    e80bff83b7fda8875071d89de7c73184d847085d
-%global omr_branch      v0.40.0-release
+%global omr_revision    5eee6ad9d0969d938892cd186056ae66912c7a61
+%global omr_branch      v0.41.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision d12d10c9ea2de2cf363095e609536ffe451bd25f
-%global openj9_branch   v0.40.0-release
-%global openj9_tag      openj9-0.40.0
+%global openj9_revision 461bf3c70bd87f1bc8422214cdb5c6c3a0ae4ff1
+%global openj9_branch   v0.41.0-release
+%global openj9_tag      openj9-0.41.0
 # JavaEE modules
 %global java_activation_repository activation
 %global java_activation_tag JAF-1_2_0
@@ -426,12 +426,15 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch501
 
 cat %{SOURCE100} \
-    | sed "s/@OPENJ9_SHA@/%{openj9_revision}/g" \
+    | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
     | sed "s/@OPENJ9_BRANCH@/%{openj9_branch}/g" \
     | sed "s/@OPENJ9_TAG@/%{openj9_tag}/g" \
-    | sed "s/@OPENJ9OMR_SHA@/%{omr_revision}/g" \
-    | sed "s/@OPENJDK_SHA@/%{root_revision}/g" \
+    | sed "s/@OPENJ9OMR_SHA@/`expr substr '%{omr_revision}' 1 7`/g" \
+    | sed "s/@OPENJDK_SHA@/`expr substr '%{root_revision}' 1 7`/g" \
     | patch -p1 -u -l
+
+sed -i -e "s/<Unknown>/`expr substr '%{omr_revision}' 1 7`/g" \
+    omr/cmake/versions.cmake
 
 # Prepare desktop files
 for file in %{SOURCE11} ; do
@@ -824,7 +827,7 @@ if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
 fi
 
 # remove the default empty cacert file, if it's installed
-if [ 0`stat -c "%{s}" %{cacerts} 2>/dev/null` = "032" ] ; then
+if [ 0`stat -c "%%s" %{cacerts} 2>/dev/null` = "032" ] ; then
     rm -f %{cacerts}
 fi
 
@@ -956,9 +959,7 @@ fi
 
 %{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/bin/java
-%ifnarch aarch64
 %{_jvmdir}/%{sdkdir}/bin/jitserver
-%endif
 %{_jvmdir}/%{sdkdir}/bin/jjs
 %{_jvmdir}/%{sdkdir}/bin/keytool
 %{_jvmdir}/%{sdkdir}/bin/pack200
@@ -987,9 +988,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/OMRTraceFormat.dat
 %{_jvmdir}/%{sdkdir}/lib/default/j9ddr.dat
 %{_jvmdir}/%{sdkdir}/lib/default/libcuda4j29.so
-%ifnarch ppc64 ppc64le
 %{_jvmdir}/%{sdkdir}/lib/default/libj9criu29.so
-%endif
 %{_jvmdir}/%{sdkdir}/lib/default/libj9dmp29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gc29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gcchk29.so

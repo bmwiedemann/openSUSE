@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 24 09:38:20 UTC 2023 - ro@suse.com
+
+- Update to version 0.34:
+  * helpers/functions: Always treat all *.spec files as recipes
+
+-------------------------------------------------------------------
 Tue Aug 01 15:41:05 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.33:

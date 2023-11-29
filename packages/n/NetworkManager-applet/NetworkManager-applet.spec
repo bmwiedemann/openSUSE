@@ -84,8 +84,7 @@ connection settings.
 %lang_package -n NetworkManager-connection-editor
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %meson \

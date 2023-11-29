@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 24 20:16:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.5.1
+  * Fix error when getting code completions.
+- Release 5.5.0
+  * Drop support for Python 3.7.
+  * Remove ipython_genutils as a dependency.
+
+-------------------------------------------------------------------
 Sun Sep 24 18:18:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.4.4

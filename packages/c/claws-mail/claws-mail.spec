@@ -32,7 +32,7 @@
 %endif
 
 Name:           claws-mail
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
@@ -52,7 +52,6 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libetpan-devel >= 1.9.4
 BuildRequires:  libexpat-devel
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libgdata-devel >= 0.17.2
 BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg-devel >= 2.40.5
 BuildRequires:  openldap2-devel
@@ -238,8 +237,8 @@ EOF
 %dir %{_libdir}/claws-mail/plugins
 %{_libdir}/claws-mail/plugins/*.so
 %{_libdir}/claws-mail/plugins/*.deps
-%dir %{_libdir}/claws-mail/plugins/web_extensions
-%{_libdir}/claws-mail/plugins/web_extensions/*.so
+%dir %{_libdir}/claws-mail/web_extensions
+%{_libdir}/claws-mail/web_extensions/fancywebextension.so
 %{_datadir}/applications/claws-mail.desktop
 %{_datadir}/icons/hicolor/*/apps/claws-mail.png
 %{_datadir}/pixmaps/claws-mail-64x64.png

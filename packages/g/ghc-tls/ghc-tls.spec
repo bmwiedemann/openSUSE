@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.0
+Version:        1.9.0
 Release:        0
 Summary:        TLS/SSL protocol native implementation (Server and Client)
 License:        BSD-3-Clause
@@ -39,12 +39,16 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cereal-devel
 BuildRequires:  ghc-cereal-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
+BuildRequires:  ghc-crypton-x509-devel
+BuildRequires:  ghc-crypton-x509-prof
+BuildRequires:  ghc-crypton-x509-store-devel
+BuildRequires:  ghc-crypton-x509-store-prof
+BuildRequires:  ghc-crypton-x509-validation-devel
+BuildRequires:  ghc-crypton-x509-validation-prof
 BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-data-default-class-prof
-BuildRequires:  ghc-hourglass-devel
-BuildRequires:  ghc-hourglass-prof
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-mtl-devel
@@ -54,16 +58,14 @@ BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
-BuildRequires:  ghc-x509-devel
-BuildRequires:  ghc-x509-prof
-BuildRequires:  ghc-x509-store-devel
-BuildRequires:  ghc-x509-store-prof
-BuildRequires:  ghc-x509-validation-devel
-BuildRequires:  ghc-x509-validation-prof
+BuildRequires:  ghc-unix-time-devel
+BuildRequires:  ghc-unix-time-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-hourglass-devel
+BuildRequires:  ghc-hourglass-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel

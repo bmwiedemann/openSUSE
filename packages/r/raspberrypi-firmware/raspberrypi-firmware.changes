@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 23 10:50:50 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8972935 (2023-11-21)
+  * firmware: config: Add [pi5] to config.txt on 2711 and earlier platforms
+  * firmware: arm_dt: Add support for the HAT map 
+    See: raspberrypi/linux#5610
+  * firmware: arm_dt: Ensure strings are NUL-terminated
+  * firmware: video_decode: Add support for 32bpp RGB conversion
+  * firmware: Image format patches
+  * firmware: platform: Fixes for arm side display when throttling
+  * firmware: dtoverlay: Support literal assignments of path strings 
+  * firmware: arm_loader: Fix non-standard console UARTs
+  * firmware: arm_loader: Improve UART console selection
+  * firmware: arm_loader: Remove unwanted assert
+  * firmware: arm_loader: initramfs must match the kernel
+  * firmware: arm_loader: Don't overwrite kernel path, check before loading stub
+  * firmware: arm_loader: Use os_prefix when looking for stubs
+  * firmware: arm_loader: Add auto_initramfs support
+  * firmware: arm_loader: Set WiFi MAC address if all zeroes
+  * firmware: platform: Don't set GPIOs 28&29 to RGMII if NO_RGMII trait is set
+
+-------------------------------------------------------------------
 Thu May  4 16:06:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

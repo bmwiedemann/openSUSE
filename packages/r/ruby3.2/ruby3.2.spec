@@ -106,6 +106,9 @@ BuildRequires:  llvm-devel
 BuildRequires:  gmp-devel
 %if %{with jemalloc}
 BuildRequires:  jemalloc-devel
+Provides:       %{name}-with-jemalloc = %{version}-%{release}
+%else
+Provides:       %{name}-without-jemalloc = %{version}-%{release}
 %endif
 BuildRequires:  autoconf
 BuildRequires:  libffi-devel

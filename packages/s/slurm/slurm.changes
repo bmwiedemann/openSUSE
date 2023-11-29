@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 20 15:29:55 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- On SLE-12 exclude build for s390x.
+
+-------------------------------------------------------------------
 Mon Nov  6 07:38:00 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Add missing dependencies to slurm-config to plugins package.

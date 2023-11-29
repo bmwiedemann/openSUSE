@@ -595,4 +595,41 @@
     (@krassowski)</comment>
     <requestid>1117066</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db53bf7a397c75eb0dc19d97986a6e67</srcmd5>
+    <version>4.0.9</version>
+    <time>1701121370</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.9
+  ## Bugs fixed
+  * Improve cell toolbar tracker #15314 (@fcollonval)
+  * Do not update filebrowser breadcrumbs when not needed #15387
+    (@krassowski)
+  * Don't show default value for objects in Settings Editor #15380
+    (@firai)
+  * Fix highlighting search in an out-of-viewport cell #15376
+    (@fcollonval)
+  * Fix overreactive scrolling to next cell after Shift + Enter
+    #15288 (@krassowski)
+  * Fix missing default property breaking codemirror overrides.json
+    #15346 (@LJMP)
+  * Fix update button in extension manager #15331
+    (@nbowditch-einblick)
+  * Fix scrolling when dragging files in the file browser #15318
+    (@krassowski)
+  * Fix scrolling past long outputs in presence of un-rendered
+    headings #15356 (@krassowski)
+  * Update notebook window on resize if height changes #15357
+    (@krassowski)
+  * Remove unnecessary requirement from codemirror service plugin
+    #15362 (@paulkim3151)
+- Release 4.0.8
+  ## Enhancements made
+  * Expand search box horizontally when text grows long #15266
+    (@sinistersnare)
+  ## Bugs fixed
+  * Add min width to constrain resizing in side-by-side view #14529
+    (@dharmaquark)</comment>
+    <requestid>1128944</requestid>
+  </revision>
 </revisionlist>

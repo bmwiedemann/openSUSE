@@ -157,4 +157,21 @@
   * Support for Python versions &lt; 3.7 are no longer supported.</comment>
     <requestid>1109517</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0fd3c67967dda0f3aa063e310f9cf840</srcmd5>
+    <version>0.40.2</version>
+    <time>1701206335</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.40.2:
+  * The verification module has been removed. NOTE: this changes
+    the public APIs by removing the &quot;verify&quot; parameter.
+  * Changed FORCE_MULTILINE_DICT to override
+    SPLIT_ALL_TOP_LEVEL_COMMA_SEPARATED_VALUES.
+  * Adopt pyproject.toml (PEP 517) for build system
+  * Do not treat variables named `match` as the match keyword.
+  * Fix SPLIT_ARGUMENTS_WHEN_COMMA_TERMINATED for one-item
+    argument lists.
+  * Fix trailing backslash-newline on Windows when using stdin.</comment>
+    <requestid>1129242</requestid>
+  </revision>
 </revisionlist>

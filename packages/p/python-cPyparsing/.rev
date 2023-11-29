@@ -74,4 +74,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1100795</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e3b7c4411740faf7e34bca4dd70db0aa</srcmd5>
+    <version>2.4.7.2.3.0</version>
+    <time>1701023819</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.7.2.3.0:
+  * When used with Coconut, requires v3.0.4+.
+  * Various fixes for incremental parsing mode.
+  * Includes a bunch of internal performance improvements and
+    modifications to support Coconut performance features.
+  * Fix incremental parsing with common suffixes.
+  * Incremental parsing now produces performance improvements for
+    parses with common suffixes, not just common prefixes.</comment>
+    <requestid>1128732</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Mon Nov 27 10:56:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.181:
+  * General
+    - [policy] Add Sibling Policy @theBeginner86 (#9410)
+    - [Helm] Update MeshSync chart @MUzairS15 (#9421)
+    - [Playground] Add troubleshooting steps for playground
+      environment. @MUzairS15 (#9422)
+  * Meshery CLI
+    - [ADDED] system model command @zakisk (#8284)
+    - fix: Prevent Manually Added Content in CLI Docs to be
+      Overwritten @aboobakersiddiqr63 (#9125)
+  * Meshery UI
+    - Meshmodel Postgres & Kubernetes Component @ptdatta (#8767)
+    - Enhance dashboard UI @sudhanshutech (#9428)
+    - [Connections] - Enhancements to connections @senali-d (#9441)
+    - Fix registry models sorting @ptdatta (#9420)
+    - Analytics logo added @ritiksaxena124 (#9425)
+    - [Icon] Analytics Category @leecalcote (#9424)
+    - [UI] Fixed registry not sorting models alphabetically
+      @Shiva953 (#9406)
+    - Add icons for whoAmI @Akshun-01 (#9329)
+    - [Connections] Status transitions @senali-d (#9405)
+    - [bug] Add missing optional chaining in Dashboard
+      @theBeginner86 (#9411)
+  * Bug Fixes
+    - [bug] Add missing optional chaining in Dashboard
+      @theBeginner86 (#9411)
+  * Maintenance
+    - Chore: Remove kuttl library @leecalcote (#9450)
+  * Documentation
+    - Fixed a typo @vikram-kangotra (#9447)
+    - [Server] Add annotations as query param to meshmodel APIs.
+      @MUzairS15 (#9443)
+    - fix: Prevent Manually Added Content in CLI Docs to be
+      Overwritten @aboobakersiddiqr63 (#9125)
+    - [Docs] Architecture update @leecalcote (#9419)
+    - update @leecalcote (#9417)
+    - [Docs] WASM Filter Mgmt update @leecalcote (#9416)
+    - [Docs] SMI Removal @leecalcote (#9415)
+    - [Docs] Managing Events with Notification Center @leecalcote
+      (#9414)
+    - [Docs] Models uplift @leecalcote (#9412)
+
+-------------------------------------------------------------------
+Mon Nov 27 10:49:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.180:
+  * General
+    - [Connection] Add connection & credential definitions for
+      Meshery model. @MUzairS15 (#9409)
+    - [Server] Perform transitions in a separate routine @MUzairS15
+      (#9407)
+  * Meshery CLI
+    - [chore] Run gofmt. @MUzairS15 (#9408)
+  * Meshery UI
+    - [chore] rm comments @theBeginner86 (#9404)
+
+-------------------------------------------------------------------
+Mon Nov 27 10:32:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.179:
+  * General
+    - [Server] update status at the end of the final state
+      @MUzairS15 (#9402)
+    - [Server] Handle events emitted by Execute funcs properly.
+      @MUzairS15 (#9397)
+    - Add New shapes (Polygons) @aabidsofi19 (#9374)
+  * Meshery UI
+    - Enhance Dashboard @theBeginner86 (#9352)
+    - fix ui bug in dark mode of modal @vaibhavpnimkar (#9389)
+    - Registryui @ptdatta (#9370)
+    - [Connections] Connection State Management @MUzairS15 (#9383)
+  * Maintenance
+    - Bump golang.org/x/oauth2 from 0.12.0 to 0.14.0 @dependabot
+      (#9341)
+  * Documentation
+    - [Docs] Managing infrastructure with Meshery. @MUzairS15
+      (#9391)
+  * Security
+    - Filter "order by" parameter to fix sql inject vuln @phant0ms
+      (#9372)
+
+-------------------------------------------------------------------
+Mon Nov 27 10:19:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.178:
+  * General
+    - [Model] Add connection definition for kubernetes model
+      @MUzairS15 (#9368)
+    - [chore] Bump MeshKit v0.6.85 @theBeginner86 (#9380)
+    - Added MAINTAINERS.md @ankushbhardwaj408 (#9365)
+    - make isAnnotation update dynamic @MUzairS15 (#9366)
+    - [Extensions] Enhance Meshery Docker Extension UI @senali-d
+      (#9377)
+  * Meshery UI
+    - fix width of connection chip @sudhanshutech (#9386)
+    - Reuse connections chip @sudhanshutech (#9382)
+    - Color of FavIcon in the footer is changed to keppel green
+      @VivekBaldha0712 (#9039)
+    - fixed prettier error @captain-Akshay (#9381)
+    - [bug] Fix URL import @theBeginner86 (#9378)
+    - Bump the npm_and_yarn at /ui security update group in /ui
+      with 1 update @dependabot (#9234)
+  * Maintenance
+    - Bump the npm_and_yarn at /ui security update group in /ui
+      with 1 update @dependabot (#9234)
+  * Documentation
+    - [Docs] Update connections.md @leecalcote (#9373)
+
+-------------------------------------------------------------------
+Mon Nov 27 10:07:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.177:
+  * General
+    - [Model] Add connection definition for kubernetes model
+      @MUzairS15 (#9368)
+    - [chore] Bump MeshKit v0.6.85 @theBeginner86 (#9380)
+    - Added MAINTAINERS.md @ankushbhardwaj408 (#9365)
+    - make isAnnotation update dynamic @MUzairS15 (#9366)
+  * Meshery UI
+    - fix width of connection chip @sudhanshutech (#9386)
+    - Reuse connections chip @sudhanshutech (#9382)
+    - Color of FavIcon in the footer is changed to keppel green
+      @VivekBaldha0712 (#9039)
+    - fixed prettier error @captain-Akshay (#9381)
+    - [bug] Fix URL import @theBeginner86 (#9378)
+    - Bump the npm_and_yarn at /ui security update group in /ui
+      with 1 update @dependabot (#9234)
+  * Maintenance
+    - Bump the npm_and_yarn at /ui security update group in /ui
+      with 1 update @dependabot (#9234)
+  * Documentation
+    - [Docs] Update connections.md @leecalcote (#9373)
+
+-------------------------------------------------------------------
 Thu Nov 16 14:52:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.176:

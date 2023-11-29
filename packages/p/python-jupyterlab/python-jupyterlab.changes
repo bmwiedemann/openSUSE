@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Nov 26 14:54:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.9
+  ## Bugs fixed
+  * Improve cell toolbar tracker #15314 (@fcollonval)
+  * Do not update filebrowser breadcrumbs when not needed #15387
+    (@krassowski)
+  * Don't show default value for objects in Settings Editor #15380
+    (@firai)
+  * Fix highlighting search in an out-of-viewport cell #15376
+    (@fcollonval)
+  * Fix overreactive scrolling to next cell after Shift + Enter
+    #15288 (@krassowski)
+  * Fix missing default property breaking codemirror overrides.json
+    #15346 (@LJMP)
+  * Fix update button in extension manager #15331
+    (@nbowditch-einblick)
+  * Fix scrolling when dragging files in the file browser #15318
+    (@krassowski)
+  * Fix scrolling past long outputs in presence of un-rendered
+    headings #15356 (@krassowski)
+  * Update notebook window on resize if height changes #15357
+    (@krassowski)
+  * Remove unnecessary requirement from codemirror service plugin
+    #15362 (@paulkim3151)
+- Release 4.0.8
+  ## Enhancements made
+  * Expand search box horizontally when text grows long #15266
+    (@sinistersnare)
+  ## Bugs fixed
+  * Add min width to constrain resizing in side-by-side view #14529
+    (@dharmaquark)
+  * Fix collapsed cells styling #15322 (@fcollonval)
+  * Fix autobrackets and other default CM extension #15297
+    (@fcollonval)
+  * Fix rulers position with gutter width #15296 (@fcollonval)
+  * Declare Webpack loaders with require.resolve() #15299 (@tibdex)
+
+-------------------------------------------------------------------
 Wed Oct 11 20:44:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.7

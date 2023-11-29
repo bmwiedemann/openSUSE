@@ -74,4 +74,28 @@
     <comment>wimlib 1.14.1 (forwarded request 1090802 from AndreasStieger)</comment>
     <requestid>1091349</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1977b3d25d6a5ee79f5ba17932096fe4</srcmd5>
+    <version>1.14.3</version>
+    <time>1701023900</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.3:
+  * Fixed a bug introduced in v1.14.0 where non-ASCII characters
+    stopped being accepted in image names and descriptions.
+    This bug only affected UNIX-like systems that use `signed char`
+    e.g. x86 Linux systems.
+  * Fixed a bug introduced in v1.14.0 where a crash would
+    sometimes occur
+  * Fixed an issue where some WIM images written by wimlib
+    weren't accepted by some MS software versions.
+  * Commands passed to wimupdate on standard input are now
+    interpreted as UTF-8 or UTF-16LE (autodetected), just like
+    wimcapture config files and wimextract path list files.
+
+  * better default behavior when converting to and from solid
+  * clarified license text
+- Update to v1.13.1 stable
+- Initial packaging for openSUSE</comment>
+    <requestid>1128936</requestid>
+  </revision>
 </revisionlist>

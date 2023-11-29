@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 16 16:56:06 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com> - 1.068
+
+- Update to version 1.068:
+  * Add diagnostic job for checking presence of a file on mirrors
+  * Adjust switch Digest::Zsync to separate package
+  * Update regexps to handle zchunk, zstd and sha512
+  * Improve link detection in the same folder
+  * Add a Vary Fastly-SSL
+
+-------------------------------------------------------------------
 Thu Oct 26 07:56:51 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.067:

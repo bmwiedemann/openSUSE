@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-click
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Sphinx extension that automatically documents click applications
 License:        MIT

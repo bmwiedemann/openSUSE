@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 22 09:54:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * tox: Remove py37 entries
+  * Add support for mocking modules
+  * docs: Fix indentation
+  * setup: Add Sphinx classifier
+
+-------------------------------------------------------------------
 Wed Sep 13 08:30:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:

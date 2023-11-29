@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 25 19:10:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.1:
+  * Usability, bells and whistles
+  * The remote messages dialog is now displayed for the Pull and
+    Push actions in the
+  * Branches widget only. This dialog is disabled by default and
+    enabled in the
+  * main Push and Pull dialog settings.
+  * The whole-file staging actions in the Diff widget's right-
+    click menu are now listed
+  * after the selection and hunk staging actions. This helps
+    prevent accidental clicks
+  * from clobbering the index for the entire file.
+  * The completion popup no longer reappears after an item is
+    selected in the
+  * "Checkout Branch" action and similar dialogs.
+  * Fixes
+  * PyQt6 compatibility was improved.
+- switch to PyQt6
+
+-------------------------------------------------------------------
 Sat Nov 18 08:53:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:

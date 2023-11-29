@@ -352,7 +352,7 @@ struct utsname uts;
 	erg = qc_get_attribute_string(configuration_handle, qc_type, 0, &cpu_type);
 	if (erg == 1 && cpu_type != NULL) {
 		
-		if ( check_model(cpu_type) ) {
+		if ( !check_model(cpu_type) ) {
 			goto return_does_not_exist;
 		} /* endif */
 	} /* endif */

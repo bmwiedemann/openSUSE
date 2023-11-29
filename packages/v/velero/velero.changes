@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Nov 27 05:39:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.2:
+  * RM support for Escaped bool, float, null (#7118) (#7131)
+  * Add v1.12.2 changelog
+  * revert test changes
+  * `make update`
+  * update changelog to reflect removed waits
+  * CSIFeatureFlag enable check
+  * remove waiting during finalize
+  * skip this if SnapshotMoveData
+  * refactor backup snapshot status updates into
+    UpdateBackupSnapshotsStatus() and run in
+    backup_finalizer_controller
+  * Add PatchResource unit test for backup status
+  * Issue 7068: add a finalizer to protect retained VSC
+  * Bump up Velero base image to latest patch release
+  * update changelog
+  * Merge pull request #6917 from 27149chen/rm-improvement
+  * Fix node-agent missing metrics-addr parms to define the server
+    start.
+  * issue 7094: fallback to full backup if previous snapshot is not
+    found
+  * Add DataUpload Result and CSI VolumeSnapshot check for restore
+    PV.
+  * Truncate the credential file to avoid the change of secret
+    content messing it up
+  * issue 7027: backup exposer -- don't assume first volume as the
+    backup volume
+  * restore: Use warning when Create IsAlreadyExist and Get error
+    (#7004)
+  * Read information from the credential specified by BSL
+  * Make configmapref check case insensitive (#6804) (#7023)
+  * Fix issue 6913
+  * CVE-2023-44487 gRPC-Go HTTP/2 Rapid Reset vulnerability
+  * Update testbed matrix for v1.12.1
+  * kopia/repository/config/aws.go: Set session.Options profile
+    from config
+
+-------------------------------------------------------------------
 Wed Oct 25 04:38:44 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.12.1:

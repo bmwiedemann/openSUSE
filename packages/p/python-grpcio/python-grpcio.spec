@@ -30,6 +30,10 @@ URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-grpcio-cython3-compat.patch gh#grpc/grpc#33918 badshah400@gmail.com -- Fix noexcept errors upon compiling with Cython 3+
 Patch0:         python-grpcio-cython3-compat.patch
+# PATCH-FIX-SLE xxhash-avoid-armv6-unaligned-access.patch alarrosa@suse.com -- do not expect unaligned accesses to work on armv6
+Patch1:         xxhash-avoid-armv6-unaligned-access.patch
+# PATCH-FIX-SLE xxhash-ppc64le-gcc7.patch boo#1208794 alarrosa@suse.com -- fix build failure on ppc64le when using gcc 7
+Patch2:         xxhash-ppc64le-gcc7.patch
 BuildRequires:  %{python_module Cython >= 0.29.8}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
@@ -56,7 +60,12 @@ and server applications to communicate, and enables the building of
 connected systems.
 
 %prep
-%autosetup -p1 -n grpcio-%{version}
+%autosetup -N -n grpcio-%{version}
+%patch0 -p1
+pushd third_party/xxhash
+%patch1 -p1
+%patch2 -p1
+popd
 
 %build
 export GRPC_BUILD_WITH_BORING_SSL_ASM=false

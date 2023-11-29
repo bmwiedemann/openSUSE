@@ -1,7 +1,7 @@
 #
 # spec file for package nemiver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,8 +81,7 @@ This package contains the development files to build debugger backend.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %if 0%{?scm_bootstrap}

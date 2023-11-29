@@ -163,4 +163,22 @@
     <comment></comment>
     <requestid>1103222</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5bd3fef684e454e4476ae2cf88b266d6</srcmd5>
+    <version>2.11.1</version>
+    <time>1701206321</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.11.1:
+  * E275: fix false positive with fstrings containing keyword
+    parts in python 3.12
+
+  testsuite_fixes.patch
+  * E301: fix regression disallowing decorated one-liners.
+  * E714: fix false positive with chained ``is not``.
+  * E225: require whitespace around ``and`` ``in`` ``is`` and ``or``.
+    PR gh#PyCQA/pycodestyle#919.
+* When no path is specified, do not try to read from stdin.
+  * Report E227 or E228 instead of E225 for whitespace around bitwise,</comment>
+    <requestid>1129190</requestid>
+  </revision>
 </revisionlist>

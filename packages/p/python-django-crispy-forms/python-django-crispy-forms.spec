@@ -27,7 +27,7 @@
 %endif
 %define mod_name django-crispy-forms
 Name:           python-%{mod_name}%{psuffix}
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
@@ -40,14 +40,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module %{mod_name} = %{version}}
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module crispy-bootstrap3}
 BuildRequires:  %{python_module crispy-bootstrap4}
 BuildRequires:  %{python_module crispy-bootstrap5}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 %endif
-Requires:       python-Django >= 3.2
+Requires:       python-Django >= 4.2
 Recommends:     python-crispy-bootstrap3
 Recommends:     python-crispy-bootstrap4
 Recommends:     python-crispy-bootstrap5

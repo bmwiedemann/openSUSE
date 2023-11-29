@@ -2,7 +2,11 @@
 Fri Oct 27 21:14:37 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 24.0.7-ce. See upstream changelong online at
-  <https://docs.docker.com/engine/release-notes/24.0/#2407>.
+  <https://docs.docker.com/engine/release-notes/24.0/#2407>. bsc#1217513
+  * Deny containers access to /sys/devices/virtual/powercap by default.
+    - CVE-2020-8694 bsc#1170415
+	- CVE-2020-8695 bsc#1170446
+	- CVE-2020-12912 bsc#1178760
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch

@@ -159,4 +159,12 @@
     <comment>Security fixes</comment>
     <requestid>1103983</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f644131f1f4d0044fa9d023db268a86b</srcmd5>
+    <version>1.8.0.392</version>
+    <time>1700772138</time>
+    <user>anag+factory</user>
+    <comment>Security fixes</comment>
+    <requestid>1128326</requestid>
+  </revision>
 </revisionlist>

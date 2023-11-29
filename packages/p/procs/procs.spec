@@ -17,7 +17,7 @@
 
 
 Name:           procs
-Version:        0.14.3~0
+Version:        0.14.4+0
 Release:        0
 Summary:        A modern replacement for ps written in Rust
 License:        MIT
@@ -32,7 +32,7 @@ procs is a replacement for ps written in Rust.
 
 %prep
 %setup -qa1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

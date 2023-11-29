@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 22 12:07:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.4.0:
+  * No Linux specific changes.
+- Changes from version 5.3.8:
+  * Fix excessive memory use when deleting contiguous ranges
+    backwards. Notepad++ Issue #13442.
+  * Fix incorrect substitution when searching for a regular
+    expression backwards. Bug #2405.
+  * Make SCI_MOVESELECTEDLINESUP and SCI_MOVESELECTEDLINESDOWN
+    work for rectangular selections. Bug #2078. 
+- Add specfile tag to Patch0.
+- Drop scintilla-add-missing-includes.patch: upstreamed.
+
+-------------------------------------------------------------------
 Sun Oct  1 22:37:39 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.7:

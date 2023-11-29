@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-help-colors
-Version:        0.9.2
+Version:        0.9.4
 Release:        0
 Summary:        Colorization of help messages in Click
 License:        MIT

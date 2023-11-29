@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stack-data
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Extract data from python stack frames and tracebacks
 License:        MIT
 URL:            https://github.com/alexmojaki/stack_data
 Source:         https://files.pythonhosted.org/packages/source/s/stack_data/stack_data-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support typeguard 4+
-Patch0:         support-typeguard-4.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}

@@ -154,6 +154,8 @@ protocol exposed by the Microsoft software TPM2 simulator.
 %package -n     libtss2-fapi1
 Summary:        FAPI interface library
 Group:          System/Libraries
+Requires:       user(tss)
+Requires(post): user(tss)
 
 %description -n libtss2-fapi1
 This is the tpm2 Feature API (FAPI) library. This API is designed to be very

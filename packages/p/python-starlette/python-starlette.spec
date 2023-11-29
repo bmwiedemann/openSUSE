@@ -73,6 +73,10 @@ building high performance asyncio services.
 %build
 %pyproject_wheel
 
+# override default pytest.ini configuration in pyproject.toml to do
+# not crash on deprecation warning
+touch pytest.ini
+
 %install
 %if ! %{with test}
 %pyproject_install

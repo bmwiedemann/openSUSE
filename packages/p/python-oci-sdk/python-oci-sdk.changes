@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Nov 23 09:24:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.116.0
+  * Support for the PostgreSQL service
+  * Support for new operations in the Identity Domains service
+  * Support for enabling, disabling, and renewing SSL/TLS in the Big Data service
+  * Support for diarization in the AI Speech service
+  * Support for Capacity Topology API in the Compute service
+  * Model `MyRequest` in the Identity Domains service now allows only certain restricted
+    values. For more information please see https://docs.public.oneportal.content.oci.\
+    oraclecloud.com/en-us/iaas/tools/python/latest/api/identity_domains/models/oci.identity\
+    _domains.models.MyRequest.html#oci.identity_domains.models.MyRequest
+- from version 2.115.1
+  * Support for Java Management Service Downloads
+  * Support for creating autonomous dataguard associations in the Database service
+  * Support for SaaS administrative user configurations for autonomous database in the Database service
+  * Support for macOS in the the Java Management service
+  * Support for distribution and management of deployment rule sets in the Java Management service
+  * Support for new download location of Oracle Java runtime binaries in the Java Management service
+  * Support for exporting data across regions in the Java Management service
+  * Fixed an issue in Resource Principals v2.1 introduced in the `v2.111.0` release
+- from version 2.115.0
+  * Support for calling Oracle Cloud Infrastructure services in the us-saltlake-2 region
+  * Support for disaster recovery of load balancers, network load balancers and file
+    systems in the Disaster Recovery service
+  * Support for performing disaster recovery drills in the Disaster Recovery service
+  * Support for enterprise SKUs and extensibility in the Stack Monitoring service
+  * Support for metric extensions in the Stack Monitoring service
+  * Support for baseline and anomaly detection in the Stack Monitoring service
+  * Support for integration with Database Management service in the MySQL HeatWave service
+  * Support for MySQL database management in the Database Management service
+  * Support for database firewalls in the Data Safe service
+  * The properties `compartment_id` and `user_assessment_id` were removed from the
+    `ProfileAggregation` model in the Data Safe service
+- from version 2.114.0
+  * Support for optional parameters for autonomous container database create and update
+    operations in the Database service
+  * Support for maintenance runs for autonomous container database resources in the Database service
+  * Support for runtime unsupported connections for Oracle Database
+    and MySQL database types in the Database Tools service
+  * Support for PostgreSQL, Generic JDBC connections with runtime unsupported in the Database Tools service
+  * Support for resource locking in the Database Tools service
+  * Support for proxy sessions for Oracle database connections in the Database Tools service
+  * Support for global active tables in the NoSQL Database service
+  * Support for application dependency management (ADM) remediation
+    features in the Application Dependency Management service
+  * Support for additional connections types for Amazon Kinesis, Amazon Redshift, Elasticsearch,
+    Generic, Google BigQuery, Google Cloud Storage and Redis Database resources in the Golden Gate service
+  * Support for optional parameters for the list alarms status operation in the Monitoring Service
+  * Support for retries by default on operations of the Database Tools service
+  * Support for retries by default on operations of the Monitoring service
+  * The paremeter `opc_retry_token` was removed from operations `change_database_tools_connection_compartment`
+    and `change_database_tools_private_endpoint_compartment` in the Database Tools service
+  * Properties `user_password`, `connection_string` and `user_name` were removed from models
+    `CreateDatabaseToolsConnectionOracleDatabaseDetails` and `CreateDatabaseToolsConnectionMySqlDetails`
+    in the Database Tools service
+
+-------------------------------------------------------------------
 Thu Oct 19 08:42:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.113.0

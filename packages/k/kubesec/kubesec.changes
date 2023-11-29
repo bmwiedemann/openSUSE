@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 23 06:38:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.0:
+  * Bump dependencies
+  * Allow for providing an ip and port when running kubesec as
+    a server
+  * CI improvements
+
+-------------------------------------------------------------------
 Thu Jul 20 05:00:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix version output (see

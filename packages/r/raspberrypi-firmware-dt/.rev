@@ -437,4 +437,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>1099259</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>86d2289d19dc3af3f5ff392c10f85432</srcmd5>
+    <version>2023.11.21</version>
+    <time>1700771920</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128368</requestid>
+  </revision>
 </revisionlist>

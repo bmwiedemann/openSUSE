@@ -20,16 +20,17 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.5.15
+Version:        5.6.1
 Release:        0
 Summary:        Collection Haskell 98 bifunctors, bifoldables and bitraversables
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-assoc-devel
+BuildRequires:  ghc-assoc-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-orphans-devel
-BuildRequires:  ghc-base-orphans-prof
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-comonad-prof
@@ -85,6 +86,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

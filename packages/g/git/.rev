@@ -2682,4 +2682,41 @@ git 2.12.3
     <comment>git 2.24.1 (forwarded request 1123323 from AndreasStieger)</comment>
     <requestid>1123351</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>361508e3148d2526e0d70102a1378287</srcmd5>
+    <version>2.43.0</version>
+    <time>1700675655</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.43.0:
+ * The &quot;--rfc&quot; option of &quot;git format-patch&quot; used to be a valid way to
+   override an earlier &quot;--subject-prefix=&lt;something&gt;&quot; on the command
+   line and replace it with &quot;[RFC PATCH]&quot;, but from this release, it
+   merely prefixes the string &quot;RFC &quot; in front of the given subject
+   prefix.  If you are negatively affected by this change, please use
+   &quot;--subject-prefix=PATCH --rfc&quot; as a replacement.
+ * In Git 2.42, &quot;git rev-list --stdin&quot; learned to take non-revisions
+   (like &quot;--not&quot;) from the standard input, but the way such a &quot;--not&quot; was
+   handled was quite confusing, which has been rethought.  The updated
+   rule is that &quot;--not&quot; given from the command line only affects revs
+   given from the command line that comes but not revs read from the
+   standard input, and &quot;--not&quot; read from the standard input affects
+   revs given from the standard input and not revs given from the
+   command line.
+ * A message written in olden time prevented a branch from getting
+   checked out, saying it is already checked out elsewhere. But these
+   days, we treat a branch that is being bisected or rebased just like
+   a branch that is checked out and protect it from getting modified
+   with the same codepath.  The message has been rephrased to say that
+   the branch is &quot;in use&quot; to avoid confusion.
+ * Hourly and other schedules of &quot;git maintenance&quot; jobs are randomly
+   distributed now.
+ * &quot;git cmd -h&quot; learned to signal which options can be negated by
+   listing such options like &quot;--[no-]opt&quot;.
+ * The way authentication related data other than passwords (e.g.,
+   oauth token and password expiration data) are stored in libsecret
+   keyrings has been rethought.
+ * Update the libsecret and wincred credential helpers to correctly
+   match which credential to erase; they erased the wrong entry in</comment>
+    <requestid>1127934</requestid>
+  </revision>
 </revisionlist>

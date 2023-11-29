@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  4 20:59:07 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update text-zipper to version 0.13.
+  0.13
+  ----
+
+  Bug fixes:
+   * The zipper constructors now ignores non-printable characters (see
+     also #13)
+   * `insertMany` now no longer drops the input following a non-printable
+     character (#13)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:34 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

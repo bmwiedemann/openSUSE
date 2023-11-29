@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-devpi-common
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        Utilities jointly used by devpi-server and devpi-client
 License:        MIT

@@ -1604,7 +1604,6 @@ unsorted:
   - budgie-screenshot-applet-lang 
   - budgie-showtime-applet 
   - budgie-takeabreak-applet 
-  - budgie-trash-applet 
   - budgie-visualspace-applet 
   - budgie-wallstreet 
   - budgie-weathershow-applet 
@@ -1866,6 +1865,7 @@ unsorted:
   - cargo1.71 
   - cargo1.72 
   - cargo1.73 
+  - cargo1.74 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2206,7 +2206,7 @@ unsorted:
   - cmus-plugin-vorbis 
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
-  - cnf-rs-zsh 
+  - cnf-zsh 
   - cni-plugin-dnsname 
   - cni-plugin-flannel 
   - cntlm 
@@ -3608,6 +3608,8 @@ unsorted:
   - eth-fastfabric 
   - etherape 
   - etherape-lang 
+  - etherdfs 
+  - ethflop 
   - etrophy 
   - etrophy-data 
   - etrophy-devel 
@@ -4927,10 +4929,6 @@ unsorted:
   - ghc-config-ini-devel 
   - ghc-config-ini-doc 
   - ghc-config-ini-prof 
-  - ghc-connection 
-  - ghc-connection-devel 
-  - ghc-connection-doc 
-  - ghc-connection-prof 
   - ghc-constraints 
   - ghc-constraints-devel 
   - ghc-constraints-doc 
@@ -4971,10 +4969,6 @@ unsorted:
   - ghc-crypto-cipher-types-devel 
   - ghc-crypto-cipher-types-doc 
   - ghc-crypto-cipher-types-prof 
-  - ghc-crypto-random 
-  - ghc-crypto-random-devel 
-  - ghc-crypto-random-doc 
-  - ghc-crypto-random-prof 
   - ghc-cryptohash-md5 
   - ghc-cryptohash-md5-devel 
   - ghc-cryptohash-md5-doc 
@@ -4987,6 +4981,30 @@ unsorted:
   - ghc-cryptohash-sha256-devel 
   - ghc-cryptohash-sha256-doc 
   - ghc-cryptohash-sha256-prof 
+  - ghc-crypton 
+  - ghc-crypton-connection 
+  - ghc-crypton-connection-devel 
+  - ghc-crypton-connection-doc 
+  - ghc-crypton-connection-prof 
+  - ghc-crypton-devel 
+  - ghc-crypton-doc 
+  - ghc-crypton-prof 
+  - ghc-crypton-x509 
+  - ghc-crypton-x509-devel 
+  - ghc-crypton-x509-doc 
+  - ghc-crypton-x509-prof 
+  - ghc-crypton-x509-store 
+  - ghc-crypton-x509-store-devel 
+  - ghc-crypton-x509-store-doc 
+  - ghc-crypton-x509-store-prof 
+  - ghc-crypton-x509-system 
+  - ghc-crypton-x509-system-devel 
+  - ghc-crypton-x509-system-doc 
+  - ghc-crypton-x509-system-prof 
+  - ghc-crypton-x509-validation 
+  - ghc-crypton-x509-validation-devel 
+  - ghc-crypton-x509-validation-doc 
+  - ghc-crypton-x509-validation-prof 
   - ghc-cryptonite 
   - ghc-cryptonite-conduit 
   - ghc-cryptonite-conduit-devel 
@@ -5060,6 +5078,10 @@ unsorted:
   - ghc-digest-devel 
   - ghc-digest-doc 
   - ghc-digest-prof 
+  - ghc-digits 
+  - ghc-digits-devel 
+  - ghc-digits-doc 
+  - ghc-digits-prof 
   - ghc-directory 
   - ghc-directory-devel 
   - ghc-directory-doc 
@@ -5159,10 +5181,6 @@ unsorted:
   - ghc-filepattern-doc 
   - ghc-filepattern-prof 
   - ghc-filesystem 
-  - ghc-foldable1-classes-compat 
-  - ghc-foldable1-classes-compat-devel 
-  - ghc-foldable1-classes-compat-doc 
-  - ghc-foldable1-classes-compat-prof 
   - ghc-foldl 
   - ghc-foldl-devel 
   - ghc-foldl-doc 
@@ -5419,6 +5437,10 @@ unsorted:
   - ghc-indexed-traversable-instances-doc 
   - ghc-indexed-traversable-instances-prof 
   - ghc-indexed-traversable-prof 
+  - ghc-integer-conversion 
+  - ghc-integer-conversion-devel 
+  - ghc-integer-conversion-doc 
+  - ghc-integer-conversion-prof 
   - ghc-integer-logarithms 
   - ghc-integer-logarithms-devel 
   - ghc-integer-logarithms-doc 
@@ -6034,6 +6056,10 @@ unsorted:
   - ghc-text-conversions-prof 
   - ghc-text-devel 
   - ghc-text-doc 
+  - ghc-text-iso8601 
+  - ghc-text-iso8601-devel 
+  - ghc-text-iso8601-doc 
+  - ghc-text-iso8601-prof 
   - ghc-text-prof 
   - ghc-text-short 
   - ghc-text-short-devel 
@@ -6103,6 +6129,10 @@ unsorted:
   - ghc-tls-session-manager-devel 
   - ghc-tls-session-manager-doc 
   - ghc-tls-session-manager-prof 
+  - ghc-toml-parser 
+  - ghc-toml-parser-devel 
+  - ghc-toml-parser-doc 
+  - ghc-toml-parser-prof 
   - ghc-topograph 
   - ghc-topograph-devel 
   - ghc-topograph-doc 
@@ -9338,6 +9368,7 @@ unsorted:
   - kubectl-oomd 
   - kubectl-operator 
   - kubectl-tree 
+  - kubectl-view-allocations 
   - kubectl-who-can 
   - kubectx 
   - kubefirst 
@@ -9983,7 +10014,7 @@ unsorted:
   - libLTO16 
   - libLTO17 
   - libLibreGraphAPI1 
-  - libLimeSuite23_10-0 
+  - libLimeSuite23_11-0 
   - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit 
   - libMagick++-devel 
@@ -11309,8 +11340,8 @@ unsorted:
   - libcreg-devel 
   - libcreg-tools 
   - libcreg1 
+  - libcriterion-devel 
   - libcriterion3 
-  - libcriterion3-devel 
   - libcriu2 
   - libcroco 
   - libcroco-devel 
@@ -11550,6 +11581,7 @@ unsorted:
   - libdvbv5-0-32bit 
   - libdvbv5-devel 
   - libdvdnav-devel 
+  - libdvdnav4-32bit 
   - libdvdread-devel 
   - libdvdread8-32bit 
   - libdw-devel 
@@ -13257,7 +13289,7 @@ unsorted:
   - libnanomsg6 
   - libnanosvg0 
   - libnanosvgrast0 
-  - libnauty-2_8_6 
+  - libnauty-2_8_8 
   - libnbcompat-devel 
   - libnbcompat0 
   - libnbd 
@@ -13729,7 +13761,7 @@ unsorted:
   - libparaview5_11 
   - libpari-gmp-tls8 
   - libparlatype-devel 
-  - libparlatype5 
+  - libparlatype7 
   - libparpack2-openmpi4 
   - libparquet1400 
   - libparserutils-devel 
@@ -15191,7 +15223,6 @@ unsorted:
   - liburiparser1 
   - libusb-0_1-4-32bit 
   - libusb-1_0-0-32bit 
-  - libusb-1_0-devel 
   - libusb-1_0-devel-32bit 
   - libusb-compat-devel 
   - libusb3380-0 
@@ -17263,6 +17294,7 @@ unsorted:
   - molsketch-devel 
   - molsketch-doc 
   - monero-devel 
+  - monero-gui 
   - monero-utils 
   - monerod 
   - mongolian-fonts 
@@ -21597,6 +21629,7 @@ unsorted:
   - postgresql11-contrib 
   - postgresql11-devel 
   - postgresql11-docs 
+  - postgresql11-libversion 
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
   - postgresql11-orafce 
@@ -21618,6 +21651,7 @@ unsorted:
   - postgresql12-contrib 
   - postgresql12-devel 
   - postgresql12-docs 
+  - postgresql12-libversion 
   - postgresql12-llvmjit 
   - postgresql12-llvmjit-devel 
   - postgresql12-orafce 
@@ -21639,6 +21673,7 @@ unsorted:
   - postgresql13-contrib 
   - postgresql13-devel 
   - postgresql13-docs 
+  - postgresql13-libversion 
   - postgresql13-llvmjit 
   - postgresql13-llvmjit-devel 
   - postgresql13-orafce 
@@ -21661,6 +21696,7 @@ unsorted:
   - postgresql14-contrib 
   - postgresql14-devel 
   - postgresql14-docs 
+  - postgresql14-libversion 
   - postgresql14-llvmjit 
   - postgresql14-llvmjit-devel 
   - postgresql14-orafce 
@@ -21683,6 +21719,7 @@ unsorted:
   - postgresql15-contrib 
   - postgresql15-devel 
   - postgresql15-docs 
+  - postgresql15-libversion 
   - postgresql15-llvmjit 
   - postgresql15-llvmjit-devel 
   - postgresql15-orafce 
@@ -21704,6 +21741,7 @@ unsorted:
   - postgresql16-devel 
   - postgresql16-devel-mini 
   - postgresql16-docs 
+  - postgresql16-libversion 
   - postgresql16-llvmjit 
   - postgresql16-llvmjit-devel 
   - postgresql16-orafce 
@@ -22043,6 +22081,10 @@ unsorted:
   - python-atomicwrites-doc-doc 
   - python-automaton-doc 
   - python-azure-agent 
+  - python-azure-agent-config-default 
+  - python-azure-agent-config-hpc 
+  - python-azure-agent-config-micro 
+  - python-azure-agent-config-server 
   - python-azure-agent-test 
   - python-barbicanclient-doc 
   - python-base 
@@ -23771,6 +23813,7 @@ unsorted:
   - python310-execnet 
   - python310-executing 
   - python310-exiv2 
+  - python310-expandvars 
   - python310-expects 
   - python310-expiringdict 
   - python310-exrex 
@@ -23936,6 +23979,7 @@ unsorted:
   - python310-google_trans_new 
   - python310-googleapis-common-protos 
   - python310-googlemaps 
+  - python310-gp-libs 
   - python310-gpg 
   - python310-gphoto2 
   - python310-gprof2dot 
@@ -24288,6 +24332,7 @@ unsorted:
   - python310-libevtx 
   - python310-libewf 
   - python310-libexe 
+  - python310-libfcrypto 
   - python310-libfmos 
   - python310-libfsapfs 
   - python310-libfsext 
@@ -24324,6 +24369,7 @@ unsorted:
   - python310-libtmux 
   - python310-libusb1 
   - python310-libusbsio 
+  - python310-libversion 
   - python310-libvhdi 
   - python310-libvirt-python 
   - python310-libvmdk 
@@ -24441,6 +24487,7 @@ unsorted:
   - python310-miniupnpc 
   - python310-misaka 
   - python310-mistune 
+  - python310-mistune2 
   - python310-mitmproxy 
   - python310-mitmproxy-wireguard 
   - python310-mizani 
@@ -24537,6 +24584,7 @@ unsorted:
   - python310-net-snmp 
   - python310-netCDF4 
   - python310-netaddr 
+  - python310-nethsm 
   - python310-netifaces 
   - python310-netmiko 
   - python310-netpbmfile 
@@ -24577,8 +24625,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_25_2-gnu-hpc 
-  - python310-numpy_1_25_2-gnu-hpc-devel 
+  - python310-numpy_1_26_2-gnu-hpc 
+  - python310-numpy_1_26_2-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -25468,7 +25516,7 @@ unsorted:
   - python310-scikit-umfpack 
   - python310-scipy 
   - python310-scipy-gnu-hpc 
-  - python310-scipy_1_11_1-gnu-hpc 
+  - python310-scipy_1_11_4-gnu-hpc 
   - python310-scitokens 
   - python310-scour 
   - python310-scp 
@@ -25582,7 +25630,6 @@ unsorted:
   - python310-sphinx-tabs 
   - python310-sphinx-theme-builder 
   - python310-sphinx-version-warning 
-  - python310-sphinx_mdinclude 
   - python310-sphinx_press_theme 
   - python310-sphinx_rtd_theme 
   - python310-sphinxcontrib-apidoc 
@@ -27229,6 +27276,7 @@ unsorted:
   - python311-execnet 
   - python311-executing 
   - python311-exiv2 
+  - python311-expandvars 
   - python311-expects 
   - python311-expiringdict 
   - python311-exrex 
@@ -27386,6 +27434,7 @@ unsorted:
   - python311-google_trans_new 
   - python311-googleapis-common-protos 
   - python311-googlemaps 
+  - python311-gp-libs 
   - python311-gphoto2 
   - python311-gprof2dot 
   - python311-gps3 
@@ -27709,6 +27758,7 @@ unsorted:
   - python311-libevtx 
   - python311-libewf 
   - python311-libexe 
+  - python311-libfcrypto 
   - python311-libfmos 
   - python311-libfsapfs 
   - python311-libfsext 
@@ -27745,6 +27795,7 @@ unsorted:
   - python311-libtmux 
   - python311-libusb1 
   - python311-libusbsio 
+  - python311-libversion 
   - python311-libvhdi 
   - python311-libvmdk 
   - python311-libvsapm 
@@ -27855,6 +27906,7 @@ unsorted:
   - python311-miniupnpc 
   - python311-misaka 
   - python311-mistune 
+  - python311-mistune2 
   - python311-mitmproxy 
   - python311-mitmproxy-wireguard 
   - python311-mizani 
@@ -27947,6 +27999,7 @@ unsorted:
   - python311-nested-lookup 
   - python311-net-snmp 
   - python311-netCDF4 
+  - python311-nethsm 
   - python311-netmiko 
   - python311-netpbmfile 
   - python311-netutils 
@@ -27983,8 +28036,8 @@ unsorted:
   - python311-numpy-devel 
   - python311-numpy-gnu-hpc 
   - python311-numpy-gnu-hpc-devel 
-  - python311-numpy_1_25_2-gnu-hpc 
-  - python311-numpy_1_25_2-gnu-hpc-devel 
+  - python311-numpy_1_26_2-gnu-hpc 
+  - python311-numpy_1_26_2-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nwdiag 
   - python311-nxapi-plumbing 
@@ -28827,7 +28880,7 @@ unsorted:
   - python311-scikit-umfpack 
   - python311-scipy 
   - python311-scipy-gnu-hpc 
-  - python311-scipy_1_11_1-gnu-hpc 
+  - python311-scipy_1_11_4-gnu-hpc 
   - python311-scitokens 
   - python311-scp 
   - python311-screeninfo 
@@ -28929,7 +28982,6 @@ unsorted:
   - python311-sphinx-tabs 
   - python311-sphinx-theme-builder 
   - python311-sphinx-version-warning 
-  - python311-sphinx_mdinclude 
   - python311-sphinx_press_theme 
   - python311-sphinx_rtd_theme 
   - python311-sphinxcontrib-apidoc 
@@ -30641,6 +30693,7 @@ unsorted:
   - python39-execnet 
   - python39-executing 
   - python39-exiv2 
+  - python39-expandvars 
   - python39-expects 
   - python39-expiringdict 
   - python39-exrex 
@@ -30806,6 +30859,7 @@ unsorted:
   - python39-google_trans_new 
   - python39-googleapis-common-protos 
   - python39-googlemaps 
+  - python39-gp-libs 
   - python39-gpg 
   - python39-gphoto2 
   - python39-gprof2dot 
@@ -31156,6 +31210,7 @@ unsorted:
   - python39-libevtx 
   - python39-libewf 
   - python39-libexe 
+  - python39-libfcrypto 
   - python39-libfmos 
   - python39-libfsapfs 
   - python39-libfsext 
@@ -31192,6 +31247,7 @@ unsorted:
   - python39-libtmux 
   - python39-libusb1 
   - python39-libusbsio 
+  - python39-libversion 
   - python39-libvhdi 
   - python39-libvirt-python 
   - python39-libvmdk 
@@ -31308,6 +31364,7 @@ unsorted:
   - python39-miniupnpc 
   - python39-misaka 
   - python39-mistune 
+  - python39-mistune2 
   - python39-mitmproxy 
   - python39-mitmproxy-wireguard 
   - python39-mizani 
@@ -31403,6 +31460,7 @@ unsorted:
   - python39-net-snmp 
   - python39-netCDF4 
   - python39-netaddr 
+  - python39-nethsm 
   - python39-netifaces 
   - python39-netmiko 
   - python39-netpbmfile 
@@ -31443,8 +31501,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_25_2-gnu-hpc 
-  - python39-numpy_1_25_2-gnu-hpc-devel 
+  - python39-numpy_1_26_2-gnu-hpc 
+  - python39-numpy_1_26_2-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -32334,7 +32392,7 @@ unsorted:
   - python39-scikit-umfpack 
   - python39-scipy 
   - python39-scipy-gnu-hpc 
-  - python39-scipy_1_11_1-gnu-hpc 
+  - python39-scipy_1_11_4-gnu-hpc 
   - python39-scitokens 
   - python39-scour 
   - python39-scp 
@@ -32448,7 +32506,6 @@ unsorted:
   - python39-sphinx-tabs 
   - python39-sphinx-theme-builder 
   - python39-sphinx-version-warning 
-  - python39-sphinx_mdinclude 
   - python39-sphinx_press_theme 
   - python39-sphinx_rtd_theme 
   - python39-sphinxcontrib-apidoc 
@@ -33610,6 +33667,7 @@ unsorted:
   - rav1e 
   - rav1e-devel 
   - raw-thumbnailer 
+  - rawhide 
   - rawtherapee 
   - raylib-devel 
   - razercfg 
@@ -34049,6 +34107,7 @@ unsorted:
   - rust1.71 
   - rust1.72 
   - rust1.73 
+  - rust1.74 
   - rustscan 
   - rustup 
   - rxp 
@@ -34135,6 +34194,7 @@ unsorted:
   - saxpath-javadoc 
   - sbc-devel 
   - sbcl 
+  - sbctl 
   - sbd 
   - sbd-devel 
   - sbiload 
@@ -35043,7 +35103,6 @@ unsorted:
   - system-user-velociraptor 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
-  - systemd-devel 
   - systemd-experimental 
   - systemd-generator-cron2timer 
   - systemd-homed 

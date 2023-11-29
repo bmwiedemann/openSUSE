@@ -22,15 +22,14 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.38.2
+Version:        0.39.1
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
 URL:            https://github.com/zellij-org/zellij
 Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
-Source3:        README.suse-maint.md
+Source2:        README.suse-maint.md
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
 BuildRequires:  zstd
@@ -83,8 +82,6 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -a1 -p1
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
 # Remove prebuilt binaries
 rm -v zellij-utils/assets/plugins/*
 

@@ -68,7 +68,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
@@ -101,7 +101,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
@@ -134,7 +134,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
@@ -166,7 +166,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
@@ -198,7 +198,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vmdk"
             firmware="uefi"
@@ -232,7 +232,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
@@ -265,7 +265,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
@@ -297,7 +297,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
@@ -330,7 +330,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vhdx"
             firmware="uefi"
@@ -364,7 +364,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vhdx"
             firmware="uefi"
@@ -397,7 +397,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vdi"
             firmware="uefi"
@@ -563,7 +563,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vagrant"
             firmware="uefi"
@@ -597,7 +597,7 @@
         <rpm-excludedocs>true</rpm-excludedocs>
         <locale>en_US</locale>
         <type
-            image="vmx"
+            image="oem"
             filesystem="btrfs"
             format="vagrant"
             firmware="uefi"
@@ -678,6 +678,7 @@
         <package name="patterns-microos-defaults"/>
         <package name="patterns-microos-selinux"/>
         <package name="kernel-default"/>
+        <package name="dracut-kiwi-oem-repart"/>
         <!-- Make it easier to add encryption later, like with https://github.com/lnussel/addimageencryption -->
         <package name="device-mapper"/>
         <package name="cryptsetup"/>
@@ -766,7 +767,6 @@
     </packages>
     <packages type="image" profiles="SelfInstall">
         <package name="patterns-microos-hardware"/>
-        <package name="dracut-kiwi-oem-repart"/>
         <package name="dracut-kiwi-oem-dump"/>
         <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
     </packages>

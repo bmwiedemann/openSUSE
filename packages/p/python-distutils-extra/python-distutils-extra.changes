@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 23 14:03:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python-setuptools Requires: Version 3.0 has been ported to
+  use setuptools.
+
+-------------------------------------------------------------------
 Tue Nov 14 12:44:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0:

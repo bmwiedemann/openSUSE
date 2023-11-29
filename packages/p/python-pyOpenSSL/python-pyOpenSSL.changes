@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 27 08:52:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.3.0:
+  * Dropped support for Python 3.6.
+  * The minimum ``cryptography`` version is now 41.0.5.
+  * Removed ``OpenSSL.crypto.loads_pkcs7`` and
+    ``OpenSSL.crypto.loads_pkcs12`` which had been deprecated for
+    3 years.
+  * Added ``OpenSSL.SSL.OP_LEGACY_SERVER_CONNECT`` to allow
+    legacy insecure renegotiation between OpenSSL and unpatched
+    servers.
+  * Deprecated ``OpenSSL.crypto.PKCS12`` (which was intended to
+    have been deprecated at the same time as
+    ``OpenSSL.crypto.load_pkcs12``).
+  * Deprecated ``OpenSSL.crypto.NetscapeSPKI``.
+  * Deprecated ``OpenSSL.crypto.CRL``
+  * Deprecated ``OpenSSL.crypto.Revoked``
+  * Deprecated ``OpenSSL.crypto.load_crl`` and
+    ``OpenSSL.crypto.dump_crl``
+  * Deprecated ``OpenSSL.crypto.sign`` and
+    ``OpenSSL.crypto.verify``
+  * Deprecated ``OpenSSL.crypto.X509Extension``
+  * Changed ``OpenSSL.crypto.X509Store.add_crl`` to also accept
+  * ``cryptography``'s ``x509.CertificateRevocationList``
+    arguments in addition
+  * to the now deprecated ``OpenSSL.crypto.CRL`` arguments.
+  * Fixed ``test_set_default_verify_paths`` test so that it is
+    skipped if no network connection is available.
+
+-------------------------------------------------------------------
 Mon Jun 19 20:25:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.2.0:
@@ -90,7 +120,7 @@ Fri Feb  4 23:21:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Dec  9 05:55:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject multibuild to avoid a build loop. 
+- Inject multibuild to avoid a build loop.
 
 -------------------------------------------------------------------
 Sat Oct 30 19:08:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -324,8 +354,8 @@ Thu Aug 10 11:38:17 CEST 2017 - ro@suse.de
 
 - add patch to always trigger overflow in the testsuite
   (gh#pyca/pyopenssl#657) b3460c6a9a45a016d1ab65c149c606fa3f07096d
- 
-  python-pyOpenSSL-always-overflow.patch 
+
+  python-pyOpenSSL-always-overflow.patch
 
 -------------------------------------------------------------------
 Tue Jun 13 07:05:41 UTC 2017 - dimstar@opensuse.org
@@ -455,7 +485,7 @@ Mon May  9 09:54:12 UTC 2016 - hpj@urpla.net
     OpenSSL.crypto._lib.ASN1_STRING_set_default_mask_asc(b"default"). #234
 
 - fixed paths in bug-lp-1265482.diff
-- fixed doc generation 
+- fixed doc generation
 - spec clean up
 
 -------------------------------------------------------------------
@@ -516,7 +546,7 @@ Mon Feb 24 12:58:58 UTC 2014 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Thu Jan  2 11:17:23 UTC 2014 - dmueller@suse.com
 
--Add bug-lp-1265482.diff; fix testsuite for SLE11 (bnc#855666) 
+-Add bug-lp-1265482.diff; fix testsuite for SLE11 (bnc#855666)
 
 -------------------------------------------------------------------
 Fri Sep 13 14:02:43 UTC 2013 - jmatejek@suse.com

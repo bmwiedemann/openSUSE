@@ -50,4 +50,14 @@
   * Add non-colored suffix to _colorize for 'usage'</comment>
     <requestid>1110365</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fff2f971bc1343804d6a53644246a5d4</srcmd5>
+    <version>0.9.4</version>
+    <time>1701023817</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.4:
+  * Add py.typed to package data in setup.py.
+  * Add type hints.</comment>
+    <requestid>1128729</requestid>
+  </revision>
 </revisionlist>

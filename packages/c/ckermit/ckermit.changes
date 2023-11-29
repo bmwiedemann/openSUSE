@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 25 10:28:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop termcap BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Mon Jul 10 10:34:44 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - drop lockdev support (boo#1212801)

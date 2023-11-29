@@ -19,7 +19,7 @@
 %global pkg_name skylighting
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.13.4.1
+Version:        0.14
 Release:        0
 Summary:        Syntax highlighting library
 License:        GPL-2.0-or-later

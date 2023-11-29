@@ -653,4 +653,12 @@ This is needed so that the rpm hack to update config.sub works (forwarded reques
     <comment></comment>
     <requestid>1000302</requestid>
   </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>b285b4a96fff72595598c868a02bf0e6</srcmd5>
+    <version>5.2.5</version>
+    <time>1700771942</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128192</requestid>
+  </revision>
 </revisionlist>

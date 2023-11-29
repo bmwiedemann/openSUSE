@@ -160,4 +160,18 @@
     <comment></comment>
     <requestid>1081914</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9169326d96c3601f3522399133e678a7</srcmd5>
+    <version>2.4</version>
+    <time>1701206332</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4:
+  * migrate to github actions
+
+  * Fix invalid escape sequences
+  * Add test for get_parts
+  * Avoid converting readme to rST for PyPI upload
+  * no changes</comment>
+    <requestid>1129227</requestid>
+  </revision>
 </revisionlist>

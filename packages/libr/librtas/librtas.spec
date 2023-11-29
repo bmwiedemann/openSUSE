@@ -18,7 +18,7 @@
 
 %define sover 2
 Name:           librtas
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Libraries to provide access to RTAS calls and RTAS events
 License:        LGPL-2.1-or-later

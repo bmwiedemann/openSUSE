@@ -394,4 +394,12 @@
     <comment></comment>
     <requestid>1116351</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5ea35b625a1f3cf93e081785bf1f6352</srcmd5>
+    <version>2.4.5</version>
+    <time>1700675722</time>
+    <user>anag+factory</user>
+    <comment>- Update required version for python-awkward-cpp to 26.</comment>
+    <requestid>1128142</requestid>
+  </revision>
 </revisionlist>

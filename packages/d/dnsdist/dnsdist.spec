@@ -85,6 +85,7 @@ BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
 %{systemd_ordering}
 %{sysusers_requires}
 

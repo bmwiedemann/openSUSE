@@ -52,4 +52,19 @@
 - drop lockdev support (boo#1212801, removed uucp-1.07-lockdev.patch)</comment>
     <requestid>1098345</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>3c5d36202b0a554c2153d88b46b708a2</srcmd5>
+    <version>1.07</version>
+    <time>1700865302</time>
+    <user>anag+factory</user>
+    <comment>- Add patches
+  * pipe-command-hostname-not-null.patch
+    The hostname of a system can be NULL if the configuration &quot;address ...&quot;
+    is not set.  If the pipe command contains \H, and also has additional
+    arguments like &quot;send --host \H --system \Z&quot;, the command will be cut at
+    &quot;send --host&quot;, and not add &quot;--system \Z&quot;.
+    This replaces an empty hostname with the system name consistent with unix/tcp.c
+    An alternative is to set it to the empty string.</comment>
+    <requestid>1128547</requestid>
+  </revision>
 </revisionlist>

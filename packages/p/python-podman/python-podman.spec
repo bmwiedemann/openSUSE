@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
@@ -56,6 +56,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module rich >= 12.5.1}
 BuildRequires:  %{python_module setuptools >= 39}
 BuildRequires:  %{python_module urllib3 < 2.0}
 BuildRequires:  %{python_module varlink}

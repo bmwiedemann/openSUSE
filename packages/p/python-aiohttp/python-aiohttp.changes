@@ -1,7 +1,127 @@
 -------------------------------------------------------------------
+Sat Nov 25 22:51:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * Introduced ``AppKey`` for static typing support of
+    ``Application`` storage.
+  * Added a graceful shutdown period which allows pending tasks
+    to complete before the application's cleanup is called.
+  * Added `handler_cancellation`_ parameter to cancel web handler on
+    client disconnection.
+  * This (optionally) reintroduces a feature removed in a
+    previous release.
+  * Recommended for those looking for an extra level of
+    protection against denial-of-service attacks.
+  * Added support for setting response header parameters
+    ``max_line_size`` and ``max_field_size``.
+  * Added ``auto_decompress`` parameter to
+    ``ClientSession.request`` to override
+    ``ClientSession._auto_decompress``.
+  * Changed ``raise_for_status`` to allow a coroutine.
+  * Added client brotli compression support (optional with
+    runtime check).
+  * Added ``client_max_size`` to ``BaseRequest.clone()`` to allow
+    overriding the request body size. -- :user:`anesabml`.
+  * Added a middleware type alias
+    ``aiohttp.typedefs.Middleware``.
+  * Exported ``HTTPMove`` which can be used to catch any
+    redirection request that has a location -- :user:`dreamsorcerer`.
+  * Changed the ``path`` parameter in ``web.run_app()`` to accept
+    a ``pathlib.Path`` object.
+  * Performance: Skipped filtering ``CookieJar`` when the jar is
+    empty or all cookies have expired.
+  * Performance: Only check origin if insecure scheme and there
+    are origins to treat as secure, in
+    ``CookieJar.filter_cookies()``.
+  * Performance: Used timestamp instead of ``datetime`` to
+    achieve faster cookie expiration in ``CookieJar``.
+  * Added support for passing a custom server name parameter to
+    HTTPS connection.
+  * Added support for using Basic Auth credentials from
+    :file:`.netrc` file when making HTTP requests with the
+  * :py:class:`~aiohttp.ClientSession` ``trust_env`` argument is
+    set to ``True``. -- by :user:`yuvipanda`.
+  * Turned access log into no-op when the logger is disabled.
+  * Added typing information to ``RawResponseMessage``. -- by
+    :user:`Gobot1234`
+  * Removed ``async-timeout`` for Python 3.11+ (replaced with
+    ``asyncio.timeout()`` on newer releases).
+  * Added support for ``brotlicffi`` as an alternative to
+    ``brotli`` (fixing Brotli support on PyPy).
+  * Added ``WebSocketResponse.get_extra_info()`` to access a
+    protocol transport's extra info.
+  * Allow ``link`` argument to be set to None/empty in HTTP 451
+    exception.
+  * Fixed client timeout not working when incoming data is always
+    available without waiting. -- by :user:`Dreamsorcerer`.
+  * Fixed ``readuntil`` to work with a delimiter of more than one
+    character.
+  * Added ``__repr__`` to ``EmptyStreamReader`` to avoid
+    ``AttributeError``.
+  * Fixed bug when using ``TCPConnector`` with
+    ``ttl_dns_cache=0``.
+  * Fixed response returned from expect handler being thrown
+    away. -- by :user:`Dreamsorcerer`
+  * Avoided raising ``UnicodeDecodeError`` in multipart and in
+    HTTP headers parsing.
+  * Changed ``sock_read`` timeout to start after writing has
+    finished, avoiding read timeouts caused by an unfinished
+    write. -- by :user:`dtrifiro`
+  * Fixed missing query in tracing method URLs when using
+    ``yarl`` 1.9+.
+  * Changed max 32-bit timestamp to an aware datetime object, for
+    consistency with the non-32-bit one, and to avoid a
+    ``DeprecationWarning`` on Python 3.12.
+  * Fixed ``EmptyStreamReader.iter_chunks()`` never ending.
+  * Fixed a rare ``RuntimeError: await wasn't used with future``
+    exception.
+  * Fixed issue with insufficient HTTP method and version
+    validation.
+  * Added check to validate that absolute URIs have schemes.
+  * Fixed unhandled exception when Python HTTP parser encounters
+    unpaired Unicode surrogates.
+  * Updated parser to disallow invalid characters in header field
+    names and stop accepting LF as a request line separator.
+  * Fixed Python HTTP parser not treating 204/304/1xx as an empty
+    body.
+  * Ensure empty body response for 1xx/204/304 per RFC 9112 sec
+    6.3.
+  * Fixed an issue when a client request is closed before
+    completing a chunked payload. -- by :user:`Dreamsorcerer`
+  * Edge Case Handling for ResponseParser for missing reason
+    value.
+  * Fixed ``ClientWebSocketResponse.close_code`` being
+    erroneously set to ``None`` when there are concurrent async
+    tasks receiving data and closing the connection.
+  * Added HTTP method validation.
+  * Fixed arbitrary sequence types being allowed to inject values
+    via version parameter. -- by :user:`Dreamsorcerer`
+  * Performance: Fixed increase in latency with small messages
+    from websocket compression changes.
+  * Improved Documentation
+  * Fixed the `ClientResponse.release`'s type in the doc. Changed
+    from `comethod` to `method`.
+  * Added information on behavior of base_url parameter in
+    `ClientSession`.
+  * Completed ``trust_env`` parameter description to honor
+    ``wss_proxy``, ``ws_proxy`` or ``no_proxy`` env.
+  * Dropped Python 3.6 support.
+  * Dropped Python 3.7 support. -- by :user:`Dreamsorcerer`
+  * Removed support for abandoned ``tokio`` event loop.
+  * Made ``print`` argument in ``run_app()`` optional.
+  * Improved performance of ``ceil_timeout`` in some cases.
+  * Changed importing Gunicorn to happen on-demand, decreasing
+    import time by ~53%. -- :user:`Dreamsorcerer`
+  * Improved import time by replacing ``http.server`` with
+    ``http.HTTPStatus``.
+  * Fixed annotation of ``ssl`` parameter to disallow ``True``.
+- drop Update-update_query-calls-to-work-with-latest-yarl.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Tue Nov  7 11:52:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.8.6:
+- update to 3.8.6 (bsc#1217181, CVE-2023-47627):
   * Security bugfixes
   * Upgraded the vendored copy of llhttp_ to v9.1.3
   * https://github.com/aio-libs/aiohttp/security/advisories/GHSA-

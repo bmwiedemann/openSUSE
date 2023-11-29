@@ -18,11 +18,18 @@
 
 
 %if 0%{?rhel}
-%if 0%{?rhel} == 8
+%if 0%{?rhel} >= 8
+# Found compressed .debug_abbrev section, not attempting dwz compression
+# DWARF version 0 unhandled
 %global debug_package %{nil}
 %endif
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
+%{go_nostrip}
+%endif
+
+%if 0%{?sle_version} == 150300 && !0%{?is_opensuse}
+ %{go_nostrip}
 %endif
 
 %if 0%{?suse_version}
@@ -61,7 +68,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  golang >= 1.18
 Requires(pre):  shadow-utils
 %else
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.20
 Requires(pre):  shadow
 %if %{with apparmor}
 %if %{with apparmor_reload}
@@ -87,11 +94,11 @@ Exports apache mod_status statistics via HTTP for Prometheus consumption.
 GOPATH=%{_builddir}/go promu build
 
 %install
-install -D -m0755 %{_builddir}/%{upstreamname}-%{version}/%{upstreamname}-%{version} %{buildroot}/%{_bindir}/%{targetname}
+install -D -m 0755 %{_builddir}/%{upstreamname}-%{version}/%{upstreamname}-%{version} %{buildroot}/%{_bindir}/%{targetname}
 install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_sbindir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{targetname}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{targetname}
 %if %{with apparmor}
 # AppArmor profile
 mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
@@ -101,7 +108,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{targe
 %check
 %if 0%{?rhel}
 # Fix OBS debug_package execution.
-rm -f %{buildroot}/usr/lib/debug/%{_bindir}/%{targetname}-%{version}-*.debug
+rm -f %{buildroot}/usr/lib/debug%{_bindir}/%{targetname}-%{version}-*.debug
 %endif
 
 %pre

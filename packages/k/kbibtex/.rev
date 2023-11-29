@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>1126722</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>50583d8ad25afa3ad429680e89e7a288</srcmd5>
+    <version>0.10.0</version>
+    <time>1700772129</time>
+    <user>anag+factory</user>
+    <comment>- Fix RPATH problem with cmake options instead of chrpath</comment>
+    <requestid>1128315</requestid>
+  </revision>
 </revisionlist>

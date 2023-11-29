@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 24 20:04:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.5.0
+  ## New features
+  * Drop support for Python 3.7
+  * Drop support for PyQt < 5.10
+  * Improvements to the logic that checks available updates and the
+    update messages
+  * Improvements to the syntax highlighting for match/case keywords
+  * Improved compatibility for the standalone installer with
+    Windows Server 2016
+  * Additional information about Spyder available through
+    spyder.appdata.xml
+  ## Important fixes
+  * Fix Outline Explorer Display variables and attributes option
+  * Fix disabling completion and linting providers
+  * Fix errors when removing language servers configurations
+  * Fix Editor replace all occurences when using backslashes
+  * Fix errors when restarting external kernels
+  * Fix error when using the Online help with Python 3.11
+  * Fix debugging after errors via the %debug magic
+  * Fix compatibility with Python 2 environments/custom
+    interpreters
+  * Fix application window disappearing when changing monitors
+  * Fix PYTHONPATH manager logic to get user environment variables
+    and detect possible site-packages directories
+- Drop spyder-pr21470-pylint3.diff
+
+-------------------------------------------------------------------
 Sun Oct 29 13:26:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Raise pylint upper pin (requires update to python-lsp-server)

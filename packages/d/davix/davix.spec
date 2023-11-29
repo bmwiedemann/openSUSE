@@ -17,14 +17,17 @@
 
 
 %define shlib lib%{name}0
+%define v_maj 0
+%define v_min 8
+%define v_pat 5
 Name:           davix
-Version:        0.8.4
+Version:        %{v_maj}.%{v_min}.%{v_pat}
 Release:        0
 Summary:        File management over HTTP-based protocols
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://davix.web.cern.ch/davix/docs/devel
-Source:         https://github.com/cern-fts/davix/releases/download/R_0_8_4/davix-%{version}.tar.gz
+Source:         https://github.com/cern-fts/davix/releases/download/R_%{v_maj}_%{v_min}_%{v_pat}/davix-%{version}.tar.gz
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  git

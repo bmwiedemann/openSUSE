@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 24 20:28:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.99.90:
+  + build: Make building manpage dependent upon manpage option
+  + text: Handle long inputs properly
+  + colview: Use g_signal_connect_object
+  + tree/colview: Return correct value when filtered using search;
+    code cleanups
+  + colview: Add missing declaration to header
+  + build:
+    - Make implicit declarations an error
+    - Make zenity4 compile against gtk 4.12 without deprecation
+      warnings
+  + tree:
+    - Fix reading input from a named pipe
+    - --checklist or --radiolist with < 2 cols should be an error
+    - Fix output for non-check/radio multiple selections
+  + util: Replace gtk_window_destroy() with
+    gtk_application_remove_window().
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep  7 21:33:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.99.2:

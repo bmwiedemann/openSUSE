@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 27 06:40:40 UTC 2023 - Wang Jun <badboywj@gmail.com>
+
+- update to 1.7.0:
+  * 182 new ATRs
+  * pcsc_scan:
+    + add debug option -d
+    + add PnP option -p
+  * gscriptor: i18n and l10n in English (default), French
+    and Russian
+  * configure: add --enable-ATRparser=foobar to specify an
+    ATR parser
+  * minor fixes and improvements
+
+-------------------------------------------------------------------
 Sun May  7 20:11:11 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 1.6.2:

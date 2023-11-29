@@ -322,4 +322,27 @@
   ispell (boo#1217133)</comment>
     <requestid>1126678</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f5fe3164764438b7ec17ea20cd9ca8c9</srcmd5>
+    <version>3.4.06</version>
+    <time>1701121427</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.06:
+  * Fix a place where buildhash could reference beyond the end of
+    the hash table, causing a segfault if that happened to cross a
+    page boundary.
+  * dictionary updates
+
+- Extend patch boo966124.dif for bug boo#1010330
+- Extend patch boo966124.dif for bug boo#981024
+- Xemacs knows about define-coding-system-alia therefore use it (boo#896947)
+- Use real POSIX shell syntax
+- Remove mixed patch leftover
+  enforce usage of modern sort options
+  from glibc
+- fix build with current bison
+- removed bogus self-provides
+- fixed typo in specfile (forwarded request 1128991 from dirkmueller)</comment>
+    <requestid>1129066</requestid>
+  </revision>
 </revisionlist>

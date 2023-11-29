@@ -150,4 +150,20 @@
   * Accept path types (like pathlib.Path and pathlib.PurePath) in the</comment>
     <requestid>1109649</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2180f18d1aae258a9c3c33117e0aaa43</srcmd5>
+    <version>3.13.1</version>
+    <time>1701206313</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.1:
+  * Allow users to subclass FileLock with custom keyword
+    arguments
+  * Support reentrant locking on lock file path via optional
+    singleton instance
+  * change typing-extensions to be installed only with the
+    [typing] extra
+
+- Add missing Requires on typing-extensions if &lt; 3.11</comment>
+    <requestid>1129184</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
-Index: doc/pdnsd.conf.in
+Index: b/doc/pdnsd.conf.in
 ===================================================================
---- doc/pdnsd.conf.in.orig
-+++ doc/pdnsd.conf.in
+--- a/doc/pdnsd.conf.in
++++ b/doc/pdnsd.conf.in
 @@ -5,12 +5,12 @@
  
  global {

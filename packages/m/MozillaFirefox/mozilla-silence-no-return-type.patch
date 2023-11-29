@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  f809af927a59e945c76f51c25b1044fb42748c24
+# Parent  e7eb7e9e99204275532b04de030879c9548b88a3
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -387,7 +387,7 @@ diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils
 diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
 --- a/intl/icu/source/i18n/number_rounding.cpp
 +++ b/intl/icu/source/i18n/number_rounding.cpp
-@@ -278,27 +278,29 @@ Precision IncrementPrecision::withMinFra
+@@ -282,27 +282,29 @@ Precision IncrementPrecision::withMinFra
  }
  
  FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac) {
@@ -681,6 +681,27 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
  VideoSendStream::StreamStats::~StreamStats() = default;
  
  std::string VideoSendStream::StreamStats::ToString() const {
+diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
+--- a/third_party/libwebrtc/media/base/codec.cc
++++ b/third_party/libwebrtc/media/base/codec.cc
+@@ -195,16 +195,17 @@ bool Codec::Matches(const Codec& codec,
+                (codec.bitrate == 0 || bitrate <= 0 ||
+                 bitrate == codec.bitrate) &&
+                ((codec.channels < 2 && channels < 2) ||
+                 channels == codec.channels);
+ 
+       case Type::kVideo:
+         return IsSameCodecSpecific(name, params, codec.name, codec.params);
+     }
++    return false; // unreached
+   };
+ 
+   return matches_id && matches_type_specific();
+ }
+ 
+ bool Codec::MatchesCapability(
+     const webrtc::RtpCodecCapability& codec_capability) const {
+   webrtc::RtpCodecParameters codec_parameters = ToCodecParameters();
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
@@ -915,7 +936,7 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depa
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -135,16 +135,17 @@ bool IsNonVolatile(RTPExtensionType type
+@@ -133,16 +133,17 @@ bool IsNonVolatile(RTPExtensionType type
  #if defined(WEBRTC_MOZILLA_BUILD)
      case kRtpExtensionCsrcAudioLevel:
        // TODO: Mozilla implement for CsrcAudioLevel

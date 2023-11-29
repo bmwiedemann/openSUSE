@@ -29,7 +29,6 @@ BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module google-auth >= 1.19.0}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.1.0}
 BuildRequires:  %{python_module httplib2 >= 0.15.0}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

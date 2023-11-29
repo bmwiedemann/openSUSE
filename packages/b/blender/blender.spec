@@ -77,7 +77,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.6.2
+Version:        4.0.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -105,6 +105,10 @@ Source99:       series
 Patch0:         reproducible.patch
 # PATCH-FIX-OPENSUSE - fix gcc 13 fallout
 Patch1:         Add_missing_system_error_handler.patch
+# PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
+Patch2:         cmake_manpage_fix.patch
+# PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115098
+Patch3:         aarch64_build_fix.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -144,6 +148,7 @@ BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  llvm-devel
 BuildRequires:  lzo-devel
+BuildRequires:  ninja
 BuildRequires:  openal-soft-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
@@ -345,7 +350,9 @@ echo "optflags: " %{optflags}
 mkdir -p build && pushd build
 
 # lean against build_files/cmake/config/blender_release.cmake
+%define __builder %__ninja
 cmake ../ \
+      -GNinja \
 %if 0%{?debugbuild} == 1
       -DCMAKE_BUILD_TYPE:STRING=Debug \
       -DCMAKE_C_FLAGS_DEBUG:STRING="-fsanitize=address -ggdb" \
@@ -492,7 +499,7 @@ cmake ../ \
       -DWITH_CYCLES_DEVICE_ONEAPI:BOOL=ON \
       -DWITH_CYCLES_ONEAPI_BINARIES:BOOL=ON
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 echo "release version = %{_version}"
@@ -555,9 +562,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/%{name}/%{_version}
 %dir %{_datadir}/%{name}/%{_version}/datafiles
 %exclude %{_datadir}/%{name}/%{_version}/datafiles/locale
-%ifarch x86_64
-%{_datadir}/%{name}/%{_version}/scripts/addons/cycles
-%endif
 %exclude %{_docdir}/%{name}/geeko_example_scene.*
 %{_datadir}/%{name}/%{_version}/scripts/
 %{_datadir}/%{name}/%{_version}/datafiles/
@@ -565,6 +569,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*.svg
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/org.%{name}.Blender.metainfo.xml
 %doc %{_docdir}/%{name}
 
 %files demo

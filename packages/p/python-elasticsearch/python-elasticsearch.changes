@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 27 18:55:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.11.0:
+  * Added support for Python 3.12
+  * Added missing `scores` parameter to create trained model
+    vocabulary API
+  * Added missing `delete_dest_index` parameter to delete
+    transform API
+  * Removed deprecation warnings when using `body` parameter
+  * Fixed some type hints to use covariant Sequence instead of
+    invariant List (#2324, #2325)
+
+-------------------------------------------------------------------
 Mon Oct  2 10:27:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.10.0:
@@ -310,7 +323,7 @@ Fri Jun  7 09:21:34 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
   * Blocking pool must fit thread_count
   * Update client to support missing ES 7 API's and query params.
   * Removed deprecated option update_all_types
-  * Using insecure SSL configuration (verify_cert=False) raises a 
+  * Using insecure SSL configuration (verify_cert=False) raises a
     warning, this can be not showed with ssl_show_warn=False
   * Add support for 7.x api's in Elasticsearch
 
@@ -343,7 +356,7 @@ Tue Dec  4 12:47:36 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Nov 23 15:32:45 UTC 2017 - mimi.vx@gmail.com
 
-- fix Source url, use pypi package  
+- fix Source url, use pypi package
 
 -------------------------------------------------------------------
 Thu Nov 23 13:27:11 UTC 2017 - kkaempf@suse.com

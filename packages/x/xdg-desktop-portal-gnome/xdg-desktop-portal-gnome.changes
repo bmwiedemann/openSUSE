@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 26 16:48:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + accountdialog: Fix crash when pressing Escape
+  + Send remote file URIs as local FUSE URIs
+  + Various fixes to screencast and input capture
+  + Expose org.gnome.desktop.calendar through the Settings portal
+  + Put dialogs in separate window groups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 18 16:24:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

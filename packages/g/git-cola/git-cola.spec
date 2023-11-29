@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
@@ -33,14 +33,14 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-build
 BuildRequires:  python3-jaraco.packaging
 BuildRequires:  python3-pip
-BuildRequires:  python3-qt5
+BuildRequires:  python3-qt6
 BuildRequires:  python3-rst.linker
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       git-core
 Requires:       python3-QtPy
-Requires:       python3-qt5
+Requires:       python3-qt6
 Recommends:     gitk
 Recommends:     python3-Send2Trash
 Recommends:     python3-pyinotify

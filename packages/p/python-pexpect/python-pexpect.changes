@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Nov 25 09:37:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9:
+  * Add support for Python 3.12 #769.
+  * Clean up temporary files after UnicodeTests #753.
+  * Add Python 3.5, 3.6 and 3.12.0-rc.1 to test matrix #763.
+  * Set prompt correctly for zsh #712.
+  * Add zsh convenience function to replwrap module #751.
+  * Rework async unittests to rely on
+    unittest.IsolatedAsyncioTestCase #764.
+  * Make test_expect.py work on POSIX systems that are not Linux
+    based #698.
+  * Add support for ``socket``, which allows sockets to be used
+    crossplatform #745.
+  * Update async to work on newer versions of python #732.
+  * Remove deprecated RSAAuthentication option (SSHv1) #744.
+  * Multiple CI fixes #743 #737 #742 #739 #722.
+  * Use Github Actions for CI #734.
+  * Remove pytest-capturelog from testing requirements #730.
+  * Fix usage for Solaris #663 #604 #560.
+  * Fix threading for new versions of python #684.
+  * Fix documentation builds for use with Sphinx 3 #638.
+  * Use ``sys.executable`` for tests and wrapper, allowing the
+    calling python executable to be used instead #623.
+  * Update documentation about Wexpect #623.
+  * Added project urls to ``setup.py`` #620.
+  * Provide examples for how to use Pexpect and Pyte #587.
+  * Coerce compiled regex patterns type according to spawn
+    encoding #560.
+  * Several doc updates #626 #635 #643 #644 #728.
+  drop 31fab7b0edbe9b3401507b5dfa4db6aaf3fabca5.patch,
+       684.patch, 715.patch, 742.patch,
+      dae602d37493bae239e0e8db5b3dabafebfd59db.patch,
+      fix-fail-no-alias.patch, no-python-binary.patch: upstream
+
+-------------------------------------------------------------------
 Tue Oct 17 08:08:38 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - add 742.patch, gh#pexpect/pexpect#742 This makes it compatible with
@@ -59,12 +95,12 @@ Thu Feb 23 08:37:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Jan  6 20:51:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add 684.patch, 715.patch: Python 3.11 support 
+- add 684.patch, 715.patch: Python 3.11 support
 
 -------------------------------------------------------------------
 Wed Nov  9 10:07:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- skip extra tests for qemu based builds 
+- skip extra tests for qemu based builds
 
 -------------------------------------------------------------------
 Thu Aug  5 12:42:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -326,7 +362,7 @@ Mon Apr 27 14:24:59 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Fri Apr 11 08:37:18 UTC 2014 - dmueller@suse.com
 
-- fix license (ISC) 
+- fix license (ISC)
 
 -------------------------------------------------------------------
 Thu Apr  3 12:28:20 UTC 2014 - dmueller@suse.com

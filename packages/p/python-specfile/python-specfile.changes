@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 23 07:47:50 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.25.0:
+  - There is a new method, Specfile.update_version(), that allows 
+    updating spec file version even if it is a pre-release. (#317) 
+
+-------------------------------------------------------------------
 Wed Nov  8 10:08:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.24.0:

@@ -571,4 +571,30 @@
 </comment>
     <requestid>1113302</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0c1f40e29aaac228e5096b349970d689</srcmd5>
+    <version>2.11.0</version>
+    <time>1701121381</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.0
+  * Support get file(notebook) md5 #1363 (@Wh1isper)
+- Release 2.10.1
+  * ContentsHandler return 404 rather than raise exc #1357
+    (@bloomsa)
+- Release 2.10.0
+  * Update kernel env to reflect changes in session #1354
+    (@blink1073)
+- Release 2.9.0
+  * Ability to configure cull_idle_timeout with kernelSpec #1342
+    (@akshaychitneni)
+  * Run Gateway token renewers even if the auth token is empty.
+    #1340 (@ojarjur)
+- Release 2.8.0
+  * Added Logs for get_os_path closes issue #1336
+    (@jayeshsingh9767)
+  * Avoid showing &quot;No answer for 5s&quot; when shutdown is slow #1320
+    (@minrk)
+</comment>
+    <requestid>1128961</requestid>
+  </revision>
 </revisionlist>

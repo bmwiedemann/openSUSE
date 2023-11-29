@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 25 16:47:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * Fix certificate and cipher enumeration when unsafe
+    renegotiation is required
+
+-------------------------------------------------------------------
 Fri Nov 10 15:21:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:

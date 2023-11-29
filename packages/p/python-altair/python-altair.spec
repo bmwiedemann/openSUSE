@@ -17,7 +17,7 @@
 
 
 Name:           python-altair
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        Declarative statistical visualization library for Python
 License:        BSD-3-Clause

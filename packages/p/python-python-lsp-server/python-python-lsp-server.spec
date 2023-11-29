@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-python-lsp-server
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -107,8 +107,6 @@ will be enabled:
 %autosetup -p1 -n python-lsp-server-%{version}
 # Remove pytest addopts
 sed -i '/addopts/d' pyproject.toml
-# increase pylint upper pin
-sed -i '/pylint/ s/<3"/<3.1"/' pyproject.toml
 
 %build
 %pyproject_wheel

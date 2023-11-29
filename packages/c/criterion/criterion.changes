@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 28 14:20:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename devel package from libcriterion3-devel to
+  libcriterion-devel: the devel package never follows the soversion
+  of the libraries, as it is, unlike the libraries, not meant to be
+  parallel-installable.
+
+-------------------------------------------------------------------
 Tue Jun 13 12:13:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.2:

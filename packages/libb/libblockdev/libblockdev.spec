@@ -129,6 +129,7 @@ needed for development with the LibBlockDev library.
 %{_includedir}/blockdev/plugins.h
 %{_includedir}/blockdev/logging.h
 %ifarch s390x
+%{_libdir}/libbd_s390.so
 %{_includedir}/blockdev/s390.h
 %endif
 

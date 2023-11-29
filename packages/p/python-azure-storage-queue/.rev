@@ -218,4 +218,12 @@
     CHANGELOG.md file provided with this package (forwarded request 1124861 from glaubitz)</comment>
     <requestid>1124978</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>084fc887f06bd6fe007a99d3edf20545</srcmd5>
+    <version>12.8.0</version>
+    <time>1700675673</time>
+    <user>anag+factory</user>
+    <comment>- Add Bugzilla and CVE reference for CVE-2022-30187</comment>
+    <requestid>1128132</requestid>
+  </revision>
 </revisionlist>

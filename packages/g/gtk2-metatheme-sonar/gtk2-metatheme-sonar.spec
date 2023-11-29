@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2-metatheme-sonar
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -69,8 +69,8 @@ Sonar icon theme based on the upcoming GNOME icon theme.
 %prep
 %setup -q -a1 -a3 -n Sonar
 cp -a %{SOURCE2} COPYING.xfwm4
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 pushd icon-theme-sonar-%{_icon_version}

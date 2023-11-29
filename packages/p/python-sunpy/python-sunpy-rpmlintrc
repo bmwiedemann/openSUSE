@@ -1,3 +1,0 @@
-addFilter("devel-file-in-non-devel-package .*\.c")
-# would break: __init__.py:from sunpy.tests.self_test import self_test
-addFilter("python-tests-in-package .*sunpy")

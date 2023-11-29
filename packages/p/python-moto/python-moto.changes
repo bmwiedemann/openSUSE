@@ -1,4 +1,348 @@
 -------------------------------------------------------------------
+Fri Nov 24 15:39:07 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.2.9
+  ## General:
+  * Fix compatibility with botocore 1.32.1
+  ## Miscellaneous:
+  * ECS: Tagging is now supported for Tasks
+  * LakeFormation: deregister_resource() now throws the correct
+    error for unknown resources
+  * LakeFormation: list_permissions() now supports Parameters
+  * RDS: create_db_instance() now validates the engine parameter
+  * Transcribe: TranscriptionJobs now support the
+    Subtitles-parameter
+- Moto 4.2.8
+  ## General:
+  * Support for Python 3.12
+  * Support for a Simple Lambda backend, that will mock functions
+    without invoking a Docker container. Use the decorator
+    `mock_lambda_simple` for this feature.
+  ## New Methods:
+  ### IdentityStore:
+  * describe_group()
+  ### Signer:
+  * list_tags_by_resource()
+  * tag_resource()
+  * untag_resource()
+  ## Miscellaneous:
+  * DynamoDB: create_table() now throws an error when supplying an
+    unknown KeyType
+  * DynamoDB: query() now throws an error when supplying a
+    ExpressionAttributeValue that doesn't start with a ':'
+  * EC2: describe_hosts() now returns the AllocationTime-attribute
+  * ECS: register_task_definition() now throws an exception if the
+    ContainerDefinition has missing keys
+  * ECR: describe_images() now returns the supplied
+    imageDigest-values, instead of random values
+  * EFS: AccessPoints now have the correct identifier format
+  * Lambda: Various methods now support the FunctionName in the
+    format 'name:qualifier'
+  * MQ: create_configuration() is now possible for engine-type
+    'RABBITMQ'
+  * RDS: create_db_cluster() now throws an error if the provided
+    engine is not supported
+  * RDS: create_db_instance() now throws an error if the provided
+    engine does not match the cluster engine
+  * RDS: delete_db_cluster() now throws an error if any instances
+    are still active
+  * SageMaker: list_model_packages() and
+    list_model_package_groups() no longer throw an error on
+    pagination
+
+-------------------------------------------------------------------
+Wed Nov 22 15:51:47 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix python-multipart requirement
+
+-------------------------------------------------------------------
+Sun Nov  5 01:02:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.2.7
+  ## New Services:
+  ### Inspector2:
+  * associate_member()
+  * batch_get_account_status()
+  * create_filter()
+  * delete_filter()
+  * describe_organization_configuration()
+  * disable()
+  * disable_delegated_admin_account()
+  * disassociate_member()
+  * enable()
+  * enable_delegated_admin_account()
+  * get_member()
+  * list_delegated_admin_accounts()
+  * list_filters()
+  * list_findings()
+  * list_members()
+  * list_tags_for_resource()
+  * tag_resource()
+  * untag_resource()
+  * update_organization_configuration()
+  ## New Methods:
+  ### ECR:
+  * batch_get_repository_scanning_configuration()
+  * put_registry_scanning_configuration()
+  ##  Miscellaneous:
+  * Batch: submit_job() now returns the jobArn-attribute
+  * DynamoDB: execute_statement() has now support for nested
+    WHERE-clauses with functions
+  * DynamoDB: update_item() now returns item for
+    ConditionalCheckFailed-exceptions
+  * EC2: create_key_pair() and describe_key_pair(s)() now support
+    tags
+  * Route53: get_hosted_zone() now returns the CallerReference
+  * S3: get_object/put_object() now accepts AccessPoint ARN's
+  * S3Control: create_access_point() now returns the correct Alias
+  * SES: list_identities() now supports the IdentityType-parameter
+  * SNS: create_platform_application has improved error handling
+- Moto 4.2.6
+  ## New Services:
+  ### IVS:
+  * batch_get_channel()
+  * create_channel()
+  * delete_channel()
+  * get_channel()
+  * list_channels()
+  * update_channel()
+  ## New Methods:
+  ### LakeFormation:
+  * add_lf_tags_to_resource()
+  * get_resource_lf_tags()
+  * remove_lf_tags_from_resource()
+  * update_lf_tag()
+  ### Sagemaker:
+  * describe_model_package_group()
+  * update_model_package()
+  ## Miscellaneous:
+  * Batch: submit_job() now behaves correctly when passing the
+    arrayProperties-parameter
+  * DynamoDB: Improved PartiQL parser, with support for different
+    types (Decimals/Booleans) and queries with quoted table-names
+  * EC2: TagSpecifications now throw an error if the ResourceType is
+    not provided
+  * EC2: run_instances()/describe_instances() now always return the
+    same attributes (before, both operations were missing different
+    fields)
+  * EC2: associate_dhcp_options() now supports DhcpOptionsId=default
+  * EC2: create_key_pair() now supports the KeyType-parameter
+  * EC2: run_instances() now returns the Placement.HostId attribute
+  * ELBv2: modify_target_group_attributes() now has additional
+    validations
+  * Events: put_events() now throws a warning when Detail field is
+    not a dict
+  * IOT: update_thing() now behaves correctly with empty attributes
+  * S3: head_object() now raises a MethodNotAllowed for
+    DeleteMarkers
+- Moto 4.2.5
+  ## General:
+  * Introducing: MotoProxy! An alternative to the MotoServer. See
+    the docs: http://docs.getmoto.org/en/latest/docs/proxy_mode.html
+  ## New Methods:
+  ### Sagemaker:
+      * list_model_package_groups()
+  ## Miscellaneous:
+  * CognitoIDP: update_user_pool() no longer overrides default
+    settings
+  * CognitoIDP: set_user_mfa_preference() now allows the settings to
+    be cleared
+  * EC2: Transit Gateway Peering Attachments are now supported
+    across accounts
+  * EC2: delete_fleets() now sets the correct status
+  * ECS: The Task-statuses now automatically advance
+  * Glue: get_databases/get_tables() now return the CatalogId
+  * IAM: list_groups() now returns the CreateDate-attribute
+  * Redshift: describe_clusters() now returns the
+    TotalStorageCapacityInMegabytes
+  * SES: Templates now support if/else constructs
+- Moto 4.2.4
+  ## New Methods:
+  ### OpenSearch:
+  * list_domain_names()
+  ## Miscellaneous:
+  * DynamoDB: Fixed a bug where binary data could not be queried
+    (introduced in 4.2.3)
+  * EC2: VPC Peering Connections are now supported across accounts
+  * ECS: register_task_definition() now validates the PidMode has
+    the correct value
+  * S3: put_bucket_notification_configuration() now supports SNS
+    Topic targets
+- Moto 4.2.3
+  ## New Services:
+  ### RoboMaker:
+  * create_robot_application()
+  * delete_robot_application()
+  * describe_robot_application()
+  * list_robot_applications()
+  ## New Methods:
+  ### ElasticBeanstalk:
+  * delete_application()
+  ### Events:
+  * create_partner_event_source()
+  * delete_partner_event_source()
+  * describe_event_source()
+  * describe_partner_event_source()
+  * put_partner_events()
+  ## Miscellaneous:
+  * Core: The mocked ACCESS_KEY has been changed from `foobar_key`
+    to `FOOBARKEY`, to align with AWS guidelines
+  * Core: set_initial_no_auth_action_count() now supports SSM
+    actions
+  * Core: Fixed a memory leak when comparing requests (introduced in
+    4.1.13)
+  * Athena: get_query_execution() now returns a StatementType
+    dependent on the provided query
+  * DynamoDB: query() now throws an exception when the
+    KeyConditionExpression contains a literal value
+  * EBS: put_snapshot_block() now supports random bytes
+  * EC2: describe_transit_gateways() now supports filtering by tags
+  * ELBv2: describe_target_groups() now throws an exception for
+    invalid input parameters
+  * ELBv2: describe_target_groups() now sorts the result before
+    returning it
+  * ELBv2: create_target_group() now has improved validation and
+    default values
+  * ELBv2: create_rule() now creates links between the TargetGroups
+    and LoadBalancers
+  * Events: put_events() now support HTTP targets
+  * IAM policy validation now takes the provided Resource-argument
+    into account when validating access to STS-resources
+  * IAM: get_role() now returns the LastUsed-parameter, provided the
+    role was assumed and used
+  * KMS: sign/verify now uses the original message when signing, not
+    the base64-version
+  * Lambda: invoke() now loads any Layers provided in the
+    create_function()
+  * S3: put_bucket_logging() now supports bucket policies (as well
+    as ACP's)
+  * S3: Range requests are now more permissive (following AWS'
+    behaviour)
+  * SFN: list_executions() now returns the StopDate-attribute
+- Moto 4.2.2
+  *  See 4.2.1 - no functional changes.
+- Moto 4.2.1
+  ## New Services:
+  ### Sagemaker Runtime:
+  * invoke_endpoint()
+  ## New Methods:
+  ### CognitoIDP:
+  * describe_resource_server()
+  * list_resource_servers()
+  ### CognitoIDP:
+  * create_cache_cluster()
+  * delete_cache_cluster()
+  * describe_cache_clusters()
+  ### IdentityStore:
+  * list_users()
+  ### Logs:
+  * describe_query_results()
+  * get_query_results()
+  * list_tags_for_resource()
+  * tag_resource()
+  * untag_resource()
+  ### Sagemaker:
+  * list_notebook_instances()
+  ## Miscellaneous:
+  * EC2: describe_transit_gateways() now returns the ARN
+  * IAM policies now allow S3 accesspoint arns
+  * KMS: sign() now supports RSASSA_PSS_SHA_384, RSASSA_PSS_SHA_512
+    and RSASSA_PKCS1_* algorithms
+  * Logs: Now supports two subscription filters
+  * RDS: Clusters now support the ServerlessV2ScalingConfiguration
+    parameter
+  * ResourceGroupsTaggingAPI: tag_resource() now supports RDS
+    resources
+  * S3: CrossAccount access can now be disabled, using
+    MOTO_S3_ALLOW_CROSSACCOUNT_ACCESS=false
+  * SecretsManager: Allow creation/update of secrets without values
+  * SES: set_identity_mail_from_domain() - the Identity can now also
+    be an email
+- Moto 4.2.0
+  ## General:
+  * The Docker image is now based on Python 3.11 (instead of 3.7)
+- Moto 4.1.15
+  ## New Services:
+  ### APIGateway Management API:
+  * delete_connection()
+  * get_connection()
+  * post_to_connection()
+  ## New Methods:
+  ### Autoscaling:
+  * delete_warm_pool()
+  * describe_warm_pool()
+  * put_warm_pool()
+  ### IdentityStore:
+  * list_groups()
+  ### IOTData:
+  * list_named_shadows_for_thing()
+  ### MQ:
+  * list_tags()
+  ### ServiceDiscovery:
+  * update_private_dns_namespace()
+  * update_public_dns_namespace()
+  ## Miscellaneous:
+  * ACM-PCA: create_certificate_authority() now supports the
+    KeyStorageSecurityStandard-parameter
+  * Batch: create_job_definition() now returns more default fields
+    in the containerProperties field
+  * CloudTrail: get_trail_status now works with MultiRegion trails
+  * CognitoIDP: UserPools now return the
+    AccountRecoverySetting-field by default
+  * DynamoDB: query() now throws an exception when providing empty
+    ProjectionExpressions/FilterExpressions
+  * EC2: describe_vpc_endpoint_services() now returns user-defined
+    ones
+  * EC2: run_instances() now supports the Monitoring-attribute
+  * IOT: group names can now contain special characters
+  * IOTData now supports named shadows
+  * KMS: create_key() now supports KeySpecs RSA_3072 and RSA_4096
+  * KMS: create_key() now validates the provided KeySpec
+  * Lambda: create_function() now fails when creating a function
+    with a name that already exists
+  * Lambda: put_function_concurrency() now errors on a quota that
+    exceeds the value set by MOTO_LAMBDA_CONCURRENCY_QUOTA
+  * Lambda: update_function_code() now supports the
+    ImageUri-attribute
+  * RDS: describe_db_cluster_snapshots() now returns the
+    TagList-property
+  * ResourceTaggingsAPI: Now supports Glue resources
+  * S3: Authentication now allows specific resources in the IAM
+    access policy
+  * S3: select_object_content() now takes RecordDelimiter into
+    account
+  * Scheduler: create_scheduler() now errors on duplicate names
+  * TimestreamWrite: create_table() now supports the
+    Schema-attribute
+- Moto 4.1.14
+  ## New Methods:
+  ### SageMaker:
+  * create_model_package()
+  * create_model_package_group()
+  * describe_model_package()
+  * list_model_packages()
+  ## Miscellaneous:
+  * CloudFormation: describe_stack_instances() now returns the
+    StackInstanceStatus-attribute
+  * CloudFront: update_distribution() now supports the
+    DefaultRootObject-parameter
+  * CloudWatch: get_metric_data() now support (simple) Expressions
+  * CognitoIDP: initiate_auth() and admin_initiate_auth() now throw
+    a NotAuthorizedError for disabled users
+  * EC2 VPC's: Add CloudFront, Ground Station and Lattice prefix
+    lists
+  * IOT: search_index() now returns the connectivity-attribute
+  * Organizations: Introduce more trusted service principals
+  * RDS: create_db_cluster() now supports the
+    VpcSecurityGroupIds-parameter
+  * S3: Optional support for CRC32C checksums
+  * SNS: publish_batch() now sends the required
+    `MessageDeduplicationId` for FIFO queues
+  * SQS: send_message_batch() now only throws a
+    `BatchRequestTooLong` if the sum of all messages exceed the
+    limit
+
+-------------------------------------------------------------------
 Wed Jul 26 07:36:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.1.13, partial changes:

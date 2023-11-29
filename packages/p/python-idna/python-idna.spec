@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-idna
-Version:        3.4
+Version:        3.6
 Release:        0
 Summary:        Internationalized Domain Names in Applications (IDNA)
 License:        BSD-3-Clause
@@ -62,7 +60,7 @@ library but currently only supports the older 2003 specification.
 
 %files %{python_files}
 %license LICENSE.md
-%doc HISTORY.rst README.rst
+%doc README.rst
 %{python_sitelib}/*
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 21 14:51:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13:
+  * Fix translations missing for enums (#210)
+  * Fix Python 3.12 compatibility and drop support for Python <
+    3.4 (#211)
+  * Add Chinese (China) translation (tzwasd)
+
+-------------------------------------------------------------------
 Sat Jan 21 21:20:31 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.12:

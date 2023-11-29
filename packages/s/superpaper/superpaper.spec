@@ -1,7 +1,7 @@
 #
 # spec file for package superpaper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           superpaper
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        An advanced multi monitor wallpaper manager
 License:        MIT

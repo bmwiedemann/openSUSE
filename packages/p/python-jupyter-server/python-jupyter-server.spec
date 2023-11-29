@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.7.3
+Version:        2.11.0
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -54,7 +54,7 @@ Requires:       python-Send2Trash >= 1.8.2
 Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
 Requires:       python-jupyter-client >= 7.4.4
-Requires:       python-jupyter_events >= 0.6.0
+Requires:       python-jupyter_events >= 0.9.0
 Requires:       python-jupyter_server_terminals
 Requires:       python-nbconvert >= 6.4.4
 Requires:       python-nbformat >= 5.3.0
@@ -112,7 +112,7 @@ Metapackage for the jupyter_server[test] requirement specifier
 %prep
 %setup -q -n jupyter_server-%{version}
 sed -i pyproject.toml \
-  -e 's/--color=yes//' \
+  -e 's/, "--color=yes"//' \
   -e '/filterwarnings/,/]/ {/error/ a \  "ignore:Module already imported so cannot be rewritten",
                            }'
 

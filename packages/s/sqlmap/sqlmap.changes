@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 25 16:49:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.11:
+  * Fixes: #5539, #5549, #5560, #5565
+
+-------------------------------------------------------------------
 Tue Oct 10 08:41:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.7.10:
@@ -31,7 +37,7 @@ Wed Jul 19 19:24:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fixes #5434
   * Fixes #5444
   * Fixes #5445
-  * Implements #5452 
+  * Implements #5452
 
 -------------------------------------------------------------------
 Fri Jun 16 10:01:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
@@ -57,7 +63,7 @@ Tue Dec  6 12:05:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fixes #5232
   * Fixes #5240
   * Fixes #5242
-  * Fixes #5252 
+  * Fixes #5252
 
 -------------------------------------------------------------------
 Sun Dec  4 13:58:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -68,7 +74,7 @@ Sun Dec  4 13:58:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fixes #5192
   * Implement --csrf-data
   * Fix --cookie-del
-  * Fixes #5216 
+  * Fixes #5216
 
 -------------------------------------------------------------------
 Mon Oct 10 08:15:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -87,14 +93,14 @@ Mon Oct 10 08:15:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Wed Aug  3 22:05:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.7:
-  * https://github.com/sqlmapproject/sqlmap/compare/1.5.7...1.6.7 
+  * https://github.com/sqlmapproject/sqlmap/compare/1.5.7...1.6.7
 
 -------------------------------------------------------------------
 Tue Aug 31 05:16:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update fix_shebang.patch to switch Python scripts to calling
   /usr/bin/python3.
-- Add Requires on python3 for full interpreter. 
+- Add Requires on python3 for full interpreter.
 
 -------------------------------------------------------------------
 Thu Jul 15 07:21:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>

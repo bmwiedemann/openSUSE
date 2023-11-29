@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 27 05:40:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.14:
+  * Added support for linking authors in blog posts
+
+-------------------------------------------------------------------
+Mon Nov 27 05:30:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.13:
+  * Fixed #6365: Blog plugin pagination links to previous pages
+    broken
+  * Fixed #5758: Updated Mermaid.js to version 10.6.1 (latest)
+
+-------------------------------------------------------------------
+Fri Nov 24 10:18:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.12:
+  * Improved blog plugin to generate Unicode-aware slugs by default
+  * Fixed non-deterministic order of categories in blog plugin
+
+-------------------------------------------------------------------
+Thu Nov 23 11:42:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.11:
+  * Fixed #6364: Search plugin crashing when enabling theme while
+    serving
+  * Fixed blog plugin crashing when disabling pagination
+
+-------------------------------------------------------------------
 Mon Nov 20 05:37:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.10:

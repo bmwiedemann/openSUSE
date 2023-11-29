@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:00:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.11:
+  * Use ZLIB_RUNTIME_VERSION if available
+  * Add support for Python 3.12 and drop EOL 3.7
+  * Fix mkdir race condition in LooseObjectDB.store
+  * Don't cancel other jobs from the 3.12 job failing
+  * Use actions/checkout feature to fetch all commits
+  * Revert "Drop support for EOL Python 3.7"
+  * Fix top-of-file license URLs here in gitdb too
+  * No longer treat 3.12 as experimental on CI
+  * Add __all__ to exc for linting
+  * Have Dependabot update smmap submodule dependency
+  * Bump gitdb/ext/smmap from `334ef84` to `f1ace75`
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -11,7 +27,7 @@ Thu Apr 13 22:41:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Dec  6 03:33:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v4.0.10: 
+- Update to v4.0.10:
   * improvements to the way external packages are imported.
 
 -------------------------------------------------------------------
@@ -21,7 +37,7 @@ Tue Oct 26 20:29:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * update signing key
   * fix Sphinx warnings
   * Support Python 3.7+
-  * Allow smmap 5 
+  * Allow smmap 5
 
 -------------------------------------------------------------------
 Tue May 18 22:00:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -30,7 +46,7 @@ Tue May 18 22:00:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Fix exception causes in loose.py
   * Fix exception causes all over the codebase
   * Add Ram Rachum to AUTHORS
-  * Update smmap upper bound in setup.py 
+  * Update smmap upper bound in setup.py
 
 -------------------------------------------------------------------
 Tue Jun  2 15:21:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -89,7 +105,7 @@ Wed Jan 17 15:27:51 UTC 2018 - toddrme2178@gmail.com
 Tue Aug 15 18:08:46 UTC 2017 - daniel.molkentin@suse.com
 
 - update to version 2.0.2
-- converted to singlespec 
+- converted to singlespec
 - moved to separate package due to source package rename
 
 -------------------------------------------------------------------

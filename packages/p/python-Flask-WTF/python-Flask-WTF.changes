@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 27 13:04:27 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Nov 27 08:10:47 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.2.1:
+  * Fix a bug introduced with #556 in 1.2.0 where file validators
+    were editing the file fields content.
+- Update to 1.2.0:
+  * Add field MultipleFileField. FileRequired, FileAllowed,
+    FileSize now can be used to validate multiple files
+- Update to 1.1.2:
+  * Fixed Flask 2.3 deprecations of werkzeug.urls.url_encode and
+    flask.Markup
+  * Stop support for python 3.7
+  * Use pyproject.toml instead of setup.cfg
+  * Fixed nested blueprint CSRF exemption
+- Drop patch already included upstream:
+  * flask-2.3-support.patch
+
+-------------------------------------------------------------------
 Fri Jun 30 05:16:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.1.1:

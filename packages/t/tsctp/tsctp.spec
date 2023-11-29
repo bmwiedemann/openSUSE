@@ -1,7 +1,8 @@
 #
-# spec file for package netperfmeter
+# spec file for package tsctp
 #
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +18,13 @@
 
 
 Name:           tsctp
-Version:        0.7.4
+Version:        0.7.10
 Release:        0
 Summary:        SCTP test tool
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
 #Git-Clone:     https://github.com/dreibh/tsctp
-URL:            https://www.uni-due.de/~be0001/tsctp/
+URL:            https://www.nntb.no/~dreibh/tsctp/
 Source:         https://www.uni-due.de/~be0001/tsctp/download/%{name}-%{version}.tar.xz
 Source1:        https://www.uni-due.de/~be0001/tsctp/download/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -46,7 +47,7 @@ to verify that the SCTP stack is working.
 %cmake_install
 
 %files
-%license COPYING
+%license COPYING-BSD
 %doc AUTHORS ChangeLog README
 %{_bindir}/tsctp
 %{_mandir}/man1/tsctp.1%{?ext_man}

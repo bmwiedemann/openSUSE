@@ -287,4 +287,14 @@
   * Bump min version support #287 (@blink1073) (forwarded request 1092363 from bnavigator)</comment>
     <requestid>1092364</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>78dacf225cfb50fe0576ba7ad039edec</srcmd5>
+    <version>0.9.0</version>
+    <time>1701121381</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.0
+  * Maintenance and upkeep improvements
+</comment>
+    <requestid>1128960</requestid>
+  </revision>
 </revisionlist>

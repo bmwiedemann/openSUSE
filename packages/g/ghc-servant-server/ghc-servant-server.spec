@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.19.2
+Version:        0.20
 Release:        0
 Summary:        A family of combinators for defining webservices APIs and serving them
 License:        BSD-3-Clause

@@ -31,4 +31,12 @@
     <comment>Remove dependency on maven2</comment>
     <requestid>1113428</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6739a8569e931b5bfc2b25d04d58d386</srcmd5>
+    <version>3.5.0</version>
+    <time>1701206384</time>
+    <user>anag+factory</user>
+    <comment>bsc#1217005, CVE-2023-39913</comment>
+    <requestid>1129474</requestid>
+  </revision>
 </revisionlist>

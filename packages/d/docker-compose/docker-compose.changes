@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 23 09:29:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.3:
+  * bump buildx to v0.12.0 and adapt code to changes
+
+-------------------------------------------------------------------
+Thu Nov 23 06:49:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.2:
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/moby/buildkit from 0.12.2 to
+    0.12.3
+  * in watch mode force pull policy to build for services with both
+    build and develop attributes This default behaviour will force
+    a rebuild of the service images at watch process startup and be
+    sure containers will be in sync with the local source code
+  * Assume /src/pkg/compose/testdata absolute workingdir to make
+    tests reproducible
+  * avoir use of []types.ServiceConfig
+  * identify services to build and don't display 'building' if none
+  * fix --remove-orphans not to consider disabled services as
+    orphaned
+  * introduce RuntimeVersion for code to check container runtime
+    supports required features
+  * push also consider build.tags
+  * Make it context aware and add test skipping options
+
+-------------------------------------------------------------------
 Thu Nov 16 14:24:14 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.23.1:

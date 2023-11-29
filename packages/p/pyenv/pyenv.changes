@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 28 05:32:36 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.33
+
+- Update to 2.3.33
+  - Add miniforge3-23.3.1-1 by @goerz in #2839
+  - Add support for miniconda3-3.11-23.10.0-1 by @binbjz in #2843
+  - Add support for miniconda3 23.10.0-1 with py3.10、py3.9、py3.8 by @binbjz in #2844
+  - Add CPython 3.13.0a2 by @edgarrmondragon in #2849
+  - python-build: Document PYTHON_BUILD_HOMEBREW_OPENSSL_FORMULA and PYTHON_BUILD_HTTP_CLIENT by @native-api in #2853
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.32...v2.3.33
+
+-------------------------------------------------------------------
 Wed Nov 15 11:43:34 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.32
 
 - Update to 2.3.32

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 23 01:34:25 UTC 2023 - Mihai Moldovan <ionic@ionic.de>
+
+- Update to new upstream version 1.26.2:
+  * tx: update resources
+  * tx: update translations
+  * tx: migrate to new API
+  * add xdg-desktop-portal config file
+- Add xdg-desktop-portal config file to %files list.
+
+-------------------------------------------------------------------
 Mon Mar 27 10:08:52 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update version to 1.26.1:

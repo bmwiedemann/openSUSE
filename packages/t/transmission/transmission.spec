@@ -35,7 +35,7 @@
 %endif
 
 Name:           transmission
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT

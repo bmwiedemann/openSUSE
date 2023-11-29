@@ -359,4 +359,34 @@
   - swap killswitch for 'docker-compose restart' (forwarded request 1108429 from msmeissn)</comment>
     <requestid>1108430</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>63cdcafb058de8b5c4554c15eb1129d8</srcmd5>
+    <version>1.3.3</version>
+    <time>1700865337</time>
+    <user>anag+factory</user>
+    <comment>- updated to rekor 1.3.3 (jsc#SLE-23476):
+  - Update signer flag description
+  - update trillian to 1.5.3
+  - adds redis_auth
+  - Add method to get artifact hash for an entry
+  - make e2e tests more usable with docker-compose
+  - install go at correct version for codeql
+- updated to rekor 1.3.2 (jsc#SLE-23476):
+- updated to rekor 1.3.1 (jsc#SLE-23476):
+  New Features:
+  - enable GCP cloud profiling on rekor-server (#1746)
+  - move index storage into interface (#1741)
+  - add info to readme to denote additional documentation sources (#1722)
+  - Add type of ed25519 key for TUF (#1677)
+  - Allow parsing base64-encoded TUF metadata and root content (#1671)
+  Quality Enhancements:
+  - disable quota in trillian in test harness (#1680)
+  Bug Fixes:
+  - Update contact for code of conduct (#1720)
+  - Fix panic when parsing SSH SK pubkeys (#1712)
+  - Correct index creation (#1708)
+  - docs: fixzes a small typo on the readme (#1686)
+  - chore: fix backfill-redis Makefile target (#1685) (forwarded request 1128621 from msmeissn)</comment>
+    <requestid>1128622</requestid>
+  </revision>
 </revisionlist>

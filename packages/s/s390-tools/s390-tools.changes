@@ -1,47 +1,54 @@
 -------------------------------------------------------------------
-Fri Oct  6 06:10:19 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Wed Nov 15 07:55:09 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Added a patch (jsc#PED-6373) 
-  * s390-tools-sles15sp6-zkey-Support-EP11-AES-keys-with-prepended-header-to-.patch
-
--------------------------------------------------------------------
-Mon Aug 28 15:52:15 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
-
-- Amended read_value.c for newer z16 models (bsc#1214534) 
+- Fixed a logic error in read_values.c 
 
 -------------------------------------------------------------------
-Tue Aug  8 08:00:14 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Mon Nov 13 13:13:11 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade to version 2.29.0 (jsc#PED-3275)
-  * s390-tools now supports tools written in Rust.
-  * Add compdb Makefile target to create 'compile_commands.json' to support LSP
-    backends in IDEs and editors
-- Add new tools / libraries:
+  * Upgrade 390-tools from version 2.25.0 to version v2.29.0 (Latest)
+  * * * *
+  - General:
+    - s390-tools now supports tools written in Rust.
+    - Add compdb Makefile target to create 'compile_commands.json' to support LSP
+    - backends in IDEs and editors
+    - Add new tools / libraries:
   * rust/pv: Library for pv tools written in rust
   * rust/pvsecret: Tool to manage UV-secrets
-- Changes of existing tools:
-  * dbginfo.sh: Global IFS variable
-  * genprotimg: Add support for add-secret requests
-  * genprotimg: Build debuginfo files for bootloader
-  * hyptop: Add real SMT utilization field
-  * hyptop: Allow users to set speedup factor
-  * pvattest: Add yaml-output for verify command
-  * zipl: Build debuginfo files for bootloader
-- Bug Fixes:
-  * dump2tar: Fix truncated paths
-  * zdev/dracut: fix kdump build to integrate with site support
-- Amended .spec for version 2.29.0, including Rust integration
-
--------------------------------------------------------------------
-Wed Jun 14 11:24:27 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
-
-- Upgrade to version 2.27.0 (jsc#PED-3275)
-- Changes of existing tools:
-  * s390-tools cross-compile and non-s390x support:
+  * Changes of existing tools:
+  - dbginfo.sh: Global IFS variable
+  - genprotimg: Add support for add-secret requests
+  - genprotimg: Build debuginfo files for bootloader
+  - hyptop: Add real SMT utilization field
+  - hyptop: Allow users to set speedup factor
+  - pvattest: Add yaml-output for verify command
+  - zipl: Build debuginfo files for bootloader
+  * Bug Fixes:
+  - dump2tar: Fix truncated paths
+  - zdev/dracut: fix kdump build to integrate with site support
+  * * * *
+  * v2.28.0
+  - Changes of existing tools:
+    - chzcrypt: Support for SE AP pass-through support
+    - genprotimg: Add support for non-s390x architectures
+    - lszcrypt: Support for SE AP pass-through support
+    - zdev: Add support for autoquiesce related sysfs attributes
+  * Bug Fixes:
+  - ap_tools/ap-check: Handle missing 'matrix' and 'control_domains' attrs
+  - ap_tools/ap-check: Hold ap config file lock over get attributes
+  - s390-tools: Fix build for ppc64le
+  - zdev: Add missing label in the udev-rules
+  - zdev: Add proper value input for the ZDEV_SITE_ID key
+  - zdev: Use rename-file to avoid any symlinks created
+  - zipl/dump: fix ngdump dracut helper script
+  * * * *
+  * v2.27.0
+  * Changes of existing tools:
+    - s390-tools cross-compile and non-s390x support:
     - pkg-config is now mandatory for the build process
     - Add PKG_CONFIG Makefile variable to select pkg-config program;
-      default pkg-config or $(CROSS_COMPILE)pkg-config if
-      CROSS_COMPILE is set
+    - default pkg-config or $(CROSS_COMPILE)pkg-config if
+    - CROSS_COMPILE is set
     - Rename Makefile variable ARCH to HOST_ARCH. HOST_ARCH is the
       architecture that will run the produced (executable) objects
     - Add the Makefile variable BUILD_ARCH. BUILD_ARCH is the
@@ -51,42 +58,99 @@ Wed Jun 14 11:24:27 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
       convention is very similar to the Meson convention (see
       https://mesonbuild.com/Reference-tables.html#environment-variables-per-machine).
     - Limit build targets for non-s390x architectures (pvattest)
-  * dasdfmt: Fall back to full format if space release fails
-  * dbginfo.sh: Add nstat for network and SNMP stats
-  * dbginfo.sh: Rework crypto data collection
-  * hyptop: Show thread util by default
-  * zipl: Add support for list-directed IPL dump from ECKD DASD
-- Bug Fixes:
-  * lszcrypt: Fix argument parsing
-  * zdev/dracut: Fix out-of-memory (OOM) situations in the kdump crashkernel environment
-  * ziomon/ziorep_config: Fix for SCSI devices of type disk without block dev
-  * pvextract-hdr: Fix parsing issues on little-endian systems
-- Amended the .patches to fit the 2.27 version
-- Removed obsolete patches (the fixes are included in this version)
-  * s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
-  * s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch
-  * s390-tools-sles15sp5-01-zipl-boot-discard-.eh_frame-and-.interp-input-sectio.patch
-  * s390-tools-sles15sp5-02-zipl-boot-declare-that-no-executable-stack-is-requir.patch
-  * s390-tools-sles15sp5-03-zipl-boot-use-no-warn-rwx-segments-linker-flag.patch
-  * s390-tools-sles15sp5-04-zipl-boot-disable-build-id.patch
-  * s390-tools-sles15sp5-05-zipl-boot-simplify-objcopy-commands.patch
-  * s390-tools-sles15sp5-06-zipl-move-STAGE2_MAX_SIZE-and-STAGE1B_LOAD_ADDR-to-l.patch
-  * s390-tools-sles15sp5-07-zipl-boot-use-linker-scripts-for-all-bootloaders.patch
-  * s390-tools-sles15sp5-08-genprotimg-boot-declare-that-no-executable-stack-is-.patch
-  * s390-tools-sles15sp5-09-genprotimg-boot-use-no-warn-rwx-segments-linker-flag.patch
-  * s390-tools-sles15sp5-10-genprotimg-boot-disable-build-id.patch
-  * s390-tools-sles15sp5-11-genprotimg-boot-Makefile-simplify-objcopy-command.patch
-  * s390-tools-sles15sp5-12-genprotimg-boot-improve-linker-scripts.patch
-  * s390-tools-sles15sp5-13-genprotimg-boot-stage3b-add-size-check-to-the-linker.patch
-  * s390-tools-sles15sp5-14-genprotimg-boot-stage3b_reloc.bin-add-linker-script.patch
-  * s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boot-object.patch
-  * s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
-  * s390-tools-sles15sp5-01-ziomon-ziorep_config-fix-missing-SG-major-minor-for-.patch
-  * s390-tools-sles15sp5-02-ziomon-ziorep_config-fix-for-SCSI-devices-of-type-di.patch
-  * s390-tools-sles15sp5-fix-chown-commands-syntax.patch 
+    - dasdfmt: Fall back to full format if space release fails
+    - dbginfo.sh: Add nstat for network and SNMP stats
+    - dbginfo.sh: Rework crypto data collection
+    - hyptop: Show thread util by default
+    - zipl: Add support for list-directed IPL dump from ECKD DASD
+  * Bug Fixes:
+  - lszcrypt: Fix argument parsing
+  - zdev/dracut: Fix out-of-memory (OOM) situations in the kdump crashkernel environment
+  - ziomon/ziorep_config: Fix for SCSI devices of type disk without block dev
+  - pvextract-hdr: Fix parsing issues on little-endian systems
+  * * * *
+  * v2.26.0
+  * Remove tools / libraries:
+  - Remove vmconvert and libvmdump in favor of vmdump file support in zdump
+  * Changes of existing tools:
+  - ipl_tools: Add support for list-directed IPL from ECKD DASD
+  - lszcrypt: Display hardware filtering support capability
+  - vmur: Remove option -c for dump file conversion (See zdump changes)
+  - zdev: Add zfcp ber_stop parameter handling
+  - zdump: Add vmdump dfi for vmdump format to elf format
+  - zkey: Support EP11 host library version
+  * Bug Fixes:
+  - zipl: Move dump parmline processing and verification
+  - zipl/genprotimg: Various build improvements
+  * * * *
+  * Removed obsolete IBM patches
+  - s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
+  - s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch
+  * Removed obsolete patches for bug 1208527, and bug 1206173
+  - s390-tools-sles15sp5-01-zipl-boot-discard-.eh_frame-and-.interp-input-sectio.patch
+  - s390-tools-sles15sp5-02-zipl-boot-declare-that-no-executable-stack-is-requir.patch
+  - s390-tools-sles15sp5-03-zipl-boot-use-no-warn-rwx-segments-linker-flag.patch
+  - s390-tools-sles15sp5-04-zipl-boot-disable-build-id.patch
+  - s390-tools-sles15sp5-05-zipl-boot-simplify-objcopy-commands.patch
+  - s390-tools-sles15sp5-06-zipl-move-STAGE2_MAX_SIZE-and-STAGE1B_LOAD_ADDR-to-l.patch
+  - s390-tools-sles15sp5-07-zipl-boot-use-linker-scripts-for-all-bootloaders.patch
+  - s390-tools-sles15sp5-08-genprotimg-boot-declare-that-no-executable-stack-is-.patch
+  - s390-tools-sles15sp5-09-genprotimg-boot-use-no-warn-rwx-segments-linker-flag.patch
+  - s390-tools-sles15sp5-10-genprotimg-boot-disable-build-id.patch
+  - s390-tools-sles15sp5-11-genprotimg-boot-Makefile-simplify-objcopy-command.patch
+  - s390-tools-sles15sp5-12-genprotimg-boot-improve-linker-scripts.patch
+  - s390-tools-sles15sp5-13-genprotimg-boot-stage3b-add-size-check-to-the-linker.patch
+  - s390-tools-sles15sp5-14-genprotimg-boot-stage3b_reloc.bin-add-linker-script.patch
+  - s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boot-object.patch
+  * Removed obsolete patch for bug 1209196
+  - s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
+  * Removed obsolete patches for bug 1211008
+  - s390-tools-sles15sp5-01-ziomon-ziorep_config-fix-missing-SG-major-minor-for-.patch
+  - s390-tools-sles15sp5-02-ziomon-ziorep_config-fix-for-SCSI-devices-of-type-di.patch
+  * Removed obsolete patch for bug 1213377
+  - s390-tools-sles15sp5-01-zdev-add-missing-label-in-the-udev-rules.patch
+  * Removed obsolete patches for bug 1213852
+  - s390-tools-sles15sp5-01-zdev-add-proper-value-input-for-the-ZDEV_SITE_ID-key.patch
+  - s390-tools-sles15sp5-02-zdev-use-rename-file-to-avoid-any-symlinks-created.patch
+  * Removed obsolete patch for bug 1214114
+  - s390-tools-sles15sp5-dasdfmt-Fall-back-to-full-format-if-space-release-fa.patch
+  * Removed obsolete patch
+  - s390-tools-sles15sp5-fix-chown-commands-syntax.patch
 
 -------------------------------------------------------------------
-Thu May  4 08:32:36 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Thu Nov  2 09:31:19 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (jsc#PED-6539, jsc#PED-6373)
+  * s390-tools-sles15sp6-zkey-Support-EP11-AES-keys-with-prepended-header-to-.patch
+- Updated read_values.c (bsc#1214466, bsc#1214534)
+  * Update read_values.c to support the new IBM z Processors
+- Updated SUSE's tools and their corresponding man pages (bsc#1216257)
+  * ctc_configure
+  * dasd_configure.opensuse
+  * dasd_configure.8
+  * dasd_configure.suse
+  * mkdump.pl.opensuse
+  * mkdump.pl.suse
+  * qeth_configure
+  * qeth_configure.8
+  * zfcp_disk_configure
+  * zfcp_disk_configure.8
+  * zfcp_host_configure.8
+  * zfcp_host_configure
+- Updated cputype script
+  * Amended cputype to support the new IBM z Processors
+
+-------------------------------------------------------------------
+Mon Aug 21 13:29:47 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applies patches (bsc#1213377, bsc#1213852, bsc#1214114)
+  * s390-tools-sles15sp5-01-zdev-add-missing-label-in-the-udev-rules.patch
+  * s390-tools-sles15sp5-01-zdev-add-proper-value-input-for-the-ZDEV_SITE_ID-key.patch
+  * s390-tools-sles15sp5-02-zdev-use-rename-file-to-avoid-any-symlinks-created.patch
+  * s390-tools-sles15sp5-dasdfmt-Fall-back-to-full-format-if-space-release-fa.patch 
+
+-------------------------------------------------------------------
+Thu May  4 11:06:54 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied patches for ziomon: fix for SCSI devices of type disk without block dev
     (bsc#1211008)
@@ -115,20 +179,20 @@ Thu Mar 23 12:45:57 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -  Amended read_value.c
 
 -------------------------------------------------------------------
-Mon Mar 13 15:33:43 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Mon Mar 13 10:56:44 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1209196)
   * s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch 
 
 -------------------------------------------------------------------
-Wed Mar  8 09:38:46 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Wed Mar  8 09:10:20 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated cputype (bsc#1208983)
   * Changed the script to avoid "/usr/bin/cputype: line xx: nnnn: command not found",
     when machine type was found more than once in the /proc/cpuinfo.
 
 -------------------------------------------------------------------
-Tue Feb 21 13:49:29 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Tue Feb 21 13:46:33 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied the following patches (bsc#1208527, bsc#1206173)
   * s390-tools-sles15sp5-01-zipl-boot-discard-.eh_frame-and-.interp-input-sectio.patch

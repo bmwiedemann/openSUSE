@@ -2,7 +2,7 @@
 # spec file for package limesuite
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 #
 
 
-%define sover 23_10-0
+%define sover 23_11-0
 %define libname libLimeSuite%{sover}
 %define soapy_modver 0.8
 Name:           limesuite
-Version:        23.10.0
+Version:        23.11.0
 Release:        0
 Summary:        Collection of software supporting LMS7-based hardware
 License:        Apache-2.0

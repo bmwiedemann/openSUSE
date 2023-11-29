@@ -17,7 +17,7 @@
 
 
 Name:           python-comm
-Version:        0.1.4
+Version:        0.2.0
 Release:        0
 Summary:        Jupyter Python Comm implementation
 License:        BSD-3-Clause
@@ -41,7 +41,7 @@ Comm implementation and a default CommManager that can be used.
 
 %prep
 %setup -q -n comm-%{version}
-sed -i -e 's/--color=yes//' pyproject.toml
+sed -i -e 's/, "--color=yes"//' pyproject.toml
 
 %build
 %pyproject_wheel

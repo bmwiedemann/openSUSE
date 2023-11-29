@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 22 17:27:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Override pytest configuration to do not handle warnings as errors.
+
+-------------------------------------------------------------------
 Wed Oct 18 07:31:47 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.31.1:

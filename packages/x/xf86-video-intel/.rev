@@ -1014,4 +1014,12 @@ why not just update to this version instead? O.o (forwarded request 207632 from 
     driver instead of &quot;modesetting&quot; one ...</comment>
     <requestid>1118589</requestid>
   </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>35e87351d2dac6b7c0164798ed56bed4</srcmd5>
+    <version>2.99.917.916_g31486f40</version>
+    <time>1701121394</time>
+    <user>anag+factory</user>
+    <comment>added bugnumber to latest changes ...</comment>
+    <requestid>1128954</requestid>
+  </revision>
 </revisionlist>

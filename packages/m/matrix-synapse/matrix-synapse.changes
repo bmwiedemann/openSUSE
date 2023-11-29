@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Nov 28 15:22:31 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.97.0
+  Synapse will soon be forked by Element under an AGPLv3.0 licence (with CLA, for
+  proprietary dual licensing). You can read more about this here:
+
+  https://matrix.org/blog/2023/11/06/future-of-synapse-dendrite/
+  https://element.io/blog/element-to-adopt-agplv3/
+  The Matrix.org Foundation copy of the project will be archived. Any changes needed
+  by server administrators will be communicated via our usual announcements channels,
+  but we are striving to make this as seamless as possible.
+
+  - Features
+    - Add support for asynchronous uploads as defined by MSC2246.
+      Contributed by @sumnerevans at @beeper. (#15503)
+    - Improve the performance of some operations in multi-worker
+      deployments. (#16613, #16616)
+  - Bugfixes
+    - Fix a long-standing bug where some queries updated the same
+      row twice. Introduced in Synapse 1.57.0. (#16609)
+    - Fix a long-standing bug where Synapse would not unbind
+      third-party identifiers for Application Service users when
+      deactivated and would not emit a compliant response. (#16617)
+    - Fix sending out of order POSITION over replication, causing
+      additional database load. (#16639)
+  - Improved Documentation
+    - Note that the option outbound_federation_restricted_to was
+      added in Synapse 1.89.0, and fix a nearby formatting error.
+      (#16628)
+    - Update parameter information for the /timestamp_to_event
+      admin API. (#16631)
+    - Provide an example for a common encrypted media response from
+      the admin user media API and mention possible null values.
+      (#16654)
+  - Internal Changes
+    - Remove whole table locks on push rule modifications.
+      Contributed by Nick @ Beeper (@Fizzadar). (#16051)
+    - Support reactor tick timings on more types of event loops.
+      (#16532)
+    - Improve type hints. (#16564, #16611, #16612)
+    - Avoid executing no-op queries. (#16583)
+    - Simplify persistence code to be per-room. (#16584)
+    - Use standard SQL helpers in persistence code. (#16585)
+    - Avoid updating the stream cache unnecessarily. (#16586)
+    - Improve performance when using opentracing. (#16589)
+    - Run push rule evaluator setup in parallel. (#16590)
+    - Improve tests of the SQL generator. (#16596)
+    - Use more generic database methods. (#16615)
+    - Use dbname instead of the deprecated database connection
+      parameter for psycopg2. (#16618)
+    - Add an internal Admin API endpoint to temporarily grant the
+      ability to update an existing cross-signing key without UIA.
+      (#16634)
+    - Improve references to GitHub issues. (#16637, #16638)
+    - More efficiently handle no-op POSITION over replication.
+      (#16640, #16655)
+    - Speed up deleting of device messages when deleting a device.
+      (#16643)
+    - Speed up persisting large number of outliers. (#16649)
+    - Reduce max concurrency of background tasks, reducing
+      potential max DB load. (#16656, #16660)
+    - Speed up purge room by adding an index to event_push_summary.
+      (#16657)
+- refresh patches:
+  bump-dependencies.patch
+  matrix-synapse-1.4.1-paths.patch
+
+-------------------------------------------------------------------
 Fri Nov 17 23:44:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.96.0

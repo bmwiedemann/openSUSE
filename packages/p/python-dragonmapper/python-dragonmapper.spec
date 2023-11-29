@@ -16,52 +16,58 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-dragonmapper
 Version:        0.2.6
 Release:        0
-License:        MIT
 Summary:        Identification and conversion functions for Chinese text processing
-URL:            https://github.com/tsroten/dragonmapper
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/tsroten/dragonmapper
 Source:         https://github.com/tsroten/dragonmapper/archive/v%{version}.tar.gz#/dragonmapper-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 31-fix-erroneous-IPA-you-yong.patch gh#tsroten/dragonmapper#25 mcepl@suse.com
+# Fix incorrect IPA
+Patch0:         31-fix-erroneous-IPA-you-yong.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-hanzidentifier >= 1.0.2
+Requires:       python-zhon >= 1.1.3
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hanzidentifier >= 1.0.2}
 BuildRequires:  %{python_module zhon >= 1.1.3}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-hanzidentifier >= 1.0.2
-Requires:       python-zhon >= 1.1.3
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
 Identification and conversion functions for Chinese text processing.
 
 %prep
-%setup -q -n dragonmapper-%{version}
+%autosetup -p1 -n dragonmapper-%{version}
+
 mv dragonmapper/tests/test-hanzi.py dragonmapper/tests/test_hanzi.py
 mv dragonmapper/tests/test-transcriptions.py dragonmapper/tests/test_transcriptions.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-%pytest dragonmapper/tests/
+# skips because of gh#tsroten/dragonmapper#35
+%pytest -k 'not (test_identify or test_is_ipa or test_is_pinyin or test_is_pinyin_compatible or test_accented_to_numbered or test_numbered_to_accented)' dragonmapper/tests
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/dragonmapper
+%{python_sitelib}/dragonmapper-%{version}*-info
 
 %changelog

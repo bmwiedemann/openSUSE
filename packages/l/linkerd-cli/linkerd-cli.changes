@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 23 06:24:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.5:
+  * stable-2.14.5
+  * proxy: v2.210.4
+  * policy: Update to OpenSSL 3 (#11625)
+  * Restart destination, proxy-injector controllers on config
+    change. (#11440)
+  * helm: Add a controllerImageVersion override (#11406)
+
+-------------------------------------------------------------------
 Fri Nov 17 05:52:28 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.14.4:

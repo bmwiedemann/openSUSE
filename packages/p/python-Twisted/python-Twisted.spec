@@ -28,12 +28,12 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
-Version:        22.10.0
+Version:        23.10.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
 URL:            https://twistedmatrix.com/
-Source0:        https://files.pythonhosted.org/packages/source/T/Twisted/Twisted-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/t/twisted/twisted-%{version}.tar.gz
 Source99:       python-Twisted.rpmlintrc
 Patch0:         skip_MultiCast.patch
 # PATCH-FIX-UPSTREAM no-test_successResultOfWithFailureHasTraceback.patch https://twistedmatrix.com/trac/ticket/9665 mcepl@suse.com
@@ -44,23 +44,14 @@ Patch2:         no-test_successResultOfWithFailureHasTraceback.patch
 Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
 # We don't want to package yet another module, and it is easily skippable
 Patch4:         no-cython_test_exception_raiser.patch
-# boo#1110669 Our variant of PyGObject has pygtkcompat stripped which Twisted does not handle
-Patch5:         no-pygtkcompat.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
-# PATCH-FIX-UPSTREAM py311-tests-compat.patch gh#twisted/twisted#11734 gh#twisted/twisted#11733
-Patch7:         py311-tests-compat.patch
-# PATCH-FIX-UPSTREAM gh#twisted/twisted#11787
-Patch8:         support-new-glibc.patch
-# PATCH-FIX-UPSTREAM gh#twisted/twisted#11878
-Patch9:         regenerate-cert-to-work-with-latest-service-identity.patch
-# PATCH-FIX-UPSTREAM gh#twisted/twisted#11873
-Patch10:        remove-pynacl-optional-dependency.patch
-# PATCH-FIX-UPSTREAM CVE-2023-46137-HTTP-pipeline-response.patch bsc#1216588 mcepl@suse.com
-# disordered HTTP pipeline response in twisted.web
-Patch11:        CVE-2023-46137-HTTP-pipeline-response.patch
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module incremental >= 21.3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
@@ -121,7 +112,6 @@ Requires:       python-Twisted = %{version}
 Requires:       python-appdirs >= 1.4.0
 Requires:       python-bcrypt >= 3.0.0
 Requires:       python-cryptography >= 2.6
-Requires:       python-pyasn1
 
 %description conch
 Twisted is an extensible framework for Python programming, with special focus
@@ -186,12 +176,12 @@ on event-based network programming and multiprotocol integration.
 This metapackage is for the optional dependency all_non_platform
 
 %prep
-%autosetup -p1 -n Twisted-%{version}
+%autosetup -p1 -n twisted-%{version}
 sed -i '1{/env python/d}' src/twisted/mail/test/pop3testserver.py src/twisted/trial/test/scripttest.py
 
 %if ! %{with test}
 %build
-%python_build
+%pyproject_wheel
 
 # empty files
 rm docs/{fun/Twisted.Quotes,_static/.placeholder,_templates/.placeholder}
@@ -200,7 +190,7 @@ rm docs/{fun/Twisted.Quotes,_static/.placeholder,_templates/.placeholder}
 
 %if ! %{with test}
 %install
-%python_install
+%pyproject_install
 find %{buildroot} -regex '.*\.[ch]' -exec rm {} ";" # Remove leftover C sources
 install -dm0755 %{buildroot}%{_mandir}/man1/
 install -m0644 docs/*/man/*.1 %{buildroot}%{_mandir}/man1/ # Install man pages
@@ -294,7 +284,7 @@ done
 %python_alternative %{_mandir}/man1/pyhtmlizer.1%{?ext_man}
 %python_alternative %{_mandir}/man1/trial.1%{?ext_man}
 %{python_sitelib}/twisted
-%{python_sitelib}/Twisted-%{version}*-info
+%{python_sitelib}/twisted-%{version}*-info
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc

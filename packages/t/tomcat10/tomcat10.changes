@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 27 13:14:21 UTC 2023 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- replace prep setup and patches macro with autosetup
+
+-------------------------------------------------------------------
 Tue Nov 14 15:03:27 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Initial packaging of Tomcat 10.1.14

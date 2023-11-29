@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.6.1
+Version:        0.3.6.3
 Release:        0
 Summary:        Http-client backend using the connection package and tls library
 License:        MIT
@@ -33,12 +33,12 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-case-insensitive-prof
-BuildRequires:  ghc-connection-devel
-BuildRequires:  ghc-connection-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
+BuildRequires:  ghc-crypton-connection-devel
+BuildRequires:  ghc-crypton-connection-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-data-default-class-prof
 BuildRequires:  ghc-exceptions-devel

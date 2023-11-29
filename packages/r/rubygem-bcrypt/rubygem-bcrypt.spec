@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-bcrypt
-Version:        3.1.19
+Version:        3.1.20
 Release:        0
 %define mod_name bcrypt
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -39,7 +38,6 @@ Source1:        rubygem-bcrypt-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        OpenBSD's bcrypt() password hashing algorithm
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 bcrypt() is a sophisticated and secure hash algorithm designed by The

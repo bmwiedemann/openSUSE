@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 24 07:40:48 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.11`
+
+- Update to version 1.26.11:
+  * Use golang library instead of mklink
+  * [go] Bump images, dependencies and versions to go 1.20.11
+  * Fixing attempt to deploy past allocatable memory limits test on Windows
+  * bump golang.org/grpc to v1.56.3
+  * Add more test cases ensuring nextScheduleTimeDuration is never < 0
+  * Modify mostRecentScheduleTime to return more detailed information about missed schedules
+  * Re-use common parts between getNextScheduleTime and nextScheduledTimeDuration
+  * Cleanups in controller utils
+  * Fixing gmsa-webhook install steps for Windows GMSA full tests
+  * Service controller: improve node lifecycle updates
+  * KCCM: fix GCP ILB by reintroducing readiness predicate for eTP:Local
+  * Use Patch instead of SSA for Pod Disruption condition
+  * Retry operations if CSI Driver Isn't Found by Treating this Error as Transient
+
+-------------------------------------------------------------------
 Thu Oct 26 05:44:41 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update .spec file to bump go version build requirements:

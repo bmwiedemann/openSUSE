@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 28 08:53:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.3.2:
+  * The ``coverage lcov`` command ignored the ``[report]
+    exclude_lines`` and ``[report] exclude_also`` settings
+  * Sometimes SQLite will create journal files alongside the
+    coverage.py database files.  These are ephemeral, but could
+    be mistakenly included when combining data files.
+  * On Python 3.12+, we now disable SQLite writing journal files,
+    which should be a little faster.
+  * The new 3.12 soft keyword ``type`` is properly bolded in HTML
+    reports.
+  * Removed the "fullcoverage" feature used by CPython to measure
+    the coverage of early-imported standard library modules.
+
+-------------------------------------------------------------------
 Mon Sep 18 09:20:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.3.1:

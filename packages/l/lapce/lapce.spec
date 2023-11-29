@@ -17,7 +17,7 @@
 
 
 Name:           lapce
-Version:        0.2.8
+Version:        0.3.0
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce
@@ -62,7 +62,7 @@ cp %{SOURCE2} .cargo/config
 # We disable default feature as they include auto-update.
 # For reference:
 # https://github.com/lapce/lapce/blob/0ded46c988d72b563bd78b29cc11107d4e2248bc/lapce-ui/Cargo.toml#L48
-%{cargo_build} --no-default-features -p lapce-ui --features all-languages
+%{cargo_build} --no-default-features -p lapce-app --features all-languages
 
 %install
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}

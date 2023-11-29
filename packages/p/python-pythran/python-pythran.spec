@@ -44,7 +44,7 @@ ExclusiveArch:  x86_64
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pythran%{psuffix}
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause
@@ -52,11 +52,9 @@ URL:            https://github.com/serge-sans-paille/pythran
 # Tests are only availble in github archive
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
-#PATCH-FIX-UPSTREAM https://github.com/serge-sans-paille/pythran/commit/339fb5dcdf28f40311b5051925fd8a2c86286ac6 Introduce pythran/pythonic/include/types/longdouble.hpp et cie
-Patch:          numpy-longdouble.patch
-#PATCH-FIX-UPSTREAM https://github.com/serge-sans-paille/pythran/commit/a49dc44076f7068205c22f532975c50cc4c03958 Use npy_creal/npy_cimag from npy_math in from_python::convert
-Patch1:         numpy-complex.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beniget >= 0.4.0
@@ -115,11 +113,11 @@ EOF
 sed -i -e 's/-O0/-O1/g' -e 's/-Werror/-w/g' pythran/tests/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pythran
 %python_clone -a %{buildroot}%{_bindir}/pythran-config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -149,7 +147,7 @@ donttest="$donttest or test_toolchain or test_cli"
 %python_alternative %{_bindir}/pythran-config
 %{python_sitelib}/pythran
 %{python_sitelib}/omp
-%{python_sitelib}/pythran-%{version}*-info
+%{python_sitelib}/pythran-%{version}.dist-info
 %endif
 
 %changelog

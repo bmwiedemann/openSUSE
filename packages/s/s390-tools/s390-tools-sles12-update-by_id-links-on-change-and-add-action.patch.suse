@@ -10,7 +10,7 @@ References: bnc#808042
 
 Signed-off-by: Robert Milasan <rmilasan@suse.de>
 ---
- etc/udev/rules.d/59-dasd.rules |    2 +-
+ etc/udev/rules.d/59-dasd.rules | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Index: s390-tools-2.29.0/etc/udev/rules.d/59-dasd.rules

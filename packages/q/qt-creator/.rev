@@ -222,4 +222,25 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 11.0.3 (forwarded request 1114096 from krop)</comment>
     <requestid>1114097</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>2e320c4b96e903431fb586a29d91a192</srcmd5>
+    <version>11.0.3</version>
+    <time>1700772122</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128297</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e2beb903c7e771837ea278cbedd97e5e</srcmd5>
+    <version>12.0.0</version>
+    <time>1701023801</time>
+    <user>anag+factory</user>
+    <comment>- Update to 12.0.0:
+  * https://www.qt.io/blog/qt-creator-12-released
+  New features:
+  * Integrated compiler explorer
+  * CMake debugging and profiling
+  * Screen recording</comment>
+    <requestid>1128701</requestid>
+  </revision>
 </revisionlist>

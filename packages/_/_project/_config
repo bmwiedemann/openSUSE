@@ -830,6 +830,12 @@ Prefer: -python39-jsonschema417-format-nongpl
 Prefer: -python310-jsonschema417-format-nongpl
 Prefer: -python311-jsonschema417-format-nongpl
 
+# have choice for python-mistune after rename to python-mistune2
+Prefer: -python39-mistune
+Prefer: -python310-mistune
+Prefer: -python311-mistune
+
+
 Prefer: -protobuf21-devel
 
 Prefer: -python39-urllib3_1 -python310-urllib3_1 -python311-urllib3_1
@@ -866,7 +872,7 @@ Prefer: kernel-default-base
 # have choice for libpxbackend-1.0.so()(64bit) needed by libproxy1: libpxbackend-1_0 libpxbackend-1_0-mini
 Prefer: -libpxbackend-1_0
 
-# have choice for command-not-found: cnf-rs scout-command-not-found
+# have choice for command-not-found: cnf cnf-rs scout-command-not-found
 Prefer: -scout-command-not-found
 
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
@@ -1799,6 +1805,7 @@ BuildFlags: onlybuild:drpm
 BuildFlags: onlybuild:dtc
 BuildFlags: onlybuild:duktape
 BuildFlags: onlybuild:dummy-release
+BuildFlags: onlybuild:libdvdnav
 BuildFlags: onlybuild:dwz
 BuildFlags: onlybuild:dxvk
 BuildFlags: onlybuild:eglexternalplatform
@@ -2379,6 +2386,7 @@ BuildFlags: onlybuild:pam-config
 BuildFlags: onlybuild:pam_kwallet
 BuildFlags: onlybuild:pango
 BuildFlags: onlybuild:patch
+BuildFlags: onlybuild:patchelf
 BuildFlags: onlybuild:patchutils
 BuildFlags: onlybuild:pcaudiolib
 BuildFlags: onlybuild:pciutils
@@ -2751,6 +2759,8 @@ BuildFlags: onlybuild:python-flit-core:primary
 BuildFlags: onlybuild:python-flit-scm
 BuildFlags: onlybuild:python-freezegun
 BuildFlags: onlybuild:python-gi-docgen
+BuildFlags: onlybuild:python-gitdb
+BuildFlags: onlybuild:python-GitPython
 BuildFlags: onlybuild:python-glad2
 BuildFlags: onlybuild:python-gobject
 BuildFlags: onlybuild:python-gssapi
@@ -2780,6 +2790,7 @@ BuildFlags: onlybuild:python-libcst
 BuildFlags: onlybuild:python-libevdev
 BuildFlags: onlybuild:python-lxml
 BuildFlags: onlybuild:python-mccabe
+BuildFlags: onlybuild:python-meson-python
 BuildFlags: onlybuild:python-mypy_extensions
 BuildFlags: onlybuild:python-nose2
 BuildFlags: onlybuild:python-notify2
@@ -2801,6 +2812,7 @@ BuildFlags: onlybuild:python-poetry-core
 BuildFlags: onlybuild:python-priority
 BuildFlags: onlybuild:python-psutil
 BuildFlags: onlybuild:python-ptyprocess
+BuildFlags: onlybuild:python-pyproject-metadata 
 BuildFlags: onlybuild:python-py
 BuildFlags: onlybuild:python-py3c
 BuildFlags: onlybuild:python-pyOpenSSL
@@ -2848,6 +2860,7 @@ BuildFlags: onlybuild:python-rtslib-fb
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
 BuildFlags: onlybuild:python-setuptools
+BuildFlags: onlybuild:python-setuptools:wheel
 BuildFlags: onlybuild:python-setuptools-rust
 BuildFlags: onlybuild:python-setuptools_scm
 BuildFlags: onlybuild:python-sip
@@ -2855,6 +2868,7 @@ BuildFlags: onlybuild:python-sip6
 BuildFlags: onlybuild:python-six
 BuildFlags: onlybuild:python-slip
 BuildFlags: onlybuild:python-smartypants
+BuildFlags: onlybuild:python-smmap
 BuildFlags: onlybuild:python-sniffio
 BuildFlags: onlybuild:python-snowballstemmer
 BuildFlags: onlybuild:python-sortedcontainers
@@ -2878,6 +2892,7 @@ BuildFlags: onlybuild:python-trustme
 BuildFlags: onlybuild:python-typing-inspect
 BuildFlags: onlybuild:python-typing_extensions
 BuildFlags: onlybuild:python-typogrify
+BuildFlags: onlybuild:python-types-python-dateutil
 BuildFlags: onlybuild:python-tzlocal
 BuildFlags: onlybuild:python-u-msgpack-python
 BuildFlags: onlybuild:python-urllib3
@@ -2939,6 +2954,7 @@ BuildFlags: onlybuild:rubygem-ronn
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
 BuildFlags: onlybuild:rust1.73
+BuildFlags: onlybuild:rust1.74
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sbc

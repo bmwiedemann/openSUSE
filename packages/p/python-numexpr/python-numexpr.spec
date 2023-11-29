@@ -17,7 +17,7 @@
 
 
 Name:           python-numexpr
-Version:        2.8.4
+Version:        2.8.7
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT

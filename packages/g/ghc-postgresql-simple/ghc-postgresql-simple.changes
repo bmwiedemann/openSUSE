@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 19 19:59:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.7.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug  1 13:28:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.7.0.0.
+  ### Version 0.7.0.0 (2023-07-31)
+
+    * Remove Eq Null instance. (Future `base` may break it, we remove it profilacticly).
+    * Use `postgresql-libpq >=0.10.0.0`. It includes critical fixes,
+      by using `postgresql-simple >=0.7` you won't get older `postgresql-libpq`.
+    * Drop support for GHC prior 8.6
+    * Added a class for `postgresql-simple` exceptions: `SomePostgreSqlException`.
+      This allows to catch all `postgresql-simple` exceptions at once.
+      (c.f. `AsyncException` in `base).
+
+- Drop obsolete "dont-depend-on-obsolete-bytestring-builder.patch".
+
+-------------------------------------------------------------------
 Sun Jul  9 20:01:35 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update postgresql-simple to version 0.6.5.1.

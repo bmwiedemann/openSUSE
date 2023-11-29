@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later

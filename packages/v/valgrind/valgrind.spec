@@ -29,7 +29,7 @@
 %endif
 %bcond_without docs
 Name:           valgrind%{?psuffix}
-Version:        3.21.0
+Version:        3.22.0
 Release:        0
 Summary:        Memory Management Debugger
 License:        GFDL-1.2-only AND GPL-2.0-or-later
@@ -46,7 +46,11 @@ Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
+%if %{suse_version} == 1600 && !0%{?is_opensuse}
+ExclusiveArch:  aarch64 x86_64 ppc64le s390x
+%else
 ExclusiveArch:  aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
+%endif
 %if "%{flavor}" == ""
 Requires:       (glibc >= %{glibc_main_version}.%{glibc_major_version} with glibc < %{glibc_main_version}.%{lua:print(rpm.expand("%{glibc_major_version}")+1)})
 Provides:       callgrind = %{version}
@@ -205,12 +209,13 @@ if test -d %{buildroot}%{_datadir}/doc/valgrind; then
 fi
 mkdir -p %{buildroot}%{_docdir}/%{name}
 
-rm %{buildroot}/%{_includedir}/valgrind/{valgrind,callgrind,dhat,drd,helgrind,memcheck}.h
+rm %{buildroot}/%{_includedir}/valgrind/{valgrind,cachegrind,callgrind,dhat,drd,helgrind,memcheck}.h
 
 %else
 install -m 755 -d %{buildroot}/%{_includedir}/valgrind
 install -m 644 -t %{buildroot}/%{_includedir}/valgrind \
     include/valgrind.h \
+    cachegrind/cachegrind.h \
     callgrind/callgrind.h \
     dhat/dhat.h \
     drd/drd.h \
@@ -373,6 +378,7 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 
 %files -n valgrind-client-headers
 %dir %{_includedir}/valgrind
+%{_includedir}/valgrind/cachegrind.h
 %{_includedir}/valgrind/callgrind.h
 %{_includedir}/valgrind/dhat.h
 %{_includedir}/valgrind/drd.h

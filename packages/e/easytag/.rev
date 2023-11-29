@@ -214,4 +214,12 @@ http://forums.opensuse.org/showthread.php?t=490812 (forwarded request 201415 fro
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002590 from dimstar)</comment>
     <requestid>1003274</requestid>
   </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>2f4c68a9cb7f98d878271c33696a0339</srcmd5>
+    <version>2.4.3</version>
+    <time>1701206401</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129568</requestid>
+  </revision>
 </revisionlist>

@@ -264,4 +264,16 @@
     <comment></comment>
     <requestid>1118530</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>4de97ce872a3354493e46dc5ed9461a6</srcmd5>
+    <version>0.31.1</version>
+    <time>1700771941</time>
+    <user>anag+factory</user>
+    <comment>Fix tests with modern version of python-anyio
+https://build.opensuse.org/request/show/1126958
+
+- Override pytest configuration to do not handle warnings as errors.
+</comment>
+    <requestid>1128182</requestid>
+  </revision>
 </revisionlist>

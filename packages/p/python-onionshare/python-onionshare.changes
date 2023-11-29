@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 23 14:22:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix dependencies
+  * Add onionshare-pr1677-fix-werkzeug3.patch
+- PEP517: Use pyproject instead of deprecated setup.py
+
+-------------------------------------------------------------------
 Wed May 31 16:00:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add onionshare-poetry-core.patch

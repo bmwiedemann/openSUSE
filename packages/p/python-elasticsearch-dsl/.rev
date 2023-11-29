@@ -99,4 +99,14 @@
 </comment>
     <requestid>1109630</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6b23b7331bdea5195884edf5131ea613</srcmd5>
+    <version>8.11.0</version>
+    <time>1701121496</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.11.0:
+  * Added support for Python 3.12
+  * Added support for Search.collase()</comment>
+    <requestid>1129217</requestid>
+  </revision>
 </revisionlist>

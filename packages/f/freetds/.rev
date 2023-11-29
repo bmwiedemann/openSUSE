@@ -364,4 +364,18 @@ License labeling issues should be fixed.  The (hopefully) LGPL libraries and GPL
     <comment></comment>
     <requestid>1126842</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>13dfec75edf77b0fb0c50276416b1eb7</srcmd5>
+    <version>1.4.7</version>
+    <time>1701121342</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.7:
+  * tds: improve openssl compatibility
+
+    - (*) Add KEEP_NULLS to BCP hints.
+- remove stale _service and fix Source url
+- Modifications for 0.52 ver and ODBC drivers
+- First stab at RPM for 0.51 ver</comment>
+    <requestid>1128790</requestid>
+  </revision>
 </revisionlist>

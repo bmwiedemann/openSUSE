@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.3.25
+Version:        3.3.30
 Release:        0
 Summary:        A fast, light-weight web server for WAI applications
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -42,6 +41,8 @@ BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-case-insensitive-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-x509-devel
+BuildRequires:  ghc-crypton-x509-prof
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-http-date-devel
@@ -67,8 +68,6 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-manager-devel
 BuildRequires:  ghc-time-manager-prof
-BuildRequires:  ghc-unix-compat-devel
-BuildRequires:  ghc-unix-compat-prof
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-unliftio-devel
@@ -79,8 +78,6 @@ BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-prof
 BuildRequires:  ghc-word8-devel
 BuildRequires:  ghc-word8-prof
-BuildRequires:  ghc-x509-devel
-BuildRequires:  ghc-x509-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
@@ -128,7 +125,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

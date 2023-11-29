@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 12:10:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sat Dec  8 21:26:05 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Ship Xfwm4 theme with GTK theme (instead of with Xfwm4)

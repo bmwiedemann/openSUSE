@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 25 12:54:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.3:
+  * Add ``is_prerelease`` and other methods to ``LegacyVersion``
+    to fix ``get_sorted_versions`` with ``stable=True`` and some
+    other cases.
+
+-------------------------------------------------------------------
 Wed Oct 18 08:31:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 4.0.2: 
+- Update to 4.0.2:
   * Bug Fixes
     + Do not mark commands with returncode ``None`` from tox 4.x as failed.
     + Restore flushing after each written line in new TerminalWriter.
@@ -44,7 +52,7 @@ Mon Mar  6 17:21:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 03:05:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.7.0 
+- Update to version 3.7.0
   Features
    Add hash_type and fragment attributes to URL class.
    Replace pkg_resources usage with packaging.
@@ -57,7 +65,7 @@ Mon Aug  2 13:13:26 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.6.0
   * support data-yanked attribute in HTMLPage parser.
-  * Replace “cached_property” with “lazy” package, which uses __dict__ 
+  * Replace “cached_property” with “lazy” package, which uses __dict__
     directly for much faster reads.
   * Hide password from URL representation.
   * Allow replacement of individual netloc parts with URL.replace method.

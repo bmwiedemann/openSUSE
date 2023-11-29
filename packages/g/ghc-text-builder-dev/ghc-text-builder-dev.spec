@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.4.1
+Version:        0.3.4.2
 Release:        0
 Summary:        Edge of developments for "text-builder"
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 24 04:33:40 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch sprinkle-in-timezone.patch:
+  * Add a timezone to the call fromtimestamp()
+- Switch to autosetup macro.
+- Remove conditionals from some BuildRequires.
+
+-------------------------------------------------------------------
 Wed Aug 30 13:36:56 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - %{?sle15_python_module_pythons} must at beginning of spec to work.

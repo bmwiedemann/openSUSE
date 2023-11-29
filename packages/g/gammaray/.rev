@@ -192,4 +192,12 @@
     <comment>Update to 3.0.0</comment>
     <requestid>1109132</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e412f37370fc7b3de2cc224e5043da79</srcmd5>
+    <version>3.0.0</version>
+    <time>1701023888</time>
+    <user>anag+factory</user>
+    <comment>- Add dependency for the matching shared libraries (forwarded request 1128832 from Vogtinator)</comment>
+    <requestid>1128880</requestid>
+  </revision>
 </revisionlist>

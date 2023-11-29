@@ -402,4 +402,16 @@
   -DGSTREAMER=ON even if a WMA plugin is not available by default; (forwarded request 1118661 from dirkmueller)</comment>
     <requestid>1118830</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bedc523648c1432316b4da8687a866ed</srcmd5>
+    <version>23.11</version>
+    <time>1700675691</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11:
+  * The mixer thread no longer crashes when attempting to read
+    voices using WMAUDIO3 buffer data
+  * SDL2: Fix regression that prevented devices with &gt;8 channels
+    from opening (forwarded request 1127932 from dirkmueller)</comment>
+    <requestid>1128034</requestid>
+  </revision>
 </revisionlist>

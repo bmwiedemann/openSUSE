@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Nov 26 06:35:53 UTC 2023 - draskmont@protonmail.com
+
+- Update to 4.0.1:
+  + Crash opening old files with text objects #114892
+  + Crash when adding specular texture slot in texture paint mode.
+    #114848
+  + Cycles: MetalRT compilation errors on base M3 MacBook Pros with 
+    factory installed OS #114919
+  + glTF: Fix regression in image quality option e5ad2e2c16
+  + Incorrect display of Rec.1886 and Rec. 2020 view transforms 
+    #114661
+  + Node Wrangler: Principled Textures Setup emissive texture 
+    #104999
+  + Sculpt Multires drawing broken with no mask #114841
+  + Sequencer: bpy.ops.sequencer.split ignores passed frame #114891
+  + UI: Keep text field empty for global search #114758
+- Update to 4.0.0:
+  + Too many to be listed here, check:
+    https://wiki.blender.org/wiki/Reference/Release_Notes/4.0
+    https://www.blender.org/download/releases/4-0/
+- Rebased repoducible.patch.
+- Added patches from upstream to fix build errors:
+  + cmake_manpage_fix.patch. #115056
+  + aarch64_build_fix.patch to fix error compiling cycles for
+    non SSE2 architectures. 
+- Changed build system to ninja to prevent cryptic build errors
+  under make.
+
+-------------------------------------------------------------------
 Thu Aug 17 08:33:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 3.6.2 LTS:

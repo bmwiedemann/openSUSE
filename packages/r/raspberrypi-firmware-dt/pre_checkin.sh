@@ -1,3 +1,3 @@
 #!/bin/bash
 
-osc service localrun format_spec_file
+osc service run format_spec_file

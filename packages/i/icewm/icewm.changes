@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 25 20:17:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.4:
+  * Use fcsmart for capturing loadText data.
+  * Support TIFF and WEBP in icewmbg.
+  * More permissive parsing of a PAM image header in icesh.
+  * Remove obsolete winoption examples and add one for
+    plank.
+  * Use --disable-librsvg instead of --disable-rsvg.
+  * Add `supportsFormat` to check for support of additional
+    image formats.
+  * Support JXL, JP2, RAW, SVG, TGA image formats in
+    icewmbg.
+  * Test if a color can be considered dark for issue #715.
+  * Brighten the color of inactive preview icons for dark
+    themes for issue
+  * Fix a crash when a ping timeout dialog is destroyed for
+    issue #729.
+  * Let icewmbg interpret command-line arguments relative
+    to the current working directory.
+  * Clarify prefoverride and closes #750
+  * When mapping a client by PID, search for the best
+    match.
+  * Don't enforce the use of clang++ in the debug build.
+  * Fix ordering in the 4th configuration
+  * Fix minor warnings from recent CMake and GCC
+  * Translated using Weblate (Portuguese (Brazil))
+
+-------------------------------------------------------------------
 Sun Oct 22 14:23:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: No longer
@@ -146,7 +175,7 @@ Wed Dec 21 07:35:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
   * Use spaces instead of dots when printing WM_COMMAND.
   * When a focused window hides or rolls up, focus some other window.
   * When looking for a focusable window, avoid rolled up windows.
-  * Fix for setting focus on passive motif dialogs 
+  * Fix for setting focus on passive motif dialogs
   * Fallback to rolled up windows in the second pass of getLastFocus.
   * Use CurrentTime when setting focus to a passive client in the timeout.
   * On icon not found, report dimensions.
@@ -158,7 +187,7 @@ Wed Dec 21 07:35:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
   * Add preference ToolTipIcon=1 for issue #637.
   * Add nanosvg to .gitignore.
   * Remove unneeded logevent from icesh.
-- Remove unknown options from configure 
+- Remove unknown options from configure
 - Rebase icewm-preferences.patch
 
 -------------------------------------------------------------------
@@ -215,7 +244,7 @@ Thu Nov  3 17:11:29 UTC 2022 - Victorhck <victorhck@opensuse.org>
 
 - Update to version 3.2.0:
   * Fix for fullscreen wine programs where taskbar would not hide.
-  * Ensure KeySysWinNext and KeySysWinPrev always work 
+  * Ensure KeySysWinNext and KeySysWinPrev always work
     for rolled up windows which use the Globally Active focus model.
   * Give the Alt+Tab a 30 second history.
   * The next Alt+Tab will continue where the previous one left off.
@@ -228,14 +257,14 @@ Thu Nov  3 17:11:29 UTC 2022 - Victorhck <victorhck@opensuse.org>
   * Fix maximize and fullscreen for tabs with different normal sizes.
   * Prevent the flashing when switching tabs.
   * Only popup the grouping menu on a task button on the first button click
-    without key modifiers. This makes it easier to immediately select or 
+    without key modifiers. This makes it easier to immediately select or
     minimize the active application by using the shift or control modifier.
   * Update the title bar shape when changing tabs.
   * Set common properties when adding another tab to a frame.
   * Always update the window list and _NET_CLIENT_LIST when adding more tabs.
   * Add special filtered view and flat rendering options to icewm-menu-fdo.
   * Updated translations.
-  
+
 - from version 3.1.0:
   * Add a winoption "frame" to automatically group application windows
     with the same "frame" value as tabs in a single frame.
@@ -482,7 +511,7 @@ Fri May 20 08:01:17 UTC 2022 - QK ZHU <qkzhu@suse.com>
     bar buttons when the window list window is popped up.
   * Fix for FreeBSD build.
   * Document the -T switch for taskbar in icesh for issue #18.
-  
+
 - from version 2.8.0
   * Improve the explanation on how to spy on client messages with icesh.
   * When rearranging windows with tile placement or cascade placement, correct for
@@ -599,7 +628,7 @@ Fri May 20 08:01:17 UTC 2022 - QK ZHU <qkzhu@suse.com>
   * Fix the exit code of icesh for issue #585.
   * Only use RTTI when debugging for issue #48.
   * Updated translations.
-    
+
 - from version 2.3.3:
   * Document default winoption format .OPTION.
   * Permit scroll wheel to control rolling up or down for issue #584.
@@ -1005,14 +1034,14 @@ Changes in 1.6.4
 -------------------------------------------------------------------
 Tue Apr 14 00:51:41 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
-- Explicitly require icewm-theme-branding on SLE and Leap. 
+- Explicitly require icewm-theme-branding on SLE and Leap.
 - Add Conflicts between icewm-config-upstream and icewm-theme-branding
 
 -------------------------------------------------------------------
 Mon Mar 16 03:45:48 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Improve build tag consistency between SLE and Leap.
-  * Recommend polkit-gnome to both Leap and SLE. 
+  * Recommend polkit-gnome to both Leap and SLE.
   * Disable icewm-preferences.patch for Leap. The patch makes sense
     to icewm-config-upstream while Leap uses icewm-theme-branding
     the provide the theme.
@@ -1091,7 +1120,7 @@ Sat Nov 30 21:37:16 UTC 2019 - Namor Barcode <z1trus@gmx.com>
   * Set WM_CLASS on all icewm windows.
   * Updated translations.
   * More support for clang C++11.
-  
+
 -------------------------------------------------------------------
 Tue May 28 08:47:54 UTC 2019 - Simon Schricker <s.schricker@mailbox.org>
 
@@ -1110,13 +1139,13 @@ Wed Apr  3 06:00:40 UTC 2019 - qzheng <qzheng@suse.com>
   - icewm-susemenu.patch: rebase "suseprog" function
   - icewm-desktop-nodisplay.patch: rebase, set NoDisplay for
     icewm.desktop
-  - icewm-preferences.patch: rebase, only IconPath hunk not in 
+  - icewm-preferences.patch: rebase, only IconPath hunk not in
     upstream now
-- Drop patches 
+- Drop patches
   - icewm-mate.patch: upstream no longer uses icewm-menu-gnome2 to
-    generate a default menu, the current freedesktop.org approach 
+    generate a default menu, the current freedesktop.org approach
     is superior for current distros
-  - icewm-use-iproute2-ss-instead-of-netstat.patch: 
+  - icewm-use-iproute2-ss-instead-of-netstat.patch:
     was accepted by upstream
 
 -------------------------------------------------------------------
@@ -1134,7 +1163,7 @@ Tue Mar  6 17:00:08 CET 2018 - tiwai@suse.de
 Tue Feb 27 03:04:05 UTC 2018 - qzheng@suse.com
 
 - Add icewm-use-iproute2-ss-instead-of-netstat.patch:
-  Because netstat is not available by default, so call "ss" instead 
+  Because netstat is not available by default, so call "ss" instead
   of "netstat", and make the "clock" command work on icewm
   ( bsc#1079627 ).
 
@@ -1150,8 +1179,8 @@ Thu Dec 21 03:22:18 UTC 2017 - qkzhu@suse.com
   IceWM upstream
 - Add patch icewm-desktop-nodisplay.patch
   Set NoDisplay for upstream's icewm.desktop since it only starts the
-  window manager, icewm-session.desktop (the preferred program to 
-  start the IceWM system) will be displayed in display manager 
+  window manager, icewm-session.desktop (the preferred program to
+  start the IceWM system) will be displayed in display manager
   (bsc#1072557)
 
 -------------------------------------------------------------------
@@ -1409,12 +1438,12 @@ Mon Jan 12 07:39:53 UTC 2015 - tyang@suse.com
 - Fix the bnc#905159:shutdown and reboot commands not working.
   Change the shutdown and reboot command in preference.
   Add patch: icewm-1.3.8-shutdown-reboot-command.patch
-  and updated from upstream:https://github.com/bbidulock/icewm. 
+  and updated from upstream:https://github.com/bbidulock/icewm.
 
 -------------------------------------------------------------------
 Tue Sep 30 06:11:49 UTC 2014 - crrodriguez@opensuse.org
 
-- Do not use xorg-x11-devel, select only those packages needed 
+- Do not use xorg-x11-devel, select only those packages needed
   for build.
 - Build c++ code with fvisibility-inlines-hidden to avoid
   bloating the symbol table.
@@ -1479,7 +1508,7 @@ Tue Dec 20 20:49:49 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Mon Aug 29 21:52:18 UTC 2011 - crrodriguez@opensuse.org
 
-- Must link with -lfontconfig too, fix build. 
+- Must link with -lfontconfig too, fix build.
 
 -------------------------------------------------------------------
 Tue Apr 26 11:02:56 UTC 2011 - mmarek@novell.com
@@ -1556,7 +1585,7 @@ Mon Sep 29 16:08:25 CEST 2008 - mmarek@suse.cz
 Thu Sep 11 12:15:06 CEST 2008 - mmarek@suse.cz
 
 - updated to 1.2.36pre2
-  * add support for sysfs interface (instead of proc) for battery 
+  * add support for sysfs interface (instead of proc) for battery
     status (initial code by Santiago Garcia Mantinan)
   * bugfixes & translation updates
 
@@ -1608,7 +1637,7 @@ Mon Aug 13 11:43:13 CEST 2007 - mmarek@suse.cz
 
 - updated to 1.2.32 [#299583]
   * auto-hide like taskbar activation in full screen mode added
-  * missing ShowSettingsMenu and ShowFocusModeMenu 
+  * missing ShowSettingsMenu and ShowFocusModeMenu
     settings (Evgenii Terechkov)
   * binding to raise window with mouse
     (MouseWinRaise=Ctrl+Alt+Mouse1)  (Thomas Holder)
@@ -1653,9 +1682,9 @@ Thu Jan 11 12:20:35 CET 2007 - mmarek@suse.cz
   + also search for .png icons when only basename is specified
     (Manuel Carrasco)
   + change mouse cursor when dragging the taskbar (Manuel Carrasco)
-  + icewmtray: catch HUP signal to reload theme and other fixes 
+  + icewmtray: catch HUP signal to reload theme and other fixes
     (Manuel Carrasco)
-  + new preferences option: WinMenuItems (default=rmsnxfhualyticw) 
+  + new preferences option: WinMenuItems (default=rmsnxfhualyticw)
     (Manuel Carrasco/Marko Macek)
   + added 'Look=flat' (oscarello)
   + added TaskbarButtonWidthDivisor (lysanderslair)
@@ -1672,7 +1701,7 @@ Tue May 16 15:14:31 CEST 2006 - pnemec@suse.cz
 
 - updated to 1.2.26
   many minor fix
-  some translation fix 
+  some translation fix
   strict-aliasing patch  is in upstream now
 
 -------------------------------------------------------------------
@@ -1701,7 +1730,7 @@ Mon Jan  2 15:08:06 CET 2006 - pnemec@suse.cz
 -------------------------------------------------------------------
 Wed Dec 21 01:30:08 CET 2005 - ro@suse.de
 
-- added locale dirs to filelist 
+- added locale dirs to filelist
 
 -------------------------------------------------------------------
 Mon Nov 28 16:07:25 CET 2005 - pnemec@suse.cz
@@ -1798,7 +1827,7 @@ Mon May  5 14:53:51 CEST 2003 - mfabian@suse.de
 - remove "fontconfig fontconfig-devel" from neededforbuild and
   use x-devel-packages instead of xf86
 - use "-*-" instead of "-xftdummy-" as the foundry for the
-  default fonts when using Xft because the latest fontconfig 
+  default fonts when using Xft because the latest fontconfig
   now actually uses the foundry and inserting an dummy value
   doesn't work anymore.
 
@@ -1855,7 +1884,7 @@ Fri Sep 27 14:34:36 CEST 2002 - ro@suse.de
 -------------------------------------------------------------------
 Wed Sep 18 01:47:09 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Fri Jul 26 12:07:26 CEST 2002 - nadvornik@suse.cz
@@ -1895,7 +1924,7 @@ Tue Mar 12 10:31:02 CET 2002 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Sun Feb 10 16:54:30 CET 2002 - ro@suse.de
 
-- tar option for bz2 is now "j" 
+- tar option for bz2 is now "j"
 
 -------------------------------------------------------------------
 Fri Feb  1 00:26:09 CET 2002 - ro@suse.de
@@ -1906,7 +1935,7 @@ Fri Feb  1 00:26:09 CET 2002 - ro@suse.de
 Tue Oct 23 13:56:36 CEST 2001 - nadvornik@suse.cz
 
 - update to 1.0.9
-  - icon tray 
+  - icon tray
   - mouse wheel support for menus
   - additional key bindings
   - improved edge switching
@@ -1926,7 +1955,7 @@ Mon Aug 13 12:01:47 CEST 2001 - nadvornik@suse.cz
 Fri Aug 10 15:12:34 CEST 2001 - nadvornik@suse.cz
 
 - update to 1.0.8
-- created packages icewm-gnome, icewm-default, 
+- created packages icewm-gnome, icewm-default,
   icewm-lite [bug #5692]
 
 -------------------------------------------------------------------
@@ -1937,7 +1966,7 @@ Mon May  7 18:46:35 CEST 2001 - mfabian@suse.de
 -------------------------------------------------------------------
 Wed Mar 21 02:44:40 CET 2001 - ro@suse.de
 
-- added esound-devel to neededforbuild 
+- added esound-devel to neededforbuild
 
 -------------------------------------------------------------------
 Tue Feb 20 14:30:02 CET 2001 - uli@suse.de
@@ -1961,7 +1990,7 @@ Fri Jan 26 12:29:38 CET 2001 - violiet@suse.de
   and zh_TW.Big5.
 - added patch to load translated menus from files with a locale
   suffix, e.g. menu.ko, menu.ja ...
-- added Korean translations for menus 
+- added Korean translations for menus
 
 -------------------------------------------------------------------
 Tue Nov 28 22:04:51 CET 2000 - grimmer@suse.de
@@ -1976,7 +2005,7 @@ Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
 
 - Updated specfile to new long packagenames.
 - Reworked specfile.
-- Probably needs some more work; I'm taking care of that. 
+- Probably needs some more work; I'm taking care of that.
 
 -------------------------------------------------------------------
 Wed Jun 28 10:43:52 CEST 2000 - grimmer@suse.de

@@ -1455,4 +1455,33 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- add VEX-x86-pinsrd.patch (bko#276780)</comment>
     <requestid>1125820</requestid>
   </revision>
+  <revision rev="148" vrev="6">
+    <srcmd5>3a670794dd8824014aae82f2385a6959</srcmd5>
+    <version>3.21.0</version>
+    <time>1700771930</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1128060</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>d1425a1cd6620fc6b45015a6b6eb8449</srcmd5>
+    <version>3.22.0</version>
+    <time>1701023789</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.22.0: (jsc#PED-5442):
+  * Memcheck now tests and warns about the values used for
+    alignment and size. These apply to various functions: memalign,
+    posix_memalign and aligned_alloc in C and various overloads
+    of operators new and delete in C++. The kinds of error that can
+    be detected are
+    - invalid alignment, for instance the alignment is usually required
+      to be a power of 2
+    - mismatched alignment between aligned allocation and aligned
+      deallocation
+    - mismatched size when sized delete is used
+    - bad size for functions that have implementation defined behaviour
+      when the requested size is zero
+  * many bug fixes, see https://valgrind.org/docs/manual/dist.news.html</comment>
+    <requestid>1128515</requestid>
+  </revision>
 </revisionlist>

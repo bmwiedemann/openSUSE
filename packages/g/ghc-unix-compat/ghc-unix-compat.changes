@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 30 19:44:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unix-compat to version 0.7.
+  ## Version 0.7 (2023-03-15)
+
+  - Remote `System.PosixCompat.User` module
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:48 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

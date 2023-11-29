@@ -152,4 +152,12 @@
 - Remove compat ifdefs for old SLE versions (forwarded request 811245 from mnhauke)</comment>
     <requestid>811435</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>16649c76302b922b418ed6b752169623</srcmd5>
+    <version>1.12.11+20110422</version>
+    <time>1701206416</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129592</requestid>
+  </revision>
 </revisionlist>

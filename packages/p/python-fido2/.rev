@@ -137,4 +137,19 @@
     <comment></comment>
     <requestid>1096815</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a67dc91cd68ca97b859bf4ad9cad3ef4</srcmd5>
+    <version>1.1.2</version>
+    <time>1701121479</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.2:
+  * Fix ClientPin usage for Authenticators that do not
+    support passing a PIN.
+  * Fix: Handle correct CTAP response codes in
+    authenticatorSelection.
+
+  * Client: Expose CTAP2 Info object as Fido2Client.info.
+- Initial packaging of version 0.3.0</comment>
+    <requestid>1129174</requestid>
+  </revision>
 </revisionlist>

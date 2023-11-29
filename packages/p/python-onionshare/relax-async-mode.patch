@@ -1,7 +1,8 @@
-diff -Nur onionshare-2.5/cli/onionshare_cli/web/web.py new/cli/onionshare_cli/web/web.py
---- onionshare-2.5/cli/onionshare_cli/web/web.py	2022-01-17 21:56:39.000000000 +0100
-+++ new/cli/onionshare_cli/web/web.py	2022-02-25 01:35:45.401731026 +0100
-@@ -164,10 +164,10 @@
+Index: onionshare-2.6/cli/onionshare_cli/web/web.py
+===================================================================
+--- onionshare-2.6.orig/cli/onionshare_cli/web/web.py
++++ onionshare-2.6/cli/onionshare_cli/web/web.py
+@@ -164,10 +164,10 @@ class Web:
          elif self.mode == "chat":
              if self.common.verbose:
                  self.socketio = SocketIO(
@@ -14,3 +15,16 @@ diff -Nur onionshare-2.5/cli/onionshare_cli/web/web.py new/cli/onionshare_cli/we
              self.socketio.init_app(self.app)
              self.chat_mode = ChatModeWeb(self.common, self)
  
+Index: onionshare-2.6/desktop/pyproject.toml
+===================================================================
+--- onionshare-2.6.orig/desktop/pyproject.toml
++++ onionshare-2.6/desktop/pyproject.toml
+@@ -6,7 +6,7 @@ authors = ["Micah Lee <micah@micahflee.c
+ license = "GPLv3+"
+ 
+ [tool.poetry.dependencies]
+-python = ">=3.7,<3.11"
++python = ">=3.7"
+ onionshare_cli = {path = "../cli", develop = true}
+ PySide2 = "5.15.2.1"
+ qrcode = "*"

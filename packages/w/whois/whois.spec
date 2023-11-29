@@ -17,7 +17,7 @@
 
 
 Name:           whois
-Version:        5.5.19
+Version:        5.5.20
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later
@@ -26,7 +26,9 @@ URL:            https://github.com/rfc1036/whois
 Source:         https://ftp.debian.org/debian/pool/main/w/whois/%{name}_%{version}.tar.xz
 Source2:        https://ftp.debian.org/debian/pool/main/w/whois/%{name}_%{version}.dsc#/%{name}.asc
 Source3:        https://db.debian.org/fetchkey.cgi?fingerprint=6791403B68AE2690517C42EAE6FFF1E38DC968B0#/%{name}.keyring
+Source4:        %{name}-rpmlintrc
 Patch0:         whois-nobsdsource.patch
+Patch1:         whois-remove-malloc-attribute.patch
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libidn2)
@@ -51,6 +53,7 @@ Group:          System/Shells
 Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
 
 %description bash-completion
 bash command line completion support for whois.
@@ -77,6 +80,8 @@ mkdir -p %{buildroot}{%{_prefix}/bin,%{_mandir}/man1}
 make BASEDIR=%{buildroot} mandir=%{_mandir} prefix=%{_prefix} \
 	install install-mkpasswd install-pos
 %find_lang %{name}
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/{mkpasswd,whois} %{buildroot}%{_datadir}/bash-completion/completions
 
 %files -f %{name}.lang
 %license COPYING
@@ -87,7 +92,7 @@ make BASEDIR=%{buildroot} mandir=%{_mandir} prefix=%{_prefix} \
 %{_mandir}/man5/*.5%{?ext_man}
 
 %files bash-completion
-%{_sysconfdir}/bash_completion.d/whois
-%{_sysconfdir}/bash_completion.d/mkpasswd
+%{_datadir}/bash-completion/completions/whois
+%{_datadir}/bash-completion/completions/mkpasswd
 
 %changelog

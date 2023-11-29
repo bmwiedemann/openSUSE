@@ -1,11 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 25 12:59:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  * Added support for Django 5.0.
+  * Dropped support for Django 3.2, 4.0 and 4.1.
+  * Added support for Python 3.12.
+  * Dropped support for Python 3.7.
+  * See the 2.1 Milestone for the full change
+
+-------------------------------------------------------------------
 Tue Jun 13 12:09:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to v2.0
   * Removed all Bootstrap template packs. These template packs are now available as standalone packages.
     To upgrade, install the required template pack and add it to your INSTALLED_APPS setting.
     * See python-crispy-bootstrap3, python-crispy-bootstrap4 and python-crispy-bootstrap5
-  * Removed uni-form template pack. Uni-Form specific classes previously added to every template pack 
+  * Removed uni-form template pack. Uni-Form specific classes previously added to every template pack
     e.g. textInput are now removed.
   * The form_style attribute of FormHelper is removed.
   * The form_style positional argument to render_field() is removed.
@@ -51,7 +61,7 @@ Wed May 12 12:42:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.11.2
   * Fixed test causing SystemCheckError in some cases.
-  * Radio and Checkbox now respect the field's disabled attribute when using the 
+  * Radio and Checkbox now respect the field's disabled attribute when using the
     Bootstrap4 template pack.
   * Implemeneted custom-select for Select widgets in the Bootstrap4 Template Pack
   * Added custom-select for select widgets within prepended and appended fields

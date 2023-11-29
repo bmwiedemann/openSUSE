@@ -1,7 +1,7 @@
 #
 # spec file for package cloud-init
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,78 +12,84 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-
-
 # change this whenever config changes incompatible
 %global configver 0.7
-%global docdir %{_defaultdocdir}/%{name}
+
 Name:           cloud-init
-Version:        23.1.2
+Version:        23.3
 Release:        0
+License:        GPL-3.0
 Summary:        Cloud node initialization tool
-License:        GPL-3.0-only
+Url:            https://github.com/canonical/cloud-init
 Group:          System/Management
-URL:            https://github.com/canonical/cloud-init
-Source0:        https://github.com/canonical/cloud-init/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        rsyslog-cloud-init.cfg
 Source2:        hidesensitivedata
-Patch1:         datasourceLocalDisk.patch
+Patch1:        datasourceLocalDisk.patch
 # FIXME (lp#1849296)
-Patch2:         cloud-init-break-resolv-symlink.patch
+Patch2:        cloud-init-break-resolv-symlink.patch
 # FIXME no proposed solution
-Patch3:         cloud-init-sysconf-path.patch
+Patch3:        cloud-init-sysconf-path.patch
 # FIXME (lp#1860164)
-Patch4:         cloud-init-no-tempnet-oci.patch
-# FIXME https://github.com/canonical/cloud-init/pull/2036
-Patch5:         cloud-init-fix-ca-test.patch
+Patch4:        cloud-init-no-tempnet-oci.patch
 # FIXME (lp#1812117)
-Patch6:         cloud-init-write-routes.patch
-# FIXME https://github.com/canonical/cloud-init/pull/2148
-Patch8:         cloud-init-power-rhel-only.patch
+Patch6:        cloud-init-write-routes.patch
+# FIXME (https://github.com/canonical/cloud-init/issues/4339)
+Patch7:        cloud-init-keep-flake.patch
+Patch8:        cloud-init-lint-fixes.patch
 BuildRequires:  fdupes
+BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
+# needed for /lib/udev
+BuildRequires:  pkgconfig(udev)
+BuildRequires:  procps
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 # Test requirements
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-configobj >= 5.0.2
-BuildRequires:  python3-devel
+BuildRequires:  python3-flake8
 BuildRequires:  python3-httpretty
 BuildRequires:  python3-jsonpatch
 BuildRequires:  python3-jsonschema
 BuildRequires:  python3-netifaces
 BuildRequires:  python3-oauthlib
+BuildRequires:  python3-passlib
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-requests
 BuildRequires:  python3-responses
 BuildRequires:  python3-serial
-BuildRequires:  python3-setuptools
 BuildRequires:  system-user-nobody
+%if 0%{?is_opensuse}
+BuildRequires:  openSUSE-release
+%else
+BuildRequires:  sles-release
+%endif
 BuildRequires:  util-linux
-BuildRequires:  pkgconfig(systemd)
-# needed for /lib/udev
-BuildRequires:  pkgconfig(udev)
 Requires:       bash
-Requires:       cloud-init-config = %{configver}
 Requires:       dhcp-client
-Requires:       e2fsprogs
 Requires:       file
 Requires:       growpart
+Requires:       e2fsprogs
 Requires:       net-tools
 Requires:       openssh
-Requires:       python3-Jinja2
-Requires:       python3-PyYAML
+Requires:       procps
 Requires:       python3-configobj >= 5.0.2
+Requires:       python3-Jinja2
 Requires:       python3-jsonpatch
 Requires:       python3-jsonschema
 Requires:       python3-netifaces
 Requires:       python3-oauthlib
+Requires:       python3-passlib
 Requires:       python3-pyserial
+Requires:       python3-PyYAML
 Requires:       python3-requests
 Requires:       python3-serial
 Requires:       python3-setuptools
@@ -91,17 +97,22 @@ Requires:       python3-xml
 Requires:       sudo
 Requires:       util-linux
 Requires:       wget
-%{?systemd_requires}
-%if 0%{?is_opensuse}
-BuildRequires:  openSUSE-release
-%else
-BuildRequires:  sles-release
-%endif
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 Requires:       wicked-service
 %endif
-%ifarch %{ix86} x86_64
+Requires:       cloud-init-config = %configver
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%define         docdir %{_defaultdocdir}/%{name}
+%ifarch %ix86 x86_64
 Requires:       dmidecode
+%endif
+%define initsys systemd
+BuildRequires: pkgconfig(systemd)
+%{?systemd_requires}
+%if 0%{?suse_version} && 0%{?suse_version} == 1220
+%define systemd_prefix /lib
+%else
+%define systemd_prefix /usr/lib
 %endif
 
 %description
@@ -110,9 +121,9 @@ according to the fetched configuration data from the admin node.
 
 %package config-suse
 Summary:        Configuration file for Cloud node initialization tool
+Provides:	    cloud-init-config = %configver
 Group:          System/Management
-Conflicts:      cloud-init-config
-Provides:       cloud-init-config = %{configver}
+Conflicts:	    otherproviders(cloud-init-config)
 
 %description config-suse
 This package contains the product specific configuration file
@@ -131,12 +142,12 @@ Documentation and examples for cloud-init tools
 
 %prep
 %setup -q
-%patch1
+%patch1 -p0
 %patch2
 %patch3
 %patch4
-%patch5
 %patch6
+%patch7
 %patch8
 
 # patch in the full version to version.py
@@ -149,10 +160,11 @@ sed -i "s,@@PACKAGED_VERSION@@,%{version}-%{release}," $version_pys
 python3 setup.py build
 
 %check
-%make_build unittest
+make unittest
+make lint
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib} --init-system=systemd
+python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib} --init-system=%{initsys}
 find %{buildroot} \( -name .gitignore -o -name .placeholder \) -delete
 # from debian install script
 for x in "%{buildroot}%{_bindir}/"*.py; do
@@ -165,6 +177,10 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_defaultdocdir}
 # man pages
 mkdir -p %{buildroot}%{_mandir}/man1
 mv doc/man/* %{buildroot}%{_mandir}/man1
+# copy the LICENSE
+mkdir -p %{buildroot}%{_defaultlicensedir}/%{name}
+cp LICENSE %{buildroot}%{_defaultlicensedir}/%{name}
+cp LICENSE-GPLv3 %{buildroot}%{_defaultlicensedir}/%{name}
 # Set the distribution indicator
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -173,10 +189,11 @@ sed -i s/suse/opensuse/ %{buildroot}/%{_sysconfdir}/cloud/cloud.cfg
 sed -i s/suse/sles/ %{buildroot}/%{_sysconfdir}/cloud/cloud.cfg
 %endif
 %endif
-install -D -m 644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/rsyslog.d/21-cloudinit.conf
-mkdir -p %{buildroot}%{_prefix}/lib/udev/rules.d/
-mv %{buildroot}/lib/udev/rules.d/66-azure-ephemeral.rules %{buildroot}%{_prefix}/lib/udev/rules.d/
-install -D -m 755 %{SOURCE2} %{buildroot}%{_sbindir}/hidesensitivedata
+mkdir -p %{buildroot}/%{_sysconfdir}/rsyslog.d
+mkdir -p %{buildroot}/usr/lib/udev/rules.d/
+cp -a %{SOURCE1} %{buildroot}/%{_sysconfdir}/rsyslog.d/21-cloudinit.conf
+mkdir -p %{buildroot}%{_sbindir}
+install -m 755 %{SOURCE2} %{buildroot}%{_sbindir}
 
 # remove debian/ubuntu specific profile.d file (bnc#779553)
 rm -f %{buildroot}%{_sysconfdir}/profile.d/Z99-cloud-locale-test.sh
@@ -186,15 +203,16 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.debian.*
 rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.redhat.*
 rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 
+%post
+/usr/sbin/hidesensitivedata
+
 # remove duplicate files
 %if 0%{?suse_version}
 %fdupes %{buildroot}%{python3_sitelib}
 %endif
 
-%post
-%{_sbindir}/hidesensitivedata
-
 %files
+%defattr(-,root,root)
 %license LICENSE LICENSE-GPLv3
 %{_bindir}/cloud-id
 %{_bindir}/cloud-init
@@ -205,8 +223,6 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %{_sysconfdir}/cloud/clean.d/README
 %config(noreplace) %{_sysconfdir}/cloud/cloud.cfg.d
 %config(noreplace) %{_sysconfdir}/cloud/templates
-%{_sysconfdir}/dhcp/dhclient-exit-hooks.d/hook-dhclient
-%{_sysconfdir}/NetworkManager/dispatcher.d/hook-network-manager
 %{_sysconfdir}/systemd/system/sshd-keygen@.service.d/disable-sshd-keygen-if-cloud-init-active.conf
 %{_mandir}/man*/*
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
@@ -217,33 +233,32 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %{python3_sitelib}/cloudinit
 %{python3_sitelib}/cloud_init-%{version}*.egg-info
 %{_prefix}/lib/cloud-init
-%{_prefix}/lib/systemd/system-generators/cloud-init-generator
-%{_prefix}/lib/systemd/system/cloud-config.service
-%{_prefix}/lib/systemd/system/cloud-config.target
-%{_prefix}/lib/systemd/system/cloud-init-local.service
-%{_prefix}/lib/systemd/system/cloud-init.service
-%{_prefix}/lib/systemd/system/cloud-init.target
-%{_prefix}/lib/systemd/system/cloud-final.service
+%{systemd_prefix}/systemd/system-generators/cloud-init-generator
+%{systemd_prefix}/systemd/system/cloud-config.service
+%{systemd_prefix}/systemd/system/cloud-config.target
+%{systemd_prefix}/systemd/system/cloud-init-local.service
+%{systemd_prefix}/systemd/system/cloud-init.service
+%{systemd_prefix}/systemd/system/cloud-init.target
+%{systemd_prefix}/systemd/system/cloud-final.service
 %dir %{_sysconfdir}/rsyslog.d
 %{_sysconfdir}/rsyslog.d/21-cloudinit.conf
-%{_prefix}/lib/udev/rules.d/66-azure-ephemeral.rules
+/usr/lib/udev/rules.d/66-azure-ephemeral.rules
 # We use cloud-netconfig to handle new interfaces added to the instance
-%exclude %{_prefix}/lib/systemd/system/cloud-init-hotplugd.service
-%exclude %{_prefix}/lib/systemd/system/cloud-init-hotplugd.socket
+%exclude %{systemd_prefix}/systemd/system/cloud-init-hotplugd.service
+%exclude %{systemd_prefix}/systemd/system/cloud-init-hotplugd.socket
 %dir %attr(0755, root, root) %{_localstatedir}/lib/cloud
-%dir %docdir
-%dir %{_sysconfdir}/NetworkManager
-%dir %{_sysconfdir}/NetworkManager/dispatcher.d
-%dir %{_sysconfdir}/dhcp
-%dir %{_sysconfdir}/dhcp/dhclient-exit-hooks.d
-%dir %{_sysconfdir}/systemd/system/sshd-keygen@.service.d
+%dir %{docdir}
+%dir /etc/systemd/system/sshd-keygen@.service.d
+
 
 %files config-suse
+%defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/cloud/cloud.cfg
 
 %files doc
-%docdir/examples/*
-%docdir/*.txt
-%dir %docdir/examples
+%defattr(-,root,root)
+%{docdir}/examples/*
+%{docdir}/*.txt
+%dir %{docdir}/examples
 
 %changelog

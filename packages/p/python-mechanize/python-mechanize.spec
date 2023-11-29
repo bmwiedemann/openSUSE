@@ -19,17 +19,12 @@
 %define modname mechanize
 %{?sle15_python_module_pythons}
 Name:           python-mechanize
-Version:        0.4.8
+Version:        0.4.9
 Release:        0
 Summary:        Stateful programmatic web browsing
 License:        BSD-3-Clause AND (BSD-3-Clause OR ZPL-2.1)
 URL:            https://github.com/python-mechanize/mechanize
 Source:         https://files.pythonhosted.org/packages/source/m/mechanize/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-mechanize-setup.cfg.patch gh#python-mechanize/mechanize#73 -- setup.cfg: Move packages def to options section
-Patch0:         %{name}-setup.cfg.patch
-# PATCH-FIX-OPENSUSE Python 3.11 no longer sorts cookies by key when iterating
-# Re: gh#python/cpython#22745
-Patch1:         support-python-311.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module setuptools}

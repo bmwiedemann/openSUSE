@@ -4971,4 +4971,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>- Requires libvulkan_intel only on %{ix86} x86_64 (forwarded request 1125423 from Guillaume_G)</comment>
     <requestid>1125425</requestid>
   </revision>
+  <revision rev="425" vrev="1">
+    <srcmd5>3967df0f20c54f30ca86303685a37060</srcmd5>
+    <version>8.21</version>
+    <time>1701023851</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 8.21 release
+  - High-DPI scaling and initial Vulkan support in the Wayland driver.
+  - Beginnings of support for ARM64EC target.
+  - Updates to the locale database.
+  - Various bug fixes.
+- update staging to 8.21 release</comment>
+    <requestid>1128793</requestid>
+  </revision>
 </revisionlist>

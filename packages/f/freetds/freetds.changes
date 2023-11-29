@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 25 19:36:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.7:
+  * tds: improve openssl compatibility
+
+-------------------------------------------------------------------
 Thu Nov 16 11:09:50 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.4.6
@@ -103,12 +109,12 @@ Fri Aug 19 15:10:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
     - (*) Allows to pass 0 as type for bcp_bind;
     - (*) Fix DBSETLSERVERPRINCIPAL macro;
     - (*) Do not limit queries length for bcp using Sybase;
-    - (*) Add KEEP_NULLS to BCP hints. 
+    - (*) Add KEEP_NULLS to BCP hints.
 
 -------------------------------------------------------------------
 Tue May 11 07:04:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- remove stale _service and fix Source url 
+- remove stale _service and fix Source url
 
 -------------------------------------------------------------------
 Sun May 09 18:28:41 UTC 2021 - brassh@web.de
@@ -410,18 +416,18 @@ Sun Dec 30 21:19:35 UTC 2002 David Hollis <dhollis@davehollis.com>
 
 
 -------------------------------------------------------------------
-Thu Dec 20 00:00:00 UTC 2001 Brian Bruns <camber@ais.org> 
+Thu Dec 20 00:00:00 UTC 2001 Brian Bruns <camber@ais.org>
 
 - Modifications for 0.53 ver and removing interfaces file
 
 
 -------------------------------------------------------------------
-Wed Jun 28 00:00:00 UTC 2001 Brian Bruns <camber@ais.org> 
+Wed Jun 28 00:00:00 UTC 2001 Brian Bruns <camber@ais.org>
 
-- Modifications for 0.52 ver and ODBC drivers 
+- Modifications for 0.52 ver and ODBC drivers
 
 
 -------------------------------------------------------------------
-Wed Feb 14 00:00:00 UTC 2001 David Hollis <dhollis@emagisoft.com> 
+Wed Feb 14 00:00:00 UTC 2001 David Hollis <dhollis@emagisoft.com>
 
-- First stab at RPM for 0.51 ver 
+- First stab at RPM for 0.51 ver

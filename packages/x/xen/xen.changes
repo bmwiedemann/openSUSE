@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 21 13:22:23 MST 2023 - carnold@suse.com
+
+- Enable the Kconfig options REQUIRE_NX and DIT_DEFAULT to
+  provide better hypervisor security
+  xen.spec
+
+-------------------------------------------------------------------
+Tue Nov 21 12:14:00 CET 2023 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  654370e2-x86-x2APIC-remove-ACPI_FADT_APIC_CLUSTER-use.patch
+  65437103-x86-i8259-dont-assume-IRQs-always-target-CPU0.patch
+  655b2ba9-fix-sched_move_domain.patch
+
+-------------------------------------------------------------------
 Mon Nov 20 10:08:38 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Pass XEN_BUILD_DATE + _TIME to override build date (boo#1047218)

@@ -39,6 +39,8 @@ Patch0:         fix-sdist-target.patch
 Patch1:         hatch-pr828-pth-tests.patch
 # PATCH-FIX-UPSTREAM CI.patch, gh#pypa/hatch#940
 Patch2:         CI.patch
+# PATCH-FIX-UPSTREAM packaging232.patch gh#pypa/hatch#989
+Patch3:         packaging232.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 1.14}
 BuildRequires:  %{python_module pip}

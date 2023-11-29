@@ -23,9 +23,9 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-json5
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        A Python implementation of the JSON5 data format
 License:        Apache-2.0

@@ -1,0 +1,23 @@
+Subject: fix too much verbosity in nodaemon mode
+Author: Stefan Seyfried <seife+obs@b1-systems.com>
+
+When used from systemd, the additional timestamp is not useful, so skip it
+
+Index: b/src/error.c
+===================================================================
+--- a/src/error.c
++++ b/src/error.c
+@@ -88,6 +88,13 @@ void log_message(int prior, const char *
+ 		f=dbg_file;
+ 	printtofile:
+ #endif
++		if (!global.daemon) {
++			fprintf(f, "%s:",
++				prior<=LOG_CRIT?"critical":
++				prior==LOG_ERR?"error":
++				prior==LOG_WARNING?"warning":
++				"info");
++		} else
+ 		{
+ 			char ts[sizeof "* 12/31 23:59:59| "];
+ 			time_t tt = time(NULL);

@@ -27,7 +27,7 @@
 %bcond_without magpie
 %endif
 Name:           budgie-desktop
-Version:        10.8+0
+Version:        10.8.2+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -72,18 +72,24 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
+# remove old applet
+Provides:       budgie-trash-applet = 1.7.0
+Obsoletes:      budgie-trash-applet < 1.7.0
 # flatpak/snap
-Recommends:     (xdg-desktop-portal-gnome if (flatpak or snapd))
+Requires:       xdg-desktop-portal-gtk
 # https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
 Conflicts:      gnome-shell
 #
 # rebrand and gnome porting
-Requires:       budgie-desktop-view >= 1.2.1+0
+Requires:       budgie-desktop-view >= 1.3+0
 Requires:       budgie-screensaver >= 5.1.0+0
 Requires:       typelib-1_0-Budgie-1_0 >= %{version}
 Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20220627.1
 Requires:       budgie-control-center >= 1.3.0+0
+%if %{with magpie}
+Requires:       magpie >= 0.9.3+0
+%endif
 Requires:       budgie-backgrounds >= 2.0+0
 #
 # unchanged SOVER but new APIs
@@ -245,6 +251,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScr
 %{_datadir}/gnome-session
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/budgie-portals.conf
 %{_libdir}/budgie-desktop
 %{_sysconfdir}/xdg/autostart/*.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop

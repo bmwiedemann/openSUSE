@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 24 13:03:50 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- disable pytest's test name check
+  https://github.com/ansible/ansible-compat/issues/340
+
+-------------------------------------------------------------------
 Wed Sep  6 15:25:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix BuildRequires and Requires

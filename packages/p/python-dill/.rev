@@ -164,4 +164,26 @@
     <comment>- build for python 3.7+ only</comment>
     <requestid>1084776</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b5cc7cf3e3afe27033905326ad35f85b</srcmd5>
+    <version>0.3.7</version>
+    <time>1701023816</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.7:
+  * Fix _is_builtin_module
+  * minor changes from PR #554
+  * align LICENSE wording with BSD-3-Clause
+  * Python 3 Metaclasses [Support ABC and Enums - Part 1]
+  * Abstract Base Classes [Support ABC and Enums - Part 2]
+  * fix typo
+  * Bump requests from 2.27.1 to 2.31.0 in /docs
+  * Fixed crashed in _dill._is_builtin_module when a module's
+    __file__ is None
+  * Bump pygments from 2.11.2 to 2.15.0 in /docs
+
+  * requires python 3.7
+  * Support recursive and empty closure cells
+  * drop rtfd build to 3.8</comment>
+    <requestid>1128728</requestid>
+  </revision>
 </revisionlist>

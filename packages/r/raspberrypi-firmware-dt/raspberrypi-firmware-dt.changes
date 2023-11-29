@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 23 11:23:22 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 77f41f30fe (2023-11-21):
+  * switch to 6.6 branch
+- Rebase patches:
+  * 0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
+  * 0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch
+
+-------------------------------------------------------------------
 Tue Jul 18 11:25:24 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Update 0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch description

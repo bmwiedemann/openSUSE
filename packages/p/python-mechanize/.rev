@@ -281,4 +281,34 @@
     <comment></comment>
     <requestid>1095673</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f2c10bc97505a0edbc08439e9f2e881b</srcmd5>
+    <version>0.4.9</version>
+    <time>1701121503</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.9:
+  * Fix error on PyPy3
+  * Fix error CPython 3.12
+- drop python-mechanize-setup.cfg.patch,
+  support-python-311.patch: upstream
+
+    both.
+- Remove unneeded BuildRequires on python.
+    lead to Denial-of-Service
+  * URLs passed into mechanize now automatically have URL unsafe
+    characters percent encoded. This is necessary because newer
+    versions of python disallow processing of URLs with unsafe
+    characters. Note that this means values return by
+    get_full_url(), get_selector() etc will be percent encoded.
+- added missing dependencies: Twisted, zope.interface and html5lib
+  * A couple of python 3 specific fixes for proxy authorization and
+    adding controls to forms
+    * Add a finalize_request_headers callback to Browser to allow
+      users full control of what headers are sent with every
+    * Fix processing of http-equiv meta tags incorrectly lower casing
+    * Fix error when a textbox contained within a form contains
+- changed BR python-clientform to python-ClientForm (now it matches)
+- Removed provides (wrong package)</comment>
+    <requestid>1129230</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           global
-Version:        6.6.10
+Version:        6.6.11
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=250#/%{name}
 Patch0:         global-5.7.diff
 # PATCH-FIX-UPSTREAM fix_paths.patch bnc#977967
 Patch1:         fix_paths.patch
-BuildRequires:  autoconf
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  emacs-nox
 BuildRequires:  fdupes
@@ -40,8 +40,8 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       python3-Pygments
-Recommends:     ctags
 Recommends:     idutils
+Recommends:     universal-ctags >= 6.0.0
 
 %description
 GLOBAL is a common source code tag system for C, C++, Yacc, and Java.
@@ -58,11 +58,12 @@ subdirectories or many main() functions like MH, X, or Linux kernel.
 autoreconf -fiv
 export CPPFLAGS="-fno-common"
 %configure \
-  --with-python-interpreter=/usr/bin/python3 \
+  --with-python-interpreter=%{_bindir}/python3 \
   --disable-static \
   --with-sqlite3 \
   --without-included-ltdl \
-  --with-exuberant-ctags=%{_bindir}/ctags
+  --with-universal-ctags=%{_bindir}/ctags \
+  %{nil}
 %make_build
 
 %install

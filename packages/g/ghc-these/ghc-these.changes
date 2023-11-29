@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:29:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete dependency on foldable1-classes-compat.
+
+-------------------------------------------------------------------
 Wed Oct  4 15:24:33 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update these to version 1.2 revision 1.

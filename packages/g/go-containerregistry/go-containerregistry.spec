@@ -19,7 +19,7 @@
 
 %global goipath github.com/google/go-containerregistry
 Name:           go-containerregistry
-Version:        0.12.1
+Version:        0.16.1
 Release:        0
 Summary:        Container Library and tools for working with container registries
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/google/go-containerregistry
 Source:         https://github.com/google/go-containerregistry/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.20
 Conflicts:      distribution-registry
 
 %description

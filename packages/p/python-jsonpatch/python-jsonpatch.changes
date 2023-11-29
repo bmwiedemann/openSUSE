@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:10:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update 1.33:
+  * fix invalid remove index
+  * remove unused import
+  * feat(jsondiff): Add support for preserving Unicode characters
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -32,7 +40,7 @@ Fri Sep 17 21:02:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Tue May 18 21:54:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.32:
-  * take_index causing 'move' of incorrect values due to bad True==1 comparison 
+  * take_index causing 'move' of incorrect values due to bad True==1 comparison
 
 -------------------------------------------------------------------
 Thu Apr 22 20:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -45,7 +53,7 @@ Thu Apr 22 20:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Sun Dec 20 09:52:04 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28:
-  * Make it possible for from_diff to support custom types (issue #107) 
+  * Make it possible for from_diff to support custom types (issue #107)
   * Python 3.9 support
 
 -------------------------------------------------------------------
@@ -98,7 +106,7 @@ Tue Aug  8 06:27:14 UTC 2017 - tbechtold@suse.com
 Fri Jul 28 14:43:04 UTC 2017 - darin@darins.net
 
 - Convert packaging to Singlespec
-- update to 1.16 
+- update to 1.16
 
 -------------------------------------------------------------------
 Tue Nov 15 10:53:42 UTC 2016 - dmueller@suse.com
@@ -183,7 +191,7 @@ Thu Jul 11 14:41:17 UTC 2013 - dmueller@suse.com
 Mon Apr 29 12:36:33 UTC 2013 - dmueller@suse.com
 
 - update to 1.0
-  * first stable release, some bugfixes 
+  * first stable release, some bugfixes
 
 -------------------------------------------------------------------
 Fri Feb 22 14:00:26 UTC 2013 - saschpe@suse.de

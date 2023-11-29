@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 22 07:48:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make compatible with latest python-flake8 and python-black
+  bsc#1217371
+  - Add patch flake8-v6-compatibility.patch, gh#grantjenks/blue#96
+  - Remove patch flake8-v5-compatibility.patch
+  - Refresh patch python-blue.changes
+
+-------------------------------------------------------------------
 Thu May  4 12:02:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add black-23.3.patch to make it compatible with latest python-black

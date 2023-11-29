@@ -7,9 +7,10 @@ Implement an option '-Y' to suppress most output.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 |    7 ++++-
- dasdfmt/dasdfmt.c |   73 ++++++++++++++++++++++++++++++++++++++++++++++++------
- 2 files changed, 72 insertions(+), 8 deletions(-)
+ dasdfmt/dasdfmt.8 |  7 ++++++-
+ dasdfmt/dasdfmt.c | 27 ++++++++++++++++++++-------
+ dasdfmt/dasdfmt.h |  1 +
+ 3 files changed, 27 insertions(+), 8 deletions(-)
 
 Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
 ===================================================================

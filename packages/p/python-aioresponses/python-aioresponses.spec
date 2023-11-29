@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioresponses
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Python module for mocking out requests made by ClientSession from aiohttp
 License:        MIT

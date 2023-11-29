@@ -11,13 +11,13 @@ This fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1209314
 
 Signed-off-by: Ivan T. Ivanov <iivanov@suse.de>
 ---
- arch/arm/boot/dts/bcm2711-rpi-ds.dtsi | 2 +-
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/bcm2711-rpi-ds.dtsi b/arch/arm/boot/dts/bcm2711-rpi-ds.dtsi
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi b/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
 index bd5c297..9956368 100644
---- a/arch/arm/boot/dts/bcm2711-rpi-ds.dtsi
-+++ b/arch/arm/boot/dts/bcm2711-rpi-ds.dtsi
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
 @@ -126,7 +126,7 @@
  };
  

@@ -168,4 +168,13 @@
     them.</comment>
     <requestid>1092405</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c71fbcdf0c8b84a41249445ee2645a69</srcmd5>
+    <version>1.13</version>
+    <time>1700675659</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.13:
+  * fix a performance issue when dealing with big directories.</comment>
+    <requestid>1127953</requestid>
+  </revision>
 </revisionlist>

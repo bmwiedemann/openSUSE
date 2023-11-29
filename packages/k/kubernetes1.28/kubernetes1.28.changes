@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 24 06:39:49 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.11`
+
+- Update to version 1.28.4:
+  * Use golang library instead of mklink
+  * [go] Bump images, dependencies and versions to go 1.20.11
+  * Fixing attempt to deploy past allocatable memory limits test on Windows
+  * bump golang.org/grpc to v1.56.3
+  * Add more test cases ensuring nextScheduleTimeDuration is never < 0
+  * Modify mostRecentScheduleTime to return more detailed information about missed schedules
+  * removing the import of "k8s.io/utils/ptr" because it was introduced after 1.28
+  * Fixing CurrentReplicas and CurrentRevision in completeRollingUpdate
+  * Use Patch instead of SSA for Pod Disruption condition
+  * KCCM: fix GCP ILB by reintroducing readiness predicate for eTP:Local
+  * Fix panic testing intree vSphere dynamic PV.
+  * service controller: improve node lifecycle updates - update nodes if providerID has changed
+  * implement Stringer for podActions
+  * Retry operations if CSI Driver Isn't Found by Treating this Error as Transient
+
+-------------------------------------------------------------------
 Thu Oct 26 04:55:27 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update .spec file to bump go version build requirements:

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Nov 28 03:55:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch avoid-deprecated-ast.patch:
+  * Avoid deprecated ast classes.
+- Add patch also-filter-new-fork-warning.patch:
+  * Filter DeprecationWarning due to calling fork() with multiprocessing.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Sat Nov 25 20:14:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * FIX treat n_jobs=None as if left to its default value
+  * FIX Init logger parent class in Parallel
+  * MNT remove unnecessary .bck file
+  * MTN adjust test regex for Python 3.12 improved error message
+  * DOC add public documentation for parallel_backend
+  * FIX flake8 new E721: type comparison
+  * Ensure native byte order for memmap.
+  * Drop runtime dependency on `distutils`
+  * Add environment variable to change default parallel backend
+  * Fix memmapping_reducer when 'os' has no attribute 'statvfs'
+  * Move the metadata into `pyproject.toml`
+  * TST Close client in test_pickle_in_socket
+  * Do not swallow PicklingError
+  * FIX Avoid collisions when caching nested functions
+  * FIX heisenfailure in doc/memory.rst
+  * MAINT Explicit support for Python 3.11
+  * MNT Use faulthandler rather than custom autokill logic
+  * BENCH add benchmark script for n_jobs=1
+  * TST Fix test_nested_parallel_warnings_parent_backend for
+    Python nogil
+  * TST Fix test_memmapping for Python nogil
+  * MAINT Clean deprecations
+  * ENH make temp resource cleanup safer
+  * MAINT Simplify warning in `_persist_input`
+  * MNT Use full flake8 rather than flake8_diff.sh
+  * Update Dask backend
+  * FIX upload to codecov
+  * MTN vendor loky 3.4.0
+  * MTN skip thread_bomb mitigation test on PyPy for now
+  * High verbosity mode that prints arguments, hash and store
+    location.
+  * DBG try to debug the thread_bomb_mitigation test
+  * FEA return generator, #588 stripped of unrelated changes for
+    minimal diff review
+  * BENCH scaling of a GridSearch with n_jobs
+  * CLN make generator exit thread safe
+  * FEA parallel_config context manager to allow more fine-
+    grained control
+  * MAINT: Be nitpicky about docs
+  * CLN tidy logger
+  * Give Memory.reduce_size() `items_limit` and `age_limit`
+    options
+  * CLN deprecate bytes_limit from Memory
+  * FIX doc building failing download
+  * Document parallel_config
+  * ENH add cache_validation_callback in Memory
+  * DOC example data DL from GH
+  * merge all configs in pyproject.toml
+  * fix double repeated word typos
+  * DOC reference parallel_config instead of parallel_backend
+  * `return_generator={True,False}` ->
+    `return_as={'list','generator'}`
+
+-------------------------------------------------------------------
 Sat Jun 10 17:42:25 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -36,7 +102,7 @@ Wed Jul 20 11:00:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-setuptools-62.patch:
   * Support setuptools >= 62 by handling more than one warning in a test
-    case. 
+    case.
 
 -------------------------------------------------------------------
 Sat Oct 16 21:31:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -51,7 +117,7 @@ Sat Oct 16 21:31:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Fix joblib.Memory to properly handle caching for functions defined
     interactively in a IPython session or in Jupyter notebook cell.
   * Update vendored loky (from version 2.9 to 3.0) and cloudpickle (from
-    version 1.6 to 2.0) 
+    version 1.6 to 2.0)
 
 -------------------------------------------------------------------
 Mon Feb 15 23:26:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -428,7 +494,7 @@ Sat Feb  9 15:54:15 UTC 2013 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Wed Oct 10 20:59:57 UTC 2012 - scorot@free.fr
 
-- Add Group field in doc package for SLE 11 
+- Add Group field in doc package for SLE 11
 
 -------------------------------------------------------------------
 Wed Sep  5 17:10:35 UTC 2012 - toddrme2178@gmail.com

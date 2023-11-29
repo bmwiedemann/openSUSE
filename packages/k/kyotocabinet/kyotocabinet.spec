@@ -18,7 +18,7 @@
 
 %define soname 16
 Name:           kyotocabinet
-Version:        1.2.77
+Version:        1.2.80
 Release:        0
 Summary:        A straightforward implementation of DBM
 License:        SUSE-GPL-3.0-with-FLOSS-exception

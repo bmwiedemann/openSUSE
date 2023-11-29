@@ -22,7 +22,7 @@
 %endif
 %define org org.buddiesofbudgie
 Name:           budgie-desktop-view
-Version:        1.2.1+0
+Version:        1.3+0
 Release:        0
 Summary:        Official Budgie Desktop icons application / implementation
 License:        Apache-2.0

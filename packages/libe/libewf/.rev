@@ -223,4 +223,13 @@ Replace python 2 with python 3</comment>
     <comment>- Update to release 20231119</comment>
     <requestid>1127554</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>8d22c528e42735f9c74ffe9cf5686e77</srcmd5>
+    <version>20231119</version>
+    <time>1700865257</time>
+    <user>anag+factory</user>
+    <comment>- Delete system-libs.patch (only needed when _service makes
+  tarballs directly from git)</comment>
+    <requestid>1128392</requestid>
+  </revision>
 </revisionlist>

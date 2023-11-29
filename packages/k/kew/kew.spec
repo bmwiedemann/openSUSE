@@ -17,12 +17,12 @@
 
 
 Name:           kew
-Version:        1.7.0
+Version:        1.7.3
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
 URL:            https://github.com/ravachol/kew
-Source:         %{url}/archive/v.%{version}/kew-v.%{version}.tar.gz
+Source:         %{url}/archive/v%{version}/kew-%{version}.tar.gz
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc >= 13
 BuildRequires:  pkgconfig
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(vorbisfile)
 Listen to music in the terminal.
 
 %prep
-%autosetup -n kew-v.%{version}
+%autosetup
 
 %build
 %make_build

@@ -53,4 +53,17 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092374</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d2ce247c80b3c683f6ac0a30bd095e2</srcmd5>
+    <version>5.1.0</version>
+    <time>1701121508</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0:
+  * Dropped Python 3.6 support.
+  * Added new Python versions support.
+  * Dropped old dependencies.
+  * Added new GHA based CI.
+  * Added slots support and impproved dynamic assignment.</comment>
+    <requestid>1129241</requestid>
+  </revision>
 </revisionlist>

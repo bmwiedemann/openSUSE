@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dns-lexicon
-Version:        3.12.0
+Version:        3.17.0
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT
@@ -27,6 +27,7 @@ Source0:        https://github.com/AnalogJ/lexicon/archive/v%{version}.tar.gz#/l
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Python build system requirements
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 # /SECTION
@@ -34,12 +35,13 @@ BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module PyYAML >= 3}
 BuildRequires:  %{python_module beautifulsoup4 >= 4}
 BuildRequires:  %{python_module cryptography >= 3}
-BuildRequires:  %{python_module importlib-metadata >= 4}
+BuildRequires:  %{python_module importlib-metadata >= 4.6}
+BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module requests >= 2}
 BuildRequires:  %{python_module tldextract >= 2}
 # /SECTION
 # SECTION extras
-BuildRequires:  %{python_module boto3 >= 1}
+BuildRequires:  %{python_module boto3 >= 1.28}
 BuildRequires:  %{python_module dnspython >= 2}
 BuildRequires:  %{python_module localzone >= 0.9.8}
 BuildRequires:  %{python_module softlayer => 5}
@@ -56,12 +58,13 @@ BuildConflicts: %{python_module oci}
 Requires:       python-PyYAML >= 3
 Requires:       python-beautifulsoup4 >= 4
 Requires:       python-cryptography >= 2
-Requires:       python-importlib-metadata >= 4
+Requires:       python-importlib-metadata >= 4.6
+Requires:       python-pyotp
 Requires:       python-requests >= 2
 Requires:       python-tldextract >= 2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     python-boto3 >= 1
+Recommends:     python-boto3 >= 1.28
 Recommends:     python-dnspython >= 2
 Recommends:     python-localzone >= 0.9.8
 Recommends:     python-oci >= 2
@@ -83,8 +86,6 @@ Lexicon was designed to be used in automation, specifically letsencrypt.
 %autosetup -p1 -n lexicon-%{version}
 # rpmlint
 find . -type f -name ".gitignore" -delete
-# remove shebang
-sed -i '1{/^#!/d}' lexicon/cli.py
 
 %build
 %pyproject_wheel
@@ -96,12 +97,12 @@ sed -i '1{/^#!/d}' lexicon/cli.py
 
 %check
 # test_auto does not work inside OBS
-ignoretests="--ignore lexicon/tests/providers/test_auto.py"
+ignoretests="--ignore tests/providers/test_auto.py"
 # no oci in test suite, see comment above
-ignoretests="$ignoretests --ignore lexicon/tests/providers/test_oci.py"
+ignoretests="$ignoretests --ignore tests/providers/test_oci.py"
 # test_namecheap has invalid vcr casettes, attempts to update them failed
-ignoretests="$ignoretests --ignore lexicon/tests/providers/test_namecheap.py"
-%pytest lexicon/tests $ignoretests -x
+ignoretests="$ignoretests --ignore tests/providers/test_namecheap.py"
+%pytest tests $ignoretests -x
 
 %post
 %python_install_alternative lexicon

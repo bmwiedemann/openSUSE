@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 18 08:42:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update fgl to version 5.8.2.0.
+  5.8.2.0
+  -------
+
+  * Data.Graph.Inductive.Graph now only requires Graph, not DynGraph
+    (issue #100).
+
+  * Documented that some functions are partial (issue #98).
+
+  * Add `insert` function as synonym for `&` (issue #90).
+
+  5.8.1.1
+  -------
+
+  * Data.Graph.Inductive.Query.Dominators.{dom,iDom} could fail for some
+    graphs (issue #109, regression in 5.8.1.0).
+
+  5.8.1.0
+  -------
+
+  * Data.Graph.Inductive.PatriciaTree.Gr and
+    Data.Graph.Inductive.Tree.Gr now have Functor instances.
+
+  * 'Gr a' is now an instance of Functor.
+
+-------------------------------------------------------------------
 Thu Jun 22 19:46:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update fgl to version 5.8.0.0 revision 1.

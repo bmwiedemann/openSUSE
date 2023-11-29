@@ -1,11 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 13 16:01:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.47.2.
+  - Compatibility with GHC 9.6
+
+- Apply "re-enable-support-for-libmpd.patch" to enable support for
+  libmpd. Upstream disabled this feature becase they can't build
+  libmpd, but we can.
+
+-------------------------------------------------------------------
 Sat Sep  2 22:18:49 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.47.1.
-  Upstream has edited the change log file since the last release in
-  a non-trivial way, i.e. they did more than just add a new entry
-  at the top. You can review the file at:
-  http://hackage.haskell.org/package/xmobar-0.47.1/src/changelog.md
+  - Allow compilation with libmpd even with GHC > 9.4, by
+    requesting it explicitly with `with_mpd`. See #667 for further
+    details.
+  - Fix: center middle section for templates of the for }M{
+  - Documentation fixes and improvements
+  - Better error handling in network connections
 
 -------------------------------------------------------------------
 Thu Mar 30 17:09:21 UTC 2023 - Peter Simons <psimons@suse.com>
@@ -16,8 +28,6 @@ Thu Mar 30 17:09:21 UTC 2023 - Peter Simons <psimons@suse.com>
 Thu Jan  5 06:31:35 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.46.
-  ## Version 0.46 (January, 2023)
-
   - New bar position specifiers TopHM, BottomHM.
   - New configuration option, `dpi`, to set the font scaling factor.
   - Fixes and extensions for section aligment behaviour (#650, #655).
@@ -27,27 +37,21 @@ Thu Jan  5 06:31:35 UTC 2023 - Peter Simons <psimons@suse.com>
 Sun Oct 16 19:17:16 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.45.
-  ## Version 0.45 (October, 2022)
-
-  - New cairo/pango font drawing backend, substituting the direct X11/Xft one.
+  - New cairo/pango font drawing backend, substituting the direct
+    X11/Xft one.
 
 -------------------------------------------------------------------
 Wed Aug 10 14:18:31 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.44.2.
-  Upstream has edited the change log file since the last release in
-  a non-trivial way, i.e. they did more than just add a new entry
-  at the top. You can review the file at:
-  http://hackage.haskell.org/package/xmobar-0.44.2/src/changelog.md
+  - Documentation improvements.
+  - Missing doc files and xmobar.el added to distribution.
 
 -------------------------------------------------------------------
 Mon Jul 18 00:12:16 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.44.1.
-  Upstream has edited the change log file since the last release in
-  a non-trivial way, i.e. they did more than just add a new entry
-  at the top. You can review the file at:
-  http://hackage.haskell.org/package/xmobar-0.44.1/src/changelog.md
+  - Repository moved to Codeberg.  No code changes.
 
 -------------------------------------------------------------------
 Fri Jul  8 22:59:18 UTC 2022 - Peter Simons <psimons@suse.com>
@@ -71,8 +75,6 @@ Wed May 11 16:54:50 UTC 2022 - Peter Simons <psimons@suse.com>
 Tue Mar  1 16:12:23 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.42.
-  ## Version 0.42 (March, 2022)
-
   _New features_
 
     - New text mode (thanks to Pavel Kagulin, see issue #601), with
@@ -132,9 +134,9 @@ Wed May 19 10:10:27 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Mon Nov 30 15:27:04 UTC 2020 - psimons@suse.com
 
@@ -207,7 +209,7 @@ Sun Jun 14 18:00:06 UTC 2020 - psimons@suse.com
 -------------------------------------------------------------------
 Fri May 29 07:06:33 UTC 2020 - Peter Trommler <ptrommler@icloud.com>
 
-- increase disk space on ppc64, ppc64le 
+- increase disk space on ppc64, ppc64le
 
 -------------------------------------------------------------------
 Thu May  7 07:48:19 UTC 2020 - Peter Simons <psimons@suse.com>

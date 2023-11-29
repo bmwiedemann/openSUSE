@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 27 18:51:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.3:
+  * Add PEP 561 `py.typed` marker file.
+  * Re-organize unit tests.
+  * Add a warning about the usage of `.new_instances()` method in
+    the documentation.
+  * Run tests with testtools, subunit, TeamCity, and doctest
+    testrunners using tox.
+  * Test flexmock API examples using doctest.
+  * Re-add Sphinx support for generating man pages.
+  * Fix 404 page not loading CSS and Javascript resources in
+    documentation.
+  * Add Python 3.8, 3.9, 3.10, and 3.11 support.
+  * Add type annotations.
+  * **BREAKING CHANGE**: Flexmock needs to be imported explicitly
+    using `from flexmock import flexmock`.
+  * Many error messages have been improved.
+  * Drop Python 2.7, 3.4, 3.5 support.
+  * Drop Pytest 4.x support.
+  * **BREAKING CHANGE**: Removed support for calling `once`,
+    `twice`, `never`, and `mock` methods without parentheses.
+  * Fix `should_call` is broken if called on a fake object.
+  * Fix `and_raise` allows invalid arguments for an exception.
+  * Fix AttributeError raised when mocking a proxied object.
+  * Fix flexmock not mocking methods properly on derived classes.
+
+-------------------------------------------------------------------
 Mon May  8 07:15:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
@@ -7,7 +35,7 @@ Mon May  8 07:15:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 Tue Aug 31 08:53:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.10.8:
-  * Fix with_args not working built-in functions. 
+  * Fix with_args not working built-in functions.
 
 -------------------------------------------------------------------
 Wed Aug 25 09:55:08 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -59,5 +87,5 @@ Thu Sep  7 20:06:59 UTC 2017 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Thu Oct 13 10:22:24 UTC 2016 - alarrosa@suse.com
 
-- Initial package 
+- Initial package
 - Official upstream release 0.10.2

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 10:46:10 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup instead of %setup/%patch.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:15:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

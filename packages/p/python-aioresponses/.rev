@@ -152,4 +152,15 @@
   * Add Python 3.11 support</comment>
     <requestid>1125857</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>593696ec21bca3c8077dd48707bf06b7</srcmd5>
+    <version>0.7.6</version>
+    <time>1701023831</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.6:
+  * refactor: Make mock for writer compatible with 3.9.0b1 and
+    older
+  * fix: aiohttp 3.9 \_writer can't await</comment>
+    <requestid>1128741</requestid>
+  </revision>
 </revisionlist>

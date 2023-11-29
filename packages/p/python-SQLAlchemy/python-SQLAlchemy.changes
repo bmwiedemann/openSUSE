@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 27 09:11:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.23:
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.23
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.22
+
+-------------------------------------------------------------------
 Fri Sep 29 15:23:49 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2.0.21:
@@ -12,14 +19,14 @@ Fri Sep 29 15:23:49 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 -------------------------------------------------------------------
 Sun Aug 13 21:41:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- use generic Cython >= 3 buildrequires 
+- use generic Cython >= 3 buildrequires
 
 -------------------------------------------------------------------
 Tue Jul 25 18:42:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.19:
   * Various bugfixes, see
-  https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.19 
+  https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.19
 
 -------------------------------------------------------------------
 Mon Jun 19 20:22:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -34,7 +41,7 @@ Mon Jun 19 20:22:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
     unique indexes and unique constraints
   * Use proper precedence on PostgreSQL specific operators, such as
     @>
-  * see 
+  * see
   https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.16
 
 -------------------------------------------------------------------
@@ -96,7 +103,7 @@ Sat May 20 10:32:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
   * Fixed regression where use of update() or delete() within a CTE
     construct, then used in a select(), would raise a CompileError
     as a result of ORM related rules for performing ORM-level
-    update/delete statements.  
+    update/delete statements.
     References: #9767
   * Fixed issue in new ORM Annotated Declarative where using a
     ForeignKey (or other column-level constraint) inside of
@@ -110,7 +117,7 @@ Sat May 20 10:32:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
     itself contained correlated subqueries that referred to the
     joined entities and therefore also required “adaption” to
     aliased entities, would be excluded from this adaption,
-    producing the wrong ON clause for the joinedload.   
+    producing the wrong ON clause for the joinedload.
     References: #9779
   # sql
   * Generalized the MSSQL try_cast() function into the sqlalchemy.
@@ -132,7 +139,7 @@ Sat May 20 10:32:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
   * Fixed apparently very old issue where the ENUM.create_type
     parameter, when set to its non-default of False, would not be
     propagated when the Column which it’s a part of were copied, as
-    is common when using ORM Declarative mixins. References: #9773    
+    is common when using ORM Declarative mixins. References: #9773
   # tests
   * Fixed test that relied on the sys.getsizeof() function to not
     run on pypy, where this function appears to have different
@@ -144,7 +151,7 @@ Sat May 20 10:32:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
 Sun May 14 16:30:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.13:
-  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.13 
+  * https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.13
 
 -------------------------------------------------------------------
 Fri May 12 13:50:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -188,13 +195,13 @@ Wed Feb 15 12:34:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
     first time any SQLAlchemy 2.0 deprecation warning would
     normally be emitted, but the SQLALCHEMY_WARN_20 environment
     variable is not set.
-  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.46 
+  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.46
 
 -------------------------------------------------------------------
 Mon Jan  2 19:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.45:
-  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.45 
+  see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.45
 
 -------------------------------------------------------------------
 Sat Oct 22 16:19:42 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -1051,15 +1058,15 @@ Mon Dec 27 12:32:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Sat Dec 18 19:34:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.28:
-  Bugfixes, see 
-  * https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.28 
+  Bugfixes, see
+  * https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.28
 
 -------------------------------------------------------------------
 Sun Dec  5 19:11:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.27:
   Bugfixes
-  * see https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.27 
+  * see https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html#change-1.4.27
 
 -------------------------------------------------------------------
 Wed Oct 27 19:23:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -1078,7 +1085,7 @@ Wed Oct 27 19:23:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
     PostgreSQL-specific any_() and all_() column methods.
   * For MySQL, repaired support for new behaviors in MariaDB 10.6
   * For SQL Server, reflection fixes and improvements for foreign key
-    constraints as well table /view detection. 
+    constraints as well table /view detection.
 
 -------------------------------------------------------------------
 Sat Oct 16 23:34:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -1960,7 +1967,7 @@ Tue Feb 23 17:07:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.23:
   * Release 1.3.23 contains an array of bugfixes specific to dialects such as
-    Oracle, PostgreSQL, and MySQL. 
+    Oracle, PostgreSQL, and MySQL.
 
 -------------------------------------------------------------------
 Wed Jan 20 12:21:49 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
@@ -1973,7 +1980,7 @@ Sat Dec 19 11:01:39 UTC 2020 - Dirk Müller <dmueller@suse.com>
 - update to 1.3.22:
   * Fixed regression which occured due to #5755 which implemented isolation
   level support for Oracle
-  * bugfixes for various engines, see 
+  * bugfixes for various engines, see
   https://docs.sqlalchemy.org/en/14/changelog/changelog_13.html#change-1.3.21
 
 -------------------------------------------------------------------
@@ -1996,7 +2003,7 @@ Mon Oct 19 07:04:45 UTC 2020 - Adrian Schröter <adrian@suse.de>
   engine
   * Fixed issue where a non-string object sent to SQLAlchemyError or a
     subclass, as occurs with some third party dialects, would fail to
-    stringify correctly. Pull request courtesy Andrzej Bartosiński. 
+    stringify correctly. Pull request courtesy Andrzej Bartosiński.
     References: #5599
 
   * Repaired a function-level import that was not using SQLAlchemy’s
@@ -2405,7 +2412,7 @@ Sat Mar 14 12:26:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     ORM path registry system made it such that a path could no longer be
     compared to an empty tuple, which can occur in a particular kind of joined
     eager loading path.   The "empty tuple" use case has been resolved so that
-    the path registry is compared to a path registry in all cases; 
+    the path registry is compared to a path registry in all cases;
 - Fix build for older distributions by buildrequiring a new-enough pytest
 
 -------------------------------------------------------------------
@@ -2980,7 +2987,7 @@ Mon Jul 22 16:08:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
       a primary key change where a related column needs to change.
     * [bug] Fixed bug where the detection for many-to-one or
       one-to-one use with a “dynamic” relationship, which is an
-      invalid configuration, would fail to raise if the 
+      invalid configuration, would fail to raise if the
       relationship were configured with uselist=True. The current
       fix is that it warns, instead of raises, as this would
       otherwise be backwards incompatible, however in a future
@@ -3826,127 +3833,127 @@ Sun Jul  1 02:17:55 UTC 2018 - arun@gmx.de
 -------------------------------------------------------------------
 Tue Jun 26 06:55:57 UTC 2018 - mimi.vx@gmail.com
 
-- add upstream fix_test_reflection.patch to fix tests with new sqlite 
+- add upstream fix_test_reflection.patch to fix tests with new sqlite
 
 -------------------------------------------------------------------
 Thu Jun 21 23:01:18 UTC 2018 - hpj@urpla.net
 
 - update to version 1.2.8:
   * orm
-    + [orm] [bug] Fixed regression in 1.2.7 caused by #4228, which 
+    + [orm] [bug] Fixed regression in 1.2.7 caused by #4228, which
       itself was fixing a 1.2-level regression, where the query_cls
-      callable passed to a Session was assumed to be a subclass of 
-      Query with class method availability, as opposed to an 
-      arbitrary callable. In particular, the dogpile caching example 
-      illustrates query_cls as a function and not a Query subclass. 
+      callable passed to a Session was assumed to be a subclass of
+      Query with class method availability, as opposed to an
+      arbitrary callable. In particular, the dogpile caching example
+      illustrates query_cls as a function and not a Query subclass.
       References: #4256
-    + [orm] [bug] Fixed a long-standing regression that occurred in 
-      version 1.0, which prevented the use of a custom MapperOption 
-      that alters the _params of a Query object for a lazy load, 
-      since the lazy loader itself would overwrite those parameters. 
-      This applies to the “temporal range” example on the wiki. Note 
-      however that the Query.populate_existing() method is now 
-      required in order to rewrite the mapper options associated with 
+    + [orm] [bug] Fixed a long-standing regression that occurred in
+      version 1.0, which prevented the use of a custom MapperOption
+      that alters the _params of a Query object for a lazy load,
+      since the lazy loader itself would overwrite those parameters.
+      This applies to the “temporal range” example on the wiki. Note
+      however that the Query.populate_existing() method is now
+      required in order to rewrite the mapper options associated with
       an object already loaded in the identity map.
-      As part of this change, a custom defined MapperOption will now 
+      As part of this change, a custom defined MapperOption will now
       cause lazy loaders related to the target object to use a non-
-      baked query by default unless the 
-      MapperOption._generate_cache_key() method is implemented. In 
-      particular, this repairs one regression which occured when 
-      using the dogpile.cache “advanced” example, which was not 
-      returning cached results and instead emitting SQL due to an 
-      incompatibility with the baked query loader; with the change, 
-      the RelationshipCache option included for many releases in the 
-      dogpile example will disable the “baked” query altogether. Note 
-      that the dogpile example is also modernized to avoid both of 
+      baked query by default unless the
+      MapperOption._generate_cache_key() method is implemented. In
+      particular, this repairs one regression which occured when
+      using the dogpile.cache “advanced” example, which was not
+      returning cached results and instead emitting SQL due to an
+      incompatibility with the baked query loader; with the change,
+      the RelationshipCache option included for many releases in the
+      dogpile example will disable the “baked” query altogether. Note
+      that the dogpile example is also modernized to avoid both of
       these issues as part of issue #4258.  References: #4128
-    + [orm] [bug] Fixed bug where the new 
-      baked.Result.with_post_criteria() method would not interact 
-      with a subquery-eager loader correctly, in that the “post 
-      criteria” would not be applied to embedded subquery 
-      eager loaders. This is related to #4128 in that the post 
+    + [orm] [bug] Fixed bug where the new
+      baked.Result.with_post_criteria() method would not interact
+      with a subquery-eager loader correctly, in that the “post
+      criteria” would not be applied to embedded subquery
+      eager loaders. This is related to #4128 in that the post
       criteria feature is now used by the lazy loader.
-    + [orm] [bug] Updated the dogpile.caching example to include new 
-      structures that accommodate for the “baked” query system, which 
-      is used by default within lazy loaders and some eager 
-      relationship loaders. The dogpile.caching “relationship_caching” 
-      and “advanced” examples were also broken due to #4256. The 
-      issue here is also worked-around by the fix in #4128.  
+    + [orm] [bug] Updated the dogpile.caching example to include new
+      structures that accommodate for the “baked” query system, which
+      is used by default within lazy loaders and some eager
+      relationship loaders. The dogpile.caching “relationship_caching”
+      and “advanced” examples were also broken due to #4256. The
+      issue here is also worked-around by the fix in #4128.
       References: #4258
   * engine
-    + [engine] [bug] Fixed connection pool issue whereby if a 
-      disconnection error were raised during the connection pool’s 
-      “reset on return” sequence in conjunction with an explicit 
-      transaction opened against the enclosing Connection object 
-      (such as from calling Session.close() without a rollback or 
-      commit, or calling Connection.close() without first closing a 
-      transaction declared with Connection.begin()), a double-checkin 
-      would result, which could then lead towards concurrent 
-      checkouts of the same connection. The double-checkin condition 
-      is now prevented overall by an assertion, as well as the 
-      specific double-checkin scenario has been fixed.  
+    + [engine] [bug] Fixed connection pool issue whereby if a
+      disconnection error were raised during the connection pool’s
+      “reset on return” sequence in conjunction with an explicit
+      transaction opened against the enclosing Connection object
+      (such as from calling Session.close() without a rollback or
+      commit, or calling Connection.close() without first closing a
+      transaction declared with Connection.begin()), a double-checkin
+      would result, which could then lead towards concurrent
+      checkouts of the same connection. The double-checkin condition
+      is now prevented overall by an assertion, as well as the
+      specific double-checkin scenario has been fixed.
       References: #4252
-    + [engine] [bug] Fixed a reference leak issue where the values of 
-      the parameter dictionary used in a statement execution would 
-      remain referenced by the “compiled cache”, as a result of 
-      storing the key view used by Python 3 dictionary keys(). Pull 
+    + [engine] [bug] Fixed a reference leak issue where the values of
+      the parameter dictionary used in a statement execution would
+      remain referenced by the “compiled cache”, as a result of
+      storing the key view used by Python 3 dictionary keys(). Pull
       request courtesy Olivier Grisel.
   * sql
-    + [sql] [bug] Fixed issue where the “ambiguous literal” error 
-      message used when interpreting literal values as SQL expression 
-      values would encounter a tuple value, and fail to format the 
+    + [sql] [bug] Fixed issue where the “ambiguous literal” error
+      message used when interpreting literal values as SQL expression
+      values would encounter a tuple value, and fail to format the
       message properly. Pull request courtesy Miguel Ventura.
   * mssql
-    + [mssql] [bug] Fixed a 1.2 regression caused by #4061 where the 
-      SQL Server “BIT” type would be considered to be “native 
-      boolean”. The goal here was to avoid creating a CHECK 
-      constraint on the column, however the bigger issue is that the 
-      BIT value does not behave like a true/false constant and cannot 
-      be interpreted as a standalone expression, e.g.  “WHERE 
+    + [mssql] [bug] Fixed a 1.2 regression caused by #4061 where the
+      SQL Server “BIT” type would be considered to be “native
+      boolean”. The goal here was to avoid creating a CHECK
+      constraint on the column, however the bigger issue is that the
+      BIT value does not behave like a true/false constant and cannot
+      be interpreted as a standalone expression, e.g.  “WHERE
       <column>”. The SQL Server dialect now goes back to being non-
-      native boolean, but with an extra flag that still avoids 
+      native boolean, but with an extra flag that still avoids
       creating the CHECK constraint.  References: #4250
   * oracle
-    + [oracle] [bug] The Oracle BINARY_FLOAT and BINARY_DOUBLE 
-      datatypes now participate within cx_Oracle.setinputsizes(), 
-      passing along NATIVE_FLOAT, so as to support the NaN value. 
-      Additionally, oracle.BINARY_FLOAT, oracle.BINARY_DOUBLE and 
-      oracle.DOUBLE_PRECISION now subclass Float, since these are 
-      floating point datatypes, not decimal. These datatypes were 
-      already defaulting the Float.asdecimal flag to False in line 
+    + [oracle] [bug] The Oracle BINARY_FLOAT and BINARY_DOUBLE
+      datatypes now participate within cx_Oracle.setinputsizes(),
+      passing along NATIVE_FLOAT, so as to support the NaN value.
+      Additionally, oracle.BINARY_FLOAT, oracle.BINARY_DOUBLE and
+      oracle.DOUBLE_PRECISION now subclass Float, since these are
+      floating point datatypes, not decimal. These datatypes were
+      already defaulting the Float.asdecimal flag to False in line
       with what Float already does.  References: #4264
-    + [oracle] [bug] Added reflection capabilities for the 
+    + [oracle] [bug] Added reflection capabilities for the
       oracle.BINARY_FLOAT, oracle.BINARY_DOUBLE datatypes.
-    + [oracle] [bug] Altered the Oracle dialect such that when an 
-      Integer type is in use, the cx_Oracle.NUMERIC type is set up 
-      for setinputsizes(). In SQLAlchemy 1.1 and earlier, 
-      cx_Oracle.NUMERIC was passed for all numeric types 
-      unconditionally, and in 1.2 this was removed to allow for 
-      better numeric precision. However, for integers, some 
-      database/client setups will fail to coerce boolean values 
-      True/False into integers which introduces regressive behavior 
-      when using SQLAlchemy 1.2. Overall, the setinputsizes logic 
-      seems like it will need a lot more flexibility going forward so 
+    + [oracle] [bug] Altered the Oracle dialect such that when an
+      Integer type is in use, the cx_Oracle.NUMERIC type is set up
+      for setinputsizes(). In SQLAlchemy 1.1 and earlier,
+      cx_Oracle.NUMERIC was passed for all numeric types
+      unconditionally, and in 1.2 this was removed to allow for
+      better numeric precision. However, for integers, some
+      database/client setups will fail to coerce boolean values
+      True/False into integers which introduces regressive behavior
+      when using SQLAlchemy 1.2. Overall, the setinputsizes logic
+      seems like it will need a lot more flexibility going forward so
       this is a start for that.  References: #4259
   * misc
-    + [bug] [ext] The horizontal sharding extension now makes use of 
-      the identity token added to ORM identity keys as part of #4137, 
-      when an object refresh or column-based deferred load or 
-      unexpiration operation occurs.  Since we know the “shard” that 
-      the object originated from, we make use of this value when 
-      refreshing, thereby avoiding queries against other shards that 
-      don’t match this object’s identity in any case.  
+    + [bug] [ext] The horizontal sharding extension now makes use of
+      the identity token added to ORM identity keys as part of #4137,
+      when an object refresh or column-based deferred load or
+      unexpiration operation occurs.  Since we know the “shard” that
+      the object originated from, we make use of this value when
+      refreshing, thereby avoiding queries against other shards that
+      don’t match this object’s identity in any case.
       References: #4247
-    + [bug] [ext] Fixed a race condition which could occur if automap 
-      AutomapBase.prepare() were used within a multi-threaded context 
-      against other threads which may call configure_mappers() as a 
-      result of use of other mappers. The unfinished mapping work of 
-      automap is particularly sensitive to being pulled in by a 
+    + [bug] [ext] Fixed a race condition which could occur if automap
+      AutomapBase.prepare() were used within a multi-threaded context
+      against other threads which may call configure_mappers() as a
+      result of use of other mappers. The unfinished mapping work of
+      automap is particularly sensitive to being pulled in by a
       configure_mappers() step leading to errors.  References: #4266
-    + [bug] [tests] Fixed a bug in the test suite where if an 
-      external dialect returned None for server_version_info, the 
-      exclusion logic would raise an AttributeError.  
-      References: #4249 
+    + [bug] [tests] Fixed a bug in the test suite where if an
+      external dialect returned None for server_version_info, the
+      exclusion logic would raise an AttributeError.
+      References: #4249
 
 -------------------------------------------------------------------
 Sat Apr 21 16:35:48 UTC 2018 - arun@gmx.de
@@ -4475,20 +4482,20 @@ Mon Jan 11 09:35:59 UTC 2016 - bwiedemann@suse.com
 Sun Oct  4 09:32:44 UTC 2015 - tbechtold@suse.com
 
 - update to 1.0.8:
-  * see http://docs.sqlalchemy.org/en/latest/changelog/changelog_10.html#change-1.0.8 
+  * see http://docs.sqlalchemy.org/en/latest/changelog/changelog_10.html#change-1.0.8
 
 -------------------------------------------------------------------
 Mon Jun 15 17:19:19 UTC 2015 - bruno@ioda-net.ch
 
 - update to version 1.0.5:
-  * see http://docs.sqlalchemy.org/en/latest/changelog/changelog_10.html#change-1.0.5 
+  * see http://docs.sqlalchemy.org/en/latest/changelog/changelog_10.html#change-1.0.5
 
 -------------------------------------------------------------------
 Sun May 24 08:14:57 UTC 2015 - bruno@ioda-net.ch
 
 - update to 1.0.4:
   + see http://docs.sqlalchemy.org/en/latest/changelog/changelog_10.html#change-1.0.4
-  + see http://docs.sqlalchemy.org/en/latest/changelog/migration_10.html 
+  + see http://docs.sqlalchemy.org/en/latest/changelog/migration_10.html
 
 -------------------------------------------------------------------
 Wed Apr 22 12:46:32 UTC 2015 - tbechtold@suse.com
@@ -4511,7 +4518,7 @@ Fri Sep 12 07:58:16 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Jul  2 06:04:00 UTC 2014 - nevion@gmail.com
 
--update to 0.9.6: 
+-update to 0.9.6:
   + See http://docs.sqlalchemy.org/en/rel_0_9/changelog/changelog_09.html#change-0.9.6
 -Remove obsolete sqlalchemy-0.7-setup_test.patch
 -Add python-pytest dependency
@@ -4539,7 +4546,7 @@ Thu Oct 24 11:15:08 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Thu Aug  1 13:49:51 UTC 2013 - speilicke@suse.com
 
-- Add SQLAlchemy-0.7.10-SLES-drop-failing-tests.patch: Cheat with 
+- Add SQLAlchemy-0.7.10-SLES-drop-failing-tests.patch: Cheat with
   dropping tests to fix testsuite on SLE-11
 
 -------------------------------------------------------------------
@@ -4576,7 +4583,7 @@ Fri Mar  8 08:14:13 UTC 2013 - lars@linux-schulserver.de
     excluded from the setinputsizes() step to only include
     STRING and UNICODE; CLOB and NCLOB are removed.  This
     is to work around cx_oracle behavior which is broken
-    for the executemany() call.  In 0.8, this same change 
+    for the executemany() call.  In 0.8, this same change
     is applied however it is also configurable via the
     exclude_setinputsizes argument. [ticket:2561]
   * mysql
@@ -4630,14 +4637,14 @@ Fri Nov  2 17:53:22 UTC 2012 - termim@gmail.com
     before the "commit" completes. Subsequent calls to flush() will
     continue until the after_flush hooks stop adding new state. An
     "overflow" counter of 100 is also in place, in the event of a broken
-    after_flush() hook adding new content each time.  [ticket:2566] 
+    after_flush() hook adding new content each time.  [ticket:2566]
 
   *engine
 
   - [feature] Dramatic improvement in memory usage of the event system;
     instance-level collections are no longer created for a particular type of
     event until instance-level listeners are established for that
-    event. [ticket:2516] 
+    event. [ticket:2516]
 
   - [bug] Fixed bug whereby a disconnect detect + dispose that occurs when
     the QueuePool has threads waiting for connections would leave those
@@ -4655,21 +4662,21 @@ Fri Nov  2 17:53:22 UTC 2012 - termim@gmail.com
     which are fixed in 0.8. [ticket:2553]
 
   - [bug] Fixed the repr() of Enum to include the "name" and "native_enum"
-    flags. Helps Alembic autogenerate. 
+    flags. Helps Alembic autogenerate.
 
   *sql
 
   - [bug] Fixed the DropIndex construct to support an Index associated with
-    a Table in a remote schema. [ticket:2571] 
+    a Table in a remote schema. [ticket:2571]
 
   - [bug] Fixed bug in over() construct whereby passing an empty list for
     either partition_by or order_by, as opposed to None, would fail to
-    generate correctly. Courtesy Gunnlaugur Þór Briem. [ticket:2574] 
+    generate correctly. Courtesy Gunnlaugur Þór Briem. [ticket:2574]
 
   - [bug] Fixed CTE bug whereby positional bound parameters present in the
     CTEs themselves would corrupt the overall ordering of bound
     parameters. This primarily affected SQL Server as the platform with
-    positional binds + CTE support. [ticket:2521] 
+    positional binds + CTE support. [ticket:2521]
 
   - [bug] Fixed more un-intuitivenesses in CTEs which prevented referring
     to a CTE in a union of itself without it being aliased. CTEs now render
@@ -4679,20 +4686,20 @@ Fri Nov  2 17:53:22 UTC 2012 - termim@gmail.com
     object, such as a SELECT or a UNION ALL of that SELECT. We are somewhat
     loosening the usual link between object identity and lexical identity
     in this case. A true name conflict between two unrelated CTEs now
-    raises an error. 
+    raises an error.
 
   - [bug] quoting is applied to the column names inside the WITH RECURSIVE
     clause of a common table expression according to the quoting rules for
-    the originating Column. [ticket:2512] 
+    the originating Column. [ticket:2512]
 
   - [bug] Fixed regression introduced in 0.7.6 whereby the FROM list of a
     SELECT statement could be incorrect in certain "clone+replace"
-    scenarios. [ticket:2518] 
+    scenarios. [ticket:2518]
 
   - [bug] Fixed bug whereby usage of a UNION or similar inside of an
     embedded subquery would interfere with result-column targeting, in the
     case that a result-column had the same ultimate name as a name inside
-    the embedded UNION. [ticket:2552] 
+    the embedded UNION. [ticket:2552]
 
   - [bug] Fixed a regression since 0.6 regarding result-row targeting. It
     should be possible to use a select() statement with string based
@@ -4702,31 +4709,31 @@ Fri Nov  2 17:53:22 UTC 2012 - termim@gmail.com
     query(MyClass).from_statement(some_statement) works. At some point the
     specific case of using select(['id']), which is equivalent to
     select([literal_column('id')]), stopped working here, so this has been
-    re-instated and of course tested. [ticket:2558] 
+    re-instated and of course tested. [ticket:2558]
 
   - [bug] Added missing operators is_(), isnot() to the ColumnOperators
     base, so that these long-available operators are present as methods
-    like all the other operators. [ticket:2544] 
+    like all the other operators. [ticket:2544]
 
   *postgresql
 
   - [bug] Columns in reflected primary key constraint are now returned in
     the order in which the constraint itself defines them, rather than how
-    the table orders them. Courtesy Gunnlaugur Þór Briem.. [ticket:2531] 
+    the table orders them. Courtesy Gunnlaugur Þór Briem.. [ticket:2531]
 
   - [bug] Added 'terminating connection' to the list of messages we use to
     detect a disconnect with PG, which appears to be present in some
-    versions when the server is restarted. [ticket:2570] 
+    versions when the server is restarted. [ticket:2570]
 
   *mysql
 
   - [bug] Updated mysqlconnector interface to use updated "client flag" and
-    "charset" APIs, courtesy David McNelis. 
+    "charset" APIs, courtesy David McNelis.
 
   *sqlite
 
   - [feature] Added support for the localtimestamp() SQL function
-    implemented in SQLite, courtesy Richard Mitchell. 
+    implemented in SQLite, courtesy Richard Mitchell.
 
   - [bug] Adjusted a very old bugfix which attempted to work around a
     SQLite issue that itself was "fixed" as of sqlite 3.6.14, regarding
@@ -4735,84 +4742,84 @@ Fri Nov  2 17:53:22 UTC 2012 - termim@gmail.com
     actually in the name of a column or table, to as much a degree as
     possible; sqlite still doesn't return the correct result for
     foreign_key_list() if the target table actually has quotes surrounding
-    its name, as part of its name (i.e. """mytable"""). [ticket:2568] 
+    its name, as part of its name (i.e. """mytable"""). [ticket:2568]
 
   - [bug] Adjusted column default reflection code to convert non-string
     values to string, to accommodate old SQLite versions that don't deliver
-    default info as a string. [ticket:2265] 
+    default info as a string. [ticket:2265]
 
   *mssql
 
   - [bug] Fixed compiler bug whereby using a correlated subquery within an
     ORDER BY would fail to render correctly if the stament also used
     LIMIT/OFFSET, due to mis-rendering within the ROW_NUMBER() OVER
-    clause. Fix courtesy sayap [ticket:2538] 
+    clause. Fix courtesy sayap [ticket:2538]
 
   - [bug] Fixed compiler bug whereby a given select() would be modified if
     it had an "offset" attribute, causing the construct to not compile
-    correctly a second time. [ticket:2545] 
+    correctly a second time. [ticket:2545]
 
   - [bug] Fixed bug where reflection of primary key constraint would double
-    up columns if the same constraint/table existed in multiple schemas. 
+    up columns if the same constraint/table existed in multiple schemas.
 
 - update to 0.7.8:
 
   *orm
 
   - [feature] The 'objects' argument to flush() is no longer deprecated, as
-    some valid use cases have been identified. 
+    some valid use cases have been identified.
 
   - [bug] Fixed bug whereby subqueryload() from a polymorphic mapping to a
     target would incur a new invocation of the query for each distinct
-    class encountered in the polymorphic result. [ticket:2480] 
+    class encountered in the polymorphic result. [ticket:2480]
 
   - [bug] Fixed bug in declarative whereby the precedence of columns in a
     joined-table, composite column (typically for id) would fail to be
     correct if the columns contained names distinct from their attribute
     names. This would cause things like primaryjoin conditions made against
     the entity attributes to be incorrect. Related to as this was supposed
-    to be part of that, this is. [ticket:2491, 1892] 
+    to be part of that, this is. [ticket:2491, 1892]
 
   - [bug] Fixed identity_key() function which was not accepting a scalar
-    argument for the identity. . [ticket:2508] 
+    argument for the identity. . [ticket:2508]
 
   - [bug] Fixed bug whereby populate_existing option would not propagate to
-    subquery eager loaders. . [ticket:2497] 
+    subquery eager loaders. . [ticket:2497]
 
   *engine
 
   - [bug] Fixed memory leak in C version of result proxy whereby DBAPIs
     which don't deliver pure Python tuples for result rows would fail to
     decrement refcounts correctly. The most prominently affected DBAPI is
-    pyodbc. [ticket:2489] 
+    pyodbc. [ticket:2489]
 
   - [bug] Fixed bug affecting Py3K whereby string positional parameters
     passed to engine/connection execute() would fail to be interpreted
-    correctly, due to __iter__ being present on Py3K string.. [ticket:2503] 
+    correctly, due to __iter__ being present on Py3K string.. [ticket:2503]
 
   *sql
 
   - [bug] added BIGINT to types.__all__, BIGINT, BINARY, VARBINARY to
     sqlalchemy module namespace, plus test to ensure this breakage doesn't
-    occur again. [ticket:2499] 
+    occur again. [ticket:2499]
 
   - [bug] Repaired common table expression rendering to function correctly
     when the SELECT statement contains UNION or other compound expressions,
-    courtesy btbuilder. [ticket:2490] 
+    courtesy btbuilder. [ticket:2490]
 
   - [bug] Fixed bug whereby append_column() wouldn't function correctly on
     a cloned select() construct, courtesy Gunnlaugur Þór
-    Briem. [ticket:2482] 
+    Briem. [ticket:2482]
 
   *postgresql
 
   - [bug] removed unnecessary table clause when reflecting enums,. Courtesy
-    Gunnlaugur Þór Briem. [ticket:2510] 
+    Gunnlaugur Þór Briem. [ticket:2510]
 
   *mysql
 
   - [feature] Added a new dialect for Google App Engine. Courtesy Richie
-    Foreman. [ticket:2484] 
+    Foreman. [ticket:2484]
 
   *oracle
 
@@ -4821,103 +4828,103 @@ Fri Nov  2 17:53:22 UTC 2012 - termim@gmail.com
 -------------------------------------------------------------------
 Wed May 23 06:44:12 UTC 2012 - highwaystar.ru@gmail.com
 
-- python3 package added 
+- python3 package added
 - removed BuildRequires update-desktop-files, because there is no
   desktop files in package
-- minor spec improvement 
+- minor spec improvement
 
 -------------------------------------------------------------------
 Sun May  6 12:22:59 UTC 2012 - lars@linux-schulserver.de
 
 - update to 0.7.7:
   * orm
-  - [bug] Fixed issue in unit of work whereby setting a non-None 
-    self-referential many-to-one relationship to None would fail 
+  - [bug] Fixed issue in unit of work whereby setting a non-None
+    self-referential many-to-one relationship to None would fail
     to persist the change if the former value was not already loaded.
     [ticket:2477].
 
-  - [feature] Added prefix_with() method to Query, calls upon 
+  - [feature] Added prefix_with() method to Query, calls upon
     select().prefix_with() to allow placement of MySQL SELECT
     directives in statements.  Courtesy Diana Clarke [ticket:2443]
 
-  - [bug] Fixed bug in 0.7.6 introduced by [ticket:2409] whereby 
+  - [bug] Fixed bug in 0.7.6 introduced by [ticket:2409] whereby
     column_mapped_collection used against columns that were mapped as
     joins or other indirect selectables would fail to function.
 
-  - [feature] Added new flag to @validates include_removes. When True, 
-    collection remove and attribute del events will also be sent to 
+  - [feature] Added new flag to @validates include_removes. When True,
+    collection remove and attribute del events will also be sent to
     the validation function, which accepts an additional argument
     "is_remove" when this flag is used.
 
-  - [bug] Fixed bug whereby polymorphic_on column that's not otherwise 
-    mapped on the class would be incorrectly included in a merge() 
+  - [bug] Fixed bug whereby polymorphic_on column that's not otherwise
+    mapped on the class would be incorrectly included in a merge()
     operation, raising an error. [ticket:2449]
 
-  - [bug] Fixed bug in expression annotation mechanics which could 
+  - [bug] Fixed bug in expression annotation mechanics which could
     lead to incorrect rendering of SELECT statements with aliases
     and joins, particularly when using column_property(). [ticket:2453]
 
-  - [bug] Fixed bug which would prevent OrderingList from being 
+  - [bug] Fixed bug which would prevent OrderingList from being
     pickleable [ticket:2454].  Courtesy Jeff Dairiki
 
-  - [bug] Fixed bug in relationship comparisons whereby calling 
-    unimplemented methods like SomeClass.somerelationship.like() 
+  - [bug] Fixed bug in relationship comparisons whereby calling
+    unimplemented methods like SomeClass.somerelationship.like()
     would produce a recursion overflow, instead of NotImplementedError.
 
   * sql
-  - [bug] Removed warning when Index is created with no columns;  
-    while this might not be what the user intended, it is a valid use case 
+  - [bug] Removed warning when Index is created with no columns;
+    while this might not be what the user intended, it is a valid use case
     as an Index could be a placeholder for just an index of a certain name.
 
-  - [feature] Added new connection event dbapi_error(). Is called for 
-    all DBAPI-level errors passing the original DBAPI exception before 
-    SQLAlchemy modifies the state of the cursor. "with engine.begin()", 
-    the newly acquired Connection is closed explicitly before propagating 
+  - [feature] Added new connection event dbapi_error(). Is called for
+    all DBAPI-level errors passing the original DBAPI exception before
+    SQLAlchemy modifies the state of the cursor. "with engine.begin()",
+    the newly acquired Connection is closed explicitly before propagating
     the exception onward normally.
 
   - [bug] Add BINARY, VARBINARY to types.__all__, [ticket:2474]
 
   * mssql
-  - [feature] Added interim create_engine flag supports_unicode_binds 
-    to PyODBC dialect, to force whether or not the dialect passes 
+  - [feature] Added interim create_engine flag supports_unicode_binds
+    to PyODBC dialect, to force whether or not the dialect passes
     Python unicode literals to PyODBC or not.
 
-  - [bug] Repaired the use_scope_identity create_engine() flag when 
-    using the pyodbc dialect. Previously this flag would be ignored if 
-    set to False.  When set to False, you'll get "SELECT @@identity" 
-    after each INSERT to get at the last inserted ID, for those tables 
+  - [bug] Repaired the use_scope_identity create_engine() flag when
+    using the pyodbc dialect. Previously this flag would be ignored if
+    set to False.  When set to False, you'll get "SELECT @@identity"
+    after each INSERT to get at the last inserted ID, for those tables
     which have "implicit_returning" set to False.
- 
-  - [bug] UPDATE..FROM syntax with SQL Server requires that the updated 
-    table be present in the FROM clause when an alias of that table is 
+
+  - [bug] UPDATE..FROM syntax with SQL Server requires that the updated
+    table be present in the FROM clause when an alias of that table is
     also present in the FROM clause. The updated table is now always present
     in the FROM, when FROM is present in the first place.  Courtesy sayap.
     [ticket:2468]
 
   * postgresql
-  - [feature] Added new for_update/with_lockmode() options for Postgresql: 
+  - [feature] Added new for_update/with_lockmode() options for Postgresql:
     for_update="read"/ with_lockmode("read"), for_update="read_nowait"/
-    with_lockmode("read_nowait"). These emit "FOR SHARE" and "FOR SHARE 
+    with_lockmode("read_nowait"). These emit "FOR SHARE" and "FOR SHARE
     NOWAIT", respectively.  Courtesy Diana Clarke [ticket:2445]
 
   - [bug] removed unnecessary table clause when reflecting domains, [ticket:2473]
 
   * mysql
-  - [bug] Fixed bug whereby column name inside of "KEY" clause for autoincrement 
-    composite column with InnoDB would double quote a name that's a reserved 
+  - [bug] Fixed bug whereby column name inside of "KEY" clause for autoincrement
+    composite column with InnoDB would double quote a name that's a reserved
     word.  Courtesy Jeff Dairiki. [ticket:2460]
 
-  - [bug] Fixed bug whereby get_view_names() for "information_schema" schema 
+  - [bug] Fixed bug whereby get_view_names() for "information_schema" schema
     would fail to retrieve views marked as "SYSTEM VIEW". courtesy Matthew Turland.
 
-  - [bug] Fixed bug whereby if cast() is used on a SQL expression whose type 
-    is not supported by cast() and therefore CAST isn't rendered by the 
-    dialect, the order of evaluation could change if the casted expression 
+  - [bug] Fixed bug whereby if cast() is used on a SQL expression whose type
+    is not supported by cast() and therefore CAST isn't rendered by the
+    dialect, the order of evaluation could change if the casted expression
     required that it be grouped; grouping is now applied to those expressions.
 
   * sqlite
-  - [feature] Added SQLite execution option "sqlite_raw_colnames=True", will 
-    bypass attempts to remove "." from column names returned by SQLite 
+  - [feature] Added SQLite execution option "sqlite_raw_colnames=True", will
+    bypass attempts to remove "." from column names returned by SQLite
     cursor.description. [ticket:2475]
 
 -------------------------------------------------------------------
@@ -4927,7 +4934,7 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
  * orm
   - [bug] Fixed event registration bug
     which would primarily show up as
-    events not being registered with 
+    events not being registered with
     sessionmaker() instances created
     after the event was associated
     with the Session class.  [ticket:2424]
@@ -4959,7 +4966,7 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     [ticket:2403]
 
   - [bug] Fixed bug whereby objects using
-    attribute_mapped_collection or 
+    attribute_mapped_collection or
     column_mapped_collection could not be
     pickled.  [ticket:2409]
 
@@ -4967,13 +4974,13 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     would not get the appropriate collection
     instrumentation if it were only used
     in a custom subclass that used
-    @collection.internally_instrumented.  
+    @collection.internally_instrumented.
     [ticket:2406]
 
   - [bug] Fixed bug whereby SQL adaption mechanics
     would fail in a very nested scenario involving
     joined-inheritance, joinedload(), limit(), and a
-    derived function in the columns clause.  
+    derived function in the columns clause.
     [ticket:2419]
 
   - [bug] Fixed the repr() for CascadeOptions to
@@ -4982,11 +4989,11 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     [ticket:2417]
 
   - [feature] Added the ability to query for
-    Table-bound column names when using 
-    query(sometable).filter_by(colname=value).  
+    Table-bound column names when using
+    query(sometable).filter_by(colname=value).
     [ticket:2400]
 
-  - [bug] Improved the "declarative reflection" 
+  - [bug] Improved the "declarative reflection"
     example to support single-table inheritance,
     multiple calls to prepare(), tables that
     are present in alternate schemas,
@@ -4994,8 +5001,8 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     as reflected.
 
   - [bug] Scaled back the test applied within
-    flush() to check for UPDATE against partially 
-    NULL PK within one table to only actually 
+    flush() to check for UPDATE against partially
+    NULL PK within one table to only actually
     happen if there's really an UPDATE to occur.
     [ticket:2390]
 
@@ -5013,7 +5020,7 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     were called.  [ticket:2427]
 
   - [bug] Fixed issue whereby attribute-based
-    column access on a row would raise 
+    column access on a row would raise
     AttributeError with non-C version,
     NoSuchColumnError with C version.  Now
     raises AttributeError in both cases.
@@ -5027,10 +5034,10 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     [ticket:1859]
 
   - [bug] Added support for using the .key
-    of a Column as a string identifier in a 
+    of a Column as a string identifier in a
     result set row.   The .key is currently
     listed as an "alternate" name for a column,
-    and is superseded by the name of a column 
+    and is superseded by the name of a column
     which has that key value as its regular name.
     For the next major release
     of SQLAlchemy we may reverse this precedence
@@ -5047,7 +5054,7 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     is applied to columns in SELECT statements
     allows "truncated" labels, that is label names
     that are generated in Python which exceed
-    the maximum identifier length (note this is 
+    the maximum identifier length (note this is
     configurable via label_length on create_engine()),
     to be properly referenced when rendered inside
     of a subquery, as well as to be present
@@ -5076,17 +5083,17 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     just if the param list is blank, as otherwise
     this would produce inconsistent behavior
     of SQL expressions that normally escape percent
-    signs (and while compiling, can't know ahead of 
-    time if parameters will be present in 
+    signs (and while compiling, can't know ahead of
+    time if parameters will be present in
     some cases).  [ticket:2407]
 
   - [bug] Added execution_options() call to
-    MockConnection (i.e., that used with 
+    MockConnection (i.e., that used with
     strategy="mock") which acts as a pass through
     for arguments.
 
   - [feature] Added pool_reset_on_return argument
-    to create_engine, allows control over 
+    to create_engine, allows control over
     "connection return" behavior.  Also added
     new arguments 'rollback', 'commit', None
     to pool.reset_on_return to allow more control
@@ -5116,7 +5123,7 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     [ticket:2432]
 
  * mssql
-  - [feature] Added support for MSSQL INSERT, 
+  - [feature] Added support for MSSQL INSERT,
     UPDATE, and DELETE table hints, using
     new with_hint() method on UpdateBase.
     [ticket:2430]
@@ -5125,7 +5132,7 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
   - [feature] Added support for MySQL index and
     primary key constraint types
     (i.e. USING) via new mysql_using parameter
-    to Index and PrimaryKeyConstraint, 
+    to Index and PrimaryKeyConstraint,
     courtesy Diana Clarke.  [ticket:2386]
 
   - [feature] Added support for the "isolation_level"
@@ -5136,10 +5143,10 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
   - [feature] Added a new create_engine() flag
     coerce_to_decimal=False, disables the precision
     numeric handling which can add lots of overhead
-    by converting all numeric values to 
+    by converting all numeric values to
     Decimal.  [ticket:2399]
 
-  - [bug] Added missing compilation support for 
+  - [bug] Added missing compilation support for
     LONG [ticket:2401]
 
   - [bug] Added 'LEVEL' to the list of reserved
@@ -5150,7 +5157,7 @@ Mon Apr 30 09:13:02 UTC 2012 - cfarrell@suse.com
     in Beaker example to pull bindparams from the
     fully compiled statement, as a quick means
     to get everything including subqueries in the
-    columns clause, etc. 
+    columns clause, etc.
 
 -------------------------------------------------------------------
 Wed Feb 22 12:36:45 UTC 2012 - saschpe@suse.de

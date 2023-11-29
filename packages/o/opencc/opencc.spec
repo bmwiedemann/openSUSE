@@ -1,7 +1,7 @@
 #
 # spec file for package opencc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           opencc
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Open Chinese Convert
 License:        Apache-2.0
 Group:          System/I18n/Chinese
 URL:            https://github.com/BYVoid/OpenCC
 Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-ver.%{version}.tar.gz
-Patch1:         fix-soversion.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -74,7 +73,6 @@ This package provides development headers for OpenCC.
 
 %prep
 %setup -q -n OpenCC-ver.%{version}
-%patch1 -p1
 # call python3 with path
 sed -i \
     -e 's:BIN python:BIN /usr/bin/python3:g' \
@@ -109,6 +107,7 @@ find %{buildroot} -name "*.a" -delete -print
 %files devel
 %{_includedir}/%{name}/
 %{_libdir}/libopencc.so
+%{_libdir}/cmake/opencc
 %{_libdir}/pkgconfig/opencc.pc
 
 %changelog

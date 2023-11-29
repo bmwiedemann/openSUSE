@@ -67,4 +67,38 @@
     <comment></comment>
     <requestid>1085448</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5573345c32ca1a2fcac57c85c393476d</srcmd5>
+    <version>0.11.3</version>
+    <time>1701121495</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.3:
+  * Add PEP 561 `py.typed` marker file.
+  * Re-organize unit tests.
+  * Add a warning about the usage of `.new_instances()` method in
+    the documentation.
+  * Run tests with testtools, subunit, TeamCity, and doctest
+    testrunners using tox.
+  * Test flexmock API examples using doctest.
+  * Re-add Sphinx support for generating man pages.
+  * Fix 404 page not loading CSS and Javascript resources in
+    documentation.
+  * Add Python 3.8, 3.9, 3.10, and 3.11 support.
+  * Add type annotations.
+  * **BREAKING CHANGE**: Flexmock needs to be imported explicitly
+    using `from flexmock import flexmock`.
+  * Many error messages have been improved.
+  * Drop Python 2.7, 3.4, 3.5 support.
+  * Drop Pytest 4.x support.
+  * **BREAKING CHANGE**: Removed support for calling `once`,
+    `twice`, `never`, and `mock` methods without parentheses.
+  * Fix `should_call` is broken if called on a fake object.
+  * Fix `and_raise` allows invalid arguments for an exception.
+  * Fix AttributeError raised when mocking a proxied object.
+  * Fix flexmock not mocking methods properly on derived classes.
+
+  * Fix with_args not working built-in functions.
+- Initial package</comment>
+    <requestid>1129215</requestid>
+  </revision>
 </revisionlist>

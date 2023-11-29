@@ -1,10 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 26 13:52:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.3:
+  * Fixed a bug introduced in v1.14.0 where non-ASCII characters
+    stopped being accepted in image names and descriptions.
+    This bug only affected UNIX-like systems that use `signed char`
+    e.g. x86 Linux systems.
+  * Fixed a bug introduced in v1.14.0 where a crash would
+    sometimes occur
+  * Fixed an issue where some WIM images written by wimlib
+    weren't accepted by some MS software versions.
+  * Commands passed to wimupdate on standard input are now
+    interpreted as UTF-8 or UTF-16LE (autodetected), just like
+    wimcapture config files and wimextract path list files.
+
+-------------------------------------------------------------------
 Mon Jun  5 05:46:25 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 1.14.1:
   * fuse3 support
   * wimupdate now supports the --ref option for updating delta WIM
-  * better default behavior when converting to and from solid 
+  * better default behavior when converting to and from solid
     archives: wimoptimize --solid, and wimoptimize --compress=LZX
 
 -------------------------------------------------------------------
@@ -50,7 +66,7 @@ Thu Nov 26 19:01:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.13.3:
   * windows specific fixes
-  * clarified license text 
+  * clarified license text
 
 -------------------------------------------------------------------
 Sun Aug 16 11:43:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -71,9 +87,9 @@ Thu Jul 18 06:27:58 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 -------------------------------------------------------------------
 Fri May 31 09:55:14 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Update to v1.13.1 stable 
+- Update to v1.13.1 stable
 
 -------------------------------------------------------------------
 Wed Apr 24 12:49:22 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Initial packaging for openSUSE 
+- Initial packaging for openSUSE

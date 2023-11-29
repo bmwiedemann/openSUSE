@@ -19,7 +19,7 @@
 %define _lto_cflags %nil
 %define lname libfolly-v2023_10_30_00
 Name:           folly
-Version:        2023.10.30.00
+Version:        2023.11.20.00
 Release:        0
 Summary:        A C++ utility library
 License:        MIT

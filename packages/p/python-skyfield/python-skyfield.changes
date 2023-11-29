@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 24 09:46:49 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.46:
+  * The :func:`~skyfield.almanac.oppositions_conjunctions()` routine
+    now measures ecliptic longitude using the ecliptic of each
+    specific date, rather than always using the J2000 ecliptic,
+    which should improve its accuracy by several seconds.
+  * Skyfield’s internal table for the ∆T Earth orientation parameter
+    has been updated, so that its predictions now extend to 2024-04-13.
+  * Bugfix: Skyfield was giving values several kilometers off
+    when computing the elevation above ground level of a target that
+    was positioned directly above the Earth’s north or south pole.
+  * Bugfix: the function skyfield.positionlib.ICRF.is_behind_earth() 
+    method was incorrectly returning True if the Earth was on the
+    line that joins the two satellites, but over on the far side of
+    the other satellite where it wasn’t really in the way.
+  * The method skyfield.positionlib.ICRF.altaz() now lives on the
+    main position class instead of in two specific subclasses.
+    If the user mistakenly tries to call .altaz() on an instance
+    of the skyfield.positionlib.Astrometric position
+    subclass - which previously lacked the method - then a friendly
+    exception is raised explaining their error.
+
+-------------------------------------------------------------------
 Sun Feb 19 20:45:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Don't build for python311: gh#brandon-rhodes/assay#15

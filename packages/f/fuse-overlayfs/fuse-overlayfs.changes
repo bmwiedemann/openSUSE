@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 21 16:09:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13:
+  * fix a performance issue when dealing with big directories.
+
+-------------------------------------------------------------------
 Sun Jun 11 20:34:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12:

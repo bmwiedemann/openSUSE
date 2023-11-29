@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           python-gi-docgen
-Version:        2023.1
+Version:        2023.3
 Release:        0
 Summary:        A documentation generator for GObject-based libraries
 # For reference, as some scripts are known to reorder things:
@@ -39,15 +39,14 @@ BuildRequires:  python3-Jinja2
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-MarkupSafe
 BuildRequires:  python3-Pygments
+BuildRequires:  python3-packaging
 BuildRequires:  python3-typogrify
-# As of version 2023.1, gi-docgen uses tomlib (which is available in the
-# standard library) for Python 3.11+ and tomli/toml for older releases.
-BuildRequires:  (python3-tomli if ((python310-base with python3-base) or (python39-base with python3-base)))
 
 Requires:       python3-Jinja2
 Requires:       python3-Markdown > 3.2.0
 Requires:       python3-MarkupSafe
 Requires:       python3-Pygments
+Requires:       python3-packaging
 Requires:       python3-typogrify
 Requires:       (python3-tomli if ((python310-base with python3-base) or (python39-base with python3-base)))
 

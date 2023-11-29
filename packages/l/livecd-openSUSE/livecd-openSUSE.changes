@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 29 11:17:40 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop the nvidia/gsp firmware images: they make up > 70MB.
+
+-------------------------------------------------------------------
+Thu Nov 23 09:22:49 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add kernel modules and some qcom firmware for X13s - boo#1217315
+
+-------------------------------------------------------------------
 Tue Nov  7 09:36:40 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Ignore xorg-x11-fonts-converted

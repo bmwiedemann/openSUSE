@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 16 10:56:32 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- virtme-ng version: 1.17
+  * Fixes Leap build
+
+-------------------------------------------------------------------
 Fri Apr 21 10:21:46 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update project URL: https://github.com/arighi/virtme

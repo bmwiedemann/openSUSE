@@ -71,4 +71,12 @@
     <comment>out-of-range zip64 regression fix</comment>
     <requestid>1106059</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5c375c0f4454f6911853804f76ee61d</srcmd5>
+    <version>17.0.9.0</version>
+    <time>1700772132</time>
+    <user>anag+factory</user>
+    <comment>Security fixes</comment>
+    <requestid>1128325</requestid>
+  </revision>
 </revisionlist>

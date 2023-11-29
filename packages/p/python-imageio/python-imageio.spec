@@ -16,11 +16,10 @@
 #
 
 
-
 %bcond_with test_extras
 %{?sle15_python_module_pythons}
 Name:           python-imageio
-Version:        2.31.1
+Version:        2.33.0
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause

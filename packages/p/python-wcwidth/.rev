@@ -169,4 +169,34 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
     <comment>- use actual package name for importlib-metadata requires</comment>
     <requestid>1102818</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6751354a45338d8ef0721e2602d57c1d</srcmd5>
+    <version>0.2.12</version>
+    <time>1701206290</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.12:
+  * Include tests files in the source distribution (PR #98, PR
+  * **Bugfix** accounting of some kinds of emoji sequences using
+    U+FE0F
+  * Variation Selector 16 (PR #97).
+  * **Bugfix** zero-width characters used in Emoji ZWJ sequences,
+    Balinese, Jamo, Devanagari, Tamil, Kannada and others (PR #91).
+  * Include requirements files in the source distibution (PR
+    #83).
+  * Update Unicode version to 15.1.0
+  * Add testing support for Python 3.12
+  * Update README
+  * Update requirements
+  * Enable GitHub Actions CI
+  * Prepare release 0.2.7
+  * Update tox envs in README
+  * Include bin, docs, and tox.ini in the source distribution
+
+  multibuild.
+  * Enhancement: Unicode version may be selected by exporting the
+    Environment variable UNICODE_VERSION, such as 13.0, or 6.3.0.
+  * Updated tables for all Unicode Specifications with files published
+- Convert to multibuild to break a self-requires loop.</comment>
+    <requestid>1129072</requestid>
+  </revision>
 </revisionlist>

@@ -26,12 +26,12 @@ Summary:        Compile time regular expressions library
 License:        Apache-2.0
 URL:            https://github.com/hanickadot/compile-time-regular-expressions/
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%version.tar.gz
+# https://github.com/hanickadot/compile-time-regular-expressions/issues/253
+Patch1:         unsigned-char.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  pkgconfig
 BuildArch:      noarch
-# https://github.com/hanickadot/compile-time-regular-expressions/issues/253
-ExcludeArch:    aarch64 %{arm}
 
 %description
 A compile-time regular expressions with support for
@@ -46,7 +46,7 @@ This package provides the header files and other development files needed for
 developing applications against ctre.
 
 %prep
-%autosetup -n compile-time-regular-expressions-%{version}
+%autosetup -p1 -n compile-time-regular-expressions-%{version}
 
 %build
 %cmake \

@@ -85,4 +85,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767184 from dimstar)</comment>
     <requestid>767447</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ce01cc40e47faadbfed13a9e84d64b17</srcmd5>
+    <version>0.4.4</version>
+    <time>1701206418</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129595</requestid>
+  </revision>
 </revisionlist>

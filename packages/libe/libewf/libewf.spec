@@ -33,9 +33,7 @@ Source20:       http://downloads.sf.net/libewf/mount_ewf-20090113.py
 Source21:       Expert_Witness_Compression_Format_EWF.pdf
 Source23:       Expert_Witness_Compression_Format_2_EWF2.pdf
 Patch1:         remove_date_time_macros.patch
-Patch2:         system-libs.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  autoconf >= 2.71
 BuildRequires:  bison
 BuildRequires:  c_compiler
 BuildRequires:  flex
@@ -71,6 +69,7 @@ BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(uuid) >= 2.20
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libewf is a library for support of the Expert Witness Compression
@@ -125,10 +124,6 @@ applications that want to make use of %name.
 cp -av %_sourcedir/*.pdf .
 
 %build
-#export CFLAGS="%optflags -fno-strict-aliasing"
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
 # see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym

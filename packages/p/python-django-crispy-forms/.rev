@@ -139,4 +139,20 @@
   - Convert to multibuild because of the template packs</comment>
     <requestid>1099525</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>84fb7d8b9cae0329a8fe8e29e5fefded</srcmd5>
+    <version>2.1</version>
+    <time>1701023823</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1:
+  * Added support for Django 5.0.
+  * Dropped support for Django 3.2, 4.0 and 4.1.
+  * Added support for Python 3.12.
+  * Dropped support for Python 3.7.
+  * See the 2.1 Milestone for the full change
+
+  * Removed uni-form template pack. Uni-Form specific classes previously added to every template pack
+  * Radio and Checkbox now respect the field's disabled attribute when using the</comment>
+    <requestid>1128727</requestid>
+  </revision>
 </revisionlist>

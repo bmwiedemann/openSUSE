@@ -71,8 +71,8 @@ BuildRequires:  ghc-criterion-devel
 BuildRequires:  ghc-criterion-prof
 BuildRequires:  ghc-crypto-api-devel
 BuildRequires:  ghc-crypto-api-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-dbus-devel

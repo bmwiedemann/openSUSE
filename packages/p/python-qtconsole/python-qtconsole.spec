@@ -22,14 +22,14 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.4.4
+Version:        5.5.1
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/qtconsole
 Source0:        https://files.pythonhosted.org/packages/source/q/qtconsole/qtconsole-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +46,6 @@ Requires:       (python-qt5 or python-pyside2 or python-PyQt6 or python-pyside6)
 Requires:       python-Pygments
 Requires:       python-QtPy >= 2.4.0
 Requires:       python-ipykernel >= 4.1
-Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
 Requires:       python-packaging
@@ -73,7 +72,6 @@ BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module QtPy >= 2.4.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.1}
-BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 4.1}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-qt}

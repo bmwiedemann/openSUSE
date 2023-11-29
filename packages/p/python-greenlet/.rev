@@ -464,4 +464,14 @@
 </comment>
     <requestid>1115111</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1f30408fda9f187a5b3c8b5cd276b221</srcmd5>
+    <version>3.0.1</version>
+    <time>1701206315</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.1:
+  * Fix a potential crash on Python 3.8 at interpreter shutdown
+    time.  This was a regression from earlier 3.0.x releases.</comment>
+    <requestid>1129185</requestid>
+  </revision>
 </revisionlist>

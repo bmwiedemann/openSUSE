@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubesec
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        Security risk analysis for Kubernetes resources
 License:        Apache-2.0

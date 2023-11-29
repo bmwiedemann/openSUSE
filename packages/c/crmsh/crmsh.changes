@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 23 09:26:50 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231123.50296e9e:
+  * Fix: bootstrap: add informative logging for generating new ssh keypairs
+  * Fix: forward ssh-agent for `crm report __slave`
+  * Dev: behave: adjust test cases for non-root ssh-agent scenoria
+  * Fix: sh: raise AuthorizationError and generate diagnose messages when ClusterShell fails with 255
+  * Dev: bootstrap: allow to authenticate interactively in `crm cluster join --use-ssh-agent`
+  * Dev: ssh-agent: add informative logging for adding keys to authorized_keys
+  * Dev: ssh-agent: add diagnose messages
+  * Dev: behave: adjust test cases for better coverage of `crm cluster init -N`
+  * Dev: unittest: adjust unit tests for previous changes
+  * Dev: behave: adjust functional tests for previous changes
+  * Dev: bootstrap: implement ssh-agent support for geo cluster (jsc#PED-5774)
+  * Dev: bootstrap: refine key swap for user `hacluster`
+  * Dev: bootstrap: implement ssh-agent support for qdevice (jsc#PED-5774)
+  * Dev: bootstrap: implement ssh-agent support (jsc#PED-5774)
+
+-------------------------------------------------------------------
+Thu Nov 23 02:30:43 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231123.373ddb9d:
+  * Dev: regression.sh: Show error messages when test fails
+
+-------------------------------------------------------------------
 Mon Nov 13 08:05:37 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.6.0+20231113.d7b4639a:

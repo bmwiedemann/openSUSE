@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov 25 14:12:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.2:
+  * Unintentional memory usage regression when using large
+    payload that match several encoding (#376)
+  * Regression on some detection case showcased in the
+    documentation (#371)
+  * Noise (md) probe that identify malformed arabic
+    representation due to the presence of letters in isolated
+    form
+  * Optional mypyc compilation upgraded to version 1.6.1 for
+    Python >= 3.8
+  * Improved the general detection reliability based on reports
+    from the community
+
+-------------------------------------------------------------------
+Mon Oct  2 09:07:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Allow to execute the CLI (e.g. normalizer) through `python -m
+    charset_normalizer.cli` or `python -m charset_normalizer`
+  * Support for 9 forgotten encoding that are supported by Python
+    but unlisted in `encoding.aliases` as they have no alias
+  * Optional mypyc compilation upgraded to version 1.5.1 for
+    Python >= 3.7
+  * Unable to properly sort CharsetMatch when both chaos/noise
+    and coherence were close due to an unreachable condition in
+    \_\_lt\_\_ (#350)
+
+-------------------------------------------------------------------
 Tue Jul 11 13:22:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:
@@ -30,7 +60,7 @@ Sun Mar 26 20:04:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Dec  3 04:13:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.0.1 
+- Update to 3.0.1
   Fixed
   Multi-bytes cutter/chunk generator did not always cut correctly (PR #233)
   Changed
@@ -39,7 +69,7 @@ Sat Dec  3 04:13:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Thu Oct 27 22:18:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.0.0 
+- Update to 3.0.0
   Added
   * Extend the capability of explain=True when cp_isolation contains at most two entries (min one), will log in details of the Mess-detector results
     Support for alternative language frequency set in charset_normalizer.assets.FREQUENCIES
@@ -93,7 +123,7 @@ Tue Jul 19 11:38:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Tue Feb 15 08:42:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.12:
-  * ASCII miss-detection on rare cases (PR #170) 
+  * ASCII miss-detection on rare cases (PR #170)
   * Explicit support for Python 3.11 (PR #164)
   * The logging behavior have been completely reviewed, now using only TRACE
     and DEBUG levels
@@ -112,7 +142,7 @@ Mon Dec  6 20:08:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 2.0.9:
   * Moderating the logging impact (since 2.0.8) for specific
     environments
-  * Wrong logging level applied when setting kwarg `explain` to True 
+  * Wrong logging level applied when setting kwarg `explain` to True
 
 -------------------------------------------------------------------
 Mon Nov 29 11:14:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -135,7 +165,7 @@ Mon Nov 29 11:14:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Nov 26 11:35:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- require lower-case name instead of breaking build 
+- require lower-case name instead of breaking build
 
 -------------------------------------------------------------------
 Thu Nov 25 22:26:52 UTC 2021 - Matej Cepl <mcepl@suse.com>

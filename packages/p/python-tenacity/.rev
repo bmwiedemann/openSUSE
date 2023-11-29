@@ -195,4 +195,22 @@
   * CI conversion to GitHub actions</comment>
     <requestid>1090091</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f8022d00cbab6d822e54d087fef5d7c1</srcmd5>
+    <version>8.2.3</version>
+    <time>1701121484</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.3:
+  * remove support for python 3.6
+  * Fix tests for typeguard 3.x
+  * Add support for async sleep functions in tenacity.retry
+    annotation
+
+  * fix: docstring for wait_exponential_jitter
+  * fix: remove __iter__ from AsyncRetring
+  * CI conversion to GitHub actions
+- Update to version 8.0.1
+- update to 3.3.0:</comment>
+    <requestid>1129194</requestid>
+  </revision>
 </revisionlist>

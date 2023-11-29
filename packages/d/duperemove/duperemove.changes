@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 26 18:28:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * file_scan: satisfy clang CFI
+  * file_scan: walk_dir: improve rootfs support
+  * dbfile: get_duplicate_files: exclude inlined files before
+    looking for duplicates
+  * filerec: fiemap_scan_extent: fix typo: we must check the
+    return from get_extent
+
+-------------------------------------------------------------------
 Sun Nov 19 09:04:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14:

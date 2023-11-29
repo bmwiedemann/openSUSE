@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 30 10:44:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hscolour to version 1.25.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:19 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

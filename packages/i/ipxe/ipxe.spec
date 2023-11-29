@@ -32,6 +32,7 @@ Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
 Patch0:         syslinux-mtools.patch
+Patch1:         https://github.com/ipxe/ipxe/pull/1082.patch
 BuildRequires:  binutils-devel
 # Do not build i586 for Leap/SLE: no such port available
 %ifarch i586

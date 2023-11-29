@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 25 13:08:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.7.2.3.0:
+  * When used with Coconut, requires v3.0.4+.
+  * Various fixes for incremental parsing mode.
+  * Includes a bunch of internal performance improvements and
+    modifications to support Coconut performance features.
+  * Fix incremental parsing with common suffixes.
+  * Incremental parsing now produces performance improvements for
+    parses with common suffixes, not just common prefixes.
+
+-------------------------------------------------------------------
 Wed Jul 19 07:44:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.7.2.1.2:

@@ -18,26 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anyio
-Version:        3.6.2
+Version:        3.7.1
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support trio >= 0.22 just enough for asyncclick
-Patch0:         support-trio-0.22.patch
-# PATCH-FIX-UPSTREAM Based on gh#agronholm/anyio#553
-Patch1:         fix-failing-tls-tests.patch
 # PATCH-FIX-UPSTREAM see gh#agronholm/anyio#626
 Patch2:         tests-test_fileio.py-don-t-follow-symlinks-in-dev.patch
 BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module idna >= 2.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sniffio >= 1.1}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 4.0}
@@ -69,10 +67,10 @@ against it to run unmodified on asyncio, curio and trio.
 %autosetup -p1 -n anyio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -85,13 +83,16 @@ donttest+=" or (TestUDPSocket and (ipv4 or ipv6))"
 # wrong localhost address
 donttest+=" or (TestTCPStream and test_happy_eyeballs)"
 donttest+=" or (TestTCPStream and test_connection_refused)"
+donttest+=" or test_bind_link_local"
 # does not raise an exception
 donttest+=" or (TestTLSStream and test_ragged_eofs)"
 %if 0%{?suse_version} < 1550
 donttest+=" or (test_send_eof_not_implemented)"
 %endif
-# anyio 3.6.2 and lower is broken with new trio, some tests fail https://github.com/agronholm/anyio/commit/787cb0c2e53c2a3307873d202fbd49dc5eac4e96
 donttest+=" or (test_exception_group and trio)"
+# Fail with python 3.12
+donttest+=" or (test_properties and trio)"
+donttest+=" or (test_properties and asyncio)"
 %pytest -m "not network" -k "not (${donttest:4})" -ra
 
 %files %{python_files}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 27 10:29:23 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Change deprecated `%patch1 -p1` syntax to supported `%patch -P1 -p1`
+  (bsc#1216669)
+
+-------------------------------------------------------------------
 Wed Oct 25 08:02:37 UTC 2023 - Hu <cathy.hu@suse.com>
 
 - Add reproducible-build.patch to make the output of "sepolicy manpage"

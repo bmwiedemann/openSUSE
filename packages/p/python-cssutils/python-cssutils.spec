@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cssutils
-Version:        2.7.1
+Version:        2.9.0
 Release:        0
 Summary:        A CSS Cascading Style Sheets library for Python
 License:        LGPL-3.0-or-later
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/cssutils
 Source0:        https://files.pythonhosted.org/packages/source/c/cssutils/cssutils-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 16 13:29:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Relax over-specified constraints to fix the build with ghc-9.6.x.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:23 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 25 18:51:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.3:
+  * (no changes)
+
+-------------------------------------------------------------------
 Sun Jul 16 18:48:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.1:
@@ -100,7 +106,7 @@ Fri Oct 21 18:52:23 UTC 2016 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Wed Feb 10 19:03:07 UTC 2016 - p.drouand@gmail.com
 
-- Update to version 2016.0 
+- Update to version 2016.0
   * No changelog available
 
 -------------------------------------------------------------------
@@ -141,9 +147,9 @@ Mon Dec 22 15:22:29 UTC 2014 - p.drouand@gmail.com
 Sat Dec  8 20:51:08 UTC 2012 - p.drouand@gmail.com
 
 - Update to 2012.4.0 version:
-  * now maintains a list of optional features and informs the user 
+  * now maintains a list of optional features and informs the user
     about a possibly deactivated optional feature.
-  * the sysfs / debugfs code has been refactored to remove redundant 
+  * the sysfs / debugfs code has been refactored to remove redundant
     boilerplate code.
   * option to display the newly added backbone gateway table
 

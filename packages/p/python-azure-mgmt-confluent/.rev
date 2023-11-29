@@ -20,4 +20,19 @@
   proper upgrade from previous version 1.0.0b1 (forwarded request 881867 from glaubitz)</comment>
     <requestid>881944</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2cee74c2f0e0dfc17dbf5a925463e0aa</srcmd5>
+    <version>2.0.0</version>
+    <time>1700675725</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1128127 from glaubitz)</comment>
+    <requestid>1128148</requestid>
+  </revision>
 </revisionlist>

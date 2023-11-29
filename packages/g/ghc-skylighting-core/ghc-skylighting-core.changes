@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 27 00:40:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.14.
+  ## 0.14
+
+    * Add rWeakDeliminators field to Rule. [API change]
+
+    * Make WordDetect sensitive to weakDeliminator. This fixes
+      parsing of floats beginning with '0.' in C (#174).
+
+    * Add debiancontrol syntax (#173).
+
+-------------------------------------------------------------------
 Fri Jul 21 05:08:36 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-core to version 0.13.4.1.

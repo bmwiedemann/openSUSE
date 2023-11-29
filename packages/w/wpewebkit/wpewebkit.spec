@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package wpewebkit
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -15,83 +15,87 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _apiver       2.0
 %define _wksover      2_0-1
 %define _sonameverpkg 2_0
 
 Name:           wpewebkit
-Version:        2.40.3
+### FIXME ### Drop the disabling of LTO on next release/versionbump
+%define _lto_cflags %{nil}
+Version:        2.42.2
 Release:        0
 Summary:        Library for rendering web content, WPE Port
-License:        BSD-3-Clause AND LGPL-2.1
+License:        BSD-3-Clause AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://wpewebkit.org/
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
 Patch0:         fix-include-dirs.patch
 Patch1:         fix-load-backend-fdo-lib.patch
 
-BuildRequires: cmake
-BuildRequires: gcc-c++
-BuildRequires: memory-constraints
-BuildRequires: ninja
-BuildRequires: python3
-BuildRequires: perl >= 5.10.0
-BuildRequires: ruby >= 2.5
-BuildRequires: pkgconfig(cairo) >= 1.14.0
-BuildRequires: pkgconfig(fontconfig) >= 2.8.0
-BuildRequires: pkgconfig(freetype2) >= 2.4.2
-BuildRequires: pkgconfig(harfbuzz) >= 0.9.18
-BuildRequires: libicu-devel >= 61.2
-BuildRequires: pkgconfig(libjpeg)
-BuildRequires: pkgconfig(epoxy) >= 1.4.0
-BuildRequires: pkgconfig(libgcrypt) >= 1.6.0
-BuildRequires: pkgconfig(libxml-2.0) >= 2.8.0
-BuildRequires: pkgconfig(zlib)
-BuildRequires: pkgconfig(libpng)
-BuildRequires: pkgconfig(sqlite3)
-BuildRequires: unifdef
-BuildRequires: pkgconfig(libwebp)
-BuildRequires: pkgconfig(wpe-1.0)
-BuildRequires: pkgconfig(libsoup-3.0) >= 3.0.0
-BuildRequires: pkgconfig(glib-2.0) >= 2.70.0
-BuildRequires: pkgconfig(atk) >= 2.16.0
-BuildRequires: pkgconfig(atk-bridge-2.0)
-BuildRequires: pkgconfig(libopenjp2) >= 2.2.0
-BuildRequires: pkgconfig(libwoff2dec)
-BuildRequires: pkgconfig(libwoff2common) >= 1.0.2
-BuildRequires: pkgconfig(libtasn1)
-BuildRequires: pkgconfig(libxslt) >= 1.1.7
-BuildRequires: pkgconfig(libavif) >= 0.9.0
-BuildRequires: pkgconfig(libsystemd)
-BuildRequires: pkgconfig(lcms2)
-BuildRequires: pkgconfig(gbm)
-BuildRequires: pkgconfig(libdrm)
-BuildRequires: pkgconfig(libseccomp)
-BuildRequires: pkgconfig(wpebackend-fdo-1.0)
-BuildRequires: bubblewrap
-BuildRequires: xdg-dbus-proxy
-BuildRequires: pkgconfig(gstreamer-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-base-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-allocators-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-app-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-audio-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-fft-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-gl-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-mpegts-1.0) >= 1.4.0
-BuildRequires: pkgconfig(gstreamer-pbutils-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-tag-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-video-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-codecparsers-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-transcoder-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-rtp-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-sdp-1.0) >= 1.16.2
-BuildRequires: pkgconfig(gstreamer-webrtc-1.0) >= 1.16.2
-BuildRequires: gperf >= 3.0.1
-BuildRequires: pkgconfig(xkbcommon) >= 0.4.0
-BuildRequires: pkgconfig(wayland-client)
-BuildRequires: pkgconfig(wayland-server)
-BuildRequires: pkgconfig(wayland-egl)
-BuildRequires: pkgconfig(wayland-protocols)
+BuildRequires:  bubblewrap
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  gperf >= 3.0.1
+BuildRequires:  libicu-devel >= 61.2
+BuildRequires:  memory-constraints
+BuildRequires:  ninja
+BuildRequires:  perl >= 5.10.0
+BuildRequires:  python3
+BuildRequires:  ruby >= 2.5
+BuildRequires:  unifdef
+BuildRequires:  xdg-dbus-proxy
+BuildRequires:  pkgconfig(atk) >= 2.16.0
+BuildRequires:  pkgconfig(atk-bridge-2.0)
+BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(cairo) >= 1.14.0
+BuildRequires:  pkgconfig(epoxy) >= 1.4.0
+BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
+BuildRequires:  pkgconfig(freetype2) >= 2.4.2
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-allocators-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-codecparsers-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-fft-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-gl-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-mpegts-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-rtp-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-sdp-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-transcoder-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(gstreamer-webrtc-1.0) >= 1.16.2
+BuildRequires:  pkgconfig(harfbuzz) >= 0.9.18
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libavif) >= 0.9.0
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libgcrypt) >= 1.6.0
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libopenjp2) >= 2.2.0
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libtasn1)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwoff2common) >= 1.0.2
+BuildRequires:  pkgconfig(libwoff2dec)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
+BuildRequires:  pkgconfig(libxslt) >= 1.1.7
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(wpe-1.0)
+BuildRequires:  pkgconfig(wpebackend-fdo-1.0)
+BuildRequires:  pkgconfig(xkbcommon) >= 0.4.0
+BuildRequires:  pkgconfig(zlib)
 
 %description
 WPE allows embedders to create simple and performant systems based on
@@ -101,9 +105,9 @@ in mind, leveraging common 3D graphics APIs for best performance.
 %package -n libWPEWebKit-%{_wksover}
 Summary:        Library for rendering web content, WPE port
 Group:          System/Libraries
+Requires:       %{name}-%{_sonameverpkg}-injected-bundles
 Requires:       bubblewrap
 Requires:       xdg-dbus-proxy
-Requires:       %{name}-%{_sonameverpkg}-injected-bundles
 Provides:       libWPEWebKit-{_apiver}
 
 %description -n libWPEWebKit-%{_wksover}

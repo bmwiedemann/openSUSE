@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        9.4.0.0
+Version:        9.6.0.2
 Release:        0
 Summary:        Algorithms on GHC parse trees
 License:        BSD-3-Clause

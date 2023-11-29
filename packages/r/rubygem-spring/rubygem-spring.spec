@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-spring
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 %define mod_name spring
 %define mod_full_name %{mod_name}-%{version}

@@ -47,4 +47,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1124063</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d59c6c157d8346577a5f82ab3ce3ef71</srcmd5>
+    <version>15.0.0</version>
+    <time>1700675693</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 15.0.0:
+  * Additions:
+    - Support multiple language servers per filetype (#17).
+    - The `kak-lsp.toml` format for specifying language servers has changed. The old format is still supported (#686).
+    - `lsp-goto-document-symbol` learned to show a preview of the jump target.
+    - Default configuration for PureScript and Scala.
+  * Fixes:
+    - A regression broke resolving completion item documentation when cycling through completion candidates, which has been fixed (#674).
+    - New command `lsp-declaration`, implementing `textDocument/declaration`.
+- cargo_config is now part of vendored tarball
+</comment>
+    <requestid>1128043</requestid>
+  </revision>
 </revisionlist>

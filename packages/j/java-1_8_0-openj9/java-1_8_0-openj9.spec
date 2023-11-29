@@ -26,18 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       382
-%global buildver        b05
+%global updatever       392
+%global buildver        b08
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   c4d2c2bafb3f2fc681c2b94ec3ffc426e93bb9d6
-%global root_branch     v0.40.0-release
+%global root_revision   b73cbdd342820514352b3a14d6d58fdb4d570a45
+%global root_branch     v0.41.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    e80bff83b7fda8875071d89de7c73184d847085d
-%global omr_branch      v0.40.0-release
+%global omr_revision    5eee6ad9d0969d938892cd186056ae66912c7a61
+%global omr_branch      v0.41.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision d12d10c9ea2de2cf363095e609536ffe451bd25f
-%global openj9_branch   v0.40.0-release
-%global openj9_tag      openj9-0.40.0
+%global openj9_revision 461bf3c70bd87f1bc8422214cdb5c6c3a0ae4ff1
+%global openj9_branch   v0.41.0-release
+%global openj9_tag      openj9-0.41.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -120,7 +120,6 @@ Patch32:        stringop-overflow.patch
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
 Patch203:       system-lcms.patch
-Patch205:       link-with-as-needed.patch
 Patch210:       openj9-no-werror.patch
 Patch300:       alternative-path-to-tzdb_dat.patch
 BuildRequires:  alsa-lib-devel
@@ -352,7 +351,6 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch201 -p1
 %patch202 -p1
 %patch203 -p1
-%patch205 -p1
 
 %patch210
 
@@ -722,7 +720,7 @@ if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
 fi
 
 # remove the default empty cacert file, if it's installed
-if [ 0`stat -c "%{s}" %{cacerts} 2>/dev/null` = "032" ] ; then
+if [ 0`stat -c "%%s" %{cacerts} 2>/dev/null` = "032" ] ; then
     rm -f %{cacerts}
 fi
 

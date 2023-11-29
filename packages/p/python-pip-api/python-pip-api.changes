@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 24 08:08:45 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Skip more tests that need network access
+
+-------------------------------------------------------------------
 Tue Jun 13 08:58:11 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

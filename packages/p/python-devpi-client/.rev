@@ -212,4 +212,16 @@
 - Switch to autosetup macro.</comment>
     <requestid>1118184</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ce4e3a26063510dfebfcb41f0027fba2</srcmd5>
+    <version>7.0.2</version>
+    <time>1701023820</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.2:
+  * Fix #992: Fix error added in 6.0.4 when old authentication
+    data from before 6.x exists.
+
+  - Drop {Build,}Requires on pep517.</comment>
+    <requestid>1128736</requestid>
+  </revision>
 </revisionlist>

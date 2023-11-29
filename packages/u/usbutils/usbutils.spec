@@ -1,7 +1,7 @@
 #
 # spec file for package usbutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           usbutils
-Version:        015
+Version:        017
 Release:        0
 Summary:        Tools and libraries for USB devices
 License:        GPL-2.0-or-later
@@ -60,5 +60,6 @@ autoreconf -fiv
 %{_mandir}/man1/usb-devices.1%{?ext_man}
 %{_mandir}/man8/lsusb.8%{?ext_man}
 %{_mandir}/man8/usbhid-dump.8%{?ext_man}
+%{_libdir}/pkgconfig/usbutils.pc
 
 %changelog

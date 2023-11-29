@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 22 13:23:12 UTC 2023 - Gus Kenion <gkenion@suse.com>
+
+- Update to upstream release 3.5.0 (bsc#1217005, CVE-2023-39913)
+  * Mostly feature and bug fixes.
+  * Full list of changes can be found in README.md file
+- Removed patch:
+  * uimaj-2.8.1-jackson2.7.patch
+    + not needed wit this version
+- Added patch:
+  * 0001-Revert-Issue-350-Clean-up-and-modernize-code.patch   
+    + Revert "modernizing of the code" as to preserve Java 8
+      compatibility 
+
+-------------------------------------------------------------------
 Mon Sep 25 09:47:19 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2

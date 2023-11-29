@@ -85,4 +85,12 @@
     <comment>Simplify spec file by dropping update-alternatives and many unneeded Python single spec macros; and amend Licenses tag, among other things (forwarded request 1101271 from luc14n0)</comment>
     <requestid>1102932</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1136cd5789328a7b7733f56528569f1</srcmd5>
+    <version>2023.3</version>
+    <time>1701206279</time>
+    <user>anag+factory</user>
+    <comment>New upstream release (forwarded request 1128804 from iznogood)</comment>
+    <requestid>1129050</requestid>
+  </revision>
 </revisionlist>

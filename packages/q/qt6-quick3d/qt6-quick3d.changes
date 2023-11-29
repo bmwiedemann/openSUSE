@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 23 08:39:31 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix module dependencies:
+  * 0001-Fix-some-depends-statements-in-QML-modules.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 09:39:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

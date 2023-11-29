@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep  5 05:49:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 1.9.0.
+  ## Version 1.9.0
+
+  * BREAKING CHANGE: The type of the `Error_Protocol` constructor of `TLSError` has changed.
+    The "warning" case has been split off into a new `Error_Protocol_Warning` constructor.
+    [#460](https://github.com/haskell-tls/hs-tls/pull/460)
+
+  ## Version 1.8.0
+
+  * BREAKING CHANGE: Remove `Exception` instance for `TLSError`.
+    The library now throws `TLSException` only.
+    If you need to change your code, please refer to
+    [this example](https://github.com/snoyberg/http-client/commit/73d1a4eb451c089878ba95e96371d0b18287ffb8) first.
+    [#457](https://github.com/haskell-tls/hs-tls/pull/457)
+
+  ## Version 1.7.1
+
+  * NOP on UserCanceled event
+    [#454](https://github.com/haskell-tls/hs-tls/pull/454)
+
+  ## Version 1.7.0
+
+  * Major version up because "crypton" is used instead of "cryptonite"
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:41 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

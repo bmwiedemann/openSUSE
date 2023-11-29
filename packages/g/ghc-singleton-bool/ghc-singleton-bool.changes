@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 24 20:17:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update singleton-bool to version 0.1.7 revision 1.
+  - 0.1.7
+      - Add EqP and OrdP instances
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:16 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

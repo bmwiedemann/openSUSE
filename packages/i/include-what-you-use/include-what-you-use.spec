@@ -34,6 +34,11 @@ BuildRequires:  clang%{_llvm_version}-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm%{_llvm_version}-devel
+%if %{suse_version} > 1500
+BuildRequires:  python3-base
+%else
+BuildRequires:  python311-base
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -69,7 +74,11 @@ rm gcc.libc.imp gcc.symbols.imp gcc.stl.headers.imp stl.c.headers.imp
 # This also obsoletes iwyu.gcc.imp.
 rm iwyu.gcc.imp
 
-%cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} ..
+%cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
+%if %{suse_version} <= 1500
+    -DPython3_EXECUTABLE=%{_bindir}/python3.11 \
+%endif
+    ..
 %cmake_build
 
 %install

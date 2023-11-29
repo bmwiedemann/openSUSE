@@ -17,24 +17,24 @@
 
 
 Name:           python-photutils
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.30}
+BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module numpy-devel >= 1.22}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 5.0
+Requires:       python-astropy >= 5.1
 Requires:       python-numpy >= 1.22
 Recommends:     python-Bottleneck
 Recommends:     python-Shapely
@@ -43,17 +43,17 @@ Recommends:     python-matplotlib >= 3.5
 Recommends:     python-rasterio
 Recommends:     python-scikit-image >= 0.19.0
 Recommends:     python-scikit-learn >= 1.0
-Recommends:     python-scipy >= 1.7.0
+Recommends:     python-scipy >= 1.7.2
 Recommends:     python-tqdm
 # SECTION test requirements
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module astropy >= 5.0}
+BuildRequires:  %{python_module astropy >= 5.1}
 BuildRequires:  %{python_module gwcs >= 0.18}
 BuildRequires:  %{python_module matplotlib >= 3.5}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}
 BuildRequires:  %{python_module scikit-image >= 0.19.0}
 BuildRequires:  %{python_module scikit-learn >= 1.0}
-BuildRequires:  %{python_module scipy >= 1.7.0}
+BuildRequires:  %{python_module scipy >= 1.7.2}
 # /SECTION
 %python_subpackages
 

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 25 22:18:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.1:
+  * Report parse errors in config files.
+  * Fix image toggling for Emacs >= 29.1.
+  * Support relative lastmod queries (see notmuch-sexp-queries(7)
+    and notmuch-search-terms(7) for details).
+  * Support indexing of designated attachments as text (see
+  * notmuch-config(1) for details).
+  * Add options --offset and --limit to notmuch-show(1).
+  * New commands notmuch-search-edit-search and notmuch-tree-
+    edit-search.
+  * Introduce notmuch-tree-outline-mode.
+  * Some compatibility fixes for Emacs 29. At least one issue
+    (hiding images) remains in 0.38.
+  * Support completion when piping to external command.
+  * Fix regression in updating tag display introduced by 0.37.
+  * Fix bug creating database when database.path is not set.
+  * Incremental performance improvements for message deletion.
+  * Catch Xapian exceptions when deleting messages.
+  * Sync removed message properties to the database.
+  * Replace use of thread-unsafe Query::MatchAll in the infix
+    query parser.
+  * Be more careful when clearing the results directory.
+  * Use `database_open_with_config`, and provide compatible path
+    search semantics.
+  * Support testing installed version of notmuch.
+  * Adapt to some breaking changes in glib handling of init
+    files.
+  * Replace OpenPGP key used in test suite.
+  * Performance Tests
+  * Update signatures for performance test corpus.
+
+-------------------------------------------------------------------
 Mon Aug  7 06:49:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove rhetorics and history lesson from description.
@@ -675,7 +709,7 @@ Fri Jun  7 15:00:17 UTC 2019 - Chris Coutinho <chrisbcoutinho@gmail.com>
     + Support for GNU Emacs older than 25.1 is deprecated
 - Switch to .xz upstream archive
 - Bump minimum dependency for gmime to 3.0, thus dropping support for
-  openSUSE Leap 42.3 
+  openSUSE Leap 42.3
 
 -------------------------------------------------------------------
 Wed May  8 11:09:32 UTC 2019 - Adam Majer <adam.majer@suse.de>
@@ -894,7 +928,7 @@ Sat Jun 18 10:04:44 UTC 2016 - lmb@suse.com
 - version 0.22
   - Xapian 1.3 support
   - Limited support for S/MIME messages
-  - Fix for threading bug involving deleting and re-adding messages. 
+  - Fix for threading bug involving deleting and re-adding messages.
   - Fix for case-sensitive content disposition headers.
   - Fix handling of 1 character directory names at top level.
   - Emacs: Notmuch replies now include all parts shown in the show view
@@ -911,7 +945,7 @@ Sat Jun 18 10:04:44 UTC 2016 - lmb@suse.com
     `date:<expr>..<expr>`
   - Notmuch database upgrade to support `lastmod:` queries
   - The `notmuch address` command supports new deduplication schemes
-  
+
 -------------------------------------------------------------------
 Thu Jul  9 00:00:00 CEST 2015 - dsterba@suse.cz
 
@@ -984,7 +1018,7 @@ Fri Jan 30 00:00:00 CET 2015 - dsterba@suse.cz
 -------------------------------------------------------------------
 Mon Feb 18 15:46:41 UTC 2013 - mvyskocil@suse.com
 
-- remove zsh completion, it's part of zsh itself 
+- remove zsh completion, it's part of zsh itself
 
 -------------------------------------------------------------------
 Mon Feb 18 14:12:35 UTC 2013 - mvyskocil@suse.com

@@ -17,7 +17,7 @@
 
 
 Name:           ugrep
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
@@ -27,13 +27,16 @@ Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{n
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(bzip3)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
+# the bzip3 version seems to old, the tests break with decompression errors
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(bzip3)
+%endif
 
 %description
 Ugrep supports an interactive query UI and can search file systems, source
@@ -46,7 +49,11 @@ fuzzy search.
 %build
 %configure \
 	--disable-avx \
-	--enable-color
+	--enable-color \
+%if 0%{?suse_version} >= 1600
+	--with-bzip3 \
+%endif
+	%{nil}
 %make_build
 
 %install

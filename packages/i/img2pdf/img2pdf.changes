@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 25 21:31:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * support MIFF for 16 bit CMYK input
+  * accept pathlib.Path objects as input
+  * don't store RGB ICC profiles from bilevel or grayscale TIFF,
+    PNG and JPEG
+  * thumbnails are no longer included by default and --include-
+    thumbnails has to be used if you want them
+  * support for pikepdf (>= 6.2.0)
+
+-------------------------------------------------------------------
 Fri Aug 25 15:47:25 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Provide img2pdf for main flavor
@@ -14,12 +26,12 @@ Thu Sep 29 02:38:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to 0.4.4 (2022-04-07)
  - --viewer-page-layout support for twopageright and twopageleft
  - Add B and JB paper sizes
- - support for pikepdf (>= 5.0.0) and Pillow (>= 9.1.0) 
+ - support for pikepdf (>= 5.0.0) and Pillow (>= 9.1.0)
 
 -------------------------------------------------------------------
 Mon Mar  7 03:17:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip two broken tests. 
+- Skip two broken tests.
 
 -------------------------------------------------------------------
 Mon Jan 24 22:27:17 UTC 2022 - Dirk Müller <dmueller@suse.com>

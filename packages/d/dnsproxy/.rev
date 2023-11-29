@@ -150,4 +150,13 @@
     <comment>Update to version 0.59.0. Revise recent changelog entries per Factory review comments. (forwarded request 1127474 from jfkw)</comment>
     <requestid>1127475</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>61fa888bb90003cce9b16928d2bcd966</srcmd5>
+    <version>0.59.1</version>
+    <time>1701023846</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.59.1:
+  * Pull request 301: 6438-fix-leak (forwarded request 1128750 from VaiTon)</comment>
+    <requestid>1128783</requestid>
+  </revision>
 </revisionlist>

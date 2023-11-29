@@ -116,4 +116,15 @@
 - First release on OBS</comment>
     <requestid>1124372</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f83d47ab6d50c727d1db2e914f89451</srcmd5>
+    <version>2.1.0</version>
+    <time>1701206424</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.0:
+  * Fix base32 encoding and decoding of bytes array (#54)
+  * Add support for OpenSSL (#52), by @mchalain
+</comment>
+    <requestid>1129625</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-websocket-client
-Version:        1.5.1
+Version:        1.6.4
 Release:        0
 Summary:        WebSocket client implementation
 License:        LGPL-2.1-only

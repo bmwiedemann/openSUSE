@@ -17,7 +17,7 @@
 
 
 Name:           stressapptest
-Version:        1.0.9
+Version:        1.0.11
 Release:        0
 Summary:        Stressful application test
 License:        Apache-2.0
@@ -25,7 +25,6 @@ Group:          System/Benchmark
 URL:            https://github.com/stressapptest/stressapptest
 Source:         https://github.com/stressapptest/stressapptest/archive/v%{version}.tar.gz
 Patch0:         reproducible.patch
-Patch1:         stressapptest-cstdint.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

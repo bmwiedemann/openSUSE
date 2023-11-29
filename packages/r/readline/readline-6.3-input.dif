@@ -5,7 +5,7 @@
 
 --- lib/readline/input.c
 +++ lib/readline/input.c	2018-11-29 08:29:58.432878428 +0000
-@@ -799,6 +799,8 @@ rl_read_key (void)
+@@ -801,6 +801,8 @@ rl_read_key (void)
    return (c);
  }
  
@@ -14,7 +14,7 @@
  int
  rl_getc (FILE *stream)
  {
-@@ -846,7 +848,10 @@ rl_getc (FILE *stream)
+@@ -862,7 +864,10 @@ rl_getc (FILE *stream)
        /* If zero characters are returned, then the file that we are
  	 reading from is empty!  Return EOF in that case. */
        if (result == 0)

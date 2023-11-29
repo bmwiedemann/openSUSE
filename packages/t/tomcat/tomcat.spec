@@ -241,20 +241,11 @@ Requires:       jakarta-taglibs-standard >= 1.1
 The ROOT and examples web applications for Apache Tomcat
 
 %prep
-%setup -q -n %{packdname} -b33
+%autosetup -p1 -n %{packdname} -b 33
 
 # remove pre-built binaries and windows files
 find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "*.gz" -o \
           -name "*.jar" -o -name "*.war" -o -name "*.zip" \) -print -delete
-%patch0
-%patch1
-%patch2
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

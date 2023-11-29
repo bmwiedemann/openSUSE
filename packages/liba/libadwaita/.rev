@@ -210,4 +210,12 @@
     <comment>Allow build with newer appstream (forwarded request 1126866 from iznogood)</comment>
     <requestid>1127342</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>728783ad59b5bc1e2b58b278e4e98edc</srcmd5>
+    <version>1.4.0+12</version>
+    <time>1700771935</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1128125 from iznogood)</comment>
+    <requestid>1128139</requestid>
+  </revision>
 </revisionlist>

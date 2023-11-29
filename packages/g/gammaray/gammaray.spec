@@ -113,6 +113,8 @@ Conflicts:      gammaray
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 %endif
 %endif
+# Pull in the correct set of shared libraries (Qt5/Qt6)
+Requires:       libgammaray%{?pkg_suffix}-%{soversion} >= %{version}
 
 %description
 Gamma Ray is a comprehensive collection of high level introspection

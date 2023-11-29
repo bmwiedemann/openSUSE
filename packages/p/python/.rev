@@ -4037,4 +4037,12 @@ However, upstream development now focuses on 3.x series.
   bsc#1210638).</comment>
     <requestid>1111680</requestid>
   </revision>
+  <revision rev="189" vrev="40">
+    <srcmd5>a0cff5eadbba9dc98f3ec669676444eb</srcmd5>
+    <version>2.7.18</version>
+    <time>1701206301</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1129163</requestid>
+  </revision>
 </revisionlist>

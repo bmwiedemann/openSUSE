@@ -19,28 +19,28 @@ This fixes bsc#1212791
 
 Signed-off-by: Ivan T. Ivanov <iivanov@suse.de>
 ---
- arch/arm/boot/dts/bcm2708-rpi-b-plus.dts   | 4 ++--
- arch/arm/boot/dts/bcm2708-rpi-b-rev1.dts   | 4 ++--
- arch/arm/boot/dts/bcm2708-rpi-b.dts        | 4 ++--
- arch/arm/boot/dts/bcm2708-rpi-cm.dts       | 4 ++--
- arch/arm/boot/dts/bcm2708-rpi-zero-w.dts   | 4 ++--
- arch/arm/boot/dts/bcm2708-rpi-zero.dts     | 4 ++--
- arch/arm/boot/dts/bcm2709-rpi-2-b.dts      | 4 ++--
- arch/arm/boot/dts/bcm2709-rpi-cm2.dts      | 4 ++--
- arch/arm/boot/dts/bcm2710-rpi-2-b.dts      | 4 ++--
- arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts | 4 ++--
- arch/arm/boot/dts/bcm2710-rpi-3-b.dts      | 4 ++--
- arch/arm/boot/dts/bcm2710-rpi-cm3.dts      | 4 ++--
- arch/arm/boot/dts/bcm2710-rpi-zero-2-w.dts | 4 ++--
- arch/arm/boot/dts/bcm2711-rpi-4-b.dts      | 4 ++--
- arch/arm/boot/dts/bcm2711-rpi-cm4.dts      | 4 ++--
- arch/arm/boot/dts/bcm2711-rpi-cm4s.dts     | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts   | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts   | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts        | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts       | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts   | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts     | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts      | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts      | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts      | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts      | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts      | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts      | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts      | 4 ++--
+ arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts     | 4 ++--
  16 files changed, 32 insertions(+), 32 deletions(-)
 
-diff --git a/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts b/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts
 index b317e83..c94e102 100644
---- a/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts
-+++ b/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-plus.dts
 @@ -121,7 +121,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -59,10 +59,10 @@ index b317e83..c94e102 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2708-rpi-b-rev1.dts b/arch/arm/boot/dts/bcm2708-rpi-b-rev1.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts
 index 228fd47..f3055af 100644
---- a/arch/arm/boot/dts/bcm2708-rpi-b-rev1.dts
-+++ b/arch/arm/boot/dts/bcm2708-rpi-b-rev1.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b-rev1.dts
 @@ -121,7 +121,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -81,10 +81,10 @@ index 228fd47..f3055af 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2708-rpi-b.dts b/arch/arm/boot/dts/bcm2708-rpi-b.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts
 index 1df74d5..ef6dbf9 100644
---- a/arch/arm/boot/dts/bcm2708-rpi-b.dts
-+++ b/arch/arm/boot/dts/bcm2708-rpi-b.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-b.dts
 @@ -121,7 +121,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -103,10 +103,10 @@ index 1df74d5..ef6dbf9 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2708-rpi-cm.dts b/arch/arm/boot/dts/bcm2708-rpi-cm.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts
 index 6f7fea0..a4aaadf 100644
---- a/arch/arm/boot/dts/bcm2708-rpi-cm.dts
-+++ b/arch/arm/boot/dts/bcm2708-rpi-cm.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-cm.dts
 @@ -126,7 +126,7 @@ cam0_reg: &cam0_regulator {
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -125,10 +125,10 @@ index 6f7fea0..a4aaadf 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2708-rpi-zero-w.dts b/arch/arm/boot/dts/bcm2708-rpi-zero-w.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts
 index 4266caf..8a2225e 100644
---- a/arch/arm/boot/dts/bcm2708-rpi-zero-w.dts
-+++ b/arch/arm/boot/dts/bcm2708-rpi-zero-w.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero-w.dts
 @@ -183,7 +183,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -147,10 +147,10 @@ index 4266caf..8a2225e 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2708-rpi-zero.dts b/arch/arm/boot/dts/bcm2708-rpi-zero.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts
 index 3069f58..14c44c7 100644
---- a/arch/arm/boot/dts/bcm2708-rpi-zero.dts
-+++ b/arch/arm/boot/dts/bcm2708-rpi-zero.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2708-rpi-zero.dts
 @@ -118,7 +118,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -169,10 +169,10 @@ index 3069f58..14c44c7 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts
 index c3e1b1b..c2f6a2b 100644
---- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
-+++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2709-rpi-2-b.dts
 @@ -121,7 +121,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -191,10 +191,10 @@ index c3e1b1b..c2f6a2b 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2709-rpi-cm2.dts b/arch/arm/boot/dts/bcm2709-rpi-cm2.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts b/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts
 index 78881c5..c22e94b 100644
---- a/arch/arm/boot/dts/bcm2709-rpi-cm2.dts
-+++ b/arch/arm/boot/dts/bcm2709-rpi-cm2.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2709-rpi-cm2.dts
 @@ -155,7 +155,7 @@ cam0_reg: &cam0_regulator {
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -213,10 +213,10 @@ index 78881c5..c22e94b 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2710-rpi-2-b.dts b/arch/arm/boot/dts/bcm2710-rpi-2-b.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts
 index 3c89b44..5e365c9 100644
---- a/arch/arm/boot/dts/bcm2710-rpi-2-b.dts
-+++ b/arch/arm/boot/dts/bcm2710-rpi-2-b.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-2-b.dts
 @@ -121,7 +121,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -235,10 +235,10 @@ index 3c89b44..5e365c9 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts
 index 818804d..a636fc5 100644
---- a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
-+++ b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b-plus.dts
 @@ -203,7 +203,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -257,10 +257,10 @@ index 818804d..a636fc5 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts
 index 14bb3be..9070cc7 100644
---- a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
-+++ b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-3-b.dts
 @@ -218,7 +218,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -279,10 +279,10 @@ index 14bb3be..9070cc7 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2710-rpi-cm3.dts b/arch/arm/boot/dts/bcm2710-rpi-cm3.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts
 index 5cb7342..6fa4d8a 100644
---- a/arch/arm/boot/dts/bcm2710-rpi-cm3.dts
-+++ b/arch/arm/boot/dts/bcm2710-rpi-cm3.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-cm3.dts
 @@ -155,7 +155,7 @@ cam0_reg: &cam0_regulator {
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -301,10 +301,10 @@ index 5cb7342..6fa4d8a 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2710-rpi-zero-2-w.dts b/arch/arm/boot/dts/bcm2710-rpi-zero-2-w.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts b/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts
 index 8cf0f45..ebdf5e7 100644
---- a/arch/arm/boot/dts/bcm2710-rpi-zero-2-w.dts
-+++ b/arch/arm/boot/dts/bcm2710-rpi-zero-2-w.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dts
 @@ -196,7 +196,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -323,10 +323,10 @@ index 8cf0f45..ebdf5e7 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
 index 15f46d5..cfe3228 100644
---- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
-+++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
 @@ -294,7 +294,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -345,10 +345,10 @@ index 15f46d5..cfe3228 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2711-rpi-cm4.dts b/arch/arm/boot/dts/bcm2711-rpi-cm4.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
 index 8718e13..e4618d5 100644
---- a/arch/arm/boot/dts/bcm2711-rpi-cm4.dts
-+++ b/arch/arm/boot/dts/bcm2711-rpi-cm4.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4.dts
 @@ -303,7 +303,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -367,10 +367,10 @@ index 8718e13..e4618d5 100644
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/bcm2711-rpi-cm4s.dts b/arch/arm/boot/dts/bcm2711-rpi-cm4s.dts
+diff --git a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
 index 1069184..69cbca6 100644
---- a/arch/arm/boot/dts/bcm2711-rpi-cm4s.dts
-+++ b/arch/arm/boot/dts/bcm2711-rpi-cm4s.dts
+--- a/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
++++ b/arch/arm/boot/dts/broadcom/bcm2711-rpi-cm4s.dts
 @@ -182,7 +182,7 @@
  	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
  
@@ -391,4 +391,3 @@ index 1069184..69cbca6 100644
  		#size-cells = <0>;
 -- 
 2.35.3
-

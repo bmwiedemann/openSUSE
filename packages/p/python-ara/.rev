@@ -299,4 +299,41 @@
 </comment>
     <requestid>1099400</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b7f6ef7b24a104c9408c07fc2ea285ba</srcmd5>
+    <version>1.7.0</version>
+    <time>1701023830</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * Update bootstrap CSS from 4.6.0 to 5.3.0 and fix broken layout
+    and components as a result of the update
+  * Removed separate light/dark themes via bootstrap-darkly and
+    bootstrap-flatly: bootstrap 5.3 features a new built-in dark
+    theme
+  * Re-worked the dark/light theme selection to match the new
+    bootstrap built-in dark theme including pygments highlighting
+    for pretty-printed output
+  * Removed jquery, it is no longer required with bootstrap
+  * Re-worked implementation of file line highlighting since it
+    relied on jquery
+  * Fixed tooltip implementation (i.e, for task tags) since the
+    implementation in bootstrap had changed
+  * Large chunks of templating were moved out to partials/tables and
+    partials/search in order to improve readability.
+  * Round of template cleanups and fixes as reported by djlint
+  * Will continue to be a work in progress to simplify and standardize
+    templates.
+  * Raised the requirement on django from &gt;=3.2,&lt;3.3 to &gt;=3.2,&lt;4.3 to
+    allow installation with the latest LTS release of django.
+   * Raised the requirement on python from &gt;=3.6 to &gt;=3.8 to accomodate
+    django 4.2.
+  * Ignored Django warning about the lack of a STATIC_ROOT directory.
+    ara uses whitenoise for serving static files which makes the warning
+    superfluous. (#492)
+
+  --
+  --
+  ---</comment>
+    <requestid>1128740</requestid>
+  </revision>
 </revisionlist>

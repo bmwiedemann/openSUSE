@@ -2,42 +2,75 @@
 Tue Nov 14 08:56:49 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Version update to version 1.2.38:
-  * Update:  Align default pass phrase prompt with HTTPd. (michaelo)
-  * Fix:  66669: Fix memory leak in SNI processing. (markt)
-  * Update:  Update the recommended minimum version of OpenSSL to 1.1.1v. (markt)
-  * Update:  Update the recommended minimum version of APR to 1.7.4. (markt)
-  * Docs:  Document the TLS rengotiation behaviour. (markt)
-  * Docs:  Add HOWTO-RELEASE.txt that describes the release process. (markt)
-  * Code:  Refactor library initialization so it is compatible with Tomcat 10.1.x onwards where a number of Java classes have been removed. (markt)
-  * Add:  Map the OpenSSL 3.x FIPS behaviour to the OpenSSL 1.x API to allow clients to determine if the FIPS provider is being used when Tomcat Native is compiled against OpenSSL 3.x. (markt)
-  * Fix:  66035: Fix crash when attempting to read TLS session ID after a handshake failure. (schultz/markt)
-  * Fix:  Enable download_deps.sh to be called from any directory. Pull request #12 provided by Dimitrios Soumis. (markt)
-  * Fix:  Fix release script so it works with the current git layout. (markt)
-  * Fix:  65441: Correct previous fix that enabled building to continue with OpenSSL 3.x. Patch provided by lzsiga. (markt)
-  * Fix:  65659: Remove remaining reference to pkg-config which is no longer included in the Tomcat Native distribution. (markt)
-  * Add:  65181: Additional changes required to provided support for using OpenSSL Engines that use proprietary key formats. Based on a patch provided by Edin Hodzic. (markt)
-  * Fix:  65329: Correct handling of WINVER in make file to use correct constant for Windows 7. Add constants for Windows 8, Windows 8.1 and Windows 10. Rename WINNT to WIN2k as it is used for Windows 2000 upwards, not Windows NT upwards. (markt)
-  * Fix:  Add a patch for APR that fixes an issue where some Windows systems in some configurations would only listen on IPv6 addresses on dual stack systems even though configured to listen on both IPv6 and IPv4 addresses. (michaelo)
-  * Fix:  Correct a regression in the fix for 65181 that prevented an error message from being displayed if an invalid key file was provided and no OpenSSL Engine was configured. (markt)
-  * Add:  65181: Improve support for using OpenSSL Engines that use proprietary key formats. Patch provided by Edin Hodzic. (markt)
-  * Fix:  Enable building to continue against OpenSSL 3.x and 1.1.1. (markt)
-  * Fix:  Incomplete name mangling fix for C++ compilers in tcn_api.h. (michaelo)
-  * Update:  Improve OS-specific header include for native thread id. (michaelo)
-  * Fix:  Disable keylog callback support for LibreSSL. (michaelo)
-  * Add:  Add support for SSLContext.addChainCertificateRaw() with LibreSSL 2.9.1 and up. (michaelo)
-  * Add:  Add support for HP-UX's _lwp_self() in our ssl_thread_id(void). (michaelo)
-  * Remove default option passed for rpath to linker on HP-UX. (michaelo)
-  * Add:  Add an option to allow the OCSP responder check to be bypassed. Note that if OCSP is enabled, a missing responder is now treated as an error. (jfclere)
-  * Fix:  64429: Fix compilation with LibreSSL. (markt)
-  * Fix:  63671: libtcnative does not compile with OpenSSL < 1.1.0 and APR w/o threading support. (michaelo)
-  * Fix:  Correct configure message for OpenSSL libdir. (michaelo)
-  * Update:  64260: Clean up install target. (michaelo)
-  * Fix:  64315: configure output for OpenSSL wrong/incomplete sometimes. (michaelo)
-  * Update:  Drop obsolete build time workarounds for HP-UX. (michaelo)
-  * Add:  Add support for FreeBSD's pthread_getthreadid_np() in our ssl_thread_id(void). (michaelo)
-  * Add:  64316: Introduce tcn_get_thread_id(void) to reduce code duplication. (michaelo)
-  * Fix:  Fix linking against OpenSSL in non-standard locations on FreeBSD. (michaelo)
-  * 
+  * Align default pass phrase prompt with HTTPd.
+  * #66669: Fix memory leak in SNI processing.
+  * Update the recommended minimum version of OpenSSL to 1.1.1v.
+  * Update the recommended minimum version of APR to 1.7.4.
+  * Document the TLS rengotiation behaviour.
+  * Add HOWTO-RELEASE.txt that describes the release process.
+  * Refactor library initialization so it is compatible with Tomcat
+    10.1.x onwards where a number of Java classes have been removed.
+  * Map the OpenSSL 3.x FIPS behaviour to the OpenSSL 1.x API to
+    allow clients to determine if the FIPS provider is being used
+    when Tomcat Native is compiled against OpenSSL 3.x.
+  * #66035: Fix crash when attempting to read TLS session ID after
+    a handshake failure.
+  * Enable download_deps.sh to be called from any directory.
+  * Fix release script so it works with the current git layout.
+  * #65441: Correct previous fix that enabled building to continue
+    with OpenSSL 3.x.
+  * #65659: Remove remaining reference to pkg-config which is no
+    longer included in the Tomcat Native distribution.
+  * #65181: Additional changes required to provided support for
+    using OpenSSL Engines that use proprietary key formats.
+  * #65329: Correct handling of WINVER in make file to use correct
+    constant for Windows 7. Add constants for Windows 8, Windows 8.1
+    and Windows 10. Rename WINNT to WIN2k as it is used for Windows
+    2000 upwards, not Windows NT upwards.
+  * Add a patch for APR that fixes an issue where some Windows
+    systems in some configurations would only listen on IPv6
+    addresses on dual stack systems even though configured to listen
+    on both IPv6 and IPv4 addresses.
+  * Correct a regression in the fix for 65181 that prevented an
+    error message from being displayed if an invalid key file was
+    provided and no OpenSSL Engine was configured.
+  * #65181: Improve support for using OpenSSL Engines that use
+    proprietary key formats.
+  * Enable building to continue against OpenSSL 3.x and 1.1.1.
+  * Incomplete name mangling fix for C++ compilers in tcn_api.h.
+  * Improve OS-specific header include for native thread id.
+  * Disable keylog callback support for LibreSSL.
+  * Add support for SSLContext.addChainCertificateRaw() with
+    LibreSSL 2.9.1 and up.
+  * Add support for HP-UX's _lwp_self() in our ssl_thread_id(void).
+  * Remove default option passed for rpath to linker on HP-UX.
+  * Add an option to allow the OCSP responder check to be bypassed.
+    Note that if OCSP is enabled, a missing responder is now treated
+    as an error.
+  * #64429: Fix compilation with LibreSSL.
+  * #63671: libtcnative does not compile with OpenSSL < 1.1.0 and
+    APR w/o threading support.
+  * Correct configure message for OpenSSL libdir.
+  * #64260: Clean up install target.
+  * #64315: configure output for OpenSSL wrong/incomplete sometimes.
+  * Drop obsolete build time workarounds for HP-UX.
+  * Add support for FreeBSD's pthread_getthreadid_np() in our
+    ssl_thread_id(void).
+  * #64316: Introduce tcn_get_thread_id(void) to reduce code
+    duplication.
+  * Fix linking against OpenSSL in non-standard locations on FreeBSD.
+- Removed patch:
+  * libtcnative-1-0-bsc1199170.patch
+    + fix integrated
+
+-------------------------------------------------------------------
+Fri Jul 29 09:12:29 UTC 2022 - pgajdos@suse.com
+
+- Fix for SG#63251, bsc#1199170 (thanks to ohollmann@suse.com)
+- added patches
+  fix https://github.com/apache/tomcat-native/commit/5ac1175a0cf24aae2a285b3f3fb877ff83aef0c0
+  + libtcnative-1-0-bsc1199170.patch
+
 -------------------------------------------------------------------
 Thu Nov  7 11:04:12 UTC 2019 - Matei Albu <malbu@suse.com>
 

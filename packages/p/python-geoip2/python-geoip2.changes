@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 26 10:29:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.0:
+  * drop support for python 3.6
+  - drop
+    0001-Removing-unused-urllib3-dependency-loosening-request.patch
+    (upstream)
+
+-------------------------------------------------------------------
 Fri Jun  9 11:46:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -7,7 +16,7 @@ Fri Jun  9 11:46:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 Wed Feb 15 19:57:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - fix tests on python 3.8 as well with newer python-mocket by skipping
-  the tests/test_webservice which need porting to new python-mocket 
+  the tests/test_webservice which need porting to new python-mocket
 
 -------------------------------------------------------------------
 Mon Jan 23 16:42:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
@@ -28,7 +37,7 @@ Mon Jul  4 07:11:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
   - The AddressNotFoundError class now has an ip_address attribute
     with the lookup address and network property for the empty network
     in the database containing the IP address. These are only available
-    when using a database, not the web service. 
+    when using a database, not the web service.
 - Rebase 0001-Removing-unused-urllib3-dependency-loosening-request.patch
 
 -------------------------------------------------------------------
@@ -79,7 +88,7 @@ Fri May 14 16:10:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 Thu Dec 10 01:27:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - replace deprecated setup.py test call by pyunittest macro so that
-  pip does not try to download stuff 
+  pip does not try to download stuff
 
 -------------------------------------------------------------------
 Wed Nov  4 15:56:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
@@ -88,7 +97,7 @@ Wed Nov  4 15:56:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
   * Added the is_residential_proxy attribute to geoip2.model.AnonymousIP
     and geoip2.record.Traits.
   * HTTPError now provides the decoded response content in the
-    decoded_content attribute. 
+    decoded_content attribute.
 
 -------------------------------------------------------------------
 Tue Jul 28 18:55:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
@@ -121,7 +130,7 @@ Thu Jul 23 20:21:35 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 -------------------------------------------------------------------
 Thu Apr 16 17:45:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- match buildrequires to requirements.txt 
+- match buildrequires to requirements.txt
 
 -------------------------------------------------------------------
 Wed Mar  4 07:46:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>

@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kphotoalbum
-Version:        5.11.0
+Version:        5.12.0
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
@@ -29,15 +29,12 @@ Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kphotoalbum.keyring
 %endif
-Patch0:         kphotoalbum-exiv2.patch
 BuildRequires:  QtAV-devel
 BuildRequires:  cmake >= 3.18.0
+BuildRequires:  extra-cmake-modules > 5.92
 BuildRequires:  fdupes
-BuildRequires:  kf5-filesystem
 BuildRequires:  libexiv2-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -59,6 +56,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libvlc)
 Requires:       sqlite3
 Recommends:     marble
@@ -84,13 +82,10 @@ an image from a special place, or even both.
 %find_lang %{name}
 %{kf5_find_htmldocs}
 
-%suse_update_desktop_file org.kde.%{name} Graphics Photography
-%suse_update_desktop_file org.kde.%{name}-import Graphics Photography
-
 # Fix rpmlint warning text file has executable bits
 chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.kphotoalbum.open-raw.desktop
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %files
 %license LICENSES/*
@@ -102,7 +97,6 @@ chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.kphotoalbum.open-raw.deskt
 %{_kf5_htmldir}/en/kphotoalbum/
 %{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kphotoalbum.svg
-%{_kf5_kxmlguidir}/kphotoalbum/
 %{_kf5_libdir}/libkpabase.so
 %{_kf5_libdir}/libkpaexif.so
 %{_kf5_libdir}/libkpathumbnails.so

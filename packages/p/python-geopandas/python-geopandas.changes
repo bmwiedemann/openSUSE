@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 24 16:40:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.1
+  * The Parquet and Feather IO functions now support the latest
+    1.0.0 version of the GeoParquet specification (geoparquet.org)
+    (#2663).
+  * Fix read_parquet and read_feather for CVE-2023-47248 (#3070).
+- Remove deprecated pygeos from testing: It is included in Shapely
+  now
+
+-------------------------------------------------------------------
 Wed Oct 25 13:41:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip a test still failing with pandas 2.1.1

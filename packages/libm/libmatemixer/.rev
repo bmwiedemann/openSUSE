@@ -103,4 +103,12 @@
     <comment>rectify groups (forwarded request 913355 from jengelh)</comment>
     <requestid>913367</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>66c47d1ea9fa721e9555b6842bc6878b</srcmd5>
+    <version>1.26.1</version>
+    <time>1701121414</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129037</requestid>
+  </revision>
 </revisionlist>

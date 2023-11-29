@@ -460,4 +460,12 @@ we have to transition to just openssl-3 at some point.
 This is required for Kanidm as it requires openssl-3 and tpm2-0-tss. (forwarded request 1100221 from firstyear)</comment>
     <requestid>1100357</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>ed305fa81dbee46d3cad7b53969006af</srcmd5>
+    <version>4.0.1</version>
+    <time>1701121326</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129154</requestid>
+  </revision>
 </revisionlist>

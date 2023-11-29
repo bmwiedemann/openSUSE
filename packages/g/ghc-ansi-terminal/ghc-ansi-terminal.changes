@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 13 13:37:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 1.0.
+  Version 1.0
+  -----------
+
+  * On Windows, drop support for legacy Windows requiring emulation.
+  * On Windows, the package no longer depends (directly or indirectly) on the
+    `Win32`, `array`,`containers`, `deepseq`, `filepath`, `ghc-boot-th`, `mintty`,
+    `pretty` or `template-haskell` packages.
+  * `hSupportsANSI` no longer assumes that the given handle is writeable.
+  * `hSupportsANSIWithoutEmulation` is deprecated.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:45 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

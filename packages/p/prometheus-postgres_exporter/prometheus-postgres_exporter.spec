@@ -17,16 +17,20 @@
 #
 
 
-%if 0%{?rhel} == 8
+%if 0%{?rhel}
+%if 0%{?rhel} >= 8
+# Found compressed .debug_abbrev section, not attempting dwz compression
+# DWARF version 0 unhandled
 %global debug_package %{nil}
 %endif
-
-%if 0%{?rhel}
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
+%{go_nostrip}
 %endif
 
+%if 0%{?sle_version} == 150300 && !0%{?is_opensuse}
 %{go_nostrip}
+%endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -54,15 +58,14 @@ BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 ExcludeArch:    s390
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.14
+BuildRequires:  golang >= 1.18
 Requires(pre):  shadow-utils
 %else
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.20
 Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 Requires(pre):  shadow
 %endif
-%{?systemd_requires}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 %{go_provides}

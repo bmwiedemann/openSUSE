@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -402,6 +402,9 @@ end
 TEST_EXCLUDE=(
     --exclude-test-name unrar                       # is not in openSUSE oss
     --exclude-test-name zeroconf                    # rise up build error
+%if 0%{?suse_version} > 1600
+    --exclude-test-name test_fts_basic              # rise up build error
+%endif
 )
 
 CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3.11 setup.py test "${TEST_EXCLUDE[@]}"

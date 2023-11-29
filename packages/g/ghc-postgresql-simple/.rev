@@ -127,4 +127,20 @@
     <comment>version update</comment>
     <requestid>1098955</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b35ee75a4137939995fb0327d6baaef5</srcmd5>
+    <version>0.7.0.0</version>
+    <time>1700772024</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1127162</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>392b53470d61e12b16c65e4390185f5b</srcmd5>
+    <version>0.7.0.0</version>
+    <time>1701121396</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1128993</requestid>
+  </revision>
 </revisionlist>

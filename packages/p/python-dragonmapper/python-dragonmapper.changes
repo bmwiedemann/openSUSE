@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 23 15:17:48 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add 31-fix-erroneous-IPA-you-yong.patch (gh#tsroten/dragonmapper#31)
+- Skip failing tests (gh#tsroten/dragonmapper#35)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

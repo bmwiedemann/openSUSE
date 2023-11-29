@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 #
-# Configures a zfcp SCSI disk by calling the IBM-provided chzdev command.
+# Configures a zfcp-attached Logical Unit by calling the IBM-provided chzdev command.
 # Whereas this script used to validate the parameters provided to it,
 # we now rely on chzdev to do that instead. The script is intended only
 # as a "translation layer" to provide backward compatability for older
@@ -15,9 +15,9 @@
 #
 #	ccwid = x.y.ssss where
 #		x is always 0 until IBM creates something that uses that number
-#		y is the logical channel subsystem (lcss) number. Most often
+#		y is the subchannel set ID (SSID). Most often
 #                 this is 0, but it could be non-zero
-#		ssss is the four digit subchannel address of the device, in
+#		ssss is the four digit device address of the subchannel, in
 #                    hexidecimal, with leading zeros.
 #	online = 0 to take the device offline
 #		 1 to bring the device online
@@ -41,9 +41,9 @@ usage(){
   echo "Usage: ${0}  <ccwid> <wwpn> <lun> <online>"
   echo "	ccwid = x.y.ssss where"
   echo "		x is always 0 until IBM creates something that uses that number"
-  echo "		y is the logical channel subsystem (lcss) number. Most often"
+  echo "		y is the subchannel set ID (SSID). Most often"
   echo "                this is 0, but it could be non-zero"
-  echo "		ssss is the four digit subchannel address of the device, in"
+  echo "		ssss is the four digit device address of the subchannel, in"
   echo "                   hexidecimal, with leading zeros."
   echo "	online = 0 to take the device offline"
   echo "		 1 to bring the device online"

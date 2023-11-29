@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 26 15:22:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.1
+  * feat: Raise Python error when file is missing (#345)
+
+-------------------------------------------------------------------
 Sat Oct 14 08:48:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.0

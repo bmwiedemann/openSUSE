@@ -149,10 +149,7 @@ automatically configured when plugged on the computer.
 %lang_package -n system-config-printer-common
 
 %prep
-%setup -q
-%patch13 -p1
-%patch19 -p1
-%patch100 -p1
+%autosetup -p1
 
 %build
 if pkg-config --exists "cups"; then

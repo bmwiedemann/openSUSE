@@ -135,7 +135,6 @@ won't be audible to other players.
         -Dcrash-report:BOOL=OFF \
         -DMUMBLE_INSTALL_PLUGINDIR=%{_libdir}/mumble/plugins \
         -Dbundled-speex:BOOL=OFF \
-        -Dpulseaudio:BOOL=OFF \
         -Dice:BOOL=OFF \
 %if 0%{?suse_version} <= 1550
         -DCMAKE_MODULE_LINKER_FLAGS="" \

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 15 15:23:59 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop ghc-9.6.3-src.tar.xz.sig 
+
+-------------------------------------------------------------------
+Tue Nov 14 10:29:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- libatomic.patch: Remove unused patch
+- ghc-with-interpreter.patch: Hadrian: enable GHCi support on riscv64
+- cabal-riscv64.patch: libraries/Cabal: Add support for the 64-bit RISC-V
+  architecture
+- Adjust constraints for riscv64
+
+-------------------------------------------------------------------
+Wed Nov  8 11:52:04 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 9.6.3
+- dropped execstack.patch and bytestring.patch
+ * Major update of ghc see full release notes on:
+ https://downloads.haskell.org/ghc/9.6.3/docs/users_guide/release-notes.html
+
+-------------------------------------------------------------------
 Fri Aug 11 09:33:00 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.4.6
@@ -48,6 +70,11 @@ Wed May 24 14:10:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 - cleanup spec
 
 -------------------------------------------------------------------
+Wed May 24 14:04:24 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add sphinx7.patch
+
+-------------------------------------------------------------------
 Fri Apr 21 17:57:46 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - libatomic.patch: Remove obsolete patch
@@ -72,7 +99,8 @@ Wed Apr 19 08:44:04 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Fri Apr  7 13:08:27 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
- * add provides hsc2hs into ghc-compiler 
+- add provides hsc2hs into ghc-compiler 
+
 
 -------------------------------------------------------------------
 Fri Mar 17 11:09:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -92,11 +120,11 @@ Fri Mar 17 11:09:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 - added patches:
     * ghc-gen_contents_index-haddock-path.patch
     * ghc-Cabal-install-PATH-warning.patch
-    * execstack.patch
+    * execstack.patch 
     * libatomic.patch
-    * riscv-tntc.patch
+    * riscv-tntc.patch   
     * ghc-hadrian-s390x-rts--qg.patch
-
+    
 -------------------------------------------------------------------
 Tue Jan 31 09:37:15 UTC 2023 - Peter Simons <psimons@suse.com>
 

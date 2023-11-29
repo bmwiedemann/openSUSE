@@ -1,7 +1,7 @@
 #
 # spec file for package swaks
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@ License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
 URL:            http://jetmore.org/john/code/swaks/
 Source:         http://jetmore.org/john/code/swaks/files/swaks-%{version}.tar.gz
-Requires:       perl-Net-SSLeay
-Requires:       perl-Net-DNS
 Requires:       perl-IO-Socket-INET6
+Requires:       perl-Net-DNS
+Requires:       perl-Net-SSLeay
 BuildArch:      noarch
 
 %description
@@ -42,15 +42,18 @@ tool. Features include:
   environment variables, configuration files, and command line
 
 %prep
-%autosetup -p1 
+%autosetup -p1
 
 %build
 
 %install
 install -D -m 0755 swaks %{buildroot}%{_bindir}/%{name}
+install -dD -m 0755 %{buildroot}%{_mandir}/man1
+pod2man --center=SWAKS --section=1 swaks %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1.gz
 %license LICENSE.txt
 %doc README.txt doc/*.txt
 

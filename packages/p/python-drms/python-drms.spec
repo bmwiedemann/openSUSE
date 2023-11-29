@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-drms
-Version:        0.6.4
+Version:        0.7.0
 Release:        0
 Summary:        Tool to access HMI, AIA and MDI data with Python
 License:        MIT
 URL:            https://github.com/sunpy/drms
 Source:         https://files.pythonhosted.org/packages/source/d/drms/drms-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

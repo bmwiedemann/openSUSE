@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 13 12:17:42 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Reduce memory constraints for riscv64
+
+-------------------------------------------------------------------
+Tue Nov  7 22:37:47 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update bootsrap compiler to ghc-9.4.4 
+
+-------------------------------------------------------------------
 Sat May 27 09:53:22 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update constraints for riscv64

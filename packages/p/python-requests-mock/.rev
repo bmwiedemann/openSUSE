@@ -287,4 +287,30 @@
     <comment></comment>
     <requestid>1081779</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>648f5d2b0d2f28a64e9175fcbd9f590e</srcmd5>
+    <version>1.11.0</version>
+    <time>1701206324</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.11.0:
+  * Exposes some public type aliases (for type hinting only, they
+    can't be instanciated)
+  * for the types intended to be used by `requests_mock` users.
+  * The following types are now exposed:
+  * `requests_mock.Context` used in callbacks
+  * `requests_mock.Request` used in callbacks, which is a
+    `requests.PreparedRequest` proxy.
+  * `requests_mock.Callback[T]` which is the callbacks type.
+  * .. _requests-mock_1.11.0_Bug Fixes:
+  * Some typing inconsistencies have been fixed.
+  * Especially for `request` object in signatures which is in
+    fact a `requests_mock.Request` object.
+  * Fix incompatibility with urllib3 &gt;2.0.0. In 2.0.0 they
+    default to enforcing content length checking on returned bodies
+    in responses from the previous default of false. However the flag
+    is still available so for compatibility we can just default
+    the other way.
+- drop remove-mock.patch (upstream)</comment>
+    <requestid>1129211</requestid>
+  </revision>
 </revisionlist>

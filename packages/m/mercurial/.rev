@@ -1672,4 +1672,12 @@ As usual, a lot of patches don't make it to this list since they're more interna
     <comment>Mercurial 6.5.3 (forwarded request 1124407 from develop7)</comment>
     <requestid>1124408</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>8e3399c8e83d40776a471a2fd22d4d80</srcmd5>
+    <version>6.6</version>
+    <time>1700771932</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128100</requestid>
+  </revision>
 </revisionlist>

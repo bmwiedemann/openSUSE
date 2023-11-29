@@ -212,4 +212,12 @@
   * No changelog was made available</comment>
     <requestid>1114111</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>5318d1dcbfe7c072b768d0f9e6b24396</srcmd5>
+    <version>0.2.0+llvm17.0.1</version>
+    <time>1700771938</time>
+    <user>anag+factory</user>
+    <comment>- let sle15-sp6 require llvm17/clang17</comment>
+    <requestid>1128178</requestid>
+  </revision>
 </revisionlist>

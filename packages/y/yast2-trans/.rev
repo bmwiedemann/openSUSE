@@ -3950,4 +3950,14 @@
     <comment>Submit new version</comment>
     <requestid>1127599</requestid>
   </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>65c066306c7578cbf815306d35363589</srcmd5>
+    <version>84.87.20231121.7869d671a6</version>
+    <time>1700771944</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87.20231121.7869d671a6:
+  * Translations for Leap 15.6 / SLES 15 SP6 Beta poo#131735
+  * New POT for text domain 'hana-ha'.</comment>
+    <requestid>1128208</requestid>
+  </revision>
 </revisionlist>

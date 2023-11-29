@@ -19,7 +19,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   209
+%define texlive_noarch   210
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -14280,7 +14280,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/features.md
 %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/history.md
 %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/index.md
-%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/makepsmd.py
 %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pandocfilters/filter-html.lua
 %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pandocfilters/filter-pdf.lua
 %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/pdftemp/about.html
@@ -20711,24 +20710,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/makepsmd.py
-    do
-	test -e %{buildroot}/$scr || continue
-	chmod 0755 %{buildroot}/$scr
-    done
-    # Avoid /usr/bin/env <prog>
-    for scr in %{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/makepsmd.py
-    do
-	test -e %{buildroot}/$scr || continue
-	ed %{buildroot}/${scr} <<-'EOF'
-		1
-		s@/env[[:blank:]]\+@/@
-		.
-		w
-		q
-	EOF
-    done
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-tug/GentiumPlus-6.101/documentation/source/makepsmd.py
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-gentium-tug
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/gentium-tug/*.{pf[ab],[ot]tf} \

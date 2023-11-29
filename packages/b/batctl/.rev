@@ -178,4 +178,17 @@
     <comment></comment>
     <requestid>1099858</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>07ab4401ad0ba85e1296bc8a4268a702</srcmd5>
+    <version>2023.3</version>
+    <time>1701023847</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.3:
+  * (no changes)
+
+- Update to version 2016.0
+  * now maintains a list of optional features and informs the user
+  * the sysfs / debugfs code has been refactored to remove redundant</comment>
+    <requestid>1128778</requestid>
+  </revision>
 </revisionlist>

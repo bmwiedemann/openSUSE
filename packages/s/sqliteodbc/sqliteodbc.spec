@@ -1,7 +1,7 @@
 #
 # spec file for package sqliteodbc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sqliteodbc
-Version:        0.9998
+Version:        0.99991
 Release:        0
 Summary:        ODBC driver for SQLite
 License:        BSD-2-Clause
@@ -35,7 +35,7 @@ BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
 Requires:       unixODBC
 Requires(post): unixODBC
-Requires(preun): unixODBC
+Requires(preun):unixODBC
 
 %description
 ODBC driver for SQLite interfacing SQLite 3.x using the

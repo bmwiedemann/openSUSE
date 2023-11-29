@@ -17,13 +17,13 @@ to allow to get the same build results anywhere and anytime.
  configure.ac | 7 +++++++
  1 file changed, 7 insertions(+)
 
-diff --git a/configure.ac b/configure.ac
-index ede7d26..0164878 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -88,6 +88,13 @@ timestamp=$(date)
- AC_MSG_CHECKING([current timestamp])
- AC_MSG_RESULT([$timestamp])
+Index: stressapptest-1.0.11/configure.ac
+===================================================================
+--- stressapptest-1.0.11.orig/configure.ac
++++ stressapptest-1.0.11/configure.ac
+@@ -110,6 +110,13 @@ then
+   hostname=reproducible
+ fi
  
 +if test -n "$SOURCE_DATE_EPOCH"
 +then

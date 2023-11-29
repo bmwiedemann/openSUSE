@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.7.1
+Version:        0.6.7.2
 Release:        0
 Summary:        Efficient strict text builder
 License:        MIT

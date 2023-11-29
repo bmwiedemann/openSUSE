@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 26 10:36:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.99991:
+  * update to SQLite 3.43.2
+  * fix SQL parsing, thanks Paul Wise for patch
+  * update autoconf stuff
+  * INSERT/UPDATE/DELETE can produce result set
+  * DSN option "ILIKE is LIKE" in SQLite3 driver
+  * DSN option "Attach As" in SQLite3 driver
+  * better deal with SQL comments
+  * cleanup in confgure.in
+
+-------------------------------------------------------------------
 Mon Aug 17 07:41:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.9998
@@ -32,7 +45,7 @@ Fri Dec  9 07:31:10 UTC 2016 - mpluskal@suse.com
 	* update to SQLite 3.15.2
 	* don't statically buffer result of localeconv()
 	* increased some internal string buffers
-	* fixes in SQLSetPos() 
+	* fixes in SQLSetPos()
 	* fix locking in xpath module, thanks Abramo Bagnara
 - Changes for version 0.9994:
 	* update to SQLite 3.13.0
@@ -67,7 +80,7 @@ Wed Feb  3 22:38:21 UTC 2016 - mpluskal@suse.com
 Fri Dec 18 09:02:14 UTC 2015 - mpluskal@suse.com
 
 - Add sqliteodbc-rpmlintrc
-  * this is not regular shared library but plugin for unixODBC 
+  * this is not regular shared library but plugin for unixODBC
 
 -------------------------------------------------------------------
 Fri Apr 17 13:16:23 UTC 2015 - mpluskal@suse.com
@@ -75,7 +88,7 @@ Fri Apr 17 13:16:23 UTC 2015 - mpluskal@suse.com
 - Update to 0.9992
   * update to SQLite 3.8.9
   * fixed buffer length return in SQLGetStmtAttr*()
-  * report SQL_SC_SQL92_ENTRY level for 
+  * report SQL_SC_SQL92_ENTRY level for
     SQLGetInfo(...SQL_SQL_CONFORMANCE...)
   * improved configure for cross-compiling
 
@@ -88,7 +101,7 @@ Tue Feb 10 12:17:18 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Mon Feb  9 12:36:22 UTC 2015 - tuukka.pasanen@ilmi.fi
 
-- New version 0.9991 released 
+- New version 0.9991 released
 
 -------------------------------------------------------------------
 Mon Feb  9 12:33:20 UTC 2015 - tuukka.pasanen@ilmi.fi

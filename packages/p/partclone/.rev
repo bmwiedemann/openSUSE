@@ -209,4 +209,22 @@
     <comment></comment>
     <requestid>1115573</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a9b93c1e8db75485cb14d2083c2eecba</srcmd5>
+    <version>0.3.27</version>
+    <time>1701023867</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.27:
+  * add read-direct-io and write-direct-io options for O_DIRECT
+    flag
+  * add date time to log file
+
+  * correction for item at offset 76
+  * report used blocks and free space based on bitmap
+  * Full Changelog:
+  * fix progress
+- update to 0.2.38
+- not all filesystems supported yet</comment>
+    <requestid>1128821</requestid>
+  </revision>
 </revisionlist>

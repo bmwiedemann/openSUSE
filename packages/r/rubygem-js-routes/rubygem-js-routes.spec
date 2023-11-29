@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-js-routes
-Version:        2.2.7
+Version:        2.2.8
 Release:        0
 %define mod_name js-routes
 %define mod_full_name %{mod_name}-%{version}

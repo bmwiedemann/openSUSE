@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 28 07:04:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.23.6:
+  * Add new text file document handler.
+  * Add interface for rearranging pages.
+  * Fix double free bug in html parser.
+  * Use CropBox as origin for fitz space in PDF documents so that page bounding box origin is at the top left.
+  * Fix parsing of cmap with surrogate characters.
+  * Fix bug in story handling resetting.
+  * Various smaller fixes for pymupdf.
+
+-------------------------------------------------------------------
 Wed Oct 11 08:05:24 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.23.4:

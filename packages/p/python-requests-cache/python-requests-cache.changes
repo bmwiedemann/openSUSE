@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Nov 21 06:22:09 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.1.1:
+  - Backport fix from 1.2: Add compatibility with cattrs 23.2
+- Update to 1.1.0:
+  - SESSION SETTINGS:
+    - Add support for regular expressions with urls_expire_after
+  - SQLITE BACKEND:
+    - Add busy_timeout argument (see SQLite docs for details)
+    - In WAL journaling mode (wal=True), default to 'normal'
+      synchronous mode instead of 'full'
+    - Fix potential OperationalError: database is locked in
+      multithreaded SQLite usage during bulk delete operations
+    - Fix deadlock in multithreaded SQLite usage if a thread
+      encounters an error during COMMIT
+  - BUGFIXES:
+    - Fix loading cached JSON content with decode_content=True
+      when the root element is a list
+    - Fix BaseCache.recreate_keys() to normalize response bodies
+      with b'None'
+    - Fix BaseCache.contains() for multipart POST requests
+    - Fix CachedResponse.history not being fully deserialized on
+      python<=3.8
+    - Fix request matching with Vary and redirects
+    - Skip normalizing CachedResponse.url so it always matches
+      the original request URL
+    - Avoid unnecessary cache writes for revalidation requests if
+      headers and expiration are unchanged
+    - Add compatibility with urllib3 2.0
+
+-------------------------------------------------------------------
 Thu May  4 20:20:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - WORK IN PROGRESS, TESTS DON’T PASS!

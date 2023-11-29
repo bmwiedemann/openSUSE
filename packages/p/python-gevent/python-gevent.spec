@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        23.9.0
+Version:        23.9.1
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module greenlet >= 2.0.0}
+BuildRequires:  %{python_module greenlet >= 3.0.0}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libuv)
 Requires:       python-cffi
 Requires:       python-dnspython
-Requires:       python-greenlet >= 2.0.0
+Requires:       python-greenlet >= 3.0.0
 Requires:       python-importlib-metadata
 Requires:       python-requests
 Requires:       python-zope.event

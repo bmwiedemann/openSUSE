@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 28 07:00:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.2:
+  * Prevent files from being moved to versioning recursively
+  * Return first FTP parsing error when trying multiple variants
+  * Allow file times from the future for Linux-style FTP listing
+
+-------------------------------------------------------------------
 Mon Nov  6 07:08:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.1:

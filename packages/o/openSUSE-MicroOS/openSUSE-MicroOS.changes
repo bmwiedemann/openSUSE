@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:40:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Switch all images from vmx to oem to let kiwi resize / on boot
+  (boo#1217448)
+
+-------------------------------------------------------------------
 Thu Nov  2 12:53:34 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop 'cputype-armv7' requirement for armv7

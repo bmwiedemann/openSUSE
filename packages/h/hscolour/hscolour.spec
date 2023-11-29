@@ -19,7 +19,7 @@
 %global pkg_name hscolour
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.24.4
+Version:        1.25
 Release:        0
 Summary:        Colourise Haskell code
 License:        LGPL-2.1-or-later

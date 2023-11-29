@@ -20,7 +20,7 @@ Name:           python-azure-agent
 Summary:        Microsoft Azure Linux Agent
 License:        Apache-2.0
 Group:          System/Daemons
-Version:        2.8.0.11
+Version:        2.9.1.1
 Release:        0
 URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
@@ -94,10 +94,53 @@ Requires:       python-pytest
 %description test
 Unit tests for python-azure-agent.
 
+%package config-default
+Summary:        Default upstream configuration
+Group:          Development/Languages/Python
+Requires:       %{name} == %{version}
+Provides:       waagent-config
+Conflicts:      otherproviders(waagent-config)
+
+%description config-default
+The default configuration for the agent as supplied by upstream for SUSE
+
+%package config-server
+Summary:        SUSE specific configuration for server products
+Group:          Development/Languages/Python
+Requires:       %{name} == %{version}
+Provides:       waagent-config
+Conflicts:      otherproviders(waagent-config)
+
+%description config-server
+Modified waagent.conf file to meet SUSE policies and SUSE image build
+setup
+
+%package config-hpc
+Summary:        SUSE specific configuration for HPC
+Group:          Development/Languages/Python
+Requires:       %{name} == %{version}
+Provides:       waagent-config
+Conflicts:      otherproviders(waagent-config)
+
+%description config-hpc
+Modified waagent.conf file to meet SUSE policies and SUSE image build
+setup
+
+%package config-micro
+Summary:        SUSE specific configuration for Micro
+Group:          Development/Languages/Python
+Requires:       %{name} == %{version}
+Provides:       waagent-config
+Conflicts:      otherproviders(waagent-config)
+
+%description config-micro
+Modified waagent.conf file to meet SUSE policies and SUSE image build
+setup
+
 %prep
 %setup -qn WALinuxAgent-%{version}
 %patch1
-%if 0%{?suse_version} && 0%{?suse_version} > 1315
+%if 0%{?suse_version} && 0%{?suse_version} > 1315 && 0%{?sle_version}
 %patch6
 %endif
 %patch7
@@ -117,6 +160,34 @@ python3 setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildr
 %else
 python setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %endif
+
+# Config file flavor setup
+cp %{buildroot}%{_sysconfdir}/waagent.conf %{buildroot}%{_sysconfdir}/waagent.conf.default
+# No autoupdate of binaries for any SUSE product
+sed -i -e "s/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=n/" %{buildroot}%{_sysconfdir}/waagent.conf
+# Common settings for most SUSE products
+# Generate all supported SSH host key types
+sed -i -e "s/SshHostKeyPairType=rsa/SshHostKeyPairType=auto/" %{buildroot}%{_sysconfdir}/waagent.conf
+# We use clod-init
+sed -i -e "s/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/" %{buildroot}%{_sysconfdir}/waagent.conf
+# Leave the ephemeral disk handling to cloud-init
+sed -i -e "s/ResourceDisk.Format=y/ResourceDisk.Format=n/" %{buildroot}%{_sysconfdir}/waagent.conf
+cp %{buildroot}%{_sysconfdir}/waagent.conf %{buildroot}%{_sysconfdir}/waagent.conf.server
+# HPC setup is addition to SUSE server configuration
+# While there is no more specific driver we still need to enable
+# RDMA to make the logic in the agent set up the IB interface
+sed -i -e "s/# OS.EnableRDMA=y/OS.EnableRDMA=y/" %{buildroot}%{_sysconfdir}/waagent.conf
+cp %{buildroot}%{_sysconfdir}/waagent.conf %{buildroot}%{_sysconfdir}/waagent.conf.hpc
+# Micro setup
+# Undo the HPC change
+sed -i -e "s/OS.EnableRDMA=y/# OS.EnableRDMA=y/" %{buildroot}%{_sysconfdir}/waagent.conf
+# Use Ignition/Afterburn in Micro
+sed -i -e "s/Provisioning.Agent=cloud-init/Provisioning.Agent=disabled/" %{buildroot}%{_sysconfdir}/waagent.conf
+# No extension support for transactional-upfdate systems
+# There's an inherant bug in that root password reset is also treated via this
+# switch
+sed -i -e "s/Extensions.Enabled=y/Extensions.Enabled=n/" %{buildroot}%{_sysconfdir}/waagent.conf
+mv %{buildroot}%{_sysconfdir}/waagent.conf %{buildroot}%{_sysconfdir}/waagent.conf.micro
 
 ln -s service %{buildroot}%{_sbindir}/rcwaagent
 mkdir -p %{buildroot}/%{_unitdir}
@@ -182,10 +253,27 @@ done
 %restart_on_update waagent
 %service_del_postun waagent.service
 
+%post config-default
+rm -rf %{_sysconfdir}/waagent.conf
+ln -s %{_sysconfdir}/waagent.conf.default %{_sysconfdir}/waagent.conf
+
+%post config-server
+rm -rf %{_sysconfdir}/waagent.conf
+ln -s %{_sysconfdir}/waagent.conf.server %{_sysconfdir}/waagent.conf
+
+%post config-hpc
+rm -rf %{_sysconfdir}/waagent.conf
+ln -s %{_sysconfdir}/waagent.conf.hpc %{_sysconfdir}/waagent.conf
+
+%post config-micro
+rm -rf %{_sysconfdir}/waagent.conf
+ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
+
 %files
 %defattr(0644,root,root,0755)
 %doc NOTICE README.md
 %license LICENSE.txt
+%exclude %{_sysconfdir}/waagent.conf*
 %{_sbindir}/rcwaagent
 %attr(0755,root,root) %{_sbindir}/waagent
 %attr(0755,root,root) %{_sbindir}/waagent2.0
@@ -194,7 +282,6 @@ done
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/waagent
 %endif
-%config(noreplace) %{_sysconfdir}/waagent.conf
 %ghost %{_localstatedir}/log/waagent.log
 %{_unitdir}/waagent.service
 %if 0%{?suse_version} < 1230
@@ -221,5 +308,17 @@ done
 %else
 %{python_sitelib}/azurelinuxagent/tests
 %endif
+
+%files config-default
+%config(noreplace) %{_sysconfdir}/waagent.conf.default
+
+%files config-server
+%config(noreplace) %{_sysconfdir}/waagent.conf.server
+
+%files config-hpc
+%config(noreplace) %{_sysconfdir}/waagent.conf.hpc
+
+%files config-micro
+%config(noreplace) %{_sysconfdir}/waagent.conf.micro
 
 %changelog

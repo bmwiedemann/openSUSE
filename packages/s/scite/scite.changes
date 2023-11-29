@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 22 12:26:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.4.0:
+  * No Linux specific changes.
+- Drop scite-fix-missing-include.patch: upstreamed.
+
+-------------------------------------------------------------------
 Sun Oct  1 22:43:41 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.8:

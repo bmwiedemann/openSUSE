@@ -44,7 +44,7 @@ make_dirs () {
 add_file () {
     local f="$1"
     make_dirs "$f"
-    if [ -f "$dest/$f" ]; then
+    if [ -e "$dest/$f" ]; then
 	echo "\"$fwdir/$f\"" >> files-$topic
     else
 	echo "\"$fwdir/$f$cext\"" >> files-$topic

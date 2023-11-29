@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 Name:           libfcrypto
 %define lname	libfcrypto1
 Version:        20221229
@@ -27,13 +29,15 @@ URL:            https://github.com/libyal/libfcrypto
 Source:         https://github.com/libyal/libfcrypto/releases/download/%version/libfcrypto-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libfcrypto/releases/download/%version/libfcrypto-alpha-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         system-libs.patch
-BuildRequires:  autoconf >= 2.71
+BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcerror) >= 20220101
+%python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libfcrypto is a library for encryption formats.
@@ -64,15 +68,28 @@ applications that want to make use of libfcrypto.
 %autosetup -p1
 
 %build
-autoreconf -fi
+%{python_expand #
 # see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
-%configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+%configure --disable-static --disable-rpath \
+	--enable-wide-character-type \
+	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
+	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+echo "$python" >lastpython
 %make_build
+%make_install DESTDIR="%_builddir/rt"
+%make_build clean
+}
 
 %install
-%make_install
+mv "%_builddir/rt"/* "%buildroot/"
 find "%buildroot" -type f -name "*.la" -delete -print
+
+%check
+export PYTHON="$(cat lastpython)"
+# The testsuite has a symbol overload for malloc,
+# and that no longer works when using version-script
+make check || :
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -81,10 +98,13 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %license COPYING*
 %_libdir/libfcrypto.so.*
 
-%files devel
+%files -n %name-devel
 %_includedir/*
 %_libdir/*.so
 %_libdir/pkgconfig/*.pc
 %_mandir/man3/*.3*
+
+%files %python_files
+%python_sitearch/pyfcrypto.so
 
 %changelog

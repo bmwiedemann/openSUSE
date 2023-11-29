@@ -1,0 +1,41 @@
+From 2a6770566ab57d601abc7c2f49a8051b9d97b64c Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Tue, 31 Oct 2023 12:36:02 +0100
+Subject: [PATCH] Make Unicode recovery test work with libxml2 2.12 (GH-383)
+
+When encountering encoding errors, libxml2 no longer switches to ISO-8859-1 since version 2.12.
+---
+ src/lxml/parser.pxi            | 2 +-
+ src/lxml/tests/test_unicode.py | 6 +++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/lxml/parser.pxi b/src/lxml/parser.pxi
+index 4b7b52065..8ceec7d25 100644
+--- a/src/lxml/parser.pxi
++++ b/src/lxml/parser.pxi
+@@ -693,7 +693,7 @@ cdef xmlDoc* _handleParseResult(_ParserContext context,
+             # An encoding error occurred and libxml2 switched from UTF-8
+             # input to (undecoded) Latin-1, at some arbitrary point in the
+             # document.  Better raise an error than allowing for a broken
+-            # tree with mixed encodings.
++            # tree with mixed encodings. This is fixed in libxml2 2.12.
+             well_formed = 0
+         elif recover or (c_ctxt.wellFormed and
+                          c_ctxt.lastError.level < xmlerror.XML_ERR_ERROR):
+diff --git a/src/lxml/tests/test_unicode.py b/src/lxml/tests/test_unicode.py
+index 6d4ee9c0f..3636539b2 100644
+--- a/src/lxml/tests/test_unicode.py
++++ b/src/lxml/tests/test_unicode.py
+@@ -167,7 +167,11 @@ def test_illegal_utf8(self):
+     def test_illegal_utf8_recover(self):
+         data = _bytes('<test>\x80\x80\x80</test>', encoding='iso8859-1')
+         parser = etree.XMLParser(recover=True)
+-        self.assertRaises(etree.XMLSyntaxError, etree.fromstring, data, parser)
++        if etree.LIBXML_VERSION >= (2, 12, 0):
++            tree = etree.fromstring(data, parser)
++            self.assertEqual('\ufffd\ufffd\ufffd', tree.text)
++        else:
++            self.assertRaises(etree.XMLSyntaxError, etree.fromstring, data, parser)
+ 
+     def _test_encoding(self, encoding, xml_encoding_name=None):
+         foo = """<?xml version='1.0' encoding='%s'?>\n<tag attrib='123'></tag>""" % (

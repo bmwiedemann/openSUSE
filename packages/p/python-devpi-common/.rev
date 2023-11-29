@@ -79,4 +79,19 @@
 - Drop patch unpin-versions.patch, no longer required.</comment>
     <requestid>1118536</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7da77c1f615b8f62fc6e5f08ddd65417</srcmd5>
+    <version>4.0.3</version>
+    <time>1701023816</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.3:
+  * Add ``is_prerelease`` and other methods to ``LegacyVersion``
+    to fix ``get_sorted_versions`` with ``stable=True`` and some
+    other cases.
+
+- Update to 4.0.2:
+- Update to version 3.7.0
+  * Replace “cached_property” with “lazy” package, which uses __dict__</comment>
+    <requestid>1128723</requestid>
+  </revision>
 </revisionlist>

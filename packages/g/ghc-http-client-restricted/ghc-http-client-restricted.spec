@@ -19,7 +19,7 @@
 %global pkg_name http-client-restricted
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.0.5
+Version:        0.1.0
 Release:        0
 Summary:        Restricting the servers that http-client will use
 License:        MIT
@@ -28,8 +28,8 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-connection-devel
-BuildRequires:  ghc-connection-prof
+BuildRequires:  ghc-crypton-connection-devel
+BuildRequires:  ghc-crypton-connection-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-http-client-devel

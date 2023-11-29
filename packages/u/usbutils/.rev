@@ -400,4 +400,41 @@
     <comment></comment>
     <requestid>1031468</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7017421737b240a60b19fd66660bed74</srcmd5>
+    <version>017</version>
+    <time>1701121312</time>
+    <user>anag+factory</user>
+    <comment>- update to 017:
+  * lsusb: fix up [unknown] vendor and product strings.
+  * lsusb: fix build warning for
+    dump_billboard_alt_mode_capability_desc()
+  * lsusb: add fallback names for 'lsusb -v' output
+  * names: simplify get_vendor_product_with_fallback() a
+    bit
+  * rezso (1):
+  * Honor system libdir and includedir
+  * usbutils 016
+  * usbutils: lsusb-t: print entries for devices with no
+    interfaces
+  * Fix a typo in usb-spec.h
+  * lsusb.py.in: Display (device) power/wakeup via -w
+    option.
+  * Fix an incorrect length value in hid descriptor.
+  * Fix misalignments in hid device descripptor.
+  * Use bigger buffer to place speed value string
+  * lsusb -h returns an error
+  * lsusb -h fixups
+  * lsusb -t: sort in bus order, not reverse order
+  * lsusb -t: print ports and busses and devices with same
+    width
+  * lsusb -t: assign_interface_to_parent() fixups
+  * lsusb.8.in: fix up missing '-' in text
+  * README.md: add source location
+  * lsusb.py: fix up wakeup logic for devices that do not
+    support it
+  * lsusb.py.in: add another default path for usb.ids
+  * names.c: if a string can not be found in the usb.ids (forwarded request 1129082 from dirkmueller)</comment>
+    <requestid>1129090</requestid>
+  </revision>
 </revisionlist>

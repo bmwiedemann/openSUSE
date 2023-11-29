@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 23 15:41:24 UTC 2023 - Berend De Schouwer <berend@deschouwer.co.za>
+
+- Add patches
+  * pipe-command-hostname-not-null.patch
+    The hostname of a system can be NULL if the configuration "address ..."
+    is not set.  If the pipe command contains \H, and also has additional
+    arguments like "send --host \H --system \Z", the command will be cut at
+    "send --host", and not add "--system \Z".
+    This replaces an empty hostname with the system name consistent with unix/tcp.c
+    An alternative is to set it to the empty string.
+
+-------------------------------------------------------------------
 Wed Jul 12 10:41:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patches

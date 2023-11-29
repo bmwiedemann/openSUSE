@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.0.3
+Version:        4.2.2
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause
@@ -54,6 +54,8 @@ BuildRequires:  ghc-time-manager-devel
 BuildRequires:  ghc-time-manager-prof
 BuildRequires:  ghc-unix-time-devel
 BuildRequires:  ghc-unix-time-prof
+BuildRequires:  ghc-unliftio-devel
+BuildRequires:  ghc-unliftio-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Glob-devel
@@ -64,8 +66,8 @@ BuildRequires:  ghc-aeson-pretty-prof
 BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-base16-bytestring-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
@@ -74,6 +76,8 @@ BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-network-run-devel
 BuildRequires:  ghc-network-run-prof
+BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-typed-process-devel

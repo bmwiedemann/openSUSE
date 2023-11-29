@@ -56,4 +56,30 @@
 - add 0001-Fix-runaway-allocation-on-v2-_catalog.patch (CVE-2023-2253, bsc#1207705)</comment>
     <requestid>1086800</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0ce1dca8d90b91c844138fd6627614be</srcmd5>
+    <version>2.8.3</version>
+    <time>1701206355</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.3 (bsc#1216491):
+  * Pass `BUILDTAGS` argument to `go build`
+  * Enable Go build tags
+  * `reference`: replace deprecated function `SplitHostname`
+  * Dont parse errors as JSON unless Content-Type is set to JSON
+  * update to go 1.20.8
+  * Set `Content-Type` header in registry client `ReadFrom`
+  * deprecate reference package, migrate to
+    github.com/distribution/reference
+  * `digestset`: deprecate package in favor of `go-
+    digest/digestset`
+  * Do not close HTTP request body in HTTP handler
+  * Add v2.8.3 release notes
+
+  support (SD-106252)
+- cleanups
+- go back to golang 1.15 to fix the build for now
+  Make ipfilteredby optional
+- enabled changesgenerate option to automatically generate changes</comment>
+    <requestid>1129251</requestid>
+  </revision>
 </revisionlist>

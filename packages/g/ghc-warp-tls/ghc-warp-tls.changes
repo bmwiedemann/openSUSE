@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct  4 00:09:06 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.4.3.
+  ## 3.4.3
+
+  * Install shutdown handlers passed via `Settings` to `run...` functions
+
+  ## 3.4.2
+
+  * Requiring warp v3.3.29.
+
+  ## 3.4.1
+
+  * Supporting `tls` v1.8.0.
+
+  ## 3.4.0
+
+  * Major version up to deprecate v3.3.7 due to the incompatibility
+    against cryptonite.
+
+  ## 3.3.7
+
+  * Using crypton instead of cryptonite.
+    [#931](https://github.com/yesodweb/wai/pull/931)
+
+-------------------------------------------------------------------
 Mon Jul 24 18:36:03 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update warp-tls to version 3.3.6 revision 1.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 23 19:46:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (only needed when _service makes
+  tarballs directly from git)
+
+-------------------------------------------------------------------
 Sun Nov 19 10:30:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20231119

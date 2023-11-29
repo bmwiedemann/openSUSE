@@ -938,4 +938,31 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   * a few bugfixes</comment>
     <requestid>1116422</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>cfc3f102d46ac177b0ae22e7b4c6a583</srcmd5>
+    <version>2.40</version>
+    <time>1700675672</time>
+    <user>anag+factory</user>
+    <comment>- the current source supersedes old sle15-sp5 patches (see
+  changelog below)
+  * U_Map-evdev-keycodes-KEY_RFKILL-and-KEY_WWAN-to-XF86RF.patch
+  * U_Updating-Old-Hungarian.patch
+  * U_Fix-media-keys-lag-on-ABNT2-keyboard.patch
+  * U_Add-the-new-AZERTY-layout-norm-NF-Z71-300.patch
+
+- includes fixes for 
+  * missing mappings for evdev keys KEY_RFKILL and KEY_WWAN
+    (boo#1123784)
+  * capslock in Old Hungarian layout (boo#1153774)
+  * wrong keyboard mapping causing input delays with ABNT2 keyboards
+    (bsc#1191242)
+- includes backport of French standardized AZERTY layout (AFNOR:
+  NF Z71-300) (bsc#1188867)
+
+- supersedes a patch called 'U_fixed-keycode-comment.patch' from
+  sle15-sp5, which wasn't applied there any longer either.
+    &lt;I247&gt; = 247;   // #define KEY_UWB                 239 
+  is defined in keycodes/evdev since a long time ...</comment>
+    <requestid>1128123</requestid>
+  </revision>
 </revisionlist>

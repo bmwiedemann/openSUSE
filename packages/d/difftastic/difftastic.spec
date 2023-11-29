@@ -18,14 +18,13 @@
 
 
 Name:           difftastic
-Version:        0.52.0
+Version:        0.53.1
 Release:        0
 Summary:        A structural diff that understands syntax
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 URL:            https://difftastic.wilfred.me.uk/
 Source0:        https://github.com/Wilfred/difftastic/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  c++_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
@@ -48,7 +47,6 @@ This package contains the documentation for difftastic.
 
 %prep
 %autosetup -a1 -p1
-install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

@@ -1173,4 +1173,20 @@ goes in line with 946250</comment>
     <comment>- Fix spec file for Leap (forwarded request 1127633 from scabrero)</comment>
     <requestid>1127656</requestid>
   </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>c1c65a816269628aaefe6b7dabbc10f1</srcmd5>
+    <version>2.9.3</version>
+    <time>1700675661</time>
+    <user>anag+factory</user>
+    <comment>- Adapt spec file for SLE 15 SP6/Leap 15.6; (jsc#PED-6714);</comment>
+    <requestid>1127975</requestid>
+  </revision>
+  <revision rev="135" vrev="4">
+    <srcmd5>0bdd9b9f935e648a856b691616043e79</srcmd5>
+    <version>2.9.3</version>
+    <time>1701206303</time>
+    <user>anag+factory</user>
+    <comment>SLE merge, complete changelog with dropped SLE patches (forwarded request 1129120 from scabrero)</comment>
+    <requestid>1129201</requestid>
+  </revision>
 </revisionlist>

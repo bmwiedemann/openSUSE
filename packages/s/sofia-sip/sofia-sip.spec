@@ -1,7 +1,7 @@
 #
 # spec file for package sofia-sip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,8 +97,7 @@ at the Nokia Research Center.
 This package holds the glib2 bindings.
 
 %prep
-%setup -q -n %{name}-%{version}.1
-%patch0 -p1
+%autosetup -p1 -n %{name}-%{version}.1
 find . -name "*.awk" -exec sed -i 's|#! /usr/bin/env awk|#!/usr/bin/awk|g' {} \;
 
 %build
