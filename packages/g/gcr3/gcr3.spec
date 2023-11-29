@@ -1,7 +1,7 @@
 #
 # spec file for package gcr3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -205,9 +205,9 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %prep
 %setup -q -n %{_name}-%{version}
 %if 0%{?sle_version}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
-%patch2 -p1
+%patch -P 2 -p1
 
 %build
 %meson \

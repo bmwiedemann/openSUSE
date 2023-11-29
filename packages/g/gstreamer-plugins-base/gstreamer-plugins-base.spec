@@ -491,10 +491,7 @@ to compile and link applications that use gstreamer-plugins-base.
 %lang_package
 
 %prep
-%autosetup -n %{_name}-%{version} -N
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -n %{_name}-%{version} -p1
 
 %build
 export PYTHON=%{_bindir}/python3

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 28 12:06:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sun Nov 26 12:06:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add a059909d62da0c11774f1089d02937699fabf150.patch: power: Fix
+  enum mismatch warning
+- Add 41d0dc1db4d75c37ba67fe903105b4e162d42f1a.patch: power: Fix
+  uninitialised variable warning
+- Renumber patches, ensure we have a patch0 when upstream patches
+  are available in future release.
+
+-------------------------------------------------------------------
 Thu Oct 26 08:40:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 538816ff42f682fc4b541810ca107486abab9976.patch: smartcard:

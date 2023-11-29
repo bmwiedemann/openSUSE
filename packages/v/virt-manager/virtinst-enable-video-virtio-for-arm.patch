@@ -141,7 +141,7 @@ Index: virt-manager-4.1.0/virtinst/guest.py
 ===================================================================
 --- virt-manager-4.1.0.orig/virtinst/guest.py
 +++ virt-manager-4.1.0/virtinst/guest.py
-@@ -1024,7 +1024,10 @@ class Guest(XMLBuilder):
+@@ -1029,7 +1029,10 @@ class Guest(XMLBuilder):
              return
          if (not self.os.is_x86() and
              not self.os.is_pseries()):

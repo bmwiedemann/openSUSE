@@ -429,6 +429,7 @@ A small test browswer from webkit, useful for testing features.
 
 
 # Expand %%lang_package to Obsoletes its older-name counterpart
+
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -443,6 +444,8 @@ Provides translations for the "%{name}" package.
 
 %prep
 %autosetup -p1 -n webkitgtk-%{version}
+# Adjust path to GStreamer's gst-plugin-scanner (we rename it to - gst-plugin-scanner-%%{_target_cpu}
+sed -i 's|/gst-plugin-scanner|/gst-plugin-scanner-%{_target_cpu}|' ./Source/WebKit/UIProcess/Launcher/glib/BubblewrapLauncher.cpp
 
 %build
 # Here we must muzzle our dog so it doesn't eat all the memory

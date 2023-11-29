@@ -58,8 +58,7 @@ This package contains development files.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 %if 0%{?sle_version}
 cp -a %{SOURCE1} .
 %endif

@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        45.1+14
+Version:        45.1+22
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -185,15 +185,15 @@ GNOME control center.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
+%patch -P 1001 -p1
+%patch -P 1002 -p1
+%patch -P 1003 -p1
 %endif
 
 %build

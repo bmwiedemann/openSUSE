@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 29 14:32:32 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231129.576a86e2:
+  * Fix: bootstrap: fix the owner and permission of file authorized_keys (bsc#1217279)
+  * Dev: behave: add a test case for bsc#1217279
+  * Dev: unittest: add a test case for the previous change
+  * Fix: prun: should not call user_pair_for_ssh() when target host is localhost (bsc#1217094)
+
+-------------------------------------------------------------------
 Thu Nov 23 09:26:50 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.6.0+20231123.50296e9e:

@@ -176,9 +176,9 @@ widgets in Glade.
 
 %prep
 %autosetup -n %{_name}-%{version} -N
-%patch0 -p1
+%patch -P 0 -p1
 %if 0%{?sle_version}
-%patch100 -p1
+%patch -P 100 -p1
 %endif
 
 %build

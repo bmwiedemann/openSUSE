@@ -39,13 +39,17 @@ URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 Source0:        https://download.gnome.org/sources/gnome-settings-daemon/45/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
-Patch1:         gnome-settings-daemon-initial-keyboard.patch
+Patch0:         gnome-settings-daemon-initial-keyboard.patch
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
-Patch2:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
+Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-bgo793253.patch bgo#793253 dimstar@opensuse.org -- Fix no-return-in-nonvoid-function
-Patch3:         gnome-settings-daemon-bgo793253.patch
+Patch2:         gnome-settings-daemon-bgo793253.patch
 # PATCH-FIX-UPSTREAM 538816ff42f682fc4b541810ca107486abab9976.patch -- smartcard: Steal error when propagating through GTask
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/commit/538816ff42f682fc4b541810ca107486abab9976.patch
+Patch3:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/commit/538816ff42f682fc4b541810ca107486abab9976.patch
+# PATCH-FIX-UPSTREAM a059909d62da0c11774f1089d02937699fabf150.patch -- power: Fix enum mismatch warning
+Patch4:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/commit/a059909d62da0c11774f1089d02937699fabf150.patch
+# PATCH-FIX-UPSTREAM 41d0dc1db4d75c37ba67fe903105b4e162d42f1a.patch -- power: Fix uninitialised variable warning
+Patch5:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/commit/41d0dc1db4d75c37ba67fe903105b4e162d42f1a.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
@@ -148,16 +152,18 @@ contact the settings daemon via its DBus interface.
 %if ! 0%{?sle_version}
 %autopatch -p1 -M 999
 %else
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 %endif
 
 # Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.
 %if 0%{?sle_version} >= 150000
-%patch1000 -p1
-%patch1001 -p1
+%patch -P 1000 -p1
+%patch -P 1001 -p1
 %endif
 
 %build

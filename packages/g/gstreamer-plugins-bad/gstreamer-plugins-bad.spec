@@ -735,14 +735,14 @@ sed -ie "/subdir('decklink')/d" sys/meson.build
 %endif
 
 %if %{pkg_vcmp srt < 1.4.0}
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 %if %{pkg_vcmp spandsp-devel >= 3}
-%patch2 -p1
+%patch -P 2 -p1
 %endif
-%patch3 -p1
+%patch -P 3 -p1
 %if %{with webrtc_audio_processing_1}
-%patch4 -p3
+%patch -P 4 -p3
 %endif
 
 %build

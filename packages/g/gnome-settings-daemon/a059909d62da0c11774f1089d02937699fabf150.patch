@@ -1,0 +1,35 @@
+From a059909d62da0c11774f1089d02937699fabf150 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Mon, 20 Nov 2023 11:29:48 +0100
+Subject: [PATCH] power: Fix enum mismatch warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[1/2] Compiling C object plugins/power/gsd-power.p/gsd-power-manager.c.o
+plugins/power/gsd-power-manager.c:1872:1: warning: conflicting types for ‘idle_is_session_inhibited’ due to enum/integer mismatch; have ‘gboolean(GsdPowerManager *, GsmInhibitorFlag,  gboolean *)’ {aka ‘int(struct _GsdPowerManager *, GsmInhibitorFlag,  int *)’} [-Wenum-int-mismatch]
+ 1872 | idle_is_session_inhibited (GsdPowerManager  *manager,
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~
+plugins/power/gsd-power-manager.c:237:18: note: previous declaration of ‘idle_is_session_inhibited’ with type ‘gboolean(GsdPowerManager *, guint,  gboolean *)’ {aka ‘int(struct _GsdPowerManager *, unsigned int,  int *)’}
+  237 | static gboolean  idle_is_session_inhibited (GsdPowerManager *manager, guint mask, gboolean *is_inhibited);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~
+---
+ plugins/power/gsd-power-manager.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/power/gsd-power-manager.c b/plugins/power/gsd-power-manager.c
+index 0aa3b546d..f0ca3aee4 100644
+--- a/plugins/power/gsd-power-manager.c
++++ b/plugins/power/gsd-power-manager.c
+@@ -235,7 +235,7 @@ static void      uninhibit_lid_switch (GsdPowerManager *manager);
+ static void      stop_inhibit_lid_switch_timer (GsdPowerManager *manager);
+ static void      sync_lid_inhibitor (GsdPowerManager *manager);
+ static void      main_battery_or_ups_low_changed (GsdPowerManager *manager, gboolean is_low);
+-static gboolean  idle_is_session_inhibited (GsdPowerManager *manager, guint mask, gboolean *is_inhibited);
++static gboolean  idle_is_session_inhibited (GsdPowerManager *manager, GsmInhibitorFlag mask, gboolean *is_inhibited);
+ static void      idle_triggered_idle_cb (GnomeIdleMonitor *monitor, guint watch_id, gpointer user_data);
+ static void      idle_became_active_cb (GnomeIdleMonitor *monitor, guint watch_id, gpointer user_data);
+ static void      iio_proxy_changed (GsdPowerManager *manager);
+-- 
+GitLab
+

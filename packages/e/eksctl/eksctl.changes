@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 29 05:46:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.165.0:
+  * change file name for release notes
+  * Add release notes for 0.165.0 (#7314)
+  * Add documentation for pod identity associations feature (#7313)
+  * Implement updating and deleting pod identity associations
+    (#7315)
+  * Ignore google docs domains for link checker
+  * Add support for creating and fetching pod identity associations
+    (#7312)
+  * Bump all aws-sdks
+  * Bump aws-sdk dependencies
+  * Bump dependencies
+  * [CRUD Suite] Delete nodegroups in subnet before the subnet
+    itself (#7250)
+  * [CRUD Suite] Delete extra subnet before deleting cluster
+    (#7248)
+  * [CRUD integration] Add wait flag to delete cluster command
+    (#7246)
+  * Improve CRUD suite runtime (#7208)
+  * Fix README Links
+  * Bump google.golang.org/grpc from 1.58.2 to 1.58.3
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Oct 27 09:08:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.164.0:

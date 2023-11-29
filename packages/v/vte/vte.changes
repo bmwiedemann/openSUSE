@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:55:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Nov 14 02:01:01 UTC 2023 - Daike Yu <yu.daike@suse.com>
 
 - Update vte-revert-back-to-c++17.patch

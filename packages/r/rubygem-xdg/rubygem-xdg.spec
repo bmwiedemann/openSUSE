@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-xdg
-Version:        7.0.2
+Version:        7.1.3
 Release:        0
 %define mod_name xdg
 %define mod_full_name %{mod_name}-%{version}
@@ -32,20 +32,18 @@ Release:        0
 %define rb_build_versions     ruby32
 %define rb_build_ruby_abis    ruby:3.2.0
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby < 4}
-BuildRequires:  %{ruby => 3.2}
-BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
+BuildRequires:  %{ruby <= 3.3}
+BuildRequires:  %{ruby >= 3.2}
+BuildRequires:  %{rubygem gem2rpm}
 URL:            https://alchemists.io/projects/xdg
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        Provides an implementation of the XDG Base Directory Specification
+Summary:        A XDG Base Directory Specification implementation
 License:        Hippocratic-2.1
-Group:          Development/Languages/Ruby
 
 %description
-Provides an implementation of the XDG Base Directory Specification.
+A XDG Base Directory Specification implementation.
 
 %prep
 

@@ -157,7 +157,7 @@ Index: virt-manager-4.1.0/virtinst/domcapabilities.py
      maxESGuests = XMLProperty("./maxESGuests")
  
  
-@@ -404,6 +407,9 @@ class DomainCapabilities(XMLBuilder):
+@@ -406,6 +409,9 @@ class DomainCapabilities(XMLBuilder):
                          self.features.sev.maxESGuests)
          return bool(self.features.sev.supported)
  

@@ -32,7 +32,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.2.5
+Version:        1.2.8
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -52,26 +52,8 @@ Patch2:         PackageKit-remove-polkit-rules.patch
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
 Patch4:         PackageKit-fix-crash-pre-dbus.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-add-upgrade-system.patch gh#hughsie/PackageKit/commit/930dd201b sckang@suse.com -- zypp: implement upgrade-system method
-Patch5:         PackageKit-zypp-add-upgrade-system.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-avoid-statuReset.patch gh#PackageKit/PackageKit/commit/dd1964255, bsc#1199895 sckang@suse.com -- zypp: Avoid statuReset() on locked packages
-Patch6:         PackageKit-zypp-avoid-statuReset.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-disable-upgrade-system-in-sle.patch gh#PackageKit/PackageKit/commit/0fcd820c2 sckang@suse.com -- zypp: Disable upgrade-system support in SLE
 Patch7:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-restore-pool-status-after-simulating-update.patch gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895 sckang@suse.com -- zypp: restore pool status after simulating an update
-Patch8:         PackageKit-zypp-restore-pool-status-after-simulating-update.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-is-tumbleweed-check.patch gh#PackageKit/PackageKit/commit/146890153 sckang@suse.com -- zypp: build the pool before calling is_tumbleweed()
-Patch9:         PackageKit-zypp-fix-is-tumbleweed-check.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-update-libzypp-dependency-version.patch gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895 sckang@suse.com -- zypp: update libzypp dependency version
-Patch10:        PackageKit-zypp-update-libzypp-dependency-version.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-refresh-before-searching.patch gh#PackageKit/PackageKit/commit/7e700e217, bsc#1202796 sckang@suse.com -- zypp: Don't refresh repos before searching
-Patch11:        PackageKit-zypp-dont-refresh-before-searching.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-remove-locked-packages.patch gh#PackageKit/PackageKit/commit/8649a07bc, bsc#1199895 sckang@suse.com -- zypp: Check if packages are locked before removing
-Patch12:        PackageKit-zypp-dont-remove-locked-packages.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-package-id.patch gh#PackageKit/PackageKit/commit/8eb2ef0ae, bsc#1202585 sckang@suse.com -- zypp: add repository data in package id
-Patch13:        PackageKit-zypp-add-repo-in-packageid.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-ambiguous-filesystem-reference.patch gh#PackageKit/PackageKit/commit/bb1409a71, bsc#1206687 sckang@suse.com -- zypp: Fix ambiguous reference to 'filesystem' class
-Patch14:        PackageKit-zypp-fix-ambiguous-filesystem-reference.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-pkcon-permission.patch gh#PackageKit/PackageKit/commit/47b7f97bc, bsc#1209138 sckang@suse.com -- trivial: Drop unnecessary x permission
 Patch15:        PackageKit-fix-pkcon-permission.patch
 # PATCH-FIX-UPSTREAM PackageKit-dynamic-export.patch boo#1213309 dimstar@opensuse.org -- Fix loading modules when built with glib 2.70
@@ -90,6 +72,7 @@ BuildRequires:  libcppunit-devel
 %if %{with dnf}
 BuildRequires:  appstream-glib-devel
 BuildRequires:  libdnf-devel >= 0.43.1
+BuildRequires:  pkgconfig(appstream)
 %endif
 BuildRequires:  libgudev-1_0-devel
 BuildRequires:  libtool
@@ -411,6 +394,7 @@ fi
 %verify(not md5 size mtime) %{_datadir}/PackageKit/transactions.db
 %{_datadir}/polkit-1/actions/org.freedesktop.packagekit.policy
 %{_datadir}/dbus-1/system-services/*
+%{_datadir}/metainfo/org.freedesktop.packagekit.metainfo.xml
 %{_unitdir}/packagekit.service
 %{_unitdir}/packagekit-background.service
 %{_unitdir}/packagekit-background.timer
@@ -434,6 +418,8 @@ fi
 %if %{with dnf}
 %files backend-dnf
 %{_libdir}/packagekit-backend/libpk_backend_dnf.so
+%{_libexecdir}/packagekit-dnf-refresh-repo
+%{python3_sitelib}/dnf-plugins/
 %endif
 
 %if %{with cnf}

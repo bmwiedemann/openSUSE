@@ -1,7 +1,7 @@
 #
 # spec file for package libglade2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,8 +82,7 @@ BuildArch:      noarch
 This package contains documentation and examples for the Glade library.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0
+%autosetup -n %{_name}-%{version} -p1
 
 %build
 export PYTHON=%{_bindir}/python3

@@ -2006,4 +2006,12 @@
   + Rebase gdm-restart-session-when-X-server-restart.patch (forwarded request 1121774 from xiaoguang_wang)</comment>
     <requestid>1123046</requestid>
   </revision>
+  <revision rev="260" vrev="4">
+    <srcmd5>f0fc15d711d27ebcd3872cdcf8fe415c</srcmd5>
+    <version>45.0.1</version>
+    <time>1701289140</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129573</requestid>
+  </revision>
 </revisionlist>

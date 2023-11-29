@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 28 09:52:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust path to (openSUSE renamed) gst-plugin-scanner in the code
+  using sed.
+
+-------------------------------------------------------------------
 Tue Nov 21 12:20:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ensure max_link_jobs and max_compile_jobs have valid values even

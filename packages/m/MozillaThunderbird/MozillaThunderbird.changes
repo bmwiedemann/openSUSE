@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 28 22:07:44 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.5.1
+  Bugfix release
+  https://www.thunderbird.net/en-US/thunderbird/115.5.1/releasenotes
+  * Advanced GnuPG keys may be protected with an unexpected passphrase
+  * OpenPGP signatures rejected due to mismatched signature timestamp
+    now display signature timestamp and clarifying message
+  * Advanced address book search did not return results if display name
+    was left blank
+  * Clicking on attendee when inviting attendees added the attendee twice
+
+-------------------------------------------------------------------
 Wed Nov 22 06:28:54 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.5.0

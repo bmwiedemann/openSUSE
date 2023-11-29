@@ -292,15 +292,15 @@ This tool is still experimental.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 %if %{with_cacert_patch}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Nov  9 09:32:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.8:
+  + Libraries:
+    - offline-updates:
+      . Make package update list deduplication more efficient.
+      . Add only one entry per package to 'offline-update-competed'
+        file.
+    - PkClient: Replace the GSimpleAsyncResult with the GTask API.
+    - pk-client:
+      . Fix use-before-set of PkProgress on cancellation.
+      . Move cancellable disconnect to dispose.
+      . Rework refcounting for PkClientState.
+  + Backends: Changes to apt, dnf, PiSi and BSD backends.
+- Changes from version 1.2.7:
+  + New Features:
+    -  pkclient: Add an option to count download size with
+       dependencies.
+    - pk-transaction: Add support for getting the RemainingTime
+      property.
+  + Backends:
+    - zypp: Fix ambiguous reference to 'filesystem' class.
+    - Changes to dnf, apt, alpm backends.
+- Changes from version 1.2.6:
+  + New Features:
+    - Expose transaction sender as read-only property on the bus.
+    - pkmon: Display transaction sender binary name in log.
+    - pk-transaction: Add Packages signal.
+    - pk-transaction: Combine some D-Bus PropertiesChanged signal
+      emissions.
+    - pk-transaction: Add UpdateDetails signal.
+  + Backends:
+    - zypp:
+      . implement upgrade-system method.
+      . Clean up trailing whitespaces.
+      . Avoid statuReset() on locked packages.
+      . restore pool status after simulating an update.
+      . Disable upgrade-system support in SLE.
+      . build the pool before calling is_tumbleweed().
+      . update libzypp dependency version.
+      . Don't refresh repos before searching.
+      . Check if packages are locked before removing.
+      . add repository data in package id.
+      . Remove trailing whitespace.
+    + Changes to alpm, aptcc, apt, and nix backends.
+- Rebase patches:
+  + PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+  + PackageKit-dynamic-export.patch
+  + PackageKit-zypp-disable-upgrade-system-in-sle.patch
+- Drop upstream fixed patches:
+  + PackageKit-zypp-add-repo-in-packageid.patch
+  + PackageKit-zypp-add-upgrade-system.patch
+  + PackageKit-zypp-avoid-statuReset.patch
+  + PackageKit-zypp-dont-refresh-before-searching.patch
+  + PackageKit-zypp-dont-remove-locked-packages.patch
+  + PackageKit-zypp-fix-ambiguous-filesystem-reference.patch
+  + PackageKit-zypp-fix-is-tumbleweed-check.patch
+  + PackageKit-zypp-restore-pool-status-after-simulating-update.patch
+  + PackageKit-zypp-update-libzypp-dependency-version.patch
+
+-------------------------------------------------------------------
 Mon Jul 17 13:28:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add PackageKit-dynamic-export.patch: fix loading of modules when

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 28 12:09:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sun Nov 26 11:58:27 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.1+22:
+  + apps: Fix status page glitch on initialization
+  + po: Fix missing closing tag in pt_BR locale
+  + background: Improve preview performance
+  + applications: Fix File & Link Associations UI
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov 13 12:47:50 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 45.1+14:

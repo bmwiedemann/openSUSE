@@ -1,7 +1,7 @@
 #
 # spec file for package libcanberra
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Portable sound event library
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/GNOME
-Url:            http://0pointer.de/lennart/projects/libcanberra
+URL:            http://0pointer.de/lennart/projects/libcanberra
 Source:         http://0pointer.de/lennart/projects/libcanberra/%{name}-%{version}.tar.xz
 Source1:        libcanberra-gtk-module.sh
 Source99:       baselibs.conf
@@ -214,9 +214,7 @@ and is designed to be portable.
 This package provides the development files for libcanberra-gtk2.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 cp %{SOURCE1} libcanberra-gtk-module.sh
 
 %build

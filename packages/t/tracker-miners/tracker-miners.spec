@@ -102,7 +102,7 @@ This package contains a miner to index files and applications.
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
-%patch1000 -p2
+%patch -P 1000 -p2
 %endif
 
 %build

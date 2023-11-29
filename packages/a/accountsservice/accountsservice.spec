@@ -112,13 +112,13 @@ This package contains the Vala bindings for accountservice.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 # SLE and Leap patches start at 1000
 %if 0%{?sle_version}
-%patch1000 -p1
+%patch -P 1000 -p1
 %endif
 
 %build

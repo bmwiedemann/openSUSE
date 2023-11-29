@@ -386,7 +386,7 @@ cp -a %{SOURCE1} .
 %if !0%{?sle_version}
 %autopatch -p1 0
 %else
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 %endif
 
@@ -394,7 +394,7 @@ cp -a %{SOURCE1} .
 # Apply patches 1 to 999 (1 >= 999)
 %autopatch -p1 -m 1 -M 999
 %else
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build

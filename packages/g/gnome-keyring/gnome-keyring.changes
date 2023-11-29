@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 12:08:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Oct 25 12:47:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %_pam_moduledir instead of %{_lib}/security (boo#1191034).

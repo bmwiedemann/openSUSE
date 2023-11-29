@@ -1048,4 +1048,14 @@
     <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
     <requestid>1124567</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>2d42f1ff5d72403e690a338df03ceb51</srcmd5>
+    <version>23.08.3</version>
+    <time>1701289124</time>
+    <user>anag+factory</user>
+    <comment>- Add missing BuildRequires again, they got removed for some reason
+  (boo#1211933)
+- Mention all plugins in %files explicitly</comment>
+    <requestid>1129620</requestid>
+  </revision>
 </revisionlist>

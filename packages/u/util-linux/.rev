@@ -2537,4 +2537,15 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
 - move metadata into patches</comment>
     <requestid>1121506</requestid>
   </revision>
+  <revision rev="279" vrev="3">
+    <srcmd5>b0ed2191d6604fa259382de0c05b69ca</srcmd5>
+    <version>2.39.2</version>
+    <time>1701289106</time>
+    <user>anag+factory</user>
+    <comment>- Remove /etc/filesystem, the content is outdated
+  (/etc cleanup, [jsc#PED-240])
+
+- Add libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch</comment>
+    <requestid>1129552</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2-engines
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gtk2-engines
 %define _name gtk-engines
 Summary:        GTK+ 2 Theme Engines
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 Version:        2.20.2
 Release:        0
 # FIXME: On new version, change <= Obsoletes to < (last checked: 2.20.2)
 # FIXME: On new versions, check if bgo#607127 is solved, and if it is, enable
 # the lua engine: uncomment lua-devel BuildRequires and configure options.
-Url:            http://www.gnome.org
+URL:            http://www.gnome.org
 Source:         %{_name}-%{version}.tar.bz2
 Source1:        README.openSUSE
 Source99:       baselibs.conf
@@ -218,10 +218,8 @@ BuildArch:      noarch
 This package provides the ThinIce GTK+ 2 theme.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 cp -a %{S:1} .
-%patch0 -p1
-%patch1 -p1
 
 %build
 %configure \

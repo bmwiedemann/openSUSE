@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 10:45:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup instead of %setup/%patch.
+
+-------------------------------------------------------------------
 Mon Mar  5 15:58:50 UTC 2018 - jengelh@inai.de
 
 - Fix SRPM group. Update summaries.

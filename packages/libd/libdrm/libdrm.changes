@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 28 14:29:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted n_libdrm-drop-valgrind-dep-generic.patch,
+  n_libdrm-drop-valgrind-dep-intel.patch to fix build on sle15-sp6
+
+-------------------------------------------------------------------
 Sat Nov 25 10:09:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.118:

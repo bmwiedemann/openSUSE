@@ -5,25 +5,6 @@ Subject: [PATCH] dracut: Don't include the ignition module by default
 Currently the module is automatically included in all initrds, hostonly or
 generic. Leave it to the distro provided module to pull it in explicitly.
 ---
- docs/release-notes.md             | 4 ++++
- dracut/30ignition/module-setup.sh | 7 +++++++
- 2 files changed, 11 insertions(+)
-
-diff --git a/docs/release-notes.md b/docs/release-notes.md
-index e53bdf8d..65ce77ce 100644
---- a/docs/release-notes.md
-+++ b/docs/release-notes.md
-@@ -8,6 +8,10 @@ nav_order: 9
- 
- ### Breaking changes
- 
-+- The dracut module is not automatically included in initramfs images anymore.
-+  Distributions need to explicitly request inclusion, either by ensuring that
-+  it is pulled in by another module, for instance the module providing distro
-+  integration and customization, or by installing a dracut configuration file.
- 
- ### Features
- 
 diff --git a/dracut/30ignition/module-setup.sh b/dracut/30ignition/module-setup.sh
 index ad7e80fd..f431b7dc 100755
 --- a/dracut/30ignition/module-setup.sh

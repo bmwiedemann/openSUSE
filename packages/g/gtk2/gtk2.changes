@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:52:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Mon Aug 15 19:13:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashism in baselibs postscript (bsc#1195391) 

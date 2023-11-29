@@ -1200,4 +1200,12 @@ New upstream release</comment>
   * revert more C++20 features (forwarded request 1125778 from yudaike)</comment>
     <requestid>1126606</requestid>
   </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>b7f893f4b99b7182bd3d3066858fb54d</srcmd5>
+    <version>0.74.1</version>
+    <time>1701289161</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129586</requestid>
+  </revision>
 </revisionlist>

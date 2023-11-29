@@ -1,0 +1,44 @@
+From 41d0dc1db4d75c37ba67fe903105b4e162d42f1a Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Mon, 20 Nov 2023 11:31:31 +0100
+Subject: [PATCH] power: Fix uninitialised variable warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In function ‘do_lid_closed_action’,
+    inlined from ‘logind_proxy_changed_cb’ at plugins/power/gsd-power-manager.c:1579:17:
+plugins/power/gsd-power-manager.c:1538:20: warning: ‘is_inhibited’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1538 |                 if (is_inhibited) {
+      |                    ^
+plugins/power/gsd-power-manager.c: In function ‘logind_proxy_changed_cb’:
+plugins/power/gsd-power-manager.c:1533:26: note: ‘is_inhibited’ was declared here
+ 1533 |                 gboolean is_inhibited;
+      |                          ^~~~~~~~~~~~
+plugins/power/gsd-power-manager.c: In function ‘idle_configure’:
+plugins/power/gsd-power-manager.c:1977:12: warning: ‘is_inhibited’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1977 |         if (!is_action_inhibited (manager, action_type)) {
+      |            ^
+plugins/power/gsd-power-manager.c:1354:18: note: ‘is_inhibited’ was declared here
+ 1354 |         gboolean is_inhibited;
+      |                  ^~~~~~~~~~~~
+---
+ plugins/power/gsd-power-manager.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/plugins/power/gsd-power-manager.c b/plugins/power/gsd-power-manager.c
+index f0ca3aee..b3da23a8 100644
+--- a/plugins/power/gsd-power-manager.c
++++ b/plugins/power/gsd-power-manager.c
+@@ -1861,6 +1861,8 @@ idle_is_session_inhibited (GsdPowerManager  *manager,
+         GVariant *variant;
+         GsmInhibitorFlag inhibited_actions;
+ 
++        *is_inhibited = FALSE;
++
+         /* not yet connected to gnome-session */
+         if (manager->session == NULL)
+                 return FALSE;
+-- 
+GitLab
+

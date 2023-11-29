@@ -104,9 +104,9 @@ functional GNOME desktop.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P 0 -p1
 %ifarch s390 s390x
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 
 %build

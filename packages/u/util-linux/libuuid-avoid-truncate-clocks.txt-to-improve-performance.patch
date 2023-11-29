@@ -1,0 +1,51 @@
+From 1d98827edde4b88068d295bbd20c31333b2ad5d4 Mon Sep 17 00:00:00 2001
+From: Goldwyn Rodrigues <rgoldwyn@suse.de>
+Date: Tue, 10 Oct 2023 18:08:59 -0500
+Subject: [PATCH] libuuid: avoid truncate clocks.txt to improve performance
+
+Instead of explicitly truncating clocks.txt file, pad with
+whitespaces in the end of file.
+This is done to improve performance of libuuid on xfs
+filesystems. Instead of truncating the file, pad it with whitespaces.
+This is anyways used as a failsafe method in case truncate fails.
+
+The reason why this regression was introduced was because of:
+869ae85dae64 ("xfs: flush new eof page on truncate to avoid post-eof corruption")
+
+An attempt to move the clocks.txt to /run (tmpfs) has been attempted before
+[1] and with commit ab2e7dd17 ("libuuid: move clock state file from
+/var/lib to /var/run"). The latter was reverted.
+
+[1] https://www.spinics.net/lists/util-linux-ng/msg17331.html
+
+Signed-off-by: Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+diff --git a/libuuid/src/gen_uuid.c b/libuuid/src/gen_uuid.c
+index db793c374..826cd2245 100644
+--- a/libuuid/src/gen_uuid.c
++++ b/libuuid/src/gen_uuid.c
+@@ -229,7 +229,6 @@ static int get_clock(uint32_t *clock_high, uint32_t *clock_low,
+ 	struct timeval			tv;
+ 	uint64_t			clock_reg;
+ 	mode_t				save_umask;
+-	int				len;
+ 	int				ret = 0;
+ 
+ 	if (state_fd == -1)
+@@ -324,14 +323,10 @@ try_again:
+ 
+ 	if (state_fd >= 0) {
+ 		rewind(state_f);
+-		len = fprintf(state_f,
+-			      "clock: %04x tv: %016ld %08ld adj: %08d\n",
++		fprintf(state_f,
++			      "clock: %04x tv: %016ld %08ld adj: %08d                   \n",
+ 			      clock_seq, (long)last.tv_sec, (long)last.tv_usec, adjustment);
+ 		fflush(state_f);
+-		if (ftruncate(state_fd, len) < 0) {
+-			fprintf(state_f, "                   \n");
+-			fflush(state_f);
+-		}
+ 		rewind(state_f);
+ 		flock(state_fd, LOCK_UN);
+ 	}

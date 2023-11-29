@@ -175,8 +175,8 @@ gvfs plugins.
 %if !0%{?sle_version}
 %autopatch -p1 -M 999
 %else
-%patch1000 -p1
-%patch1001 -p1
+%patch -P 1000 -p1
+%patch -P 1001 -p1
 %endif
 
 %build

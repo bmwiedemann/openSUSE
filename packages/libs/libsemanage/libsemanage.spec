@@ -42,6 +42,7 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 
 %description
 libsemanage is the policy management library. Using libsepol and
@@ -123,6 +124,12 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/selinux
 %make_install LIBDIR="%{_libdir}" LIBEXECDIR="%{_libexecdir}" SHLIBDIR="%{_libdir}"
 ln -sf  %{_libdir}/libsemanage.so.%{soversion} %{buildroot}/%{_libdir}/libsemanage.so
 cp %{SOURCE4} %{buildroot}%{_sysconfdir}/selinux/semanage.conf
+
+# Fix shebang in scripts
+for f in %{buildroot}%{_libexecdir}/selinux/*
+do
+  [ -f $f ] && sed -i "1s@#!.*python.*@#!$(realpath %__python3)@" $f
+done
 # Remove duplicate files
 %fdupes -s %{buildroot}%{_mandir}
 

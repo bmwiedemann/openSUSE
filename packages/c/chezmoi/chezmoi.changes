@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 29 10:44:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.42.1:
+  - Fixes
+    * fix: Set env vars from config file when re-reading config
+  - Documentation updates
+    * docs: Clarify prefix order for regular files
+
+-------------------------------------------------------------------
+Wed Nov 29 08:52:27 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.42.0:
+  - Features
+    * feat: Preserve numeric types when reading from .chezmoidata JSON and JSONC files
+    * feat: Preserve integer values in fromJson and fromJsonc template funcs
+    * feat: Add read-source-state hook
+  - Documentation updates
+    * docs: Add admonitions linking remove and forget
+    * docs: Add links to blog posts
+
+-------------------------------------------------------------------
 Tue Nov 14 16:04:03 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.41.0:

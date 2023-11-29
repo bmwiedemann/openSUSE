@@ -92,7 +92,6 @@ URL:            https://www.kernel.org/pub/linux/utils/util-linux/
 Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-%{version}.tar.xz
 Source2:        util-linux-login_defs-check.sh
 Source3:        util-linux-rpmlintrc
-Source6:        etc_filesystems
 Source7:        baselibs.conf
 Source8:        login.pamd
 Source9:        remote.pamd
@@ -112,6 +111,8 @@ Patch4:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
 Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
 Patch6:         use-logind-not-utmp.patch
 Patch7:         setterm-resize-uninit-flags.patch
+# bsc#1207987 - regression fix for clock.txt on xfs (upstreamed)
+Patch8:         libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch
 
 BuildRequires:  audit-devel
 BuildRequires:  bc
@@ -568,7 +569,6 @@ sed 's/\bsu\b/runuser/g' <%{SOURCE11} >runuser.default
 install -m 644 runuser.default %{buildroot}%{_distconfdir}/default/runuser
 rm -fv "%{buildroot}/%{_sbindir}/raw" "%{buildroot}/sbin/raw" \
 	"%{buildroot}/%{_mandir}/man8/raw.8"*
-install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/filesystems
 echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
 chmod 755 %{buildroot}%{_sbindir}/flushb
 
@@ -1272,7 +1272,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %license README.licensing
 %license COPYING
 %license Documentation/licenses/*
-%config(noreplace) %{_sysconfdir}/filesystems
 %config(noreplace) %{_sysconfdir}/blkid.conf
 
 %{_datadir}/bash-completion/completions/*
@@ -1299,7 +1298,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 # Systemd files #
 #################
 %if "%ulsubset" == "systemd"
-%exclude %config(noreplace) %{_sysconfdir}/filesystems
 %exclude %config(noreplace) %{_sysconfdir}/blkid.conf
 
 %exclude %config %dir %{_sysconfdir}/issue.d

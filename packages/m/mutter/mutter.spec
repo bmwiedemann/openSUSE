@@ -143,14 +143,14 @@ applications that want to make use of the mutter library.
 %if !0%{?sle_version}
 %autopatch -p1 -M 999
 %else
-%patch1 -p1
-%patch2 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
 %endif
 # SLE-only patches and translations.
 %if 0%{?sle_version}
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
+%patch -P 1000 -p1
+%patch -P 1001 -p1
+%patch -P 1002 -p1
 %endif
 
 %build

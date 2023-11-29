@@ -172,7 +172,7 @@ This packages provides the documentation for various gcr packages.
 %prep
 %setup -q -n gcr-%{version}
 %if 0%{?sle_version}
-%patch1 -p1
+%patch -P 1 -p1
 %endif
 
 %build

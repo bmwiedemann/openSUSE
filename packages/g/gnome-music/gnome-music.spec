@@ -83,8 +83,8 @@ Music player and management application for GNOME.
 %prep
 %setup -q
 %if 0%{?sle_version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %endif
 # Fix shebangs:
 sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in

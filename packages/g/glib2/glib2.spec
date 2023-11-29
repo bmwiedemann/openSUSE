@@ -256,11 +256,7 @@ the functionality of the installed glib2 package.
 %lang_package
 
 %prep
-%setup -q -n glib-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch4 -p1
+%autosetup -p1 -n glib-%{version}
 
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE5} .
 cp -a %{SOURCE4} gnome_defaults.conf

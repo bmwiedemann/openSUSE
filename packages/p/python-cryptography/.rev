@@ -1021,4 +1021,16 @@
     x509.RelativeDistinguishedName, and x509.NameAttribute to format the name</comment>
     <requestid>1124982</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>172113e5a04401a808a6d0332995a6b0</srcmd5>
+    <version>41.0.7</version>
+    <time>1701289117</time>
+    <user>anag+factory</user>
+    <comment>- update to 41.0.7 (CVE-2023-49083, bsc#1217592):
+  * Fixed compilation when using LibreSSL 3.8.2.
+  * Fixed a null-pointer-dereference and segfault that could
+    occur when loading certificates from a PKCS#7 bundle.
+    Credit to **pkuzco** for reporting the issue. **CVE-2023-49083**</comment>
+    <requestid>1129560</requestid>
+  </revision>
 </revisionlist>

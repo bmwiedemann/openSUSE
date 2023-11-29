@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:28:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup instead of %setup/%patch.
+
+-------------------------------------------------------------------
 Wed Nov 15 09:32:47 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.22.7:

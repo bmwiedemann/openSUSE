@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-keyring
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,11 +115,11 @@ The PAM module can be used to unlock the keyring on login.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %if 0%{?sle_version}
-%patch1000 -p1
-%patch1001 -p1
+%patch -P 1000 -p1
+%patch -P 1001 -p1
 %endif
 
 %build

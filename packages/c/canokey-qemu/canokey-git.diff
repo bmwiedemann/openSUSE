@@ -1,0 +1,15 @@
+Index: canokey-qemu/canokey-core/CMakeLists.txt
+===================================================================
+--- canokey-qemu.orig/canokey-core/CMakeLists.txt
++++ canokey-qemu/canokey-core/CMakeLists.txt
+@@ -63,9 +63,7 @@ if (VIRTCARD OR ENABLE_TESTS OR ENABLE_F
+     set(gitrev_in virt-card/git-rev.h.in)
+     set(gitrev virt-card/git-rev.h)
+     add_custom_target(gitrev
+-            ${CMAKE_COMMAND} -E remove -f ${CMAKE_CURRENT_SOURCE_DIR}/${gitrev}
+-            COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/${gitrev_in} ${CMAKE_CURRENT_SOURCE_DIR}/${gitrev}
+-            COMMAND git describe --always --tags --long --abbrev=8 --dirty >> ${CMAKE_CURRENT_SOURCE_DIR}/${gitrev}
++            COMMAND true
+             )
+ endif ()
+ 

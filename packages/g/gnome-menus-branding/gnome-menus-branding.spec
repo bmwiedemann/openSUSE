@@ -1,7 +1,7 @@
 #
-# spec file for package gnome-menus-branding.spec
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -69,7 +69,7 @@ This package provides the %{branding_name} definitions for menus.
 cp -a %{SOURCE0} COPYING
 # We will base menus on upstream menus:
 cp -a %{_sysconfdir}/xdg/menus/*.menu .
-%patch0
+%patch -P 0
 
 %build
 

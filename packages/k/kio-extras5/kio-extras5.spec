@@ -29,7 +29,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# openEXR causes build issues for Leap 15.2 & 15.3
+# OpenEXR on Leap is incompatible with C++17
 %if 0%{?suse_version} > 1500
 BuildRequires:  OpenEXR-devel
 %endif
@@ -56,6 +56,7 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
@@ -70,6 +71,8 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(libimobiledevice-1.0)
+BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(smbclient)
 Recommends:     kimageformats
@@ -127,7 +130,49 @@ This is the development package for libkioarchive
 %{_kf5_debugdir}/kio-extras.categories
 %{_kf5_debugdir}/kio-extras.renamecategories
 %{_kf5_libexecdir}/smbnotifier
-%{_kf5_plugindir}/
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/kded
+%{_kf5_plugindir}/kf5/kded/filenamesearchmodule.so
+%{_kf5_plugindir}/kf5/kded/recentdocumentsnotifier.so
+%{_kf5_plugindir}/kf5/kded/smbwatcher.so
+%dir %{_kf5_plugindir}/kf5/kfileitemaction
+%{_kf5_plugindir}/kf5/kfileitemaction/forgetfileitemaction.so
+%{_kf5_plugindir}/kf5/kfileitemaction/kactivitymanagerd_fileitem_linking_plugin.so
+ %dir %{_kf5_plugindir}/kf5/kio
+%{_kf5_plugindir}/kf5/kio/activities.so
+%{_kf5_plugindir}/kf5/kio/afc.so
+%{_kf5_plugindir}/kf5/kio/archive.so
+%{_kf5_plugindir}/kf5/kio/bookmarks.so
+%{_kf5_plugindir}/kf5/kio/filter.so
+%{_kf5_plugindir}/kf5/kio/fish.so
+%{_kf5_plugindir}/kf5/kio/info.so
+%{_kf5_plugindir}/kf5/kio/kio_filenamesearch.so
+%{_kf5_plugindir}/kf5/kio/man.so
+%{_kf5_plugindir}/kf5/kio/mtp.so
+%{_kf5_plugindir}/kf5/kio/recentdocuments.so
+%{_kf5_plugindir}/kf5/kio/recentlyused.so
+%{_kf5_plugindir}/kf5/kio/sftp.so
+%{_kf5_plugindir}/kf5/kio/smb.so
+%{_kf5_plugindir}/kf5/kio/thumbnail.so
+%dir %{_kf5_plugindir}/kf5/kiod
+%{_kf5_plugindir}/kf5/kiod/kmtpd.so
+%dir %{_kf5_plugindir}/kf5/thumbcreator
+%{_kf5_plugindir}/kf5/thumbcreator/audiothumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/comicbookthumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/djvuthumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/ebookthumbnail.so
+%if 0%{?suse_version} > 1500
+%{_kf5_plugindir}/kf5/thumbcreator/exrthumbnail.so
+%endif
+%{_kf5_plugindir}/kf5/thumbcreator/imagethumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/jpegthumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/kraorathumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/opendocumentthumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/svgthumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/textthumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/windowsexethumbnail.so
+%{_kf5_plugindir}/kf5/thumbcreator/windowsimagethumbnail.so
+%{_kf5_plugindir}/kfileaudiopreview.so
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/kio_bookmarks/

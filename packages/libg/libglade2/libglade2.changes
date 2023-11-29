@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 10:57:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup instead of %setup/%patch.
+
+-------------------------------------------------------------------
 Mon Dec 19 08:39:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit

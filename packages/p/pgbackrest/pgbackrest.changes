@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 28 16:20:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.49
+  * Bug Fixes:
+    + Fix regression in retries 
+    + Fix recursive path remove in SFTP storage driver
+
+  * Improvements:
+    + Remove support for PostgreSQL 9.3
+
+  * Documentation Features:
+    + Document maintainer options
+    + Update point-in-time recovery documentation for PostgreSQL >= 13
+
+  * Test Suite Improvements
+
+-------------------------------------------------------------------
 Thu Sep 28 07:31:44 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.48

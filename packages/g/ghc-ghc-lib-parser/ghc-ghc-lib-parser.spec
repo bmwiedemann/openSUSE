@@ -19,7 +19,7 @@
 %global pkg_name ghc-lib-parser
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        9.6.3.20231014
+Version:        9.6.3.20231121
 Release:        0
 Summary:        The GHC API, decoupled from GHC versions
 License:        BSD-3-Clause

@@ -320,4 +320,25 @@
     <comment></comment>
     <requestid>1126242</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fe820083ee494e5dadf0211cc7fa9520</srcmd5>
+    <version>2.42.1</version>
+    <time>1701289285</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.42.1:
+  - Fixes
+    * fix: Set env vars from config file when re-reading config
+  - Documentation updates
+    * docs: Clarify prefix order for regular files
+- Update to version 2.42.0:
+  - Features
+    * feat: Preserve numeric types when reading from .chezmoidata JSON and JSONC files
+    * feat: Preserve integer values in fromJson and fromJsonc template funcs
+    * feat: Add read-source-state hook
+  - Documentation updates
+    * docs: Add admonitions linking remove and forget
+    * docs: Add links to blog posts
+</comment>
+    <requestid>1129770</requestid>
+  </revision>
 </revisionlist>

@@ -1,21 +1,39 @@
 -------------------------------------------------------------------
+Tue Nov 28 12:54:48 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.29 
+  * Refactored handling of ExecuteIndirect to more reliably replay
+    the application's work even in the face of non-deterministic
+    work. Executes with non-deterministic parameters will still not
+    function properly anywhere that the draw parameters are
+    referenced like the event browser, mesh viewer, etc. But
+    selecting subsequent events in the command buffer will now
+    replay the ExecuteIndirect faithfully.
+  * The pixel history events still show background colours in part
+    when the row is selected.
+  * When editing SPIR-V shaders and recompiling them, wherever
+    possible the same SPIR-V version will be used to recompile
+    them. This is necessary when using features that target a
+    minimum SPIR-V version.
+
+-------------------------------------------------------------------
 Mon Aug 14 08:13:08 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.28
-* Improved capture writing process for larger captures especially
-  on Vulkan & D3D12 to improve the time taken to write a capture to disk.
-* Added a 'soft memory limit' capture option to reduce the chance
-  of out-of-memory errors during capture, currently implemented
-  only for Vulkan due to Linux and Android being platforms prone to OOM.
-* Tweaked the display of checkboxes with RenderDoc's style to
-  display with an X, for the sake of the low contrast dark theme
-  where checkbox fills were not as clear as the normal light theme.
-* Add support for glCopyImageSubData on GLES copying from
-  uncompressed to compressed textures.
-* Add support for several vulkan extensions:
-  - VK_EXT_provoking_vertex
-  - VK_EXT_attachment_feedback_loop_dynamic_state
-  - VK_EXT_image_2d_view_of_3d 
+  * Improved capture writing process for larger captures especially
+    on Vulkan & D3D12 to improve the time taken to write a capture to disk.
+  * Added a 'soft memory limit' capture option to reduce the chance
+    of out-of-memory errors during capture, currently implemented
+    only for Vulkan due to Linux and Android being platforms prone to OOM.
+  * Tweaked the display of checkboxes with RenderDoc's style to
+    display with an X, for the sake of the low contrast dark theme
+    where checkbox fills were not as clear as the normal light theme.
+  * Add support for glCopyImageSubData on GLES copying from
+    uncompressed to compressed textures.
+  * Add support for several vulkan extensions:
+    - VK_EXT_provoking_vertex
+    - VK_EXT_attachment_feedback_loop_dynamic_state
+    - VK_EXT_image_2d_view_of_3d 
 
 -------------------------------------------------------------------
 Wed Jun  7 08:07:05 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>

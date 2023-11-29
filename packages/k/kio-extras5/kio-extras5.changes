@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 28 13:00:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add missing BuildRequires again, they got removed for some reason
+  (boo#1211933)
+- Mention all plugins in %files explicitly
+
+-------------------------------------------------------------------
 Tue Nov  7 17:04:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.3

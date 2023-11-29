@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:50:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Sun Oct  8 07:48:06 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Revert RPM ternary operations on SLE where rpm version is not

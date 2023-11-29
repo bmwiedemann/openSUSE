@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 25 09:17:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.6
+  * Use getaddrinfo(3) to support IPv6 DICT servers
+  * Add icons at missing sizes, clean up SVG metadata
+
+-------------------------------------------------------------------
 Sun Apr 23 07:17:31 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.8.5

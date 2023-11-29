@@ -111,4 +111,24 @@
     <comment></comment>
     <requestid>948467</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0cdb4c263e2f1ad55c534caa984d66e2</srcmd5>
+    <version>3.1.0</version>
+    <time>1701289298</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1.0:
+- Add apfel-fix-project-version.patch -- Use the correct version
+  in defining project in CMakeLists.txt
+- Add apfel-dont-set-default-reltype.patch -- Don't assume
+  'RELEASE' as the release type, this should be set at the cmake
+  command line.
+- Build static lib and install it as part of a -devel-static
+  package; upstream cmake does not allow disabling static libs and
+  it ends up everywhere in the cmake files, so cannot just ignore
+  it either.
+- Use cmake for build in keeping with upstream; BuildRequires:
+  cmake &gt;= 3.15.
+- Add BuildRequires: swig needed to generate python wrappings.</comment>
+    <requestid>1129819</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 28 10:59:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup instead of %setup/%patch.
+- Fix baselibs.conf: reference correct name of hcengine.
+
+-------------------------------------------------------------------
 Fri Mar  1 12:43:47 UTC 2013 - dimstar@opensuse.org
 
 - Spec-cleanup using format_spec_file service.

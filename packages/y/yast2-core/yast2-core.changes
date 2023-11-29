@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 28 13:24:23 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Do not test YCP on non-UTF-8 strings (bsc#1217523)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

@@ -1,6 +1,8 @@
---- libglade-convert.in	(original)
-+++ libglade-convert.in	(refactored)
-@@ -45,7 +45,7 @@
+Index: libglade-2.6.4/libglade-convert.in
+===================================================================
+--- libglade-2.6.4.orig/libglade-convert.in
++++ libglade-2.6.4/libglade-convert.in
+@@ -45,7 +45,7 @@ class WidgetDef:
          if name == 'class':
              self.wclass = value
              return
@@ -9,7 +11,7 @@
              self.property_names.remove(name)
              del self.properties[name]
          if value == 'True': value = 'yes'
-@@ -53,19 +53,19 @@
+@@ -53,19 +53,19 @@ class WidgetDef:
          self.property_names.append(name)
          self.properties[name] = value
      def __delitem__(self, name):
@@ -33,7 +35,7 @@
              self.property_names.remove(name)
              del self.properties[name]
              
-@@ -85,7 +85,7 @@
+@@ -85,7 +85,7 @@ class WidgetDef:
          def __getitem__(self, name):
              return self.properties[name]
          def __setitem__(self, name, value):
@@ -42,7 +44,7 @@
                  self.property_names.remove(name)
                  del self.properties[name]
              if value == 'True': value = 'yes'
-@@ -93,19 +93,19 @@
+@@ -93,19 +93,19 @@ class WidgetDef:
              self.property_names.append(name)
              self.properties[name] = value
          def __delitem__(self, name):
@@ -66,7 +68,7 @@
                  self.property_names.remove(name)
                  del self.properties[name]
                  
-@@ -114,27 +114,27 @@
+@@ -114,27 +114,27 @@ class WidgetDef:
                  return
  
              if self.internal_child:
@@ -103,7 +105,7 @@
  
      def add_child(self, widget, internal_child=None):
          child = self.ChildDef(widget, internal_child)
-@@ -142,7 +142,7 @@
+@@ -142,7 +142,7 @@ class WidgetDef:
          return child
  
      def dump(self, indent):        
@@ -112,7 +114,7 @@
          want_newline = 0
          for name in self.property_names:
              attrs = ''
-@@ -154,41 +154,41 @@
+@@ -154,41 +154,41 @@ class WidgetDef:
                  attrs += ' translatable="yes"'
              if name[:3] == 'cxx':
                  attrs += ' agent="glademm"'
@@ -169,7 +171,7 @@
  
  def handle_signal(widget, signalnode):
      name = None
-@@ -414,7 +414,7 @@
+@@ -414,7 +414,7 @@ parent_table = {
  global_group_map = { }
  
  def find_parent(type):
@@ -178,7 +180,7 @@
          return parent_table[type]
      return ''
  
-@@ -585,7 +585,7 @@
+@@ -585,7 +585,7 @@ stock_menu_items = {
      'GNOMEUIINFO_MENU_GAME_TREE': (0, '_Game'),
  }
  def stock_menu_translate(old_name):
@@ -187,7 +189,7 @@
          return stock_menu_items[old_name]
      else:
          return (0, old_name)
-@@ -598,7 +598,7 @@
+@@ -598,7 +598,7 @@ def translate_color (color):
  def fixup_as_type(widget, type):
  
      if verbose:
@@ -196,7 +198,7 @@
  
      # table based property removals/renames
      for name in global_obsolete_props:
-@@ -606,11 +606,11 @@
+@@ -606,11 +606,11 @@ def fixup_as_type(widget, type):
      for old, new in global_renamed_props:
          widget.rename_prop(old, new)
  
@@ -210,7 +212,7 @@
          for old, new in renamed_props[type]:
              widget.rename_prop(old, new)
  
-@@ -618,12 +618,12 @@
+@@ -618,12 +618,12 @@ def fixup_as_type(widget, type):
          for childdef in widget.children:
              childdef.rename_prop(old, new)
  
@@ -225,7 +227,7 @@
          for old, new in renamed_child_props[type]:
              for childdef in widget.children:
                  childdef.rename_prop(old, new)
-@@ -689,8 +689,8 @@
+@@ -689,8 +689,8 @@ def fixup_as_type(widget, type):
                      del childdef.widget['child_name']
                      childdef['type'] = 'tab'
                  else:
@@ -236,7 +238,7 @@
  
      if type == 'GtkFileSelection':
          for childdef in widget.children:
-@@ -775,8 +775,7 @@
+@@ -775,8 +775,7 @@ def fixup_as_type(widget, type):
                  del childdef.widget['child_name']
                  
                  try:
@@ -246,7 +248,7 @@
                  except IndexError:
                      return 0
                  childdef.widget['class'] = 'GtkHButtonBox'
-@@ -791,8 +790,7 @@
+@@ -791,8 +790,7 @@ def fixup_as_type(widget, type):
                  del childdef.widget['child_name']
                  
              try:
@@ -256,7 +258,7 @@
              except IndexError:
                  return 0
              childdef.widget['class'] = 'GtkHButtonBox'
-@@ -881,7 +879,7 @@
+@@ -881,7 +879,7 @@ def fixup_as_type(widget, type):
      # have the glade id of the root group widget.
      if type == 'GtkRadioButton' or type == 'GtkRadioMenuItem':
          if widget.has_prop ('group'):
@@ -265,7 +267,7 @@
                  widget['group'] = global_group_map[widget['group']]
              else:
                  global_group_map[widget['group']] = widget['name']
-@@ -898,7 +896,7 @@
+@@ -898,7 +896,7 @@ def fixup_as_type(widget, type):
                      elif childdef.widget['class'] == 'GtkRadioButton':
                          childdef.widget['class'] = 'radio'
                          if childdef.widget.has_prop('group'):
@@ -274,7 +276,7 @@
                                  childdef.widget['group'] = global_group_map[childdef.widget['group']]
                              else:
                                  global_group_map[childdef.widget['group']] = childdef.widget['name']
-@@ -1135,8 +1133,8 @@
+@@ -1135,8 +1133,8 @@ bad_widgets = {
  def check_widget(widget, requirelist=[]):
      try:
          error = bad_widgets[widget['class']]
@@ -285,7 +287,7 @@
          if error == 'removed':
                  widget.mark_obsolete ()
      except KeyError:
-@@ -1171,21 +1169,21 @@
+@@ -1171,21 +1169,21 @@ def handle_file(filename):
          fixup_widget(widgetdef)
          check_widget(widgetdef, requireslist)
  
@@ -314,7 +316,7 @@
      document.unlink() # only needed for python interpreters without cyclic gc
  
  usage = 'usage: libglade-convert [--no-upgrade] [--verbose] oldfile.glade'
-@@ -1201,10 +1199,10 @@
+@@ -1201,10 +1199,10 @@ def main():
          elif opt == '--verbose':
              verbose = 1
          elif opt == '--help':

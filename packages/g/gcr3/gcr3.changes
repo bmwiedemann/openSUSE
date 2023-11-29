@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:24:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Oct 25 12:37:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Have libgcr-3-1 require gcr3-ssh-askpass when gnome-keyring is

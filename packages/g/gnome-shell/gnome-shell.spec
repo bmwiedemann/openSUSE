@@ -184,25 +184,25 @@ This package contains an optional extensions app for managing GNOME Shell extens
 
 %prep
 %setup -q
-%patch1 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%patch -P 1 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
 
 %if 0%{?sle_version}
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
-%patch1004 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
+%patch -P 1001 -p1
+%patch -P 1002 -p1
+%patch -P 1003 -p1
+%patch -P 1004 -p1
+%patch -P 1007 -p1
+%patch -P 1008 -p1
+%patch -P 1009 -p1
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-%patch1010 -p1
-%patch1011 -p1
+%patch -P 1010 -p1
+%patch -P 1011 -p1
 %endif
-%patch1012 -p1
-%patch1013 -p1
+%patch -P 1012 -p1
+%patch -P 1013 -p1
 %endif
 
 cp %{SOURCE1} data/theme/

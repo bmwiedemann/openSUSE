@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit-branding-openSUSE
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -37,7 +37,7 @@ BuildRequires:  PackageKit >= 1.0.1
 # To be in sync with upstream defaults, do branding as a patch for upstream file.
 # WARNING: As this package conflicts with PackageKit-branding-openSUSE, you cannot
 #          reuse build root. You have to build in a clean build root every time!
-BuildRequires:  PackageKit-branding-upstream >= 1.0.1
+BuildRequires:  PackageKit-branding-upstream >= 1.2.7
 Requires:       PackageKit = %{packagekit_version}
 Supplements:    packageand(PackageKit:branding-openSUSE)
 Conflicts:      PackageKit-branding
@@ -57,8 +57,8 @@ PackageKit.
 %prep
 cp -a %{SOURCE0} .
 cp -a %{_sysconfdir}/PackageKit/* .
-%patch0
-%patch1 -p1
+%patch -P 0
+%patch -P 1 -p1
 
 %build
 

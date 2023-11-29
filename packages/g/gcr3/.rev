@@ -23,4 +23,12 @@
   justifies a hard dep in this case (boo#1204071). (forwarded request 1031327 from iznogood)</comment>
     <requestid>1031451</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9cc033117f1681087cd6ca4dc1b879e6</srcmd5>
+    <version>3.41.0</version>
+    <time>1701289174</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129599</requestid>
+  </revision>
 </revisionlist>

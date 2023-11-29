@@ -1089,4 +1089,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment>- Use %_pam_moduledir instead of %{_lib}/security (boo#1191034). (forwarded request 1031137 from dimstar)</comment>
     <requestid>1031450</requestid>
   </revision>
+  <revision rev="146" vrev="3">
+    <srcmd5>7f5a70768bd1d74c01b087c6ce15ca09</srcmd5>
+    <version>42.1</version>
+    <time>1701289138</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129572</requestid>
+  </revision>
 </revisionlist>

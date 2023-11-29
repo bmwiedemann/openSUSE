@@ -92,7 +92,7 @@ secrets. It communicates with the "Secret Service" using DBus.
 %prep
 %setup -q
 %if 0%{?sle_version}
-%patch1000 -p1
+%patch -P 1000 -p1
 %endif
 
 %build

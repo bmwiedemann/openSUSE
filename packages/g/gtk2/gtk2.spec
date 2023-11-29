@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -314,16 +314,16 @@ gnome-patch-translation-prepare
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE2} .
 # WARNING: This patch does not patch not installed demos and tests.
-%patch0 -p1
+%patch -P 0 -p1
 %endif
 
-%patch1 -p1
-%patch2 -p1
-%patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch8 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 8 -p1
 sed -i "s|/usr/bin/env python|%{_bindir}/python3|" ./gtk/gtk-builder-convert
 gnome-patch-translation-update
 

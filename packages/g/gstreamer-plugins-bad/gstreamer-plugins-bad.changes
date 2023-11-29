@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:26:56 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Thu Nov 23 20:05:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing sctp=disabled and pass sctp=enabled to meson setup

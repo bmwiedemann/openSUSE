@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 29 05:47:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.16:
+  * Prepare for v0.15.16 release
+  * Set operator key correct in SpireAgentScheduleAffinity
+  * Update stable release to v0.15.15
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    c97da4b
+
+-------------------------------------------------------------------
 Tue Nov 28 05:40:26 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.15:

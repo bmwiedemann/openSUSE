@@ -1934,4 +1934,12 @@
     <comment>Fix for bsc#1213790 - Application tab in virt-manager is collapsed</comment>
     <requestid>1101566</requestid>
   </revision>
+  <revision rev="245" vrev="11">
+    <srcmd5>57902b455c6932fe2be1e555cc532779</srcmd5>
+    <version>4.1.0</version>
+    <time>1701289122</time>
+    <user>anag+factory</user>
+    <comment>Several upstream bug fixes and features</comment>
+    <requestid>1129619</requestid>
+  </revision>
 </revisionlist>

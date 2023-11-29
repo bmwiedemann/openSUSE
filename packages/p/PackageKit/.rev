@@ -2024,4 +2024,12 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
 Pushing GNOME 45.rc packages</comment>
     <requestid>1110395</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>d592d113ffcc7d880ac953ae79483a9a</srcmd5>
+    <version>1.2.8</version>
+    <time>1701289183</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129730</requestid>
+  </revision>
 </revisionlist>

@@ -704,4 +704,33 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
     <comment></comment>
     <requestid>1109547</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ac1bf2a1fe44fac888c359a805eaf2a5</srcmd5>
+    <version>2.17.0</version>
+    <time>1701289112</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.17.0:
+  * NEWS: update 2.17.0
+  * packit: add initial support
+  * Bump minimum Go version to 1.19
+  * Add vsock modules into ramdisk
+  * Sync repo templates ⚙
+  * providers/applehv: Add Apple Hypervisor
+  * tests/blackbox: allow skipping critical logging check
+  * stages/disks: retry `sgdisk --zap-all` invocation
+  * Add optionally-installed grub2 code
+  * internal/exec/stages/disks: prevent races with udev
+  * providers/hetzner: add support for Hetzner Cloud
+  * docs: expand development docs and rationale
+  * doc/development: list the test frameworks
+  * docs/development: improve formatting of blackbox section
+  * build(deps): updated dependencies
+- Increased required Go version
+- Removed Changelog part of
+  0005-dracut-Don-t-include-the-ignition-module-by-default.patch -
+  the information is part of the patch description already and
+  conflicts with the upstream Changelog.
+</comment>
+    <requestid>1129548</requestid>
+  </revision>
 </revisionlist>

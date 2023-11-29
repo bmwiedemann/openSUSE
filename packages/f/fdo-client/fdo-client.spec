@@ -77,7 +77,7 @@ export BLOB_PATH=%{_sharedstatedir}/%{name}
 export RO_BLOB_PATH=%{_datadir}/%{name}
 cmake .
 make
-bash utils/keys_gen.sh .
+#bash utils/keys_gen.sh .
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
@@ -97,7 +97,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcfdoclient
 %{__install} -m 644 build/*.a %{buildroot}/%{_libdir}
 %{__install} -m 644 include/*.h %{buildroot}/%{_includedir}
 
-%{__install} data/ecdsa* %{buildroot}/%{_datadir}/%{name}/data
+#%{__install} data/ecdsa* %{buildroot}/%{_datadir}/%{name}/data
 %{__install} data/manufacturer_addr.bin %{buildroot}/%{_datadir}/%{name}/data
 %{__install} data/max_serviceinfo_sz.bin %{buildroot}/%{_datadir}/%{name}/data
 %{__install} data/mfg_proxy.dat %{buildroot}/%{_datadir}/%{name}/data

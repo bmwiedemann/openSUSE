@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 22 08:12:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * F2C_CCE and F2C_CCP (gh#scarazza/apfel#41).
+  * Make the --disable-pywrap option work (gh#scarazza/apfel#43).
+  * Some changes to cmake build system to simplify the flags
+    treatment and the python installation (gh#scarazza/apfel#42).
+  * Actually functioning cmake (gh#scarazza/apfel#44).
+  * cmake fixes and CI with cmake (gh#scarazza/apfel#46).
+  * Update README (gh#scarazza/apfel#47).
+  * Remove Circle CI (gh#scarazza/apfel#48).
+  * Drop CircleCI badge (gh#scarazza/apfel#51).
+  * Remove autotool builds (gh#scarazza/apfel#49).
+  * Update README removing autotools instructions
+    (gh#scarazza/apfel#52).
+- Add apfel-fix-project-version.patch -- Use the correct version
+  in defining project in CMakeLists.txt
+- Add apfel-dont-set-default-reltype.patch -- Don't assume
+  'RELEASE' as the release type, this should be set at the cmake
+  command line.
+- Build static lib and install it as part of a -devel-static
+  package; upstream cmake does not allow disabling static libs and
+  it ends up everywhere in the cmake files, so cannot just ignore
+  it either.
+- Use cmake for build in keeping with upstream; BuildRequires:
+  cmake >= 3.15.
+- Add BuildRequires: swig needed to generate python wrappings.
+
+-------------------------------------------------------------------
 Thu Jan 20 00:19:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.6:

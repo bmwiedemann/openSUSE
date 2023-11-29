@@ -647,4 +647,12 @@
     <comment>New upstream release 1.15.4</comment>
     <requestid>1127245</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>9a42e8d6c44fbdffe4dc28ddb2d859ce</srcmd5>
+    <version>1.15.5</version>
+    <time>1701289115</time>
+    <user>anag+factory</user>
+    <comment>New upstream release 1.55.5</comment>
+    <requestid>1129558</requestid>
+  </revision>
 </revisionlist>

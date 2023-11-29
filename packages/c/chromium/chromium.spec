@@ -87,7 +87,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        119.0.6045.159
+Version:        119.0.6045.199
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -573,7 +573,6 @@ keeplibs=(
     third_party/omnibox_proto
     third_party/one_euro_filter
     third_party/openscreen
-    third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
     third_party/ots
     third_party/pdfium

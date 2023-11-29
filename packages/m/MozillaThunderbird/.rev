@@ -5131,4 +5131,20 @@ I cannot test locally unfortunately.
     and Thunderbird 115.5</comment>
     <requestid>1128271</requestid>
   </revision>
+  <revision rev="325" vrev="1">
+    <srcmd5>0810c7e26e635ede012eb6e47df86559</srcmd5>
+    <version>115.5.1</version>
+    <time>1701289266</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.5.1
+  Bugfix release
+  https://www.thunderbird.net/en-US/thunderbird/115.5.1/releasenotes
+  * Advanced GnuPG keys may be protected with an unexpected passphrase
+  * OpenPGP signatures rejected due to mismatched signature timestamp
+    now display signature timestamp and clarifying message
+  * Advanced address book search did not return results if display name
+    was left blank
+  * Clicking on attendee when inviting attendees added the attendee twice</comment>
+    <requestid>1129733</requestid>
+  </revision>
 </revisionlist>

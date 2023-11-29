@@ -4828,4 +4828,19 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>chromium 119.0.6045.159 (boo#1217142)</comment>
     <requestid>1126528</requestid>
   </revision>
+  <revision rev="408" vrev="1">
+    <srcmd5>ec4d6f05b50fb6e1573f9b20023dd510</srcmd5>
+    <version>119.0.6045.199</version>
+    <time>1701289199</time>
+    <user>anag+factory</user>
+    <comment>Chromium 119.0.6045.199 (boo#1217616)
+* CVE-2023-6348: Type Confusion in Spellcheck
+* CVE-2023-6347: Use after free in Mojo
+* CVE-2023-6346: Use after free in WebAudio
+* CVE-2023-6350: Out of bounds memory access in libavif (boo#1217614)
+* CVE-2023-6351: Use after free in libavif (boo#1217615)
+* CVE-2023-6345: Integer overflow in Skia
+* Various fixes from internal audits, fuzzing and other initiatives </comment>
+    <requestid>1129722</requestid>
+  </revision>
 </revisionlist>

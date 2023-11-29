@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:54:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Fri Oct 27 07:45:47 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Use older way than autopatch on SLE/Leap, which is not ready for

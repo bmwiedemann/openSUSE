@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
-Version:        41.0.5
+Version:        41.0.7
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -85,7 +85,6 @@ functions.
 
 %prep
 %autosetup -a2 -p1 -n cryptography-%{version}
-mkdir .cargo
 cp %{SOURCE3} .cargo/config
 rm -v src/rust/Cargo.lock
 

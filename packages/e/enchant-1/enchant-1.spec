@@ -1,7 +1,7 @@
 #
 # spec file for package enchant-1
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,8 +135,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q -n %{_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %configure --with-pic \

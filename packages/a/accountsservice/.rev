@@ -1161,4 +1161,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
   (bsc#1213884).</comment>
     <requestid>1103247</requestid>
   </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>a07aac26ab61289af648f5bf0992689b</srcmd5>
+    <version>23.13.9</version>
+    <time>1701289159</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129584</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.16.2
+Version:        2.17.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -49,7 +49,7 @@ BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.19
 # combustion provides firstboot.target and ignition-kargs-helper calls combustion
 Requires:       combustion >= 1.2
 Requires:       dracut

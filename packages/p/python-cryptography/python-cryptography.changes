@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 28 09:27:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 41.0.7 (CVE-2023-49083, bsc#1217592):
+  * Fixed compilation when using LibreSSL 3.8.2.
+  * Fixed a null-pointer-dereference and segfault that could
+    occur when loading certificates from a PKCS#7 bundle.
+    Credit to **pkuzco** for reporting the issue. **CVE-2023-49083**
+
+-------------------------------------------------------------------
 Fri Nov 10 13:28:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 41.0.5:

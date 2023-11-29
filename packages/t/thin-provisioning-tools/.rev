@@ -235,4 +235,12 @@
   * [build] Update dependencies</comment>
     <requestid>1125837</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bf9918e825d7ef80c217906ea4d859b5</srcmd5>
+    <version>1.0.7</version>
+    <time>1701289114</time>
+    <user>anag+factory</user>
+    <comment>- Update vendored dependencies</comment>
+    <requestid>1129555</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 28 10:51:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove /etc/filesystem, the content is outdated
+  (/etc cleanup, [jsc#PED-240])
+
+-------------------------------------------------------------------
+Sat Nov 17 14:05:00 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Add libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch
+
+-------------------------------------------------------------------
 Tue Oct 31 13:20:38 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch:

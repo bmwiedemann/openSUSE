@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 10:51:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
 Tue Sep 26 12:09:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly create the pycache/.pyc files, not relying on the

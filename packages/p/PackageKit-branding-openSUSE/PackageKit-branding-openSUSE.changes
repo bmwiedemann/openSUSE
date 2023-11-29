@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:54:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Thu Nov  9 10:18:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebase PackageKit-branding-vendor.patch to apply against
+  PackageKit 1.2.7 and later.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:38:12 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

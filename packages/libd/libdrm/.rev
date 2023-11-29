@@ -1753,4 +1753,13 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>1128871</requestid>
   </revision>
+  <revision rev="173" vrev="2">
+    <srcmd5>e11f2ab50d550395b5e24a7af659f8ad</srcmd5>
+    <version>2.4.118</version>
+    <time>1701289124</time>
+    <user>anag+factory</user>
+    <comment>- adjusted n_libdrm-drop-valgrind-dep-generic.patch,
+  n_libdrm-drop-valgrind-dep-intel.patch to fix build on sle15-sp6</comment>
+    <requestid>1129629</requestid>
+  </revision>
 </revisionlist>
