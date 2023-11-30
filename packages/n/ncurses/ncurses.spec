@@ -1307,6 +1307,7 @@ popd
 %doc %{_mandir}/man1/ncurses*6-config.1%{ext_man}
 %doc %{_mandir}/man1/captoinfo.1%{ext_man}
 %doc %{_mandir}/man1/infotocap.1%{ext_man}
+%doc %{_mandir}/man1/description.1%{ext_man}
 %doc %{_mandir}/man1/tic.1%{ext_man}
 %doc %{_mandir}/man3/*%{ext_man}
 %doc %{_mandir}/man7/*%{ext_man}

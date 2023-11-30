@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:46:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231125
+  + add information about "ttycap", termcap's forerunner, to tset.1
+    (patch by Branden Robinson).
+  + improve formatting/style of manpages, including section reordering
+    (patches by Branden Robinson).
+  + modify usage messages in configure script, bracketing optional values
+    (report by Branden Robinson).
+
+-------------------------------------------------------------------
+Wed Nov 22 07:07:02 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231121
+  + amend fix for Debian #1055882, correcting nul terminator check in
+    waddnstr (Debian #1056340).
+
+-------------------------------------------------------------------
+Mon Nov 20 07:31:54 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231118
+  + improve description of length-parameter and error-returns in several
+    manpages:  curs_addchstr.3x, curs_addstr.3x, curs_addwstr.3x,
+    curs_in_wch.3x, curs_in_wchstr.3x, curs_inchstr.3x, curs_ins_wstr.3x,
+    curs_insstr.3x, curs_instr.3x, curs_inwstr.3x
+  + amend parameter check for entire string versus specific length in
+    winsnstr() and wins_nwstr() to match Solaris.
+  + make similar correction to wins_nwstr().
+  + correct loop termination condition in waddnstr() and waddnwstr()
+    (Debian #1055882, cf: 20201205).
+
+-------------------------------------------------------------------
 Mon Nov 13 08:32:53 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20231111
