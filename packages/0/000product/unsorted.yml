@@ -759,6 +759,7 @@ unsorted:
   - apcupsd 
   - apcupsd-cgi 
   - apfel-devel 
+  - apfel-devel-static 
   - apfel-doc 
   - apfsprogs 
   - apg 
@@ -1840,6 +1841,8 @@ unsorted:
   - camsource-devel 
   - canberra-gtk-play-gnome 
   - canlock 
+  - canokey-qemu 
+  - canokey-qemu-devel 
   - cantata 
   - cantata-lang 
   - cantor 
@@ -9879,7 +9882,7 @@ unsorted:
   - lib4ti2-0 
   - lib5250-0 
   - libADLMIDI1 
-  - libAPFEL0 
+  - libAPFEL0_0_0 
   - libAlembic1_8 
   - libAppStreamQt-devel 
   - libArcus-devel 
@@ -19649,7 +19652,6 @@ unsorted:
   - pcp-pmda-activemq 
   - pcp-pmda-apache 
   - pcp-pmda-bash 
-  - pcp-pmda-bind2 
   - pcp-pmda-bonding 
   - pcp-pmda-cifs 
   - pcp-pmda-cisco 
@@ -19695,7 +19697,6 @@ unsorted:
   - pcp-pmda-rabbitmq 
   - pcp-pmda-redis 
   - pcp-pmda-roomtemp 
-  - pcp-pmda-rpm 
   - pcp-pmda-rsyslog 
   - pcp-pmda-samba 
   - pcp-pmda-sendmail 
@@ -19708,7 +19709,6 @@ unsorted:
   - pcp-pmda-systemd 
   - pcp-pmda-trace 
   - pcp-pmda-unbound 
-  - pcp-pmda-vmware 
   - pcp-pmda-weblog 
   - pcp-pmda-zimbra 
   - pcp-pmda-zswap 
@@ -24994,7 +24994,6 @@ unsorted:
   - python310-pygame 
   - python310-pygame-devel 
   - python310-pygdbmi 
-  - python310-pygeos 
   - python310-pygerrit2 
   - python310-pygit2 
   - python310-pyglet 
@@ -28382,7 +28381,6 @@ unsorted:
   - python311-pygame 
   - python311-pygame-devel 
   - python311-pygdbmi 
-  - python311-pygeos 
   - python311-pygerrit2 
   - python311-pyglet 
   - python311-pygls 
@@ -31871,7 +31869,6 @@ unsorted:
   - python39-pygame 
   - python39-pygame-devel 
   - python39-pygdbmi 
-  - python39-pygeos 
   - python39-pygerrit2 
   - python39-pygit2 
   - python39-pyglet 
@@ -46207,6 +46204,7 @@ unsorted:
   - zpaqfranz 
   - zps 
   - zram-generator 
+  - zsa-udev-rules 
   - zsh 
   - zsh-htmldoc 
   - zsh-sh 
