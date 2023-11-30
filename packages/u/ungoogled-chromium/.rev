@@ -317,4 +317,19 @@
     <comment>119.0.6045.159 (boo#1217142)</comment>
     <requestid>1127290</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6542ca7fa02d82b5e516597dfe91395f</srcmd5>
+    <version>119.0.6045.199</version>
+    <time>1701378108</time>
+    <user>anag+factory</user>
+    <comment>ungoogled chromium 119.0.6045.199 (boo#1217616)
+  * CVE-2023-6348: Type Confusion in Spellcheck
+  * CVE-2023-6347: Use after free in Mojo
+  * CVE-2023-6346: Use after free in WebAudio
+  * CVE-2023-6350: Out of bounds memory access in libavif (boo#1217614)
+  * CVE-2023-6351: Use after free in libavif (boo#1217615)
+  * CVE-2023-6345: Integer overflow in Skia
+  * Various fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>1129955</requestid>
+  </revision>
 </revisionlist>

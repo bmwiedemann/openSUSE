@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://github.com/sdispater/cachy
 Source:         https://files.pythonhosted.org/packages/source/c/cachy/cachy-%{version}.tar.gz
 Patch0:         support-pymemcache.patch
+# PATCH-FIX-UPSTREAM flexmock-0.11.patch, gh#sdispater/cachy#19
+Patch1:         flexmock-0.11.patch
 BuildRequires:  %{python_module fakeredis >= 0.10.2}
 BuildRequires:  %{python_module flexmock >= 0.10.2}
 BuildRequires:  %{python_module msgpack-python >= 0.5}
@@ -63,6 +65,7 @@ Cachy provides a caching library.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/cachy
+%{python_sitelib}/cachy-%{version}*-info
 
 %changelog

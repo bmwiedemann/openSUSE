@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 21 16:24:41 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add 0002-Set-build-flags.patch
+- Require Go 1.20 or newer for building
+- Remove not used build flags
+- Create position independent executables (PIE)
+- Do not disable stripping the binaries
+- Add System/Monitoring group tag
+- Do not generate automatically changelog entries
+
+-------------------------------------------------------------------
 Mon Aug 28 11:12:49 UTC 2023 - daniel@molkentin.de
 
 - Update to version 0.26.0:

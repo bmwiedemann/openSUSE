@@ -94,7 +94,7 @@ Fri Apr 21 11:31:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Sat Mar 18 09:35:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 44.0:
+- Update to version 44.0 (boo#1216184, boo#1217240):
   + Disable the go-to animation to avoid getting throttled by the
     tile server.
   + Updated translations.

@@ -79,7 +79,7 @@
 %endif
 # Package names
 Name:           ungoogled-chromium
-Version:        119.0.6045.159
+Version:        119.0.6045.199
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -140,8 +140,6 @@ Patch245:       chromium-119-no_matching_constructor.patch
 Patch246:       chromium-119-dont-redefine-ATSPI-version-macros.patch
 Patch247:       chromium-119-nullptr_t-without-namespace-std.patch
 Patch248:       chromium-119-assert.patch
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -151,9 +149,11 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
 BuildRequires:  gn >= 0.1807
-BuildRequires:  golang(API)
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
+BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
@@ -566,7 +566,6 @@ keeplibs=(
     third_party/omnibox_proto
     third_party/one_euro_filter
     third_party/openscreen
-    third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
     third_party/ots
     third_party/pdfium

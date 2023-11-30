@@ -24,7 +24,6 @@ License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://sourceforge.net/projects/linux-usb/
 Source0:        https://github.com/gregkh/usbutils/archive/refs/tags/v%{version}.tar.gz
-Source1:        usbutils-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -36,6 +35,16 @@ Requires:       hwdata
 %description
 This package contains a utility for inspecting devices connected to USB
 ports.
+
+%package devel
+Summary:        Developer tools and libraries for USB devices
+Requires:       %{name} = %{version}
+
+%description devel
+This package contains a utility for inspecting devices connected to USB
+ports.
+
+This package is needed when programatically locating the usbutils database
 
 %prep
 %setup -q
@@ -60,6 +69,8 @@ autoreconf -fiv
 %{_mandir}/man1/usb-devices.1%{?ext_man}
 %{_mandir}/man8/lsusb.8%{?ext_man}
 %{_mandir}/man8/usbhid-dump.8%{?ext_man}
+
+%files devel
 %{_libdir}/pkgconfig/usbutils.pc
 
 %changelog

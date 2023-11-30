@@ -1,4 +1,2 @@
 addFilter(".*systemd-service-without-service_del_p.*")
 addFilter(".*systemd-service-without-service_add_p.*")
-addFilter(".*suse-missing-rclink.*")
-addFilter(".*E:.*unused-rpmlintrc-filter.*suse-missing-rclink.*")

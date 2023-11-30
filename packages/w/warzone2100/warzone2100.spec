@@ -122,7 +122,10 @@ find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 %if %{without vulkan}
         -DWZ_ENABLE_BACKEND_VULKAN=Off \
 %endif
-        -DBUILD_SHARED_LIBS:BOOL=OFF \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DWZ_DISTRIBUTOR="openSUSE" \
+        -DWZ_ENABLE_WARNINGS_AS_ERRORS=OFF \
         -DWZ_APPSTREAM_ID=warzone2100
 %cmake_build
 

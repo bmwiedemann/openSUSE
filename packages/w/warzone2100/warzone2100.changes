@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 26 16:42:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for openSUSE Leap, 
+  add DWZ_ENABLE_WARNINGS_AS_ERRORS=OFF
+
+-------------------------------------------------------------------
 Mon Nov 20 22:22:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.1:

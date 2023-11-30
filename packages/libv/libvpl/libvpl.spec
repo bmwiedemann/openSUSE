@@ -36,6 +36,11 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-client)
+%if 0%{?suse_version} > 1600
+ExclusiveArch:  x86_64 %ix86
+%else
+ExclusiveArch:  x86_64
+%endif
 
 %description
 The oneAPI Video Processing Library (oneVPL) provides a single video processing

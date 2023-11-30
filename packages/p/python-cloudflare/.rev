@@ -172,4 +172,26 @@
 - Add alternative for new manpage.</comment>
     <requestid>1115792</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c3d492595067ddec910c59c1cd441739</srcmd5>
+    <version>2.14.2</version>
+    <time>1701378037</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.2:
+  * added AI info
+  * account name via -a flag now. should not be needed
+  * stable diffusion example
+  * move config info into code
+  * first pass a new AI API calls
+  * cleanup of usage, added more flag descriptions
+  * cleanup of usage and getops values - now consistent
+  * timeout values now work from config or api call,
+    added support for image binary results, fixed logging if binary
+  * handle raw byte output either via --image flag or if return
+    from api is bytes
+  * more api endpoints
+  * added ips and issue114 tests
+  * add importlib_resources info for older Python versions</comment>
+    <requestid>1129789</requestid>
+  </revision>
 </revisionlist>

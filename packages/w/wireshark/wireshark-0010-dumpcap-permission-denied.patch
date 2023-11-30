@@ -1,15 +1,15 @@
-commit 1865e02e6c22ee55b0bb11b8c78330d4e65a1132
+commit acac613af7d702dae533cbdf9ef49cef803d0559
 Author: Robert Frohl <rfrohl@suse.com>
-Date:   Wed Jan 13 14:18:36 2021 +0100
+Date:   Tue Sep 12 14:53:17 2023 +0200
 
     Warn if user can't access dumpcap.
 
-diff --git a/capchild/capture_sync.c b/capchild/capture_sync.c
-index f31914886a..d3baab6c50 100644
---- a/capture/capture_sync.c
-+++ b/capture/capture_sync.c
+Index: wireshark-4.2.0rc2/capture/capture_sync.c
+===================================================================
+--- wireshark-4.2.0rc2.orig/capture/capture_sync.c
++++ wireshark-4.2.0rc2/capture/capture_sync.c
 @@ -24,6 +24,10 @@
- #include <wsutil/wslog.h>
+ #include <wsutil/strtoi.h>
  #include <wsutil/ws_assert.h>
  
 +#include <sys/stat.h>
@@ -19,45 +19,15 @@ index f31914886a..d3baab6c50 100644
  #ifdef _WIN32
  #include <wsutil/unicode-utils.h>
  #include <wsutil/win32-utils.h>
-@@ -592,11 +596,22 @@ sync_pipe_start(capture_options *capture_opts, capture_session *cap_session, inf
-          * Child process - run dumpcap with the right arguments to make
-          * it just capture with the specified capture parameters
-          */
+@@ -530,10 +534,21 @@ sync_pipe_open_command(char* const argv[
+             ws_close(data_pipe[PIPE_READ]);
+             ws_close(data_pipe[PIPE_WRITE]);
+         }
 +        char * grp_warning = calloc(1, 256);
          dup2(sync_pipe[PIPE_WRITE], 2);
          ws_close(sync_pipe[PIPE_READ]);
-         execv(argv[0], argv);
--        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s",
--                   argv[0], g_strerror(errno));
-+        if (errno == EPERM || errno == EACCES) {
-+                struct stat statbuf;
-+                struct group *grp;
-+                if(stat("/usr/bin/dumpcap", &statbuf) == 0) {
-+                        if ((grp = getgrgid(statbuf.st_gid)) != NULL) {
-+                                snprintf(grp_warning , 256, "\nYou need to be a member of the '%s' group. Try running\n'usermod -a -G %s <YOUR_USERNAME>' as root.", grp->gr_name, grp->gr_name);
-+                        }
-+                }
-+        }
-+        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s%s",
-+                argv[0], g_strerror(errno), grp_warning);
-+        free(grp_warning);
-         sync_pipe_errmsg_to_parent(2, errmsg, "");
- 
-         /* Exit with "_exit()", so that we don't close the connection
-@@ -827,6 +842,7 @@ sync_pipe_open_command(char* const argv[], int *data_read_fd,
-          * Child process - run dumpcap with the right arguments to make
-          * it just capture with the specified capture parameters
-          */
-+        char * grp_warning = calloc(1, 256);
-         dup2(data_pipe[PIPE_WRITE], 1);
-         ws_close(data_pipe[PIPE_READ]);
-         ws_close(data_pipe[PIPE_WRITE]);
-@@ -834,8 +850,18 @@ sync_pipe_open_command(char* const argv[], int *data_read_fd,
-         ws_close(sync_pipe[PIPE_READ]);
          ws_close(sync_pipe[PIPE_WRITE]);
          execv(argv[0], argv);
--        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s",
--                   argv[0], g_strerror(errno));
 +        if (errno == EPERM || errno == EACCES) {
 +                struct stat statbuf;
 +                struct group *grp;
@@ -67,9 +37,7 @@ index f31914886a..d3baab6c50 100644
 +                        }
 +                }
 +        }
-+        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s%s",
-+                   argv[0], g_strerror(errno), grp_warning);
 +        free(grp_warning);
-         sync_pipe_errmsg_to_parent(2, errmsg, "");
+         sync_pipe_write_int_msg(2, SP_EXEC_FAILED, errno);
  
          /* Exit with "_exit()", so that we don't close the connection

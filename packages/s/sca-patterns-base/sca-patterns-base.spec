@@ -19,12 +19,11 @@
 %define sca_common sca
 %define patdirbase %{_prefix}/lib/%{sca_common}
 %define patdir %{patdirbase}/patterns
-%define prodgrp sdp
 %define patuser root
 %define patgrp root
 
 Name:           sca-patterns-base
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Supportconfig Analysis Pattern Base Libraries
 License:        GPL-2.0-only
@@ -34,6 +33,7 @@ Source:         %{name}-%{version}.tar.gz
 Requires:       bash
 Requires:       perl
 Requires:       python3-base
+Provides:       sca-patterns-template-gen2
 BuildArch:      noarch
 
 %description

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:27:52 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.28
+  * UTMP support is gone, remove dependency also add support for
+    initramfs at shutdown. 
+
+-------------------------------------------------------------------
 Mon Jul 10 13:37:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Fix big endian cast problems to be able to read commands

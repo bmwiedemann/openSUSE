@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Nov 30 12:01:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.185:
+  * General
+    - updated polygons @aabidsofi19 (#9500)
+    - update comp generator @MUzairS15 (#9492)
+    - Delete binding.rego @MUzairS15 (#9491)
+  * - Meshery CLI
+    - [cli][system][fix]: return error if detected while creating
+      manifests folder @VihasMakwana (#9469)
+  * - Meshery UI
+    - [MeshSync] Fix Sorting MeshSync table @senali-d (#9498)
+    - [bug] Resolve connections bug and UI @sudhanshutech (#9488)
+  * - Documentation
+    - Docs Meshsync CRD @KiptoonKipkurui (#9463)
+    - Remove broken links in project/index.md @dmarcoux (#9499)
+    - [Docs] Meshery Operator, MeshSync, Broker Troubleshooting
+      Guide @leecalcote (#9479)
+
+-------------------------------------------------------------------
+Thu Nov 30 11:54:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.184:
+  * Meshery UI
+    - [bug] Update config.js @theBeginner86 (#9486)
+  * Bug Fixes
+    - [bug] Update config.js @theBeginner86 (#9486)
+
+-------------------------------------------------------------------
+Thu Nov 30 11:46:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.183:
+  * Meshery UI
+    - fix node tab crash ( missing null checks) @aabidsofi19
+      (#9483)
+    - [fix] missing dashboard overview charts @aabidsofi19 (#9482)
+
+-------------------------------------------------------------------
+Thu Nov 30 09:50:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.182:
+  * What's Changed
+    - [CI] fix eslint issue failing lint check by @sudhanshutech in
+      #9454
+    - [dashboard] fix opacity for view all span by @sudhanshutech
+      in #9455
+    - [UI] Add hide/unhide support in search for mobile compatible
+      by @sudhanshutech in #9456
+    - [UI] fix zindex issues by @sudhanshutech in #9462
+    - [Server] Update MeshModel components API. by @MUzairS15 in
+      #9464
+    - [UI] Enhance Meshmodel Registry UI by @sudhanshutech in #9465
+    - [Server] MeshSync fingerprinting support. by @MUzairS15 in
+      #9442
+    - [utility] Custom infiniteScroll utility function by
+      @sudhanshutech in #9466
+    - [FIXED] mesheryctl golangci_lint failure by @zakisk in #9468
+    - Added feature: mesheryctl exp model search [query-text]
+      command by @zakisk in #9436
+    - [Feature] Model: aws shape components by @leecalcote in #9457
+    - Add Config Map Icon by @ShatilKhan in #8829
+    - Add pod metrics icons by @Akshun-01 in #9330
+    - add list item hover in theme by @aabidsofi19 in #9475
+    - [Meshmodel] Use capabilites by @aabidsofi19 in #9474
+    - [UI] FIx UI Dashboard Crash by @MUzairS15 in #9477
+    - Meshmodel capabilites by @aabidsofi19 in #9478
+    - [Meshmodel] meshery operator by @aabidsofi19 in #9480
+    - [Meshmodel] remove ellipse and roundbarrel by @aabidsofi19 in
+      #9481
+
+-------------------------------------------------------------------
 Mon Nov 27 10:56:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.181:

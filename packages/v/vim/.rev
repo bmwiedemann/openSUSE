@@ -7311,4 +7311,41 @@ always built-in because vim has direct perl dependencies anyway.
  *  Update the translation of Russian messages to Vim 9.0.2091 (#13490)</comment>
     <requestid>1126465</requestid>
   </revision>
+  <revision rev="357" vrev="1">
+    <srcmd5>e9bf51595e06ed55390509882ec0cb2a</srcmd5>
+    <version>9.0.2136</version>
+    <time>1701377975</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 9.0.2136
+ *  MSVC errorformat can be improved
+ *  No test for mode() when executing Ex commands
+ *  Revise Makefile
+ *  Update syntax file
+ *  ml_get error when scrolling
+ *  Cannot detect overstrike mode in Cmdline mode
+ *  Duplicate Netbeans Error Message
+ *  not all nushell files detected
+ *  Updated German translations
+ *  add additional nginx keywords
+ *  add Make_mvc.mak file for tutor
+ *  updated Russian translations for tutorials
+ *  updated Italian translation
+ *  some errors with translation Makefiles
+ *  [security]: use-after-free in call_dfunc()
+ *  Update doc Makefiles with comments from #13567
+ *  add indentation plugin (fixes #13574)
+ *  runtime(swig): add syntax and filetype plugins
+ *  translation Makefiles can be improved
+ *  unused assignments when checking 'listchars'
+ *  File info disappears when 'cmdheight' has decreased
+ *  INT overflow detection logic can be simplified
+ *  Problem with initializing the length of range() lists
+ *  [security]: prevent overflow in indenting
+ *  [security]: use-after-free in ex_substitute
+ *  Fix handling of very long filename on longlist style
+ *  un-used assignment in do_source_buffer_init
+ *  remove dead-condition in ex_class
+ *  [security]: avoid double-free in get_style_font_variants</comment>
+    <requestid>1129781</requestid>
+  </revision>
 </revisionlist>

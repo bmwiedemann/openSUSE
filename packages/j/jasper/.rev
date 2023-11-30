@@ -300,4 +300,15 @@
   * Fix a few minor build issues.</comment>
     <requestid>1123411</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9507bb7c9cf3f0ffa91aaf344410a9cc</srcmd5>
+    <version>4.1.1</version>
+    <time>1701377961</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.1:
+  * Disallow in-source builds by default #364
+  * Fix a potential integer overflow problem in the
+    jas_get_total_mem_size function (for the Windows platform) #363</comment>
+    <requestid>1129748</requestid>
+  </revision>
 </revisionlist>

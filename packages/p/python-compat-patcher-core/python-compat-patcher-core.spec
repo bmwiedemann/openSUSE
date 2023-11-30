@@ -1,7 +1,7 @@
 #
 # spec file for package python-compat-patcher-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-compat-patcher-core
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Python patcher system
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pakal/compat-patcher-core
-Source:         https://files.pythonhosted.org/packages/source/c/compat-patcher-core/compat-patcher-core-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/pakal/compat-patcher-core/archive/refs/tags/release-%{version}.tar.gz#/compat-patch-core-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cookiecutter > 1.6.0
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -47,16 +48,13 @@ BuildRequires:  python3-pytest-cookies
 Python patcher system to allow easy and lasting API compatibility.
 
 %prep
-%setup -q -n compat-patcher-core-%{version}
-sed -i 's/python setup/python3 setup/' tests/*.py
-dos2unix CHANGELOG
-rm pytest.ini
+%setup -q -n compat-patcher-core-release-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +66,7 @@ rm pytest.ini
 %files %{python_files}
 %doc AUTHORS CHANGELOG README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/compat_patcher_core
+%{python_sitelib}/compat_patcher_core-%{version}.dist-info
 
 %changelog

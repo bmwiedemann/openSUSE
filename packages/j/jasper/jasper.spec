@@ -20,7 +20,7 @@
 %global __builddir obs_build
 
 Name:           jasper
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        JasPer-2.0
@@ -29,7 +29,7 @@ URL:            https://jasper-software.github.io/jasper
 Source:         https://github.com/jasper-software/jasper/archive/version-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  Mesa-libGL-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.20
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -69,7 +69,7 @@ image compression standard Part 1.
 
 %build
 export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"
-%cmake -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}
+%cmake -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} -DALLOW_IN_SOURCE_BUILD=ON
 %make_build
 
 %install

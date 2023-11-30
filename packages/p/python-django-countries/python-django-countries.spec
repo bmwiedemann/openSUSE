@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-countries
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-countries
-Version:        7.2.1
+Version:        7.5.1
 Release:        0
 Summary:        Provides a country field for Django models
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/SmileyChris/django-countries/
 Source:         https://files.pythonhosted.org/packages/source/d/django-countries/django-countries-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
+Requires:       python-typing-extensions
 Recommends:     python-djangorestframework
 Recommends:     python-graphene-django
 Recommends:     python-pyuca
@@ -41,6 +42,7 @@ BuildRequires:  %{python_module graphene-django}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyuca}
+BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages
 
@@ -53,10 +55,10 @@ support for Django REST Framework.
 sed -i '1{/^#!/d}' django_countries/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/django_countries/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -69,6 +71,7 @@ export PYTHONPATH=${PWD}
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/django_countries
+%{python_sitelib}/django_countries-%{version}.dist-info
 
 %changelog

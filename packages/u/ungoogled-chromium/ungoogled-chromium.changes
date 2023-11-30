@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 29 06:26:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 119.0.6045.199 (boo#1217616)
+  * CVE-2023-6348: Type Confusion in Spellcheck
+  * CVE-2023-6347: Use after free in Mojo
+  * CVE-2023-6346: Use after free in WebAudio
+  * CVE-2023-6350: Out of bounds memory access in libavif (boo#1217614)
+  * CVE-2023-6351: Use after free in libavif (boo#1217615)
+  * CVE-2023-6345: Integer overflow in Skia
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Wed Nov 15 06:18:42 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 119.0.6045.159 (boo#1217142)

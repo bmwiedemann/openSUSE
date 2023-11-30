@@ -7,7 +7,6 @@
     <param name="revision">refs/tags/v0.26.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">^\D*([\d.]+)$</param>
-    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">alertmanager</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Any-Adapter-Callback
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %define cpan_name Log-Any-Adapter-Callback
 Name:           perl-Log-Any-Adapter-Callback
-Version:        0.101
+Version:        0.102.0
 Release:        0
-Summary:        (DEPRECATED) Send Log::Any logs to a subroutine
+%define cpan_version 0.102
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        (DEPRECATED)(ADOPTME) Send Log::Any logs to a subroutine
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/%{cpan_name}-%{cpan_version}.tar.gz
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Log::Any::Adapter) >= 0.11
 BuildRequires:  perl(Test::More) >= 0.98
 Requires:       perl(Log::Any::Adapter) >= 0.11
-BuildArch:      noarch
+Provides:       perl(Log::Any::Adapter::Callback) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -54,14 +56,14 @@ where $method is the name of method (like "debug") and ($self, $format,
 @params) are given by Log::Any.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
 %check
-%make_build test
+make test
 
 %install
 %perl_make_install
@@ -69,7 +71,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

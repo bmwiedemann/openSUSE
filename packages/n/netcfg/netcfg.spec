@@ -30,8 +30,6 @@ Source10:       protocols
 Source11:       services.bz2
 Source12:       hostname
 Source13:       aliases
-Source14:       ethers
-Source15:       netgroup
 Source16:       COPYING
 Source17:       ethertypes
 Source100:      services-compare.pl
@@ -58,11 +56,11 @@ cp %{SOURCE16} .
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
-for i in hostname aliases exports host.conf hosts netgroup ethertypes; do
+for i in hostname aliases exports host.conf hosts ethertypes; do
   install $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
 done
 mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}
-for i in networks protocols services.bz2 ethers; do
+for i in networks protocols services.bz2; do
   install $RPM_SOURCE_DIR/$i %{buildroot}%{_prefix}%{_sysconfdir}
 done
 bunzip2 %{buildroot}%{_prefix}%{_sysconfdir}/services.bz2
@@ -75,11 +73,9 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/exports.d
 %defattr(644,root,root,755)
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hostname
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/aliases
-%verify(not md5 size mtime)                    %{_prefix}%{_sysconfdir}/ethers
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/exports
 %config(noreplace) %{_sysconfdir}/host.conf
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts
-%config(noreplace) %{_sysconfdir}/netgroup
 %{_prefix}%{_sysconfdir}/networks
 %{_prefix}%{_sysconfdir}/protocols
 %{_prefix}%{_sysconfdir}/services

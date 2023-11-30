@@ -181,4 +181,14 @@ use private glib API but implement a share memory mkstemp</comment>
   and ansers (blogctl) as well as passphrases (blogd)</comment>
     <requestid>1097973</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2edac63a294374e55d675bd0e45564cc</srcmd5>
+    <version>2.28</version>
+    <time>1701377980</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.28
+  * UTMP support is gone, remove dependency also add support for
+    initramfs at shutdown.</comment>
+    <requestid>1129802</requestid>
+  </revision>
 </revisionlist>

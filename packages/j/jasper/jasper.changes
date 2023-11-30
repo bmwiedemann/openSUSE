@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 29 09:29:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.1:
+  * Disallow in-source builds by default #364
+  * Fix a potential integer overflow problem in the
+    jas_get_total_mem_size function (for the Windows platform) #363 
+
+-------------------------------------------------------------------
 Sun Nov  5 13:14:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.1.0:

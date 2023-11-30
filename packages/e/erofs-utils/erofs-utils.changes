@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 29 16:43:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable lzma/xz compression; make `mkfs.erofs -z lzma` work.
+
+-------------------------------------------------------------------
 Wed Nov  1 13:22:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.1

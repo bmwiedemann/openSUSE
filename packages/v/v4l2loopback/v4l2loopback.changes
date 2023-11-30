@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Thu Nov 30 14:36:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- v4l2loopback-utils is no longer noarch: v4l2loopback-ctl was
+  converted from a bash script to C source.
+
+-------------------------------------------------------------------
+Thu Nov 30 10:56:32 UTC 2023 - hpj@urpla.net
+
+- Switch to git service in order to sync with upstream more often
+- Update to version 0.12.8~git.20231123T160730.850a2e3:
+  * some minor typos
+  * [ci] install 'dkms' to get some more building prerequisites
+  * [ci] only install latest packageversion of each kernel-flavour
+  * [ci] lower actions/checkout to v3
+  * [ci] bump actions/checkout to v4
+  * [ci] Fix testing for v4l2 capabilities
+  * [ci] show skipped builds
+  * [ci] install all available kernel headers
+  * [ci] skip failures on kernels without v4l2 support
+  * Update README.md
+  * Fix formatting
+  * added v4l2loopback-ctl.o to gitignore
+  * note that GLOB_ONLYDIR is indeed not requried by POSIX
+  * fixed utils build for musl (missing GLOB_ONLYDIR)
+  * [github] Mention "discussions" in the issue landing-page
+  * Remove support for pre-4.0.0 kernels.
+  * Remove support for pre-3.6.1 Linux kernels.
+  * force timestamp.tv_sec to (long long int)
+  * build-fixes: install and utils
+  * Remove the 'capture_nr' member from the v4l2_looback_config struct
+  * swap output/capture device when adding new devices
+  * make the code less-dependant on the "capture_nr" member of the config-struct
+  * rename sysfs-attribute "type" to "state"
+  * fallback to dprintkrw() if dev_warn_ratelimited() is not available
+  * v4l2loopback: Fixup bytesused field when writer sends a too large value
+  * v4l2loopback-ctl: streamline help
+  * v4l2loopback-ctl: add flags to "query" verb
+  * v4l2loopback-ctl: more escaping for device-name
+  * v4l2loopback-ctl: align help
+  * refactored raw-string printout into helper function
+  * v4l2loopback-ctl: escape special chars in device-names
+  * v4l2loopback-ctl: add "list" verb
+  * fix device_nr checks in V4L2LOOPBACK_CTL_QUERY
+  * add /sys/devices/virtual/video4linux/video*/type interface
+  * indentation...
+  * prevent multiple readers to start streaming
+  * add "--verbose" flag to "set-timeout-image"
+  * run timeout-image gst-pipeline through "tee"
+  * report format via /sys if it is somehow FIXED
+  * fixate format with "keep_format"
+  * whitespace
+  * turn the "timeout_image_io" ctrl into a button
+  * only unset the timeout_image_io flag when requesting buffers for the timeout image
+  * unset the timeout_image_io flag if allocating the timeout-image fails
+  * indentation
+  * long-options for v4l2loopback-ctl
+  * tests/producer: fix description of "-c" flag and linefeed
+  * clang-format
+  * v4l2loopback-ctl: allow setting of minimum framesize
+  * allow setting of minimum width/height as well
+  * set default framesize
+  * unify the output of vidioc_enum_fmt_*
+  * V4L2LOOBACK_IS_FIXED_FMT() to check if the format is changeable
+  * script to check the output/capture formats of a device
+  * G_FMT_CAP: only report failure if the format has not been fixated
+  * set TIMESTAMP flags
+  * prevent multiple output streams
+  * tests/consumer: make S_FMT errors non-fatal
+  * yikes, yet another typo
+  * reversed compat logic
+  * more clang-format
+  * add 'install' target for utils
+  * fix typo
+  * codespell fixes
+  * help: reverse general form and example
+  * v4l2loopback-ctl help: use 'detail' level rather than 'brief' flag
+  * Always protect access to dev->outbufs_list with the list_lock mutex
+  * code formatting
+  * Make VIDIOC_ENUMINPUT return V4L2_IN_ST_NO_SIGNAL if there's no producer
+  * Use separate spinlocks for protecting list access
+  * compat for older kernels
+  * fix formatting warnings when printing timestamps
+  * refactor the TRY/S_FMT code
+  * more diagnostic output
+  * set V4L2_BUF_FLAG_TIMESTAMP_COPY flag when copying the buffer timestamp
+  * use DEFAULT colorspace
+  * stuff...
+  * try more...
+  * fix random; optionally set timestamp
+  * set bufsize/bytesused when initializing buffers for MMAP
+  * more debugging and a global buffer
+  * simple test application for producing/consuming buffers
+  * Bump copyright dates
+  * more gitignores
+- Dropped upstream patches:
+  * v4l2loopback-include_header.patch
+  * 0005-track-active-readers.patch
+  * 0006-UBUNTU-SAUCE-event-support-V4L2_EVENT_PRI_CLIENT_USA.patch
+  * 0007-v4l2loopback-Fixup-bytesused-field-when-writer-sends.patch
+
+-------------------------------------------------------------------
+Wed Nov 29 05:55:12 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Added patches:
+  * 0005-track-active-readers.patch
+  * 0006-UBUNTU-SAUCE-event-support-V4L2_EVENT_PRI_CLIENT_USA.patch
+  * 0007-v4l2loopback-Fixup-bytesused-field-when-writer-sends.patch
+  from https://git.launchpad.net/ubuntu/+source/v4l2loopback/tree/debian/patches
+  they are needed for intel ipu6 driver support
+  and should be dropped with the next release since 
+  they are already merged upstream in the git tree
+
+-------------------------------------------------------------------
 Thu Sep 29 00:42:25 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 0.12.7:
@@ -14,6 +127,11 @@ Thu Sep 29 00:42:25 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 Fri Mar  4 20:16:00 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Fix modprobe.d location for 15.3 and earlier (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
+Tue Sep  7 15:40:54 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix rpmlint complaints failing the build on TW
 
 -------------------------------------------------------------------
 Tue Feb  9 10:47:03 UTC 2021 - Frederic Crozat <fcrozat@suse.com>

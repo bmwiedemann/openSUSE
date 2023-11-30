@@ -115,4 +115,35 @@
     <comment></comment>
     <requestid>1082005</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dd67479131a7098c378d0c493750e367</srcmd5>
+    <version>3.7.2</version>
+    <time>1701377982</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.7.2:
+  * The type annotations for SyncToAsync and AsyncToSync have been
+    changed to more accurately reflect the kind of callables they
+    return.
+  * On Python 3.10 and below, the version of the &quot;typing_extensions&quot;
+    package is now constrained to be at least version 4 (as we depend
+    on functionality in that version and above)
+  * Contextvars are now required for the implementation of `sync`
+    as Python 3.6 is now no longer a supported version.
+  * sync_to_async and async_to_sync now pass-through
+  * Debug and Lifespan State extensions have resulted in a typing
+    change for some request and response types. This change should
+    be backwards-compatible.
+  * ``asgiref`` frames will now be hidden in Django tracebacks
+    by default.
+  * Raw performance and garbage collection improvements in Local,
+    SyncToAsync, and AsyncToSync.
+
+    application startup.
+  * Fixed pytest_asyncio deprecation warning.
+  * Rewrote multiprocessing test to use no local functions
+  * Remove SOCK_NONBLOCK from socket creation on tests
+    is set
+  * contextvars are now persisted through AsyncToSync</comment>
+    <requestid>1129812</requestid>
+  </revision>
 </revisionlist>

@@ -31,4 +31,18 @@
     <comment></comment>
     <requestid>1000978</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>04a5aee659b214fc88fa074edd879d21</srcmd5>
+    <version>2.1</version>
+    <time>1701378038</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1:
+  * Added Django 4.1, 4.2 and Python 3.11 to the CI.
+  * Removed the pytz dependency from the tests.
+  * Dropped Python &lt; 3.8, Django &lt; 3.2 from the CI.
+  * Switched to hatchling and ruff.
+
+- Remove unneeded changes-in-Django.patch</comment>
+    <requestid>1129783</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 29 08:21:09 UTC 2023 - tiwai@suse.com
+
+- Update to version 20231128 (git commit d9f6088f7e91):
+  * Add a COPYOPTS variable
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xDFC8_145F
+
+-------------------------------------------------------------------
 Tue Nov 28 08:09:43 UTC 2023 - tiwai@suse.com
 
 - Update to version 20231127 (git commit 4124f8f928d5):
@@ -107,7 +114,8 @@ Tue Nov 07 15:03:06 UTC 2023 - tiwai@suse.com
 -------------------------------------------------------------------
 Mon Oct 23 10:43:17 UTC 2023 - tiwai@suse.com
 
-- Update to version 20231019 (git commit d983107a2dfa):
+- Update to version 20231019 (git commit d983107a2dfa)
+  (bsc#1215823, CVE-2023-20592):
   * Fix the robot email script
   * linux-firmware: Update AMD cpu microcode
   * Add support for sending emails while processing a PR/patch
@@ -278,6 +286,9 @@ Tue Aug 29 15:09:31 UTC 2023 - tiwai@suse.com
 Fri Aug 18 14:04:53 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230814 (git commit 0e048b061bde):
+  (bsc#1215831, CVE-2021-26345, CVE-2021-46766, CVE-2021-46774,
+   CVE-2022-23820, CVE-2022-23830, CVE-2023-20519, CVE-2023-20521,
+   CVE-2023-20526, CVE-2023-20533, CVE-2023-20566):
   * amdgpu: DMCUB updates for various AMDGPU asics
   * Revert "amdgpu: partially revert firmware for GC 11.0.0 and GC 11.0.2"
   * amdgpu: partially revert firmware for GC 11.0.0 and GC 11.0.2

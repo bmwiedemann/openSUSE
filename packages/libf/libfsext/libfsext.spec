@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20230603
+Version:        20231129
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -45,9 +46,8 @@ BuildRequires:  pkgconfig(libfcache) >= 20230115
 BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libhmac) >= 20230407
-BuildRequires:  pkgconfig(libuna) >= 20220611
-
+BuildRequires:  pkgconfig(libhmac) >= 20231127
+BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 

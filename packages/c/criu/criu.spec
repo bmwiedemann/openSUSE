@@ -33,16 +33,17 @@
 %define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
 
 Name:           criu
-Version:        3.18
+Version:        3.19
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
 Group:          System/Console
 URL:            https://criu.org/
 Source0:        http://github.com/checkpoint-restore/criu/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# To be generated; we keep a static one for building without pip
+Source1:        crit.py
 Patch1:         criu-py-install-fix.diff
 Patch2:         0002-Fix-build-with-nftables-installed-in-different-direc.patch
-Patch3:         criu-amdgpu-plugin-fix.patch
 Patch4:         plugin-dir-path.patch
 Patch5:         criu-ns-python3-shebang.patch
 BuildRequires:  libcap-devel
@@ -120,12 +121,7 @@ This package contains all necessary include files and libraries needed
 to develop applications with CRIU library.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1
 # default off
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 
@@ -145,6 +141,8 @@ make V=1 %{?_smp_mflags} %{?make_options} WERROR=0 \
 	PREFIX=%{_prefix} \
 	LIBDIR=%{_libdir} \
 	LIBEXECDIR=%{_libexecdir}
+install -c -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/crit
+
 # remove static libs
 rm -f %{buildroot}%{_libdir}/lib*.a \
       %{buildroot}%{_libexecdir}/compel/*.a
@@ -156,7 +154,7 @@ ln -s criu %{buildroot}%{_sbindir}/crtools
 ln -s criu.8 %{buildroot}%{_mandir}/man8/crtools.8
 
 %if ! %{with_amdgpu_plugin}
-rm -f %{buildroot}%{_mandir}/man1/amdgpu_plugin.1
+rm -f %{buildroot}%{_mandir}/man1/criu-amdgpu-plugin.1
 %endif
 
 %post -n libcriu2 -p /sbin/ldconfig
@@ -179,13 +177,14 @@ rm -f %{buildroot}%{_mandir}/man1/amdgpu_plugin.1
 %{_mandir}/man8/crtools.8%{?ext_man}
 %{_libexecdir}/criu
 %{_libexecdir}/compel
-%{python3_sitelib}/crit-*.egg-info
+%{python3_sitelib}/*.egg-info
+%{python3_sitelib}/crit
 %{python3_sitelib}/pycriu
 
 %if %{with_amdgpu_plugin}
 %files plugin-amdgpu
 %doc plugins/amdgpu/README.md
-%{_mandir}/man1/amdgpu_plugin.1%{?ext_man}
+%{_mandir}/man1/criu-amdgpu-plugin.1%{?ext_man}
 %dir %{_libdir}/criu
 %{_libdir}/criu/amdgpu_plugin.so
 %endif

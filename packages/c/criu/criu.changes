@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 28 15:04:29 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to criu 3.19:
+  New features:
+  * LoongArch64 support
+  * C/R membarrier() registrations
+  * Restore THP_DISABLE prctl
+  * prctl: Migrate prctl(NO_NEW_PRIVS) setting
+  Bugfixes:
+  * Many fixes and improvements from the Google team
+  * Fix dumping hugetlb-based memfd on kernels < 4.16
+  * Fixes here and there
+  Improvements:
+  * drop python 2 support
+  * support XSAVE on newer Intel CPUs
+- Refreshed criu-py-install-fix.diff;
+  workarounds appled to both crit and lib/pycriu
+- Drop obsoleted patch criu-amdgpu-plugin-fix.patch
+
+-------------------------------------------------------------------
 Tue Jun  6 15:31:57 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to criu 3.18:

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:05:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.1:
+  * Make ``CountryField`` queryset filters also work with country
+    codes in addition to names.
+  * Switch to ``pyproject.toml`` rather than ``setup.py`` to fix
+    installation issues with pip 23.0+.
+  * Rename Turkey to Türkiye.
+  * Improve translation fallback handling, fixing a threading
+    race condition that could cause odd translation issues.
+  * This also fixes translation issues with older Python 3.6/3.7
+    versions.
+  * Add Python 3.11, drop Python 3.6 and Django 2.2 support.
+  * Fix error when using ``USE_I18N = False``.
+  * Fix broken translations due to last common country names fix.
+  * Fixed Traditional Chinese translation (needed to be
+    ``locale/zh_Hant``).
+  * Update flag of Honduras.
+  * Add Django 4.0 and 4.1 to the test matrix, dropping 3.0 and
+    3.1
+  * Add Django Rest Framework 3.13 and 3.14, dropping 3.11.
+  * Multi-choice countries are now stored sorted and with
+    duplicates stripped.
+  * Fix common country names not being honoured in non-English
+    translations (only fixed for Python 3.8+).
+  * Fix slowdown introduced in v7.3 caused by always using
+    country name lookups for field comparisons.
+    ``filter(country="New Zealand")`` will no longer match now,
+    but instead new ``__name`` and ``__iname`` filters have
+    been added to achieve this.
+  * Typing compatibility fixes for Python <3.9.
+  * Make full English country names work in database lookups, for
+    example, ``Person.objects.filter(country__icontains="zealand")``.
+
+-------------------------------------------------------------------
 Tue May 11 23:20:32 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add optional dependency pyuca

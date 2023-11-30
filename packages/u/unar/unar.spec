@@ -16,14 +16,16 @@
 #
 
 
+%define _dver  1.1
 Name:           unar
-Version:        1.10.7
+Version:        1.10.8
 Release:        0
 Summary:        Multi-format unarchiver
 License:        LGPL-2.1-or-later
 URL:            https://unarchiver.c3.cx/commandline
-Source0:        https://github.com/MacPaw/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/MacPaw/XADMaster/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
+Source2:        https://github.com/MacPaw/universal-detector/archive/%{_dver}/universal-detector-%{_dver}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-objc
 BuildRequires:  gnustep-base-devel
@@ -44,27 +46,31 @@ well as disc images in ISO, BIN, MDF, NRG, CDI. It supports filenames
 in foreign character sets.
 
 %prep
-%autosetup
+%setup -q -T -c
+tar xf %{SOURCE0}
+mv XADMaster-%{version} %{name}
+tar -xf %{SOURCE2}
+mv universal-detector-%{_dver} UniversalDetector
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags}"
 export OBJCFLAGS="$(gnustep-config --objc-flags)"
-%make_build -C XADMaster -f Makefile.linux
+%make_build -C %{name} -f Makefile.linux
 
 %install
 install -d %{buildroot}%{_bindir}
-install -m755 XADMaster/lsar XADMaster/unar -t %{buildroot}%{_bindir}
+install -m755 %{name}/lsar %{name}/unar -t %{buildroot}%{_bindir}
 install -d %{buildroot}%{_mandir}/man1
-install -m644 XADMaster/Extra/lsar.1 XADMaster/Extra/unar.1 -t %{buildroot}%{_mandir}/man1
+install -m644 %{name}/Extra/lsar.1 %{name}/Extra/unar.1 -t %{buildroot}%{_mandir}/man1
 
 install -d %{buildroot}%{_datadir}/bash-completion/completions
-install -m644 XADMaster/Extra/lsar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/lsar
-install -m644 XADMaster/Extra/unar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/unar
+install -m644 %{name}/Extra/lsar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/lsar
+install -m644 %{name}/Extra/unar.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/unar
 
 %files
-%license LICENSE
-%doc README.md
+%license %{name}/LICENSE
+%doc %{name}/README.md
 %{_bindir}/lsar
 %{_bindir}/unar
 %{_mandir}/man1/lsar.1%{?ext_man}

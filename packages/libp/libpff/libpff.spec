@@ -18,16 +18,14 @@
 
 Name:           libpff
 %define lname	libpff1
-Version:        20230325
+Version:        20231130
 Release:        0
 Summary:        Library and tools to access Microsoft PFF/OFF/PST/OST/PAB files
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libpff
-Source:         %name-snapshot-%version.tar.xz
-Source2:        %name-snapshot-%version.tar.asc
-#Source:         https://github.com/libyal/libpff/releases/download/%version/libpff-alpha-%version.tar.gz
-#Source2:        https://github.com/libyal/libpff/releases/download/%version/libpff-alpha-%version.tar.gz.asc
+Source:         https://github.com/libyal/libpff/releases/download/%version/libpff-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libpff/releases/download/%version/libpff-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source12:       PFF_Forensics_-_analyzing_the_horrible_reference_file_format.pdf
 Source13:       PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
@@ -48,13 +46,13 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20230115
-BuildRequires:  pkgconfig(libfdata) >= 20230119
+BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfmapi) >= 20220114
+BuildRequires:  pkgconfig(libfmapi) >= 20230408
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libfwnt) >= 20220922
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libfwnt) >= 20231124
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(zlib)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -105,7 +103,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libpff.
 
 %prep
-%autosetup -p1 -n %name
+%autosetup -p1
 cp -av %_sourcedir/*.pdf .
 
 %build

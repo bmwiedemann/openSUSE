@@ -675,4 +675,41 @@
 - Add power10 fix power10-fix.patch for #1142.</comment>
     <requestid>1126103</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d8eb5a6c982130a054839fc25bc0f0e6</srcmd5>
+    <version>2.4.0</version>
+    <time>1701378091</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4.0
+  * mold gained the --spare-program-headers=&lt;number&gt; option, which adds a specified
+    number of spare entries at the end of the program header. The option aims to
+    make post-processing tools to add program header entries very easily. Note that
+    sorting program header entries after adding new ones may be necessary to meet
+    the constraints of the ELF file format. For details, see the elf(5) man page.
+    (eb6c213)
+  * mold's -z rewrite-endbr option rewrites superflous endbr64 instructions with nop
+    as a countermeasure against control-flow highjacking attacks. Previously, this
+    worked exclusively with object files compiled with -ffunction-sections,
+    requiring each function to be compiled into a separate section. Starting from
+    this release, -z rewrite-endbr works on object files compiled without it. In
+    other words, mold is now capable of rewriting endbr64 instructions even if the
+    instruction is not at the beginning of a section. (3cb8a52)
+  * Previously, mold couldn't handle object files containing multiple .eh_frame
+    sections. The .eh_frame is a section containing data for exception handling.
+    Usually, an object file contains only one .eh_frame which describes how to
+    handle exceptions for all text sections in the same file. However, on rare
+    conditions, it seems ld -r creates an object file containing multiple .eh_frame
+    sections. mold is now able to handle such object files. (f4c5a8a)
+  * mold -run &lt;command&gt; is an easy way to run the given command with a virtual
+    environment in which the ld command is replaced with mold. The feature is
+    implemented using LD_PRELOAD to hook fork(2)-family functions. Before this
+    release, some invocations of ld were not intercepted correctly because we missed
+    the posix_spawnp(2) function. Now, the function is intercepted just like other
+    fork(2)-family functions. (3fd1cec)
+  * mold used to produce a non-working executable on a rare occasion when all
+    thread-local variables lacked an initial value and the read-only data required
+    alignment equal to or greater than the page size. This bug has been resolved.
+    (de7d37e)</comment>
+    <requestid>1129883</requestid>
+  </revision>
 </revisionlist>

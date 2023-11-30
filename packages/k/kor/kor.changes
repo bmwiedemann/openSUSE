@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 30 09:08:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.1:
+  * fix ingress flag as used (#169)
+  * Feat: Find unused pv (#163)
+  * feat:add version flag to ldflags and print version in banner
+    (#158)
+  * Bump k8s.io/apiextensions-apiserver from 0.28.3 to 0.28.4
+    (#162)
+
+-------------------------------------------------------------------
 Thu Nov 16 12:10:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.0:

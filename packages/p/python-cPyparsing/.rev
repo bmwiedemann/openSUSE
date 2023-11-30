@@ -89,4 +89,14 @@
     parses with common suffixes, not just common prefixes.</comment>
     <requestid>1128732</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f88ed0ce10b9e0f9a180baa3febe261</srcmd5>
+    <version>2.4.7.2.3.2</version>
+    <time>1701378048</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.7.2.3.2:
+  * Fix adaptive parsing errors.
+  * Performance tuning.</comment>
+    <requestid>1129800</requestid>
+  </revision>
 </revisionlist>

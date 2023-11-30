@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 29 04:27:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Prepare for Python 3.12, by skipping it for the other test flavors, and
+  adding one for it.
+
+-------------------------------------------------------------------
 Tue Nov 21 06:35:39 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.14.0:

@@ -17,7 +17,7 @@
 
 
 Name:           netavark
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
@@ -74,17 +74,18 @@ go-md2man -in %{name}.1.md -out %{name}.1
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_unitdir}/%{name}-dhcp-proxy.service
 %{_unitdir}/%{name}-dhcp-proxy.socket
+%{_unitdir}/%{name}-firewalld-reload.service
 
 %pre
-%service_add_pre %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
+%service_add_pre %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
 
 %post
-%service_add_post %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
+%service_add_post %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
 
 %preun
-%service_del_preun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
+%service_del_preun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
 
 %postun
-%service_del_postun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
+%service_del_postun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service
 
 %changelog

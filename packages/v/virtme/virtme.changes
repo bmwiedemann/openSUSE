@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 30 11:22:25 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.18
+  * restore old --run behavior
+  * fix --user behavior
+
+-------------------------------------------------------------------
 Thu Nov 16 10:56:32 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - virtme-ng version: 1.17

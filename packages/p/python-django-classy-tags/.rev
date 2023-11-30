@@ -68,4 +68,21 @@
     <comment></comment>
     <requestid>1094462</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6eb5df4e08ac51243a3047dc9e89203</srcmd5>
+    <version>4.1.0</version>
+    <time>1701378039</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.0:
+  * Django 4.2 support
+  * Dropped support for Python 3.7
+  * Added support for Python 3.11
+  * Dropped support for Django &lt; 3.2
+  * Added support for Django 4.1
+  * Start testing against Django's `main` branch
+- drop django-4-1-support.patch (upstream)
+
+- initial build</comment>
+    <requestid>1129784</requestid>
+  </revision>
 </revisionlist>

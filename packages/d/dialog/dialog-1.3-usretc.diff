@@ -1,0 +1,18 @@
+Index: dialog-1.3-20230209/rc.c
+===================================================================
+--- dialog-1.3-20230209.orig/rc.c
++++ dialog-1.3-20230209/rc.c
+@@ -576,8 +576,11 @@ dlg_parse_rc(void)
+     if (rc_file == NULL) {	/* step (b) failed? */
+ 	/* try step (c) */
+ 	strcpy(str, GLOBALRC);
+-	if ((rc_file = fopen(filename = str, "rt")) == NULL)
+-	    return 0;		/* step (c) failed, use default values */
++	if ((rc_file = fopen(filename = str, "rt")) == NULL) {
++	      sprintf(str, "/usr/%s", GLOBALRC);
++	      if ((rc_file = fopen(filename = str, "rt")) == NULL)
++		  return 0;		/* step (c) failed, use default values */
++	}
+     }
+ 
+     DLG_TRACE(("# opened rc file \"%s\"\n", filename));

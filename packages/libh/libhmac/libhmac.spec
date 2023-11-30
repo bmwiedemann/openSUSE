@@ -18,7 +18,7 @@
 
 Name:           libhmac
 %define lname	libhmac1
-Version:        20230407
+Version:        20231127
 Release:        0
 Summary:        Library to support various HMACs
 License:        LGPL-3.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(openssl) >= 1.0
 # Various notes: https://en.opensuse.org/libyal
 

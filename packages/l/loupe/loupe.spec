@@ -17,14 +17,13 @@
 
 
 Name:           loupe
-Version:        45.1
+Version:        45.2
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/loupe
-Source:         %{name}-%{version}.tar.zst
-Source2:        vendor.tar.zst
-Source3:        cargo_config
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging >= 1.2.0+3
@@ -45,9 +44,7 @@ Requires:       glycin-loaders
 %lang_package
 
 %prep
-%autosetup -p1 -a2
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
+%autosetup -p1 -a1
 
 %build
 export RUSTFLAGS="%{build_rustflags}"

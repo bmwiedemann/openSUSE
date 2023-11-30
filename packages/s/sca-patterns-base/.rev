@@ -79,4 +79,12 @@
     <comment>bsc#1210908 bsc#1205826 (forwarded request 1108320 from jrecord)</comment>
     <requestid>1108321</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff8ee5a2cde8642f73e7b99c645f46fe</srcmd5>
+    <version>1.6.0</version>
+    <time>1701378073</time>
+    <user>anag+factory</user>
+    <comment>Master moved to ALP (forwarded request 1129864 from jrecord)</comment>
+    <requestid>1129865</requestid>
+  </revision>
 </revisionlist>

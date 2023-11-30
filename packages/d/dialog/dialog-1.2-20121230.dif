@@ -1,7 +1,7 @@
-Index: util.c
+Index: dialog-1.3-20230209/util.c
 ===================================================================
---- util.c.orig
-+++ util.c
+--- dialog-1.3-20230209.orig/util.c
++++ dialog-1.3-20230209/util.c
 @@ -2406,8 +2406,10 @@ dlg_move_window(WINDOW *win, int height,
  #ifdef HAVE_COLOR
  	    if (p->shadow != 0) {

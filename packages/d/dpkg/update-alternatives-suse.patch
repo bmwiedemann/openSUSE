@@ -10,28 +10,10 @@ Subject: [PATCH 3/4] update-alternatives-suse
  utils/update-alternatives.c   |  2 +-
  4 files changed, 12 insertions(+), 12 deletions(-)
 
-Index: dpkg-1.21.8/man/update-alternatives.pod
+Index: dpkg-1.22.1/man/update-alternatives.pod
 ===================================================================
---- dpkg-1.21.8.orig/man/update-alternatives.pod
-+++ dpkg-1.21.8/man/update-alternatives.pod
-@@ -37,7 +37,7 @@ B<update-alternatives>
- 
- B<update-alternatives>
- creates, removes, maintains and displays information about the symbolic
--links comprising the Debian alternatives system.
-+links comprising the SUSE alternatives system.
- 
- It is possible for several programs fulfilling the same or similar
- functions to be installed on a single system at the same time.
-@@ -47,7 +47,7 @@ different editor, if desired, but makes
- to make a good choice for an editor to invoke if the
- user has not specified a particular preference.
- 
--Debian's alternatives system aims to solve this problem.
-+SUSE's alternatives system aims to solve this problem.
- A generic name in the filesystem is
- shared by all files providing interchangeable functionality.
- The alternatives system and the system administrator
+--- dpkg-1.22.1.orig/man/update-alternatives.pod
++++ dpkg-1.22.1/man/update-alternatives.pod
 @@ -85,8 +85,8 @@ installed, changed or removed,
  B<update-alternatives>
  is called to update information about that file in the alternatives system.
@@ -43,10 +25,10 @@ Index: dpkg-1.21.8/man/update-alternatives.pod
  (configure) to install the alternative and from
  B<prerm> and B<postrm>
  (remove) to remove the alternative.
-Index: dpkg-1.21.8/utils/Makefile.am
+Index: dpkg-1.22.1/utils/Makefile.am
 ===================================================================
---- dpkg-1.21.8.orig/utils/Makefile.am
-+++ dpkg-1.21.8/utils/Makefile.am
+--- dpkg-1.22.1.orig/utils/Makefile.am
++++ dpkg-1.22.1/utils/Makefile.am
 @@ -47,8 +47,8 @@ update_alternatives_SOURCES = \
  
  update_alternatives_CPPFLAGS = \
@@ -71,10 +53,10 @@ Index: dpkg-1.21.8/utils/Makefile.am
  	UA_ADMINDIR_DEFAULT=$(admindir) \
  	# EOL
  
-Index: dpkg-1.21.8/utils/t/update_alternatives.t
+Index: dpkg-1.22.1/utils/t/update_alternatives.t
 ===================================================================
---- dpkg-1.21.8.orig/utils/t/update_alternatives.t
-+++ dpkg-1.21.8/utils/t/update_alternatives.t
+--- dpkg-1.22.1.orig/utils/t/update_alternatives.t
++++ dpkg-1.22.1/utils/t/update_alternatives.t
 @@ -32,8 +32,8 @@ my $bindir = File::Spec->rel2abs("$tmpdi
  my @ua = ("$ENV{builddir}/update-alternatives", '--log', '/dev/null',
            '--quiet', '--admindir', "$admindir", '--altdir', "$altdir");
@@ -86,16 +68,3 @@ Index: dpkg-1.21.8/utils/t/update_alternatives.t
  
  delete $ENV{$rootdir_envvar};
  delete $ENV{$admindir_envvar};
-Index: dpkg-1.21.8/utils/update-alternatives.c
-===================================================================
---- dpkg-1.21.8.orig/utils/update-alternatives.c
-+++ dpkg-1.21.8/utils/update-alternatives.c
-@@ -116,7 +116,7 @@ static int opt_force = 0;
- static void
- version(void)
- {
--	printf(_("Debian %s version %s.\n"), PROGNAME, VERSION);
-+	printf(_("SUSE %s version %s.\n"), PROGNAME, VERSION);
- 	printf("\n");
- 
- 	printf(_(

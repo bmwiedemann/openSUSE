@@ -22,18 +22,28 @@
 %define skip_python38 1
 %define skip_python310 1
 %define skip_python311 1
+%define skip_python312 1
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python38 1
 %define skip_python39 1
 %define skip_python311 1
+%define skip_python312 1
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
 %define skip_python38 1
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python312 1
+%endif
+%if "%{flavor}" == "test-py312"
+%define psuffix -test-py312
+%define skip_python38 1
+%define skip_python39 1
+%define skip_python310 1
+%define skip_python311 1
 %endif
 %if "%{flavor}" == ""
 %define psuffix %{nil}

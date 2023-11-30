@@ -1,0 +1,53 @@
+From e167f66b80dc4511a614e6fe971261ff125d021b Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 28 Nov 2023 18:01:49 +0100
+Subject: [PATCH] Fix typos in 32-emoji-reject.conf and
+ 59-family-prefer-lang-specific
+
+Fix typos as fc-cache complained:
+  Fontconfig error: "/etc/fonts/conf.d/32-emoji-reject.conf", line 27: mismatched tag
+  Fontconfig error: "/etc/fonts/conf.d/59-family-prefer-lang-specific-cjk.conf", line 165: mismatched tag
+  Fontconfig warning: "/etc/fonts/conf.d/59-family-prefer-lang-specific-cjk.conf", line 165: invalid attribute 'name'
+  Fontconfig warning: "/etc/fonts/conf.d/59-family-prefer-lang-specific-cjk.conf", line 165: invalid attribute 'mode'
+---
+ 32-emoji-reject.conf                    | 2 +-
+ 59-family-prefer-lang-specific-cjk.conf | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/32-emoji-reject.conf b/32-emoji-reject.conf
+index b07d8e44ba82..134877428107 100644
+--- a/32-emoji-reject.conf
++++ b/32-emoji-reject.conf
+@@ -23,6 +23,6 @@
+           <string>Noto Emoji</string>
+         </patelt>
+       </pattern>
+-    <rejectfont>
++    </rejectfont>
+   </selectfont>
+ </fontconfig>
+diff --git a/59-family-prefer-lang-specific-cjk.conf b/59-family-prefer-lang-specific-cjk.conf
+index 11aa96b27837..8692e103a519 100644
+--- a/59-family-prefer-lang-specific-cjk.conf
++++ b/59-family-prefer-lang-specific-cjk.conf
+@@ -162,7 +162,7 @@
+     </test>
+     <edit name="family" mode="prepend">
+       <string>Noto Serif SC</string>
+-      <string>Noto Serif HK</stirng>
++      <string>Noto Serif HK</string>
+       <string>Noto Serif TC</string>
+       <string>Noto Serif JP</string>
+       <string>Noto Serif KR</string>
+@@ -194,7 +194,7 @@
+     </test>
+     <edit name="family" mode="prepend">
+       <string>Noto Serif TC</string>
+-      <string>Noto Serif HK</stirng>
++      <string>Noto Serif HK</string>
+       <string>Noto Serif JP</string>
+       <string>Noto Serif KR</string>
+       <string>Noto Serif SC</string>
+-- 
+2.35.3
+

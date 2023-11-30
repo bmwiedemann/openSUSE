@@ -119,6 +119,11 @@ Patch52:        logind_set_tty.patch
 # PATCH-FIx-UPSTREAM cb4ed12f.patch -- Fix build with zlib 1.3
 Patch53:        https://github.com/openssh/openssh-portable/commit/cb4ed12f.patch
 Patch100:       fix-missing-lz.patch
+Patch102:       openssh-7.8p1-role-mls.patch
+Patch103:       openssh-6.6p1-privsep-selinux.patch
+Patch104:       openssh-6.6p1-keycat.patch
+Patch105:       openssh-6.6.1p1-selinux-contexts.patch
+Patch106:       openssh-7.6p1-cleanup-selinux.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
@@ -382,6 +387,9 @@ install -D -m 0755 %{SOURCE9} %{buildroot}%{_sbindir}/sshd-gen-keys-start
 # Install sysusers.d config for sshd user
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE14} %{buildroot}%{_sysusersdir}/sshd.conf
+
+rm %{buildroot}/usr/libexec/ssh/ssh-keycat
+#rm -r %{buildroot}/usr/lib/debug/.build-id
 
 # the hmac hashes - taken from openssl
 #

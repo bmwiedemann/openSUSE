@@ -1,61 +1,119 @@
 -------------------------------------------------------------------
+Wed Nov 29 11:45:27 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to version 9.0.2136
+ *  MSVC errorformat can be improved
+ *  No test for mode() when executing Ex commands
+ *  Revise Makefile
+ *  Update syntax file
+ *  ml_get error when scrolling
+ *  Cannot detect overstrike mode in Cmdline mode
+ *  Duplicate Netbeans Error Message
+ *  not all nushell files detected
+ *  Updated German translations
+ *  add additional nginx keywords
+ *  add Make_mvc.mak file for tutor
+ *  updated Russian translations for tutorials
+ *  updated Italian translation
+ *  some errors with translation Makefiles
+ *  [security]: use-after-free in call_dfunc()
+ *  Update doc Makefiles with comments from #13567
+ *  add indentation plugin (fixes #13574)
+ *  runtime(swig): add syntax and filetype plugins
+ *  translation Makefiles can be improved
+ *  unused assignments when checking 'listchars'
+ *  File info disappears when 'cmdheight' has decreased
+ *  INT overflow detection logic can be simplified
+ *  Problem with initializing the length of range() lists
+ *  [security]: prevent overflow in indenting
+ *  [security]: use-after-free in ex_substitute
+ *  Fix handling of very long filename on longlist style
+ *  un-used assignment in do_source_buffer_init
+ *  remove dead-condition in ex_class
+ *  [security]: avoid double-free in get_style_font_variants
+ *  [security] use-after-free in qf_free_items
+ *  expand $COMSPEC without applying 'wildignore'
+ *  Improve keymap file highlighting
+ *  include new doc-Makefiles
+ *  Fix whitespace and formatting of some help files
+ *  minor typo fixes
+ *  No test for defining sign without attribute
+ *  crash when callback function aborts because of recursiveness
+ *  overflow detection not accurate when adding digits
+ *  Coverity warns for another overflow in shift_line()
+ *  Refactor doc-Makefiles
+ *  document proper notation of gVim, document vim-security list
+ *  Update Serbian messages translation
+ *  [security]: overflow in shift_line
+ *  [security]: overflow in get_number
+ *  [security]: overflow in ex address parsing
+ *  [security]: overflow in nv_z_get_count
+ *  [security]: overflow with count for :s command
+ *  [security]: FPE in adjust_plines_for_skipcol
+ *  [security]: Use-after-free in win_close()
+ *  comment out strange error condition check
+ *  skipcol not reset when topline changed
+ *  wast filetype should be replaced by wat filetype
+ *  fix typo in pi_gzip.txt
+
+-------------------------------------------------------------------
 Mon Nov 13 19:03:12 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to version 9.0.2103
 - drop vim-changelog.sh
  *  recursive callback may cause issues on some archs
  *  matchparen highlight not cleared in completion mode
- *  improve the breakpoint sign label (#13525)
+ *  improve the breakpoint sign label
  *  Improve CONTRIBUTING.md
- *  Renamed "makefile_*.mak" for Vim documentation (#13517)
- *  Update for Lynx 2.8.9 (#13510)
- *  Improve :let-heredoc syntax highlighting (#12923)
+ *  Renamed "makefile_*.mak" for Vim documentation
+ *  Update for Lynx 2.8.9
+ *  Improve :let-heredoc syntax highlighting
  *  clarify when formatoptions applies
- *  Update for i3 4.23 (#13522)
- *  Update usr_51.txt to be more inclusive (#13496)
- *  Add missing null_<type> help tags (#13498)
- *  labeler.yml use all instead of any for doc detection (#13507)
+ *  Update for i3 4.23
+ *  Update usr_51.txt to be more inclusive
+ *  Add missing null_<type> help tags
+ *  labeler.yml use all instead of any for doc detection
  *  No filetype support for xcompose files
  *  clarify `:help inclusion` section
- *  labeler.yml: Add some more component detection rules (#13511)
+ *  labeler.yml: Add some more component detection rules
  *  No support for cypher files
  *  Vim9: confusing usage of private
- *  labeler.yml: add documentation label (#13506)
- *  fix grammar in termdebug doc, remove trailing spaces (#13505)
+ *  labeler.yml: add documentation label
+ *  fix grammar in termdebug doc, remove trailing spaces
  *  improve window handling, shorten var types
  *  handle buffer-local mappings properly
  *  statusline may look different than expected
  *  Vim9: need more assignment tests
- *  Update for Wget2 2.1.0 (#13497)
+ *  Update for Wget2 2.1.0
  *  Unsupported option causes skipping of modeline test
  *  tests: failure in test_arabic
- *  Switch Hindu-Arabic to Arabic numerals in arabic keymap (#13430)
- *  Update the translation of Russian messages to Vim 9.0.2091 (#13490)
+ *  Switch Hindu-Arabic to Arabic numerals in arabic keymap
+ *  Update the translation of Russian messages to Vim 9.0.2091
  *  improve the error detection
  *  document vim-script library function
- *  Make dist/vim.vim work properly when lacking vim9script support (#13487)
+ *  Make dist/vim.vim work properly when lacking vim9script support
  *  Vim9: cannot convert list to string using +=
  *  add legacy version for central vim library
- *  centralize safe executable check and add vim library (#13413)
+ *  centralize safe executable check and add vim library
  *  clarify terminal capabilities for focus reporting
  *  complete_info() skips entries with 'noselect'
- *  Add Makefile for the Vim documentation on Windows (#13467)
+ *  Add Makefile for the Vim documentation on Windows
  *  sound_playfile() fails when using powershell
  *  Vim9: still allows abstract static methods
- *  Update sh syntax and add shDerefOffset to shDerefVarArray for bash (#13480)
- *  make strace ft check less strict (#13482)
+ *  Update sh syntax and add shDerefOffset to shDerefVarArray for bash
+ *  make strace ft check less strict
  *  build-failure in vim9class
  *  code cleanup for option callbacks needed
  *  Vim9: abstract can be used in interface
  *  Vim9: abstract static methods are possible
- *  runtime(sh) Update sh syntax and add shDblParen to shCaseList (#13469)
+ *  runtime(sh) Update sh syntax and add shDblParen to shCaseList
  *  Perl: xsubpp may be in non-standard location
- *  Add noble (24.04 LTS) as Ubuntu release name (#13472)
+ *  Add noble (24.04 LTS) as Ubuntu release name
  *  test_channel may fail because of IPv6 config issue
  *  smoothscroll may result in wrong cursor position
- *  add shDblParen to shLoopList for bash (#13445)
+ *  add shDblParen to shLoopList for bash
  *  vim9_script test too large
- *  all secure options should note this restriction in the documentation (#13448)
+ *  all secure options should note this restriction in the documentation
  *  Not all Dart files detected
 
 -------------------------------------------------------------------
@@ -66,9 +124,9 @@ Sat Oct 28 14:45:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * Vim9: No support for type aliases
  * TextChangedI may not always trigger
  * Completion menu may be wrong
- * don't echo empty lines (#13431)
+ * don't echo empty lines
  * typo in quickfix.c comments
- * update debian related runtime files (#13423)
+ * update debian related runtime files
  * Vim9: no nr2str conversion in list-unpack
  * objdump files not recognized
  * [security] disallow setting env in restricted mode
@@ -80,32 +138,32 @@ Sat Oct 28 14:45:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * xxd: corrupting files when reversing bit dumps
  * EXPAND flag set for filetype option
  * cannot use buffer-number for errorformat
- * Fix typos in several documents (#13420)
+ * Fix typos in several documents
  * pacman hooks are detected as conf filetype
  * Janet files are not recognised
  * not able to detect xkb filetypes
  * *.{gn,gni} files are not recognized
  * small updates to the documentation for varargs
- * Update ftplugin - comment motions (#13412)
+ * Update ftplugin - comment motions
  * outstanding exceptions may be skipped
  * tests: avoid error when no swap files exist
  * Vim9: no strict type checks for funcrefs varargs
- * do not use hard-coded match id (#13393)
+ * do not use hard-coded match id
  * no digraph for quadruple prime
  * Vim9: non-consistent error messages
  * win32: iscygpty needs update
- * Add new ftplugin (#13385)
+ * Add new ftplugin
  * zig filetype detection test wrong
  * win32: using deprecated wsock32 api
  * Vim9: wrong error for non-existing object var
- * Update Zig runtime files (#13388)
+ * Update Zig runtime files
  * Vim9: crash with deferred function call and exception
  * Vim9: not recognizing qualified class vars for infix ops
  * python: uninitialized warning
  * perl: warning about inconsistent dll linkage
  * tests: checking for swap files takes time
  * Vim9: exceptions confuse defered functions
- * allow for overriding systemd ftplugin settings (#13373)
+ * allow for overriding systemd ftplugin settings
 
 -------------------------------------------------------------------
 Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -114,7 +172,7 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * Vim9: issue with funcref assignmentand varargs
  * Test_cq_zero_exmode fails without channel feature
  * trim(): hard to use default mask
- * include syntax script for json5 (#13356)
+ * include syntax script for json5
  * trim(): hard to use default mask
  * completion shows current word after completion restart
  * Vim9: object method funcref not cleaned up after use
@@ -123,9 +181,9 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * [security] use-after-free with wildmenu
  * don't try to copy SMACK attribute, when none exist
  * gcc overflow-warning for f_resolve
- * Fix more typos (#13354)
+ * Fix more typos
  * cannot get mouse click pos for tab or virt text
- * correct <PageUp>/<PageDown> behavior in 'wildmenu' (#13336)
+ * correct <PageUp>/<PageDown> behavior in 'wildmenu'
  * TextChangedI may be triggered by non-insert mode change
  * no max callback recursion limit
  * Vim9: no support for partials using call()
@@ -137,10 +195,10 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * need more tests for :cq
  * getmousepos() returns wrong index for TAB char
  * Coverity complains about change in charset
- * Update Serbian messages translation (#13324)
- * Update ftplugin (#13327)
+ * Update Serbian messages translation
+ * Update ftplugin
  * Vim9: islocked() needs more work
- * Improve command-line completion docs (#13331)
+ * Improve command-line completion docs
  * Vim9: no support for funcrefs
  * complete_info() returns wrong index
  * linebreak applies for leading whitespace
@@ -158,33 +216,33 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * partially revert patch v9.0.1997
  * Missing test file
  * xxd: compilation warning
- * make command name for &iskeywordprg more unique (#13297)
+ * make command name for &iskeywordprg more unique
  * Vim9: need cleanup of class related interface code
  * updated translation of xxd manpage
  * Vim9: segfault with islocked()
  * Vim9: use-after-free in deep call stack
- * Update ftplugin (#13213)
+ * Update ftplugin
  * Vim9: some error messages can be improved
  * xxd: cannot reverse a bit dump
  * Some unused code in move.c and string.c
- * remove E1520 tag (#13289)
+ * remove E1520 tag
  * Cannot build with python312
- * Update vim9class help (#13292)
+ * Update vim9class help
  * Invalid memory access with empty 'foldexpr'
  * inconsistent feature description
  * warning about unused function definition
  * [security] segfault in exmode
  * no cmdline completion for setting the font
  * strange error number
- * diff (`df`) may open the wrong window (#13275)
- * Update `.netrwbook` immediately on bookmark change (#13276)
- * revert permission changes for xxd manpages again (#13277)
+ * diff (`df`) may open the wrong window
+ * Update `.netrwbook` immediately on bookmark change
+ * revert permission changes for xxd manpages again
  * Vim9: double error message given
  * Vim9: potential use-after-free for class members
  * win32: font-size calculation can be improved
- * Update Serbian messages translation (#13282)
+ * Update Serbian messages translation
  * Vim9: accepting type-annotations
- * Correct filetype detection pattern and style (#13284)
+ * Correct filetype detection pattern and style
  * scrolling inactive window not possible with cursorbind
  * error when trying to :bd unloaded buffer
  * vim9: clean up from v9.0.1955
@@ -194,13 +252,13 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * Vim9: object members can change type
  * update translation of xxd manpage
  * update xxd manpage and mention $NO_COLOR env
- * fix two typos in `vim9.txt` and `options.txt` (#13258)
- * remove E1507 help tag, which is no longer used (#13254)
+ * fix two typos in `vim9.txt` and `options.txt`
+ * remove E1507 help tag, which is no longer used
  * style: space before tab in optionstr.c
  * xattr: permission-denied errors on write
- * Update Russian message translation to Vim 9.0.1968 (#13239)
- * add missing error numbers in the help.  (#13241)
- * mention how to disable folding in diff mode (#13242)
+ * Update Russian message translation to Vim 9.0.1968
+ * add missing error numbers in the help. 
+ * mention how to disable folding in diff mode
  * vim9: using contra-variant type-checks
  * Clean up cmdline option completion code
  * win32: missing '**' expansion test
@@ -232,20 +290,20 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * regenerate xxd manpage
  * filename expansion using ** in bash may fail
  * Vim9: missing support for ro-vars in interface
- * mention mouse scrolling in scrollbind-quickadj (#13190)
- * Update syntax file (#13192)
- * update i3config syntax (#13191)
- * runtime(rmd) Update ftplugin and syntax files (#13193)
+ * mention mouse scrolling in scrollbind-quickadj
+ * Update syntax file
+ * update i3config syntax
+ * runtime(rmd) Update ftplugin and syntax files
  * Vim9: function instruction pointer invalidated
  * Update Serbian messages translation
  * Vim9: execution stack invalidated with null object
- * only invoke bash help in ftplugin if it has been detected to be bash (#13171)
+ * only invoke bash help in ftplugin if it has been detected to be bash
  * Memory leak detected
- * Update help tags (#13180)
+ * Update help tags
  * wrong upstream version in libvterm README
  * still a problem when processing LSP RPC requests
- * Update Vim9 class items (#13148)
- * Vim9: Consistenly use class/object variable and class/object method in help (#13149)
+ * Update Vim9 class items
+ * Vim9: Consistenly use class/object variable and class/object method in help
  * multispace wrong when scrolling horizontally
  * missing test for mouse click + 'virtedit'
  * test: using wrong expected message in test_crypt
@@ -253,11 +311,11 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * :bwipe fails after switching window from aucmd_win.
  * Can change the type of a v: variable using if_lua
  * Vim9: error when using null object constructor
- * grammar fixes in doc (#13164)
- * Update the version9.txt with a template for version 9.1 enhancements (#13165)
- * Add a missing '<' to the help of strutf16len() (#13168)
+ * grammar fixes in doc
+ * Update the version9.txt with a template for version 9.1 enhancements
+ * Add a missing '<' to the help of strutf16len()
  * make test_compilers fails on ubuntu
- * fix typo in tutor.nl (#13175)
+ * fix typo in tutor.nl
  * compiler warnings with clang-17
  * runtime tests fail with tiny vim
  * Vim9: constructor type checking bug
@@ -266,7 +324,7 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * if_python: still undefined behaviour with function pointer
  * LSP server message still wrongly handled (after 9.0.1922)
  * curswant wrong on click with 've' and 'wrap' set
- * format jumplist examples more consistently (#13137)
+ * format jumplist examples more consistently
  * LSP server request message is misinterpreted as a response message
  * not possible to use the jumplist like a stack
  * Vim9: cannot write public var in nested object
@@ -282,7 +340,7 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * Vim9: problem calling class method from other class
  * undefined behaviour upper/lower function ptrs
  * fix filetype detection for remote editing files
- * Add Kotlin runtime files (#13110)
+ * Add Kotlin runtime files
  * No support for liquidsoap filetypes
  * Vim9: Interfaces should not support class methods and variables
  * FEAT_FLOAT no longer defined
@@ -293,14 +351,14 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * Configure script uses non-portable == comparison
  * potential buffer overflow in PBYTE macro
  * Vim9: restrict access to static vars
- * Highlight all :loadkeymap abbreviations in vim syntax (#13092)
- * Fix :unlet error in ftplugin (#13090)
+ * Highlight all :loadkeymap abbreviations in vim syntax
+ * Fix :unlet error in ftplugin
  * Updated documentation on editorconfig
- * improve syntax highlighting (#13060)
- * sync rust runtime files with upstream (#13075)
- * syntax structure cleanup (#13080)
+ * improve syntax highlighting
+ * sync rust runtime files with upstream
+ * syntax structure cleanup
  * documentation updates
- * improved i3config highlighting (#13054)
+ * improved i3config highlighting
  * Vim9: confusing error with .= in compiled functions
  * "below" virtual text doesn't work with 'rightleft'
  * Vim9: finding object method/member is inefficient
@@ -15373,7 +15431,7 @@ Tue Mar 27 14:58:20 CEST 2007 - mrueckert@suse.de
 Mon Mar 26 19:27:24 CEST 2007 - mrueckert@suse.de
 
 - new package layout for the vim package to allow a smaller vim
-  installation in the minimal system (#239838)
+  installation in the minimal system
 
 -------------------------------------------------------------------
 Fri Feb  2 23:49:38 CET 2007 - dmueller@suse.de
@@ -15975,7 +16033,7 @@ Wed Apr 10 11:27:17 CEST 2002 - adrian@suse.de
 Tue Apr  2 14:28:12 CEST 2002 - fehr@suse.de
 
 - remove disable_system.patch that prevent print menue entry in 
-  gvim from working (#15355)
+  gvim from working
 
 -------------------------------------------------------------------
 Thu Mar 14 12:52:38 CET 2002 - fehr@suse.de
@@ -16034,7 +16092,7 @@ Thu Feb 21 15:32:01 CET 2002 - fehr@suse.de
 -------------------------------------------------------------------
 Thu Feb  7 17:47:16 CET 2002 - fehr@suse.de
 
-- remove RPM_BUILD_ROOT path in man pages (#13054)
+- remove RPM_BUILD_ROOT path in man pages
 
 -------------------------------------------------------------------
 Tue Feb  5 18:06:07 CET 2002 - schwab@suse.de

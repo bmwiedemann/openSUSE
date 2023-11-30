@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 24 19:18:18 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 2.10.0:
+  * Security CVE-2023-4508: Out-of-bounds memory access of filename 
+  * Japanese Language File (PR#183)
+  * Fix crash Edit-file-format dialog (PR#181)
+  * Allow gerbv foo.gvp to act like gerbv -p foo.gvp was specified
+    (PR#184)
+  * Fix Translation and Scale are not editable in Edit-layer dialog
+    (PR#182)
+  * Increase maximum zooming level (PR#186)
+  * Recommend a way of reporting security issues (PR#193)
+- Update to 2.9.8:
+  * Using floating point math for arcs (PR#173)
+  * Bump APERTURE_PARAMETERS_MAX to 10006 in order to comply with
+    Gerber specification revision 2021.02 (PR#172)
+  * Recognize empty drill files (PR#170)
+- Update to 2.9.7:
+  * The BUGS file now references GitHub instead of listing the
+    known issues for reach release (PR#132)
+
+-------------------------------------------------------------------
 Mon Jan  9 07:48:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.6:

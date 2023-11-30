@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:14:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * LegacyConfig.get_apns_use_alternative_port always return None
+  * Add django 4.1, remove master branch
+  * Update topic send_message docs in README
+  * Fix: HexadecimalField accepts non-hex values
+  * Expanded documentation for Web Push
+  * Allow APNS tokens of variable length.
+  * Add WebPush support for Safari
+
+-------------------------------------------------------------------
 Fri Jan  6 01:50:42 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-apns2.patch:
-  * Support new apsn2 that no longer exports init_context. 
+  * Support new apsn2 that no longer exports init_context.
 
 -------------------------------------------------------------------
 Wed May 11 10:11:10 UTC 2022 - pgajdos@suse.com

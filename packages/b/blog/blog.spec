@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.27
+Version:        2.28
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -163,6 +163,9 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %dir %{_unitdir}/rescue.target.wants/
 %dir %{_unitdir}/sysinit.target.wants/
 %dir %{_unitdir}/shutdown.target.wants/
+%dir %{_unitdir}/reboot.target.wants/
+%dir %{_unitdir}/poweroff.target.wants/
+%dir %{_unitdir}/kexec.target.wants/
 %dir %{_unitdir}/local-fs-pre.target.wants/
 %dir %{_unitdir}/systemd-ask-password-blog.service.wants/
 %{_prefix}/lib/dracut/modules.d/99blog/module-setup.sh
@@ -170,6 +173,7 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %{_unitdir}/blog-quit.service
 %{_unitdir}/blog-store-messages.service
 %{_unitdir}/blog-switch-root.service
+%{_unitdir}/blog-switch-initramfs.service
 %{_unitdir}/blog.service
 %{_unitdir}/systemd-ask-password-blog.path
 %{_unitdir}/systemd-ask-password-blog.service
@@ -183,6 +187,13 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %{_unitdir}/sysinit.target.wants/blog-store-messages.service
 %{_unitdir}/sysinit.target.wants/systemd-ask-password-blog.path
 %{_unitdir}/shutdown.target.wants/blog-final.service
+%{_unitdir}/reboot.target.wants/blog-final.service
+%{_unitdir}/poweroff.target.wants/blog-final.service
+%{_unitdir}/kexec.target.wants/blog-final.service
+%{_unitdir}/shutdown.target.wants/blog-switch-initramfs.service
+%{_unitdir}/reboot.target.wants/blog-switch-initramfs.service
+%{_unitdir}/poweroff.target.wants/blog-switch-initramfs.service
+%{_unitdir}/kexec.target.wants/blog-switch-initramfs.service
 %{_unitdir}/local-fs-pre.target.wants/blog-umount.service
 %ghost %{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
 

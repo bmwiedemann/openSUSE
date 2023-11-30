@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  2 21:44:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.1.0
+  * Remove dependency on boost in chrono.hpp
+  * Add support for std::variant behavior
+
+-------------------------------------------------------------------
 Sun Dec  4 14:29:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.3:

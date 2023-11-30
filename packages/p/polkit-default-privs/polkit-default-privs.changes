@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:06:01 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20231129.269abcd:
+  * profiles: whitelist cinnamon-settings-daemon wacom-oled-helper (bsc#1217532)
+
+-------------------------------------------------------------------
 Fri Nov 03 14:29:31 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 1550+20231103.3b4a82f:

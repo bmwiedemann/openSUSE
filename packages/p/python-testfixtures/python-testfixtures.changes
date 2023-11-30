@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 29 01:50:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.2.2:
+  * Fix bug in support for :class:`os.PathLike` arguments to
+    :class:`popen.MockPopen`.
+  * Added missing support for :class:`os.PathLike` arguments to
+    :class:`popen.MockPopen`.
+  * Add ``order_matters`` parameter to :class:`ShouldWarn`.
+  * Implement new IDE and static-analysis ways of :doc:`mocking <mocking>`
+    including additional parameters to :meth:`~Replacer.replace` along with
+    the :any:`replace_on_class`, :any:`replace_in_module` and
+    :any:`replace_in_environ` context managers.
+- Add patch path-comparsion-312.patch:
+  * Compare paths string-wise, due to Python 3.12 changes.
+- Switch to autosetup and pyproject macros.
+- Remove now unneeded Python 3.6 special-casing.
+
+-------------------------------------------------------------------
 Tue Dec 13 17:36:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 7.0.4 

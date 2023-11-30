@@ -1,6 +1,11 @@
+---
+ screenplain/main.py |    2 +-
+ setup.cfg           |    3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
 --- a/screenplain/main.py
 +++ b/screenplain/main.py
-@@ -30,7 +30,7 @@ def invalid_format(parser, message):
+@@ -29,7 +29,7 @@ def invalid_format(parser, message):
      )
  
  
@@ -11,9 +16,13 @@
          '-f', '--format', dest='output_format',
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -1,2 +1,5 @@
+@@ -1,6 +1,9 @@
  [metadata]
  license_files = LICENSE.txt
-+
+ 
 +[pycodestyle]
 +ignore = E275,E402,W504
++
+ [egg_info]
+ tag_build = 
+ tag_date = 0

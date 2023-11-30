@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>1085440</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b4c07e7b3b04a9d7bedf38335821d508</srcmd5>
+    <version>0.3.0</version>
+    <time>1701378047</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch flexmock-0.11.patch to make tests work with
+  latest version of python-flexmock gh#sdispater/cachy#19
+</comment>
+    <requestid>1129799</requestid>
+  </revision>
 </revisionlist>

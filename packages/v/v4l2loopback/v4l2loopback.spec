@@ -1,7 +1,7 @@
 #
 # spec file for package v4l2loopback
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,17 +25,16 @@
 %{!?_modulesloaddir: %define _modulesloaddir /usr/lib/modules-load.d/}
 
 Name:           v4l2loopback
-Version:        0.12.7
+Version:        0.12.8~git.20231123T160730.850a2e3
 Release:        0
 Summary:        A kernel module to create V4L2 loopback devices
 License:        GPL-2.0-or-later
 URL:            https://github.com/umlaeute/v4l2loopback
-Source:         https://github.com/umlaeute/v4l2loopback/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:         https://github.com/umlaeute/v4l2loopback/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        preamble
 Source2:        modprobe.d_98-v4l2loopback.conf
 Source3:        modules-load.d_v4l2loopback.conf
-# PATCH-FIX-OPENSUSE v4l2loopback-include_header.patch
-Patch0:         v4l2loopback-include_header.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  help2man
 
@@ -65,7 +64,6 @@ Summary:        Utils for V4L2 loopback devices
 Requires:       v4l-utils
 Recommends:     gstreamer:/usr/bin/gst-launch-1.0
 Supplements:    kmod(v4l2loopback.ko)
-BuildArch:      noarch
 
 %description utils
 v4l2loopback-ctl for controlling FPS, placeholder image and image format.

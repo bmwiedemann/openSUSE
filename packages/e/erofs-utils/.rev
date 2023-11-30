@@ -87,4 +87,12 @@
     <comment>- Update to release 1.7.1</comment>
     <requestid>1121616</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e7207e20bc153217610d4992ab1a47b0</srcmd5>
+    <version>1.7.1</version>
+    <time>1701378065</time>
+    <user>anag+factory</user>
+    <comment>- Enable lzma/xz compression; make `mkfs.erofs -z lzma` work.</comment>
+    <requestid>1129857</requestid>
+  </revision>
 </revisionlist>

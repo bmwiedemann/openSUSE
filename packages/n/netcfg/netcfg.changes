@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 21 08:39:54 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix syntax of localhost entries in hosts [bsc#1217355]
+
+-------------------------------------------------------------------
+Mon Nov 20 14:00:02 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove empty netgroup example file from /etc [jsc#PED-240].
+  NIS, the main consumer, got already dropped.
+- Remove empty ethers example file, /usr/etc should not contain
+  examples, for the format there is the manual page, does not
+  support IPv6.
+
+-------------------------------------------------------------------
 Wed Oct  4 09:45:23 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove ftpusers, none of our ftp servers uses that anymore

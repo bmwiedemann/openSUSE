@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  2 21:37:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.0.0
+  * The package name in cmake and pkgconfig files was changed
+    from msgpackc to msgpack-c; the SONAME of the library changed
+    likewise.
+
+-------------------------------------------------------------------
 Mon Aug 29 11:12:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.0.0

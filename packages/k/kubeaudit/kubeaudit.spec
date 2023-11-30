@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubeaudit
-Version:        0.22.0
+Version:        0.22.1
 Release:        0
 Summary:        Audit your Kubernetes clusters against common security controls
 License:        MIT

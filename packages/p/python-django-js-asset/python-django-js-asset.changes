@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 29 11:54:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  * Added Django 4.1, 4.2 and Python 3.11 to the CI.
+  * Removed the pytz dependency from the tests.
+  * Dropped Python < 3.8, Django < 3.2 from the CI.
+  * Switched to hatchling and ruff.
+
+-------------------------------------------------------------------
 Sat Sep  3 02:25:21 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
-- Remove unneeded changes-in-Django.patch 
+- Remove unneeded changes-in-Django.patch
 - Update to v2.0
   * Raised the minimum supported versions of Python to 3.6, Django to 2.2.
   * Replaced the explicit configuration of whether static() should be used

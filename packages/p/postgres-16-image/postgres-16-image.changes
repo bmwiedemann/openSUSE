@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 28 11:43:33 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- move the latest tag to postgresql 16
+
+-------------------------------------------------------------------
 Wed Oct 25 15:40:55 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - ensure rundir for postgres is created with the proper permissions

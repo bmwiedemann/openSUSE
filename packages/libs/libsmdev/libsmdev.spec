@@ -1,7 +1,7 @@
 #
 # spec file for package libsmdev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 %define lname	libsmdev1
 Name:           libsmdev
-Version:        20221028
+Version:        20231128
 Release:        0
 Summary:        Library to access storage media devices
 License:        LGPL-3.0-or-later
@@ -32,30 +33,30 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
 %description
 libsmdev is a library to access and read storage media devices.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access storage media devices
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 libsmdev is a library to access and read storage media devices.
 
 %package devel
 Summary:        Development files for libsmdev, a storage media access library
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 libsmdev is a library to access and read storage media devices.
@@ -91,27 +92,27 @@ grep ' '' ''local' config.log && exit 1
 mv "%_builddir/rt/"* "%buildroot/"
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libsmdev.so.1*
+%_libdir/libsmdev.so.1*
 
 %files -n %name-devel
 %license COPYING*
-%{_includedir}/libsmdev*
-%{_libdir}/libsmdev.so
-%{_libdir}/pkgconfig/libsmdev.pc
-%{_mandir}/man3/libsmdev.3*
+%_includedir/libsmdev*
+%_libdir/libsmdev.so
+%_libdir/pkgconfig/libsmdev.pc
+%_mandir/man3/libsmdev.3*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/smdevinfo
-%{_mandir}/man1/smdevinfo.1*
+%_bindir/smdevinfo
+%_mandir/man1/smdevinfo.1*
 
 %files %python_files
 %license COPYING*
-%{python_sitearch}/pysmdev.so
+%python_sitearch/pysmdev.so
 
 %changelog

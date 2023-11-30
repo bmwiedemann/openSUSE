@@ -16,32 +16,25 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-asgiref
-Version:        3.6.0
+Version:        3.7.2
 Release:        0
 Summary:        ASGI specs, helper code, and adapters
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/django/asgiref/
 Source:         https://files.pythonhosted.org/packages/source/a/asgiref/asgiref-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{?suse_version} < 1540
-BuildRequires:  %{python_module typing_extensions}
-%else
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
-%endif
-%if 0%{python_version_nodots} < 38
-Requires:       python-typing_extensions
-%endif
+BuildRequires:  %{python_module typing-extensions > 4}
+Requires:       python-typing-extensions > 4
 %python_subpackages
 
 %description
@@ -53,10 +46,10 @@ read more at https://asgi.readthedocs.io/en/latest/
 %setup -q -n asgiref-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +58,7 @@ read more at https://asgi.readthedocs.io/en/latest/
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/asgiref
+%{python_sitelib}/asgiref-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:49:15 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231130.29c388e:
+  * Drop bs_mirrorfull
+  * Rewrite bs_mirrorfull as osclib component
+
+-------------------------------------------------------------------
 Thu Nov 23 10:53:47 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20231123.24f3d6b:

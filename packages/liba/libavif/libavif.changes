@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 28 20:40:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.2:
+  * Update avifCropRectConvertCleanApertureBox() to the revised
+    requirements in ISO/IEC 23000-22:2019/Amd. 2:2021 Section
+    7.3.6.7.
+  * CVE-2023-6350: Out of bounds memory to alphaItemIndices (boo#1217614)
+  * CVE-2023-6351: use-after-free in colorProperties (boo#1217615)
+- drop fix-gdkpixbuf.patch
+
+-------------------------------------------------------------------
 Tue Aug 29 05:18:59 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.0:

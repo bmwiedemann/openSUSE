@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov 29 15:05:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install SDK using cmake --install --component Development instead
+  of manually copying. This brings back the .pc file and simplifies
+  the spec file.
+
+-------------------------------------------------------------------
+Fri Nov 24 09:40:38 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.2.0: 
+  * Packet list sorting has been improved.
+  * Wireshark and TShark are now better about generating valid UTF-8 output.
+  * A new display filter feature for filtering raw bytes has been added.
+  * Display filter autocomplete is smarter about not suggesting invalid syntax.
+  * Tools › MAC Address Blocks can lookup a MAC address in the IEEE OUI registry.
+  * The installation target no longer installs development headers by default.
+  * The Wireshark installation is relocatable on Linux (and other ELF platforms with support for relative RPATHs).
+  * Tools › Browser (SSL Keylog) can launch your web browser with the SSLKEYLOGFILE environment variable set to the appropriate value.
+  * Wireshark now supports the Korean language.
+  * Many other improvements have been made. See the “New and Updated Features” section below for more details.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.2.0.html
+- Updated patches
+  wireshark-0000-wsutil-implicit_declaration_memcpy.patch
+  wireshark-0010-dumpcap-permission-denied.patch
+
+-------------------------------------------------------------------
 Thu Nov 16 07:52:45 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.11:

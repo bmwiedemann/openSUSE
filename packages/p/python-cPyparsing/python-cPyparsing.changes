@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:28:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.7.2.3.2:
+  * Fix adaptive parsing errors.
+  * Performance tuning.
+
+-------------------------------------------------------------------
 Sat Nov 25 13:08:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.7.2.3.0:

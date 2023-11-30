@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 23 02:30:32 UTC 2023 - Mihai Moldovan <ionic@ionic.de>
+
+- Update to new upstream version 3.22.24:
+  * BlackMATE: fix issues with tasklist, charpick buttons
+  * BLACKMATE: fix dictionary applet in panel
+  * Fix button states of charpick-applet with Yaru themes
+  * Fix headerbar rendering in GNOME 1.41 apps
+  * Fix square corners, align halves of headerbar in gnome-disks
+  * Traditional*: Fix selectors for toolbar buttons (#302)
+  * Most themes: fix border-radius of csd decorations
+  * Translations update
+- No packaging changes necessary.
+
+-------------------------------------------------------------------
 Tue May 10 16:36:47 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.22.23

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 22 11:23:14 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.13:
+  * Reduced priority for making Spral the default value for option
+    linear_solver [gh#coin-or/Ipopt#677].
+  * Adapted to change of integer types in Spral interface. Minimal
+    required Spral version is now v2023.03.29.
+  * Fixed that return code from TNLP::eval_jac_g() was ignored at
+    first call [gh#coin-or/Ipopt#697].
+  * Print additional messages when reallocation of MA27 working
+    space failed [gh#coin-or/Ipopt#671].
+  * Added option file_append to specify whether to append to
+    output_file instead of truncating it.
+  * Added default argument file_append to
+    Journalist::AddFileJournal(), added default argument fappend
+    to FileJournal::Open(), and added default argument file_append
+    to IpoptApplication::OpenOutputFile() [gh#coin-or/Ipopt#720].
+
+-------------------------------------------------------------------
 Mon Apr 10 03:40:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.12:

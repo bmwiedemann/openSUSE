@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20231123.24f3d6b
+Version:        20231130.29c388e
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -62,10 +62,6 @@ Requires:       python3-requests
 %if 0%{?suse_version} <= 1500
 Requires:       python3-typing_extensions
 %endif
-
-# bs_mirrorfull
-Requires:       perl-Net-SSLeay
-Requires:       perl-XML-Parser
 
 # Spec related requirements.
 Requires:       osclib = %{version}
@@ -363,7 +359,6 @@ exit 0
 %files
 %doc README.md
 %{_bindir}/osrt-biarchtool
-%{_bindir}/osrt-bs_mirrorfull
 %{_bindir}/osrt-bugowner
 %{_bindir}/osrt-build-fail-reminder
 %{_bindir}/osrt-checknewer

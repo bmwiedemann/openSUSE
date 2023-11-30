@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-classy-tags
-Version:        3.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Class based template tags for Django
 License:        MIT
 URL:            https://github.com/ojii/django-classy-tags
 Source:         https://github.com/divio/django-classy-tags/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Support django >= 4.1 gh#django-cms/django-classy-tags#86
-Patch0:         django-4-1-support.patch
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

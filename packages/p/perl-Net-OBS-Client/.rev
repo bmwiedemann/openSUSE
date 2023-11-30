@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>886081</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1a9441f7743b0798fdb8ab390a2c5a5</srcmd5>
+    <version>0.1.1</version>
+    <time>1701378272</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.1.1
+   see /usr/share/doc/packages/perl-Net-OBS-Client/Changes
+
+</comment>
+    <requestid>1130008</requestid>
+  </revision>
 </revisionlist>

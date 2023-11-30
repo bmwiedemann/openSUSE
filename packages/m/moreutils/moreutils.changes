@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 29 13:42:27 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 0.68
+  * popen: Use pclose, fixing compile warning.
+  * vidir: Zero pad line numbers to work better when used with a small tab size such as 2.
+
+-------------------------------------------------------------------
 Fri Aug 26 17:36:12 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Do not strip debuginfo
   * makefile.patch

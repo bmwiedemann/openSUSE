@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 29 09:34:59 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.14.0
+  - Added support for Python 3.11 and 3.12.
+  - Support for Python 3.7 has been deprecated and will be removed
+    in the next scheduled release.
+  - Dropped support for Python 3.6.
+  - Added a new valid PGP key for signing our PyPI packages with
+    the fingerprint F2871B4152AE13C49519111F447BF683AA3B26C3
+- Comment out asc because no more found.
+
+-------------------------------------------------------------------
 Sun Jun 11 14:32:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

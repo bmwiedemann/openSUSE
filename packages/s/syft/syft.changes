@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 30 08:14:13 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 0.98.0:
+  * fix file metadata cataloger to use resolved locations (#2370)
+  * fix: logging level for parsing potential PE files (#2367)
+  * only remove breaking-change label when there are schema changes (#2371)
+  * fix: capture root command stdout (#2364)
+  * fix: hardcode xalan group ID (#2368)
+  * Normalize cataloger configuration patterns (#2365)
+  * normalize enums to lowercase with hyphens (#2363)
+  * bump deps version
+  * fix: index file itself when file scan path has symlink (#2359)
+  * use read lock in pkg collection (#2341)
+  * Fix the `attest` command (#2337)
+  * fix: add manual namespace mapping for org.springframework jars (#2345)
+  * Add binary classifiers for MySQL and MariaDB  (#2316)
+  * Enhance redis binary classifier (#2329)
+  * fix: add manual namespace mapping for org.springframework.security jars (#2343)
+  * fix: add manual namespace mapping for org.bouncycastle jars (#2342)
+  * Update developer docs to represent the current package layout (#2340)
+  * Remove the power-user command and related catalogers (#2306)
+  * Add "pretty" json configuration and change default behavior to be space-efficient (#2275)
+
+-------------------------------------------------------------------
 Sat Nov 18 08:51:36 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.97.1:

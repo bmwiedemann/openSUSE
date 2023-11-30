@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>1006327</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b5a04dec4846ed62d5778af89915d41</srcmd5>
+    <version>2.2</version>
+    <time>1701378051</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2:
+  * drop python 3.6 support
+  * add Python 3.11
+  * Update ReadTheDoc configuration
+
+  * Drop support for Python2.7 and Python3.5</comment>
+    <requestid>1129810</requestid>
+  </revision>
 </revisionlist>

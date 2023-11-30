@@ -22,20 +22,22 @@
 %bcond_without python2
 %endif
 Name:           python-screenplain
-Version:        0.9.0+git.1679319196.353e6c9
+Version:        0.10.0
 Release:        0
 Summary:        Convert text file to viewable screenplay
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://www.screenplain.com/
-# Source:         https://files.pythonhosted.org/packages/source/s/screenplain/screenplain-%%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/screenplain/screenplain-%{version}.tar.gz
 # Tarball generated from gh#vilcans/screenplain#62
-Source:         screenplain-%{version}.tar.gz
+# Source:         screenplain-%%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix_entry_point.patch mcepl@suse.com
 # entry point lead to incorrect function.
 Patch0:         fix_entry_point.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -87,6 +89,6 @@ sed -i '1{/^#!.*env python/d}' screenplain/main.py
 %files %{python_files}
 %python_alternative %{_bindir}/screenplain
 %{python_sitelib}/screenplain
-%{python_sitelib}/screenplain-0.9.0*-info
+%{python_sitelib}/screenplain-%{version}*-info
 
 %changelog

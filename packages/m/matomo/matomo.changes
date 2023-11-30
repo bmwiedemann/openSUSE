@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov 28 17:11:44 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.16.0
+  * matomo-org/matomo
+    - #19617 Segment with ‘Does not contain’ operand is invalid if comma is in value
+    - #20959 [PHP 8.1 compatibility] Deprecated – trim(): Passing
+      null to parameter #1 ($string) of type string
+    - #21190 Fix for unexpected zero value last edit dates in segment archiving
+    - #21357 Archiving issue in DataTable.php: Deprecated 
+      – Implicit conversion from float 2009.999 to int loses precision
+    - #21569 Fix “revenue per visit” calculation
+    - #21234 Row evolution does not work for reports with special labels
+    - #21266 Process general goal metrics if no conversions, but site is ecommerce enabled
+    - #21403 Add markup and content for premium plugins promos
+    - #21504 Escape underscore in archive name when used in like query
+    - #21512 Add more visually striking marketplace menu item in sidebar
+    - #21522 Fixing PHP 8.3 deprecation error
+  * matomo-org/matomo-log-analytics
+    - #358 Add Traefik json log support
+    - #359 Update test action
+    - #361 Merge 4.x changes into 5.x
+    - #362 fix nginx format detection
+  * matomo-org/searchengine-and-social-list
+    - #89 Add Bluesky to social media list
+  * matomo-org/referrer-spam-list
+    - #1367 Add urlumbrella.com
+    - #1368 Add bonniesblog.online
+    - #1369 Ass bonniesblog.online
+    - #1370 Add jacblog.xyz
+  * matomo-org/tracker-proxy
+    - #84 added JS option to $SUPPORTED_METHODS in opt out
+
+-------------------------------------------------------------------
 Tue Aug  1 15:11:45 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.15.1

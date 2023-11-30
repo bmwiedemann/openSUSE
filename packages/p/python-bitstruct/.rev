@@ -45,4 +45,22 @@
   * Fix Text encoding and Errors to compile</comment>
     <requestid>1085336</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad90d0fcb629cfcce3012ea9aa07a5a3</srcmd5>
+    <version>8.19.0</version>
+    <time>1701378043</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.19.0:
+  * Python 3.12 support
+  * raise minimum python version to 3.7 because of setuptools
+    compatibility
+  * try to fix pytest command
+  * do not limit max. parallel CI jobs
+  * use pytest
+  * remove verbose output
+
+  * Fix Text encoding and Errors to compile
+  * Only build C extension for CPython 3.</comment>
+    <requestid>1129796</requestid>
+  </revision>
 </revisionlist>

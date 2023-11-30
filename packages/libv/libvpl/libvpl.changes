@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 29 16:47:50 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- only build %ix86 for Tumbleweed; otherwise just build it for
+  x86_64 (bsc#1217662)
+
+-------------------------------------------------------------------
 Mon Apr 10 15:58:39 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2023.2.0

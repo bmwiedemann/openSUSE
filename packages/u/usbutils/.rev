@@ -437,4 +437,15 @@
   * names.c: if a string can not be found in the usb.ids (forwarded request 1129082 from dirkmueller)</comment>
     <requestid>1129090</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>def6e643bc3d8ce635146f02a7e635b3</srcmd5>
+    <version>017</version>
+    <time>1701377941</time>
+    <user>anag+factory</user>
+    <comment>- Split out devel package, containing the .pc file:
+  + The .pc file declares dependencies on other devel packages,
+    which is not wanted on regular end-user systems.
+  + Drop rpmlintrc file. (forwarded request 1129614 from dimstar)</comment>
+    <requestid>1129643</requestid>
+  </revision>
 </revisionlist>

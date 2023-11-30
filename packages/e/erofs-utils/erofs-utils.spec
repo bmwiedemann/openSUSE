@@ -51,7 +51,7 @@ uncompressed:
 
 %build
 autoreconf -fiv
-%configure --bindir="%_sbindir"
+%configure --bindir="%_sbindir" --enable-lzma
 %make_build
 
 %install

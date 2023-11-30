@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  3 06:58:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- msgpack has changed its pkgconfig name, follow suit in neovim.
+
+-------------------------------------------------------------------
 Sat Oct 14 11:13:13 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 0.9.4:

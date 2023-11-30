@@ -262,4 +262,25 @@
     <comment></comment>
     <requestid>1042863</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0b4774917d968b581c7f7a7b906d29d3</srcmd5>
+    <version>7.2.2</version>
+    <time>1701377943</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.2.2:
+  * Fix bug in support for :class:`os.PathLike` arguments to
+    :class:`popen.MockPopen`.
+  * Added missing support for :class:`os.PathLike` arguments to
+    :class:`popen.MockPopen`.
+  * Add ``order_matters`` parameter to :class:`ShouldWarn`.
+  * Implement new IDE and static-analysis ways of :doc:`mocking &lt;mocking&gt;`
+    including additional parameters to :meth:`~Replacer.replace` along with
+    the :any:`replace_on_class`, :any:`replace_in_module` and
+    :any:`replace_in_environ` context managers.
+- Add patch path-comparsion-312.patch:
+  * Compare paths string-wise, due to Python 3.12 changes.
+- Switch to autosetup and pyproject macros.
+- Remove now unneeded Python 3.6 special-casing.</comment>
+    <requestid>1129684</requestid>
+  </revision>
 </revisionlist>

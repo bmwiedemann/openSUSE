@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Nov 23 12:29:15 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.63.1:
+  * feat(github): scan issue & pr titles (#1899)
+
+-------------------------------------------------------------------
+Wed Nov 22 17:14:15 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.63.0:
+  * use camelcase var names (#2123)
+  * Remove unused functions (#2122)
+  * [chore] - update readme help flags (#2120)
+  * feat(signing): Sign checksum (#1894)
+  * import missing detectors (#2119)
+  * Fix forks and repos counter, add metric for orgs enumerated (#2118)
+  * feat(telegram): add username to extradata (#2100)
+  * add extra data to github detector (#1909)
+  * fixed gist direct link generation (#2115)
+  * fix nil map assignment (#2117)
+  * [chore] Add JSON tags to job metrics (#2114)
+  * move all Git setup into Init method (#2105)
+  * add proto fields for Git (#2104)
+  * extract AWS account number from ID without verification (#2091)
+  * Adding Sumo Logic how to rotate (#2103)
+  * update protos so we can use the git source for CI (#2102)
+  * Detector-Competition-Feat: Added Replicate API token detector (#2021)
+  * Detector-Competition-Feat: Added Ngrok API token detector (#2024)
+  * Competition-Detector-New:added v2 version for fullstory (#2067)
+  * Add support for user:pass@host to postgres JDBC detector (#2089)
+  * Detector-Competition-Feat: Add Overloop detector (#2080)
+  * Detector-Competition-Feat: Added Request.Finance API token detector (#2020)
+  * Detector-Competition-New : created grafana service account detector (#1960)
+  * Detector-Competition-Fix: fixed zulipchat detector (#1990)
+  * Grafana (#2096)
+  * Competition-Detector-New: added eventbrite detector (#2072)
+  * logz.io detector (#2076)
+  * Coda Detector (#2075)
+  * fix (#2094)
+  * Detector-Competition-Fix: Fix LiveAgent Detector & Verifier (#2001)
+  * pulling short lived AWS keys into their own thing, fixes #1224 (#2088)
+  * Support multiple detectors per match (#2065)
+  * [chore] Speedup IsKnownFalsePositive using sets (#2090)
+  * Detector-Competition-Fix: Fix ScraperSite (deprecated) (#2074)
+  * Detector-Competition-Fix: Fix PassBase (acquired, deprecated) (#2079)
+  * Detector-Competition-New - Created Grafana Cloud API Key detector  (#1959)
+  * Detector-Competition-Fix: Fix/Deprecate Prospect.io (#2081)
+  * added resource type mapping to extraData in AWS (#2087)
+  * Detector-Competition-Fix: Fix FakeJSON (deprecated) (#2073)
+  * fixed helpscout detector regex and verifier (#2056)
+  * Detector-Competition-Fix: fixed regex for databricks domain and fixed tests (#1965)
+  * modified regex (#2033)
+  * Detector-Competition-Feat: Adding Azure Container Registry Password Detector (#1958)
+  * Detector-Competition-Fix: Fix SentimentInvestor (deprecated) (#2078)
+  * Refactor git source to support scanning units (#2083)
+  * [chore] Replace chunks channel with ChunkReporter in git based sources (#2082)
+  * update comment (#2084)
+  * use rawv2 for pubnubpublish (#2062)
+
+-------------------------------------------------------------------
+Wed Nov 01 10:39:23 UTC 2023 - felix.niederwanger@suse.de
+
+- Update to version 3.62.1:
+  * [chore] - correctly handle input shorter than 512 bytes (#2077)
+  * [chore] - add binutils dep to dockerfile (#2061)
+  * update braintreepayments detector to tri-state verification (#1834)
+  * Detector-Competition-Feat: Adding Azure Batch keys (#1956)
+  * Detector-Competition-Fix: Fix redis to now support SSL, and look for azure redis connection strings (#1957)
+  * Detector-Competition-Fix: Fix AppFollow Detection & Verification (#1933)
+  * Centralize logic for checking archive extraction tools (#2063)
+  * [chore] Fix SourceManager flaky test (#2059)
+  * Support multiple custom detectors (#2064)
+  * Detector-Competition-Fix: Fix SalesBlink Detection & Verification (#1950)
+
+-------------------------------------------------------------------
 Mon Oct 30 16:57:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Clarify description's "entire tech stack".

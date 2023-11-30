@@ -22,18 +22,19 @@
 %endif
 
 Name:           fonts-config
-Version:        20200609+git0.42e2b1b
+Version:        20230604+git0.630c8206607c
 Release:        0
 Summary:        Script to configure fonts for X Windows and other applications
 # MIT for infinality
 License:        GPL-2.0-or-later AND MIT
 Group:          System/X11/Fonts
 Source:         %{name}-%{version}.tar.xz
+Patch1:         0001-Fix-typos-in-32-emoji-reject.conf-and-59-family-pref.patch
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
 Requires(pre):  %fillup_prereq
 %reconfigure_fonts_prereq
-Requires:       fontconfig
+Requires:       fontconfig >= 2.14
 Requires:       gawk
 Requires:       perl(English)
 Recommends:     mkfontscale
@@ -49,7 +50,7 @@ fonts is installed, upgraded or removed. But it can also be executed
 directly, which is mainly useful to debug it (use the --debug flag).
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 # empty configuration now, should be filled after fonts-config call
@@ -81,23 +82,30 @@ for conf in     10-rendering-options.conf \
   install -m 644 $conf %{buildroot}%{_fontsconfddir}
 done
 #
-for conf in 	10-group-tt-hinted-fonts.conf \
-		10-group-tt-non-hinted-fonts.conf \
-		11-base-rendering.conf \
+for conf in	11-base-rendering.conf \
 		12-tt-monospace-rendering.conf \
 		13-selective-rendering.conf \
 		13-selective-rendering-ipa.conf \
-    21-emoji-rendering.conf \
-    31-metric-aliases-bw.conf \
-    32-emoji-reject.conf \
-    32-symbol-substitution.conf \
+		21-emoji-rendering.conf \
+		22-noto-cjk-rendering.conf \
+		31-metric-aliases-bw.conf \
+		32-emoji-reject.conf \
+		32-symbol-substitution.conf \
 		49-family-default.conf \
+		49-family-default-emoji.conf \
 		59-family-prefer-lang-specific.conf \
+		59-family-prefer-lang-specific-cjk.conf \
+		59-family-prefer-lang-specific-noto.conf \
 		60-family-prefer.conf \
 		61-wine-aliases.conf \
 		70-reject.conf; do
   install -m 644 $conf %{buildroot}%{_datadir}/%{name}/conf.avail/
   %link_avail_to_system_fontsconf $conf
+done
+# missing symlink from fontconfig
+for conf in     09-autohint-if-no-hinting.conf; do
+  ln -s ../../..%{_datadir}/fontconfig/conf.avail/$conf \
+     %{buildroot}%{_fontsconfddir}/$conf
 done
 
 %post

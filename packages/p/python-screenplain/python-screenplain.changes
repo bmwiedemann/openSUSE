@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 29 14:51:09 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.10.0:
+  - Unfortunately no changelog available anywhere.
+
+-------------------------------------------------------------------
 Sun Aug 13 19:46:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip pycodestyle check - fails with newer versions and isn't

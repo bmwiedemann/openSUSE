@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Nov 30 09:09:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta1:
+  * Bump version to first beta. (#943)
+  * docs: fix: quote URLs; add security & behaviorial opts (fixes
+    #936) (#935)
+  * Fixing broken docs page symlink (#934)
+  * Add dependencies for integration tests with Kubernetes as
+    backend (#933)
+  * website: submodule/enable live editing (#890)
+  * Add dependencies for integration tests with Consul as backend
+    (#932)
+  * Add Azure integration test runbook. (#924)
+  * Change references to opentofu.org (#902)
+  * Fixes #913: Incorrect installation instructions for RPM (#917)
+  * Add definition of integration tests with Postgres backend
+    (#920)
+  * Add MAINTAINER and update CODEOWNERS (#919)
+  * Align the module fetching logic with the OpenTofu registry v1
+    protocol (#901)
+  * Fixes #859: Removing apt and yum installation instructions
+    (moved to intro section) (#903)
+  * Weekly update for the 2023-11-21. (#905)
+  * Fixes #539: Setting both "Type" and "NestedType" removes other
+    validation error messages (#897)
+  * Add `no_proxy` and `https_proxy` attributes to s3 backend
+    schema (#896)
+  * Add `tofu test` command definition (#886)
+  * website: Split installation instructions (#887)
+  * Fix workspaces configuration using environment varariable
+    TF_WORKSPACE (#867)
+  * Use correct location for LICENSE file during installation
+    (opentofu instead of nfpm) (#889)
+  * Weekly update 2023-11-15. (#883)
+  * Fix S3 Remote State Backend Validation (#876)
+  * Update s3 remote state tests (#865)
+  * Add missing argument to PackageCloud install instructions
+    (#873)
+
+-------------------------------------------------------------------
 Thu Nov 16 14:54:59 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.6.0~alpha5:

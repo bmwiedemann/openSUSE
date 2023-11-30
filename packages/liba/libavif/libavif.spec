@@ -16,6 +16,9 @@
 #
 
 
+# Also update baselibs.conf if you bump the version
+%global lib_soversion 16
+%global lib_name libavif%{lib_soversion}
 %if 0%{?suse_version} >= 1550
 %bcond_without aom
 %bcond_without yuv
@@ -23,13 +26,8 @@
 %bcond_with aom
 %bcond_with yuv
 %endif
-
-# Also update baselibs.conf if you bump the version
-%global lib_soversion 16
-%global lib_name libavif%{lib_soversion}
-
 Name:           libavif
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -37,11 +35,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/AOMediaCodec/libavif
 Source:         https://github.com/AOMediaCodec/libavif/archive/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM https://github.com/AOMediaCodec/libavif/pull/1528
-Patch0:         fix-gdkpixbuf.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -97,10 +94,10 @@ Group:          Development/Libraries/C and C++
 A pixbuf-loader plugin to load AVIF images in GTK+ applications.
 
 %package devel
-Requires:       %{lib_name} = %{version}-%{release}
 #
 Summary:        Development files for libavif
 Group:          Development/Libraries/C and C++
+Requires:       %{lib_name} = %{version}-%{release}
 
 %description devel
 This library aims to be a friendly, portable C implementation of the AV1 Image
@@ -148,6 +145,7 @@ This package holds the development files for libavif.
 %{_bindir}/avifenc
 
 %files -n gdk-pixbuf-loader-libavif
+%license LICENSE
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader-avif.so
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/avif.thumbnailer

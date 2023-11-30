@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 30 16:24:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.4:
+  * chore: bump to syft v0.98.0 in quality gate tests (#1623)
+  * chore: update syft; go mod tidy (#1621)
+  * chore(deps): bump github.com/spf13/afero from 1.10.0 to 1.11.0
+    (#1618)
+  * chore: explicitly test maven suffixes (#1617)
+  * chore(deps): bump anchore/sbom-action from 0.14.3 to 0.15.0
+    (#1611)
+
+-------------------------------------------------------------------
 Mon Nov 20 05:38:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.73.3:

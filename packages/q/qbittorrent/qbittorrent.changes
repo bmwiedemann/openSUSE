@@ -10,6 +10,8 @@ Tue Nov 28 06:50:10 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
   * Disable stdout buffering for qbt-nox
   Wayland:
   * Fix parent widget of "Lock qBittorrent" submenu
+- Also fixes boo#1217677 (CVE-2023-30801, upstream reference
+  gh#qbittorrent/qBittorrent#19738)
 
 -------------------------------------------------------------------
 Tue Nov 21 05:01:43 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>

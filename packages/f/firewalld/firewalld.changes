@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 29 07:10:44 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.0.2:
+  * fix(policy): runtime dispatch update if *-zone=ANY (e8b9637)
+  * fix(nm): release NM client after a timeout (d534f07) 
+
+-------------------------------------------------------------------
 Tue Oct  3 06:42:21 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.0.1:

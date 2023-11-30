@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  29 18:03:47 UTC 2023 - Chen Huang <chhuang@suse.com>
+
+- Release 0.8.0
+  * Added the attributes extension
+  * Project.get_meta: target the /_project path to really get specific revisions
+  * Add an optional rev parameter to Project.get_meta
+  * Reusable function to extract error message from responses and converted get_objectified_xml into standalone function
+  * Removed backport of lru_cache
+  * Session optimizations
+  * Add Build.get_log
+
+-------------------------------------------------------------------
 Mon Mar  6 06:03:47 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release .0.7.12

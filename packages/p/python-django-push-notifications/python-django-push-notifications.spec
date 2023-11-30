@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-django-push-notifications
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        Django package to send push notifications to mobile devices
 License:        MIT

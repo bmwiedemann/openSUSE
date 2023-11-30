@@ -105,4 +105,12 @@ http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
     <comment></comment>
     <requestid>1060730</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ca07652b4cdafa7df1af6c9a2605a74a</srcmd5>
+    <version>2.10.0</version>
+    <time>1701378075</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129871</requestid>
+  </revision>
 </revisionlist>

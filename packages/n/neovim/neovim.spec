@@ -74,7 +74,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(libuv) >= 1.42.0
-BuildRequires:  pkgconfig(msgpack)
+BuildRequires:  pkgconfig(msgpack-c)
 BuildRequires:  pkgconfig(termkey)
 BuildRequires:  pkgconfig(tree-sitter) >= 0.20.8
 BuildRequires:  pkgconfig(unibilium)

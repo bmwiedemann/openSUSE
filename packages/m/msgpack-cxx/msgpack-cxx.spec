@@ -1,7 +1,7 @@
 #
 # spec file for package msgpack-cxx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msgpack-cxx
-Version:        4.1.3
+Version:        6.1.0
 Release:        0
 Summary:        Object serialization library for cross-language communication (C++ interface)
 License:        BSL-1.0
@@ -27,6 +27,7 @@ Source:         https://github.com/msgpack/msgpack-c/releases/download/cpp-%vers
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  pkg-config
 
 %description
@@ -37,9 +38,9 @@ exchange structured objects between many languages like JSON.
 Summary:        Development headers for libmsgpack C++ library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers-devel
-Requires:       msgpack-c-devel >= 4
+Requires:       msgpack-c-devel >= 6
 Provides:       libmsgpack-devel = %{version}-%{release}
-Conflicts:      msgpack-devel < 4
+Conflicts:      msgpack-devel < 6
 
 %description devel
 MessagePack is a binary-based object serialization library. It enables to
@@ -52,10 +53,11 @@ This package provides C++ headers and other devel files.
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
+%fdupes %buildroot/%_prefix
 
 %files devel
 %license COPYING

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Nov 29 05:46:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.17.0:
+  * Add Helm interoperability to docs
+  * Add Flux AIO distribution to docs
+  * Add note about using Timoni with Flux
+  * Bump the ci group with 1 update
+  * Improve multi-cluster intro
+  * Improve error handling
+  * Update example modules - Bump nginx to 1.25.3 - Bump redis to
+    7.2.2
+  * Add multi-cluster deployments guide to docs
+  * Add `clusters` spec to Runtime API docs
+  * Make runtime values optional
+  * Add cluster group to instance logs
+  * Enforce cluster selection for `bundle build` cmd
+  * Add multi-cluster support to `bundle delete` cmd
+  * Add multi-cluster support to `bundle status` cmd
+  * Add multi-cluster support to `bundle apply` cmd
+  * Add default cluster to API
+  * Add multi-cluster support to `bundle vet` cmd
+  * Add cluster info runtime values to API
+  * Add bundle global runtime args
+  * Add cluster aware logger
+  * Add cluster selector to runtime cmd
+  * Add runtime cluster selector to API
+  * Add test for runtime build with clusters
+  * Add runtime clusters to API
+  * Setup local cluster fleet
+  * Add clusters to Runtime API
+  * Update dependencies to Kubernetes v1.28
+  * Add mkdoc setup to CONTRIBUTING.md
+  * Correct small mistakes throughout the docs
+  * Tidy up the mod init command
+  * Tidy up the bundle commands
+  * Create output dir instead of returning error for OCI artifacts
+    (#246)
+  * Handle immutable resources at dry-run
+  * Bump the ci group with 1 update
+
+-------------------------------------------------------------------
 Mon Nov 13 06:18:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.16.0:

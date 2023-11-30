@@ -631,4 +631,12 @@
 - Drop missing-quoting.patch which was fixed upstream.</comment>
     <requestid>1113063</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f0b52a67b658d9b916a4cecab7c0fd96</srcmd5>
+    <version>49.0</version>
+    <time>1701377964</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129762</requestid>
+  </revision>
 </revisionlist>

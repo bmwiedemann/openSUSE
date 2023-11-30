@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 28 21:39:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.9:
+  * Add support for Python 3.12.
+  * Drop support for Python 3.6.
+  * Wheel package bundled with PostgreSQL 16 libpq in order to
+    add support for recent features, such as ``sslcertmode``.
+
+-------------------------------------------------------------------
 Thu Sep  7 11:08:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.7:

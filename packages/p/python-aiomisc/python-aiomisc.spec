@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiomisc
-Version:        17.3.0
+Version:        17.3.41
 Release:        0
 Summary:        Miscellaneous utils for asyncio
 License:        MIT
 URL:            https://github.com/aiokitchen/aiomisc
 Source:         https://files.pythonhosted.org/packages/source/a/aiomisc/aiomisc-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/aiokitchen/aiomisc/v17.2/COPYING
+Source1:        https://raw.githubusercontent.com/aiokitchen/aiomisc/v17.3/COPYING
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorlog >= 6.0

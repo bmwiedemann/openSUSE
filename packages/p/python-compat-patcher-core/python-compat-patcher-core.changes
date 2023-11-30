@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:43:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2:
+  * drop python 3.6 support
+  * add Python 3.11
+  * Update ReadTheDoc configuration
+
+-------------------------------------------------------------------
 Mon Sep 26 23:20:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to Version 2.1
@@ -8,7 +16,7 @@ Mon Sep 26 23:20:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to Version 2.0
   * Fix encoding and error reporting bugs
   * Extend test coverage to Python3.10
-  * Drop support for Python2.7 and Python3.5 
+  * Drop support for Python2.7 and Python3.5
 
 -------------------------------------------------------------------
 Mon Dec 13 13:35:12 UTC 2021 - pgajdos@suse.com

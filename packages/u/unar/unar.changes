@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 29 11:31:46 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.10.8
+  * Fix a major memory leak in CSBzip2Handle
+  * Fix Quarantine attribute for created directories
+  * Fix crash corrupted iso
+  * Fix crash during unarchive sitx format with symlink on
+    deleted file
+  * Implement Clang modules support
+  * [TUN-189] Add Alternarive CRC calcuation for Mac Binary
+    format
+  * [WARC-1] Add basic support of WARC 1.1 archives
+  * [TUN-138] Fix case with directories in Solid RAR5 archives
+  * [TUN-184] Fix old archives with RAR 1.5
+- Update source URL
+- Add universal-detector as source
+
+-------------------------------------------------------------------
 Mon Sep 25 14:14:21 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - use pkgconfig(icu-uc) to use the current libicu. (jsc#PED-6193)

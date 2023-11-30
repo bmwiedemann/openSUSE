@@ -1,2 +1,4 @@
 Requires: kernel-%1
-
+Supplements: (kernel-%1 and %name)
+BuildRequires: kernel-syms
+BuildRequires: modutils

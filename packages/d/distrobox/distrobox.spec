@@ -17,7 +17,7 @@
 
 
 Name:           distrobox
-Version:        1.5.0.2
+Version:        1.6.0.1
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0-only

@@ -17,18 +17,18 @@
 
 
 # define libraries
-%define libcodecs libwscodecs2
-%define libtap libwiretap13
-%define libutil libwsutil14
-%define libwire libwireshark16
+%define libtap libwiretap14
+%define libutil libwsutil15
+%define libwire libwireshark17
 %define org_name org.wireshark.Wireshark
+%bcond_without qt5
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
 %else
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        4.0.11
+Version:        4.2.0
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -48,14 +48,11 @@ BuildRequires:  glib2-devel >= 2.32
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  krb5-devel
 BuildRequires:  libbrotli-devel
-# keep until libbrotli-devel bug is fixed
-BuildRequires:  libbrotlidec1
 BuildRequires:  libcap-devel
 BuildRequires:  libcares-devel >= 1.5.0
 BuildRequires:  libgcrypt-devel >= 1.4.2
 BuildRequires:  libgnutls-devel >= 3.2
 BuildRequires:  libpcap-devel
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libsmi-devel
 BuildRequires:  libtool
 BuildRequires:  lua51-devel
@@ -69,6 +66,8 @@ BuildRequires:  spandsp-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+%if %{with qt5}
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.3.0
 BuildRequires:  pkgconfig(Qt5Core) >= 5.3.0
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -76,6 +75,17 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%else
+BuildRequires:  qt6-linguist-devel
+BuildRequires:  qt6-qt5compat-devel
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
+%endif
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libnl-3.0)
@@ -86,14 +96,9 @@ BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(speexdsp)
-# keep until libbrotli-devel bug is fixed
-Requires:       libbrotlidec1
 Requires(pre):  permissions
 Requires(pre):  shadow
 Recommends:     wireshark-ui = %{version}
-Provides:       ethereal = %{version}
-Obsoletes:      %{libcodecs} < %{version}
-Obsoletes:      ethereal < %{version}
 Provides:       group(wireshark)
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
 # enable ITU G.729 Annex A/B speech codec only in Tumbleweed
@@ -145,8 +150,6 @@ Requires:       %{libwire} = %{version}
 Requires:       %{name} = %{version}
 Requires:       glib2-devel
 Requires:       glibc-devel
-Provides:       ethereal-devel = %{version}
-Obsoletes:      ethereal-devel < %{version}
 
 %description devel
 Wireshark is a network protocol analyzer. It allows examining data
@@ -174,7 +177,11 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut 
 %autosetup -p1
 
 %build
+%if %{with qt5}
+%cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/' -DUSE_qt6=OFF
+%else
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/'
+%endif
 %if 0%{?is_opensuse}
 %cmake_build
 %else
@@ -190,35 +197,15 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut 
 
 %install
 %cmake_install
-find %{buildroot} -type f -name "*.la" -delete -print
-
-# Ethereal support (remove when SLE-11 is out of scope
-ln -fs wireshark %{buildroot}%{_bindir}/ethereal
-ln -fs tshark %{buildroot}%{_bindir}/tethereal
+cmake --install build --component Development --prefix %{buildroot}%{_prefix}
+# removing doc files that are not needed`
+rm %{buildroot}/usr/share/doc/wireshark/COPYING
+rm %{buildroot}/usr/share/doc/wireshark/README.xml-output
+rm %{buildroot}/usr/share/doc/wireshark/pdml2html.xsl
+rm %{buildroot}/usr/share/doc/wireshark/ws.css
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}
 install -d -m 0755 %{buildroot}%{_mandir}/man1/
-
-# -devel
-install -d -m 0755  %{buildroot}%{_includedir}/wireshark
-IDIR="%{buildroot}%{_includedir}/wireshark"
-mkdir -p "${IDIR}/epan"
-mkdir -p "${IDIR}/epan/crypt"
-mkdir -p "${IDIR}/epan/ftypes"
-mkdir -p "${IDIR}/epan/dfilter"
-mkdir -p "${IDIR}/epan/dissectors"
-mkdir -p "${IDIR}/epan/wmem"
-mkdir -p "${IDIR}/wiretap"
-mkdir -p "${IDIR}/wsutil"
-install -m 644 *.h                              "${IDIR}/"
-install -m 644 build/config.h                   "${IDIR}/"
-install -m 644 epan/*.h				"${IDIR}/epan/"
-install -m 644 epan/crypt/*.h			"${IDIR}/epan/crypt"
-install -m 644 epan/ftypes/*.h			"${IDIR}/epan/ftypes"
-install -m 644 epan/dfilter/*.h			"${IDIR}/epan/dfilter"
-install -m 644 epan/dissectors/*.h		"${IDIR}/epan/dissectors"
-install -m 644 wiretap/*.h			"${IDIR}/wiretap"
-install -m 644 wsutil/*.h			"${IDIR}/wsutil"
 
 # desktop file
 cp resources/freedesktop/%{org_name}.desktop %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
@@ -262,7 +249,6 @@ exit 0
 %{_bindir}/rawshark
 %{_bindir}/reordercap
 %{_bindir}/sharkd
-%{_bindir}/tethereal
 %{_bindir}/text2pcap
 %{_bindir}/tshark
 %verify(not mode caps) %attr(0750,root,wireshark) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/dumpcap
@@ -279,19 +265,17 @@ exit 0
 %{_libdir}/libwiretap.so.*
 
 %files devel
-%{_includedir}/wireshark
-%{_includedir}/wireshark/config.h
+%{_includedir}/wireshark/
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/wireshark.pc
+%{_libdir}/cmake/wireshark/
 
 %files ui-qt
 %{_bindir}/wireshark
-%{_bindir}/ethereal
 %{_datadir}/applications/%{org_name}.desktop
 %{_datadir}/applications/%{org_name}-su.desktop
 %{_datadir}/icons/hicolor/*/apps/%{org_name}.png
 %{_datadir}/icons/hicolor/*/mimetypes/%{org_name}-mimetype.png
-%{_datadir}/icons/hicolor/scalable/apps/%{org_name}.svg
 %{_datadir}/mime/packages/%{org_name}.xml
 %{_datadir}/metainfo/%{org_name}.metainfo.xml
 

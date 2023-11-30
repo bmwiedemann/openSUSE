@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-OBS-Client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Net-OBS-Client
 Name:           perl-Net-OBS-Client
-Version:        0.0.8
+Version:        0.1.1
 Release:        0
-Summary:        Simple OBS API calls
 License:        Artistic-2.0
+Summary:        Simple OBS API calls
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/F/FS/FSM/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

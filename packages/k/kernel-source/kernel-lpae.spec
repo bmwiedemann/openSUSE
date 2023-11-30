@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.2
+%define patchversion 6.6.3
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.6.2
+Version:        6.6.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g263a855
+Release:        <RELEASE>.gd766c57
 %else
 Release:        0
 %endif
@@ -385,10 +385,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-263a8551d2c008c025accf98725fa65c6c416d90
-Provides:       kernel-srchash-263a8551d2c008c025accf98725fa65c6c416d90
+Provides:       kernel-%build_flavor-base-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
+Provides:       kernel-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
 # END COMMON DEPS
-Provides:       %name-srchash-263a8551d2c008c025accf98725fa65c6c416d90
+Provides:       %name-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
 %obsolete_rebuilds %name
 
 %define kmp_target_cpu %_target_cpu
@@ -1303,8 +1303,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-263a8551d2c008c025accf98725fa65c6c416d90
-Provides:       kernel-srchash-263a8551d2c008c025accf98725fa65c6c416d90
+Provides:       kernel-%build_flavor-base-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
+Provides:       kernel-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86

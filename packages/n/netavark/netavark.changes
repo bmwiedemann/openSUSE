@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Nov 30 07:05:28 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.9.0:
+  * v1.9.0 Release
+  * v1.9.0 Release notes
+  * test: fix syntax problem in helpers.bash
+  * run cargo update
+  * use OsString/Path over String for file paths
+  * chore(deps): update dependency containers/automation_images to v20231116
+  * firewalld-reload: fix CI tests
+  * firewalld-reload: prevent race which could leak fw rules
+  * fix(deps): update rust crate clap to ~4.4.8
+  * CI: skip broken firewalld test
+  * fix(deps): update rust crate http to 0.2.11
+  * rpm: add netavark-firewalld-reload.service to spec
+  * firewalld-reload: add integration tests
+  * firewall/state: make sure to ignore enoent on read
+  * firewall-reload: integrate actual logic to reload rules
+  * firewall/state: improve error messages
+  * firewall: add state functions to serialize configs
+  * firewalld: fix lint errors with rust v1.73
+  * firewall: do not use full Network in NetworkStruct
+  * firewall: add dns_port to SetupNetwork
+  * add firewalld-reload subcommand
+  * fix(deps): update rust crate http to 0.2.10
+  * fix(deps): update rust crate env_logger to 0.10.1
+  * fix(deps): update rust crate tokio to 1.34
+  * Update rust container build files
+  * bridge: force static mac on bridge interface
+  * fix(deps): update rust crate futures-core to 0.3.29
+  * fix(deps): update rust crate serde to 1.0.190
+  * fix(deps): update rust crate serde_json to 1.0.108
+  * fix(deps): update rust crate sysctl to 0.5.5
+  * fix(deps): update rust-futures monorepo to 0.3.29
+  * CI: Drop CI VM distro name
+  * chore(deps): update dependency containers/automation_images to v20231004
+  * fix(deps): update rust crate tokio to 1.33
+  * build-sys: Filter to tier 2 Linux declaratively
+  * fix(deps): update rust crate sha2 to 0.10.8
+  * fix podman.io community link
+  * Bump to v1.9.0-dev
+
+-------------------------------------------------------------------
 Thu Sep 28 05:05:43 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.8.0:

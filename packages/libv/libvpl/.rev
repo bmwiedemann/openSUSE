@@ -108,4 +108,13 @@
     <comment></comment>
     <requestid>1078355</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c877e9347c616bbf19c4451631811832</srcmd5>
+    <version>2023.2.0</version>
+    <time>1701378063</time>
+    <user>anag+factory</user>
+    <comment>- only build %ix86 for Tumbleweed; otherwise just build it for
+  x86_64 (bsc#1217662)</comment>
+    <requestid>1129855</requestid>
+  </revision>
 </revisionlist>

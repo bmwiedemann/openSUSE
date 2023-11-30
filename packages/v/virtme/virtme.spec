@@ -21,7 +21,7 @@
 %define skip_python310 1
 %{?sle15_python_module_pythons}
 Name:           virtme
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only

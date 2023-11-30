@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 22 20:45:45 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 1.22.1.
+  The full changelog is very large. Please check it here:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.1
+- Refresh update-alternatives-suse.patch so it applies cleanly.
+
+-------------------------------------------------------------------
 Mon Sep 18 04:57:23 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to version 1.22.0.

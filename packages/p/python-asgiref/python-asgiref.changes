@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 29 13:04:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.2:
+  * The type annotations for SyncToAsync and AsyncToSync have been
+    changed to more accurately reflect the kind of callables they
+    return.
+  * On Python 3.10 and below, the version of the "typing_extensions"
+    package is now constrained to be at least version 4 (as we depend
+    on functionality in that version and above)
+  * Contextvars are now required for the implementation of `sync`
+    as Python 3.6 is now no longer a supported version.
+  * sync_to_async and async_to_sync now pass-through
+  * Debug and Lifespan State extensions have resulted in a typing
+    change for some request and response types. This change should
+    be backwards-compatible.
+  * ``asgiref`` frames will now be hidden in Django tracebacks
+    by default.
+  * Raw performance and garbage collection improvements in Local,
+    SyncToAsync, and AsyncToSync.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -30,7 +51,7 @@ Sat Jan  7 09:11:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
     available to `asgiref` at import time, and so the default thread pool
     executor cannot be configured. Protocol servers, or applications, should set
     the default executor as required when configuring the event loop at
-    application startup. 
+    application startup.
 
 -------------------------------------------------------------------
 Sat Jun  4 15:28:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -41,12 +62,12 @@ Sat Jun  4 15:28:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Improved docs - Starlette supports WebSockets
   * Use get_event_loop in class-level code
   * Changed how StatelessServer handles event loops
-  * Fixed pytest_asyncio deprecation warning. 
+  * Fixed pytest_asyncio deprecation warning.
   * Drop python 3.6, add python 3.10
   * Fix allowed values for spec_version
-  * Rewrote multiprocessing test to use no local functions 
+  * Rewrote multiprocessing test to use no local functions
   * Fixed a typographical error
-  * Remove SOCK_NONBLOCK from socket creation on tests 
+  * Remove SOCK_NONBLOCK from socket creation on tests
   * Preserve CurrentThreadExecutor across create_task
   * Don't warn 'non-async-marked callable' for async callable instance
   * Disallow async callable class instances as callable
@@ -108,7 +129,7 @@ Thu Jan 14 04:31:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * sync_to_async now defaults to thread-sensitive mode being on
   * async_to_sync now works inside of forked processes
   * WsgiToAsgi now correctly clamps its response body when Content-Length
-    is set 
+    is set
 
 -------------------------------------------------------------------
 Wed Jul  1 04:59:38 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
@@ -118,7 +139,7 @@ Wed Jul  1 04:59:38 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Fixed regression with exception handling in 3.2.8 related to the
     contextvars fix.
   * Fixed small memory leak in local.Local
-  * contextvars are now persisted through AsyncToSync 
+  * contextvars are now persisted through AsyncToSync
 
 -------------------------------------------------------------------
 Fri Apr 24 06:47:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

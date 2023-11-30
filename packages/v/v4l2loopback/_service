@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/umlaeute/v4l2loopback</param>
+    <param name="scm">git</param>
+    <param name="revision">origin/main</param>
+    <param name="versionformat">%ci.%h</param>
+    <param name="versionprefix">0.12.8~git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">hpj@urpla.net</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

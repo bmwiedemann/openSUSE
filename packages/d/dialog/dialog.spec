@@ -28,11 +28,11 @@ URL:            http://invisible-island.net/dialog/
 Source0:        https://www.invisible-island.net/archives/%{name}/%{name}-%{version}-%{src_date}.tgz
 Source1:        https://www.invisible-island.net/archives/%{name}/%{name}-%{version}-%{src_date}.tgz.asc
 Source2:        %{name}.keyring
-Source3:        dialog.rc
 Source4:        dialog-rpmlintrc
 # PATCH-FIX-OPENSUSE : fix shadow during resizing terminal
 Patch0:         dialog-1.2-20121230.dif
 Patch2:         dialog-gcc-warnings.patch
+Patch3:         dialog-1.3-usretc.diff
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -69,9 +69,7 @@ Examples of using menus and dialog boxes in shell scripts.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}-%{src_date}
-%patch0
-%patch2 -p1
+%autosetup -n %{name}-%{version}-%{src_date}
 
 %build
     CC=gcc
@@ -113,7 +111,7 @@ rm -rf %{buildroot}%{_datadir}/locale/mg/ # Malagasy (Malayalam??)
 rm -rf %{buildroot}%{_datadir}/locale/rm/ # Rhaeto-Romance
 
 mkdir %{buildroot}/etc
-install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/dialogrc
+> %{buildroot}%{_sysconfdir}/dialogrc
 %find_lang %{name}
 xz CHANGES
 
@@ -128,7 +126,7 @@ xz CHANGES
 %else
 %doc CHANGES.xz README VERSION COPYING
 %endif
-%config(noreplace) %{_sysconfdir}/dialogrc
+%ghost %config(noreplace) %{_sysconfdir}/dialogrc
 %{_bindir}/dialog
 %{_mandir}/man1/dialog.1%{ext_man}
 

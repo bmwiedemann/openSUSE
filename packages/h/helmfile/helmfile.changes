@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Nov 29 15:56:35 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.159.0:
+  What's Changed
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.46.7 to
+    1.47.0 by @dependabot in #1111
+  * docs: fix indentation error in index.md by @tjanson in #1114
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.0 to
+    1.47.1 by @dependabot in #1113
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.1 to
+    1.47.2 by @dependabot in #1117
+  * fix: args ignore in diff subcommand by @yxxhero in #1118
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.2 to
+    1.47.3 by @dependabot in #1125
+  * build(deps): bump golang.org/x/sync from 0.4.0 to 0.5.0 by
+    @dependabot in #1124
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+    by @dependabot in #1123
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.3 to
+    1.47.4 by @dependabot in #1126
+  * resolved deps even when installed=false by @jouve in #1120
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.4 to
+    1.47.5 by @dependabot in #1127
+  * build(deps): bump helm.sh/helm/v3 from 3.13.1 to 3.13.2 by
+    @dependabot in #1128
+  * build(deps): bump golang.org/x/term from 0.13.0 to 0.14.0
+    by @dependabot in #1129
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.5 to
+    1.47.7 by @dependabot in #1134
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.7 to
+    1.47.8 by @dependabot in #1138
+  * fix: support large output with --enable-live-ouput by
+    @flabatut in #1139
+  * bump helm to 3.13.2 by @yxxhero in #1130
+  * Update helmfile/chartify to v0.17.0 by @moririnson in #1140
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.8 to
+    1.47.9 by @dependabot in #1141
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.9 to
+    1.47.10 by @dependabot in #1143
+  * build(deps): bump dessant/lock-threads from 4 to 5
+    by @dependabot in #1144
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.10 to
+    1.47.11 by @dependabot in #1146
+  * build(deps): bump k8s.io/apimachinery from 0.28.3 to 0.28.4 by
+    @dependabot in #1149
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.11 to
+    1.47.12 by @dependabot in #1150
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.12 to
+    1.47.13 by @dependabot in #1152
+  * fix checker for empty array case by @yxxhero in #1153
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.47.13 to
+    1.48.0 by @dependabot in #1156
+  * build(deps): bump github.com/helmfile/vals from 0.28.1 to
+    0.29.0 by @dependabot in #1155
+  * Add "PostRendererArgs" option to be passed to helm by
+    @boekhold in #1133
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.0 to
+    1.48.1 by @dependabot in #1159
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.0 to
+    3.0.1 by @dependabot in #1160
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.1 to
+    1.48.2 by @dependabot in #1162
+  * update get and getOrNil docs by @yxxhero in #1164
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.2 to
+    1.48.3 by @dependabot in #1166
+
+-------------------------------------------------------------------
 Thu Nov  2 14:43:59 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.158.1:

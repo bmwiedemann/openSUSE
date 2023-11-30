@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 30 09:36:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.22.1:
+  * Bugfixes
+    - Look for ansible binary in the same path as we are (#3903)
+      @FliegenKLATSCH
+    - Avoid stacktrace with broken ansible.cfg files (#3916)
+      @ssbarnea
+    - Avoid jinja[invalid] with ansible.builtin.mandatory filter
+      (#3917) @ssbarnea
+    - Remove support for deprecated include (#3722) @ssbarnea
+    - Fix use of versioned github action (#3762) @karl-johan-grahn
+    - Fix few URLs in README.md (#3915) @ssbarnea
+    - Correct some usage examples for package_latest (#3914)
+      @pablomh
+    - Add option to allow running with missing plugins and
+      collection dependencies (#3913) @ssbarnea
+    - Avoid warnings from loading of deprecated modules (#3715)
+      @ssbarnea
+    - Log ignored exception details to debug log (#3900) @bluecmd
+    - GitHub Action: properly respect the working_directory
+      argument (#3905) @ptoscano
+    - Allow to set max_fail_percentage as templated integer (#3901)
+      @rebtoor
+    - Fix setuptools-scm versioning (#3887) @ssbarnea
+    - Add Fedora 39 to meta.json (#3893) @jsf9k
+    - Use python 3.10 as primary version target (#3886) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Nov  7 11:31:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 -update to 6.22.0:

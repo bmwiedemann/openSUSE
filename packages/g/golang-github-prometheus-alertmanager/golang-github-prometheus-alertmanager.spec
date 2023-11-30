@@ -22,23 +22,24 @@ Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
 URL:            https://prometheus.io/
+Group:          System/Monitoring
 Source:         alertmanager-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-alertmanager.service
 Source3:        alertmanager.yml
 # Lifted from Debian's alertmanager package
 Patch1:         0001-Default-settings.patch
+# Build as position independent executables (PIE)
+Patch2:         0002-Set-build-flags.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.20
 Requires(pre):  group(prometheus)
 Requires(pre):  user(prometheus)
 Provides:       prometheus-alertmanager = %{version}
 ExcludeArch:    s390
 %{?systemd_ordering}
-
-%{go_nostrip}
 
 %description
 The Alertmanager handles alerts sent by client applications such as the
@@ -51,8 +52,7 @@ OpsGenie. It also takes care of silencing and inhibition of alerts.
 
 %build
 %goprep github.com/prometheus/alertmanager
-export BUILDFLAGS="-v -p 4 -x -buildmode=pie -mod=vendor"
-GOPATH=%{_builddir}/go promu build
+GOPATH=%{_builddir}/go promu -v build
 
 %install
 %goinstall

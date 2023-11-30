@@ -17,18 +17,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-bitstruct
-Version:        8.17.0
+Version:        8.19.0
 Release:        0
 Summary:        Interpret strings as packed binary data
 License:        MIT
 URL:            https://github.com/eerimoq/bitstruct
 Source:         https://files.pythonhosted.org/packages/source/b/bitstruct/bitstruct-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -42,14 +42,13 @@ module, but working on bits instead of primitive data types (char, int, ...).
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mv bitstruct bitstruct.hide
 %pyunittest_arch discover -v tests
 
 %files %{python_files}

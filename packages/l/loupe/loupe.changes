@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 30 09:47:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.2:
+  + Fix order of images gets confused after deleting image
+  + Fix image is not shown when sucessfully reloaded after error
+  + Fix keyboard shortcuts shows the swipe gestures the wrong way
+    round
+- Following changes in obs-service-cargo, drop cargo_config as
+  source from spec and source, and remove cargo_audit from
+  _service, as these are now automated as part of cargo_vendor.
+
+-------------------------------------------------------------------
 Tue Nov 14 20:16:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:

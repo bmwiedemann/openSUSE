@@ -95,6 +95,9 @@ fontconfig library.
 %autosetup -p1
 # use suse-specific doc path:
 find -name \*.1 -o -name \*.sgml -exec sed -i -e 's/usr\/share\/doc\/fontconfig/usr\/share\/doc\/packages\/fontconfig/g' {} +
+%if 0%{?suse_version} < 1550
+autoreconf -fi
+%endif
 
 %build
 # We don't want to rebuild the docs, but we want to install the included ones.

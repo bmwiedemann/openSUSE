@@ -429,4 +429,16 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     the session characteristics as it may create problems with external</comment>
     <requestid>1109514</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c2eba61f9c2bed00e05b9eaa142c5a3f</srcmd5>
+    <version>2.9.9</version>
+    <time>1701378004</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.9:
+  * Add support for Python 3.12.
+  * Drop support for Python 3.6.
+  * Wheel package bundled with PostgreSQL 16 libpq in order to
+    add support for recent features, such as ``sslcertmode``.</comment>
+    <requestid>1129668</requestid>
+  </revision>
 </revisionlist>

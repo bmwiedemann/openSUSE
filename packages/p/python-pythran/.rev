@@ -141,4 +141,13 @@ now with fixed empty debuginfo extraction</comment>
 - Switch to pyproject macros.</comment>
     <requestid>1127832</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c7e1b3e12cb75347a9b558b4afd51693</srcmd5>
+    <version>0.14.0</version>
+    <time>1701377944</time>
+    <user>anag+factory</user>
+    <comment>- Prepare for Python 3.12, by skipping it for the other test flavors, and
+  adding one for it.</comment>
+    <requestid>1129689</requestid>
+  </revision>
 </revisionlist>

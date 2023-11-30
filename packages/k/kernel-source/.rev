@@ -6442,4 +6442,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.6.2</comment>
     <requestid>1127677</requestid>
   </revision>
+  <revision rev="711" vrev="1">
+    <srcmd5>1f410aa6216cce704b497119f102504a</srcmd5>
+    <version>6.6.3</version>
+    <time>1701377939</time>
+    <user>anag+factory</user>
+    <comment>6.6.3 &amp; other fixes</comment>
+    <requestid>1129691</requestid>
+  </revision>
 </revisionlist>

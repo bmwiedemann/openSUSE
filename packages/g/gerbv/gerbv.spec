@@ -18,7 +18,7 @@
 
 Name:           gerbv
 %define libname lib%{name}
-Version:        2.9.6
+Version:        2.10.0
 Release:        0
 %define somajor 1
 Summary:        Gerber File Viewer that supports the RS-274X Standard

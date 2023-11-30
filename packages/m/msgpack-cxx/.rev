@@ -30,4 +30,12 @@
   * Refine include files dependency (#1011) (forwarded request 1039995 from dirkmueller)</comment>
     <requestid>1040010</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc450fedabf22b915a92b4f426ea0bd8</srcmd5>
+    <version>6.1.0</version>
+    <time>1701377997</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 6.1.0</comment>
+    <requestid>1122999</requestid>
+  </revision>
 </revisionlist>

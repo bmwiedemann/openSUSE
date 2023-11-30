@@ -17,12 +17,12 @@
 
 
 %define sca_common sca
-%define sca_config scatool
+%define sca_config sca
 %define libbase /usr/lib/%{sca_common}
 %define sca_python %{libbase}/python
 
 Name:           sca-server-report
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Supportconfig Analysis Server Report
 License:        GPL-2.0-only
@@ -30,7 +30,7 @@ URL:            https://github.com/g23guy/sca-server-report
 Group:          System/Monitoring
 Source:         %{name}-%{version}.tar.gz
 Requires:       python3-base
-Requires:       sca-patterns-base >= 1.5.0
+Requires:       sca-patterns-template-gen2
 BuildArch:      noarch
 
 %description
@@ -53,19 +53,15 @@ install -d %{buildroot}%{_sysconfdir}/%{sca_config}
 install -d %{buildroot}%{_mandir}/man5
 install -d %{buildroot}%{_mandir}/man8
 install -d %{buildroot}%{sca_python}
-mkdir -p %{buildroot}%{_sbindir}
-install -m 544 bin/scatool %{buildroot}%{_sbindir}
-install -m 644 bin/scatool.py %{buildroot}/%{sca_python}
+mkdir -p %{buildroot}%{_bindir}
+install -m 755 bin/scatool %{buildroot}%{_bindir}
 install -m 644 config/scatool.conf %{buildroot}%{_sysconfdir}/%{sca_config}
 install -m 644 man/*.5.gz %{buildroot}%{_mandir}/man5
 install -m 644 man/*.8.gz %{buildroot}%{_mandir}/man8
 
 %files
 %defattr(-,root,root)
-%{_sbindir}/scatool
-%dir %{libbase}
-%dir %{sca_python}
-%{sca_python}/*
+%{_bindir}/scatool
 %dir %{_sysconfdir}/%{sca_config}
 %config %{_sysconfdir}/%{sca_config}/*
 %doc %{_mandir}/man5/*

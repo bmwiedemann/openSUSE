@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 29 10:50:56 UTC 2023 - dfaggioli@suse.com
+
+- Align to upstream stable release. It includes many of the patches we had
+  backported ourself, to fix bugs and issues, plus more. See here for details:
+  * https://lore.kernel.org/qemu-devel/1700589639.257680.3420728.nullmailer@tls.msk.ru/
+  * https://gitlab.com/qemu-project/qemu/-/commits/stable-8.1?ref_type=heads
+  An (incomplete!) list of such backports is:
+  * Update version for 8.1.3 release
+  * hw/mips: LOONGSON3V depends on UNIMP device
+  * target/arm: HVC at EL3 should go to EL3, not EL2
+  * s390x/pci: only limit DMA aperture if vfio DMA limit reported
+  * target/riscv/kvm: support KVM_GET_REG_LIST
+  * target/riscv/kvm: improve 'init_multiext_cfg' error msg
+  * tracetool: avoid invalid escape in Python string
+  * tests/tcg/s390x: Test LAALG with negative cc_src
+  * target/s390x: Fix LAALG not updating cc_src
+  * tests/tcg/s390x: Test CLC with inaccessible second operand
+  * target/s390x: Fix CLC corrupting cc_src
+  * tests/qtest: ahci-test: add test exposing reset issue with pending callback
+  * hw/ide: reset: cancel async DMA operation before resetting state
+  * target/mips: Fix TX79 LQ/SQ opcodes
+  * target/mips: Fix MSA BZ/BNZ opcodes displacement
+  * ui/gtk-egl: apply scale factor when calculating window's dimension
+  * ui/gtk: force realization of drawing area
+  * ati-vga: Implement fallback for pixman routines
+  * ...
+
+-------------------------------------------------------------------
+Wed Nov 22 15:21:23 UTC 2023 - dfaggioli@suse.com
+
+- Backports and bugfixes:
+  * [openSUSE] Make Sphinx build reproducible (boo#1102408)
+  * target/s390x/arch_dump: Add arch cleanup function for PV dumps (bsc#1217227)
+  * dump: Add arch cleanup function (bsc#1217227)
+  * target/s390x/dump: Remove unneeded dump info function pointer init (bsc#1217227)
+
+-------------------------------------------------------------------
 Wed Nov 15 17:39:42 UTC 2023 - dfaggioli@suse.com
 
 - Fix bsc#1216638:
