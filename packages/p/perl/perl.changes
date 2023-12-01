@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 27 10:50:24 CET 2023 - mls@suse.de
+
+- Update to perl 5.38.2
+  * fixes [CVE-2023-47038] Write past buffer end via illegal
+    user-defined Unicode property [bnc#1217084]
+  * fixes [CVE-2023-47039] Perl for Windows binary hijacking
+    vulnerability [bnc#1217085]
+
+-------------------------------------------------------------------
 Thu Sep 21 10:51:15 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - Use 64-bit integers on all platforms
