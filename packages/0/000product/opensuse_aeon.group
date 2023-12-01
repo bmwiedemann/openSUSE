@@ -274,7 +274,6 @@
     <package name="glib2-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="glib2-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="glibc-extra" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="glibc-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1313,7 +1312,6 @@
     <package name="liburcu8" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="liburing2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libusb-1_0-devel" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libusbmuxd-2_0-6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libutempter0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1384,7 +1382,6 @@
     <package name="libxcb-xkb1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libxcb-xv0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libxcb1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libxcvt0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libxkbcommon-x11-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libxkbcommon0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1422,7 +1419,6 @@
     <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1765,7 +1761,6 @@
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="systemd-devel" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->

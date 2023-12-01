@@ -7734,6 +7734,7 @@ unsorted:
   - homeshick 
   - honggfuzz 
   - horst 
+  - host-spawn 
   - hostap-utils 
   - hostapd 
   - hostinfo 
@@ -13241,7 +13242,7 @@ unsorted:
   - libmrss0 
   - libmruby3_1_0 
   - libmruby_core3_1_0 
-  - libmsgpackc2 
+  - libmsgpack-c2 
   - libmsi-1_0-0 
   - libmsiecf-devel 
   - libmsiecf-tools 
@@ -15226,6 +15227,7 @@ unsorted:
   - liburiparser1 
   - libusb-0_1-4-32bit 
   - libusb-1_0-0-32bit 
+  - libusb-1_0-devel 
   - libusb-1_0-devel-32bit 
   - libusb-compat-devel 
   - libusb3380-0 
@@ -15483,8 +15485,8 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwind0 
-  - libwireshark16 
-  - libwiretap13 
+  - libwireshark17 
+  - libwiretap14 
   - libwlroots10 
   - libwlroots11 
   - libwmf-0_2-7-32bit 
@@ -15522,7 +15524,7 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwsutil14 
+  - libwsutil15 
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
@@ -21629,7 +21631,6 @@ unsorted:
   - postgresql11-contrib 
   - postgresql11-devel 
   - postgresql11-docs 
-  - postgresql11-libversion 
   - postgresql11-llvmjit 
   - postgresql11-llvmjit-devel 
   - postgresql11-orafce 
@@ -23181,6 +23182,7 @@ unsorted:
   - python310-azure-mgmt-msi 
   - python310-azure-mgmt-netapp 
   - python310-azure-mgmt-network 
+  - python310-azure-mgmt-networkanalytics 
   - python310-azure-mgmt-networkcloud 
   - python310-azure-mgmt-networkfunction 
   - python310-azure-mgmt-newrelicobservability 
@@ -26664,6 +26666,7 @@ unsorted:
   - python311-azure-mgmt-msi 
   - python311-azure-mgmt-netapp 
   - python311-azure-mgmt-network 
+  - python311-azure-mgmt-networkanalytics 
   - python311-azure-mgmt-networkcloud 
   - python311-azure-mgmt-networkfunction 
   - python311-azure-mgmt-newrelicobservability 
@@ -30059,6 +30062,7 @@ unsorted:
   - python39-azure-mgmt-msi 
   - python39-azure-mgmt-netapp 
   - python39-azure-mgmt-network 
+  - python39-azure-mgmt-networkanalytics 
   - python39-azure-mgmt-networkcloud 
   - python39-azure-mgmt-networkfunction 
   - python39-azure-mgmt-newrelicobservability 
@@ -35100,6 +35104,7 @@ unsorted:
   - system-user-velociraptor 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
+  - systemd-devel 
   - systemd-experimental 
   - systemd-generator-cron2timer 
   - systemd-homed 
@@ -44951,6 +44956,7 @@ unsorted:
   - usbredir-devel 
   - usbsdmux-udev 
   - usbtop 
+  - usbutils-devel 
   - usbview 
   - usnic_tools 
   - usrp-firmware 
@@ -45061,6 +45067,7 @@ unsorted:
   - vde2 
   - vde2-cryptcab 
   - vde2-slirp 
+  - vdu_controls 
   - vectorscan-devel 
   - vectorscan-examples 
   - ved 

@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20231129" schemaversion="4.1">
+<image name="OBS__MicroOS___20231130" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231129</productvar>
+      <productvar name="VERSION">20231130</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231129,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231130,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231129/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231130/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -419,7 +419,6 @@
       <repopackage name="glib2-lang"/>
       <repopackage name="glib2-tools"/>
       <repopackage name="glibc"/>
-      <repopackage name="glibc-devel"/>
       <repopackage name="glibc-extra"/>
       <repopackage name="glibc-lang"/>
       <repopackage name="glibc-locale"/>
@@ -1873,7 +1872,6 @@
       <repopackage name="liburcu8"/>
       <repopackage name="liburing2"/>
       <repopackage name="libusb-1_0-0"/>
-      <repopackage name="libusb-1_0-devel"/>
       <repopackage name="libusbmuxd-2_0-6"/>
       <repopackage name="libutempter0"/>
       <repopackage name="libuuid1"/>
@@ -1959,7 +1957,6 @@
       <repopackage name="libxcb-xv0"/>
       <repopackage name="libxcb1"/>
       <repopackage name="libXcomposite1"/>
-      <repopackage name="libxcrypt-devel"/>
       <repopackage name="libXcursor1"/>
       <repopackage name="libxcvt0"/>
       <repopackage name="libXdamage1"/>
@@ -2026,7 +2023,6 @@
       <repopackage name="libZXing3"/>
       <repopackage name="libzypp"/>
       <repopackage name="libzypp-plugin-appdata"/>
-      <repopackage name="linux-glibc-devel"/>
       <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
       <repopackage name="lsof"/>
@@ -2706,7 +2702,6 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
-      <repopackage name="systemd-devel"/>
       <repopackage name="systemd-doc"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-Aeon"/>

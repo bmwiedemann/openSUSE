@@ -560,7 +560,7 @@
     <package name="glib2-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="glibc-extra" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2692,7 +2692,6 @@
     <package name="liburing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libusb-0_1-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libusb-1_0-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbmuxd-2_0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirhost1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2815,7 +2814,7 @@
     <package name="libxcb-xkb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcb-xv0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxcb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libxcvt0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxerces-c-3_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxfce4kbd-private-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2885,7 +2884,7 @@
     <package name="lightdm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="lightsoff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lightsoff-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:lklug-fonts -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4203,7 +4202,6 @@
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="systemd-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
