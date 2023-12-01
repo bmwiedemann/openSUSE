@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
+
+- Remove obsolete requirement for ocaml-gettext-stub-devel
+- Require OCaml 4.07+
+
+-------------------------------------------------------------------
+Tue Nov 28 12:46:46 MST 2023 - carnold@suse.com
+
+- Update to version 1.51.5
+  * No upstream changelog found in sources or webpage
+  * customize: Change --chown to use UID:GID:FILENAME
+  * Implement virt-customize --tar-in
+  * Dropped the virt-dib tool
+  * Various bug fixes and language translations
+
+-------------------------------------------------------------------
 Mon May  1 10:25:03 MDT 2023 - carnold@suse.com
 
 - Update to version 1.50.1 bug fix release

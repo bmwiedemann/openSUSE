@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 23 09:43:39 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Skip SHA1 test in 20-test_dgst.t when in FIPS mode
+  * Add openssl-Skip_SHA1-test-in-FIPS-mode.patch
+- FIPS: add openssl-1_1-fips-bsc1190652_release_num_in_version_string.patch
+  * bsc#1190652 - Provide a service to output module name/identifier
+    and version
+- Sync patches with SLE:
+  * Merge openssl-keep_EVP_KDF_functions_version.patch into
+    openssl-1.1.1-evp-kdf.patch
+  * Refresh openssl-1_1-fips-bsc1215215_fips_in_version_string.patch
+  * Remove openssl-no-date.patch
+
+-------------------------------------------------------------------
 Mon Nov 13 09:29:26 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security fix: [bsc#1216922, CVE-2023-5678]

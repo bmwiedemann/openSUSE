@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama
-Version:        5
+Version:        6
 Release:        0
 %define mod_name agama
 %define mod_full_name %{mod_name}-%{version}
@@ -63,7 +63,8 @@ install --directory %{buildroot}%{_datadir}/dbus-1/agama-services
 install -m 0644 --target-directory=%{buildroot}%{_datadir}/dbus-1/agama-services %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/org.opensuse.Agama*.service
 install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama.service %{buildroot}%{_unitdir}/agama.service
 install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama-proxy-setup.service %{buildroot}%{_unitdir}/agama-proxy-setup.service
-install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/etc/agama.yaml %{buildroot}%{_sysconfdir}/agama.yaml
+install --directory %{buildroot}/usr/share/agama/conf.d
+install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/conf.d/*.yaml %{buildroot}/usr/share/agama/conf.d/
 # /MANUAL
 
 %gem_packages

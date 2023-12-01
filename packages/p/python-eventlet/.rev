@@ -539,4 +539,13 @@
     <comment></comment>
     <requestid>1123726</requestid>
   </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>18bd39bc72bfeb26a54a21ec653e3619</srcmd5>
+    <version>0.33.3</version>
+    <time>1701462276</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python3.12.patch:
+  * Support Python 3.12 changes.</comment>
+    <requestid>1129879</requestid>
+  </revision>
 </revisionlist>

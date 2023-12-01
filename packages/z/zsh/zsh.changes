@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 30 09:43:33 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+- add pipe-less-and-signals-handling.patch (bsc#1217304). It fixes a problem
+  with signal handling and less when the job is suspended in a user defined
+  concatenated commands function.
+
+-------------------------------------------------------------------
 Thu Aug  3 10:28:02 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Enable testsuite in qemu build

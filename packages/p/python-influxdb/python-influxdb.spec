@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-influxdb
 Version:        5.3.1
 Release:        0
@@ -34,20 +32,24 @@ Patch1:         https://github.com/influxdata/influxdb-python/pull/845.patch#/in
 Patch2:         python-influxdb-no-six.patch
 # fix tests with newer pandas
 Patch3:         python-influxdb-new-pandas.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.6.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.17.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msgpack
 Requires:       python-python-dateutil >= 2.6.0
 Requires:       python-pytz
 Requires:       python-requests >= 2.17.0
+# Pandas is optional but only works with pandas >= 2.1. If pandas < 2.1 is installed, the module throws an ImportError
+Conflicts:      python-pandas < 2.1
 ExcludeArch:    %ix86 %arm ppc
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pandas >= 2.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  influxdb
@@ -55,6 +57,7 @@ BuildRequires:  influxdb
 BuildRequires:  hostname
 %endif
 # /SECTION
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -64,10 +67,10 @@ InfluxDB-Python is a client for interacting with InfluxDB 1.x
 %autosetup -p1 -n influxdb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -83,6 +86,6 @@ donttest="test_write_points_from_dataframe_with_nan_json or test_write_points_fr
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/influxdb
-%{python_sitelib}/influxdb-%{version}*-info
+%{python_sitelib}/influxdb-%{version}.dist-info
 
 %changelog

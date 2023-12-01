@@ -17,14 +17,14 @@
 
 
 Name:           python-oslo.config
-Version:        9.1.1
+Version:        9.2.0
 Release:        0
 Epoch:          0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.config
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-9.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-9.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-debtcollector >= 1.2.0
@@ -60,7 +60,6 @@ Requires:       python3-importlib-metadata
 Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-requests >= 2.18.0
-Requires:       python3-urllib3 < 2
 Requires:       python3-rfc3986 >= 1.2.0
 Requires:       python3-stevedore >= 1.20.0
 %if 0%{?suse_version}
@@ -88,13 +87,13 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo-config library.
 
 %prep
-%autosetup -p1 -n oslo.config-9.1.1
+%autosetup -p1 -n oslo.config-9.2.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=9.1.1 PYTHONPATH=. \
+PBR_VERSION=9.2.0 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}

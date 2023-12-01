@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 30 05:23:33 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add avahi-CVE-2023-38472.patch: Fix reachable assertion in
+  avahi_rdata_parse (bsc#1216853, CVE-2023-38472).
+
+-------------------------------------------------------------------
 Mon Nov 27 14:20:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Reformat avahi-gacdir.patch to apply as patch -p1.

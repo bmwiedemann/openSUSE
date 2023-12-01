@@ -134,4 +134,17 @@
     <comment></comment>
     <requestid>1093763</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>da65db97bb24591d7c0674baa011ec44</srcmd5>
+    <version>5.3.1</version>
+    <time>1701462385</time>
+    <user>anag+factory</user>
+    <comment>- Update python-influxdb-new-pandas.patch in order to avoid
+  FutureWarning: does not work with pandas &lt; 2.1
+- Make pure python a noarch package
+- PEP 517
+- Upstream is archived, but still required by
+  openSUSE-release-tools gh#openSUSE/openSUSE-release-tools#3034</comment>
+    <requestid>1130190</requestid>
+  </revision>
 </revisionlist>

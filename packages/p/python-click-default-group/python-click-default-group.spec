@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-default-group
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-click-default-group
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
-License:        BSD-3-Clause
 Summary:        Extends clickGroup to invoke a command without explicit subcommand name
-URL:            https://github.com/sublee/click-default-group/
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/sublee/click-default-group/
 Source:         https://github.com/click-contrib/click-default-group/archive/v%{version}.tar.gz#/click-default-group-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM compatibility-click-8.patch gh#click-contrib/click-default-group#18 mcepl@suse.com
-# Make tests compatible with click 8
-Patch0:         compatibility-click-8.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-click
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-click
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -47,10 +45,10 @@ Extends click.Group to invoke a command without explicit subcommand name.
 %autosetup -p1 -n click-default-group-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

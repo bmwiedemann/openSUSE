@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:27:03 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - Bump bandit and make oslo.middleware compatible with latest rules
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - fix spelling
+  - Update master for stable/2023.1
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Use upper-constraint in doc generation
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Mon Mar  6 15:40:10 UTC 2023 - cloud-devel@suse.de
 
 - update to version 5.1.1

@@ -58,6 +58,9 @@ functions. Hashes are identical on all platforms.
 %autosetup -p1 -n xxHash-%{version}
 
 %build
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export LDFLAGS="%{?_lto_cflags}"
 %make_build prefix=%{_prefix} libdir=%{_libdir}
 
 %install

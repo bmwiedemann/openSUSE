@@ -524,4 +524,13 @@
   * Don't pass --setup-machine-id to systemd-firstboot</comment>
     <requestid>1105195</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ea69d01f8cf6d4b64df3a1db7dc3d483</srcmd5>
+    <version>1.2.0.9</version>
+    <time>1701462284</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0.9:
+  * Add KeyringMode=shared</comment>
+    <requestid>1129992</requestid>
+  </revision>
 </revisionlist>

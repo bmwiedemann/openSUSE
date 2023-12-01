@@ -355,4 +355,41 @@
     <comment>- Update to release 7.4.1</comment>
     <requestid>1112701</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>1a4b5eff99001ea65dd3f1a7f78e621b</srcmd5>
+    <version>7.4.2</version>
+    <time>1701462394</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.4.2 (bsc#1216123, CVE-2023-44487):
+  * The ``vcl_req_reset`` feature (controllable through the ``feature``
+    parameter, see `varnishd(1)`) has been added and enabled by default
+    to terminate client side VCL processing early when the client is
+    gone.
+    *req_reset* events trigger a VCL failure and are reported to
+    `vsl(7)` as ``Timestamp: Reset`` and accounted to ``main.req_reset``
+    in `vsc` as visible through ``varnishstat(1)``.
+    In particular, this feature is used to reduce resource consumption
+    of HTTP/2 &quot;rapid reset&quot; attacks (see below).
+    Note that *req_reset* events may lead to client tasks for which no
+    VCL is called ever. Presumably, this is thus the first time that
+    valid `vcl(7)` client transactions may not contain any ``VCL_call``
+    records.
+  * Added mitigation options and visibility for HTTP/2 &quot;rapid reset&quot;
+    attacks
+    Global rate limit controls have been added as parameters, which can
+    be overridden per HTTP/2 session from VCL using the new vmod ``h2``:
+    * The ``h2_rapid_reset`` parameter and ``h2.rapid_reset()`` function
+      define a threshold duration for an ``RST_STREAM`` to be classified
+      as &quot;rapid&quot;: If an ``RST_STREAM`` frame is parsed sooner than this
+      duration after a ``HEADERS`` frame, it is accounted against the
+      rate limit described below.
+    * The ``h2_rapid_reset_limit`` parameter and
+      ``h2.rapid_reset_limit()`` function define how many &quot;rapid&quot; resets
+      may be received during the time span defined by the
+      ``h2_rapid_reset_period`` parameter / ``h2.rapid_reset_period()``
+      function before the HTTP/2 connection is forcibly closed with a
+      ``GOAWAY`` and all ongoing VCL client tasks of the connection are
+      aborted. (forwarded request 1130176 from dirkmueller)</comment>
+    <requestid>1130193</requestid>
+  </revision>
 </revisionlist>

@@ -183,4 +183,15 @@
     <comment></comment>
     <requestid>1126628</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>055bb07fde1491c60e9e56958faa95d8</srcmd5>
+    <version>1.7.24</version>
+    <time>1701462285</time>
+    <user>anag+factory</user>
+    <comment>- disable testsuite for s390x [bsc#1215338]
+- remove _constraints again as it didn't help
+- deleted sources
+  - _constraints (not needed) (forwarded request 1129976 from pgajdos)</comment>
+    <requestid>1129999</requestid>
+  </revision>
 </revisionlist>

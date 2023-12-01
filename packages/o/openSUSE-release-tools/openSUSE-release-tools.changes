@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 01 09:59:38 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20231201.6367d8f:
+  * ttm: fix regexp to match 'livecd-x11' check
+  * ttm: Allow bigger images for livecd-x11 on aarch64 since no CD will be used, but usb sticks
+
+-------------------------------------------------------------------
 Thu Nov 30 13:49:15 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20231130.29c388e:

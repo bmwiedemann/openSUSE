@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1119682</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>456755fc46cf5a6017743d69a47f9780</srcmd5>
+    <version>4.14.2</version>
+    <time>1701462365</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.14.2:
+  * Fix incorrect full width modification (#150) (3d20ebe)</comment>
+    <requestid>1130167</requestid>
+  </revision>
 </revisionlist>

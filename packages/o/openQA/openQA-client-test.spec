@@ -18,12 +18,12 @@
 
 %define         short_name openQA-client
 Name:           %{short_name}-test
-Version:        4.6.1700951825.872b397
+Version:        4.6.1701312647.3c8b171
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later
 BuildRequires:  %{short_name} == %{version}
-ExcludeArch:    i586
+ExcludeArch:    %{ix86}
 
 %description
 .

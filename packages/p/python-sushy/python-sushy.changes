@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:40:18 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.5.1
+  - Requests must always have a read/connect timeout
+
+-------------------------------------------------------------------
 Tue Jul 18 16:42:38 UTC 2023 - cloud-devel@suse.de
 
 - update to version 4.5.0

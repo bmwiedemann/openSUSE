@@ -293,4 +293,24 @@
   - Update master for stable/yoga</comment>
     <requestid>1007581</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2c81c8b5ddf850935c6d7f2b845d153e</srcmd5>
+    <version>5.2.0</version>
+    <time>1701462439</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.2.0
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Fix compatibility with Python 3.8
+  - Remove extra spaces in tox.ini
+  - Use the new openstack-python3-jobs template
+  - Update master for stable/2023.1
+  - Implement zoneinfo support to drop dependency to pytz
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+- update to version 5.1.1
+  - Fix issues related to tox4
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests</comment>
+    <requestid>1130303</requestid>
+  </revision>
 </revisionlist>

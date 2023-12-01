@@ -604,4 +604,12 @@ D proc-interrupts.patch
     <comment></comment>
     <requestid>1095580</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4c9ed4206ffb101bfabd406707bdcb90</srcmd5>
+    <version>1.9.3.8.git+c963f48</version>
+    <time>1701462279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129933</requestid>
+  </revision>
 </revisionlist>

@@ -47,7 +47,7 @@
 %define python_scripts_requires %{nil}
 %endif
 # The following line is generated from dependencies.yaml
-%define assetpack_requires perl(CSS::Minifier::XS) >= 0.01 perl(JavaScript::Minifier::XS) >= 0.11 perl(Mojolicious::Plugin::AssetPack) >= 1.36
+%define assetpack_requires perl(CSS::Minifier::XS) >= 0.01 perl(JavaScript::Minifier::XS) >= 0.11 perl(Mojolicious::Plugin::AssetPack) >= 1.36 perl(YAML::PP) >= 0.026
 # The following line is generated from dependencies.yaml
 %define common_requires ntp-daemon perl >= 5.20.0 perl(Carp::Always) >= 0.14.02 perl(Config::IniFiles) perl(Config::Tiny) perl(Cpanel::JSON::XS) >= 4.09 perl(Cwd) perl(Data::Dump) perl(Data::Dumper) perl(Digest::MD5) perl(Filesys::Df) perl(Getopt::Long) perl(Minion) >= 10.25 perl(Mojolicious) >= 9.340.0 perl(Regexp::Common) perl(Storable) perl(Time::Moment) perl(Try::Tiny)
 # runtime requirements for the main package that are not required by other sub-packages
@@ -78,11 +78,10 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1700951825.872b397
+Version:        4.6.1701312647.3c8b171
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Other
 URL:            http://os-autoinst.github.io/openQA/
 Source0:        %{name}-%{version}.tar.xz
 # a workaround for set_version looking at random files (so we can't name it .tar.xz)
@@ -122,14 +121,12 @@ Recommends:     rsync
 # version of that module. Then when we install on Tumbleweed, it doesn't
 # have that older version anymore
 #BuildArch:      noarch
-ExcludeArch:    i586
+ExcludeArch:    %{ix86}
 %{?systemd_requires}
 %if %{with tests}
 BuildRequires:  %{test_requires}
 %endif
-%if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
-%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  sysuser-tools
 %sysusers_requires
@@ -156,7 +153,6 @@ operating system.
 
 %package no-selenium-devel
 Summary:        Development package pulling in all build+test dependencies except chromedriver for Selenium based tests
-Group:          Development/Tools/Other
 Requires:       %{devel_no_selenium_requires}
 
 %description no-selenium-devel
@@ -164,7 +160,6 @@ Development package pulling in all build+test dependencies except chromedriver f
 
 %package devel
 Summary:        Development package pulling in all build+test dependencies
-Group:          Development/Tools/Other
 Requires:       %{devel_requires}
 %ifarch s390x
 # missing chromedriver dependency
@@ -176,7 +171,6 @@ Development package pulling in all build+test dependencies.
 
 %package common
 Summary:        The openQA common tools for web-frontend and workers
-Group:          Development/Tools/Other
 Requires:       %{common_requires}
 Requires:       perl(Mojolicious) >= 8.24
 
@@ -186,7 +180,6 @@ openQA workers.
 
 %package worker
 Summary:        The openQA worker
-Group:          Development/Tools/Other
 %define worker_requires_including_uncovered_in_tests %worker_requires perl(SQL::SplitStatement)
 Requires:       %{worker_requires_including_uncovered_in_tests}
 # FIXME: use proper Requires(pre/post/preun/...)
@@ -209,7 +202,6 @@ The openQA worker manages test engine (provided by os-autoinst package).
 
 %package client
 Summary:        Client tools for remote openQA management
-Group:          Development/Tools/Other
 Requires:       %client_requires
 Requires:       openQA-common = %{version}
 
@@ -220,7 +212,6 @@ a convenient helper for interacting with openQA webui REST API.
 %if %{with python_scripts}
 %package python-scripts
 Summary:        Additional scripts in python
-Group:          Development/Tools/Other
 Requires:       %python_scripts_requires
 
 %description python-scripts
@@ -229,7 +220,6 @@ Additional scripts for the use of openQA in the python programming language.
 
 %package local-db
 Summary:        Helper package to ease setup of postgresql DB
-Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       postgresql-server
 BuildRequires:  postgresql-server
@@ -241,7 +231,6 @@ next to the webui.
 
 %package single-instance
 Summary:        Convenience package for a single-instance setup using apache proxy
-Group:          Development/Tools/Other
 Provides:       %{name}-single-instance-apache
 Provides:       %{name}-single-instance-apache2
 Requires:       %{name} = %{version}
@@ -254,7 +243,6 @@ Use this package to setup a local instance with all services provided together.
 
 %package single-instance-nginx
 Summary:        Convenience package for a single-instance setup using nginx proxy
-Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-local-db
 Requires:       %{name}-worker = %{version}
@@ -265,7 +253,6 @@ Use this package to setup a local instance with all services provided together.
 
 %package bootstrap
 Summary:        Automated openQA setup
-Group:          Development/Tools/Other
 
 %description bootstrap
 This can automatically setup openQA - either directly on your system
@@ -273,7 +260,6 @@ or within a systemd-nspawn container.
 
 %package doc
 Summary:        The openQA documentation
-Group:          Development/Tools/Other
 
 %description doc
 Documentation material covering installation, configuration, basic test writing, etc.
@@ -281,7 +267,6 @@ Covering both openQA and also os-autoinst test engine.
 
 %package auto-update
 Summary:        Automatically upgrade and reboot the system when required
-Group:          Development/Tools/Other
 Requires:       %{name}-common
 Requires:       curl
 Requires:       rebootmgr
@@ -292,7 +277,6 @@ and rebooting the system if devel:openQA packages are stable.
 
 %package continuous-update
 Summary:        Continuously update packages from devel:openQA
-Group:          Development/Tools/Other
 Requires:       %{name}-common
 Requires:       curl
 
@@ -304,7 +288,6 @@ regardless of whether devel:openQA contains updates.
 
 %package munin
 Summary:        Munin scripts
-Group:          Development/Tools/Other
 Requires:       curl
 Requires:       munin
 Requires:       munin-node

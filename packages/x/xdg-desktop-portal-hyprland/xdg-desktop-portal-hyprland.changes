@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 28 00:24:32 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 1.2.5:
+  * Added back screenshot functionality,
+    (gh#hyprwm/xdg-desktop-portal-hyprland#127).
+  * VRAM leak fixes.
+  * Destroy pipewire streams when ScreenCast sessions are closed,
+    (gh#hyprwm/xdg-desktop-portal-hyprland#130).
+- Changes from version 1.2.4:
+  * portal: remove screenshot cap from .portal file.
+  * Default meson build type to release,
+    (gh#hyprwm/xdg-desktop-portal-hyprland#125).
+
+-------------------------------------------------------------------
 Sun Oct 22 15:27:00 UTC 2023 - Nicolas Lorin <androw95220@gmail.com>
 
 - Update to version 1.2.3:

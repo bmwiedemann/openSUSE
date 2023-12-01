@@ -32,7 +32,7 @@
 
 %define libname libdnnl3
 Name:           onednn
-Version:        3.3
+Version:        3.3.1
 Release:        0
 Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0

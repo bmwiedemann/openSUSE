@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 29 21:07:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.27.9:
+  * cmake-file-api(7) "codemodel" version 2 "target" object fileSets
+    field was introduced by CMake 3.26.0 with entries of its
+    baseDirectories member incorrectly expressed as absolute paths
+    even if they are inside the top-level source directory, now
+    fixed. Clients must be updated to expect relative paths under
+    the top-level source directory.
+  * Fortran: Revert 3.27.0 change to module dependency scanning 
+
+-------------------------------------------------------------------
 Mon Nov 27 08:30:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.27.8 (bsc#1215888, CVE-2023-38545):

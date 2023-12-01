@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 30 02:50:56 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1701312647.3c8b171:
+  * Dependency cron 2023-11-30
+  * Show FQDN in VNC command if available via `WORKER_HOSTNAME`
+  * Add YAML:PP as direct dependecy of generate assetpack script
+  * Cleanup openQA spec files
+  * infopanel: render scenario_description as markdown
+
+-------------------------------------------------------------------
 Sun Nov 26 02:14:23 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1700951825.872b397:

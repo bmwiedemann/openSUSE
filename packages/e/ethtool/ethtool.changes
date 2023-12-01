@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 23 21:44:24 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.6
+  * Feature: support for more CMIS transceiver modules (-m)
+  * Fix: fix build on systems with old kernel uapi headers
+
+-------------------------------------------------------------------
 Tue Sep 12 20:50:21 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.5

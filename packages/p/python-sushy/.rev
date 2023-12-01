@@ -245,4 +245,13 @@
   - Handle non-default language for registries</comment>
     <requestid>1099311</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a9deff2568d15e1dfe8da6a187000047</srcmd5>
+    <version>4.5.1</version>
+    <time>1701462440</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.5.1
+  - Requests must always have a read/connect timeout</comment>
+    <requestid>1130304</requestid>
+  </revision>
 </revisionlist>

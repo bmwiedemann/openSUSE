@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 30 12:12:23 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1701346324.3e38557:
+  * Speedup isotovideo test slightly by disabling the video encoder
+  * Avoid sleep after cloning via Git failed and retries are exhausted
+  * Speed up isotovideo test
+  * Fix connection delete behavior when no connection is present
+  * Refactor common parts
+  * Add support for NetworkManager in setup multi-machine script
+  * t/18-backend-qemu.t: Test for uppercase OVMF file names
+  * backend/qemu: Preserve case when modifying OVMF file names
+
+-------------------------------------------------------------------
 Sun Nov 26 02:27:11 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1700826581.a2deffd:

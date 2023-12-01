@@ -164,4 +164,12 @@
 - Stop rpmlint warning about features of this tools</comment>
     <requestid>973941</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>49e3a6c92d541da0d45a5c19e347f3f6</srcmd5>
+    <version>0.8</version>
+    <time>1701462287</time>
+    <user>anag+factory</user>
+    <comment>- USe %{optflags} to build package (forwarded request 1130004 from Guillaume_G)</comment>
+    <requestid>1130020</requestid>
+  </revision>
 </revisionlist>

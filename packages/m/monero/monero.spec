@@ -117,7 +117,7 @@ The %{name}-devel package contains libraries and header files for developing app
 # setup systemd service
 sed -i 's#^Description=Monero Full Node$#Description=%{display_name} Daemon#g' utils/systemd/%{daemon_name}.service
 sed -i 's#^PIDFile=/run/monero/monerod.pid$#PIDFile=%{_rundir}/%{name}/%{daemon_name}.pid#g' utils/systemd/%{daemon_name}.service
-sed -i 's#^ExecStart=%{_bindir}/monerod --config-file %{_sysconfdir}/monerod.conf \\$#ExecStart=%{_bindir}/%{daemon_name} --detach --pidfile %{_rundir}/%{name}/%{daemon_name}.pid --config-file=%{_sysconfdir}/%{name}.conf --data-dir=%{_localstatedir}/lib/%{name}#g' utils/systemd/%{daemon_name}.service
+sed -i 's#^ExecStart=%{_bindir}/monerod --config-file %{_sysconfdir}/%{daemon_name}.conf \\$#ExecStart=%{_bindir}/%{daemon_name} --detach --pidfile %{_rundir}/%{name}/%{daemon_name}.pid --config-file=%{_sysconfdir}/%{name}.conf --data-dir=%{_localstatedir}/lib/%{name}#g' utils/systemd/%{daemon_name}.service
 sed -i 's#^    --detach --pidfile /run/monero/monerod.pid#ExecReload=/bin/kill -HUP \$MAINPID#g' utils/systemd/%{daemon_name}.service
 sed -i 's#^User=monero$#User=%{name}#g' utils/systemd/%{daemon_name}.service
 sed -i 's#^Group=monero$#Group=%{name}#g' utils/systemd/%{daemon_name}.service
@@ -149,7 +149,7 @@ echo "d %{_rundir}/%{name} 0770 root %{name}" > rundir.conf
 rm -rf %{buildroot}%{_prefix}/lib*
 
 # install daemon supplementary files
-install -D -m 0644 utils/conf/%{daemon_name}.conf  %{buildroot}%{_sysconfdir}/%{name}.conf
+install -D -m 0644 utils/conf/%{daemon_name}.conf  %{buildroot}%{_sysconfdir}/%{daemon_name}.conf
 install -D -m 0644 utils/systemd/%{daemon_name}.service %{buildroot}%{_unitdir}/%{daemon_name}.service
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
@@ -198,7 +198,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}_rundir.conf >/dev/null 2>&1 ||
 %{_bindir}/%{daemon_name}
 %{_sbindir}/rc%{daemon_name}
 %{_unitdir}/%{daemon_name}.service
-%config(noreplace) %{_sysconfdir}/%{name}.conf
+%config(noreplace) %{_sysconfdir}/%{daemon_name}.conf
 %dir %attr(700,%{name},%{name}) %{_localstatedir}/lib/%{name}
 %dir %attr(700,%{name},%{name}) %{_localstatedir}/log/%{name}
 %ghost %{_rundir}/%{name}

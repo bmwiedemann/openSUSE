@@ -1,7 +1,7 @@
 #
 # spec file for package python-xyzservices
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,25 @@
 
 
 Name:           python-xyzservices
-Version:        2022.9.0
+Version:        2023.10.1
 Release:        0
 Summary:        Source of XYZ tiles providers
 License:        BSD-3-Clause
 URL:            https://xyzservices.readthedocs.io/
 #Repo-URL:      https://github.com/geopandas/xyzservices
 Source:         https://files.pythonhosted.org/packages/source/x/xyzservices/xyzservices-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       xyzservices-data = %{version}
 # SECTION test
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module mercantile}
+BuildRequires:  %{python_module requests}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -69,10 +72,10 @@ pythonXY-xyzservices packages.
 %setup -q -n xyzservices-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -82,7 +85,7 @@ pythonXY-xyzservices packages.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/xyzservices
-%{python_sitelib}/xyzservices-%{version}*-info
+%{python_sitelib}/xyzservices-%{version}.dist-info
 
 %files -n xyzservices-data
 %license LICENSE

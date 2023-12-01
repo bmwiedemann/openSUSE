@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec 01 05:59:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.33.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.58.0
+    to 0.59.0 (#458)
+  * Add Regal for linting Rego (#454)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.28.3 to
+    0.28.4 (#456)
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+    (#452)
+  * build(deps): bump golang from 1.21.3-alpine to 1.21.4-alpine
+    (#453)
+  * build(deps): bump golang.org/x/text from 0.13.0 to 0.14.0
+    (#451)
+  * fix: Add missing docs (#457)
+  * fix: cover empty securityContext in container_deny_escalation
+    (#449)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.28.2 to
+    0.28.3 (#443)
+  * build(deps): bump github.com/spf13/viper from 1.16.0 to 1.17.0
+    (#439)
+  * build(deps): bump k8s.io/apimachinery from 0.28.2 to 0.28.3
+    (#445)
+  * build(deps): bump golang from 1.21.1-alpine to 1.21.3-alpine
+    (#442)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.57.0
+    to 0.58.0 (#448)
+  * build(deps): bump alpine from 3.18.3 to 3.18.4 (#438)
+
+-------------------------------------------------------------------
 Mon Oct 02 05:47:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.32.0:

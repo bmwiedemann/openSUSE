@@ -86,3 +86,21 @@ Index: influxdb-5.3.1/influxdb/_dataframe_client.py
  
              if data_frame_index:
                  df.set_index(data_frame_index, inplace=True)
+@@ -449,7 +449,7 @@ class DataFrameClient(InfluxDBClient):
+                 include=['floating']).columns)
+             nonfloat_columns = dframe.columns[~dframe.columns.isin(
+                 float_columns)]
+-            dframe[float_columns] = dframe[float_columns].applymap(repr)
++            dframe[float_columns] = dframe[float_columns].map(repr)
+             dframe[nonfloat_columns] = (dframe[nonfloat_columns].astype(str))
+         elif isinstance(numeric_precision, int):
+             # If precision is specified, round to appropriate precision
+@@ -462,7 +462,7 @@ class DataFrameClient(InfluxDBClient):
+ 
+             # If desired precision is > 10 decimal places, need to use repr
+             if numeric_precision > 10:
+-                dframe[float_columns] = (dframe[float_columns].applymap(repr))
++                dframe[float_columns] = (dframe[float_columns].map(repr))
+                 dframe[nonfloat_columns] = (dframe[nonfloat_columns]
+                                             .astype(str))
+             else:

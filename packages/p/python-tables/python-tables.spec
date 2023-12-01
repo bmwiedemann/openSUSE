@@ -51,20 +51,16 @@
 %endif
 
 Name:           python-tables%{psuffix}
-Version:        3.8.0
+Version:        3.9.2
 Release:        0
 Summary:        Hierarchical datasets for Python
 License:        BSD-3-Clause
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM tables-pr1000-debundled-blosc2.patch gh#PyTables/PyTables#1000
-Patch0:         tables-pr1000-debundled-blosc2.patch
-# PATCH-FIX-UPSTREAM numpy-1.25.patch gh#PyTables/PyTables@337792561e59
-Patch1:         numpy-1.25.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  python-rpm-macros
 %if ! %{with test}
-BuildRequires:  %{python_module Cython < 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numexpr >= 2.6.2}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
@@ -74,7 +70,7 @@ BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  blosc-devel >= 1.21.1
-BuildRequires:  blosc2-devel
+BuildRequires:  blosc2-devel >= 2.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
@@ -86,7 +82,7 @@ BuildRequires:  %{python_module tables = %{version}}
 # usage of pkg_resources in tests
 BuildRequires:  %{python_module setuptools}
 %endif
-Requires:       python-Cython >= 0.29.21
+Requires:       python-Cython
 Requires:       python-numexpr >= 2.6.2
 Requires:       python-numpy >= 1.19
 Requires:       python-packaging
@@ -112,8 +108,6 @@ interactively save and retrieve large amounts of data.
 %autosetup -p1 -n tables-%{version}
 # make sure we use the system blosc
 rm -r c-blosc
-# https://github.com/PyTables/PyTables/issues/1001
-rm tables/libblosc2.so
 
 %if !%{with test}
 %build

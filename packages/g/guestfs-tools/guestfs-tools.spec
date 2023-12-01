@@ -20,7 +20,7 @@
 %global patches_touch_autotools 1
 
 # The source directory.
-%global source_directory 1.50-stable
+%global source_directory 1.51-development
 
 #
 %define guestfs_docdir %{_defaultdocdir}/%{name}
@@ -30,7 +30,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.50.1
+Version:        1.51.5
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -63,11 +63,9 @@ BuildRequires:  libxcrypt-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
+BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-gettext-devel
-%if 0%{?suse_version} <= 1500
-BuildRequires:  ocaml-gettext-stub-devel
-%endif
 BuildRequires:  ocaml-libguestfs-devel
 BuildRequires:  ocaml-ounit-devel
 BuildRequires:  pcre2-devel

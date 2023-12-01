@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
+
+- Remove obsolete requirement for ocaml-gettext-stub-devel
+- Require OCaml 4.07+
+- Align ExclusiveArch with libguestfs
+
+-------------------------------------------------------------------
 Wed Feb  8 16:08:19 MST 2023 - carnold@suse.com
 
 - Update to virt-v2v 2.2.0

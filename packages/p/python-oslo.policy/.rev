@@ -363,4 +363,18 @@
 - add 0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch</comment>
     <requestid>1069736</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3bc55008c0e09f75437b6c51a75ebd87</srcmd5>
+    <version>4.2.0</version>
+    <time>1701462437</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.0:
+  * Revert &quot;Moves supported python runtimes from version 3.8 to
+    3.10&quot;
+  * Moves supported python runtimes from version 3.8 to 3.10
+  * Fix deprecated rule logic if the rule was deleted in policy
+    directory
+  * Update master for stable/2023.1</comment>
+    <requestid>1130301</requestid>
+  </revision>
 </revisionlist>

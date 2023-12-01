@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 24 14:34:32 UTC 2023 - Maxime Gervais <maxime@mediaarea.net>
+
+- Update to version 23.11
+  Added features:
+  * XMP: support of a couple of additional metadata
+  * PNG: pixel aspect ratio, gamma, active bit depth
+  * PNG: support of textual metadata
+  * Detection of active width/height/DAR (based on FFmpeg),
+    Windows only
+  * Matroska: show ST-12 timecode of first frame
+  * ADM: rounding of FFoA to 0 decimal and Start/End time codes to
+    2 decimals
+  * WAV: support of big (1+ GB) axml chunks
+  * ADM: support of big (1+ GB) files on 32-bit systems
+  Fixed bugs:
+  * I1876, BWF: fix missing precision in TimeReference export
+  * I1607, MPEG-TS/PS: Less Inform() with Open(memory) than
+    Open(file)
+  * MP4/MOV: show right time code of last frame with complex
+    time code tracks
+  * Duration: timecode output should not use drop frame for
+    23.976fps
+  * AVC+HEVC: fix handling of DF timestamps
+  * SF1188, ID3v2: fix wrong handling of chunks having padding
+  * I1887, TS DVB: fix wrong handling of UTF-8 strings in service
+    name
+  * I1892, Matroska: fix date readout if before the millennium
+
+-------------------------------------------------------------------
 Wed Oct  4 10:15:51 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 23.10

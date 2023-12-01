@@ -10,14 +10,14 @@
   install -m 0644 --target-directory=%{buildroot}%{_datadir}/dbus-1/agama-services %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/org.opensuse.Agama*.service
   install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama.service %{buildroot}%{_unitdir}/agama.service
   install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama-proxy-setup.service %{buildroot}%{_unitdir}/agama-proxy-setup.service
-  install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/etc/agama.yaml %{buildroot}%{_sysconfdir}/agama.yaml
+  install --directory %{buildroot}/usr/share/agama/conf.d
+  install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/conf.d/*.yaml %{buildroot}/usr/share/agama/conf.d/
 :main:
   :preamble: |-
     # Override build.rpm, see also https://github.com/openSUSE/obs-build/blob/master/configs/
     %global rb_build_versions %{rb_default_ruby}
     BuildRequires:  dbus-1-common
     Requires:       dbus-1-common
-    Requires:       snapper
     Requires:       yast2-bootloader
     Requires:       yast2-country
     Requires:       yast2-hardware-detection
@@ -29,8 +29,14 @@
     Requires:       open-iscsi
     Requires:       yast2-iscsi-client >= 4.5.7
     Requires:       yast2-users
+    # required for registration
+    Requires:       suseconnect-ruby-bindings
     # yast2 with ArchFilter
     Requires:       yast2 >= 4.5.20
+    # storage dependencies
+    Requires:       ntfs-3g
+    Requires:       ntfsprogs
+    Requires:       snapper
     %ifarch s390 s390x
     Requires:       yast2-s390 >= 4.6.4
     %endif
@@ -39,4 +45,6 @@
     %{_datadir}/dbus-1/agama-services/org.opensuse.Agama*.service\n
     %{_unitdir}/agama.service\n
     %{_unitdir}/agama-proxy-setup.service\n
-    %config %{_sysconfdir}/agama.yaml\n"
+    %dir %{_datadir}/agama\n
+    %dir %{_datadir}/agama/conf.d\n
+    %{_datadir}/agama/conf.d\n"

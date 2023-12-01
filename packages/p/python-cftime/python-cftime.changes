@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  1 11:31:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.3:
+  * add support for formats without separators in strptime (e.g.
+    '20200229', issue #301).
+  * set the c_api_binop_methods compiler directive to True to
+    retain Cython 0.x behavior for arithmetic operators for
+    Cython >= 3.0.0
+  * support for python 3.12.
+- drop cython3.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Aug 30 11:03:06 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - add upstream cython3.patch
@@ -6,7 +18,7 @@ Wed Aug 30 11:03:06 UTC 2023 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Thu Oct 27 22:15:54 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.6.2 
+- Update to version 1.6.2
   * num2date should not fail on an empty integer array (issue #287).
   * longdouble keyword in date2num so that a roundtrip from a time to a date
     and back again does not lose microsecond precision when the units require
@@ -21,7 +33,7 @@ Mon Sep 26 19:50:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to version 1.6.1
  * fix failing tests on windows with numpy 1.23.0 (issue #278)
  * expose to_tuple module function in public API.
- 
+
 -------------------------------------------------------------------
 Sun Mar 27 14:54:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
@@ -30,11 +42,11 @@ Sun Mar 27 14:54:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * improved performance of the num2date algorithm, in some cases providing
     an over 100x speedup
   * fix for date2index for select != 'exact' when select='exact' works
-  * silently change calendar='gregorian' to 'standard' internally, 
+  * silently change calendar='gregorian' to 'standard' internally,
     since 'gregorian' deprecated in CF v1.9
   * add "is_leap_year" function
   * wheels that work on Apple M1 (arm64) available on pypi.
-  * added support for "common_year" and "common_years" units for "noleap" 
+  * added support for "common_year" and "common_years" units for "noleap"
     and "365_day" calendars
   * check consistency of year arg and has_year_zero kwarg in cftime.datetime
     (issue #248).  Also assume if has_year_zero not specified it should be True
@@ -53,13 +65,13 @@ Sun Mar 27 14:54:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
     (via `cftime.datetime.__format__`)
   * add support for astronomical year numbering (including year zero) for
     real-world calendars using 'has_year_zero' cftime.datetime kwarg
-    Default is False for 'real-world' calendars ('julian', 'gregorian'/'standard', 
+    Default is False for 'real-world' calendars ('julian', 'gregorian'/'standard',
     'proleptic_gregorian'). Ignored for idealized calendars like '360_day
     (they always have year zero).
-  * add "change_calendar" cftime.datetime method to switch to another 
+  * add "change_calendar" cftime.datetime method to switch to another
     'real-world' calendar. Enable comparison of cftime.datetime instances
     with different 'real-world' calendars (using the new change_calendar method)
-  * remove legacy `utime` class, and legacy `JulianDayFromDate` and 
+  * remove legacy `utime` class, and legacy `JulianDayFromDate` and
     `DateFromJulianDay` functions (replaced by `cftime.datetime.toordinal`
     and `cftime.datetime.fromordinal`).
   * Change ValueError to TypeError in __sub__
@@ -68,9 +80,9 @@ Sun Mar 27 14:54:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Tue Mar  2 05:51:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.1:
- 
+
  * Restore use of calendar-specific sub-classes in `cftime.num2date`,
-   `cftime.datetime.__add__`, and `cftime.datetime.__sub__`.  The use of them 
+   `cftime.datetime.__add__`, and `cftime.datetime.__sub__`.  The use of them
    will be removed in a later release.
  * add 'fromordinal' static method to create a cftime.datetime instance
    from a julian day ordinal and calendar (inverse of 'toordinal').
@@ -78,9 +90,9 @@ Tue Mar  2 05:51:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
    and times allow.  Previously this would only be true if the units were
    'microseconds' (PR #225).  In other circumstances, as before, `cftime.date2num`
    will return an array of floats.
- * Rewrite of julian day/calendar functions (_IntJulianDayToCalendar and 
+ * Rewrite of julian day/calendar functions (_IntJulianDayToCalendar and
    _IntJulianDayFromCalendar) to remove GPL'ed code.  cftime license
-   changed to MIT (to be consistent with netcdf4-python). 
+   changed to MIT (to be consistent with netcdf4-python).
  * Added datetime.toordinal() (returns julian day, kwarg 'fractional'
    can be used to include fractional day).
  * cftime.datetime no longer uses calendar-specific sub-classes.
@@ -100,7 +112,7 @@ Tue Mar  2 05:51:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
    The calendar specific sub-classes are now deprecated, but remain for now
    as stubs that just instantiate the base class and override __repr__.
  * update regex in _cpdef _parse_date so reference years with more than four
-   digits can be handled. 
+   digits can be handled.
  * Change default calendar in cftime.date2num from 'standard' to None
    (calendar associated with first input datetime object is used).
  * add `cftime.datetime.tzinfo=None` for compatibility with python datetime
@@ -137,7 +149,7 @@ Thu Jul  9 04:32:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * change dayofwk and dayofyr attributes into properties (issue #158)
   * fix for issue #165 (python datetime should be returned when
     only_use_cftime_datimes=False).
-  * include pyproject.toml in MANIFEST.in so it gets 
+  * include pyproject.toml in MANIFEST.in so it gets
     included in source tarball (issue #154).
   * fix microsecond formatting issue, ensure identical results
     computed for arrays and scales (issue #143, PR #146).
@@ -157,7 +169,7 @@ Thu Jul  9 04:32:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 Fri Jan 24 15:13:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.0.4.2
-  * fix for date2num error when converting a DatetimeProlepticGregorian 
+  * fix for date2num error when converting a DatetimeProlepticGregorian
     object
 
 -------------------------------------------------------------------

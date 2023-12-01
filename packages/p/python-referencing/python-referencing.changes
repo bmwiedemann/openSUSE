@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 30 09:10:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.1:
+  * Do more silly things to pepper over type checking nonsense.
+  * Minor noxfile tweaking.
+  * Add the explicit Tidelift link.
+  * Complain about spurious type: ignores.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Thu Nov 16 14:51:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.31.0:

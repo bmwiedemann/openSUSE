@@ -18,7 +18,7 @@
 
 %define _protocol_version 0.2
 Name:           xdg-desktop-portal-hyprland
-Version:        1.2.3
+Version:        1.2.5
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT

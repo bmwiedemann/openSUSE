@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:33:36 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Fix compatibility with Python 3.8
+  - Remove extra spaces in tox.ini
+  - Use the new openstack-python3-jobs template
+  - Update master for stable/2023.1
+  - Implement zoneinfo support to drop dependency to pytz
+  - Moves supported python runtimes from version 3.8 to 3.10
+
+-------------------------------------------------------------------
+Mon Mar  6 15:42:06 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.1.1
+  - Fix issues related to tox4
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+
+-------------------------------------------------------------------
 Sun Oct  2 14:49:03 UTC 2022 - cloud-devel@suse.de
 
 - update to version 5.0.0

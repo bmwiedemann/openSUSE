@@ -34,6 +34,8 @@ LS_COLORS environment variable is set and output is to tty.
 %setup -q
 
 %build
+export CFLAGS="%{optflags}"
+export LDFLAGS="%{?_lto_cflags}"
 %make_build
 
 %install

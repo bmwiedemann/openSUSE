@@ -174,4 +174,21 @@
     <comment></comment>
     <requestid>1081948</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>260442e3d1a865b9029488033d600679</srcmd5>
+    <version>1.7.0</version>
+    <time>1701462273</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * Add async flag when wrapping async function (#111)
+  * Dropping support for Python 2.7
+
+- add six dependency
+  * Fix zero padding issue
+- fix python 2.x build
+- add 0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch
+  * Allow index-only test names
+  * Added individual test case docstring support and tests</comment>
+    <requestid>1129175</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Dec  1 13:36:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.2
+  * Support for `pathlib.Path` objects in all the places where
+    `urlpath` is used (e.g. `blosc2.open()`). Thanks to Marta
+    Iborra.
+  * Included docs for `SChunk.fill_special()` and `NDArray.dtype`.
+    Thanks to Francesc Alted.
+
+-------------------------------------------------------------------
+Sat Nov 25 12:58:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Temporarily disable AVX512 support in C-Blosc2 for wheels
+    built by CI until run-time detection works properly.
+  * Require at least Cython 3 for building. Using previous
+    versions worked but error handling was not correct (wheels
+    were being built with Cython 3 anyway).
+  * New `NDArray.to_cframe()` method and
+    `blosc2.ndarray_from_cframe()` function for serializing and
+    deserializing NDArrays to/from contiguous in-memory frames.
+    Thanks to Francesc Alted.
+  * Add an optional `offset` argument to `blosc2.schunk.open()`,
+    to access super-chunks stored in containers like HDF5. Thanks
+    to Ivan Vilata.
+  * Assorted minor fixes to the blocksize/blockshape computation
+    algorithm, avoiding some cases where it resulted in values
+    exceeding maximum limits. Thanks to Ivan Vilata.
+  * Updated to latest C-Blosc2 2.11.2. It adds AVX512 support for
+    the bitshuffle filter, fixes ARM and Raspberry Pi
+    compatibility and assorted issues.
+  * Add python-blosc2 package definition for Guix. Thanks to Ivan
+    Vilata.
+
+-------------------------------------------------------------------
 Sat Oct 14 10:53:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.9

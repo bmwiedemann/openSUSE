@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Dec  1 09:34:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.2 (bsc#1216123, CVE-2023-44487):
+  * The ``vcl_req_reset`` feature (controllable through the ``feature``
+    parameter, see `varnishd(1)`) has been added and enabled by default
+    to terminate client side VCL processing early when the client is
+    gone.
+    *req_reset* events trigger a VCL failure and are reported to
+    `vsl(7)` as ``Timestamp: Reset`` and accounted to ``main.req_reset``
+    in `vsc` as visible through ``varnishstat(1)``.
+    In particular, this feature is used to reduce resource consumption
+    of HTTP/2 "rapid reset" attacks (see below).
+    Note that *req_reset* events may lead to client tasks for which no
+    VCL is called ever. Presumably, this is thus the first time that
+    valid `vcl(7)` client transactions may not contain any ``VCL_call``
+    records.
+  * Added mitigation options and visibility for HTTP/2 "rapid reset"
+    attacks
+    Global rate limit controls have been added as parameters, which can
+    be overridden per HTTP/2 session from VCL using the new vmod ``h2``:
+    * The ``h2_rapid_reset`` parameter and ``h2.rapid_reset()`` function
+      define a threshold duration for an ``RST_STREAM`` to be classified
+      as "rapid": If an ``RST_STREAM`` frame is parsed sooner than this
+      duration after a ``HEADERS`` frame, it is accounted against the
+      rate limit described below.
+    * The ``h2_rapid_reset_limit`` parameter and
+      ``h2.rapid_reset_limit()`` function define how many "rapid" resets
+      may be received during the time span defined by the
+      ``h2_rapid_reset_period`` parameter / ``h2.rapid_reset_period()``
+      function before the HTTP/2 connection is forcibly closed with a
+      ``GOAWAY`` and all ongoing VCL client tasks of the connection are
+      aborted.
+      The defaults are 100 and 60 seconds, corresponding to an allowance
+      of 100 "rapid" resets per minute.
+    * The ``h2.rapid_reset_budget()`` function can be used to query the
+      number of currently allowed "rapid" resets.
+    * Sessions closed due to rapid reset rate limiting are reported as
+      ``SessClose RAPID_RESET`` in `vsl(7)` and accounted to
+      ``main.sc_rapid_reset`` in `vsc` as visible through
+      ``varnishstat(1)``.
+  * The ``cli_limit`` parameter default has been increased from 48KB to
+    64KB.
+  * ``VSUB_closefrom()`` now falls back to the base implementation not
+    only if ``close_range()`` was determined to be unusable at compile
+    time, but also at run time. That is to say, even if
+    ``close_range()`` is compiled in, the fallback to the naive
+    implementation remains.
+
+-------------------------------------------------------------------
 Thu Sep 21 02:13:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.4.1
@@ -101,7 +150,7 @@ Sat Oct 29 13:43:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
     incremented for requests coming back from the waiting list,
     it was fixed.
 - Delete varnish-5.1.2-add-fallthrough-comments.patch
-  
+
 -------------------------------------------------------------------
 Wed Sep 21 08:10:13 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
@@ -413,7 +462,7 @@ Tue Mar  8 08:47:30 UTC 2016 - jengelh@inai.de
 Tue Feb 16 12:52:51 UTC 2016 - eshmarnev@suse.com
 
 - disable silent rules in spec file.
-- enable testsuite for varnish. 
+- enable testsuite for varnish.
 
 -------------------------------------------------------------------
 Tue Feb 16 12:16:47 UTC 2016 - eshmarnev@suse.com
@@ -423,11 +472,11 @@ Tue Feb 16 12:16:47 UTC 2016 - eshmarnev@suse.com
 * Support for PROXY protocol.
 * Warm and cold VCL states.
 * Backends defined through VMODs.
-* A lot of bugs were fixed. 
+* A lot of bugs were fixed.
 - Delete 0001-Fail-fetch-on-malformed-Content-Length-header.patch,
     this issue was fixed in upstream.
 - Add 'su varnish varnish' line to varnish.logrotate file.
-- Cleanup with spec-cleaner. 
+- Cleanup with spec-cleaner.
 
 -------------------------------------------------------------------
 Fri Mar 27 10:34:15 UTC 2015 - jengelh@inai.de
@@ -448,7 +497,7 @@ Fri Mar 27 10:34:15 UTC 2015 - jengelh@inai.de
 -------------------------------------------------------------------
 Fri Jan  3 10:57:19 UTC 2014 - danimo@owncloud.com
 
-- Updated to 3.0.5, contains fix for CVE-2013-4484 
+- Updated to 3.0.5, contains fix for CVE-2013-4484
 * A bad interaction between -b, -c and -m in the varnishlog tool
   has been fixed.
 * A malformed request could in some configurations lead to Varnish
@@ -523,18 +572,18 @@ Tue May 10 14:01:13 UTC 2011 - crrodriguez@opensuse.org
 Sat Apr 16 17:26:10 UTC 2011 - crrodriguez@opensuse.org
 
 - remove configure option --enable-debugging-symbols
-  it overrides buildsystem optimization levels. 
+  it overrides buildsystem optimization levels.
 
 -------------------------------------------------------------------
 Sat Apr 16 17:12:11 UTC 2011 - crrodriguez@opensuse.org
 
 - Update to version 2.1.5
-   * Two bugs relating to Content-Length and possible duplication 
-    of Content-Length headers have been resolved. 
+   * Two bugs relating to Content-Length and possible duplication
+    of Content-Length headers have been resolved.
    * Fixed an issue with re-using connections after Chunked-Encoding.
-   * Use the time of cache-insertion for "If-Modified-Since" requests 
+   * Use the time of cache-insertion for "If-Modified-Since" requests
      if a "Last-Modified" header isn't provided by the backend.
-   * Merge multi-line Vary and Cache-Control headers from clients, 
+   * Merge multi-line Vary and Cache-Control headers from clients,
      which Google Chromium seem to split up.
 
 -------------------------------------------------------------------
@@ -576,13 +625,13 @@ Thu Aug  5 22:11:24 UTC 2010 - jengelh@medozas.de
 * Add a new hashing method called critbit. This autoscales and
   should work better on large object workloads than the classic
   hash. Critbit has been made the default hash algorithm.
-* Add support for authenticating CLI connections.                             
+* Add support for authenticating CLI connections.
 * Add hash director that chooses which backend to use depending on
   req.hash.
 * Add client director that chooses which backend to use depending
   on the client's IP address. Note that this ignores the
   X-Forwarded-For header.
-* Add a timestamp to bans, so you can know how old they are.                  
+* Add a timestamp to bans, so you can know how old they are.
 * Varnish can now connect its CLI to a remote instance when
   starting up, rather than just being connected to.
 * It is no longer needed to specify the maximum number of HTTP

@@ -21,18 +21,28 @@
 %define psuffix -test-py39
 %define skip_python310 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python39 1
 %define skip_python311 1
+%define skip_python312 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py311"
 %define psuffix -test-py311
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python312 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py312"
+%define psuffix -test-py312
+%define skip_python39 1
+%define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
@@ -53,16 +63,15 @@
 %{?sle15_python_module_pythons}
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.33 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.13.1}
 BuildRequires:  %{python_module numpy-devel >= 1.23.2 if %python-base < 3.12 else %python-numpy-devel >= 1.26}

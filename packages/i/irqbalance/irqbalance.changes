@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 21 19:56:47 UTC 2023 - trenn@suse.de
+
+- Update to version 1.9.3.8.git+c963f48:
+  * Enable systemd feature support by default when building with meson
+  * Add support for linking against libnl when building with meson
+  * Turn NUMA support into an enabled feature, when building with meson
+  * Set project version of meson build to 1.9.3
+  * Install man pages when building with meson
+  * When building with meson, make sure to link against numa
+  * Updating to version 1.9.3
+  * Automatically use systemd journal and run in foreground when under systemd
+
+-------------------------------------------------------------------
+Mon Aug 21 11:22:40 UTC 2023 - trenn@suse.de
+
+- Update to version 1.9.2.34.git+5069982:
+  * activate_mapping: avoid logging error when there is none
+  * activate_mapping: only blacklist irq if error is considered permanent
+  * activate_mapping: report error reason
+  * activate_mapping: make sure to catch all errors
+  * activate_mapping: avoid use-after-free when affinity cannot be set
+  * Revert "activate_mapping: fflush the buffered data to smp_affinity"
+  * activate_mapping: fflush the buffered data to smp_affinity
+
+-------------------------------------------------------------------
 Mon Jun 26 20:33:50 UTC 2023 - trenn@suse.de
 
 - Resurrect _service file and old git patch no versioning

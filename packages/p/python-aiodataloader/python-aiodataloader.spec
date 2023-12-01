@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiodataloader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-aiodataloader
-Version:        0.2.1
+Version:        0.4.0
 Release:        0
 Summary:        Asyncio DataLoader implementation for Python
 License:        MIT
@@ -26,12 +26,15 @@ URL:            https://github.com/syrusakbary/aiodataloader
 Source:         https://github.com/syrusakbary/aiodataloader/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # pypi tarball has no tests
 #Source:         https://files.pythonhosted.org/packages/source/a/aiodataloader/aiodataloader-%%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION tests
 BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module typing-extensions}
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,10 +48,10 @@ batching and caching.
 %setup -q -n aiodataloader-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

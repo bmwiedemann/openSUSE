@@ -45,11 +45,10 @@ BuildRequires:  libosinfo-devel
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mkisofs
-BuildRequires:  ocaml >= 4.01
+BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  ocaml-fileutils-devel
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-gettext-devel
-BuildRequires:  ocaml-gettext-stub-devel
 BuildRequires:  ocaml-hivex-devel
 BuildRequires:  ocaml-libguestfs
 BuildRequires:  ocaml-libguestfs-devel
@@ -78,13 +77,8 @@ Recommends:     nbdkit-nbd-plugin
 Recommends:     nbdkit-python-plugin
 Recommends:     nbdkit-ssh-plugin
 Recommends:     nbdkit-vddk-plugin
-# libguestfs hasn't been built on i686 for a while since there is no
-# kernel built for this architecture any longer and libguestfs rather
-# fundamentally depends on the kernel.  Therefore we must exclude this
-# arch.  Note there is no bug filed for this because we do not ever
-# expect that libguestfs or virt-v2v will be available on i686 so
-# there is nothing that needs fixing.
-ExcludeArch:    %{ix86}
+# Build only for architectures that have a kernel
+ExclusiveArch:  x86_64 ppc64le s390x aarch64 riscv64
 %if 0%{patches_touch_autotools}
 BuildRequires:  autoconf
 BuildRequires:  automake

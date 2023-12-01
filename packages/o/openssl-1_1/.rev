@@ -537,4 +537,12 @@
 - openssl-gcc-attributes.patch</comment>
     <requestid>1126787</requestid>
   </revision>
+  <revision rev="55" vrev="5">
+    <srcmd5>87f842ce170ffebd3c9e475c18cccc50</srcmd5>
+    <version>1.1.1w</version>
+    <time>1701462290</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1130033</requestid>
+  </revision>
 </revisionlist>

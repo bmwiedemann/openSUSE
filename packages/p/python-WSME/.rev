@@ -237,4 +237,27 @@
     <comment></comment>
     <requestid>970226</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>672e3a70221a47801ae285b1506a8c65</srcmd5>
+    <version>0.12.1</version>
+    <time>1701462442</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.1:
+  * setup: Fix classifier
+  * Drop support for Python &lt; 3.8, use PTI test interface
+  * setup: Update classifiers
+  * Migrate to importlib.metadata
+  * Remove use of deprecated APIs
+  * Fix compatibility with recent Sphinx versions
+  * Fix flake8 issues
+  * tests: Migrate to pytest
+  * Fix code to work with Sphinx&gt;5.0
+
+- update to 0.5b2:
+  * Add a special type ‘HostRequest’ that allow a function to
+  * Pecan adapter: Debug mode (which returns the exception
+  tracebacks to the client) can be enabled by the pecan
+- Update to version 0.5b1:</comment>
+    <requestid>1130307</requestid>
+  </revision>
 </revisionlist>

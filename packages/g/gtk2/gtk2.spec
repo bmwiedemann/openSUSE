@@ -50,6 +50,8 @@ Patch5:         gtk2-bgo625202-30-bit-drawables-remain-black.patch
 Patch6:         gtk2-bgo743166-remember-printing-authentication.patch
 # PATCH-FEATURE-OPENSUSE gtk2-updateiconcache_sort.patch olh@opensuse.org -- Have gtp-update-icon-cache sort the file list before producing a cache
 Patch8:         gtk2-updateiconcache_sort.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gtk/-/commit/c1fa916e88de20fc61dc06d3ff9f26722effa0df#note_1852594 -  Check for attribute availability before accessing it
+Patch9:         gtk2-check-attribute.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -324,6 +326,7 @@ cp -a %{SOURCE2} .
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 sed -i "s|/usr/bin/env python|%{_bindir}/python3|" ./gtk/gtk-builder-convert
 gnome-patch-translation-update
 

@@ -146,4 +146,12 @@ Required by recent python-dfVFS release</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1103023</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>50a183ec9b55d47b0ec3e85948bc8969</srcmd5>
+    <version>20231201</version>
+    <time>1701462388</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231201</comment>
+    <requestid>1130191</requestid>
+  </revision>
 </revisionlist>

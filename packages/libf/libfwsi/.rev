@@ -144,4 +144,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1102995</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e616787c2cd27427e243b28817d0a5c3</srcmd5>
+    <version>20231130</version>
+    <time>1701462390</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231130</comment>
+    <requestid>1130192</requestid>
+  </revision>
 </revisionlist>

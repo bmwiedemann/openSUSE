@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 24 07:20:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.1.1:
+  * Fix license in nix build file
+- Drop patch, merged upstream:
+  * 0001-Drop-unused-copy-of-Catch2.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 09:29:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

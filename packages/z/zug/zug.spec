@@ -17,14 +17,12 @@
 
 
 Name:           zug
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Transducers for C++
 License:        BSL-1.0
 URL:            https://sinusoid.es/zug/
 Source0:        https://github.com/arximboldi/zug/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Drop-unused-copy-of-Catch2.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

@@ -17,7 +17,7 @@
 
 
 Name:           python-pygls
-Version:        1.1.2
+Version:        1.2.1
 Release:        0
 Summary:        A pythonic generic language server
 License:        Apache-2.0
@@ -33,11 +33,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module lsprotocol}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typeguard}
 # Endif
 Requires:       python-lsprotocol
-Requires:       python-specfile
-Requires:       python-typeguard
 Requires:       python-websockets
 BuildArch:      noarch
 %python_subpackages

@@ -337,7 +337,7 @@ export PYTHON=/usr/bin/python3
         --with-tables-directory=%_datadir/%name \
         --libexecdir=%_libexecdir \
         --disable-stripping
-%make_build
+make
 
 %install
 sed -i "s=/usr/libexec/brltty-systemd-wrapper=%_libexecdir/brltty-systemd-wrapper=" Autostart/Systemd/brltty@.service

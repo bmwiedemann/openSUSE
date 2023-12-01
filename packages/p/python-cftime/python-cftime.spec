@@ -16,16 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-cftime
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT
 URL:            https://github.com/Unidata/cftime
 Source:         https://files.pythonhosted.org/packages/source/c/cftime/cftime-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/Unidata/cftime/pull/305 Set c_api_binop_methods Cython compiler directive to True
-Patch:          cython3.patch
 BuildRequires:  %{python_module Cython >= 0.29.20}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}

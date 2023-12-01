@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package avahi
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -105,6 +105,8 @@ Patch30:        avahi-CVE-2023-1981.patch
 Patch31:        avahi-CVE-2023-38473.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2023-38470.patch bsc#1215947 alynx.zhou@suse.com -- Ensure each label is at least one byte long
 Patch32:        avahi-CVE-2023-38470.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2023-38472.patch bsc#1216853 alynx.zhou@suse.com -- Fix reachable assertion in avahi_rdata_parse
+Patch33:        avahi-CVE-2023-38472.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel

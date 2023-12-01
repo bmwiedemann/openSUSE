@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  1 13:37:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.11.3
+  * Frames accept now typesizes that are larger than 255 (and up to
+    2**31). See PyTables/PyTables#1086. Thanks to @chris-allan for
+    the report.
+  * AVX512 runtime dispatching has been fixed (basically disabled)
+    for GCC versions <= 10.
+  * Use typedef for blosc_timestamp_t. Thanks to Magnus Ulimoen.
+
+-------------------------------------------------------------------
 Thu Nov 30 05:21:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.11.2:

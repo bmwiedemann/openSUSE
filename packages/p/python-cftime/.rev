@@ -192,4 +192,32 @@
     <comment></comment>
     <requestid>1108098</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>285c89b2f81f682863f7c277c34bebb6</srcmd5>
+    <version>1.6.3</version>
+    <time>1701462398</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.3:
+  * add support for formats without separators in strptime (e.g.
+    '20200229', issue #301).
+  * set the c_api_binop_methods compiler directive to True to
+    retain Cython 0.x behavior for arithmetic operators for
+    Cython &gt;= 3.0.0
+  * support for python 3.12.
+- drop cython3.patch (upstream)
+
+- Update to version 1.6.2
+  * silently change calendar='gregorian' to 'standard' internally,
+  * added support for &quot;common_year&quot; and &quot;common_years&quot; units for &quot;noleap&quot;
+    Default is False for 'real-world' calendars ('julian', 'gregorian'/'standard',
+  * add &quot;change_calendar&quot; cftime.datetime method to switch to another
+  * remove legacy `utime` class, and legacy `JulianDayFromDate` and
+   `cftime.datetime.__add__`, and `cftime.datetime.__sub__`.  The use of them
+ * Rewrite of julian day/calendar functions (_IntJulianDayToCalendar and
+   changed to MIT (to be consistent with netcdf4-python).
+   digits can be handled.
+  * include pyproject.toml in MANIFEST.in so it gets
+  * fix for date2num error when converting a DatetimeProlepticGregorian</comment>
+    <requestid>1130212</requestid>
+  </revision>
 </revisionlist>

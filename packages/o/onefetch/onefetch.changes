@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec  1 07:23:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.19.0:
+  New Features:
+  * exclude files from churn #1120
+  * add odin support #1064
+  * New language: Arduino #1176
+  * Right align authorship percentages #1207
+  * Add Agda to languages.yaml #1216
+  Bug Fixes:
+  * add a test for negative dates and see how onefetch handles it #1100
+
+-------------------------------------------------------------------
 Mon Jun 26 05:25:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.18.1:

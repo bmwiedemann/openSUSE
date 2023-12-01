@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:05:29 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.8.1
+  * Fixed bug where kew for no reason stopped playing audio but
+    kept counting elapsed seconds.
+  * Fixed bugs relating to showing the playlist.
+  * Fixed bug where trying to seek in ogg files led to strange
+    behavior. Now seeking in ogg is entirely disabled.
+  * More colorful visualizer bars when using album cover colors.
+
+-------------------------------------------------------------------
+Tue Nov 28 00:27:10 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.8
+  * visualizer bars now grow and decrease smoothly (if your
+    terminal supports unicode).
+  * m4a files quit properly.
+
+-------------------------------------------------------------------
+Mon Nov 27 10:18:38 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.7.4
+  * kew is now interactive when paused.
+  * Fixed issue with crashing after a few plays with repeat
+    enabled.
+  * Deletes cover images from cache after playing the file.
+
+-------------------------------------------------------------------
 Sun Nov 26 00:54:44 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.7.3

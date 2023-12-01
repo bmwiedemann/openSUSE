@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 30 14:32:19 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add back %{optflags} in c++ flags
+  This was unintentionally disabled when c++17 was forced
+
+-------------------------------------------------------------------
 Fri Oct  6 06:01:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.1.0:

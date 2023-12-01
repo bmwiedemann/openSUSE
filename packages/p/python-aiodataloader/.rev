@@ -29,4 +29,21 @@ changes since last submit:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>962380</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e60f3c0222ed82fc3d481fe29300a3dc</srcmd5>
+    <version>0.4.0</version>
+    <time>1701462377</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.0:
+  * Fixed typo in `batch_load_fn` TypeError
+  * Removed `None` default value for `key` arg in
+    `DataLoader.load()`
+  * Removed Python 3.6 as a supported target version
+- update to 0.3.0:
+  * Adds typing
+  * Drops support for Python&lt;3.6
+  * Adds support for overriding `get_cache_key` in subclasses
+  * Improves README.md and removes README.rst</comment>
+    <requestid>1130179</requestid>
+  </revision>
 </revisionlist>

@@ -830,4 +830,16 @@ all changed Requires/Buildrequires seem to be available
     <comment>- restrict to urllib3 1.x</comment>
     <requestid>1100700</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b328074ae490f0caa6478615c0fd9065</srcmd5>
+    <version>9.2.0</version>
+    <time>1701462434</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.2.0
+  - Bump bandit and make oslo.config compatible with latest rules
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Update master for stable/2023.1</comment>
+    <requestid>1130299</requestid>
+  </revision>
 </revisionlist>

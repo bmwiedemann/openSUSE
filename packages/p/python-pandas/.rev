@@ -590,4 +590,41 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1117788</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3ad27923a2395cf9642bbbbde98ed036</srcmd5>
+    <version>2.1.3</version>
+    <time>1701462300</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.3:
+  * Reverted deprecation of fill_method=None in DataFrame.pct_change(),
+    Series.pct_change(), DataFrameGroupBy.pct_change(), and
+    SeriesGroupBy.pct_change(); the values 'backfill', 'bfill', 'pad', and
+    'ffill' are still deprecated
+  * Fixed regressions
+    + Fixed infinite recursion from operations that return a new object on
+      some DataFrame subclasses
+    + Fixed regression in DataFrame.join() where result has missing values
+      and dtype is arrow backed string
+    + Fixed regression in rolling() where non-nanosecond index or on column
+      would produce incorrect results
+    + Fixed regression in DataFrame.resample() which was extrapolating back
+      to origin when origin was outside its bounds
+    + Fixed regression in DataFrame.sort_index() which was not sorting
+      correctly when the index was a sliced MultiIndex
+    + Fixed regression in DataFrameGroupBy.agg() and SeriesGroupBy.agg()
+      where if the option compute.use_numba was set to True, groupby methods
+      not supported by the numba engine would raise a TypeError
+    + Fixed performance regression with wide DataFrames, typically
+      involving methods where all columns were accessed individually
+    + Fixed regression in merge_asof() raising TypeError for by with
+      datetime and timedelta dtypes
+    + Fixed regression in read_parquet() when reading a file with a string
+      column consisting of more than 2 GB of string data and using the
+      &quot;string&quot; dtype
+    + Fixed regression in DataFrame.to_sql() not roundtripping datetime
+      columns correctly for sqlite when using detect_types
+    + Fixed regression in construction of certain DataFrame or Series
+      subclasses</comment>
+    <requestid>1130126</requestid>
+  </revision>
 </revisionlist>

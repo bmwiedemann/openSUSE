@@ -17,13 +17,13 @@
 
 
 Name:           python-automaton
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Friendly state machines for python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/automaton
-Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-3.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-3.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-devel
@@ -56,7 +56,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the Automaton library.
 
 %prep
-%autosetup -p1 -n automaton-3.1.0
+%autosetup -p1 -n automaton-3.2.0
 %py_req_cleanup
 
 %build

@@ -18,7 +18,7 @@
 
 %define         short_name openQA
 Name:           %{short_name}-test
-Version:        4.6.1700951825.872b397
+Version:        4.6.1701312647.3c8b171
 Release:        0
 Summary:        Test package for openQA
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ BuildRequires:  openQA-local-db
 %if 0%{?suse_version} > 1500
 BuildRequires:  user(geekotest)
 %endif
-ExcludeArch:    i586
+ExcludeArch:    %{ix86}
 
 %description
 .

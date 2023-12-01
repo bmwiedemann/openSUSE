@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:54:18 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- USe %{optflags} to build package
+
+-------------------------------------------------------------------
 Fri Apr 29 12:59:51 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Move forward to version 0.8

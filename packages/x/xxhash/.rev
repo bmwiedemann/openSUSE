@@ -83,4 +83,12 @@
     <comment></comment>
     <requestid>1123715</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cd95ab49d6d4f04ae3f1e35587703523</srcmd5>
+    <version>0.8.2</version>
+    <time>1701462289</time>
+    <user>anag+factory</user>
+    <comment>- Make use of openSUSE build flags (forwarded request 1130022 from Guillaume_G)</comment>
+    <requestid>1130029</requestid>
+  </revision>
 </revisionlist>

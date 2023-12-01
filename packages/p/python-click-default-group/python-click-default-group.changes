@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  1 11:46:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.4:
+  * README, test updates
+  * packaging updates
+- drop compatibility-click-8.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Aug 11 10:57:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add compatibility-click-8.patch to fix compatiblity with

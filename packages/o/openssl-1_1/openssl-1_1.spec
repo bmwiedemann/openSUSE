@@ -60,7 +60,6 @@ Patch3:         openssl-pkgconfig.patch
 Patch4:         openssl-DEFAULT_SUSE_cipher.patch
 Patch5:         openssl-ppc64-config.patch
 Patch6:         openssl-riscv64-config.patch
-Patch7:         openssl-no-date.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-6126 and jsc#SLE-6129
 Patch8:         0001-s390x-assembly-pack-perlasm-support.patch
 Patch9:         0002-crypto-chacha-asm-chacha-s390x.pl-add-vx-code-path.patch
@@ -95,7 +94,6 @@ Patch38:        openssl-1.1.1-ssh-kdf.patch
 Patch40:        openssl-fips-selftests_in_nonfips_mode.patch
 Patch41:        openssl-fips-clearerror.patch
 Patch42:        openssl-fips-ignore_broken_atexit_test.patch
-Patch43:        openssl-keep_EVP_KDF_functions_version.patch
 Patch45:        openssl-fips-add-SHA3-selftest.patch
 Patch46:        openssl-fips_selftest_upstream_drbg.patch
 Patch47:        openssl-unknown_dgst.patch
@@ -126,15 +124,17 @@ Patch72:        openssl-1_1-Optimize-AES-GCM-uarchs.patch
 Patch73:        openssl-FIPS-KAT-before-integrity-tests.patch
 # PATCH-FIX-SUSE bsc#1182959 FIPS: Fix function and reason error codes
 Patch74:        openssl-1_1-FIPS-fix-error-reason-codes.patch
+#PATCH-FIX-SUSE bsc#1190652 FIPS: Add release number to version string
+Patch75:        openssl-1_1-fips-bsc1190652_release_num_in_version_string.patch
 # PATCH-FIX-SUSE bsc#1180995 Default to RFC7919 groups in FIPS mode
-Patch75:        openssl-1_1-paramgen-default_to_rfc7919.patch
+Patch76:        openssl-1_1-paramgen-default_to_rfc7919.patch
 # PATCH-FIX-SUSE bsc#1194187 bsc#1004463 Add engines section in openssl.cnf
-Patch76:        openssl-1_1-use-include-directive.patch
+Patch77:        openssl-1_1-use-include-directive.patch
 # PATCH-FIX-SUSE bsc#1197280 FIPS: Additional PBKDF2 requirements for KAT
-Patch77:        openssl-1_1-FIPS-PBKDF2-KAT-requirements.patch
-Patch78:        bsc1185319-FIPS-KAT-for-ECDSA.patch
-Patch79:        bsc1198207-FIPS-add-hash_hmac-drbg-kat.patch
-Patch81:        openssl-1_1-shortcut-test_afalg_aes_cbc.patch
+Patch78:        openssl-1_1-FIPS-PBKDF2-KAT-requirements.patch
+Patch79:        bsc1185319-FIPS-KAT-for-ECDSA.patch
+Patch80:        bsc1198207-FIPS-add-hash_hmac-drbg-kat.patch
+Patch82:        openssl-1_1-shortcut-test_afalg_aes_cbc.patch
 # PATCH-FIX-SUSE bsc#1190653 FIPS: Provide methods to zeroize all unprotected SSPs and key components
 Patch84:        openssl-1_1-Zeroization.patch
 # PATCH-FIX-SUSE bsc#1190651 FIPS: Provide a service-level indicator
@@ -188,6 +188,8 @@ Patch114:       openssl-Improve-performance-for-6x-unrolling-with-vpermxor-i.pat
 # PATCH-FIX-UPSTREAM: bsc#1216922 CVE-2023-5678 Generating excessively long X9.42 DH keys or
 # checking excessively long X9.42 DH keys or parameters may be very slow
 Patch115:       openssl-CVE-2023-5678.patch
+# PATCH-FIX-OPENSUSE skip SHA1 test in FIPS mode
+Patch116:       openssl-Skip_SHA1-test-in-FIPS-mode.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)

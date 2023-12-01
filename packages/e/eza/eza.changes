@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  1 07:18:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.2:
+  * Calculate width correctly when using grid icons & classify
+  * Fix the windows build
+
+-------------------------------------------------------------------
 Thu Nov 23 07:24:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.1:

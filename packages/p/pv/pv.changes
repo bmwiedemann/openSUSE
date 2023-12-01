@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 30 11:24:57 UTC 2023 - pgajdos@suse.com
+
+- disable testsuite for s390x [bsc#1215338]
+- remove _constraints again as it didn't help
+- deleted sources
+  - _constraints (not needed)
+
+-------------------------------------------------------------------
 Wed Nov 15 12:03:39 UTC 2023 - pgajdos@suse.com
 
 - increase required memory in _constraints [bsc#1217165]

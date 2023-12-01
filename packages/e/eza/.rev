@@ -258,4 +258,14 @@
   * Add netbsd and freebsd support for extended attributes</comment>
     <requestid>1128263</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>599f135973696e885e7f62a4f784d41c</srcmd5>
+    <version>0.16.2+0</version>
+    <time>1701462332</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.2:
+  * Calculate width correctly when using grid icons &amp; classify
+  * Fix the windows build</comment>
+    <requestid>1130162</requestid>
+  </revision>
 </revisionlist>

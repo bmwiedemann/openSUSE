@@ -359,4 +359,19 @@
   - Drop python3.6/3.7 support in testing runtime</comment>
     <requestid>1073028</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bc42061f83cb91466f499beb639494c0</srcmd5>
+    <version>5.2.0</version>
+    <time>1701462436</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.2.0
+  - Bump bandit and make oslo.middleware compatible with latest rules
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - fix spelling
+  - Update master for stable/2023.1
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Use upper-constraint in doc generation
+  - Imported Translations from Zanata</comment>
+    <requestid>1130300</requestid>
+  </revision>
 </revisionlist>

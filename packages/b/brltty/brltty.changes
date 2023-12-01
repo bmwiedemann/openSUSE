@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
+
+- Disable parallel build again
+
+-------------------------------------------------------------------
 Wed Aug 16 12:35:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add e6707d5e.patch: brlapi: Fix python crash on connection error.

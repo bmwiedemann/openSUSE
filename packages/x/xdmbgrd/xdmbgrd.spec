@@ -38,6 +38,7 @@ The SUSE Linux background for your XDM workstation.
 
 %build
 PATH=$PATH:.
+export RPM_OPT_FLAGS="%{optflags}"
 make XLIBD=%{_libdir} openSUSE=SuSE_Linux_6 SLES=SuSE_Linux_8
 
 %install

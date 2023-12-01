@@ -33,6 +33,8 @@ Patch0:         denose-eventlet.patch
 Patch2:         python-eventlet-FTBFS2028.patch
 # PATCH-FIX-UPSTREAM fix-py3-rlock.patch gh#eventlet/eventlet#754
 Patch3:         fix-py3-rlock.patch
+# PATCH-FIX-OPENSUSE Based on https://src.fedoraproject.org/rpms/python-eventlet/raw/rawhide/f/python3.12.patch
+Patch4:         support-python3.12.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -594,4 +594,12 @@
 - Rebase brltty-udev-dir.patch.</comment>
     <requestid>1105121</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>ef8af83887466d26d574a664f23626eb</srcmd5>
+    <version>6.6</version>
+    <time>1701462297</time>
+    <user>anag+factory</user>
+    <comment>- Disable parallel build again</comment>
+    <requestid>1130116</requestid>
+  </revision>
 </revisionlist>

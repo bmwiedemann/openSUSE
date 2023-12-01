@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 27 15:42:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Add async flag when wrapping async function (#111)
+  * Dropping support for Python 2.7
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -28,19 +35,19 @@ Mon Sep 26 10:38:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Nov  8 10:11:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add six dependency 
+- add six dependency
 
 -------------------------------------------------------------------
 Sat Oct 16 21:01:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.4:
   * Fix the ddt.idata signature issue introduced in 1.4.3
-  * Fix zero padding issue 
+  * Fix zero padding issue
 
 -------------------------------------------------------------------
 Wed Apr  7 20:25:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- fix python 2.x build 
+- fix python 2.x build
 
 -------------------------------------------------------------------
 Tue Mar 23 21:06:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -53,7 +60,7 @@ Tue Mar 23 21:06:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jan 25 21:52:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add 0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch 
+- add 0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch
 
 -------------------------------------------------------------------
 Thu May 28 03:09:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
@@ -63,7 +70,7 @@ Thu May 28 03:09:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * Require enum34 for Python 2.x.
   * Improved code comments and renamed the test name format enum class
   * Use enum instead of bool to allow easier future changes
-  * Allow index-only test names 
+  * Allow index-only test names
 - Switch to using %pytest macro now that nose is not required
 
 -------------------------------------------------------------------
@@ -100,7 +107,7 @@ Tue Dec  4 12:47:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
 Tue Aug  7 14:48:44 UTC 2018 - toddrme2178@gmail.com
 
 - update to 1.2.0
-  * Added individual test case docstring support and tests 
+  * Added individual test case docstring support and tests
   * Add nested dict example to docs and cosmetic adjustments
 
 -------------------------------------------------------------------

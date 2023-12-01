@@ -16,10 +16,9 @@
 #
 
 
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-ddt
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Data-Driven/Decorated Tests
 License:        MIT
@@ -33,11 +32,8 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module aiounittest}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python2-enum34
-BuildRequires:  python2-mock
-%endif
 # /SECTION
 %python_subpackages
 

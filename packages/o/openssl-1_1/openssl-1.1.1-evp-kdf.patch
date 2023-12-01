@@ -5228,14 +5228,14 @@ Index: openssl-1.1.1n/util/libcrypto.num
  FIPS_rand_strength                      6380	1_1_0g	EXIST::FUNCTION:
  FIPS_drbg_get_blocklength               6381	1_1_0g	EXIST::FUNCTION:
  FIPS_drbg_init                          6382	1_1_0g	EXIST::FUNCTION:
-+EVP_KDF_CTX_new_id                      6590	1_1_1b	EXIST::FUNCTION:
-+EVP_KDF_CTX_free                        6591	1_1_1b	EXIST::FUNCTION:
-+EVP_KDF_reset                           6592	1_1_1b	EXIST::FUNCTION:
-+EVP_KDF_ctrl                            6593	1_1_1b	EXIST::FUNCTION:
-+EVP_KDF_vctrl                           6594	1_1_1b	EXIST::FUNCTION:
-+EVP_KDF_ctrl_str                        6595	1_1_1b	EXIST::FUNCTION:
-+EVP_KDF_size                            6596	1_1_1b	EXIST::FUNCTION:
-+EVP_KDF_derive                          6597	1_1_1b	EXIST::FUNCTION:
++EVP_KDF_CTX_new_id                      6590	1_1_1d	EXIST::FUNCTION:
++EVP_KDF_CTX_free                        6591	1_1_1d	EXIST::FUNCTION:
++EVP_KDF_reset                           6592	1_1_1d	EXIST::FUNCTION:
++EVP_KDF_ctrl                            6593	1_1_1d	EXIST::FUNCTION:
++EVP_KDF_vctrl                           6594	1_1_1d	EXIST::FUNCTION:
++EVP_KDF_ctrl_str                        6595	1_1_1d	EXIST::FUNCTION:
++EVP_KDF_size                            6596	1_1_1d	EXIST::FUNCTION:
++EVP_KDF_derive                          6597	1_1_1d	EXIST::FUNCTION:
 Index: openssl-1.1.1n/util/private.num
 ===================================================================
 --- openssl-1.1.1n.orig/util/private.num

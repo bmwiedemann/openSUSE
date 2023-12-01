@@ -54,4 +54,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1032656 from glaubitz)</comment>
     <requestid>1032660</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6515420a1f9fab77c804c6403cd9e9af</srcmd5>
+    <version>1.4.0</version>
+    <time>1701462406</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1130175 from glaubitz)</comment>
+    <requestid>1130220</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define major 2
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        2.11.2
+Version:        2.11.3
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT

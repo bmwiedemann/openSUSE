@@ -79,7 +79,7 @@ other applications.
 export CC="gcc-7"
 export CXX="g++-7"
 %endif
-export CXXFLAGS="-std=c++17"
+export CXXFLAGS="%{optflags} -std=c++17"
 # Examples require QT5-base/multimedia, but doing so creates a cycle
 # Blackbox tests require fmt
 %cmake \

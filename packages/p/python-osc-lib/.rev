@@ -287,4 +287,21 @@
   - tox: Ignore .venv files for flake8</comment>
     <requestid>1073026</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ff14160d09b91cb5e589abfc95067b51</srcmd5>
+    <version>2.8.1</version>
+    <time>1701462433</time>
+    <user>anag+factory</user>
+    <comment>- update to version 2.8.1
+  - Revert &quot;Do not output log on bash autocomplete generation&quot;
+  - Fix comment of auth_config_hook
+
+- update to version 2.8.0
+  - Add 'SizeColumn' formatter
+  - setup.cfg: Replace dash-separated config
+  - tox 4 compatibility
+  - Update master for stable/2023.1
+  - formatters: Cast *all* columns before outputting</comment>
+    <requestid>1130298</requestid>
+  </revision>
 </revisionlist>

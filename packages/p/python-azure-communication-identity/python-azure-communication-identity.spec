@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-communication-identity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,26 +21,24 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-identity
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Microsoft Azure Communication Identity Service Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-identity/azure-communication-identity-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-identity/azure-communication-identity-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.7.1
-Requires:       python-six >= 1.11.0
 BuildArch:      noarch
 %python_subpackages
 

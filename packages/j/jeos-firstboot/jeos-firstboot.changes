@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 30 12:50:24 UTC 2023 - jeos-internal@suse.de
+
+- Update to version 1.2.0.9:
+  * Add KeyringMode=shared
+
+-------------------------------------------------------------------
 Tue Aug 22 07:31:34 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.2.0.7:

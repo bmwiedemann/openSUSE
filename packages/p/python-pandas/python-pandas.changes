@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Dec  1 03:25:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.3:
+  * Reverted deprecation of fill_method=None in DataFrame.pct_change(),
+    Series.pct_change(), DataFrameGroupBy.pct_change(), and
+    SeriesGroupBy.pct_change(); the values 'backfill', 'bfill', 'pad', and
+    'ffill' are still deprecated
+  * Fixed regressions
+    + Fixed infinite recursion from operations that return a new object on
+      some DataFrame subclasses
+    + Fixed regression in DataFrame.join() where result has missing values
+      and dtype is arrow backed string
+    + Fixed regression in rolling() where non-nanosecond index or on column
+      would produce incorrect results
+    + Fixed regression in DataFrame.resample() which was extrapolating back
+      to origin when origin was outside its bounds
+    + Fixed regression in DataFrame.sort_index() which was not sorting
+      correctly when the index was a sliced MultiIndex
+    + Fixed regression in DataFrameGroupBy.agg() and SeriesGroupBy.agg()
+      where if the option compute.use_numba was set to True, groupby methods
+      not supported by the numba engine would raise a TypeError
+    + Fixed performance regression with wide DataFrames, typically
+      involving methods where all columns were accessed individually
+    + Fixed regression in merge_asof() raising TypeError for by with
+      datetime and timedelta dtypes
+    + Fixed regression in read_parquet() when reading a file with a string
+      column consisting of more than 2 GB of string data and using the
+      "string" dtype
+    + Fixed regression in DataFrame.to_sql() not roundtripping datetime
+      columns correctly for sqlite when using detect_types
+    + Fixed regression in construction of certain DataFrame or Series
+      subclasses
+  * Bug fixes
+    + Bug in DatetimeIndex.diff() raising TypeError
+    + Bug in Index.isin() raising for Arrow backed string and None value
+    + Fix read_parquet() and read_feather() for CVE-2023-47248
+    + Fixed bug in DataFrameGroupBy reductions not preserving object dtype
+      when infer_string is set
+    + Fixed bug in SeriesGroupBy.value_counts() returning incorrect dtype for
+      string columns
+    + Fixed bug in Categorical.equals() if other has arrow backed string dtype
+    + Fixed bug in DataFrame.__setitem__() not inferring string dtype for
+      zero-dimensional array with infer_string=True
+    + Fixed bug in DataFrame.idxmin() and DataFrame.idxmax() raising for
+      arrow dtypes
+    + Fixed bug in DataFrame.interpolate() raising incorrect error message
+    + Fixed bug in Index.insert() raising when inserting None into Index with
+      dtype="string[pyarrow_numpy]"
+    + Fixed bug in Series.all() and Series.any() not treating missing values
+      correctly for dtype="string[pyarrow_numpy]"
+    + Fixed bug in Series.floordiv() for ArrowDtype
+    + Fixed bug in Series.mode() not sorting values for arrow backed string
+      dtype
+    + Fixed bug in Series.rank() for string[pyarrow_numpy] dtype
+    + Fixed bug in Series.str.extractall() for ArrowDtype dtype being
+      converted to object
+    + Fixed bug where PDEP-6 warning about setting an item of an
+      incompatible dtype was being shown when creating a new conditional
+      column
+    + Silence Period[B] warnings introduced by GH 53446 during normal
+      plotting activity
+    + Fixed bug in Series constructor not inferring string dtype when NA is
+      the first value and infer_string is set
+- Prepare for Python 3.12, include the flavor check.
+- Unpin Cython, upstream has moved onto 3.
+
+-------------------------------------------------------------------
 Sat Oct 14 03:55:05 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix random build failures

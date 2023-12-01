@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 29 21:13:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.23.2:
+  * Preserve more specific existing failure code.  [T6575]
+  * qt: Start dirmngr with gpgconf to avoid multiple instances. [T6833]
+  * qt: On Windows, use UTF-8 when logging the error text.  [T5960]
+  * qt: Remove left-over partial files more persistently.  [T6584]
+  * qt: Use a temporary file name when creating signed or encrypted
+    archives. [T6721]
+  * qt: Build Qt 6 bindings with -fPIC if requested or Qt 6 was built
+    with this flag. [T6781]
+  * Notes:
+    - qt: DefaultKeyGenerationJob     DEPRECATED.
+  * Release-info: https://dev.gnupg.org/T6782
+
+-------------------------------------------------------------------
 Mon Oct 30 21:58:54 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.23.1:

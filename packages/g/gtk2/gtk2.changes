@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 29 12:04:39 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add gtk2-check-attribute.patch (bsc#1217622): check for attribute
+  availability before accessing it.
+  Starting from GLib 2.76, the standard attribute getters in the
+  GFileInfo object will warn if the attribute is unset, instead of
+  silently bailing out and returning a default value.
+
+-------------------------------------------------------------------
 Tue Nov 28 11:52:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

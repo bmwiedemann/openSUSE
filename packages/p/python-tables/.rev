@@ -176,4 +176,41 @@
     <comment>- Pin Cython to &lt; 3.</comment>
     <requestid>1104946</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cd6b6b1a5236961c13cbfd4453a08f88</srcmd5>
+    <version>3.9.2</version>
+    <time>1701462360</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.9.2:
+  * Minimum supported version for Python is 3.9 (see gh-1062).
+  * New features
+    + Apply optimized slice read to Blosc2-compressed CArray and EArray
+    + Add basic API for column-level attributes as Col._v_col_attrs
+  * Bugfixes
+    + Fix the assembly of returned slice data in Blosc2 NDim optimized
+      slice reads by using Blosc2’s b2nd_copy_buffer
+    + Fix crash in Blosc2 optimized path with large tables
+    + Fix compatibility with NumExpr v2.8.5
+    + Fix ptrepack failures with external links
+    + Replace stderr messages with Python warnings
+    + Fix Cython slice indexing under Python 3.12
+    + Fix unsafe temporary file creation in benchmark
+  * Improvements
+    + PyTables wheels now use a threadsafe build of the HDF5 library
+    + Partial support for the future NumPy 2, with some tests still failing
+    + Relax the reading of Blosc2 NDim to cope with datasets stored with
+      other tools
+    + Use H5Dchunk_iter (when available) to speed up walking over many chunks
+      in a very large table, as well as with random reads
+    + Improve setup.py (now using pyproject.toml as per PEP 518) and
+      blosc2 discovery mechanism
+    + Enable compatibility with Cython 3
+    + Handle py-cpuinfo missing in some platforms
+    + Avoid NumPy &gt;= 1.25 deprecations, use numpy.all, numpy.any, etc. instead.
+  * Other changes
+    + Drop compatibility with the obsolete HDF5 1.8 API
+    + Require python-blosc2 &gt;= 2.3.0 or c-blosc2 &gt;= 2.11.0
+    + Assorted fixes to b2nd slicing optimization tips</comment>
+    <requestid>1130124</requestid>
+  </revision>
 </revisionlist>

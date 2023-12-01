@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec  1 04:33:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 3.3.1:
+- This is a patch release containing the following changes to v3.3:
+  * Fixed int8 convolution accuracy issue on Intel GPUs (09c87c7)
+  * Switched internal stream to in-order mode for NVIDIA and AMD GPUs to avoid synchronization issues (db01d62)
+  * Fixed runtime error for avgpool_bwd operation in Graph API (d025ef6, 9e0602a, e0dc1b3)
+  * Fixed benchdnn error reporting for some Graph API cases (98dc9db)
+  * Fixed accuracy issue in experimental Graph Compiler for int8 MHA variant from StarCoder model (5476ef7)
+  * Fixed incorrect results for layer normalization with trivial dimensions on Intel GPUs (a2ec0a0)
+  * Removed redundant synchronization for out-of-order SYCL queues (a96e9b1)
+  * Fixed runtime error in experimental Graph Compiler for int8 MLP subgraph from LLAMA model (595543d)
+  * Fixed SEGFAULT in experimental Graph Compiler for fp32 MLP subgraph (4207105)
+  * Fixed incorrect results in experimental Graph Compiler for MLP subgraph (57e14b5)
+  * Fixed the issue with f16 inner product primitive with s8 output returning unimplemented on Intel GPUs (bf12207, 800b5e9, ec7054a)
+  * Fixed incorrect results for int8 deconvolution with zero-points on processors with Intel AMX instructions support (55d2cec)
+
+-------------------------------------------------------------------
 Tue Oct 10 05:53:25 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.3:

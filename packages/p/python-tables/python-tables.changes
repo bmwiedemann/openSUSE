@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Dec  1 02:23:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.9.2:
+  * Minimum supported version for Python is 3.9 (see gh-1062).
+  * New features
+    + Apply optimized slice read to Blosc2-compressed CArray and EArray
+    + Add basic API for column-level attributes as Col._v_col_attrs
+  * Bugfixes
+    + Fix the assembly of returned slice data in Blosc2 NDim optimized
+      slice reads by using Blosc2’s b2nd_copy_buffer
+    + Fix crash in Blosc2 optimized path with large tables
+    + Fix compatibility with NumExpr v2.8.5
+    + Fix ptrepack failures with external links
+    + Replace stderr messages with Python warnings
+    + Fix Cython slice indexing under Python 3.12
+    + Fix unsafe temporary file creation in benchmark
+  * Improvements
+    + PyTables wheels now use a threadsafe build of the HDF5 library
+    + Partial support for the future NumPy 2, with some tests still failing
+    + Relax the reading of Blosc2 NDim to cope with datasets stored with
+      other tools
+    + Use H5Dchunk_iter (when available) to speed up walking over many chunks
+      in a very large table, as well as with random reads
+    + Improve setup.py (now using pyproject.toml as per PEP 518) and
+      blosc2 discovery mechanism
+    + Enable compatibility with Cython 3
+    + Handle py-cpuinfo missing in some platforms
+    + Avoid NumPy >= 1.25 deprecations, use numpy.all, numpy.any, etc. instead.
+  * Other changes
+    + Drop compatibility with the obsolete HDF5 1.8 API
+    + Require python-blosc2 >= 2.3.0 or c-blosc2 >= 2.11.0
+    + Assorted fixes to b2nd slicing optimization tips
+    + New benchmark for ERA5 climate data
+    + New “100 trillion baby” benchmark
+    + New benchmark for querying meteorologic data
+- Unpin Cython, Cython 3 is now supported
+- Drop patches tables-pr1000-debundled-blosc2.patch and numpy-1.25.patch:
+  * Both included upstream
+
+-------------------------------------------------------------------
 Mon Aug 21 00:59:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Pin Cython to < 3. 

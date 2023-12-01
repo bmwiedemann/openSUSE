@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 29 16:38:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.11.0:
+  * Add texlab.inlayHints.labelDefinitions and
+    texlab.inlayHints.labelReferences options
+    (gh#latex-lsp/texlab#753)
+  * Display inlay hints for label references by default
+    (gh#latex-lsp/texlab#753)
+  * Moving the build logs to the recycle bin will now clear the
+    diagnostics (gh#latex-lsp/texlab-vscode#825)
+  * Fix false positive when reporting syntax errors for BibTeX
+    accents (gh#latex-lsp/texlab#945)
+- Update rust+cargo required version to 1.70.0.
+
+-------------------------------------------------------------------
 Mon Oct  2 19:39:45 UTC 2023 - Olivier Belleux <o.g.m.belleux@gmail.com>
 
 - Remove lines in spec files due "failed to build"
