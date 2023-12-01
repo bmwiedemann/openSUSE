@@ -1698,4 +1698,12 @@
     <time>1701257388</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="213" vrev="213">
+    <srcmd5>ad066288792f09392244a9b77126c6bb</srcmd5>
+    <version>unknown</version>
+    <time>1701417793</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome.sh: no longer install the games pattern. We really run
+  low on space.</comment>
+  </revision>
 </revisionlist>

@@ -98,7 +98,6 @@ install alsa-firmware
 
 # Previously required by rest_cd_gnome
 installPattern apparmor
-installPattern games
 installPattern gnome
 installPattern gnome_basis
 installPattern gnome_imaging

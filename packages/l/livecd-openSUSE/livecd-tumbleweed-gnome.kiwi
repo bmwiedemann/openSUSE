@@ -566,7 +566,6 @@
     <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="alsa-firmware"/>
     <namedCollection name="apparmor"/>
-    <namedCollection name="games"/>
     <namedCollection name="gnome"/>
     <namedCollection name="gnome_basis"/>
     <namedCollection name="gnome_imaging"/>

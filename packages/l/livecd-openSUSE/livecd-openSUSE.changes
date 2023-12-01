@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  1 08:02:36 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-gnome.sh: no longer install the games pattern. We really run
+  low on space.
+
+-------------------------------------------------------------------
 Wed Nov 29 11:17:40 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop the nvidia/gsp firmware images: they make up > 70MB.
