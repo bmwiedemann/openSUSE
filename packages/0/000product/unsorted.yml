@@ -3922,6 +3922,7 @@ unsorted:
   - file-devel 
   - file-devel-32bit 
   - file-unpack 
+  - file-unpack2 
   - fileb0x 
   - filebench 
   - filezilla 
@@ -12518,7 +12519,7 @@ unsorted:
   - libibdm1 
   - libibmad5 
   - libibmad5-32bit 
-  - libibmtss1 
+  - libibmtss2 
   - libibnetdisc5 
   - libibumad3 
   - libibumad3-32bit 
@@ -20202,6 +20203,7 @@ unsorted:
   - perl-File-TreeCreate 
   - perl-File-Type 
   - perl-File-Unpack 
+  - perl-File-Unpack2 
   - perl-File-Which 
   - perl-File-chdir 
   - perl-File-pushd 
