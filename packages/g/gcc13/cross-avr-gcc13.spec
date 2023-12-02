@@ -107,7 +107,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.2.1+git7813
+Version:        13.2.1+git8109
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -134,7 +134,6 @@ Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
-Patch22:        pr111411.patch
 Patch23:        gcc13-bsc1216664.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
@@ -247,14 +246,15 @@ ExclusiveArch:  x86_64
 # amdgcn uses the llvm assembler and linker
 %if %{suse_version} < 1550
 BuildRequires:  llvm13
+%define product_libs_llvm_ver 13
 %else
-BuildRequires:  llvm
+BuildRequires:  llvm%{product_libs_llvm_ver}
 %endif
 BuildRequires:  lld
 %if %{suse_version} < 1550
 Requires:       llvm13
 %else
-Requires:       llvm
+Requires:       llvm%{product_libs_llvm_ver}
 %endif
 Requires:       cross-amdgcn-newlib-devel >= %{version}-%{release}
 Requires:       lld
@@ -305,9 +305,11 @@ Conflicts:      cross-%{cross_arch}-gcc13
 Requires:       libstdc++6-devel-gcc13
 %endif
 AutoReqProv:    off
+%if 0%{!?gcc_accel:1}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+%endif
 Summary:        The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
 
@@ -355,7 +357,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch19 -p1
 %endif
 %patch21 -p1
-%patch22 -p1
 %patch23 -p1
 %patch51
 %patch60 -p1
@@ -459,11 +460,11 @@ export _POSIX2_VERSION=199209
 
 %if "%{TARGET_ARCH}" == "amdgcn"
 mkdir -p target-tools/bin
-ln -s /usr/bin/llvm-ar target-tools/bin/amdgcn-amdhsa-ar
-ln -s /usr/bin/llvm-mc target-tools/bin/amdgcn-amdhsa-as
+ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ar
+ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-as
 ln -s /usr/bin/lld target-tools/bin/amdgcn-amdhsa-ld
-ln -s /usr/bin/llvm-nm target-tools/bin/amdgcn-amdhsa-nm
-ln -s /usr/bin/llvm-ranlib target-tools/bin/amdgcn-amdhsa-ranlib
+ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-nm
+ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ranlib
 export PATH="`pwd`/target-tools/bin:$PATH"
 %endif
 
@@ -883,11 +884,11 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
 # follow alternatives symlinks to the hardcoded version requirement
 %if "%{TARGET_ARCH}" == "amdgcn"
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
-ln -s `readlink -f /usr/bin/llvm-ar` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
-ln -s `readlink -f /usr/bin/llvm-mc` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
+ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
+ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
 ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
-ln -s `readlink -f /usr/bin/llvm-nm` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
-ln -s `readlink -f /usr/bin/llvm-ranlib` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
+ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
+ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar
 ln -s %{_prefix}/amdgcn-amdhsa/bin/as $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-as
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ld $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ld
@@ -988,6 +989,14 @@ fi
 %dir %{libsubdir}
 %dir %{libsubdir}/accel
 %{libsubdir}/accel/%{gcc_target_arch}
+%if "%{cross_arch}" == "amdgcn"
+%{_prefix}/%{gcc_target_arch}/bin
+%{_prefix}/bin/amdgcn-amdhsa-ar
+%{_prefix}/bin/amdgcn-amdhsa-as
+%{_prefix}/bin/amdgcn-amdhsa-ld
+%{_prefix}/bin/amdgcn-amdhsa-nm
+%{_prefix}/bin/amdgcn-amdhsa-ranlib
+%endif
 %else
 %{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-cpp%{binsuffix}
@@ -1057,11 +1066,7 @@ fi
 %files -n cross-amdgcn-newlib13-devel
 %defattr(-,root,root)
 %{_prefix}/%{gcc_target_arch}
-%{_prefix}/bin/amdgcn-amdhsa-ar
-%{_prefix}/bin/amdgcn-amdhsa-as
-%{_prefix}/bin/amdgcn-amdhsa-ld
-%{_prefix}/bin/amdgcn-amdhsa-nm
-%{_prefix}/bin/amdgcn-amdhsa-ranlib
+%exclude %{_prefix}/%{gcc_target_arch}/bin
 %endif
 
 %changelog

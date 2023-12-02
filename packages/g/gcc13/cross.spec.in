@@ -155,14 +155,15 @@ ExclusiveArch: x86_64
 # amdgcn uses the llvm assembler and linker
 %if %{suse_version} < 1550
 BuildRequires: llvm13
+%define product_libs_llvm_ver 13
 %else
-BuildRequires: llvm
+BuildRequires: llvm%{product_libs_llvm_ver}
 %endif
 BuildRequires: lld
 %if %{suse_version} < 1550
 Requires: llvm13
 %else
-Requires: llvm
+Requires: llvm%{product_libs_llvm_ver}
 %endif
 Requires: lld
 Requires: cross-amdgcn-newlib-devel >= %{version}-%{release}
@@ -213,9 +214,11 @@ Conflicts: cross-%{cross_arch}-gcc@base_ver@
 Requires:       libstdc++6-devel-gcc@base_ver@
 %endif
 AutoReqProv:    off
+%if 0%{!?gcc_accel:1}
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+%endif
 Summary:	The GNU Compiler Collection targeting %{cross_arch}
 License:        GPL-3.0-or-later
 
@@ -338,11 +341,11 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
 # follow alternatives symlinks to the hardcoded version requirement
 %if "%{TARGET_ARCH}" == "amdgcn"
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin
-ln -s `readlink -f /usr/bin/llvm-ar` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
-ln -s `readlink -f /usr/bin/llvm-mc` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
+ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ar
+ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/as
 ln -s /usr/bin/lld $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ld
-ln -s `readlink -f /usr/bin/llvm-nm` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
-ln -s `readlink -f /usr/bin/llvm-ranlib` $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
+ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/nm
+ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* $RPM_BUILD_ROOT%{_prefix}/amdgcn-amdhsa/bin/ranlib
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ar $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ar
 ln -s %{_prefix}/amdgcn-amdhsa/bin/as $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-as
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ld $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ld
@@ -443,6 +446,14 @@ fi
 %dir %{libsubdir}
 %dir %{libsubdir}/accel
 %{libsubdir}/accel/%{gcc_target_arch}
+%if "%{cross_arch}" == "amdgcn"
+%{_prefix}/%{gcc_target_arch}/bin
+%{_prefix}/bin/amdgcn-amdhsa-ar
+%{_prefix}/bin/amdgcn-amdhsa-as
+%{_prefix}/bin/amdgcn-amdhsa-ld
+%{_prefix}/bin/amdgcn-amdhsa-nm
+%{_prefix}/bin/amdgcn-amdhsa-ranlib
+%endif
 %else
 %{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-cpp%{binsuffix}
@@ -512,11 +523,7 @@ fi
 %files -n cross-amdgcn-newlib@base_ver@-devel
 %defattr(-,root,root)
 %{_prefix}/%{gcc_target_arch}
-%{_prefix}/bin/amdgcn-amdhsa-ar
-%{_prefix}/bin/amdgcn-amdhsa-as
-%{_prefix}/bin/amdgcn-amdhsa-ld
-%{_prefix}/bin/amdgcn-amdhsa-nm
-%{_prefix}/bin/amdgcn-amdhsa-ranlib
+%exclude %{_prefix}/%{gcc_target_arch}/bin
 %endif
 
 %changelog -n cross-%{pkgname}-gcc@base_ver@

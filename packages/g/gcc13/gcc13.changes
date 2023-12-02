@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 30 11:43:17 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, 741743c028dc00f27b9c8b1d5, git8109
+  * Includes fix for building mariadb on i686.  [bsc#1217667]
+  * Remove pr111411.patch contained in the update.
+
+-------------------------------------------------------------------
+Fri Nov 24 08:49:50 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Avoid update-alternatives dependency for accelerator crosses.
+- Package tool links to llvm in cross-amdgcn-gcc13 rather than in
+  cross-amdgcn-newlib13-devel since that also has the dependence.
+- Depend on llvmVER instead of llvm with VER equal to
+  %product_libs_llvm_ver where available and adjust tool discovery
+  accordingly.  This should also properly trigger re-builds when
+  the patchlevel version of llvmVER changes, possibly changing
+  the binary names we link to.  [bsc#1217450]
+
+-------------------------------------------------------------------
 Tue Nov  7 12:57:49 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Add gcc13-bsc1216664.patch, works around SAP ASE DB crash during

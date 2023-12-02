@@ -200,7 +200,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.2.1+git7813
+Version:        13.2.1+git8109
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -381,7 +381,6 @@ Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gdcflags.patch
-Patch22:        pr111411.patch
 Patch23:        gcc13-bsc1216664.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
@@ -2360,7 +2359,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch19 -p1
 %endif
 %patch21 -p1
-%patch22 -p1
 %patch23 -p1
 %patch51
 %patch60 -p1
@@ -2464,11 +2462,11 @@ export _POSIX2_VERSION=199209
 
 %if "%{TARGET_ARCH}" == "amdgcn"
 mkdir -p target-tools/bin
-ln -s /usr/bin/llvm-ar target-tools/bin/amdgcn-amdhsa-ar
-ln -s /usr/bin/llvm-mc target-tools/bin/amdgcn-amdhsa-as
+ln -s /usr/bin/llvm-ar-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ar
+ln -s /usr/bin/llvm-mc-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-as
 ln -s /usr/bin/lld target-tools/bin/amdgcn-amdhsa-ld
-ln -s /usr/bin/llvm-nm target-tools/bin/amdgcn-amdhsa-nm
-ln -s /usr/bin/llvm-ranlib target-tools/bin/amdgcn-amdhsa-ranlib
+ln -s /usr/bin/llvm-nm-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-nm
+ln -s /usr/bin/llvm-ranlib-%{product_libs_llvm_ver}* target-tools/bin/amdgcn-amdhsa-ranlib
 export PATH="`pwd`/target-tools/bin:$PATH"
 %endif
 

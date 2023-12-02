@@ -221,4 +221,23 @@
   C++ standard library initialization.  [bsc#1216664]</comment>
     <requestid>1124004</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f1dfee65d7f1c0cfc833510df4a55749</srcmd5>
+    <version>13.2.1+git8109</version>
+    <time>1701533511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-13 branch head, 741743c028dc00f27b9c8b1d5, git8109
+  * Includes fix for building mariadb on i686.  [bsc#1217667]
+  * Remove pr111411.patch contained in the update.
+
+- Avoid update-alternatives dependency for accelerator crosses.
+- Package tool links to llvm in cross-amdgcn-gcc13 rather than in
+  cross-amdgcn-newlib13-devel since that also has the dependence.
+- Depend on llvmVER instead of llvm with VER equal to
+  %product_libs_llvm_ver where available and adjust tool discovery
+  accordingly.  This should also properly trigger re-builds when
+  the patchlevel version of llvmVER changes, possibly changing
+  the binary names we link to.  [bsc#1217450]</comment>
+    <requestid>1130160</requestid>
+  </revision>
 </revisionlist>
