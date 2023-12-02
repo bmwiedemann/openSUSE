@@ -2717,6 +2717,7 @@ BuildFlags: onlybuild:python-Pygments
 BuildFlags: onlybuild:python-Sphinx
 BuildFlags: onlybuild:python-Twisted
 BuildFlags: onlybuild:python-abseil
+BuildFlags: onlybuild:python-aiounittest
 BuildFlags: onlybuild:python-alabaster
 BuildFlags: onlybuild:python-anyio
 BuildFlags: onlybuild:python-apipkg
@@ -2902,6 +2903,7 @@ BuildFlags: onlybuild:python-virtualenv
 BuildFlags: onlybuild:python-wcag-contrast-ratio
 BuildFlags: onlybuild:python-webencodings
 BuildFlags: onlybuild:python-wheel
+BuildFlags: onlybuild:python-wrapt
 BuildFlags: onlybuild:python-wxPython:python311
 BuildFlags: onlybuild:python-yapf
 BuildFlags: onlybuild:python-zipp
