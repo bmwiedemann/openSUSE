@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov 25 13:03:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Fix the package metadata to properly reflect the right Django
+    and Python version requirements
+  * **Backwards icompatible:** Rename the (``content_type``,
+    ``object_id``) index on ``TaggedItem``.
+  * Remove support for Django 3.2.
+  * Remove usage of deprecated APIs for Django 4.2
+  * Remove support for Python 3.7 (no code changes involved)
+  * Fix ``tag_kwargs`` and ``TAGGIT_CASE_INSENSITIVE=True``
+    discrepency.
+
+-------------------------------------------------------------------
 Fri May  5 07:37:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 4.0.0
@@ -50,7 +64,7 @@ Wed Apr 13 00:03:26 UTC 2022 - Misha Komarovskiy <zombah@gmail.com>
 - Update to 2.1.0
   * Add Python 3.10 support.
   * Add Django 4.0 support.
-  * Drop Django 3.1 support. 
+  * Drop Django 3.1 support.
 
 -------------------------------------------------------------------
 Tue Dec  7 02:21:00 UTC 2021 - Misha Komarovskiy <zombah@gmail.com>
@@ -58,7 +72,7 @@ Tue Dec  7 02:21:00 UTC 2021 - Misha Komarovskiy <zombah@gmail.com>
 - Update to 2.0.0
   * Backwards incompatible: TaggableManager.set now takes a list of
     tags (instead of varargs) so that its API matches Django's
-    RelatedManager.set 
+    RelatedManager.set
   * Fix issue where TagField would incorrectly report that a field
     has changed on empty values.
   * Update Russian translation.

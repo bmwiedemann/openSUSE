@@ -41,12 +41,12 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2021.10.0
+Version:        2021.11.0
 Release:        0
-Summary:        Threading Building Blocks (TBB)
+Summary:        oneAPI Threading Building Blocks (oneTBB)
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            https://www.threadingbuildingblocks.org/
+URL:            https://oneapi-src.github.io/oneTBB/
 Source0:        https://github.com/oneapi-src/oneTBB/archive/v%{version}.tar.gz#/tbb-%{version}.tar.gz
 Source99:       tbb-rpmlintrc
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
@@ -75,12 +75,11 @@ BuildRequires:  swig >= 3.0.6
 %endif
 
 %description
-Threading Building Blocks (TBB) offers a rich and complete approach to
-expressing parallelism in a C++ program. It is a library that helps you take
-advantage of multi-core processor performance without having to be a threading
-expert. Threading Building Blocks is not just a threads-replacement library. It
-represents a higher-level, task-based parallelism that abstracts platform
-details and threading mechanism for performance and scalability.
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
 
 %package -n libtbb%{so_ver}
 Summary:        Threading Building Blocks (TBB)
@@ -89,12 +88,13 @@ Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
 %description -n libtbb%{so_ver}
-Threading Building Blocks (TBB) offers a rich and complete approach to
-expressing parallelism in a C++ program. It is a library that helps you take
-advantage of multi-core processor performance without having to be a threading
-expert. Threading Building Blocks is not just a threads-replacement library. It
-represents a higher-level, task-based parallelism that abstracts platform
-details and threading mechanism for performance and scalability.
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
+
+This package provides the core shared library corresponding to oneTBB.
 
 %package -n libtbbmalloc%{so_ver_malloc}
 Summary:        Threading Building Blocks (TBB)
@@ -103,53 +103,76 @@ Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
 %description -n libtbbmalloc%{so_ver_malloc}
-This subpackage contains the two TBB memory allocator templates that
-are similar to the STL template class std::allocator. These two
-templates, scalable_allocator<T> and cache_aligned_allocator<T>,
-address critical issues in parallel programming: scalability and
-false sharing.
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
+
+This package provides the oneTBB memory allocator shared library.
 
 %package -n libirml%{so_ver_irml}
 Summary:        Threading Building Blocks (TBB) - IPC Library
 Group:          System/Libraries
 
 %description -n libirml%{so_ver_irml}
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
+
 This subpackage provides the library required in order to enable inter-process
-(IPC) coordination between oneTBB schedulers for the TBB python module.
+(IPC) coordination between oneTBB schedulers for the oneTBB python module.
 
 %package -n libtbbbind%{tbbbind_suffix}-%{so_ver_bind}
-Summary:        Threading Building Blocks (TBB) NUMA support library
+Summary:        NUMA support library for oneAPI Threading Building Blocks (oneTBB)
 Group:          System/Libraries
 
 %description -n libtbbbind%{tbbbind_suffix}-%{so_ver_bind}
-The NUMA support library for Threading Building Blocks (TBB)
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
 
-
+The NUMA support library for oneTBB.
 
 %if 0%{?python_subpackage_only}
 %package -n python-%{name}
-Summary:        Python %{python_version} support for Threading Building Blocks (TBB)
+Summary:        Python %{python_version} support for oneAPI Threading Building Blocks (oneTBB)
 Group:          Development/Languages/Python
 Requires:       libirml%{so_ver_irml}
 
 %description -n python-%{name}
-This package contains python %{python_version} bindings for Threading Building Blocks
-(TBB).
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
+
+This package contains python %{python_version} bindings for oneTBB.
 
 %else
 
 %package -n python3-%{name}
-Summary:        Python 3 support for Threading Building Blocks (TBB)
+Summary:        Python 3 support for oneAPI Threading Building Blocks (oneTBB)
 Group:          Development/Languages/Python
 Requires:       libirml%{so_ver_irml}
 
 %description -n python3-%{name}
-This package contains python 3 bindings for Threading Building Blocks
-(TBB).
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
+
+This package contains python 3 bindings for oneAPI Threading Building Blocks
+(oneTBB).
 %endif
 
 %package devel
-Summary:        Development Files for Threading Building Blocks (TBB)
+Summary:        Development Files for oneAPI Threading Building Blocks (oneTBB)
 Group:          Development/Libraries/C and C++
 Requires:       c++_compiler
 Requires:       libirml%{so_ver_irml} = %{version}
@@ -158,14 +181,13 @@ Requires:       libtbbbind%{tbbbind_suffix}-%{so_ver_bind} = %{version}
 Requires:       libtbbmalloc%{so_ver_malloc} = %{version}
 
 %description devel
-Threading Building Blocks (TBB) offers a rich and complete approach to
-expressing parallelism in a C++ program. It is a library that helps you take
-advantage of multi-core processor performance without having to be a threading
-expert. Threading Building Blocks is not just a threads-replacement library. It
-represents a higher-level, task-based parallelism that abstracts platform
-details and threading mechanism for performance and scalability.
+oneTBB (previously known as TBB) is a flexible C++ library that simplifies the
+work of adding parallelism to complex applications. The library lets you easily
+write parallel programs that take full advantage of the multi-core performance.
+oneTBB provides you with functions, interfaces, and classes to parallelize and
+scale the code.
 
-This package contains the header files needed for development with tbb.
+This package contains the header files needed for development with oneTBB.
 
 %prep
 %setup -q -n oneTBB-%{version}

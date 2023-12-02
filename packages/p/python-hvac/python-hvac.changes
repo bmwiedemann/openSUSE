@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:57:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * This release fixes an inaccuracy in a warning message but
+    does not otherwise change functionality.
+  * Fix raise_on_deleted_version warning (GH-1045)
+  * ldap auth method - add missing `configure` params by vault
+    api names (GH-975) expand Vault CI matrix, announce
+    deprecation of Vault dynamic SSH keys (GH-1023)
+  * Breaking changes coming to `Client.write` method (GH-1034)
+  * Support for Python 3.6 & 3.7 will be dropped in `v2.0.0`
+  * Support for the Legacy MFA methods will be dropped from the
+    `MFA` class in `v2.0.0` (GH-1026)
+  * Breaking changes coming to Adapters' use of custom sessions
+  * ### 🚀 Features
+  * Add alias_name_source for Kubernetes Auth create_role
+  * add `Client.write_data` method (GH-1028)
+  * ldap auth method - add missing `configure` params by vault
+    api names (GH-975)
+  * Re-add arguments to create_or_update_role() from old API
+    (GH-842)
+  * Add new argument (conflicting_alias_ids_to_keep) to
+    merge_entities method (GH-968)
+  * Add impersonated account support to GCP secrets engine
+    (GH-1022)
+  * support "user_claim_json_pointer" in create_role() for
+    JWT/OIDC auth method (GH-1006)
+  * Add static account support to GCP secrets engine (GH-956)
+  * adding batch_input to transit.sign_data #988 (GH-990)
+  * Add a method to read static roles in the database engine
+    (GH-1009)
+  * feat: add support for `disable_local_ca_jwt` in the
+    Kubernetes auth method (GH-997)
+  * ### 🐛 Bug Fixes
+  * add `Client.write_data` method (GH-1028)
+  * Fix premature read on stream requests in the
+    `sys.take_raft_snapshot` method (GH-771)
+  * fix(`__getattr__`): non-existent attribute lookup (GH-982)
+  * ### 📚 Documentation
+  * docs(secrets-engines): Add database secrets engine docs
+    (GH-1036)
+  * docs: make OIDC Authorization URL Request example work again.
+    (GH-1010)
+  * ### 🧰 Miscellaneous
+  * add tests and docs to sdist, improve build testing (GH-1015)
+  * Bump certifi from 2022.9.14 to 2022.12.7 (GH-1013)
+
+-------------------------------------------------------------------
 Fri Mar 10 12:10:52 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.1.0
@@ -14,7 +62,7 @@ Tue Aug  2 05:50:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove patch python-hvac-no-mock.patch
 - Add patch remove-mock.patch, from upstream.
-- Remove unneeded BuildRequires on mock 
+- Remove unneeded BuildRequires on mock
 
 -------------------------------------------------------------------
 Mon May  2 17:28:37 UTC 2022 - pgajdos@suse.com
@@ -61,7 +109,7 @@ Tue May 18 22:15:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - Add handling of unsupported HTTP methods inside adapter. GH-689
   - Add Convenience `read_secret()` Method for KVv2 Class. GH-686
   - Set daemon attribute instead of using setDaemon method that was deprecated in Python 3.10. GH-688
-  - Send AppRole generate_secret_id Method Metadata Parameter as String GH-68 
+  - Send AppRole generate_secret_id Method Metadata Parameter as String GH-68
 
 -------------------------------------------------------------------
 Thu Apr 22 20:22:43 UTC 2021 - Dirk Müller <dmueller@suse.com>

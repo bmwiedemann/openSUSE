@@ -416,4 +416,13 @@
 - drop python-311.patch: fixed upstream</comment>
     <requestid>1128876</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4d7f0644125d8c2da3550055c6c2650a</srcmd5>
+    <version>4.9.1</version>
+    <time>1701533583</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Recommends: make
+</comment>
+    <requestid>1130340</requestid>
+  </revision>
 </revisionlist>

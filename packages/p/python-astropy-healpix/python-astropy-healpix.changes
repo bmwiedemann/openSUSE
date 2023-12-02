@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  2 08:50:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Allow building using any version of Numpy between 1.25 and 2.
+  * Build wheels for PyPI. [#200]
+
+-------------------------------------------------------------------
 Mon Sep 11 20:41:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:

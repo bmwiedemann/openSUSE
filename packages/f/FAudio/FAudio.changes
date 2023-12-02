@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  1 15:56:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.12:
+  * Removed an unused variable from the QOA decoder. 23.12 is
+    functionally identical to 23.11.
+
+-------------------------------------------------------------------
 Tue Nov 21 14:50:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.11:

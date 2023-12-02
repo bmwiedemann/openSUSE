@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Sat Nov 25 19:02:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * nemo-window-slot.c: Update the drop zone target each time the
+    location changes, not just when the view type changes.
+  * Fix some leaks, g_object_unref safety.
+  * Use `activation_uri` as a second choice in `nemo_file_get_local_uri`
+  * nemo-desktop-link.c: Fix warning when toggling the Trash icon
+    in desktop settings.
+  * Fix some style/icon problems.
+  * search: Relax folder restrictions to allow gvfs locations.
+  * compact view: Improve text and selection highlight alignment.
+  * eel-gtk-extensions.c: (Wayland) Fix menu popup positioning,
+    popup
+  * nemo-file.c: Update hard-coded value for size of thumbnails.
+  * Update issue template with a link to open and closed issues.
+  * eel-gtk-extensions: Make wayland display check reusable.
+  * nemo-view.c: Use an admin:/// uri for the 'Open as Root'
+    action when running under Wayland.
+  * nemo-window-slot: Set up dnd against the slot itself instead
+    of updating the target data each time the location changes.
+  * Fix issue when generating video thumbnails from network
+    shares
+  * nemo-thumbnails: Use g_file_peek_path to simplify network-to-
+    local uri conversion.
+  * Emphasize checking for duplicate existing issues in the bug
+    report form.
+  * nemo-window-slot.c: Disable drop bar, until circular
+    reference can be resolved.
+  * nemo-window.c: Don't update saved window state if the window
+    is tiled when closing it.
+  * Fix trying the same filename when moving a file with
+    duplicate name
+  * Fix thumbnail creation for local files
+  * file ops: Use symbolic tray icons.
+  * nemo-view.c: Show detailed actions for some selection types
+  * Fix meson.build deprecations up to 0.56.0
+  * nemo-pathbar.c: Remove unnecessary g_object_unref.
+  * nemo-desktop.c: Use Gtk to set the desktop window hint
+  * nemo-desktop: Add csd-background to ignored-desktop-handlers.
+  * list-view: Remove remaining unused 'drop zone' code.
+  * nemo-list-view: Restrict drag-into-folder actions to be
+    triggered only over text-covered regions of a given row.
+  * nemo-list-view.c: Don't apply column-expand test unless there
+    is a drag operation active.
+  * search: Fix search directory view selection.
+  * nemo-search-directory.c: Don't restart the search if the
+    query hasn't changed.
+  * advanced search: Fix path handling to prevent symbolic links
+    escaping into forbidden locations.
+  * Fix some leaks.
+  * nemo-style-fallback-mandatory.css: Fix styling on inactive
+    pane
+  * nemo-window.c: Fix crash when unmounting a network location.
+  * nemo-places-sidebar.c: Remove extra reference to selected
+    sidebar file when using the popup menu.
+  * nemo-file-utilities.c: Simplify symbolic device icon lookup.
+  * Revert "nemo-list-view.c: Fix some tooltip markup warnings."
+  * Disable view selection when viewing search results.
+  * search: Fix tracker search, which was broken by
+    3c691a8e0e80b5.
+  * nemo-search-directory: Unset the search_running flag when the
+    search completes.
+  * search view: Fix sort column/direction not being remembered.
+  * nemo-list-view.c: Don't try to work out a monospace font to
+    use if no font family is set.
+  * nemo-places-sidebar.c: Allocate extra space for the eject
+    button when overlay-scrollbars are enabled.
+  * nemo-list-view.c: Reset dynamic bottom margin when loading a
+    new location.
+  * l10n: Generate additional files
+    13:00:41 +0100
+  * nemo-view-dnd.c: Fix the check for a web link's title, and
+    use the url if it's missing.
+  * nemo-mime-actions.c: Prioritize an http link to open in a
+    browser, regardless of the mimetype of the link's target.
+  * nemo-file-management-properties.glade: Re-save under glade
+    3.38.
+  * preferences: Allow displaying dates using the system's
+    current monospace font.
+  * Reduce timeout delay for the click-to-rename feature.
+  * thumbnails: Use multiple threads for generating thumbnails.
+  * nemo-thumbnails: Restore compatibility with older glib
+    versions, move all mutex locks off of the UI thread, clean up
+    when nemo exits.
+  * nemo-icon-container.c: Fix thumbnail prioritization in the
+    icon, compact views.
+  * Remove _prioritize_thumbnailing vfuncs in the icon
+    containers.
+  * Clean up nemo-thumbnails.c, add some thread/queue debugging.
+  * nemo-thumbnails.c: Use LIFO sort for the thumbnailing thread.
+  * nemo-thumbnails.c: Fix thread count when the setting is a
+    positive value (specific count desired instead of automatic).
+- drop nemo-gtk-3.20.patch.
+
+-------------------------------------------------------------------
 Tue Mar 21 20:42:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.4:
@@ -31,7 +127,7 @@ Sun Jan 15 21:27:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * nemo-window-pane.c: Use the button-release event for showing the current
     location entry.
   * Run generate_additional_file to populate desktop/action files with new
-    translations. 
+    translations.
 
 -------------------------------------------------------------------
 Mon Jan  2 19:28:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -162,7 +258,7 @@ Fri Jul 16 20:15:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * nemo-view.c: Update context menu item visibility from preferences after
     updating the menu items from any extensions.
   * nemo-view.c: Clear extension menu items during real_update_menus.
-  * nemo-view.c: Move call added to last commit to nemo_view_stop_loading. 
+  * nemo-view.c: Move call added to last commit to nemo_view_stop_loading.
 
 -------------------------------------------------------------------
 Fri Jun 11 05:46:51 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
@@ -293,13 +389,13 @@ Sat Jan  2 18:35:50 UTC 2021 - andy great <andythe_great@pm.me>
   * file-operations: auto-escape filenames on native ntfs mounts
   * file-operations: auto-escape filenames on fuseblk mounts
   * file-operations: don't auto-escape semicolon
-  * nemo-file-operations: Remove a toplevel folder from favorites 
+  * nemo-file-operations: Remove a toplevel folder from favorites
     during a delete operation.
-  * nemo-file.c: Check if a favorite:///file is a symbolic link 
+  * nemo-file.c: Check if a favorite:///file is a symbolic link
     before trying to look up its target uri.
-  * nemo-file.c: nemo_file_set_is_favorite - always set metadata, 
+  * nemo-file.c: nemo_file_set_is_favorite - always set metadata,
     not just when a file is a symlink.
-  * nemo-file.c: nemo_file_is_local - Use the target file uri to 
+  * nemo-file.c: nemo_file_is_local - Use the target file uri to
     decide if a file in the favorites:/// view should be considered
     local.
   * nemo-view.c: Hide the 'move to trash' menu items for recent and
@@ -307,15 +403,15 @@ Sat Jan  2 18:35:50 UTC 2021 - andy great <andythe_great@pm.me>
   * nemo-view.c: Fix visibility check for the trash menu item.
   * favorites: Accept dnd to places-sidebar item to add favorites,
     refactor existing dnd in list and icon views.
-  * nemo-file.c: Check for a broken symbolic link before trying to 
+  * nemo-file.c: Check for a broken symbolic link before trying to
     get a favorite's target uri.
-  * nemo-file-conflict-dialog.c: Fix hidpi scaling of the file 
+  * nemo-file-conflict-dialog.c: Fix hidpi scaling of the file
     icons.
-  * nemo-file.c: Allow the favorites folder to better respect the 
+  * nemo-file.c: Allow the favorites folder to better respect the
     various thumbnailing settings.
   * Add escaping for percent sign in action Exec
   * build: fix typelibdir in libnemo-extension/meson.build.
-  * nemo-desktop-manager.c: Recreate the desktop when the primary 
+  * nemo-desktop-manager.c: Recreate the desktop when the primary
     monitor's scale factor changes.
 
 -------------------------------------------------------------------
@@ -323,9 +419,9 @@ Sat Dec 26 16:46:07 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.2.
   * Fix some leaks revealed by valgrind.
-  * nemo-directory-async.c: Fix an issue with the idle favorite 
+  * nemo-directory-async.c: Fix an issue with the idle favorite
     check.
-  * nemo-places-sidebar.c: Remove favorites signal listener when 
+  * nemo-places-sidebar.c: Remove favorites signal listener when
     the sidebar is destroyed.
 - Updates for version 4.8.1
   * Removed unused variable
@@ -364,7 +460,7 @@ Sun Dec  6 16:30:24 UTC 2020 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Tue Sep 29 19:35:40 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Move nemo-lang from Requires to Recommends.  
+- Move nemo-lang from Requires to Recommends.
 
 -------------------------------------------------------------------
 Fri Sep 18 19:41:40 UTC 2020 - andy great <andythe_great@pm.me>
@@ -375,7 +471,7 @@ Fri Sep 18 19:41:40 UTC 2020 - andy great <andythe_great@pm.me>
   * nemo-view.c: Don't cache the selection, this has been broken by
     deferred attribute loading.
   * debian/rules: Set buildtype to 'debug'.
-  * nemo-bookmark-list.c: Don't get bookmark icon property 
+  * nemo-bookmark-list.c: Don't get bookmark icon property
     notifications.
 
 -------------------------------------------------------------------
@@ -386,15 +482,15 @@ Tue Jun  9 19:26:00 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 -------------------------------------------------------------------
 Thu Apr  2 15:41:48 UTC 2020 - Marguerite Su <i@marguerite.su>
 
-- Update to version 4.4.2 
-  * meson.build: Disable GLib deprecation warnings 
-  * file-operations: fix copying from the trash 
-  * list view: Don't remove the dummy (Loading) entry except during post-loading updates. 
-  * nemo-tree-sidebar.c: Don't free the NemoFile after setting up the context menu for showing, it is owned by the tree model. 
-  * Remove tracker 
-  * nemo-icon-canvas-item.c: Don't hyphenate long filenames 
-  * eel-editable-label.c: Don't hyphenate long filenames 
-  * nemo-program-choosing.c: Remove unused variable that was causing a warning during the build. 
+- Update to version 4.4.2
+  * meson.build: Disable GLib deprecation warnings
+  * file-operations: fix copying from the trash
+  * list view: Don't remove the dummy (Loading) entry except during post-loading updates.
+  * nemo-tree-sidebar.c: Don't free the NemoFile after setting up the context menu for showing, it is owned by the tree model.
+  * Remove tracker
+  * nemo-icon-canvas-item.c: Don't hyphenate long filenames
+  * eel-editable-label.c: Don't hyphenate long filenames
+  * nemo-program-choosing.c: Remove unused variable that was causing a warning during the build.
   * Use meson for pango-1.44 check
 
 -------------------------------------------------------------------
@@ -413,7 +509,7 @@ Sun Jul 21 06:55:55 UTC 2019 - Marguerite Su <i@marguerite.su>
   * various: Fix a couple leaks
   * nemo-list-model.c: When the last child of a node is
     removed, Handle re-adding a dummy row (or not) in the
-    file removed handler, instead of always adding one, 
+    file removed handler, instead of always adding one,
     then removing it on parent's subsequent changed call.
   * nemo-list-view.c: When triggering a rename using the
     'slow double click' trigger, check whether the file
@@ -878,7 +974,7 @@ Sat Oct 28 19:57:36 UTC 2017 - sor.alexei@meowr.ru
     use by rearranging the fields to avoid memory padding in
     structures.
   * eel-editable-label.h: Avoid memory padding. Move fields in a
-    structure to avoid memory padding made padding explicit to 
+    structure to avoid memory padding made padding explicit to
     avoid warning messages if the padding compiler warnings are on.
   * nemo-file-undo-operations.c: Use GQueue instead of GList for
     our undo file pair lists.
@@ -1636,13 +1732,13 @@ Wed Oct 21 14:05:01 UTC 2015 - sor.alexei@meowr.ru
 Mon Aug 10 10:10:25 UTC 2015 - i@marguerite.su
 
 - update version 2.6.7
-  * progress window: simplify slightly, have info widgets 
-    manage themselves 
+  * progress window: simplify slightly, have info widgets
+    manage themselves
 
 -------------------------------------------------------------------
 Tue Jun  2 23:18:52 UTC 2015 - stefan@fam-elser.de
 
-- update to version 2.6.5 
+- update to version 2.6.5
 
 -------------------------------------------------------------------
 Thu Apr 23 17:51:48 UTC 2015 - stefan@fam-elser.de
@@ -1655,7 +1751,7 @@ Wed Nov  5 15:55:28 UTC 2014 - i@marguerite.su
 - update version 2.4.0
 - drop support for openSUSE 12.3 which will be EOL soon
 - drop patch: nemo-2.3.0-revert-hidpi-support.patch
-- add patch: nemo-implicit-pointer-decl.patch 
+- add patch: nemo-implicit-pointer-decl.patch
   * use strcmp without including string.h
 
 -------------------------------------------------------------------
@@ -1705,7 +1801,7 @@ Mon Nov 25 15:13:07 UTC 2013 - johann.luce@wanadoo.fr
 
 - update version 2.0.7
   * Revert "Use gksu instead of pkexec until systemd/glib/whatever is fixed."
-  * Revert "Add a bit more space between items in the places sidebar" 
+  * Revert "Add a bit more space between items in the places sidebar"
   * Add a bit more space between items in the places sidebar
   * Don't show custom mimetype handlers in the menu.
   * Don't crash when browser mode is off and multiple folders are selected and opened.
@@ -1726,7 +1822,7 @@ Mon Nov  4 11:25:33 UTC 2013 - johann.luce@wanadoo.fr
 - update version 2.0.5
   * When renaming test.folder in listview, select entire filename.
   * remove nemo-2.0.3-GTK_STOCK.patch
-  * clean spec file 
+  * clean spec file
 
 -------------------------------------------------------------------
 Sat Nov  2 05:03:08 UTC 2013 - i@marguerite.su

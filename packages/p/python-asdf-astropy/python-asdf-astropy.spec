@@ -27,13 +27,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/asdf-astropy
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf-astropy-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 60}

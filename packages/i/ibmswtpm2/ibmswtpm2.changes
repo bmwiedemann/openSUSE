@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  1 15:34:44 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 164-2020-192.2
+  * Implement the RSA 5 primes optimization.
+  * Check command size for int32 overflow.
+  * Add support for OpenSSL 3.1.x
+  * Do not accept a NULL signKey in TPM2_CertifyX509
+  * Add Nuvoton to gcc makefile
+- New project URL - move to github
+- Drop usptreamed ibmswtpm2-OpenSSL-3.1.patch
+
+-------------------------------------------------------------------
 Wed Mar 15 08:21:19 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Add support for OpenSSL 3.1.x
@@ -19,7 +31,7 @@ Sat Sep 24 08:23:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * PlatformSvc: return error on control socket failure
   * main: set a return code if StartTcpServer fails
   * tpm: Add all updates to TPM specification 164.
-- drop ibmswtpm2-fix-ppc32.patch (upstream) 
+- drop ibmswtpm2-fix-ppc32.patch (upstream)
 - makefile.patch: refresh
 
 -------------------------------------------------------------------

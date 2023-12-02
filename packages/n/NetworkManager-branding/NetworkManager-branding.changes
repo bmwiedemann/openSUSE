@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:41:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix most rpmlint warnings:
+  + suse-zypp-packageand: use current Supplements: (A and B) syntax
+    over packagand(A:B)
+  + summary-ended-with-dot: Remove dot at the end of Summary:
+  + no-%build-section: Add empty %build section
+  + branding-supplements-missing: Fixes as part of
+    suse-zypp-packageand.
+
+-------------------------------------------------------------------
 Fri Aug 12 06:14:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Expliciltly BuildRequire NetworkManager-branding-upstream:

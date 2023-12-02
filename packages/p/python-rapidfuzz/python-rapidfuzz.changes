@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  1 17:57:05 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not buildrequire PyInstaller nor pandas which aren't used
+
+-------------------------------------------------------------------
 Wed May 31 08:28:24 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - do not use glob for dist-info directory name

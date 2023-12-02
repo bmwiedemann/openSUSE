@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 30 23:09:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.19
+  * string: fixed HX_strtoull_unit with negative fractions
+    producing 0 sometimes
+  * opt: fix HX_getopt losing argv on HXOPT_KEEP_ARGV
+- Delete 0001-string-resolve-testsuite-failure-with-aarch64.patch
+  (merged)
+
+-------------------------------------------------------------------
+Mon Nov 27 11:25:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.18
+  * opt: new HX_getopt5 API for the parser with untangled in and
+    out variables
+  * string: HX_strtoull_units handles negative values now (like
+    strtoull)
+  * string: HX_strtoull_units & HX_strtoull_(n)sec now set
+    errno=ERANGE for nonrepresentable results
+  * string: HX_strtoull_sec rejects unitless numbers now
+- Add 0001-string-resolve-testsuite-failure-with-aarch64.patch
+
+-------------------------------------------------------------------
 Sun Nov 12 11:09:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.17

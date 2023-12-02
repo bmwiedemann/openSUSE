@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 01 16:08:07 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 1.4.1:
+  + Fix build with MSVC
+  + Fix build with libappstream 1.0
+  + AdwCarousel: Fix carousel scroll behavior with page reordering
+  + AdwComboRow:
+    - Fix focus when opening the popover
+    - Set the correct state on the selected checkmark
+  + AdwNavigationView: Fix a warning message
+  + AdwTabOverview: Allow child focus on out animations
+  + AdwTabView:
+    - Keep view alive during ::page-detached
+    - Fix crashes when using :pages
+  + Docs: Fix erroneous <child> use in breakpoints migration guide
+  + Updated translations.
+- Drop 3e3967d5f69180644519936991cad10136e84ca9.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Wed Nov 22 10:48:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 3e3967d5f69180644519936991cad10136e84ca9.patch: Fix building

@@ -22,3 +22,22 @@ This reduces the size of the electron binary by 2MB.
  #else
  #define V8_EXPORT_PRIVATE
  #define V8_EXPORT_ENUM
+
+
+This should also be hidden, see https://github.com/electron/electron/pull/40624
+--- src/v8/src/trap-handler/trap-handler.h.orig	2023-11-22 21:11:42.771625500 +0100
++++ src/v8/src/trap-handler/trap-handler.h	2023-11-30 20:57:23.411956500 +0100
+@@ -54,11 +54,11 @@ namespace trap_handler {
+ #if defined(BUILDING_V8_SHARED) && defined(V8_OS_WIN)
+ #define TH_EXPORT_PRIVATE __declspec(dllexport)
+ #elif defined(BUILDING_V8_SHARED)
+-#define TH_EXPORT_PRIVATE __attribute__((visibility("default")))
++#define TH_EXPORT_PRIVATE __attribute__((visibility("hidden")))
+ #elif defined(USING_V8_SHARED) && defined(V8_OS_WIN)
+ #define TH_EXPORT_PRIVATE __declspec(dllimport)
+ #else
+-#define TH_EXPORT_PRIVATE
++#define TH_EXPORT_PRIVATE __attribute__((visibility("hidden")))
+ #endif
+ 
+ #define TH_CHECK(condition) \

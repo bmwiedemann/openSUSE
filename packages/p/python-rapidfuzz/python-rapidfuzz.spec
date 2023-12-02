@@ -25,11 +25,9 @@ License:        MIT
 URL:            https://github.com/maxbachmann/RapidFuzz
 Source:         https://files.pythonhosted.org/packages/source/r/rapidfuzz/rapidfuzz-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module PyInstaller}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}

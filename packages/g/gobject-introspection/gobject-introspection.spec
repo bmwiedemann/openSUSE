@@ -43,8 +43,6 @@ BuildRequires:  python3-Mako
 BuildRequires:  python3-Markdown
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.75.0
@@ -103,8 +101,9 @@ a uniform, machine readable format.
 %autosetup -p1
 
 %build
+# cairo is only needed for some tests, don't enable it
 %meson \
-	-Dcairo=enabled \
+	-Dcairo=disabled \
 	-Ddoctool=enabled \
 	-Dgtk_doc=true \
 	-Dpython='%{_bindir}/python3' \

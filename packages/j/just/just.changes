@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 02 01:51:03 UTC 2023 - xtexchooser@duck.com
+
+- Update to version 1.16.0:
+  * Release 1.16.0 (#1720)
+  * Fix readme typo (#1717)
+  * Fix Fish completion script (#1710)
+  * Add ARMv6 release target (#1715)
+  * Add `semver_matches` function (#1713)
+  * Clean up error display (#1699)
+  * Misc fixes (#1700)
+  * Fix readme build badge (#1697)
+  * Add `dotenv-filename` and `dotenv-path` settings (#1692)
+  * Fix set tempdir grammar (#1695)
+  * Add version to attributes (#1694)
+  * Allow setting echoed recipe line color (#1670)
+  * Update README.md (#1691)
+
+-------------------------------------------------------------------
 Wed Oct 25 03:03:03 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
 
 - Update to version 1.15.0:

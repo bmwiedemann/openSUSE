@@ -26,9 +26,8 @@ Summary:        A Library for Rendering SVG Data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
-Source:         %{name}-%{version}.tar.xz
-Source2:        vendor.tar.zst
-Source3:        cargo_config
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source99:       baselibs.conf
 
 BuildRequires:  cargo-packaging >= 1.2.0+3
@@ -135,9 +134,7 @@ This package contains a thumbnailer to render SVG (scalable vector
 graphics) data.
 
 %prep
-%autosetup -p1 -a2
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
+%autosetup -p1 -a1
 
 %build
 export RUSTFLAGS="%{build_rustflags}"

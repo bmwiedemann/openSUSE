@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 01 10:04:40 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.3+git.1701075380.a5dc985:
+  * build(deps): bump actix-rt from 2.8.0 to 2.9.0
+  * Bump version to 0.2.3
+  * build(deps): bump reqwest from 0.11.20 to 0.11.22
+  * Bump configuration version and fix enable_iak_idevid
+  * Enable test functional/iak-idevid-register-with-certificates
+  * Update packit plan with new tests
+  * Add certificates and certificate checking for IDevID and IAK keys (#669)
+
+-------------------------------------------------------------------
 Fri Nov 03 15:23:05 UTC 2023 - aplanas@suse.com
 
 - Update to version 0.2.2+git.1697658634.9c7c6fa:

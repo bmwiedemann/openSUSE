@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  1 22:20:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  New Features:
+  * Add .rar support (decompression and listing, see clarification below) (#529)
+  * Add .7z support (#555)
+  Improvements:
+  * Switch to the faster lz4 implementation, lz4_flex (#445)
+  * Improve error message when decompressing with missing extensions (#518)
+  * Strip binary when building with cargo (#535)
+  * Completions: hint generator to expand to file paths (#508)
+  Bug Fixes:
+  * Fix size unit inconsistency (#502)
+  * Fix unaligned output when using parallelism (#509)
+
+-------------------------------------------------------------------
 Tue Aug  8 06:25:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.2:

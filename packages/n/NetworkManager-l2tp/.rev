@@ -127,4 +127,12 @@
     <comment>Update to version 1.20.8.</comment>
     <requestid>1056305</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>58a1c15d9342daad5f864adedcc1f672</srcmd5>
+    <version>1.20.10</version>
+    <time>1701533534</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.20.10 (forwarded request 1130202 from dimstar)</comment>
+    <requestid>1130316</requestid>
+  </revision>
 </revisionlist>

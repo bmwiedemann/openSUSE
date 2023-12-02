@@ -2517,4 +2517,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1119290</requestid>
   </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>4c2b0beef62d00e9c45f616a31d184a7</srcmd5>
+    <version>3.50.2</version>
+    <time>1701533528</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.50.2 (forwarded request 1130197 from dimstar)</comment>
+    <requestid>1130312</requestid>
+  </revision>
 </revisionlist>

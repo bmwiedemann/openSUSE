@@ -1,7 +1,7 @@
 #
 # spec file for package libkolabxml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,14 @@ Release:        0
 Summary:        Kolab XML Format Schema Definitions Library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://kolab.org/about/libkolabxml
+URL:            https://git.kolab.org/diffusion/LKX/
 Source:         %{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Make-sure-boost-is-found-when-using-libkolabxml.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libxerces-c-devel >= 3.0
 BuildRequires:  pkgconfig
@@ -43,8 +45,6 @@ BuildRequires:  xsd >= 3.0
 %if %{with php}
 BuildRequires:  php-devel >= 5.3
 %endif
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
 %if %{with java}
 BuildRequires:  java-devel
 %endif
@@ -169,8 +169,7 @@ Features:
 This package provides the php bindings for Libkolabxml
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Tests require X server and net
@@ -219,8 +218,7 @@ cd build/
 ctest -V ||:
 %endif
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING

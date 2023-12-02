@@ -414,4 +414,14 @@
     from opening (forwarded request 1127932 from dirkmueller)</comment>
     <requestid>1128034</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2d4fdba4b86c54c022e271bc37b9a3bd</srcmd5>
+    <version>23.12</version>
+    <time>1701533608</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.12:
+  * Removed an unused variable from the QOA decoder. 23.12 is
+    functionally identical to 23.11. (forwarded request 1130290 from dirkmueller)</comment>
+    <requestid>1130445</requestid>
+  </revision>
 </revisionlist>

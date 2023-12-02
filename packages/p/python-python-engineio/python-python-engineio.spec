@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-python-engineio
 Version:        4.3.4
 Release:        0

@@ -92,4 +92,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1086032</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>22a032197dfd6440262a688245c48ad1</srcmd5>
+    <version>1.1.3</version>
+    <time>1701533580</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.3:
+  * Add `__all__` to __init__.py
+  * Add `zip_safe=False`
+
+- Update to 1.1.1:
+  * drop Python 3.5 support
+  * allow chardet 4</comment>
+    <requestid>1130334</requestid>
+  </revision>
 </revisionlist>

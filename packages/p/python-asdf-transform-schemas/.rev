@@ -36,4 +36,12 @@
   * Remove unnecessary tag: entry from all schemas.</comment>
     <requestid>1031586</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96077053ede18cf69f08814fa3f5186d</srcmd5>
+    <version>0.4.0</version>
+    <time>1701533611</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1130451</requestid>
+  </revision>
 </revisionlist>

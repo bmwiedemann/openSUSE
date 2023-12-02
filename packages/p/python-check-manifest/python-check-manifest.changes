@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  1 18:58:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to use the current interpreter by default in the 
+  TestCheckManifest::test_python_from_path test in SLE. Otherwise
+  the test runs the python3.6 interpreter which doesn't work:
+  * use-current-interpreter.patch
+
+-------------------------------------------------------------------
 Sun Jun 11 08:30:38 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

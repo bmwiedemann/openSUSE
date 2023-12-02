@@ -17,7 +17,7 @@
 
 
 Name:           libnotify
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 
 %description

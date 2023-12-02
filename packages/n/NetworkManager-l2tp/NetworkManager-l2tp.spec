@@ -18,13 +18,13 @@
 
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
 Name:           NetworkManager-l2tp
-Version:        1.20.8
+Version:        1.20.10
 Release:        0
 Summary:        NetworkManager VPN support for L2TP and L2TP/IPsec
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://github.com/nm-l2tp/NetworkManager-l2tp
-Source0:        https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  libxml2-tools
 BuildRequires:  openssl-devel

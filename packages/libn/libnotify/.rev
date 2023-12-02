@@ -360,4 +360,12 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
   explicit man=true to meson, ensure we are building manpages. (forwarded request 1067430 from iznogood)</comment>
     <requestid>1067450</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a65bd690c4643da2d7ae174325d82970</srcmd5>
+    <version>0.8.3</version>
+    <time>1701533536</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.8.3 (forwarded request 1130203 from dimstar)</comment>
+    <requestid>1130317</requestid>
+  </revision>
 </revisionlist>

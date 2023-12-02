@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  1 17:06:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * Fixed regression in Word(min), reported by Ricardo Coccioli,
+    good catch!
+  * Fixed bug in bad exception messages raised by Forward
+  * Fixed regression in SkipTo, where ignored expressions were
+    not checked when looking for the target expression.
+  * Fixed type annotation for enable_packrat
+  * Some general internal code cleanup
+- drop limit-error-messages.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jul 11 11:01:42 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
-- Add upstream patch limit-error-messages.patch as a part of 
+- Add upstream patch limit-error-messages.patch as a part of
   a workaround for boo#1213007
 
 -------------------------------------------------------------------
@@ -9,10 +22,10 @@ Sat Jul  1 13:52:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.1.0
   * API ENHANCEMENT: `Optional(expr)` may now be written as `expr | ""`
-  * Added new class property `identifier` to all Unicode set classes in 
-    `pyparsing.unicode`, using the class's values for `cls.identchars` 
+  * Added new class property `identifier` to all Unicode set classes in
+    `pyparsing.unicode`, using the class's values for `cls.identchars`
     and `cls.identbodychars`.
-  * ParseResults` now has a new method `deepcopy()`, in addition to the 
+  * ParseResults` now has a new method `deepcopy()`, in addition to the
     current `copy()` method.
   * Reworked `delimited_list` function into the new `DelimitedList` class.
   * Added new class method `ParserElement.using_each`
@@ -21,7 +34,7 @@ Sat Jul  1 13:52:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
   * `ParserElement.validate()` is deprecated.
   * Added bool `embed` argument to `ParserElement.create_diagram()`.
   * Added support for Python 3.12.
-  * Updated `create_diagram()` code to be compatible with 
+  * Updated `create_diagram()` code to be compatible with
     railroad-diagrams package version 3.0.
   * Many other changes, see upstream CHANGES
 
@@ -38,7 +51,7 @@ Thu Apr 13 22:43:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Feb 17 20:54:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- do primary/all split only for tumbleweed (similar to flit-core) 
+- do primary/all split only for tumbleweed (similar to flit-core)
 
 -------------------------------------------------------------------
 Thu Sep 15 22:00:29 UTC 2022 - Ben Greiner <code@bnavigator.de>

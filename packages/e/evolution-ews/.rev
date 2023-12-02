@@ -1191,4 +1191,12 @@
     <comment></comment>
     <requestid>1119288</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>9c2e7170f56798825cbe43157b5da37d</srcmd5>
+    <version>3.50.2</version>
+    <time>1701533530</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.50.2 (forwarded request 1130198 from dimstar)</comment>
+    <requestid>1130313</requestid>
+  </revision>
 </revisionlist>

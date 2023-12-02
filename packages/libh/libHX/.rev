@@ -605,4 +605,12 @@ Try submission again, hoping that the service validator is updated on the server
     <comment>- Update to release 4.17</comment>
     <requestid>1125259</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>4a6c71a410e200ea9cb61083630bc7af</srcmd5>
+    <version>4.19</version>
+    <time>1701533564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.19</comment>
+    <requestid>1130223</requestid>
+  </revision>
 </revisionlist>

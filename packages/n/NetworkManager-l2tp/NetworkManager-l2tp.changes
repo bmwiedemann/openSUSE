@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 11 22:47:24 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
+
+- Update to version 1.20.10:
+  + Fix missing ppp user option.
+  + Add support for compiling against pppd-2.5.0, including
+    pkgconfig support to pickup the pppd plugin directory.
+  + Add error output for missing TLS filenames.
+  + Remove bashisms in configure script.
+  + Spell checked code with CSpell.
+
+-------------------------------------------------------------------
 Wed Jan  4 11:16:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.20.8:

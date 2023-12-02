@@ -18,9 +18,9 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.400.0
+Version:        1.410.0
 Release:        0
-%define cpan_version 1.40
+%define cpan_version 1.41
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -58,7 +58,7 @@ Requires:       perl(IO::Socket::IP) >= 0.38
 Requires:       perl(PerlIO) >= 1.05
 Requires:       perl(Scalar::Util) >= 1.19
 Requires:       perl(Time::Local) >= 1.19
-Provides:       perl(Net::DNS) = 1.400.0
+Provides:       perl(Net::DNS) = %{version}
 Provides:       perl(Net::DNS::Domain)
 Provides:       perl(Net::DNS::DomainName)
 Provides:       perl(Net::DNS::DomainName1035)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 24 03:07:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.991
+   see /usr/share/doc/packages/perl-Sub-Exporter/Changes
+
+  0.991     2023-11-23 20:32:17-05:00 America/New_York
+          - make the requirement for perl v5.12.0 explicit; previously, it was
+            only implicit because of prerequisites
+
+-------------------------------------------------------------------
 Sun Jul 23 03:08:46 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.990

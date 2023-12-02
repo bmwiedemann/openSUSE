@@ -82,4 +82,25 @@
   * Adapted the code to work with the new JSON data format</comment>
     <requestid>1102873</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f28cdd7fa7c2130250673b33d2afd858</srcmd5>
+    <version>1.4.0</version>
+    <time>1701533621</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * python 3.12 support
+  * Introducing new `ua.getRandom`, `ua.getFirefox`,
+    `ua.getChrome`, `ua.getSafari`. And a generic method:
+    `ua.getBrowser(..)` (eg. `getBrowser('firefox')`)
+    These new properties above allows you to retrieve the whole
+    raw Python dictionary, instead of only the UA string.
+    These properties might return different key/values pairs in
+    the future! So `ua.random` is a more stable interface.
+  * Improved user-agent scraper (now also containing Safari
+    browser again)
+  * Updated browsers.json data file
+
+  * security update</comment>
+    <requestid>1130471</requestid>
+  </revision>
 </revisionlist>

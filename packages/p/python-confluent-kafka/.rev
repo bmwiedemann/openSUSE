@@ -128,4 +128,24 @@
   * Deprecated `AvroProducer` and `AvroConsumer`. Use</comment>
     <requestid>1085344</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cfdeaf6fab2b1ce4e964dbacf7ef4f09</srcmd5>
+    <version>2.2.0</version>
+    <time>1701533578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * KIP-339
+  * IncrementalAlterConfigs API (#1517).
+  * KIP-554:
+  * User SASL/SCRAM credentials alteration and description
+    (#1575).
+  * Added documentation with an example of FIPS compliant
+    communication with Kafka cluster.
+  * Fixed wrong error code parameter name in KafkaError.
+
+    default (which uses len) will not be used.
+  in a future version and the setting will then default to `False` (new format).
+  upgrade considerations.</comment>
+    <requestid>1130330</requestid>
+  </revision>
 </revisionlist>

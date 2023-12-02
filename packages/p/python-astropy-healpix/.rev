@@ -39,4 +39,14 @@
 - required by python-reproject</comment>
     <requestid>1110367</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d086fa974cba2aebb86d928cf1993d76</srcmd5>
+    <version>1.0.1</version>
+    <time>1701533600</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+  * Allow building using any version of Numpy between 1.25 and 2.
+  * Build wheels for PyPI. [#200]</comment>
+    <requestid>1130392</requestid>
+  </revision>
 </revisionlist>

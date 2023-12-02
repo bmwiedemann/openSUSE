@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  1 17:01:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.3:
+  * Add `__all__` to __init__.py
+  * Add `zip_safe=False`
+
+-------------------------------------------------------------------
 Wed May  3 08:53:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:
@@ -9,7 +16,7 @@ Wed May  3 08:53:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Sep 29 15:56:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.1.1:  
+- Update to 1.1.1:
   Remove chardet<5 requirement by @karolinku in #6
   Add support for Python 3.11
   Remove code that for support Python 2
@@ -24,13 +31,13 @@ Tue Oct 26 20:38:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
   * add Python 3.10 support
-  * drop Python 3.5 support 
+  * drop Python 3.5 support
 
 -------------------------------------------------------------------
 Tue Sep  7 06:59:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:
-  * allow chardet 4 
+  * allow chardet 4
 
 -------------------------------------------------------------------
 Sun Dec 20 08:22:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>

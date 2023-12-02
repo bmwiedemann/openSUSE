@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:43:26 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu May 11 19:53:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Replace build_sphinx setuptools hook with direct sphinx-build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  1 10:43:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.1:
+  + creatediskimage: Fix crash if image creation has errors.
+  + Update appdata
+  + Updted translations.
+
+-------------------------------------------------------------------
 Sun Sep 10 20:31:18 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 45.0:

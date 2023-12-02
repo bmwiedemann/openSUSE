@@ -33,6 +33,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
+Patch0:         use-current-interpreter.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -70,7 +71,9 @@ and missing files in MANIFEST.
 
 %prep
 %setup -q -n check-manifest-%{version}
-%autopatch -p1
+%if 0%{?suse_version} == 1500
+%patch0 -p1
+%endif
 
 sed -i '1{\,^#!%{_bindir}/env python,d}' check_manifest.py
 chmod -x check_manifest.py

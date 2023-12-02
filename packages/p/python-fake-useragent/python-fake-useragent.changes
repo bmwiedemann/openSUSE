@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec  2 14:16:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * python 3.12 support
+  * Introducing new `ua.getRandom`, `ua.getFirefox`,
+    `ua.getChrome`, `ua.getSafari`. And a generic method:
+    `ua.getBrowser(..)` (eg. `getBrowser('firefox')`)
+    These new properties above allows you to retrieve the whole
+    raw Python dictionary, instead of only the UA string.
+    These properties might return different key/values pairs in
+    the future! So `ua.random` is a more stable interface.
+  * Improved user-agent scraper (now also containing Safari
+    browser again)
+  * Updated browsers.json data file
+
+-------------------------------------------------------------------
 Tue Aug  8 10:59:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
@@ -21,7 +37,7 @@ Wed Apr 19 09:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Thu Feb  9 17:10:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:
-  * security update 
+  * security update
 
 -------------------------------------------------------------------
 Mon Jan  2 16:00:55 UTC 2023 - Dirk Müller <dmueller@suse.com>

@@ -1414,4 +1414,27 @@ self, run_tests_report, expected_parse_results=None, msg=None)
     <comment></comment>
     <requestid>1098329</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>335a5613bee27cf54130820e8c555fea</srcmd5>
+    <version>3.1.1</version>
+    <time>1701533548</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  * Fixed regression in Word(min), reported by Ricardo Coccioli,
+    good catch!
+  * Fixed bug in bad exception messages raised by Forward
+  * Fixed regression in SkipTo, where ignored expressions were
+    not checked when looking for the target expression.
+  * Fixed type annotation for enable_packrat
+  * Some general internal code cleanup
+- drop limit-error-messages.patch (upstream)
+
+- Add upstream patch limit-error-messages.patch as a part of
+  * Added new class property `identifier` to all Unicode set classes in
+    `pyparsing.unicode`, using the class's values for `cls.identchars`
+  * ParseResults` now has a new method `deepcopy()`, in addition to the
+  * Updated `create_diagram()` code to be compatible with
+- do primary/all split only for tumbleweed (similar to flit-core)</comment>
+    <requestid>1130338</requestid>
+  </revision>
 </revisionlist>

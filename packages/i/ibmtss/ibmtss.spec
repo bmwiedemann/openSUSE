@@ -1,7 +1,7 @@
 #
 # spec file for package ibmtss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,12 @@
 #
 
 
-#
-%define libversion 1
-%define libversion_full 1.6.0
+%define libversion 2
 %define libname libibmtss
 %define libpkgname %{libname}%{libversion}
 
 Name:           ibmtss
-Version:        1.6.0
+Version:        2.1.1
 Release:        0
 Summary:        IBM's TPM 2.0 TSS
 License:        BSD-3-Clause
@@ -32,12 +30,6 @@ URL:            https://sourceforge.net/projects/ibmtpm20tss
 Source:         https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{version}.tar.gz
 Source1:        90-tpm-ibmtss.rules
 Patch1:         ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
-Patch2:         ibmtss-regtests-Update-openssl-key-generation-for-3.0.0.patch
-Patch3:         ibmtss-utils-Update-certifyx509-for-Openssl-3.0.0.patch
-Patch4:         ibmtss-utils-Remove-unused-variables-from-certifyx509.patch
-Patch5:         ibmtss-tss-Port-HMAC-operations-to-openssl-3.0.patch
-Patch6:         ibmtss-utils-Port-to-openssl-3.0.0-replaces-RSA-with-EVP_PK.patch
-Patch7:         ibmtss-openssl3-deprecation.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2
@@ -83,12 +75,14 @@ Includes IBM's TPM 2.0 TSS C header files
 %autopatch -p1
 
 %build
-autoreconf -i
-%configure --enable-hwtpm --enable-debug --disable-static
+autoreconf -ifv
+%configure --enable-debug --disable-static
 cd utils
-sed -i -e "s|/gsa/yktgsa/home/k/g/kgold/tpm2/utils|$PWD|" certificates/rootcerts.txt
+sed -i -e "s|/home/kgold/tss2/utils|$PWD|" certificates/rootcerts.txt
 %{_libexecdir}/%{name}/tpm_server & tpm_server="$!"
-CCFLAGS="%{optflags}" make LNAFLAGS="-Wl,-rpath,%{_libdir}" %{?_smp_mflags}
+export CCFLAGS="%{optflags}"
+export LNAFLAGS="-Wl,-rpath,%{_libdir}"
+%{make_build}
 testfailed=0
 TPM_INTERFACE_TYPE=socsim LD_LIBRARY_PATH=.libs ./reg.sh -a || testfailed=$?
 kill "$tpm_server" || :
@@ -113,12 +107,12 @@ find %{buildroot} -name .cvsignore | xargs rm -v
 
 %files
 %license LICENSE
-%doc ibmtss.doc
+%doc ibmtss.docx
 %{_bindir}/tss*
 %{_mandir}/man1/tss*.1%{?ext_man}
 
 %files -n %{libpkgname}
-%{_libdir}/%{libname}*.so.%{libversion_full}
+%{_libdir}/%{libname}*.so.%{version}
 %{_libdir}/%{libname}*.so.%{libversion}
 
 %files base

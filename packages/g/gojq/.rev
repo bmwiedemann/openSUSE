@@ -29,4 +29,29 @@
 - Update vendor tarball.</comment>
     <requestid>1090546</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6846e9e042c05ff79d9e158114a10c9</srcmd5>
+    <version>0.12.14</version>
+    <time>1701533582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.12.14
+  * Implement `abs`, `pick` and `debug/1` functions.
+  * Implement `--raw-output0` option, and remove `--nul-output` (`-0`) option.
+  * Fix string multiplication by zero to emit an empty string.
+  * Fix zero divided by zero to emit an error, not `nan`.
+  * Fix modulo operator to emit `nan` if either side is `nan`.
+  * Fix `implode` function to emit replacement characters on
+    invalid code points.
+  * Fix `stderr` function to output strings in raw format.
+  * Fix `error` function to throw an error even for `null`.
+  * Fix `walk` function on multiple outputs arguments.
+  * Fix `--from-file` option to work with `--arg` and `--argjson` options.
+  * Improve query parser to support comment continuation with backslash.
+  * Improve `modulemeta` function to include defined function names in
+    the module.
+  * Improve search path of `import` and `include` directives to support
+    `$ORIGIN` expansion.
+  * Remove deprecated `leaf_paths` function.</comment>
+    <requestid>1130335</requestid>
+  </revision>
 </revisionlist>

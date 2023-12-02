@@ -20,15 +20,13 @@
 %define sover   1
 %define typelib typelib-1_0-Nemo-3_0
 Name:           nemo
-Version:        5.6.4
+Version:        6.0.0
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/nemo
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE nemo-gtk-3.20.patch -- Restore GTK+ 3.20 support.
-Patch0:         nemo-gtk-3.20.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
@@ -107,7 +105,6 @@ This package provides the GObject Introspection bindings for Nemo.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"

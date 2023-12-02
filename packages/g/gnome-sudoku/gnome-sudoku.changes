@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  1 15:00:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.3:
+  + Adjust red warning color to be brighter, to help colorblind
+    users
+  + Fix earmarks not being checked for warnings
+  + Fix crash when using arrow keys with no cell selected
+  + Fix criticals when adding earmarks introduced in 45.2
+
+-------------------------------------------------------------------
 Fri Oct 20 18:32:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.2:

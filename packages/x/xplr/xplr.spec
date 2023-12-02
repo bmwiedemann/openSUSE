@@ -25,8 +25,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/sayanarijit/xplr
 Source0:        https://github.com/sayanarijit/xplr/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
-Source3:        https://github.com/sayanarijit/xplr/releases/download/v%{version}/source.tar.gz.asc#/v%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
+Source2:        https://github.com/sayanarijit/xplr/releases/download/v%{version}/source.tar.gz.asc#/v%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source4:        https://arijitbasu.in/gpg.txt#/%{name}.keyring
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
@@ -42,8 +41,6 @@ scriptable, keyboard-controlled, real-time visual interface.
 
 %prep
 %autosetup -a1
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
 sed -i 's/-- version = "0.0.0"/version = "%{version}"/' src/init.lua
 
 %build

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 25 13:50:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Drop support for Python 3.8 in accordance with NEP 29. [#180]
+  * Update ``RepresentationConverter`` for new class paths in
+    astropy [#181]
+  * Update Converters so that all Class Variables are immutable
+  * Remove ``oldest-supported-numpy`` from ``pyproject.toml``
+    ``build-system`` as this was never needed and will cause
+    problems building on python 3.12 betas.
+  * Use unique uri for extensions that implement converters for
+    core asdf types [#199]
+  * Add support for astropy.table.NdarrayMixin [#200]
+  * Update angle converters for new class paths in astropy [#207]
+
+-------------------------------------------------------------------
 Thu May 18 19:33:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.4.0
@@ -77,7 +93,7 @@ Sun Mar 13 08:03:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
   * Add converter for Spline1D model.
   * Add astropy Table connector for ASDF.
   * Move assert_model_equal to helpers module.
-  * Fix warnings raised during testing. 
+  * Fix warnings raised during testing.
 - Make _multibuild in order to avoid build cycles
 
 -------------------------------------------------------------------

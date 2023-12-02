@@ -1112,4 +1112,12 @@ New stable release</comment>
     <comment></comment>
     <requestid>1120738</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>102938496d19e19fd69a647f78d3f1d6</srcmd5>
+    <version>45.2</version>
+    <time>1701533532</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 45.2 (forwarded request 1130199 from dimstar)</comment>
+    <requestid>1130314</requestid>
+  </revision>
 </revisionlist>

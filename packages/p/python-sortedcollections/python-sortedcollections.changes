@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:43:28 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Jan 30 05:20:31 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.1.0

@@ -668,4 +668,12 @@
   + Updated translations. (forwarded request 1110325 from iznogood)</comment>
     <requestid>1110889</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>212433c3220c0fcccce54708ec97a667</srcmd5>
+    <version>45.1</version>
+    <time>1701533532</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 45.1 (forwarded request 1130200 from dimstar)</comment>
+    <requestid>1130315</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 30 12:58:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Run service with new obs-service-cargo, drop cargo_config as
+  source and clean up spec and. Cargo_audit and cargo_config are
+  now part of the cargo_vendor tarball/service, but in this case,
+  since the sourcedir in _service is called glycin, we need to keep
+  the manual set cargo_audit in _service to clear validation.
+
+-------------------------------------------------------------------
 Tue Nov 14 20:05:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.2:

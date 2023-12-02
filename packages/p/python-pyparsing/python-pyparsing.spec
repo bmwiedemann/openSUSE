@@ -56,14 +56,12 @@ ExclusiveArch:  do-not-build
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-pyparsing%{?psuffix}
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Grammar Parser Library for Python
 License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later
 URL:            https://github.com/pyparsing/pyparsing/
 Source:         https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/pyparsing/pyparsing/pull/493 Limit error message overriding
-Patch:          limit-error-messages.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  fdupes

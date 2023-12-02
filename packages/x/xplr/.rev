@@ -90,4 +90,16 @@
 </comment>
     <requestid>1104876</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>306d808be3b3ea1bfd53b3838cc6a5d6</srcmd5>
+    <version>0.21.3</version>
+    <time>1701533613</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable updates. Seems crates are not happy with updating
+- Revendor dependencies
+- Update vendored dependencies.
+- Remove cargo_config. cargo_config file is now part of vendored tarball.
+</comment>
+    <requestid>1130450</requestid>
+  </revision>
 </revisionlist>

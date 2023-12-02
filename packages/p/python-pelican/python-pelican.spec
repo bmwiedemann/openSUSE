@@ -54,6 +54,7 @@ Requires:       python-rich >= 13.6.0
 Requires:       python-watchfiles >= 0.21.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     make
 Suggests:       asciidoc
 Suggests:       python-Markdown >= 3.5.1
 Suggests:       python-typogrify >= 2.0.7

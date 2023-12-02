@@ -16,6 +16,9 @@
 #
 
 
+# graphviz is needed only for valadoc
+%bcond_without  graphviz
+
 %define         vala_version 0.56
 %define         vala_libversion 0_56
 # The priority defines which version of vala, in case of multiple ones are installed
@@ -36,7 +39,9 @@ BuildRequires:  flex
 BuildRequires:  glib2-devel >= 2.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
+%if %{with graphviz}
 BuildRequires:  pkgconfig(libgvc) >= 2.16
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # Vala is a compiler, so it's also a devel package
@@ -66,6 +71,7 @@ Provides:       libvala-devel = %{version}
 %description -n libvala-%{vala_libversion}-devel
 Development files for the Vala runtime library.
 
+%if %{with graphviz}
 %package -n valadoc
 Summary:        Generator for API documentation from Vala source
 Group:          Development/Tools/Building
@@ -118,12 +124,16 @@ Valadoc is a documentation generator for generating API documentation
 from Vala source code.
 
 This package contains the libvaladoc development files.
+%endif
 
 %prep
 %autosetup -p1
 
 %build
 %configure \
+%if %{without graphviz}
+	--disable-valadoc \
+%endif
 	%{nil}
 %make_build
 
@@ -161,7 +171,9 @@ if [ ! -f %{_bindir}/vala-%{vala_version} ]; then
 fi
 
 %ldconfig_scriptlets -n libvala-%{vala_libversion}-0
+%if %{with graphviz}
 %ldconfig_scriptlets -n libvaladoc-%{vala_libversion}-0
+%endif
 
 %files
 %license COPYING
@@ -197,6 +209,7 @@ fi
 %{_datadir}/vala-%{vala_version}/
 %{_libdir}/vala-%{vala_version}/
 
+%if %{with graphviz}
 %files -n valadoc
 %{_bindir}/valadoc
 %{_bindir}/valadoc-%{vala_version}
@@ -216,12 +229,15 @@ fi
 %dir %{_libdir}/valadoc-%{vala_version}
 %dir %{_libdir}/valadoc-%{vala_version}/doclets
 %{_libdir}/valadoc-%{vala_version}/doclets/html/
+%endif
 
 %files -n libvala-%{vala_libversion}-0
 %{_libdir}/libvala-%{vala_version}.so.*
 
+%if %{with graphviz}
 %files -n libvaladoc-%{vala_libversion}-0
 %{_libdir}/libvaladoc-%{vala_version}.so.*
+%endif
 
 %files -n libvala-%{vala_libversion}-devel
 %{_includedir}/vala-%{vala_version}/

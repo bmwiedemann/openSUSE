@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Dec  1 12:39:14 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- productcompose: follow incompatible flavor syntax change
+- pbuild: support for zstd
+
+-------------------------------------------------------------------
+Fri Dec  1 10:15:05 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- fixed handling for cmdline parameters via kernel packages
+
+-------------------------------------------------------------------
+Thu Nov 30 09:49:19 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- productcompose:
+  * BREAKING: support new schema
+  * adapt flavor architecture parsing
+
+-------------------------------------------------------------------
+Tue Nov 28 07:10:37 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- productcompose:
+  * support filtered package lists
+  * support default architecture listing
+  * fix copy in binaries in VM builds^
+
+-------------------------------------------------------------------
+Mon Nov 20 14:59:25 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- obsproduct build type got renamed to productcompose
+
+-------------------------------------------------------------------
 Mon Nov 20 08:00:48 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - Support zstd compressed rpm-md meta data (bsc#1217269)

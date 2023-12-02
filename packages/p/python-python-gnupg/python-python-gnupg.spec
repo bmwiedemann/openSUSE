@@ -17,14 +17,13 @@
 
 
 %{?sle15_python_module_pythons}
-%define         oldpython python
 Name:           python-python-gnupg
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        A wrapper for the GNU Privacy Guard (GPG or GnuPG)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://pythonhosted.org/python-gnupg/index.html
+URL:            https://pythonhosted.org/python-gnupg/index.html
 Source:         https://files.pythonhosted.org/packages/source/p/python-gnupg/python-gnupg-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -35,10 +34,6 @@ Requires:       gpg2
 Obsoletes:      python-gnupg < %{version}
 Provides:       python-gnupg = %{version}
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-gnupg < %{version}
-Provides:       %{oldpython}-gnupg = %{version}
-%endif
 %python_subpackages
 
 %description

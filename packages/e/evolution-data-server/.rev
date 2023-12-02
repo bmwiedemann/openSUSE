@@ -2281,4 +2281,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1119289</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>19fb35eca37c3cfa0ced042d31e3ca21</srcmd5>
+    <version>3.50.2</version>
+    <time>1701533527</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.50.2 (forwarded request 1130195 from dimstar)</comment>
+    <requestid>1130311</requestid>
+  </revision>
 </revisionlist>

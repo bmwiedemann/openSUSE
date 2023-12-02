@@ -16,11 +16,11 @@
 #
 
 
-%define libversion 3.66.0
+%define libversion 3.66.1
 %define libfilezillaversion 0.45.0
 
 Name:           filezilla
-Version:        3.66.0
+Version:        3.66.1
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later

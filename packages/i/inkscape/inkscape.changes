@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  1 19:23:07 UTC 2023 - thod_@gmx.de
+
+- Update to version 1.3.2:
+  + important bugfix release, fixes a data loss bug in 1.3.1
+  + Stars, polygons, spirals, 3D boxes are now saved correctly
+  + The data that was lost when saving these shapes, 
+    can be recovered in 1.3.2 if you manually make an edit:
+    To fix all missing shapes at once, you can select all elements
+    in all layers (Ctrl + Alt + A, need to unlock them first),
+    and move them right and back left again with a press on the arrow keys
+  + See the full release notes
+    https://inkscape.org/release/inkscape-1.3.2
+
+-------------------------------------------------------------------
 Sun Nov 19 08:29:07 UTC 2023 - thod_@gmx.de
 
 - Update to version 1.3.1:

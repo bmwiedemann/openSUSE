@@ -18,9 +18,9 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.590.0
+Version:        4.600.0
 Release:        0
-%define cpan_version 4.59
+%define cpan_version 4.60
 License:        Artistic-2.0
 Summary:        Handle Common Gateway Interface requests and responses
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -39,15 +39,15 @@ Requires:       perl(File::Temp) >= 0.17
 Requires:       perl(HTML::Entities) >= 3.69
 Requires:       perl(parent) >= 0.225
 Provides:       perl(CGI)
-Provides:       perl(CGI::Carp) = 4.590.0
+Provides:       perl(CGI::Carp) = %{version}
 Provides:       perl(CGI::Cookie)
-Provides:       perl(CGI::File::Temp) = 4.590.0
+Provides:       perl(CGI::File::Temp) = %{version}
 Provides:       perl(CGI::HTML::Functions)
 Provides:       perl(CGI::MultipartBuffer)
-Provides:       perl(CGI::Pretty) = 4.590.0
+Provides:       perl(CGI::Pretty) = %{version}
 Provides:       perl(CGI::Push)
 Provides:       perl(CGI::Util) = 4.590.0
-Provides:       perl(Fh) = 4.590.0
+Provides:       perl(Fh) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 

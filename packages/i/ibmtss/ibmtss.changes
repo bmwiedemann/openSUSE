@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 30 14:36:22 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.1.1:
+  * Add man page for tpmproxy.
+- Update to 2.1.0:
+  * Parse new IMA event log template data fields.
+  * Add option to verify IMA template data
+  * Correct minor regression test script typos.
+- Update to 2.0.0
+  * Expand TPMU_SENSITIVE_COMPOSITE to handle HW TPMs that return 5
+    RSA primes.  This is an ABI (not API) break.
+  * Add support for TPM2_ECC_Encrypt and TPM2_ECC_Decrypt
+  * Add more EFI event log handlers and event tracing.
+  * SW TPM test CA now uses SHA-256, not the deprecated SHA-1.
+  * Port tpmproxy for TPM 2.0 to Linux and Windows.
+  * Add many new EK root certificates.
+  * Remove OpenSSL functions deprecated in 3.x.
+  * Fix TSS bug when using encrypt and decrypt in a PWAP session.
+  * Add build flag to suppress SHA-1.
+- Remove patches fixed upstream:
+  * ibmtss-regtests-Update-openssl-key-generation-for-3.0.0.patch
+  * ibmtss-utils-Update-certifyx509-for-Openssl-3.0.0.patch
+  * ibmtss-utils-Remove-unused-variables-from-certifyx509.patch
+  * ibmtss-tss-Port-HMAC-operations-to-openssl-3.0.patch
+  * ibmtss-utils-Port-to-openssl-3.0.0-replaces-RSA-with-EVP_PK.patch
+  * ibmtss-openssl3-deprecation.patch
+
+-------------------------------------------------------------------
 Wed Nov  9 13:33:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Build with OpenSSL 3.0 deprecated functions until fixed upstream

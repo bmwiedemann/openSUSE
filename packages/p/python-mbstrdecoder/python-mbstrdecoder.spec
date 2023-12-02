@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-mbstrdecoder
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Multi-byte character string decoder
 License:        MIT

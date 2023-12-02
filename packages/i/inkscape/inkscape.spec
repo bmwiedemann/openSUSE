@@ -16,16 +16,16 @@
 #
 
 
-%define _version 1.3.1_2023-11-16_91b66b0783
+%define _version 1.3.2_2023-11-25_091e20ef0f
 
 Name:           inkscape
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
 
-Source:         https://inkscape.org/gallery/item/44467/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
+Source:         https://inkscape.org/gallery/item/44615/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py

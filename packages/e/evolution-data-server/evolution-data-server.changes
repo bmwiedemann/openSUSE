@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  1 10:02:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.50.2:
+  + Bug Fixes:
+    - alarm-notify:
+      . Some reminders could be lost
+      . Birthday floating date shifted by one day
+    - CamelGpgContext: Don't leak istream in gpg_sign_sync().
+    - e-xml-utils: Fix build with libxml2 2.12.
+  + Miscellaneous:
+    - OAuth2: Add scheme handler for OAuth2 prompts in external
+      browser.
+    - EReminderWatcher: Last-notified time not always set.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 20 13:50:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.50.1:

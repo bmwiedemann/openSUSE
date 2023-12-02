@@ -136,4 +136,12 @@
     Iterator, rather than an Iterable</comment>
     <requestid>1082828</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b302c261d6375e17753ecb1c07126fac</srcmd5>
+    <version>0.22.1</version>
+    <time>1701533598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1130386</requestid>
+  </revision>
 </revisionlist>

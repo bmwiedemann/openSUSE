@@ -721,6 +721,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dclock-valid-range-usec-max=946728000000000 \
         -Dadm-group=false \
         -Dwheel-group=false \
+        -Dgroup-render-mode=0660 \
         -Dutmp=false \
         -Ddefault-hierarchy=unified \
         -Ddefault-kill-user-processes=false \

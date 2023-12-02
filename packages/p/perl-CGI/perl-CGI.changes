@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  2 03:06:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.60
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.60 2023-11-01
+
+      [ TESTING ]
+      - move t/changes.t to xt/ as is now broken by the recent rewrite of Test::CPAN::Changes (GH #260)
+
+-------------------------------------------------------------------
 Tue Oct  3 03:06:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.59

@@ -17,6 +17,7 @@
 
 
 %define modname PyQRCode
+%{?sle15_python_module_pythons}
 Name:           python-PyQRCode
 Version:        1.3.6
 Release:        0

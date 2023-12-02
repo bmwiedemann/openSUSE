@@ -29,7 +29,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.12.3
+Version:        4.12.4
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later

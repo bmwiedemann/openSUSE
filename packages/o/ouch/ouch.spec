@@ -17,7 +17,7 @@
 
 
 Name:           ouch
-Version:        0.4.2~0
+Version:        0.5.0+0
 Release:        0
 Summary:        Compression and decompression utility for the terminal
 License:        MIT
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  gcc-c++
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -35,7 +36,7 @@ compressing and decompressing files from and to several formats.
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

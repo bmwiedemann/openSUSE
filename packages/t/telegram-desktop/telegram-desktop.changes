@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec  1 13:33:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.12.1
+  * Fix assertion violation with imported messages.
+
+- Updated to version 4.12.0
+  * Similar channels.
+  * Wallpapers for both sides.
+  * Voice-to-Text for rveryone.
+  * Story statistics for channels.
+  * Custom Reactions for channels.
+  * Automatic code highlighting in messages.
+
+- Updated to version 4.11.8
+  * Fix phrases on macOS by doing a clean rebuild.
+
+-------------------------------------------------------------------
 Tue Nov 14 07:56:18 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.11.7

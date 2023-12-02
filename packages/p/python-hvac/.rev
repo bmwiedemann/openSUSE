@@ -154,4 +154,41 @@
     <comment></comment>
     <requestid>1070718</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>37bbf852cebbc468608f6a9242d0d0fa</srcmd5>
+    <version>1.2.1</version>
+    <time>1701533578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * This release fixes an inaccuracy in a warning message but
+    does not otherwise change functionality.
+  * Fix raise_on_deleted_version warning (GH-1045)
+  * ldap auth method - add missing `configure` params by vault
+    api names (GH-975) expand Vault CI matrix, announce
+    deprecation of Vault dynamic SSH keys (GH-1023)
+  * Breaking changes coming to `Client.write` method (GH-1034)
+  * Support for Python 3.6 &amp; 3.7 will be dropped in `v2.0.0`
+  * Support for the Legacy MFA methods will be dropped from the
+    `MFA` class in `v2.0.0` (GH-1026)
+  * Breaking changes coming to Adapters' use of custom sessions
+  * ### 🚀 Features
+  * Add alias_name_source for Kubernetes Auth create_role
+  * add `Client.write_data` method (GH-1028)
+  * ldap auth method - add missing `configure` params by vault
+    api names (GH-975)
+  * Re-add arguments to create_or_update_role() from old API
+    (GH-842)
+  * Add new argument (conflicting_alias_ids_to_keep) to
+    merge_entities method (GH-968)
+  * Add impersonated account support to GCP secrets engine
+    (GH-1022)
+  * support &quot;user_claim_json_pointer&quot; in create_role() for
+    JWT/OIDC auth method (GH-1006)
+  * Add static account support to GCP secrets engine (GH-956)
+  * adding batch_input to transit.sign_data #988 (GH-990)
+  * Add a method to read static roles in the database engine
+    (GH-1009)
+  * feat: add support for `disable_local_ca_jwt` in the</comment>
+    <requestid>1130332</requestid>
+  </revision>
 </revisionlist>

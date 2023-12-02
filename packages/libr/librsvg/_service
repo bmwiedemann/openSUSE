@@ -14,13 +14,10 @@
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
   <service name="cargo_vendor" mode="manual">
   <param name="srcdir">librsvg</param>
   <param name="update">true</param>
-  </service>
-  <service name="cargo_audit" mode="manual">
-  <param name="srcdir">librsvg</param>
   </service>
 </services>

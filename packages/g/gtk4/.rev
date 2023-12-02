@@ -806,4 +806,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1114702</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>038b00f89d3b3f4e9608693c9d52f4a2</srcmd5>
+    <version>4.12.4</version>
+    <time>1701533538</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.12.4 (forwarded request 1130207 from dimstar)</comment>
+    <requestid>1130318</requestid>
+  </revision>
 </revisionlist>

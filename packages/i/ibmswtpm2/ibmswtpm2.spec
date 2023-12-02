@@ -17,24 +17,23 @@
 
 
 %define suite ibmtss
+%define download_version 164-2020-192.2
 %ifarch    ppc ppc64 s390 s390x
 %define extra_ccflags -DBIG_ENDIAN_TPM=1
 %else
 %define extra_ccflags ""
 %endif
 Name:           ibmswtpm2
-Version:        1682
+Version:        %(echo %{download_version} | tr '-' '+')
 Release:        0
 Summary:        IBM's Software TPM 2.0
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
-URL:            https://sourceforge.net/projects/ibmswtpm2
-Source:         https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm%{version}.tar.gz
+URL:            https://github.com/kgoldman/ibmswtpm2
+Source:         https://github.com/kgoldman/ibmswtpm2/archive/rev%{download_version}.tar.gz#/%{name}-%{download_version}.tar.gz
 Patch0:         makefile.patch
 Patch1:         ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
 Patch2:         ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
-# PATCH-FIX-OPENSUSE: not yet merged https://github.com/kgoldman/ibmswtpm2/pull/9
-Patch3:         ibmswtpm2-OpenSSL-3.1.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description
@@ -49,8 +48,7 @@ It is probably not of much use other than testing the IBM TSS
 implementation because of this specific interface.
 
 %prep
-%setup -q -c
-%autopatch -p 1
+%autosetup -p 1 -n %{name}-rev%{download_version}
 
 %build
 cd src

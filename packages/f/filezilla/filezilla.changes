@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  2 10:41:29 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.66.1
+  * Bugfixes and minor changes:
+    - macOS: Fixed display of local filenames containing non-ASCII
+      characters if LC_CTYPE wasn't set
+
+-------------------------------------------------------------------
 Tue Oct 24 10:50:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.66.0

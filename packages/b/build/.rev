@@ -1688,4 +1688,26 @@ Changes:
     <comment>update</comment>
     <requestid>1127636</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>9558171b1112eb2c9d7727c750fa4e40</srcmd5>
+    <version>20231201</version>
+    <time>1701533558</time>
+    <user>dimstar_suse</user>
+    <comment>- productcompose: follow incompatible flavor syntax change
+- pbuild: support for zstd
+
+- fixed handling for cmdline parameters via kernel packages
+
+- productcompose:
+  * BREAKING: support new schema
+  * adapt flavor architecture parsing
+
+- productcompose:
+  * support filtered package lists
+  * support default architecture listing
+  * fix copy in binaries in VM builds^
+
+- obsproduct build type got renamed to productcompose</comment>
+    <requestid>1130219</requestid>
+  </revision>
 </revisionlist>

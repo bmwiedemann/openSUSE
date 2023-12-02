@@ -9,13 +9,13 @@ Signed-off-by: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
  cmake/compilers/GNU.cmake | 16 ++++++++++++++++
  1 file changed, 16 insertions(+)
 
-diff --git a/cmake/compilers/GNU.cmake b/cmake/compilers/GNU.cmake
-index cd76acfe..59f4e693 100644
---- a/cmake/compilers/GNU.cmake
-+++ b/cmake/compilers/GNU.cmake
-@@ -44,6 +44,22 @@ if (NOT MINGW)
-     set(TBB_COMMON_LINK_LIBS dl)
- endif()
+Index: oneTBB-2021.11.0/cmake/compilers/GNU.cmake
+===================================================================
+--- oneTBB-2021.11.0.orig/cmake/compilers/GNU.cmake
++++ oneTBB-2021.11.0/cmake/compilers/GNU.cmake
+@@ -42,6 +42,22 @@ endif()
+ 
+ set(TBB_COMMON_LINK_LIBS ${CMAKE_DL_LIBS})
  
 +# Check whether code with full atomics can be built without libatomic
 +# see: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81358
@@ -36,6 +36,3 @@ index cd76acfe..59f4e693 100644
  # Ignore -Werror set through add_compile_options() or added to CMAKE_CXX_FLAGS if TBB_STRICT is disabled.
  if (NOT TBB_STRICT AND COMMAND tbb_remove_compile_flag)
      tbb_remove_compile_flag(-Werror)
--- 
-2.30.2
-

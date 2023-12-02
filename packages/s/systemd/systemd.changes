@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 21 13:57:52 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- udev: Tighten permissions for DRM render nodes (bsc#1217118). Note that this
+  implicitly enables `uaccess`, so any logged-in user still gets access
+  regardless of group membership. Some use cases, e.g. remote access via ssh,
+  might require you to add the desired user to the `render` group.
+
+  See:
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3S3HAWVODHC2FQI4E76IFGCSRVRJ63KG/
+
+-------------------------------------------------------------------
 Thu Nov  2 08:56:57 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Disable utmp support

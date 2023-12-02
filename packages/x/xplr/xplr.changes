@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  2 10:39:19 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Disable updates. Seems crates are not happy with updating
+- Revendor dependencies
+
+-------------------------------------------------------------------
+Fri Nov 24 03:58:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update vendored dependencies.
+- Remove cargo_config. cargo_config file is now part of vendored tarball.
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`

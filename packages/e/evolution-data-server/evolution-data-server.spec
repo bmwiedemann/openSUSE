@@ -32,7 +32,7 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.50.1
+Version:        3.50.2
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
@@ -395,6 +395,7 @@ This package contains developer documentation.
 %{_userunitdir}/evolution-user-prompter.service
 %{_sysconfdir}/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
 %{_datadir}/applications/org.gnome.Evolution-alarm-notify.desktop
+%{_datadir}/applications/org.gnome.evolution-data-server.OAuth2-handler.desktop
 
 %files -n libcamel-1_2-%{so_camel}
 %{_libdir}/libcamel-1.2.so.%{so_camel}*

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:43:22 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Feb 20 11:29:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Really run all the tests using pytest

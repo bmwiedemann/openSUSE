@@ -18,7 +18,7 @@
 
 
 Name:           brickd
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        Tinkerforce Brick Daemon
 License:        GPL-2.0-only

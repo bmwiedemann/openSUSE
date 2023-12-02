@@ -260,7 +260,6 @@ keeplibs=(
     third_party/omnibox_proto #integral part of chrome
     third_party/one_euro_filter #not in any distro
     third_party/openscreen #Integral part of chrome, needed even if you're building without.
-    third_party/openscreen/src/third_party/mozilla #derived code, not vendored dependency
     third_party/openscreen/src/third_party/tinycbor #not in any distro
     third_party/ots #not available as a shared library. Fedora has the cli version as opentype-sanitizer
     #we don't build pdf support, removing it from tarball to save space

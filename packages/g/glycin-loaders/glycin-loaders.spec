@@ -23,8 +23,7 @@ Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0
 URL:            https://gitlab.gnome.org/sophie-h/glycin
 Source0:        %{name}-%{version}.tar.zst
-Source2:        vendor.tar.zst
-Source3:        cargo_config
+Source1:        vendor.tar.zst
 
 BuildRequires:  cargo-packaging
 BuildRequires:  git
@@ -39,9 +38,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 Sandboxed and extendable image decoding.
 
 %prep
-%autosetup -p1 -a2
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
+%autosetup -p1 -a1
 
 %build
 export RUSTFLAGS="%{build_rustflags}"

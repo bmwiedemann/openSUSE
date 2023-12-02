@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  1 21:41:45 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- New Version 2.4.5
+  - Add Raspberry Pi 5 support for HAT (Zero) Brick
+  - Fix rare crash in initial USB device scan
+
+-------------------------------------------------------------------
 Mon Aug 21 08:30:28 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Fix build error with conflicting strcasestr definition

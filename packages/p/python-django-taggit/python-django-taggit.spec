@@ -17,29 +17,22 @@
 
 
 %define mod_name django-taggit
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%else
 BuildArch:      noarch
-%endif
 Name:           python-%{mod_name}
-Version:        4.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Django-taggit is a reusable Django application for simple tagging
 License:        BSD-3-Clause-Clear
 Group:          Development/Languages/Python
 URL:            https://github.com/alex/django-taggit
 Source:         https://pypi.python.org/packages/source/d/django-taggit/%{mod_name}-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 4.2
 Recommends:     %{name}-lang = %{version}
-%ifpython2 && ! 0%{?skip_python2}
-%lang_package -n %{python2_prefix}-django-taggit
-%endif
 %ifpython3 && ! 0%{?skip_python3}
 %lang_package -n %{python3_prefix}-django-taggit
 %endif
@@ -69,11 +62,6 @@ Django-taggit is a reusable Django application for simple tagging.
 %{python_sitelib}/taggit/
 %{python_sitelib}/django[-_]taggit*/
 %exclude %{python_sitelib}/taggit/locale
-
-%ifpython2 && ! 0%{?skip_python2}
-%files -n %{python2_prefix}-django-taggit-lang -f django_%{python2_bin_suffix}.lang
-%{python2_sitelib}/taggit/locale
-%endif
 
 %ifpython3 && ! 0%{?skip_python3}
 %files -n %{python3_prefix}-django-taggit-lang -f django_%{python3_bin_suffix}.lang

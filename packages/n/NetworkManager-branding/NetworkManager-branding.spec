@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  %{nil}
 Name:           NetworkManager-branding%{?dash}%{branding_name}
 Version:        42.1
 Release:        0
-Summary:        Default %{branding_name} branding for NetworkManager configuration file.
+Summary:        Default %{branding_name} branding for NetworkManager configuration file
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager/
@@ -41,7 +41,7 @@ Source1:        NetworkManager-branding-COPYING
 BuildRequires:  NetworkManager
 BuildRequires:  NetworkManager-branding-upstream
 %requires_eq    NetworkManager
-Supplements:    packageand(NetworkManager:branding-%{branding_name})
+Supplements:    (NetworkManager and branding-%{branding_name})
 Conflicts:      NetworkManager-branding
 Provides:       NetworkManager-branding = %{version}
 BuildArch:      noarch
@@ -65,6 +65,8 @@ check connectivity against http://conncheck.opensuse.org.
 %prep
 %setup -q -T -c %{name}-%{version}
 cp %{SOURCE1} COPYING
+
+%build
 
 %install
 install -m0644 -D %{SOURCE0} %{buildroot}%{_prefix}/lib/NetworkManager/conf.d/conncheck-%{branding_name}.conf

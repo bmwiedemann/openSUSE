@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:59:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20:
+  * Enable support for pattern matching (#96)
+  * add support for aix/sunos (#98)
+  * Python 3.12 compatibility (#105)
+  * Add __contains__ to MapKeys (#99)
+  * Add PEP 585 GenericAlias support (#101)
+  * Move metadata to `pyproject.toml`, fix test fixture inclusion
+    in sdist (#111)
+- drop python312.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Aug 14 20:48:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add python312.patch to fix build with python 3.12 
+- add python312.patch to fix build with python 3.12
 
 -------------------------------------------------------------------
 Thu Jun 22 15:25:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -21,7 +34,7 @@ Thu Apr 13 22:42:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 03:36:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.19 
+- Update to version 0.19
   * Support for Python 3.11
 
 -------------------------------------------------------------------
@@ -55,7 +68,7 @@ Tue Feb 22 09:01:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix test_none_collisions on 32-bit systems
   * Clarify the license of the included pythoncapi_compat.h header
   * Use cibuildwheel to build wheels
-- drop skip_32bit_tests.patch, test_none_collisions-32-bit.patch (upstream) 
+- drop skip_32bit_tests.patch, test_none_collisions-32-bit.patch (upstream)
 
 -------------------------------------------------------------------
 Thu Aug  5 06:23:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -69,7 +82,7 @@ Thu Aug  5 06:23:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Thu Apr 22 20:28:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15
-  * python 3.9 support 
+  * python 3.9 support
 
 -------------------------------------------------------------------
 Mon Dec  7 15:34:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
@@ -80,7 +93,7 @@ Mon Dec  7 15:34:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Oct 13 07:42:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- skip tests that fail on 32bit 
+- skip tests that fail on 32bit
 
 -------------------------------------------------------------------
 Wed Sep 16 11:27:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>

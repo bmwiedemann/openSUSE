@@ -75,4 +75,23 @@
   * Handle Zip when modification times are missing #433</comment>
     <requestid>1102811</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>90f345856bfe88df5e6fb81c0be6944c</srcmd5>
+    <version>0.5.0+0</version>
+    <time>1701533586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  New Features:
+  * Add .rar support (decompression and listing, see clarification below) (#529)
+  * Add .7z support (#555)
+  Improvements:
+  * Switch to the faster lz4 implementation, lz4_flex (#445)
+  * Improve error message when decompressing with missing extensions (#518)
+  * Strip binary when building with cargo (#535)
+  * Completions: hint generator to expand to file paths (#508)
+  Bug Fixes:
+  * Fix size unit inconsistency (#502)
+  * Fix unaligned output when using parallelism (#509)</comment>
+    <requestid>1130363</requestid>
+  </revision>
 </revisionlist>

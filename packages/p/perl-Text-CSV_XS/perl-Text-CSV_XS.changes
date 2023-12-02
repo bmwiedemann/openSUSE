@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 24 03:08:00 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.53
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.53	- 2023-11-22, H.Merijn Brand
+      * Two casts for -Wformat (issue 50)
+      * Add --skip-empty to csv2xlsx
+      * Add --font and --font-size to csv2xlsx
+      * Fix skip_empty_rows ("skip") and trailing newlines (Corey Hickey, PR#52)
+      * Fix comment in last line (RT#150501)
+
+-------------------------------------------------------------------
 Fri Sep 22 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.52

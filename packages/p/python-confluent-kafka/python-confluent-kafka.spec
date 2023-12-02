@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-confluent-kafka
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Confluent's Apache Kafka client for Python
 License:        Apache-2.0
@@ -28,18 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/c/confluent-kafka
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  librdkafka-devel >= 2.1.0
+BuildRequires:  librdkafka-devel >= 2.2.0
 BuildRequires:  python-rpm-macros
-%ifpython2
-Requires:       python2-avro
-Requires:       python2-enum34
-Requires:       python2-futures
-%endif
-Suggests:       python-fastavro
-Suggests:       python-requests
-Suggests:       python-avro-python3
-Suggests:       python-pytest
-Suggests:       python-flake8
 
 %python_subpackages
 

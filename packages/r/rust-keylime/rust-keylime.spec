@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.2.2+git.1697658634.9c7c6fa
+Version:        0.2.3+git.1701075380.a5dc985
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT

@@ -1271,4 +1271,13 @@
     <comment>New stable release (forwarded request 1125465 from iznogood)</comment>
     <requestid>1126604</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>fa4fef438fb18d79f361e7e99c46689e</srcmd5>
+    <version>0.56.14</version>
+    <time>1701533526</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow to disable building valadoc as option and drop graphviz as 
+  build dependency. (forwarded request 1129824 from fcrozat)</comment>
+    <requestid>1130309</requestid>
+  </revision>
 </revisionlist>

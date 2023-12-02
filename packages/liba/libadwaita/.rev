@@ -218,4 +218,12 @@
     <comment> (forwarded request 1128125 from iznogood)</comment>
     <requestid>1128139</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>00674621719f7098e67ef4c234e17b46</srcmd5>
+    <version>1.4.1</version>
+    <time>1701533544</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1130295 from iznogood)</comment>
+    <requestid>1130321</requestid>
+  </revision>
 </revisionlist>

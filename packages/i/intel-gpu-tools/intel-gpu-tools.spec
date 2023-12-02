@@ -32,8 +32,14 @@ BuildRequires:  meson
 BuildRequires:  peg
 BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(libproc2)
+%else
+BuildRequires:  pkgconfig(libprocps)
+%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(json-c)
@@ -42,7 +48,6 @@ BuildRequires:  pkgconfig(libdrm_intel) >= 2.4.82
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(liboping)
-BuildRequires:  pkgconfig(libproc2)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(pciaccess) >= 0.10

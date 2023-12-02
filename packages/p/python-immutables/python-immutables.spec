@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-immutables
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        Immutable collections for Python
 License:        Apache-2.0
 URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/MagicStack/immutables/commit/f7978225ea562e128b07cae936acd7926d9e64e7
-Patch1:         python312.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -45,9 +43,6 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%{python_expand rm %{buildroot}%{$python_sitearch}/immutables/*.[ch]
-%fdupes %{buildroot}%{$python_sitearch}
-}
 
 %check
 export IMMU_SKIP_MYPY_TESTS=1

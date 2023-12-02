@@ -491,4 +491,41 @@
     guaranteed to be supported by the filesystem.</comment>
     <requestid>1073642</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0931bb9882d93c6e81373bda6b099b06</srcmd5>
+    <version>6.0.0</version>
+    <time>1701533605</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * nemo-window-slot.c: Update the drop zone target each time the
+    location changes, not just when the view type changes.
+  * Fix some leaks, g_object_unref safety.
+  * Use `activation_uri` as a second choice in `nemo_file_get_local_uri`
+  * nemo-desktop-link.c: Fix warning when toggling the Trash icon
+    in desktop settings.
+  * Fix some style/icon problems.
+  * search: Relax folder restrictions to allow gvfs locations.
+  * compact view: Improve text and selection highlight alignment.
+  * eel-gtk-extensions.c: (Wayland) Fix menu popup positioning,
+    popup
+  * nemo-file.c: Update hard-coded value for size of thumbnails.
+  * Update issue template with a link to open and closed issues.
+  * eel-gtk-extensions: Make wayland display check reusable.
+  * nemo-view.c: Use an admin:/// uri for the 'Open as Root'
+    action when running under Wayland.
+  * nemo-window-slot: Set up dnd against the slot itself instead
+    of updating the target data each time the location changes.
+  * Fix issue when generating video thumbnails from network
+    shares
+  * nemo-thumbnails: Use g_file_peek_path to simplify network-to-
+    local uri conversion.
+  * Emphasize checking for duplicate existing issues in the bug
+    report form.
+  * nemo-window-slot.c: Disable drop bar, until circular
+    reference can be resolved.
+  * nemo-window.c: Don't update saved window state if the window
+    is tiled when closing it.
+  * Fix trying the same filename when moving a file with</comment>
+    <requestid>1130390</requestid>
+  </revision>
 </revisionlist>

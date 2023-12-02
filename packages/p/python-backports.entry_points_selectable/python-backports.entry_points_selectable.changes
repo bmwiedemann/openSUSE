@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  2 08:51:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
 Thu Jun 22 15:14:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove paths only relevant for obsolete python versions

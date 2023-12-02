@@ -6913,4 +6913,17 @@ handle manual pages that consist only of a .so directive such as
   if build without utmp support&quot; has been backported.</comment>
     <requestid>1122219</requestid>
   </revision>
+  <revision rev="408" vrev="6">
+    <srcmd5>adf77ec2321780ae7aca48339725c113</srcmd5>
+    <version>254.5</version>
+    <time>1701533551</time>
+    <user>dimstar_suse</user>
+    <comment>- udev: Tighten permissions for DRM render nodes (bsc#1217118). Note that this
+  implicitly enables `uaccess`, so any logged-in user still gets access
+  regardless of group membership. Some use cases, e.g. remote access via ssh,
+  might require you to add the desired user to the `render` group.
+  See:
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3S3HAWVODHC2FQI4E76IFGCSRVRJ63KG/</comment>
+    <requestid>1130178</requestid>
+  </revision>
 </revisionlist>
