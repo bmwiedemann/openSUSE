@@ -14920,7 +14920,6 @@ unsorted:
   - libsuperlu6-32bit 
   - libsuperlu_6_0_1-gnu-hpc 
   - libsurgescript0_5_6 
-  - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
@@ -15430,9 +15429,9 @@ unsorted:
   - libvterm-devel 
   - libvterm-tools 
   - libvterm0 
-  - libvtk-m-2_0 
-  - libvtk-m-mpich-2_0 
-  - libvtk-m-openmpi4-2_0 
+  - libvtk-m-2_1 
+  - libvtk-m-mpich-2_1 
+  - libvtk-m-openmpi4-2_1 
   - libvtk1 
   - libvtk1-openmpi4 
   - libvulkan1-32bit 
@@ -23149,6 +23148,7 @@ unsorted:
   - python310-azure-mgmt-healthcareapis 
   - python310-azure-mgmt-hybridcompute 
   - python310-azure-mgmt-hybridconnectivity 
+  - python310-azure-mgmt-hybridcontainerservice 
   - python310-azure-mgmt-hybridkubernetes 
   - python310-azure-mgmt-hybridnetwork 
   - python310-azure-mgmt-imagebuilder 
@@ -26633,6 +26633,7 @@ unsorted:
   - python311-azure-mgmt-healthcareapis 
   - python311-azure-mgmt-hybridcompute 
   - python311-azure-mgmt-hybridconnectivity 
+  - python311-azure-mgmt-hybridcontainerservice 
   - python311-azure-mgmt-hybridkubernetes 
   - python311-azure-mgmt-hybridnetwork 
   - python311-azure-mgmt-imagebuilder 
@@ -30029,6 +30030,7 @@ unsorted:
   - python39-azure-mgmt-healthcareapis 
   - python39-azure-mgmt-hybridcompute 
   - python39-azure-mgmt-hybridconnectivity 
+  - python39-azure-mgmt-hybridcontainerservice 
   - python39-azure-mgmt-hybridkubernetes 
   - python39-azure-mgmt-hybridnetwork 
   - python39-azure-mgmt-imagebuilder 
@@ -33914,7 +33916,6 @@ unsorted:
   - rofi-devel 
   - rofi-wayland 
   - rofi-wayland-devel 
-  - rollback-helper 
   - rook 
   - rook-ceph-helm-charts 
   - rook-integration 
@@ -34050,7 +34051,6 @@ unsorted:
   - ruby3.2-rubygem-activerecord-7.0 
   - ruby3.2-rubygem-activestorage-7.0 
   - ruby3.2-rubygem-activesupport-7.0 
-  - ruby3.2-rubygem-agama 
   - ruby3.2-rubygem-coffee-rails 
   - ruby3.2-rubygem-delayed_job 
   - ruby3.2-rubygem-delayed_job_active_record 
@@ -34061,7 +34061,6 @@ unsorted:
   - ruby3.2-rubygem-font-awesome-rails 
   - ruby3.2-rubygem-gettext_i18n_rails_js 
   - ruby3.2-rubygem-globalid 
-  - ruby3.2-rubygem-grape 
   - ruby3.2-rubygem-grpc 
   - ruby3.2-rubygem-haml-rails 
   - ruby3.2-rubygem-importmap-rails 
@@ -34988,8 +34987,6 @@ unsorted:
   - suse-hpc 
   - suse-prime 
   - suse-xsl-stylesheets 
-  - suseconnect-ng 
-  - suseconnect-ruby-bindings 
   - suseprime-appindicator 
   - svg-schema 
   - svg-schema-doc 

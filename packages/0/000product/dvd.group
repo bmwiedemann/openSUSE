@@ -2623,6 +2623,7 @@
     <package name="libsubid4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsuitesparseconfig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsunpinyin3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libsuseconnect" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libswresample3_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libswresample4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3697,6 +3698,7 @@
     <package name="ristretto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ristretto-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="rng-tools" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
+    <package name="rollback-helper" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rp-pppoe" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rpcbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3715,6 +3717,7 @@
     <package name="ruby3.2-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-aes_key_wrap" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-afm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-agama" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-airbrussh" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-amq-protocol" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-arel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4147,6 +4150,8 @@
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: dvd:suse-module-tools-scriptlets -->
+    <package name="suseconnect-ng" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="suseconnect-ruby-bindings" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="susefirewall2-to-firewalld" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="susepaste" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="susepaste-screenshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

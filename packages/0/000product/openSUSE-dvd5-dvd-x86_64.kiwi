@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20231130" schemaversion="4.1">
+<image name="OBS__openSUSE___20231201" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231130</productvar>
+      <productvar name="VERSION">20231201</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231130,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231201,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231130/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231201/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2587,6 +2587,7 @@
       <repopackage name="libsubid4"/>
       <repopackage name="libsuitesparseconfig5"/>
       <repopackage name="libsunpinyin3"/>
+      <repopackage name="libsuseconnect"/>
       <repopackage name="libsvrcore0"/>
       <repopackage name="libSvtAv1Enc1"/>
       <repopackage name="libswresample3_9"/>
@@ -3746,6 +3747,7 @@
       <repopackage name="ristretto"/>
       <repopackage name="ristretto-lang"/>
       <repopackage name="rng-tools"/>
+      <repopackage name="rollback-helper"/>
       <repopackage name="rp-pppoe"/>
       <repopackage name="rpcbind"/>
       <repopackage name="rpm"/>
@@ -3763,6 +3765,7 @@
       <repopackage name="ruby3.2-rubygem-addressable"/>
       <repopackage name="ruby3.2-rubygem-aes_key_wrap"/>
       <repopackage name="ruby3.2-rubygem-afm"/>
+      <repopackage name="ruby3.2-rubygem-agama"/>
       <repopackage name="ruby3.2-rubygem-airbrussh"/>
       <repopackage name="ruby3.2-rubygem-amq-protocol"/>
       <repopackage name="ruby3.2-rubygem-arel"/>
@@ -4196,6 +4199,8 @@
       <repopackage name="supermin"/>
       <repopackage name="suse-module-tools"/>
       <repopackage name="suse-module-tools-scriptlets"/>
+      <repopackage name="suseconnect-ng"/>
+      <repopackage name="suseconnect-ruby-bindings"/>
       <repopackage name="susefirewall2-to-firewalld"/>
       <repopackage name="susepaste"/>
       <repopackage name="susepaste-screenshot"/>
