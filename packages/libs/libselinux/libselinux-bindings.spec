@@ -16,7 +16,7 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%{?sle15allpythons}
 %define python_subpackage_only 1
 %define libsepol_ver 3.5
 %define upname libselinux
