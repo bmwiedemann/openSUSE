@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 25 19:26:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.5:
+  * Add PIX icon
+  * Remove Mint-X-Dark
+  * Add definitions for folder-color-switcher
+  * Add thingy icon
+  * Add xfsm-lock
+  * Add a create-links script
+  * Add missing icons and support for Xfce 4.16
+  * Add sticky
+  * Add missing sizes for folder-recent
+  * Add caps and num-lock symbolic indicator icons.
+  * Make caps-lock and num-lock symbolic icons cinnamon-specific.
+  * Add cs-online-accounts
+
+-------------------------------------------------------------------
 Thu Jan 14 11:09:17 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.5.9.
@@ -24,12 +41,12 @@ Wed Jun 10 03:01:26 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Remove _service file.
 - Update to verion 1.5.5.
-  * Add org.gnome.ArchiveManager icon. 
+  * Add org.gnome.ArchiveManager icon.
 
 -------------------------------------------------------------------
 Fri Mar 27 03:10:13 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Update to version 1.5.3 and add _service file. 
+- Update to version 1.5.3 and add _service file.
 
 -------------------------------------------------------------------
 Fri Nov 30 17:46:42 UTC 2018 - sor.alexei@meowr.ru

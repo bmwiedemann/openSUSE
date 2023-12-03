@@ -1,7 +1,7 @@
 #
 # spec file for package python-daiquiri
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-daiquiri
-Version:        3.2.1
+Version:        3.2.3
 Release:        0
 Summary:        Library to configure Python logging
 License:        Apache-2.0
-URL:            https://github.com/jd/daiquiri
+URL:            https://github.com/Mergifyio/daiquiri
 Source:         https://files.pythonhosted.org/packages/source/d/daiquiri/daiquiri-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-json-logger}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-json-logger
@@ -42,10 +43,10 @@ provides some custom formatters and handlers.
 %setup -q -n daiquiri-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,6 @@ provides some custom formatters and handlers.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/daiquiri
-%{python_sitelib}/daiquiri-%{version}*-info
+%{python_sitelib}/daiquiri-%{version}.dist-info
 
 %changelog

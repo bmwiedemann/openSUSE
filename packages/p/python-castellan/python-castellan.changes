@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  6 21:01:20 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Drop python3.6/3.7 support in testing runtime
+
+-------------------------------------------------------------------
 Tue Jun  7 10:52:44 UTC 2022 - cloud-devel@suse.de
 
 - update to version 3.11.0

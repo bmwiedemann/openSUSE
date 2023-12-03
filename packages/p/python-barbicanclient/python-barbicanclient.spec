@@ -1,7 +1,7 @@
 #
 # spec file for package python-barbicanclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-barbicanclient
-Version:        5.2.0
+Version:        5.5.0
 Release:        0
 Summary:        Client for the Barbican Key Management API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-barbicanclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-5.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-5.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 2.8.0
-BuildRequires:  python3-keystoneauth1 >= 3.4.0
+BuildRequires:  python3-keystoneauth1 >= 5.1.1
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.serialization >= 2.18.0
 BuildRequires:  python3-oslo.utils >= 3.33.0
@@ -54,13 +54,12 @@ command-line script (barbican).
 %package -n python3-barbicanclient
 Summary:        Client for the Barbican Key Management API
 Requires:       python3-cliff >= 2.8.0
-Requires:       python3-keystoneauth1 >= 3.4.0
+Requires:       python3-keystoneauth1 >= 5.1.1
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-barbicanclient < 4.10.0
 %endif
@@ -99,8 +98,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run \
-    --black-regex 'barbicanclient.tests.test_barbican.WhenTestingBarbicanCLI.test_should_show_usage_with_help_flag'
+%{openstack_stestr_run} \
+    --exclude-regex 'barbicanclient.tests.test_barbican.WhenTestingBarbicanCLI.test_should_show_usage_with_help_flag'
 
 %files -n python3-barbicanclient
 %license LICENSE

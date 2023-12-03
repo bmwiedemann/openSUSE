@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-agate-sql
-Version:        0.5.9
+Version:        0.7.0
 Release:        0
 Summary:        SQL read/write support for agate
 License:        MIT
@@ -32,11 +32,11 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-SQLAlchemy
 Requires:       python-agate >= 1.5.0
-Requires:       (python-sqlalchemy >= 1.0.8 with python-sqlalchemy < 2)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module sqlalchemy >= 1.0.8 with %python-sqlalchemy < 2}
+BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module agate >= 1.5.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  3 09:25:05 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.17.1
+  * Trust-DNS is rebranded to Hickory-DNS
+  * Support DNS-over-H3 (Try with configuration "dns": "google_h3" 
+    and compile with feature "dns-over-h3")
+  * Allow configuring local-dns client cache size
+  * local-tun supports Windows with Wintun
+  * Upgrade hyper
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Oct 24 14:38:46 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix boo#1216372 and boo#1216373, run systemd service as a dedicated user and group

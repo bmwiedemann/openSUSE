@@ -282,4 +282,37 @@
     don't return early if there's no active connection.</comment>
     <requestid>1090573</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d5a8899b0388e3c29d24398d2e82f919</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632917</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * display: Increase the number of available fractional scale
+    buttons to allow 75 - 200
+  * Fix meson.build deprecations up to 0.56.0
+  * wacom: Add &quot;disabled&quot; to stylus button actions.
+  * display: Add wayland compatibility
+  * display module: Fix color selection for monitor labels.
+  * display module: Fix some memory leaks.
+  * l10n: Update files
+  * Mark fractional scaling settings key obsolete.
+  * Delete cs-online-accounts icons.
+  * l10n: Generate additional files
+
+  * Fix some build issues - we no longer use datetime,
+- Remove cinnamon-control-center-ignore-polkit-rules.patch,
+  * cc-display-panel.c: Use scaled geometry when checking overlap
+  * cc-display-panel.c: Realign after a rotation change, re-scale
+  * cc-display-panel.c: Improve display representation while
+  * cc-display-panel.c: Use a scrolled window in the error popup,
+  * cc-display-panel.c: Update the view after toggling the
+  * cc-display-panel.c: Fill in all geometry for non-active
+    monitors, not just the size, to ensure uninitialized values
+- Remove Requires:libcinnamon-desktop-data because
+  * display: Clean up a couple labels in ui file
+- enable network panel is built
+- clean the forgotten .la files</comment>
+    <requestid>1128873</requestid>
+  </revision>
 </revisionlist>

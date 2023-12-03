@@ -23,7 +23,7 @@
 %define typelib typelib-1_0-CinnamonDesktop-3_0
 %define typelib_cvc typelib-1_0-Cvc-1_0
 Name:           cinnamon-desktop
-Version:        5.8.0
+Version:        6.0.0
 Release:        0
 Summary:        Libcinnamon-desktop API
 License:        GPL-2.0-or-later AND MIT
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.7
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(xext) >= 1.1
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xkeyboard-config)

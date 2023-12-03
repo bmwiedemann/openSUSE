@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 11 21:29:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.8.0:
+  * More general timestamp units (#874)
+  * ReadTheDocs V2 (#871)
+  * Better roundtrip dtypes (#861, 859)
+  * No convert when computing bytes-per-item for str (#858)
+
+-------------------------------------------------------------------
 Sat Jul  1 20:05:36 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 2023.7.0:
@@ -57,7 +66,7 @@ Mon Jan  2 20:38:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Dec 23 09:18:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Add patch to fox the test test_delta_from_def_2 on 
+- Add patch to fox the test test_delta_from_def_2 on
   aarch64, armv7 and ppc64le:
   * fastparquet-pr835.patch
 
@@ -138,56 +147,56 @@ Sun Aug  8 15:13:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
     metadata areas of the files concurrently, if the storage
     backend supports it, and not directly instantiating
     intermediate ParquetFile instances
-  * row-level filtering of the data. Whereas previously, only full 
-    row-groups could be excluded on the basis of their parquet 
-    metadata statistics (if present), filtering can now be done 
-    within row-groups too. The syntax is the same as before, 
-    allowing for multiple column expressions to be combined with 
-    AND|OR, depending on the list structure. This mechanism 
-    requires two passes: one to load the columns needed to create 
-    the boolean mask, and another to load the columns actually 
-    needed in the output. This will not be faster, and may be 
-    slower, but in some cases can save significant memory 
-    footprint, if a small fraction of rows are considered good and 
-    the columns for the filter expression are not in the output. 
+  * row-level filtering of the data. Whereas previously, only full
+    row-groups could be excluded on the basis of their parquet
+    metadata statistics (if present), filtering can now be done
+    within row-groups too. The syntax is the same as before,
+    allowing for multiple column expressions to be combined with
+    AND|OR, depending on the list structure. This mechanism
+    requires two passes: one to load the columns needed to create
+    the boolean mask, and another to load the columns actually
+    needed in the output. This will not be faster, and may be
+    slower, but in some cases can save significant memory
+    footprint, if a small fraction of rows are considered good and
+    the columns for the filter expression are not in the output.
     Not currently supported for reading with DataPageV2.
-  * DELTA integer encoding (read-only): experimentally working, 
-    but we only have one test file to verify against, since it is 
-    not trivial to persuade Spark to produce files encoded this 
-    way. DELTA can be extremely compact a representation for 
+  * DELTA integer encoding (read-only): experimentally working,
+    but we only have one test file to verify against, since it is
+    not trivial to persuade Spark to produce files encoded this
+    way. DELTA can be extremely compact a representation for
     slowly varying and/or monotonically increasing integers.
-  * nanosecond resolution times: the new extended "logical" types 
-    system supports nanoseconds alongside the previous millis and 
-    micros. We now emit these for the default pandas time type, 
-    and produce full parquet schema including both "converted" and 
-    "logical" type information. Note that all output has 
-    isAdjustedToUTC=True, i.e., these are timestamps rather than 
-    local time. The time-zone is stored in the metadata, as 
-    before, and will be successfully recreated only in fastparquet 
-    and (py)arrow. Otherwise, the times will appear to be UTC. For 
-    compatibility with Spark, you may still want to use 
+  * nanosecond resolution times: the new extended "logical" types
+    system supports nanoseconds alongside the previous millis and
+    micros. We now emit these for the default pandas time type,
+    and produce full parquet schema including both "converted" and
+    "logical" type information. Note that all output has
+    isAdjustedToUTC=True, i.e., these are timestamps rather than
+    local time. The time-zone is stored in the metadata, as
+    before, and will be successfully recreated only in fastparquet
+    and (py)arrow. Otherwise, the times will appear to be UTC. For
+    compatibility with Spark, you may still want to use
     times="int96" when writing.
-  * DataPageV2 writing: now we support both reading and writing. 
-    For writing, can be enabled with the environment variable 
+  * DataPageV2 writing: now we support both reading and writing.
+    For writing, can be enabled with the environment variable
     FASTPARQUET_DATAPAGE_V2, or module global fastparquet.writer.
-    DATAPAGE_VERSION and is off by default. It will become on by 
-    default in the future. In many cases, V2 will result in better 
-    read performance, because the data and page headers are 
-    encoded separately, so data can be directly read into the 
-    output without addition allocation/copies. This feature is 
-    considered experimental, but we believe it working well for 
-    most use cases (i.e., our test suite) and should be readable 
+    DATAPAGE_VERSION and is off by default. It will become on by
+    default in the future. In many cases, V2 will result in better
+    read performance, because the data and page headers are
+    encoded separately, so data can be directly read into the
+    output without addition allocation/copies. This feature is
+    considered experimental, but we believe it working well for
+    most use cases (i.e., our test suite) and should be readable
     by all modern parquet frameworks including arrow and spark.
-  * pandas nullable types: pandas supports "masked" extension 
-    arrays for types that previously could not support NULL at 
-    all: ints and bools. Fastparquet used to cast such columns to 
-    float, so that we could represent NULLs as NaN; now we use the 
-    new(er) masked types by default. This means faster reading of 
-    such columns, as there is no conversion. If the metadata 
-    guarantees that there are no nulls, we still use the 
-    non-nullable variant unless the data was written with 
-    fastparquet/pyarrow, and the metadata indicates that the 
-    original datatype was nullable. We already handled writing of 
+  * pandas nullable types: pandas supports "masked" extension
+    arrays for types that previously could not support NULL at
+    all: ints and bools. Fastparquet used to cast such columns to
+    float, so that we could represent NULLs as NaN; now we use the
+    new(er) masked types by default. This means faster reading of
+    such columns, as there is no conversion. If the metadata
+    guarantees that there are no nulls, we still use the
+    non-nullable variant unless the data was written with
+    fastparquet/pyarrow, and the metadata indicates that the
+    original datatype was nullable. We already handled writing of
     nullable columns.
 
 -------------------------------------------------------------------
@@ -202,7 +211,7 @@ Tue May 18 14:41:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Feb 12 14:50:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 36 build 
+- skip python 36 build
 
 -------------------------------------------------------------------
 Thu Feb  4 17:50:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
@@ -291,7 +300,7 @@ Mon May 20 15:12:11 CEST 2019 - Matej Cepl <mcepl@suse.com>
 Tue Apr 30 14:28:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - update to 0.3.1
-  * Add schema == (__eq__) and != (__ne__) methods and tests. 
+  * Add schema == (__eq__) and != (__ne__) methods and tests.
   * Fix item iteration for decimals
   * List missing columns in error message
   * Fix tz being None case

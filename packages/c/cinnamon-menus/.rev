@@ -153,4 +153,12 @@
   * github workflow: Add optional ssh session.</comment>
     <requestid>1090571</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>43ba4f10eea0af5e897f7b860af3e748</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632947</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1130512</requestid>
+  </revision>
 </revisionlist>

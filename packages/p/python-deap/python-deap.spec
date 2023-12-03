@@ -1,7 +1,7 @@
 #
 # spec file for package python-deap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-deap
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Summary:        Distributed Evolutionary Algorithms in Python
 License:        LGPL-3.0-only
 URL:            https://github.com/DEAP/deap
 Source:         https://files.pythonhosted.org/packages/source/d/deap/deap-%{version}.tar.gz
-# https://github.com/DEAP/deap/pull/507
-Patch0:         python-deap-remove-nose.patch
-# https://github.com/DEAP/deap/pull/507
-Patch1:         python-deap-python3.patch
-Patch2:         no2to3.patch
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,9 +42,6 @@ part is the Evolutionary Algorithms in Python (EAP) framework.
 
 %prep
 %setup -q -n deap-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -69,6 +60,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitearch}/*
+%{python_sitearch}/deap
+%{python_sitearch}/deap-%{version}*info
 
 %changelog

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  2 19:39:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.1:
+  * fix: :meth:`.Table.from_xlsx` no longer errors on unsized
+    sheets.
+  * The ``reset_dimensions`` argument to :meth:`.Table.from_xlsx`
+    defaults to ``None`` instead of ``False``. If
+    ``reset_dimensions`` is ``None``, and if the worksheet's
+    dimensions are ``A1:A1``, recalculate the worksheet's
+    dimensions. To disable this behavior, set
+    ``reset_dimensions`` to ``False``.
+  * If the ``reset_dimensions`` argument to
+    :meth:`.Table.from_xlsx` is set, recalculate the worksheet's
+    dimensions, instead of assuming that the table's width
+    matches the first row's.
+  * The ``reset_dimensions`` argument to :meth:`.Table.from_xlsx`
+    is ignored if the ``read_only`` argument is false.
+  * Add Python 3.8, 3.9, 3.10, 3.11, 3.12 support.
+  * Drop support for 3.5 (2020-09-13), 3.6 (2021-12-23), 3.7
+- drop python-agate-excel-no-python2.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Mar  9 09:35:03 UTC 2023 - pgajdos@suse.com
 
 - do not require python-six
@@ -16,7 +38,7 @@ Fri Aug 13 05:07:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Add support for Compound File Binary File (CFBF) XLS files. (#44)
   * Close XLSX file before raising error for non-existent sheet. (#34)
   * Use less memory and close XLS files. (#39)
-  * Drop support for Python 3.4 (end-of-life was March 18, 2019). 
+  * Drop support for Python 3.4 (end-of-life was March 18, 2019).
 - Update {Build,}Requires.
 
 -------------------------------------------------------------------
@@ -61,7 +83,7 @@ Wed May  9 18:52:51 UTC 2018 - toddrme2178@gmail.com
 - Update to version 0.2.2
   * Add an encoding_override argument to `.Table.from_xls` to
     override the encoding of the input XLS file.
-  * Add a header argument to `.Table.from_xls` and 
+  * Add a header argument to `.Table.from_xls` and
     `.Table.from_xlsx` to indicate the presence of a header row.
   * Add a read_only argument to `.Table.from_xlsx` to allo
     disabling read-only mode for some spreadsheets.

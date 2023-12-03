@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  2 16:20:23 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.5.2 
+  * fix bug #139: "ampersand (&) in gpg passphrase breaks gpg tests"
+
+- update to 2.5.1 
+  * quotewrap only strings with quotes ('") or spaces from now on
+  * add --verbosity only if set in profile conf
+  * bugfix #138: fix quoting when filtering params, thx Eric
+  * bugfix #137: relax version parsing regex
+
+- update to 2.5.0
+  * bugfix #136: "not compatible with duplicity 2.x", thx tengel, lds, Rhomeo
+    check for duplicity 2.1+ (2.0 broke implied commands),
+    command line ui changed incompatibly
+  * filter in/excludes more strictly for more duplicity actions now
+  * replace '--file-to-restore' with '--path-to-restore'
+  * filter backup only params now
+
+- update to 2.4.3
+  * bugfix #134: workaround bash 4.2 and earlier read bug (thx Tavio Wong)
+
+-------------------------------------------------------------------
 Sat Jan 21 10:57:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:

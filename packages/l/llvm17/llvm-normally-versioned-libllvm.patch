@@ -46,11 +46,11 @@ Index: llvm-8.0.0rc3.src/tools/llvm-config/llvm-config.cpp
  
    // If LLVM_LINK_DYLIB is ON, the single shared library will be returned
    // for "--libs", etc, if they exist. This behaviour can be overridden with
-Index: llvm-8.0.0rc3.src/tools/llvm-shlib/CMakeLists.txt
+Index: llvm-17.0.6.src/tools/llvm-shlib/CMakeLists.txt
 ===================================================================
---- llvm-8.0.0rc3.src.orig/tools/llvm-shlib/CMakeLists.txt
-+++ llvm-8.0.0rc3.src/tools/llvm-shlib/CMakeLists.txt
-@@ -42,7 +42,7 @@ if(LLVM_BUILD_LLVM_DYLIB)
+--- llvm-17.0.6.src.orig/tools/llvm-shlib/CMakeLists.txt
++++ llvm-17.0.6.src/tools/llvm-shlib/CMakeLists.txt
+@@ -30,7 +30,7 @@ if(LLVM_BUILD_LLVM_DYLIB)
    if (LLVM_LINK_LLVM_DYLIB)
      set(INSTALL_WITH_TOOLCHAIN INSTALL_WITH_TOOLCHAIN)
    endif()
@@ -58,7 +58,7 @@ Index: llvm-8.0.0rc3.src/tools/llvm-shlib/CMakeLists.txt
 +  add_llvm_library(LLVM SHARED DISABLE_LLVM_LINK_LLVM_DYLIB ${INSTALL_WITH_TOOLCHAIN} ${SOURCES})
  
    list(REMOVE_DUPLICATES LIB_NAMES)
-   if(("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux") OR (MINGW) OR (HAIKU)
+   if((MINGW) OR (HAIKU)
 Index: llvm-17.0.0rc1.src/test/lit.cfg.py
 ===================================================================
 --- llvm-17.0.0rc1.src.orig/test/lit.cfg.py

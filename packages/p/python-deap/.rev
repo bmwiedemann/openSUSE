@@ -39,4 +39,19 @@
     <comment>- add no2to3.patch for compatibility with newer setuptools</comment>
     <requestid>958231</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9b3431a350299bba547f343fdf022ff</srcmd5>
+    <version>1.4.1</version>
+    <time>1701632953</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.1:
+  * https://github.com/DEAP/deap/compare/1.3.2...1.4.1
+- drop no2to3.patch, python-deap-python3.patch,
+  python-deap-remove-nose.patch (upstream)
+
+- add no2to3.patch for compatibility with newer setuptools
+- Don't build for Python 3.6, due to no NumPy.
+    'from itertools import repeat'</comment>
+    <requestid>1130509</requestid>
+  </revision>
 </revisionlist>

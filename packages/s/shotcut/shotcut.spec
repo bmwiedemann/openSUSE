@@ -27,7 +27,7 @@
 #%%(pkg-config --modversion Qt6Core)
 %bcond_with    x264
 Name:           shotcut
-Version:        23.09.29
+Version:        23.11.29
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  libebur128-devel >= 1.2.6
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-declarative-private-devel >= 6.4.3
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt6Charts)
 BuildRequires:  cmake(Qt6Concurrent) >= 6.4.3
 BuildRequires:  cmake(Qt6Core) >= 6.4.3
 BuildRequires:  cmake(Qt6Gui)
@@ -57,7 +58,7 @@ BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
-BuildRequires:  pkgconfig(mlt++-7)
+BuildRequires:  pkgconfig(mlt++-7) >= 7.22.0
 BuildRequires:  pkgconfig(mlt-framework-7)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vpx)

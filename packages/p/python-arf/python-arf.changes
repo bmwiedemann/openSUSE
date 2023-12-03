@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  2 19:45:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * no upstream changelog available
+- drop h5py-fixup.patch, arf-pr10-h5py-open.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jul 12 08:34:10 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add h5py-fixup.patch -- gh#melizalab/arf#12

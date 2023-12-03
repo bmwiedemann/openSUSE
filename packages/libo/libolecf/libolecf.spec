@@ -18,7 +18,7 @@
 
 %define lname	libolecf1
 Name:           libolecf
-Version:        20221024
+Version:        20231203
 Release:        0
 Summary:        Library and tools to access the OLE 2 Compound File (OLECF) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -32,10 +32,10 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros %{python_module devel}
 BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfole) >= 20220115
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libfwps) >= 20220122
+BuildRequires:  pkgconfig(libfwps) >= 20231126
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

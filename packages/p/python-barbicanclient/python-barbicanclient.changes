@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar  7 06:53:48 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.5.0
+  - Bump tox minversion to 3.18.0
+  - Unit tests for microversion, initial change for consumers
+  - Fix unit test failue with cliff>=3.5.0
+  - Make functional tests use stestr instead of nose
+  - Updating python testing as per Yoga testing runtime
+  - Add Python 3 only classifier
+  - Added secret consumers list functionality. Unit, smoke
+  - Add Python3 zed unit tests
+  - Remove six
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Implement microversions
+  - Add secret consumers documentation
+  - Update the constraints url
+  - Replace deprecated UPPER_CONSTRAINTS_FILE variable
+  - Add secret consumers Python API
+  - Drop lower-constraints.txt and its testing
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Added the force parameter to consumer removal and the corresponding CLI commands
+  - setup.cfg: Replace dashes by underscores
+  - Fix the import warning of secrets
+  - Remove unicode literal
+
+-------------------------------------------------------------------
 Tue May 24 20:50:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix build against python 3.10

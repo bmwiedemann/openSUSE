@@ -29,4 +29,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>869844</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8fdc9fbb79912315edc03c240693af4</srcmd5>
+    <version>1.6.5</version>
+    <time>1701632914</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.5:
+  * Add PIX icon
+  * Remove Mint-X-Dark
+  * Add definitions for folder-color-switcher
+  * Add thingy icon
+  * Add xfsm-lock
+  * Add a create-links script
+  * Add missing icons and support for Xfce 4.16
+  * Add sticky
+  * Add missing sizes for folder-recent
+  * Add caps and num-lock symbolic indicator icons.
+  * Make caps-lock and num-lock symbolic icons cinnamon-specific.
+  * Add cs-online-accounts
+
+  * Add org.gnome.ArchiveManager icon.
+- Update to version 1.5.3 and add _service file.</comment>
+    <requestid>1128788</requestid>
+  </revision>
 </revisionlist>

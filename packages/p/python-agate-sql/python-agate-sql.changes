@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  2 17:21:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Use Fast Executemany Mode
+  * Add Python 3.12 support.
+  * Drop support for Python 3.6 (2021-12-23), 3.7 (2023-06-27).
+  * Allow SQLAlchemy 2. Disallow SQLAlchemy < 1.4.
+
+-------------------------------------------------------------------
 Tue May  9 20:54:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- flip to the lowercase compat provides 
+- flip to the lowercase compat provides
 
 -------------------------------------------------------------------
 Fri Feb 10 10:37:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -57,7 +66,7 @@ Thu Apr 16 18:27:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
 Wed Apr 17 11:44:43 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.5.4
-  * Add ``min_col_len`` and ``col_len_multiplier`` options to 
+  * Add ``min_col_len`` and ``col_len_multiplier`` options to
     :meth:`.Table.to_sql` to control the length of text columns.
   * agate-sql is now tested against Python 3.7.
   * Drop support for Python 3.3 (end-of-life was September 29, 2017).

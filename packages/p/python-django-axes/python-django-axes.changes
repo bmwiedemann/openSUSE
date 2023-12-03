@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Dec  2 20:19:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * Fix ``TransactionManagementError`` when using the database
+    handler with a custom database with for ``AccessAttempt`` or
+    ``AccessFailureLog``.
+  * Set ``AXES_SENSITIVE_PARAMETERS`` default value to
+    ``["username", "ip_address"]`` in addition to the
+    ``AXES_PASSWORD_FORM_FIELD`` configuration flag.
+  * Improve documentation on GDPR and privacy notes and
+    configuration flags.
+  * Add Indonesion translation.
+  * Remove unused methods from AxesStandaloneBackend.
+  * Add username to admin fieldsets.
+  * Add Django system checks for validating callable import path
+    settings.
+  * Improve documentation.
+  * Improve repository issue and PR templates.
+  * Fine-tune CI pipelines and RTD build requirements.
+  * Version 6 is a breaking release. Please see the documentation
+    for upgrade instructions.
+  * Deprecate Python 3.7 support.
+  * Deprecate ``is_admin_site`` API call with misleading naming.
+  * Add ``AXES_LOCKOUT_PARAMETERS`` configuration flag that will
+    supersede ``AXES_ONLY_USER_FAILURES``,
+    ``AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP``,
+    ``AXES_LOCK_OUT_BY_USER_OR_IP``, and ``AXES_USE_USER_AGENT``
+    configurations. Add deprecation warnings for old flags. See
+    project documentation on RTD for update instructions.
+  * Improve translations.
+  * Use Django ``cache.incr`` API for atomic cached failure
+    counting
+  * Make ``django-ipware`` an optional dependency. Install it
+    with e.g. ``pip install django-axes[ipware]`` package and
+    extras specifier. [aleksihakli]
+  * Deprecate and rename old configuration flags. Old flags will
+    be removed in or after version ``6.1``. [aleksihakli]
+  * Fix sensitive parameter logging for database handler.
+  * Add ``AXES_CLIENT_CALLABLE`` setting.
+  * Update Python, Django, and package versions.
+
+-------------------------------------------------------------------
 Mon Mar  6 01:19:28 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v5.40.1

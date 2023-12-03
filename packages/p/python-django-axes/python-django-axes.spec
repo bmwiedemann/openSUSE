@@ -16,27 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-axes
-Version:        5.40.1
+Version:        6.1.1
 Release:        0
 License:        MIT
 Summary:        Keep track of failed login attempts in Django-powered sites
-URL:            https://github.com/jazzband/django-axes
 Group:          Development/Languages/Python
+URL:            https://github.com/jazzband/django-axes
 Source:         https://files.pythonhosted.org/packages/source/d/django-axes/django-axes-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-ipware >= 3}
 BuildRequires:  %{python_module pytest-django}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 Requires:       python-django-ipware >= 3
 BuildArch:      noarch
 

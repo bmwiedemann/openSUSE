@@ -20,14 +20,14 @@
 
 %define lname	libregf1
 Name:           libregf
-Version:        20231029
+Version:        20231203
 Release:        0
 Summary:        Library to access Windows REGF-type Registry files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libregf
 Source:         https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz
-#Source2:        https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz.asc
+Source2:        https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       Windows_NT_Registry_File_REGF_format.pdf
 BuildRequires:  %{python_module devel}
@@ -48,8 +48,8 @@ BuildRequires:  pkgconfig(libfcache) >= 20230115
 BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
-BuildRequires:  pkgconfig(libfwnt) >= 20220922
-BuildRequires:  pkgconfig(libfwsi) >= 20230710
+BuildRequires:  pkgconfig(libfwnt) >= 20231124
+BuildRequires:  pkgconfig(libfwsi) >= 20231130
 BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        80.0
+Version:        81.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -129,7 +129,7 @@ rake --verbose DESTDIR=%{buildroot} install
 install -m0755 src/tools/ac3parser src/tools/base64tool src/tools/bluray_dump \
   src/tools/checksum src/tools/diracparser src/tools/ebml_validator \
   src/tools/hevcc_dump src/tools/pgs_dump src/tools/vc1parser \
-  src/tools/xvc_dump -t %{buildroot}%{_bindir}
+  src/tools/xyzvc_dump -t %{buildroot}%{_bindir}
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -173,6 +173,6 @@ install -m0755 src/tools/ac3parser src/tools/base64tool src/tools/bluray_dump \
 %{_bindir}/hevcc_dump
 %{_bindir}/pgs_dump
 %{_bindir}/vc1parser
-%{_bindir}/xvc_dump
+%{_bindir}/xyzvc_dump
 
 %changelog

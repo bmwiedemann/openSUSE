@@ -31,4 +31,12 @@
     <comment>- Fix boo#1216372 and boo#1216373, run systemd service as a dedicated user and group</comment>
     <requestid>1120484</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58706d29f654749560d15d913db3e13a</srcmd5>
+    <version>1.17.1</version>
+    <time>1701632972</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130558</requestid>
+  </revision>
 </revisionlist>

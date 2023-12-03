@@ -1,7 +1,7 @@
 #
 # spec file for package python-dictknife
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,33 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-dictknife
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Army knife of handling data
 License:        MIT
 URL:            https://github.com/podhmo/dictknife
 Source:         https://github.com/podhmo/dictknife/archive/%{version}.tar.gz#/dictknife-%{version}.tar.gz
 Patch0:         support-python-310.patch
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth-oauthlib}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module magicalimport}
 BuildRequires:  %{python_module prestring}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Suggests:       python-PyYAML
+Suggests:       python-ruamel.yaml
 Suggests:       python-google-api-python-client
 Suggests:       python-google-auth-oauthlib
 Suggests:       python-jsonpatch
 Suggests:       python-magicalimport
 Suggests:       python-prestring
-# Not available
-Suggests:       python-qtoml
 BuildArch:      noarch
 %python_subpackages
 
@@ -83,7 +80,7 @@ JSON pointer syntax.
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/dictknife
 %python_alternative %{_bindir}/jsonknife

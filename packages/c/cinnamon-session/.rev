@@ -203,4 +203,41 @@
     <comment></comment>
     <requestid>953936</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ed36e79cbb72ef636cf4c3cc04c9475e</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632920</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * Fix meson.build deprecations up to 0.56.0
+  * wayland: Don't use egg library
+  * wayland: Replace cs-idle-monitor with gnome-idle-monitor
+  * wayland: Add compatibility
+  * wayland: Add DisplayServer phase
+  * wayland: Reimplement logout/inhibit dialogs as a separate
+    process
+  * Clean up and unify logging for session failures
+  * More cleanup - leftover includes, unused files
+  * Fix build.
+  * Don't make a required component failure fatal.
+  * On required app failure, log both the app and startup ID.
+  * csm-manager: Remove maybe_restart_user_bus.
+  * main.c: Don't direct logging to the journal.
+  * csm-manager: Terminate the logout dialog at the beginning of
+    the session end phase, not the end.
+  * cinnamon-session-quit: Set modal.
+  * l10n: Update POT
+  * cinnamon-session (5.8.1) victoria; urgency=medium
+  * Block touchegg from autostarting.
+  * cinnamon-session (5.8.0) victoria; urgency=medium
+  * main.c: Don't set GTK_OVERLAY_SCROLLING.
+  * github workflow: Add optional ssh session.
+  * cinnamon-session (5.6.0) vera; urgency=medium
+  * Fix .gitignore for builds
+  * Accept Desktop Entry Specification v1.5
+  * Use github instead of circleci.
+  * cinnamon-session (5.4.0) vanessa; urgency=medium
+  * Remove gconf code, disable docs, remove doc dependencies.</comment>
+    <requestid>1130389</requestid>
+  </revision>
 </revisionlist>

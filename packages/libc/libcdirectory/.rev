@@ -55,4 +55,12 @@
     <comment>delete system-libs.patch</comment>
     <requestid>1038444</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c5aee2a6bd0180453c3fc71645b655f8</srcmd5>
+    <version>20220105</version>
+    <time>1701632997</time>
+    <user>anag+factory</user>
+    <comment>- Add signature and keyring</comment>
+    <requestid>1130585</requestid>
+  </revision>
 </revisionlist>

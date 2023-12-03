@@ -18,13 +18,12 @@
 
 
 Name:           debootstrap
-Version:        1.0.132
+Version:        1.0.133
 Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT
 URL:            https://salsa.debian.org/installer-team/debootstrap
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:         %{name}-norootforbuild.patch
 Requires:       binutils
 Requires:       wget
 Recommends:     gpg2

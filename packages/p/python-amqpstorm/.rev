@@ -114,4 +114,24 @@
     <comment></comment>
     <requestid>975699</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a088ea6bd7baa583dcdb6b11e4008822</srcmd5>
+    <version>2.10.7</version>
+    <time>1701632949</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.10.7:
+  * Fixed bug with heartbeat interval on the client not sent
+    frequently enough [#127] - Thanks Ivan Héda.
+  * Added support for Python 3.12.
+  * Fixed deprecated warning when using Python 3.11.
+  * Added support for bulk removing users with the Management
+    Api.
+  * Added support to get the Cluster Name using the Management
+    Api.
+  * Fixed ConnectionUri to default to port 5761 when using ssl
+
+  * Added support for passing your own ssl context
+- Intial release v2.2.2</comment>
+    <requestid>1130517</requestid>
+  </revision>
 </revisionlist>

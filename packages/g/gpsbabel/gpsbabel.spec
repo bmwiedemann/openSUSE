@@ -1,7 +1,7 @@
 #
 # spec file for package gpsbabel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %global translationdir %{_datadir}/qt5/translations
 Name:           gpsbabel
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Converts GPS waypoint, route and track data from one format type to another
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.gpsbabel.org/
-Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_8_0.tar.gz
+Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_9_0.tar.gz
 Source1:        http://www.gpsbabel.org/htmldoc-%{version}/%{name}-%{version}.pdf
 Source2:        %{name}.png
 Source21:       style3.css
 # No automatic phone home by default (RHBZ 668865)
 Patch4:         0004-gpsbabel-1.4.3-nosolicitation.patch
+BuildRequires:  cmake
 BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-qttranslations
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -74,7 +76,7 @@ Requires(postun):update-desktop-files
 Qt GUI interface for GPSBabel
 
 %prep
-%autosetup -p1 -n gpsbabel-gpsbabel_1_8_0
+%autosetup -p1 -n gpsbabel-gpsbabel_1_9_0
 # Use system shapelib instead of bundled partial shapelib
 rm -rf shapelib
 
@@ -89,38 +91,33 @@ sed -i \
     gui/gpsbabel.desktop
 
 %build
-%qmake5 PREFIX=%{_prefix} WITH_LIBUSB=system WITH_SHAPELIB=pkgconfig WITH_ZLIB=pkgconfig
-make %{?_smp_mflags}
-cp %{SOURCE1} %{name}.pdf
-
-pushd gui
-CFLAGS="%{optflags}" \
-%qmake5 PREFIX=%{_prefix}
-lrelease-qt5 *.ts
-make %{?_smp_mflags}
-popd
+%cmake \
+  -DGPSBABEL_WITH_LIBUSB=system \
+  -DGPSBABEL_WITH_ZLIB=pkgconfig \
+  -DGPSBABEL_WITH_SHAPELIB=pkgconfig
+%cmake_build
+cp %{SOURCE1} ../%{name}.pdf
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+pushd build
 
-make -C gui DESTDIR=%{buildroot} install
+make %{?_smp_mflags} DESTDIR=%{buildroot} preinstall
+make -C gui DESTDIR=%{buildroot} preinstall
 
 install -m 0755 -d %{buildroot}/%{_bindir}
 install -m 0755 -p gpsbabel %{buildroot}/%{_bindir}
-install -m 0755 -p gui/objects/gpsbabelfe %{buildroot}/%{_bindir}
+install -m 0755 -p gui/GPSBabelFE/gpsbabelfe %{buildroot}/%{_bindir}
 install -m 0755 -d %{buildroot}/%{_datadir}/%{name}
-install -m 0644 -p gui/gmapbase.html %{buildroot}/%{_datadir}/%{name}/
+install -m 0644 -p ../gui/gmapbase.html %{buildroot}/%{_datadir}/%{name}/
 install -m 0755 -d %{buildroot}/%{translationdir}
-install -m 0644 -p gui/gpsbabelfe_*.qm %{buildroot}/%{translationdir}/
-install -m 0644 -p gui/coretool/gpsbabel_*.qm %{buildroot}/%{translationdir}/
 
 install -m 0755 -d %{buildroot}/%{_datadir}/applications
-install -m 0644 gui/gpsbabel.desktop %{buildroot}/%{_datadir}/applications
+install -m 0644 ../gui/gpsbabel.desktop %{buildroot}/%{_datadir}/applications
 
 install -m 0755 -d            %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/
 install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/
 
-%find_lang %{name} --with-qt --all-name
+popd
 
 %post gui
 %icon_theme_cache_post
@@ -139,8 +136,6 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 %{_datadir}/applications/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%dir %{translationdir}/
-%{translationdir}/*
 %dir %{_datadir}/icons/hicolor/256x256/
 %dir %{_datadir}/icons/hicolor/256x256/apps/
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png

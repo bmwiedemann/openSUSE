@@ -18,28 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bincopy
-Version:        17.14.5
+Version:        20.0.0
 Release:        0
 Summary:        Mangling of various file formats that conveys binary information
 License:        MIT
 URL:            https://github.com/eerimoq/bincopy
 Source:         https://files.pythonhosted.org/packages/source/b/bincopy/bincopy-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module argparse_addons}
-BuildRequires:  %{python_module pyelftools}
 BuildRequires:  %{python_module humanfriendly}
+BuildRequires:  %{python_module pyelftools}
 # /SECTION
-Requires:  python-argparse_addons
-Requires:  python-humanfriendly
-Requires:  python-pyelftools
-Requires:  fdupes
+Requires:       python-argparse_addons
+Requires:       fdupes
+Requires:       python-humanfriendly
+Requires:       python-pyelftools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

@@ -17,7 +17,7 @@
 
 
 Name:           gns3-gui
-Version:        2.2.40.1
+Version:        2.2.44.1
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ Requires:       python3-jsonschema >= 4.17.3
 Requires:       python3-psutil >= 5.9.4
 Requires:       python3-qt5
 Requires:       python3-sentry-sdk >= 1.17.0
+Requires:       python3-truststore
 Recommends:     gns3-server
 Recommends:     libcap-progs
 Recommends:     sudo

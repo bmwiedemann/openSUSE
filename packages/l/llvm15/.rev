@@ -153,4 +153,13 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1119116</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>adc00a15277ffdfa84dd943bf18a421c</srcmd5>
+    <version>15.0.7</version>
+    <time>1701632909</time>
+    <user>anag+factory</user>
+    <comment>- Manage clang-cpp with update-alternatives like other binaries.
+</comment>
+    <requestid>1130466</requestid>
+  </revision>
 </revisionlist>

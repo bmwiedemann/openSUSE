@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Mon May 22 12:05:31 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.0.0.Final
+  * Changelog
+    = Tasks
+      ~ 41784cb Releasing version
+    = Issues
+      ~ 0f2e59d #190 Don't fail build on already modular JARs
+      ~ 3e2b18e #185 Add outputTimestamp property for reproducible
+        builds
+      ~~~
+      ~ 36eb1ac Simplify release workflow
+      ~ 0c22f34 Push release to a branch due to branch protection
+        rules
+      ~ 7432c99 Apply formatting rules from ModiTect parent
+      ~ 712c529 Update parent pom to make build reproducible
+      ~ 8a29a60 Make AddModuleInfoMojo.jvmVersion non-readonly
+      ~ a1bd562 Update readme with latest release
+      ~ 5e4f1cc Next version 1.0.0-SNAPSHOT
+
+-------------------------------------------------------------------
+Sun Apr  2 20:01:22 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.0.0.RC3
+  * Changelog
+    = Tasks
+      ~ 0bb9d54 Releasing version
+    = Issues
+      ~ #179 Check if a JAR is already modular before enhancing it
+      ~ #169 Document changes applied by #170 (#181)
+      ~ #169 Add support for dependency exclusion
+      ~ #151: Use project.build.fileName to resolve default JAR
+        (#180)
+      ~ #154 Update version to snapshot upon release
+      ~ #162 Avoid fragile Java version parsing when looking for
+        module-info.java
+    = Dependencies
+      ~ Bump slfj4 to 1.7.36
+      ~ Bump jcommaned to 1.82
+      ~ Bump plexus to 3.5.0
+      ~ Bump maven-plugin-annotations to 3.8.1
+      ~ Bump several plugins defined by moditect-parent
+      ~ Bump build-helper-maven-plugin to 3.3.0
+      ~ Bump maven-shade-plugin to 3.4.1
+      ~ Bump maven-plugin-plugin to 3.8.1
+      ~ Bump maven wrapper to 3.1.1 and maven to 3.8.7
+      ~ Bump compile-testing to 0.21.0
+      ~ Bump assertj to 3.24.2
+      ~ Bump java-parser to 3.25.1
+      ~ Bump hibernate-validator in
+        /integrationtest/hibernate-validator
+      ~~~
+      ~ Version bumps must be done with -pl :moditect-parent
+      ~ Default branch was renamed to main
+      ~ Update missing license header
+      ~ Update license headers
+      ~ Update GitHub workflow configuration
+      ~ Upgrade release configuration
+      ~ Update README.md
+      ~ Typos
+      ~ Fix code formatting
+      ~ Add LogWriter to print JDeps output to log
+      ~ Avoid error in logs when passing "--multi-release base" to
+        jdeps
+
+-------------------------------------------------------------------
+Mon Dec 12 16:13:12 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v1.0.0.RC2

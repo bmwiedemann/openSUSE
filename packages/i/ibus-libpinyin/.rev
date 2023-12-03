@@ -330,4 +330,12 @@
   * Fix English mode in Full Pinyin (forwarded request 1091759 from hillwood)</comment>
     <requestid>1091760</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a46561143c280d2cb62d6b8ba9f9aa6f</srcmd5>
+    <version>1.15.5</version>
+    <time>1701632986</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130578</requestid>
+  </revision>
 </revisionlist>

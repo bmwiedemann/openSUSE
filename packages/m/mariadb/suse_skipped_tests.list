@@ -1,91 +1,7 @@
 #----------------------------------------------------------------
-
-# The SSL tests that are failing correctly
-main.ssl_7937                                : bsc#937835, MDEV-8404
-main.ssl_crl                                 : bsc#937835, MDEV-8404
-main.ssl_8k_key                              : bsc#937835, MDEV-8404
-
-# Main and perfschema tests
-main.userstat                                : bsc#937836, MDEV-8446
-perfschema.nesting                           : bsc#937836, MDEV-8446
-perfschema.socket_summary_by_event_name_func : bsc#937836, MDEV-8446
-perfschema.socket_summary_by_instance_func   : bsc#937836, MDEV-8446
-
-# Failing because of "Self Signed Certificate in the Certificate Chain"
-perfschema.cnf_option                        : all
-rpl.rpl_row_img_blobs                        : all MDEV-13875
-rpl.rpl_row_img_eng_min                      : all MDEV-13875
-rpl.rpl_row_img_eng_noblob                   : all MDEV-13875
-
-# The tests of plugins we don't build
-main.plugin_auth                             : since 10.4.10 - all, we don't build mysql_clear_password plugin
-plugins.auth_ed25519                         : since 10.4.10 - all, we don't build client_ed25519 plugin
-plugins.multiauth                            : since 10.4.10 - all, we don't build client_ed25519 plugin
-unit.ed25519                                 : since 10.4.12 - ppc, we don't build client_ed25519 plugin
-
-#----------------------------------------------------------------
-
-# Needs to be investigated (issues trackers will be added)
-sys_vars.slave_parallel_threads_basic            : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
-main.gis_notembedded                             : since 10.3.16 - x86_64, i386, s390x, armv7l, aarch64, ppc64, ppc64le
-versioning.partition                             : since 10.3.16 - armv7l
-innodb.innodb-page_compression_lzma              : since 10.3.20 - armv7l
-sys_vars.sysvars_wsrep                           : since 10.4.12 - ppc
-rpl.rpl_ip_mix                                   : since 10.4.10 - all
-rpl.rpl_ip_mix2                                  : since 10.4.10 - all
-rpl.rpl_ipv4_as_ipv6                             : since 10.4.10 - all
-rpl.rpl_ipv6                                     : since 10.4.10 - all 
-perfschema.socket_instances_func                 : since 10.4.10 - all 
-main.ipv4_and_ipv6                               : since 10.4.10 - all 
-main.ipv4_as_ipv6                                : since 10.4.10 - all 
-main.ipv6                                        : since 10.4.10 - all 
-main.information_schema                          : since 10.4.10 - all 
-main.system_mysql_db                             : since 10.4.10 - all 
-main.gis_notembedded                             : since 10.4.10 - all 
-funcs_1.is_columns_mysql                         : since 10.4.10 - all 
-sys_vars.tcp_nodelay                             : since 10.4.10 - all
-oqgraph.social                                   : since 10.4.12 - i586 (MDEV-22280)
-main.symlink-myisam-11902                        : since 10.4.13 - i586
-main.ssl_system_ca                               : since 10.4.14 - all
 type_test.type_test_double                       : since 10.5.6 - all
-main.sp2                                         : since 10.5.8 - all
-main.mysqld--help-aria                           : since 10.5.8 - all
-unit.conc_connection                             : since 10.5.8 - all
-main.not_partition                               : since 10.5.8 - aarch64
-period.overlaps                                  : since 10.5.8 - s390x
-perfschema.memory_aggregate_32bit                : since 10.5.8 - s390x
-perfschema.socket_connect                        : since 10.5.8 - s390x
-sys_vars.gtid_ignore_duplicates_grant            : since 10.5.8 - i586
-sys_vars.myisam_stats_method_basic               : since 10.5.8 - i586
-innodb.innodb-page_compression_bzip2             : since 10.5.8 - i586
-sys_vars.read_only_func                          : since 10.5.8 - i586
-sys_vars.big_tables_basic                        : since 10.5.8 - i586
-main.mysql_protocols                             : since 10.5.8 - i586
-sys_vars.max_prepared_stmt_count_func            : since 10.5.8 - i586
-sys_vars.net_read_timeout_basic                  : since 10.5.8 - i586
-sys_vars.key_cache_age_threshold_basic           : since 10.5.8 - i586
-main.upgrade_MDEV-19650                          : since 10.5.8 - x86_64
-main.upgrade_MDEV-23102-1                        : since 10.5.8 - x86_64
-main.upgrade_MDEV-23102-2                        : since 10.5.8 - x86_64
-main.mysql_upgrade_to_100502                     : since 10.5.8 - x86_64
-sys_vars.profiling_history_size_basic            : since 10.5.8 - x86_64
-sys_vars.old_alter_table_basic                   : since 10.5.8 - x86_64
 
-roles.acl_statistics                             : since 10.7.3 - x86_64
-main.stat_tables_innodb                          : since 10.7.3 - x86_64
-main.stat_tables                                 : since 10.7.3 - x86_64
-plugins.feedback_plugin_load                     : since 10.7.3 - x86_64
-main.explain_non_select                          : since 10.7.3 - x86_64
-main.selectivity_no_engine                       : since 10.7.3 - x86_64
 main.mysql_upgrade                               : since 10.7.3 - x86_64
-perfschema.privilege_table_io                    : since 10.7.3 - x86_64
-
-perfschema.threads_mysql                         : since 10.8.3 - x86_64 (MDEV-28674)
-disks.disks                                      : since 10.8.3 - x86_64
-disks.disks_notembedded                          : since 10.8.3 - x86_64
-innodb.row_size_error_log_warnings_3             : since 10.8.3 - s390x
-main.func_json_notembedded                       : since 10.8.3 - s390x, ppc64
-main.func_math                                   : since 10.8.3 - ppc64le
 
 binlog_encryption.rpl_cant_read_event_incident   : since 10.9.2 - all
 rpl.rpl_perfschema_applier_status_by_coordinator : since 10.9.2 - all
@@ -97,25 +13,26 @@ rpl.rpl_report_port                              : since 10.9.2 - all
 rpl.rpl_reset_slave_fail                         : since 10.9.2 - all
 rpl.rpl_domain_id_filter_restart                 : since 10.9.2 - all
 rpl.rpl_upgrade_master_info                      : since 10.9.2 - all
-binlog_encryption.rpl_gtid_basic                 : since 10.9.2 - all
-multi_source.info_logs                           : since 10.9.2 - all
-rpl.rpl_mdev6020                                 : since 10.9.2 - all
-rpl.rpl_semi_sync_wait_point                     : since 10.9.2 - all
-rpl.rpl_err_ignoredtable                         : since 10.9.2 - all
-rpl.rpl_trigger                                  : since 10.9.2 - all
-rpl.rpl_row_img_sequence                         : since 10.9.2 - all
-rpl.rpl_gtid_basic                               : since 10.9.2 - all
-rpl.rpl_old_master                               : since 10.9.2 - all
-main.loadxml                                     : since 10.9.2 - all
-main.lock_kill                                   : since 10.9.2 - all
-innodb.innodb_bug51920                           : since 10.9.2 - all
-rpl.rpl_slave_shutdown_mdev20821                 : since 10.9.2 - all
-
-rpl.rpl_change_master_demote                     : since 10.10.2 - all
-
+ 
 rpl.rpl_rewrite_db_sys_vars                      : since 10.11.2 - all
-
-unit.aes                                         : since 10.11.3 - s390x
-
-innodb.log_file_size_online                      : since 11.0.2 - all
-
+ 
+binlog_encryption.rpl_gtid_basic                 : since 11.1.2 - all
+multi_source.info_logs                           : since 11.1.2 - all
+rpl.rpl_change_master_demote                     : since 11.1.2 - all
+rpl.rpl_mdev6020                                 : since 11.1.2 - all
+rpl.rpl_trigger                                  : since 11.1.2 - all
+rpl.rpl_semi_sync_wait_point                     : since 11.1.2 - all
+rpl.rpl_err_ignoredtable                         : since 11.1.2 - all
+rpl.rpl_old_master                               : since 11.1.2 - all
+rpl.rpl_gtid_basic                               : since 11.1.2 - all
+rpl.rpl_slave_shutdown_mdev20821                 : since 11.1.2 - all
+main.userstat                                    : since 11.1.2 - all
+perfschema.threads_mysql                         : since 11.1.2 - all
+main.information_schema                          : since 11.1.2 - all
+main.ssl_crl                                     : since 11.1.2 - all
+perfschema.nesting                               : since 11.1.2 - all
+perfschema.socket_summary_by_event_name_func     : since 11.1.2 - all
+perfschema.socket_summary_by_instance_func       : since 11.1.2 - all
+main.lock_kill                                   : since 11.1.2 - all
+main.loadxml                                     : since 11.1.2 - all
+sys_vars.tcp_nodelay                             : since 11.1.2 - all

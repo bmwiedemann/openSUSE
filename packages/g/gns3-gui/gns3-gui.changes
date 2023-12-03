@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Nov 26 14:08:35 UTC 2023 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.44.1:
+  * No changes.
+- Add requires to python3-truststore.
+- Changes from version 2.2.44:
+  * Fix timeout issue when creating Qemu disk image,
+    (gh#GNS3/gns3-server#2313).
+  * Refactor command variables support.
+  * Add vendor_logo_url in appliance schemas,
+    (gh#gns3-registry#825).
+  * Add Qemu IGB network device.
+  * Add the ability to edit width and height in the style edit
+    dialog.
+- Changes from version 2.2.43:
+  * Add KiTTY to preconfigured telnet consoles,
+    (gh#GNS3/gns3-gui#3507).
+  * Fix generic icon in Wayland, (gh#GNS3/gns3-gui#3501).
+  * Use importlib instead of pkg_resources.
+  * Upgrade to PyQt 5.15.9.
+  * Add support for appliance version 8 format
+- Changes from version 2.2.42:
+  * Use the system's certificate store for SSL connections.
+  * Give a node some time to start before opening the console (for
+    console auto start), (gh#GNS3/gns3-gui#3474).
+  * Support for gnome-terminal tabs to be opened in the same
+    window.
+  * Remove import urllib3 and let sentry_sdk import and patch it,
+    (gh#GNS3/gns3-gui#3498).
+  * Add import sys in sudo.py.
+  * Rounded Rectangle support.
+- Changes from version 2.2.41:
+  * Remove sending stats to GA.
+  * Catch urllib3 exceptions when sending crash report,
+    (gh#GNS3/gns3-gui#3483.
+  * Backport UEFI boot mode support for Qemu VMs.
+  * Add debug for dropEvent, (gh#GNS3/gns3-server#2242).
+
+-------------------------------------------------------------------
 Mon Jun 19 15:26:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 

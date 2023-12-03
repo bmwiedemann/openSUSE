@@ -247,4 +247,27 @@
   * Update cvc symbols.</comment>
     <requestid>1090572</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b8e744adfd00e1b105b68658185c0cb9</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632919</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * gschemas: Change a comment
+  * Fix meson.build deprecations up to 0.56.0
+  * cdesktop-enums: Expand CDesktopStylusButtonAction to include
+    'disabled'.
+  * Add gnome-systemd
+  * Add gnome-idle-monitor
+  * a11y: Add 'always-show-text-caret' xsetting
+  * Adding an option for notification screen selection
+  * notifications schema: Add fullscreen-notifications boolean
+
+  * gnome-bg.c: don't decrement hour by 1 when parsing xml
+  * cdesktop-enums.h: Don't allow area or window screenshots while
+  * Default terminal: Change exec-arg from '-x' to '--'
+  * gnome-rr.c: Only use nearest filtering for &quot;pixel-exact&quot;
+- Updated to version 2.0.2</comment>
+    <requestid>1128875</requestid>
+  </revision>
 </revisionlist>

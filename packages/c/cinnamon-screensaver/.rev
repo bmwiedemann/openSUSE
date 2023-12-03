@@ -217,4 +217,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1091839</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8dc61dd5bb5a4c11e7cd2855a68c119e</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632917</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * Don't use libaccountsservice, which can block startup.
+  * Update issue templates.
+  * Fix meson.build deprecations up to 0.56.0
+  * Disable screensaver in wayland sessions
+  * muffinClient.py: Fix typo and clean up Python
+  * cinnamon-screensaver-command: Only try an action if the proxy
+    activation was successful.
+
+  * journal fix (#398)
+  * Build: Only generate python bytecode during builds with no
+  * build: Don't rely on debian magic to install the correct pam
+  * fix segfault due to wrong object being destroyed
+  * Wrap away message and don't let it touch the borders</comment>
+    <requestid>1128874</requestid>
+  </revision>
 </revisionlist>

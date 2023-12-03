@@ -17,9 +17,10 @@
 
 
 %define pythons python3
+%{?sle15_python_module_pythons}
 
 Name:           streamlink
-Version:        5.5.1
+Version:        6.4.2
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause
@@ -28,29 +29,36 @@ URL:            https://streamlink.github.io/
 Source:         https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 
+BuildRequires:  %{python_module Sphinx >= 4}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip >= 9}
+BuildRequires:  %{python_module requests >= 2.26}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx >= 4
-BuildRequires:  python3-devel >= 3.7
-BuildRequires:  python3-pip >= 9
-BuildRequires:  python3-requests >= 2.26
-BuildRequires:  python3-versioningit >= 2.0.0
-BuildRequires:  python3-wheel
+#BuildRequires:  %#{python_module versioningit >= 2.0.0}
+BuildRequires:  %{python_module wheel}
 
-# TEST REQUIREMENTS
-BuildRequires:  python3-pytest >= 6.0.0
-BuildRequires:  python3-PySocks >= 1.5.6
-BuildRequires:  python3-certifi
-BuildRequires:  python3-freezegun >= 1.0.0
-BuildRequires:  python3-isodate
-BuildRequires:  python3-lxml >= 4.6.4
-BuildRequires:  python3-pycountry
-BuildRequires:  python3-pycryptodome >= 3.4.3
-BuildRequires:  python3-pytest-asyncio
-BuildRequires:  python3-requests-mock
-BuildRequires:  python3-urllib3 >= 1.26.0
-BuildRequires:  python3-websocket-client >= 1.2.1
-BuildConflicts: python3-PySocks = 1.5.7
+# SECTION TEST REQUIREMENTS
+BuildRequires:  %{python_module pytest >= 6.0.0}
+BuildRequires:  %{python_module freezegun >= 1.0.0}
+BuildRequires:  %{python_module pytest >= 6.0.0}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-trio}
+BuildRequires:  %{python_module requests-mock}
+# /SECTION
+
+BuildRequires:  %{python_module PySocks >= 1.5.6}
+BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module isodate}
+BuildRequires:  %{python_module lxml >= 4.6.4}
+BuildRequires:  %{python_module pycountry}
+BuildRequires:  %{python_module pycryptodome >= 3.4.3}
+BuildRequires:  %{python_module trio >= 0.22.0}
+BuildRequires:  %{python_module trio-websocket >= 0.9.0}
+BuildRequires:  %{python_module typing-extensions >= 4.0.0}
+BuildRequires:  %{python_module urllib3 >= 1.26.0}
+BuildRequires:  %{python_module websocket-client >= 1.2.1}
+BuildConflicts: %{python_module PySocks = 1.5.7}
 
 Requires:       python3-PySocks >= 1.5.6
 Requires:       python3-certifi
@@ -59,6 +67,9 @@ Requires:       python3-lxml >= 4.6.4
 Requires:       python3-pycountry
 Requires:       python3-pycryptodome >= 3.4.3
 Requires:       python3-requests >= 2.26
+Requires:       python3-trio >= 0.22.0
+Requires:       python3-trio-websocket >= 0.9.0
+Requires:       python3-typing-extensions >= 4.0.0
 Requires:       python3-urllib3 >= 1.26.0
 Requires:       python3-websocket-client >= 1.2.1
 Conflicts:      python3-PySocks = 1.5.7

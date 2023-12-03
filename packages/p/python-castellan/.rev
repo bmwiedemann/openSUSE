@@ -261,4 +261,13 @@
   - Update master for stable/xena</comment>
     <requestid>994201</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9a14278b0048a03a271dbbc51b63520b</srcmd5>
+    <version>4.0.0</version>
+    <time>1701632937</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.0.0
+  - Drop python3.6/3.7 support in testing runtime</comment>
+    <requestid>1130305</requestid>
+  </revision>
 </revisionlist>

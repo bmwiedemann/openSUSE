@@ -1,7 +1,7 @@
 #
 # spec file for package libcdirectory
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libcdirectory
 Source:         https://github.com/libyal/libcdirectory/releases/download/%version/%name-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libcdirectory/releases/download/%version/%name-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20220101

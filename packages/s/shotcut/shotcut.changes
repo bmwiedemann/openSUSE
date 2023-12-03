@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sat Dec  2 20:33:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 23.11.29:
+  Improvements:
+  * Added Crop:Rectangle > Apply to Source button. This button is only enabled when the aspect ratio of the
+  source media matches your project’s Video Mode because it is impossible to include the black padding that
+  Shotcut adds to a source. This feature is the primary way to simply “crop a video.” You do not need to use the
+  timeline for this. You can simply:
+     1. set Settings > Video Mode to Automatic,
+     2. open a video file,
+     3. add the Crop: Rectangle video filter,
+     4. adjust the rectangle control in the player,
+     5. click Apply to Source in the Filters panel,
+     6. choose Yes in the dialog asking to change the Video Mode, and
+     7. Export.
+  * Added Opacity to GPS Text, Text: Simple, and Timer filters.
+  * Improved performance of Timeline > Zoom.
+  * Added rectangular selection to Timeline.
+  * Added Settings > Timeline > Rectangle Select.
+    This is on by default, and scrubbing with the mouse on the timeline requires clicking near the play head.
+    When this is on, hold Shift to turn it off temporarily. When this is off, hold Shift to temporarily turn it
+    on.
+  * Changed the Smooth keyframe type to avoid overshoots and cusps.
+    This only applies to new projects made with this and future versions. Thus, the behavior of smooth keyframes
+    made with an earlier version remains the same for compatibility reasons.
+  * Added Ease In, Ease Out, and Ease In/Out to Keyframes.
+    This also changes the appearance of keyframes in the timeline view of Keyframes to make it more clear where
+    the behavior applies - between keyframes. Remember this: when thinking about “in” or “out”, for Shotcut “in”
+    refers to the beginning of something - a clip, filter, or parameter between keyframes. And “out” refers to
+    the end of something. So, this is not easing into a keyframe and easing out of a keyframe. Rather, it is
+    easing into or out of the change/segment/span/tween of a parameter between keyframes.
+  * Added Properties > View Bitrate….
+    If you have ever used the classic Bitrate Viewer for Windows and frustrated with the lack of updates or not
+    available on your current OS, here you go.
+  * Added a Track Auto Fade Video filter. This can only be added to tracks and makes a dip to black or other
+    color or fade in and out opacity for overlays to each clip.
+  * Changed Export > Codec and Audio to disable some options when a lossless-only or an intra-only codec is
+    selected.
+  * Added Settings > Timeline > Automatically Add Tracks.
+    The defaults for this is off because adding tracks increases memory usage. Also, it does not automatically
+    add a track if nothing is in the Timeline as the timeline is optional in Shotcut. Also, it does not
+    automatically add a track when you open a project with no empty tracks. It only adds tracks when you add
+    something to the timeline or move a clip between tracks.
+  * Added a button in Filters to save a filter set and change the Copy checked filters button to not show a
+    dialog.
+  * Added Filters > Set > Glow Intensity.
+    This demonstrates how you can mix a filtered output with the input to reduce it. Also, change the Mask: From
+    File > Treshold to do a side-by-side comparison with and without the filter.
+  * Added Split at Playhead back into the timeline clip context menu.
+  * Changed the Save option in the low memory dialog to perform a backup and save to prevent breaking projects.
+  * Added support for av1_nvenc NVIDIA AV1 hardware encoder on Windows and Linux.
+  * Upgraded MLT to version 7.22.0.
+  New Bugs:
+  * Fixed honoring the “Do not show this anymore” checkbox in the Convert to Edit-friendly dialog (configuration
+  key showConvertClipDialog) (broke in v23.09).
+  * Fixed the new batch convert dialog (View > Resources) appeared instead of the old Convert to Edit-friendly
+  one when dragging a single concerning clip to Playlist or Timeline (broke in v23.09).
+  * Fixed Motion Tracker filters are forgotten upon switching to Source player (broke in v23.09).
+  * Fixed Mask: Simple Shape > Softness not working on macOS (broke in v23.05).
+  * Fixed saving a favorite for Filters > + > Sets.
+  * Fixed Timeline appears all white on Qt 6.6.
+  * Fixed libvpx security vulnerability CVE-2023-5217.
+  * Fixed libwebp security vulnerability CVE-2023-4863.
+  Old Bugs:
+  * Fixed Text: Simple > #createdate# keyword deletes preceding text.
+  * Fixed a crash when opening View > Scopes > Audio Loudness.
+  * Fixed marker at start of the next clip was deleted when using Timeline > Edit > Ripple Trim Clip Out.
+  * Fixed Properties > Transition changes were lost when Undo after trimming a clip’s out point on the Timeline.
+  * Fixed a crash when Undo after trimming a transition that resulted in a new transition. With this fix Shotcut
+    no longer permits creating a new transition within the same mouse drag that removes a transition.
+  * Fixed AMD (AMF) quality options in a saved Export preset shows up in the Other tab overriding Codec >
+    Quality.
+  * Fixed YouTube export preset is not H.264 high profile with some hardware encoders.
+  * Fixed a memory leak when using YADIF deinterlacers.
+  * Fixed color of export from still images when using full range and pix_fmt=yuv444p.
+
+-------------------------------------------------------------------
 Sat Sep 30 21:36:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 23.09.29:

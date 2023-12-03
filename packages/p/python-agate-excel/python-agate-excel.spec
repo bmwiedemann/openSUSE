@@ -16,29 +16,26 @@
 #
 
 
-%define         skip_python2 1
 Name:           python-agate-excel
-Version:        0.2.5
+Version:        0.4.1
 Release:        0
 Summary:        Read support for Excel files (xls and xlsx) for agate
 License:        MIT
 URL:            https://github.com/wireservice/agate-excel
 Source:         https://github.com/wireservice/agate-excel/archive/%{version}.tar.gz
-# https://github.com/wireservice/agate-excel/commit/833dc6d39dda3e4b025e3e4dc61533622d65cc5f
-Patch0:         python-agate-excel-no-python2.patch
 BuildRequires:  %{python_module agate >= 1.5.0}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module openpyxl >= 2.3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xlrd >= 0.9.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-agate >= 1.5.0
+Requires:       python-numpy
 Requires:       python-olefile
 Requires:       python-openpyxl >= 2.3.0
-Requires:       python-six
 Requires:       python-xlrd >= 0.9.4
 BuildArch:      noarch
 %python_subpackages

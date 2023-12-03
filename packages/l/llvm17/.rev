@@ -83,4 +83,24 @@
 </comment>
     <requestid>1127717</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a40f829ebdf126498d8474b0e14fc853</srcmd5>
+    <version>17.0.6</version>
+    <time>1701632900</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 17.0.6.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase patches:
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-normally-versioned-libllvm.patch
+- Use major version only instead of full (patch-level) version for
+  versioned executables: we don't support parallel installation of
+  multiple versions of the same LLVM major version. (boo#1217450)
+  Also drop the clang-X.Y symlink that was introduced for
+  boo#1012260, because Y is always 0.
+- Manage clang-cpp with update-alternatives like other binaries.
+</comment>
+    <requestid>1130464</requestid>
+  </revision>
 </revisionlist>

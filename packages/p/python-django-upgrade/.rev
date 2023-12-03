@@ -87,4 +87,18 @@
     defined.</comment>
     <requestid>1110366</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca2c958be87f4787b04bf712e9661733</srcmd5>
+    <version>1.15.0</version>
+    <time>1701632932</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.15.0:
+  * Support Django 5.0 as a target version.
+  * Add Django 5.0+ fixer to drop ``.choices`` on model field
+    ``choices`` parameters when using an enumeration type.
+  * Add some compatibility import replacements for Django 4.0 and
+    below.
+  * Fix issue with ``@admin.register()`` checker</comment>
+    <requestid>1130488</requestid>
+  </revision>
 </revisionlist>

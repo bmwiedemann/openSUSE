@@ -20,7 +20,7 @@
 %define soname  libcinnamon-menu-3
 %define sover   0
 Name:           cinnamon-menus
-Version:        5.8.0
+Version:        6.0.0
 Release:        0
 Summary:        A menu system for the Cinnamon Desktop
 License:        LGPL-2.1-or-later

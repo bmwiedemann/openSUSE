@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _version 5.0.0
+%define _version 6.0.0
 Name:           cinnamon
-Version:        5.8.4
+Version:        6.0.0
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -270,6 +270,10 @@ fi
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
 %{_datadir}/cinnamon-session
+%dir %{_datadir}/wayland-sessions
+%{_datadir}/wayland-sessions/cinnamon-wayland.desktop
+%dir %{_datadir}/xdg-desktop-portal/
+%{_datadir}/xdg-desktop-portal/x-cinnamon-portals.conf
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
 %{_datadir}/dbus-1/services/org.cinnamon.*.service

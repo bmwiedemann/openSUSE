@@ -20,7 +20,7 @@
 %define   with_cloud_input   1
 
 Name:           ibus-libpinyin
-Version:        1.15.3
+Version:        1.15.5
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(libpinyin) >= 2.7.91
 BuildRequires:  pkgconfig(lua)
 %if %{with_cloud_input}
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 %endif
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python310-base

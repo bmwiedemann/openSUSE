@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  3 12:38:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231203
+  * 6-byte UTF-8 (RFC 2279) support
+
+-------------------------------------------------------------------
 Tue Aug  1 16:03:31 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility

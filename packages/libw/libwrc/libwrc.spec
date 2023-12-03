@@ -18,7 +18,7 @@
 
 Name:           libwrc
 %define lname	libwrc1
-Version:        20230318
+Version:        20231202
 Release:        0
 Summary:        Library to support the Windows Resource Compiler format
 License:        LGPL-3.0-or-later
@@ -42,12 +42,12 @@ BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libexe) >= 20210424
 BuildRequires:  pkgconfig(libfcache) >= 20230115
-BuildRequires:  pkgconfig(libfdata) >= 20220111
+BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libfwnt) >= 20220922
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libfwnt) >= 20231124
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

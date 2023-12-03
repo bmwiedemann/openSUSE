@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 1 12:03:06 UTC 2023 - sb56637 <mxoo28j7@duck.com>
+
+- Update to version 6.0.0:
+  * Remove deprecated/removed zenity arguments.
+  * Update issue templates.
+  * bug report: Mention crashes.
+  * Update issue template with a link to open and closed issues.
+  * meta-monitor.c: Allow 75% scaling once more.
+  * Make meta_set_verbose() public.
+  * Fix a meson warning
+  * Fix meson.build deprecations up to 0.56.0
+  * keybindings: Restore window opacity keybindings.
+  * input settings: Allow disabling stylus buttons.
+  * Fix some incorrect gsettings schemas
+  * build/packaging: Restore Wayland support
+  * wayland: Fix desktop background
+
+-------------------------------------------------------------------
 Tue Jul 18 05:21:31 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 5.8.1: 

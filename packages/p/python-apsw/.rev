@@ -318,4 +318,22 @@
   * Added constants: SQLITE_IOERR_CORRUPTFS</comment>
     <requestid>1126235</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0678033c619453d0372071d96881e27c</srcmd5>
+    <version>3.44.2.0</version>
+    <time>1701632955</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.44.2.0:
+  * Added `logger` parameter to :func:`apsw.ext.log_sqlite` to
+    use a specific :class:`logging.Logger` (:issue:`493`)
+  * Added :func:`apsw.ext.result_string` to turn an result code
+    into a string, taking into account if it is extended or not.
+  * Provide detail when C implemented objects are printed. For
+    example :class:`connections &lt;Connection&gt;` include the filename.
+  * Added :meth:`URIFilename.parameters` (:issue:`496`)
+  * :class:`URIFilename` are only valid for the duration of the
+    :meth:`VFS.xOpen` call.  If you save and use the object later
+    you will get an exception.  (:issue:`501`)</comment>
+    <requestid>1130519</requestid>
+  </revision>
 </revisionlist>

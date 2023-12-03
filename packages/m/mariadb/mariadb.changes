@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Nov 27 13:28:45 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- Fix location of unwanted binaries (which are deleted)
+- Fix location in rpmlintrc
+- Disable LTO on ppc64le due to error
+- constraints: increase memory to 16G on ppc64le, 10G is no longer enough
+  (perhaps a linker bug?)
+
+-------------------------------------------------------------------
+Tue Oct 17 15:27:14 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update list of skipped tests
+
+-------------------------------------------------------------------
+Mon Sep 25 13:17:53 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 11.1.2:
+    https://mariadb.com/kb/en/mariadb-11-1-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-1-2-changelog/
+  * fixes for the following security vulnerabilities:
+    11.1.2: none
+- Refresh list of skipped tests
+
+-------------------------------------------------------------------
+Wed Sep  6 18:44:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Workaround build failure with fmt-10: require fmt < 10
+
+-------------------------------------------------------------------
+Wed Aug 23 14:20:35 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 11.0.3:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/mariadb-11-0-3-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-0-3-changelog/
+  * fixes for the following security vulnerabilities:
+    11.0.3: none
+
+-------------------------------------------------------------------
 Mon Jun 12 12:42:03 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 11.0.2:

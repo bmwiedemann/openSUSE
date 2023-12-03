@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.0.2
+Version:        11.1.2
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -136,7 +136,7 @@ BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
 # Do not ever switch away from BuildRequires: pkgconfig(libsystemd); BuildRequires systemd/systemd-devel causes build cycles
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(fmt) < 10
 #!BuildIgnore:  user(mysql)
 # Required by rcmysql
 Requires:       %{name}-client
@@ -316,7 +316,7 @@ Obsoletes:      mysql-test < %{version}
 %description test
 This package contains the test scripts and data for MariaDB.
 
-To run the testsuite, run %{_datadir}/mysql-test/suse-test-run.
+To run the testsuite, run %{_datadir}/%{name}-test/suse-test-run.
 
 %package tools
 Summary:        MariaDB tools
@@ -383,7 +383,7 @@ rm -f man/comp_err.1        # built-time utility
 rm -f sql/sql_builtin.cc
 
 # Broken test that needs sources
-rm -f mysql-test/t/file_contents.test mysql-test/r/file_contents.result
+rm -f %{name}-test/t/file_contents.test %{name}-test/r/file_contents.result
 
 # Specify perl path on shebangs
 for i in `grep -Rl '^#!%{_bindir}/env perl$' .`; do
@@ -535,15 +535,15 @@ rm %{buildroot}%{_libdir}/*.a
 rm -f %{buildroot}%{_datadir}/mysql/{errmsg-utf8.txt,mysql-log-rotate}
 rm -f %{buildroot}%{_libdir}/mysql/plugin/daemon_example.ini
 # binary-configure creates the MySQL system tables and starts the server (not used)
-rm -f %{buildroot}%{_datadir}/mysql/binary-configure
+rm -f %{buildroot}%{_datadir}/%{name}/binary-configure
 # FS files first-bytes recoginiton (not updated by upstream since nobody realy use that)
-rm -f %{buildroot}%{_datadir}/mysql/magic
+rm -f %{buildroot}%{_datadir}/%{name}/magic
 # Upstream ships them because of MDEV-10797 (we don't need them as we use our own systemd scripts)
-rm -f %{buildroot}%{_datadir}/mysql/mysql.server
-rm -f %{buildroot}%{_datadir}/mysql/mysqld_multi.server
+rm -f %{buildroot}%{_datadir}/%{name}/mysql.server
+rm -f %{buildroot}%{_datadir}/%{name}/mysqld_multi.server
 # upstream installs links for mysql
-unlink %{buildroot}%{_datadir}/mysql/systemd/mysql.service
-unlink %{buildroot}%{_datadir}/mysql/systemd/mysqld.service
+unlink %{buildroot}%{_datadir}/%{name}/systemd/mysql.service
+unlink %{buildroot}%{_datadir}/%{name}/systemd/mysqld.service
 unlink %{buildroot}%{_unitdir}/mysqld.service
 # The old fork of mytop utility (we ship it as a separate package)
 rm -f %{buildroot}%{_bindir}/mytop
@@ -619,7 +619,7 @@ filelist mysql_client_test mariadb-client-test mysql_client_test_embedded mariad
 filelist msql2mysql mysql_plugin mariadb-plugin mysql_convert_table_format mariadb-convert-table-format mysql_find_rows mariadb-find-rows mysql_setpermission mariadb-setpermission mysql_tzinfo_to_sql mariadb-tzinfo-to-sql mysqlaccess mariadb-access mysqlhotcopy mariadb-hotcopy perror replace mysql_embedded mariadb-embedded aria_s3_copy mariadb-conv >mariadb-tools.files
 
 # All configuration files
-echo '%{_datadir}/mysql/*.cnf' >> mariadb.files
+echo '%{_datadir}/%{name}/*.cnf' >> mariadb.files
 
 # Special errormessages approach
 echo '%%defattr(-, root, root)' > %{_builddir}/errormessages.files
@@ -671,18 +671,18 @@ x %{_localstatedir}/tmp/mysql.*
 EOF
 
 # Testsuite
-install -d -m 755 '%{buildroot}'%{_datadir}/mysql-test/
-install -m 755 suse-test-run '%{buildroot}'%{_datadir}/mysql-test/
-mkdir '%{buildroot}'%{_datadir}/mysql-test%{_localstatedir}
+install -d -m 755 '%{buildroot}'%{_datadir}/%{name}-test/
+install -m 755 suse-test-run '%{buildroot}'%{_datadir}/%{name}-test/
+mkdir '%{buildroot}'%{_datadir}/%{name}-test%{_localstatedir}
 
 # Install the list of skipped tests to be available for user runs
-install -p -m 0644 mysql-test/unstable-tests %{buildroot}%{_datadir}/mysql-test
-ln -s unstable-tests %{buildroot}%{_datadir}/mysql-test/suse_skipped_tests.list
+install -p -m 0644 mysql-test/unstable-tests %{buildroot}%{_datadir}/%{name}-test
+ln -s unstable-tests %{buildroot}%{_datadir}/%{name}-test/suse_skipped_tests.list
 
 # Final fixes
-find '%{buildroot}'%{_datadir}/mysql-test -name '*.orig' -delete
-%fdupes -s '%{buildroot}'%{_datadir}/mysql-test
-fdupes -q -n -r '%{buildroot}'%{_datadir}/mysql-test
+find '%{buildroot}'%{_datadir}/%{name}-test -name '*.orig' -delete
+%fdupes -s '%{buildroot}'%{_datadir}/%{name}-test
+fdupes -q -n -r '%{buildroot}'%{_datadir}/%{name}-test
 for i in `grep -Rl '\r' '%{buildroot}'%{_datadir}/sql-bench`; do
 	dos2unix "$i"
 done
@@ -845,7 +845,7 @@ exit 0
 %endif
 %config(noreplace) %{_pam_secconfdir}/user_map.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
-%{_datadir}/mysql/%{name}.logrotate
+%{_datadir}/%{name}/%{name}.logrotate
 %doc %{_defaultdocdir}/%{name}
 %dir %{_libexecdir}/mysql
 %dir %attr(0700, mysql, mysql) %{_localstatedir}/log/mysql
@@ -863,7 +863,6 @@ exit 0
 %{_sbindir}/rcmysql
 %{_sbindir}/rcmariadb
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/mysql
 %{_datadir}/%{name}/charsets/
 %{_datadir}/%{name}/*.sql
 %dir %{_libdir}/mysql
@@ -889,19 +888,19 @@ exit 0
 %{_datadir}/groonga-normalizer-mysql/README.md
 %{_datadir}/groonga-normalizer-mysql/lgpl-2.0.txt
 %endif
-%dir %{_datadir}/mysql/policy
-%dir %{_datadir}/mysql/policy/apparmor
-%{_datadir}/mysql/policy/apparmor/README
-%{_datadir}/mysql/policy/apparmor/usr.sbin.mysqld*
-%dir %{_datadir}/mysql/policy/selinux
-%{_datadir}/mysql/policy/selinux/README
-%{_datadir}/mysql/policy/selinux/mariadb-server.*
-%{_datadir}/mysql/policy/selinux/mariadb.te
-%dir %{_datadir}/mysql/systemd
-%{_datadir}/mysql/systemd/mariadb.service
-%{_datadir}/mysql/systemd/mariadb@.service
-%{_datadir}/mysql/systemd/mariadb-extra@.socket
-%{_datadir}/mysql/systemd/mariadb@.socket
+%dir %{_datadir}/%{name}/policy
+%dir %{_datadir}/%{name}/policy/apparmor
+%{_datadir}/%{name}/policy/apparmor/README
+%{_datadir}/%{name}/policy/apparmor/usr.sbin.mysqld*
+%dir %{_datadir}/%{name}/policy/selinux
+%{_datadir}/%{name}/policy/selinux/README
+%{_datadir}/%{name}/policy/selinux/mariadb-server.*
+%{_datadir}/%{name}/policy/selinux/mariadb.te
+%dir %{_datadir}/%{name}/systemd
+%{_datadir}/%{name}/systemd/mariadb.service
+%{_datadir}/%{name}/systemd/mariadb@.service
+%{_datadir}/%{name}/systemd/mariadb-extra@.socket
+%{_datadir}/%{name}/systemd/mariadb@.socket
 
 %files rpm-macros
 %{_rpmmacrodir}/macros.mariadb-test
@@ -923,8 +922,8 @@ exit 0
 %files galera -f mariadb-galera.files
 %doc Docs/README.wsrep
 %config(noreplace) %attr(-, root, mysql) %{_sysconfdir}/my.cnf.d/50-galera.cnf
-%{_datadir}/mysql/systemd/use_galera_new_cluster.conf
-%{_datadir}/mysql/wsrep_notify
+%{_datadir}/%{name}/systemd/use_galera_new_cluster.conf
+%{_datadir}/%{name}/wsrep_notify
 %endif
 
 %files errormessages -f mariadb-errormessages.files
@@ -932,17 +931,17 @@ exit 0
 
 %files bench -f mariadb-bench.files
 %{_datadir}/sql-bench
-%{_datadir}/mysql/mini-benchmark
+%{_datadir}/%{name}/mini-benchmark
 
 %files test -f mariadb-test.files
 %{_bindir}/test-connect-t
 %{_mandir}/man1/my_safe_process.1%{?ext_man}
 %{_mandir}/man1/mysql-test-run.pl.1%{?ext_man}
 %{_mandir}/man1/mysql-stress-test.pl.1%{?ext_man}
-%{_datadir}/mysql-test/valgrind.supp
-%dir %attr(755, mysql, mysql) %{_datadir}/mysql-test
-%attr(-, mysql, mysql) %{_datadir}/mysql-test/[^v]*
-%dir %attr(755, mysql, mysql) %{_datadir}/mysql-test%{_localstatedir}
+%{_datadir}/%{name}-test/valgrind.supp
+%dir %attr(755, mysql, mysql) %{_datadir}/%{name}-test
+%attr(-, mysql, mysql) %{_datadir}/%{name}-test/[^v]*
+%dir %attr(755, mysql, mysql) %{_datadir}/%{name}-test%{_localstatedir}
 
 %files tools -f mariadb-tools.files
 %{_bindir}/mysqlrepair

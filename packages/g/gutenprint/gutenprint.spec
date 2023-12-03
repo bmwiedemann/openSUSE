@@ -98,6 +98,8 @@ Requires:       ghostscript
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Source0:        http://downloads.sourceforge.net/gimp-print/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM bmwiedemann https://sourceforge.net/p/gimp-print/source/merge-requests/9/
+Patch0:         reproducible.patch
 # How to get Source0 directly:
 # wget --no-check-certificate -O gutenprint-5.3.4.tar.bz2 https://sourceforge.net/projects/gimp-print/files/gutenprint-5.3/5.3.4/gutenprint-5.3.4.tar.bz2
 # Patch0...Patch9 is for patches from upstream:
@@ -135,6 +137,7 @@ See the user's manual at /usr/share/gutenprint/doc/gutenprint-users-manual.pdf
 %prep
 # Be quiet when unpacking:
 %setup -q -n gutenprint-%{tarball_version}
+%patch0 -p1
 
 %build
 #autoreconf -fvi
@@ -203,6 +206,7 @@ chmod a-x $RPM_BUILD_ROOT/usr/lib/cups/driver/gutenprint.%{gutenprintmajor}
 mv $RPM_BUILD_ROOT/%{_bindir}/testpattern $RPM_BUILD_ROOT/%{_libdir}/gutenprint/%{gutenprintmajor}
 # Remove dispensable .po files (only the .mo files are needed on the end-users's system):
 rm $RPM_BUILD_ROOT/usr/share/locale/*/gutenprint_*.po
+rm $RPM_BUILD_ROOT%_libdir/gutenprint/*/config.summary # hostname in here made results vary
 %find_lang gutenprint
 
 %post

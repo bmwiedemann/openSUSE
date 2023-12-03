@@ -1,75 +1,30 @@
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/basic/test_basic.py
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/basic/test_basic.py
 ===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/basic/test_basic.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/basic/test_basic.py
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/basic/test_basic.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/basic/test_basic.py
 @@ -3,7 +3,7 @@ import random
  import string
  import sys
  
 -import mock
 +from unittest import mock
- from pamqp import commands
+ from pamqp import specification
  from pamqp.body import ContentBody
  from pamqp.header import ContentHeader
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel.py
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel_exception.py
 ===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/channel/test_channel.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel.py
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/channel/test_channel_exception.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel_exception.py
 @@ -1,4 +1,4 @@
 -import mock
 +from unittest import mock
- from pamqp import commands
- 
- from amqpstorm import Channel
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel_exception.py
-===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/channel/test_channel_exception.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel_exception.py
-@@ -1,4 +1,4 @@
--import mock
-+from unittest import mock
- from pamqp import commands
+ from pamqp import specification
  
  import amqpstorm
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel_frame.py
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/io/test_io.py
 ===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/channel/test_channel_frame.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel_frame.py
-@@ -1,4 +1,4 @@
--import mock
-+from unittest import mock
- from pamqp.header import ContentHeader
- from pamqp import commands
- from pamqp.body import ContentBody
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel_message_handling.py
-===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/channel/test_channel_message_handling.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/channel/test_channel_message_handling.py
-@@ -1,6 +1,6 @@
- import threading
- 
--import mock
-+from unittest import mock
- from pamqp.header import ContentHeader
- from pamqp import commands
- from pamqp.body import ContentBody
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/connection/test_connection.py
-===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/connection/test_connection.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/connection/test_connection.py
-@@ -1,7 +1,7 @@
- import socket
- import threading
- 
--import mock
-+from unittest import mock
- from pamqp import exceptions as pamqp_exception
- from pamqp import frame as pamqp_frame
- from pamqp import commands
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/io/test_io.py
-===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/io/test_io.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/io/test_io.py
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/io/test_io.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/io/test_io.py
 @@ -1,7 +1,7 @@
  import socket
  import ssl
@@ -79,10 +34,10 @@ Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/io/test_io.py
  
  import amqpstorm.io
  from amqpstorm.exception import AMQPConnectionError
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/io/test_io_exception.py
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/io/test_io_exception.py
 ===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/io/test_io_exception.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/io/test_io_exception.py
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/io/test_io_exception.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/io/test_io_exception.py
 @@ -3,7 +3,7 @@ import socket
  from errno import EINTR
  from errno import EWOULDBLOCK
@@ -92,10 +47,10 @@ Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/io/test_io_exception.py
  
  from amqpstorm import AMQPConnectionError
  from amqpstorm import compatibility
-Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/test_rpc.py
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/test_rpc.py
 ===================================================================
---- AMQPStorm-2.10.4.orig/amqpstorm/tests/unit/test_rpc.py
-+++ AMQPStorm-2.10.4/amqpstorm/tests/unit/test_rpc.py
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/test_rpc.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/test_rpc.py
 @@ -1,7 +1,7 @@
  import threading
  import time
@@ -105,3 +60,48 @@ Index: AMQPStorm-2.10.4/amqpstorm/tests/unit/test_rpc.py
  
  from amqpstorm.exception import AMQPChannelError
  from amqpstorm.rpc import Rpc
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel_frame.py
+===================================================================
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/channel/test_channel_frame.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel_frame.py
+@@ -1,4 +1,4 @@
+-import mock
++from unittest import mock
+ from pamqp import ContentHeader
+ from pamqp import specification
+ from pamqp.body import ContentBody
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel_message_handling.py
+===================================================================
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/channel/test_channel_message_handling.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel_message_handling.py
+@@ -1,6 +1,6 @@
+ import threading
+ 
+-import mock
++from unittest import mock
+ from pamqp import ContentHeader
+ from pamqp import specification
+ from pamqp.body import ContentBody
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/connection/test_connection.py
+===================================================================
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/connection/test_connection.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/connection/test_connection.py
+@@ -1,7 +1,7 @@
+ import socket
+ import threading
+ 
+-import mock
++from unittest import mock
+ from pamqp import frame as pamqp_frame
+ from pamqp import specification
+ from pamqp.specification import Basic as spec_basic
+Index: AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel.py
+===================================================================
+--- AMQPStorm-2.10.7.orig/amqpstorm/tests/unit/channel/test_channel.py
++++ AMQPStorm-2.10.7/amqpstorm/tests/unit/channel/test_channel.py
+@@ -1,4 +1,4 @@
+-import mock
++from unittest import mock
+ from pamqp import specification
+ 
+ from amqpstorm import Channel

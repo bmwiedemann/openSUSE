@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 28 03:10:22 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.0.133
+  * stop changing user/group in Makefile
+  * use mount from the outside to support chroots without mount installed
+  * Let the buildd variant only install essential, build-essential and apt
+
+- remove patch debootstrap-norootforbuild.patch as upstream integrated
+  the patch
+
+-------------------------------------------------------------------
 Sat Oct  7 02:51:56 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.0.132:

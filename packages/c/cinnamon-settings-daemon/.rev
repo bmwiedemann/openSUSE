@@ -256,4 +256,41 @@
     <comment></comment>
     <requestid>947018</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>65ac388aa0b46e467be6ea139be2175f</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632915</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * Fix meson.build deprecations up to 0.56.0
+  * Add wayland support
+  * optimization: Only initialize libnotify for plugins that need
+    it
+  * wayland: Add a plugin to sync cinnamon/gnome settings
+  * csd-background: Make wayland-compatible
+  * xsettings: Add gtk-keynav-use-caret setting
+  * daemon-skeleton.h: Make sure the GMainLoop is accessible
+    everywhere it's needed.
+  * xsettings: Round the Xft.dpi setting to an integer
+  * power: Fix free order
+  * xsettings: Override the active icon and gtk theme when 'high-
+    contrast' is enabled.
+  * build: don't hardcode files install dir as /
+  * power: Allow the minimum display brightness to be overridden.
+  * csd-xsettings-manager.c: Manage &quot;gtk-overlay-scrolling&quot;.
+  * power: Add settings to disable low battery warnings for
+    connected devices
+  * github workflow: Add optional ssh session.
+  * fixed a spelling error spotted with lintian
+  * xsettings: Connect Gtk/EnablePrimaryPaste to gsettings.
+  * meson options: Set debug flag back to false.
+  * Fix broken rpath
+  * wacom: Don't set an rpath for led helpers.
+  * Small packaging improvements
+  * csd-wacom: Remove unused functionality.
+  * schemas: Fix wacom schema names for migrate_check.
+  * schemas: Add missing desktop schema for migration.
+  * cinnamon-settings-daemon (5.4.3) vanessa; urgency=medium</comment>
+    <requestid>1128872</requestid>
+  </revision>
 </revisionlist>

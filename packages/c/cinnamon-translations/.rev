@@ -214,4 +214,19 @@
   * Update translations</comment>
     <requestid>1098985</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>42571d467e8ca306e4701abdc4f81718</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632912</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * Update translations
+
+  * Update translations.
+- update to version 2.6.2
+- update version 2.2.3
+- update version 2.2.2
+- Updated to version 2.0.1</comment>
+    <requestid>1128787</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package matio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define libname lib%{name}
 %define major   11
 Name:           matio
-Version:        1.5.23
+Version:        1.5.26
 Release:        0
 Summary:        Library for reading and writing MATLAB MAT files
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://sourceforge.net/projects/matio/
 Source0:        https://downloads.sourceforge.net/matio/%{name}-%{version}.7z
-# We need hdf5 1.10.2 to allow creation of files backwards compatible with hdf5 1.8
-BuildRequires:  hdf5-devel >= 1.10.2
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel >= 1.2.3
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200

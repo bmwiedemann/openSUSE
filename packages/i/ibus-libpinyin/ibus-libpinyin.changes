@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  3 13:29:11 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.15.5
+  * Use libsoup3
+  * Update network dictionary
+  * Fix Caps Lock for English mode
+  * Fix bugs
+
+-------------------------------------------------------------------
 Fri Jun  9 07:14:30 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.15.3

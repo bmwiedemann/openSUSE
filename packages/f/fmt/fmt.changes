@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug 29 08:18:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.1.1
+  * Added formatters for std::atomic and atomic_flag.
+  * Fixed an error about partial specialization of
+    formatter<string> after instantiation (GCC, C++20 mode).
+  * Made fmt::to_string work with types that have format_as
+    overloads.
+  * Made formatted_size work with integral format specifiers at
+    compile time.
+
+-------------------------------------------------------------------
+Sat Aug 12 22:50:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.1
+  * Optimized format string compilation resulting in up to 40%
+    speed up in compiled format_to and ~4x speed up in compiled
+    format_to_n on a concatenation benchmark.
+
+-------------------------------------------------------------------
+Thu May 11 18:11:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10
+  * New floating-point formatting algorithm for given precision.
+    The new algorithm is based on Dragonbox.
+  * Replaced snprintf-based hex float formatter with an internal
+    implementation.
+  * Made format_as work with any user-defined type and not just
+    enums.
+  * Removed deprecated implicit conversions for enums and
+    conversions to primitive types for compatibility with
+    std::format and to prevent potential ODR violations. Use
+    format_as instead.
+  * Implemented formatting of subseconds.
+  * Added formatters for std::priority_queue, std::queue,
+    std::stack, std;:optional.
+
+-------------------------------------------------------------------
 Fri Mar 10 08:14:22 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use -ffloat-store as a fix for excessive precision provided

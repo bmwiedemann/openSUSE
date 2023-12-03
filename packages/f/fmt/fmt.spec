@@ -16,9 +16,9 @@
 #
 
 
-%define sover   9
+%define sover   10
 Name:           fmt
-Version:        9.1.0
+Version:        10.1.1
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
@@ -31,17 +31,17 @@ BuildRequires:  pkg-config
 
 %description
 Fmt is a formatting library for C++. It can be used as an
-alternative to (s)printf and IOStreams.
+alternative to (s)printf and iostreams.
 
-%package -n libfmt%{sover}
+%package -n libfmt%sover
 Summary:        A formatting library for C++
 
-%description -n libfmt%{sover}
+%description -n libfmt%sover
 Shared library for fmt, a formatting library for C++.
 
 %package devel
 Summary:        Development files for fmt, a formatting library
-Requires:       libfmt%{sover} = %{version}
+Requires:       libfmt%sover = %version
 
 %description devel
 Development files for fmt, a formatting library for C++.
@@ -51,8 +51,9 @@ Development files for fmt, a formatting library for C++.
 
 %build
 # X87 fix for excessive precision: https://github.com/fmtlib/fmt/issues/3337
-%global optflags %optflags -ffloat-store
-%cmake -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{_includedir}
+export CFLAGS="%optflags -ffloat-store"
+export CXXFLAGS="$CFLAGS"
+%cmake -DCMAKE_INSTALL_INCLUDEDIR:PATH="%_includedir"
 %cmake_build
 
 %install
@@ -60,21 +61,21 @@ Development files for fmt, a formatting library for C++.
 
 %check
 # path needs to be exported otherwise unit tests will fail
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:%buildroot/%_libdir"
 %ctest
 
-%post -n libfmt%{sover} -p /sbin/ldconfig
-%postun -n libfmt%{sover} -p /sbin/ldconfig
+%post -n libfmt%sover -p /sbin/ldconfig
+%postun -n libfmt%sover -p /sbin/ldconfig
 
-%files -n libfmt%{sover}
+%files -n libfmt%sover
 %license LICENSE.rst
-%{_libdir}/libfmt.so.%{sover}*
+%_libdir/libfmt.so.%{sover}*
 
 %files devel
 %doc ChangeLog.rst README.rst
-%{_includedir}/%{name}
-%{_libdir}/cmake/%{name}
-%{_libdir}/libfmt.so
-%{_libdir}/pkgconfig/%{name}.pc
+%_includedir/%name
+%_libdir/cmake/%name
+%_libdir/libfmt.so
+%_libdir/pkgconfig/%name.pc
 
 %changelog

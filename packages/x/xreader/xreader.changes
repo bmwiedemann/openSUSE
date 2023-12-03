@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  3 13:38:54 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to version 3.8.3
+  * ev-message-area.c: Check that the GtkStockItem is initialized
+  * ev-window.c: Only close after save-sas if it's spawned as a result
+
+-------------------------------------------------------------------
 Mon Aug 28 10:30:01 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to version 3.8.2

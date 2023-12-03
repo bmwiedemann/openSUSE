@@ -99,4 +99,19 @@
     <comment>- flip to the lowercase compat provides</comment>
     <requestid>1085825</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1123531d8ffa7fbae54dbb29cabe479b</srcmd5>
+    <version>0.7.0</version>
+    <time>1701632942</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Use Fast Executemany Mode
+  * Add Python 3.12 support.
+  * Drop support for Python 3.6 (2021-12-23), 3.7 (2023-06-27).
+  * Allow SQLAlchemy 2. Disallow SQLAlchemy &lt; 1.4.
+
+- flip to the lowercase compat provides
+  * Add ``min_col_len`` and ``col_len_multiplier`` options to</comment>
+    <requestid>1130497</requestid>
+  </revision>
 </revisionlist>

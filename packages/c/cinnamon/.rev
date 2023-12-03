@@ -776,4 +776,41 @@
     <comment></comment>
     <requestid>1118225</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a63ea3eb2d39075f9c54e5a4d653d74b</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632925</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.0.0:
+  * settings: Replace PIL.Image.ANTIALIAS with PIL.Image.LANCZOS.
+  * gestures: Adjust to amplified max volume, not normal.
+  * cs_themes: Finish removing tinycss support.
+  * cs_themes.py: Fix navigation/stack issue.
+  * cinnamon.css: Center text in .applet-box
+  * lightbox: Reduce color banding with dithering...
+  * sound@cinnamon.org: Word wrap for artist and title labels
+  * bug report: Mention crashes.
+  * Fix thumbnails not appearing for windows created while menu is open
+  * cinnamon-menu-editor: Fix window type to enable window resizing.
+  * keybindings: Make Above_Tab displayable.
+  * Looking glass: Fix log text colors.
+  * gesturesManager.js: Ignore gestures when the screensaver is active.
+  * Updated write-applet.xml for Cinnamon 4.6 to 5.8+
+  * Update issue template with a link to open and closed issues for convenience.
+  * window-list/gwl: Simplify window focus updates.
+  * applet.js: Improve code comments.
+  * gwl: Track the getThumbnail timeout source id.
+  * Show all batteries as &quot;primary&quot; batteries, removing set_device_battery_additional()
+  * Menu applet: Fix bug where menu is partly behind panel
+  * gestures: Remove device detection.
+  * Fix issue #11810
+  * Emphasize checking for duplicate existing issues in the bug report form.
+  * Updated cs_info module
+  * sound applet: Add telegram-desktop to players without seek support
+  * Fix various typos
+  * js: Use string instead of regexp
+  * cinnamon-subprocess-wrapper: Handle invalid utf8, fix error message.
+  * Replace misc/util.js polyfills with js natives...</comment>
+    <requestid>1130395</requestid>
+  </revision>
 </revisionlist>

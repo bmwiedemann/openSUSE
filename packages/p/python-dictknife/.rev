@@ -35,4 +35,15 @@
 </comment>
     <requestid>970292</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>164faac02658c9df13c6c8de3dfe4d24</srcmd5>
+    <version>0.14.0</version>
+    <time>1701632928</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.0:
+  * use tomlkit instead of qtoml
+  * use ruamel.yaml instead of pyyaml (for preserving comments)
+  * add `dictknife diff -o pair`</comment>
+    <requestid>1130485</requestid>
+  </revision>
 </revisionlist>

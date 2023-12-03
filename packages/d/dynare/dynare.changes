@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Nov 22 11:54:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5:
+  * In a stochastic context, results could be incorrect if an
+    endogenous with a lead ⩾ 2 or an exogenous with a lead ⩾ 1
+    appeared in the argument(s) of a call to a (nonlinear)
+    external function
+  * With the use_dll option of the model block, the expression
+    sign(x) would evaluate to ±1 instead of 0 if x=0
+  * If the guess value given to the steady command was such that
+    the residuals were all below tolerance, except some that are
+    NaN, then this guess value was incorrectly accepted as the
+    solution to the steady state problem
+  * The method_of_moments command with GMM was ignoring the
+    analytic_standard_errors option when using mode_compute=4
+  * Homotopy with the extended_path command at order=0 was broken
+  * The parallel_use_psexec command-line option was ignored
+  * With the bytecode option of the model block, using the
+    operators abs(), cbrt() and sign() would lead to a crash
+  * The fast command-line option was broken under MATLAB with
+    Windows
+  * Ramsey steady state computation could fail if an expectation
+    or diff operator was present in the model
+  * A crash could occur if some external function call was present
+    in an auxiliary variable
+  * The endogenous_prior option of the estimation command could
+    erroneously display a warning message about missing
+    observations
+  * The model_comparison command would crash if the .mod file name
+    had less than four characters
+  * The shock_decomposition command would overwrite previously
+    stored smoother results
+  * The x13 interface in dseries did not handle missing values,
+    particularly at the beginning of a series
+  * The x13 interface in dseries would occasionally crash under
+    Windows with segmentation violations
+  * OccBin: estimation would crash if a previous shocks(surprise)
+    simulation was conducted
+  * The internals command would not find the location of the
+    _results.mat file
+  * The prior optimize command would not work with mode_compute=5
+- Minor improvement to conditionals specifying the right version
+  of gcc to use.
+- Drop dynare-add-missing-include.patch: upstreamed.
+
+-------------------------------------------------------------------
 Wed Apr 12 04:31:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.4:

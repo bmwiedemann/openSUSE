@@ -18,12 +18,12 @@
 
 
 Name:           duply
-Version:        2.4.2
+Version:        2.5.2
 Release:        0
 Summary:        A frontend for the "duplicity" backup program
 License:        GPL-2.0-only
 URL:            https://duply.net/
-Source0:        https://sourceforge.net/projects/ftplicity/files/duply%{20}%{28}simple%{20}duplicity%{29}/2.4.x/%{name}_%{version}.tgz
+Source0:        https://sourceforge.net/projects/ftplicity/files/duply%{20}%{28}simple%{20}duplicity%{29}/2.5.x/%{name}_%{version}.tgz
 BuildArch:      noarch
 # MANUAL BEGIN
 Requires:       duplicity

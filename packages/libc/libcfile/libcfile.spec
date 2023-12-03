@@ -1,7 +1,7 @@
 #
 # spec file for package libcfile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcfile
 Source:         https://github.com/libyal/libcfile/releases/download/%version/%name-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libcfile/releases/download/%version/%name-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20220101

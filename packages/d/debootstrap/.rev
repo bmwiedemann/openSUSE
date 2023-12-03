@@ -223,4 +223,12 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
     <comment></comment>
     <requestid>1116231</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>221b687ec34b12c271eb22acc2ee4bfa</srcmd5>
+    <version>1.0.133</version>
+    <time>1701632945</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130501</requestid>
+  </revision>
 </revisionlist>

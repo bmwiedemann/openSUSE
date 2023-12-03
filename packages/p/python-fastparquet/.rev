@@ -233,4 +233,41 @@
     <comment></comment>
     <requestid>1096412</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0c54807ee0a275ef8ca660e1a47e8d5d</srcmd5>
+    <version>2023.8.0</version>
+    <time>1701632943</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.8.0:
+  * More general timestamp units (#874)
+  * ReadTheDocs V2 (#871)
+  * Better roundtrip dtypes (#861, 859)
+  * No convert when computing bytes-per-item for str (#858)
+
+- Add patch to fox the test test_delta_from_def_2 on
+  * row-level filtering of the data. Whereas previously, only full
+    row-groups could be excluded on the basis of their parquet
+    metadata statistics (if present), filtering can now be done
+    within row-groups too. The syntax is the same as before,
+    allowing for multiple column expressions to be combined with
+    AND|OR, depending on the list structure. This mechanism
+    requires two passes: one to load the columns needed to create
+    the boolean mask, and another to load the columns actually
+    needed in the output. This will not be faster, and may be
+    slower, but in some cases can save significant memory
+    footprint, if a small fraction of rows are considered good and
+    the columns for the filter expression are not in the output.
+  * DELTA integer encoding (read-only): experimentally working,
+    but we only have one test file to verify against, since it is
+    not trivial to persuade Spark to produce files encoded this
+    way. DELTA can be extremely compact a representation for
+  * nanosecond resolution times: the new extended &quot;logical&quot; types
+    system supports nanoseconds alongside the previous millis and
+    micros. We now emit these for the default pandas time type,
+    and produce full parquet schema including both &quot;converted&quot; and
+    &quot;logical&quot; type information. Note that all output has
+    isAdjustedToUTC=True, i.e., these are timestamps rather than
+    local time. The time-zone is stored in the metadata, as</comment>
+    <requestid>1130498</requestid>
+  </revision>
 </revisionlist>

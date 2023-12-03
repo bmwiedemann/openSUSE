@@ -16,7 +16,7 @@
 #
 
 
-%global _relver 17.0.5
+%global _relver 17.0.6
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
 %global _sonum  17
@@ -24,7 +24,7 @@
 %global _soname %{_sonum}%{?_sosuffix}
 %global _itsme17 1
 # Integer version used by update-alternatives
-%global _uaver  1705
+%global _uaver  1706
 %global _soclang 13
 %global _socxx  1
 
@@ -219,6 +219,7 @@
     clang++ \
     clang-check \
     clang-cl \
+    clang-cpp \
     clang-extdef-mapping \
     clang-format \
     clang-linker-wrapper \
@@ -1265,35 +1266,28 @@ rm %{buildroot}%{_libdir}/libarcher_static.a
 # Prepare for update-alternatives usage
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 
-# Fix the clang -> clang-X.Y symlink to work with update-alternatives
+# Fix the clang -> clang-X symlink to work with update-alternatives
 mv %{buildroot}%{_bindir}/clang-%{_sonum} %{buildroot}%{_bindir}/clang
-ln -s %{_bindir}/clang-%{_relver} %{buildroot}%{_bindir}/clang-%{_sonum}
-ln -s %{_bindir}/clang-%{_relver} %{buildroot}%{_bindir}/clang-%{_minor}
-
-# Add clang++-X.Y symbolic link as well - it seems to be expected by some
-# software. https://bugzilla.opensuse.org/show_bug.cgi?id=1012260
-ln -s %{_bindir}/clang++-%{_relver} %{buildroot}%{_bindir}/clang++-%{_sonum}
-ln -s %{_bindir}/clang++-%{_relver} %{buildroot}%{_bindir}/clang++-%{_minor}
 
 # Rewrite symlinks to point to new location
 for p in %{shrink:%binfiles} ; do
     if [ -h "%{buildroot}%{_bindir}/$p" ] ; then
-        ln -f -s %{_bindir}/$(readlink %{buildroot}%{_bindir}/$p)-%{_relver} %{buildroot}%{_bindir}/$p
+        ln -f -s %{_bindir}/$(readlink %{buildroot}%{_bindir}/$p)-%{_sonum} %{buildroot}%{_bindir}/$p
     fi
 done
 for p in %{shrink:%binfiles} ; do
-    mv %{buildroot}%{_bindir}/$p %{buildroot}%{_bindir}/$p-%{_relver}
+    mv %{buildroot}%{_bindir}/$p %{buildroot}%{_bindir}/$p-%{_sonum}
     ln -s -f %{_sysconfdir}/alternatives/$p %{buildroot}%{_bindir}/$p
 done
 for p in %{shrink:%manfiles} ; do
-    mv %{buildroot}%{_mandir}/man1/$p.1 %{buildroot}%{_mandir}/man1/$p-%{_relver}.1
+    mv %{buildroot}%{_mandir}/man1/$p.1 %{buildroot}%{_mandir}/man1/$p-%{_sonum}.1
     ln -s -f %{_sysconfdir}/alternatives/$p.1%{ext_man} %{buildroot}%{_mandir}/man1/$p.1%{ext_man}
 done
 
 # Also rewrite the CMake files referring to the binaries.
 sed -i "$(
     for p in %{shrink:%binfiles}; do
-        echo "s|\"\${_IMPORT_PREFIX}/bin/$p\"|\"\${_IMPORT_PREFIX}/bin/$p-%{_relver}\"|g"
+        echo "s|\"\${_IMPORT_PREFIX}/bin/$p\"|\"\${_IMPORT_PREFIX}/bin/$p-%{_sonum}\"|g"
     done
 )" %{buildroot}%{_libdir}/cmake/{llvm/LLVMExports,clang/ClangTargets}-relwithdebinfo.cmake
 
@@ -1481,14 +1475,14 @@ rm -rf ./stage1 ./build
 %endif
 
 %global ua_install() %{_sbindir}/update-alternatives \\\
-    --install %{_bindir}/%1 %1 %{_bindir}/%1-%{_relver} %{_uaver}
+    --install %{_bindir}/%1 %1 %{_bindir}/%1-%{_sonum} %{_uaver}
 %global ua_bin_slave() \\\
-    --slave %{_bindir}/%1 %1 %{_bindir}/%1-%{_relver}
+    --slave %{_bindir}/%1 %1 %{_bindir}/%1-%{_sonum}
 %global ua_man_slave() \\\
-    --slave %{_mandir}/man1/%1.1%{ext_man} %1.1%{ext_man} %{_mandir}/man1/%1-%{_relver}.1%{ext_man}
+    --slave %{_mandir}/man1/%1.1%{ext_man} %1.1%{ext_man} %{_mandir}/man1/%1-%{_sonum}.1%{ext_man}
 %global ua_remove() \
-if [ ! -f %{_bindir}/%1-%{_relver} ] ; then \
-    %{_sbindir}/update-alternatives --remove %1 %{_bindir}/%1-%{_relver} \
+if [ ! -f %{_bindir}/%1-%{_sonum} ] ; then \
+    %{_sbindir}/update-alternatives --remove %1 %{_bindir}/%1-%{_sonum} \
 fi
 
 %post
@@ -1537,14 +1531,14 @@ fi
 
 %global bin_path() \
 %{_bindir}/%1
-%global bin_relver_path() \
-%{_bindir}/%1-%{_relver}
+%global bin_sonum_path() \
+%{_bindir}/%1-%{_sonum}
 %global ghost_ua_bin_link() \
 %ghost %{_sysconfdir}/alternatives/%1
 %global man_path() \
 %{_mandir}/man1/%1.1%{ext_man}
-%global man_relver_path() \
-%{_mandir}/man1/%1-%{_relver}.1%{ext_man}
+%global man_sonum_path() \
+%{_mandir}/man1/%1-%{_sonum}.1%{ext_man}
 %global ghost_ua_man_link() \
 %ghost %{_sysconfdir}/alternatives/%1.1%{ext_man}
 
@@ -1554,10 +1548,10 @@ fi
 %{lapply -p bin_path %llvm_elf_dwarf_tools}
 %{lapply -p bin_path %llvm_abi_coff_macho_tools}
 %{lapply -p bin_path %llvm_instr_devel_tools}
-%{lapply -p bin_relver_path %llvm_ua_anchor %llvm_tools}
-%{lapply -p bin_relver_path %llvm_elf_dwarf_tools}
-%{lapply -p bin_relver_path %llvm_abi_coff_macho_tools}
-%{lapply -p bin_relver_path %llvm_instr_devel_tools}
+%{lapply -p bin_sonum_path %llvm_ua_anchor %llvm_tools}
+%{lapply -p bin_sonum_path %llvm_elf_dwarf_tools}
+%{lapply -p bin_sonum_path %llvm_abi_coff_macho_tools}
+%{lapply -p bin_sonum_path %llvm_instr_devel_tools}
 %{lapply -p ghost_ua_bin_link %llvm_ua_anchor %llvm_tools}
 %{lapply -p ghost_ua_bin_link %llvm_elf_dwarf_tools}
 %{lapply -p ghost_ua_bin_link %llvm_abi_coff_macho_tools}
@@ -1566,29 +1560,24 @@ fi
 %{lapply -p man_path %llvm_man}
 %{lapply -p man_path %llvm_bin_utils_man}
 %{lapply -p man_path %llvm_devel_utils_man}
-%{lapply -p man_relver_path %llvm_man}
-%{lapply -p man_relver_path %llvm_bin_utils_man}
-%{lapply -p man_relver_path %llvm_devel_utils_man}
+%{lapply -p man_sonum_path %llvm_man}
+%{lapply -p man_sonum_path %llvm_bin_utils_man}
+%{lapply -p man_sonum_path %llvm_devel_utils_man}
 %{lapply -p ghost_ua_man_link %llvm_man}
 %{lapply -p ghost_ua_man_link %llvm_bin_utils_man}
 %{lapply -p ghost_ua_man_link %llvm_devel_utils_man}
 
 %files -n clang%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
-%{_bindir}/clang-%{_minor}
-%{_bindir}/clang-%{_sonum}
-%{_bindir}/clang++-%{_minor}
-%{_bindir}/clang++-%{_sonum}
-%{_bindir}/clang-cpp
 %{lapply -p bin_path %clang_ua_anchor %clang_binfiles}
 %{lapply -p bin_path %clang_tools_extra_binfiles}
-%{lapply -p bin_relver_path %clang_ua_anchor %clang_binfiles}
-%{lapply -p bin_relver_path %clang_tools_extra_binfiles}
+%{lapply -p bin_sonum_path %clang_ua_anchor %clang_binfiles}
+%{lapply -p bin_sonum_path %clang_tools_extra_binfiles}
 %{lapply -p ghost_ua_bin_link %clang_ua_anchor %clang_binfiles}
 %{lapply -p ghost_ua_bin_link %clang_tools_extra_binfiles}
 
 %{lapply -p man_path %clang_manfiles}
-%{lapply -p man_relver_path %clang_manfiles}
+%{lapply -p man_sonum_path %clang_manfiles}
 %{lapply -p ghost_ua_man_link %clang_manfiles}
 
 %dir %{_libdir}/clang/
@@ -1756,7 +1745,7 @@ fi
 %files -n lld%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
 %{lapply -p bin_path %lld_ua_anchor %lld_binfiles}
-%{lapply -p bin_relver_path %lld_ua_anchor %lld_binfiles}
+%{lapply -p bin_sonum_path %lld_ua_anchor %lld_binfiles}
 %{lapply -p ghost_ua_bin_link %lld_ua_anchor %lld_binfiles}
 %endif
 
@@ -1764,7 +1753,7 @@ fi
 %files -n lldb%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
 %{lapply -p bin_path %lldb_ua_anchor %lldb_binfiles}
-%{lapply -p bin_relver_path %lldb_ua_anchor %lldb_binfiles}
+%{lapply -p bin_sonum_path %lldb_ua_anchor %lldb_binfiles}
 %{lapply -p ghost_ua_bin_link %lldb_ua_anchor %lldb_binfiles}
 
 %if %{with lldb_python}

@@ -22,11 +22,10 @@
 # Sphinx in Leap 15.x is too old
 %bcond_with doc
 %else
-%define gccver %{nil}
 %bcond_without doc
 %endif
 Name:           dynare
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        A platform for handling a wide class of economic models
 License:        GPL-3.0-or-later
@@ -34,11 +33,9 @@ URL:            https://www.dynare.org/
 Source:         https://www.dynare.org/release/source/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM dynare-no-return-in-non-void-function.patch badshah400@gmail.com -- Return trivial value from a function that is not declared as returning void
 Patch0:         dynare-no-return-in-non-void-function.patch
-# PATCH-FIX-UPSTREAM dynare-add-missing-include.patch -- Add missing includes, gcc 13 exposed
-Patch1:         dynare-add-missing-include.patch
 BuildRequires:  fdupes
-BuildRequires:  gcc%{gccver}-c++
-BuildRequires:  gcc%{gccver}-fortran
+BuildRequires:  gcc%{?gccver}-c++
+BuildRequires:  gcc%{?gccver}-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
@@ -87,10 +84,7 @@ This package provides documentation for %{name} in HTML format.
 
 %build
 autoreconf -fvi
-%if 0%{?suse_version} < 1550
-export CXX=g++-%{gccver}
-export CXXFLAGS+=' -std=c++17'
-%endif
+export CXX=g++%{?gccver:-%{gccver}}
 %configure \
   --docdir=%{_docdir}/%{name} \
   --disable-matlab \

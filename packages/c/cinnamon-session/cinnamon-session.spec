@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-session
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-session
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        The session manager for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,6 +33,7 @@ BuildRequires:  tcpd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 BuildRequires:  xtrans
+BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -61,8 +62,6 @@ This packages contains the session manager for the Cinnamon Desktop.
 
 %build
 %meson \
-  -Ddocbook=true \
-  -Dgconf=false  \
   -Dipv6=true    \
   -Dxtrans=true
 %meson_build
@@ -73,11 +72,6 @@ This packages contains the session manager for the Cinnamon Desktop.
 # We should own this directory.
 mkdir -p %{buildroot}%{_datadir}/%{name}/sessions/
 
-# Fix documentation location.
-mkdir -p %{buildroot}%{_docdir}/
-mv -f %{buildroot}%{_datadir}/doc/%{name}/ \
-  %{buildroot}%{_docdir}/%{name}/
-
 # Use systemd-logind for suspend by default.
 install -Dpm 0644 %{SOURCE1} \
   %{buildroot}%{_datadir}/glib-2.0/schemas/org.cinnamon.desktop.session.gschema.override
@@ -85,8 +79,6 @@ install -Dpm 0644 %{SOURCE1} \
 %files
 %license COPYING
 %doc AUTHORS README README.md
-%dir %{_docdir}/%{name}/dbus/
-%doc %{_docdir}/%{name}/dbus/%{name}.html
 %{_bindir}/%{name}
 %{_bindir}/%{name}-quit
 %{_libexecdir}/%{name}-check-accelerated*

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Nov 22 12:29:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.26:
+  * Fixed testsuite (regression of v1.5.25)
+- Changes from version 1.5.25:
+  * Fixed reading struct array with null padded class name from
+    HDF5 MAT file
+  * Fixed memory leak in Mat_VarFree for function class
+- Changes from version 1.5.24:
+  * Added predicated iteration API functions
+    Mat_VarReadNextInfoPredicate and Mat_VarReadNextPredicate to
+    speed-up reading variables from HDF5 MAT file
+  * Added new API function Mat_GetFileAccessMode to retrieve the
+    file access mode of a MAT file
+  * Changed: Mat_VarDelete returns error if MAT file is opened in
+    read-only mode
+  * Changed: Reduced memory foot-print of matvar_t.internal
+  * Fixed read performance of cell/struct array from HDF5 MAT file
+  * Fixed reference counting of HDF5 MAT file in Mat_VarDuplicate
+  * Fixed file access mode of created v4 MAT file
+  * Fixed read performance of Mat_GetDir for HDF5 MAT file
+  * Fixed bug reading struct array from v5 MAT file
+  * Fixed bug adding field to struct array of v5 MAT file
+  * Fixed heap-based buffer overflow when reading HDF5 MAT file
+  * Confirmed compatibility with HDF5 v1.14.x
+  * autoconf: Enabled system extensions
+  * autoconf: Fixed getopt_long check
+  * autoconf: Fixed pkg-config file for static linking
+  * CMake: Updated cmake-conan to version 0.18.1
+  * CMake: Fixed version comparison
+  * CMake: Fixed properties for CMake < 3.11
+  * CMake: Fixed linker error on OpenBSD
+  * CMake: Fixed checks of linker options
+  * Several other fixes, for example for memory leaks
+- Drop explicit hdf5-devel dependency: we have hdf5 > 1.10 by
+  default anyway in Factory.
+
+-------------------------------------------------------------------
 Fri May  6 19:31:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.5.23:

@@ -137,4 +137,13 @@
 </comment>
     <requestid>1119115</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d3419f91ad8777056c2691d974870103</srcmd5>
+    <version>16.0.6</version>
+    <time>1701632904</time>
+    <user>anag+factory</user>
+    <comment>- Manage clang-cpp with update-alternatives like other binaries.
+</comment>
+    <requestid>1130465</requestid>
+  </revision>
 </revisionlist>

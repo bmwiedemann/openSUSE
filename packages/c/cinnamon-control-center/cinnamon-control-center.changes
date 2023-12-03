@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 25 18:56:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * display: Increase the number of available fractional scale
+    buttons to allow 75 - 200
+  * Fix meson.build deprecations up to 0.56.0
+  * wacom: Add "disabled" to stylus button actions.
+  * display: Add wayland compatibility
+  * display module: Fix color selection for monitor labels.
+  * display module: Fix some memory leaks.
+  * l10n: Update files
+  * Mark fractional scaling settings key obsolete.
+  * Delete cs-online-accounts icons.
+  * l10n: Generate additional files
+
+-------------------------------------------------------------------
 Fri Jun  2 21:05:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.0:
@@ -105,44 +121,44 @@ Tue Dec  8 06:58:54 UTC 2020 - andy great <andythe_great@pm.me>
   * network: Fix runtime warning
   * Fix config.h inclusion
   * Port to Meson
-  * Fix some build issues - we no longer use datetime, 
+  * Fix some build issues - we no longer use datetime,
     NetworkManager is gone, removed old build system and many other
     files that weren't used.
   * Revert previous commit disabling debug packages.
   * l10n: Generate files
-- Remove cinnamon-control-center-ignore-polkit-rules.patch, 
+- Remove cinnamon-control-center-ignore-polkit-rules.patch,
   makefile removed.
 - Build with Meson.
-  
+
 -------------------------------------------------------------------
 Mon Sep 14 08:37:10 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.2.
-  * cc-display-panel.c: Use scaled geometry when checking overlap 
+  * cc-display-panel.c: Use scaled geometry when checking overlap
     and alignment while dragging.
-  * cc-display-panel.c: Realign after a rotation change, re-scale 
+  * cc-display-panel.c: Realign after a rotation change, re-scale
     and center the view after a grab ends.
-  * cc-display-panel.c: Improve display representation while 
+  * cc-display-panel.c: Improve display representation while
     dragging.
-  * cc-display-panel.c: Use a scrolled window in the error popup, 
+  * cc-display-panel.c: Use a scrolled window in the error popup,
     and add a reset button to the panel.
-  * cc-display-panel.c: Update the view after toggling the 
+  * cc-display-panel.c: Update the view after toggling the
     fractional scale switch.
   * cc-display-panel.c: Never scale the output width and height.
-  * cc-display-panel.c: Fill in all geometry for non-active 
-    monitors, not just the size, to ensure uninitialized values 
+  * cc-display-panel.c: Fill in all geometry for non-active
+    monitors, not just the size, to ensure uninitialized values
     don't get returned to callers.
   * cc-display-panel.c: Don't allow monitors to be dragged apart.
   * remove outdated build dependency on dbus-glib
-  
-- Remove Requires:libcinnamon-desktop-data because 
+
+- Remove Requires:libcinnamon-desktop-data because
   cinnamon-settings-daemon already pull in the dependency.
 
 -------------------------------------------------------------------
 Mon Mar 16 14:58:36 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 4.4.0
-  * display: Clean up a couple labels in ui file 
+  * display: Clean up a couple labels in ui file
 
 -------------------------------------------------------------------
 Thu Dec 19 15:35:51 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -416,7 +432,7 @@ Thu Apr 23 17:36:43 UTC 2015 - stefan@fam-elser.de
 -------------------------------------------------------------------
 Mon Nov 10 07:49:26 UTC 2014 - i@marguerite.su
 
-- enable network panel is built 
+- enable network panel is built
 - BuildRequires: ModemManager-devel provides pkgconfig(nm-glib)
 
 -------------------------------------------------------------------
@@ -484,7 +500,7 @@ Fri Nov  8 11:00:43 UTC 2013 - johann.luce@wanadoo.fr
 -------------------------------------------------------------------
 Wed Oct 30 19:42:14 UTC 2013 - i@marguerite.su
 
-- clean the forgotten .la files 
+- clean the forgotten .la files
 
 -------------------------------------------------------------------
 Mon Oct 28 18:13:56 UTC 2013 - i@marguerite.su

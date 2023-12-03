@@ -119,4 +119,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>delete system-libs.patch</comment>
     <requestid>1038446</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>29a63d1a472a2a85847c2de771f7f7fa</srcmd5>
+    <version>20220106</version>
+    <time>1701633005</time>
+    <user>anag+factory</user>
+    <comment>- Add signature and keyring</comment>
+    <requestid>1130601</requestid>
+  </revision>
 </revisionlist>

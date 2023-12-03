@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-settings-daemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-settings-daemon
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        The settings Daemon for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only

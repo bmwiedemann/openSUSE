@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov 25 18:59:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * gschemas: Change a comment
+  * Fix meson.build deprecations up to 0.56.0
+  * cdesktop-enums: Expand CDesktopStylusButtonAction to include
+    'disabled'.
+  * Add gnome-systemd
+  * Add gnome-idle-monitor
+  * a11y: Add 'always-show-text-caret' xsetting
+  * Adding an option for notification screen selection
+  * notifications schema: Add fullscreen-notifications boolean
+
+-------------------------------------------------------------------
 Fri Jun  2 21:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - updaet to 5.8.0:
@@ -9,7 +23,7 @@ Fri Jun  2 21:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
     pointer between monitors.
   * Remove color-scheme additions (added in d880133b38da46b22).
   * Update cvc symbols.
- 
+
 -------------------------------------------------------------------
 Sun Apr 16 16:07:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
@@ -84,21 +98,21 @@ Thu May 27 20:12:12 UTC 2021 - andy great <andythe_great@pm.me>
 Tue Dec  8 16:58:05 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.1.
-  * gnome-bg.c: don't decrement hour by 1 when parsing xml 
+  * gnome-bg.c: don't decrement hour by 1 when parsing xml
     backgrounds
 - Updates for version 4.8.0
-  * cdesktop-enums.h: Don't allow area or window screenshots while 
+  * cdesktop-enums.h: Don't allow area or window screenshots while
     cinnamon is in a grab state
   * debian: Bump debhelper compat level to 12
   * small improves to debian/copyright
   * gnome-rr-config.c: Remove some unused variables
-  * Default terminal: Change exec-arg from '-x' to '--' 
+  * Default terminal: Change exec-arg from '-x' to '--'
 
 -------------------------------------------------------------------
 Sun Sep 13 19:15:59 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.4.
-  * gnome-rr.c: Only use nearest filtering for "pixel-exact" 
+  * gnome-rr.c: Only use nearest filtering for "pixel-exact"
     scaling, not any whole integer scale.
   * gnome-rr-config.c: Don't ignore disabled monitors when shifting
     the layout towards 0,0.
@@ -110,7 +124,7 @@ Thu Jun 11 00:58:07 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
   * CI: Use specific job tags
   * use debhelper 11 for integrated meson support
   * CI: Target Mint 20 and LMDE 4
-  
+
 -------------------------------------------------------------------
 Mon Mar 16 14:42:30 UTC 2020 - Marguerite Su <i@marguerite.su>
 
@@ -435,7 +449,7 @@ Mon Oct 21 09:39:44 UTC 2013 - i@marguerite.su
 -------------------------------------------------------------------
 Thu Oct 10 08:53:11 UTC 2013 - stefan@fam-elser.de
 
-- Updated to version 2.0.2 
+- Updated to version 2.0.2
 
 -------------------------------------------------------------------
 Wed Oct  2 06:23:41 UTC 2013 - stefan@fam-elser.de

@@ -66,4 +66,32 @@
     <comment></comment>
     <requestid>1070526</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c0b1106ae6a16745acc1bc56e170ac8f</srcmd5>
+    <version>0.4.1</version>
+    <time>1701632951</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.1:
+  * fix: :meth:`.Table.from_xlsx` no longer errors on unsized
+    sheets.
+  * The ``reset_dimensions`` argument to :meth:`.Table.from_xlsx`
+    defaults to ``None`` instead of ``False``. If
+    ``reset_dimensions`` is ``None``, and if the worksheet's
+    dimensions are ``A1:A1``, recalculate the worksheet's
+    dimensions. To disable this behavior, set
+    ``reset_dimensions`` to ``False``.
+  * If the ``reset_dimensions`` argument to
+    :meth:`.Table.from_xlsx` is set, recalculate the worksheet's
+    dimensions, instead of assuming that the table's width
+    matches the first row's.
+  * The ``reset_dimensions`` argument to :meth:`.Table.from_xlsx`
+    is ignored if the ``read_only`` argument is false.
+  * Add Python 3.8, 3.9, 3.10, 3.11, 3.12 support.
+  * Drop support for 3.5 (2020-09-13), 3.6 (2021-12-23), 3.7
+- drop python-agate-excel-no-python2.patch (upstream)
+
+  * Drop support for Python 3.4 (end-of-life was March 18, 2019).
+  * Add a header argument to `.Table.from_xls` and</comment>
+    <requestid>1130507</requestid>
+  </revision>
 </revisionlist>

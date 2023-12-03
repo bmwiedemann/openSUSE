@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Nov 25 18:53:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * Fix meson.build deprecations up to 0.56.0
+  * Add wayland support
+  * optimization: Only initialize libnotify for plugins that need
+    it
+  * wayland: Add a plugin to sync cinnamon/gnome settings
+  * csd-background: Make wayland-compatible
+  * xsettings: Add gtk-keynav-use-caret setting
+  * daemon-skeleton.h: Make sure the GMainLoop is accessible
+    everywhere it's needed.
+  * xsettings: Round the Xft.dpi setting to an integer
+  * power: Fix free order
+  * xsettings: Override the active icon and gtk theme when 'high-
+    contrast' is enabled.
+  * build: don't hardcode files install dir as /
+  * power: Allow the minimum display brightness to be overridden.
+  * csd-xsettings-manager.c: Manage "gtk-overlay-scrolling".
+  * power: Add settings to disable low battery warnings for
+    connected devices
+  * github workflow: Add optional ssh session.
+  * fixed a spelling error spotted with lintian
+  * xsettings: Connect Gtk/EnablePrimaryPaste to gsettings.
+  * meson options: Set debug flag back to false.
+  * Fix broken rpath
+  * wacom: Don't set an rpath for led helpers.
+  * Small packaging improvements
+  * csd-wacom: Remove unused functionality.
+  * schemas: Fix wacom schema names for migrate_check.
+  * schemas: Add missing desktop schema for migration.
+  * cinnamon-settings-daemon (5.4.3) vanessa; urgency=medium
+  * build: add missing gio-unix-2.0 dependency
+  * backlighting: Return monitor coordinates instead of a Gdk-
+    provided monitor index.
+  * power manager: Prevent turning the backlight completely off
+    when adjusting brightness.
+  * media keys: Get rid of deliberate delay when taking a
+    screenshot to ensure a grab.
+  * cinnamon-settings-daemon (5.4.1) vanessa; urgency=medium
+  * csd-xsettings: Fix dbus names.
+  * cinnamon-settings-daemon (5.4.0) vanessa; urgency=medium
+  * Remove sounds plugin, Cinnamon now use muffin sound player.
+  * Remove obsolete plugins: a11y-keyboard, cursor, mouse, xrandr
+  * Remove dh_dwz build warnings.
+  * datetime: Use Gio's dbus implementation.
+  * Fix MPRIS issues with disconnecting clients
+  * print notifications: Fix build warning.
+  * csd-power-manager.c: Ensure that dbus message "g-properties-
+    changed" is emitted in all relevant places
+  * csd-media-keys-manager.c: Fix volume level 5% snap
+  * CI: Update targets
+
+-------------------------------------------------------------------
 Mon Jan 17 16:01:58 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Fix build failed, unknown option, use default settings.
@@ -55,8 +109,8 @@ Thu Jan 14 11:37:20 UTC 2021 - andy great <andythe_great@pm.me>
 - Update to version 4.8.5.
   * do not delete programs and replace them with broken symlinks to
     themselves
-- Updates for version 4.8.4. 
-  * plugins: Add symbolic links from the old to the new binary 
+- Updates for version 4.8.4.
+  * plugins: Add symbolic links from the old to the new binary
     locations. (#320)
   * meson: Always install binary links
   * xdg autostart: Refer directly to the executable name
@@ -67,8 +121,8 @@ Tue Dec  8 16:25:17 UTC 2020 - andy great <andythe_great@pm.me>
 - Update to version 4.8.2.
   * media-keys/bus-watch-namespace.c: Fix media player shortcuts.
 - Fix spec file.
-- Updates for 4.8.1. 
-  * meson.build: Disable deprecated warnings (you can enable with 
+- Updates for 4.8.1.
+  * meson.build: Disable deprecated warnings (you can enable with
     a build flag).
   * csd-media-keys: Check for the availability of a mouse/keyboard
     grab when running screenshot commands.
@@ -79,7 +133,7 @@ Tue Dec  8 16:25:17 UTC 2020 - andy great <andythe_great@pm.me>
   * Use libexec dir for plugins.
   * Make bin links part of the meson build.
   * Clean up some files.
-  * Revert "csd-automount-manager.c: Add a small delay to folder 
+  * Revert "csd-automount-manager.c: Add a small delay to folder
     opening after (#290)"
 
 -------------------------------------------------------------------
@@ -157,7 +211,7 @@ Fri Mar 15 01:30:09 UTC 2019 - Dead Mozay <dead-mozay@opensuse.org>
   * csd-power-manager.c: During lid action, only lock the screen if 'blank' is the selected action.  If 'do nothing' is selected, then actually do nothing.
   * This will make NTP works on any Red Hat based system. (#238)
   * csd-media-keys-manager.c: Execute default calculator application defined by schema (#240)
-  * CI: Remove Mint 18 
+  * CI: Remove Mint 18
 
 -------------------------------------------------------------------
 Wed Oct 17 14:17:51 UTC 2018 - sor.alexei@meowr.ru
@@ -554,8 +608,8 @@ Mon Oct 28 18:04:49 UTC 2013 - i@marguerite.su
 - update version 2.0.5
   * Add vbox hack to redraw bg a few seconds after session loads
   * Play login sound in c-s-d rather than cinnamon
-  * Remove background crossfade, causes issues with vbox, 
-    add delay to background on startup to give nemo time 
+  * Remove background crossfade, causes issues with vbox,
+    add delay to background on startup to give nemo time
     to load (needs improvement)
 
 -------------------------------------------------------------------
@@ -575,7 +629,7 @@ Mon Oct 21 14:14:48 UTC 2013 - stefan@fam-elser.de
 Mon Oct 21 13:27:21 UTC 2013 - stefan@fam-elser.de
 
 - Updated to version 2.0.3
-- Deleted the workaround for the missing polkit policy file 
+- Deleted the workaround for the missing polkit policy file
 
 -------------------------------------------------------------------
 Wed Oct  2 17:16:40 UTC 2013 - stefan@fam-elser.de

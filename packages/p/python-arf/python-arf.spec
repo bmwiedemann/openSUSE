@@ -1,7 +1,7 @@
 #
 # spec file for package python-arf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-arf
-Version:        2.6.1
+Version:        2.6.4
 Release:        0
 # Note: I know that "advertisement" words are frowned on, but in this case
 # the package name is an acronym so "advanced" needs to stay in
@@ -27,10 +26,6 @@ Summary:        Advanced Recording Format for physiology and behavior
 License:        GPL-2.0-only
 URL:            https://github.com/melizalab/arf
 Source:         https://files.pythonhosted.org/packages/source/a/arf/arf-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM arf-pr10-h5py-open.patch -- gh#melizalab/arf#10
-Patch0:         arf-pr10-h5py-open.patch
-# PATCH-FIX-UPSTREAM h5py-fixup.patch -- gh#melizalab/arf#12
-Patch1:         h5py-fixup.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

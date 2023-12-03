@@ -19,9 +19,9 @@
 %define sover   3
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
-%define pkg_ver master.mint21
+%define pkg_ver 3.8.3
 Name:           xreader
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(libspectre) >= 0.2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.22.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.4.3
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.4.3
 BuildRequires:  pkgconfig(xapp) >= 1.1.0
 BuildRequires:  pkgconfig(zlib)
 # Only require pdf backend subpackage to make application more lightweight for Live media

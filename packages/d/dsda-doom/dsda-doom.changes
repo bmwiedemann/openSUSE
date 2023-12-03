@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  3 16:22:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.27.5
+  * DSDAHUD lumps are "merged" now so only redefined huds are changed
+  * Fixed umapinfo bunny scroller crash
+
+-------------------------------------------------------------------
 Sat Nov 18 18:14:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.27.4

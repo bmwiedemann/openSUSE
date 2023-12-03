@@ -18,7 +18,7 @@
 
 %define lname	libscca1
 Name:           libscca
-Version:        20230716
+Version:        20231203
 Release:        0
 Summary:        Library and tools to access the Windows Prefetch File (PF) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(libfcache) >= 20230115
 BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libfwnt) >= 20220922
+BuildRequires:  pkgconfig(libfwnt) >= 20231124
 BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

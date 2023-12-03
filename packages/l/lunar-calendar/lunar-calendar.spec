@@ -1,7 +1,7 @@
 #
 # spec file for package lunar-calendar
 #
-# Copyright (c) 2020 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-%define   commit          f91a880e9dbf4ad28fbe9cda2cb899106c25ef97
-#%define   shortcommit     %(c=%{commit}; echo ${c:0:7})
-%define   shortcommit     f91a880
+
+
 %define   sover           1
 
 Summary:        Chinese Lunar calendar
 Name:           lunar-calendar
-Version:        3.0.0+git20191124.%{shortcommit}
+Version:        3.0.1
 Release:        0
-License:        GPL-2.0+
+License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/yetist/lunar-calendar
-# Source0:        https://github.com/yetist/lunar-calendar/archive/v%{version}/%{name}-%{version}.tar.gz
-Source0:        https://github.com/yetist/lunar-calendar/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+URL:            https://github.com/yetist/lunar-calendar
+Source0:        https://github.com/yetist/lunar-calendar/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0:        https://github.com/yetist/lunar-calendar/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 Source1:        %{name}.sh
 Source2:        %{name}.csh
 BuildRequires:  fdupes
 BuildRequires:  meson
-BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(lunar-date-3.0)
+BuildRequires:  pkgconfig(vapigen)
 Requires:       lib%{name}-3_0-%{sover} = %{version}-%{release}
-
 
 %description
 This is the traditional Chinese calendar application.
@@ -61,13 +59,16 @@ Provides:       locale(patterns-mate-mate:zh_CN;zh_SG;zh_TW;zh_HK)
 Provides:       locale(patterns-xfce-xfce:zh_CN;zh_SG;zh_TW;zh_HK)
 
 %description gtk3-module
-This package contains a GTK+ 3 module of lunar-calendar. Calendar applications 
+This package contains a GTK+ 3 module of lunar-calendar. Calendar applications
 base on GTK3 can display Chinese Lunar calendar by this module.
 
 %package -n typelib-1_0-LunarCalendar-3_0
 Summary:        Introspection bindings for lunar-calendar
 Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
+Provides:       locale(patterns-gnome-gnome:zh_CN;zh_SG;zh_TW;zh_HK)
+Provides:       locale(patterns-mate-mate:zh_CN;zh_SG;zh_TW;zh_HK)
+Provides:       locale(patterns-xfce-xfce:zh_CN;zh_SG;zh_TW;zh_HK)
 
 %description -n typelib-1_0-LunarCalendar-3_0
 This package contains the introspection bindings for the lunar-calendar library.
@@ -93,14 +94,13 @@ docs for lunar-calendar.
 %{lang_package}
 
 %prep
-%setup -q -n %{name}-%{commit}
+%setup -q -n %{name}-%{version}
 
 %build
-%meson -Denable_gtk_modules=true \
-       -Denable_gtk_doc=true \
-       -Dwith_introspection=true \
-       -Dwith_vala=true \
-       -Denable_tests=true \
+%meson -Ddocs=true \
+       -Dintrospection=true \
+       -Dvapi=true \
+       -Dtests=true \
        %{nil}
 %meson_build
 
@@ -150,6 +150,5 @@ install -m0755 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/*
 %{_datadir}/gir-1.0/LunarCalendar-3.0.gir
-
 
 %changelog

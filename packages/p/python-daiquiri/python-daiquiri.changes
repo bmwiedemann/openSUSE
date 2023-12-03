@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  2 16:38:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.4:
+  * Add support up to Python 3.12
+  * Use sphinx-build command to generate doc
+  * build system and CI improvements
+
+-------------------------------------------------------------------
 Fri Dec  2 01:09:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.2.1
@@ -14,7 +22,7 @@ Fri Dec  2 01:09:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to 3.1.1
   * fix: add missing py.typed
 
-- Update to 3.1.0 
+- Update to 3.1.0
   * fix: update setup.cfg
 
 -------------------------------------------------------------------
@@ -27,7 +35,7 @@ Wed Nov 16 16:54:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Thu Mar 10 01:06:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove BuildRequires on mock, it has not been required since 3.0.0. 
+- Remove BuildRequires on mock, it has not been required since 3.0.0.
 
 -------------------------------------------------------------------
 Sat Oct 16 21:14:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -48,7 +56,7 @@ Thu Apr  2 09:11:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 - Update to 2.1.1
   * Add missing Python 3.8 to setup, tox and Mergify
   * build(setup): replace pbr by setuptools_scm
-  * Parameterizes overwriting `sys.excepthook` to allow it to be turned 
+  * Parameterizes overwriting `sys.excepthook` to allow it to be turned
     off in environments where a different excepthook is needed.
   * fix(journal): handle extra keys correctly
 

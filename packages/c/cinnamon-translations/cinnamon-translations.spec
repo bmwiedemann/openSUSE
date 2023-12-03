@@ -16,9 +16,9 @@
 #
 
 
-%define _version 5.0.0
+%define _version 6.0.0
 Name:           cinnamon-translations
-Version:        5.8.2
+Version:        6.0.0
 Release:        0
 Summary:        Translation files for the Cinnamon desktop
 License:        GPL-2.0-or-later

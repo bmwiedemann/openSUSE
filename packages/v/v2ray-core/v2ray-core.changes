@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  3 08:38:20 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.12.1
+  * Shadowsocks2022 Client Support
+  * Apply DomainStrategy to outbound target
+  * Add DomainStrategy to JSONv5 outbound
+  * Add sniffing for TUN
+  * Add HTTPUpgrade transport
+  * It is a reduced version of WebSocket Transport that can pass many
+    reverse proxies and CDNs without running a WebSocket protocol stack
+  * TUN Support
+  * Add uTLS support for h2 transport
+  * Fix bugs
+
+-------------------------------------------------------------------
 Sun Oct  8 13:35:54 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.0

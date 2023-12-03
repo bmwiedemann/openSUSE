@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Dec  1 12:00:00 UTC 2023 - sb56637 <mxoo28j7@duck.com>
+
+- Update to version 6.0.0:
+  * settings: Replace PIL.Image.ANTIALIAS with PIL.Image.LANCZOS.
+  * gestures: Adjust to amplified max volume, not normal.
+  * cs_themes: Finish removing tinycss support.
+  * cs_themes.py: Fix navigation/stack issue.
+  * cinnamon.css: Center text in .applet-box
+  * lightbox: Reduce color banding with dithering...
+  * sound@cinnamon.org: Word wrap for artist and title labels
+  * bug report: Mention crashes.
+  * Fix thumbnails not appearing for windows created while menu is open
+  * cinnamon-menu-editor: Fix window type to enable window resizing.
+  * keybindings: Make Above_Tab displayable.
+  * Looking glass: Fix log text colors.
+  * gesturesManager.js: Ignore gestures when the screensaver is active.
+  * Updated write-applet.xml for Cinnamon 4.6 to 5.8+
+  * Update issue template with a link to open and closed issues for convenience.
+  * window-list/gwl: Simplify window focus updates.
+  * applet.js: Improve code comments.
+  * gwl: Track the getThumbnail timeout source id.
+  * Show all batteries as "primary" batteries, removing set_device_battery_additional()
+  * Menu applet: Fix bug where menu is partly behind panel
+  * gestures: Remove device detection.
+  * Fix issue #11810
+  * Emphasize checking for duplicate existing issues in the bug report form.
+  * Updated cs_info module
+  * sound applet: Add telegram-desktop to players without seek support
+  * Fix various typos
+  * js: Use string instead of regexp
+  * cinnamon-subprocess-wrapper: Handle invalid utf8, fix error message.
+  * Replace misc/util.js polyfills with js natives...
+  * Replace util.js polyfills with JS natives...
+  * state.js: replace polyfills with js natives..
+  * Fix meson.build deprecations up to 0.56.0
+  * cs_backgrounds: Recognize .avif files.
+  * misc: Use locale.getlocale() instead of locale.getdefaultlocale().
+  * calendar eventView.js: Try to cancel scroll-to-row callback when set_events() is called.
+  * cs_info.py: Don't freeze when 'Copy to clipboard' is clicked.
+  * Fixed calculate a sidePage height when it comes as standalone
+  * Update cinnamon-settings.py
+  * Require soup 3.0.
+  * Ensure settings window expands to fit toolbar
+  * Adds a shift-middle click action to the sound applet.
+  * Adds option to always show the input switch in the sound applet. (Closes #11232)
+  * wayland: Add session files
+  * Clean up build deps and some unused imports
+  * wayland: Don't use Gtk/Gdk anywhere in core/startup code
+  * st-texture-cache: Make our own GtkIconTheme instead of trying to get it from a GdkScreen (which won't be able to exist until Cinnamon completes startup)
+  * Disable/avoid things that don't currently work in Wayland
+  * Extensions: Block certain x11-only xlets from trying to load
+  * dbus: Add monitor labeler
+  * Restore system background
+  * Log the backend at Cinnamon start, add a row for it in cs_info.py
+  * cs_themes: Don't use a GtkPlug/Socket for overview-scrollbar previews
+  * cs_display: Add scale-monitor-framebuffer for Wayland fractional scaling
+  * Remove some leftovers from main.c, adjust a string in cs_themes.py
+  * power applet: Wait for csd-power's dbus presence before trying to connect to it
+  * cinnamon-launcher: Launch cinnamon immediately under Wayland
+  * session: Use a separate desktop file for Wayland sessions.
+  * cinnamon-settings: Suppress/hide some x11-only elements.
+  * modalDialog.js: Fix sync call in x11.
+  * melange: convert to GApplication, cleanup, fix launch-as-inspector mode.
+  * lookingGlass.js: Initialize melange interface at startup.
+  * Add .git-blame-ignore-revs for commits
+  * Adding an option for notification screen selection
+  * Fix whitespace
+  * Fix GLib exception:
+  * meson: Re-add dbus dependency
+  * Gestures: Allow the user to specify when an action is triggered.
+  * Gestures: Add a desktop zoom action.
+  * Rename Wayland session
+  * cinnamon-launcher: Remove wayland handling.
+  * cinnamon-global.c: Restore cinnamon_global_set_pointer.
+  * Fix xlet-settings TreeListWidget's handling of columns with option lists
+  * Use menu for window list hover tooltip choice
+  * Fix the power applet battery status when the seconds var is 3600
+  * Spices.py: Fix desklet reload after update when there are multiple instances
+  * gesturesManager.js: Fix a couple small issues
+  * Add Actions module
+  * debian/control: Update soup version.
+  * Remove .settings folder
+  * Added menu details option
+  * menu applet: Add some safety to the right-click properties item.
+  * screenshot service: Add color picker support.
+  * add xdg-portal conf
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Thu Oct  5 12:17:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop cinnamon-meson-0.61.patch: Fixed upstream.

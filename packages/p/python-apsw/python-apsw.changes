@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  2 20:18:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.44.2.0:
+  * Added `logger` parameter to :func:`apsw.ext.log_sqlite` to
+    use a specific :class:`logging.Logger` (:issue:`493`)
+  * Added :func:`apsw.ext.result_string` to turn an result code
+    into a string, taking into account if it is extended or not.
+  * Provide detail when C implemented objects are printed. For
+    example :class:`connections <Connection>` include the filename.
+  * Added :meth:`URIFilename.parameters` (:issue:`496`)
+  * :class:`URIFilename` are only valid for the duration of the
+    :meth:`VFS.xOpen` call.  If you save and use the object later
+    you will get an exception.  (:issue:`501`)
+
+-------------------------------------------------------------------
 Tue Nov 14 15:52:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.44.0.0:
