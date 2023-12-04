@@ -1371,6 +1371,8 @@ unsorted:
   - blas-devel-32bit 
   - blas-devel-static 
   - blasphemer 
+  - blaze-devel 
+  - blaze-devel-doc 
   - bleachbit 
   - bleachbit-lang 
   - blender 
@@ -4036,6 +4038,7 @@ unsorted:
   - fmit 
   - fmpp 
   - fmpp-javadoc 
+  - fmt-9-devel 
   - fmt-devel 
   - fnotifystat 
   - fnotifystat-bash-completion 
@@ -11863,7 +11866,8 @@ unsorted:
   - libfmapi1 
   - libfmos-devel 
   - libfmos1 
-  - libfmt9-32bit 
+  - libfmt10 
+  - libfmt10-32bit 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
@@ -17280,6 +17284,8 @@ unsorted:
   - modello-maven-plugin-javadoc 
   - modem-manager-gui 
   - modem-manager-gui-lang 
+  - moditect 
+  - moditect-javadoc 
   - modsecurity 
   - modsecurity-devel 
   - modulemd-validator 
@@ -44701,8 +44707,6 @@ unsorted:
   - typelib-1_0-LibvirtSandbox-1_0 
   - typelib-1_0-Libxfce4panel-2_0 
   - typelib-1_0-LightDM-1 
-  - typelib-1_0-LunarCalendar-3_0 
-  - typelib-1_0-LunarDate-3_0 
   - typelib-1_0-MalcontentUi-1 
   - typelib-1_0-Manette-0_2-0 
   - typelib-1_0-MateDesktop-2_0 
