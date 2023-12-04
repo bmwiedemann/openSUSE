@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec  2 08:30:07 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.29
+  * Add DeleteSurroundingText to PostProcessKeyEvent
+  * Add preedit D-Bus signals to PostProcessKeyEvent
+  * Tab should not be committed by IM
+  * Translate keycodes with CapsLock
+  * Update org.freedesktop.ibus.gschema.xml
+  * Implement Plasma Wayland
+  * Distinguish Arabic XKB and Keypad XKB options
+  * Update simple.xml with xkeyboard-config 2.39
+  * Fix key typing issues
+  * Fix Emoji and Unicode issues
+  * Fix setup dialog SEGV
+  * Fix remote desktop issue
+  * Enhance CI
+  * Update translations
+- Drop ibus-fix-key-release.patch, merged by upstream
+
+-------------------------------------------------------------------
 Wed Oct  4 07:08:11 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - macros.ibus:

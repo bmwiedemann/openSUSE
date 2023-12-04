@@ -35,13 +35,13 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.28
+Version:        1.5.29
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/ibus/
-Source:         https://github.com/ibus/ibus/releases/download/%{version}/%{_name}-%{version}.tar.gz
+Source:         https://github.com/ibus/ibus/releases/download/%{version}/%{_name}-%{version}-rc2.tar.gz
 Source2:        README.SUSE
 Source3:        xim.ibus.suse.template
 Source4:        xim.d-ibus-121
@@ -76,9 +76,8 @@ Patch15:        ibus-socket-name-compatibility.patch
 # PATCH-FIX-UPSTREAM ibus-ui-gtk3-restart-via-systemd.patch
 # Allow ibus-ui-gtk3 to restart ibus-daemon when it is launched by systemd
 Patch16:        ibus-ui-gtk3-restart-via-systemd.patch
-# PATCH-FIX-UPSTREAM ibus-fix-key-release.patch
-# Fixes a problem that wine/proton (steam) got a key stuck
-Patch17:        ibus-fix-key-release.patch
+BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
@@ -216,7 +215,7 @@ This package contains ibus im module for use by gtk4.
 %endif
 
 %prep
-%setup -q -n %{_name}-%{version}
+%setup -q -n %{_name}-%{version}-rc2
 %patch4 -p1
 %patch8 -p1
 %if 0%{?sle_version} < 150200 && 0%{?suse_version} <=1500
@@ -237,7 +236,6 @@ cp -r %{SOURCE11} .
 %patch15 -p1
 %endif
 %patch16 -p1
-%patch17 -p1
 
 %build
 %configure --disable-static \
@@ -407,6 +405,7 @@ fi
 %{_datadir}/ibus/keymaps
 %{_datadir}/ibus/setup
 %{_datadir}/applications/org.freedesktop.IBus.Setup.desktop
+%{_datadir}/applications/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/ibus.convert

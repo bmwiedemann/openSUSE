@@ -1,17 +1,16 @@
-diff --git a/ui/gtk3/panel.vala b/ui/gtk3/panel.vala
-index 452b14c8..81c246a2 100644
---- a/ui/gtk3/panel.vala
-+++ b/ui/gtk3/panel.vala
-@@ -1292,7 +1292,7 @@ class Panel : IBus.PanelService {
-             m_sys_menu.append(new Gtk.SeparatorMenuItem());
+diff -Nur ibus-1.5.29/ui/gtk3/panel.vala ibus-1.5.29-new/ui/gtk3/panel.vala
+--- ibus-1.5.29/ui/gtk3/panel.vala	2023-12-02 16:13:18.091542008 +0800
++++ ibus-1.5.29-new/ui/gtk3/panel.vala	2023-12-02 16:19:05.450810285 +0800
+@@ -1459,7 +1459,7 @@
+         m_sys_menu.append(new Gtk.SeparatorMenuItem());
  
-             item = new Gtk.MenuItem.with_label(_("Restart"));
--            item.activate.connect((i) => m_bus.exit(true));
-+            item.activate.connect((i) => restart_daemon());
-             m_sys_menu.append(item);
+         item = new Gtk.MenuItem.with_label(_("Restart"));
+-        item.activate.connect((i) => m_bus.exit(true));
++        item.activate.connect((i) => restart_daemon());
+         m_sys_menu.append(item);
  
-             item = new Gtk.MenuItem.with_label(_("Quit"));
-@@ -1305,6 +1305,144 @@ class Panel : IBus.PanelService {
+         item = new Gtk.MenuItem.with_label(_("Quit"));
+@@ -1474,6 +1474,144 @@
          return m_sys_menu;
      }
  
@@ -153,6 +152,6 @@ index 452b14c8..81c246a2 100644
 +        m_bus.exit(true);
 +    }
 +
-     private Gtk.Menu create_activate_menu() {
-         m_ime_menu = new Gtk.Menu();
- 
+     private Gtk.Menu create_activate_menu(bool use_x11 = false) {
+         Gdk.Display display_backup = null;
+         if (use_x11 && !BindingCommon.default_is_xdisplay()) {
