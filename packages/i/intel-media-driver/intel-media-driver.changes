@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  4 12:08:31 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)
+
+-------------------------------------------------------------------
 Sat Nov 18 17:02:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to intel-media-23.3.5:

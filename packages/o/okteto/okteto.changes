@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Dec 04 14:17:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.0:
+  * Fix connection issues to dev containers using vscode remote ssh
+    (#4074) (#4075)
+  * Fix panic on okteto up with plain output (#4069) (#4072)
+  * Fix builds for ARM (#4065) (#4067)
+  * CLI Quality - Lint-  exhaustive (#4063)
+  * fix linters (#4066)
+  * fix: use okteto api to retrieve dev env endpoints (#4052)
+  * Refactor: create `env` and `dependencies` pkg to reduce `model`
+    pkg and make testing easier (#4047)
+  * fix: linter (#4060)
+  * Refactor: remove `CheckIfRegularFile` in favour of
+    `filesystem.FileExistsAndNotDir` (#4049)
+  * fix: linter (#4059)
+  * chore: add and fix lint gci (#4053)
+  * CLI Quality - Lint - goheader (#4054)
+  * chore: implement and fix lint unconvert (#4055)
+  * chore: added additional lints (#4056)
+  * show hint to deploy using remote feature (#4048)
+  * Update Dockerfile to use kubectl 1.15.11 (#4050)
+  * add quotes for variables added in remote (#4045)
+  * Extract dev `secrets` and `envFiles`  validation from
+    serializer (#4043)
+  * Enable field alingment (#4031)
+  * fix:downgrade spinner module (#4041)
+  * Added OKTETO_GIT_BRANCH environment variable to remote
+    Dockerfile as argument to have it available in the commands
+    executed there (#4039)
+  * Adds add/delete to docker credentials helper (#4028)
+  * add feature flag to enable disable pull first approach (#4036)
+  * RAIN-51 and RAIN-52: Set right certificate in kubernetes client
+    and kubeconfig generated when working with
+    `--insecure-skip-tls-verify` (#4037)
+  * RAIN-31: Add extra hosts for internal communication to API and
+    BUildkit when executing deploy and destroy remotely (#4033)
+  * fix: panic on interrupt of deploy --remote (#4030)
+
+-------------------------------------------------------------------
 Fri Nov 17 05:46:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.22.3:

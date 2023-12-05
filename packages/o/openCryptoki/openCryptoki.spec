@@ -23,6 +23,7 @@
 # autobuild:/work/cd/lib/misc/group
 #   openCryptoki    pkcs11:x:64:
 %define pkcs11_group_id 64
+%define pkcs_group pkcs11
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
@@ -38,13 +39,14 @@ Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
 # Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch000:       ocki-3.21-remove-make-install-chgrp.patch
+Patch000:       ocki-3.22-remove-make-install-chgrp.patch
 #
 #
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  libcap-devel
 BuildRequires:  libitm1
 BuildRequires:  libtool
 BuildRequires:  libudev-devel
@@ -53,10 +55,11 @@ BuildRequires:  openssl-devel >= 1.0
 BuildRequires:  pkgconfig
 BuildRequires:  trousers-devel
 BuildRequires:  pkgconfig(systemd)
+###
 Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  %{_sbindir}/usermod
 ###
-BuildRequires:  libcap-devel
 
 # IBM maintains openCryptoki on these architectures:
 ExclusiveArch:  %{openCryptoki_32bit_arch} %{openCryptoki_64bit_arch}
@@ -171,8 +174,10 @@ rm -f %{buildroot}%{_libdir}/opencryptoki/methods
 %{service_add_pre pkcsslotd.service}
 # autobuild:/work/cd/lib/misc/group
 # openCryptoki    pkcs11:x:64:
-%{_sbindir}/groupadd -g %{pkcs11_group_id} -r pkcs11 2>/dev/null || true
-%{_sbindir}/usermod -a -G pkcs11 root
+# openCryptoki    pkcsslotd:x:64:
+%{_sbindir}/groupadd -g %{pkcs11_group_id} -r %{pkcs_group} 2>/dev/null || true
+%{_sbindir}/useradd -g %{pkcs11_group_id} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki   2>/dev/null || true
+%{_sbindir}/usermod -a -G %{pkcs_group} root
 
 %preun
 %{service_del_preun pkcsslotd.service}

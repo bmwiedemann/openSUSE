@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec  4 11:09:21 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.23.0
+ * Added support for high-volume data messages. This build requires
+   libdatovka-0.5.0.
+ * Added support to store message and attachment data as separate files
+   alongside the message database.
+ * High-volume messages, attachments of those messages and delivery
+   information are stored as separate files in order not to bloat the message
+   database.
+ * Remembering dialogue window sizes when they are changed by the user.
+ * Remembering column widths in all tables.
+ * Remember column index and sorting order in tables with enabled sorting.
+ * Actions in tool bar in main window can be configured.
+ * Extended the list of substitutable labels which can be used to generate file
+   names when exporting files. Old labels have been replaced with new ones.
+   Old labels are still functional but are not listed in the application.
+ * Preference entries can be reset from the prefs dialogue.
+ * Fixed bug in dark mode. Filter fields revert now to original colour when
+   cleared.
+ * Able to build Arm64 package for macOS.
+ * Fixed a source of potential deadlocks. Signals from databases are emitted
+   when lock are released.
+ * Added support for new data-box types PFO_ARCH, PFO_AIAT and PFO_AZI.
+ * Changed the layout of the about dialogue.
+- don't use bundled static QuaZip, use the system one instead
+
+-------------------------------------------------------------------
 Wed Jun 21 06:39:49 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.22.1

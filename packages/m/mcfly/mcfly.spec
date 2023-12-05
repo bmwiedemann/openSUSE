@@ -17,7 +17,7 @@
 
 
 Name:           mcfly
-Version:        0.8.1~0
+Version:        0.8.2+0
 Release:        0
 Summary:        Shell history helper
 License:        MIT
@@ -34,7 +34,7 @@ McFly replaces your default ctrl-r shell history search with an intelligent sear
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

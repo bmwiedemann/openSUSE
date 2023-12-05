@@ -100,4 +100,19 @@
     <comment></comment>
     <requestid>1083353</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd09e7e49ad6f5026c0e9a880f9a31b1</srcmd5>
+    <version>1.1.7</version>
+    <time>1701727303</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.7:
+  * Update pyzmq to 23.2.1 to support Python 3.11
+  * Add pyproject.toml for sake of PEP517 compatibility
+  * Update gevent in requirements.txt to support Python 3.11
+  * Removed dependency on six as the package supports Python 3 only now
+- drop python-tinyrpc-no-six.patch (upstream)
+
+  * fix undesired sharing of ID generators between protocol instances</comment>
+    <requestid>1130711</requestid>
+  </revision>
 </revisionlist>

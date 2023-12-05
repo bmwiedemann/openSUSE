@@ -197,4 +197,12 @@
 </comment>
     <requestid>1057671</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8c15ed1c6b07a5dfe5588ed158e61d58</srcmd5>
+    <version>0.16.0</version>
+    <time>1701727322</time>
+    <user>anag+factory</user>
+    <comment>updated to new upstream version 0.16.0</comment>
+    <requestid>1130759</requestid>
+  </revision>
 </revisionlist>

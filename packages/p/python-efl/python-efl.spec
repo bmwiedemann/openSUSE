@@ -143,7 +143,7 @@ export DISABLE_CYTHON=1
 for _name in python-efl python3-efl; do
   install -m 0755 -d "%{buildroot}/%{_docdir}/$_name"
   cp -R build/sphinx/html "%{buildroot}/%{_docdir}/$_name"
-  rm "%{buildroot}/%{_docdir}/$_name"/html/.buildinfo
+  rm -r "%{buildroot}/%{_docdir}/$_name"/html/.{buildinfo,doctrees}
 done
 
 %python_expand %fdupes %{buildroot}%{_docdir}

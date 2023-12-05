@@ -30,7 +30,7 @@
 %define soversion 2
 %endif
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib

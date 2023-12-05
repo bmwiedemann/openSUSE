@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-Cycler
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        Composable style cycles
 License:        BSD-3-Clause
 URL:            https://github.com/matplotlib/cycler
-Source:         https://files.pythonhosted.org/packages/source/c/cycler/cycler-%{version}.tar.gz
+Source:         https://github.com/matplotlib/cycler/archive/refs/tags/v%{version}.tar.gz#/cycler-%{version}-gz.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -46,10 +45,10 @@ kwarg iterator, was developed.
 %setup -q -n cycler-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 %pytest
@@ -57,6 +56,7 @@ kwarg iterator, was developed.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/cycler
+%{python_sitelib}/cycler-%{version}.dist-info
 
 %changelog

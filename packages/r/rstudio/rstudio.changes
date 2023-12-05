@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  2 16:23:00 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- New upstream release 2023.09.1+494.
+- Rebase patches:
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * remove-panmirror.patch
+
+-------------------------------------------------------------------
 Tue Jun 20 09:22:08 UTC 2023 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
 
 - New upstream release 2023.06.0+421.

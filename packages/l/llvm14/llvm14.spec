@@ -214,6 +214,7 @@
     clang++ \
     clang-check \
     clang-cl \
+    clang-cpp \
     clang-extdef-mapping \
     clang-format \
     clang-linker-wrapper \
@@ -1534,7 +1535,6 @@ fi
 %{_bindir}/clang-%{_sonum}
 %{_bindir}/clang++-%{_minor}
 %{_bindir}/clang++-%{_sonum}
-%{_bindir}/clang-cpp
 %{lapply -p bin_path %clang_ua_anchor %clang_binfiles}
 %{lapply -p bin_path %clang_tools_extra_binfiles}
 %{lapply -p bin_relver_path %clang_ua_anchor %clang_binfiles}

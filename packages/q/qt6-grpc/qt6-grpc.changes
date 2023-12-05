@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 27 14:00:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1:
+  * https://www.qt.io/blog/qt-6.6.1-released
+- Add upstream changes:
+  * 0001-Fix-re-initializing-a-moved-from-QProtobufMessage-us.patch
+
+-------------------------------------------------------------------
 Tue Oct 10 09:39:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.0

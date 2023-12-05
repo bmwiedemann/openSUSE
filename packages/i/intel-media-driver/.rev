@@ -419,4 +419,13 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1127545</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>3ff937039fae44c3f61c4ddac35db86e</srcmd5>
+    <version>23.3.5</version>
+    <time>1701727318</time>
+    <user>anag+factory</user>
+    <comment>- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)</comment>
+    <requestid>1130734</requestid>
+  </revision>
 </revisionlist>

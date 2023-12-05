@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1009896</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0069d48888395800506e1c636d148074</srcmd5>
+    <version>4.0.2</version>
+    <time>1701727312</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.2:
+  * Depend on Python &gt;= 3.7.
+  * Support Python 3.12.
+  * Add support for Python 3.11.
+  * Correct version information in RTD documentation.
+
+- Update to version 4.0.0</comment>
+    <requestid>1130724</requestid>
+  </revision>
 </revisionlist>

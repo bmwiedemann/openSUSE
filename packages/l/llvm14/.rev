@@ -206,4 +206,13 @@ disable the corresponding tests.
 </comment>
     <requestid>1093400</requestid>
   </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>70ab2f344163b17f9806b0505191a64f</srcmd5>
+    <version>14.0.6</version>
+    <time>1701727273</time>
+    <user>anag+factory</user>
+    <comment>- Manage clang-cpp with update-alternatives like other binaries.
+</comment>
+    <requestid>1130633</requestid>
+  </revision>
 </revisionlist>

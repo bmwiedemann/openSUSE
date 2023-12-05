@@ -1054,4 +1054,12 @@
     <comment>Fixes for bsc#1215543, bsc#1215461, bsc#1215586, bsc#1215664</comment>
     <requestid>1113550</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>cd283833ce2295fc3f7b0ddccff3b2b4</srcmd5>
+    <version>1.51.8</version>
+    <time>1701727352</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130818</requestid>
+  </revision>
 </revisionlist>

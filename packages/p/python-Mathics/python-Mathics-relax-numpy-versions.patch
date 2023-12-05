@@ -1,8 +1,8 @@
-Index: Mathics3-6.0.2/setup.py
+Index: Mathics3-6.0.4/setup.py
 ===================================================================
---- Mathics3-6.0.2.orig/setup.py
-+++ Mathics3-6.0.2/setup.py
-@@ -64,7 +64,7 @@ elif sys.version_info[:2] == (3, 6):
+--- Mathics3-6.0.4.orig/setup.py
++++ Mathics3-6.0.4/setup.py
+@@ -65,7 +65,7 @@ elif sys.version_info[:2] == (3, 6):
          sys.exit(-1)
  else:
      INSTALL_REQUIRES += [

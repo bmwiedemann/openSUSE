@@ -2,7 +2,7 @@ Format: 1.0
 Source: kanku
 Binary: kanku
 Architecture: any
-Version: 0.14.0
+Version: 0.16.0
 Maintainer: Frank Schreiner <fschreiner@suse.de>
 Standards-Version: 3.8.2
 Homepage: https://github.com/M0ses/kanku

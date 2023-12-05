@@ -368,4 +368,12 @@
     <comment>- Make libQt6Network6 require the network plugins</comment>
     <requestid>1126794</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>23f989c1d5aed0efff0a39d05ab4fead</srcmd5>
+    <version>6.6.1</version>
+    <time>1701727174</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
+    <requestid>1130401</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.0
+%define real_version 6.6.1
 %define short_version 6.6
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -37,7 +37,7 @@
 %bcond_without system_tiff
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.6.0
+Version:        6.6.1
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -132,9 +132,7 @@ BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(poppler-cpp)
-# Build fails with newer re2 versions (https://bugreports.qt.io/browse/QTBUG-115931)
-# NOTE still fais with 6.6.0-rc
-BuildRequires:  pkgconfig(re2) <= 10.0.0
+BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(vpx) >= 1.10.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)

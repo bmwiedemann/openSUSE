@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:59:57 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.5.1
+ * Added missing test input files into source package.
+ * Optimisations inside isds_GetMessageAuthor2(), avoided copying of attribute
+   names.
+ * Added functions isds_GetListOfErasedMessages_interval(),
+   isds_GetListOfErasedMessages_month() and isds_GetListOfErasedMessages_year()
+   which implement the GetListOfErasedMessages ISDS operation.
+ * Added function isds_PickUpAsyncResponse() which implements the
+   PickUpAsyncResponse ISDS operation.
+ * Added function isds_load_erased_messages() which can be used to read data
+   from a XML-formatted decompressed asynchronous GetListOfErasedMessages
+   response. Actual decompression of obtained ZIP-compressed data isn't handled
+   by this library.
+ * Added support for the new PFO_ARCH, PFO_AIAT and PFO_AZI data-box types
+   introduced in the version 3.04 of the XSD and WSDL definitions.
+ * Added new elements dmFileGuid and dmUpFileGuid into struct isds_dmFile and
+   struct isds_dmExtFile.
+
+-------------------------------------------------------------------
 Wed Sep 20 08:12:08 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.4.0

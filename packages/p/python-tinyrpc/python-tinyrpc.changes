@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:47:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.7:
+  * Update pyzmq to 23.2.1 to support Python 3.11
+  * Add pyproject.toml for sake of PEP517 compatibility
+  * Update gevent in requirements.txt to support Python 3.11
+  * Removed dependency on six as the package supports Python 3 only now
+- drop python-tinyrpc-no-six.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Apr 25 09:14:21 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.1.6
@@ -11,7 +21,7 @@ Tue Apr 25 09:14:21 UTC 2023 - pgajdos@suse.com
 Sat Oct  1 13:51:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.4:
-  * fix undesired sharing of ID generators between protocol instances  
+  * fix undesired sharing of ID generators between protocol instances
   * add timeout to ZmqClientTransport
   * changed zmq client timeout to seconds
 

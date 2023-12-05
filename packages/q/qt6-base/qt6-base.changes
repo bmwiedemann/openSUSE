@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 27 14:00:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1:
+  * https://www.qt.io/blog/qt-6.6.1-released
+- Drop patches, merged upstream:
+  * 0001-xcb-replace-a-warning-with-debug-info-in-qxcbconnect.patch
+  * 0001-a11y-fix-race-condition-on-atspi-startup-on-Wayland.patch
+  * 0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch
+
+-------------------------------------------------------------------
 Thu Nov 16 09:14:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Make libQt6Network6 require the network plugins

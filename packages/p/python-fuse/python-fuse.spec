@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fuse
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        Python bindings for FUSE
 License:        LGPL-2.1-only

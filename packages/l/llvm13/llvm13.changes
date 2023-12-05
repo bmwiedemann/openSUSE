@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 22:53:03 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Manage clang-cpp with update-alternatives like other binaries.
+
+-------------------------------------------------------------------
 Thu Jun 15 23:45:39 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix conflicts/provides for python3-clang to point to

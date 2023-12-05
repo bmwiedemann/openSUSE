@@ -61,4 +61,17 @@ If openfortivpn is not installed, vpn can not be started. (forwarded request 743
     <comment>- Move dbus-1 system.d file to /usr (bsc#1207585) (forwarded request 1061239 from gmbr3)</comment>
     <requestid>1063403</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6b8cc5bebfa07862c0572911988b026f</srcmd5>
+    <version>1.4.0</version>
+    <time>1701727339</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-fortisslvpn
+  to more accurately reflect its usage
+- Add missing requires: NetworkManager
+- Add missing supplements:
+  - NM and openfortivpn
+  - NMA subpackage: Main package and NMA (forwarded request 1130473 from gmbr3)</comment>
+    <requestid>1130771</requestid>
+  </revision>
 </revisionlist>

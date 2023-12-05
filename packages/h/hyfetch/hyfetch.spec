@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           hyfetch
-Version:        1.4.10
+Version:        1.4.11
 Release:        0
 Summary:        Customizable Linux System Information Script
 License:        MIT
@@ -27,12 +27,10 @@ URL:            https://github.com/hykilpikonna/HyFetch
 Source:         https://files.pythonhosted.org/packages/source/H/HyFetch/HyFetch-%{version}.tar.gz
 # PATCH-FIX-SUSE Fix E: env-script-interpreter
 Patch0:         fix-shebang.patch
-# PATCH-FIX-UPSTREAM -- bkasin - Fix config file flag
-Patch1:         fix-config-flag.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
@@ -40,7 +38,7 @@ BuildRequires:  fdupes
 Requires:       python-setuptools
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     maim
 Recommends:     w3m-inline-image
 BuildArch:      noarch

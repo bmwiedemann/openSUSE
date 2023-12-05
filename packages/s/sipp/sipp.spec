@@ -17,7 +17,7 @@
 
 
 Name:           sipp
-Version:        3.7.1
+Version:        3.7.2
 Release:        0
 Summary:        A SIP protocol testing tool
 License:        GPL-2.0-or-later

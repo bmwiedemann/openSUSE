@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 03 18:52:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231202T020328Z:
+  * do not auto-decompress objects with content-encoding (#4777)
+  * Update minio-go to incl ilm fix (#4779)
+  * chore update minio/pkg and madmin-go (#4774)
+  * set-json to fail on custom policies without .json (#4745)
+  * make STS support for 'mc' alias specific (#4771)
+  * ilm: Add support for size based filters (#4770)
+  * Option to enable disable ILM expiry for site replication
+    (#4698)
+
+-------------------------------------------------------------------
 Tue Nov 21 05:45:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20231120T163059Z:

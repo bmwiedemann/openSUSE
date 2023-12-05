@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  4 11:29:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Depend on Python >= 3.7.
+  * Support Python 3.12.
+  * Add support for Python 3.11.
+  * Correct version information in RTD documentation.
+
+-------------------------------------------------------------------
 Tue Oct 11 16:43:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.0.0 
+- Update to version 4.0.0
   * Require Python 3.7 or later (breaking change).
   * Remove undocumented submodules (breaking change).
     The chars, classify, compose, defrag, encoding, join and split submodules have been deleted. Therefore, statements like

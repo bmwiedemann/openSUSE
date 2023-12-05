@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 04 06:13:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.0.0:
+  * updated kubearmor dependencies
+  * ignore cluster access with save flag
+
+-------------------------------------------------------------------
 Fri Nov 17 17:55:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.3:

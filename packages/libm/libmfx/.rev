@@ -293,4 +293,13 @@
   * hevce: use Low Power mode for RGB encoding by default</comment>
     <requestid>1089736</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>11c63484bd5b816ed2adc2490607e112</srcmd5>
+    <version>23.2.2</version>
+    <time>1701727249</time>
+    <user>anag+factory</user>
+    <comment>- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)</comment>
+    <requestid>1130731</requestid>
+  </revision>
 </revisionlist>

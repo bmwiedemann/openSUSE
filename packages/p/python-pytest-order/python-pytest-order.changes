@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:40:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Allows using custom markers for ordering.
+  * added option `--order-marker-prefix` to allow using custom
+    markers for ordering
+  * added Python 3.12 to supported versions
+
+-------------------------------------------------------------------
 Wed Oct 25 12:38:00 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -28,4 +37,4 @@ Sun May 14 09:42:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Sat Mar 27 15:13:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 0.10.0
-- A replacement for unmaintained pytest-ordering 
+- A replacement for unmaintained pytest-ordering

@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-pynitrokey
-Version:        0.4.42
+Version:        0.4.43
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module frozendict >= 2.3.4}
 # "fido2 >=1.1.0,<2"
 BuildRequires:  %{python_module fido2 >= 1.1.0 with %python-fido2 < 2}
-BuildRequires:  %{python_module nethsm >= 0.5.0}
+BuildRequires:  %{python_module nethsm >= 1.0.0 with %python-nethsm < 2}
 BuildRequires:  %{python_module nkdfu}
 #"python-dateutil ~= 2.7.0"
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
@@ -76,7 +76,6 @@ Requires:       python-click-aliases
 Requires:       python-cryptography
 Requires:       python-ecdsa
 Requires:       python-frozendict >= 2.3.4
-Requires:       python-nethsm >= 0.5.0
 Requires:       python-nkdfu
 Requires:       python-protobuf >= 3.17.3
 Requires:       python-pyserial
@@ -91,6 +90,7 @@ Requires:       python-typing_extensions >= 4.3.0
 Requires:       python-urllib3 >= 1.26.7
 Requires:       (python-click >= 8.0.0 with python-click < 9)
 Requires:       (python-fido2 >= 1.1.0 with python-fido2 < 2)
+Requires:       (python-nethsm >= 0.5.0 with python-nethsm < 2)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # only build for x86_64, as some dependencies are not available

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  3 17:44:37 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.5.5:
+  * Avoid crashes when passing unknown dicts to the -u flag
+  * Use off_t for stuff mainly assigned to a stat.st_size value
+
+-------------------------------------------------------------------
 Sun Dec  4 12:10:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.4:

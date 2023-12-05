@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ephem
-Version:        4.1.4
+Version:        4.1.5
 Release:        0
 Summary:        Scientific-grade astronomy routines for Python
 License:        MIT

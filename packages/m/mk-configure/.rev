@@ -172,4 +172,25 @@ POSIX utilities.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1040791</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>30716c6f15d4e5d70b21b07e2a65837c</srcmd5>
+    <version>0.38.3</version>
+    <time>1701727309</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.38.3
+  Fix #27 by adding a compiler triplet to config file name
+  Introduce special value &quot;force&quot; for MKCOMPILERSETTINGS variable. If
+  it is set, compiler configuration file is always regenarated.
+  Regenerate compiler configuration file (~/.mkcmake) when
+  MKCOMPILERSETTINGS=yes and
+  mkc_imp.cxx/cc_${CC_TYPE}-${CC_VERSION}.mk is older than system-wide
+  one. Do the same for C++ compiler.
+  mkc_compiler_settings: detect whether linker supports -rdynamic
+  Update mk-configure.7 man page
+  mkc_check_funclib: ignore stdout of linker and redirect it to stderr
+  Fixes in examples/ (Solaris-11 and latest versions of NetBSD and
+  OpenBSD)
+</comment>
+    <requestid>1130703</requestid>
+  </revision>
 </revisionlist>

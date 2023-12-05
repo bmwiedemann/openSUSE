@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Oct  9 14:26:40 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
-- Update to version 23.3 (bsc#1216011, bsc#1215794)
+- Update to version 23.3 (bsc#1216011, bsc#1215794, bsc#1215740)
   + Remove patches included upstream:
     - cloud-init-fix-ca-test.patch
     - cloud-init-cve-2023-1786-redact-instance-data-json-main.patch

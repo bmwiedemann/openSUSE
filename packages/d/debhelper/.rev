@@ -136,4 +136,18 @@ Resubmit without Source URL</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1111502</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>567f1a1f9e6c81aba6869961c51405ae</srcmd5>
+    <version>13.11.8</version>
+    <time>1701727334</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.11.8:
+  * systemd helpers: install units to /usr.
+  * Trim NEWS when trimming changelog (Closes: #1021607)
+  * dh_makeshlibs: add compatibility Provides: for 64-bit time_t transition.
+  * add new helper and addon: movetousr
+  * systemd helpers: Support units below /usr (Closes: #1041159)
+</comment>
+    <requestid>1130758</requestid>
+  </revision>
 </revisionlist>

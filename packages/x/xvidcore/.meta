@@ -1,0 +1,14 @@
+<package name="xvidcore" project="openSUSE:Factory">
+  <title>MPEG-4 Simple and Advanced Simple Profile codec</title>
+  <description>The Xvid video codec implements MPEG-4 Simple Profile and Advanced
+Simple Profile standards. It permits compressing and decompressing
+digital video in order to reduce the required bandwidth of video
+data for transmission over computer networks or efficient storage
+on CDs or DVDs. Due to its unrivalled quality Xvid has gained great
+popularity and is used in many other GPLed applications, like e.g.
+Transcode, MEncoder, MPlayer, Xine and many more.
+
+</description>
+  <devel project="multimedia:libs" package="xvidcore"/>
+  <url>https://www.xvid.com/</url>
+</package>

@@ -39,7 +39,9 @@ BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
+Requires:       NetworkManager
 Requires:       openfortivpn >= 1.11.0
+Supplements:    (NetworkManager and openfortivpn)
 # the pppd plugin are strict on the version, see boo#1175106
 # ppe is transient already required by NM directly, but we need
 # the versioned dep here to ensure a rebuild in case of ppp
@@ -50,13 +52,16 @@ Requires:       openfortivpn >= 1.11.0
 This package contains software for integrating Fortinet compatible
 SSLVPN server VPN capabilities with with NetworkManager.
 
-%package -n NetworkManager-fortisslvpn-gnome
-Summary:        GNOME files for the NetworkManager SSLVPN plugin
+%package -n NetworkManager-applet-fortisslvpn
+Summary:        NMA files for the NetworkManager SSLVPN plugin
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
+Supplements:    (%{name} and NetworkManager-applet)
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
 
-%description -n NetworkManager-fortisslvpn-gnome
-This package contains the GNOME files for integrating
+%description -n NetworkManager-applet-fortisslvpn
+This package contains the NMA files for integrating
 Fortinet-compatible SSLVPN server VPN capabilities with
 NetworkManager.
 
@@ -89,7 +94,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{pppd_plugin_dir}/nm-fortisslvpn-pppd-plugin.so
 %{_sharedstatedir}/NetworkManager-fortisslvpn
 
-%files -n NetworkManager-fortisslvpn-gnome
+%files -n NetworkManager-applet-fortisslvpn
 %{_libexecdir}/nm-fortisslvpn-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-fortisslvpn-editor.so
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-fortisslvpn-editor.so

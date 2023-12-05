@@ -475,4 +475,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1095744</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c6e1746cb33511b995c2cb57a2bf7dc5</srcmd5>
+    <version>4.23.0</version>
+    <time>1701727317</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.23.0
+- don't use bundled static QuaZip, use the system one instead</comment>
+    <requestid>1130722</requestid>
+  </revision>
 </revisionlist>

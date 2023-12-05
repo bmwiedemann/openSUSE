@@ -18,14 +18,12 @@
 
 %define skip_python2 1
 Name:           python-tinyrpc
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        A modular transport and protocol neutral RPC library
 License:        MIT
 URL:            https://github.com/mbr/tinyrpc
 Source:         https://github.com/mbr/tinyrpc/archive/%{version}.tar.gz
-# https://github.com/mbr/tinyrpc/issues/103
-Patch0:         python-tinyrpc-no-six.patch
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module msgpack}

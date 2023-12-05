@@ -18,6 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 39
+# Make sure to update `upgrades` as well!
 %define ver 23.02.6
 %define _ver _23_02
 #%%define rc_v 0rc1
@@ -72,9 +73,26 @@ Conflicts:      %{*} >= %{ver_m}.99 }
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %{lua:x=string.gsub(rpm.expand("%_ver"),"_","");print(x)}
 %define upgrade 1
 %endif
+%define upgrade_versions upgrades
+%define do_obsoletes() %{lua:
+                      local filename = rpm.expand("%_sourcedir") .. "/" .. rpm.expand("%upgrade_versions")
+                      local version = rpm.expand("%version")
+                      local arg = rpm.expand("%{1}")
+                      local f = io.open(filename ,"r")
+                      local em = false
+                      if f~=nil then
+                        f.close(f)
+                        for line in io.lines(filename) do
+			  if em then print('\\n') else em = true end
+                          print("Obsoletes:      " .. arg .. " = " .. line)
+                        end
+                      else
+                        print("Obsoletes:      " .. arg .. " < " .. version)
+                      end }
+
 %define upgrade_dep() %{?upgrade: #
 Provides:       %{*} = %{version}
-Obsoletes:      %{*} < %{version}
+%{do_obsoletes  %{*}}
 Conflicts:      %{*} }
 
 %if 0%{?suse_version} >= 1500
@@ -145,7 +163,8 @@ Group:          Productivity/Clustering/Computing
 URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
 #Source:         https://github.com/SchedMD/slurm/archive/refs/tags/%{pname}-%{dl_ver}.tar.gz
-Source1:        slurm-rpmlintrc
+Source1:        %upgrade_versions
+Source2:        slurm-rpmlintrc
 Source10:       slurmd.xml
 Source11:       slurmctld.xml
 Source12:       slurmdbd.xml
@@ -662,6 +681,10 @@ install -p -m644 etc/slurmd.service etc/slurmdbd.service etc/slurmctld.service %
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcslurmd
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcslurmdbd
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcslurmctld
+%if 0%{?build_slurmrestd}
+install -p -m644 etc/slurmrestd.service %{buildroot}%{_unitdir}
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcslurmrestd
+%endif
 install -d -m 0755 %{buildroot}/%{_tmpfilesdir}/
 cat <<-EOF > %{buildroot}/%{_tmpfilesdir}/%{pname}.conf
 	# Create a directory with permissions 0700 owned by user slurm, group slurm
@@ -971,6 +994,18 @@ rm -f %{buildroot}%{_libdir}/slurm/rest_auth_*.so
 %postun node
 %service_del_postun_without_restart slurmd.service
 
+%pre rest
+%service_add_pre slurmrestd.service
+
+%post rest
+%service_add_post slurmrestd.service
+
+%preun rest
+%service_del_preun slurmrestd.service
+
+%postun rest
+%service_add_pre slurmrestd.service
+
 %pre config %{?have_sysuser:-f %{pname}.pre}
 %if 0%{!?have_sysuser:1}
 getent group %slurm_g >/dev/null || groupadd -r %slurm_g
@@ -1022,6 +1057,9 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 
 %posttrans slurmdbd
 %_restart_on_update slurmdbd
+
+%posttrans rest
+%_restart_on_update slurmrestd
 
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1320
 %define my_license %license
@@ -1287,6 +1325,8 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %if 0%{?build_slurmrestd}
 %files rest
 %{_sbindir}/slurmrestd
+%{_sbindir}/rcslurmrestd
+%{_unitdir}/slurmrestd.service
 %{_mandir}/man8/slurmrestd.*
 %{_libdir}/slurm/openapi_dbv0_0_39.so
 %{_libdir}/slurm/openapi_v0_0_39.so

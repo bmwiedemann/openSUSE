@@ -252,4 +252,13 @@
     <comment></comment>
     <requestid>1127293</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>918f43c832c5b39245abbefd88652c75</srcmd5>
+    <version>22.3.14</version>
+    <time>1701727356</time>
+    <user>anag+factory</user>
+    <comment>- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)</comment>
+    <requestid>1130826</requestid>
+  </revision>
 </revisionlist>

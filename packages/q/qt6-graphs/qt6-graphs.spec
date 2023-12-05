@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.0
+%define real_version 6.6.1
 %define short_version 6.6
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-graphs%{?pkg_suffix}
-Version:        6.6.0
+Version:        6.6.1
 Release:        0
 Summary:        3D visualization module
 License:        GPL-3.0-only

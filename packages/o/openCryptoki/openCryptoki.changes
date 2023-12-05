@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  4 13:40:57 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file  for pkcsslotd (jsc#1217703)
+  * Renamed the patch ocki-3.21-remove-make-install-chgrp.patch to
+                      ocki-3.22-remove-make-install-chgrp.patch
+-------------------------------------------------------------------
 Thu Sep 21 10:55:56 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 3.22 (jsc#PED-3361)

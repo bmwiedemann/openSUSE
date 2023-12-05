@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  3 18:45:12 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 4.4.2:
+  * General:
+    * Fix: Various potential crashes
+    * Fix: Clear active console messages when resuming from
+      paused state
+    * Fix: Make sure VTOLs retreat to repair when attached to
+      VTOL Strike/CB
+  * Campaign:
+    * Fix: Move a spawn position on Gamma 3
+  * Multiplayer:
+    * Fix: Do not split departing player research centers with
+      team in non-shared research mode
+    * Fix: Use std::make_{unique,shared} instead of raw new
+
+-------------------------------------------------------------------
 Sun Nov 26 16:42:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for openSUSE Leap, 

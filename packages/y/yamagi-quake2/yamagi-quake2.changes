@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Dec  3 20:44:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.30:
+  * Use the same model loading code in all renderers.
+  * Remove the unused `msg` cvar and the corresponding server
+    side infrastructure. The cvar was never implemented in Quake II,
+    but existing bits could be used for attacks against the client.
+  * Add `cl_audiopaused`. When set to `1` the audio stops when
+    the game is paused.
+  * Add `ogg_pausewithgame`. When set to `1` the background music
+    stops when the game is paused. (by apartfromtime)
+  * New logo files, matching the original Quake II logo.
+  * Support for RISCV64 (by David Carlier)
+  * Fix resetting Mods back to baseq2 when running with
+    `-portable`.
+  * Alternative playback modes for OGG/Vorbis background music:
+    once, sequential, random. (by apartfromtime)
+  * Support gyro aiming for Switch controllers with SDL < 2.0.14.
+    (by protocultor)
+  * Fixed stand-ground gladiators not attacking within a certain
+    range.
+  * Fixed monsters seeing players during intermissions.
+  * Several fixes to Makron. (by BjossiAlfreds)
+  * Optional high dpi awareness when running under Wayland.
+    Requires a Wayland compositor supporting fractional-scale-v1
+    and at least SDL 2.26. Set `vid_highdpiawareness 1` to enable.
+  * Fix lava surfaces not glowing.
+  * Add a cheat protected cvar `g_swap_speed`. Allows to skip
+    frames of "putting down weapon" and "raising weapon" animations,
+    speeding them up.
+  * Support of RGBA png/jpg image with r_retexturing as
+    cinematic.
+
+-------------------------------------------------------------------
 Sat Dec 10 19:55:57 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.20
@@ -160,7 +194,7 @@ Sun Feb 28 18:51:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Make wait in scripts wait for 17 ms. This fixes some movement makros.
   * Support for Haiku. (by David Carlier)
   * Add a mods submenu. (by earth-metal)
-  * Add the vstr command and nextdemo cvar. Ported from ioquake3. (by Denis Pauk) 
+  * Add the vstr command and nextdemo cvar. Ported from ioquake3. (by Denis Pauk)
 
 -------------------------------------------------------------------
 Fri Oct 16 20:49:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
@@ -310,7 +344,7 @@ Sun Mar 11 08:54:22 UTC 2018 - mardnh@gmx.de
   + Rename several cvars to be consistent across different renderers.
     The configuration file will be converted at the first start, when an
     old cvar name is used a message is printed.
-  + Make the client unicode compatible. Yamagi Quake II can now be 
+  + Make the client unicode compatible. Yamagi Quake II can now be
     installed into pathes with unicode characters in it. On Windows the
     user name of the current account may contain unicode characters.
     As a side effect the game can run on ReFS volumes. While '+set
@@ -481,7 +515,7 @@ Sun Jul 10 09:56:18 UTC 2016 - luke.nukem.jones@gmail.com
   + Add support for stereo 3D (by Valery Guskov)
   + Make gibt solid so they move with conveyor belts.
   + Disable gl_ext_multitexturing by default.
-  + Switch from an arch whitelist to an "all archs are supported" 
+  + Switch from an arch whitelist to an "all archs are supported"
     approach.
   + Add a new README.
 

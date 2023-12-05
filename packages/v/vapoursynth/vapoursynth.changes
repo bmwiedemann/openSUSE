@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  4 04:05:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upstream supports Cython 0.29 and 3, stop special casing it. 
+
+-------------------------------------------------------------------
 Mon Oct 30 21:31:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 65:

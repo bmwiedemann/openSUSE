@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
+
+- Require OCaml 4.07+
+
+-------------------------------------------------------------------
+Tue Nov 28 11:13:44 MST 2023 - carnold@suse.com
+
+- Update to version 1.51.8
+  * There are no upstream release notes for verion 1.51.x
+  * Dropped the virt-dib tool
+  * Add support for lzma and zstd compression methods.
+  * Add --chown option for virt-customize
+  * Add new virt-customize --tar-in operation
+  * Various bug fixes and language translations
+- Drop patch contained in new tarball
+  Omit-file--S-option-on-older-distros-that-lack-support.patch
+
+-------------------------------------------------------------------
 Mon Sep 25 14:51:13 MDT 2023 - carnold@suse.com
 
 - bsc#1215543 - guestfs regression: file: Use -S option with -z

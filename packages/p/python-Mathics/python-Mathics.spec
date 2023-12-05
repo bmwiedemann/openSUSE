@@ -1,5 +1,5 @@
 #
-# spec file for package python-Mathics
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -32,7 +32,7 @@
 %define skip_python311 1
 %define pyname Mathics3
 Name:           python-Mathics%{psuffix}
-Version:        6.0.2
+Version:        6.0.4
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3

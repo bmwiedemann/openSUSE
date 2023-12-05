@@ -1050,7 +1050,7 @@ binfiles=( bugpoint dsymutil llc lli \
            llvm-symbolizer llvm-tapi-diff llvm-tblgen llvm-undname llvm-windres \
            llvm-xray opt sancov sanstats split-file verify-uselistorder \
            c-index-test clang clangd clang++ clang-apply-replacements \
-           clang-change-namespace clang-check clang-cl clang-extdef-mapping clang-format \
+           clang-change-namespace clang-check clang-cl clang-cpp clang-extdef-mapping clang-format \
            clang-include-fixer clang-move clang-offload-bundler \
            clang-offload-wrapper clang-query clang-refactor clang-repl clang-scan-deps clang-rename \
            clang-reorder-fields clang-tidy diagtool find-all-symbols modularize pp-trace \
@@ -1397,6 +1397,7 @@ fi
    --slave %{_bindir}/clang-change-namespace clang-change-namespace %{_bindir}/clang-change-namespace-%{_relver} \
    --slave %{_bindir}/clang-check clang-check %{_bindir}/clang-check-%{_relver} \
    --slave %{_bindir}/clang-cl clang-cl %{_bindir}/clang-cl-%{_relver} \
+   --slave %{_bindir}/clang-cpp clang-cpp %{_bindir}/clang-cpp-%{_relver} \
    --slave %{_bindir}/clang-extdef-mapping clang-extdef-mapping %{_bindir}/clang-extdef-mapping-%{_relver} \
    --slave %{_bindir}/clang-format clang-format %{_bindir}/clang-format-%{_relver} \
    --slave %{_bindir}/clang-include-fixer clang-include-fixer %{_bindir}/clang-include-fixer-%{_relver} \
@@ -1832,6 +1833,7 @@ fi
 %{_bindir}/clang-change-namespace-%{_relver}
 %{_bindir}/clang-check-%{_relver}
 %{_bindir}/clang-cl-%{_relver}
+%{_bindir}/clang-cpp-%{_relver}
 %{_bindir}/clang-extdef-mapping-%{_relver}
 %{_bindir}/clang-format-%{_relver}
 %{_bindir}/clang-include-fixer-%{_relver}
@@ -1857,6 +1859,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/clang-change-namespace
 %ghost %{_sysconfdir}/alternatives/clang-check
 %ghost %{_sysconfdir}/alternatives/clang-cl
+%ghost %{_sysconfdir}/alternatives/clang-cpp
 %ghost %{_sysconfdir}/alternatives/clang-extdef-mapping
 %ghost %{_sysconfdir}/alternatives/clang-format
 %ghost %{_sysconfdir}/alternatives/clang-include-fixer

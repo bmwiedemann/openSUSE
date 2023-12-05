@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.6.0
+%define real_version 6.6.1
 %define short_version 6.6
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
@@ -28,12 +28,14 @@
 %endif
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.6.0
+Version:        6.6.1
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-re-initializing-a-moved-from-QProtobufMessage-us.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
@@ -44,8 +46,7 @@ BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(grpc++)
 BuildRequires:  pkgconfig(libprotobuf-c)
-# qtgrpc is not compatible with protobuf 23 and protobuf-c is not compatible with 22 either
-BuildRequires:  pkgconfig(protobuf) < 22
+BuildRequires:  pkgconfig(protobuf)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}

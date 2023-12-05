@@ -103,4 +103,13 @@
   raises a ``ValueError`` when one is detected.</comment>
     <requestid>1046298</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1e125218acf147ca1a2ea45afd29144</srcmd5>
+    <version>4.1.5</version>
+    <time>1701727378</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.5:
+  * Add support for Python 3.12.</comment>
+    <requestid>1130849</requestid>
+  </revision>
 </revisionlist>

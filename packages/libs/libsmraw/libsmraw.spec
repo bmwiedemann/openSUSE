@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
 Name:           libsmraw
 %define lname	libsmraw1
-Version:        20230320
+Version:        20231127
 Release:        0
 Summary:        Library and tools to access the (split) RAW image format
 License:        LGPL-3.0-or-later
@@ -37,7 +38,7 @@ BuildRequires:  pkgconfig(libbfio) >= 20221025
 BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
@@ -45,8 +46,8 @@ BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20230115
 BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libhmac) >= 20230205
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libhmac) >= 20231127
+BuildRequires:  pkgconfig(libuna) >= 20230710
 BuildRequires:  pkgconfig(openssl) >= 1.0
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal

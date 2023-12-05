@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-removed-in
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-removed-in
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Sphinx directives versionremoved and removed-in
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/MrSenko/sphinx-removed-in
 Source:         https://github.com/MrSenko/sphinx-removed-in/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove-sphinx-testing.patch -- based on PR
-# gh#mrsenko/sphinx-removed-in#9
-Patch0:         remove-sphinx-testing.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +45,6 @@ Sphinx Removed In Extension
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

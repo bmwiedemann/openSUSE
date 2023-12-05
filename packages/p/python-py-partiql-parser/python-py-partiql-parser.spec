@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-py-partiql-parser
 Version:        0.4.2
 Release:        0

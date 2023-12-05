@@ -238,4 +238,15 @@ Rebase patches:
     <comment></comment>
     <requestid>1094313</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7abc11fcd5ee0347887e04a38325b57d</srcmd5>
+    <version>2023.09.1+494</version>
+    <time>1701727293</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 2023.09.1+494.
+- Rebase patches:
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * remove-panmirror.patch (forwarded request 1130496 from aaronpuchert)</comment>
+    <requestid>1130699</requestid>
+  </revision>
 </revisionlist>

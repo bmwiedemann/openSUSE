@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec  2 10:09:44 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Remove Sphinx .doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Fri Sep  1 12:18:58 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Fix Leap build by tweeking dependencies and disabling docs as

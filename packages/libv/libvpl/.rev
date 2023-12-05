@@ -117,4 +117,37 @@
   x86_64 (bsc#1217662)</comment>
     <requestid>1129855</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e2e166adf9d372071c54f21f3df1fad3</srcmd5>
+    <version>2023.4.0</version>
+    <time>1701727320</time>
+    <user>anag+factory</user>
+    <comment>- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)
+
+- Update to version 2023.4.0
+  * Added
+    + oneVPL API 2.10 support
+    + New command line parameters to sample_multi_transcode for setting
+      B Frame QP Offsets based on Pyramid Level
+    + New command line parameters to the sample_vpp tool to enable video
+      signal information
+    + New APIs for importing and exporting shared surfaces
+    + New APIs for string-based parameter configuration
+  * Removed
+    + Environment module support
+    + Unused files and folders
+  * Fixed
+    + NV12 wayland render for MTL
+    + Buffer starvation when wayland window is moved
+    + Missing profile strings in vpl-inspect tool
+    + Rdrm to use card node instead of render node
+    + Rdrm tile4 selection based DRM/KMS query
+    + Rdrm NV12 and P010 render for MTL
+  * Changed
+    + Directory layout and name of dispatcher directory
+    + Location of image files used by documentation
+    + Runtime library search path to remove current directory</comment>
+    <requestid>1130754</requestid>
+  </revision>
 </revisionlist>

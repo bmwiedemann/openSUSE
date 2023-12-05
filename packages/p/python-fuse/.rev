@@ -95,4 +95,21 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
     <comment></comment>
     <requestid>1097115</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb5d7c57438cb208a2c76468c1dd718f</srcmd5>
+    <version>1.0.7</version>
+    <time>1701727346</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.7:
+  * Suppress SyntaxWarnings in python3.12
+  * Doc: Minor spelling fixes
+- update to 1.0.6:
+  * Python 3.12 compatibility.
+
+  * Use bytes objects for read and write data: please note that
+    Python 3; it's worth it however since it fixes a serious
+    usability bug that arbitrarily limited file content to valid
+        Fix generation of MANIFEST.in in make_release.sh</comment>
+    <requestid>1130802</requestid>
+  </revision>
 </revisionlist>

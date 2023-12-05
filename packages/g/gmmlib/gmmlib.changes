@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  4 12:05:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- This includes latest version of one of the components needed for
+  Video (processing) hardware support on Intel GPUs (bsc#1217770)
+
+-------------------------------------------------------------------
 Fri Nov 17 10:55:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.14:
@@ -10,7 +16,7 @@ Tue Nov 14 12:26:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 - update to 22.3.13:
   * Fix Multiadapter ULT issue reproducibilty
   * Add new PVC Device ID
-￼
+
 -------------------------------------------------------------------
 Wed Sep 13 12:09:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 

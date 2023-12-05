@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-order
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Pytest plugin to run your tests in a specific order
 License:        MIT

@@ -1797,4 +1797,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1128287</requestid>
   </revision>
+  <revision rev="189" vrev="2">
+    <srcmd5>ac4d070e249bc18823e7a1457077792a</srcmd5>
+    <version>1.5.0</version>
+    <time>1701727324</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1130763</requestid>
+  </revision>
 </revisionlist>

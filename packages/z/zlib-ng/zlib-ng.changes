@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  3 20:27:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.5:
+  * This is a hotfix release, fixing an issue where certain
+    applications would fail with a checksum error during inflate
+    (decompression).
+  * Fix bug with Z_FINISH handling with no window. #1602
+  * This was detected by libgit2 unit tests Issue #1600
+  * Added unit test for inflate with Z_FINISH and no window #1603
+  * Fix CMake handling of CMAKE_INSTALL_INCLUDEDIR #1593
+  * Fix pkgconfig support for WITH_GZFILEOP #1595 #1598
+  * Github Actions update #1590
+  * Readme Update #1594
+
+-------------------------------------------------------------------
 Sun Nov 12 09:43:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.4:

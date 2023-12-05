@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.50.1
+Version:        1.51.8
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
-Patch0:         Omit-file--S-option-on-older-distros-that-lack-support.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel
@@ -42,7 +41,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
 BuildRequires:  libtool
-BuildRequires:  ocaml >= 4.04
+BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  ocaml-augeas-devel
 BuildRequires:  ocaml-hivex-devel
 BuildRequires:  po4a

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:52:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * This stestr release is a feature release that primarily fixes
+    compatibility with subunit 1.4.3 and initial compatibility
+    with Python 3.12.
+  * Apply black autoformatter to code base
+  * Reuse subunit_trace output/validation logic for load/run
+  * Revert "Fix #330 - Preserve load-list order"
+  * Remove vestigial future package from requirements
+  * Pin black to 2022 version
+  * Fix ResourceWarning from SubunitTestRunner._list()
+  * Add support for storing stestr configs in pyproject.toml
+  * Adding another prefix to the existing list of
+    unittest_import_strs
+  * Update docs job to avoid setup.py entrypoint
+  * Replace removed SafeConfigParser with ConfigParser
+  * Explicitly list extras as dependency
+- drop remove-future-requirement.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Sep  5 06:09:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.1:
@@ -33,7 +54,7 @@ Sat Oct 16 20:23:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:
   * Fixed the detection of test worker failures before reporting final
-    result status  
+    result status
 
 -------------------------------------------------------------------
 Thu Jun 17 20:39:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -65,7 +86,7 @@ Mon Feb  8 13:05:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Change option '--blacklist-file' to '--exclude-list'
   * Change option '--whitelist-file' to '--include-list'
   * Change option '--whitelist-file' to '--include-list'
-  * Bump hacking version 
+  * Bump hacking version
 
 -------------------------------------------------------------------
 Mon Dec 14 21:17:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>

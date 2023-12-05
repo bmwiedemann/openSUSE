@@ -1373,4 +1373,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1129192</requestid>
   </revision>
+  <revision rev="101" vrev="6">
+    <srcmd5>fbbda57d6684437252aa1f3136276e36</srcmd5>
+    <version>23.02.6</version>
+    <time>1701727168</time>
+    <user>anag+factory</user>
+    <comment>- Add missing service file for slurmrestd (boo#1217711). (forwarded request 1130096 from eeich)</comment>
+    <requestid>1130097</requestid>
+  </revision>
 </revisionlist>

@@ -43,4 +43,20 @@
 </comment>
     <requestid>1085695</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d8508f6b1758fa22fe4f5552bbae1375</srcmd5>
+    <version>8.10.0</version>
+    <time>1701727162</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.10.0:
+  * Support urllib3 2.x in addition to urllib3 1.26.x (#121)
+  * Add 409 to `NOT_DEAD_NODE_HTTP_STATUSES` (#120)
+  * Fixed an issue where a large number of consecutive failures
+    to connect to a node would raise an `OverflowError`.
+  * Fixed an issue to ensure that `ApiResponse` can be pickled.
+
+  gh#elastic/elastic-transport-python#96
+  * Added method for clients to use default ports for URL scheme.</comment>
+    <requestid>1130493</requestid>
+  </revision>
 </revisionlist>

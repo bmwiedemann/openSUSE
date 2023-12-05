@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  3 14:34:27 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.12.2
+  * Fix choosing custom reactions in channels.
+  * Fix crash on launch using old hardware. (Windows)
+
+-------------------------------------------------------------------
 Fri Dec  1 13:33:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.12.1

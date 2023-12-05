@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  6 16:14:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue May 26 13:26:04 UTC 2015 - lmuelle@suse.com
 
 - Split package into libilbc0 and ilbc-devel.

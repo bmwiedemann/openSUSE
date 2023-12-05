@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Exclude auto generated unversioned Requires symbols in order to manually
 # require the right version.
 %define __requires_exclude typelib\\((GLib|GObject|G[dt]k|Gio|Gtk|Pango)\\)
@@ -23,7 +24,7 @@
 %define peas_version 1.0
 
 Name:           rhythmbox-plugin-alternative-toolbar
-Version:        0.20.3
+Version:        0.20.4
 Release:        0
 Summary:        Modern, minimal and music-focused interface for Rhythmbox
 License:        GPL-3.0-only
@@ -32,9 +33,9 @@ Source:         alternative-toolbar-%{version}.tar.xz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  intltool
 BuildRequires:  gcc
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  intltool
 BuildRequires:  python3-gobject
 BuildRequires:  typelib(GLib) = %{glib_version}
 BuildRequires:  typelib(GObject) = %{glib_version}

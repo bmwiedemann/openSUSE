@@ -25,14 +25,12 @@
 %bcond_with test
 %endif
 Name:           python-stestr%{psuffix}
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        A parallel Python test runner built around subunit
 License:        Apache-2.0
 URL:            https://github.com/mtreinish/stestr
 Source:         https://files.pythonhosted.org/packages/source/s/stestr/stestr-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#mtreinish/stestr#112598d44ee682553c2540b853f9626085b8df2c
-Patch0:         remove-future-requirement.patch
 BuildRequires:  %{python_module pbr >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -44,11 +42,13 @@ Requires:       python-fixtures >= 3.0.0
 Requires:       python-pbr >= 2.0.0
 Requires:       python-python-subunit >= 1.4.0
 Requires:       python-testtools >= 2.2.0
+Requires:       python-tomlkit >= 0.11.6
 Requires:       python-voluptuous >= 0.8.9
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module ddt >= 1.0.1}
+BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module stestr = %{version}}
 %endif

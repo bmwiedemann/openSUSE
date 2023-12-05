@@ -14,25 +14,28 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 Name:           python-pytest-skip-markers
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        Pytest plugin for conditionally skipping tests
 License:        Apache-2.0
 URL:            https://github.com/saltstack/pytest-skip-markers
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-skip-markers/pytest-skip-markers-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 50.3.2}
 BuildRequires:  %{python_module setuptools-declarative-requirements}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module distro}
-BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pyfakefs}
+BuildRequires:  %{python_module pytest >= 6.0.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-attrs >= 19.2.0

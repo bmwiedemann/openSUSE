@@ -37,4 +37,14 @@
 </comment>
     <requestid>1091833</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32073966cd8c2c00b64d115f7d752722</srcmd5>
+    <version>0.8.2+0</version>
+    <time>1701727268</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.2:
+  * Add support for exporting command history matching a regex
+    or date range</comment>
+    <requestid>1130622</requestid>
+  </revision>
 </revisionlist>

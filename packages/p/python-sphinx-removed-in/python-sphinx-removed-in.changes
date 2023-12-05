@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:50:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.2:
+  * no upstream changelog provided
+- drop remove-sphinx-testing.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Sep 28 10:48:00 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch remove-sphinx-testing.patch, to remove the sphinx-testing
@@ -14,4 +21,4 @@ Fri Mar  6 13:24:35 UTC 2020 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Mar 29 11:43:53 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- initial commit 
+- initial commit

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec  3 08:06:34 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update reproducible.patch to drop more benchmarking (boo#1041534)
+
+-------------------------------------------------------------------
 Wed Aug  9 09:09:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to procmail 3.24 (New Upstream)

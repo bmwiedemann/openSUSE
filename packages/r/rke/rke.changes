@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Dec  3 18:55:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.5.0:
+  * Enhancements
+    - Added support for v1.27.6-rancher1-1.
+    - Introduced support for external-aws.
+      - In Kubernetes 1.27 and later, you must use an out-of-tree
+        AWS cloud provider. See documentation on how to set up
+        external-aws.
+      - All existing clusters must migrate prior to upgrading to
+        v1.27 in order to stay functional. See documentation on how
+        to migrate to external-aws on Kubernetes 1.26 and earlier.
+      - Note that there is a known issue with external-aws where
+        RKE fails to find the node if both hostname-override and
+        internal-address are empty. For more information, see #3445
+  * Other changes
+    - [release/v1.5] Add env var to enable dual-stack in
+      cri-dockerd by @superseb in #3370
+    - [release/v1.5] Security bumps by @macedogm in #3339
+    - Add warning log about weave deprecation by @manuelbuil in
+      #3337
+    - Fix "unknown revision v0.0.0" error caused by the
+      k8s.io/kubernetes module by @jiaqiluo in #3387
+    - changed etcd restore image to rke-tools for etcd >=3.5.7 by
+      @vardhaman22 in #3390
+  * Kubernetes Versions
+    Each version of RKE has a specific list of supported Kubernetes
+    versions. If you want to use a different version than listed
+    below, you will need to update Kubernetes using the system
+    images option in your cluster.yml.
+    - Kubernetes version
+      - v1.27.6-rancher1-1 (Default)
+      - v1.26.9-rancher1-1
+      - v1.25.14-rancher1-1
+    - Experimental Kubernetes version
+      - N/A
+
+-------------------------------------------------------------------
 Thu Nov 16 14:24:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - Update to version 1.4.11:

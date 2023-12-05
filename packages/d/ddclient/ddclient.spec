@@ -1,7 +1,7 @@
 #
 # spec file for package ddclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ddclient
-Version:        3.10.0
+Version:        3.11.2
 Release:        0
 Summary:        A Perl Client to Update Dynamic DNS Entries
 License:        GPL-2.0-or-later
@@ -29,8 +29,7 @@ Source2:        %{name}.sysconfig
 Source3:        %{name}-tmpfiles.conf
 Patch0:         %{name}-config.patch
 Patch1:         %{name}-delay-main-process-for-systemd.patch
-Patch2:         fix-configure_ac.patch
-Patch3:         disable-ip-test.patch
+Patch2:         disable-ip-test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl

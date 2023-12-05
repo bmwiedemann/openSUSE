@@ -33,6 +33,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Cython
 BuildRequires:  pkgconfig(Magick++) >= 7.0
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libass)
@@ -55,10 +56,8 @@ Obsoletes:      plugin-vivtc
 BuildRequires:  gcc12
 BuildRequires:  gcc12-PIE
 BuildRequires:  gcc12-c++
-BuildRequires:  python3-Cython
 %else
 BuildRequires:  gcc-c++
-BuildRequires:  python3-Cython0
 %endif
 
 %description

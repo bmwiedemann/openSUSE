@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Nov 23 17:05:39 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 3.11.2
+  * ddclient now requires curl. The Perl modules IO::Socket::IP and
+    IO::Socket::SSL are no longer used.
+  * ddclient no longer ships any example files for init systems that use
+    /etc/init.d. This was done because those files where effectively
+    unmaintained, untested by the developers and only updated by downstream
+    distros. If you where relying on those files, please copy them into your
+    packaging.
+  * The defunct dnsexit protocol is removed (replaced by dnsexit2).
+  * Introduced `usev4` and `usev6` for separate IPv4/IPv6 configuration. These
+    will replace the legacy `use` eventually.
+  * Added support for moving secrets out of the configuration through
+    environment variables
+  * Extended postscript mechanism
+  * sample-get-ip-from-fritzbox: Added environment variable to override
+    hostname
+  * Warn about hosts where no IP could be determined - and skip the (bogus)
+    update.
+  * Added regfish
+  * Added domeneshop.no
+  * Added Mythic Beasts
+  * Added Porkbun
+  * Added Enom
+  * Added DigitalOcean
+  * Added Infomaniak
+  * Added DNSExit API v2
+  * Removed old DNSExit API
+  * Extended EasyDNS to support IPv6
+  * Extended duckdns to support IPv6
+  * Fixed simultaneous IPv4 and IPv6 updates for provider duckdns
+  * Fixed caching issues for new providers when using the old 'use' config
+    parameter
+  * Fixed simultaneous IPv4 and IPv6 updates for provider porkbun
+  * Removed @PACKAGE_VERSION@ placeholder in ddclient.in for now
+    to allow downstream to adopt the proper build process first.
+    See [here](https://github.com/ddclient/ddclient/issues/579) for the
+    discussion.
+  * Fixed various issues with caching
+  * Fixed issues with Hetzner zones
+  * The OVH provider now ignores extra data returned
+  * Merge multiple configs for the same hostname instead of use the last
+- Remove fix-configure_ac.patch 
+- Rebase disable-ip-test.patch 
+
+-------------------------------------------------------------------
 Sun Jan  1 10:41:36 UTC 2023 - munix9@googlemail.com
 
 - Add curl as BuildRequires/Requires to be able to use the '-curl'

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec  3 12:12:10 UTC 2023 - Bailey Kasin <baileykasin@gmail.com>
+
+- Update to version 1.4.11
+  * Add ability to set backend args in config file
+  * Fix config file argument (Obsoletes fix-config-flag.patch)
+  * Fix DE empty bracket in macOS
+  * Disable Hackintosh check on arm64 processors
+  * Add Windows NT
+  * Fixed Kubuntu recognized as Ubuntu
+  * Use /etc/debian_version to get .x on Debian
+  * Add LainOS, aerOS, Xenia, EndeavourOS Small Option, AZOS, MainsailOS,
+  Interix, Peropesis, Adelie, Xray_OS
+  * Update AOSC, phyOS, Parch logos
+  * Add linux_small
+  * Fix color blocks for bash != 3 & < 5
+  * Use sed -r instead of -E when using GNU sed
+  * Improved macOS resolution detection
+  * Add support for alacritty's new config format
+  * Check for newer xfce4-term config
+  * Add support for npm global packages
+
+-------------------------------------------------------------------
 Thu Sep  7 21:06:45 UTC 2023 - Bailey Kasin <baileykasin@gmail.com>
 
 - Add version 1.4.10

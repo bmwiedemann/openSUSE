@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Dec  4 14:12:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.19
+  * `gromox-mbop emptyfld` now recognizes a `-t` option to limit
+    deletion to messages of certain age.
+  * `gromox-mbop emptyfld` now recognizes a `--nuke-folders` option
+  * gromox-eml2mt now recognizes a `--mbox` option to support
+    RFC4155 Unix mboxes
+  * exmdb: search pacing is now time-based, which should give more
+    predictable interactivity during background searches
+  * emsmdb: do not treat the absence of the
+    PR_LAST_MODIFICATION_TIME message property during ICS downloads
+    as an error any longer
+  * exmdb: send "object created" notifications as search folders
+    re-populate
+  * oxcmail: ignore zero-length From fields, which should help
+    sending from Windows Mail
+  * Thunderbird/IMAP now picks up deletion events done by other
+    clients
+
+-------------------------------------------------------------------
+Mon Nov 27 13:36:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.18
+  * exmdb: synthesized PR_RTF_COMPRESSED properties (in relation to
+    the "dbg_synthesize_content" config directive) had an
+    incomplete header
+  * oxcmail: repair inadvertent propid/proptag swap causing TNEF
+    export to fail
+  * mbop/purge-softdelete: make pathspec `SENT/2022` actually work
+  * imap: messages delete events from OL/g-web now make it to IMAP
+    clients
+  * midb: propagate folder change events; IMAP clients now
+    recognize when a message was deleted in g-web/Outlook
+  * http: RFC 7617 support for the Basic authentication header line
+  * nsp: allow connections from Windows with UTF-8 locale
+  * midb: removal of seqid renumbering, which speeds up
+    IMAP SELECT/LIST/FETCH commands.
+  * authmgr: PAM is now offered as an authentication backend
+
+-------------------------------------------------------------------
 Sat Nov 11 11:56:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.17

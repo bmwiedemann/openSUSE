@@ -17,10 +17,10 @@
 
 
 Name:           apfsprogs
-Version:        0~git453
+Version:        0~git475
 Release:        0
 Summary:        Experimental APFS tools for Linux
-License:        GPL-2.0
+License:        GPL-2.0-only
 URL:            https://github.com/linux-apfs/apfsprogs
 Source0:        %{name}-%{version}.tar.gz
 

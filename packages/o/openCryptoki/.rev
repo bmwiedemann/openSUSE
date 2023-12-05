@@ -735,4 +735,12 @@
     <comment></comment>
     <requestid>1112796</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>daf817e62f009352b3975a8536c5e330</srcmd5>
+    <version>3.22.0</version>
+    <time>1701727330</time>
+    <user>anag+factory</user>
+    <comment>Amended the .spec file for pkcsslotd (jsc#1217703)</comment>
+    <requestid>1130787</requestid>
+  </revision>
 </revisionlist>

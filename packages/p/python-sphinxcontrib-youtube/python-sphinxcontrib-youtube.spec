@@ -18,24 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-youtube
-Version:        1.2.0
+Version:        1.4.1
 Release:        0
 Summary:        Sphinx "youtube" extension
 License:        BSD-3-Clause
 URL:            https://github.com/sphinx-contrib/youtube
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-youtube/sphinxcontrib-youtube-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-youtube/sphinxcontrib_youtube-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 0.6
+Requires:       python-Sphinx >= 6.1
 Requires:       python-requests
-Suggests:       python-furo
-Suggests:       python-sphinx-copybutton
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Sphinx >= 0.6}
+BuildRequires:  %{python_module Sphinx >= 6.1}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
@@ -44,7 +42,7 @@ BuildRequires:  %{python_module requests}
 Sphinx "youtube" extension
 
 %prep
-%autosetup -p1 -n sphinxcontrib-youtube-%{version}
+%autosetup -p1 -n sphinxcontrib_youtube-%{version}
 
 %build
 %pyproject_wheel
@@ -54,9 +52,8 @@ Sphinx "youtube" extension
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc README.rst
+%license LICENCE
 %{python_sitelib}/sphinxcontrib/youtube
-%{python_sitelib}/sphinxcontrib_youtube-%{version}*-nspkg.pth
 %{python_sitelib}/sphinxcontrib_youtube-%{version}*-info
 
 %changelog

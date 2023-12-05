@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  4 07:52:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.5:
+  * Fix issue 1938 
+  * Add one more check to ensure minimum count is met
+  * Update ioptronv3driver.cpp
+  * Handling tracking mode in the pegasus driver, and enable King mode
+  * Fixed 9 Stars Align
+  * On step work
+  * Added several missing commands
+  * Snapcap driver with network connections
+
+-------------------------------------------------------------------
 Wed Oct  4 05:54:47 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.4:

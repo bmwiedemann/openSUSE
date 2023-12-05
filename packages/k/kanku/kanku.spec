@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.14.0
+Version:        0.16.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -61,7 +61,7 @@ BuildRequires:  perl(Moose)
 BuildRequires:  perl(MooseX::App)
 BuildRequires:  perl(MooseX::Singleton)
 BuildRequires:  perl(Net::IP)
-BuildRequires:  perl(Net::OBS::Client)
+BuildRequires:  perl(Net::OBS::Client) >= 0.1.0
 BuildRequires:  perl(Libssh::Session)
 BuildRequires:  perl(Path::Class)
 BuildRequires:  perl(Plack)
@@ -257,6 +257,8 @@ common config and lib files used in kanku
 /usr/lib/kanku/lib/Kanku/Task/
 /usr/lib/kanku/lib/OpenStack/
 /usr/lib/kanku/lib/Kanku/Config.pm
+%dir /usr/lib/kanku/lib/Kanku/Config/
+/usr/lib/kanku/lib/Kanku/Config/Defaults.pm
 /usr/lib/kanku/lib/Kanku/Handler.pod
 /usr/lib/kanku/lib/Kanku/Notifier
 /usr/lib/kanku/lib/Kanku/Job.pm

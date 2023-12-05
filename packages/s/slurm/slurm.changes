@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 30 18:52:44 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add missing service file for slurmrestd (boo#1217711).
+
+-------------------------------------------------------------------
+Tue Nov 28 14:14:28 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Explicitly create an Obsoletes: entry for each package version
+  that is obsoleted by the present version. These are all published
+  versions of the last two major releases as well as all minor
+  versions of the present release lower than the current one
+  (bsc#1216869 2nd part).
+  This prevents the current version to upgrade a old Slurm version
+  for which no upgrade path exists.
+
+-------------------------------------------------------------------
 Mon Nov 20 15:29:55 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - On SLE-12 exclude build for s390x.

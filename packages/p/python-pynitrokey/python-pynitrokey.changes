@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:34:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.43:
+  This release improves the UI of some NetHSM commands, introduces
+  the experimental `nk3 factory-reset` command and adds a warning
+  to nk3 set-config when used with unknown config keys.
+  * Changelog
+    -  nethsm: Fix table formatting in list-keys by @robin-nitrokey
+       in https://github.com/Nitrokey/pynitrokey/pull/476
+    -  Display value for type and mechanism on NetHSM get_key by
+       @mmerklinger in
+       https://github.com/Nitrokey/pynitrokey/pull/478
+    -  Update nethsm to v1.0.0 by @robin-nitrokey in
+       https://github.com/Nitrokey/pynitrokey/pull/477
+    -  Add support for full device factory reset command by
+       @sosthene-nitrokey in
+       https://github.com/Nitrokey/pynitrokey/pull/472
+    -  nk3 set-config: Add warning and confirmation prompt by
+       @robin-nitrokey in
+       https://github.com/Nitrokey/pynitrokey/pull/479
+
+-------------------------------------------------------------------
 Mon Nov 27 05:41:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.4.42:
