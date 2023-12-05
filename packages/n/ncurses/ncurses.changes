@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  4 07:55:42 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231202
+  + correct initial alignment of extended capabilities in infocmp, so
+    that the "-u" option can be used for more than two terminal types.
+  + improve formatting/style of manpages, changing environment variables
+    to italics (patches by Branden Robinson).
+
+-------------------------------------------------------------------
 Wed Nov 29 12:46:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20231125

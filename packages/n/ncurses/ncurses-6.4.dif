@@ -349,7 +349,7 @@
  
 --- man/man_db.renames.in
 +++ man/man_db.renames.in	2023-04-24 06:54:39.255524459 +0000
-@@ -172,6 +172,7 @@ user_caps.5			user_caps.5
+@@ -171,6 +171,7 @@ user_caps.5			user_caps.5
  wresize.3x			wresize.3ncurses
  #
  # Other:

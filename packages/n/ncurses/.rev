@@ -4338,4 +4338,16 @@
     (Debian #1055882, cf: 20201205).</comment>
     <requestid>1129821</requestid>
   </revision>
+  <revision rev="252" vrev="25">
+    <srcmd5>da1e4e2c200682faf72a17362cfbdf89</srcmd5>
+    <version>unknown</version>
+    <time>1701792043</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20231202
+  + correct initial alignment of extended capabilities in infocmp, so
+    that the &quot;-u&quot; option can be used for more than two terminal types.
+  + improve formatting/style of manpages, changing environment variables
+    to italics (patches by Branden Robinson).</comment>
+    <requestid>1130674</requestid>
+  </revision>
 </revisionlist>
