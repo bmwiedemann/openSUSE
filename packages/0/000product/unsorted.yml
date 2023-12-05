@@ -151,6 +151,10 @@ unsorted:
   - MyGUI-devel-doc 
   - MyGUI-tools 
   - NetworkManager-applet-fortisslvpn 
+  - NetworkManager-applet-iodine 
+  - NetworkManager-applet-l2tp 
+  - NetworkManager-applet-libreswan 
+  - NetworkManager-applet-strongswan 
   - NetworkManager-branding-upstream 
   - NetworkManager-cloud-setup 
   - NetworkManager-devel 
@@ -158,17 +162,13 @@ unsorted:
   - NetworkManager-fortisslvpn 
   - NetworkManager-fortisslvpn-lang 
   - NetworkManager-iodine 
-  - NetworkManager-iodine-gnome 
   - NetworkManager-iodine-lang 
   - NetworkManager-l2tp 
-  - NetworkManager-l2tp-gnome 
   - NetworkManager-l2tp-lang 
   - NetworkManager-libreswan 
-  - NetworkManager-libreswan-gnome 
   - NetworkManager-libreswan-lang 
   - NetworkManager-ovs 
   - NetworkManager-strongswan 
-  - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
   - NsCDE 
   - NumCpp-devel 
@@ -5304,6 +5304,10 @@ unsorted:
   - ghc-hledger-lib-doc 
   - ghc-hledger-lib-prof 
   - ghc-hledger-prof 
+  - ghc-hledger-ui 
+  - ghc-hledger-ui-devel 
+  - ghc-hledger-ui-doc 
+  - ghc-hledger-ui-prof 
   - ghc-hlint 
   - ghc-hlint-devel 
   - ghc-hlint-doc 
@@ -5634,6 +5638,10 @@ unsorted:
   - ghc-network-byte-order-devel 
   - ghc-network-byte-order-doc 
   - ghc-network-byte-order-prof 
+  - ghc-network-control 
+  - ghc-network-control-devel 
+  - ghc-network-control-doc 
+  - ghc-network-control-prof 
   - ghc-network-devel 
   - ghc-network-doc 
   - ghc-network-info 
@@ -8279,6 +8287,8 @@ unsorted:
   - jackson-module-paranamer 
   - jackson-modules-base 
   - jackson-modules-base-javadoc 
+  - jackson-modules-java8 
+  - jackson-modules-java8-javadoc 
   - jackson-parent 
   - jacktrip 
   - jaero 
@@ -15482,8 +15492,8 @@ unsorted:
   - libwebrtc_audio_processing1 
   - libwebsockets-devel 
   - libwebsockets19 
-  - libweston-12 
-  - libweston-12-0 
+  - libweston-13 
+  - libweston-13-0 
   - libwget2 
   - libwhich 
   - libwiiuse0 
@@ -25486,6 +25496,7 @@ unsorted:
   - python310-rpy2 
   - python310-rpyc 
   - python310-rq 
+  - python310-rq-scheduler 
   - python310-rsa 
   - python310-rss2email 
   - python310-rst.linker 
@@ -28851,6 +28862,7 @@ unsorted:
   - python311-rpy2 
   - python311-rpyc 
   - python311-rq 
+  - python311-rq-scheduler 
   - python311-rsa 
   - python311-rss2email 
   - python311-rst.linker 
@@ -32364,6 +32376,7 @@ unsorted:
   - python39-rpy2 
   - python39-rpyc 
   - python39-rq 
+  - python39-rq-scheduler 
   - python39-rsa 
   - python39-rss2email 
   - python39-rst.linker 
@@ -34411,8 +34424,6 @@ unsorted:
   - servletapi4 
   - servletapi4-javadoc 
   - servletapi5 
-  - sesdev 
-  - sesdev-qa 
   - setconf 
   - sethdlc 
   - setools-gui 
@@ -34949,6 +34960,8 @@ unsorted:
   - subversion-tools 
   - suck 
   - sudo-devel 
+  - sudo-policy-sudo-auth-self 
+  - sudo-policy-wheel-auth-self 
   - sudo-test 
   - sudoku-sensei 
   - suil-devel 
@@ -35098,6 +35111,7 @@ unsorted:
   - sysstat-isag 
   - system-group-ne 
   - system-group-obsolete 
+  - system-group-sudo 
   - system-user-grafana 
   - system-user-grommunio 
   - system-user-gromox 

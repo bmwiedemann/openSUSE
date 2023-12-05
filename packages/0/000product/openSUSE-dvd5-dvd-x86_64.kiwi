@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20231204" schemaversion="4.1">
+<image name="OBS__openSUSE___20231205" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231204</productvar>
+      <productvar name="VERSION">20231205</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231204,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20231205,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231204/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20231205/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3062,6 +3062,10 @@
       <repopackage name="netpbm"/>
       <repopackage name="NetworkManager"/>
       <repopackage name="NetworkManager-applet"/>
+      <repopackage name="NetworkManager-applet-openconnect"/>
+      <repopackage name="NetworkManager-applet-openvpn"/>
+      <repopackage name="NetworkManager-applet-pptp"/>
+      <repopackage name="NetworkManager-applet-vpnc"/>
       <repopackage name="NetworkManager-bluetooth"/>
       <repopackage name="NetworkManager-branding-openSUSE"/>
       <repopackage name="NetworkManager-connection-editor"/>
@@ -3070,18 +3074,14 @@
       <repopackage name="NetworkManager-dns-dnsmasq"/>
       <repopackage name="NetworkManager-lang"/>
       <repopackage name="NetworkManager-openconnect"/>
-      <repopackage name="NetworkManager-openconnect-gnome"/>
       <repopackage name="NetworkManager-openconnect-lang"/>
       <repopackage name="NetworkManager-openvpn"/>
-      <repopackage name="NetworkManager-openvpn-gnome"/>
       <repopackage name="NetworkManager-openvpn-lang"/>
       <repopackage name="NetworkManager-pppoe"/>
       <repopackage name="NetworkManager-pptp"/>
-      <repopackage name="NetworkManager-pptp-gnome"/>
       <repopackage name="NetworkManager-pptp-lang"/>
       <repopackage name="NetworkManager-tui"/>
       <repopackage name="NetworkManager-vpnc"/>
-      <repopackage name="NetworkManager-vpnc-gnome"/>
       <repopackage name="NetworkManager-vpnc-lang"/>
       <repopackage name="NetworkManager-wwan"/>
       <repopackage name="nfs-client"/>
