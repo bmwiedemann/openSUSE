@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 04 20:05:27 UTC 2023 - antonio.teixeira@suse.com
+
+- Update to version 3.13.16:
+  * waitable: Set running to false before nudge
+  * waitable: Fix draining CNudgeWaitable
+  * steamcompmgr: Handle external overlays better for steamcompmgr_user_has_any_game_open
+  * drm: Handle rotated screens properly in drm_get_default_refresh
+  * steamcompmgr: Workaround kernel NULL pointer bug with epoll + dmabuf + close
+  * waitable: Remove unused func
+  * steamcompmgr: Remove dmabuf waitable on HUP
+  * steamcompmgr: Reduce alloc overhead of new xwayland resources
+  * drm: Reset CTM on layers with applyColorMgmt = false
+  * mangoapp: Use visible frames for reporting to mangohud if FIFO
+
+-------------------------------------------------------------------
 Wed Nov 15 16:48:15 UTC 2023 - antonio.teixeira@suse.com
 
 - Update to version 3.13.3:

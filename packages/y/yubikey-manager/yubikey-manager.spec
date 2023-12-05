@@ -1,7 +1,7 @@
 #
 # spec file for package yubikey-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,27 @@
 
 
 Name:           yubikey-manager
-Version:        4.0.9
+Version:        5.2.1
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause
 Group:          Productivity/Security
 URL:            https://developers.yubico.com/yubikey-manager/Releases
-Source0:        https://developers.yubico.com/yubikey-manager/Releases/%{name}-%{version}.tar.gz
-Source1:        https://developers.yubico.com/yubikey-manager/Releases/%{name}-%{version}.tar.gz.sig
+Source0:        https://developers.yubico.com/yubikey-manager/Releases/yubikey_manager-%{version}.tar.gz
+Source1:        https://developers.yubico.com/yubikey-manager/Releases/yubikey_manager-%{version}.tar.gz.sig
+Source2:        yubikey-manager.keyring
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python3-click
 BuildRequires:  python3-cryptography >= 3.0
 BuildRequires:  python3-fido2 >= 0.9
 BuildRequires:  python3-pip
+BuildRequires:  python3-poetry-core
 BuildRequires:  python3-pyscard
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 # TEST DEPENDENCIES
 BuildRequires:  python3-pyOpenSSL
+BuildRequires:  python3-keyring
 BuildRequires:  python3-makefun >= 1.9.5
 BuildRequires:  python3-pytest
 %if 0%{?suse_version} <= 1540
@@ -45,6 +48,7 @@ Requires:       python3-dataclasses >= 0.8
 Requires:       python3-click
 Requires:       python3-cryptography
 Requires:       python3-fido2 >= 0.9
+Requires:       python3-keyring
 Requires:       python3-pyscard
 Recommends:     python3-pyOpenSSL
 Provides:       python3-yubikey-manager
@@ -58,13 +62,13 @@ configuring several aspects of a YubiKey, including enabling or disabling
 connection transports an programming various types of credentials.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n yubikey_manager-%{version}
 
 %build
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
 %fdupes %{buildroot}
 install -Dpm0644 man/ykman.1 %{buildroot}%{_mandir}/man1/ykman.1
 
@@ -76,7 +80,7 @@ python3 -m pytest
 %doc NEWS*
 %{_bindir}/ykman
 %{python3_sitelib}/ykman
-%{python3_sitelib}/yubikey_manager-*.egg-info
+%{python3_sitelib}/yubikey_manager-%{version}.dist-info
 %{python3_sitelib}/yubikit
 %{_mandir}/man1/*
 

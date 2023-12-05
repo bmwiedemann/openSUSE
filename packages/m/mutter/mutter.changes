@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec  3 15:54:07 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Rebase mutter-SLE-bsc984738-grab-display.patch.
+
+-------------------------------------------------------------------
 Tue Nov 28 11:57:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

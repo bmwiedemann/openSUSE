@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:21:00 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.8
+  * Fixed a regression in Django 4.2 that caused makemigrations
+    --check to stop displaying pending migrations
+  * Fixed a regression in Django 4.2 that caused a crash of
+    QuerySet.aggregate() with aggregates referencing other aggregates
+    or window functions through conditional expressions
+  * Fixed a regression in Django 4.2 that caused a crash when
+    annotating a QuerySet with a Window expressions composed of a
+    partition_by clause mixing field types and aggregation expressions
+  * Fixed a regression in Django 4.2 where the admin’s change list
+    page had misaligned pagination links and inputs when using
+    list_editable
+  * Fixed a regression in Django 4.2 where checkboxes in the admin
+    would be centered on narrower screen widths
+  * Fixed a regression in Django 4.2 that caused a crash of querysets
+    with aggregations on MariaDB when the ONLY_FULL_GROUP_BY SQL mode
+    was enabled
+  * Fixed a regression in Django 4.2 where the admin’s read-only
+    password widget and some help texts were incorrectly aligned at
+    tablet widths
+  * Fixed a regression in Django 4.2 that caused a migration crash on
+    SQLite when altering unsupported Meta.db_table_comment
+
+-------------------------------------------------------------------
 Mon Nov 27 12:20:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add dirty-hack-remove-assert.patch from fedora to fix

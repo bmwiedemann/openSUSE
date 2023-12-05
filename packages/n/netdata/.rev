@@ -4338,4 +4338,12 @@ Other Notable Changes
 - Extended rpmlintrc to build also under Leap.</comment>
     <requestid>1123694</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>96be2f9b468fb4cfbb9684fa85e0a730</srcmd5>
+    <version>1.43.2</version>
+    <time>1701792263</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130959</requestid>
+  </revision>
 </revisionlist>

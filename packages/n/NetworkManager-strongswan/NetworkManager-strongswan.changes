@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  2 14:34:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Rename gnome subpackage to NetworkManager-applet-strongswan
+  to more accurately reflect its usage
+- Add missing supplements:
+  - NM and strongswan-nm
+  - NMA subpackage: Main package and NMA
+
+-------------------------------------------------------------------
+Thu Sep  7 11:50:33 UTC 2023 - Jens K. <karatekhd@opensuse.org>
+
+- Update to version 1.6.0
+ + Support for GTK4
+ + Removed libnm-glib compatibility
+- Add pkgconfig(gtk4) because the new version requires this 
+- Add pkgconfig(libnma-gtk4) because the new version requires this 
+
+-------------------------------------------------------------------
 Mon Jun  7 13:35:29 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to version 1.5.2

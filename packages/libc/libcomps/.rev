@@ -154,4 +154,15 @@
   + Use Py_hash_t instead of long</comment>
     <requestid>1123350</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>45d836987d4aa27518556d62f5063bd8</srcmd5>
+    <version>0.1.20</version>
+    <time>1701792151</time>
+    <user>anag+factory</user>
+    <comment>- Add BuildRequires on python-setuptools to create python egg and
+  install it properly. Previously this was pulled by python-Sphinx 
+  in the build environment.
+- Use %license instead of %doc</comment>
+    <requestid>1130813</requestid>
+  </revision>
 </revisionlist>

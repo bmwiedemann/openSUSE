@@ -37,7 +37,9 @@ BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
+Requires:       NetworkManager
 Requires:       /usr/sbin/ipsec
+Supplements:    (NetworkManager and /usr/sbin/ipsec)
 Provides:       NetworkManager-openswan = %{version}
 Obsoletes:      NetworkManager-openswan < %{version}
 
@@ -45,16 +47,19 @@ Obsoletes:      NetworkManager-openswan < %{version}
 This package contains software for integrating the libreswan VPN
 software with NetworkManager and the GNOME desktop.
 
-%package -n NetworkManager-libreswan-gnome
-Summary:        NetworkManager VPN plugin for libreswan - GNOME files
+%package -n NetworkManager-applet-libreswan
+Summary:        NetworkManager VPN plugin for libreswan - NMA files
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Provides:       NetworkManager-openswan-gnome = %{version}
 Obsoletes:      NetworkManager-openswan-gnome < %{version}
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description -n NetworkManager-libreswan-gnome
+%description -n NetworkManager-applet-libreswan
 This package contains software for integrating VPN capabilities
-with the libreswan server with NetworkManager (GNOME files).
+with the libreswan server with NetworkManager (NMA files).
 
 %lang_package
 
@@ -84,7 +89,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libexecdir}/nm-libreswan-service-helper
 %{_mandir}/man5/nm-settings-libreswan.5%{ext_man}
 
-%files -n NetworkManager-libreswan-gnome
+%files -n NetworkManager-applet-libreswan
 %{_libexecdir}/nm-libreswan-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-libreswan-editor.so
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-libreswan-editor.so

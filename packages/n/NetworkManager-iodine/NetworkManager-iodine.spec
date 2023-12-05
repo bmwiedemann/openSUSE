@@ -42,13 +42,15 @@ A network manager VPN plugin that allows you to tunnel your connection
 through a DNS tunnel. This can be useful if internet access is
 firewalled but DNS traffic is still allowed.
 
-%package gnome
+%package -n NetworkManager-applet-iodine
 Summary:        NetworkManager VPN support for iodine
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
-Supplements:    (NetworkManager-gnome and iodine)
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description gnome
+%description -n NetworkManager-applet-iodine
 A network manager VPN plugin that allows you to tunnel your connection
 through a DNS tunnel. This can be useful if internet access is
 firewalled but DNS traffic is still allowed.
@@ -84,7 +86,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libexecdir}/nm-iodine-service
 %{_datadir}/dbus-1/system.d/nm-iodine-service.conf
 
-%files gnome
+%files -n NetworkManager-applet-iodine
 %{_datadir}/appdata/network-manager-iodine.appdata.xml
 %{_datadir}/gnome-vpn-properties/
 %{_libexecdir}/nm-iodine-auth-dialog

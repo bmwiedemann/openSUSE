@@ -381,4 +381,13 @@
     <comment>New stable release (forwarded request 1128382 from iznogood)</comment>
     <requestid>1129047</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>24113d5de499315939cb7401084b7412</srcmd5>
+    <version>1.18.2</version>
+    <time>1701792118</time>
+    <user>anag+factory</user>
+    <comment>- Own the directory which packages will use for portals.conf
+  configuration files (forwarded request 1130463 from gmbr3)</comment>
+    <requestid>1130770</requestid>
+  </revision>
 </revisionlist>

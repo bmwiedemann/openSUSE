@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:46:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Fixes CI build (Github Actions)
+  * Fixes broken tests
+  * Housekeeping: Licensing
+  * Disable nosetests for testing leaving only pytest as
+    supported test-runner for now
+
+-------------------------------------------------------------------
 Tue Jun 13 08:40:27 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -7,7 +17,7 @@ Tue Jun 13 08:40:27 UTC 2023 - ecsos <ecsos@opensuse.org>
 Wed Jul 13 04:37:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove mock from BuildRequires.
-- Rebase python-sure-no-mock.patch to remove one missed import. 
+- Rebase python-sure-no-mock.patch to remove one missed import.
 
 -------------------------------------------------------------------
 Wed May  4 08:38:45 UTC 2022 - pgajdos@suse.com
@@ -62,7 +72,7 @@ Wed Mar  9 11:16:30 UTC 2016 - dvaleev@suse.com
 - Fix #48.
     Ready to fast forward, Python 3.4 support again
     Fixed a grammar nit when two things are not equal
-    
+
 - When two things are not equal to each other, they “differ from” each other.
 - fix: #80
     AttributeError: 'module' object has no attribute '_CallList'

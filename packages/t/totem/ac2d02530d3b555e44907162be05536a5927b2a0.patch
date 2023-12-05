@@ -1,0 +1,74 @@
+From ac2d02530d3b555e44907162be05536a5927b2a0 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Tue, 11 Jul 2023 11:26:52 +0200
+Subject: [PATCH] gst: Force using newer GStreamer libva plugins
+
+Use the new "va" GStreamer plugin from -bad instead of the older
+gstreamer-vaapi plugin.
+
+This fixes a deadlock on wayland with gstreamer-vaapi:
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/2720
+Re-adds DMABuf support removed to work-around scrambled video on Intel:
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/2459
+---
+ src/gst/totem-gst-helpers.c | 20 ++++++++++++++++++++
+ src/gst/totem-gst-helpers.h |  1 +
+ src/totem-object.c          |  2 ++
+ 3 files changed, 23 insertions(+)
+
+diff --git a/src/gst/totem-gst-helpers.c b/src/gst/totem-gst-helpers.c
+index 231c21d36..1fc615112 100644
+--- a/src/gst/totem-gst-helpers.c
++++ b/src/gst/totem-gst-helpers.c
+@@ -109,6 +109,26 @@ totem_gst_disable_hardware_decoders (void)
+   }
+ }
+ 
++void
++totem_gst_ensure_newer_hardware_decoders (void)
++{
++  GstRegistry *registry;
++  g_autolist(GstPluginFeature) hw_list = NULL;
++  GList *l;
++
++  registry = gst_registry_get ();
++  hw_list = gst_registry_feature_filter (registry, filter_hw_decoders, FALSE, NULL);
++  for (l = hw_list; l != NULL; l = l->next) {
++    const char *name;
++    name = gst_plugin_feature_get_plugin_name (l->data);
++    if (g_strcmp0 (name, "va") != 0)
++      continue;
++    g_debug ("Bumping feature %s of plugin %s to MAX",
++             gst_plugin_feature_get_name (l->data), name);
++    gst_plugin_feature_set_rank (l->data, UINT_MAX);
++  }
++}
++
+ /*
+  * vim: sw=2 ts=8 cindent noai bs=2
+  */
+diff --git a/src/gst/totem-gst-helpers.h b/src/gst/totem-gst-helpers.h
+index 923030ad3..289c0f645 100644
+--- a/src/gst/totem-gst-helpers.h
++++ b/src/gst/totem-gst-helpers.h
+@@ -50,3 +50,4 @@ void totem_gst_message_print (GstMessage *msg,
+ 			      const char *filename);
+ 
+ void totem_gst_disable_hardware_decoders (void);
++void totem_gst_ensure_newer_hardware_decoders (void);
+diff --git a/src/totem-object.c b/src/totem-object.c
+index 01f2d0fc3..9ec0d6570 100644
+--- a/src/totem-object.c
++++ b/src/totem-object.c
+@@ -4019,6 +4019,8 @@ video_widget_create (TotemObject *totem)
+ 
+ 	if (g_settings_get_boolean (totem->settings, "force-software-decoders"))
+ 		totem_gst_disable_hardware_decoders ();
++	else
++		totem_gst_ensure_newer_hardware_decoders ();
+ 
+ 	if (!bacon_video_widget_check_init (totem->bvw, &err)) {
+ 		totem_interface_error_blocking (_("Videos could not startup."),
+-- 
+GitLab
+

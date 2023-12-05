@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  1 12:15:24 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Own the directory which packages will use for portals.conf
+  configuration files
+
+-------------------------------------------------------------------
 Thu Nov 23 17:09:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.2:

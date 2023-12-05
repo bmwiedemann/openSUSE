@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-env
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Pytest plugin to add environment variables
 License:        MIT

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 13 11:23:56 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- XEN only exists on x86 and aarch64
+- Enable freeipmi plugin everywhere
+
+-------------------------------------------------------------------
 Mon Nov  6 23:02:13 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v1.43.2

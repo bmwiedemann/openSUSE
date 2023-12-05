@@ -1072,4 +1072,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1118948</requestid>
   </revision>
+  <revision rev="97" vrev="6">
+    <srcmd5>c4629a8acb5ad001ed23f7dab9d9a9b6</srcmd5>
+    <version>6.24.10</version>
+    <time>1701792068</time>
+    <user>anag+factory</user>
+    <comment>- Add patch tcsh-skip-utmp-service.dif
+  * There is currently no API avaible to replace the utmp/wtmp
+    based builtins watch and who of tcsh</comment>
+    <requestid>1130750</requestid>
+  </revision>
 </revisionlist>

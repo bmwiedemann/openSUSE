@@ -1707,6 +1707,7 @@ BuildFlags: onlybuild:bdftopcf
 BuildFlags: onlybuild:benchmark
 BuildFlags: onlybuild:binutils
 BuildFlags: onlybuild:bison
+BuildFlags: onlybuild:bitstream-vera-fonts
 BuildFlags: onlybuild:blog
 BuildFlags: onlybuild:bluez
 BuildFlags: onlybuild:boost-defaults

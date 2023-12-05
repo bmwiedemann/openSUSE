@@ -40,21 +40,24 @@ BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 Requires:       NetworkManager >= 1.2.0
 Requires:       openvpn
+Supplements:    (NetworkManager and openvpn)
 %sysusers_requires
-Recommends:     %{name}-frontend
 ExcludeArch:    s390
 
 %description
 NetworkManager-openvpn provides VPN support to NetworkManager for
 OpenVPN.
 
-%package gnome
+%package -n NetworkManager-applet-openvpn
 Summary:        NetworkManager VPN support for OpenVPN
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
 Provides:       %{name}-frontend
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description gnome
+%description -n NetworkManager-applet-openvpn
 NetworkManager-openvpn provides VPN support to NetworkManager for
 OpenVPN.
 
@@ -91,7 +94,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_datadir}/dbus-1/system.d/nm-openvpn-service.conf
 %{_sysusersdir}/system-user-nm-openvpn.conf
 
-%files gnome
+%files -n NetworkManager-applet-openvpn
 %{_datadir}/metainfo/network-manager-openvpn.metainfo.xml
 %{_libexecdir}/nm-openvpn-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn-editor.so

@@ -1,7 +1,7 @@
 #
 # spec file for package haveged
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,10 @@ Source0:        https://github.com/jirka-h/haveged/archive/v%{version}.tar.gz#/%
 Source2:        %{name}.service
 Source3:        90-haveged.rules
 Source4:        haveged-dracut.module
-Source5:        %{name}-switch-root.service
 Patch0:         ppc64le.patch
 # PATCH-FIX-UPSTREAM: don't write to syslog at startup to avoid deadlocks psimons@suse.com bnc#959237
 Patch2:         haveged-no-syslog.patch
 Patch3:         harden_haveged.service.patch
-# PATCH-FIX-UPSTREAM: Synchronize haveged instances during switching root bsc#1203079
-Patch4:         haveged-switch-root.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -110,8 +107,6 @@ install -Dpm 0644 %{SOURCE2} \
   %{buildroot}%{_unitdir}/%{name}.service
 install -Dpm 0644 %{SOURCE3} \
   %{buildroot}%{_udevrulesdir}/90-%{name}.rules
-install -Dpm 0644 %{SOURCE5} \
-  %{buildroot}%{_unitdir}/%{name}-switch-root.service
 install -Dpm 0755 %{SOURCE4} \
   %{buildroot}%{_prefix}/lib/dracut/modules.d/98%{name}/module-setup.sh
 rm -f %{buildroot}%{_libdir}/libhavege.*a
@@ -120,12 +115,10 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %post
 %{?udev_rules_update:%udev_rules_update}
 %service_add_post %{name}.service
-%service_add_post %{name}-switch-root.service
 %{?regenerate_initrd_post}
 
 %postun
 %service_del_postun %{name}.service
-%service_del_postun %{name}-switch-root.service
 %{?regenerate_initrd_post}
 
 %posttrans
@@ -133,11 +126,9 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
 %service_add_pre %{name}.service
-%service_add_pre %{name}-switch-root.service
 
 %preun
 %service_del_preun %{name}.service
-%service_del_preun %{name}-switch-root.service
 
 %post -n libhavege2 -p /sbin/ldconfig
 %postun -n libhavege2 -p /sbin/ldconfig
@@ -148,7 +139,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/%{name}
 %{_mandir}/man8/%{name}.8%{?ext_man}
 %{_unitdir}/%{name}.service
-%{_unitdir}/%{name}-switch-root.service
 %{_udevrulesdir}/90-%{name}.rules
 %dir %{_prefix}/lib/dracut
 %dir %{_prefix}/lib/dracut/modules.d

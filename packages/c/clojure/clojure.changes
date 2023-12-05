@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  5 07:11:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1429:
+  * No changes from prior
+
+-------------------------------------------------------------------
+Mon Dec  4 20:02:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1420:
+  * TDEPS-119 Unable to start CLI in write-protected project directory
+  * Update to tools.tools 0.3.2
+
+-------------------------------------------------------------------
 Sun Aug 27 10:47:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.1.1413:

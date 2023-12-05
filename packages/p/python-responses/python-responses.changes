@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 27 18:39:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.1:
+  * Reverted overloads removal
+  * Added typing to `Call` attributes.
+  * Fix socket issues (see #693)
+  * Added `BaseResponse.calls` to access calls data of a separate
+    mocked request. See #664
+  * Added `real_adapter_send` parameter to `RequestsMock` that
+    will allow users to set through which function they would like
+    to send real requests
+  * Added support for re.Pattern based header matching.
+  * Added support for gzipped response bodies to
+    `json_params_matcher`.
+  * Fix `Content-Type` headers issue when the header was
+    duplicated. See #644
+  * Moved types-pyyaml dependency to `tests_requires`
+  * Removed Python3.7 support
+
+-------------------------------------------------------------------
 Sat Sep 30 19:38:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.23.3
@@ -16,7 +36,7 @@ Sat Sep 30 19:38:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 Tue May 23 12:47:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch 636-urllib3-2-compat.patch:
-  * moto needs to stay with urllib3 < 2 due to boto. 
+  * moto needs to stay with urllib3 < 2 due to boto.
 
 -------------------------------------------------------------------
 Tue May  9 22:20:25 UTC 2023 - Matej Cepl <mcepl@suse.com>
@@ -143,7 +163,7 @@ Fri Apr  8 08:25:54 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Mar 15 09:05:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add skips for unsupported python versions 
+- add skips for unsupported python versions
 
 -------------------------------------------------------------------
 Tue Feb 22 09:13:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -297,7 +317,7 @@ Thu Mar 19 08:22:52 UTC 2020 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Oct 17 20:08:20 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
-- switch to pytest4 actually not pytest3 
+- switch to pytest4 actually not pytest3
 
 -------------------------------------------------------------------
 Thu Jul 18 09:24:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -392,10 +412,10 @@ Fri Jan 12 00:37:13 UTC 2018 - mimi.vx@gmail.com
 -------------------------------------------------------------------
 Mon Apr 10 08:27:34 UTC 2017 - alarrosa@suse.com
 
-- Update for singlespec 
+- Update for singlespec
 
 -------------------------------------------------------------------
 Thu Jan 19 14:30:17 UTC 2017 - alarrosa@suse.com
 
-- Initial release 
+- Initial release
 

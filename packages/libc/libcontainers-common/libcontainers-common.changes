@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Dec  4 07:12:17 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- New release 20231204
+-  bump c/common to 0.57.0
+   * Bump to v0.56.0 by
+   * Fix typo in comment
+   * fix(deps): update module github.com/opencontainers/image-spec to v1.1.0-rc5
+   * Fix specification of unix:///run
+   * libimage/layer_tree: if parent is empty and a manifest list then ignore check.
+   * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.12.1
+   * Split up util package into pkg/password, pkg/copy, pkg/version
+   * Remove ActiveDestination method to move into podman
+   * Default machine CPUs to Cores/2
+   * pkg/config: do NOT set StaticDir and VolumeDir
+   * Implement negated label match function
+   * chore: import packages only once
+   * CoC: fix email link
+-  bump c/storage to 1.51.0
+   * Bump to v1.50.2
+   * overlay, composefs: mount loop device RO
+   * Run codespell on code
+   * fix(deps): update module github.com/klauspost/compress to v1.17.0
+   * store: serialize container deletion
+   * pkg/system: reduce retry timeout for EnsureRemoveAll
+   * overlay, composefs: use data-only lower layers
+   * store: call RecordWrite() before graphDriver Cleanup()
+   * fix(deps): update module golang.org/x/sys to v0.13.0
+-  bump c/image to 5.29.0
+   * Bump to v5.28.0
+   * fix(deps): update module github.com/containers/storage to v1.50.2
+   * Run codespell on code
+   * fix(deps): update module github.com/opencontainers/image-spec to v1.1.0-rc5
+   * Use constants and types from opencontainers/image-spec/specs-go/v1
+   * progress: set Current before Refill
+   * copy: fix nil pointer dereference when checking compression algorithm
+   * fix(deps): update module github.com/klauspost/compress to v1.17.0
+   * fix(deps): update module github.com/sylabs/sif/v2 to v2.14.0
+   * ociarchive: Add new ArchiveFileNotFoundError
+
+-------------------------------------------------------------------
 Wed Sep 13 12:48:43 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Require libcontainers-sles-mounts for *all* SLE products,

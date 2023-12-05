@@ -1,8 +1,8 @@
-Index: fwupd-1.8.9/data/motd/fwupd-refresh.service.in
+Index: fwupd-1.9.10/data/motd/fwupd-refresh.service.in
 ===================================================================
---- fwupd-1.8.9.orig/data/motd/fwupd-refresh.service.in
-+++ fwupd-1.8.9/data/motd/fwupd-refresh.service.in
-@@ -13,5 +13,13 @@ SystemCallFilter=~@mount
+--- fwupd-1.9.10.orig/data/motd/fwupd-refresh.service.in
++++ fwupd-1.9.10/data/motd/fwupd-refresh.service.in
+@@ -14,5 +14,13 @@ SystemCallFilter=~@mount
  ProtectKernelModules=yes
  ProtectControlGroups=yes
  RestrictRealtime=yes

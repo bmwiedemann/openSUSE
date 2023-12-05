@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec  4 20:44:11 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.10
+  * Improved config file, with more information on how to make key
+    bindings with special keys for instance.
+  * Changing the volume is now for just kew, not the master volume
+    of your system.
+  * Switching songs now unpauses the player.
+  * Fixed issue of potential crash when uninitializing decoders.
+
+-------------------------------------------------------------------
+Fri Dec  1 21:49:12 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.9
+  * Fixed a potential dead-lock situation.
+  * Fixed one instance of wrong metadata/cover being displayed for
+    a song on rare occasions.
+  * Fixed an issue that could lead to a crash when switching songs.
+  * Fixed issue of potential crash when closing audio file.
+  * Fixed playlist showing the previous track as the current one.
+  * Much improved memory allocation handling in visualizer.
+  * Playlist builder now ignores hidden directories.
+
+-------------------------------------------------------------------
 Wed Nov 29 12:05:29 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.8.1

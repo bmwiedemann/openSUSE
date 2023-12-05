@@ -1436,4 +1436,41 @@ Look at the license file (forwarded request 143855 from babelworx)</comment>
     <comment></comment>
     <requestid>1110628</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>cd6cfa30e94678eae5489055cc9c7809</srcmd5>
+    <version>1.9.15p2</version>
+    <time>1701792144</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.15p2:
+  * Fixed a bug on BSD systems where sudo would not restore the
+    terminal settings on exit if the terminal had parity enabled.
+    GitHub issue #326.
+- Update to 1.9.15p1:
+  * Fixed a bug introduced in sudo 1.9.15 that prevented LDAP-based
+    sudoers from being able to read the ldap.conf file.
+    GitHub issue #325.
+- Update to 1.9.15:
+  * Fixed an undefined symbol problem on older versions of macOS
+    when &quot;intercept&quot; or &quot;log_subcmds&quot; are enabled in sudoers.
+    GitHub issue #276.
+  * Fixed &quot;make check&quot; failure related to getpwent(3) wrapping
+    on NetBSD.
+  * Fixed the warning message for &quot;sudo -l command&quot; when the command
+    is not permitted.  There was a missing space between &quot;list&quot; and
+    the actual command due to changes in sudo 1.9.14.
+  * Fixed a bug where output could go to the wrong terminal if
+    &quot;use_pty&quot; is enabled (the default) and the standard input, output
+    or error is redirected to a different terminal.  Bug #1056.
+  * The visudo utility will no longer create an empty file when the
+    specified sudoers file does not exist and the user exits the
+    editor without making any changes.  GitHub issue #294.
+  * The AIX and Solaris sudo packages on www.sudo.ws now support
+    &quot;log_subcmds&quot; and &quot;intercept&quot; with both 32-bit and 64-bit
+    binaries.  Previously, they only worked when running binaries
+    with the same word size as the sudo binary.  GitHub issue #289.
+  * The sudoers source is now logged in the JSON event log.  This
+    makes it possible to tell which rule resulted in a match.
+  * Running &quot;sudo -ll command&quot; now produces verbose output that</comment>
+    <requestid>1128361</requestid>
+  </revision>
 </revisionlist>

@@ -209,4 +209,17 @@
   * No changes from prior</comment>
     <requestid>1106139</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cc606c419514e71e8fc2b526238c9fb4</srcmd5>
+    <version>1.11.1.1429</version>
+    <time>1701792173</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.1.1429:
+  * No changes from prior
+
+- Update to 1.11.1.1420:
+  * TDEPS-119 Unable to start CLI in write-protected project directory
+  * Update to tools.tools 0.3.2</comment>
+    <requestid>1130898</requestid>
+  </revision>
 </revisionlist>

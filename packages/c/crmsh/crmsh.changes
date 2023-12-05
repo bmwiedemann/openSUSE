@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 05 05:15:52 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231205.779324d5:
+  * Dev: utils: To prevent shell injection, manipulate the argument array instead of the command line string
+  * Dev: report: Redirect warning and error from remote node into stderr
+  * Fix: utils: Add 'sudo' only when there is a sudoer(bsc#1215549)
+  * Dev: behave: Move path setting into background
+
+-------------------------------------------------------------------
 Wed Nov 29 14:32:32 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.6.0+20231129.576a86e2:

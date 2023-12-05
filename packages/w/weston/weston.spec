@@ -18,8 +18,8 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   12
-Version:        12.0.2
+%define major   13
+Version:        13.0.0
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
@@ -30,16 +30,13 @@ URL:            https://wayland.freedesktop.org/
 Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/weston-%version.tar.xz
 Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/weston-%version.tar.xz.sig
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  autoconf >= 2.64
-BuildRequires:  automake >= 1.11
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel >= 2.27
 BuildRequires:  libjpeg-devel
-BuildRequires:  libtool >= 2.2
 BuildRequires:  libxml2-tools
-BuildRequires:  meson
+BuildRequires:  meson >= 0.63
 BuildRequires:  pam-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  xkeyboard-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
@@ -50,7 +47,7 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(lcms2) >= 2.9
 BuildRequires:  pkgconfig(libdrm) >= 2.4.108
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libinput) >= 0.8.0
@@ -61,11 +58,11 @@ BuildRequires:  pkgconfig(libudev) >= 136
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1) >= 0.25.2
-BuildRequires:  pkgconfig(wayland-client) >= 1.18.0
+BuildRequires:  pkgconfig(wayland-client) >= 1.22.0
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(wayland-server) >= 1.18.0
+BuildRequires:  pkgconfig(wayland-server) >= 1.22.0
 BuildRequires:  pkgconfig(xcb) >= 1.8
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-cursor)
@@ -126,8 +123,6 @@ to develop plugins for Weston.
 %autosetup -p1
 
 %build
-echo "Workaround broken weston that fails to cope with -Wl,--no-undefined injected by meson/ninja"
-export LDFLAGS="%{?build_ldflags} -Wl,-z,undefs"
 %meson -Ddemo-clients=false -Dremoting=false -Dsimple-clients= \
 	-Dtest-junit-xml=false -Dpipewire=false -Dbackend-vnc=false \
 	--includedir="%_includedir/%name"

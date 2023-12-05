@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 04 11:28:35 CET 2023 - aschnell@suse.com
+
+- do not package inoperable plugins (bsc#1217758)
+
+-------------------------------------------------------------------
 Fri Sep 15 15:27:32 UTC 2023 - trenn@suse.de
 
 - Update to version 2.21.0.0+git.670541d:

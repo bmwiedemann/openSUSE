@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  4 19:11:49 UTC 2023 - Kacper Koniuszy <kacper.koniuszy@tuta.io>
+
+- Add upstream patch for a bug in QMimeDatabase that causes some 
+  applications to hang:
+  * 0001-QMimeDatabase-handle-buggy-type-definitions.patch
+  * https://code.qt.io/cgit/qt/qtbase.git/commit/?id=54656da9ace06caf4a0eeb1832989c0ab211a4a0
+
+-------------------------------------------------------------------
 Mon Nov 27 14:00:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.6.1:

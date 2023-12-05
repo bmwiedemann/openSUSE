@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Dec  4 12:33:37 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.9.10:
+  + This release adds the following features:
+    - Add support for not_hardware requirements
+    - Add support for loongarch64
+    - Add support for per-release priority attributes
+    - Make USB claim retry count configurable across devices
+  + This release fixes the following bugs:
+    - Compare the HID report value when checking for duplicates
+    - Consider the component priority when installing composite updates
+    - Deploy the CCGX firmware correctly the first time
+    - Do not export the 'main-system-firmware' and 'cpu' GUIDs
+    - Enforce fwupd version requirements client side
+    - Fix Genesys 'failed to get static tool info from device' error
+    - Fix potential 'dereference before null check' in ccmx-dmc
+    - Fix the 'already registered private FuMmDevice flag with value' warning
+    - Fix the 'assertion backend_id != NULL failed' runtime warning
+    - Fix Wacom USB device emulation by recording the composite phases
+    - Generate generic request message text where possible
+    - Hide HTTP passwords in fwupd debugging logs
+    - Let the client know what interaction is expected
+    - Make all critical warnings into backtraces for non-release builds
+    - Never obsolete the wrong HSI attribute
+    - Never show a HSI index that is impossible
+    - Only apply fastboot plugin to modem devices supporting fastboot
+    - Only send interactive requests when the sender is alive
+    - Remove the now-obsolete Synaptics MST cascade device scanning
+    - Replace the Redfish KCS user if required
+    - Restrict mediatek-scaler devices on specific hardware only
+    - Skip any recovery partitions when detecting ESP
+
+-------------------------------------------------------------------
 Tue Nov 21 07:39:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.9 (boo#1217295):
@@ -756,7 +789,7 @@ Tue Feb  8 16:49:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
  * This release adds support for the following hardware:
    + Future Analogix devices
    + NovaCustom NV4x
-- Changes from version 1.7.4:
+- Changes from version 1.7.4 (bsc#1193921):
   * This release adds the following features:
     + Add firmware branch support for ModemManager devices
     + Allow firmware engineers to patch files at known offsets

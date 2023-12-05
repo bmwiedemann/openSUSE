@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 05 08:32:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.17:
+  * Add rgee/snowmachine for the festive period
+  * Bump github.com/google/go-containerregistry from 0.16.1 to
+    0.17.0
+  * Bump golang.org/x/crypto from 0.15.0 to 0.16.0
+
+-------------------------------------------------------------------
 Tue Nov 28 05:55:10 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.16:

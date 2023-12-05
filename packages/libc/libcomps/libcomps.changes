@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  4 14:34:19 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add BuildRequires on python-setuptools to create python egg and
+  install it properly. Previously this was pulled by python-Sphinx 
+  in the build environment.
+- Use %license instead of %doc
+
+-------------------------------------------------------------------
 Sat Nov  4 18:18:46 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 0.1.20

@@ -290,4 +290,14 @@
 </comment>
     <requestid>1118880</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b55fb2150e044c3a1a11f4c67dc75d11</srcmd5>
+    <version>2.20.0</version>
+    <time>1701792169</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.20.0:
+  * Implement `BITFIELD` command #247
+  * Implement `COMMAND`, `COMMAND INFO`, `COMMAND COUNT` #248</comment>
+    <requestid>1130857</requestid>
+  </revision>
 </revisionlist>

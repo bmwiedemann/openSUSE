@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  5 09:54:15 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to upstream version 3.3
+  * org.objenesis:objenesis-test missing in Maven Central (#85)
+  * added instructions for running Android TCK for Windows users (#84)
+  * Copyright and Owner is missing in license (#83)
+
+- update to upstream version 3.2
+  * Add Dependencies Manifest Entry (#81)
+  * Objenesis can't be compiled on Android SDK < 26 (#79)
+  * PercClassLoader misspelled in pom.xml (#76)
+
+-------------------------------------------------------------------
 Sat Mar 19 21:10:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

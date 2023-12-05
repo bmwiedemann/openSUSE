@@ -1,8 +1,8 @@
-Index: fwupd-1.8.5/plugins/uefi-capsule/fu-uefi-common.c
+Index: fwupd-1.9.10/plugins/uefi-capsule/fu-uefi-common.c
 ===================================================================
---- fwupd-1.8.5.orig/plugins/uefi-capsule/fu-uefi-common.c
-+++ fwupd-1.8.5/plugins/uefi-capsule/fu-uefi-common.c
-@@ -233,9 +233,13 @@ fu_uefi_get_esp_path_for_os(FuDevice *de
+--- fwupd-1.9.10.orig/plugins/uefi-capsule/fu-uefi-common.c
++++ fwupd-1.9.10/plugins/uefi-capsule/fu-uefi-common.c
+@@ -231,9 +231,13 @@ fu_uefi_get_esp_path_for_os(void)
  	g_autofree gchar *esp_path = NULL;
  	g_autoptr(GError) error_local = NULL;
  	g_autoptr(GHashTable) os_release = fwupd_get_os_release(&error_local);

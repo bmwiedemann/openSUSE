@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Dec 05 06:07:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.7:
+  * nox pip-compile: allow passing --no-upgrade flag (#883) (#919)
+  * add nox make session and revamp contribution docs (#707) (#916)
+  * installation_guide/intro: update seealso with respect to
+    communication (#869) (#909)
+  * Update links in plugin documentation (#859) (#906)
+  * installation_distros.rst: fix RST hyperlink syntax (#857)
+    (#903)
+  * Updated loop docs (#838) (#899)
+  * intro_installation: add EE info (#870) (#893)
+  * Fix Edit on GitHub for templated pages, remove superfluous
+    template, fix broken link (#865) (#891)
+  * developing_collections_structure.rst: Add EE collection-level
+    metadata link to meta directory subsection (#855) (#889)
+  * Add the mission statement to the community guide (#854) (#888)
+  * update python versions in installation guide (#836) (#886)
+  * add ansible-galaxy to command cheatsheet (#826) (#884)
+  * Refs #340: Swap old 'CLA' for the DCO (#598) (#874)
+  * ci: refresh dev dependencies (#839) (#861)
+  * Add porting guide for CVE-2023-5764 (#867)
+  * Update the information on RouterOS network connections. (#841)
+    (#864)
+  * update backport instructions to match 2.16 (#799) (#847)
+  * Fix delegate_to details about inheriting vars from 'all' (#825)
+    (#834)
+  * communication.rst: Make WG a top-level section (#750) (#806)
+  * EOL 2.13 in release table (#798) (#808)
+  * ci: refresh dev dependencies (#813) (#814)
+  * Update developing_program_flow_modules.rst (#819) (#820)
+  * update galaxy urls for networking docs' (#822) (#823)
+  * communication.rst: remove inactive security WG (#828) (#830)
+  * communication.rst: update MySQL WG to point to the forum group
+    page (#795) (#803)
+  * communication.rst: update Docs WG reference (#785) (#800)
+  * Update the Note for certificate authentication with a TLS 1.3
+    connection in windows_winrm.rst  (#757) (#780)
+  * [2.15] Add Ansible community 8.6.0 porting guide (#788) (#792)
+  * update versioning for 2.16 (#755) (#779)
+  * intro_installation: pass --include-injected in pipx upgrade
+    example (#745) (#767)
+  * Replaced the AWX mailing list with the AWX Forum page. (#769)
+    (#776)
+
+-------------------------------------------------------------------
 Tue Nov 07 08:03:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.6:

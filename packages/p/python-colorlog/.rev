@@ -82,4 +82,19 @@
     <comment></comment>
     <requestid>1006326</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>126644348a47fed6b10e40871a343d1c</srcmd5>
+    <version>6.8.0</version>
+    <time>1701792272</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.8.0:
+  * Fix running tests in environment with NO_COLOR=1
+
+- Update to 6.4.1:
+  * no upstream changes available
+  * Add setuptools to setup_requires.
+  * Add a TTYColoredFormatter class
+  * Remove qutebrowser from projects using colorlog</comment>
+    <requestid>1130977</requestid>
+  </revision>
 </revisionlist>

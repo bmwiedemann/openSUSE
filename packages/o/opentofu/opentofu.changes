@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 05 06:29:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta2:
+  * Update CONTRIBUTING.md to remove hold-off message for alpha
+    (#945)
+  * Bump version for new beta. (#963)
+  * Improve comments around the global and local provider schema
+    cache. (#958)
+  * Update aws-sdk-go-base and fix resulting type errors. (#957)
+  * Make goreleaser create draft releases instead of full releases,
+    so that we can customize the description. (#956)
+  * Add gcs end-to-end tests to the makefile. (#955)
+  * Fix global schema caching (#954)
+  * Fixes #292: Fixing broken website build (#952)
+  * Fixes #292: Testing feature documentation (#939)
+
+-------------------------------------------------------------------
 Thu Nov 30 09:09:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.6.0~beta1:

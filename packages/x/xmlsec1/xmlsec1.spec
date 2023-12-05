@@ -148,8 +148,8 @@ Libraries, includes, etc. for developing XML Security applications with NSS.
 
 %build
 # Allow for deprecations
-export CFLAGS="-Wno-error=deprecated-declarations -std=c99"
-export CXXFLAGS="-Wno-error=deprecated-declarations"
+export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -std=c99"
+export CXXFLAGS="%{optflags} -Wno-error=deprecated-declarations"
 %configure \
     --disable-static \
     --disable-silent-rules \

@@ -279,4 +279,16 @@
 - Add pkgconfig(webkit2gtk-4.1) BuildRequires: New dependency. (forwarded request 1087696 from iznogood)</comment>
     <requestid>1088410</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>509cd02375d670f6061698615cf0981e</srcmd5>
+    <version>1.2.10</version>
+    <time>1701792127</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-openconnect
+  to more accurately reflect its usage
+- Add missing supplements:
+  - NM and openconnect
+  - NMA subpackage: Main package and NMA (forwarded request 1130477 from gmbr3)</comment>
+    <requestid>1130775</requestid>
+  </revision>
 </revisionlist>

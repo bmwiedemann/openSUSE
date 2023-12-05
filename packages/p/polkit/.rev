@@ -787,4 +787,37 @@ I didn't encounter any errors while playing around with it in a Live CD. (forwar
     <comment></comment>
     <requestid>1075521</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>1cb7c6557e4317f34d9fbe275164decc</srcmd5>
+    <version>123</version>
+    <time>1701792141</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 123:
+  + Highlights:
+    - better safety with deeper restriction of the configuration
+      files
+    - better safety with restricting the daemon's owner under
+      systemd
+    - better safety with the systemd unit sandboxing
+    - less thread races during upload of the configuration
+- Changes from version 122:
+  + Highlights:
+    - new Georgian translation
+    - port to mozjs-102
+    - daemon-less build (support for e.g. flatpak deps)
+    - re-enable of (API) documentation build
+- See more detailed changes in the included NEWS.md file.
+- Change URL and Source to new home, and drop polkit.keyring and
+  tar.gz.sign tarball signature, no longer available.
+- Drop polkit-fix-pam-prefix.patch: Fixed upstream.
+- Add /usr/bin/dbus-daemon BuildRequires, needed for tests. Replace
+  the dbus-1 with /usr/bin/dbus-daemon Requires.
+
+- change /usr/share/polkit-1/rules.d to 555,root:root. /usr content
+  isn't secret anyway so this avoids non-root owned files in /usr
+  (boo#1215482)
+- update 50-default.rules to allow adding more admin rules
+  (jsc#PED-260, drop polkit-no-wheel-group.patch)</comment>
+    <requestid>1127651</requestid>
+  </revision>
 </revisionlist>

@@ -31,17 +31,16 @@ Version:        0.9.7.1
 Release:        0
 Summary:        Tool to extract swagger specs from Flask projects
 License:        MIT
-URL:            https://github.com/rochacbruno/flasgger/
+URL:            https://github.com/flasgger/flasgger/
 Source:         https://files.pythonhosted.org/packages/source/f/flasgger/flasgger-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.10
 Requires:       python-PyYAML >= 3.0
 Requires:       python-jsonschema >= 3.0.1
-Requires:       python-mistune
+Requires:       python-mistune >= 3
 Requires:       python-packaging
 Requires:       python-six >= 1.10
 BuildArch:      noarch
@@ -54,7 +53,7 @@ BuildRequires:  %{python_module PyYAML >= 3.0}
 BuildRequires:  %{python_module flex}
 BuildRequires:  %{python_module jsonschema >= 3.0.1}
 BuildRequires:  %{python_module marshmallow}
-BuildRequires:  %{python_module mistune}
+BuildRequires:  %{python_module mistune >= 3}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module six >= 1.10}
 # /SECTION

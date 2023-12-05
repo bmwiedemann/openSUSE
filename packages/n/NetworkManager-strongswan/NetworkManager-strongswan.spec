@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-strongswan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-strongswan
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        NetworkManager VPN support for strongSwan
 License:        GPL-2.0-or-later
@@ -30,25 +30,31 @@ Source99:       README
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma) >= 1.1.0
+BuildRequires:  pkgconfig(libnma-gtk4)
 BuildRequires:  pkgconfig(libsecret-1)
-Requires:       %{name}-frontend
+
 Requires:       NetworkManager >= 1.1.0
 Requires:       strongswan-nm >= 5.8.3
+Supplements:    (NetworkManager and strongswan-nm)
 ExcludeArch:    s390 s390x
 
 %description
 NetworkManager-strongswan provides VPN support to NetworkManager for
 strongSwan.
 
-%package gnome
+%package -n NetworkManager-applet-strongswan
 Summary:        NetworkManager VPN support for strongSwan
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Provides:       %{name}-frontend
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description gnome
+%description -n NetworkManager-applet-strongswan
 NetworkManager-strongswan provides VPN support to NetworkManager for
 strongSwan.
 
@@ -64,7 +70,8 @@ cp %{SOURCE99} README.SUSE
 	--without-libnm-glib \
 	--with-charon=%{_libexecdir}/ipsec/charon-nm \
 	--with-nm_libexecdir=%{_libexecdir} \
-	--disable-more-warnings
+	--disable-more-warnings \
+	--with-gtk4
 %make_build
 
 %install
@@ -77,9 +84,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_vpnservicedir}/nm-strongswan-service.name
 %{_libdir}/NetworkManager/libnm-vpn-plugin-strongswan.so
 
-%files gnome
+%files -n NetworkManager-applet-strongswan
 %{_libexecdir}/nm-strongswan-auth-dialog
-%{_datadir}/gnome-vpn-properties/
+%{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-strongswan-editor.so
+%{_libdir}/NetworkManager/libnm-vpn-plugin-strongswan-editor.so
 %{_datadir}/metainfo/NetworkManager-strongswan.metainfo.xml
 
 %files lang -f %{name}.lang

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:00:59 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Fri Nov 24 08:40:20 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on 32-bit arm

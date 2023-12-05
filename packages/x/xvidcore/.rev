@@ -7,4 +7,16 @@
     <comment>Make package available in TW.</comment>
     <requestid>1127704</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>703b95b8b68a99a40e6ccfeba544bb61</srcmd5>
+    <version>1.3.7</version>
+    <time>1701792192</time>
+    <user>anag+factory</user>
+    <comment>- Trim filler wording from description.
+- Replace old %__-type macros
+
+- Add a libxvidcore-devel Provides in the devel sub-package, name
+  previously used in third party repos.</comment>
+    <requestid>1130861</requestid>
+  </revision>
 </revisionlist>

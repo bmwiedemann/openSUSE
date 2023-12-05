@@ -58,4 +58,13 @@
   * Disable plugin autoloading in the test suite</comment>
     <requestid>1124084</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d64d20e01abf96aa2f16e7c001d1012</srcmd5>
+    <version>1.1.3</version>
+    <time>1701792061</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.3:
+  * fix README typo</comment>
+    <requestid>1130715</requestid>
+  </revision>
 </revisionlist>

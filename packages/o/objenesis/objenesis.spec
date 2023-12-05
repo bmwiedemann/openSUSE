@@ -1,7 +1,7 @@
 #
 # spec file for package objenesis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %global major 3
-%global minor 1
+%global minor 3
 %global micro 0
 %global fullversion %{major}.%{minor}.%{micro}
 %global specversion %{major}.%{minor}

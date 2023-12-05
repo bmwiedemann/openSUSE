@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  5 10:04:38 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.0
+  * Bugfixes:
+    #9179: spurious log file in $XDG_CONFIG_HOME
+    #9189: Discovery Returns IP
+    #9208: Display error in 1.26 with login screen
+  * Enhancements:
+    #9178: Default config (state) dir on Unixes should be ~/.local/state/syncthing ($XDG_STATE_HOME/syncthing)
+    #9200: Login form: login button should have an id attribute
+
+-------------------------------------------------------------------
 Wed Nov 15 13:18:45 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.26.1

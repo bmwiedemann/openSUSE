@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 24 02:44:11 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http2 to version 5.0.0.
+  ## 5.0.0
+
+  * Using the network-control package.
+  * The limits of resources can be specified in ServerConfig and ClientConfig.
+  * Open streams based on peer's MaxStreams.
+  * Rejecting Data if it is over the receiving limit.
+  * Informing MaxStreams properly.
+  * Informing WindowUpdate properly.
+  * New API: Server.Internal.runIO and Client.Internal.runIO.
+
+-------------------------------------------------------------------
 Wed Oct 11 04:18:59 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update http2 to version 4.2.2.

@@ -597,4 +597,26 @@
 </comment>
     <requestid>1128961</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>89fe8660a9943a5576166b2595b9ee69</srcmd5>
+    <version>2.11.2</version>
+    <time>1701792252</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.2: Fix GHSA-h56g-gq9v-vc8r, CVE-2023-49080,
+  boo#1217809
+  * Unhandled errors in API requests include traceback information,
+    which can include path information. There is no known mechanism
+    by which to trigger these errors without authentication, so the
+    paths revealed are not considered particularly sensitive, given
+    that the requesting user has arbitrary execution permissions
+    already in the same environment.
+  * jupyter-server no longer includes traceback information in JSON
+    error responses. For compatibility, the traceback field is
+    present, but always empty.
+- Release 2.11.1
+  * avoid unhandled error on some invalid paths #1369 (@minrk)
+  * Change md5 to hash and hash_algorithm, fix incompatibility
+    #1367 (@Wh1isper)</comment>
+    <requestid>1130946</requestid>
+  </revision>
 </revisionlist>

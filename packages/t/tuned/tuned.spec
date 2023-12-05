@@ -178,6 +178,8 @@ sed -i 's|$(SYSCONFDIR)/dbus-1/system.d|%{_datadir}/dbus-1/system.d|' Makefile
 
 %install
 %make_install TUNED_PROFILESDIR=%{profile_dir}
+# we do not have the python perf module (see bsc #1217758)
+rm %{buildroot}/%{python3_sitelib}/tuned/plugins/plugin_{scheduler,irqbalance}.py
 %py3_compile %{buildroot}/%{python3_sitelib}
 rm -rf %{buildroot}/%{_datadir}/doc
 # Remove unwanted stuff instead of excluding them in files list

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 28 22:04:33 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.25.1.
+  ## 1.6.25.1
+
+  * Export the options that were created in 1.6.25.0 [#1825](https://github.com/yesodweb/yesod/pull/1825)
+
+-------------------------------------------------------------------
 Wed Oct 25 17:05:09 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.25.0.

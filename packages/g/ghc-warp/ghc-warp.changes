@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 24 02:53:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.31.
+  ## 3.3.31
+
+  * Supporting http2 v5.0.
+
+-------------------------------------------------------------------
 Tue Oct 25 15:42:41 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update warp to version 3.3.30.

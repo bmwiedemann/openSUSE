@@ -612,4 +612,12 @@ Updated sample spec file and other documentation changes. (forwarded request 174
   * Add haveged-switch-root.patch</comment>
     <requestid>1039602</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>0969d651f0b5a4e0909082750b2877af</srcmd5>
+    <version>1.9.18</version>
+    <time>1701792055</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130690</requestid>
+  </revision>
 </revisionlist>

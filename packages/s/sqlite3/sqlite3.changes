@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 27 17:49:51 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to release 3.44.2
+  * Fix a mistake in the CLI that was introduced by the fix in
+    3.44.1.
+  * Fix a problem in FTS5 that was discovered during internal fuzz
+    testing only minutes after the 3.44.1 release was tagged.
+  * Fix incomplete assert() statements that the fuzzer discovered.
+  * Fix a couple of harmless compiler warnings that appeared in
+    debug builds with GCC 16.
+
+-------------------------------------------------------------------
+Wed Nov 22 17:20:35 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to release 3.44.1
+  * Change the CLI so that it uses UTF-16 for console I/O on Windows.
+  * Other obscure bug fixes.
+
+-------------------------------------------------------------------
 Fri Nov  3 09:23:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.44.0

@@ -419,4 +419,16 @@
     <comment></comment>
     <requestid>1070637</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>ab234f0916a961f73d71e369e920a52f</srcmd5>
+    <version>1.2.12</version>
+    <time>1701792132</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-pptp
+  to more accurately reflect its usage
+- Add missing supplements:
+  - NM and pptp
+  - NMA subpackage: Main package and NMA (forwarded request 1130479 from gmbr3)</comment>
+    <requestid>1130777</requestid>
+  </revision>
 </revisionlist>

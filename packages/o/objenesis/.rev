@@ -39,4 +39,12 @@
     <comment>Fix build with javadoc 17</comment>
     <requestid>964426</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f278fd4ace885e07beb6961f63924f1</srcmd5>
+    <version>3.3</version>
+    <time>1701792276</time>
+    <user>anag+factory</user>
+    <comment>3.3</comment>
+    <requestid>1130966</requestid>
+  </revision>
 </revisionlist>

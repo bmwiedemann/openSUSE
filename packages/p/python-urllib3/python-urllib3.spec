@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-urllib3%{psuffix}
-Version:        2.0.7
+Version:        2.1.0
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -56,6 +56,7 @@ BuildRequires:  %{python_module idna >= 3.4}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 7.4.0}
 BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module tornado >= 6.2}
 BuildRequires:  %{python_module trustme >= 0.9.0}
 BuildRequires:  %{python_module urllib3 >= %{version}}
@@ -111,7 +112,7 @@ skiplist+=" or test_recent_date"
 skiplist+=" or test_requesting_large_resources_via_ssl"
 # Try to access external evil.com
 skiplist+=" or test_deprecated_no_scheme"
-%pytest -k "not (${skiplist})" --ignore test/with_dummyserver/test_socketlevel.py
+%pytest %{?jobs:-n %jobs} -k "not (${skiplist})" --ignore test/with_dummyserver/test_socketlevel.py
 %endif
 
 %if ! %{with test}

@@ -1768,4 +1768,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1120737</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>1f892133ec8b31a5a8cc2ac6bccd7ced</srcmd5>
+    <version>1.78.1</version>
+    <time>1701792096</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1130564 from iznogood)</comment>
+    <requestid>1130744</requestid>
+  </revision>
 </revisionlist>

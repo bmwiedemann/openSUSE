@@ -39,7 +39,10 @@ executables and change the RPATH of executables and libraries.
 %make_build
 
 %check
+%ifnarch s390x
+#Bug bsc#1211860, builds are unstable for s390x
 %make_build check
+%endif
 
 %install
 %make_install

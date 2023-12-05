@@ -270,4 +270,17 @@
     local time. The time-zone is stored in the metadata, as</comment>
     <requestid>1130498</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4b20351494976404f011c20f7d423c7b</srcmd5>
+    <version>2023.10.1</version>
+    <time>1701792274</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.10.0:
+  * Datetime units in empty() with tz (#893)
+  * Fewer inplace decompressions for V2 pages (#890
+  * Allow writing categorical column with no categories (#888)
+  * Fixes for new numpy (#886)
+  * RLE bools and DELTA for v1 pages (#885, 883)</comment>
+    <requestid>1130976</requestid>
+  </revision>
 </revisionlist>

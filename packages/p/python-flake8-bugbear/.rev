@@ -172,4 +172,28 @@
 </comment>
     <requestid>1111899</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>51d8093c4554b8a35d10241739c1279b</srcmd5>
+    <version>23.12.2</version>
+    <time>1701792190</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.12.2:
+  * B018: to detect useless-statements at all levels (#434)
+  * B018: Add classname to b018 useless-expression output (#433)
+  * B018: Include tuples in b018 useless-statement check (#432)
+- update to 23.11.28:
+  * B035: Fix false positive when named expressions are used
+    (#430)
+- update to 23.11.26:
+  * B035: add check for static keys in dict-comprehension (#426)
+  * B902: Add exceptions for standard library metaclasses (#415)
+  * B017: Modify to no longer have a false negative when raises()
+    is imported directly from pytest (#424)
+  * B026: Fix bug where the check was not triggered for calls
+    where the caller is an attribute (#420)
+
+    * Black all the .py files - Like one should (#48)
+    * Fix pathlib link in readme (#36)</comment>
+    <requestid>1130855</requestid>
+  </revision>
 </revisionlist>

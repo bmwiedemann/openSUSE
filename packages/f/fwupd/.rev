@@ -576,4 +576,40 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1127846</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>5cbe121eb2ab3d6d029f6b920cd65196</srcmd5>
+    <version>1.9.10</version>
+    <time>1701792073</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.9.10:
+  + This release adds the following features:
+    - Add support for not_hardware requirements
+    - Add support for loongarch64
+    - Add support for per-release priority attributes
+    - Make USB claim retry count configurable across devices
+  + This release fixes the following bugs:
+    - Compare the HID report value when checking for duplicates
+    - Consider the component priority when installing composite updates
+    - Deploy the CCGX firmware correctly the first time
+    - Do not export the 'main-system-firmware' and 'cpu' GUIDs
+    - Enforce fwupd version requirements client side
+    - Fix Genesys 'failed to get static tool info from device' error
+    - Fix potential 'dereference before null check' in ccmx-dmc
+    - Fix the 'already registered private FuMmDevice flag with value' warning
+    - Fix the 'assertion backend_id != NULL failed' runtime warning
+    - Fix Wacom USB device emulation by recording the composite phases
+    - Generate generic request message text where possible
+    - Hide HTTP passwords in fwupd debugging logs
+    - Let the client know what interaction is expected
+    - Make all critical warnings into backtraces for non-release builds
+    - Never obsolete the wrong HSI attribute
+    - Never show a HSI index that is impossible
+    - Only apply fastboot plugin to modem devices supporting fastboot
+    - Only send interactive requests when the sender is alive
+    - Remove the now-obsolete Synaptics MST cascade device scanning
+    - Replace the Redfish KCS user if required
+    - Restrict mediatek-scaler devices on specific hardware only
+    - Skip any recovery partitions when detecting ESP</comment>
+    <requestid>1130794</requestid>
+  </revision>
 </revisionlist>

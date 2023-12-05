@@ -1209,4 +1209,12 @@
   the subpackage in the main totem package.</comment>
     <requestid>1110885</requestid>
   </revision>
+  <revision rev="158" vrev="4">
+    <srcmd5>381cce15c5b571b589a1f67b727d52e3</srcmd5>
+    <version>43.0</version>
+    <time>1701792113</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1130349 from iznogood)</comment>
+    <requestid>1130768</requestid>
+  </revision>
 </revisionlist>

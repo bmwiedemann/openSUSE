@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  4 21:33:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.12.2:
+  * B018: to detect useless-statements at all levels (#434)
+  * B018: Add classname to b018 useless-expression output (#433)
+  * B018: Include tuples in b018 useless-statement check (#432)
+- update to 23.11.28:
+  * B035: Fix false positive when named expressions are used
+    (#430)
+- update to 23.11.26:
+  * B035: add check for static keys in dict-comprehension (#426)
+  * B902: Add exceptions for standard library metaclasses (#415)
+  * B017: Modify to no longer have a false negative when raises()
+    is imported directly from pytest (#424)
+  * B026: Fix bug where the check was not triggered for calls
+    where the caller is an attribute (#420)
+
+-------------------------------------------------------------------
 Mon Sep 18 06:54:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 23.9.16:
@@ -188,12 +206,12 @@ Fri Nov  2 21:34:53 UTC 2018 - Matej Cepl <mcepl@suse.com>
 - Update to 18.8.0:
     * Exclude immutable calls like tuple() and frozenset() from B008
     * Examine kw-only args for mutable defaults
-    * Black all the .py files - Like one should (#48) 
+    * Black all the .py files - Like one should (#48)
     * Add testing and document support for the Python 3.7 release
     * Avoid adding the visitor as an __init__ parameter (Fixes #39)
       (#40)
     * Add trove classifier 'Programming Language :: Python :: 3 :: Only'
-    * Fix pathlib link in readme (#36) 
+    * Fix pathlib link in readme (#36)
 
 -------------------------------------------------------------------
 Wed Jul 18 11:36:14 UTC 2018 - tchvatal@suse.com

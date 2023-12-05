@@ -43,18 +43,22 @@ BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 Requires:       NetworkManager >= 1.2.0
 Requires:       pptp
+Supplements:    (NetworkManager and pptp)
 %requires_eq    ppp
 
 %description
 NetworkManager-pptp provides VPN support to NetworkManager for PPTP.
 
-%package gnome
+%package -n NetworkManager-applet-pptp
 Summary:        NetworkManager VPN support for PPTP
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
 Provides:       %{name}-frontend = %{version}
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description gnome
+%description -n NetworkManager-applet-pptp
 NetworkManager-pptp provides VPN support to NetworkManager for PPTP.
 
 %lang_package
@@ -84,7 +88,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/dbus-1/system.d/nm-pptp-service.conf
 %{pppd_plugin_dir}/nm-pptp-pppd-plugin.so
 
-%files gnome
+%files -n NetworkManager-applet-pptp
 %{_datadir}/metainfo/network-manager-pptp.metainfo.xml
 %{_libdir}/NetworkManager/libnm-vpn-plugin-pptp-editor.so
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-pptp-editor.so

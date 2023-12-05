@@ -305,4 +305,12 @@ A tuned_differ_x86_and_other_archs_in_cpu_plugin.patch
     <comment></comment>
     <requestid>1113605</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>764db446bf34dc3fe8d6860b4cbb366a</srcmd5>
+    <version>2.21.0.0+git.670541d</version>
+    <time>1701792256</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130956</requestid>
+  </revision>
 </revisionlist>

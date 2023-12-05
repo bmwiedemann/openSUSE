@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 29 09:56:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 123:
+  + Highlights:
+    - better safety with deeper restriction of the configuration
+      files
+    - better safety with restricting the daemon's owner under
+      systemd
+    - better safety with the systemd unit sandboxing
+    - less thread races during upload of the configuration
+- Changes from version 122:
+  + Highlights:
+    - new Georgian translation
+    - port to mozjs-102
+    - daemon-less build (support for e.g. flatpak deps)
+    - re-enable of (API) documentation build
+- See more detailed changes in the included NEWS.md file.
+- Change URL and Source to new home, and drop polkit.keyring and
+  tar.gz.sign tarball signature, no longer available.
+- Drop polkit-fix-pam-prefix.patch: Fixed upstream.
+- Add /usr/bin/dbus-daemon BuildRequires, needed for tests. Replace
+  the dbus-1 with /usr/bin/dbus-daemon Requires.
+
+-------------------------------------------------------------------
+Tue Sep 19 12:24:38 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- change /usr/share/polkit-1/rules.d to 555,root:root. /usr content
+  isn't secret anyway so this avoids non-root owned files in /usr
+  (boo#1215482)
+- update 50-default.rules to allow adding more admin rules
+  (jsc#PED-260, drop polkit-no-wheel-group.patch)
+
+-------------------------------------------------------------------
 Wed Mar 29 13:37:25 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Change permissions for rules folders (bsc#1209282)

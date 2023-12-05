@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-typeguard
-Version:        4.0.0
+Version:        4.1.5
 Release:        0
 Summary:        Library for runtime checking of Python types
 License:        MIT

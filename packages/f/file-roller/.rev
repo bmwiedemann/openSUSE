@@ -1247,4 +1247,12 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
 </comment>
     <requestid>1004780</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>49b82481c76a260b23a8dc332234e2a0</srcmd5>
+    <version>43.1</version>
+    <time>1701792093</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1130562 from iznogood)</comment>
+    <requestid>1130743</requestid>
+  </revision>
 </revisionlist>

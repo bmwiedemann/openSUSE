@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  5 12:46:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.8.0:
+  * Fix running tests in environment with NO_COLOR=1
+
+-------------------------------------------------------------------
 Mon Sep 26 22:25:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 6.7.0
@@ -9,7 +15,7 @@ Mon Sep 26 22:25:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Add a force_color option to colorlog.formatter.ColoredFormatter.
   * Support the FORCE_COLOR environment variable.
 
-- Update to 6.4.1: 
+- Update to 6.4.1:
   Changes since v5.0.0.
   * Dropped support for Python 2 and Python versions below Python 3.5.
   * Added type hints and added mypy to CI (#83).
@@ -45,13 +51,13 @@ Tue Aug 17 10:48:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Mon Mar  8 22:36:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7.2:
-  * no upstream changes available 
+  * no upstream changes available
 
 -------------------------------------------------------------------
 Wed Sep 16 04:37:18 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.2.1:
-  * Add setuptools to setup_requires. 
+  * Add setuptools to setup_requires.
 
 -------------------------------------------------------------------
 Sat Mar 14 08:57:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
@@ -111,8 +117,8 @@ Fri Dec 16 10:28:01 UTC 2016 - aloisio@gmx.com
 
 - Update to version 2.10.0
   * Parameterise test_ttycolorlog to mock isatty()
-  * Add a TTYColoredFormatter class 
-  * Remove qutebrowser from projects using colorlog 
+  * Add a TTYColoredFormatter class
+  * Remove qutebrowser from projects using colorlog
 
 -------------------------------------------------------------------
 Mon Oct 10 18:30:53 UTC 2016 - mardnh@gmx.de

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        Generic HTTP types for Haskell (for both client and server code)
 License:        BSD-3-Clause
@@ -51,7 +51,8 @@ BuildRequires:  ghc-quickcheck-instances-prof
 %endif
 
 %description
-Generic HTTP types for Haskell (for both client and server code).
+Types and functions to describe and handle HTTP concepts. Including "methods",
+"headers", "query strings", "paths" and "HTTP versions".
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

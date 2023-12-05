@@ -35,6 +35,7 @@ Patch3:         tcsh-6.24.10-history-merge.dif
 Patch4:         tcsh-6.18.03-colorls.dif
 Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
+Patch7:         tcsh-skip-utmp-service.dif
 Patch8:         tcsh-6.22.02-local-dotlock.dif
 BuildRequires:  autoconf
 BuildRequires:  fdupes
@@ -56,14 +57,17 @@ correction, a history mechanism, job control, and a C-like syntax.
 
 %prep
 %setup -q
-%patch1      -b .pipe
-%patch2      -b .normcmd
-%patch3      -b .merge
-%patch4      -b .colorls
-%patch5      -b .dspmbyte
-%patch6      -b .catalogs
-%patch8 -p 0 -b .dotlock
-%patch0      -b .0
+%patch -P1      -b .pipe
+%patch -P2      -b .normcmd
+%patch -P3      -b .merge
+%patch -P4      -b .colorls
+%patch -P5      -b .dspmbyte
+%patch -P6      -b .catalogs
+%if 0%{?suse_version} >= 1699
+%patch -P7      -b .noutmp
+%endif
+%patch -P8 -p 0 -b .dotlock
+%patch -P0      -b .0
 
 %build
 
@@ -95,10 +99,18 @@ correction, a history mechanism, job control, and a C-like syntax.
     }
     CC=gcc
     CFLAGS="%{optflags} -D_GNU_SOURCE -DBUFSIZE=8192 -pipe"
+%if 0%{?suse_version} >= 1699
+    #
+    # There is currently no API for using systemd logind
+    # for watch and who tcsh builtin.
+    #
+    CFLAGS="${CFLAGS} -DHAVENOUTMP"
+%endif
     cflags -ftree-loop-linear      CFLAGS
     cflags -Wl,-O2                 LDFLAGS
     cflags -Wl,--as-needed         LDFLAGS
     export CC CFLAGS LDFLAGS
+
 %ifarch %ix86
     CPU=i586
 %else

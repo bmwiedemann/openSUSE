@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  5 03:53:40 UTC 2023 - James.Bottomley@HansenPartnership.com
+
+- Update to version 4.0.2
+  * Fixes for openssl 3.2
+  * fix for encrypted secret size
+  * fix for swtpm and swtpm2 simultaneous install
+  * gcc-13 fix
+  * make signed_tpm2_policy match man page
+
+-------------------------------------------------------------------
 Wed Jul  5 19:40:20 UTC 2023 - James.Bottomley@HansenPartnership.com
 
 - Update to version 4.0.1

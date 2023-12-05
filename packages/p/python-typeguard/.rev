@@ -60,4 +60,41 @@
     suppressed when their types are unusable</comment>
     <requestid>1087114</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d767b10f7593682e1e5d8cab8507ca1</srcmd5>
+    <version>4.1.5</version>
+    <time>1701792064</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.5:
+  * Fixed ``Callable`` erroneously rejecting a callable that has
+    the requested amount of positional arguments but they have
+    defaults
+  * Fixed a regression introduced in v4.1.4 where the elements of
+    ``Literal`` got quotes removed from them by the AST transformer
+  * Fixed ``AttributeError`` where the transformer removed
+    elements from a PEP 604 union
+  * Fixed ``AttributeError: 'Subscript' object has no attribute
+    'slice'`` when encountering an annotation with a subscript
+    containing an ignored type
+  * Fixed type checking not being skipped when the target is a
+    union (PEP 604 or ``typing.Union``) where one of the elements
+    is an ignored type (shadowed by an argument, variable
+    assignment or an ``if TYPE_CHECKING`` import)
+  * Dropped Python 3.7 support
+  * Fixed ``@typechecked`` optimization causing compilation of
+    instrumented code to fail when any block was left empty by the
+    AST transformer (eg ``if`` or ``try`` / ``except`` blocks)
+  * Fixed placement of injected typeguard imports with respect to
+    ``__future__`` imports and module docstrings
+  * Fixed ``Any`` being removed from a subscript that still
+    contains other elements
+  * Fixed ``suppress_type_checks()`` causing annotated variable
+    assignments to always assign ``None``
+  * Added support for passing a tuple as ``expected_type`` to
+    ``check_type()``, making it more of a drop-in replacement for
+    ``isinstance()``
+  * Fixed regression where ``Literal`` inside a ``Union`` had
+    quotes stripped from its contents, thus typically causing</comment>
+    <requestid>1130725</requestid>
+  </revision>
 </revisionlist>

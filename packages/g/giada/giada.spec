@@ -19,21 +19,20 @@
 
 
 Name:           giada
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        Sampler Audio Tool
 License:        (AGPL-3.0-only OR GPL-2.0-or-later) AND GPL-3.0-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND OFL-1.1 AND Zlib
 URL:            https://giadamusic.com
 Source0:        %{name}-%{version}.tar.xz
-Patch2:         002-fix-include-cstdint.patch
 Patch3:         003-cmake-exclude-juce-from-all.patch
-BuildRequires:  cmake
-BuildRequires:  fltk-devel
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} <= 1550
 BuildRequires:  gcc10-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  cmake
+BuildRequires:  fltk-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -68,7 +67,7 @@ control this.
 
 %build
 test -x "$(type -p g++-10)" && export CXX=g++-10 OBJCXX=g++-10
-%cmake -DCMAKE_BUILD_TYPE=Release -DWITH_VST3=ON
+%cmake -DCMAKE_BUILD_TYPE=Release -DWITH_VST3=ON -DCMAKE_CXX_FLAGS="-std=c++17 "
 %cmake_build
 
 %install

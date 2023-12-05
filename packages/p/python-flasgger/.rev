@@ -75,4 +75,12 @@
 - Stop using globs in %files</comment>
     <requestid>1102797</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a08bd78127278be6652b41a201ab231d</srcmd5>
+    <version>0.9.7.1</version>
+    <time>1701792162</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1130835</requestid>
+  </revision>
 </revisionlist>

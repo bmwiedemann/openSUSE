@@ -33,6 +33,7 @@
 %define python_sitelib %(RPM_BUILD_ROOT= %{use_python} -Ic "import sysconfig; print(sysconfig.get_path('purelib'))")
 
 # generate manpages on distros where argparse-manpage >= 3 and python3-Sphinx are available
+# please note that RHEL build requires packages from CRB and EPEL repositories
 %if 0%{?suse_version} > 1500 || 0%{?fedora} >= 37 || 0%{?rhel} >= 9
 %bcond_without man
 %else
@@ -46,21 +47,20 @@
 %bcond_with fdupes
 %endif
 
-%define argparse_manpage_pkg %{use_python_pkg}-argparse-manpage
-%define obs_build_pkg obs-build
-%define sphinx_pkg %{use_python_pkg}-Sphinx
-
-%if 0%{?fedora} || 0%{?rhel} >= 9
 %define argparse_manpage_pkg argparse-manpage
+%define obs_build_pkg obs-build
+%define openssh_pkg openssh
 %define sphinx_pkg %{use_python_pkg}-sphinx
-%endif
 
 %if 0%{?suse_version}
+%define argparse_manpage_pkg %{use_python_pkg}-argparse-manpage
 %define obs_build_pkg build
+%define openssh_pkg openssh-common
+%define sphinx_pkg %{use_python_pkg}-Sphinx
 %endif
 
 Name:           osc
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -127,12 +127,8 @@ Recommends:     obs-service-source_validator
 Recommends:     obs-service-tar_scm
 Recommends:     obs-service-verify_file
 
-%if 0%{?fedora} || 0%{?rhel}
-Recommends:     openssh
-%endif
-%if 0%{?suse_version}
-Recommends:     openssh-common
-%endif
+# needed for ssh signature auth
+Recommends:     %{openssh_pkg}
 
 # needed for `osc browse` that calls xdg-open
 Recommends:     xdg-utils

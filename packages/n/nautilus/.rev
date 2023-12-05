@@ -1588,4 +1588,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1119674</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>cdac958ca450e750d395318a87487d3a</srcmd5>
+    <version>45.2</version>
+    <time>1701792102</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1130618 from iznogood)</comment>
+    <requestid>1130746</requestid>
+  </revision>
 </revisionlist>

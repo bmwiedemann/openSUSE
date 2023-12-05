@@ -53,6 +53,10 @@ Patch11:        0011-babeld-fix-11808-to-avoid-infinite-loops.patch
 Patch12:        0012-bgpd-Limit-flowspec-to-no-attribute-means-a-implicit.patch
 Patch13:        0013-bgpd-Check-mandatory-attributes-more-carefully-for-U.patch
 Patch14:        0014-bgpd-Handle-MP_REACH_NLRI-malformed-packets-with-ses.patch
+Patch15:        0015-bgpd-Treat-EOR-as-withdrawn-to-avoid-unwanted-handli.patch
+Patch16:        0016-bgpd-Ignore-handling-NLRIs-if-we-received-MP_UNREACH.patch
+Patch17:        0017-bgpd-Fix-use-beyond-end-of-stream-of-labeled-unicast.patch
+Patch18:        0018-bgpd-Flowspec-overflow-issue.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -204,6 +208,10 @@ developing OSPF-API and frr applications.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors

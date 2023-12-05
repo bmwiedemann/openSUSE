@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Dec  4 11:32:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.5:
+  * Fixed ``Callable`` erroneously rejecting a callable that has
+    the requested amount of positional arguments but they have
+    defaults
+  * Fixed a regression introduced in v4.1.4 where the elements of
+    ``Literal`` got quotes removed from them by the AST transformer
+  * Fixed ``AttributeError`` where the transformer removed
+    elements from a PEP 604 union
+  * Fixed ``AttributeError: 'Subscript' object has no attribute
+    'slice'`` when encountering an annotation with a subscript
+    containing an ignored type
+  * Fixed type checking not being skipped when the target is a
+    union (PEP 604 or ``typing.Union``) where one of the elements
+    is an ignored type (shadowed by an argument, variable
+    assignment or an ``if TYPE_CHECKING`` import)
+  * Dropped Python 3.7 support
+  * Fixed ``@typechecked`` optimization causing compilation of
+    instrumented code to fail when any block was left empty by the
+    AST transformer (eg ``if`` or ``try`` / ``except`` blocks)
+  * Fixed placement of injected typeguard imports with respect to
+    ``__future__`` imports and module docstrings
+  * Fixed ``Any`` being removed from a subscript that still
+    contains other elements
+  * Fixed ``suppress_type_checks()`` causing annotated variable
+    assignments to always assign ``None``
+  * Added support for passing a tuple as ``expected_type`` to
+    ``check_type()``, making it more of a drop-in replacement for
+    ``isinstance()``
+  * Fixed regression where ``Literal`` inside a ``Union`` had
+    quotes stripped from its contents, thus typically causing
+    ``NameError`` to be raised when run
+  * Fixed handling of ``typing_extensions.Literal`` on Python 3.8
+    and 3.9 when ``typing_extensions>=4.6.0`` is installed
+  * Fixed ``NameError`` when generated type checking code
+    references an imported name from a method
+  * Fixed docstrings disappearing from instrumented functions
+  * Fixed ``@typechecked`` failing to instrument functions when
+    there are more than one function within the same scope
+  * Fixed ``frozenset`` not being checked
+
+-------------------------------------------------------------------
 Sun May 14 16:35:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:
@@ -100,8 +143,8 @@ Fri May  5 09:24:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * ``@contextmanager`` when applied to a class
   * Fixed ``py.typed`` missing from the wheel when not building
     from a git checkout
-  * Dropped the ``argname``, ``memo``, ``globals`` and 
-    ``locals`` arguments from ``check_type()`` 
+  * Dropped the ``argname``, ``memo``, ``globals`` and
+    ``locals`` arguments from ``check_type()``
   * Removed the ``check_argument_types()`` and ``check_return_type()``
     functions (use ``@typechecked`` instead)
   * Moved ``install_import_hook`` to be directly importable from
@@ -170,7 +213,7 @@ Thu Apr 13 22:45:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Oct 11 16:36:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.13.3 
+- Update to version 2.13.3
   * Fixed TypeError when using typeguard within exec() (where __module__ is None) (PR by Andy Jones)
   * Fixed TypedDict causing TypeError: TypedDict does not support instance and class checks on Python 3.8 with standard library (not typing_extensions) typed dicts
 

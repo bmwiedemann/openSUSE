@@ -43,9 +43,9 @@ BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openconnect) >= 3.02
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
-Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       openconnect
+Supplements:    (NetworkManager and openconnect)
 %sysusers_requires
 ExcludeArch:    s390 s390x
 
@@ -53,13 +53,16 @@ ExcludeArch:    s390 s390x
 NetworkManager-openconnect provides VPN support to NetworkManager for
 OpenConnect, an implementation of the Cisco AnyConnect VPN system.
 
-%package gnome
+%package -n NetworkManager-applet-openconnect
 Summary:        NetworkManager VPN support for OpenConnect
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
 Provides:       %{name}-frontend
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description gnome
+%description -n NetworkManager-applet-openconnect
 NetworkManager-openconnect provides VPN support to NetworkManager for
 OpenConnect, an implementation of the Cisco AnyConnect VPN system.
 
@@ -96,7 +99,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_datadir}/dbus-1/system.d/nm-openconnect-service.conf
 %{_sysusersdir}/system-user-nm-openconnect.conf
 
-%files gnome
+%files -n NetworkManager-applet-openconnect
 %{_datadir}/metainfo/network-manager-openconnect.metainfo.xml
 %{_libexecdir}/nm-openconnect-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openconnect-editor.so

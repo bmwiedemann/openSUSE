@@ -20,7 +20,7 @@
 
 %define lname	libbde1
 Name:           libbde
-Version:        20231204
+Version:        20231205
 Release:        0
 Summary:        Library and tools to access Microsoft Bitlocker Disk Encrypted partitions
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later

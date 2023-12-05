@@ -208,4 +208,22 @@
     <comment></comment>
     <requestid>1109486</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cd9d77e9a771a2b86af0983cb976a79c</srcmd5>
+    <version>2023.10.3</version>
+    <time>1701792066</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.10.10:
+  * Updated to Unicode 15.1.0.
+
+  * Limit running time for failing fullmatch
+- update to 2022.10.31
+  * update to unicode 15.0
+  * fix issue 474: regex has no equivalent to re.Match.groups() for captures
+  * fix fuzzy character restrictions not applying to insertions
+  * licensing change to Apache-2.0
+  * Fix Memory Error in regex.findall
+  * For fullmatch, added check for end/start of string for</comment>
+    <requestid>1130727</requestid>
+  </revision>
 </revisionlist>

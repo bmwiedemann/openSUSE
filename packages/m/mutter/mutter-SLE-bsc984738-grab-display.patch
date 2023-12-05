@@ -1,17 +1,17 @@
-Index: mutter-44.3/src/core/display.c
+Index: mutter-45.1/src/core/display.c
 ===================================================================
---- mutter-44.3.orig/src/core/display.c
-+++ mutter-44.3/src/core/display.c
-@@ -880,6 +880,8 @@ meta_display_new (MetaContext  *context,
+--- mutter-45.1.orig/src/core/display.c
++++ mutter-45.1/src/core/display.c
+@@ -956,6 +956,8 @@ meta_display_new (MetaContext  *context,
    display->check_fullscreen_later = 0;
    display->work_area_later = 0;
  
 +  display->server_grab_count = 0;
 +
    display->mouse_mode = TRUE; /* Only relevant for mouse or sloppy focus */
-   display->allow_terminal_deactivation = TRUE; /* Only relevant for when a
-                                                   terminal has the focus */
-@@ -1208,6 +1210,50 @@ meta_grab_op_is_moving (MetaGrabOp op)
+ 
+   display->current_time = META_CURRENT_TIME;
+@@ -1308,6 +1310,50 @@ meta_grab_op_is_moving (MetaGrabOp op)
    return !meta_grab_op_is_resizing (op);
  }
  
@@ -62,11 +62,11 @@ Index: mutter-44.3/src/core/display.c
  /**
   * meta_display_windows_are_interactable:
   * @op: A #MetaGrabOp
-Index: mutter-44.3/src/core/display-private.h
+Index: mutter-45.1/src/core/display-private.h
 ===================================================================
---- mutter-44.3.orig/src/core/display-private.h
-+++ mutter-44.3/src/core/display-private.h
-@@ -105,6 +105,8 @@ struct _MetaDisplay
+--- mutter-45.1.orig/src/core/display-private.h
++++ mutter-45.1/src/core/display-private.h
+@@ -95,6 +95,8 @@ struct _MetaDisplay
    GHashTable *stamps;
    GHashTable *wayland_windows;
  
@@ -75,19 +75,19 @@ Index: mutter-44.3/src/core/display-private.h
    guint32 current_time;
  
    /* We maintain a sequence counter, incremented for each #MetaWindow
-@@ -189,6 +191,8 @@ struct _MetaDisplayClass
- 
+@@ -179,6 +181,8 @@ struct _MetaDisplayClass
  MetaDisplay * meta_display_new (MetaContext  *context,
                                  GError      **error);
+ 
 +void          meta_display_grab                (MetaDisplay *display);
 +void          meta_display_ungrab              (MetaDisplay *display);
- 
+ #ifdef HAVE_X11_CLIENT
  void meta_display_manage_all_xwindows (MetaDisplay *display);
- void meta_display_unmanage_windows   (MetaDisplay *display,
-Index: mutter-44.3/src/core/keybindings.c
+ #endif
+Index: mutter-45.1/src/core/keybindings.c
 ===================================================================
---- mutter-44.3.orig/src/core/keybindings.c
-+++ mutter-44.3/src/core/keybindings.c
+--- mutter-45.1.orig/src/core/keybindings.c
++++ mutter-45.1/src/core/keybindings.c
 @@ -1257,6 +1257,9 @@ meta_display_grab_window_buttons (MetaDi
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
@@ -148,11 +148,11 @@ Index: mutter-44.3/src/core/keybindings.c
        if (window->grab_on_frame &&
            window->frame != NULL)
          change_window_keygrabs (keys, window->frame->xwindow, FALSE);
-Index: mutter-44.3/src/x11/meta-x11-display.c
+Index: mutter-45.1/src/x11/meta-x11-display.c
 ===================================================================
---- mutter-44.3.orig/src/x11/meta-x11-display.c
-+++ mutter-44.3/src/x11/meta-x11-display.c
-@@ -2013,7 +2013,7 @@ meta_x11_display_set_input_focus_interna
+--- mutter-45.1.orig/src/x11/meta-x11-display.c
++++ mutter-45.1/src/x11/meta-x11-display.c
+@@ -1990,7 +1990,7 @@ meta_x11_display_set_input_focus_interna
     * we know which is which by making two requests that the server will
     * process at the same time.
     */
@@ -161,7 +161,7 @@ Index: mutter-44.3/src/x11/meta-x11-display.c
  
    XSetInputFocus (x11_display->xdisplay,
                    xwindow,
-@@ -2025,8 +2025,7 @@ meta_x11_display_set_input_focus_interna
+@@ -2002,8 +2002,7 @@ meta_x11_display_set_input_focus_interna
                     x11_display->atom__MUTTER_FOCUS_SET,
                     XA_STRING, 8, PropModeAppend, NULL, 0);
  
@@ -171,10 +171,10 @@ Index: mutter-44.3/src/x11/meta-x11-display.c
  
    meta_x11_error_trap_pop (x11_display);
  }
-Index: mutter-44.3/src/x11/window-x11.c
+Index: mutter-45.1/src/x11/window-x11.c
 ===================================================================
---- mutter-44.3.orig/src/x11/window-x11.c
-+++ mutter-44.3/src/x11/window-x11.c
+--- mutter-45.1.orig/src/x11/window-x11.c
++++ mutter-45.1/src/x11/window-x11.c
 @@ -548,6 +548,8 @@ meta_window_x11_manage (MetaWindow *wind
    meta_sync_counter_init (&priv->sync_counter, window, window->xwindow);
    meta_icon_cache_init (&priv->icon_cache);
@@ -184,6 +184,20 @@ Index: mutter-44.3/src/x11/window-x11.c
    meta_x11_display_register_x_window (display->x11_display,
                                        &window->xwindow,
                                        window);
+@@ -565,11 +567,11 @@ meta_window_x11_manage (MetaWindow *wind
+   if (window->decorated)
+     meta_window_ensure_frame (window);
+   else
+-    meta_window_x11_initialize_state (window);
++    meta_window_x11_initialize_state (window, display);
+ }
+ 
+ void
+-meta_window_x11_initialize_state (MetaWindow *window)
++meta_window_x11_initialize_state (MetaWindow *window, MetaDisplay *display)
+ {
+   MetaWindowX11 *window_x11 = META_WINDOW_X11 (window);
+   MetaWindowX11Private *priv = meta_window_x11_get_instance_private (window_x11);
 @@ -620,6 +622,13 @@ meta_window_x11_initialize_state (MetaWi
  
    meta_window_x11_update_shape_region (window);
@@ -198,3 +212,28 @@ Index: mutter-44.3/src/x11/window-x11.c
  }
  
  static void
+Index: mutter-45.1/src/x11/events.c
+===================================================================
+--- mutter-45.1.orig/src/x11/events.c
++++ mutter-45.1/src/x11/events.c
+@@ -1485,7 +1485,7 @@ handle_other_xevent (MetaX11Display *x11
+                 {
+                   meta_window_set_frame_xwindow (window,
+                                                  event->xmaprequest.window);
+-                  meta_window_x11_initialize_state (window);
++                  meta_window_x11_initialize_state (window, display);
+                   meta_window_update_visibility (window);
+                 }
+ 
+Index: mutter-45.1/src/x11/window-x11-private.h
+===================================================================
+--- mutter-45.1.orig/src/x11/window-x11-private.h
++++ mutter-45.1/src/x11/window-x11-private.h
+@@ -94,6 +94,6 @@ void meta_window_x11_set_bypass_composit
+ 
+ void meta_window_x11_queue_update_icon (MetaWindowX11 *window_x11);
+ 
+-void meta_window_x11_initialize_state (MetaWindow *window);
++void meta_window_x11_initialize_state (MetaWindow *window, MetaDisplay *display);
+ 
+ G_END_DECLS

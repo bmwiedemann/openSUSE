@@ -36,12 +36,10 @@ The Xvid video codec implements MPEG-4 Simple Profile and Advanced
 Simple Profile standards. It permits compressing and decompressing
 digital video in order to reduce the required bandwidth of video
 data for transmission over computer networks or efficient storage
-on CDs or DVDs. Due to its unrivalled quality Xvid has gained great
-popularity and is used in many other GPLed applications, like e.g.
-Transcode, MEncoder, MPlayer, Xine and many more.
+on CDs or DVDs.
 
 %package -n lib%{name}%{sovermajor}
-Summary:        Shared library for xvidcore
+Summary:        MPEG-4 Simple and Advanced Simple Profile codec
 
 %description -n lib%{name}%{sovermajor}
 Xvid is a high quality MPEG-4 ASP video codec.
@@ -50,6 +48,7 @@ Shared library of XviD video codec.
 %package        devel
 Summary:        Development files for the Xvid video codec
 Requires:       lib%{name}%{sovermajor} = %{version}
+Provides:       libxvidcore-devel = %{version}
  
 %description    devel
 This package contains header files, static library and API
@@ -71,9 +70,9 @@ for file in ChangeLog; do
  mv $file.new $file
 done
 # Yes, we want to see the build output.
-%{__sed} -i -e 's|@$(|$(|g' build/generic/Makefile
+sed -i -e 's|@$(|$(|g' build/generic/Makefile
 # Fix permissions
-%{__sed} -i -e 's|644 $(BUILD_DIR)/$(SHARED_LIB)|755 $(BUILD_DIR)/$(SHARED_LIB)|g' build/generic/Makefile
+sed -i -e 's|644 $(BUILD_DIR)/$(SHARED_LIB)|755 $(BUILD_DIR)/$(SHARED_LIB)|g' build/generic/Makefile
 
 %build
 cd build/generic
@@ -97,4 +96,3 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %{_libdir}/libxvidcore.so
 
 %changelog
-

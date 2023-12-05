@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  4 16:36:09 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.2:
+  * Fixes a potential security issue.
+  * Minor design tweaks.
+- Changes from version 0.6.1:
+  * Fixes an issue where ZIP files would sometimes be corrupt after
+    receiving.
+- Changes from version 0.6.0:
+  * Redesign code view with new QR code design.
+  * Use new GNOME 45 design.
+  * Add shortcuts to a few more buttons.
+- Drop cargo_config: No longer required.
+- Add <param name="update">true</param> to cargo_vendor service.
+
+-------------------------------------------------------------------
 Fri Jul 21 08:09:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add Conflicts: ghc-wai-app-static as it installs the same binary

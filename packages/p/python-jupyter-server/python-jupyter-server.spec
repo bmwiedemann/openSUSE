@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.11.0
+Version:        2.11.2
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause

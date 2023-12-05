@@ -1,9 +1,0 @@
---- a/src/polkitbackend/50-default.rules
-+++ b/src/polkitbackend/50-default.rules
-@@ -8,5 +8,5 @@
- // about configuring polkit.
- 
- polkit.addAdminRule(function(action, subject) {
--    return ["unix-group:wheel"];
-+    return ["unix-user:0"];
- });

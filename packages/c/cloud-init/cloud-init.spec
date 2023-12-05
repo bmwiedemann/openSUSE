@@ -203,13 +203,13 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.debian.*
 rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.redhat.*
 rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 
-%post
-/usr/sbin/hidesensitivedata
-
 # remove duplicate files
 %if 0%{?suse_version}
 %fdupes %{buildroot}%{python3_sitelib}
 %endif
+
+%post
+/usr/sbin/hidesensitivedata
 
 %files
 %defattr(-,root,root)

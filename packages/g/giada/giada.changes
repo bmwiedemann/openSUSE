@@ -6,9 +6,41 @@ Mon Oct 16 20:46:54 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
     throws an error that it's not a valid SPDX license
 
 -------------------------------------------------------------------
+Mon Oct 16 15:28:03 UTC 2023 - Edgar Aichinger edogawa@aon.at
+
+- Update to version 0.26.0:
+
+  * Add ability to open more than one plug-in UI (#575)
+    — you can finally have multiple plug-in windows laying around while playing. Very useful for live performances;
+  * improved floating legends in Action Editor (#655)
+    — we added some cute floating legends that stick on top of each Action Editor widget, making it easier to edit actions in the right place;
+  * huge optimizations to the audio rendering process;
+  * Windows: store configuration file in AppData directory
+    — to allow better integration with the environment (#299);
+  * Windows: fix missing .dll file on startup (#661);
+  * many more usability improvements and smaller optimizations.
+
+-------------------------------------------------------------------
 Tue Sep 19 20:28:07 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of license based on legaldb review 
+
+-------------------------------------------------------------------
+Sat Aug 05 08:36:57 UTC 2023 - Edgar Aichinger edogawa@aon.at
+
+- remove 002-fix-include-cstdint.patch (now upstream)
+- Update to version 0.25.1:
+
+  * Update changelog
+  * Include <cstdint> for uint32_t
+  * DRY geTabAudio
+  * Better samplerate selection in dropdown menu if device has no samplerate (e.g. JACK)
+  * Show 'none' in channel's dropdown menu if device has no channels (e.g. JACK)
+  * Use geChoice::showFirstItem() in place of geChoice::showItem(0) in geTabAudio
+  * New method geChoice::showFirstItem()
+  * Show MIDI map path in drop down menu only if available and found
+  * Store actual MIDI map path (std::string) into c::MidiData struct
+  * Show MIDI in/out ports in drop down menu only if they are available
 
 -------------------------------------------------------------------
 Sun Jun 18 19:53:34 UTC 2023 - Edgar Aichinger <edogawa@aon.at>

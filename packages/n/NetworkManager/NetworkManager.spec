@@ -92,6 +92,8 @@ Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 # PATCH-FIX-OPENSUSE fix runstatedir from /var/run to /run gmbr3@opensuse.org
 Patch8:         nm-runstatedir.patch
+# PATCH-FIX-SLE python3.6-in-sle.patch yfjiang@suse.com -- SLE still takes python 3.6 as primary runtime system, the patch makes meson find python 3.6
+Patch9:         python3.6-in-sle.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -301,6 +303,9 @@ This tool is still experimental.
 %patch -P 6 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%patch -P 9 -p1
+%endif
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:

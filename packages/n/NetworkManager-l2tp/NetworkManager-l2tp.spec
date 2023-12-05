@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(nss)
 Requires:       NetworkManager >= 1.20.0
 Requires:       xl2tpd
+Supplements:    (NetworkManager and xl2tpd)
 %requires_eq    ppp
 Recommends:     (strongswan or libreswan)
 
@@ -47,12 +48,15 @@ Recommends:     (strongswan or libreswan)
 This package contains software for integrating L2TP and L2TP/IPsec
 (L2TP over IPsec) VPN support with NetworkManager.
 
-%package gnome
+%package -n NetworkManager-applet-l2tp
 Summary:        NetworkManager VPN support for L2TP and L2TP/IPsec
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description gnome
+%description -n NetworkManager-applet-l2tp
 This package contains software for integrating L2TP and L2TP/IPsec
 (L2TP over IPsec) VPN support with NetworkManager.
 
@@ -69,6 +73,7 @@ This package contains software for integrating L2TP and L2TP/IPsec
 	--enable-libreswan-dh2 \
 	--with-pppd-plugin-dir=%{pppd_plugin_dir} \
 	--with-dist-version=%{version}-%{release} \
+	runstatedir=%{_rundir} \
 	%{nil}
 %make_build
 
@@ -100,7 +105,7 @@ fi
 %{_datadir}/dbus-1/system.d/nm-l2tp-service.conf
 %{pppd_plugin_dir}/nm-l2tp-pppd-plugin.so
 
-%files gnome
+%files -n NetworkManager-applet-l2tp
 %{_datadir}/metainfo/network-manager-l2tp.metainfo.xml
 %{_libdir}/NetworkManager/libnm-vpn-plugin-l2tp-editor.so
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-l2tp-editor.so

@@ -521,4 +521,16 @@
   (glgo#GNOME/NetworkManager-vpnc/commit/f4df2db6c, bsc#1213769).</comment>
     <requestid>1102255</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>a681d06c6152ded12d889d528e776b38</srcmd5>
+    <version>1.2.8</version>
+    <time>1701792137</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-vpnc
+  to more accurately reflect its usage
+- Add missing supplements:
+  - NM and vpnc
+  - NMA subpackage: main package and NMA (forwarded request 1130481 from gmbr3)</comment>
+    <requestid>1130779</requestid>
+  </revision>
 </revisionlist>

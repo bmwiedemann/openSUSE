@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  3 07:39:25 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add python3.6-in-sle.patch: SLE still takes python 3.6 as primary
+  system, the patch allows meson to find python 3.6 in SLE.
+
+-------------------------------------------------------------------
 Tue Nov 28 12:04:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

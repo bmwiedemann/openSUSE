@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 27 21:41:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update servant-server to version 0.20 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Aug 15 08:19:56 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update servant-server to version 0.20 revision 2.

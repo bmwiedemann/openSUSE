@@ -2250,4 +2250,13 @@ New stable release</comment>
     <comment></comment>
     <requestid>1129569</requestid>
   </revision>
+  <revision rev="263" vrev="3">
+    <srcmd5>fe2276a9bebb174f34c50fa8f06c5c54</srcmd5>
+    <version>1.44.2</version>
+    <time>1701792110</time>
+    <user>anag+factory</user>
+    <comment>- Add python3.6-in-sle.patch: SLE still takes python 3.6 as primary
+  system, the patch allows meson to find python 3.6 in SLE. (forwarded request 1130692 from yfjiang)</comment>
+    <requestid>1130749</requestid>
+  </revision>
 </revisionlist>

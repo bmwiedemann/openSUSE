@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  2 14:34:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Rename gnome subpackage to NetworkManager-applet-l2tp
+  to more accurately reflect its usage
+- Add missing supplements:
+  - NM and xl2tpd
+  - NMA subpackage: Main package and NMA
+- Configure runstatedir to %_rundir
+
+-------------------------------------------------------------------
 Wed Oct 11 22:47:24 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
 
 - Update to version 1.20.10:

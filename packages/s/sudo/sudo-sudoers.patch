@@ -1,8 +1,8 @@
-Index: sudo-1.9.14p1/plugins/sudoers/sudoers.in
+Index: sudo-1.9.15p2/plugins/sudoers/sudoers.in
 ===================================================================
---- sudo-1.9.14p1.orig/plugins/sudoers/sudoers.in
-+++ sudo-1.9.14p1/plugins/sudoers/sudoers.in
-@@ -32,32 +32,23 @@
+--- sudo-1.9.15p2.orig/plugins/sudoers/sudoers.in
++++ sudo-1.9.15p2/plugins/sudoers/sudoers.in
+@@ -41,32 +41,23 @@
  ##
  ## Defaults specification
  ##
@@ -52,25 +52,28 @@ Index: sudo-1.9.14p1/plugins/sudoers/sudoers.in
  ##
  ## Uncomment to restore the historic behavior where a command is run in
  ## the user's own terminal.
-@@ -72,10 +63,16 @@
+@@ -81,7 +72,6 @@
  ## Set maxseq to a smaller number if you don't have unlimited disk space.
  # Defaults log_output
  # Defaults!/usr/bin/sudoreplay !log_output
 -# Defaults!/usr/local/bin/sudoreplay !log_output
  # Defaults!REBOOT !log_output
  # Defaults maxseq = 1000
+ ##
+@@ -95,6 +85,12 @@
+ ## slower by these options and also can clutter up the logs.
+ # Defaults!PKGMAN !intercept, !log_subcmds
  
 +## In the default (unconfigured) configuration, sudo asks for the root password.
 +## This allows use of an ordinary user account for administration of a freshly
-+## installed system. When configuring sudo, delete the two
-+## following lines:
++## installed system.
 +Defaults targetpw   # ask for the password of the target user i.e. root
 +ALL   ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
 +
  ##
  ## Runas alias specification
  ##
-@@ -91,13 +88,5 @@ root ALL=(ALL:ALL) ALL
+@@ -110,13 +106,5 @@ root ALL=(ALL:ALL) ALL
  ## Same thing without a password
  # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
  

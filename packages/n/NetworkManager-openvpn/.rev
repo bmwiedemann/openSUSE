@@ -725,4 +725,16 @@
     <comment></comment>
     <requestid>1036649</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>b6f64eec679631be7bd83b5ce89cb8f7</srcmd5>
+    <version>1.10.2</version>
+    <time>1701792129</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-openvpn
+  to more accurately reflect its usage
+- Add missing supplements:
+  - NM and openvpn
+  - NMA subpackage: Main package and NMA (forwarded request 1130478 from gmbr3)</comment>
+    <requestid>1130776</requestid>
+  </revision>
 </revisionlist>

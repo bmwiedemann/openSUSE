@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 23 17:18:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update topograph to version 1.0.0.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:42 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

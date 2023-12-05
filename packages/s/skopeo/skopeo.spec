@@ -20,7 +20,7 @@
 %define project        github.com/containers/skopeo
 
 Name:           skopeo
-Version:        1.13.2
+Version:        1.14.0
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -36,7 +36,7 @@ BuildRequires:  go-go-md2man
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) >= 1.21
 ExcludeArch:    s390
 
 %description

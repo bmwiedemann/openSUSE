@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  3 12:05:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.78.1:
+  + Gtk template signals cause a reference cycle that is not
+    detected
+  + Modules from resources may get loaded twice
+  + docs: add examples for creating cairo image surfaces
+  + Deadlocks between GJS GC and dconf gsettings when a setting
+    value is changed
+  + Gtk3: Fix leak in GtkBuilder template signal connections
+- Drop 3cae384aaf15dec6653b1a5400032c2c2e5dc34c.patch: Fixed
+  upstream
+
+-------------------------------------------------------------------
 Thu Oct 26 08:12:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 3cae384aaf15dec6653b1a5400032c2c2e5dc34c.patch: module:

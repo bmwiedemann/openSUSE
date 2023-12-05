@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-responses
-Version:        0.23.3
+Version:        0.24.1
 Release:        0
 Summary:        A utility library for mocking out the `requests` Python library
 License:        Apache-2.0

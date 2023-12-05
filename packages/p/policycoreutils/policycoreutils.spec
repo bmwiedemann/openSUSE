@@ -75,6 +75,7 @@ Requires:       libsepol2 >= %{libsepol_ver}
 Requires:       rpm
 Requires:       selinux-tools
 Requires:       util-linux
+Obsoletes:      policycoreutils-python <= 2.6
 
 %description
 policycoreutils contains the policy core utilities that are required

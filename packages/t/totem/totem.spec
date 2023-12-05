@@ -24,6 +24,10 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
 Source0:        https://download.gnome.org/sources/totem/43/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM ac2d02530d3b555e44907162be05536a5927b2a0.patch -- gst: Force using newer GStreamer libva plugins
+Patch0:         https://gitlab.gnome.org/GNOME/totem/-/commit/ac2d02530d3b555e44907162be05536a5927b2a0.patch
+# PATCH-FIX-UPSTREAM d16d9ad1d2b214996639e4f01c4515b611fb2739.patch -- data: Add new canonical mime-type for AVI files
+Patch1:         https://gitlab.gnome.org/GNOME/totem/-/commit/d16d9ad1d2b214996639e4f01c4515b611fb2739.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

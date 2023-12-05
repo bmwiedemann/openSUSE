@@ -64,4 +64,15 @@
     <comment></comment>
     <requestid>1056393</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>31603fc2ace3fc2c5413ca9fc6e94d9f</srcmd5>
+    <version>1.2.0</version>
+    <time>1701792120</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-iodine
+  to more accurately reflect its usage
+- Change supplements:
+  - NMA subpackage: only supplement if main package is installed (forwarded request 1130474 from gmbr3)</comment>
+    <requestid>1130772</requestid>
+  </revision>
 </revisionlist>

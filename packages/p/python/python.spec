@@ -160,6 +160,9 @@ Patch79:        CVE-2023-40217-avoid-ssl-pre-close.patch
 # PATCH-FIX-UPSTREAM CVE-2022-48566-compare_digest-more-constant.patch bsc#1214691 mcepl@suse.com
 # Make compare_digest more constant-time
 Patch80:        CVE-2022-48566-compare_digest-more-constant.patch
+# PATCH-FIX-UPSTREAM CVE-2022-48560-after-free-heappushpop.patch bsc#1214675 mcepl@suse.com
+# fix use after free in heapq.heappushpop()
+Patch81:        CVE-2022-48560-after-free-heappushpop.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -310,67 +313,68 @@ that rely on earlier non-verification behavior.
 %prep
 %setup -q -n %{tarname}
 # COMMON-PREP-BEGIN
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch7 -p1
-%patch8 -p1
-%patch10 -p1
-%patch13 -p1
-%patch17 -p1
-%patch20 -p1
-%patch22 -p1
-%patch24 -p1
-%patch33 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 10 -p1
+%patch -P 13 -p1
+%patch -P 17 -p1
+%patch -P 20 -p1
+%patch -P 22 -p1
+%patch -P 24 -p1
+%patch -P 33 -p1
 %if %{suse_version} < 1500 && !0%{?is_opensuse}
-%patch34 -p1
+%patch -P 34 -p1
 %endif
-%patch35 -p1
-%patch38 -p1
+%patch -P 35 -p1
+%patch -P 38 -p1
 %ifarch ppc ppc64 ppc64le
-%patch40 -p1
+%patch -P 40 -p1
 %endif
-%patch41 -p1
+%patch -P 41 -p1
 %if %{suse_version} >= 1500 || (0%{?sle_version} && 0%{?sle_version} >= 120400)
-%patch47 -p1
-%patch48 -p1
+%patch -P 47 -p1
+%patch -P 48 -p1
 %endif
 # SLE-12 needs to skip more
 %if %{suse_version} == 1315
-%patch57 -p1
+%patch -P 57 -p1
 %endif
-%patch49 -p1
-%patch50 -p1
-%patch51 -p1
-%patch55 -p1
-%patch56 -p1
-%patch58 -p1
-%patch59 -p1
-%patch60 -p1
-%patch61 -p1
-%patch62 -p1
-%patch63 -p1
-%patch64 -p1
-%patch65 -p1
-%patch66 -p1
-%patch67 -p1
-%patch68 -p1
-%patch69 -p1
-%patch70 -p1
-%patch71 -p1
-%patch72 -p1
-%patch73 -p1
+%patch -P 49 -p1
+%patch -P 50 -p1
+%patch -P 51 -p1
+%patch -P 55 -p1
+%patch -P 56 -p1
+%patch -P 58 -p1
+%patch -P 59 -p1
+%patch -P 60 -p1
+%patch -P 61 -p1
+%patch -P 62 -p1
+%patch -P 63 -p1
+%patch -P 64 -p1
+%patch -P 65 -p1
+%patch -P 66 -p1
+%patch -P 67 -p1
+%patch -P 68 -p1
+%patch -P 69 -p1
+%patch -P 70 -p1
+%patch -P 71 -p1
+%patch -P 72 -p1
+%patch -P 73 -p1
 %if 0%{?sle_version} && 0%{?sle_version} < 150000
-%patch74 -p1
+%patch -P 74 -p1
 %endif
-%patch75 -p1
-%patch76 -p1
-# %%patch77 -p1
-%patch78 -p1
-%patch79 -p1
-%patch80 -p1
+%patch -P 75 -p1
+%patch -P 76 -p1
+# %%patch -P 77 -p1
+%patch -P 78 -p1
+%patch -P 79 -p1
+%patch -P 80 -p1
+%patch -P 81 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

@@ -37,22 +37,25 @@ BuildRequires:  pkgconfig(libnm) >= 1.2.0
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1)
-Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.2.0
 Requires:       vpnc
+Supplements:    (NetworkManager and vpnc)
 ExcludeArch:    s390
 
 %description
 NetworkManager-vpnc provides VPN support to NetworkManager for vpnc.
 
-%package gnome
+%package -n NetworkManager-applet-vpnc
 Summary:        NetworkManager VPN Support for vpnc
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
 Requires:       gnome-keyring
 Provides:       %{name}-frontend
+Provides:       %{name}-gnome = %{version}
+Obsoletes:      %{name}-gnome
+Supplements:    (%{name} and NetworkManager-applet)
 
-%description gnome
+%description -n NetworkManager-applet-vpnc
 NetworkManager-vpnc provides VPN support to NetworkManager for vpnc.
 
 %lang_package
@@ -80,7 +83,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_vpnservicedir}/nm-vpnc-service.name
 %{_datadir}/dbus-1/system.d/nm-vpnc-service.conf
 
-%files gnome
+%files -n NetworkManager-applet-vpnc
 %{_datadir}/metainfo/network-manager-vpnc.metainfo.xml
 %{_libexecdir}/nm-vpnc-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-vpnc-editor.so

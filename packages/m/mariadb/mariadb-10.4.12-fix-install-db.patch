@@ -1,10 +1,10 @@
-Index: mariadb-10.4.12/scripts/mysql_install_db.sh
+Index: mariadb-10.4.32/scripts/mysql_install_db.sh
 ===================================================================
---- mariadb-10.4.12.orig/scripts/mysql_install_db.sh
-+++ mariadb-10.4.12/scripts/mysql_install_db.sh
-@@ -482,20 +482,22 @@ if test -n "$user"
+--- mariadb-10.4.32.orig/scripts/mysql_install_db.sh
++++ mariadb-10.4.32/scripts/mysql_install_db.sh
+@@ -494,20 +494,22 @@ if test -n "$user"
  then
-   if test -z "$srcdir" -a "$in_rpm" -eq 0
+   if test -z "$srcdir" -a "$in_rpm" -eq 0 -a -d "$pamtooldir/auth_pam_tool_dir"
    then
 -    chown 0 "$pamtooldir/auth_pam_tool_dir/auth_pam_tool" && \
 -    chmod 04755 "$pamtooldir/auth_pam_tool_dir/auth_pam_tool"

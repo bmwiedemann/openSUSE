@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  4 12:40:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9
+  * route/link: add bonding interface options set rtnl apis
+  * route: fix memleak in rtnl_act_parse()
+  * route/tc: avoid integer overflow in rtnl_tc_calc_cell_log()
+
+-------------------------------------------------------------------
 Tue Aug 29 10:33:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.8

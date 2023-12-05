@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 05 10:19:36 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 2.5.0+git20231205.c211cee:
+  * FileDigestCheck: Filter minor versions in shebangs.
+  * Disable Mageia CI builds due to system problem
+
+-------------------------------------------------------------------
+Wed Nov 15 09:40:11 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.5.0+git20231115.969a58b:
+  * polkit-rules-whitelist: self auth as admin (bsc#1215652)
+
+-------------------------------------------------------------------
 Fri Nov 03 14:39:04 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20231103.c416f34:

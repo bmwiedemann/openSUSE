@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Sat Sep 30 11:43:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+Mon Nov 27 16:30:33 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2022-48560-after-free-heappushpop.patch fixing
+  use-after-free in Python via heappushpop in heapq (bsc#1214675,
+  CVE-2022-48560).
+- switch from %patchN style to the %patch -P N one.
+
+-------------------------------------------------------------------
+Sat Sep 16 12:40:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - (bsc#1214691, CVE-2022-48566) Add
   CVE-2022-48566-compare_digest-more-constant.patch to make

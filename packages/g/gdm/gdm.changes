@@ -41,6 +41,9 @@ Wed Aug 30 07:34:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Work better in presence of simpledrm.
   + wayland multi-seat support.
 - Rebase patches with quilt.
+- Drop upstream patches:
+  + gdm-fix-btmp-record-with-seat.patch
+  + gdm-disable-wayland-on-aspeed-chipsets.patch
 
 -------------------------------------------------------------------
 Mon Aug 14 03:09:23 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
@@ -57,6 +60,13 @@ Fri Jun 30 11:28:29 UTC 2023 - Fabian Vogt <fvogt@suse.com>
   to runtime depend on gdm. Avoid all of that by just adding it here:
   + Add default.pa
   + Add entries to gdm.tmpfiles
+
+-------------------------------------------------------------------
+Mon Jun  5 07:46:59 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+- Add gdm-fix-btmp-record-with-seat.patch: When writing btmp record
+  display name is needed, but user don't have a display before
+  logging in, this patch uses seat instead which is also better for
+  Wayland (bsc#1211825).
 
 -------------------------------------------------------------------
 Fri May  5 18:22:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -143,6 +153,13 @@ Tue Sep 20 17:49:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 Tue Aug  2 01:52:26 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Fix specfile: Adapt macros %_pam_moduledir (boo#1191033).
+
+-------------------------------------------------------------------
+Fri Jul  8 10:33:14 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gdm-disable-wayland-on-aspeed-chipsets.patch: Those chips do
+  not have fast blending and Wayland performance is bad on them, so
+  disable Wayland on aspeed chipsets (bsc#1200323).
 
 -------------------------------------------------------------------
 Tue Apr 26 14:32:28 UTC 2022 - Frederic Crozat <fcrozat@suse.com>

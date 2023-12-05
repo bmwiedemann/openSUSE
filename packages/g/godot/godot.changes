@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Nov 30 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.2
+
+  Breaking possible:
+  * AnimationMixer between AnimationPlayer and AnimationTree
+  * GraphEdit and GraphNode reworked
+  * GLTF importer
+  * Internal storing of meshes
+  * "change_scene_to_"* methods
+  * "bus_layout_changed" signal removed in AudioServer
+  * NOTIFICATION_NODE_RECACHE_REQUESTED removed
+
+  Some highlights:
+  * Onion skinning mode to preview animations
+  * 2D navigation mesh baking
+  * Multi-threading when baking the navigation mesh
+  * Editor code regions
+  * Project manager reorganized
+  * GDExtension hot reload in editor
+  * Import type changes are picked up on the fly
+  * KTX image format
+  * Native file selection dialogs
+  * Copying and pasting images to clipboard
+  * OIDN dropped as default denoiser
+  * GPU and CPU particles start to deviate
+  * Full support for threaded code in script debugger
+
+  and much more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.2
+
+- rebased improve_linker_detection.patch
+
+-------------------------------------------------------------------
 Tue Nov 7 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 4.1.3

@@ -1,7 +1,7 @@
 cabal-version:       2.2
 name:                unicode-data
 version:             0.4.0.1
-x-revision: 1
+x-revision: 2
 synopsis:            Access Unicode Character Database (UCD)
 description:
   @unicode-data@ provides Haskell APIs to efficiently access the
@@ -117,7 +117,7 @@ library
   hs-source-dirs: lib
   ghc-options: -O2
   build-depends:
-      base >=4.7 && <4.19
+      base >=4.7 && <4.20
 
 executable ucd2haskell
   import: default-extensions, compile-options
@@ -129,7 +129,7 @@ executable ucd2haskell
   if flag(ucd2haskell)
     buildable: True
     build-depends:
-        base             >= 4.7   && < 4.19
+        base             >= 4.7   && < 4.20
       , containers       >= 0.5   && < 0.7
       , directory        >= 1.3.6 && < 1.3.9
       , filepath         >= 1.4.100 && < 1.5
@@ -147,8 +147,8 @@ test-suite test
   other-modules:
       Unicode.CharSpec
   build-depends:
-      base             >= 4.7   && < 4.19
-    , hspec            >= 2.0   && < 2.11
+      base             >= 4.7   && < 4.20
+    , hspec            >= 2.0   && < 2.12
     , unicode-data
   -- We need to match a GHC version with the same Unicode version.
   -- See: test/Unicode/CharSpec.hs for compatibility table.
@@ -162,8 +162,8 @@ benchmark bench
   hs-source-dirs: bench
   main-is: Main.hs
   build-depends:
-    base        >= 4.7   && < 4.19,
-    deepseq     >= 1.1   && < 1.5,
+    base        >= 4.7   && < 4.20,
+    deepseq     >= 1.1   && < 1.6,
     tasty-bench >= 0.2.5 && < 0.4,
     tasty       >= 1.4.1,
     unicode-data

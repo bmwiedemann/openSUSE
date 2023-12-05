@@ -21,16 +21,15 @@
 %define run_tests        1
 
 Name:           polkit
-Version:        121
+Version:        123
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            https://www.freedesktop.org/wiki/Software/polkit/
-Source0:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz
-Source1:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz.sign
-Source2:        %{name}.keyring
+URL:            https://gitlab.freedesktop.org/polkit/polkit/
+Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source3:        system-user-polkitd.conf
+Source4:        50-default.rules
 Source99:       baselibs.conf
 
 # Upstream First - Policy:
@@ -38,8 +37,6 @@ Source99:       baselibs.conf
 # in the patch. Any patches added here without a very good reason to make
 # an exception will be silently removed with the next version update.
 
-# PATCH-FIX-OPENSUSE polkit-no-wheel-group.patch vuntz@opensuse.org -- In openSUSE, there's no special meaning for the wheel group, so we shouldn't allow it to be admin
-Patch0:         polkit-no-wheel-group.patch
 # PATCH-FIX-OPENSUSE polkit-gettext.patch lnussel@suse.de -- allow fallback to gettext for polkit action translations
 # polkit-use-gettext-as-fallback.patch
 Patch1:         polkit-gettext.patch
@@ -47,9 +44,6 @@ Patch1:         polkit-gettext.patch
 Patch3:         polkit-keyinit.patch
 # PATCH-FIX-OPENSUSE polkit-adjust-libexec-path.patch -- Adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
-# PATCH-FIX-UPSTREAM polkit-fix-pam-prefix.patch luc14n0@opensuse.org -- Make
-# intended use of pam_prefix meson option rather than hard-coded path
-Patch5:         polkit-fix-pam-prefix.patch
 # Read actions also from /etc/polkit-1/actions
 Patch6:         polkit-actions-in-etc.patch
 
@@ -73,6 +67,7 @@ BuildRequires:  pkgconfig(systemd)
 #################################################################
 # python3-dbus-python and python3-python-dbusmock are needed for
 # test-polkitbackendjsauthority test:
+BuildRequires:  /usr/bin/dbus-daemon
 BuildRequires:  python3-dbus-python
 BuildRequires:  python3-python-dbusmock
 #################################################################
@@ -80,7 +75,7 @@ BuildRequires:  python3-python-dbusmock
 # gtk-doc drags indirectyly ruby in for one of the helpers. This in turn causes a build cycle.
 #!BuildIgnore:  ruby
 
-Requires:       dbus-1
+Requires:       /usr/bin/dbus-daemon
 Requires:       libpolkit-agent-1-0 = %{version}-%{release}
 Requires:       libpolkit-gobject-1-0 = %{version}-%{release}
 Requires(post): permissions
@@ -160,7 +155,7 @@ processes.
 This package provides the GObject Introspection bindings for PolicyKit.
 
 %prep
-%autosetup -p1 -n polkit-v.%{version}
+%autosetup -p1
 
 %build
 %meson                                     \
@@ -198,9 +193,8 @@ This package provides the GObject Introspection bindings for PolicyKit.
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
 
-# We use /usr/share as prefix for the rules.d directory
-mv %{buildroot}%{_sysconfdir}/polkit-1/rules.d/50-default.rules \
-   %{buildroot}%{_polkit_rulesdir}/50-default.rules
+rm -v %{buildroot}%{_polkit_rulesdir}/50-default.rules
+install -m0644 %{SOURCE4} %{buildroot}%{_polkit_rulesdir}/50-default.rules
 
 # Install the polkitd user creation file:
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -264,8 +258,8 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %{_datadir}/polkit-1/policyconfig-1.dtd
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
-%attr(0750,root,polkitd) %dir %{_polkit_rulesdir}
-%attr(0640,root,polkitd) %{_polkit_rulesdir}/50-default.rules
+%attr(0555,root,root) %dir %{_polkit_rulesdir}
+ %{_polkit_rulesdir}/50-default.rules
 %{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0750,root,polkitd) %dir %{_sysconfdir}/polkit-1/rules.d

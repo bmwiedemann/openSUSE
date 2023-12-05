@@ -29,7 +29,7 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.1.3
+Version:        4.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -97,7 +97,6 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
-BuildRequires:  glslang-devel
 BuildRequires:  mbedtls-devel < 3
 BuildRequires:  pkgconfig(graphite2)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -136,41 +135,46 @@ Provides:       bundled(enet) = 1.3.17
 Provides:       bundled(minizip) = 1.3
 
 Provides:       bundled(FastLZ)
-Provides:       bundled(FastNoiseLite)
 Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(amd-fsr) = 1.0.2
+Provides:       bundled(amd-fsr2) = 2.2.1
+Provides:       bundled(angle)
 Provides:       bundled(astcenc) = 4.4.0
 Provides:       bundled(basis_universal) = 1.16.4
+Provides:       bundled(clipper2) = 1.2.2
 Provides:       bundled(cvtt)
 Provides:       bundled(doctest) = 2.4.11
 Provides:       bundled(etcpak) = 1.0
 Provides:       bundled(glad) = 2.0.4
+# same version for glslang, spirv-reflect, volk and vulkan needed
+Provides:       bundled(glslang) = sdk-1.3.261.1
 Provides:       bundled(google-droid-fonts)
-Provides:       bundled(hqx)
 Provides:       bundled(icu4c) = 73.2
 Provides:       bundled(ifaddrs-android)
 Provides:       bundled(jpeg-compressor) = 2.00
+Provides:       bundled(libktx) = 4.1.0
 Provides:       bundled(meshoptimizer)
+Provides:       bundled(mingw-std-threads)
 Provides:       bundled(minimp3)
 Provides:       bundled(msdfgen) = 1.10
+Provides:       bundled(noise)
 Provides:       bundled(noto-sans-fonts)
 Provides:       bundled(nvapi) = R525
-Provides:       bundled(oidn) = 1.9.2
-Provides:       bundled(openxr) = 1.0.28
+Provides:       bundled(openxr) = 1.0.31
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(smaz)
-Provides:       bundled(spirv-reflect) = sdk-1.3.250.0
+Provides:       bundled(spirv-reflect) = sdk-1.3.261.1
 Provides:       bundled(stb)
 Provides:       bundled(thorvg) = 0.9.0
 Provides:       bundled(tinyexr) = 1.0.7
 Provides:       bundled(vhacd)
-Provides:       bundled(volk) = sdk-1.3.250.0
-Provides:       bundled(vulkan) = sdk-1.3.250.0
+Provides:       bundled(volk) = sdk-1.3.261.1
+Provides:       bundled(vulkan) = sdk-1.3.261.1
 Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
@@ -187,18 +191,17 @@ Provides:       bundled(embree) = 3.13.5
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(brotli)
-Provides:       bundled(glslang) = 12.2.0
+Provides:       bundled(brotli) = 1.1.0
+
 # see comments for freetype2, libpng and zlib Factory BuildRequires
 Provides:       bundled(freetype2) = 2.13.2
 Provides:       bundled(graphite) = 1.3.14
-Provides:       bundled(harfbuzz) = 7.3.0
-
+Provides:       bundled(harfbuzz) = 8.2.2
 Provides:       bundled(libpng) = 1.6.40
 Provides:       bundled(libzstd) = 1.5.5
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.28.4
+Provides:       bundled(mbedtls) = 2.28.5
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
@@ -289,7 +292,7 @@ unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
 
 # Unbundle more libs for Tumbleweed
 %if %{suse_version} > 1500
-unbundle_libs+=('brotli' 'freetype' 'glslang' 'graphite' 'harfbuzz' 'libpng' 'mbedtls' 'zlib' 'zstd')
+unbundle_libs+=('brotli' 'freetype' 'graphite' 'harfbuzz' 'libpng' 'mbedtls' 'zlib' 'zstd')
 %else
 # Unbundle more libs for coming Leap
 %if 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
@@ -374,7 +377,7 @@ install -D -p -m 644 misc/dist/shell/godot-runner %{buildroot}%{_datadir}/bash-c
 %fdupes -s %{buildroot}/%{_prefix}
 
 %files
-%license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
+%license LICENSE.txt LOGO_LICENSE.txt COPYRIGHT.txt thirdparty_README.md
 %doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256
@@ -390,7 +393,7 @@ install -D -p -m 644 misc/dist/shell/godot-runner %{buildroot}%{_datadir}/bash-c
 
 %if !0%{?faster_build}
 %files runner
-%license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
+%license LICENSE.txt LOGO_LICENSE.txt COPYRIGHT.txt thirdparty_README.md
 %doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
 %{_bindir}/%{name}-runner
 %endif

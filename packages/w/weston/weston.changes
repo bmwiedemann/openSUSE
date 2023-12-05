@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 28 02:00:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13
+  * Multi-backend support
+  * VNC, Pipewire and RDP backends: GL renderer support
+  * Improved fullscreen handling in kiosk-shell which allows
+    xwayland type of surfaces be fullscreen
+  * Support for overlapping outputs, which allows placing views on
+    planes when they are displayed on multiple outputs
+
+-------------------------------------------------------------------
 Wed Aug  2 17:32:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 12.0.2

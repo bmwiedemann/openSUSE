@@ -1,4 +1,4 @@
-From c6a136e30370e2b94e6373b9c22f6ec3d0d9a738 Mon Sep 17 00:00:00 2001
+From 4c4982da6ba4822ce8ea33a8054fac51465b0c7c Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Tue, 28 Nov 2023 22:54:03 +1100
 Subject: [PATCH] BUILD: SLE12: revert "btrfs: depend on kernel UAPI instead of
@@ -143,11 +143,11 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
 
 diff --git a/go.mod b/go.mod
-index 9bafb7ba5944..532d2d63f104 100644
+index 8fa8e5afc0d5..a0c927917263 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -9,7 +9,7 @@ require (
- 	github.com/Microsoft/hcsshim v0.11.1
+ 	github.com/Microsoft/hcsshim v0.11.4
  	github.com/container-orchestrated-devices/container-device-interface v0.5.4
  	github.com/containerd/aufs v1.0.0
 -	github.com/containerd/btrfs/v2 v2.0.0
@@ -156,7 +156,7 @@ index 9bafb7ba5944..532d2d63f104 100644
  	github.com/containerd/console v1.0.3
  	github.com/containerd/continuity v0.4.2
 diff --git a/go.sum b/go.sum
-index 00dae8b4104a..0e90a8e8855c 100644
+index cd0adb193879..21693007e7bc 100644
 --- a/go.sum
 +++ b/go.sum
 @@ -187,9 +187,8 @@ github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY
@@ -3129,10 +3129,10 @@ index 904be42ffdce..000000000000
 -	return
 -}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index d38e3a52bf83..3a9043e2b3fd 100644
+index fd5a3491d305..764f922ba25c 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
-@@ -88,9 +88,9 @@ github.com/container-orchestrated-devices/container-device-interface/specs-go
+@@ -87,9 +87,9 @@ github.com/container-orchestrated-devices/container-device-interface/specs-go
  ## explicit; go 1.13
  github.com/containerd/aufs
  github.com/containerd/aufs/plugin
@@ -3145,7 +3145,7 @@ index d38e3a52bf83..3a9043e2b3fd 100644
  # github.com/containerd/cgroups v1.1.0
  ## explicit; go 1.17
  github.com/containerd/cgroups/stats/v1
-@@ -529,7 +529,6 @@ golang.org/x/sync/errgroup
+@@ -530,7 +530,6 @@ golang.org/x/sync/errgroup
  golang.org/x/sync/semaphore
  # golang.org/x/sys v0.13.0
  ## explicit; go 1.17

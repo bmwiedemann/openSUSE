@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  4 12:19:00 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch tcsh-skip-utmp-service.dif
+  * There is currently no API avaible to replace the utmp/wtmp
+    based builtins watch and who of tcsh 
+
+-------------------------------------------------------------------
 Thu Oct 12 11:10:59 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Try to make complete for command man faster and support all

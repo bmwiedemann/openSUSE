@@ -1,7 +1,64 @@
 -------------------------------------------------------------------
+Fri Dec  1 09:48:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Add support for Python 3.12.
+  * OATH: detect and remove corrupted credentials.
+  * Bugfix: HSMAUTH: Fix order of CLI arguments.
+  * PIV: Support for compressed certificates.
+  * OpenPGP: Use InvalidPinError for wrong PIN.
+  * Add YubiHSM Auth application support.
+  * Improved API documentation.
+  * Scripting: Add name attribute to device.
+  * Bugfix: PIV: don't throw InvalidPasswordError on
+    malformed PEM private key.
+  * Bugfix: PIV: string representation of SLOT caused
+    infinite loop on Python <3.11.
+  * Bugfix: Fix errors in 'ykman config nfc' on YubiKeys
+    without NFC capability.
+  * Bugfix: Fix error message shown when invalid modhex input
+    length given for YubiOTP.
+  * Add OpenPGP functionality to supported API.
+  * Add PIV key info command to CLI.
+  * PIV: Support signing prehashed data via API.
+  * Bugfix: Fix signing PIV certificates/CSRs with key that
+    always requires PIN.
+  * Bugfix: Fix incorrect display name detection for certain
+    keys over NFC.
+  * Bugfix: Fix the interactive confirmation prompt for some
+    CLI commands.
+  * Bugfix: OpenPGP Signature PIN policy values were swapped.
+  * Bugfix: FIDO: Handle discoverable credentials that are
+    missing name or displayName.
+  * Add support for Python 3.11.
+  * Remove extra whitespace characters from CLI into command
+    output.
+  * Various cleanups and improvements to the API.
+  * Improvements to the handling of YubiKeys and connections.
+  * Command aliases for ykman 3.x (introduced in ykman 4.0)
+    have now been dropped.
+  * Installers for ykman are now provided for Windows (amd64)
+    and MacOS (universal2).
+  * Logging has been improved, and a new TRAFFIC level has
+    been introduced.
+  * The codebase has been improved for scripting usage,
+    either directly as a Python module, or via the new
+    "ykman script" command.
+  * PIV: Add support for dotted-string OIDs when parsing
+    RFC4514 strings.
+  * PIV: Drop support for signing certificates and CSRs with
+    SHA-1.
+  * FIDO: Credential management commands have been improved
+    to deal with ambiguity in certain cases.
+  * OATH: Access Keys ("remembered" passwords) are now stored
+    in the system keyring.
+  * OpenPGP: Commands have been added to manage PINs.
+- add keyring for offline validation
+
+-------------------------------------------------------------------
 Mon Dec 19 18:58:06 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
-- Keep this version until version 5.0.0 or 
+- Keep this version until version 5.0.0 or
   yubikey-manager-qt v1.2.4 and yubioath-desktop v5.1.0 was fixed
 - Some small .spec file fixes
 
@@ -122,7 +179,7 @@ Sat Jun 29 20:32:49 UTC 2019 - Karol Babioch <kbabioch@suse.com>
   * FIDO: Support for credential management
   * OpenPGP: Support for OpenPGP attestation, cardholder certificates and
     cached touch policies
-  * OTP: Add flag for using numeric keypad when sending digits 
+  * OTP: Add flag for using numeric keypad when sending digits
 
 -------------------------------------------------------------------
 Wed May 29 08:52:25 UTC 2019 - Karol Babioch <kbabioch@suse.de>
@@ -178,7 +235,7 @@ Mon Nov 12 09:15:25 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 -------------------------------------------------------------------
 Wed Oct 10 08:38:58 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 
-- Version 1.0.1 (released 2018-10-10) 
+- Version 1.0.1 (released 2018-10-10)
   * Support for YubiKey 5A
   * OATH: Ignore extra parameters in URI parsing
   * Bugfix: Never say that NFC is supported for YubiKeys without NFC
@@ -206,7 +263,7 @@ Wed Jul 11 09:24:55 UTC 2018 - kbabioch@suse.com
 - Version 0.7.0 (released 2018-05-07)
   * Support for YubiKey Preview.
   * Add command to configure enabled applications over USB and NFC. See ykman config -h.
-  * Add command for selecting which slot to use for NDEF. See ykman otp ndef -h. 
+  * Add command for selecting which slot to use for NDEF. See ykman otp ndef -h.
 - Applied spec-cleaner
 
 -------------------------------------------------------------------
@@ -220,7 +277,7 @@ Tue Apr 17 07:18:29 UTC 2018 - kbabioch@suse.com
   * PIV: Signatures for CSRs are now correct.
   * PIV: Commands on slots with PIN policy ALWAYS no longer fail if the YubiKey has a management key protected by PIN.
   * Mode: The U2F mode is now called FIDO.
-  * Dependencies: libu2f-host is no longer used for FIDO communication over USB, instead the python library fido2 is used. 
+  * Dependencies: libu2f-host is no longer used for FIDO communication over USB, instead the python library fido2 is used.
 - Cleaned up spec file (spec-cleaner)
 
 -------------------------------------------------------------------

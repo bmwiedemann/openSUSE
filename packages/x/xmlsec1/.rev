@@ -218,4 +218,12 @@
     <comment>Fix build with older openssl</comment>
     <requestid>1102976</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>43c2c8a5f3dc662c817402535f55bc6d</srcmd5>
+    <version>1.2.37</version>
+    <time>1701792085</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130810</requestid>
+  </revision>
 </revisionlist>

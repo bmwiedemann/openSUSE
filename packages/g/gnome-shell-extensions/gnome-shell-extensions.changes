@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  2 20:06:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.2:
+  + window-list:
+    - Fix buttons not being clickable at the screen edge
+    - Really fix initial preview visibility
+  + workspace-indicator: Really fix initial preview visibility
+  + Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
 Wed Nov  1 09:47:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:

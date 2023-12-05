@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Nov 23 11:10:07 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.14.0:
+  * Bump to v1.14.0
+  * fix(deps): update module github.com/containers/common to v0.57.0
+  * chore(deps): update dependency containers/automation_images to v20231116
+  * fix(deps): update module github.com/containers/image/v5 to v5.29.0
+  * Add documentation and smoke tests for the new --compat-auth-file options
+  * Update c/image and c/common to latest
+  * fix(deps): update module github.com/containers/storage to v1.51.0
+  * fix(deps): update module golang.org/x/term to v0.14.0
+  * fix(deps): update module github.com/spf13/cobra to v1.8.0
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.55.2
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.55.1
+  * fix(deps): update github.com/containers/common digest to 3e5caa0
+  * chore(deps): update module google.golang.org/grpc to v1.57.1 [security]
+  * fix(deps): update module github.com/containers/ocicrypt to v1.1.9
+  * Update github.com/klauspost/compress to v1.17.2
+  * chore(deps): update module github.com/docker/docker to v24.0.7+incompatible [security]
+  * Fix ENTRYPOINT documentation, drop others.
+  * Remove unused environment variables in Cirrus
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.55.0
+  * chore(deps): update dependency containers/automation_images to v20231004
+  * chore(deps): update module golang.org/x/net to v0.17.0 [security]
+  * copy: Note support for `zstd:chunked`
+  * fix(deps): update module golang.org/x/term to v0.13.0
+  * fix(deps): update module github.com/docker/distribution to v2.8.3+incompatible
+  * fix(deps): update github.com/containers/common digest to 745eaa4
+  * Packit: switch to @containers/packit-build team for copr failure notification comments
+  * Packit: tag @lsm5 on copr build failures
+  * vendor of containers/common
+  * fix(deps): update module github.com/opencontainers/image-spec to v1.1.0-rc5
+  * fix(deps): update module github.com/containers/common to v0.56.0
+  * Cirrus: Remove multi-arch skopeo image builds
+  * fix(deps): update module github.com/containers/image/v5 to v5.28.0
+  * Increase the golangci-lint timeout
+  * fix(deps): update module github.com/containers/storage to v1.50.2
+  * fix(deps): update module github.com/containers/storage to v1.50.1
+  * fix(deps): update golang.org/x/exp digest to 9212866
+  * Fix a man page link
+  * fix(deps): update github.com/containers/image/v5 digest to 58d5eb6
+  * GHA: Closed issue/PR comment-lock test
+  * fix(deps): update module github.com/containers/common to v0.55.4
+  * fix(deps): update module github.com/containers/storage to v1.49.0
+  * rpm: spdx compatible license field
+  * chore(deps): update dependency golangci/golangci-lint to v1.54.2
+  * chore(deps): update dependency containers/automation_images to v20230816
+  * Packit: set eln target correctly
+  * packit: Build PRs into default packit COPRs
+  * DOCS: Update Go version requirement info
+  * DOCS: Add information about the cross-build
+  * fix(deps): update module github.com/containers/ocicrypt to v1.1.8
+  * fix(deps): update module github.com/containers/common to v0.55.3
+  * Update c/image after https://github.com/containers/image/pull/2070
+  * chore(deps): update dependency golangci/golangci-lint to v1.54.1
+  * chore(deps): update dependency containers/automation_images to v20230809
+  * fix(deps): update golang.org/x/exp digest to 352e893
+  * chore(deps): update dependency containers/automation_images to v20230807
+  * Update to Go 1.19
+  * fix(deps): update module golang.org/x/term to v0.11.0
+  * Update c/image for golang.org/x/exp
+  * RPM: define gobuild macro for rhel/centos stream
+  * Fix handling the unexpected return value combination from IsRunningImageAllowed
+  * Close the PolicyContext, as required by the API
+  * Use globalOptions.getPolicyContext instead of an image-targeted SystemContext
+  * Packit: remove pre-sync action
+  * fix(deps): update module github.com/containers/common to v0.55.2
+  * proxy: Change the imgid to uint64
+  * [CI:BUILD] Packit: install golist before updating downstream spec
+  * Update module golang.org/x/term to v0.10.0
+  * Bump to v1.14.0-dev
+  * Bump to v1.13.0
+
+-------------------------------------------------------------------
+Tue Oct 10 06:16:47 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Bump go version to 1.21 (bsc#1215611)
+
+-------------------------------------------------------------------
 Fri Aug 11 05:45:02 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.13.2:

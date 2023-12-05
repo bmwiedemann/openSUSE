@@ -17,11 +17,12 @@
 
 
 %define oname sqlite
-%define tarversion 3440000
+%define tarversion 3440200
+%define docversion 3440200
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.44.0
+Version:        3.44.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -29,7 +30,7 @@ Group:          Productivity/Databases/Servers
 URL:            https://www.sqlite.org/
 Source0:        https://www.sqlite.org/2023/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
-Source2:        https://www.sqlite.org/2023/sqlite-doc-%{tarversion}.zip
+Source2:        https://www.sqlite.org/2023/sqlite-doc-%{docversion}.zip
 Patch0:         sqlite3-rtree-i686.patch
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -130,10 +131,10 @@ other documentation found on sqlite.org. The files can be found in
 %prep
 %autosetup -p1 -n sqlite-src-%{tarversion} -a2
 
-rm -v sqlite-doc-%{tarversion}/releaselog/current.html
-ln -sv `echo %{version} | sed "s/\./_/g"`.html sqlite-doc-%{tarversion}/releaselog/current.html
+rm -v sqlite-doc-%{docversion}/releaselog/current.html
+ln -sv `echo %{docversion} | sed "s/\./_/g"`.html sqlite-doc-%{docversion}/releaselog/current.html
 find -type f -name sqlite.css~ -delete
-cmp sqlite-doc-%{tarversion}/fileformat{,2}.html && ln -sf fileformat.html sqlite-doc-%{tarversion}/fileformat2.html
+cmp sqlite-doc-%{docversion}/fileformat{,2}.html && ln -sf fileformat.html sqlite-doc-%{docversion}/fileformat2.html
 
 %build
 export TCLLIBDIR=%tcl_archdir/sqlite%version
@@ -204,6 +205,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc %_mandir/mann/*
 
 %files doc
-%doc sqlite-doc-%{tarversion}/*
+%doc sqlite-doc-%{docversion}/*
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  4 11:37:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.10.10:
+  * Updated to Unicode 15.1.0.
+
+-------------------------------------------------------------------
 Thu Sep  7 08:18:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2023.8.8:
@@ -40,25 +46,25 @@ Mon Mar 27 07:36:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.3.23:
   * Backtracking failure matching regex
-  * Limit running time for failing fullmatch 
+  * Limit running time for failing fullmatch
 
 -------------------------------------------------------------------
 Wed Nov  9 18:55:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 2022.10.31 
+- update to 2022.10.31
   * Updated text for supported Unicode and Python versions.
 
 -------------------------------------------------------------------
 Fri Sep 16 18:28:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.9.13:
-  * update to unicode 15.0 
+  * update to unicode 15.0
 
 -------------------------------------------------------------------
 Mon Sep 12 20:17:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.9.11:
-  * fix issue 474: regex has no equivalent to re.Match.groups() for captures 
+  * fix issue 474: regex has no equivalent to re.Match.groups() for captures
   * fix segmentation fault when using conditional pattern (issue 479)
   * use \v for vertical spacing
 
@@ -69,7 +75,7 @@ Sun Jul 17 08:17:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix Emoji classified as letter
   * Revisit compilation flag to prevent adding a single explicitly compiled regex to cache
   * Fix Scoped inline flags 'a', 'u', and 'L' affecting global flags
- 
+
 -------------------------------------------------------------------
 Tue Jun 14 22:03:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
@@ -88,7 +94,7 @@ Sun Aug  1 09:30:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.7.6:
   * drop-in replacement for python re
-  * fix fuzzy character restrictions not applying to insertions 
+  * fix fuzzy character restrictions not applying to insertions
 
 -------------------------------------------------------------------
 Sun May  9 14:40:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -105,14 +111,14 @@ Sat Mar 13 14:14:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Fix Unexpected behavior in fuzzy matching with limited character set
   * clock() calls for timeout cause slowdown in Docker
   * Update lis of supported Python versions
-  * licensing change to Apache-2.0 
+  * licensing change to Apache-2.0
 
 -------------------------------------------------------------------
 Wed Oct  7 04:29:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to 2020.9.27
   * Fuzzy-matching fixes
-  * Fix Memory Error in regex.findall 
+  * Fix Memory Error in regex.findall
   * Added \h as an alias to [[:blank:]].
   * Improved performance of string sets.
 
@@ -146,7 +152,7 @@ Wed Jun  5 10:52:20 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 - Update to 2019.06.05
   * Updated for Python 3.8.
   * Updated to Unicode 12.1.0.
-  * For fullmatch, added check for end/start of string for 
+  * For fullmatch, added check for end/start of string for
     RE_OP_SUCCESS in try_match.
 
 -------------------------------------------------------------------

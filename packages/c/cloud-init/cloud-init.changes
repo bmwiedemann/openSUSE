@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  1 23:16:08 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Move fdupes call back to %install 
+
+-------------------------------------------------------------------
 Mon Oct  9 14:26:40 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 23.3 (bsc#1216011, bsc#1215794, bsc#1215740)

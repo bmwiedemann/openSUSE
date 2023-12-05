@@ -2,6 +2,7 @@ From: cunix@mail.de
 Date: 2023-09-21 12:00:00
 Subject: regex in linker detection for template builds fails sometimes to recognize correct ld version
 References: https://github.com/godotengine/godot/issues/82078
+Rebased: 2023-11-30
 
 distro added stuff to "ld --version" output prevents correct
 version detection.
@@ -16,7 +17,7 @@ dangers regarding assumptions about the parsed string
 diff -r -U 5 a/platform/linuxbsd/detect.py b/platform/linuxbsd/detect.py
 --- a/platform/linuxbsd/detect.py
 +++ b/platform/linuxbsd/detect.py
-@@ -453,11 +453,11 @@
+@@ -463,16 +463,17 @@
          import re
  
          linker_version_str = subprocess.check_output(
@@ -29,3 +30,8 @@ diff -r -U 5 a/platform/linuxbsd/detect.py b/platform/linuxbsd/detect.py
                  "Warning: Creating export template binaries enabled for PCK embedding is currently only supported with GNU ld, not gold, LLD or mold."
              )
          else:
++            print("gnu_ld_version found by patch: " + str(gnu_ld_version.group(1)))
+             if float(gnu_ld_version.group(1)) >= 2.30:
+                 env.Append(LINKFLAGS=["-T", "platform/linuxbsd/pck_embed.ld"])
+             else:
+                 env.Append(LINKFLAGS=["-T", "platform/linuxbsd/pck_embed.legacy.ld"])

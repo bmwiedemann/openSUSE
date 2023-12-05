@@ -16,8 +16,16 @@
 #
 
 
+%if %{defined _distconfdir}
+%define confdir %{_distconfdir}
+%define confmode 0444
+%else
+%define confdir %{_sysconfdir}
+%define confmode 0440
+%endif
+
 Name:           sudo
-Version:        1.9.14p3
+Version:        1.9.15p2
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -31,6 +39,9 @@ Source4:        sudo-i.pamd
 Source5:        README.SUSE
 Source6:        fate_313276_test.sh
 Source7:        README_313276.test
+Source8:        50-wheel-auth-self.conf
+Source9:        51-wheel.rules
+Source10:       system-group-sudo.conf
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
 BuildRequires:  audit-devel
@@ -42,6 +53,7 @@ BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  zlib-devel
 Requires(pre):  coreutils
 Requires(pre):  permissions
@@ -49,12 +61,17 @@ Recommends:     sudo-plugin-python
 
 %description
 Sudo is a command that allows users to execute some commands as root.
-The %{_sysconfdir}/sudoers file (edited with 'visudo') specifies which users have
+%if %{defined _distconfdir}
+Sudo reads either %{_sysconfdir}/sudoers or %{_distconfdir}/sudoers
+(in that order, whichever one it finds first), to determine what users have
+%else
+The %{_sysconfdir}/sudoers file specifies which users have
+%endif
 access to sudo and which commands they can run. Sudo logs all its
 activities to syslogd, so the system administrator can keep an eye on
-things. Sudo asks for the password for initializing a check period of a
+things. Sudo asks for the password to initialize a check period of a
 given time N (where N is defined at installation and is set to 5
-minutes by default).
+minutes by default). Administrators can edit the sudoers file with 'visudo'.
 
 %package plugin-python
 Summary:        Plugin API for python
@@ -82,10 +99,39 @@ Requires:       %{name} = %{version}
 %description test
 Tests for fate#313276
 
+%package policy-wheel-auth-self
+Summary:        Users in the wheel group can authenticate as admin
+Group:          System/Base
+Requires:       %{name} = %{version}
+Requires:       group(wheel)
+
+%description policy-wheel-auth-self
+Sudo authentication policy that allows users in the wheel group to
+authenticate as root with their own password
+
+%package policy-sudo-auth-self
+Summary:        Users in the sudo group can authenticate as admin
+Group:          System/Base
+Requires:       %{name} = %{version}
+Requires:       group(sudo)
+
+%description policy-sudo-auth-self
+Sudo authentication policy that allows users in the sudo group to
+authenticate as root with their own password
+
+%package -n system-group-sudo
+Summary:        System group 'sudo'
+Group:          System/Fhs
+%{sysusers_requires}
+
+%description -n system-group-sudo
+This package provides the system group 'sudo'.
+
 %prep
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE10} sudo system-group-sudo.conf
 %ifarch s390 s390x %{sparc}
 F_PIE=-fPIE
 %else
@@ -98,6 +144,11 @@ export LDFLAGS="-pie"
     --docdir=%{_docdir}/%{name} \
     --with-noexec=%{_libexecdir}/sudo/sudo_noexec.so \
     --enable-tmpfiles.d=%{_tmpfilesdir} \
+%if %{defined _distconfdir}
+    --prefix=/usr \
+    --sysconfdir=%{_distconfdir} \
+    --enable-adminconf=%{_sysconfdir} \
+%endif
     --with-pam \
     --with-pam-login \
     --with-ldap \
@@ -147,7 +198,22 @@ install -m 644 %{SOURCE5} %{buildroot}%{_docdir}/%{name}/
 rm -f %{buildroot}%{_docdir}/%{name}/sample.pam
 rm -f %{buildroot}%{_docdir}/%{name}/sample.syslog.conf
 rm -f %{buildroot}%{_docdir}/%{name}/schema.OpenLDAP
-rm -f %{buildroot}%{_sysconfdir}/sudoers.dist
+rm -f %{buildroot}%{confdir}/sudoers.dist
+
+%if %{defined _distconfdir}
+# Move /etc to /usr/etc/
+mkdir -p %{buildroot}%{_distconfdir}/sudoers.d %{buildroot}%{_sysconfdir}/sudoers.d
+chmod 644 %{buildroot}%{_distconfdir}/sudoers
+echo "@includedir /etc/sudoers.d" >> %{buildroot}%{_distconfdir}/sudoers
+%endif
+
+install -D -m 644 %{SOURCE8} %{buildroot}%{confdir}/sudoers.d/50-wheel-auth-self
+install -D -m 644 %{SOURCE9} %{buildroot}/usr/share/polkit-1/rules.d/51-wheel.rules
+
+sed -e 's/wheel/sudo/g' < %{SOURCE8} > %{buildroot}%{confdir}/sudoers.d/50-sudo-auth-self
+sed -e 's/wheel/sudo/g' < %{SOURCE9} > %{buildroot}/usr/share/polkit-1/rules.d/51-sudo.rules
+
+install -D -m 644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-group-sudo.conf
 
 %find_lang %{name}
 %find_lang sudoers
@@ -172,10 +238,11 @@ done
 for i in  sudo sudo-i ; do
   test -f %{_sysconfdir}/pam.d/${i}.rpmsave && mv -v %{_sysconfdir}/pam.d/${i}.rpmsave %{_sysconfdir}/pam.d/${i} ||:
 done
+test -f %{_sysconfdir}/sudoers.rpmsave && mv -v %{_sysconfdir}/sudoers.rpmsave %{_sysconfdir}/sudoers ||:
 %endif
 
 %post
-chmod 0440 %{_sysconfdir}/sudoers
+[ -e  %{_sysconfdir}/sudoers ] && chmod 0440 %{_sysconfdir}/sudoers
 %if 0%{?suse_version} <= 1130
 %run_permissions
 %else
@@ -185,6 +252,8 @@ chmod 0440 %{_sysconfdir}/sudoers
 
 %verifyscript
 %verify_permissions -e %{_bindir}/sudo
+
+%pre -n system-group-sudo -f sudo.pre
 
 %files -f %{name}.lang
 %license LICENSE.md
@@ -203,10 +272,12 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_mandir}/man8/sudo_logsrvd.8%{?ext_man}
 %{_mandir}/man8/sudo_sendlog.8%{?ext_man}
 
-%config(noreplace) %attr(0440,root,root) %{_sysconfdir}/sudoers
-%attr(0750,root,root) %dir %{_sysconfdir}/sudoers.d
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo.conf
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sudo_logsrvd.conf
+%{!?_distconfdir:%config(noreplace)} %attr(%confmode,root,root) %{confdir}/sudoers
+%attr(0750,root,root) %dir %{confdir}/sudoers.d
+%{?_distconfdir:%attr(0750,root,root) %dir %{_sysconfdir}/sudoers.d}
+%attr(0644,root,root) %config(noreplace) %{confdir}/sudo.conf
+%attr(0644,root,root) %config(noreplace) %{confdir}/sudo_logsrvd.conf
+
 %if %{defined _distconfdir}
 %{_pam_vendordir}/sudo
 %{_pam_vendordir}/sudo-i
@@ -250,5 +321,21 @@ chmod 0440 %{_sysconfdir}/sudoers
 
 %files test
 %{_localstatedir}/lib/tests
+
+%files policy-wheel-auth-self
+%{confdir}/sudoers.d/50-wheel-auth-self
+%dir /usr/share/polkit-1
+%dir %attr(0555,root,root) /usr/share/polkit-1/rules.d
+/usr/share/polkit-1/rules.d/51-wheel.rules
+
+%files policy-sudo-auth-self
+%{confdir}/sudoers.d/50-sudo-auth-self
+%dir /usr/share/polkit-1
+%dir %attr(0555,root,root) /usr/share/polkit-1/rules.d
+/usr/share/polkit-1/rules.d/51-sudo.rules
+
+%files -n system-group-sudo
+%defattr(-,root,root)
+%{_sysusersdir}/system-group-sudo.conf
 
 %changelog

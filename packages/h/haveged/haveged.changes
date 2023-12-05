@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 27 13:04:10 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Remove haveged-switch-root.service because it's implemented incorrectly and
+  neither upstream don't know how to fix it (#77). On the other hand, without
+  this service haveged will be started from scratch after switch root so it's
+  hopefully no big deal. Also remove patch for bsc#1203079 as it's considered
+  as a security threat because of creating fixed name file in world-writable
+  directory. [jsc#PED-6184, bsc#1206699]
+  * Remove
+    - haveged-switch-root.service
+    - haveged-switch-root.patch
+
+-------------------------------------------------------------------
 Fri Dec  2 12:24:35 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Synchronize haveged instances during switching root (bsc#1203079)

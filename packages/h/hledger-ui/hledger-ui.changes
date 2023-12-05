@@ -1,11 +1,37 @@
 -------------------------------------------------------------------
+Sat Dec  2 05:12:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.32.
+
+  - The V key now preserves the valuation mode specified at the
+    command line, if any. (#2084)
+
+  - The hledger-ui package no longer wastefully builds its modules
+    twice.
+
+-------------------------------------------------------------------
 Sun Sep  3 08:16:30 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hledger-ui to version 1.31.
-  Upstream has edited the change log file since the last release in
-  a non-trivial way, i.e. they did more than just add a new entry
-  at the top. You can review the file at:
-  http://hackage.haskell.org/package/hledger-ui-1.31/src/CHANGES.md
+
+  - A "Cash accounts" screen has been added, showing accounts of
+    the `Cash` type.
+
+  - The top-level menu screen is now the default screen. Power
+    users can use the `--cash`/`--bs`/`--is`/`--all` flags to start
+    up in another screen.
+
+  - "All accounts" screen has been moved to the bottom of the list.
+
+  - Screens' help footers have been improved.
+
+  - A pager is used to show --help output when needed, as in
+    `hledger`.
+
+  - In the help dialog, mention that LEFT shows other screens.
+
+  - In the manual, mention shift-up/down config needed for
+    Terminal.app.
 
 -------------------------------------------------------------------
 Thu Mar 30 17:09:18 UTC 2023 - Peter Simons <psimons@suse.com>
@@ -97,7 +123,7 @@ Wed Sep 22 08:52:12 UTC 2021 - psimons@suse.com
 -------------------------------------------------------------------
 Tue Sep  7 18:42:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- relax constranits on base-compat 
+- relax constranits on base-compat
 
 -------------------------------------------------------------------
 Sun Aug  8 22:07:03 UTC 2021 - psimons@suse.com
@@ -185,9 +211,9 @@ Tue Dec 29 21:17:28 UTC 2020 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Wed Dec 16 17:26:00 UTC 2020 - psimons@suse.com
 
@@ -282,4 +308,3 @@ Mon Jun 22 02:00:23 UTC 2020 - psimons@suse.com
 Tue Jun  9 09:26:37 UTC 2020 - psimons@suse.com
 
 - Add hledger-ui at version 1.18.
-

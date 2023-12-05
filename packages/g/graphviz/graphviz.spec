@@ -148,6 +148,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
+Requires:       bitstream-vera-fonts
 
 %description
 A collection of tools and tcl packages for the manipulation and layout

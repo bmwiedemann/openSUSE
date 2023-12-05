@@ -74,7 +74,7 @@ BuildRequires:  python3
 %else
 BuildRequires:  python311
 %endif
-%ifnarch ppc64 ppc64le armv7l s390x
+%ifarch %ix86 x86_64 aarch64
 BuildRequires:  pkgconfig(xenstat)
 %endif
 %if 0%{?suse_version} > 1550
@@ -86,9 +86,7 @@ Recommends:     python311
 Recommends:     python311-PyMySQL
 Recommends:     python311-psycopg2
 %endif
-%ifarch i586 x86_64
 BuildRequires:  pkgconfig(libipmimonitoring)
-%endif
 
 %description
 Netdata is a system for distributed real-time performance and
@@ -111,7 +109,6 @@ Common UNIX Printing System.
 %files plugin-cups
 %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/cups.plugin
 
-%ifarch i586 x86_64
 %package plugin-freeipmi
 Summary:        The FreeIPMI metrics collection plugin for the Netdata Agent
 Enhances:       freeipmi
@@ -128,7 +125,6 @@ hardware using FreeIPMI.
 
 %files plugin-freeipmi
 %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/freeipmi.plugin
-%endif
 
 %package plugin-nfacct
 Summary:        The NFACCT metrics collection plugin for the Netdata Agent
@@ -311,9 +307,7 @@ export GOFLAGS=-mod=vendor
 %configure \
     --docdir="%{_docdir}/%{name}-%{version}" \
     --enable-plugin-nfacct \
-%ifarch i586 x86_64
     --enable-plugin-freeipmi \
-%endif
     --enable-plugin-cups \
     --with-math \
     --with-user=%{netdata_user} \
@@ -403,7 +397,7 @@ getent passwd %{netdata_user} >/dev/null || \
 %{_libexecdir}/%{name}/plugins.d/ioping.plugin
 %{_libexecdir}/%{name}/plugins.d/local-listeners
 %{_libexecdir}/%{name}/plugins.d/loopsleepms.sh.inc
-%ifnarch ppc64 ppc64le armv7l s390x
+%ifarch %ix86 x86_64 aarch64
 %{_libexecdir}/%{name}/plugins.d/xenstat.plugin
 %endif
 

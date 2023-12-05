@@ -19,7 +19,7 @@
 %define executable_name tofu
 
 Name:           opentofu
-Version:        1.6.0~beta1
+Version:        1.6.0~beta2
 Release:        0
 Summary:        Declaratively manage your cloud infrastructure
 License:        MPL-2.0

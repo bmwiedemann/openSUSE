@@ -81,6 +81,10 @@ This package contains convenience files for developers.
 
 %install
 %meson_install
+
+# own the packaging directories
+install -d %{buildroot}%{_datadir}/xdg-desktop-portal
+
 %find_lang %{name} %{?no_lang_C}
 
 %post
@@ -98,6 +102,7 @@ This package contains convenience files for developers.
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.PermissionStore.service
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Desktop.service
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Documents.service
+%dir %{_datadir}/%{name}
 %{_libexecdir}/%{name}
 %{_libexecdir}/xdg-desktop-portal-validate-icon
 %{_libexecdir}/xdg-document-portal

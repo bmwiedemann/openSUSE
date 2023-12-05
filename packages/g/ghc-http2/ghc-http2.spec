@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.2.2
+Version:        5.0.0
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause
@@ -43,10 +43,10 @@ BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
 BuildRequires:  ghc-network-byte-order-devel
 BuildRequires:  ghc-network-byte-order-prof
+BuildRequires:  ghc-network-control-devel
+BuildRequires:  ghc-network-control-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
-BuildRequires:  ghc-psqueues-devel
-BuildRequires:  ghc-psqueues-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-stm-prof

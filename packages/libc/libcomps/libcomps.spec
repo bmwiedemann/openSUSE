@@ -1,7 +1,7 @@
 #
 # spec file for package libcomps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/libcomps
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  check-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -131,7 +132,8 @@ cp -a build/src/python/docs/html %{buildroot}%{_datadir}/doc/python-libcomps/
 
 %files -n %{libname}
 %{_libdir}/libcomps.so.%{major}
-%doc README.md COPYING
+%doc README.md
+%license COPYING
 
 %files -n %{devname}
 %{_libdir}/libcomps.so
@@ -146,6 +148,6 @@ cp -a build/src/python/docs/html %{buildroot}%{_datadir}/doc/python-libcomps/
 
 %files -n python3-libcomps
 %{python3_sitearch}/libcomps/
-%{python3_sitearch}/libcomps-*
+%{python3_sitearch}/libcomps-%{version}*-info
 
 %changelog
