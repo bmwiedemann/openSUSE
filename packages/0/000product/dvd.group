@@ -1730,8 +1730,8 @@
     <package name="libdbus-1-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdbus-1-3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libdbus-glib-1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdbusmenu-glib4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libdbusmenu-gtk3-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libdbusmenu-glib4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libdbusmenu-gtk3-4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdbusmenu-qt5-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdc1394-26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdca0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

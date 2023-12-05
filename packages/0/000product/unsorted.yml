@@ -150,12 +150,12 @@ unsorted:
   - MyGUI-devel 
   - MyGUI-devel-doc 
   - MyGUI-tools 
+  - NetworkManager-applet-fortisslvpn 
   - NetworkManager-branding-upstream 
   - NetworkManager-cloud-setup 
   - NetworkManager-devel 
   - NetworkManager-devel-32bit 
   - NetworkManager-fortisslvpn 
-  - NetworkManager-fortisslvpn-gnome 
   - NetworkManager-fortisslvpn-lang 
   - NetworkManager-iodine 
   - NetworkManager-iodine-gnome 
@@ -11430,7 +11430,7 @@ unsorted:
   - libdate-tz3 
   - libdatovka 
   - libdatovka-devel 
-  - libdatovka5 
+  - libdatovka6 
   - libdatrie-devel 
   - libdatrie1-32bit 
   - libdav1d7-32bit 
@@ -15797,6 +15797,7 @@ unsorted:
   - libxtrxdsp0 
   - libxtrxll-devel 
   - libxtrxll0 
+  - libxvidcore4 
   - libxy3 
   - libyajl-devel 
   - libyajl-devel-static 
@@ -19220,6 +19221,7 @@ unsorted:
   - oqs-provider 
   - orage 
   - orage-lang 
+  - oras 
   - orc 
   - orc-doc 
   - orcania-devel 
@@ -21855,6 +21857,7 @@ unsorted:
   - procs 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
+  - product-composer 
   - profanity 
   - profanity-mini 
   - profanity-standard 
@@ -45960,6 +45963,7 @@ unsorted:
   - xtrxdsp-tests 
   - xtrxll-tools 
   - xvfb-run 
+  - xvidcore-devel 
   - xvidtune 
   - xviewer 
   - xviewer-devel 

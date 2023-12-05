@@ -1894,6 +1894,7 @@ BuildFlags: onlybuild:glslang
 BuildFlags: onlybuild:glu
 BuildFlags: onlybuild:glusterfs
 BuildFlags: onlybuild:gmp
+BuildFlags: onlybuild:gnome-doc-utils
 BuildFlags: onlybuild:gnome-keyring
 BuildFlags: onlybuild:gnome-patch-translation
 BuildFlags: onlybuild:gnu-unifont-legacy-bitmap-fonts
@@ -2082,6 +2083,9 @@ BuildFlags: onlybuild:libdatrie
 BuildFlags: onlybuild:libdb-4_8
 BuildFlags: onlybuild:libdbi
 BuildFlags: onlybuild:libdbus-c++
+BuildFlags: onlybuild:libdbusmenu
+BuildFlags: onlybuild:libdbusmenu:gtk2
+BuildFlags: onlybuild:libdbusmenu:gtk3
 BuildFlags: onlybuild:libdbusmenu-qt5
 BuildFlags: onlybuild:libdc1394
 BuildFlags: onlybuild:libdca
