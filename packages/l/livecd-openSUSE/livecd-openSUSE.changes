@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  6 13:41:48 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-common.sh: ignore patterns-base-documentation. This makes
+  the Live CD a little bit smaller again, as it no longer includes
+  + cryptsetup-doc
+  + coreutils-doc (was explicitly ignored already; cleaned up)
+  + bash-doc (was explicitly ignored already; cleaned up)
+  + readline-doc (was explicitly ignored already; cleaned up)
+  + info-std
+  + systemd-doc (was explicitly ignored already; cleaned up)
+
+-------------------------------------------------------------------
 Fri Dec  1 08:02:36 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-gnome.sh: no longer install the games pattern. We really run

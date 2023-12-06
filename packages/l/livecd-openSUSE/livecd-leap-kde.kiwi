@@ -129,6 +129,8 @@
     <ignore name="patterns-gnome-gnome_office_opt"/>
     <package name="aaa_base" replaces="patterns-base-apparmor_opt"/>
     <ignore name="patterns-base-apparmor_opt"/>
+    <package name="aaa_base" replaces="patterns-base-documentation"/>
+    <ignore name="patterns-base-documentation"/>
     <package name="aaa_base" replaces="patterns-base-enhanced_base_opt"/>
     <ignore name="patterns-base-enhanced_base_opt"/>
     <package name="aaa_base" replaces="patterns-fonts-fonts_opt"/>

@@ -34,6 +34,7 @@ buildignore patterns-gnome-gnome_multimedia_opt
 buildignore patterns-gnome-gnome_imaging_opt
 buildignore patterns-gnome-gnome_office_opt
 buildignore patterns-base-apparmor_opt
+buildignore patterns-base-documentation
 buildignore patterns-base-enhanced_base_opt
 buildignore patterns-fonts-fonts_opt
 buildignore patterns-desktop-imaging_opt
