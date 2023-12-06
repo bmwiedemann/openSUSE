@@ -32,6 +32,7 @@ Source2:        permissions.rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
+BuildRequires:  python-rpm-macros
 BuildRequires:  tclap
 # test suite
 BuildRequires:  python3-base
@@ -47,6 +48,13 @@ make %{?_smp_mflags} CXXFLAGS="%{optflags}"
 
 %install
 %make_install fillupdir=%{_fillupdir}
+# Fix shebang in scripts: Remove dependency on /usr/bin/python3,
+# making scripts to depends on the real python3 binary, not the link.
+# (bsc#1212476)
+for f in %{buildroot}/usr/lib/zypp/plugins/commit/*
+do
+  [ -f $f ] && sed -i "1s@#\!.*python.*@#\!$(realpath %__python3)@" $f
+done
 
 %check
 # will fail on qemu with  unshare: unshare failed: Invalid argument

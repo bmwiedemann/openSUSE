@@ -1479,4 +1479,12 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * profiles: remove dropped pppoe-wrapper</comment>
     <requestid>1090495</requestid>
   </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>48b0a52167d15c733daafb2bd9ff244c</srcmd5>
+    <version>1699_20230602</version>
+    <time>1701902816</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129969</requestid>
+  </revision>
 </revisionlist>

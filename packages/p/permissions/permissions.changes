@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 27 11:38:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove dependency on /usr/bin/python3, making scripts to depends on
+  the real python3 binary, not the link. bsc#1212476
+
+-------------------------------------------------------------------
 Fri Jun 02 10:36:05 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 20230602:
