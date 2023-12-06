@@ -1706,4 +1706,10 @@
     <comment>- list-gnome.sh: no longer install the games pattern. We really run
   low on space.</comment>
   </revision>
+  <revision rev="214" vrev="214">
+    <srcmd5>897e8bce7b0d6cd3f2b040c3627bdb7d</srcmd5>
+    <version>unknown</version>
+    <time>1701851541</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

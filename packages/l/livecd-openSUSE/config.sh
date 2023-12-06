@@ -145,11 +145,10 @@ zypper --non-interactive rm -u skelcd-openSUSE || :
 zypper rl $(seq 1 $(zypper ll | wc -l))
 
 #======================================
-# /etc/sudoers hack to fix #297695 
+# sudoers hack to fix #297695 
 # (Installation Live CD: no need to ask for password of root)
 #--------------------------------------
-sed -i -e "s/ALL ALL=(ALL) ALL/ALL ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers 
-chmod 0440 /etc/sudoers
+echo "ALL ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/50-livecd
 
 /usr/sbin/useradd -m -u 1000 linux -c "Live-CD User" -p ""
 
