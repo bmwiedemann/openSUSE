@@ -278,4 +278,16 @@
   * improve hash functions in Bloom filter example</comment>
     <requestid>1125860</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>90293c6c3df45d8ee919bcf3dfdaa8ee</srcmd5>
+    <version>2.8.4</version>
+    <time>1701902877</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.4:
+  * simplify ``copy_n()`` (remove special cases)
+  * add `word shift example C program
+  * and simplify ``shift_r8()``
+  * improve documentation and testing</comment>
+    <requestid>1131186</requestid>
+  </revision>
 </revisionlist>

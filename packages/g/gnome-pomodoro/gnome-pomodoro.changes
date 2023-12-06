@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  5 07:07:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.1:
+  * Fixed timerState tracking and waking up of screen on the
+    screen shield
+
+-------------------------------------------------------------------
 Mon Aug 28 09:48:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.0:

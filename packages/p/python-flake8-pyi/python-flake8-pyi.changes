@@ -1,22 +1,55 @@
 -------------------------------------------------------------------
+Tue Dec  5 21:07:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.11.0:
+  * Y058: Use `Iterator` rather than `Generator` as the return
+    value for simple `__iter__` methods, and `AsyncIterator` rather
+    than `AsyncGenerator` as the return value for simple `__aiter__`
+    methods.
+  * Y059: `Generic[]` should always be the last base class, if it
+    is present in the bases of a class.
+  * Y060, which flags redundant inheritance from `Generic[]`.
+  * Y061: Do not use `None` inside a `Literal[]` slice.
+  * For example, use `Literal["foo"] | None` instead of
+    `Literal["foo", None]`.
+  * Y022 and Y037 now flag more imports from `typing_extensions`.
+  * Y034 now attempts to avoid flagging methods inside classes
+    that inherit from `builtins.type`, `abc.ABCMeta` and/or
+    `enum.EnumMeta`.  Classes that have one or more of these as
+    bases are metaclasses, and PEP 673 forbids the use of
+    `typing(_extensions).Self` for metaclasses.
+  * Attempting to import `typing_extensions.Text` now causes Y039
+    to be emitted rather than Y023.
+  * Y053 will no longer be emitted for the argument to
+    `@typing_extensions.deprecated`.
+  * Introduce Y090, which warns if you have an annotation such as
+    `tuple[int]` or `Tuple[int]`. These mean "a tuple of length 1,
+    in which the sole element is of type `int`". This is sometimes
+    what you want, but more usually you'll want `tuple[int, ...]`,
+    which means "a tuple of arbitrary (possibly 0) length, in
+    which all elements are of type `int`".
+  * Y011 now ignores `sentinel` and `_typeshed.sentinel` in
+    default values.
+
+-------------------------------------------------------------------
 Fri Aug 25 11:40:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 23.6.0
-  * Y011/Y014/Y015: Allow math constants math.inf, math.nan, math.e, 
-    math.pi, math.tau, and their negatives in default values. Some 
-    other semantically equivalent values, such as x = inf (from math 
-    import inf), or x = np.inf (import numpy as np), should be rewritten 
+  * Y011/Y014/Y015: Allow math constants math.inf, math.nan, math.e,
+    math.pi, math.tau, and their negatives in default values. Some
+    other semantically equivalent values, such as x = inf (from math
+    import inf), or x = np.inf (import numpy as np), should be rewritten
     to x = math.inf.
-  * Y053: Disallow string or bytes literals with length >50 characters. 
-    Previously this rule only applied to parameter default values; 
+  * Y053: Disallow string or bytes literals with length >50 characters.
+    Previously this rule only applied to parameter default values;
     it now applies everywhere.
-  * Y054: Disallow numeric literals with a string representation >10 
-    characters long. Previously this rule only applied to parameter 
+  * Y054: Disallow numeric literals with a string representation >10
+    characters long. Previously this rule only applied to parameter
     default values; it now applies everywhere.
   * Y055: Unions of the form type[X] | type[Y] can be simplified to type[X | Y].
   * The way in which flake8-pyi modifies pyflakes runs has been improved.
-  * Introduce Y056: Various type checkers have different levels of support 
-    for method calls on __all__. Use __all__ += ["foo", "bar"] instead, 
+  * Introduce Y056: Various type checkers have different levels of support
+    for method calls on __all__. Use __all__ += ["foo", "bar"] instead,
     as this is known to be supported by all major type checkers.
   * Support Python 3.12
   * Support PEP 695 syntax for declaring type aliases
@@ -83,7 +116,7 @@ Other changes:
 -------------------------------------------------------------------
 Tue Dec  6 03:30:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 22.11.0: 
+- Update to version 22.11.0:
   * Bugfixes:
     Specify encoding when opening files. Prevents UnicodeDecodeError on Windows when the file contains non-CP1252 characters. Contributed by Avasam.
     Significant changes have been made to the Y041 check. Previously, Y041 flagged "redundant numeric unions"
@@ -91,7 +124,7 @@ Tue Dec  6 03:30:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
     PEP 484 only specifies that type checkers should treat int as an implicit subtype of float in the specific context of parameter annotations
     for functions and methods. Y041 has therefore been revised to only emit errors on "redundant numeric unions" in the context of parameter annotations.
   * Other changes:
-    Support running with flake8 v6. 
+    Support running with flake8 v6.
 
 -------------------------------------------------------------------
 Fri Nov  4 15:45:00 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
@@ -262,7 +295,7 @@ Fri May 15 21:22:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * support flake8 3.8.0
   * introduce Y091 (function body must not contain "raise")
   * introduce Y015 (attribute must not have a default value other than "...")
-  * introduce Y092 (top-level attribute must not have a default value) 
+  * introduce Y092 (top-level attribute must not have a default value)
 
 -------------------------------------------------------------------
 Thu Mar  7 16:34:17 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
@@ -280,12 +313,12 @@ Thu Feb 28 09:43:51 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 - Add build dependency on Python 3.6+
 - Add LICENSE
 - Udpate to v19.2.0
-  * Support 3.7 
-  * Be explicit in setup.py about Python 3.6+ 
+  * Support 3.7
+  * Be explicit in setup.py about Python 3.6+
   * add `.flake8` to manifest file
   * Use --stdin-display-name as filename when reading from stdin
   * Add rules for checking an empty class
-  * Add a check for non-ellipsis, non-typed arguments 
+  * Add a check for non-ellipsis, non-typed arguments
   * Coding style improvements
 
 -------------------------------------------------------------------

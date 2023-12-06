@@ -1,7 +1,7 @@
 #
 # spec file for package lunar-date
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define _libpkg lib%{name}-%{_libver}-1
 
 Summary:        Chinese Lunar calendar library
-License:        GPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 Name:           lunar-date
-Version:        2.9.3
+Version:        3.0.1
 Release:        0
 URL:            https://github.com/yetist/lunar-date
 Source:         https://github.com/yetist/lunar-date/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -38,10 +38,16 @@ BuildRequires:  pkgconfig(vapigen)
 Summary:        Chinese Lunar calendar library
 Group:          System/I18n/Chinese
 Recommends:     %{name}-lang
+Provides:       locale(patterns-gnome-gnome:zh_CN;zh_SG;zh_TW;zh_HK)
+Provides:       locale(patterns-mate-mate:zh_CN;zh_SG;zh_TW;zh_HK)
+Provides:       locale(patterns-xfce-xfce:zh_CN;zh_SG;zh_TW;zh_HK)
 
 %package -n typelib-1_0-LunarDate-%{_libver}
 Summary:        Chinese Lunar calendar introspection bindings
 Group:          System/I18n/Chinese
+Provides:       locale(patterns-gnome-gnome:zh_CN;zh_SG;zh_TW;zh_HK)
+Provides:       locale(patterns-mate-mate:zh_CN;zh_SG;zh_TW;zh_HK)
+Provides:       locale(patterns-xfce-xfce:zh_CN;zh_SG;zh_TW;zh_HK)
 
 %package devel
 Summary:        Chinese Lunar calendar library development files
@@ -75,10 +81,10 @@ Documents for Chinese Lunar calendar library
 %setup -q
 
 %build
-%meson -Denable_gtk_doc=true \
-       -Dwith_introspection=true \
-       -Dwith_vala=true \
-       -Denable_tests=true \
+%meson -Ddocs=true \
+       -Dintrospection=true \
+       -Dvapi=true \
+       -Dtests=true \
        %{nil}
 %meson_build
 

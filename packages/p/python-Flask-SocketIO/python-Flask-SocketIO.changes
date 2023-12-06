@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:29:35 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Aug 10 22:27:27 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.3.5:

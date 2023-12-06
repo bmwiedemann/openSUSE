@@ -33,4 +33,12 @@
     <comment>- do not require pytest-runner for build, not required</comment>
     <requestid>941484</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c8ca35b8137728fc5e5fe410865389da</srcmd5>
+    <version>0.5.0</version>
+    <time>1701902828</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131001</requestid>
+  </revision>
 </revisionlist>

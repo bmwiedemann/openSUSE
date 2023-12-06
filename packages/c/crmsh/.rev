@@ -3065,4 +3065,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1130883</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>8ccea4046ca60f9124715be92e599822</srcmd5>
+    <version>4.6.0+20231206.a903b854</version>
+    <time>1701902915</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131270</requestid>
+  </revision>
 </revisionlist>

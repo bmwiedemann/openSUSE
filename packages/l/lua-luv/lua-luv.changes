@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec  4 10:05:58 UTC 2023 - Noah Dörr <archecraft1@gmail.com>
+
+- Update to version 1.45.0-0:
+  * Add access(2) constants to the constants table
+  * thread_setaffinity: Allow affinity param to have a length less
+    than cpumask_size()
+  * avoid thread be released before it done
+  * fix thread arguments limit
+  * fix segfault in luv_check_handle/luv_check_stream
+  * add uv.errno table contains all uv errno value
+  * segfault on new_thread and worker.queue
+  * segfault on luv_check_handle
+  * uv.spawn example code in docs is broken
+  * pthread_create possible leak
+- Update to version 1.44.2-1:
+  * Removed output to stderr from poll callback
+- Update to version 1.44.2-0:
+  * Adds new function uv.available_parallelism
+  * uv.os_get_passwd: Better handling of gid/uid
+  * uv.fs_opendir and friends: Fix race condition when uv_dir_t
+    pointer doesn't change between allocations
+  * Fix leak from fs_scandir whenever it wasn't fully iterated via
+    fs_scandir_next
+  * Fix two possible fs_scandir segfaults
+- Add luv-fix-segfault-from-gc.patch fixing segfaults
+  (gh#luvit/luv#599 and gh#luvit/luv#644)
+
+-------------------------------------------------------------------
 Sun Feb 13 12:31:33 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.43.0-0:

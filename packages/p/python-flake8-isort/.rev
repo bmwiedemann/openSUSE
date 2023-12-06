@@ -56,4 +56,22 @@
   * Use linters and formatters to keep code sane and beautiful. [gforcada]</comment>
     <requestid>1046243</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>60a0f4639684fe38180a25a38fbd2197</srcmd5>
+    <version>6.1.1</version>
+    <time>1701902879</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.1:
+  * Switch from `setup.cfg` to `setup.py`.
+  * Switch from `setuptools` to `hatchling`.
+  * Drop python 3.7 support.
+  * Add preliminary support to Python 3.12.
+
+- update to 4.2.0
+  * Work around FailedToLoadPlugin exception by requiring isort 4.x.
+    Likewise, pin the major version of all dependencies, to reduce
+    risk of any future incompatibilities. [pkolbus]
+    try to find it. [jnns]</comment>
+    <requestid>1131191</requestid>
+  </revision>
 </revisionlist>

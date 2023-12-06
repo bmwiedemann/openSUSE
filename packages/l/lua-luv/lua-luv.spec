@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luv
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,11 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if %{lua_version_nodots} == 51
 %define lua_default 1
 %endif
 %define mod_name luv
-%define upver 1.43.0-0
+%define upver 1.45.0-0
 %define fixver %(echo %{upver}|sed 's|-|~|g')
 %define libluv_sover 1
 %define flavor @BUILD_FLAVOR@%{nil}
@@ -39,12 +40,17 @@ URL:            https://github.com/luvit/%{mod_name}
 Source0:        https://github.com/luvit/%{mod_name}/releases/download/%{upver}/%{mod_name}-%{upver}.tar.gz
 Patch0:         lua-link.patch
 Patch1:         luv-module-install.patch
+# PATCH-FIX-UPSTREAM luv-fix-segfault-from-gc.patch gh#luvit/luv#599 mcepl@suse.com
+# merged https://github.com/luvit/luv/commit/ff5e90249e08 and
+# https://github.com/luvit/luv/commit/ecf3988c0be9
+# Also closes gh#luvit/luv#644
+Patch2:         luv-fix-segfault-from-gc.patch
+BuildRequires:  %{flavor}-compat-5.3
+BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luafilesystem
 BuildRequires:  cmake
 BuildRequires:  libuv-devel
 BuildRequires:  lua-macros
-BuildRequires:  %{flavor}-devel
-BuildRequires:  %{flavor}-luafilesystem
-BuildRequires:  %{flavor}-compat-5.3
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == "lua"

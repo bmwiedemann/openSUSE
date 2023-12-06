@@ -1009,4 +1009,16 @@
 (🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/2 by dirkmueller)</comment>
     <requestid>1124268</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>acdeca3aa5e7b7dc5426c85cf5af23a8</srcmd5>
+    <version>0.48.0</version>
+    <time>1701902927</time>
+    <user>anag+factory</user>
+    <comment>Update to trivy 0.48.0
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/3 by dirkmueller)</comment>
+    <requestid>1131309</requestid>
+  </revision>
 </revisionlist>

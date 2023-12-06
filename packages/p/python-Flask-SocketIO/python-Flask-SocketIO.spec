@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-Flask-SocketIO
 Version:        5.3.5
 Release:        0

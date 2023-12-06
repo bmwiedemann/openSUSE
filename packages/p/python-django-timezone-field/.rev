@@ -34,4 +34,22 @@
   - Add support for python 3.11</comment>
     <requestid>1095228</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f2799019a54eb34f1314145eb1ab386c</srcmd5>
+    <version>6.1.0</version>
+    <time>1701902880</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.0:
+  * Add support for django 5.0
+  * Add support for python 3.12
+  * Fix issue with Factory timezone on some BSD systems (#114)
+  * Use correct default backend when running with django 3.X (#109)
+  * BREAKING: pytz removed from dependencies. If you use this package
+    with use_pytz=True, you'll need to install pytz yourself.
+  * Drop support for django 2.2
+  * Drop support for python 3.7
+
+  - Add support for python 3.11</comment>
+    <requestid>1131187</requestid>
+  </revision>
 </revisionlist>

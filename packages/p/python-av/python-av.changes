@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec  5 17:34:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.0.0:
+  * Add support for FFmpeg 6.0, drop support for FFmpeg < 5.0.
+  * Add support for Python 3.12, drop support for Python < 3.8.
+  * Add support for the ENCODER_FLUSH encoder flag
+  * Add VideoFrame ndarray operations for yuv444p/yuvj444p formats
+  * Add setters for AVFrame.dts, AVPacket.is_keyframe and
+    AVPacket.is_corrupt (:issue:`1179`).
+  * Fix build using Cython 3 (:issue:`1140`).
+  * Populate new streams with codec parameters (:issue:`1044`).
+  * Explicitly set python_requires to avoid installing on
+    incompatible Python (:issue:`1057`).
+  * Make AudioFifo.__repr__ safe before the first frame
+  * Guard input container members against use after closes
+
+-------------------------------------------------------------------
 Sun Aug 13 19:36:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restrict to older Cython bindings version 
+- restrict to older Cython bindings version
 
 -------------------------------------------------------------------
 Wed Mar 29 04:51:43 UTC 2023 - Mia Herkt <mia@0x0.st>
@@ -90,7 +107,7 @@ Tue Jan 11 03:17:08 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix documentation code block indentation (:issue:`783`).
   * Fix link to Conda installation instructions (:issue:`782`).
   * Export AudioStream from av.audio (:issue:`775`).
-  * Fix setting CodecContext.extradata (:issue:`801`). 
+  * Fix setting CodecContext.extradata (:issue:`801`).
 
 -------------------------------------------------------------------
 Tue Feb 23 18:33:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -132,7 +149,7 @@ Wed Jun 24 01:24:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
       - Fix Python 3.8 deprecation warning related to abstract base classes (:issue:`616`).
       - Remove ICC profiles from logos (:issue:`622`).
     + Fixes:
-      - Avoid infinite timeout in :func:`av.open` (:issue:`589`). 
+      - Avoid infinite timeout in :func:`av.open` (:issue:`589`).
 
 -------------------------------------------------------------------
 Wed May 27 09:36:11 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

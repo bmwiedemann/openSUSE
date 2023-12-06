@@ -1,4 +1,302 @@
 -------------------------------------------------------------------
+Tue Nov 28 15:30:34 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20231128.fc4b6d1f:
+  * logic error: must use a list here
+  * cosmetic
+  * check all icon directories
+  * logging formatting error
+  * silence pointless warning we can do nothing about
+  * move non-gtk-specific functions
+  * increase the number of themes to try
+  * doh: add themes via glob until we reach the limit
+  * cosmetic
+  * avoid missing property warnings with 'autoaudiosrc'
+  * verify python version early
+  * Cython 3.0.6
+  * these aren't meant to be modified any more
+  * openh264 2.4.0
+  * cosmetic
+  * typo + always try to remove egg dir
+  * this variant should work everywhere?
+  * remove EL8 cruft
+  * use the python3 interpreter we want
+  * oops
+  * wheel 0.33.6 is the last version that builds with Python 3.6
+  * build more F39 RPMs
+  * get rid of unusable egg directory
+  * use distro package for python3-wheel
+  * we want to build python3-wheel, just not on Fedora
+  * oops: add missing build dep
+  * latest pylsqpack requires python-wheel
+  * tell the CI where to find the signal watcher
+  * #3313 self-signed certificates fail
+  * cuda_rebuild should default to None (aka 'auto')
+  * cosmetic
+  * image_path must be a string
+  * linter warnings
+  * #2467 disable opengl on MacOS until it is fixed
+  * remove legacy imports
+  * callbacks use dbus types
+  * minor linter warnings
+  * #3945 the headers are not tied to the python version
+  * read using io watch instead of threading
+  * cosmetic
+  * install systemd service if we have libsystemd.pc
+  * doh: allow empty unit, also strip spaces
+  * use 'notify' category for class loading warnings
+  * document how to install locally
+  * handle values with units, better error messages
+  * minor type hint fix and other warnings
+  * simplify move version info to gi_import
+  * cosmetic
+  * num_lock_modifier is never None + cosmetic
+  * cosmetic
+  * show a more useful process title
+  * simplify
+  * cosmetic
+  * cosmetic linter warnings
+  * call kill just to be safe
+  * use the enum rather than the alias
+  * #4049 also exit on IO_ERR, always terminate watcher
+  * this doesn't do anything
+  * add update note
+  * use shader version constant
+  * numpy 1.26.2
+  * cosmetic
+  * never rebuild cuda kernels via setup.py on win32
+  * verify checksum
+  * aioquic 0.9.22
+  * pylsqpack 0.3.18
+  * wheel 0.41.3
+  *  #4026 workaround for broken relative paths
+  * missed during InfoTimerClient refactoring
+  * pycuda 2023.1 (patch no longer needed)
+  * pynvml 12.535.133
+  * log the opengl version found using NSOpenGLGetVersion
+  * #4040: oops Gdk windows can't be closed, just hide it
+  * safer pyobc code use alloc immediately followed by init
+  * #2467 finally able to use only core context
+  * #4040 closing is safer
+  * always send flush attribute
+  * fixing pycharm linter warnings fixes (minor) bugs
+  * cosmetic
+  * cosmetic + fix cythonization runtime error
+  * #2467 we have our own render buffer
+  * cosmetic
+  * #2467 handle scaling in shaders
+  * this method was no longer useful
+  * oops: missed from 071b2ac416a223fdb2f0d7009527b52306642300
+  * more detailed debug logging
+  * the video helper is no longer a clone
+  * cosmetic
+  * replace and hide misnamed 'pixel_format'
+  * cosmetic: formatting
+  * remove old pydev annotations
+  * this has been unused for years
+  * also include encoder info in video fallback path
+  * add debug logging for encoding selection
+  * improve debug logging messages
+  * ensure we initialize all encoders before choosing an encoding
+  * prefer gi notifier to GTK one
+  * #2642 fix instantiation of csc modules
+  * one more gi import warning to silence
+  * #2467 it is safe to run opengl probing with Wayland now
+  * try harder to find a valid command
+  * too many transient CI failures
+  * silence more gi import warnings
+  * fix cython warning: reorder attributes
+  * stronger type hints
+  * don't rely on transitive dependencies
+  * generic context manager for silencing warnings
+  * missed from conversion to enum
+  * cosmetic
+  * ensure the content-type is initialized at least once
+  * skip empty attributes
+  * prettify and remove sock.close
+  * cosmetic and type hints
+  * move socket state to an enum
+  * use stronger types and see what falls out
+  * cosmetic
+  * always use ints for workspace values
+  * partial revert of 4696b271c352adab371aec5d3cb9972e00297891
+  * #2467 validate early, fix linter warnings
+  * #2467 fix validation + link program
+  * #2467 initialize the vao just once
+  * #2467 'texture_pixel_format' is no longer needed
+  * cosmetic
+  * #4040 prefer 'gtk backend on MacOS
+  * silence gi import deprecation warnings
+  * these functions cannot raise exceptions
+  * #2467 hook the gtk backend into the same present fbo
+  * repr string had got mangled
+  * state explicitly which decoder failed
+  * log a debug backtrace when a video decoder fails
+  * XDG_SESSION_TYPE is not reliable
+  * show the client's opengl backend if we have it
+  * more consistent log output
+  * #2467 use an 'overlay' shader to replace the texture blending
+  * #2467 convert nvjpeg to using blit
+  * move debug to its own module
+  * move reusable code to util module
+  * cosmetic: debug logging
+  * #2467 prefer glarea backend under wayland
+  * #2467 fix painting of rectangles: paint box and border color
+  * #4044 we already have strings
+  * don't include empty key event in debug list
+  * #4044 type hints were wrong
+  * try to close sockets cleanly on exit
+  * improve messages
+  * #2467 turn off nvjpeg and nvdec until they are fixed
+  * #2467 try to switch to core profile and gles contexts
+  * #2467 better compatibility
+  * cosmetic: logging
+  * #2467 fix YUV painting
+  * github obfuscates the uri?
+  * #4044 readlines returns a string
+  * Cython 3.0.5
+  * #4044 paramiko's readline() returns a list
+  * #2467 disable YUV painting until the shader stuff is fixed properly
+  * cosmetic + move methods to functions
+  * bump release number to update the build from Fedora 39
+  * #2467 more compatible shaders, remove RBGP
+  * #4040 try harder to exit more cleanly on error
+  * doh: convert to string earlier
+  * #4044 force gtk3
+  * better error message formatting
+  * allow debug colors for 'opengl' subcommand
+  * pyopengl can get mixed up
+  * make it possible for key events to pass through
+  * add missing dependency
+  * #2467 compile the shaders
+  * #2467 handle errors more gracefully
+  * stubs for exposing more info
+  * cosmetic
+  * try harder, continue without the list of extensions
+  * simplify naming
+  * #2467 better compatibility with some drivers
+  * simplify and always return info
+  * #2467 add patch to silence egl file open warning
+  * expose the pyopengl backend in use
+  * #2467 correct 'check_support' implementation
+  * use correct logger
+  * #2467 better backend detection and setup
+  * #2467 YUV painting needs updating to use blitting
+  * remove debug logging
+  * #2467 force 'egl' backend on Wayland
+  * clearer messages
+  * #2467: don't try to load the x11 bindings under (x)wayland
+  * don't shadow variable
+  * #2467: oops, don't override show flag
+  * don't trust these env vars
+  * fix some minor linter warnings
+  * don't hardcode the 'xpra' command
+  * avoid CI timeouts
+  * install aioquic so we can run the full network tests
+  * #2467 always make the gl context current before use
+  * #2467 don't force x11 for opengl on wayland
+  * #2467 try to continue without shaders
+  * #2467 opengl switch can be used to choose a backend
+  * but of course we need extra flags..
+  * simplify: install pip3 using apt
+  * opengl backend doesn't use this method
+  * #2467 let draw_fbo specify the return value
+  * #2467 split opengl init into a new method
+  * c_char_p needs bytes
+  * cosmetic
+  * try harder to install Cython via pip
+  * also close dangling sockets on permission errors
+  * #2467 use glBlitFramebuffer instead of GL_QUADS
+  * #2467 enable arb context, but not core profile
+  * #2467 refactoring and toggle for glXCreateContextAttribsARB
+  * version in Fedora is too old
+  * close sockets on errors
+  * we install cython in xpra.sh via pip
+  * stub for creating core context
+  * cleanup and fix warnings
+  * we still need this line for the _other_ warning..
+  * silence gtk macos warnings
+  * #4028 direct replacement with search and replace works
+  * unify exit code checks
+  * Cython 3.0.4
+  * add some opengl debug logging
+  * honour opengl=force
+  * fix crashes on win32: close not destroy
+  * never expose typedict in info packets
+  * type hint fixes
+  * numpy 1.26.1
+  * setuptools 68.2.2
+  * pillow 10.1.0
+  * pytools 2023.1.1
+  * libyuv 1878
+  * fix bogus date
+  * opencv is being removed
+  * mDNS can be used at both ends
+  * we don't use yaml any more
+  * update the release notes
+  * silence sonarqube warning
+  * #4017 fixup c91d48a96d4f9947356f08a642fa276d334ac3be: missing contexts
+  * move function only used in tests
+  * refactor and silence warnings
+  * make gobject client import more lightweight
+  * need to install a newer Cython ourselves now
+  * require Cython 3
+  * use pip to install cython v3
+  * Minor man page fixes
+  * #4017 screen.backingScaleFactor move objc glue
+  * show warnings until we can remove this function
+  * #3964 call 'sync' before calling gstreamer
+  * work towards eliminating gtk/util module
+  * better diagnostic message
+  * #3964 missed module file
+  * #3964 run some basic pipelines for testing
+  * #3964 add state dir to paths
+  * #3964 add config file tools
+  * #3964 split images from icons
+  * #4017 scale OpenGL viewport on MacOS with 'backingScaleFactor'
+  * should be usable as a window context manager
+  * silence deprecation warning
+  * #3964 forgot to add images
+  * client may be None
+  * use the safer superclass method (client may be None)
+  * client may be None
+  * shortcut out on zero exit code, remove debug logging
+  * wait for window to register message
+  * better backwards compatibility with v3.1.x clients
+  * verify client connection has input configured
+  * cosmetic
+  * expose new 'about' subcommand
+  * destroy about dialog with parent
+  * #4023 also don't warn if enc_avif is missing
+  * #3964 template
+  * silence warning
+  * add type hints and type fixes
+  * correct type for tooltip, bug found thanks to #3978
+  * fix bogus date
+  * remove unused var
+  * try to silence sonarqube
+  * #4026 try to use an absolute path
+  * #4026 log the failing script file
+  * #4023 finally remove TableBuilder
+  * #4023 convert to Gtk.Grid
+  * timeout handler uses invalid attribute name
+  * #4023 convert to grid
+  * convert to Gtk.Grid
+  * cosmetic
+  * value returned should always be a string
+  * #3978 force include pycryptography
+  * #4023 convert to grid
+  * Gtk3 had changed the get_pointer() return value
+  * #4023 silence table warning
+  * #4023 silence popup warnings
+  * simplify using f-strings
+  * show the rounded value, closer to the real value
+  * #4025 one more redundant '%' with f-string
+  * #4023 don't warn if dec_avif is missing
+  * #4023 try to ensure we start printing on a new line
+  * #4025 f-strings means we don't have to escape '%'
+
+-------------------------------------------------------------------
 Thu Oct 05 17:12:07 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 6.0+git20231005.a3c265d6:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  4 05:33:43 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.0.1
+  * Use localized interface
+  * Change project option names 
+  * Change license to LGPL-2.1
+
+-------------------------------------------------------------------
 Thu Feb  6 10:44:43 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Need to set %{name}-lang as Recommends tag for library package. 

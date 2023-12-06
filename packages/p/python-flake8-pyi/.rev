@@ -294,4 +294,40 @@ Other changes:
     <comment></comment>
     <requestid>1105954</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ddbdbd21d4f8f119247a87d15cecc9b</srcmd5>
+    <version>23.11.0</version>
+    <time>1701902890</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11.0:
+  * Y058: Use `Iterator` rather than `Generator` as the return
+    value for simple `__iter__` methods, and `AsyncIterator` rather
+    than `AsyncGenerator` as the return value for simple `__aiter__`
+    methods.
+  * Y059: `Generic[]` should always be the last base class, if it
+    is present in the bases of a class.
+  * Y060, which flags redundant inheritance from `Generic[]`.
+  * Y061: Do not use `None` inside a `Literal[]` slice.
+  * For example, use `Literal[&quot;foo&quot;] | None` instead of
+    `Literal[&quot;foo&quot;, None]`.
+  * Y022 and Y037 now flag more imports from `typing_extensions`.
+  * Y034 now attempts to avoid flagging methods inside classes
+    that inherit from `builtins.type`, `abc.ABCMeta` and/or
+    `enum.EnumMeta`.  Classes that have one or more of these as
+    bases are metaclasses, and PEP 673 forbids the use of
+    `typing(_extensions).Self` for metaclasses.
+  * Attempting to import `typing_extensions.Text` now causes Y039
+    to be emitted rather than Y023.
+  * Y053 will no longer be emitted for the argument to
+    `@typing_extensions.deprecated`.
+  * Introduce Y090, which warns if you have an annotation such as
+    `tuple[int]` or `Tuple[int]`. These mean &quot;a tuple of length 1,
+    in which the sole element is of type `int`&quot;. This is sometimes
+    what you want, but more usually you'll want `tuple[int, ...]`,
+    which means &quot;a tuple of arbitrary (possibly 0) length, in
+    which all elements are of type `int`&quot;.
+  * Y011 now ignores `sentinel` and `_typeshed.sentinel` in
+    default values.</comment>
+    <requestid>1131208</requestid>
+  </revision>
 </revisionlist>

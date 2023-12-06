@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 28 15:20:14 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 11.0+git20231128.52742e3:
+  * offscreen now requires https with Chrome
+  * newer servers require caps to enable pings
+  * don't show the clock menu entry until we have the time
+  * backticks don't work as expected
+  * bump version
+  * invalid escape sequence
+  * simplify
+  * #227 disable offscreen with webkit
+  * Safari does not support offscreen rendering
+
+-------------------------------------------------------------------
 Mon Oct 16 14:38:37 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 10.0+git20231016.60cd4d0:

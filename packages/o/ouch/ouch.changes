@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  6 07:50:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * Fix misleading help message
+  * Fix misleading CHANGELOG and README for packages
+  * Explicitly declare feature flags use_zlib & use_zstd_thin #564
+
+-------------------------------------------------------------------
 Fri Dec  1 22:20:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:

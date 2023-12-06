@@ -572,4 +572,27 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
     <comment>Version 1.11.50</comment>
     <requestid>1128211</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f7d59a51230deafeb5461d7f81f0d86a</srcmd5>
+    <version>1.11.51</version>
+    <time>1701902937</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.51
+  
+  ## 🦖 Deprecations
+  * Remove Quote from MessageContextMenu as it is unsupported by WYSIWYG (https://github.com/matrix-org/matrix-react-sdk/pull/11914). Contributed by @t3chguy.
+  ## ✨ Features
+  * Always allow call.member events on new rooms (https://github.com/matrix-org/matrix-react-sdk/pull/11948). Contributed by @toger5.
+  * Right panel: view third party invite info without clearing history (https://github.com/matrix-org/matrix-react-sdk/pull/11934). Contributed by @kerryarchibald.
+  * Allow switching to system emoji font (https://github.com/matrix-org/matrix-react-sdk/pull/11925). Contributed by @t3chguy.
+  * Update open in other tab message (https://github.com/matrix-org/matrix-react-sdk/pull/11916). Contributed by @weeman1337.
+  * Add menu for legacy and element call in 1:1 rooms (https://github.com/matrix-org/matrix-react-sdk/pull/11910). Contributed by @toger5.
+  * Add ringing for matrixRTC (https://github.com/matrix-org/matrix-react-sdk/pull/11870). Contributed by @toger5.
+  ## 🐛 Bug Fixes
+  * Keep device language when it has been previosuly set, after a successful delegated authentication flow that clears localStorage (https://github.com/matrix-org/matrix-react-sdk/pull/11902). Contributed by @mgcm.
+  * Fix misunderstanding of functional members (https://github.com/matrix-org/matrix-react-sdk/pull/11918). Contributed by @toger5.
+  * Fix: Video Room Chat Header Button Removed (https://github.com/matrix-org/matrix-react-sdk/pull/11911). Contributed by @kerryarchibald.
+  * Fix &quot;not attempting encryption&quot; warning (https://github.com/matrix-org/matrix-react-sdk/pull/11899). Contributed by @richvdh.</comment>
+    <requestid>1131322</requestid>
+  </revision>
 </revisionlist>

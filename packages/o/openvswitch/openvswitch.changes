@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  4 15:52:33 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add BuildRequires on python-setuptools. Previously this was pulled 
+  by python-Sphinx in the build environment. 
+
+-------------------------------------------------------------------
 Thu Sep  7 07:55:29 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Fix CVE-2023-3153 [bsc#1212125], VUL-0: CVE-2023-3153: openvswitch,openvswitch3: service monitor MAC flow is not rate limited

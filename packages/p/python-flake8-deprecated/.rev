@@ -31,4 +31,16 @@
   * Check decorators as well. [gforcada]</comment>
     <requestid>1043222</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae97f53ea8cd552b3719a0e2c755d90f</srcmd5>
+    <version>2.2.1</version>
+    <time>1701902876</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.1:
+  * Use `pyproject.toml` rather than `setup.py`.
+  * Switch from `setuptools` to `hatchling`.
+  * Drop python 3.7 support.
+  * Fix error message.</comment>
+    <requestid>1131185</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  6 09:36:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.7:
+  * Fix NameError when encountering errors during HTTP operation.
+  * Raise exception when default identity can't be found.
+  * Add a dedicated exception class for unresolved
+    deltas.
+  * Support credentials in proxy URL. (Jelmer Vernooĳ, #1227)
+  * Add ``dulwich.porcelain.for_each_ref``. (Daniele Trifirò)
+
+-------------------------------------------------------------------
 Mon Sep 18 20:10:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.6:

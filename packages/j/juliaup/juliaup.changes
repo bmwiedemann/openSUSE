@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Dec  5 21:29:25 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove cargo_config.
+- Update to version 1.12.5:
+  * Handle an error condition correctly
+  * Return full 32 bit exit code from julialauncher
+  * Update deps
+  * follow symlinks
+  * Sort versions in status output in natural order.
+  * Bump actions/checkout from 3 to 4
+  * Change triggers for rust fmt workflow
+  * Run `cargo fmt` and check in the results
+  * Update deps
+  * Update deps
+  * Move script around
+  * Update deps
+  * Human sort channel list
+  * Remove license dialog from MSI installer
+  * Update deps
+  * Update deps
+  * fix banner bg color
+  * fix 491 to 493px wide
+  * bitmaps for msi installer
+  * Change to JULIAUP_DEPOT_PATH
+  * Update LICENSE
+  * Fix release.yml bug
+  * Build portable versions
+  * Fix gnu toolchain
+  * Install correct mingw toolchain
+  * Pick more specific toolchains
+  * Add more fine control over binary creation
+  * Update README
+  * Move crates publishing to release channel
+  * Change way secret is passed to cargo publish
+  * Fix release build bug
+  * Fix crates publication step
+  * Add publish to crates step
+  * Add docs for JULIAUP_HOME
+  * Use JULIAUP_HOME instead of JULIA_DEPOT_PATH
+
+-------------------------------------------------------------------
 Sun Aug 13 13:48:33 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix specfile %files section.

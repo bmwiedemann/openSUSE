@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-flake8-pyi
-Version:        23.6.0
+Version:        23.11.0
 Release:        0
 Summary:        A plugin for flake8 to enable linting .pyi files
 License:        MIT
@@ -30,6 +30,7 @@ Source:         https://files.pythonhosted.org/packages/source/f/flake8-pyi/flak
 Patch0:         set-tests-python-path.patch
 BuildRequires:  %{python_module ast-decompiler}
 BuildRequires:  %{python_module base >= 3.8.0}
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -42,6 +43,7 @@ BuildRequires:  %{python_module pyflakes >= 2.1.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module flake8-bugbear}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module typing}
 # /SECTION
 BuildRequires:  fdupes

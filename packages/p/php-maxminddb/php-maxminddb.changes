@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  5 21:27:56 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to version 1.11.1
+  * Resolve warnings when compiling the C extension.
+  * Fix various type issues detected by PHPStan level.
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
@@ -6,7 +13,7 @@ Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 -------------------------------------------------------------------
 Tue Nov  9 21:02:33 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
-- Updated to version 1.10.0
+- Updated to version 1.11.0
   * Replace runtime define of a constant to facilitate opcache
     preloading.
   * Resolve minor issue found by the Clang static analyzer in the C
@@ -15,7 +22,7 @@ Tue Nov  9 21:02:33 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 -------------------------------------------------------------------
 Wed Apr 14 18:01:21 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
-- Updated to version 1.10.0
+- Updated to version 1.10.1
   * Fix a `TypeError` exception in the pure PHP reader when using large
     databases on 32-bit PHP builds with the `bcmath` extension. Reported
     by dodo1708. GitHub #124.

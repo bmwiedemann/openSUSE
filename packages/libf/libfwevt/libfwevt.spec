@@ -18,7 +18,7 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20230410
+Version:        20231119
 Release:        0
 Summary:        Library for Windows XML Event Log (EVTX) data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -36,19 +36,19 @@ BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libuna) >= 20230710
 # Various notes: https://en.opensuse.org/libyal
 
 %description
 libfwevt is a library for Windows XML Event Log (EVTX) data types.
 libyal is typically used in digital forensic tools.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library for Windows XML Event Log data types
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 libfwevt is a library for Windows XML Event Log (EVTX) data types.
 libyal is typically used in digital forensic tools.
 
@@ -56,7 +56,7 @@ libyal is typically used in digital forensic tools.
 Summary:        Development files for libfwevt
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 libfwevt is a library for Windows XML Event Log (EVTX) data types.
@@ -75,21 +75,21 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfwevt.so.*
+%_libdir/libfwevt.so.*
 
 %files devel
 %license COPYING*
-%{_includedir}/libfwevt.h
-%{_includedir}/libfwevt/
-%{_libdir}/libfwevt.so
-%{_libdir}/pkgconfig/libfwevt.pc
-%{_mandir}/man3/libfwevt.3*
+%_includedir/libfwevt.h
+%_includedir/libfwevt/
+%_libdir/libfwevt.so
+%_libdir/pkgconfig/libfwevt.pc
+%_mandir/man3/libfwevt.3*
 
 %changelog

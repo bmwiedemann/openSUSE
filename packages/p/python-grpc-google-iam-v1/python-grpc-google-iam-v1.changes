@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  5 13:58:23 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.7
+  * Add classifier for python 3.11 (#31)
+- from version 0.12.6
+  * **deps:** Allow protobuf >= 3.19.5 (1044946)
+- from version 0.12.5
+  * Require python 3.7+ (#8)
+
+-------------------------------------------------------------------
 Fri Sep  9 13:43:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.4:

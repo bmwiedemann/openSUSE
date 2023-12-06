@@ -2259,4 +2259,12 @@ New stable release</comment>
   system, the patch allows meson to find python 3.6 in SLE. (forwarded request 1130692 from yfjiang)</comment>
     <requestid>1130749</requestid>
   </revision>
+  <revision rev="264" vrev="4">
+    <srcmd5>28c464b4c5f0dda36b05370354da7493</srcmd5>
+    <version>1.44.2</version>
+    <time>1701902906</time>
+    <user>anag+factory</user>
+    <comment>Sync changelog with Leap/SLE.</comment>
+    <requestid>1131257</requestid>
+  </revision>
 </revisionlist>

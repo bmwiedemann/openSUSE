@@ -17,7 +17,7 @@
 
 
 Name:           product-composer
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -53,7 +53,7 @@ WARNING: please be aware that the code is still on the move and is
 mv %buildroot/usr/bin/productcomposer %buildroot%_bindir/product-composer
 
 %files
-%doc README.rst docs
+%doc README.rst docs examples
 %_bindir/product-composer
 %{python3_sitelib}/*
 

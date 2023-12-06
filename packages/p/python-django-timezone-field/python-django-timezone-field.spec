@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-timezone-field
-Version:        5.1
+Version:        6.1.0
 Release:        0
 Summary:        Django app providing database and form fields for pytz timezone objects
 License:        BSD-2-Clause
@@ -32,16 +31,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
-Requires:       python-pytz
+Requires:       python-Django >= 2.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 2.3}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-lazy-fixture}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
 # /SECTION
 %python_subpackages
 

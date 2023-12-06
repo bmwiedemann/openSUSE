@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  5 17:14:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove python 3.6 support as the version update to 1.8.0 dropped
+  it
+
+-------------------------------------------------------------------
 Mon Nov 20 09:17:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Increase timeouts for tests, bsc#1217019
@@ -57,7 +63,7 @@ Thu Dec  1 11:18:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 03:02:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.6.3 
+- Update to version 1.6.3
   Fixes: #869, #973, #987, #995, #1008
   Improvements: #951, #1001
 
@@ -78,7 +84,7 @@ Mon Dec 20 23:00:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Thu Sep  2 09:01:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add correct-pthread-library-name.patch:
-  * Look for the correct pthread library. 
+  * Look for the correct pthread library.
 
 -------------------------------------------------------------------
 Tue Jun 29 13:04:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -86,7 +92,7 @@ Tue Jun 29 13:04:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
 - Update to 1.3.0
   * no release notes.
 - new requirement for ipykernel 6
-- enable testsuite (multibuild) 
+- enable testsuite (multibuild)
 - defer debundling pydevd
 - add pydevd-openSUSE-attach-autoarch.patch for support of
   non-intel architectures when injecting the debug library

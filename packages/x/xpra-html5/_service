@@ -2,38 +2,20 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
-    <!-- TESTING -->
-    <!-- LAST KNOWN GOOD:  (older) ;  (newer)
-    <param name="revision">58e96fc</param>
-    -->
-    <!-- VERIFIED GOOD:  (older) ;  (newer)
-    <param name="revision">8aea0a5</param>
-    <param name="revision">0f51cab</param>
-    <param name="revision">1fe2469</param>
-    <param name="revision">09d46e4</param>
-    <param name="revision">3e2e896</param>
-    <param name="revision">7908dab</param>
-    <param name="revision">9512aca</param>
-    <param name="revision">e181fd1</param>
-    <param name="revision">caf9971</param>
-    <param name="revision">f4e08d5</param>
-    <param name="revision">c248091</param>
-    <param name="revision">21cabde</param>
-    -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <!-- TESTING -->
+    <!-- LAST KNOWN GOOD:  (older) ;  (newer) -->
+    <!-- VERIFIED GOOD:  (older) ;  (newer) -->
     <!--
-      As of 20230831, this seems to be in sync
-      As of 20231016, this seem back out of sync
-
       This comes from setup.py which defines
       a 'VERSION = ' based off a tag; current
       release is 'v9.0' (Tags) but master defines
-      it as 10.0 (per `grep -r 'VERSION =' xpra-html5`)
+      it as '11' (per `grep -r 'VERSION =' xpra-html5`)
 
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
     <param name="versionrewrite-pattern">v9.0</param>
-    <param name="versionrewrite-replacement">10.0</param>
+    <param name="versionrewrite-replacement">11.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>

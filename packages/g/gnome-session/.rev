@@ -1534,4 +1534,35 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
     <comment></comment>
     <requestid>1129580</requestid>
   </revision>
+  <revision rev="207" vrev="3">
+    <srcmd5>5aa40b9297dbd525a7bc56e1a0b0e652</srcmd5>
+    <version>45.0</version>
+    <time>1701902910</time>
+    <user>anag+factory</user>
+    <comment>Sync with SLE-15-SP5.
+
+old: GNOME:Factory/gnome-session
+new: home:xiaoguang_wang:branches:GNOME:Factory/gnome-session rev None
+Index: gnome-session.changes
+===================================================================
+--- gnome-session.changes (revision 351)
++++ gnome-session.changes (revision 2)
+@@ -65,6 +65,15 @@
+   + Build system improvements.
+   + GError clean up fix.
+   + Updated translations.
++  + Drop gnome-session-clear-error-when-running-under-GDM.patch:
++    Fixed upstream.
++
++-------------------------------------------------------------------
++Tue Sep  8 01:26:13 UTC 2022 - Xiaoguang Wang &lt;xiaoguang.wang@suse.com&gt;
++
++- Add gnome-session-clear-error-when-running-under-GDM.patch:
++  Also clear error when running under GDM
++  (bsc#1204867 glgo!GNOME/gnome-session!83).
+ 
+ -------------------------------------------------------------------
+ Wed Mar 23 09:56:57 UTC 2022 - Bjørn Lie &lt;bjorn.lie@gmail.com&gt; (forwarded request 1131264 from xiaoguang_wang)</comment>
+    <requestid>1131266</requestid>
+  </revision>
 </revisionlist>

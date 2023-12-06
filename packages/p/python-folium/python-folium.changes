@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Dec  6 07:30:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.15.1:
+  * Use xyzservices instead of templates for tiles
+    (gh#python-visualization/folium#1827).
+  * Add TimeSliderChoropleth stroke colour/width/opacity argument
+    (gh#python-visualization/folium#1838).
+  * Improve docstring preview readibility in features.py
+    (gh#python-visualization/folium#1833).
+  * Fix streamlit-folium incompatibility (add layer to map with
+    new class) (gh#python-visualization/folium#1834).
+- Changes from version 0.15.0:
+  * Drop support for Python 3.5 and 3.6
+    (gh#python-visualization/folium#1729)
+  * Remove deprecated Stamen tiles
+    (gh#python-visualization/folium#1811)
+  * Remove _env instance attributes
+    (gh#python-visualization/folium#1817)
+  * Use write_png from Branca, remove from Folium
+    (gh#python-visualization/folium#1708)
+  * Remove deprecated Map.choropleth method
+    (gh#python-visualization/folium#1684)
+  * Feature: Draggable layer control option
+    (gh#python-visualization/folium#1760)
+  * Feature: Add fit enabled overlays feature
+    (gh#python-visualization/folium#1693)
+  * Feature: Add type hints (gh#python-visualization/folium#1677)
+  * Update jquery to v3.7.1 (gh#python-visualization/folium#1824)
+  * Update leaflet.fullscreen plugin to 3.0.0
+    (gh#python-visualization/folium#1818)
+  * Allow Choropleth key_on to traverse through array
+    (gh#python-visualization/folium#1772)
+  * Support TagFilterButton in PolyLine, AntPath and GeoJson
+    (gh#python-visualization/folium#1756)
+  * Multiple instances of TimeSliderChoropleth on a single map
+    (gh#python-visualization/folium#1749)
+  * Make VectorGridProtobuf an overlay by default
+    (gh#python-visualization/folium#1723)
+  * Change internally where layers are added to the map
+    (gh#python-visualization/folium#1690)
+  * TimestampedWmsTileLayers inherit from MacroElement, not Layer
+    (gh#python-visualization/folium#1696)
+  * SideBySideLayers inherit from MacroElement, not Layer
+    (gh#python-visualization/folium#1695)
+  * Consolidate duplicate utility functions with Branca
+    (gh#python-visualization/folium#1676)
+  * Bug: Fix interaction between DualMap and Draw
+    (gh#python-visualization/folium#1776)
+  * Bug: Fix MeasureControl plugin for Leaflet>=1.8.0
+    (gh#python-visualization/folium#1748)
+  * Bug: Pin older version of leaflet side by side to fix
+    SideBySideLayers plugin (gh#python-visualization/folium#1732)
+  * Bug: Fix Map.show_in_browser() by adding local file prefix to
+    url (gh#python-visualization/folium#1704)
+- New Requires: python-xyzservices.
+
+-------------------------------------------------------------------
 Mon Feb 27 08:46:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Remove stupid copy&paste error.

@@ -94,4 +94,15 @@
   * Fix unaligned output when using parallelism (#509)</comment>
     <requestid>1130363</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2cebee82d422e6352b33694692298c18</srcmd5>
+    <version>0.5.1+0</version>
+    <time>1701902912</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.1:
+  * Fix misleading help message
+  * Fix misleading CHANGELOG and README for packages
+  * Explicitly declare feature flags use_zlib &amp; use_zstd_thin #564</comment>
+    <requestid>1131277</requestid>
+  </revision>
 </revisionlist>

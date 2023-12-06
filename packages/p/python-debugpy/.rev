@@ -116,4 +116,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1129088</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e3eae36d2794452d35a62f8e6383be7a</srcmd5>
+    <version>1.8.0</version>
+    <time>1701902866</time>
+    <user>anag+factory</user>
+    <comment>- remove python 3.6 support as the version update to 1.8.0 dropped
+  it
+
+- Update to version 1.6.3
+  * Look for the correct pthread library.
+- enable testsuite (multibuild)</comment>
+    <requestid>1131030</requestid>
+  </revision>
 </revisionlist>

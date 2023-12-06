@@ -87,12 +87,12 @@ ExclusiveArch:  do_not_build
 %define shlib_idas      libsundials_idas5%{?my_suffix}
 %define shlib_kinsol    libsundials_kinsol6%{?my_suffix}
 %define shlib_nvec      libsundials_nvec6%{?my_suffix}
-%define shlib_sunlinsol libsundials_sunlinsol4_3_0%{?my_suffix}
+%define shlib_sunlinsol libsundials_sunlinsol4_6_2%{?my_suffix}
 %define shlib_sunmatrix libsundials_sunmatrix4%{?my_suffix}
-%define shlib_sunnonlin libsundials_sunnonlin3_3_0%{?my_suffix}
+%define shlib_sunnonlin libsundials_sunnonlin3_6_2%{?my_suffix}
 
 Name:           %{package_name}
-Version:        6.3.0
+Version:        6.6.2
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -100,8 +100,6 @@ Summary:        Suite of nonlinear solvers
 License:        BSD-3-Clause
 URL:            https://computing.llnl.gov/projects/sundials
 Source0:        https://github.com/LLNL/%{pname}/releases/download/v%{version}/%{pname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM sundials-link-pthread.patch badshah400@gmail.com -- Explicitly link against pthread to fix linking errors when `-Wl,--no-undefined` is added to the linker flags
-Patch0:         sundials-link-pthread.patch
 Group:          Development/Libraries/Parallel
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.12
@@ -232,6 +230,7 @@ This package provides the shared libraries for SUNDIALS' nvec solvers.
 
 %package -n %{shlib_sunlinsol}
 Summary:        Suite of nonlinear solvers - sunlinsol shared libraries
+# Required to break libsundials_sunmatrix-<flavour> degeneracy in dependent packages
 Requires:       %{shlib_sunmatrix} = %{version}
 
 %description -n %{shlib_sunlinsol}

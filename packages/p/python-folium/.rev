@@ -66,4 +66,15 @@
   (bsc#1207791).</comment>
     <requestid>1067907</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9584010f0493a825a66c3787b680a143</srcmd5>
+    <version>0.15.1</version>
+    <time>1701902970</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1131271 from badshah400
+
+* Update to version 0.15.1.
+  * New Requires: python-xyzservices.</comment>
+    <requestid>1131369</requestid>
+  </revision>
 </revisionlist>

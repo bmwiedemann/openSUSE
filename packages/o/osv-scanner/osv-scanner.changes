@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Dec 06 12:05:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.5.0:
+  * Add changelog for verson 1.5.0 (#692)
+  * Fix go mod (#691)
+  * chore(deps): lock file maintenance (#653)
+  * refactor: switch golang.org/x/exp/slices usages to stdlib
+    (#690)
+  * Include available formats in `--format` help message (#685)
+  * chore(deps): update golang:alpine docker digest to 70afe55
+    (#687)
+  * chore(deps): update alpine:3.18 docker digest to 34871e7 (#686)
+  * fix(deps): update osv-scanner minor (#688)
+  * Add `osv-scanner` pre-commit hook (#669)
+  * Fix goreleaser build (#683)
+  * feat: CVSS v4.0 support and replace cvss implementation to
+    comply with the specifications (#651)
+  * chore(deps): update workflows (#666)
+  * Added license scanning info (#674)
+  * update docs for call analysis. (#682)
+  * Setup manual release pipeline (#681)
+  * add experimental-licenses summary flag (#678)
+  * Set Go call analysis to default behaviour (#665)
+  * Fix filter ids (#647)
+  * feat: add support for `renv.lock` (#668)
+  * Simplify return codes to return 1 if any vulnerability related
+    error (#677)
+  * fix(deps): update osv-scanner minor (#652)
+  * refactor: upgrade golangci-lint (#673)
+  * make license allowlist matching case insensitive (#672)
+  * ci: run tests on Windows (#646)
+  * feat: add support for comparing CRAN versions (#656)
+  * ci: update `golangci-lint` to v1.54 (#661)
+  * Don't include nested vendored libs in determineversions query.
+    (#649)
+  * chore: disable `goconst` linter (#662)
+  * fix: remove noise lockfile warnings (#660)
+  * ci: enforce that `cachedregexp` is always used instead of
+    `regexp` (#663)
+  * Adding C/C++ info to the docs (#648)
+  * cmd/osv-scanner: update sarif output in test cases (#659)
+  * Downgrade jekyll-feed. Update lock file (#650)
+  * chore(deps): update golang:alpine docker digest to 110b07a
+    (#640)
+  * fix: properly handle file/url paths on Windows (#645)
+  * test: don't ignore anything from coverage (#627)
+  * fix(deps): update osv-scanner minor (#641)
+  * Filter local packages from scanning, and report the filtering.
+    (#643)
+  * license checking experimental feature (#501)
+  * upgrade version of Go in GitHub checks (#637)
+  * test: check against error type rather than message (#628)
+  * Minor github action docs changes to clarify behaviour. (#630)
+
+-------------------------------------------------------------------
 Thu Nov 02 05:58:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.4.3:

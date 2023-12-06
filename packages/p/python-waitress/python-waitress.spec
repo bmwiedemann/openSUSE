@@ -42,12 +42,12 @@ Source:         https://files.pythonhosted.org/packages/source/w/waitress/waitre
 # https://docs.python.org/3/objects.inv -> python3.inv
 Source1:        python3.inv
 Source2:        fetch-intersphinx-inventories.sh
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 BuildArch:      noarch
 %if "%{flavor}" == ""
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

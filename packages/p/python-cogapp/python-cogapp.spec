@@ -50,23 +50,24 @@ need.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mv %{buildroot}%{_bindir}/cog.py %{buildroot}%{_bindir}/cog
-%python_clone -a %{buildroot}%{_bindir}/cog
+%python_clone -a %{buildroot}%{_bindir}/cog.py
+# remove redundant binary
+rm %{buildroot}%{_bindir}/cog
 
 %check
 # reverse -q from addopts in setup.cfg
 %pytest -v
 
 %post
-%python_install_alternative cog
+%python_install_alternative cog.py
 
 %postun
-%python_uninstall_alternative cog
+%python_uninstall_alternative cog.py
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%python_alternative %{_bindir}/cog
+%python_alternative %{_bindir}/cog.py
 %{python_sitelib}/cogapp
 %{python_sitelib}/cogapp-%{version}*-info
 

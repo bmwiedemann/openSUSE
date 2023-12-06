@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:46:55 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.2
+  * Support .report file generation
+
+-------------------------------------------------------------------
 Mon Dec  4 15:27:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set service to manaul run: server side execution not permitted in

@@ -77,4 +77,13 @@
 </comment>
     <requestid>1074356</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>0868f4c3de4cf5f83b62f5d77f56ac1e</srcmd5>
+    <version>0.0.26</version>
+    <time>1701902908</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-fmt10-build.patch to fix build with libfmt 10.
+</comment>
+    <requestid>1131230</requestid>
+  </revision>
 </revisionlist>

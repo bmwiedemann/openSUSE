@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 15:03:27 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Install python egg. 
+
+-------------------------------------------------------------------
 Thu Jul 14 21:16:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove python3-pathlib dependency. It is part of the Python

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  5 15:28:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.13.2:
+  * Do not return error from -i when no interfaces are configured 
+  * Update README.md to fix broken link to openresolv configuration 
+
+- update to 3.13.1:
+  * new build system
+
+- update to 3.13.0:
+  * /etc/resolv.conf is now updated by mv(1) so it's atomic and watchers don't read partials.
+  * unbound can now add generic options to forward zones
+  * dinit and s6 init systems are now supported
+
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Mon Jan  4 08:36:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.12.0:

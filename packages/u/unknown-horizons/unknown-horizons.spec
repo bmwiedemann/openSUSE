@@ -1,7 +1,7 @@
 #
 # spec file for package unknown-horizons
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 # Copyright (c) Unknown Horizons, http://www.unknown-horizons.org
 #
@@ -118,6 +118,7 @@ install -D -m 0644 content/packages/%{name}.appdata.xml %{buildroot}%{_datadir}/
 %license doc/LICENSE doc/AUTHORS.md doc/licenses/
 %{_bindir}/unknown-horizons
 %{python3_sitelib}/horizons/
+%{python3_sitelib}/UnknownHorizons-%{version}*-info
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/%{name}/

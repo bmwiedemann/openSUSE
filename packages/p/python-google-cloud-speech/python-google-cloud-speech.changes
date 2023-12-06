@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec  6 11:44:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.22.0
+  * Add transcript normalization + m4a audio format support (8536b20)
+  * Support MP3, TranscriptNormalization and SpeakerLabels in STT V1 API (#11967)
+  * Clarify alternatives for deprecated fields (8536b20)
+  * Deprecate `BatchRecognizeFileResult.transcript` in favor of
+    `inline_result.transcript` (8536b20)
+  * Deprecate `BatchRecognizeFileResult.uri` in favor of
+    `cloud_storage_result.native_format_uri` (8536b20)
+- Drop patches for issues fixed upstream
+  * python-google-cloud-speech-no-mock.patch
+- Skip tests that are currently failing
+  * test_list_phrase_set
+
+-------------------------------------------------------------------
 Tue Jul 18 10:13:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.21.0

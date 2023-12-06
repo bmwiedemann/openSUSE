@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  5 13:45:44 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- fix build on SLE15 code streams
+
+-------------------------------------------------------------------
 Fri Nov 17 14:59:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not define pythons: direclt use the python3 - relevant macros.

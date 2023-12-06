@@ -17,6 +17,7 @@ PREFIXEDLABEL org.opencontainers.image.vendor="openSUSE Project"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/distrobox-packaging:%OS_VERSION_ID%.%RELEASE%"
 
+
 # openSUSE-release included to ensure %OS_VERSION_ID% can be found/used by kiwi-metainfo-helper
 RUN zypper --non-interactive install --no-recommends git \
     osc \

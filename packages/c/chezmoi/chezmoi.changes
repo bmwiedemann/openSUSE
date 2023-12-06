@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  5 16:43:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.42.2:
+  - Features
+    * feat: Add CHEZMOI_COMMAND_DIR env var for hooks
+  - Fixes
+    * fix: Fix fromJson template function deserializing non-objects
+    * fix: Handle extra slashes in path arguments
+
+-------------------------------------------------------------------
 Wed Nov 29 10:44:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.42.1:

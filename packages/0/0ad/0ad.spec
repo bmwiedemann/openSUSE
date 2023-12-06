@@ -48,6 +48,8 @@ Patch2:         PrepareZoneForGC.patch
 Patch3:         premake-no-automatic-rpath.patch
 # PATCH-FIX-UPSTREAM -- Fix build with GCC 13
 Patch4:         fix-gcc13-build.patch
+# PATCH-FIX-UPSTREAM -- Fix build with fmt 10
+Patch5:         fix-fmt10-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -100,6 +102,7 @@ flexible game engine.
 %patch0 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 %if %{with system_mozjs}
 %patch1 -p1
 %patch2 -p1

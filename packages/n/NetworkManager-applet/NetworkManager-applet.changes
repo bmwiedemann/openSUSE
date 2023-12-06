@@ -46,6 +46,13 @@ Sun Apr 16 20:41:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Added support for importing WireGuard profiles from wg-quick
     files.
   + Updated translations.
+- Drop meson-0.61-build-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Dec  6 04:11:43 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Add meson-0.61-build-fix.patch to fix the build on meson >= 0.61
+  (jsc#PED-2644, glgo#GNOME/network-manager-applet!107)
 
 -------------------------------------------------------------------
 Tue Nov  8 10:50:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>

@@ -32,4 +32,13 @@
   * Drop Python 3.7 support.</comment>
     <requestid>1098184</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2091c972c025cb46d537edd6f2a7e60</srcmd5>
+    <version>4.25.0</version>
+    <time>1701902896</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.25.0:
+  * Support Django 5.0.</comment>
+    <requestid>1131219</requestid>
+  </revision>
 </revisionlist>

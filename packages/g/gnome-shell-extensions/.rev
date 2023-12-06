@@ -2342,4 +2342,12 @@
     <comment> (forwarded request 1130518 from iznogood)</comment>
     <requestid>1130742</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>5353943d4a4461b717d33b3d264899c4</srcmd5>
+    <version>45.2</version>
+    <time>1701902909</time>
+    <user>anag+factory</user>
+    <comment>Sync changelog with Leap/SLE.</comment>
+    <requestid>1131262</requestid>
+  </revision>
 </revisionlist>

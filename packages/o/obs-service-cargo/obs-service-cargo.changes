@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  5 22:20:06 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.8.18:
+  * (de)compress: add Bz2 compression
+  * refactor return types and initial boilerplate for bz2 compress
+  * nitpick. slight refactor because Ok(()) looks yuck in some contexts
+  * it should be `--output` if we want to download a file
+
+-------------------------------------------------------------------
 Fri Nov 24 12:28:16 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.8.15:

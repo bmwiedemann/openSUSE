@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Flask-Babel
 Version:        3.1.0
 Release:        0

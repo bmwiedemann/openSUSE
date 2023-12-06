@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  4 15:20:28 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add BuildRequires on python-setuptools for both flavors.
+
+-------------------------------------------------------------------
 Wed Jul 26 07:18:05 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop sphinx doctrees for reproducible builds

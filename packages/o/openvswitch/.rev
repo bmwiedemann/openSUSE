@@ -820,4 +820,12 @@ Changes:
        CVE-2023-3152.patch </comment>
     <requestid>1109539</requestid>
   </revision>
+  <revision rev="70" vrev="16">
+    <srcmd5>11537c9acee54453cdf397997e4fcd4a</srcmd5>
+    <version>unknown</version>
+    <time>1701903139</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130936</requestid>
+  </revision>
 </revisionlist>

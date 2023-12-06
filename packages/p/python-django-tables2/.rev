@@ -75,4 +75,20 @@
   * Drop python 3.7 and django 4.0 support (#920)</comment>
     <requestid>1096322</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b01a682fafa69c621f3b65bcda85f925</srcmd5>
+    <version>2.7.0</version>
+    <time>1701902917</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.7.0:
+  * Update docs dependencies; fix docs search; add
+    readthedocs.yaml (#935)
+  * Add example on how to use `Accessor` to documentation in
+    `custom-data.rst` (#917) by @ruddra
+  * Use pre-commit in ci, add isort, flake8, pyupgrade (#932)
+  * Add support for Django 5.0 and Python 3.12 (#930)
+  * Add missing `{% load l10n %}` in templates (#919) by
+    @tvanekeris</comment>
+    <requestid>1131288</requestid>
+  </revision>
 </revisionlist>

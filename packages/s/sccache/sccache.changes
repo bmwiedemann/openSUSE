@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 05 04:28:03 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.7.4~3:
+  * Add experimental concurrent cache support
+  * Bump freebsd-vm action to v1.0.2 & use ubuntu (#1994)
+  * build(deps): bump serde from 1.0.190 to 1.0.193
+  * Prepare version 0.7.4
+  * Activate direct mode when e.g. SCCACHE_DIR is set.
+  * Remove some unnecessary clones
+  * Only activate direct mode by default for local
+  * Catch panics in the server and transmit them as errors to the client.
+  * Remove uses of Lazy<Mutex<T>>
+  * Add support for `--` on clang/clang-cl command-line
+  * Fix test_parse_arguments_multiarch_cache_disabled
+  * Fix some possible out-of-bound accesses in process_preprocesed_{file,line}
+  * prepare version 0.7.3
+  * Revert "Activate preprocessor cache mode by default"
+
+-------------------------------------------------------------------
 Wed Nov 15 00:17:24 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.7.2~0:

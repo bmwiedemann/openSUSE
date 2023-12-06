@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Nov 26 14:49:47 UTC 2023 - malcolmlewis@opensuse.org
+
+- Updated to version 2.2.44.1:
+  * Catch exceptions when computing image checksums,
+    (gh#GNS3/gns-server#2228).
+  * Add freeze_support() for multiprocessing.
+- Update rpmlintrc to remove unused-rpmlintrc-filter on
+  python-missing-require importlib-resources.
+- Add missing requires on python3-platformdirs and
+  python3-truststore.
+- Changes from version 2.2.44:
+  * Bundle web-ui v2.2.44.
+  * Non-blocking checksums computation when server starts,
+    (gh#GNS3/gns-server#2228).
+  * Fix timeout issue when creating Qemu disk image,
+    (gh#GNS3/gns-server#2313).
+  * Support for web socket console over HTTPS.
+  * Add back script create_cert.sh.
+  * Allow disabling hardware virtualization check.
+  * Fix L2IOU "failed code signing checks" when IOU base file name
+    is >= 63 characters.
+  * Change "ip cef" to "no ip cef" in IOU default configs,
+    (gh#GNS3/gns-server#2298).
+  * Add Qemu IGB network device
+  * Add Python 3.12 support.
+  * Fix issue with importlib.resources.files() and Python 3.9
+- Changes from version 2.2.43:
+  * Force English output for VBoxManage, (gh#GNS3/gns-server#2266).
+  * Automatically add vboxnet and DHCP server if not present for
+    VirtualBox GNS3 VM, (gh#GNS3/gns-server#2266).
+  * Fix issue with controller config saved before checking current
+    version with previous one.
+  * Prevent X11 socket file to be modified by Docker container.
+  * Use the user data dir to store built-in appliances.
+  * Catch ConnectionResetError exception when client disconnects.
+
+-------------------------------------------------------------------
 Mon Aug 21 14:16:01 UTC 2023 - Joop Boonen <joop.boonen@opensuse.org>
 
 - Update to 2.2.42

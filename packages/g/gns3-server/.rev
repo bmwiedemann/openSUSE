@@ -216,4 +216,12 @@
     <comment>Update to 2.2.42 (forwarded request 1105093 from worldcitizen)</comment>
     <requestid>1105094</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3359745b473e2c460602bbfdb41ec2c0</srcmd5>
+    <version>2.2.44.1</version>
+    <time>1701902862</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131029</requestid>
+  </revision>
 </revisionlist>

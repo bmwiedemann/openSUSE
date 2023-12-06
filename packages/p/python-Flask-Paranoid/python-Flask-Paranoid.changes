@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:24:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue May 24 02:58:33 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 0.3.0

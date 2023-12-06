@@ -1,28 +1,23 @@
-Index: flake8_pyi-23.6.0/tests/test_pyi_files.py
+Index: flake8_pyi-23.11.0/tests/test_pyi_files.py
 ===================================================================
---- flake8_pyi-23.6.0.orig/tests/test_pyi_files.py
-+++ flake8_pyi-23.6.0/tests/test_pyi_files.py
-@@ -42,16 +42,21 @@ def test_pyi_file(path: str) -> None:
+--- flake8_pyi-23.11.0.orig/tests/test_pyi_files.py
++++ flake8_pyi-23.11.0/tests/test_pyi_files.py
+@@ -43,6 +43,9 @@ def test_pyi_file(path: str) -> None:
          option = flag.split("=")[0]
-         assert option != "--ignore", bad_flag_msg
+         assert option not in {"--ignore", "--select"}, bad_flag_msg(option[2:])
  
 +    pythonpath = os.environ.get("PYTHONPATH")
 +    pythonpath = f"PYTHONPATH={pythonpath}:."
 +
-     run_results = [
-         # Passing a file on command line
-         subprocess.run(
--            ["flake8", "-j0", *flags, path],
-+            " ".join([pythonpath, "flake8", "-j0", *flags, path]),
-+            shell=True,
-             env={**os.environ, "PYTHONPATH": "."},
-             stdout=subprocess.PIPE,
-         ),
-         # Passing "-" as the file, and reading from stdin instead
-         subprocess.run(
--            ["flake8", "-j0", "--stdin-display-name", path, *flags, "-"],
-+            " ".join([pythonpath, "flake8", "-j0", "--stdin-display-name", path, *flags, "-"]),
-+            shell=True,
-             env={**os.environ, "PYTHONPATH": "."},
-             input=file_contents.encode("utf-8"),
-             stdout=subprocess.PIPE,
+     # Silence DeprecationWarnings from our dependencies (pyflakes, flake8-bugbear, etc.)
+     #
+     # For DeprecationWarnings coming from flake8-pyi itself,
+@@ -51,6 +54,8 @@ def test_pyi_file(path: str) -> None:
+     # but the test failure report that pytest gives is much easier to read
+     # if we use `-Wdefault:::pyi`
+     flake8_invocation = [
++        "env",
++        pythonpath,
+         sys.executable,
+         "-Wignore",
+         "-Wdefault:::pyi",

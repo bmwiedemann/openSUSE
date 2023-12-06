@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  5 22:36:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.0
+  * Updated image decoding libraries
+  * Added support for loading WEBP animations
+  * PNG images with a palette are loaded as SDL surfaces with a
+    palette
+
+-------------------------------------------------------------------
 Tue Feb  7 00:35:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.3

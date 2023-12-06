@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  5 22:44:36 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add fix-fmt10-build.patch to fix build with libfmt 10.
+
+-------------------------------------------------------------------
 Sat Mar 25 20:11:43 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add fix-gcc13-build.patch to fix build with GCC 13.

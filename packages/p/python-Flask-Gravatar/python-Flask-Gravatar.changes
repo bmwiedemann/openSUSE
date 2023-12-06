@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:24:20 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Dec  9 10:10:10 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, not required

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  5 11:52:03 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- aarch64-rawmemchr-unwind.patch: aarch64: correct CFI in rawmemchr
+  (bsc#1217445, BZ #31113)
+
+-------------------------------------------------------------------
+Mon Dec  4 15:16:38 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Remove systemd from shadow and gshadow lookups (bsc#1217220)
+
+-------------------------------------------------------------------
 Mon Oct 23 09:52:12 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - gb18030-2022.patch: add GB18030-2022 charmap (jsc#PED-4908, BZ #30243)

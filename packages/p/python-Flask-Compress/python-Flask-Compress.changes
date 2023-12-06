@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:24:18 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Nov  5 19:31:38 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

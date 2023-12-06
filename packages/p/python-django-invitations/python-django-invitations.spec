@@ -16,17 +16,14 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-invitations
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Generic invitations app with support for Django-allauth
 License:        GPL-3.0-only
 URL:            https://github.com/bee-keeper/django-invitations
 Source:         https://github.com/bee-keeper/django-invitations/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM configure-django.patch gh#jazzband/django-invitations!235 mcepl@suse.com
-# Add missing configuration settings
-Patch0:         configure-django.patch
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-allauth}
 BuildRequires:  %{python_module freezegun >= 0.3.5}

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec 06 07:40:45 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231206.a903b854:
+  * Dev: unittest: Add unit test for crm report module
+  * Dev: report: Consider ssh agent case in crm report
+  * Dev: behave: Complete test case for crm report with ssh-agent
+  * Dev: report: Use ast.literal_eval instead of eval
+  * Dev: utils: Rename utils.check_space_option_value to utils.check_empty_option_value
+  * Dev: behave: Add 'No crmsh tracebacks' assert
+  * Dev: report: Consolidate utils.read_from_file
+  * Dev: codecov.yml: Increase code coverage threshold as 0.35%
+  * Dev: behave: Adjust functional behave test for previous changes
+  * Dev: doc: Unify contents of manpage and help info
+  * Dev: report: Rewrite crm report module
+  * Dev: utils: Remove unused codes
+  * Dev: config: Exclude pacemaker.log from collect_extra_logs
+  * Dev: log: Add funcName for DEBUG2 log level
+
+-------------------------------------------------------------------
+Tue Dec 05 09:02:43 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231205.38304a77:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: xmlutil: refactor class CrmMonXmlParser
+  * Dev: completers: Add online_nodes and standby_nodes
+
+-------------------------------------------------------------------
 Tue Dec 05 05:15:52 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.6.0+20231205.779324d5:

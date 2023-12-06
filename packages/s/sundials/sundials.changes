@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Dec  3 08:35:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.6.2:
+  * Fixed build system support for MAGMA when using a NVIDIA HPC
+    SDK installation of CUDA
+  * Fixed targets used for rocBLAS and rocSPARSE.
+- Changes from version 6.6.1:
+  * Updated the Tpetra NVector interface to support Trilinos 14.
+  * Fixed a memory leak when destroying a CUDA, HIP, SYCL, or
+    system SUNMemoryHelper object.
+  * Fixed a bug in ARKODE, CVODE, CVODES, IDA, and IDAS where the
+    stop time may not be cleared when using normal mode if the
+    requested output time is the same as the stop time.
+- Changes from versio 6.6.0:
+  * A new time-stepping module, SPRKStep, was added to ARKODE.
+    This time-stepper provides explicit symplectic partitioned
+    Runge-Kutta methods up to order 10 for separable Hamiltonian
+    systems.
+  * Added support for relaxation Runge-Kutta methods to ERKStep
+    and ARKStep in ARKODE.
+  * Added the second order IMEX method from Giraldo, Kelly, and
+    Constantinescu 2013 as the default second order IMEX method in
+    ARKStep.
+  * Updated CVODE, CVODES and ARKODE default behavior when
+    returning the solution when the internal time has reached a
+    user-specified stop time.
+  * A potential bug was fixed when using inequality constraint
+    handling and calling ARKStepGetEstLocalErrors or
+    ERKStepGetEstLocalErrors after a failed step in which an
+    inequality constraint violation occurred.
+  * Updated the F2003 utility routines SUNDIALSFileOpen and
+    SUNDIALSFileClose to support user specification of stdout and
+    stderr strings for the output file names.
+- Changes from older releases: see
+  https://computing.llnl.gov/projects/sundials/release-history
+- Drop sundials-link-pthread.patch: fixed upstream.
+- Bump so versions in keeping with upstream.
+
+-------------------------------------------------------------------
 Mon Oct 23 12:32:21 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete openmpi[123]

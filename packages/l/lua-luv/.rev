@@ -125,4 +125,35 @@
     <comment></comment>
     <requestid>954068</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>b9f95e03a28aa0cbee25bbb292a2cfbd</srcmd5>
+    <version>MACRO</version>
+    <time>1701902864</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.45.0-0:
+  * Add access(2) constants to the constants table
+  * thread_setaffinity: Allow affinity param to have a length less
+    than cpumask_size()
+  * avoid thread be released before it done
+  * fix thread arguments limit
+  * fix segfault in luv_check_handle/luv_check_stream
+  * add uv.errno table contains all uv errno value
+  * segfault on new_thread and worker.queue
+  * segfault on luv_check_handle
+  * uv.spawn example code in docs is broken
+  * pthread_create possible leak
+- Update to version 1.44.2-1:
+  * Removed output to stderr from poll callback
+- Update to version 1.44.2-0:
+  * Adds new function uv.available_parallelism
+  * uv.os_get_passwd: Better handling of gid/uid
+  * uv.fs_opendir and friends: Fix race condition when uv_dir_t
+    pointer doesn't change between allocations
+  * Fix leak from fs_scandir whenever it wasn't fully iterated via
+    fs_scandir_next
+  * Fix two possible fs_scandir segfaults
+- Add luv-fix-segfault-from-gc.patch fixing segfaults
+  (gh#luvit/luv#599 and gh#luvit/luv#644)</comment>
+    <requestid>1131025</requestid>
+  </revision>
 </revisionlist>

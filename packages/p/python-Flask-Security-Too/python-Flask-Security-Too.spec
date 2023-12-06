@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Flask-Security-Too
 Version:        5.3.2
 Release:        0

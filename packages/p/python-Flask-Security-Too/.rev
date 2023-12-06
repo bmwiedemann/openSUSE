@@ -270,4 +270,12 @@ This is a maintained fork of python-Flask-Security</comment>
 - Drop patch filterwarnings-ignore-pkg_resources.patch, no longer needed</comment>
     <requestid>1129021</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>78b53c19dff594e7cb34319510375aea</srcmd5>
+    <version>5.3.2</version>
+    <time>1701902839</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131006</requestid>
+  </revision>
 </revisionlist>

@@ -26,8 +26,12 @@ Source:         https://raf.org/rawhide/download/%{name}-%{version}.tar.gz
 Patch0:         rawhide-3.3-configure-ignore-unknown-arguments.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libacl)
-BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libpcre2-8)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(libmagic)
+%else
+BuildRequires:  file-devel
+%endif
 
 %description
 Rawhide (rh(1)) lets you search for files on the command line using

@@ -85,6 +85,7 @@ Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch21:        CVE-2023-3152.patch
 # CVE-2021-36980 [bsc#1188524], use-after-free in decode_NXAST_RAW_ENCAP
 BuildRequires:  autoconf
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  graphviz

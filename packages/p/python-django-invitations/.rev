@@ -83,4 +83,21 @@
   for Django.</comment>
     <requestid>1127294</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b862bd088d1f88e65b50003bb45bf25e</srcmd5>
+    <version>2.1.0</version>
+    <time>1701902895</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * French translation
+  * Translation Portuguese (BR)
+  * Add default_auto_field and migration.
+  * Add missing configuration values for test_settings.
+  * Remove mention of sites framework from docs
+- drop configure-django.patch (upstream)
+
+  * Support Django 4.0
+- disable py2 build as deps are only for python 3</comment>
+    <requestid>1131218</requestid>
+  </revision>
 </revisionlist>

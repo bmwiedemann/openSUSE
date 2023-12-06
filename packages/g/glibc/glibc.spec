@@ -331,6 +331,8 @@ Patch1012:      setxid-propagate-glibc-tunables.patch
 Patch1013:      tunables-string-parsing.patch
 # PATCH-FIX-UPSTREAM add GB18030-2022 charmap and test the entire GB18030 charmap (BZ #30243)
 Patch1014:      gb18030-2022.patch
+# PATCH-FIX-UPSTREAM aarch64: correct CFI in rawmemchr (BZ #31113)
+Patch1015:      aarch64-rawmemchr-unwind.patch
 
 ###
 # Patches awaiting upstream approval
@@ -568,6 +570,7 @@ library in a cross compilation setting.
 %patch1012 -p1
 %patch1013 -p1
 %patch1014 -p1
+%patch1015 -p1
 %endif
 
 %patch2000 -p1

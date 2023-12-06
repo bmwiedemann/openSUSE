@@ -738,4 +738,18 @@
     than a list of revisions.</comment>
     <requestid>1112077</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d07b23ac3106876349acda8eaa618587</srcmd5>
+    <version>0.21.7</version>
+    <time>1701902921</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.21.7:
+  * Fix NameError when encountering errors during HTTP operation.
+  * Raise exception when default identity can't be found.
+  * Add a dedicated exception class for unresolved
+    deltas.
+  * Support credentials in proxy URL. (Jelmer Vernooĳ, #1227)
+  * Add ``dulwich.porcelain.for_each_ref``. (Daniele Trifirò)</comment>
+    <requestid>1131298</requestid>
+  </revision>
 </revisionlist>

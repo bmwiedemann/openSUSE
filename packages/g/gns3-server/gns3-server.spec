@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.42
+Version:        2.2.44.1
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later
@@ -50,9 +50,11 @@ Requires:       python3-aiohttp_cors >= 0.7.0
 Requires:       python3-async_timeout >= 4.0.2
 Requires:       python3-distro >= 1.6.0
 Requires:       python3-jsonschema >= 3.2.0
+Requires:       python3-platformdirs
 Requires:       python3-psutil >= 5.8.0
 Requires:       python3-py-cpuinfo >= 8.0.0
 Requires:       python3-sentry-sdk >= 1.12.1
+Requires:       python3-truststore
 %if 0%{?python3_version_nodots} < 39
 Requires:       python3-importlib-resources >= 1.3
 %endif

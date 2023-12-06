@@ -34,4 +34,41 @@
     <comment></comment>
     <requestid>685826</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f68a0dde8567835781b8b829c2c201d7</srcmd5>
+    <version>0.2.0</version>
+    <time>1701902893</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.0:
+  * Update to work again with modern Python, IPython, Sphinx and
+    Matplotlib
+  * Fix multiple significant outstanding issues and enhance
+    functionality
+  * Add CIs, test suite and visual regression checks
+  * Overhaul packaging to follow modern standards and best
+    practices
+  * Add/rewrite user and developer documentation and metadata
+  * Conform project to up to date conventions
+  * Other smaller improvements and maintenance
+  * Issue 42 - Release Docrepr 0.2.0 (PR 44 by @CAM-Gerlach)
+  * Issue 39 - Improve tests to actually check that the rendered
+    content is what we expected (PR 41 by @martinRenou)
+  * Issue 37 - Update and standardize documentation and meta-
+    files (Readme, Contributing, Authors, Release Guide, etc) (PR
+    43 by @CAM-Gerlach)
+  * Issue 34 - Docrepr doesn't understand Sphinx &quot;:type&quot; and
+    &quot;:param&quot; directives? (PR 36 by @CAM-Gerlach)
+  * Issue 31 - Matplotlib images not located properly (PR 32 by
+    @martinRenou)
+  * Issue 29 - Get rid of the Matplotlib's plot_directive copy
+    (PR 30 by @martinRenou)
+  * Issue 26 - Docrepr fails with Sphinx v4 (PR 30 by
+    @martinRenou)
+  * Issue 24 - Add basic CI checks via GitHub Actions to run
+    tests and validate packaging (PR 33 by @CAM-Gerlach)
+  * Issue 23 - Update tests to use Pytest as a runner and
+    fix/modernize as needed (PR 33 by @CAM-Gerlach)
+  * Issue 22 - Update packaging metadata, release guide and infra</comment>
+    <requestid>1131217</requestid>
+  </revision>
 </revisionlist>

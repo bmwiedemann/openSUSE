@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-tables2
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Table/data-grid framework for Django
 License:        BSD-2-Clause
@@ -28,12 +27,12 @@ Source:         https://github.com/jieter/django-tables2/archive/v%{version}.tar
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 3.2
+Requires:       python-Django >= 4.2
 Suggests:       python-tablib
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module django-filter >= 2.3.0}
 BuildRequires:  %{python_module fudge}
 BuildRequires:  %{python_module psycopg2}

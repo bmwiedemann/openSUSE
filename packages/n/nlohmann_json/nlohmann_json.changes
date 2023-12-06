@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  2 07:17:04 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to version 3.11.3:
+  * Allow custom base class as node customization point.
+  * Add more specific parse error message when attempting to parse empty input.
+  * Add serialization-only user defined type macros
+
+-------------------------------------------------------------------
 Fri Aug 12 16:40:16 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 3.11.2:

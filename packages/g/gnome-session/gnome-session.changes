@@ -65,6 +65,15 @@ Tue Sep 20 17:57:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   + Build system improvements.
   + GError clean up fix.
   + Updated translations.
+  + Drop gnome-session-clear-error-when-running-under-GDM.patch:
+    Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep  8 01:26:13 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-session-clear-error-when-running-under-GDM.patch:
+  Also clear error when running under GDM
+  (bsc#1204867 glgo!GNOME/gnome-session!83).
 
 -------------------------------------------------------------------
 Wed Mar 23 09:56:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

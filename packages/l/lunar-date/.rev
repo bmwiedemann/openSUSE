@@ -15,4 +15,12 @@
     <comment>- Need to set %{name}-lang as Recommends tag for library package. (forwarded request 770643 from hillwood)</comment>
     <requestid>770644</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c79697b68d4847719548d2132efe88b</srcmd5>
+    <version>3.0.1</version>
+    <time>1701902945</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1131351 from hillwood)</comment>
+    <requestid>1131352</requestid>
+  </revision>
 </revisionlist>

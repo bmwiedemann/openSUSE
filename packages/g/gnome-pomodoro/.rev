@@ -346,4 +346,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment>Pushing GNOME 45.rc packages (forwarded request 1109789 from iznogood)</comment>
     <requestid>1110535</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>93c181b6b17e6df71e05dfa413b1e713</srcmd5>
+    <version>0.24.1</version>
+    <time>1701902933</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131316</requestid>
+  </revision>
 </revisionlist>

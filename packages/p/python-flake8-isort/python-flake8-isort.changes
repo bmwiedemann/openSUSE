@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  5 17:51:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * Switch from `setup.cfg` to `setup.py`.
+  * Switch from `setuptools` to `hatchling`.
+  * Drop python 3.7 support.
+  * Add preliminary support to Python 3.12.
+
+-------------------------------------------------------------------
 Mon Jan  2 16:41:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:
@@ -20,7 +29,7 @@ Mon Jan  2 16:41:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 03:22:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 4.2.0 
+- update to 4.2.0
   * Fix compatibility with flake8 version 5.
 
 -------------------------------------------------------------------
@@ -41,12 +50,12 @@ Tue Aug 11 08:16:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Mon Jul 13 16:53:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 3.0.1
-  * Work around FailedToLoadPlugin exception by requiring isort 4.x. 
-    Likewise, pin the major version of all dependencies, to reduce 
-    risk of any future incompatibilities. [pkolbus] 
+  * Work around FailedToLoadPlugin exception by requiring isort 4.x.
+    Likewise, pin the major version of all dependencies, to reduce
+    risk of any future incompatibilities. [pkolbus]
 - Update to version 3.0.0
   * Let isort search the configuration, rather than flake8-isort
-    try to find it. [jnns]  
+    try to find it. [jnns]
 
 -------------------------------------------------------------------
 Sat Apr 11 07:07:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

@@ -1,7 +1,7 @@
 #
 # spec file for package jujutsu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
-Summary:	Git-compatible DVCS that is both simple and powerful
+Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
 URL:            https://github.com/martinvonz/jj
 Source0:        jj-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo >= 1.70
 BuildRequires:  cargo-packaging
 BuildRequires:  openssl-devel
@@ -46,7 +45,6 @@ Jujutsu is an experimental version control system. While Git compatibility is st
 %autosetup -p 1 -a 1 -n jj-%{version}
 mkdir -p .cargo
 rm -vf .cargo/config.toml
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

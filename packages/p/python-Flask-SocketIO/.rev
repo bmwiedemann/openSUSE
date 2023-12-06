@@ -34,4 +34,14 @@
     <comment></comment>
     <requestid>1103452</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9dc7efbc98d0cac9e412c156368349fb</srcmd5>
+    <version>5.3.5</version>
+    <time>1701902969</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1131195 from alarrosa
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1131368</requestid>
+  </revision>
 </revisionlist>

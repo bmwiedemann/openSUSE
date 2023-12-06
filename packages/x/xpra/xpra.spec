@@ -39,7 +39,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.0+git20231005.a3c265d6
+Version:        6.0+git20231128.fc4b6d1f
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -74,7 +74,7 @@ BuildRequires:  openSUSE-release
 # ----
 BuildRequires:  pam-devel
 %if %{with pandoc}
-BuildRequires:  pandoc
+BuildRequires:  pandoc-cli
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  %{python_ver}-Cython
@@ -357,6 +357,7 @@ done
 %{_datadir}/xpra/bell.wav
 %{_datadir}/xpra/css
 %{_datadir}/xpra/icons
+%{_datadir}/xpra/images
 %{_prefix}/lib/cups/backend/xpraforwarder
 %{_mandir}/man1/run_scaled.1%{?ext_man}
 %{_mandir}/man1/xpra.1%{?ext_man}

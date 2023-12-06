@@ -25,12 +25,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-# Python 2 and 3.6 are officially supported, but debugpy is in openSUSE for ipykernel 6 which is for Python >= 3.7.
-# Skip Py2 in Leap and Py36 in TW in order to save resources.
-%define skip_python2 1
-%define skip_python36 1
-%define modname debugpy
-Name:           python-%{modname}%{psuffix}
+%{?sle15_python_module_pythons}
+Name:           python-debugpy%{psuffix}
 Version:        1.8.0
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
@@ -38,15 +34,15 @@ License:        MIT
 URL:            https://github.com/microsoft/debugpy/
 Source:         https://github.com/microsoft/debugpy/archive/v%{version}.tar.gz#/debugpy-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module %{modname} = %{version}}
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module debugpy = %{version}}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module psutil}
@@ -62,7 +58,7 @@ BuildRequires:  gdb
 debugpy is an implementation of the Debug Adapter Protocol for Python.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n debugpy-%{version}
 
 # don't remove vendored pydevd: upstream's intention is to always bundle it. Development happens in debugpy anyway
 
@@ -129,8 +125,8 @@ donttest="$donttest or test_attach_pid_client"
 
 %if ! %{with test}
 %files %{python_files}
-%{python_sitearch}/%{modname}
-%{python_sitearch}/%{modname}-%{version}*-info
+%{python_sitearch}/debugpy
+%{python_sitearch}/debugpy-%{version}*-info
 %endif
 
 %changelog

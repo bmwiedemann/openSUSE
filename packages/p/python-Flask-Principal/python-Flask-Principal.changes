@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:24:26 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Sep 14 11:49:34 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

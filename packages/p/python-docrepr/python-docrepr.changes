@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Dec  5 21:55:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.0:
+  * Update to work again with modern Python, IPython, Sphinx and
+    Matplotlib
+  * Fix multiple significant outstanding issues and enhance
+    functionality
+  * Add CIs, test suite and visual regression checks
+  * Overhaul packaging to follow modern standards and best
+    practices
+  * Add/rewrite user and developer documentation and metadata
+  * Conform project to up to date conventions
+  * Other smaller improvements and maintenance
+  * Issue 42 - Release Docrepr 0.2.0 (PR 44 by @CAM-Gerlach)
+  * Issue 39 - Improve tests to actually check that the rendered
+    content is what we expected (PR 41 by @martinRenou)
+  * Issue 37 - Update and standardize documentation and meta-
+    files (Readme, Contributing, Authors, Release Guide, etc) (PR
+    43 by @CAM-Gerlach)
+  * Issue 34 - Docrepr doesn't understand Sphinx ":type" and
+    ":param" directives? (PR 36 by @CAM-Gerlach)
+  * Issue 31 - Matplotlib images not located properly (PR 32 by
+    @martinRenou)
+  * Issue 29 - Get rid of the Matplotlib's plot_directive copy
+    (PR 30 by @martinRenou)
+  * Issue 26 - Docrepr fails with Sphinx v4 (PR 30 by
+    @martinRenou)
+  * Issue 24 - Add basic CI checks via GitHub Actions to run
+    tests and validate packaging (PR 33 by @CAM-Gerlach)
+  * Issue 23 - Update tests to use Pytest as a runner and
+    fix/modernize as needed (PR 33 by @CAM-Gerlach)
+  * Issue 22 - Update packaging metadata, release guide and infra
+    to avoid deprecated practices and follow current standards
+    (PR 33 by @CAM-Gerlach)
+  * Issue 20 - Sphinxify licensing (PR 43 by @CAM-Gerlach)
+  * Issue 19 - Is this package abandoned?
+  * Issue 16 - sphinx 1.8 fails when srcdir and output dir are
+    the same
+  * Issue 12 - Signature is not displayed for function objects
+    (PR 40 by @CAM-Gerlach)
+  * In this release, 14 issues were closed.
+  * PR 44 - Release Docrepr 0.2.0 @CAM-Gerlach (37, 20)
+  * PR 43 - Add contributing guide/docs & security policy, and
+    update/standardize readme, release guide, license info, &
+    links, by @CAM-Gerlach (37, 20)
+  * PR 41 - Add visual regression tests with playwright
+  * PR 40 - Fix and improve definition extraction, avoid
+    deprecated/removed calls and clean up other issues
+  * PR 36 - Add ability to render Sphinx-format docstrings
+  * PR 35 - Ignore spurious ResourceWarning in tests when opening
+    the rendered result in the browser on Linux
+  * PR 33 - Add tests and CIs, upgrade packaging and metafiles,
+    drop Py2 and add Py3.10, standardize infra and config, and
+    more, by @CAM-Gerlach (24, 23, 22, 17)
+  * PR 32 - Merge Sphinx build destination and source directory
+  * PR 30 - Remove plot_directive and use the one from
+    Matplotlib
+  * PR 25 - Fix render_math condition, by @martinRenou
+  * PR 21 - Update to work with latest Sphinx and IPython
+  * In this release, 11 pull requests were merged.
+
+-------------------------------------------------------------------
 Sat Mar 16 00:43:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

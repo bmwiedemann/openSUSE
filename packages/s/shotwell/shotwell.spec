@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.32.3
+Version:        0.32.4
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
@@ -89,7 +89,6 @@ mode, and export them to share with others.
 %check
 %meson_test
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Shotwell.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Shotwell-Profile-Browser.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
 
@@ -102,7 +101,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome
 %{_bindir}/shotwell
 %dir %{_datadir}/metainfo
 %{_datadir}/applications/org.gnome.Shotwell.desktop
-%{_datadir}/applications/org.gnome.Shotwell-Profile-Browser.desktop
 %{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.shotwell-extras.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shotwell.gschema.xml
@@ -124,6 +122,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome
 %dir %{_libexecdir}/shotwell
 %{_libexecdir}/shotwell/shotwell-settings-migrator
 %{_libexecdir}/shotwell/shotwell-video-thumbnailer
+%{_libexecdir}/shotwell/shotwell-video-metadata-handler
 %{_mandir}/man1/shotwell.1%{?ext_man}
 
 %files lang -f %{name}.lang

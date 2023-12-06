@@ -152,6 +152,17 @@ Wed Apr  6 06:20:55 UTC 2022 - QK ZHU <qkzhu@suse.com>
     SLE-Classic is not compatible with GNOME 42 which makes this mode
     not usable. After careful consideration, we decide to deprecate
     SLE-Classic in GNOME 42, please find the reason in (boo#1197907).
+  + Drop gnome-shell-extensions-restore-classic-css.patch
+
+-------------------------------------------------------------------
+Fri Apr  1 08:04:47 UTC 2022 - QK ZHU <qkzhu@suse.com>
+
+- Add gnome-shell-extensions-restore-classic-css.patch: the version
+  of gnome-classic.css in the tarball is wrong, somehow it contains
+  the CSS file for GNOME42, so restore to the right version by this
+  patch before the upstream release the new tarball.
+- Revert gse-sle-classic-ext.patch to the last revision
+  (bsc#1197175, glgo#GNOME/gnome-shell-extensions#382).
 
 -------------------------------------------------------------------
 Sun Mar 13 09:22:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

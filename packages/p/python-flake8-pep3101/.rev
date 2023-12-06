@@ -32,4 +32,18 @@
 </comment>
     <requestid>1008957</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d64ab4418761e358be485cad504fd4fc</srcmd5>
+    <version>2.1.0</version>
+    <time>1701902892</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Drop python 3.7 support.
+  * Test against python 3.12.
+  * Use `pyproject.toml` rather than `setup.py`.
+  * Switch from `setuptools` to `hatchling`.
+  * Switch to `main` branch.
+  * Use `tox` and `pre-commit` to ease project maintenance.</comment>
+    <requestid>1131209</requestid>
+  </revision>
 </revisionlist>

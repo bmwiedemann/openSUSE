@@ -302,4 +302,49 @@
 </comment>
     <requestid>1104307</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7f3305a4188a55ebbf3bf9e9d2c5086c</srcmd5>
+    <version>1.12.5</version>
+    <time>1701902898</time>
+    <user>anag+factory</user>
+    <comment>- Remove cargo_config.
+- Update to version 1.12.5:
+  * Handle an error condition correctly
+  * Return full 32 bit exit code from julialauncher
+  * Update deps
+  * follow symlinks
+  * Sort versions in status output in natural order.
+  * Bump actions/checkout from 3 to 4
+  * Change triggers for rust fmt workflow
+  * Run `cargo fmt` and check in the results
+  * Update deps
+  * Update deps
+  * Move script around
+  * Update deps
+  * Human sort channel list
+  * Remove license dialog from MSI installer
+  * Update deps
+  * Update deps
+  * fix banner bg color
+  * fix 491 to 493px wide
+  * bitmaps for msi installer
+  * Change to JULIAUP_DEPOT_PATH
+  * Update LICENSE
+  * Fix release.yml bug
+  * Build portable versions
+  * Fix gnu toolchain
+  * Install correct mingw toolchain
+  * Pick more specific toolchains
+  * Add more fine control over binary creation
+  * Update README
+  * Move crates publishing to release channel
+  * Change way secret is passed to cargo publish
+  * Fix release build bug
+  * Fix crates publication step
+  * Add publish to crates step
+  * Add docs for JULIAUP_HOME
+  * Use JULIAUP_HOME instead of JULIA_DEPOT_PATH
+</comment>
+    <requestid>1131215</requestid>
+  </revision>
 </revisionlist>

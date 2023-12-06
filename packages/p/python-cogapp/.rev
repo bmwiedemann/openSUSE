@@ -62,4 +62,14 @@
 </comment>
     <requestid>1089565</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>79784aa4c6109d32e7b77fd45787f3f0</srcmd5>
+    <version>3.3.0</version>
+    <time>1701902962</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1130996 from jtorres
+
+- Add .py suffix to avoid conflicts with the cog browser package.</comment>
+    <requestid>1131360</requestid>
+  </revision>
 </revisionlist>

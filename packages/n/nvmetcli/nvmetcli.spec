@@ -55,7 +55,11 @@ to / from a json file.
 %python3_pyproject_install
 mkdir -p %{buildroot}%{_sysconfdir}/nvmet
 mkdir -p %{buildroot}%{_prefix}/sbin
-mv %{buildroot}%{_bindir}/nvmetcli %{buildroot}%{_sbindir}
+%if 0%{?suse_version} <= 1500
+  install -m 755 nvmetcli %{buildroot}%{_sbindir}/nvmetcli
+%else
+  mv %{buildroot}%{_bindir}/nvmetcli %{buildroot}%{_sbindir}
+%endif
 mkdir -p %{buildroot}%{_prefix}/usr/sbin
 ln -s /usr/sbin/service %{buildroot}/usr/sbin/rcnvmet
 mkdir -p %{buildroot}%{_unitdir}

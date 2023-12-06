@@ -32,6 +32,7 @@ Fri Sep 15 05:55:34 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
     + tiff2ps
     + tiff2pdf
 - Remove no longer needed tiff-4.0.3-compress-warning.patch.
+- CVE-2023-25435 [bsc#1212607] tiffcrop is removed
 
 -------------------------------------------------------------------
 Tue Jun 20 07:16:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>

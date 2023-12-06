@@ -94,4 +94,17 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1128555</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b27d7779018cf69f75cd8b32b9e43d01</srcmd5>
+    <version>0.8.18</version>
+    <time>1701902901</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.18:
+  * (de)compress: add Bz2 compression
+  * refactor return types and initial boilerplate for bz2 compress
+  * nitpick. slight refactor because Ok(()) looks yuck in some contexts
+  * it should be `--output` if we want to download a file
+</comment>
+    <requestid>1131221</requestid>
+  </revision>
 </revisionlist>

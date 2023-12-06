@@ -928,4 +928,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
       (bsc#990460, CVE-2016-6223)</comment>
     <requestid>1121286</requestid>
   </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>7841fba2168022f23610f8b047edccfc</srcmd5>
+    <version>4.6.0</version>
+    <time>1701902911</time>
+    <user>anag+factory</user>
+    <comment>- CVE-2023-25435 [bsc#1212607] tiffcrop is removed</comment>
+    <requestid>1131379</requestid>
+  </revision>
 </revisionlist>

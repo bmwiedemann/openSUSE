@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:24:16 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Aug 21 02:26:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-flask-2.4.patch:

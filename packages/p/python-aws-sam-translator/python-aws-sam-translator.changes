@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:31:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.81.0
+  * fix: skip SAR tests if python version > 3.10 by @aaythapa in #3379
+  * chore(schema): update by @github-actions in #3376
+  * fix: Set to Py27Dict if components is explicitly set to None by @GavinZZ in #3373
+  * Fix GitHub Action Issues in Python 3.10 and 3.11 by @GavinZZ in #3380
+  * Merge main to develop by @aaythapa in #3383
+  * chore(schema): update by @github-actions in #3384
+  * feat: appsync datasource to eventbus connector by @paulhcsun in #3311
+  * chore(schema): update by @github-actions in #3389
+  * feat: Support Ignore Globals resource attribute by @GavinZZ in #3386
+  * Merge main to develop by @ConnorRobertson in #3391
+  * Fix: Raise Error When UpdateReplacePolicy is not correctly
+    defined. by @ConnorRobertson in #3392
+  * chore(schema): update by @github-actions in #3395
+  * Add an error when AuthorizationScopes is not used with Authorizer by @xazhao in #3394
+  * fix: skip statemachine test by @aaythapa in #3397
+  * fix: LayerVersion cannot be the target of DependsOn due to being
+    hashed during transformation by @ConnorRobertson in #3396
+  * Release 1.81.0 (to main) by @ConnorRobertson in #3431
+  * Revert "Release 1.81.0 (to main)" by @ConnorRobertson in #3432
+  * Revert "Revert "Release 1.81.0 (to main)"" by @GavinZZ in #3437
+  * fix: Revert the version back to 1.80 by @GavinZZ in #3438
+  * Release 1.81.0 (to main) by @GavinZZ in #3439
+- from version 1.80.0
+  * Added S3 onFailure destination for MSK and SelfManagedKafka(3b53f8f)
+  * Add support for Advanced logging in SAM(625913c)
+  * chore: bump version to 1.80.0(e2d6f37)
+  * Merge branch 'main' into release-v1.80.0(733a376)
+  * Merge pull request(cb11c8e) #3419 from aws/release-v1.80.0
+- from version 1.79.0
+  * fix: Support creating a FIFO queue if using FIFO SNS event by @GavinZZ in #3357
+  * Merge main to develop by @GavinZZ in #3360
+  * fix: Give a more appropriate warning with Availability Dip by @GavinZZ in #3362
+  * feat: allow user to provide role for schedule by @sidhujus in #3363
+  * chore(schema): update by @github-actions in #3367
+  * Merge main to develop by @GavinZZ in #3369
+  * Release 1.79.0 (to main) by @ConnorRobertson in #3390
+- from version 1.78.0
+  * chore(schema): update by @github-actions in #3352
+  * fix: Catch network interface deletion failure by @GavinZZ in #3353
+  * Release 1.78.0 (to main) by @aaythapa in #3382
+- from version 1.77.0
+  * chore: Add UpdateReplacePolicy and DeletionPolicy to
+    Integ Test Resoruces by @GavinZZ in #3345
+  * Merge main to develop by @ssenchenko in #3347
+  * Safe Auth in function URL tests by @ssenchenko in #3348
+  * chore: update docs by @ssenchenko in #3349
+  * Add error handling for OverrideApiAuth property without
+    an authorizer by @paulhcsun in #3350
+  * fix integ tests by @ssenchenko in #3351
+  * Release 1.77.0 (to main) by @GavinZZ in #3368
+
+-------------------------------------------------------------------
 Fri Oct  6 08:16:45 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.76.0

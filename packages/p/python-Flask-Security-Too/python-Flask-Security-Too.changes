@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 30 13:24:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Nov 27 06:29:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.3.2:

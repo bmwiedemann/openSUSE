@@ -69,4 +69,18 @@
 - Remove temporary version override (forwarded request 919716 from glaubitz)</comment>
     <requestid>919865</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e106f05bc69a62a4e0f3add2f9baec33</srcmd5>
+    <version>1.2.0</version>
+    <time>1701902822</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1130952 from glaubitz)</comment>
+    <requestid>1130997</requestid>
+  </revision>
 </revisionlist>

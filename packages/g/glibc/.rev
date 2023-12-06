@@ -2911,4 +2911,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- gb18030-2022.patch: add GB18030-2022 charmap (jsc#PED-4908, BZ #30243)</comment>
     <requestid>1121134</requestid>
   </revision>
+  <revision rev="283" vrev="7">
+    <srcmd5>92bda7c8f14e25f595031f060d61963a</srcmd5>
+    <version>2.38</version>
+    <time>1701902818</time>
+    <user>anag+factory</user>
+    <comment>- aarch64-rawmemchr-unwind.patch: aarch64: correct CFI in rawmemchr
+  (bsc#1217445, BZ #31113) (forwarded request 1131293 from Andreas_Schwab)</comment>
+    <requestid>1131294</requestid>
+  </revision>
 </revisionlist>

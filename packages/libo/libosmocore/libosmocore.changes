@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  6 10:31:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.2
+  * logging: ensure ANSI color escape is sent in same line/before
+    newline
+  * Fix OSMO_SOCKADDR_STR_FMT_ARGS_NOT_NULL syntax error
+
+-------------------------------------------------------------------
 Wed Nov  1 17:52:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.0

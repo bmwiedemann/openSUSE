@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  6 09:24:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231120
+  * Build system updates only
+
+-------------------------------------------------------------------
 Thu Nov 23 19:46:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete system-libs.patch (only needed when _service makes

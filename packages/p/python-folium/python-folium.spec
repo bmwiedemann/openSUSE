@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-folium
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-folium%{psuffix}
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
 License:        MIT
@@ -58,6 +58,7 @@ Requires:       python-Jinja2 >= 2.9
 Requires:       python-branca >= 0.6.0
 Requires:       python-numpy
 Requires:       python-requests
+Requires:       python-xyzservices
 BuildArch:      noarch
 %python_subpackages
 

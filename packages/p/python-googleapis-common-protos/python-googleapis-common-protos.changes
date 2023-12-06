@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  6 13:32:51 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.61.0
+  * Add `google/api/field_info.proto` (2d39f37)
+  * Add `IDENTIFIER` to `FieldBehavior` enum (2d39f37)
+
+-------------------------------------------------------------------
 Thu Aug 17 10:35:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.60.0

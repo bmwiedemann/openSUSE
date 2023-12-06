@@ -1,7 +1,7 @@
 #
 # spec file for package openresolv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           openresolv
-Version:        3.12.0
+Version:        3.13.2
 Release:        0
 Summary:        DNS management framework
 License:        BSD-2-Clause
 URL:            https://roy.marples.name/projects/openresolv
-Source:         https://roy.marples.name/downloads/openresolv/%{name}-%{version}.tar.xz
+Source0:        https://github.com/NetworkConfiguration/openresolv/releases/download/v3.13.2/openresolv-%{version}.tar.xz
+Source1:        https://github.com/NetworkConfiguration/openresolv/releases/download/v3.13.2/openresolv-%{version}.tar.xz.asc
 Requires:       bash
 BuildArch:      noarch
 
@@ -36,12 +37,12 @@ openresolv can generate a combined resolv.conf or a configuration file for a loc
 (like unbound, dnsmasq or bind) that will route the dns requests according to the search domain.
 
 %prep
-%setup -q
+%autosetup
 sed -i -e 's/^#!\/bin\/sh$//' named.in pdnsd.in dnsmasq.in unbound.in libc.in pdns_recursor.in
 
 %build
 ./configure --bindir=%{_sbindir} --libexecdir=%{_libexecdir}/resolvconf
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

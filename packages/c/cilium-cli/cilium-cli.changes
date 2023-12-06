@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Dec 06 12:03:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.17:
+  * Prepare for v0.15.17 release
+  * connectivity test: introduce connectivity test suite timeout
+    flag
+  * Remove outdated image digests
+  * fix(deps): update github.com/cilium/charts digest to 3de0b7a
+  * connectivity test: check for deleted cilium agent pod in health
+    probe
+  * chore(deps): update golang:1.21.4-alpine3.18 docker digest to
+    70afe55
+  * chore(deps): update docker.io/library/golang:1.21.4-alpine3.18
+    docker digest to 70afe55
+  * fix(deps): update all go dependencies main
+  * chore(deps): update golang:1.21.4-alpine3.18 docker digest to
+    ff7d5e6
+  * chore(deps): update azure/login action to v1.5.1
+  * chore(deps): update docker.io/library/golang:1.21.4-alpine3.18
+    docker digest to ff7d5e6
+  * clustermesh: fix pattern to match IPv4 address
+  * install action: Ignore .git and vendor directories
+  * renovate: exclude tetragon pkg/k8s updates
+  * chore(deps): update google-github-actions/auth action to v2
+  * release: Only build 64-bit binaries
+  * Build release binaries on pull requests
+  * chore(deps): update google-github-actions/auth action to v1.3.0
+  * Fix: format type %d->%f
+  * Update stable release to v0.15.16
+
+-------------------------------------------------------------------
 Wed Nov 29 05:47:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.16:
