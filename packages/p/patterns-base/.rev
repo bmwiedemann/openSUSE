@@ -868,4 +868,12 @@
     <comment></comment>
     <requestid>1122648</requestid>
   </revision>
+  <revision rev="100" vrev="46">
+    <srcmd5>bb0b81390761092d42d88e197de2e252</srcmd5>
+    <version>20200505</version>
+    <time>1701882910</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove scout: the cnf handler has been rewritten in rust and no
+  longer relies on scout/python.</comment>
+  </revision>
 </revisionlist>

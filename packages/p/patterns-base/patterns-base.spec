@@ -420,8 +420,6 @@ Recommends:     plymouth
 # fuser (psmisc) by default (#304694)
 Recommends:     psmisc
 Recommends:     rsync
-# Bug 424707 - Feature "Command not found" for openSUSE by default
-Recommends:     scout
 Recommends:     screen
 Recommends:     sed
 Recommends:     sg3_utils
@@ -444,7 +442,6 @@ Suggests:       biosdevname
 Suggests:       cpupower
 # #437252
 Suggests:       pam_ssh
-Suggests:       scout-command-not-found
 Suggests:       xfsprogs
 Suggests:       zip
 %{obsolete_legacy_pattern enhanced_base}
@@ -846,6 +843,7 @@ Requires:       glibc-locale-base
 Requires:       xkeyboard-config
 Requires:       xorg-x11-essentials
 Recommends:     cabextract
+# Bug 424707 - Feature "Command not found" for openSUSE by default
 Recommends:     command-not-found
 Recommends:     dbus-1-glib
 Recommends:     dbus-1-x11

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  6 17:14:31 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove scout: the cnf handler has been rewritten in rust and no
+  longer relies on scout/python.
+
+-------------------------------------------------------------------
 Thu Nov  2 10:32:53 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Do not recommend nscd anymore. NIS is being phased out and modern
