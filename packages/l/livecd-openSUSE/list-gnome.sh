@@ -40,6 +40,7 @@ buildignore simple-scan
 buildignore ghostscript
 buildignore myspell-en_US
 buildignore orca
+buildignore patterns-gnome-gnome_games
 
 # gnome-software is a nice software center, but on the live medium only of limited use
 buildignore gnome-software
