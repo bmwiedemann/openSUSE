@@ -2423,7 +2423,6 @@
       <repopackage name="python3-ldb"/>
       <repopackage name="python3-louis"/>
       <repopackage name="python3-policycoreutils"/>
-      <repopackage name="python3-solv"/>
       <repopackage name="python3-speechd"/>
       <repopackage name="python3-talloc"/>
       <repopackage name="python3-tdb"/>
@@ -2601,7 +2600,6 @@
       <repopackage name="sasl2-kdexoauth2"/>
       <repopackage name="sazanami-fonts"/>
       <repopackage name="sbc"/>
-      <repopackage name="scout"/>
       <repopackage name="screen"/>
       <repopackage name="sdbootutil"/>
       <repopackage name="sdbootutil-rpm-scriptlets"/>

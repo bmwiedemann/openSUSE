@@ -3510,7 +3510,6 @@
       <repopackage name="python3-salt"/>
       <repopackage name="python3-smbios"/>
       <repopackage name="python3-smbios-utils"/>
-      <repopackage name="python3-solv"/>
       <repopackage name="python3-speechd"/>
       <repopackage name="python3-talloc"/>
       <repopackage name="python3-talloc-x86-64-v3"/>
@@ -4112,7 +4111,6 @@
       <repopackage name="sazanami-fonts"/>
       <repopackage name="sbc"/>
       <repopackage name="sbl"/>
-      <repopackage name="scout"/>
       <repopackage name="screen"/>
       <repopackage name="sdbootutil"/>
       <repopackage name="sdbootutil-rpm-scriptlets"/>
