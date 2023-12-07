@@ -1222,6 +1222,7 @@ unsorted:
   - bamf-devel 
   - bamf-doc 
   - bananapir2-firmware 
+  - bandicoot-devel 
   - bandwidth 
   - barcode 
   - barcode-devel 
@@ -2081,6 +2082,7 @@ unsorted:
   - ckb-next 
   - ckermit 
   - ckermit-doc 
+  - clBLAS-devel 
   - clFFT 
   - clFFT-devel 
   - clack 
@@ -10826,6 +10828,7 @@ unsorted:
   - libb64 
   - libb64-devel 
   - libbamf3-2 
+  - libbandicoot1 
   - libbaresip2 
   - libbarvinok23 
   - libbase-javadoc 
@@ -11247,6 +11250,7 @@ unsorted:
   - libcjson1 
   - libck0 
   - libckteec0 
+  - libclBLAS2 
   - libclFFT2 
   - libclang-cpp13 
   - libclang-cpp14 
@@ -14921,15 +14925,15 @@ unsorted:
   - libsundials_nvec6 
   - libsundials_nvec6-mvapich2 
   - libsundials_nvec6-openmpi4 
-  - libsundials_sunlinsol4_3_0 
-  - libsundials_sunlinsol4_3_0-mvapich2 
-  - libsundials_sunlinsol4_3_0-openmpi4 
+  - libsundials_sunlinsol4_6_2 
+  - libsundials_sunlinsol4_6_2-mvapich2 
+  - libsundials_sunlinsol4_6_2-openmpi4 
   - libsundials_sunmatrix4 
   - libsundials_sunmatrix4-mvapich2 
   - libsundials_sunmatrix4-openmpi4 
-  - libsundials_sunnonlin3_3_0 
-  - libsundials_sunnonlin3_3_0-mvapich2 
-  - libsundials_sunnonlin3_3_0-openmpi4 
+  - libsundials_sunnonlin3_6_2 
+  - libsundials_sunnonlin3_6_2-mvapich2 
+  - libsundials_sunnonlin3_6_2-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu6 
   - libsuperlu6-32bit 
@@ -22660,7 +22664,6 @@ unsorted:
   - python310-Kivy-devel 
   - python310-LHAPDF 
   - python310-LTTL 
-  - python310-Lektor 
   - python310-Levenshtein 
   - python310-Logbook 
   - python310-M2Crypto 
@@ -25874,6 +25877,7 @@ unsorted:
   - python310-u-msgpack-python 
   - python310-ua-parser 
   - python310-uamqp 
+  - python310-ubelt 
   - python310-uc-micro-py 
   - python310-ufoLib2 
   - python310-ufoProcessor 
@@ -26176,7 +26180,6 @@ unsorted:
   - python311-Kivy-devel 
   - python311-LHAPDF 
   - python311-LTTL 
-  - python311-Lektor 
   - python311-Levenshtein 
   - python311-Logbook 
   - python311-Markdown 
@@ -29223,6 +29226,7 @@ unsorted:
   - python311-u-msgpack-python 
   - python311-ua-parser 
   - python311-uamqp 
+  - python311-ubelt 
   - python311-uc-micro-py 
   - python311-ufoLib2 
   - python311-ufoProcessor 
@@ -29544,7 +29548,6 @@ unsorted:
   - python39-Kivy-devel 
   - python39-LHAPDF 
   - python39-LTTL 
-  - python39-Lektor 
   - python39-Levenshtein 
   - python39-Logbook 
   - python39-M2Crypto 
@@ -32753,6 +32756,7 @@ unsorted:
   - python39-u-msgpack-python 
   - python39-ua-parser 
   - python39-uamqp 
+  - python39-ubelt 
   - python39-uc-micro-py 
   - python39-ufoLib2 
   - python39-ufoProcessor 
