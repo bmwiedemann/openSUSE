@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-importlib-resources
-Version:        6.0.1
+Version:        6.1.1
 Release:        0
 Summary:        Read resources from Python packages
 License:        Apache-2.0

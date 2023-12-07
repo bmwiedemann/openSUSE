@@ -119,4 +119,41 @@ It does NOT conflict with python38 standard library.</comment>
   * Require Python 3.8 or later</comment>
     <requestid>1102872</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>19e5111d023178d0c8c8719f8060900e</srcmd5>
+    <version>6.1.1</version>
+    <time>1701972527</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.1:
+  * Added missed stream argument in simple.ResourceHandle. Ref
+    python/cpython#111775.
+  * MultiplexedPath now expects Traversable paths. String
+    arguments to MultiplexedPath are now deprecated.
+  * Enabled support for resources in namespace packages in zip
+    files. (#287)
+
+- Update to v5.10.1
+  * #259: files no longer requires the anchor to be specified and can infer the anchor from the caller's scope (defaults to the caller's module).
+  * bpo-41490: contents is now also more aggressive about consuming
+  * #110 and bpo-41490: path method is more aggressive about
+    releasing handles to zipfile objects early, enabling use-cases
+    like certifi to leave the context open but delete the
+  * Package no longer exposes importlib_resources.__version__.
+    Users that wish to inspect the version of importlib_resources
+    should instead invoke .version('importlib_resources') from
+    importlib-metadata ( stdlib or backport) directly. This change
+  * Select pathlib and contextlib imports based on Python version
+  * Loaders are no longer expected to implement the
+    abc.TraversableResources interface, but are instead expected to
+    return TraversableResources from their get_resource_reader
+  * Traversable is now a Protocol instead of an Abstract Base Class
+  * #79: Temporary files created will now reflect the filename of
+  * For improved compatibility, importlib_resources.trees is now
+  * Add extensibility support for non-standard loaders to supply
+    Traversable resources. Introduces a new abstract base class
+    abc.TraversableResources that supersedes (but implements for
+    compatibility) abc.ResourceReader. Any loader that implements
+    (implicitly or explicitly) the TraversableResources.files</comment>
+    <requestid>1129224</requestid>
+  </revision>
 </revisionlist>

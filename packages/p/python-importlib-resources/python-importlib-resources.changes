@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 27 19:08:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * Added missed stream argument in simple.ResourceHandle. Ref
+    python/cpython#111775.
+  * MultiplexedPath now expects Traversable paths. String
+    arguments to MultiplexedPath are now deprecated.
+  * Enabled support for resources in namespace packages in zip
+    files. (#287)
+
+-------------------------------------------------------------------
 Tue Aug  8 11:05:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.1:
@@ -45,7 +56,7 @@ Mon Jan  2 19:11:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 15:37:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v5.10.1 
+- Update to v5.10.1
   * v5.10.1
   #274: Fixed ResourceWarning in _common.
 
@@ -57,7 +68,7 @@ Fri Oct 28 17:45:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
     resources will be resolved adjacent to those modules, even for modules not found in any package. For example,
     files(import_module('mod.py')) will resolve resources found at the root. The parameter to files was renamed from 'package' to 'anchor',
     with a compatibility shim for those passing by keyword.
-  * #259: files no longer requires the anchor to be specified and can infer the anchor from the caller's scope (defaults to the caller's module). 
+  * #259: files no longer requires the anchor to be specified and can infer the anchor from the caller's scope (defaults to the caller's module).
 
 -------------------------------------------------------------------
 Tue Sep 13 06:45:26 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -165,56 +176,56 @@ Fri Nov 20 12:24:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - Update to 3.2.0
   * #68: Resources in PEP 420 Namespace packages are now supported.
 - v3.1.1
-  * bpo-41490: contents is now also more aggressive about consuming 
+  * bpo-41490: contents is now also more aggressive about consuming
     any iterator from the Reader.
 - v3.1.0
-  * #110 and bpo-41490: path method is more aggressive about   
-    releasing handles to zipfile objects early, enabling use-cases 
-    like certifi to leave the context open but delete the 
+  * #110 and bpo-41490: path method is more aggressive about
+    releasing handles to zipfile objects early, enabling use-cases
+    like certifi to leave the context open but delete the
     underlying zip file.
 - v3.0.0
-  * Package no longer exposes importlib_resources.__version__.     
-    Users that wish to inspect the version of importlib_resources 
-    should instead invoke .version('importlib_resources') from 
-    importlib-metadata ( stdlib or backport) directly. This change 
+  * Package no longer exposes importlib_resources.__version__.
+    Users that wish to inspect the version of importlib_resources
+    should instead invoke .version('importlib_resources') from
+    importlib-metadata ( stdlib or backport) directly. This change
     eliminates the dependency on importlib_metadata. Closes #100.
   * Package now always includes its data. Closes #93.
   * Declare hidden imports for PyInstaller. Closes #101.
 - v2.0.1
-  * Select pathlib and contextlib imports based on Python version 
+  * Select pathlib and contextlib imports based on Python version
     and avoid pulling in deprecated [pathlib](https://pypi.org/
     project/pathlib). Closes #97.
 - v2.0.0
-  * Loaders are no longer expected to implement the 
-    abc.TraversableResources interface, but are instead expected to 
-    return TraversableResources from their get_resource_reader 
+  * Loaders are no longer expected to implement the
+    abc.TraversableResources interface, but are instead expected to
+    return TraversableResources from their get_resource_reader
     method.
 - v1.5.0
-  * Traversable is now a Protocol instead of an Abstract Base Class 
+  * Traversable is now a Protocol instead of an Abstract Base Class
     (Python 2.7 and Python 3.8+).
   * Traversable objects now require a .name property.
 - v1.4.0
-  * #79: Temporary files created will now reflect the filename of 
+  * #79: Temporary files created will now reflect the filename of
     their origin.
 - v1.3.1
-  * For improved compatibility, importlib_resources.trees is now 
+  * For improved compatibility, importlib_resources.trees is now
     imported implicitly. Closes #88.
 - v1.3.0
-  * Add extensibility support for non-standard loaders to supply 
-    Traversable resources. Introduces a new abstract base class 
-    abc.TraversableResources that supersedes (but implements for 
-    compatibility) abc.ResourceReader. Any loader that implements 
-    (implicitly or explicitly) the TraversableResources.files 
-    method will be capable of supplying resources with subdirectory 
+  * Add extensibility support for non-standard loaders to supply
+    Traversable resources. Introduces a new abstract base class
+    abc.TraversableResources that supersedes (but implements for
+    compatibility) abc.ResourceReader. Any loader that implements
+    (implicitly or explicitly) the TraversableResources.files
+    method will be capable of supplying resources with subdirectory
     support. Closes #77.
-  * Preferred way to access as_file is now from top-level module. 
-    importlib_resources.trees.as_file is deprecated and 
+  * Preferred way to access as_file is now from top-level module.
+    importlib_resources.trees.as_file is deprecated and
     discouraged. Closes #86.
   * Moved Traversable abc to abc module. Closes #87.
 - v1.2.0
   * Traversable now requires an open method. Closes #81.
   * Fixed error on Python 3.5.{0,3}. Closes #83.
-  * Updated packaging to resolve version from package metadata. 
+  * Updated packaging to resolve version from package metadata.
     Closes #82.
 
 -------------------------------------------------------------------
