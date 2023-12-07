@@ -1,4 +1,288 @@
 -------------------------------------------------------------------
+Wed Dec 06 08:13:35 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231205.0f6fbd59f:
+- scheduler: log reason for recheck time updates
+- scheduler: update recheck time for node-pending-timeout
+
+-------------------------------------------------------------------
+Tue Dec 05 13:57:24 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231204.e1a1bd808:
+- tools: Fix a regression in tool XML output. (clbz#5529)
+
+-------------------------------------------------------------------
+Wed Nov 22 17:45:02 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231122.7534cc50a (Pacemaker-2.1.7-rc2):
+- rpm: require minimum libxml2 version of 2.6.0
+- libcrmcommon: Write crm_verify detailed messages to XML
+- libcrmcommon: Use const for xmlCtxtGetLastError() (CLBZ#5530)
+- libcrmcommon: Drop deprecated libxml2 symbols (CLBZ#5530)
+- sysconfig: Use CRM_DAEMON_USER and CRM_DAEMON_GROUP
+- sysconfig: Fix defaults for dh_min_bits/dh_max_bits
+- sysconfig: Document PCMK_stderr
+- pacemakerd: Mark PCMK_shutdown_delay as deprecated
+- sysconfig: Document PCMK_cluster_type
+- sysconfig: Document PCMK_remote_pid1
+- sysconfig: Document PCMK_node_action_limit
+- sysconfig: Mark PCMK_cib_timeout as deprecated
+- controld/schedullerd: Change the default value of node-pending-timeout to 0.
+- controld: Adding default value for node-pending-timeout.
+- crm_resource: make --wait wait for pending actions in CIB
+
+-------------------------------------------------------------------
+Wed Nov 22 17:21:47 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231031.d0ef74d64 (Pacemaker-2.1.7-rc1):
+- attrd: revert faulty T138 fix
+- controller: bail if CIB modify fails within transaction
+- scheduler: don't show pending nodes as having "<3.15.1" feature set
+
+-------------------------------------------------------------------
+Tue Nov 21 15:09:30 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231030.66cc0f083:
+- scheduler: *really* ignore monitors for invalid roles
+- scheduler: avoid double free with disabled recurring actions
+- scheduler: use node when unpacking failure handling for history entries
+- scheduler: check for migration actions more accurately
+- attrd: avoid regression by reverting 58400e27
+- libcrmcommon: fix readable interval string
+- attrd: restore standalone operation for regression testing
+- all: avoid "data set" or "working set" in messages
+- cts-lab: work around issues with Reattach test
+- scheduler: improve node comparison trace messages
+- fencer: compare node name case-insensitively
+- attrd: Use CIB transaction in attrd_write_attribute()
+- attrd: NULL-check the_cib earlier in attrd_write_attribute()
+- attrd, controller: Ignore CIB diff if client is safe
+- based: Make CIB transactions backward compatible
+- libcrmcommon: Bump feature set for CIB transactions
+
+- Rebase:
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+
+-------------------------------------------------------------------
+Tue Nov 21 14:42:13 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231009.5a44f03e4:
+- controller: don't fence leaving nodes for node-pending-timeout
+
+-------------------------------------------------------------------
+Tue Nov 21 13:57:18 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231004.92cc36b15:
+- crm_resource: move/ban fall back to old Promoted equivalent
+- libcrmcommon: Ignore text nodes when creating XML patchset
+
+-------------------------------------------------------------------
+Tue Nov 21 13:35:11 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231003.0f5df886a:
+- scheduler: compare join state case-sensitively
+- scheduler: validate "terminate" node attribute better
+- controller,scheduler: allow disabling node-pending-timeout
+
+-------------------------------------------------------------------
+Mon Nov 20 11:54:14 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20231003.c3e159b4d:
+- libcrmcommon: Improve error log in pcmk__xml2text()
+- scheduler: correct meta-attribute name in message
+- scheduler: correct message about only-if-unmigratable inputs
+- crm_resource: report error when trying to restart unmanaged resources
+- scheduler: properly sort rule-based blocks when overwriting values
+- scheduler: properly evaluate rules in action meta-attributes
+
+-------------------------------------------------------------------
+Thu Nov 16 14:56:13 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230905.dc65dc35f:
+- libcrmcommon: Fix error logging in mainloop_add_ipc_server_with_prio.
+- fencer: sleep 1s between reconnects
+- attrd: Don't write attributes for a CIB replace that we requested
+- controller: Drop CIB replace call recording and forgetting
+- attrd: Ignore CIB diff notification if shutdown was requested
+- controller: improve another shutdown message
+- attrd: avoid race condition at writer election
+- controller: improve disconnection messages
+- agents: HealthCPU - fix the validation of input
+- based: improve request processing messages
+- agents: avoid deprecated attrd_updater option in ocf:pacemaker:ping
+- tools: make crm_node -R use transaction for CIB changes
+- agents: HealthCPU - Add the parameter of attrd_delay and fix attrd_updter command
+- tools: improve how crm_node -R purges node from fencer
+- tools: improve how crm_node -R purges node from CIB
+- tools: crm_node shouldn't try to purge nodes from pacemakerd
+- controller: improve logs when processing messages
+
+-------------------------------------------------------------------
+Thu Nov 16 12:29:45 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230821.d00694366:
+- libcrmcommon: fix unit tests on 32-bit hosts with large files (CLBZ#5526)
+- libcrmcommon: Use the new bz2-related error code.
+- libcrmcommon, daemons: Use the new network-related return codes.
+- tools: improve attrd_updater -U help
+- attrd: improve disconnection messages
+- attrd: avoid race condition when shutting down
+- controller: improve messages for resource history updates
+- controller: guard lrm_state_table usage with NULL check
+- controller: don't try to execute agent action at shutdown
+- scheduler: make validate_on_fail() replace value
+- scheduler: compare action names case-sensitively in validate_on_fail()
+- schemas: Add a new schema for crm_node.
+- tools: Convert crm_node -l/-p to formatted output.
+- tools: Convert crm_node -i to formatted output.
+- tools: Convert crm_node -q to use formatted output.
+- tools: Convert crm_node -n/-N to use formatted output.
+- libcrmcommon: Bump feature set for crm_node formatted output
+- libpacemaker: Change the type of the node_id argument.
+- libcrmcommon: wait for reply from appropriate controller commands
+- daemons: Disable sync points in certain circumstances.
+- tools: Fix a bug in clone resource description display (rh#2106642)
+- tools: The dampen parameter is disabled when setting values with attrd_updater.
+- libcrmcommon: fix regression in XML logging
+- build: No longer try to package the cts python directory.
+- libpe_status: compare action names case-sensitively
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * bug-943295_pacemaker-lrmd-log-notice.patch
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+
+-------------------------------------------------------------------
+Tue Nov 14 09:16:45 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230711.ecd2395f8:
+- controller: do not check whether watchdog fencing is enabled for the node if `stonith-watchdog-timeout` is not even configured (bsc#1213125)
+
+-------------------------------------------------------------------
+Mon Nov 13 08:57:51 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230710.a6d9205af:
+- various: compare XML element names case-sensitively
+- libpacemaker: Honor role-based colocations for bundles
+- libpacemaker: Anti-colocations affect scores when roles match
+- libpacemaker: Don't shuffle clone instances unnecessarily (rh#1931023)
+- rpm: allow passing custom rpmbuild options (CLBZ#5520)
+- libcrmcommon: improve IPC connection logging and retries
+- libcrmcommon: wait 500ms before IPC connection retry
+- various: use pcmk__connect_generic_ipc() instead of crm_ipc_connect()
+- various: use pcmk__ipc_fd() instead of crm_ipc_get_fd()
+- libcrmcommon: implement is_ipc_provider_expected() as series of fallbacks
+- libcrmcommon: fix is_ipc_provider_expected() with HAVE_GETPEERUCRED
+- libcrmcommon: fix is_ipc_provider_expected() with HAVE_SOCKPEERCRED
+- libcrmcommon: don't set libqb object context
+- scheduler: continue with non-sequential set members after error
+- scheduler: improve colocation unpacking messages (and comments)
+- CIB: be more strict about ignoring colocation elements without an ID
+- scheduler: consider explicit colocations with group members
+- scheduler: improve logs when unpacking colocation sets
+- CIB: deprecate "ordering" attribute of "resource_set"
+- scheduler: improve error-checking when creating colocations
+
+-------------------------------------------------------------------
+Fri Oct 13 10:18:36 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230629.1c619c29a:
+- libpacemaker: Respect clone-node-max for cloned groups
+- libpacemaker: Log which resource we're adding colocations for
+- scheduler: distinguish unrunnable from migration unrunnable in displays
+- scheduler: check pointer for NULL *before* dereferencing it
+- scheduler: compare strings case-sensitively where appropriate
+- scheduler: assert on invalid usage of assignment methods
+- rpm: enforce libcmocka-devel version dependency
+
+-------------------------------------------------------------------
+Thu Oct 12 12:36:03 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230615.16fc250dc:
+- controller: Replace node state atomically at DC join ack step (rh#2000595, CLBZ#5306)
+- libpacemaker: Get container attr from assigned node, if any
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+-------------------------------------------------------------------
+Wed Oct 11 09:06:11 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230614.36c04fbf9:
+- libpacemaker: use "Assignment" instead of "Allocation"
+- libpacemaker: avoid "weight" in log messages
+- libpacemaker: use "assignment" terminology consistently
+- INSTALL: Add libcmocka version dependency (CLBZ#5518)
+- scheduler: improve a couple of bundle messages
+- scheduler: compare anti-colocation dependent negative preferences against stickiness
+
+-------------------------------------------------------------------
+Tue Sep 26 08:36:49 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable crypto-policies support: [bsc#1211301]
+  * Honor the system-wide crypto-policies, via package-build-time
+    configurable "pcmk_gnutls_priorities" defaulting to @SYSTEM.
+
+-------------------------------------------------------------------
+Tue Jun 20 17:17:09 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230612.dcecc9db0:
+- controller: update node state correctly based on any existing node cache entry (bsc#1198767, bsc#1202177, bsc#1206268, bsc#1208380, bsc#1211098)
+- libcrmcluster: internal functions for getting a node cache entry by uuid instead of id (bsc#1198767, bsc#1202177, bsc#1206268, bsc#1208380, bsc#1211098)
+- libcrmcluster: ability to search for a node cache entry by uuid instead of id (bsc#1198767, bsc#1202177, bsc#1206268, bsc#1208380, bsc#1211098)
+- controller: trigger a new transition if a pending node has reached `node-pending-timeout`
+- controller: pass abort_timer to the timeout function abort_timer_popped()
+- controller: read `node-pending-timeout` cluster option
+- cts-scheduler: add regression test for fencing a pending node that has reached `node-pending-timeout`
+- scheduler: fence a pending node that has reached `node-pending-timeout`
+- scheduler: add `node-pending-timeout` cluster option
+- scheduler: ability to determine node status from `in_ccm` and `crmd` fields of `node_state` based on timestamps
+- controller: record the timestamps of a node becoming a cluster member and online in CPG in CIB `node_state`
+- libcrmcluster: add ability to record the timestamps of a node becoming a cluster member and online in CPG
+- libcrmcommon: bump feature set to 3.18.0 for handling node pending timeout
+- cts-scheduler: update regression test about not fencing a pending node that doesn't have an uname in node state yet (bsc#1198767, bsc#1202177, bsc#1206268, bsc#1208380, bsc#1211098)
+- scheduler: Do not fence a pending node that doesn't have an uname in node state yet (bsc#1198767, bsc#1202177, bsc#1206268, bsc#1208380, bsc#1211098)
+- cts-scheduler: add regression test about a pending node that doesn't have an uname in node state yet (bsc#1198767, bsc#1202177, bsc#1206268, bsc#1208380, bsc#1211098)
+
+-------------------------------------------------------------------
+Tue Jun 20 16:14:15 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230612.e6e89f803:
+- libcib: Support transactions for CIB file clients
+- libcrmcommon: replace_xml_node() segfaults when doc is shared
+- libcib: Allow multiple cib_file clients simultaneously
+- crm_verify: Add --quiet option to crm_verify
+- based: Support CIB transactions
+
+-------------------------------------------------------------------
+Tue Jun 20 11:56:58 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230607.730523cd1:
+- libcrmservice: Fix an error when coverage is enabled.
+- scheduler: revert recently introduced regression
+- cts: self.rsh returns a tuple, not a single value.
+- xml: Improve efficiency of attribute value obtainment
+- based: NULL-check digest strings in cib_process_command()
+- based: Fix use-after-free in cib_process_command()
+- based: Fix bad sync check in sync_our_cib()
+- scheduler: skip non-exclusive nodes correctly for clones
+- scheduler: order clone instances properly
+
+-------------------------------------------------------------------
+Tue Jun 20 11:28:22 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230524.f1298840d:
+- libcrmcommon: Fix Coverity false positive pcmk__file_contents()
+- libcrmcommon: NULL-check argument to pcmk__mark_xml_created()
+- controller: When a remote node starts, apply any start state.
+- liblrmd: Save a remote node's requested start state
+- daemons: Add start state to LRMD handshake XML
+
+- Rebase:
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+
+-------------------------------------------------------------------
 Mon Jun 19 08:57:42 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - rpm: build with --with-sbd-sync-default="true" only for sle_version >= 150400 (bsc#1180966)
@@ -1372,7 +1656,7 @@ Tue Feb 08 08:22:23 UTC 2022 - Yan Gao <ygao@suse.com>
 - fencing: improve exit reason for fencing timeouts (rh#1470834)
 - controller: improve exit reason for internal timeouts (rh#1470834)
 - controller,libpacemaker: make history XML creation less chatty (rh#1470834)
-- fencing: don't warn if cluster has no watchdog device (rh#1470834)
+- fencing: don't warn if cluster has no watchdog device (rh#1470834, bsc#1213125)
 - libcrmcommon: don't say "Unknown error" (rh#1470834)
 - libcrmcommon: improve description for "not connected" status (rh#1470834)
 
@@ -3544,7 +3828,7 @@ Fri Jan 11 10:11:05 UTC 2019 - ygao@suse.com
 - attrd: check for alert changes after CIB is replaced
 - attrd: start new election if writer is lost
 - attrd: handle shutdown more cleanly (bsc#1173668)
-- attrd: don't start a new election when receiving a client update
+- attrd: don't start a new election when receiving a client update (bsc#1215446)
 - attrd: clear lost updates
 - attrd: don't delay re-attempted writes unless original failed
 - attrd: connect to the CIB before connecting the cluster

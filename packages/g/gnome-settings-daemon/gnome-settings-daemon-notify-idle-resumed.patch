@@ -1,10 +1,10 @@
-Index: gnome-settings-daemon-41.0/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
+Index: gnome-settings-daemon-45.0/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
 ===================================================================
---- gnome-settings-daemon-41.0.orig/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
-+++ gnome-settings-daemon-41.0/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
+--- gnome-settings-daemon-45.0.orig/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
++++ gnome-settings-daemon-45.0/data/org.gnome.settings-daemon.plugins.power.gschema.xml.in
 @@ -41,6 +41,11 @@
        <summary>Power button action</summary>
-       <description>The action to take when the system power button is pressed. This action is hard-coded (and the setting ignored) on virtual machines (power off) and tablets (suspend).</description>
+       <description>The action to take when the system power button is pressed. Virtual machines only honor the 'nothing' action, and will shutdown otherwise. Tablets always suspend, ignoring all the other action options.</description>
      </key>
 +    <key name="notify-idle-resumed" type="b">
 +      <default>true</default>
@@ -14,27 +14,27 @@ Index: gnome-settings-daemon-41.0/data/org.gnome.settings-daemon.plugins.power.g
      <key name="power-saver-profile-on-low-battery" type="b">
        <default>true</default>
        <summary>Enable power-saver profile when battery is low</summary>
-Index: gnome-settings-daemon-41.0/plugins/power/gsd-power-manager.c
+Index: gnome-settings-daemon-45.0/plugins/power/gsd-power-manager.c
 ===================================================================
---- gnome-settings-daemon-41.0.orig/plugins/power/gsd-power-manager.c
-+++ gnome-settings-daemon-41.0/plugins/power/gsd-power-manager.c
-@@ -164,6 +164,7 @@ struct _GsdPowerManager
+--- gnome-settings-daemon-45.0.orig/plugins/power/gsd-power-manager.c
++++ gnome-settings-daemon-45.0/plugins/power/gsd-power-manager.c
+@@ -165,6 +165,7 @@ struct _GsdPowerManager
          NotifyNotification      *notification_ups_discharging;
          NotifyNotification      *notification_low;
          NotifyNotification      *notification_sleep_warning;
-+        NotifyNotification      *notification_resumed;
++	NotifyNotification      *notification_resumed;
          GsdPowerActionType       sleep_action_type;
          GHashTable              *devices_notified_ht; /* key = serial str, value = UpDeviceLevel */
          gboolean                 battery_is_low; /* battery low, or UPS discharging */
-@@ -205,6 +206,7 @@ struct _GsdPowerManager
+@@ -206,6 +207,7 @@ struct _GsdPowerManager
          gboolean                 inhibit_suspend_taken;
          guint                    inhibit_lid_switch_timer_id;
          gboolean                 is_virtual_machine;
-+        GsdPowerActionType       last_idle_power_action;
++	GsdPowerActionType       last_idle_power_action;
  
          /* Idles */
          GnomeIdleMonitor        *idle_monitor;
-@@ -1744,6 +1746,49 @@ is_session_active (GsdPowerManager *mana
+@@ -1730,6 +1732,49 @@ is_session_active (GsdPowerManager *mana
  }
  
  static void
@@ -84,24 +84,23 @@ Index: gnome-settings-daemon-41.0/plugins/power/gsd-power-manager.c
  idle_set_mode (GsdPowerManager *manager, GsdPowerIdleMode mode)
  {
          gboolean ret = FALSE;
-@@ -1824,6 +1869,7 @@ idle_set_mode (GsdPowerManager *manager,
+@@ -1810,6 +1855,7 @@ idle_set_mode (GsdPowerManager *manager,
                          action_type = g_settings_get_enum (manager->settings,
                                                             "sleep-inactive-ac-type");
                  }
-+                manager->last_idle_power_action = action_type;
++		manager->last_idle_power_action = action_type;
                  do_power_action_type (manager, action_type);
  
          /* turn on screen and restore user-selected brightness level */
-@@ -2777,6 +2823,12 @@ handle_suspend_actions (GsdPowerManager
+@@ -2784,6 +2830,11 @@ handle_suspend_actions (GsdPowerManager
  static void
  handle_resume_actions (GsdPowerManager *manager)
  {
-+        if (manager->last_idle_power_action == GSD_POWER_ACTION_SUSPEND ||
++	if (manager->last_idle_power_action == GSD_POWER_ACTION_SUSPEND ||
 +            manager->last_idle_power_action == GSD_POWER_ACTION_HIBERNATE)
 +                show_resumed_notification (manager);
 +
 +        manager->last_idle_power_action = GSD_POWER_ACTION_NOTHING;
-+
          /* ensure we turn the panel back on after resume */
          backlight_enable (manager);
  

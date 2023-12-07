@@ -445,4 +445,23 @@
     <comment></comment>
     <requestid>1112605</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e664f6f28bd9199bffc79e5fa54a19c4</srcmd5>
+    <version>12.0</version>
+    <time>1701972545</time>
+    <user>anag+factory</user>
+    <comment>- update to 12.0:
+  * websockets 12.0 requires Python ≥ 3.8.
+  * Made convenience imports from ``websockets`` compatible with
+    static code analysis tools such as auto-completion in an IDE
+    or type checking with mypy_.
+  * Accepted a plain :class:`int` where an
+    :class:`~http.HTTPStatus` is expected.
+  * Added :class:`~frames.CloseCode`.
+- drop py312-shutdown.patch (upstream)
+
+    ``protocol.Protocol``, ``server.ServerProtocol``, and
+- Update to 10.4</comment>
+    <requestid>1131292</requestid>
+  </revision>
 </revisionlist>

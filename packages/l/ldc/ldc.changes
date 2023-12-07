@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  6 10:18:55 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-default-target.patch: Default to rv64gc for hosted riscv64
+  target
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Fri Jul  7 08:32:51 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.32.2:

@@ -22,7 +22,8 @@ Release:        0
 Summary:        Provides job scheduling capabilities to RQ (Redis Queue)
 License:        MIT
 URL:            https://github.com/rq/rq-scheduler
-Source:         https://files.pythonhosted.org/packages/source/r/rq-scheduler/rq-scheduler-%{version}.tar.gz
+Source:         https://github.com/rq/rq-scheduler/archive/refs/tags/v%{version}.tar.gz#/rq-scheduler-%{version}-gh.tar.gz
+Patch1:         rq-compat-removal.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,6 +34,7 @@ BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module rq >= 0.13}
+BuildRequires:  redis
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-crontab >= 0.23.0
@@ -57,6 +59,12 @@ Provides job scheduling capabilities to RQ (Redis Queue)
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/rqscheduler
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%{_sbindir}/redis-server --port 6379 --save "" &
+spid="$!"
+trap "kill $spid || true" EXIT
+%pytest -k "not TestScheduler"
 
 %post
 %python_install_alternative rqscheduler

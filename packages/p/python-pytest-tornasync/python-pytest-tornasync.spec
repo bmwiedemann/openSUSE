@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-tornasync
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-tornasync
 Version:        0.6.0.post2
 Release:        0
 License:        MIT
 Summary:        PyTest plugin for testing Tornado code
-Url:            https://github.com/eukaryote/pytest-tornasync
+URL:            https://github.com/eukaryote/pytest-tornasync
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-tornasync/pytest-tornasync-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado >= 5.0}

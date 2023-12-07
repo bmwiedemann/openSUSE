@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  6 15:26:31 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop unneeded -DCMAKE_C_FLAGS=-std=gnu99 to use distro CFLAGS
+
+-------------------------------------------------------------------
 Fri Nov  3 08:47:33 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.17:

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec  7 09:17:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.16.2 (bsc#1217858, CVE-2023-49297)
+  * auth: add dictionary storage
+  * auth: rename client_creds_dict -> client_json_dict
+  * fs: simplify auth
+  * fs: hide gdrive_* methods
+  * fs: add acknowledge_abuse parameter
+  * remove six
+  * Implement mv method in GDriveFileSystem
+  * fs: use itertools.chain.from_iterable instead of funcy.py3.cat
+  * add bind_addr parameter to LocalWebserverAuth
+  * drop Python 3.7 support
+  * Merge pull request from GHSA-v5f6-hjmf-9mc5
+- Drop merged modernize.patch
+- Rebase migrate-to-google-auth.patch
+  * pr#180 was closed in favor of pr#221, which was closed as stale
+
+-------------------------------------------------------------------
 Fri Jun  3 11:11:45 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.10.1

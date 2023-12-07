@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  7 11:44:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.5.0:
+  * Merged Insiders features of 'Goat's Horn' funding goal
+    - Added privacy plugin: automatic downloading of external
+      assets
+    - Added support for card grids and grid layouts
+    - Added support for improved tooltips
+    - Added support for content tabs anchor links (deep linking)
+    - Added support for automatic dark/light mode
+    - Added support for document contributors
+
+-------------------------------------------------------------------
 Mon Nov 27 05:40:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.14:

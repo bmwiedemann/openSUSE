@@ -541,4 +541,15 @@
   * Indent changes in changelog further than version</comment>
     <requestid>1127322</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>48fb957bce1f161d0596454ea3cf3101</srcmd5>
+    <version>4.1.0</version>
+    <time>1701972679</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.1.0
+  * Add support for Slowroll
+  * Replace $releasever also with ${releasever} syntax
+  * Update changelog prefix to *</comment>
+    <requestid>1131583</requestid>
+  </revision>
 </revisionlist>

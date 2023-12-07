@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec  3 02:10:44 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to v1.3.5:
+  * Update from latest kernel bcachefs sources, pulling in fixes
+    for deleted_inodes btree in particular
+  * cmd_version now works properly
+  * fixes for cmd_format, pick the same bucket size for all devices
+    for the sake of erasure coding
+  * rebalance_work point release
+  * Fix race in closure_sync()
+  * Updated bcachefs sources because
+    bcachefs_metadata_version_deleted_inodes
+  * Snapshot depth, skiplist fields
+  * Updated bcachefs sources because
+    bcachefs_metadata_version_major_minor
+  * Fix quotas + snapshots
+  * Rip out code for storing backpointers in alloc keys
+  * Fragmentation LRU
+  * Rework LRU btree
+
+-------------------------------------------------------------------
 Tue May 30 08:19:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 24) for build.opensuse.org

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  6 08:31:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2
+  * if the write buffer is full, outgoing messages are now cached
+    instead of returning EAGAIN.
+  * if a message send fails, stop trying to send more messages
+    which will do nothing but spam the log with more errors
+  * if we get disconnected by the server, stop trying to send
+    things to the server (and spam the log on error)
+  * use EINTR checks instead of blocking SIGALRM
+  * keep a cache of defunct objects to avoid spamming the log when
+    there are in-flight messages arriving after destroy
+
+-------------------------------------------------------------------
 Thu Sep  7 06:04:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1

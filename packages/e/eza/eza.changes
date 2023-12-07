@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 06:53:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.3:
+  * Add bare git_repos fn if feature git is disabled
+  * Fixing color of size unit
+  * Color-scale broked size for colors
+
+-------------------------------------------------------------------
 Fri Dec  1 07:18:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.2:

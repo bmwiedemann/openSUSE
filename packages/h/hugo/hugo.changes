@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Dec 06 20:14:24 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.121.0:
+  * docs: Regen docshelper
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.11.1 to 2.12.0
+  * docs: Adjust last merge from docs repository
+  * docs: Regen docs helper
+  * Pull in the latest code from Go's template packages (#11771)
+  * tpl: Allow using page resources on the images page parameter for `opengraph`, `schema` and `twitter_cards` templates
+  * hugolib: Apply titleCaseStyle to automatic section pages
+  * tpl/urls: Retain query and fragment with absURL and absLangURL
+  * markup: Add Level to Heading struct
+  * tpl/fmt: Print suppression help with erroridf
+  * tpl/transform: Display Chroma highlighting errors
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.8 to 2.20.9
+  * build(deps): bump github.com/spf13/cast from 1.5.1 to 1.6.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.121.0 to 0.122.0
+  * github: Fix CI build on Windows
+  * build(deps): bump golang.org/x/image from 0.13.0 to 0.14.0
+  * deps: Update github.com/tdewolff/minify/v2 v2.20.7 => v2.20.8
+  * build(deps): bump github.com/spf13/afero from 1.10.0 to 1.11.0
+  * build(deps): bump github.com/evanw/esbuild from 0.19.7 to 0.19.8
+  * Fix handling of dropped error in test
+  * build(deps): bump google.golang.org/api from 0.151.0 to 0.152.0
+  * common/para: Skip flaky test on CI
+  * deps: Upgrade to libwebp 1.3.2
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.4 to 1.48.6
+  * build(deps): bump golang.org/x/tools from 0.15.0 to 0.16.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.120.0 to 0.121.0
+  * build(deps): bump github.com/bep/logg from 0.3.0 to 0.4.0
+  * deps: Upgrade to github.com/bep/simplecobra v0.4.0
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.48.2 to 1.48.4
+  * watcher: Skip flaky test for now
+  * build(deps): bump golang.org/x/tools from 0.14.0 to 0.15.0
+  * tpl/transform: Add transform.XMLEscape template function
+  * build(deps): bump github.com/gorilla/websocket from 1.5.0 to 1.5.1
+  * build(deps): bump github.com/fatih/color from 1.15.0 to 1.16.0
+  * tpl/tplimpl: Remove superfluous type attr on script elements
+  * build(deps): bump golang.org/x/net from 0.17.0 to 0.18.0
+  * build(deps): bump github.com/evanw/esbuild from 0.19.5 to 0.19.7
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.10.0 to 2.11.1
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.5 to 2.20.7
+  * build(deps): bump google.golang.org/api from 0.138.0 to 0.151.0
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.45.14 to 1.48.2 (#11724)
+  * resources/resource: Fix GroupByParamDate with raw TOML dates
+  * common/para: Skip flaky tests on Windows
+  * navigation: Unexport menu entry methods
+  * markup/goldmark: Sync image render hook code with Goldmark
+  * helpers: Fix TrimShortHTML used by markdownify and RenderString
+
+-------------------------------------------------------------------
 Thu Nov 16 22:31:01 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.120.4:

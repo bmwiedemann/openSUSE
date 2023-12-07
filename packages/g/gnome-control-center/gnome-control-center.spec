@@ -49,6 +49,8 @@ Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
 Patch1002:      gnome-control-center-more-power-button-actions.patch
 # PATCH-FEATURE-SLE gnome-control-center-bring-back-firewall-zone.patch fate#316719 sckang@suse.com -- network: Bring back the firewall zone combo box to select proper firewall zone for each connection.
 Patch1003:      gnome-control-center-bring-back-firewall-zone.patch
+# PATCH-NEEDS-REBASE gnome-control-center-info-fix-distro-logo.patch boo#1200581 milachew@mail.lv -- Fix the size of logo icon in About system
+Patch1004:      gnome-control-center-info-fix-distro-logo.patch
 
 BuildRequires:  /usr/bin/Xvfb
 BuildRequires:  cups-devel >= 1.4
@@ -194,6 +196,8 @@ GNOME control center.
 %patch -P 1001 -p1
 %patch -P 1002 -p1
 %patch -P 1003 -p1
+# patch needs rebase
+# %patch -P 1004 -p1
 %endif
 
 %build

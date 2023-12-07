@@ -8,6 +8,14 @@ Thu Nov  2 14:34:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
   - NMA subpackage: Main package and NMA
 
 -------------------------------------------------------------------
+Fri Sep  8 01:07:53 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add nm-openvpn-fix-importing-pkcs12-ca.patch: import: fix
+  importing profiles with PKCS#12 CA
+  (glgo#GNOME/NetworkManager-openvpn!50, bsc#1214415).
+- Drop nm-openvpn-fix-importing-pkcs12-ca.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Nov 18 09:52:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.2:

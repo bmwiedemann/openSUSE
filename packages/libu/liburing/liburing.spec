@@ -70,6 +70,12 @@ for the Linux-native io_uring.
 
 %build
 # not autotools, so configure macro doesn't work
+%set_build_flags
+%ifarch %{ix86}
+# Otherwise 32-bit x86 fails with: undefined reference to `__stack_chk_fail_local'
+export CFLAGS="%{optflags} -fno-stack-protector"
+export CPPFLAGS="%{optflags} -fno-stack-protector"
+%endif
 sh ./configure --prefix=%{_prefix} \
             --includedir=%{_includedir} \
             --libdir=/%{_libdir} \

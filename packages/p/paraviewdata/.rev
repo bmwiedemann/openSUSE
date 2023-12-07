@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>780694</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c6ce331d707ea58c3adc2365d38076aa</srcmd5>
+    <version>5.11.2</version>
+    <time>1701972703</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.11.2.
+  * No upstream release notes.
+</comment>
+    <requestid>1131663</requestid>
+  </revision>
 </revisionlist>

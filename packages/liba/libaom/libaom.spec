@@ -1,5 +1,5 @@
 #
-# spec file for package libaom
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -26,7 +27,7 @@
 %define __builder ninja
 %define __builddir _build
 Name:           libaom%{psuffix}
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 %if "%{flavor}" == ""
 Summary:        AV1 codec library
@@ -39,28 +40,26 @@ BuildArch:      noarch
 %endif
 License:        BSD-2-Clause
 URL:            https://aomedia.googlesource.com/aom/
-Source0:        libaom-%{version}.tar.xz
+Source0:        libaom-%{version}.tar.zst
 Source99:       baselibs.conf
 Patch0:         libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch
 Patch1:         system-gtest.patch
 Patch2:         system-yuv.patch
 
+BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.6
 BuildRequires:  ninja
-BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libyuv)
 %ifarch x86_64 %ix86
 BuildRequires:  yasm
 %endif
 
-
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gnome
 %endif
-
 
 %description
 %if "%{flavor}" == ""
@@ -71,7 +70,6 @@ video coding format designed for video transmissions over the Internet.
 This package contains the API documentation for libaom, a library
 for the AOMedia Video 1 (AV1) video coding format.
 %endif
-
 
 %if "%{flavor}" == ""
 %package -n %{name}%{sover}
@@ -155,8 +153,6 @@ sed -E -i 's|#include "third_party/googletest/src/googletest/include/([^"]*)"|#i
 %if "%{flavor}" == ""
 %cmake_install
 rm %{buildroot}%{_libdir}/%{name}.a
-
-
 
 %ldconfig_scriptlets -n %{name}%{sover}
 

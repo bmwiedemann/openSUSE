@@ -23,7 +23,7 @@
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
 %global import_path     %{provider_prefix}
 Name:           buildkit
-Version:        0.11.2
+Version:        0.12.4
 Release:        0
 Summary:        Toolkit for converting source code to build artifacts
 License:        Apache-2.0
@@ -54,17 +54,20 @@ mkdir -p %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_unitdir}/
 install -m 0755 _output/buildkitd %{buildroot}%{_bindir}/buildkitd
 install -m 0755 _output/buildctl %{buildroot}%{_bindir}/buildctl
-install -m 0755 %{SOURCE2} %{buildroot}%{_unitdir}/buildkit.service
-install -m 0755 examples/systemd/system/buildkit.socket %{buildroot}%{_unitdir}/buildkit.socket
+install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/buildkit.service
+install -m 0644 examples/systemd/system/buildkit.socket %{buildroot}%{_unitdir}/buildkit.socket
+
+%pre
+%service_add_pre buildkit.socket buildkit.service
 
 %post
-%systemd_post buildkit.socket buildkit.service
+%service_add_post buildkit.socket buildkit.service
 
 %preun
-%systemd_preun buildkit.socket buildkit.service
+%service_del_preun buildkit.socket buildkit.service
 
 %postun
-%systemd_postun_with_restart buildkit.socket buildkit.service
+%service_del_postun buildkit.socket buildkit.service
 
 %files
 %license LICENSE

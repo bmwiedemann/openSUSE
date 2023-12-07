@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 22 15:23:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable more decoders and encoders explicitly:
+  * amrwb via bcond_without for TW only (and in
+    enable_decoder/encoder)
+  * opencore via bcond_without for TW only (and in
+    enable_decoder/encoder)
+  * xvid via bcond_without for TW only (and in
+    enable_decoder/encoder)
+  * h.263 via enable_decoder/encoder and no longer explicitly
+    disabling in call to configure
+  * MPEG4 Visual via enable_decoder/encoder and no longer
+    explicitly disabling in call to configure
+  * MPEG2 Hardware decoders via enable_decoder/encoder
+  * And many many more via enable_decoder/encoder.
+
+-------------------------------------------------------------------
 Fri Nov 10 10:09:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 6.0.1:

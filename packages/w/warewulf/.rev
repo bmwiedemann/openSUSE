@@ -60,4 +60,13 @@
     <comment>- Disable i586 buildarch for openSUSE:Factory.</comment>
     <requestid>967981</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>e5f1e4dd696777e63c3d92010812545b</srcmd5>
+    <version>3.8.1</version>
+    <time>1701972688</time>
+    <user>anag+factory</user>
+    <comment>- removed provision-Update-ipxe-to-Github-commitid-133f4c4.patch as
+  wasn't used in previous commits (forwarded request 1131605 from mslacken)</comment>
+    <requestid>1131606</requestid>
+  </revision>
 </revisionlist>

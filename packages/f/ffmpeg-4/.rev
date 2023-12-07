@@ -572,4 +572,12 @@
   to resolve build failure with binutils &gt;= 2.41. [boo#1215945]</comment>
     <requestid>1121164</requestid>
   </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>45caa879a08270cac27720e38d10fa1c</srcmd5>
+    <version>4.4.4</version>
+    <time>1701972610</time>
+    <user>anag+factory</user>
+    <comment>- Copy codec list from ffmpeg-6</comment>
+    <requestid>1131456</requestid>
+  </revision>
 </revisionlist>

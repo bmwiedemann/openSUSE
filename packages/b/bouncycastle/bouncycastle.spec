@@ -17,7 +17,7 @@
 
 
 %global ver_major 1
-%global ver_minor 76
+%global ver_minor 77
 %global gittag r%{ver_major}rv%{ver_minor}
 %global archivever jdk18on-%{ver_major}%{ver_minor}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider

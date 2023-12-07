@@ -48,4 +48,12 @@
     <comment>New stable release (forwarded request 994469 from iznogood)</comment>
     <requestid>994793</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e30b572e0deee42a7e8ad36de5d1981b</srcmd5>
+    <version>2.28.3</version>
+    <time>1701972547</time>
+    <user>anag+factory</user>
+    <comment>Add a missing patch from Leap/SLE. (forwarded request 1131269 from yfjiang)</comment>
+    <requestid>1131305</requestid>
+  </revision>
 </revisionlist>

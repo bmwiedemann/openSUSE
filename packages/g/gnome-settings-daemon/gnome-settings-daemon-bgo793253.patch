@@ -1,7 +1,7 @@
-Index: b/plugins/media-keys/gsd-media-keys-manager.c
+Index: gnome-settings-daemon-45.0/plugins/media-keys/gsd-media-keys-manager.c
 ===================================================================
---- a/plugins/media-keys/gsd-media-keys-manager.c
-+++ b/plugins/media-keys/gsd-media-keys-manager.c
+--- gnome-settings-daemon-45.0.orig/plugins/media-keys/gsd-media-keys-manager.c
++++ gnome-settings-daemon-45.0/plugins/media-keys/gsd-media-keys-manager.c
 @@ -350,7 +350,7 @@ get_key_string (MediaKey *key)
  	else if (key->custom_path != NULL)
  		return g_strdup_printf ("custom:%s", key->custom_path);
@@ -20,10 +20,10 @@ Index: b/plugins/media-keys/gsd-media-keys-manager.c
  
          array = g_ptr_array_new ();
          g_ptr_array_add (array, binding);
-Index: b/plugins/rfkill/rfkill-glib.c
+Index: gnome-settings-daemon-45.0/plugins/rfkill/rfkill-glib.c
 ===================================================================
---- a/plugins/rfkill/rfkill-glib.c
-+++ b/plugins/rfkill/rfkill-glib.c
+--- gnome-settings-daemon-45.0.orig/plugins/rfkill/rfkill-glib.c
++++ gnome-settings-daemon-45.0/plugins/rfkill/rfkill-glib.c
 @@ -268,7 +268,7 @@ op_to_string (unsigned int op)
  	case RFKILL_OP_CHANGE_ALL:
  		return "CHANGE_ALL";
@@ -33,10 +33,10 @@ Index: b/plugins/rfkill/rfkill-glib.c
  	}
  }
  
-Index: b/plugins/xsettings/xsettings-manager.c
+Index: gnome-settings-daemon-45.0/plugins/xsettings/xsettings-manager.c
 ===================================================================
---- a/plugins/xsettings/xsettings-manager.c
-+++ b/plugins/xsettings/xsettings-manager.c
+--- gnome-settings-daemon-45.0.orig/plugins/xsettings/xsettings-manager.c
++++ gnome-settings-daemon-45.0/plugins/xsettings/xsettings-manager.c
 @@ -271,7 +271,7 @@ xsettings_get_typecode (GVariant *value)
      case G_VARIANT_CLASS_TUPLE:
        return XSETTINGS_TYPE_COLOR;

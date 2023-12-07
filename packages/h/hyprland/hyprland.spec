@@ -20,7 +20,7 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.32.3
+Version:        0.33.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(libdisplay-info)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.113
+BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
 BuildRequires:  pkgconfig(libseat) >= 0.2.0
 BuildRequires:  pkgconfig(libudev)
@@ -82,6 +82,7 @@ model allowing for a lot of customization, and more.
 %package devel
 Summary:        Files required to build Hyprland plugins
 Requires:       %{name}
+BuildArch:      noarch
 
 %description devel
 This package contains the neccessary files that are required to

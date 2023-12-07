@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  7 09:45:46 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- mozjs115 requires gcc >= 8.1, icu >= 73.1. Specify them in spec.
+
+-------------------------------------------------------------------
+Wed Dec  6 08:51:59 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Update icu data file name in spec to build in big endian machine.
+
+-------------------------------------------------------------------
 Tue Nov 28 12:02:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

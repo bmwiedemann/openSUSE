@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 27 20:03:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * ``--dist=loadscope`` now sorts scopes by number of tests to
+    assign largest scopes early -- in many cases this should
+    improve overall test session running time, as there is less
+    chance of a large scope being left to be processed near the
+    end of the session, leaving other workers idle.
+
+-------------------------------------------------------------------
 Thu Nov 16 21:15:05 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 3.4.0:
@@ -11,7 +21,7 @@ Mon May 22 21:13:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:
   * Avoid remote calls during startup as execnet by default does
-    not ensure remote affinity with the main thread and might 
+    not ensure remote affinity with the main thread and might
     accidentally schedule the pytest worker into a non-main
     thread, which breaks numerous frameworks, for example
     ``asyncio``, ``anyio``, ``PyQt/PySide``, etc.
@@ -161,7 +171,7 @@ Sat Jan 15 18:31:01 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
 Tue Feb  2 09:53:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
-  * Internal errors in workers are now propagated to the master node. 
+  * Internal errors in workers are now propagated to the master node.
 
 -------------------------------------------------------------------
 Tue Oct 13 11:46:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
@@ -172,11 +182,11 @@ Tue Oct 13 11:46:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Mon Aug 31 13:01:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.1.0
-  * New ``pytest_xdist_auto_num_workers`` hook can be implemented by plugins 
-    or ``conftest.py`` files to control the number of workers when 
+  * New ``pytest_xdist_auto_num_workers`` hook can be implemented by plugins
+    or ``conftest.py`` files to control the number of workers when
     ``--numprocesses=auto`` is given in the command-line.
-  * ``psutil`` has proven to make ``pytest-xdist`` installation in certain 
-    platforms and containers problematic, so to use it for automatic number 
+  * ``psutil`` has proven to make ``pytest-xdist`` installation in certain
+    platforms and containers problematic, so to use it for automatic number
     of CPUs detection users need to install the ``psutil`` extra
 - Add patches to keep compatibility with older pytests:
   * reintroduce-slave-terminology.patch
@@ -186,15 +196,15 @@ Mon Aug 31 13:01:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Tue Aug 25 08:12:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.0.0
-  * Drop backward-compatibility "slave" aliases related to worker nodes.  We deliberately 
-    moved away from this terminology years ago, and it seems like the right time to finish 
+  * Drop backward-compatibility "slave" aliases related to worker nodes.  We deliberately
+    moved away from this terminology years ago, and it seems like the right time to finish
     the deprecation and removal process.
   * ``pytest-xdist`` no longer supports Python 2.7.
-  * New functions ``xdist.is_xdist_worker``, ``xdist.is_xdist_master``, ``xdist.get_xdist_worker_id``, 
+  * New functions ``xdist.is_xdist_worker``, ``xdist.is_xdist_master``, ``xdist.get_xdist_worker_id``,
     to easily identify the current node.
   * When using ``-n auto``, count the number of physical CPU cores instead of logical ones.
   * ``pytest-xdist`` now requires ``pytest>=6.0``.
-  
+
 -------------------------------------------------------------------
 Wed May 13 09:10:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
@@ -235,7 +245,7 @@ Mon Jun  3 08:49:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.28.0:
   * #426: pytest-xdist now uses the new pytest_report_to_serializable and
-    pytest_report_from_serializable hooks from pytest 4.4 
+    pytest_report_from_serializable hooks from pytest 4.4
 
 -------------------------------------------------------------------
 Thu Mar 21 09:54:59 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -422,7 +432,7 @@ Wed Jan 18 15:03:59 UTC 2017 - hpj@urpla.net
 Sun Jan 15 11:45:49 UTC 2017 - hpj@urpla.net
 
 - Update to 1.15.0
-  - new ``worker_id`` fixture, returns the id of the worker in a test or 
+  - new ``worker_id`` fixture, returns the id of the worker in a test or
     fixture. Thanks Jared Hellman for the PR.
 
   - display progress during collection only when in a terminal, similar to
@@ -502,7 +512,7 @@ Fri Jun 13 12:37:55 UTC 2014 - mvyskocil@opensuse.org
 -------------------------------------------------------------------
 Wed Jun 11 13:47:06 UTC 2014 - mvyskocil@opensuse.org
 
-- Update to 1.10 
+- Update to 1.10
 
 -------------------------------------------------------------------
 Sun Jan 19 17:04:33 UTC 2014 - toms@opensuse.org

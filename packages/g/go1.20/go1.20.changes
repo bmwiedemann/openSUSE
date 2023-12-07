@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  5 19:03:51 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.12 (released 2023-12-05) includes security fixes to the go
+  command, and the net/http and path/filepath packages, as well as
+  bug fixes to the compiler and the go command.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-45285 CVE-2023-45284 CVE-2023-39326
+  * go#63972 go#63845 boo#1217834 security: fix CVE-2023-45285 cmd/go: git VCS qualifier in module path uses git:// scheme
+  * go#64040 go#63713 boo#1216943 security: fix CVE-2023-45284 path/filepath: Clean removes ending slash for volume on Windows in Go 1.21.4
+  * go#64434 go#64433 boo#1217833 security: fix CVE-2023-39326 net/http: limit chunked data overhead
+  * go#63983 cmd/compile: internal compiler error: panic during prove while compiling: unexpected induction with too many parents
+  * go#63988 cmd/go: TestScript/mod_get_direct fails with "Filename too long" on Windows
+
+-------------------------------------------------------------------
 Tue Nov  7 19:29:09 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.20.11 (released 2023-11-07) includes security fixes to the

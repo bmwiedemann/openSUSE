@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  17 14:23:34 UTC 2023 - qzhao@suse.com
+
+- Add atkmm1_6-remove-unnecessary-executable-flag-from-file.patch:
+  cancel executable permission for file 
+  /usr/share/doc/packages/libatkmm-1_6-1/NEWS 
+  (bsc#1209094, bsc#1209139).
+
+-------------------------------------------------------------------
 Thu Aug 11 07:38:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.28.3:

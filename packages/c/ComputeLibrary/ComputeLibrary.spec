@@ -16,11 +16,11 @@
 #
 
 
-%define so_ver 32
+%define so_ver 33
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        23.08
+Version:        23.11
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
@@ -128,6 +128,7 @@ rm -f $(find %{buildroot}%{_includedir}/ -name *.cpp)
 mkdir -p %{buildroot}%{_datadir}/ComputeLibrary/%{sampledir}
 cp -r data/* %{buildroot}%{_datadir}/ComputeLibrary/%{sampledir}
 # Install scripts
+rm -rf scripts/modules # Unused scripts/module/Shell.py
 install -Dm0755 scripts/* %{buildroot}%{_bindir}
 rm -f %{buildroot}%{_bindir}/*.h
 # Fix Python scripts interpreter

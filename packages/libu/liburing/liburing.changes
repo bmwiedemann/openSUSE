@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  4 16:39:29 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on 32-bit x86
+
+-------------------------------------------------------------------
+Thu Nov 30 15:26:15 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of openSUSE build flags
+
+-------------------------------------------------------------------
 Fri Sep 15 05:28:44 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - tests-don-t-expect-multishot-recv-overflow-backloggi.patch (bsc#1215332)

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec  5 19:20:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7.1:
+  * Bug Fixes:
+    - aomedia:3349: heap overflow when increasing resolution
+    - aomedia:3478: GCC 12.2.0 emits a -Wstringop-overflow warning
+      on aom/av1/encoder/motion_search_facade.c
+    - aomedia:3489: Detect encoder and image high bit depth
+      mismatch
+    - aomedia:3491: heap-buffer-overflow on frame size change
+    - b/303023614:  Segfault at encoding time for high bit depth
+      images
+- Switch buildtime compression to zst.
+
+-------------------------------------------------------------------
 Tue Sep  5 17:21:29 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Split docs to multibuild to avoid dependency cycle

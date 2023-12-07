@@ -1175,4 +1175,12 @@
     <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
     <requestid>1120105</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>88dcc758a6a485c53d7e834c46b313c7</srcmd5>
+    <version>5.27.10</version>
+    <time>1701972623</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131446</requestid>
+  </revision>
 </revisionlist>

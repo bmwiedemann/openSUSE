@@ -1,0 +1,32 @@
+From 152f97b1b49ca12d1de1df67c892b1c35140c056 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 30 Nov 2023 13:20:54 +0100
+Subject: [PATCH 1/3] Remove old systemd parameter
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ man/pcr-oracle.8.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+Index: pcr-oracle-0.5.3/src/sd-boot.c
+===================================================================
+--- pcr-oracle-0.5.3.orig/src/sd-boot.c
++++ pcr-oracle-0.5.3/src/sd-boot.c
+@@ -233,7 +233,7 @@ sdb_policy_entry_set_pcr_mask(struct jso
+ 	pcrs = json_object_new_array();
+ 	json_object_object_add(entry, "pcrs", pcrs);
+ 
+-	for (pcr_index = 1; pcr_mask; pcr_index++, pcr_mask >>= 1) {
++	for (pcr_index = 0; pcr_mask; pcr_index++, pcr_mask >>= 1) {
+ 		if (pcr_mask & 1)
+ 			json_object_array_add(pcrs, json_object_new_int(pcr_index));
+ 	}
+@@ -315,7 +315,7 @@ sdb_policy_file_add_entry(const char *fi
+ 		goto out;
+ 
+ 	sdb_policy_entry_set_pcr_mask(entry, pcr_mask);
+-	json_object_object_add(entry, "pfkp",
++	json_object_object_add(entry, "pkfp",
+ 			json_object_new_string(print_hex_string(fingerprint, fingerprint_len)));
+ 	json_object_object_add(entry, "sig",
+ 			json_object_new_string(print_base64_value(signature, signature_len)));

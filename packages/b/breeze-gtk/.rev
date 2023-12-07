@@ -1134,4 +1134,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
     <requestid>1120058</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>b0d4d8128dfd0aa04d90d70c99b18cee</srcmd5>
+    <version>5.27.10</version>
+    <time>1701972575</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131399</requestid>
+  </revision>
 </revisionlist>

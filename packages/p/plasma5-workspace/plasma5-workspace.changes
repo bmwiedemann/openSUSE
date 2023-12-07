@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec  6 11:47:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- Changes since 5.27.9:
+  * kcm_regionandlang: support glibc style 'utf8' variant (kde#477283)
+  * Adapt CI to renamed plasma-framework and kactivities
+  * Unbreak Region&Lang KCM on !Linux (again)
+  * Fixup! The variable has a different name on 5.27
+  * kcms/region_lanuage: Also enable GLIBC when UBUNTU_LOCALE is set
+  * kcms/nightcolor: Fix nighcolor typos and warnings
+  * kcms/nightcolor: Fix nightcolor with automatic location (kde#469730)
+  * Adapt to plasma-framework moving to Plasma
+  * Reflect move of KActivities out of Frameworks to Plasma
+  * Update to reflect move of KUserFeedback to Frameworks
+  * Reset KSMClient state even when logout is cancelled
+  * kcms/region_language: Fix check for GLIBC_LOCALE.
+  * applets/lock_logout: use PlasmaCore.IconItem
+  * appiumtests: add lock_logouttest
+  * appiumtests: adapt to Appium 3.0
+- Drop patches, now upstream:
+  * 0001-applets-lock_logout-use-PlasmaCore.IconItem.patch
+
+-------------------------------------------------------------------
 Wed Oct 25 08:10:06 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix the logout applet:

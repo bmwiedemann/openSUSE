@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec  4 20:27:04 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- update to 2.16:
+  * New: import .CUBE files as RGB device links
+  * New: Read/Write MHC2 tags for Windows GPU access
+  * New: Support for UTF8 on multi-localized Unicode functions
+  * New: Support for OkLab color space, built-in and formatter.
+  * Improved: floating point transforms float -> integer are now
+    honored as float
+  * Improved: MSYS2, mingw is now supported
+  * Improved: preferred CMM, platform and creator now survives profile
+    edition.
+  * Fixed: tificc now can deal with Lab TIFF
+  * Fixed: code can now be compiled by a C++17 compiler, "register"
+    keyword use detected at compile time.
+  * Fixed: Reverted PostScript creation that corrupted some interpreters.
+  * Bug fixing
+
+-------------------------------------------------------------------
 Sat Apr 15 09:49:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15:

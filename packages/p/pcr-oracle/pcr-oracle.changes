@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 29 15:56:39 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 0.5.3
+  - Improve documentation
+  - Detect key format store via extension
+  - Replace --key-format and --policy-format options with a single
+    --target-platform option
+  - The json file can contain multiple predictions
+- Remove fix_rsa.patch as is already upstream
+- Add boot_entry.patch to add new parameter to point to a new systemd
+  boot entry
+- Add fix_pcr_index.patch to fix the PCR index number in the JSON file
+
+-------------------------------------------------------------------
 Mon Nov 20 10:24:32 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add fix_rsa.patch to support the export in PEM format of the public

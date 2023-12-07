@@ -1210,4 +1210,15 @@
       lineno-match option. Thanks to Jeppe Pihl.</comment>
     <requestid>1111065</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>024f4e3016825bcfe64c660ed96fd531</srcmd5>
+    <version>7.2.6</version>
+    <time>1701972535</time>
+    <user>anag+factory</user>
+    <comment>- avoid xdist - not used by upstream and unstable (and not
+  improving the build time by more than 25%)
+
+- remove setuptools requires</comment>
+    <requestid>1131205</requestid>
+  </revision>
 </revisionlist>

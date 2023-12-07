@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec  6 13:47:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.0.0:
+  + Fix compatiblity with libxml2 >= 2.12.0
+  + Bump min libvirt version to 2.3.0
+  + Bump min meson to 0.56.0
+  + Require use of GCC >= 4.8 / CLang > 3.4 / XCode CLang > 5.1
+  + Mark USB disks as removable by default
+  + Add support for audio device backend config
+  + Add support for DBus graphics backend config
+  + Add support for controlling firmware feature flags
+  + Improve compiler flag handling in meson
+  + Extend library version script handling to FreeBSD
+  + Fix pointer sign issue in capabilities config API
+  + Fix compat with gnome.mkenums() in Meson 0.60.0
+  + Avoid compiler warnings from gi-ir-scanner generated code by
+    not setting glib version constraints
+  + Be more robust about NULL GError parameters
+  + Disable unimportant cast alignment compiler warnings
+  + Use ‘pragma once’ in all header files
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 19 09:53:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.0.0:

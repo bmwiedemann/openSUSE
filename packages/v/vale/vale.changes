@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 06 20:17:45 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.30.0:
+  * test: add Julia tests
+  * Julia Support (#731)
+  * feat: config validation
+  * feat: config I/O
+
+-------------------------------------------------------------------
 Mon Nov 20 05:48:17 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.29.7:

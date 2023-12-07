@@ -69,6 +69,9 @@
 %bcond_without soxr
 %bcond_without zmq
 %bcond_without vulkan
+%bcond_without amrwb
+%bcond_without opencore
+%bcond_without xvid
 %else
 %bcond_with libaom
 %bcond_with mysofa
@@ -752,11 +755,11 @@ LDFLAGS="%_lto_cflags" \
 	--enable-demuxers \
 	--disable-encoders \
 	--disable-decoders \
-	--disable-decoder=mpeg4,h263,h264,hevc,vc1 \
+	--disable-decoder=h264,hevc,vc1 \
 	--enable-encoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_encoders)" \
 	--enable-decoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_decoders)" \
 
-for i in MPEG4 H263 H264 HEVC VC1; do
+for i in H264 HEVC VC1; do
 	grep -q "#define CONFIG_${i}_DECODER 0" config.h
 done
 %endif

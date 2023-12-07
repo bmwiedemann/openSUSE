@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  5 20:12:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- avoid xdist - not used by upstream and unstable (and not
+  improving the build time by more than 25%)
+
+-------------------------------------------------------------------
+Fri Dec  1 19:19:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove setuptools requires
+
+-------------------------------------------------------------------
 Thu Sep 14 10:17:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.6:

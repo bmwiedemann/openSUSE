@@ -117,7 +117,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       AppStream-compose = %{version}
-Requires:       libappstream-compose%{libappstream_compose_sover}
+Requires:       libappstream-compose%{libappstream_compose_sover} = %{version}
 
 %description compose-devel
 This package contains all necessary files, libraries,

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  5 19:03:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Make libgpgmepp-devel provide its CMake target file
+
+-------------------------------------------------------------------
 Wed Nov 29 21:13:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.23.2:

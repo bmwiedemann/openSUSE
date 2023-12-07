@@ -1,7 +1,7 @@
 #
 # spec file for package warewulf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,6 @@ Patch13:        Suse-prov-config-local-binary-copy-140.patch
 Patch14:        busybox-Newer-versions-of-glibc-do-not-ship-rpc-functions-any-more-130.patch
 Patch15:        common-Correctly-detect-SUSE-system-for-system-services.patch
 Patch16:        common-Consolidate-system-service-module-for-SUSE.patch
-Patch17:        provision-Update-ipxe-to-Github-commitid-133f4c4.patch
 Patch18:        Remove-shebang-from-scripts-only-intended-to-be-sourced.patch
 Patch19:        vnfs-SUSE-copy-repo-files-to-correct-location.patch
 Patch20:        vnfs-SUSE-make-sure-zypper-auto-accepts-licenses.patch
@@ -387,7 +386,6 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch14 -p1
 %patch37 -p1
 # IPXE sources not needed
-#%patch17 -p1
 %patch23 -p1
 %patch24 -p1
 %patch27 -p1
@@ -628,6 +626,7 @@ systemctl enable --now mariadb >/dev/null 2>&1 || :
 %{perl_vendorlib}/Warewulf/Module/Cli/Bootstrap.pm
 %{perl_vendorlib}/Warewulf/Module/Cli/Provision.pm
 %{perl_vendorlib}/Warewulf/Module/Cli/Vnfs.pm
+%dir %{perl_vendorlib}/Warewulf
 
 %files provision-server
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/warewulf-httpd.conf
@@ -661,6 +660,7 @@ systemctl enable --now mariadb >/dev/null 2>&1 || :
 %{perl_vendorlib}/Warewulf/Event/Pxe.pm
 %{perl_vendorlib}/Warewulf/Module/Cli/Pxe.pm
 %{perl_vendorlib}/Warewulf/Module/Cli/Dhcp.pm
+%dir %{perl_vendorlib}/Warewulf
 
 %files vnfs
 %defattr(644, root, root)
@@ -717,11 +717,13 @@ systemctl enable --now mariadb >/dev/null 2>&1 || :
 %files -n perl-warewulf-cluster
 %defattr(-, root, root)
 %{perl_vendorlib}/Warewulf/Module/Cli/Ssh.pm
+%dir %{perl_vendorlib}/Warewulf
 
 %files -n perl-warewulf-ipmi
 %defattr(-, root, root)
 %{perl_vendorlib}/Warewulf/Ipmi.pm
 %{perl_vendorlib}/Warewulf/Module/Cli/Ipmi.pm
+%dir %{perl_vendorlib}/Warewulf
 %endif # ifarch x86_64
 %endif # common
 

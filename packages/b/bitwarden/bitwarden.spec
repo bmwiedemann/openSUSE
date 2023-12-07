@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2023.10.1
+Version:    2023.12.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -213,7 +213,7 @@ PATH="%{_builddir}/path:$PATH" npm rebuild --verbose --foreground-scripts --node
 
 cd apps/desktop
 pushd desktop_native
-cargo -vv $auditable build --release
+cargo -vv $auditable rustc --offline --release --lib --crate-type cdylib
 popd
 
 npm run build

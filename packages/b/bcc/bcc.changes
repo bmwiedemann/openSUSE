@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  5 08:35:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded Requires on python3-future. 
+
+-------------------------------------------------------------------
 Mon Oct 16 11:32:32 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Re-enable bcc-lua now that boo#1215592 is resolved

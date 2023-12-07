@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  5 15:53:26 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make AppStream-compose-devel require the same version
+  of libappstream-compose0.
+
+-------------------------------------------------------------------
 Wed Nov 15 12:08:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.16.4:

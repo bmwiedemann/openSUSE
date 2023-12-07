@@ -17,7 +17,7 @@
 
 
 Name:           javaewah
-Version:        1.1.6
+Version:        1.2.3
 Release:        0
 Summary:        A word-aligned compressed variant of the Java bitset class
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.moditect:moditect-maven-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
@@ -55,8 +56,6 @@ API documentation for %{name}.
 # Plugins that are unnecessary for RPM build
 %pom_remove_plugin :maven-gpg-plugin
 %pom_remove_plugin :maven-javadoc-plugin
-%pom_remove_plugin :animal-sniffer-maven-plugin
-%pom_remove_plugin :jacoco-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 
 # Avoids JVM startup error when jacoco-maven-plugin is not in use

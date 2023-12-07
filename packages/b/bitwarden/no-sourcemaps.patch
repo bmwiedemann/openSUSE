@@ -39,3 +39,14 @@
      new MiniCssExtractPlugin({
        filename: "[name].[contenthash].css",
        chunkFilename: "[id].[contenthash].css",
+--- clients/apps/desktop/tsconfig.json.old	2023-12-06 21:48:09.744042358 +0100
++++ clients/apps/desktop/tsconfig.json	2023-12-06 21:53:51.341419937 +0100
+@@ -6,7 +6,7 @@
+     "experimentalDecorators": true,
+     "module": "ES2020",
+     "target": "ES2016",
+-    "sourceMap": true,
++    "removeComments": true,
+     "types": [],
+     "baseUrl": ".",
+     "paths": {

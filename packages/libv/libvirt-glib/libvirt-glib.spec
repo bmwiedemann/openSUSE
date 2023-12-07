@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt-glib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libvirt-glib
-Version:        4.0.0
+Version:        5.0.0
 Release:        0
 Summary:        GLib and GObject mapping of libvirt
 License:        LGPL-2.1-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.10.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.8
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(libvirt) >= 1.2.5
+BuildRequires:  pkgconfig(libvirt) >= 2.3.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0.0
 
 %description

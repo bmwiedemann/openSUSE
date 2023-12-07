@@ -91,7 +91,6 @@ This package includes the json-c documentation.
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
-    -DCMAKE_C_FLAGS=-std=gnu99 \
     -DENABLE_THREADING=ON \
     -DENABLE_RDRAND=ON
 

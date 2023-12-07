@@ -17,7 +17,7 @@
 
 
 Name:           lcms2
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        Little CMS Engine - A color management library and tools
 License:        MIT
@@ -87,7 +87,7 @@ This package contains user and developer documentation for lcms2.
 %prep
 %autosetup -p1
 
-chmod a-x doc/* COPYING AUTHORS
+chmod a-x doc/* LICENSE AUTHORS
 
 %build
 
@@ -113,7 +113,7 @@ rm %{buildroot}/%{_libdir}/liblcms2.la
 %postun -n liblcms2-2 -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSE
 %doc AUTHORS
 %{_bindir}/*
 %{_mandir}/man?/*.*

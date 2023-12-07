@@ -1166,4 +1166,12 @@ and test it with openQA
     <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
     <requestid>1120099</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>4ee779ba2e7f16e87a1db076d2f9fce3</srcmd5>
+    <version>5.27.10</version>
+    <time>1701972602</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131440</requestid>
+  </revision>
 </revisionlist>

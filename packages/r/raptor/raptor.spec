@@ -32,9 +32,9 @@ Patch2:         ubsan.patch
 Patch3:         raptor-libxml2-2.11-support.patch
 BuildRequires:  bison
 BuildRequires:  curl-devel
-BuildRequires:  libicu-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(icu-uc)
 %if !0%{?sles_version}
 BuildRequires:  pkgconfig(libxml-2.0)
 %else

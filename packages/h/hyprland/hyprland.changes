@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Wed Dec  6 16:56:14 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.33.1:
+  + Small patch to fix some issues with screencopy / toplevel-export
+    (notably crashing and/or misaligned buffers) and crashes on exit.
+  + Fixes:
+    - framebuffer: ignore addStencil on legacyRenderer
+    - screencopy: fix glReadPixels offset
+    - screencopy: fix legacyrenderer builds
+    - toplevelexport: fix getPreferredReadFormat param in captureToplevel
+  + Other:
+    - hyprctl: order commands alphabetically (#4061)
+    - input: Stop propagating axis events after valid binds (#4059)
+    - input: don't send mouse events on touch (#4071)
+    - internal: various improvements to avoid crashes on exit
+
+-------------------------------------------------------------------
+Tue Dec  5 17:53:38 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.33.0:
+  + After the longest commit gap to date, I decided to bring y'all
+    the 0.33.0 update. Enjoy!
+  + Nvidia patches have been removed, they are no longer needed.
+  + New features:
+    - env: add HYPRLAND_NO_RT
+    - events: add keyPress and mouseAxis
+    - general: add workspace gaps (#3877)
+    - hyprctl: Add 'layouts' command (#3895)
+    - hyprctl: add monitors all to report all connected monitors
+      (#3730)
+    - pluginapi: add touch event hooks (#3836)
+    - renderer: Adding an option to disable first launch animation
+      #3933)
+    - workspacerules: Add workspace rule for master layout
+      orientation (#3964)
+  + Fixes:
+    - config: Minor --config improvements, fixes (#4034)
+    - config: fix red warn in default config
+    - configmgr: fix parsing of touchdevice groups
+    - deps: downgrade wlroots to fix crashes
+    - group: fix dragging into floating groups (#3719)
+    - groupbar: Fix position of groupbar titles on monitor scales
+      != 1.0 (#3856)
+    - groupbar: allow reload and fix locked groupbar gradient (#3546)
+    - groupbar: fix crash in renderGradientTo
+    - groupbar: fix text pos with verical offset (#3893)
+    - hooksystem: fix missed log include
+    - input: Fix custom acceleration profile config (#3948)
+    - input: fix overzealous mouse capture on resize_on_border
+      (#4010)
+    - makefile: Add CXXFLAGS to hyprlctl's Makefile (#3913)
+    - managers: fix debug log using printf format (#4007)
+    - monitor: fix transform matrix calculations for transformed
+    - opengl: fix missed makeEGLCurrent
+    - opengl: fix nvidia read formats
+    - opengl: fix swapped rgb drm formats
+    - opengl: fix window introspection check
+    - opengl: fix xray modes in introspection checks for ls
+    - opengl: fixup blur dirty repaint conditions with solitary
+    - output-layout: fix wlroots display handling (#3718)
+    - pluginmgr: fix double use of dlerror()
+    - renderer: Fix floating clipbox (#3907)
+    - renderer: Fixup double rendering cases with special (#3928)
+    - renderer: fix double render of tiled on workspace switch
+    - renderer: fix floating window rendering when scale > 1 (#3901)
+    - renderer: fix inverseOpaque calcs in renderWithBlur
+    - renderer: fix software cursors on nvidia
+    - renderer: fixup cursor scaling
+    - screencopy: fix broken shm copying
+    - screencopy: fix detecting gl shm formats
+    - screencopy: fix shm exports with 10-bit
+    - screencopy: fix shm sharing if introspection required
+    - screencopy: fix transformed on shm
+    - shadow: add workspace offset to floating window shadow (#3906)
+    - vector: New operator overloads and small fix in Vector2D.
+      (#3891)
+  + Other:
+    - build: remove nv patches (#3957)
+    - compositor: drop unused vectorToWindow func
+    - config: add nomaximizerequest all to default cfg
+    - config: default special_scale_factor to 1
+    - config: log info about logs before loading vars
+    - config: Add variables to default config (#4032)
+    - decorations: recalc layout and positioner on add/remove
+    - deco-positioner: don't remove hidden windows' data
+    - exec: remove redundant environment variables from spawn (#3923)
+    - functionhooks: throw an exception on unsupported %rip usage
+    - groupbar: more safety around gradient textures
+    - groupbar: translate box by workspace offset
+    - hyprctl: use a rolling buffer for reading requests
+    - input: Handle fullscreen windows in vectorToWindowIdeal (#4021)
+    - input: make fallback layout us
+    - input: pass mouse input to IME popups (#3922)
+    - inputmgr: clean lists in ~dtor
+    - internal: Allow floating windows on special (#3872)
+    - internal: make getPlusMinusKeywordResult return optional
+    - internal: replace INT_MAX with WORKSPACE_INVALID
+    - keybinds: Close special workspace after moving windows out of
+      it (#3649)
+    - layer-shell: simulate mouse movement on unmap
+    - layout: Don't update pseudoSize after window moved by mouse.
+      (#3873)
+    - logging: move to an internal rolling log buffer
+    - monitor: remove comma from monitor description (#3996)
+    - opengl: Don't use wrong shader just because it's GLES (#3867)
+    - opengl: better checking for required introspection
+    - opengl: check for introspection on special_blur
+    - opengl: clear layer fade fbs in ~dtor
+    - opengl: don't make a mirror buffer on fakeFrame
+    - opengl: free window framebuffers in ~dtor
+    - opengl: require introspection on mirroring
+    - opengl: tiled special require introspection
+    - plugins: make logging on error more verbose
+    - renderer: Move to a full Hyprland GL rendering pipeline (#3920)
+    - renderer: avoid rendering floating windows twice with special
+    - renderer: better checks for special rendering in
+      renderWorkspaceWindows
+    - renderer: clip floating boxes on slide anim
+    - renderer: don't make snapshots of invisible windows on close
+    - renderer: drop unnecessary spammy logs
+    - renderer: make sure lastWindow has correct ws in
+      renderWorkspaceWindows
+    - renderer: nvidia checks and use glFinish on nvidia
+    - renderer: pass proper arg to main param of uv calcs
+    - renderer: proper full occlusion checks for back layer
+    - renderer: separate oversize uv calcs in dimensions
+    - renderer: use occlusion checks for buffer clear
+    - renderer: use viewporter corrected size for uv calcs
+    - screencopy: use buffer format for glReadPixels
+    - screencopy: use drmFormat instead of wlr funcs
+    - screencopy: use new isNvidia() for format
+    - shaders: Some more changes in rgb2hsl. (#3834)
+    - shadow: avoid fatal mutation of the windowBox for calcs
+    - shadow: avoid using glClear and don't draw behind window if
+      ignore_window
+    - subsurfaces: damage window on subsurface size change
+    - surface: avoid infinite pointer image resets
+    - windowrules: make idleinhibit dynamic
+
+-------------------------------------------------------------------
 Sat Nov 11 19:05:40 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Upstream seams incapable of properly validating their releases.

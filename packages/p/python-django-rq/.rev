@@ -53,4 +53,23 @@ already being maintained over a long period by https://build.opensuse.org/users/
   * Explicitly requires RQ &gt;= 1.14 in `setup.py`.</comment>
     <requestid>1092282</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d42b995f60a0a848ffdcd1270d27957</srcmd5>
+    <version>2.9.0</version>
+    <time>1701972643</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Added an option to delete all failed jobs.
+  * You can now specify `SERIALIZER` option while declaring
+    queues in `settings.py`
+  * Updated templates to match newer versions of Django admin's
+    styling.
+  * Don't show `Empty Queue` button on registry pages.
+
+  * Added a button to stop currently running jobs.
+    (requires RQ v1.12).
+- update to 2.4.1
+  - Support for RQ &gt;= 1.4.0</comment>
+    <requestid>1131506</requestid>
+  </revision>
 </revisionlist>

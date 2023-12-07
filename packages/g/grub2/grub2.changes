@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 30 09:41:10 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix reproducible build for grub.xen (bsc#1217619)
+  * 0001-mkstandalone-ensure-stable-timestamps-for-generated-.patch
+  * 0002-mkstandalone-ensure-deterministic-tar-file-creation-.patch
+
+-------------------------------------------------------------------
 Wed Nov 22 09:25:23 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix unattended boot with TPM2 allows downgrading kernel and rootfs, also

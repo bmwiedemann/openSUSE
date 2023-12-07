@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 06 06:02:02 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 4.8.1:
+  * v4.8.1
+  * Update RELEASE_NOTES.md for v4.8.1
+  * Handle symlinks when checking DB vs runtime configs
+  * libpod: Detect whether we have a private UTS namespace on FreeBSD
+  * pkg/bindings: add new APIVersionError error type
+  * fix podman-remote exec regression with v4.8
+  * sqlite: fix issue in ValidateDBConfig()
+  * sqlite: fix missing Commit() in RemovePodContainers()
+  * sqlite: set busy timeout to 100s
+  * Fix locking error in WSL machine rm -f
+  * Gating test fixes
+  * If API calls for kube play --replace, then replace pod
+  * Fix wsl.conf generation when user-mode-networking is disabled
+  * Bump to v4.8.1-dev
+
+-------------------------------------------------------------------
 Tue Nov 28 05:56:48 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 4.8.0:

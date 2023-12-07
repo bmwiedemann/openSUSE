@@ -1024,4 +1024,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment></comment>
     <requestid>1129307</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>69bd988b1cf5cad255f72f5d09ade12f</srcmd5>
+    <version>4.8.1</version>
+    <time>1701972544</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131279</requestid>
+  </revision>
 </revisionlist>

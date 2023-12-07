@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 07 09:33:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.18:
+  * release: prepare v0.15.18 (#1375)
+  * Fix security vulnerabilities in starboard-operator:0.15.17
+    (#1374)
+
+-------------------------------------------------------------------
+Thu Dec 07 09:30:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.17:
+  * release: prepare-v0.15.17 (#1373)
+
+-------------------------------------------------------------------
+Thu Oct 19 05:44:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.16:
+  * release: prepare v0.15.16 (#1371)
+  * release: prepare v0.15.16-rc (#1370)
+
+-------------------------------------------------------------------
 Tue Sep 05 15:07:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.15:

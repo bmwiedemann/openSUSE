@@ -1490,4 +1490,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment></comment>
     <requestid>1129574</requestid>
   </revision>
+  <revision rev="189" vrev="4">
+    <srcmd5>aed6083767c0c6e5c990f6ba46bca723</srcmd5>
+    <version>45.0</version>
+    <time>1701972546</time>
+    <user>anag+factory</user>
+    <comment>Sync changelog with Leap/SLE. (forwarded request 1131265 from yfjiang)</comment>
+    <requestid>1131304</requestid>
+  </revision>
 </revisionlist>

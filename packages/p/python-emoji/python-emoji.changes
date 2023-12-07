@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  6 20:35:57 UTC 2023 - Matthias Bach <marix@marix.org> - 2.9.0
+
+- Update to 2.9.0
+  * Added Russian translation.
+- On Leap also package this for newer Python versions.
+
+-------------------------------------------------------------------
 Thu Aug 17 15:59:47 UTC 2023 - Matthias Bach <marix@marix.org> - 2.8.0
 
 - Update to 2.8.0

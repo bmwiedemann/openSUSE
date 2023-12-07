@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  6 11:45:59 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- Changes since 5.27.9:
+  * AppStream 1.0: Use #ifdef to support both stable and 0.x versions
+  * CMake: Remove obsolete AppStream version check
+  * Refactor roughCount into an atomic QGadget, fix usage of i18np (kde#476148)
+  * Update to reflect move of KUserFeedback to Frameworks
+
+-------------------------------------------------------------------
 Tue Oct 24 14:23:35 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.9

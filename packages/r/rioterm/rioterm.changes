@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Wed Dec 06 20:04:53 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.29:
+  * prepare 0.0.29
+  * fix command key + left and right strange behavior (closes #359 and #366)
+  * corrections on linux for EventLoopExtStartupNotify
+  * configure startup_notify
+  * remove APPLICATION_ID
+  * move APPLICATION_ID out of screen
+  * move window to router
+  * remove key.key_without_modifiers but keep Key::Character
+  * corrections for tmux and new scroll api
+  * docs(config): mention blur requires restart (#358)
+  * add info about iTerm2 image protocol
+  * add description to rioterm
+  * update workspace.dependencies
+  * update version to 0.0.28
+  * prepare release
+  * breadcrumb isn't windows
+  * raw_window_handle is only used in macos
+  * close last tab for native tab too
+  * fix NativeTab for macos
+  * wip OSC 1337
+  * disable sugarloaf warn errors when find the font
+  * fix broken link
+  * remove shadow for whenever have shadow
+  * set blur in the defaults
+  * update info about bg image
+  * add blur support
+  * add editor back
+  * remove settings UI (going back to the window with editor)
+  * update test script
+  * update scripts and docs
+  * set default for macos padding-x as 5.0
+  * update pt-br text for docs
+  * update docs regarding window.background-image
+  * fix broken link and start pt-br translation
+  * update CHANGELOG
+  * remove render in calculate_bounds and additional line render
+  * rename title for docs
+  * transparency partially working (named_colors should load transparency)
+  * small refactor suggestions (#351)
+  * bumping `winit` (#349)
+  * disable wa examples for lint
+  * renaming `rust-toolchain` to `rust-toolchain.toml` (#350)
+  * set target_os for graphics
+  * disable clippy for now in WA
+  * add more info about WA
+  * RenderableSugarloaf trait
+  * update multi to cross-winit
+  * update documentation
+  * introduce sugarloaf void and sugarloaffn trait
+  * use webgpu with wa
+  * start wa project
+  * More `PathBuf` (#342)
+  * Some refactors (#341)
+  * Add basic translations for Korean (#339)
+  * correction for route.window.winit_window.set_cursor_visible happening on mouse moving
+  * fix broken link docs
+  * NativeTab is macos default navigation mode
+  * separate by frontend and backend
+  * hide_cursor_when_typing config
+  * update derive for default
+  * hide-cursor-when-typing config
+  * update links
+  * using raphamorim/winit fork
+  * add swift-ui as backend
+  * cleaning up
+  * config to lib
+  * initial version of multi build
+  * docs in main level
+  * introduce backends concept and drop wa project
+  * swift start rio project
+  * swift gitignore
+  * fmt to CloseWindow
+  * macos-enable-close-last-tab for non-native tabs
+  * implement confirm-before-quit
+  * update imports
+  * default_macos_enable_close_last_tab is true
+  * rename to macos-enable-close-last-tab to keep consistency
+  * introduce macos_allow_close_last_tab for native tabs only (closes #296)
+  * Update configuration-file.md (#320)
+  * update CHANGELOG.md
+  * osc 8 (hyperlinks) (ref #60)
+  * update CHANGELOG.md
+  * implement use_current_path for native tabs close #323
+  * Fix some issues for docs (#334)
+  * Redesign docs index page (#333)
+  * update to references to wa
+  * update README.md
+  * add info
+  * correct files and add README.md
+  * move CompositeAlphaMode to Auto and PresentMode to AutoVsync
+  * Add web font (#332)
+  * migrate winit to winit fork (wa)
+  * save alpha_mode and present_mode from capabilities
+  * move to wa
+  * introduce wa (winit/tao wrapper)
+  * update ab_glyph
+  * change POLLING_TIMEOUT to 2s
+  * update changelog
+  * re add className around RioLogo
+  * Simplify logo (#329)
+  * Bit improve docs (#330)
+  * add an extra step for publish-crates to ensure build before publish
+  * prepare 0.0.27
+  * lock and update dependencies
+  * update then() message
+  * rio-wasm should be just an index.html that loads the js/wasm rio file
+  * lib only exist for wasm context, so renaming it for wasm
+  * webassembly support for rio (reorganization folders)
+  * Activate the hyperlink check whenever a modifier is changed ( for windows/linux/bsd and  for macos)
+  * update comments
+  * Update docs (#326)
+  * add link to Void Linux package in install docs (#325)
+  * update changelog
+  * fix Error when Double click on terminal side (close #316)
+  * Update configuration-file.md (#319)
+  * Fix typo in error messages (#317)
+
+-------------------------------------------------------------------
 Sun Oct 29 07:16:31 UTC 2023 - androw95220@gmail.com
 
 - Update to version 0.0.26:

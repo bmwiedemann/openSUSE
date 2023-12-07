@@ -17,7 +17,7 @@
 
 
 %define major_ver 4
-%define minor_ver 1
+%define minor_ver 2
 %define patch_ver 00
 %define shlib   libkokkos-%{major_ver}_%{minor_ver}
 %global kokkos_desc \
@@ -35,7 +35,7 @@ Summary:        A C++ Performance Portability Programming
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/kokkos/kokkos
-Source0:        kokkos-4.1.00.tar.gz
+Source0:        kokkos-%{version}.tar.gz
 BuildRequires:  cmake >= 3.16
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc11-c++

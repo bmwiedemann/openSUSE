@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  6 20:41:44 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.10.19:
+  * Make Uri.is_host_loopback() only return true for localhost and 127.0.0.1 exactly. 
+    The old behavior could potentially return "true" for URLs that were not, in fact, local,
+    and this could cause security issues if is_host_loopback was used in certain ways.
+  * Fix likely typo in SafeInt3.hpp, that results in error with clang 15
+  * Support for oauth2 with "client_credentials" grant type.
+  * Add constructor from all integer types for json value.
+  * Export http_exception for non Windows builds using visibility macros.
+
+-------------------------------------------------------------------
 Sun Feb  7 13:57:13 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.10.18:

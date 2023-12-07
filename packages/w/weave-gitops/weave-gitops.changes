@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Dec 06 16:31:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.38.0:
+  * Update README to point download link to 0.38.0
+  * Update docs for release 0.38.0
+  * Update the helm reference
+  * Update helm chart to 4.0.36 to use gitops 0.38.0
+  * Update javascript library version to 0.38.0
+  * Fix `gitops check` (#4158)
+  * Add UI subpath info for EE (#4156)
+  * Update docs bootstraping access  (#4153)
+  * Prettier
+  * Expose OSS static asset handling to unify OSS/EE serving
+    (#4007)
+  * build(deps): Bump @adobe/css-tools from 4.3.1 to 4.3.2
+  * run yarn lint --fix
+  * refactor styled component and update prop type
+  * Fix invalid JSX properties on inline SVG
+  * add weave gitops oss release notes links for v0.37 to help out
+    ee customers to have the info more easily accesible
+  * added release notes in the versions directory
+  * Add release notes for version-0.37.0
+  * run lint --fix also fix typo in modal description
+  * add ability to add group reason so bulk suspend
+  * Fix unit test to align with library updates
+  * Update generated files
+  * Fix code style
+  * Rebuild CLI reference to incorporate latest changes
+  * Add info about redirect URI to `check oidc-config` usage text.
+  * Better code documentation
+  * Add `--groups-claim` flag to `check oidc-config`
+  * Use existing code for parsing ID token claims
+  * Add `check oidc-config` command
+  * update modal to had it's own close modal icon
+  * Remove className and rename bodyClassName -> className
+  * style trials
+  * init add comment to suspend action
+
+-------------------------------------------------------------------
 Thu Nov 23 06:42:33 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.37.0:

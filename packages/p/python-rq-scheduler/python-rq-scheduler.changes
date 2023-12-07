@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  6 22:44:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add rq-compat-removal.patch and switch to github tarball
+  to enable tests
+
+-------------------------------------------------------------------
 Mon Dec  4 20:57:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.13)

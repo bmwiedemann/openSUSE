@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  6 22:25:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.1:
+  * Fixed a bug that may cause a crash when cleaning intermediate
+    queue.
+  * Fixed a bug that may cause canceled jobs to still run
+    dependent jobs.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:32:44 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -17,7 +26,7 @@ Sat May 27 21:32:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * `Scheduler` should only release locks that it successfully
     acquires.
   * Fixes crashes that may happen by changes to `as_text()`
-    function in v1.14. 
+    function in v1.14.
   * Various linting, CI and code quality improvements.
   * Fixes a crash that happens if Redis connection uses SSL.
   * Fixes a crash if `job.meta()` is loaded using the wrong
@@ -111,7 +120,7 @@ Thu Apr 14 08:52:04 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Jan 17 18:35:11 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.10.1 
+- Update to 1.10.1
   - Failure callbacks are now properly called when job is run
     synchronously. Thanks @ericman93!
   - Fixes a bug that could cause job keys to be left over when
@@ -154,7 +163,7 @@ Mon Jun 28 14:33:46 UTC 2021 - Markéta Machová <mmachova@suse.com>
 - Update to 1.8.1
   * You can now declare multiple job dependencies.
   * Added support for running asyncio tasks.
-  * Now horses are killed by their parent group. This helps in cleanly 
+  * Now horses are killed by their parent group. This helps in cleanly
     killing all related processes if job uses multiprocessing.
   * Fixed scheduler on Python > 3.8.0.
   * RQ is now aware of which version of Redis server it's running on.
@@ -191,7 +200,7 @@ Thu Jun 11 05:04:56 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Wed Jun 10 16:49:11 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- BR redis to make the testsuite work 
+- BR redis to make the testsuite work
 
 -------------------------------------------------------------------
 Tue May 19 09:27:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

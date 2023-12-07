@@ -134,4 +134,28 @@
   * go#63560 net/http: http2 page fails on firefox/safari if pushing resources (forwarded request 1124117 from jfkw)</comment>
     <requestid>1124119</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9f7b520e40ae0f6a4ef773748677965b</srcmd5>
+    <version>1.21.5</version>
+    <time>1701972542</time>
+    <user>anag+factory</user>
+    <comment>- go1.21.5 (released 2023-12-05) includes security fixes to the go
+  command, and the net/http and path/filepath packages, as well as
+  bug fixes to the compiler, the go command, the runtime, and the
+  crypto/rand, net, os, and syscall packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-45285 CVE-2023-45284 CVE-2023-39326
+  * go#63973 go#63845 boo#1217834 security: fix CVE-2023-45285 cmd/go: git VCS qualifier in module path uses git:// scheme
+  * go#64041 go#63713 boo#1216943 security: fix CVE-2023-45284 path/filepath: Clean removes ending slash for volume on Windows in Go 1.21.4
+  * go#64435 go#64433 boo#1217833 security: fix CVE-2023-39326 net/http: limit chunked data overhead
+  * go#62055 cmd/go: go mod download needs to support toolchain upgrades
+  * go#63743 cmd/compile: invalid pointer found on stack when compiled with -race
+  * go#63764 os: NTFS deduped file changed from regular to irregular
+  * go#63801 net: TCPConn.ReadFrom hangs when io.Reader is TCPConn or UnixConn, Linux kernel &lt; 5.1
+  * go#63984 cmd/compile: internal compiler error: panic during prove while compiling: unexpected induction with too many parents
+  * go#63994 syscall: TestOpenFileLimit unintentionally runs on non-Unix platforms
+  * go#64073 runtime: self-deadlock on mheap_.lock
+  * go#64413 crypto/rand: Legacy RtlGenRandom use on Windows (forwarded request 1131273 from jfkw)</comment>
+    <requestid>1131275</requestid>
+  </revision>
 </revisionlist>

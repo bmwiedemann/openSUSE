@@ -3194,6 +3194,7 @@ BuildFlags: onlybuild:xsetroot
 BuildFlags: onlybuild:xterm
 BuildFlags: onlybuild:xtrans   
 BuildFlags: onlybuild:xvfb-run
+BuildFlags: onlybuild:xvidcore
 BuildFlags: onlybuild:xxhash
 BuildFlags: onlybuild:xz
 BuildFlags: onlybuild:yaml-cpp

@@ -737,4 +737,12 @@
   - NMA subpackage: Main package and NMA (forwarded request 1130478 from gmbr3)</comment>
     <requestid>1130776</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>763ae88dc0e9301d8f4bc68a6f415a95</srcmd5>
+    <version>1.10.2</version>
+    <time>1701972540</time>
+    <user>anag+factory</user>
+    <comment>Sync changelog with Leap/SLE.</comment>
+    <requestid>1131258</requestid>
+  </revision>
 </revisionlist>

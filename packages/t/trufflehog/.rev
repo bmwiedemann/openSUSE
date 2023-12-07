@@ -15,4 +15,41 @@
     <comment>- Update to version 3.63.1: (forwarded request 1129708 from jfkw)</comment>
     <requestid>1129709</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f64608feb0c2a8a463567c831d39ebe</srcmd5>
+    <version>3.63.2</version>
+    <time>1701972699</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.63.2:
+  * update regex (#2184)
+  * Deprecate some detectors (#2186)
+  * allow targets for the source manager (#2182)
+  * use https for verification endpoints (#2185)
+  * remove unnecessary Git cmd check (#2175)
+  * [feat] - Remove go-git dependency (#2174)
+  * Skip trying to determine MIME type for directories (#2178)
+  * fixing how to rotate URL (#2183)
+  * Use forked sevenzip (#2180)
+  * [thog-1548] add auto redaction for verification errors (#2106)
+  * fix(deps): update module github.com/google/go-github/v42 to v57 (#2172)
+  * chore(deps): update google-github-actions/auth action to v2 (#2171)
+  * skip files we can't scan (#2170)
+  * fix(deps): update module google.golang.org/api to v0.152.0 (#2169)
+  * [chore] - remove deprecated types (#2168)
+  * fix(deps): update module golang.org/x/oauth2 to v0.15.0 (#2167)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.48.12 (#2166)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.94.0 (#2165)
+  * fix(deps): update module github.com/trufflesecurity/disk-buffer-reader to v0.2.1 (#2163)
+  * Ignore images and binaries (#2162)
+  * [chore] - Increase pagination limit (#2154)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.17.0 (#2160)
+  * update forager types (#2159)
+  * fix(deps): update module github.com/go-logr/zapr to v1.3.0 (#2158)
+  * fix(deps): update module github.com/fatih/color to v1.16.0 (#2155)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.7.0 (#2153)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.48.11 (#2152)
+  * fix(deps): update module github.com/alecthomas/kingpin/v2 to v2.4.0 (#2151)
+  * fix(deps): update module cloud.google.com/go/storage to v1.35.1 (#2150) (forwarded request 1131604 from ph03nix)</comment>
+    <requestid>1131651</requestid>
+  </revision>
 </revisionlist>

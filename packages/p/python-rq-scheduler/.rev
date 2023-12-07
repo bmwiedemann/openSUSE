@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1130847</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b034c059b59b661eaab81aa0a00a3ff8</srcmd5>
+    <version>0.13.1</version>
+    <time>1701972642</time>
+    <user>anag+factory</user>
+    <comment>- add rq-compat-removal.patch and switch to github tarball
+  to enable tests</comment>
+    <requestid>1131505</requestid>
+  </revision>
 </revisionlist>

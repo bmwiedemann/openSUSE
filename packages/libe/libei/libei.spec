@@ -18,7 +18,7 @@
 
 Name:           libei
 %define lname libei1
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Library for emulated input in Wayland
 License:        MIT

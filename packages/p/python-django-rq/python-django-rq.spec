@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-django-rq
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Simple app that provides django integration for RQ (Redis Queue)
 License:        MIT
@@ -38,6 +37,7 @@ BuildRequires:  %{python_module Django >= 2.0}
 BuildRequires:  %{python_module django-redis >= 3.0}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module rq >= 1.14}
+BuildRequires:  %{python_module rq-scheduler}
 BuildRequires:  redis
 # /SECTION
 %python_subpackages

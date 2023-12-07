@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  6 21:55:56 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2023.12.0
+  * Add prompt to set master password when user logs in with new permissions
+  * Add support for Azure AD to LastPass direct import
+  * Modify switch account dropdown/dialog for accessibility
+
+-------------------------------------------------------------------
 Mon Nov 27 19:59:29 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix FTBFS with npm21

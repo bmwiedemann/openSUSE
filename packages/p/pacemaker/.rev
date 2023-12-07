@@ -2158,4 +2158,41 @@
 - fencer: fencing timeout sent to peer takes no delay into account (bsc#1210074) (forwarded request 1093808 from yan_gao)</comment>
     <requestid>1093809</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>676716640f15b9e392b5b288c9363b7b</srcmd5>
+    <version>2.1.6+20231205.0f6fbd59f</version>
+    <time>1701972556</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.6+20231205.0f6fbd59f:
+- scheduler: log reason for recheck time updates
+- scheduler: update recheck time for node-pending-timeout
+
+- Update to version 2.1.6+20231204.e1a1bd808:
+- tools: Fix a regression in tool XML output. (clbz#5529)
+
+- Update to version 2.1.6+20231122.7534cc50a (Pacemaker-2.1.7-rc2):
+- rpm: require minimum libxml2 version of 2.6.0
+- libcrmcommon: Write crm_verify detailed messages to XML
+- libcrmcommon: Use const for xmlCtxtGetLastError() (CLBZ#5530)
+- libcrmcommon: Drop deprecated libxml2 symbols (CLBZ#5530)
+- sysconfig: Use CRM_DAEMON_USER and CRM_DAEMON_GROUP
+- sysconfig: Fix defaults for dh_min_bits/dh_max_bits
+- sysconfig: Document PCMK_stderr
+- pacemakerd: Mark PCMK_shutdown_delay as deprecated
+- sysconfig: Document PCMK_cluster_type
+- sysconfig: Document PCMK_remote_pid1
+- sysconfig: Document PCMK_node_action_limit
+- sysconfig: Mark PCMK_cib_timeout as deprecated
+- controld/schedullerd: Change the default value of node-pending-timeout to 0.
+- controld: Adding default value for node-pending-timeout.
+- crm_resource: make --wait wait for pending actions in CIB
+
+- Update to version 2.1.6+20231031.d0ef74d64 (Pacemaker-2.1.7-rc1):
+- attrd: revert faulty T138 fix
+- controller: bail if CIB modify fails within transaction
+- scheduler: don't show pending nodes as having &quot;&lt;3.15.1&quot; feature set
+
+- Update to version 2.1.6+20231030.66cc0f083: (forwarded request 1131354 from yan_gao)</comment>
+    <requestid>1131356</requestid>
+  </revision>
 </revisionlist>

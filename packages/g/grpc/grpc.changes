@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 28 21:04:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.60
+  * Implemented dualstack IPv4 and IPv6 backend support, as per
+    draft gRFC A61. xDS support currently guarded by
+    GRPC_EXPERIMENTAL_XDS_DUALSTACK_ENDPOINTS env var.
+  * Support for setting proxy for addresses.
+  * Add v1 reflection.
+
+-------------------------------------------------------------------
 Sat Nov 18 08:56:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.59.3:

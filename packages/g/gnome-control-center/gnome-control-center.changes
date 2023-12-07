@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  6 08:22:24 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Mark gnome-control-center-info-fix-distro-logo.patch as rebase
+  needed. The patch needs a deeper review because its base is too
+  old and SLE/Leap specific.
+
+-------------------------------------------------------------------
 Tue Nov 28 12:09:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.
@@ -529,6 +536,12 @@ Tue Dec  6 04:31:50 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
   when user clicking password visibility toggle in Security page
   when method is WPA3 Personal
   (glgo#GNOME/gnome-control-center!1520).
+
+-------------------------------------------------------------------
+Tue Oct 18 08:50:23 UTC 2022 - Milachew <milachew@mail.lv>
+
+- Add gnome-control-center-info-fix-distro-logo.patch: Fix the size
+  of logo icon in About system (boo#1200581).
 
 -------------------------------------------------------------------
 Tue Oct 18 08:00:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  6 16:07:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add qt6-graph and qt6-webchannelquick development packages to
+  the devel_qt6 pattern
+
+-------------------------------------------------------------------
 Tue Aug  1 10:35:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Drop the telepathy pattern.

@@ -434,4 +434,16 @@
   * Remove Digital Ocean (forwarded request 1127707 from jfkw)</comment>
     <requestid>1127708</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6ba30e0e32ba7dcc92f098baa07c582f</srcmd5>
+    <version>2.30.0</version>
+    <time>1701972632</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.30.0:
+  * test: add Julia tests
+  * Julia Support (#731)
+  * feat: config validation
+  * feat: config I/O (forwarded request 1131482 from jfkw)</comment>
+    <requestid>1131484</requestid>
+  </revision>
 </revisionlist>

@@ -76,6 +76,7 @@ URL:            https://wiki.dlang.org/LDC
 Source0:        https://github.com/ldc-developers/ldc/releases/download/v%{version}/ldc-%{version}-src.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         ldc-1.9.0-fix_arm_build.patch
+Patch1:         riscv64-default-target.patch
 BuildRequires:  cmake
 BuildRequires:  help2man
 BuildRequires:  libconfig++-devel
@@ -119,7 +120,7 @@ BuildRequires:  timezone
 BuildRequires:  unzip
 %endif
 # ppc64 is disabled due to boo#1113531
-ExclusiveArch:  %{ix86} x86_64 %arm aarch64
+ExclusiveArch:  %{ix86} x86_64 %arm aarch64 riscv64
 
 %description
 LDC is an LLVM based compiler for the D programming language. It uses the

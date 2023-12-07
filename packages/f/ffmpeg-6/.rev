@@ -44,4 +44,13 @@
   * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch (forwarded request 1124854 from iznogood)</comment>
     <requestid>1125127</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7f423ad4b389cf9bc2cb96d319dd04a9</srcmd5>
+    <version>6.0.1</version>
+    <time>1701972609</time>
+    <user>anag+factory</user>
+    <comment>forward rq from iznogood:
+- Enable more decoders and encoders explicitly</comment>
+    <requestid>1131224</requestid>
+  </revision>
 </revisionlist>

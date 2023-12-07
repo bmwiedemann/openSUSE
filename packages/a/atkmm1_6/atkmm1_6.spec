@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm1_6
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org/
 Source:         https://download.gnome.org/sources/atkmm/2.28/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE atkmm1_6-remove-unnecessary-executable-flag-from-file.patch bsc#1209094 bsc#1209139 qzhao@suse.com -- cancel executable permission for file /usr/share/doc/packages/libatkmm-1_6-1/NEWS
+Patch0:         atkmm1_6-remove-unnecessary-executable-flag-from-file.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen

@@ -1,7 +1,7 @@
 #
 # spec file for package paraviewdata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define major_ver 5.8
+%define major_ver 5.11
 Name:           paraviewdata
-Version:        5.8.0
+Version:        %{major_ver}.2
 Release:        0
 Summary:        Examples for Paraview
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Physics
 URL:            https://www.paraview.org
-Source0:        https://www.paraview.org/files/v%{major_ver}/ParaViewData-v%{version}.tar.xz
+Source0:        https://www.paraview.org/files/v%{major_ver}/ParaViewTestingDataFiles-v%{version}.tar.xz
 Source1:        https://gitlab.kitware.com/paraview/paraview/raw/v%{version}/Copyright.txt
 BuildRequires:  fdupes
 BuildArch:      noarch

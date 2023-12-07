@@ -11,7 +11,7 @@
     <param name="version">2.1.6</param>
 -->
     <param name="versionformat">2.1.6+%cd.%h</param>
-    <param name="revision">Pacemaker-2.1.6</param>
+    <param name="revision">0f6fbd59f</param>
     <param name="changesgenerate">enable</param>
   </service>
 

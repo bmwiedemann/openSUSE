@@ -226,4 +226,15 @@
     <comment>- Add Bugzilla and CVE reference for CVE-2022-30187</comment>
     <requestid>1128132</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea340add306d04950f40050260f45980</srcmd5>
+    <version>12.9.0</version>
+    <time>1701972691</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1131561 from glaubitz)</comment>
+    <requestid>1131609</requestid>
+  </revision>
 </revisionlist>

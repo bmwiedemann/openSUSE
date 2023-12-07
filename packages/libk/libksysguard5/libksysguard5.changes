@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  6 11:46:42 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- Changes since 5.27.9:
+  * Add missing Solid dependency
+  * Drop unused KCompletion
+
+-------------------------------------------------------------------
 Tue Oct 24 14:25:10 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.9

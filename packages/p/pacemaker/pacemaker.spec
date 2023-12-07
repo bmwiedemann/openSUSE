@@ -75,6 +75,12 @@
 
 # Define globals for convenient use later
 
+%if 0%{?suse_version} >= 1560 || 0%{?sle_version} >= 150600
+## Base GnuTLS cipher priorities (presumably only the initial, required keyword)
+## overridable with "rpmbuild --define 'pcmk_gnutls_priorities PRIORITY-SPEC'"
+%define gnutls_priorities %{?pcmk_gnutls_priorities}%{!?pcmk_gnutls_priorities:@SYSTEM}
+%endif
+
 %global hacluster_id 90
 
 ## Distro-specific configuration choices
@@ -123,7 +129,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.6+20230524.6fdc9deea
+Version:        2.1.6+20231205.0f6fbd59f
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -164,7 +170,7 @@ BuildRequires:  resource-agents
 BuildRequires:  sed
 BuildRequires:  pkgconfig(bzip2)
 # Required for "make check"
-BuildRequires:  pkgconfig(cmocka)
+BuildRequires:  pkgconfig(cmocka) >= 1.1.0
 BuildRequires:  pkgconfig(corosync) >= 2.0.0
 BuildRequires:  pkgconfig(dbus-1)
 # Required for core functionality
@@ -172,7 +178,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.42
 BuildRequires:  pkgconfig(gnutls)
 # Pacemaker requires a minimum libqb functionality
 BuildRequires:  pkgconfig(libqb) >= 0.17.0
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(ncurses)
 # Pacemaker requires a minimum Python functionality
@@ -327,7 +333,7 @@ Requires:       pkgconfig(bzip2)
 Requires:       pkgconfig(corosync) >= 2.0.0
 Requires:       pkgconfig(glib-2.0)
 Requires:       pkgconfig(libqb)
-Requires:       pkgconfig(libxml-2.0)
+Requires:       pkgconfig(libxml-2.0) >= 2.6.0
 Requires:       pkgconfig(libxslt)
 Requires:       pkgconfig(uuid)
 %if %{enable_cluster_libs_pkg}
@@ -427,6 +433,7 @@ autoreconf -fvi
         %{?with_cibsecrets:    --with-cibsecrets}      \
         %{?with_nls:           --enable-nls}           \
         %{?with_sbd_sync:      --with-sbd-sync-default="true"} \
+        %{?gnutls_priorities:  --with-gnutls-priorities="%{gnutls_priorities}"} \
         %{?bug_url:            --with-bug-url=%{bug_url}} \
         %{?ocf_root:           --with-ocfdir=%{ocf_root}} \
         %{?concurrent_fencing}                         \
@@ -729,7 +736,6 @@ fi
 %endif
 
 %files cts
-%{python3_sitelib}/cts
 %{python3_sitelib}/pacemaker/_cts/
 %{_datadir}/pacemaker/tests
 

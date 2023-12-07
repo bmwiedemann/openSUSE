@@ -170,4 +170,21 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092392</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0b00ad4e3f89b4cec1e3da1b2b461f3a</srcmd5>
+    <version>1.15.1</version>
+    <time>1701972641</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.15.1:
+  * Fixed a bug that may cause a crash when cleaning intermediate
+    queue.
+  * Fixed a bug that may cause canceled jobs to still run
+    dependent jobs.
+
+    function in v1.14.
+- Update to 1.10.1
+  * Now horses are killed by their parent group. This helps in cleanly
+- BR redis to make the testsuite work</comment>
+    <requestid>1131504</requestid>
+  </revision>
 </revisionlist>

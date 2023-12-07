@@ -75,8 +75,13 @@ BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
 BuildRequires:  clang
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc >= 8.1
+BuildRequires:  gcc-c++ >= 8.1
+%endif
 BuildRequires:  libtool
 BuildRequires:  llvm
 BuildRequires:  llvm-gold
@@ -88,12 +93,16 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  readline-devel
 BuildRequires:  rust
-BuildRequires:  pkgconfig(icu-i18n) >= 67.1
+BuildRequires:  pkgconfig(icu-i18n) >= 73.1
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?big_endian}
-BuildRequires:  icu
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+BuildRequires:  icu73_2 >= 73.1
+%else
+BuildRequires:  icu >= 73.1
+%endif
 %endif
 
 %description
@@ -160,8 +169,13 @@ rm -rf ../../modules/zlib
 
 %build
 %if 0%{?clang_build} == 0
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+export CC=gcc-11
+export CXX=g++-11
+%else
 export CC=gcc
 export CXX=g++
+%endif
 %ifarch ppc64 ppc64le
 export CFLAGS="$CFLAGS -mminimal-toc"
 %endif
@@ -206,9 +220,9 @@ export AC_MACRODIR=/builddir/build/BUILD/firefox-%{version}/build/autoconf/
 	--disable-jemalloc
 
 %if 0%{?big_endian}
-echo "Generate big endian version of config/external/icu/data/icud71l.dat"
+echo "Generate big endian version of config/external/icu/data/icud73l.dat"
 pushd ../..
-  /usr/sbin/icupkg -tb config/external/icu/data/icudt71l.dat config/external/icu/data/icudt71b.dat
+  /usr/sbin/icupkg -tb config/external/icu/data/icudt73l.dat config/external/icu/data/icudt73b.dat
   rm config/external/icu/data/icudt*l.dat
 popd
 %endif

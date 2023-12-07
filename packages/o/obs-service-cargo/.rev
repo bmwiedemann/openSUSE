@@ -107,4 +107,15 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1131221</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96cc14559758014cab34a54ad9e155c0</srcmd5>
+    <version>0.8.20</version>
+    <time>1701972692</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.20:
+  * added bz2 mime
+  * add fixes to make bz2 mime supported
+</comment>
+    <requestid>1131611</requestid>
+  </revision>
 </revisionlist>

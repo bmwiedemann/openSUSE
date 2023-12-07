@@ -2022,4 +2022,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1129571</requestid>
   </revision>
+  <revision rev="238" vrev="2">
+    <srcmd5>5c12d74d29934c4e75bf6e867c9da8c9</srcmd5>
+    <version>45.1+22</version>
+    <time>1701972548</time>
+    <user>anag+factory</user>
+    <comment>Sync a patch with Leap/SLE, make it unfunctional since the rebase is needed. (forwarded request 1131282 from yfjiang)</comment>
+    <requestid>1131306</requestid>
+  </revision>
 </revisionlist>

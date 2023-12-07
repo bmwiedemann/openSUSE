@@ -1227,4 +1227,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
     <requestid>1120072</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>3a80ba2c2899b73ee51b8dfc00a1b3dc</srcmd5>
+    <version>5.27.10</version>
+    <time>1701972585</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131413</requestid>
+  </revision>
 </revisionlist>

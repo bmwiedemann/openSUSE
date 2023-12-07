@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        24
+Version:        1.3.5
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
@@ -61,19 +61,13 @@ This package contains utilities for creating and mounting bcachefs.
 %make_build NO_RUST=1 EXTRA_CFLAGS="%optflags"
 
 %install
-b="%buildroot"
 %make_install PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir" NO_RUST=1
-if [ "%_lib" != lib ]; then
-	mkdir -p "$b/%_libdir"
-	mv "$b/usr/lib/"*.so "$b/%_libdir/"
-fi
 # this ain't no debian
-rm -Rf "$b/etc/initramfs-tools" "$b/%_datadir/initramfs-tools"
+rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 
 %files
 %_sbindir/*bcache*
 %_mandir/man8/*.8*
-%_libdir/libbcachefs.so
 %license COPYING
 
 %changelog

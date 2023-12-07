@@ -224,4 +224,33 @@
     <comment></comment>
     <requestid>1081824</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0895487bf8bca5516c9a07e68f94e5bb</srcmd5>
+    <version>3.0.41</version>
+    <time>1701972533</time>
+    <user>anag+factory</user>
+    <comment>-  Update to 3.0.41 (bsc#1217693):
+  - Fix regression regarding IPython input hook (%gui) integration.
+- 3.0.40
+  * Fixes:
+    - Improved Python 3.12 support (fixes event loop `DeprecationWarning`).
+  * New features:
+    - Vi key bindings: `control-t` and `control-d` for indent/unindent
+      in insert mode.
+    - Insert partial suggestion when `control+right` is pressed,
+      similar to Fish.
+    - Use sphinx-nefertiti theme for the docs.
+- 3.0.39
+  * Fixes:
+    - Fix `RuntimeError` when `__breakpointhook__` is called from
+      another thread.
+    - Fix memory leak in filters usage.
+    - Ensure that key bindings are handled in the right context (when
+      using contextvars).
+  * New features:
+    - Accept `in_thread` keyword in `prompt_toolkit.shortcuts.prompt()`.
+    - Support the `NO_COLOR` environment variable.
+</comment>
+    <requestid>1130986</requestid>
+  </revision>
 </revisionlist>

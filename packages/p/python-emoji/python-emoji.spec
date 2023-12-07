@@ -17,8 +17,9 @@
 #
 
 
+%{?sle15allpythons}
 Name:           python-emoji
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause

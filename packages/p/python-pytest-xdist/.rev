@@ -285,4 +285,30 @@
     <comment></comment>
     <requestid>1127364</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>eb709d88d7594d8fd176db7b3d6be6e8</srcmd5>
+    <version>3.5.0</version>
+    <time>1701972528</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.5.0:
+  * ``--dist=loadscope`` now sorts scopes by number of tests to
+    assign largest scopes early -- in many cases this should
+    improve overall test session running time, as there is less
+    chance of a large scope being left to be processed near the
+    end of the session, leaving other workers idle.
+
+    not ensure remote affinity with the main thread and might
+  * Internal errors in workers are now propagated to the master node.
+  * New ``pytest_xdist_auto_num_workers`` hook can be implemented by plugins
+    or ``conftest.py`` files to control the number of workers when
+  * ``psutil`` has proven to make ``pytest-xdist`` installation in certain
+    platforms and containers problematic, so to use it for automatic number
+  * Drop backward-compatibility &quot;slave&quot; aliases related to worker nodes.  We deliberately
+    moved away from this terminology years ago, and it seems like the right time to finish
+  * New functions ``xdist.is_xdist_worker``, ``xdist.is_xdist_master``, ``xdist.get_xdist_worker_id``,
+    pytest_report_from_serializable hooks from pytest 4.4
+  - new ``worker_id`` fixture, returns the id of the worker in a test or
+- Update to 1.10</comment>
+    <requestid>1129240</requestid>
+  </revision>
 </revisionlist>

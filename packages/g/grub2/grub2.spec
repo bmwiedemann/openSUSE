@@ -397,6 +397,8 @@ Patch204:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
 Patch205:       0002-Restrict-file-access-on-cryptodisk-print.patch
 Patch206:       0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
 Patch207:       0004-Key-revocation-on-out-of-bound-file-access.patch
+Patch208:       0001-mkstandalone-ensure-stable-timestamps-for-generated-.patch
+Patch209:       0002-mkstandalone-ensure-deterministic-tar-file-creation-.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

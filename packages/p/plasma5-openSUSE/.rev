@@ -1409,4 +1409,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
   * Fix active titlebar color with OpenSUSEdark(alternate) color schemes</comment>
     <requestid>1127365</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>2c6934745cec9c1cad1e5c855dd08208</srcmd5>
+    <version>84.87~git20231117T211718~757fefa</version>
+    <time>1701972601</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131439</requestid>
+  </revision>
 </revisionlist>

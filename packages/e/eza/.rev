@@ -268,4 +268,15 @@
   * Fix the windows build</comment>
     <requestid>1130162</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e77cc544b5e2b7a6f7ac16179a4abb96</srcmd5>
+    <version>0.16.3+0</version>
+    <time>1701972645</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.3:
+  * Add bare git_repos fn if feature git is disabled
+  * Fixing color of size unit
+  * Color-scale broked size for colors</comment>
+    <requestid>1131538</requestid>
+  </revision>
 </revisionlist>

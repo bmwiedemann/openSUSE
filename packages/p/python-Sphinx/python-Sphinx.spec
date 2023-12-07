@@ -45,7 +45,6 @@ Source99:       python-Sphinx.keyring
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,7 +59,6 @@ Requires:       python-docutils >= 0.12
 Requires:       python-imagesize
 Requires:       python-packaging
 Requires:       python-requests >= 2.5.0
-Requires:       python-setuptools
 Requires:       python-snowballstemmer >= 1.1
 Requires:       python-sphinx_rtd_theme
 Requires:       python-sphinxcontrib-applehelp
@@ -85,7 +83,6 @@ BuildRequires:  %{python_module Sphinx = %{version}}
 BuildRequires:  %{python_module Sphinx-latex = %{version}}
 BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module html5lib}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport}
 BuildRequires:  %{python_module testsuite}
@@ -317,7 +314,7 @@ export PYTHONPATH=.
 export LC_ALL="C.utf8"
 # test_latex_images test downloading a remote image
 # test_signature_annotations doesn’t work
-%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images)' -n auto --dist=loadfile
+%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images)'
 %endif
 
 %if ! %{with test}

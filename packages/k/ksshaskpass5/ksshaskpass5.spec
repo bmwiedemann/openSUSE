@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ksshaskpass5
-Version:        5.27.9
+Version:        5.27.10
 Release:        0
 Summary:        Plasma 5 version of ssh-askpass
 License:        GPL-2.0-or-later

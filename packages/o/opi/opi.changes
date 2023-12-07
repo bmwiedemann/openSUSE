@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:30:40 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 4.1.0
+  * Add support for Slowroll
+  * Replace $releasever also with ${releasever} syntax
+  * Update changelog prefix to *
+
+-------------------------------------------------------------------
 Fri Nov 17 14:05:39 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 4.0.0

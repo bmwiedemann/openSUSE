@@ -70,6 +70,9 @@
 %bcond_without codec2
 %bcond_without rubberband
 %bcond_without vulkan
+%bcond_without amrwb
+%bcond_without opencore
+%bcond_without xvid
 %else
 %bcond_with mysofa
 %bcond_with vidstab
@@ -532,7 +535,7 @@ from libav should depend on these private headers which are expected to
 break compatibility without any notice.
 
 %prep
-%setup -a6 -n %_name-%version
+%setup -a6 -n %_name-%version -q
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -687,11 +690,11 @@ LDFLAGS="%_lto_cflags" \
 	--enable-demuxers \
 	--disable-encoders \
 	--disable-decoders \
-	--disable-decoder=mpeg4,h263,h264,hevc,vc1 \
+	--disable-decoder=h264,hevc,vc1 \
 	--enable-encoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_encoders)" \
 	--enable-decoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_decoders)" \
 
-for i in MPEG4 H263 H264 HEVC VC1; do
+for i in H264 HEVC VC1; do
 	grep -q "#define CONFIG_${i}_DECODER 0" config_components.h
 done
 %endif
@@ -927,7 +930,7 @@ CFLAGS="%optflags" \
 	--disable-muxers --disable-demuxers \
 	--disable-encoders --disable-decoders \
 	--disable-programs --disable-doc
-for i in MPEG4 H263 H264 HEVC VC1; do
+for i in H264 HEVC VC1; do
 	grep -q "#define CONFIG_${i}_DECODER 0" config_components.h
 done
 cat config.h

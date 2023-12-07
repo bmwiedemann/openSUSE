@@ -450,4 +450,12 @@ Features:
 - Rebase patch with quilt. (forwarded request 1126593 from iznogood)</comment>
     <requestid>1126792</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>20b056bdf00a6f4fa19d661ffe56eb7c</srcmd5>
+    <version>0.16.4</version>
+    <time>1701972534</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131018</requestid>
+  </revision>
 </revisionlist>

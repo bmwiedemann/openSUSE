@@ -142,6 +142,8 @@ Requires:       glibc-devel
 Requires:       libgpg-error-devel
 Requires:       libgpgme-devel = %{version}
 Requires:       libgpgmepp6 = %{version}
+# This avoids requiring CMake at build time for the default flavor
+Provides:       cmake(Gpgmepp) = %{version}
 %requires_ge    libassuan-devel
 
 %description -n libgpgmepp-devel

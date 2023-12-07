@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:23:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.12.1
+  * Require google-cloud-core >= 1.4.4 (8542583)
+  * Minor formatting (21cd6f6)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Aug 30 13:33:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.12.0

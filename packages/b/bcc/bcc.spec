@@ -112,7 +112,6 @@ Lua interpreter for the BPF Compiler Collection.
 Summary:        Examples from the BPF Compiler Collection
 Group:          Documentation/Other
 Requires:       python3-bcc = %{version}
-Requires:       python3-future
 Recommends:     netperf
 Recommends:     python3-netaddr
 Recommends:     python3-pyroute2
@@ -127,7 +126,6 @@ Summary:        Tracing tools from the BPF Compiler Collection
 Group:          System/Monitoring
 Requires:       audit
 Requires:       python3-bcc = %{version}
-Requires:       python3-future
 
 %description tools
 Python tracing scripts from the BPF Compiler Collection.

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  7 13:49:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.14.0
+  * Support with_call for wrapped rpcs (#550)
+- from version 2.13.1
+  * Update async client to use async retry (#544)
+- from version 2.13.0
+  * Add caching to routing header calculation (#526)
+  * Add warning to retry target to avoid incorrect usage (#543)
+  * Drop usage of distutils (#541)
+  * Ensure exception is available when BackgroundConsumer
+    open stream fails (#357)
+
+-------------------------------------------------------------------
 Mon Oct 23 13:12:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Use correct dependencies version for protobuf.

@@ -1,7 +1,7 @@
 #
 # spec file for package cpprest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major 2
 %define minor 10
 Name:           cpprest
-Version:        2.10.18
+Version:        2.10.19
 Release:        0
 Summary:        C++ REST library
 # main: MIT (license.txt)
@@ -28,9 +28,9 @@ Summary:        C++ REST library
 # sha1/sha1.hpp: BSD-3-Clause (ThirdPartyNotices.txt)
 # common/md5.hpp: Zlib (ThirdPartyNotices.txt)
 # utf8_validation.hpp: MIT (ThirdPartyNotices.txt)
-License:        MIT AND BSD-3-Clause AND Zlib
+License:        BSD-3-Clause AND MIT AND Zlib
 URL:            https://github.com/Microsoft/cpprestsdk
-Source:         https://github.com/Microsoft/cpprestsdk/archive/%{version}/cpprestsdk-%{version}.tar.gz
+Source:         https://github.com/Microsoft/cpprestsdk/archive/v%{version}/cpprestsdk-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- https://github.com/Microsoft/cpprestsdk/issues/576
 Patch1:         cpprest-2.10.9-disable-test-extract_floating_point.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/microsoft/cpprestsdk/pull/1557
@@ -99,10 +99,10 @@ exec_prefix=%{_prefix}
 libdir=%{_libdir}
 includedir=%{_includedir}
 
-Name: %{name}
+Name:           %{name}
 Description: cloud-based client-server communication
-URL: %{url}
-Version: %{version}
+URL:            %{url}
+Version:        %{version}
 Libs: -L%{_libdir} -lcpprest
 Cflags: -I%{_includedir}/cpprest -I%{_includedir}/pplx
 EOF

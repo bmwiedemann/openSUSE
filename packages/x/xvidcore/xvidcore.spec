@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sovermajor 4
 
 Name:           xvidcore
@@ -24,6 +25,7 @@ Summary:        MPEG-4 Simple and Advanced Simple Profile codec
 License:        GPL-2.0-or-later
 URL:            https://www.xvid.com/
 Source0:        https://downloads.xvid.com/downloads/%{name}-%{version}.tar.bz2
+Source99:       baselibs.conf
 
 BuildRequires:  c_compiler
 BuildRequires:  make
@@ -49,7 +51,7 @@ Shared library of XviD video codec.
 Summary:        Development files for the Xvid video codec
 Requires:       lib%{name}%{sovermajor} = %{version}
 Provides:       libxvidcore-devel = %{version}
- 
+
 %description    devel
 This package contains header files, static library and API
 documentation for the Xvid video codec.

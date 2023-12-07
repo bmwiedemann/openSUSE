@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/xflr6/graphviz
 Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.zip
+Patch1:         python312-syntax-warning.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-mock >= 3}
@@ -56,7 +57,7 @@ inspected with its default application. Graphs can also be rendered and
 displayed within IPython notebooks.
 
 %prep
-%autosetup -n graphviz-%{version}
+%autosetup -p1 -n graphviz-%{version}
 sed -i '/--cov/d' setup.cfg
 sed -i '/^mock_use_standalone_module/d' setup.cfg
 

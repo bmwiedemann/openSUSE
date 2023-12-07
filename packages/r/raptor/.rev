@@ -303,4 +303,12 @@ Updating to those licenses stated in the LICENSE.txt file (even though the LGPL-
     <comment>Should work after fix in #1121383 and sending that updated package to Factory.</comment>
     <requestid>1121386</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>579a0da6029dae8c6a3debb1ddc4d84a</srcmd5>
+    <version>2.0.16</version>
+    <time>1701972530</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130939</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           rpi-imager
-Version:        1.7.5
+Version:        1.8.3
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  libqt5-qtquickcontrols2
+BuildRequires:  lzma-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files

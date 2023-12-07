@@ -249,4 +249,21 @@
   * go#63740 net/http: http2 page fails on firefox/safari if pushing resources (forwarded request 1124116 from jfkw)</comment>
     <requestid>1124118</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>38e500431f51fcb9ff93542812b880a2</srcmd5>
+    <version>1.20.12</version>
+    <time>1701972541</time>
+    <user>anag+factory</user>
+    <comment>- go1.20.12 (released 2023-12-05) includes security fixes to the go
+  command, and the net/http and path/filepath packages, as well as
+  bug fixes to the compiler and the go command.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-45285 CVE-2023-45284 CVE-2023-39326
+  * go#63972 go#63845 boo#1217834 security: fix CVE-2023-45285 cmd/go: git VCS qualifier in module path uses git:// scheme
+  * go#64040 go#63713 boo#1216943 security: fix CVE-2023-45284 path/filepath: Clean removes ending slash for volume on Windows in Go 1.21.4
+  * go#64434 go#64433 boo#1217833 security: fix CVE-2023-39326 net/http: limit chunked data overhead
+  * go#63983 cmd/compile: internal compiler error: panic during prove while compiling: unexpected induction with too many parents
+  * go#63988 cmd/go: TestScript/mod_get_direct fails with &quot;Filename too long&quot; on Windows (forwarded request 1131272 from jfkw)</comment>
+    <requestid>1131274</requestid>
+  </revision>
 </revisionlist>
