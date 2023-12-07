@@ -94,7 +94,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#18020: '20231022'
   poo#112649: '20231107'
   poo#115133: '20230901'
-  poo#117811: '20231205'
+  poo#117811: '20231206'
   poo#120459: '20231206'
   poo#123127: '20230312'
   poo#124433: '20230308'
@@ -618,7 +618,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20231206'
+    <value>failed: ''
 published: '20231205'
 publishing: '20231205'
 testing: '20231206'
