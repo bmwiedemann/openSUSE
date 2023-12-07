@@ -10689,9 +10689,9 @@ unsorted:
   - libargon2-1-32bit 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute32 
-  - libarm_compute_core32 
-  - libarm_compute_graph32 
+  - libarm_compute33 
+  - libarm_compute_core33 
+  - libarm_compute_graph33 
   - libarmadillo12 
   - libarmnn33 
   - libarmnn33-opencl 
@@ -12255,9 +12255,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_59 
-  - libgrpc1_59 
-  - libgrpc36 
+  - libgrpc++1_60 
+  - libgrpc1_60 
+  - libgrpc37 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -12828,7 +12828,7 @@ unsorted:
   - libknet1-devel 
   - libknet1-plugins-all 
   - libknot14 
-  - libkokkos-4_1 
+  - libkokkos-4_2 
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
@@ -15229,7 +15229,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb36 
+  - libupb37 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -15811,7 +15811,7 @@ unsorted:
   - libxtrxdsp0 
   - libxtrxll-devel 
   - libxtrxll0 
-  - libxvidcore4 
+  - libxvidcore4-32bit 
   - libxy3 
   - libyajl-devel 
   - libyajl-devel-static 
@@ -34255,6 +34255,7 @@ unsorted:
   - sca-appliance-broker 
   - sca-appliance-common 
   - sca-appliance-patdev 
+  - sca-patterns-alp1 
   - sca-patterns-base 
   - sca-patterns-hae 
   - sca-patterns-sle11 

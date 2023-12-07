@@ -1666,7 +1666,7 @@
     <package name="libcdr-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcdrdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcelt0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="libcelt0-2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcfg6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2338,8 +2338,8 @@
     <package name="libopenblas_pthreads0" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libopencc1_1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenconnect5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libopencore-amrnb0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libopencore-amrwb0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libopencore-amrnb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libopencore-amrwb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopeniscsiusr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenjp2-7-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2748,7 +2748,7 @@
     <package name="libvmaf1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvmtools0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvncserver1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libvo-amrwbenc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libvo-amrwbenc0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbis0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbis0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvorbisenc2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2844,6 +2844,7 @@
     <package name="libxslt-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxslt1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxtables12" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libxvidcore4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libyajl2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2871,7 +2872,7 @@
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzstd1-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="lifecycle-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:lifecycle-data-openSUSE -->

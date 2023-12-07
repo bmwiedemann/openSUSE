@@ -1103,6 +1103,8 @@
     <package name="libopenal1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libopencc1_1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libopenconnect5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libopencore-amrnb0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libopencore-amrwb0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libopenmpt0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1330,7 +1332,7 @@
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libvisio-0_1-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libvisual-0_4-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libvo-amrwbenc0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libvo-amrwbenc0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libvorbis0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libvorbisenc2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1399,6 +1401,7 @@
     <package name="libxslt-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libxslt1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libxtables12" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libxvidcore4" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libyajl2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1418,7 +1421,7 @@
     <package name="libzmf-0_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libzmq5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
