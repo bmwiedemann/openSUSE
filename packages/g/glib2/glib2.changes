@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:52:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.78.3:
+  + Fix a crash-causing regression in xdgmime
+  + Bugs fixed:
+    - Crash in __gio_xdg_cache_mime_type_subclass
+    - Backport “xdgmime: Update to upstream commit c2c814d4051f232”
+      to glib-2-78
+
+-------------------------------------------------------------------
+Tue Dec  5 15:35:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.78.2:
+  + Bugs fixed:
+    - check for #ifdef PTRACE_O_EXITKILL will always fail since it
+      isn't a macro
+    - gsubprocess build-time test intermittently timing out since
+      2.78.1
+    - “meson: Improve PTRACE_O_EXITKILL presence check”
+    - “Make GQuark register intentional leaks”
+    - “gsignalgroup: Avoid function call with side effect in
+      g_return_* macro”
+    - “tests: Don't assume that sh optimizes simple commands into
+      exec”
+    - “xdgmime: Handle buggy type definitions with circular
+      inheritance”
+    - “collate: Don't segfault on bad input”
+
+-------------------------------------------------------------------
 Tue Nov 28 11:03:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup instead of %setup/%patch.
@@ -396,7 +425,24 @@ Fri Feb 24 02:50:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
     `/var/run/dbus/system_bus_socket` to
     `/run/dbus/system_bus_socket`, in line with changes in
     dbus.git.
-- Drop glib2-dbus-socket-path.patch: fixed upstream.
+- Drop patches:
+  + glib2-dbus-socket-path.patch: fixed upstream.
+  + glib2-fix-normal-form-handling-in-gvariant.patch: fixed upstream
+
+-------------------------------------------------------------------
+Tue Feb 23 16:14:12 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Update glib2-fix-normal-form-handling-in-gvariant.patch:
+  Backported from upstream to fix regression on s390x.
+  (bsc#1210135, glgo#GNOME/glib!2978)
+
+-------------------------------------------------------------------
+Fri Feb 23 15:00:15 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add glib2-fix-normal-form-handling-in-gvariant.patch: Backported
+  from upstream to fix normal form handling in GVariant.
+  (CVE-2023-24593, CVE-2023-25180, bsc#1209714, bsc#1209713,
+  glgo#GNOME/glib!3125)
 
 -------------------------------------------------------------------
 Thu Feb 23 14:27:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
