@@ -81,6 +81,7 @@
   boo#1215943: '20231207'
   boo#1216604: '20231028'
   boo#1216660: '20231207'
+  boo#1216822: '20231207'
   boo#1217010: '20231122'
   boo#1217029: '20231207'
   boo#1217657: '20231207'
@@ -171,6 +172,7 @@
   poo#151624: '20231207'
   poo#151765: '20231129'
   poo#151768: '20231129'
+  poo#152206: '20231207'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -618,9 +620,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20231207'
-published: '20231206'
-publishing: '20231206'
+    <value>failed: ''
+published: '20231207'
+publishing: '20231207'
 testing: '20231207'
 </value>
   </attribute>
