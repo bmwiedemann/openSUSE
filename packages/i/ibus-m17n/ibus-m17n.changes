@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  7 20:33:00 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.4.27
+ * Prefer commit to "return FALSE;" for space, and other keys where the msymbol name is exactly one character,
+   add a sleep for Return. This is to avoid ordering problems in mutter
+
+-------------------------------------------------------------------
 Fri Nov 10 18:09:50 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.4.24

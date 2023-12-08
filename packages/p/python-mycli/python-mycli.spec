@@ -1,7 +1,7 @@
 #
 # spec file for package python-mycli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-mycli
-Version:        1.26.1
+Version:        1.27.0
 Release:        0
 Summary:        CLI for MySQL Database. With auto-completion and syntax highlighting
 License:        BSD-3-Clause

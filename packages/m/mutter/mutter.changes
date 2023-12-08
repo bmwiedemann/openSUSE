@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  7 15:09:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.2:
+  + Disable HW cursor when inhibited by backend.
+  + Fix disabling check-alive timeout.
+  + Propagate focus appearance to all ancestors.
+  + Fix tablets on X11 having the wrong device.
+  + Fixed crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Dec  3 15:54:07 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Rebase mutter-SLE-bsc984738-grab-display.patch.

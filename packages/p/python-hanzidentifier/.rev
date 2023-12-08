@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>1081516</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e1ac69015ba4f679dc938c5e7aa17e7</srcmd5>
+    <version>1.2.0</version>
+    <time>1702071119</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * switch to hatch
+  * drop python 2 support
+
+  * Drop Python 2</comment>
+    <requestid>1131721</requestid>
+  </revision>
 </revisionlist>

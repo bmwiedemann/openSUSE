@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  6 20:00:12 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Add upstream fixes since v31
+  * tools-depmod-fix-Walloc-size.patch
+  * libkmod-remove-pkcs7-obj_to_hash_algo.patch
+  * configure-Check-that-provided-paths-are-absolute.patch
+- Refresh usrmerge patches to upstream version (cosmetic change only)
+
+-------------------------------------------------------------------
 Tue Oct 17 15:34:57 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix tests

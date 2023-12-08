@@ -64,4 +64,17 @@
     <comment></comment>
     <requestid>1092246</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a761bb79262c22b14dd09fc57c69f706</srcmd5>
+    <version>1.16.3</version>
+    <time>1702071124</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.16:
+  * Add ``allow_unknown_load_commands`` option to ``MachO`` and
+    ```macholib.MachOHeader``.
+
+- Update to version 1.16.1
+- version update to 1.16</comment>
+    <requestid>1131727</requestid>
+  </revision>
 </revisionlist>

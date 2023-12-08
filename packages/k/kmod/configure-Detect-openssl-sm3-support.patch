@@ -1,13 +1,15 @@
-From 1bb5f3aafc9b4bff638ed3288308289fdec60270 Mon Sep 17 00:00:00 2001
+From 1bb23d7f19d888fbdd96ae0fe929b7086713ef33 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
-Date: Mon, 17 Jul 2023 21:23:51 +0200
-Subject: [PATCH 1/6] configure: Detect openssl sm3 support
+Date: Tue, 18 Jul 2023 14:01:52 +0200
+Subject: [PATCH 1/9] configure: Detect openssl sm3 support
 
 Older openssl versions do not support sm3. The code has an option to
 disable the sm3 hash but the lack of openssl support is not detected
 automatically.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+Link: https://lore.kernel.org/r/b97e20faa07e9e31c6eaf96683011aa24e80760c.1689681454.git.msuchanek@suse.de
+Signed-off-by: Lucas De Marchi <lucas.de.marchi@gmail.com>
 ---
  configure.ac | 7 +++++++
  1 file changed, 7 insertions(+)

@@ -1,7 +1,7 @@
-From 88f6d08df8082f4dbe2407bef59de85290360e88 Mon Sep 17 00:00:00 2001
+From 8463809f8a29b254b2cab2ce755641bc690f07c9 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
-Date: Tue, 12 Jan 2021 16:54:46 +0100
-Subject: [PATCH 2/7] libkmod, depmod: Load modprobe.d, depmod.d from
+Date: Tue, 18 Jul 2023 14:01:54 +0200
+Subject: [PATCH 3/9] libkmod, depmod: Load modprobe.d, depmod.d from
  ${prefix}/lib.
 
 There is an ongoing effort to limit use of files outside of /usr (or
@@ -16,10 +16,8 @@ and only one configuration file of the same name is loaded from any of
 the search directories.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
----
-v2: Fix commit message typo
-v3: Fix modprobe.d path list in code comment
-v5: Add distconfdir
+Link: https://lore.kernel.org/r/a290343ce32e2a3c25b134e4f27c13b26e06c9e0.1689681454.git.msuchanek@suse.de
+Signed-off-by: Lucas De Marchi <lucas.de.marchi@gmail.com>
 ---
  Makefile.am        | 1 +
  configure.ac       | 5 +++++
@@ -31,7 +29,7 @@ v5: Add distconfdir
  7 files changed, 20 insertions(+), 5 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index ac47ea625e71..a03846d02b9c 100644
+index 5b7abfe6a20e..e6630a36e18c 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -19,6 +19,7 @@ AM_CPPFLAGS = \
@@ -43,10 +41,10 @@ index ac47ea625e71..a03846d02b9c 100644
  
  AM_CFLAGS = $(OUR_CFLAGS)
 diff --git a/configure.ac b/configure.ac
-index a74d3baf0a42..18206ccdb607 100644
+index e5bceeaa1722..fd88d1fbdbf7 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -78,6 +78,10 @@ AC_COMPILE_IFELSE(
+@@ -79,6 +79,10 @@ AC_COMPILE_IFELSE(
  # --with-
  #####################################################################
  
@@ -57,7 +55,7 @@ index a74d3baf0a42..18206ccdb607 100644
  AC_ARG_WITH([rootlibdir],
          AS_HELP_STRING([--with-rootlibdir=DIR], [rootfs directory to install shared libraries]),
          [], [with_rootlibdir=$libdir])
-@@ -303,6 +307,7 @@ AC_MSG_RESULT([
+@@ -313,6 +317,7 @@ AC_MSG_RESULT([
  
  	prefix:			${prefix}
  	sysconfdir:		${sysconfdir}
@@ -66,10 +64,10 @@ index a74d3baf0a42..18206ccdb607 100644
  	rootlibdir:		${rootlibdir}
  	includedir:		${includedir}
 diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
-index 7c2b889d713e..bc05a1873edf 100644
+index 1b8773cdf452..57fac1cb9f7b 100644
 --- a/libkmod/libkmod.c
 +++ b/libkmod/libkmod.c
-@@ -65,6 +65,7 @@ static const char *default_config_paths[] = {
+@@ -65,6 +65,7 @@ static const char *const default_config_paths[] = {
  	SYSCONFDIR "/modprobe.d",
  	"/run/modprobe.d",
  	"/usr/local/lib/modprobe.d",
@@ -77,7 +75,7 @@ index 7c2b889d713e..bc05a1873edf 100644
  	"/lib/modprobe.d",
  	NULL
  };
-@@ -237,9 +238,9 @@ static char *get_kernel_release(const char *dirname)
+@@ -272,9 +273,9 @@ static enum kmod_file_compression_type get_kernel_compression(struct kmod_ctx *c
   *                to load from user-defined configuration parameters such as
   *                alias, blacklists, commands (install, remove). If NULL
   *                defaults to /etc/modprobe.d, /run/modprobe.d,
@@ -136,10 +134,10 @@ index 0ab3e9110a7e..2bf6537f07e6 100644
      <para><filename>/run/modprobe.d/*.conf</filename></para>
      <para><filename>/etc/modprobe.d/*.conf</filename></para>
 diff --git a/tools/depmod.c b/tools/depmod.c
-index 553659755194..aada5ac57902 100644
+index 1d1d41db860f..630fef9c8fb0 100644
 --- a/tools/depmod.c
 +++ b/tools/depmod.c
-@@ -54,6 +54,7 @@ static const char *default_cfg_paths[] = {
+@@ -54,6 +54,7 @@ static const char *const default_cfg_paths[] = {
  	SYSCONFDIR "/depmod.d",
  	"/run/depmod.d",
  	"/usr/local/lib/depmod.d",
@@ -148,5 +146,5 @@ index 553659755194..aada5ac57902 100644
  	NULL
  };
 -- 
-2.41.0
+2.42.0
 

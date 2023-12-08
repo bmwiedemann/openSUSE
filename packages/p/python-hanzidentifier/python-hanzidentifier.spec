@@ -16,25 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-hanzidentifier
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
-License:        MIT
 Summary:        Python module that identifies Chinese text as Simplified or Traditional
-URL:            https://github.com/tsroten/hanzidentifier
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/tsroten/hanzidentifier
 Source:         https://github.com/tsroten/hanzidentifier/archive/v%{version}.tar.gz#/hanzidentifier-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-zhon >= 1.1.3
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module zhon >= 1.1.3}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-zhon >= 1.1.3
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -44,10 +44,10 @@ Python module that identifies Chinese text as Simplified or Traditional.
 %setup -q -n hanzidentifier-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Dec 07 15:37:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.2.4:
+  * Fix Release GH action
+
+-------------------------------------------------------------------
+Thu Dec 07 15:35:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.2.3:
+  * Update even more dependencies + remove fossa
+  * Bump dependencies
+  * Bump docker image
+  * Update kubernetes packages to v0.28.4
+
+-------------------------------------------------------------------
+Mon Oct 09 12:33:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.2.2:
+  * Run always snapshot CI task
+  * Bump dependencies
+  * Bump cyclonedx-go
+  * Bump golangci-linter
+  * Redesign CI
+  * feat: added allocatable property to nodes key
+
+-------------------------------------------------------------------
+Mon Oct  9 12:33:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kbom: Kubernetes Bill of Materials

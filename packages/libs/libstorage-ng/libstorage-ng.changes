@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Fri Dec 8 10:59:47 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#968
+- make more use of new SystemCmd interface
+- 4.5.161
+
+--------------------------------------------------------------------
+Thu Dec 7 13:59:32 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#967
+- block more udev by-id links (bsc#1217459)
+- adapted testsuite
+- 4.5.160
+
+--------------------------------------------------------------------
+Tue Dec 5 18:43:05 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.5.159
+
+--------------------------------------------------------------------
 Wed Nov 22 15:12:44 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#966

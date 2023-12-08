@@ -57,4 +57,15 @@
     <comment></comment>
     <requestid>1032186</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>92d37c9666f0d274c9e0617e8d2d233b</srcmd5>
+    <version>0.8.1</version>
+    <time>1702071113</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.1:
+  * Filter out self-edges from the graph.
+
+  * MANIFEST.in: Add tests to sdist</comment>
+    <requestid>1131708</requestid>
+  </revision>
 </revisionlist>

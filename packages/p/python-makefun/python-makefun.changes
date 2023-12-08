@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:55:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.2:
+  * Fixed `SyntaxError` happening when the name of a native
+    coroutine function to create contains `'return'`.
+  * Fixes #96.
+
+-------------------------------------------------------------------
 Tue Mar 28 09:39:24 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required

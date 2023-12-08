@@ -68,4 +68,14 @@
     <comment></comment>
     <requestid>1105955</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e44be83e4114ae623ec09a8436a7731f</srcmd5>
+    <version>2.0.11</version>
+    <time>1702071134</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.11:
+  * Support Python 3.12
+  * Disable unit tests for no ssl module + fixes for build</comment>
+    <requestid>1131746</requestid>
+  </revision>
 </revisionlist>

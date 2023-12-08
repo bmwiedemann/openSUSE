@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:08:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0.post0:
+  * Ensure setuptools can read version number statically during
+    build
+  * Dropped support for Python 3.7
+  * Passing (keyfile, certfile) to MailHandler's ``secure``
+    argument is deprecated in favour of passing an ``ssl.SSLContext``.
+  * Python 3.12 support
+
+-------------------------------------------------------------------
 Fri Sep 29 12:54:51 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.6.0
@@ -15,7 +26,7 @@ Fri Sep 29 12:54:51 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Sun Aug 13 21:19:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restrict to older Cython version 
+- restrict to older Cython version
 
 -------------------------------------------------------------------
 Wed Jun 28 03:27:42 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
@@ -69,7 +80,7 @@ Fri Aug 10 13:23:32 UTC 2018 - petr@cervinka.net
 
 - Update to Version 1.4.0
   * Added support for checking if trace logs have been emitted in TestHandler (thanks @thedrow)
-  * Added support for controlling rotating file names -- Logbook now allows users to 
+  * Added support for controlling rotating file names -- Logbook now allows users to
     customize the formatting of rollover/rotating files (thanks Tucker Beck)
   * Added support for compressed log files, supporting both gzip and brotli compression
     methods (thanks Maor Marcus)
@@ -151,7 +162,7 @@ Fri Jan  6 20:55:50 UTC 2017 - boris@steki.net
   tox installation, which may introduce unwitting code breakage.
   Travis also does not support Python 2.4 so the chances of
   accidentally breaking this support were very high as it was...
- 
+
 
 -------------------------------------------------------------------
 Thu Oct 24 11:07:59 UTC 2013 - speilicke@suse.com

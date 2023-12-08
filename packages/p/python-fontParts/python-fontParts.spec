@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-fontParts%{psuffix}
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT

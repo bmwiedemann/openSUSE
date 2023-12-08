@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  7 13:31:06 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Revert dhclient-script removal and instead change usleep to sleep
+  (boo#1216822)
+
+-------------------------------------------------------------------
+Tue Dec  5 15:24:29 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add new Kea migration assistant subpackage
+- Switch doc subpackage to noarch
+
+-------------------------------------------------------------------
 Thu Nov  2 13:53:11 UTC 2023 - Petr Vorel <pvorel@suse.cz>
 
 - Remove dhclient-script (boo#1216822).

@@ -1,7 +1,7 @@
 #
 # spec file for package python-libarchive-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libarchive-c
-Version:        4.0
+Version:        5.0
 Release:        0
 Summary:        Python interface to libarchive
 License:        CC0-1.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Changaco/python-libarchive-c
 Source:         https://files.pythonhosted.org/packages/source/l/libarchive-c/libarchive-c-%{version}.tar.gz
-# https://github.com/Changaco/python-libarchive-c/commit/13b904e2b046db25a42cd63557d259b3d3998323
-Patch0:         python-libarchive-c-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,8 +47,7 @@ A Python interface to libarchive. It uses the standard ctypes_ module to
 dynamically load and access the C library.
 
 %prep
-%setup -q -n libarchive-c-%{version}
-%patch0 -p1
+%autosetup -p1 -n libarchive-c-%{version}
 
 %build
 %python_build

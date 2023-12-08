@@ -4350,4 +4350,12 @@
     to italics (patches by Branden Robinson).</comment>
     <requestid>1130674</requestid>
   </revision>
+  <revision rev="253" vrev="26">
+    <srcmd5>968859df216a40ef23b155fd4e4b882f</srcmd5>
+    <version>unknown</version>
+    <time>1702071126</time>
+    <user>anag+factory</user>
+    <comment>OpenSUSE bsc#1201384, Debian #60377). (forwarded request 1132091 from michals)</comment>
+    <requestid>1132119</requestid>
+  </revision>
 </revisionlist>

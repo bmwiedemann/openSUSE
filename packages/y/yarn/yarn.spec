@@ -1,7 +1,7 @@
 #
 # spec file for package yarn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           yarn
-Version:        1.22.19
+Version:        1.22.21
 Release:        0
 Summary:        📦🐈 Fast, reliable, and secure dependency management
 License:        BSD-2-Clause
 URL:            https://github.com/yarnpkg/%{name}/releases
 Source:         %{URL}/download/v%{version}/yarn-v%{version}.tar.gz
-Source1:        %{URL}/download/v%{version}/yarn-v%{version}.tar.gz.asc
 Requires:       nodejs >= 4.0
 Requires:       sed
 BuildArch:      noarch

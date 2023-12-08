@@ -72,6 +72,9 @@ Part of the Enthought Tool Suite (ETS).
 %prep
 %autosetup -p1 -n pyface-%{version}
 
+# Fix executable bits
+find . -name \*.py -exec chmod -x '{}' \;
+
 %build
 %pyproject_wheel
 
@@ -87,8 +90,10 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 export ETS_TOOLKIT=qt4
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
+cp -a %{buildroot}%{$python_sitelib} python_sitelib # copy to avoid modification of original https://github.com/enthought/pyface/issues/1254
+export PYTHONPATH=`pwd`/python_sitelib
 xvfb-run --server-args "-screen 0 1920x1080x24" $python -m unittest discover -v pyface
+rm -rf python_sitelib
 popd
 # wait 2 seconds before the next xvfb-run
 sleep 2

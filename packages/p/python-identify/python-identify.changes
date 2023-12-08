@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:52:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.33:
+  * add .avsc detection
+  * Identify Vagrantfile as Ruby
+  * Identify .salt-lint as YAML
+
+-------------------------------------------------------------------
 Fri Nov 24 21:27:25 UTC 2023 - Matthias Bach <marix@marix.org>
 
 - For Leap, build this on modern Python as 3.6 is no longer

@@ -18,7 +18,7 @@
 
 Name:           harec
 Release:        0
-Version:        1699297758.b4dd427
+Version:        1701558776.08af325
 Summary:        Bootstrap compiler for hare
 Group:          Development/Tools/Building
 URL:            https://git.sr.ht/~sircmpwn/harec

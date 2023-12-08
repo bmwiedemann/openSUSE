@@ -58,4 +58,24 @@
     <comment></comment>
     <requestid>1006742</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c083ec099650a3eab3ae983bc052b782</srcmd5>
+    <version>2.4.0</version>
+    <time>1702071107</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * Update bundled dependencies (HarfBuzz 7.2.0 and FreeType
+    2.13.0)
+  * Use leftside bearings to layout bitmaps by @HinTak to fix
+    #161
+  * Correct copyright and description in examples/hello-vf.py
+  * Fix `FT_Glyph_Get_CBox()`/`FT_Outline_Get_CBox()` return type
+    treatment by @HinTak to fix #160
+
+- update to 2.3.0
+  * Drop Python 2 support and 32 bit wheels.
+  * FT_Face can now be instantiated with a file path or a byte
+  * Fix bug where outline and bitmap could be off by one grid unit</comment>
+    <requestid>1131690</requestid>
+  </revision>
 </revisionlist>

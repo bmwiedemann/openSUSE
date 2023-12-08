@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Dec  7 15:40:19 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.21:
+  * sigmoid.ctl: added white point control
+  * updated wb presets
+  * CTL: fixed glitch in parameter parsing
+  * updated Dutch translation
+  * updated French translation
+  * improved error reporting for invalid CTL scripts
+  * main-cli: fixed bugs in --check-lut
+  * ART-cli: added option --check-lut to aid debugging luts
+    (esp. CTL scripts)
+  * slightly reduce 3d lut size of fast preview of CTL scripts
+  * added generic LUT3D class
+  * small tweak to bundled profiles
+  * added option to speed up CTL script application in preview
+  * added reset button for clut parameters
+  * moved CTL scripts to a separate repo
+  * improved wb correction formula in wbchmix.ctl
+  * fix focus distance for Nikon Z cameras
+  * minor gui tweaks
+  * sigmoid: added support for base primaries
+  * added translation strings to plugins and builtin luts
+  * fixed glitches in color correction UI with plugins
+  * added some bundled luts and CTL scripts
+  * some more tweaks to the support for CTL scripts
+  * colorcorrection: fixed glitches
+  * clutstore: code cleanup, get rid of need for LUTs for
+    parametric CTL scripts
+  * colorcorrection: reorder pixel-level applications to make
+    parametric luts faster
+  * CTL LUT: use tabulation to avoid massive slowdown in
+    apply_single with complex uniform parameters
+  * parametric CTL LUTs: improved comment
+  * parametric CTL LUTs: fixed glitches and improved logging
+  * added support for parametric CTL luts
+  * renamed HaldCLUT to CLUT
+  * improved cache invalidation for LUTs
+  * Added support for building ART with the ACES CTL interpreter
+  * neutral tone curve: always use rec2020 for calculating the base
+    hues for the final shifts
+  * neutral tone curve: further tweaks to hue shifts
+  * logenc: improved implementation of "highlights precompression"
+  * neutral tone curve: alternative criterion for hue shifts and
+    desaturation
+  * neutral tone curve: added some hue shifts to (try to) consider
+    perceptual effects
+  * tuned threshold for hot pixel detection for xtrans
+  * procparams: fix missing auto-computed settings when comparing
+    ProcParams instances
+  * procparams: properly consider auto-computed settings when
+    comparing ProcParams instances
+  * basic hot/dead pixel filter for xtrans cfa
+  * spot removal: properly take film negative into account
+  * added option to specify the currently-active snapshot in the
+    output file name pattern
+
+-------------------------------------------------------------------
 Fri Oct  6 07:26:12 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use better macro for selecting a newer GCC on Leap. 

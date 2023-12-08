@@ -1,0 +1,5 @@
+<package name="python-Flask-OpenTracing" project="openSUSE:Factory">
+  <title></title>
+  <description>OpenTracing support for Flask applications</description>
+  <devel project="devel:languages:python:flask" package="python-Flask-OpenTracing"/>
+</package>

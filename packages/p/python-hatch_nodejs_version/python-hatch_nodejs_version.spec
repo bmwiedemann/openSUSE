@@ -17,7 +17,7 @@
 
 
 Name:           python-hatch_nodejs_version
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        This package provides two Hatch plugins for nodejs
 License:        MIT

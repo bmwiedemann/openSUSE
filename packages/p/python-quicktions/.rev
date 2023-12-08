@@ -93,4 +93,15 @@
     <comment>- use generic Cython dependency &gt;= 3.0</comment>
     <requestid>1103748</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c93f4444e9ce5d6238a17f37df8dd06</srcmd5>
+    <version>1.15</version>
+    <time>1702071204</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.15:
+  * Add support for Python 3.12 by using Cython 3.0.2.
+
+- use generic Cython dependency &gt;= 3.0</comment>
+    <requestid>1132078</requestid>
+  </revision>
 </revisionlist>

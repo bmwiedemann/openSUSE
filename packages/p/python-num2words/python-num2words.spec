@@ -1,7 +1,7 @@
 #
 # spec file for package python-num2words
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-num2words
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 Summary:        Modules to convert numbers to words
 License:        LGPL-2.1-only

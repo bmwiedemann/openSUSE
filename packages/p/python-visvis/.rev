@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>873437</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84fb90c404721f7117183a49ad6a26c5</srcmd5>
+    <version>1.14.0</version>
+    <time>1702071209</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.0:
+  * Python 3.6/3.7 support dropped
+  * PySide6 support
+
+- update to 1.13.0
+- update to 1.12.4</comment>
+    <requestid>1132081</requestid>
+  </revision>
 </revisionlist>

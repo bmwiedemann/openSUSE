@@ -17,7 +17,7 @@
 
 
 Name:           python-hsluv
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        Human-friendly HSL
 License:        MIT

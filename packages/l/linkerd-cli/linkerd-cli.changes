@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 07 19:00:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.6:
+  * stable-2.14.6
+  * Bump prometheus to v2.48.0 (#11633)
+  * Add ability to configure client-go's `QPS` and `Burst` settings
+    (#11644)
+  * Improve klog (client-go logs) handling (#11632)
+  * service-mirror: support gateway resolving to multiple addresses
+    (#11499)
+  * Add imagePullSecrets to the multicluster chart. (#11287)
+
+-------------------------------------------------------------------
 Thu Nov 23 06:24:55 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.14.5:

@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>1039669</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>45d574ffd1c18edec560d05f9a638d3c</srcmd5>
+    <version>3.6.1</version>
+    <time>1702071132</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.6.1:
+  * Added safe repr support for Decimal objects.
+  * Added C extension support for Python 3.11. This may come with
+    up to 10% performance hit (depending on use-case) for all
+    Pythons.
+  * Added safe repr support for ZoneInfo objects.
+  * C extension files are now prebuilt with Cython 3.0b2.
+  * Replaced the flake8/isort pre-commit hooks with ruff.
+  * Disabled editable wheels
+
+- Update to version 3.5.1
+- initital package</comment>
+    <requestid>1131742</requestid>
+  </revision>
 </revisionlist>

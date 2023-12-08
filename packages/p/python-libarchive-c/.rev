@@ -47,4 +47,27 @@
     <comment></comment>
     <requestid>980641</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f4b88f43d9d5669e1161b486525e88e</srcmd5>
+    <version>5.0</version>
+    <time>1702071120</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0:
+  * It is now possible to specify a codec for archive entry
+    metadata (`pathname`, `linkpath`, `uname` and `gname`)
+  * **BREAKING:** If you use the `archive_read_class` and
+    `archive_write_class` arguments, the classes you provide will
+    receive a codec name as a second positional argument.
+  * The `timestamp_nsec` arguments of the legacy
+    `ArchiveEntry.set_{a,c,m}time` methods are now optional
+  * Removed obsolete dependencies (`mock` and `six`) from
+    `tox.ini` (#119).
+  * Always use `UTF-8` when reading the `PKG-INFO` and
+    `README.rst` files (#120).
+  * Replaced `pytest-xdist` with `pytest-forked` in `tox.ini`
+- drop python-libarchive-c-no-mock.patch (upstream)
+
+    BREAKING &amp; SECURITY: The archive extraction functions now pass 3 security flags (SECURE_NODOTDOT, SECURE_NOABSOLUTEPATHS</comment>
+    <requestid>1131722</requestid>
+  </revision>
 </revisionlist>

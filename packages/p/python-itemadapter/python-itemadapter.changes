@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:47:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Dropped Python 3.6 support, and made Python 3.11 support
+    official
+  * It is now possible to declare custom `ItemAdapter` subclasses
+    with their own `ADAPTER_CLASSES` attribute, allowing to
+    support different item types in different parts of the same
+    code base
+  * Improved type hint support
+
+-------------------------------------------------------------------
 Thu Sep 29 02:54:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.7.0 (2022-08-02)
@@ -8,7 +20,7 @@ Thu Sep 29 02:54:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Slight performance improvement (#62)
 
 - Update to 0.5.0 (2022-03-18)
-  Improve performance by removing imports inside functions (#60) 
+  Improve performance by removing imports inside functions (#60)
 
 -------------------------------------------------------------------
 Sat Oct 30 13:06:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -26,7 +38,7 @@ Sat Oct 30 13:06:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
     class, as opposed to an item object (#34, #35).
   * ItemAdapter.__repr__ no longer raises exceptions caused by the
     underlying item (#31, #41).
-- Disable python36 build due to Scrapy 
+- Disable python36 build due to Scrapy
 
 -------------------------------------------------------------------
 Wed Jul  8 06:54:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

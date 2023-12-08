@@ -381,4 +381,16 @@
     <comment></comment>
     <requestid>1110189</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ce5049b06edf7ea44c60cd08130871ce</srcmd5>
+    <version>1.6.5</version>
+    <time>1702071144</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.5:
+  * fix for issue #1271 (mask ignored if bool MA assinged to
+    uint8 var)
+  * include information on specific object when reporting errors
+    from netcdf-c</comment>
+    <requestid>1131716</requestid>
+  </revision>
 </revisionlist>

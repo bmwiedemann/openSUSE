@@ -31,4 +31,19 @@
     - Fix key/value typing missing for ImmutableOrderedDict</comment>
     <requestid>1103297</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d6321ef35dc4a1da1e5dc2852660854</srcmd5>
+    <version>4.0.0</version>
+    <time>1702071128</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.0:
+  * Replace `__init__` by `__new__`.
+  * Add explicit items()/keys()/values() methods to speedup these
+    methods.
+  * Add set/delete/update functions.
+  * Add documentation at immutabledict.corenting.fr
+
+    - Fix key/value typing missing for ImmutableOrderedDict</comment>
+    <requestid>1131733</requestid>
+  </revision>
 </revisionlist>

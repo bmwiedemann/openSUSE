@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Dec  5 08:53:06 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.7
+ * Preview features
+   * Implement multiline dictionary and list hugging for preview style
+   * Implement the fix_power_op_line_length preview style
+   * Use Python version to determine typing rewrite safety
+   * [flake8-annotations] Enable auto-return-type involving Optional and Union annotations
+   * [flake8-bandit] Implement django-raw-sql (S611)
+   * [flake8-bandit] Implement tarfile-unsafe-members (S202)
+   * [flake8-pyi] Implement fix for unnecessary-literal-union (PYI030)
+   * [flake8-simplify] Extend dict-get-with-none-default (SIM910) to non-literals
+   * [pylint] - add unnecessary-list-index-lookup (PLR1736) + autofix
+   * [pylint] - implement R0202 and R0203 with autofixes
+   * [pylint] Implement repeated-keyword (PLe1132)
+   * [pylint] Implement too-many-positional (PLR0917)
+   * [pylint] Implement unnecessary-dict-index-lookup (PLR1733)
+   * [refurb] Implement redundant-log-base (FURB163)
+ * Rule changes
+   * [flake8-boolean-trap] Allow booleans in @override methods
+   * [flake8-bugbear] Avoid B015,B018 for last expression in a cell
+   * [flake8-pie] Allow ellipses for enum values in stub files
+   * [flake8-pyi] Check PEP 695 type aliases for snake-case-type-alias and t-suffixed-type-alias
+   * [flake8-pyi] Check for kwarg and vararg NoReturn type annotations
+   * [flake8-simplify] Omit select context managers from SIM117
+   * [pep8-naming] Allow Django model loads in non-lowercase-variable-in-function (N806)
+   * [pycodestyle] Avoid E703 for last expression in a cell
+   * [pycodestyle] Update E402 to work at cell level for notebooks
+   * [pydocstyle] Avoid D100 for Jupyter Notebooks
+   * [pylint] Implement fix for unspecified-encoding (PLW1514)
+ * Formatter
+   * Avoid unstable formatting in ellipsis-only body with trailing comment
+   * Inline trailing comments for type alias similar to assignments
+   * Insert trailing comma when function breaks with single argument
+ * CLI
+   * Update ruff check and ruff format to default to the current directory
+   * Stop at the first resolved parent configuration
+ * Configuration
+   * [pylint] Default max-positional-args to max-args
+   * [pylint] Add allow-dunder-method-names setting for bad-dunder-method-name (PLW3201)
+   * [isort] Add support for from-first setting
+   * [isort] Add support for length-sort settings
+ * Bug fixes
+   * Add support for @functools.singledispatch
+   * Avoid off-by-one error in stripping noqa following multi-byte char
+   * Avoid off-by-one error in with-item named expressions
+   * Avoid syntax error via invalid ur string prefix
+   * Avoid underflow in get_model matching
+   * Avoid unnecessary index diagnostics when value is modified
+   * Convert over-indentation rule to use number of characters
+   * Detect implicit returns in auto-return-types
+   * Fix start >= end error in over-indentation
+   * Ignore @overload and @override methods for too-many-arguments checks
+   * Lexer start of line is false only for Mode::Expression
+   * Mark pydantic_settings.BaseSettings as having default copy semantics
+   * Respect dictionary unpacking in NamedTuple assignments
+   * Respect local subclasses in flake8-type-checking
+   * Support type alias statements in simple statement positions
+   * [flake8-annotations] Avoid filtering out un-representable types in return annotation
+   * [flake8-pie] Retain extra ellipses in protocols and abstract methods
+   * [flake8-pyi] Respect local enum subclasses in simple-defaults (PYI052)
+   * [flake8-trio] Use correct range for TRIO115 fix
+   * [flake8-trio] Use full arguments range for zero-sleep-call
+   * [isort] fix: mark __main__ as first-party import
+   * [pep8-naming] Avoid N806 errors for type alias statements
+   * [perflint] Avoid PERF101 if there's an append in loop body
+   * [pycodestyle] Allow space-before-colon after end-of-slice
+   * [pydocstyle] Avoid non-character breaks in over-indentation (D208)
+   * [pydocstyle] Ignore underlines when determining docstring logical lines
+   * [pylint] Extend self-assigning-variable to multi-target assignments
+   * [tryceratops] Avoid repeated triggers in nested tryceratops diagnostics
+ * Documentation
+   * Add advice for fixing RUF008 when mutability is not desired
+   * Added the command to run ruff using pkgx to the installation.md
+   * Document fix safety for flake8-comprehensions and some pyupgrade rules
+   * Fix doc formatting for zero-sleep-call
+   * Remove duplicate imports from os-stat documentation
+   * Replace generated reference to MkDocs
+   * Update Arch Linux package URL in installation.md
+   * [flake8-pyi] Fix error in t-suffixed-type-alias (PYI043) example
+   * [flake8-pyi] Improve motivation for custom-type-var-return-type (PYI019)
+
+-------------------------------------------------------------------
 Sun Nov 19 03:53:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - switch to libalternatives

@@ -1,7 +1,7 @@
 #
 # spec file for package python-strictyaml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-strictyaml
-Version:        1.6.2
+Version:        1.7.3
 Release:        0
 Summary:        Strict, typed YAML parser
 License:        MIT
 URL:            https://hitchdev.com/strictyaml
 Source:         https://files.pythonhosted.org/packages/source/s/strictyaml/strictyaml-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.6.0
@@ -52,10 +53,10 @@ Priorities:
 %setup -q -n strictyaml-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 #%%check
@@ -66,6 +67,7 @@ Priorities:
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/strictyaml
+%{python_sitelib}/strictyaml-%{version}.dist-info
 
 %changelog

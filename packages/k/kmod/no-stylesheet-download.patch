@@ -1,7 +1,7 @@
-From b46c23e46ad9b19d74362eb3528404293bb03d12 Mon Sep 17 00:00:00 2001
+From 11979d01f72a0da574b795ad3029a52706c16f6d Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 6 Sep 2021 14:52:35 +0200
-Subject: [PATCH 5/7] Do not download the docbook stylesheet during build, use
+Subject: [PATCH 9/9] Do not download the docbook stylesheet during build, use
  local copy instead.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
@@ -20,5 +20,5 @@ index f550091a216a..a8ddb8bfd0ed 100644
 -		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl -
 +		/usr/share/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl -
 -- 
-2.41.0
+2.42.0
 

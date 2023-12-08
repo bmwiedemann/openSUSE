@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:30:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * no change
+
+-------------------------------------------------------------------
 Sun Nov 21 13:05:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Limit %%files a little bit more.
@@ -6,4 +12,4 @@ Sun Nov 21 13:05:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Nov 18 13:55:37 UTC 2021 - Elisei Roca <eroca@mailbox.org>
 
-- initial commit of mkdocs-bootstrap theme at version 1.1 
+- initial commit of mkdocs-bootstrap theme at version 1.1

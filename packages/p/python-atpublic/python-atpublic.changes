@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec  7 20:11:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0:
+  * Drop Python 3.7 support (GL#16)
+  * Remove ``public.install()`` which was used to inject the
+    ``public`` and ``private`` functions into the ``builtins``
+    namespace.  This isn't very helpful and could be actively
+    harmful.  Explicit is better than implicit. (GL#14)
+  * The functional form of ``public()`` now returns the argument
+    *values* in the order they are given.  This allows you to
+    explicitly bind those values to names in the global namespace.
+  * Switch from ``flake8`` and ``isort`` to ``ruff`` for code
+    quality. (GL#32)
+  * Switch to ``pdm-backend`` (GL#15)
+  * More GitLab CI integration improvements.
+
+-------------------------------------------------------------------
 Tue Jun 13 11:22:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - tag for sle15 new python stack
@@ -38,7 +55,7 @@ Sun Dec  4 20:31:51 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 Tue Jan 11 20:25:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix sybil usage in conftest based on sybil version.
-  * https://gitlab.com/warsaw/public/-/merge_requests/16  
+  * https://gitlab.com/warsaw/public/-/merge_requests/16
 
 -------------------------------------------------------------------
 Fri May 21 08:42:52 UTC 2021 - pgajdos@suse.com
@@ -47,7 +64,7 @@ Fri May 21 08:42:52 UTC 2021 - pgajdos@suse.com
   2.3 (2021-04-13)
   ================
   * Do type hinting the right way. (GL#10)
-  
+
   2.2 (2021-04-13)
   ================
   * ``public()`` and ``private()`` can't be correctly type annotated, so the

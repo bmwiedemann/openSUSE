@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonlines
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,21 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-jsonlines
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Library with helpers for the jsonlines file format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/wbolster/jsonlines
 Source:         https://github.com/wbolster/jsonlines/archive/%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module ujson}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-ujson
 %python_subpackages
 
 %description

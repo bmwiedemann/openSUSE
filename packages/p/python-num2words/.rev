@@ -47,4 +47,38 @@
     <comment></comment>
     <requestid>1008232</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0a22d6667387e078312ea02efb64b45a</srcmd5>
+    <version>0.5.13</version>
+    <time>1702071107</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.13:
+  * Fix a problem in Brazilian Portuguese code referred to
+    thousands when the hundreds are exact. (#421)
+  * Fix issue with the hundreds of millions, billions, ... when
+    the hundreds of those are exact. (#436)
+  * Fix negative number problem (#477)
+  * Fix lang_DK issues (#366)
+  * Norwegian uplift (#484)
+  * BYN to EU and RU (#439)
+  * Add support for Azerbaijani language (#495)
+  * Add Icelandic (#380)
+  * Hebrew long-form spelling, gender, ordinals, fractions,
+    maxval=1e66, construct forms (#490)
+  * Fix 15, 16, 17, 18, 19 issue (#505)
+  * Added support for the Nigerian Naira (#507)
+  * Fix several issues with num2words in Arabic (#512)
+  * Guatemalan currency support (#510)
+  * Fix #508: Handle string inputs in Italian to_ordinal (#518)
+  * Add Slovak language support (#533)
+  * Add gender and morphological cases support for Ukrainian
+  * Adding genders for Russian language (#503)
+  * Lang By Added (#506)
+  * Add Saudi Riyal to english (#531)
+
+ [ES] Added missing accents (&quot;dieciséis&quot;, &quot;dólar&quot;, &quot;dólares&quot;, &quot;veintiún&quot;), improved currency gender handling, fixed pound cent names (#443)
+- update to 0.5.10
+- Initial release of python-num2words 0.5.6</comment>
+    <requestid>1131692</requestid>
+  </revision>
 </revisionlist>

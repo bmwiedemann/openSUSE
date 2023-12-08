@@ -41,4 +41,41 @@
   * Fixed bug where ``sqlite-utils upsert ... --detect-types`` ignored the ``--detect-types`` option.</comment>
     <requestid>955487</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bf0de24e134292bd55e1ec34a2f02461</srcmd5>
+    <version>3.35.2</version>
+    <time>1702071220</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.35.2:
+  * The ``--load-extension=spatialite`` option and
+    :ref:`find_spatialite() &lt;python_api_gis_find_spatialite&gt;`
+    utility function now both work correctly on ``arm64`` Linux.
+  * Fix for bug where ``sqlite-utils insert`` could cause your
+    terminal cursor to disappear. Thanks, `Luke Plant
+  * ``datetime.timedelta`` values are now stored as ``TEXT``
+    columns. Thanks, `Harald Nezbeda
+  * Test suite is now also run against Python 3.12.
+  * Fixed a bug where :ref:`table.transform()
+    &lt;python_api_transform&gt;` would sometimes re-assign the
+    ``rowid`` values for a table rather than keeping them
+    consistent across the operation. (:issue:`592`)
+  * Adding foreign keys to a table no longer uses ``PRAGMA
+    writable_schema = 1`` to directly manipulate the
+    ``sqlite_master`` table. This was resulting in errors in some
+    Python installations where the SQLite library was compiled in
+    a way that prevented this from working, in particular on
+    macOS. Foreign keys are now added using the :ref:`table
+    transformation &lt;python_api_transform&gt;` mechanism instead.
+  * This new mechanism creates a full copy of the table, so it is
+    likely to be significantly slower for large tables, but will
+    no longer trigger ``table sqlite_master may not be modified``
+    errors on platforms that do not support ``PRAGMA
+    writable_schema = 1``.
+  * A new plugin, `sqlite-utils-fast-fks
+    &lt;https://github.com/simonw/sqlite-utils-fast-fks&gt;`__, is now
+    available for developers who still want to use that faster
+    but riskier implementation.
+  * The :ref:`table.transform() method &lt;python_api_transform&gt;`</comment>
+    <requestid>1132122</requestid>
+  </revision>
 </revisionlist>

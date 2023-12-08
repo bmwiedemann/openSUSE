@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Dec  8 13:43:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.26.1:
+  * #1441 #1442 Built-in InstallationStores fail to resolve a
+    valid bot token when both bot and user-only installations co-
+    exist in database tables - Thanks @kulmatitskiy @seratch
+  * #1440 Fix a bug on the aiohttp-based Socket Mode client's
+    exception handling - Thanks @ifmcnichols
+  * #1438 Add new `force` argument to `conversations.invite` API
+    method - Thanks @filmaj
+  * #1435 Enable testing for Python 3.12 and PyPy 3.10 on CI -
+  * #1432 Add functions.completeSuccess/Error APIs for remote
+    functions - Thanks @seratch @WilliamBergamin
+  * #1433 Add RichTextBlock to Block.parse() targets - Thanks
+    @seratch
+  * #1430 Fix #1427 Add apps.manifest.* & tooling.tokens.rotate
+    API support - Thanks @seratch
+  * #1431 Fix #1428 Add rich_text classes to slack_sdk.models
+    module - Thanks @seratch @tj-smith47
+  * #1425 Fix #1424 Add file input block element support - Thanks
+    @seratch
+  * #1423 Fix #1421 Update SlackApiError exception handling for
+    web client - Thanks @vinceta
+  * #1418 Add new arguments to admin.users.list API method -
+    Thanks @seratch
+  * #1409 Make next_cursor extraction logic even more robust (ref
+    #1407) - Thanks @seratch
+  * #1406 Add `RichTextInputElement` to `slack_sdk.models` -
+  * #1408 Update `files.upload` v2 method in correspondence with
+    server-side changes - Thanks @seratch
+  * Since this version, developers no longer need `files:read`
+    permission for `files_upload_v2` method. To learn more about
+    `files_upload_v2`, please refer to v3.19.0 release notes:
+    https://github.com/slackapi/python-slack-
+    sdk/releases/tag/v3.19.0
+  * #1398 Add `admin.*` APIs for managing automation platform
+    apps - Thanks @seratch
+  * #1399 Add `workflow_button` block element to the
+    `slack_sdk.models` package - Thanks @seratch
+  * #1362 Add `metadata` argument support to Incoming Webhooks -
+    Thanks @seratch
+  * #1368 Add cursor based pagination to `team.accessLogs` API -
+    Thanks @seratch
+  * #1380 Fix #1379 websocket-client socket mode client doesn't
+    handle reconnects properly - Thanks @seratch @leifwalsh
+  * #1367 #1364 #1378 Add built in server error retry handlers -
+    Thanks @digitalnomd
+  * #1372 `ServerErrorRetryHandler`, renaming `_can_retry_async`
+    -> `_can_retry` - Thanks @maximkir-fl
+  * #1374 Fix #1369 `ImageBlock`'s title parsing fails when given
+    a string - Thanks @seratch @kezabelle
+  * #1366 Add `author_subname` to `attachment` model class -
+    Thanks @seratch
+  * #1365 Add `create_tables()` to `SQLAlchemyOAuthStateStore` -
+    Thanks @raphaelhuefner
+  * #1387 Mark `stars.*` API methods as deprecated -  Thanks
+    @seratch
+  * #1375 Update GitHub Action steps to use Node 16 - Thanks
+    @zimeg
+  * #1376 Use `codecov/codecov-action@v3` to upload code coverage
+    - Thanks @zimeg
+
+-------------------------------------------------------------------
 Thu Jun  1 00:09:59 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.21.3:
@@ -25,12 +88,12 @@ Thu Jun  1 00:09:59 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Fri Jan  6 17:50:46 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Change log is upto date with the version. 
+- Change log is upto date with the version.
 
 -------------------------------------------------------------------
 Sat Dec  3 00:55:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v3.19.5 
+- Update to v3.19.5
   #1303 Fix #1302 by updating the warning logs in WebClient to be consistent with Node SDK - Thanks @mar3mar3
   #1307 Fix #1304 ssl_context is not passed from async web_client to aiohttp socket client - Thanks @seratch @giwrgos-skouras
   #1308 Fix #1305 by fixing pagination with async for syntax - Thanks @seratch @WilliamYuhangLee
@@ -46,7 +109,7 @@ Sat Dec  3 00:55:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 18:59:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.19.2 
+- Update to 3.19.2
   #1282 Add request_file_info arg to files_upload_v2 method - Thanks @seratch @eddyg
   #1278 Improve clarity of 'content' error message for files_upload_v2 - Thanks @eddyg
   #1283 Improve typing when using 'get' on an API response - Thanks @eddyg
@@ -66,16 +129,16 @@ Sat Oct 29 00:57:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to 3.18.5
   #1271 Add more revert to #1269 - Thanks @seratch @yardensachs
 
-- Update to 3.18.4 
+- Update to 3.18.4
   #1264 Fix retry_handlers type hint in AsyncBaseClient - Thanks @ronyb29
   #1265 #1266 Add selected_time (timepicker) to ViewStateValue class - Thanks @rei-0
   #1270 Add include_all_metadata to conversations.replies API arguments - Thanks @seratch
-  #1269 Adjust the logic added by #1246 - Thanks @seratch @eddyg 
+  #1269 Adjust the logic added by #1246 - Thanks @seratch @eddyg
 
 -------------------------------------------------------------------
 Fri Oct  7 16:06:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.18.3 
+- Update to version 3.18.3
   Changes
   * #1262 Fix #1261 blocks/attachments as str for chat. API calls should be clearly supported - Thanks @seratch
   * #1259 Fix #1258 Tuple value for blocks argument does not work for Web API calls - Thanks @tommasobertoni
@@ -85,5 +148,5 @@ Fri Oct  7 16:06:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Aug  3 07:16:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inital release, 3.18.1 
+- Inital release, 3.18.1
 

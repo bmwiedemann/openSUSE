@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Dec  5 21:33:20 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.0
+  Build and dependency updates
+  * cmake: Link to cpu_features only in BUILD_INTERFACE.
+  * cmake: Do not install cpu_features with volk.
+  * Use CpuFeatures target.
+  * Use cpu_features on RISC-V platforms.
+  * cpu_features: Update submodule pointer.
+  * Add UBSAN to ASAN builds.
+  New kernel API
+  * Use pointers to pass in s32fc arguments.
+  * The old API is deprecated but will be available for the
+    foreseeable future.
+  Updated kernels
+  * Remove unused ORC code.
+  * Prefer NEON kernels over ORC.
+  * Require all kernels to have a generic implementation.
+  * Remove redundant a_generic kernels.
+  * Remove ORC kernels that use sqrtf.
+  * reverse: Rename dword_shuffle to generic.
+  * volk_32f_s32f_convert_8i: code style
+  * volk_32fc_x2_divide_32fc: add documentation about numerical
+    accuracy.
+  * kernel: Refactor 32f_s32f_multiply_32f kernel.
+  * kernel: Refactor 32f_x2_subtract_32f kernel.
+  * convert 32f->32i: fix compiler warnings about loss of int
+    precision.
+  * 64u_ byteswape: remove buggy Neonv8 protokernel.
+  * 64u_ byteswape: remove buggy Neon protokernel.
+  * Remove broken volk_16i_max_star_16i_neon protokernel.
+  * Fix truncate-toward-zero distortion.
+  * Fix encodepolar documentation.
+  New kernels
+  * add volk_32f_s32f_x2_convert_8u kernel.
+  * Fix documentation for the clamp kernel.
+  * added new kernel: volk_32f_s32f_x2_clamp.
+  * new kernels for atan2.
+  * Add 32f_s32f_multiply_32f RISC-V manually optimized assembly.
+  * Add .size to volk_32f_s32f_multiply_32f_sifive_u74.
+  * Add volk_32fc_x2_dot_prod_32fc_sifive_u74.
+
+-------------------------------------------------------------------
 Sat Jan 14 17:55:44 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0

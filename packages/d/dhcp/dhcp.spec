@@ -57,6 +57,7 @@ Source21:       dhclient6.conf
 Source22:       dhcpd.conf
 Source23:       dhcpd6.conf
 Source26:       sysconfig.syslog-dhcpd
+Source27:       dhclient-script
 #
 Source41:       dhcp.README
 Source43:       DDNS-howto.txt
@@ -151,6 +152,7 @@ Requires:       dhcp = %{version}
 %package doc
 Summary:        Documentation
 Group:          Productivity/Networking/Boot/Servers
+BuildArch:      noarch
 
 %description
 This package contains common programs used by both the ISC DHCP
@@ -167,7 +169,9 @@ configure the network setup.  IP address, hostname, routing,
 nameserver, netmask, and broadcast can be dynamically assigned while
 booting the machine.
 
-It is configurable via the configuration file %{_sysconfdir}/dhclient.conf.
+It is configurable via the configuration file %{_sysconfdir}/dhclient.conf and
+you can define your own 'hooks' to be used by the /sbin/dhclient-script
+(which is called by the daemon).
 
 %description relay
 This is the ISC DHCP relay agent. It can be used as a 'gateway' for
@@ -182,6 +186,13 @@ the software. The manual pages are in the corresponding packages.
 %description devel
 This package contains all of the libraries and headers for developing
 with the Internet Software Consortium (ISC) dhcpctl API.
+
+%package keama
+Summary:        Migration assistant from dhcp to kea
+
+%description keama
+This package provides a migration assistant for kea, the successor of the ISC
+DHCP server.
 
 %prep
 if test "%version" != $(echo %isc_version | tr "-" "."); then
@@ -268,6 +279,7 @@ export CFLAGS LDFLAGS FFLAGS CXXFLAGS
 # SLE-12 compatbility still needed as of October 2021
 %define make_build %{__make} %{?_smp_mflags}
 %endif
+%make_build -j1 -C keama
 %make_build -j1 -C bind all
 cat bind/configure.log
 cat bind/build.log
@@ -285,8 +297,10 @@ cat bind/install.log
 # check syntax in our scripts
 bash -n $RPM_SOURCE_DIR/dhcpd.script
 bash -n $RPM_SOURCE_DIR/dhcrelay.script
+bash -n $RPM_SOURCE_DIR/dhclient-script
 
 %install
+%make_install -C keama
 %make_install
 #
 # directories
@@ -309,13 +323,12 @@ mv -f %{buildroot}%{_sbindir}/dhclient %{buildroot}/sbin/
 ln -sf dhcpd      %{buildroot}%{_sbindir}/dhcpd6
 ln -sf dhcrelay   %{buildroot}%{_sbindir}/dhcrelay6
 ln -sf dhclient   %{buildroot}%{sbindir}/dhclient6
-# install our adopted config examples:
+# install our adopted config examples and dhclient-script:
 install    -m0644 $RPM_SOURCE_DIR/dhcpd.conf      %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhcpd6.conf     %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhclient.conf   %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhclient6.conf  %{buildroot}%{_sysconfdir}/
-# We don't ship dhclient-script any more (boo#1216822)
-rm -f %{buildroot}%{_mandir}/man8/dhclient-script.8
+install    -m0754 $RPM_SOURCE_DIR/dhclient-script %{buildroot}%{sbindir}/
 # helper / wrapper scripts
 install -d -m0755 %{buildroot}%{_libexecdir}/dhcp
 install    -m0755 $RPM_SOURCE_DIR/dhcpd.script              \
@@ -537,11 +550,13 @@ fi
 %files client
 %{sbindir}/dhclient
 %{sbindir}/dhclient6
+%{sbindir}/dhclient-script
 %config(noreplace) %{_sysconfdir}/dhclient.conf
 %config(noreplace) %{_sysconfdir}/dhclient6.conf
 %{_mandir}/man5/dhclient.conf.5%{?ext_man}
 %{_mandir}/man5/dhclient.leases.5%{?ext_man}
 %{_mandir}/man8/dhclient.8%{?ext_man}
+%{_mandir}/man8/dhclient-script.8%{?ext_man}
 %dir %{_localstatedir}/lib/dhcp
 %dir %{_localstatedir}/lib/dhcp6
 
@@ -564,5 +579,9 @@ fi
 %{_includedir}/dhcp/*
 %{_mandir}/man3/omapi.3%{?ext_man}
 %{_mandir}/man3/dhcpctl.3%{?ext_man}
+
+%files keama
+%{_sbindir}/keama
+%{_mandir}/man8/keama.8%{?ext_man}
 
 %changelog

@@ -83,4 +83,18 @@
   * Drop python &lt;3.6 support.</comment>
     <requestid>958558</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ef01f40de9b93e4e169cba39c9cad62</srcmd5>
+    <version>3.1.0</version>
+    <time>1702071191</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * Fix bug preventing use of setPollFDNotifiers.
+  * Wrap libusb_interrupt_event_handler, available since libusb
+    1.0.21, to help applications wake an event handling thread (ex:
+    durring exit).
+
+    segfault when closing a transfer from inside its callback function.</comment>
+    <requestid>1132044</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-humanreadable
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +19,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-humanreadable
-Version:        0.1.0
+Version:        0.4.0
 Release:        0
 Summary:        A Python library to convert from human-readable values to Python values
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/humanreadable
 Source:         https://files.pythonhosted.org/packages/source/h/humanreadable/humanreadable-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typepy >= 0.6.4}
+BuildRequires:  %{python_module typepy >= 1.2.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-setuptools >= 38.3.0
-Requires:       python-typepy >= 0.6.4
+Requires:       python-setuptools >= 61
+Requires:       python-typepy >= 1.2.0
 BuildArch:      noarch
 %python_subpackages
 

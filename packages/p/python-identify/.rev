@@ -97,4 +97,15 @@
     <comment></comment>
     <requestid>1128831</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e050bbac9f8d308c946de8378f4fb525</srcmd5>
+    <version>2.5.33</version>
+    <time>1702071135</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.33:
+  * add .avsc detection
+  * Identify Vagrantfile as Ruby
+  * Identify .salt-lint as YAML</comment>
+    <requestid>1131748</requestid>
+  </revision>
 </revisionlist>

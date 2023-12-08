@@ -222,4 +222,30 @@
   * add netconf base namespace to edit-config config element if it is missing</comment>
     <requestid>983726</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>52eb737a8e15ca762d1954c356747b46</srcmd5>
+    <version>0.6.15</version>
+    <time>1702071129</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.15:
+  * reading correct user known_hosts files
+  * fix coveralls reporting
+  * Agent key selection
+  * Update session.py - Parameterize timeout for _post_connect
+  * update comment in _parse11
+  * Fix missing timeout in ssh post_connect
+  * Migrate from nose to pytest
+  * Based on v0 6 13 fix for deprecation warnings threading
+    thread
+  * Introduce support for TLS
+  * remove - version of setting and replace with _ version
+  * permissive UTF-8 parsing for NC11 delimiter
+  * introduce python3.12 for ci
+  * Add commit comment capability support for SROS devices in
+    ncclient
+
+- Remove unneeded BuildRequires on nose.
+- Convert to singlespec</comment>
+    <requestid>1131734</requestid>
+  </revision>
 </revisionlist>

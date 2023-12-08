@@ -1,7 +1,7 @@
 #
 # spec file for package python-audioread
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-audioread
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Wrapper for audio decoding via selectable backends
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/sampsyo/audioread
+URL:            https://github.com/beetbox/audioread
 Source0:        https://github.com/beetbox/audioread/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  ffmpeg
 BuildRequires:  python-rpm-macros
@@ -51,14 +53,12 @@ currently supports:
 
 %prep
 %setup -q -n audioread-%{version}
-# https://github.com/beetbox/audioread/issues/118
-sed -i 's:pytest-runner::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 %pytest

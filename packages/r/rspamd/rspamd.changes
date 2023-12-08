@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  6 15:28:07 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- fix_stack_smash.patch: upstream rework of logging doesn't allocate
+  enough memory for an array (bsc#1216830)
+
+-------------------------------------------------------------------
 Wed Nov 22 10:06:42 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix build without hyperscan:

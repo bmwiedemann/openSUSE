@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  7 21:54:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.2:
+  * This hotfix targets the OAuth1 related regression in #1677
+  * Add rich text example to docs (#1681) @ABizzinotto
+  * implement SHA fallback behaviour (#1678) @adehad
+  * Update `create_project()` docstring (#1676) @ABizzinotto
+  * Allow the user to override the default signature method
+    (#1664) @Governa
+
+-------------------------------------------------------------------
 Fri Jun  2 06:07:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.5.1:
@@ -67,20 +78,20 @@ Wed May  3 08:58:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Sat Jun  4 18:05:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:
-  * Additional scheme endpoints for projects 
-  * Add subscriptable support for PropertyHolder 
-  * Fixing type hint to match documentation for move_to_backlog 
-  * improve ResultList types 
-  * Allow verify option as path to cert in config 
+  * Additional scheme endpoints for projects
+  * Add subscriptable support for PropertyHolder
+  * Fixing type hint to match documentation for move_to_backlog
+  * improve ResultList types
+  * Allow verify option as path to cert in config
   * Bugfixes
-  * Locate the exact user by key if there are multiple users returned from query 
-  * Fixing type hint to match documentation for move_to_backlog 
-  * Avoid printing parsed json response 
+  * Locate the exact user by key if there are multiple users returned from query
+  * Fixing type hint to match documentation for move_to_backlog
+  * Avoid printing parsed json response
 
 -------------------------------------------------------------------
 Mon Jan 31 03:56:35 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing Requires on keyring. 
+- Add missing Requires on keyring.
 
 -------------------------------------------------------------------
 Fri Dec 10 19:12:15 UTC 2021 - Matej Cepl <mcepl@suse.com>

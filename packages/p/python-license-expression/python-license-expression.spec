@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-license-expression
-Version:        30.1.0
+Version:        30.2.0
 Release:        0
 Summary:        Library to parse, compare, simplify and normalize license expressions
 License:        Apache-2.0

@@ -18,7 +18,7 @@
 
 %define modname micropipenv
 Name:           python-micropipenv
-Version:        1.4.5
+Version:        1.6.0
 Release:        0
 Summary:        Convert various requirements-type files to use with pip-tools
 License:        LGPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pip
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-toml
 BuildArch:      noarch
 # SECTION test requirements

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 07 15:59:34 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1701950335.db07886:
+  * Add job group filter options for /tests/overview
+  * Document testing the MM setup by launching a VM manually
+  * Use format `KEY:TEST=VALUE` in `openqa-clone-job` to specify job
+  * Improve warning about invalid command-line arguments in clone-job script
+  * Allow passing settings only for specific test when cloning jobs
+  * Dependency cron 2023-12-06
+  * Fail early when attempting to clone a job with missing assets
+  * Pass VNC argument for developer mode dynamically when test has started
+  * Fix displaying hostname in VNC instruction if empty
+
+-------------------------------------------------------------------
 Sun Dec 03 02:14:34 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1701437900.fbad594:

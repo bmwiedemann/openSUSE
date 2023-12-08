@@ -1,7 +1,51 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:51:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.11:
+  * [pull #524] Fix angles being escaped in style blocks (issue
+    #523)
+  * [pull #527] Fix base64 images being corrupted in safe mode
+    (issue #526)
+  * [pull #529] Add `breaks` extra with ability to hard break on
+    backslashes (issue #525)
+  * [pull #532] Fix #493 persisting when `code-friendly` extra
+    enabled
+  * [pull #535] Update `_slugify` to use utf-8 encoding (issue
+    #534)
+  * [pull #536] Maintain order of appearance in footnotes
+  * [pull #538] Include HTML headers in TOC
+  * [pull #540] Add mechanism to prevent header ID counter
+    resetting (issue #530)
+  * [pull #520] Allow more relative links in safe mode (issue
+    #517)
+  * [pull #521] Always restore hashed HTML blocks (issue #185)
+  * [pull #522] Add `middle-word-em` extra
+  * [pull #500] Add `<thead>` tag to html-classes extra
+  * [pull #501] Fix link patterns extra matching against internal
+    hashes
+  * [pull #502] Replace deprecated `optparse` with `argparse`
+  * [pull #506] Fix `_uniform_outdent` failing with empty strings
+    (issue #505)
+  * [pull #509] Fix HTML elements not unhashing correctly (issue
+    508)
+  * [pull #511] Remove deprecated `imp` module (issue #510)
+  * [pull #512] Allow link patterns to be passed via extras dict
+  * [pull #513] Fix relative links not working in safe mode
+    (issue #254)
+  * [pull #499] Fix images not being procesed correctly (#498)
+  * [pull #483] Fix hashing nested HTML blocks
+  * [pull #486] Fix backslash being unable to escape raw HTML
+    tags
+  * [pull #482] Add support for telegram spoiler in extras
+  * [pull #485] mermaid support
+  * [pull #487] Fix escaping ampersands in hrefs
+  * [pull #490] Fix indented codeblocks inside fences (#489)
+  * [pull #490] Remove `code-color` extra
+
+-------------------------------------------------------------------
 Tue Nov  8 17:20:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to versino 2.4.6 
+- Update to versino 2.4.6
   [pull #477] Feature wavedrom support
   [pull #480] Fix mixing ordered and un-ordered lists combining into single list type
 
@@ -88,7 +132,7 @@ Thu May  7 14:35:38 UTC 2020 - Petr Cervinka <petr@cervinka.net>
   0001-Fix-for-issue-348-incomplete-tags-with-punctuation-a.patch
 - Add patch to fix faling unit test
   0002-Fixed-code-highlighting-unit-tests.patch
-   
+
 -------------------------------------------------------------------
 Wed Jul 24 08:02:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
@@ -143,7 +187,7 @@ Wed Jun  6 11:54:36 UTC 2018 - petr@cervinka.net
 - Add pygments to BuildRequires
 - Replace devel BuildRequires by base
 - Apply spec-cleaner
-- Add patch disable-failing-tests.patch to disable failing tests, 
+- Add patch disable-failing-tests.patch to disable failing tests,
   upstream has no fix yet https://github.com/trentm/python-markdown2/issues/281
 
 

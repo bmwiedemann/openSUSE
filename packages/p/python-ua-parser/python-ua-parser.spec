@@ -1,7 +1,7 @@
 #
 # spec file for package python-ua-parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define _pkgname ua-parser
+%{?sle15_python_module_pythons}
 Name:           python-ua-parser
-Version:        0.16.1
+Version:        0.18.0
 Release:        0
 Summary:        Python Implementation of UA Parser
 License:        Apache-2.0
 URL:            https://github.com/ua-parser/uap-python
-Source:         https://files.pythonhosted.org/packages/source/u/%{_pkgname}/%{_pkgname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/u/ua-parser/ua-parser-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -37,7 +36,7 @@ A python implementation of the UA Parser (https://github.com/ua-parser, formerly
 https://github.com/tobie/ua-parser)
 
 %prep
-%setup -q -n %{_pkgname}-%{version}
+%setup -q -n ua-parser-%{version}
 
 %build
 %python_build
@@ -51,6 +50,7 @@ https://github.com/tobie/ua-parser)
 #%%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" $python ua_parser/user_agent_parser_test.py
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/ua_parser
+%{python_sitelib}/ua_parser-%{version}*-info
 
 %changelog

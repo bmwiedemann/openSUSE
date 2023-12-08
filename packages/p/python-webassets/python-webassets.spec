@@ -1,7 +1,7 @@
 #
 # spec file for package python-webassets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  python2
 Name:           python-webassets
 Version:        2.0
@@ -34,17 +33,21 @@ Source:         https://files.pythonhosted.org/packages/source/w/webassets/webas
 Patch0:         https://github.com/miracle2k/webassets/pull/529.patch#/webassets-py39-threading.patch
 # PATCH-FIX-UPSTREAM remove-nose -- gh#miracle2k/webassets#539
 Patch1:         remove-nose.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
-# jsmin and rjsmin fail if imported: different utf8 filters
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module cssutils}
 BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module lesscpy}
+# jsmin and rjsmin fail if imported: different utf8 filters
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rcssmin}
 BuildRequires:  %{python_module slimit}
 BuildRequires:  sassc
@@ -52,10 +55,6 @@ BuildRequires:  sassc
 BuildRequires:  python2-mock
 %endif
 # /SECTION
-Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -65,15 +64,14 @@ URL rewriting in CSS files.
 
 %prep
 %autosetup -p1 -n webassets-%{version}
+
 sed -i 's/#!.*//' src/webassets/filter/rjsmin/rjsmin.py
-# fix py2 only syntax
-sed -i -e 's:e.message:e.args[0]:g' tests/test_filters.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/webassets
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -91,6 +89,7 @@ export LANG="en_US.UTF8"
 %license LICENSE
 %doc AUTHORS CHANGES README.rst
 %python_alternative %{_bindir}/webassets
-%{python_sitelib}/*
+%{python_sitelib}/webassets
+%{python_sitelib}/webassets-%{version}*-info
 
 %changelog

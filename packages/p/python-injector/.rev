@@ -139,4 +139,28 @@
     <comment></comment>
     <requestid>1006876</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b55673b6b96ada24826e768e7048ef5e</srcmd5>
+    <version>0.21.0</version>
+    <time>1702071117</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.21.0:
+  * Improved the documentation, thanks to jonathanmach and Jakub
+    Wilk
+  * Fixed a thread-safety regression
+  * Improved the type annotations, thanks to David Pärsson
+  * Fixed singleton scope behavior with parent/child injectors,
+   thanks to David Pärsson
+  * Stopped using a deprecated test function, thanks to ljnsn
+
+  - Added support for PEP 604 union types (Python 3.10+), thanks to David Pärsson
+  - Dropped Python 3.6 support
+- BuildRequires on the dataclasses module if using python 3.6
+  * Added support for overriding injectable parameters with positional
+  * Dropped Python 3.4 support
+  * Removed previously deprecated constructs: with_injector,
+  * Dependencies are no longer injected into Module.configure and
+  * Removed unofficial support for injecting into parent class</comment>
+    <requestid>1131714</requestid>
+  </revision>
 </revisionlist>

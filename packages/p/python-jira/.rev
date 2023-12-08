@@ -186,4 +186,28 @@
 - Remove Requires on python-pbr.</comment>
     <requestid>1090426</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fdc3d811afb5c6af9cac0a2237f30398</srcmd5>
+    <version>3.5.2</version>
+    <time>1702071111</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.5.2:
+  * This hotfix targets the OAuth1 related regression in #1677
+  * Add rich text example to docs (#1681) @ABizzinotto
+  * implement SHA fallback behaviour (#1678) @adehad
+  * Update `create_project()` docstring (#1676) @ABizzinotto
+  * Allow the user to override the default signature method
+    (#1664) @Governa
+
+  * Additional scheme endpoints for projects
+  * Add subscriptable support for PropertyHolder
+  * Fixing type hint to match documentation for move_to_backlog
+  * improve ResultList types
+  * Allow verify option as path to cert in config
+  * Locate the exact user by key if there are multiple users returned from query
+  * Fixing type hint to match documentation for move_to_backlog
+  * Avoid printing parsed json response
+- Add missing Requires on keyring.</comment>
+    <requestid>1131706</requestid>
+  </revision>
 </revisionlist>

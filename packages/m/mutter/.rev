@@ -1915,4 +1915,12 @@ New stable rel</comment>
     <comment>- Rebase mutter-SLE-bsc984738-grab-display.patch. (forwarded request 1130598 from yfjiang)</comment>
     <requestid>1130745</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>d704da1e0fa12b6cafa35517a3f31d7a</srcmd5>
+    <version>45.2</version>
+    <time>1702071093</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131688</requestid>
+  </revision>
 </revisionlist>

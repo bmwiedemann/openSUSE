@@ -53,7 +53,7 @@ Mon Nov 13 08:32:53 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 - Add ncurses patch 20231104
   + modify reset command to avoid altering clocal if the terminal uses a
     modem (prompted by discussion with Werner Fink, Michal Suchanek,
-    OpenSUSE #1201384, Debian #60377).
+    OpenSUSE bsc#1201384, Debian #60377).
   + build-fixes for --with-caps variations.
   + correct a couple of section-references in INSTALL
 - Add ncurses patch 20231028

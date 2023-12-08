@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  7 17:44:37 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid non-deterministic modification of files by tests
+- Fix rpmlint warnings: non-executable code should not be marked
+  as executable.
+
+-------------------------------------------------------------------
 Tue Nov  7 10:47:13 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 8.0.0:

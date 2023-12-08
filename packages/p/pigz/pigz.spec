@@ -33,8 +33,12 @@ A parallel implementation of gzip for modern multi-processor, multi-core machine
 
 %prep
 %autosetup -p1
+# Workaround until fixed upstream - https://github.com/madler/pigz/issues/114
+sed -i 's#CFLAGS=#CFLAGS?=#' Makefile
+sed -i 's#LDFLAGS=#LDFLAGS?=#' Makefile
 
 %build
+%set_build_flags
 %make_build
 
 %check

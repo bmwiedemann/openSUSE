@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec  8 13:41:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Drop cythonization by default, to avoid installation issues
+    for users with Cython installed but no C++ compiler.
+    Cythonization needs to be requested explictly now, using `pip
+    install --upgrade reedsolo --install-option="--cythonize"
+    --verbose`.
+  * Clarify license to ensure Public Domain-like rights are
+    granted to users, via the Unlicense or MIT-0 License at the
+    user's preference (big thanks to @musicinmybrain Ben
+    Beasley).
+
+-------------------------------------------------------------------
 Tue Dec 13 16:54:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.6.0 
+- Update to version 1.6.0
   Annual Christmas maintenance!
   * Changelog:
   Fix major issue preventing pip install when both Cython and a C compiler was installed (thanks to @m-rossi for the fix!)

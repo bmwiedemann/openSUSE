@@ -156,4 +156,14 @@
 </comment>
     <requestid>1123936</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>df8d0bcbfa9b8bf6aaf01c5efc77e03e</srcmd5>
+    <version>8.0.0</version>
+    <time>1702071149</time>
+    <user>anag+factory</user>
+    <comment>- Avoid non-deterministic modification of files by tests
+- Fix rpmlint warnings: non-executable code should not be marked
+  as executable.</comment>
+    <requestid>1132004</requestid>
+  </revision>
 </revisionlist>

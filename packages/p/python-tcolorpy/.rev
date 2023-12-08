@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>1009834</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ec56a60d3fb99afb7bd0fdb2c3e0464</srcmd5>
+    <version>0.1.4</version>
+    <time>1702071207</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.4:
+  * Improve type annotations
+  * Modify to use `pypa/build` for package build
+  * Remove deprecated `setup.py` calls
+- update to 0.1.3:
+  * Add support for Python 3.11
+  * Drop support for Python 3.6
+  * Update a help message of CLI
+
+- Update to version 0.1.2</comment>
+    <requestid>1132085</requestid>
+  </revision>
 </revisionlist>

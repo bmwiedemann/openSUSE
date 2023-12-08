@@ -64,4 +64,20 @@
     <comment></comment>
     <requestid>1076891</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>845a0c640f7953148887ab4b9a6cc9f8</srcmd5>
+    <version>2.5.0</version>
+    <time>1702071142</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.0:
+  * Add release note for --since, --before opts
+  * patch, series: Add support for '--since' and '--before'
+  * utils: Correct type
+  * Fix black issues
+  * CI: Switch to pypa/gh-action-pypi-publish@release/v1
+
+- Update to version 2.4.0
+    + bundle remove</comment>
+    <requestid>1131997</requestid>
+  </revision>
 </revisionlist>

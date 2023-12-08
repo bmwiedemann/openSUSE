@@ -1,7 +1,7 @@
-From 6760cce5b59eeb2ba9b96f43626221df0128a285 Mon Sep 17 00:00:00 2001
+From ecef7c131618bbd9c559924ecae55764089db0dd Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
-Date: Fri, 30 Jun 2023 16:16:24 +0200
-Subject: [PATCH 4/6] kmod: Add pkgconfig file with kmod compile time
+Date: Tue, 18 Jul 2023 14:01:55 +0200
+Subject: [PATCH 4/9] kmod: Add pkgconfig file with kmod compile time
  configuration
 
 Show distconfdir (where system configuration files are searched/to be
@@ -9,10 +9,8 @@ installed), sysconfdir (where user configuration files are searched),
 module compressions, and module signatures supported.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
----
-v2: mention module signature in commit message
-v3: add sysconfdir
-v5: add distconfdir, switch to pkgconfig
+Link: https://lore.kernel.org/r/468b3f572d3b84f25bb53ec8fcb15ed4871914d4.1689681454.git.msuchanek@suse.de
+Signed-off-by: Lucas De Marchi <lucas.de.marchi@gmail.com>
 ---
  Makefile.am      |  2 +-
  configure.ac     | 11 +++++++++++

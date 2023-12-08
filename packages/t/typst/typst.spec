@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           typst
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -56,16 +56,17 @@ Fish command-line completion support for %{name}.
 %autosetup -p1 -a1 -n typst-%{version}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
+# This dependency is wrongly specified and tries to download the crate in our offline-environment.
+sed -i s/"iai = { workspace = true }"/"#iai = { workspace = true }"/ tests/Cargo.toml
 
 %build
 export TYPST_VERSION=%{version}
 export GEN_ARTIFACTS=%{_builddir}/%{name}-%{version}/artifacts
 mkdir -p $GEN_ARTIFACTS
-cd crates/typst-cli
-RUSTFLAGS=%{rustflags} %{cargo_build}
+RUSTFLAGS=%{rustflags} %{cargo_build} --workspace
 
 %check
-%{cargo_test}
+%{cargo_test} --workspace
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}

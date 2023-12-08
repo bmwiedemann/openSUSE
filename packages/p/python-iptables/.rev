@@ -54,4 +54,13 @@
     <comment></comment>
     <requestid>619375</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6225a327b881be02b5e4b58ab15050ed</srcmd5>
+    <version>1.0.1</version>
+    <time>1702071140</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * https://github.com/ldx/python-iptables/compare/v0.13.0...v1.0.1</comment>
+    <requestid>1131979</requestid>
+  </revision>
 </revisionlist>

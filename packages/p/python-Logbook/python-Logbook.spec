@@ -17,7 +17,7 @@
 
 
 Name:           python-Logbook
-Version:        1.6.0
+Version:        1.7.0.post0
 Release:        0
 Summary:        A logging replacement for Python
 License:        BSD-3-Clause

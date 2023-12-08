@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:20:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * switch to hatch
+  * drop python 2 support
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -13,7 +20,7 @@ Fri Oct 28 17:32:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version v1.1.0 (2020-10-15)
   * New function: count_chinese(). Thanks to ramwin.
-  * Drop Python 2 
+  * Drop Python 2
 
 -------------------------------------------------------------------
 Mon May 31 06:51:49 UTC 2021 - pgajdos@suse.com

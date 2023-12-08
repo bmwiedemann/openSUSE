@@ -1,7 +1,7 @@
 #
 # spec file for package python-visvis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-visvis
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        An object oriented approach to visualization of 1D to 4D data
 License:        BSD-3-Clause

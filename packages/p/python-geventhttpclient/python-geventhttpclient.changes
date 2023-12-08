@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:50:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.11:
+  * Support Python 3.12
+  * Disable unit tests for no ssl module + fixes for build
+
+-------------------------------------------------------------------
 Fri Aug 25 12:18:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Skip both tests in test_no_module_ssl.py, failing with new gevent

@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        7.0.7
+Version:        7.0.9
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -205,6 +205,8 @@ find . -iname \*adoc -exec sed -i -e 's/\[code/\[source/' '{}' \;
 # Fix incorrect column with specifiers
 # https://gitlab.com/kicad/services/kicad-doc/-/issues/852
 find . -iname \*adoc -exec sed -i -e '/\[.*cols=/ { :m s/\(cols=.*\)\([0-9]\)%/\1\2/g ; t m }' '{}' \;
+# asciidoc interprets the '[--...]' on a new line as a style name
+find . -iname cli.adoc -exec sed -i -e 's/^\[--/ \[--/' '{}' \;
 
 # These files are actually GIFs, https://gitlab.com/kicad/services/kicad-doc/-/issues/822
 mv src/gerbview/images/zh/gerbview_x2_attribute.{png,gif}

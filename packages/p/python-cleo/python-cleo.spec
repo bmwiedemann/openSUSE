@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cleo
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Python module for creating testable command-line interfaces
 License:        MIT

@@ -80,4 +80,41 @@
 - Switch to pyproject macros.</comment>
     <requestid>1090102</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07dcfa98fc5bf662c15ea689f8287e1e</srcmd5>
+    <version>3.26.1</version>
+    <time>1702071218</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.26.1:
+  * #1441 #1442 Built-in InstallationStores fail to resolve a
+    valid bot token when both bot and user-only installations co-
+    exist in database tables - Thanks @kulmatitskiy @seratch
+  * #1440 Fix a bug on the aiohttp-based Socket Mode client's
+    exception handling - Thanks @ifmcnichols
+  * #1438 Add new `force` argument to `conversations.invite` API
+    method - Thanks @filmaj
+  * #1435 Enable testing for Python 3.12 and PyPy 3.10 on CI -
+  * #1432 Add functions.completeSuccess/Error APIs for remote
+    functions - Thanks @seratch @WilliamBergamin
+  * #1433 Add RichTextBlock to Block.parse() targets - Thanks
+    @seratch
+  * #1430 Fix #1427 Add apps.manifest.* &amp; tooling.tokens.rotate
+    API support - Thanks @seratch
+  * #1431 Fix #1428 Add rich_text classes to slack_sdk.models
+    module - Thanks @seratch @tj-smith47
+  * #1425 Fix #1424 Add file input block element support - Thanks
+    @seratch
+  * #1423 Fix #1421 Update SlackApiError exception handling for
+    web client - Thanks @vinceta
+  * #1418 Add new arguments to admin.users.list API method -
+    Thanks @seratch
+  * #1409 Make next_cursor extraction logic even more robust (ref
+    #1407) - Thanks @seratch
+  * #1406 Add `RichTextInputElement` to `slack_sdk.models` -
+  * #1408 Update `files.upload` v2 method in correspondence with
+    server-side changes - Thanks @seratch
+  * Since this version, developers no longer need `files:read`
+    permission for `files_upload_v2` method. To learn more about</comment>
+    <requestid>1132105</requestid>
+  </revision>
 </revisionlist>

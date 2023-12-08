@@ -102,4 +102,14 @@
     <comment></comment>
     <requestid>1093679</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>06a578cf7e1693fcb8f0cd68bd66dc54</srcmd5>
+    <version>3.17.3</version>
+    <time>1702071121</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.17.3:
+  * drop python 2 support
+  * datetime fixes</comment>
+    <requestid>1131723</requestid>
+  </revision>
 </revisionlist>

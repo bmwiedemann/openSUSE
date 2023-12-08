@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec 08 13:19:03 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1701558776.08af325:
+  * OpenBSD: Fix _start for arm64.
+
+-------------------------------------------------------------------
+Sat Dec 02 10:16:07 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1701262234.ec3193e:
+  * types: recover from circular dependency error
+  * check,gen: use name instead of ident to create global_decl declarations
+  * Revert "types: recover from circular dependency error"
+  * types: recover from circular dependency error
+  * type_store: pass around check context
+  * type_store: detect duplicate fields in embedded structs/unions
+  * check: improve error message
+  * ast: make ast_enum_field name non-const
+  * all: use const for more function params
+  * scope: put type and value in a union
+  * rt, tests: drop EXIT_FAILURE
+  * check: resolve type when taking size/alignment
+  * check: replace expression_measure with expression_len
+  * check: allow taking alignment of zero-size type
+  * parse: add error function
+  * lex: use error func for unexpected codepoint error
+  * check: remove unnecessary memset
+  * parse: disallow casting to null
+  * Move func_decl_flags from check.h to ast.h
+  * parse: add missing va_ends
+  * main: use xfprintf with harec -v
+  * gen: use u32 instead of uint for tag
+  * check: allow freeing null
+  * qtype: fix memory leak
+  * check: disallow append/inserting with undefined-size member
+  * check: disallow unbounded array value in append/insert
+  * parse: disallow ellipsis in append/insert length form
+  * tests: make insert rejection tests consistent with append
+  * tests: fix append/insert rejection tests
+  * check: fix append/insert value dereferencing
+  * parse, check: update imports
+  * all: fix format specifiers
+  * check: be more picky about default values of arrays
+  * implement checkless for loops
+
+-------------------------------------------------------------------
 Sat Nov 11 07:34:57 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Improve specfile. Add some comments

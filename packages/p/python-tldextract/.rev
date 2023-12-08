@@ -339,4 +339,17 @@ Features:
     <comment></comment>
     <requestid>1125129</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9b656eab56a6f3ea3c04f4e87274ef05</srcmd5>
+    <version>5.1.1</version>
+    <time>1702071219</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.1:
+  * Fix path join on Windows (#314)
+  * Support Python 3.12
+
+- Correct license in spec file (MIT -&gt; BSD)
+- Fix homepage URL in specfile</comment>
+    <requestid>1132106</requestid>
+  </revision>
 </revisionlist>

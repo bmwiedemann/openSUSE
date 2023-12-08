@@ -1,0 +1,26 @@
+Index: krb5-appl-1.0.2/bsd/klogind.M
+===================================================================
+--- krb5-appl-1.0.2.orig/bsd/klogind.M
++++ krb5-appl-1.0.2/bsd/klogind.M
+@@ -27,7 +27,7 @@ server is invoked by \fIinetd(8)\fP when
+ the port indicated in /etc/inetd.conf.  A typical /etc/inetd.conf
+ configuration line for \fIklogind\fP might be:
+ 
+-klogin stream tcp nowait root /usr/local/sbin/klogind klogind \-e5c
++klogin stream tcp nowait root /usr/lib/mit/sbin/klogind klogind \-e5c
+ 
+ When a service request is received, the following protocol is initiated:
+ 
+Index: krb5-appl-1.0.2/bsd/kshd.M
+===================================================================
+--- krb5-appl-1.0.2.orig/bsd/kshd.M
++++ krb5-appl-1.0.2/bsd/kshd.M
+@@ -30,7 +30,7 @@ server is invoked by \fIinetd(8c)\fP whe
+ on the port indicated in /etc/inetd.conf.  A typical /etc/inetd.conf
+ configuration line for \fIkrshd\fP might be:
+ 
+-kshell	stream	tcp	nowait	root	/usr/local/sbin/kshd	kshd -5c
++kshell	stream	tcp	nowait	root	/usr/lib/mit/sbin/kshd	kshd -5c
+ 
+ When a service request is received, the following protocol is initiated:
+ 

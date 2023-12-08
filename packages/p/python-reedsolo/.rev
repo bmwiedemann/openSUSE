@@ -15,4 +15,23 @@
     <comment></comment>
     <requestid>1042868</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c0dc9265fb287a7ee3e1c995279a852a</srcmd5>
+    <version>1.7.0</version>
+    <time>1702071224</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * Drop cythonization by default, to avoid installation issues
+    for users with Cython installed but no C++ compiler.
+    Cythonization needs to be requested explictly now, using `pip
+    install --upgrade reedsolo --install-option=&quot;--cythonize&quot;
+    --verbose`.
+  * Clarify license to ensure Public Domain-like rights are
+    granted to users, via the Unlicense or MIT-0 License at the
+    user's preference (big thanks to @musicinmybrain Ben
+    Beasley).
+
+- Update to version 1.6.0</comment>
+    <requestid>1132102</requestid>
+  </revision>
 </revisionlist>

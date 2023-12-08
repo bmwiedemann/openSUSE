@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-json-rpc
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        JSON-RPC transport implementation
 License:        MIT

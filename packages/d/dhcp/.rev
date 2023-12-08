@@ -1251,4 +1251,16 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>1127733</requestid>
   </revision>
+  <revision rev="140" vrev="16">
+    <srcmd5>79107a7370c40efededf9327179c9a8e</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1702071083</time>
+    <user>anag+factory</user>
+    <comment>- Revert dhclient-script removal and instead change usleep to sleep
+  (boo#1216822)
+- Add new Kea migration assistant subpackage
+- Switch doc subpackage to noarch
+</comment>
+    <requestid>1131616</requestid>
+  </revision>
 </revisionlist>

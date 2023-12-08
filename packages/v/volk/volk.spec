@@ -17,9 +17,9 @@
 
 
 %global sonum 3
-%global soname 3_0
+%global soname 3_1
 Name:           volk
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        LGPL-3.0-or-later
@@ -81,14 +81,6 @@ VOLK kernels.
 %cmake_install
 chmod -x %{buildroot}%{python3_sitearch}/volk_modtool/*py
 sed -i -e '1 { \@.*/bin/env.*python.*@ d }' %{buildroot}%{python3_sitearch}/volk_modtool/*py
-
-# remove stuff from bundled cpu_features
-%ifarch aarch64 armv7hl i586 ppc64le x86_64
-rm %{buildroot}%{_bindir}/list_cpu_features
-rm -R %{buildroot}%{_includedir}/cpu_features
-rm -R %{buildroot}%{_libdir}/cmake/CpuFeatures
-rm %{buildroot}%{_libdir}/libcpu_features.a
-%endif
 
 %fdupes %{buildroot}
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  7 21:55:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.2:
+  * Add support for python 3.12
+  * Introduce compatibility with native namespace packages
+
+-------------------------------------------------------------------
 Wed Aug 30 10:57:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.19.1
@@ -78,7 +85,7 @@ Wed Sep 28 21:36:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   add audience parameter (06a4096)
   Bug Fixes
   deps: require google-api-core>=1.32.0,>=2.8.0 (#315) (82ab556)
-  require python 3.7+ (#313) (28d244f) 
+  require python 3.7+ (#313) (28d244f)
 
 -------------------------------------------------------------------
 Thu Jun  9 05:22:57 UTC 2022 - pgajdos@suse.com
@@ -102,7 +109,7 @@ Mon Apr 20 11:49:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Wed Apr  8 11:37:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.3.0
-  * add ProtectionLevel.External enum; standardize use of 'optional' 
+  * add ProtectionLevel.External enum; standardize use of 'optional'
     and 'required' in docstrings (via synth)
 
 -------------------------------------------------------------------

@@ -57,4 +57,22 @@
     <comment></comment>
     <requestid>1092249</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c35c1a8b92d217323b2eb56505c9d989</srcmd5>
+    <version>1.6</version>
+    <time>1702071127</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6:
+  * Implement ``lazy.__set_name__()`` which helps in cases like
+  * ``foo=lazy(_foo)``.
+  * Pin sphinx and sphinx-rtd-theme versions in docs extra.
+  * Fix stray characters in keywords.
+
+  * Allow type checkers to infer the type of a lazy attribute
+  * Replace deprecated python setup.py test in tox.ini
+  * Remove deprecated test_suite from setup.py
+  * Move metadata to setup.cfg and add a pyproject.toml file
+  * Include tests in sdist but not in wheel</comment>
+    <requestid>1131731</requestid>
+  </revision>
 </revisionlist>

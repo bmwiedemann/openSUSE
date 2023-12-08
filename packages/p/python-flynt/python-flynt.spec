@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flynt
-Version:        0.78
+Version:        1.0.1
 Release:        0
 Summary:        CLI tool to convert a python project's %-formatted strings to f-strings
 License:        MIT

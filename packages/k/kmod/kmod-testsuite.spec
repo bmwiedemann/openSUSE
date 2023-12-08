@@ -43,8 +43,11 @@ Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         configure-Detect-openssl-sm3-support.patch
 Patch8:         man-depmod.d-Fix-incorrect-usr-lib-search-path.patch
 Patch9:         usr-lib-modprobe.patch
-Patch14:        kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
-Patch15:        usr-lib-modules.patch
+Patch10:        kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
+Patch11:        tools-depmod-fix-Walloc-size.patch
+Patch12:        libkmod-remove-pkcs7-obj_to_hash_algo.patch
+Patch13:        usr-lib-modules.patch
+Patch14:        configure-Check-that-provided-paths-are-absolute.patch
 Patch16:        no-stylesheet-download.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

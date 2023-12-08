@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:36:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.15:
+  * reading correct user known_hosts files
+  * fix coveralls reporting
+  * Agent key selection
+  * Update session.py - Parameterize timeout for _post_connect
+  * update comment in _parse11
+  * Fix missing timeout in ssh post_connect
+  * Migrate from nose to pytest
+  * Based on v0 6 13 fix for deprecation warnings threading
+    thread
+  * Introduce support for TLS
+  * remove - version of setting and replace with _ version
+  * permissive UTF-8 parsing for NC11 delimiter
+  * introduce python3.12 for ci
+  * Add commit comment capability support for SROS devices in
+    ncclient
+
+-------------------------------------------------------------------
 Sun Jun 19 17:40:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.13:
@@ -31,7 +51,7 @@ Tue Jan 11 20:42:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Oct  7 01:52:08 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on nose. 
+- Remove unneeded BuildRequires on nose.
 
 -------------------------------------------------------------------
 Sat Jun  5 12:58:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
@@ -174,7 +194,7 @@ Mon Aug  7 08:36:21 UTC 2017 - mardnh@gmx.de
   * Add notifications support
   * Add support for ecdsa keys
   * Various bug fixes
-- Convert to singlespec  
+- Convert to singlespec
 - Rebase patch: pr-109.patch
 
 -------------------------------------------------------------------

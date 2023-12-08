@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@
 # Scrapy on TW has disabled python36 due to uvloop
 %define skip_python36 1
 Name:           python-itemadapter%{psuffix}
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Wrapper for data container objects
 License:        BSD-3-Clause

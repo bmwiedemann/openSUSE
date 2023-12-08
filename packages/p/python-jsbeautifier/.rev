@@ -84,4 +84,31 @@
     <comment></comment>
     <requestid>1032512</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5fb926ebb315f3308456d9ae0e705a69</srcmd5>
+    <version>1.14.11</version>
+    <time>1702071113</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.11:
+  * Editor not working https://beautifier.io/ (#2201)
+  * Set nodejs minimum to v14 (#2169)
+  * Invalid prettification of object with unicode escape character
+    as object key (#2159)
+  * invalid json being generated with wrap_line_length (#1932)
+  * Require nodejs v12 or greater (#2151)
+  * CSS insideNonNestedAtRule generic variable (#2147)
+  * Update dependencies (#2145)
+  * Fix CI build (#2144)
+  * Fixed #2133 Theme Toggle on without_codemirror Mode (#2138)
+  * use correct variable name (#2135)
+  * docs: Fix a few typos (#2127)
+  * Add support for new record types (cont.) (#2118)
+  * fix - semicolon followed by block statement doesnt have new line (#2117)
+  * Fix formatting related to the element (#2114)
+  * issue prettifying (function(){code();{code}})() (#1852)
+
+- Update to v1.14.7
+  * Add brace_style option for CSS (#1259)</comment>
+    <requestid>1131709</requestid>
+  </revision>
 </revisionlist>

@@ -51,6 +51,7 @@ BuildRequires:  metis-devel
 BuildRequires:  occt-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(eigen3)
 %if %{with pdf_doc}
 BuildRequires:  texinfo-texlive
 %endif
@@ -150,6 +151,7 @@ This package contains the public gmsh API for Python.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}-source
+rm -fr contrib/eigen
 
 %build
 %cmake \
@@ -197,6 +199,9 @@ rm -Rf %{buildroot}%{_docdir}/%{name}/tutorials/julia
 %endif
 
 %fdupes %{buildroot}/%{_docdir}/%{name}/{examples,tutorials}
+
+%check
+%ctest
 
 %post -n libgmsh%{libver} -p /sbin/ldconfig
 

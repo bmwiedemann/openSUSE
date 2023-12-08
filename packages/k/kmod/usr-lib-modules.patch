@@ -1,7 +1,7 @@
-From 4ad85461d27d240efcb4922eb5810a65356a8d6a Mon Sep 17 00:00:00 2001
+From 9d1fb317c8dbf2b834b3d0efb34208eb8fb790fb Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
-Date: Fri, 26 May 2023 10:38:05 +0200
-Subject: [PATCH 5/6] libkmod, depmod, modprobe: Make directory for kernel
+Date: Fri, 10 Nov 2023 13:13:54 +0100
+Subject: [PATCH 7/9] libkmod, depmod, modprobe: Make directory for kernel
  modules configurable
 
 Now that modprobe.d is searched under ${prefix}/lib, allow a complete
@@ -14,9 +14,8 @@ With this distributions that do not want to ship files in /lib can also
 move kernel modules to /usr while others can keep them in /lib.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
----
-v4: Make the whole path configurable
-v5: More verbose commit message
+Link: https://lore.kernel.org/r/a3765f4e8ae3ce29c0847a0132d4a8d51ad040a9.1699618135.git.msuchanek@suse.de
+Signed-off-by: Lucas De Marchi <lucas.de.marchi@gmail.com>
 ---
  Makefile.am                          |   3 +-
  configure.ac                         |   7 ++
@@ -60,7 +59,7 @@ index 2a54c25bd631..4062d81227df 100644
  build-module-playground:
  	$(AM_V_GEN)if test "$(top_srcdir)" != "$(top_builddir)"; then \
 diff --git a/configure.ac b/configure.ac
-index 7bf8d78ca747..d282fef9a08c 100644
+index a6b8fa0308b6..d6da5ee9ae9a 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -91,6 +91,12 @@ AC_ARG_WITH([rootlibdir],
@@ -76,7 +75,7 @@ index 7bf8d78ca747..d282fef9a08c 100644
  AC_ARG_WITH([zstd],
  	AS_HELP_STRING([--with-zstd], [handle Zstandard-compressed modules @<:@default=disabled@:>@]),
  	[], [with_zstd=no])
-@@ -326,6 +332,7 @@ AC_MSG_RESULT([
+@@ -319,6 +325,7 @@ AC_MSG_RESULT([
  	$PACKAGE $VERSION
  	=======
  
@@ -85,7 +84,7 @@ index 7bf8d78ca747..d282fef9a08c 100644
  	sysconfdir:		${sysconfdir}
  	distconfdir:		${distconfdir}
 diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
-index 57fac1cb9f7b..4489cbd04bf7 100644
+index 57fac1cb9f7b..213b42482fb6 100644
 --- a/libkmod/libkmod.c
 +++ b/libkmod/libkmod.c
 @@ -210,7 +210,7 @@ static int log_priority(const char *priority)
@@ -102,7 +101,7 @@ index 57fac1cb9f7b..4489cbd04bf7 100644
   * kmod_new:
   * @dirname: what to consider as linux module's directory, if NULL
 - *           defaults to /lib/modules/`uname -r`. If it's relative,
-+ *           defaults to ${module_prefix}/lib/modules/`uname -r`. If it's relative,
++ *           defaults to $MODULE_DIRECTORY/`uname -r`. If it's relative,
   *           it's treated as relative to the current working directory.
   *           Otherwise, give an absolute dirname.
   * @config_paths: ordered array of paths (directories or files) where
@@ -492,7 +491,7 @@ index 56e73609f204..c77c4bbc04eb 100644
  		return EXIT_FAILURE;
  	}
 diff --git a/tools/depmod.c b/tools/depmod.c
-index 630fef9c8fb0..7f7c4b74d216 100644
+index ab8513b21526..43fc354afb09 100644
 --- a/tools/depmod.c
 +++ b/tools/depmod.c
 @@ -911,7 +911,7 @@ struct vertex;

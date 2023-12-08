@@ -65,7 +65,7 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 23
-%define version_minor 08
+%define version_minor 11
 %define version_lib 33
 %define version_lib_testutils 3
 %define version_lib_tfliteparser 24
@@ -580,6 +580,14 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_includedir}/armnn/backends/*.hpp
 %dir %{_includedir}/armnn/profiling
 %{_includedir}/armnn/profiling/*.hpp
+%dir %{_includedir}/armnn/profiling/client/
+%dir %{_includedir}/armnn/profiling/client/include/
+%{_includedir}/armnn/profiling/client/include/*.hpp
+%dir %{_includedir}/armnn/profiling/client/include/backends/
+%{_includedir}/armnn/profiling/client/include/backends/*.hpp
+%dir %{_includedir}/armnn/profiling/common/
+%dir %{_includedir}/armnn/profiling/common/include/
+%{_includedir}/armnn/profiling/common/include/*.hpp
 %dir %{_includedir}/armnn/utility
 %{_includedir}/armnn/utility/*.hpp
 %dir %{_includedir}/armnnUtils

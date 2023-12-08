@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:28:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.0:
+  * ADD: support for Django>=4.0 url template
+
+-------------------------------------------------------------------
 Sat Jan  7 12:10:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.14.0 
+- update to 1.14.0
   * ADD: context arguments to dispatcher
   * FIX: positional arguments support for Django backend
 

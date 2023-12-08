@@ -7,6 +7,28 @@ Fri Mar 17 22:11:35 UTC 2023 - Michael Gorse <mgorse@suse.com>
     boo#1209432 CVE-2023-26767 CVE-2023-26768 CVE-2023-26769).
   + Braille table improvements.
   + Removed: vi.ctb (replaced by vi-cb8.utb).
+- Drop upstream merged:
+  + liblouis-CVE-2023-26767.patch
+  + liblouis-CVE-2023-26768.patch
+  + liblouis-CVE-2023-26769.patch
+
+-------------------------------------------------------------------
+Sun Mar 17 04:33:07 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Add liblouis-CVE-2023-26768.patch: Check filename before copying
+  to initialLogFileName(CVE-2023-26768 bsc#1209431 bsc#1209855).
+
+-------------------------------------------------------------------
+Thu Mar 16 06:26:29 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Add liblouis-CVE-2023-26769.patch: Check the path length before
+  copying into tableFile(CVE-2023-26769 bsc#1209432 bsc#1209855).
+
+-------------------------------------------------------------------
+Thu Mar 15 02:13:03 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Add liblouis-CVE-2023-26767.patch: Check the length of path before
+  copying into dataPath(CVE-2023-26767 bsc#1209429 bsc#1209855).
 
 -------------------------------------------------------------------
 Mon Jan 16 07:59:16 UTC 2023 - Dirk Müller <dmueller@suse.com>

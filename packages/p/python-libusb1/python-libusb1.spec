@@ -1,7 +1,7 @@
 #
 # spec file for package python-libusb1
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libusb1
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Python wrapper for libusb-1.0
 # Relicensed from GPL to LGPLv2.1+ in May 2015
@@ -28,9 +28,9 @@ URL:            https://github.com/vpelletier/%{name}
 Source:         https://files.pythonhosted.org/packages/source/l/libusb1/libusb1-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  libusb-1_0-0
+BuildRequires:  libusb-1_0-0 >= 1.0.21
 BuildRequires:  python-rpm-macros
-Requires:       libusb-1_0-0
+Requires:       libusb-1_0-0 >= 1.0.21
 BuildArch:      noarch
 %python_subpackages
 

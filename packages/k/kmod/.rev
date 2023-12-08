@@ -730,4 +730,12 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
   * refresh usr-lib-modules.patch (forwarded request 1118343 from michals)</comment>
     <requestid>1118391</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>5941451b9306792440b8ad864aa30c23</srcmd5>
+    <version>31</version>
+    <time>1702071078</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131540</requestid>
+  </revision>
 </revisionlist>

@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1063534</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5409d9d4cae8a649b7c7200ae37ec858</srcmd5>
+    <version>0.3.2</version>
+    <time>1702071127</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.2:
+  * Add a trailing newline to package.json when appropriate #17
+  * Assume NPM person can be string #20 (@vikramaditya91)
+
+- Update to version 0.3.1</comment>
+    <requestid>1131732</requestid>
+  </revision>
 </revisionlist>

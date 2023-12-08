@@ -1,5 +1,0 @@
-<package name="python-delegator" project="openSUSE:Factory">
-  <title></title>
-  <description>Python implementation of Ruby's delegate.rb</description>
-  <devel project="devel:languages:python" package="python-delegator"/>
-</package>

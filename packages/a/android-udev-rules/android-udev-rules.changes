@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  8 07:45:37 UTC 2023 - munix9@googlemail.com
+
+- Update to version 20231207
+  Bug Fixes
+  * OnePlus 6T: debug mode not detected (#298) (#300)
+
+  Features
+  * Add Hisense U8G Smart TV (#301)
+  * Add Google Pixel Watch 2 (#302)
+
+  Miscellaneous Tasks
+  * Use more specific adb GOTOs for XiaoMi (#299)
+
+-------------------------------------------------------------------
 Fri Nov 24 13:34:21 UTC 2023 - munix9@googlemail.com
 
 - Update to version 20231124

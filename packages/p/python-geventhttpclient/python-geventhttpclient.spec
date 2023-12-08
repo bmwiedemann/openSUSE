@@ -17,7 +17,7 @@
 
 
 Name:           python-geventhttpclient
-Version:        2.0.9
+Version:        2.0.11
 Release:        0
 Summary:        HTTP client library for gevent
 License:        MIT

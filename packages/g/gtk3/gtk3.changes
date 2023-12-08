@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 07 15:35:33 UTC 2023 - dimstar@opensuse.org
+
+- Update to version 3.24.38+111:
+  + [gtk3] Support tiled windows from xdg-shell.
+  + Fix a minor issue in the file portal test.
+  + wayland: Be more careful when loading cursors.
+  + gdk/wayland: Use g_warning_once for cursor scale mismatches.
+  + gdk/wayland: Don't fall back directly to 1 for mismatched
+    cursor sizes.
+  + Updated translations.
+- Drop upstream applied patch
+  gtk3-gtkmountoperation-avoid-SEGV-after-bad-password-inpu.patch
+
+-------------------------------------------------------------------
 Tue Nov 28 11:50:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.
@@ -20,6 +34,12 @@ Mon Aug 14 03:34:22 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Do not use %autopatch to build on SLE where rpm version is not
   ready for the macro.
+
+-------------------------------------------------------------------
+Fri Jun  2 13:40:09 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Fix nautilus crash after entering wrong SMB password (bsc#1211952)
+  * add gtk3-gtkmountoperation-avoid-SEGV-after-bad-password-inpu.patch
 
 -------------------------------------------------------------------
 Mon May 22 16:08:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -293,4 +293,14 @@
  * Do not hide empty preedit text before committing text</comment>
     <requestid>1125102</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e6b192358551d8adf9602ff1eef93d6a</srcmd5>
+    <version>1.4.27</version>
+    <time>1702071102</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.27
+ * Prefer commit to &quot;return FALSE;&quot; for space, and other keys where the msymbol name is exactly one character,
+   add a sleep for Return. This is to avoid ordering problems in mutter</comment>
+    <requestid>1131689</requestid>
+  </revision>
 </revisionlist>

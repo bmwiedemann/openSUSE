@@ -64,4 +64,18 @@
     <comment></comment>
     <requestid>1092393</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>413dabde38ec2c89da59a9372a11761f</srcmd5>
+    <version>3.0.0</version>
+    <time>1702071214</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.0:
+  * Add support for Python 3.9, 3.10 and 3.11.
+  * Drop support for Python 2.7, 3.4, 3.5, and 3.6.
+  * Add Github Actions workflow to exercise unit tests /
+    coverage.
+
+- Update to v2.4.1</comment>
+    <requestid>1132101</requestid>
+  </revision>
 </revisionlist>

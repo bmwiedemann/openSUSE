@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  8 13:40:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Add support for Python 3.9, 3.10 and 3.11.
+  * Drop support for Python 2.7, 3.4, 3.5, and 3.6.
+  * Add Github Actions workflow to exercise unit tests /
+    coverage.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:24:49 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -6,7 +15,7 @@ Sun Jun 11 13:24:49 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Sat Dec  3 00:21:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v2.4.1 
+- Update to v2.4.1
   * Disallow separators in AuthTicket component values. Closes #37.
   * Handle bytes / string correctly in ‘repoze.who.plugins.htpasswd.sha1_check’. Closes #28.
   * Switch to use pytest as the testrunner. Closes #34.

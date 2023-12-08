@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 07 15:34:41 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1701963272.58c0dd5:
+  * Fix CI failures due to `sudo` usage
+  * Set MTU in `os-autoinst-setup-multi-machine` also using NetworkManager
+  * Adjust MTU in `os-autoinst-setup-multi-machine`
+  * openvswitch: Add reference for the specific value selection
+  * Increase bootindex of network devices if PXEBOOT is enabled
+  * openvswitch: Ensure a consistent MTU size compatible with GRE tunnels
+  * Unify perl linting rules
+
+-------------------------------------------------------------------
 Sun Dec 03 02:25:36 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1701427827.ab6274c:

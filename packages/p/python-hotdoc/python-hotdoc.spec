@@ -17,7 +17,7 @@
 
 
 Name:           python-hotdoc
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        A documentation tool micro-framework
 License:        LGPL-2.1-or-later

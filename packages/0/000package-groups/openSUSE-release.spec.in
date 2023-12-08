@@ -178,6 +178,9 @@ Provides:       weakremover(libxtables11)
 Provides:       weakremover(libzip4)
 Provides:       weakremover(mt_st)
 Provides:       weakremover(openssl-debuginfo)
+# Suggest openSUSE-release-ftp as 'main flavor'. Offline install from DVD only
+# has openSSE=release-DVD available, which is good for the use case (boo#1209959)
+Suggests:       openSUSE-release-ftp
 %include %{SOURCE100}
 ___PRODUCT_PROVIDES___
 

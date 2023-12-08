@@ -508,4 +508,12 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
   + Removed: vi.ctb (replaced by vi-cb8.utb). (forwarded request 1072764 from iznogood)</comment>
     <requestid>1073189</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5973d6aad0e12e55dbb986b19b69835d</srcmd5>
+    <version>3.25.0</version>
+    <time>1702071123</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132051</requestid>
+  </revision>
 </revisionlist>

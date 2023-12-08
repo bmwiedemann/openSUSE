@@ -17,7 +17,7 @@
 
 
 Name:           python-makefun
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 License:        BSD-3-Clause
 Summary:        Small library to dynamically create python functions

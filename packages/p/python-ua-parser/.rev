@@ -32,4 +32,18 @@
     <comment></comment>
     <requestid>1009877</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>afbcebc44ea9cdd03da05d52481c5b8c</srcmd5>
+    <version>0.18.0</version>
+    <time>1702071206</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.18.0:
+  * handle firefox version without patch segment
+  * remove unnecessary line space
+  * Add Oculus Browser
+  * Add PetalBot
+
+  * Fixes concurrency issues with the cache invalidation mechanism.</comment>
+    <requestid>1132083</requestid>
+  </revision>
 </revisionlist>

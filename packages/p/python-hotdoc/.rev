@@ -56,4 +56,19 @@ documentation generator framework, used by gstreamer 1.18.0</comment>
     <comment></comment>
     <requestid>1090444</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1cdd1316c00589ce6f8995c9327831ad</srcmd5>
+    <version>0.16</version>
+    <time>1702071115</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.16:
+  * `scanners.re` - fixed warnings; use `*` for fallback.
+  * Fixed some warnings in `scanners.re`.
+  * Update CaseFolding to latest (Kevin Wojniak, #168).
+  * Allow balanced nested parens in link destinations (Yuki
+    Izumi, #166)
+  * Allocate enough bytes for backticks array.
+  * Inlines: Ensure that the delimiter stack is freed in subject.</comment>
+    <requestid>1131711</requestid>
+  </revision>
 </revisionlist>

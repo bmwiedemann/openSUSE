@@ -73,4 +73,17 @@
     <comment></comment>
     <requestid>1005608</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5e15a1a4618ac67e5d9203610110d9fc</srcmd5>
+    <version>3.0.1</version>
+    <time>1702071108</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.1:
+  * Fix a possible deadlock when FFmpeg's version output produces too
+    much data.
+
+- update to v3.0.0
+  * Work correctly with GStreamer 1.18 and later (thanks to @ssssam)</comment>
+    <requestid>1131695</requestid>
+  </revision>
 </revisionlist>

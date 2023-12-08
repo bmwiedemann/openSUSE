@@ -1,0 +1,50 @@
+---
+ tests/__init__.py         |    2 +-
+ tests/test_config.py      |    2 +-
+ tests/test_integration.py |    6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -2,7 +2,7 @@ import sys, os
+ 
+ # In order to test the Flask-Script command, Flask-Script needs to be
+ # installed. If this is the case, we won't be able to import from our
+-# local src/flaskext directory that nose puts on sys.path, due to the
++# local src/flaskext directory that pytest puts on sys.path, due to the
+ # way Flask extensions employ pkg_resources to have multiple directories
+ # contribute to the same module. We fix it by manually adding the
+ # directory to an already existing virtual flaskext module.
+--- a/tests/test_config.py
++++ b/tests/test_config.py
+@@ -22,7 +22,7 @@ class TestConfigAppBound:
+     """The extension is bound to a specific app.
+     """
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.app = Flask(__name__)
+         self.env = Environment(self.app)
+ 
+--- a/tests/test_integration.py
++++ b/tests/test_integration.py
+@@ -26,8 +26,8 @@ class TestUrlAndDirectory(TempEnvironmen
+     Let's test the different scenarios to ensure everything works.
+     """
+ 
+-    def setup(self):
+-        TempEnvironmentHelper.setup(self)
++    def setup_method(self):
++        TempEnvironmentHelper.setup_method(self)
+ 
+         self.app = Flask(__name__, static_url_path='/app_static')
+         from tests import test_module
+@@ -152,7 +152,7 @@ class TestUrlAndDirectoryWithInitApp(obj
+     values also work if the application is initialized via "init_app()".
+     """
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.app = Flask(__name__, static_url_path='/initapp_static')
+         self.env = Environment()
+         self.env.init_app(self.app)

@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>1075037</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ca13b3fdf03c8c39546d788d44005f4</srcmd5>
+    <version>1.15.2</version>
+    <time>1702071137</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.15.2:
+  * Fixed `SyntaxError` happening when the name of a native
+    coroutine function to create contains `'return'`.
+  * Fixes #96.</comment>
+    <requestid>1131765</requestid>
+  </revision>
 </revisionlist>

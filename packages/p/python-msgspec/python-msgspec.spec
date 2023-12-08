@@ -17,7 +17,7 @@
 
 
 Name:           python-msgspec
-Version:        0.18.2
+Version:        0.18.4
 Release:        0
 Summary:        A fast serialization and validation library
 License:        BSD-3-Clause

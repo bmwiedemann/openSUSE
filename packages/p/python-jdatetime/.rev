@@ -48,4 +48,17 @@
     <comment></comment>
     <requestid>984627</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a535a43aefb8885bd92476c69a700cd3</srcmd5>
+    <version>4.1.1</version>
+    <time>1702071122</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.1:
+  * Add `fromisoformat` method to `jdatetime.date`
+  * Add support for Python 3.11
+  * Fix two chars month handling in jdatetime.datetime.strptime
+
+- Update to 4.0.0:</comment>
+    <requestid>1131725</requestid>
+  </revision>
 </revisionlist>

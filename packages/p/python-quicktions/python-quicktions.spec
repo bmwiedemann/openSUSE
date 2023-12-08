@@ -17,7 +17,7 @@
 
 
 Name:           python-quicktions
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Fast fractions data type for rational numbers
 License:        Python-2.0

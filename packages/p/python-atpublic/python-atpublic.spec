@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-atpublic
-Version:        3.1.1
+Version:        4.0
 Release:        0
 Summary:        @public decorator for populating __all__
 License:        Apache-2.0
@@ -34,6 +34,7 @@ Group:          Development/Languages/Python
 URL:            http://public.readthedocs.io/
 Source:         https://gitlab.com/warsaw/public/-/archive/%{version}/public-%{version}.tar.gz#/atpublic-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pdm-pep517 >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -55,7 +56,7 @@ BuildRequires:  %{python_module sybil}
 public -- @public for populating __all__.
 
 %prep
-%setup -q -n atpublic-%{version}
+%setup -q -n public-%{version}
 
 %build
 %pyproject_wheel

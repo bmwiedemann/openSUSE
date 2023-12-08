@@ -21,12 +21,15 @@
 %endif
 
 Name:           ART
-Version:        1.20.2
+Version:        1.21
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only
 URL:            https://bitbucket.org/agriggio/art/wiki/Home
 Source:         https://bitbucket.org/agriggio/art/downloads/%{name}-%{version}.tar.xz
+Source1:        https://bitbucket.org/agriggio/art/downloads/%{name}-%{version}.tar.xz.asc
+# https://keys.openpgp.org/vks/v1/by-fingerprint/942FCFB1CBE1E38928A1A6BEA94D951156835A5D
+Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

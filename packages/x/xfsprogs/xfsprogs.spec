@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -37,7 +37,6 @@ Source2:        %{name}.keyring
 Source3:        module-setup.sh.in
 Source4:        dracut-fsck-help.txt
 Patch0:         xfsprogs-docdir.diff
-Patch1:         0001-repair-shift-inode-back-into-place-if-corrupted-by-b.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libblkid-devel
@@ -110,7 +109,6 @@ on xfs filesystems.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 aclocal -I m4

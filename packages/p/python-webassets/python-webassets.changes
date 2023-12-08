@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  7 23:42:33 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up packaging.
+
+-------------------------------------------------------------------
 Mon Apr 26 23:06:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add webassets-py39-threading.patch -- gh#miracle2k/webassets#529

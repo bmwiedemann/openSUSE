@@ -150,4 +150,17 @@
   * Add interoperable symmetric encryption system (#403) (forwarded request 1108091 from glaubitz)</comment>
     <requestid>1108093</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>16b3c3b28596eb8462e9aca3e4d4eac8</srcmd5>
+    <version>2.19.2</version>
+    <time>1702071112</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.19.2:
+  * Add support for python 3.12
+  * Introduce compatibility with native namespace packages
+
+  require python 3.7+ (#313) (28d244f)
+  * add ProtectionLevel.External enum; standardize use of 'optional'</comment>
+    <requestid>1131707</requestid>
+  </revision>
 </revisionlist>

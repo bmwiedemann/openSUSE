@@ -107,4 +107,21 @@
 </comment>
     <requestid>1118992</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1e6c4537e0dc8f75bb0741e284841620</srcmd5>
+    <version>1.7.0.post0</version>
+    <time>1702071114</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0.post0:
+  * Ensure setuptools can read version number statically during
+    build
+  * Dropped support for Python 3.7
+  * Passing (keyfile, certfile) to MailHandler's ``secure``
+    argument is deprecated in favour of passing an ``ssl.SSLContext``.
+  * Python 3.12 support
+
+- restrict to older Cython version
+  * Added support for controlling rotating file names -- Logbook now allows users to</comment>
+    <requestid>1131713</requestid>
+  </revision>
 </revisionlist>

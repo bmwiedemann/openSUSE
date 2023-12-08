@@ -16,10 +16,9 @@
 #
 
 
-%global modname lazy
 %{?sle15_python_module_pythons}
 Name:           python-lazy
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Lazy attributes for Python objects
 License:        BSD-2-Clause
@@ -58,7 +57,7 @@ endless.
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE
-%{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}*-info
+%{python_sitelib}/lazy
+%{python_sitelib}/lazy-%{version}*-info
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:26:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * Add `fromisoformat` method to `jdatetime.date`
+  * Add support for Python 3.11
+  * Fix two chars month handling in jdatetime.datetime.strptime
+
+-------------------------------------------------------------------
 Thu Jun 23 01:06:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 4.1.0
@@ -6,7 +14,7 @@ Thu Jun 23 01:06:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Add support for %b and %B directive directive in ``jdatetime.datetime.strptime`
   Changed
   * Potential breaking change: Replace spaces with ZWNJ (نیم‌فاصله) in output of ``jdatetime.datetime.strftime`
-- Update to 4.0.0: 
+- Update to 4.0.0:
   * Add fold attribute to jdatetime.datetime
   * Change
   * Drop Python < 3.7 support

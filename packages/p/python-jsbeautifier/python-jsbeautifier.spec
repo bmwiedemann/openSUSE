@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsbeautifier
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsbeautifier
-Version:        1.14.7
+Version:        1.14.11
 Release:        0
 Summary:        JavaScript unobfuscator and beautifier
 License:        MIT

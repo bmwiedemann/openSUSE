@@ -23,4 +23,22 @@
     <comment></comment>
     <requestid>1006920</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53258210f086f2b6a35f775996b01d45</srcmd5>
+    <version>0.8.0</version>
+    <time>1702071133</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.0:
+  * Dropped Python 3.6 support, and made Python 3.11 support
+    official
+  * It is now possible to declare custom `ItemAdapter` subclasses
+    with their own `ADAPTER_CLASSES` attribute, allowing to
+    support different item types in different parts of the same
+    code base
+  * Improved type hint support
+
+  Improve performance by removing imports inside functions (#60)
+- Disable python36 build due to Scrapy</comment>
+    <requestid>1131744</requestid>
+  </revision>
 </revisionlist>

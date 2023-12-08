@@ -55,4 +55,26 @@
     <comment>- tag for sle15 new python stack</comment>
     <requestid>1092839</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f4c0de55306f5325f4458a4fac1f839</srcmd5>
+    <version>4.0</version>
+    <time>1702071104</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0:
+  * Drop Python 3.7 support (GL#16)
+  * Remove ``public.install()`` which was used to inject the
+    ``public`` and ``private`` functions into the ``builtins``
+    namespace.  This isn't very helpful and could be actively
+    harmful.  Explicit is better than implicit. (GL#14)
+  * The functional form of ``public()`` now returns the argument
+    *values* in the order they are given.  This allows you to
+    explicitly bind those values to names in the global namespace.
+  * Switch from ``flake8`` and ``isort`` to ``ruff`` for code
+    quality. (GL#32)
+  * Switch to ``pdm-backend`` (GL#15)
+  * More GitLab CI integration improvements.
+
+  * https://gitlab.com/warsaw/public/-/merge_requests/16</comment>
+    <requestid>1131685</requestid>
+  </revision>
 </revisionlist>

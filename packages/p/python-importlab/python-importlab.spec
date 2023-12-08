@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # python36-networkx no longer exists in Tumbleweed (due to SciPy following NEP 29)
 %define         skip_python36 1
 Name:           python-importlab
-Version:        0.8
+Version:        0.8.1
 Release:        0
 Summary:        A library to calculate python dependency graphs
 License:        Apache-2.0

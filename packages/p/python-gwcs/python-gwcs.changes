@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:39:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * Replace ``pkg_resources`` with ``importlib.metadata``. [#478]
+  * Serialize and deserialize ``pixel_shape`` with asdf. [#480]
+  * Synchronize ``array_shape`` and ``pixel_shape`` attributes of
+    WCS objects. [#439]
+  * Fix failures and warnings with numpy 2.0. [#472]
+  * Remove deprecated old ``bounding_box``. The new
+    implementation is released with
+  * Refactor ``CoordinateFrame.axis_physical_types``. [#459]
+  * ``StokesFrame`` uses now ``astropy.coordinates.StokesCoord``.
+  * Dropped support for Python 3.8. [#451]
+  * Fixed a call to ``astropy.coordinates`` in
+    ``wcstools.wcs_from_points``. [#448]
+  * Code and docstrings clean up. [#460]
+  * Register all available asdf extension manifests from ``asdf-
+    wcs-schemas``
+
+-------------------------------------------------------------------
 Fri Jan 13 13:47:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.3
@@ -90,38 +110,38 @@ Mon Jan 18 00:46:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 Sat Dec 19 00:24:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.16.0
-  * Added an option to to_fits_sip() to be able to specify the 
+  * Added an option to to_fits_sip() to be able to specify the
     reference point (crpix) of the FITS WCS. [#337]
-  * Added support for providing custom range of degrees in 
+  * Added support for providing custom range of degrees in
     to_fits_sip. [#339]
   * Bounding_box now works with tuple of Quantities. [#331]
-  * Fix a formula for estimating crpix in to_fits_sip() so that 
+  * Fix a formula for estimating crpix in to_fits_sip() so that
     crpix is near the center of the bounding box. [#337]
-  * Allow sub-pixel sampling of the WCS model when computing SIP 
+  * Allow sub-pixel sampling of the WCS model when computing SIP
     approximation in to_fits_sip(). [#338]
-  * Fixed a bug in to_fits_sip due to which inv_degree was 
+  * Fixed a bug in to_fits_sip due to which inv_degree was
     ignored. [#339]
 - 0.15.0 changelog
-  * Added insert_frame method to modify the pipeline of a 
+  * Added insert_frame method to modify the pipeline of a
     WCS object. [#299]
-  * Added to_fits_tab method to generate FITS header and binary 
+  * Added to_fits_tab method to generate FITS header and binary
     table extension following FITS WCS -TAB convention. [#295]
-  * Added in_image function for testing whether a point in world 
-    coordinates maps back to the domain of definition of the 
+  * Added in_image function for testing whether a point in world
+    coordinates maps back to the domain of definition of the
     forward transformation. [#322]
   * Implemented iterative inverse for imaging WCS. [#324]
 - 0.14.0 changelog
-  * Updated versions of schemas for gwcs objects based on 
-    latest versions of transform schemas in asdf-standard. 
+  * Updated versions of schemas for gwcs objects based on
+    latest versions of transform schemas in asdf-standard.
     [#307]
-  * Added a wcs.Step class to allow serialization to ASDF to 
+  * Added a wcs.Step class to allow serialization to ASDF to
     use references. [#317]
-  * WCS.pipeline now is a list of Step instances instead of 
-    a (frame, transform) tuple. Use WCS.pipeline.transform and 
+  * WCS.pipeline now is a list of Step instances instead of
+    a (frame, transform) tuple. Use WCS.pipeline.transform and
     WCS.pipeline.frame to access them. [#319]
-  * Fix a bug in polygon fill for zero-width bounding boxes. 
+  * Fix a bug in polygon fill for zero-width bounding boxes.
     [#293]
-  * Add an optional parameter input_frame to 
+  * Add an optional parameter input_frame to
     ``wcstools.wcs_from_fiducial`. [#312]
 
 -------------------------------------------------------------------
@@ -163,4 +183,4 @@ Mon Jan  6 15:57:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
 -------------------------------------------------------------------
 Sat Sep 14 10:01:43 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
 
-- initial spec 
+- initial spec

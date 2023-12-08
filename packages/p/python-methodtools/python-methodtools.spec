@@ -1,7 +1,7 @@
 #
 # spec file for package python-methodtools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-methodtools
-Version:        0.4.2
+Version:        0.4.7
 Release:        0
 Summary:        Expand Standard Functools to Methods
 License:        BSD-2-Clause
 URL:            https://github.com/youknowone/methodtools
 Source0:        https://github.com/youknowone/methodtools/archive/%{version}.tar.gz#/methodtools-%{version}.tar.gz
-BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module pytest >= 4.6.7}
+BuildRequires:  %{python_module pytest-cov >= 2.6.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wirerope >= 0.4.2}
+BuildRequires:  %{python_module wirerope >= 0.4.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-wirerope >= 0.4.2
+Requires:       python-wirerope >= 0.4.7
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-functools32 >= 3.2.3
-%endif
 %python_subpackages
 
 %description

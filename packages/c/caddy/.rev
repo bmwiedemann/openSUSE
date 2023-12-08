@@ -353,4 +353,12 @@
   * logging: Clone array on log filters, prevent side-effects (#5786) (forwarded request 1117725 from jfkw)</comment>
     <requestid>1117734</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>455fe9995338d7b280e2a67bfab88b76</srcmd5>
+    <version>2.7.6</version>
+    <time>1702071210</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132088</requestid>
+  </revision>
 </revisionlist>

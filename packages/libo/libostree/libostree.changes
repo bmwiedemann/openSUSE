@@ -78,6 +78,7 @@ Fri Jul  7 23:03:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
     - test-concurrency: Don't lower timeout.
     - pull: Add error prefixing for corrupt checksums.
     - Add more error prefixing when parsing commit objects.
+  + Drop upstream merged 0001-commit-fix-ostree-deployment-on-64-bit-inode-fs.patch
 
 - Changes from version 2023.3:
   + Many fixes and improvements.
@@ -115,6 +116,13 @@ Fri Jul  7 23:03:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 - Make the grub2 sub-package as noarch, since it doesn't have any
   binaries.
 - Refresh ostree-grub2-location.patch with Quilt.
+
+-------------------------------------------------------------------
+Mon Jul  6 16:55:15 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix corrupted files when using a large
+  fs with 64-bit inodes (boo#1214708):
+  * 0001-commit-fix-ostree-deployment-on-64-bit-inode-fs.patch
 
 -------------------------------------------------------------------
 Fri May 12 07:07:37 UTC 2023 - Frederic Crozat <fcrozat@suse.com>

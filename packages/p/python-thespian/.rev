@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1009838</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>860f7e97df6f4723450973e75e096cf7</srcmd5>
+    <version>3.10.7</version>
+    <time>1702071205</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.10.7:
+  * Fix Issue #70: setting TCP_NODELAY on MacOS sometimes fails
+
+- version update to 3.10.6</comment>
+    <requestid>1132082</requestid>
+  </revision>
 </revisionlist>

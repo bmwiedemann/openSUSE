@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 13 14:45:05 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.5.0
+  - libxfs: fix atomic64_t detection on x86_32
+  - libxfs: use XFS_IGET_CREATE when creating new files
+  - libfrog: fix overly sleep workqueues
+  - xfs_db: use directio for device access
+  - libxfs: make platform_set_blocksize optional with directio
+  - mkfs: add a config file for 6.6 LTS kernels
+  - mkfs: enable reverse mapping by default
+  - mkfs: enable large extent counts by default
+  - xfs_db: create unlinked inodes
+  - xfs_db: dump unlinked buckets
+  - xfsprogs: don't allow udisks to automount XFS filesystems with no prompt
+  - xfs_repair: fix repair failure caused by dirty flag being abnormally set on buffer
+
+- drop 0001-repair-shift-inode-back-into-place-if-corrupted-by-b.patch
+
+  This was a fix for a regression that occurred in SLE12 SP1. We can
+  safely drop this, as upgrading to SLE15 (and later) is only supported
+  from SLE12-SP4.
+
+-------------------------------------------------------------------
 Thu Jul 20 08:45:36 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.4.0:

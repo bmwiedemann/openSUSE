@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:21:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0:
+  * It is now possible to specify a codec for archive entry
+    metadata (`pathname`, `linkpath`, `uname` and `gname`)
+  * **BREAKING:** If you use the `archive_read_class` and
+    `archive_write_class` arguments, the classes you provide will
+    receive a codec name as a second positional argument.
+  * The `timestamp_nsec` arguments of the legacy
+    `ArchiveEntry.set_{a,c,m}time` methods are now optional
+  * Removed obsolete dependencies (`mock` and `six`) from
+    `tox.ini` (#119).
+  * Always use `UTF-8` when reading the `PKG-INFO` and
+    `README.rst` files (#120).
+  * Replaced `pytest-xdist` with `pytest-forked` in `tox.ini`
+- drop python-libarchive-c-no-mock.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun  2 12:48:05 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Hardcode libarchive13 for now until we make macro based requires
@@ -19,7 +37,7 @@ Wed Mar 23 13:50:58 UTC 2022 - pgajdos@suse.com
 - version update to 4.0
   4.0
   ---
-    BREAKING & SECURITY: The archive extraction functions now pass 3 security flags (SECURE_NODOTDOT, SECURE_NOABSOLUTEPATHS 
+    BREAKING & SECURITY: The archive extraction functions now pass 3 security flags (SECURE_NODOTDOT, SECURE_NOABSOLUTEPATHS
       and SECURE_SYMLINKS) to libarchive by default, unless the current directory is the root.
     BREAKING: The ArchiveEntry properties atime, mtime, ctime, birthtime and size now have the value None instead of 0 when they're unset.
     BREAKING: The ArchiveEntry.pathname property now attempts to decode bytes using UTF-8. This breaks reading archives that

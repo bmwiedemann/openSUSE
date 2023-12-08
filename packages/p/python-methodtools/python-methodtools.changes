@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:17:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.7:
+  * switch to Git Hub Actions
+  * skip reagent calling for built-in property
+  * bump twirerope to 0.4.7
+
+-------------------------------------------------------------------
 Thu Aug 20 07:58:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to github archive for tests and license

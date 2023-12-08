@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logging-journald
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Pure python logging handler for writing logs to the journald using native protocol
 License:        MIT

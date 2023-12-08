@@ -379,4 +379,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment>libostree 2023.7 (forwarded request 1120843 from AndreasStieger)</comment>
     <requestid>1121469</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>a1e26d2543e7f24feae816d5bdef699a</srcmd5>
+    <version>2023.7</version>
+    <time>1702071124</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132052</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec 08 02:07:42 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.7.6:
+  * caddytls: Sync distributed storage cleaning (#5940)
+  * caddytls: Context to DecisionFunc (#5923)
+  * tls: accept placeholders in string values of certificate loaders (#5963)
+  * templates: Offically make templates extensible (#5939)
+  * http2 uses new round-robin scheduler (#5946)
+  * panic when reading from backend failed to propagate stream error (#5952)
+  * chore: Bump otel to v1.21.0. (#5949)
+  * httpredirectlistener: Only set read limit for when request is HTTP (#5917)
+  * fileserver: Add .m4v for browse template icon
+  * Revert "caddyhttp: Use sync.Pool to reduce lengthReader allocations (#5848)" (#5924)
+  * go.mod: update quic-go version to v0.40.0 (#5922)
+  * update quic-go to v0.39.3 (#5918)
+  * chore: Fix usage pool comment (#5916)
+  * test: acmeserver: add smoke test for the ACME server directory (#5914)
+  * Upgrade acmeserver to github.com/go-chi/chi/v5 (#5913)
+  * caddyhttp: Adjust `scheme` placeholder docs (#5910)
+  * go.mod: Upgrade quic-go to v0.39.1
+  * go.mod: CVE-2023-45142 Update opentelemetry (#5908)
+  * templates: Delete headers on `httpError` to reset to clean slate (#5905)
+  * httpcaddyfile: Remove port from logger names (#5881)
+  * core: Apply SO_REUSEPORT to UDP sockets (#5725)
+  * caddyhttp: Use sync.Pool to reduce lengthReader allocations (#5848)
+  * cmd: Add newline character to version string in CLI output (#5895)
+  * core: quic listener will manage the underlying socket by itself (#5749)
+  * templates: Clarify `include` args docs, add `.ClientIP` (#5898)
+  * httpcaddyfile: Fix TLS automation policy merging with get_certificate (#5896)
+  * cmd: upgrade: resolve symlink of the executable (#5891)
+  * caddyfile: Fix variadic placeholder false positive when token contains `:` (#5883)
+
+-------------------------------------------------------------------
 Fri Oct 13 20:05:08 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.7.5:

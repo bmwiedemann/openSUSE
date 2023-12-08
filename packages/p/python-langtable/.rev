@@ -67,4 +67,30 @@
   without python dependency</comment>
     <requestid>1089077</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c472bd13106d1cb5d61a200eaf2ef546</srcmd5>
+    <version>0.0.64</version>
+    <time>1702071126</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.64:
+  * Add new public functions list_all_{languages,locales,keyboard
+    s,territories,timezones,scripts,input_methods,console_fonts}
+- update to 0.0.63:
+  * Japanese: prefer anthy over kkc
+  * Use skipTerritory also in list_keyboards(),
+    list_consolefonts(), and list_timezones()
+  * Add more translations from CLDR
+  * Get translation changes from CLDR
+- update to 0.0.62:
+  * Get translation changes from CLDR
+  * Add more translations from CLDR
+  * Add Norwegian keyboard layout to keyboards.xml (Resolves:
+    https://github.com/mike-fabian/langtable/issues/16)
+  * Add Hang script to Southern Aymara
+
+- Update to version 0.0.61
+- Update to version 0.0.60
+- add python-rpm-macros dependency</comment>
+    <requestid>1131729</requestid>
+  </revision>
 </revisionlist>

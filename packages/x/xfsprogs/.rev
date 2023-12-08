@@ -750,4 +750,16 @@
     <comment></comment>
     <requestid>1099686</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>503c81f96e9a2f7a6f6cce546b6b2e59</srcmd5>
+    <version>6.5.0</version>
+    <time>1702071082</time>
+    <user>anag+factory</user>
+    <comment>xfsprogs: update to v6.5.0
+
+Signed-off-by: Anthony Iliopoulos &lt;ailiop@suse.com&gt;
+
+(🤖: Submission of xfsprogs via https://src.opensuse.org/pool/xfsprogs/pulls/5 by ailiopoulos)</comment>
+    <requestid>1131593</requestid>
+  </revision>
 </revisionlist>

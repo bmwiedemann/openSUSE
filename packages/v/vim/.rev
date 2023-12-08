@@ -7348,4 +7348,26 @@ always built-in because vim has direct perl dependencies anyway.
  *  [security]: avoid double-free in get_style_font_variants</comment>
     <requestid>1129781</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>c5855e9a4caacfba56c218118b263908</srcmd5>
+    <version>9.0.2146</version>
+    <time>1702071079</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.0.2146
+ *  text-property without type errors when joining
+ *  wrong scrolling in insert mode with smoothscroll
+ *  Text properties causes wrong line wrapping
+ *  disable the test_terminal_resize2() test for GH CI in gui mode
+ *  [security]: buffer-overflow in ex_substitute
+ *  [security]: stack-buffer-overflow in option callback functions
+ *  [security]: buffer-overflow in suggest_trie_walk
+ *  [security]: use-after-free in win-enter
+ *  check that all files are listed in Filelist
+ *  html.angular ft is problematic
+ *  disable the test_terminal_resize() test for GH CI in GUI
+ *  Overflow logic requires long long
+ *  include several missing files
+ *  Can't detect angular &amp; mustache filetypes</comment>
+    <requestid>1131553</requestid>
+  </revision>
 </revisionlist>

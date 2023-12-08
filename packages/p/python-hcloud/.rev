@@ -61,4 +61,21 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1108353</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a21226ac0b705d4be5759bfa5b5b4c17</srcmd5>
+    <version>1.32.0</version>
+    <time>1702071131</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.32.0:
+  * allow returning root_password in servers rebuild (#276)
+  * prepare for iso deprecated field removal (#320) (beae328)
+  * add deprecation field to Iso (#318) (036b52f)
+  * support python 3.12 (#311) (7e8cd1d)
+  * prevent api calls when printing bound models (#305) (c1de7ef)
+  * add domain attribute type hints to bound models (#300)
+  * load token from env in examples scripts (#302) (f18c9a6)
+
+  * Use unittest.mock.</comment>
+    <requestid>1131740</requestid>
+  </revision>
 </revisionlist>

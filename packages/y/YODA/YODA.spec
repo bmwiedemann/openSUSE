@@ -16,7 +16,7 @@
 #
 
 
-%define ver 1.9.8
+%define ver 1.9.9
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           YODA
 Version:        %{ver}
@@ -172,12 +172,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/yoda2aida
 %{_bindir}/yoda2flat
 %{_bindir}/yoda2yoda
-%{_bindir}/yodamerge
 %{_bindir}/yodacmp
 %{_bindir}/yodacnv
 %{_bindir}/yodadiff
+%{_bindir}/yodaenvelope
 %{_bindir}/yodahist
 %{_bindir}/yodals
+%{_bindir}/yodamerge
 %{_bindir}/yodaplot
 %{_bindir}/yodascale
 %{_bindir}/yodastack

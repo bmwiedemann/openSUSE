@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Dec  7 17:54:50 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add demock.patch which removes dependency on the external
+  module mock (gh#opentracing-contrib/python-flask#58).
+- Skip TestTracingStartSpanCallback tests
+  (gh#opentracing-contrib/python-flask#57).
+
+-------------------------------------------------------------------
+Mon Dec 21 12:34:53 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.0

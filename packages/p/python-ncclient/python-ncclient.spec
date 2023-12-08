@@ -1,7 +1,7 @@
 #
 # spec file for package python-ncclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ncclient
-Version:        0.6.13
+Version:        0.6.15
 Release:        0
 Summary:        Python library for NETCONF clients
 License:        Apache-2.0

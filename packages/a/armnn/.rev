@@ -59,4 +59,14 @@
     <comment></comment>
     <requestid>1109209</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4900d9eccead85efeb7dbc3a8cc520c</srcmd5>
+    <version>23.11</version>
+    <time>1702071194</time>
+    <user>anag+factory</user>
+    <comment>- Update to 23.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v23.11
+</comment>
+    <requestid>1132049</requestid>
+  </revision>
 </revisionlist>

@@ -20,4 +20,18 @@
 </comment>
     <requestid>1098032</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7819b7a6152269eee07e937b9e1c542e</srcmd5>
+    <version>1.0.1</version>
+    <time>1702071110</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * Fix join not using returned node
+  * ignore security issues in tests
+  * switch to ruff
+
+- Change Source from pythonhosted to github because tests are
+- Initial package (0.76)</comment>
+    <requestid>1131702</requestid>
+  </revision>
 </revisionlist>

@@ -56,4 +56,15 @@
 - Update to 1.13.0:</comment>
     <requestid>1056764</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>166f9ba1f56d885774232418cec713b6</srcmd5>
+    <version>1.15.0</version>
+    <time>1702071123</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.15.0:
+  * ADD: support for Django&gt;=4.0 url template
+
+- update to 1.14.0</comment>
+    <requestid>1131726</requestid>
+  </revision>
 </revisionlist>

@@ -214,4 +214,13 @@
     <comment></comment>
     <requestid>1128152</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9e92498e0dfc9d79e1abae80d73b1058</srcmd5>
+    <version>3.7.4</version>
+    <time>1702071199</time>
+    <user>anag+factory</user>
+    <comment>fix_stack_smash.patch: upstream rework of logging doesn't allocate
+  enough memory for an array (bsc#1216830)</comment>
+    <requestid>1132069</requestid>
+  </revision>
 </revisionlist>

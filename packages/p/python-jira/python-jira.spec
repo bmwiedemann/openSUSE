@@ -17,7 +17,7 @@
 
 
 Name:           python-jira
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Python library for interacting with JIRA via REST APIs
 License:        BSD-3-Clause
