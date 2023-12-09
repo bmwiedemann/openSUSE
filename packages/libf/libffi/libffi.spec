@@ -1,7 +1,7 @@
 #
 # spec file for package libffi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ Group:          Development/Languages/C and C++
 URL:            https://sourceware.org/libffi/
 Source:         https://github.com/libffi/libffi/releases/download/v%{version}/libffi-%{version}.tar.gz
 Source99:       baselibs.conf
+# Fix BTI for aarch64 with PR 808 and 810
+Patch1:         https://github.com/libffi/libffi/pull/808.patch
+Patch2:         https://github.com/libffi/libffi/pull/810.patch
 # for make check
 BuildRequires:  dejagnu
 BuildRequires:  expect
