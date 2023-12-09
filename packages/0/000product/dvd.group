@@ -129,12 +129,12 @@
     <package name="appmenu-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="appstream-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="appstream-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="arabic-ae-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
-    <package name="arabic-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
-    <package name="arabic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
-    <package name="arabic-kacst-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
-    <package name="arabic-kacstone-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
-    <package name="arabic-naqsh-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
+    <package name="arabic-ae-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arabic-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arabic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arabic-kacst-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arabic-kacstone-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="arabic-naqsh-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="arc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="argyllcms" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="aria2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -250,7 +250,7 @@
     <package name="cantarell-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="catfish" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="catfish-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="cellwriter" supportstatus="unsupported"/> <!-- reason: dvd:cellwriter -->
+    <package name="cellwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="cepces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="cepces-certmonger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="cepces-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -549,9 +549,9 @@
     <package name="gimp-plugin-jxl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="git" supportstatus="unsupported"/> <!-- reason: dvd:git -->
-    <package name="git-core" supportstatus="unsupported"/> <!-- reason: dvd:git -->
-    <package name="git-email" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="git" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="git-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="git-email" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="git-web" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gjs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="glib-networking" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -861,7 +861,7 @@
     <package name="iio-sensor-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="imlib2-loaders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="incidenceeditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
+    <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="info-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="initviocons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -1033,7 +1033,7 @@
     <package name="khangman-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="khelpcenter5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="khelpcenter5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="khmeros-fonts" supportstatus="unsupported"/> <!-- reason: dvd:khmeros-fonts -->
+    <package name="khmeros-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="khotkeys5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="khotkeys5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kidentitymanagement" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2056,7 +2056,7 @@
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhogweed6-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
+    <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhwasan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libhwy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2323,7 +2323,7 @@
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libnumbertext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnumbertext-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libnvme-mi1" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
+    <package name="libnvme-mi1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2558,7 +2558,7 @@
     <package name="libserd-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsgutils2-1_48-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsharpyuv0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libshout3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
@@ -2887,7 +2887,7 @@
     <package name="lightsoff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lightsoff-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:lklug-fonts -->
+    <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="lokalize" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -3062,7 +3062,7 @@
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="nvidia-open-driver-G06-signed-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
+    <package name="nvme-cli" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nvme-cli-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="obex-data-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ocfs2-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3075,8 +3075,8 @@
     <package name="open-vm-tools-desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
+    <package name="openSUSE-release-ftp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="openSUSE-repos-Tumbleweed" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3236,7 +3236,7 @@
     <package name="perl-File-Listing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-GD" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Geography-Countries" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Git" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="perl-Git" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-HTML-Parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-HTML-Tagset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-HTTP-CookieJar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3270,7 +3270,7 @@
     <package name="perl-Net-LibIDN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-LibIDN2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-Patricia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Net-SMTP-SSL" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="perl-Net-SMTP-SSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-Net-SSLeay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-Server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-NetAddr-IP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3417,7 +3417,7 @@
     <package name="postgresql16" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="postgresql16-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql16-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
+    <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="powerdevil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4237,7 +4237,7 @@
     <package name="terminus-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="tgt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="thai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:thai-fonts -->
+    <package name="thai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="thessalonica-oldstandard-otf-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="thessalonica-theano-otf-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="thin-provisioning-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -4395,7 +4395,7 @@
     <package name="udisks2-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:un-fonts -->
+    <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="unbound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -4729,63 +4729,63 @@
     <package name="yast2-tftp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-theme-breeze" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="yast2-trans-af" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-af -->
-    <package name="yast2-trans-ar" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-ar -->
-    <package name="yast2-trans-bg" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-bg -->
-    <package name="yast2-trans-bn" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-bn -->
-    <package name="yast2-trans-bs" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-bs -->
-    <package name="yast2-trans-ca" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-ca -->
+    <package name="yast2-trans-af" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-ar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-bg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-bn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-bs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-ca" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-cs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-cy" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-cy -->
+    <package name="yast2-trans-cy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-en_GB" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-et" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-et -->
-    <package name="yast2-trans-fa" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-fa -->
-    <package name="yast2-trans-fi" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-fi -->
+    <package name="yast2-trans-et" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-fa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-fi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-gl" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-gl -->
-    <package name="yast2-trans-gu" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-gu -->
-    <package name="yast2-trans-hi" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-hi -->
-    <package name="yast2-trans-hr" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-hr -->
+    <package name="yast2-trans-gl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-gu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-hi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-hr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-hu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-id" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-id -->
+    <package name="yast2-trans-id" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-it" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-ja" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-jv" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-jv -->
-    <package name="yast2-trans-ka" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-ka -->
-    <package name="yast2-trans-km" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-km -->
-    <package name="yast2-trans-ko" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-ko -->
-    <package name="yast2-trans-lo" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-lo -->
-    <package name="yast2-trans-lt" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-lt -->
-    <package name="yast2-trans-mk" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-mk -->
-    <package name="yast2-trans-mr" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-mr -->
-    <package name="yast2-trans-nb" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-nb -->
-    <package name="yast2-trans-nl" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-nl -->
-    <package name="yast2-trans-pa" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-pa -->
+    <package name="yast2-trans-jv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-ka" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-km" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-ko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-lo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-lt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-mk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-mr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-nb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-nl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-pa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-pl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-pt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-ro" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-ro -->
+    <package name="yast2-trans-ro" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-ru" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-si" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-si -->
-    <package name="yast2-trans-sk" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-sk -->
+    <package name="yast2-trans-si" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-sk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-sl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="yast2-trans-sr" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-sr -->
+    <package name="yast2-trans-sr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-stats" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-trans-sv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-trans-ta" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-th" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="yast2-trans-tr" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-tr -->
-    <package name="yast2-trans-uk" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-uk -->
-    <package name="yast2-trans-vi" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-vi -->
-    <package name="yast2-trans-wa" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-wa -->
-    <package name="yast2-trans-xh" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-xh -->
+    <package name="yast2-trans-tr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-uk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-vi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-wa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="yast2-trans-xh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-trans-zh_CN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-trans-zh_TW" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-trans-zu" supportstatus="unsupported"/> <!-- reason: dvd:yast2-trans-zu -->
+    <package name="yast2-trans-zu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="yast2-transfer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="yast2-tune" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

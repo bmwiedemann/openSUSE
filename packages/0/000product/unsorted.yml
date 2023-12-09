@@ -3042,6 +3042,7 @@ unsorted:
   - dh-make 
   - dhcp-devel 
   - dhcp-doc 
+  - dhcp-keama 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -8874,6 +8875,10 @@ unsorted:
   - kblackbox-lang 
   - kblocks 
   - kblocks-lang 
+  - kbom 
+  - kbom-bash-completion 
+  - kbom-fish-completion 
+  - kbom-zsh-completion 
   - kbookmarks-devel 
   - kbounce 
   - kbounce-lang 
@@ -9271,6 +9276,8 @@ unsorted:
   - kquickimageeditor-devel 
   - kquickimageeditor-imports 
   - kraft 
+  - krb5-appl-clients 
+  - krb5-appl-servers 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
   - krb5-devel 
@@ -10546,7 +10553,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit 
   - libXxf86vm1-32bit 
-  - libYODA-1_9_8 
+  - libYODA-1_9_9 
   - libZXing3-32bit 
   - liba2ps1 
   - liba52-0-32bit 
@@ -15401,7 +15408,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk3_0 
+  - libvolk3_1 
   - libvomsapi1 
   - libvorbis-devel 
   - libvorbis-devel-32bit 
@@ -18963,6 +18970,8 @@ unsorted:
   - openSUSE-e-X-Icons 
   - openSUSE-e-X-Neon-Icons 
   - openSUSE-e-X-Oliveleaf-Icons 
+  - openSUSE-release-appliance 
+  - openSUSE-release-appliance-custom 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
   - openSUSE-release-appliance-kvm 
@@ -18970,7 +18979,6 @@ unsorted:
   - openSUSE-release-appliance-vagrant 
   - openSUSE-release-appliance-vmware 
   - openSUSE-release-appliance-wsl 
-  - openSUSE-release-ftp 
   - openSUSE-release-livecd-gnome 
   - openSUSE-release-livecd-kde 
   - openSUSE-release-livecd-x11 
@@ -22083,6 +22091,7 @@ unsorted:
   - pythia-doc 
   - python 
   - python-32bit 
+  - python-Flask-Assets-doc 
   - python-Genshi-doc 
   - python-Kivy-doc 
   - python-M2Crypto-doc 
@@ -22619,6 +22628,7 @@ unsorted:
   - python310-Fiona 
   - python310-Flask 
   - python310-Flask-Admin 
+  - python310-Flask-Assets 
   - python310-Flask-Babel 
   - python310-Flask-Bootstrap 
   - python310-Flask-Caching 
@@ -22631,6 +22641,7 @@ unsorted:
   - python310-Flask-Mail 
   - python310-Flask-Mailman 
   - python310-Flask-Migrate 
+  - python310-Flask-OpenTracing 
   - python310-Flask-Paranoid 
   - python310-Flask-Principal 
   - python310-Flask-RESTful 
@@ -23611,7 +23622,6 @@ unsorted:
   - python310-deepmerge 
   - python310-defcon 
   - python310-defusedxml 
-  - python310-delegator 
   - python310-delegator.py 
   - python310-dennis 
   - python310-deprecation 
@@ -26136,6 +26146,7 @@ unsorted:
   - python311-Fiona 
   - python311-Flask 
   - python311-Flask-Admin 
+  - python311-Flask-Assets 
   - python311-Flask-Babel 
   - python311-Flask-Bootstrap 
   - python311-Flask-Caching 
@@ -26148,6 +26159,7 @@ unsorted:
   - python311-Flask-Mail 
   - python311-Flask-Mailman 
   - python311-Flask-Migrate 
+  - python311-Flask-OpenTracing 
   - python311-Flask-Paranoid 
   - python311-Flask-Principal 
   - python311-Flask-RESTful 
@@ -27079,7 +27091,6 @@ unsorted:
   - python311-deepmerge 
   - python311-defcon 
   - python311-defusedxml 
-  - python311-delegator 
   - python311-delegator.py 
   - python311-dennis 
   - python311-deprecation 
@@ -29503,6 +29514,7 @@ unsorted:
   - python39-Fiona 
   - python39-Flask 
   - python39-Flask-Admin 
+  - python39-Flask-Assets 
   - python39-Flask-Babel 
   - python39-Flask-Bootstrap 
   - python39-Flask-Caching 
@@ -29515,6 +29527,7 @@ unsorted:
   - python39-Flask-Mail 
   - python39-Flask-Mailman 
   - python39-Flask-Migrate 
+  - python39-Flask-OpenTracing 
   - python39-Flask-Paranoid 
   - python39-Flask-Principal 
   - python39-Flask-RESTful 
@@ -30496,7 +30509,6 @@ unsorted:
   - python39-deepmerge 
   - python39-defcon 
   - python39-defusedxml 
-  - python39-delegator 
   - python39-delegator.py 
   - python39-dennis 
   - python39-deprecation 
