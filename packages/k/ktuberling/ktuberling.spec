@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktuberling
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Potato drawing editor
 License:        GPL-2.0-or-later

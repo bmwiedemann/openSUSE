@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Fri Dec 08 09:25:22 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-MicroOS
+
+  Incorporate latest changes from upstream MicroOS and
+  also add an encrypted profile build for testing
+
+-------------------------------------------------------------------
+Tue Nov 28 08:54:36 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.18 → 9.25.19
+
+-------------------------------------------------------------------
+Thu Nov 23 18:43:49 CET 2023 - Alexandre Esse <alexandre.esse.dev@gmail.com>
+
+- Fix typo in workflow overview doc section
+
+-------------------------------------------------------------------
+Wed Nov 22 15:54:19 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing documentation for oem-unattended-id
+
+-------------------------------------------------------------------
+Wed Nov 22 15:38:13 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow install disk overwrite from cmdline
+
+  Add rd.kiwi.oem.installdevice=DEVICE. Configures the disk device
+  that should be used in an OEM installation. This overwrites any
+  other oem device setting, e.g device filter or maxdisk and just
+  continues the installation on the given device. However, the
+  device must exist and must be a block special.
+  This Fixes jira#PED-7180
+
+-------------------------------------------------------------------
+Tue Nov 21 20:46:03 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update mailmap
+
+-------------------------------------------------------------------
+Fri Nov 10 13:08:26 CET 2023 - Kali <jehan.singh@suse.com>
+
+- Replace the regex-based loader entry fix with string parsing (#2388)
+
+  A user building RHEL images ran into issues with the initrd.
+  It turns out that RHEL uses some patches that mean the
+  initrd/linux files in RHEL are not installed to /boot, which trips
+  up the original regex. The new fix doesn't rely on matching the
+  path in boot, instead just finding the initrd/linux files and rewriting
+  them in place.
+
+  This change also adds the pre-and-post fix loader entries to the debug logs.
+
+  Reference: https://bugzilla.suse.com/1208701
+
+  Fixes suse bsc#1208701
+
+-------------------------------------------------------------------
+Fri Nov 10 13:05:48 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix mbrid setup for read-only systems
+
+  On filesystems without a UUID (e.g squashfs) the fallback boot id
+  setup should apply if neither UUID nor MBR ID is present. This
+  is a followup fix for Issue #2391
+
+-------------------------------------------------------------------
+Thu Nov 09 09:18:12 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-disk-legacy test description
+
+  The configured embedded ESP image size is too big, max 30MB
+  are possible as El Torito boot load size
+
+-------------------------------------------------------------------
+Thu Nov 09 09:04:44 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't make toml a requirement
+
+-------------------------------------------------------------------
+Wed Nov 08 15:25:29 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed grub mbrid file search
+
+  To identify the root device for ISO images (live and install media)
+  that boots via grub2, kiwi uses a grub2 --file search. The searched
+  file was named /boot/mbrid, however this is not a unique name and
+  could be found on other devices of the system as well. To connect
+  the search to the correct media this commit changes the search to
+  an ID based method which is unique to the image build process.
+  This Fixes #2389
+
+-------------------------------------------------------------------
+Wed Nov 08 12:47:32 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't use kernel-install
+
+  kernel-install does a lot more then making the kernel available
+  to the ESP. It calls dracut, it creates loader entries and all
+  that is unexpected and also breaks the boot because the way
+  dracut is called in the image build case where host != target
+  leads to broken results. This commit refactors the systemd-boot
+  support in kiwi to prevent the use of kernel-install
+
+-------------------------------------------------------------------
+Wed Nov 08 09:22:16 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add check_efi_fat_image_has_correct_size
+
+  Add runtime check for to check that the efifatimagesize
+  does not exceed the max El Torito load size
+
+-------------------------------------------------------------------
+Tue Nov 07 08:55:57 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for ISO boot via systemd-boot
+
+  Create proper EFI FAT image via bootctl to be used as
+  alt loader in xorriso. This allows to boot the ISO
+  via EFI e.g kvm -bios /usr/share/qemu/ovmf-x86_64.bin -cdrom file.iso
+  Please note, hybrid boot is done via grub's hybrid MBR and
+  as systemd-boot does not provide one, hybrid boot is out
+  of scope yet. This Fixes #2281
+
+-------------------------------------------------------------------
+Sun Nov 05 10:04:33 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.17 → 9.25.18
+
+-------------------------------------------------------------------
+Wed Nov 01 18:09:13 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add partx to module-setup of kiwi-lib too
+
+-------------------------------------------------------------------
+Fri Oct 27 09:21:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Change partprobe fallback to partx
+
+  Informing the kernel about a new partition geometry can be done in a
+  busy state and is also effective for new devices and new mounts based
+  on the new geometry. busy state mounts of course will not see it until
+  swap of the busy state but a complete refuse of operation like it
+  happens with blockdev is imho not required. Just as partprobe, partx
+  is less restrictive on the busy state. That's why this commit changes
+  the partprobe fallback to use partx instead of blockdev
+
+-------------------------------------------------------------------
+Thu Oct 26 12:51:32 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create live persistent storage without busy state
+
+  With the former logic the live ISO was already mounted when an
+  eventual persistent storage partition was created. This leads
+  to an issue on re-reading the partition table, not for all but
+  several tools. This commit changes the order of tasks such that
+  the setup of the persistent write storage is performed prior
+  mounting the live ISO. In addition to this change an alternative
+  method using blockdev to re-read the partition was added in case
+  partprobe is not present. This also allows to get rid of the
+  parted dependency which provides partprobe
+
+-------------------------------------------------------------------
 Tue Oct 17 09:30:49 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.25.16 → 9.25.17
@@ -67,6 +230,14 @@ Fri Sep 22 10:39:44 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 - Added unit test for testing grub prefix
 
   Cover the condition if an extra boot partition is used
+
+-------------------------------------------------------------------
+Wed Sep 13 11:57:42 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support TOML markup
+
+  Allow to use TOML markup for the kiwi image description
+  This Fixes #2372
 
 -------------------------------------------------------------------
 Wed Sep 13 09:52:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>

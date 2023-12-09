@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  7 21:33:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.1:
+  * Fixed `asyncio` support to avoid `await asyncio.sleep(1)`
+    hanging forever.
+  * Added support for Python 3.12
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -16,7 +24,7 @@ Sat Sep 17 15:53:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Improved static typing definitions
   * Don't freeze pytest timings. This avoids class-level decorator usage
   * messing with pytest timings.  Pass through all setUp and tearDown arguments
- 
+
 -------------------------------------------------------------------
 Sat Jun  4 14:46:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
@@ -48,7 +56,7 @@ Tue Oct 20 01:42:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 1.0.0:
   * Dropped Py2 support
   * Added as_kwarg argument in order to have the frozen time object passed
-    with the name provided in as_kwarg argument 
+    with the name provided in as_kwarg argument
 - Drop denose.patch
 - Drop python-six from {Build,}Requires
 - Update version of python-dateutil in {Build,}Requires
@@ -119,7 +127,7 @@ Tue Sep  4 16:32:05 UTC 2018 - Matěj Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sun Jul 15 20:55:20 UTC 2018 - mimi.vx@gmail.com
 
-- update to 0.3.10 
+- update to 0.3.10
 - add _u_p37_tests.patch
  * Performance improvements
  * Coroutine support

@@ -52,7 +52,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.6.3.1
+Version:        7.6.4.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -75,11 +75,6 @@ Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_%{nu
 # used extensions sources
 Source450:      %{external_url}/1f467e5bb703f12cbbb09d5cf67ecf4a-converttexttonumber-1-5-0.oxt
 Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.bz2
-# GPGME bundle list
-Source1000:     %{external_url}/gpgme-1.18.0.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.43.tar.bz2
-Provides:       bundled(gpgme) = 1.18.0
-Provides:       bundled(libgpg-error) = 1.43
 # Internal bundled stuff we can't remove
 # To build this we would pull cygwin; not worth it
 Source2001:     https://dev-www.libreoffice.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll
@@ -101,8 +96,8 @@ Source2008:     %{external_url}/pdfium-5778.tar.bz2
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
 Source2010:     %{external_url}/skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz
-Source2012:     %{external_url}/libcmis-0.6.0.tar.xz
-Provides:       bundled(libcmis) = 0.6.0
+Source2012:     %{external_url}/libcmis-0.6.1.tar.xz
+Provides:       bundled(libcmis) = 0.6.1
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -143,8 +138,8 @@ BuildRequires:  zlib-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.2.1.tar.xz
-Provides:       bundled(curl) = 8.2.1
+Source2013:     %{external_url}/curl-8.4.0.tar.xz
+Provides:       bundled(curl) = 8.4.0
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -213,10 +208,10 @@ BuildRequires:  pkgconfig(graphite2) >= 0.9.3
 BuildRequires:  pkgconfig(harfbuzz) >= 2.6.8
 BuildRequires:  pkgconfig(harfbuzz-icu) >= 2.6.8
 %else
-Source2025:     %{external_url}/harfbuzz-8.0.0.tar.xz
+Source2025:     %{external_url}/harfbuzz-8.2.2.tar.xz
 Source2026:     %{external_url}/graphite2-minimal-1.3.14.tgz
 Provides:       bundled(graphite2) = 1.3.14
-Provides:       bundled(harfbuzz) = 8.0.0
+Provides:       bundled(harfbuzz) = 8.2.2
 %endif
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(krb5)
@@ -1148,8 +1143,6 @@ export NOCONFIGURE=yes
         --with-system-libfixmath \
         --without-system-libcmis \
         --with-vendor=SUSE \
-        --with-tls=nss \
-        --disable-openssl \
         --with-lang=ALL \
         --disable-fetch-external \
         --with-external-tar="$RPM_SOURCE_DIR" \

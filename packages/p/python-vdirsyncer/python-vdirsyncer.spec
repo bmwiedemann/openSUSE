@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-vdirsyncer
-Version:        0.19.0
+Version:        0.19.2
 Release:        0
 Summary:        CalDAV and CardDAV synchronization module
 License:        BSD-3-Clause

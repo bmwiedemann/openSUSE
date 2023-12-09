@@ -19,7 +19,7 @@
 %define rname audiocd-kio
 %bcond_without released
 Name:           kio_audiocd
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later

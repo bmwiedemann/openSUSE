@@ -148,4 +148,111 @@
     Various HLSL preprocessor fixes for edge cases related to stringification. (forwarded request 1113211 from tobijk)</comment>
     <requestid>1113366</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f8dea0c1404c1282480c029e51d35962</srcmd5>
+    <version>1.10</version>
+    <time>1702158848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10:
+  - libvkd3d
+    Creating pipeline state objects from pipeline state stream descriptions is
+    implemented.
+    Depth-bounds testing is implemented.
+    When the VK_KHR_maintenance2 extension is available, libvkd3d will
+    explicitly specify the usage flags of Vulkan image views. This is
+    particularly useful on MoltenVK, where 2D-array views of 3D textures are
+    subject to usage restrictions.
+    The D3D12_FORMAT_SUPPORT2_UAV_TYPED_LOAD and/or
+    D3D12_FORMAT_SUPPORT2_UAV_TYPED_STORE feature flags are reported for
+    UAV formats when the ‘shaderStorageImageReadWithoutFormat’ and/or
+    ‘shaderStorageImageWriteWithoutFormat’ Vulkan device features are supported.
+    The ID3D12Device5 interface is supported.
+    The ID3D12GraphicsCommandList5 interface is supported.
+    The ID3D12Resource1 interface is supported.
+  - libvkd3d-shader
+    New features for the HLSL source type:
+    Support for the following intrinsic functions: ceil(), degrees(), radians(),
+    fwidth(), tan() tex2Dlod(), tex2Dproj(), texCUBEproj(), and tex3Dproj()
+    Constant folding support for more expression types. In particular:
+    ternary operators and branches, reciprocal square roots, exponentials,
+    logical ‘not’ on booleans, bitwise complements, left/right shifts, ceil(),
+    floor(), frac(), and saturate()
+    Support for dynamic indexing of arrays.
+    Support for ‘break’ and ‘continue’ statements.
+    Support for ‘switch’ statements.
+    The ‘linear’, ‘centroid’, and ‘noperspective’ interpolation modifiers are
+    supported.
+    The ‘RWTexture1DArray’ and ‘RWTexture2DArray’ unordered access view types
+    are supported.
+    ‘[loop]’ attributes are accepted on loops.
+    u/U and l/L suffixes on integer constants.
+    Floating-point values are explicitly clamped to the upper and lower bounds
+    of the target type by ‘ftoi’ and ‘ftou’ instructions when targeting SPIR-V.
+    Similarly, NaNs are flushed to zero. Some hardware/drivers would already do
+    this implicitly, but behaviour for such inputs is undefined as far as
+    SPIR-V is concerned.
+    The VKD3D_SHADER_CONFIG environment variable can be used to modify the
+    behaviour of libvkd3d-shader at run-time, analogous to the existing
+    VKD3D_CONFIG environment variable for libvkd3d. See the README for a list
+    of supported options.
+    When scanning legacy Direct3D bytecode using vkd3d_shader_scan(),
+    descriptor information for shader model 2 and 3 combined resource-sampler
+    pairs is returned in the vkd3d_shader_scan_descriptor_info structure.
+    Note that this information is not yet available for shader model 1 sources,
+    although this will likely be added in a future release.
+    The Direct3D shader assembly target supports the ‘rasteriser ordered view’
+    flag (‘_rov’) on unordered access view declarations.
+    New interfaces:
+    The VKD3D_SHADER_COMPILE_OPTION_BACKWARD_COMPATIBILITY compile option can
+    be used to specify backward compatibility options. The
+    VKD3D_SHADER_COMPILE_OPTION_BACKCOMPAT_MAP_SEMANTIC_NAMES flag is the only
+    currently supported flag, and can be used to specify that shader model 1-3
+    semantic names should be mapped to their shader model 4+ system value
+    equivalents when compiling HLSL sources.
+    The VKD3D_SHADER_COMPILE_OPTION_FRAGMENT_COORDINATE_ORIGIN compile option
+    can be used to specify the origin of fragment coordinates for SPIR-V
+    targets. This is especially useful in OpenGL environments, where the origin
+    may be different than in Direct3D or Vulkan environments.
+    The vkd3d_shader_scan_combined_resource_sampler_info structure extends the
+    vkd3d_shader_compile_info structure, and can be used to retrieve
+    information about the combined resource-sampler pairs used by a shader.
+    This is especially useful when compiling shaders for usage in environments
+    without separate binding points for samplers and resources, like OpenGL.
+    vkd3d_shader_free_scan_combined_resource_sampler_info() is used to free
+    vkd3d_shader_scan_combined_resource_sampler_info structures.
+  - libvkd3d-utils
+    Passing the D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY flag to D3DCompile()
+    and D3DCompile2() will enable mapping shader model 1-3 semantic names to
+    their shader model 4+ system value equivalents.
+    New interfaces:
+    D3DGetBlobPart() is used to retrieve specific parts of DXBC blobs.
+    D3DGetDebugInfo() is used to retrieve debug information from DXBC blobs.
+    D3DGetInputAndOutputSignatureBlob() is used to retrieve input and output
+    signatures from DXBC blobs.
+    D3DGetInputSignatureBlob() is used to retrieve input signatures from DXBC
+    blobs.
+    D3DGetOutputSignatureBlob() is used to retrieve output signatures from DXBC
+    blobs.
+    D3DStripShader() is used to remove specific parts from DXBC blobs.
+  - vkd3d-compiler
+    The ‘--fragment-coordinate-origin’ option can be used to specify the origin
+    of fragment coordinates for SPIR-V targets.
+    The ‘--semantic-compat-map’ option can be used to specify that shader model
+    1-3 semantic names should be mapped to their shader model 4+ system value
+    equivalents when compiling HLSL sources.
+  - vkd3d-dxbc
+    The ‘--list’ and ‘--list-data’ options now also output the offsets of
+    sections inside the input data.
+  - build
+    The minimum required version of Vulkan-Headers for this release is version
+    1.2.148.
+    When available, the libEGL and libOpenGL libraries are used to run the
+    vkd3d tests in additional configurations. These libraries are not used by
+    vkd3d itself.
+    The SONAME_LIBDXCOMPILER configure variable can be used specify the shared
+    object name of the dxcompiler library. When available, it's used to run the
+    vkd3d tests in additional configurations. The dxcompiler library is not
+    used by vkd3d itself. (forwarded request 1132181 from tobijk)</comment>
+    <requestid>1132240</requestid>
+  </revision>
 </revisionlist>

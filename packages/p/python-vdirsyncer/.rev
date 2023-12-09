@@ -221,4 +221,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1102201</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>df256fd3a7f7f73b62d898fc863ea2fa</srcmd5>
+    <version>0.19.2</version>
+    <time>1702158809</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.2:
+  * Improve the performance of ``SingleFileStorage``. :gh:`818`
+  * Properly document some caveats of the Google Contacts
+    storage.
+  * Fix crash when using auth certs. :gh:`1033`
+  * The ``filesystem`` storage can be specified with ``type =
+  * &quot;filesystem/icalendar&quot;`` or ``type = &quot;filesystem/vcard&quot;``.
+    This has not functional impact, and is merely for forward
+    compatibility with the Rust implementation of vdirsyncer.
+  * Python 3.10 and 3.11 are officially supported.
+  * Instructions for integrating with Google CalDav/CardDav have
+    changed.
+  * Applications now need to be registered as &quot;Desktop
+    applications&quot;. Using &quot;Web application&quot; no longer works due
+    to changes on Google's side.
+  * Fixed crash when operating on Google Contacts. :gh:`994`
+  * The ``HTTP_PROXY`` and ``HTTPS_PROXY`` are now respected.
+  * Instructions for integrating with Google CalDav/CardDav have
+    changed.
+  * Applications now need to be registered as &quot;Web Application&quot;.
+  * Various documentation updates.
+
+- fix and reenable tests
+- Remove ifpython3 macro guarding the Provides/Obsoletes
+ * 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch
+- Skip flaky test test_legacy_status</comment>
+    <requestid>1132134</requestid>
+  </revision>
 </revisionlist>

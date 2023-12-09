@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:46:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fix `float("inf")` timeouts in `Event.wait` function. (#846)
+  * Fix pool timeout to account for the total time spent
+    retrying. (#823)
+  * Raise a neater RuntimeError when the correct async deps are
+    not installed. (#826)
+  * Add support for synchronous TLS-in-TLS streams. (#840)
+  * From version 1.0 our async support is now optional, as the
+    package has minimal dependencies by default.
+  * For async support use either `pip install
+    'httpcore[asyncio]'` or `pip install 'httpcore[trio]'`.
+  * The project versioning policy is now explicitly governed by
+    SEMVER. See https://semver.org/.
+  * Async support becomes fully optional. (#809)
+  * Add support for Python 3.12. (#807)
+
+-------------------------------------------------------------------
 Wed Oct 25 11:30:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.18.0:
@@ -15,7 +34,7 @@ Wed Oct 25 11:30:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 -------------------------------------------------------------------
 Sun Sep 10 11:05:24 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
-- update to 0.17.3 
+- update to 0.17.3
   * Support async cancellations, ensuring that the connection pool
     is left in a clean state when cancellations occur. (#726)
   * The networking backend interface has been added to the public API.
@@ -147,7 +166,7 @@ Tue Feb  1 07:47:22 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
     rather than having to assume it's HTTP/2 if the --http2 flag was passed.
   * Log SSL version info / certificate info.
   * Fix broken error messaging when URL scheme is missing, or a non HTTP(S)
-    scheme is used. (Pull #403) 
+    scheme is used. (Pull #403)
 - Inject multibuild to stop a build loop
 
 -------------------------------------------------------------------

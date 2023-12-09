@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.path
-Version:        3.5.0
+Version:        3.7.0
 Release:        0
 Summary:        Miscellaneous path functions for jaraco packages
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.path
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.path/jaraco.path-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 56}

@@ -43,7 +43,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.11.0
+Version:        2023.12.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause

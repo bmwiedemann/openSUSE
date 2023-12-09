@@ -20,7 +20,7 @@
 %global lname   libKPublicTransport%{sover}
 %bcond_without released
 Name:           kpublictransport
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later

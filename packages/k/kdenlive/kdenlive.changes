@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:19:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Fix transparency lost on rendering nested sequences (kde#477771)
+  * Fix guides categories not applied on new document (kde#477617)
+  * Check MLT's render profiles for missing codecs.
+  * Fix crash on auto subtitle with subtitle track selected
+  * Fix qml warning (incorrect number of args)
+  * Fix audio stem export
+  * When pasting clips to another project, disable proxies Fixes #1785
+  * Don't allow creating profile with non standard and non integer fps from a clip Related to #476754
+  * Fix mix not always deleted when moving grouped clips on same track
+  * Fix remap crashes
+  * Ensure timeremap option is disabled when effect is deleted
+  * Time remap: fix changing speed broken / crashing
+
+-------------------------------------------------------------------
 Tue Nov  7 17:04:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.3

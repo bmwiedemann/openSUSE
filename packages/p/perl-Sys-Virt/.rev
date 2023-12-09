@@ -1013,4 +1013,17 @@ new request.</comment>
   - jsc#PED-3279</comment>
     <requestid>1109745</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>4374f54a18ebcf084fc917b0beb1bcd7</srcmd5>
+    <version>9.8.0</version>
+    <time>1702158825</time>
+    <user>dimstar_suse</user>
+    <comment>Latest release of the libvirt perl bindings
+
+- Update to 9.8.0
+  - Add all new APIs and constants in libvirt 9.8.0
+  - jsc#PED-3226, jsc#PED-3279, jsc#PED-4931, jsc#PED-5432,
+    jsc#PED-6851</comment>
+    <requestid>1132178</requestid>
+  </revision>
 </revisionlist>

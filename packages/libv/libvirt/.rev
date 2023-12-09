@@ -4484,4 +4484,20 @@ driver is disabled for ALP. Fix it.
     https://libvirt.org/news.html#v9-9-0-2023-11-01</comment>
     <requestid>1122958</requestid>
   </revision>
+  <revision rev="388" vrev="1">
+    <srcmd5>b5db0b8ab050dde25e79c078fdfee66c</srcmd5>
+    <version>9.10.0</version>
+    <time>1702158588</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream commit 1a2f33cb59 to fix memory corruption in the
+  remote driver
+- Update to libvirt 9.10.0
+  - jsc#PED-3226, jsc#PED-3279, jsc#PED-4931, jsc#PED-5432,
+    jsc#PED-6851
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-10-0-2023-12-01
+- spec: Drop 'Requires: libvirt-daemon-proxy' from the
+  libvirt-daemon-{qemu,xen,lxc,vbox} subpackages</comment>
+    <requestid>1132176</requestid>
+  </revision>
 </revisionlist>

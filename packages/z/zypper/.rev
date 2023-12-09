@@ -2512,4 +2512,12 @@ On SLE15* it should probably go to the same module as zypper itself.
     <comment>Softwarestack update</comment>
     <requestid>1117443</requestid>
   </revision>
+  <revision rev="335" vrev="1">
+    <srcmd5>ab6c39a7a8890a1965738e2dd752009f</srcmd5>
+    <version>1.14.67</version>
+    <time>1702158554</time>
+    <user>dimstar_suse</user>
+    <comment>Softwarestack update</comment>
+    <requestid>1132117</requestid>
+  </revision>
 </revisionlist>

@@ -2258,4 +2258,41 @@
 - Update pypi release to trusted workflow</comment>
     <requestid>1118210</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>96b4ba0cc02fbdd340074bd79df99fa5</srcmd5>
+    <version>9.25.19</version>
+    <time>1702158549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update test-image-MicroOS
+  Incorporate latest changes from upstream MicroOS and
+  also add an encrypted profile build for testing
+
+- Bump version: 9.25.18 → 9.25.19
+
+- Fix typo in workflow overview doc section
+
+- Add missing documentation for oem-unattended-id
+
+- Allow install disk overwrite from cmdline
+  Add rd.kiwi.oem.installdevice=DEVICE. Configures the disk device
+  that should be used in an OEM installation. This overwrites any
+  other oem device setting, e.g device filter or maxdisk and just
+  continues the installation on the given device. However, the
+  device must exist and must be a block special.
+  This Fixes jira#PED-7180
+
+- Update mailmap
+
+- Replace the regex-based loader entry fix with string parsing (#2388)
+  A user building RHEL images ran into issues with the initrd.
+  It turns out that RHEL uses some patches that mean the
+  initrd/linux files in RHEL are not installed to /boot, which trips
+  up the original regex. The new fix doesn't rely on matching the
+  path in boot, instead just finding the initrd/linux files and rewriting
+  them in place.
+  This change also adds the pre-and-post fix loader entries to the debug logs.
+  Reference: https://bugzilla.suse.com/1208701
+  Fixes suse bsc#1208701</comment>
+    <requestid>1132074</requestid>
+  </revision>
 </revisionlist>

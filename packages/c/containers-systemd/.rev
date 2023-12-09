@@ -354,4 +354,14 @@
   * container-certbot-renew.service is a oneshot service</comment>
     <requestid>1074101</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f54fdfbe053ab3b30db36dfb0c90c2ea</srcmd5>
+    <version>0.0+git20231208.299201e</version>
+    <time>1702158551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20231208.299201e:
+  * certbot needs a tty
+  * wsdd: don't run binary to set HOSTNAME</comment>
+    <requestid>1132103</requestid>
+  </revision>
 </revisionlist>

@@ -44,6 +44,7 @@ Patch1:         sendmail-ignore-F-option.patch
 Patch2:         testsuite-gnu-echo.patch
 # PATCH-FIX-UPSTREAM shell: avoid segfault on ${0::0/0~09J} (CVE-2022-48174) https://git.busybox.net/busybox/commit/?id=d417193cf
 Patch3:         ash-fix-segfault-d417193cf.patch
+Patch4:         udhcp6-install-path.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -67,6 +68,9 @@ environment for small or embedded systems. The utilities in BusyBox
 generally have fewer options than their GNU cousins. The options that
 are included provide the expected functionality and behave much like
 their GNU counterparts.
+BusyBox is for emergency and special use cases. Replacing the standard
+tools in a system is not supported. Some tools don't work out of the
+box but need special configuration, like udhcpc, the dhcp client.
 
 %package static
 Summary:        Static linked version of Busybox, a compact UNIX utility collection

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  2 14:14:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.0:
+  * see corresponding dask update:
+  * https://docs.dask.org/en/stable/changelog.html#v2023-12-0
+  * Bokeh 3.3.0 compatibility
+
+-------------------------------------------------------------------
 Thu Nov 16 21:20:48 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 2023.11.0
@@ -479,7 +487,7 @@ Mon Nov 21 19:00:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sun Nov 20 10:38:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to version 2022.11.1 
+- Update to version 2022.11.1
   ## Enhancements
   * Restrict bokeh=3 support (GH#7329) Gabe Joseph (ignored in rpm
     fixed by bokek 3.0.2, see gh#dask/dask#9659)
@@ -861,7 +869,7 @@ Thu Sep  1 06:53:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Pickle worker state machine exceptions (:pr:`6702`) crusaderky
   * Partial matches for worker state machine instructions (:pr:`6704`)
     crusaderky
-  * Automatically mark all WorkerState tests (:pr:`6706`) crusaderky 
+  * Automatically mark all WorkerState tests (:pr:`6706`) crusaderky
 - Add patch support-tornado-6-2.patch:
   * Ignore two new deprecation warnings from Tornado 6.2.
 - Stop pining tornado to <6.2
@@ -947,7 +955,7 @@ Mon Jul 11 02:50:03 UTC 2022 - Arun Persaud <arun@gmx.de>
 -------------------------------------------------------------------
 Fri Jun 24 20:21:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to 2022.6.1 
+- Update to 2022.6.1
   * Highlights
     - This release includes the Worker State Machine refactor. The
       expectation should be that the worker state is its own
@@ -1354,7 +1362,7 @@ Tue Jan 25 18:29:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Jan 25 09:33:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add distributed-fix-python310.patch to fix build with python 3.10 
+- add distributed-fix-python310.patch to fix build with python 3.10
 
 -------------------------------------------------------------------
 Thu Jan 20 16:09:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -1398,7 +1406,7 @@ Thu Jan 20 16:09:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Sep 22 12:55:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Update to version 2021.9.1 
+- Update to version 2021.9.1
   * Revert AMM ReduceReplicas and parallel AMMs updates
   * Run multiple AMMs in parallel
   * AMM ReduceReplicas to iterate only on replicated tasks
@@ -1423,9 +1431,9 @@ Wed Sep 22 12:55:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Active Memory Manager framework + discard excess replicas
   * Add test setup fixture
 - Release version 2021.9.0
-  * Fix add_plugin warnings 
-  * Add list around iterator in handle_missing_dep 
-  * Jupyter-client 7 compatiblity 
+  * Fix add_plugin warnings
+  * Add list around iterator in handle_missing_dep
+  * Jupyter-client 7 compatiblity
   * Replace atop with blockwise
   * Add pytest color to CI
   * Fix test_map and others
@@ -1779,55 +1787,55 @@ Fri Apr  2 10:06:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Tue Mar 30 20:57:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.3.1
-  * Add standalone dashboard page for GPU usage (GH#4556) Jacob 
+  * Add standalone dashboard page for GPU usage (GH#4556) Jacob
     Tomlinson
-  * Handle stream is None case in TCP comm finalizer (GH#4631) 
+  * Handle stream is None case in TCP comm finalizer (GH#4631)
     James Bourbeau
-  * Include LIST_PICKLE in NumPy array serialization (GH#4632)  
+  * Include LIST_PICKLE in NumPy array serialization (GH#4632)
     James Bourbeau
-  * Rename annotation plugin in test_highlevelgraph.py (GH#4618) 
+  * Rename annotation plugin in test_highlevelgraph.py (GH#4618)
     James Bourbeau
   * UCX use nbytes instead of len (GH#4621) Mads R. B. Kristensen
-  * Skip NumPy and pandas tests if not importable (GH#4563) Ben 
+  * Skip NumPy and pandas tests if not importable (GH#4563) Ben
     Greiner
-  * Remove utils.shutting_down in favor of sys.is_finalizing 
+  * Remove utils.shutting_down in favor of sys.is_finalizing
     (GH#4624) James Bourbeau
   * Handle async clients when closing (GH#4623) Matthew Rocklin
   * Drop log from remove_key_from_stealable (GH#4609) jakirkham
-  * Introduce events log length config option (GH#4615) Fabian 
+  * Introduce events log length config option (GH#4615) Fabian
     Gebhart
-  * Upstream config serialization and inheritance (GH#4372) Jacob 
+  * Upstream config serialization and inheritance (GH#4372) Jacob
     Tomlinson
-  * Add check to scheduler creation in SpecCluster (GH#4605) Jacob 
+  * Add check to scheduler creation in SpecCluster (GH#4605) Jacob
     Tomlinson
-  * Make length of events deque configurable (GH#4604) Fabian 
+  * Make length of events deque configurable (GH#4604) Fabian
     Gebhart
-  * Add explicit fetch state to worker TaskState (GH#4470) Gil 
+  * Add explicit fetch state to worker TaskState (GH#4470) Gil
     Forsyth
   * Update develop.rst (GH#4603) Florian Jetter
-  * pickle_loads(): Handle empty memoryview (GH#4595) Mads R. B. 
+  * pickle_loads(): Handle empty memoryview (GH#4595) Mads R. B.
     Kristensen
-  * Switch documentation builds for PRs to readthedocs (GH#4599) 
+  * Switch documentation builds for PRs to readthedocs (GH#4599)
     James Bourbeau
   * Track frame sizes along with frames (GH#4593) jakirkham
   * Add support for a list of keys when using batch_size in client.
     map (GH#4592) Sultan Orazbayev
-  * If SpecCluster fails to start attempt to gracefully close out 
+  * If SpecCluster fails to start attempt to gracefully close out
     again (GH#4590) Jacob Tomlinson
   * Multi-lock extension (GH#4503) Mads R. B. Kristensen
   * Update PipInstall plugin command (GH#4584) James Bourbeau
-  * IPython magics: remove deprecated ioloop workarounds (GH#4530) 
+  * IPython magics: remove deprecated ioloop workarounds (GH#4530)
     Min RK
-  * Add GitHub actions workflow to cancel duplicate builds 
+  * Add GitHub actions workflow to cancel duplicate builds
     (GH#4581) James Bourbeau
-  * Remove outdated macOS build badge from README (GH#4576) James 
+  * Remove outdated macOS build badge from README (GH#4576) James
     Bourbeau
   * Dask master -> main (GH#4569) Julia Signell
   * Drop support for Python 3.6 (GH#4390) James Bourbeau
   * Add docstring for dashboard_link property (GH#4572) Doug Davis
-  * Change default branch from master to main (GH#4495) Julia 
+  * Change default branch from master to main (GH#4495) Julia
     Signell
-  * Msgpack handles extract serialize (GH#4531) Mads R. B. 
+  * Msgpack handles extract serialize (GH#4531) Mads R. B.
     Kristensen
 - Drop importorskip-numpy-tests.patch merged upstream
 - Skip python36 build. Upstream dropped support for Python < 3.7
@@ -1887,13 +1895,13 @@ Sun Feb 21 18:19:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Feb 15 11:56:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Unskip python36 build. Just skip installing optional 
-  python36-sparse for the tests. 
+- Unskip python36 build. Just skip installing optional
+  python36-sparse for the tests.
 
 -------------------------------------------------------------------
 Fri Feb 12 14:30:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 36 build 
+- skip python 36 build
 
 -------------------------------------------------------------------
 Mon Feb  8 14:32:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -1904,15 +1912,15 @@ Mon Feb  8 14:32:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
     (GH#4440) Florian Jetter
   * DOC: Autoreformat all functions docstrings (GH#4475) Matthias
     Bussonnier
-  * Use cached version of is_coroutine_function in stream handling 
+  * Use cached version of is_coroutine_function in stream handling
     to (GH#4481) Ian Rose
   * Optimize transitions (GH#4451) jakirkham
   * Create PULL_REQUEST_TEMPLATE.md (GH#4476) Ray Bell
-  * DOC: typo, directives ends with 2 colons :: (GH#4472) Matthias 
+  * DOC: typo, directives ends with 2 colons :: (GH#4472) Matthias
     Bussonnier
-  * DOC: Proper numpydoc syntax for distributed/protocol/*.py 
+  * DOC: Proper numpydoc syntax for distributed/protocol/*.py
     (GH#4473) Matthias Bussonnier
-  * Update pytest.skip usage in test_server_listen (GH#4467) James 
+  * Update pytest.skip usage in test_server_listen (GH#4467) James
     Bourbeau
   * Unify annotations (GH#4406) Ian Rose
   * Added worker resources from config (GH#4456) Tom Augspurger
@@ -1928,57 +1936,57 @@ Mon Feb  8 14:32:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Thu Jan 28 12:31:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2021.1.1
-  * Make system monitor interval configurable (GH#4447) Matthew 
+  * Make system monitor interval configurable (GH#4447) Matthew
     Rocklin
   * Add uvloop config value (GH#4448) Matthew Rocklin
   * Additional optimizations to stealing (GH#4445) jakirkham
   * Give clusters names (GH#4426) Jacob Tomlinson
   * Use worker comm pool in Semaphore (GH#4195) Florian Jetter
-  * Set runspec on all new tasks to avoid deadlocks (GH#4432) 
+  * Set runspec on all new tasks to avoid deadlocks (GH#4432)
     Florian Jetter
-  * Support TaskState objects in story methods (GH#4434) Matthew 
+  * Support TaskState objects in story methods (GH#4434) Matthew
     Rocklin
-  * Support missing event loop in Client.asynchronous (GH#4436) 
+  * Support missing event loop in Client.asynchronous (GH#4436)
     Matthew Rocklin
-  * Don’t require network to inspect tests (GH#4433) Matthew 
+  * Don’t require network to inspect tests (GH#4433) Matthew
     Rocklin
 - Changelog for 2021.1.0
   * Add time started to scheduler info (GH#4425) Jacob Tomlinson
   * Log adaptive error (GH#4422) Jacob Tomlinson
   * Xfail normalization tests (GH#4411) Jacob Tomlinson
-  * Use dumps_msgpack and loads_msgpack when packing high level 
+  * Use dumps_msgpack and loads_msgpack when packing high level
     graphs (GH#4409) Mads R. B. Kristensen
-  * Add nprocs auto option to dask-worker CLI (GH#4377) Jacob 
+  * Add nprocs auto option to dask-worker CLI (GH#4377) Jacob
     Tomlinson
-  * Type annotation of _reevaluate_occupancy_worker (GH#4398) 
+  * Type annotation of _reevaluate_occupancy_worker (GH#4398)
     jakirkham
   * Type TaskGroup in active_states (GH#4408) jakirkham
   * Fix test_as_current_is_thread_local (GH#4402) jakirkham
-  * Use list comprehensions to bind TaskGroup type (GH#4401) 
+  * Use list comprehensions to bind TaskGroup type (GH#4401)
     jakirkham
   * Make tests pass after 2028 (GH#4403) Bernhard M. Wiedemann
-  * Fix compilation warnings, decide_worker now a C func, stealing 
+  * Fix compilation warnings, decide_worker now a C func, stealing
     improvements (GH#4375) jakirkham
   * Drop custom __eq__ from Status (GH#4270) jakirkham
-  * test_performance_report: skip without bokeh (GH#4388) Bruno 
+  * test_performance_report: skip without bokeh (GH#4388) Bruno
     Pagani
-  * Nanny now respects dask settings from ctx mgr (GH#4378) 
+  * Nanny now respects dask settings from ctx mgr (GH#4378)
     Florian Jetter
   * Better task duration estimates for outliers (GH#4213) selshowk
   * Dask internal inherit config (GH#4364) Jacob Tomlinson
-  * Provide setup.py option to profile Cython code (GH#4362) 
+  * Provide setup.py option to profile Cython code (GH#4362)
     jakirkham
-  * Optimizations of *State and Task* objects and stealing 
+  * Optimizations of *State and Task* objects and stealing
     (GH#4358) jakirkham
-  * Cast SortedDict s to dict s in a few key places & other minor 
+  * Cast SortedDict s to dict s in a few key places & other minor
     changes (GH#4355) jakirkham
-  * Use task annotation priorities for user-level priorities 
+  * Use task annotation priorities for user-level priorities
     (GH#4354) James Bourbeau
-  * Added docs to highlevelgraph pack/unpack (GH#4352) Mads R. B. 
+  * Added docs to highlevelgraph pack/unpack (GH#4352) Mads R. B.
     Kristensen
-  * Optimizations in notable functions used by transitions 
+  * Optimizations in notable functions used by transitions
     (GH#4351) jakirkham
-  * Silence exception when releasing futures on process shutdown 
+  * Silence exception when releasing futures on process shutdown
     (GH#4309) Benjamin Zaitlen
 - Deboard blind passenger requirement: scikit-build is only
   available for Python > 3.6 (because of SciPy) and not needed here
@@ -2018,8 +2026,8 @@ Thu Dec 24 01:14:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Thu Dec  3 12:06:24 UTC 2020 - Markéta Machová <mmachova@suse.com>
 
 - Launch tests
-  * around 70 of them are inconsistently (sometimes they pass, sometimes 
-    fail) broken by new pytest-asyncio (and similar number of other tests 
+  * around 70 of them are inconsistently (sometimes they pass, sometimes
+    fail) broken by new pytest-asyncio (and similar number of other tests
     got deselected mostly because of similar names)
 
 -------------------------------------------------------------------

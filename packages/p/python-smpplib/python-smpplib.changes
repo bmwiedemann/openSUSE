@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:04:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Fix: correct UCS2 part length following #184, fixes #216
+- update to 2.2.2:
+  * Added python 3.10 tests to CircleCI
+  * fix socket recv error being silently ignored
+  * Refactored Client.read_pdu()
+  * Refactored Client.send_pdu()
+  * increment sequence of commands as spec (fixes #214)
+
+-------------------------------------------------------------------
 Wed May  4 07:55:32 UTC 2022 - pgajdos@suse.com
 
 - added patches
@@ -14,7 +26,7 @@ Mon Nov 22 11:07:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Mon Nov  8 10:09:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add missing six buildrequires 
+- add missing six buildrequires
 
 -------------------------------------------------------------------
 Mon Oct 25 19:33:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>

@@ -590,4 +590,12 @@
     <comment>Fix for bsc#1203689 - [tw 20220921] remote-viewer fails to start: libsoup3 symbols detected.</comment>
     <requestid>1029881</requestid>
   </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>d5b12a755091d009bdd446aa2abb8308</srcmd5>
+    <version>11.0</version>
+    <time>1702158826</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1132184</requestid>
+  </revision>
 </revisionlist>

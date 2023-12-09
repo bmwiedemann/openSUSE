@@ -18,12 +18,13 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.030
+Version:        6.31.0
 Release:        0
+%define cpan_version 6.031
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution builder; installer not included!
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -37,7 +38,7 @@ BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
 BuildRequires:  perl(CPAN::Meta::Converter) >= 2.101550
 BuildRequires:  perl(CPAN::Meta::Merge)
 BuildRequires:  perl(CPAN::Meta::Prereqs) >= 2.120630
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121000
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121
 BuildRequires:  perl(CPAN::Meta::Validator) >= 2.101550
 BuildRequires:  perl(CPAN::Uploader) >= 0.103004
 BuildRequires:  perl(Config::INI::Reader)
@@ -112,7 +113,7 @@ Requires:       perl(Archive::Tar)
 Requires:       perl(CPAN::Meta::Converter) >= 2.101550
 Requires:       perl(CPAN::Meta::Merge)
 Requires:       perl(CPAN::Meta::Prereqs) >= 2.120630
-Requires:       perl(CPAN::Meta::Requirements) >= 2.121000
+Requires:       perl(CPAN::Meta::Requirements) >= 2.121
 Requires:       perl(CPAN::Meta::Validator) >= 2.101550
 Requires:       perl(CPAN::Uploader) >= 0.103004
 Requires:       perl(Config::INI::Reader)
@@ -173,6 +174,147 @@ Requires:       perl(experimental)
 Requires:       perl(namespace::autoclean)
 Requires:       perl(parent)
 Requires:       perl(version)
+Provides:       perl(Dist::Zilla) = %{version}
+Provides:       perl(Dist::Zilla::App) = %{version}
+Provides:       perl(Dist::Zilla::App::Command) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::add) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::authordeps) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::build) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::clean) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::install) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::listdeps) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::new) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::nop) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::release) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::run) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::setup) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::smoke) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::test) = %{version}
+Provides:       perl(Dist::Zilla::App::Command::version) = %{version}
+Provides:       perl(Dist::Zilla::App::Tester) = %{version}
+Provides:       perl(Dist::Zilla::Chrome::Term) = %{version}
+Provides:       perl(Dist::Zilla::Chrome::Test) = %{version}
+Provides:       perl(Dist::Zilla::Dist::Builder) = %{version}
+Provides:       perl(Dist::Zilla::Dist::Minter) = %{version}
+Provides:       perl(Dist::Zilla::File::FromCode) = %{version}
+Provides:       perl(Dist::Zilla::File::InMemory) = %{version}
+Provides:       perl(Dist::Zilla::File::OnDisk) = %{version}
+Provides:       perl(Dist::Zilla::MVP::Assembler) = %{version}
+Provides:       perl(Dist::Zilla::MVP::Assembler::GlobalConfig) = %{version}
+Provides:       perl(Dist::Zilla::MVP::Assembler::Zilla) = %{version}
+Provides:       perl(Dist::Zilla::MVP::Reader::Finder) = %{version}
+Provides:       perl(Dist::Zilla::MVP::Reader::Perl) = %{version}
+Provides:       perl(Dist::Zilla::MVP::RootSection) = %{version}
+Provides:       perl(Dist::Zilla::MVP::Section) = %{version}
+Provides:       perl(Dist::Zilla::MintingProfile::Default) = %{version}
+Provides:       perl(Dist::Zilla::Path) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::AutoPrereqs) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::AutoVersion) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::CPANFile) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::ConfirmRelease) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::DistINI) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::Encoding) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::ExecDir) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::ExtraTests) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::FakeRelease) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::FileFinder::ByName) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::FileFinder::Filter) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::FinderCode) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::GatherDir) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::GatherDir::Template) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::GatherFile) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::GenerateFile) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::InlineFiles) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::License) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MakeMaker) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MakeMaker::Runner) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::Manifest) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::ManifestSkip) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MetaConfig) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MetaJSON) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MetaNoIndex) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MetaResources) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MetaTests) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::MetaYAML) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::ModuleBuild) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::ModuleShareDirs) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::NextRelease) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::PkgDist) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::PkgVersion) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::PodCoverageTests) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::PodSyntaxTests) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::PodVersion) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::Prereqs) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::PruneCruft) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::PruneFiles) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::Readme) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::RemovePrereqs) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::ShareDir) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::TemplateModule) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::TestRelease) = %{version}
+Provides:       perl(Dist::Zilla::Plugin::UploadToCPAN) = %{version}
+Provides:       perl(Dist::Zilla::PluginBundle::Basic) = %{version}
+Provides:       perl(Dist::Zilla::PluginBundle::Classic) = %{version}
+Provides:       perl(Dist::Zilla::PluginBundle::FakeClassic) = %{version}
+Provides:       perl(Dist::Zilla::PluginBundle::Filter) = %{version}
+Provides:       perl(Dist::Zilla::Pragmas) = %{version}
+Provides:       perl(Dist::Zilla::Prereqs) = %{version}
+Provides:       perl(Dist::Zilla::Role::AfterBuild) = %{version}
+Provides:       perl(Dist::Zilla::Role::AfterMint) = %{version}
+Provides:       perl(Dist::Zilla::Role::AfterRelease) = %{version}
+Provides:       perl(Dist::Zilla::Role::ArchiveBuilder) = %{version}
+Provides:       perl(Dist::Zilla::Role::BeforeArchive) = %{version}
+Provides:       perl(Dist::Zilla::Role::BeforeBuild) = %{version}
+Provides:       perl(Dist::Zilla::Role::BeforeMint) = %{version}
+Provides:       perl(Dist::Zilla::Role::BeforeRelease) = %{version}
+Provides:       perl(Dist::Zilla::Role::BuildPL) = %{version}
+Provides:       perl(Dist::Zilla::Role::BuildRunner) = %{version}
+Provides:       perl(Dist::Zilla::Role::Chrome) = %{version}
+Provides:       perl(Dist::Zilla::Role::ConfigDumper) = %{version}
+Provides:       perl(Dist::Zilla::Role::EncodingProvider) = %{version}
+Provides:       perl(Dist::Zilla::Role::ExecFiles) = %{version}
+Provides:       perl(Dist::Zilla::Role::File) = %{version}
+Provides:       perl(Dist::Zilla::Role::FileFinder) = %{version}
+Provides:       perl(Dist::Zilla::Role::FileFinderUser) = %{version}
+Provides:       perl(Dist::Zilla::Role::FileGatherer) = %{version}
+Provides:       perl(Dist::Zilla::Role::FileInjector) = %{version}
+Provides:       perl(Dist::Zilla::Role::FileMunger) = %{version}
+Provides:       perl(Dist::Zilla::Role::FilePruner) = %{version}
+Provides:       perl(Dist::Zilla::Role::InstallTool) = %{version}
+Provides:       perl(Dist::Zilla::Role::LicenseProvider) = %{version}
+Provides:       perl(Dist::Zilla::Role::MetaProvider) = %{version}
+Provides:       perl(Dist::Zilla::Role::MintingProfile) = %{version}
+Provides:       perl(Dist::Zilla::Role::MintingProfile::ShareDir) = %{version}
+Provides:       perl(Dist::Zilla::Role::ModuleMaker) = %{version}
+Provides:       perl(Dist::Zilla::Role::MutableFile) = %{version}
+Provides:       perl(Dist::Zilla::Role::NameProvider) = %{version}
+Provides:       perl(Dist::Zilla::Role::PPI) = %{version}
+Provides:       perl(Dist::Zilla::Role::Plugin) = %{version}
+Provides:       perl(Dist::Zilla::Role::PluginBundle) = %{version}
+Provides:       perl(Dist::Zilla::Role::PluginBundle::Easy) = %{version}
+Provides:       perl(Dist::Zilla::Role::PrereqScanner) = %{version}
+Provides:       perl(Dist::Zilla::Role::PrereqSource) = %{version}
+Provides:       perl(Dist::Zilla::Role::ReleaseStatusProvider) = %{version}
+Provides:       perl(Dist::Zilla::Role::Releaser) = %{version}
+Provides:       perl(Dist::Zilla::Role::ShareDir) = %{version}
+Provides:       perl(Dist::Zilla::Role::Stash) = %{version}
+Provides:       perl(Dist::Zilla::Role::Stash::Authors) = %{version}
+Provides:       perl(Dist::Zilla::Role::Stash::Login) = %{version}
+Provides:       perl(Dist::Zilla::Role::StubBuild) = %{version}
+Provides:       perl(Dist::Zilla::Role::TestRunner) = %{version}
+Provides:       perl(Dist::Zilla::Role::TextTemplate) = %{version}
+Provides:       perl(Dist::Zilla::Role::VersionProvider) = %{version}
+Provides:       perl(Dist::Zilla::Stash::Mint) = %{version}
+Provides:       perl(Dist::Zilla::Stash::PAUSE) = %{version}
+Provides:       perl(Dist::Zilla::Stash::Rights) = %{version}
+Provides:       perl(Dist::Zilla::Stash::User) = %{version}
+Provides:       perl(Dist::Zilla::Tester) = %{version}
+Provides:       perl(Dist::Zilla::Tutorial) = %{version}
+Provides:       perl(Dist::Zilla::Types) = %{version}
+Provides:       perl(Dist::Zilla::Util) = %{version}
+Provides:       perl(Dist::Zilla::Util::AuthorDeps) = %{version}
+Provides:       perl(Test::DZil) = %{version}
+%define         __perllib_provides /bin/true
 Recommends:     perl(App::cpanminus)
 Recommends:     perl(Archive::Tar::Wrapper) >= 0.15
 Recommends:     perl(Data::OptList) >= 0.110
@@ -195,7 +337,7 @@ If you have access to the web, you can learn more and find an interactive
 tutorial at *at https://dzil.org/*. If not, try Dist::Zilla::Tutorial.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

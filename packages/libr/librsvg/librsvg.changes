@@ -339,6 +339,15 @@ Fri Mar 18 01:42:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   following upstream changes.
 
 -------------------------------------------------------------------
+Fri Mar 18 01:42:20 UTC 2022 - Federico Mena Quintero <federico@suse.com>
+
+- Update to version 2.52.10:
+
+  + Fix arbitrary file read when href has special characters.
+
+- bsc#1213502 - CVE-2023-38633 - directory traversal in URI decoder.
+
+-------------------------------------------------------------------
 Fri Mar 18 01:42:20 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 2.52.8:

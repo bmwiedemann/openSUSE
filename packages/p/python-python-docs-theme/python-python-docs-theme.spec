@@ -17,12 +17,12 @@
 
 
 Name:           python-python-docs-theme
-Version:        2023.7
+Version:        2023.9
 Release:        0
 Summary:        The Sphinx theme for the CPython docs and related projects
 License:        Python-2.0
 Group:          Development/Languages/Python
-URL:            https://docs.python.org
+URL:            https://github.com/python/python-docs-theme
 Source:         https://files.pythonhosted.org/packages/source/p/python-docs-theme/python_docs_theme-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

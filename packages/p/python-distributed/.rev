@@ -928,4 +928,12 @@
  * Reduced scheduler CPU load for large graphs (forwarded request 1127182 from mimi_vx)</comment>
     <requestid>1127185</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>6c53080109de993fa5e85004f7f83316</srcmd5>
+    <version>2023.12.0</version>
+    <time>1702158850</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1132243</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Dec  2 14:09:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.0:
+  * Bokeh 3.3.0 compatibility
+  * Add ``network`` marker to
+    ``test_pyarrow_filesystem_option_real_data``
+  * Bump GPU CI to CUDA 11.8 (:pr:`10656`)
+  * Tokenize ``pandas`` offsets deterministically
+  * Add tokenize ``pd.NA`` functionality
+  * Update gpuCI ``RAPIDS_VER`` to ``24.02`` (:pr:`10636`)
+  * Fix precision handling in ``array.linalg.norm`` (:pr:`10556`)
+    `joanrue`_
+  * Add ``axis`` argument to ``DataFrame.clip`` and
+    ``Series.clip`` (:pr:`10616`) `Richard (Rick) Zamora`_
+  * Update changelog entry for in-memory rechunking (:pr:`10630`)
+    `Florian Jetter`_
+  * Fix flaky ``test_resources_reset_after_cancelled_task``
+  * Bump GPU CI to CUDA 11.8
+  * Bump ``conda-incubator/setup-miniconda``
+  * Add debug logs to P2P scheduler plugin
+  * ``O(1)`` access for ``/info/task/`` endpoint
+  * Remove stringification from shuffle annotations
+  * Don't cast ``int`` metrics to ``float``
+  * Drop asyncio TCP backend
+  * Add offload support to ``context_meter.add_callback``
+  * Test that ``sync()`` propagates contextvars
+  * Fix ``test_statistical_profiling_cycle``
+  * Replace ``Client.register_plugin`` s ``idempotent`` argument
+    with ``.idempotent`` attribute on plugins
+  * Fix test report generation
+  * Install ``pyarrow-hotfix`` on ``mindeps-pandas`` CI
+  * Reduce memory usage of scheduler process - optimize
+    ``scheduler.py::TaskState`` class
+  * Update cuDF test with explicit ``dtype=object``
+  * Fix ``Cluster`` / ``SpecCluster`` calls to async close
+    methods
+
+-------------------------------------------------------------------
 Thu Nov 16 21:26:58 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 2023.11.0
@@ -127,7 +165,7 @@ Sat Jun 10 12:27:59 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon Jun  5 23:42:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Tighten bokeh requirement to match distributed. 
+- Tighten bokeh requirement to match distributed.
 
 -------------------------------------------------------------------
 Fri May 26 19:59:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
@@ -413,7 +451,7 @@ Wed Mar  8 09:37:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Run GPU tests on python 3.8 & 3.10 (:pr:`9940`)
   * Fix ``test_to_timestamp`` for ``pandas`` 2.0 (:pr:`9932`)
   * Fix an error with ``groupby`` ``value_counts`` for ``pandas``
-    2.0 compatibility 
+    2.0 compatibility
   * Config converter: replace all dashes with underscores
 
 -------------------------------------------------------------------
@@ -871,7 +909,7 @@ Thu Sep  1 06:57:11 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
    `Michael Milton`_
   * Update test_plot_multiple for upcoming bokeh release (:pr:`9261`)
     `James Bourbeau`_
-  * Add typing to common array properties (:pr:`9255`) `Illviljan`_ 
+  * Add typing to common array properties (:pr:`9255`) `Illviljan`_
 
 -------------------------------------------------------------------
 Mon Jul 11 02:47:49 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -1235,7 +1273,7 @@ Tue Jan 25 22:07:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Jan 25 09:35:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- reenable python 3.10 build as distributed is also reenabled 
+- reenable python 3.10 build as distributed is also reenabled
 
 -------------------------------------------------------------------
 Thu Jan 20 16:23:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -1259,7 +1297,7 @@ Thu Jan 20 16:23:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Sep 22 12:50:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Update to 2021.09.1 
+- Update to 2021.09.1
   * Fix groupby for future pandas
   * Remove warning filters in tests that are no longer needed
   * Add link to diagnostic visualize function in local diagnostic
@@ -1537,7 +1575,7 @@ Fri Jul 16 09:25:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 -------------------------------------------------------------------
 Tue May 18 10:12:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
- 
+
 - update to version 2021.5.0
   * Remove deprecated kind kwarg to comply with pandas 1.3.0
     (GH#7653) Julia Signell
@@ -1644,7 +1682,7 @@ Fri Apr  9 13:47:13 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Reenable 32bit tests after distributed is not cythonized anymore
   gh#dask/dask#7489
-  
+
 -------------------------------------------------------------------
 Sun Apr  4 16:38:31 UTC 2021 - Arun Persaud <arun@gmx.de>
 
@@ -1672,101 +1710,101 @@ Sun Apr  4 16:38:31 UTC 2021 - Arun Persaud <arun@gmx.de>
 Tue Mar 30 21:47:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.3.1
-  * Add a dispatch for is_categorical_dtype to handle non-pandas 
+  * Add a dispatch for is_categorical_dtype to handle non-pandas
     objects (GH#7469) brandon-b-miller
-  * Use multiprocessing.Pool in test_read_text (GH#7472) John A 
+  * Use multiprocessing.Pool in test_read_text (GH#7472) John A
     Kirkham
-  * Add missing meta kwarg to gufunc class (GH#7423) Peter Andreas 
+  * Add missing meta kwarg to gufunc class (GH#7423) Peter Andreas
     Entschev
   * Example for memory-mapped Dask array (GH#7380) Dieter Weber
-  * Fix NumPy upstream failures xfail pandas and fastparquet 
+  * Fix NumPy upstream failures xfail pandas and fastparquet
     failures (GH#7441) Julia Signell
   * Fix bug in repartition with freq (GH#7357) Ruben van de Geer
-  * Fix __array_function__ dispatching for tril/triu (GH#7457) 
+  * Fix __array_function__ dispatching for tril/triu (GH#7457)
     Peter Andreas Entschev
-  * Use concurrent.futures.Executors in a few tests (GH#7429) John 
+  * Use concurrent.futures.Executors in a few tests (GH#7429) John
     A Kirkham
   * Require NumPy >=1.16 (GH#7383) Guido Imperiale
   * Minor sort_values housekeeping (GH#7462) Ryan Williams
-  * Ensure natural sort order in parquet part paths (GH#7249) Ryan 
+  * Ensure natural sort order in parquet part paths (GH#7249) Ryan
     Williams
-  * Remove global env mutation upon running test_config.py 
+  * Remove global env mutation upon running test_config.py
     (GH#7464) Hristo
   * Update NumPy intersphinx URL (GH#7460) Gabe Joseph
   * Add rot90 (GH#7440) Trevor Manz
-  * Update docs for required package for endpoint (GH#7454) Nick 
+  * Update docs for required package for endpoint (GH#7454) Nick
     Vazquez
   * Master -> main in slice_array docstring (GH#7453) Gabe Joseph
   * Expand dask.utils.is_arraylike docstring (GH#7445) Doug Davis
-  * Simplify BlockwiseIODeps importing (GH#7420) Richard (Rick) 
+  * Simplify BlockwiseIODeps importing (GH#7420) Richard (Rick)
     Zamora
   * Update layer annotation packing method (GH#7430) James Bourbeau
-  * Drop duplicate test in test_describe_empty (GH#7431) John A 
+  * Drop duplicate test in test_describe_empty (GH#7431) John A
     Kirkham
   * Add Series.dot method to dataframe module (GH#7236) Madhu94
   * Added df kurtosis-method and testing (GH#7273) Jan Borchmann
-  * Avoid quadratic-time performance for HLG culling (GH#7403) 
+  * Avoid quadratic-time performance for HLG culling (GH#7403)
     Bruce Merry
-  * Temporarily skip problematic sparse test (GH#7421) James 
+  * Temporarily skip problematic sparse test (GH#7421) James
     Bourbeau
   * Update some CI workflow names (GH#7422) James Bourbeau
   * Fix HDFS test (GH#7418) Julia Signell
-  * Make changelog subtitles match the hierarchy (GH#7419) Julia 
+  * Make changelog subtitles match the hierarchy (GH#7419) Julia
     Signell
-  * Add support for normalize in value_counts (GH#7342) Julia 
+  * Add support for normalize in value_counts (GH#7342) Julia
     Signell
-  * Avoid unnecessary imports for HLG Layer unpacking and 
+  * Avoid unnecessary imports for HLG Layer unpacking and
     materialization (GH#7381) Richard (Rick) Zamora
   * Bincount fix slicing (GH#7391) Genevieve Buckley
   * Add sliding_window_view (GH#7234) Deepak Cherian
   * Fix typo in docs/source/develop.rst (GH#7414) Hristo
-  * Switch documentation builds for PRs to readthedocs (GH#7397) 
+  * Switch documentation builds for PRs to readthedocs (GH#7397)
     James Bourbeau
   * Adds sort_values to dask.DataFrame (GH#7286) gerrymanoim
   * Pin sqlalchemy<1.4.0 in CI (GH#7405) James Bourbeau
   * Comment fixes (GH#7215) Ryan Williams
   * Dead code removal / fixes (GH#7388) Ryan Williams
-  * Use single thread for pa.Table.from_pandas calls (GH#7347) 
+  * Use single thread for pa.Table.from_pandas calls (GH#7347)
     Richard (Rick) Zamora
   * Replace 'container' with 'image' (GH#7389) James Lamb
   * DOC hyperlink repartition (GH#7394) Ray Bell
-  * Pass delimiter to fsspec in bag.read_text (GH#7349) Martin 
+  * Pass delimiter to fsspec in bag.read_text (GH#7349) Martin
     Durant
   * Update read_hdf default mode to "r" (GH#7039) rs9w33
-  * Embed literals in SubgraphCallable when packing Blockwise 
+  * Embed literals in SubgraphCallable when packing Blockwise
     (GH#7353) Mads R. B. Kristensen
   * Update test_hdf.py to not reuse file handlers (GH#7044) rs9w33
-  * Require additional dependencies: cloudpickle, partd, fsspec, 
+  * Require additional dependencies: cloudpickle, partd, fsspec,
     toolz (GH#7345) Julia Signell
-  * Prepare Blockwise + IO infrastructure (GH#7281) Richard (Rick) 
+  * Prepare Blockwise + IO infrastructure (GH#7281) Richard (Rick)
     Zamora
   * Remove duplicated imports from test_slicing.py (GH#7365) Hristo
   * Add test deps for pip development (GH#7360) Julia Signell
-  * Support int slicing for non-NumPy arrays (GH#7364) Peter 
+  * Support int slicing for non-NumPy arrays (GH#7364) Peter
     Andreas Entschev
-  * Automatically cancel previous CI builds (GH#7348) James 
+  * Automatically cancel previous CI builds (GH#7348) James
     Bourbeau
-  * dask.array.asarray should handle case where xarray class is in 
+  * dask.array.asarray should handle case where xarray class is in
     top-level namespace (GH#7335) Tom White
-  * HighLevelGraph length without materializing layers (GH#7274) 
+  * HighLevelGraph length without materializing layers (GH#7274)
     Gabe Joseph
   * Drop support for Python 3.6 (GH#7006) James Bourbeau
-  * Fix fsspec usage in create_metadata_file (GH#7295) Richard 
+  * Fix fsspec usage in create_metadata_file (GH#7295) Richard
     (Rick) Zamora
-  * Change default branch from master to main (GH#7198) Julia 
+  * Change default branch from master to main (GH#7198) Julia
     Signell
   * Add Xarray to CI software environment (GH#7338) James Bourbeau
-  * Update repartition argument name in error text (GH#7336) Eoin 
+  * Update repartition argument name in error text (GH#7336) Eoin
     Shanaghy
-  * Run upstream tests based on commit message (GH#7329) James 
+  * Run upstream tests based on commit message (GH#7329) James
     Bourbeau
-  * Use pytest.register_assert_rewrite on util modules (GH#7278) 
+  * Use pytest.register_assert_rewrite on util modules (GH#7278)
     Bruce Merry
-  * Add example on using specific chunk sizes in from_array() 
+  * Add example on using specific chunk sizes in from_array()
     (GH#7330) James Lamb
   * Move NumPy skip into test (GH#7247) Julia Signell
 - Update package descriptions
-- Add dask-delayed and dask-diagnostics packages 
+- Add dask-delayed and dask-diagnostics packages
 - Drop dask-multiprocessing package merged into main
 - Skip python36: upstream dropped support for Python < 3.7
 - Drop dask-pr7247-numpyskip.patch merged upstream

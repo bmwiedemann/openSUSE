@@ -1,7 +1,7 @@
 #
 # spec file for package python-smpplib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smpplib
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        SMPP library for Python
 License:        LGPL-2.0-only

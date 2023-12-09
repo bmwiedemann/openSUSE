@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-threadpoolctl
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Thread-pool Controls
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/joblib/threadpoolctl
 Source:         https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}

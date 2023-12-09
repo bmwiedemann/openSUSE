@@ -19,7 +19,7 @@
 %define rname dragon
 %bcond_without released
 Name:           dragonplayer
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later

@@ -127,7 +127,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        9.9.0
+Version:        9.10.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -161,8 +161,8 @@ Requires:       %{name}-libs = %{version}-%{release}
 BuildRequires:  gettext-tools
 BuildRequires:  meson >= 0.56.0
 BuildRequires:  ninja
-# Needed for virkmodtest in 'make check'
-BuildRequires:  modutils
+# Needed for modprobe and tests/virkmodtest
+BuildRequires:  kmod
 BuildRequires:  pkgconfig(systemd)
 %if %{with_libxl}
 BuildRequires:  xen-devel
@@ -184,10 +184,8 @@ BuildRequires:  libxslt
 BuildRequires:  perl
 BuildRequires:  python3
 BuildRequires:  python3-docutils
+BuildRequires:  python3-pytest
 BuildRequires:  readline-devel
-# Be conservative and require rpcgen in case any patches touch
-# remote protocol definitions
-BuildRequires:  rpcgen
 # For pool-build probing for existing pools
 BuildRequires:  libblkid-devel >= 2.17
 BuildRequires:  libpciaccess0-devel >= 0.10.9
@@ -658,7 +656,6 @@ Summary:        Server side daemon & driver required to run QEMU guests
 Requires:       %{name}-daemon-lock = %{version}-%{release}
 Requires:       %{name}-daemon-log = %{version}-%{release}
 Requires:       %{name}-daemon-plugin-lockd = %{version}-%{release}
-Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
@@ -680,7 +677,6 @@ capabilities of the QEMU emulators
 Summary:        Server side daemon & driver required to run LXC guests
 %if %{with_modular_daemons}
 Requires:       %{name}-daemon-log = %{version}-%{release}
-Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
@@ -703,7 +699,6 @@ Summary:        Server side daemon & driver required to run XEN guests
 %if %{with_modular_daemons}
 Requires:       %{name}-daemon-lock = %{version}-%{release}
 Requires:       %{name}-daemon-plugin-lockd = %{version}-%{release}
-Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
@@ -724,9 +719,7 @@ capabilities of XEN
 
 %package daemon-vbox
 Summary:        Server side daemon & driver required to run VirtualBox guests
-%if %{with_modular_daemons}
-Requires:       %{name}-daemon-proxy = %{version}-%{release}
-%else
+%if ! %{with_modular_daemons}
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
 %if %{with_interface}

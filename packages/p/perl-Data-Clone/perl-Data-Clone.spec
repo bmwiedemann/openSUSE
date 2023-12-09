@@ -16,27 +16,30 @@
 #
 
 
-Name:           perl-Data-Clone
-Version:        0.004
-Release:        0
 %define cpan_name Data-Clone
-Summary:        Polymorphic data cloning
+Name:           perl-Data-Clone
+Version:        0.6.0
+Release:        0
+%define cpan_version 0.006
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-URL:            http://search.cpan.org/dist/Data-Clone/
-Source0:        https://cpan.metacpan.org/authors/id/G/GF/GFUJI/%{cpan_name}-%{version}.tar.gz
+Summary:        Polymorphic data cloning
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        perl-Data-Clone-rpmlintrc
 Source2:        cpanspec.yml
-Patch0:         perl-Data-Clone-perl-5.38.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::PPPort) >= 3.19
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.18
+BuildRequires:  perl(Module::Build) >= 0.4005
+BuildRequires:  perl(Module::Build::XSUtil) >= 0.03
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Requires) >= 0.03
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
+Provides:       perl(Data::Clone) = %{version}
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -52,26 +55,21 @@ module has a different cloning policy from almost all of them. See Cloning
 policy and Comparison to other cloning modules for details.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch -p1
-# MANUAL BEGIN
-sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
-# MANUAL END
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
-%{__make} test
+./Build test
 
 %install
-%perl_make_install
-%perl_process_packlist
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes example README
+%doc Changes example README.md
+%license LICENSE
 
 %changelog

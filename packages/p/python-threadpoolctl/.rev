@@ -82,4 +82,19 @@
     <comment></comment>
     <requestid>1092206</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>64f711e12c50e3480d39eccaf3493466</srcmd5>
+    <version>3.2.0</version>
+    <time>1702158572</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Dropped support for Python 3.6 and 3.7.
+  * Added support for custom library controllers. Custom
+    controllers must inherit from the `threadpoolctl.LibController`
+    class and be registered to threadpoolctl using the
+    `threadpoolctl.register` function.
+
+    manager (equivalent to `threadpoolctl.threadpool_limits()`).</comment>
+    <requestid>1132143</requestid>
+  </revision>
 </revisionlist>

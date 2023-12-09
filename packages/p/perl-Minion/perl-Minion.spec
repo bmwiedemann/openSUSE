@@ -18,9 +18,9 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.260.0
+Version:        10.280.0
 Release:        0
-%define cpan_version 10.26
+%define cpan_version 10.28
 License:        Artistic-2.0
 Summary:        Job queue
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,7 +33,7 @@ BuildRequires:  perl(Mojolicious) >= 9.0
 BuildRequires:  perl(YAML::XS) >= 0.67
 Requires:       perl(Mojolicious) >= 9.0
 Requires:       perl(YAML::XS) >= 0.67
-Provides:       perl(Minion) = 10.260.0
+Provides:       perl(Minion) = %{version}
 Provides:       perl(Minion::Backend)
 Provides:       perl(Minion::Backend::Pg)
 Provides:       perl(Minion::Command::minion)

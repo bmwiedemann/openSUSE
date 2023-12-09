@@ -1058,4 +1058,12 @@
 - Mention all plugins in %files explicitly</comment>
     <requestid>1129620</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>970cd284c4e5fb4df8c1114f94baa874</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158632</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131860</requestid>
+  </revision>
 </revisionlist>

@@ -48,7 +48,6 @@ BuildRequires:  perl(Devel::Leak)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Test::Pod)
 %endif
-BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-Xnest
 BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xorg-x11-fonts

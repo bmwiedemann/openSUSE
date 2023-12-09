@@ -17,13 +17,12 @@
 
 
 Name:           python-pymarc
-Version:        4.2.2
+Version:        5.1.0
 Release:        0
 Summary:        MARC bibliographic data manipulation module
 License:        BSD-2-Clause
-URL:            https://github.com/edsu/pymarc
+URL:            https://gitlab.com/pymarc/pymarc
 Source:         https://files.pythonhosted.org/packages/source/p/pymarc/pymarc-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/edsu/pymarc/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +42,6 @@ saner representation.
 
 %prep
 %setup -q -n pymarc-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 22 03:10:26 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.104005
+   see /usr/share/doc/packages/perl-Software-License/Changes
+
+  0.104005  2023-11-20 21:09:56-05:00 America/New_York
+          - require perl v5.12.0, which was already effectively required because
+            of upstream libraries
+          - update author metadata
+
+-------------------------------------------------------------------
 Wed May 24 03:07:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.104004

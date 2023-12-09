@@ -24,14 +24,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Mako
-Version:        1.2.4
+Version:        1.3.0
 Release:        0
 Summary:        A Python templating language
 License:        MIT
 URL:            https://www.makotemplates.org/
 Source:         https://files.pythonhosted.org/packages/source/M/Mako/Mako-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe >= 0.9.2}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

@@ -246,4 +246,15 @@
     <comment>- Add conflict for coreutils-systemd, package got splitted</comment>
     <requestid>1109541</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>5928db82f5966dfe2f71d3d3d5b97374</srcmd5>
+    <version>MACRO</version>
+    <time>1702158555</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new sub-package for udhcpc
+
+- zgrep: don't set the label option as only the real grep
+  supports it (bsc#1215943)</comment>
+    <requestid>1132118</requestid>
+  </revision>
 </revisionlist>

@@ -16,18 +16,20 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.vcs
-Version:        1.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Facilities for working with VCS repositories
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.vcs
-Source:         https://files.pythonhosted.org/packages/source/j/jaraco.vcs/jaraco.vcs-1.1.0.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/j/jaraco.vcs/jaraco.vcs-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module jaraco.classes}
 BuildRequires:  %{python_module jaraco.path}
@@ -62,7 +64,7 @@ Facilities for working with VCS repositories
 %pytest --ignore jaraco/vcs/__init__.py
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/jaraco/vcs
 %{python_sitelib}/jaraco.vcs-%{version}.dist-info

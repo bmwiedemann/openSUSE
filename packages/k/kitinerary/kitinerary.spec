@@ -19,7 +19,7 @@
 %define libname libKPimItinerary5
 %bcond_without released
 Name:           kitinerary
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later

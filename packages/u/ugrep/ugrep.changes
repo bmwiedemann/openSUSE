@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  9 00:00:41 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4.6:
+  * fix an issue with option -Zbest fuzzy matching
+  * updated option --index for accelerated index-based search, now
+    also indexes and searches archives and compressed files with
+    option -z
+  * faster search with -ABC context options
+
+-------------------------------------------------------------------
 Sat Nov 25 07:59:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.3.4:

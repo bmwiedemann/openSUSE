@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:49:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Removed EntryPoint access by numeric index (tuple behavior).
+  * Added ``Distribution.origin`` supplying the
+    ``direct_url.json`` in a ``SimpleNamespace``. (#404)
+  * Added diagnose script. (#461)
+  * Added EntryPoints.__repr__ (#473)
+
+-------------------------------------------------------------------
 Sat Jul 15 15:01:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.8.0:
@@ -47,7 +57,7 @@ Thu Apr 13 22:42:02 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Apr  3 01:27:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on pep517. 
+- Remove unneeded BuildRequires on pep517.
 
 -------------------------------------------------------------------
 Sun Mar 19 10:22:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -75,7 +85,7 @@ Mon Jan  2 19:12:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Dec  6 03:43:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to versino 5.1.0 
+- Update to versino 5.1.0
   #415: Instrument SimplePath with generic support.
 
 -------------------------------------------------------------------
@@ -84,12 +94,12 @@ Fri Oct 28 17:43:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to version 5.0.0
   * #97, #284, #300: Removed compatibility shims for deprecated entry point interfaces.
 - Update to version 4.13.0
-  * #396: Added compatibility for PathDistributions originating from Python 3.8 and 3.9. 
+  * #396: Added compatibility for PathDistributions originating from Python 3.8 and 3.9.
 
 -------------------------------------------------------------------
 Mon Jul 25 21:15:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 4.12.0: 
+- update to 4.12.0:
   * py-93259: Now raise ``ValueError`` when ``None`` or an empty
     string are passed to ``Distribution.from_name`` (and other
     callers).
@@ -128,7 +138,7 @@ Mon May  9 10:53:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Jan 31 20:04:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.10.1:
-  - #361: Avoid potential REDoS in ``EntryPoint.pattern``. 
+  - #361: Avoid potential REDoS in ``EntryPoint.pattern``.
 
 -------------------------------------------------------------------
 Fri Dec 31 12:51:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -146,12 +156,12 @@ Fri Dec 31 12:51:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Mon Dec  6 09:40:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.2:
-  * #353: Fixed discovery of distributions when path is empty. 
+  * #353: Fixed discovery of distributions when path is empty.
 
 -------------------------------------------------------------------
 Mon Sep 20 11:37:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
-  
-- Update to v4.8.1 
+
+- Update to v4.8.1
    * #348: Restored support for EntryPoint access by item,
      deprecating support in the process. Users are advised to use
      direct member access instead of item-based access:
@@ -171,61 +181,61 @@ Mon Sep 20 11:37:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
     from .files() when a top-level.txt (Setuptools-specific
     metadata) is not present.
 - Release v4.6.4
-  * #334: Correct SimplePath protocol to match pathlib protocol 
+  * #334: Correct SimplePath protocol to match pathlib protocol
     for __truediv__.
 - Release v4.6.3
   * Moved workaround for #327 to _compat module.
 - Release v4.6.2
-  * bpo-44784: Avoid errors in test suite when DeprecationWarnings 
+  * bpo-44784: Avoid errors in test suite when DeprecationWarnings
     are treated as errors.
 - Release v4.6.1
-  * #327: Deprecation warnings now honor call stack variance on 
+  * #327: Deprecation warnings now honor call stack variance on
     PyPy.
 - Release v4.6.0
-  * #326: Performance tests now rely on pytest-perf. To disable 
-    these tests, which require network access and a git checkout, 
+  * #326: Performance tests now rely on pytest-perf. To disable
+    these tests, which require network access and a git checkout,
     pass -p no:perf to pytest.
 - Release v4.5.0
   * #319: Remove SelectableGroups deprecation exception for flake8.
 - Release v4.4.0
   * #300: Restore compatibility in the result from Distribution.
-    entry_points (EntryPoints) to honor expectations in older 
-    implementations and issuing deprecation warnings for these 
+    entry_points (EntryPoints) to honor expectations in older
+    implementations and issuing deprecation warnings for these
     cases:
   * EntryPoints objects are once again mutable, allowing for sort
-    () and other list-based mutation operations. Avoid deprecation 
+    () and other list-based mutation operations. Avoid deprecation
     warnings by casting to a mutable sequence (e.g. list(dist.
     entry_points).sort()).
-  * EntryPoints results once again allow for access by index. To 
-    avoid deprecation warnings, cast the result to a Sequence 
+  * EntryPoints results once again allow for access by index. To
+    avoid deprecation warnings, cast the result to a Sequence
     first (e.g. tuple(dist.entry_points)[0]).
 - Release v4.3.1
-  * #320: Fix issue where normalized name for eggs was incorrectly 
+  * #320: Fix issue where normalized name for eggs was incorrectly
     solicited, leading to metadata being unavailable for eggs.
 - Release v4.3.0
-  * #317: De-duplication of distributions no longer requires 
-    loading the full metadata for PathDistribution objects, entry 
+  * #317: De-duplication of distributions no longer requires
+    loading the full metadata for PathDistribution objects, entry
     point loading performance by ~10x.
 - Release v4.2.0
   * Prefer f-strings to .format calls.
 - Release v4.1.0
   * #312: Add support for metadata 2.2 (Dynamic field).
-  * #315: Add SimplePath protocol for interface clarity in 
+  * #315: Add SimplePath protocol for interface clarity in
     PathDistribution.
 - Release v4.0.1
   * #306: Clearer guidance about compatibility in readme.
 - Release v4.0.0
-  * #304: PackageMetadata as returned by metadata() and 
-    Distribution.metadata() now provides normalized metadata 
+  * #304: PackageMetadata as returned by metadata() and
+    Distribution.metadata() now provides normalized metadata
     honoring PEP 566:
-  * If a long description is provided in the payload of the RFC 
+  * If a long description is provided in the payload of the RFC
     822 value, it can be retrieved as the Description field.
   * Any multi-line values in the metadata will be returned as such.
-  * For any multi-line values, line continuation characters are 
-    removed. This backward-incompatible change means that any 
-    projects relying on the RFC 822 line continuation characters 
+  * For any multi-line values, line continuation characters are
+    removed. This backward-incompatible change means that any
+    projects relying on the RFC 822 line continuation characters
     being present must be tolerant to them having been removed.
-  * Add a json property that provides the metadata converted to a 
+  * Add a json property that provides the metadata converted to a
     JSON-compatible form per PEP 566.
 - Release v3.10.1
   * Minor tweaks from CPython.
@@ -235,38 +245,38 @@ Mon Sep 20 11:37:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * #296: Exclude 'prepare' package.
   * #297: Fix ValueError when entry points contains comments.
 - Release v3.9.0
-  * Use of Mapping (dict) interfaces on SelectableGroups is now 
-    flagged as deprecated. Instead, users are advised to use the 
+  * Use of Mapping (dict) interfaces on SelectableGroups is now
+    flagged as deprecated. Instead, users are advised to use the
     select interface for future compatibility.
-  * Suppress the warning with this filter: ignore:SelectableGroups 
-    dict interface.  
+  * Suppress the warning with this filter: ignore:SelectableGroups
+    dict interface.
   * Or with this invocation in the Python environment: warnings.
     filterwarnings('ignore', 'SelectableGroups dict interface').
   * Preferably, switch to the select interface introduced in
-    3.7.0. See the entry points documentation and changelog for 
+    3.7.0. See the entry points documentation and changelog for
     the 3.6 release below for more detail.
   * For some use-cases, especially those that rely on importlib.
-    metadata in Python 3.8 and 3.9 or those relying on older 
-    importlib_metadata (especially on Python 3.5 and earlier), 
-    backports.entry_points_selectable was created to ease the 
-    transition. Please have a look at that project if simply 
-    relying on importlib_metadata 3.6+ is not straightforward. 
+    metadata in Python 3.8 and 3.9 or those relying on older
+    importlib_metadata (especially on Python 3.5 and earlier),
+    backports.entry_points_selectable was created to ease the
+    transition. Please have a look at that project if simply
+    relying on importlib_metadata 3.6+ is not straightforward.
     Background in #298.
-  * #283: Entry point parsing no longer relies on ConfigParser and 
-    instead uses a custom, one-pass parser to load the config, 
-    resulting in a ~20% performance improvement when loading entry 
+  * #283: Entry point parsing no longer relies on ConfigParser and
+    instead uses a custom, one-pass parser to load the config,
+    resulting in a ~20% performance improvement when loading entry
     points.
 - Release v3.8.2
-  * #293: Re-enabled lazy evaluation of path lookup through a 
+  * #293: Re-enabled lazy evaluation of path lookup through a
     FreezableDefaultDict.
 - Release v3.8.1
   * #293: Workaround for error in distribution search.
 - Release v3.8.0
-  * #290: Add mtime-based caching for FastPath and its lookups, 
-    dramatically increasing performance for repeated distribution 
+  * #290: Add mtime-based caching for FastPath and its lookups,
+    dramatically increasing performance for repeated distribution
     lookups.
 - Release v3.7.3
-  * Docs enhancements and cleanup following review in GH-24782. 
+  * Docs enhancements and cleanup following review in GH-24782.
 
 -------------------------------------------------------------------
 Fri Mar 12 21:29:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -326,7 +336,7 @@ Sun Jan 24 18:15:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
     discovery.
   * For PyPA projects, add test ensuring that
     ``MetadataPathFinder._search_paths`` honors the needed
-    interface. Method is still private. 
+    interface. Method is still private.
 
 -------------------------------------------------------------------
 Sat Dec 19 23:29:59 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
@@ -364,7 +374,7 @@ Mon Dec  7 17:50:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Require Python 3.6 or later.
 - Upstream switched to pytest, so do we
 - Revert last change: The condition for **BuildRequires** does not
-  make any sense, as that would also prevent the install of 
+  make any sense, as that would also prevent the install of
   python36-importlib_resources into the build environment.
 
 -------------------------------------------------------------------
@@ -377,22 +387,22 @@ Wed Dec  2 18:11:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
 Thu Nov 19 19:43:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Reintroduce into Tumbleweed for python36 flavor
-- Update to 2.0.0 
-  * importlib_metadata no longer presents a __version__ attribute. 
-    Consumers wishing to resolve the version of the package should 
-    query it directly with 
+- Update to 2.0.0
+  * importlib_metadata no longer presents a __version__ attribute.
+    Consumers wishing to resolve the version of the package should
+    query it directly with
     importlib_metadata.version('importlib-metadata'). Closes #71.
 - v1.7.0
-  * PathNotFoundError now has a custom __str__ mentioning “package 
-    metadata” being missing to help guide users to the cause when 
-    the package is installed but no metadata is present. Closes 
+  * PathNotFoundError now has a custom __str__ mentioning “package
+    metadata” being missing to help guide users to the cause when
+    the package is installed but no metadata is present. Closes
     #124.
 - v1.6.1
-  * Added Distribution._local() as a provisional demonstration of 
-    how to load metadata for a local package. Implicitly requires 
+  * Added Distribution._local() as a provisional demonstration of
+    how to load metadata for a local package. Implicitly requires
     that pep517 is installed. Ref #42.
   * Ensure inputs to FastPath are Unicode. Closes #121.
-  * Tests now rely on importlib.resources.files (and backport) 
+  * Tests now rely on importlib.resources.files (and backport)
     instead of the older path function.
   * Support any iterable from find_distributions. Closes #122.
 - v1.6.0
@@ -400,7 +410,7 @@ Thu Nov 19 19:43:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - v1.5.2
   * Fix redundant entries from FastPath.zip_children. Closes #117.
 - v1.5.1
-  * Improve reliability and consistency of compatibility imports 
+  * Improve reliability and consistency of compatibility imports
     for contextlib and pathlib when running tests. Closes #116.
 
 -------------------------------------------------------------------
@@ -422,9 +432,9 @@ Fri Jan 17 09:33:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.4.0
   * Renamed package parameter to distribution_name.
-  * For better compatibility with the stdlib implementation and to 
-    avoid the same distributions being discovered by the stdlib 
-    and backport implementations, the backport now disables the 
+  * For better compatibility with the stdlib implementation and to
+    avoid the same distributions being discovered by the stdlib
+    and backport implementations, the backport now disables the
     stdlib DistributionFinder during initialization (import time).
   * Project adopts semver for versioning.
   * EntryPoints are now pickleable.
@@ -432,8 +442,8 @@ Fri Jan 17 09:33:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * Fixed repr(EntryPoint) on PyPy.
   * Repaired project metadata to correctly declare the python_requires directive.
   * Through careful optimization, distribution() is 3-4x faster.
-  * When searching through sys.path, if any error occurs attempting 
-    to list a path entry, that entry is skipped, making the system 
+  * When searching through sys.path, if any error occurs attempting
+    to list a path entry, that entry is skipped, making the system
     much more lenient to errors.
 
 -------------------------------------------------------------------
@@ -448,7 +458,7 @@ Wed Aug  7 14:15:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 - update to 0.19
  * restrain over-eager egg metadata resolution.
  * Add support for entry points with colons in the name.
- * Parse entry points case sensitively. 
+ * Parse entry points case sensitively.
  * Add a version constraint on the backport configparser package
 
 -------------------------------------------------------------------

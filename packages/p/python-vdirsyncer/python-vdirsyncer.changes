@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:14:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.2:
+  * Improve the performance of ``SingleFileStorage``. :gh:`818`
+  * Properly document some caveats of the Google Contacts
+    storage.
+  * Fix crash when using auth certs. :gh:`1033`
+  * The ``filesystem`` storage can be specified with ``type =
+  * "filesystem/icalendar"`` or ``type = "filesystem/vcard"``.
+    This has not functional impact, and is merely for forward
+    compatibility with the Rust implementation of vdirsyncer.
+  * Python 3.10 and 3.11 are officially supported.
+  * Instructions for integrating with Google CalDav/CardDav have
+    changed.
+  * Applications now need to be registered as "Desktop
+    applications". Using "Web application" no longer works due
+    to changes on Google's side.
+  * Fixed crash when operating on Google Contacts. :gh:`994`
+  * The ``HTTP_PROXY`` and ``HTTPS_PROXY`` are now respected.
+  * Instructions for integrating with Google CalDav/CardDav have
+    changed.
+  * Applications now need to be registered as "Web Application".
+  * Various documentation updates.
+
+-------------------------------------------------------------------
 Thu Jul 27 14:34:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add missing dependency
@@ -6,7 +31,7 @@ Thu Jul 27 14:34:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu May  4 23:56:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- fix and reenable tests 
+- fix and reenable tests
 
 -------------------------------------------------------------------
 Sun Dec 18 22:01:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -92,7 +117,7 @@ Mon May 31 15:07:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Apr 12 06:56:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove ifpython3 macro guarding the Provides/Obsoletes 
+- Remove ifpython3 macro guarding the Provides/Obsoletes
 
 -------------------------------------------------------------------
 Fri Mar 12 19:57:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -108,7 +133,7 @@ Sun Feb 28 22:24:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 Tue Sep  1 15:11:22 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 -fix compatibility with latest click - patch taken directly from upstream git
- * 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch 
+ * 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch
 
 -------------------------------------------------------------------
 Thu Jul 23 09:16:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
@@ -150,7 +175,7 @@ Wed Jun  5 07:15:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu May 16 22:35:41 UTC 2019 - ranand@suse.com
 
-- Skip flaky test test_legacy_status 
+- Skip flaky test test_legacy_status
 
 -------------------------------------------------------------------
 Tue May  7 05:47:52 UTC 2019 - pgajdos@suse.com

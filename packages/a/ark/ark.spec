@@ -19,7 +19,7 @@
 %define SOMAJOR 23
 %bcond_without released
 Name:           ark
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later

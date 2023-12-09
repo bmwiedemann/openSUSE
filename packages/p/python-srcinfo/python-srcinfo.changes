@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:06:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.2:
+  * Revert "Don't check for prefix matches in is_array"
+  * Add test to make sure architecture-specific arrays work
+
+-------------------------------------------------------------------
 Wed Dec 14 23:16:31 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove pr_10.patch merged upstream

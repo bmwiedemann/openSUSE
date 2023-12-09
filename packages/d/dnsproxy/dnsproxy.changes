@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 08 21:50:31 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.60.0:
+  * Pull request 302: AG-27796 upd golibs
+  * Pull request: imp code: net.IP to netip.Addr
+  * Pull request 300: AG-27616-ratelimit-whitelist-netip-addr
+
+-------------------------------------------------------------------
 Sat Nov 25 14:37:13 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.59.1:

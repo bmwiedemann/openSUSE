@@ -1,7 +1,7 @@
 #
 # spec file for package virt-viewer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,11 @@ Release:        0
 URL:            http://www.virt-manager.org
 Source:         https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz
 Source1:        https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz.asc
+Patch1:         001-Update-src-virt-viewer-app.c.patch
+Patch2:         002-Use-less-memory.patch
+Patch3:         003-Fix-ssh-tunnel-with-non-POSIX-remote-shells.patch
+Patch4:         004-Add-support-for-usb-redirect-on-connect-in-vv-files.patch
+Patch5:         005-session-vnc-Plug-leak-in-error-path.patch
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch

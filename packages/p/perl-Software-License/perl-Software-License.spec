@@ -18,12 +18,12 @@
 
 %define cpan_name Software-License
 Name:           perl-Software-License
-Version:        0.104004
+Version:        0.104005
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Packages that provide templated software licenses
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 08 13:36:07 UTC 2023 - kukuk@suse.com
+
+- Update to version 0.0+git20231208.299201e:
+  * certbot needs a tty
+  * wsdd: don't run binary to set HOSTNAME
+
+-------------------------------------------------------------------
 Fri Mar 24 07:04:46 UTC 2023 - kukuk@suse.com
 
 - Update to version 0.0+git20230324.9cd3b7a:

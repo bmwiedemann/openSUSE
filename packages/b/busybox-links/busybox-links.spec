@@ -79,6 +79,7 @@ Source54:       filelist-wget.txt
 Source55:       filelist-which.txt
 Source56:       filelist-whois.txt
 Source57:       filelist-xz.txt
+Source58:       filelist-udhcpc.txt
 # used for creating the above filelists and busybox.install:
 # build the container locally and then copy filelist-*txt and busybox.install
 # out ouf WORKDIR into the package directory
@@ -128,6 +129,7 @@ Requires:       busybox-tftp = %{version}
 Requires:       busybox-time = %{version}
 Requires:       busybox-traceroute = %{version}
 Requires:       busybox-tunctl = %{version}
+Requires:       busybox-udhcpc = %{version}
 Requires:       busybox-unzip = %{version}
 Requires:       busybox-util-linux = %{version}
 Requires:       busybox-vi = %{version}
@@ -592,6 +594,15 @@ Conflicts:      policycoreutils
 %description -n busybox-policycoreutils
 This package contains the symlinks to provide policycoreutils with busybox.
 
+%package -n busybox-udhcpc
+Summary:        Busybox applets providing udhcp client
+Requires:       busybox = %{version}
+
+%description -n busybox-udhcpc
+This package contains the symlinks to provide the udhcp clients with busybox.
+For using udhcpc scripts to setup the network are required, they are not
+provided with this package.
+
 %prep
 %setup -q -c -T
 cp %{_sourcedir}/filelist*.txt .
@@ -706,6 +717,8 @@ install -m 755 %{SOURCE3} %{buildroot}%{_bindir}/zgrep
 %files -n busybox-traceroute -f filelist-traceroute.txt
 
 %files -n busybox-tunctl -f filelist-tunctl.txt
+
+%files -n busybox-udhcpc -f filelist-udhcpc.txt
 
 %files -n busybox-unzip -f filelist-unzip.txt
 

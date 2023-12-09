@@ -3479,4 +3479,12 @@ Petr</comment>
     <comment></comment>
     <requestid>1127280</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>fade78581fe3a78c499904a9b1aaac9c</srcmd5>
+    <version>7.6.4.1</version>
+    <time>1702158557</time>
+    <user>dimstar_suse</user>
+    <comment>7.6.4.1 + cleanup</comment>
+    <requestid>1132161</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %define mod_name rcssmin
 
 Name:           python-%{mod_name}
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        RCSSmin is a CSS Minifier Written in Python
 License:        Apache-2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  8 10:47:35 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install udhcpc and udhcpc6 into the same directory
+  (udhcp6-install-path.patch)
+- Fully enable udhcpc and document that this tool needs special
+  configuration and does not work out of the box [bsc#1217883]
+
+-------------------------------------------------------------------
 Tue Aug 29 09:55:24 UTC 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 -  Add ash-fix-segfault-d417193cf.patch: fix stack overflow vulnerability 

@@ -16,29 +16,36 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%define _python python3
+%define _python_sitearch %{?python3_sitearch}
+%define _python3_version %{?python3_version}
+%else
+%define _python python311
+%define _python_sitearch %{?python311_sitearch}
+%define _python3_version %{?python311_version}
+%endif
 Name:           duplicity
-Version:        1.2.3
+Version:        2.1.4
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://duplicity.gitlab.io/
-Source:         https://launchpad.net/duplicity/1.0/%{version}/+download/duplicity-%{version}.tar.gz
-Patch1:         duplicity-remove_shebang.patch
+Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+BuildRequires:  %{_python}-devel
+BuildRequires:  %{_python}-pytest
+BuildRequires:  %{_python}-setuptools
+BuildRequires:  %{_python}-setuptools_scm
 BuildRequires:  fdupes
 BuildRequires:  librsync-devel >= 0.9.6
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools_scm
+Requires:       %{_python}-fasteners
+Requires:       %{_python}-lockfile
 Requires:       gpg
-Requires:       python3-fasteners
-Requires:       python3-future
-Requires:       python3-lockfile
+Recommends:     %{_python}-boto3
 Recommends:     %{name}-lang
 Recommends:     lftp
-Recommends:     python3-boto3
 
 %description
 Duplicity incrementally backs up files and directories by encrypting
@@ -57,27 +64,33 @@ links.
 
 %prep
 %setup -q
-%patch1 -p1
+sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' bin/duplicity
 
 %build
+%if 0%{?suse_version} > 1500
 %python3_build
+%else
+%python311_build
+%endif
 
 %install
+%if 0%{?suse_version} > 1500
 %python3_install
+%else
+%python311_install
+%endif
 rm -rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
-perl -n -i -e 'print unless m,(%{_bindir}|%{_mandir}|%{_datadir}/doc|%{_datadir}/locale|%{python_sitearch}/testing),' files.lst
+perl -n -i -e 'print unless m,(%{_bindir}|%{_mandir}|%{_datadir}/doc|%{_datadir}/locale|%{_python_sitearch}/testing),' files.lst
 %find_lang %{name}
-%fdupes %{buildroot}%{python3_sitearch}
+%fdupes %{buildroot}%{_python_sitearch}
 
 %files
 %license COPYING
 %doc CHANGELOG.md README.md README-LOG.md
 %{_bindir}/duplicity
-%{_bindir}/rdiffdir
-%{python3_sitearch}/duplicity
-%{python3_sitearch}/duplicity-*-py%{py3_ver}.egg-info
+%{_python_sitearch}/duplicity
+%{_python_sitearch}/duplicity-*-py%{_python3_version}.egg-info
 %{_mandir}/man1/duplicity.1%{?ext_man}
-%{_mandir}/man1/rdiffdir.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

@@ -17,7 +17,7 @@
 
 
 Name:           python-wakeonlan
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        A small python module for wake on lan
 License:        MIT

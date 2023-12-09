@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  2 05:44:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.5
+  * Update the syscall table for Linux v6.7-rc3
+
+-------------------------------------------------------------------
 Fri Jul  1 11:33:22 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - fix build of python3 bindings so that the debug* package names do

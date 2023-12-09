@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
@@ -73,6 +73,7 @@ Requires:       %{_bindir}/cdrecord
 Requires:       %{_bindir}/mkisofs
 Requires:       %{_bindir}/readcd
 Requires:       dvd+rw-tools
+Requires:       udisks2
 Requires(post): hicolor-icon-theme
 Requires(post): shared-mime-info
 Requires(postun): hicolor-icon-theme

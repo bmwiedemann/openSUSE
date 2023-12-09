@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:25:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Dropped support for Python 3.6 and 3.7.
+  * Added support for custom library controllers. Custom
+    controllers must inherit from the `threadpoolctl.LibController`
+    class and be registered to threadpoolctl using the
+    `threadpoolctl.register` function.
+
+-------------------------------------------------------------------
 Sat Jun 10 17:41:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -30,7 +40,7 @@ Sat Oct 16 22:16:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
     supported native libraries. The states of these libraries is accessible through the
     `info` method (equivalent to `threadpoolctl.threadpool_info()`) and their number of
     threads can be limited with the `limit` method which can be used as a context
-    manager (equivalent to `threadpoolctl.threadpool_limits()`). 
+    manager (equivalent to `threadpoolctl.threadpool_limits()`).
   - Added support for OpenBLAS built for 64bit integers in Fortran.
   - Added the possibility to use `threadpoolctl.threadpool_limits` and
     `threadpooctl.ThreadpoolController` as decorators through their `wrap` method.

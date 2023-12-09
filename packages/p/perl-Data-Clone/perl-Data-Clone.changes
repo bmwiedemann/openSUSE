@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 30 17:46:40 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl-Data-Clone-perl-5.38.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sun Nov 26 03:07:55 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-Data-Clone/Changes
+
+  0.006 2023-11-25T05:46:27Z
+      - No code changes
+      - Migrate from Module::Install to Minilla
+
+  0.005 2023-11-21
+      - Fix against Perl 5.38 (#3, by demerphq)
+
+-------------------------------------------------------------------
 Tue Aug  8 15:05:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add perl-Data-Clone-perl-5.38.patch: Fix build using Perl 5.38.

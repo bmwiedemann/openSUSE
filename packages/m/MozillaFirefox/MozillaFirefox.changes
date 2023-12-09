@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec  8 15:55:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 120.0.1 (boo#1217910)
+  * Fixed a bug that was causing persistent startup slowdowns
+    (bmo#1867095)
+  * Fixed an issue that was causing 100% CPU usage on sites such as
+    Google Maps. (bmo#1866409)
+  * Fixed an issue that was causing YouTube videos to show a green
+    screen when hardware acceleration was enabled. (bmo#1865928)
+  * Fixed an issue where the status bar was still visible when
+    viewing fullscreen video. (bmo#1853896)
+  * Fixed a startup crash affecting Linux users on some aarch64
+    systems with page sizes other than 4KB. (bmo#1866025)
+
+-------------------------------------------------------------------
 Wed Nov 22 06:57:37 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 120.0

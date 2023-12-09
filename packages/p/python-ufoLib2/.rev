@@ -49,4 +49,35 @@
     <comment></comment>
     <requestid>1009897</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>724b5c69b65e6251875f6e56904e0ff8</srcmd5>
+    <version>0.16.0</version>
+    <time>1702158816</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.0:
+  * Added `tempLib` property to Font, Layer and Glyph (like
+    defcon's)
+  * raise appropriate error when extras not installed
+  * Bring guideline invariants up to spec
+  * Made lazily loaded ufoLib2.Font objects pickleable by
+    automatically un-lazifying them in custom `__getstate__`
+    method (e0f3d6af).
+  * Added optional support for de/serializing all ufoLib2 objects
+    from/to JSON or MessagePack.
+  * This uses ``cattrs`` custom converters to
+    unstructure/structure ufoLib2 objects to/from basic
+    serializable data structures.
+  * See docstring in ``ufoLib2.serde::serde`` or #230 for
+    examples.
+
+- Update to version 0.13.1
+ * Component.move: apply delta to offset directly rather than
+ * Typing: add GlyphSet protocol. More elegant than referring to
+   Layer and Glyph explicitly, which nicely avoids circular
+ * Add APIs Font.object_lib(obj) and Glyph.object_lib(obj) to
+   explicitly handle the new public.objectLibs mechanism of
+   attaching libs to anchors, guidelines, contours, components and
+- skip python 3.6 build (no FontTools as it needs scipy)</comment>
+    <requestid>1132147</requestid>
+  </revision>
 </revisionlist>

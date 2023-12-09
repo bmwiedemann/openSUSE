@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdenetwork-filesharing
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later

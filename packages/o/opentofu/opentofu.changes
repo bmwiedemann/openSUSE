@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 08 17:02:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta3:
+  * Bump version. (#986)
+  * Update brew install for Linux (#959)
+  * Fixes #898: Replace hashicorp and terraform references (#973)
+  * website: Better install instructions (GitHub actions compatible
+    output) (#983)
+  * 904 missing provider module message (#981)
+  * Updated installation instructions to packages.opentofu.org
+    (#978)
+  * chore: add linux install instructions test to makefile (#976)
+  * Weekly update 20231205 (#972)
+  * website: Dev server (#971)
+  * Adding Buildkite sponsorship remark (#969)
+  * Fix goreleaser draft option. (#968)
+
+-------------------------------------------------------------------
 Tue Dec 05 06:29:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.6.0~beta2:

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:19:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Fix Motel One checkin time when running in a different timezone
+  * Add Motel One pkpass extractor script
+  * Add stand-alone filter condition for SAS itinerary PDFs
+  * Handle another Flixbus Unicode station icon variant
+  * Ignore ERA FCB UIC station codes in Germany
+  * Use the entire UIC 918.3 station object, not just the identifier
+  * Fix ERA FCB arrival time parsing
+  * Support Dutch-language Eurostar (Thalys) tickets
+  * Increase the maximum document size thresholds
+  * Add basic support for 12go.asia PDFs
+
+-------------------------------------------------------------------
 Tue Nov  7 17:04:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.3

@@ -145,4 +145,29 @@
   (gh#encode/httpcore!832)</comment>
     <requestid>1120297</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9bc39ca0e6a629115a17ef98b08174be</srcmd5>
+    <version>1.0.2</version>
+    <time>1702158544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Fix `float(&quot;inf&quot;)` timeouts in `Event.wait` function. (#846)
+  * Fix pool timeout to account for the total time spent
+    retrying. (#823)
+  * Raise a neater RuntimeError when the correct async deps are
+    not installed. (#826)
+  * Add support for synchronous TLS-in-TLS streams. (#840)
+  * From version 1.0 our async support is now optional, as the
+    package has minimal dependencies by default.
+  * For async support use either `pip install
+    'httpcore[asyncio]'` or `pip install 'httpcore[trio]'`.
+  * The project versioning policy is now explicitly governed by
+    SEMVER. See https://semver.org/.
+  * Async support becomes fully optional. (#809)
+  * Add support for Python 3.12. (#807)
+
+- update to 0.17.3
+    scheme is used. (Pull #403)</comment>
+    <requestid>1131743</requestid>
+  </revision>
 </revisionlist>

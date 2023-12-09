@@ -16,6 +16,13 @@ Sun Oct  1 08:15:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 - Update URL to new home.
 
 -------------------------------------------------------------------
+Mon Apr  17 14:23:34 UTC 2023 - qzhao@suse.com
+
+- Add libsigc++2-remove-unnecessary-executable-flag-from-file.patch:
+  cancel executable permission for file
+  /usr/share/doc/packages/libsigc-2_0-0/NEWS(bsc#1209094,bsc#1209140).
+
+-------------------------------------------------------------------
 Mon Feb 27 18:07:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.12.0:

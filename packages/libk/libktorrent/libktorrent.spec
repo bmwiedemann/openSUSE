@@ -19,7 +19,7 @@
 %define sonum   6
 %bcond_without released
 Name:           libktorrent
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later

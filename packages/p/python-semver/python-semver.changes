@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:18:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * :pr:`418`: Replace :class:`~collection.OrderedDict` with
+    :class:`dict`.
+  * The dict datatype is ordered since Python 3.7. As we do not
+    support Python 3.6 anymore, it can be considered safe to avoid
+    :class:`~collection.OrderedDict`.
+  * :pr:`431`: Clarify version policy for the different semver
+    versions (v2, v3, >v3) and the supported Python versions.
+  * :gh:`432`: Improve external doc links to Python and Pydantic.
+  * :pr:`417`: Amend GitHub Actions to check against MacOS.
+
+-------------------------------------------------------------------
 Wed Jun 21 20:11:42 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - remove obsolete setup-remove-asterisk.patch
@@ -115,7 +129,7 @@ Sat Mar 11 09:57:18 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 -------------------------------------------------------------------
 Mon Oct 10 08:26:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- switch to the tagged version rather than a gh branch tarball 
+- switch to the tagged version rather than a gh branch tarball
 
 -------------------------------------------------------------------
 Mon Jan 10 21:27:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
@@ -400,7 +414,7 @@ Tue Nov 14 16:43:50 UTC 2017 - arun@gmx.de
 Fri Aug 25 07:56:06 UTC 2017 - sebix+novell.com@sebix.at
 
 - update to 2.7.8
- * PR #62. Support custom default names for pre and build 
+ * PR #62. Support custom default names for pre and build
 
 -------------------------------------------------------------------
 Fri Jun  2 19:50:40 UTC 2017 - sebix+novell.com@sebix.at

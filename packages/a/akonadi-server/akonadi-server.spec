@@ -20,7 +20,7 @@
 %define kf5_version 5.105.0
 %bcond_without released
 Name:           akonadi-server
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later

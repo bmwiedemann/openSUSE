@@ -239,4 +239,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1095875</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a03d584ce66ca6067d85638521b27361</srcmd5>
+    <version>3.0.2</version>
+    <time>1702158811</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.2:
+  * :pr:`418`: Replace :class:`~collection.OrderedDict` with
+    :class:`dict`.
+  * The dict datatype is ordered since Python 3.7. As we do not
+    support Python 3.6 anymore, it can be considered safe to avoid
+    :class:`~collection.OrderedDict`.
+  * :pr:`431`: Clarify version policy for the different semver
+    versions (v2, v3, &gt;v3) and the supported Python versions.
+  * :gh:`432`: Improve external doc links to Python and Pydantic.
+  * :pr:`417`: Amend GitHub Actions to check against MacOS.
+
+- switch to the tagged version rather than a gh branch tarball
+ * PR #62. Support custom default names for pre and build</comment>
+    <requestid>1132138</requestid>
+  </revision>
 </revisionlist>

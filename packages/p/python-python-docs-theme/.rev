@@ -70,4 +70,13 @@
   * Append a hash ?digest to CSS files for cache-busting</comment>
     <requestid>1108837</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f36915f45533d875f6f9b1b6024b557a</srcmd5>
+    <version>2023.9</version>
+    <time>1702158592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.9:
+  * Focus search box when pressing slash</comment>
+    <requestid>1132211</requestid>
+  </revision>
 </revisionlist>

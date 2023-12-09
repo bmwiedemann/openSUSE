@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 08 17:05:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.3:
+  * upgrade otel, docker and jose to fix CVE alerts
+
+-------------------------------------------------------------------
 Mon Oct 30 15:32:40 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.13.2:

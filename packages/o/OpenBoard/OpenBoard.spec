@@ -16,27 +16,22 @@
 #
 
 
-%define         dest_dir %{_libdir}/%{name}
 %define         namelc openboard
 %define         fqname ch.%{namelc}.%{name}
-%define         githash  2ff8f29ce8a1227541d382e58a06dd591632d811
-%define         gitshort 2ff8f29
-%define         gitdate  20230614
-%define         buildver 230614
 Name:           OpenBoard
-Version:        1.7.0~git%{gitdate}.%{gitshort}
+Version:        1.7.0
 Release:        0
 Summary:        Interactive whiteboard for schools and universities
 License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
 URL:            https://openboard.ch
-Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/%{githash}.zip#/OpenBoard-%{githash}.zip
+Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://github.com/OpenBoard-org/OpenBoard/pull/569
 Patch569:       0569-scale-mirror-pixmap.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/686
 Patch686:       0686-shortcut-configuration.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/698
-Patch698:       0698-add-cmake-build-system.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/830
+Patch830:       0830-cmake-community-builds.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
 # no github url available
@@ -44,20 +39,17 @@ Patch9686:      9686-cmake-add-shortcut-manager.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  unzip
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
-BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5MultimediaWidgets)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(poppler)
@@ -74,7 +66,7 @@ This build is based on the development branch dev and includes
 a set of additional patches for features and bug fixes.
 
 %prep
-%autosetup -p1 -n %{name}-%{githash}
+%autosetup -p1 -n %{name}-%{version}
 
 # remove x flag from any resource files
 find resources -type f -print0 | xargs -0 chmod a-x
@@ -83,7 +75,7 @@ find resources -type f -print0 | xargs -0 chmod a-x
 rm resources/library/applications/Calculator.wgt/.gitignore
 
 %build
-%cmake -DVERSION_TYPE=a -DVERSION_BUILD=%buildver
+%cmake
 %cmake_build
 
 %install

@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           poxml
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Tools for translating DocBook XML files with Gettext
 License:        GPL-2.0-only AND GFDL-1.2-only

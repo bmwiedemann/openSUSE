@@ -17,7 +17,7 @@
 
 
 Name:           wasmedge
-Version:        0.13.3
+Version:        0.13.5
 Release:        0
 Summary:        High-performance and extensible WebAssembly runtime
 License:        Apache-2.0 AND CC0-1.0

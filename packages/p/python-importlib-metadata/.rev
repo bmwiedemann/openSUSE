@@ -271,4 +271,41 @@ It does NOT conflict with python38 standard library (see upstream description)</
     other directories are honored.</comment>
     <requestid>1098809</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d9d98886dbe53e747c579e9511b797b7</srcmd5>
+    <version>7.0.0</version>
+    <time>1702158546</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.0:
+  * Removed EntryPoint access by numeric index (tuple behavior).
+  * Added ``Distribution.origin`` supplying the
+    ``direct_url.json`` in a ``SimpleNamespace``. (#404)
+  * Added diagnose script. (#461)
+  * Added EntryPoints.__repr__ (#473)
+
+- Remove unneeded BuildRequires on pep517.
+- Update to versino 5.1.0
+  * #396: Added compatibility for PathDistributions originating from Python 3.8 and 3.9.
+- update to 4.12.0:
+  - #361: Avoid potential REDoS in ``EntryPoint.pattern``.
+  * #353: Fixed discovery of distributions when path is empty.
+- Update to v4.8.1
+  * #334: Correct SimplePath protocol to match pathlib protocol
+  * bpo-44784: Avoid errors in test suite when DeprecationWarnings
+  * #327: Deprecation warnings now honor call stack variance on
+  * #326: Performance tests now rely on pytest-perf. To disable
+    these tests, which require network access and a git checkout,
+    entry_points (EntryPoints) to honor expectations in older
+    implementations and issuing deprecation warnings for these
+    () and other list-based mutation operations. Avoid deprecation
+  * EntryPoints results once again allow for access by index. To
+    avoid deprecation warnings, cast the result to a Sequence
+  * #320: Fix issue where normalized name for eggs was incorrectly
+  * #317: De-duplication of distributions no longer requires
+    loading the full metadata for PathDistribution objects, entry
+  * #315: Add SimplePath protocol for interface clarity in
+  * #304: PackageMetadata as returned by metadata() and
+    Distribution.metadata() now provides normalized metadata</comment>
+    <requestid>1131745</requestid>
+  </revision>
 </revisionlist>

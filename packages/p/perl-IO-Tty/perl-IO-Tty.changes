@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 28 03:07:45 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+
+  1.18 2023-11-27 Todd Rinaldo <toddr@cpan.org>
+      * #35 - Address Freebsd build issue: Make function checks more robust within shared lib
+
+-------------------------------------------------------------------
 Sat Nov 12 03:06:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.17

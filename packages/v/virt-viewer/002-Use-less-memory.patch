@@ -1,0 +1,31 @@
+Subject: Use less memory
+From: Stefan Schindler dns2utf8@estada.ch Sun Dec 19 22:06:57 2021 +0100
+Date: Sun Dec 19 22:36:15 2021 +0100:
+Git: b43bd3d91d78c5151acad23e82e2de0febf37a28
+
+Signed-off-by: Stefan Schindler <dns2utf8@estada.ch>
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index 00346c4..b977b7b 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -830,8 +830,8 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
+                                 const char *port,
+                                 const char *unixsock)
+ {
+-    const char *cmd[10] = { NULL };
+-    char portstr[50] = { 0 };
++    const char *cmd[8];
++    char portstr[12] = { 0 };
+     int n = 0;
+     GString *cat;
+ 
+@@ -853,7 +853,7 @@ virt_viewer_app_open_tunnel_ssh(const char *sshhost,
+     if (port) {
+         // Wrap raw IPv6 address in []
+         const char *connect_str;
+-        if (strstr(host, ":") != NULL && host[0] != '[') {
++        if (strstr(host, ":") != NULL) {
+             connect_str = "TCP:[%s]:%s";
+         } else {
+             connect_str = "TCP:%s:%s";

@@ -26,7 +26,7 @@ BuildRequires:  spirv-headers
 BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(vulkan) >= 1.2.148
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-event)
 BuildRequires:  pkgconfig(xcb-icccm)
@@ -34,7 +34,7 @@ URL:            https://winehq.org/
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later
 Group:          System/X11/Utilities
-Version:        1.9
+Version:        1.10
 Release:        0
 Source0:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz
 Source1:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz.sign

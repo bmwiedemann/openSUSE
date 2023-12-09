@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:19:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Process the "--help-all" CLI argument (kde#477492)
+  * Fix StartPage search engine default configuration (kde#419530)
+  * Fix crash when starting new session after crash (kde#408701)
+
+-------------------------------------------------------------------
 Tue Nov  7 17:04:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.3

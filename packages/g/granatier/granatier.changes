@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:19:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Player selection dialog view: render player icons hidpi-aware
+
+-------------------------------------------------------------------
 Tue Nov  7 17:04:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.3

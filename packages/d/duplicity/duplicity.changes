@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  7 17:01:07 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.1.4
+  + See CHANGELOG.md for changes.
+- Update source URI.
+- use python 3.11 on SLE/Leap.
+- Drop duplicity-remove_shebang.patch. Handle this with sed in %setup.
+- No longer require python3-future. It isn't used anymore except
+  in tests.
+
+-------------------------------------------------------------------
 Fri Jul 21 20:56:50 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 1.2.3:

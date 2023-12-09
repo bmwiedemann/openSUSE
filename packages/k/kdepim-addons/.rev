@@ -779,4 +779,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
     <requestid>1124538</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>ddaaf7314939ee19233e24ed1dc22e95</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158626</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131832</requestid>
+  </revision>
 </revisionlist>

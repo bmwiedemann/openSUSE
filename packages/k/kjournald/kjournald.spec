@@ -19,7 +19,7 @@
 %define soname  0
 %bcond_without released
 Name:           kjournald
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Qt browser for journald database
 License:        LGPL-2.1-or-later

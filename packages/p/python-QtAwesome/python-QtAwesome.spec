@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtAwesome
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python2 1
 Name:           python-QtAwesome
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT

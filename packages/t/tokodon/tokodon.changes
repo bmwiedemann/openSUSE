@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:20:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Force the fullscreen image viewer focus so keybinds work
+  * Protect against a notification missing a post (kde#475825)
+
+-------------------------------------------------------------------
 Tue Nov  7 17:05:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.3

@@ -19,7 +19,7 @@
 %define mlt_version 7.14.0
 %bcond_without released
 Name:           kdenlive
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later

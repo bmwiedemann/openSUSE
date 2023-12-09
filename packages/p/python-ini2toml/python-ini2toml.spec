@@ -50,7 +50,7 @@
 
 %define skip_python2 1
 Name:           python-ini2toml%{psuffix}
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0

@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1009890</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d07c2971fc403c36531982b7719649b</srcmd5>
+    <version>2.6.0</version>
+    <time>1702158810</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Serialize vol.Maybe (#67) @eifinger
+- use the packaged LICENSE file
+
+- Update to version 2.5.0</comment>
+    <requestid>1132137</requestid>
+  </revision>
 </revisionlist>

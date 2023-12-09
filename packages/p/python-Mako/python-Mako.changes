@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:09:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Mako 1.3.0 bumps the minimum Python version to 3.8
+  * Python 3.12 is now supported explicitly.
+
+-------------------------------------------------------------------
 Thu Jun 15 12:06:44 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
@@ -6,7 +13,7 @@ Thu Jun 15 12:06:44 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 -------------------------------------------------------------------
 Sat Dec  3 03:26:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.2.4 
+- Update to 1.2.4
   [bug] [codegen] Fixed issue where unpacking nested tuples in a for loop using would raise a
   "couldn't apply loop context" error if the loop context was used. The regex
   used to match the for loop expression now allows the list of loop variables
@@ -30,7 +37,7 @@ Sun Sep 11 07:28:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.2:
   * Fixed issue in lexer where the regexp used to match tags would not
-    correctly interpret quoted sections individually 
+    correctly interpret quoted sections individually
 
 -------------------------------------------------------------------
 Mon Jul 18 13:39:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
@@ -76,8 +83,8 @@ Mon Dec  6 09:47:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Sat Oct 16 19:02:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.5:
-  * Fixed some issues with running the test suite which would 
-    be revealed by running tests in random order. 
+  * Fixed some issues with running the test suite which would
+    be revealed by running tests in random order.
 
 -------------------------------------------------------------------
 Wed Oct  6 07:34:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -92,7 +99,7 @@ Tue Oct  5 14:45:17 UTC 2021 - Stefan Schubert <schubi@suse.de>
 -------------------------------------------------------------------
 Thu Sep 30 15:22:55 UTC 2021 - Stefan Schubert <schubi@schubi.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Sun Jan 24 19:48:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -100,7 +107,7 @@ Sun Jan 24 19:48:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 1.1.4:
   * Fixed Python deprecation issues related to module importing, as well as
     file access within the Lingua plugin, for deprecated APIs that began to
-    emit warnings under Python 3.10. 
+    emit warnings under Python 3.10.
 
 -------------------------------------------------------------------
 Fri Dec 11 23:26:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
@@ -113,7 +120,7 @@ Fri Dec 11 23:26:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Mon Jun  8 08:54:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.1.3
- * The default template encoding is now utf-8 
+ * The default template encoding is now utf-8
 
 -------------------------------------------------------------------
 Mon May 25 06:50:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
@@ -177,7 +184,7 @@ Mon Apr 29 08:01:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Mar 21 13:36:46 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 1.0.8 
+- update to 1.0.8
  * Added --output-encoding flag to the mako-render script
 
 -------------------------------------------------------------------
@@ -283,7 +290,7 @@ Fri Sep 16 04:04:40 UTC 2016 - toddrme2178@gmail.com
     ``return``, but this could cause ``None`` to appear in the
     rendered template result.
 - Implement update-alternatives
-  
+
 -------------------------------------------------------------------
 Fri Jul 24 19:45:09 UTC 2015 - seife+obs@b1-systems.com
 
@@ -303,7 +310,7 @@ Fri Mar 13 11:43:52 UTC 2015 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Tue Jul 29 21:17:21 UTC 2014 - dmueller@suse.com
 
-- fix up build for SLE11 
+- fix up build for SLE11
 
 -------------------------------------------------------------------
 Fri Jul 18 14:43:53 UTC 2014 - toddrme2178@gmail.com
@@ -323,18 +330,18 @@ Mon Jan 13 13:20:54 UTC 2014 - dmueller@suse.com
   - [bug] Fixed bug in Babel plugin where translator comments
     would be lost if intervening text nodes were encountered.
     Fix courtesy Ned Batchelder.  [ticket:225]
-  
+
   - [bug] Fixed TGPlugin.render method to support unicode template
     names in Py2K - courtesy Vladimir Magamedov.
-  
+
   - [bug] Fixed an AST issue that was preventing correct operation
     under alpha versions of Python 3.4.  Pullreq courtesy Zer0-.
-  
+
   - [bug] Changed the format of the "source encoding" header output
     by the code generator to use the format ``# -*- coding:%s -*-``
     instead of ``# -*- encoding:%s -*-``; the former is more common
     and compatible with emacs.  Courtesy Martin Geisler.
-  
+
   - [bug] Fixed issue where an old lexer rule prevented a template line
     which looked like "#*" from being correctly parsed.  [ticket:224]
 
@@ -347,22 +354,22 @@ Tue Sep  3 08:20:48 UTC 2013 - dmueller@suse.com
     of Context.kwargs has been clarified, in that it only delivers
     top level keyword arguments originally passed to template.render().
     [ticket:219]
-  
+
   - [bug] Fixed the babel plugin to properly interpret ${} sections
     inside of a "call" tag, i.e. <%self:some_tag attr="${_('foo')}"/>.
     Code that's subject to babel escapes in here needs to be
     specified as a Python expression, not a literal.  This change
     is backwards incompatible vs. code that is relying upon a _('')
     translation to be working within a call tag.
-  
+
   - [bug] The Babel plugin has been repaired to work on Python 3.
     [ticket:187]
-  
+
   - [bug] Using <%namespace import="*" module="somemodule"/> now
     skips over module elements that are not explcitly callable,
     avoiding TypeError when trying to produce partials.
     [ticket:207]
-  
+
   - [bug] Fixed Py3K bug where a "lambda" expression was not
     interpreted correctly within a template tag; also
     fixed in Py2.4.  [ticket:190]
@@ -375,40 +382,40 @@ Tue Jun 25 11:58:53 UTC 2013 - dmueller@suse.com
    if Python version is < 2.6 or is between 3.0 and
    less than 3.3, as Markupsafe now only supports 2.6->2.X,
    3.3->3.X. [ticket:216]
- 
+
  - [bug] Fixed regression where "entity" filter wasn't
    converted for py3k properly (added tests.)
    [ticket:214]
- 
+
  - [bug] Fixed bug where mako-render script wasn't
    compatible with Py3k.  [ticket:212]
- 
+
  - [bug] Cleaned up all the various deprecation/
    file warnings when running the tests under
    various Pythons with warnings turned on.
    [ticket:213]
- 
+
  - [feature] Performance improvement to the
    "legacy" HTML escape feature, used for XML
    escaping and when markupsafe isn't present,
    courtesy George Xie.
- 
+
  - [bug] Fixed bug whereby an exception in Python 3
    against a module compiled to the filesystem would
    fail trying to produce a RichTraceback due to the
    content being in bytes. [ticket:209]
- 
+
  - [bug] Change default for compile()->reserved_names
    from tuple to frozenset, as this is expected to be
    a set by default.  [ticket:208]
- 
+
  - [feature] Code has been reworked to support Python 2.4->
    Python 3.xx in place.  2to3 no longer needed.
- 
+
  - [feature] Added lexer_cls argument to Template,
    TemplateLookup, allows alternate Lexer classes
    to be used.
- 
+
  - [feature] Added future_imports parameter to Template
    and TemplateLookup, renders the __future__ header
    with desired capabilities at the top of the generated
@@ -459,24 +466,24 @@ Fri May 25 08:33:12 UTC 2012 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Wed May 23 05:57:47 UTC 2012 - highwaystar.ru@gmail.com
 
-- python3 package added 
+- python3 package added
 - Update to 0.7.0
-  - Added new "loop" variable to templates, is provided within a % 
-    for block to provide info about the loop such as index, 
-    first/last, odd/even, etc.  A migration path is also provided 
-    for legacy templates via the "enable_loop" argument available 
-    on Template, TemplateLookup, and <%page>. 
-  - Added a real check for "reserved" names, that is names which 
-    are never pulled from the context and cannot be passed to the 
+  - Added new "loop" variable to templates, is provided within a %
+    for block to provide info about the loop such as index,
+    first/last, odd/even, etc.  A migration path is also provided
+    for legacy templates via the "enable_loop" argument available
+    on Template, TemplateLookup, and <%page>.
+  - Added a real check for "reserved" names, that is names which
+    are never pulled from the context and cannot be passed to the
     template.render() method.  Current names are "context", "loop",
     "UNDEFINED".
-  - The html_error_template() will now apply Pygments highlighting 
-    to the source code displayed in the traceback, if Pygments if 
+  - The html_error_template() will now apply Pygments highlighting
+    to the source code displayed in the traceback, if Pygments if
     available.
-  - Added support for context managers, 
+  - Added support for context managers,
     i.e. "% with x as e:/ % endwith" support.
-  - Added class-level flag to CacheImpl "pass_context"; when True, 
-    the keyword argument 'context' will be passed to 
+  - Added class-level flag to CacheImpl "pass_context"; when True,
+    the keyword argument 'context' will be passed to
     get_or_create() containing the Mako Context object.
   - Added Jinja2 to the example benchmark suite
   - Bugfixes
@@ -485,40 +492,40 @@ Wed May 23 05:57:47 UTC 2012 - highwaystar.ru@gmail.com
 - Update to 0.6.1
   - Bugfixes
 - Update to 0.6.0
-  - Template caching has been converted into a plugin system, 
-    whereby the usage of Beaker is just the default plugin. 
-    Template and TemplateLookup now accept a string "cache_impl" 
-    parameter which refers to the name of a cache plugin, 
-    defaulting to the name 'beaker'. New plugins can be registered 
-    as pkg_resources entrypoints under the group "mako.cache", or 
-    registered directly using mako.cache.register_plugin().  The 
+  - Template caching has been converted into a plugin system,
+    whereby the usage of Beaker is just the default plugin.
+    Template and TemplateLookup now accept a string "cache_impl"
+    parameter which refers to the name of a cache plugin,
+    defaulting to the name 'beaker'. New plugins can be registered
+    as pkg_resources entrypoints under the group "mako.cache", or
+    registered directly using mako.cache.register_plugin().  The
     core plugin is the mako.cache.CacheImpl class.
-  - Added support for Beaker cache regions in templates. Usage of 
-    regions should be considered as superseding the very obsolete 
-    idea of passing in backend options, timeouts, etc. within 
+  - Added support for Beaker cache regions in templates. Usage of
+    regions should be considered as superseding the very obsolete
+    idea of passing in backend options, timeouts, etc. within
     templates.
-  - The 'put' method on Cache is now 'set'. 'put' is there for 
+  - The 'put' method on Cache is now 'set'. 'put' is there for
     backwards compatibility.
-  - The <%def>, <%block> and <%page> tags now accept any argument 
-    named "cache_*", and the key minus the "cache_" prefix will be 
+  - The <%def>, <%block> and <%page> tags now accept any argument
+    named "cache_*", and the key minus the "cache_" prefix will be
     passed as keyword arguments to the CacheImpl methods.
-  - Template and TemplateLookup now accept an argument cache_args, 
-    which refers to a dictionary containing cache parameters. The 
-    cache_dir, cache_url, cache_type, cache_timeout arguments are 
+  - Template and TemplateLookup now accept an argument cache_args,
+    which refers to a dictionary containing cache parameters. The
+    cache_dir, cache_url, cache_type, cache_timeout arguments are
     deprecated (will probably never be removed, however) and can be
     passed now as cache_args={'url':<some url>, 'type':'memcached',
     'timeout':50, 'dir':'/path/to/some/directory'}
-  - Can now refer to context variables within extra arguments to 
-    <%block>, <%def>, 
-    i.e. <%block name="foo" cache_key="${somekey}">. Filters can 
-    also be used in this way, 
-    i.e. <%def name="foo()" filter="myfilter"> then 
+  - Can now refer to context variables within extra arguments to
+    <%block>, <%def>,
+    i.e. <%block name="foo" cache_key="${somekey}">. Filters can
+    also be used in this way,
+    i.e. <%def name="foo()" filter="myfilter"> then
     template.render(myfilter=some_callable)
-  - Added "--var name=value" option to the mako-render script, 
+  - Added "--var name=value" option to the mako-render script,
     allows passing of kw to the template from the command line.
-  - Added module_writer argument to Template, TemplateLookup, 
-    allows a callable to be passed which takes over the writing of 
-    the template's module source file, so that special 
+  - Added module_writer argument to Template, TemplateLookup,
+    allows a callable to be passed which takes over the writing of
+    the template's module source file, so that special
     environment-specific steps can be taken.
   - Bugfixes
 

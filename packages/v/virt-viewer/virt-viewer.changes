@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  1 16:04:37 MST 2023 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1166289) (jsc#PED-6305)
+  001-Update-src-virt-viewer-app.c.patch
+  002-Use-less-memory.patch
+  003-Fix-ssh-tunnel-with-non-POSIX-remote-shells.patch
+  004-Add-support-for-usb-redirect-on-connect-in-vv-files.patch
+  005-session-vnc-Plug-leak-in-error-path.patch
+
+-------------------------------------------------------------------
 Tue Oct 18 15:18:39 MDT 2022 - carnold@suse.com
 
 - bsc#203689 - [tw 20220921] remote-viewer fails to start:

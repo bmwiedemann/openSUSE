@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:45:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.10:
+  * Implement IBM Detect-Secrets
+  * Fixing sphinx-build issues
+  * A few more additions to the documentation updates
+  * #2095 changed os version for readthedocs to a supported
+    version
+  * fixing build errors for documentation
+  * Fixing readthedocs build
+  * apparently style.css is a reserved word for
+    sphinx/readthedocs
+  * updating requirements with specific versions
+  * pip prod(deps): bump rich from 13.5.3 to 13.6.0
+  * fixed vs list with tag search, allowing multiple tags as well
+  * Show both binary flag options
+- update to 6.1.9:
+  * Added Example and some sub features in slcli file volume-
+    cancel, slcli file volume-duplicate, slcli file volume-limits
+  * PyPi publishing update
+  * fixed image detail object mask
+  * added force feature for hardware poweron and poweroff
+- update to 6.1.8:
+  * Added double quotes in CSV outputformat
+  * add a new command on order items-cancelation
+  * New Command: `slcli user apikey`
+  * Add ability to filter in slcli account billing-items
+  * added unit test cases
+  * Added Unit Test Case and Fixture
+  * Remove `bytes-used` from block volume-list
+  * Updated command - slcli cdn purge
+  * add a limit default 100 to image list --public
+  * Updated command - slcli report bandwidth
+  * Updated command - slcli account bandwidth-pools
+  * Related this issue:#1744
+  * New Command: `slcli security`
+  * Figure out why slcli vs list --tag  doesnt work properly
+  * Updated readthedocs documentation
+  * add a new column on ipAddress table subnet details
+  * #1954
+  * Group bandwidth commands
+  * pip prod(deps): bump rich from 13.3.5 to 13.4.1
+  * F-String Updates - account/bandwidthblock
+  * f-string changes for order, storage_utils, subnet, tags
+    module
+  * #1968
+  * `slcli account billing-items --create` always return an empty
+    table
+  * update the network vlan on hardware detail
+  * Improve resolve ids functionality
+  * New command `slcli bandwidth pools-create`
+  * F-Strings - call-api / config /  dns / file
+  * F-Strings - hardware / image / lb
+  * f-string changes for user, virt, vlan and vpn module
+  * pip prod(deps): bump rich from 13.4.1 to 13.4.2
+  * F-string changes for managers, transports, test module and
+    few other files
+  * Fix misspelling
+  * New command `slcli bandwidth pools-edit`
+  * Error on hardware create with Operation system #1638
+  * Added new command `slcli bandwidth pools-delete`
+  * LB protocol features
+  * slcli bandwidth pools-create with single locations as option
+    #1990
+  * Added blank value if it is empty when "Deletion Scheduled" to
+    bandwidth pools and pool-details
+  * block volume-list errors for this issue #1732
+  * slcli image list should use an iterative cal
+  * Multithreading implementation for slcli bandwidth pools
+    command
+  * Removed Deduplicate code in LB of protocol edit cli commands
+    for Issue 2003
+  * slcli search command help/abort message when no option
+    provided
+  * moved cliChecker folder to softlayer-python folder because
+    new changes are not picking up
+  * Example text added in slcli block access-authorise, slcli
+    block access-list, slcli block access-revoke, slcli block
+    disaster-recovery-failover
+  * added Description of Example
+  * Fixed Description and some features are missing in slcli
+    block snapshot-set-notification, slcli block subnets-assign,
+    slcli block subnets-list, slcli block subnets-remove
+  * --force option for slcli firewall add, firewall cancel
+    command - issue #2032
+  * Example and sub feature for slcli file volume-order, volume-
+    refresh, volume-set-note command #2031
+  * Sub features and Example were missing in slcli cdn edit,
+    slcli cdn origin-add
+  * Example and sub feature for slcli firewall monitoring, slcli
+    globalip specific commands #2033
+  * pip prod(deps): bump rich from 13.4.2 to 13.5.1
+  * ./slcli account cancel-item message/help text is added.
+  * Feature added in slcli block snapshot-cancel, Text updated in
+    slcli block snapshot-enable
+  * Example text and some features for slcli block volume-cancel,
+    slcli block volume-duplicate command #2015
+  * Example text for slcli block volume-list, slcli block volume-
+    limit command #2016
+  * Example for slcli block volume-modify, slcli block volume-
+    options #2017
+  * Example for slcli dedicatedhost create-options, slcli dns
+    import, slcli dns record-edit command #2021
+  * Example for slcli dns zone-create, slcli dns record-list,
+    slcli dns record-remove command #2022
+  * Example for slcli dns zone-delete, slcli dns zone-list, slcli
+    dns zone-print command #2023
+  * Example for slcli file access-authorize, slcli file access-
+    list, slcli file access-revoke command #2024
+  * Example for slcli file disaster-recovery-failover, slcli file
+    replica-failback, slcli file replica-failover, slcli file
+    replica-locations #2025
+  * pip prod(deps): bump rich from 13.5.1 to 13.5.2
+  * Added new slcli user vpn-disable and slcli user vpn-enable
+    command
+  * Enable all user permissions doesn't get all permissions
+  * slcli file snapshot-list, snapshot-order, snapshot-restore
+    command example addition #2028
+  * added Example for slcli file snapshot-create, slcli file
+    snapshot-disable, slcli file snapshot-enable
+  * slcli ticket list command with user limit option #2049
+  * added example in order, partners and cancel in file, added
+    force and unit test cases  in order, cancel commands.
+  * Added example in slcli loadbal health, slcli loadbal
+    l7policies, slcli loadbal l7pool-add
+  * slcli ipsec cancel, ipsec list, loadbal cancel command
+    missing feature fix #2042
+  * Added force flag and unit test cases in slcli hardware
+    cancel, slcli hardware create
+- update to 6.1.7:
+  * Added new command - slcli cdn delete
+  * Added new command - slcli cdn create
+  * slcli firewall detail multiVlan:14109 --credentials
+  * add a new option on account orders
+  * Issues with block/file volume-details on some volumes
+  * Need a command for slcli object-storage delete
+  * New Command: `slcli user vpn-password`
+  * Update `slcli user detail` to display if user has API key
+  * Fixed an issue with 'slcli event-log get'
+  * pip prod(deps): bump rich from 13.3.3 to 13.3.4
+  * #1922 added the slcli file to this repo
+  * Updated date field in command - slcli cdn purge
+  * New command: slcli order quote-delete
+  * pip prod(deps): bump rich from 13.3.4 to 13.3.5
+- update to 6.1.6:
+  * New Command, account hook-create feature
+  * Updated request to list all permissions to users
+  * Dont fail when trying to get user information from slcli
+    event-log get
+  * Fix `slcli hardware create-credential` command
+  * new feature on account hook-delete
+  * v6.1.6 version
+- update to 6.1.5:
+  * removed snapcraft from publish build.
+  * Updated command slcli block snapshot-order, added flag iops
+  * Fix email commands
+  * fixed an issue showing block/file snapshot prices
+  * `vs list --search` functionality
+  * pip prod(deps): bump rich from 13.3.1 to 13.3.2
+  * slcli hw list --search "query"
+  * new command account hooks
+  * New command `slcli image share-deny`
+  * Updated command `slcli image detail`
+  * Add columns to `image list`
+  * New command `slcli image share`
+  * removed autoscale commands
+  * Unable to determine filelock storage limits per datacenter
+  * Solved bug `slcli vs capture` Error: Got unexpected extra
+    argument
+
+-------------------------------------------------------------------
 Sat Jul  1 09:08:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -143,7 +314,7 @@ Thu Jul  7 08:49:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * update the firewall list
   * Updated readme
   * Update `slcli firewall detail` to handle multi vlan firewalls
-  * New command for getting duplicate convert status 
+  * New command for getting duplicate convert status
   * Fixed TOX errors
   * add a new feature to get all cloud object storage
   * Update `slcli report bandwidth` command
@@ -193,14 +364,14 @@ Tue Jan 11 05:56:49 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Add Item names to vs billing report #1564
   * Mapping is now in collections.abc #1565
   * fix vs placementgroup list #1567
-  * fixed up snapshot-notification cli commands #1569 
+  * fixed up snapshot-notification cli commands #1569
   * loadbal l7policies #1553
   * snapshot notify #1554
 
 -------------------------------------------------------------------
 Fri Nov 26 11:37:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- fix for prettytable rename 
+- fix for prettytable rename
 
 -------------------------------------------------------------------
 Mon Aug 16 05:51:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
@@ -261,7 +432,7 @@ Wed Jul 29 07:47:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * #1263 add the redundant/degraded option to hardware
   * #1262 Added `iter` option for ordering manager functions
   * #1264 Add Account planned, unplanned and announcement events
-  * #1241 Storage feature for virtual and hardware servers 
+  * #1241 Storage feature for virtual and hardware servers
 
 -------------------------------------------------------------------
 Tue May 19 09:28:05 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

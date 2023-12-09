@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:43:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Added `tempLib` property to Font, Layer and Glyph (like
+    defcon's)
+  * raise appropriate error when extras not installed
+  * Bring guideline invariants up to spec
+  * Made lazily loaded ufoLib2.Font objects pickleable by
+    automatically un-lazifying them in custom `__getstate__`
+    method (e0f3d6af).
+  * Added optional support for de/serializing all ufoLib2 objects
+    from/to JSON or MessagePack.
+  * This uses ``cattrs`` custom converters to
+    unstructure/structure ufoLib2 objects to/from basic
+    serializable data structures.
+  * See docstring in ``ufoLib2.serde::serde`` or #230 for
+    examples.
+
+-------------------------------------------------------------------
 Tue Oct 11 16:42:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.13.1 
+- Update to version 0.13.1
   * Hotfix release to support cattrs v1.10.0 and set it as the minimum required version. It changed the name of a "omit if default"
     parameter that is relevant for our converters.
 
@@ -28,22 +47,22 @@ Thu Dec 16 11:13:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Mon Feb 22 15:44:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to v0.11.1
- * Component.move: apply delta to offset directly rather than 
+ * Component.move: apply delta to offset directly rather than
    translating, which fixes moving of flipped components.
- * Typing: add GlyphSet protocol. More elegant than referring to 
-   Layer and Glyph explicitly, which nicely avoids circular 
+ * Typing: add GlyphSet protocol. More elegant than referring to
+   Layer and Glyph explicitly, which nicely avoids circular
    imports.
  * Some small typing fixes to circumvent microsoft/pyright#1297.
- * Add APIs Font.object_lib(obj) and Glyph.object_lib(obj) to 
-   explicitly handle the new public.objectLibs mechanism of 
-   attaching libs to anchors, guidelines, contours, components and 
+ * Add APIs Font.object_lib(obj) and Glyph.object_lib(obj) to
+   explicitly handle the new public.objectLibs mechanism of
+   attaching libs to anchors, guidelines, contours, components and
    points.
 - Reinstate python36 build. FontTools does not need scipy anymore.
 
 -------------------------------------------------------------------
 Sat Feb 13 10:17:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 build (no FontTools as it needs scipy) 
+- skip python 3.6 build (no FontTools as it needs scipy)
 
 -------------------------------------------------------------------
 Thu Jul 23 12:03:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

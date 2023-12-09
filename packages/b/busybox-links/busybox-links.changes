@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  8 14:12:35 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add new sub-package for udhcpc
+
+-------------------------------------------------------------------
+Mon Nov 20 12:58:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- zgrep: don't set the label option as only the real grep
+  supports it (bsc#1215943)
+
+-------------------------------------------------------------------
 Thu Sep  7 11:46:36 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add conflict for coreutils-systemd, package got splitted
@@ -44,7 +55,7 @@ Tue Mar 15 12:58:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Feb 10 15:10:02 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
-- Drop update-alternatives support 
+- Drop update-alternatives support
 
 -------------------------------------------------------------------
 Fri Oct 22 15:57:07 UTC 2021 - Stefan Schubert <schubi@suse.de>
@@ -165,7 +176,7 @@ Wed Jul 22 09:49:56 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Tue Jul 14 16:05:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
-- Add provides smtp_daemon to busybox-sendmail 
+- Add provides smtp_daemon to busybox-sendmail
 
 -------------------------------------------------------------------
 Thu Jun 11 09:48:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
@@ -175,7 +186,7 @@ Thu Jun 11 09:48:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Fri May 29 05:13:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
-- Add conflicts: mawk to busybox-gawk 
+- Add conflicts: mawk to busybox-gawk
 
 -------------------------------------------------------------------
 Mon May 18 13:42:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

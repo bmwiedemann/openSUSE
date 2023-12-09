@@ -26,6 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://libsigcplusplus.github.io/libsigcplusplus/
 Source0:        https://download.gnome.org/sources/libsigc++/2.12/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE libsigc++2-remove-unnecessary-executable-flag-from-file.patch bsc#1209094 bsc#1209140 qzhao@suse.com -- cancel executable permission for file /usr/share/doc/packages/libsigc-2_0-0/NEWS
+Patch0:         libsigc++2-remove-unnecessary-executable-flag-from-file.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.54.0
@@ -69,6 +71,7 @@ of use unmatched by other C++ callback libraries.
 
 %prep
 %setup -q -n %{_name}-%{version}
+%patch -P 0 -p1
 
 # Remove executable bit in NEWS...
 chmod -x NEWS

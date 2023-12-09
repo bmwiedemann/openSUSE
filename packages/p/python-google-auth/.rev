@@ -402,4 +402,35 @@
     <comment></comment>
     <requestid>1128592</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>404d7473294d5804d0f738ffbbd063f5</srcmd5>
+    <version>2.25.1</version>
+    <time>1702158543</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.25.1:
+  * Fix vm universe_domain bug (#1433) (8683520)
+  * Add custom tls signer for ECP Provider. (39eb287)
+  * Add custom tls signer for ECP Provider. (#1402) (39eb287)
+  * Add with_universe_domain (#1408) (505910c)
+  * Fixes issue where Python37DeprecationWarning cannot be
+    filtered (#1428) (f22f767)
+  * Remove broken link in Python37DeprecationWarning (#1430)
+  * Add support for Python 3.12 (#1421) (307916c)
+  * Add universe domain support for VM cred (#1409) (7ab0fce)
+  * Modify the token refresh window (#1419) (c6af1d6)
+  * Add missing before request to async oauth2 credentials.
+    (#1420) (8eaa878)
+  * Auto create self signed jwt cred (#1418) (6c610a5)
+  * Migrate datetime.utcnow for python 3.12 (#1413) (e4d9c27)
+  * Update user cred doc (#1414) (3f426bc)
+
+  * Less restrictive content-type header check for google authentication
+ * Add get_bq_config_path() to _cloud_sdk.py
+- unpin urllib3 to resolve conflict with python-kubernetes
+  * migrate signBlob to iamcredentials.googleapis.com
+  * encrypted mtls private key support
+  * signBytes for impersonated credentials
+  * catch exceptions.RefreshError</comment>
+    <requestid>1131735</requestid>
+  </revision>
 </revisionlist>

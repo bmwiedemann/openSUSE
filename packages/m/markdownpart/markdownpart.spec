@@ -20,7 +20,7 @@
 %define qt5_version 5.15.2
 %bcond_without released
 Name:           markdownpart
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Time-Out
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,68 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Time-Out
-Version:        0.11
-Release:        0
 %define cpan_name Time-Out
+Name:           perl-Time-Out
+Version:        0.240.0
+Release:        0
+%define cpan_version 0.24
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Easily timeout long running operations
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Time-Out/
-Source:         http://www.cpan.org/authors/id/P/PA/PATL/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SV/SVW/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(App::cpanminus) >= 1.7046
+BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.09
+BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test::Needs)
+BuildRequires:  perl(Try::Tiny)
+Requires:       perl(Try::Tiny)
+Provides:       perl(Time::Out) = %{version}
+Provides:       perl(Time::Out::Exception) = %{version}
+Provides:       perl(Time::Out::ParamConstraints) = %{version}
+%define         __perllib_provides /bin/true
+Recommends:     perl(Time::HiRes) >= 1.972.600
 %{perl_requires}
 
 %description
-'Time::Out' provides an easy interface to _alarm(2)_ based timeouts. Nested
-timeouts are supported.
+The 'Time::Out' module provides an easy interface to alarm(2) based
+timeouts. Nested timeouts are supported. The module exports the 'timeout()'
+function by default. The function returns whatever the code placed inside
+the subroutine reference returns:
+
+  use Time::Out qw( timeout );
+
+  my $result = timeout 5 => sub {
+    return 7;
+  };
+  # $result == 7
+
+If 'Time::Out' sees that Time::HiRes has been loaded, it will use that
+'alarm()' function (if available) instead of the default one, allowing
+float timeout values to be used effectively:
+
+  use Time::HiRes qw();
+  use Time::Out   qw( timeout );
+
+  timeout 3.1416 => sub {
+    # ...
+  };
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -51,7 +81,7 @@ timeouts are supported.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
+%license LICENSE
 
 %changelog

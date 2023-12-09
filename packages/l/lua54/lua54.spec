@@ -46,6 +46,8 @@ Patch6:         shared_link.patch
 # PATCH-FIX-UPSTREAM skip-tests_big-endian.patch bsc#1216930 mcepl@suse.com
 # patch out little-endian-only test
 Patch7:         skip-tests_big-endian.patch
+# PATCH-FIX-UPSTREAM inspect errno only after failure
+Patch8:         execresult.patch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       lua = %{version}

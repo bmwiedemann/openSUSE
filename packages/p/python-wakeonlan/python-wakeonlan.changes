@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  8 16:22:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Allow specifying ipv6 addresses
+  * Add Typing :: Typed classifier
+
+-------------------------------------------------------------------
 Tue May  9 19:24:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.0

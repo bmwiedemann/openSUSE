@@ -662,4 +662,20 @@ please add to Staging:E, should fix the tox failure</comment>
     right version and to can build under Leap.</comment>
     <requestid>1124422</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>845c35fbc45efd927ef277849183c483</srcmd5>
+    <version>4.11.4</version>
+    <time>1702158812</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.4:
+  * Fix `quickstart` command from requiring `root` positional
+    argument
+  * docs(config): fix default value for install_command
+  * Added Python 3.12 in installation docs
+  * Fix terminal size in tox commands (#2999)
+  * Use the new ruff formatter over black
+  * docs(config): Fix base_python default reference
+  * Fixed 'AppData' not passed to env by default (#3151)</comment>
+    <requestid>1132139</requestid>
+  </revision>
 </revisionlist>

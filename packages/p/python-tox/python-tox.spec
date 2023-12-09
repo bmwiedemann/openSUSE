@@ -23,7 +23,7 @@
 %bcond_with devpi_process
 %endif
 Name:           python-tox
-Version:        4.11.3
+Version:        4.11.4
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
@@ -61,10 +61,10 @@ BuildRequires:  %{python_module wheel >= 0.41.2}
 %if %{with devpi_process}
 BuildRequires:  %{python_module devpi-process > 1}
 %endif
+BuildRequires:  %{python_module importlib-metadata >= 6.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-BuildRequires:  %{python_module importlib-metadata >= 6.8}
 Requires:       python-cachetools >= 5.3.1
 Requires:       python-chardet >= 5.2
 Requires:       python-colorama >= 0.4.6

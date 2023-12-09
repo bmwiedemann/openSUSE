@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  7 22:38:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.25.1:
+  * Fix vm universe_domain bug (#1433) (8683520)
+  * Add custom tls signer for ECP Provider. (39eb287)
+  * Add custom tls signer for ECP Provider. (#1402) (39eb287)
+  * Add with_universe_domain (#1408) (505910c)
+  * Fixes issue where Python37DeprecationWarning cannot be
+    filtered (#1428) (f22f767)
+  * Remove broken link in Python37DeprecationWarning (#1430)
+  * Add support for Python 3.12 (#1421) (307916c)
+  * Add universe domain support for VM cred (#1409) (7ab0fce)
+  * Modify the token refresh window (#1419) (c6af1d6)
+  * Add missing before request to async oauth2 credentials.
+    (#1420) (8eaa878)
+  * Auto create self signed jwt cred (#1418) (6c610a5)
+  * Migrate datetime.utcnow for python 3.12 (#1413) (e4d9c27)
+  * Update user cred doc (#1414) (3f426bc)
+
+-------------------------------------------------------------------
 Fri Nov 24 13:58:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.23.4
@@ -11,7 +31,7 @@ Fri Nov 24 13:58:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Tue Oct  3 12:48:18 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.23.2
-  * Less restrictive content-type header check for google authentication 
+  * Less restrictive content-type header check for google authentication
   * Trust boundary meta header renaming
   * Support urllib3 2.0
 
@@ -24,12 +44,12 @@ Thu Sep 21 12:09:25 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * Make external_account resistant to string type 'expires_in' responses from non-compliant services
  * Missing ssj for impersonate cred ()
  * Skip checking projectid on cred if env var is set
- * Add get_bq_config_path() to _cloud_sdk.py 
+ * Add get_bq_config_path() to _cloud_sdk.py
 
 -------------------------------------------------------------------
 Mon Aug 14 09:05:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- unpin urllib3 to resolve conflict with python-kubernetes 
+- unpin urllib3 to resolve conflict with python-kubernetes
 
 -------------------------------------------------------------------
 Tue Jul 25 13:44:24 UTC 2023 - ecsos <ecsos@opensuse.org>
@@ -436,7 +456,7 @@ Wed Jan  6 13:16:24 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 Wed Sep 23 13:05:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.21.2:
-  * migrate signBlob to iamcredentials.googleapis.com  
+  * migrate signBlob to iamcredentials.googleapis.com
 
 -------------------------------------------------------------------
 Thu Sep 10 12:12:06 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -494,9 +514,9 @@ Thu Jun 18 10:30:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Mon May 25 11:24:30 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.15.0:
-  * encrypted mtls private key support 
-  * signBytes for impersonated credentials 
-  * catch exceptions.RefreshError 
+  * encrypted mtls private key support
+  * signBytes for impersonated credentials
+  * catch exceptions.RefreshError
   * support string type response.data
 
 -------------------------------------------------------------------

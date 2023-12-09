@@ -306,4 +306,41 @@
     <comment></comment>
     <requestid>1096278</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>66661594888a1c1729cc6f9319703afc</srcmd5>
+    <version>6.1.10</version>
+    <time>1702158817</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.10:
+  * Implement IBM Detect-Secrets
+  * Fixing sphinx-build issues
+  * A few more additions to the documentation updates
+  * #2095 changed os version for readthedocs to a supported
+    version
+  * fixing build errors for documentation
+  * Fixing readthedocs build
+  * apparently style.css is a reserved word for
+    sphinx/readthedocs
+  * updating requirements with specific versions
+  * pip prod(deps): bump rich from 13.5.3 to 13.6.0
+  * fixed vs list with tag search, allowing multiple tags as well
+  * Show both binary flag options
+- update to 6.1.9:
+  * Added Example and some sub features in slcli file volume-
+    cancel, slcli file volume-duplicate, slcli file volume-limits
+  * PyPi publishing update
+  * fixed image detail object mask
+  * added force feature for hardware poweron and poweroff
+- update to 6.1.8:
+  * Added double quotes in CSV outputformat
+  * add a new command on order items-cancelation
+  * New Command: `slcli user apikey`
+  * Add ability to filter in slcli account billing-items
+  * added unit test cases
+  * Added Unit Test Case and Fixture
+  * Remove `bytes-used` from block volume-list
+  * Updated command - slcli cdn purge
+  * add a limit default 100 to image list --public</comment>
+    <requestid>1132148</requestid>
+  </revision>
 </revisionlist>

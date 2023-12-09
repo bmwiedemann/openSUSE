@@ -1,7 +1,7 @@
 #
 # spec file for package python3-seccomp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Name:           libseccomp
 Summary:        A Seccomp (mode 2) helper library
 Group:          Development/Libraries/C and C++
 %endif
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 License:        LGPL-2.1-only
 URL:            https://github.com/seccomp/libseccomp
@@ -104,13 +104,13 @@ echo 'int main () { return 0; }' >tests/52-basic-load.c
 %build
 autoreconf -fiv
 %configure \
-    --includedir="%_includedir/%pname" \
+	 --includedir="%_includedir/%pname" \
 %if "%{flavor}" == "python3"
-    --enable-python \
+	 --enable-python \
 %endif
-    --disable-static \
-    --disable-silent-rules \
-    GPERF=/bin/true
+	 --disable-static \
+	 --disable-silent-rules \
+	 GPERF=/bin/true
 %make_build
 
 %install

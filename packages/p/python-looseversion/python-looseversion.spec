@@ -1,7 +1,7 @@
 #
 # spec file for package python-looseversion
 #
-# Copyright (c) 2023 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           python-looseversion
-Version:        1.1.2 
+Version:        1.3.0
 Release:        0
 Summary:        A backwards/forwards-compatible fork of distutils.version.LooseVersion
-License:        PSF-2.0 
-Group:          Development/Languages/Python 
-Url:            https://github.com/effigies/looseversion
+License:        PSF-2.0
+Group:          Development/Languages/Python
+URL:            https://github.com/effigies/looseversion
 Source:         https://github.com/effigies/looseversion/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module base > 3}
 BuildRequires:  %{python_module hatchling}
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch: noarch
+BuildArch:      noarch
 
 %python_subpackages
 
@@ -61,4 +61,3 @@ If you are simply comparing versions of Python packages, consider moving to pack
 %{python_sitelib}/looseversion-*
 
 %changelog
-

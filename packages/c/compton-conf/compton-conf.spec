@@ -1,7 +1,7 @@
 #
 # spec file for package compton-conf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(lxqt)
 Requires:       compton
 Recommends:     %{name}-lang
+Conflicts:      picom-conf
 
 %description
 X composite manager configuration for compton

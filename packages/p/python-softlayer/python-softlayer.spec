@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-softlayer
-Version:        6.1.4
+Version:        6.1.10
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT

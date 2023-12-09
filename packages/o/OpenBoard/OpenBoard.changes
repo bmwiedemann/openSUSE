@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  9 09:21:18 UTC 2023 - Martin Winter <me@letsfindaway.de>
+
+- update to release version 1.7.0
+- update patches to match updated sources
+  * update 0569-scale-mirror-pixmap.patch
+  * update 0686-shortcut-configuration.patch
+- replace build system patch
+  * remove 0698-add-cmake-build-system.patch
+  * add 0830-cmake-community-builds.patch
+- switch from pgkconfig to cmake for some BuildRequires
+
+-------------------------------------------------------------------
 Sun Jun 18 06:21:57 UTC 2023 - Martin Winter <me@letsfindaway.de>
 
 - update to version 1.7.0~git20230614.2ff8f29

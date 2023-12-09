@@ -39,4 +39,21 @@
     <comment></comment>
     <requestid>974870</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8352def111fd333ad6d41967ed3b47ae</srcmd5>
+    <version>2.2.3</version>
+    <time>1702158807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.3:
+  * Fix: correct UCS2 part length following #184, fixes #216
+- update to 2.2.2:
+  * Added python 3.10 tests to CircleCI
+  * fix socket recv error being silently ignored
+  * Refactored Client.read_pdu()
+  * Refactored Client.send_pdu()
+  * increment sequence of commands as spec (fixes #214)
+
+- add missing six buildrequires</comment>
+    <requestid>1132130</requestid>
+  </revision>
 </revisionlist>

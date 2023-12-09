@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  6 08:45:21 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.0:
+  * Added an option to clear personal data on exit.
+  * Added an option to restore open articles on start.
+  * Enabled navigation with gestures and mouse buttons 8 and 9.
+  * Tab overview can now also be used in desktop mode.
+  * History items can now be deleted individually.
+  * Minor UI changes.
+  * Bug fixes.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu May  4 14:24:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.1:

@@ -17,14 +17,16 @@
 
 
 %bcond_without test
+%{?sle15_python_module_pythons}
 Name:           python-semver
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-semver/python-semver
 Source:         https://github.com/python-semver/python-semver/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

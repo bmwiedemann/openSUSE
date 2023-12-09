@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec  8 17:18:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 7.6.4.1
+  https://wiki.documentfoundation.org/Releases/7.6.4/RC1
+
+-------------------------------------------------------------------
+Fri Dec  8 09:38:49 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update bundled dependencies:
+  curl-8.2.1.tar.xz -> curl-8.4.0.tar.xz
+  harfbuzz-8.0.0.tar.xz -> harfbuzz-8.2.2.tar.xz
+- Build using OpenSSL instead of NSS, since the bundled curl does
+  not support the NSS backend any more
+
+-------------------------------------------------------------------
+Wed Nov 22 15:26:15 UTC 2023 - Danilo Spinella <oss@danyspin97.org>
+
+- Update to 7.6.3.2:
+  https://wiki.documentfoundation.org/Releases/7.6.3/RC2
+- Update bundled dependencies:
+  libcmis-0.6.0.tar.xz -> libcmis-0.6.1.tar.xz
+
+-------------------------------------------------------------------
 Mon Nov 13 10:58:05 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.6.3.1:
