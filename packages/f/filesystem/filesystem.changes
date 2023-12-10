@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  8 10:29:23 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create systemd-tmpfile for /run (/run/lock missing bug report)
+
+-------------------------------------------------------------------
 Mon Sep 25 08:45:52 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Add /run/lock (boo#1212926)

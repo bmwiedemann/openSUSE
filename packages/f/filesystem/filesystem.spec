@@ -180,6 +180,9 @@ function create_dir () {
 	/var/*)
 	    echo "d $NAME $MODE $OWNR $GRUP -" >> fs-var.conf
 	    ;;
+        /run/*)
+            echo "d $NAME $MODE $OWNR $GRUP -" >> fs-run.conf
+            ;;
 	/usr/local/*)
 	    echo "d $NAME $MODE $OWNR $GRUP -" >> fs-usr-local.conf
 	    ;;
@@ -314,6 +317,7 @@ install -m 0644  fs-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-tmp.conf
 install -m 0644  fs-var.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var.conf
 install -m 0644  fs-var-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var-tmp.conf
 install -m 0644  fs-usr-local.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-usr-local.conf
+install -m 0644  fs-run.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-run.conf
 
 %pretrans -p <lua> -f pretrans.lua
 %pre -p <lua> -f pre.lua
@@ -321,6 +325,7 @@ install -m 0644  fs-usr-local.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-usr-loc
 %posttrans -p <lua> -f posttrans.lua
 
 %files -f filesystem.list
+/usr/lib/tmpfiles.d/fs-run.conf
 /usr/lib/tmpfiles.d/fs-tmp.conf
 /usr/lib/tmpfiles.d/fs-var.conf
 /usr/lib/tmpfiles.d/fs-var-tmp.conf
