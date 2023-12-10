@@ -343,4 +343,11 @@
   * add a limit default 100 to image list --public</comment>
     <requestid>1132148</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f0c8594e9b0bd95d151bcfd71153b976</srcmd5>
+    <version>6.1.10</version>
+    <time>1702199749</time>
+    <user>dimstar_suse</user>
+    <comment>  * Unable to determine file-lock storage limits per datacenter</comment>
+  </revision>
 </revisionlist>

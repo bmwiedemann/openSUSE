@@ -165,7 +165,7 @@ Fri Dec  8 16:45:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Add columns to `image list`
   * New command `slcli image share`
   * removed autoscale commands
-  * Unable to determine filelock storage limits per datacenter
+  * Unable to determine file-lock storage limits per datacenter
   * Solved bug `slcli vs capture` Error: Got unexpected extra
     argument
 
