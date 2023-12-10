@@ -1711,6 +1711,7 @@ unsorted:
   - busybox-time 
   - busybox-traceroute 
   - busybox-tunctl 
+  - busybox-udhcpc 
   - busybox-unzip 
   - busybox-util-linux 
   - busybox-vi 
@@ -3228,6 +3229,7 @@ unsorted:
   - dracut-kiwi-oem-repart 
   - dracut-kiwi-overlay 
   - dracut-kiwi-verity 
+  - dracut-pcr-signature 
   - dracut-sshd 
   - dracut-tools 
   - dragonbox-devel 
@@ -15368,6 +15370,7 @@ unsorted:
   - libvirt-daemon-hooks 
   - libvirt-daemon-lxc 
   - libvirt-daemon-plugin-sanlock 
+  - libvirt-daemon-proxy 
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-doc 
