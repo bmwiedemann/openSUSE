@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 09 19:55:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231207T221317Z:
+  * Fix a panic for bucket heal (#4781)
+  * ready: Do not quit when the target server is offline or any
+    other error (#4783)
+
+-------------------------------------------------------------------
 Wed Dec 06 12:06:10 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20231202T112410Z:

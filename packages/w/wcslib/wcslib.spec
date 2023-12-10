@@ -1,7 +1,7 @@
 #
 # spec file for package wcslib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libver  7
+%define libver  8
 Name:           wcslib
-Version:        7.12
+Version:        8.2.2
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
@@ -97,12 +97,14 @@ opened with %{name}.
 %install
 %make_install
 
-cp -a THANKS %{buildroot}%{_docdir}/%{name}/
-
 # Remove static libraries
 rm -rf %{buildroot}%{_libdir}/*.a
 
 %fdupes %{buildroot}%{_docdir}/%{name}/html
+# recursive symlink
+rm %{buildroot}%{_docdir}/%{name}/wcslib
+# avoid rpmlint install-file-in-docs, not needed in rpm package
+rm %{buildroot}%{_docdir}/%{name}/INSTALL
 
 %check
 make check

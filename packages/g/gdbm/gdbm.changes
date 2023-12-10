@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  6 16:00:27 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- libgdbm_compat4: Fix libgdbm version of Conflicts [bsc#1217727]
+
+-------------------------------------------------------------------
 Tue Aug  8 17:02:38 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix bsc#1209583, gdbm_load and gdbm_dump receive a SEGFAULT if

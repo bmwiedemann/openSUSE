@@ -17,7 +17,7 @@
 
 
 Name:           ugrep-indexer
-Version:        0.9.1
+Version:        0.9.4
 Release:        0
 Summary:        File indexer for accelerated search using ugrep
 License:        BSD-3-Clause
@@ -26,11 +26,16 @@ Source:         https://github.com/Genivia/ugrep-indexer/archive/refs/tags/v%{ve
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 Supplements:    ugrep >= 3.12.6
+# the bzip3 version seems to old, the tests break with decompression errors
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(bzip3)
+%endif
 
 %description
 The ugrep-indexer utility recursively indexes files to accelerate recursive
@@ -40,11 +45,18 @@ searching on file systems with ugrep.
 %autosetup
 
 %build
-%configure
+%configure \
+%if 0%{?suse_version} >= 1600
+	--with-bzip3 \
+%endif
+	%{nil}
 %make_build
 
 %install
 %make_install
+
+%check
+%make_build check
 
 %files
 %license LICENSE.txt

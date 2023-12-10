@@ -37,7 +37,7 @@ BuildRequires:  libproxy-devel
 #BuildRequires:  libvpx-devel # Compile errors with 1.10.0
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  libwebp-devel >= 1.0.0
-BuildRequires:  libicu-devel >= 63.1
+#BuildRequires:  libicu-devel >= 63.1
 %endif
 BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
@@ -72,9 +72,9 @@ BuildRequires:  clang-devel >= 5
 %endif
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.17.1
+Version:        2.53.18
 Release:        0
-%define releasedate 20230921000000
+%define releasedate 20231209000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -89,15 +89,11 @@ Source7:        seamonkey-rpmlintrc
 Source11:       seamonkey-appdata.tar.bz2
 Source12:       seamonkey-GNUmakefile
 Patch1:         mozilla-nongnome-proxies.patch
-Patch2:         seamonkey-binutils.patch
-Patch3:         mozilla-ntlm-full-path.patch
-Patch4:         seamonkey-lto.patch
-Patch5:         seamonkey-man-page.patch
-Patch6:         reproducible.patch
-Patch7:         mozilla-bmo531915.patch
-Patch8:         1817900-13-112a1.patch
-Patch9:         1849874-11503.patch
-Patch10:        TOP-NOBUG-revendor-253172.patch
+Patch2:         mozilla-ntlm-full-path.patch
+Patch3:         seamonkey-lto.patch
+Patch4:         seamonkey-man-page.patch
+Patch5:         reproducible.patch
+Patch6:         mozilla-bmo531915.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -226,15 +222,11 @@ cd mozilla
 cp %{SOURCE12} GNUmakefile
 
 %patch1 -p1
-%patch2 -p1
-%patch3 -p2
-%patch4 -p1
-%patch5 -p0
+%patch2 -p2
+%patch3 -p1
+%patch4 -p0
+%patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1

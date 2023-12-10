@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 09 19:51:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.63.0:
+  * Use the default http config for all server UI and rapi
+    operations + Indicate when the UI/echo server is using https
+    (#868)
+  * go 1.21.5 (#867)
+  * Bump golang.org/x/net from 0.18.0 to 0.19.0 (#864)
+
+-------------------------------------------------------------------
 Thu Nov 23 06:25:09 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.62.1:

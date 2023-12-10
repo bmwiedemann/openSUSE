@@ -82,7 +82,7 @@ Summary:        GNU dbm key/data database compat wrapper
 # Was provided in older sonames
 License:        GPL-3.0-or-later
 Group:          System/Libraries
-Conflicts:      libgdbm3
+Conflicts:      libgdbm4
 
 %description -n %{lcompat}
 GNU dbm is a library of database functions that use extensible

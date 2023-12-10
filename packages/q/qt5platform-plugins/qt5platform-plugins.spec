@@ -29,6 +29,7 @@ Patch0:         support-Qt-5_15_8.patch
 Patch1:         support-Qt-5_15_9.patch
 Patch2:         support-Qt-5_15_10.patch
 Patch3:         support-Qt-5_15_11.patch
+BuildRequires:  -libudev-mini1
 BuildRequires:  git-core
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5PlatformSupport-private-headers-devel

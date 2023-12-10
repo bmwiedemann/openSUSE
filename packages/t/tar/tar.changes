@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Dec  6 16:04:39 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- GNU tar 1.34:
+  * Fail when building GNU tar if the platform supports 64-bit
+    time_t but the build only uses 32-bit time_t.
+  * Leave the devmajor and devminor fields empty (rather than
+    zero) for non-special files, as this is more compatible with
+    traditional tar.
+  Fixes:
+  * Fix interaction of --update with --wildcards.
+  * When extracting archives into an empty directory, do not create
+    hard links to files outside that directory.
+  * Handle partial reads from regular files.
+  * Warn file changed as we read it less often. Formerly, tar
+    warned if the file's size or ctime changed. However, this
+    generated a false positive if tar read a file while another
+    process hard-linked to it, changing its ctime. Now, tar warns
+    if the file's size, mtime, user ID, group ID, or mode changes.
+    Although neither heuristic is perfect, the new one should work
+    better in practice.
+  * Fix --ignore-failed-read to ignore file-changed read errors
+    as far as exit status is concerned. You can now suppress
+    file-changed issues entirely with --ignore-failed-read
+    --warning=no-file-changed.
+  * Fix --remove-files to not remove a file that changed while we
+    read it.
+  * Fix --atime-preserve=replace to not fail if there was no need
+    to replace, either because we did not read the file, or the
+    atime did not change.
+  * Fix race when creating a parent directory while another process
+    is also doing so.
+  * Fix handling of prefix keywords not followed by "." in pax
+    headers.
+  * Fix handling of out-of-range sparse entries in pax headers.
+  * Fix handling of --transform='s/s/@/2'.
+  * Fix treatment of options ending in slash in files-from list.
+  * Fix crash on tar --checkpoint-action exec=\".
+  * Fix low-memory crash when reading incremental dumps.
+  * Fix --exclude-vcs-ignores memory allocation misuse.
+- Added patch: 
+  * add_forgotten-tests.patch: added 2 tests that upstream forgot in the release.
+- Update patch:
+  * tar-backup-spec-fix-paths.patch: upstream fixed 2/3rd of paths
+  * tar-fix-extract-unlink.patch
+    some of this is overwritten by bsc1202436-1 and some was fixed
+    upstream
+  * add_readme-tests.patch as Makefile.in no longer exists
+- Removed:
+  * tar-fix-race-condition.patch
+  * tar-avoid-overflow-in-symlinks-tests.patch
+  * bsc1200657.patch
+  * bsc1202436-2.patch
+  * bsc1202436-1.patch
+
+-------------------------------------------------------------------
 Tue Jul 25 13:54:28 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Run testsuite also on qemu build

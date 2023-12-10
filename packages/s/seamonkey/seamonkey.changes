@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 09 14:26:01 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.18
+  * Update Branding info bug 1841167.
+  * Use BugSplat for SeaMonkey crash reporting bug 1835524.
+  * Unify notifications and permissions in SeaMonkey bug 1849526.
+  * SeaMonkey 2.53.18 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.18 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 115.5
+    and Thunderbird 115.5 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- remove obsolete patch seamonkey-binutils.patch
+- remove obsolete patches 1817900-13-112a1.patch, 1849874-11503.patch,
+  and TOP-NOBUG-revendor-253172.patch
+- request inclusion in Leap 15.4, 15.5, and 15.6:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1217916
+
+-------------------------------------------------------------------
 Wed Nov 01 17:37:55 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - add 1817900-13-112a1.patch, 1849874-11503.patch, and

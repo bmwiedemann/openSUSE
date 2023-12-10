@@ -26,7 +26,7 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.6.0
+Version:        6.6.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -34,8 +34,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-QtAsyncio-install-dir.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -44,6 +42,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  qt6-macros
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Test)
@@ -133,7 +132,7 @@ Requires:       %{name} = %{version}
 Python bindings for the Qt cross-platform application and UI framework
 
 %prep
-%autosetup -p1 -n %{tar_name}-%{short_version}
+%autosetup -p1 -n %{tar_name}-%{version}
 
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
@@ -182,9 +181,6 @@ sed -i 's#env python$#python3#' %{buildroot}%{_bindir}/shiboken_tool.py
 rm %{buildroot}%{_datadir}/PySide6/typesystems/*_{mac,win}.xml
 
 %fdupes -s %{buildroot}%{python_sitearch}/PySide6
-
-mkdir -p %{buildroot}%{_qt6_pluginsdir}/designer
-mv %{buildroot}%{_prefix}/plugins/designer/libPySidePlugin.so %{buildroot}%{_qt6_pluginsdir}/designer
 
 %endif
 # Install egg-info

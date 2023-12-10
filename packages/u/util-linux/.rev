@@ -2548,4 +2548,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
 - Add libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch</comment>
     <requestid>1129552</requestid>
   </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>ca18042cc2e9ff09628464b4a95ba29c</srcmd5>
+    <version>2.39.3</version>
+    <time>1702233571</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.29.3</comment>
+    <requestid>1131683</requestid>
+  </revision>
 </revisionlist>

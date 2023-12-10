@@ -182,4 +182,12 @@
     <comment>- Refrash support-Qt-5_15_11.patch, fix a crash issue. (forwarded request 1127418 from hillwood)</comment>
     <requestid>1127419</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>7c64a5adff40573eed300a46112f392d</srcmd5>
+    <version>5.6.12</version>
+    <time>1702233613</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132301</requestid>
+  </revision>
 </revisionlist>

@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.39.2
+Version:        2.39.3
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
@@ -110,9 +110,7 @@ Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch4:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
 Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
 Patch6:         use-logind-not-utmp.patch
-Patch7:         setterm-resize-uninit-flags.patch
-# bsc#1207987 - regression fix for clock.txt on xfs (upstreamed)
-Patch8:         libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch
+Patch7:         tests-increase-delay-for-waitpid-test.patch
 
 BuildRequires:  audit-devel
 BuildRequires:  bc

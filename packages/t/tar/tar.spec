@@ -19,7 +19,7 @@
 # For correct subpackages docs installation into tar doc directory
 %global _docdir_fmt %{name}
 Name:           tar
-Version:        1.34
+Version:        1.35
 Release:        0
 Summary:        GNU implementation of ((t)ape (ar)chiver)
 License:        GPL-3.0-or-later
@@ -40,24 +40,16 @@ Patch3:         %{name}-ignore_lone_zero_blocks.patch
 Patch5:         add_readme-tests.patch
 Patch6:         tar-PIE.patch
 Patch7:         tests-skip-time01-on-32bit-time_t.patch
-# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1200657
-# fix race condition while creating intermediate subdirectories
-Patch8:         tar-fix-race-condition.patch
-# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1203600
-# Unexpected inconsistency when making directory
-Patch9:         tar-avoid-overflow-in-symlinks-tests.patch
-Patch10:        bsc1200657.patch
 Patch11:        tar-fix-extract-unlink.patch
 # PATCH-FIX-SUSE danilo.spinella@suse.com bsc#1202436
 Patch12:        go-testsuite-test-hang.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1202436
 Patch13:        bsc1202436.patch
-Patch14:        bsc1202436-1.patch
-Patch15:        bsc1202436-2.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1207753
 # tar has a one-byte out-of-bounds read that results in use of
 # uninitialized memory for a conditional jump
 Patch16:        fix-CVE-2022-48303.patch
+Patch17:        add_forgotten-tests.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
@@ -120,24 +112,7 @@ it may as well access remote devices or files.
 %lang_package
 
 %prep
-# TODO: Use autosetup
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
+%autosetup -p1
 cp %{S:3} tests
 
 %build

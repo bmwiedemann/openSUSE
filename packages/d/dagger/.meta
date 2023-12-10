@@ -1,6 +1,0 @@
-<package name="dagger" project="openSUSE:Factory">
-  <title>dagger</title>
-  <description>A portable devkit for CI/CD pipelines</description>
-  <devel project="devel:kubic" package="dagger"/>
-  <url>https://github.com/dagger/dagger</url>
-</package>

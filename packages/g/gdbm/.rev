@@ -408,4 +408,12 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
     <comment></comment>
     <requestid>1103594</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>9e67aa35c1edf8f4caf141ff5c982344</srcmd5>
+    <version>1.23</version>
+    <time>1702233569</time>
+    <user>anag+factory</user>
+    <comment>- libgdbm_compat4: Fix libgdbm version of Conflicts [bsc#1217727] (forwarded request 1131394 from kukuk)</comment>
+    <requestid>1131626</requestid>
+  </revision>
 </revisionlist>

@@ -646,4 +646,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1101756</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>7ee772de6118038124624d8c97b966f9</srcmd5>
+    <version>1.35</version>
+    <time>1702233570</time>
+    <user>anag+factory</user>
+    <comment>- GNU tar 1.34:
+  * Fail when building GNU tar if the platform supports 64-bit
+    time_t but the build only uses 32-bit time_t.
+  * Leave the devmajor and devminor fields empty (rather than
+    zero) for non-special files, as this is more compatible with
+    traditional tar.
+  Fixes:
+  * Fix interaction of --update with --wildcards.
+  * When extracting archives into an empty directory, do not create
+    hard links to files outside that directory.
+  * Handle partial reads from regular files.
+  * Warn file changed as we read it less often. Formerly, tar
+    warned if the file's size or ctime changed. However, this
+    generated a false positive if tar read a file while another
+    process hard-linked to it, changing its ctime. Now, tar warns
+    if the file's size, mtime, user ID, group ID, or mode changes.
+    Although neither heuristic is perfect, the new one should work
+    better in practice.
+  * Fix --ignore-failed-read to ignore file-changed read errors
+    as far as exit status is concerned. You can now suppress
+    file-changed issues entirely with --ignore-failed-read
+    --warning=no-file-changed.
+  * Fix --remove-files to not remove a file that changed while we
+    read it.
+  * Fix --atime-preserve=replace to not fail if there was no need
+    to replace, either because we did not read the file, or the
+    atime did not change.
+  * Fix race when creating a parent directory while another process
+    is also doing so.
+  * Fix handling of prefix keywords not followed by &quot;.&quot; in pax</comment>
+    <requestid>1131652</requestid>
+  </revision>
 </revisionlist>

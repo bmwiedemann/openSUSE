@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Dec  7 13:22:16 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Increase delay in waitpid test (bsc#1217651), add
+  tests-increase-delay-for-waitpid-test.patch
+
+-------------------------------------------------------------------
+Thu Dec  7 13:02:30 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Update to release 2.29.3
+  * libblkid: add support for bcachefs sub-device labels
+  * libblkid: detect large bcachefs superblocks
+  * libblkid: validate that NTFS sector_size is a power of two
+  * libblkid: report endianness for VXFS
+  * libmount: Fix regression when mounting with atime
+  * libmount: accept '\' as escape for options separator
+  * libmount: gracefully handle NULL path in mnt_resolve_target()
+  * libmount: report statx in features list
+  * libsmartcols: handle nameless tables in export format
+  * libuuid: avoid truncation of clocks.txt to improve performance
+  * lscpu: fix caches separator for --parse=<list>
+  * lscpu: Add Phytium FTC862 cpu model
+  * lsfd: fix the form for the optional argument of --inet option
+    in manpage
+  * lsfd: avoid a case of undefined behavior
+  * lsfd: fix a memory leak
+  * lslogins: fix -y option formatting in manpage
+  * more: avoid an out-of-bound access
+  * setpriv: fix some group argument completion
+  * setterm: avoid restoring flags from uninitialized memory
+  * umount: handle bindmounts during --recursive
+- Remove upstreamed patches:
+  libuuid-avoid-truncate-clocks.txt-to-improve-performance.patch,
+  setterm-resize-uninit-flags.patch
+
+-------------------------------------------------------------------
 Tue Nov 28 10:51:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove /etc/filesystem, the content is outdated
