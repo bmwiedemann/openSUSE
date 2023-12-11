@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  6 15:48:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.10.0
+  * Rethrow exceptions from QCoro::waitFor()
+  * qcorowebsocket replace QWebSocket::error with
+    QWebSocket::errorOccurred
+  * QCoro::connect: Fix bug in concept requirements
+  * Avoid deprecated QVERIFY_EXCEPTION_THROWN
+  * Make QCoroTask header contain only declarations
+  * QCoroAsyncGenerator test: workaround compiler optimizations
+    that breaks tests
+  * Append postfix for qmake compatibility
+  * Add support for connecting signals with QPrivateSignal
+  * QCoroSignalListener: support connecting to private signals
+  * fix error: std::coroutine_traits isn't a class template
+
+-------------------------------------------------------------------
 Thu Apr 27 08:23:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.0
