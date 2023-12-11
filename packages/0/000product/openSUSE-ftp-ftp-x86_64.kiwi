@@ -196,7 +196,6 @@
       <repopackage name="stringtemplate4-bootstrap" onlyarch="skipit"/>
       <repopackage name="sysbench-ctcs-glue" onlyarch="skipit"/>
       <repopackage name="tycho-bootstrap" onlyarch="skipit"/>
-      <repopackage name="udev-mini" onlyarch="skipit"/>
       <repopackage name="xml-commons-apis-bootstrap" onlyarch="skipit"/>
       <repopackage name="xml-commons-resolver-bootstrap" onlyarch="skipit"/>
       <repopackage name="xml-commons-which-bootstrap" onlyarch="skipit"/>
