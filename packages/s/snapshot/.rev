@@ -9,4 +9,12 @@
 New package for GNOME</comment>
     <requestid>1113022</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>164d40aaf8e2ba63f284a20f6d2348c2</srcmd5>
+    <version>45.1</version>
+    <time>1702327882</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1132225 from iznogood)</comment>
+    <requestid>1132445</requestid>
+  </revision>
 </revisionlist>

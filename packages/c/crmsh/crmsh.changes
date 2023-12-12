@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 11 03:00:33 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231211.4b74412a:
+  * Fix: scripts.health: call `setup_logging()` before importing crmsh.reprot.utils
+  * Dev: unittest: adjuest unit tests for previous changes
+  * Dev: behave: adjust regression tests for previous changes
+  * Dev: log: save backtrace of ValueError in logfile and suppress it in console
+  * Refactor: log: use levelno instead levelname to filter logs
+  * Refactor: log: implement lineno in Logger instead of handler
+  * Refactor: log: remove FileCustomFormatter
+  * Refactor: log: remove ConsoleReportFormatter
+  * Refactor: log: add LeveledFormatter to use different formats for different log levels
+  * Refactor: log: unused code removal
+  * Refactor: log: refactor DEBUG2 into a standard Logger interface
+  * Refactor: log: refactor ConsoleCustomFormatter
+
+-------------------------------------------------------------------
 Thu Dec 07 09:44:56 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.6.0+20231207.89c74e6c:

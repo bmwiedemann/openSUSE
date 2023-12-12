@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 11 12:26:56 UTC 2023 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2023-49462 [bsc#1217898], read16 segv
+  + libheif-CVE-2023-49462.patch
+  fix CVE-2023-49464 [bsc#1217900], UAF
+  + libheif-CVE-2023-49464.patch
+
+-------------------------------------------------------------------
 Wed Nov 22 09:38:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.5:

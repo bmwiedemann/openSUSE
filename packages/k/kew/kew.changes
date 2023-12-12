@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 10 16:48:16 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.11
+  * Now shows volume percentage. New alternate key for raising
+    volume: =.
+  * Fixed bug where on a small window size, the Nerd Fonts for
+    seeking, repeat and shuffle when all three enabled could mess
+    up the visualizer.
+
+-------------------------------------------------------------------
 Mon Dec  4 20:44:11 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.10

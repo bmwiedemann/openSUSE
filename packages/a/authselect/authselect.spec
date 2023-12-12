@@ -23,14 +23,14 @@
 %global devname lib%{name}-devel
 
 Name:           authselect
-Version:        1.4.0+git.0.2c30265
+Version:        1.4.3+git.0.87bb4b3
 Release:        0
 Group:          System/Libraries
 Summary:        Configures authentication and identity sources from supported profiles
 License:        GPL-3.0-or-later
 URL:            https://github.com/authselect/authselect
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         authselect-usrmerge.patch
+Patch0:         0001-Adapt-authselect-for-the-etc-usr-etc-merge.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake

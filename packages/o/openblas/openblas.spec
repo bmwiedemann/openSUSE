@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_21
-%define vers 0.3.21
+%define _vers 0_3_25
+%define vers 0.3.25
 %define so_v 0
 %define pname openblas
 
@@ -224,8 +224,6 @@ Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/O
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
 Source3:        openblas.rpmlintrc
-Patch1:         Use-blasint-for-INTERFACE64-compatibility.patch
-Patch2:         remove-spurious-loops.patch
 Patch101:       Link-library-with-z-noexecstack.patch
 # PATCH port
 Patch102:       Handle-s390-correctly.patch

@@ -29,6 +29,7 @@ Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://git.kernel.org/cgit/linux/kernel/git/rafael/linux-pm.git
+Patch1:         cpupower_fix_library_so_name.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
 Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
 BuildRequires:  gettext-tools
@@ -42,11 +43,11 @@ BuildRequires:  pciutils-devel
 This tool accesses the Linux kernel's processor power subsystems
 like CPU frequency switching (cpufreq) or CPU sleep states (cpuidle).
 
-%package -n libcpupower0
+%package -n libcpupower1
 Summary:        Processor power related C-library
 Group:          System/Libraries
 
-%description -n libcpupower0
+%description -n libcpupower1
 Contains libcpupower which offers easy functions to access
 processor frequency, processor idle, processor power hierarchy
 and other CPU power consumption related information.
@@ -54,7 +55,7 @@ and other CPU power consumption related information.
 %package devel
 Summary:        Include files for libcpupower
 Group:          Development/Languages/C and C++
-Requires:       libcpupower0 = %{version}
+Requires:       libcpupower1 = %{version}
 
 %description devel
 Include files for C/C++ development with libcpupower.
@@ -98,6 +99,7 @@ There is no reason to install this package.
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
 chmod +x tools/power/cpupower/utils/version-gen.sh
+%patch1 -p1
 cd %{maindir}
 %patch3 -p1
 %patch6 -p1
@@ -130,8 +132,7 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 
 %find_lang %{name}
 
-%post -n libcpupower0 -p /sbin/ldconfig
-%postun -n libcpupower0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcpupower1
 
 %files
 %{_mandir}/man1/cpupower*%{?ext_man}
@@ -153,7 +154,7 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 %{_docdir}/%{name}/examples/cpufreq-bench_script.sh
 %{_docdir}/%{name}/README-BENCH
 
-%files -n libcpupower0
+%files -n libcpupower1
 %{_libdir}/libcpupower*.so.*
 
 %files devel

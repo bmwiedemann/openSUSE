@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        45.1+22
+Version:        45.2
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -39,8 +39,6 @@ Source99:       %{name}-rpmlintrc
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 # PATCH-FIX-UPSTREAM gnome-control-center-add-user-button.patch bsc#1215556 glgo#GNOME/Settings!1927 xwang@suse.com -- Show add user button
 Patch2:         gnome-control-center-add-user-button.patch
-# PATCH-FIX-UPSTREAM gnome-control-center-network-fix-nmce-popup.patch bsc#1208193 glgo#GNOME/gnome-control-center!1956 sckang@suse.com -- network-connection-editor: Close the editor when nm-connection-editor exits
-Patch3:         gnome-control-center-network-fix-nmce-popup.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -189,7 +187,6 @@ GNOME control center.
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000

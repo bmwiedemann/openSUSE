@@ -1,8 +1,65 @@
 -------------------------------------------------------------------
+Fri Dec 08 22:07:44 UTC 2023 - eyadlorenzo@gmail.com
+
+- Update to version 1.1.11:
+
+  Arti 1.1.11 continues work on support for running onion services.
+  Onion services are now working in our testing, and we expect we'll
+  have something testable by others in our next release.
+
+  Arti 1.1.11 also increases our MSRV (Minimum Supported Rust Version)
+  to 1.70, in accordance with our [MSRV policy].
+
+  ### Onion service development
+
+  - Correct our handling of BEGIN and END messages to bring them
+    into conformance with the C Tor implementation and the specification.
+    ([#1077], [!1694], [!1738])
+  - In our key manager, use macros to define key specifiers, instead of
+    repeating the same boilerplate code. ([#1069], [#1093], [!1710],
+    [!1733])
+  - Refactoring and refinement on the definitions of onion-service-related
+    errors. ([!1718], [!1724], [!1750], [!1751], [!1779])
+  - Add a "time-store" mechanism for (as correctly as possible) storing and loading
+    future timestamps, even in the presence of system clock skew ([!1723], [!1774])
+  - Implement a replay-log backend to prevent INTRODUCE replay attacks
+    against onion services. ([!1725])
+  - Improved encoding for key-denotators in the key manager. ([#1063],
+    [#1070], [!1722])
+  - Allow a single key to have more than one denotator in its path.
+    ([#1112], [!1747])
+  - Use an order-preserving-encryption back-end to generate
+    monotonically increasing revision counters for onion service
+    descriptors.  We do this to ensure a reproducible series of counters
+    without leaking our clock skew.  ([#1053], [!1741], [!1744])
+  - Deprecate key types for INTRODUCE-based authentication:
+    C tor has never implemented this, and we do not plan to implement it
+    without additional specification work. ([#1037], [!1749])
+  - When establishing an introduction point, send the `intro_dos`
+    extension as appropriate. ([#723], [!1740])
+  - Added conversion functions and initial persistence support for
+    introduction point keys. ([!1756])
+  - Start work on introduction point persistence. ([!1755], [!1765]).
+  - Revert to our intended configuration format for onion service proxy rules.
+    ([#1058], [!1771])
+
+  ### Client features
+
+  - Backend and API code for the "ntor-v3" circuit-extension handshake.
+    This handshake adds the ability to send additional options
+    from the client to the relay when creating or extending a circuit,
+    and will eventually be used to negotiate protocol features like
+    RTT-based congestion control and UDP-over-Tor support.
+    ([!1720], [!1739])
+
+
+
+
+-------------------------------------------------------------------
 Mon Nov 13 17:17:23 UTC 2023 - eyadlorenzo@gmail.com
 
 - Update to version 1.1.10:
-  
+
   Arti 1.1.10 continues work on support for onion services in
   Arti. At last, we can (technically) run as an onion service...
   though not yet in a useful way. (Onion services don't yet recover
@@ -24,7 +81,7 @@ Mon Nov 13 17:17:23 UTC 2023 - eyadlorenzo@gmail.com
   - In [`tor-cert`], `encode_and_sign` now returns an
     `Ed25519EncodedCert` rather than a raw `Vec<u8>`. ([!1702])
 
-  
+
   ### Client features
 
   - Arti can now be configured to listen for connections on
@@ -52,9 +109,9 @@ Mon Oct 30 12:37:00 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Wed Oct 25 21:58:30 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Run format_spec_file service 
+- Run format_spec_file service
 
 -------------------------------------------------------------------
 Fri Oct 20 16:54:29 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Version 1.1.9 
+- Version 1.1.9

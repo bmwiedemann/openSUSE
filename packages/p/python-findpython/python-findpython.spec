@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-findpython
-Version:        0.2.5
+Version:        0.4.1
 Release:        0
 Summary:        Utility to find python versions on your system
 License:        MIT
 URL:            https://github.com/frostming/findpython
 Source:         https://files.pythonhosted.org/packages/source/f/findpython/findpython-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE pdm requires findpython, so we need to use pdm-pep517
+Patch0:         revert-back-to-pdm-pep517.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 20}
 BuildRequires:  %{python_module pdm-pep517}

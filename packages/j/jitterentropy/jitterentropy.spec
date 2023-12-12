@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           jitterentropy
 Summary:        A userspace library for jitter entropy generation
@@ -71,6 +72,7 @@ This package contains the static library.
 %autosetup -n jitterentropy-library-%version
 
 %build
+%set_build_flags
 %make_build PREFIX="%_prefix" LIBDIR="%_lib"
 
 %install

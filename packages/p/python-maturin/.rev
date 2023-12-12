@@ -958,4 +958,40 @@
     gh#PyO3/maturin#1849</comment>
     <requestid>1126453</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9208a793b1c90184409b5134376acea3</srcmd5>
+    <version>1.4.0</version>
+    <time>1702327804</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0
+  * Fix two tiny typos in README.md!
+    gh#PyO3/maturin#1853
+  * Bump MSRV to 1.67
+    gh#PyO3/maturin#1847
+  * Tiny tweak: Use Rust markdown block
+    gh#PyO3/maturin#1855
+  * Recommend using pipx to install maturin
+    gh#PyO3/maturin#1859
+  * [pre-commit.ci] pre-commit autoupdate
+    gh#PyO3/maturin#1860
+  * Update cargo-options to 0.7.1
+    gh#PyO3/maturin#1862
+  * Add support for cross compiling with cross
+    gh#PyO3/maturin#1865
+  * Bump the crates-io group with 8 updates
+    gh#PyO3/maturin#1866
+  * [pre-commit.ci] pre-commit autoupdate
+    gh#PyO3/maturin#1867
+  * Bump openssl from 0.10.59 to 0.10.60
+    gh#PyO3/maturin#1868
+  * Bump actions/github-script from 6 to 7
+    gh#PyO3/maturin#1873
+  * Bump conda-incubator/setup-miniconda from 2 to 3
+    gh#PyO3/maturin#1872
+  * Bump mymindstorm/setup-emsdk from 12 to 13
+    gh#PyO3/maturin#1871
+  * Update rustls-pemfile to 2.0.0
+    gh#PyO3/maturin#1874</comment>
+    <requestid>1132505</requestid>
+  </revision>
 </revisionlist>

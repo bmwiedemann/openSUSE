@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 11 09:12:07 UTC 2023 - pgajdos@suse.com
+
+- version update to 20231210+git0.f7216ba
+  * Fix typos in 32-emoji-reject.conf and 59-family-prefer-lang-specific
+  * remove SEARCH_METRIC_COMPATIBLE sysconfig variable and infra around [bsc#1216356]
+- deleted patches
+  - 0001-Fix-typos-in-32-emoji-reject.conf-and-59-family-pref.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Nov 28 16:38:44 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to 20230604+git0.630c8206607c:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 17 20:33:30 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- do sequential build for reproducible .go files (boo#1102408)
+
+-------------------------------------------------------------------
 Sun Jun 18 08:44:01 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Let there be guile-fibers 

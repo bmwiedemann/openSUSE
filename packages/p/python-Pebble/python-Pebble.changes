@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 10 21:37:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.5:
+  * issue #123: do not raise exception when returned from workers
+  * issue #122: slightly improve type hints
+  * issue #122: add type hints to decorator functions
+
+-------------------------------------------------------------------
 Tue Nov 15 21:50:22 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 5.0.3
@@ -54,7 +62,7 @@ Tue Aug 16 23:32:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
    + issue #82: fix issue with poll mechanism in MAC OS Mojave (@sam-harding)
    + Fix polling timeout resolution (@sam-harding)
 
-- Update to 4.6.1 
+- Update to 4.6.1
   * Improvements:
    + issue #76: allow spawning processes within `ProcessPool` workers
    + Few minor improvements
@@ -79,7 +87,7 @@ Thu Jan 14 03:53:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
     + issue #68: use fully qualified function name in `concurrent.process`
       decorator trampoline to handle class inheritance in Windows
     + issue #69: correctly propagate the timeout in pool's map method
-    + issue #64: rework versioning logic 
+    + issue #64: rework versioning logic
 
 -------------------------------------------------------------------
 Wed May  6 15:47:22 UTC 2020 - Martin Liška <mliska@suse.cz>
@@ -103,7 +111,7 @@ Thu Mar 26 16:16:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Wed Jan 15 10:59:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 4.4.1
-  * use poll in channel implementation instead of select 
+  * use poll in channel implementation instead of select
   * handle pickling errors in ProcessPool
   * add test cases
 

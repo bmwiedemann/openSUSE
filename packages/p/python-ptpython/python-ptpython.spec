@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptpython
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-ptpython
-Version:        3.0.22
+Version:        3.0.23
 Release:        0
 Summary:        Python REPL build on top of prompt_toolkit
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/jonathanslenders/ptpython
 Source:         https://files.pythonhosted.org/packages/source/p/ptpython/ptpython-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

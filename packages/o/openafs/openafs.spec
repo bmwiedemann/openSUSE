@@ -113,6 +113,9 @@ Patch6:         6de0a64.diff
 Patch5:         5b647bf.diff
 Patch7:         6413fdb.diff
 Patch8:         4f1d810.diff
+# PATCH-HANDLE-BACKPORTS
+# some kernel-features from 6.5 are apparently in 6.4
+Patch99:        handle_backports.diff
 
 #	GENERAL BuildRequires and Requires
 #
@@ -331,6 +334,9 @@ done
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%if 0%{?sle_version} == 150600
+%patch99 -p1
+%endif
 
 ./regen.sh
 

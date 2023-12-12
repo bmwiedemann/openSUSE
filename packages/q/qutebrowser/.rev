@@ -1939,4 +1939,41 @@ Added:
     <comment></comment>
     <requestid>1119463</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>f1fa28fa6dac3773b6c1e5251b251c22</srcmd5>
+    <version>3.1.0</version>
+    <time>1702327900</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1.0:
+Removed:
+  * The darkmode settings grayscale.all, grayscale.images and
+    increase_text_contrast got removed, following removals in
+    Chromium.
+Added:
+  * New smart-simple value for
+    colors.webpage.darkmode.policy.images, which on QtWebEngine
+    6.6+ uses a simpler classification algorithm to decide whether
+    to invert images.
+  * New content.javascript.legacy_touch_events setting, with those
+    now being disabled by default, following a Chromium change.
+Changed:
+  * The colors.webpage.darkmode.threshold.text setting got renamed
+    to colors.webpage.darkmode.threshold.foreground, following a
+    rename in Chromium.
+  * With Qt 6.6, the content.canvas_reading setting now works
+    without a restart and supports URL patterns.
+Fixed:
+  * Some web pages jumping to the top when the statusbar is hidden
+    or (with v3.0.x) when a prompt is hidden.
+  * Compatibility with PDF.js v4
+  * Added an elaborate workaround for a bug in QtWebEngine 6.6.0
+    causing crashes on Google Mail/Meet/Chat, and a bug in
+    QtWebEngine 6.5.0/.1/.2 causing crashes there with dark mode.
+  * Made a rare crash in QtWebEngine when starting/retrying a
+    download less likely to happen.
+  * Graphical glitches in Google sheets and PDF.js, again. Removed
+    the version restriction for the default application of
+    qt.workarounds.disable_accelerated_2d_canvas as the issue was</comment>
+    <requestid>1132497</requestid>
+  </revision>
 </revisionlist>

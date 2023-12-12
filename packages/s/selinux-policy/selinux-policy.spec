@@ -539,6 +539,10 @@ exit 0
 %postun targeted
 %post_un $1 targeted
 
+%triggerin -- libpcre2-8-0
+%{_sbindir}/selinuxenabled && %{_sbindir}/semodule -nB
+exit 0
+
 %files targeted -f %{buildroot}%{_datadir}/selinux/targeted/nonbasemodules.lst
 %config(noreplace) %{_sysconfdir}/selinux/targeted/contexts/users/unconfined_u
 %config(noreplace) %{_sysconfdir}/selinux/targeted/contexts/users/sysadm_u

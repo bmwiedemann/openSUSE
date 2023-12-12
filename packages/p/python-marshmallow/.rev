@@ -193,4 +193,27 @@
     <comment>- Switch documentation to be within the main package on SLE15</comment>
     <requestid>1089048</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b4dceaf5a10012dfbd6b60178b0435dc</srcmd5>
+    <version>3.20.1</version>
+    <time>1702327780</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.20.1:
+  * Fix call to ``get_declared_fields``: pass ``dict_cls`` again
+  * Add ``absolute`` parameter to ``URL`` validator and ``Url``
+  * Use Abstract Base Classes to define ``FieldABC`` and
+    ``SchemaABC``
+  * Use `OrderedSet` as default `set_class`. Schemas are now
+    ordered by default.
+  * Handle ``OSError`` and ``OverflowError`` in
+    ``utils.from_timestamp`` (:pr:`2102`).
+  * Fix the default inheritance of nested partial schemas
+  * Officially support Python 3.11 (:pr:`2067`).
+  * Drop support for Python 3.7 (:pr:`2135`).
+
+- rename docs subpackage to the more common doc name
+- Update to 3.19.0
+  * Add timestamp and timestamp_ms formats to fields.DateTime (#612). Thanks @vgavro for    the suggestion and thanks @vanHoi for the PR.</comment>
+    <requestid>1132365</requestid>
+  </revision>
 </revisionlist>

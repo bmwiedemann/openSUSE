@@ -311,4 +311,28 @@
     <comment></comment>
     <requestid>1118390</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a5b89ecb0f1715bff2daec6769dd2c05</srcmd5>
+    <version>3.6.4</version>
+    <time>1702327798</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 3.6.4
+  * This release contains a complete fix for the test suite failure in fish
+    3.6.2 and 3.6.3.
+- New upstream release 3.6.3
+  * This release contains a fix for a test suite failure in fish 3.6.2.
+- New upstream release 3.6.2
+  This release of fish contains a security fix for CVE-2023-49284, a minor security problem identified
+  in fish 3.6.1 and previous versions (thought to affect all released versions of fish).
+  fish uses certain Unicode non-characters internally for marking wildcards and expansions. It
+  incorrectly allowed these markers to be read on command substitution output, rather than
+  transforming them into a safe internal representation.
+  For example, ``echo \UFDD2HOME`` has the same output as ``echo $HOME``.
+  While this may cause unexpected behavior with direct input, this may become a minor security problem
+  if the output is being fed from an external program into a command substitution where this output
+  may not be expected. (bsc#1217808, CVE-2023-49284) 
+- Enable tests
+</comment>
+    <requestid>1132463</requestid>
+  </revision>
 </revisionlist>

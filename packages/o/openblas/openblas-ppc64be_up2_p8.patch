@@ -15,19 +15,18 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  driver/others/dynamic_power.c |   11 +++++++++++
  2 files changed, 18 insertions(+), 3 deletions(-)
 
-Index: OpenBLAS-0.3.14/driver/others/dynamic_power.c
+Index: OpenBLAS-0.3.25/driver/others/dynamic_power.c
 ===================================================================
---- OpenBLAS-0.3.14.orig/driver/others/dynamic_power.c
-+++ OpenBLAS-0.3.14/driver/others/dynamic_power.c
-@@ -3,6 +3,7 @@
+--- OpenBLAS-0.3.25.orig/driver/others/dynamic_power.c
++++ OpenBLAS-0.3.25/driver/others/dynamic_power.c
+@@ -3,12 +3,14 @@
  
  extern gotoblas_t gotoblas_POWER6;
  extern gotoblas_t gotoblas_POWER8;
 +#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
- #if (!defined __GNUC__) || ( __GNUC__ >= 6)
+ #if ((!defined __GNUC__) || ( __GNUC__ >= 6)) || defined(__clang__)
  extern gotoblas_t gotoblas_POWER9;
  #endif
-@@ -13,6 +14,7 @@ extern gotoblas_t gotoblas_POWER9;
  #ifdef HAVE_P10_SUPPORT
  extern gotoblas_t gotoblas_POWER10;
  #endif
@@ -35,12 +34,11 @@ Index: OpenBLAS-0.3.14/driver/others/dynamic_power.c
  
  extern void openblas_warning(int verbose, const char *msg);
  
-@@ -31,12 +33,14 @@ char *gotoblas_corename(void) {
- 	if (gotoblas == &gotoblas_POWER6)	return corename[1];
+@@ -28,11 +30,13 @@ char *gotoblas_corename(void) {
  #endif
  	if (gotoblas == &gotoblas_POWER8)	return corename[2];
+ #if ((!defined __GNUC__) || ( __GNUC__ >= 6)) || defined(__clang__)
 +#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
- #if (!defined __GNUC__) || ( __GNUC__ >= 6)
  	if (gotoblas == &gotoblas_POWER9)	return corename[3];
  #endif
  #ifdef HAVE_P10_SUPPORT
@@ -50,7 +48,7 @@ Index: OpenBLAS-0.3.14/driver/others/dynamic_power.c
  	return corename[0];
  }
  
-@@ -200,6 +204,10 @@ static gotoblas_t *get_coretype(void) {
+@@ -243,6 +247,10 @@ static gotoblas_t *get_coretype(void) {
  #endif
  	if (__builtin_cpu_is("power8"))
  		return &gotoblas_POWER8;
@@ -58,23 +56,23 @@ Index: OpenBLAS-0.3.14/driver/others/dynamic_power.c
 +#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
 +		return &gotoblas_POWER8;
 +#else
- #if (!defined __GNUC__) || ( __GNUC__ >= 6)
+ #if ((!defined __GNUC__) || ( __GNUC__ >= 6)) || defined(__clang__)
  	if (__builtin_cpu_is("power9"))
  		return &gotoblas_POWER9;
-@@ -213,6 +221,7 @@ static gotoblas_t *get_coretype(void) {
+@@ -260,6 +268,7 @@ static gotoblas_t *get_coretype(void) {
  	if (__builtin_cpu_is("power10"))
  		return &gotoblas_POWER9;
- #endif	
+ #endif
 +#endif
  	return NULL;
  }
  
-@@ -237,12 +246,14 @@ static gotoblas_t *force_coretype(char *
+@@ -284,12 +293,14 @@ static gotoblas_t *force_coretype(char *
  	case  1: return (&gotoblas_POWER6);
  #endif
  	case  2: return (&gotoblas_POWER8);
 +#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
- #if (!defined __GNUC__) || ( __GNUC__ >= 6)
+ #if ((!defined __GNUC__) || ( __GNUC__ >= 6)) || defined(__clang__)
  	case  3: return (&gotoblas_POWER9);
  #endif
  #ifdef HAVE_P10_SUPPORT
@@ -84,11 +82,11 @@ Index: OpenBLAS-0.3.14/driver/others/dynamic_power.c
  	default: return NULL;
  	}
  	snprintf(message, 128, "Core not found: %s\n", coretype);
-Index: OpenBLAS-0.3.14/Makefile.system
+Index: OpenBLAS-0.3.25/Makefile.system
 ===================================================================
---- OpenBLAS-0.3.14.orig/Makefile.system
-+++ OpenBLAS-0.3.14/Makefile.system
-@@ -673,6 +673,9 @@ ifeq ($(ARCH), power)
+--- OpenBLAS-0.3.25.orig/Makefile.system
++++ OpenBLAS-0.3.25/Makefile.system
+@@ -748,6 +748,9 @@ ifeq ($(ARCH), power)
  ifneq ($(C_COMPILER), PGI)
  DYNAMIC_CORE = POWER6
  DYNAMIC_CORE += POWER8
@@ -98,7 +96,7 @@ Index: OpenBLAS-0.3.14/Makefile.system
  ifneq ($(C_COMPILER), GCC)
  DYNAMIC_CORE += POWER9
  DYNAMIC_CORE += POWER10
-@@ -697,11 +700,12 @@ else
+@@ -776,11 +779,12 @@ else
  $(info, OpenBLAS: Your gcc version is too old to build the POWER10 kernels.)
  endif
  endif

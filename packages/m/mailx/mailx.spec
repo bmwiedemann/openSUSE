@@ -72,6 +72,8 @@ Patch13:        mailx-12.5-openssl-1.1.0f.patch
 Patch14:        fix-sendmail-name.patch
 #PATCH-FIX-SUSE: bsc#1192916 - mailx does not send mails unless run via strace or in verbose mode
 Patch15:        mailx-12.5-systemd.patch
+#Moving /etc/mailrc to /usr/etc/mail.rc
+Patch16:        mailx-usr-etc.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -99,13 +101,18 @@ minor enhancements like the ability to set a "From:" address.
 %patch14 -p1 -b .sendmail
 %patch15 -p0 -b .systemd
 %patch0 -p1 -b .0
+%patch16 -p1 -b .usretc
 
 %build
     CC=gcc
     CFLAGS="%{optflags} -pipe -D_GNU_SOURCE -DOPENSSL_NO_SSL_INTERN $(pkg-config --cflags openssl)"
     export CC CFLAGS
     $SHELL ./makeconfig
+%if 0%{?suse_version} > 1500
+    make %{?_smp_mflags} PREFIX=/usr CC="$CC" CFLAGS="$CFLAGS" DISTCONF="-DDISTCONFMAILRC=\"\\\"/usr/etc/mail.rc\\\"\""
+%else
     make %{?_smp_mflags} PREFIX=/usr CC="$CC" CFLAGS="$CFLAGS"
+%endif
     tbl < mailx.1 | groff -mandocdb -Tps | grep -v %%%%CreationDate > manual.ps
     gzip -9fn manual.ps
 
@@ -153,7 +160,14 @@ man=mailx.1
 group=mail, Mail
 EOF
 %endif
+
+%if 0%{?suse_version} > 1500
+    mkdir -p %{buildroot}%{_distconfdir}
+    install -m 0644 mail.rc %{buildroot}%{_distconfdir}
+    rm %{buildroot}/etc/mail.rc
+%else
     install -m 0644 mail.rc %{buildroot}/etc
+%endif
     mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 
 %if ! %{with libalternatives}
@@ -171,20 +185,40 @@ EOF
 if test ! -e %{_bindir}/mailx; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx
 fi
-%else
+%endif
 
 %pre
+echo "Calling pre installation script"
+%if %{with libalternatives}
 # removing old update-alternatives entries
 if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
   %{_sbindir}/update-alternatives --quiet --force --remove mail %{_bindir}/mailx
 fi
+%endif
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in mail.rc; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in mail.rc; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 %endif
 
 %files
 %defattr(-,root,root)
 %license COPYING
 %doc README manual.ps.gz nail.rc
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/mail.rc
+%else
 %config /etc/mail.rc
+%endif
 %if 0%{?suse_version} < 1550
 /bin/mail
 %endif

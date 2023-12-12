@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-parse_type
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Extension to the parse module
 License:        MIT

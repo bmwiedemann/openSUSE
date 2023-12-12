@@ -878,4 +878,12 @@
     <comment>- Update to version 0.121.0: (forwarded request 1131481 from jfkw)</comment>
     <requestid>1131483</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0013771425acd7bd3ec73000c514a5f5</srcmd5>
+    <version>0.121.1</version>
+    <time>1702327853</time>
+    <user>anag+factory</user>
+    <comment>update to 1.121.1 (forwarded request 1132333 from rrahl0)</comment>
+    <requestid>1132375</requestid>
+  </revision>
 </revisionlist>

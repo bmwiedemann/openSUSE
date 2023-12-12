@@ -19,14 +19,13 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        45.0
+Version:        45.1
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/snapshot
-Source:         %{name}-%{version}.tar.zst
-Source2:        vendor.tar.zst
-Source3:        cargo_config
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
@@ -35,9 +34,9 @@ BuildRequires:  libxml2-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.75
+BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gtk4) >= 4.9.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 ## Needed for camerabin
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{gstreamer_version}
 ##
@@ -49,9 +48,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
 %lang_package
 
 %prep
-%autosetup -p1 -a2
-mkdir .cargo
-cp %{SOURCE3} .cargo/config
+%autosetup -p1 -a1
 
 %build
 export RUSTFLAGS="%{build_rustflags}"
@@ -85,4 +82,3 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome
 %files lang -f %{name}.lang
 
 %changelog
-

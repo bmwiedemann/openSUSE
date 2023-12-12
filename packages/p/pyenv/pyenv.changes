@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec  8 13:50:18 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.35
+
+- Update to 2.3.35
+  - Add CPython 3.12.1 by @edgarrmondragon in #2861
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.34...v2.3.35
+
+-------------------------------------------------------------------
+Fri Dec  8 13:41:19 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.34
+
+- Update to 2.3.34
+  - Fix graalpy-community to use a separate package name by @native-api in #2855
+  - Move 3.11.5+ to OpenSSL 3 by default by @native-api in #2858
+  - Add CPython 3.11.7 by @edgarrmondragon in #2860
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.33...v2.3.34
+
+-------------------------------------------------------------------
 Tue Nov 28 05:32:36 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.33
 
 - Update to 2.3.33

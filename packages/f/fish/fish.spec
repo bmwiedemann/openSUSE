@@ -17,10 +17,11 @@
 
 
 Name:           fish
-Version:        3.6.1
+Version:        3.6.4
 Release:        0
 Summary:        The "friendly interactive shell"
-License:        GPL-2.0-only
+# see bundled doc_src/license.rst
+License:        GPL-2.0-only AND BSD-3-Clause AND ISC AND LGPL-2.0-or-later AND MIT AND PSF-2.0
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
@@ -35,6 +36,8 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+# for tests
+BuildRequires:  procps
 Requires:       awk
 Requires:       bc
 Requires:       man
@@ -75,17 +78,22 @@ rm %{buildroot}/%{_datadir}/doc/fish/.buildinfo
 
 %suse_update_desktop_file -G "Command-line interpreter" fish TerminalEmulator
 
+%check
+pushd build
+%make_build test
+popd
+
 %post
 # Add fish to the list of allowed shells in /etc/shells
 if ! grep -q '^%{_bindir}/%{name}$' %{_sysconfdir}/shells; then
-	echo %{_bindir}/%{name} >>%{_sysconfdir}/shells
+        echo %{_bindir}/%{name} >>%{_sysconfdir}/shells
 fi
 
 %postun
 # Remove fish from the list of allowed shells in /etc/shells
 if [ "$1" = 0 ]; then
-	grep -v '^%{_bindir}/%{name}$' %{_sysconfdir}/shells >%{_sysconfdir}/%{name}.tmp
-	mv %{_sysconfdir}/%{name}.tmp %{_sysconfdir}/shells
+        grep -v '^%{_bindir}/%{name}$' %{_sysconfdir}/shells >%{_sysconfdir}/%{name}.tmp
+        mv %{_sysconfdir}/%{name}.tmp %{_sysconfdir}/shells
 fi
 
 %files -f %{name}.lang

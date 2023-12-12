@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 10 18:20:14 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Skip tests that are difficult to emulate by qemu
+
+-------------------------------------------------------------------
 Sat Nov 11 20:36:39 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lsof 4.99.0:

@@ -17,7 +17,7 @@
 
 
 Name:           python-python-rtmidi
-Version:        1.5.7
+Version:        1.5.8
 Release:        0
 Summary:        Python binding for the RtMidi C++ library
 License:        MIT

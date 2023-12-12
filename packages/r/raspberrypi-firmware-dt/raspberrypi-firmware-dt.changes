@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 11 09:03:47 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- They are vendor changes in bcm2835-dma driver around new RPi5
+  which  makes new device trees unusable without corresponding
+  changes in DMA driver. Lets revert offending commit.
+  Fixes bsc#1217512.
+
+- Add patch:
+ * 0001-Revert-bcm2711-rpi-ds-Switch-to-dma40-channel-for-hd.patch
+
+-------------------------------------------------------------------
 Thu Nov 23 11:23:22 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 77f41f30fe (2023-11-21):

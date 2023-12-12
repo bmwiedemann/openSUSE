@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  6 15:44:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of distro flags with %set_build_flags
+
+-------------------------------------------------------------------
 Wed Mar 22 11:17:59 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix a stack corruption on s390x: [bsc#1209627]

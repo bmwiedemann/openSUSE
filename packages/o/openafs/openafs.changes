@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 11 04:58:30 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- patch upstream patch fef2457.diff for 6.5 to handle backport by SUSE
+  * handle_backports.diff
+
+-------------------------------------------------------------------
 Fri Nov 10 08:53:16 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - apply upstream-patches for kernel 6.6: 

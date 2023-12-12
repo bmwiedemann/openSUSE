@@ -153,4 +153,25 @@
     <comment></comment>
     <requestid>1092190</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>adef7e8ef46c3ded10410c17891d2c40</srcmd5>
+    <version>6.2</version>
+    <time>1702327785</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.2:
+  * Add support for Python 3.12.
+  * Update code and tests to ``python-subunit &gt;= 1.4.3`` thus
+    requiring at least this version.
+
+- Update to version 5.6
+- Update to 5.5.1
+- updated spec to include
+  * Fix test failures and deprecation warnings occurring when
+    using Python 3.8a1.
+  * Update the command line interface to use argparse instead of
+  * Handle string in exception values when formatting chained
+  * Enable DeprecationWarning earlier, when discovering test
+- Changes from 4.4.0</comment>
+    <requestid>1132429</requestid>
+  </revision>
 </revisionlist>

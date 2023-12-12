@@ -26,7 +26,7 @@ print(rpm.expand("%{?" .. flavor .. "_prefix}%{!?" .. flavor .. "_prefix:python3
 %define pythons %python3_primary_provider
 
 Name:           setools
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux

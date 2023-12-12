@@ -1,0 +1,86 @@
+--- decaf-1.0.2/src/per_curve/eddsa.tmpl.h.orig	2022-07-13 14:44:55.000000000 +0200
++++ decaf-1.0.2/src/per_curve/eddsa.tmpl.h	2023-11-09 08:28:59.348542846 +0100
+@@ -44,11 +44,6 @@
+ /** EdDSA decoding ratio. */
+ #define $(C_NS)_EDDSA_DECODE_RATIO ($(cofactor) / $(eddsa_encode_ratio))
+     
+-#ifndef DECAF_EDDSA_NON_KEYPAIR_API_IS_DEPRECATED
+-/** If 1, add deprecation attribute to non-keypair API functions. Now deprecated. */
+-#define DECAF_EDDSA_NON_KEYPAIR_API_IS_DEPRECATED 1
+-#endif
+-
+ /** @cond internal */
+ /** @brief Scheduled EdDSA keypair */
+ typedef struct decaf_eddsa_$(gf_shortname)_keypair_s {
+@@ -112,71 +107,6 @@
+ ) DECAF_NONNULL DECAF_NOINLINE;
+ 
+ /**
+- * @brief EdDSA signing.  However, this API is deprecated because it isn't safe: if the wrong
+- * public key is passed, it would reveal the private key.  Instead, this function checks that
+- * the public key is correct, and otherwise aborts.
+- *
+- * @deprecated Use DECAF_API_VIS decaf_ed$(gf_shortname)_keypair_sign instead.
+- *
+- * @param [out] signature The signature.
+- * @param [in] privkey The private key.
+- * @param [in] pubkey The public key.
+- * @param [in] message The message to sign.
+- * @param [in] message_len The length of the message.
+- * @param [in] prehashed Nonzero if the message is actually the hash of something you want to sign.
+- * @param [in] context A "context" for this signature of up to 255 bytes.
+- * @param [in] context_len Length of the context.
+- *
+- * @warning For Ed25519, it is unsafe to use the same key for both prehashed and non-prehashed
+- * messages, at least without some very careful protocol-level disambiguation.  For Ed448 it is
+- * safe.  The C++ wrapper is designed to make it harder to screw this up, but this C code gives
+- * you no seat belt.
+- */  
+-void DECAF_API_VIS decaf_ed$(gf_shortname)_sign (
+-    uint8_t signature[DECAF_EDDSA_$(gf_shortname)_SIGNATURE_BYTES],
+-    const uint8_t privkey[DECAF_EDDSA_$(gf_shortname)_PRIVATE_BYTES],
+-    const uint8_t pubkey[DECAF_EDDSA_$(gf_shortname)_PUBLIC_BYTES],
+-    const uint8_t *message,
+-    size_t message_len,
+-    uint8_t prehashed,
+-    const uint8_t *context,
+-    uint8_t context_len
+-) __attribute__((nonnull(1,2,3))) DECAF_NOINLINE
+-#if DECAF_EDDSA_NON_KEYPAIR_API_IS_DEPRECATED
+-  __attribute__((deprecated("Passing the pubkey and privkey separately is unsafe",
+-        "decaf_ed$(gf_shortname)_keypair_sign")))
+-#endif
+-;
+-
+-/**
+- * @brief EdDSA signing with prehash.  However, this API is deprecated because it isn't safe: if the wrong
+- * public key is passed, it would reveal the private key.  Instead, this function checks that
+- * the public key is correct, and otherwise aborts.
+- *
+- * @deprecated Use DECAF_API_VIS decaf_ed$(gf_shortname)_keypair_sign_prehash instead.
+- *
+- * @param [out] signature The signature.
+- * @param [in] privkey The private key.
+- * @param [in] pubkey The public key.
+- * @param [in] hash The hash of the message.  This object will not be modified by the call.
+- * @param [in] context A "context" for this signature of up to 255 bytes.  Must be the same as what was used for the prehash.
+- * @param [in] context_len Length of the context.
+- */  
+-void DECAF_API_VIS decaf_ed$(gf_shortname)_sign_prehash (
+-    uint8_t signature[DECAF_EDDSA_$(gf_shortname)_SIGNATURE_BYTES],
+-    const uint8_t privkey[DECAF_EDDSA_$(gf_shortname)_PRIVATE_BYTES],
+-    const uint8_t pubkey[DECAF_EDDSA_$(gf_shortname)_PUBLIC_BYTES],
+-    const decaf_ed$(gf_shortname)_prehash_ctx_t hash,
+-    const uint8_t *context,
+-    uint8_t context_len
+-) __attribute__((nonnull(1,2,3,4))) DECAF_NOINLINE
+-#if DECAF_EDDSA_NON_KEYPAIR_API_IS_DEPRECATED
+-  __attribute__((deprecated("Passing the pubkey and privkey separately is unsafe",
+-        "decaf_ed$(gf_shortname)_keypair_sign_prehash")))
+-#endif
+-;
+-
+-/**
+  * @brief EdDSA signing.
+  *
+  * @param [out] signature The signature.

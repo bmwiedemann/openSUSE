@@ -450,4 +450,12 @@ But since we have been since august, I'm subbing the next version also. Should y
     <comment></comment>
     <requestid>1035118</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>851b42d29945fe2ec95bab8ad0f03798</srcmd5>
+    <version>0.42.2</version>
+    <time>1702327791</time>
+    <user>anag+factory</user>
+    <comment>Sync changelog with SLE/Leap. (forwarded request 1132210 from yfjiang)</comment>
+    <requestid>1132444</requestid>
+  </revision>
 </revisionlist>

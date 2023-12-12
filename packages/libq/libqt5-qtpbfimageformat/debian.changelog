@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (3.0) stable; urgency=low
+
+  * Added support for overzoom.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 10 Dec 2023 18:24:24 +0100
+
 qt5-pbf-image-plugin (2.6) stable; urgency=low
 
   * Fixed/improved path label layout algorithm.

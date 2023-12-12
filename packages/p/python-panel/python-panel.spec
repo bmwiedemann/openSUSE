@@ -24,14 +24,13 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 Name:           python-panel%{psuffix}
-Version:        1.3.2
+Version:        1.3.4
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://panel.holoviz.org
+URL:            https://github.com/holoviz/panel
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 Source99:       python-panel-rpmlintrc
 BuildRequires:  %{python_module base >= 3.7}
@@ -50,26 +49,6 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros
-%if %{with test}
-BuildRequires:  %{python_module altair}
-BuildRequires:  %{python_module asyncio}
-BuildRequires:  %{python_module diskcache}
-BuildRequires:  %{python_module folium}
-BuildRequires:  %{python_module holoviews >= 1.16.0}
-BuildRequires:  %{python_module ipympl}
-BuildRequires:  %{python_module ipython >= 7.0}
-BuildRequires:  %{python_module panel = %{version}}
-BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module plotly >= 4.0}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-rerunfailures}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module streamz}
-# Tests segfault
-# BuildRequires:  %%{python_module vtk}
-%endif
 Requires:       jupyter-panel
 Requires:       python-Markdown
 Requires:       python-bleach
@@ -92,6 +71,26 @@ Recommends:     python-jupyterlab
 Recommends:     python-matplotlib
 Recommends:     python-plotly
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module altair}
+BuildRequires:  %{python_module asyncio}
+BuildRequires:  %{python_module diskcache}
+BuildRequires:  %{python_module folium}
+BuildRequires:  %{python_module holoviews >= 1.16.0}
+BuildRequires:  %{python_module ipympl}
+BuildRequires:  %{python_module ipython >= 7.0}
+BuildRequires:  %{python_module panel = %{version}}
+BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module plotly >= 4.0}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-rerunfailures}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module streamz}
+# Tests segfault
+# BuildRequires:  %%{python_module vtk}
+%endif
 %python_subpackages
 
 %description

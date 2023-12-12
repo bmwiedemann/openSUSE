@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 10 19:15:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.2:
+  * Add labels to all templates. (#174)
+  * Fix command in templates. (#175)
+  * Fix exporterInterval variable. (#176)
+  * feat: find evicted pods (#173)
+  * feat: add jobs cleaner (#168)
+  * Add discord server to Readme (#171)
+
+-------------------------------------------------------------------
 Thu Nov 30 09:08:31 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.1:

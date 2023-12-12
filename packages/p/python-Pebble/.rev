@@ -114,4 +114,19 @@
     <comment></comment>
     <requestid>1035961</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>db101a4c5da63efd080c1d32a039706c</srcmd5>
+    <version>5.0.5</version>
+    <time>1702327837</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.5:
+  * issue #123: do not raise exception when returned from workers
+  * issue #122: slightly improve type hints
+  * issue #122: add type hints to decorator functions
+
+- Update to 4.6.1
+    + issue #64: rework versioning logic
+  * use poll in channel implementation instead of select</comment>
+    <requestid>1132368</requestid>
+  </revision>
 </revisionlist>

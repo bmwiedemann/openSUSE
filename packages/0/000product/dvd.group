@@ -1702,7 +1702,7 @@
     <package name="libconfig11" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcorosync_common4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcpg4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libcpupower0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libcpupower1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcreaterepo_c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

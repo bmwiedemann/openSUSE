@@ -3,7 +3,14 @@ Fri Nov  4 17:12:49 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.42.2 (boo#1205033 CVE-2022-44638):
   + This version contains a fix for a heap overflow.
+  + Drop upstream merged pixman-CVE-2022-44638.patch
 - Update URL, and tweak source URI.
+
+-------------------------------------------------------------------
+Fri Nov  4 16:18:12 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add pixman-CVE-2022-44638.patch: avoid an integer overflow
+  (boo#1205033 CVE-2022-44638).
 
 -------------------------------------------------------------------
 Mon Apr 20 07:11:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>

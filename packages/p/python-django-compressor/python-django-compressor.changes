@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 11 12:30:39 UTC 2023 - Jacob Michalskie <hel@lcp.world>
+
+- Adds patch python-django-compressor-rcssmin-and-rjsmin-versions.patch
+  * Make sure newer versions of rcssmin and rjsmin can be used
+
+-------------------------------------------------------------------
 Tue Jul 18 08:25:44 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.4

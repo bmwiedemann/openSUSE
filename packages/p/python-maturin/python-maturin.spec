@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-maturin
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/PyO3/maturin
 Source:         https://files.pythonhosted.org/packages/source/m/maturin/maturin-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust >= 1.4.0}
@@ -52,8 +51,6 @@ setuptools-rust milksnake. It supports building wheels for Python
 
 %prep
 %autosetup -a1 -p1 -n maturin-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 sed -i '1{/env python/d}' maturin/__init__.py
 sed -i 's/--locked/--offline/' setup.py
 

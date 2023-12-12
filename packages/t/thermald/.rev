@@ -179,4 +179,12 @@ A    thermal_daemon.obsinfo
   * Remove duplicate type_type == HOT comparison</comment>
     <requestid>1117522</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a982fd0469c5292504cf7996ef59ddd6</srcmd5>
+    <version>2.5.4.0.git+63b290f</version>
+    <time>1702327899</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132506</requestid>
+  </revision>
 </revisionlist>

@@ -263,4 +263,19 @@
   * Add Smart Soundbar 10</comment>
     <requestid>1090244</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5451f2400811d9cdab5f80b21b668163</srcmd5>
+    <version>13.0.8</version>
+    <time>1702327879</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.0.8:
+  * Change BBC Sounds app_id (#753) @blawford
+  * Dependency updates
+
+- Update to version 13.0.1
+- Update to 12.1.4
+  * Refactor handling of discovered casts and device info (#556)
+- Correct egg-info filename to build in the multi-python new world order.</comment>
+    <requestid>1132433</requestid>
+  </revision>
 </revisionlist>

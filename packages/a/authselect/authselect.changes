@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Dec 04 16:37:50 UTC 2023 - dcermak@suse.com
+
+- Update to version 1.4.3+git.0.87bb4b3:
+  * Release authselect-1.4.3
+  * pot: update pot files
+  * po: update translations
+  * selinux: correct error message
+  * templates: remove timestamp from generated files
+  * po: update translations
+  * profiles: do not try to change password via sssd for local users
+  * profiles: add with-systemd-homed to minimal profile
+  * Release authselect-1.4.2
+  * Revert "profiles: add systemd to nsswitch shadow and gshadow" (bsc#1217220)
+  * Release authselect-1.4.1
+  * pot: update pot files
+  * po: switch to po4a-updatepo for man pages
+  * po: update translations
+  * profiles: fix readme for with-systemd-homed and warn if the module is not installed
+  * profiles: add with-systemd-homed
+  * compat: chmod sssd snippet to 0600
+  * Updated profiles/sssd/README to reflect actual state.
+  * Fix installation of manpage
+  * doc: Add libselinux-devel to build dependencies
+  * profiles: add systemd to nsswitch shadow and gshadow
+  * profiles: add with-pwhistory feature
+  * profiles: Add with-libvirt feature
+  * ci: fix copr builds
+  * man: remove --custom from create-profile which does not exist
+  * cli: fix memory handling with new popt library
+- rebase patch authselect-usrmerge.patch as
+  0001-Adapt-authselect-for-the-etc-usr-etc-merge.patch
+
+-------------------------------------------------------------------
 Mon Aug 15 19:49:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashism in post scripts (bsc#1195391) 

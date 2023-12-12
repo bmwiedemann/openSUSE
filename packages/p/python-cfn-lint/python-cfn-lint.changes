@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Dec  8 11:39:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.83.4
+  * Update CloudFormation specs to `149.0.0` (#2951)
+  * Add `KeyID` as a target for `TargetKeyId` (#2953)
+- from version 0.83.3
+  * Update CloudFormation specs to include `python3.12` (#2947)
+- from version 0.83.2
+  * Update CloudFormation specs to `148.0.0` (#2942)
+  * Add in `LoadBalancerArn` to `LoadBalancerV2Arn` (#2936)
+- from version 0.83.1
+  * Update CloudFormation specs to `146.0.0` (#2921)
+  * Update (E3036) and (E3035) to allow more FNs (#2928)
+  * Update (I3037) to have exceptions `Command` (#2927)
+- from version 0.83.0
+  * Add rule (E3045) to validate `AccessControl`s are
+    specified when using `AccessControl` (#2906)
+  * Add rule (W3045) to alert on usage of legacy
+    capability `AccessControl` (#2906)
+  * Update CloudFormation specs to `145.0.0` (#2909)
+- from version 0.82.2
+  * Update (I2530) validates its using Java runtimes greater than 8 (#2916)
+- from version 0.82.1
+  * Update (E2530) and (I2530) to make sure `Runtime`
+    is a string before using `startswith` (#2912)
+- from version 0.82.0
+  * Add rule (W2530) to warn when `SnapStart`
+    isn't configured correctly (#2905)
+  * Add rule (I2530) to warn when `SnapStart`
+    isn't configured on newer Java runtimes (#2905)
+  * Add rule (E2530) to error when `SnapStart` is
+    configured on an unsupported runtime (#2905)
+  * Update CloudFormation specs to `144.0.0` (#2898)
+- from version 0.81.0
+  * Update CloudFormation specs to `143.0.0` (#2893)
+  * Update language transformation to pass through empty objects (#2899)
+  * Update rule (E1017) to allow `Fn::Select` to allow `Fn::Select` (#2900)
+  * Update rule (E2532) to support `ToleratedFailurePercentage`
+    and `ItemBatcher` to `Map` (#2901)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Oct  6 07:05:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.80.4

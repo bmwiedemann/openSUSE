@@ -81,4 +81,17 @@
     <comment></comment>
     <requestid>1081811</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a536aa6e0997a298a73cdca2b837b6f8</srcmd5>
+    <version>4.4.0</version>
+    <time>1702327786</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.4.0:
+  * Add support for 3.12, drop EOL 3.7
+
+- Update to version 4.3.0
+- Update to version 4.2.2
+- initial commit</comment>
+    <requestid>1132432</requestid>
+  </revision>
 </revisionlist>

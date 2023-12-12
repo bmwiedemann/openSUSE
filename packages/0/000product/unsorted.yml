@@ -2904,6 +2904,8 @@ unsorted:
   - debugbreak-devel 
   - debugedit 
   - debuginfod-dummy-client 
+  - decaf 
+  - decaf-devel 
   - decentxml 
   - decentxml-javadoc 
   - decibels 
@@ -3461,6 +3463,7 @@ unsorted:
   - emf2svg-conv 
   - emil 
   - emojione-color-font 
+  - emptyepsilon 
   - enblend-enfuse 
   - enblend-enfuse-doc 
   - enc 
@@ -7578,6 +7581,7 @@ unsorted:
   - haproxy 
   - hardening-check 
   - hardinfo 
+  - hare 
   - harec 
   - harfbuzz-devel 
   - harfbuzz-tools 
@@ -11510,6 +11514,7 @@ unsorted:
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
+  - libdecaf0 
   - libdecor-0-0-32bit 
   - libdecor-32bit 
   - libdecor-devel 
@@ -13564,10 +13569,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_21-gnu-hpc 
-  - libopenblas-pthreads_0_3_21-gnu-hpc-devel 
-  - libopenblas_0_3_21-gnu-hpc 
-  - libopenblas_0_3_21-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_25-gnu-hpc 
+  - libopenblas-pthreads_0_3_25-gnu-hpc-devel 
+  - libopenblas_0_3_25-gnu-hpc 
+  - libopenblas_0_3_25-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit 
@@ -13972,6 +13977,7 @@ unsorted:
   - libpostproc56 
   - libpostproc56-32bit 
   - libpostproc57-32bit 
+  - libpostquantumcryptoengine1 
   - libpowerman0 
   - libppl14 
   - libppl_c4 
@@ -19026,8 +19032,8 @@ unsorted:
   - openbabel-devel 
   - openbabel-gui 
   - openblas-common-devel 
-  - openblas-pthreads_0_3_21-gnu-hpc-devel-static 
-  - openblas_0_3_21-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_25-gnu-hpc-devel-static 
+  - openblas_0_3_25-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -21788,6 +21794,8 @@ unsorted:
   - postorius 
   - postorius-web 
   - postorius-web-uwsgi 
+  - postquantumcryptoengine 
+  - postquantumcryptoengine-devel 
   - postsrsd 
   - potrace 
   - potrace-devel 
@@ -22955,6 +22963,7 @@ unsorted:
   - python310-astroid 
   - python310-astropy 
   - python310-astropy-healpix 
+  - python310-astropy-iers-data 
   - python310-asttokens 
   - python310-astunparse 
   - python310-asv 
@@ -26449,6 +26458,7 @@ unsorted:
   - python311-astroid 
   - python311-astropy 
   - python311-astropy-healpix 
+  - python311-astropy-iers-data 
   - python311-asttokens 
   - python311-astunparse 
   - python311-asv 
@@ -29841,6 +29851,7 @@ unsorted:
   - python39-astroid 
   - python39-astropy 
   - python39-astropy-healpix 
+  - python39-astropy-iers-data 
   - python39-asttokens 
   - python39-astunparse 
   - python39-asv 
@@ -34305,6 +34316,7 @@ unsorted:
   - scap-security-guide-ubuntu 
   - scap-workbench 
   - scap-workbench-doc 
+  - scapy 
   - scat 
   - sccache 
   - sccs 
@@ -46019,6 +46031,7 @@ unsorted:
   - xwallpaper 
   - xwallpaper-zsh-completion 
   - xwayland-devel 
+  - xwayland-run 
   - xwaylandvideobridge 
   - xwd 
   - xwininfo 

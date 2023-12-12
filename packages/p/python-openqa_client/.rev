@@ -61,4 +61,16 @@
   * Improve handling of quirky API behaviour regarding settings parameters</comment>
     <requestid>1039298</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8785c27c1c00eefb766e8b0019e17b2f</srcmd5>
+    <version>4.2.3</version>
+    <time>1702327884</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.3:
+  * Add py.typed marker to the package
+  * Include the response text in RequestError (kalikiana)
+  * Support `REQUESTS_CA_BUNDLE` and `CURL_CA_BUNDLE`
+    environment variables (ricardobranco777)</comment>
+    <requestid>1132438</requestid>
+  </revision>
 </revisionlist>

@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.56.4
+%define godplugin_version 0.57.2
 Name:           netdata
-Version:        1.43.2
+Version:        1.44.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -172,7 +172,11 @@ Wireless access point statistics.
 Summary:        The python.d metrics collection plugin for the Netdata Agent
 Requires:       netdata = %{version}
 Enhances:       netdata
+%if 0%{?suse_version} > 1550
 Requires:       python3
+%else
+Requires:       python311
+%endif
 Suggests:       sudo
 Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/python.d.plugin
 
@@ -296,7 +300,11 @@ metrics exposed through debugfs.
 sed -i 's,%{_bindir}/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1550
 sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3,' collectors/python.d.plugin/python.d.plugin.in
+%else
+sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3.11,' collectors/python.d.plugin/python.d.plugin.in
+%endif
 
 tar -xf %{SOURCE1}
 tar -xf %{SOURCE2} -C go.d.plugin-%{godplugin_version}
@@ -403,22 +411,28 @@ getent passwd %{netdata_user} >/dev/null || \
 
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/conf.d
+%dir %{_libdir}/%{name}/conf.d/log2journal.d
+%dir %{_libdir}/%{name}/conf.d/logsmanagement.d
 %{_libdir}/%{name}/conf.d/ebpf.d
 %{_libdir}/%{name}/conf.d/health.d
 %{_libdir}/%{name}/conf.d/statsd.d
 %{_libdir}/%{name}/conf.d/vnodes
-
 %{_libdir}/%{name}/conf.d/ebpf.d.conf
 %{_libdir}/%{name}/conf.d/exporting.conf
 %{_libdir}/%{name}/conf.d/health_alarm_notify.conf
 %{_libdir}/%{name}/conf.d/health_email_recipients.conf
 %{_libdir}/%{name}/conf.d/ioping.conf
 %{_libdir}/%{name}/conf.d/stream.conf
+%{_libdir}/%{name}/conf.d/log2journal.d/*.yaml
+%{_libdir}/%{name}/conf.d/logsmanagement.d/*.conf
+%{_libdir}/%{name}/conf.d/logsmanagement.d.conf
 
 %{_sbindir}/%{name}
 %{_sbindir}/%{name}-claim.sh
 %{_sbindir}/%{name}cli
 %{_sbindir}/rc%{name}
+%{_sbindir}/systemd-cat-native
+
 %{_unitdir}/%{name}.service
 
 %attr(-,root,%{netdata_group}) %dir %{_datadir}/%{name}

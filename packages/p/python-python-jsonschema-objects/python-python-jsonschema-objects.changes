@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 11 05:31:28 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.1:
+  * Setup for handling anyOf simplifying to oneOf on import.
+- Add patch use-specification-obj.patch:
+  * Stop passing string schemas, convert it to a Specification object
+
+-------------------------------------------------------------------
 Wed Sep 20 02:46:59 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.0:

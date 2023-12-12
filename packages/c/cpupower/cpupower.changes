@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 20 12:34:46 UTC 2023 - Thomas Renninger <trenn@suse.de>
+
+- Fix library file version: libcpupower.so.0.0.1 -> libcpupower.so.1.0.1
+A cpupower_fix_library_so_name.patch
+
+-------------------------------------------------------------------
+Wed Nov 15 12:57:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rename libcpupower0 to libcpupower1 following changes in SONAME.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Sun Mar  5 18:19:36 UTC 2023 - Thomas Renninger <trenn@suse.de>
 
 - Add wildcard for powercap.h since powercap patches have reached mainline

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 11 08:17:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * Make ``next()`` on C proxies call ``__next__`` rather than
+    ``next`` (see PEP 3114), and drop support for the Python 2
+    ``next`` method name from pure-Python proxies.
+  * Drop using ``setup_requires`` due to constant problems on
+    GHA.
+  * Add support for Python 3.12.
+
+-------------------------------------------------------------------
 Fri Jun  9 12:59:34 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -15,16 +26,16 @@ Fri May  5 14:30:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 17:46:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.8 
+- Update to version 5.8
   * The extra untrustedpython now for Python 3, too, installs zope.untrustedpython.
 
 -------------------------------------------------------------------
 Mon Dec  5 13:53:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.7 
+- Update to version 5.7
   * Release to rebuild full set of binary wheels.
 
-- Update to version 5.6 
+- Update to version 5.6
   * Add support for building arm64 wheels on macOS.
 
 -------------------------------------------------------------------
@@ -42,7 +53,7 @@ Sat Oct 29 18:10:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Fri Sep 16 19:41:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.3.0 
+- Update to version 5.3.0
   * Allow calling bound methods of some built-in objects such as ().__repr__ and {}.__repr__ by default.
     This worked on Python 2, but raised ForbiddenAttribute on Python 3. See issue 75.
   * Remove usage of unittest.makeSuite as it is deprecated in Python 3.11+. See issue 83.
@@ -84,33 +95,33 @@ Tue Jan 21 10:48:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Mon Apr  8 13:53:23 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.3.1
-  * Fix the decimal.Decimal checker, __truediv__ was missing 
-    causing ForbiddenAttribute on a ProxyFactory(Decimal('1')) / 1 
+  * Fix the decimal.Decimal checker, __truediv__ was missing
+    causing ForbiddenAttribute on a ProxyFactory(Decimal('1')) / 1
     operation
   4.3.0
-  * Add the interface ISystemPrincipal and make 
-    zope.security.management.system_user a regular object that 
+  * Add the interface ISystemPrincipal and make
+    zope.security.management.system_user a regular object that
     implements this interface.
   4.2*
   * Add support for Python 3.7.
   * Make the pure-Python proxy on Python 2 not check permissions for
-    __unicode__ just like the C implementation. Note that __str__ is 
-    checked for both implementations on both Python 2 and 3, but if 
-    there is no __unicode__ method defined, Python 2’s automatic 
+    __unicode__ just like the C implementation. Note that __str__ is
+    checked for both implementations on both Python 2 and 3, but if
+    there is no __unicode__ method defined, Python 2’s automatic
     fallback to __str__ is not checked when unicode is called.
-  * Fix the default values for Permission fields title and 
+  * Fix the default values for Permission fields title and
     description under Python 2.
-  * Change the IPermission.id from Text (unicode) to a 
+  * Change the IPermission.id from Text (unicode) to a
     NativeStringLine.
-  * Fix the extremely rare potential for a crash when the C 
+  * Fix the extremely rare potential for a crash when the C
     extensions are in use.
-  * The pure-Python proxy didn’t propagate TypeError from __repr__ 
+  * The pure-Python proxy didn’t propagate TypeError from __repr__
     and __str__ like the C implementation did.
-  * Iteration of zope.interface.providedBy() is now allowed by 
+  * Iteration of zope.interface.providedBy() is now allowed by
     default on all versions of Python.
   * Drop support for Python 3.3.
-  * Respect PURE_PYTHON at runtime. 
-  * Fix watching checkers (ZOPE_WATCH_CHECKERS=1) in pure-Python 
+  * Respect PURE_PYTHON at runtime.
+  * Fix watching checkers (ZOPE_WATCH_CHECKERS=1) in pure-Python
     mode.
 - Fix tests using multibuild (can be dropped in the future).
 
@@ -142,7 +153,7 @@ Sun Jul 16 08:06:14 UTC 2017 - aloisio@gmx.com
   * Add support for Python 3.4.
 
 - Split docs and tests into separate -doc package to avoid
-  dependency loop and other zope-related problems, see 
+  dependency loop and other zope-related problems, see
   (gh#/zopefoundation/zope.proxy#18)
 
 - Converted to single-spec

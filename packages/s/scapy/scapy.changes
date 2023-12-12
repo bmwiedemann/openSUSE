@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Mon Dec 11 10:44:38 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update URL
+- Drop obsolete suse version check for 1110
+- Use python rpm macros during %build and %install
+- Do not install test scripts - %{python3_sitelib}/test/
+
+-------------------------------------------------------------------
+Sun Dec 25 14:57:53 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 2.5.0
+  * Main Changes
+    - Type hinting of Scapy core: Scapy now provides type hintings for all of its core
+    - Python 3.9 and 3.10 support
+    - enhanced loopback interface support on Linux, *BSD, and Windows
+    - SPDX License identifiers added
+    - several major CLI improvements, especially in autocompletion
+   * Core
+    - improved support of BPF
+    - support pcapng writing, comments, TLS secrets decryption block
+    - Re-work how sent_time is shared across packets iterators
+    - support new LINUX_SLL2 packet type (new tcpdump versions)
+    - pipes: performances issues fixed
+    - tools: fixes to hexdiff, lhex...
+  * Layers
+    - new layers related to Windows: DCERPC/NTLM/KERBEROS/GSSAPI/SPNEGO/(C)LDAP.
+    - new contrib layers: ESMC/RTPS/RTPC/metawatch
+    - rework Netbios/SMB1/SMB2, basic SMB clients & server, ntlm relay
+    - several fixes to the TLS implementation
+    - major zigbee/6lowpan improvements
+    - bug fixes in TLS: properly support FFDH, fix the TLS 1.3 notebooks... among other things
+    - p0f module update
+    - IPsec: fixes, x25519 support...
+    - various updates to the ASN.1 engine
+    - IKEv2: fixes, UDP encapsulation
+    - STUN support
+    - Postgres line protocol 3.0 support
+    - EDNS0 client subnet support
+    - ESMC protocol added
+    - support TCP-MD5 and TCP-AO options
+    - ERF Ethernet Support
+    - many fixes: modbus, 802.11, BTLE, SCTP, DNS, LLDP, Kerberos, RTPS, DHCP, MQTT, BGP, L2TP...
+  * Automotive
+    - ISOTPSoftSocket: Bug fixes and performance improvements
+    - IPv6 support for DoIP
+    - Bugfixes for DoIP
+    - UDS-, GMLAN- and OBD-Scanner refactoring
+    - CANFD support
+  * Misc
+    - new sanity rules prevent fields from having the same name in all packets
+    - archives of the Scapy repo should now have more consistent hashes
+
+-------------------------------------------------------------------
+Tue Apr 20 06:23:24 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 2.4.5
+  * Core
+    - Python 3.9 support
+    - New interfaces system. `conf.iface` is now an object (retro-compatible as a
+      string) which contains additional information about the interface and
+      allows for an automatic selection of the socket type. `conf.ifaces` now lists
+      all available interfaces.
+    - Fix BSD support. Improve filters handling on Linux and `libpcap`
+    - Automaton: support for `STOP` event - allows to cleanly end an Automata.
+      Implemented in all Scapy's automatons
+    - [Deprecated] Naming different fields with the same name will now raise a
+      deprecation warning. This behavior has never properly worked and should never
+      be necessary
+    - Enhance `Net` and `Net6`
+    - Improvements to scapy's logging, colored output and to UTscapy
+    - Fix edge-cases with `ConditionalField` and `MultipleTypeField` to make them
+      more resilient
+    - [Doc] Enhancements: improved `MultipleTypeField` handling, add `view source`.
+
+  * Layers
+    - 6LoWPAN refactor
+    - TLS improvements (TLS 1.3 server downgrade, TLS 1.2 EXT MS...)
+    - HTTP improvements (http_request, support for zstd...)
+    - Refactor TunTap support
+    - Cleanup MACsec
+    - Many small bug fixes or improvements to layers (SMB2, BFD, DNS, Zigbee,
+      EAP, HomeplugGP, DHCPv6, 802.11...)
+
+  * Automotive
+    - Renaming of ENET to HSFZ
+    - Added XCP layer
+    - Added DoIP layer
+    - Renaming of ECU to Ecu
+    - Refactoring of EcuState class to be more versatile
+    - Minor updates to the documentation
+
+-------------------------------------------------------------------
+Thu Sep  3 07:58:43 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 2.4.4 
+  * Core
+    - fix how timestamps are measured on layer 3 (broken since 2.4.1)
+    - drop DNET support (deprecated since 2.4.0)
+    - Scapy will now use libpcap instead of tcpdump to compile the filters (tcpdump is still used to filter pcaps)
+    - major changes to the online doc and more doc to many functions
+
+  * Layers
+    - New layers (homeplug sg, smb2, NSH, RPL, ERSPAN, BFD, ROCE...)
+    - TLS: TLS 1.3 support & many fixes
+    - 802.11 improvements / WPA3 detection
+    - Netflow 9 fixes
+    - Major refactor & changes of the Automotive layers
+    - HTTP changes
+    - DHCPv6 fixes according to revision of the RFC
+    - Bluetooth improvements (+BLE)
+    - minor fixes to Radius, PPP, GTP, IPsec, CDP, VTP, HTTP/2, ...
+
+-------------------------------------------------------------------
+Thu Aug  8 08:41:31 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 2.4.3 
+  * Core
+    - latency improvements
+    - sniff() can be used to test BPF fiters on pcap files
+    - more unit tests and Python3 compatibility
+    - asynchronous sniffing
+    - UTScapy vim syntax highlighting
+    - Console / IPython integration improvements
+  * Layers
+    - New:
+      HTTP (from the deprecated scapy-http module), TLS 1.3, ATA over Ethernet, OVD, IEC 60870-5-104, enip, ...
+    - Improved:
+      NetflowV9, ISOTP, Zigbee, RTR, BLE, PPI, DNS, LLDP, Bluetooth/BTLE rework, PPI / 802.11 improvements
+
+-------------------------------------------------------------------
+Tue Jan 15 17:30:41 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- update to 2.4.2 
+  * Core
+    - Python 3.7 support
+    - unit testing is now 100% tox based
+  * Layers
+    - Many automotive related layers added (ISO-TP...)
+    - New: 
+      EtherCat, OPCDA, SOCKS, USBpcap, RPKI
+    - Improved: 
+      MACsec, MQTT, MPLS, DNS, ARP, Dot15d4, Zigbee, Bluetooth4LE, RadioTap
+
+-------------------------------------------------------------------
+Fri Nov  9 14:10:37 UTC 2018 - Robert Frohl <rfrohl@suse.com>
+
+- update to 2.4.0 
+  * Core
+    - Pcap/PcapNg improvements
+    - OSX 802.11 monitor mode
+    - Krack AP module
+    - iPython support
+  * Layers
+    - major changes
+      * TLS (including TLS1.3), X.509
+    - New
+      * HTTP/2, EAP-TTLS, TACACS, MQTT
+    - Improved
+      * IPv6, SCTP, NTP, PPTP, CDP, BGP, ISIS
+- use python3 by default
+
+-------------------------------------------------------------------
+Fri Aug 16 08:07:18 UTC 2013 - hpj@urpla.net
+
+- add note about testing requirements, local test run successful
+
+-------------------------------------------------------------------
+Fri Aug 16 07:14:26 UTC 2013 - speilicke@suse.com
+
+- Spec cleanup: license header, simplified macro usage, explicit file
+  list, dropped %clean section
+- Provide/obsolete python-scapy, it's the same software
+- Use tarball from PyPI and a source URL so that it can be verified
+- Remove documentation from tarball and thus from src and binary RPMs,
+  we are not allowed to distribute it
+
+-------------------------------------------------------------------
+Tue Feb 12 16:29:21 UTC 2013 - hpj@urpla.net
+
+- update to 2.2.0
+
+-------------------------------------------------------------------
+Thu Jul 15 22:40:37 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (2.1.1)
+

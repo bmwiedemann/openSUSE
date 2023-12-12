@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpl-animators
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-mpl-animators
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        An interative animation framework for matplotlib
 License:        BSD-3-Clause
 URL:            https://github.com/sunpy/mpl-animators
 Source:         https://files.pythonhosted.org/packages/source/m/mpl_animators/mpl_animators-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

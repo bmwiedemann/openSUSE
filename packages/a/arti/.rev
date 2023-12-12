@@ -25,4 +25,12 @@ of the Tor anonymity protocols in the Rust programming language.</comment>
 </comment>
     <requestid>1126653</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>55d10214656ca2ed736ffd8fd51e6d50</srcmd5>
+    <version>1.1.11~0</version>
+    <time>1702327817</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132336</requestid>
+  </revision>
 </revisionlist>

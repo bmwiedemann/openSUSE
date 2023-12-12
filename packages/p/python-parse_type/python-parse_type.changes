@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 10 21:39:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * #21: tests/test_parse.py tests ``parse_type.parse`` (per
+    default).
+  * REASON: Using for older installed ``parse`` module may
+    cause weird problems.
+  * RELATED TO: ``parse v1.19.1`` (behavior changed compared to
+    ``v1.19.0``)
+
+-------------------------------------------------------------------
 Sun Jul  2 15:18:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.6.1:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 11 09:13:59 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Bump BuildRequires on pkgconfig(xmlb) to 0.3.14.
+
+-------------------------------------------------------------------
 Tue Dec  5 15:53:26 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Make AppStream-compose-devel require the same version

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 11 08:09:10 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 4.4.4:
+  * Update for compiling with libsepol 3.6.
+
+-------------------------------------------------------------------
 Tue Aug  1 10:27:36 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 4.4.3:

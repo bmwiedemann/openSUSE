@@ -51,4 +51,12 @@ It is filled with the time delta containing entropy and auxiliary data that does
     <comment> (forwarded request 1073856 from pmonrealgonzalez)</comment>
     <requestid>1073935</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>10ef274b206ee855d6accdd57b2002fa</srcmd5>
+    <version>3.4.1</version>
+    <time>1702327792</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132447</requestid>
+  </revision>
 </revisionlist>

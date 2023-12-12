@@ -2030,4 +2030,12 @@ New stable rel</comment>
     <comment>Sync a patch with Leap/SLE, make it unfunctional since the rebase is needed. (forwarded request 1131282 from yfjiang)</comment>
     <requestid>1131306</requestid>
   </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>e8fd665da732f6b2fd4cdddec023458d</srcmd5>
+    <version>45.2</version>
+    <time>1702327789</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1132163 from iznogood)</comment>
+    <requestid>1132441</requestid>
+  </revision>
 </revisionlist>

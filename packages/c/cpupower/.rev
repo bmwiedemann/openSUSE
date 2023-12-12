@@ -490,4 +490,16 @@ D intel-speed-select_remove_DATE_TIME.patch</comment>
     <comment></comment>
     <requestid>1069475</requestid>
   </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>3b89203fd15d2f8e87efb7e882fc3ac0</srcmd5>
+    <version>MACRO</version>
+    <time>1702327807</time>
+    <user>anag+factory</user>
+    <comment>- Fix library file version: libcpupower.so.0.0.1 -&gt; libcpupower.so.1.0.1
+A cpupower_fix_library_so_name.patch
+
+- Rename libcpupower0 to libcpupower1 following changes in SONAME.
+- Use ldconfig_scriptlets macro for post(un) handling.</comment>
+    <requestid>1127699</requestid>
+  </revision>
 </revisionlist>

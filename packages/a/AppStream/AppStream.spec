@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(xmlb) >= 0.3.13
+BuildRequires:  pkgconfig(xmlb) >= 0.3.14
 BuildRequires:  pkgconfig(yaml-0.1)
 Recommends:     curl
 %if %{with vala}

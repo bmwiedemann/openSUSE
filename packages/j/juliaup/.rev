@@ -347,4 +347,14 @@
 </comment>
     <requestid>1131215</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>bbce2c9012a799e4263dfa3f25c5d34b</srcmd5>
+    <version>1.12.5</version>
+    <time>1702327813</time>
+    <user>anag+factory</user>
+    <comment>- Add improve-error-message-if-version-or-channel-is-not-installed.patch
+- Prepare specfile as an alternative for julia
+</comment>
+    <requestid>1132332</requestid>
+  </revision>
 </revisionlist>

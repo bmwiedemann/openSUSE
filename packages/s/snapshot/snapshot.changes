@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  9 11:29:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.1:
+  + Various Bugfixes
+  + Update internal libraries
+  + Updated translations.
+- Drop cargo_config as source, no longer needed.
+
+-------------------------------------------------------------------
 Sat Sep 16 12:29:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

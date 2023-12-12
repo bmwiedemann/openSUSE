@@ -135,4 +135,15 @@ Changes:
     gh#SpotlightKid/python-rtmidi#167</comment>
     <requestid>1123698</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>038c4d6c029fac7914d5122a4c4cac78</srcmd5>
+    <version>1.5.8</version>
+    <time>1702327895</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.8
+  * Removed obsolete Python 2 compatibility code in the _rtmidi
+    module and references to Python 2 unicode type in its
+    docstrings.</comment>
+    <requestid>1132507</requestid>
+  </revision>
 </revisionlist>

@@ -22,14 +22,13 @@
 %endif
 
 Name:           fonts-config
-Version:        20230604+git0.630c8206607c
+Version:        20231210+git0.f7216ba
 Release:        0
 Summary:        Script to configure fonts for X Windows and other applications
 # MIT for infinality
 License:        GPL-2.0-or-later AND MIT
 Group:          System/X11/Fonts
 Source:         %{name}-%{version}.tar.xz
-Patch1:         0001-Fix-typos-in-32-emoji-reject.conf-and-59-family-pref.patch
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
 Requires(pre):  %fillup_prereq

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  9 10:13:33 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to v1.44.0 (go.d.plugin 0.57.2)
+  See https://github.com/netdata/netdata/tree/v1.44.0
+  and https://github.com/netdata/go.d.plugin/tree/v0.57.2
+      https://github.com/netdata/go.d.plugin/tree/v0.57.1
+      https://github.com/netdata/go.d.plugin/tree/v0.57.0
+- Fix some forgotten code to use python311 in Leap.
+
+-------------------------------------------------------------------
 Mon Nov 13 11:23:56 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - XEN only exists on x86 and aarch64

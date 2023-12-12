@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  9 13:25:34 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.0-rc1 release
+  - Bundled vkd3d upgraded to version 1.10.
+  - Support for DH encryption keys with a recent GnuTLS.
+  - Keyboard layouts support in the Wayland driver.
+  - Various bug fixes.
+- update staging to 9.0-rc1 release
+
+-------------------------------------------------------------------
 Sat Nov 25 17:34:19 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.21 release

@@ -29,16 +29,13 @@ Group:          Development/Languages/Other
 URL:            https://github.com/JuliaLang/juliaup
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         https://patch-diff.githubusercontent.com/raw/JuliaLang/juliaup/pull/767.patch#/improve-error-message-if-version-or-channel-is-not-installed.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
 BuildRequires:  zstd
-Obsoletes:      julia
-Provides:       julia
+Requires(post): %{_sbindir}/update-alternatives
+Requires(postun):%{_sbindir}/update-alternatives
 ExclusiveArch:  %{rust_tier1_arches}
-
-# It doesn't make sense to do this anyway.
-# Provides:       julia = %%{latest_julia_version}
-# Obsoletes:      julia < %%{latest_julia_version}
 
 %description
 A cross-platform installer for the Julia programming language.
@@ -56,12 +53,26 @@ release channel abstraction.
 
 %install
 %{cargo_install} --no-default-features
-# ln -sfv "%%{_bindir}/julialauncher" "%%{buildroot}/%{_bindir}/julia"
+
+# We are doing alternatives so we move julia as julialauncher
+mv %{buildroot}%{_bindir}/julia %{buildroot}%{_bindir}/julialauncher
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+ln -sf %{_sysconfdir}/alternatives/julia %{buildroot}%{_bindir}/julia
+
+%post
+%{_sbindir}/update-alternatives --install %{_bindir}/julia \
+    julia %{_bindir}/julialauncher 10
+
+%postun
+if [ ! -f %{_bindir}/julialauncher ] ; then
+    %{_sbindir}/update-alternatives --remove julia %{_bindir}/julialauncher
+fi
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/juliaup
-%{_bindir}/julia
+%{_bindir}/julialauncher
+%ghost %{_bindir}/julia
 
 %changelog

@@ -18,25 +18,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pipx
-Version:        1.2.1
+Version:        1.3.3
 Release:        0
 Summary:        Install and Run Python Applications in Isolated Environments
 License:        MIT
 URL:            https://github.com/pypa/pipx
 Source:         https://files.pythonhosted.org/packages/source/p/pipx/pipx-%{version}.tar.gz
-BuildRequires:  %{python_module hatchling >= 0.15.0}
+BuildRequires:  %{python_module hatch-vcs >= 0.4}
+BuildRequires:  %{python_module hatchling >= 1.18}
 BuildRequires:  %{python_module pip}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python >= 3.8
+Requires:       python-argcomplete >= 1.9.4
+Requires:       python-packaging >= 20
+Requires:       python-platformdirs >= 2.1
+Requires:       python-tomli
+Requires:       python-userpath >= 1.6
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module argcomplete >= 1.9.4}
-BuildRequires:  %{python_module packaging >= 20.0}
-BuildRequires:  %{python_module userpath >= 1.6.0}
+BuildRequires:  %{python_module packaging >= 20}
+BuildRequires:  %{python_module platformdirs >= 2.1}
+BuildRequires:  %{python_module userpath >= 1.6}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-argcomplete >= 1.9.4
-Requires:       python-packaging >= 20.0
-Requires:       python-userpath >= 1.6.0
-BuildArch:      noarch
 %python_subpackages
 
 %description

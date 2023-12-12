@@ -1,0 +1,11 @@
+--- postquantumcryptoengine-5.2.94/CMakeLists.txt.orig	2023-11-09 07:44:51.747506840 +0100
++++ postquantumcryptoengine-5.2.94/CMakeLists.txt	2023-11-09 07:44:58.687544423 +0100
+@@ -28,7 +28,7 @@
+ 	cmake_policy(SET CMP0077 NEW)
+ endif()
+ 
+-project(postquantumcryptoengine VERSION 5.2.0)
++project(postquantumcryptoengine VERSION 5.2.94)
+ 
+ set(POSTQUANTUMCRYPTOENGINE_VERSION "${PROJECT_VERSION}")
+ set(POSTQUANTUMCRYPTOENGINE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})

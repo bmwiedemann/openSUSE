@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 17 20:33:30 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- do sequential build for reproducible .go files (boo#1102408)
+
+-------------------------------------------------------------------
 Sat Sep 17 08:40:47 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - remove unused RPM lint filters, add one for devel dependency 

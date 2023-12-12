@@ -26,8 +26,6 @@ URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
 Patch0:         wyrmgus-gl-includes.patch
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  libboost_date_time-devel >= 1.69.0
 BuildRequires:  libqt5-qtlocation-private-headers-devel
 BuildRequires:  libtolua++-5_1-devel
 BuildRequires:  lua51-devel
@@ -46,6 +44,17 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  libboost_date_time1_75_0-devel
+%else
+BuildRequires:  libboost_date_time-devel >= 1.69.0
+%endif
 
 %description
 Modified Stratagus engine for Wyrmsun
@@ -62,6 +71,10 @@ These are the development files for Wyrmsun which is based on the Stratagus engi
 %autosetup -p1 -n Wyrmgus-%{version}
 
 %build
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-11"
+export CXX="g++-11"
+%endif
 %cmake \
   -DWITH_BZIP2=ON \
   -DWITH_PHYSFS=ON \
@@ -74,7 +87,7 @@ These are the development files for Wyrmsun which is based on the Stratagus engi
 %cmake_install
 install -D -m 0644 doc/stratagus.6 %{buildroot}%{_mandir}/man6/wyrmgus.6
 install -D -m 0644 gameheaders/stratagus-game-launcher.h %{buildroot}%{_includedir}/wyrmgus-game-launcher.h
-rm %{buildroot}/usr/share/doc/wyrmgus/copyright
+rm %{buildroot}%{_datadir}/doc/wyrmgus/copyright
 
 %files
 %license COPYING

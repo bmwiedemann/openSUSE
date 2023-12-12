@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 10 14:55:05 UTC 2023 - rrahl0@proton.me
+
+- Update to version 0.121.1:
+  * recompile with go 1.21.5 for security fixes relevant to hugo
+
+-------------------------------------------------------------------
 Wed Dec 06 20:14:24 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.121.0:

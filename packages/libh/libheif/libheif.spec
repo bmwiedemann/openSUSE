@@ -39,6 +39,10 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# CVE-2023-49462 [bsc#1217898], read16 segv
+Patch0:         libheif-CVE-2023-49462.patch
+# CVE-2023-49464 [bsc#1217900], UAF
+Patch1:         libheif-CVE-2023-49464.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.21
 BuildRequires:  fdupes

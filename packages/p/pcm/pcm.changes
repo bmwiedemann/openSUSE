@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Dec 11 10:00:00 UTC 2023 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202311:
+  * Support for Sapphire Rapids accelerators in pcm-grafana dashboard.
+  * Added support of Sapphire Rapids MCC CPUs in pcm-iio tool.
+  * Added support for M3UPI PMU for Sapphire Rapids.
+  * Added new tool to access TPMI registers: pcm-tpmi
+  * Added support for mmio register reads in pcm-raw tool
+  * pcm-raw now supports ha pmu and added invert,anythread,nc,isoc,opc and state emon event modifiers
+  * New script for filtering data in CSV
+  * Added bit operations for pcm register tools: pcm-msr, pcm-pcicfg, pcm-mmio
+  * pcm-raw: Add PCU PMU declaration for BDX/SKX/CLX/CPX and document pcicfg register events
+  * pcm-raw: remove the max number of event restrictions for register events
+  * Fixed deadlock in processDVSEC
+  * Fixed race condition in isHWTMAL1Supported
+  * Fixed a clang scan warning
+  * Fixed the docker name for Grafana in start.sh
+  * Fixed an issue in getMaxNumOfCBoxes to allow the fall-back perf API method to be called
+  * Fixed an issue with pcicfg reg syntax documentation
+  * Fixed an issue in pcm-accel to avoid confusion when overflow happens
+  * Added exception handling in utils.cpp:get_cpu_bus()
+  * Fix pcm for PCU and MDF: IO read size is data size
+  * Added PCM_NO_MAIN_EXCEPTION_HANDLER variable
+
+-------------------------------------------------------------------
 Sun Jul 16 11:01:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 202307:

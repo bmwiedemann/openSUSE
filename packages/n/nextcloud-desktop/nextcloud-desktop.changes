@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Dec  9 03:43:16 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.10.2:
+  * Fix folder wizard warning color for local path in dark mode
+    (gh#nextcloud/desktop#6068).
+  * Bugfix/remove dead oauth code (gh#nextcloud/desktop#6075).
+  * Open Nextcloud after installation on macOS
+    (gh#nextcloud/desktop#6076).
+  * Fix Chunk v2 upload headers (gh#nextcloud/desktop#6086).
+  * Bugfix/legacy migration (gh#nextcloud/desktop#6095).
+  * Prevent empty password being passed into share creation
+    (gh#nextcloud/desktop#6107).
+  * Unhide discovery logs for file deleted on the server and for
+    discovered file (gh#nextcloud/desktop#6116).
+  * Fix issues on manpages (gh#nextcloud/desktop#6122).
+  * Fix chunk v2 destination header (gh#nextcloud/desktop#6141).
+  * Bugfix/restore folders recursively
+    (gh#nextcloud/desktop#6143).
+  * Show more informative error message when VFS hydration fails.
+    Displaya popup and put an error into activity list. More
+    detailed logs. (gh#nextcloud/desktop#6153).
+  * Do not show failure popul for VFS when hydration finished with
+    code 200 or 204. (gh#nextcloud/desktop#6163).
+  * Upgrade to Mac OS 12.0.0. (gh#nextcloud/desktop#6171).
+  * Enforce virtual file type when it is falsely marked as
+    non-virtual. Added more logs for scenarios when virtual
+    placeholder gets marked as non-virtual.
+    (gh#nextcloud/desktop#6172).
+  * we require version 12.0+ for macOS
+    (gh#nextcloud/desktop#6175).
+  * Fix crash when clicking on import legacy account dialog 'Skip'
+    button. (gh#nextcloud/desktop#6208).
+  * avoid restore algorithm by setting the data fingerprint from
+    sync DB (gh#nextcloud/desktop#6241).
+  * Fix crash. Remove unnecessary dependency injection causing
+    crash. (gh#nextcloud/desktop#6252).
+  * Fix. Bulk upload. Accumulate sent bytes. Fix negative value in
+    UI. (gh#nextcloud/desktop#6253).
+  * Bugfix/vfs toggle fix (gh#nextcloud/desktop#6251).
+  * maintain lock state if unlock happens during sync
+    (gh#nextcloud/desktop#6259).
+  * avoid modifying a placeholder (virtual files) when not needed
+    (gh#nextcloud/desktop#6262).
+  * Fix build with latest NextcloudKit, caused by search for
+    XCTest and friends (gh#nextcloud/desktop#6266).
+  * Feature. Do not allow move of external storage mounted
+    folders. (gh#nextcloud/desktop#6268).
+
+-------------------------------------------------------------------
 Thu Oct 19 10:00:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.10.1:

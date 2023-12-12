@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Dec 06 10:18:18 UTC 2023 - aschnell@suse.com
+
+- Update to version 0.8.0.39.git+cfabd93 (jsc#PED-7381):
+  * rasdaemon: ras-mc-ctl: Modify check for HiSilicon KunPeng9xx error fields
+  * rasdaemon: Add Emerald Rapids support
+  * Add a space between "diskerror_event" and "store"
+  * rasdaemon: ras-mc-ctl: Add support to display the THead vendor errors
+  * rasdaemon: add support for THead Yitian non-standard error decoder
+  * rasdaemon: log non_standard_event at just one line
+  * rasdaemon: Fix SMCA bank type decoding
+  * rasdaemon: Identify the DIe Number in multidie system
+  * rasdaemon: Handle reassigned bit definitions for UMC bank
+  * rasdaemon: Add new MA_LLC, USR_DP, and USR_CP bank types.
+  * rasdaemon: Add support for post-processing MCA errors
+  * rasdaemon: Handle reassigned bit definitions for CS SMCA
+  * rasdaemon: Update SMCA bank error descriptions
+  * add ':' before error output
+  * Add label for mainboard: ASUSTeK COMPUTER INC. Model: Z9PH-D16 Series
+  * Add label for mainboard: GIGABYTE model MZ62-HD0-00
+  * Check CPUs online, not configured.
+  * rasdaemon: Add support for the CXL memory module events
+  * rasdaemon: Add support for the CXL dram events
+  * rasdaemon: Add support for the CXL general media events
+  * rasdaemon: Add support for the CXL generic events
+  * rasdaemon: Add support for the CXL overflow events
+  * rasdaemon: Add common function to get timestamp for the event
+  * rasdaemon: Add common function to convert timestamp in the CXL event records to the broken-down time format
+  * rasdaemon: Add support for creating the vendor error tables at startup
+  * rasdaemon: fix issue of signed and unsigned integer comparison and remove redundant header file
+  * rasdaemon: fix return value type issue of read/write function from unistd.h
+  * Rasdaemon: Fix autoreconf build error
+  * ras-events: quit loop in read_ras_event when kbuf data is broken
+
+-------------------------------------------------------------------
 Mon Oct 16 18:50:53 UTC 2023 - Thomas Renninger <trenn@suse.de>
 
 - Fix build on old distros by linking new README.md to README

@@ -60,4 +60,21 @@
     <comment></comment>
     <requestid>1093357</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b41d8f6215350418c28be211f831993b</srcmd5>
+    <version>0.4.1</version>
+    <time>1702327873</time>
+    <user>anag+factory</user>
+    <comment>- Update 0.4.1:
+  * feat: provider selector by @frostming in #20
+  * feat: add support for RyeProvider
+  * feat: Add way to filter providers by @bluss in #18
+  * feat: add register_provider function and change ALL_PROVIDERS to a map
+  * fix: don't import site-packages when running in-process scripts
+  * Make GET_VERSION_TIMEOUT settable via env vars
+  * Support allow_prereleases option
+- Add patch revert-back-to-pdm-pep517.patch:
+  * We need to use pdm-pep517, to avoid circular requirements.</comment>
+    <requestid>1132417</requestid>
+  </revision>
 </revisionlist>

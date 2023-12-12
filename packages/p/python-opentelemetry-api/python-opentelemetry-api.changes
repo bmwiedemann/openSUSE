@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Dec 10 21:48:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.0:
+  * Fix `SumAggregation` ￼  (#3390)
+  * Fix handling of empty metric collection cycles (#3335)
+  * Fix error when no LoggerProvider configured for
+    LoggingHandler (#3423)
+  * Make `opentelemetry_metrics_exporter` entrypoint support pull
+    exporters (#3428)
+  * Allow instrument names to have '/' and up to 255 characters
+    (#3442)
+  * Do not load Resource on sdk import (#3447)
+  * Update semantic conventions to version 1.21.0 (#3251)
+  * Add missing schema_url in global api for logging and metrics
+    (#3251)
+  * Prometheus exporter support for auto instrumentation  (#3413)
+  * Modify Prometheus exporter to translate non-monotonic Sums
+    into Gauges (#3306)
+  * Update the body type in the log ($3343)
+  * Add max_scale option to Exponential Bucket Histogram
+    Aggregation  (#3323)
+  * Use BoundedAttributes instead of raw dict to extract
+    attributes from LogRecord (#3310)
+  * Support dropped_attributes_count in LogRecord and exporters
+    (#3351)
+  * Add unit to view instrument selection criteria (#3341)
+  * Upgrade opentelemetry-proto to 0.20 and regen #3355)
+  * Include endpoint in Grpc transient error warning #3362)
+  * Fixed bug where logging export is tracked as trace #3375)
+  * Select histogram aggregation with an environment variable
+  * Move Protobuf encoding to its own package (#3169)
+  * Add experimental feature to detect resource detectors in auto
+    instrumentation (#3181)
+  * Fix exporting of ExponentialBucketHistogramAggregation from
+    opentelemetry.sdk.metrics.view (#3240)
+  * Fix headers types mismatch for OTLP Exporters (#3226)
+  * Fix suppress instrumentation for log batch processor (#3223)
+  * Add speced out environment variables and arguments for
+    BatchLogRecordProcessor (#3237)
+
+-------------------------------------------------------------------
 Thu May 11 16:49:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Ignore some tests because there's no opentelemetry-test-util module
@@ -321,8 +362,8 @@ Fri Jan 22 11:39:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
     - Rename `MetricRecord` to `ExportRecord` (#1367)
     - Rename `Record` to `Accumulation` (#1373)
     - Rename `Meter` to `Accumulator (#1372)
-    - Fix `ParentBased` sampler for implicit parent spans. Fix also `trace_state` 
-      erasure for dropped spans or spans sampled by the `TraceIdRatioBased` sampler. 
+    - Fix `ParentBased` sampler for implicit parent spans. Fix also `trace_state`
+      erasure for dropped spans or spans sampled by the `TraceIdRatioBased` sampler.
       (#1394)
 - See upstream CHANGELOG.md for the changes from 0.7b1 to 0.15b0
   + https://raw.githubusercontent.com/open-telemetry/opentelemetry-python/master/CHANGELOG.md

@@ -43,7 +43,8 @@ interfaces.
 %build
 ./bootstrap
 %configure
-make %{?_smp_mflags}
+# do sequential build for reproducible .go files = https://issues.guix.gnu.org/issue/20272 - boo#1102408
+make
 
 %install
 %make_install

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  8 07:17:35 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.5.4
+  - Improve systemd-boot support
+  - Add --boot-entry for systemd-boot
+  - Manpage fixes
+  - Fix PCR index in JSON file
+  - Fix GrubPcrSnapshot parsing
+- Drop upstreamed patches: boot_entry.patch and fix_pcr_index.patch
+
+-------------------------------------------------------------------
 Wed Nov 29 15:56:39 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 0.5.3

@@ -1,0 +1,6 @@
+addFilter("files-duplicate")
+addFilter("zero-length")
+addFilter("missing-PT_GNU_STACK-section")
+addFilter("position-independent-executable-suggested")
+addFilter("name-repeated-in-summary")
+addFilter("statically-linked-binary")

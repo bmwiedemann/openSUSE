@@ -415,4 +415,13 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
     <comment></comment>
     <requestid>1123882</requestid>
   </revision>
+  <revision rev="49" vrev="37">
+    <srcmd5>39f10d5331f03aa3510e2091d93a3755</srcmd5>
+    <version>12.5</version>
+    <time>1702327793</time>
+    <user>anag+factory</user>
+    <comment>- Moving /etc/mailrc to /usr/etc/mail.rc
+  * Add patch mailx-usr-etc.patch</comment>
+    <requestid>1132451</requestid>
+  </revision>
 </revisionlist>

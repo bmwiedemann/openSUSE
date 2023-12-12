@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 10 19:25:51 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Build with boost 1.75 for openSUSE Leap
+- Use gcc11 for openSUSE Leap
+
+-------------------------------------------------------------------
 Tue Nov  7 10:14:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

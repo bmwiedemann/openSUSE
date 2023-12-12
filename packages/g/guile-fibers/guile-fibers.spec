@@ -37,7 +37,8 @@ Fibers is a library written in Guile which provides Concurrent ML-like concurren
 
 %build
 %configure
-make %{?_smp_mflags}
+# do sequential build for reproducible .go files = https://issues.guix.gnu.org/issue/20272 - boo#1102408
+make
 
 %install
 %make_install

@@ -20,6 +20,9 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+
+%global with_thermalmonitor 0%{?is_opensuse}
+
 Name:           thermald
 Version:        2.5.4.0.git+63b290f
 Release:        0
@@ -40,14 +43,16 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  qcustomplot-devel
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
+%if %{with_thermalmonitor}
+BuildRequires:  qcustomplot-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -88,10 +93,12 @@ NO_CONFIGURE=1 ./autogen.sh
 %make_build CFLAGS="%{optflags}"
 %sysusers_generate_pre %{SOURCE2} power
 
+%if %{with_thermalmonitor}
 pushd tools/thermal_monitor
 %qmake5 ThermalMonitor.pro
 %make_build
 popd
+%endif
 
 %install
 %make_install
@@ -102,10 +109,12 @@ install -D -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -D -m 0644 -t %{buildroot}%{_fillupdir}/ %{SOURCE3}
 
+%if %{with_thermalmonitor}
 install -D -m 0755 -t %{buildroot}%{_bindir}/ tools/thermal_monitor/ThermalMonitor
 install -D -m 0644 -t %{buildroot}%{_datadir}/applications/ %{SOURCE10}
 install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
 %suse_update_desktop_file thermal-monitor
+%endif
 
 %pre -f power.pre
 %service_add_pre thermald.service
@@ -124,11 +133,11 @@ install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
 %license COPYING
 %doc README.txt data/thermal-conf.xml
 %doc test/thermald_optimization_with_dptfxtract
-%dir %{_datadir}/dbus-1/system-services
 %dir %{_datadir}/dbus-1/system.d
+%{_datadir}/dbus-1/system.d/org.freedesktop.thermald.conf
 %dir %{_sysconfdir}/thermald
-%config(noreplace) %{_datadir}/dbus-1/system.d/org.freedesktop.thermald.conf
 %config(noreplace) %{_sysconfdir}/thermald/thermal-cpu-cdev-order.xml
+%dir %{_datadir}/dbus-1/system-services
 %{_datadir}/dbus-1/system-services/org.freedesktop.thermald.service
 %{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man5/thermal-conf.xml.5%{?ext_man}
@@ -141,10 +150,12 @@ install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
 %{_sysusersdir}/%{name}.conf
 %{_unitdir}/thermald.service
 
+%if %{with_thermalmonitor}
 %files -n thermal-monitor
-%license tools/thermal_monitor/README
+%license tools/thermal_monitor/COPYING
 %{_bindir}/ThermalMonitor
 %{_datadir}/applications/thermal-monitor.desktop
 %{_datadir}/pixmaps/thermal-monitor.png
+%endif
 
 %changelog

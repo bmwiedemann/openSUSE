@@ -63,4 +63,18 @@
 </comment>
     <requestid>1096413</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed6add904ae89f4f825625234478b665</srcmd5>
+    <version>0.6.2</version>
+    <time>1702327840</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.2:
+  * #21: tests/test_parse.py tests ``parse_type.parse`` (per
+    default).
+  * REASON: Using for older installed ``parse`` module may
+    cause weird problems.
+  * RELATED TO: ``parse v1.19.1`` (behavior changed compared to
+    ``v1.19.0``)</comment>
+    <requestid>1132369</requestid>
+  </revision>
 </revisionlist>

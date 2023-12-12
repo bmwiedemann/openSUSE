@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 28 14:40:23 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Trigger rebuild of the policy when pcre2 gets updated to avoid
+  regex version mismatch errors (bsc#1216747).
+
+-------------------------------------------------------------------
 Fri Nov 24 09:34:20 UTC 2023 - cathy.hu@suse.com
 
 - Update to version 20231124:

@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        4.0.4
+Version:        4.1.2
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -56,7 +56,7 @@ Recommends:     %{name}-lang = %{version}
 # without scripts it is a bit annoying
 Recommends:     %{name}-perl = %{version}
 Recommends:     %{name}-python = %{version}
-Obsoletes:      %{name}-guile
+Obsoletes:      %{name}-guile < 2.6
 
 %description
 WeeChat (Wee Enhanced Environment for Chat) is a free chat client, fast and light, designed for many operating systems. It is highly customizable and extensible with scripts.

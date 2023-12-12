@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>1123995</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0fd1edd05c85e2fd127e6cacc779a6f6</srcmd5>
+    <version>1.3.3</version>
+    <time>1702327856</time>
+    <user>anag+factory</user>
+    <comment>- Upstream version 1.3.3
+  - Require python 3.8 or newer
+</comment>
+    <requestid>1132378</requestid>
+  </revision>
 </revisionlist>

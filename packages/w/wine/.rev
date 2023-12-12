@@ -4984,4 +4984,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.21 release</comment>
     <requestid>1128793</requestid>
   </revision>
+  <revision rev="426" vrev="1">
+    <srcmd5>5290948d085989b18ba5bf9d7b2ff32f</srcmd5>
+    <version>9.0~rc1</version>
+    <time>1702327880</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.0-rc1 release
+  - Bundled vkd3d upgraded to version 1.10.
+  - Support for DH encryption keys with a recent GnuTLS.
+  - Keyboard layouts support in the Wayland driver.
+  - Various bug fixes.
+- update staging to 9.0-rc1 release</comment>
+    <requestid>1132436</requestid>
+  </revision>
 </revisionlist>

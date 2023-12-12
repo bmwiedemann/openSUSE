@@ -71,4 +71,20 @@
     <comment></comment>
     <requestid>1042873</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b4602ee21baadac7eb1899eb72bd3a6f</srcmd5>
+    <version>3.0.23</version>
+    <time>1702327874</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.23:
+  * Don't print exception messages twice for unhandled
+    exceptions.
+  * Added cursor shape support.
+  * Drop Python 3.6 support.
+
+- Update to version 3.0.22
+- Update to version 3.0.21:
+  - Allow usage of `await` in assignment expressions or for-loops.</comment>
+    <requestid>1132418</requestid>
+  </revision>
 </revisionlist>

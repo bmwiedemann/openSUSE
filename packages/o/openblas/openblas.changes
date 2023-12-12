@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Nov 29 05:43:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.3.25:
+  * General:
+    - improved the error message shown on exceeding the maximum
+      thread count
+    - improved the code to add supplementary thread buffers in
+      case of overflow
+    - fixed a potential division by zero in ?ROTG
+    - improved the ?MATCOPY functions to accept zero-sized rows or
+      columns
+    - corrected empty prototypes in function declarations
+    - cleaned up unused declarations in the f2c-converted versions
+      of the LAPACK sources
+    - fixed compilation with the Cray CCE Compiler suite
+    - improved link line rewriting to avoid mixed libgomp/libomp
+      builds with clang&gfortran
+    - worked around OPENMP builds with LLVM14's libomp hanging on
+      FreeBSD
+    - improved the Makefiles to require less option duplication on
+      "make install"
+    - imported the following changes from the upcoming release
+      3.12 of Reference-LAPACK: LAPACK PR 900, LAPACK PR 904,
+      LAPACK PR 907, LAPACK PR 909, LAPACK PR 926, LAPACK PR 927,
+      LAPACK PR 928 & 930
+  * x86-64:
+    - fixed compile-time autodetection of AMD Ryzen3 and Ryzen4
+      cpus
+    - fixed capability-based fallback selection for unknown cpus
+      in DYNAMIC_ARCH
+    - added AVX512 optimizations for ?ASUM on Sapphire Rapids and
+      Cooper Lake
+  * ARM64:
+    - fixed building on Apple with homebrew gcc
+    - fixed building with XCODE 15
+    - fixed building on A64FX and Cortex A710/X1/X2
+    - increased the default buffer size for recent ARM server cpus
+  * POWER:
+    - fixed building with the IBM xlf 16.1.1 compiler
+    - fixed building with IBM XL C
+    - added support for DYNAMIC_ARCH builds with clang
+    - fixed union declaration in the BFLOAT16 test case
+    - enable optimizations for the AIX assembler on POWER10
+  * LOONGARCH64:
+    - added an optimized SGEMV kernel
+    - added an optimized DTRSM kernel
+- Minor rebase of openblas-ppc64be_up2_p8.patch to apply cleanly.
+- Drop upstreamed patches:
+  * Use-blasint-for-INTERFACE64-compatibility.patch
+  * remove-spurious-loops.patch
+
+-------------------------------------------------------------------
 Fri Oct 27 11:26:28 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Propagate the correct CPU count to the pkgconfig file, see

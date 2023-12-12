@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 11 13:56:06 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.5.8
+  * Removed obsolete Python 2 compatibility code in the _rtmidi
+    module and references to Python 2 unicode type in its
+    docstrings.
+
+-------------------------------------------------------------------
 Mon Nov  6 23:47:32 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Omit html docs due to hostile build system

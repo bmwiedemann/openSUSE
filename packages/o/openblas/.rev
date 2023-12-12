@@ -678,4 +678,15 @@
     <comment></comment>
     <requestid>1123416</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>abcf57459d578aba54bcb29d62b1dd6c</srcmd5>
+    <version>0.3.25</version>
+    <time>1702327782</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.25.
+- Minor rebase of openblas-ppc64be_up2_p8.patch to apply cleanly.
+- Drop upstreamed patches:  * Use-blasint-for-INTERFACE64-compatibility.patch  * remove-spurious-loops.patch
+</comment>
+    <requestid>1132392</requestid>
+  </revision>
 </revisionlist>

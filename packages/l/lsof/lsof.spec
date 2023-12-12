@@ -70,6 +70,12 @@ find %{buildroot}%{_libdir} -type f -name "*.a" -print -delete
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
+%if 0%{?qemu_user_space_build}
+# Some tests are difficult to emulate by QEmu
+echo exit 77 > lib/dialects/linux/tests/case-20-pty-endpoint.bash
+echo exit 77 > lib/dialects/linux/tests/case-20-ux-socket-endpoint-unaccepted.bash
+echo 'int main () { return 77; }' > tests/LTbasic2.c
+%endif
 %make_build check
 
 %ldconfig_scriptlets -n liblsof%{sover}

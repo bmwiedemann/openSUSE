@@ -590,4 +590,12 @@
     <comment>New stable release (forwarded request 1130684 from iznogood)</comment>
     <requestid>1130748</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>1e58ca66473456eea11babaadbec1b82</srcmd5>
+    <version>4.0.0</version>
+    <time>1702327788</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1132068 from iznogood)</comment>
+    <requestid>1132440</requestid>
+  </revision>
 </revisionlist>

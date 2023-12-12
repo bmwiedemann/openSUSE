@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202307
+Version:        202311
 Release:        0
 Summary:        Intel Performance Counter Monitor
 License:        BSD-3-Clause
@@ -68,6 +68,7 @@ rm -rf %{buildroot}%{_datadir}/doc/PCM/WINDOWS_HOWTO.md
 %{_sbindir}/pcm-lspci
 %{_sbindir}/pcm-memory
 %{_sbindir}/pcm-msr
+%{_sbindir}/pcm-tpmi
 %{_sbindir}/pcm-mmio
 %{_sbindir}/pcm-numa
 %{_sbindir}/pcm-accel

@@ -10,10 +10,10 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  exports/Makefile | 1 +
  1 file changed, 1 insertion(+)
-diff --git a/exports/Makefile b/exports/Makefile
-index d8173534..a23fbc7f 100644
---- a/exports/Makefile
-+++ b/exports/Makefile
+Index: OpenBLAS-0.3.25/exports/Makefile
+===================================================================
+--- OpenBLAS-0.3.25.orig/exports/Makefile
++++ OpenBLAS-0.3.25/exports/Makefile
 @@ -193,6 +193,7 @@ else ifeq ($(F_COMPILER), FLANG)
  else
  ifneq ($(C_COMPILER), LSB)

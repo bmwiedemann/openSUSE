@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 11 09:44:00 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.1
+  * Bugfixes:
+    #9253: Permission error on folder causes "connection error" dialog when opening folder editor
+    #9269: panic: nil pointer dereference in (*indexHandlerRegistry).startLocked
+
+  * Other issues:
+    #9274: Missing lock in DeviceStatistics ("fatal error: concurrent map read and map write")
+
+-------------------------------------------------------------------
 Tue Dec  5 10:04:38 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.0

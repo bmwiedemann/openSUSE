@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 11 07:18:35 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 0.4.1:
+  * feat: provider selector by @frostming in #20
+  * feat: add support for RyeProvider
+  * feat: Add way to filter providers by @bluss in #18
+  * feat: add register_provider function and change ALL_PROVIDERS to a map
+  * fix: don't import site-packages when running in-process scripts
+  * Make GET_VERSION_TIMEOUT settable via env vars
+  * Support allow_prereleases option
+- Add patch revert-back-to-pdm-pep517.patch:
+  * We need to use pdm-pep517, to avoid circular requirements.
+
+-------------------------------------------------------------------
 Thu Jun 15 12:45:30 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

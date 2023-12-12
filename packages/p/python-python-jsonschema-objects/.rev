@@ -70,4 +70,15 @@
 - Stop using greedy globs in %files</comment>
     <requestid>1112409</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4a02b4fb9e8b10a0d33e52ca8bf5137e</srcmd5>
+    <version>0.5.1</version>
+    <time>1702327865</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.1:
+  * Setup for handling anyOf simplifying to oneOf on import.
+- Add patch use-specification-obj.patch:
+  * Stop passing string schemas, convert it to a Specification object</comment>
+    <requestid>1132394</requestid>
+  </revision>
 </revisionlist>
