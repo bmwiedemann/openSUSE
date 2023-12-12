@@ -543,6 +543,9 @@ Prefer: -dbus-1-x11
 # have choice for (podman or docker) needed by ansible-builder: docker podman
 Prefer: -docker
 
+# have choice for (netavark or cni) needed by podman: cni netavark
+Prefer: -cni
+
 # have choice for suse-kernel-rpm-scriptlets: sdbootutil-rpm-scriptlets suse-module-tools-scriptlets
 Prefer: -sdbootutil-rpm-scriptlets
 
