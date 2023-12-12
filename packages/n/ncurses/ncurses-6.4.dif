@@ -18,8 +18,8 @@
  16 files changed, 203 insertions(+), 72 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2023-10-23 07:50:44.751971539 +0000
-@@ -6067,12 +6067,12 @@ cat >>$cf_edit_man <<CF_EOF
++++ aclocal.m4	2023-12-11 09:35:45.141358459 +0000
+@@ -6087,12 +6087,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -34,7 +34,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -6082,7 +6082,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6102,7 +6102,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -43,7 +43,7 @@
  CF_EOF
  fi
  
-@@ -6122,7 +6122,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6142,7 +6142,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -52,7 +52,7 @@
  CF_EOF
  fi
  
-@@ -6131,31 +6131,31 @@ case "$MANPAGE_FORMAT" in
+@@ -6151,31 +6151,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -91,7 +91,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6165,7 +6165,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6185,7 +6185,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -100,7 +100,7 @@
  							then
  								continue
  							fi
-@@ -6175,18 +6175,18 @@ CF_EOF
+@@ -6195,18 +6195,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -122,7 +122,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -6206,9 +6206,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6226,9 +6226,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -135,7 +135,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6229,6 +6229,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6249,6 +6249,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -144,7 +144,7 @@
  esac
  done
 --- configure
-+++ configure	2023-11-29 12:47:18.331476756 +0000
++++ configure	2023-12-11 09:35:45.145358385 +0000
 @@ -6443,7 +6443,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -174,7 +174,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15286,12 +15286,12 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15290,12 +15290,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -189,7 +189,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15301,7 +15301,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15305,7 +15305,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -198,7 +198,7 @@
  CF_EOF
  fi
  
-@@ -15341,7 +15341,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15345,7 +15345,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -207,7 +207,7 @@
  CF_EOF
  fi
  
-@@ -15350,31 +15350,31 @@ case "$MANPAGE_FORMAT" in
+@@ -15354,31 +15354,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -246,7 +246,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15384,7 +15384,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15388,7 +15388,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -255,7 +255,7 @@
  							then
  								continue
  							fi
-@@ -15394,18 +15394,18 @@ CF_EOF
+@@ -15398,18 +15398,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -277,7 +277,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15425,9 +15425,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15429,9 +15429,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -290,7 +290,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15448,6 +15448,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15452,6 +15452,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -699,7 +699,7 @@
  	is2=\E S, rmacs=\E>B, rs2=\E S,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -18301,7 +18376,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -18299,7 +18374,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  	tbc=\E[3g, use=ecma+index,
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.

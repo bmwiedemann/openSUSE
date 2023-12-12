@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 11 09:32:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20231209
+  + modify infocmp "-u" option to not report cancels in use'd chunks
+    which are not mentioned in the top-level terminal description.
+  + remove xterm+sm+1006 from tmux (Debian #1057688).
+  + used "infocmp -u" to help trim redundant capabilities -TD
+  + updated man/edit_man.sh to allow for "\%" markers embedded after
+    bold font escapes in manpage cross-references (Debian #1057541).
+  + reduce compiler-warnings in configure checks
+
+-------------------------------------------------------------------
 Mon Dec  4 07:55:42 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20231202
