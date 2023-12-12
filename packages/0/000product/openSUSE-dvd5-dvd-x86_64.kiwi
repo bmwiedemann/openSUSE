@@ -364,6 +364,7 @@
       <repopackage name="dracut"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="drbd"/>
+      <repopackage name="drbd-kmp-default"/>
       <repopackage name="drbd-utils"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -4474,6 +4475,8 @@
       <repopackage name="virt-viewer"/>
       <repopackage name="virt-what"/>
       <repopackage name="virtiofsd"/>
+      <repopackage name="virtualbox-guest-tools"/>
+      <repopackage name="virtualbox-kmp-default"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>

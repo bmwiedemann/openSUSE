@@ -3244,7 +3244,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -45253,9 +45252,7 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
-  - virtualbox-guest-tools 
   - virtualbox-host-source 
-  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
