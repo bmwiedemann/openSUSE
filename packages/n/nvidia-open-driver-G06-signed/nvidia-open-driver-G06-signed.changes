@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  5 14:31:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix typo in changelog:
+  * NVreg_OpenRMEnableSupporteGpus -> NVreg_OpenRmEnableUnsupportedGpus
+    (boo#1215981, comment#33)
+
+-------------------------------------------------------------------
 Thu Nov 23 03:52:18 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 545.29.06 
@@ -6,7 +13,7 @@ Thu Nov 23 03:52:18 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Wed Nov 22 13:16:01 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- no longer try to overwrite NVreg_OpenRMEnableSupporteGpus driver
+- no longer try to overwrite NVreg_OpenRmEnableUnsupportedGpus driver
   option setting; apparently it's ignored by the driver (boo#1215981,
   comment#26)
 
@@ -15,7 +22,7 @@ Tue Nov 21 21:05:50 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - use different modprobe.d config file to resolve conflict with
   older driver package (boo#1217370); overwrite 
-  NVreg_OpenRMEnableSupporteGpus driver option setting (disable it),
+  NVreg_OpenRmEnableUnsupportedGpus driver option setting (disable it),
   since letting it enabled is supposed to break booting (boo#1215981, 
   comment#23)
 

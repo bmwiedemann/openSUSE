@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Nov 13 13:56:39 MST 2023 - carnold@suse.com
 
-- Update to version 1.11.0 (jsc#PED-2104)
+- Update to version 1.11.0 (jsc#PED-6305)
   * Added --nightly option to osinfo-db-import
   * Several CI improvements
   * Several translation improvements

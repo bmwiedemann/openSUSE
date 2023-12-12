@@ -255,4 +255,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1093944</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>560099d85b615329c0f1359e2181e788</srcmd5>
+    <version>15</version>
+    <time>1702405899</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit, with only the nvme change added; dbus-broker reverted</comment>
+    <requestid>1132628</requestid>
+  </revision>
 </revisionlist>

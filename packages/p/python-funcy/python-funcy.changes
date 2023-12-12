@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 11 22:14:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0:
+  * added get_lax()
+  * added lzip(strict) param
+  * made autocurry() and friends support kw-only and pos-only
+    arguments
+  * improved call._whatever_ arg introspection: pos-only, kw-
+    only, kwargs and varargs are supported
+  * test against Python 3.11
+
+-------------------------------------------------------------------
 Sun Mar 26 19:19:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18:
@@ -18,7 +30,7 @@ Wed Sep 28 19:41:40 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   - migrated CI to Github actions (thx to Bruno Alla)
   - fixed doc[string] for zip_dicts (Tal Einat)
   - fixed some inspect issues
-  - minor doc fixes 
+  - minor doc fixes
 
 -------------------------------------------------------------------
 Tue Aug 31 10:08:03 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 11 12:45:24 MST 2023 - carnold@suse.com
+
+- Update to version 1.51.6
+  * Include <libxml/parser.h> for xmlReadMemory
+  * Test new --key all:SELECTOR option
+
+-------------------------------------------------------------------
 Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
 
 - Remove obsolete requirement for ocaml-gettext-stub-devel

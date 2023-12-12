@@ -93,4 +93,21 @@
   * doc improvements (thx to Tim Gates)</comment>
     <requestid>1074503</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>15edf41e9f42d9b4b0101012904119b1</srcmd5>
+    <version>2.0</version>
+    <time>1702405929</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0:
+  * added get_lax()
+  * added lzip(strict) param
+  * made autocurry() and friends support kw-only and pos-only
+    arguments
+  * improved call._whatever_ arg introspection: pos-only, kw-
+    only, kwargs and varargs are supported
+  * test against Python 3.11
+
+  - minor doc fixes</comment>
+    <requestid>1132573</requestid>
+  </revision>
 </revisionlist>

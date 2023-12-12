@@ -18,7 +18,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.3
+%define patchversion 6.6.6
+%define git_commit a946a9f9d865a849717a570675413f097b229184
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +113,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.6.3
+Version:        6.6.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd766c57
+Release:        <RELEASE>.ga946a9f
 %else
 Release:        0
 %endif
@@ -344,8 +345,9 @@ Requires:       suse-kernel-rpm-scriptlets
 Requires(preun): suse-kernel-rpm-scriptlets
 Requires(postun): suse-kernel-rpm-scriptlets
 Requires(pre):  coreutils awk
-# For /usr/lib/module-init-tools/weak-modules2
+# For /usr/lib/module-init-tools/weak-modules2 and /usr/lib/modprobe.d/*.conf
 Requires(post): suse-module-tools
+Requires:       suse-module-tools
 # For depmod (modutils is a dependency provided by both module-init-tools and
 # kmod-compat)
 Requires(post): modutils
@@ -385,10 +387,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
-Provides:       kernel-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
+Provides:       kernel-%build_flavor-base-srchash-%git_commit
+Provides:       kernel-srchash-%git_commit
 # END COMMON DEPS
-Provides:       %name-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
+Provides:       %name-srchash-%git_commit
 %ifarch %ix86
 Provides:       kernel-trace = 3.13
 Obsoletes:      kernel-trace <= 3.13
@@ -1301,8 +1303,9 @@ Requires:       suse-kernel-rpm-scriptlets
 Requires(preun): suse-kernel-rpm-scriptlets
 Requires(postun): suse-kernel-rpm-scriptlets
 Requires(pre):  coreutils awk
-# For /usr/lib/module-init-tools/weak-modules2
+# For /usr/lib/module-init-tools/weak-modules2 and /usr/lib/modprobe.d/*.conf
 Requires(post): suse-module-tools
+Requires:       suse-module-tools
 # For depmod (modutils is a dependency provided by both module-init-tools and
 # kmod-compat)
 Requires(post): modutils
@@ -1342,8 +1345,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
-Provides:       kernel-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
+Provides:       kernel-%build_flavor-base-srchash-%git_commit
+Provides:       kernel-srchash-%git_commit
 
 %ifarch %ix86
 Provides:       kernel-trace-base = 3.13

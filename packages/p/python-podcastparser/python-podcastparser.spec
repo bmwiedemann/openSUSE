@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-podcastparser
-Version:        0.6.9
+Version:        0.6.10
 Release:        0
 Summary:        A podcast parser
 License:        ISC

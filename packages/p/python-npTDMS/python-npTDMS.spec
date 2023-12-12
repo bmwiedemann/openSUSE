@@ -1,7 +1,7 @@
 #
 # spec file for package python-npTDMS
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-npTDMS
-Version:        1.2.0
+Version:        1.7.1
 Release:        0
 Summary:        Python module for reading TDMS files produced by LabView
 License:        LGPL-3.0-only

@@ -4646,4 +4646,18 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1130950</requestid>
   </revision>
+  <revision rev="462" vrev="1">
+    <srcmd5>827ab9fe4060d486566a39bf91542576</srcmd5>
+    <version>2.5.0+git20231211.15d0caff</version>
+    <time>1702405901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0+git20231211.15d0caff:
+  * polkit-rules, sudoers: add plasma-branding-Kalpa for special wheel group handling (bsc#1217707, bsc#1217706)
+  * cron-whitelist: remove obsolete opa-ff entries
+  * cron-whitelist: remove obsolete logdigest entries
+  * fix readelf output encoding handling of errors
+  * Ignore (and escape) symbols that are not valid utf8
+  * Revert &quot;Disable Mageia CI builds due to system problem&quot;</comment>
+    <requestid>1132520</requestid>
+  </revision>
 </revisionlist>

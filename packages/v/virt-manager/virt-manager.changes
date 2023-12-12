@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Nov 20 15:01:59 MST 2023 - carnold@suse.com
 
-- Upstream bug fixes (bsc#1027942) (jsc#PED-2104)
+- Upstream bug fixes (bsc#1027942) (jsc#PED-6305)
   001-cli-disk-Add-driver.metadata_cache-options.patch
   002-tests-cli-Fix-test-output-after-previous-commit.patch
   003-fsdetails-Fix-an-error-with-source.socket-of-virtiofs.patch

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-funcy
-Version:        1.18
+Version:        2.0
 Release:        0
 Summary:        Functional tools for Python
 License:        BSD-3-Clause

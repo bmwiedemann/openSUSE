@@ -612,4 +612,14 @@ D proc-interrupts.patch
     <comment></comment>
     <requestid>1129933</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>10d92dee5217ffd519131a16f599930a</srcmd5>
+    <version>1.9.3.10.git+1a7d461</version>
+    <time>1702405908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.3.10.git+1a7d461:
+  * filter console only output when using journal mode
+- build with libsystemd for logging (bsc#1217754) (forwarded request 1131454 from aschnell)</comment>
+    <requestid>1132636</requestid>
+  </revision>
 </revisionlist>

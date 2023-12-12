@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 12 03:10:42 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231212.54751d3f:
+  * Dev: unittest: Adjust unit test for previous change
+  * Dev: behave: Add functional test for previous change
+  * Fix: ui_cluster: Improve the process of 'crm cluster stop' (bsc#1213889)
+
+-------------------------------------------------------------------
 Mon Dec 11 03:00:33 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.6.0+20231211.4b74412a:

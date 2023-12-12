@@ -230,6 +230,12 @@ Wed Sep 30 12:45:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
   * When selecting an internal drive as a Local Folder, treat it
     as a removable drive, so that we will mount if necessary
   * Exclude /dev by default
+  * Drop upstream merged deja-dup-vala-fix.patch
+
+-------------------------------------------------------------------
+Mon Sep  5 :39:50 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add deja-dup-vala-fix.patch: fix for new vala (bsc#1197712).
 
 -------------------------------------------------------------------
 Sat Sep  5 22:07:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>

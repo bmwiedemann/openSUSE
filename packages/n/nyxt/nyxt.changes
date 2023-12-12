@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 11 15:54:29 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 3.10.0:
+  * UI/UX
+    - Improve source heading buttons, layout and interactions in the prompt-buffer
+    - Add checkboxes for suggestions within the prompt-buffer 
+  * Bug fixes
+    - Fix command show-annotations-for-current-url (unbound)
+    - Command nyxt/renderer/gtk:make-buffer-with-context now lists
+      previously defined contexts
+    - Improve architecture of hint-mode as to ensure that hints are
+      shown for arbitrary URLs
+
+-------------------------------------------------------------------
 Wed Nov 15 10:45:32 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.9.2:

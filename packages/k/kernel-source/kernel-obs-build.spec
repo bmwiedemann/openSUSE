@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.6.3
+%define patchversion 6.6.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -44,7 +44,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
+BuildRequires:  kernel%kernel_flavor-srchash-a946a9f9d865a849717a570675413f097b229184
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -56,9 +56,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.6.3
+Version:        6.6.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd766c57
+Release:        <RELEASE>.ga946a9f
 %else
 Release:        0
 %endif
@@ -110,6 +110,7 @@ chmod a+rx /usr/lib/dracut/modules.d/80obs/setup_obs.sh
 # we run with build as PID 1 (boo#965564)
 echo "DefaultTasksMax=infinity" >> /etc/systemd/system.conf
 echo "DefaultTasksAccounting=no" >> /etc/systemd/system.conf
+echo 127.0.0.1 localhost > /etc/hosts # omit build-machine host name (boo#1084909)
 
 # a longer list to have them also available for qemu cross builds where x86_64 kernel runs in eg. arm env.
 # this list of modules where available on build workers of build.opensuse.org, so we stay compatible.
@@ -155,7 +156,7 @@ cp -v /boot/%{kernel_name}-*%{kernel_flavor} %{buildroot}/.build.kernel.kvm
 cp -v /tmp/initrd.kvm %{buildroot}/.build.initrd.kvm
 
 # inform worker kernel parameters to invoke
-CMDLINE="elevator=noop nmi_watchdog=0 rw"
+CMDLINE="elevator=noop nmi_watchdog=0 rw ia32_emulation=1"
 echo "$CMDLINE" > %{buildroot}/.build.cmdline.kvm
 
 # inform worker about availability of virtio-serial

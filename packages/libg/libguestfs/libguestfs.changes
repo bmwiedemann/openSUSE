@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 11 12:39:30 MST 2023 - carnold@suse.com
+
+- Update to version 1.51.9
+  * Include <libxml/parser.h> for xmlReadMemory
+  * Language translations
+
+-------------------------------------------------------------------
 Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
 
 - Require OCaml 4.07+

@@ -245,10 +245,11 @@ install quota
 install xfsdump
 install xfsprogs
 
+install pciutils
+
 # This was previously recommended by rest_cd_core
 install adaptec-firmware
 install atmel-firmware
-install b43-fwcutter
 install bluez-firmware
 install crda
 install dmidecode

@@ -139,4 +139,16 @@
     <comment></comment>
     <requestid>1098093</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>67715946ab6079361dc7604c2bfba200</srcmd5>
+    <version>0.23.1</version>
+    <time>1702405960</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23.1:
+  * Modernisation of Ruff configuration in pyproject.toml.
+  * Updates to pre-commit hooks and CI YAML files.
+
+  version.</comment>
+    <requestid>1132678</requestid>
+  </revision>
 </revisionlist>

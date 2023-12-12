@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netmiko
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Multi-vendor library to simplify Paramiko SSH connections to network devices
 License:        MIT

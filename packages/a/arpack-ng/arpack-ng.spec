@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package arpack-ng
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -91,7 +91,7 @@ ExclusiveArch:  do_not_build
 # /3
 
 Name:           %{pkgname}
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Fortran77 subroutines for solving large scale eigenvalue problems
 License:        BSD-3-Clause
@@ -232,6 +232,9 @@ ln -s EXAMPLES examples
 %check
 %if %{with mpi}
 source %{my_prefix}/bin/mpivars.sh
+%else
+# Need to run with -j1, see https://github.com/opencollab/arpack-ng/issues/439
+%define _smp_mflags -j1
 %endif
 %ctest
 
@@ -246,7 +249,7 @@ source %{my_prefix}/bin/mpivars.sh
 %doc examples
 %doc CHANGES README.md
 %{my_libdir}/*.so
-%{my_incdir}/arpack-ng
+%{my_incdir}/arpack/
 %if %{without mpi}
 %{_libdir}/pkgconfig/*.pc
 %else

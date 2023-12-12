@@ -1032,4 +1032,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment></comment>
     <requestid>1131279</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>3c46602f29314ba51ff01899d070230e</srcmd5>
+    <version>4.8.2</version>
+    <time>1702405910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132597</requestid>
+  </revision>
 </revisionlist>

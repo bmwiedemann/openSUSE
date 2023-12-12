@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  4 15:01:54 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add explicitly-include-unistd.patch and specify higher version of
+  gcc to build on SLE/Leap.
+
+-------------------------------------------------------------------
 Tue Oct 24 18:16:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.1:

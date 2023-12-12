@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 11 14:10:02 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.60.1:
+  * Fixed: Incorrect handling of IPv4-in-IPv6 addresses when
+    listening to an unspecified address.
+
+-------------------------------------------------------------------
 Fri Dec 08 21:50:31 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.60.0:

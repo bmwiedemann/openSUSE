@@ -2220,4 +2220,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Sync the changelog and patch with SLE/Leap.</comment>
     <requestid>1131256</requestid>
   </revision>
+  <revision rev="247" vrev="3">
+    <srcmd5>0ad3f3e852f192c976f5001df85e93be</srcmd5>
+    <version>45.2</version>
+    <time>1702405950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132653</requestid>
+  </revision>
 </revisionlist>

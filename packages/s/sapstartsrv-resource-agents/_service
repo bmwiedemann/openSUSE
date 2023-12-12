@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">sapstartsrv-resource-agents</param>
-    <param name="versionformat">0.9.3+git.%ct.%h</param>
-    <param name="revision">48fa0c65f3f5b8387935c41fdd92cf0b94214d6c</param>
+    <param name="versionformat">0.9.4+git.%ct.%h</param>
+    <param name="revision">1758e33df5c6a79b3b47dde45f49b8c57b6d1675</param>
   </service>
 
   <service name="recompress" mode="disabled">

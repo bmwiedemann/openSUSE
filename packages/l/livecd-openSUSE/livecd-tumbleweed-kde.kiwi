@@ -367,9 +367,9 @@
     <package name="quota"/>
     <package name="xfsdump"/>
     <package name="xfsprogs"/>
+    <package name="pciutils"/>
     <package name="adaptec-firmware"/>
     <package name="atmel-firmware"/>
-    <package name="b43-fwcutter"/>
     <package name="bluez-firmware"/>
     <package name="crda"/>
     <package name="dmidecode"/>

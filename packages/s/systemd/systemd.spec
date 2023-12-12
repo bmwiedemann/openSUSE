@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define archive_version +suse.10.gb53f364c26
+%define archive_version +suse.17.gce08cd5f66
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -151,6 +151,7 @@ Requires(post): pam-config >= 0.79-5
 Recommends:     libpcre2-8-0
 Recommends:     libbpf0
 %endif
+Provides:       group(systemd-journal)
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
 Provides:       sbin_init
@@ -715,6 +716,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Drootprefix=/usr \
         -Dsplit-usr=true \
 %endif
+        -Dconfigfiledir=/usr/lib \
         -Dsplit-bin=true \
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
@@ -826,18 +828,8 @@ install -m0755 -D %{SOURCE3} %{buildroot}/%{_systemd_util_dir}/systemd-update-he
 install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
 %endif
 
-# For some reasons, upstream refuses to add a new build option (see pr#29244)
-# for customizing the installation path of main config files. However we want to
-# store them in /usr/lib so we don't encourage users to modify them while they
-# still can serve as templates.
-for f in %{buildroot}%{_sysconfdir}/systemd/*.conf; do
-	mv $f %{buildroot}%{_systemd_util_dir}/
-done
-for f in %{buildroot}%{_sysconfdir}/udev/*.conf; do
-	# Drop-ins are currently not supported by udevd.
-	[ $(basename $f) = "udev.conf" ] && continue
-	mv $f %{buildroot}%{_prefix}/lib/udev/
-done
+# Drop-ins are currently not supported by udev.
+mv %{buildroot}%{_prefix}/lib/udev/udev.conf %{buildroot}%{_sysconfdir}/udev/
 
 # Install the fixlets
 mkdir -p %{buildroot}%{_systemd_util_dir}/rpm

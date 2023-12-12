@@ -79,4 +79,14 @@
     <comment></comment>
     <requestid>1110186</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>37c3e6d1b15fc1e23f57ca1a6cf3860d</srcmd5>
+    <version>1.4.1</version>
+    <time>1702405958</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * Avoid deprecated is_datetime64tz_dtype from pandas
+  * Update Python version classifiers</comment>
+    <requestid>1132676</requestid>
+  </revision>
 </revisionlist>

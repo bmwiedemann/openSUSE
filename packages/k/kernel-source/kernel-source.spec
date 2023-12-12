@@ -17,7 +17,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.3
+%define patchversion 6.6.6
+%define git_commit a946a9f9d865a849717a570675413f097b229184
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -30,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.6.3
+Version:        6.6.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd766c57
+Release:        <RELEASE>.ga946a9f
 %else
 Release:        0
 %endif
@@ -48,10 +49,6 @@ BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
-Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-d766c572a0364cdd25a29e4aea41104f5ffdbd17
-Provides:       linux
-Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 %if "https://www.kernel.org/pub/linux/kernel/v6.x/" != ""
 Source1:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.sign
@@ -129,6 +126,10 @@ BuildArch:      noarch
 Prefix:         /usr/src
 # Source is only complete with devel files.
 Requires:       kernel-devel%variant = %version-%source_rel
+Provides:       %name = %version-%source_rel
+Provides:       %name-srchash-%git_commit
+Provides:       linux
+Provides:       multiversion(kernel)
 # extra packages needed for building a kernel from scratch
 Recommends:     bc
 Recommends:     bison

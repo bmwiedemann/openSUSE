@@ -820,4 +820,14 @@ I didn't encounter any errors while playing around with it in a Live CD. (forwar
   (jsc#PED-260, drop polkit-no-wheel-group.patch)</comment>
     <requestid>1127651</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>eac9c5c82961ffdb7a4831591a539313</srcmd5>
+    <version>123</version>
+    <time>1702405904</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 'dbus-service' as Requires instead of /usr/bin/dbus-daemon
+  This allow to use other dbus implementations such as dbus-broker with this
+  package again. (bsc#1217863) (forwarded request 1132569 from tobijk)</comment>
+    <requestid>1132614</requestid>
+  </revision>
 </revisionlist>

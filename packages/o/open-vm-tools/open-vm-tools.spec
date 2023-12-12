@@ -108,7 +108,11 @@ BuildRequires:  pkgconfig(xmlsec1)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0150400
 Requires:       libxmlsec1-openssl1 >= 1.2.37
 %else
+%if 0%{?sle_version} == 0120400 || 0%{?sle_version} == 0120500
+Requires:       libxmlsec1-openssl1 >= 1.2.37
+%else
 Requires:       libxmlsec1-openssl1 >= 1.2.28
+%endif
 %endif
 %define         arg_xmlsec1 --enable-xmlsec1
 %else

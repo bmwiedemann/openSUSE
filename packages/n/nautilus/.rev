@@ -1604,4 +1604,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1131385</requestid>
   </revision>
+  <revision rev="212" vrev="2">
+    <srcmd5>b2ea260360ee2b9eecf9b7953a98835b</srcmd5>
+    <version>45.2.1</version>
+    <time>1702405945</time>
+    <user>dimstar_suse</user>
+    <comment>sync changelog with SLE/Leap. (forwarded request 1132208 from yfjiang)</comment>
+    <requestid>1132442</requestid>
+  </revision>
 </revisionlist>

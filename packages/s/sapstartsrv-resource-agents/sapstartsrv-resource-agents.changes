@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 11 12:08:44 UTC 2023 - abriel@suse.com
+
+- Version bump to 0.9.4
+  * fix error in exception handling of sapstartsrv status function
+    (bsc#1217276)
+
+-------------------------------------------------------------------
 Fri Aug  4 17:41:44 UTC 2023 - abriel@suse.com
 
 - Version bump to 0.9.3

@@ -605,8 +605,9 @@ Fri May  6 08:41:37 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
   + Allow more intermediate icon sizes in app grid.
   + Fixed crash.
   + Plugged memory leak.
-- Remove gnome-shell-42.0-fix-switching-configuration.patch (merged
-  upstream).
+- Remove merged upstream:
+  + gnome-shell-42.0-fix-switching-configuration.patch
+  + gnome-shell-Pass-cancellable-when-querying-file-info.patch
 
 -------------------------------------------------------------------
 Sat Apr 30 21:25:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
@@ -746,6 +747,13 @@ Wed Feb  9 06:23:06 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 Tue Feb  8 17:04:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 2078.patch: Fix build with meson 0.61 and newer.
+
+-------------------------------------------------------------------
+Fri Feb  7 07:25:33 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-shell-Pass-cancellable-when-querying-file-info.patch:
+  Pass cancellable when querying file info
+  (bsc#1205518 glgo#GNOME/gnome-shell!2268)
 
 -------------------------------------------------------------------
 Thu Jan 27 02:58:53 UTC 2022 - Yifan Jiang <yfjiang@suse.com>

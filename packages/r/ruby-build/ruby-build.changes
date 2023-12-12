@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 11 19:41:29 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20231211.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20231211
+  * Add Ruby 3.3.0-rc1 by @casperisfine in #2323
+  * Add `ruby-dev` definition by @eregon in #2311
+  * Mark Ruby 3.0.x as unsupported by @mislav in #2307
+  * Add script to update `warn_unsuppported`, `warn_eol` labels by @mislav in #2308
+  * Remove deprecated `verify_openssl` step from build definitions by @mislav in #2314
+    * Instruct Ruby to fail the build if openssl or psych are missing by @mislav in #2296
+    * Fix compiling Ruby < 2.5 by omitting `--with-ext` by @mislav in #2316
+  * Introduce "with_bundled_gems" build step for dev rubies and unify "standard" by @mislav in #2318
+  * Fix linking to older OpenSSL for Ruby < 2.7.7 by @mislav in #2322
+
+-------------------------------------------------------------------
 Wed Nov 15 16:40:56 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20231114.

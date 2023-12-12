@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.11.1
+Version:        3.12.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -34,7 +34,7 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/dune
 Source0:        %pkg-%version.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 %if "%build_flavor" == ""
 Provides:       %name-bootstrap = %version-%release

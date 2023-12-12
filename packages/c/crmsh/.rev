@@ -3089,4 +3089,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1132388</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>261d9fa790f08773a3980d0fc1c97abe</srcmd5>
+    <version>4.6.0+20231212.54751d3f</version>
+    <time>1702405934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132598</requestid>
+  </revision>
 </revisionlist>

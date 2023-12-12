@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  5 19:28:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.4:
+  * Raise minimum nbxmpp version to 4.5.3.
+  * Add shortcuts for quoting previous messages.
+  * Raise nbxmpp log level.
+  * Passwords: Use JID as username instead of account.
+  * MUC: Allow nick change for IRC channels.
+  * HTTPUpload: Remove temporary files after transfer.
+  * MessageInput: Regain focus on common key presses.
+  * ShortcutWindow: Remove duplicated entry.
+  * SearchView: Fix displaying results for newly created group
+    chats.
+  * ChatList: Update mute state periodically.
+  * Icons: Register icon size to make it work for scale > 1.
+  * Message input: Don't allow text actions if input is disabled.
+  * Avatar: Draw status circle correctly for scale > 1.
+
+-------------------------------------------------------------------
 Wed Nov  8 22:12:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.8.3:

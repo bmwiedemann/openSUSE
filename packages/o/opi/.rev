@@ -552,4 +552,18 @@
   * Update changelog prefix to *</comment>
     <requestid>1131583</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7b08cfc99baa2cc17b18cb7a36f45d67</srcmd5>
+    <version>4.2.0</version>
+    <time>1702405956</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.2.0
+  * Support multiple repos defined in a single .repo file
+  * Automatically import packman key in non-interactive mode
+  * Restructure code: Add classes for Repository, OBSPackage and LocalPackage
+  * Hide package release for pkgs from local repos (same as with OBS pkgs)
+  * Use tumbleweed repo for openh264 on Slowroll
+  * Expand repovar $basearch (to e.g. x86_64 or aarch64)</comment>
+    <requestid>1132666</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Dec 12 13:37:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Netmiko's session_log has certain scenarios where it was
+    failing to hide the default no_log items ("secret" and
+    "password"). This bug has generally been fixed though there
+    are likely edge scenarios where this could still happen.
+    Given the nature of the session_log it should always be
+    viewed as a security sensitive file.
+  * Drop PY3.7 support
+  * Improve Ciena SAOS logic in set_base_prompt
+  * Improve Nokia SROS disable paging behavior
+  * Remove Arris and Casa from SSH autodetect
+  * Add support for Genie and Linux
+  * Improve TP-Link session_preparation behavior
+  * Improve MikoTik terminal size definition
+  * Improve Arista SSH autodetection
+  * Fix SNMP autodetection when hostname is used (instead of
+    IPv4/IPv6 address)
+  * Improve SCP behavior for remote_file_size when subdirectories
+    are used
+  * Implement TelnetFallback entry point
+  * Improve Extreme SLX-OS autodetect
+  * Improve Fortinet driver _get_output_mode_v6 behavior
+  * Improve HP comware and HP procurve behavior in
+    session_preparation
+  * Add Allied Telesis in SNMP and SSH autodetect
+  * Update hp_comware.py handle RBM in prompt
+  * Update vyos_ssh.py to enter and exit config mode on save
+  * Handle Huawei secure configuration message
+  * Add support for a SessionLog object in dunder-init(). This
+    allows a custom no_log definition.
+  * CI-CD fixes for various things breaking
+  * Improve ers driver cntl-y behavior
+  * Adtran driver enable global_cmd_verify by default
+  * Adtran driver improve enable() behavior
+  * Add Telnet Proxy support for SOCKS Proxy
+  * Add support for Fiberstore FSOS
+  * Add support for Maipu
+  * Add Digi TransPort Router Support
+
+-------------------------------------------------------------------
 Sun Aug 27 14:11:35 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.0
@@ -434,7 +476,7 @@ Thu Jul 19 07:51:23 UTC 2018 - mardnh@gmx.de
 -------------------------------------------------------------------
 Mon Jun 25 21:21:06 UTC 2018 - gyee@suse.com
 
-- Correct package name for python-PyYAML (case-sensitive) 
+- Correct package name for python-PyYAML (case-sensitive)
 
 -------------------------------------------------------------------
 Thu Jun 21 07:38:47 UTC 2018 - tchvatal@suse.com
@@ -444,20 +486,20 @@ Thu Jun 21 07:38:47 UTC 2018 - tchvatal@suse.com
 -------------------------------------------------------------------
 Wed Jun 20 21:06:26 UTC 2018 - gyee@suse.com
 
-- Remove devel as it is not needed. 
+- Remove devel as it is not needed.
 
 -------------------------------------------------------------------
 Wed Jun 20 18:00:29 UTC 2018 - gyee@suse.com
 
-- Remove pytest suggestion. 
+- Remove pytest suggestion.
 
 -------------------------------------------------------------------
 Wed Jun 20 17:04:49 UTC 2018 - gyee@suse.com
 
 - Disable testing during build as those aren't unit tests. See
-  See https://github.com/ktbyers/netmiko/blob/develop/TESTING.md 
+  See https://github.com/ktbyers/netmiko/blob/develop/TESTING.md
 
 -------------------------------------------------------------------
 Tue Jun 19 17:47:16 UTC 2018 - gyee@suse.com
 
-- Create python-netmiko package. 
+- Create python-netmiko package.

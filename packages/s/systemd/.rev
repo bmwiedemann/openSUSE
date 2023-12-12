@@ -6926,4 +6926,21 @@ handle manual pages that consist only of a .so directive such as
   https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3S3HAWVODHC2FQI4E76IFGCSRVRJ63KG/</comment>
     <requestid>1130178</requestid>
   </revision>
+  <revision rev="409" vrev="7">
+    <srcmd5>5b3e1a7e187653f8fdc1276a42908a7f</srcmd5>
+    <version>254.5</version>
+    <time>1702405898</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitely provide 'group(systemd-journal)' from the main package (bsc#1217852)
+
+- Import commit ce08cd5f66e1a661c2b9ed764ad7036decd76503
+  ce08cd5f66 man/standard-conf: directory paths should end with '/'
+  8324cbfde7 config files: update their header to reflect that they can be installed in /usr
+  bc36846ad2 Reflect the fact that main config files can be installed in /usr
+  e304a11f33 config files: more recommendations of `systemd-analyze cat-config`
+  c45cecf279 meson: add build option for install path of main config files
+  cc61b052c6 vconsole-setup: use a consistent log level when setfont fails with EX_OSERR (bsc#1212970)
+  4fe3653dab tmpfiles: ignore EINVAL with --graceful (bsc#1216628)</comment>
+    <requestid>1132619</requestid>
+  </revision>
 </revisionlist>

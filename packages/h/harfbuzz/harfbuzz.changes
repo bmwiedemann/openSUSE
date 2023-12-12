@@ -273,6 +273,13 @@ Sun Jul  3 09:33:36 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
     hb_face_create_for_tables()
   + Add 32 bit var store support to the subsetter
   + CVE-2022-33068: overflow in hb-ot-shape-fallback boo#1200900
+    + Drop harfbuzz-CVE-2022-33068.patch
+
+-------------------------------------------------------------------
+Tue May 21 09:37:40 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add harfbuzz-CVE-2022-33068.patch: sbix: limit glyph extents
+  (boo#1200900 CVE-2022-33068).
 
 -------------------------------------------------------------------
 Sat May 21 08:10:59 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>

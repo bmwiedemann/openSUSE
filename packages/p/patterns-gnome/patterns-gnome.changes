@@ -33,6 +33,12 @@ Fri Apr 14 12:04:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 - Downgrade glade Recommends to Suggests in gnome_ide pattern.
 
 -------------------------------------------------------------------
+Tue Feb 21 01:54:43 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Require xorg-x11-fonts on SLE earlier than 15-SP5 to fix
+  gnome-shell starting failure (bsc#1203966)
+
+-------------------------------------------------------------------
 Fri Oct 21 11:59:08 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Require at-spi2-core else risk major performance issues (boo#1204564)

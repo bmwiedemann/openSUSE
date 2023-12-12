@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 19 11:24:59 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- nvme-cli: enable nvmf-autoconnect.service for improved user experience
+  (bsc#1216369).
+
+-------------------------------------------------------------------
 Tue Jun 20 08:42:27 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix another case of systemctl being called with an empty

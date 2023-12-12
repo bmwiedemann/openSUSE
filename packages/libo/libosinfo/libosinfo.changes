@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Nov 13 13:47:19 MST 2023 - carnold@suse.com
 
-- Update to version 1.11.0 (jsc#PED-2104)
+- Update to version 1.11.0 (jsc#PED-6305)
   Changes in this release include:
   * Several minor memory leak fixes
   * Several CI improvements

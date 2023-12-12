@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 11 18:16:29 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- Fix (bsc#1217796) - Fix outdated libxmlsec1 dependency version.
+  Updates to open-vm-tools for SLES 12 SP4 and SP5 are now being built
+  againt against libxmlsec1-1-1.2.37. Update the spec file to now require
+  libxmlsec1-openssl1 >= 1.2.37.
+
+-------------------------------------------------------------------
 Mon Oct 30 17:16:18 UTC 2023 - Kirk Allan <kallan@suse.com>
 
 - Update to 12.3.5 (build 22544099) (boo#1216670)

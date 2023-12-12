@@ -1,7 +1,8 @@
-diff -Nur arpack-ng-3.9.0/CMakeLists.txt new/CMakeLists.txt
---- arpack-ng-3.9.0/CMakeLists.txt	2023-02-11 13:56:54.000000000 +0100
-+++ new/CMakeLists.txt	2023-02-15 14:42:17.792356901 +0100
-@@ -719,8 +719,8 @@
+Index: arpack-ng-3.9.1/CMakeLists.txt
+===================================================================
+--- arpack-ng-3.9.1.orig/CMakeLists.txt
++++ arpack-ng-3.9.1/CMakeLists.txt
+@@ -728,8 +728,8 @@ function(build_tests)
        target_link_libraries(pyarpack
            BLAS::BLAS LAPACK::LAPACK ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
        install(TARGETS pyarpack

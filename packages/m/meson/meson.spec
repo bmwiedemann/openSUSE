@@ -169,10 +169,10 @@ Vim/NeoVim.
 
 %prep
 %setup -q -n meson-%{version}
-%patch0 -p1
-%patch1 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
 %if !%{with setuptools}
-%patch2 -p1
+%patch -P 2 -p1
 %endif
 
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000

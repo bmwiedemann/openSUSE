@@ -17,7 +17,7 @@
 
 
 Name:           python-patiencediff
-Version:        0.2.12
+Version:        0.2.14
 Release:        0
 Summary:        Python implementation of the patiencediff algorithm
 License:        GPL-2.0-or-later

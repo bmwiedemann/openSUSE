@@ -48,11 +48,16 @@ them to the correct receiver integration such as email, PagerDuty, or
 OpsGenie. It also takes care of silencing and inhibition of alerts.
 
 %prep
+%ifarch s390x
+%autosetup -N -a1 -n alertmanager-%{version}
+%patch1 -p1
+%else
 %autosetup -a1 -p1 -n alertmanager-%{version}
+%endif
 
 %build
 %goprep github.com/prometheus/alertmanager
-GOPATH=%{_builddir}/go promu -v build
+GOPATH=%{_builddir}/go promu build -v
 
 %install
 %goinstall

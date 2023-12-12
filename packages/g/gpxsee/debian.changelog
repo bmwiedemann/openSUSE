@@ -1,3 +1,12 @@
+gpxsee (13.12) stable; urgency=low
+
+  * Added support for overzoom in MVT vector maps (MBTiles/online).
+    QtPBFImageplugin version 3 required.
+  * Vector (MVT) online maps now rendered asynchronous. 
+  * Fixed vector MBTiles not loading in Qt6 builds issue.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 11 Dec 2023 23:51:19 +0100
+
 gpxsee (13.11) stable; urgency=low
 
   * Added support for GPSDump WPT files.

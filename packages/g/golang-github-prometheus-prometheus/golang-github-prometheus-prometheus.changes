@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  9 20:04:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.48.1:
+  * [BUGFIX] TSDB: Make the wlog watcher read segments
+    synchronously when not tailing. #13224
+  * [BUGFIX] Agent: Participate in notify calls (fixes slow down in
+    remote write handling introduced in 2.45). #13223
+
+-------------------------------------------------------------------
 Thu Nov 16 12:16:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.48.0:

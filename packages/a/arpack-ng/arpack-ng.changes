@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec  6 06:33:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.1:
+  * pyarpack: Ensure that the matrix properties
+    (symmetric/hermitian) fit the solver (CG/LDL) with which they
+    are used in the tests
+  * [BUG FIX] Tests for PARPACK with C/C++ bindings icb_parpack_c
+    and icb_parpack_cpp are now really parallel and split the
+    problem across MPI processes.
+  * Update arpackmm test suite: enable solving non-symmetric tests
+    with BiCG solver
+  * README: Add details on Windows installation.
+  * [BUG FIX] Fix install: headers in
+    /path/to/local/include/arpack for ICB samples
+  * [BUG FIX] Fix install: headers in
+    /path/to/local/include/arpack
+  * arpackmm: allow for using LA/SA magnitudes.
+  * Rename icbexmm option into eigen option.
+  * README: document how to use ICB.
+  * [BUG FIX] arpackmm: fix restart.
+  * README: document where to find arpack user's guide.
+- Make tests run with '-j1' for serial flavour
+  (gh#opencollab/arpack-ng#439).
+- Update includedir location: arpack-ng now installs headers to
+  %{_includedir}/arpack/ instead of %{_includedir}/arpack-ng/ used
+  previously.
+
+-------------------------------------------------------------------
 Mon Oct 23 11:38:32 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete openmpi[123]

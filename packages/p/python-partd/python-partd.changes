@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 12 13:16:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Avoid deprecated is_datetime64tz_dtype from pandas
+  * Update Python version classifiers
+
+-------------------------------------------------------------------
 Sun Sep 10 14:02:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.4.0

@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-objgraph
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Python module to draw object reference graphs with graphviz
 License:        MIT
@@ -36,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       graphviz-gd
 Requires:       graphviz-gnome
 Requires:       python-graphviz
-Obsoletes:      %{oldpython}-objgraph-doc
 BuildArch:      noarch
 %python_subpackages
 

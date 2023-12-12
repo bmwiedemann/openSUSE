@@ -714,4 +714,13 @@
   + libraw-CVE-2020-22628.patch</comment>
     <requestid>1111919</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>288835f6e016750b27a2708b7f0c3dd2</srcmd5>
+    <version>0.21.1</version>
+    <time>1702405954</time>
+    <user>dimstar_suse</user>
+    <comment>    CVE-2018-5819,CVE-2021-32142
+    bsc#1120515,bsc#1120516,bsc#1120517,bsc#1120519,bsc#1208470)</comment>
+    <requestid>1132688</requestid>
+  </revision>
 </revisionlist>

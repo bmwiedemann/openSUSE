@@ -197,4 +197,41 @@
     <comment></comment>
     <requestid>1106373</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cfaf5c73e5f826abd65b90d6e70fdf2f</srcmd5>
+    <version>4.3.0</version>
+    <time>1702405963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * Netmiko's session_log has certain scenarios where it was
+    failing to hide the default no_log items (&quot;secret&quot; and
+    &quot;password&quot;). This bug has generally been fixed though there
+    are likely edge scenarios where this could still happen.
+    Given the nature of the session_log it should always be
+    viewed as a security sensitive file.
+  * Drop PY3.7 support
+  * Improve Ciena SAOS logic in set_base_prompt
+  * Improve Nokia SROS disable paging behavior
+  * Remove Arris and Casa from SSH autodetect
+  * Add support for Genie and Linux
+  * Improve TP-Link session_preparation behavior
+  * Improve MikoTik terminal size definition
+  * Improve Arista SSH autodetection
+  * Fix SNMP autodetection when hostname is used (instead of
+    IPv4/IPv6 address)
+  * Improve SCP behavior for remote_file_size when subdirectories
+    are used
+  * Implement TelnetFallback entry point
+  * Improve Extreme SLX-OS autodetect
+  * Improve Fortinet driver _get_output_mode_v6 behavior
+  * Improve HP comware and HP procurve behavior in
+    session_preparation
+  * Add Allied Telesis in SNMP and SSH autodetect
+  * Update hp_comware.py handle RBM in prompt
+  * Update vyos_ssh.py to enter and exit config mode on save
+  * Handle Huawei secure configuration message
+  * Add support for a SessionLog object in dunder-init(). This
+    allows a custom no_log definition.</comment>
+    <requestid>1132682</requestid>
+  </revision>
 </revisionlist>

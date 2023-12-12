@@ -1,28 +1,35 @@
-Index: nemo-extensions-5.2.0/nemo-python/meson.build
+Index: nemo-extensions-6.0.0/nemo-python/meson.build
 ===================================================================
---- nemo-extensions-5.2.0.orig/nemo-python/meson.build
-+++ nemo-extensions-5.2.0/nemo-python/meson.build
-@@ -39,6 +39,8 @@ pyextdir = join_paths(get_option('prefix
+--- nemo-extensions-6.0.0.orig/nemo-python/meson.build
++++ nemo-extensions-6.0.0/nemo-python/meson.build
+@@ -40,6 +40,7 @@ pyextdir = join_paths(get_option('prefix
  
- cdata.set_quoted('NEMO_EXTENSION_DIR', nemo.get_pkgconfig_variable('extensiondir'))
+ cdata.set_quoted('NEMO_EXTENSION_DIR', nemo.get_variable(pkgconfig: 'extensiondir'))
  cdata.set_quoted('PYTHON_LIBPATH', libpath)
-+cdata.set_quoted('PYTHON_LIBNAME', python3.get_variable('INSTSONAME'))
-+
++cdata.set_quoted('PYTHON_LIBNAME', py_so_filename)
  cdata.set('PYGOBJECT_MAJOR_VERSION', 3)
  cdata.set('PYGOBJECT_MINOR_VERSION', 0)
  cdata.set('PYGOBJECT_MICRO_VERSION', 0)
-Index: nemo-extensions-5.2.0/nemo-python/src/nemo-python.c
+@@ -77,6 +78,7 @@ message('|')
+ message('|  nemo-python version: @0@'.format(meson.project_version()))
+ message('|')
+ message('|  python version: @0@'.format(python3.version()))
++message('|  python libname: @0@'.format(py_so_filename))
+ message('|  targeting lib: @0@'.format(libpath))
+ message('|')
+ message('|  build docs: @0@'.format(gtkdoc_enabled))
+Index: nemo-extensions-6.0.0/nemo-python/src/nemo-python.c
 ===================================================================
---- nemo-extensions-5.2.0.orig/nemo-python/src/nemo-python.c
-+++ nemo-extensions-5.2.0/nemo-python/src/nemo-python.c
+--- nemo-extensions-6.0.0.orig/nemo-python/src/nemo-python.c
++++ nemo-extensions-6.0.0/nemo-python/src/nemo-python.c
 @@ -175,8 +175,8 @@ nemo_python_init_python (void)
  	if (Py_IsInitialized())
  		return TRUE;
  
 -  	debug("g_module_open " PYTHON_LIBPATH);
 -	libpython = g_module_open(PYTHON_LIBPATH, 0);
-+	debug("g_module_open " PYTHON_LIBNAME);
-+	libpython = g_module_open (PYTHON_LIBNAME, 0);
++  	debug("g_module_open " PYTHON_LIBNAME);
++	libpython = g_module_open(PYTHON_LIBNAME, 0);
  	if (!libpython)
  		g_warning("g_module_open libpython failed: %s", g_module_error());
  

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 12 08:02:52 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Explicitely provide 'group(systemd-journal)' from the main package (bsc#1217852)
+
+-------------------------------------------------------------------
+Tue Dec 12 07:43:35 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit ce08cd5f66e1a661c2b9ed764ad7036decd76503
+
+  ce08cd5f66 man/standard-conf: directory paths should end with '/'
+  8324cbfde7 config files: update their header to reflect that they can be installed in /usr
+  bc36846ad2 Reflect the fact that main config files can be installed in /usr
+  e304a11f33 config files: more recommendations of `systemd-analyze cat-config`
+  c45cecf279 meson: add build option for install path of main config files
+  cc61b052c6 vconsole-setup: use a consistent log level when setfont fails with EX_OSERR (bsc#1212970)
+  4fe3653dab tmpfiles: ignore EINVAL with --graceful (bsc#1216628)
+
+-------------------------------------------------------------------
 Tue Nov 21 13:57:52 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - udev: Tighten permissions for DRM render nodes (bsc#1217118). Note that this

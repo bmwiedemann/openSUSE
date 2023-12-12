@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           irqbalance
-Version:        1.9.3.8.git+c963f48
+Version:        1.9.3.10.git+1a7d461
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libsystemd)
 Requires(pre):  %fillup_prereq
 Recommends:     %{name}-ui
 ExcludeArch:    s390 s390x
@@ -66,6 +67,7 @@ Text UI for the IRQ balance daemon.
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
+    --with-systemd \
 %ifarch x86_64 %{?x86_64}
     --enable-thermal
 %endif

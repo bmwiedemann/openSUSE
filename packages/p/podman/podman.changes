@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 11 16:13:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.8.2:
+  * v4.8.2
+  * [CI:DOCS] Update RELEASE_NOTES.md for v4.8.2
+  * Kube Play - set ReportWriter when building an image
+  * Fix user-mode net init flag on first time install
+  * bump c/common to v0.57.1
+  * bump version to v4.8.2-dev
+
+-------------------------------------------------------------------
+Thu Dec  7 08:43:26 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Default to the new networking backend, netavark, on openSUSE (bsc#1217828)
+
+-------------------------------------------------------------------
 Wed Dec 06 06:02:02 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 4.8.1:

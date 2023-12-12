@@ -367,9 +367,9 @@
     <package name="quota"/>
     <package name="xfsdump"/>
     <package name="xfsprogs"/>
+    <package name="pciutils"/>
     <package name="adaptec-firmware"/>
     <package name="atmel-firmware"/>
-    <package name="b43-fwcutter"/>
     <package name="bluez-firmware"/>
     <package name="crda"/>
     <package name="dmidecode"/>
@@ -443,6 +443,10 @@
     <ignore name="sbl"/>
     <package name="aaa_base" replaces="gnome-online-accounts"/>
     <ignore name="gnome-online-accounts"/>
+    <package name="aaa_base" replaces="samba"/>
+    <ignore name="samba"/>
+    <package name="aaa_base" replaces="xdg-desktop-portal"/>
+    <ignore name="xdg-desktop-portal"/>
     <package name="aaa_base" replaces="pragha"/>
     <ignore name="pragha"/>
     <package name="patterns-yast-yast2_basis"/>

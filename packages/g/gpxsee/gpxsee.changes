@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 11 23:37:06 CET 2023 - tumic@cbox.cz
+
+- Update to version 13.12
+  * Added support for overzoom in MVT vector maps (MBTiles/online).
+    QtPBFImageplugin version 3 required.
+  * Vector (MVT) online maps now rendered asynchronous. 
+  * Fixed vector MBTiles not loading in Qt6 builds issue.
+
+-------------------------------------------------------------------
 Sun Nov 19 11:42:43 CET 2023 - tumic@cbox.cz
 
 - Update to version 13.11

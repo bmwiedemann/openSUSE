@@ -359,4 +359,12 @@
     <comment></comment>
     <requestid>1117699</requestid>
   </revision>
+  <revision rev="40" vrev="19">
+    <srcmd5>b431f22ae78a894437860bc2dd87f1b1</srcmd5>
+    <version>20201210</version>
+    <time>1702405947</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changelog with SLE/Leap. (forwarded request 1132209 from yfjiang)</comment>
+    <requestid>1132443</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-pam
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname python-pam
 Name:           python-python-pam
-Version:        1.8.4
+Version:        2.0.2
 Release:        0
 Summary:        Python PAM module using ctypes, py3/py2
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/FirefighterBlu3/python-pam
-Source:         https://files.pythonhosted.org/packages/source/p/python-pam/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+
 %python_subpackages
 
 %description
@@ -39,15 +41,16 @@ Python pam module supporting py3 (and py2).
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pam
+%{python_sitelib}/python_pam-%{version}*
 
 %changelog

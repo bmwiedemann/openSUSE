@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Nov 28 11:05:30 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Update to version 0.18.1
+  * core: Avoid leaking web views due to CogShell holding one reference
+    too much on them.
+  * drm: Fix touch region dimensions when the output is rotated by 90 or
+    270 degrees.
+  * meson: Fix configuration error when only the Wayland platform plug-in
+    is selected.
+
+-------------------------------------------------------------------
+Thu Jul  6 10:50:17 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Init

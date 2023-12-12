@@ -115,8 +115,12 @@ rm -rf /usr/share/doc/packages/*
 
 # Save more than 150 MiB by removing this, not very useful for lives
 rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,cypress,dpaa2,bnx2x,cxgb4}
-# Keep some qcom firmware for Lenovo X13s and delete others (save ~50MiB)
-rm -rf /lib/firmware/qcom/{apq8016,apq8096,qcm2290,qrb4210,sdm845,sm8250,venus*,vpu*}
+if [ "$(arch)" == "aarch64" ]; then
+	# Keep some qcom firmware for Lenovo X13s and delete others (save ~50MiB)
+	rm -rf /lib/firmware/qcom/{apq8016,apq8096,qcm2290,qrb4210,sdm845,sm8250,venus*,vpu*}
+else
+	rm -rf /lib/firmware/qcom
+fi
 # the new, optional nvidia gsp firmware blobs are huge - ~ 70MB
 find /lib/firmware/nvidia -name gsp | xargs -r rm -rf 
 
@@ -148,7 +152,7 @@ zypper rl $(seq 1 $(zypper ll | wc -l))
 # sudoers hack to fix #297695 
 # (Installation Live CD: no need to ask for password of root)
 #--------------------------------------
-echo "ALL ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/50-livecd
+echo "linux ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/50-livecd
 
 /usr/sbin/useradd -m -u 1000 linux -c "Live-CD User" -p ""
 

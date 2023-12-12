@@ -488,4 +488,12 @@
   * Add some docs about verifying in an air-gapped environment (#3321) (forwarded request 1123989 from msmeissn)</comment>
     <requestid>1124000</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>499c3dff1894f3ead333d0a2dd0eafbf</srcmd5>
+    <version>2.2.2</version>
+    <time>1702405972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132694</requestid>
+  </revision>
 </revisionlist>

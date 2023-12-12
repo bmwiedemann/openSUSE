@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 12 08:22:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-xfce: Drop samba. Not really used but recommended by the pattern
+- list-xfce: Drop xdg-desktop-portal on Leap.
+- Drop qcom FW on non-aarch64 again
+- Only allow passwordless sudo for linux
+
+-------------------------------------------------------------------
+Wed Dec  6 15:58:56 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop b43-fwcutter. Only makes sense if there's already
+  a network connection. Keep pciutils though.
+
+-------------------------------------------------------------------
 Wed Dec  6 13:41:48 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-common.sh: ignore patterns-base-documentation. This makes

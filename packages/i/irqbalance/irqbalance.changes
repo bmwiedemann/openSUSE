@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 06 11:21:22 UTC 2023 - aschnell@suse.com
+
+- Update to version 1.9.3.10.git+1a7d461:
+  * filter console only output when using journal mode
+- build with libsystemd for logging (bsc#1217754)
+
+-------------------------------------------------------------------
 Tue Nov 21 19:56:47 UTC 2023 - trenn@suse.de
 
 - Update to version 1.9.3.8.git+c963f48:

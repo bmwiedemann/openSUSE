@@ -75,7 +75,7 @@ BuildRequires:  python3-python-dbusmock
 # gtk-doc drags indirectyly ruby in for one of the helpers. This in turn causes a build cycle.
 #!BuildIgnore:  ruby
 
-Requires:       /usr/bin/dbus-daemon
+Requires:       dbus-service
 Requires:       libpolkit-agent-1-0 = %{version}-%{release}
 Requires:       libpolkit-gobject-1-0 = %{version}-%{release}
 Requires(post): permissions

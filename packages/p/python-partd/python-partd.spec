@@ -17,7 +17,7 @@
 
 
 Name:           python-partd
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Appendable key-value storage
 License:        BSD-3-Clause

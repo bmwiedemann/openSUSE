@@ -19,21 +19,18 @@
 # Do not package nemo-extension-media-columns for now: slows Nemo down.
 # nemo-extension-terminal 'requires' two versions, confusing typelib finder.
 %define __requires_exclude typelib\\((Vte))\ =
-%define _version 5.0.0
+%define _version 6.0.0
 Name:           nemo-extensions
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/nemo-extensions
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nemo-share-prevent-privilege-escalation.patch bsc#1084703 -- Prevent unprivileged users from adding other users to sambashare (commit a831e7b).
-Patch4:         nemo-share-prevent-privilege-escalation.patch
-# PATCH-FIX-UPSTREAM FTBFS-setuptools-61.0.patch -- fix build with setuptools 61.0
-Patch5:         FTBFS-setuptools-61.0.patch
 # PATCH-FIX-OPENSUSE fix-hwcaps.patch bsc#1212482
 Patch6:         fix-hwcaps.patch
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  gnome-common
@@ -68,7 +65,7 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(pygobject-3.0)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(xreader-document-1.5)
 BuildRequires:  pkgconfig(xreader-view-1.5)
 %if 0%{?suse_version} >= 1500
@@ -487,8 +484,8 @@ rm -r %{buildroot}%{_datadir}/nemo-share/install-samba
 rm -r %{buildroot}%{_datadir}/licenses/nemo-dropbox/COPYING
 
 %python_compileall
-rm -rf %{buildroot}%{_datadir}/nemo-compare/utils.py
-ln -sf %{python3_sitelib}/utils.py %{buildroot}%{_datadir}/nemo-compare/utils.py
+#rm -rf %{buildroot}%{_datadir}/nemo-compare/utils.py
+#ln -sf %{python3_sitelib}/utils.py %{buildroot}%{_datadir}/nemo-compare/utils.py
 
 %if 0%{?suse_version} >= 1500
 %post -n python3-nemo -p /sbin/ldconfig
@@ -555,9 +552,9 @@ ln -sf %{python3_sitelib}/utils.py %{buildroot}%{_datadir}/nemo-compare/utils.py
 %{_datadir}/nemo-compare/
 %{python3_sitelib}/nemo_compare-%{version}-py?.*.egg-info
 %{_datadir}/nemo-python/extensions/nemo-compare.py
-%{python3_sitelib}/utils.py
-%{python3_sitelib}/__pycache__/utils.cpython-%{python_version_nodots}.opt-1.pyc
-%{python3_sitelib}/__pycache__/utils.cpython-%{python_version_nodots}.pyc
+#%{python3_sitelib}/utils.py
+#%{python3_sitelib}/__pycache__/utils.cpython-%{python_version_nodots}.opt-1.pyc
+#%{python3_sitelib}/__pycache__/utils.cpython-%{python_version_nodots}.pyc
 
 %files -n nemo-extension-dropbox
 %license nemo-dropbox/COPYING
@@ -636,8 +633,8 @@ ln -sf %{python3_sitelib}/utils.py %{buildroot}%{_datadir}/nemo-compare/utils.py
 %{_datadir}/nemo-python/extensions/nemo_terminal.py
 %{_datadir}/glib-2.0/schemas/org.nemo.extensions.nemo-terminal.gschema.xml
 %{python3_sitelib}/nemo_terminal-%{version}-py?.*.egg-info
-%{python3_sitelib}/nemo_terminal.py
-%{python3_sitelib}/__pycache__/nemo_terminal.cpython-%{python_version_nodots}.opt-1.pyc
-%{python3_sitelib}/__pycache__/nemo_terminal.cpython-%{python_version_nodots}.pyc
+#%{python3_sitelib}/nemo_terminal.py
+#%{python3_sitelib}/__pycache__/nemo_terminal.cpython-%{python_version_nodots}.opt-1.pyc
+#%{python3_sitelib}/__pycache__/nemo_terminal.cpython-%{python_version_nodots}.pyc
 
 %changelog

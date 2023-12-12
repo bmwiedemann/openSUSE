@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  9 16:20:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.01:
+  * Removed some visible percent signs before variable names from
+    the scripting tutorial.
+  * SoundEditor/TextGridEditor logging: when logging 'f0', Praat
+    now correctly reports values in Hz (rather than logarithms) if
+    Unit is set to “Hertz (logarithmic)”. This bug had existed
+    since Praat version 4.3.16 (June 2005).
+  * SoundEditor/TextGridEditor scripting compatibility: made old
+    versions of “Pitch settings...” and “Advanced pitch
+    settings...” available to scripts again, made the old
+    denominations “autocorrelation” and “cross-correlation” (as
+    pitch analysis methods) available to scripts again, and made
+    obsolete versions of pitch analysis settings (such as “Pitch
+    silence threshold”) available again, now under the
+    COMPATIBILITY section of the output of “Editor info”. 
+
+-------------------------------------------------------------------
 Wed Nov 22 11:58:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4:

@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-osc-tiny
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT

@@ -62,4 +62,14 @@
     <comment></comment>
     <requestid>1081852</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f86783c7795bd1fc78b6840075c5a020</srcmd5>
+    <version>3.6.0</version>
+    <time>1702405908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.0:
+  * Add support for Python 3.9, 3.10, and 3.11.
+  * Drop support for Python 2.7 and 3.6.</comment>
+    <requestid>1132638</requestid>
+  </revision>
 </revisionlist>

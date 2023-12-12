@@ -241,4 +241,12 @@
 - The brightness control of NVIDIA seems to be broken, [#573](https://github.com/NVIDIA/open-gpu-kernel-modules/issues/573)</comment>
     <requestid>1128390</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>49ab13a8840d88f0be29a2fc5f95bdc3</srcmd5>
+    <version>545.29.06</version>
+    <time>1702405974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1132702</requestid>
+  </revision>
 </revisionlist>

@@ -14,6 +14,12 @@ buildignore gtk3-immodule-vietnamese
 buildignore awesfx
 buildignore sbl
 buildignore gnome-online-accounts
+buildignore samba
+
+if [ "$distro" = "leap" ]; then
+	# Avoid pipewire. The desktop portal isn't really needed here.
+	buildignore xdg-desktop-portal
+fi
 
 #temp disabled - until build fuxed
 buildignore pragha

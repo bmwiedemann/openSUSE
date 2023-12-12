@@ -1942,4 +1942,12 @@
     <comment>Several upstream bug fixes and features</comment>
     <requestid>1129619</requestid>
   </revision>
+  <revision rev="246" vrev="12">
+    <srcmd5>06a43ce13397403e3c87d6a569d58968</srcmd5>
+    <version>4.1.0</version>
+    <time>1702405942</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1131676</requestid>
+  </revision>
 </revisionlist>

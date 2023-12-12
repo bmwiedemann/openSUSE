@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 12 10:27:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update fix-hwcaps.patch, needed to work correctly with
+  libpython3_11-1_0-x86-64-v3
+
+-------------------------------------------------------------------
+Sat Dec  2 04:18:40 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to version 6.0.0
+  * build and example fixes
+- drop nemo-share-prevent-privilege-escalation.patch, upstreamed
+- drop FTBFS-setuptools-61.0.patch, that extension disappeared
+- refresh fix-hwcaps.patch
+
+-------------------------------------------------------------------
 Tue Jul 11 06:10:53 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-hwcaps.patch to fix the issue with Segmentation

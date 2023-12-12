@@ -344,6 +344,13 @@ Fri Dec  2 22:21:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     - Minimize and optimize menu updates
   + Build fixes: Make header prototypes match definitions
   + Updated translations.
+  + Drop upstream merged nautilus-CVE-2022-37290.patch.
+
+-------------------------------------------------------------------
+Mon Dec  1 10:58:11 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Add nautilus-CVE-2022-37290.patch to fix the CVE-2022-37290
+  (bsc#1205418).
 
 -------------------------------------------------------------------
 Wed Oct 12 06:22:36 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>

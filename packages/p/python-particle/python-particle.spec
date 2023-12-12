@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-particle
-Version:        0.23.0
+Version:        0.23.1
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause

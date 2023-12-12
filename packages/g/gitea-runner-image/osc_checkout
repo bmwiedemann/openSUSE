@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+spawn osc checkout "$env(INPUT_OSC_PATH)" "$env(INPUT_OSC_PACKAGE)"
+expect {
+    -re "..*Username \\\[api.opensuse.org\\\]: " { send "$env(INPUT_OSC_USER)\r"; exp_continue }
+    -re "..*Password \\\[..*\@api.opensuse.org\\\]: " { send "$env(osc_pass)\r"; exp_continue }
+    -re "..*Select credentials manager \\\[default=1\\\]:" { send "3\r"; exp_continue }
+    -re "..*Password \\\[..*\@api.opensuse.org\\\]: " { send "$env(osc_pass)\r"; exp_continue }
+    -re "..*At revision (..*)" { puts $expect_out(1,string);
+    send "cd $env(INPUT_OSC_PATH)\r"; send "cd $env(INPUT_OSC_PACKAGE)\r";
+    exp_continue }
+}

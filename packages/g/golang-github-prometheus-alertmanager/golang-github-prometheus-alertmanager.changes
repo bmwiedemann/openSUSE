@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 11 12:15:12 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not create PIE for s390x architecture
+
+-------------------------------------------------------------------
 Tue Nov 21 16:24:41 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add 0002-Set-build-flags.patch

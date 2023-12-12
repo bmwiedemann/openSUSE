@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  8 22:20:51 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Add 'dbus-service' as Requires instead of /usr/bin/dbus-daemon
+  This allow to use other dbus implementations such as dbus-broker with this
+  package again. (bsc#1217863)
+
+-------------------------------------------------------------------
 Fri Sep 29 09:56:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 123:

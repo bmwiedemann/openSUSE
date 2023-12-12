@@ -17,18 +17,18 @@
 
 
 Name:           python-overrides
-Version:        7.3.1
+Version:        7.4.0
 Release:        0
 Summary:        A decorator to automatically detect mismatch when overriding a method
 License:        Apache-2.0
 URL:            https://github.com/mkorpela/overrides
 Source:         https://files.pythonhosted.org/packages/source/o/overrides/overrides-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 

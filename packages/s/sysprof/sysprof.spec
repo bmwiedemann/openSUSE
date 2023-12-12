@@ -30,8 +30,13 @@ Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
 Source0:        https://download.gnome.org/sources/sysprof/45/sysprof-%{version}.tar.xz
 Patch0:         harden_sysprof3.service.patch
+Patch1:         explicitly-include-unistd.patch
 
 BuildRequires:  c++_compiler
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%endif
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  itstool
@@ -92,9 +97,17 @@ applications that use %{name}.
 %lang_package
 
 %prep
-%autosetup -p1 -n sysprof-%{version}
+%setup -q -n sysprof-%{version}
+%patch -P 0 -p1
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%patch -P 1 -p1
+%endif
 
 %build
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+export CC=gcc-11
+export CXX=g++-11
+%endif
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %meson -Dgtk=true -Dtests=false
 %meson_build
