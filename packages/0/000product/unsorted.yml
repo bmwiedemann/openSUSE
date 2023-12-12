@@ -345,7 +345,6 @@ unsorted:
   - aaa_base-wsl 
   - aalib 
   - aalib-devel 
-  - aardvark-dns 
   - abcde 
   - abcm2ps 
   - abi-compliance-checker 
@@ -965,6 +964,7 @@ unsorted:
   - assertj-core 
   - assertj-core-javadoc 
   - assimp-devel 
+  - ast-grep 
   - asterisk-sounds-devel 
   - asteroid 
   - asteroids3D 
@@ -2215,8 +2215,10 @@ unsorted:
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
   - cnf-zsh 
+  - cni 
   - cni-plugin-dnsname 
   - cni-plugin-flannel 
+  - cni-plugins 
   - cntlm 
   - cobbler 
   - cobbler-tests 
@@ -2244,6 +2246,9 @@ unsorted:
   - codemodel 
   - codemodel-javadoc 
   - codespell 
+  - cog 
+  - cog-devel 
+  - cogctl 
   - cogl-devel 
   - coin-or-Cbc 
   - coin-or-Cbc-devel 
@@ -3239,6 +3244,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -18060,7 +18066,6 @@ unsorted:
   - net6 
   - net6-devel 
   - net6-lang 
-  - netavark 
   - netbeans-javaparser 
   - netbeans-resolver 
   - netbeans-svnclientadapter 
@@ -20862,6 +20867,7 @@ unsorted:
   - perl-Sys-Virt 
   - perl-Sysadm-Install 
   - perl-System-Command 
+  - perl-TAP-Formatter-GitHubActions 
   - perl-TAP-Harness-JUnit 
   - perl-Task-Kensho-Async 
   - perl-Task-Kensho-CLI 
@@ -20988,6 +20994,7 @@ unsorted:
   - perl-Test-YAML 
   - perl-Test-YAML-Valid 
   - perl-Test-utf8 
+  - perl-Test2-Formatter-YAMLEnhancedTAP 
   - perl-Test2-Plugin-NoWarnings 
   - perl-Test2-Suite 
   - perl-Text-Aligner 
@@ -22729,6 +22736,7 @@ unsorted:
   - python310-PyDispatcher 
   - python310-PyECLib 
   - python310-PyFxA 
+  - python310-PyGLM 
   - python310-PyGithub 
   - python310-PyHamcrest 
   - python310-PyICU 
@@ -26242,6 +26250,7 @@ unsorted:
   - python311-PyDispatcher 
   - python311-PyECLib 
   - python311-PyFxA 
+  - python311-PyGLM 
   - python311-PyGithub 
   - python311-PyHamcrest 
   - python311-PyICU 
@@ -29617,6 +29626,7 @@ unsorted:
   - python39-PyDispatcher 
   - python39-PyECLib 
   - python39-PyFxA 
+  - python39-PyGLM 
   - python39-PyGithub 
   - python39-PyHamcrest 
   - python39-PyICU 
@@ -45243,7 +45253,9 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
+  - virtualbox-guest-tools 
   - virtualbox-host-source 
+  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
