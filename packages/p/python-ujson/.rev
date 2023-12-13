@@ -197,4 +197,23 @@
     <comment></comment>
     <requestid>1099491</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>59ced98010863b9ea10f396a3f8b706b</srcmd5>
+    <version>5.9.0</version>
+    <time>1702488965</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.9.0:
+  * Raise TypeError if toDict() returns a non-dict instead of
+    silently converting it to null (#615) @eltoder
+  * Use lowercase strings for bool dict keys (#614) @eltoder
+  * Deploy to PyPI using trusted publishing (#603) @hugovk
+  * Replace PyPy3.8 wheel with PyPy3.10 (#602) @hugovk
+  * Speed-up and cleanup objToJSON (#615) @eltoder
+  * Use lowercase strings for bool dict keys (#614) @eltoder
+
+- Update to version 5.6.0
+  * Make PEP 384 compliant
+- reactivate Python 2 build</comment>
+    <requestid>1132838</requestid>
+  </revision>
 </revisionlist>

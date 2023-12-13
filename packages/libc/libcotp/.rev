@@ -127,4 +127,20 @@
 </comment>
     <requestid>1129625</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1348d3ad740ecf03756a99873fcda5cd</srcmd5>
+    <version>3.0.0</version>
+    <time>1702488946</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0:
+  * This release supersedes v2.1.0 and brings a new feature and
+    some small code improvements:
+    + Add support for OpenSSL (#52), by @mchalain
+    + Fix base32 encoding and decoding of bytes array (#54)
+    + make is_string_valid_b32 public
+    + improve code readability
+- Use correct library 'libcriterion-devel'.
+</comment>
+    <requestid>1132822</requestid>
+  </revision>
 </revisionlist>

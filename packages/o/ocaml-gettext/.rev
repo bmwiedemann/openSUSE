@@ -69,4 +69,12 @@
   The only consumer of this pkg (virt-top) does not need it</comment>
     <requestid>1103330</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f722e3c7d949994e4880a6c8bb15a38c</srcmd5>
+    <version>0.4.2</version>
+    <time>1702488926</time>
+    <user>anag+factory</user>
+    <comment>sync obsolete changes from SLE15</comment>
+    <requestid>1132760</requestid>
+  </revision>
 </revisionlist>

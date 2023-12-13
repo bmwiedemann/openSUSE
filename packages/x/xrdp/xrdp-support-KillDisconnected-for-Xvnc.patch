@@ -1,8 +1,8 @@
-Index: b/sesman/session.c
+Index: xrdp-0.9.23.1/sesman/session.c
 ===================================================================
---- a/sesman/session.c	2018-08-10 20:47:37.977842303 +0800
-+++ b/sesman/session.c	2018-08-10 20:50:06.203134988 +0800
-@@ -732,6 +729,16 @@ session_start_fork(tbus data, tui8 type,
+--- xrdp-0.9.23.1.orig/sesman/session.c	2023-11-30 21:35:45.365863285 +0100
++++ xrdp-0.9.23.1/sesman/session.c	2023-11-30 21:35:45.361863283 +0100
+@@ -825,6 +825,16 @@
  
                      g_free(passwd_file);
  

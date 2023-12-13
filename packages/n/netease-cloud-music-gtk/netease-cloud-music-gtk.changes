@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 13 03:01:42 UTC 2023 - gmg 137 <gmg137@live.com>
+
+- Release version 2.3.0
+ + Fix missing first favorite album issue
+ + Fix flashback when operating frequently #230
+ + Add desktop lyrics support #241
+ + Optimize the logic of drag and drop progress bar
+ + Optimize asynchronous task scheduling
+ + Update mpris library to mpris-server
+ + Optimize playback logic
+ + Add simple radio function #250
+ + Update dependencies
+ + Fix other bugs
+
+-------------------------------------------------------------------
 Tue Dec 20 09:26:20 UTC 2022 - gmg 137 <gmg137@live.com>
 
 - Release version 2.2.0

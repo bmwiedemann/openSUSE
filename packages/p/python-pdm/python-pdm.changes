@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Dec 13 02:58:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.10.4:
+  * Do not detect as requirements.txt if the file is a python script.
+  * Provide information of the original line when parsing requirement fails.
+  * Resolve `-r` requirements paths relative to the requirement file they
+    are specified in.
+  * Updating package now overwrites the old files instead of removing
+    before installing.
+  * Improve the error message when a specific package can't be found in the
+    lockfile.
+  * Add lock option to resolve direct dependencies to the minimal versions
+    available.
+  * Fix a bug that build requirements are installed into wrong location
+    when using `--venv` option.
+  * Officially supports python3.12 now.
+  * Fix an issue that `--no-lock` option doesn't work as expected. Also
+    support `--no-lock` option for `add`, `remove` and `update` commands.
+  * Use `findpython` to find pythons with the spec given by the user.
+  * Support passing filter patterns as positional arguments to `pdm list`
+    command.  Add `--tree` as an alias and preferred name of `--graph` option.
+  * Switch to truststore by default.
+  * Allow `pdm run` to run a script with the relative or absolute path.
+  * Fix the compatibility issue with copier 8.0+.
+  * Makes `comarable_version("1.2.3+local1") == Version("1.2.3")`.
+  * Default behavior for pdm venv activate when shell detection fails.
+  * Handle parsing errors when converting from poetry-style metadata.
+  * Remove the legacy build backend `pdm-pep517`.
+  * Fix the comparison of the candidate keys in the lockfile.
+  * Don't update `pyproject.toml` if both `--unconstrained` and `--dry-run`
+    are passed to `pdm update`.
+  * Skip sources with empty URL when merging sources.
+  * Support target python with other architectures.
+  * Allow to change the python providers from the config.
+  * Fix a bug that egg-info directories are not removed completely, leading
+    to incomplete distribution.
+  * Skip distributions with wrong package meta information and duplicate path.
+  * Avoid mistakenly passing command-line arguments while testing.
+  * Fix a bug that lockfile groups are overwritten when running locking in
+    preceding step of `pdm install`.
+  * Tolerate and actually ignore the local versions in version specifiers.
+  * Fix a bug that shared cache cannot support overlapping namespace packages.
+  * Fix a bug that `pdm install --plugins` can't install self.
+  * Fix a cache collision between named requirements and url requirements.
+  * `pdm init` now accepts a template argument to initialize project from a
+    built-in or Git template.
+  * Replace the `DeprecationWarning` with `FutureWarning` for better exposure.
+  * Serve `install-pdm.py` and its checksum file on the docs site.
+  * Add support for using `truststore` as the SSL backend. This only works
+    on Python 3.10 or newer.
+  * Fix the breaking change by adding the functions back to the old location
+    with deprecation warnings.
+  * Fix the duplicate entries in the output of `pdm self list`.
+  * Disable hashes caching for local files.
+  * Populate the `url` field when converting requirements from a
+    Pipfile-style file requirement.
+  * Fix a bug that empty source tables in configuration files causes errors
+    when running pdm commands.
+  * Fix a resolution conflict caused by requested yanked version also in
+    other transitive dependencies.
+
+-------------------------------------------------------------------
 Thu Jun 22 07:41:39 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix building with Python 3.9

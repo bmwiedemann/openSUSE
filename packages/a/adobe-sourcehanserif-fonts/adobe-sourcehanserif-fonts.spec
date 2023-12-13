@@ -61,6 +61,7 @@ Summary:        Multi-weight pan-CJK font with Simplified Chinese localization
 Group:          System/X11/Fonts
 Provides:       scalable-font-zh_CN
 Provides:       locale(zh_CN)
+%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-cn-fonts
 %{shared_description}
@@ -76,6 +77,7 @@ Summary:        Multi-weight pan-CJK font with Hong Kong glyph forms
 Group:          System/X11/Fonts
 Provides:       scalable-font-zh_HK
 Provides:       locale(zh_HK)
+%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-hk-fonts
 %{shared_description}
@@ -91,6 +93,7 @@ Summary:        Multi-weight pan-CJK font with Japanese glyph forms
 Group:          System/X11/Fonts
 Provides:       scalable-font-jp
 Provides:       locale(jp)
+%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-jp-fonts
 %{shared_description}
@@ -106,6 +109,7 @@ Summary:        Multi-weight pan-CJK font with Korean glyph forms
 Group:          System/X11/Fonts
 Provides:       scalable-font-kr
 Provides:       locale(kr)
+%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-kr-fonts
 %{shared_description}
@@ -124,6 +128,7 @@ Provides:       adobe-sourcehanserif-fonts = %version
 Provides:       scalable-font-zh_TW
 Provides:       locale(zh_TW)
 Obsoletes:      adobe-sourcehanserif-fonts < %version
+%reconfigure_fonts_prereq
 
 %description -n adobe-sourcehanserif-tw-fonts
 %{shared_description}

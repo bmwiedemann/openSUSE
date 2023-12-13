@@ -17,7 +17,7 @@
 
 
 Name:           python-soxr
-Version:        0.3.5
+Version:        0.3.7
 Release:        0
 Summary:        High quality, one-dimensional sample-rate conversion library
 License:        LGPL-2.1-or-later

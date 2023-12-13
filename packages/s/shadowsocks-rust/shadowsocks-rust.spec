@@ -87,6 +87,7 @@ getent passwd shadowsocks >/dev/null || %{_sbindir}/useradd --system -c "shadows
 %service_add_post %{name}-server.service
 %service_add_post %{name}-manager.service
 chown root:shadowsocks %{_sysconfdir}/shadowsocks -R
+chmod 640 %{_sysconfdir}/shadowsocks -R
 
 %preun
 %service_del_preun %{name}-client.service

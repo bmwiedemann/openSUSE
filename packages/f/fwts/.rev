@@ -1047,4 +1047,41 @@
   * fwts-test: sync up the removing ARM specific for ebbr</comment>
     <requestid>1097898</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>3b6647f564c81aacdf99808b4885d8c2</srcmd5>
+    <version>23.11.00</version>
+    <time>1702488986</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 23.11.00:
+  * snapcraft: add source type for repo
+  * snapcraft: update the source repo for snap build
+  * lib: fwts_version.h - update to V23.11.00
+  * debian: update changelog
+  * fwts-test: add regression tests for iBFT
+  * acpi: ibft: add tests for iBFT table
+  * auto-packager: mkpackage.sh: add noble
+  * lib: framework: fix the unclear error message of the results log
+  * auto-packager: update the fwts git repo
+  * fwts-test: add regression tests for RAS2
+  * acpi: ras2: add test for ACPI RAS2 table
+  * acpi/wmi: Add WMI GUID for the wmi-bmof driver
+  * fwts-test: sync up with the klog message update
+  * fwts-test: sync up the SPTT typo fix
+  * klog.json: Add some missing power kernel messages to klog database
+  * klog.json: Add some missing battery kernel messages to klog database
+  * klog.json: Add some missing bus kernel messages to klog database
+  * klog.json: Add some missing nsaccess kernel messages to klog database
+  * klog.json: Add some missing exutils kernel messages to klog database
+  * klog.json: Add some missing hwregs kernel messages to klog database
+  * klog.json: Add some missing tbfadt kernel messages to klog database
+  * klog.json: Add some missing exfield kernel messages to klog database
+  * klog.json: Add some missing rslist kernel messages to klog database
+  * klog.json: Add some missing evmisc kernel messages to klog database
+  * klog.json: Add some missing exmisc kernel messages to klog database
+  * klog.json: Add some missing efi64 kernel messages to klog database
+  * klog.json: Add some missing exresolv kernel messages to klog database
+  * acpi: aspt: fix typo of SPTT
+  * README: modify the fwts git repository</comment>
+    <requestid>1132868</requestid>
+  </revision>
 </revisionlist>

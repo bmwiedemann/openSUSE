@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:02:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta4:
+  * Bump version. (#999)
+  * Add gate for TFE tests that use the network (#997)
+  * Revert "Fixes #898: Replace hashicorp and terraform references"
+    (#995)
+  * Add Technical Steering Committee Summary for 2023-12-05 (#990)
+  * Testable Homebrew instructions (#984)
+  * Update CHANGELOG with provider namespace change (#987)
+
+-------------------------------------------------------------------
 Fri Dec 08 17:02:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.6.0~beta3:

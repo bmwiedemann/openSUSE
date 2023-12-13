@@ -28,12 +28,14 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX(?)-DOWNSTREAM
+Patch1:         0001-Drop-use-of-QtFeedback.patch
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flex
 BuildRequires:  gmp-devel
-BuildRequires:  mpfr-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  mpfr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)

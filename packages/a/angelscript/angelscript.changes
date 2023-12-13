@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Sun Dec 10 19:51:45 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.36.1
+  * Bug fixes
+    * Fixed assert failure with void expression in initialization
+      list
+    * Fixed assert failure with unsafe references turned on and
+      temporary copy of value in function call
+    * Fixed crash when doing handle assign from object handle
+      received by reference parameter
+    * Fixed error in compiler with unsafe references turned on and
+      destruction of temporary variables in boolean expressions
+    * Fixed crash when passing null to a ?&inout param with unsafe
+      references turned on
+    * Fixed assert failure when compiling switch case with
+      registered global const property
+    * Fixed error in parser with default array and initialization
+      lists
+    * Fixed crash in compiler when same funcdef declaration is
+      compiled multiple times in different modules
+    * Fixed lookup bug with use of partial namespace in scope when
+      already within a namespace
+    * Fixed assert failure in compiler when class has invalid
+      opCast method with parameters
+    * Parser failed to understand lambda functions with explicit
+      argument types with &in, &out, or &inout
+    * Fixed bug with use of default array on types without default
+      constructors
+    * Fixed bug with named args and construct calls
+    * Fixed bug with variables declared in for loop being seen as
+      in-scope by debugger after the loop ended
+    * Fixed name conflict error for lambdas being rebuilt multiple
+      times with CompileFunction
+    * Fixed assert failure when explicitly casting anonymous init
+      list to an object
+    * Fixed assert failure on bitwise operation with boolean value
+    * Fixed issue in compiler with unsafe references enabled and
+      &out parameters
+    * Compiler now gives proper error when using temporary object
+      for lvalue in assignment
+    * BindImportedFunction was not giving error when attempting
+      to bind class method
+    * Fixed bug in save bytecode when there were multiple
+      variables in different scope occupying the same stack
+      position
+    * Fixed bug in as_callfunc_x64_gcc.cpp when compiling with
+      optimizations on gnuc
+    * Fixed bug in compiler with compound assignment, virtual
+      property, and unsafe references
+    * Saved bytecode didn't store the 'property' function trait
+    * Fixed crash with template instance referred by other
+      template instance being deleted prematurely
+    * Fixed specialization of templates with multiple subtypes
+  * Library
+    * Improved the error message when a boolean expression is
+      required to inform the type that was given
+    * Improved error message when delegate object cannot be
+      created
+  * Script language
+    * Compiler now recognizes when switch cases have return in
+      all paths
+    * Anonymous functions can now be declared with nameless
+      arguments
+  * Add-ons & Samples
+    * Improved error message when array cannot be instantiated
+      due to subtype not having any default constructor
+    * Operations with strings and primitives can now be easily
+      disabled by compiling the add-on with
+      AS_NO_IMPL_OPS_WITH_STRING_AND_PRIMITIVE=1
+    * ScriptBuilder no longer accepts #include directives with
+      non-terminated strings for the filename
+    * The serializer add-on is now capable of restoring objects
+      only referenced from handles
+    * Fixed compiler warnings on deprecated sprintf in scriptarray
+      and scriptstdstring with xcode
+  * Project
+    * Fixed cmake project for compiling on apple arm64
+    * Changed the cmake project to allow it to be included in
+      other projects directly
+- Changes in version 2.36.0
+  * Bug fixes
+    * Fixed 32bit/64bit compatibility of saved bytecode with
+      unsafe references enabled
+    * Fixed 32bit/64bit compatibility of saved bytecode in
+      functions returning handles
+    * Destructor for template value types now get a unique
+      function with correct object type
+    * Fixed crash in compiler when compiling initialization lists
+      for a global variable with a higher index than 2^15
+    * Fixed crash that could happen on cleaning up stack when
+      unsafe references is used
+    * Fixed crash in context stack unwind if it happened at a
+      position after a branch return that returns a value object
+      by value
+    * Fixed GetAddressOfVar returning null for registered value
+      pod types without constructor
+    * Fixed GetAddressOfVar returning null for registered value
+      types when the same offset is shared in multiple scopes
+    * asIScriptEngine::AssignScriptObject didn't return any error
+      when a type didn't have a value assignment operator
+    * Fixed assert failure when two funcdefs with same name in
+      two different classes
+  * Script language
+    * Improved implicit conversion rules to reduce number of type
+      ambiguity errors for function overloads and ternary
+      operators
+    * Ternary condition will now return the result as handle if
+      possible to avoid unnecessary copy of objects
+  * Library
+    * Added engine property asEP_IGNORE_DUPLICATE_SHARED_INTF to
+      add backwards compatibility with 2.35.0 when scripts include
+      declaration of shared interfaces more than once
+    * Compiler now stores info on temporary variables too to allow
+      these to be inspected at runtime
+    * Added engine property to dynamically turn off debug output
+    * When asEP_ALLOW_UNSAFE_REFERENCES is turned on the
+      destruction of temporary objects will be deferred to end
+      of expressions
+  * Library interface
+    * asIScriptContext::GetAddressOfVar now supports returning the
+      address of a reference parameter without dereferencing it
+    * asIScriptContext::GetAddressOfVar now supports returning the
+      address of local value types even when not initialized yet
+    * Added asIScriptContext::GetVar to retrieve static
+      information on variables on the stack
+    * Deprecated asIScriptContext::GetVarName and GetVarTypeId
+    * asIScriptContext has new methods to support serialization
+      of context state
+  * Add-ons & Samples
+    * Fixed script array comparison for 64bit integers
+    * CScriptArray with CScriptHandle as sub type can now be
+      correctly copied
+    * CScriptArray::SetValue now works with CScriptHandle as
+      sub type
+    * Fixed a compatibility issue in autowrapper WRAP_MFN_PR on
+      clang compilers
+  * Project
+    * Added support for Linux with arm64 in gnuc project
+    * Added MSVC2022 project files 
+
+-------------------------------------------------------------------
 Thu Oct 21 14:45:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.35.1

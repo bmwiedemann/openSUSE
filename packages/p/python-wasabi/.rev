@@ -7,4 +7,14 @@
     <comment>A lightweight console printing and formatting toolkit</comment>
     <requestid>1102770</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42a18770ef9711b8f281cbfa85a37551</srcmd5>
+    <version>1.1.2</version>
+    <time>1702488980</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.2:
+  * Add typing overloads so `msg.fail` with `exits=True/1` has
+    the `NoReturn` type like `sys.exit` (#41).</comment>
+    <requestid>1132858</requestid>
+  </revision>
 </revisionlist>

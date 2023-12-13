@@ -218,4 +218,22 @@
 - Drop heimer-4.1.0-remove-range.patch</comment>
     <requestid>1088260</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>be7c173d0f68c610b3121e2e46c3c838</srcmd5>
+    <version>4.3.0</version>
+    <time>1702488905</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.3.0:
+  * Fix #249: Option to include grid on export
+    + Grid will be exported if set visible
+    + Works for both PNG and SVG exports
+  * Fix #251: Feature request: child has same colors as parent
+    + Change &quot;Copy on Drag&quot; behavior so that only the style will be copied
+    + Set default filename with a timestamp in PNG and SVG export dialogs
+    + Disable recent file entries that don't exist anymore
+  * Optimize rendering of grid lines
+    + Prevent situations where a zoomed-out view would have way too
+      many grid lines visible, even multiple lines per pixel</comment>
+    <requestid>1132767</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-wsaccel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wsaccel
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        Accelerator for ws4py and AutobahnPython
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/methane/wsaccel
 Source:         https://github.com/methane/wsaccel/archive/v%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/methane/wsaccel/master/LICENSE
-BuildRequires:  %{python_module Cython >= 0.16}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -41,13 +41,12 @@ WSAccell is WebSocket accelerator for `AutobahnPython <http://autobahn.ws/python
 
 %prep
 %setup -q -n wsaccel-%{version}
-cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -57,6 +56,7 @@ PYTHONPATH=%{buildroot}%{python3_sitearch} pytest-%{python3_bin_suffix} tests
 %files %{python_files}
 %doc ChangeLog README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/wsaccel
+%{python_sitearch}/wsaccel-%{version}.dist-info
 
 %changelog

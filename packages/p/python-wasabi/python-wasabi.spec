@@ -19,12 +19,12 @@
 %{?sle15_python_module_pythons}
 %define modname wasabi
 Name:           python-wasabi
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        A lightweight console printing and formatting toolkit
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
-URL:            https://pypi.org/project/wasabi/
+URL:            https://github.com/explosion/wasabi
 Source:         https://github.com/explosion/%{modname}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

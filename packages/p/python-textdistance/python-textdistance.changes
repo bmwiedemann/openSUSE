@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:07:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * Drop abydos
+  * Remove executable bit from filesystem permissions of
+    README.md
+  * Replace deprecated license_file with license_files in
+    setup.cfg
+
+-------------------------------------------------------------------
 Wed Feb  8 04:09:31 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.5.0:
@@ -28,7 +38,7 @@ Tue Mar  1 12:20:22 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Feb 18 23:01:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 build (no numpy) 
+- skip python 3.6 build (no numpy)
 
 -------------------------------------------------------------------
 Sun Jan  3 14:27:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -39,4 +49,4 @@ Sun Jan  3 14:27:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Sat Dec 19 22:06:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Initial specfile for version 4.2.0
-- required by spyder 4.2.1 
+- required by spyder 4.2.1

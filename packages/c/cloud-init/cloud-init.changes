@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Dec  1 23:16:08 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
-- Move fdupes call back to %install 
+- Move fdupes call back to %install (boo#1214169) 
 
 -------------------------------------------------------------------
 Mon Oct  9 14:26:40 UTC 2023 - Robert Schweikert <rjschwei@suse.com>

@@ -17,4 +17,20 @@
   * Deprecate implicit dtype conversion</comment>
     <requestid>1090089</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e57c1b7965046c08be1899033ff0ca03</srcmd5>
+    <version>0.3.7</version>
+    <time>1702488982</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.7:
+  * Add Python 3.12 builds
+  * Fix `__libsoxr_version__` (https://github.com/dofuuz/python-
+    soxr/pull/22)
+  * Fix version importing for setuptools_scm&lt;7 (Fix #21)
+- update to 0.3.6:
+  * Add __libsoxr_version__ to check version of linked libsoxr
+
+  * Deprecate implicit dtype conversion</comment>
+    <requestid>1132860</requestid>
+  </revision>
 </revisionlist>

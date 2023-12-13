@@ -1,3 +1,16 @@
+Thu Nov 30 20:47:32 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+-------------------------------------------------------------------
+
+- Trivial rebase of xrdp-disable-8-bpp-vnc-support.patch.
+- Trivial rebase of xrdp-support-KillDisconnected-for-Xvnc.patch.
+- Rebase xrdp-avahi.diff.
+- Rebase xrdp-bsc965647-allow-admin-choose-desktop.patch. Add MATE Desktop
+  support. Launch all desktop session in a dbus-run-session context to
+  avoid violent interference with simultaneously running local sessions.
+- Trivial rebase of xrdp-filter-tab-from-mstsc-on-focus-change.patch.
+- Disable xrdp-fate318398-change-expired-password.patch. It does not apply
+  cleanly since xrdp 0.9.18. Reconsider its usage.
+
 -------------------------------------------------------------------
 Wed Oct 18 09:23:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 

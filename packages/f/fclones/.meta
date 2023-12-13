@@ -1,0 +1,7 @@
+<package name="fclones" project="openSUSE:Factory">
+  <title>fclones</title>
+  <description>fclones - Finds duplicate, unique, under- or over-replicated files
+
+A simple command-line utility program that finds duplicate, unique, under- or over-replicated files. Contrary to fdupes or rdfind, fclones processes files in parallel, which makes it very efficient on SSDs. fclones communicates through standard Unix streams and it can write reports in human- and machine-friendly formats, therefore you can easily combine it with other tools.</description>
+  <devel project="utilities" package="fclones"/>
+</package>

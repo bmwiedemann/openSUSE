@@ -57,4 +57,12 @@
 - Remove obsolete ocaml-calendar.patch</comment>
     <requestid>1056069</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ff466999e2604c50ca579bd64666dd84</srcmd5>
+    <version>3.0.0</version>
+    <time>1702488925</time>
+    <user>anag+factory</user>
+    <comment>sync obsolete changes from SLE15</comment>
+    <requestid>1132759</requestid>
+  </revision>
 </revisionlist>

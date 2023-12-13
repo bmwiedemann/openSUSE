@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:22:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.5.3:
+  * FWI-5385 Add quiet flag to polaris audit CLI command to
+    suppress 'upload to Insights' prompt (#1017)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Wed Nov 01 19:21:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 8.5.2:

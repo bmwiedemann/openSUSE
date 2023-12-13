@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:21:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Temporarily revert the change on non-Windows systems where
+    only login shells are modified
+
+-------------------------------------------------------------------
 Thu Aug 10 07:10:31 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68, jsc#PED-5573)
@@ -14,7 +21,7 @@ Mon Mar 14 10:06:06 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
 
 - update to 1.7.0
   * Fix path normalization to be aware of case-insensitive
-    platforms and symlinks. 
+    platforms and symlinks.
   * Use locale's encoding when handling output from subprocesses
   * Modify bash start-up files based on their existence
   * Remove distro dependency

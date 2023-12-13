@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:02:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.1:
+  * [Backport release-2.23] Fix: detect top level git rep dir to
+    set `OKTETO_GIT_BRANCH` and `OKT… (#4085)
+  * [Backport release-2.23] Fix panic in `okteto init --deploy`
+    (#4082)
+  * remove okteto cloud as context option (#4073) (#4081)
+
+-------------------------------------------------------------------
 Mon Dec 04 14:17:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.23.0:

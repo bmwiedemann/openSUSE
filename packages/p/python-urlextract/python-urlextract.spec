@@ -1,7 +1,7 @@
 #
 # spec file for package python-urlextract
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-urlextract
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Collects and extracts URLs from given text
 License:        MIT

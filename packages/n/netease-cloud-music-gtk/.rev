@@ -164,4 +164,22 @@
 </comment>
     <requestid>1043882</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8cfe4a7cc66c4e802981128959a72c20</srcmd5>
+    <version>2.3.0</version>
+    <time>1702488937</time>
+    <user>anag+factory</user>
+    <comment>- Release version 2.3.0
+ + Fix missing first favorite album issue
+ + Fix flashback when operating frequently #230
+ + Add desktop lyrics support #241
+ + Optimize the logic of drag and drop progress bar
+ + Optimize asynchronous task scheduling
+ + Update mpris library to mpris-server
+ + Optimize playback logic
+ + Add simple radio function #250
+ + Update dependencies
+ + Fix other bugs</comment>
+    <requestid>1132785</requestid>
+  </revision>
 </revisionlist>

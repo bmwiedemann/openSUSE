@@ -1,7 +1,7 @@
-Index: xrdp-0.9.15/configure.ac
+Index: xrdp-0.9.23.1/configure.ac
 ===================================================================
---- xrdp-0.9.15.orig/configure.ac
-+++ xrdp-0.9.15/configure.ac
+--- xrdp-0.9.23.1.orig/configure.ac
++++ xrdp-0.9.23.1/configure.ac
 @@ -9,6 +9,7 @@ AC_PROG_CC
  AC_C_CONST
  AC_PROG_LIBTOOL
@@ -10,44 +10,39 @@ Index: xrdp-0.9.15/configure.ac
  PKG_PROG_PKG_CONFIG
  if test "x$PKG_CONFIG" = "x"; then
    AC_MSG_ERROR([please install pkg-config])
-Index: xrdp-0.9.15/xrdp/Makefile.am
+Index: xrdp-0.9.23.1/xrdp/Makefile.am
 ===================================================================
---- xrdp-0.9.15.orig/xrdp/Makefile.am
-+++ xrdp-0.9.15/xrdp/Makefile.am
-@@ -12,7 +12,9 @@ AM_CPPFLAGS = \
-   -DXRDP_SOCKET_PATH=\"${socketdir}\" \
-   -I$(top_builddir) \
+--- xrdp-0.9.23.1.orig/xrdp/Makefile.am
++++ xrdp-0.9.23.1/xrdp/Makefile.am
+@@ -14,6 +14,7 @@ AM_CPPFLAGS = \
    -I$(top_srcdir)/common \
--  -I$(top_srcdir)/libxrdp
-+  -I$(top_srcdir)/libxrdp \
+   -I$(top_srcdir)/sesman/libscp \
+   -I$(top_srcdir)/libxrdp \
 +  $(AVAHI_CFLAGS)
-+
+   $(IMLIB2_CFLAGS)
  
  XRDP_EXTRA_LIBS =
- 
-@@ -46,6 +48,7 @@ xrdp_SOURCES = \
+@@ -44,6 +45,7 @@ xrdp_SOURCES = \
    lang.c \
    xrdp.c \
    xrdp.h \
 +  xrdp_avahi.c \
    xrdp_bitmap.c \
-   xrdp_cache.c \
-   xrdp_encoder.c \
-@@ -63,7 +66,8 @@ xrdp_SOURCES = \
- xrdp_LDADD = \
-   $(top_builddir)/common/libcommon.la \
+   xrdp_bitmap_load.c \
+   xrdp_bitmap_common.c \
+@@ -65,6 +67,7 @@ xrdp_LDADD = \
+   $(top_builddir)/sesman/libscp/libscp.la \
    $(top_builddir)/libxrdp/libxrdp.la \
--  $(XRDP_EXTRA_LIBS)
-+  $(XRDP_EXTRA_LIBS) \
-+  $(AVAHI_LIBS)
+   $(IMLIB2_LIBS) \
++  $(AVAHI_LIBS) \
+   $(XRDP_EXTRA_LIBS)
  
  xrdpsysconfdir=$(sysconfdir)/xrdp
- 
-Index: xrdp-0.9.15/xrdp/xrdp.h
+Index: xrdp-0.9.23.1/xrdp/xrdp.h
 ===================================================================
---- xrdp-0.9.15.orig/xrdp/xrdp.h
-+++ xrdp-0.9.15/xrdp/xrdp.h
-@@ -523,3 +523,10 @@ server_add_char_alpha(struct xrdp_mod* m
+--- xrdp-0.9.23.1.orig/xrdp/xrdp.h
++++ xrdp-0.9.23.1/xrdp/xrdp.h
+@@ -580,3 +580,10 @@ server_add_char_alpha(struct xrdp_mod *m
  int
  server_session_info(struct xrdp_mod *mod, const char *data, int data_bytes);
  
@@ -58,11 +53,11 @@ Index: xrdp-0.9.15/xrdp/xrdp.h
 +xrdp_avahi_fini(void);
 +void
 +xrdp_avahi_get_port(char *port);
-Index: xrdp-0.9.15/xrdp/xrdp_avahi.c
+Index: xrdp-0.9.23.1/xrdp/xrdp_avahi.c
 ===================================================================
 --- /dev/null
-+++ xrdp-0.9.15/xrdp/xrdp_avahi.c
-@@ -0,0 +1,178 @@
++++ xrdp-0.9.23.1/xrdp/xrdp_avahi.c
+@@ -0,0 +1,182 @@
 +/*
 +   This program is free software; you can redistribute it and/or modify
 +   it under the terms of the GNU General Public License as published by
@@ -84,6 +79,10 @@ Index: xrdp-0.9.15/xrdp/xrdp_avahi.c
 +   avahi integration
 +
 +*/
++
++#if defined(HAVE_CONFIG_H)
++#include <config_ac.h>
++#endif
 +
 +#include <stdio.h>
 +#include <unistd.h>
@@ -241,15 +240,14 @@ Index: xrdp-0.9.15/xrdp/xrdp_avahi.c
 +    if (fd != -1)
 +        g_file_close(fd);
 +}
-Index: xrdp-0.9.15/common/arch.h
+Index: xrdp-0.9.23.1/common/arch.h
 ===================================================================
---- xrdp-0.9.15.orig/common/arch.h
-+++ xrdp-0.9.15/common/arch.h
-@@ -20,28 +20,7 @@
- #define ARCH_H
- 
+--- xrdp-0.9.23.1.orig/common/arch.h
++++ xrdp-0.9.23.1/common/arch.h
+@@ -22,27 +22,7 @@
  #include <stdlib.h>
--
+ #include <string.h>
+ 
 -#if defined(HAVE_STDINT_H)
  #include <stdint.h>
 -#else

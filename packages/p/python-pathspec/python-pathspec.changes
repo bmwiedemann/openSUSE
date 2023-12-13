@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Dec 12 13:14:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * `Issue #84`_: PathSpec.match_file() returns None since
+    0.12.0.
+  * Major changes:
+  * Dropped support of EOL Python 3.7. See `Pull #82`_.
+  * API changes:
+  * Signature of protected method
+    `pathspec.pathspec.PathSpec._match_file()` (with a leading
+    underscore) has been changed from `def _match_file(patterns:
+    Iterable[Pattern], file: str) -> bool` to `def
+    _match_file(patterns: Iterable[Tuple[int, Pattern]], file:
+    str) -> Tuple[Optional[bool], Optional[int]]`.
+  * Added `pathspec.pathspec.PathSpec.check_*()` methods. These
+    methods behave similarly to `.match_*()` but return
+    additional information in the `pathspec.util.CheckResult`
+    objects (e.g., `CheckResult.index` indicates the index of the
+    last pattern that matched the file).
+  * Added `pathspec.pattern.RegexPattern.pattern` attribute which
+    stores the original, uncompiled pattern.
+  * Mark Python 3.12 as supported.
+  * Improve test debugging.
+  * Improve type hint on *on_error* parameter on
+    `pathspec.pathspec.PathSpec.match_tree_entries()`.
+  * Improve type hint on *on_error* parameter on
+    `pathspec.util.iter_tree_entries()`.
+
+-------------------------------------------------------------------
 Thu Sep  7 11:27:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.2:

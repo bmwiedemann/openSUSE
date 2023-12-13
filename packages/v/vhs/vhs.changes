@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec 13 01:46:55 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.7.1:
+  * With VHS v0.7.0, you can capture any moment of tape. Just add
+    `Screenshot <filename>.png> to your tapes`
+  * VHS can now talk to your system clipboard. Please keep this in
+    mind when executing tapes from unknown sources.
+  * VHS 0.7.0 has some new additions, introducing top level Shift+
+    modifier and the Insert + Delete keys!
+  * parser: catch out of order modifiers
+  * parser: refactor parseCtrl and test
+  * Fix tomorrow themes
+  * docs: document source command
+  * feat: add insert and delete key
+  * Update themes (#377)
+  * fix: tests
+  * docs: record clipboard.tape to clipboard.gif
+  * Fix VHS for Nushell version ^0.83 (#373)
+  * feat: improve vhs new (#355)
+  * docs: add `LoopOffset` documentation
+
+-------------------------------------------------------------------
 Thu Jul 20 19:25:44 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.6.0:

@@ -18,9 +18,9 @@
 
 
 %define capname MYGUI
-%define _sover  3_4_1
+%define _sover  3_4_3
 Name:           MyGUI
-Version:        3.4.1
+Version:        3.4.3
 Release:        0
 Summary:        A GUI library for Ogre Rendering Engine
 License:        MIT
@@ -29,12 +29,6 @@ URL:            http://mygui.info/
 Source:         https://github.com/MyGUI/mygui/archive/MyGUI%{version}.tar.gz
 Source1:        %{name}.png
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM MyGUI-install-libCommon.patch -- https://github.com/MyGUI/mygui/pull/233
-Patch0:         MyGUI-install-libCommon.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-linking-with-Wl-no-undefined.patch -- https://github.com/MyGUI/mygui/pull/232
-Patch1:         0001-Fix-linking-with-Wl-no-undefined.patch
-# PATCH-FIX-UPSTREAM mygui-add-missing-include.patch -- Add missing include
-Patch2:         mygui-add-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  dejavu
 BuildRequires:  dos2unix
@@ -155,6 +149,7 @@ This subpackage contains the development documentation for MyGUI.
   -DMYGUI_INSTALL_DEMOS=ON \
   -DMYGUI_INSTALL_DOCS=ON \
   -DMYGUI_INSTALL_MEDIA=ON \
+  -DMYGUI_DONT_USE_OBSOLETE=ON \
   -DMYGUI_FULL_RPATH=OFF \
   -DCMAKE_SKIP_RPATH=ON \
   -DCMAKE_BUILD_TYPE=release \

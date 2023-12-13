@@ -29,10 +29,10 @@
 
 %define sonum 1
 %define libname libAvogadro%{sonum}
-%define molecules_rev b1e16c5dc6d15e72d30dd6c4fca31b2c12025efc
-%define crystals_rev  4b39c77ec1043cfb7a73e7b5dd51e24d36a95c44
+%define molecules_rev 1.98.0
+%define crystals_rev  1.98.0
 Name:           avogadrolibs
-Version:        1.97.0
+Version:        1.98.1
 Release:        0
 Summary:        Avogadro libraries for computational chemistry
 License:        BSD-3-Clause
@@ -42,11 +42,7 @@ Source1:        https://github.com/OpenChemistry/molecules/archive/%{molecules_r
 Source2:        https://github.com/OpenChemistry/crystals/archive/%{crystals_rev}.tar.gz#/crystals-%{crystals_rev}.tar.gz
 # PATCH-FIX-UPSTREAM not-install-gwavi.patch -- Library only used locally so no need to install this helper
 Patch0:         not-install-gwavi.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://github.com/OpenChemistry/avogadrolibs/commit/e48e67b85aae1f694b1d8c63b844bf8846006aae.patch#/Fix_qtplugins_surfaces_linking.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Avoid-ambigous-definition-of-mmtf-s-is_polymer.patch
-BuildRequires:  cmake >= 3.3
+BuildRequires:  cmake >= 3.24
 BuildRequires:  eigen3-devel >= 2.91.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -166,15 +162,12 @@ sed -i 's/add_subdirectory(overlayaxes)//' avogadro/qtplugins/CMakeLists.txt
 rm %{buildroot}%{_defaultdocdir}/avogadrolibs/LICENSE
 %fdupes %{buildroot}%{_datadir}
 
-%if %{with python}
-# Fixup install location
-mkdir -p %{buildroot}%{python3_sitearch}
-mv %{buildroot}%{_libdir}/avogadro %{buildroot}%{python3_sitearch}/avogadro
-%endif
-
 sed -i -e '1 s@^@#!/usr/bin/python3\n@' \
   %{buildroot}%{_libdir}/avogadro2/scripts/charges/*.py \
   %{buildroot}%{_libdir}/avogadro2/scripts/formatScripts/zyx.py
+
+# Remove exec permissions from scripts not in $$PATH
+chmod -x %{buildroot}%{_libdir}/avogadro2/scripts/energy/*.py
 
 %post -n %{libname} -p /sbin/ldconfig
 

@@ -57,4 +57,20 @@
 - Fix up the download URL due to upstream dropping v.</comment>
     <requestid>1063712</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44814ff4c3f16c253cd17ef597beb3da</srcmd5>
+    <version>4.6.0</version>
+    <time>1702488958</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.0:
+  * Drop abydos
+  * Remove executable bit from filesystem permissions of
+    README.md
+  * Replace deprecated license_file with license_files in
+    setup.cfg
+
+- skip python 3.6 build (no numpy)
+- required by spyder 4.2.1</comment>
+    <requestid>1132831</requestid>
+  </revision>
 </revisionlist>

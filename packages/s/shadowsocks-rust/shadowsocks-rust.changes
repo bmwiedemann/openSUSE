@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 13 13:55:57 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Set permissions as 640 for /etc/shadowsocks (boo#1216372)
+
+-------------------------------------------------------------------
 Sun Dec  3 09:25:05 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.17.1

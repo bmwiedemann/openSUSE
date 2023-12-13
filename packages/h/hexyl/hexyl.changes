@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 12 21:45:13 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.0
+  Features
+  * New --character-table option, with the ability to use
+    codepage 437.
+  * New --character-table=ascii option for a ASCII-only character
+    table.
+  Bugfixes
+  * Show output when doing hexyl /dev/zero.
+  * Respect NO_COLOR environment variable.
+
+-------------------------------------------------------------------
 Thu Oct 19 09:06:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.13.1

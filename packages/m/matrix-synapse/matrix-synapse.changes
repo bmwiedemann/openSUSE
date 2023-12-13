@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Dec 13 00:53:28 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.98.0
+  Synapse 1.98.0 will be the last Synapse release in 2023; the
+  regular release cadence will resume in January 2024.
+
+  Synapse will soon be forked by Element under an AGPLv3.0 licence
+  (with CLA, for proprietary dual licensing). You can read more
+  about this here:
+
+  https://matrix.org/blog/2023/11/06/future-of-synapse-dendrite/
+  https://element.io/blog/element-to-adopt-agplv3/
+
+  The Matrix.org Foundation copy of the project will be archived.
+  Any changes needed by server administrators will be communicated
+  via our usual announcements channels, but we are striving to make
+  this as seamless as possible.
+
+  - Features
+    - Synapse now declares support for Matrix v1.7, v1.8, and v1.9.
+      (#16707)
+    - Add on_user_login module API callback allowing to execute
+      custom code after (on) Auth. (#15207)
+    - Support MSC4069: Inhibit profile propagation. (#16636)
+    - Restore tracking of requests and monthly active users when
+      delegating authentication via MSC3861 to an OIDC provider.
+      (#16672)
+    - Add an autojoin setting for server notices rooms, so users
+      may be joined directly instead of receiving an invite.
+      (#16699)
+    - Follow redirects when downloading media over federation (per
+      MSC3860). (#16701)
+  - Bugfixes
+    - Enable refreshable tokens on the admin registration endpoint.
+      (#16642)
+    - Consistently bypass rate limits when using the server notice
+      admin API. (#16670)
+    - Fix a bug introduced in Synapse 1.7.2 where rooms whose power
+      levels lacked an events field could not be upgraded. (#16725)
+    - Fix GET /_synapse/admin/v1/federation/destinations admin API
+      returning null (instead of 0) for retry_last_ts and
+      retry_interval. (#16729)
+  - Improved Documentation
+    - Add schema rollback information to documentation. (#16661)
+    - Fix poetry version typo in the contributors' guide. (#16695)
+    - Switch the example UNIX socket paths to /run. Add HAProxy
+      example configuration for UNIX sockets. (#16700)
+    - Add documentation for how to validate the configuration file
+      with synapse.config script. (#16714)
+  - Internal Changes
+    - Clean-up unused tables. (#16522)
+    - Reduce a little database load while processing state auth
+      chains. (#16552)
+    - Reduce database load of pruning old user_ips. (#16667)
+    - Reduce DB load when forget on leave setting is disabled.
+      (#16668)
+    - Ignore encryption_enabled_by_default_for_room_type setting
+      when creating server notices room, since the notices will be
+      send unencrypted anyway. (#16677)
+    - Correctly read the to-device stream ID on startup using
+      SQLite. (#16682)
+    - Reoranganise test files. (#16684)
+    - Remove old full schema dumps which are no longer used.
+      (#16697)
+    - Raise poetry-core upper bound to <=1.8.1. This allows
+      contributors to import Synapse after poetry installing with
+      Poetry 1.6 and above. Contributed by Mo Balaa. (#16702)
+    - Add a workflow to try and automatically fixup linting in a
+      PR. (#16704)
+
+-------------------------------------------------------------------
 Tue Nov 28 15:22:31 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.97.0

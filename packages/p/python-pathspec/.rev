@@ -148,4 +148,36 @@
   * `Issue #43`_: Add support for addition operator</comment>
     <requestid>1109524</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>df7ee5a4d3b5017a67eaf8f63c545d0b</srcmd5>
+    <version>0.12.1</version>
+    <time>1702488846</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.1:
+  * `Issue #84`_: PathSpec.match_file() returns None since
+    0.12.0.
+  * Major changes:
+  * Dropped support of EOL Python 3.7. See `Pull #82`_.
+  * API changes:
+  * Signature of protected method
+    `pathspec.pathspec.PathSpec._match_file()` (with a leading
+    underscore) has been changed from `def _match_file(patterns:
+    Iterable[Pattern], file: str) -&gt; bool` to `def
+    _match_file(patterns: Iterable[Tuple[int, Pattern]], file:
+    str) -&gt; Tuple[Optional[bool], Optional[int]]`.
+  * Added `pathspec.pathspec.PathSpec.check_*()` methods. These
+    methods behave similarly to `.match_*()` but return
+    additional information in the `pathspec.util.CheckResult`
+    objects (e.g., `CheckResult.index` indicates the index of the
+    last pattern that matched the file).
+  * Added `pathspec.pattern.RegexPattern.pattern` attribute which
+    stores the original, uncompiled pattern.
+  * Mark Python 3.12 as supported.
+  * Improve test debugging.
+  * Improve type hint on *on_error* parameter on
+    `pathspec.pathspec.PathSpec.match_tree_entries()`.
+  * Improve type hint on *on_error* parameter on
+    `pathspec.util.iter_tree_entries()`.</comment>
+    <requestid>1132675</requestid>
+  </revision>
 </revisionlist>

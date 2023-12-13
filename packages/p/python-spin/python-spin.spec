@@ -17,16 +17,16 @@
 
 
 Name:           python-spin
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Developer tool for scientific Python libraries
 License:        BSD-3-Clause
 URL:            https://github.com/scientific-python/spin
 Source:         https://files.pythonhosted.org/packages/source/s/spin/spin-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}

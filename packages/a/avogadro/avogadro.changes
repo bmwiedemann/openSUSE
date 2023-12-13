@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec  6 11:12:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.98.1:
+  * Migrated typedefs and changed const to constexpr
+    (gh#OpenChemistry/avogadrolibs#1395)
+  * Fix Python module install dir
+    (gh#OpenChemistry/avogadrolibs#1413)
+  * Revert validation of filenames
+    (gh#OpenChemistry/avogadrolibs#1433).
+  * Parsing orca output would crash when swapping orbitals
+    (gh#OpenChemistry/avogadrolibs#1422)
+  * Maint: vtk: Add missing OpenGL link target
+    (gh#OpenChemistry/avogadrolibs#1412)
+- Update avogadro-i18n source to 1.98.0.
+- Requires avogadrolibs >= 1.98.0.
+- Bump required cmake version to 3.24 as required by upstream.
+
+-------------------------------------------------------------------
 Thu Sep 15 17:34:53 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.97.0

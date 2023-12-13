@@ -17,11 +17,10 @@
 
 
 Name:           fwts
-Version:        23.07.00
+Version:        23.11.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Other
 URL:            https://wiki.ubuntu.com/Kernel/Reference/fwts
 Source0:        %{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fwts-no-compiletime.patch

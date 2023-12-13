@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec 08 12:51:12 UTC 2023 - alexandre.vicenzi@suse.com
+
+- Update to version 2.10.7:
+  * CVEs:
+    * CVE-2023-45283 (boo#1216943)
+    * CVE-2023-45284 (boo#1216944)
+    * CVE-2023-47124 (boo#1217806)
+    * CVE-2023-47633 (boo#1217807)
+    * CVE-2023-47106 (boo#1217804)
+    * GHSA-7v4p-328v-8v5g, CVE-2023-39325 (boo#1216109)
+  * Bug fixes:
+      * [accesslogs] Fix preflight response status in access logs
+      * [accesslogs] Move origin fields capture to service level
+      * [acme] Do not check for wildcard domains for non DNS challenge
+      * [acme] Remove backoff for http challenge (CVE-2023-47124)
+      * [acme] Update go-acme/lego to v4.14.0
+      * [consul,consulcatalog] Update github.com/hashicorp/consul/api
+      * [http3] Update quic-go to v0.39.1
+      * [k8s/crd] Fix multiple subsets endpoint
+      * [k8s/ingress,k8s/crd,k8s,hub] Clean code related to Hub
+      * [k8s/ingress,k8s] fix: avoid panic on resource backends
+      * [kv] Ignore ErrKeyNotFound error for the KV provider
+      * [logs] Fixed datadog logs json format issue
+      * [metrics] Enable Prometheus provider cleanup when only the router's metrics level is activated
+      * [middleware,authentication] Adjust forward auth to avoid connection leak
+      * [middleware,server] Improve CNAME flattening to avoid unnecessary error logging
+      * [middleware,tracing,plugins] fix: traceability of the middleware plugins
+      * [middleware] Allow X-Forwarded-For delete operation
+      * [middleware] Encode query semicolons
+      * [middleware] Fix stripPrefix middleware is not applied to retried attempts
+      * [middleware] Missing trailer with custom errors middleware
+      * [middleware] Support informational headers in middlewares redefining the response writer
+      * [plugins] Improve error messages related to plugins
+      * [provider] Refuse recursive requests (CVE-2023-47633)
+      * [server] Deny request with fragment in URL path (CVE-2023-47106)
+      * [server] Update x/net and grpc/grpc-go
+      * [tracing] Remove deprecated code usage for datadog tracer
+      * [tracing] Update DataDog tracing dependency to v1.50.1
+      * [webui] Add missing accessControlAllowOriginListRegex to middleware view
+      * Fix false positive in url anonymization
+    * Misc:
+      * [webui] Updates the Hub tooltip content using a web component and adds an option to disable Hub button
+- Update Go version (CVE-2023-45283, CVE-2023-45284, CVE-2023-39325)
+
+-------------------------------------------------------------------
 Mon Jun 12 17:26:46 UTC 2023 - alexandre.vicenzi@suse.com
 
 - Update to version 2.10.1:

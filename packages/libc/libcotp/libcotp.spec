@@ -16,9 +16,9 @@
 #
 
 
-%define libsoname %{name}2
+%define libsoname %{name}3
 Name:           libcotp
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 %if 0%{?suse_version} >= 1600
 %ifarch x86_64
-BuildRequires:  libcriterion3-devel
+BuildRequires:  libcriterion-devel
 %endif
 %endif
 BuildRequires:  libgcrypt-devel >= 1.8.0

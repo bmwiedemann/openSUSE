@@ -10,11 +10,11 @@ Xvnc drops support for 8 bpp since 1.4.0. Trying to launch Xvnc in
  vnc/vnc.c | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
-Index: b/vnc/vnc.c
+Index: xrdp-0.9.23.1/vnc/vnc.c
 ===================================================================
---- a/vnc/vnc.c	2020-09-14 13:20:01.611135290 +0800
-+++ b/vnc/vnc.c	2020-09-14 13:24:50.515034607 +0800
-@@ -1914,13 +1914,16 @@ lib_mod_connect(struct vnc *v)
+--- xrdp-0.9.23.1.orig/vnc/vnc.c	2023-11-30 21:35:40.981861400 +0100
++++ xrdp-0.9.23.1/vnc/vnc.c	2023-11-30 21:35:40.977861398 +0100
+@@ -1656,13 +1656,16 @@
      switch (v->server_bpp)
      {
          case 8:

@@ -340,4 +340,41 @@
     <comment></comment>
     <requestid>1094865</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>87146f088ac6ba65323df4b8f2f9a3b6</srcmd5>
+    <version>2.10.4</version>
+    <time>1702488933</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.10.4:
+  * Do not detect as requirements.txt if the file is a python script.
+  * Provide information of the original line when parsing requirement fails.
+  * Resolve `-r` requirements paths relative to the requirement file they
+    are specified in.
+  * Updating package now overwrites the old files instead of removing
+    before installing.
+  * Improve the error message when a specific package can't be found in the
+    lockfile.
+  * Add lock option to resolve direct dependencies to the minimal versions
+    available.
+  * Fix a bug that build requirements are installed into wrong location
+    when using `--venv` option.
+  * Officially supports python3.12 now.
+  * Fix an issue that `--no-lock` option doesn't work as expected. Also
+    support `--no-lock` option for `add`, `remove` and `update` commands.
+  * Use `findpython` to find pythons with the spec given by the user.
+  * Support passing filter patterns as positional arguments to `pdm list`
+    command.  Add `--tree` as an alias and preferred name of `--graph` option.
+  * Switch to truststore by default.
+  * Allow `pdm run` to run a script with the relative or absolute path.
+  * Fix the compatibility issue with copier 8.0+.
+  * Makes `comarable_version(&quot;1.2.3+local1&quot;) == Version(&quot;1.2.3&quot;)`.
+  * Default behavior for pdm venv activate when shell detection fails.
+  * Handle parsing errors when converting from poetry-style metadata.
+  * Remove the legacy build backend `pdm-pep517`.
+  * Fix the comparison of the candidate keys in the lockfile.
+  * Don't update `pyproject.toml` if both `--unconstrained` and `--dry-run`
+    are passed to `pdm update`.
+  * Skip sources with empty URL when merging sources.</comment>
+    <requestid>1132784</requestid>
+  </revision>
 </revisionlist>

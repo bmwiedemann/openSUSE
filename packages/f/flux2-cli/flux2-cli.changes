@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:02:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.0:
+  * Drop support for Kubernetes EOL versions
+  * updating go-git-providers to v0.19.2
+  * Correct "sync" to "component" in log lines
+  * Update alpine and kubectl in flux-cli image
+  * Use `IsObjectNamespaced` from controller-runtime
+  * Update tests to `HelmRelease` v2beta2
+  * Adapt tree command to `HelmRelease` v2beta2
+  * Update `HelmRelease` to v2beta2
+  * Add force and reset flags to `flux reconcile hr`
+  * Update HelmRelease golden file with new message
+  * Update toolkit components
+  * Update Git dependencies
+  * build(deps): bump the ci group with 4 updates
+  * Update Helm OCI RFC - static HelmRepository design
+  * tests/int: do not wait for static objects
+  * Update all the references of NC v1beta2 to v1beta3
+  * non-reconciliable & readiness of static objects
+  * check readiness using kstatus
+  * bootstrap: provide better error message on timeout
+  * Update toolkit components
+  * Fix typos in flux bootstrap documentation
+  * show cluster instance name and version in flux check and flux
+    version
+  * build(deps): bump the ci group with 4 updates
+  * Fix flux install command so it returns an error when unexpected
+    arguments are passed
+  * OIDC identity matching for keyless verification
+  * Update dependencies
+  * make flux events work with lowercased kinds
+  * fix build_artifact.go typo
+  * build(deps): bump the ci group with 2 updates
+  * Update `fluxcd/pkg` dependencies
+  * Tweak permissions on created files
+  * build(deps): bump the ci group with 2 updates
+  * tests/int: Set exit code 1 on tf destroy fail
+  * feat: add gitea bootstrapper
+  * Display better uninstall prompt if flux is managed by a
+    different tool
+  * confirm before overriding installation by another manager
+  * build(deps): bump github.com/docker/docker in
+    /tests/integration
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump the ci group with 2 updates
+  * build(deps): bump google.golang.org/grpc in /tests/integration
+  * prevent flux install from overriding bootrapped cluster
+  * build(deps): bump the ci group with 1 update
+  * misc: clean up immediately and avoid delayed defer
+  * misc: fix hypothetical implicit memory aliasing
+  * misc: `sinceSeconds` -> `sinceDuration`
+  * misc: remove unused bits of code
+  * misc: address `wait.PollImmediate` deprecation
+  * misc: use `errors.As` instead of type checking
+  * misc: unconditional `strings.TrimPrefix`
+  * misc: address `kustomize/api/filesys` deprecation
+  * misc: simplify row append
+  * misc: address double import
+  * misc: use raw string for regex to avoid double esc
+  * misc: address unnecessary use of `fmt.Sprintf`
+  * misc: handle undhandled error
+  * misc: address `strings.Title` deprecation
+  * Add CLI flag for OCIRepo verify secret
+  * Print artifact source and revision only when available
+  * Upgrade github.com/fluxcd/pkg/oci
+  * fix: only wait for changeset if the result is not empty
+  * Update go-git-providers to v0.19.1
+  * e2e: Update Go dependencies
+  * build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+  * Update toolkit components
+  * build(deps): bump the ci group with 1 update
+  * Add badge for SLSA Level 3
+  * build(deps): bump the ci group with 1 update
+  * Improve AUR package templates
+    - remove armv6h #4224
+    - unique source name #4224
+    - improve `pkgver/_srcver` #4224
+    - fix source name in .SRCINFO
+  * tests/azure: update controller dependencies
+  * Update toolkit components
+  * update description of kubeconfig flags
+  * build(deps): bump the ci group with 4 updates
+  * Upgrade github.com/fluxcd/pkg/{git,git/gogit}
+  * chore: remove support armv6h for aur package #4224
+  * build(deps): bump the ci group with 3 updates
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump github.com/cyphar/filepath-securejoin in
+    /tests/azure
+  * build(deps): bump the ci group with 4 updates
+  * build(deps): bump github.com/docker/distribution in
+    /tests/integration
+  * build(deps): bump github.com/docker/docker in
+    /tests/integration
+  * workflows/e2e-azure: Disable new azure job
+  * workflows/e2e-gcp: Fix secret variable typo
+  * instructions for test user in Azure DevOps and GCP source repo
+  * tests/int: Separate ssh key names for Azure & GCP
+  * add workflow for gcp
+  * tests/int: Add IAM setup automation docs and misc fixes
+  * make tests for notifications provider agnostic
+  * Add terraform files and config for GCP
+  * Add refactored e2e tests
+  * Add 2.1.x backport label
+  * Fix links to fluxcd.io
+  * build(deps): bump the ci group with 2 updates
+
+-------------------------------------------------------------------
 Fri Oct 13 05:02:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.1.2:

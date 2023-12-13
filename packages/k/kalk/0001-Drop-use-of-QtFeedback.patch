@@ -1,0 +1,55 @@
+From 790b0156ab42a5f08f803be71656395740c0bd7c Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 12 Dec 2023 08:30:24 +0100
+Subject: [PATCH] Drop use of QtFeedback
+
+---
+ src/qml/NumberButton.qml | 18 ------------------
+ 1 file changed, 18 deletions(-)
+
+diff --git a/src/qml/NumberButton.qml b/src/qml/NumberButton.qml
+index b321f9f..8f15bf6 100644
+--- a/src/qml/NumberButton.qml
++++ b/src/qml/NumberButton.qml
+@@ -11,7 +11,6 @@ import QtQuick 2.15
+ import QtQuick.Layouts 1.1
+ import QtGraphicalEffects 1.12
+ import QtQuick.Controls 2.2 as Controls
+-import QtFeedback 5.0
+ 
+ import org.kde.kirigami 2.15 as Kirigami
+ 
+@@ -39,17 +38,6 @@ Item {
+     property color buttonBorderPressedColor: Qt.rgba(baseColor.r, baseColor.g, baseColor.b, 0.7)
+     property color buttonTextColor: Kirigami.Theme.textColor
+ 
+-    // vibration
+-    HapticsEffect {
+-        id: vibrate
+-        attackIntensity: 0.0
+-        attackTime: 0
+-        fadeTime: 0
+-        fadeIntensity: 0.0
+-        intensity: 0.5
+-        duration: 10
+-    }
+-
+     Controls.AbstractButton {
+         id: button
+         anchors.fill: parent
+@@ -110,12 +98,6 @@ Item {
+             }
+         }
+ 
+-        onPressedChanged: {
+-            if (pressed) {
+-                vibrate.start();
+-            }
+-        }
+-
+         onClicked: root.clicked(root.text)
+         onPressAndHold: root.longClicked()
+ 
+-- 
+2.43.0
+

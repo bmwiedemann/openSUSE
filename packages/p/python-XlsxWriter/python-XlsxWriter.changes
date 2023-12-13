@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:28:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.9:
+  * Add fix for errant XML tag in chart leader lines for non-Pie
+    charts.
+  * Add support for formatting the data label in chart
+    trendlines.
+  * Add the :func:`very_hidden()` method to hide a worksheet.
+    This is similar to the :func:`hide()` method except that the
+    worksheet cannot be unhidden in the the Excel user interface.
+    The Excel worksheet "xlSheetVeryHidden" option can only be
+    unset programmatically via VBA.
+  * Added fixes for column formulas in tables that were
+    overridden by table data and which also didn't take future
+    functions into account.
+  * Added support for chart leader lines for chart types other
+    than Pie and Doughnut.
+  * Added support for adding signed VBA macros to workbooks via
+    the via the
+  * Added support for enabling the Excel "Show #N/A as an empty
+    cell" chart option via the :func:`show_na_as_empty_cell` method.
+  * Added support for custom total formulas to worksheet tables.
+  * Added worksheet page break preview mode via
+    :func:`set_pagebreak_view()`.
+  * Add support for new Excel dynamic functions added in 2023.
+  * Added support for adding a color to the `invert_if_negative`
+    chart option.
+  * Minor fix for cell color issue.
+
+-------------------------------------------------------------------
 Tue Oct 17 11:26:58 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
 
 - Split the call to %python_install in different lines to do not feed

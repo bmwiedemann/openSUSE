@@ -118,4 +118,14 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1131611</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4eed564679dc1f1dabfdcb7ca6da7094</srcmd5>
+    <version>0.8.21</version>
+    <time>1702488923</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.21:
+  * Improve errors with outpath
+</comment>
+    <requestid>1132774</requestid>
+  </revision>
 </revisionlist>

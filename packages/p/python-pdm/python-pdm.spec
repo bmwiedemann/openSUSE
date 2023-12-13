@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.7.4
+Version:        2.10.4
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -43,7 +43,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-blinker
 Requires:       python-cachecontrol >= 0.12.11
 Requires:       python-certifi
-Requires:       python-findpython >= 0.2.2
+Requires:       python-findpython >= 0.4
 Requires:       python-installer
 Requires:       python-packaging >= 20.9
 Requires:       python-pdm-backend
@@ -51,12 +51,12 @@ Requires:       python-platformdirs
 Requires:       python-pyproject-hooks
 Requires:       python-python-dotenv >= 0.15
 Requires:       python-requests-toolbelt
+Requires:       python-resolvelib >= 1.0.1
 Requires:       python-rich >= 12.3.0
 Requires:       python-shellingham >= 1.3.2
-Requires:       python-unearth >= 0.6.3
+Requires:       python-unearth >= 0.12.1
 Requires:       python-virtualenv >= 20
-Requires:       (python-resolvelib >= 0.8 with python-resolvelib < 0.9)
-Requires:       (python-tomlkit >= 0.8.0 with python-tomlkit < 1)
+Requires:       (python-tomlkit >= 0.11.1 with python-tomlkit < 1)
 # from python-cachecontrol[filecache]
 Requires:       python-lockfile >= 0.9
 %if 0%{?python_version_nodots} < 311
@@ -65,6 +65,9 @@ Requires:       python-tomli >= 1.1.0
 %if 0%{?python_version_nodots} <= 39
 Requires:       python-importlib-metadata
 Requires:       python-typing-extensions
+%endif
+%if 0%{?python_version_nodots} >= 310
+Requires:       python-truststore
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -116,6 +119,8 @@ donttest="$donttest or test_add_editable_package or test_non_editable_override_e
 donttest="$donttest or test_list_dependency_graph_include_exclude or test_list_csv_include_exclude_valid"
 # Unable to find a resolution for setuptools
 donttest="$donttest or test_list_csv_include_exclude or test_remove_editable_packages_while_keeping_normal or test_project_backend"
+# Requires network
+donttest="$donttest or test_build_with_no_isolation"
 %pytest -v -k "not ($donttest)"
 %endif
 

@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-process-tests
-Version:        2.1.2
+Version:        3.0.0
 Release:        0
 Summary:        Tools for testing processes
 License:        BSD-2-Clause

@@ -31,7 +31,7 @@
 %bcond_without docs
 %if %{with systemd}
 %define has_systemd 1
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot

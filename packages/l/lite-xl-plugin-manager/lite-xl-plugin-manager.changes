@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Dec 05 17:44:29 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.13+git20231205.1feceea:
+  * Fixed CI.
+  * Fixed error around orphan plugins.
+  * Fixed uninitialization.
+  * Reworded things, incorporated Guldo's changes.
+  * Added in extra error handling.
+  * Added in loading screen for welcome dialog.
+  * Split off loading screen functionality.
+  * Added welcome plugin.
+  * Fixed fetch_if_not_present.
+  * Added in better error handling.
+  * Added `fetch_if_not_present` to allow things to function without internet.
+  * Added in a hook for terminal to display an lpm repl.
+  * Pre-sorted dependency graphs so that we get consistnet outputs.
+  * Fixed actual output spacing.
+  * Added in repostiory URL for plugin to id calculation.
+  * Guldo's spelling fixes.
+  * Added in a proper repo_path.
+  * Added in repo path.
+  * Removed documentation for non-existent command.
+  * Added in check for executable.
+  * Invalidate cache in appropriate places.
+  * Allowed for generate_manifest to be used on local repositories; will automatically pile one into the directory.
+  * Won't actually have an error so simplified.
+  * Loosened verification for certificates.
+  * Flagged the json library as special as well, as it's required for the plugin_manager to run.
+  * Fixed typo.
+  * Ensured we always pass around options so we can track progress one way or another.
+  * Added in fallback for any plugin lacking a modversion to describe themselves as the latest modversion.
+  * Fixed color install/uninstall; type filter wasn't even present. Whoops.
+  * Fixed typo.
+  * Added in support for --ephemeral.
+  * Allowed for generation for repos that are just init.lua by guessing the id better.
+  * Made unstub idempotent and incorporated a number of jgm's fixes.
+  * Fix some spelling and display of `DEFAULT_REPO_URL` in cli help
+
+-------------------------------------------------------------------
 Tue Oct 10 16:46:17 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.0.12+git20231010.8f2cd87:

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Dec 13 05:32:59 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Update to support newer obs-service-cargo-vendor
+
+-------------------------------------------------------------------
+Wed Nov 29 00:08:35 UTC 2023 - william.brown@suse.com
+
+- Update to version 2.4.0~git113.84a845c:
+  * Issue 5980 - Improve instance startup failure handling (#5991)
+  * Issue 5976 - Fix freeipa install regression with lmdb (#5977)
+  * Issue 5984 - Crash when paged result search are abandoned - fix2 (#5987)
+  * Issue 5984 - Crash when paged result search are abandoned (#5985)
+  * Issue 5947 - CI test_vlv_recreation_reindex fails on LMDB (#5979)
+  * Bump version to 2.5.0
+  * Issue 5971 - CLI - Fix password prompt for repl status (#5972)
+  * Issue 5973 - Fix fedora cop RawHide builds (#5974)
+  * Revert "Issue 5761 - Worker thread dynamic management (#5796)" (#5970)
+  * Issue 5966 - CLI - Custom schema object is removed on a failed edit (#5967)
+  * Issue 5786 - Update permissions for Release workflow
+  * Issue 5960 - Subpackages should have more strict interdependencies
+  * Issue 3555 - UI - Fix audit issue with npm - babel/traverse (#5959)
+  * Issue 4843 - Fix dscreate create-template issue (#5950)
+  * bugfix for --passwd-file not working on latest version (#5934)
+  * Issue 5843 - dsconf / dscreate should be able to handle lmdb parameters (#5943)
+  * Bump postcss from 8.4.24 to 8.4.31 in /src/cockpit/389-console (#5945)
+  * Issue 5938 - Attribute Names changed to lowercase after adding the Attributes (#5940)
+  * issue 5924 - ASAN server build crash when looping opening/closing connections (#5926)
+  * Issue 1925 - Add a CI test (#5936)
+  * Issue 5732 - Localizing Cockpit's 389ds Plugin using CockpitPoPlugin (#5764)
+  * Issue 1870 - Add a CI test (#5929)
+  * Issue 843 - Add a warning to slapi_valueset_add_value_ext (#5925)
+  * Issue 5761 - Worker thread dynamic management (#5796)
+  * Issue 1802 - Improve ldclt man page (#5928)
+  * Issue 1456 - Add a CI test that verifies there is no issue (#5927)
+  * Issue 1317 - Add a CI test (#5923)
+  * Issue 1081 - CI - Add more tests for overwriting x-origin issue (#5815)
+  * Issue 1115 - Add a CI test (#5913)
+  * Issue 5848 - Fix condition and add a CI test (#5916)
+  * Issue 5848 - Fix condition and add a CI test (#5916)
+  * Issue 5914 - UI - server settings page validation improvements and db index fixes
+  * Issue 5909 - Multi listener hang with 20k connections (#5917)
+  * Issue 5902 - Fix previous commit regression (#5919)
+  * pass instance correctly to ds_is_older (#5903)
+  * Issue 5909 - Multi listener hang with 20k connections (#5910)
+  * Issue 5722 - improve testcase (#5904)
+  * Issue 5203 - outdated version in provided metadata for lib389
+  * Bug Description:
+
+-------------------------------------------------------------------
 Mon Aug 14 06:27:12 UTC 2023 - william.brown@suse.com
 
 - Update to version 2.4.0~git74.4297d88:

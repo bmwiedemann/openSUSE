@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec 13 13:50:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.18:
+  * Prepare for v0.15.18 release
+  * connectivity: Bump test-connection-disruption img to v0.0.13
+  * fix(deps): update github.com/cilium/charts digest to 64e4ab4
+  * fix(deps): update all go dependencies main
+  * install: don't make changes to running cluster in dry-run mode
+  * install/upgrade: introduce IsDryRun method on parameters
+  * kind: Set conn-disrupt-test-setup
+  * chore(deps): update go to v1.21.5
+  * chore(deps): update golang-images
+  * Remove classic mode tests from the main branch
+  * chore(deps): update google-github-actions/setup-gcloud action
+    to v2
+  * Assign unique names to connectivity test jobs
+  * defaults: Add expected drop reasons
+  * connectivity: Add flag --expected-drop-reasons
+  * connectivity: Check for unexpected packet drops
+  * Remove Cilium v1.11 from the version list
+  * chore(deps): update actions/setup-go action to v5
+  * connectivity: Set test-conn-disrupt dispatch interval to 0ms
+  * Update stable release to v0.15.17
+  * chore(deps): update golang docker tag to v1.21.5
+  * connectivity: Add more tests for Ingress Controller
+
+-------------------------------------------------------------------
 Wed Dec 06 12:03:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.17:

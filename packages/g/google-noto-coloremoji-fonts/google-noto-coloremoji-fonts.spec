@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-coloremoji-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,10 @@ BuildRequires:  fontpackages-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Provides:       noto-emoji-fonts = %version
-Obsoletes:      noto-emoji-fonts < %version
 Obsoletes:      noto-coloremoji-fonts < 20211101
+Obsoletes:      noto-emoji-fonts < %version
 Provides:       noto-coloremoji-fonts = %{version}
+%reconfigure_fonts_prereq
 
 %description
 Noto Color Emoji font

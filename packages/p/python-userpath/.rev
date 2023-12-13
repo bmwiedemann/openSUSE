@@ -46,4 +46,16 @@
 </comment>
     <requestid>1103272</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>78793424a28f3f90a9cffcfee46c8d04</srcmd5>
+    <version>1.9.1</version>
+    <time>1702488967</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.1:
+  * Temporarily revert the change on non-Windows systems where
+    only login shells are modified
+
+    platforms and symlinks.</comment>
+    <requestid>1132842</requestid>
+  </revision>
 </revisionlist>

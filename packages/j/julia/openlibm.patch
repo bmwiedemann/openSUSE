@@ -1,0 +1,19 @@
+From: Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+Date: Sat, 09 Dec 2023 16:30:31 +0800
+Subject: Explicity declaration of openlibm library location
+
+Openlibm is located at /usr/lib.
+---
+
+diff -ruN julia-1.9.4.orig/Make.inc julia/Make.inc
+--- julia-1.9.4.orig/Make.inc	2023-12-08 06:25:53.640851723 +0800
++++ julia/Make.inc	2023-12-08 12:47:48.403970277 +0800
+@@ -1111,7 +1111,7 @@
+ LIBM := -lm
+ LIBMNAME := libm
+ else
+-LIBM := -lopenlibm
++LIBM := -L/usr/lib -lopenlibm
+ LIBMNAME := libopenlibm
+ endif
+ 

@@ -1,133 +1,11 @@
-Index: xrdp-0.9.14/sesman/startwm.sh
+Index: xrdp-0.9.23.1/sesman/startwm.sh
 ===================================================================
---- xrdp-0.9.14.orig/sesman/startwm.sh
-+++ xrdp-0.9.14/sesman/startwm.sh
-@@ -7,34 +7,81 @@
- # exec xterm
- 
- 
--# Execution sequence for interactive login shell - pseudocode
--#
--# IF /etc/profile is readable THEN
--#     execute ~/.bash_profile
--# END IF
--# IF ~/.bash_profile is readable THEN
--#     execute ~/.bash_profile
--# ELSE
--#     IF ~/.bash_login is readable THEN
--#         execute ~/.bash_login
--#     ELSE
--#         IF ~/.profile is readable THEN
--#             execute ~/.profile
--#         END IF
--#     END IF
--# END IF
-+#start the window manager
-+wm_start()
-+{
-+  #To customize system-wise session, edit this file.
-+  #To customize user specific session, copy this file to $HOME and edit it.
-+  #Please refer to DefaultWindowManager and UserWindowManager in /etc/xrdp/sesman.ini for more details.
-+
-+  #The default session is gnome (GNOME Session)
-+  #sle means SLE-Classic Session
-+  SESSION="gnome"
-+
-+  case $SESSION in
-+    sle)
-+      if [ -r /usr/bin/gnome-session ]; then
-+        export XDG_SESSION_TYPE=x11
-+        export GNOME_SHELL_SESSION_MODE=sle-classic
-+        /usr/bin/gnome-session --session gnome-classic
-+      elif [ -r /usr/bin/icewm-session ]; then
-+        /usr/bin/icewm-session
-+      fi
-+      ;;
-+    gnome)
-+      if [ -r /usr/bin/gnome-session ]; then
-+        export XDG_SESSION_TYPE=x11
-+        /usr/bin/gnome-session
-+      elif [ -r /usr/bin/icewm-session ]; then
-+        /usr/bin/icewm-session
-+      fi
-+      ;;
-+    plasma)
-+      if [ -r /usr/bin/startplasma-x11 ]; then
-+        export XDG_SESSION_TYPE=x11
-+        /usr/bin/startplasma-x11
-+      elif [ -r /usr/bin/icewm-session ]; then
-+        /usr/bin/icewm-session
-+      fi
-+      ;;
-+    icewm)
-+      if [ -r /usr/bin/icewm-session ]; then
-+        /usr/bin/icewm-session
-+      fi
-+      ;;
-+  esac
-+}
-+
-+#Execution sequence for interactive login shell
-+#Following pseudo code explains the sequence of execution of these files.
-+#execute /etc/profile
-+#IF ~/.bash_profile exists THEN
-+#    execute ~/.bash_profile
-+#ELSE
-+#    IF ~/.bash_login exist THEN
-+#        execute ~/.bash_login
-+#    ELSE
-+#        IF ~/.profile exist THEN
-+#            execute ~/.profile
-+#        END IF
-+#    END IF
-+#END IF
- pre_start()
+--- xrdp-0.9.23.1.orig/sesman/startwm.sh
++++ xrdp-0.9.23.1/sesman/startwm.sh
+@@ -58,54 +58,54 @@ post_start()
+ #start the window manager
+ wm_start()
  {
--  if [ -r /etc/profile ]; then
-+  if [ -f /etc/profile ]
-+  then
-     . /etc/profile
-   fi
--  if [ -r ~/.bash_profile ]; then
-+  if [ -f ~/.bash_profile ]
-+  then
-     . ~/.bash_profile
-   else
--    if [ -r ~/.bash_login ]; then
-+    if [ -f ~/.bash_login ]
-+    then
-       . ~/.bash_login
-     else
--      if [ -r ~/.profile ]; then
-+      if [ -f ~/.profile ]
-+      then
-         . ~/.profile
-       fi
-     fi
-@@ -42,11 +89,11 @@ pre_start()
-   return 0
- }
- 
--# When loging out from the interactive shell, the execution sequence is:
--#
--# IF ~/.bash_logout exists THEN
--#     execute ~/.bash_logout
--# END IF
-+#When you logout of the interactive shell, following is the
-+#sequence of execution:
-+#IF ~/.bash_logout exists THEN
-+#    execute ~/.bash_logout
-+#END IF
- post_start()
- {
-   if [ -r ~/.bash_logout ]; then
-@@ -55,46 +102,6 @@ post_start()
-   return 0
- }
- 
--#start the window manager
--wm_start()
--{
 -  if [ -r /etc/default/locale ]; then
 -    . /etc/default/locale
 -    export LANG LANGUAGE
@@ -139,6 +17,19 @@ Index: xrdp-0.9.14/sesman/startwm.sh
 -    . /etc/X11/Xsession
 -    post_start
 -    exit 0
+-  fi
+-
+-  # alpine
+-  # Don't use /etc/X11/xinit/Xsession - it doesn't work
+-  if [ -f /etc/alpine-release ]; then
+-    if [ -f /etc/X11/xinit/xinitrc ]; then
+-        pre_start
+-        /etc/X11/xinit/xinitrc
+-        post_start
+-    else
+-        echo "** xinit package isn't installed" >&2
+-        exit 1
+-    fi
 -  fi
 -
 -  # el
@@ -163,12 +54,58 @@ Index: xrdp-0.9.14/sesman/startwm.sh
 -  pre_start
 -  xterm
 -  post_start
--}
--
++  #To customize system-wise session, edit this file.
++  #To customize user specific session, copy this file to $HOME and edit it.
++  #Please refer to DefaultWindowManager and UserWindowManager in /etc/xrdp/sesman.ini for more details.
++
++  #The default session is gnome (GNOME Session)
++  #sle means SLE-Classic Session
++  SESSION="gnome"
++
++  case $SESSION in
++    sle)
++      if [ -r /usr/bin/gnome-session ]; then
++        export XDG_SESSION_TYPE=x11
++        export GNOME_SHELL_SESSION_MODE=sle-classic
++        /usr/bin/dbus-run-session /usr/bin/gnome-session --session gnome-classic
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/icewm-session
++      fi
++      ;;
++    gnome)
++      if [ -r /usr/bin/gnome-session ]; then
++        export XDG_SESSION_TYPE=x11
++        /usr/bin/dbus-run-session /usr/bin/gnome-session
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++    mate)
++      if [ -r /usr/bin/mate-session ]; then
++        export XDG_SESSION_TYPE=x11
++        /usr/bin/dbus-run-session /usr/bin/mate-session
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++    plasma)
++      if [ -r /usr/bin/startplasma-x11 ]; then
++        export XDG_SESSION_TYPE=x11
++        /usr/bin/dbus-run-session /usr/bin/startplasma-x11
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++    icewm)
++      if [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++  esac
+ }
+ 
  #. /etc/environment
- #export PATH=$PATH
- #export LANG=$LANG
-@@ -109,6 +116,8 @@ wm_start()
+@@ -122,6 +122,8 @@ wm_start()
  # includes
  # auth       required     pam_env.so readenv=1
  

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rich-click
-Version:        1.6.1
+Version:        1.7.1
 Release:        0
 Summary:        Format click help output nicely with rich
 License:        MIT
@@ -27,11 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/r/rich-click/rich
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click >= 7
+Requires:       python-click >= 8
 Requires:       python-rich >= 10.7.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module click >= 7}
+BuildRequires:  %{python_module click >= 8}
 BuildRequires:  %{python_module rich >= 10.7.0}
 # /SECTION
 %python_subpackages

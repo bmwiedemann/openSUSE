@@ -27,4 +27,31 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>888640</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbcc370268b19ef1f65be5708baa17e8</srcmd5>
+    <version>2023.8.30</version>
+    <time>1702488981</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.8.30:
+  * Fix linting issues.
+  * Add py.typed marker.
+  * Improve object repr and type hints.
+  * Drop support for Python 3.8 and numpy &lt; 1.21
+  * Delay import of zipfile.
+  * Verify shape of coordinates on write.
+  * Fix integer coordinates to -5000..60536 conforming with ImageJ
+  * Add subpixel_coordinates in frompoints for out-of-range integer
+    coordinates.
+  * Fix creating ROIs from float coordinates exceeding int16 range
+  * Fix bottom-right bounds in ImagejRoi.frompoints.
+  * Add type hints.
+  * Change ImagejRoi to dataclass.
+  * Drop support for Python 3.7 and numpy &lt; 1.19 (NEP29).
+  * Add enums for point types and sizes.
+
+- Do not build for Python 3.6, due to no NumPy.
+- Update spec file to use python alternative.
+- Initial package release.</comment>
+    <requestid>1132855</requestid>
+  </revision>
 </revisionlist>

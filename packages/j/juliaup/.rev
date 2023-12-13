@@ -357,4 +357,14 @@
 </comment>
     <requestid>1132332</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>339da1018f1c60b61a1f198245ed59ab</srcmd5>
+    <version>1.12.5</version>
+    <time>1702488919</time>
+    <user>anag+factory</user>
+    <comment>- Use binjulialauncher feature.
+- Add /etc/alternatives/julia to ghost files.
+</comment>
+    <requestid>1132768</requestid>
+  </revision>
 </revisionlist>

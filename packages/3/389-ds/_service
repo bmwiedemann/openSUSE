@@ -17,6 +17,7 @@
   <service mode="disabled" name="set_version" />
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">389-ds-base</param>
+     <param name="cargotoml">src/Cargo.toml</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

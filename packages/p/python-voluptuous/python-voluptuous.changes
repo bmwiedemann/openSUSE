@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:40:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * Add `python_requires` so package installers know
+    requirement is >= 3.7
+  * Fix a few code comment typos
+  * Change to SPDX conform license string
+  * Add typing information
+  * Fix new type hint of schemas, for example for
+    `Required('key')`
+  * Fix new type hints and enable `mypy`
+  * Allow error reporting on keys
+  * Set static PyPI project description
+  * Remove Travis build status badge
+
+-------------------------------------------------------------------
 Sat Oct  1 14:37:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.1:

@@ -433,4 +433,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117870</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>a6535f2a17620a5d10edb3aa083d0b7c</srcmd5>
+    <version>5.2.98</version>
+    <time>1702488956</time>
+    <user>anag+factory</user>
+    <comment>- Add decaf dep for post quantum crypto (tumbleweed only for now).
+</comment>
+    <requestid>1132806</requestid>
+  </revision>
 </revisionlist>

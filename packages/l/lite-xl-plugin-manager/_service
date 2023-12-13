@@ -14,10 +14,17 @@
     <param name="versionrewrite-pattern">latest</param>
     -->
     <param name="versionrewrite-pattern">continuous</param>
-    <param name="versionrewrite-replacement">1.0.12</param>
+    <param name="versionrewrite-replacement">1.0.13</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
+  <service name="replace_using_env" mode="manual">
+    <param name="file">lpm.c.diff</param>
+    <param name="var">NEWVERSION</param>
+    <param name="eval">NEWVERSION=$(grep ^Version lite-xl-plugin-manager.spec | awk '{print $2}')</param>
+    <param name="eval">sed -i -e 's#\([^\.]*\)"[0-9]\.[0-9]\.[0-9][0-9]+git[0-9]\{8\}\.[[:alnum:]]\{7\}"#\1"%%NEWVERSION%%"#' lpm.c.diff</param>
+    <param name="verbose">0</param>
+  </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
     <param name="compression">gz</param>

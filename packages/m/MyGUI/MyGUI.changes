@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Dec  8 01:19:24 UTC 2023 - Adriankhl <adrian.k.h.lai@outlook.com>
+
+- Update version 3.4.3
+  * Core
+    * Allow passing lambdas into MyGUI::newDelegate without explicitly wrapping them into std::function
+  * Widgets
+    * Add missing eventClipboardChanged when trying to cut/copy with no text selected
+    * Fixed rare crash when changing widget style after it was clicked in the same frame
+    * Fixed TabItem left disabled when rapidly switching between tabs
+    * Improve performance of the TabControl tabs switching
+    * Fixed ignoring "FontHeight" property when "FontName" is also set
+    * Move MyGUI::DEFAULT to deprecated, add TabControl::DEFAULT_WIDTH instead
+  * Platforms
+    * Fix build with Ogre 14
+  * Tools
+    * Minor fixes for macOS
+    * Use macOS Command key in tools
+  # Other
+    * Switch to C++17
+    * Use string_view, unique_ptr and some other stuff
+    * Various code improvements, including range base for migration and some other minor stuff
+    * Add some missing MYGUI_DONT_USE_OBSOLETE checks for deprecated stuff
+    * Remove MYGUI_DEBUG_MODE from headers to avoid issues with mixed debug/release builds
+  * Core
+    * Add missing MYGUI_EXPORT for ControllerRepeatClick (was not linking in non-static builds)
+    * Use commands for key combinations on EditBox, provide macOS proper bindings
+    * Add support for string_view in UString
+  * Widgets
+    * ComboBox and ListBox: make "AddItem" use LanguageManager::replaceTags same way it is done for caption properties
+    * EditBox: Allow text input while holding Ctrl (Allow key combinations involving CTRL that produce printable characters)
+  * Platforms
+    * OpenGL: Fix build with libX11-free wayland setup
+    * Ogre: Correct vertex color order for ogre 13
+  * Demos and Tools
+    * Use SDL_WINDOWEVENT_FOCUS_GAINED/SDL_WINDOWEVENT_FOCUS_LOST events for better detection when window should have low FPS
+    * Fix macOS resources paths, do not use MACOSX_BUNDLE
+    * Fix various deprecated or incorrect resources usage
+  * Other
+    * Add missing MYGUI_EXPORT to fix C4275 warnings
+    * Various minor build fixes and improvements
+    * Enable more warnings in MYGUI_HIGH_LEVEL_WARNINGS mode
+    * Use GNUInstallDirs to install includes
+- Remove mygui-add-missing-include.patch 
+- Remove MyGUI-install-libCommon.patch
+- Remove 0001-Fix-linking-with-Wl-no-undefined.patch
+- Add MYGUI_DONT_USE_OBSOLETE=ON setting
+
+-------------------------------------------------------------------
 Wed Apr 26 13:54:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add mygui-add-missing-include.patch: Add missing include exposed

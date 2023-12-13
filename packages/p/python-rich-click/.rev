@@ -24,4 +24,37 @@
   * Don't show metavars for feature switch options [#100]</comment>
     <requestid>1084861</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5f02f9461487d99f0f665ecd7df19490</srcmd5>
+    <version>1.7.1</version>
+    <time>1702488964</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.2:
+  * Add support for rich formatting in epilog text [#146]
+  * Fix bug with `rich-click` CLI not working with Python 3.12.
+    #141
+  * Fix compatibility issue with `dbt-core` CLI. [#140]
+  * Extends Click's `HelpFormatter` class
+  * Creates a `HelpConfiguration` class that doubles the current
+    module-level settings
+  * Added a decorator that allows the `HelpConfiguration` to be
+    passed into Click via the supported `context_settings`
+    argument provided by the `Command` and `Group` classes.
+  * The Rich Console object can also be configured per command
+    and is distinct from the Console instance used internally by
+    the formatter. The `RichHelpFormatter` creates a console
+    based on the `RichHelpConfiguration` as the tight coupling
+    between the Formatter and Click's internals make it difficult
+    to allow the Console to be configured externally (i.e. one
+    example is that Click expects help formatting to be
+    buffered).
+  * Created a `RichContext` class to allow creation of the custom
+    formatter.
+  * The Rich Command, Group, and Context now expose the `Console`
+    and `RichHelpConfiguration` properties.
+  * Added contributor VSCode settings
+
+- Update to version 1.6.0</comment>
+    <requestid>1132837</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 12 07:37:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to drop dependency on QtFeedback (boo#1217957):
+  * 0001-Drop-use-of-QtFeedback.patch
+
+-------------------------------------------------------------------
 Tue Dec  5 14:19:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.4

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 13 08:53:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0:
+  * This release supersedes v2.1.0 and brings a new feature and
+    some small code improvements:
+    + Add support for OpenSSL (#52), by @mchalain
+    + Fix base32 encoding and decoding of bytes array (#54)
+    + make is_string_valid_b32 public
+    + improve code readability
+
+-------------------------------------------------------------------
+Wed Dec  6 07:30:58 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use correct library 'libcriterion-devel'.
+
+-------------------------------------------------------------------
 Tue Nov 28 13:32:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.1.0:

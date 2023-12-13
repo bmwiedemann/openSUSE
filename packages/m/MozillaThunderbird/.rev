@@ -5147,4 +5147,14 @@ I cannot test locally unfortunately.
   * Clicking on attendee when inviting attendees added the attendee twice</comment>
     <requestid>1129733</requestid>
   </revision>
+  <revision rev="326" vrev="1">
+    <srcmd5>9ace23d668e42b24d8e7a85cc3c18c70</srcmd5>
+    <version>115.5.2</version>
+    <time>1702488907</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.5.2
+  Bugfix release
+  https://www.thunderbird.net/en-US/thunderbird/115.5.2/releasenotes/</comment>
+    <requestid>1132769</requestid>
+  </revision>
 </revisionlist>

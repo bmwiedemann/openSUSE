@@ -197,4 +197,19 @@
     <comment></comment>
     <requestid>1130111</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>89cf8aa054fb18a36d77116385f8f3ee</srcmd5>
+    <version>5.12.0</version>
+    <time>1702488953</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.12.0:
+  * Infer `texlab.build.auxDirectory`, `texlab.build.logDirectory` and 
+    `texlab.build.pdfDirectory` from `latexmkrc` if available
+  * Do not report `undefined reference` errors when using `\nocite{*}`
+  * Fix potential crash when parsing build log files 
+  * Set the final tab stop of the `\begin` snippet inside the environment
+- Remove cargo_config since vendored tarball includes it now
+</comment>
+    <requestid>1132815</requestid>
+  </revision>
 </revisionlist>

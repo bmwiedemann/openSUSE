@@ -17,7 +17,7 @@
 
 
 Name:           python-trio-websocket
-Version:        0.10.3
+Version:        0.11.1
 Release:        0
 Summary:        WebSocket library for Trio
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module exceptiongroup}
+BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio >= 0.11}
@@ -38,7 +38,9 @@ BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module wsproto >= 0.14}
 # /SECTION
 BuildRequires:  fdupes
+%if 0%{?python_version_nodots} < 311
 Requires:       python-exceptiongroup
+%endif
 Requires:       python-trio >= 0.11
 Requires:       python-wsproto >= 0.14
 BuildArch:      noarch

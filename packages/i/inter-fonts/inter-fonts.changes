@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec  6 03:43:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 4.0:
+  * This is a grand new release, with over two years of work behind
+    it. A lot has changed since version 3.x. Thousands of glyphs
+    have been redesigned. Here are some highlights, compared to the
+    previous version:
+    = Six additional "Display" designs, assigned to an opsz
+      variable-font axis, exposed as a second family "Inter
+      Display" as static fonts.
+    = Several new OpenType features
+    = Humanist-style italics
+    = Many technical changes (UPM changed to 2048, refined metrics,
+      many improved features, etc)
+- Create the inter-variable-fonts subpackage
+- Remove the _service file
+
+-------------------------------------------------------------------
 Tue Sep 14 18:19:50 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to 3.19:

@@ -1,0 +1,9 @@
+# https://github.com/JuliaLang/julia/issues/28564
+addFilter("E: devel-file-in-non-devel-package.*/usr/lib.*/julia/.*")
+# Julia has sofiles that are not actually an issue
+addFilter("E: arch-dependent-file-in-usr-share*")
+# We should not unstrip sofiles or binaries generated from this package
+# https://github.com/JuliaLang/julia/issues/17941
+addFilter("unstripped-binary-or-object")
+# Julia should be an exception. Otherwise, it fails to execute :)
+addFilter("devel-dependency")

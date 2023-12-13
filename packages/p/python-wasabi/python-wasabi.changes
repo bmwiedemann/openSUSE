@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:45:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Add typing overloads so `msg.fail` with `exits=True/1` has
+    the `NoReturn` type like `sys.exit` (#41).
+
+-------------------------------------------------------------------
 Mon Aug  7 18:33:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.

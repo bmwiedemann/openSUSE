@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1061986</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>272b4c119fa426f63da833d628854a6a</srcmd5>
+    <version>0.23.1</version>
+    <time>1702488961</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.1:
+  * Upgrade: relax attrs dependency version
+  * Breaking: trigger release with no changes
+  * Breaking: move internal client to qcs_api_client_internal
+    module
+  * Chore: QCS Schema [auto: qcs-api-docs]
+  * Update: Fix CI and regenerate clients
+  * Fix: token decoding without validation
+  * Update: regenerate client</comment>
+    <requestid>1132835</requestid>
+  </revision>
 </revisionlist>

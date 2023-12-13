@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 12 21:59:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.0:
+  * Fix #249: Option to include grid on export
+    + Grid will be exported if set visible
+    + Works for both PNG and SVG exports
+  * Fix #251: Feature request: child has same colors as parent
+    + Change "Copy on Drag" behavior so that only the style will be copied
+    + Set default filename with a timestamp in PNG and SVG export dialogs
+    + Disable recent file entries that don't exist anymore
+  * Optimize rendering of grid lines
+    + Prevent situations where a zoomed-out view would have way too
+      many grid lines visible, even multiple lines per pixel
+
+-------------------------------------------------------------------
 Mon May 22 06:27:08 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.0:

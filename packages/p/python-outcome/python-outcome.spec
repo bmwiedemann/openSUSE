@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-outcome
-Version:        1.2.0
+Version:        1.3.0.post0
 Release:        0
 Summary:        Function for capturing the outcome of Python function calls
 License:        Apache-2.0 OR MIT

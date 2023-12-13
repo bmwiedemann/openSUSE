@@ -19,7 +19,7 @@
 %define skip_python2 1
 
 Name:           python-xkcdpass
-Version:        1.19.3
+Version:        1.19.8
 Release:        0
 Summary:        A flexible and scriptable password generator which generates strong passphrases
 License:        BSD-3-Clause

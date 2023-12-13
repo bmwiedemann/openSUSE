@@ -8,7 +8,7 @@
 # Global configuration
 ################################################################
 [global]
-  checkNewVersion = true
+  checkNewVersion = false
   sendAnonymousUsage = false
 
 ################################################################
@@ -42,7 +42,7 @@
   # Optional
   # Default: "ERROR"
   #
-  level = "INFO"
+  # level = "DEBUG"
 
   # Sets the filepath for the traefik log. If not specified, stdout will be used.
   # Intermediate directories are created if necessary.
@@ -69,7 +69,7 @@
 #
 # Optional
 #
-[accessLog]
+# [accessLog]
 
   # Sets the file path for the access log. If not specified, stdout will be used.
   # Intermediate directories are created if necessary.

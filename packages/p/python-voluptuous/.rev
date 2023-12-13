@@ -95,4 +95,23 @@
 - drop python-voluptuous-remove-nose.patch (upstream)</comment>
     <requestid>1007462</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>44834f2acb36949ff09a147a0d3a8874</srcmd5>
+    <version>0.14.1</version>
+    <time>1702488979</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.1:
+  * Add `python_requires` so package installers know
+    requirement is &gt;= 3.7
+  * Fix a few code comment typos
+  * Change to SPDX conform license string
+  * Add typing information
+  * Fix new type hint of schemas, for example for
+    `Required('key')`
+  * Fix new type hints and enable `mypy`
+  * Allow error reporting on keys
+  * Set static PyPI project description
+  * Remove Travis build status badge</comment>
+    <requestid>1132857</requestid>
+  </revision>
 </revisionlist>

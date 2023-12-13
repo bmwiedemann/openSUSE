@@ -1,7 +1,7 @@
 #
 # spec file for package python-testflo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-testflo
-Version:        1.4.9
+Version:        1.4.14
 Release:        0
 Summary:        A flow-based testing framework
 License:        Apache-2.0

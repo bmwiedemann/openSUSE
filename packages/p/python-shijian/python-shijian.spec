@@ -1,7 +1,7 @@
 #
 # spec file for package python-shijian
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-shijian
-Version:        2020.1.29.1857
+Version:        2023.10.19.215
 Release:        0
 Summary:        Python utility functions relating to time and filenames
 License:        GPL-3.0-only

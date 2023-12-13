@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:22:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.8:
+  * Minor Changes
+    - ansible-test - Add FreeBSD 13.2 remote.
+    - ansible-test - Removed freebsd/13.1 remote.
+  * Bugfixes
+    - unsafe data - Address an incompatibility when iterating or
+      getting a single index from AnsibleUnsafeBytes
+    - unsafe data - Address an incompatibility with
+      AnsibleUnsafeText and AnsibleUnsafeBytes when pickling with
+      protocol=0
+
+-------------------------------------------------------------------
 Tue Dec  5 06:08:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.15.7:

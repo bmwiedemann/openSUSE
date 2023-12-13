@@ -31,6 +31,10 @@ Patch0:         bctoolbox-fix-pkgconfig.patch
 Patch1:         gcc9-stringop-bogus-warning.patch
 Patch2:         set_curret_version.patch
 BuildRequires:  bcunit-devel >= 3.0.2+git.20191119
+%if 0%{?suse_version} >= 1600
+# At the time of writing (11/Dec/2023), decaf is only available on Tumbleweed.
+BuildRequires:  decaf-devel
+%endif
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

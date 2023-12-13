@@ -156,4 +156,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104646</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7e135d1400b87a3a20cab344eaddaa57</srcmd5>
+    <version>3.1.3</version>
+    <time>1702488968</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.3:
+  * Fix an issue where no e-mail was sent on ticket creation due
+    to suggesting to use **Requestors** instead of **Requestor**
+  * Revert breaking change for python3.8
+    (collections.abc.AsyncIterator is not subscriptable).
+  * In AsyncRt, instead of returning sequences, return
+    AsyncIterators.
+  * Replace *requests* with *httpx* for the REST2 part.
+  * Add a new *AsyncRt* class which implements the RT REST2 API
+    in asnyc.
+  * Adapt tests to include thew new async parts of this library.
+
+-  Update to version 3.0.4:</comment>
+    <requestid>1132843</requestid>
+  </revision>
 </revisionlist>

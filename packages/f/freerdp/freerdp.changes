@@ -31,6 +31,30 @@ Wed Aug 30 16:48:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
   * deactivate mouse grabbing by default
   * channels/cliprdr: Fix writing incorrect PDU type for unlock
     PDUs
+  * Fix CVE-2023-39350 - boo#1214856
+    incorrect offset calculation leading to DoS
+  * Fix CVE-2023-39351 - boo#1214857
+    Null Pointer Dereference leading DoS in RemoteFX
+  * Fix CVE-2023-39352 - boo#1214858
+    Invalid offset validation leading to Out Of Bound Write 
+  * Fix CVE-2023-39353 - boo#1214859
+    Missing offset validation leading to Out Of Bound Read
+  * Fix CVE-2023-39354 - boo#1214860
+    Out-Of-Bounds Read in nsc_rle_decompress_data
+  * Fix CVE-2023-39356 - boo#1214862
+    Missing offset validation leading to Out-of-Bounds Read in gdi_multi_opaque_rect
+  * Fix CVE-2023-40181 - boo#1214863
+    Integer-Underflow leading to Out-Of-Bound Read in zgfx_decompress_segment
+  * Fix CVE-2023-40186 - boo#1214864
+    IntegerOverflow leading to Out-Of-Bound Write Vulnerability in gdi_CreateSurface
+  * Fix CVE-2023-40188 - boo#1214866
+    Out-Of-Bounds Read in general_LumaToYUV444
+  * Fix CVE-2023-40567 - boo#1214867
+    Out-Of-Bounds Write in clear_decompress_bands_data
+  * Fix CVE-2023-40569 - boo#1214868
+    Out-Of-Bounds Write in progressive_decompress
+  * Fix CVE-2023-40589 - boo#1214872
+    Global-Buffer-Overflow in ncrush_decompress
 - Drop patch, now upstream:
   * Update_h264_to_use_new_FFMPEG_API.patch
 
@@ -95,7 +119,7 @@ Thu Nov 17 08:42:25 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * Backported #gh:FreeRDP/FreeRDP#8406: Ensure X11 client cursor is never
     smaller 1x1
   * Backported #gh:FreeRDP/FreeRDP#8403: Fixed multiple client side input
-    validation issues - boo#1205512
+    validation issues - boo#1205512, boo#1205563, boo#1205564
     (CVE-2022-39316, CVE-2022-39317, CVE-2022-39318, CVE-2022-39319,
      CVE-2022-39320, CVE-2022-41877, CVE-2022-39347)
   * Backported #7282: Proxy server now discards input events sent before
@@ -177,6 +201,10 @@ Tue Apr 26 06:02:24 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * OpenSSL3 gateway support (#gh:FreeRDP/FreeRDP#7822)
   * various NTLM fixes
   * WINPR_ASSERT to ease future backports
+  * Fixed CVE-2022-24882 - boo#1198919
+    NTLM not properly check parameters 
+  * Fixed CVE-2022-24883 - boo#1198921
+    Fix authentication against invalid SAM files
 
 - Fixed issues:
   * #gh:FreeRDP/FreeRDP#6786: Use /network:auto by default

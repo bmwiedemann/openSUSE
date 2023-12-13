@@ -39,4 +39,20 @@
     <comment></comment>
     <requestid>1035300</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c3532eae59f63cd269fad3ab597365a</srcmd5>
+    <version>1.8.0</version>
+    <time>1702488972</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.0:
+  * adding ability to filter out mixed case hostnames (issue
+    #143)
+  * adding the ability to set stop characters inside of scheme -
+    default stop chars ':' (issue #82)
+  * Fix index issue with uppercase characters in domain names
+  * updated GitHub Action test
+
+- Update to v1.7.1</comment>
+    <requestid>1132845</requestid>
+  </revision>
 </revisionlist>

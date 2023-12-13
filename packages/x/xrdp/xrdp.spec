@@ -52,7 +52,7 @@ Patch1001:      xrdp-avahi.diff
 Patch1002:      xrdp-filter-tab-from-mstsc-on-focus-change.patch
 # PATCH-FIX-SLE xrdp-bsc965647-allow-admin-choose-desktop.patch bsc#965647 - fezhang@suse.com -- Allow administrator choose the desktop displayed
 Patch1003:      xrdp-bsc965647-allow-admin-choose-desktop.patch
-# PATCH-FEATURE-SLE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM
+# PATCH-NEEDS-REBASE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM. Was: PATCH-FEATURE-SLE
 Patch1004:      xrdp-fate318398-change-expired-password.patch
 
 BuildRequires:  autoconf
@@ -110,7 +110,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
-%patch1004 -p1
+#%patch1004 -p1
 %endif
 
 %build

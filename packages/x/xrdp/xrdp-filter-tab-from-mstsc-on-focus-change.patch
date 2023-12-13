@@ -7,11 +7,11 @@ Subject: [PATCH] xrdp filter tab from mstsc on focus change
  xrdp/xrdp_wm.c | 9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/xrdp/xrdp_wm.c b/xrdp/xrdp_wm.c
-index 362d0d0..9a2e013 100644
---- a/xrdp/xrdp_wm.c
-+++ b/xrdp/xrdp_wm.c
-@@ -1427,6 +1427,7 @@ xrdp_wm_key(struct xrdp_wm *self, int device_flags, int scan_code)
+Index: xrdp-0.9.23.1/xrdp/xrdp_wm.c
+===================================================================
+--- xrdp-0.9.23.1.orig/xrdp/xrdp_wm.c
++++ xrdp-0.9.23.1/xrdp/xrdp_wm.c
+@@ -1506,6 +1506,7 @@ xrdp_wm_key(struct xrdp_wm *self, int de
  {
      int msg;
      struct xrdp_key_info *ki;
@@ -19,7 +19,7 @@ index 362d0d0..9a2e013 100644
  
      /*g_printf("count %d\n", self->key_down_list->count);*/
      scan_code = scan_code % 128;
-@@ -1472,7 +1473,12 @@ xrdp_wm_key(struct xrdp_wm *self, int device_flags, int scan_code)
+@@ -1558,7 +1559,12 @@ xrdp_wm_key(struct xrdp_wm *self, int de
  
              if (ki != 0)
              {
@@ -33,7 +33,7 @@ index 362d0d0..9a2e013 100644
                                           scan_code, device_flags);
              }
          }
-@@ -1483,6 +1489,7 @@ xrdp_wm_key(struct xrdp_wm *self, int device_flags, int scan_code)
+@@ -1569,6 +1575,7 @@ xrdp_wm_key(struct xrdp_wm *self, int de
                               msg, scan_code, device_flags);
      }
  
@@ -41,6 +41,3 @@ index 362d0d0..9a2e013 100644
      return 0;
  }
  
--- 
-2.6.6
-

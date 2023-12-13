@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 12 11:11:56 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add %reconfigure_fonts_prereq
+  * required by the presence of the macro: %reconfigure_fonts_scriptlets
+
+-------------------------------------------------------------------
 Wed Mar 15 10:10:17 UTC 2023 - Jacob Michalskie <hel@lcp.world>
 
 - Update to the latest version of Noto Emojis supporting Unicode 15.0

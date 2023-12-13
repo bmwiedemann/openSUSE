@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Nov 26 18:21:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.9.0:
+  Android:
+  * Fix back button/gesture
+  * Implement al_get_joystick_name
+  * Great many assorted fixes
+  Audio:
+  * Add al_get_mixer_has_attached and al_get_voice_has_attached
+  * Fix al_set_audio_stream_playmode return value and interaction with looping audio streams
+  * Send PulseAudio silence if the attached mixer is stopped
+  Acodec:
+  * voc memory leak fixes
+  * Fix internal looping for mod files
+  Build system:
+  * Add a target for copying examples, letting you build the demo without the examples
+  * Improve CMake scripts
+  * Support the newer WebP library which is split into two
+  Core:
+  * Add al_can_set_keyboard_leds and al_can_get_mouse_cursor_position
+  * Allow outputting logs to STDOUT via ALLEGRO_TRACE environment variable
+  * Add al_get_current_shader
+  * Add al_get_window_borders for Windows and Linux
+  TTF:
+  * Fixes for al_get_glyph_width, al_get_glyph_al_get_glyph when interacting with zero-width/zero-height glyphs
+  Linux:
+  * Fix fullscreen window creation (#1349)
+  * Fix some X11 + fullscreen window interaction (#1358)
+  * Allow setting higher quality icons
+  * Improve DISPLAY_SWITCH_IN/OUT events (#1390, #1367)
+  * Work on improving Window positioning
+  * Fix creating an initially maximized window
+  * Enable toggling and setting maximized/frameless modes when menus are used
+  * Fix popup menu (#1280)
+  * Make AltGr (right Alt) toggle the ALLEGRO_KEYMOD_ALTGR modifier
+  SDL:
+  * Fix touch ids
+  * Fix al_get_mouse_state crash
+  * Implement al_create_mouse_cursor
+  * Implement al_get_monitor_dpi
+  Documentation:
+  * Assorted clarifications and improvements
+
+-------------------------------------------------------------------
 Wed Feb 15 12:58:26 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.2.8.0

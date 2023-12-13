@@ -40,6 +40,7 @@ This package contains the proportional variants in OpenType format.
 
 %package -n redhat-overpass-mono-fonts
 Summary:        Overpass Mono typeface
+%reconfigure_fonts_prereq
 
 %description -n redhat-overpass-mono-fonts
 %{desc}

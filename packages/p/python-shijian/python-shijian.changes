@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:10:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.10.19:
+  * update dependency from sklearn to scikit-learn
+
+-------------------------------------------------------------------
 Thu May 27 05:07:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy.

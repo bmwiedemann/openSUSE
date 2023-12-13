@@ -17,7 +17,7 @@
 
 
 Name:           python-textdistance
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        Compute distance between the two texts
 License:        MIT
@@ -28,7 +28,6 @@ Patch1:         hypothesis-profile-conftest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-abydos
 Recommends:     python-distance
 Recommends:     python-jellyfish
 Recommends:     python-numpy

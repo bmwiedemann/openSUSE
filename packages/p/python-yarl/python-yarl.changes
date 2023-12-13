@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 12 03:44:58 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add reproducible.patch to not add a random tmp path
+  into the package (boo#1062303)
+
+-------------------------------------------------------------------
 Mon Nov 27 20:14:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.3:

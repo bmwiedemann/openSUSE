@@ -34,6 +34,8 @@ Source:         https://github.com/kgoldman/ibmswtpm2/archive/rev%{download_vers
 Patch0:         makefile.patch
 Patch1:         ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
 Patch2:         ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
+# PATCH-FIX-UPSTREAM https://github.com/kgoldman/ibmswtpm2/pull/13
+Patch3:         ibmswtpm2-Add-support-for-OpenSSL-3.2.x.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description

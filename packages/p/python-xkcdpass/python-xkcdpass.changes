@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:11:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19.8:
+  * Enables `python -m xkcdpass` usage
+  * Adds Swedish wordlist, improvements to test suite,
+    improvements to setup.py (excludes examples from install)
+  * Fixes randomly failing unit test
+  * Adds "as-is" option for case
+  * Makes randomised delimiters behavior consistent with fixed
+    delimeters
+
+-------------------------------------------------------------------
 Mon Feb 20 07:54:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip failing test python 3.11 (gh#redacted/XKCD-password-generator#138).
@@ -7,7 +19,7 @@ Mon Feb 20 07:54:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 Mon Mar  7 14:40:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19.3:
-  * Restore a randomly sampled version of eff_large_de wordlist 
+  * Restore a randomly sampled version of eff_large_de wordlist
 
 -------------------------------------------------------------------
 Wed Jan 12 17:19:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -17,7 +29,7 @@ Wed Jan 12 17:19:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Jan 11 21:14:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add python-rpm-macros 
+- add python-rpm-macros
 
 -------------------------------------------------------------------
 Sun May 23 07:48:24 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
@@ -40,9 +52,9 @@ Sat Dec 19 08:33:59 UTC 2020 - İsmail Dönmez <idoenmez+factory@suse.de>
 -------------------------------------------------------------------
 Wed May 13 13:16:28 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
-- Add Requires on python-setuptools 
+- Add Requires on python-setuptools
 
 -------------------------------------------------------------------
 Thu Nov 21 15:40:06 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Initial release for build.opensuse.org 
+- Initial release for build.opensuse.org

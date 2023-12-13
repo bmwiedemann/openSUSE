@@ -1,7 +1,7 @@
 #
 # spec file for package angelscript
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 2_35_1
+%define sover 2_36_1
 Name:           angelscript
-Version:        2.35.1
+Version:        2.36.1
 Release:        0
 Summary:        Scripting library
 License:        Zlib
@@ -97,7 +97,6 @@ mv docs html
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}_addons%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}_addons%{sover} -p /sbin/ldconfig
 

@@ -17,7 +17,7 @@
 
 
 Name:           python-qcs-api-client
-Version:        0.21.3
+Version:        0.23.1
 Release:        0
 Summary:        Python client library for accessing the Rigetti QCS API
 License:        MIT

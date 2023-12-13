@@ -49,13 +49,11 @@ release channel abstraction.
 %autosetup -a1 -p1
 
 %build
-%{cargo_build} --no-default-features
+%{cargo_build} --no-default-features -F binjulialauncher
 
 %install
-%{cargo_install} --no-default-features
+%{cargo_install} --no-default-features -F binjulialauncher
 
-# We are doing alternatives so we move julia as julialauncher
-mv %{buildroot}%{_bindir}/julia %{buildroot}%{_bindir}/julialauncher
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/julia %{buildroot}%{_bindir}/julia
 
@@ -74,5 +72,6 @@ fi
 %{_bindir}/juliaup
 %{_bindir}/julialauncher
 %ghost %{_bindir}/julia
+%ghost %{_sysconfdir}/alternatives/julia
 
 %changelog

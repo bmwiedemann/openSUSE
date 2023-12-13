@@ -18,7 +18,7 @@
 
 %global _lto_cflags %nil
 Name:           vhs
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        CLI video recorder
 URL:            https://github.com/charmbracelet/vhs

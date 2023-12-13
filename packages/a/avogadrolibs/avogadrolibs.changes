@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  6 10:23:54 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.98.1:
+  * Migrated typedefs and changed const to constexpr
+    (gh#OpenChemistry/avogadrolibs#1395).
+  * Fix Python module install dir
+    (gh#OpenChemistry/avogadrolibs#1413).
+  * Revert validation of filenames
+    (gh#OpenChemistry/avogadrolibs#1433).
+  * Parsing orca output would crash when swapping orbitals
+    (gh#OpenChemistry/avogadrolibs#1422).
+  * Maint: vtk: Add missing OpenGL link target
+    (gh#OpenChemistry/avogadrolibs#1412).
+- Update molecules and crystals source tarballs to version
+  1.98.0.
+- Drop upstreamed patches:
+  * Fix_qtplugins_surfaces_linking.patch
+  * 0001-Avoid-ambigous-definition-of-mmtf-s-is_polymer.patch.
+- Minor rebase of not-install-gwavi.patch to apply cleanly.
+- Remove executable permissions from scripts not installed to
+  $PATH and not expected to be directly executed.
+- Bump cmake required version to 3.24 as required by upstream.
+
+-------------------------------------------------------------------
 Wed Dec  7 03:55:56 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with mmtf-cpp 1.1.0, add

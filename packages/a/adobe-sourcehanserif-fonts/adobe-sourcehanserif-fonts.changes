@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 13 09:19:31 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add %reconfigure_fonts_prereq to the subpackages
+  * required by the presence of the macro:
+    %reconfigure_fonts_scriptlets -n <subpackage-name>
+
+-------------------------------------------------------------------
 Tue Nov 21 18:30:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile constructs, update descriptions

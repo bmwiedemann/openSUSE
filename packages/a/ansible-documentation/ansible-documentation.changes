@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 12 17:26:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.8:
+  * Retroactivelly add a 2.15 porting guide note about handlers
+    (#882)
+  * bump approved antsibull-docs version to 2.6.0
+  * documentation_contributions: show how to set up a venv and
+    remove outdated notes (#911) (#949)
+  * Update windows_winrm.rst (#910) (#952)
+  * handlers notify example indentation fix (#915) (#948)
+  * Merge pull request #937 from Andersson007/add_pr_link (#945)
+  * Add Ansible community 8.7.0 porting guide (#938)
+  * Add porting guide for CVE-2023-5764 (#933)
+  * ci: refresh dev dependencies (#914)
+  * README: consistently use `nox -s` over `nox -e` (#923)
+
+-------------------------------------------------------------------
 Tue Dec 05 06:07:40 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.7:

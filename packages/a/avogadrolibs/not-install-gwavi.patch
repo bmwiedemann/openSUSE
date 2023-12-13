@@ -1,16 +1,16 @@
-diff -Nur avogadrolibs-1.93.1/thirdparty/libgwavi/CMakeLists.txt new/thirdparty/libgwavi/CMakeLists.txt
---- avogadrolibs-1.93.1/thirdparty/libgwavi/CMakeLists.txt	2021-02-18 17:15:04.000000000 +0100
-+++ new/thirdparty/libgwavi/CMakeLists.txt	2021-05-26 16:22:06.235022443 +0200
-@@ -1,8 +1,9 @@
+Index: avogadrolibs-1.98.1/thirdparty/libgwavi/CMakeLists.txt
+===================================================================
+--- avogadrolibs-1.98.1.orig/thirdparty/libgwavi/CMakeLists.txt
++++ avogadrolibs-1.98.1/thirdparty/libgwavi/CMakeLists.txt
+@@ -1,8 +1,8 @@
  add_library(gwavi STATIC gwavi.c fileio.c avi-utils.c)
  set_target_properties(gwavi PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
- 
+ target_include_directories(gwavi PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 -install(TARGETS gwavi
 -  EXPORT "AvogadroLibsTargets"
 -  RUNTIME DESTINATION "${INSTALL_RUNTIME_DIR}/avogadro2"
 -  LIBRARY DESTINATION "${INSTALL_LIBRARY_DIR}/avogadro2"
 -  ARCHIVE DESTINATION "${INSTALL_ARCHIVE_DIR}/avogadro2")
-+# linked static, not used in headers, no need to install it
 +#install(TARGETS gwavi
 +#  EXPORT "AvogadroLibsTargets"
 +#  RUNTIME DESTINATION "${INSTALL_RUNTIME_DIR}/avogadro2"

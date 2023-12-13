@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Mon Dec  4 07:37:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.34.0:
+  * New option one-fs #244
+  * Downgrade builder image to Debian 10 (buster), remove unneeded
+    pkgs #247
+
+-------------------------------------------------------------------
+Sun Oct 24 09:41:08 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.17.0:
+  * Add examples to --help
+  * Reflink: always remove temporary files
+  * Minor help text tweaks.
+  * Implement `fclones dedupe` command
+  * Improve `with_dir` test util
+  * Fix too aggressive config validation
+  * Fix documentation on escaping in path globs
+  * Option to not count files in the same root dir as dupes
+  * Fix comments after find-and-replace gone bad
+  * Make group output deterministic with existing hardlinks
+
+-------------------------------------------------------------------
+Tue Sep 14 09:12:03 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.15.0:
+  * Implement `fclones move` command
+  * Add homepage to the package manifest
+  * Don't scan sysfs on startup
+  * Small improvements (#68)
+
+-------------------------------------------------------------------
+Sun Aug 29 07:15:47 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.13.0:
+  * Fix unit tests that require file creation time metadata
+  * Update documentation on json support in report processing
+  * Fix clippy lints - remove unneeded references
+  * Automatically detect input report format
+  * Implement JsonReportReader
+  * Update dependencies
+  * Pluggable report readers
+
+-------------------------------------------------------------------
+Mon Jun 21 13:30:17 UTC 2021 - idesmi@protonmail.com
+
+- Update to version 0.12.3:
+  * Add *.iml to gitignore
+  * Fix group --stdin option
+
+-------------------------------------------------------------------
+Wed Jun 09 07:39:36 UTC 2021 - idesmi@protonmail.com
+
+- Update to version 0.12.2:
+  * Bump up version to 0.12.2
+  * Accept report lines ended with CRLF (Windows) Interrupt processing of report immediately on the first error
+  * Update benchmarks
+  * Increase default number of threads for SSD thread-pool
+  * Update dependencies
+  * Fix build on windows
+  * Fix unused import
+  * Deduplicate documentation (README.md)
+  * Remove leftover println
+  * Fix invalid default value for --format
+
+-------------------------------------------------------------------
+Sun Apr 18 20:12:29 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 0.11.0
+  - all directories are now scanned recursively if not specified otherwise (--depth 0)
+  - input paths are validated before running
+
+-------------------------------------------------------------------
+Fri Apr 16 16:46:36 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 0.10.2
+  - Entries are now sorted on inode number, slightly improving performance on HDDs
+
+-------------------------------------------------------------------
+Sat Apr 10 21:52:01 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- initial package @ d619ecccf1fc5b18313789b6e05b43878d8a73b2 

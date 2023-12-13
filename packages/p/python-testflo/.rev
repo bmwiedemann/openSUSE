@@ -71,4 +71,15 @@
     <comment></comment>
     <requestid>1035285</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9db277ee6212b12fec5350f9be316105</srcmd5>
+    <version>1.4.14</version>
+    <time>1702488978</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.14:
+  * Fix bug with `disallow_skipped` option
+
+- Update to version 1.4.9</comment>
+    <requestid>1132850</requestid>
+  </revision>
 </revisionlist>

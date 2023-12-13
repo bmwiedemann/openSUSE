@@ -357,4 +357,13 @@
 </comment>
     <requestid>1106249</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8587c4c4ea66262b706993dab6afc1da</srcmd5>
+    <version>5.2.98</version>
+    <time>1702488957</time>
+    <user>anag+factory</user>
+    <comment>- Enable post quantum cryptography on Tumbleweed.
+</comment>
+    <requestid>1132807</requestid>
+  </revision>
 </revisionlist>

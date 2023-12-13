@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-userpath
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Tool for adding locations to the user PATH
 License:        MIT

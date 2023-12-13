@@ -31,6 +31,11 @@ Patch0:         bzrtp-fix-pkgconfig.patch
 Patch1:         set_current_version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} >= 1600
+BuildRequires:  liboqs-devel
+# At the time of writing (13/Dec/2023), PQCE is only available on Tumbleweed.
+BuildRequires:  postquantumcryptoengine-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -62,7 +67,11 @@ application which will use libbzrtp.
 %autosetup -p1
 
 %build
-%cmake -DENABLE_STATIC=OFF
+%cmake \
+%if 0%{?suse_version} >= 1600
+  -DENABLE_PQCRYPTO=ON \
+%endif
+  -DENABLE_STATIC=OFF
 %cmake_build
 
 %install

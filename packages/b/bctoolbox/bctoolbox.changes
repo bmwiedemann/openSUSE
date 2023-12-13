@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 11 07:40:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add decaf dep for post quantum crypto (tumbleweed only for now).
+
+-------------------------------------------------------------------
 Sun Oct  8 10:54:35 UTC 2023 - i thod <thod_@gmx.de>
 
 - Remove RPATH to be able to build on Fedora

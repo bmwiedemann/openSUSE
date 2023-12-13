@@ -30,23 +30,23 @@
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
 %global canonicaljson_version         2.0.0
-%global cryptography_version          41.0.5
+%global cryptography_version          41.0.7
 %global immutabledict_version         3.0.0
-%global idna_version                  3.4
+%global idna_version                  3.6
 %global ijson_version                 3.2.3
-%global jsonschema_version            4.19.1
+%global jsonschema_version            4.20.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 # TODO: 1.0.7
 %global msgpack_version               1.0.5
 %global netaddr_version               0.9.0
-# TODO: 8.13.23
+# TODO: 8.13.26
 %global phonenumbers_version          8.13.18
-# TODO: 0.18.0
+# TODO: 0.19.0
 %global prometheus_client_version     0.17.0
 %global psutil_version                2.0.0
-%global pyOpenSSL_version             23.0.0
-%global pyasn1_version                0.5.0
+%global pyOpenSSL_version             23.3.0
+%global pyasn1_version                0.5.1
 %global pyasn1_modules_version        0.3.0
 %global pymacaroons_version           0.13.0
 %global service_identity_version      23.1.0
@@ -66,7 +66,7 @@
 %global pysaml2_version               7.2.1
 %global Authlib_version               1.2.1
 %global lxml_version                  4.9.3
-%global sentry_sdk_version            1.31.0
+%global sentry_sdk_version            1.36.0
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -159,7 +159,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.97.0
+Version:        1.98.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -192,7 +192,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
-BuildRequires:  (%{use_python}-poetry-core >= 1.1.0 with %{use_python}-poetry-core =< 1.7.0)
+BuildRequires:  (%{use_python}-poetry-core >= 1.1.0 with %{use_python}-poetry-core =< 1.8.1)
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base

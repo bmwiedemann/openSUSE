@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Dec 13 11:58:33 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 23.11.00:
+  * snapcraft: add source type for repo
+  * snapcraft: update the source repo for snap build
+  * lib: fwts_version.h - update to V23.11.00
+  * debian: update changelog
+  * fwts-test: add regression tests for iBFT
+  * acpi: ibft: add tests for iBFT table
+  * auto-packager: mkpackage.sh: add noble
+  * lib: framework: fix the unclear error message of the results log
+  * auto-packager: update the fwts git repo
+  * fwts-test: add regression tests for RAS2
+  * acpi: ras2: add test for ACPI RAS2 table
+  * acpi/wmi: Add WMI GUID for the wmi-bmof driver
+  * fwts-test: sync up with the klog message update
+  * fwts-test: sync up the SPTT typo fix
+  * klog.json: Add some missing power kernel messages to klog database
+  * klog.json: Add some missing battery kernel messages to klog database
+  * klog.json: Add some missing bus kernel messages to klog database
+  * klog.json: Add some missing nsaccess kernel messages to klog database
+  * klog.json: Add some missing exutils kernel messages to klog database
+  * klog.json: Add some missing hwregs kernel messages to klog database
+  * klog.json: Add some missing tbfadt kernel messages to klog database
+  * klog.json: Add some missing exfield kernel messages to klog database
+  * klog.json: Add some missing rslist kernel messages to klog database
+  * klog.json: Add some missing evmisc kernel messages to klog database
+  * klog.json: Add some missing exmisc kernel messages to klog database
+  * klog.json: Add some missing efi64 kernel messages to klog database
+  * klog.json: Add some missing exresolv kernel messages to klog database
+  * acpi: aspt: fix typo of SPTT
+  * README: modify the fwts git repository
+  * klog.json: Add some missinig processor_perflib kernel messages to klog database
+  * klog.json: Add some missing apmt kernel messages to klog database
+  * klog.json: Add some missing hest kernel messages to klog database
+  * lib: fwts_acpi_table: fix fwts_acpi_reserved_zero_array with the input string
+  * klog.json: Add some missing erst kernel messages to klog database
+  * klog.json: Add some missing bert kernel messages to klog database
+  * klog.json: Add some missing einj kernel messages to klog database
+  * fwts-test: sync up with Recognize Pluton TPM patch
+  * acpi: Recognize Pluton TPM
+  * lib: fwts_version.h - update to V23.09.00
+  * debian: update changelog
+  * klog.json: Add some missing ACPI PCI IRQ kernel messages to klog database
+  * tpmevlog: Correct boundary checking for PCR4 event check
+  * acpi: ivrs: fix the tests stuck at validate IVRS table
+  * klog.json: Add some missing dma kernel messages to klog database
+  * klog.json: Add some missing amba kernel messages to klog database
+  * klog.json: Add some missing sleep kernel messages to klog database
+  * klog.json: Add some missing ACPI NFIT kernel messages to klog database
+  * klog.json: Add some missing processor idle kernel messages to klog database
+  * klog.json: Add some missing ACPI memory hotplug kernel messages to klog database
+  * kernelscan: modify some pathes of the scan files
+  * acpi: madt: add more interrupt controller structure types defined in ACPI 6.5
+  * uefi: esrt: fix the last_attempt_status wrongly interpretation of value
+  * acpi: fadt: remove the tests for expecting smi_cmd is zero
+  * fwts-test: sync up with iort test to version E.e
+  * acpi: iort: update IORT table to specification version E.e
+  * lib: fwts_acpi_object_eval.: fix build fail for ppc64el on mantic
+  * auto-packager: mkpackage.sh: remove kinetic
+  * acpi: s3: build fail for unexpected format of argument types for i386
+  * fwts-test: sync up with the dumping s3-dump-wakeup-src option
+  * snapcraft: add snap build for riscv64
+  * s3: add dumping the all devices and signed wakeup sources
+  * s3: add checking the device signed wakeup events
+  * dmicheck: update supported DMI version to 3.7
+  * Upgrade the max value for "Processor Upgrade" to 0x50
+  * fwts-test: sync up the spcr test updating to revision 4
+  * acpi: spcr: update the spcr tests to lastest revision 4
+  * fwts-test: sync up with the phat dumping vendor data modification
+  * acpi: phat: modify the dumping vendor data format
+  * klog.json: Add and modify some more e820 kernel messages to klog database
+  * fwts-test: sync up with phat fix the device path for the health data record
+  * acpi: phat: fix the device path for the health data record
+  * uefi: esrtdump: update the LastAttemptStatus values to UEFI spec 2.10
+  * acpi: update fadt and madt revisions to ACPI 6.5
+  * fwts-test: sync up with update supported port types
+  * fwts-test: sync up with klog.json ix spelling mistakes found using codespell
+  * acpi/scpr: spcr->interrupt_type == 0 is valid
+  * acpi/spcr: Update supported port types
+  * src/*: Fix various spelling mistakes in source code
+  * data/klog.json: Fix spelling mistakes found using codespell
+
+-------------------------------------------------------------------
+Wed Oct 18 07:46:03 UTC 2023 - Martin Pluskal <martin@pluskal.org>
+
+- Update _service url 
+
+-------------------------------------------------------------------
 Mon Jul 10 08:22:47 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 23.07.00:

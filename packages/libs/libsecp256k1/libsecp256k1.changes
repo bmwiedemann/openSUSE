@@ -1,0 +1,214 @@
+-------------------------------------------------------------------
+Thu Dec  7 13:13:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  Added:
+  * New module ellswift implements ElligatorSwift encoding for public
+    keys and x-only Diffie-Hellman key exchange for them. ElligatorSwift
+    permits representing secp256k1 public keys as 64-byte arrays which
+    cannot be distinguished from uniformly random. See:
+    + Header file include/secp256k1_ellswift.h which defines the new API.
+    + Document doc/ellswift.md which explains the mathematical background
+      of the scheme.
+    + The paper on which the scheme is based.
+  * We now test the library with unreleased development snapshots of GCC
+    and Clang. This gives us an early chance to catch miscompilations and
+    constant-time issues introduced by the compiler (such as those that
+    led to the previous two releases).
+  Fixed:
+  * Fixed symbol visibility in Windows DLL builds, where three internal
+    library symbols were wrongly exported.
+  Changed:
+  * When consuming libsecp256k1 as a static library on Windows, the user
+    must now define the SECP256K1_STATIC macro before including secp256k1.h.
+  ABI Compatibility:
+  * This release is backward compatible with the ABI of 0.3.0, 0.3.1,
+    and 0.3.2. Symbol visibility is now believed to be handled properly
+    on supported platforms and is now considered to be part of the ABI.
+- Drop Export_SHA256_functions.patch
+- Drop _service file: no need with regular versioned releases
+
+-------------------------------------------------------------------
+Sun Jul 10 13:58:25 UTC 2022 - Mark Stopka <mstopka@opensuse.org>
+
+- Remove TODO file from %doc
+
+-------------------------------------------------------------------
+Sun Jul 10 13:05:51 UTC 2022 - Mark Stopka <mstopka@opensuse.org>
+
+- Bumped to the commit ac83be33d0956faf6b7f61a60ab524ef7d6a473a,
+  used by cardano-node
+
+-------------------------------------------------------------------
+Sun Aug  2 11:50:29 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Bumped to the commit dbd41db16a0e91b2566820898a3ab2d7dad4fe00,
+  used by Electrum 4.0.2.
+
+-------------------------------------------------------------------
+Wed Feb 13 09:18:54 UTC 2019 - Adam Mizerski <adam@mizerski.pl>
+
+- spec file cleanup
+- added patch Export_SHA256_functions.patch
+
+-------------------------------------------------------------------
+Tue Feb  5 20:36:03 UTC 2019 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Mon Nov 26 17:38:18 UTC 2018 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Wed Nov  7 19:08:23 UTC 2018 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Thu Oct 25 18:14:42 UTC 2018 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Thu May 31 20:31:42 UTC 2018 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Sun Apr  8 09:40:18 UTC 2018 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Tue Mar 27 09:15:37 UTC 2018 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Tue Feb 20 15:13:50 UTC 2018 - adam@mizerski.pl
+
+- build with option --enable-module-recovery
+  It's disabled by default, but required by secp256k1-py
+
+-------------------------------------------------------------------
+Wed Feb  7 16:37:46 UTC 2018 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Fri Dec 22 15:50:10 UTC 2017 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Wed Dec 20 18:01:37 UTC 2017 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Sat Dec  9 11:29:25 UTC 2017 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Sat Nov 25 18:21:46 UTC 2017 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Mon Jun 15 19:27:12 UTC 2015 - marec@detebe.org
+
+- reverted to latest stable version
+
+-------------------------------------------------------------------
+Sat Jun 13 19:08:11 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Sat May 30 10:02:20 UTC 2015 - marec@detebe.org
+
+- bumped again to latest commit
+
+-------------------------------------------------------------------
+Sat May  9 14:50:46 UTC 2015 - marec@detebe.org
+
+- reverted to latest compatible version
+
+-------------------------------------------------------------------
+Fri May  1 11:25:13 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Wed Apr 22 20:16:47 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Mon Apr 20 19:20:20 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Tue Apr 14 20:26:04 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Sun Apr 12 17:26:39 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Sat Apr 11 09:41:31 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Fri Apr 10 10:04:07 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Mon Mar 30 10:26:39 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Sat Mar 28 12:37:59 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Mon Mar 16 17:25:24 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Mon Mar  2 17:28:08 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Wed Feb 25 13:26:51 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Tue Feb 17 16:51:02 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Fri Feb 13 16:18:30 UTC 2015 - marec@detebe.org
+
+- bumped to latest commit
+
+-------------------------------------------------------------------
+Tue Feb 10 20:30:07 UTC 2015 - marec@detebe.org
+
+- initial package build
+

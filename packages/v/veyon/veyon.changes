@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec  1 05:53:27 UTC 2023 - ming li <mli@suse.com>
+
+- Update to 4.8.2:
+  * Core:
+    * Added support for %USER% path variable
+    * Added configuration option to disable clipboard
+      synchronization at all (Service -> Miscellaneous settings in
+      advanced view)
+  * Server:
+    * Omit tray icon control if no user is logged on
+  * Linux:
+    * Add openSUSE 15.5 packages
+    * Eliminate various irrelevant warning and error messages when 
+      running outside user session or in non-systemd-managed
+      environments (e.g. inside Docker container) 
+
+-------------------------------------------------------------------
 Sun Jul 16 22:53:25 UTC 2023 - andy great <andythe_great@pm.me>
 
 - Update to 4.8.1.

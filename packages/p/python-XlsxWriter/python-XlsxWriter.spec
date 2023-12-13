@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-XlsxWriter
-Version:        3.0.3
+Version:        3.1.9
 Release:        0
 Summary:        Python module for writing OOXML spreadsheet files
 License:        BSD-2-Clause

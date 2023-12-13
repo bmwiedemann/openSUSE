@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  5 15:26:41 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 1.611.0:
+  * This release matches the content provided in the DirectX12
+    Agility SDK and the 1.611.0 NuGet package.
+    - https://devblogs.microsoft.com/directx/directx12agility/
+    - https://www.nuget.org/packages/Microsoft.Direct3D.D3D12/1.611.0
+
+-------------------------------------------------------------------
 Fri Jun 16 08:56:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Install license

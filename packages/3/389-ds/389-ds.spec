@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.4.0~git74.4297d88
+Version:        2.4.0~git113.84a845c
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -224,8 +224,6 @@ uses the facilities provided by NSS.
 # Extract the vendor.tar.gz. The -D -T here prevents removal of the sources
 # from the previous setup step.
 %setup -q -n %{name}-base-%{version} -D -T -a 3
-# When we update and revendor, we need to move the cargo.lock to the correct place.
-cp Cargo.lock src/Cargo.lock
 # Setup support utils
 %setup -q -n %{name}-base-%{version} -D -T -a 4
 
@@ -270,8 +268,8 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   --with-systemdgroupname=dirsrv.target \
 
 export XCFLAGS="$CFLAGS"
+make src/lib389/setup.py
 make %{?_smp_mflags}
-#make setup.py
 pushd src/lib389
 %python3_build
 popd
