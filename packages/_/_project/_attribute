@@ -425,6 +425,8 @@ products:
     - x86_64
   - cups-image:
     - x86_64
+  - gitea-runner-image:
+    - x86_64
   - go1.18-devel-container:
     - x86_64
   - golang-oldstable-image:
@@ -625,7 +627,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20231211'
 publishing: '20231211'
-testing: '20231211'
+testing: '20231212'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
