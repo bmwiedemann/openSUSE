@@ -48,6 +48,7 @@ Unicode ConScript Unicode Registry (CSUR) PUA Glyphs.
 %package -n gnu-unifont-bitmap-fonts
 Summary:        GNU Unifont (X11 portable compiled format)
 Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
 
 %description -n gnu-unifont-bitmap-fonts
 The GNU Unifont by Roman Czyborra.
@@ -59,6 +60,7 @@ This package contains the font in .pcf format.
 %package -n gnu-unifont-otf-fonts
 Summary:        GNU Unifont (OpenType Format)
 Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
 
 %description -n gnu-unifont-otf-fonts
 The GNU Unifont by Roman Czyborra.
@@ -70,6 +72,7 @@ This package contains fonts in OpenType format.
 %package -n gnu-unifont-jp-otf-fonts
 Summary:        GNU Unifont Japanese (OpenType Format)
 Group:          System/X11/Fonts
+%reconfigure_fonts_prereq
 
 %description -n gnu-unifont-jp-otf-fonts
 The GNU Unifont by Roman Czyborra.

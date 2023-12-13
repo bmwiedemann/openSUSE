@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 12 11:16:16 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add %reconfigure_fonts_prereq to the subpackages
+  * required by the presence of the macro:
+    %reconfigure_fonts_scriptlets -n <subpackage-name>
+
+-------------------------------------------------------------------
 Mon Oct 30 16:40:54 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 15.1.04:
