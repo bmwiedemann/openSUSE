@@ -3821,6 +3821,7 @@ unsorted:
   - fcitx5-table-other 
   - fcitx5-unikey 
   - fcitx5-zhuyin 
+  - fclones 
   - fcwnn 
   - fcwnn-devel 
   - fcwnncom 
@@ -4468,6 +4469,8 @@ unsorted:
   - geany-lang 
   - geany-plugins 
   - geany-plugins-lang 
+  - gearlever 
+  - gearlever-lang 
   - geary 
   - geary-lang 
   - gebaar-libinput 
@@ -8094,6 +8097,7 @@ unsorted:
   - intel-opencl-devel 
   - intelhex 
   - inter-fonts 
+  - inter-variable-fonts 
   - interbench 
   - interceptty 
   - intlfonts 
@@ -8709,6 +8713,10 @@ unsorted:
   - juk 
   - juk-lang 
   - jul-to-slf4j 
+  - julia 
+  - julia-compat 
+  - julia-compat-devel 
+  - julia-devel 
   - juliaup 
   - julius 
   - junit 
@@ -10060,8 +10068,8 @@ unsorted:
   - libMagickWand-7_Q16HDRI10-32bit 
   - libMathMLSolver0_3 
   - libMrm4 
-  - libMyGUICommon3_4_1 
-  - libMyGUIEngine3_4_1 
+  - libMyGUICommon3_4_3 
+  - libMyGUIEngine3_4_3 
   - libOIS-devel 
   - libOIS1_5_0 
   - libOSMesa-devel 
@@ -10672,8 +10680,8 @@ unsorted:
   - libamd-doc 
   - libaml0 
   - libancient2 
-  - libangelscript2_35_1 
-  - libangelscript_addons2_35_1 
+  - libangelscript2_36_1 
+  - libangelscript_addons2_36_1 
   - libanjuta-3-0 
   - libansilove-devel 
   - libansilove1 
@@ -11353,7 +11361,7 @@ unsorted:
   - libcorrect-devel 
   - libcorrect0_0_0 
   - libcotp-devel 
-  - libcotp2 
+  - libcotp3 
   - libcourier-unicode7 
   - libcpath-devel 
   - libcpath1 
@@ -14660,6 +14668,8 @@ unsorted:
   - libseccomp-devel 
   - libseccomp-tools 
   - libseccomp2-32bit 
+  - libsecp256k1-2 
+  - libsecp256k1-devel 
   - libsecprog-devel 
   - libsecprog0 
   - libsecret-1-0-32bit 
