@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 12 01:47:37 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Make BuildRequires libstdc++6-devel-gcc11 more precise, for
+  SLE 15 SP4 and SLE 15 SP5 only.
+
+-------------------------------------------------------------------
+Mon Dec 11 10:31:25 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Specify clang and llvm versions in SLE/Leap.
+
+-------------------------------------------------------------------
+Mon Dec 11 10:25:14 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Fix shebang replacement for ninja test cases. The curly brackets
+  are necessary for the macro expansion in the splitted lines
+  worked correctly.
+
+-------------------------------------------------------------------
 Mon Nov 27 14:29:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -216,6 +234,13 @@ Sat Feb 25 16:14:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 - meson 1.0.1:
   + clang-cl (13) now accepts cpp_std=c++20
   + a sizable collection of bug fixes
+
+-------------------------------------------------------------------
+Mon Jan 16 01:36:31 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add BuildRequires libstdc++6-devel-gcc11 for SLE 15 SP4 and
+  version above, which is necessary to make clang-tiny unit test
+  run.
 
 -------------------------------------------------------------------
 Thu Jan  5 04:43:00 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>

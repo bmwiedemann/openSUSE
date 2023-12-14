@@ -68,7 +68,11 @@ BuildArch:      noarch
 ExclusiveArch:  x86_64
 BuildRequires:  %{python_module devel}
 BuildRequires:  bison
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
+BuildRequires:  clang17 >= 15
+%else
 BuildRequires:  clang >= 15
+%endif
 BuildRequires:  clang-tools >= 15
 BuildRequires:  cups-devel
 BuildRequires:  distribution-release
@@ -104,8 +108,15 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel
+%if 0%{?sle_version} == 150400 || 0%{?sle_version} == 150500
+BuildRequires:  libstdc++6-devel-gcc11
+%endif
 BuildRequires:  libwmf-devel
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
+BuildRequires:  llvm17-devel
+%else
 BuildRequires:  llvm-devel
+%endif
 BuildRequires:  meson = %{version}
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -262,8 +273,8 @@ export PATH="${PWD}/bin:${PATH}"
 c++ --version
 
 # Fix shebang in test cases getting executed by ninja
-%python_expand find test\ cases -type f -name "*.py" \
-    -exec sed -i "1s@#!.*python.*@#!$(realpath %{_bindir}/$python)@" {} +
+%{python_expand find test\ cases -type f -name "*.py" \
+    -exec sed -i "1s@#!.*python.*@#!$(realpath %{_bindir}/$python)@" {} +}
 %endif
 
 export LANG=C.UTF-8
