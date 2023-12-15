@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 14 11:13:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add python3-cryptography to BuildRequires to have out of the
+  box support for
+  + PKI & TLS crypto-related features
+  + WEP decryption/encryption. (Dot11)
+  + IPsec encryption/authentication.
+- Recommend python3-PyX to be able to be able to use psdump() or
+  pdfdump().
+- Recommend python3-ipython for better experience when working in
+  interactive mode (command completion, history, ...).
+  mode
+- Add workaround for openSUSE where /etc/protocols and
+  /etc/protocols no longer live in /etc/ but /usr/etc/
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Dec 11 10:44:38 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update URL

@@ -274,4 +274,41 @@
    * Avoid unstable formatting in ellipsis-only body with trailing comment</comment>
     <requestid>1132059</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5ac778517e617e4c50dc41b5fc9717c9</srcmd5>
+    <version>0.1.8</version>
+    <time>1702587824</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.8
+ * Preview features
+   * Add &quot;preserve&quot; quote-style to mimic Black's skip-string-normalization
+   * Implement prefer_splitting_right_hand_side_of_assignments preview style
+   * [pycodestyle] Add fix for unexpected-spaces-around-keyword-parameter-equals
+   * [pycodestyle] Add fix for comment-related whitespace rules
+   * [pycodestyle] Allow sys.path modifications between imports
+   * [refurb] Implement hashlib-digest-hex (FURB181)
+ * Rule changes
+   * Allow flake8-type-checking rules to automatically quote runtime-evaluated references
+   * Allow transparent cell magics in Jupyter Notebooks
+   * [flake8-annotations] Avoid ANN2xx fixes for abstract methods with empty bodies
+   * [flake8-self] Ignore underscore references in type annotations
+   * [pep8-naming] Allow class names when apps.get_model is a non-string
+   * [pycodestyle] Allow matplotlib.use calls to intersperse imports
+   * [pyflakes] Support fixing unused assignments in tuples by renaming variables (F841)
+   * [pylint] Add fix for subprocess-run-without-check (PLW1510)
+ * Formatter
+   * Add docstring-code-format knob to enable docstring snippet formatting
+   * Use double quotes for all docstrings, including single-quoted docstrings
+   * Implement &quot;dynamic&quot; line width mode for docstring code formatting
+   * Support reformatting Markdown code blocks
+   * add support for formatting reStructuredText code snippets
+   * Avoid trailing comma for single-argument with positional separator
+   * Fix handling of trailing target comment
+ * CLI
+   * Hide unsafe fix suggestions when explicitly disabled
+   * Add SARIF support to --output-format
+ * Bug fixes
+   * Apply unnecessary index rule prior to enumerate rewrite</comment>
+    <requestid>1133053</requestid>
+  </revision>
 </revisionlist>

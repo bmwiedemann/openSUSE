@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 13 14:54:54 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Mar  7 17:21:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop BuildRequires mupdf-devel-static, this is not used

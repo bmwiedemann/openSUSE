@@ -37,8 +37,8 @@ not make sense.
 
 This particular package contains all the server related patterns
 
-################################################################################
 
+################################################################################
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -189,6 +189,10 @@ Provides:       pattern() = kvm_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3099
 Provides:       pattern-visible()
+Requires:       libvirt-daemon-config-network
+Requires:       libvirt-daemon-driver-network
+Requires:       libvirt-daemon-driver-qemu
+Requires:       libvirt-daemon-driver-storage-core
 Requires:       tftp
 Requires:       pattern() = basesystem
 Recommends:     libvirt-daemon-qemu
@@ -200,22 +204,6 @@ Obsoletes:      patterns-openSUSE-kvm_server < %{version}
 %else
 Provides:       patterns-sles-kvm_server = %{version}
 Obsoletes:      patterns-sles-kvm_server < %{version}
-%endif
-# fix issue because qemu-kvm is not present on all arch and
-# we would like to deprecate it for the futur (will be only
-# updated if already installed on the system)
-%ifarch %ix86 x86_64
-Requires:       qemu-x86
-%endif
-%ifarch ppc ppc64 ppc64le
-Requires:       qemu-ppc
-%endif
-%ifarch s390x
-Requires:       qemu-s390x
-%endif
-%ifarch %arm %arm64
-Requires:       qemu-arm
-Requires:       qemu-ipxe
 %endif
 
 %description kvm_server

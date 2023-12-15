@@ -18,24 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpickle
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Python library for serializing any arbitrary object graph into JSON
 License:        BSD-3-Clause
 URL:            https://github.com/jsonpickle/jsonpickle
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpickle/jsonpickle-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/jsonpickle/jsonpickle/commit/a24240bfdec6a9d5172c2f25e19654d23ffc61e1 Implement compatibility with pandas 2
-Patch:          pandas2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-simplejson
-Suggests:       python-ujson
-Suggests:       python-numpy
-Suggests:       python-pandas
+%if %python_version_nodots < 38
+Requires:       python-importlib_metadata
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module SQLAlchemy}
@@ -61,20 +60,23 @@ Additionally, it can reconstitute the object back into Python.
 sed -i 's/ --cov//' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_multindex_dataframe_roundtrip is flaky on i586
-%pytest -ra -k "not test_multindex_dataframe_roundtrip"
+donttest="test_multindex_dataframe_roundtrip"
+# https://github.com/jsonpickle/jsonpickle/issues/460
+donttest+=" or test_timedelta_index_roundtrip"
+%pytest -ra -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGES.rst
 %{python_sitelib}/jsonpickle
-%{python_sitelib}/jsonpickle-%{version}*-info
+%{python_sitelib}/jsonpickle-%{version}.dist-info
 
 %changelog

@@ -24,7 +24,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-extras
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Additional Budgie Desktop enhancements for user experience
 License:        GPL-3.0-or-later

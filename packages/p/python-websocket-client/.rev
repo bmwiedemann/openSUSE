@@ -266,4 +266,20 @@
   * Add more verbose exception for unsuccessful handshake</comment>
     <requestid>1129245</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ec3713d4127d677bc7030f9271dad82e</srcmd5>
+    <version>1.7.0</version>
+    <time>1702587751</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.0:
+  * Renamed `mask` variable in ABNF to prevent name collision
+    with `mask()` function (9b51f73)
+  * Fixed old http import of HTTPStatus in _handshake.py
+  * Add `send_text()` and `send_bytes()` to _app.py
+  * Improved typehint support
+  * General readability improvements, made all string
+    concatenations use f-strings
+  * Applied black formatting style to code (da7f286)</comment>
+    <requestid>1132851</requestid>
+  </revision>
 </revisionlist>

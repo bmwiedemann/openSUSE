@@ -23,7 +23,7 @@
 %bcond_with python2
 %endif
 Name:           yast2-python-bindings
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Python bindings for the YaST platform
 License:        GPL-2.0-only

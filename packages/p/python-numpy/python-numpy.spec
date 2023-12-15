@@ -408,8 +408,10 @@ popd
 %license LICENSE.txt
 %if %{without hpc}
 %{python_sitearch}/numpy/core/include/
+%if 0%{python_version_nodots} < 312
 %{python_sitearch}/numpy/distutils/mingw/*.c
 %{python_sitearch}/numpy/distutils/checks/*.c
+%endif
 %{python_sitearch}/numpy/f2py/src/
 %{python_sitearch}/numpy/core/lib/libnpymath.a
 %{python_sitearch}/numpy/random/lib/libnpyrandom.a
@@ -417,8 +419,10 @@ popd
 %{p_python_sitearch}/numpy/core/include/
 %{p_python_sitearch}/numpy/core/lib/libnpymath.a
 %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
+%if 0%{python_version_nodots} < 312
 %{p_python_sitearch}/numpy/distutils/mingw/*.c
 %{p_python_sitearch}/numpy/distutils/checks/*.c
+%endif
 %{p_python_sitearch}/numpy/f2py/src/
 %endif
 

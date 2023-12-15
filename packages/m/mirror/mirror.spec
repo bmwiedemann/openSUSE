@@ -18,7 +18,7 @@
 
 Name:           mirror
 Version:        2.9
-Release:        0
+Release:        911.3
 Summary:        Perl Scripts for Mirroring FTP Servers
 License:        SUSE-mirror
 Group:          Productivity/Networking/Web/Utilities
@@ -33,6 +33,7 @@ Patch5:         mirror-exec-path.dif
 Patch6:         dont-build-as-root.diff
 Patch7:         mirror-timelocal.patch
 Patch8:         mirror-dump.patch
+Patch9:         mirror-fix-perl-5.38-package-separator.patch
 Requires:       perl = %{perl_version}
 BuildArch:      noarch
 

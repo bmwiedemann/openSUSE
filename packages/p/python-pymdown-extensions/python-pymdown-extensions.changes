@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:45:48 UTC 2023 - Elisei Roca <eroca@mailbox.org>
+
+- update to 10.5:
+  * NEW: Blocks: Admonitions and Details now allow configuring
+    custom block classes and default titles.
+  * FIX: Keys: Ensure that Keys does not parse base64 encoded URLs.
+
+- from 10.4:
+  * NEW: Snippets: Allow PathLike objects for base_path to better
+    support interactions with MkDocs.
+  * FIX: Block Admonitions: Empty titles should be respected.
+  * FIX: Block Details: Empty summary should be respected.
+
+- from 10.3.1:
+  * FIX: SuperFences: Fix an issue where braces were not handled
+    properly in attributes.
+
+-------------------------------------------------------------------
 Thu Sep  7 07:14:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 10.3:

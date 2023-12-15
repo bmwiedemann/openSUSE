@@ -326,4 +326,12 @@
     <comment></comment>
     <requestid>1091318</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f6d6d551d0c4e2931498a6da24011e76</srcmd5>
+    <version>2.8.0</version>
+    <time>1702587779</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1133008</requestid>
+  </revision>
 </revisionlist>

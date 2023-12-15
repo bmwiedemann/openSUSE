@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:46:21 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.8.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Thu Nov 16 13:00:43 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.4
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Tue Oct 31 08:13:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.3
+  * Filter zones in certbot-dns-google to avoid usage of private DNS zones to create records
+
+-------------------------------------------------------------------
 Wed Jun  7 16:05:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.6.0

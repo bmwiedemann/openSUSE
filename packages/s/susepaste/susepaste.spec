@@ -1,7 +1,7 @@
 #
 # spec file for package susepaste
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Script for using openSUSE paste
 License:        GPL-3.0-only
 Group:          Productivity/Other
-URL:            https://susepaste.org
+URL:            https://github.com/openSUSE/paste
 Source0:        susepaste-script-%{version}.tar.bz2
 Patch0:         0001-susepaste-Fix-parsing-of-returned-Location-header.patch
 # PATCH-FIX-OPENSUSE 0002-susepaste-add-image-paste-info.patch malcolmlewis@opensuse.org boo#1193400-- Add info on posting an image to susepaste in the man page.

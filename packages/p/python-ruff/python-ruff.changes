@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:14:53 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.8
+ * Preview features
+   * Add "preserve" quote-style to mimic Black's skip-string-normalization
+   * Implement prefer_splitting_right_hand_side_of_assignments preview style
+   * [pycodestyle] Add fix for unexpected-spaces-around-keyword-parameter-equals
+   * [pycodestyle] Add fix for comment-related whitespace rules
+   * [pycodestyle] Allow sys.path modifications between imports
+   * [refurb] Implement hashlib-digest-hex (FURB181)
+ * Rule changes
+   * Allow flake8-type-checking rules to automatically quote runtime-evaluated references
+   * Allow transparent cell magics in Jupyter Notebooks
+   * [flake8-annotations] Avoid ANN2xx fixes for abstract methods with empty bodies
+   * [flake8-self] Ignore underscore references in type annotations
+   * [pep8-naming] Allow class names when apps.get_model is a non-string
+   * [pycodestyle] Allow matplotlib.use calls to intersperse imports
+   * [pyflakes] Support fixing unused assignments in tuples by renaming variables (F841)
+   * [pylint] Add fix for subprocess-run-without-check (PLW1510)
+ * Formatter
+   * Add docstring-code-format knob to enable docstring snippet formatting
+   * Use double quotes for all docstrings, including single-quoted docstrings
+   * Implement "dynamic" line width mode for docstring code formatting
+   * Support reformatting Markdown code blocks
+   * add support for formatting reStructuredText code snippets
+   * Avoid trailing comma for single-argument with positional separator
+   * Fix handling of trailing target comment
+ * CLI
+   * Hide unsafe fix suggestions when explicitly disabled
+   * Add SARIF support to --output-format
+ * Bug fixes
+   * Apply unnecessary index rule prior to enumerate rewrite
+   * [flake8-err-msg] Allow EM fixes even if msg variable is defined
+   * [flake8-pie] Prevent keyword arguments duplication
+   * [flake8-pie] Respect trailing comma in unnecessary-dict-kwargs (PIE804)
+   * [flake8-raise] Avoid removing parentheses on ctypes.WinError
+   * [isort] Avoid invalid combination of force-sort-within-types and lines-between-types
+   * [isort] Ensure that from-style imports are always ordered first in __future__
+   * [pycodestyle] Allow tab indentation before keyword
+   * [pylint] Ignore @overrides and @overloads for too-many-positional
+   * [pyupgrade] Enable printf-string-formatting fix with comments on right-hand side
+   * [refurb] Make math-constant (FURB152) rule more targeted
+   * [refurb] Support floating-point base in redundant-log-base (FURB163)
+   * [ruff] Detect unused-asyncio-dangling-task (RUF006) on unused assignments
+
+-------------------------------------------------------------------
 Tue Dec  5 08:53:06 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.1.7

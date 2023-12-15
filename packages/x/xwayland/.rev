@@ -388,4 +388,19 @@
     (CVE-2023-5574, ZDI-CAN-21213, bsc#1216261)</comment>
     <requestid>1128531</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>7afcdfbb672f399af152f284a3ae9919</srcmd5>
+    <version>23.2.2</version>
+    <time>1702587748</time>
+    <user>anag+factory</user>
+    <comment>- U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+  * Out-of-bounds memory write in XKB button actions (CVE-2023-6377, 
+    ZDI-CAN-22412, ZDI-CAN-22413, bsc#1217765)
+- U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
+  * Out-of-bounds memory read in RRChangeOutputProperty and
+    RRChangeProviderProperty (CVE-2023-6478, ZDI-CAN-22561,
+    bsc#1217766)
+</comment>
+    <requestid>1132832</requestid>
+  </revision>
 </revisionlist>

@@ -602,4 +602,16 @@
     <comment>- Disable parallel build again</comment>
     <requestid>1130116</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>1b62b8e41f9a7e478340e35312dd6fb1</srcmd5>
+    <version>6.6</version>
+    <time>1702587754</time>
+    <user>anag+factory</user>
+    <comment>- README.SUSE: add documentation about the state of security of the brltty
+  daemon (bsc#1214158).
+
+- Use ocaml-rpm-macros to track OCaml ABI
+- Reduce amount of rpmlint warnings with brltty.rpmlintrc</comment>
+    <requestid>1132864</requestid>
+  </revision>
 </revisionlist>

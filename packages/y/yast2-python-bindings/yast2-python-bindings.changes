@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 13 09:44:31 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Fix leak when passing Term objects; (bsc#1217075)
+- 5.0.2
+
+-------------------------------------------------------------------
 Tue Sep 12 10:10:25 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix inspect.getargspec() removed in python3.11; (bsc#1215226);
@@ -7,7 +13,7 @@ Tue Sep 12 10:10:25 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 -------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
-- 5.0.0 (#bsc1185510)
+- 5.0.0 (bsc#1185510)
 
 -------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>

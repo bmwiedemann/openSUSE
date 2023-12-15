@@ -66,6 +66,8 @@ Patch14:        hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch
 Patch15:        hcidump-Fix-memory-leak-with-malformed-packet.patch
 # bsc#1013712 CVE-2016-9798
 Patch16:        hcidump-Fixed-malformed-segment-frame-length.patch
+# PATCH-FIX-UPSTREAM: https://git.kernel.org/pub/scm/bluetooth/bluez.git/patch/?id=25a471a83e02e1effb15d5a488b3f0085eaeb675
+Patch17:        CVE-2023-45866.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)

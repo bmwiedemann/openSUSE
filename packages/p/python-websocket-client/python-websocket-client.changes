@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 13 10:36:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Renamed `mask` variable in ABNF to prevent name collision
+    with `mask()` function (9b51f73)
+  * Fixed old http import of HTTPStatus in _handshake.py
+  * Add `send_text()` and `send_bytes()` to _app.py
+  * Improved typehint support
+  * General readability improvements, made all string
+    concatenations use f-strings
+  * Applied black formatting style to code (da7f286)
+
+-------------------------------------------------------------------
 Mon Nov 27 20:30:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4:

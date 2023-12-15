@@ -16,6 +16,7 @@
 #
 
 
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
 %define api_version 0.8.5
 %define sover 0_8
 %define soname libbrlapi%{sover}
@@ -30,6 +31,7 @@ URL:            https://brltty.app/
 
 Source0:        https://brltty.app/archive/%name-%version.tar.xz
 Source1:        README.SUSE
+Source2:        %name.rpmlintrc
 Patch0:         brltty-udev-dir.patch
 Patch1:         https://github.com/brltty/brltty/commit/e6707d5e.patch
 
@@ -46,6 +48,7 @@ BuildRequires:  jpackage-utils
 BuildRequires:  libbraille-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
+BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
@@ -160,7 +163,7 @@ complete screen review functionality.
 This package contains the XWindow braille driver.
 
 %package udev-generic
-Summary:        BRLTTY Udev rules for braille devices that use a generic USB to serial adapter.
+Summary:        BRLTTY Udev rules for braille devices that use a generic USB to serial adapter
 Group:          System/Daemons
 Requires:       %name = %version-%release
 
@@ -333,24 +336,28 @@ for i in -I%_libdir/jvm/java/include{,/linux}; do
 done
 export PYTHON=/usr/bin/python3
 %configure CPPFLAGS="$java_inc" \
-        --with-install-root="%buildroot" \
         --with-tables-directory=%_datadir/%name \
-        --libexecdir=%_libexecdir \
         --disable-stripping
 make
 
 %install
 sed -i "s=/usr/libexec/brltty-systemd-wrapper=%_libexecdir/brltty-systemd-wrapper=" Autostart/Systemd/brltty@.service
-%make_install install-systemd install-udev install-polkit DESTDIR="%buildroot"
+%make_install install-systemd install-udev install-polkit INSTALL_ROOT="%buildroot"
+for exe in %buildroot%_bindir/*
+do
+	sed -i~ '1{s@%_bindir/env[[:blank:]]\+@%_bindir/@}' "${exe}"
+	diff -u "$_"~ "$_" || :
+	rm -f "${exe}~"
+done
 %find_lang %name
 sed -i "s/#api-parameters Auth=polkit/api-parameters Auth=polkit/" Documents/brltty.conf
 install -D -m644 Documents/brltty.conf %buildroot%_sysconfdir/brltty.conf
 # ghost brlapi.key
 touch %buildroot%_sysconfdir/brlapi.key
-# Don't include source files in binary package
-rm -f %buildroot%_libdir/ocaml/brlapi/brlapi.{mli,cmxa}
+# OCaml
+%ocaml_create_file_list
+#
 rm %buildroot%_libdir/libbrlapi.a
-rm %buildroot%_libdir/ocaml/brlapi/libbrlapi_stubs.a
 rm %buildroot/etc/X11/Xsession.d/90xbrlapi # TODO: install this somewhere?
 # fix missing executable bits
 test ! -x %buildroot%_bindir/brltty-config.sh
@@ -526,9 +533,7 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %{_jnidir}/libbrlapi_java.so
 %{_javadir}/brlapi.jar
 
-%files -n ocaml-brlapi
-%_libdir/ocaml/brlapi/
-%_libdir/ocaml/stublibs/dllbrlapi_stubs.so*
+%files -n ocaml-brlapi -f %name.files.devel
 
 %files -n python3-brlapi
 %{python3_sitearch}/brlapi.cpython*.so

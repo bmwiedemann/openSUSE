@@ -18,25 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pdfminer.six
-Version:        20200726
+Version:        20221105
 Release:        0
 Summary:        PDF parser and analyzer
 License:        MIT
 URL:            https://github.com/pdfminer/pdfminer.six
 Source:         https://github.com/pdfminer/pdfminer.six/archive/%{version}.tar.gz#/pdfminer.six-%{version}.tar.gz
 # https://github.com/pdfminer/pdfminer.six/pull/489
-Patch0:         python-pdfminer.six-remove-nose.patch
-Patch1:         import-from-non-pythonpath-files.patch
-BuildRequires:  %{python_module chardet}
-BuildRequires:  %{python_module cryptography}
+Patch0:         import-from-non-pythonpath-files.patch
+BuildRequires:  %{python_module charset-normalizer >= 2.0.0}
+BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-chardet
-Requires:       python-cryptography
-Requires:       python-sortedcontainers
+Requires:       python-charset-normalizer >= 2.0.0
+Requires:       python-cryptography >= 36.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-pdfminer3k = %{version}
@@ -55,7 +52,8 @@ the exact location, font or color of the text.
 %setup -q -n pdfminer.six-%{version}
 %autopatch -p1
 sed -i -e '/^#!\//, 1d' pdfminer/psparser.py
-sed  -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
+sed -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
+sed -i "s/__VERSION__/%{version}/g" pdfminer/__init__.py
 
 %build
 %python_build

@@ -1,36 +1,34 @@
-Index: pdfminer.six-20200726/tests/test_tools_dumppdf.py
-===================================================================
---- pdfminer.six-20200726.orig/tests/test_tools_dumppdf.py
-+++ pdfminer.six-20200726/tests/test_tools_dumppdf.py
-@@ -5,8 +5,11 @@ from tempfile import NamedTemporaryFile
+diff '--color=auto' -rub pdfminer.six-20221105.orig/tests/test_tools_dumppdf.py pdfminer.six-20221105/tests/test_tools_dumppdf.py
+--- pdfminer.six-20221105.orig/tests/test_tools_dumppdf.py	2022-11-05 12:22:08.000000000 -0400
++++ pdfminer.six-20221105/tests/test_tools_dumppdf.py	2023-12-11 12:12:06.044210731 -0500
+@@ -4,7 +4,11 @@
  
  from helpers import absolute_sample_path
- from pdfminer.pdfdocument import PDFNoValidXRefWarning
+ from tempfilepath import TemporaryFilePath
 -from tools import dumppdf
- 
++ 
 +import importlib.util
 +spec = importlib.util.spec_from_file_location("dumppdf", "tools/dumppdf.py")
 +dumppdf = importlib.util.module_from_spec(spec)
 +spec.loader.exec_module(dumppdf)
  
+ 
  def run(filename, options=None):
-     absolute_path = absolute_sample_path(filename)
-Index: pdfminer.six-20200726/tests/test_tools_pdf2txt.py
-===================================================================
---- pdfminer.six-20200726.orig/tests/test_tools_pdf2txt.py
-+++ pdfminer.six-20200726/tests/test_tools_pdf2txt.py
-@@ -4,9 +4,13 @@ import os
- from shutil import rmtree
- from tempfile import NamedTemporaryFile, mkdtemp
+diff '--color=auto' -rub pdfminer.six-20221105.orig/tests/test_tools_pdf2txt.py pdfminer.six-20221105/tests/test_tools_pdf2txt.py
+--- pdfminer.six-20221105.orig/tests/test_tools_pdf2txt.py	2022-11-05 12:22:08.000000000 -0400
++++ pdfminer.six-20221105/tests/test_tools_pdf2txt.py	2023-12-11 12:12:40.848031179 -0500
+@@ -3,10 +3,13 @@
+ from tempfile import mkdtemp
+ import filecmp
  
 -import tools.pdf2txt as pdf2txt
  from helpers import absolute_sample_path
+ from tempfilepath import TemporaryFilePath
  
 +import importlib.util
 +spec = importlib.util.spec_from_file_location("pdf2txt", "tools/pdf2txt.py")
 +pdf2txt = importlib.util.module_from_spec(spec)
 +spec.loader.exec_module(pdf2txt)
-+
  
  def run(sample_path, options=None):
      absolute_path = absolute_sample_path(sample_path)

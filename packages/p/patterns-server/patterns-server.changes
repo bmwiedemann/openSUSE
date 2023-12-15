@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 29 15:28:43 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- kvm_server pattern:
+  - require the basic libvirt modules and packages for a minimal
+    (but properly working) KVM host
+  - remove the direct dependency for qemu, as that now comes from
+    libvirt-daemon-driver-qemu
+
+This makes the kvm_server pattern a lot more useful, in contexts
+where recommended packages are not installed by default. On the
+other hand, everyone using it with recommended packages installation
+enabled, will see no difference at all.
+
+-------------------------------------------------------------------
 Thu May  4 20:57:18 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - kvm and xen patterns:

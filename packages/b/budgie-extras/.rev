@@ -162,4 +162,26 @@
 </comment>
     <requestid>1128773</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>853f77b979e96325908517179a39fe8e</srcmd5>
+    <version>1.7.1</version>
+    <time>1702587832</time>
+    <user>anag+factory</user>
+    <comment>- Budgie Extras 1.7.1 &quot;Tinker Tailor...&quot;
+  * CVE-2023-49347: budgie-wpreviews: use of fixed paths in /tmp
+    (bsc#1213341)
+  * CVE-2023-49344: windowshufflerdaemon: uses various fixed /tmp
+    file paths (bsc#1213342)
+  * CVE-2023-49345: budgie-takeabreak: fixed /tmp path use in
+    /tmp/nextbreak_&lt;user&gt; (bsc#1216281)
+  * CVE-2023-49346: budgie-weathershow: use of fixed path in
+    /tmp/&lt;username&gt;_weatherdata (bsc#1216282)
+  * CVE-2023-49342: budgie-clockworks: uses fixed temporary files
+    in /tmp/&lt;user&gt;_clockworks (bsc#1217595)
+  * CVE-2023-49343: budgie-dropby: use of fixed paths in
+    /tmp/&lt;user&gt;_call_dropby and /tmp/&lt;user&gt;_dropby_icon_copy
+    (bsc#1217597)
+</comment>
+    <requestid>1133097</requestid>
+  </revision>
 </revisionlist>

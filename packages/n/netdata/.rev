@@ -4354,4 +4354,13 @@ Other Notable Changes
     <comment></comment>
     <requestid>1132499</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9d29de40a49c3f7f505956ba91c82913</srcmd5>
+    <version>1.44.1</version>
+    <time>1702587803</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.44.1
+  See https://github.com/netdata/netdata/tree/v1.44.1</comment>
+    <requestid>1132981</requestid>
+  </revision>
 </revisionlist>

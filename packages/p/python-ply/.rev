@@ -232,4 +232,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1084490</requestid>
   </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>d6da21eca2d17bcaff731582bbc68069</srcmd5>
+    <version>3.11</version>
+    <time>1702587744</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-assert-methods.patch:
+  * Support Python 3.12 by not using removed assertion methods.
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1132798</requestid>
+  </revision>
 </revisionlist>

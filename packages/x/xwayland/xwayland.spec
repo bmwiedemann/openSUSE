@@ -34,6 +34,8 @@ Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
 
+Patch1217765:   U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+Patch1217766:   U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 13 16:18:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.2
+  * Properly raise warning if a custom pickling handler returns
+    None. (#433)
+  * Fix issue with serialization of certain sklearn objects
+    breaking when the numpy handler was enabled. (#431) (+434)
+  * Allow custom backends to not implement _encoder_options (#436)
+    (+446)
+  * Implement compatibility with pandas 2 (+446)
+  * Fix encoding/decoding of dictionary subclasses with referencing
+    (+455)
+  * Fix depth tracking for list/dict referencing (+456)
+- Drop pandas2.patch
+- Skip a noncritical test due to pandas built with Cython 3
+  gh#jsonpickle/jsonpickle#460
+
+-------------------------------------------------------------------
 Wed Jun 14 10:48:59 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add patch pandas2.patch to fix compatibility

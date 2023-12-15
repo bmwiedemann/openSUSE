@@ -422,4 +422,12 @@ Dependency update required for rubocop update:
     <comment></comment>
     <requestid>1131291</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>565c73b6f3b133fcc3b614e50689cfa5</srcmd5>
+    <version>1.59.0</version>
+    <time>1702587801</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132980</requestid>
+  </revision>
 </revisionlist>

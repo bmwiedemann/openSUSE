@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 13 08:54:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.9.1 (skipping non-existent release 1.9.0):
+  * Bugfixes
+    - Enable testing with py312 (#230) @ssbarnea
+    - Fix project description (#229) @ssbarnea
+    - Fix RTD builds (#228) @ssbarnea
+    - tests/test_ansi2html.py: use sys.executable instead of
+      hardcoded python3 (#214) @johanneskastl
+    - Replace optparse with argparse (#205) @ssbarnea
+    - Replace sphinx with mkdocs (#204) @ssbarnea
+- remove patch
+  0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
+- change upstream to pycontribs/ansi2html
+
+-------------------------------------------------------------------
 Tue May  9 12:02:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add patch

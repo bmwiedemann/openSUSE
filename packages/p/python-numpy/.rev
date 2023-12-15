@@ -1240,4 +1240,13 @@ The Python versions supported in this release are 3.9-3.11.
   * MAINT: Refactor partial load Workaround for Clang</comment>
     <requestid>1127600</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>55b2b96de464a462d66b2647f787a709</srcmd5>
+    <version>1.26.2</version>
+    <time>1702587745</time>
+    <user>anag+factory</user>
+    <comment>- Do not attempt to ship numpy.distutils C code in the Python 3.12 -devel
+  package, it is not installed.</comment>
+    <requestid>1132800</requestid>
+  </revision>
 </revisionlist>

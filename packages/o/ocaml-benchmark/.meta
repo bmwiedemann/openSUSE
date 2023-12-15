@@ -1,6 +1,0 @@
-<package name="ocaml-benchmark" project="openSUSE:Factory">
-  <title>Benchmarking module for OCaml</title>
-  <description>Benchmark provides functions to measure and compare the run-time of functions.
-It is inspired by the Perl module of the same name.</description>
-  <devel project="devel:languages:ocaml" package="ocaml-benchmark"/>
-</package>

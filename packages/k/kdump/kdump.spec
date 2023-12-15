@@ -44,7 +44,11 @@
 %ifarch %power64
 %define qemu qemu-ppc
 %else
+%ifarch riscv64
+%define qemu qemu-extra
+%else
 %define qemu qemu-%{_target_cpu}
+%endif
 %endif
 %endif
 %endif
@@ -53,7 +57,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.9.8
+Version:        2.0.0
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later

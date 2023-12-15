@@ -22,11 +22,13 @@ Version:        3.11
 Release:        0
 Summary:        Python Lex & Yacc
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://www.dabeaz.com/ply/
 Source:         https://files.pythonhosted.org/packages/source/p/ply/ply-%{version}.tar.gz
 Patch0:         python-ply-shebangs.patch
+Patch1:         fix-assert-methods.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -62,8 +64,7 @@ It is compatible with both Python 2 and Python 3.
 %endif
 
 %prep
-%setup -q -n ply-%{version}
-%patch0 -p1
+%autosetup -p1 -n ply-%{version}
 # remove unneeded executable bit
 chmod -x test/testlex.py
 
@@ -74,10 +75,10 @@ find example -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} 
 %fdupes example
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -92,7 +93,8 @@ popd
 # yay for upstream that puts the license to readme
 %license README.md
 %doc ANNOUNCE CHANGES README.md TODO
-%{python_sitelib}/*
+%{python_sitelib}/ply
+%{python_sitelib}/ply-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc

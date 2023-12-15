@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:45:37 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.8.0
+  * Added support for Alpine Linux distribution when is used the apache plugin
+
+-------------------------------------------------------------------
+Thu Nov 16 12:59:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.4
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Tue Oct 31 08:12:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.3
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
 Wed Jun  7 16:04:33 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.6.0

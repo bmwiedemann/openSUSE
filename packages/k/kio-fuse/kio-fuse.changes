@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec  9 22:14:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.1.0:
+  * Support for building against Qt 6 and KF6
+  * Minimum versions of dependencies got raised:
+    CMake 3.16, Qt 5.15, KIO 5.96.0
+  * Minor bug fixes and optimizations
+  * Don't include the password in the generated VFS path
+  * Mounting admin: is blocked now
+- Drop patch, now upstream:
+  * 0001-Initialize-m_lastChildrenRefresh-to-be-really-in-the.patch
+
+-------------------------------------------------------------------
 Wed Oct 11 00:56:22 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - dbus-run-session now needs to be explicitly required for the

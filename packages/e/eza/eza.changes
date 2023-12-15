@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec 13 17:13:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  Breaking changes:
+  * Extend the +<FORMAT> custom time style, accept an optional
+    ...<newline><FORMAT_2> to support setting a different custom time
+    style for recent files.
+    The behavior changes if the previous format string
+    already contains <newline>. Previously <newline>s are used as-is,
+    now the first newline will be interpreted as separation for non-recent
+    and recnet format; any content after the second newline, if any, are
+    simply ignored.
+    The implementation rejects some previously accepted
+    inputs, primarily empty non-recent format string. --time-style=+
+    and --time-style='+<newline>' will now get a panic message.
+  Bug Fixes:
+  * Add color scale mode to the bash completions
+  * Add color scale mode to the fish completions
+  * Quote symbolic links correctly when their destinations contain spaces
+  Documentation:
+  * Modify documentation about custom time style
+  Features:
+  * Add BSD file flags
+  * Add Windows file attributes
+  * [breaking] Support different custom time style for non-recent/recent files
+
+-------------------------------------------------------------------
 Thu Dec  7 06:53:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.3:

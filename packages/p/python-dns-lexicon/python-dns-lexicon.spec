@@ -58,6 +58,7 @@ BuildConflicts: %{python_module oci}
 Requires:       python-PyYAML >= 3
 Requires:       python-beautifulsoup4 >= 4
 Requires:       python-cryptography >= 2
+Requires:       python-dnspython >= 2
 Requires:       python-importlib-metadata >= 4.6
 Requires:       python-pyotp
 Requires:       python-requests >= 2
@@ -65,7 +66,6 @@ Requires:       python-tldextract >= 2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-boto3 >= 1.28
-Recommends:     python-dnspython >= 2
 Recommends:     python-localzone >= 0.9.8
 Recommends:     python-oci >= 2
 Recommends:     python-softlayer >= 5

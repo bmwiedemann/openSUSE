@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot
-Version:        2.7.3
+Version:        2.8.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -69,6 +69,7 @@ to lower the barriers to entry for encrypting all HTTP traffic on the internet.
 
 %prep
 %setup -q -n certbot-%{version}
+%autopatch -p1
 
 %build
 %python_build

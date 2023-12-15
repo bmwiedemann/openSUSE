@@ -18,11 +18,10 @@
 
 %define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
 Name:           python-csvkit
-Version:        1.1.1
+Version:        1.3.0
 Release:        0
 Summary:        A library of utilities for working with CSV
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/csvkit
 Source0:        https://files.pythonhosted.org/packages/source/c/csvkit/csvkit-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/wireservice/csvkit/5f22e664121b13d9ff005a9206873a8f97431dca/examples/testdbf_converted.csv
@@ -31,14 +30,21 @@ BuildRequires:  %{python_module agate-dbf >= 0.2.0}
 BuildRequires:  %{python_module agate-excel >= 0.2.2}
 BuildRequires:  %{python_module agate-sql >= 0.5.3}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-SQLAlchemy
 Requires:       python-agate
 Requires:       python-agate-dbf
 Requires:       python-agate-excel
 Requires:       python-agate-sql
-Requires:       (python-importlib-metadata if python-base < 3.10)
+Requires:       python-openpyxl
+Requires:       python-xlrd
+%if %python_version_nodots < 310
+Requires:       python-importlib-metadata
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -59,10 +65,10 @@ cp %{SOURCE1} examples/testdbf_converted.csv
 %endif
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
 done
@@ -88,7 +94,7 @@ end}
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
   print(rpm.expand("%python_alternative %{_bindir}/" .. b .. "\n"))
 end}
-%{python_sitelib}/csvkit-%{version}*-info
+%{python_sitelib}/csvkit-%{version}.dist-info
 %{python_sitelib}/csvkit/
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 13 15:11:09 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20231213.09963a4:
+  * profiles: add and adjust polkit actions for gamemode (bsc#1217915)
+
+-------------------------------------------------------------------
 Wed Nov 29 12:06:01 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20231129.269abcd:

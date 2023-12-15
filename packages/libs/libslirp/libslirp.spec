@@ -1,7 +1,7 @@
 #
 # spec file for package libslirp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define libname libslirp0
 
 Name:           libslirp
-Version:        4.7.0+44
+Version:        4.7.0+60
 Release:        0
 Summary:        A general purpose TCP-IP emulator
 License:        MIT
 Group:          System/Libraries
 URL:            https://gitlab.freedesktop.org/slirp/%{name}
 Source0:        %{name}-%{version}.tar.xz
-# https://gitlab.freedesktop.org/slirp/libslirp/-/issues/64
-Patch0:         libslirp-semicolon.patch
 BuildRequires:  gcc
 BuildRequires:  git-core
 BuildRequires:  glib2-devel

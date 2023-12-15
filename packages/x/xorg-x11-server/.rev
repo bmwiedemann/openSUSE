@@ -3951,4 +3951,19 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
 - adjusted u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch</comment>
     <requestid>1120244</requestid>
   </revision>
+  <revision rev="421" vrev="2">
+    <srcmd5>fea22973953fd00734cb24bf57cfef75</srcmd5>
+    <version>21.1.9</version>
+    <time>1702587749</time>
+    <user>anag+factory</user>
+    <comment>- U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+  * Out-of-bounds memory write in XKB button actions (CVE-2023-6377, 
+    ZDI-CAN-22412, ZDI-CAN-22413, bsc#1217765)
+- U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
+  * Out-of-bounds memory read in RRChangeOutputProperty and
+    RRChangeProviderProperty (CVE-2023-6478, ZDI-CAN-22561,
+    bsc#1217766)
+</comment>
+    <requestid>1132834</requestid>
+  </revision>
 </revisionlist>

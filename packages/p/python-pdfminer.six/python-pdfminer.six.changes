@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 11 17:24:21 UTC 2023 - Jonathan Papineau <jonathan@jontech.app>
+
+- Update to 20221105
+  - Option to disable boxes flow layout analysis when using pdf2txt 
+  - Add support for PDF 2.0 (ISO 32000-2) AES-256 encryption
+  - Support for Paeth PNG filter compression (predictor value = 4)
+  - Type annotations
+  - Export type annotations from pypi package per PEP561
+  - Support for identity cmap's
+  - Add support for PDF page labels
+  - Installation of Pillow as an optional extra dependency
+  - Exporting images without any specific encoding 
+  - Output converter for the hOCR format
+  - Font name aliases for Arial, Courier New and Times New Roman
+  - Documentation on why special characters can sometimes not be extracted
+- Remove patch python-pdfminer.six-remove-nose.patch
+- Update dependencies
+
+-------------------------------------------------------------------
 Fri Aug 25 14:07:07 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

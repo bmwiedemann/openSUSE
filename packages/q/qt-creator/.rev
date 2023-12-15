@@ -243,4 +243,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
   * Screen recording</comment>
     <requestid>1128701</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e8ae5445fb713b5210ce8eea77fa093e</srcmd5>
+    <version>12.0.1</version>
+    <time>1702587816</time>
+    <user>anag+factory</user>
+    <comment>Update to 12.0.1 (forwarded request 1132996 from krop)</comment>
+    <requestid>1133017</requestid>
+  </revision>
 </revisionlist>

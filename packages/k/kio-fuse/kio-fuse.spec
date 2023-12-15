@@ -1,7 +1,7 @@
 #
 # spec file for package kio-fuse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,23 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kio-fuse
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Access KIO over the regular filesystem
 License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-%if %{with lang}
-Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kio-fuse.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Initialize-m_lastChildrenRefresh-to-be-really-in-the.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5KIO) >= 5.66.0
-BuildRequires:  cmake(Qt5DBus) >= 5.12.0
+BuildRequires:  cmake(KF5KIO) >= 5.96.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(fuse3)
 %if 0%{?suse_version} > 1599
@@ -78,8 +76,7 @@ echo -e '#!/bin/sh\numount $2' >> fusermount3
 chmod a+x fusermount3
 export PATH=$PWD:$PATH
 
-export CTEST_OUTPUT_ON_FAILURE=1
-make %{?_smp_mflags} -C build VERBOSE=1 test
+%ctest
 %endif
 
 %files

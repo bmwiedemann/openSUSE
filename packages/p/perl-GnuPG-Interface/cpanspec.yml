@@ -9,8 +9,8 @@ preamble: |-
 post_build: |-
   chmod 755 ./test/fake-gpg-v*
 
-custom_test: |-
- # RT#88963
- %{__make} test || :
- %{__make} test
+#custom_test: |-
+# # RT#88963
+# %{__make} test || :
+# %{__make} test
 

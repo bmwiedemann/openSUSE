@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 10 11:14:15 UTC 2023 - Walter Haidinger <obs-walter@haidinger.xyz>
+
+- Fix perl 5.38+ package separator warning (bnc#1214412)
+  * Added patch mirror-fix-perl-5.38-package-separator.patch
+
+-------------------------------------------------------------------
 Wed Sep  6 10:33:51 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Refresh patches and simplify spec file a bit

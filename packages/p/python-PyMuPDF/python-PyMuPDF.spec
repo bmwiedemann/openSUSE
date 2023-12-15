@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Python 2 build fails always
 %define skip_python2 1
 %define pypi_name PyMuPDF
+%{?sle15_python_module_pythons}
 Name:           python-%{pypi_name}
 Version:        1.21.1
 Release:        0

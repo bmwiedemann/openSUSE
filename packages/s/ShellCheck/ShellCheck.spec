@@ -26,7 +26,7 @@ Summary:        Shell script analysis tool
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
@@ -112,9 +112,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup
 cp -p %{SOURCE1} %{name}.cabal
-cabal-tweak-dep-ver fgl '< 5.8.1.0' '< 6'
-cabal-tweak-dep-ver mtl '< 2.3' '< 3'
-cabal-tweak-dep-ver transformers '< 0.6' '< 1'
 
 %build
 %ghc_lib_build

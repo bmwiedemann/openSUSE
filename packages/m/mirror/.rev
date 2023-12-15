@@ -139,4 +139,12 @@ See the explanation added in the spreadsheet linked at license.opensuse.org (SUS
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1110879</requestid>
   </revision>
+  <revision rev="19" vrev="912">
+    <srcmd5>612485640ab6705aa109995100c766f2</srcmd5>
+    <version>2.9</version>
+    <time>1702587791</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132931</requestid>
+  </revision>
 </revisionlist>

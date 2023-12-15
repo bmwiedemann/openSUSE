@@ -279,4 +279,34 @@
   * Color-scale broked size for colors</comment>
     <requestid>1131538</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>63115f5a12fd29a133c55e435f0cd97f</srcmd5>
+    <version>0.17.0+0</version>
+    <time>1702587789</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.0:
+  Breaking changes:
+  * Extend the +&lt;FORMAT&gt; custom time style, accept an optional
+    ...&lt;newline&gt;&lt;FORMAT_2&gt; to support setting a different custom time
+    style for recent files.
+    The behavior changes if the previous format string
+    already contains &lt;newline&gt;. Previously &lt;newline&gt;s are used as-is,
+    now the first newline will be interpreted as separation for non-recent
+    and recnet format; any content after the second newline, if any, are
+    simply ignored.
+    The implementation rejects some previously accepted
+    inputs, primarily empty non-recent format string. --time-style=+
+    and --time-style='+&lt;newline&gt;' will now get a panic message.
+  Bug Fixes:
+  * Add color scale mode to the bash completions
+  * Add color scale mode to the fish completions
+  * Quote symbolic links correctly when their destinations contain spaces
+  Documentation:
+  * Modify documentation about custom time style
+  Features:
+  * Add BSD file flags
+  * Add Windows file attributes
+  * [breaking] Support different custom time style for non-recent/recent files</comment>
+    <requestid>1132929</requestid>
+  </revision>
 </revisionlist>

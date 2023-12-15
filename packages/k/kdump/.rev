@@ -1278,4 +1278,16 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * drop obsolete dependency on systemd-sysvinit (bsc#1216745)</comment>
     <requestid>1121458</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>1a429835dc3e0b1c88dac04dc6dac19a</srcmd5>
+    <version>2.0.0</version>
+    <time>1702587764</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 2.0.0
+  * add support for riscv64 (bsc#1204214)
+  * mkdumprd: fix the check for updated SSH keys
+  * prefer by-path and device-mapper aliases (bsc#1217617)
+  * udev: don't reload kdump if kernel handles hotplug (jsc#PED-5077)</comment>
+    <requestid>1132926</requestid>
+  </revision>
 </revisionlist>

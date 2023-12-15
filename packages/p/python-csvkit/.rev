@@ -446,4 +446,41 @@
     <comment></comment>
     <requestid>1114540</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a4e1dab47bb9822a2eef95aea71a4c2b</srcmd5>
+    <version>1.3.0</version>
+    <time>1702587799</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.0:
+  * /scripts/csvformat adds a --skip-header (-E) option to not output a
+    header row.
+  * /scripts/csvlook adds a --max-precision option to set the maximum number
+    of decimal places to display.
+  * /scripts/csvlook adds a --no-number-ellipsis option to disable the
+    ellipsis (…) if --max-precision is exceeded.
+  * /scripts/csvstat supports the --no-inference (-I), --locale (-L),
+    --blanks, --date-format and datetime-format options.
+  * /scripts/csvstat reports a &quot;Non-null values&quot; statistic.
+  * /scripts/csvstat adds a --non-nulls option to only output counts
+    of non-null values.
+  * /scripts/csvstat reports a &quot;Most decimal places&quot; statistic.
+  * /scripts/csvstat adds a --max-precision option to only output the
+    most decimal places.
+  * /scripts/csvstat adds a --json option to output results as JSON text.
+  * /scripts/csvstat adds an --indent option to indent the JSON text when
+    --json is set.
+  * /scripts/in2csv adds a --use-sheet-names option to use the sheet names
+    as file names when --write-sheets is set.
+  * Add a --null-value option to commands with the --blanks option, to
+    convert additional values to NULL.
+  * Reconfigure the encoding of standard input according to the --encoding
+    option, which defaults to utf-8-sig.
+  * Prompt the user if additional input is expected (i.e. if no input file
+    or piped data is provided) in /scripts/csvjoin, /scripts/csvsql and
+    /scripts/csvstack.
+  * No longer errors if a NUL byte occurs in an input file.
+  * Add Python 3.12 support.
+  * /scripts/csvjoin uses the correct columns when performing a --right join.</comment>
+    <requestid>1132979</requestid>
+  </revision>
 </revisionlist>

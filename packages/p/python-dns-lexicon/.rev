@@ -232,4 +232,12 @@
     <comment></comment>
     <requestid>1126890</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e2238f54b01be67c730cd995d9f91211</srcmd5>
+    <version>3.17.0</version>
+    <time>1702587767</time>
+    <user>anag+factory</user>
+    <comment>- dnspython is not an optional requirement, bump it to Requires.</comment>
+    <requestid>1132965</requestid>
+  </revision>
 </revisionlist>

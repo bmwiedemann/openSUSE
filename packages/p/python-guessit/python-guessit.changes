@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 14 12:26:28 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.8.0
+  Chore:
+  * migrate setup.cfg to pyproject.toml
+  * remove win_private_assemblies from pyinstaller spec
+  * Silence pylint
+  Feature:
+  * detect Dolby Vision from DV
+  * add Paramount+ to Streaming Services
+  * add amzn-cbr
+  * add python 3.12 and pypy 3.10 support
+  Fix:
+  * pathlib.Path.__enter__() is deprecated
+  * importlib.resources.read_text() is deprecated
+  Style:
+  * fix pylint false positive
+
+-------------------------------------------------------------------
 Mon Feb 20 08:45:07 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.7.1

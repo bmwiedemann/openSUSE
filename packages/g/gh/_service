@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual"/>
   <service name="go_modules" mode="manual">
-    <param name="archive">cli-2.38.0.tar.gz</param>
+    <param name="archive">cli-2.40.1.tar.gz</param>
     <param name="compression">zst</param>
   </service>
 </services>

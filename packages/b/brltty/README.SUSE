@@ -24,3 +24,16 @@ to be able to have orca interact with the Braille display. It also
 disallows remote users from interacting with the display. If you would
 like to change this behavior, then you can edit the api-parameters
 directive in /etc/brltty.conf.
+
+Notes on Security
+========================================================================
+
+The brltty daemon runs as a dedicated service user and group account named
+"brltty". While this looks got from afar, the daemon actually keeps a lot of
+privileges, most notably among them:
+
+- root group membership.
+- Linux capabilities CAP_SYS_ADMIN and CAP_MKNOD.
+
+Therefore the SUSE security team currently considers the brltty service to be
+equivalent to root.

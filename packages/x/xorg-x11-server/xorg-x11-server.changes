@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  4 18:49:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
+  * Out-of-bounds memory write in XKB button actions (CVE-2023-6377, 
+    ZDI-CAN-22412, ZDI-CAN-22413, bsc#1217765)
+- U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
+  * Out-of-bounds memory read in RRChangeOutputProperty and
+    RRChangeProviderProperty (CVE-2023-6478, ZDI-CAN-22561,
+    bsc#1217766)
+
+-------------------------------------------------------------------
 Wed Oct 25 11:05:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.9

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 13 11:10:22 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- README.SUSE: add documentation about the state of security of the brltty
+  daemon (bsc#1214158).
+
+-------------------------------------------------------------------
+Tue Dec 12 12:12:12 UTC 2023 - ohering@suse.de
+
+- Use ocaml-rpm-macros to track OCaml ABI
+- Reduce amount of rpmlint warnings with brltty.rpmlintrc
+
+-------------------------------------------------------------------
 Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
 
 - Disable parallel build again

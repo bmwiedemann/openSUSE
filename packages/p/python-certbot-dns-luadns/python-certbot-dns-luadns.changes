@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:46:36 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.8.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Thu Nov 16 13:01:23 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.4
+  * Fixed a bug introduced in version 2.7.0 of our Lexicon based DNS plugins that
+    caused them to fail to find the DNS zone that needs to be modified in some
+    cases.
+
+-------------------------------------------------------------------
+Tue Oct 31 08:13:45 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.3
+  * Add a new base class certbot.plugins.dns_common_lexicon.LexiconDNSAuthenticator to implement a DNS
+    authenticator plugin backed by Lexicon to communicate with the provider DNS API. This approach relies
+    heavily on conventions to reduce the implementation complexity of a new plugin.
+  * Add a new test base class certbot.plugins.dns_test_common_lexicon.BaseLexiconDNSAuthenticatorTest to
+    help testing DNS plugins implemented on top of LexiconDNSAuthenticator.
+  * Deprecates LexiconClient base class and build_lexicon_config function in
+    certbot.plugins.dns_common_lexicon module in favor of LexiconDNSAuthenticator.
+  * Deprecates BaseLexiconAuthenticatorTest and BaseLexiconClientTest test base classes of
+    certbot.plugins.dns_test_common_lexicon module in favor of BaseLexiconDNSAuthenticatorTest.
+
+-------------------------------------------------------------------
 Wed Jun  7 16:05:44 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.6.0

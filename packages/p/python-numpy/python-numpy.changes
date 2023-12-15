@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 13 06:53:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not attempt to ship numpy.distutils C code in the Python 3.12 -devel
+  package, it is not installed.
+
+-------------------------------------------------------------------
 Mon Nov 20 05:09:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.26.2:

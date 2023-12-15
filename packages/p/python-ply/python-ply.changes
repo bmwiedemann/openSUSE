@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 13 06:30:27 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-assert-methods.patch:
+  * Support Python 3.12 by not using removed assertion methods.
+- Switch to autosetup and pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Apr 23 23:14:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Move documentation into main package for SLE15

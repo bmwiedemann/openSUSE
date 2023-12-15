@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:27:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.8.0
+  * Support for Python 3.7 was removed.
+
+-------------------------------------------------------------------
+Thu Nov 16 12:55:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.4
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
 Mon Oct 30 15:33:46 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.7.3

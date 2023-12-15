@@ -18,9 +18,9 @@
 
 %define cpan_name GnuPG-Interface
 Name:           perl-GnuPG-Interface
-Version:        1.30.0
+Version:        1.40.0
 Release:        0
-%define cpan_version 1.03
+%define cpan_version 1.04
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Supply object methods for interacting with GnuPG
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -41,7 +41,7 @@ Requires:       perl(MooX::late) >= 0.014
 Provides:       perl(GnuPG::Fingerprint)
 Provides:       perl(GnuPG::Handles)
 Provides:       perl(GnuPG::HashInit)
-Provides:       perl(GnuPG::Interface) = 1.30.0
+Provides:       perl(GnuPG::Interface) = %{version}
 Provides:       perl(GnuPG::Key)
 Provides:       perl(GnuPG::Options)
 Provides:       perl(GnuPG::PrimaryKey)
@@ -79,9 +79,7 @@ chmod 755 ./test/fake-gpg-v*
 
 # MANUAL END
 %check
-# RT#88963
-%{__make} test || :
-%{__make} test
+make test
 
 %install
 %perl_make_install

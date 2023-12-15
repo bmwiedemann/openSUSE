@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 14 10:57:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.3:
+  * Catalog handling https urls (#2850)
+
+-------------------------------------------------------------------
+Wed Dec 13 15:46:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.54.2:
+  * Parse frontmatter data in the `catalog` command  (#2843)
+
+-------------------------------------------------------------------
 Mon Dec 11 17:22:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.54.1:

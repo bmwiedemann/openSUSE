@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 14 04:38:35 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- dnspython is not an optional requirement, bump it to Requires. 
+
+-------------------------------------------------------------------
 Tue Nov 14 12:09:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.0:

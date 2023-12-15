@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Dec 14 09:57:00 UTC 2023 - Elisei Roca <eroca@mailbox.org>
+
+- Switch to Github for sources as they include all tests
+
+- Run dos2unix for E: wrong-script-end-of-line-encoding
+
+-------------------------------------------------------------------
+Sun Dec 10 16:43:59 UTC 2023 - Elisei Roca <eroca@mailbox.org>
+
+- Update to version 1.2.1:
+  https://github.com/miyuchina/mistletoe/compare/v1.0.1...v1.2.1
+
+-------------------------------------------------------------------
+Sun Apr 30 08:43:29 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Upgrade to 1.0.1.
+
+-------------------------------------------------------------------
+Wed Jun  8 04:42:27 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Initial version. v0.8.2.

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  7 10:40:28 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.8.0
+  * Support for Python 3.7 was removed.
+  * Stop using the deprecated pkg_resources API included in setuptools.
+
+-------------------------------------------------------------------
+Thu Nov 16 12:56:34 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.4
+  * Fixed a bug introduced in version 2.7.0 that caused interactively entered
+    webroot plugin values to not be saved for renewal.
+
+-------------------------------------------------------------------
 Mon Oct 30 15:37:44 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.7.3

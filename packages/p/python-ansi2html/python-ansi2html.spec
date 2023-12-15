@@ -18,35 +18,33 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ansi2html
-Version:        1.8.0
+Version:        1.9.1
 Release:        0
 Summary:        Python module to convert text with ANSI color codes to HTML or LaTeX
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-URL:            https://github.com/ralphbean/ansi2html/
-Source:         https://github.com/ralphbean/ansi2html/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-# 0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
-# gh#pycontribs/ansi2html#210 kastl@b1-systems.de
-Patch0:         0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
+URL:            https://github.com/pycontribs/ansi2html/
+Source:         https://github.com/pycontribs/ansi2html/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
-A module to convert text with ANSI color codes to HTML or to LaTeX.
+Convert text with ANSI color codes to HTML or to LaTeX.
+
+Inspired by and developed off of the work of pixelbeat and blackjack.
+
+Read the [docs](https://ansi2html.readthedocs.io/) for more informations.
 
 %prep
 %setup -q -n ansi2html-%{version}
-%patch0 -p1
 
 %build
 %pyproject_wheel
@@ -71,8 +69,9 @@ sed -i 's:from mock:from unittest.mock:' tests/test_ansi2html.py
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG.rst
+%doc README.md
 %python_alternative %{_bindir}/ansi2html
-%{python_sitelib}/*
+%{python_sitelib}/ansi2html/
+%{python_sitelib}/ansi2html-*.dist-info/
 
 %changelog

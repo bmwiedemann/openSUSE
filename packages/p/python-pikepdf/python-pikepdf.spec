@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pikepdf
-Version:        8.5.2
+Version:        8.9.0
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -27,12 +27,14 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/pikepdf/pikepdf
 Source:         https://files.pythonhosted.org/packages/source/p/pikepdf/pikepdf-%{version}.tar.gz
 ## SECTION test requirements
-BuildRequires:  %{python_module Pillow >= 9.0.0}
+BuildRequires:  %{python_module Deprecated}
+BuildRequires:  %{python_module Pillow >= 10.0.1}
 BuildRequires:  %{python_module attrs >= 20.2.0}
+BuildRequires:  %{python_module deprecated}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module hypothesis >= 6.36}
 BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module lxml >= 4.0}
+BuildRequires:  %{python_module lxml >= 4.8}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module pybind11 >= 2.10.1}
@@ -56,8 +58,9 @@ BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libqpdf) >= 11.5.0
-Requires:       python-Pillow >= 9.0.0
-Requires:       python-lxml >= 4.0
+Requires:       python-Deprecated
+Requires:       python-Pillow >= 10.0.1
+Requires:       python-lxml >= 4.8
 Requires:       python-packaging
 %python_subpackages
 

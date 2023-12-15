@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 13 09:44:43 UTC 2023 - lnussel@suse.com
+
+- Update to version 4.7.0+60:
+  * Avoid including <sys/param.h> on windows
+  * Document functions
+  * icmp: Handle ICMP packets as IPPROTO_IP on BSD
+  * ip: Enforce strict aliasing
+  * Fix including BaseTsd.h on mingw
+  * Use SSIZE_T from BaseTsd.h on windows
+  * Detach UDP socket if errno is ENOTCONN (Socket is not connected)
+  * slirp: use localhost as dns when /etc/resolv.conf empty
+  * missing semicolon
+  * Drop unused UDP_UDPDATALEN macro
+  * Reject domain-search when any entry ends with ".."
+  * Use target address from Neighbor Advertisement
+- removed libslirp-semicolon.patch, now included
+
+-------------------------------------------------------------------
 Fri Nov 11 09:30:22 UTC 2022 - pgajdos@suse.com
 
 - added patches

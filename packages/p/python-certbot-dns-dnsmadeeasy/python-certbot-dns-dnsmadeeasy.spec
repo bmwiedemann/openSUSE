@@ -19,21 +19,21 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot-dns-dnsmadeeasy
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
 Summary:        DNS Made Easy Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-dnsmadeeasy/certbot-dns-dnsmadeeasy-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
-BuildRequires:  %{python_module dns-lexicon >= 3.2.1}
+BuildRequires:  %{python_module dns-lexicon >= 3.14.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-acme >= %{version}
 Requires:       python-certbot >= %{version}
-Requires:       python-dns-lexicon >= 3.2.1
+Requires:       python-dns-lexicon >= 3.14.1
 BuildArch:      noarch
 %python_subpackages
 

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Dec 13 14:43:49 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.9.0
+  - Overhauled documentation. Previously the documentation could only
+    be generated in an environment where pikepdf was compiled and installed,
+    since generating the final result depended on executing pikepdf.
+    Now, these dynamic features are removed and the documentation is static.
+    All documentation that was defined in C++ has been pulled out and defined
+    in Python stub files instead, which means compiled binaries are no longer
+    needed to access documentation. This change simplifies the generation of
+    documentation and makes it easier for IDEs to look up function signatures.
+  - Similarly, typing is now defined only in Python stub files.
+- Update to 8.8.0
+  - Added new pikepdf.canvas module with rudimentary content stream creation functions.
+- Update to 8.7.1
+  - Fixed pikepdf.Matrix.rotated() so it now rotates in the advertised direction.
+- Update to 8.7.0
+  - pikepdf.PdfMatrix is now deprecated, in favor of pikepdf.Matrix.
+    The former, unfortunately, implemented some operations backwards 
+    compared to the PDF reference manual. The new class fixes these issues,
+    and adds more functionality, promoting transformation matrix to first class objects.
+    PdfMatrix is now deprecated and will be removed in the next major release.
+  - Improve behavior around truthiness of pikepdf.Name.
+- Update to 8.6.0
+  - Implemented Page.artbox and Page.bleedbox to access these page dimension boxes.
+- Update to 8.5.3
+  - Fixed exception on certain PdfImage.__repr__ when the image's mode was invalid.
+  - Fixed some minor issues that caused code coverage to miss some covered lines.
+  - Removed some unused code.
+  
+-------------------------------------------------------------------
+Mon Dec 11 17:29:49 UTC 2023 - Jonathan Papineau <jonathan@jontech.app>
+
+- update to 8.9.0
+  * Overhauled documentation
+  * Added new pikepdf.canvas module with rudimentary content stream creation functions
+  * Fixed pikepdf.Matrix.rotated() so it now rotates in the advertised direction
+  * pikepdf.PdfMatrix is now deprecated, in favor of pikepdf.Matrix
+  * Improve behavior around truthiness of pikepdf.Name
+  * Implemented Page.artbox and Page.bleedbox to access these page dimension boxes
+  * Fixed exception on certain PdfImage.__repr__ when the image’s mode was invalid
+  * Fixed some minor issues that caused code coverage to miss some covered lines
+
+-------------------------------------------------------------------
 Sat Oct 21 23:05:48 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - update to 8.5.2:

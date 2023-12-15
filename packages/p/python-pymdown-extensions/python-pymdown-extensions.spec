@@ -17,7 +17,7 @@
 
 
 Name:           python-pymdown-extensions
-Version:        10.3
+Version:        10.5
 Release:        0
 Summary:        Extension pack for Python Markdown
 License:        MIT

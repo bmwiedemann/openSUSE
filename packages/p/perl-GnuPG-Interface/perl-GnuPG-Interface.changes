@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 14 14:14:13 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove make test workaround, fixed upstream
+
+-------------------------------------------------------------------
+Thu Dec 14 03:08:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.04
+   see /usr/share/doc/packages/perl-GnuPG-Interface/Changes
+
+  1.04 - 2023-12-12
+   - Use the included fake gpg for better test portability
+   - Update tests for gpg 2.4
+
+-------------------------------------------------------------------
 Tue Sep 26 19:52:54 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Add permission fix for tests

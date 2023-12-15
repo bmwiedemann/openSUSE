@@ -1628,4 +1628,12 @@ If we cannot get this in, we need to push an security update for the current blu
   (bsc#1013877)(CVE-2016-9804)</comment>
     <requestid>1123685</requestid>
   </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>4aefda73a05a0e263b372ab73dcc6e32</srcmd5>
+    <version>5.70</version>
+    <time>1702587746</time>
+    <user>anag+factory</user>
+    <comment>- add CVE-2023-45866.patch (CVE-2023-45866, bsc#1217877)</comment>
+    <requestid>1132823</requestid>
+  </revision>
 </revisionlist>
