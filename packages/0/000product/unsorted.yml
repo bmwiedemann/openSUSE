@@ -18632,8 +18632,6 @@ unsorted:
   - ocaml-augeas-devel 
   - ocaml-base64 
   - ocaml-base64-devel 
-  - ocaml-benchmark 
-  - ocaml-benchmark-devel 
   - ocaml-bigarray-compat 
   - ocaml-bigarray-compat-devel 
   - ocaml-bisect_ppx 
@@ -24551,6 +24549,7 @@ unsorted:
   - python310-minio 
   - python310-miniupnpc 
   - python310-misaka 
+  - python310-mistletoe 
   - python310-mistune 
   - python310-mistune2 
   - python310-mitmproxy 
@@ -27975,6 +27974,7 @@ unsorted:
   - python311-minio 
   - python311-miniupnpc 
   - python311-misaka 
+  - python311-mistletoe 
   - python311-mistune 
   - python311-mistune2 
   - python311-mitmproxy 
@@ -31438,6 +31438,7 @@ unsorted:
   - python39-minio 
   - python39-miniupnpc 
   - python39-misaka 
+  - python39-mistletoe 
   - python39-mistune 
   - python39-mistune2 
   - python39-mitmproxy 
@@ -33714,7 +33715,6 @@ unsorted:
   - rainbow-zsh-completion 
   - rakkess 
   - rakudo 
-  - raleway-fonts 
   - rancher-cli 
   - rancher-kim 
   - rang-devel 
